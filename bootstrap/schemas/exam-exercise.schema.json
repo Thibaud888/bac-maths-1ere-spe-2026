@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "exam-exercise.schema.json",
+  "title": "Exam-Style Exercise",
+  "description": "Exercice multi-questions au format Partie 2 de l'EAM. Plusieurs questions enchaînées avec barème, correction progressive par question.",
+  "type": "object",
+  "required": ["id", "chapter", "title", "difficulty", "estimatedMinutes", "totalMarks", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^e-[a-z0-9-]+$",
+      "description": "Identifiant. Format: e-<chapitre|transverse>-<num3>. Ex: e-derivation-001, e-transverse-002"
+    },
+    "chapter": {
+      "type": "string",
+      "enum": [
+        "suites",
+        "second-degre",
+        "derivation",
+        "exponentielle",
+        "trigonometrie",
+        "produit-scalaire",
+        "geometrie-reperee",
+        "probas-cond",
+        "variables-aleatoires",
+        "transverse"
+      ],
+      "description": "Chapitre dominant. 'transverse' pour exercices mêlant plusieurs chapitres."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 150
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "estimatedMinutes": {
+      "type": "integer",
+      "minimum": 10,
+      "maximum": 60,
+      "description": "Durée estimée. Un exercice de Partie 2 dure typiquement 25-40 minutes."
+    },
+    "totalMarks": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 14,
+      "description": "Barème total de l'exercice (points). La Partie 2 totalise 14 points sur 2 ou 3 exercices."
+    },
+    "inspiredBy": {
+      "type": "string",
+      "description": "Référence à un sujet officiel si applicable. Ex: 'Sujet zéro 1 - exercice 2 (adapté)'"
+    },
+    "preamble": {
+      "type": "string",
+      "description": "Énoncé d'introduction commun (contexte, notations, figure éventuelle)."
+    },
+    "figure": {
+      "type": "object",
+      "description": "Figure JSXGraph optionnelle (pour géométrie).",
+      "properties": {
+        "type": {"type": "string", "enum": ["jsxgraph", "image"]},
+        "data": {"type": "object", "description": "Spec JSXGraph ou URL d'image"},
+        "caption": {"type": "string"}
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "statement", "marks", "hints", "solution"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^q[0-9]+$",
+            "description": "Ex: q1, q2, q3"
+          },
+          "label": {
+            "type": "string",
+            "description": "Ex: '1.', '2.', '3.'"
+          },
+          "statement": {"type": "string"},
+          "marks": {
+            "type": "number",
+            "minimum": 0.25,
+            "description": "Points attribués à cette question (ou à l'ensemble de ses sous-questions)"
+          },
+          "subquestions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "label", "statement", "hints", "solution"],
+              "additionalProperties": false,
+              "properties": {
+                "id": {"type": "string", "pattern": "^q[0-9]+[a-z]$"},
+                "label": {"type": "string", "description": "Ex: 'a)', 'b)', 'c)'"},
+                "statement": {"type": "string"},
+                "marks": {"type": "number", "minimum": 0.25},
+                "hints": {
+                  "type": "array",
+                  "items": {"type": "string"},
+                  "minItems": 1,
+                  "maxItems": 3
+                },
+                "expectedAnswer": {"type": "string"},
+                "solution": {"type": "string", "minLength": 10}
+              }
+            }
+          },
+          "hints": {
+            "type": "array",
+            "items": {"type": "string"},
+            "minItems": 1,
+            "maxItems": 3,
+            "description": "Aides progressives pour la question (ou pour entrer dans la sous-question si subquestions présentes)"
+          },
+          "expectedAnswer": {"type": "string"},
+          "solution": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Correction rédigée, conforme aux attendus du bac."
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

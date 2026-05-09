@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "automatism.schema.json",
+  "title": "Automatism Item",
+  "description": "Question d'automatisme conforme à la Partie 1 de l'EAM (QCM, sans calculatrice, < 60s). Domaines officiels listés dans la note de service du 10 juin 2025.",
+  "type": "object",
+  "required": ["id", "domain", "type", "statement", "answer", "explanation", "difficulty"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^a-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format: a-<slug>. Ex: a-fact-x2-9"
+    },
+    "chapter": {
+      "type": "string",
+      "enum": [
+        "suites",
+        "second-degre",
+        "derivation",
+        "exponentielle",
+        "trigonometrie",
+        "produit-scalaire",
+        "geometrie-reperee",
+        "probas-cond",
+        "variables-aleatoires",
+        "transverse"
+      ],
+      "description": "Chapitre rattaché. 'transverse' pour les automatismes non spécifiques (pourcentages, calcul algébrique de seconde, etc.)"
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "calcul-numerique-algebrique",
+        "proportions-pourcentages",
+        "evolutions-variations",
+        "fonctions-representations",
+        "statistiques",
+        "probabilites"
+      ],
+      "description": "Domaine d'automatisme officiel (note de service 10/6/2025)"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["qcm", "numeric"],
+      "description": "qcm = choix multiple ; numeric = saisie d'une valeur numérique"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Énoncé court (Markdown + LaTeX). Doit être lisible et résolvable en moins d'une minute."
+    },
+    "choices": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 2,
+      "maxItems": 5,
+      "description": "Choix proposés (uniquement si type=qcm). Markdown + LaTeX autorisés."
+    },
+    "answer": {
+      "description": "Réponse correcte. Pour qcm: index (entier 0-based). Pour numeric: nombre ou chaîne 'a/b' représentant une fraction."
+    },
+    "tolerance": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Tolérance pour réponses numériques. 0 pour réponse entière exacte. Ignoré si type=qcm."
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Explication courte donnée après réponse (1-3 lignes). Markdown + LaTeX."
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3,
+      "description": "1 = niveau seconde / très simple ; 2 = automatisme première classique ; 3 = automatisme première exigeant"
+    },
+    "timeLimitSeconds": {
+      "type": "integer",
+      "minimum": 15,
+      "maximum": 120,
+      "default": 60,
+      "description": "Temps recommandé pour répondre. Sert au mode chronométré."
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"type": {"const": "qcm"}}},
+      "then": {
+        "required": ["choices"],
+        "properties": {
+          "answer": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"type": {"const": "numeric"}}},
+      "then": {
+        "properties": {
+          "answer": {
+            "oneOf": [
+              {"type": "number"},
+              {"type": "string", "pattern": "^-?\\d+/\\d+$"}
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
