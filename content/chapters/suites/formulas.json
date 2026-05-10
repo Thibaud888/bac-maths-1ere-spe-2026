@@ -1,1 +1,156 @@
-[]
+[
+  {
+    "id": "f-suite-notations-modes-generation",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Notations et modes de génération d'une suite",
+    "statement": "Une suite numérique $(u_n)$ est une fonction de $\\mathbb{N}$ (ou d'une partie de $\\mathbb{N}$) dans $\\mathbb{R}$. On note $u_n$ le terme de rang $n$, parfois $u(n)$. Une suite peut être définie de deux façons principales :\n\n- **Explicitement** : on donne $u_n$ en fonction de $n$, par exemple $u_n = 2n + 3$.\n- **Par récurrence** : on donne le premier terme $u_0$ (ou $u_1$) et une relation $u_{n+1} = f(u_n)$.",
+    "example": "Suite définie par $u_0 = 1$ et $u_{n+1} = 2u_n + 1$ : on a $u_1 = 3$, $u_2 = 7$, $u_3 = 15$.",
+    "tags": ["notations", "modes-de-generation", "recurrence", "explicite"],
+    "order": 10,
+    "level": "essentiel"
+  },
+  {
+    "id": "f-suite-sens-variation",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Sens de variation d'une suite",
+    "statement": "Soit $(u_n)$ une suite. On dit que :\n\n- $(u_n)$ est **croissante** si pour tout $n$, $u_{n+1} \\geq u_n$.\n- $(u_n)$ est **décroissante** si pour tout $n$, $u_{n+1} \\leq u_n$.\n- $(u_n)$ est **constante** si pour tout $n$, $u_{n+1} = u_n$.\n\nPour étudier le sens de variation, on étudie le signe de $u_{n+1} - u_n$.",
+    "example": "Si $u_n = n^2$, alors $u_{n+1} - u_n = (n+1)^2 - n^2 = 2n + 1 > 0$ pour tout $n \\in \\mathbb{N}$, donc $(u_n)$ est croissante.",
+    "tags": ["sens-de-variation", "monotonie"],
+    "order": 20,
+    "level": "essentiel"
+  },
+  {
+    "id": "f-suite-arith-definition",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Définition d'une suite arithmétique",
+    "statement": "Une suite $(u_n)$ est **arithmétique** s'il existe un réel $r$, appelé **raison**, tel que pour tout $n \\in \\mathbb{N}$ :\n\n$$u_{n+1} = u_n + r$$\n\nAutrement dit, on passe d'un terme au suivant en ajoutant toujours la même quantité $r$.",
+    "conditions": "Pour montrer qu'une suite est arithmétique, il suffit de vérifier que $u_{n+1} - u_n$ est constant.",
+    "example": "La suite $u_n$ définie par $u_0 = 5$ et $u_{n+1} = u_n - 3$ est arithmétique de raison $r = -3$.",
+    "tags": ["suite-arithmetique", "raison", "recurrence"],
+    "order": 30,
+    "level": "essentiel"
+  },
+  {
+    "id": "f-suite-arith-terme-general",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Terme général d'une suite arithmétique",
+    "statement": "Si $(u_n)$ est arithmétique de premier terme $u_0$ et de raison $r$, alors pour tout $n \\in \\mathbb{N}$ :\n\n$$u_n = u_0 + n \\, r$$\n\nPlus généralement, pour tout entier $p$ et tout $n \\geq p$ :\n\n$$u_n = u_p + (n - p) \\, r$$",
+    "example": "Si $u_0 = 4$ et $r = 3$, alors $u_{10} = 4 + 10 \\times 3 = 34$. Si $u_5 = 17$ et $r = 3$, alors $u_{12} = u_5 + (12-5) \\times 3 = 17 + 21 = 38$.",
+    "tags": ["suite-arithmetique", "terme-general"],
+    "order": 40,
+    "level": "essentiel",
+    "relatedFormulas": ["f-suite-arith-definition"]
+  },
+  {
+    "id": "f-suite-arith-variation",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Sens de variation d'une suite arithmétique",
+    "statement": "Soit $(u_n)$ une suite arithmétique de raison $r$.\n\n- Si $r > 0$, alors $(u_n)$ est **strictement croissante**.\n- Si $r < 0$, alors $(u_n)$ est **strictement décroissante**.\n- Si $r = 0$, alors $(u_n)$ est **constante**.\n\nEn effet, $u_{n+1} - u_n = r$, le signe de la raison donne directement le sens de variation.",
+    "tags": ["suite-arithmetique", "sens-de-variation", "raison"],
+    "order": 50,
+    "level": "essentiel",
+    "relatedFormulas": ["f-suite-arith-definition", "f-suite-sens-variation"]
+  },
+  {
+    "id": "f-suite-arith-lien-affine",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Lien avec les fonctions affines",
+    "statement": "Si $(u_n)$ est arithmétique de raison $r$ et de premier terme $u_0$, alors $u_n = u_0 + n \\, r$ : c'est une fonction **affine** de $n$, de coefficient directeur $r$ et d'ordonnée à l'origine $u_0$.\n\nLes points de coordonnées $(n \\, ; \\, u_n)$ sont alignés sur une droite de pente $r$.",
+    "example": "Pour $u_n = 2 + 3n$, les points $(0 ; 2)$, $(1 ; 5)$, $(2 ; 8)$, $(3 ; 11)$ sont alignés sur la droite de pente $3$.",
+    "tags": ["suite-arithmetique", "fonction-affine", "lien-fonction"],
+    "order": 60,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-suite-arith-terme-general"]
+  },
+  {
+    "id": "f-somme-entiers-consecutifs",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Somme des entiers consécutifs",
+    "statement": "Pour tout entier naturel $n \\geq 1$ :\n\n$$1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}$$",
+    "example": "$1 + 2 + \\cdots + 100 = \\dfrac{100 \\times 101}{2} = 5050$.",
+    "tags": ["somme", "entiers", "suite-arithmetique"],
+    "order": 70,
+    "level": "essentiel"
+  },
+  {
+    "id": "f-suite-arith-somme-generale",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Somme des termes d'une suite arithmétique",
+    "statement": "Soit $(u_n)$ une suite arithmétique. La somme de termes consécutifs est égale au nombre de termes multiplié par la moyenne du premier et du dernier terme :\n\n$$u_p + u_{p+1} + \\cdots + u_n = (n - p + 1) \\times \\frac{u_p + u_n}{2}$$\n\nEn particulier, si la somme commence à $u_0$ :\n\n$$u_0 + u_1 + \\cdots + u_n = (n+1) \\times \\frac{u_0 + u_n}{2}$$",
+    "conditions": "Formule à mémoriser sous la forme : nombre de termes $\\times$ (premier + dernier) / 2.",
+    "example": "Si $u_n = 2 + 3n$, alors $u_0 + u_1 + \\cdots + u_{10}$ comporte $11$ termes, $u_0 = 2$, $u_{10} = 32$, donc la somme vaut $11 \\times \\dfrac{2 + 32}{2} = 11 \\times 17 = 187$.",
+    "tags": ["suite-arithmetique", "somme", "termes-consecutifs"],
+    "order": 80,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-somme-entiers-consecutifs", "f-suite-arith-terme-general"]
+  },
+  {
+    "id": "f-suite-geom-definition",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Définition d'une suite géométrique",
+    "statement": "Une suite $(u_n)$ est **géométrique** s'il existe un réel $q$, appelé **raison**, tel que pour tout $n \\in \\mathbb{N}$ :\n\n$$u_{n+1} = q \\, u_n$$\n\nAutrement dit, on passe d'un terme au suivant en multipliant toujours par la même quantité $q$.",
+    "conditions": "Si tous les termes sont non nuls, on peut vérifier qu'une suite est géométrique en montrant que le rapport $\\dfrac{u_{n+1}}{u_n}$ est constant.",
+    "example": "La suite définie par $u_0 = 3$ et $u_{n+1} = 2 u_n$ est géométrique de raison $q = 2$ : $u_0 = 3$, $u_1 = 6$, $u_2 = 12$, $u_3 = 24$.",
+    "tags": ["suite-geometrique", "raison", "recurrence"],
+    "order": 90,
+    "level": "essentiel"
+  },
+  {
+    "id": "f-suite-geom-terme-general",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Terme général d'une suite géométrique",
+    "statement": "Si $(u_n)$ est géométrique de premier terme $u_0$ et de raison $q$, alors pour tout $n \\in \\mathbb{N}$ :\n\n$$u_n = u_0 \\, q^n$$\n\nPlus généralement, pour tout entier $p$ et tout $n \\geq p$ :\n\n$$u_n = u_p \\, q^{n - p}$$",
+    "example": "Si $u_0 = 5$ et $q = 2$, alors $u_4 = 5 \\times 2^4 = 5 \\times 16 = 80$.",
+    "tags": ["suite-geometrique", "terme-general", "puissance"],
+    "order": 100,
+    "level": "essentiel",
+    "relatedFormulas": ["f-suite-geom-definition"]
+  },
+  {
+    "id": "f-suite-geom-variation",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Sens de variation d'une suite géométrique",
+    "statement": "Soit $(u_n)$ une suite géométrique de raison $q$ et de premier terme $u_0 > 0$.\n\n- Si $q > 1$, alors $(u_n)$ est **strictement croissante**.\n- Si $0 < q < 1$, alors $(u_n)$ est **strictement décroissante**.\n- Si $q = 1$, alors $(u_n)$ est **constante**.\n- Si $q < 0$, alors $(u_n)$ change de signe à chaque terme : elle n'est **ni croissante, ni décroissante**.\n\nSi $u_0 < 0$ et $q > 0$, $q \\neq 1$, les variations sont inversées par rapport au cas $u_0 > 0$.",
+    "example": "Pour $u_0 = 1$ et $q = 3$ : $1, 3, 9, 27, \\ldots$ est croissante. Pour $u_0 = 8$ et $q = \\dfrac{1}{2}$ : $8, 4, 2, 1, \\ldots$ est décroissante.",
+    "tags": ["suite-geometrique", "sens-de-variation", "raison"],
+    "order": 110,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-suite-geom-definition"]
+  },
+  {
+    "id": "f-somme-puissances-q",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Somme $1 + q + q^2 + \\cdots + q^n$",
+    "statement": "Pour tout réel $q \\neq 1$ et tout entier $n \\geq 0$ :\n\n$$1 + q + q^2 + \\cdots + q^n = \\frac{1 - q^{n+1}}{1 - q}$$\n\nLe numérateur compte $n+1$ termes (de $q^0$ à $q^n$).",
+    "conditions": "La formule n'est valable que pour $q \\neq 1$. Si $q = 1$, la somme vaut simplement $n + 1$.",
+    "example": "$1 + 2 + 4 + 8 + 16 = \\dfrac{1 - 2^5}{1 - 2} = \\dfrac{1 - 32}{-1} = 31$.",
+    "tags": ["suite-geometrique", "somme", "puissances"],
+    "order": 120,
+    "level": "a-connaitre"
+  },
+  {
+    "id": "f-suite-geom-somme-generale",
+    "chapter": "suites",
+    "domain": "algebre",
+    "title": "Somme des termes d'une suite géométrique",
+    "statement": "Soit $(u_n)$ une suite géométrique de raison $q \\neq 1$. La somme de termes consécutifs s'écrit :\n\n$$u_0 + u_1 + \\cdots + u_n = u_0 \\times \\frac{1 - q^{n+1}}{1 - q}$$\n\nMnémotechnique : **premier terme** $\\times$ $\\dfrac{1 - q^{\\text{nombre de termes}}}{1 - q}$.",
+    "conditions": "Valable uniquement pour $q \\neq 1$. Si $q = 1$, la suite est constante et la somme vaut $(n+1) \\, u_0$.",
+    "example": "Si $u_0 = 3$ et $q = 2$, la somme $u_0 + u_1 + \\cdots + u_5$ comporte $6$ termes et vaut $3 \\times \\dfrac{1 - 2^6}{1 - 2} = 3 \\times \\dfrac{-63}{-1} = 189$.",
+    "tags": ["suite-geometrique", "somme", "termes-consecutifs"],
+    "order": 130,
+    "level": "approfondissement",
+    "relatedFormulas": ["f-somme-puissances-q", "f-suite-geom-terme-general"]
+  }
+]
