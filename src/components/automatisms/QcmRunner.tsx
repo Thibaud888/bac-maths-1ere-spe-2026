@@ -8,6 +8,12 @@ import { useProgressStore } from '@/stores/progress-store';
 type QcmRunnerProps = {
   automatism: Automatism;
   onNext?: () => void;
+  /**
+   * Durée du timer en secondes. `null` désactive complètement le timer
+   * (pas d'affichage, pas de timeout). `undefined` retombe sur la durée
+   * spécifiée par l'item (ou 60 s par défaut).
+   */
+  timerSeconds?: number | null;
 };
 
 type Phase = 'idle' | 'revealed';
@@ -31,7 +37,16 @@ function targetAnswerAsNumber(answer: number | string): number | null {
   return parseNumericInput(answer);
 }
 
-export default function QcmRunner({ automatism, onNext }: QcmRunnerProps) {
+export default function QcmRunner({
+  automatism,
+  onNext,
+  timerSeconds,
+}: QcmRunnerProps) {
+  const timerActive = timerSeconds !== null;
+  const effectiveDuration =
+    timerSeconds === undefined || timerSeconds === null
+      ? (automatism.timeLimitSeconds ?? 60)
+      : timerSeconds;
   const recordAttempt = useProgressStore((s) => s.recordAttempt);
   const [phase, setPhase] = useState<Phase>('idle');
   const [picked, setPicked] = useState<number | null>(null);
@@ -92,12 +107,14 @@ export default function QcmRunner({ automatism, onNext }: QcmRunnerProps) {
         <span className="text-xs uppercase tracking-wider text-slate-500">
           Automatisme · {automatism.domain}
         </span>
-        <Timer
-          durationSeconds={automatism.timeLimitSeconds ?? 60}
-          paused={phase !== 'idle'}
-          onTimeout={onTimeout}
-          resetKey={automatism.id}
-        />
+        {timerActive && (
+          <Timer
+            durationSeconds={effectiveDuration}
+            paused={phase !== 'idle'}
+            onTimeout={onTimeout}
+            resetKey={automatism.id}
+          />
+        )}
       </header>
 
       <div className="mt-3 text-base leading-relaxed text-slate-800">
