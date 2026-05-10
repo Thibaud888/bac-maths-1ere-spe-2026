@@ -1,1 +1,198 @@
-[]
+[
+  {
+    "id": "e-suites-001",
+    "chapter": "suites",
+    "title": "Évolution d'un capital placé à intérêts composés",
+    "difficulty": 2,
+    "estimatedMinutes": 30,
+    "totalMarks": 6,
+    "order": 10,
+    "tags": ["geometrique", "modelisation", "interets-composes", "somme-geometrique"],
+    "preamble": "Le 1er janvier 2026, Léa place $10\\,000$ € sur un compte d'épargne à intérêts composés au taux annuel de $5\\,\\%$. Les intérêts sont ajoutés au capital chaque 31 décembre.\n\nPour tout entier naturel $n$, on note $C_n$ le capital, exprimé en euros, disponible sur le compte au 1er janvier de l'année $2026 + n$. Ainsi $C_0 = 10\\,000$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que, pour tout entier naturel $n$, $C_{n+1} = 1{,}05 \\times C_n$. En déduire la nature de la suite $(C_n)$ et préciser sa raison.",
+        "marks": 1,
+        "hints": [
+          "Une augmentation de $5\\,\\%$ correspond à un coefficient multiplicateur de $1 + \\dfrac{5}{100} = 1{,}05$.",
+          "Le capital de l'année suivante est égal au capital de l'année en cours, augmenté de $5\\,\\%$ : $C_{n+1} = C_n + \\dfrac{5}{100} \\times C_n$.",
+          "Une suite vérifiant $C_{n+1} = q \\times C_n$ avec $q$ constant est géométrique de raison $q$."
+        ],
+        "expectedAnswer": "$(C_n)$ est géométrique de raison $q = 1{,}05$ et de premier terme $C_0 = 10\\,000$.",
+        "solution": "Chaque année, le capital augmente de $5\\,\\%$. Le coefficient multiplicateur associé à une augmentation de $5\\,\\%$ est $1 + \\dfrac{5}{100} = 1{,}05$.\n\nDonc, pour tout entier naturel $n$ :\n$$C_{n+1} = C_n + \\dfrac{5}{100} \\times C_n = C_n \\times \\left(1 + \\dfrac{5}{100}\\right) = 1{,}05 \\times C_n.$$\n\nAinsi, pour tout $n \\in \\mathbb{N}$, $C_{n+1} = 1{,}05 \\times C_n$ : la suite $(C_n)$ est donc **géométrique** de raison $q = 1{,}05$ et de premier terme $C_0 = 10\\,000$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Exprimer $C_n$ en fonction de $n$, puis calculer $C_2$.",
+        "marks": 1.5,
+        "hints": [
+          "Pour une suite géométrique, le terme général est donné par $C_n = C_0 \\times q^n$.",
+          "Calcule $1{,}05^2$ en développant $(1 + 0{,}05)^2 = 1 + 2 \\times 0{,}05 + 0{,}05^2$.",
+          "$1{,}05^2 = 1{,}1025$, donc $C_2 = 10\\,000 \\times 1{,}1025$."
+        ],
+        "expectedAnswer": "$C_n = 10\\,000 \\times 1{,}05^n$ et $C_2 = 11\\,025$ €.",
+        "solution": "La suite $(C_n)$ est géométrique de raison $q = 1{,}05$ et de premier terme $C_0 = 10\\,000$. Pour tout entier naturel $n$ :\n$$C_n = C_0 \\times q^n = 10\\,000 \\times 1{,}05^n.$$\n\nPour $n = 2$ : $1{,}05^2 = (1 + 0{,}05)^2 = 1 + 0{,}1 + 0{,}0025 = 1{,}1025$.\n\nDonc $C_2 = 10\\,000 \\times 1{,}1025 = 11\\,025$ €.\n\nAu 1er janvier 2028, Léa disposera de $11\\,025$ € sur son compte."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Étudier le sens de variation de la suite $(C_n)$. Justifier soigneusement.",
+        "marks": 1,
+        "hints": [
+          "Pour étudier le sens de variation d'une suite géométrique à termes positifs, on compare la raison $q$ à $1$.",
+          "Calcule $C_{n+1} - C_n$ ou compare $C_{n+1}$ et $C_n$ en utilisant le signe du coefficient $1{,}05 - 1$.",
+          "Comme $C_n > 0$ et $q > 1$, on a $C_{n+1} > C_n$ pour tout $n$ : la suite est strictement croissante."
+        ],
+        "expectedAnswer": "$(C_n)$ est strictement croissante.",
+        "solution": "Pour tout entier naturel $n$, $C_n = 10\\,000 \\times 1{,}05^n > 0$ car c'est un produit de facteurs strictement positifs.\n\nDe plus :\n$$C_{n+1} - C_n = 1{,}05 \\times C_n - C_n = (1{,}05 - 1) \\times C_n = 0{,}05 \\times C_n.$$\n\nComme $C_n > 0$, on a $C_{n+1} - C_n > 0$, c'est-à-dire $C_{n+1} > C_n$.\n\nAinsi, la suite $(C_n)$ est **strictement croissante** : le capital augmente bien chaque année, ce qui est cohérent avec le contexte d'un placement à intérêts composés."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "On note $S_n = C_0 + C_1 + C_2 + \\ldots + C_n$ la somme des $n+1$ premiers capitaux annuels. Exprimer $S_n$ en fonction de $n$.",
+        "marks": 1.5,
+        "hints": [
+          "La somme des $n+1$ premiers termes d'une suite géométrique de raison $q \\neq 1$ est $S_n = C_0 \\times \\dfrac{1 - q^{n+1}}{1 - q}$.",
+          "Ici $C_0 = 10\\,000$ et $q = 1{,}05$, donc $1 - q = -0{,}05$.",
+          "On peut multiplier numérateur et dénominateur par $-1$ pour obtenir une expression plus lisible : $\\dfrac{q^{n+1} - 1}{q - 1}$."
+        ],
+        "expectedAnswer": "$S_n = 200\\,000 \\times (1{,}05^{n+1} - 1)$.",
+        "solution": "La suite $(C_n)$ est géométrique de raison $q = 1{,}05 \\neq 1$ et de premier terme $C_0 = 10\\,000$. La somme des $n+1$ premiers termes est :\n$$S_n = C_0 \\times \\dfrac{1 - q^{n+1}}{1 - q} = 10\\,000 \\times \\dfrac{1 - 1{,}05^{n+1}}{1 - 1{,}05}.$$\n\nOr $1 - 1{,}05 = -0{,}05$, donc en multipliant numérateur et dénominateur par $-1$ :\n$$S_n = 10\\,000 \\times \\dfrac{1{,}05^{n+1} - 1}{0{,}05}.$$\n\nEnfin, $\\dfrac{10\\,000}{0{,}05} = \\dfrac{10\\,000}{\\frac{1}{20}} = 10\\,000 \\times 20 = 200\\,000$.\n\nOn obtient donc, pour tout entier naturel $n$ :\n$$S_n = 200\\,000 \\times (1{,}05^{n+1} - 1).$$"
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "statement": "Léa affirme : « Si je laisse mon argent placé pendant deux ans, j'aurai gagné plus de $1\\,000$ € d'intérêts. » A-t-elle raison ? Justifier la réponse.",
+        "marks": 1,
+        "hints": [
+          "Le gain d'intérêts au bout de deux ans est $C_2 - C_0$.",
+          "Utilise la valeur de $C_2$ calculée à la question 2.",
+          "Compare le gain obtenu à $1\\,000$ €."
+        ],
+        "expectedAnswer": "Oui, Léa a raison : le gain est de $1\\,025$ € $> 1\\,000$ €.",
+        "solution": "Le gain d'intérêts au bout de deux années correspond à l'augmentation du capital, soit $C_2 - C_0$.\n\nD'après la question 2, $C_2 = 11\\,025$ €, et $C_0 = 10\\,000$ €. Donc :\n$$C_2 - C_0 = 11\\,025 - 10\\,000 = 1\\,025 \\text{ €}.$$\n\nOr $1\\,025 > 1\\,000$, donc le gain est strictement supérieur à $1\\,000$ €.\n\n**Léa a donc raison** : au bout de deux ans, elle aura gagné $1\\,025$ € d'intérêts, ce qui est plus de $1\\,000$ €."
+      }
+    ]
+  },
+  {
+    "id": "e-suites-002",
+    "chapter": "suites",
+    "title": "Étude croisée d'une suite arithmétique et d'une suite géométrique",
+    "difficulty": 2,
+    "estimatedMinutes": 35,
+    "totalMarks": 6,
+    "order": 20,
+    "tags": ["arithmetique", "geometrique", "somme", "python", "algorithmique"],
+    "preamble": "On considère deux suites $(u_n)$ et $(v_n)$ définies pour tout entier naturel $n$ par :\n$$u_n = 3 + 5n \\quad \\text{et} \\quad \\begin{cases} v_0 = 2 \\\\ v_{n+1} = 2v_n \\end{cases}$$\n\nL'objectif de l'exercice est d'étudier ces deux suites, de calculer des sommes partielles et de compléter un programme en Python.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $u_0$, $u_1$, $u_2$ ainsi que $v_1$, $v_2$, $v_3$.",
+        "marks": 1,
+        "hints": [
+          "Pour $(u_n)$, remplace $n$ par $0$, $1$, puis $2$ dans $u_n = 3 + 5n$.",
+          "Pour $(v_n)$, applique la relation $v_{n+1} = 2 v_n$ en partant de $v_0 = 2$.",
+          "Vérifie : $v_1 = 2 \\times 2 = 4$, $v_2 = 2 \\times 4 = 8$, $v_3 = 2 \\times 8 = 16$."
+        ],
+        "expectedAnswer": "$u_0 = 3$, $u_1 = 8$, $u_2 = 13$ ; $v_1 = 4$, $v_2 = 8$, $v_3 = 16$.",
+        "solution": "**Calcul de $u_0$, $u_1$, $u_2$.** En appliquant la formule $u_n = 3 + 5n$ :\n- $u_0 = 3 + 5 \\times 0 = 3$ ;\n- $u_1 = 3 + 5 \\times 1 = 8$ ;\n- $u_2 = 3 + 5 \\times 2 = 13$.\n\n**Calcul de $v_1$, $v_2$, $v_3$.** En appliquant la relation $v_{n+1} = 2 v_n$ avec $v_0 = 2$ :\n- $v_1 = 2 \\times v_0 = 2 \\times 2 = 4$ ;\n- $v_2 = 2 \\times v_1 = 2 \\times 4 = 8$ ;\n- $v_3 = 2 \\times v_2 = 2 \\times 8 = 16$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Étudier la nature des suites $(u_n)$ et $(v_n)$.",
+        "marks": 1.5,
+        "hints": [
+          "Pour $(u_n)$, calcule la différence $u_{n+1} - u_n$ et vérifie qu'elle est constante.",
+          "Pour $(v_n)$, la relation $v_{n+1} = 2 v_n$ donne directement la nature de la suite.",
+          "Une suite vérifiant $u_{n+1} - u_n = r$ constant est arithmétique. Une suite vérifiant $v_{n+1} = q \\times v_n$ avec $q$ constant et $v_0 \\neq 0$ est géométrique."
+        ],
+        "subquestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "statement": "Démontrer que la suite $(u_n)$ est arithmétique. Préciser sa raison et son premier terme.",
+            "marks": 0.75,
+            "hints": [
+              "Calcule $u_{n+1}$ à partir de la formule explicite, puis $u_{n+1} - u_n$.",
+              "Si la différence ne dépend pas de $n$, la suite est arithmétique.",
+              "On obtient $u_{n+1} - u_n = 5$, indépendant de $n$."
+            ],
+            "expectedAnswer": "$(u_n)$ est arithmétique de raison $r = 5$, de premier terme $u_0 = 3$.",
+            "solution": "Soit $n \\in \\mathbb{N}$. On a $u_{n+1} = 3 + 5(n+1) = 3 + 5n + 5 = 8 + 5n$.\n\nDonc :\n$$u_{n+1} - u_n = (8 + 5n) - (3 + 5n) = 5.$$\n\nAinsi, pour tout $n \\in \\mathbb{N}$, $u_{n+1} - u_n = 5$ : cette différence est constante. La suite $(u_n)$ est donc **arithmétique** de raison $r = 5$, et son premier terme est $u_0 = 3$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "statement": "Justifier que la suite $(v_n)$ est géométrique. Préciser sa raison et son premier terme.",
+            "marks": 0.75,
+            "hints": [
+              "La relation $v_{n+1} = 2 v_n$ correspond directement à la définition d'une suite géométrique.",
+              "Lis l'énoncé : la raison apparaît dans la relation de récurrence.",
+              "$(v_n)$ est géométrique de raison $q = 2$ et de premier terme $v_0 = 2$."
+            ],
+            "expectedAnswer": "$(v_n)$ est géométrique de raison $q = 2$, de premier terme $v_0 = 2$.",
+            "solution": "Par hypothèse, pour tout $n \\in \\mathbb{N}$, $v_{n+1} = 2 v_n$. C'est exactement la définition d'une suite géométrique de raison $2$.\n\nDe plus, $v_0 = 2 \\neq 0$, donc tous les termes de la suite sont non nuls. La suite $(v_n)$ est donc **géométrique** de raison $q = 2$ et de premier terme $v_0 = 2$."
+          }
+        ],
+        "solution": "Cette question est traitée dans les sous-questions a) et b)."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Exprimer $v_n$ en fonction de $n$, puis calculer $v_5$.",
+        "marks": 1,
+        "hints": [
+          "Pour une suite géométrique, $v_n = v_0 \\times q^n$.",
+          "Avec $v_0 = 2$ et $q = 2$, on obtient $v_n = 2 \\times 2^n = 2^{n+1}$.",
+          "$v_5 = 2^6 = 64$."
+        ],
+        "expectedAnswer": "$v_n = 2^{n+1}$ et $v_5 = 64$.",
+        "solution": "La suite $(v_n)$ est géométrique de raison $q = 2$ et de premier terme $v_0 = 2$. Pour tout $n \\in \\mathbb{N}$ :\n$$v_n = v_0 \\times q^n = 2 \\times 2^n = 2^{n+1}.$$\n\nPour $n = 5$ : $v_5 = 2^{5+1} = 2^6 = 64$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Calculer la somme $S = u_0 + u_1 + u_2 + \\ldots + u_{10}$.",
+        "marks": 1,
+        "hints": [
+          "La somme des $n+1$ premiers termes d'une suite arithmétique vaut $\\dfrac{(\\text{nombre de termes}) \\times (\\text{premier} + \\text{dernier})}{2}$.",
+          "Il y a $11$ termes (de $u_0$ à $u_{10}$). Calcule $u_{10} = 3 + 5 \\times 10 = 53$.",
+          "$S = \\dfrac{11 \\times (3 + 53)}{2} = \\dfrac{11 \\times 56}{2} = 11 \\times 28$."
+        ],
+        "expectedAnswer": "$S = 308$.",
+        "solution": "La somme $S$ comprend les termes $u_0, u_1, \\ldots, u_{10}$, soit $11$ termes d'une suite arithmétique.\n\nLa formule de la somme des termes consécutifs d'une suite arithmétique donne :\n$$S = \\dfrac{(\\text{nombre de termes}) \\times (\\text{premier terme} + \\text{dernier terme})}{2}.$$\n\nOn a $u_0 = 3$ et $u_{10} = 3 + 5 \\times 10 = 53$. Donc :\n$$S = \\dfrac{11 \\times (3 + 53)}{2} = \\dfrac{11 \\times 56}{2} = 11 \\times 28 = 308.$$\n\nAinsi, $u_0 + u_1 + \\ldots + u_{10} = 308$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "statement": "On considère le script Python ci-dessous, destiné à calculer la somme $T = v_0 + v_1 + \\ldots + v_N$ pour un entier naturel $N$ saisi par l'utilisateur.\n\n```python\ndef somme_v(N):\n    v = 2\n    T = 0\n    for i in range(...):\n        T = T + v\n        v = ... * v\n    return T\n```\n\nRecopier et compléter les deux pointillés afin que la fonction renvoie correctement la valeur de $T$. Justifier brièvement.",
+        "marks": 1,
+        "hints": [
+          "La boucle doit parcourir les indices de $0$ à $N$ inclus, ce qui correspond à $N+1$ valeurs.",
+          "À chaque tour, après avoir ajouté $v$ à $T$, il faut passer au terme suivant : $v_{i+1} = 2 \\times v_i$.",
+          "La syntaxe `range(N+1)` permet de générer les entiers $0, 1, \\ldots, N$ ; le coefficient multiplicateur est $2$."
+        ],
+        "expectedAnswer": "`range(N+1)` et `2 * v`.",
+        "solution": "On souhaite calculer $T = v_0 + v_1 + \\ldots + v_N$, qui contient $N + 1$ termes.\n\n**Premier pointillé.** La boucle `for i in range(...)` doit s'exécuter $N + 1$ fois afin d'ajouter successivement $v_0$, $v_1$, …, $v_N$ à $T$. On remplace donc les pointillés par `N+1`.\n\n**Second pointillé.** À l'intérieur de la boucle, après avoir ajouté la valeur courante de $v$ (qui correspond à $v_i$) à $T$, on doit passer au terme suivant : $v_{i+1} = 2 \\times v_i$. On remplace donc `... * v` par `2 * v`.\n\nLe script complété est :\n\n```python\ndef somme_v(N):\n    v = 2\n    T = 0\n    for i in range(N+1):\n        T = T + v\n        v = 2 * v\n    return T\n```"
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "statement": "Déterminer la valeur de $T$ renvoyée par la fonction `somme_v(5)`. Comparer cette valeur à la somme $S$ calculée à la question 4.",
+        "marks": 0.5,
+        "hints": [
+          "La fonction `somme_v(5)` renvoie $T = v_0 + v_1 + v_2 + v_3 + v_4 + v_5$.",
+          "Utilise la formule de la somme géométrique : $T = v_0 \\times \\dfrac{1 - q^{N+1}}{1 - q}$ avec $v_0 = 2$, $q = 2$, $N = 5$.",
+          "$T = 2 \\times \\dfrac{1 - 2^6}{1 - 2} = 2 \\times \\dfrac{-63}{-1} = 2 \\times 63 = 126$."
+        ],
+        "expectedAnswer": "$T = 126$, donc $T < S$ (car $126 < 308$).",
+        "solution": "La fonction `somme_v(5)` renvoie $T = v_0 + v_1 + v_2 + v_3 + v_4 + v_5$, somme des six premiers termes de la suite géométrique $(v_n)$.\n\nUtilisons la formule de la somme géométrique avec $v_0 = 2$, $q = 2 \\neq 1$ et $6$ termes :\n$$T = v_0 \\times \\dfrac{1 - q^{6}}{1 - q} = 2 \\times \\dfrac{1 - 64}{1 - 2} = 2 \\times \\dfrac{-63}{-1} = 2 \\times 63 = 126.$$\n\nOn vérifie d'ailleurs directement : $T = 2 + 4 + 8 + 16 + 32 + 64 = 126$.\n\n**Comparaison.** D'après la question 4, $S = 308$. Donc $T = 126 < 308 = S$ : la somme des six premiers termes de $(v_n)$ est strictement inférieure à la somme des onze premiers termes de $(u_n)$."
+      }
+    ]
+  }
+]
