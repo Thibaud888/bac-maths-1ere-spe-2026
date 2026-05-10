@@ -23,8 +23,8 @@ export default function FormularyPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-3 p-6">
-      {formulas.map((formula) => (
-        <FormulaCard key={formula.id} formula={formula} />
+      {formulas.map((formula, idx) => (
+        <FormulaCard key={formula.id} formula={formula} index={idx + 1} />
       ))}
     </div>
   );

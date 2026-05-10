@@ -1,4 +1,4 @@
-import { Fragment, memo } from 'react';
+import { Fragment, memo, type ReactNode } from 'react';
 import { MathBlock } from './MathBlock';
 import { MathInline } from './MathInline';
 
@@ -47,20 +47,99 @@ function parseSegments(input: string): Segment[] {
   return segments;
 }
 
+const BOLD_RE = /\*\*([^*]+?)\*\*/g;
+
+function renderTextWithBold(text: string, keyPrefix: string): ReactNode[] {
+  const out: ReactNode[] = [];
+  let last = 0;
+  let match: RegExpExecArray | null;
+  let counter = 0;
+  BOLD_RE.lastIndex = 0;
+  while ((match = BOLD_RE.exec(text)) !== null) {
+    if (match.index > last) {
+      out.push(
+        <Fragment key={`${keyPrefix}-t${counter++}`}>
+          {text.slice(last, match.index)}
+        </Fragment>
+      );
+    }
+    out.push(<strong key={`${keyPrefix}-b${counter++}`}>{match[1]}</strong>);
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) {
+    out.push(
+      <Fragment key={`${keyPrefix}-t${counter++}`}>{text.slice(last)}</Fragment>
+    );
+  }
+  return out;
+}
+
+function renderInlineSegments(
+  segments: Segment[],
+  keyPrefix: string
+): ReactNode[] {
+  const out: ReactNode[] = [];
+  segments.forEach((segment, idx) => {
+    if (segment.kind === 'text') {
+      out.push(...renderTextWithBold(segment.value, `${keyPrefix}-${idx}`));
+      return;
+    }
+    if (segment.kind === 'inline') {
+      out.push(<MathInline key={`${keyPrefix}-${idx}`} expr={segment.value} />);
+      return;
+    }
+    out.push(<MathBlock key={`${keyPrefix}-${idx}`} expr={segment.value} />);
+  });
+  return out;
+}
+
+function hasBlockMarkdown(text: string): boolean {
+  if (text.includes('\n\n')) return true;
+  return text.split('\n').some((line) => /^- /.test(line));
+}
+
 function TextWithMathImpl({ text, className }: TextWithMathProps) {
-  const segments = parseSegments(text);
+  if (!hasBlockMarkdown(text)) {
+    const segments = parseSegments(text);
+    return (
+      <span className={className}>{renderInlineSegments(segments, 'i')}</span>
+    );
+  }
+
+  const blocks = text.split(/\n\n+/);
   return (
-    <span className={className}>
-      {segments.map((segment, idx) => {
-        if (segment.kind === 'text') {
-          return <Fragment key={idx}>{segment.value}</Fragment>;
+    <div className={className}>
+      {blocks.map((block, bIdx) => {
+        const lines = block.split('\n').filter((line) => line.length > 0);
+        const isList =
+          lines.length > 0 && lines.every((line) => line.startsWith('- '));
+        if (isList) {
+          return (
+            <ul
+              key={`b${bIdx}`}
+              className="my-2 ml-5 list-disc space-y-1 first:mt-0 last:mb-0"
+            >
+              {lines.map((line, lIdx) => (
+                <li key={`b${bIdx}-l${lIdx}`}>
+                  {renderInlineSegments(
+                    parseSegments(line.slice(2)),
+                    `b${bIdx}-l${lIdx}`
+                  )}
+                </li>
+              ))}
+            </ul>
+          );
         }
-        if (segment.kind === 'inline') {
-          return <MathInline key={idx} expr={segment.value} />;
-        }
-        return <MathBlock key={idx} expr={segment.value} />;
+        return (
+          <p
+            key={`b${bIdx}`}
+            className="my-2 first:mt-0 last:mb-0"
+          >
+            {renderInlineSegments(parseSegments(block), `b${bIdx}`)}
+          </p>
+        );
       })}
-    </span>
+    </div>
   );
 }
 

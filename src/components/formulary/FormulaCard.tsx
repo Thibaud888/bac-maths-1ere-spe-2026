@@ -1,31 +1,63 @@
 import { TextWithMath } from '@/components/math/TextWithMath';
 import type { Formula, FormulaLevel } from '@/lib/types';
 
-const levelStyle: Record<FormulaLevel, { label: string; className: string }> = {
+const levelStyle: Record<
+  FormulaLevel,
+  { label: string; chip: string; border: string; numBadge: string }
+> = {
   essentiel: {
     label: 'Essentiel',
-    className: 'bg-red-100 text-red-700',
+    chip: 'bg-red-100 text-red-700',
+    border: 'border-l-red-500',
+    numBadge: 'bg-red-500 text-white',
   },
   'a-connaitre': {
     label: 'À connaître',
-    className: 'bg-blue-100 text-blue-700',
+    chip: 'bg-blue-100 text-blue-700',
+    border: 'border-l-blue-500',
+    numBadge: 'bg-blue-500 text-white',
   },
   approfondissement: {
     label: 'Approfondissement',
-    className: 'bg-slate-200 text-slate-700',
+    chip: 'bg-amber-100 text-amber-700',
+    border: 'border-l-amber-500',
+    numBadge: 'bg-amber-500 text-white',
   },
 };
 
-export default function FormulaCard({ formula }: { formula: Formula }) {
+type FormulaCardProps = {
+  formula: Formula;
+  index: number;
+};
+
+export default function FormulaCard({ formula, index }: FormulaCardProps) {
   const level = levelStyle[formula.level];
   return (
-    <article className="rounded border border-slate-200 bg-white p-4 shadow-sm">
+    <article
+      className={[
+        'rounded border border-l-4 border-slate-200 bg-white p-4 shadow-sm',
+        level.border,
+      ].join(' ')}
+    >
       <header className="flex items-start justify-between gap-3">
-        <h3 className="text-sm font-semibold text-slate-900">{formula.title}</h3>
+        <div className="flex items-start gap-2">
+          <span
+            className={[
+              'flex h-6 w-6 flex-none items-center justify-center rounded-full text-xs font-semibold tabular-nums',
+              level.numBadge,
+            ].join(' ')}
+            aria-hidden="true"
+          >
+            {index}
+          </span>
+          <h3 className="text-sm font-semibold text-slate-900">
+            {formula.title}
+          </h3>
+        </div>
         <span
           className={[
             'rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap',
-            level.className,
+            level.chip,
           ].join(' ')}
         >
           {level.label}
@@ -37,10 +69,10 @@ export default function FormulaCard({ formula }: { formula: Formula }) {
       </div>
 
       {formula.conditions && (
-        <p className="mt-2 text-xs text-slate-500">
+        <div className="mt-2 text-xs text-slate-500">
           <span className="font-medium">Conditions : </span>
           <TextWithMath text={formula.conditions} />
-        </p>
+        </div>
       )}
 
       {formula.example && (
