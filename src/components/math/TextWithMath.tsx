@@ -131,12 +131,12 @@ function TextWithMathImpl({ text, className }: TextWithMathProps) {
           );
         }
         return (
-          <p
+          <div
             key={`b${bIdx}`}
             className="my-2 first:mt-0 last:mb-0"
           >
             {renderInlineSegments(parseSegments(block), `b${bIdx}`)}
-          </p>
+          </div>
         );
       })}
     </div>
