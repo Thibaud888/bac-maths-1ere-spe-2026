@@ -1,1 +1,264 @@
-[]
+[
+  {
+    "id": "e-derivation-001",
+    "chapter": "derivation",
+    "title": "Étude d'une fonction polynôme de degré 3",
+    "difficulty": 2,
+    "estimatedMinutes": 25,
+    "totalMarks": 4.5,
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par :\n\n$$f(x) = x^3 - 12x + 5.$$\n\nOn note $\\mathcal{C}_f$ sa courbe représentative dans un repère du plan.",
+    "tags": ["polynome", "variations", "tableau-de-variations", "tangente"],
+    "order": 10,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que $f$ est dérivable sur $\\mathbb{R}$ et calculer $f'(x)$ pour tout réel $x$.",
+        "marks": 1,
+        "hints": [
+          "Une fonction polynôme est dérivable sur $\\mathbb{R}$. Pour la dérivée, applique la linéarité et la formule $(x^n)' = n\\,x^{n-1}$ à chaque terme.",
+          "Dérive terme à terme : $(x^3)' = 3x^2$, $(-12x)' = -12$, $(5)' = 0$.",
+          "$f'(x) = 3x^2 - 12$."
+        ],
+        "expectedAnswer": "$f'(x) = 3x^2 - 12$",
+        "solution": "La fonction $f$ est une fonction polynôme, donc elle est dérivable sur $\\mathbb{R}$.\n\nPar linéarité de la dérivation et avec la formule $(x^n)' = n\\,x^{n-1}$, on a pour tout $x \\in \\mathbb{R}$ :\n$$f'(x) = 3x^2 - 12.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Factoriser $f'(x)$, puis étudier le signe de $f'(x)$ sur $\\mathbb{R}$.",
+        "marks": 1.5,
+        "hints": [
+          "On peut factoriser $f'(x)$ en mettant $3$ en facteur, puis en utilisant l'identité remarquable $a^2 - b^2 = (a - b)(a + b)$.",
+          "$f'(x) = 3(x^2 - 4) = 3(x - 2)(x + 2)$. Étudie le signe de chaque facteur, ou utilise les règles sur le signe d'un trinôme du second degré.",
+          "Le trinôme $x^2 - 4$ admet $-2$ et $2$ pour racines, et est positif à l'extérieur des racines (coefficient dominant $1 > 0$). Donc $f'(x) \\geq 0$ pour $x \\leq -2$ et $x \\geq 2$, et $f'(x) \\leq 0$ pour $-2 \\leq x \\leq 2$."
+        ],
+        "expectedAnswer": "$f'(x) = 3(x - 2)(x + 2)$ ; positif sur $]-\\infty\\,;\\,-2]$ et $[2\\,;\\,+\\infty[$, négatif sur $[-2\\,;\\,2]$.",
+        "solution": "**Factorisation.** On met $3$ en facteur et on reconnaît une identité remarquable :\n$$f'(x) = 3x^2 - 12 = 3(x^2 - 4) = 3(x - 2)(x + 2).$$\n\n**Étude du signe.** Le facteur $3$ est strictement positif, donc le signe de $f'(x)$ est celui de $(x - 2)(x + 2)$. C'est un trinôme du second degré de coefficient dominant $1 > 0$ et de racines $-2$ et $2$ : il est strictement positif à l'extérieur des racines et strictement négatif entre les racines.\n\nAinsi :\n- $f'(x) > 0$ pour $x \\in \\, ]-\\infty \\, ; \\, -2[ \\, \\cup \\, ]2 \\, ; \\, +\\infty[$ ;\n- $f'(x) = 0$ pour $x = -2$ ou $x = 2$ ;\n- $f'(x) < 0$ pour $x \\in \\, ]-2 \\, ; \\, 2[$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Dresser le tableau de variations de $f$ sur $\\mathbb{R}$ en précisant les valeurs de $f$ aux extremums.",
+        "marks": 1,
+        "hints": [
+          "Le sens de variation de $f$ se déduit du signe de $f'$ : $f$ est croissante là où $f' \\geq 0$, décroissante là où $f' \\leq 0$.",
+          "Calcule $f(-2)$ et $f(2)$ pour les valeurs aux extremums.",
+          "$f(-2) = -8 + 24 + 5 = 21$ (maximum local) et $f(2) = 8 - 24 + 5 = -11$ (minimum local)."
+        ],
+        "expectedAnswer": "Croissante sur $]-\\infty\\,;\\,-2]$, décroissante sur $[-2\\,;\\,2]$, croissante sur $[2\\,;\\,+\\infty[$. Maximum local $f(-2) = 21$, minimum local $f(2) = -11$.",
+        "solution": "D'après le signe de $f'$, $f$ est strictement croissante sur $]-\\infty \\, ; \\, -2]$, strictement décroissante sur $[-2 \\, ; \\, 2]$, et strictement croissante sur $[2 \\, ; \\, +\\infty[$.\n\n**Valeurs aux extremums :**\n- $f(-2) = (-2)^3 - 12 \\times (-2) + 5 = -8 + 24 + 5 = 21$.\n- $f(2) = 2^3 - 12 \\times 2 + 5 = 8 - 24 + 5 = -11$.\n\n**Tableau de variations :**\n\n| $x$ | $-\\infty$ | | $-2$ | | $2$ | | $+\\infty$ |\n|-----|-----------|---|------|---|-----|---|-----------|\n| $f'(x)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n| $f(x)$ | | $\\nearrow$ | $21$ | $\\searrow$ | $-11$ | $\\nearrow$ | |\n\nAinsi, $f$ admet un **maximum local** en $-2$ valant $21$, et un **minimum local** en $2$ valant $-11$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Déterminer une équation de la tangente $T$ à $\\mathcal{C}_f$ au point d'abscisse $a = 1$.",
+        "marks": 1,
+        "hints": [
+          "L'équation de la tangente au point d'abscisse $a$ est $y = f'(a)(x - a) + f(a)$. Calcule $f(1)$ et $f'(1)$.",
+          "$f(1) = 1 - 12 + 5 = -6$ et $f'(1) = 3 - 12 = -9$. Reporte ces valeurs dans la formule avec $a = 1$.",
+          "$y = -9(x - 1) + (-6) = -9x + 3$."
+        ],
+        "expectedAnswer": "$y = -9x + 3$",
+        "solution": "L'équation de la tangente à $\\mathcal{C}_f$ au point d'abscisse $a$ est :\n$$y = f'(a)(x - a) + f(a).$$\n\nOn calcule :\n- $f(1) = 1^3 - 12 \\times 1 + 5 = 1 - 12 + 5 = -6$ ;\n- $f'(1) = 3 \\times 1^2 - 12 = 3 - 12 = -9$.\n\nDonc l'équation de $T$ est :\n$$y = -9(x - 1) + (-6) = -9x + 9 - 6 = -9x + 3.$$\n\nAinsi, $T : y = -9x + 3$."
+      }
+    ]
+  },
+  {
+    "id": "e-derivation-002",
+    "chapter": "derivation",
+    "title": "Étude d'une fonction rationnelle et tangentes remarquables",
+    "difficulty": 2,
+    "estimatedMinutes": 30,
+    "totalMarks": 4.5,
+    "preamble": "On considère la fonction $f$ définie par :\n\n$$f(x) = \\dfrac{x^2 + 1}{x}.$$\n\nOn note $\\mathcal{C}_f$ sa courbe représentative dans un repère du plan.",
+    "tags": ["rationnelle", "quotient", "variations", "tangente"],
+    "order": 20,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Déterminer le domaine de définition $\\mathcal{D}_f$ de $f$.",
+        "marks": 0.5,
+        "hints": [
+          "Un quotient n'est défini que lorsque son dénominateur est non nul.",
+          "Ici le dénominateur est $x$ : il s'annule en $0$.",
+          "$\\mathcal{D}_f = \\mathbb{R}^* = \\, ]-\\infty \\, ; \\, 0[ \\, \\cup \\, ]0 \\, ; \\, +\\infty[$."
+        ],
+        "expectedAnswer": "$\\mathcal{D}_f = \\mathbb{R}^*$",
+        "solution": "La fonction $f$ est définie pour tout $x$ tel que son dénominateur $x$ n'est pas nul, c'est-à-dire pour tout $x \\neq 0$.\n\nDonc $\\mathcal{D}_f = \\mathbb{R}^* = \\, ]-\\infty \\, ; \\, 0[ \\, \\cup \\, ]0 \\, ; \\, +\\infty[$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Étude des variations de $f$.",
+        "marks": 2,
+        "hints": [
+          "Pour étudier les variations, on calcule $f'(x)$ via la formule du quotient, puis on étudie son signe.",
+          "Pose $u(x) = x^2 + 1$ et $v(x) = x$. Calcule $u'$, $v'$, puis applique $(u/v)' = (u'v - uv')/v^2$ et simplifie.",
+          "Tu devrais aboutir à $f'(x) = \\dfrac{x^2 - 1}{x^2} = \\dfrac{(x - 1)(x + 1)}{x^2}$."
+        ],
+        "solution": "Le détail est traité dans les sous-questions a) et b) ci-dessous : calcul de la dérivée mise sous forme factorisée, puis étude du signe et tableau de variations.",
+        "subquestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "statement": "Justifier que $f$ est dérivable sur $\\mathcal{D}_f$, calculer $f'(x)$ et le mettre sous la forme $f'(x) = \\dfrac{(x - 1)(x + 1)}{x^2}$.",
+            "marks": 1,
+            "hints": [
+              "Pose $u(x) = x^2 + 1$ et $v(x) = x$. Les fonctions $u$ et $v$ sont dérivables sur $\\mathbb{R}$, et $v$ ne s'annule pas sur $\\mathbb{R}^*$.",
+              "Calcule $u'(x) = 2x$ et $v'(x) = 1$, puis applique la formule du quotient.",
+              "Après simplification du numérateur, tu obtiens $f'(x) = \\dfrac{x^2 - 1}{x^2}$, qu'on factorise en $\\dfrac{(x - 1)(x + 1)}{x^2}$."
+            ],
+            "expectedAnswer": "$f'(x) = \\dfrac{(x - 1)(x + 1)}{x^2}$",
+            "solution": "On pose $u(x) = x^2 + 1$ et $v(x) = x$. Les fonctions $u$ et $v$ sont dérivables sur $\\mathbb{R}$, et $v$ ne s'annule pas sur $\\mathbb{R}^*$. Donc $f = \\dfrac{u}{v}$ est dérivable sur $\\mathbb{R}^*$.\n\nOn a $u'(x) = 2x$ et $v'(x) = 1$. D'après la formule du quotient :\n$$f'(x) = \\dfrac{u'(x) v(x) - u(x) v'(x)}{[v(x)]^2} = \\dfrac{2x \\times x - (x^2 + 1) \\times 1}{x^2} = \\dfrac{2x^2 - x^2 - 1}{x^2} = \\dfrac{x^2 - 1}{x^2}.$$\n\nEn appliquant l'identité remarquable $x^2 - 1 = (x - 1)(x + 1)$, on obtient :\n$$\\boxed{f'(x) = \\dfrac{(x - 1)(x + 1)}{x^2}}.$$"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "statement": "Étudier le signe de $f'(x)$ sur $\\mathcal{D}_f$, puis dresser le tableau de variations de $f$ en précisant les valeurs aux extremums.",
+            "marks": 1,
+            "hints": [
+              "Le dénominateur $x^2$ est strictement positif sur $\\mathbb{R}^*$, donc le signe de $f'(x)$ est celui du numérateur $(x - 1)(x + 1)$.",
+              "Étudie le signe du trinôme $(x - 1)(x + 1) = x^2 - 1$ (positif à l'extérieur des racines $-1$ et $1$, négatif entre). Calcule $f(-1)$ et $f(1)$.",
+              "$f$ croissante sur $]-\\infty\\,;\\,-1]$, décroissante sur $[-1\\,;\\,0[$ et sur $]0\\,;\\,1]$, croissante sur $[1\\,;\\,+\\infty[$. $f(-1) = -2$ (maximum local), $f(1) = 2$ (minimum local sur $]0\\,;\\,+\\infty[$)."
+            ],
+            "expectedAnswer": "Croissante sur $]-\\infty\\,;\\,-1]$, décroissante sur $[-1\\,;\\,0[$ et sur $]0\\,;\\,1]$, croissante sur $[1\\,;\\,+\\infty[$. $f(-1) = -2$, $f(1) = 2$.",
+            "solution": "Pour tout $x \\in \\mathbb{R}^*$, $x^2 > 0$, donc le signe de $f'(x) = \\dfrac{(x - 1)(x + 1)}{x^2}$ est celui de $(x - 1)(x + 1)$.\n\nC'est un trinôme du second degré de coefficient dominant $1 > 0$ et de racines $-1$ et $1$ : il est strictement positif à l'extérieur des racines et strictement négatif entre les racines.\n\nOn calcule les valeurs aux extremums :\n- $f(-1) = \\dfrac{(-1)^2 + 1}{-1} = \\dfrac{2}{-1} = -2$ ;\n- $f(1) = \\dfrac{1^2 + 1}{1} = \\dfrac{2}{1} = 2$.\n\n**Tableau de variations :**\n\n| $x$ | $-\\infty$ | | $-1$ | | $0$ | | $1$ | | $+\\infty$ |\n|-----|-----------|---|------|---|-----|---|-----|---|-----------|\n| $f'(x)$ | | $+$ | $0$ | $-$ | $\\Vert$ | $-$ | $0$ | $+$ | |\n| $f(x)$ | | $\\nearrow$ | $-2$ | $\\searrow$ | $\\Vert$ | $\\searrow$ | $2$ | $\\nearrow$ | |\n\nAinsi, $f$ admet un **maximum local** en $-1$ valant $-2$ (sur $]-\\infty \\, ; \\, 0[$), et un **minimum local** en $1$ valant $2$ (sur $]0 \\, ; \\, +\\infty[$)."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Étude de tangentes à la courbe $\\mathcal{C}_f$.",
+        "marks": 2,
+        "hints": [
+          "Pour une équation de tangente, applique la formule $y = f'(a)(x - a) + f(a)$ avec la valeur de $a$ demandée.",
+          "Pour une tangente horizontale, cherche les $a$ tels que $f'(a) = 0$.",
+          "Tu disposes déjà de $f'(x) = \\dfrac{(x - 1)(x + 1)}{x^2}$ pour faciliter les calculs."
+        ],
+        "solution": "Le détail est traité dans les sous-questions a), b) et c) ci-dessous : calcul de $f(2)$ et $f'(2)$, équation de la tangente au point d'abscisse $2$, puis recherche des abscisses où la tangente est horizontale.",
+        "subquestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "statement": "Calculer $f(2)$ et $f'(2)$.",
+            "marks": 0.5,
+            "hints": [
+              "Remplace $x$ par $2$ dans les expressions de $f$ et $f'$.",
+              "$f(2) = \\dfrac{4 + 1}{2}$ ; $f'(2) = \\dfrac{(2-1)(2+1)}{4}$.",
+              "$f(2) = \\dfrac{5}{2}$ et $f'(2) = \\dfrac{3}{4}$."
+            ],
+            "expectedAnswer": "$f(2) = \\dfrac{5}{2}$ et $f'(2) = \\dfrac{3}{4}$",
+            "solution": "$f(2) = \\dfrac{2^2 + 1}{2} = \\dfrac{5}{2}$.\n\n$f'(2) = \\dfrac{(2 - 1)(2 + 1)}{2^2} = \\dfrac{1 \\times 3}{4} = \\dfrac{3}{4}$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "statement": "En déduire une équation de la tangente $T$ à $\\mathcal{C}_f$ au point d'abscisse $a = 2$.",
+            "marks": 1,
+            "hints": [
+              "Reporte $f(2)$ et $f'(2)$ dans la formule $y = f'(a)(x - a) + f(a)$ avec $a = 2$.",
+              "$y = \\dfrac{3}{4}(x - 2) + \\dfrac{5}{2}$. Développe pour simplifier.",
+              "$y = \\dfrac{3}{4}x - \\dfrac{3}{2} + \\dfrac{5}{2} = \\dfrac{3}{4}x + 1$."
+            ],
+            "expectedAnswer": "$y = \\dfrac{3}{4}x + 1$",
+            "solution": "L'équation de la tangente à $\\mathcal{C}_f$ au point d'abscisse $a = 2$ est :\n$$y = f'(2)(x - 2) + f(2) = \\dfrac{3}{4}(x - 2) + \\dfrac{5}{2}.$$\n\nOn développe :\n$$y = \\dfrac{3}{4}x - \\dfrac{6}{4} + \\dfrac{5}{2} = \\dfrac{3}{4}x - \\dfrac{3}{2} + \\dfrac{5}{2} = \\dfrac{3}{4}x + \\dfrac{2}{2} = \\dfrac{3}{4}x + 1.$$\n\nAinsi, $T : y = \\dfrac{3}{4}x + 1$."
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "statement": "Déterminer les abscisses des points de $\\mathcal{C}_f$ en lesquels la tangente est horizontale.",
+            "marks": 0.5,
+            "hints": [
+              "Une tangente est horizontale lorsque son coefficient directeur est nul, c'est-à-dire $f'(a) = 0$.",
+              "$f'(a) = \\dfrac{(a - 1)(a + 1)}{a^2} = 0$ équivaut à annuler le numérateur (le dénominateur ne s'annule pas sur $\\mathcal{D}_f$).",
+              "$(a - 1)(a + 1) = 0$ donne $a = 1$ ou $a = -1$."
+            ],
+            "expectedAnswer": "$a = 1$ et $a = -1$",
+            "solution": "La tangente à $\\mathcal{C}_f$ au point d'abscisse $a$ est horizontale si et seulement si $f'(a) = 0$.\n\nOr, pour $a \\in \\mathcal{D}_f$, $a^2 > 0$, donc :\n$$f'(a) = 0 \\iff (a - 1)(a + 1) = 0 \\iff a = 1 \\text{ ou } a = -1.$$\n\nIl y a donc **deux** points de $\\mathcal{C}_f$ en lesquels la tangente est horizontale : le point d'abscisse $-1$ (de coordonnées $(-1 \\, ; \\, -2)$) et le point d'abscisse $1$ (de coordonnées $(1 \\, ; \\, 2)$)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "e-derivation-003",
+    "chapter": "derivation",
+    "title": "Optimisation : volume maximal d'une boîte sans couvercle",
+    "difficulty": 3,
+    "estimatedMinutes": 35,
+    "totalMarks": 5,
+    "preamble": "On dispose d'une plaque de carton carrée de côté $12$ cm. Pour fabriquer une boîte sans couvercle, on découpe à chacun des quatre coins de la plaque un carré de côté $x$ cm, puis on relève les quatre rabats obtenus pour former la boîte.\n\nLa hauteur de la boîte est donc égale à $x$ cm, et sa base est un carré dont on note $c$ la longueur du côté. La variable $x$ vérifie $0 < x < 6$.\n\nOn note $V(x)$ le volume de la boîte, exprimé en cm$^3$.",
+    "tags": ["optimisation", "extremum", "modelisation", "polynome"],
+    "order": 30,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Exprimer la longueur $c$ du côté de la base en fonction de $x$, puis justifier que pour tout $x \\in \\, ]0 \\, ; \\, 6[$ :\n\n$$V(x) = x(12 - 2x)^2.$$",
+        "marks": 1,
+        "hints": [
+          "La plaque mesure $12$ cm de côté. À chaque coin on retire un carré de côté $x$, donc on retire $2x$ sur chaque côté de la plaque.",
+          "Le côté de la base de la boîte vaut donc $c = 12 - 2x$ cm. Le volume d'un parallélépipède rectangle est : aire de la base $\\times$ hauteur.",
+          "$V(x) = c^2 \\times x = (12 - 2x)^2 \\times x$."
+        ],
+        "expectedAnswer": "$c = 12 - 2x$ et $V(x) = x(12 - 2x)^2$",
+        "solution": "**Longueur du côté de la base.** Le carré initial a un côté de $12$ cm. À chaque extrémité de chaque côté, on découpe un carré de côté $x$, donc on retire $2x$ cm sur chaque côté de la plaque. Une fois les rabats relevés, le côté du carré formant la base de la boîte vaut :\n$$c = 12 - 2x \\text{ cm}.$$\n\nLa condition $0 < x < 6$ assure que $c > 0$.\n\n**Volume de la boîte.** La base est un carré de côté $c$, donc son aire vaut $c^2 = (12 - 2x)^2$ cm$^2$. La hauteur de la boîte est $x$ cm. Le volume d'un parallélépipède rectangle est :\n$$V(x) = \\text{aire de la base} \\times \\text{hauteur} = (12 - 2x)^2 \\times x.$$\n\nAinsi, pour tout $x \\in \\, ]0 \\, ; \\, 6[$ :\n$$V(x) = x(12 - 2x)^2.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Développer l'expression de $V(x)$, puis justifier que $V$ est dérivable sur $]0 \\, ; \\, 6[$ et calculer $V'(x)$.",
+        "marks": 1,
+        "hints": [
+          "Utilise l'identité remarquable $(a - b)^2 = a^2 - 2ab + b^2$ pour développer $(12 - 2x)^2$, puis distribue par $x$.",
+          "$(12 - 2x)^2 = 144 - 48x + 4x^2$, donc $V(x) = x(144 - 48x + 4x^2) = 144x - 48x^2 + 4x^3$. Dérive terme à terme.",
+          "$V'(x) = 12x^2 - 96x + 144$."
+        ],
+        "expectedAnswer": "$V(x) = 4x^3 - 48x^2 + 144x$ ; $V'(x) = 12x^2 - 96x + 144$",
+        "solution": "**Développement.** On développe $(12 - 2x)^2$ à l'aide de l'identité remarquable $(a - b)^2 = a^2 - 2ab + b^2$ :\n$$(12 - 2x)^2 = 12^2 - 2 \\times 12 \\times 2x + (2x)^2 = 144 - 48x + 4x^2.$$\n\nDonc :\n$$V(x) = x \\times (144 - 48x + 4x^2) = 144x - 48x^2 + 4x^3.$$\n\nAutrement dit, $V(x) = 4x^3 - 48x^2 + 144x$.\n\n**Dérivée.** $V$ est une fonction polynôme, donc elle est dérivable sur $\\mathbb{R}$, et en particulier sur $]0 \\, ; \\, 6[$. Par linéarité et avec la formule $(x^n)' = n\\,x^{n-1}$ :\n$$V'(x) = 12x^2 - 96x + 144.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Montrer que pour tout $x \\in \\mathbb{R}$, $V'(x) = 12(x - 2)(x - 6)$, puis étudier le signe de $V'(x)$ sur $]0 \\, ; \\, 6[$.",
+        "marks": 1,
+        "hints": [
+          "Commence par factoriser $12$ dans $V'(x)$. Tu obtiens un trinôme $x^2 - 8x + 12$ dont tu peux chercher les racines (somme $= 8$, produit $= 12$).",
+          "Les racines du trinôme $x^2 - 8x + 12$ sont $2$ et $6$ (vérification : $2 + 6 = 8$ et $2 \\times 6 = 12$). Donc $x^2 - 8x + 12 = (x - 2)(x - 6)$. Étudie ensuite le signe du produit sur $]0 \\, ; \\, 6[$ (où $x - 6 < 0$).",
+          "Sur $]0 \\, ; \\, 6[$ : $x - 6 < 0$ ; $x - 2 < 0$ si $x < 2$, $x - 2 > 0$ si $x > 2$. Donc $V'(x) > 0$ sur $]0 \\, ; \\, 2[$ et $V'(x) < 0$ sur $]2 \\, ; \\, 6[$."
+        ],
+        "expectedAnswer": "$V'(x) = 12(x - 2)(x - 6)$ ; positif sur $]0\\,;\\,2[$, nul en $2$, négatif sur $]2\\,;\\,6[$.",
+        "solution": "**Factorisation.** On met $12$ en facteur :\n$$V'(x) = 12x^2 - 96x + 144 = 12(x^2 - 8x + 12).$$\n\nOn cherche les racines du trinôme $x^2 - 8x + 12$. La somme des racines vaut $8$ et leur produit vaut $12$ : on reconnaît $2$ et $6$ (vérification : $2 + 6 = 8$ et $2 \\times 6 = 12$).\n\nDonc $x^2 - 8x + 12 = (x - 2)(x - 6)$, et :\n$$V'(x) = 12(x - 2)(x - 6).$$\n\n**Signe sur $]0 \\, ; \\, 6[$.** Le facteur $12$ est strictement positif. Pour $x \\in \\, ]0 \\, ; \\, 6[$, on a $x - 6 < 0$. Le facteur $x - 2$ s'annule en $2$ : il est négatif sur $]0 \\, ; \\, 2[$ et positif sur $]2 \\, ; \\, 6[$.\n\nLa règle des signes donne :\n- sur $]0 \\, ; \\, 2[$ : $(x - 2) < 0$ et $(x - 6) < 0$, donc le produit est positif : $V'(x) > 0$ ;\n- en $x = 2$ : $V'(2) = 0$ ;\n- sur $]2 \\, ; \\, 6[$ : $(x - 2) > 0$ et $(x - 6) < 0$, donc le produit est négatif : $V'(x) < 0$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Dresser le tableau de variations de $V$ sur $]0 \\, ; \\, 6[$.",
+        "marks": 1,
+        "hints": [
+          "Reporte le signe de $V'$ dans un tableau de variations sur $]0 \\, ; \\, 6[$.",
+          "Calcule $V(2)$ pour préciser le maximum.",
+          "$V$ croissante sur $]0 \\, ; \\, 2]$, décroissante sur $[2 \\, ; \\, 6[$. $V(2) = 2 \\times 8^2 = 128$."
+        ],
+        "expectedAnswer": "$V$ croissante sur $]0\\,;\\,2]$, décroissante sur $[2\\,;\\,6[$. $V(2) = 128$.",
+        "solution": "D'après le signe de $V'$, la fonction $V$ est strictement croissante sur $]0 \\, ; \\, 2]$ et strictement décroissante sur $[2 \\, ; \\, 6[$.\n\nOn calcule la valeur en $x = 2$ :\n$$V(2) = 2 \\times (12 - 2 \\times 2)^2 = 2 \\times 8^2 = 2 \\times 64 = 128.$$\n\n**Tableau de variations :**\n\n| $x$ | $0$ | | $2$ | | $6$ |\n|-----|-----|---|-----|---|-----|\n| $V'(x)$ | | $+$ | $0$ | $-$ | |\n| $V(x)$ | | $\\nearrow$ | $128$ | $\\searrow$ | |\n\nAinsi, $V$ admet un **maximum** sur $]0 \\, ; \\, 6[$ en $x = 2$, et ce maximum vaut $128$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "statement": "En déduire la valeur de $x$ pour laquelle le volume de la boîte est maximal, ainsi que la valeur de ce volume maximal. Préciser alors les dimensions de la boîte.",
+        "marks": 1,
+        "hints": [
+          "Le tableau de variations de la question précédente donne directement la valeur de $x$ où le volume est maximal ainsi que ce maximum.",
+          "Rappelle-toi que la base est un carré de côté $12 - 2x$ et que la hauteur vaut $x$. Substitue $x = 2$.",
+          "Pour $x = 2$ : volume max $= 128$ cm$^3$, hauteur $= 2$ cm, côté de la base $= 8$ cm."
+        ],
+        "expectedAnswer": "Volume maximal $V(2) = 128$ cm$^3$, atteint pour $x = 2$ cm. Boîte de base carrée de côté $8$ cm et de hauteur $2$ cm.",
+        "solution": "D'après le tableau de variations, le volume $V(x)$ atteint son **maximum** sur $]0 \\, ; \\, 6[$ en $x = 2$, et ce maximum vaut $128$.\n\nLes dimensions de la boîte correspondante sont :\n- hauteur : $x = 2$ cm ;\n- côté de la base : $12 - 2 \\times 2 = 8$ cm.\n\n**Conclusion.** Pour obtenir un volume maximal, il faut découper aux coins de la plaque des carrés de côté $\\boxed{2 \\text{ cm}}$. La boîte obtenue, de base carrée $8 \\text{ cm} \\times 8 \\text{ cm}$ et de hauteur $2 \\text{ cm}$, a alors un volume maximal de $\\boxed{128 \\text{ cm}^3}$."
+      }
+    ]
+  }
+]
