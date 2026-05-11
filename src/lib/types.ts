@@ -1,3 +1,7 @@
+import type { Figure } from './figure-types';
+
+export type { Figure } from './figure-types';
+
 export type ChapterSlug =
   | 'suites'
   | 'second-degre'
@@ -67,6 +71,7 @@ export type ClassicQuestion = {
   hints: string[];
   expectedAnswer?: string;
   solution: string;
+  figure?: Figure;
 };
 
 export type ClassicExercise = {
@@ -77,6 +82,7 @@ export type ClassicExercise = {
   estimatedMinutes: number;
   prerequisites?: string[];
   preamble?: string;
+  figure?: Figure;
   questions: ClassicQuestion[];
   tags?: string[];
   order?: number;
@@ -90,6 +96,7 @@ export type ExamSubquestion = {
   hints: string[];
   expectedAnswer?: string;
   solution: string;
+  figure?: Figure;
 };
 
 export type ExamQuestion = {
@@ -101,12 +108,7 @@ export type ExamQuestion = {
   hints: string[];
   expectedAnswer?: string;
   solution: string;
-};
-
-export type ExamFigure = {
-  type: 'jsxgraph' | 'image';
-  data: Record<string, unknown>;
-  caption?: string;
+  figure?: Figure;
 };
 
 export type ExamExercise = {
@@ -118,7 +120,7 @@ export type ExamExercise = {
   totalMarks: number;
   inspiredBy?: string;
   preamble?: string;
-  figure?: ExamFigure;
+  figure?: Figure;
   questions: ExamQuestion[];
   tags?: string[];
   order?: number;

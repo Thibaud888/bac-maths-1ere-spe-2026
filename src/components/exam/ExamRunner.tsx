@@ -1,3 +1,4 @@
+import { FigureRenderer } from '@/components/figures';
 import { TextWithMath } from '@/components/math/TextWithMath';
 import HintSystem from '@/components/shared/HintSystem';
 import Timer from '@/components/shared/Timer';
@@ -50,6 +51,7 @@ export default function ExamRunner({ exercise, onClose }: ExamRunnerProps) {
           <TextWithMath text={exercise.preamble} />
         </div>
       )}
+      {exercise.figure && <FigureRenderer figure={exercise.figure} />}
 
       <ol className="mt-6 space-y-6">
         {exercise.questions.map((question) => (
@@ -107,6 +109,7 @@ function QuestionBlock({
       <div className="mt-1 text-sm leading-relaxed text-slate-700">
         <TextWithMath text={question.statement} />
       </div>
+      {question.figure && <FigureRenderer figure={question.figure} />}
       {(!question.subquestions || question.subquestions.length === 0) && (
         <div className="mt-3">
           <HintSystem
@@ -146,6 +149,7 @@ function SubQuestionBlock({
       <div className="mt-1 text-sm leading-relaxed text-slate-700">
         <TextWithMath text={sub.statement} />
       </div>
+      {sub.figure && <FigureRenderer figure={sub.figure} />}
       <div className="mt-3">
         <HintSystem
           hints={sub.hints}

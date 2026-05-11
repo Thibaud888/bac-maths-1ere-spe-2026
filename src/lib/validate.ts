@@ -3,6 +3,7 @@ import formulaSchema from '../../schemas/formula.schema.json';
 import automatismSchema from '../../schemas/automatism.schema.json';
 import classicSchema from '../../schemas/classic-exercise.schema.json';
 import examSchema from '../../schemas/exam-exercise.schema.json';
+import figureSchema from '../../schemas/figure.schema.json';
 import type {
   Automatism,
   ClassicExercise,
@@ -11,6 +12,7 @@ import type {
 } from './types';
 
 const ajv = new Ajv({ allErrors: true, strict: false });
+ajv.addSchema(figureSchema, 'figure.schema.json');
 
 export const validateFormula: ValidateFunction<Formula> =
   ajv.compile<Formula>(formulaSchema);
