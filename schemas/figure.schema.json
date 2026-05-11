@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "figure.schema.json",
+  "title": "Figure",
+  "description": "Figure attachée à un exercice, une question ou une sous-question. Types supportés : image (SVG/PNG sous public/figures/), tree (arbre pondéré rendu en SVG). Le type 'jsxgraph' est réservé pour une phase future.",
+  "type": "object",
+  "required": ["type", "data"],
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["image", "tree"]
+    },
+    "data": {
+      "type": "object"
+    },
+    "caption": {
+      "type": "string",
+      "description": "Légende affichée sous la figure (texte simple, pas de LaTeX)."
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "type": {"const": "image"},
+        "data": {
+          "type": "object",
+          "required": ["src", "alt"],
+          "additionalProperties": false,
+          "properties": {
+            "src": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]*/[a-zA-Z0-9._-]+\\.(svg|png|webp|jpg|jpeg)$",
+              "description": "Chemin relatif sous public/figures/. Format : <chapitre>/<nom>.<ext>. Ex: probas-cond/test-medical.svg"
+            },
+            "alt": {
+              "type": "string",
+              "minLength": 3,
+              "description": "Texte alternatif pour l'accessibilité. Obligatoire."
+            },
+            "width": {
+              "type": "integer",
+              "minimum": 50,
+              "maximum": 1200,
+              "description": "Largeur en pixels (optionnel, pour cadrage CSS)."
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 50,
+              "maximum": 1200,
+              "description": "Hauteur en pixels (optionnel)."
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {"const": "tree"},
+        "data": {
+          "type": "object",
+          "required": ["root"],
+          "additionalProperties": false,
+          "properties": {
+            "root": {"$ref": "#/$defs/treeNode"},
+            "orientation": {
+              "type": "string",
+              "enum": ["horizontal", "vertical"],
+              "description": "Direction du déploiement de l'arbre. Défaut : horizontal (gauche → droite)."
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "treeNode": {
+      "type": "object",
+      "required": ["label"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "Étiquette du nœud (peut contenir du LaTeX inline avec $...$). Pour la racine, mettre une chaîne vide ou un libellé d'introduction."
+        },
+        "weight": {
+          "type": "string",
+          "description": "Étiquette de l'arête menant à ce nœud (typiquement une probabilité, peut contenir du LaTeX inline). Absent pour la racine."
+        },
+        "children": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/treeNode"},
+          "description": "Sous-nœuds. Absent ou vide pour une feuille."
+        }
+      }
+    }
+  }
+}

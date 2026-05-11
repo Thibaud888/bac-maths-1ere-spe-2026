@@ -59,13 +59,7 @@
       "description": "Énoncé d'introduction commun (contexte, notations, figure éventuelle)."
     },
     "figure": {
-      "type": "object",
-      "description": "Figure JSXGraph optionnelle (pour géométrie).",
-      "properties": {
-        "type": {"type": "string", "enum": ["jsxgraph", "image"]},
-        "data": {"type": "object", "description": "Spec JSXGraph ou URL d'image"},
-        "caption": {"type": "string"}
-      }
+      "$ref": "figure.schema.json"
     },
     "questions": {
       "type": "array",
@@ -108,7 +102,8 @@
                   "maxItems": 3
                 },
                 "expectedAnswer": {"type": "string"},
-                "solution": {"type": "string", "minLength": 10}
+                "solution": {"type": "string", "minLength": 10},
+                "figure": {"$ref": "figure.schema.json"}
               }
             }
           },
@@ -124,7 +119,8 @@
             "type": "string",
             "minLength": 10,
             "description": "Correction rédigée, conforme aux attendus du bac."
-          }
+          },
+          "figure": {"$ref": "figure.schema.json"}
         }
       }
     },

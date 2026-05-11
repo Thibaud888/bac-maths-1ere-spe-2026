@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FigureRenderer } from '@/components/figures';
 import HintSystem from '@/components/shared/HintSystem';
 import { TextWithMath } from '@/components/math/TextWithMath';
 import type { ClassicExercise } from '@/lib/types';
@@ -55,6 +56,7 @@ export default function ExerciseRunner({
           <TextWithMath text={exercise.preamble} />
         </div>
       )}
+      {exercise.figure && <FigureRenderer figure={exercise.figure} />}
 
       <div className="mt-5">
         <p className="text-sm font-semibold text-slate-900">
@@ -63,6 +65,7 @@ export default function ExerciseRunner({
         <div className="mt-1 text-sm leading-relaxed text-slate-700">
           <TextWithMath text={question.statement} />
         </div>
+        {question.figure && <FigureRenderer figure={question.figure} />}
       </div>
 
       <div className="mt-4">

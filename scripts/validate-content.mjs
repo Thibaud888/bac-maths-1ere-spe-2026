@@ -15,6 +15,11 @@ const root = join(__dirname, '..');
 
 const ajv = new Ajv({ allErrors: true, strict: false });
 
+const figureSchema = JSON.parse(
+  readFileSync(join(root, 'schemas', 'figure.schema.json'), 'utf8')
+);
+ajv.addSchema(figureSchema, 'figure.schema.json');
+
 const schemaFiles = {
   formulas: 'formula.schema.json',
   automatisms: 'automatism.schema.json',
