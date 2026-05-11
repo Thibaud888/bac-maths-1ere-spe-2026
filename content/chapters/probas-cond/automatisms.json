@@ -1,1 +1,279 @@
-[]
+[
+  {
+    "id": "a-pc-conditionnelle-direct",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $P(B) = 0{,}5$ et $P(A \\cap B) = 0{,}2$. Que vaut $P_B(A)$ ?",
+    "choices": ["$0{,}1$", "$0{,}25$", "$0{,}4$", "$0{,}7$"],
+    "answer": 2,
+    "explanation": "Par définition : $P_B(A) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0{,}2}{0{,}5} = 0{,}4$.",
+    "difficulty": 1,
+    "tags": ["probabilite-conditionnelle", "definition"]
+  },
+  {
+    "id": "a-pc-conditionnelle-fraction",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $P(A) = \\dfrac{1}{4}$ et $P(A \\cap B) = \\dfrac{1}{8}$. Que vaut $P_A(B)$ ?",
+    "choices": [
+      "$\\dfrac{1}{2}$",
+      "$\\dfrac{1}{4}$",
+      "$\\dfrac{1}{8}$",
+      "$\\dfrac{1}{32}$"
+    ],
+    "answer": 0,
+    "explanation": "$P_A(B) = \\dfrac{P(A \\cap B)}{P(A)} = \\dfrac{1/8}{1/4} = \\dfrac{1}{8} \\times \\dfrac{4}{1} = \\dfrac{1}{2}$.",
+    "difficulty": 1,
+    "tags": ["probabilite-conditionnelle", "fractions"]
+  },
+  {
+    "id": "a-pc-conditionnelle-numeric",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "numeric",
+    "statement": "On donne $P(B) = 0{,}4$ et $P(A \\cap B) = 0{,}1$. Calculer $P_B(A)$.",
+    "answer": 0.25,
+    "tolerance": 0.01,
+    "explanation": "$P_B(A) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0{,}1}{0{,}4} = \\dfrac{1}{4} = 0{,}25$.",
+    "difficulty": 1,
+    "tags": ["probabilite-conditionnelle", "definition"]
+  },
+  {
+    "id": "a-pc-intersection-produit",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $P(A) = 0{,}4$ et $P_A(B) = 0{,}5$. Que vaut $P(A \\cap B)$ ?",
+    "choices": ["$0{,}9$", "$0{,}1$", "$0{,}2$", "$0{,}8$"],
+    "answer": 2,
+    "explanation": "Formule de l'intersection : $P(A \\cap B) = P(A) \\times P_A(B) = 0{,}4 \\times 0{,}5 = 0{,}2$.",
+    "difficulty": 1,
+    "tags": ["intersection", "produit"]
+  },
+  {
+    "id": "a-pc-intersection-numeric",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "numeric",
+    "statement": "On donne $P(B) = 0{,}6$ et $P_B(A) = 0{,}5$. Calculer $P(A \\cap B)$.",
+    "answer": 0.3,
+    "tolerance": 0.01,
+    "explanation": "$P(A \\cap B) = P(B) \\times P_B(A) = 0{,}6 \\times 0{,}5 = 0{,}3$.",
+    "difficulty": 1,
+    "tags": ["intersection", "produit"]
+  },
+  {
+    "id": "a-pc-reunion-simple",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $P(A) = 0{,}5$, $P(B) = 0{,}4$ et $P(A \\cap B) = 0{,}2$. Que vaut $P(A \\cup B)$ ?",
+    "choices": ["$0{,}9$", "$1{,}1$", "$0{,}7$", "$0{,}1$"],
+    "answer": 2,
+    "explanation": "$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0{,}5 + 0{,}4 - 0{,}2 = 0{,}7$.",
+    "difficulty": 1,
+    "tags": ["reunion", "formule-crible"]
+  },
+  {
+    "id": "a-pc-reunion-incompatibles",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Les événements $A$ et $B$ sont incompatibles avec $P(A) = 0{,}3$ et $P(B) = 0{,}45$. Que vaut $P(A \\cup B)$ ?",
+    "choices": ["$0{,}15$", "$0{,}75$", "$0{,}135$", "$0{,}5$"],
+    "answer": 1,
+    "explanation": "Pour des événements incompatibles, $A \\cap B = \\emptyset$ donc $P(A \\cap B) = 0$ et $P(A \\cup B) = P(A) + P(B) = 0{,}3 + 0{,}45 = 0{,}75$.",
+    "difficulty": 2,
+    "tags": ["reunion", "incompatibles"]
+  },
+  {
+    "id": "a-pc-arbre-somme-noeud",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Dans un arbre pondéré, on lit $P_B(A) = 0{,}3$ sur l'une des deux branches issues du nœud $B$. Que vaut $P_B(\\overline{A})$ sur la branche complémentaire ?",
+    "choices": ["$0{,}3$", "$0{,}7$", "$-0{,}3$", "$1{,}3$"],
+    "answer": 1,
+    "explanation": "Sur les deux branches issues du nœud $B$, les probabilités conditionnelles ont pour somme $1$ : $P_B(A) + P_B(\\overline{A}) = 1$, donc $P_B(\\overline{A}) = 1 - 0{,}3 = 0{,}7$.",
+    "difficulty": 1,
+    "tags": ["arbre-pondere", "somme-noeud", "contraire"]
+  },
+  {
+    "id": "a-pc-arbre-produit-chemin",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Dans un arbre pondéré à deux niveaux, on lit $P(B) = 0{,}4$ sur la première branche, puis $P_B(A) = 0{,}25$ sur la sous-branche menant à $A$. Que vaut $P(B \\cap A)$ ?",
+    "choices": ["$0{,}65$", "$0{,}625$", "$0{,}1$", "$0{,}15$"],
+    "answer": 2,
+    "explanation": "Règle du produit le long d'un chemin : $P(B \\cap A) = P(B) \\times P_B(A) = 0{,}4 \\times 0{,}25 = 0{,}1$.",
+    "difficulty": 1,
+    "tags": ["arbre-pondere", "produit", "chemin"]
+  },
+  {
+    "id": "a-pc-arbre-produit-fraction",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Dans un arbre, on lit $P(B) = \\dfrac{1}{3}$ puis, sur la sous-branche, $P_B(A) = \\dfrac{3}{5}$. Que vaut $P(B \\cap A)$ ?",
+    "choices": [
+      "$\\dfrac{1}{5}$",
+      "$\\dfrac{3}{8}$",
+      "$\\dfrac{14}{15}$",
+      "$\\dfrac{4}{15}$"
+    ],
+    "answer": 0,
+    "explanation": "$P(B \\cap A) = P(B) \\times P_B(A) = \\dfrac{1}{3} \\times \\dfrac{3}{5} = \\dfrac{3}{15} = \\dfrac{1}{5}$.",
+    "difficulty": 2,
+    "tags": ["arbre-pondere", "produit", "fractions"]
+  },
+  {
+    "id": "a-pc-probas-totales-binaire",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $P(B) = 0{,}4$, $P_B(A) = 0{,}5$ et $P_{\\overline{B}}(A) = 0{,}25$. Que vaut $P(A)$ ?",
+    "choices": ["$0{,}75$", "$0{,}35$", "$0{,}5$", "$0{,}125$"],
+    "answer": 1,
+    "explanation": "Formule des probabilités totales : $P(A) = P(B) \\times P_B(A) + P(\\overline{B}) \\times P_{\\overline{B}}(A) = 0{,}4 \\times 0{,}5 + 0{,}6 \\times 0{,}25 = 0{,}2 + 0{,}15 = 0{,}35$.",
+    "difficulty": 2,
+    "tags": ["probabilites-totales", "arbre"]
+  },
+  {
+    "id": "a-pc-probas-totales-numeric",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "numeric",
+    "statement": "On donne $P(B) = 0{,}3$, $P_B(A) = 0{,}4$ et $P_{\\overline{B}}(A) = 0{,}2$. Calculer $P(A)$.",
+    "answer": 0.26,
+    "tolerance": 0.01,
+    "explanation": "$P(A) = P(B) \\times P_B(A) + P(\\overline{B}) \\times P_{\\overline{B}}(A) = 0{,}3 \\times 0{,}4 + 0{,}7 \\times 0{,}2 = 0{,}12 + 0{,}14 = 0{,}26$.",
+    "difficulty": 2,
+    "tags": ["probabilites-totales"]
+  },
+  {
+    "id": "a-pc-probas-totales-symetriques",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $P(B) = 0{,}5$, $P_B(A) = 0{,}8$ et $P_{\\overline{B}}(A) = 0{,}4$. Que vaut $P(A)$ ?",
+    "choices": ["$1{,}2$", "$0{,}6$", "$0{,}4$", "$0{,}32$"],
+    "answer": 1,
+    "explanation": "$P(A) = 0{,}5 \\times 0{,}8 + 0{,}5 \\times 0{,}4 = 0{,}4 + 0{,}2 = 0{,}6$.",
+    "difficulty": 2,
+    "tags": ["probabilites-totales"]
+  },
+  {
+    "id": "a-pc-independance-verification-oui",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $P(A) = 0{,}4$, $P(B) = 0{,}5$ et $P(A \\cap B) = 0{,}2$. Les événements $A$ et $B$ sont-ils indépendants ?",
+    "choices": [
+      "Oui, car $P(A) \\times P(B) = P(A \\cap B)$",
+      "Non, car $P(A \\cap B) \\neq P(A) + P(B)$",
+      "Non, car $P(A) \\neq P(B)$",
+      "On ne peut pas conclure"
+    ],
+    "answer": 0,
+    "explanation": "Test d'indépendance : $P(A) \\times P(B) = 0{,}4 \\times 0{,}5 = 0{,}2$, qui est bien égal à $P(A \\cap B)$. Donc $A$ et $B$ sont indépendants.",
+    "difficulty": 2,
+    "tags": ["independance", "test"]
+  },
+  {
+    "id": "a-pc-independance-verification-non",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $P(A) = 0{,}3$, $P(B) = 0{,}5$ et $P(A \\cap B) = 0{,}2$. Les événements $A$ et $B$ sont-ils indépendants ?",
+    "choices": [
+      "Oui",
+      "Non, car $P(A) \\times P(B) \\neq P(A \\cap B)$",
+      "Oui, car $P(A) + P(B) > P(A \\cap B)$",
+      "On ne peut pas conclure"
+    ],
+    "answer": 1,
+    "explanation": "$P(A) \\times P(B) = 0{,}3 \\times 0{,}5 = 0{,}15$, qui est différent de $P(A \\cap B) = 0{,}2$. Donc $A$ et $B$ ne sont pas indépendants.",
+    "difficulty": 2,
+    "tags": ["independance", "test"]
+  },
+  {
+    "id": "a-pc-independance-calcul-pb",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "$A$ et $B$ sont indépendants. On donne $P(A) = 0{,}4$ et $P(A \\cap B) = 0{,}1$. Que vaut $P(B)$ ?",
+    "choices": ["$0{,}04$", "$0{,}25$", "$0{,}5$", "$0{,}3$"],
+    "answer": 1,
+    "explanation": "Par indépendance, $P(A \\cap B) = P(A) \\times P(B)$, donc $P(B) = \\dfrac{P(A \\cap B)}{P(A)} = \\dfrac{0{,}1}{0{,}4} = 0{,}25$.",
+    "difficulty": 2,
+    "tags": ["independance", "calcul-inverse"]
+  },
+  {
+    "id": "a-pc-independance-numeric",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "numeric",
+    "statement": "$A$ et $B$ sont indépendants. On donne $P(A) = 0{,}5$ et $P(A \\cap B) = 0{,}15$. Calculer $P(B)$.",
+    "answer": 0.3,
+    "tolerance": 0.01,
+    "explanation": "$P(B) = \\dfrac{P(A \\cap B)}{P(A)} = \\dfrac{0{,}15}{0{,}5} = 0{,}3$.",
+    "difficulty": 2,
+    "tags": ["independance", "calcul-inverse"]
+  },
+  {
+    "id": "a-pc-contraire-direct",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "numeric",
+    "statement": "On donne $P(A) = 0{,}35$. Calculer $P(\\overline{A})$.",
+    "answer": 0.65,
+    "tolerance": 0.01,
+    "explanation": "$P(\\overline{A}) = 1 - P(A) = 1 - 0{,}35 = 0{,}65$.",
+    "difficulty": 1,
+    "tags": ["contraire"]
+  },
+  {
+    "id": "a-pc-contraire-conditionnel",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $P_B(A) = 0{,}8$. Que vaut $P_B(\\overline{A})$ ?",
+    "choices": ["$0{,}8$", "$0{,}2$", "$-0{,}8$", "$1{,}2$"],
+    "answer": 1,
+    "explanation": "Sachant $B$, les événements $A$ et $\\overline{A}$ sont contraires l'un de l'autre, donc $P_B(A) + P_B(\\overline{A}) = 1$. Ainsi $P_B(\\overline{A}) = 1 - 0{,}8 = 0{,}2$.",
+    "difficulty": 2,
+    "tags": ["contraire", "conditionnelle"]
+  },
+  {
+    "id": "a-pc-arbre-verbal-totales",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Dans une classe, $60\\,\\%$ des élèves sont des filles ($F$). Parmi les filles, $50\\,\\%$ font de l'allemand ; parmi les garçons, $25\\,\\%$ en font. Si l'on note $A$ : « faire de l'allemand », que vaut $P(A)$ ?",
+    "choices": ["$0{,}75$", "$0{,}4$", "$0{,}375$", "$0{,}3$"],
+    "answer": 1,
+    "explanation": "Avec la formule des probabilités totales : $P(A) = P(F) \\times P_F(A) + P(\\overline{F}) \\times P_{\\overline{F}}(A) = 0{,}6 \\times 0{,}5 + 0{,}4 \\times 0{,}25 = 0{,}3 + 0{,}1 = 0{,}4$. Erreurs fréquentes : $0{,}75 = 0{,}5 + 0{,}25$ (somme des taux conditionnels, sans pondération) ; $0{,}375 = (0{,}5 + 0{,}25)/2$ (moyenne arithmétique brute, qui suppose à tort des effectifs égaux).",
+    "difficulty": 3,
+    "tags": ["probabilites-totales", "arbre-verbal", "modelisation"]
+  },
+  {
+    "id": "a-pc-independance-caracterisation",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $P(A) = 0{,}3$ et $P_B(A) = 0{,}3$ (avec $P(B) > 0$). Que peut-on en déduire ?",
+    "choices": [
+      "$A$ et $B$ sont incompatibles",
+      "$A$ et $B$ sont indépendants",
+      "$A \\subset B$",
+      "$P(B) = 0{,}3$"
+    ],
+    "answer": 1,
+    "explanation": "Le fait que $P_B(A) = P(A)$ signifie que savoir si $B$ est réalisé ne change pas la probabilité de $A$ : c'est exactement la caractérisation de l'indépendance de $A$ et $B$.",
+    "difficulty": 2,
+    "tags": ["independance", "caracterisation"]
+  }
+]
