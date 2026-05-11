@@ -9,6 +9,33 @@
     "tags": ["arbre-pondere", "probabilites-totales", "conditionnelle-inverse", "test-medical"],
     "order": 10,
     "preamble": "Une maladie rare touche $10\\,\\%$ d'une population. Un laboratoire propose un test de dépistage dont les caractéristiques sont les suivantes :\n- si la personne est **malade** (événement $M$), le test est **positif** (événement $T$) avec une probabilité de $0{,}9$ ;\n- si la personne est **saine** (événement $\\overline{M}$), le test est **positif** avec une probabilité de $0{,}3$ (faux positif).\n\nOn choisit une personne au hasard dans la population. Dans tout l'exercice, on précisera les étapes de calcul.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$M$",
+              "weight": "0,1",
+              "children": [
+                { "label": "$T$", "weight": "0,9" },
+                { "label": "$\\overline{T}$", "weight": "0,1" }
+              ]
+            },
+            {
+              "label": "$\\overline{M}$",
+              "weight": "0,9",
+              "children": [
+                { "label": "$T$", "weight": "0,3" },
+                { "label": "$\\overline{T}$", "weight": "0,7" }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
     "questions": [
       {
         "id": "q1",
@@ -139,6 +166,41 @@
     "tags": ["systeme-complet", "probabilites-totales", "conditionnelle-inverse", "tirage-sans-remise", "modelisation"],
     "order": 30,
     "preamble": "Une usine fabrique des composants électroniques à l'aide de trois chaînes de production $C_1$, $C_2$ et $C_3$.\n\nLes chaînes contribuent à la production dans les proportions suivantes : $C_1$ fournit $60\\,\\%$ des composants, $C_2$ en fournit $30\\,\\%$ et $C_3$ en fournit $10\\,\\%$.\n\nUn contrôle qualité a établi les taux de composants défectueux suivants :\n- $C_1$ produit $5\\,\\%$ de composants défectueux ;\n- $C_2$ produit $10\\,\\%$ de composants défectueux ;\n- $C_3$ produit $20\\,\\%$ de composants défectueux.\n\nOn note $D$ l'événement « le composant est défectueux ».\n\n**Partie A — Production globale**\n\n**Partie B — Lot de la chaîne $C_3$**",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$C_1$",
+              "weight": "0,6",
+              "children": [
+                { "label": "$D$", "weight": "0,05" },
+                { "label": "$\\overline{D}$", "weight": "0,95" }
+              ]
+            },
+            {
+              "label": "$C_2$",
+              "weight": "0,3",
+              "children": [
+                { "label": "$D$", "weight": "0,1" },
+                { "label": "$\\overline{D}$", "weight": "0,9" }
+              ]
+            },
+            {
+              "label": "$C_3$",
+              "weight": "0,1",
+              "children": [
+                { "label": "$D$", "weight": "0,2" },
+                { "label": "$\\overline{D}$", "weight": "0,8" }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
     "questions": [
       {
         "id": "q1",

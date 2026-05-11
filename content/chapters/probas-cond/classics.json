@@ -44,11 +44,40 @@
     "order": 20,
     "tags": ["intersection", "arbre", "produit"],
     "preamble": "Dans une urne, $60\\,\\%$ des boules sont rouges (événement $R$), les autres sont vertes. Parmi les boules rouges, $25\\,\\%$ portent une étoile (événement $E$).",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$R$",
+              "weight": "0,6",
+              "children": [
+                {
+                  "label": "$E$",
+                  "weight": "0,25"
+                },
+                {
+                  "label": "$\\overline{E}$",
+                  "weight": "0,75"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{R}$",
+              "weight": "0,4"
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
     "questions": [
       {
         "id": "q1",
         "label": "1.",
-        "statement": "Traduire les données de l'énoncé en termes de probabilités, puis calculer la probabilité $P(R \\cap E)$ qu'une boule tirée au hasard soit rouge et étoilée.",
+        "statement": "Vérifier que l'arbre ci-dessus traduit bien les données de l'énoncé (en précisant $P(R)$, $P(\\overline{R})$ et $P_R(E)$), puis calculer la probabilité $P(R \\cap E)$ qu'une boule tirée au hasard soit rouge et étoilée.",
         "hints": [
           "« $60\\,\\%$ des boules sont rouges » donne $P(R)$ ; « parmi les boules rouges, $25\\,\\%$ portent une étoile » donne une probabilité conditionnelle, $P_R(E)$.",
           "Applique ensuite la règle du produit le long du chemin $R \\to E$ : $P(R \\cap E) = P(R) \\times P_R(E)$.",
@@ -116,11 +145,50 @@
     "order": 40,
     "tags": ["probabilites-totales", "arbre-verbal", "modelisation"],
     "preamble": "Dans un lycée, $60\\,\\%$ des élèves sont des filles (événement $F$). Parmi les filles, $90\\,\\%$ font du sport en club (événement $S$). Parmi les garçons, $25\\,\\%$ font du sport en club. On choisit un élève au hasard.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$F$",
+              "weight": "0,6",
+              "children": [
+                {
+                  "label": "$S$",
+                  "weight": "0,9"
+                },
+                {
+                  "label": "$\\overline{S}$",
+                  "weight": "0,1"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{F}$",
+              "weight": "0,4",
+              "children": [
+                {
+                  "label": "$S$",
+                  "weight": "0,25"
+                },
+                {
+                  "label": "$\\overline{S}$",
+                  "weight": "0,75"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
     "questions": [
       {
         "id": "q1",
         "label": "1.",
-        "statement": "Construire, mentalement ou au brouillon, l'arbre pondéré associé à cette situation, puis calculer la probabilité $P(S)$ que l'élève choisi fasse du sport en club.",
+        "statement": "À partir de l'arbre ci-dessus, vérifier les probabilités portées sur chaque branche, puis calculer la probabilité $P(S)$ que l'élève choisi fasse du sport en club.",
         "hints": [
           "Au premier niveau, deux branches : $F$ avec $P(F) = 0{,}6$ et $\\overline{F}$ avec $P(\\overline{F}) = 0{,}4$. Au second niveau, deux sous-branches $S$ / $\\overline{S}$ depuis chaque nœud.",
           "Les événements $F$ et $\\overline{F}$ forment un système complet. Applique la formule des probabilités totales : $P(S) = P(F) \\times P_F(S) + P(\\overline{F}) \\times P_{\\overline{F}}(S)$.",
@@ -140,6 +208,59 @@
     "order": 50,
     "tags": ["probabilites-totales", "systeme-complet", "modelisation"],
     "preamble": "Une usine fabrique des pièces à partir de trois machines $M_1$, $M_2$ et $M_3$, qui produisent respectivement $50\\,\\%$, $30\\,\\%$ et $20\\,\\%$ de la production totale. Le pourcentage de pièces défectueuses est de $4\\,\\%$ sur $M_1$, $10\\,\\%$ sur $M_2$ et $20\\,\\%$ sur $M_3$. On note $D$ l'événement « la pièce est défectueuse ».",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$M_1$",
+              "weight": "0,5",
+              "children": [
+                {
+                  "label": "$D$",
+                  "weight": "0,04"
+                },
+                {
+                  "label": "$\\overline{D}$",
+                  "weight": "0,96"
+                }
+              ]
+            },
+            {
+              "label": "$M_2$",
+              "weight": "0,3",
+              "children": [
+                {
+                  "label": "$D$",
+                  "weight": "0,1"
+                },
+                {
+                  "label": "$\\overline{D}$",
+                  "weight": "0,9"
+                }
+              ]
+            },
+            {
+              "label": "$M_3$",
+              "weight": "0,2",
+              "children": [
+                {
+                  "label": "$D$",
+                  "weight": "0,2"
+                },
+                {
+                  "label": "$\\overline{D}$",
+                  "weight": "0,8"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
     "questions": [
       {
         "id": "q1",
@@ -176,11 +297,50 @@
     "order": 60,
     "tags": ["probabilites-totales", "conditionnelle-inverse", "test-medical"],
     "preamble": "Une maladie touche $10\\,\\%$ d'une population. On dispose d'un test de dépistage tel que :\n- chez un individu malade ($M$), le test est positif ($T$) avec une probabilité de $0{,}9$ ;\n- chez un individu non malade ($\\overline{M}$), le test est positif avec une probabilité de $0{,}1$ (faux positif).\n\nOn choisit une personne au hasard dans la population.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$M$",
+              "weight": "0,1",
+              "children": [
+                {
+                  "label": "$T$",
+                  "weight": "0,9"
+                },
+                {
+                  "label": "$\\overline{T}$",
+                  "weight": "0,1"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{M}$",
+              "weight": "0,9",
+              "children": [
+                {
+                  "label": "$T$",
+                  "weight": "0,1"
+                },
+                {
+                  "label": "$\\overline{T}$",
+                  "weight": "0,9"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
     "questions": [
       {
         "id": "q1",
         "label": "1.",
-        "statement": "Construire l'arbre pondéré associé (mentalement ou au brouillon) et calculer la probabilité $P(T)$ que la personne ait un test positif.",
+        "statement": "À partir de l'arbre ci-dessus, calculer la probabilité $P(T)$ que la personne ait un test positif.",
         "hints": [
           "Au premier niveau : $M$ avec $P(M) = 0{,}1$, $\\overline{M}$ avec $P(\\overline{M}) = 0{,}9$. Au second niveau : $T$ et $\\overline{T}$ depuis chaque nœud.",
           "Les événements $M$ et $\\overline{M}$ forment un système complet : applique la formule des probabilités totales.",
@@ -320,11 +480,50 @@
     "order": 100,
     "tags": ["modelisation", "probabilites-totales", "arbre-verbal"],
     "preamble": "Un site marchand vend deux types de produits : des produits de catégorie $A$ (qui représentent $70\\,\\%$ des ventes) et des produits de catégorie $B$ (les $30\\,\\%$ restants).\n\nUne enquête révèle que :\n- parmi les clients ayant acheté un produit de catégorie $A$, $80\\,\\%$ se disent satisfaits ($S$) ;\n- parmi les clients ayant acheté un produit de catégorie $B$, $60\\,\\%$ se disent satisfaits.\n\nOn choisit un client au hasard.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$A$",
+              "weight": "0,7",
+              "children": [
+                {
+                  "label": "$S$",
+                  "weight": "0,8"
+                },
+                {
+                  "label": "$\\overline{S}$",
+                  "weight": "0,2"
+                }
+              ]
+            },
+            {
+              "label": "$B$",
+              "weight": "0,3",
+              "children": [
+                {
+                  "label": "$S$",
+                  "weight": "0,6"
+                },
+                {
+                  "label": "$\\overline{S}$",
+                  "weight": "0,4"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
     "questions": [
       {
         "id": "q1",
         "label": "1.",
-        "statement": "Traduire les données de l'énoncé en probabilités (préciser $P(A)$, $P(B)$, $P_A(S)$, $P_B(S)$), puis calculer $P(A \\cap S)$ et $P(B \\cap S)$.",
+        "statement": "Vérifier que l'arbre ci-dessus traduit bien les données (en précisant $P(A)$, $P(B)$, $P_A(S)$, $P_B(S)$), puis calculer $P(A \\cap S)$ et $P(B \\cap S)$.",
         "hints": [
           "« $70\\,\\%$ achètent un produit $A$ » donne $P(A) = 0{,}7$. Lis de même les autres données.",
           "Applique la règle du produit le long de chaque chemin : $P(A \\cap S) = P(A) \\times P_A(S)$ et $P(B \\cap S) = P(B) \\times P_B(S)$.",
@@ -416,6 +615,59 @@
     "order": 120,
     "tags": ["probabilites-totales", "conditionnelle-inverse", "modelisation", "arbre-verbal"],
     "preamble": "Une chaîne de magasins reçoit ses paquets de café de trois fournisseurs $F_A$, $F_B$ et $F_C$ qui livrent respectivement $40\\,\\%$, $40\\,\\%$ et $20\\,\\%$ des paquets.\n\nUne procédure de contrôle a permis d'établir que :\n- $10\\,\\%$ des paquets livrés par $F_A$ sont mal étiquetés (événement $M$) ;\n- $5\\,\\%$ des paquets livrés par $F_B$ sont mal étiquetés ;\n- $20\\,\\%$ des paquets livrés par $F_C$ sont mal étiquetés.\n\nOn choisit un paquet au hasard dans le stock.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$F_A$",
+              "weight": "0,4",
+              "children": [
+                {
+                  "label": "$M$",
+                  "weight": "0,1"
+                },
+                {
+                  "label": "$\\overline{M}$",
+                  "weight": "0,9"
+                }
+              ]
+            },
+            {
+              "label": "$F_B$",
+              "weight": "0,4",
+              "children": [
+                {
+                  "label": "$M$",
+                  "weight": "0,05"
+                },
+                {
+                  "label": "$\\overline{M}$",
+                  "weight": "0,95"
+                }
+              ]
+            },
+            {
+              "label": "$F_C$",
+              "weight": "0,2",
+              "children": [
+                {
+                  "label": "$M$",
+                  "weight": "0,2"
+                },
+                {
+                  "label": "$\\overline{M}$",
+                  "weight": "0,8"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
     "questions": [
       {
         "id": "q1",
