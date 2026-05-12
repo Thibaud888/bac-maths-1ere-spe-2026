@@ -1,0 +1,273 @@
+[
+  {
+    "id": "e-second-degre-001",
+    "chapter": "second-degre",
+    "title": "Étude d'une parabole : lecture graphique et calculs",
+    "difficulty": 2,
+    "estimatedMinutes": 30,
+    "totalMarks": 5,
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par :\n\n$$f(x) = x^2 - 6x + 5.$$\n\nLa figure ci-dessous représente une parabole $\\mathcal{P}$ d'équation $y = h(x)$ où $h$ est une autre fonction du second degré, **différente** de $f$. On note $\\mathcal{C}_f$ la courbe représentative de $f$ dans un repère du plan (non tracée sur le graphique).\n\nL'exercice est constitué de deux parties indépendantes : la **partie A** concerne la lecture graphique de $h$ ; la **partie B** porte sur l'étude algébrique de $f$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "second-degre/parabole-canonique.svg",
+        "alt": "Parabole d'équation y = h(x) avec axe de symétrie x = 3 en pointillés, sommet S(3 ; -4), passant par les points (1, 0) et (5, 0)",
+        "width": 400,
+        "height": 320
+      }
+    },
+    "tags": ["lecture-graphique", "forme-canonique", "signe-trinome", "racines"],
+    "order": 10,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "Partie A — 1.",
+        "statement": "À l'aide du graphique, lire les racines de $h$, les coordonnées du sommet de la parabole $\\mathcal{P}$, ainsi que la valeur de $h(0)$.",
+        "marks": 1,
+        "hints": [
+          "Les racines correspondent aux abscisses des points où $\\mathcal{P}$ coupe l'axe $Ox$. Le sommet est le point « le plus bas » de la parabole (qui est tournée vers le haut).",
+          "Pour $h(0)$, lis l'ordonnée du point d'intersection de $\\mathcal{P}$ avec l'axe $Oy$.",
+          "Racines : $1$ et $5$. Sommet : $S(3 \\, ; \\, -4)$. $h(0) = 5$."
+        ],
+        "expectedAnswer": "Racines $1$ et $5$ ; sommet $S(3 \\, ; \\, -4)$ ; $h(0) = 5$.",
+        "solution": "Sur le graphique :\n- la parabole coupe l'axe $Ox$ en deux points d'abscisses $1$ et $5$ : ce sont les racines de $h$ ;\n- le point le plus bas de la parabole a pour coordonnées $(3 \\, ; \\, -4)$ : c'est le sommet $S$, donc $\\alpha = 3$ et $\\beta = -4$ ;\n- la parabole coupe l'axe $Oy$ au point d'ordonnée $5$, donc $h(0) = 5$."
+      },
+      {
+        "id": "q2",
+        "label": "Partie A — 2.",
+        "statement": "Déterminer une expression de $h(x)$ sous forme canonique, puis sous forme développée. Que peut-on en déduire sur la fonction $f$ ?",
+        "marks": 1.5,
+        "hints": [
+          "La forme canonique est $h(x) = a(x - \\alpha)^2 + \\beta$. Tu connais $\\alpha$ et $\\beta$ d'après la question 1. Pour trouver $a$, utilise la valeur de $h(0)$.",
+          "$h(0) = a(0 - 3)^2 + (-4) = 9a - 4$. En identifiant avec $h(0) = 5$, on trouve $a = 1$. Développe ensuite $(x - 3)^2 - 4$.",
+          "$h(x) = (x - 3)^2 - 4 = x^2 - 6x + 5$, qui est exactement $f(x)$ ! Donc $h = f$ et $\\mathcal{P} = \\mathcal{C}_f$."
+        ],
+        "expectedAnswer": "$h(x) = (x - 3)^2 - 4 = x^2 - 6x + 5$ ; on en déduit que $h = f$.",
+        "solution": "**Forme canonique.** $\\mathcal{P}$ admet pour sommet $S(3 \\, ; \\, -4)$, donc $h(x) = a(x - 3)^2 - 4$ pour un certain réel $a$.\n\nOn utilise la valeur $h(0) = 5$ :\n$$h(0) = a \\times (-3)^2 - 4 = 9a - 4.$$\n\nEn identifiant : $9a - 4 = 5$, soit $9a = 9$, d'où $a = 1$.\n\nLa forme canonique est donc :\n$$h(x) = (x - 3)^2 - 4.$$\n\n**Forme développée.** On développe à l'aide de l'identité remarquable $(x - 3)^2 = x^2 - 6x + 9$ :\n$$h(x) = x^2 - 6x + 9 - 4 = x^2 - 6x + 5.$$\n\nOn reconnaît exactement $f(x) = x^2 - 6x + 5$. Donc, en fait, **$h = f$ et $\\mathcal{P} = \\mathcal{C}_f$** : le graphique représente bel et bien la courbe de $f$."
+      },
+      {
+        "id": "q3",
+        "label": "Partie B — 3.",
+        "statement": "Retrouver, par le calcul, les racines de $f$ en utilisant le discriminant.",
+        "marks": 1,
+        "hints": [
+          "Applique la méthode standard : calcule $\\Delta = b^2 - 4ac$ avec $a = 1$, $b = -6$, $c = 5$.",
+          "$\\Delta = 36 - 20 = 16 > 0$, donc deux racines distinctes $x_{1,2} = \\dfrac{-b \\pm \\sqrt{\\Delta}}{2a}$.",
+          "$\\sqrt{\\Delta} = 4$, donc $x_1 = \\dfrac{6 - 4}{2} = 1$ et $x_2 = \\dfrac{6 + 4}{2} = 5$."
+        ],
+        "expectedAnswer": "$x_1 = 1$, $x_2 = 5$",
+        "solution": "On a $a = 1$, $b = -6$, $c = 5$, donc :\n$$\\Delta = (-6)^2 - 4 \\times 1 \\times 5 = 36 - 20 = 16 > 0.$$\n\nComme $\\Delta > 0$, $f$ admet deux racines réelles distinctes :\n$$x_1 = \\dfrac{-b - \\sqrt{\\Delta}}{2a} = \\dfrac{6 - 4}{2} = 1 \\quad \\text{et} \\quad x_2 = \\dfrac{-b + \\sqrt{\\Delta}}{2a} = \\dfrac{6 + 4}{2} = 5.$$\n\nOn retrouve bien les racines $1$ et $5$ lues sur le graphique."
+      },
+      {
+        "id": "q4",
+        "label": "Partie B — 4.",
+        "statement": "Résoudre dans $\\mathbb{R}$ l'inéquation $f(x) \\leq 0$.",
+        "marks": 1,
+        "hints": [
+          "Utilise la règle du signe d'un trinôme : $f$ a deux racines $1$ et $5$, et $a = 1 > 0$.",
+          "Le trinôme est positif à l'extérieur des racines et négatif entre les racines (signe opposé à $a$).",
+          "$f(x) \\leq 0$ pour $x$ compris entre les racines, racines incluses : $\\mathcal{S} = [1 \\, ; \\, 5]$."
+        ],
+        "expectedAnswer": "$\\mathcal{S} = [1 \\, ; \\, 5]$",
+        "solution": "Le trinôme $f$ a pour racines $1$ et $5$, et son coefficient dominant $a = 1 > 0$. D'après la règle de signe, $f$ est positif à l'extérieur des racines et négatif entre les racines.\n\nDonc $f(x) \\leq 0$ pour $x$ compris entre $1$ et $5$, racines incluses :\n$$\\mathcal{S} = [1 \\, ; \\, 5].$$\n\nGraphiquement, cela correspond à la portion de $\\mathcal{C}_f$ située en dessous (ou sur) l'axe des abscisses."
+      },
+      {
+        "id": "q5",
+        "label": "Partie B — 5.",
+        "statement": "Démontrer que $f$ admet un minimum sur $\\mathbb{R}$ et donner cette valeur minimale ainsi que l'abscisse où elle est atteinte.",
+        "marks": 0.5,
+        "hints": [
+          "Sous forme canonique, $f(x) = (x - 3)^2 - 4$. Étudie le signe du terme $(x - 3)^2$.",
+          "Un carré est toujours positif ou nul, avec égalité ssi son contenu est nul.",
+          "$f(x) \\geq -4$ pour tout $x$, avec égalité si et seulement si $x = 3$. Donc minimum $-4$ en $x = 3$."
+        ],
+        "expectedAnswer": "Minimum $f(3) = -4$, atteint en $x = 3$.",
+        "solution": "On part de la forme canonique $f(x) = (x - 3)^2 - 4$.\n\nPour tout $x \\in \\mathbb{R}$, $(x - 3)^2 \\geq 0$, avec égalité si et seulement si $x = 3$.\n\nDonc, pour tout $x \\in \\mathbb{R}$ :\n$$f(x) = (x - 3)^2 - 4 \\geq -4,$$\n\navec égalité **uniquement** pour $x = 3$.\n\nAinsi, $f$ admet un **minimum** sur $\\mathbb{R}$ valant $\\boxed{-4}$, atteint en $x = 3$. On retrouve l'ordonnée $\\beta = -4$ du sommet."
+      }
+    ]
+  },
+  {
+    "id": "e-second-degre-002",
+    "chapter": "second-degre",
+    "title": "Optimisation : rentabilité d'une production",
+    "difficulty": 2,
+    "estimatedMinutes": 30,
+    "totalMarks": 5,
+    "preamble": "Une petite entreprise fabrique et vend $q$ objets identiques par jour, avec $q$ entier naturel vérifiant $0 \\leq q \\leq 100$. Le bénéfice quotidien (en euros) réalisé par l'entreprise, modélisé par une fonction $B$, est donné par :\n\n$$B(q) = -q^2 + 80q - 700.$$\n\nDans tout l'exercice, on étendra l'étude de $B$ à un nombre réel $q \\in [0 \\, ; \\, 100]$.",
+    "tags": ["modelisation", "forme-canonique", "signe-trinome", "inequation", "extremum"],
+    "order": 20,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $B(10)$ et $B(50)$. Interpréter ces valeurs dans le contexte de l'exercice.",
+        "marks": 0.75,
+        "hints": [
+          "Remplace $q$ par $10$, puis par $50$, dans l'expression de $B(q)$, et effectue les calculs.",
+          "$B(10) = -100 + 800 - 700$ ; $B(50) = -2500 + 4000 - 700$.",
+          "$B(10) = 0$ : si l'entreprise vend $10$ objets, son bénéfice est nul. $B(50) = 800$ : pour $50$ objets, le bénéfice quotidien est de $800$ €."
+        ],
+        "expectedAnswer": "$B(10) = 0$ € et $B(50) = 800$ €",
+        "solution": "$B(10) = -100 + 800 - 700 = 0$ € : si l'entreprise vend $10$ objets par jour, son bénéfice est **nul** (elle est tout juste à l'équilibre).\n\n$B(50) = -2500 + 4000 - 700 = 800$ € : si l'entreprise vend $50$ objets par jour, elle réalise un bénéfice quotidien de $800$ €."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Déterminer les valeurs de $q$ pour lesquelles $B(q) = 0$, puis interpréter le résultat.",
+        "marks": 1.25,
+        "hints": [
+          "Il s'agit de résoudre $-q^2 + 80q - 700 = 0$. Utilise le discriminant.",
+          "$\\Delta = 80^2 - 4 \\times (-1) \\times (-700) = 6400 - 2800 = 3600 = 60^2$. Les racines sont $q = \\dfrac{-80 \\pm 60}{-2}$.",
+          "$q_1 = 10$ et $q_2 = 70$ : l'entreprise est à l'équilibre pour $10$ ou $70$ objets vendus."
+        ],
+        "expectedAnswer": "$q = 10$ ou $q = 70$",
+        "solution": "On résout $B(q) = 0$, c'est-à-dire $-q^2 + 80q - 700 = 0$.\n\nOn identifie $a = -1$, $b = 80$, $c = -700$ et on calcule :\n$$\\Delta = b^2 - 4ac = 80^2 - 4 \\times (-1) \\times (-700) = 6400 - 2800 = 3600.$$\n\nComme $\\Delta = 3600 = 60^2 > 0$, l'équation admet deux racines réelles distinctes :\n$$q_1 = \\dfrac{-80 - 60}{-2} = \\dfrac{-140}{-2} = 70 \\quad \\text{et} \\quad q_2 = \\dfrac{-80 + 60}{-2} = \\dfrac{-20}{-2} = 10.$$\n\nDonc $B(q) = 0$ pour $q = 10$ ou $q = 70$.\n\n**Interprétation.** Pour ces deux quantités, le bénéfice est nul : l'entreprise produit et vend « à l'équilibre ». On retrouve bien $B(10) = 0$, en accord avec la question 1."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Déterminer, par le calcul, les valeurs de $q$ pour lesquelles l'entreprise est **bénéficiaire** (c'est-à-dire $B(q) > 0$).",
+        "marks": 1,
+        "hints": [
+          "Étudie le signe du trinôme $B(q)$ à partir de ses racines $10$ et $70$ et de son coefficient dominant $a = -1$.",
+          "Comme $a < 0$, le trinôme est **positif entre les racines** et négatif à l'extérieur. Pense à intersecter avec $[0 \\, ; \\, 100]$.",
+          "$B(q) > 0 \\iff q \\in \\, ]10 \\, ; \\, 70[$."
+        ],
+        "expectedAnswer": "$q \\in \\, ]10 \\, ; \\, 70[$",
+        "solution": "Le trinôme $B$ a pour racines $10$ et $70$, et son coefficient dominant $a = -1 < 0$. D'après la règle de signe, $B$ est :\n- **strictement négatif** à l'extérieur des racines (même signe que $a$) ;\n- **strictement positif** entre les racines (signe opposé à $a$) ;\n- **nul** en $q = 10$ et $q = 70$.\n\n**Tableau de signes** :\n\n| $q$ | $0$ | | $10$ | | $70$ | | $100$ |\n|-----|-----|---|------|---|------|---|-------|\n| $B(q)$ | $-$ | $-$ | $0$ | $+$ | $0$ | $-$ | $-$ |\n\nL'entreprise est bénéficiaire (c'est-à-dire $B(q) > 0$) si et seulement si $q \\in \\, ]10 \\, ; \\, 70[$ : il faut donc produire et vendre **entre $11$ et $69$ objets par jour** (en tenant compte du caractère entier de $q$)."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Mettre $B(q)$ sous forme canonique, puis en déduire le nombre d'objets que l'entreprise doit vendre quotidiennement pour réaliser un bénéfice **maximal**. Préciser ce bénéfice maximal.",
+        "marks": 1.5,
+        "hints": [
+          "Calcule $\\alpha = -\\dfrac{b}{2a}$ et $\\beta = B(\\alpha)$, puis écris $B(q) = a(q - \\alpha)^2 + \\beta$.",
+          "Ici $\\alpha = -\\dfrac{80}{-2} = 40$, $\\beta = B(40) = -1600 + 3200 - 700 = 900$. Donc $B(q) = -(q - 40)^2 + 900$.",
+          "Comme $-(q - 40)^2 \\leq 0$, $B(q) \\leq 900$, avec égalité ssi $q = 40$. Bénéfice maximal $= 900$ € pour $q = 40$ objets."
+        ],
+        "expectedAnswer": "$B(q) = -(q - 40)^2 + 900$ ; max $= 900$ € pour $q = 40$ objets.",
+        "solution": "**Forme canonique.** On a $a = -1$, $b = 80$. L'abscisse du sommet est :\n$$\\alpha = -\\dfrac{b}{2a} = -\\dfrac{80}{-2} = 40.$$\n\nL'ordonnée du sommet est :\n$$\\beta = B(40) = -(40)^2 + 80 \\times 40 - 700 = -1600 + 3200 - 700 = 900.$$\n\nDonc, pour tout $q \\in \\mathbb{R}$ :\n$$B(q) = -(q - 40)^2 + 900.$$\n\n**Maximum.** Le terme $-(q - 40)^2$ est toujours négatif ou nul, avec égalité si et seulement si $q = 40$. Donc pour tout $q \\in [0 \\, ; \\, 100]$ :\n$$B(q) \\leq 900,$$\n\navec égalité **uniquement** pour $q = 40$.\n\n**Conclusion.** Le bénéfice quotidien est maximal lorsque l'entreprise vend $\\boxed{40 \\text{ objets}}$ par jour. Ce bénéfice maximal vaut $\\boxed{900 \\text{ €}}$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "statement": "Le gérant de l'entreprise souhaite réaliser un bénéfice quotidien d'au moins $800$ €. Déterminer l'ensemble des valeurs entières de $q$ qui le permettent.",
+        "marks": 0.5,
+        "hints": [
+          "Résous $B(q) \\geq 800$ en utilisant la forme canonique $B(q) = -(q - 40)^2 + 900$.",
+          "$-(q - 40)^2 + 900 \\geq 800 \\iff (q - 40)^2 \\leq 100$. Or $(q - 40)^2 \\leq 100$ équivaut à $|q - 40| \\leq 10$, soit $30 \\leq q \\leq 50$.",
+          "L'ensemble cherché est l'ensemble des entiers $q$ avec $30 \\leq q \\leq 50$."
+        ],
+        "expectedAnswer": "$q$ entier dans $[30 \\, ; \\, 50]$ (soit $21$ valeurs).",
+        "solution": "On résout $B(q) \\geq 800$ en utilisant la forme canonique :\n$$-(q - 40)^2 + 900 \\geq 800 \\iff -(q - 40)^2 \\geq -100 \\iff (q - 40)^2 \\leq 100.$$\n\nOr $(q - 40)^2 \\leq 100$ équivaut à $|q - 40| \\leq 10$, c'est-à-dire :\n$$-10 \\leq q - 40 \\leq 10 \\iff 30 \\leq q \\leq 50.$$\n\nCet intervalle est inclus dans $[0 \\, ; \\, 100]$, donc il convient. L'entreprise réalise un bénéfice d'au moins $800$ € si et seulement si elle vend entre $30$ et $50$ objets par jour."
+      }
+    ]
+  },
+  {
+    "id": "e-second-degre-003",
+    "chapter": "second-degre",
+    "title": "Étude complète d'un trinôme et tableau de variations",
+    "difficulty": 2,
+    "estimatedMinutes": 25,
+    "totalMarks": 4,
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par :\n\n$$f(x) = 2x^2 - 12x + 10.$$\n\nOn note $\\mathcal{C}_f$ sa courbe représentative dans un repère du plan.",
+    "tags": ["discriminant", "forme-canonique", "variations", "factorisation"],
+    "order": 30,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Étude des racines.",
+        "marks": 1.5,
+        "hints": [
+          "Pour la sous-question a), applique la formule $\\Delta = b^2 - 4ac$. Pour la sous-question b), utilise les formules des racines.",
+          "Tu auras $\\Delta = 144 - 80 = 64$, qui est un carré parfait : $\\sqrt{\\Delta} = 8$.",
+          "Racines $x_1 = 1$ et $x_2 = 5$. Forme factorisée : $f(x) = 2(x - 1)(x - 5)$."
+        ],
+        "solution": "**Synthèse.** $\\Delta = 64$, racines $1$ et $5$, forme factorisée $f(x) = 2(x - 1)(x - 5)$. Voir le détail dans les sous-questions a) et b).",
+        "subquestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "statement": "Calculer le discriminant $\\Delta$ de $f$ et en déduire les racines de $f$.",
+            "marks": 1,
+            "hints": [
+              "Identifie $a$, $b$, $c$ et calcule $\\Delta = b^2 - 4ac$.",
+              "$a = 2$, $b = -12$, $c = 10$. Donc $\\Delta = 144 - 80 = 64 = 8^2$. Applique alors la formule des racines.",
+              "$x_1 = \\dfrac{12 - 8}{4} = 1$ et $x_2 = \\dfrac{12 + 8}{4} = 5$."
+            ],
+            "expectedAnswer": "$\\Delta = 64$, racines $x_1 = 1$ et $x_2 = 5$.",
+            "solution": "On a $a = 2$, $b = -12$, $c = 10$, donc :\n$$\\Delta = (-12)^2 - 4 \\times 2 \\times 10 = 144 - 80 = 64.$$\n\nComme $\\Delta = 64 > 0$, $f$ admet deux racines réelles distinctes :\n$$x_1 = \\dfrac{12 - \\sqrt{64}}{2 \\times 2} = \\dfrac{12 - 8}{4} = 1 \\quad \\text{et} \\quad x_2 = \\dfrac{12 + 8}{4} = 5.$$"
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "statement": "En déduire une forme factorisée de $f(x)$.",
+            "marks": 0.5,
+            "hints": [
+              "La forme factorisée est $f(x) = a(x - x_1)(x - x_2)$.",
+              "Avec $a = 2$, $x_1 = 1$, $x_2 = 5$.",
+              "$f(x) = 2(x - 1)(x - 5)$."
+            ],
+            "expectedAnswer": "$f(x) = 2(x - 1)(x - 5)$",
+            "solution": "Comme $\\Delta > 0$ avec racines $1$ et $5$, et $a = 2$, la forme factorisée est :\n$$f(x) = 2(x - 1)(x - 5).$$"
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Forme canonique et tableau de variations.",
+        "marks": 2,
+        "hints": [
+          "Pour la sous-question a), calcule $\\alpha = -\\dfrac{b}{2a}$ et $\\beta = f(\\alpha)$. Pour la sous-question b), utilise le signe de $a$ pour conclure sur les variations.",
+          "$\\alpha = 3$, $\\beta = f(3)$. Comme $a > 0$, la fonction est d'abord décroissante puis croissante.",
+          "$f(x) = 2(x - 3)^2 - 8$. Variations : $f$ décroissante sur $]-\\infty\\,;\\,3]$, croissante sur $[3\\,;\\,+\\infty[$, minimum $f(3) = -8$."
+        ],
+        "solution": "**Synthèse.** $f(x) = 2(x - 3)^2 - 8$. La fonction $f$ est strictement décroissante sur $]-\\infty \\, ; \\, 3]$ et strictement croissante sur $[3 \\, ; \\, +\\infty[$, avec un minimum $f(3) = -8$. Voir le détail dans les sous-questions a) et b).",
+        "subquestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "statement": "Déterminer la forme canonique de $f(x)$.",
+            "marks": 1,
+            "hints": [
+              "Calcule $\\alpha = -\\dfrac{b}{2a}$ et $\\beta = f(\\alpha)$, puis écris $f(x) = a(x - \\alpha)^2 + \\beta$.",
+              "Ici $\\alpha = -\\dfrac{-12}{4} = 3$ et $\\beta = f(3) = 18 - 36 + 10 = -8$.",
+              "$f(x) = 2(x - 3)^2 - 8$."
+            ],
+            "expectedAnswer": "$f(x) = 2(x - 3)^2 - 8$",
+            "solution": "L'abscisse du sommet est :\n$$\\alpha = -\\dfrac{b}{2a} = -\\dfrac{-12}{2 \\times 2} = \\dfrac{12}{4} = 3.$$\n\nL'ordonnée du sommet est :\n$$\\beta = f(3) = 2 \\times 9 - 12 \\times 3 + 10 = 18 - 36 + 10 = -8.$$\n\nDonc :\n$$f(x) = 2(x - 3)^2 - 8.$$\n\n**Vérification** : $2(x - 3)^2 - 8 = 2(x^2 - 6x + 9) - 8 = 2x^2 - 12x + 18 - 8 = 2x^2 - 12x + 10$. ✓"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "statement": "Dresser le tableau de variations de $f$ sur $\\mathbb{R}$ en précisant l'éventuel extremum.",
+            "marks": 1,
+            "hints": [
+              "Comme $a = 2 > 0$, la parabole est tournée vers le haut : $f$ admet un minimum en $\\alpha$.",
+              "$f$ est décroissante sur $]-\\infty \\, ; \\, \\alpha]$ puis croissante sur $[\\alpha \\, ; \\, +\\infty[$.",
+              "Minimum en $x = 3$ valant $f(3) = -8$."
+            ],
+            "expectedAnswer": "$f$ décroissante sur $]-\\infty\\,;\\,3]$, croissante sur $[3\\,;\\,+\\infty[$. Minimum $f(3) = -8$.",
+            "solution": "Comme $a = 2 > 0$, la parabole représentative de $f$ est tournée vers le haut : $f$ est strictement décroissante sur $]-\\infty \\, ; \\, \\alpha]$ et strictement croissante sur $[\\alpha \\, ; \\, +\\infty[$, et elle admet un **minimum** en $\\alpha$ valant $\\beta$.\n\n**Tableau de variations** :\n\n| $x$ | $-\\infty$ | | $3$ | | $+\\infty$ |\n|-----|-----------|---|-----|---|-----------|\n| $f(x)$ | | $\\searrow$ | $-8$ | $\\nearrow$ | |\n\nLe minimum global de $f$ sur $\\mathbb{R}$ vaut $-8$, atteint en $x = 3$."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Résoudre dans $\\mathbb{R}$ l'inéquation $f(x) > 0$.",
+        "marks": 0.5,
+        "hints": [
+          "Utilise la forme factorisée et la règle du signe d'un trinôme : racines $1$ et $5$, $a > 0$.",
+          "$f$ est positif à l'extérieur des racines.",
+          "$\\mathcal{S} = \\, ]-\\infty \\, ; \\, 1[ \\, \\cup \\, ]5 \\, ; \\, +\\infty[$."
+        ],
+        "expectedAnswer": "$\\mathcal{S} = \\, ]-\\infty \\, ; \\, 1[ \\, \\cup \\, ]5 \\, ; \\, +\\infty[$",
+        "solution": "D'après la question 1, $f(x) = 2(x - 1)(x - 5)$ avec $a = 2 > 0$ et racines $1$ et $5$. D'après la règle « même signe que $a$ sauf entre les racines », $f$ est strictement positif à l'extérieur des racines.\n\nL'inéquation $f(x) > 0$ a donc pour ensemble des solutions :\n$$\\mathcal{S} = \\, ]-\\infty \\, ; \\, 1[ \\, \\cup \\, ]5 \\, ; \\, +\\infty[.$$"
+      }
+    ]
+  }
+]
