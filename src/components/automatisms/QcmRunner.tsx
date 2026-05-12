@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { TextWithMath } from '@/components/math/TextWithMath';
 import Timer from '@/components/shared/Timer';
+import FigureRenderer from '@/components/figures/FigureRenderer';
 import { shuffleChoices } from '@/lib/randomizer';
 import type { Automatism } from '@/lib/types';
 import { useProgressStore } from '@/stores/progress-store';
@@ -120,6 +121,12 @@ export default function QcmRunner({
       <div className="mt-3 text-base leading-relaxed text-slate-800">
         <TextWithMath text={automatism.statement} />
       </div>
+
+      {automatism.figure && (
+        <div className="mt-3">
+          <FigureRenderer figure={automatism.figure} />
+        </div>
+      )}
 
       {automatism.type === 'qcm' && shuffled && (
         <ul className="mt-4 space-y-2">

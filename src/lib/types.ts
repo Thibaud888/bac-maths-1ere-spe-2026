@@ -62,6 +62,7 @@ export type Automatism = {
   difficulty: Difficulty;
   timeLimitSeconds?: number;
   tags?: string[];
+  figure?: Figure;
 };
 
 export type ClassicQuestion = {
