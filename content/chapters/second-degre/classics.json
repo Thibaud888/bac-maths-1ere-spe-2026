@@ -1,0 +1,359 @@
+[
+  {
+    "id": "c-second-degre-001",
+    "chapter": "second-degre",
+    "title": "Résolution complète d'une équation du second degré ($\\Delta > 0$)",
+    "difficulty": 1,
+    "estimatedMinutes": 6,
+    "order": 10,
+    "tags": ["discriminant", "racines", "equation"],
+    "preamble": "On considère l'équation $(E) : 2x^2 - 7x + 3 = 0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer le discriminant $\\Delta$ associé à cette équation.",
+        "hints": [
+          "Identifie $a$, $b$, $c$ dans l'expression $ax^2 + bx + c$, puis applique la formule $\\Delta = b^2 - 4ac$.",
+          "Ici $a = 2$, $b = -7$, $c = 3$. Calcule $b^2$, puis $4ac$, puis fais la différence.",
+          "$\\Delta = 49 - 24 = 25$."
+        ],
+        "expectedAnswer": "$\\Delta = 25$",
+        "solution": "On identifie $a = 2$, $b = -7$, $c = 3$.\n\n$$\\Delta = b^2 - 4ac = (-7)^2 - 4 \\times 2 \\times 3 = 49 - 24 = 25.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire les solutions de l'équation $(E)$.",
+        "hints": [
+          "Comme $\\Delta > 0$, $(E)$ admet deux solutions réelles distinctes données par $x_{1,2} = \\dfrac{-b \\pm \\sqrt{\\Delta}}{2a}$.",
+          "Ici $\\sqrt{\\Delta} = \\sqrt{25} = 5$ et $-b = 7$. Calcule séparément $\\dfrac{7 - 5}{4}$ et $\\dfrac{7 + 5}{4}$.",
+          "$x_1 = \\dfrac{1}{2}$ et $x_2 = 3$."
+        ],
+        "expectedAnswer": "$\\mathcal{S} = \\left\\{\\dfrac{1}{2} \\, ; \\, 3\\right\\}$",
+        "solution": "Comme $\\Delta = 25 > 0$, l'équation $(E)$ admet deux solutions réelles distinctes :\n\n$$x_1 = \\dfrac{-b - \\sqrt{\\Delta}}{2a} = \\dfrac{7 - 5}{4} = \\dfrac{2}{4} = \\dfrac{1}{2}$$\n\net\n\n$$x_2 = \\dfrac{-b + \\sqrt{\\Delta}}{2a} = \\dfrac{7 + 5}{4} = \\dfrac{12}{4} = 3.$$\n\nDonc $\\mathcal{S} = \\left\\{\\dfrac{1}{2} \\, ; \\, 3\\right\\}$."
+      }
+    ]
+  },
+  {
+    "id": "c-second-degre-002",
+    "chapter": "second-degre",
+    "title": "Résolution d'une équation avec $\\Delta = 0$ ou $\\Delta < 0$",
+    "difficulty": 1,
+    "estimatedMinutes": 8,
+    "order": 20,
+    "tags": ["discriminant", "racine-double", "equation"],
+    "preamble": "On considère les deux équations suivantes :\n\n$$(E_1) : x^2 - 6x + 9 = 0 \\qquad (E_2) : x^2 + x + 1 = 0.$$",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Résoudre l'équation $(E_1)$.",
+        "hints": [
+          "Calcule le discriminant. Tu peux aussi remarquer une identité remarquable au premier coup d'œil.",
+          "$\\Delta = 36 - 36 = 0$. Quand $\\Delta = 0$, il y a une unique racine $x_0 = -\\dfrac{b}{2a}$. Ou bien, reconnaître $(x - 3)^2$.",
+          "$x_0 = 3$ (racine double)."
+        ],
+        "expectedAnswer": "$\\mathcal{S}_1 = \\{3\\}$",
+        "solution": "On a $a = 1$, $b = -6$, $c = 9$, donc :\n$$\\Delta = (-6)^2 - 4 \\times 1 \\times 9 = 36 - 36 = 0.$$\n\nComme $\\Delta = 0$, $(E_1)$ admet une unique solution réelle :\n$$x_0 = -\\dfrac{b}{2a} = \\dfrac{6}{2} = 3.$$\n\nOn aurait pu directement reconnaître l'identité remarquable $(x - 3)^2 = 0$, dont la solution est $x = 3$.\n\nDonc $\\mathcal{S}_1 = \\{3\\}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Résoudre l'équation $(E_2)$.",
+        "hints": [
+          "Calcule le discriminant.",
+          "$\\Delta = 1 - 4 = -3$. Comment conclut-on quand le discriminant est strictement négatif ?",
+          "$\\Delta < 0$, donc $(E_2)$ n'admet aucune solution réelle : $\\mathcal{S}_2 = \\emptyset$."
+        ],
+        "expectedAnswer": "$\\mathcal{S}_2 = \\emptyset$",
+        "solution": "On a $a = 1$, $b = 1$, $c = 1$, donc :\n$$\\Delta = 1^2 - 4 \\times 1 \\times 1 = 1 - 4 = -3.$$\n\nComme $\\Delta < 0$, l'équation $(E_2)$ n'admet **aucune solution réelle**.\n\nDonc $\\mathcal{S}_2 = \\emptyset$."
+      }
+    ]
+  },
+  {
+    "id": "c-second-degre-003",
+    "chapter": "second-degre",
+    "title": "Forme canonique et coordonnées du sommet",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 30,
+    "tags": ["forme-canonique", "sommet", "parabole"],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = x^2 - 4x - 5$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer les coordonnées $\\alpha$ et $\\beta$ du sommet de la parabole représentative de $f$.",
+        "hints": [
+          "Utilise les formules $\\alpha = -\\dfrac{b}{2a}$ et $\\beta = f(\\alpha)$.",
+          "Ici $a = 1$, $b = -4$. Calcule $\\alpha$, puis remplace dans l'expression de $f$ pour obtenir $\\beta$.",
+          "$\\alpha = 2$ et $\\beta = f(2) = 4 - 8 - 5 = -9$."
+        ],
+        "expectedAnswer": "$\\alpha = 2$ et $\\beta = -9$",
+        "solution": "L'abscisse du sommet est :\n$$\\alpha = -\\dfrac{b}{2a} = -\\dfrac{-4}{2 \\times 1} = 2.$$\n\nL'ordonnée du sommet est :\n$$\\beta = f(\\alpha) = f(2) = 2^2 - 4 \\times 2 - 5 = 4 - 8 - 5 = -9.$$\n\nLe sommet de la parabole est donc $S(2 \\, ; \\, -9)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire la forme canonique de $f$.",
+        "hints": [
+          "La forme canonique est $f(x) = a(x - \\alpha)^2 + \\beta$. Tu connais $a$, $\\alpha$, $\\beta$.",
+          "Remplace dans la formule avec $a = 1$, $\\alpha = 2$, $\\beta = -9$.",
+          "$f(x) = (x - 2)^2 - 9$."
+        ],
+        "expectedAnswer": "$f(x) = (x - 2)^2 - 9$",
+        "solution": "La forme canonique est $f(x) = a(x - \\alpha)^2 + \\beta$ avec $a = 1$, $\\alpha = 2$ et $\\beta = -9$.\n\nDonc, pour tout $x \\in \\mathbb{R}$ :\n$$f(x) = (x - 2)^2 - 9.$$\n\n**Vérification** : on développe $(x - 2)^2 - 9 = x^2 - 4x + 4 - 9 = x^2 - 4x - 5$, ce qui coïncide bien avec l'expression initiale."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Retrouver les racines de $f$ en utilisant la forme canonique.",
+        "hints": [
+          "Résoudre $(x - 2)^2 - 9 = 0$ revient à résoudre $(x - 2)^2 = 9$.",
+          "On a alors $x - 2 = 3$ ou $x - 2 = -3$.",
+          "$x_1 = -1$ et $x_2 = 5$."
+        ],
+        "expectedAnswer": "$x_1 = -1$ et $x_2 = 5$",
+        "solution": "L'équation $f(x) = 0$ s'écrit $(x - 2)^2 - 9 = 0$, soit $(x - 2)^2 = 9$.\n\nOn en déduit $x - 2 = 3$ ou $x - 2 = -3$, c'est-à-dire :\n$$x_1 = 5 \\quad \\text{ou} \\quad x_2 = -1.$$\n\nLes racines de $f$ sont donc $-1$ et $5$.\n\n**Remarque** : on retrouve bien que la somme des racines vaut $-1 + 5 = 4 = -\\dfrac{b}{a}$ et leur produit vaut $-1 \\times 5 = -5 = \\dfrac{c}{a}$."
+      }
+    ]
+  },
+  {
+    "id": "c-second-degre-004",
+    "chapter": "second-degre",
+    "title": "Factorisation et tableau de signes",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 40,
+    "tags": ["factorisation", "signe-trinome", "tableau-de-signes"],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = -x^2 + 2x + 8$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Factoriser $f(x)$.",
+        "hints": [
+          "Cherche les racines via le discriminant ou en repérant la somme et le produit (attention au signe de $a$).",
+          "$\\Delta = 4 + 32 = 36$, $\\sqrt{\\Delta} = 6$. Les racines sont $x_{1,2} = \\dfrac{-2 \\pm 6}{-2}$, soit $-2$ et $4$. La forme factorisée est $a(x - x_1)(x - x_2)$.",
+          "$f(x) = -(x + 2)(x - 4)$."
+        ],
+        "expectedAnswer": "$f(x) = -(x + 2)(x - 4)$",
+        "solution": "On calcule le discriminant : $\\Delta = 2^2 - 4 \\times (-1) \\times 8 = 4 + 32 = 36 > 0$.\n\nLes racines sont :\n$$x_1 = \\dfrac{-2 - 6}{-2} = 4 \\quad \\text{et} \\quad x_2 = \\dfrac{-2 + 6}{-2} = -2.$$\n\nComme $a = -1$, la forme factorisée est :\n$$f(x) = -1 \\times (x - 4)(x - (-2)) = -(x - 4)(x + 2).$$\n\nOn écrit traditionnellement : $f(x) = -(x + 2)(x - 4)$.\n\n**Vérification rapide** : $-(x + 2)(x - 4) = -(x^2 - 2x - 8) = -x^2 + 2x + 8$. ✓"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Dresser le tableau de signes de $f(x)$ sur $\\mathbb{R}$.",
+        "hints": [
+          "Le trinôme $f$ est du signe de $a = -1$ (donc négatif) à l'extérieur des racines, et du signe opposé (donc positif) entre les racines.",
+          "Repère les racines $-2$ et $4$ et applique la règle « même signe que $a$ sauf entre les racines ».",
+          "$f(x) \\leq 0$ sur $]-\\infty \\, ; \\, -2] \\cup [4 \\, ; \\, +\\infty[$ et $f(x) \\geq 0$ sur $[-2 \\, ; \\, 4]$."
+        ],
+        "expectedAnswer": "$f(x) > 0$ sur $]-2\\,;\\,4[$, $f(x) < 0$ ailleurs, $f(x) = 0$ en $-2$ et $4$.",
+        "solution": "Le trinôme $f$ a pour racines $-2$ et $4$, et son coefficient dominant est $a = -1 < 0$. D'après la règle de signe :\n\n- $f(x)$ est du signe de $a$, c'est-à-dire **négatif**, à l'extérieur des racines ;\n- $f(x)$ est du signe opposé à $a$, c'est-à-dire **positif**, entre les racines.\n\n**Tableau de signes** :\n\n| $x$ | $-\\infty$ | | $-2$ | | $4$ | | $+\\infty$ |\n|-----|-----------|---|------|---|-----|---|-----------|\n| $f(x)$ | | $-$ | $0$ | $+$ | $0$ | $-$ | |"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Résoudre dans $\\mathbb{R}$ l'inéquation $f(x) > 0$.",
+        "hints": [
+          "Lis le tableau de signes : tu cherches l'ensemble des $x$ pour lesquels $f(x)$ est strictement positif.",
+          "$f(x) > 0$ correspond à la zone entre les racines, sans les inclure (puisque l'inégalité est stricte).",
+          "$\\mathcal{S} = \\, ]-2 \\, ; \\, 4[$."
+        ],
+        "expectedAnswer": "$\\mathcal{S} = \\, ]-2 \\, ; \\, 4[$",
+        "solution": "D'après le tableau de signes, $f(x) > 0$ pour $x$ strictement compris entre les racines, c'est-à-dire :\n$$\\mathcal{S} = \\, ]-2 \\, ; \\, 4[.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-second-degre-005",
+    "chapter": "second-degre",
+    "title": "Inéquation du second degré dans un contexte simple",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 50,
+    "tags": ["inequation", "signe-trinome"],
+    "preamble": "On souhaite résoudre dans $\\mathbb{R}$ l'inéquation $(I) : x^2 + 2x - 3 \\geq 0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Factoriser le trinôme $x^2 + 2x - 3$.",
+        "hints": [
+          "Cherche deux nombres dont la somme est $-2$ et le produit $-3$, en lien avec les relations somme-produit (attention aux signes).",
+          "Tu peux aussi calculer le discriminant : $\\Delta = 4 + 12 = 16$. Les racines sont alors $\\dfrac{-2 \\pm 4}{2}$.",
+          "Les racines sont $-3$ et $1$, donc $x^2 + 2x - 3 = (x + 3)(x - 1)$."
+        ],
+        "expectedAnswer": "$(x + 3)(x - 1)$",
+        "solution": "On peut calculer $\\Delta = 2^2 - 4 \\times 1 \\times (-3) = 4 + 12 = 16 > 0$, d'où les racines $x_1 = \\dfrac{-2 - 4}{2} = -3$ et $x_2 = \\dfrac{-2 + 4}{2} = 1$.\n\nDonc :\n$$x^2 + 2x - 3 = (x - (-3))(x - 1) = (x + 3)(x - 1).$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Résoudre l'inéquation $(I)$.",
+        "hints": [
+          "Utilise la règle de signe sur le trinôme : il a deux racines $-3$ et $1$, et $a = 1 > 0$.",
+          "Le trinôme est positif ou nul à l'extérieur des racines (signe de $a$), nul aux racines.",
+          "$\\mathcal{S} = \\, ]-\\infty \\, ; \\, -3] \\cup [1 \\, ; \\, +\\infty[$."
+        ],
+        "expectedAnswer": "$\\mathcal{S} = \\, ]-\\infty \\, ; \\, -3] \\cup [1 \\, ; \\, +\\infty[$",
+        "solution": "Le trinôme $x^2 + 2x - 3 = (x + 3)(x - 1)$ admet pour racines $-3$ et $1$, et son coefficient dominant $a = 1 > 0$ : il est donc **positif ou nul** à l'extérieur de ses racines, **négatif** entre les racines.\n\n**Tableau de signes** :\n\n| $x$ | $-\\infty$ | | $-3$ | | $1$ | | $+\\infty$ |\n|-----|-----------|---|------|---|-----|---|-----------|\n| $x^2 + 2x - 3$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n\nL'inégalité $x^2 + 2x - 3 \\geq 0$ est donc vérifiée pour :\n$$\\mathcal{S} = \\, ]-\\infty \\, ; \\, -3] \\cup [1 \\, ; \\, +\\infty[.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-second-degre-006",
+    "chapter": "second-degre",
+    "title": "Lecture graphique d'une parabole",
+    "difficulty": 1,
+    "estimatedMinutes": 8,
+    "order": 60,
+    "tags": ["lecture-graphique", "parabole", "racines", "sommet", "signe-trinome"],
+    "preamble": "La figure ci-dessous représente la courbe $\\mathcal{C}_f$ d'une fonction $f$ du second degré, sur l'intervalle $[-3 \\, ; \\, 5]$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "second-degre/parabole-positive-racines.svg",
+        "alt": "Parabole tournée vers le haut représentant la fonction f, racines en -1 et 3, sommet S(1, -4)",
+        "width": 400,
+        "height": 320
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Sur le graphique, lire les racines de $f$ ainsi que les coordonnées du sommet $S$.",
+        "hints": [
+          "Les racines correspondent aux abscisses des points où la courbe coupe l'axe $Ox$.",
+          "Le sommet est le point le plus « bas » de la parabole (car la parabole est tournée vers le haut).",
+          "Racines : $-1$ et $3$. Sommet : $S(1 \\, ; \\, -4)$."
+        ],
+        "expectedAnswer": "Racines $-1$ et $3$ ; $S(1 \\, ; \\, -4)$",
+        "solution": "Sur le graphique :\n- la courbe coupe l'axe $Ox$ aux points d'abscisses $-1$ et $3$ : ce sont les racines de $f$, $x_1 = -1$ et $x_2 = 3$ ;\n- le point le plus bas de la courbe (sommet) a pour coordonnées $(1 \\, ; \\, -4)$ ; ainsi $S(1 \\, ; \\, -4)$, donc $\\alpha = 1$ et $\\beta = -4$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Sans calcul, donner le signe de $f$ sur chacun des intervalles $]-\\infty \\, ; \\, -1[$, $]-1 \\, ; \\, 3[$ et $]3 \\, ; \\, +\\infty[$.",
+        "hints": [
+          "Le coefficient $a$ de $f$ est positif (parabole tournée vers le haut). Applique la règle « même signe que $a$ sauf entre les racines ».",
+          "$f$ est positif à l'extérieur des racines et négatif entre les racines.",
+          "$f > 0$ sur $]-\\infty \\, ; \\, -1[$ et $]3 \\, ; \\, +\\infty[$, $f < 0$ sur $]-1 \\, ; \\, 3[$."
+        ],
+        "expectedAnswer": "$f > 0$ sur $]-\\infty\\,;\\,-1[ \\cup ]3\\,;\\,+\\infty[$, $f < 0$ sur $]-1\\,;\\,3[$",
+        "solution": "Comme la parabole est tournée vers le haut, $a > 0$. La règle de signe donne :\n- $f(x) > 0$ pour $x \\in \\, ]-\\infty \\, ; \\, -1[ \\, \\cup \\, ]3 \\, ; \\, +\\infty[$ (extérieur des racines) ;\n- $f(x) < 0$ pour $x \\in \\, ]-1 \\, ; \\, 3[$ (entre les racines) ;\n- $f(-1) = f(3) = 0$.\n\nVisuellement : la courbe est au-dessus de l'axe $Ox$ « à l'extérieur » et en dessous « entre » les racines."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Déterminer une expression de $f(x)$ sous forme factorisée, puis sous forme développée.",
+        "hints": [
+          "La forme factorisée est $f(x) = a(x - x_1)(x - x_2)$. Tu connais $x_1$, $x_2$ et le signe de $a$ ; lis sur le graphique une valeur supplémentaire (par exemple $f(0)$) pour déterminer $a$.",
+          "Sur la figure, on lit $f(0) = -3$. Donc $a(0 + 1)(0 - 3) = -3$, soit $-3a = -3$, d'où $a = 1$.",
+          "$f(x) = (x + 1)(x - 3) = x^2 - 2x - 3$."
+        ],
+        "expectedAnswer": "$f(x) = (x + 1)(x - 3) = x^2 - 2x - 3$",
+        "solution": "Comme $f$ admet $-1$ et $3$ pour racines, on peut écrire :\n$$f(x) = a(x - (-1))(x - 3) = a(x + 1)(x - 3).$$\n\nPour déterminer $a$, on lit une autre valeur sur le graphique. On observe que la courbe coupe l'axe $Oy$ en $f(0) = -3$. Or :\n$$f(0) = a \\times (0 + 1) \\times (0 - 3) = -3a.$$\n\nEn identifiant : $-3a = -3$, donc $a = 1$.\n\nLa forme factorisée est :\n$$f(x) = (x + 1)(x - 3).$$\n\nEn développant :\n$$f(x) = x^2 - 3x + x - 3 = x^2 - 2x - 3.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-second-degre-007",
+    "chapter": "second-degre",
+    "title": "Optimisation : aire maximale d'un enclos rectangulaire",
+    "difficulty": 2,
+    "estimatedMinutes": 12,
+    "order": 70,
+    "tags": ["modelisation", "optimisation", "forme-canonique", "extremum"],
+    "preamble": "Un éleveur dispose de $40$ m de clôture pour fabriquer un enclos rectangulaire à l'intérieur d'un champ. On note $x$ (en mètres) la longueur d'un côté de cet enclos, avec $0 < x < 20$, et on note $\\mathcal{A}(x)$ son aire, exprimée en mètres carrés.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que, pour tout $x \\in \\, ]0 \\, ; \\, 20[$, $\\mathcal{A}(x) = x(20 - x)$.",
+        "hints": [
+          "Le périmètre du rectangle vaut $40$, donc la somme longueur + largeur vaut $20$. Si un côté mesure $x$, l'autre vaut $20 - x$.",
+          "L'aire d'un rectangle est le produit longueur $\\times$ largeur.",
+          "$\\mathcal{A}(x) = x \\times (20 - x)$."
+        ],
+        "expectedAnswer": "$\\mathcal{A}(x) = x(20 - x)$",
+        "solution": "Le périmètre du rectangle vaut $40$ m, soit $2 \\times (\\text{longueur} + \\text{largeur}) = 40$. Donc la somme d'un côté et du côté adjacent vaut $\\dfrac{40}{2} = 20$ m.\n\nSi l'un des côtés mesure $x$ m, l'autre mesure $20 - x$ m. L'aire du rectangle est :\n$$\\mathcal{A}(x) = x \\times (20 - x).$$\n\nLa condition $0 < x < 20$ assure que les deux côtés sont strictement positifs."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Développer $\\mathcal{A}(x)$, puis mettre $\\mathcal{A}(x)$ sous forme canonique.",
+        "hints": [
+          "Développe $x(20 - x)$ pour obtenir une forme développée $ax^2 + bx + c$ avec $a < 0$.",
+          "Identifie $a$, $b$, $c$ puis calcule $\\alpha = -\\dfrac{b}{2a}$ et $\\beta = \\mathcal{A}(\\alpha)$.",
+          "Forme développée : $\\mathcal{A}(x) = -x^2 + 20x$. Forme canonique : $\\mathcal{A}(x) = -(x - 10)^2 + 100$."
+        ],
+        "expectedAnswer": "$\\mathcal{A}(x) = -x^2 + 20x = -(x - 10)^2 + 100$",
+        "solution": "**Développement.** On distribue :\n$$\\mathcal{A}(x) = x \\times 20 - x \\times x = 20x - x^2 = -x^2 + 20x.$$\n\n**Forme canonique.** On a $a = -1$, $b = 20$, $c = 0$. L'abscisse du sommet est :\n$$\\alpha = -\\dfrac{b}{2a} = -\\dfrac{20}{-2} = 10.$$\n\nL'ordonnée du sommet est :\n$$\\beta = \\mathcal{A}(10) = -100 + 200 = 100.$$\n\nDonc, pour tout $x \\in \\mathbb{R}$ :\n$$\\mathcal{A}(x) = -(x - 10)^2 + 100.$$\n\n**Vérification** : $-(x - 10)^2 + 100 = -(x^2 - 20x + 100) + 100 = -x^2 + 20x - 100 + 100 = -x^2 + 20x$. ✓"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "En déduire la valeur de $x$ pour laquelle l'aire est maximale, ainsi que cette aire maximale.",
+        "hints": [
+          "Sous la forme canonique $\\mathcal{A}(x) = -(x - 10)^2 + 100$ avec $a = -1 < 0$, $\\mathcal{A}$ admet un maximum en $\\alpha$.",
+          "Le terme $-(x - 10)^2$ est toujours négatif ou nul, donc $\\mathcal{A}(x) \\leq 100$ pour tout $x$, avec égalité si et seulement si $x = 10$.",
+          "L'aire est maximale pour $x = 10$ m : l'aire maximale vaut $100$ m$^2$ (l'enclos optimal est un carré de côté $10$ m)."
+        ],
+        "expectedAnswer": "$x = 10$ m, aire maximale $= 100$ m$^2$ (carré)",
+        "solution": "Sous la forme canonique $\\mathcal{A}(x) = -(x - 10)^2 + 100$, le terme $-(x - 10)^2$ est toujours **négatif ou nul** (carré multiplié par $-1$), avec égalité si et seulement si $x = 10$.\n\nDonc, pour tout $x \\in \\, ]0 \\, ; \\, 20[$ :\n$$\\mathcal{A}(x) \\leq 100,$$\n\navec égalité **uniquement** pour $x = 10$.\n\n**Conclusion** : l'aire est maximale lorsque $x = 10$ m, et cette aire maximale vaut $100$ m$^2$. L'enclos optimal est alors le carré de côté $10$ m (l'autre côté valant aussi $20 - 10 = 10$ m)."
+      }
+    ]
+  },
+  {
+    "id": "c-second-degre-008",
+    "chapter": "second-degre",
+    "title": "Trajectoire d'un objet lancé",
+    "difficulty": 3,
+    "estimatedMinutes": 14,
+    "order": 80,
+    "tags": ["modelisation", "racines", "forme-canonique", "extremum"],
+    "preamble": "On lance verticalement un objet vers le haut depuis le sol. Sa hauteur $h$ (en mètres) au-dessus du sol à l'instant $t$ (en secondes) est modélisée par :\n\n$$h(t) = -5t^2 + 20t \\quad \\text{pour } t \\geq 0.$$",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Déterminer l'instant $t$ auquel l'objet retombe au sol.",
+        "hints": [
+          "L'objet est au sol lorsque $h(t) = 0$. Résous cette équation.",
+          "Factorise $h(t) = -5t(t - 4)$ et utilise le fait qu'un produit est nul ssi au moins un facteur est nul.",
+          "$h(t) = 0 \\iff t = 0$ ou $t = 4$. On retient $t = 4$ s (l'instant de retour)."
+        ],
+        "expectedAnswer": "$t = 4$ secondes",
+        "solution": "On résout l'équation $h(t) = 0$, c'est-à-dire $-5t^2 + 20t = 0$.\n\nOn factorise :\n$$-5t^2 + 20t = -5t(t - 4).$$\n\nUn produit est nul si et seulement si l'un de ses facteurs est nul, donc :\n$$h(t) = 0 \\iff t = 0 \\text{ ou } t = 4.$$\n\nLa solution $t = 0$ correspond à l'instant initial (l'objet est au sol au moment du lancer). L'objet **retombe au sol** à l'instant $t = 4$ secondes."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Mettre $h(t)$ sous forme canonique, puis en déduire la hauteur maximale atteinte par l'objet et l'instant où elle est atteinte.",
+        "hints": [
+          "Calcule $\\alpha = -\\dfrac{b}{2a}$ et $\\beta = h(\\alpha)$, puis écris $h(t) = a(t - \\alpha)^2 + \\beta$.",
+          "Ici $a = -5$, $b = 20$, donc $\\alpha = -\\dfrac{20}{-10} = 2$ et $\\beta = h(2) = -20 + 40 = 20$.",
+          "$h(t) = -5(t - 2)^2 + 20$. Hauteur maximale $= 20$ m, atteinte à $t = 2$ s."
+        ],
+        "expectedAnswer": "$h(t) = -5(t - 2)^2 + 20$ ; hauteur max $20$ m à $t = 2$ s",
+        "solution": "**Forme canonique.** On a $a = -5$, $b = 20$, $c = 0$. L'abscisse du sommet est :\n$$\\alpha = -\\dfrac{b}{2a} = -\\dfrac{20}{2 \\times (-5)} = -\\dfrac{20}{-10} = 2.$$\n\nL'ordonnée du sommet est :\n$$\\beta = h(2) = -5 \\times 4 + 40 = -20 + 40 = 20.$$\n\nDonc :\n$$h(t) = -5(t - 2)^2 + 20.$$\n\n**Hauteur maximale.** Comme $a = -5 < 0$, le terme $-5(t - 2)^2$ est toujours négatif ou nul, donc $h(t) \\leq 20$ pour tout $t$, avec égalité si et seulement si $t = 2$.\n\nDonc l'objet atteint sa **hauteur maximale** de $20$ mètres à l'instant $t = 2$ s."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Pendant combien de temps l'objet se trouve-t-il à une hauteur strictement supérieure à $15$ mètres ?",
+        "hints": [
+          "On cherche les instants $t \\in [0 \\, ; \\, 4]$ tels que $h(t) > 15$. Écris l'inéquation et utilise la forme canonique pour la résoudre.",
+          "$-5(t - 2)^2 + 20 > 15 \\iff -5(t - 2)^2 > -5 \\iff (t - 2)^2 < 1$. Résous cette dernière inégalité.",
+          "$(t - 2)^2 < 1 \\iff -1 < t - 2 < 1 \\iff 1 < t < 3$. Donc l'objet est au-dessus de $15$ m sur l'intervalle $]1 \\, ; \\, 3[$, soit pendant $2$ secondes."
+        ],
+        "expectedAnswer": "L'objet est au-dessus de $15$ m pendant $2$ secondes (de $t = 1$ à $t = 3$).",
+        "solution": "On résout l'inéquation $h(t) > 15$ en utilisant la forme canonique :\n$$-5(t - 2)^2 + 20 > 15 \\iff -5(t - 2)^2 > -5.$$\n\nOn divise par $-5$ (négatif), donc on **inverse** le sens de l'inégalité :\n$$(t - 2)^2 < 1.$$\n\nOr $(t - 2)^2 < 1$ équivaut à $|t - 2| < 1$, soit $-1 < t - 2 < 1$, c'est-à-dire :\n$$1 < t < 3.$$\n\n**Conclusion.** L'objet se trouve à une hauteur strictement supérieure à $15$ mètres sur l'intervalle $]1 \\, ; \\, 3[$, c'est-à-dire pendant $3 - 1 = 2$ secondes."
+      }
+    ]
+  }
+]
