@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { listChapters } from '@/lib/content-loader';
-import { daysUntilExam } from '@/lib/exam-date';
 import { useAppStore } from '@/stores/app-store';
 import { useProgressStore } from '@/stores/progress-store';
 
@@ -10,7 +9,6 @@ export default function HomePage() {
   const automatismsDone = useProgressStore((s) => s.countSucceeded('automatism'));
   const classicsDone = useProgressStore((s) => s.countSucceeded('classic'));
   const examsDone = useProgressStore((s) => s.countSucceeded('exam'));
-  const days = daysUntilExam();
 
   return (
     <div className="mx-auto max-w-4xl space-y-8 p-8">
@@ -24,9 +22,6 @@ export default function HomePage() {
           <span className="font-medium text-slate-800">
             vendredi 12 juin 2026, 8h-10h, sans calculatrice, coefficient 2.
           </span>
-        </p>
-        <p className="mt-1 text-sm text-blue-700">
-          {days > 0 ? `Il reste ${days} jour${days > 1 ? 's' : ''} avant l'épreuve.` : "C'est aujourd'hui !"}
         </p>
       </section>
 
