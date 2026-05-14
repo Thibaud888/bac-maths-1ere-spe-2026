@@ -165,7 +165,74 @@ function hasBlockMarkdown(text: string): boolean {
   if (text.includes('\n\n')) return true;
   return text
     .split('\n')
-    .some((line) => /^- /.test(line) || line.trim().startsWith('|'));
+    .some((line) => /^\s*- /.test(line) || line.trim().startsWith('|'));
+}
+
+type ListItem = {
+  content: string;
+  children: ListItem[];
+};
+
+function getIndent(line: string): number {
+  const m = /^(\s*)/.exec(line);
+  return m && m[1] !== undefined ? m[1].length : 0;
+}
+
+function isListLine(line: string): boolean {
+  return /^\s*- /.test(line);
+}
+
+function parseListItems(lines: string[], baseIndent: number): ListItem[] {
+  const items: ListItem[] = [];
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    if (line === undefined) break;
+    const indent = getIndent(line);
+    if (indent < baseIndent || !isListLine(line)) break;
+    if (indent !== baseIndent) {
+      i++;
+      continue;
+    }
+    const content = line.slice(baseIndent + 2);
+    i++;
+    const childLines: string[] = [];
+    while (i < lines.length) {
+      const next = lines[i];
+      if (next === undefined || getIndent(next) <= baseIndent) break;
+      childLines.push(next);
+      i++;
+    }
+    let children: ListItem[] = [];
+    if (childLines.length > 0) {
+      const first = childLines[0];
+      if (first !== undefined) {
+        children = parseListItems(childLines, getIndent(first));
+      }
+    }
+    items.push({ content, children });
+  }
+  return items;
+}
+
+function renderList(items: ListItem[], keyPrefix: string): ReactNode {
+  return (
+    <ul
+      key={keyPrefix}
+      className="my-2 ml-5 list-disc space-y-1 first:mt-0 last:mb-0"
+    >
+      {items.map((item, idx) => (
+        <li key={`l${idx}`}>
+          {renderInlineSegments(
+            parseSegments(item.content),
+            `${keyPrefix}-l${idx}`
+          )}
+          {item.children.length > 0 &&
+            renderList(item.children, `${keyPrefix}-l${idx}-c`)}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 function TextWithMathImpl({ text, className }: TextWithMathProps) {
@@ -184,24 +251,13 @@ function TextWithMathImpl({ text, className }: TextWithMathProps) {
           return renderMarkdownTable(block, `b${bIdx}`);
         }
         const lines = block.split('\n').filter((line) => line.length > 0);
-        const isList =
-          lines.length > 0 && lines.every((line) => line.startsWith('- '));
+        const isList = lines.length > 0 && lines.every(isListLine);
         if (isList) {
-          return (
-            <ul
-              key={`b${bIdx}`}
-              className="my-2 ml-5 list-disc space-y-1 first:mt-0 last:mb-0"
-            >
-              {lines.map((line, lIdx) => (
-                <li key={`b${bIdx}-l${lIdx}`}>
-                  {renderInlineSegments(
-                    parseSegments(line.slice(2)),
-                    `b${bIdx}-l${lIdx}`
-                  )}
-                </li>
-              ))}
-            </ul>
-          );
+          const firstLine = lines[0];
+          if (firstLine !== undefined) {
+            const items = parseListItems(lines, getIndent(firstLine));
+            return renderList(items, `b${bIdx}`);
+          }
         }
         return (
           <div

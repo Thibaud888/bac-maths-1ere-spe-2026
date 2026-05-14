@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import ExerciseRunner from '@/components/exercises/ExerciseRunner';
+import { TextWithMath } from '@/components/math/TextWithMath';
 import { getChapterContent } from '@/lib/content-loader';
 import type { ChapterSlug, ClassicExercise } from '@/lib/types';
 import { useProgressStore, type ItemProgress } from '@/stores/progress-store';
@@ -114,7 +115,7 @@ export default function ClassicsPage() {
                     />
                     <div className="min-w-0">
                       <p className="truncate text-sm font-medium text-slate-900">
-                        {exo.title}
+                        <TextWithMath text={exo.title} />
                       </p>
                       <p className="text-xs text-slate-500">
                         {difficultyLabel[exo.difficulty]} · ~{exo.estimatedMinutes} min · {total} question{total > 1 ? 's' : ''}

@@ -37,7 +37,7 @@ export default function ExerciseRunner({
             ~{exercise.estimatedMinutes} min
           </p>
           <h2 className="mt-1 text-lg font-semibold text-slate-900">
-            {exercise.title}
+            <TextWithMath text={exercise.title} />
           </h2>
         </div>
         {onClose && (

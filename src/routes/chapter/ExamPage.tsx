@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import ExamRunner from '@/components/exam/ExamRunner';
+import { TextWithMath } from '@/components/math/TextWithMath';
 import { getChapterContent } from '@/lib/content-loader';
 import { leafIds } from '@/lib/exam-utils';
 import type { ChapterSlug, ExamExercise } from '@/lib/types';
@@ -116,7 +117,7 @@ export default function ExamPage() {
                     />
                     <div className="min-w-0">
                       <p className="truncate text-sm font-medium text-slate-900">
-                        {exo.title}
+                        <TextWithMath text={exo.title} />
                       </p>
                       <p className="text-xs text-slate-500">
                         {difficultyLabel[exo.difficulty]} · {exo.totalMarks} pts · ~{exo.estimatedMinutes} min · {total} question{total > 1 ? 's' : ''}
