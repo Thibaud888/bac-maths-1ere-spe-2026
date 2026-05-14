@@ -21,7 +21,7 @@ export default function ExamRunner({ exercise, onClose }: ExamRunnerProps) {
             Type bac · {exercise.totalMarks} pts · ~{exercise.estimatedMinutes} min
           </p>
           <h2 className="mt-1 text-lg font-semibold text-slate-900">
-            {exercise.title}
+            <TextWithMath text={exercise.title} />
           </h2>
           {exercise.inspiredBy && (
             <p className="mt-1 text-xs text-slate-500">

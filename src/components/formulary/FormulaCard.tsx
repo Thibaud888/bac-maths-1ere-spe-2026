@@ -51,7 +51,7 @@ export default function FormulaCard({ formula, index }: FormulaCardProps) {
             {index}
           </span>
           <h3 className="text-sm font-semibold text-slate-900">
-            {formula.title}
+            <TextWithMath text={formula.title} />
           </h3>
         </div>
         <span
