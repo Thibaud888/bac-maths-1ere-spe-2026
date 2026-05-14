@@ -102,10 +102,12 @@ function isTableSeparatorRow(line: string): boolean {
 
 function isMarkdownTable(block: string): boolean {
   const lines = block.split('\n').filter((l) => l.trim().length > 0);
+  if (lines.length < 3) return false;
+  const separator = lines[1];
+  if (separator === undefined) return false;
   return (
-    lines.length >= 3 &&
     lines.every((l) => l.trim().startsWith('|')) &&
-    isTableSeparatorRow(lines[1])
+    isTableSeparatorRow(separator)
   );
 }
 
@@ -118,7 +120,9 @@ function parseTableCells(line: string): string[] {
 
 function renderMarkdownTable(block: string, keyPrefix: string): ReactNode {
   const lines = block.split('\n').filter((l) => l.trim().length > 0);
-  const headers = parseTableCells(lines[0]);
+  const headerLine = lines[0];
+  if (headerLine === undefined) return null;
+  const headers = parseTableCells(headerLine);
   const rows = lines.slice(2).map(parseTableCells);
   return (
     <div key={keyPrefix} className="my-3 overflow-x-auto first:mt-0 last:mb-0">
