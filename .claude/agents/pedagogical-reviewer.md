@@ -115,6 +115,16 @@ Pour les exercices avec `hints`, les 3 indices doivent être véritablement prog
 - Pas de doublon d'id avec le contenu existant (vérifier avec Glob + Read sur les autres fichiers du chapitre)
 - IDs descriptifs (pas `f-suites-1`, mais `f-suite-arith-terme-general`)
 
+## J. Champ `simplified` (formulas.json uniquement)
+
+Si le champ `simplified` est présent sur une formule, vérifier :
+
+1. **KaTeX** : `simplified.core` doit compiler en KaTeX. En particulier, pas de `\text{...}` avec des accents non échappés (ex. `\text{dérivée}` est invalide — écrire en dehors du `\text` ou utiliser `\text{derivee}`).
+2. **Notation BO** : `simplified.mnemonic` ne doit pas introduire de notation non conforme au BO. Interdit : `u(n)` pour le terme général (utiliser `u_n`), `f^{(1)}` pour la dérivée, etc.
+3. **Unicité du `keyword`** : deux formules du même chapitre ne doivent pas avoir le même `keyword`. Vérifier l'ensemble du fichier. Défaut **bloquant** si collision.
+4. **Longueur du `core`** : le `core` doit être strictement plus court que le `statement` original (sanity check : si `core.length >= statement.length`, signal d'alerte). Défaut non bloquant si légèrement dépassé pour cause de LaTeX verbeux, mais bloquant si le `core` est un copier-coller du `statement`.
+5. **Cohérence accent/level** : si `accent` est présent et différent du défaut pour le `level` (essentiel→red, a-connaitre→blue, approfondissement→amber), vérifier qu'une cohérence sémantique justifie l'override. Défaut non bloquant — signaler uniquement si incohérence flagrante.
+
 ## I. Distracteurs (QCM uniquement)
 
 Pour les automatismes `qcm`, les choix incorrects doivent correspondre à des **erreurs typiques d'élèves**, pas à du remplissage aléatoire. Exemple :

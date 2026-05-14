@@ -70,6 +70,40 @@
       "type": "array",
       "items": {"type": "string", "pattern": "^f-[a-z0-9-]+$"},
       "description": "IDs d'autres cartes liées (formule réciproque, formule générale, etc.)"
+    },
+    "simplified": {
+      "type": "object",
+      "description": "Version condensée de la formule, optimisée pour la mémorisation. Utilisée en mode Simplifié de la page Formulaire.",
+      "required": ["core"],
+      "additionalProperties": false,
+      "properties": {
+        "core": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 280,
+          "description": "Formule nue en LaTeX/Markdown ($...$ ou $$...$$). Aucune phrase d'introduction."
+        },
+        "mnemonic": {
+          "type": "string",
+          "maxLength": 140,
+          "description": "Phrase courte / moyen mnémotechnique. Ex. : 'dérivée du haut fois le bas…'"
+        },
+        "keyword": {
+          "type": "string",
+          "maxLength": 32,
+          "description": "Mot-clé unique de récupération mémorielle (1-3 mots)."
+        },
+        "visual": {
+          "type": "string",
+          "maxLength": 280,
+          "description": "Repère visuel textuel (image mentale). Ex. : 'parabole creuse vers le haut'. Markdown + LaTeX autorisés."
+        },
+        "accent": {
+          "type": "string",
+          "enum": ["red", "blue", "amber", "emerald", "violet", "slate"],
+          "description": "Couleur d'accent Tailwind pour ancrage visuel. Par défaut : dérivé du level."
+        }
+      }
     }
   }
 }

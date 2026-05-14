@@ -113,6 +113,41 @@ Cible : ~50 % `essentiel`, ~40 % `a-connaitre`, ~10 % `approfondissement`.
 
 `tags` : 2-4 mots-clés courts, en `kebab-case` (ex. `arithmétique`, `terme-general`, `recurrence-non-formelle`).
 
+### Champ `simplified` — version mémorisation
+
+**Chaque formule doit comporter un champ `simplified`** (objet), sauf si une consigne explicite dit de l'omettre. Il est affiché en mode « Simplifié » de l'app, qui remplace la fiche détaillée par une fiche condensée aidant à la mémorisation.
+
+Sous-champs :
+
+| Champ | Requis | Max | Rôle pédagogique |
+|---|---|---|---|
+| `core` | ✅ | 280 car. | Formule nue, LaTeX/Markdown **sans phrase d'introduction**. C'est l'essentiel à retenir. |
+| `mnemonic` | ✗ | 140 car. | Phrase-ancre verbale courte. Ex. : *"dérivée du haut fois le bas, moins le haut fois dérivée du bas, sur le bas au carré"*. En français simple, pas de LaTeX si possible. |
+| `keyword` | ✗ | 32 car. | Un mot ou expression unique servant d'indice de récupération mémorielle. Doit être **unique au sein du chapitre** (pas deux formules avec le même keyword). |
+| `visual` | ✗ | 280 car. | Image mentale textuelle. Ex. : *"parabole creuse vers le haut si $a > 0$"*. Markdown + LaTeX autorisés. |
+| `accent` | ✗ | — | Couleur Tailwind parmi `red`, `blue`, `amber`, `emerald`, `violet`, `slate`. Par défaut dérivé du `level` (essentiel→red, à-connaître→blue, approfondissement→amber). À surcharger uniquement si une cohérence sémantique forte le justifie (ex. tout un bloc de formules trigo en violet). |
+
+**Règles de rédaction du `core` :**
+- Commencer directement par la formule : ❌ `"Soit $f$ dérivable. On a $f'(x) = …$"` → ✅ `"$$f'(x) = …$$"`
+- Utiliser `$$...$$` pour les formules bloc, `$...$` pour les formules inline
+- Maximum une formule principale (pas une liste de 4 cas)
+- Si la formule a plusieurs variantes importantes, choisir la forme la plus opérationnelle pour le bac
+
+**Convention de cohérence des couleurs d'accent :**
+- Dans un même chapitre, utiliser la même couleur pour les formules d'un même bloc logique
+- Ne pas surcharger toutes les formules d'un accent différent (réserver les overrides à 20 % max des formules)
+
+**Exemple :**
+```json
+"simplified": {
+  "core": "$$\\Delta = b^2 - 4ac$$",
+  "mnemonic": "b carré moins 4ac",
+  "keyword": "discriminant",
+  "visual": "signe de Δ → nombre de racines : positif = 2, nul = 1, négatif = 0",
+  "accent": "red"
+}
+```
+
 ## `automatisms.json` — QCM Partie 1
 
 12-20 items par chapitre, catégorisés selon les 6 domaines de la note de service (cf. SKILL.md § 3) :

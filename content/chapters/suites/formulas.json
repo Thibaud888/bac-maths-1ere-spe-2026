@@ -8,7 +8,13 @@
     "example": "Suite définie par $u_0 = 1$ et $u_{n+1} = 2u_n + 1$ : on a $u_1 = 3$, $u_2 = 7$, $u_3 = 15$.",
     "tags": ["notations", "modes-de-generation", "recurrence", "explicite"],
     "order": 10,
-    "level": "essentiel"
+    "level": "essentiel",
+    "simplified": {
+      "core": "**Explicite :** $u_n = f(n)$\n\n**Par recurrence :** $u_0$ donne, $u_{n+1} = f(u_n)$",
+      "mnemonic": "Explicite : formule directe en $n$. Recurrence : on part du debut et on enchaine.",
+      "keyword": "definition-suite",
+      "visual": "Deux chemins pour decrire une suite : la formule directe ou le relais de terme en terme."
+    }
   },
   {
     "id": "f-suite-sens-variation",
@@ -19,7 +25,13 @@
     "example": "Si $u_n = n^2$, alors $u_{n+1} - u_n = (n+1)^2 - n^2 = 2n + 1 > 0$ pour tout $n \\in \\mathbb{N}$, donc $(u_n)$ est croissante.",
     "tags": ["sens-de-variation", "monotonie"],
     "order": 20,
-    "level": "essentiel"
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$u_{n+1} - u_n > 0 \\Rightarrow \\text{croissante}$$\n$$u_{n+1} - u_n < 0 \\Rightarrow \\text{decroissante}$$",
+      "mnemonic": "Signe de la difference : positif = monte, negatif = descend.",
+      "keyword": "monotonie",
+      "visual": "Calculer $u_{n+1} - u_n$ et lire son signe."
+    }
   },
   {
     "id": "f-suite-arith-definition",
@@ -31,7 +43,13 @@
     "example": "La suite $u_n$ définie par $u_0 = 5$ et $u_{n+1} = u_n - 3$ est arithmétique de raison $r = -3$.",
     "tags": ["suite-arithmetique", "raison", "recurrence"],
     "order": 30,
-    "level": "essentiel"
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$u_{n+1} = u_n + r$$",
+      "mnemonic": "Arithmetique = on ajoute toujours la meme raison $r$.",
+      "keyword": "arith-recurrence",
+      "visual": "Escalier regulier : chaque marche a la meme hauteur $r$."
+    }
   },
   {
     "id": "f-suite-arith-terme-general",
@@ -43,7 +61,13 @@
     "tags": ["suite-arithmetique", "terme-general"],
     "order": 40,
     "level": "essentiel",
-    "relatedFormulas": ["f-suite-arith-definition"]
+    "relatedFormulas": ["f-suite-arith-definition"],
+    "simplified": {
+      "core": "$$u_n = u_0 + n\\,r$$",
+      "mnemonic": "Terme initial plus $n$ fois la raison.",
+      "keyword": "terme-general-arith",
+      "visual": "Droite affine : partir de $u_0$ et avancer de $r$ a chaque pas."
+    }
   },
   {
     "id": "f-suite-arith-variation",
@@ -54,7 +78,12 @@
     "tags": ["suite-arithmetique", "sens-de-variation", "raison"],
     "order": 50,
     "level": "essentiel",
-    "relatedFormulas": ["f-suite-arith-definition", "f-suite-sens-variation"]
+    "relatedFormulas": ["f-suite-arith-definition", "f-suite-sens-variation"],
+    "simplified": {
+      "core": "$r > 0$ : croissante — $r < 0$ : decroissante — $r = 0$ : constante",
+      "mnemonic": "Le signe de $r$ dicte le sens : positif monte, negatif descend.",
+      "keyword": "variation-arith"
+    }
   },
   {
     "id": "f-suite-arith-lien-affine",
@@ -66,7 +95,13 @@
     "tags": ["suite-arithmetique", "fonction-affine", "lien-fonction"],
     "order": 60,
     "level": "a-connaitre",
-    "relatedFormulas": ["f-suite-arith-terme-general"]
+    "relatedFormulas": ["f-suite-arith-terme-general"],
+    "simplified": {
+      "core": "$u_n = u_0 + nr$ : points $(n\\,;\\,u_n)$ alignes, pente $r$",
+      "mnemonic": "Suite arithmetique = droite discrete : les points sont regulierement espaces.",
+      "keyword": "lien-affine",
+      "visual": "Points en ligne droite sur un graphique, espacement constant en hauteur."
+    }
   },
   {
     "id": "f-somme-entiers-consecutifs",
@@ -77,7 +112,13 @@
     "example": "$1 + 2 + \\cdots + 100 = \\dfrac{100 \\times 101}{2} = 5050$.",
     "tags": ["somme", "entiers", "suite-arithmetique"],
     "order": 70,
-    "level": "essentiel"
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$$",
+      "mnemonic": "$n$ fois $n+1$, divise par 2. Gauss avait 10 ans.",
+      "keyword": "somme-entiers",
+      "visual": "Apparier le premier et le dernier terme : chaque paire vaut $n+1$, il y a $n/2$ paires."
+    }
   },
   {
     "id": "f-suite-arith-somme-generale",
@@ -90,7 +131,13 @@
     "tags": ["suite-arithmetique", "somme", "termes-consecutifs"],
     "order": 80,
     "level": "a-connaitre",
-    "relatedFormulas": ["f-somme-entiers-consecutifs", "f-suite-arith-terme-general"]
+    "relatedFormulas": ["f-somme-entiers-consecutifs", "f-suite-arith-terme-general"],
+    "simplified": {
+      "core": "$$\\text{Somme} = \\text{nb de termes} \\times \\frac{\\text{premier} + \\text{dernier}}{2}$$",
+      "mnemonic": "Nombre de termes fois la moyenne du premier et du dernier.",
+      "keyword": "somme-arith",
+      "visual": "Apparier premier et dernier terme : chaque paire a la meme somme."
+    }
   },
   {
     "id": "f-suite-geom-definition",
@@ -102,7 +149,13 @@
     "example": "La suite définie par $u_0 = 3$ et $u_{n+1} = 2 u_n$ est géométrique de raison $q = 2$ : $u_0 = 3$, $u_1 = 6$, $u_2 = 12$, $u_3 = 24$.",
     "tags": ["suite-geometrique", "raison", "recurrence"],
     "order": 90,
-    "level": "essentiel"
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$u_{n+1} = q \\, u_n$$",
+      "mnemonic": "Geometrique = on multiplie toujours par la meme raison $q$.",
+      "keyword": "geom-recurrence",
+      "visual": "Escalier a marches doublement plus hautes : chaque terme est $q$ fois le precedent."
+    }
   },
   {
     "id": "f-suite-geom-terme-general",
@@ -114,7 +167,13 @@
     "tags": ["suite-geometrique", "terme-general", "puissance"],
     "order": 100,
     "level": "essentiel",
-    "relatedFormulas": ["f-suite-geom-definition"]
+    "relatedFormulas": ["f-suite-geom-definition"],
+    "simplified": {
+      "core": "$$u_n = u_0 \\, q^n$$",
+      "mnemonic": "Terme initial multiplie par $q$ eleve a la puissance $n$.",
+      "keyword": "terme-general-geom",
+      "visual": "Croissance exponentielle : la puissance $n$ fait grandir ou retrecir tres vite."
+    }
   },
   {
     "id": "f-suite-geom-variation",
@@ -126,7 +185,12 @@
     "tags": ["suite-geometrique", "sens-de-variation", "raison"],
     "order": 110,
     "level": "a-connaitre",
-    "relatedFormulas": ["f-suite-geom-definition"]
+    "relatedFormulas": ["f-suite-geom-definition"],
+    "simplified": {
+      "core": "$u_0 > 0$ : $q > 1$ croissante — $0 < q < 1$ decroissante — $q < 0$ alternance",
+      "mnemonic": "Si $u_0 > 0$ : plus grand que 1 monte, entre 0 et 1 descend, negatif alterne.",
+      "keyword": "variation-geom"
+    }
   },
   {
     "id": "f-somme-puissances-q",
@@ -138,7 +202,13 @@
     "example": "$1 + 2 + 4 + 8 + 16 = \\dfrac{1 - 2^5}{1 - 2} = \\dfrac{1 - 32}{-1} = 31$.",
     "tags": ["suite-geometrique", "somme", "puissances"],
     "order": 120,
-    "level": "a-connaitre"
+    "level": "a-connaitre",
+    "simplified": {
+      "core": "$$1 + q + q^2 + \\cdots + q^n = \\frac{1 - q^{n+1}}{1 - q}$$",
+      "mnemonic": "Un moins $q$ expose nombre de termes, divise par un moins $q$.",
+      "keyword": "somme-puissances",
+      "visual": "Le $n+1$ a l'exposant represente le nombre de termes dans la somme."
+    }
   },
   {
     "id": "f-suite-geom-somme-generale",
@@ -151,6 +221,12 @@
     "tags": ["suite-geometrique", "somme", "termes-consecutifs"],
     "order": 130,
     "level": "approfondissement",
-    "relatedFormulas": ["f-somme-puissances-q", "f-suite-geom-terme-general"]
+    "relatedFormulas": ["f-somme-puissances-q", "f-suite-geom-terme-general"],
+    "simplified": {
+      "core": "$$u_0 + u_1 + \\cdots + u_n = u_0 \\times \\frac{1 - q^{n+1}}{1 - q}$$",
+      "mnemonic": "Premier terme fois la formule des puissances de $q$.",
+      "keyword": "somme-geom",
+      "accent": "amber"
+    }
   }
 ]
