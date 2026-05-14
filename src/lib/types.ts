@@ -25,6 +25,16 @@ export type AutomatismDomain =
 
 export type Difficulty = 1 | 2 | 3;
 export type FormulaLevel = 'essentiel' | 'a-connaitre' | 'approfondissement';
+export type FormulaSimplifiedAccent =
+  | 'red' | 'blue' | 'amber' | 'emerald' | 'violet' | 'slate';
+
+export type FormulaSimplified = {
+  core: string;
+  mnemonic?: string;
+  keyword?: string;
+  visual?: string;
+  accent?: FormulaSimplifiedAccent;
+};
 
 export type ChapterMeta = {
   slug: ChapterSlug;
@@ -47,6 +57,7 @@ export type Formula = {
   order?: number;
   level: FormulaLevel;
   relatedFormulas?: string[];
+  simplified?: FormulaSimplified;
 };
 
 export type Automatism = {

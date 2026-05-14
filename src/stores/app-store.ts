@@ -1,5 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import type { ChapterSlug } from '@/lib/types';
+
+export type FormularyViewMode = 'detailed' | 'simplified';
 
 type AppState = {
   lastVisitedChapter: string | null;
@@ -8,6 +11,8 @@ type AppState = {
   setAutomatismTimerEnabled: (enabled: boolean) => void;
   automatismTimerSeconds: number;
   setAutomatismTimerSeconds: (seconds: number) => void;
+  formularyViewMode: Partial<Record<ChapterSlug, FormularyViewMode>>;
+  setFormularyViewMode: (slug: ChapterSlug, mode: FormularyViewMode) => void;
 };
 
 export const useAppStore = create<AppState>()(
@@ -24,6 +29,10 @@ export const useAppStore = create<AppState>()(
       automatismTimerSeconds: 120,
       setAutomatismTimerSeconds: (seconds) => {
         set({ automatismTimerSeconds: seconds });
+      },
+      formularyViewMode: {},
+      setFormularyViewMode: (slug, mode) => {
+        set((s) => ({ formularyViewMode: { ...s.formularyViewMode, [slug]: mode } }));
       },
     }),
     { name: 'bms-2026-app' }

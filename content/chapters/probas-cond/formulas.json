@@ -8,7 +8,13 @@
     "example": "On tire une carte dans un jeu de $32$ cartes. Soit $A$ : « la carte est un roi » et $B$ : « la carte est un coeur ». Alors $A \\cap B$ : « la carte est le roi de coeur » et $A \\cup B$ : « la carte est un roi ou un coeur ».",
     "tags": ["vocabulaire", "intersection", "reunion", "contraire", "incompatibles"],
     "order": 10,
-    "level": "a-connaitre"
+    "level": "a-connaitre",
+    "simplified": {
+      "core": "$A \\cap B$ : « et » ; $A \\cup B$ : « ou » ; $\\overline{A}$ : contraire avec $P(\\overline{A}) = 1 - P(A)$. Incompatibles : $A \\cap B = \\emptyset$.",
+      "mnemonic": "« et » → cap, « ou » → cup, barre = contraire.",
+      "keyword": "vocabulaire",
+      "visual": "Deux disques qui se chevauchent : le recouvrement est l'intersection, l'union est tout le contour, l'extérieur de A est son contraire."
+    }
   },
   {
     "id": "f-pc-conditionnelle-def",
@@ -20,7 +26,13 @@
     "example": "On lance un dé équilibré à six faces. Soit $A$ : « obtenir $6$ » et $B$ : « obtenir un nombre pair ». Alors $P(B) = \\dfrac{1}{2}$, $P(A \\cap B) = P(A) = \\dfrac{1}{6}$ et $P_B(A) = \\dfrac{1/6}{1/2} = \\dfrac{1}{3}$.",
     "tags": ["probabilite-conditionnelle", "definition"],
     "order": 20,
-    "level": "essentiel"
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$P_B(A) = \\dfrac{P(A \\cap B)}{P(B)}$$",
+      "mnemonic": "Sachant B : intersection divisée par la condition.",
+      "keyword": "proba-conditionnelle",
+      "visual": "On se restreint à l'univers réduit B : la mesure de A devient la part de A à l'intérieur de B."
+    }
   },
   {
     "id": "f-pc-intersection",
@@ -33,7 +45,13 @@
     "tags": ["intersection", "probabilite-conditionnelle", "produit"],
     "order": 30,
     "level": "essentiel",
-    "relatedFormulas": ["f-pc-conditionnelle-def"]
+    "relatedFormulas": ["f-pc-conditionnelle-def"],
+    "simplified": {
+      "core": "$$P(A \\cap B) = P(A) \\times P_A(B) = P(B) \\times P_B(A)$$",
+      "mnemonic": "Proba du premier, fois proba du second sachant le premier.",
+      "keyword": "probas-composées",
+      "visual": "Sur un arbre, c'est exactement le produit le long d'un chemin de deux branches."
+    }
   },
   {
     "id": "f-pc-reunion",
@@ -44,7 +62,13 @@
     "example": "Si $P(A) = 0{,}4$, $P(B) = 0{,}5$ et $P(A \\cap B) = 0{,}2$, alors $P(A \\cup B) = 0{,}4 + 0{,}5 - 0{,}2 = 0{,}7$.",
     "tags": ["reunion", "formule-crible", "incompatibles"],
     "order": 40,
-    "level": "a-connaitre"
+    "level": "a-connaitre",
+    "simplified": {
+      "core": "$$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$$",
+      "mnemonic": "On ajoute, puis on retire l'intersection comptée deux fois.",
+      "keyword": "réunion",
+      "visual": "Deux disques qui se chevauchent : on additionne les aires, mais le chevauchement est compté deux fois et doit être retiré une fois."
+    }
   },
   {
     "id": "f-pc-arbre-construction",
@@ -55,7 +79,13 @@
     "example": "Une expérience à deux étapes : on choisit d'abord une urne $U_1$ ou $U_2$, puis on tire une boule rouge $R$ ou verte $V$. L'arbre comporte $2$ branches au niveau $1$ ($U_1$, $U_2$) puis, à partir de chaque urne, $2$ branches au niveau $2$ ($R$, $V$). Sur la branche allant de $U_1$ à $R$, on inscrit $P_{U_1}(R)$.",
     "tags": ["arbre-pondere", "construction", "conditionnelle"],
     "order": 50,
-    "level": "essentiel"
+    "level": "essentiel",
+    "simplified": {
+      "core": "Niveau 1 : probabilités simples $P(B_i)$. Niveaux suivants : probabilités **conditionnelles** $P_{B_i}(A)$. Un chemin = une intersection.",
+      "mnemonic": "Premier niveau brut, ensuite tout est « sachant ».",
+      "keyword": "arbre",
+      "visual": "Un arbre couché : la racine à gauche, les branches s'écartent ; sur chaque branche on lit une probabilité, conditionnelle dès le 2e niveau."
+    }
   },
   {
     "id": "f-pc-arbre-somme-noeud",
@@ -67,7 +97,13 @@
     "tags": ["arbre-pondere", "somme-noeud", "contraire"],
     "order": 60,
     "level": "essentiel",
-    "relatedFormulas": ["f-pc-arbre-construction"]
+    "relatedFormulas": ["f-pc-arbre-construction"],
+    "simplified": {
+      "core": "$$P_B(A) + P_B(\\overline{A}) = 1$$\n\nLa somme des branches issues d'un même nœud vaut $1$.",
+      "mnemonic": "Toutes les branches qui partent d'un nœud somment à 1.",
+      "keyword": "somme-nœud",
+      "visual": "À chaque embranchement, les probabilités lues sur les branches partent du même point et leur total fait pile 1."
+    }
   },
   {
     "id": "f-pc-arbre-produit",
@@ -79,7 +115,13 @@
     "tags": ["arbre-pondere", "produit", "chemin", "intersection"],
     "order": 70,
     "level": "essentiel",
-    "relatedFormulas": ["f-pc-intersection", "f-pc-arbre-construction"]
+    "relatedFormulas": ["f-pc-intersection", "f-pc-arbre-construction"],
+    "simplified": {
+      "core": "$$P(B \\cap A) = P(B) \\times P_B(A)$$\n\nProbabilité d'un chemin = **produit** des branches.",
+      "mnemonic": "Le long d'un chemin, on multiplie.",
+      "keyword": "produit-chemin",
+      "visual": "On suit le chemin de la racine à la feuille en multipliant chaque probabilité rencontrée."
+    }
   },
   {
     "id": "f-pc-arbre-somme-chemins",
@@ -91,7 +133,13 @@
     "tags": ["arbre-pondere", "somme-chemins", "probabilites-totales"],
     "order": 80,
     "level": "essentiel",
-    "relatedFormulas": ["f-pc-arbre-produit", "f-pc-prob-totales"]
+    "relatedFormulas": ["f-pc-arbre-produit", "f-pc-prob-totales"],
+    "simplified": {
+      "core": "$$P(A) = \\sum_{i} P(B_i \\cap A)$$\n\nProbabilité de $A$ = **somme** des chemins qui aboutissent à $A$.",
+      "mnemonic": "Entre chemins, on additionne ; sur un chemin, on multiplie.",
+      "keyword": "somme-chemins",
+      "visual": "Plusieurs chemins arrivent à la même feuille $A$ : on additionne leurs poids respectifs."
+    }
   },
   {
     "id": "f-pc-systeme-complet",
@@ -102,7 +150,13 @@
     "example": "Pour un dé à six faces, les événements $B_1$ : « obtenir $1$ ou $2$ », $B_2$ : « obtenir $3$ ou $4$ » et $B_3$ : « obtenir $5$ ou $6$ » forment un système complet. Pour tout événement $A$, les couples $\\{B, \\overline{B}\\}$ forment toujours un système complet à deux événements.",
     "tags": ["systeme-complet", "partition", "incompatibles"],
     "order": 90,
-    "level": "essentiel"
+    "level": "essentiel",
+    "simplified": {
+      "core": "Deux à deux disjoints **et** réunion = $\\Omega$. Chaque issue tombe dans **un seul** $B_i$.",
+      "mnemonic": "Découpage net de l'univers, sans trou ni chevauchement.",
+      "keyword": "partition",
+      "visual": "L'univers $\\Omega$ est découpé en parts comme un gâteau : aucun morceau ne se chevauche, et tout est couvert."
+    }
   },
   {
     "id": "f-pc-prob-totales",
@@ -115,7 +169,13 @@
     "tags": ["probabilites-totales", "systeme-complet", "partition"],
     "order": 100,
     "level": "essentiel",
-    "relatedFormulas": ["f-pc-systeme-complet", "f-pc-arbre-somme-chemins"]
+    "relatedFormulas": ["f-pc-systeme-complet", "f-pc-arbre-somme-chemins"],
+    "simplified": {
+      "core": "$$P(A) = \\sum_{i=1}^{n} P(B_i) \\times P_{B_i}(A)$$",
+      "mnemonic": "Somme sur la partition : poids de chaque branche fois proba conditionnelle.",
+      "keyword": "probas-totales",
+      "visual": "Sur l'arbre, on additionne tous les chemins qui aboutissent à $A$, chacun étant le produit de ses branches."
+    }
   },
   {
     "id": "f-pc-prob-totales-binaire",
@@ -128,7 +188,13 @@
     "tags": ["probabilites-totales", "contraire", "arbre"],
     "order": 110,
     "level": "a-connaitre",
-    "relatedFormulas": ["f-pc-prob-totales"]
+    "relatedFormulas": ["f-pc-prob-totales"],
+    "simplified": {
+      "core": "$$P(A) = P(B) \\times P_B(A) + P(\\overline{B}) \\times P_{\\overline{B}}(A)$$",
+      "mnemonic": "Cas $B$, cas non-$B$ : on additionne les deux chemins.",
+      "keyword": "totales-binaire",
+      "visual": "Arbre à deux branches au niveau 1 ($B$ et $\\overline{B}$), chacune se ramifie vers $A$ : on additionne les deux produits."
+    }
   },
   {
     "id": "f-pc-independance-def",
@@ -139,7 +205,13 @@
     "example": "On lance deux fois une pièce équilibrée. Soit $A$ : « pile au premier lancer » et $B$ : « pile au second lancer ». Alors $P(A) = P(B) = \\dfrac{1}{2}$ et $P(A \\cap B) = \\dfrac{1}{4} = \\dfrac{1}{2} \\times \\dfrac{1}{2}$ : $A$ et $B$ sont indépendants.",
     "tags": ["independance", "definition", "intersection"],
     "order": 120,
-    "level": "essentiel"
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$P(A \\cap B) = P(A) \\times P(B)$$",
+      "mnemonic": "Indépendants : le produit suffit.",
+      "keyword": "indépendance",
+      "visual": "Aucune influence : connaître l'un ne change rien à la probabilité de l'autre. Ne pas confondre avec « incompatibles » (disjoints)."
+    }
   },
   {
     "id": "f-pc-independance-caracterisation",
@@ -152,7 +224,13 @@
     "tags": ["independance", "caracterisation", "conditionnelle"],
     "order": 130,
     "level": "essentiel",
-    "relatedFormulas": ["f-pc-independance-def", "f-pc-conditionnelle-def"]
+    "relatedFormulas": ["f-pc-independance-def", "f-pc-conditionnelle-def"],
+    "simplified": {
+      "core": "$A$ et $B$ indépendants $\\Longleftrightarrow$ $P_B(A) = P(A)$ (avec $P(B) > 0$).",
+      "mnemonic": "Sachant B ne change rien à A : indépendance.",
+      "keyword": "indép-conditionnelle",
+      "visual": "Connaître B ne déplace pas la probabilité de A : la valeur sachant B est la même que sans conditionner."
+    }
   },
   {
     "id": "f-pc-independance-complementaire",
@@ -164,6 +242,12 @@
     "tags": ["independance", "contraire"],
     "order": 140,
     "level": "a-connaitre",
-    "relatedFormulas": ["f-pc-independance-def"]
+    "relatedFormulas": ["f-pc-independance-def"],
+    "simplified": {
+      "core": "$A, B$ indépendants $\\Longrightarrow$ $A, \\overline{B}$ ; $\\overline{A}, B$ ; $\\overline{A}, \\overline{B}$ sont indépendants.",
+      "mnemonic": "L'indépendance se transmet aux contraires.",
+      "keyword": "indép-contraire",
+      "visual": "Quatre cases du tableau croisé $(A/\\overline{A}) \\times (B/\\overline{B})$ : chacune se calcule en multipliant les marges."
+    }
   }
 ]
