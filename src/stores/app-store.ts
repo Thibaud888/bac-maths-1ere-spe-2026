@@ -13,6 +13,8 @@ type AppState = {
   setAutomatismTimerSeconds: (seconds: number) => void;
   formularyViewMode: Partial<Record<ChapterSlug, FormularyViewMode>>;
   setFormularyViewMode: (slug: ChapterSlug, mode: FormularyViewMode) => void;
+  hiddenFormulas: Partial<Record<ChapterSlug, string[]>>;
+  toggleFormulaHidden: (slug: ChapterSlug, formulaId: string) => void;
 };
 
 export const useAppStore = create<AppState>()(
@@ -33,6 +35,16 @@ export const useAppStore = create<AppState>()(
       formularyViewMode: {},
       setFormularyViewMode: (slug, mode) => {
         set((s) => ({ formularyViewMode: { ...s.formularyViewMode, [slug]: mode } }));
+      },
+      hiddenFormulas: {},
+      toggleFormulaHidden: (slug, formulaId) => {
+        set((s) => {
+          const current = s.hiddenFormulas[slug] ?? [];
+          const next = current.includes(formulaId)
+            ? current.filter((id) => id !== formulaId)
+            : [...current, formulaId];
+          return { hiddenFormulas: { ...s.hiddenFormulas, [slug]: next } };
+        });
       },
     }),
     { name: 'bms-2026-app' }
