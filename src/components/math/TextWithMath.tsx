@@ -7,88 +7,76 @@ type TextWithMathProps = {
   className?: string;
 };
 
-type Segment =
+// Unified token type: bold can contain math, math lives inside or outside bold.
+type Token =
   | { kind: 'text'; value: string }
   | { kind: 'inline'; value: string }
-  | { kind: 'block'; value: string };
+  | { kind: 'block'; value: string }
+  | { kind: 'bold'; children: Token[] };
 
-function parseSegments(input: string): Segment[] {
-  const segments: Segment[] = [];
+function nextSpecialPos(input: string, from: number): number {
+  const candidates: number[] = [];
+  const dd = input.indexOf('$$', from);
+  if (dd !== -1) candidates.push(dd);
+  const star = input.indexOf('**', from);
+  if (star !== -1) candidates.push(star);
+  const d = input.indexOf('$', from);
+  if (d !== -1) candidates.push(d);
+  return candidates.length > 0 ? Math.min(...candidates) : -1;
+}
+
+function tokenize(input: string): Token[] {
+  const tokens: Token[] = [];
   let i = 0;
   while (i < input.length) {
     if (input.startsWith('$$', i)) {
       const end = input.indexOf('$$', i + 2);
-      if (end === -1) {
-        segments.push({ kind: 'text', value: input.slice(i) });
-        break;
+      if (end !== -1) {
+        tokens.push({ kind: 'block', value: input.slice(i + 2, end) });
+        i = end + 2;
+        continue;
       }
-      segments.push({ kind: 'block', value: input.slice(i + 2, end) });
-      i = end + 2;
-      continue;
+    }
+    if (input.startsWith('**', i)) {
+      const end = input.indexOf('**', i + 2);
+      if (end !== -1) {
+        tokens.push({ kind: 'bold', children: tokenize(input.slice(i + 2, end)) });
+        i = end + 2;
+        continue;
+      }
     }
     if (input[i] === '$') {
       const end = input.indexOf('$', i + 1);
-      if (end === -1) {
-        segments.push({ kind: 'text', value: input.slice(i) });
-        break;
+      if (end !== -1) {
+        tokens.push({ kind: 'inline', value: input.slice(i + 1, end) });
+        i = end + 1;
+        continue;
       }
-      segments.push({ kind: 'inline', value: input.slice(i + 1, end) });
-      i = end + 1;
-      continue;
     }
-    const nextDollar = input.indexOf('$', i);
-    if (nextDollar === -1) {
-      segments.push({ kind: 'text', value: input.slice(i) });
+    const next = nextSpecialPos(input, i);
+    if (next === -1) {
+      tokens.push({ kind: 'text', value: input.slice(i) });
       break;
     }
-    segments.push({ kind: 'text', value: input.slice(i, nextDollar) });
-    i = nextDollar;
+    tokens.push({ kind: 'text', value: input.slice(i, next) });
+    i = next;
   }
-  return segments;
+  return tokens;
 }
 
-const BOLD_RE = /\*\*([^*]+?)\*\*/g;
-
-function renderTextWithBold(text: string, keyPrefix: string): ReactNode[] {
+function renderTokens(tokens: Token[], keyPrefix: string): ReactNode[] {
   const out: ReactNode[] = [];
-  let last = 0;
-  let match: RegExpExecArray | null;
-  let counter = 0;
-  BOLD_RE.lastIndex = 0;
-  while ((match = BOLD_RE.exec(text)) !== null) {
-    if (match.index > last) {
-      out.push(
-        <Fragment key={`${keyPrefix}-t${counter++}`}>
-          {text.slice(last, match.index)}
-        </Fragment>
-      );
+  tokens.forEach((token, idx) => {
+    const key = `${keyPrefix}-${idx}`;
+    if (token.kind === 'text') {
+      if (token.value) out.push(<Fragment key={key}>{token.value}</Fragment>);
+    } else if (token.kind === 'inline') {
+      out.push(<MathInline key={key} expr={token.value} />);
+    } else if (token.kind === 'block') {
+      out.push(<MathBlock key={key} expr={token.value} />);
+    } else {
+      out.push(<strong key={key}>{renderTokens(token.children, key)}</strong>);
     }
-    out.push(<strong key={`${keyPrefix}-b${counter++}`}>{match[1]}</strong>);
-    last = match.index + match[0].length;
-  }
-  if (last < text.length) {
-    out.push(
-      <Fragment key={`${keyPrefix}-t${counter++}`}>{text.slice(last)}</Fragment>
-    );
-  }
-  return out;
-}
-
-function renderInlineSegments(
-  segments: Segment[],
-  keyPrefix: string
-): ReactNode[] {
-  const out: ReactNode[] = [];
-  segments.forEach((segment, idx) => {
-    if (segment.kind === 'text') {
-      out.push(...renderTextWithBold(segment.value, `${keyPrefix}-${idx}`));
-      return;
-    }
-    if (segment.kind === 'inline') {
-      out.push(<MathInline key={`${keyPrefix}-${idx}`} expr={segment.value} />);
-      return;
-    }
-    out.push(<MathBlock key={`${keyPrefix}-${idx}`} expr={segment.value} />);
   });
   return out;
 }
@@ -134,7 +122,7 @@ function renderMarkdownTable(block: string, keyPrefix: string): ReactNode {
                 key={i}
                 className="border border-slate-300 bg-slate-100 px-3 py-2 text-center font-semibold text-slate-700"
               >
-                {renderInlineSegments(parseSegments(cell), `${keyPrefix}-h${i}`)}
+                {renderTokens(tokenize(cell), `${keyPrefix}-h${i}`)}
               </th>
             ))}
           </tr>
@@ -147,8 +135,8 @@ function renderMarkdownTable(block: string, keyPrefix: string): ReactNode {
                   key={cIdx}
                   className="border border-slate-300 px-3 py-2 text-center text-slate-700"
                 >
-                  {renderInlineSegments(
-                    parseSegments(cell),
+                  {renderTokens(
+                    tokenize(cell),
                     `${keyPrefix}-r${rIdx}-c${cIdx}`
                   )}
                 </td>
@@ -223,8 +211,8 @@ function renderList(items: ListItem[], keyPrefix: string): ReactNode {
     >
       {items.map((item, idx) => (
         <li key={`l${idx}`}>
-          {renderInlineSegments(
-            parseSegments(item.content),
+          {renderTokens(
+            tokenize(item.content),
             `${keyPrefix}-l${idx}`
           )}
           {item.children.length > 0 &&
@@ -237,9 +225,8 @@ function renderList(items: ListItem[], keyPrefix: string): ReactNode {
 
 function TextWithMathImpl({ text, className }: TextWithMathProps) {
   if (!hasBlockMarkdown(text)) {
-    const segments = parseSegments(text);
     return (
-      <span className={className}>{renderInlineSegments(segments, 'i')}</span>
+      <span className={className}>{renderTokens(tokenize(text), 'i')}</span>
     );
   }
 
@@ -264,7 +251,7 @@ function TextWithMathImpl({ text, className }: TextWithMathProps) {
             key={`b${bIdx}`}
             className="my-2 first:mt-0 last:mb-0"
           >
-            {renderInlineSegments(parseSegments(block), `b${bIdx}`)}
+            {renderTokens(tokenize(block), `b${bIdx}`)}
           </div>
         );
       })}
