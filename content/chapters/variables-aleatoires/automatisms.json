@@ -1,1 +1,332 @@
-[]
+[
+  {
+    "id": "a-va-somme-probas-manquante",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "La variable aléatoire $X$ suit la loi donnée par le tableau ci-dessous. Quelle est la valeur manquante $p$ ?\n\n| $X$ | $0$ | $1$ | $2$ |\n|---|---|---|---|\n| $P(X = x)$ | $\\dfrac{1}{4}$ | $p$ | $\\dfrac{1}{4}$ |",
+    "choices": [
+      "$\\dfrac{1}{4}$",
+      "$\\dfrac{1}{2}$",
+      "$\\dfrac{3}{4}$",
+      "$1$"
+    ],
+    "answer": 1,
+    "explanation": "La somme des probabilités doit valoir $1$ : $\\dfrac{1}{4} + p + \\dfrac{1}{4} = 1$, donc $p = 1 - \\dfrac{1}{2} = \\dfrac{1}{2}$.",
+    "difficulty": 1,
+    "tags": ["loi", "somme-probabilites"]
+  },
+  {
+    "id": "a-va-esperance-simple",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "La variable aléatoire $X$ prend les valeurs $1$, $2$, $3$ avec probabilités $\\dfrac{1}{2}$, $\\dfrac{1}{4}$, $\\dfrac{1}{4}$. Que vaut $E(X)$ ?",
+    "choices": [
+      "$\\dfrac{3}{2}$",
+      "$\\dfrac{7}{4}$",
+      "$2$",
+      "$\\dfrac{5}{4}$"
+    ],
+    "answer": 1,
+    "explanation": "$E(X) = 1 \\times \\dfrac{1}{2} + 2 \\times \\dfrac{1}{4} + 3 \\times \\dfrac{1}{4} = \\dfrac{1}{2} + \\dfrac{1}{2} + \\dfrac{3}{4} = \\dfrac{7}{4}$.",
+    "difficulty": 1,
+    "tags": ["esperance", "calcul-direct"]
+  },
+  {
+    "id": "a-va-esperance-valeurs-negatives",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "La variable aléatoire $X$ prend les valeurs $-1$, $0$, $1$ avec probabilités $\\dfrac{1}{3}$, $\\dfrac{1}{3}$, $\\dfrac{1}{3}$. Que vaut $E(X)$ ?",
+    "choices": [
+      "$1$",
+      "$\\dfrac{1}{3}$",
+      "$0$",
+      "$-\\dfrac{1}{3}$"
+    ],
+    "answer": 2,
+    "explanation": "$E(X) = (-1) \\times \\dfrac{1}{3} + 0 \\times \\dfrac{1}{3} + 1 \\times \\dfrac{1}{3} = -\\dfrac{1}{3} + 0 + \\dfrac{1}{3} = 0$. Par symétrie, l'espérance d'une variable symétrique autour de $0$ est nulle.",
+    "difficulty": 1,
+    "tags": ["esperance", "symetrie"]
+  },
+  {
+    "id": "a-va-esperance-numerique",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "numeric",
+    "statement": "La variable aléatoire $X$ prend les valeurs $0$, $2$, $4$ avec probabilités $\\dfrac{1}{2}$, $\\dfrac{1}{4}$, $\\dfrac{1}{4}$. Calculer $E(X)$.",
+    "answer": "3/2",
+    "tolerance": 0.01,
+    "explanation": "$E(X) = 0 \\times \\dfrac{1}{2} + 2 \\times \\dfrac{1}{4} + 4 \\times \\dfrac{1}{4} = 0 + \\dfrac{1}{2} + 1 = \\dfrac{3}{2}$.",
+    "difficulty": 1,
+    "tags": ["esperance", "calcul-direct"]
+  },
+  {
+    "id": "a-va-linearite-esperance-direct",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On sait que $E(X) = 4$. Que vaut $E(3X - 5)$ ?",
+    "choices": [
+      "$7$",
+      "$12$",
+      "$-5$",
+      "$17$"
+    ],
+    "answer": 0,
+    "explanation": "Par linéarité de l'espérance : $E(3X - 5) = 3 \\times E(X) - 5 = 3 \\times 4 - 5 = 12 - 5 = 7$.",
+    "difficulty": 1,
+    "tags": ["esperance", "linearite", "transformation-affine"]
+  },
+  {
+    "id": "a-va-linearite-esperance-b",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On sait que $E(X) = 5$. Que vaut $E(X + 3)$ ?",
+    "choices": [
+      "$5$",
+      "$8$",
+      "$15$",
+      "$3$"
+    ],
+    "answer": 1,
+    "explanation": "$E(X + 3) = E(X) + 3 = 5 + 3 = 8$. Une translation de $b$ translate l'espérance de $b$.",
+    "difficulty": 1,
+    "tags": ["esperance", "linearite", "translation"]
+  },
+  {
+    "id": "a-va-variance-affine-calcul",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On sait que $V(X) = 4$. Que vaut $V(2X + 1)$ ?",
+    "choices": [
+      "$9$",
+      "$16$",
+      "$10$",
+      "$8$"
+    ],
+    "answer": 1,
+    "explanation": "$V(2X + 1) = 2^2 \\times V(X) = 4 \\times 4 = 16$. La translation ($+1$) ne change pas la variance.",
+    "difficulty": 1,
+    "tags": ["variance", "transformation-affine"]
+  },
+  {
+    "id": "a-va-variance-translation",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On sait que $V(X) = 9$. Que vaut $V(X + 7)$ ?",
+    "choices": [
+      "$9$",
+      "$16$",
+      "$81$",
+      "$2$"
+    ],
+    "answer": 0,
+    "explanation": "$V(X + 7) = V(X) = 9$. Une translation ne modifie pas la variance : déplacer toutes les valeurs du même montant ne change pas leur dispersion.",
+    "difficulty": 1,
+    "tags": ["variance", "translation"]
+  },
+  {
+    "id": "a-va-ecart-type-affine",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On sait que $\\sigma(X) = 3$. Que vaut $\\sigma(2X - 1)$ ?",
+    "choices": [
+      "$5$",
+      "$6$",
+      "$12$",
+      "$3$"
+    ],
+    "answer": 1,
+    "explanation": "$\\sigma(2X - 1) = |2| \\times \\sigma(X) = 2 \\times 3 = 6$. La translation ne change pas l'écart-type.",
+    "difficulty": 1,
+    "tags": ["ecart-type", "transformation-affine"]
+  },
+  {
+    "id": "a-va-variance-koenig-huygens",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $E(X) = 2$ et $E(X^2) = 8$. Que vaut $V(X)$ ?",
+    "choices": [
+      "$4$",
+      "$6$",
+      "$10$",
+      "$12$"
+    ],
+    "answer": 0,
+    "explanation": "Formule de Koenig-Huygens : $V(X) = E(X^2) - (E(X))^2 = 8 - 2^2 = 8 - 4 = 4$.",
+    "difficulty": 2,
+    "tags": ["variance", "koenig-huygens"]
+  },
+  {
+    "id": "a-va-koenig-numerique",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "numeric",
+    "statement": "On donne $E(X) = 3$ et $E(X^2) = 13$. Calculer $V(X)$.",
+    "answer": 4,
+    "tolerance": 0,
+    "explanation": "$V(X) = E(X^2) - (E(X))^2 = 13 - 9 = 4$.",
+    "difficulty": 2,
+    "tags": ["variance", "koenig-huygens"]
+  },
+  {
+    "id": "a-va-ecart-type-calcul",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On donne $E(X) = 1$ et $E(X^2) = 5$. Que vaut $\\sigma(X)$ ?",
+    "choices": [
+      "$2$",
+      "$4$",
+      "$\\sqrt{6}$",
+      "$\\sqrt{4} = 2$"
+    ],
+    "answer": 0,
+    "explanation": "$V(X) = E(X^2) - (E(X))^2 = 5 - 1 = 4$, donc $\\sigma(X) = \\sqrt{4} = 2$.",
+    "difficulty": 2,
+    "tags": ["ecart-type", "variance", "koenig-huygens"]
+  },
+  {
+    "id": "a-va-echantillon-esperance",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Une variable aléatoire $X$ vérifie $E(X) = 3$. On définit $S_{10} = X_1 + \\cdots + X_{10}$ (somme de $10$ copies indépendantes de même loi). Que vaut $E(S_{10})$ ?",
+    "choices": [
+      "$3$",
+      "$13$",
+      "$30$",
+      "$\\sqrt{10} \\times 3$"
+    ],
+    "answer": 2,
+    "explanation": "$E(S_{10}) = 10 \\times E(X) = 10 \\times 3 = 30$. L'espérance de la somme de $n$ copies indépendantes de même loi est $n$ fois l'espérance individuelle.",
+    "difficulty": 2,
+    "tags": ["echantillon", "esperance", "somme"]
+  },
+  {
+    "id": "a-va-echantillon-variance",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Une variable aléatoire $X$ vérifie $V(X) = 4$. Que vaut $V(S_{25})$ où $S_{25}$ est la somme de $25$ copies indépendantes de même loi ?",
+    "choices": [
+      "$4$",
+      "$100$",
+      "$10$",
+      "$400$"
+    ],
+    "answer": 1,
+    "explanation": "$V(S_{25}) = 25 \\times V(X) = 25 \\times 4 = 100$.",
+    "difficulty": 2,
+    "tags": ["echantillon", "variance", "somme"]
+  },
+  {
+    "id": "a-va-echantillon-moyenne-esperance",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Une variable aléatoire $X$ vérifie $E(X) = 5$ et $V(X) = 8$. On note $\\bar{X}_{16}$ la moyenne empirique sur $16$ épreuves indépendantes. Que vaut $V(\\bar{X}_{16})$ ?",
+    "choices": [
+      "$8$",
+      "$128$",
+      "$\\dfrac{1}{2}$",
+      "$4$"
+    ],
+    "answer": 2,
+    "explanation": "$V(\\bar{X}_{16}) = \\dfrac{V(X)}{16} = \\dfrac{8}{16} = \\dfrac{1}{2}$.",
+    "difficulty": 2,
+    "tags": ["echantillon", "moyenne-empirique", "variance"]
+  },
+  {
+    "id": "a-va-echantillon-ecart-type",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Une variable aléatoire $X$ vérifie $\\sigma(X) = 6$. Que vaut $\\sigma(S_4)$ où $S_4$ est la somme de $4$ copies indépendantes de même loi ?",
+    "choices": [
+      "$6$",
+      "$24$",
+      "$12$",
+      "$36$"
+    ],
+    "answer": 2,
+    "explanation": "$\\sigma(S_4) = \\sqrt{4} \\times \\sigma(X) = 2 \\times 6 = 12$.",
+    "difficulty": 2,
+    "tags": ["echantillon", "ecart-type", "somme"]
+  },
+  {
+    "id": "a-va-loi-probabilite-verification",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Parmi les tableaux suivants, lequel définit une loi de probabilité valide pour une variable aléatoire $X$ prenant les valeurs $0$, $1$, $2$ ?\n\nA : $p_0 = 0{,}2 ; p_1 = 0{,}5 ; p_2 = 0{,}3$\nB : $p_0 = 0{,}4 ; p_1 = 0{,}4 ; p_2 = 0{,}4$\nC : $p_0 = -0{,}1 ; p_1 = 0{,}6 ; p_2 = 0{,}5$\nD : $p_0 = 0{,}5 ; p_1 = 0{,}5 ; p_2 = 0{,}1$",
+    "choices": [
+      "Tableau A",
+      "Tableau B",
+      "Tableau C",
+      "Tableau D"
+    ],
+    "answer": 0,
+    "explanation": "Un tableau définit une loi valide si toutes les probabilités sont positives ou nulles et leur somme vaut $1$. Tableau A : $0{,}2 + 0{,}5 + 0{,}3 = 1$ et toutes positives, c'est correct. B : somme $= 1{,}2 \\neq 1$. C : $p_0 < 0$. D : somme $= 1{,}1 \\neq 1$.",
+    "difficulty": 1,
+    "tags": ["loi", "validation", "somme-probabilites"]
+  },
+  {
+    "id": "a-va-retrouver-esperance-depuis-loi",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "Un joueur lance un dé équilibré. Il gagne $2$ € si le résultat est un $6$, et perd $1$ € sinon. Si $G$ est le gain algébrique, que vaut $E(G)$ ?",
+    "choices": [
+      "$\\dfrac{1}{6}$",
+      "$-\\dfrac{1}{2}$",
+      "$0$",
+      "$-\\dfrac{1}{6}$"
+    ],
+    "answer": 1,
+    "explanation": "$G = 2$ avec probabilité $\\dfrac{1}{6}$ (dé tombe sur 6), $G = -1$ avec probabilité $\\dfrac{5}{6}$. Donc $E(G) = 2 \\times \\dfrac{1}{6} + (-1) \\times \\dfrac{5}{6} = \\dfrac{2}{6} - \\dfrac{5}{6} = -\\dfrac{3}{6} = -\\dfrac{1}{2}$.\n\nErreur fréquente : $-\\dfrac{1}{6}$ si on calcule $2 - 1 = 1$ fois $\\dfrac{1}{6}$, ce qui ne tient pas compte du poids $\\dfrac{5}{6}$ sur la perte.",
+    "difficulty": 2,
+    "tags": ["esperance", "jeu", "modelisation"]
+  },
+  {
+    "id": "a-va-variance-depuis-loi-simple",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "$X$ prend les valeurs $0$ et $4$ avec probabilités $\\dfrac{1}{2}$ et $\\dfrac{1}{2}$. Quelle est la variance $V(X)$ ?",
+    "choices": [
+      "$2$",
+      "$4$",
+      "$8$",
+      "$16$"
+    ],
+    "answer": 1,
+    "explanation": "$E(X) = 0 \\times \\dfrac{1}{2} + 4 \\times \\dfrac{1}{2} = 2$. $E(X^2) = 0^2 \\times \\dfrac{1}{2} + 4^2 \\times \\dfrac{1}{2} = 0 + 8 = 8$. $V(X) = 8 - 2^2 = 8 - 4 = 4$.",
+    "difficulty": 2,
+    "tags": ["variance", "koenig-huygens", "calcul-direct"]
+  },
+  {
+    "id": "a-va-retro-linearite",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "type": "qcm",
+    "statement": "On sait que $E(2X + 3) = 11$. Que vaut $E(X)$ ?",
+    "choices": [
+      "$4$",
+      "$7$",
+      "$8$",
+      "$\\dfrac{11}{2}$"
+    ],
+    "answer": 0,
+    "explanation": "$E(2X + 3) = 2 \\times E(X) + 3 = 11$, donc $2 \\times E(X) = 8$, d'où $E(X) = 4$.",
+    "difficulty": 3,
+    "tags": ["esperance", "linearite", "retrouver-esperance"]
+  }
+]
