@@ -3,30 +3,38 @@ import type { Formula, FormulaLevel } from '@/lib/types';
 
 const levelStyle: Record<
   FormulaLevel,
-  { label: string; chip: string; border: string; numBadge: string; bg: string }
+  { label: string; chip: string; border: string; numBadge: string }
 > = {
   essentiel: {
     label: 'Essentiel',
     chip: 'bg-red-100 text-red-700',
     border: 'border-l-red-500',
     numBadge: 'bg-red-500 text-white',
-    bg: 'bg-red-50/40',
   },
   'a-connaitre': {
     label: 'À connaître',
     chip: 'bg-blue-100 text-blue-700',
     border: 'border-l-blue-500',
     numBadge: 'bg-blue-500 text-white',
-    bg: 'bg-blue-50/40',
   },
   approfondissement: {
     label: 'Approfondissement',
     chip: 'bg-amber-100 text-amber-700',
     border: 'border-l-amber-500',
     numBadge: 'bg-amber-500 text-white',
-    bg: 'bg-amber-50/40',
   },
 };
+
+// 6-color cycling palette — warm/cool alternation ensures elegance and no two
+// consecutive cards share the same background.
+const CARD_BG = [
+  'bg-rose-50/80',
+  'bg-sky-50/80',
+  'bg-amber-50/70',
+  'bg-emerald-50/80',
+  'bg-violet-50/70',
+  'bg-teal-50/70',
+] as const;
 
 type FormulaCardProps = {
   formula: Formula;
@@ -42,16 +50,15 @@ export default function FormulaCard({
   onToggleHidden,
 }: FormulaCardProps) {
   const level = levelStyle[formula.level];
+  const bg = CARD_BG[(index - 1) % CARD_BG.length] ?? CARD_BG[0] ?? 'bg-rose-50/80';
+
   return (
     <article
       className={[
-        'rounded border border-l-4 border-slate-200 p-4 shadow-sm transition-opacity',
+        'rounded border border-l-4 border-slate-200 p-4 shadow-sm',
         level.border,
-        level.bg,
-        hidden ? 'opacity-60' : '',
-      ]
-        .filter(Boolean)
-        .join(' ')}
+        bg,
+      ].join(' ')}
     >
       <header className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-2">
@@ -82,11 +89,11 @@ export default function FormulaCard({
           <button
             type="button"
             onClick={onToggleHidden}
-            aria-label={hidden ? 'Afficher cette formule' : 'Masquer cette formule'}
-            title={hidden ? 'Afficher' : 'Masquer'}
+            aria-label={hidden ? 'Développer cette formule' : 'Réduire cette formule'}
+            title={hidden ? 'Développer' : 'Réduire'}
             className="rounded p-1 text-slate-400 hover:bg-white/60 hover:text-slate-700"
           >
-            {hidden ? <EyeOffIcon /> : <EyeIcon />}
+            {hidden ? <ChevronDownIcon /> : <ChevronUpIcon />}
           </button>
         </div>
       </header>
@@ -120,7 +127,7 @@ export default function FormulaCard({
               {formula.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded bg-white/70 px-2 py-0.5 text-xs text-slate-600"
+                  className="rounded bg-white/60 px-2 py-0.5 text-xs text-slate-600"
                 >
                   {tag}
                 </span>
@@ -133,7 +140,7 @@ export default function FormulaCard({
   );
 }
 
-function EyeIcon() {
+function ChevronUpIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -146,13 +153,12 @@ function EyeIcon() {
       className="h-4 w-4"
       aria-hidden="true"
     >
-      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
-      <circle cx="12" cy="12" r="3" />
+      <polyline points="18 15 12 9 6 15" />
     </svg>
   );
 }
 
-function EyeOffIcon() {
+function ChevronDownIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -165,10 +171,7 @@ function EyeOffIcon() {
       className="h-4 w-4"
       aria-hidden="true"
     >
-      <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-6.5 0-10-7-10-7a19.6 19.6 0 0 1 5.06-5.94" />
-      <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c6.5 0 10 7 10 7a19.6 19.6 0 0 1-3.16 4.19" />
-      <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
-      <line x1="2" y1="2" x2="22" y2="22" />
+      <polyline points="6 9 12 15 18 9" />
     </svg>
   );
 }

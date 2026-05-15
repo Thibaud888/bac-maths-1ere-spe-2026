@@ -10,15 +10,6 @@ const accentBorder: Record<FormulaSimplifiedAccent, string> = {
   slate: 'border-l-slate-400',
 };
 
-const accentBg: Record<FormulaSimplifiedAccent, string> = {
-  red: 'bg-red-50/60',
-  blue: 'bg-blue-50/60',
-  amber: 'bg-amber-50/60',
-  emerald: 'bg-emerald-50/60',
-  violet: 'bg-violet-50/60',
-  slate: 'bg-slate-50/80',
-};
-
 const accentChip: Record<FormulaSimplifiedAccent, string> = {
   red: 'bg-red-100 text-red-700',
   blue: 'bg-blue-100 text-blue-700',
@@ -28,20 +19,22 @@ const accentChip: Record<FormulaSimplifiedAccent, string> = {
   slate: 'bg-slate-200 text-slate-700',
 };
 
-const accentVisualBg: Record<FormulaSimplifiedAccent, string> = {
-  red: 'bg-red-100/50 text-red-900',
-  blue: 'bg-blue-100/50 text-blue-900',
-  amber: 'bg-amber-100/50 text-amber-900',
-  emerald: 'bg-emerald-100/50 text-emerald-900',
-  violet: 'bg-violet-100/50 text-violet-900',
-  slate: 'bg-slate-100 text-slate-700',
-};
-
 const defaultAccent: Record<FormulaLevel, FormulaSimplifiedAccent> = {
   essentiel: 'red',
   'a-connaitre': 'blue',
   approfondissement: 'amber',
 };
+
+// 6-color cycling palette — warm/cool alternation, same sequence as FormulaCard
+// so the visual language is consistent across both modes.
+const CARD_PALETTE = [
+  { bg: 'bg-rose-50/80',    visual: 'bg-rose-100/60 text-rose-900' },
+  { bg: 'bg-sky-50/80',     visual: 'bg-sky-100/60 text-sky-900' },
+  { bg: 'bg-amber-50/70',   visual: 'bg-amber-100/60 text-amber-900' },
+  { bg: 'bg-emerald-50/80', visual: 'bg-emerald-100/60 text-emerald-900' },
+  { bg: 'bg-violet-50/70',  visual: 'bg-violet-100/60 text-violet-900' },
+  { bg: 'bg-teal-50/70',    visual: 'bg-teal-100/60 text-teal-900' },
+] as const;
 
 type Props = {
   formula: Formula;
@@ -58,20 +51,18 @@ export default function SimplifiedFormulaCard({
 }: Props) {
   const accent = formula.simplified?.accent ?? defaultAccent[formula.level];
   const s = formula.simplified;
+  const palette = CARD_PALETTE[(index - 1) % CARD_PALETTE.length] ?? CARD_PALETTE[0] ?? { bg: 'bg-rose-50/80' as const, visual: 'bg-rose-100/60 text-rose-900' as const };
 
-  const cardClasses = [
-    'rounded border border-l-4 border-slate-200 p-5 shadow-sm transition-opacity',
+  const cardClass = [
+    'rounded border border-l-4 border-slate-200 p-5 shadow-sm',
     accentBorder[accent],
-    accentBg[accent],
-    hidden ? 'opacity-60' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
+    palette.bg,
+  ].join(' ');
 
   if (!s) {
     return (
-      <article className={cardClasses}>
-        <Header
+      <article className={cardClass}>
+        <CardHeader
           title={formula.title}
           index={index}
           accent={accent}
@@ -81,8 +72,8 @@ export default function SimplifiedFormulaCard({
         />
         {!hidden && (
           <>
-            <p className="mt-3 mb-3 rounded bg-amber-100/60 px-3 py-1.5 text-xs text-amber-800">
-              Version simplifiée non encore rédigée — affichage détaillé.
+            <p className="mt-3 mb-3 rounded bg-white/70 px-3 py-1.5 text-xs text-amber-800 italic">
+              Version simplifiée non encore rédigée.
             </p>
             <div className="text-sm leading-relaxed text-slate-700">
               <TextWithMath text={formula.statement} />
@@ -94,8 +85,8 @@ export default function SimplifiedFormulaCard({
   }
 
   return (
-    <article className={cardClasses}>
-      <Header
+    <article className={cardClass}>
+      <CardHeader
         title={formula.title}
         index={index}
         accent={accent}
@@ -120,7 +111,7 @@ export default function SimplifiedFormulaCard({
             <div
               className={[
                 'mt-3 whitespace-pre-line rounded px-3 py-2 text-xs',
-                accentVisualBg[accent],
+                palette.visual,
               ].join(' ')}
             >
               <TextWithMath text={s.visual} />
@@ -132,7 +123,7 @@ export default function SimplifiedFormulaCard({
   );
 }
 
-type HeaderProps = {
+type CardHeaderProps = {
   title: string;
   index: number;
   accent: FormulaSimplifiedAccent;
@@ -141,14 +132,14 @@ type HeaderProps = {
   onToggleHidden: () => void;
 };
 
-function Header({
+function CardHeader({
   title,
   index,
   accent,
   keyword,
   hidden,
   onToggleHidden,
-}: HeaderProps) {
+}: CardHeaderProps) {
   return (
     <header className="flex items-start justify-between gap-3">
       <h3 className="text-sm font-semibold text-slate-900">
@@ -169,18 +160,18 @@ function Header({
         <button
           type="button"
           onClick={onToggleHidden}
-          aria-label={hidden ? 'Afficher cette formule' : 'Masquer cette formule'}
-          title={hidden ? 'Afficher' : 'Masquer'}
+          aria-label={hidden ? 'Développer cette formule' : 'Réduire cette formule'}
+          title={hidden ? 'Développer' : 'Réduire'}
           className="rounded p-1 text-slate-400 hover:bg-white/60 hover:text-slate-700"
         >
-          {hidden ? <EyeOffIcon /> : <EyeIcon />}
+          {hidden ? <ChevronDownIcon /> : <ChevronUpIcon />}
         </button>
       </div>
     </header>
   );
 }
 
-function EyeIcon() {
+function ChevronUpIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -193,13 +184,12 @@ function EyeIcon() {
       className="h-4 w-4"
       aria-hidden="true"
     >
-      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
-      <circle cx="12" cy="12" r="3" />
+      <polyline points="18 15 12 9 6 15" />
     </svg>
   );
 }
 
-function EyeOffIcon() {
+function ChevronDownIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -212,10 +202,7 @@ function EyeOffIcon() {
       className="h-4 w-4"
       aria-hidden="true"
     >
-      <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-6.5 0-10-7-10-7a19.6 19.6 0 0 1 5.06-5.94" />
-      <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c6.5 0 10 7 10 7a19.6 19.6 0 0 1-3.16 4.19" />
-      <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
-      <line x1="2" y1="2" x2="22" y2="22" />
+      <polyline points="6 9 12 15 18 9" />
     </svg>
   );
 }
