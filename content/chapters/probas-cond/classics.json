@@ -1,0 +1,710 @@
+[
+  {
+    "id": "c-probas-cond-001",
+    "chapter": "probas-cond",
+    "title": "Calculer une probabilité conditionnelle à partir de la définition",
+    "difficulty": 1,
+    "estimatedMinutes": 5,
+    "order": 10,
+    "tags": ["definition", "conditionnelle", "intersection"],
+    "preamble": "Soit $A$ et $B$ deux événements d'un même univers $\\Omega$. On donne $P(A) = 0{,}4$, $P(B) = 0{,}5$ et $P(A \\cap B) = 0{,}2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $P_B(A)$, la probabilité de $A$ sachant $B$.",
+        "hints": [
+          "Applique directement la définition de la probabilité conditionnelle : $P_B(A) = \\dfrac{P(A \\cap B)}{P(B)}$.",
+          "Substitue les valeurs : $P_B(A) = \\dfrac{0{,}2}{0{,}5}$.",
+          "$P_B(A) = 0{,}4$."
+        ],
+        "expectedAnswer": "$P_B(A) = 0{,}4$",
+        "solution": "Comme $P(B) = 0{,}5 > 0$, la probabilité conditionnelle $P_B(A)$ est bien définie. D'après la définition :\n$$P_B(A) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0{,}2}{0{,}5} = 0{,}4.$$\n\nAinsi, $P_B(A) = 0{,}4$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer de même $P_A(B)$.",
+        "hints": [
+          "On échange les rôles de $A$ et $B$ dans la définition : $P_A(B) = \\dfrac{P(A \\cap B)}{P(A)}$.",
+          "Substitue : $P_A(B) = \\dfrac{0{,}2}{0{,}4}$.",
+          "$P_A(B) = 0{,}5$."
+        ],
+        "expectedAnswer": "$P_A(B) = 0{,}5$",
+        "solution": "Comme $P(A) = 0{,}4 > 0$, $P_A(B)$ est bien définie. Par définition :\n$$P_A(B) = \\dfrac{P(A \\cap B)}{P(A)} = \\dfrac{0{,}2}{0{,}4} = 0{,}5.$$\n\nAinsi, $P_A(B) = 0{,}5$. On remarque que $P_A(B) \\neq P_B(A)$ : ces deux conditionnelles sont en général distinctes."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-002",
+    "chapter": "probas-cond",
+    "title": "Probabilité d'une intersection à partir d'un arbre verbal",
+    "difficulty": 1,
+    "estimatedMinutes": 6,
+    "order": 20,
+    "tags": ["intersection", "arbre", "produit"],
+    "preamble": "Dans une urne, $60\\,\\%$ des boules sont rouges (événement $R$), les autres sont vertes. Parmi les boules rouges, $25\\,\\%$ portent une étoile (événement $E$).",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$R$",
+              "weight": "0,6",
+              "children": [
+                {
+                  "label": "$E$",
+                  "weight": "0,25"
+                },
+                {
+                  "label": "$\\overline{E}$",
+                  "weight": "0,75"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{R}$",
+              "weight": "0,4"
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Vérifier que l'arbre ci-dessus traduit bien les données de l'énoncé (en précisant $P(R)$, $P(\\overline{R})$ et $P_R(E)$), puis calculer la probabilité $P(R \\cap E)$ qu'une boule tirée au hasard soit rouge et étoilée.",
+        "hints": [
+          "« $60\\,\\%$ des boules sont rouges » donne $P(R)$ ; « parmi les boules rouges, $25\\,\\%$ portent une étoile » donne une probabilité conditionnelle, $P_R(E)$.",
+          "Applique ensuite la règle du produit le long du chemin $R \\to E$ : $P(R \\cap E) = P(R) \\times P_R(E)$.",
+          "$P(R \\cap E) = 0{,}6 \\times 0{,}25 = 0{,}15$."
+        ],
+        "expectedAnswer": "$P(R \\cap E) = 0{,}15$",
+        "solution": "On traduit l'énoncé :\n- « $60\\,\\%$ des boules sont rouges » donne $P(R) = 0{,}6$.\n- « Parmi les boules rouges, $25\\,\\%$ portent une étoile » est une probabilité **conditionnelle** : sachant que la boule est rouge, la probabilité qu'elle porte une étoile vaut $0{,}25$, soit $P_R(E) = 0{,}25$.\n\nD'après la formule de l'intersection (règle du produit le long d'un chemin) :\n$$P(R \\cap E) = P(R) \\times P_R(E) = 0{,}6 \\times 0{,}25 = 0{,}15.$$\n\nAinsi, la probabilité qu'une boule tirée au hasard soit rouge et étoilée est $0{,}15$."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-003",
+    "chapter": "probas-cond",
+    "title": "Lecture d'un tableau de contingence",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 30,
+    "tags": ["tableau-de-contingence", "conditionnelle", "intersection"],
+    "preamble": "Dans une enquête menée auprès de $200$ élèves d'un lycée, on a relevé s'ils pratiquaient un sport en club ($S$) et s'ils étaient demi-pensionnaires ($D$). Les résultats sont consignés dans le tableau ci-dessous :\n\n| | $D$ : demi-pensionnaire | $\\overline{D}$ : externe | Total |\n|---|---|---|---|\n| $S$ : pratique un sport | $60$ | $30$ | $90$ |\n| $\\overline{S}$ : ne pratique pas de sport | $80$ | $30$ | $110$ |\n| **Total** | $140$ | $60$ | $200$ |\n\nOn choisit un élève au hasard parmi les $200$ élèves (équiprobabilité).",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer la probabilité $P(S)$ qu'un élève choisi au hasard pratique un sport, puis la probabilité $P(S \\cap D)$ qu'il pratique un sport et soit demi-pensionnaire.",
+        "hints": [
+          "On est dans une situation d'équiprobabilité : on lit dans le tableau le nombre de cas favorables sur $200$.",
+          "Pour $P(S)$, prends le total des sportifs ($90$) divisé par $200$ ; pour $P(S \\cap D)$, prends l'effectif de la case « sport ET demi-pensionnaire » ($60$).",
+          "$P(S) = \\dfrac{90}{200} = 0{,}45$ et $P(S \\cap D) = \\dfrac{60}{200} = 0{,}3$."
+        ],
+        "expectedAnswer": "$P(S) = 0{,}45$ ; $P(S \\cap D) = 0{,}3$",
+        "solution": "Comme on choisit un élève au hasard, on est en situation d'équiprobabilité parmi $200$ élèves.\n\n**Probabilité $P(S)$** : l'effectif total des élèves pratiquant un sport est $90$. Donc :\n$$P(S) = \\dfrac{90}{200} = \\dfrac{9}{20} = 0{,}45.$$\n\n**Probabilité $P(S \\cap D)$** : l'effectif des élèves qui pratiquent un sport **et** sont demi-pensionnaires est $60$. Donc :\n$$P(S \\cap D) = \\dfrac{60}{200} = \\dfrac{3}{10} = 0{,}3.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $P_D(S)$, la probabilité qu'un élève pratique un sport sachant qu'il est demi-pensionnaire. Interpréter le résultat.",
+        "hints": [
+          "Deux méthodes : par définition $P_D(S) = \\dfrac{P(S \\cap D)}{P(D)}$, ou directement par lecture du tableau : on se restreint à la colonne $D$ et on regarde la proportion de sportifs.",
+          "L'effectif de la colonne $D$ est $140$ ; parmi ces $140$ élèves, $60$ pratiquent un sport.",
+          "$P_D(S) = \\dfrac{60}{140} = \\dfrac{3}{7}$."
+        ],
+        "expectedAnswer": "$P_D(S) = \\dfrac{3}{7}$",
+        "solution": "**Méthode directe (restriction à $D$)** : sachant que l'élève est demi-pensionnaire, on se place dans la population des $140$ demi-pensionnaires, parmi lesquels $60$ pratiquent un sport. Donc :\n$$P_D(S) = \\dfrac{60}{140} = \\dfrac{3}{7}.$$\n\n**Vérification par la définition** : $P(D) = \\dfrac{140}{200} = 0{,}7$ et $P(S \\cap D) = 0{,}3$, donc :\n$$P_D(S) = \\dfrac{P(S \\cap D)}{P(D)} = \\dfrac{0{,}3}{0{,}7} = \\dfrac{3}{7}.$$\n\n**Interprétation** : parmi les demi-pensionnaires, environ $3$ élèves sur $7$ pratiquent un sport en club."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $P_S(D)$ et comparer avec $P_D(S)$.",
+        "hints": [
+          "Restreins-toi cette fois aux élèves sportifs (effectif $90$) et compte combien sont demi-pensionnaires.",
+          "L'effectif de la case « sport ET demi-pensionnaire » est $60$, donc $P_S(D) = \\dfrac{60}{90}$.",
+          "$P_S(D) = \\dfrac{2}{3}$, à comparer avec $P_D(S) = \\dfrac{3}{7}$."
+        ],
+        "expectedAnswer": "$P_S(D) = \\dfrac{2}{3} \\neq P_D(S)$",
+        "solution": "Sachant que l'élève pratique un sport, on se restreint aux $90$ sportifs, parmi lesquels $60$ sont demi-pensionnaires. Donc :\n$$P_S(D) = \\dfrac{60}{90} = \\dfrac{2}{3}.$$\n\n**Comparaison** : $P_S(D) = \\dfrac{2}{3} \\approx 0{,}67$, tandis que $P_D(S) = \\dfrac{3}{7} \\approx 0{,}43$. Ces deux probabilités sont **différentes** : $P_S(D) \\neq P_D(S)$. Cela illustre que la probabilité conditionnelle n'est pas symétrique en ses deux événements."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-004",
+    "chapter": "probas-cond",
+    "title": "Formule des probabilités totales (cas binaire)",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 40,
+    "tags": ["probabilites-totales", "arbre-verbal", "modelisation"],
+    "preamble": "Dans un lycée, $60\\,\\%$ des élèves sont des filles (événement $F$). Parmi les filles, $90\\,\\%$ font du sport en club (événement $S$). Parmi les garçons, $25\\,\\%$ font du sport en club. On choisit un élève au hasard.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$F$",
+              "weight": "0,6",
+              "children": [
+                {
+                  "label": "$S$",
+                  "weight": "0,9"
+                },
+                {
+                  "label": "$\\overline{S}$",
+                  "weight": "0,1"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{F}$",
+              "weight": "0,4",
+              "children": [
+                {
+                  "label": "$S$",
+                  "weight": "0,25"
+                },
+                {
+                  "label": "$\\overline{S}$",
+                  "weight": "0,75"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "À partir de l'arbre ci-dessus, vérifier les probabilités portées sur chaque branche, puis calculer la probabilité $P(S)$ que l'élève choisi fasse du sport en club.",
+        "hints": [
+          "Au premier niveau, deux branches : $F$ avec $P(F) = 0{,}6$ et $\\overline{F}$ avec $P(\\overline{F}) = 0{,}4$. Au second niveau, deux sous-branches $S$ / $\\overline{S}$ depuis chaque nœud.",
+          "Les événements $F$ et $\\overline{F}$ forment un système complet. Applique la formule des probabilités totales : $P(S) = P(F) \\times P_F(S) + P(\\overline{F}) \\times P_{\\overline{F}}(S)$.",
+          "$P(S) = 0{,}6 \\times 0{,}9 + 0{,}4 \\times 0{,}25 = 0{,}54 + 0{,}1 = 0{,}64$."
+        ],
+        "expectedAnswer": "$P(S) = 0{,}64$",
+        "solution": "**Données** : $P(F) = 0{,}6$, $P_F(S) = 0{,}9$ et $P_{\\overline{F}}(S) = 0{,}25$.\n\nOn en déduit $P(\\overline{F}) = 1 - 0{,}6 = 0{,}4$.\n\nLes événements $F$ et $\\overline{F}$ forment un **système complet** d'événements. D'après la formule des probabilités totales :\n$$P(S) = P(F) \\times P_F(S) + P(\\overline{F}) \\times P_{\\overline{F}}(S).$$\n\nOn calcule :\n$$P(S) = 0{,}6 \\times 0{,}9 + 0{,}4 \\times 0{,}25 = 0{,}54 + 0{,}1 = 0{,}64.$$\n\nAinsi, la probabilité qu'un élève choisi au hasard fasse du sport en club est $P(S) = 0{,}64$."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-005",
+    "chapter": "probas-cond",
+    "title": "Formule des probabilités totales avec un système complet à trois événements",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 50,
+    "tags": ["probabilites-totales", "systeme-complet", "modelisation"],
+    "preamble": "Une usine fabrique des pièces à partir de trois machines $M_1$, $M_2$ et $M_3$, qui produisent respectivement $50\\,\\%$, $30\\,\\%$ et $20\\,\\%$ de la production totale. Le pourcentage de pièces défectueuses est de $4\\,\\%$ sur $M_1$, $10\\,\\%$ sur $M_2$ et $20\\,\\%$ sur $M_3$. On note $D$ l'événement « la pièce est défectueuse ».",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$M_1$",
+              "weight": "0,5",
+              "children": [
+                {
+                  "label": "$D$",
+                  "weight": "0,04"
+                },
+                {
+                  "label": "$\\overline{D}$",
+                  "weight": "0,96"
+                }
+              ]
+            },
+            {
+              "label": "$M_2$",
+              "weight": "0,3",
+              "children": [
+                {
+                  "label": "$D$",
+                  "weight": "0,1"
+                },
+                {
+                  "label": "$\\overline{D}$",
+                  "weight": "0,9"
+                }
+              ]
+            },
+            {
+              "label": "$M_3$",
+              "weight": "0,2",
+              "children": [
+                {
+                  "label": "$D$",
+                  "weight": "0,2"
+                },
+                {
+                  "label": "$\\overline{D}$",
+                  "weight": "0,8"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que $\\{M_1, M_2, M_3\\}$ forme un système complet d'événements, puis exprimer $P(D)$ à l'aide de la formule des probabilités totales.",
+        "hints": [
+          "Un système complet : événements deux à deux incompatibles et de réunion $\\Omega$. Ici une pièce provient forcément d'**exactement une** des trois machines.",
+          "Pour la formule : $P(D) = P(M_1) \\times P_{M_1}(D) + P(M_2) \\times P_{M_2}(D) + P(M_3) \\times P_{M_3}(D)$.",
+          "Il suffira ensuite de substituer les valeurs numériques."
+        ],
+        "expectedAnswer": "Système complet justifié ; $P(D) = P(M_1) P_{M_1}(D) + P(M_2) P_{M_2}(D) + P(M_3) P_{M_3}(D)$",
+        "solution": "Chaque pièce est issue d'exactement une des trois machines : les événements $M_1$, $M_2$ et $M_3$ sont donc deux à deux **incompatibles** et leur réunion forme l'ensemble de la production, c'est-à-dire $\\Omega$. Les événements $M_1$, $M_2$ et $M_3$ constituent donc un **système complet d'événements**.\n\nDe plus, $P(M_1) = 0{,}5 > 0$, $P(M_2) = 0{,}3 > 0$ et $P(M_3) = 0{,}2 > 0$. D'après la formule des probabilités totales :\n$$P(D) = P(M_1) \\times P_{M_1}(D) + P(M_2) \\times P_{M_2}(D) + P(M_3) \\times P_{M_3}(D).$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $P(D)$.",
+        "hints": [
+          "Substitue : $P(M_1) = 0{,}5$, $P(M_2) = 0{,}3$, $P(M_3) = 0{,}2$, $P_{M_1}(D) = 0{,}04$, $P_{M_2}(D) = 0{,}1$, $P_{M_3}(D) = 0{,}2$.",
+          "Calcule chacun des trois produits, puis additionne : $0{,}5 \\times 0{,}04 = 0{,}02$ ; $0{,}3 \\times 0{,}1 = 0{,}03$ ; $0{,}2 \\times 0{,}2 = 0{,}04$.",
+          "$P(D) = 0{,}02 + 0{,}03 + 0{,}04 = 0{,}09$."
+        ],
+        "expectedAnswer": "$P(D) = 0{,}09$",
+        "solution": "On applique la formule établie à la question 1. avec les données de l'énoncé :\n$$P(D) = 0{,}5 \\times 0{,}04 + 0{,}3 \\times 0{,}1 + 0{,}2 \\times 0{,}2.$$\n\nOn calcule chaque produit :\n- $0{,}5 \\times 0{,}04 = 0{,}02$,\n- $0{,}3 \\times 0{,}1 = 0{,}03$,\n- $0{,}2 \\times 0{,}2 = 0{,}04$.\n\nAinsi :\n$$P(D) = 0{,}02 + 0{,}03 + 0{,}04 = 0{,}09.$$\n\nLa probabilité qu'une pièce prise au hasard soit défectueuse vaut $9\\,\\%$."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-006",
+    "chapter": "probas-cond",
+    "title": "Conditionnelle « inverse » : du test au diagnostic",
+    "difficulty": 2,
+    "estimatedMinutes": 11,
+    "order": 60,
+    "tags": ["probabilites-totales", "conditionnelle-inverse", "test-medical"],
+    "preamble": "Une maladie touche $10\\,\\%$ d'une population. On dispose d'un test de dépistage tel que :\n- chez un individu malade ($M$), le test est positif ($T$) avec une probabilité de $0{,}9$ ;\n- chez un individu non malade ($\\overline{M}$), le test est positif avec une probabilité de $0{,}1$ (faux positif).\n\nOn choisit une personne au hasard dans la population.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$M$",
+              "weight": "0,1",
+              "children": [
+                {
+                  "label": "$T$",
+                  "weight": "0,9"
+                },
+                {
+                  "label": "$\\overline{T}$",
+                  "weight": "0,1"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{M}$",
+              "weight": "0,9",
+              "children": [
+                {
+                  "label": "$T$",
+                  "weight": "0,1"
+                },
+                {
+                  "label": "$\\overline{T}$",
+                  "weight": "0,9"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "À partir de l'arbre ci-dessus, calculer la probabilité $P(T)$ que la personne ait un test positif.",
+        "hints": [
+          "Au premier niveau : $M$ avec $P(M) = 0{,}1$, $\\overline{M}$ avec $P(\\overline{M}) = 0{,}9$. Au second niveau : $T$ et $\\overline{T}$ depuis chaque nœud.",
+          "Les événements $M$ et $\\overline{M}$ forment un système complet : applique la formule des probabilités totales.",
+          "$P(T) = 0{,}1 \\times 0{,}9 + 0{,}9 \\times 0{,}1 = 0{,}09 + 0{,}09 = 0{,}18$."
+        ],
+        "expectedAnswer": "$P(T) = 0{,}18$",
+        "solution": "**Données** : $P(M) = 0{,}1$ donc $P(\\overline{M}) = 0{,}9$ ; $P_M(T) = 0{,}9$ et $P_{\\overline{M}}(T) = 0{,}1$.\n\nLes événements $M$ et $\\overline{M}$ forment un système complet. D'après la formule des probabilités totales :\n$$P(T) = P(M) \\times P_M(T) + P(\\overline{M}) \\times P_{\\overline{M}}(T) = 0{,}1 \\times 0{,}9 + 0{,}9 \\times 0{,}1 = 0{,}09 + 0{,}09 = 0{,}18.$$\n\nLa probabilité que le test soit positif vaut donc $0{,}18$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "On apprend qu'une personne a obtenu un test positif. Calculer la probabilité qu'elle soit effectivement malade, c'est-à-dire $P_T(M)$.",
+        "hints": [
+          "Applique directement la définition de la probabilité conditionnelle : $P_T(M) = \\dfrac{P(M \\cap T)}{P(T)}$.",
+          "On a $P(M \\cap T) = P(M) \\times P_M(T) = 0{,}1 \\times 0{,}9 = 0{,}09$ (déjà calculé à la question 1.). Le dénominateur $P(T) = 0{,}18$ est aussi connu.",
+          "$P_T(M) = \\dfrac{0{,}09}{0{,}18} = \\dfrac{1}{2} = 0{,}5$."
+        ],
+        "expectedAnswer": "$P_T(M) = 0{,}5$",
+        "solution": "Par définition de la probabilité conditionnelle :\n$$P_T(M) = \\dfrac{P(M \\cap T)}{P(T)}.$$\n\nOn calcule le numérateur par la règle du produit le long du chemin $M \\to T$ de l'arbre :\n$$P(M \\cap T) = P(M) \\times P_M(T) = 0{,}1 \\times 0{,}9 = 0{,}09.$$\n\nLe dénominateur a été calculé à la question 1. : $P(T) = 0{,}18$.\n\nDonc :\n$$P_T(M) = \\dfrac{0{,}09}{0{,}18} = \\dfrac{1}{2} = 0{,}5.$$\n\n**Interprétation** : un test positif n'indique la maladie que dans **un cas sur deux**, malgré la fiabilité apparente du test. Cette « conditionnelle inverse » montre l'importance de la prévalence dans l'interprétation d'un test."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-007",
+    "chapter": "probas-cond",
+    "title": "Tester l'indépendance de deux événements",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 70,
+    "tags": ["independance", "test", "tableau-de-contingence"],
+    "preamble": "Une étude porte sur $400$ clients d'un magasin. On a relevé s'ils ont acheté un livre ($L$) et s'ils ont acheté un café ($C$). Les résultats sont donnés dans le tableau ci-dessous :\n\n| | $C$ : achète un café | $\\overline{C}$ : pas de café | Total |\n|---|---|---|---|\n| $L$ : achète un livre | $30$ | $90$ | $120$ |\n| $\\overline{L}$ : pas de livre | $70$ | $210$ | $280$ |\n| **Total** | $100$ | $300$ | $400$ |\n\nOn choisit un client au hasard parmi les $400$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $P(L)$, $P(C)$ et $P(L \\cap C)$.",
+        "hints": [
+          "Lecture directe dans le tableau, divisée par l'effectif total $400$.",
+          "$P(L)$ correspond au total de la ligne $L$, $P(C)$ au total de la colonne $C$, $P(L \\cap C)$ à la case croisée.",
+          "$P(L) = \\dfrac{120}{400} = 0{,}3$ ; $P(C) = \\dfrac{100}{400} = 0{,}25$ ; $P(L \\cap C) = \\dfrac{30}{400} = 0{,}075$."
+        ],
+        "expectedAnswer": "$P(L) = 0{,}3$ ; $P(C) = 0{,}25$ ; $P(L \\cap C) = 0{,}075$",
+        "solution": "On est en situation d'équiprobabilité sur $400$ clients. On lit dans le tableau :\n- $P(L) = \\dfrac{120}{400} = 0{,}3$,\n- $P(C) = \\dfrac{100}{400} = 0{,}25$,\n- $P(L \\cap C) = \\dfrac{30}{400} = 0{,}075$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Les événements $L$ et $C$ sont-ils indépendants ? Justifier.",
+        "hints": [
+          "Deux événements $A$ et $B$ sont indépendants si et seulement si $P(A \\cap B) = P(A) \\times P(B)$. Calcule $P(L) \\times P(C)$ et compare à $P(L \\cap C)$.",
+          "$P(L) \\times P(C) = 0{,}3 \\times 0{,}25 = 0{,}075$. Compare avec $P(L \\cap C) = 0{,}075$.",
+          "Les deux valeurs coïncident, donc $L$ et $C$ sont indépendants."
+        ],
+        "expectedAnswer": "Oui, $L$ et $C$ sont indépendants",
+        "solution": "On teste l'égalité caractéristique de l'indépendance : $P(L \\cap C) = P(L) \\times P(C)$ ?\n\nOn calcule :\n$$P(L) \\times P(C) = 0{,}3 \\times 0{,}25 = 0{,}075.$$\n\nOr, d'après la question 1., $P(L \\cap C) = 0{,}075$.\n\nDonc $P(L \\cap C) = P(L) \\times P(C)$ : les événements $L$ et $C$ sont **indépendants**.\n\n**Interprétation** : acheter un livre n'influe pas sur la probabilité d'acheter aussi un café, et réciproquement."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-008",
+    "chapter": "probas-cond",
+    "title": "Utiliser l'hypothèse d'indépendance",
+    "difficulty": 1,
+    "estimatedMinutes": 5,
+    "order": 80,
+    "tags": ["independance", "intersection", "calcul-direct"],
+    "preamble": "Soit $A$ et $B$ deux événements **indépendants** d'un univers $\\Omega$, tels que $P(A) = 0{,}3$ et $P(B) = 0{,}4$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $P(A \\cap B)$.",
+        "hints": [
+          "Lorsque $A$ et $B$ sont indépendants, on dispose de la formule $P(A \\cap B) = P(A) \\times P(B)$.",
+          "Substitue les valeurs : $P(A \\cap B) = 0{,}3 \\times 0{,}4$.",
+          "$P(A \\cap B) = 0{,}12$."
+        ],
+        "expectedAnswer": "$P(A \\cap B) = 0{,}12$",
+        "solution": "Puisque $A$ et $B$ sont indépendants, on a :\n$$P(A \\cap B) = P(A) \\times P(B) = 0{,}3 \\times 0{,}4 = 0{,}12.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire $P(A \\cup B)$.",
+        "hints": [
+          "Utilise la formule générale d'une réunion : $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$.",
+          "Substitue : $P(A \\cup B) = 0{,}3 + 0{,}4 - 0{,}12$.",
+          "$P(A \\cup B) = 0{,}58$."
+        ],
+        "expectedAnswer": "$P(A \\cup B) = 0{,}58$",
+        "solution": "D'après la formule de la réunion :\n$$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0{,}3 + 0{,}4 - 0{,}12 = 0{,}58.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-009",
+    "chapter": "probas-cond",
+    "title": "Indépendance et événements contraires",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 90,
+    "tags": ["independance", "contraire", "intersection"],
+    "preamble": "Soit $A$ et $B$ deux événements **indépendants** tels que $P(A) = 0{,}3$ et $P(B) = 0{,}4$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que $\\overline{A}$ et $\\overline{B}$ sont indépendants, puis calculer $P(\\overline{A} \\cap \\overline{B})$.",
+        "hints": [
+          "Cours : si $A$ et $B$ sont indépendants, alors $\\overline{A}$ et $\\overline{B}$ le sont aussi.",
+          "Calcule $P(\\overline{A}) = 1 - P(A)$ et $P(\\overline{B}) = 1 - P(B)$, puis applique $P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A}) \\times P(\\overline{B})$.",
+          "$P(\\overline{A}) = 0{,}7$, $P(\\overline{B}) = 0{,}6$, donc $P(\\overline{A} \\cap \\overline{B}) = 0{,}7 \\times 0{,}6 = 0{,}42$."
+        ],
+        "expectedAnswer": "$P(\\overline{A} \\cap \\overline{B}) = 0{,}42$",
+        "solution": "**Indépendance des contraires** : d'après le cours, si $A$ et $B$ sont indépendants, alors les paires $(A, \\overline{B})$, $(\\overline{A}, B)$ et $(\\overline{A}, \\overline{B})$ sont également formées d'événements indépendants.\n\nDonc $\\overline{A}$ et $\\overline{B}$ sont indépendants.\n\nOn calcule :\n$$P(\\overline{A}) = 1 - P(A) = 1 - 0{,}3 = 0{,}7 \\quad \\text{et} \\quad P(\\overline{B}) = 1 - P(B) = 1 - 0{,}4 = 0{,}6.$$\n\nPar indépendance :\n$$P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A}) \\times P(\\overline{B}) = 0{,}7 \\times 0{,}6 = 0{,}42.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Retrouver la valeur de $P(\\overline{A} \\cap \\overline{B})$ en utilisant la formule de la réunion. On rappelle que $\\overline{A} \\cap \\overline{B} = \\overline{A \\cup B}$.",
+        "hints": [
+          "Loi de De Morgan : $\\overline{A} \\cap \\overline{B} = \\overline{A \\cup B}$, donc $P(\\overline{A} \\cap \\overline{B}) = 1 - P(A \\cup B)$.",
+          "Calcule d'abord $P(A \\cap B) = P(A) \\times P(B)$ puis $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$.",
+          "$P(A \\cap B) = 0{,}12$, $P(A \\cup B) = 0{,}3 + 0{,}4 - 0{,}12 = 0{,}58$, donc $P(\\overline{A} \\cap \\overline{B}) = 1 - 0{,}58 = 0{,}42$."
+        ],
+        "expectedAnswer": "$P(\\overline{A} \\cap \\overline{B}) = 0{,}42$ (mêmes calculs)",
+        "solution": "L'événement $\\overline{A} \\cap \\overline{B}$ signifie « $A$ ne se réalise pas **et** $B$ ne se réalise pas », c'est-à-dire « ni $A$ ni $B$ ne se réalisent », ce qui est exactement le contraire de « $A$ ou $B$ se réalise », autrement dit $\\overline{A \\cup B}$.\n\nDonc :\n$$P(\\overline{A} \\cap \\overline{B}) = 1 - P(A \\cup B).$$\n\nOn calcule successivement :\n- $P(A \\cap B) = P(A) \\times P(B) = 0{,}3 \\times 0{,}4 = 0{,}12$ (indépendance) ;\n- $P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0{,}3 + 0{,}4 - 0{,}12 = 0{,}58$.\n\nAinsi :\n$$P(\\overline{A} \\cap \\overline{B}) = 1 - 0{,}58 = 0{,}42,$$\n\nce qui confirme le résultat de la question 1."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-010",
+    "chapter": "probas-cond",
+    "title": "Modélisation : enquête de satisfaction",
+    "difficulty": 3,
+    "estimatedMinutes": 12,
+    "order": 100,
+    "tags": ["modelisation", "probabilites-totales", "arbre-verbal"],
+    "preamble": "Un site marchand vend deux types de produits : des produits de catégorie $A$ (qui représentent $70\\,\\%$ des ventes) et des produits de catégorie $B$ (les $30\\,\\%$ restants).\n\nUne enquête révèle que :\n- parmi les clients ayant acheté un produit de catégorie $A$, $80\\,\\%$ se disent satisfaits ($S$) ;\n- parmi les clients ayant acheté un produit de catégorie $B$, $60\\,\\%$ se disent satisfaits.\n\nOn choisit un client au hasard.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$A$",
+              "weight": "0,7",
+              "children": [
+                {
+                  "label": "$S$",
+                  "weight": "0,8"
+                },
+                {
+                  "label": "$\\overline{S}$",
+                  "weight": "0,2"
+                }
+              ]
+            },
+            {
+              "label": "$B$",
+              "weight": "0,3",
+              "children": [
+                {
+                  "label": "$S$",
+                  "weight": "0,6"
+                },
+                {
+                  "label": "$\\overline{S}$",
+                  "weight": "0,4"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Vérifier que l'arbre ci-dessus traduit bien les données (en précisant $P(A)$, $P(B)$, $P_A(S)$, $P_B(S)$), puis calculer $P(A \\cap S)$ et $P(B \\cap S)$.",
+        "hints": [
+          "« $70\\,\\%$ achètent un produit $A$ » donne $P(A) = 0{,}7$. Lis de même les autres données.",
+          "Applique la règle du produit le long de chaque chemin : $P(A \\cap S) = P(A) \\times P_A(S)$ et $P(B \\cap S) = P(B) \\times P_B(S)$.",
+          "$P(A \\cap S) = 0{,}7 \\times 0{,}8 = 0{,}56$ et $P(B \\cap S) = 0{,}3 \\times 0{,}6 = 0{,}18$."
+        ],
+        "expectedAnswer": "$P(A \\cap S) = 0{,}56$ ; $P(B \\cap S) = 0{,}18$",
+        "solution": "**Traduction des données** :\n- $P(A) = 0{,}7$ et $P(B) = 0{,}3$ (les deux catégories sont incompatibles et recouvrent toutes les ventes : $\\{A, B\\}$ est un système complet).\n- $P_A(S) = 0{,}8$ (satisfaction sachant catégorie $A$) et $P_B(S) = 0{,}6$.\n\n**Probabilités d'intersection** (règle du produit sur l'arbre) :\n$$P(A \\cap S) = P(A) \\times P_A(S) = 0{,}7 \\times 0{,}8 = 0{,}56,$$\n$$P(B \\cap S) = P(B) \\times P_B(S) = 0{,}3 \\times 0{,}6 = 0{,}18.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire la probabilité $P(S)$ qu'un client choisi au hasard soit satisfait.",
+        "hints": [
+          "Comme $\\{A, B\\}$ est un système complet, applique la formule des probabilités totales : $P(S) = P(A \\cap S) + P(B \\cap S)$.",
+          "Additionne les deux résultats de la question 1.",
+          "$P(S) = 0{,}56 + 0{,}18 = 0{,}74$."
+        ],
+        "expectedAnswer": "$P(S) = 0{,}74$",
+        "solution": "Comme $\\{A, B\\}$ est un système complet, la formule des probabilités totales donne :\n$$P(S) = P(A \\cap S) + P(B \\cap S) = 0{,}56 + 0{,}18 = 0{,}74.$$\n\nAinsi, $74\\,\\%$ des clients du site se disent satisfaits."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Sachant qu'un client est satisfait, quelle est la probabilité qu'il ait acheté un produit de catégorie $A$ ?",
+        "hints": [
+          "On cherche $P_S(A) = \\dfrac{P(A \\cap S)}{P(S)}$ (définition de la probabilité conditionnelle).",
+          "Substitue avec les valeurs déjà calculées : $P(A \\cap S) = 0{,}56$ et $P(S) = 0{,}74$.",
+          "$P_S(A) = \\dfrac{0{,}56}{0{,}74} = \\dfrac{56}{74} = \\dfrac{28}{37}$."
+        ],
+        "expectedAnswer": "$P_S(A) = \\dfrac{28}{37}$",
+        "solution": "Par définition de la probabilité conditionnelle :\n$$P_S(A) = \\dfrac{P(A \\cap S)}{P(S)} = \\dfrac{0{,}56}{0{,}74}.$$\n\nOn simplifie la fraction en multipliant numérateur et dénominateur par $100$ :\n$$P_S(A) = \\dfrac{56}{74} = \\dfrac{28}{37}.$$\n\n**Interprétation** : parmi les clients satisfaits, environ $\\dfrac{28}{37} \\approx 0{,}76$, soit $76\\,\\%$, ont acheté un produit de catégorie $A$."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-011",
+    "chapter": "probas-cond",
+    "title": "Indépendance dans une expérience à deux étapes",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 110,
+    "tags": ["independance", "tirages-successifs", "remise"],
+    "preamble": "Une urne contient $5$ boules indiscernables au toucher : $2$ rouges et $3$ vertes. On tire successivement deux boules de l'urne **avec remise** : on note la couleur de la première, on la remet dans l'urne, puis on tire la seconde. On note :\n- $R_1$ : « la première boule tirée est rouge » ;\n- $R_2$ : « la seconde boule tirée est rouge ».",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner $P(R_1)$ et $P(R_2)$. Justifier que $R_1$ et $R_2$ sont indépendants.",
+        "hints": [
+          "L'urne contient $2$ rouges sur $5$ boules : chaque tirage donne donc une rouge avec probabilité $\\dfrac{2}{5}$. Le tirage se fait avec remise, donc l'urne est identique au second tirage.",
+          "Comme la composition de l'urne ne change pas entre les deux tirages, le résultat du second tirage ne dépend pas du premier : c'est exactement la définition intuitive de l'indépendance.",
+          "$P(R_1) = P(R_2) = \\dfrac{2}{5}$ ; $R_1$ et $R_2$ sont indépendants car le second tirage se fait dans une urne identique au premier (composition inchangée)."
+        ],
+        "expectedAnswer": "$P(R_1) = P(R_2) = \\dfrac{2}{5}$ ; indépendants",
+        "solution": "**Probabilités** : L'urne contient $2$ boules rouges sur $5$ boules au total, et chaque boule a la même probabilité d'être tirée (équiprobabilité). Donc :\n$$P(R_1) = \\dfrac{2}{5}.$$\n\nLe tirage se faisant **avec remise**, l'urne contient exactement les mêmes $5$ boules lors du second tirage. Par conséquent :\n$$P(R_2) = \\dfrac{2}{5}.$$\n\n**Indépendance** : le résultat du premier tirage n'a aucune influence sur la composition de l'urne au moment du second tirage (puisque l'on remet la boule). Donc les événements $R_1$ et $R_2$ sont **indépendants**.\n\n*Remarque* : c'est précisément la remise qui garantit l'indépendance ; un tirage sans remise n'aurait pas cette propriété."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer la probabilité d'obtenir deux boules rouges, c'est-à-dire $P(R_1 \\cap R_2)$.",
+        "hints": [
+          "Comme $R_1$ et $R_2$ sont indépendants, $P(R_1 \\cap R_2) = P(R_1) \\times P(R_2)$.",
+          "$P(R_1 \\cap R_2) = \\dfrac{2}{5} \\times \\dfrac{2}{5}$.",
+          "$P(R_1 \\cap R_2) = \\dfrac{4}{25}$."
+        ],
+        "expectedAnswer": "$P(R_1 \\cap R_2) = \\dfrac{4}{25}$",
+        "solution": "Comme $R_1$ et $R_2$ sont indépendants, on a :\n$$P(R_1 \\cap R_2) = P(R_1) \\times P(R_2) = \\dfrac{2}{5} \\times \\dfrac{2}{5} = \\dfrac{4}{25}.$$\n\nLa probabilité d'obtenir deux boules rouges est donc $\\dfrac{4}{25} = 0{,}16$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer la probabilité de n'obtenir aucune boule rouge, c'est-à-dire $P(\\overline{R_1} \\cap \\overline{R_2})$.",
+        "hints": [
+          "Les contraires d'événements indépendants restent indépendants : $\\overline{R_1}$ et $\\overline{R_2}$ sont indépendants.",
+          "Calcule $P(\\overline{R_1}) = 1 - P(R_1)$, puis applique $P(\\overline{R_1} \\cap \\overline{R_2}) = P(\\overline{R_1}) \\times P(\\overline{R_2})$.",
+          "$P(\\overline{R_1}) = P(\\overline{R_2}) = \\dfrac{3}{5}$, donc $P(\\overline{R_1} \\cap \\overline{R_2}) = \\dfrac{9}{25}$."
+        ],
+        "expectedAnswer": "$P(\\overline{R_1} \\cap \\overline{R_2}) = \\dfrac{9}{25}$",
+        "solution": "Comme $R_1$ et $R_2$ sont indépendants, leurs contraires $\\overline{R_1}$ et $\\overline{R_2}$ le sont aussi.\n\nOn a $P(\\overline{R_1}) = 1 - \\dfrac{2}{5} = \\dfrac{3}{5}$ et de même $P(\\overline{R_2}) = \\dfrac{3}{5}$.\n\nPar indépendance :\n$$P(\\overline{R_1} \\cap \\overline{R_2}) = P(\\overline{R_1}) \\times P(\\overline{R_2}) = \\dfrac{3}{5} \\times \\dfrac{3}{5} = \\dfrac{9}{25}.$$\n\nLa probabilité de n'obtenir aucune boule rouge (donc deux vertes) est $\\dfrac{9}{25} = 0{,}36$."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-012",
+    "chapter": "probas-cond",
+    "title": "Arbre, probabilités totales et conditionnelle inverse",
+    "difficulty": 3,
+    "estimatedMinutes": 14,
+    "order": 120,
+    "tags": ["probabilites-totales", "conditionnelle-inverse", "modelisation", "arbre-verbal"],
+    "preamble": "Une chaîne de magasins reçoit ses paquets de café de trois fournisseurs $F_A$, $F_B$ et $F_C$ qui livrent respectivement $40\\,\\%$, $40\\,\\%$ et $20\\,\\%$ des paquets.\n\nUne procédure de contrôle a permis d'établir que :\n- $10\\,\\%$ des paquets livrés par $F_A$ sont mal étiquetés (événement $M$) ;\n- $5\\,\\%$ des paquets livrés par $F_B$ sont mal étiquetés ;\n- $20\\,\\%$ des paquets livrés par $F_C$ sont mal étiquetés.\n\nOn choisit un paquet au hasard dans le stock.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$F_A$",
+              "weight": "0,4",
+              "children": [
+                {
+                  "label": "$M$",
+                  "weight": "0,1"
+                },
+                {
+                  "label": "$\\overline{M}$",
+                  "weight": "0,9"
+                }
+              ]
+            },
+            {
+              "label": "$F_B$",
+              "weight": "0,4",
+              "children": [
+                {
+                  "label": "$M$",
+                  "weight": "0,05"
+                },
+                {
+                  "label": "$\\overline{M}$",
+                  "weight": "0,95"
+                }
+              ]
+            },
+            {
+              "label": "$F_C$",
+              "weight": "0,2",
+              "children": [
+                {
+                  "label": "$M$",
+                  "weight": "0,2"
+                },
+                {
+                  "label": "$\\overline{M}$",
+                  "weight": "0,8"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner les probabilités $P(F_A)$, $P(F_B)$, $P(F_C)$ et les probabilités conditionnelles $P_{F_A}(M)$, $P_{F_B}(M)$ et $P_{F_C}(M)$. Justifier que les événements $F_A$, $F_B$, $F_C$ forment un système complet d'événements.",
+        "hints": [
+          "Lecture directe : « $40\\,\\%$ des paquets viennent de $F_A$ » donne $P(F_A)$. Les pourcentages « parmi les paquets de $F_X$ » donnent les conditionnelles $P_{F_X}(M)$.",
+          "Pour le système complet : chaque paquet provient d'**exactement** un des trois fournisseurs (incompatibles), et tout le stock est couvert (réunion = $\\Omega$).",
+          "$P(F_A) = 0{,}4$, $P(F_B) = 0{,}4$, $P(F_C) = 0{,}2$ ; $P_{F_A}(M) = 0{,}1$, $P_{F_B}(M) = 0{,}05$, $P_{F_C}(M) = 0{,}2$."
+        ],
+        "expectedAnswer": "$P(F_A) = 0{,}4$, $P(F_B) = 0{,}4$, $P(F_C) = 0{,}2$ ; système complet justifié",
+        "solution": "**Lecture de l'énoncé** :\n- $P(F_A) = 0{,}4$, $P(F_B) = 0{,}4$, $P(F_C) = 0{,}2$.\n- $P_{F_A}(M) = 0{,}1$, $P_{F_B}(M) = 0{,}05$, $P_{F_C}(M) = 0{,}2$.\n\n**Système complet** : chaque paquet provient d'**exactement** un des trois fournisseurs $F_A$, $F_B$ ou $F_C$. Ces trois événements sont donc deux à deux incompatibles, et leur réunion est tout le stock, soit $\\Omega$. Par ailleurs, $P(F_A), P(F_B), P(F_C) > 0$. Donc $\\{F_A, F_B, F_C\\}$ forme un système complet d'événements.\n\nOn vérifie au passage : $0{,}4 + 0{,}4 + 0{,}2 = 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $P(M)$, la probabilité qu'un paquet choisi au hasard soit mal étiqueté.",
+        "hints": [
+          "Applique la formule des probabilités totales avec le système complet $\\{F_A, F_B, F_C\\}$.",
+          "$P(M) = P(F_A) \\times P_{F_A}(M) + P(F_B) \\times P_{F_B}(M) + P(F_C) \\times P_{F_C}(M)$.",
+          "$P(M) = 0{,}4 \\times 0{,}1 + 0{,}4 \\times 0{,}05 + 0{,}2 \\times 0{,}2 = 0{,}04 + 0{,}02 + 0{,}04 = 0{,}1$."
+        ],
+        "expectedAnswer": "$P(M) = 0{,}1$",
+        "solution": "D'après la formule des probabilités totales :\n$$P(M) = P(F_A) \\times P_{F_A}(M) + P(F_B) \\times P_{F_B}(M) + P(F_C) \\times P_{F_C}(M).$$\n\nOn calcule chaque produit :\n- $0{,}4 \\times 0{,}1 = 0{,}04$,\n- $0{,}4 \\times 0{,}05 = 0{,}02$,\n- $0{,}2 \\times 0{,}2 = 0{,}04$.\n\nDonc :\n$$P(M) = 0{,}04 + 0{,}02 + 0{,}04 = 0{,}1.$$\n\nAinsi, $10\\,\\%$ des paquets du stock sont mal étiquetés."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Le contrôleur prélève un paquet mal étiqueté. Quelle est la probabilité qu'il provienne du fournisseur $F_A$ ?",
+        "hints": [
+          "On cherche $P_M(F_A) = \\dfrac{P(F_A \\cap M)}{P(M)}$ (définition de la probabilité conditionnelle).",
+          "Le numérateur a été calculé à la question 2 : $P(F_A \\cap M) = P(F_A) \\times P_{F_A}(M) = 0{,}04$. Le dénominateur $P(M) = 0{,}1$ également.",
+          "$P_M(F_A) = \\dfrac{0{,}04}{0{,}1} = 0{,}4 = \\dfrac{2}{5}$."
+        ],
+        "expectedAnswer": "$P_M(F_A) = 0{,}4$",
+        "solution": "Par définition de la probabilité conditionnelle :\n$$P_M(F_A) = \\dfrac{P(F_A \\cap M)}{P(M)}.$$\n\nLe numérateur est la probabilité du chemin $F_A \\to M$ de l'arbre :\n$$P(F_A \\cap M) = P(F_A) \\times P_{F_A}(M) = 0{,}4 \\times 0{,}1 = 0{,}04.$$\n\nLe dénominateur a été calculé à la question 2 : $P(M) = 0{,}1$.\n\nDonc :\n$$P_M(F_A) = \\dfrac{0{,}04}{0{,}1} = 0{,}4.$$\n\n**Interprétation** : parmi tous les paquets mal étiquetés, $40\\,\\%$ proviennent du fournisseur $F_A$."
+      }
+    ]
+  }
+]

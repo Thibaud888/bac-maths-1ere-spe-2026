@@ -1,0 +1,347 @@
+[
+  {
+    "id": "c-variables-aleatoires-001",
+    "chapter": "variables-aleatoires",
+    "title": "Loi d'une variable aléatoire — compléter un tableau",
+    "difficulty": 1,
+    "estimatedMinutes": 5,
+    "prerequisites": ["probabilites-elementaires"],
+    "preamble": "On lance un dé équilibré à six faces numérotées de $1$ à $6$. On définit la variable aléatoire $X$ par : $X = 0$ si le résultat est pair, $X = 1$ si le résultat est impair.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner la loi de probabilité de $X$ sous forme de tableau.",
+        "hints": [
+          "Identifier les valeurs prises par $X$ et les issues correspondantes.",
+          "Les nombres pairs de $1$ à $6$ sont $2, 4, 6$ (3 issues sur 6) ; les impairs sont $1, 3, 5$ (3 issues sur 6).",
+          "$P(X = 0) = \\dfrac{3}{6} = \\dfrac{1}{2}$ et $P(X = 1) = \\dfrac{1}{2}$."
+        ],
+        "expectedAnswer": "$P(X=0) = \\frac{1}{2}$, $P(X=1) = \\frac{1}{2}$",
+        "solution": "L'univers $\\Omega = \\{1, 2, 3, 4, 5, 6\\}$ et le dé est équilibré donc chaque issue a une probabilité $\\dfrac{1}{6}$.\n\n- $X = 0$ lorsque le résultat est pair : issues $2$, $4$, $6$, soit $3$ issues.\n- $X = 1$ lorsque le résultat est impair : issues $1$, $3$, $5$, soit $3$ issues.\n\nAinsi :\n\n| $X$ | $0$ | $1$ |\n|---|---|---|\n| $P(X = x)$ | $\\dfrac{1}{2}$ | $\\dfrac{1}{2}$ |\n\nVérification : $\\dfrac{1}{2} + \\dfrac{1}{2} = 1$ ✓"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $E(X)$.",
+        "hints": [
+          "Appliquer la formule $E(X) = \\sum x_i \\cdot P(X = x_i)$.",
+          "$E(X) = 0 \\times \\frac{1}{2} + 1 \\times \\frac{1}{2}$.",
+          "$E(X) = \\frac{1}{2}$."
+        ],
+        "expectedAnswer": "$E(X) = \\frac{1}{2}$",
+        "solution": "$$E(X) = 0 \\times \\frac{1}{2} + 1 \\times \\frac{1}{2} = 0 + \\frac{1}{2} = \\frac{1}{2}.$$\n\nL'espérance de $X$ est $\\dfrac{1}{2}$, ce qui est cohérent : en moyenne, sur un grand nombre de lancers, on obtient un résultat pair ou impair avec la même fréquence."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $V(X)$ et $\\sigma(X)$.",
+        "hints": [
+          "Utiliser la formule $V(X) = E(X^2) - (E(X))^2$ en calculant d'abord $E(X^2)$.",
+          "$E(X^2) = 0^2 \\times \\frac{1}{2} + 1^2 \\times \\frac{1}{2} = \\frac{1}{2}$, puis $V(X) = \\frac{1}{2} - \\left(\\frac{1}{2}\\right)^2$.",
+          "$V(X) = \\frac{1}{4}$ et $\\sigma(X) = \\frac{1}{2}$."
+        ],
+        "expectedAnswer": "$V(X) = \\frac{1}{4}$, $\\sigma(X) = \\frac{1}{2}$",
+        "solution": "On calcule $E(X^2)$ en élevant les valeurs au carré et en appliquant la même formule :\n$$E(X^2) = 0^2 \\times \\frac{1}{2} + 1^2 \\times \\frac{1}{2} = 0 + \\frac{1}{2} = \\frac{1}{2}.$$\n\nAinsi, par la formule de Koenig-Huygens :\n$$V(X) = E(X^2) - (E(X))^2 = \\frac{1}{2} - \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{2} - \\frac{1}{4} = \\frac{1}{4}.$$\n\nDonc $\\sigma(X) = \\sqrt{V(X)} = \\sqrt{\\dfrac{1}{4}} = \\dfrac{1}{2}$."
+      }
+    ],
+    "tags": ["loi", "esperance", "variance", "ecart-type"],
+    "order": 10
+  },
+  {
+    "id": "c-variables-aleatoires-002",
+    "chapter": "variables-aleatoires",
+    "title": "Calcul complet de l'espérance et de la variance",
+    "difficulty": 1,
+    "estimatedMinutes": 8,
+    "preamble": "Une variable aléatoire $X$ a la loi de probabilité suivante :\n\n| $X$ | $-2$ | $0$ | $1$ | $3$ |\n|---|---|---|---|---|\n| $P(X = x)$ | $\\dfrac{1}{4}$ | $\\dfrac{1}{4}$ | $\\dfrac{1}{4}$ | $\\dfrac{1}{4}$ |",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Vérifier que ce tableau définit bien une loi de probabilité.",
+        "hints": [
+          "Vérifier que toutes les probabilités sont positives et que leur somme vaut $1$."
+        ],
+        "expectedAnswer": "Somme $= 1$",
+        "solution": "Toutes les probabilités valent $\\dfrac{1}{4} > 0$. Leur somme est $\\dfrac{1}{4} + \\dfrac{1}{4} + \\dfrac{1}{4} + \\dfrac{1}{4} = \\dfrac{4}{4} = 1$. Donc ce tableau définit bien une loi de probabilité."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $E(X)$.",
+        "hints": [
+          "Appliquer $E(X) = \\sum x_i \\cdot P(X = x_i)$.",
+          "$E(X) = (-2 + 0 + 1 + 3) \\times \\frac{1}{4}$ puisque toutes les probabilités sont égales.",
+          "$E(X) = \\frac{2}{4} = \\frac{1}{2}$."
+        ],
+        "expectedAnswer": "$E(X) = \\frac{1}{2}$",
+        "solution": "$$E(X) = (-2) \\times \\frac{1}{4} + 0 \\times \\frac{1}{4} + 1 \\times \\frac{1}{4} + 3 \\times \\frac{1}{4}$$\n$$= \\frac{-2 + 0 + 1 + 3}{4} = \\frac{2}{4} = \\frac{1}{2}.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $V(X)$ à l'aide de la formule de Koenig-Huygens.",
+        "hints": [
+          "Calculer d'abord $E(X^2) = \\sum x_i^2 \\cdot P(X = x_i)$.",
+          "$E(X^2) = \\frac{4 + 0 + 1 + 9}{4} = \\frac{14}{4} = \\frac{7}{2}$. Puis $V(X) = \\frac{7}{2} - \\left(\\frac{1}{2}\\right)^2$.",
+          "$V(X) = \\frac{7}{2} - \\frac{1}{4} = \\frac{14}{4} - \\frac{1}{4} = \\frac{13}{4}$."
+        ],
+        "expectedAnswer": "$V(X) = \\frac{13}{4}$",
+        "solution": "On calcule :\n$$E(X^2) = (-2)^2 \\times \\frac{1}{4} + 0^2 \\times \\frac{1}{4} + 1^2 \\times \\frac{1}{4} + 3^2 \\times \\frac{1}{4} = \\frac{4 + 0 + 1 + 9}{4} = \\frac{14}{4} = \\frac{7}{2}.$$\n\nOr $E(X) = \\dfrac{1}{2}$, donc $(E(X))^2 = \\dfrac{1}{4}$.\n\nAinsi : $V(X) = E(X^2) - (E(X))^2 = \\dfrac{7}{2} - \\dfrac{1}{4} = \\dfrac{14}{4} - \\dfrac{1}{4} = \\dfrac{13}{4}$."
+      }
+    ],
+    "tags": ["loi", "esperance", "variance", "koenig-huygens"],
+    "order": 20
+  },
+  {
+    "id": "c-variables-aleatoires-003",
+    "chapter": "variables-aleatoires",
+    "title": "Linéarité de l'espérance — transformation affine",
+    "difficulty": 1,
+    "estimatedMinutes": 6,
+    "preamble": "Une variable aléatoire $X$ vérifie $E(X) = 3$ et $V(X) = 4$. On pose $Y = 2X - 5$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $E(Y)$.",
+        "hints": [
+          "Utiliser $E(aX + b) = a \\cdot E(X) + b$."
+        ],
+        "expectedAnswer": "$E(Y) = 1$",
+        "solution": "Par linéarité de l'espérance :\n$$E(Y) = E(2X - 5) = 2 \\times E(X) - 5 = 2 \\times 3 - 5 = 6 - 5 = 1.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $V(Y)$ et $\\sigma(Y)$.",
+        "hints": [
+          "Utiliser $V(aX + b) = a^2 \\cdot V(X)$. Puis $\\sigma(Y) = \\sqrt{V(Y)}$."
+        ],
+        "expectedAnswer": "$V(Y) = 16$, $\\sigma(Y) = 4$",
+        "solution": "La variance d'une transformation affine est :\n$$V(Y) = V(2X - 5) = 2^2 \\times V(X) = 4 \\times 4 = 16.$$\n\nDonc $\\sigma(Y) = \\sqrt{16} = 4$.\n\nAlternativement, $\\sigma(Y) = |2| \\times \\sigma(X) = 2 \\times 2 = 4$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "On pose $Z = X + 10$. Calculer $E(Z)$, $V(Z)$ et $\\sigma(Z)$.",
+        "hints": [
+          "Une translation de $10$ ajoute $10$ à l'espérance, mais ne change ni la variance ni l'écart-type."
+        ],
+        "expectedAnswer": "$E(Z) = 13$, $V(Z) = 4$, $\\sigma(Z) = 2$",
+        "solution": "$E(Z) = E(X + 10) = E(X) + 10 = 3 + 10 = 13$.\n\n$V(Z) = V(X + 10) = V(X) = 4$ (la translation ne modifie pas la variance).\n\nDonc $\\sigma(Z) = \\sqrt{4} = 2$.\n\nInterprétation : translater toutes les valeurs de $10$ déplace leur centre, mais ne modifie pas leur dispersion."
+      }
+    ],
+    "tags": ["linearite", "esperance", "variance", "transformation-affine"],
+    "order": 30
+  },
+  {
+    "id": "c-variables-aleatoires-004",
+    "chapter": "variables-aleatoires",
+    "title": "Variable aléatoire issue d'un jeu",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "preamble": "On tire au hasard une boule dans une urne contenant $3$ boules rouges numérotées $1$, $2$, $3$, et $2$ boules vertes numérotées $1$, $2$. Soit $X$ le numéro inscrit sur la boule tirée et $Y$ le nombre égal à $1$ si la boule est rouge, $0$ si elle est verte.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner la loi de probabilité de $X$.",
+        "hints": [
+          "Lister toutes les valeurs possibles de $X$ et compter les boules portant chaque numéro.",
+          "Il y a 5 boules au total. Le numéro $1$ apparaît sur $2$ boules, le numéro $2$ sur $2$ boules, le numéro $3$ sur $1$ boule.",
+          "$P(X=1) = \\frac{2}{5}$, $P(X=2) = \\frac{2}{5}$, $P(X=3) = \\frac{1}{5}$."
+        ],
+        "expectedAnswer": "$P(X=1)=\\frac{2}{5}$, $P(X=2)=\\frac{2}{5}$, $P(X=3)=\\frac{1}{5}$",
+        "solution": "L'urne contient $5$ boules équiprobables. Les valeurs de $X$ sont $1$, $2$, $3$.\n\n- $X = 1$ : boule rouge 1 et boule verte 1, soit $2$ boules.\n- $X = 2$ : boule rouge 2 et boule verte 2, soit $2$ boules.\n- $X = 3$ : boule rouge 3 uniquement, soit $1$ boule.\n\n| $X$ | $1$ | $2$ | $3$ |\n|---|---|---|---|\n| $P(X = x)$ | $\\dfrac{2}{5}$ | $\\dfrac{2}{5}$ | $\\dfrac{1}{5}$ |\n\nVérification : $\\dfrac{2}{5} + \\dfrac{2}{5} + \\dfrac{1}{5} = \\dfrac{5}{5} = 1$ ✓"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $E(X)$.",
+        "hints": [
+          "Appliquer $E(X) = \\sum x_i \\cdot P(X = x_i)$ avec les valeurs trouvées en question 1."
+        ],
+        "expectedAnswer": "$E(X) = \\frac{9}{5}$",
+        "solution": "$$E(X) = 1 \\times \\frac{2}{5} + 2 \\times \\frac{2}{5} + 3 \\times \\frac{1}{5} = \\frac{2}{5} + \\frac{4}{5} + \\frac{3}{5} = \\frac{9}{5}.$$\n\nDonc $E(X) = \\dfrac{9}{5}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Donner la loi de probabilité de $Y$, puis calculer $E(Y)$.",
+        "hints": [
+          "$Y = 1$ si boule rouge (3 boules), $Y = 0$ si boule verte (2 boules).",
+          "$P(Y=1) = \\frac{3}{5}$ et $P(Y=0) = \\frac{2}{5}$. Puis $E(Y) = 1 \\times \\frac{3}{5} + 0 \\times \\frac{2}{5}$."
+        ],
+        "expectedAnswer": "$E(Y) = \\frac{3}{5}$",
+        "solution": "La variable $Y$ vaut $1$ si la boule tirée est rouge (3 boules sur 5) et $0$ si elle est verte (2 boules sur 5).\n\n| $Y$ | $0$ | $1$ |\n|---|---|---|\n| $P(Y = y)$ | $\\dfrac{2}{5}$ | $\\dfrac{3}{5}$ |\n\nDonc :\n$$E(Y) = 0 \\times \\frac{2}{5} + 1 \\times \\frac{3}{5} = \\frac{3}{5}.$$\n\nOn retrouve : $E(Y) = P(\\text{boule rouge}) = \\dfrac{3}{5}$, ce qui est cohérent avec la propriété de l'indicateur."
+      }
+    ],
+    "tags": ["loi", "esperance", "indicateur", "urne"],
+    "order": 40
+  },
+  {
+    "id": "c-variables-aleatoires-005",
+    "chapter": "variables-aleatoires",
+    "title": "Espérance et jeu équitable",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "preamble": "On lance deux dés équilibrés à quatre faces (numérotées $1$, $2$, $3$, $4$). Soit $X$ la valeur absolue de la différence des deux résultats : $X = |D_1 - D_2|$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que $X$ prend les valeurs $0$, $1$, $2$, $3$ et déterminer la loi de probabilité de $X$.",
+        "hints": [
+          "Il y a $4 \\times 4 = 16$ couples équiprobables $(d_1, d_2)$. Recenser combien de couples donnent chaque valeur de $X$.",
+          "$X = 0$ : $(1,1), (2,2), (3,3), (4,4)$ — 4 couples. $X = 1$ : $(1,2),(2,1),(2,3),(3,2),(3,4),(4,3)$ — 6 couples. $X = 2$ : 4 couples. $X = 3$ : 2 couples.",
+          "$P(X=0) = \\frac{4}{16} = \\frac{1}{4}$, $P(X=1) = \\frac{6}{16} = \\frac{3}{8}$, $P(X=2) = \\frac{4}{16} = \\frac{1}{4}$, $P(X=3) = \\frac{2}{16} = \\frac{1}{8}$."
+        ],
+        "expectedAnswer": "$P(X=0)=\\frac{1}{4}$, $P(X=1)=\\frac{3}{8}$, $P(X=2)=\\frac{1}{4}$, $P(X=3)=\\frac{1}{8}$",
+        "solution": "L'espace des issues est l'ensemble des couples $(d_1, d_2)$ avec $d_1, d_2 \\in \\{1, 2, 3, 4\\}$, soit $16$ couples équiprobables.\n\n- $X = 0$ (différence nulle) : $(1,1), (2,2), (3,3), (4,4)$ — $4$ couples.\n- $X = 1$ : $(1,2),(2,1),(2,3),(3,2),(3,4),(4,3)$ — $6$ couples.\n- $X = 2$ : $(1,3),(3,1),(2,4),(4,2)$ — $4$ couples.\n- $X = 3$ : $(1,4),(4,1)$ — $2$ couples.\n\nVérification : $4 + 6 + 4 + 2 = 16$ ✓\n\n| $X$ | $0$ | $1$ | $2$ | $3$ |\n|---|---|---|---|---|\n| $P(X = x)$ | $\\dfrac{1}{4}$ | $\\dfrac{3}{8}$ | $\\dfrac{1}{4}$ | $\\dfrac{1}{8}$ |"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $E(X)$.",
+        "hints": [
+          "Utiliser $E(X) = \\sum x_i \\cdot P(X = x_i)$.",
+          "$E(X) = 0 \\times \\frac{1}{4} + 1 \\times \\frac{3}{8} + 2 \\times \\frac{1}{4} + 3 \\times \\frac{1}{8}$."
+        ],
+        "expectedAnswer": "$E(X) = \\frac{5}{4}$",
+        "solution": "$$E(X) = 0 \\times \\frac{1}{4} + 1 \\times \\frac{3}{8} + 2 \\times \\frac{1}{4} + 3 \\times \\frac{1}{8}$$\n$$= 0 + \\frac{3}{8} + \\frac{2}{4} + \\frac{3}{8} = \\frac{3}{8} + \\frac{4}{8} + \\frac{3}{8} = \\frac{10}{8} = \\frac{5}{4}.$$\n\nEn moyenne, la différence absolue entre les deux dés vaut $\\dfrac{5}{4} = 1{,}25$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Un joueur reçoit $X$ euros à chaque partie et paie $1{,}50$ euro pour jouer. Déterminer si ce jeu est favorable, défavorable ou équitable pour le joueur.",
+        "hints": [
+          "Le gain net du joueur est $G = X - 1{,}5$. Calculer $E(G)$ en utilisant la linéarité de l'espérance."
+        ],
+        "expectedAnswer": "$E(G) = -\\frac{1}{4}$ : jeu défavorable",
+        "solution": "Le gain net du joueur par partie est $G = X - 1{,}5$.\n\nPar linéarité de l'espérance :\n$$E(G) = E(X) - 1{,}5 = \\frac{5}{4} - \\frac{3}{2} = \\frac{5}{4} - \\frac{6}{4} = -\\frac{1}{4}.$$\n\nComme $E(G) = -\\dfrac{1}{4} < 0$, le jeu est **défavorable** pour le joueur : en moyenne, il perd $\\dfrac{1}{4}$ euro à chaque partie."
+      }
+    ],
+    "tags": ["loi", "esperance", "jeu-equitable", "modelisation"],
+    "order": 50
+  },
+  {
+    "id": "c-variables-aleatoires-006",
+    "chapter": "variables-aleatoires",
+    "title": "Échantillon — espérance et variance de $S_n$",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "preamble": "Une variable aléatoire $X$ représente le score obtenu par un archer à chaque flèche. On donne :\n\n| $X$ | $0$ | $5$ | $10$ |\n|---|---|---|---|\n| $P(X = x)$ | $\\dfrac{1}{4}$ | $\\dfrac{1}{2}$ | $\\dfrac{1}{4}$ |\n\nOn suppose que les flèches sont tirées de façon indépendante.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $E(X)$ et $V(X)$.",
+        "hints": [
+          "Calculer $E(X)$ puis $E(X^2)$, et enfin $V(X) = E(X^2) - (E(X))^2$.",
+          "$E(X) = 0 \\cdot \\frac{1}{4} + 5 \\cdot \\frac{1}{2} + 10 \\cdot \\frac{1}{4} = \\frac{5}{2} + \\frac{10}{4} = 5$."
+        ],
+        "expectedAnswer": "$E(X) = 5$, $V(X) = \\frac{25}{2}$",
+        "solution": "$$E(X) = 0 \\times \\frac{1}{4} + 5 \\times \\frac{1}{2} + 10 \\times \\frac{1}{4} = 0 + \\frac{5}{2} + \\frac{10}{4} = \\frac{10}{4} + \\frac{10}{4} = \\frac{20}{4} = 5.$$\n\nPour la variance, on calcule $E(X^2)$ :\n$$E(X^2) = 0^2 \\times \\frac{1}{4} + 5^2 \\times \\frac{1}{2} + 10^2 \\times \\frac{1}{4} = 0 + \\frac{25}{2} + \\frac{100}{4} = \\frac{50}{4} + \\frac{100}{4} = \\frac{150}{4} = \\frac{75}{2}.$$\n\nDonc : $V(X) = E(X^2) - (E(X))^2 = \\dfrac{75}{2} - 25 = \\dfrac{75}{2} - \\dfrac{50}{2} = \\dfrac{25}{2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "L'archer tire $20$ flèches. On note $S_{20}$ le score total. Calculer $E(S_{20})$ et $V(S_{20})$.",
+        "hints": [
+          "Appliquer $E(S_n) = n \\cdot E(X)$ et $V(S_n) = n \\cdot V(X)$."
+        ],
+        "expectedAnswer": "$E(S_{20}) = 100$, $V(S_{20}) = 250$",
+        "solution": "Les $20$ tirs sont indépendants et ont même loi, donc :\n$$E(S_{20}) = 20 \\times E(X) = 20 \\times 5 = 100.$$\n$$V(S_{20}) = 20 \\times V(X) = 20 \\times \\frac{25}{2} = \\frac{500}{2} = 250.$$\n\nEn moyenne, le score total sur $20$ flèches est $100$ points."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $E(\\bar{X}_{20})$ et $V(\\bar{X}_{20})$ où $\\bar{X}_{20} = \\dfrac{S_{20}}{20}$ est le score moyen par flèche.",
+        "hints": [
+          "Utiliser $E(\\bar{X}_n) = E(X)$ et $V(\\bar{X}_n) = \\dfrac{V(X)}{n}$."
+        ],
+        "expectedAnswer": "$E(\\bar{X}_{20}) = 5$, $V(\\bar{X}_{20}) = \\frac{5}{8}$",
+        "solution": "$$E(\\bar{X}_{20}) = E(X) = 5.$$\n$$V(\\bar{X}_{20}) = \\frac{V(X)}{20} = \\frac{25/2}{20} = \\frac{25}{40} = \\frac{5}{8}.$$\n\nLa moyenne empirique a la même espérance que $X$, mais une variance bien plus petite : le score moyen par flèche est un estimateur fiable du score attendu."
+      }
+    ],
+    "tags": ["echantillon", "somme", "esperance", "variance", "moyenne-empirique"],
+    "order": 60
+  },
+  {
+    "id": "c-variables-aleatoires-007",
+    "chapter": "variables-aleatoires",
+    "title": "Déterminer une loi connaissant l'espérance",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "preamble": "Une variable aléatoire $X$ prend les valeurs $-1$, $1$ et $3$ avec les probabilités respectives $a$, $b$ et $c$ inconnues.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Écrire les deux équations vérifiées par $a$, $b$ et $c$ en utilisant les conditions d'une loi de probabilité et le fait que $E(X) = 1$.",
+        "hints": [
+          "Condition 1 : $a + b + c = 1$. Condition 2 : $E(X) = -a + b + 3c = 1$."
+        ],
+        "expectedAnswer": "$a + b + c = 1$ et $-a + b + 3c = 1$",
+        "solution": "Une loi de probabilité doit vérifier : $a + b + c = 1$ avec $a, b, c \\geq 0$.\n\nLa condition $E(X) = 1$ donne :\n$$E(X) = (-1) \\times a + 1 \\times b + 3 \\times c = -a + b + 3c = 1.$$\n\nOn a donc le système :\n$$\\begin{cases} a + b + c = 1 \\\\ -a + b + 3c = 1 \\end{cases}$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "On sait de plus que $a = \\dfrac{1}{4}$. Déterminer $b$ et $c$.",
+        "hints": [
+          "Substituer $a = \\frac{1}{4}$ dans les deux équations pour obtenir un système en $b$ et $c$.",
+          "Les équations deviennent $b + c = \\frac{3}{4}$ et $b + 3c = \\frac{5}{4}$. Soustraire pour trouver $c$."
+        ],
+        "expectedAnswer": "$c = \\frac{1}{4}$, $b = \\frac{1}{2}$",
+        "solution": "Avec $a = \\dfrac{1}{4}$ :\n- Équation 1 : $\\dfrac{1}{4} + b + c = 1 \\Rightarrow b + c = \\dfrac{3}{4}$.\n- Équation 2 : $-\\dfrac{1}{4} + b + 3c = 1 \\Rightarrow b + 3c = \\dfrac{5}{4}$.\n\nEn soustrayant la première de la seconde : $2c = \\dfrac{5}{4} - \\dfrac{3}{4} = \\dfrac{2}{4} = \\dfrac{1}{2}$, donc $c = \\dfrac{1}{4}$.\n\nPuis $b = \\dfrac{3}{4} - c = \\dfrac{3}{4} - \\dfrac{1}{4} = \\dfrac{1}{2}$.\n\nVérification : $a + b + c = \\dfrac{1}{4} + \\dfrac{1}{2} + \\dfrac{1}{4} = 1$ ✓ et $E(X) = -\\dfrac{1}{4} + \\dfrac{1}{2} + \\dfrac{3}{4} = \\dfrac{-1 + 2 + 3}{4} = \\dfrac{4}{4} = 1$ ✓"
+      }
+    ],
+    "tags": ["loi", "esperance", "systeme-equations"],
+    "order": 70
+  },
+  {
+    "id": "c-variables-aleatoires-008",
+    "chapter": "variables-aleatoires",
+    "title": "Espérance et variance d'un indicateur",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "preamble": "On tire au hasard une carte dans un jeu de $52$ cartes (13 valeurs, 4 couleurs). On définit :\n- $A$ : « la carte est un as » ;\n- $\\mathbf{1}_A$ : variable aléatoire valant $1$ si la carte est un as, et $0$ sinon.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner la loi de probabilité de $\\mathbf{1}_A$.",
+        "hints": [
+          "Il y a $4$ as dans un jeu de $52$ cartes. Calculer $P(A)$ et $P(\\overline{A})$."
+        ],
+        "expectedAnswer": "$P(\\mathbf{1}_A = 1) = \\frac{1}{13}$, $P(\\mathbf{1}_A = 0) = \\frac{12}{13}$",
+        "solution": "Il y a $4$ as dans $52$ cartes, donc $P(A) = \\dfrac{4}{52} = \\dfrac{1}{13}$.\n\nAinsi :\n\n| $\\mathbf{1}_A$ | $0$ | $1$ |\n|---|---|---|\n| $P$ | $\\dfrac{12}{13}$ | $\\dfrac{1}{13}$ |"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $E(\\mathbf{1}_A)$ et $V(\\mathbf{1}_A)$.",
+        "hints": [
+          "Utiliser $E(\\mathbf{1}_A) = P(A)$ et $V(\\mathbf{1}_A) = P(A)(1 - P(A))$."
+        ],
+        "expectedAnswer": "$E(\\mathbf{1}_A) = \\frac{1}{13}$, $V(\\mathbf{1}_A) = \\frac{12}{169}$",
+        "solution": "Par la propriété de l'indicateur :\n$$E(\\mathbf{1}_A) = P(A) = \\frac{1}{13}.$$\n\nPour la variance : $E(\\mathbf{1}_A^2) = E(\\mathbf{1}_A)$ (car $\\mathbf{1}_A^2 = \\mathbf{1}_A$ pour une variable $0/1$).\n\nDonc :\n$$V(\\mathbf{1}_A) = E(\\mathbf{1}_A^2) - (E(\\mathbf{1}_A))^2 = \\frac{1}{13} - \\left(\\frac{1}{13}\\right)^2 = \\frac{1}{13} - \\frac{1}{169} = \\frac{13}{169} - \\frac{1}{169} = \\frac{12}{169}.$$\n\nOn retrouve la formule $V(\\mathbf{1}_A) = P(A)(1 - P(A)) = \\dfrac{1}{13} \\times \\dfrac{12}{13} = \\dfrac{12}{169}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "On tire $52$ cartes avec remise (les tirages sont indépendants). Soit $S_{52}$ le nombre total d'as obtenus. Calculer $E(S_{52})$.",
+        "hints": [
+          "Utiliser $E(S_n) = n \\cdot E(\\mathbf{1}_A)$."
+        ],
+        "expectedAnswer": "$E(S_{52}) = 4$",
+        "solution": "Les $52$ tirages sont indépendants et de même loi. La variable $S_{52}$ est la somme de $52$ variables $\\mathbf{1}_A$ indépendantes, donc :\n$$E(S_{52}) = 52 \\times E(\\mathbf{1}_A) = 52 \\times \\frac{1}{13} = 4.$$\n\nEn moyenne, on obtient $4$ as en $52$ tirages avec remise, ce qui est cohérent : on renouvelle un jeu complet en espérant voir chaque as apparaître une fois."
+      }
+    ],
+    "tags": ["indicateur", "esperance", "variance", "echantillon"],
+    "order": 80
+  }
+]

@@ -1,0 +1,269 @@
+[
+  {
+    "id": "f-va-definition-loi",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Variable aléatoire et loi de probabilité",
+    "statement": "Soit $\\Omega$ un univers fini. Une **variable aléatoire réelle** $X$ est une fonction qui à chaque issue $\\omega \\in \\Omega$ associe un nombre réel $X(\\omega)$.\n\nSi $X$ prend les valeurs $x_1, x_2, \\ldots, x_k$, la **loi de probabilité** de $X$ est le tableau :\n\n| $X$ | $x_1$ | $x_2$ | $\\cdots$ | $x_k$ |\n|---|---|---|---|---|\n| $P(X = x_i)$ | $p_1$ | $p_2$ | $\\cdots$ | $p_k$ |\n\navec $p_i = P(X = x_i) \\geq 0$ pour tout $i$, et $p_1 + p_2 + \\cdots + p_k = 1$.",
+    "conditions": "L'univers $\\Omega$ doit être **fini** (on ne traite pas les variables aléatoires à valeurs dans $\\mathbb{N}$ ou $\\mathbb{R}$ entier). La somme des probabilités vaut impérativement $1$.",
+    "example": "On lance un dé équilibré. Soit $X$ le résultat. $X$ prend les valeurs $1, 2, 3, 4, 5, 6$, chacune avec probabilité $\\dfrac{1}{6}$. La somme des probabilités vaut $6 \\times \\dfrac{1}{6} = 1$.",
+    "tags": ["variable-aleatoire", "loi", "tableau", "definition"],
+    "order": 10,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$X$ prend les valeurs $x_1, \\ldots, x_k$ avec $P(X = x_i) = p_i \\geq 0$ et $\\sum p_i = 1$.",
+      "mnemonic": "La somme de toutes les probabilités vaut toujours 1.",
+      "keyword": "loi-probabilité",
+      "visual": "Tableau à deux lignes : valeurs de $X$ sur la première, probabilités correspondantes sur la deuxième — la somme de la ligne du bas vaut 1.",
+      "accent": "blue"
+    }
+  },
+  {
+    "id": "f-va-esperance-def",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Espérance d'une variable aléatoire",
+    "statement": "Soit $X$ une variable aléatoire prenant les valeurs $x_1, x_2, \\ldots, x_k$ avec les probabilités $p_1, p_2, \\ldots, p_k$. L'**espérance** de $X$ est définie par :\n\n$$E(X) = \\sum_{i=1}^{k} x_i \\cdot p_i = x_1 p_1 + x_2 p_2 + \\cdots + x_k p_k$$\n\nL'espérance est la **valeur moyenne** que l'on observe sur un grand nombre de réalisations de $X$.",
+    "conditions": "La formule s'applique à toute variable aléatoire sur un univers fini.",
+    "example": "Si $X$ prend les valeurs $0$, $2$, $4$ avec les probabilités $\\dfrac{1}{2}$, $\\dfrac{1}{4}$, $\\dfrac{1}{4}$, alors :\n$$E(X) = 0 \\times \\dfrac{1}{2} + 2 \\times \\dfrac{1}{4} + 4 \\times \\dfrac{1}{4} = 0 + \\dfrac{1}{2} + 1 = \\dfrac{3}{2}.$$",
+    "tags": ["esperance", "definition", "moyenne"],
+    "order": 20,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$E(X) = \\sum_{i} x_i \\cdot P(X = x_i)$$",
+      "mnemonic": "Chaque valeur multipliée par sa probabilité, on additionne tout.",
+      "keyword": "espérance",
+      "visual": "Barycentre des valeurs, pondéré par les probabilités : si une valeur est très probable, elle « attire » davantage la moyenne.",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-va-variance-def",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Variance d'une variable aléatoire",
+    "statement": "La **variance** de $X$ mesure la dispersion des valeurs autour de l'espérance. Elle est définie par :\n\n$$V(X) = E\\!\\left((X - E(X))^2\\right) = \\sum_{i=1}^{k} (x_i - E(X))^2 \\cdot p_i$$\n\nOn dispose également de la **formule de Koenig-Huygens**, plus pratique pour le calcul :\n\n$$V(X) = E(X^2) - \\left(E(X)\\right)^2$$\n\noù $E(X^2) = \\displaystyle\\sum_{i=1}^{k} x_i^2 \\cdot p_i$.",
+    "conditions": "$V(X) \\geq 0$ toujours. $V(X) = 0$ si et seulement si $X$ est constante (prend une seule valeur).",
+    "example": "Avec $E(X) = \\dfrac{3}{2}$, $E(X^2) = 0^2 \\times \\dfrac{1}{2} + 2^2 \\times \\dfrac{1}{4} + 4^2 \\times \\dfrac{1}{4} = 0 + 1 + 4 = 5$. Donc $V(X) = 5 - \\left(\\dfrac{3}{2}\\right)^2 = 5 - \\dfrac{9}{4} = \\dfrac{11}{4}$.",
+    "tags": ["variance", "definition", "koenig-huygens", "dispersion"],
+    "order": 30,
+    "level": "essentiel",
+    "relatedFormulas": ["f-va-esperance-def", "f-va-ecart-type"],
+    "simplified": {
+      "core": "$$V(X) = E(X^2) - \\bigl(E(X)\\bigr)^2$$",
+      "mnemonic": "Carré de la moyenne des carrés, moins carré de la moyenne.",
+      "keyword": "variance",
+      "visual": "Plus $V(X)$ est grand, plus les valeurs sont éparpillées autour de l'espérance. $V(X) = 0$ si $X$ ne prend qu'une valeur.",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-va-ecart-type",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Écart-type d'une variable aléatoire",
+    "statement": "L'**écart-type** de $X$ est la racine carrée de la variance :\n\n$$\\sigma(X) = \\sqrt{V(X)}$$\n\nIl est exprimé dans la **même unité** que $X$, ce qui le rend plus facilement interprétable que la variance. Un grand écart-type signifie que les valeurs sont très dispersées autour de l'espérance.",
+    "conditions": "$\\sigma(X) \\geq 0$. L'écart-type est nul si et seulement si $X$ est constante.",
+    "example": "Si $V(X) = \\dfrac{11}{4}$, alors $\\sigma(X) = \\sqrt{\\dfrac{11}{4}} = \\dfrac{\\sqrt{11}}{2}$.",
+    "tags": ["ecart-type", "variance", "dispersion"],
+    "order": 40,
+    "level": "essentiel",
+    "relatedFormulas": ["f-va-variance-def"],
+    "simplified": {
+      "core": "$$\\sigma(X) = \\sqrt{V(X)}$$",
+      "mnemonic": "Racine carrée de la variance.",
+      "keyword": "écart-type",
+      "visual": "Même unité que $X$, donc comparable directement aux valeurs prises. $\\sigma(X)$ petit = valeurs resserrées autour de $E(X)$.",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-va-linearite-esperance",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Linéarité de l'espérance",
+    "statement": "Pour toute variable aléatoire $X$ et tous réels $a$ et $b$ :\n\n$$E(aX + b) = a \\cdot E(X) + b$$\n\nEn particulier :\n- $E(X + b) = E(X) + b$ (translation)\n- $E(aX) = a \\cdot E(X)$ (homothétie)\n- $E(b) = b$ pour une constante $b$",
+    "example": "Si $E(X) = 3$ et $Y = 2X - 1$, alors $E(Y) = 2 \\times 3 - 1 = 5$.",
+    "tags": ["esperance", "linearite", "transformation-affine"],
+    "order": 50,
+    "level": "essentiel",
+    "relatedFormulas": ["f-va-esperance-def"],
+    "simplified": {
+      "core": "$$E(aX + b) = a \\cdot E(X) + b$$",
+      "mnemonic": "L'espérance passe à travers une transformation affine : on applique la même transformation à $E(X)$.",
+      "keyword": "linéarité-E",
+      "visual": "Translater ou dilater $X$ translate ou dilate la valeur moyenne de la même façon.",
+      "accent": "emerald"
+    }
+  },
+  {
+    "id": "f-va-variance-affine",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Variance d'une transformation affine",
+    "statement": "Pour toute variable aléatoire $X$ et tous réels $a$ et $b$ :\n\n$$V(aX + b) = a^2 \\cdot V(X)$$\n\nEn particulier :\n- La **translation** ($a = 1$) ne change pas la variance : $V(X + b) = V(X)$.\n- L'**homothétie** multiplie la variance par $a^2$ : $V(aX) = a^2 V(X)$.\n- La variance d'une constante est nulle.",
+    "example": "Si $V(X) = 4$ et $Y = 3X + 5$, alors $V(Y) = 3^2 \\times 4 = 9 \\times 4 = 36$. Et $\\sigma(Y) = \\sqrt{36} = 6 = 3 \\times \\sigma(X) = 3 \\times 2 = 6$.",
+    "tags": ["variance", "transformation-affine", "translation", "homothetie"],
+    "order": 60,
+    "level": "essentiel",
+    "relatedFormulas": ["f-va-variance-def", "f-va-linearite-esperance"],
+    "simplified": {
+      "core": "$$V(aX + b) = a^2 \\cdot V(X)$$\n\nLa translation ($b$) n'intervient **pas** dans la variance.",
+      "mnemonic": "La variance ne voit pas la translation : seul le facteur $a$ compte, au carré.",
+      "keyword": "variance-affine",
+      "visual": "Déplacer toutes les valeurs de $b$ ne change pas l'écart entre elles. Les multiplier par $a$ les écarte $|a|$ fois plus.",
+      "accent": "emerald"
+    }
+  },
+  {
+    "id": "f-va-ecart-type-affine",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Écart-type d'une transformation affine",
+    "statement": "En prenant la racine carrée de $V(aX + b) = a^2 V(X)$, on obtient :\n\n$$\\sigma(aX + b) = |a| \\cdot \\sigma(X)$$\n\nEn particulier, $\\sigma(X + b) = \\sigma(X)$ : une translation ne modifie pas l'écart-type.",
+    "conditions": "On prend la valeur absolue de $a$ car l'écart-type est toujours positif.",
+    "example": "Si $\\sigma(X) = 2$ et $Y = -3X + 1$, alors $\\sigma(Y) = |-3| \\times 2 = 3 \\times 2 = 6$.",
+    "tags": ["ecart-type", "transformation-affine"],
+    "order": 70,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-va-variance-affine", "f-va-ecart-type"],
+    "simplified": {
+      "core": "$$\\sigma(aX + b) = |a| \\cdot \\sigma(X)$$",
+      "mnemonic": "L'écart-type se multiplie par |a|, la translation ne change rien.",
+      "keyword": "sigma-affine",
+      "accent": "emerald"
+    }
+  },
+  {
+    "id": "f-va-echantillon-def",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Échantillon — somme $S_n$",
+    "statement": "On répète $n$ fois la même épreuve, de façon **indépendante**. Si $X_i$ désigne le résultat de la $i$-ème épreuve (même loi que $X$), on définit la **somme** :\n\n$$S_n = X_1 + X_2 + \\cdots + X_n$$\n\nL'espérance et la variance de $S_n$ sont :\n\n$$E(S_n) = n \\cdot E(X) \\qquad V(S_n) = n \\cdot V(X)$$",
+    "conditions": "Les $X_i$ doivent être **indépendantes** et de **même loi**.",
+    "example": "On lance $100$ fois un dé. Chaque lancer $X_i$ a $E(X_i) = 3{,}5$. Si $S_{100}$ est la somme des résultats, $E(S_{100}) = 100 \\times 3{,}5 = 350$.",
+    "tags": ["echantillon", "somme", "independance"],
+    "order": 80,
+    "level": "essentiel",
+    "relatedFormulas": ["f-va-esperance-def", "f-va-variance-def"],
+    "simplified": {
+      "core": "$$E(S_n) = n \\cdot E(X) \\qquad V(S_n) = n \\cdot V(X)$$",
+      "mnemonic": "Somme de $n$ copies identiques et indépendantes : espérance et variance se multiplient par $n$.",
+      "keyword": "somme-Sn",
+      "visual": "On empile $n$ fois la même expérience. La valeur moyenne totale grossit linéairement, la dispersion grossit comme $\\sqrt{n}$ (en écart-type).",
+      "accent": "violet"
+    }
+  },
+  {
+    "id": "f-va-echantillon-moyenne",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Échantillon — moyenne empirique $\\bar{X}_n$",
+    "statement": "La **moyenne empirique** (ou fréquence moyenne) sur $n$ épreuves est :\n\n$$\\bar{X}_n = \\frac{S_n}{n} = \\frac{X_1 + X_2 + \\cdots + X_n}{n}$$\n\nSes caractéristiques :\n\n$$E\\!\\left(\\bar{X}_n\\right) = E(X) \\qquad V\\!\\left(\\bar{X}_n\\right) = \\frac{V(X)}{n}$$\n\nQuand $n$ augmente, la variance de $\\bar{X}_n$ diminue : la moyenne empirique se concentre autour de $E(X)$.",
+    "conditions": "Les $n$ épreuves sont indépendantes et de même loi.",
+    "example": "Si $E(X) = 2$ et $V(X) = 4$, alors pour $n = 100$ épreuves :\n$E(\\bar{X}_{100}) = 2$ et $V(\\bar{X}_{100}) = \\dfrac{4}{100} = 0{,}04$.",
+    "tags": ["echantillon", "moyenne-empirique", "loi-des-grands-nombres"],
+    "order": 90,
+    "level": "essentiel",
+    "relatedFormulas": ["f-va-echantillon-def"],
+    "simplified": {
+      "core": "$$E\\!\\left(\\tfrac{S_n}{n}\\right) = E(X) \\qquad V\\!\\left(\\tfrac{S_n}{n}\\right) = \\dfrac{V(X)}{n}$$",
+      "mnemonic": "La moyenne empirique vise juste (même espérance) mais se resserre quand $n$ grandit.",
+      "keyword": "moyenne-Xbarre",
+      "visual": "Diviser $S_n$ par $n$ divise l'espérance par $n$… et la variance par $n^2$, donc $V$ par $n$ aussi.",
+      "accent": "violet"
+    }
+  },
+  {
+    "id": "f-va-esperance-constante",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Espérance d'une constante et d'un indicateur",
+    "statement": "**Constante** : pour tout réel $c$, $E(c) = c$.\n\n**Indicateur** : si $A$ est un événement et $\\mathbf{1}_A$ la variable valant $1$ si $A$ se réalise et $0$ sinon :\n$$E(\\mathbf{1}_A) = P(A)$$\n\nDe plus, $V(\\mathbf{1}_A) = P(A) \\cdot (1 - P(A))$.",
+    "example": "Si $P(A) = \\dfrac{3}{4}$, alors $E(\\mathbf{1}_A) = \\dfrac{3}{4}$ et $V(\\mathbf{1}_A) = \\dfrac{3}{4} \\times \\dfrac{1}{4} = \\dfrac{3}{16}$.",
+    "tags": ["esperance", "indicateur", "constante"],
+    "order": 100,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-va-esperance-def", "f-va-variance-def"],
+    "simplified": {
+      "core": "$E(c) = c$ et $E(\\mathbf{1}_A) = P(A)$",
+      "mnemonic": "Une constante a pour espérance elle-même ; l'espérance d'un indicateur est la probabilité de l'événement.",
+      "keyword": "indicateur",
+      "accent": "blue"
+    }
+  },
+  {
+    "id": "f-va-esperance-x2",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Calcul de $E(X^2)$",
+    "statement": "Pour calculer la variance avec la formule de Koenig-Huygens $V(X) = E(X^2) - (E(X))^2$, on a besoin de :\n\n$$E(X^2) = \\sum_{i=1}^{k} x_i^2 \\cdot p_i$$\n\nC'est l'espérance de la variable aléatoire $X^2$ (qui prend les valeurs $x_1^2, x_2^2, \\ldots, x_k^2$ avec les mêmes probabilités).",
+    "example": "Si $X$ prend les valeurs $-1$, $0$, $2$ avec probabilités $\\dfrac{1}{3}$, $\\dfrac{1}{3}$, $\\dfrac{1}{3}$, alors :\n$$E(X^2) = (-1)^2 \\times \\dfrac{1}{3} + 0^2 \\times \\dfrac{1}{3} + 2^2 \\times \\dfrac{1}{3} = \\dfrac{1}{3} + 0 + \\dfrac{4}{3} = \\dfrac{5}{3}.$$",
+    "tags": ["variance", "esperance", "koenig-huygens", "calcul"],
+    "order": 110,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-va-variance-def"],
+    "simplified": {
+      "core": "$$E(X^2) = \\sum_{i} x_i^2 \\cdot p_i$$",
+      "mnemonic": "Même tableau que $E(X)$ mais on élève d'abord les valeurs au carré.",
+      "keyword": "E-X-carré",
+      "accent": "blue"
+    }
+  },
+  {
+    "id": "f-va-variance-positive",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Propriétés fondamentales de la variance",
+    "statement": "Pour toute variable aléatoire $X$ :\n\n1. $V(X) \\geq 0$\n2. $V(X) = 0 \\Leftrightarrow X$ est constante (presque sûrement)\n3. La formule de Koenig-Huygens donne une inégalité utile : $E(X^2) \\geq (E(X))^2$\n4. $V(X) = E(X^2) - (E(X))^2$",
+    "example": "Si $X$ vaut toujours $5$ (constante), alors $E(X) = 5$, $E(X^2) = 25$ et $V(X) = 25 - 25 = 0$.",
+    "tags": ["variance", "proprietes", "positif"],
+    "order": 120,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-va-variance-def"],
+    "simplified": {
+      "core": "$V(X) \\geq 0$ toujours. $V(X) = 0 \\Leftrightarrow X$ constante. $E(X^2) \\geq (E(X))^2$.",
+      "mnemonic": "Variance nulle : pas de dispersion, tout est concentré en un point.",
+      "keyword": "variance-nulle",
+      "accent": "slate"
+    }
+  },
+  {
+    "id": "f-va-ecart-type-echantillon",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Écart-type de la somme et de la moyenne d'un échantillon",
+    "statement": "Pour un échantillon de taille $n$ (épreuves indépendantes, même loi) :\n\n$$\\sigma(S_n) = \\sqrt{n} \\cdot \\sigma(X)$$\n\n$$\\sigma\\!\\left(\\bar{X}_n\\right) = \\frac{\\sigma(X)}{\\sqrt{n}}$$\n\nL'écart-type de la moyenne empirique décroît comme $\\dfrac{1}{\\sqrt{n}}$ : doubler $n$ divise $\\sigma(\\bar{X}_n)$ par $\\sqrt{2}$.",
+    "conditions": "Les épreuves doivent être indépendantes et identiquement distribuées.",
+    "example": "Si $\\sigma(X) = 3$ et $n = 9$ : $\\sigma(S_9) = \\sqrt{9} \\times 3 = 3 \\times 3 = 9$ et $\\sigma(\\bar{X}_9) = \\dfrac{3}{\\sqrt{9}} = \\dfrac{3}{3} = 1$.",
+    "tags": ["ecart-type", "echantillon", "racine-n"],
+    "order": 130,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-va-echantillon-def", "f-va-echantillon-moyenne"],
+    "simplified": {
+      "core": "$$\\sigma(S_n) = \\sqrt{n} \\cdot \\sigma(X) \\qquad \\sigma(\\bar{X}_n) = \\dfrac{\\sigma(X)}{\\sqrt{n}}$$",
+      "mnemonic": "La somme grandit comme racine de n, la moyenne rétrécit comme 1 sur racine de n.",
+      "keyword": "sigma-échantillon",
+      "visual": "Plus on moyenne, moins on se trompe : l'incertitude sur $\\bar{X}_n$ est divisée par $\\sqrt{n}$.",
+      "accent": "violet"
+    }
+  },
+  {
+    "id": "f-va-interpretation-esperance",
+    "chapter": "variables-aleatoires",
+    "domain": "probabilites",
+    "title": "Interprétation de l'espérance (sens probabiliste)",
+    "statement": "L'espérance $E(X)$ est la **valeur moyenne** à laquelle on s'attend lorsqu'on répète l'expérience un très grand nombre de fois.\n\nFormellement, si l'on réalise $n$ fois l'expérience et que l'on observe les valeurs $x^{(1)}, x^{(2)}, \\ldots, x^{(n)}$, alors :\n\n$$\\frac{x^{(1)} + x^{(2)} + \\cdots + x^{(n)}}{n} \\approx E(X) \\text{ pour } n \\text{ grand}$$\n\nC'est l'idée de la **loi des grands nombres** (non formalisée en première).",
+    "example": "Pour un jeu de dé équilibré, $E(X) = \\dfrac{1+2+3+4+5+6}{6} = \\dfrac{21}{6} = 3{,}5$. En lançant le dé $1000$ fois, la somme des résultats sera proche de $3500$.",
+    "tags": ["esperance", "interpretation", "loi-grands-nombres"],
+    "order": 140,
+    "level": "approfondissement",
+    "relatedFormulas": ["f-va-esperance-def", "f-va-echantillon-moyenne"],
+    "simplified": {
+      "core": "$E(X) \\approx$ moyenne observée sur un grand nombre d'épreuves.",
+      "mnemonic": "Espérance = valeur moyenne à long terme.",
+      "keyword": "interprétation-E",
+      "accent": "amber"
+    }
+  }
+]

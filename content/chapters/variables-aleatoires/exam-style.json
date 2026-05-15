@@ -1,0 +1,199 @@
+[
+  {
+    "id": "e-variables-aleatoires-001",
+    "chapter": "variables-aleatoires",
+    "title": "Jeu de fléchettes — loi, espérance et échantillon",
+    "difficulty": 2,
+    "estimatedMinutes": 30,
+    "totalMarks": 5,
+    "preamble": "Un joueur lance des fléchettes sur une cible circulaire divisée en trois zones concentriques :\n- **Zone A** (cercle central) : rapport de $1$ point sur $5$ de la cible, avec probabilité $\\dfrac{1}{5}$ d'atteindre cette zone.\n- **Zone B** (couronne intermédiaire) : avec probabilité $\\dfrac{1}{2}$.\n- **Zone C** (couronne extérieure) : avec probabilité $\\dfrac{3}{10}$.\n\nLe joueur marque $10$ points en zone A, $3$ points en zone B, et $0$ point en zone C. On note $X$ le nombre de points obtenus à chaque lancer. Les lancers sont supposés indépendants.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner la loi de probabilité de $X$ sous forme de tableau et vérifier que la somme des probabilités vaut $1$.",
+        "marks": 1,
+        "hints": [
+          "Identifier les valeurs prises par $X$ et les probabilités associées directement à partir de l'énoncé.",
+          "$X = 10$ avec probabilité $\\frac{1}{5}$, $X = 3$ avec probabilité $\\frac{1}{2}$, $X = 0$ avec probabilité $\\frac{3}{10}$.",
+          "Vérifier : $\\frac{1}{5} + \\frac{1}{2} + \\frac{3}{10} = \\frac{2}{10} + \\frac{5}{10} + \\frac{3}{10} = 1$."
+        ],
+        "expectedAnswer": "Tableau avec $P(X=0)=\\frac{3}{10}$, $P(X=3)=\\frac{1}{2}$, $P(X=10)=\\frac{1}{5}$",
+        "solution": "D'après l'énoncé :\n\n| $X$ | $0$ | $3$ | $10$ |\n|---|---|---|---|\n| $P(X = x)$ | $\\dfrac{3}{10}$ | $\\dfrac{1}{2}$ | $\\dfrac{1}{5}$ |\n\nVérification : $\\dfrac{3}{10} + \\dfrac{1}{2} + \\dfrac{1}{5} = \\dfrac{3}{10} + \\dfrac{5}{10} + \\dfrac{2}{10} = \\dfrac{10}{10} = 1$ ✓"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer l'espérance $E(X)$. Interpréter ce résultat dans le contexte du problème.",
+        "marks": 1.5,
+        "hints": [
+          "Appliquer $E(X) = \\sum x_i \\cdot P(X = x_i)$.",
+          "$E(X) = 0 \\times \\frac{3}{10} + 3 \\times \\frac{1}{2} + 10 \\times \\frac{1}{5} = 0 + \\frac{3}{2} + 2 = \\frac{7}{2}$.",
+          "Interpréter : sur un grand nombre de lancers, le joueur marque en moyenne $3{,}5$ points par lancer."
+        ],
+        "expectedAnswer": "$E(X) = \\frac{7}{2}$",
+        "solution": "$$E(X) = 0 \\times \\frac{3}{10} + 3 \\times \\frac{1}{2} + 10 \\times \\frac{1}{5} = 0 + \\frac{3}{2} + \\frac{10}{5} = \\frac{3}{2} + 2 = \\frac{3}{2} + \\frac{4}{2} = \\frac{7}{2}.$$\n\nInterprétation : si le joueur lance un grand nombre de fléchettes, son score moyen par lancer est proche de $\\dfrac{7}{2} = 3{,}5$ points."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $V(X)$.",
+        "marks": 1.5,
+        "hints": [
+          "Calculer $E(X^2) = \\sum x_i^2 \\cdot P(X = x_i)$, puis utiliser $V(X) = E(X^2) - (E(X))^2$.",
+          "$E(X^2) = 0 \\times \\frac{3}{10} + 9 \\times \\frac{1}{2} + 100 \\times \\frac{1}{5} = \\frac{9}{2} + 20 = \\frac{49}{2}$.",
+          "$V(X) = \\frac{49}{2} - \\left(\\frac{7}{2}\\right)^2 = \\frac{49}{2} - \\frac{49}{4} = \\frac{49}{4}$."
+        ],
+        "expectedAnswer": "$V(X) = \\frac{49}{4}$",
+        "solution": "On calcule $E(X^2)$ :\n$$E(X^2) = 0^2 \\times \\frac{3}{10} + 3^2 \\times \\frac{1}{2} + 10^2 \\times \\frac{1}{5} = 0 + \\frac{9}{2} + \\frac{100}{5} = \\frac{9}{2} + 20 = \\frac{9}{2} + \\frac{40}{2} = \\frac{49}{2}.$$\n\nOr $E(X) = \\dfrac{7}{2}$, donc $(E(X))^2 = \\dfrac{49}{4}$.\n\nAinsi :\n$$V(X) = E(X^2) - (E(X))^2 = \\frac{49}{2} - \\frac{49}{4} = \\frac{98}{4} - \\frac{49}{4} = \\frac{49}{4}.$$"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Le joueur effectue $20$ lancers indépendants. On note $S_{20}$ son score total. Calculer $E(S_{20})$ et $\\sigma(S_{20})$.",
+        "marks": 1,
+        "hints": [
+          "Utiliser $E(S_n) = n \\cdot E(X)$ et $V(S_n) = n \\cdot V(X)$, puis $\\sigma(S_{20}) = \\sqrt{V(S_{20})}$.",
+          "$E(S_{20}) = 20 \\times \\frac{7}{2} = 70$ et $V(S_{20}) = 20 \\times \\frac{49}{4} = \\frac{980}{4} = 245$.",
+          "$\\sigma(S_{20}) = \\sqrt{245} = 7\\sqrt{5}$."
+        ],
+        "expectedAnswer": "$E(S_{20}) = 70$, $\\sigma(S_{20}) = 7\\sqrt{5}$",
+        "solution": "Les $20$ lancers sont indépendants et de même loi, donc :\n$$E(S_{20}) = 20 \\times E(X) = 20 \\times \\frac{7}{2} = 70.$$\n$$V(S_{20}) = 20 \\times V(X) = 20 \\times \\frac{49}{4} = \\frac{20 \\times 49}{4} = 5 \\times 49 = 245.$$\n\nDonc $\\sigma(S_{20}) = \\sqrt{245} = \\sqrt{49 \\times 5} = 7\\sqrt{5}$.\n\nEn moyenne, le joueur marque $70$ points sur $20$ lancers."
+      }
+    ],
+    "tags": ["loi", "esperance", "variance", "ecart-type", "echantillon"],
+    "order": 10
+  },
+  {
+    "id": "e-variables-aleatoires-002",
+    "chapter": "variables-aleatoires",
+    "title": "Production d'une usine — variable aléatoire et linéarité",
+    "difficulty": 2,
+    "estimatedMinutes": 30,
+    "totalMarks": 5,
+    "preamble": "Une machine produit des pièces. Chaque pièce est, de façon indépendante :\n- **conforme** avec probabilité $\\dfrac{3}{4}$ ;\n- **défectueuse** avec probabilité $\\dfrac{1}{4}$.\n\nUne pièce conforme est vendue $8$ euros. Une pièce défectueuse est rebutée et entraîne un coût supplémentaire de $2$ euros (destruction). On note $G$ le gain algébrique (en euros) généré par une pièce produite.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner la loi de probabilité de $G$.",
+        "marks": 1,
+        "hints": [
+          "$G = 8$ si la pièce est conforme, $G = -2$ si la pièce est défectueuse."
+        ],
+        "expectedAnswer": "$P(G=8) = \\frac{3}{4}$, $P(G=-2) = \\frac{1}{4}$",
+        "solution": "La variable $G$ prend deux valeurs :\n- $G = 8$ euros si la pièce est conforme, avec probabilité $\\dfrac{3}{4}$.\n- $G = -2$ euros si la pièce est défectueuse, avec probabilité $\\dfrac{1}{4}$.\n\n| $G$ | $-2$ | $8$ |\n|---|---|---|\n| $P(G = g)$ | $\\dfrac{1}{4}$ | $\\dfrac{3}{4}$ |\n\nVérification : $\\dfrac{1}{4} + \\dfrac{3}{4} = 1$ ✓"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $E(G)$ et interpréter le résultat.",
+        "marks": 1,
+        "hints": [
+          "$E(G) = (-2) \\times \\frac{1}{4} + 8 \\times \\frac{3}{4}$."
+        ],
+        "expectedAnswer": "$E(G) = \\frac{11}{2}$",
+        "solution": "$$E(G) = (-2) \\times \\frac{1}{4} + 8 \\times \\frac{3}{4} = -\\frac{2}{4} + \\frac{24}{4} = \\frac{22}{4} = \\frac{11}{2}.$$\n\nInterprétation : en moyenne, chaque pièce produite rapporte $\\dfrac{11}{2} = 5{,}50$ euros."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "On note $C$ le coût fixe de production d'une pièce, égal à $3$ euros (matière première, énergie). Soit $B = G - 3$ le bénéfice net par pièce. Calculer $E(B)$ et $V(G)$.",
+        "marks": 1.5,
+        "hints": [
+          "Utiliser $E(B) = E(G) - 3$ pour l'espérance. Pour la variance : $V(G) = E(G^2) - (E(G))^2$.",
+          "$E(G^2) = 4 \\times \\frac{1}{4} + 64 \\times \\frac{3}{4} = 1 + 48 = 49$. Puis $V(G) = 49 - \\left(\\frac{11}{2}\\right)^2$.",
+          "$V(G) = 49 - \\frac{121}{4} = \\frac{196 - 121}{4} = \\frac{75}{4}$."
+        ],
+        "expectedAnswer": "$E(B) = \\frac{5}{2}$, $V(G) = \\frac{75}{4}$",
+        "solution": "**Espérance de $B$** : par linéarité, $E(B) = E(G - 3) = E(G) - 3 = \\dfrac{11}{2} - 3 = \\dfrac{11}{2} - \\dfrac{6}{2} = \\dfrac{5}{2}$.\n\n**Variance de $G$** : on calcule $E(G^2)$ :\n$$E(G^2) = (-2)^2 \\times \\frac{1}{4} + 8^2 \\times \\frac{3}{4} = 4 \\times \\frac{1}{4} + 64 \\times \\frac{3}{4} = 1 + 48 = 49.$$\n\nDonc :\n$$V(G) = E(G^2) - (E(G))^2 = 49 - \\left(\\frac{11}{2}\\right)^2 = 49 - \\frac{121}{4} = \\frac{196}{4} - \\frac{121}{4} = \\frac{75}{4}.$$\n\nRemarque : $V(B) = V(G - 3) = V(G) = \\dfrac{75}{4}$ (la translation ne change pas la variance)."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "La machine produit $100$ pièces par heure. Soit $S_{100}$ le gain total (avant coût fixe) en une heure. Calculer $E(S_{100})$ et $\\sigma(S_{100})$.",
+        "marks": 1.5,
+        "hints": [
+          "$E(S_{100}) = 100 \\times E(G)$ et $V(S_{100}) = 100 \\times V(G)$.",
+          "$\\sigma(S_{100}) = \\sqrt{100 \\times \\frac{75}{4}} = 10 \\times \\frac{\\sqrt{75}}{2} = 10 \\times \\frac{5\\sqrt{3}}{2} = 25\\sqrt{3}$."
+        ],
+        "expectedAnswer": "$E(S_{100}) = 550$, $\\sigma(S_{100}) = 25\\sqrt{3}$",
+        "solution": "Les $100$ pièces sont produites de façon indépendante et ont même loi, donc :\n$$E(S_{100}) = 100 \\times E(G) = 100 \\times \\frac{11}{2} = 550.$$\n$$V(S_{100}) = 100 \\times V(G) = 100 \\times \\frac{75}{4} = \\frac{7500}{4}.$$\n\nDonc :\n$$\\sigma(S_{100}) = \\sqrt{\\frac{7500}{4}} = \\frac{\\sqrt{7500}}{2} = \\frac{\\sqrt{2500 \\times 3}}{2} = \\frac{50\\sqrt{3}}{2} = 25\\sqrt{3}.$$\n\nEn moyenne, la machine génère $550$ euros de gain brut par heure."
+      }
+    ],
+    "tags": ["loi", "esperance", "variance", "ecart-type", "echantillon", "linearite"],
+    "order": 20
+  },
+  {
+    "id": "e-variables-aleatoires-003",
+    "chapter": "variables-aleatoires",
+    "title": "Urne et variable aléatoire — loi complète et échantillon",
+    "difficulty": 3,
+    "estimatedMinutes": 35,
+    "totalMarks": 7,
+    "preamble": "Une urne contient $8$ boules numérotées : quatre boules portant le numéro $1$, deux boules portant le numéro $2$, et deux boules portant le numéro $4$. On tire successivement, avec remise, deux boules au hasard. On note $X$ la valeur de la première boule tirée et $Y$ la valeur de la seconde. On pose $S = X + Y$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner la loi de probabilité de $X$.",
+        "marks": 1,
+        "hints": [
+          "Identifier les valeurs possibles de $X$ et le nombre de boules de chaque type."
+        ],
+        "expectedAnswer": "$P(X=1)=\\frac{1}{2}$, $P(X=2)=\\frac{1}{4}$, $P(X=4)=\\frac{1}{4}$",
+        "solution": "L'urne contient $8$ boules. Par équiprobabilité :\n- $P(X = 1) = \\dfrac{4}{8} = \\dfrac{1}{2}$\n- $P(X = 2) = \\dfrac{2}{8} = \\dfrac{1}{4}$\n- $P(X = 4) = \\dfrac{2}{8} = \\dfrac{1}{4}$\n\n| $X$ | $1$ | $2$ | $4$ |\n|---|---|---|---|\n| $P(X = x)$ | $\\dfrac{1}{2}$ | $\\dfrac{1}{4}$ | $\\dfrac{1}{4}$ |\n\nVérification : $\\dfrac{1}{2} + \\dfrac{1}{4} + \\dfrac{1}{4} = 1$ ✓"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $E(X)$ et $V(X)$.",
+        "marks": 2,
+        "hints": [
+          "Appliquer $E(X) = \\sum x_i p_i$, puis $E(X^2) = \\sum x_i^2 p_i$, et $V(X) = E(X^2) - (E(X))^2$.",
+          "$E(X) = 1 \\cdot \\frac{1}{2} + 2 \\cdot \\frac{1}{4} + 4 \\cdot \\frac{1}{4} = \\frac{1}{2} + \\frac{1}{2} + 1 = 2$.",
+          "$E(X^2) = 1 \\cdot \\frac{1}{2} + 4 \\cdot \\frac{1}{4} + 16 \\cdot \\frac{1}{4} = \\frac{1}{2} + 1 + 4 = \\frac{11}{2}$. Puis $V(X) = \\frac{11}{2} - 4 = \\frac{3}{2}$."
+        ],
+        "expectedAnswer": "$E(X) = 2$, $V(X) = \\frac{3}{2}$",
+        "solution": "**Espérance :**\n$$E(X) = 1 \\times \\frac{1}{2} + 2 \\times \\frac{1}{4} + 4 \\times \\frac{1}{4} = \\frac{1}{2} + \\frac{2}{4} + \\frac{4}{4} = \\frac{2}{4} + \\frac{2}{4} + \\frac{4}{4} = \\frac{8}{4} = 2.$$\n\n**Variance :**\n$$E(X^2) = 1^2 \\times \\frac{1}{2} + 2^2 \\times \\frac{1}{4} + 4^2 \\times \\frac{1}{4} = \\frac{1}{2} + \\frac{4}{4} + \\frac{16}{4} = \\frac{1}{2} + 1 + 4 = \\frac{1}{2} + 5 = \\frac{11}{2}.$$\n\nOr $(E(X))^2 = 2^2 = 4$, donc :\n$$V(X) = \\frac{11}{2} - 4 = \\frac{11}{2} - \\frac{8}{2} = \\frac{3}{2}.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Puisque les tirages sont indépendants et que $Y$ a la même loi que $X$, donner sans calcul $E(S)$ et $V(S)$.",
+        "marks": 1.5,
+        "hints": [
+          "$S = X + Y$ avec $X$ et $Y$ indépendantes de même loi. Utiliser $E(S) = E(X) + E(Y)$ et $V(S) = V(X) + V(Y)$.",
+          "Ces formules sont un cas particulier de $E(S_n) = n \\cdot E(X)$ et $V(S_n) = n \\cdot V(X)$ avec $n = 2$."
+        ],
+        "expectedAnswer": "$E(S) = 4$, $V(S) = 3$",
+        "solution": "Les variables $X$ et $Y$ sont indépendantes et ont même loi. D'après les propriétés de l'espérance et de la variance pour un échantillon de taille $n = 2$ :\n$$E(S) = E(X + Y) = E(X) + E(Y) = 2 + 2 = 4.$$\n$$V(S) = V(X + Y) = V(X) + V(Y) = \\frac{3}{2} + \\frac{3}{2} = 3.$$\n\n(Ces égalités utilisent l'indépendance de $X$ et $Y$.)"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "On transforme chaque boule tirée : son numéro est multiplié par $3$ puis on lui retire $2$. Soit $Z = 3X - 2$ le résultat transformé de la première boule. Calculer $E(Z)$ et $\\sigma(Z)$.",
+        "marks": 1.5,
+        "hints": [
+          "Utiliser $E(Z) = 3 E(X) - 2$ et $V(Z) = 3^2 V(X)$, puis $\\sigma(Z) = \\sqrt{V(Z)}$.",
+          "$E(Z) = 3 \\times 2 - 2 = 4$ et $V(Z) = 9 \\times \\frac{3}{2} = \\frac{27}{2}$, donc $\\sigma(Z) = \\frac{3\\sqrt{6}}{2}$."
+        ],
+        "expectedAnswer": "$E(Z) = 4$, $\\sigma(Z) = \\frac{3\\sqrt{6}}{2}$",
+        "solution": "Par linéarité de l'espérance :\n$$E(Z) = E(3X - 2) = 3 \\times E(X) - 2 = 3 \\times 2 - 2 = 6 - 2 = 4.$$\n\nPour la variance :\n$$V(Z) = V(3X - 2) = 3^2 \\times V(X) = 9 \\times \\frac{3}{2} = \\frac{27}{2}.$$\n\nDonc :\n$$\\sigma(Z) = \\sqrt{\\frac{27}{2}} = \\frac{\\sqrt{27}}{\\sqrt{2}} = \\frac{3\\sqrt{3}}{\\sqrt{2}} = \\frac{3\\sqrt{3} \\times \\sqrt{2}}{2} = \\frac{3\\sqrt{6}}{2}.$$"
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "statement": "On répète l'expérience de tirage (deux boules avec remise) $n$ fois de façon indépendante. Pour chaque répétition $k$, on note $S^{(k)}$ la somme des deux boules. On note $T_n = S^{(1)} + S^{(2)} + \\cdots + S^{(n)}$. Exprimer $E(T_n)$ et $V(T_n)$ en fonction de $n$.",
+        "marks": 1,
+        "hints": [
+          "$S^{(k)}$ ont toutes même loi que $S$. Appliquer $E(T_n) = n \\cdot E(S)$ et $V(T_n) = n \\cdot V(S)$."
+        ],
+        "expectedAnswer": "$E(T_n) = 4n$, $V(T_n) = 3n$",
+        "solution": "Chaque $S^{(k)}$ est la somme de deux boules tirées avec remise de façon indépendante. Toutes les variables $S^{(k)}$ sont indépendantes et ont la même loi que $S$, avec $E(S) = 4$ et $V(S) = 3$.\n\nAinsi, par les propriétés de l'échantillon :\n$$E(T_n) = n \\times E(S) = 4n.$$\n$$V(T_n) = n \\times V(S) = 3n.$$"
+      }
+    ],
+    "tags": ["loi", "esperance", "variance", "echantillon", "transformation-affine", "independance"],
+    "order": 30
+  }
+]

@@ -1,0 +1,272 @@
+[
+  {
+    "id": "e-probas-cond-001",
+    "chapter": "probas-cond",
+    "title": "Test de dépistage : arbre pondéré et conditionnelle inverse",
+    "difficulty": 2,
+    "estimatedMinutes": 25,
+    "totalMarks": 5,
+    "tags": ["arbre-pondere", "probabilites-totales", "conditionnelle-inverse", "test-medical"],
+    "order": 10,
+    "preamble": "Une maladie rare touche $10\\,\\%$ d'une population. Un laboratoire propose un test de dépistage dont les caractéristiques sont les suivantes :\n- si la personne est **malade** (événement $M$), le test est **positif** (événement $T$) avec une probabilité de $0{,}9$ ;\n- si la personne est **saine** (événement $\\overline{M}$), le test est **positif** avec une probabilité de $0{,}3$ (faux positif).\n\nOn choisit une personne au hasard dans la population. Dans tout l'exercice, on précisera les étapes de calcul.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$M$",
+              "weight": "0,1",
+              "children": [
+                { "label": "$T$", "weight": "0,9" },
+                { "label": "$\\overline{T}$", "weight": "0,1" }
+              ]
+            },
+            {
+              "label": "$\\overline{M}$",
+              "weight": "0,9",
+              "children": [
+                { "label": "$T$", "weight": "0,3" },
+                { "label": "$\\overline{T}$", "weight": "0,7" }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner, en justifiant, les probabilités $P(M)$, $P(\\overline{M})$, $P_M(T)$ et $P_{\\overline{M}}(T)$.",
+        "marks": 1,
+        "hints": [
+          "Traduis chaque donnée de l'énoncé en probabilité : « $10\\,\\%$ de la population est malade » et « parmi les malades, le test est positif dans $90\\,\\%$ des cas ».",
+          "Les données « parmi les malades » et « parmi les sains » sont des probabilités conditionnelles.",
+          "$P(M) = 0{,}1$, $P(\\overline{M}) = 0{,}9$, $P_M(T) = 0{,}9$, $P_{\\overline{M}}(T) = 0{,}3$."
+        ],
+        "expectedAnswer": "$P(M)=0{,}1$ ; $P(\\overline{M})=0{,}9$ ; $P_M(T)=0{,}9$ ; $P_{\\overline{M}}(T)=0{,}3$",
+        "solution": "D'après l'énoncé :\n- « la maladie touche $10\\,\\%$ de la population » donne $P(M) = 0{,}1$, et donc $P(\\overline{M}) = 1 - 0{,}1 = 0{,}9$.\n- « si la personne est malade, le test est positif avec probabilité $0{,}9$ » est une probabilité conditionnelle : $P_M(T) = 0{,}9$.\n- « si la personne est saine, le test est positif avec probabilité $0{,}3$ » donne : $P_{\\overline{M}}(T) = 0{,}3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer la probabilité $P(M \\cap T)$ que la personne soit à la fois malade et ait un test positif, puis la probabilité $P(\\overline{M} \\cap T)$ que la personne soit saine et ait un test positif.",
+        "marks": 1,
+        "hints": [
+          "Applique la règle du produit le long de chaque chemin de l'arbre : $P(M \\cap T) = P(M) \\times P_M(T)$ et $P(\\overline{M} \\cap T) = P(\\overline{M}) \\times P_{\\overline{M}}(T)$.",
+          "$P(M \\cap T) = 0{,}1 \\times 0{,}9$ et $P(\\overline{M} \\cap T) = 0{,}9 \\times 0{,}3$.",
+          "$P(M \\cap T) = 0{,}09$ et $P(\\overline{M} \\cap T) = 0{,}27$."
+        ],
+        "expectedAnswer": "$P(M \\cap T) = 0{,}09$ ; $P(\\overline{M} \\cap T) = 0{,}27$",
+        "solution": "D'après la règle du produit (lecture le long des branches de l'arbre) :\n$$P(M \\cap T) = P(M) \\times P_M(T) = 0{,}1 \\times 0{,}9 = 0{,}09.$$\n$$P(\\overline{M} \\cap T) = P(\\overline{M}) \\times P_{\\overline{M}}(T) = 0{,}9 \\times 0{,}3 = 0{,}27.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Les événements $M$ et $\\overline{M}$ forment-ils un système complet d'événements ? Calculer, en justifiant, la probabilité $P(T)$ que le test soit positif.",
+        "marks": 1,
+        "hints": [
+          "Un système complet : événements deux à deux incompatibles dont la réunion est $\\Omega$ (toute la population). Applique ensuite la formule des probabilités totales.",
+          "La formule des probabilités totales donne : $P(T) = P(M \\cap T) + P(\\overline{M} \\cap T)$.",
+          "$P(T) = 0{,}09 + 0{,}27 = 0{,}36$."
+        ],
+        "expectedAnswer": "$P(T) = 0{,}36$",
+        "solution": "Toute personne est soit malade, soit saine : les événements $M$ et $\\overline{M}$ sont incompatibles et leur réunion est $\\Omega$. Ils forment donc un **système complet d'événements**.\n\nD'après la formule des probabilités totales :\n$$P(T) = P(M \\cap T) + P(\\overline{M} \\cap T) = 0{,}09 + 0{,}27 = 0{,}36.$$\n\nAinsi, $36\\,\\%$ des personnes testées au hasard obtiennent un résultat positif."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Sachant qu'une personne a un test positif, calculer la probabilité $P_T(M)$ qu'elle soit effectivement malade. Commenter le résultat.",
+        "marks": 2,
+        "hints": [
+          "Applique la définition de la probabilité conditionnelle : $P_T(M) = \\dfrac{P(M \\cap T)}{P(T)}$.",
+          "Substitue avec les valeurs calculées aux questions 2 et 3 : $P_T(M) = \\dfrac{0{,}09}{0{,}36}$.",
+          "$P_T(M) = \\dfrac{0{,}09}{0{,}36} = \\dfrac{1}{4} = 0{,}25$. Malgré un test positif, une personne sur quatre seulement est réellement malade."
+        ],
+        "expectedAnswer": "$P_T(M) = \\dfrac{1}{4}$",
+        "solution": "Par définition de la probabilité conditionnelle :\n$$P_T(M) = \\dfrac{P(M \\cap T)}{P(T)} = \\dfrac{0{,}09}{0{,}36} = \\dfrac{9}{36} = \\dfrac{1}{4} = 0{,}25.$$\n\n**Commentaire** : bien que le test soit positif pour $90\\,\\%$ des malades, un résultat positif ne signifie que dans $25\\,\\%$ des cas que la personne est vraiment malade. Ce résultat, contre-intuitif, s'explique par la faible prévalence de la maladie dans la population ($10\\,\\%$ seulement) : la grande majorité des tests positifs concerne des personnes saines qui sont victimes d'un faux positif. C'est pourquoi un test de dépistage positif est suivi de contrôles complémentaires."
+      }
+    ]
+  },
+  {
+    "id": "e-probas-cond-002",
+    "chapter": "probas-cond",
+    "title": "Enquête sport et musique : tableau de contingence et indépendance",
+    "difficulty": 2,
+    "estimatedMinutes": 25,
+    "totalMarks": 4,
+    "tags": ["tableau-de-contingence", "independance", "conditionnelle", "modelisation"],
+    "order": 20,
+    "preamble": "Dans un lycée, une enquête a été menée auprès de $400$ élèves. Pour chaque élève, on a relevé s'il pratiquait le **sport en club** (événement $S$) et s'il jouait d'un **instrument de musique** (événement $I$). Les résultats sont regroupés dans le tableau de contingence ci-dessous.\n\n| | $I$ : joue d'un instrument | $\\overline{I}$ : ne joue pas | Total |\n|---|---|---|---|\n| $S$ : pratique un sport | $60$ | $90$ | $150$ |\n| $\\overline{S}$ : ne pratique pas | $40$ | $210$ | $250$ |\n| **Total** | $100$ | $300$ | $400$ |\n\nOn choisit un élève au hasard parmi les $400$ (équiprobabilité). Dans tout l'exercice, on exprimera les probabilités sous forme de fractions irréductibles ou de décimaux exacts.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer les probabilités $P(S)$, $P(I)$ et $P(S \\cap I)$.",
+        "marks": 1,
+        "hints": [
+          "On lit les effectifs dans le tableau et on divise par l'effectif total $400$.",
+          "$P(S)$ correspond au total de la ligne $S$ ; $P(I)$ au total de la colonne $I$ ; $P(S \\cap I)$ à la case croisée $S$ et $I$.",
+          "$P(S) = \\dfrac{150}{400} = \\dfrac{3}{8}$ ; $P(I) = \\dfrac{100}{400} = \\dfrac{1}{4}$ ; $P(S \\cap I) = \\dfrac{60}{400} = \\dfrac{3}{20}$."
+        ],
+        "expectedAnswer": "$P(S) = \\dfrac{3}{8}$ ; $P(I) = \\dfrac{1}{4}$ ; $P(S \\cap I) = \\dfrac{3}{20}$",
+        "solution": "On est en situation d'équiprobabilité sur $400$ élèves. On lit directement dans le tableau :\n$$P(S) = \\dfrac{150}{400} = \\dfrac{3}{8}, \\quad P(I) = \\dfrac{100}{400} = \\dfrac{1}{4}, \\quad P(S \\cap I) = \\dfrac{60}{400} = \\dfrac{3}{20}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Les événements $S$ et $I$ sont-ils indépendants ? On justifiera soigneusement la réponse.",
+        "marks": 1,
+        "hints": [
+          "Deux événements $A$ et $B$ sont indépendants si et seulement si $P(A \\cap B) = P(A) \\times P(B)$. Calcule $P(S) \\times P(I)$ et compare à $P(S \\cap I)$.",
+          "$P(S) \\times P(I) = \\dfrac{3}{8} \\times \\dfrac{1}{4} = \\dfrac{3}{32}$. Compare avec $P(S \\cap I) = \\dfrac{3}{20}$.",
+          "$\\dfrac{3}{32} \\neq \\dfrac{3}{20}$ donc $S$ et $I$ **ne sont pas** indépendants."
+        ],
+        "expectedAnswer": "$S$ et $I$ ne sont pas indépendants",
+        "solution": "On teste l'égalité caractéristique de l'indépendance : $P(S \\cap I) = P(S) \\times P(I)$ ?\n\nOr :\n$$P(S) \\times P(I) = \\dfrac{3}{8} \\times \\dfrac{1}{4} = \\dfrac{3}{32}.$$\n\nOn a par ailleurs $P(S \\cap I) = \\dfrac{3}{20}$.\n\nComme $\\dfrac{3}{32} \\neq \\dfrac{3}{20}$, on a $P(S \\cap I) \\neq P(S) \\times P(I)$ : les événements $S$ et $I$ **ne sont pas indépendants**."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $P_S(I)$, la probabilité qu'un élève joue d'un instrument sachant qu'il pratique un sport. Interpréter ce résultat.",
+        "marks": 1,
+        "hints": [
+          "Restreins-toi aux $150$ élèves sportifs et compte ceux qui jouent d'un instrument. Ou utilise la formule $P_S(I) = \\dfrac{P(S \\cap I)}{P(S)}$.",
+          "Parmi les $150$ sportifs, $60$ jouent d'un instrument.",
+          "$P_S(I) = \\dfrac{60}{150} = \\dfrac{2}{5}$."
+        ],
+        "expectedAnswer": "$P_S(I) = \\dfrac{2}{5}$",
+        "solution": "Par définition de la probabilité conditionnelle :\n$$P_S(I) = \\dfrac{P(S \\cap I)}{P(S)} = \\dfrac{\\dfrac{3}{20}}{\\dfrac{3}{8}} = \\dfrac{3}{20} \\times \\dfrac{8}{3} = \\dfrac{8}{20} = \\dfrac{2}{5}.$$\n\n**Vérification directe** : parmi les $150$ élèves sportifs, $60$ jouent d'un instrument, ce qui donne bien $\\dfrac{60}{150} = \\dfrac{2}{5}$.\n\n**Interprétation** : parmi les élèves pratiquant un sport en club, $40\\,\\%$ jouent également d'un instrument de musique."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Calculer la probabilité $P(S \\cup I)$ qu'un élève choisi au hasard pratique un sport **ou** joue d'un instrument (ou les deux).",
+        "marks": 1,
+        "hints": [
+          "Utilise la formule de la réunion : $P(S \\cup I) = P(S) + P(I) - P(S \\cap I)$.",
+          "Substitue : $P(S \\cup I) = \\dfrac{3}{8} + \\dfrac{1}{4} - \\dfrac{3}{20}$. Réduis au même dénominateur.",
+          "Dénominateur commun $40$ : $\\dfrac{15}{40} + \\dfrac{10}{40} - \\dfrac{6}{40} = \\dfrac{19}{40}$."
+        ],
+        "expectedAnswer": "$P(S \\cup I) = \\dfrac{19}{40}$",
+        "solution": "D'après la formule de la réunion :\n$$P(S \\cup I) = P(S) + P(I) - P(S \\cap I) = \\dfrac{3}{8} + \\dfrac{1}{4} - \\dfrac{3}{20}.$$\n\nOn réduit au dénominateur commun $40$ :\n$$P(S \\cup I) = \\dfrac{15}{40} + \\dfrac{10}{40} - \\dfrac{6}{40} = \\dfrac{19}{40}.$$\n\n**Vérification** : le nombre d'élèves pratiquant au moins une activité (sport ou instrument) est $150 + 100 - 60 = 190$, et $\\dfrac{190}{400} = \\dfrac{19}{40}$. On obtient le même résultat."
+      }
+    ]
+  },
+  {
+    "id": "e-probas-cond-003",
+    "chapter": "probas-cond",
+    "title": "Contrôle qualité : trois chaînes de production et tirage sans remise",
+    "difficulty": 3,
+    "estimatedMinutes": 35,
+    "totalMarks": 5,
+    "tags": ["systeme-complet", "probabilites-totales", "conditionnelle-inverse", "tirage-sans-remise", "modelisation"],
+    "order": 30,
+    "preamble": "Une usine fabrique des composants électroniques à l'aide de trois chaînes de production $C_1$, $C_2$ et $C_3$.\n\nLes chaînes contribuent à la production dans les proportions suivantes : $C_1$ fournit $60\\,\\%$ des composants, $C_2$ en fournit $30\\,\\%$ et $C_3$ en fournit $10\\,\\%$.\n\nUn contrôle qualité a établi les taux de composants défectueux suivants :\n- $C_1$ produit $5\\,\\%$ de composants défectueux ;\n- $C_2$ produit $10\\,\\%$ de composants défectueux ;\n- $C_3$ produit $20\\,\\%$ de composants défectueux.\n\nOn note $D$ l'événement « le composant est défectueux ».\n\n**Partie A — Production globale**\n\n**Partie B — Lot de la chaîne $C_3$**",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$C_1$",
+              "weight": "0,6",
+              "children": [
+                { "label": "$D$", "weight": "0,05" },
+                { "label": "$\\overline{D}$", "weight": "0,95" }
+              ]
+            },
+            {
+              "label": "$C_2$",
+              "weight": "0,3",
+              "children": [
+                { "label": "$D$", "weight": "0,1" },
+                { "label": "$\\overline{D}$", "weight": "0,9" }
+              ]
+            },
+            {
+              "label": "$C_3$",
+              "weight": "0,1",
+              "children": [
+                { "label": "$D$", "weight": "0,2" },
+                { "label": "$\\overline{D}$", "weight": "0,8" }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que $\\{C_1, C_2, C_3\\}$ forme un système complet d'événements. Donner les probabilités $P(C_1)$, $P(C_2)$, $P(C_3)$ et les probabilités conditionnelles $P_{C_1}(D)$, $P_{C_2}(D)$, $P_{C_3}(D)$.",
+        "marks": 1,
+        "hints": [
+          "Un système complet : les événements sont deux à deux incompatibles et leur réunion est $\\Omega$. Ici, chaque pièce provient d'exactement une des trois chaînes.",
+          "Traduis les pourcentages de contribution en probabilités : « $60\\,\\%$ des composants viennent de $C_1$ » donne $P(C_1) = 0{,}6$. De même pour les taux de défauts.",
+          "$P(C_1)=0{,}6$, $P(C_2)=0{,}3$, $P(C_3)=0{,}1$ ; $P_{C_1}(D)=0{,}05$, $P_{C_2}(D)=0{,}1$, $P_{C_3}(D)=0{,}2$."
+        ],
+        "expectedAnswer": "Système complet justifié ; probabilités lues dans l'énoncé",
+        "solution": "Chaque composant est issu d'**exactement** une des trois chaînes : les événements $C_1$, $C_2$, $C_3$ sont donc deux à deux incompatibles, leur réunion couvre la totalité de la production, soit $\\Omega$. Ils forment ainsi un **système complet d'événements**.\n\nOn vérifie : $P(C_1) + P(C_2) + P(C_3) = 0{,}6 + 0{,}3 + 0{,}1 = 1$.\n\nLecture de l'énoncé :\n$$P(C_1) = 0{,}6, \\quad P(C_2) = 0{,}3, \\quad P(C_3) = 0{,}1.$$\n$$P_{C_1}(D) = 0{,}05, \\quad P_{C_2}(D) = 0{,}1, \\quad P_{C_3}(D) = 0{,}2.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer la probabilité $P(D)$ qu'une pièce choisie au hasard dans la production soit défectueuse.",
+        "marks": 1,
+        "hints": [
+          "Applique la formule des probabilités totales avec le système complet $\\{C_1, C_2, C_3\\}$ : $P(D) = P(C_1) \\times P_{C_1}(D) + P(C_2) \\times P_{C_2}(D) + P(C_3) \\times P_{C_3}(D)$.",
+          "Calcule chacun des trois produits séparément : $0{,}6 \\times 0{,}05 = 0{,}03$ ; $0{,}3 \\times 0{,}1 = 0{,}03$ ; $0{,}1 \\times 0{,}2 = 0{,}02$.",
+          "$P(D) = 0{,}03 + 0{,}03 + 0{,}02 = 0{,}08$."
+        ],
+        "expectedAnswer": "$P(D) = 0{,}08$",
+        "solution": "D'après la formule des probabilités totales appliquée au système complet $\\{C_1, C_2, C_3\\}$ :\n$$P(D) = P(C_1) \\times P_{C_1}(D) + P(C_2) \\times P_{C_2}(D) + P(C_3) \\times P_{C_3}(D).$$\n\nOn calcule chaque terme :\n- $P(C_1) \\times P_{C_1}(D) = 0{,}6 \\times 0{,}05 = 0{,}03$,\n- $P(C_2) \\times P_{C_2}(D) = 0{,}3 \\times 0{,}1 = 0{,}03$,\n- $P(C_3) \\times P_{C_3}(D) = 0{,}1 \\times 0{,}2 = 0{,}02$.\n\nAinsi :\n$$P(D) = 0{,}03 + 0{,}03 + 0{,}02 = 0{,}08.$$\n\nEn moyenne, $8\\,\\%$ des composants produits sont défectueux."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Un contrôleur prélève une pièce défectueuse au hasard. Calculer la probabilité $P_{D}(C_3)$ que cette pièce provienne de la chaîne $C_3$.",
+        "marks": 1,
+        "hints": [
+          "Applique la définition : $P_D(C_3) = \\dfrac{P(C_3 \\cap D)}{P(D)}$. Le numérateur est le produit du chemin $C_3 \\to D$ dans l'arbre.",
+          "$P(C_3 \\cap D) = P(C_3) \\times P_{C_3}(D) = 0{,}1 \\times 0{,}2 = 0{,}02$, et $P(D) = 0{,}08$.",
+          "$P_D(C_3) = \\dfrac{0{,}02}{0{,}08} = \\dfrac{1}{4}$."
+        ],
+        "expectedAnswer": "$P_D(C_3) = \\dfrac{1}{4}$",
+        "solution": "Par définition de la probabilité conditionnelle :\n$$P_D(C_3) = \\dfrac{P(C_3 \\cap D)}{P(D)}.$$\n\nLe numérateur est la probabilité du chemin $C_3 \\to D$ dans l'arbre pondéré :\n$$P(C_3 \\cap D) = P(C_3) \\times P_{C_3}(D) = 0{,}1 \\times 0{,}2 = 0{,}02.$$\n\nLe dénominateur $P(D) = 0{,}08$ a été calculé à la question 2. Donc :\n$$P_D(C_3) = \\dfrac{0{,}02}{0{,}08} = \\dfrac{2}{8} = \\dfrac{1}{4}.$$\n\n**Interprétation** : bien que la chaîne $C_3$ ne produise que $10\\,\\%$ des composants, elle est responsable de $25\\,\\%$ des composants défectueux, soit 2,5 fois sa part de production."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "On s'intéresse maintenant à un lot de $10$ pièces produites exclusivement par la chaîne $C_3$, parmi lesquelles $2$ sont défectueuses et $8$ sont conformes. On tire successivement et **sans remise** deux pièces de ce lot.\n\nOn note $D_1$ l'événement « la première pièce tirée est défectueuse » et $D_2$ l'événement « la deuxième pièce tirée est défectueuse ».\n\na) Donner $P(D_1)$ et calculer $P_{D_1}(D_2)$, la probabilité que la deuxième pièce soit défectueuse sachant que la première l'était.",
+        "marks": 1,
+        "hints": [
+          "Au premier tirage, il y a $2$ pièces défectueuses sur $10$ : $P(D_1) = \\dfrac{2}{10}$. Sachant que $D_1$ est réalisé, il reste $1$ pièce défectueuse sur $9$ pièces restantes.",
+          "Après avoir retiré une pièce défectueuse, le lot contient $9$ pièces dont $1$ défectueuse.",
+          "$P(D_1) = \\dfrac{1}{5}$ et $P_{D_1}(D_2) = \\dfrac{1}{9}$."
+        ],
+        "expectedAnswer": "$P(D_1) = \\dfrac{1}{5}$ ; $P_{D_1}(D_2) = \\dfrac{1}{9}$",
+        "solution": "Au premier tirage, le lot contient $10$ pièces dont $2$ défectueuses. On est en situation d'équiprobabilité, donc :\n$$P(D_1) = \\dfrac{2}{10} = \\dfrac{1}{5}.$$\n\nSachant que la première pièce était défectueuse ($D_1$ réalisé), il reste dans le lot $10 - 1 = 9$ pièces, dont $2 - 1 = 1$ est défectueuse. Donc :\n$$P_{D_1}(D_2) = \\dfrac{1}{9}.$$"
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "statement": "Calculer la probabilité $P(\\overline{D_1} \\cap \\overline{D_2})$ qu'aucune des deux pièces tirées ne soit défectueuse, puis en déduire la probabilité $P(D_1 \\cup D_2)$ qu'au moins l'une des deux pièces tirées soit défectueuse.",
+        "marks": 1,
+        "hints": [
+          "Pour $P(\\overline{D_1} \\cap \\overline{D_2})$, commence par $P(\\overline{D_1}) = 1 - P(D_1) = \\dfrac{8}{10}$. Sachant $\\overline{D_1}$, il reste $9$ pièces dont $7$ conformes, donc $P_{\\overline{D_1}}(\\overline{D_2}) = \\dfrac{7}{9}$.",
+          "Applique la règle du produit : $P(\\overline{D_1} \\cap \\overline{D_2}) = P(\\overline{D_1}) \\times P_{\\overline{D_1}}(\\overline{D_2}) = \\dfrac{8}{10} \\times \\dfrac{7}{9}$.",
+          "$P(\\overline{D_1} \\cap \\overline{D_2}) = \\dfrac{56}{90} = \\dfrac{28}{45}$, donc $P(D_1 \\cup D_2) = 1 - \\dfrac{28}{45} = \\dfrac{17}{45}$."
+        ],
+        "expectedAnswer": "$P(\\overline{D_1} \\cap \\overline{D_2}) = \\dfrac{28}{45}$ ; $P(D_1 \\cup D_2) = \\dfrac{17}{45}$",
+        "solution": "**Probabilité que les deux pièces soient conformes.**\n\nAu premier tirage, la probabilité d'obtenir une pièce conforme est :\n$$P(\\overline{D_1}) = \\dfrac{8}{10} = \\dfrac{4}{5}.$$\n\nSachant que la première pièce était conforme ($\\overline{D_1}$ réalisé), il reste $9$ pièces dans le lot dont $7$ conformes et $2$ défectueuses. La probabilité que la deuxième pièce soit aussi conforme est alors :\n$$P_{\\overline{D_1}}(\\overline{D_2}) = \\dfrac{7}{9}.$$\n\nPar la règle du produit le long du chemin $\\overline{D_1} \\to \\overline{D_2}$ :\n$$P(\\overline{D_1} \\cap \\overline{D_2}) = P(\\overline{D_1}) \\times P_{\\overline{D_1}}(\\overline{D_2}) = \\dfrac{8}{10} \\times \\dfrac{7}{9} = \\dfrac{56}{90} = \\dfrac{28}{45}.$$\n\n**Probabilité qu'au moins une pièce soit défectueuse.**\n\nL'événement « au moins une pièce est défectueuse » est le contraire de « aucune pièce n'est défectueuse ». Donc :\n$$P(D_1 \\cup D_2) = 1 - P(\\overline{D_1} \\cap \\overline{D_2}) = 1 - \\dfrac{28}{45} = \\dfrac{45 - 28}{45} = \\dfrac{17}{45}.$$"
+      }
+    ]
+  }
+]

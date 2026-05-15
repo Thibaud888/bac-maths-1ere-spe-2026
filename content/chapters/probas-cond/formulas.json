@@ -1,0 +1,253 @@
+[
+  {
+    "id": "f-pc-vocabulaire-evenements",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Vocabulaire des événements (rappels)",
+    "statement": "Soit $\\Omega$ un univers fini muni d'une probabilité $P$. Pour deux événements $A$ et $B$ :\n\n- **Intersection** : $A \\cap B$ est l'événement « $A$ **et** $B$ se réalisent ».\n- **Réunion** : $A \\cup B$ est l'événement « $A$ **ou** $B$ se réalise » (au moins l'un des deux).\n- **Événement contraire** : $\\overline{A}$ est l'événement « $A$ ne se réalise pas », et $P(\\overline{A}) = 1 - P(A)$.\n- **Événements incompatibles** : $A$ et $B$ sont incompatibles si $A \\cap B = \\emptyset$. Dans ce cas, $P(A \\cup B) = P(A) + P(B)$.",
+    "example": "On tire une carte dans un jeu de $32$ cartes. Soit $A$ : « la carte est un roi » et $B$ : « la carte est un coeur ». Alors $A \\cap B$ : « la carte est le roi de coeur » et $A \\cup B$ : « la carte est un roi ou un coeur ».",
+    "tags": ["vocabulaire", "intersection", "reunion", "contraire", "incompatibles"],
+    "order": 10,
+    "level": "a-connaitre",
+    "simplified": {
+      "core": "$A \\cap B$ : « et »\n$A \\cup B$ : « ou »\n$\\overline{A}$ : contraire, $P(\\overline{A}) = 1 - P(A)$\nIncompatibles : $A \\cap B = \\emptyset$",
+      "mnemonic": "« et » → cap, « ou » → cup, barre = contraire.",
+      "keyword": "vocabulaire",
+      "visual": "Deux disques qui se chevauchent : le recouvrement est l'intersection, l'union est tout le contour, l'extérieur de A est son contraire."
+    }
+  },
+  {
+    "id": "f-pc-conditionnelle-def",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Définition d'une probabilité conditionnelle",
+    "statement": "Soit $A$ et $B$ deux événements d'un univers $\\Omega$, avec $P(B) > 0$. La **probabilité conditionnelle de $A$ sachant $B$** est définie par :\n\n$$P_B(A) = \\frac{P(A \\cap B)}{P(B)}$$\n\nC'est la probabilité que $A$ se réalise sachant que $B$ s'est réalisé. La notation officielle au programme est $P_B(A)$.",
+    "conditions": "La définition n'a de sens que si $P(B) > 0$ (on ne peut pas conditionner par un événement impossible).",
+    "example": "On lance un dé équilibré à six faces. Soit $A$ : « obtenir $6$ » et $B$ : « obtenir un nombre pair ». Alors $P(B) = \\dfrac{1}{2}$, $P(A \\cap B) = P(A) = \\dfrac{1}{6}$ et $P_B(A) = \\dfrac{1/6}{1/2} = \\dfrac{1}{3}$.",
+    "tags": ["probabilite-conditionnelle", "definition"],
+    "order": 20,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$P_B(A) = \\dfrac{P(A \\cap B)}{P(B)}$$",
+      "mnemonic": "Sachant B : intersection divisée par la condition.",
+      "keyword": "proba-conditionnelle",
+      "visual": "On se restreint à l'univers réduit B : la mesure de A devient la part de A à l'intérieur de B."
+    }
+  },
+  {
+    "id": "f-pc-intersection",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Probabilité d'une intersection",
+    "statement": "Soit $A$ et $B$ deux événements. En multipliant la définition de la probabilité conditionnelle par $P(B)$ (resp. $P(A)$), on obtient :\n\n$$P(A \\cap B) = P(B) \\times P_B(A) = P(A) \\times P_A(B)$$\n\nCette formule est essentielle : c'est elle qui permet de calculer la probabilité d'une intersection à partir d'un arbre pondéré.",
+    "conditions": "La première égalité suppose $P(B) > 0$, la seconde suppose $P(A) > 0$.",
+    "example": "Dans une urne, il y a $60\\,\\%$ de boules rouges. Parmi les boules rouges, $25\\,\\%$ portent une étoile. La probabilité de tirer une boule rouge étoilée est $P(R \\cap E) = P(R) \\times P_R(E) = 0{,}6 \\times 0{,}25 = 0{,}15$.",
+    "tags": ["intersection", "probabilite-conditionnelle", "produit"],
+    "order": 30,
+    "level": "essentiel",
+    "relatedFormulas": ["f-pc-conditionnelle-def"],
+    "simplified": {
+      "core": "$$P(A \\cap B) = P(A) \\times P_A(B) = P(B) \\times P_B(A)$$",
+      "mnemonic": "Proba du premier, fois proba du second sachant le premier.",
+      "keyword": "probas-composées",
+      "visual": "Sur un arbre, c'est exactement le produit le long d'un chemin de deux branches."
+    }
+  },
+  {
+    "id": "f-pc-reunion",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Probabilité d'une réunion",
+    "statement": "Pour deux événements $A$ et $B$ d'un même univers :\n\n$$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$$\n\nCette formule traduit le fait qu'en ajoutant $P(A)$ et $P(B)$, on compte deux fois les issues qui sont dans $A \\cap B$ : il faut donc retrancher $P(A \\cap B)$.\n\nSi $A$ et $B$ sont **incompatibles** ($A \\cap B = \\emptyset$), on retrouve $P(A \\cup B) = P(A) + P(B)$.",
+    "example": "Si $P(A) = 0{,}4$, $P(B) = 0{,}5$ et $P(A \\cap B) = 0{,}2$, alors $P(A \\cup B) = 0{,}4 + 0{,}5 - 0{,}2 = 0{,}7$.",
+    "tags": ["reunion", "formule-crible", "incompatibles"],
+    "order": 40,
+    "level": "a-connaitre",
+    "simplified": {
+      "core": "$$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$$",
+      "mnemonic": "On ajoute, puis on retire l'intersection comptée deux fois.",
+      "keyword": "réunion",
+      "visual": "Deux disques qui se chevauchent : on additionne les aires, mais le chevauchement est compté deux fois et doit être retiré une fois."
+    }
+  },
+  {
+    "id": "f-pc-arbre-construction",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Construction d'un arbre pondéré",
+    "statement": "Un **arbre pondéré** représente une expérience aléatoire en plusieurs étapes :\n\n- Chaque **nœud** correspond à une situation, chaque **branche** à un événement possible à partir de ce nœud.\n- Sur chaque branche, on inscrit la probabilité de l'événement correspondant.\n- Pour les branches du **premier niveau**, ce sont les probabilités $P(B_1)$, $P(B_2)$, etc.\n- Pour les branches des **niveaux suivants**, ce sont les probabilités **conditionnelles** sachant le chemin parcouru depuis la racine, par exemple $P_{B_1}(A)$.\n\nChaque chemin complet (de la racine à une feuille) représente une **intersection** d'événements.",
+    "example": "Une expérience à deux étapes : on choisit d'abord une urne $U_1$ ou $U_2$, puis on tire une boule rouge $R$ ou verte $V$. L'arbre comporte $2$ branches au niveau $1$ ($U_1$, $U_2$) puis, à partir de chaque urne, $2$ branches au niveau $2$ ($R$, $V$). Sur la branche allant de $U_1$ à $R$, on inscrit $P_{U_1}(R)$.",
+    "tags": ["arbre-pondere", "construction", "conditionnelle"],
+    "order": 50,
+    "level": "essentiel",
+    "simplified": {
+      "core": "Niveau 1 : probabilités simples $P(B_i)$. Niveaux suivants : probabilités **conditionnelles** $P_{B_i}(A)$. Un chemin = une intersection.",
+      "mnemonic": "Premier niveau brut, ensuite tout est « sachant ».",
+      "keyword": "arbre",
+      "visual": "Un arbre couché : la racine à gauche, les branches s'écartent ; sur chaque branche on lit une probabilité, conditionnelle dès le 2e niveau."
+    }
+  },
+  {
+    "id": "f-pc-arbre-somme-noeud",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Règle de la somme sur un nœud",
+    "statement": "Dans un arbre pondéré, **la somme des probabilités portées par les branches issues d'un même nœud est égale à $1$**.\n\nEn particulier, pour tout événement $B$ tel que $P(B) > 0$ :\n\n$$P_B(A) + P_B(\\overline{A}) = 1$$\n\nC'est l'analogue, pour une probabilité conditionnelle, de la formule $P(A) + P(\\overline{A}) = 1$.",
+    "example": "Si on lit sur une branche $P_{B_1}(A) = 0{,}3$, alors la branche complémentaire issue du même nœud porte $P_{B_1}(\\overline{A}) = 1 - 0{,}3 = 0{,}7$.",
+    "tags": ["arbre-pondere", "somme-noeud", "contraire"],
+    "order": 60,
+    "level": "essentiel",
+    "relatedFormulas": ["f-pc-arbre-construction"],
+    "simplified": {
+      "core": "$$P_B(A) + P_B(\\overline{A}) = 1$$\n\nLa somme des branches issues d'un même nœud vaut $1$.",
+      "mnemonic": "Toutes les branches qui partent d'un nœud somment à 1.",
+      "keyword": "somme-nœud",
+      "visual": "À chaque embranchement, les probabilités lues sur les branches partent du même point et leur total fait pile 1."
+    }
+  },
+  {
+    "id": "f-pc-arbre-produit",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Règle du produit sur un chemin",
+    "statement": "Dans un arbre pondéré, **la probabilité d'un chemin est le produit des probabilités inscrites sur les branches qui le composent**.\n\nPour un chemin passant par $B$ puis menant à $A$ :\n\n$$P(B \\cap A) = P(B) \\times P_B(A)$$\n\nCette règle découle directement de la définition de la probabilité conditionnelle.",
+    "example": "Sur la branche $B_1$ on lit $P(B_1) = 0{,}4$, puis sur la sous-branche menant à $A$ on lit $P_{B_1}(A) = 0{,}5$. Alors $P(B_1 \\cap A) = 0{,}4 \\times 0{,}5 = 0{,}2$.",
+    "tags": ["arbre-pondere", "produit", "chemin", "intersection"],
+    "order": 70,
+    "level": "essentiel",
+    "relatedFormulas": ["f-pc-intersection", "f-pc-arbre-construction"],
+    "simplified": {
+      "core": "$$P(B \\cap A) = P(B) \\times P_B(A)$$\n\nProbabilité d'un chemin = **produit** des branches.",
+      "mnemonic": "Le long d'un chemin, on multiplie.",
+      "keyword": "produit-chemin",
+      "visual": "On suit le chemin de la racine à la feuille en multipliant chaque probabilité rencontrée."
+    }
+  },
+  {
+    "id": "f-pc-arbre-somme-chemins",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Règle de la somme des chemins",
+    "statement": "Dans un arbre pondéré, **la probabilité d'un événement $A$ est la somme des probabilités des chemins qui aboutissent à $A$**.\n\nSi $A$ peut être atteint via les chemins passant par $B_1$, $B_2$, …, $B_n$ (situations disjointes), alors :\n\n$$P(A) = P(B_1 \\cap A) + P(B_2 \\cap A) + \\cdots + P(B_n \\cap A)$$\n\nCette règle correspond à la **formule des probabilités totales** lue sur un arbre.",
+    "example": "On tire une boule dans l'une de deux urnes choisies au hasard. On note $A$ : « la boule est rouge ». Les chemins menant à $A$ sont $U_1 \\to R$ et $U_2 \\to R$ ; on additionne $P(U_1 \\cap R) + P(U_2 \\cap R)$ pour obtenir $P(R)$.",
+    "tags": ["arbre-pondere", "somme-chemins", "probabilites-totales"],
+    "order": 80,
+    "level": "essentiel",
+    "relatedFormulas": ["f-pc-arbre-produit", "f-pc-prob-totales"],
+    "simplified": {
+      "core": "$$P(A) = \\sum_{i} P(B_i \\cap A)$$\n\nProbabilité de $A$ = **somme** des chemins qui aboutissent à $A$.",
+      "mnemonic": "Entre chemins, on additionne ; sur un chemin, on multiplie.",
+      "keyword": "somme-chemins",
+      "visual": "Plusieurs chemins arrivent à la même feuille $A$ : on additionne leurs poids respectifs."
+    }
+  },
+  {
+    "id": "f-pc-systeme-complet",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Système complet d'événements (partition)",
+    "statement": "Soit $B_1, B_2, \\ldots, B_n$ des événements d'un univers $\\Omega$. On dit qu'ils forment un **système complet d'événements** (ou une **partition** de $\\Omega$) si :\n\n1. Ils sont deux à deux **incompatibles** : pour tous $i \\neq j$, $B_i \\cap B_j = \\emptyset$.\n2. Leur **réunion** est $\\Omega$ : $B_1 \\cup B_2 \\cup \\cdots \\cup B_n = \\Omega$.\n\nAutrement dit, à chaque issue de l'expérience correspond exactement un $B_i$.",
+    "example": "Pour un dé à six faces, les événements $B_1$ : « obtenir $1$ ou $2$ », $B_2$ : « obtenir $3$ ou $4$ » et $B_3$ : « obtenir $5$ ou $6$ » forment un système complet. Pour tout événement $A$, les couples $\\{B, \\overline{B}\\}$ forment toujours un système complet à deux événements.",
+    "tags": ["systeme-complet", "partition", "incompatibles"],
+    "order": 90,
+    "level": "essentiel",
+    "simplified": {
+      "core": "Deux à deux disjoints **et** réunion = $\\Omega$. Chaque issue tombe dans **un seul** $B_i$.",
+      "mnemonic": "Découpage net de l'univers, sans trou ni chevauchement.",
+      "keyword": "partition",
+      "visual": "L'univers $\\Omega$ est découpé en parts comme un gâteau : aucun morceau ne se chevauche, et tout est couvert."
+    }
+  },
+  {
+    "id": "f-pc-prob-totales",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Formule des probabilités totales",
+    "statement": "Soit $B_1, B_2, \\ldots, B_n$ un **système complet d'événements**, tous de probabilité non nulle. Pour tout événement $A$ :\n\n$$P(A) = \\sum_{i=1}^{n} P(B_i \\cap A) = \\sum_{i=1}^{n} P(B_i) \\times P_{B_i}(A)$$\n\nAutrement dit, on calcule $P(A)$ en sommant les probabilités de tous les chemins de l'arbre menant à $A$.",
+    "conditions": "Les $B_i$ doivent former un système complet d'événements et vérifier $P(B_i) > 0$ pour tout $i$.",
+    "example": "Avec un système complet $\\{B_1, B_2\\}$ : si $P(B_1) = 0{,}4$, $P(B_2) = 0{,}6$, $P_{B_1}(A) = 0{,}5$ et $P_{B_2}(A) = 0{,}25$, alors $P(A) = 0{,}4 \\times 0{,}5 + 0{,}6 \\times 0{,}25 = 0{,}2 + 0{,}15 = 0{,}35$.",
+    "tags": ["probabilites-totales", "systeme-complet", "partition"],
+    "order": 100,
+    "level": "essentiel",
+    "relatedFormulas": ["f-pc-systeme-complet", "f-pc-arbre-somme-chemins"],
+    "simplified": {
+      "core": "$$P(A) = \\sum_{i=1}^{n} P(B_i) \\times P_{B_i}(A)$$",
+      "mnemonic": "Somme sur la partition : poids de chaque branche fois proba conditionnelle.",
+      "keyword": "probas-totales",
+      "visual": "Sur l'arbre, on additionne tous les chemins qui aboutissent à $A$, chacun étant le produit de ses branches."
+    }
+  },
+  {
+    "id": "f-pc-prob-totales-binaire",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Probabilités totales avec $B$ et $\\overline{B}$",
+    "statement": "Pour tout événement $B$ avec $0 < P(B) < 1$, les deux événements $B$ et $\\overline{B}$ forment un système complet. La formule des probabilités totales se réécrit alors, pour tout événement $A$ :\n\n$$P(A) = P(B \\cap A) + P(\\overline{B} \\cap A) = P(B) \\times P_B(A) + P(\\overline{B}) \\times P_{\\overline{B}}(A)$$\n\nC'est la situation la plus fréquente dans les exercices : un arbre à deux branches au premier niveau.",
+    "conditions": "Il faut $0 < P(B) < 1$ pour que $P(B)$ et $P(\\overline{B})$ soient toutes deux strictement positives.",
+    "example": "Dans une classe, $40\\,\\%$ des élèves sont des filles ($F$). Parmi les filles, $75\\,\\%$ font de l'allemand ($A$) ; parmi les garçons, $50\\,\\%$ en font. Alors $P(A) = P(F) \\times P_F(A) + P(\\overline{F}) \\times P_{\\overline{F}}(A) = 0{,}4 \\times 0{,}75 + 0{,}6 \\times 0{,}5 = 0{,}3 + 0{,}3 = 0{,}6$.",
+    "tags": ["probabilites-totales", "contraire", "arbre"],
+    "order": 110,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-pc-prob-totales"],
+    "simplified": {
+      "core": "$$P(A) = P(B) \\times P_B(A) + P(\\overline{B}) \\times P_{\\overline{B}}(A)$$",
+      "mnemonic": "Cas $B$, cas non-$B$ : on additionne les deux chemins.",
+      "keyword": "totales-binaire",
+      "visual": "Arbre à deux branches au niveau 1 ($B$ et $\\overline{B}$), chacune se ramifie vers $A$ : on additionne les deux produits."
+    }
+  },
+  {
+    "id": "f-pc-independance-def",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Indépendance de deux événements",
+    "statement": "Deux événements $A$ et $B$ sont dits **indépendants** si :\n\n$$P(A \\cap B) = P(A) \\times P(B)$$\n\nIntuitivement, la réalisation de l'un n'a aucune influence sur celle de l'autre.\n\n**Attention** : ne pas confondre **indépendants** ($P(A \\cap B) = P(A) P(B)$) avec **incompatibles** ($A \\cap B = \\emptyset$, donc $P(A \\cap B) = 0$). Ce sont deux notions très différentes.",
+    "example": "On lance deux fois une pièce équilibrée. Soit $A$ : « pile au premier lancer » et $B$ : « pile au second lancer ». Alors $P(A) = P(B) = \\dfrac{1}{2}$ et $P(A \\cap B) = \\dfrac{1}{4} = \\dfrac{1}{2} \\times \\dfrac{1}{2}$ : $A$ et $B$ sont indépendants.",
+    "tags": ["independance", "definition", "intersection"],
+    "order": 120,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$P(A \\cap B) = P(A) \\times P(B)$$",
+      "mnemonic": "Indépendants : le produit suffit.",
+      "keyword": "indépendance",
+      "visual": "Aucune influence : connaître l'un ne change rien à la probabilité de l'autre. Ne pas confondre avec « incompatibles » (disjoints)."
+    }
+  },
+  {
+    "id": "f-pc-independance-caracterisation",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Caractérisation par les probabilités conditionnelles",
+    "statement": "Soit $A$ et $B$ deux événements avec $P(B) > 0$. Alors $A$ et $B$ sont indépendants si et seulement si :\n\n$$P_B(A) = P(A)$$\n\nDe même, si $P(A) > 0$, $A$ et $B$ indépendants équivaut à $P_A(B) = P(B)$.\n\nCette caractérisation traduit le sens intuitif de l'indépendance : savoir que $B$ s'est réalisé ne change pas la probabilité de $A$.",
+    "conditions": "Il faut $P(B) > 0$ (resp. $P(A) > 0$) pour pouvoir écrire $P_B(A)$ (resp. $P_A(B)$).",
+    "example": "Reprenons le double lancer de pièce : sachant que l'on a obtenu pile au premier lancer, la probabilité de pile au second lancer reste $\\dfrac{1}{2}$, c'est-à-dire $P_A(B) = P(B)$. Les événements sont donc indépendants.",
+    "tags": ["independance", "caracterisation", "conditionnelle"],
+    "order": 130,
+    "level": "essentiel",
+    "relatedFormulas": ["f-pc-independance-def", "f-pc-conditionnelle-def"],
+    "simplified": {
+      "core": "$A$ et $B$ indépendants $\\Longleftrightarrow$ $P_B(A) = P(A)$ (avec $P(B) > 0$).",
+      "mnemonic": "Sachant B ne change rien à A : indépendance.",
+      "keyword": "indép-conditionnelle",
+      "visual": "Connaître B ne déplace pas la probabilité de A : la valeur sachant B est la même que sans conditionner."
+    }
+  },
+  {
+    "id": "f-pc-independance-complementaire",
+    "chapter": "probas-cond",
+    "domain": "probabilites",
+    "title": "Indépendance et événements contraires",
+    "statement": "Si $A$ et $B$ sont **indépendants**, alors les paires suivantes sont également formées d'événements indépendants :\n\n- $A$ et $\\overline{B}$\n- $\\overline{A}$ et $B$\n- $\\overline{A}$ et $\\overline{B}$\n\nEn pratique : dès que l'on sait que $A$ et $B$ sont indépendants, on peut directement écrire, par exemple, $P(A \\cap \\overline{B}) = P(A) \\times P(\\overline{B})$.",
+    "example": "Si $P(A) = 0{,}3$, $P(B) = 0{,}5$ et $A, B$ indépendants, alors $P(\\overline{B}) = 0{,}5$ et $P(A \\cap \\overline{B}) = 0{,}3 \\times 0{,}5 = 0{,}15$. De même, $P(\\overline{A} \\cap \\overline{B}) = 0{,}7 \\times 0{,}5 = 0{,}35$.",
+    "tags": ["independance", "contraire"],
+    "order": 140,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-pc-independance-def"],
+    "simplified": {
+      "core": "$A, B$ indépendants $\\Longrightarrow$ $A, \\overline{B}$ ; $\\overline{A}, B$ ; $\\overline{A}, \\overline{B}$ sont indépendants.",
+      "mnemonic": "L'indépendance se transmet aux contraires.",
+      "keyword": "indép-contraire",
+      "visual": "Quatre cases du tableau croisé $(A/\\overline{A}) \\times (B/\\overline{B})$ : chacune se calcule en multipliant les marges."
+    }
+  }
+]

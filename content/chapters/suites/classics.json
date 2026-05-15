@@ -1,0 +1,314 @@
+[
+  {
+    "id": "c-suites-001",
+    "chapter": "suites",
+    "title": "Démontrer qu'une suite est arithmétique",
+    "difficulty": 1,
+    "estimatedMinutes": 6,
+    "order": 10,
+    "tags": [
+      "arithmetique",
+      "demonstration",
+      "raison"
+    ],
+    "preamble": "On considère la suite $(u_n)$ définie pour tout entier naturel $n$ par $u_n = 5n - 3$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Démontrer que la suite $(u_n)$ est arithmétique. Préciser son premier terme $u_0$ et sa raison.",
+        "hints": [
+          "Pour montrer qu'une suite est arithmétique, on calcule la différence $u_{n+1} - u_n$ et on vérifie qu'elle est constante (indépendante de $n$).",
+          "Calcule $u_{n+1} = 5(n+1) - 3 = 5n + 2$ puis effectue $u_{n+1} - u_n$.",
+          "On trouve $u_{n+1} - u_n = 5$, qui est constant : $(u_n)$ est arithmétique de raison $5$ et de premier terme $u_0 = -3$."
+        ],
+        "expectedAnswer": "$u_0 = -3$, raison $r = 5$",
+        "solution": "Soit $n$ un entier naturel. On a $u_{n+1} = 5(n+1) - 3 = 5n + 5 - 3 = 5n + 2$.\n\nDonc $u_{n+1} - u_n = (5n + 2) - (5n - 3) = 5$.\n\nAinsi, pour tout $n \\in \\mathbb{N}$, $u_{n+1} - u_n = 5$ : cette différence est constante. La suite $(u_n)$ est donc **arithmétique** de raison $r = 5$.\n\nDe plus, $u_0 = 5 \\times 0 - 3 = -3$, donc le premier terme est $u_0 = -3$."
+      }
+    ]
+  },
+  {
+    "id": "c-suites-002",
+    "chapter": "suites",
+    "title": "Démontrer qu'une suite est géométrique",
+    "difficulty": 2,
+    "estimatedMinutes": 7,
+    "order": 20,
+    "tags": [
+      "geometrique",
+      "demonstration",
+      "quotient"
+    ],
+    "preamble": "On considère la suite $(v_n)$ définie pour tout entier naturel $n$ par $v_n = 3 \\times 2^{n+1}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Démontrer que la suite $(v_n)$ est géométrique. Préciser son premier terme $v_0$ et sa raison $q$.",
+        "hints": [
+          "Pour montrer qu'une suite à termes non nuls est géométrique, on calcule le quotient $\\dfrac{v_{n+1}}{v_n}$ et on vérifie qu'il est constant.",
+          "Écris $v_{n+1} = 3 \\times 2^{n+2}$, puis simplifie le quotient en utilisant $\\dfrac{2^{n+2}}{2^{n+1}} = 2$.",
+          "Le quotient vaut $2$ : $(v_n)$ est géométrique de raison $q = 2$ et $v_0 = 3 \\times 2 = 6$."
+        ],
+        "expectedAnswer": "$v_0 = 6$, raison $q = 2$",
+        "solution": "Pour tout $n \\in \\mathbb{N}$, $v_n = 3 \\times 2^{n+1} > 0$, donc $v_n \\neq 0$.\n\nOn a $v_{n+1} = 3 \\times 2^{n+2}$, donc :\n$$\\dfrac{v_{n+1}}{v_n} = \\dfrac{3 \\times 2^{n+2}}{3 \\times 2^{n+1}} = 2^{n+2-(n+1)} = 2.$$\n\nAinsi, le quotient $\\dfrac{v_{n+1}}{v_n}$ est constant et égal à $2$. La suite $(v_n)$ est donc **géométrique** de raison $q = 2$.\n\nEnfin, $v_0 = 3 \\times 2^1 = 6$, donc le premier terme est $v_0 = 6$."
+      }
+    ]
+  },
+  {
+    "id": "c-suites-003",
+    "chapter": "suites",
+    "title": "Calcul d'un terme à partir d'une définition par récurrence",
+    "difficulty": 2,
+    "estimatedMinutes": 7,
+    "order": 30,
+    "tags": [
+      "terme-general",
+      "arithmetique",
+      "geometrique"
+    ],
+    "preamble": "On considère deux suites $(u_n)$ et $(v_n)$ définies par :\n- $u_0 = 5$ et, pour tout $n \\in \\mathbb{N}$, $u_{n+1} = u_n + 3$ ;\n- $v_0 = 2$ et, pour tout $n \\in \\mathbb{N}$, $v_{n+1} = 3 v_n$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner l'expression de $u_n$ en fonction de $n$, puis calculer $u_{20}$.",
+        "hints": [
+          "$(u_n)$ est définie par $u_{n+1} = u_n + 3$ : c'est une suite arithmétique. Identifie son premier terme et sa raison, puis applique la formule $u_n = u_0 + nr$.",
+          "Ici $u_0 = 5$ et $r = 3$, donc $u_n = 5 + 3n$.",
+          "$u_{20} = 5 + 3 \\times 20 = 65$."
+        ],
+        "expectedAnswer": "$u_n = 5 + 3n$ ; $u_{20} = 65$",
+        "solution": "La suite $(u_n)$ vérifie $u_{n+1} = u_n + 3$ pour tout $n$, donc $(u_n)$ est **arithmétique** de raison $r = 3$ et de premier terme $u_0 = 5$.\n\nAinsi, pour tout $n \\in \\mathbb{N}$ : $u_n = u_0 + nr = 5 + 3n$.\n\nOn en déduit $u_{20} = 5 + 3 \\times 20 = 5 + 60 = 65$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Donner l'expression de $v_n$ en fonction de $n$, puis calculer $v_5$.",
+        "hints": [
+          "$(v_n)$ vérifie $v_{n+1} = 3 v_n$ : c'est une suite géométrique. Applique la formule $v_n = v_0 \\times q^n$.",
+          "Ici $v_0 = 2$ et $q = 3$, donc $v_n = 2 \\times 3^n$.",
+          "$v_5 = 2 \\times 3^5 = 2 \\times 243 = 486$."
+        ],
+        "expectedAnswer": "$v_n = 2 \\times 3^n$ ; $v_5 = 486$",
+        "solution": "La suite $(v_n)$ vérifie $v_{n+1} = 3 v_n$ pour tout $n$, donc $(v_n)$ est **géométrique** de raison $q = 3$ et de premier terme $v_0 = 2$.\n\nAinsi, pour tout $n \\in \\mathbb{N}$ : $v_n = v_0 \\times q^n = 2 \\times 3^n$.\n\nOn calcule $3^5 = 243$, donc $v_5 = 2 \\times 243 = 486$."
+      }
+    ]
+  },
+  {
+    "id": "c-suites-004",
+    "chapter": "suites",
+    "title": "Somme de termes consécutifs d'une suite arithmétique",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 40,
+    "tags": [
+      "somme",
+      "arithmetique"
+    ],
+    "preamble": "On considère la suite arithmétique $(u_n)$ de premier terme $u_0 = 2$ et de raison $r = 3$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Exprimer $u_n$ en fonction de $n$, puis calculer $u_{20}$.",
+        "hints": [
+          "Utilise la formule du terme général d'une suite arithmétique : $u_n = u_0 + nr$.",
+          "Avec $u_0 = 2$ et $r = 3$, on obtient $u_n = 2 + 3n$.",
+          "$u_{20} = 2 + 3 \\times 20 = 62$."
+        ],
+        "expectedAnswer": "$u_n = 2 + 3n$ ; $u_{20} = 62$",
+        "solution": "$(u_n)$ étant arithmétique de premier terme $u_0 = 2$ et de raison $r = 3$, on a, pour tout $n \\in \\mathbb{N}$ :\n$$u_n = u_0 + nr = 2 + 3n.$$\n\nDonc $u_{20} = 2 + 3 \\times 20 = 62$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer la somme $S = u_0 + u_1 + u_2 + \\dots + u_{20}$.",
+        "hints": [
+          "La somme de termes consécutifs d'une suite arithmétique vaut $\\text{(nombre de termes)} \\times \\dfrac{\\text{premier} + \\text{dernier}}{2}$.",
+          "Compte le nombre de termes de $u_0$ à $u_{20}$ (il y en a $21$), puis applique la formule avec $u_0 = 2$ et $u_{20} = 62$.",
+          "$S = 21 \\times \\dfrac{2 + 62}{2} = 21 \\times 32 = 672$."
+        ],
+        "expectedAnswer": "$S = 672$",
+        "solution": "La somme va de $u_0$ à $u_{20}$, ce qui représente $21$ termes consécutifs d'une suite arithmétique.\n\nOr, la somme de termes consécutifs d'une suite arithmétique se calcule par :\n$$S = \\text{nb termes} \\times \\dfrac{\\text{premier} + \\text{dernier}}{2}.$$\n\nDonc :\n$$S = 21 \\times \\dfrac{u_0 + u_{20}}{2} = 21 \\times \\dfrac{2 + 62}{2} = 21 \\times 32 = 672.$$\n\nAinsi, $S = 672$."
+      }
+    ]
+  },
+  {
+    "id": "c-suites-005",
+    "chapter": "suites",
+    "title": "Somme de termes d'une suite géométrique",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 50,
+    "tags": [
+      "somme",
+      "geometrique"
+    ],
+    "preamble": "On considère la suite géométrique $(u_n)$ de premier terme $u_0 = 1$ et de raison $q = 2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner l'expression de $u_n$ en fonction de $n$.",
+        "hints": [
+          "Utilise la formule du terme général d'une suite géométrique : $u_n = u_0 \\times q^n$.",
+          "Avec $u_0 = 1$ et $q = 2$, on a $u_n = 2^n$.",
+          "$u_n = 2^n$."
+        ],
+        "expectedAnswer": "$u_n = 2^n$",
+        "solution": "$(u_n)$ étant géométrique de premier terme $u_0 = 1$ et de raison $q = 2$, on a, pour tout $n \\in \\mathbb{N}$ :\n$$u_n = u_0 \\times q^n = 1 \\times 2^n = 2^n.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer la somme $S = u_0 + u_1 + u_2 + \\dots + u_{10} = 1 + 2 + 4 + \\dots + 1024$.",
+        "hints": [
+          "Pour une suite géométrique de raison $q \\neq 1$, on a $1 + q + q^2 + \\dots + q^n = \\dfrac{1 - q^{n+1}}{1 - q}$.",
+          "Ici la somme contient $11$ termes, de $u_0 = 2^0$ à $u_{10} = 2^{10}$. Applique la formule avec $q = 2$ et $n = 10$.",
+          "$S = \\dfrac{1 - 2^{11}}{1 - 2} = \\dfrac{1 - 2048}{-1} = 2047$."
+        ],
+        "expectedAnswer": "$S = 2047$",
+        "solution": "La somme contient $11$ termes : $u_0, u_1, \\dots, u_{10}$, soit $1 + 2 + 2^2 + \\dots + 2^{10}$.\n\nOr, pour $q \\neq 1$ : $1 + q + q^2 + \\dots + q^n = \\dfrac{1 - q^{n+1}}{1 - q}$.\n\nAvec $q = 2$ et $n = 10$ :\n$$S = \\dfrac{1 - 2^{11}}{1 - 2} = \\dfrac{1 - 2048}{-1} = \\dfrac{-2047}{-1} = 2047.$$\n\nAinsi, $S = 2047$."
+      }
+    ]
+  },
+  {
+    "id": "c-suites-006",
+    "chapter": "suites",
+    "title": "Sens de variation d'une suite",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 60,
+    "tags": [
+      "variation",
+      "monotonie"
+    ],
+    "preamble": "On considère la suite $(u_n)$ définie pour tout entier naturel $n$ par $u_n = n^2 - 4n + 1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Étudier le sens de variation de la suite $(u_n)$ et préciser, le cas échéant, son minimum.",
+        "hints": [
+          "Pour étudier le sens de variation, on calcule $u_{n+1} - u_n$ et on étudie son signe en fonction de $n$.",
+          "Développe $u_{n+1} = (n+1)^2 - 4(n+1) + 1$ puis effectue $u_{n+1} - u_n$ ; tu devrais obtenir une expression affine en $n$.",
+          "On trouve $u_{n+1} - u_n = 2n - 3$. Cette différence est strictement négative pour $n \\in \\{0, 1\\}$ et strictement positive pour $n \\geq 2$ : $(u_n)$ est strictement décroissante puis strictement croissante, avec un minimum en $n = 2$."
+        ],
+        "expectedAnswer": "$(u_n)$ est strictement décroissante pour $n \\leq 2$, strictement croissante pour $n \\geq 2$. Minimum en $n=2$ : $u_2 = -3$.",
+        "solution": "Soit $n \\in \\mathbb{N}$. On a :\n$$u_{n+1} = (n+1)^2 - 4(n+1) + 1 = n^2 + 2n + 1 - 4n - 4 + 1 = n^2 - 2n - 2.$$\n\nDonc :\n$$u_{n+1} - u_n = (n^2 - 2n - 2) - (n^2 - 4n + 1) = 2n - 3.$$\n\nOr, $2n - 3 < 0$ ssi $n < \\dfrac{3}{2}$, c'est-à-dire $n \\in \\{0, 1\\}$. Donc, pour $n \\in \\{0, 1\\}$, $u_{n+1} - u_n < 0$ : on a $u_0 > u_1 > u_2$ (la suite décroît de $u_0$ à $u_2$).\n\nDe même, $2n - 3 > 0$ ssi $n \\geq 2$. Donc, pour $n \\geq 2$, $u_{n+1} - u_n > 0$ : $(u_n)$ est strictement croissante à partir de $u_2$.\n\nAinsi, la suite $(u_n)$ admet un minimum en $n = 2$, valant $u_2 = 4 - 8 + 1 = -3$."
+      }
+    ]
+  },
+  {
+    "id": "c-suites-007",
+    "chapter": "suites",
+    "title": "Modélisation : capital placé à intérêts composés",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 70,
+    "tags": [
+      "modelisation",
+      "geometrique",
+      "interets-composes"
+    ],
+    "preamble": "Marc place $1\\,000$ € sur un compte rémunéré à un taux annuel fixe de $5\\,\\%$. On note $C_n$ le capital, en euros, présent sur le compte au bout de $n$ années (avec $C_0 = 1\\,000$). Les intérêts sont capitalisés chaque année (intérêts composés).",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "suites/capital-croissance.svg",
+        "alt": "Représentation discrète des premiers termes de la suite (C_n) : valeurs en euros au fil des années",
+        "width": 270,
+        "height": 210
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que pour tout $n \\in \\mathbb{N}$, $C_{n+1} = 1{,}05 \\times C_n$. En déduire la nature de la suite $(C_n)$ et donner l'expression de $C_n$ en fonction de $n$.",
+        "hints": [
+          "Une augmentation de $5\\,\\%$ se traduit par la multiplication par le coefficient multiplicateur $1 + \\dfrac{5}{100} = 1{,}05$.",
+          "La relation $C_{n+1} = 1{,}05 \\times C_n$ caractérise une suite géométrique de raison $q = 1{,}05$.",
+          "$(C_n)$ est géométrique de premier terme $C_0 = 1\\,000$ et de raison $q = 1{,}05$, donc $C_n = 1\\,000 \\times 1{,}05^n$."
+        ],
+        "expectedAnswer": "$C_n = 1\\,000 \\times 1{,}05^n$",
+        "solution": "Chaque année, le capital augmente de $5\\,\\%$, donc il est multiplié par le coefficient multiplicateur $1 + \\dfrac{5}{100} = 1{,}05$.\n\nDonc, pour tout $n \\in \\mathbb{N}$, $C_{n+1} = 1{,}05 \\times C_n$.\n\nCette relation montre que $(C_n)$ est une suite **géométrique** de raison $q = 1{,}05$ et de premier terme $C_0 = 1\\,000$.\n\nAinsi, pour tout $n \\in \\mathbb{N}$ : $C_n = C_0 \\times q^n = 1\\,000 \\times 1{,}05^n$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $C_2$ et donner sa valeur exacte.",
+        "hints": [
+          "Utilise l'expression $C_n = 1\\,000 \\times 1{,}05^n$ pour $n = 2$.",
+          "$1{,}05^2 = 1{,}1025$.",
+          "$C_2 = 1\\,000 \\times 1{,}1025 = 1\\,102{,}5$ €."
+        ],
+        "expectedAnswer": "$C_2 = 1\\,102{,}5$ €",
+        "solution": "On a $C_2 = 1\\,000 \\times 1{,}05^2$. Or :\n$$1{,}05^2 = (1{,}05)(1{,}05) = 1 + 2 \\times 0{,}05 + 0{,}05^2 = 1 + 0{,}1 + 0{,}0025 = 1{,}1025.$$\n\nDonc $C_2 = 1\\,000 \\times 1{,}1025 = 1\\,102{,}5$ €.\n\nAu bout de $2$ ans, Marc dispose de $1\\,102{,}5$ €."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Justifier que la suite $(C_n)$ est strictement croissante.",
+        "hints": [
+          "Pour une suite géométrique à termes strictement positifs, on peut comparer la raison $q$ à $1$.",
+          "Ici tous les termes $C_n$ sont positifs et $q = 1{,}05 > 1$.",
+          "Comme $C_n > 0$ et $q > 1$, la suite $(C_n)$ est strictement croissante."
+        ],
+        "solution": "Pour tout $n \\in \\mathbb{N}$, $C_n = 1\\,000 \\times 1{,}05^n > 0$.\n\nDe plus, $\\dfrac{C_{n+1}}{C_n} = 1{,}05 > 1$, donc $C_{n+1} > C_n$.\n\nAinsi, la suite $(C_n)$ est strictement croissante : le capital augmente d'année en année, ce qui est cohérent avec un placement à intérêts composés positifs."
+      }
+    ]
+  },
+  {
+    "id": "c-suites-008",
+    "chapter": "suites",
+    "title": "Modélisation : décroissance d'une population",
+    "difficulty": 3,
+    "estimatedMinutes": 12,
+    "order": 80,
+    "tags": [
+      "modelisation",
+      "geometrique",
+      "decroissance"
+    ],
+    "preamble": "Une population d'insectes nuisibles compte $10\\,000$ individus en $2025$. À cause d'un traitement, elle diminue de $10\\,\\%$ chaque année. On note $P_n$ le nombre d'insectes l'année $2025 + n$, avec $P_0 = 10\\,000$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Exprimer $P_{n+1}$ en fonction de $P_n$, puis donner $P_n$ en fonction de $n$.",
+        "hints": [
+          "Une diminution de $10\\,\\%$ correspond à la multiplication par le coefficient $1 - 0{,}10 = 0{,}9$.",
+          "On a donc $P_{n+1} = 0{,}9 \\times P_n$ : la suite $(P_n)$ est géométrique de raison $0{,}9$.",
+          "$P_n = 10\\,000 \\times 0{,}9^n$."
+        ],
+        "expectedAnswer": "$P_n = 10\\,000 \\times 0{,}9^n$",
+        "solution": "Une diminution annuelle de $10\\,\\%$ se traduit par la multiplication par le coefficient multiplicateur $1 - \\dfrac{10}{100} = 0{,}9$.\n\nDonc, pour tout $n \\in \\mathbb{N}$, $P_{n+1} = 0{,}9 \\times P_n$. La suite $(P_n)$ est donc **géométrique** de raison $q = 0{,}9$ et de premier terme $P_0 = 10\\,000$.\n\nAinsi : $P_n = 10\\,000 \\times 0{,}9^n$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $P_2$.",
+        "hints": [
+          "Calcule $0{,}9^2$ puis multiplie par $10\\,000$.",
+          "$0{,}9^2 = 0{,}81$.",
+          "$P_2 = 10\\,000 \\times 0{,}81 = 8\\,100$."
+        ],
+        "expectedAnswer": "$P_2 = 8\\,100$",
+        "solution": "On a $0{,}9^2 = 0{,}81$, donc :\n$$P_2 = 10\\,000 \\times 0{,}81 = 8\\,100.$$\n\nDeux ans après le début du traitement, la population compte $8\\,100$ insectes."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Justifier que la suite $(P_n)$ est strictement décroissante.",
+        "hints": [
+          "Compare la raison $q$ à $1$ ; les termes sont-ils tous positifs ?",
+          "Tous les $P_n$ sont strictement positifs et $q = 0{,}9 < 1$.",
+          "Comme $P_n > 0$ et $0 < q < 1$, on a $P_{n+1} < P_n$ : la suite est strictement décroissante."
+        ],
+        "solution": "Pour tout $n \\in \\mathbb{N}$, $P_n = 10\\,000 \\times 0{,}9^n > 0$ (produit de réels strictement positifs).\n\nDe plus, $\\dfrac{P_{n+1}}{P_n} = 0{,}9$ et $0 < 0{,}9 < 1$, donc $P_{n+1} = 0{,}9 \\, P_n < P_n$.\n\nAinsi, $(P_n)$ est **strictement décroissante** : la population diminue chaque année, ce qui est cohérent avec l'effet du traitement."
+      }
+    ]
+  }
+]

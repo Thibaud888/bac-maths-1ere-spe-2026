@@ -1,0 +1,554 @@
+[
+  {
+    "id": "c-derivation-001",
+    "chapter": "derivation",
+    "title": "Calcul d'un nombre dérivé via la limite du taux de variation",
+    "difficulty": 1,
+    "estimatedMinutes": 8,
+    "order": 10,
+    "tags": [
+      "nombre-derive",
+      "taux-de-variation",
+      "limite",
+      "definition"
+    ],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = x^2 + 3x$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Pour tout réel $h \\neq 0$, exprimer le taux de variation $\\tau(h) = \\dfrac{f(2 + h) - f(2)}{h}$ de $f$ entre $2$ et $2 + h$, puis simplifier.",
+        "hints": [
+          "Calcule d'abord $f(2)$ puis développe $f(2 + h)$ en utilisant $(2 + h)^2 = 4 + 4h + h^2$.",
+          "Effectue la différence $f(2 + h) - f(2)$ : tu dois pouvoir factoriser $h$ au numérateur, puis simplifier par $h$.",
+          "On obtient $\\tau(h) = h + 7$."
+        ],
+        "expectedAnswer": "$\\tau(h) = h + 7$",
+        "solution": "On a $f(2) = 2^2 + 3 \\times 2 = 4 + 6 = 10$.\n\nDe plus :\n$$f(2 + h) = (2 + h)^2 + 3(2 + h) = 4 + 4h + h^2 + 6 + 3h = h^2 + 7h + 10.$$\n\nDonc :\n$$f(2 + h) - f(2) = (h^2 + 7h + 10) - 10 = h^2 + 7h = h(h + 7).$$\n\nAinsi, pour $h \\neq 0$ :\n$$\\tau(h) = \\dfrac{h(h + 7)}{h} = h + 7.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire le nombre dérivé $f'(2)$.",
+        "hints": [
+          "Le nombre dérivé $f'(2)$ est, par définition, la limite de $\\tau(h)$ quand $h$ tend vers $0$.",
+          "Ici $\\tau(h) = h + 7$ : que devient cette expression lorsque $h$ tend vers $0$ ?",
+          "$f'(2) = 7$."
+        ],
+        "expectedAnswer": "$f'(2) = 7$",
+        "solution": "Par définition, $f'(2) = \\displaystyle\\lim_{h \\to 0} \\tau(h)$.\n\nOr, $\\tau(h) = h + 7$. Lorsque $h$ tend vers $0$, $h + 7$ tend vers $0 + 7 = 7$.\n\nDonc $f'(2) = 7$."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-002",
+    "chapter": "derivation",
+    "title": "Équation de la tangente en un point donné",
+    "difficulty": 1,
+    "estimatedMinutes": 6,
+    "order": 20,
+    "tags": [
+      "tangente",
+      "equation"
+    ],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = x^3 - 2x + 1$. On note $\\mathcal{C}_f$ sa courbe représentative.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Déterminer une équation de la tangente $T$ à $\\mathcal{C}_f$ au point d'abscisse $a = 1$.",
+        "hints": [
+          "L'équation de la tangente en $a$ est $y = f'(a)(x - a) + f(a)$. Il faut donc calculer $f(1)$ et $f'(1)$.",
+          "Calcule $f(1) = 1 - 2 + 1$ ; puis $f'(x) = 3x^2 - 2$ et $f'(1) = 3 - 2 = 1$. Remplace dans la formule avec $a = 1$.",
+          "$y = 1 \\times (x - 1) + 0 = x - 1$."
+        ],
+        "expectedAnswer": "$y = x - 1$",
+        "solution": "L'équation de la tangente à $\\mathcal{C}_f$ au point d'abscisse $a$ est $y = f'(a)(x - a) + f(a)$.\n\n**Calcul de $f(1)$** : $f(1) = 1^3 - 2 \\times 1 + 1 = 1 - 2 + 1 = 0$.\n\n**Calcul de $f'(x)$** : la fonction $f$ est dérivable sur $\\mathbb{R}$ comme fonction polynôme, et $f'(x) = 3x^2 - 2$. Donc $f'(1) = 3 - 2 = 1$.\n\nAinsi, $T$ a pour équation $y = 1 \\times (x - 1) + 0$, soit $\\boxed{y = x - 1}$."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-003",
+    "chapter": "derivation",
+    "title": "Tangente horizontale et tangente de pente donnée",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 30,
+    "tags": [
+      "tangente",
+      "horizontale",
+      "equation"
+    ],
+    "preamble": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = x^2 - 6x + 5$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Déterminer l'abscisse du point de la courbe $\\mathcal{C}_f$ en lequel la tangente est horizontale.",
+        "hints": [
+          "Une tangente est horizontale lorsque son coefficient directeur est nul, c'est-à-dire $f'(a) = 0$.",
+          "Calcule $f'(x) = 2x - 6$, puis résous $f'(a) = 0$.",
+          "On trouve $a = 3$."
+        ],
+        "expectedAnswer": "$a = 3$",
+        "solution": "La tangente à $\\mathcal{C}_f$ au point d'abscisse $a$ a pour coefficient directeur $f'(a)$. Elle est horizontale si et seulement si $f'(a) = 0$.\n\nLa fonction $f$ est dérivable sur $\\mathbb{R}$ et $f'(x) = 2x - 6$.\n\nOn résout $2a - 6 = 0$, soit $a = 3$.\n\nAinsi, la tangente est horizontale au point d'abscisse $a = 3$ (soit au point $(3 \\, ; \\, f(3)) = (3 \\, ; \\, -4)$)."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Déterminer l'abscisse du point de $\\mathcal{C}_f$ en lequel la tangente a pour coefficient directeur $4$.",
+        "hints": [
+          "On cherche $a$ tel que $f'(a) = 4$.",
+          "Avec $f'(x) = 2x - 6$, résous $2a - 6 = 4$.",
+          "$a = 5$."
+        ],
+        "expectedAnswer": "$a = 5$",
+        "solution": "On cherche $a$ tel que $f'(a) = 4$.\n\nOn a $f'(x) = 2x - 6$, donc l'équation $f'(a) = 4$ s'écrit :\n$$2a - 6 = 4 \\iff 2a = 10 \\iff a = 5.$$\n\nAinsi, la tangente a pour coefficient directeur $4$ au point d'abscisse $a = 5$."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-004",
+    "chapter": "derivation",
+    "title": "Dérivée d'une fonction polynôme",
+    "difficulty": 1,
+    "estimatedMinutes": 6,
+    "order": 40,
+    "tags": [
+      "polynome",
+      "derivee",
+      "linearite"
+    ],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = 2x^4 - 5x^3 + x^2 - 7x + 9$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que $f$ est dérivable sur $\\mathbb{R}$ et déterminer sa fonction dérivée $f'$.",
+        "hints": [
+          "Une fonction polynôme est dérivable sur $\\mathbb{R}$. Pour la dérivée, applique la linéarité et la formule $(x^n)' = n\\,x^{n-1}$ à chaque terme.",
+          "Dérive terme à terme : $(2x^4)' = 8x^3$, $(-5x^3)' = -15x^2$, $(x^2)' = 2x$, $(-7x)' = -7$, $(9)' = 0$.",
+          "$f'(x) = 8x^3 - 15x^2 + 2x - 7$."
+        ],
+        "expectedAnswer": "$f'(x) = 8x^3 - 15x^2 + 2x - 7$",
+        "solution": "La fonction $f$ est une fonction polynôme, donc elle est dérivable sur $\\mathbb{R}$.\n\nPar linéarité de la dérivation et avec la formule $(x^n)' = n\\,x^{n-1}$, on obtient terme à terme :\n\n$$f'(x) = 2 \\times 4x^3 - 5 \\times 3x^2 + 2x - 7 + 0,$$\n\nsoit pour tout $x \\in \\mathbb{R}$ :\n$$\\boxed{f'(x) = 8x^3 - 15x^2 + 2x - 7}.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-005",
+    "chapter": "derivation",
+    "title": "Dérivée d'un produit",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 50,
+    "tags": [
+      "produit",
+      "operations"
+    ],
+    "preamble": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = (3x - 1)(x^2 + 4)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $f'(x)$ en utilisant la formule de dérivation d'un produit.",
+        "hints": [
+          "Pose $u(x) = 3x - 1$ et $v(x) = x^2 + 4$, calcule $u'$ et $v'$, puis applique $(uv)' = u'v + uv'$.",
+          "Ici $u'(x) = 3$ et $v'(x) = 2x$. Donc $f'(x) = 3(x^2 + 4) + (3x - 1) \\times 2x$.",
+          "Après développement : $f'(x) = 9x^2 - 2x + 12$."
+        ],
+        "expectedAnswer": "$f'(x) = 9x^2 - 2x + 12$",
+        "solution": "On pose $u(x) = 3x - 1$ et $v(x) = x^2 + 4$. Les fonctions $u$ et $v$ sont dérivables sur $\\mathbb{R}$ (polynômes), donc $f = uv$ l'est aussi.\n\nOn a $u'(x) = 3$ et $v'(x) = 2x$. D'après la formule $(uv)' = u'v + uv'$ :\n\n$$f'(x) = 3 \\times (x^2 + 4) + (3x - 1) \\times 2x.$$\n\nOn développe :\n$$f'(x) = 3x^2 + 12 + 6x^2 - 2x = 9x^2 - 2x + 12.$$\n\nDonc, pour tout $x \\in \\mathbb{R}$, $f'(x) = 9x^2 - 2x + 12$."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-006",
+    "chapter": "derivation",
+    "title": "Dérivée d'un quotient",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 60,
+    "tags": [
+      "quotient",
+      "operations"
+    ],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R} \\setminus \\{1\\}$ par $f(x) = \\dfrac{2x + 3}{x - 1}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que $f$ est dérivable sur $\\mathbb{R} \\setminus \\{1\\}$, puis calculer $f'(x)$ et simplifier.",
+        "hints": [
+          "Pose $u(x) = 2x + 3$ et $v(x) = x - 1$. Le dénominateur $v$ ne s'annule pas sur $\\mathbb{R} \\setminus \\{1\\}$, donc $f = u/v$ y est dérivable.",
+          "Applique la formule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$ avec $u'(x) = 2$ et $v'(x) = 1$.",
+          "On obtient $f'(x) = \\dfrac{2(x - 1) - (2x + 3) \\times 1}{(x - 1)^2} = \\dfrac{-5}{(x - 1)^2}$."
+        ],
+        "expectedAnswer": "$f'(x) = \\dfrac{-5}{(x - 1)^2}$",
+        "solution": "On pose $u(x) = 2x + 3$ et $v(x) = x - 1$. Les fonctions $u$ et $v$ sont dérivables sur $\\mathbb{R}$, et $v$ ne s'annule pas sur $\\mathbb{R} \\setminus \\{1\\}$. Donc $f = \\dfrac{u}{v}$ est dérivable sur $\\mathbb{R} \\setminus \\{1\\}$.\n\nOn a $u'(x) = 2$ et $v'(x) = 1$. D'après la formule du quotient :\n$$f'(x) = \\dfrac{u'(x) v(x) - u(x) v'(x)}{[v(x)]^2} = \\dfrac{2(x - 1) - (2x + 3) \\times 1}{(x - 1)^2}.$$\n\nOn développe le numérateur :\n$$2(x - 1) - (2x + 3) = 2x - 2 - 2x - 3 = -5.$$\n\nAinsi, pour tout $x \\in \\mathbb{R} \\setminus \\{1\\}$ :\n$$\\boxed{f'(x) = \\dfrac{-5}{(x - 1)^2}}.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-007",
+    "chapter": "derivation",
+    "title": "Dérivée d'une fonction de la forme $u(ax + b)$",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 70,
+    "tags": [
+      "composee-affine",
+      "operations"
+    ],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = (2x - 5)^4$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $f'(x)$ en utilisant la formule $\\big(u(ax + b)\\big)' = a \\, u'(ax + b)$.",
+        "hints": [
+          "Identifie $u$, $a$ et $b$ : ici $u(t) = t^4$, $a = 2$ et $b = -5$.",
+          "Calcule $u'(t) = 4t^3$, puis $f'(x) = a \\times u'(ax + b) = 2 \\times 4(2x - 5)^3$.",
+          "$f'(x) = 8(2x - 5)^3$."
+        ],
+        "expectedAnswer": "$f'(x) = 8(2x - 5)^3$",
+        "solution": "On reconnaît $f(x) = u(ax + b)$ avec $u(t) = t^4$, $a = 2$ et $b = -5$.\n\nLa fonction $u$ est dérivable sur $\\mathbb{R}$ et $u'(t) = 4t^3$. Donc $f$ est dérivable sur $\\mathbb{R}$ et :\n$$f'(x) = a \\, u'(ax + b) = 2 \\times 4(2x - 5)^3.$$\n\nAinsi, pour tout $x \\in \\mathbb{R}$ :\n$$\\boxed{f'(x) = 8(2x - 5)^3}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire l'équation de la tangente $T$ à la courbe $\\mathcal{C}_f$ au point d'abscisse $a = 3$.",
+        "hints": [
+          "L'équation de la tangente en $a$ est $y = f'(a)(x - a) + f(a)$. Calcule $f(3)$ puis $f'(3)$.",
+          "$f(3) = (2 \\times 3 - 5)^4 = 1^4 = 1$ et $f'(3) = 8 \\times 1^3 = 8$.",
+          "$y = 8(x - 3) + 1 = 8x - 23$."
+        ],
+        "expectedAnswer": "$y = 8x - 23$",
+        "solution": "On a $2 \\times 3 - 5 = 1$, donc $f(3) = 1^4 = 1$ et $f'(3) = 8 \\times 1^3 = 8$.\n\nL'équation de la tangente à $\\mathcal{C}_f$ au point d'abscisse $3$ est :\n$$y = f'(3)(x - 3) + f(3) = 8(x - 3) + 1 = 8x - 24 + 1.$$\n\nDonc $T : y = 8x - 23$."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-008",
+    "chapter": "derivation",
+    "title": "Étude des variations d'un polynôme du second degré",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 80,
+    "tags": [
+      "variations",
+      "polynome",
+      "tableau-de-variations"
+    ],
+    "preamble": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = -2x^2 + 8x - 3$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $f'(x)$, étudier son signe sur $\\mathbb{R}$, puis dresser le tableau de variations de $f$.",
+        "hints": [
+          "Dérive $f$ pour obtenir une expression affine, puis étudie le signe de cette expression en résolvant $f'(x) \\geq 0$.",
+          "Calcule $f'(x) = -4x + 8$, qui s'annule en $x = 2$. Détermine sur quel intervalle $f'(x) \\geq 0$ et sur quel intervalle $f'(x) \\leq 0$.",
+          "$f$ est croissante sur $]-\\infty \\, ; \\, 2]$ et décroissante sur $[2 \\, ; \\, +\\infty[$ ; maximum en $x = 2$, $f(2) = 5$."
+        ],
+        "expectedAnswer": "$f$ croissante sur $]-\\infty\\,;\\,2]$, décroissante sur $[2\\,;\\,+\\infty[$, max $f(2) = 5$",
+        "solution": "La fonction $f$ est dérivable sur $\\mathbb{R}$ (polynôme) et :\n$$f'(x) = -4x + 8.$$\n\n**Signe de $f'$** : $f'(x) = 0 \\iff -4x + 8 = 0 \\iff x = 2$. Comme $f'$ est affine de coefficient directeur $-4 < 0$, $f'$ est strictement décroissante : $f'(x) > 0$ pour $x < 2$ et $f'(x) < 0$ pour $x > 2$.\n\n**Tableau de variations** :\n\n| $x$ | $-\\infty$ | | $2$ | | $+\\infty$ |\n|-----|-----------|---|-----|---|-----------|\n| $f'(x)$ | | $+$ | $0$ | $-$ | |\n| $f(x)$ | | $\\nearrow$ | $5$ | $\\searrow$ | |\n\nAinsi, $f$ est strictement croissante sur $]-\\infty \\, ; \\, 2]$ et strictement décroissante sur $[2 \\, ; \\, +\\infty[$. Elle admet un **maximum** en $x = 2$ valant $f(2) = -2 \\times 4 + 16 - 3 = -8 + 16 - 3 = 5$."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-009",
+    "chapter": "derivation",
+    "title": "Étude des variations d'un polynôme de degré 3",
+    "difficulty": 3,
+    "estimatedMinutes": 14,
+    "order": 90,
+    "tags": [
+      "variations",
+      "polynome",
+      "second-degre",
+      "tableau-de-variations"
+    ],
+    "preamble": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = x^3 - 3x^2 - 9x + 5$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $f'(x)$ et factoriser cette expression.",
+        "hints": [
+          "Dérive terme à terme : $f$ est polynôme de degré $3$, donc $f'$ est polynôme de degré $2$.",
+          "On obtient $f'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3)$ ; cherche les racines du trinôme $x^2 - 2x - 3$ (somme = $2$, produit = $-3$).",
+          "$f'(x) = 3(x + 1)(x - 3)$."
+        ],
+        "expectedAnswer": "$f'(x) = 3(x + 1)(x - 3)$",
+        "solution": "$f$ est dérivable sur $\\mathbb{R}$ comme polynôme. On a :\n$$f'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3).$$\n\nOn cherche les racines du trinôme $x^2 - 2x - 3$. La somme des racines vaut $2$ et leur produit vaut $-3$ : on identifie $x_1 = -1$ et $x_2 = 3$ (vérification : $-1 + 3 = 2$ et $(-1) \\times 3 = -3$).\n\nDonc $x^2 - 2x - 3 = (x + 1)(x - 3)$, d'où :\n$$\\boxed{f'(x) = 3(x + 1)(x - 3)}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Étudier le signe de $f'(x)$ sur $\\mathbb{R}$, puis dresser le tableau de variations de $f$ (on précisera les valeurs de $f$ aux extremums).",
+        "hints": [
+          "Le signe d'un produit s'étudie par règle des signes ; ici le facteur $3$ est positif, donc le signe de $f'(x)$ est celui de $(x + 1)(x - 3)$.",
+          "Le trinôme $(x+1)(x-3)$ est du même signe que $a = 1 > 0$ à l'extérieur des racines, négatif entre $-1$ et $3$. Calcule $f(-1)$ et $f(3)$ pour le tableau.",
+          "$f$ croissante sur $]-\\infty\\,;\\,-1]$, décroissante sur $[-1\\,;\\,3]$, croissante sur $[3\\,;\\,+\\infty[$. Maximum local $f(-1) = 10$, minimum local $f(3) = -22$."
+        ],
+        "expectedAnswer": "Croissante sur $]-\\infty\\,;\\,-1]$, décroissante sur $[-1\\,;\\,3]$, croissante sur $[3\\,;\\,+\\infty[$. $f(-1) = 10$, $f(3) = -22$.",
+        "solution": "On étudie le signe de $f'(x) = 3(x + 1)(x - 3)$. Le facteur $3$ étant strictement positif, le signe de $f'(x)$ est celui de $(x + 1)(x - 3)$.\n\nC'est un trinôme du second degré dont le coefficient dominant est positif et dont les racines sont $-1$ et $3$ : il est positif à l'extérieur des racines et négatif entre les racines.\n\n**Calcul des valeurs aux extremums** :\n- $f(-1) = (-1)^3 - 3 \\times (-1)^2 - 9 \\times (-1) + 5 = -1 - 3 + 9 + 5 = 10$.\n- $f(3) = 27 - 27 - 27 + 5 = -22$.\n\n**Tableau de variations** :\n\n| $x$ | $-\\infty$ | | $-1$ | | $3$ | | $+\\infty$ |\n|-----|-----------|---|------|---|-----|---|-----------|\n| $f'(x)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n| $f(x)$ | | $\\nearrow$ | $10$ | $\\searrow$ | $-22$ | $\\nearrow$ | |\n\nAinsi, $f$ est strictement croissante sur $]-\\infty \\, ; \\, -1]$, strictement décroissante sur $[-1 \\, ; \\, 3]$, et strictement croissante sur $[3 \\, ; \\, +\\infty[$. Elle admet un **maximum local** en $-1$ ($f(-1) = 10$) et un **minimum local** en $3$ ($f(3) = -22$)."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-010",
+    "chapter": "derivation",
+    "title": "Recherche d'un extremum local",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 100,
+    "tags": [
+      "extremum",
+      "minimum",
+      "polynome"
+    ],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = x^2 - 6x + 11$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Démontrer que $f$ admet un minimum sur $\\mathbb{R}$ et préciser sa valeur ainsi que la valeur de $x$ où il est atteint.",
+        "hints": [
+          "Pour qu'une fonction dérivable admette un extremum, sa dérivée doit s'annuler en changeant de signe. Calcule $f'(x)$ et étudie son signe.",
+          "Ici $f'(x) = 2x - 6$ : étudie le signe et regarde si $f'$ change de signe en $x = 3$. Calcule alors $f(3)$.",
+          "$f'$ change de signe de $-$ à $+$ en $x = 3$, donc $f$ admet un minimum en $3$ valant $f(3) = 2$."
+        ],
+        "expectedAnswer": "Minimum en $x = 3$, $f(3) = 2$",
+        "solution": "$f$ est dérivable sur $\\mathbb{R}$ (polynôme) et $f'(x) = 2x - 6$.\n\n**Signe de $f'$** : $f'(x) = 0 \\iff x = 3$. De plus, $f'$ est affine de coefficient directeur $2 > 0$, donc $f'(x) < 0$ pour $x < 3$ et $f'(x) > 0$ pour $x > 3$.\n\n**Conclusion** : $f'$ s'annule en $3$ en changeant de signe (de $-$ à $+$), donc $f$ admet un **minimum local** en $x = 3$. Comme $f$ est strictement décroissante sur $]-\\infty \\, ; \\, 3]$ et strictement croissante sur $[3 \\, ; \\, +\\infty[$, ce minimum est en réalité **global** sur $\\mathbb{R}$.\n\nSa valeur est :\n$$f(3) = 9 - 18 + 11 = 2.$$\n\nAinsi, $f$ admet un minimum sur $\\mathbb{R}$ valant $\\boxed{2}$, atteint en $x = 3$."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-011",
+    "chapter": "derivation",
+    "title": "Étude d'une fonction homographique",
+    "difficulty": 3,
+    "estimatedMinutes": 12,
+    "order": 110,
+    "tags": [
+      "quotient",
+      "homographique",
+      "variations",
+      "tableau-de-variations"
+    ],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R} \\setminus \\{2\\}$ par $f(x) = \\dfrac{x + 1}{x - 2}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $f'(x)$ pour tout $x \\in \\mathbb{R} \\setminus \\{2\\}$ et simplifier.",
+        "hints": [
+          "Pose $u(x) = x + 1$ et $v(x) = x - 2$, calcule $u'$ et $v'$, puis applique la formule du quotient $(u/v)' = (u'v - uv')/v^2$.",
+          "Avec $u'(x) = 1$ et $v'(x) = 1$ : $f'(x) = \\dfrac{1 \\times (x - 2) - (x + 1) \\times 1}{(x - 2)^2}$. Simplifie le numérateur.",
+          "$f'(x) = \\dfrac{-3}{(x - 2)^2}$."
+        ],
+        "expectedAnswer": "$f'(x) = \\dfrac{-3}{(x - 2)^2}$",
+        "solution": "On pose $u(x) = x + 1$ et $v(x) = x - 2$. Sur $\\mathbb{R} \\setminus \\{2\\}$, $v$ est dérivable et ne s'annule pas, donc $f$ est dérivable.\n\nOn a $u'(x) = 1$ et $v'(x) = 1$. D'après la formule du quotient :\n$$f'(x) = \\dfrac{u'(x) v(x) - u(x) v'(x)}{[v(x)]^2} = \\dfrac{1 \\times (x - 2) - (x + 1) \\times 1}{(x - 2)^2}.$$\n\nOn simplifie le numérateur :\n$$(x - 2) - (x + 1) = x - 2 - x - 1 = -3.$$\n\nDonc, pour tout $x \\in \\mathbb{R} \\setminus \\{2\\}$ :\n$$\\boxed{f'(x) = \\dfrac{-3}{(x - 2)^2}}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire le sens de variation de $f$ sur chacun des intervalles $]-\\infty \\, ; \\, 2[$ et $]2 \\, ; \\, +\\infty[$, puis dresser le tableau de variations.",
+        "hints": [
+          "Étudie le signe du numérateur $-3$ et du dénominateur $(x - 2)^2$ pour conclure sur le signe de $f'(x)$.",
+          "Le numérateur $-3$ est strictement négatif et $(x - 2)^2 > 0$ pour $x \\neq 2$, donc $f'(x) < 0$ pour tout $x \\in \\mathbb{R} \\setminus \\{2\\}$.",
+          "$f$ est strictement décroissante sur $]-\\infty\\,;\\,2[$ et sur $]2\\,;\\,+\\infty[$ (mais pas sur la réunion des deux : $f$ n'est pas définie en $2$)."
+        ],
+        "expectedAnswer": "$f$ strictement décroissante sur $]-\\infty\\,;\\,2[$ et sur $]2\\,;\\,+\\infty[$",
+        "solution": "Pour tout $x \\in \\mathbb{R} \\setminus \\{2\\}$, on a $(x - 2)^2 > 0$. De plus, le numérateur est $-3 < 0$, donc :\n$$f'(x) = \\dfrac{-3}{(x - 2)^2} < 0.$$\n\nAinsi, $f$ est **strictement décroissante** sur $]-\\infty \\, ; \\, 2[$ et **strictement décroissante** sur $]2 \\, ; \\, +\\infty[$.\n\n**Tableau de variations** (en notant que $f$ n'est pas définie en $2$) :\n\n| $x$ | $-\\infty$ | | $2$ | | $+\\infty$ |\n|-----|-----------|---|-----|---|-----------|\n| $f'(x)$ | | $-$ | $\\Vert$ | $-$ | |\n| $f(x)$ | | $\\searrow$ | $\\Vert$ | $\\searrow$ | |\n\n**Remarque** : il faut bien étudier les variations sur chaque intervalle séparément ; on **ne peut pas** dire que $f$ est décroissante sur $\\mathbb{R} \\setminus \\{2\\}$ pris dans son ensemble (par exemple, $f(0) = -\\dfrac{1}{2}$ et $f(3) = 4$, donc $f(0) < f(3)$ alors que $0 < 3$)."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-012",
+    "chapter": "derivation",
+    "title": "Optimisation : aire maximale d'un rectangle",
+    "difficulty": 3,
+    "estimatedMinutes": 14,
+    "order": 120,
+    "tags": [
+      "optimisation",
+      "extremum",
+      "modelisation",
+      "polynome"
+    ],
+    "preamble": "On dispose d'une ficelle de longueur $20$ cm que l'on utilise pour former le contour d'un rectangle. On note $x$ la longueur d'un côté du rectangle (en cm), avec $0 < x < 10$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "derivation/rectangle-perimetre.svg",
+        "alt": "Rectangle de longueur x cm inscrit dans une contrainte de périmètre fixe de 20 cm",
+        "width": 250,
+        "height": 190
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que l'aire $\\mathcal{A}(x)$ du rectangle, en cm$^2$, est donnée par $\\mathcal{A}(x) = x(10 - x)$.",
+        "hints": [
+          "Le périmètre vaut $20$ cm, donc la somme longueur + largeur vaut $10$ cm. Si l'un des côtés mesure $x$, l'autre mesure $10 - x$.",
+          "L'aire d'un rectangle est le produit de ses deux côtés.",
+          "$\\mathcal{A}(x) = x \\times (10 - x)$."
+        ],
+        "expectedAnswer": "$\\mathcal{A}(x) = x(10 - x)$",
+        "solution": "Le périmètre du rectangle vaut $20$ cm, soit $2 \\times (\\text{longueur} + \\text{largeur}) = 20$, donc la somme d'un côté et du côté adjacent vaut $\\dfrac{20}{2} = 10$ cm.\n\nSi l'un des côtés mesure $x$ cm, l'autre mesure donc $10 - x$ cm. L'aire du rectangle est :\n$$\\mathcal{A}(x) = x \\times (10 - x).$$\n\nLa contrainte $0 < x < 10$ assure que les deux côtés sont strictement positifs."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Déterminer la valeur de $x$ pour laquelle l'aire $\\mathcal{A}(x)$ est maximale, et préciser cette aire maximale.",
+        "hints": [
+          "Développe $\\mathcal{A}(x) = 10x - x^2$, calcule $\\mathcal{A}'(x)$, étudie son signe sur $]0 \\, ; \\, 10[$ et identifie où la dérivée s'annule en changeant de signe.",
+          "$\\mathcal{A}'(x) = 10 - 2x$ s'annule en $x = 5$ ; vérifie qu'à cet endroit la dérivée passe du positif au négatif.",
+          "Maximum en $x = 5$, l'aire vaut alors $\\mathcal{A}(5) = 5 \\times 5 = 25$ cm$^2$ (le rectangle d'aire maximale est un carré)."
+        ],
+        "expectedAnswer": "$x = 5$ cm, aire maximale $= 25$ cm$^2$",
+        "solution": "On a $\\mathcal{A}(x) = 10x - x^2$ pour tout $x \\in \\, ]0 \\, ; \\, 10[$. La fonction $\\mathcal{A}$ est dérivable sur cet intervalle (polynôme) et :\n$$\\mathcal{A}'(x) = 10 - 2x.$$\n\n**Signe de $\\mathcal{A}'$** : $\\mathcal{A}'(x) = 0 \\iff x = 5$, $\\mathcal{A}'(x) > 0$ pour $x < 5$ et $\\mathcal{A}'(x) < 0$ pour $x > 5$.\n\nDonc $\\mathcal{A}$ est strictement croissante sur $]0 \\, ; \\, 5]$ puis strictement décroissante sur $[5 \\, ; \\, 10[$ : elle admet un **maximum** en $x = 5$.\n\nCe maximum vaut :\n$$\\mathcal{A}(5) = 5 \\times (10 - 5) = 5 \\times 5 = 25 \\text{ cm}^2.$$\n\n**Conclusion** : l'aire est maximale lorsque $x = 5$ cm, c'est-à-dire lorsque le rectangle est un **carré** de côté $5$ cm. Cette aire maximale vaut $25$ cm$^2$."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-013",
+    "chapter": "derivation",
+    "title": "Lecture graphique : tangente et nombre dérivé",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 130,
+    "tags": [
+      "lecture-graphique",
+      "tangente",
+      "nombre-derive"
+    ],
+    "preamble": "La figure ci-dessous représente la courbe $\\mathcal{C}_f$ d'une fonction $f$ définie sur $[-1 \\, ; \\, 5]$, ainsi que la tangente $T$ à $\\mathcal{C}_f$ au point $A$ d'abscisse $1$. On lit sur le graphique que $T$ passe par les points $A(1 \\, ; \\, 0)$ et $B(2 \\, ; \\, -2)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "derivation/parabole-tangente-x1.svg",
+        "alt": "Courbe d'une fonction f sur [-1 ; 5] avec sa tangente au point A(1, 0) passant par B(2, -2)",
+        "width": 400,
+        "height": 320
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Lire sur le graphique les valeurs de $f(0)$, $f(1)$ et $f(3)$.",
+        "hints": [
+          "Pour chaque abscisse, repère le point de la courbe $\\mathcal{C}_f$ situé à la verticale, puis lis son ordonnée.",
+          "Le point d'abscisse $0$ a pour ordonnée $3$ ; le point d'abscisse $1$ est sur l'axe des abscisses ; idem pour le point d'abscisse $3$.",
+          "$f(0) = 3$, $f(1) = 0$ et $f(3) = 0$."
+        ],
+        "expectedAnswer": "$f(0) = 3$, $f(1) = 0$, $f(3) = 0$",
+        "solution": "On lit directement sur le graphique :\n- au point d'abscisse $0$, la courbe $\\mathcal{C}_f$ coupe l'axe des ordonnées à la hauteur $3$, donc $f(0) = 3$ ;\n- au point d'abscisse $1$, la courbe passe par le point $A(1 \\, ; \\, 0)$, donc $f(1) = 0$ ;\n- au point d'abscisse $3$, la courbe coupe à nouveau l'axe des abscisses, donc $f(3) = 0$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Déterminer $f'(1)$ à l'aide de la tangente $T$.",
+        "hints": [
+          "Le nombre dérivé $f'(1)$ est égal au coefficient directeur de la tangente $T$ à $\\mathcal{C}_f$ au point d'abscisse $1$.",
+          "Le coefficient directeur d'une droite passant par deux points $(x_A \\, ; \\, y_A)$ et $(x_B \\, ; \\, y_B)$ vaut $\\dfrac{y_B - y_A}{x_B - x_A}$. Applique cette formule avec $A(1 \\, ; \\, 0)$ et $B(2 \\, ; \\, -2)$.",
+          "$f'(1) = -2$."
+        ],
+        "expectedAnswer": "$f'(1) = -2$",
+        "solution": "Le nombre dérivé $f'(1)$ est égal au coefficient directeur de la tangente $T$ à $\\mathcal{C}_f$ au point d'abscisse $1$.\n\nLa droite $T$ passe par les points $A(1 \\, ; \\, 0)$ et $B(2 \\, ; \\, -2)$ ; son coefficient directeur est donc :\n$$\\dfrac{y_B - y_A}{x_B - x_A} = \\dfrac{-2 - 0}{2 - 1} = \\dfrac{-2}{1} = -2.$$\n\nAinsi, $f'(1) = -2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Déterminer une équation de la tangente $T$.",
+        "hints": [
+          "L'équation d'une tangente à $\\mathcal{C}_f$ au point d'abscisse $a$ est $y = f'(a)(x - a) + f(a)$.",
+          "Applique la formule avec $a = 1$, $f(1) = 0$ et $f'(1) = -2$.",
+          "$y = -2x + 2$."
+        ],
+        "expectedAnswer": "$y = -2x + 2$",
+        "solution": "Avec la formule $y = f'(a)(x - a) + f(a)$ appliquée en $a = 1$, et puisque $f(1) = 0$ et $f'(1) = -2$ :\n$$y = -2(x - 1) + 0 = -2x + 2.$$\n\nDonc $T$ a pour équation $y = -2x + 2$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Sur quel intervalle la fonction $f$ semble-t-elle décroissante d'après le graphique ?",
+        "hints": [
+          "Repère la portion de la courbe sur laquelle on « descend » lorsque $x$ augmente.",
+          "La courbe descend depuis le point $(-1 \\, ; \\, 8)$ jusqu'à un sommet bas que tu peux lire sur le graphique.",
+          "$f$ est décroissante sur $[-1 \\, ; \\, 2]$."
+        ],
+        "expectedAnswer": "$[-1 \\, ; \\, 2]$",
+        "solution": "Sur le graphique, la courbe $\\mathcal{C}_f$ descend depuis le point $(-1 \\, ; \\, 8)$ jusqu'au point le plus bas, atteint à l'abscisse $2$ (où $f(2) = -1$), avant de remonter.\n\nAinsi, $f$ est décroissante sur l'intervalle $[-1 \\, ; \\, 2]$.\n\n**Remarque** : au point d'abscisse $2$, la tangente est horizontale, ce qui se traduit par $f'(2) = 0$ : c'est cohérent avec le changement de sens de variation observé."
+      }
+    ]
+  },
+  {
+    "id": "c-derivation-014",
+    "chapter": "derivation",
+    "title": "Lecture graphique : signe de la dérivée et variations",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 140,
+    "tags": [
+      "lecture-graphique",
+      "signe-derivee",
+      "variations",
+      "extremum"
+    ],
+    "preamble": "La figure ci-dessous représente la courbe $\\mathcal{C}_f$ d'une fonction $f$ dérivable sur $[-2 \\, ; \\, 2]$. On note $M_1$ et $M_2$ deux points particuliers de la courbe en lesquels la tangente est horizontale.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "derivation/cubique-signe-derivee.svg",
+        "alt": "Courbe d'une fonction f sur [-2 ; 2] présentant un maximum local en M1(-1, 2) et un minimum local en M2(1, -2)",
+        "width": 400,
+        "height": 320
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Lire sur le graphique les coordonnées des points $M_1$ et $M_2$, et préciser pour chacun s'il correspond à un maximum local ou à un minimum local de $f$.",
+        "hints": [
+          "Repère sur la courbe les points où la tangente est horizontale : il s'agit d'un « sommet haut » et d'un « creux ».",
+          "Un maximum local est un point où la courbe « culmine » localement ; un minimum local est un point où la courbe atteint un « creux » localement.",
+          "$M_1(-1 \\, ; \\, 2)$ est un maximum local et $M_2(1 \\, ; \\, -2)$ est un minimum local."
+        ],
+        "expectedAnswer": "$M_1(-1\\,;\\,2)$ max local, $M_2(1\\,;\\,-2)$ min local",
+        "solution": "On lit graphiquement :\n- $M_1$ a pour abscisse $-1$ et pour ordonnée $2$, donc $M_1(-1 \\, ; \\, 2)$. En ce point la courbe « culmine » localement avant de redescendre : c'est un **maximum local** de $f$, et $f(-1) = 2$ ;\n- $M_2$ a pour abscisse $1$ et pour ordonnée $-2$, donc $M_2(1 \\, ; \\, -2)$. En ce point la courbe atteint un « creux » avant de remonter : c'est un **minimum local** de $f$, et $f(1) = -2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Donner, à l'aide du graphique, le signe de $f'(x)$ sur chacun des intervalles $[-2 \\, ; \\, -1[$, $]-1 \\, ; \\, 1[$ et $]1 \\, ; \\, 2]$.",
+        "hints": [
+          "Le signe de $f'(x)$ se lit sur le sens de variation de $f$ : $f'(x) > 0$ là où $f$ est croissante, $f'(x) < 0$ là où $f$ est décroissante.",
+          "Étudie séparément les trois intervalles en regardant si la courbe « monte » ou « descend ».",
+          "$f'(x) > 0$ sur $[-2 \\, ; \\, -1[$ ; $f'(x) < 0$ sur $]-1 \\, ; \\, 1[$ ; $f'(x) > 0$ sur $]1 \\, ; \\, 2]$. De plus, $f'(-1) = 0$ et $f'(1) = 0$."
+        ],
+        "expectedAnswer": "$f'>0$ sur $[-2\\,;\\,-1[$, $f'<0$ sur $]-1\\,;\\,1[$, $f'>0$ sur $]1\\,;\\,2]$",
+        "solution": "On utilise le lien entre signe de $f'$ et sens de variation de $f$.\n\n- Sur $[-2 \\, ; \\, -1[$, la courbe $\\mathcal{C}_f$ monte : $f$ est strictement croissante, donc $f'(x) > 0$.\n- Sur $]-1 \\, ; \\, 1[$, la courbe descend : $f$ est strictement décroissante, donc $f'(x) < 0$.\n- Sur $]1 \\, ; \\, 2]$, la courbe remonte : $f$ est strictement croissante, donc $f'(x) > 0$.\n\nDe plus, aux points $M_1$ et $M_2$ la tangente est horizontale, donc $f'(-1) = 0$ et $f'(1) = 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "En déduire le tableau de variations de $f$ sur $[-2 \\, ; \\, 2]$.",
+        "hints": [
+          "Utilise les résultats de la question précédente pour décrire les variations de $f$ sur chacun des trois intervalles.",
+          "N'oublie pas d'indiquer les valeurs aux bornes : $f(-2) = -2$, $f(-1) = 2$, $f(1) = -2$, $f(2) = 2$ (à lire sur la figure).",
+          "$f$ est croissante sur $[-2 \\, ; \\, -1]$, décroissante sur $[-1 \\, ; \\, 1]$, puis croissante sur $[1 \\, ; \\, 2]$."
+        ],
+        "expectedAnswer": "Croissante sur $[-2\\,;\\,-1]$, décroissante sur $[-1\\,;\\,1]$, croissante sur $[1\\,;\\,2]$",
+        "solution": "D'après le signe de $f'$ établi à la question précédente, et les valeurs lues sur la figure ($f(-2) = -2$, $f(-1) = 2$, $f(1) = -2$, $f(2) = 2$) :\n\n| $x$ | $-2$ | | $-1$ | | $1$ | | $2$ |\n|-----|------|---|------|---|-----|---|-----|\n| $f'(x)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n| $f(x)$ | $-2$ | $\\nearrow$ | $2$ | $\\searrow$ | $-2$ | $\\nearrow$ | $2$ |\n\nAinsi, $f$ est strictement croissante sur $[-2 \\, ; \\, -1]$, strictement décroissante sur $[-1 \\, ; \\, 1]$, puis strictement croissante sur $[1 \\, ; \\, 2]$. Elle admet un maximum local en $-1$ valant $2$, et un minimum local en $1$ valant $-2$."
+      }
+    ]
+  }
+]

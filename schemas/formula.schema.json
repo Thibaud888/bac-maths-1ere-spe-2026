@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "formula.schema.json",
+  "title": "Formula Card",
+  "description": "Carte du formulaire interactif. Représente une formule, propriété, théorème ou méthode-clé du cours.",
+  "type": "object",
+  "required": ["id", "chapter", "domain", "title", "statement", "level"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^f-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format: f-<slug-descriptif>. Ex: f-suite-arith-terme-general"
+    },
+    "chapter": {
+      "type": "string",
+      "enum": [
+        "suites",
+        "second-degre",
+        "derivation",
+        "exponentielle",
+        "trigonometrie",
+        "produit-scalaire",
+        "geometrie-reperee",
+        "probas-cond",
+        "variables-aleatoires"
+      ],
+      "description": "Slug du chapitre auquel rattacher cette carte"
+    },
+    "domain": {
+      "type": "string",
+      "enum": ["algebre", "analyse", "geometrie", "probabilites"],
+      "description": "Grand domaine du programme"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 100,
+      "description": "Titre court de la carte. Ex: 'Terme général d'une suite arithmétique'"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Énoncé de la formule en Markdown + LaTeX. Math inline: $...$, math block: $$...$$"
+    },
+    "conditions": {
+      "type": "string",
+      "description": "Conditions d'application. Ex: 'pour $q \\neq 1$', 'pour $x > 0$'"
+    },
+    "example": {
+      "type": "string",
+      "description": "Exemple court d'application, en Markdown + LaTeX"
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Mots-clés pour la recherche dans le formulaire"
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Ordre d'apparition dans le formulaire du chapitre"
+    },
+    "level": {
+      "type": "string",
+      "enum": ["essentiel", "a-connaitre", "approfondissement"],
+      "description": "Niveau d'importance pour l'épreuve. 'essentiel' = doit être su parfaitement."
+    },
+    "relatedFormulas": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^f-[a-z0-9-]+$"},
+      "description": "IDs d'autres cartes liées (formule réciproque, formule générale, etc.)"
+    },
+    "simplified": {
+      "type": "object",
+      "description": "Version condensée de la formule, optimisée pour la mémorisation. Utilisée en mode Simplifié de la page Formulaire.",
+      "required": ["core"],
+      "additionalProperties": false,
+      "properties": {
+        "core": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 280,
+          "description": "Formule nue en LaTeX/Markdown ($...$ ou $$...$$). Aucune phrase d'introduction."
+        },
+        "mnemonic": {
+          "type": "string",
+          "maxLength": 140,
+          "description": "Phrase courte / moyen mnémotechnique. Ex. : 'dérivée du haut fois le bas…'"
+        },
+        "keyword": {
+          "type": "string",
+          "maxLength": 32,
+          "description": "Mot-clé unique de récupération mémorielle (1-3 mots)."
+        },
+        "visual": {
+          "type": "string",
+          "maxLength": 280,
+          "description": "Repère visuel textuel (image mentale). Ex. : 'parabole creuse vers le haut'. Markdown + LaTeX autorisés."
+        },
+        "accent": {
+          "type": "string",
+          "enum": ["red", "blue", "amber", "emerald", "violet", "slate"],
+          "description": "Couleur d'accent Tailwind pour ancrage visuel. Par défaut : dérivé du level."
+        }
+      }
+    }
+  }
+}
