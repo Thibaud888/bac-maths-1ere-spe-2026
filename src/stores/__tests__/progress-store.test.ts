@@ -77,4 +77,22 @@ describe('countSucceeded', () => {
     expect(useProgressStore.getState().countSucceeded('classic')).toBe(1);
     expect(useProgressStore.getState().countSucceeded('exam')).toBe(0);
   });
+
+  it('counts unique exercises, not individual questions, for classic', () => {
+    act(() => {
+      useProgressStore.getState().recordAttempt('c-suites-001::q1', true);
+      useProgressStore.getState().recordAttempt('c-suites-001::q2', true);
+      useProgressStore.getState().recordAttempt('c-suites-002::q1', false);
+    });
+    expect(useProgressStore.getState().countSucceeded('classic')).toBe(1);
+  });
+
+  it('counts unique exercises for exam, including sub-questions', () => {
+    act(() => {
+      useProgressStore.getState().recordAttempt('e-derivation-001::q1', true);
+      useProgressStore.getState().recordAttempt('e-derivation-001::q1a', true);
+      useProgressStore.getState().recordAttempt('e-derivation-002::q1', true);
+    });
+    expect(useProgressStore.getState().countSucceeded('exam')).toBe(2);
+  });
 });
