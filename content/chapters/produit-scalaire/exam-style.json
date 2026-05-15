@@ -1,1 +1,196 @@
-[]
+[
+  {
+    "id": "e-produit-scalaire-001",
+    "chapter": "produit-scalaire",
+    "title": "Triangle et produit scalaire — angle, orthogonalité, longueur",
+    "difficulty": 2,
+    "estimatedMinutes": 30,
+    "totalMarks": 6,
+    "preamble": "Dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$, on donne les points $A(1 ; 4)$, $B(5 ; 1)$ et $C(-2 ; 0)$.\n\nL'exercice étudie le triangle $ABC$ à l'aide du produit scalaire.",
+    "tags": ["produit-scalaire", "triangle", "coordonnees", "orthogonalite", "al-kashi"],
+    "order": 10,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer les coordonnées des vecteurs $\\overrightarrow{AB}$, $\\overrightarrow{AC}$ et $\\overrightarrow{BC}$.",
+        "marks": 1,
+        "hints": [
+          "Les coordonnées de $\\overrightarrow{XY}$ sont $(x_Y - x_X \\, ; \\, y_Y - y_X)$.",
+          "$\\overrightarrow{AB} = (5-1 \\, ; \\, 1-4)$, $\\overrightarrow{AC} = (-2-1 \\, ; \\, 0-4)$, $\\overrightarrow{BC} = (-2-5 \\, ; \\, 0-1)$.",
+          "$\\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$, $\\overrightarrow{AC} = \\begin{pmatrix} -3 \\\\ -4 \\end{pmatrix}$, $\\overrightarrow{BC} = \\begin{pmatrix} -7 \\\\ -1 \\end{pmatrix}$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$, $\\overrightarrow{AC} = \\begin{pmatrix} -3 \\\\ -4 \\end{pmatrix}$, $\\overrightarrow{BC} = \\begin{pmatrix} -7 \\\\ -1 \\end{pmatrix}$",
+        "solution": "On calcule directement :\n$$\\overrightarrow{AB} = \\begin{pmatrix} 5-1 \\\\ 1-4 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$$\n$$\\overrightarrow{AC} = \\begin{pmatrix} -2-1 \\\\ 0-4 \\end{pmatrix} = \\begin{pmatrix} -3 \\\\ -4 \\end{pmatrix}$$\n$$\\overrightarrow{BC} = \\begin{pmatrix} -2-5 \\\\ 0-1 \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ -1 \\end{pmatrix}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer les longueurs $AB$, $AC$ et $BC$.",
+        "marks": 1,
+        "hints": [
+          "Utilise $\\|\\vec{u}\\| = \\sqrt{x^2 + y^2}$.",
+          "$AB = \\sqrt{16 + 9}$, $AC = \\sqrt{9 + 16}$, $BC = \\sqrt{49 + 1}$.",
+          "$AB = 5$, $AC = 5$, $BC = \\sqrt{50} = 5\\sqrt{2}$."
+        ],
+        "expectedAnswer": "$AB = 5$, $AC = 5$, $BC = 5\\sqrt{2}$",
+        "solution": "On calcule les normes :\n$$AB = \\sqrt{4^2 + (-3)^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5$$\n$$AC = \\sqrt{(-3)^2 + (-4)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$$\n$$BC = \\sqrt{(-7)^2 + (-1)^2} = \\sqrt{49 + 1} = \\sqrt{50} = 5\\sqrt{2}.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$. Que peut-on en déduire sur le triangle $ABC$ ?",
+        "marks": 2,
+        "hints": [
+          "Calcule $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times (-3) + (-3) \\times (-4)$.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = -12 + 12 = 0$.",
+          "Ce produit scalaire nul signifie que $\\overrightarrow{AB} \\perp \\overrightarrow{AC}$ : le triangle est rectangle en $A$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$ : triangle rectangle en $A$.",
+        "solution": "On calcule :\n$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times (-3) + (-3) \\times (-4) = -12 + 12 = 0.$$\n\nComme $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$ et $\\overrightarrow{AB} \\neq \\vec{0}$, $\\overrightarrow{AC} \\neq \\vec{0}$, on en déduit que $\\overrightarrow{AB} \\perp \\overrightarrow{AC}$, c'est-à-dire que l'angle $\\widehat{BAC} = 90°$.\n\n**Le triangle $ABC$ est rectangle en $A$.**\n\n**Vérification** : en effet, $AB = AC = 5$ et $BC = 5\\sqrt{2}$, et on a bien $BC^2 = 50 = AB^2 + AC^2 = 25 + 25$. ✓"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Calculer $\\cos(\\widehat{ABC})$. En déduire la mesure (exacte) de l'angle $\\widehat{ABC}$.",
+        "marks": 2,
+        "hints": [
+          "Utilise $\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = BA \\times BC \\times \\cos(\\widehat{ABC})$. Calcule d'abord $\\overrightarrow{BA}$ et $\\overrightarrow{BC}$.",
+          "$\\overrightarrow{BA} = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}$ et $\\overrightarrow{BC} = \\begin{pmatrix} -7 \\\\ -1 \\end{pmatrix}$. Le produit scalaire vaut $28 - 3 = 25$.",
+          "$\\cos(\\widehat{ABC}) = \\dfrac{25}{5 \\times 5\\sqrt{2}} = \\dfrac{25}{25\\sqrt{2}} = \\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}$, donc $\\widehat{ABC} = \\dfrac{\\pi}{4}$."
+        ],
+        "expectedAnswer": "$\\cos(\\widehat{ABC}) = \\dfrac{\\sqrt{2}}{2}$, donc $\\widehat{ABC} = \\dfrac{\\pi}{4}$.",
+        "solution": "On utilise la formule $\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = BA \\times BC \\times \\cos(\\widehat{ABC})$.\n\nOn a $\\overrightarrow{BA} = -\\overrightarrow{AB} = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}$ et $\\overrightarrow{BC} = \\begin{pmatrix} -7 \\\\ -1 \\end{pmatrix}$.\n\n$$\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = (-4)\\times(-7) + 3\\times(-1) = 28 - 3 = 25.$$\n\nD'où :\n$$\\cos(\\widehat{ABC}) = \\dfrac{\\overrightarrow{BA} \\cdot \\overrightarrow{BC}}{BA \\times BC} = \\dfrac{25}{5 \\times 5\\sqrt{2}} = \\dfrac{25}{25\\sqrt{2}} = \\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}.$$\n\nOn reconnaît la valeur usuelle $\\cos\\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, donc $\\widehat{ABC} = \\dfrac{\\pi}{4}$ (45°).\n\n**Cohérence** : dans un triangle rectangle isocèle en $A$, les deux angles aigus valent bien $\\dfrac{\\pi}{4}$. ✓"
+      }
+    ]
+  },
+  {
+    "id": "e-produit-scalaire-002",
+    "chapter": "produit-scalaire",
+    "title": "Propriétés vectorielles et Al-Kashi",
+    "difficulty": 2,
+    "estimatedMinutes": 32,
+    "totalMarks": 7,
+    "preamble": "L'exercice est constitué de deux parties indépendantes.\n\n**Partie A** — Étude d'un triangle avec Al-Kashi.\n**Partie B** — Démonstration vectorielle : diagonales d'un rectangle.",
+    "tags": ["al-kashi", "orthogonalite", "vecteurs", "rectangle", "triangle"],
+    "order": 20,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "Partie A — 1.",
+        "statement": "Dans un triangle $PQR$, on donne $PQ = 7$, $QR = 5$ et $\\widehat{PQR} = \\dfrac{2\\pi}{3}$. Calculer $PR^2$, puis $PR$.",
+        "marks": 2,
+        "hints": [
+          "Al-Kashi : $PR^2 = PQ^2 + QR^2 - 2 \\cdot PQ \\cdot QR \\cdot \\cos(\\widehat{PQR})$.",
+          "$\\cos\\dfrac{2\\pi}{3} = -\\dfrac{1}{2}$. Donc $PR^2 = 49 + 25 - 2 \\times 7 \\times 5 \\times \\left(-\\dfrac{1}{2}\\right) = 74 + 35$.",
+          "$PR^2 = 109$, donc $PR = \\sqrt{109}$."
+        ],
+        "expectedAnswer": "$PR^2 = 109$, $PR = \\sqrt{109}$",
+        "solution": "On applique la formule d'Al-Kashi au triangle $PQR$ avec $\\hat{Q} = \\dfrac{2\\pi}{3}$ :\n$$PR^2 = PQ^2 + QR^2 - 2 \\cdot PQ \\cdot QR \\cdot \\cos(\\widehat{PQR}).$$\n\nOr $\\cos\\dfrac{2\\pi}{3} = \\cos\\left(\\pi - \\dfrac{\\pi}{3}\\right) = -\\cos\\dfrac{\\pi}{3} = -\\dfrac{1}{2}$.\n\nDonc :\n$$PR^2 = 7^2 + 5^2 - 2 \\times 7 \\times 5 \\times \\left(-\\dfrac{1}{2}\\right) = 49 + 25 + 35 = 109.$$\n\nAinsi $PR = \\sqrt{109}$."
+      },
+      {
+        "id": "q2",
+        "label": "Partie A — 2.",
+        "statement": "Calculer $\\cos(\\widehat{QPR})$.",
+        "marks": 2,
+        "hints": [
+          "Al-Kashi pour l'angle en $P$ : $QR^2 = PQ^2 + PR^2 - 2 \\cdot PQ \\cdot PR \\cdot \\cos(\\widehat{QPR})$.",
+          "On isole $\\cos(\\widehat{QPR}) = \\dfrac{PQ^2 + PR^2 - QR^2}{2 \\cdot PQ \\cdot PR} = \\dfrac{49 + 109 - 25}{2 \\times 7 \\times \\sqrt{109}}$.",
+          "$\\cos(\\widehat{QPR}) = \\dfrac{133}{14\\sqrt{109}}$."
+        ],
+        "expectedAnswer": "$\\cos(\\widehat{QPR}) = \\dfrac{133}{14\\sqrt{109}} = \\dfrac{19}{2\\sqrt{109}}$",
+        "solution": "Al-Kashi en $P$ (côté opposé $QR$) :\n$$QR^2 = PQ^2 + PR^2 - 2 \\cdot PQ \\cdot PR \\cdot \\cos(\\widehat{QPR})$$\n$$25 = 49 + 109 - 2 \\times 7 \\times \\sqrt{109} \\times \\cos(\\widehat{QPR})$$\n$$2 \\times 7\\sqrt{109} \\times \\cos(\\widehat{QPR}) = 158 - 25 = 133$$\n$$\\cos(\\widehat{QPR}) = \\dfrac{133}{14\\sqrt{109}}.$$\n\nOn peut simplifier : $133 = 7 \\times 19$, donc $\\cos(\\widehat{QPR}) = \\dfrac{7 \\times 19}{14\\sqrt{109}} = \\dfrac{19}{2\\sqrt{109}}$.\n\nComme ce cosinus est positif, l'angle $\\widehat{QPR}$ est aigu."
+      },
+      {
+        "id": "q3",
+        "label": "Partie B — 3.",
+        "statement": "Soit $ABCD$ un rectangle (dans cet ordre) avec $AB = p$ et $BC = q$, où $p, q > 0$. Exprimer $\\overrightarrow{AC}$ et $\\overrightarrow{BD}$ en fonction de $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$.",
+        "marks": 1,
+        "hints": [
+          "Utilise la relation de Chasles et le fait que $\\overrightarrow{BC} = \\overrightarrow{AD}$ (côtés opposés d'un rectangle).",
+          "$\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AB} + \\overrightarrow{AD}$.",
+          "$\\overrightarrow{BD} = \\overrightarrow{BA} + \\overrightarrow{AD} = -\\overrightarrow{AB} + \\overrightarrow{AD}$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$ et $\\overrightarrow{BD} = -\\overrightarrow{AB} + \\overrightarrow{AD}$",
+        "solution": "Par la relation de Chasles, en utilisant $\\overrightarrow{BC} = \\overrightarrow{AD}$ (côtés opposés et parallèles d'un rectangle) :\n$$\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AB} + \\overrightarrow{AD}.$$\n\nDe même :\n$$\\overrightarrow{BD} = \\overrightarrow{BA} + \\overrightarrow{AD} = -\\overrightarrow{AB} + \\overrightarrow{AD}.$$"
+      },
+      {
+        "id": "q4",
+        "label": "Partie B — 4.",
+        "statement": "Calculer $\\overrightarrow{AC} \\cdot \\overrightarrow{BD}$ en développant par bilinéarité. Montrer que les diagonales d'un rectangle ont la même longueur si et seulement si le rectangle est un carré.",
+        "marks": 2,
+        "hints": [
+          "Développe $(\\overrightarrow{AB} + \\overrightarrow{AD}) \\cdot (-\\overrightarrow{AB} + \\overrightarrow{AD})$. Tu obtiens $\\|\\overrightarrow{AD}\\|^2 - \\|\\overrightarrow{AB}\\|^2$.",
+          "Calcule ensuite $\\|\\overrightarrow{AC}\\|^2$ et $\\|\\overrightarrow{BD}\\|^2$ via les identités vectorielles. On trouve $\\|\\overrightarrow{AC}\\|^2 = \\|\\overrightarrow{BD}\\|^2 = p^2 + q^2$.",
+          "Les diagonales ont toujours même longueur dans un rectangle. Pour montrer que le rectangle est un carré, utilise le produit scalaire : $\\overrightarrow{AC} \\perp \\overrightarrow{BD} \\iff p = q$."
+        ],
+        "solution": "**Calcul de $\\overrightarrow{AC} \\cdot \\overrightarrow{BD}$.**\n$$\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = (\\overrightarrow{AB} + \\overrightarrow{AD}) \\cdot (-\\overrightarrow{AB} + \\overrightarrow{AD})$$\n$$= -\\|\\overrightarrow{AB}\\|^2 + \\overrightarrow{AB} \\cdot \\overrightarrow{AD} - \\overrightarrow{AD} \\cdot \\overrightarrow{AB} + \\|\\overrightarrow{AD}\\|^2.$$\n\nOr dans un rectangle, $\\overrightarrow{AB} \\perp \\overrightarrow{AD}$ (les côtés consécutifs sont perpendiculaires), donc $\\overrightarrow{AB} \\cdot \\overrightarrow{AD} = 0$. Ainsi :\n$$\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = -\\|\\overrightarrow{AB}\\|^2 + \\|\\overrightarrow{AD}\\|^2 = -p^2 + q^2.$$\n\n**Longueurs des diagonales.**\n$$\\|\\overrightarrow{AC}\\|^2 = \\|\\overrightarrow{AB} + \\overrightarrow{AD}\\|^2 = p^2 + 2\\,\\overrightarrow{AB}\\cdot\\overrightarrow{AD} + q^2 = p^2 + q^2.$$\n$$\\|\\overrightarrow{BD}\\|^2 = \\|-\\overrightarrow{AB} + \\overrightarrow{AD}\\|^2 = p^2 - 2\\,\\overrightarrow{AB}\\cdot\\overrightarrow{AD} + q^2 = p^2 + q^2.$$\n\nDonc $\\|\\overrightarrow{AC}\\|^2 = \\|\\overrightarrow{BD}\\|^2 = p^2 + q^2$ : **les diagonales d'un rectangle ont toujours la même longueur**.\n\n**Les diagonales d'un rectangle sont-elles perpendiculaires ?** $\\overrightarrow{AC} \\perp \\overrightarrow{BD} \\iff \\overrightarrow{AC} \\cdot \\overrightarrow{BD} = 0 \\iff -p^2 + q^2 = 0 \\iff p = q$.\n\nCela se produit si et seulement si $AB = AD$, c'est-à-dire si le rectangle est un **carré**. On retrouve ainsi que le rectangle est un carré si et seulement si ses diagonales sont perpendiculaires."
+      }
+    ]
+  },
+  {
+    "id": "e-produit-scalaire-003",
+    "chapter": "produit-scalaire",
+    "title": "Géométrie dans un triangle — médiane, hauteur et Al-Kashi",
+    "difficulty": 3,
+    "estimatedMinutes": 35,
+    "totalMarks": 7,
+    "preamble": "Dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$, on donne le triangle $ABC$ avec $A(0 ; 0)$, $B(4 ; 0)$ et $C(1 ; 3)$.\n\nOn note $M$ le milieu du segment $[BC]$ et $H$ le pied de la hauteur issue de $C$ sur $(AB)$.",
+    "tags": ["mediane", "hauteur", "triangle", "orthogonalite", "al-kashi"],
+    "order": 30,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer les longueurs $AB$, $AC$ et $BC$.",
+        "marks": 1,
+        "hints": [
+          "Utilise la formule de distance $XY = \\sqrt{(x_Y - x_X)^2 + (y_Y - y_X)^2}$.",
+          "$AB = 4$, $AC = \\sqrt{1 + 9} = \\sqrt{10}$, $BC = \\sqrt{9 + 9} = \\sqrt{18}$.",
+          "$AB = 4$, $AC = \\sqrt{10}$, $BC = 3\\sqrt{2}$."
+        ],
+        "expectedAnswer": "$AB = 4$, $AC = \\sqrt{10}$, $BC = 3\\sqrt{2}$",
+        "solution": "$$AB = \\sqrt{(4-0)^2 + (0-0)^2} = \\sqrt{16} = 4.$$\n$$AC = \\sqrt{(1-0)^2 + (3-0)^2} = \\sqrt{1 + 9} = \\sqrt{10}.$$\n$$BC = \\sqrt{(1-4)^2 + (3-0)^2} = \\sqrt{9 + 9} = \\sqrt{18} = 3\\sqrt{2}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$ et en déduire $\\cos(\\widehat{BAC})$.",
+        "marks": 2,
+        "hints": [
+          "Utilise les coordonnées : $\\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}$.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times 1 + 0 \\times 3 = 4$.",
+          "$\\cos(\\widehat{BAC}) = \\dfrac{4}{AB \\times AC} = \\dfrac{4}{4\\sqrt{10}} = \\dfrac{1}{\\sqrt{10}}$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4$ et $\\cos(\\widehat{BAC}) = \\dfrac{1}{\\sqrt{10}}$",
+        "solution": "On a $\\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}$.\n\n$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times 1 + 0 \\times 3 = 4.$$\n\nD'où :\n$$\\cos(\\widehat{BAC}) = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{AC}}{AB \\times AC} = \\dfrac{4}{4 \\times \\sqrt{10}} = \\dfrac{1}{\\sqrt{10}} = \\dfrac{\\sqrt{10}}{10}.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer les coordonnées de $M$, milieu de $[BC]$, puis vérifier que $AM^2 = \\dfrac{AB^2 + AC^2}{2} - \\dfrac{BC^2}{4}$ (formule de la médiane).",
+        "marks": 2,
+        "hints": [
+          "Les coordonnées du milieu sont $M = \\left(\\dfrac{x_B + x_C}{2} \\, ; \\, \\dfrac{y_B + y_C}{2}\\right)$.",
+          "$M = \\left(\\dfrac{4+1}{2} \\, ; \\, \\dfrac{0+3}{2}\\right) = \\left(\\dfrac{5}{2} \\, ; \\, \\dfrac{3}{2}\\right)$. Puis $AM^2 = \\dfrac{25}{4} + \\dfrac{9}{4} = \\dfrac{34}{4}$.",
+          "On vérifie : $\\dfrac{AB^2 + AC^2}{2} - \\dfrac{BC^2}{4} = \\dfrac{16 + 10}{2} - \\dfrac{18}{4} = 13 - \\dfrac{9}{2} = \\dfrac{17}{2} = \\dfrac{34}{4}$. ✓"
+        ],
+        "expectedAnswer": "$M = \\left(\\dfrac{5}{2} \\, ; \\, \\dfrac{3}{2}\\right)$ et $AM^2 = \\dfrac{17}{2}$",
+        "solution": "**Coordonnées de $M$.**\n$$M = \\left(\\dfrac{x_B + x_C}{2} \\, ; \\, \\dfrac{y_B + y_C}{2}\\right) = \\left(\\dfrac{4+1}{2} \\, ; \\, \\dfrac{0+3}{2}\\right) = \\left(\\dfrac{5}{2} \\, ; \\, \\dfrac{3}{2}\\right).$$\n\n**Calcul de $AM^2$.**\n$$AM^2 = \\left(\\dfrac{5}{2}\\right)^2 + \\left(\\dfrac{3}{2}\\right)^2 = \\dfrac{25}{4} + \\dfrac{9}{4} = \\dfrac{34}{4} = \\dfrac{17}{2}.$$\n\n**Vérification de la formule de la médiane.**\n$$\\dfrac{AB^2 + AC^2}{2} - \\dfrac{BC^2}{4} = \\dfrac{16 + 10}{2} - \\dfrac{18}{4} = \\dfrac{26}{2} - \\dfrac{18}{4} = 13 - \\dfrac{9}{2} = \\dfrac{26 - 9}{2} = \\dfrac{17}{2}. \\checkmark$$\n\nLa formule de la médiane est bien vérifiée : $AM^2 = \\dfrac{17}{2}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Le point $H$, pied de la hauteur issue de $C$ sur $(AB)$, a pour coordonnées $H(1 ; 0)$ (on admet ce résultat). Calculer $CH$ et vérifier que $\\overrightarrow{CH} \\perp \\overrightarrow{AB}$.",
+        "marks": 2,
+        "hints": [
+          "$CH = $ distance entre $C(1 ; 3)$ et $H(1 ; 0)$.",
+          "$CH = \\sqrt{(1-1)^2 + (0-3)^2} = \\sqrt{9} = 3$.",
+          "$\\overrightarrow{CH} = \\begin{pmatrix} 0 \\\\ -3 \\end{pmatrix}$ et $\\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ 0 \\end{pmatrix}$ : $\\overrightarrow{CH} \\cdot \\overrightarrow{AB} = 0 \\times 4 + (-3) \\times 0 = 0$."
+        ],
+        "expectedAnswer": "$CH = 3$ et $\\overrightarrow{CH} \\perp \\overrightarrow{AB}$.",
+        "solution": "**Calcul de $CH$.**\n$$CH = \\sqrt{(1-1)^2 + (0-3)^2} = \\sqrt{0 + 9} = 3.$$\n\n**Vérification de la perpendicularité.**\n$$\\overrightarrow{CH} = \\begin{pmatrix} 1-1 \\\\ 0-3 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -3 \\end{pmatrix} \\quad \\text{et} \\quad \\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ 0 \\end{pmatrix}.$$\n\n$$\\overrightarrow{CH} \\cdot \\overrightarrow{AB} = 0 \\times 4 + (-3) \\times 0 = 0.$$\n\nComme le produit scalaire est nul et les deux vecteurs sont non nuls, on a bien $\\overrightarrow{CH} \\perp \\overrightarrow{AB}$ : **$H$ est bien le pied de la hauteur issue de $C$**.\n\n**Bilan** : $CH = 3$ est la hauteur relative au côté $AB = 4$. On peut vérifier l'aire du triangle : $\\mathcal{A} = \\dfrac{1}{2} \\times AB \\times CH = \\dfrac{1}{2} \\times 4 \\times 3 = 6$."
+      }
+    ]
+  }
+]

@@ -1,1 +1,386 @@
-[]
+[
+  {
+    "id": "c-produit-scalaire-001",
+    "chapter": "produit-scalaire",
+    "title": "Calcul de produit scalaire par les coordonnées",
+    "difficulty": 1,
+    "estimatedMinutes": 5,
+    "order": 10,
+    "tags": ["coordonnees", "produit-scalaire", "norme"],
+    "preamble": "Dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$, on donne les points $A(2 ; 1)$, $B(5 ; 3)$ et $C(-1 ; 4)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer les coordonnées des vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.",
+        "hints": [
+          "Les coordonnées de $\\overrightarrow{AB}$ sont $(x_B - x_A \\, ; \\, y_B - y_A)$.",
+          "$\\overrightarrow{AB} = \\begin{pmatrix} 5-2 \\\\ 3-1 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} -1-2 \\\\ 4-1 \\end{pmatrix}$.",
+          "$\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} -3 \\\\ 3 \\end{pmatrix}$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} -3 \\\\ 3 \\end{pmatrix}$",
+        "solution": "On calcule :\n$$\\overrightarrow{AB} = \\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\end{pmatrix} = \\begin{pmatrix} 5 - 2 \\\\ 3 - 1 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$$\n\n$$\\overrightarrow{AC} = \\begin{pmatrix} x_C - x_A \\\\ y_C - y_A \\end{pmatrix} = \\begin{pmatrix} -1 - 2 \\\\ 4 - 1 \\end{pmatrix} = \\begin{pmatrix} -3 \\\\ 3 \\end{pmatrix}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$.",
+        "hints": [
+          "Dans un repère orthonormal, $\\vec{u} \\cdot \\vec{v} = xx' + yy'$.",
+          "Ici : $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 3 \\times (-3) + 2 \\times 3$.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = -9 + 6 = -3$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = -3$",
+        "solution": "Dans un repère orthonormal, le produit scalaire se calcule avec la formule des coordonnées :\n$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 3 \\times (-3) + 2 \\times 3 = -9 + 6 = -3.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $AB$, $AC$ et en déduire la valeur de $\\cos(\\widehat{BAC})$.",
+        "hints": [
+          "Utilise $\\|\\vec{u}\\| = \\sqrt{x^2 + y^2}$, puis la formule $\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\cdot \\|\\vec{v}\\| \\cdot \\cos(\\widehat{BAC})$.",
+          "$AB = \\sqrt{9 + 4} = \\sqrt{13}$ et $AC = \\sqrt{9 + 9} = \\sqrt{18} = 3\\sqrt{2}$.",
+          "$\\cos(\\widehat{BAC}) = \\dfrac{-3}{\\sqrt{13} \\times 3\\sqrt{2}} = \\dfrac{-1}{\\sqrt{26}}$."
+        ],
+        "expectedAnswer": "$\\cos(\\widehat{BAC}) = \\dfrac{-1}{\\sqrt{26}}$",
+        "solution": "On calcule les normes :\n$$AB = \\|\\overrightarrow{AB}\\| = \\sqrt{3^2 + 2^2} = \\sqrt{9 + 4} = \\sqrt{13}$$\n$$AC = \\|\\overrightarrow{AC}\\| = \\sqrt{(-3)^2 + 3^2} = \\sqrt{9 + 9} = \\sqrt{18} = 3\\sqrt{2}.$$\n\nOr $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AC \\times \\cos(\\widehat{BAC})$, donc :\n$$\\cos(\\widehat{BAC}) = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{AC}}{AB \\times AC} = \\dfrac{-3}{\\sqrt{13} \\times 3\\sqrt{2}} = \\dfrac{-3}{3\\sqrt{26}} = \\dfrac{-1}{\\sqrt{26}}.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-002",
+    "chapter": "produit-scalaire",
+    "title": "Détecter un angle droit par le produit scalaire",
+    "difficulty": 1,
+    "estimatedMinutes": 6,
+    "order": 20,
+    "tags": ["orthogonalite", "perpendiculaire", "triangle", "triangle-rectangle"],
+    "preamble": "Dans un repère orthonormal, on donne $A(1 ; 1)$, $B(4 ; 1)$ et $C(4 ; 5)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$, $\\overrightarrow{BA} \\cdot \\overrightarrow{BC}$ et $\\overrightarrow{CA} \\cdot \\overrightarrow{CB}$.",
+        "hints": [
+          "Commence par calculer les coordonnées : $\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 0 \\end{pmatrix}$, $\\overrightarrow{AC} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$, $\\overrightarrow{BC} = \\begin{pmatrix} 0 \\\\ 4 \\end{pmatrix}$.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 3 \\times 3 + 0 \\times 4 = 9$ ; $\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = (-3) \\times 0 + 0 \\times 4 = 0$ ; calculer $\\overrightarrow{CA} \\cdot \\overrightarrow{CB}$ de même.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 9$ ; $\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = 0$ ; $\\overrightarrow{CA} \\cdot \\overrightarrow{CB} = 16$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 9$ ; $\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = 0$ ; $\\overrightarrow{CA} \\cdot \\overrightarrow{CB} = 16$",
+        "solution": "On calcule les vecteurs à partir de $A(1;1)$, $B(4;1)$, $C(4;5)$ :\n$$\\overrightarrow{AB} = \\begin{pmatrix} 3 \\\\ 0 \\end{pmatrix}, \\quad \\overrightarrow{AC} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}, \\quad \\overrightarrow{BC} = \\begin{pmatrix} 0 \\\\ 4 \\end{pmatrix}.$$\n\n**En $A$** : $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 3 \\times 3 + 0 \\times 4 = 9 \\neq 0$.\n\n**En $B$** : $\\overrightarrow{BA} = \\begin{pmatrix} -3 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{BC} = \\begin{pmatrix} 0 \\\\ 4 \\end{pmatrix}$. $\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = (-3) \\times 0 + 0 \\times 4 = 0$.\n\n**En $C$** : $\\overrightarrow{CA} = \\begin{pmatrix} -3 \\\\ -4 \\end{pmatrix}$ et $\\overrightarrow{CB} = \\begin{pmatrix} 0 \\\\ -4 \\end{pmatrix}$. $\\overrightarrow{CA} \\cdot \\overrightarrow{CB} = (-3)(0) + (-4)(-4) = 16 \\neq 0$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Le triangle $ABC$ est-il rectangle ? Si oui, en quel sommet ?",
+        "hints": [
+          "Un triangle est rectangle en $S$ si et seulement si le produit scalaire des deux vecteurs issus de $S$ est nul.",
+          "D'après la question 1, le produit scalaire en $B$ vaut $0$.",
+          "Le triangle est rectangle en $B$."
+        ],
+        "expectedAnswer": "Le triangle $ABC$ est rectangle en $B$.",
+        "solution": "D'après la question 1, $\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = 0$ avec $\\overrightarrow{BA} \\neq \\vec{0}$ et $\\overrightarrow{BC} \\neq \\vec{0}$.\n\nDonc $\\overrightarrow{BA} \\perp \\overrightarrow{BC}$, ce qui signifie que l'angle $\\widehat{ABC} = 90°$.\n\n**Le triangle $ABC$ est rectangle en $B$.**\n\n**Vérification géométrique** : $B = (4 ; 1)$ est à la fois sur la même horizontale que $A$ (même ordonnée $y = 1$) et sur la même verticale que $C$ (même abscisse $x = 4$). La droite $(AB)$ est horizontale et la droite $(BC)$ est verticale : elles sont bien perpendiculaires."
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-003",
+    "chapter": "produit-scalaire",
+    "title": "Prouver l'orthogonalité dans un carré",
+    "difficulty": 1,
+    "estimatedMinutes": 7,
+    "order": 30,
+    "tags": ["orthogonalite", "carre", "diagonale"],
+    "preamble": "On considère le carré $ABCD$ de côté $a > 0$. Dans un repère orthonormal, $A = (0 ; 0)$, $B = (a ; 0)$, $C = (a ; a)$, $D = (0 ; a)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer les coordonnées des vecteurs $\\overrightarrow{AC}$ et $\\overrightarrow{BD}$.",
+        "hints": [
+          "Ces deux vecteurs sont les diagonales du carré.",
+          "$\\overrightarrow{AC} = \\begin{pmatrix} a \\\\ a \\end{pmatrix}$ et $\\overrightarrow{BD} = \\begin{pmatrix} 0-a \\\\ a-0 \\end{pmatrix}$.",
+          "$\\overrightarrow{AC} = \\begin{pmatrix} a \\\\ a \\end{pmatrix}$ et $\\overrightarrow{BD} = \\begin{pmatrix} -a \\\\ a \\end{pmatrix}$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AC} = \\begin{pmatrix} a \\\\ a \\end{pmatrix}$ et $\\overrightarrow{BD} = \\begin{pmatrix} -a \\\\ a \\end{pmatrix}$",
+        "solution": "$$\\overrightarrow{AC} = \\begin{pmatrix} a - 0 \\\\ a - 0 \\end{pmatrix} = \\begin{pmatrix} a \\\\ a \\end{pmatrix}$$\n$$\\overrightarrow{BD} = \\begin{pmatrix} 0 - a \\\\ a - 0 \\end{pmatrix} = \\begin{pmatrix} -a \\\\ a \\end{pmatrix}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Montrer que les diagonales d'un carré sont perpendiculaires.",
+        "hints": [
+          "Il faut montrer que $\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = 0$.",
+          "$\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = a \\times (-a) + a \\times a$.",
+          "$\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = -a^2 + a^2 = 0$ : les diagonales sont perpendiculaires."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = 0$",
+        "solution": "On calcule le produit scalaire :\n$$\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = a \\times (-a) + a \\times a = -a^2 + a^2 = 0.$$\n\nOr $\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = 0$ implique $\\overrightarrow{AC} \\perp \\overrightarrow{BD}$ (les vecteurs sont non nuls puisque $a > 0$).\n\nDonc les diagonales $[AC]$ et $[BD]$ d'un carré sont **perpendiculaires**."
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-004",
+    "chapter": "produit-scalaire",
+    "title": "Formule d'Al-Kashi : calcul d'un côté",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 40,
+    "tags": ["al-kashi", "triangle", "calcul"],
+    "preamble": "Dans un triangle $ABC$, on donne $AB = 6$, $AC = 8$ et $\\widehat{BAC} = \\dfrac{\\pi}{3}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $BC^2$ à l'aide de la formule d'Al-Kashi.",
+        "hints": [
+          "Al-Kashi : $BC^2 = AB^2 + AC^2 - 2 \\cdot AB \\cdot AC \\cdot \\cos(\\widehat{BAC})$.",
+          "$BC^2 = 36 + 64 - 2 \\times 6 \\times 8 \\times \\cos\\dfrac{\\pi}{3} = 100 - 96 \\times \\dfrac{1}{2}$.",
+          "$BC^2 = 100 - 48 = 52$."
+        ],
+        "expectedAnswer": "$BC^2 = 52$",
+        "solution": "On applique la formule d'Al-Kashi :\n$$BC^2 = AB^2 + AC^2 - 2 \\cdot AB \\cdot AC \\cdot \\cos(\\widehat{BAC})$$\n$$= 6^2 + 8^2 - 2 \\times 6 \\times 8 \\times \\cos\\dfrac{\\pi}{3}$$\n$$= 36 + 64 - 96 \\times \\dfrac{1}{2}$$\n$$= 100 - 48 = 52.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire $BC$. (On laissera la réponse sous forme de racine.)",
+        "hints": [
+          "Factoriser $52 = 4 \\times 13$.",
+          "$BC = \\sqrt{52} = \\sqrt{4 \\times 13}$.",
+          "$BC = 2\\sqrt{13}$."
+        ],
+        "expectedAnswer": "$BC = 2\\sqrt{13}$",
+        "solution": "On a $BC^2 = 52 = 4 \\times 13$, donc :\n$$BC = \\sqrt{52} = \\sqrt{4 \\times 13} = 2\\sqrt{13}.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-005",
+    "chapter": "produit-scalaire",
+    "title": "Formule d'Al-Kashi : calcul d'un angle",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 50,
+    "tags": ["al-kashi", "triangle", "angle"],
+    "preamble": "Dans un triangle $ABC$, on donne $AB = 5$, $BC = 7$ et $AC = 8$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $\\cos(\\widehat{ABC})$ à l'aide de la formule d'Al-Kashi.",
+        "hints": [
+          "Al-Kashi pour l'angle en $B$ : $AC^2 = AB^2 + BC^2 - 2 \\cdot AB \\cdot BC \\cdot \\cos(\\widehat{ABC})$.",
+          "On isole : $\\cos(\\widehat{ABC}) = \\dfrac{AB^2 + BC^2 - AC^2}{2 \\cdot AB \\cdot BC}$.",
+          "$\\cos(\\widehat{ABC}) = \\dfrac{25 + 49 - 64}{70} = \\dfrac{10}{70} = \\dfrac{1}{7}$."
+        ],
+        "expectedAnswer": "$\\cos(\\widehat{ABC}) = \\dfrac{1}{7}$",
+        "solution": "Al-Kashi dans le triangle $ABC$, côté $b = AC$ en face de l'angle $\\hat{B}$ :\n$$AC^2 = AB^2 + BC^2 - 2 \\cdot AB \\cdot BC \\cdot \\cos(\\widehat{ABC})$$\n$$64 = 25 + 49 - 2 \\times 5 \\times 7 \\times \\cos(\\widehat{ABC})$$\n$$64 = 74 - 70\\cos(\\widehat{ABC})$$\n$$70\\cos(\\widehat{ABC}) = 74 - 64 = 10$$\n$$\\cos(\\widehat{ABC}) = \\dfrac{10}{70} = \\dfrac{1}{7}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "L'angle $\\widehat{ABC}$ est-il aigu ou obtus ? Justifier.",
+        "hints": [
+          "Un angle est aigu si son cosinus est positif, obtus si son cosinus est négatif.",
+          "$\\cos(\\widehat{ABC}) = \\dfrac{1}{7} > 0$.",
+          "L'angle est aigu."
+        ],
+        "expectedAnswer": "L'angle $\\widehat{ABC}$ est aigu.",
+        "solution": "Or $\\cos(\\widehat{ABC}) = \\dfrac{1}{7} > 0$.\n\nComme le cosinus de cet angle est positif, l'angle $\\widehat{ABC}$ est **aigu** (compris entre $0$ et $\\dfrac{\\pi}{2}$)."
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-006",
+    "chapter": "produit-scalaire",
+    "title": "Perpendicularité des diagonales d'un losange",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 60,
+    "tags": ["losange", "orthogonalite", "identites-remarquables"],
+    "preamble": "Un losange est un quadrilatère dont les quatre côtés ont la même longueur $a > 0$. On note $ABCD$ un losange avec $AB = BC = CD = DA = a$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Exprimer $\\overrightarrow{AC}$ et $\\overrightarrow{BD}$ en fonction de $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$.",
+        "hints": [
+          "Utilise la relation de Chasles : $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC}$.",
+          "Dans un losange, $\\overrightarrow{BC} = \\overrightarrow{AD}$ (côtés opposés parallèles et égaux).",
+          "$\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$ et $\\overrightarrow{BD} = \\overrightarrow{AD} - \\overrightarrow{AB}$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$ et $\\overrightarrow{BD} = \\overrightarrow{AD} - \\overrightarrow{AB}$",
+        "solution": "Par la relation de Chasles :\n$$\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AB} + \\overrightarrow{AD}$$\n(car $\\overrightarrow{BC} = \\overrightarrow{AD}$ dans le losange, les côtés opposés étant parallèles et de même longueur).\n\n$$\\overrightarrow{BD} = \\overrightarrow{BA} + \\overrightarrow{AD} = -\\overrightarrow{AB} + \\overrightarrow{AD} = \\overrightarrow{AD} - \\overrightarrow{AB}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $\\overrightarrow{AC} \\cdot \\overrightarrow{BD}$ et en déduire que les diagonales d'un losange sont perpendiculaires.",
+        "hints": [
+          "Développe $(\\overrightarrow{AB} + \\overrightarrow{AD}) \\cdot (\\overrightarrow{AD} - \\overrightarrow{AB})$ par bilinéarité.",
+          "On obtient $\\|\\overrightarrow{AD}\\|^2 - \\|\\overrightarrow{AB}\\|^2$.",
+          "Comme $AB = AD = a$, on a $\\|\\overrightarrow{AB}\\|^2 = \\|\\overrightarrow{AD}\\|^2 = a^2$, donc le produit scalaire est nul."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = 0$",
+        "solution": "On développe par bilinéarité :\n$$\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = (\\overrightarrow{AB} + \\overrightarrow{AD}) \\cdot (\\overrightarrow{AD} - \\overrightarrow{AB})$$\n$$= \\|\\overrightarrow{AD}\\|^2 - \\|\\overrightarrow{AB}\\|^2.$$\n\nOr, dans un losange, $AB = AD = a$, donc $\\|\\overrightarrow{AB}\\|^2 = \\|\\overrightarrow{AD}\\|^2 = a^2$.\n\nAinsi :\n$$\\overrightarrow{AC} \\cdot \\overrightarrow{BD} = a^2 - a^2 = 0.$$\n\nOn en déduit que $\\overrightarrow{AC} \\perp \\overrightarrow{BD}$, c'est-à-dire que **les diagonales d'un losange sont perpendiculaires**."
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-007",
+    "chapter": "produit-scalaire",
+    "title": "Produit scalaire et triangle isocèle",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 70,
+    "tags": ["triangle-isocele", "mediane", "orthogonalite"],
+    "preamble": "Soit $ABC$ un triangle isocèle en $A$, c'est-à-dire $AB = AC$. On note $M$ le milieu de $[BC]$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Exprimer $\\overrightarrow{AM}$ en fonction de $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ en utilisant la définition du milieu.",
+        "hints": [
+          "Si $M$ est le milieu de $[BC]$, alors $\\overrightarrow{AM} = \\dfrac{1}{2}(\\overrightarrow{AB} + \\overrightarrow{AC})$.",
+          "On peut aussi écrire $\\overrightarrow{BM} = \\dfrac{1}{2}\\overrightarrow{BC}$, puis $\\overrightarrow{AM} = \\overrightarrow{AB} + \\overrightarrow{BM}$.",
+          "$\\overrightarrow{AM} = \\dfrac{\\overrightarrow{AB} + \\overrightarrow{AC}}{2}$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AM} = \\dfrac{\\overrightarrow{AB} + \\overrightarrow{AC}}{2}$",
+        "solution": "Comme $M$ est le milieu de $[BC]$, on a $\\overrightarrow{BM} = \\dfrac{1}{2}\\overrightarrow{BC}$.\n\nPar la relation de Chasles : $\\overrightarrow{AM} = \\overrightarrow{AB} + \\overrightarrow{BM} = \\overrightarrow{AB} + \\dfrac{1}{2}\\overrightarrow{BC} = \\overrightarrow{AB} + \\dfrac{1}{2}(\\overrightarrow{BA} + \\overrightarrow{AC}) = \\overrightarrow{AB} + \\dfrac{1}{2}(-\\overrightarrow{AB} + \\overrightarrow{AC})$.\n\nDonc :\n$$\\overrightarrow{AM} = \\dfrac{\\overrightarrow{AB} + \\overrightarrow{AC}}{2}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $\\overrightarrow{AM} \\cdot \\overrightarrow{BC}$ et montrer que $AM \\perp BC$.",
+        "hints": [
+          "Exprime $\\overrightarrow{BC} = \\overrightarrow{AC} - \\overrightarrow{AB}$, puis développe le produit scalaire.",
+          "$\\overrightarrow{AM} \\cdot \\overrightarrow{BC} = \\dfrac{1}{2}(\\overrightarrow{AB} + \\overrightarrow{AC}) \\cdot (\\overrightarrow{AC} - \\overrightarrow{AB}) = \\dfrac{1}{2}(\\|\\overrightarrow{AC}\\|^2 - \\|\\overrightarrow{AB}\\|^2)$.",
+          "Comme $AB = AC$, le produit scalaire est nul : $AM \\perp BC$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AM} \\cdot \\overrightarrow{BC} = 0$, donc $AM \\perp BC$.",
+        "solution": "On exprime $\\overrightarrow{BC} = \\overrightarrow{AC} - \\overrightarrow{AB}$.\n\nAlors :\n$$\\overrightarrow{AM} \\cdot \\overrightarrow{BC} = \\dfrac{1}{2}(\\overrightarrow{AB} + \\overrightarrow{AC}) \\cdot (\\overrightarrow{AC} - \\overrightarrow{AB})$$\n$$= \\dfrac{1}{2}\\bigl(\\|\\overrightarrow{AC}\\|^2 - \\|\\overrightarrow{AB}\\|^2\\bigr)$$\n$$= \\dfrac{1}{2}(AC^2 - AB^2).$$\n\nOr le triangle est isocèle en $A$, donc $AB = AC$, et ainsi $AC^2 - AB^2 = 0$.\n\nOn obtient $\\overrightarrow{AM} \\cdot \\overrightarrow{BC} = 0$, ce qui implique $AM \\perp BC$.\n\nAinsi, dans un triangle isocèle en $A$, **la médiane issue de $A$ est aussi une hauteur** (elle est perpendiculaire à $[BC]$)."
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-008",
+    "chapter": "produit-scalaire",
+    "title": "Triangle rectangle — retrouver le théorème de Pythagore",
+    "difficulty": 1,
+    "estimatedMinutes": 7,
+    "order": 80,
+    "tags": ["triangle-rectangle", "pythagore", "identites-remarquables"],
+    "preamble": "Soit un triangle $ABC$ rectangle en $A$ (c'est-à-dire $\\widehat{BAC} = 90°$).",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Exprimer $BC^2 = \\|\\overrightarrow{BC}\\|^2$ en développant $\\overrightarrow{BC} = \\overrightarrow{BA} + \\overrightarrow{AC}$.",
+        "hints": [
+          "Utilise l'identité $\\|\\vec{u} + \\vec{v}\\|^2 = \\|\\vec{u}\\|^2 + 2\\vec{u}\\cdot\\vec{v} + \\|\\vec{v}\\|^2$ avec $\\vec{u} = \\overrightarrow{BA}$ et $\\vec{v} = \\overrightarrow{AC}$.",
+          "$BC^2 = BA^2 + 2\\overrightarrow{BA} \\cdot \\overrightarrow{AC} + AC^2$.",
+          "Comme $\\overrightarrow{BA} \\cdot \\overrightarrow{AC} = -\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$ et le triangle est rectangle en $A$, ce produit scalaire vaut $0$."
+        ],
+        "expectedAnswer": "$BC^2 = BA^2 + AC^2$",
+        "solution": "On écrit $\\overrightarrow{BC} = \\overrightarrow{BA} + \\overrightarrow{AC}$, donc :\n$$BC^2 = \\|\\overrightarrow{BC}\\|^2 = \\|\\overrightarrow{BA} + \\overrightarrow{AC}\\|^2 = \\|\\overrightarrow{BA}\\|^2 + 2\\overrightarrow{BA} \\cdot \\overrightarrow{AC} + \\|\\overrightarrow{AC}\\|^2.$$\n\nOr $\\overrightarrow{BA} \\cdot \\overrightarrow{AC} = -\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$.\n\nComme le triangle est rectangle en $A$, $\\overrightarrow{AB} \\perp \\overrightarrow{AC}$, donc $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$.\n\nAinsi :\n$$BC^2 = BA^2 + AC^2.$$\n\nOn retrouve bien le **théorème de Pythagore** : dans un triangle rectangle en $A$, $BC^2 = AB^2 + AC^2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Application : si $AB = 5$ et $AC = 12$, calculer $BC$.",
+        "hints": [
+          "Applique directement $BC^2 = AB^2 + AC^2$.",
+          "$BC^2 = 25 + 144 = 169$.",
+          "$BC = 13$."
+        ],
+        "expectedAnswer": "$BC = 13$",
+        "solution": "D'après le résultat de la question 1 :\n$$BC^2 = AB^2 + AC^2 = 5^2 + 12^2 = 25 + 144 = 169.$$\n\nDonc $BC = \\sqrt{169} = 13$."
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-009",
+    "chapter": "produit-scalaire",
+    "title": "Produit scalaire par les normes (formule des 3 normes)",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 90,
+    "tags": ["normes", "polarisation", "triangle"],
+    "preamble": "Dans un triangle $ABC$, on donne $AB = 4$, $AC = 6$ et $BC = 5$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$ à l'aide de la formule $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\dfrac{AB^2 + AC^2 - BC^2}{2}$.",
+        "hints": [
+          "C'est une conséquence directe de l'identité $\\|\\overrightarrow{AB} - \\overrightarrow{AC}\\|^2 = \\overrightarrow{BC}^2$ développée.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\dfrac{16 + 36 - 25}{2}$.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\dfrac{27}{2}$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\dfrac{27}{2}$",
+        "solution": "On utilise la formule (dérivée d'Al-Kashi ou de la décomposition de la norme) :\n$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\dfrac{AB^2 + AC^2 - BC^2}{2} = \\dfrac{16 + 36 - 25}{2} = \\dfrac{27}{2}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire $\\cos(\\widehat{BAC})$.",
+        "hints": [
+          "Utilise $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AC \\times \\cos(\\widehat{BAC})$.",
+          "$\\cos(\\widehat{BAC}) = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{AC}}{AB \\times AC} = \\dfrac{27/2}{4 \\times 6}$.",
+          "$\\cos(\\widehat{BAC}) = \\dfrac{27}{48} = \\dfrac{9}{16}$."
+        ],
+        "expectedAnswer": "$\\cos(\\widehat{BAC}) = \\dfrac{9}{16}$",
+        "solution": "On a $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AC \\times \\cos(\\widehat{BAC})$, d'où :\n$$\\cos(\\widehat{BAC}) = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{AC}}{AB \\times AC} = \\dfrac{27/2}{4 \\times 6} = \\dfrac{27}{2 \\times 24} = \\dfrac{27}{48} = \\dfrac{9}{16}.$$\n\nL'angle $\\widehat{BAC}$ est aigu (son cosinus est positif)."
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-010",
+    "chapter": "produit-scalaire",
+    "title": "Perpendiculaire depuis un point",
+    "difficulty": 3,
+    "estimatedMinutes": 12,
+    "order": 100,
+    "tags": ["perpendiculaire", "droite", "coordonnees"],
+    "preamble": "Dans un repère orthonormal, on donne $A(2 ; 5)$, $B(6 ; 1)$ et $C(0 ; 3)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer le produit scalaire $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$.",
+        "hints": [
+          "Commence par calculer les coordonnées de $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.",
+          "$\\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ -4 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} -2 \\\\ -2 \\end{pmatrix}$.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times (-2) + (-4) \\times (-2) = -8 + 8 = 0$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$",
+        "solution": "On calcule les vecteurs :\n$$\\overrightarrow{AB} = \\begin{pmatrix} 6-2 \\\\ 1-5 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ -4 \\end{pmatrix}, \\quad \\overrightarrow{AC} = \\begin{pmatrix} 0-2 \\\\ 3-5 \\end{pmatrix} = \\begin{pmatrix} -2 \\\\ -2 \\end{pmatrix}.$$\n\nDonc :\n$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times (-2) + (-4) \\times (-2) = -8 + 8 = 0.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Que peut-on conclure sur le triangle $ABC$ ?",
+        "hints": [
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$ signifie que $\\overrightarrow{AB} \\perp \\overrightarrow{AC}$.",
+          "Autrement dit, l'angle en $A$ est droit.",
+          "Le triangle $ABC$ est rectangle en $A$."
+        ],
+        "expectedAnswer": "Le triangle $ABC$ est rectangle en $A$.",
+        "solution": "Comme $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$ et que $\\overrightarrow{AB} \\neq \\vec{0}$ et $\\overrightarrow{AC} \\neq \\vec{0}$, on conclut que $\\overrightarrow{AB} \\perp \\overrightarrow{AC}$, c'est-à-dire que l'angle $\\widehat{BAC} = 90°$.\n\nDonc le **triangle $ABC$ est rectangle en $A$**."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer l'hypoténuse $BC$.",
+        "hints": [
+          "Dans un triangle rectangle en $A$, l'hypoténuse est $BC$.",
+          "Calcule $AB$ et $AC$, puis applique Pythagore.",
+          "$AB = 4\\sqrt{2}$, $AC = 2\\sqrt{2}$, $BC = \\sqrt{AB^2 + AC^2} = \\sqrt{32 + 8} = \\sqrt{40} = 2\\sqrt{10}$."
+        ],
+        "expectedAnswer": "$BC = 2\\sqrt{10}$",
+        "solution": "On calcule :\n$$AB = \\sqrt{4^2 + (-4)^2} = \\sqrt{16 + 16} = \\sqrt{32} = 4\\sqrt{2}$$\n$$AC = \\sqrt{(-2)^2 + (-2)^2} = \\sqrt{4 + 4} = \\sqrt{8} = 2\\sqrt{2}.$$\n\nPar le théorème de Pythagore (le triangle est rectangle en $A$) :\n$$BC^2 = AB^2 + AC^2 = 32 + 8 = 40.$$\n$$BC = \\sqrt{40} = \\sqrt{4 \\times 10} = 2\\sqrt{10}.$$"
+      }
+    ]
+  }
+]
