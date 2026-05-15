@@ -1,0 +1,251 @@
+[
+  {
+    "id": "f-ps-definition-angle",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Définition par l'angle",
+    "statement": "Soient $\\vec{u}$ et $\\vec{v}$ deux vecteurs **non nuls**. Le **produit scalaire** de $\\vec{u}$ et $\\vec{v}$ est le réel :\n\n$$\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\cdot \\|\\vec{v}\\| \\cdot \\cos(\\vec{u}, \\vec{v})$$\n\noù $(\\vec{u}, \\vec{v})$ désigne l'angle entre les deux vecteurs.\n\n**Convention** : si l'un des vecteurs est le vecteur nul, $\\vec{u} \\cdot \\vec{v} = 0$.",
+    "conditions": "$\\vec{u} \\neq \\vec{0}$ et $\\vec{v} \\neq \\vec{0}$ pour que l'angle soit défini",
+    "example": "Si $\\|\\vec{u}\\| = 3$, $\\|\\vec{v}\\| = 2$ et l'angle entre $\\vec{u}$ et $\\vec{v}$ vaut $\\dfrac{\\pi}{3}$, alors $\\vec{u} \\cdot \\vec{v} = 3 \\times 2 \\times \\cos\\dfrac{\\pi}{3} = 6 \\times \\dfrac{1}{2} = 3$.",
+    "tags": ["produit-scalaire", "angle", "definition", "cosinus"],
+    "order": 10,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\cdot \\|\\vec{v}\\| \\cdot \\cos(\\vec{u}, \\vec{v})$$",
+      "mnemonic": "norme fois norme fois cosinus de l'angle",
+      "keyword": "angle",
+      "visual": "deux vecteurs qui forment un angle : plus l'angle est aigu, plus le produit scalaire est grand",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-ps-definition-coordonnees",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Définition par les coordonnées (BON)",
+    "statement": "Dans un **repère orthonormal** (BON), si $\\vec{u} = \\begin{pmatrix} x \\\\ y \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} x' \\\\ y' \\end{pmatrix}$, alors :\n\n$$\\vec{u} \\cdot \\vec{v} = x x' + y y'.$$",
+    "conditions": "Valable uniquement dans un repère orthonormal (BON)",
+    "example": "Avec $\\vec{u} = \\begin{pmatrix} 3 \\\\ -1 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}$ : $\\vec{u} \\cdot \\vec{v} = 3 \\times 2 + (-1) \\times 4 = 6 - 4 = 2$.",
+    "tags": ["produit-scalaire", "coordonnees", "repere-orthonormal", "definition"],
+    "order": 20,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$\\vec{u} \\cdot \\vec{v} = x x' + y y'$$",
+      "mnemonic": "x fois x prime plus y fois y prime",
+      "keyword": "coordonnées",
+      "visual": "somme des produits des composantes : abscisses × abscisses + ordonnées × ordonnées",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-ps-definition-norme-somme",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Définition par les normes (développement)",
+    "statement": "Pour tous vecteurs $\\vec{u}$ et $\\vec{v}$ :\n\n$$\\vec{u} \\cdot \\vec{v} = \\dfrac{1}{2}\\Bigl(\\|\\vec{u} + \\vec{v}\\|^2 - \\|\\vec{u}\\|^2 - \\|\\vec{v}\\|^2\\Bigr).$$\n\n**Variante** (identité de polarisation) :\n$$\\vec{u} \\cdot \\vec{v} = \\dfrac{1}{2}\\Bigl(\\|\\vec{u}\\|^2 + \\|\\vec{v}\\|^2 - \\|\\vec{u} - \\vec{v}\\|^2\\Bigr).$$",
+    "example": "Si $\\|\\vec{u}\\| = 3$, $\\|\\vec{v}\\| = 4$ et $\\|\\vec{u} + \\vec{v}\\| = 5$ : $\\vec{u} \\cdot \\vec{v} = \\dfrac{1}{2}(25 - 9 - 16) = \\dfrac{1}{2} \\times 0 = 0$ : les vecteurs sont orthogonaux !",
+    "tags": ["produit-scalaire", "normes", "definition", "polarisation"],
+    "order": 30,
+    "level": "a-connaitre",
+    "simplified": {
+      "core": "$$\\vec{u} \\cdot \\vec{v} = \\dfrac{1}{2}\\bigl(\\|\\vec{u} + \\vec{v}\\|^2 - \\|\\vec{u}\\|^2 - \\|\\vec{v}\\|^2\\bigr)$$",
+      "mnemonic": "demi fois (carré de la somme moins les deux carrés)",
+      "keyword": "normes-somme",
+      "accent": "blue"
+    }
+  },
+  {
+    "id": "f-ps-definition-projete",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Définition par le projeté orthogonal",
+    "statement": "Soient $\\vec{u}$ et $\\vec{v}$ deux vecteurs non nuls. On appelle **projeté orthogonal** de $\\vec{v}$ sur la droite portant $\\vec{u}$ le vecteur $\\vec{v'}$.\n\nAlors :\n$$\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\cdot \\|\\vec{v'}\\|$$\n\noù $\\|\\vec{v'}\\|$ est affecté du signe $+$ si $\\vec{v'}$ et $\\vec{u}$ sont de même sens, et du signe $-$ sinon.\n\n**Formule pratique** : $\\|\\vec{v'}\\| = \\|\\vec{v}\\| \\cdot |\\cos\\theta|$ (algébriquement : $\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\cdot \\|\\vec{v}\\| \\cos\\theta$).",
+    "tags": ["produit-scalaire", "projete-orthogonal", "definition"],
+    "order": 40,
+    "level": "a-connaitre",
+    "simplified": {
+      "core": "$\\vec{u} \\cdot \\vec{v} = \\|\\vec{u}\\| \\times$ (projection algébrique de $\\vec{v}$ sur $\\vec{u}$)",
+      "mnemonic": "norme de u fois le projeté algébrique de v sur u",
+      "keyword": "projeté",
+      "accent": "blue"
+    }
+  },
+  {
+    "id": "f-ps-norme-carree",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Norme au carré et produit scalaire",
+    "statement": "Pour tout vecteur $\\vec{u}$ :\n\n$$\\vec{u} \\cdot \\vec{u} = \\|\\vec{u}\\|^2.$$\n\nEn particulier, $\\|\\vec{u}\\| = \\sqrt{\\vec{u} \\cdot \\vec{u}}$.\n\n**Conséquence en coordonnées** (BON) : si $\\vec{u} = \\begin{pmatrix} x \\\\ y \\end{pmatrix}$, alors $\\|\\vec{u}\\|^2 = x^2 + y^2$, soit $\\|\\vec{u}\\| = \\sqrt{x^2 + y^2}$.",
+    "example": "Si $\\vec{u} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$, alors $\\|\\vec{u}\\|^2 = 9 + 16 = 25$, donc $\\|\\vec{u}\\| = 5$.",
+    "tags": ["norme", "produit-scalaire", "coordonnees"],
+    "order": 50,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$\\vec{u} \\cdot \\vec{u} = \\|\\vec{u}\\|^2$$",
+      "mnemonic": "u scalaire u égal norme de u au carré",
+      "keyword": "norme-carré",
+      "visual": "$\\|\\vec{u}\\| = \\sqrt{x^2 + y^2}$ en BON",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-ps-orthogonalite",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Caractérisation de l'orthogonalité",
+    "statement": "Deux vecteurs $\\vec{u}$ et $\\vec{v}$ sont **orthogonaux** si et seulement si leur produit scalaire est nul :\n\n$$\\vec{u} \\perp \\vec{v} \\iff \\vec{u} \\cdot \\vec{v} = 0.$$\n\n**En coordonnées** (BON) : $\\vec{u} = \\begin{pmatrix} x \\\\ y \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} x' \\\\ y' \\end{pmatrix}$ sont orthogonaux $\\iff xx' + yy' = 0$.",
+    "example": "$\\vec{u} = \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$ et $\\vec{v} = \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}$ : $\\vec{u} \\cdot \\vec{v} = 2 \\times 3 + 3 \\times (-2) = 6 - 6 = 0$, donc $\\vec{u} \\perp \\vec{v}$.",
+    "tags": ["orthogonalite", "produit-scalaire", "perpendiculaire"],
+    "order": 60,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$\\vec{u} \\perp \\vec{v} \\iff \\vec{u} \\cdot \\vec{v} = 0$$",
+      "mnemonic": "perpendiculaires si et seulement si produit scalaire nul",
+      "keyword": "orthogonalité",
+      "visual": "deux vecteurs forment un angle droit $\\Leftrightarrow$ produit scalaire $= 0$",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-ps-bilinearite-symetrie",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Bilinéarité et symétrie",
+    "statement": "Le produit scalaire est **symétrique** et **bilinéaire** :\n\n- **Symétrie** : $\\vec{u} \\cdot \\vec{v} = \\vec{v} \\cdot \\vec{u}$.\n- **Linéarité à gauche** : $(\\vec{u} + \\vec{v}) \\cdot \\vec{w} = \\vec{u} \\cdot \\vec{w} + \\vec{v} \\cdot \\vec{w}$.\n- **Homogénéité** : $(k\\vec{u}) \\cdot \\vec{v} = k(\\vec{u} \\cdot \\vec{v})$ pour tout réel $k$.",
+    "example": "$(\\vec{u} + \\vec{v}) \\cdot (\\vec{u} + \\vec{v}) = \\vec{u} \\cdot \\vec{u} + 2\\vec{u} \\cdot \\vec{v} + \\vec{v} \\cdot \\vec{v} = \\|\\vec{u}\\|^2 + 2\\vec{u} \\cdot \\vec{v} + \\|\\vec{v}\\|^2$.",
+    "tags": ["bilinearite", "symetrie", "proprietes"],
+    "order": 70,
+    "level": "a-connaitre",
+    "simplified": {
+      "core": "$\\vec{u} \\cdot \\vec{v} = \\vec{v} \\cdot \\vec{u}$ et $(\\vec{u}+\\vec{v}) \\cdot \\vec{w} = \\vec{u} \\cdot \\vec{w} + \\vec{v} \\cdot \\vec{w}$",
+      "mnemonic": "le produit scalaire se comporte comme une multiplication : symétrique et distributif",
+      "keyword": "distributivité",
+      "accent": "blue"
+    }
+  },
+  {
+    "id": "f-ps-identite-norme-somme",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Identités vectorielles remarquables",
+    "statement": "Pour tous vecteurs $\\vec{u}$ et $\\vec{v}$ :\n\n$$\\|\\vec{u} + \\vec{v}\\|^2 = \\|\\vec{u}\\|^2 + 2\\,\\vec{u} \\cdot \\vec{v} + \\|\\vec{v}\\|^2$$\n\n$$\\|\\vec{u} - \\vec{v}\\|^2 = \\|\\vec{u}\\|^2 - 2\\,\\vec{u} \\cdot \\vec{v} + \\|\\vec{v}\\|^2$$\n\n$$\\left(\\vec{u} + \\vec{v}\\right) \\cdot \\left(\\vec{u} - \\vec{v}\\right) = \\|\\vec{u}\\|^2 - \\|\\vec{v}\\|^2.$$",
+    "example": "Si $\\|\\vec{u}\\| = 3$, $\\|\\vec{v}\\| = 4$ et $\\vec{u} \\cdot \\vec{v} = 6$, alors $\\|\\vec{u} + \\vec{v}\\|^2 = 9 + 12 + 16 = 37$.",
+    "tags": ["identites-remarquables", "norme", "produit-scalaire"],
+    "order": 80,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$\\|\\vec{u} + \\vec{v}\\|^2 = \\|\\vec{u}\\|^2 + 2\\,\\vec{u} \\cdot \\vec{v} + \\|\\vec{v}\\|^2$$",
+      "mnemonic": "comme $(a+b)^2 = a^2 + 2ab + b^2$ mais avec les normes et le produit scalaire",
+      "keyword": "carré-somme-vect",
+      "visual": "les identités vectorielles sont les mêmes que les identités algébriques classiques",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-ps-formule-al-kashi",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Formule d'Al-Kashi (loi des cosinus)",
+    "statement": "Dans un triangle $ABC$, en notant $a = BC$, $b = CA$, $c = AB$ les longueurs des côtés et $\\hat{A}$, $\\hat{B}$, $\\hat{C}$ les angles aux sommets correspondants :\n\n$$a^2 = b^2 + c^2 - 2bc\\cos(\\hat{A})$$\n\nDe même par symétrie :\n\n$$b^2 = a^2 + c^2 - 2ac\\cos(\\hat{B}) \\qquad c^2 = a^2 + b^2 - 2ab\\cos(\\hat{C}).$$\n\n**Cas particulier** : si $\\hat{A} = 90°$, $\\cos(\\hat{A}) = 0$ et on retrouve le **théorème de Pythagore** $a^2 = b^2 + c^2$.",
+    "conditions": "Valable dans tout triangle (aucune condition)",
+    "example": "Triangle avec $b = 4$, $c = 5$ et $\\hat{A} = \\dfrac{\\pi}{3}$. Alors $a^2 = 16 + 25 - 2 \\times 4 \\times 5 \\times \\dfrac{1}{2} = 41 - 20 = 21$.",
+    "tags": ["al-kashi", "loi-cosinus", "triangle", "angle"],
+    "order": 90,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$a^2 = b^2 + c^2 - 2bc\\cos(\\hat{A})$$",
+      "mnemonic": "Pythagore avec un terme correctif : moins 2bc fois cosinus de l'angle en A",
+      "keyword": "Al-Kashi",
+      "visual": "si l'angle est droit, $\\cos = 0$ et on retrouve Pythagore",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-ps-cosinus-angle",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Calcul du cosinus d'un angle dans un triangle",
+    "statement": "Dans un triangle $ABC$, la formule d'Al-Kashi permet d'exprimer le cosinus d'un angle en fonction des longueurs des côtés :\n\n$$\\cos(\\hat{A}) = \\dfrac{b^2 + c^2 - a^2}{2bc}$$\n\nEn pratique, on l'obtient en **isolant $\\cos(\\hat{A})$** dans la formule d'Al-Kashi.",
+    "example": "Triangle avec $a = \\sqrt{3}$, $b = 2$, $c = 2$ (isocèle). $\\cos(\\hat{A}) = \\dfrac{4 + 4 - 3}{2 \\times 2 \\times 2} = \\dfrac{5}{8}$.",
+    "tags": ["al-kashi", "cosinus", "angle", "triangle"],
+    "order": 100,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-ps-formule-al-kashi"],
+    "simplified": {
+      "core": "$$\\cos(\\hat{A}) = \\dfrac{b^2 + c^2 - a^2}{2bc}$$",
+      "mnemonic": "les deux côtés adjacents au carré, moins le côté opposé au carré, divisé par deux fois le produit des côtés adjacents",
+      "keyword": "cosinus-triangle",
+      "accent": "blue"
+    }
+  },
+  {
+    "id": "f-ps-theoreme-mediane",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Théorème de la médiane",
+    "statement": "Soit $M$ le milieu du segment $[BC]$ dans un triangle $ABC$. Alors :\n\n$$\\overrightarrow{AM} \\cdot \\overrightarrow{BC} = 0 \\iff AM \\perp BC$$\n\n(la médiane $AM$ est une hauteur si et seulement si $AB = AC$, c'est-à-dire si le triangle est isocèle en $A$).\n\n**Formule de la médiane (Apollonius)** : si $M$ est le milieu de $[BC]$, alors :\n\n$$AB^2 + AC^2 = 2AM^2 + 2BM^2.$$\n\nOn peut aussi l'écrire : $AM^2 = \\dfrac{AB^2 + AC^2}{2} - BM^2$.",
+    "conditions": "$M$ est le milieu de $[BC]$",
+    "example": "Dans un triangle rectangle en $A$ avec $AB = AC = 1$, le milieu $M$ de $[BC]$ vérifie $BC = \\sqrt{2}$, donc $BM = \\dfrac{\\sqrt{2}}{2}$ et $AM^2 = \\dfrac{AB^2 + AC^2}{2} - BM^2 = 1 - \\dfrac{1}{2} = \\dfrac{1}{2}$.",
+    "tags": ["mediane", "milieu", "triangle"],
+    "order": 110,
+    "level": "a-connaitre",
+    "simplified": {
+      "core": "$$AB^2 + AC^2 = 2AM^2 + 2BM^2$$\noù $M$ est le milieu de $[BC]$",
+      "mnemonic": "somme des carrés des deux côtés = deux fois le carré de la médiane + deux fois le demi-côté au carré",
+      "keyword": "médiane",
+      "accent": "blue"
+    }
+  },
+  {
+    "id": "f-ps-produit-scalaire-via-alkashi",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Produit scalaire et Al-Kashi",
+    "statement": "Dans un triangle $ABC$, le produit scalaire $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$ peut se calculer à l'aide de la formule d'Al-Kashi :\n\n$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\dfrac{AB^2 + AC^2 - BC^2}{2}.$$\n\nCette formule se retrouve en développant $\\|\\overrightarrow{AB} - \\overrightarrow{AC}\\|^2 = \\overrightarrow{BC}^2$, c'est-à-dire en utilisant l'identité des normes.",
+    "example": "Dans un triangle équilatéral de côté $2$, $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\dfrac{4 + 4 - 4}{2} = 2$. Vérification : $\\|\\overrightarrow{AB}\\| \\times \\|\\overrightarrow{AC}\\| \\times \\cos(60°) = 2 \\times 2 \\times \\dfrac{1}{2} = 2$. ✓",
+    "tags": ["al-kashi", "produit-scalaire", "triangle"],
+    "order": 120,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-ps-formule-al-kashi"],
+    "simplified": {
+      "core": "$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\dfrac{AB^2 + AC^2 - BC^2}{2}$$",
+      "mnemonic": "les deux côtés au carré moins le troisième côté au carré, tout divisé par deux",
+      "keyword": "PS-triangle",
+      "accent": "blue"
+    }
+  },
+  {
+    "id": "f-ps-distance-deux-points",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Distance entre deux points en coordonnées",
+    "statement": "Dans un repère orthonormal, la distance entre les points $A(x_A ; y_A)$ et $B(x_B ; y_B)$ est :\n\n$$AB = \\|\\overrightarrow{AB}\\| = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}.$$\n\nCela découle de $\\overrightarrow{AB} = \\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\end{pmatrix}$ et de $\\|\\vec{u}\\| = \\sqrt{x^2 + y^2}$.",
+    "example": "$A(1 ; 2)$ et $B(4 ; 6)$ : $AB = \\sqrt{(4-1)^2 + (6-2)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.",
+    "tags": ["distance", "coordonnees", "repere-orthonormal"],
+    "order": 130,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$$",
+      "mnemonic": "racine carrée de la somme des carrés des écarts de coordonnées",
+      "keyword": "distance-coords",
+      "visual": "théorème de Pythagore appliqué au rectangle de côtés $|x_B - x_A|$ et $|y_B - y_A|$",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-ps-ps-via-vecteurs-triangles",
+    "chapter": "produit-scalaire",
+    "domain": "geometrie",
+    "title": "Calcul de produit scalaire par décomposition",
+    "statement": "Pour calculer un produit scalaire $\\vec{u} \\cdot \\vec{v}$ quand on ne connaît pas directement les coordonnées ou l'angle, on peut **décomposer** les vecteurs en combinaisons de vecteurs connus. On utilise la bilinéarité :\n\n$$\\vec{u} \\cdot \\vec{v} = (a\\vec{e_1} + b\\vec{e_2}) \\cdot (c\\vec{e_1} + d\\vec{e_2}) = ac \\cdot \\|\\vec{e_1}\\|^2 + (ad + bc)\\,\\vec{e_1} \\cdot \\vec{e_2} + bd \\cdot \\|\\vec{e_2}\\|^2.$$\n\nSi $(\\vec{e_1}, \\vec{e_2})$ est une base orthonormée, $\\vec{e_1} \\cdot \\vec{e_2} = 0$ et $\\|\\vec{e_1}\\|^2 = \\|\\vec{e_2}\\|^2 = 1$, donc $\\vec{u} \\cdot \\vec{v} = ac + bd$ (formule coordonnées).",
+    "tags": ["decomposition", "bilinearite", "vecteurs"],
+    "order": 140,
+    "level": "approfondissement",
+    "simplified": {
+      "core": "Développer le produit scalaire comme un produit algébrique, puis utiliser $\\vec{e_i} \\cdot \\vec{e_j} = 0$ (si $i \\neq j$) et $\\|\\vec{e_i}\\|^2 = 1$.",
+      "mnemonic": "développer comme un produit ordinaire, puis remplacer les produits scalaires de vecteurs de base",
+      "keyword": "décomposition-linéaire",
+      "accent": "amber"
+    }
+  }
+]
