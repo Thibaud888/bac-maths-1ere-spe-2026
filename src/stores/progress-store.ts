@@ -55,11 +55,13 @@ export const useProgressStore = create<ProgressState>()(
       },
       countSucceeded: (kind) => {
         const prefix = idPrefix(kind);
-        let n = 0;
+        const succeededBases = new Set<string>();
         for (const [id, item] of Object.entries(get().items)) {
-          if (id.startsWith(prefix) && item.succeeded) n += 1;
+          if (!id.startsWith(prefix) || !item.succeeded) continue;
+          const sep = id.indexOf('::');
+          succeededBases.add(sep === -1 ? id : id.slice(0, sep));
         }
-        return n;
+        return succeededBases.size;
       },
     }),
     { name: 'bms-2026-progress' }
