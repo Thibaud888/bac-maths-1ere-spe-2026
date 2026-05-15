@@ -1,1 +1,212 @@
-[]
+[
+  {
+    "id": "e-geometrie-reperee-001",
+    "chapter": "geometrie-reperee",
+    "title": "Droites, cercle et intersection",
+    "difficulty": 2,
+    "estimatedMinutes": 30,
+    "totalMarks": 7,
+    "preamble": "Dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$, on considère les points $A(-1 ; 1)$ et $B(3 ; 3)$, ainsi que la droite $d : x - y + 4 = 0$ et le cercle $\\mathcal{C}$ de diamètre $[AB]$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer le centre $I$ et le rayon $r$ du cercle $\\mathcal{C}$.",
+        "marks": 1.5,
+        "hints": [
+          "Le centre est le milieu de $[AB]$, le rayon vaut $\\frac{AB}{2}$.",
+          "Calculer $I = \\left(\\frac{-1+3}{2} ; \\frac{1+3}{2}\\right)$ et $AB = \\sqrt{(3-(-1))^2+(3-1)^2}$.",
+          "$I(1 ; 2)$, $AB = \\sqrt{20} = 2\\sqrt{5}$, $r = \\sqrt{5}$."
+        ],
+        "expectedAnswer": "$I(1 ; 2)$, $r = \\sqrt{5}$",
+        "solution": "**Centre** : $I = \\left(\\dfrac{-1+3}{2} ; \\dfrac{1+3}{2}\\right) = (1 ; 2)$.\n\n**Rayon** : $AB = \\sqrt{(3-(-1))^2 + (3-1)^2} = \\sqrt{16 + 4} = \\sqrt{20} = 2\\sqrt{5}$.\n\nDonc $r = \\dfrac{AB}{2} = \\sqrt{5}$.\n\nL'équation de $\\mathcal{C}$ est $(x-1)^2 + (y-2)^2 = 5$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Montrer que le point $M(3 ; 1)$ appartient au cercle $\\mathcal{C}$ en utilisant la caractérisation par le diamètre.",
+        "marks": 1.5,
+        "hints": [
+          "Calculer $\\overrightarrow{MA} \\cdot \\overrightarrow{MB}$ et montrer qu'il est nul.",
+          "$\\overrightarrow{MA} = A - M = (-4 ; 0)$ et $\\overrightarrow{MB} = B - M = (0 ; 2)$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = 0$",
+        "solution": "On calcule les vecteurs :\n$$\\overrightarrow{MA} = \\begin{pmatrix} -1-3 \\\\ 1-1 \\end{pmatrix} = \\begin{pmatrix} -4 \\\\ 0 \\end{pmatrix}, \\quad \\overrightarrow{MB} = \\begin{pmatrix} 3-3 \\\\ 3-1 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 2 \\end{pmatrix}.$$\n\nAinsi $\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = (-4)(0) + (0)(2) = 0$.\n\nComme $\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = 0$, le point $M(3 ; 1)$ appartient au cercle de diamètre $[AB]$, donc **$M \\in \\mathcal{C}$**."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Déterminer si la droite $d : x - y + 4 = 0$ est sécante, tangente ou sans point commun avec le cercle $\\mathcal{C}$.",
+        "marks": 2,
+        "hints": [
+          "Exprimer $y$ en fonction de $x$ depuis l'équation de $d$, puis substituer dans l'équation du cercle.",
+          "De $d$ : $y = x + 4$. Substituer dans $(x-1)^2 + (y-2)^2 = 5$.",
+          "On obtient $(x-1)^2 + (x+2)^2 = 5 \\Rightarrow 2x^2 + 2x = 0$. Calculer $\\Delta$."
+        ],
+        "expectedAnswer": "$\\Delta = 4 > 0$ : deux points communs (sécante)",
+        "solution": "De l'équation de $d$ : $y = x + 4$.\n\nOn substitue dans $(x-1)^2 + (y-2)^2 = 5$ :\n$$(x-1)^2 + (x+4-2)^2 = 5$$\n$$(x-1)^2 + (x+2)^2 = 5$$\n$$x^2 - 2x + 1 + x^2 + 4x + 4 = 5$$\n$$2x^2 + 2x + 5 = 5$$\n$$2x^2 + 2x = 0$$\n$$x(x + 1) = 0.$$\n\nDonc $x = 0$ ou $x = -1$.\n\nLe discriminant de $2x^2 + 2x = 0$ est $\\Delta = 4 > 0$, ce qui confirme deux solutions.\n\nAinsi la droite $d$ est **sécante** au cercle $\\mathcal{C}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Calculer les coordonnées des deux points d'intersection de $d$ et $\\mathcal{C}$.",
+        "marks": 1,
+        "hints": [
+          "Les solutions en $x$ sont $x = 0$ et $x = -1$. Calculer $y = x + 4$ pour chacune."
+        ],
+        "expectedAnswer": "$P(0 ; 4)$ et $Q(-1 ; 3)$",
+        "solution": "D'après la question précédente, $x(x+1) = 0$ donne $x = 0$ ou $x = -1$.\n\nPuisque $y = x + 4$ :\n- $x = 0 \\Rightarrow y = 4$ : point $P(0 ; 4)$.\n- $x = -1 \\Rightarrow y = 3$ : point $Q(-1 ; 3)$.\n\nVérification de $P$ : $(0-1)^2 + (4-2)^2 = 1 + 4 = 5 = r^2$. ✓\nVérification de $Q$ : $(-1-1)^2 + (3-2)^2 = 4 + 1 = 5 = r^2$. ✓"
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "statement": "Écrire l'équation de la droite $d'$ passant par le centre $I$ et perpendiculaire à $d$.",
+        "marks": 1,
+        "hints": [
+          "La droite $d$ a le vecteur normal $(1 ; -1)$. La perpendiculaire à $d$ a pour vecteur normal le vecteur directeur de $d$.",
+          "Vecteur directeur de $d$ : $(1 ; 1)$. Ce sera le vecteur normal de $d'$."
+        ],
+        "expectedAnswer": "$x + y - 3 = 0$",
+        "solution": "La droite $d : x - y + 4 = 0$ a pour vecteur normal $\\vec{n} = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$, donc pour vecteur directeur $\\vec{u} = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$.\n\nLa droite $d'$ perpendiculaire à $d$ a pour vecteur normal $\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$. Elle passe par $I(1 ; 2)$ :\n$$1(x - 1) + 1(y - 2) = 0 \\Rightarrow x + y - 3 = 0.$$\n\nVérification en $I(1 ; 2)$ : $1 + 2 - 3 = 0$. ✓"
+      }
+    ],
+    "tags": ["cercle", "droite", "diametre", "intersection", "perpendiculaire"],
+    "order": 10
+  },
+  {
+    "id": "e-geometrie-reperee-002",
+    "chapter": "geometrie-reperee",
+    "title": "Géométrie analytique : droites, cercle et caractérisation",
+    "difficulty": 3,
+    "estimatedMinutes": 35,
+    "totalMarks": 7,
+    "preamble": "Dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$, on considère les points $A(0 ; 0)$, $B(4 ; 0)$ et $C(4 ; 4)$. On note $\\mathcal{C}$ le cercle de diamètre $[BC]$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer les coordonnées du centre $\\Omega$ et le rayon $r$ du cercle $\\mathcal{C}$. Écrire son équation.",
+        "marks": 1.5,
+        "hints": [
+          "Le centre $\\Omega$ est le milieu de $[BC]$, le rayon vaut $\\frac{BC}{2}$.",
+          "$\\Omega = \\left(\\frac{4+4}{2} ; \\frac{0+4}{2}\\right) = (4 ; 2)$, $BC = \\sqrt{0+16} = 4$, $r = 2$."
+        ],
+        "expectedAnswer": "$\\Omega(4 ; 2)$, $r = 2$, équation $(x-4)^2 + (y-2)^2 = 4$",
+        "solution": "**Centre** : $\\Omega = \\left(\\dfrac{4+4}{2} ; \\dfrac{0+4}{2}\\right) = (4 ; 2)$.\n\n**Rayon** : $BC = \\sqrt{(4-4)^2 + (4-0)^2} = 4$, donc $r = 2$.\n\n**Équation** : $(x-4)^2 + (y-2)^2 = 4$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Montrer que le point $A(0 ; 0)$ est extérieur au cercle $\\mathcal{C}$.",
+        "marks": 1,
+        "hints": [
+          "Calculer $(0-4)^2 + (0-2)^2$ et comparer à $r^2 = 4$."
+        ],
+        "expectedAnswer": "$A$ est extérieur à $\\mathcal{C}$",
+        "solution": "$(0-4)^2 + (0-2)^2 = 16 + 4 = 20$.\n\nComme $20 > 4 = r^2$, le point $A$ est **extérieur** au cercle $\\mathcal{C}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "On cherche les points d'intersection de la droite $(AB) : y = 0$ avec le cercle $\\mathcal{C}$. Déterminer ces points.",
+        "marks": 2,
+        "hints": [
+          "Substituer $y = 0$ dans $(x-4)^2 + (y-2)^2 = 4$.",
+          "$(x-4)^2 + 4 = 4 \\Rightarrow (x-4)^2 = 0 \\Rightarrow x = 4$.",
+          "La droite $(AB)$ est tangente à $\\mathcal{C}$ en un seul point."
+        ],
+        "expectedAnswer": "Un seul point : $B(4 ; 0)$ ; la droite $(AB)$ est tangente à $\\mathcal{C}$",
+        "solution": "On substitue $y = 0$ dans l'équation de $\\mathcal{C}$ :\n$$(x-4)^2 + (0-2)^2 = 4 \\Rightarrow (x-4)^2 + 4 = 4 \\Rightarrow (x-4)^2 = 0 \\Rightarrow x = 4.$$\n\nIl y a un seul point d'intersection : $B(4 ; 0)$.\n\nAinsi la droite $(AB)$ d'équation $y = 0$ est **tangente** au cercle $\\mathcal{C}$ au point $B$.\n\nCela peut s'interpréter géométriquement : $B$ est une extrémité du diamètre $[BC]$, et la tangente au cercle en une extrémité du diamètre est perpendiculaire au diamètre. Or le diamètre $[BC]$ est vertical ($x = 4$) et la tangente $y = 0$ est horizontale, donc bien perpendiculaire. ✓"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Déterminer l'équation de la droite $\\Delta$ passant par $A(0 ; 0)$ et perpendiculaire à la droite $(AC) : y = x$.",
+        "marks": 1,
+        "hints": [
+          "La droite $y = x$ a un vecteur directeur $(1 ; 1)$, donc son vecteur normal est $(1 ; -1)$ (ou $(-1 ; 1)$).",
+          "La perpendiculaire à $y=x$ a le vecteur directeur $(1;-1)$ et passe par $A(0;0)$, donc son vecteur normal est $(1;1)$."
+        ],
+        "expectedAnswer": "$y = -x$ ou $x + y = 0$",
+        "solution": "La droite $(AC) : y = x$ a un vecteur directeur $\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$, donc un vecteur normal $\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$.\n\nLa droite $\\Delta$ perpendiculaire à $(AC)$ a pour vecteur normal le vecteur directeur de $(AC)$, soit $\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$.\n\n$\\Delta$ passe par $A(0 ; 0)$ et a pour vecteur normal $\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$ :\n$$1(x - 0) + 1(y - 0) = 0 \\Rightarrow x + y = 0 \\Rightarrow y = -x.$$"
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "statement": "Montrer que le point $D(2 ; 2)$ est sur le cercle $\\mathcal{C}$, puis calculer $\\overrightarrow{DB} \\cdot \\overrightarrow{DC}$ pour vérifier la caractérisation par le diamètre.",
+        "marks": 1.5,
+        "hints": [
+          "Substituer $D(2;2)$ dans l'équation du cercle.",
+          "Puis calculer $\\overrightarrow{DB}=(2;-2)$ et $\\overrightarrow{DC}=(2;2)$, et leur produit scalaire."
+        ],
+        "expectedAnswer": "$D \\in \\mathcal{C}$ et $\\overrightarrow{DB} \\cdot \\overrightarrow{DC} = 0$",
+        "solution": "**$D$ est sur $\\mathcal{C}$** : $(2-4)^2 + (2-2)^2 = 4 + 0 = 4 = r^2$. ✓\n\n**Vérification de la caractérisation** :\n$$\\overrightarrow{DB} = \\begin{pmatrix} 4-2 \\\\ 0-2 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -2 \\end{pmatrix}, \\quad \\overrightarrow{DC} = \\begin{pmatrix} 4-2 \\\\ 4-2 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 2 \\end{pmatrix}.$$\n\n$$\\overrightarrow{DB} \\cdot \\overrightarrow{DC} = 2 \\times 2 + (-2) \\times 2 = 4 - 4 = 0.$$\n\nDonc $\\overrightarrow{DB} \\perp \\overrightarrow{DC}$, soit l'angle $\\widehat{BDC} = 90°$, ce qui confirme que $D$ est sur le cercle de diamètre $[BC]$."
+      }
+    ],
+    "tags": ["cercle", "droite", "tangente", "diametre", "produit-scalaire"],
+    "order": 20
+  },
+  {
+    "id": "e-geometrie-reperee-003",
+    "chapter": "geometrie-reperee",
+    "title": "Cercle, tangente et droite perpendiculaire",
+    "difficulty": 3,
+    "estimatedMinutes": 35,
+    "totalMarks": 7,
+    "preamble": "Dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$, on considère le cercle $\\mathcal{C}$ d'équation $x^2 + y^2 - 2x - 4y - 4 = 0$ et la droite $d : y = 2x - 3$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "En complétant le carré, mettre l'équation de $\\mathcal{C}$ sous la forme standard. En déduire le centre $\\Omega$ et le rayon $r$.",
+        "marks": 2,
+        "hints": [
+          "Grouper les termes en $x$ et en $y$ séparément.",
+          "$(x^2 - 2x) + (y^2 - 4y) = 4$ ; compléter les carrés : $(x-1)^2 - 1 + (y-2)^2 - 4 = 4$.",
+          "$(x-1)^2 + (y-2)^2 = 9$ : centre $\\Omega(1;2)$, rayon $3$."
+        ],
+        "expectedAnswer": "$(x-1)^2 + (y-2)^2 = 9$ ; centre $\\Omega(1 ; 2)$, rayon $r = 3$",
+        "solution": "On regroupe et on complète les carrés :\n$$x^2 + y^2 - 2x - 4y - 4 = 0$$\n$$(x^2 - 2x) + (y^2 - 4y) = 4$$\n$$(x-1)^2 - 1 + (y-2)^2 - 4 = 4$$\n$$(x-1)^2 + (y-2)^2 = 9.$$\n\nDonc le **centre** est $\\Omega(1 ; 2)$ et le **rayon** est $r = \\sqrt{9} = 3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Montrer que le point $T(4 ; 2)$ appartient au cercle $\\mathcal{C}$.",
+        "marks": 0.5,
+        "hints": [
+          "Substituer les coordonnées de $T(4;2)$ dans l'équation $(x-1)^2 + (y-2)^2 = 9$."
+        ],
+        "expectedAnswer": "$T \\in \\mathcal{C}$",
+        "solution": "$(4-1)^2 + (2-2)^2 = 9 + 0 = 9 = r^2$.\n\nDonc $T(4 ; 2)$ appartient au cercle $\\mathcal{C}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Déterminer les points d'intersection de la droite $d : y = 2x - 3$ avec le cercle $\\mathcal{C}$.",
+        "marks": 2.5,
+        "hints": [
+          "Substituer $y = 2x - 3$ dans $(x-1)^2 + (y-2)^2 = 9$.",
+          "$(x-1)^2 + (2x-5)^2 = 9 \\Rightarrow 5x^2 - 22x + 17 = 0$.",
+          "$\\Delta = 484 - 340 = 144 > 0$ : deux solutions $x = \\frac{22 \\pm 12}{10}$."
+        ],
+        "expectedAnswer": "$P(1 ; -1)$ et $Q\\left(\\dfrac{17}{5} ; \\dfrac{19}{5}\\right)$",
+        "solution": "On substitue $y = 2x - 3$ dans $(x-1)^2 + (y-2)^2 = 9$ :\n$$(x-1)^2 + (2x - 3 - 2)^2 = 9$$\n$$(x-1)^2 + (2x-5)^2 = 9$$\n$$x^2 - 2x + 1 + 4x^2 - 20x + 25 = 9$$\n$$5x^2 - 22x + 17 = 0.$$\n\n$\\Delta = 22^2 - 4 \\times 5 \\times 17 = 484 - 340 = 144 = 12^2 > 0$.\n\n$$x = \\dfrac{22 \\pm 12}{10}.$$\n\n- $x_1 = \\dfrac{34}{10} = \\dfrac{17}{5}$, $y_1 = 2 \\times \\dfrac{17}{5} - 3 = \\dfrac{34-15}{5} = \\dfrac{19}{5}$ : point $Q\\left(\\dfrac{17}{5} ; \\dfrac{19}{5}\\right)$.\n- $x_2 = \\dfrac{10}{10} = 1$, $y_2 = 2(1) - 3 = -1$ : point $P(1 ; -1)$.\n\nVérification de $P$ : $(1-1)^2 + (-1-2)^2 = 0 + 9 = 9$. ✓"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Écrire l'équation de la tangente à $\\mathcal{C}$ au point $P(1 ; -1)$.",
+        "marks": 2,
+        "hints": [
+          "La tangente en $P$ est perpendiculaire au rayon $\\Omega P$. Calculer le vecteur $\\overrightarrow{\\Omega P}$.",
+          "$\\overrightarrow{\\Omega P} = P - \\Omega = (0 ; -3)$ : c'est le vecteur normal à la tangente.",
+          "Tangente de vecteur normal $(0 ; -3)$ (soit $(0 ; 1)$) passant par $P(1 ; -1)$ : équation $y = -1$."
+        ],
+        "expectedAnswer": "$y = -1$",
+        "solution": "La tangente au cercle en $P$ est **perpendiculaire** au rayon $\\Omega P$.\n\n$$\\overrightarrow{\\Omega P} = \\begin{pmatrix} 1-1 \\\\ -1-2 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -3 \\end{pmatrix}.$$\n\nCe vecteur est le vecteur normal à la tangente en $P$. La tangente passe par $P(1 ; -1)$ et a pour vecteur normal $\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$:\n$$0(x - 1) + 1(y - (-1)) = 0 \\Rightarrow y + 1 = 0 \\Rightarrow y = -1.$$\n\nLa tangente à $\\mathcal{C}$ en $P(1 ; -1)$ est la droite horizontale **$y = -1$**."
+      }
+    ],
+    "tags": ["cercle", "forme-developpee", "tangente", "intersection", "completion-carre"],
+    "order": 30
+  }
+]

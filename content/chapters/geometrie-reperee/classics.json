@@ -1,1 +1,443 @@
-[]
+[
+  {
+    "id": "c-geometrie-reperee-001",
+    "chapter": "geometrie-reperee",
+    "title": "Vecteur normal et équation d'une droite",
+    "difficulty": 1,
+    "estimatedMinutes": 8,
+    "prerequisites": ["produit-scalaire"],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner un vecteur normal et un vecteur directeur de la droite $d_1 : 4x - 3y + 6 = 0$.",
+        "hints": [
+          "Un vecteur normal à $ax + by + c = 0$ est $\\vec{n} = \\begin{pmatrix} a \\\\ b \\end{pmatrix}$.",
+          "Pour passer du normal $(a ; b)$ au directeur, effectuer la rotation de 90° : $(-b ; a)$.",
+          "Normal : $(4 ; -3)$ ; directeur : $(3 ; 4)$."
+        ],
+        "expectedAnswer": "$\\vec{n} = \\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$, $\\vec{u} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$",
+        "solution": "L'équation $4x - 3y + 6 = 0$ est de la forme $ax + by + c = 0$ avec $a = 4$ et $b = -3$.\n\nDonc un **vecteur normal** est $\\vec{n} = \\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$.\n\nUn **vecteur directeur** s'obtient par rotation de 90° : $\\vec{u} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix}$.\n\nVérification : $\\vec{n} \\cdot \\vec{u} = 4 \\times 3 + (-3) \\times 4 = 12 - 12 = 0$. ✓"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Écrire l'équation de la droite $d_2$ passant par le point $A(2 ; -1)$ et ayant pour vecteur normal $\\vec{n} = \\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$.",
+        "hints": [
+          "Utiliser la forme $a(x - x_0) + b(y - y_0) = 0$ avec $A = (x_0 ; y_0)$.",
+          "Substituer $A(2 ; -1)$ et $\\vec{n} = (4 ; -3)$, puis développer.",
+          "$4(x-2) - 3(y+1) = 0 \\Rightarrow 4x - 3y - 11 = 0$."
+        ],
+        "expectedAnswer": "$4x - 3y - 11 = 0$",
+        "solution": "La droite $d_2$ passe par $A(2 ; -1)$ et a pour vecteur normal $\\vec{n} = \\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$.\n\nSon équation est :\n$$4(x - 2) + (-3)(y - (-1)) = 0$$\n$$4x - 8 - 3y - 3 = 0$$\n$$4x - 3y - 11 = 0.$$\n\nVérification en $A(2 ; -1)$ : $4(2) - 3(-1) - 11 = 8 + 3 - 11 = 0$. ✓"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Les droites $d_1 : 4x - 3y + 6 = 0$ et $d_2 : 4x - 3y - 11 = 0$ sont-elles parallèles ou sécantes ?",
+        "hints": [
+          "Comparer les vecteurs normaux (ou les coefficients $a$ et $b$).",
+          "Deux droites $ax + by + c_1 = 0$ et $ax + by + c_2 = 0$ (mêmes $a, b$) sont parallèles.",
+          "Leurs vecteurs normaux sont identiques, donc elles sont parallèles (et distinctes car $c_1 \\neq c_2$)."
+        ],
+        "expectedAnswer": "Parallèles",
+        "solution": "Les droites $d_1 : 4x - 3y + 6 = 0$ et $d_2 : 4x - 3y - 11 = 0$ ont les mêmes coefficients $a = 4$ et $b = -3$ : leurs vecteurs normaux $\\vec{n_1} = \\vec{n_2} = \\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$ sont **colinéaires**.\n\nDonc $d_1 \\parallel d_2$. De plus, $d_1 \\neq d_2$ car les constantes diffèrent ($6 \\neq -11$)."
+      }
+    ],
+    "tags": ["vecteur-normal", "equation-droite", "parallele"],
+    "order": 10
+  },
+  {
+    "id": "c-geometrie-reperee-002",
+    "chapter": "geometrie-reperee",
+    "title": "Droite perpendiculaire à une droite donnée",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "prerequisites": ["produit-scalaire"],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. On considère la droite $d : 2x - y + 3 = 0$ et le point $B(4 ; 1)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Donner un vecteur directeur de la droite $d$.",
+        "hints": [
+          "Lire d'abord le vecteur normal de $d$.",
+          "Le vecteur normal de $2x - y + 3 = 0$ est $(2 ; -1)$. Le directeur s'en déduit par rotation de 90°."
+        ],
+        "expectedAnswer": "$\\vec{u} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$",
+        "solution": "La droite $d : 2x - y + 3 = 0$ a pour vecteur normal $\\vec{n} = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$.\n\nUn vecteur directeur est $\\vec{u} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$ (rotation de 90° du vecteur normal).\n\nVérification : $\\vec{n} \\cdot \\vec{u} = 2 \\times 1 + (-1) \\times 2 = 0$. ✓"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Écrire l'équation de la droite $d'$ passant par $B(4 ; 1)$ et **perpendiculaire** à $d$.",
+        "hints": [
+          "La droite perpendiculaire à $d$ a pour vecteur normal le vecteur **directeur** de $d$, et vice versa.",
+          "Le vecteur normal de $d'$ est le vecteur directeur de $d$, soit $\\vec{n'} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$.",
+          "$1(x - 4) + 2(y - 1) = 0 \\Rightarrow x + 2y - 6 = 0$."
+        ],
+        "expectedAnswer": "$x + 2y - 6 = 0$",
+        "solution": "La droite $d'$ est perpendiculaire à $d$, donc elle a pour vecteur normal le vecteur directeur de $d$ : $\\vec{n'} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$.\n\nL'équation de $d'$ passant par $B(4 ; 1)$ est :\n$$1(x - 4) + 2(y - 1) = 0 \\Rightarrow x - 4 + 2y - 2 = 0 \\Rightarrow x + 2y - 6 = 0.$$\n\nVérification en $B(4 ; 1)$ : $4 + 2(1) - 6 = 0$. ✓"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer les coordonnées du point d'intersection $H$ des droites $d$ et $d'$.",
+        "hints": [
+          "Résoudre le système $\\begin{cases} 2x - y + 3 = 0 \\\\ x + 2y - 6 = 0 \\end{cases}$.",
+          "De la deuxième équation : $x = 6 - 2y$. Substituer dans la première.",
+          "$2(6 - 2y) - y + 3 = 0 \\Rightarrow 15 - 5y = 0 \\Rightarrow y = 3$, $x = 0$."
+        ],
+        "expectedAnswer": "$H(0 ; 3)$",
+        "solution": "On résout le système :\n$$\\begin{cases} 2x - y + 3 = 0 & (1) \\\\ x + 2y - 6 = 0 & (2) \\end{cases}$$\n\nDe $(2)$ : $x = 6 - 2y$. En substituant dans $(1)$ :\n$$2(6 - 2y) - y + 3 = 0 \\Rightarrow 12 - 4y - y + 3 = 0 \\Rightarrow 15 - 5y = 0 \\Rightarrow y = 3.$$\n\nDonc $x = 6 - 2 \\times 3 = 0$.\n\nAinsi $H(0 ; 3)$.\n\nVérification dans $(1)$ : $2(0) - 3 + 3 = 0$. ✓"
+      }
+    ],
+    "tags": ["droite", "perpendiculaire", "intersection", "systeme"],
+    "order": 20
+  },
+  {
+    "id": "c-geometrie-reperee-003",
+    "chapter": "geometrie-reperee",
+    "title": "Équation d'un cercle — centre et rayon",
+    "difficulty": 1,
+    "estimatedMinutes": 8,
+    "prerequisites": [],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Écrire l'équation du cercle $\\mathcal{C}$ de centre $\\Omega(-1 ; 3)$ et de rayon $r = 2$.",
+        "hints": [
+          "Utiliser la formule $(x - a)^2 + (y - b)^2 = r^2$ avec $\\Omega(a ; b)$.",
+          "Substituer $a = -1$, $b = 3$ et $r = 2$."
+        ],
+        "expectedAnswer": "$(x+1)^2 + (y-3)^2 = 4$",
+        "solution": "Le cercle $\\mathcal{C}$ de centre $\\Omega(-1 ; 3)$ et de rayon $2$ a pour équation :\n$$(x - (-1))^2 + (y - 3)^2 = 2^2$$\n$$(x+1)^2 + (y-3)^2 = 4.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Le point $A(1 ; 3)$ appartient-il au cercle $\\mathcal{C}$ ? Et le point $B(-1 ; 5)$ ?",
+        "hints": [
+          "Substituer les coordonnées dans l'équation du cercle et vérifier si l'égalité est satisfaite.",
+          "Pour $A$ : $(1+1)^2 + (3-3)^2 = ?$. Pour $B$ : $(-1+1)^2 + (5-3)^2 = ?$."
+        ],
+        "expectedAnswer": "$A$ est sur $\\mathcal{C}$ ; $B$ est sur $\\mathcal{C}$",
+        "solution": "**Point $A(1 ; 3)$** : $(1+1)^2 + (3-3)^2 = 4 + 0 = 4 = r^2$. Donc **$A$ appartient à $\\mathcal{C}$**.\n\n**Point $B(-1 ; 5)$** : $(-1+1)^2 + (5-3)^2 = 0 + 4 = 4 = r^2$. Donc **$B$ appartient à $\\mathcal{C}$**."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Le point $C(1 ; 1)$ est-il intérieur ou extérieur à $\\mathcal{C}$ ?",
+        "hints": [
+          "Calculer $(x_C + 1)^2 + (y_C - 3)^2$ et comparer à $r^2 = 4$."
+        ],
+        "expectedAnswer": "Extérieur",
+        "solution": "$(1+1)^2 + (1-3)^2 = 4 + 4 = 8$.\n\nComme $8 > 4 = r^2$, le point $C$ est **extérieur** au cercle $\\mathcal{C}$."
+      }
+    ],
+    "tags": ["cercle", "equation-cercle", "appartenance"],
+    "order": 30
+  },
+  {
+    "id": "c-geometrie-reperee-004",
+    "chapter": "geometrie-reperee",
+    "title": "Lire le centre et le rayon d'un cercle (forme développée)",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "prerequisites": ["second-degre"],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. On considère l'équation $x^2 + y^2 - 4x + 6y - 3 = 0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "En complétant le carré, mettre cette équation sous la forme $(x - a)^2 + (y - b)^2 = r^2$.",
+        "hints": [
+          "Grouper les termes en $x$ et les termes en $y$ : $(x^2 - 4x) + (y^2 + 6y) = 3$.",
+          "Compléter le carré pour $x^2 - 4x$ : $(x-2)^2 - 4$. Pour $y^2 + 6y$ : $(y+3)^2 - 9$.",
+          "$(x-2)^2 - 4 + (y+3)^2 - 9 = 3 \\Rightarrow (x-2)^2 + (y+3)^2 = 16$."
+        ],
+        "expectedAnswer": "$(x-2)^2 + (y+3)^2 = 16$",
+        "solution": "On regroupe les termes :\n$$x^2 + y^2 - 4x + 6y - 3 = 0 \\Rightarrow (x^2 - 4x) + (y^2 + 6y) = 3.$$\n\nOn complète le carré :\n- $x^2 - 4x = (x-2)^2 - 4$\n- $y^2 + 6y = (y+3)^2 - 9$\n\nDonc :\n$$(x-2)^2 - 4 + (y+3)^2 - 9 = 3$$\n$$(x-2)^2 + (y+3)^2 = 16.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire le centre et le rayon du cercle.",
+        "hints": [
+          "Identifier $a$, $b$ et $r$ dans $(x-a)^2 + (y-b)^2 = r^2$."
+        ],
+        "expectedAnswer": "Centre $\\Omega(2 ; -3)$, rayon $r = 4$",
+        "solution": "L'équation $(x-2)^2 + (y+3)^2 = 16$ est de la forme $(x - a)^2 + (y - b)^2 = r^2$ avec $a = 2$, $b = -3$ et $r^2 = 16$.\n\nDonc le **centre** est $\\Omega(2 ; -3)$ et le **rayon** est $r = \\sqrt{16} = 4$."
+      }
+    ],
+    "tags": ["cercle", "forme-developpee", "completion-carre"],
+    "order": 40
+  },
+  {
+    "id": "c-geometrie-reperee-005",
+    "chapter": "geometrie-reperee",
+    "title": "Cercle de diamètre [AB]",
+    "difficulty": 2,
+    "estimatedMinutes": 12,
+    "prerequisites": ["produit-scalaire"],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. On considère les points $A(-2 ; 1)$ et $B(4 ; 3)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer le centre $I$ et le rayon $r$ du cercle $\\mathcal{C}$ de diamètre $[AB]$.",
+        "hints": [
+          "Le centre est le milieu de $[AB]$, le rayon est $\\frac{AB}{2}$.",
+          "Calculer les coordonnées du milieu $I$, puis $AB$ par la formule de distance.",
+          "$I(1 ; 2)$, $AB = \\sqrt{36 + 4} = \\sqrt{40} = 2\\sqrt{10}$, $r = \\sqrt{10}$."
+        ],
+        "expectedAnswer": "$I(1 ; 2)$, $r = \\sqrt{10}$",
+        "solution": "**Centre** : $I = \\left(\\dfrac{-2+4}{2} ; \\dfrac{1+3}{2}\\right) = (1 ; 2)$.\n\n**Longueur** $AB$ : $AB = \\sqrt{(4-(-2))^2 + (3-1)^2} = \\sqrt{36 + 4} = \\sqrt{40} = 2\\sqrt{10}$.\n\n**Rayon** : $r = \\dfrac{AB}{2} = \\dfrac{2\\sqrt{10}}{2} = \\sqrt{10}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Écrire l'équation de $\\mathcal{C}$.",
+        "hints": [
+          "Appliquer $(x-a)^2 + (y-b)^2 = r^2$ avec le centre $I(1 ; 2)$ et $r^2 = 10$."
+        ],
+        "expectedAnswer": "$(x-1)^2 + (y-2)^2 = 10$",
+        "solution": "Le cercle $\\mathcal{C}$ a pour centre $I(1 ; 2)$ et pour rayon $\\sqrt{10}$. Son équation est :\n$$(x-1)^2 + (y-2)^2 = 10.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Montrer que le point $M(4 ; 1)$ appartient à $\\mathcal{C}$ en utilisant la caractérisation par le diamètre.",
+        "hints": [
+          "Calculer $\\overrightarrow{MA} \\cdot \\overrightarrow{MB}$ et vérifier qu'il est nul.",
+          "$\\overrightarrow{MA} = A - M = (-6 ; 0)$ et $\\overrightarrow{MB} = B - M = (0 ; 2)$.",
+          "$\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = (-6)(0) + (0)(2) = 0$. Donc $M$ est sur $\\mathcal{C}$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = 0$ donc $M \\in \\mathcal{C}$",
+        "solution": "On calcule $\\overrightarrow{MA}$ et $\\overrightarrow{MB}$ :\n$$\\overrightarrow{MA} = \\begin{pmatrix} -2-4 \\\\ 1-1 \\end{pmatrix} = \\begin{pmatrix} -6 \\\\ 0 \\end{pmatrix}, \\quad \\overrightarrow{MB} = \\begin{pmatrix} 4-4 \\\\ 3-1 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 2 \\end{pmatrix}.$$\n\nProduit scalaire : $\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = (-6)(0) + (0)(2) = 0$.\n\nComme $\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = 0$, le point $M(4 ; 1)$ appartient au cercle de diamètre $[AB]$, soit **$M \\in \\mathcal{C}$**.\n\nVérification directe : $(4-1)^2 + (1-2)^2 = 9 + 1 = 10 = r^2$. ✓"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Trouver les points $P$ sur $\\mathcal{C}$ ayant pour abscisse $x = -1$.",
+        "hints": [
+          "Substituer $x = -1$ dans l'équation de $\\mathcal{C}$ : $(-1-1)^2 + (y-2)^2 = 10$.",
+          "$(y-2)^2 = 10 - 4 = 6$, donc $y - 2 = \\pm\\sqrt{6}$.",
+          "Les deux points sont $P_1(-1 ; 2 + \\sqrt{6})$ et $P_2(-1 ; 2 - \\sqrt{6})$."
+        ],
+        "expectedAnswer": "$P_1(-1 ; 2+\\sqrt{6})$ et $P_2(-1 ; 2-\\sqrt{6})$",
+        "solution": "On substitue $x = -1$ dans $(x-1)^2 + (y-2)^2 = 10$ :\n$$(-1-1)^2 + (y-2)^2 = 10 \\Rightarrow 4 + (y-2)^2 = 10 \\Rightarrow (y-2)^2 = 6.$$\n\nDonc $y - 2 = \\sqrt{6}$ ou $y - 2 = -\\sqrt{6}$, soit $y = 2 + \\sqrt{6}$ ou $y = 2 - \\sqrt{6}$.\n\nLes deux points d'abscisse $-1$ sur $\\mathcal{C}$ sont $P_1(-1 ; 2+\\sqrt{6})$ et $P_2(-1 ; 2-\\sqrt{6})$."
+      }
+    ],
+    "tags": ["cercle", "diametre", "caracterisation", "produit-scalaire"],
+    "order": 50
+  },
+  {
+    "id": "c-geometrie-reperee-006",
+    "chapter": "geometrie-reperee",
+    "title": "Intersection d'une droite et d'un cercle",
+    "difficulty": 2,
+    "estimatedMinutes": 12,
+    "prerequisites": ["second-degre"],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. On considère la droite $d : y = x + 1$ et le cercle $\\mathcal{C} : (x-2)^2 + (y-1)^2 = 8$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Déterminer le centre et le rayon de $\\mathcal{C}$.",
+        "hints": [
+          "Lire directement les paramètres dans la forme $(x-a)^2 + (y-b)^2 = r^2$."
+        ],
+        "expectedAnswer": "Centre $\\Omega(2 ; 1)$, rayon $r = 2\\sqrt{2}$",
+        "solution": "L'équation $(x-2)^2 + (y-1)^2 = 8$ donne centre $\\Omega(2 ; 1)$ et $r^2 = 8$, soit $r = \\sqrt{8} = 2\\sqrt{2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Substituer l'expression de $y$ dans l'équation du cercle pour obtenir une équation du second degré en $x$.",
+        "hints": [
+          "Remplacer $y = x + 1$ dans $(x-2)^2 + (y-1)^2 = 8$.",
+          "$(x-2)^2 + (x+1-1)^2 = 8 \\Rightarrow (x-2)^2 + x^2 = 8$.",
+          "Développer et réduire."
+        ],
+        "expectedAnswer": "$2x^2 - 4x - 4 = 0$ ou $x^2 - 2x - 2 = 0$",
+        "solution": "On substitue $y = x + 1$ dans l'équation de $\\mathcal{C}$ :\n$$(x-2)^2 + (x + 1 - 1)^2 = 8$$\n$$(x-2)^2 + x^2 = 8$$\n$$x^2 - 4x + 4 + x^2 = 8$$\n$$2x^2 - 4x - 4 = 0$$\n$$x^2 - 2x - 2 = 0.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer le discriminant et en déduire le nombre de points communs à $d$ et $\\mathcal{C}$.",
+        "hints": [
+          "Calculer $\\Delta = b^2 - 4ac$ pour $x^2 - 2x - 2 = 0$."
+        ],
+        "expectedAnswer": "$\\Delta = 12 > 0$, deux points communs",
+        "solution": "Pour $x^2 - 2x - 2 = 0$, on a $a = 1$, $b = -2$, $c = -2$.\n\n$$\\Delta = (-2)^2 - 4 \\times 1 \\times (-2) = 4 + 8 = 12 > 0.$$\n\nComme $\\Delta > 0$, la droite et le cercle ont **deux points d'intersection**."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Calculer les coordonnées des deux points d'intersection $P$ et $Q$.",
+        "hints": [
+          "Utiliser $x = \\dfrac{2 \\pm \\sqrt{12}}{2} = 1 \\pm \\sqrt{3}$, puis calculer $y = x + 1$.",
+          "$x_P = 1 + \\sqrt{3}$, $y_P = 2 + \\sqrt{3}$ ; $x_Q = 1 - \\sqrt{3}$, $y_Q = 2 - \\sqrt{3}$."
+        ],
+        "expectedAnswer": "$P(1+\\sqrt{3} ; 2+\\sqrt{3})$ et $Q(1-\\sqrt{3} ; 2-\\sqrt{3})$",
+        "solution": "Les solutions de $x^2 - 2x - 2 = 0$ sont :\n$$x = \\dfrac{2 \\pm \\sqrt{12}}{2} = \\dfrac{2 \\pm 2\\sqrt{3}}{2} = 1 \\pm \\sqrt{3}.$$\n\nPour $y = x + 1$ :\n- $x_P = 1 + \\sqrt{3}$, $y_P = 2 + \\sqrt{3}$ : point $P(1+\\sqrt{3} ; 2+\\sqrt{3})$.\n- $x_Q = 1 - \\sqrt{3}$, $y_Q = 2 - \\sqrt{3}$ : point $Q(1-\\sqrt{3} ; 2-\\sqrt{3})$."
+      }
+    ],
+    "tags": ["intersection", "droite", "cercle", "discriminant"],
+    "order": 60
+  },
+  {
+    "id": "c-geometrie-reperee-007",
+    "chapter": "geometrie-reperee",
+    "title": "Intersection de deux cercles",
+    "difficulty": 3,
+    "estimatedMinutes": 15,
+    "prerequisites": ["second-degre"],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. On considère les cercles :\n$$\\mathcal{C}_1 : x^2 + y^2 = 9 \\qquad \\mathcal{C}_2 : (x-4)^2 + y^2 = 9.$$",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Préciser le centre et le rayon de chaque cercle.",
+        "hints": [
+          "Lire directement les paramètres dans la forme standard."
+        ],
+        "expectedAnswer": "$\\mathcal{C}_1$ : centre $O(0;0)$, rayon $3$ ; $\\mathcal{C}_2$ : centre $\\Omega(4;0)$, rayon $3$",
+        "solution": "$\\mathcal{C}_1$ : centre $O(0 ; 0)$, rayon $r_1 = 3$.\n\n$\\mathcal{C}_2 : (x-4)^2 + y^2 = 9$ : centre $\\Omega(4 ; 0)$, rayon $r_2 = 3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En développant l'équation de $\\mathcal{C}_2$ et en la soustrayant à celle de $\\mathcal{C}_1$, trouver l'équation de la droite des points d'intersection.",
+        "hints": [
+          "Développer $(x-4)^2 + y^2 = 9$ pour obtenir $x^2 - 8x + 16 + y^2 = 9$.",
+          "Soustraire $\\mathcal{C}_1$ de $\\mathcal{C}_2$ développée : $x^2 + y^2 = 9$ se simplifie.",
+          "On obtient $-8x + 16 = 0$."
+        ],
+        "expectedAnswer": "$x = 2$",
+        "solution": "On développe $\\mathcal{C}_2$ :\n$$x^2 - 8x + 16 + y^2 = 9.$$\n\nOn soustrait l'équation de $\\mathcal{C}_1$ ($x^2 + y^2 = 9$) :\n$$-8x + 16 = 0 \\Rightarrow x = 2.$$\n\nLa droite des points communs est la droite $x = 2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "En déduire les coordonnées des points d'intersection des deux cercles.",
+        "hints": [
+          "Substituer $x = 2$ dans l'équation de $\\mathcal{C}_1$.",
+          "$4 + y^2 = 9 \\Rightarrow y^2 = 5$."
+        ],
+        "expectedAnswer": "$P(2 ; \\sqrt{5})$ et $Q(2 ; -\\sqrt{5})$",
+        "solution": "On substitue $x = 2$ dans $\\mathcal{C}_1 : x^2 + y^2 = 9$ :\n$$4 + y^2 = 9 \\Rightarrow y^2 = 5 \\Rightarrow y = \\sqrt{5} \\text{ ou } y = -\\sqrt{5}.$$\n\nLes deux points d'intersection sont $P(2 ; \\sqrt{5})$ et $Q(2 ; -\\sqrt{5})$."
+      }
+    ],
+    "tags": ["intersection", "deux-cercles", "systeme"],
+    "order": 70
+  },
+  {
+    "id": "c-geometrie-reperee-008",
+    "chapter": "geometrie-reperee",
+    "title": "Caractérisation par diamètre : montrer qu'un angle est droit",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "prerequisites": ["produit-scalaire"],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. On considère les points $A(-2 ; 0)$ et $B(2 ; 0)$, et le cercle $\\mathcal{C}$ de diamètre $[AB]$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Écrire l'équation du cercle $\\mathcal{C}$ de diamètre $[AB]$.",
+        "hints": [
+          "Le centre est le milieu de $[AB]$, le rayon est $\\frac{AB}{2}$.",
+          "Centre $I(0 ; 0)$, $AB = 4$, rayon $2$."
+        ],
+        "expectedAnswer": "$x^2 + y^2 = 4$",
+        "solution": "**Centre** : $I = \\left(\\dfrac{-2+2}{2} ; \\dfrac{0+0}{2}\\right) = (0 ; 0)$.\n\n**Rayon** : $AB = \\sqrt{(2-(-2))^2 + 0^2} = 4$, donc $r = 2$.\n\n**Équation** : $x^2 + y^2 = 4$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Le point $M(0 ; 2)$ est-il sur le cercle $\\mathcal{C}$ ?",
+        "hints": [
+          "Vérifier si $0^2 + 2^2 = 4$."
+        ],
+        "expectedAnswer": "Oui",
+        "solution": "$0^2 + 2^2 = 0 + 4 = 4 = r^2$. Donc **$M(0 ; 2)$ est sur $\\mathcal{C}$**."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Montrer que l'angle $\\widehat{AMB}$ est droit en calculant $\\overrightarrow{MA} \\cdot \\overrightarrow{MB}$.",
+        "hints": [
+          "Calculer $\\overrightarrow{MA} = A - M$ et $\\overrightarrow{MB} = B - M$.",
+          "Calculer le produit scalaire et conclure."
+        ],
+        "expectedAnswer": "$\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = 0$, donc $\\widehat{AMB} = 90°$",
+        "solution": "$\\overrightarrow{MA} = \\begin{pmatrix} -2-0 \\\\ 0-2 \\end{pmatrix} = \\begin{pmatrix} -2 \\\\ -2 \\end{pmatrix}$, $\\overrightarrow{MB} = \\begin{pmatrix} 2-0 \\\\ 0-2 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -2 \\end{pmatrix}$.\n\n$$\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = (-2)(2) + (-2)(-2) = -4 + 4 = 0.$$\n\nDonc $\\overrightarrow{MA} \\perp \\overrightarrow{MB}$, c'est-à-dire l'angle $\\widehat{AMB} = 90°$. Cela confirme que $M$ est sur le cercle de diamètre $[AB]$ (théorème de Thalès)."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Trouver tous les points $P$ de coordonnées entières sur $\\mathcal{C}$ (autres que $A$ et $B$).",
+        "hints": [
+          "Chercher les couples d'entiers $(x ; y)$ avec $x^2 + y^2 = 4$.",
+          "Les valeurs entières possibles pour $x$ sont $-2, -1, 0, 1, 2$."
+        ],
+        "expectedAnswer": "$(0 ; 2)$, $(0 ; -2)$",
+        "solution": "On cherche les couples d'entiers $(x ; y)$ vérifiant $x^2 + y^2 = 4$.\n\n- $x = 0$ : $y^2 = 4 \\Rightarrow y = \\pm 2$ : points $(0 ; 2)$ et $(0 ; -2)$.\n- $x = \\pm 1$ : $y^2 = 3$, non entier.\n- $x = \\pm 2$ : $y^2 = 0 \\Rightarrow y = 0$ : points $(-2 ; 0) = A$ et $(2 ; 0) = B$.\n\nDonc les seuls points à coordonnées entières autres que $A$ et $B$ sont $M(0 ; 2)$ et $M'(0 ; -2)$."
+      }
+    ],
+    "tags": ["cercle", "diametre", "produit-scalaire", "angle-droit"],
+    "order": 80
+  },
+  {
+    "id": "c-geometrie-reperee-009",
+    "chapter": "geometrie-reperee",
+    "title": "Équation d'un cercle passant par trois points",
+    "difficulty": 3,
+    "estimatedMinutes": 15,
+    "prerequisites": ["second-degre"],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. On cherche l'équation du cercle passant par $A(1 ; 0)$, $B(3 ; 0)$ et $C(2 ; 2)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Écrire le système vérifié par les paramètres $a$, $b$, $k$ de l'équation générale $x^2 + y^2 - 2ax - 2by + k = 0$ (où le centre est $(a;b)$ et $r^2 = a^2 + b^2 - k$).",
+        "hints": [
+          "Substituer successivement les coordonnées de $A$, $B$, $C$ dans l'équation générale.",
+          "On obtient trois équations linéaires en $a$, $b$, $k$.",
+          "Point $A(1;0)$ : $1 - 2a + k = 0$ ; Point $B(3;0)$ : $9 - 6a + k = 0$ ; Point $C(2;2)$ : $8 - 4a - 4b + k = 0$."
+        ],
+        "expectedAnswer": "$\\begin{cases} 1 - 2a + k = 0 \\\\ 9 - 6a + k = 0 \\\\ 8 - 4a - 4b + k = 0 \\end{cases}$",
+        "solution": "On substitue chaque point dans $x^2 + y^2 - 2ax - 2by + k = 0$ :\n\n- $A(1;0)$ : $1 + 0 - 2a(1) - 2b(0) + k = 0 \\Rightarrow 1 - 2a + k = 0$\n- $B(3;0)$ : $9 + 0 - 6a - 0 + k = 0 \\Rightarrow 9 - 6a + k = 0$\n- $C(2;2)$ : $4 + 4 - 4a - 4b + k = 0 \\Rightarrow 8 - 4a - 4b + k = 0$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Résoudre le système pour trouver $a$, $b$ et $k$.",
+        "hints": [
+          "Soustraire l'équation de $A$ de celle de $B$ pour trouver $a$.",
+          "$(9 - 6a + k) - (1 - 2a + k) = 0 \\Rightarrow 8 - 4a = 0 \\Rightarrow a = 2$. Puis $k = 3$ et enfin $b = \\dfrac{3}{4}$."
+        ],
+        "expectedAnswer": "$a = 2$, $b = \\dfrac{3}{4}$, $k = 3$",
+        "solution": "**Équation $B$ moins équation $A$** : $(9 - 6a + k) - (1 - 2a + k) = 0 \\Rightarrow 8 - 4a = 0 \\Rightarrow a = 2$.\n\nDans l'équation de $A$ : $1 - 4 + k = 0 \\Rightarrow k = 3$.\n\nDans l'équation de $C$ : $8 - 8 - 4b + 3 = 0 \\Rightarrow -4b + 3 = 0 \\Rightarrow b = \\dfrac{3}{4}$.\n\nDonc $a = 2$, $b = \\dfrac{3}{4}$, $k = 3$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "En déduire l'équation du cercle sous la forme $(x-a)^2 + (y-b)^2 = r^2$.",
+        "hints": [
+          "Centre $(a ; b) = \\left(2 ; \\dfrac{3}{4}\\right)$ et $r^2 = a^2 + b^2 - k = 4 + \\dfrac{9}{16} - 3 = 1 + \\dfrac{9}{16} = \\dfrac{25}{16}$.",
+          "Ainsi $r = \\dfrac{5}{4}$."
+        ],
+        "expectedAnswer": "$(x-2)^2 + \\left(y - \\dfrac{3}{4}\\right)^2 = \\dfrac{25}{16}$",
+        "solution": "Centre $\\left(2 ; \\dfrac{3}{4}\\right)$.\n\n$r^2 = a^2 + b^2 - k = 4 + \\dfrac{9}{16} - 3 = 1 + \\dfrac{9}{16} = \\dfrac{16}{16} + \\dfrac{9}{16} = \\dfrac{25}{16}$.\n\nDonc $r = \\dfrac{5}{4}$ et l'équation est :\n$$(x-2)^2 + \\left(y - \\dfrac{3}{4}\\right)^2 = \\dfrac{25}{16}.$$"
+      }
+    ],
+    "tags": ["cercle", "trois-points", "systeme"],
+    "order": 90
+  }
+]

@@ -1,1 +1,228 @@
-[]
+[
+  {
+    "id": "f-gr-vecteur-normal-droite",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Vecteur normal d'une droite",
+    "statement": "Toute droite $d$ d'équation cartésienne $ax + by + c = 0$ (avec $(a, b) \\neq (0, 0)$) admet le vecteur $\\vec{n} = \\begin{pmatrix} a \\\\ b \\end{pmatrix}$ comme **vecteur normal** : $\\vec{n}$ est perpendiculaire à $d$.\n\nRéciproquement, si $\\vec{n} = \\begin{pmatrix} a \\\\ b \\end{pmatrix}$ est un vecteur normal à la droite $d$ passant par le point $A(x_0 ; y_0)$, alors l'équation de $d$ est :\n$$a(x - x_0) + b(y - y_0) = 0.$$",
+    "conditions": "$(a, b) \\neq (0, 0)$ ; repère orthonormal",
+    "example": "La droite $d : 3x - 2y + 5 = 0$ a pour vecteur normal $\\vec{n} = \\begin{pmatrix} 3 \\\\ -2 \\end{pmatrix}$ et pour vecteur directeur $\\vec{u} = \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$.",
+    "tags": ["vecteur-normal", "equation-droite", "perpendiculaire"],
+    "order": 10,
+    "level": "essentiel",
+    "simplified": {
+      "core": "Droite $ax + by + c = 0$ $\\Rightarrow$ vecteur normal $\\vec{n} = \\begin{pmatrix} a \\\\ b \\end{pmatrix}$",
+      "mnemonic": "les coefficients de x et y donnent directement le vecteur normal",
+      "keyword": "vecteur-normal",
+      "visual": "le vecteur normal pointe perpendiculairement à la droite, avec les coordonnées (a ; b) lues dans l'équation",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-gr-vecteur-directeur-droite",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Vecteur directeur d'une droite",
+    "statement": "Si $\\vec{n} = \\begin{pmatrix} a \\\\ b \\end{pmatrix}$ est un vecteur normal à la droite $d$, alors un vecteur directeur de $d$ est :\n$$\\vec{u} = \\begin{pmatrix} -b \\\\ a \\end{pmatrix} \\quad \\text{(ou} \\begin{pmatrix} b \\\\ -a \\end{pmatrix}\\text{)}.$$\n\n**Lien avec la pente** : si $b \\neq 0$, la droite s'écrit $y = -\\dfrac{a}{b}x - \\dfrac{c}{b}$, donc elle a pour pente $m = -\\dfrac{a}{b}$, et un vecteur directeur est $\\begin{pmatrix} 1 \\\\ -a/b \\end{pmatrix}$.",
+    "conditions": "repère orthonormal",
+    "example": "Droite $2x + 3y - 1 = 0$ : vecteur normal $\\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$, vecteur directeur $\\begin{pmatrix} -3 \\\\ 2 \\end{pmatrix}$.",
+    "tags": ["vecteur-directeur", "equation-droite", "pente"],
+    "order": 20,
+    "level": "essentiel",
+    "relatedFormulas": ["f-gr-vecteur-normal-droite"],
+    "simplified": {
+      "core": "Normal $(a ; b)$ $\\Rightarrow$ directeur $(-b ; a)$ (rotation de 90°)",
+      "mnemonic": "pour passer du normal au directeur : échanger et changer un signe",
+      "keyword": "directeur-normal",
+      "visual": "normal et directeur sont perpendiculaires l'un à l'autre : rotation de 90°",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-gr-droites-paralleles",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Droites parallèles ou perpendiculaires",
+    "statement": "Soient deux droites $d_1 : a_1 x + b_1 y + c_1 = 0$ et $d_2 : a_2 x + b_2 y + c_2 = 0$ de vecteurs normaux $\\vec{n_1} = \\begin{pmatrix} a_1 \\\\ b_1 \\end{pmatrix}$ et $\\vec{n_2} = \\begin{pmatrix} a_2 \\\\ b_2 \\end{pmatrix}$.\n\n- $d_1 \\parallel d_2 \\iff \\vec{n_1}$ et $\\vec{n_2}$ sont **colinéaires** $\\iff a_1 b_2 - a_2 b_1 = 0$\n- $d_1 \\perp d_2 \\iff \\vec{n_1} \\perp \\vec{n_2} \\iff \\vec{n_1} \\cdot \\vec{n_2} = 0 \\iff a_1 a_2 + b_1 b_2 = 0$",
+    "conditions": "repère orthonormal",
+    "example": "$d_1 : 2x - y + 1 = 0$ et $d_2 : 4x - 2y + 3 = 0$ : $2 \\times (-2) - 4 \\times (-1) = -4 + 4 = 0$, donc $d_1 \\parallel d_2$.",
+    "tags": ["parallele", "perpendiculaire", "vecteur-normal", "droite"],
+    "order": 30,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$d_1 \\parallel d_2 \\iff a_1 b_2 = a_2 b_1$ ; $d_1 \\perp d_2 \\iff a_1 a_2 + b_1 b_2 = 0$",
+      "mnemonic": "parallèles si normaux colinéaires, perpendiculaires si normaux orthogonaux",
+      "keyword": "parallèle-perpendiculaire",
+      "visual": "même direction de normaux = droites parallèles ; normaux perpendiculaires = droites perpendiculaires",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-gr-equation-droite-par-point-normal",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Équation d'une droite par un point et son vecteur normal",
+    "statement": "La droite $d$ passant par le point $A(x_0 ; y_0)$ et de vecteur normal $\\vec{n} = \\begin{pmatrix} a \\\\ b \\end{pmatrix}$ a pour équation :\n\n$$a(x - x_0) + b(y - y_0) = 0$$\n\nque l'on développe pour obtenir la forme $ax + by + c = 0$ avec $c = -ax_0 - by_0$.",
+    "conditions": "repère orthonormal, $(a, b) \\neq (0, 0)$",
+    "example": "Droite passant par $A(1 ; -2)$ de vecteur normal $\\vec{n} = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}$ :\n$3(x - 1) + 1(y + 2) = 0 \\iff 3x + y - 1 = 0$.",
+    "tags": ["equation-droite", "vecteur-normal", "point"],
+    "order": 40,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$a(x - x_0) + b(y - y_0) = 0$$",
+      "mnemonic": "normal (a ; b), point (x₀ ; y₀) : remplacer x par (x - x₀) et y par (y - y₀)",
+      "keyword": "droite-point-normal",
+      "accent": "red"
+    }
+  },
+  {
+    "id": "f-gr-equation-cercle-standard",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Équation d'un cercle (forme standard)",
+    "statement": "Le cercle $\\mathcal{C}$ de **centre** $\\Omega(a ; b)$ et de **rayon** $r > 0$ a pour équation :\n\n$$(x - a)^2 + (y - b)^2 = r^2.$$\n\nUn point $M(x ; y)$ appartient à $\\mathcal{C}$ si et seulement si $\\Omega M = r$, c'est-à-dire $(x - a)^2 + (y - b)^2 = r^2$.",
+    "conditions": "$r > 0$ ; repère orthonormal",
+    "example": "Cercle de centre $\\Omega(2 ; -1)$ et de rayon $3$ : $(x-2)^2 + (y+1)^2 = 9$.",
+    "tags": ["cercle", "equation-cercle", "centre", "rayon"],
+    "order": 50,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$(x - a)^2 + (y - b)^2 = r^2$$\ncentre $\\Omega(a ; b)$, rayon $r$",
+      "mnemonic": "carré de l'écart en x plus carré de l'écart en y égal rayon au carré",
+      "keyword": "équation-cercle",
+      "visual": "tous les points à distance r du centre : cercle de rayon r",
+      "accent": "emerald"
+    }
+  },
+  {
+    "id": "f-gr-equation-cercle-developpee",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Forme développée de l'équation d'un cercle",
+    "statement": "En développant $(x - a)^2 + (y - b)^2 = r^2$, on obtient la forme développée :\n\n$$x^2 + y^2 - 2ax - 2by + (a^2 + b^2 - r^2) = 0.$$\n\n**Lecture du centre et du rayon** : à partir d'une équation $x^2 + y^2 + px + qy + k = 0$, compléter le carré :\n$$\\left(x + \\dfrac{p}{2}\\right)^2 + \\left(y + \\dfrac{q}{2}\\right)^2 = \\dfrac{p^2}{4} + \\dfrac{q^2}{4} - k.$$\nLe centre est $\\left(-\\dfrac{p}{2} ; -\\dfrac{q}{2}\\right)$ et le rayon est $r = \\sqrt{\\dfrac{p^2 + q^2}{4} - k}$.",
+    "conditions": "Équation représente un cercle si et seulement si $\\dfrac{p^2 + q^2}{4} - k > 0$",
+    "example": "$x^2 + y^2 - 4x + 6y - 3 = 0$ : $(x-2)^2 + (y+3)^2 = 4 + 9 + 3 = 16$. Centre $(2 ; -3)$, rayon $4$.",
+    "tags": ["cercle", "forme-developpee", "completion-du-carre", "centre", "rayon"],
+    "order": 60,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-gr-equation-cercle-standard"],
+    "simplified": {
+      "core": "$x^2 + y^2 + px + qy + k = 0$ $\\Rightarrow$ centre $\\left(-\\dfrac{p}{2} ; -\\dfrac{q}{2}\\right)$, $r = \\sqrt{\\dfrac{p^2+q^2}{4} - k}$",
+      "mnemonic": "compléter le carré en x et en y séparément, les termes au carré donnent le centre, la constante donne r²",
+      "keyword": "forme-développée-cercle",
+      "visual": "coefficient de x divisé par -2 donne l'abscisse du centre ; idem pour y",
+      "accent": "emerald"
+    }
+  },
+  {
+    "id": "f-gr-caracterisation-diametre",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Caractérisation par le diamètre",
+    "statement": "Soient $A$ et $B$ deux points distincts. Le **cercle de diamètre $[AB]$** est l'ensemble des points $M$ du plan tels que $\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = 0$.\n\n$$M \\in \\mathcal{C} \\iff \\overrightarrow{MA} \\cdot \\overrightarrow{MB} = 0 \\iff \\widehat{AMB} = 90°.$$\n\nCe cercle a pour **centre** le milieu $I$ de $[AB]$ et pour **rayon** $r = \\dfrac{AB}{2}$.",
+    "conditions": "$A \\neq B$ ; résulte du théorème de Thalès dans le cercle (angle inscrit dans un demi-cercle = 90°)",
+    "example": "$A(0 ; 0)$ et $B(4 ; 0)$. Cercle de diamètre $[AB]$ : centre $I(2 ; 0)$, rayon $2$. Vérification : $M(2 ; 2)$ vérifie $\\overrightarrow{MA} = (-2 ; -2)$ et $\\overrightarrow{MB} = (2 ; -2)$, donc $\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = -4 + 4 = 0$ : $M$ est bien sur le cercle.",
+    "tags": ["cercle", "diametre", "produit-scalaire", "angle-droit"],
+    "order": 70,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$$M \\in \\text{cercle de diamètre } [AB] \\iff \\overrightarrow{MA} \\cdot \\overrightarrow{MB} = 0$$",
+      "mnemonic": "M sur le cercle de diamètre AB si et seulement si l'angle AMB est droit",
+      "keyword": "cercle-diamètre",
+      "visual": "tout point du cercle voit le diamètre sous un angle droit : c'est le théorème de Thalès",
+      "accent": "emerald"
+    }
+  },
+  {
+    "id": "f-gr-appartenance-cercle",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Appartenance d'un point à un cercle",
+    "statement": "Un point $M(x_M ; y_M)$ appartient au cercle $\\mathcal{C}$ de centre $\\Omega(a ; b)$ et de rayon $r$ si et seulement si :\n\n$$(x_M - a)^2 + (y_M - b)^2 = r^2.$$\n\n- Si $(x_M - a)^2 + (y_M - b)^2 < r^2$ : $M$ est **à l'intérieur** du cercle.\n- Si $(x_M - a)^2 + (y_M - b)^2 > r^2$ : $M$ est **à l'extérieur** du cercle.",
+    "example": "Cercle de centre $\\Omega(1 ; 2)$ et rayon $3$. $M(4 ; 2)$ : $(4-1)^2 + (2-2)^2 = 9 = 3^2$, donc $M$ est sur le cercle.",
+    "tags": ["appartenance", "cercle", "verification"],
+    "order": 80,
+    "level": "essentiel",
+    "simplified": {
+      "core": "$M(x_M ; y_M) \\in \\mathcal{C} \\iff (x_M - a)^2 + (y_M - b)^2 = r^2$",
+      "mnemonic": "substituer les coordonnées de M dans l'équation du cercle et vérifier l'égalité",
+      "keyword": "appartenance",
+      "accent": "emerald"
+    }
+  },
+  {
+    "id": "f-gr-intersection-droite-cercle",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Intersection d'une droite et d'un cercle",
+    "statement": "Pour trouver les points communs à la droite $d$ et au cercle $\\mathcal{C}$, on **substitue** l'expression de $y$ (tirée de l'équation de $d$) dans l'équation du cercle. On obtient une équation du second degré en $x$ :\n\n$$ax^2 + bx + c = 0 \\quad (\\Delta = b^2 - 4ac)$$\n\n- $\\Delta > 0$ : la droite coupe le cercle en **deux points** (droite sécante)\n- $\\Delta = 0$ : la droite est **tangente** au cercle (1 point de contact)\n- $\\Delta < 0$ : la droite ne coupe **pas** le cercle",
+    "conditions": "On peut aussi substituer $x$ si la droite est verticale. Le raisonnement est analogue.",
+    "example": "Droite $y = x + 1$ et cercle $(x-1)^2 + (y-1)^2 = 4$. Substitution : $(x-1)^2 + x^2 = 4 \\Rightarrow 2x^2 - 2x - 3 = 0$. $\\Delta = 4 + 24 = 28 > 0$ : deux points d'intersection.",
+    "tags": ["intersection", "droite", "cercle", "discriminant"],
+    "order": 90,
+    "level": "essentiel",
+    "simplified": {
+      "core": "Substituer l'équation de la droite dans celle du cercle $\\Rightarrow$ équation du 2nd degré $\\Rightarrow$ signe de $\\Delta$",
+      "mnemonic": "remplacer y (ou x) dans le cercle, puis étudier le discriminant",
+      "keyword": "intersection-droite-cercle",
+      "visual": "$\\Delta > 0$ : sécante, $\\Delta = 0$ : tangente, $\\Delta < 0$ : aucun point commun",
+      "accent": "violet"
+    }
+  },
+  {
+    "id": "f-gr-intersection-deux-cercles",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Intersection de deux cercles",
+    "statement": "Pour trouver les points communs aux cercles $\\mathcal{C}_1 : (x-a_1)^2 + (y-b_1)^2 = r_1^2$ et $\\mathcal{C}_2 : (x-a_2)^2 + (y-b_2)^2 = r_2^2$, on **soustrait** les deux équations :\n\n$$\\mathcal{C}_1 - \\mathcal{C}_2 \\Rightarrow \\text{équation linéaire en } x \\text{ et } y$$\n\ncette équation est celle d'une **droite** (la droite des points d'intersection, ou **axe radical**). On substitue ensuite dans l'une des équations de cercle.",
+    "conditions": "Les cercles doivent avoir des équations développées. La soustraction élimine les termes $x^2$ et $y^2$.",
+    "example": "$\\mathcal{C}_1 : x^2 + y^2 = 4$ et $\\mathcal{C}_2 : (x-2)^2 + y^2 = 4$. Développement de $\\mathcal{C}_2$ : $x^2 - 4x + 4 + y^2 = 4$. Soustraction : $4x - 4 = 0 \\Rightarrow x = 1$. Substitution : $1 + y^2 = 4 \\Rightarrow y = \\pm\\sqrt{3}$.",
+    "tags": ["intersection", "deux-cercles", "systeme", "axe-radical"],
+    "order": 100,
+    "level": "a-connaitre",
+    "simplified": {
+      "core": "Soustraire les deux équations de cercles $\\Rightarrow$ droite $\\Rightarrow$ substituer dans un cercle",
+      "mnemonic": "la soustraction des deux équations de cercles donne une droite (les x² et y² s'annulent)",
+      "keyword": "intersection-deux-cercles",
+      "accent": "violet"
+    }
+  },
+  {
+    "id": "f-gr-milieu-segment",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Coordonnées du milieu d'un segment",
+    "statement": "Le milieu $I$ du segment $[AB]$, avec $A(x_A ; y_A)$ et $B(x_B ; y_B)$, a pour coordonnées :\n\n$$I\\left(\\dfrac{x_A + x_B}{2} \\ ; \\ \\dfrac{y_A + y_B}{2}\\right).$$\n\nCette formule est utile pour trouver le centre du cercle de diamètre $[AB]$.",
+    "example": "$A(1 ; 3)$ et $B(5 ; -1)$ : $I\\left(\\dfrac{1+5}{2} ; \\dfrac{3+(-1)}{2}\\right) = I(3 ; 1)$.",
+    "tags": ["milieu", "segment", "coordonnees", "cercle"],
+    "order": 110,
+    "level": "essentiel",
+    "relatedFormulas": ["f-gr-caracterisation-diametre"],
+    "simplified": {
+      "core": "$$I = \\left(\\frac{x_A + x_B}{2} \\ ; \\ \\frac{y_A + y_B}{2}\\right)$$",
+      "mnemonic": "moyenne des abscisses, moyenne des ordonnées",
+      "keyword": "milieu",
+      "accent": "slate"
+    }
+  },
+  {
+    "id": "f-gr-completion-carre",
+    "chapter": "geometrie-reperee",
+    "domain": "geometrie",
+    "title": "Complétion du carré (méthode)",
+    "statement": "Pour mettre $x^2 + px$ sous forme d'un carré, on utilise :\n\n$$x^2 + px = \\left(x + \\dfrac{p}{2}\\right)^2 - \\dfrac{p^2}{4}.$$\n\n**Application au cercle** : à partir de $x^2 + y^2 + px + qy + k = 0$, on obtient :\n$$\\left(x + \\dfrac{p}{2}\\right)^2 + \\left(y + \\dfrac{q}{2}\\right)^2 = \\dfrac{p^2 + q^2}{4} - k.$$",
+    "conditions": "Cette technique est la même que pour la forme canonique d'un trinôme du second degré",
+    "example": "$x^2 + y^2 - 6x + 2y + 1 = 0$ :\n$(x-3)^2 - 9 + (y+1)^2 - 1 + 1 = 0$\n$(x-3)^2 + (y+1)^2 = 9$.\nCentre $(3 ; -1)$, rayon $3$.",
+    "tags": ["completion-carre", "cercle", "forme-developpee"],
+    "order": 120,
+    "level": "a-connaitre",
+    "relatedFormulas": ["f-gr-equation-cercle-developpee"],
+    "simplified": {
+      "core": "$$x^2 + px = \\left(x + \\frac{p}{2}\\right)^2 - \\frac{p^2}{4}$$",
+      "mnemonic": "ajouter et soustraire le carré de la moitié du coefficient de x",
+      "keyword": "complétion-carré",
+      "visual": "même idée que la forme canonique du trinôme du second degré",
+      "accent": "amber"
+    }
+  }
+]
