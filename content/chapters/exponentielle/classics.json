@@ -1,0 +1,427 @@
+[
+  {
+    "id": "c-exponentielle-001",
+    "chapter": "exponentielle",
+    "title": "Simplifications et calculs avec les propriétés algébriques",
+    "difficulty": 1,
+    "estimatedMinutes": 8,
+    "order": 10,
+    "tags": ["proprietes-algebriques", "simplification"],
+    "preamble": "Simplifier les expressions suivantes en utilisant les propriétés algébriques de la fonction exponentielle.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Simplifier $A = e^3 \\cdot e^5$.",
+        "hints": [
+          "Utilise la propriété $e^a \\cdot e^b = e^{a+b}$.",
+          "$e^3 \\cdot e^5 = e^{3+5}$.",
+          "$A = e^8$."
+        ],
+        "expectedAnswer": "$e^8$",
+        "solution": "On applique la propriété $e^a \\cdot e^b = e^{a+b}$ :\n\n$$A = e^3 \\cdot e^5 = e^{3+5} = e^8.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Simplifier $B = \\dfrac{e^7}{e^4}$.",
+        "hints": [
+          "Utilise la propriété $\\dfrac{e^a}{e^b} = e^{a-b}$.",
+          "$\\dfrac{e^7}{e^4} = e^{7-4}$.",
+          "$B = e^3$."
+        ],
+        "expectedAnswer": "$e^3$",
+        "solution": "On applique la propriété $e^{a-b} = \\dfrac{e^a}{e^b}$ :\n\n$$B = \\frac{e^7}{e^4} = e^{7-4} = e^3.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Simplifier $C = (e^2)^4$.",
+        "hints": [
+          "Utilise la propriété $(e^a)^n = e^{na}$.",
+          "$(e^2)^4 = e^{2 \\times 4}$.",
+          "$C = e^8$."
+        ],
+        "expectedAnswer": "$e^8$",
+        "solution": "On applique la propriété $(e^a)^n = e^{na}$ :\n\n$$C = (e^2)^4 = e^{2 \\times 4} = e^8.$$"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Simplifier $D = e^{-3} \\cdot e^5$.",
+        "hints": [
+          "Utilise $e^a \\cdot e^b = e^{a+b}$ avec $a = -3$ et $b = 5$.",
+          "$e^{-3} \\cdot e^5 = e^{-3+5} = e^2$.",
+          "$D = e^2$."
+        ],
+        "expectedAnswer": "$e^2$",
+        "solution": "$$D = e^{-3} \\cdot e^5 = e^{-3+5} = e^2.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-exponentielle-002",
+    "chapter": "exponentielle",
+    "title": "Calcul de dérivées impliquant la fonction exponentielle",
+    "difficulty": 2,
+    "estimatedMinutes": 12,
+    "order": 20,
+    "tags": ["derivee", "composee-affine", "produit"],
+    "preamble": "Pour chacune des fonctions ci-dessous, calculer la fonction dérivée. On précisera l'ensemble de dérivabilité.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer la dérivée de $f(x) = e^{3x-1}$.",
+        "hints": [
+          "Il s'agit d'une composition avec une fonction affine : utilise $(e^{ax+b})' = a \\, e^{ax+b}$.",
+          "Ici $a = 3$ et $b = -1$.",
+          "$f'(x) = 3 e^{3x-1}$."
+        ],
+        "expectedAnswer": "$f'(x) = 3 e^{3x-1}$",
+        "solution": "La fonction $f(x) = e^{3x-1}$ est définie et dérivable sur $\\mathbb{R}$ (comme composée d'une fonction affine et de l'exponentielle).\n\nOn applique la formule $(e^{ax+b})' = a \\, e^{ax+b}$ avec $a = 3$ et $b = -1$ :\n\n$$f'(x) = 3 \\, e^{3x-1}.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer la dérivée de $g(x) = 2 e^{-x} + 4x$.",
+        "hints": [
+          "Dérive terme à terme. Pour $e^{-x}$, utilise $(e^{ax+b})' = a \\, e^{ax+b}$ avec $a = -1$.",
+          "$(2 e^{-x})' = 2 \\times (-1) e^{-x} = -2 e^{-x}$ et $(4x)' = 4$.",
+          "$g'(x) = -2 e^{-x} + 4$."
+        ],
+        "expectedAnswer": "$g'(x) = -2 e^{-x} + 4$",
+        "solution": "La fonction $g$ est définie et dérivable sur $\\mathbb{R}$. Par linéarité :\n\n$$g'(x) = 2 \\times (-1) e^{-x} + 4 = -2 e^{-x} + 4.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer la dérivée de $h(x) = (x + 2) e^x$.",
+        "hints": [
+          "C'est un produit $u \\cdot v$ avec $u(x) = x + 2$ et $v(x) = e^x$. Utilise $(uv)' = u'v + uv'$.",
+          "$u'(x) = 1$ et $v'(x) = e^x$. Donc $h'(x) = 1 \\cdot e^x + (x+2) \\cdot e^x$.",
+          "$h'(x) = (x + 3) e^x$."
+        ],
+        "expectedAnswer": "$h'(x) = (x + 3) e^x$",
+        "solution": "La fonction $h$ est le produit de $u(x) = x + 2$ et $v(x) = e^x$. On a $u'(x) = 1$ et $v'(x) = e^x$.\n\nPar la règle du produit :\n\n$$h'(x) = u'(x) \\cdot v(x) + u(x) \\cdot v'(x) = 1 \\cdot e^x + (x + 2) \\cdot e^x = e^x + (x + 2) e^x.$$\n\nOn factorise par $e^x$ :\n\n$$h'(x) = (1 + x + 2) e^x = (x + 3) e^x.$$"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Calculer la dérivée de $k(x) = x^2 e^x$.",
+        "hints": [
+          "Produit $u \\cdot v$ avec $u(x) = x^2$ et $v(x) = e^x$.",
+          "$u'(x) = 2x$ et $v'(x) = e^x$. Donc $k'(x) = 2x e^x + x^2 e^x$.",
+          "$k'(x) = (x^2 + 2x) e^x = x(x + 2) e^x$."
+        ],
+        "expectedAnswer": "$k'(x) = x(x+2) e^x$",
+        "solution": "La fonction $k$ est le produit de $u(x) = x^2$ et $v(x) = e^x$. On a $u'(x) = 2x$ et $v'(x) = e^x$.\n\nPar la règle du produit :\n\n$$k'(x) = 2x \\cdot e^x + x^2 \\cdot e^x = (2x + x^2) e^x = x(x + 2) e^x.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-exponentielle-003",
+    "chapter": "exponentielle",
+    "title": "Résolution d'équations et d'inéquations exponentielles",
+    "difficulty": 1,
+    "estimatedMinutes": 10,
+    "order": 30,
+    "tags": ["equation-exponentielle", "inequation-exponentielle", "resolution"],
+    "preamble": "Résoudre dans $\\mathbb{R}$ les équations et inéquations suivantes.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Résoudre l'équation $e^{3x-2} = e^4$.",
+        "hints": [
+          "Utilise l'injectivité de la fonction exponentielle : $e^a = e^b \\iff a = b$.",
+          "On obtient $3x - 2 = 4$.",
+          "$x = 2$."
+        ],
+        "expectedAnswer": "$x = 2$",
+        "solution": "La fonction exponentielle est injective. Donc :\n\n$$e^{3x-2} = e^4 \\iff 3x - 2 = 4 \\iff 3x = 6 \\iff x = 2.$$\n\nL'ensemble solution est $\\{2\\}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Résoudre l'équation $e^{2x+1} = 1$.",
+        "hints": [
+          "Exprime $1$ comme une puissance de $e$ : $1 = e^0$.",
+          "Donc l'équation devient $e^{2x+1} = e^0$. Par injectivité : $2x + 1 = 0$.",
+          "$x = -\\dfrac{1}{2}$."
+        ],
+        "expectedAnswer": "$x = -\\dfrac{1}{2}$",
+        "solution": "On écrit $1 = e^0$. L'équation devient :\n\n$$e^{2x+1} = e^0 \\iff 2x + 1 = 0 \\iff x = -\\frac{1}{2}.$$\n\nL'ensemble solution est $\\left\\{-\\dfrac{1}{2}\\right\\}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Résoudre l'inéquation $e^{2-x} < e^4$.",
+        "hints": [
+          "La fonction exponentielle est strictement croissante : $e^a < e^b \\iff a < b$.",
+          "On obtient $2 - x < 4$.",
+          "$x > -2$."
+        ],
+        "expectedAnswer": "$x > -2$, soit $S = ]-2 \\, ; \\, +\\infty[$",
+        "solution": "La fonction $x \\mapsto e^x$ est strictement croissante. Donc :\n\n$$e^{2-x} < e^4 \\iff 2 - x < 4 \\iff -x < 2 \\iff x > -2.$$\n\nL'ensemble solution est $]-2 \\, ; \\, +\\infty[$."
+      }
+    ]
+  },
+  {
+    "id": "c-exponentielle-004",
+    "chapter": "exponentielle",
+    "title": "Étude des variations d'une fonction faisant intervenir $e^x$",
+    "difficulty": 2,
+    "estimatedMinutes": 15,
+    "order": 40,
+    "tags": ["variations", "tableau-de-variations", "derivee", "exponentielle"],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = (x - 1) e^x$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $f'(x)$ pour tout réel $x$.",
+        "hints": [
+          "Il s'agit d'un produit $u \\cdot v$ avec $u(x) = x - 1$ et $v(x) = e^x$.",
+          "$u'(x) = 1$ et $v'(x) = e^x$. Applique $(uv)' = u'v + uv'$.",
+          "$f'(x) = x \\, e^x$."
+        ],
+        "expectedAnswer": "$f'(x) = x \\, e^x$",
+        "solution": "La fonction $f$ est le produit de $u(x) = x - 1$ et $v(x) = e^x$, avec $u'(x) = 1$ et $v'(x) = e^x$.\n\nPar la règle du produit :\n\n$$f'(x) = 1 \\cdot e^x + (x - 1) \\cdot e^x = e^x + (x-1) e^x = (1 + x - 1) e^x = x \\, e^x.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Étudier le signe de $f'(x)$ sur $\\mathbb{R}$.",
+        "hints": [
+          "On a $f'(x) = x \\, e^x$. Quel est le signe de $e^x$ ? Quel est le signe de $x$ ?",
+          "Comme $e^x > 0$ pour tout $x$, le signe de $f'(x)$ est celui de $x$.",
+          "$f'(x) < 0$ pour $x < 0$, $f'(0) = 0$, $f'(x) > 0$ pour $x > 0$."
+        ],
+        "solution": "On a $f'(x) = x \\, e^x$. Or $e^x > 0$ pour tout $x \\in \\mathbb{R}$, donc le signe de $f'(x)$ est celui de $x$ :\n\n- $f'(x) < 0$ pour $x < 0$ ;\n- $f'(0) = 0 \\cdot e^0 = 0$ ;\n- $f'(x) > 0$ pour $x > 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Dresser le tableau de variations de $f$ et préciser le minimum de $f$ sur $\\mathbb{R}$.",
+        "hints": [
+          "Déduis le sens de variation de $f$ du signe de $f'$.",
+          "Calcule $f(0)$ pour obtenir la valeur minimale.",
+          "$f$ admet un minimum en $x = 0$ valant $f(0) = -1$."
+        ],
+        "expectedAnswer": "Minimum en $x = 0$ : $f(0) = -1$",
+        "solution": "D'après le signe de $f'$ :\n- $f$ est strictement **décroissante** sur $]-\\infty \\, ; \\, 0]$ ;\n- $f$ est strictement **croissante** sur $[0 \\, ; \\, +\\infty[$.\n\nAinsi $f$ admet un **minimum** en $x = 0$. Ce minimum vaut :\n\n$$f(0) = (0 - 1) e^0 = (-1) \\times 1 = -1.$$\n\n**Tableau de variations :**\n\n| $x$ | $-\\infty$ | | $0$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| $f'(x)$ | | $-$ | $0$ | $+$ | |\n| $f(x)$ | | $\\searrow$ | $-1$ | $\\nearrow$ | |"
+      }
+    ]
+  },
+  {
+    "id": "c-exponentielle-005",
+    "chapter": "exponentielle",
+    "title": "Tangente à la courbe d'une fonction exponentielle",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 50,
+    "tags": ["tangente", "derivee", "exponentielle"],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = e^{2x}$. On note $\\mathcal{C}$ sa courbe représentative.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $f(0)$ et $f'(x)$, puis $f'(0)$.",
+        "hints": [
+          "$f(0) = e^{2 \\times 0} = e^0$.",
+          "$f'(x) = 2 e^{2x}$ par la formule $(e^{ax+b})' = a e^{ax+b}$ avec $a = 2$.",
+          "$f(0) = 1$ et $f'(0) = 2 e^0 = 2$."
+        ],
+        "expectedAnswer": "$f(0) = 1$, $f'(x) = 2 e^{2x}$, $f'(0) = 2$",
+        "solution": "**Valeur en $0$ :** $f(0) = e^{2 \\times 0} = e^0 = 1$.\n\n**Dérivée :** Par la formule $(e^{ax+b})' = a e^{ax+b}$ avec $a = 2$ et $b = 0$ :\n\n$$f'(x) = 2 e^{2x}.$$\n\n**Nombre dérivé en $0$ :** $f'(0) = 2 e^0 = 2 \\times 1 = 2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire une équation de la tangente $T$ à $\\mathcal{C}$ au point d'abscisse $a = 0$.",
+        "hints": [
+          "L'équation de la tangente au point d'abscisse $a$ est $y = f'(a)(x - a) + f(a)$.",
+          "Avec $a = 0$ : $y = f'(0)(x - 0) + f(0) = 2x + 1$.",
+          "$y = 2x + 1$."
+        ],
+        "expectedAnswer": "$y = 2x + 1$",
+        "solution": "L'équation de la tangente à $\\mathcal{C}$ au point d'abscisse $a = 0$ est :\n\n$$y = f'(0)(x - 0) + f(0) = 2(x - 0) + 1 = 2x + 1.$$\n\nAinsi, $T : y = 2x + 1$."
+      }
+    ]
+  },
+  {
+    "id": "c-exponentielle-006",
+    "chapter": "exponentielle",
+    "title": "Étude d'une fonction $f(x) = a e^{bx} + c$ — modèle de croissance",
+    "difficulty": 2,
+    "estimatedMinutes": 12,
+    "order": 60,
+    "tags": ["variations", "derivee", "modele-croissance"],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = 2 e^x - 3$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $f'(x)$ et étudier le signe de $f'(x)$ sur $\\mathbb{R}$.",
+        "hints": [
+          "Dérive $f$ terme à terme. Qu'est-ce que le signe de $e^x$ ?",
+          "$f'(x) = 2 e^x$, et $e^x > 0$ pour tout $x \\in \\mathbb{R}$.",
+          "$f'(x) = 2 e^x > 0$ pour tout $x$, donc $f$ est strictement croissante sur $\\mathbb{R}$."
+        ],
+        "solution": "Par linéarité : $f'(x) = 2 e^x - 0 = 2 e^x$.\n\nOr $e^x > 0$ pour tout $x \\in \\mathbb{R}$, donc $f'(x) = 2 e^x > 0$ pour tout $x$.\n\nAinsi, $f$ est **strictement croissante** sur $\\mathbb{R}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Résoudre l'équation $f(x) = 0$, c'est-à-dire $2 e^x - 3 = 0$.",
+        "hints": [
+          "Isole $e^x$ : $2 e^x = 3$, soit $e^x = \\dfrac{3}{2}$. Peut-on trouver une valeur exacte simple ?",
+          "Il n'existe pas de valeur entière. Remarque que $\\dfrac{3}{2}$ n'est pas une puissance entière de $e$. La courbe coupe l'axe des abscisses en un unique point dont on ne peut donner une valeur exacte simple sans $\\ln$.",
+          "On conclut que $2 e^x - 3 = 0 \\iff e^x = \\dfrac{3}{2}$. On ne peut pas résoudre davantage sans le logarithme (notion de terminale)."
+        ],
+        "solution": "On a $2 e^x - 3 = 0 \\iff e^x = \\dfrac{3}{2}$.\n\nComme $e^x > 0$, cette équation a bien une unique solution (la fonction exponentielle est strictement croissante et peut prendre toute valeur positive), mais on ne peut pas l'exprimer sans le logarithme (étudié en terminale).\n\nOn peut toutefois conclure que $f$ s'annule une unique fois sur $\\mathbb{R}$, car $f$ est strictement croissante, $f(0) = 2 - 3 = -1 < 0$ et $f(1) = 2e - 3 > 0$ (car $e > 1{,}5$)."
+      }
+    ]
+  },
+  {
+    "id": "c-exponentielle-007",
+    "chapter": "exponentielle",
+    "title": "Lien avec les suites géométriques",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 70,
+    "tags": ["suites-geometriques", "lien-exponentielle", "modelisation"],
+    "preamble": "Une population bactérienne est modélisée par la suite $(u_n)$ définie par $u_0 = 100$ et $u_{n+1} = 3 \\, u_n$ pour tout entier $n \\geq 0$, où $n$ est le nombre d'heures écoulées.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Quelle est la nature de la suite $(u_n)$ ? Préciser sa raison et son premier terme.",
+        "hints": [
+          "La relation $u_{n+1} = 3 \\, u_n$ est de la forme $u_{n+1} = q \\cdot u_n$ avec $q = 3$.",
+          "Une suite vérifiant $u_{n+1} = q \\, u_n$ est une suite géométrique.",
+          "$(u_n)$ est géométrique de raison $q = 3$ et de premier terme $u_0 = 100$."
+        ],
+        "solution": "La relation $u_{n+1} = 3 \\, u_n$ est de la forme $u_{n+1} = q \\cdot u_n$ avec $q = 3$. Il s'agit donc d'une **suite géométrique** de raison $q = 3$ et de premier terme $u_0 = 100$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Exprimer $u_n$ en fonction de $n$, puis en utilisant la notation $e^{rn}$ pour un réel $r$ bien choisi.",
+        "hints": [
+          "Le terme général d'une suite géométrique est $u_n = u_0 \\cdot q^n$.",
+          "$u_n = 100 \\times 3^n$. Pour l'écrire avec $e$ : cherche $r$ tel que $e^r = 3$.",
+          "$u_n = 100 \\, e^{rn}$ où $r$ est le réel vérifiant $e^r = 3$ (il n'a pas de valeur simple sans $\\ln$, mais l'écriture est conceptuellement correcte)."
+        ],
+        "solution": "Le terme général d'une suite géométrique est $u_n = u_0 \\cdot q^n$, donc :\n\n$$u_n = 100 \\times 3^n.$$\n\nComme $3 > 0$, on peut écrire $3 = e^r$ pour un certain réel $r > 0$ (car l'exponentielle est strictement positive et croissante). On obtient alors :\n\n$$u_n = 100 \\times (e^r)^n = 100 \\, e^{rn}.$$\n\nC'est le **lien entre suite géométrique et fonction exponentielle** : une suite géométrique de raison positive correspond à une exponentielle évaluée sur les entiers."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $u_2$ et $u_3$.",
+        "hints": [
+          "Utilise $u_n = 100 \\times 3^n$.",
+          "$u_2 = 100 \\times 3^2 = 100 \\times 9$.",
+          "$u_2 = 900$ et $u_3 = 2700$."
+        ],
+        "expectedAnswer": "$u_2 = 900$, $u_3 = 2700$",
+        "solution": "On applique la formule $u_n = 100 \\times 3^n$ :\n\n$$u_2 = 100 \\times 3^2 = 100 \\times 9 = 900.$$\n\n$$u_3 = 100 \\times 3^3 = 100 \\times 27 = 2700.$$"
+      }
+    ]
+  },
+  {
+    "id": "c-exponentielle-008",
+    "chapter": "exponentielle",
+    "title": "Factorisation et résolution d'équation faisant intervenir $e^x$",
+    "difficulty": 3,
+    "estimatedMinutes": 15,
+    "order": 80,
+    "tags": ["factorisation", "equation-exponentielle", "signe"],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = e^{2x} - e^x$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Factoriser $f(x)$ en mettant $e^x$ en facteur.",
+        "hints": [
+          "Écris $e^{2x}$ comme $(e^x)^2 = e^x \\cdot e^x$.",
+          "$f(x) = e^x \\cdot e^x - e^x \\cdot 1 = e^x(e^x - 1)$.",
+          "$f(x) = e^x(e^x - 1)$."
+        ],
+        "expectedAnswer": "$f(x) = e^x(e^x - 1)$",
+        "solution": "On note que $e^{2x} = (e^x)^2 = e^x \\cdot e^x$. Ainsi :\n\n$$f(x) = e^{2x} - e^x = e^x \\cdot e^x - e^x \\cdot 1 = e^x(e^x - 1).$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Résoudre l'équation $f(x) = 0$.",
+        "hints": [
+          "Utilise la factorisation $f(x) = e^x(e^x - 1)$.",
+          "Un produit est nul si l'un des facteurs est nul. Or $e^x > 0$ : lequel des facteurs peut s'annuler ?",
+          "$e^x - 1 = 0 \\iff e^x = 1 \\iff x = 0$."
+        ],
+        "expectedAnswer": "$x = 0$",
+        "solution": "On a $f(x) = e^x(e^x - 1) = 0$.\n\nOr, $e^x > 0$ pour tout $x \\in \\mathbb{R}$, donc le facteur $e^x$ ne s'annule jamais.\n\nAinsi $f(x) = 0 \\iff e^x - 1 = 0 \\iff e^x = 1 = e^0 \\iff x = 0$.\n\nL'ensemble solution est $\\{0\\}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Étudier le signe de $f(x)$ sur $\\mathbb{R}$.",
+        "hints": [
+          "Utilise $f(x) = e^x(e^x - 1)$. Quel est le signe de $e^x$ ? De $(e^x - 1)$ ?",
+          "$e^x > 0$ toujours. $e^x - 1 < 0$ si $e^x < 1 = e^0$, soit si $x < 0$.",
+          "$f(x) < 0$ pour $x < 0$, $f(0) = 0$, $f(x) > 0$ pour $x > 0$."
+        ],
+        "solution": "On a $f(x) = e^x(e^x - 1)$. Comme $e^x > 0$ toujours, le signe de $f(x)$ est celui de $(e^x - 1)$.\n\nOr $e^x - 1 > 0 \\iff e^x > 1 = e^0 \\iff x > 0$ (la fonction exponentielle est croissante).\n\nDonc :\n- $f(x) < 0$ pour $x < 0$ ;\n- $f(0) = 0$ ;\n- $f(x) > 0$ pour $x > 0$."
+      }
+    ]
+  },
+  {
+    "id": "c-exponentielle-009",
+    "chapter": "exponentielle",
+    "title": "Étude complète d'une fonction $f(x) = (2x - 1)e^x$",
+    "difficulty": 3,
+    "estimatedMinutes": 18,
+    "order": 90,
+    "tags": ["variations", "derivee", "produit", "extremum"],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = (2x - 1) e^x$. On note $\\mathcal{C}_f$ sa courbe représentative.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $f'(x)$ et le mettre sous la forme $(2x + 1) e^x$.",
+        "hints": [
+          "Pose $u(x) = 2x - 1$ et $v(x) = e^x$. Applique $(uv)' = u'v + uv'$.",
+          "$u'(x) = 2$, $v'(x) = e^x$ : $f'(x) = 2 e^x + (2x-1) e^x$.",
+          "Factorise par $e^x$ : $f'(x) = (2 + 2x - 1) e^x = (2x + 1) e^x$."
+        ],
+        "expectedAnswer": "$f'(x) = (2x + 1) e^x$",
+        "solution": "La fonction $f$ est le produit de $u(x) = 2x - 1$ et $v(x) = e^x$, avec $u'(x) = 2$ et $v'(x) = e^x$.\n\nPar la règle du produit :\n\n$$f'(x) = 2 \\cdot e^x + (2x - 1) \\cdot e^x = 2e^x + (2x-1)e^x.$$\n\nOn factorise par $e^x$ :\n\n$$f'(x) = (2 + 2x - 1) e^x = (2x + 1) e^x.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En déduire les variations de $f$ sur $\\mathbb{R}$ et préciser son extremum.",
+        "hints": [
+          "Comme $e^x > 0$, le signe de $f'(x) = (2x+1)e^x$ est celui de $(2x + 1)$.",
+          "$2x + 1 = 0 \\iff x = -\\dfrac{1}{2}$. Signe : négatif pour $x < -\\dfrac{1}{2}$, positif pour $x > -\\dfrac{1}{2}$.",
+          "$f$ admet un minimum en $x = -\\dfrac{1}{2}$."
+        ],
+        "solution": "Comme $e^x > 0$ pour tout $x$, le signe de $f'(x) = (2x+1)e^x$ est celui de $(2x + 1)$.\n\nOn a $2x + 1 = 0$ pour $x = -\\dfrac{1}{2}$, $2x + 1 < 0$ pour $x < -\\dfrac{1}{2}$ et $2x + 1 > 0$ pour $x > -\\dfrac{1}{2}$.\n\nAinsi $f$ est strictement **décroissante** sur $\\left]-\\infty \\, ; \\, -\\dfrac{1}{2}\\right]$ et strictement **croissante** sur $\\left[-\\dfrac{1}{2} \\, ; \\, +\\infty\\right[$.\n\n$f$ admet un **minimum** en $x = -\\dfrac{1}{2}$, de valeur :\n\n$$f\\!\\left(-\\frac{1}{2}\\right) = \\left(2 \\times \\left(-\\frac{1}{2}\\right) - 1\\right) e^{-1/2} = (-1 - 1) e^{-1/2} = -2 e^{-1/2} = -\\frac{2}{\\sqrt{e}}.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Déterminer une équation de la tangente à $\\mathcal{C}_f$ au point d'abscisse $0$.",
+        "hints": [
+          "Calcule $f(0)$ et $f'(0)$.",
+          "$f(0) = (0 - 1) e^0 = -1$ et $f'(0) = (0 + 1) e^0 = 1$.",
+          "Équation de la tangente : $y = 1 \\times (x - 0) + (-1) = x - 1$."
+        ],
+        "expectedAnswer": "$y = x - 1$",
+        "solution": "L'équation de la tangente en $a = 0$ est $y = f'(0)(x - 0) + f(0)$.\n\nOn calcule :\n- $f(0) = (2 \\times 0 - 1) e^0 = -1 \\times 1 = -1$ ;\n- $f'(0) = (2 \\times 0 + 1) e^0 = 1 \\times 1 = 1$.\n\nDonc la tangente a pour équation :\n\n$$y = 1 \\cdot (x - 0) + (-1) = x - 1.$$"
+      }
+    ]
+  }
+]

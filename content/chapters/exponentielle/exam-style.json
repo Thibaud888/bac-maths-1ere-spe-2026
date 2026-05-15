@@ -1,0 +1,196 @@
+[
+  {
+    "id": "e-exponentielle-001",
+    "chapter": "exponentielle",
+    "title": "Étude d'une fonction faisant intervenir la fonction exponentielle",
+    "difficulty": 2,
+    "estimatedMinutes": 30,
+    "totalMarks": 5,
+    "order": 10,
+    "tags": ["derivee", "variations", "extremum", "produit", "exponentielle"],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par :\n\n$$f(x) = (x^2 - 2) e^x.$$\n\nOn note $\\mathcal{C}_f$ sa courbe représentative dans un repère orthogonal du plan.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Justifier que $f$ est dérivable sur $\\mathbb{R}$ et calculer $f'(x)$ pour tout réel $x$. On mettra $f'(x)$ sous la forme $(x^2 + 2x - 2) e^x$.",
+        "marks": 1.5,
+        "hints": [
+          "C'est un produit $u \\cdot v$ avec $u(x) = x^2 - 2$ et $v(x) = e^x$. Applique $(uv)' = u'v + uv'$.",
+          "$u'(x) = 2x$ et $v'(x) = e^x$. Développe puis factorise par $e^x$.",
+          "$f'(x) = 2x e^x + (x^2 - 2) e^x = (x^2 + 2x - 2) e^x$."
+        ],
+        "expectedAnswer": "$f'(x) = (x^2 + 2x - 2) e^x$",
+        "solution": "La fonction $f$ est le produit de $u(x) = x^2 - 2$ (polynôme, dérivable sur $\\mathbb{R}$) et $v(x) = e^x$ (dérivable sur $\\mathbb{R}$). Donc $f$ est dérivable sur $\\mathbb{R}$.\n\nOn a $u'(x) = 2x$ et $v'(x) = e^x$. Par la règle du produit :\n\n$$f'(x) = u'(x) \\cdot v(x) + u(x) \\cdot v'(x) = 2x \\cdot e^x + (x^2 - 2) \\cdot e^x.$$\n\nOn factorise par $e^x$ :\n\n$$f'(x) = \\bigl(2x + x^2 - 2\\bigr) e^x = (x^2 + 2x - 2) e^x.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "On admet que le discriminant du trinôme $x^2 + 2x - 2$ vaut $\\Delta = 12$. Factoriser $f'(x)$, puis étudier le signe de $f'(x)$ sur $\\mathbb{R}$.",
+        "marks": 1.5,
+        "hints": [
+          "Les racines du trinôme $x^2 + 2x - 2$ sont $x_{1,2} = \\dfrac{-2 \\pm \\sqrt{12}}{2} = \\dfrac{-2 \\pm 2\\sqrt{3}}{2} = -1 \\pm \\sqrt{3}$.",
+          "Donc $x^2 + 2x - 2 = (x - (-1 + \\sqrt{3}))(x - (-1 - \\sqrt{3})) = (x + 1 - \\sqrt{3})(x + 1 + \\sqrt{3})$.",
+          "Comme $e^x > 0$ toujours, le signe de $f'(x)$ est celui du trinôme, négatif entre les racines, positif à l'extérieur."
+        ],
+        "expectedAnswer": "$f'(x) = (x + 1 - \\sqrt{3})(x + 1 + \\sqrt{3}) e^x$ ; $f'(x) < 0$ sur $]-1 - \\sqrt{3} \\, ; \\, -1 + \\sqrt{3}[$",
+        "solution": "Les racines du trinôme $x^2 + 2x - 2$ sont données par :\n\n$$x = \\frac{-2 \\pm \\sqrt{12}}{2} = \\frac{-2 \\pm 2\\sqrt{3}}{2} = -1 \\pm \\sqrt{3}.$$\n\nOn note $\\alpha = -1 - \\sqrt{3}$ et $\\beta = -1 + \\sqrt{3}$ (on a $\\alpha < \\beta$). Ainsi :\n\n$$f'(x) = (x - \\alpha)(x - \\beta) \\, e^x.$$\n\nComme $e^x > 0$ pour tout $x$, le signe de $f'(x)$ est celui de $(x - \\alpha)(x - \\beta)$. Le coefficient dominant du trinôme est $1 > 0$, donc le trinôme est **positif à l'extérieur des racines et négatif entre les racines** :\n\n- $f'(x) > 0$ pour $x < \\alpha$ et pour $x > \\beta$ ;\n- $f'(x) = 0$ pour $x = \\alpha$ ou $x = \\beta$ ;\n- $f'(x) < 0$ pour $\\alpha < x < \\beta$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Dresser le tableau de variations de $f$ sur $\\mathbb{R}$. On ne demande pas de calculer les images de $f$ aux extremums.",
+        "marks": 1,
+        "hints": [
+          "Le sens de variation de $f$ se déduit du signe de $f'$.",
+          "Rappel : $\\alpha = -1 - \\sqrt{3} \\approx -2{,}73$ et $\\beta = -1 + \\sqrt{3} \\approx 0{,}73$.",
+          "$f$ est croissante, puis décroissante, puis croissante."
+        ],
+        "solution": "D'après le signe de $f'$, avec $\\alpha = -1 - \\sqrt{3}$ et $\\beta = -1 + \\sqrt{3}$ :\n\n- $f$ est strictement **croissante** sur $]-\\infty \\, ; \\, \\alpha]$ ;\n- $f$ est strictement **décroissante** sur $[\\alpha \\, ; \\, \\beta]$ ;\n- $f$ est strictement **croissante** sur $[\\beta \\, ; \\, +\\infty[$.\n\n$f$ admet un **maximum local** en $x = \\alpha = -1 - \\sqrt{3}$ et un **minimum local** en $x = \\beta = -1 + \\sqrt{3}$.\n\n**Tableau de variations :**\n\n| $x$ | $-\\infty$ | | $\\alpha$ | | $\\beta$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|\n| $f'(x)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n| $f(x)$ | | $\\nearrow$ | max | $\\searrow$ | min | $\\nearrow$ | |"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Déterminer une équation de la tangente $T$ à $\\mathcal{C}_f$ au point d'abscisse $a = 0$.",
+        "marks": 1,
+        "hints": [
+          "Calcule $f(0)$ et $f'(0)$ en utilisant les expressions trouvées aux questions 1 et 2.",
+          "$f(0) = (0 - 2) e^0 = -2$ et $f'(0) = (0 + 0 - 2) e^0 = -2$.",
+          "Équation de $T$ : $y = -2(x - 0) + (-2) = -2x - 2$."
+        ],
+        "expectedAnswer": "$y = -2x - 2$",
+        "solution": "L'équation de la tangente à $\\mathcal{C}_f$ au point d'abscisse $a = 0$ est $y = f'(0)(x - 0) + f(0)$.\n\nOn calcule :\n\n$$f(0) = (0^2 - 2) e^0 = (-2) \\times 1 = -2.$$\n\n$$f'(0) = (0^2 + 2 \\times 0 - 2) e^0 = (-2) \\times 1 = -2.$$\n\nDonc l'équation de $T$ est :\n\n$$y = -2(x - 0) + (-2) = -2x - 2.$$"
+      }
+    ]
+  },
+  {
+    "id": "e-exponentielle-002",
+    "chapter": "exponentielle",
+    "title": "Modèle de décroissance et résolution d'inéquations exponentielles",
+    "difficulty": 2,
+    "estimatedMinutes": 28,
+    "totalMarks": 4.5,
+    "order": 20,
+    "tags": ["modelisation", "equation-exponentielle", "inequation-exponentielle", "derivee", "signe"],
+    "preamble": "Une substance radioactive se désintègre. On modélise la masse restante (en grammes) après $n$ jours par la suite $(u_n)$ définie par $u_0 = 256$ et $u_{n+1} = \\dfrac{1}{2} \\, u_n$.\n\nOn considère aussi la fonction $g$ définie sur $\\mathbb{R}$ par $g(x) = (1 - x) e^{-x} + 2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Montrer que $(u_n)$ est une suite géométrique et donner son terme général $u_n$ en fonction de $n$.",
+        "marks": 1,
+        "hints": [
+          "La relation $u_{n+1} = \\dfrac{1}{2} u_n$ est de la forme $u_{n+1} = q \\, u_n$.",
+          "Identifie la raison et applique la formule $u_n = u_0 \\cdot q^n$.",
+          "$u_n = 256 \\times \\left(\\dfrac{1}{2}\\right)^n = 256 \\times 2^{-n} = \\dfrac{256}{2^n}$."
+        ],
+        "expectedAnswer": "$u_n = 256 \\times \\left(\\dfrac{1}{2}\\right)^n$",
+        "solution": "La relation $u_{n+1} = \\dfrac{1}{2} \\, u_n$ est de la forme $u_{n+1} = q \\cdot u_n$ avec $q = \\dfrac{1}{2}$. Donc $(u_n)$ est une **suite géométrique** de raison $q = \\dfrac{1}{2}$ et de premier terme $u_0 = 256$.\n\nSon terme général est :\n\n$$u_n = u_0 \\cdot q^n = 256 \\times \\left(\\frac{1}{2}\\right)^n.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "À partir de quelle valeur de $n$ la masse restante est-elle strictement inférieure à $1$ gramme ?",
+        "marks": 1,
+        "hints": [
+          "Résoudre $u_n < 1$, c'est-à-dire $256 \\times \\left(\\dfrac{1}{2}\\right)^n < 1$.",
+          "$\\left(\\dfrac{1}{2}\\right)^n < \\dfrac{1}{256} = \\dfrac{1}{2^8} = \\left(\\dfrac{1}{2}\\right)^8$. Comme $\\dfrac{1}{2} < 1$, la puissance est décroissante.",
+          "Pour $q < 1$, $q^n < q^k \\iff n > k$. Donc $n > 8$."
+        ],
+        "expectedAnswer": "À partir de $n = 9$",
+        "solution": "On résout $u_n < 1$ :\n\n$$256 \\times \\left(\\frac{1}{2}\\right)^n < 1 \\iff \\left(\\frac{1}{2}\\right)^n < \\frac{1}{256}.$$\n\nOr $\\dfrac{1}{256} = \\dfrac{1}{2^8} = \\left(\\dfrac{1}{2}\\right)^8$.\n\nLa fonction $n \\mapsto \\left(\\dfrac{1}{2}\\right)^n$ est **décroissante** (car $0 < \\dfrac{1}{2} < 1$), donc :\n\n$$\\left(\\frac{1}{2}\\right)^n < \\left(\\frac{1}{2}\\right)^8 \\iff n > 8.$$\n\nAinsi, $u_n < 1$ pour tout entier $n \\geq 9$. C'est à partir du **9e jour** que la masse est strictement inférieure à $1$ gramme."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $g'(x)$ pour tout réel $x$. On montrera que $g'(x) = (x - 2) e^{-x}$.",
+        "marks": 1.5,
+        "hints": [
+          "Dérive la partie $(1 - x) e^{-x}$ : c'est un produit $u \\cdot v$ avec $u(x) = 1 - x$ et $v(x) = e^{-x}$.",
+          "$u'(x) = -1$ et $v'(x) = -e^{-x}$. Applique $(uv)' = u'v + uv'$, puis factorise par $e^{-x}$.",
+          "$[(1-x)e^{-x}]' = -e^{-x} + (1-x)(-e^{-x}) = e^{-x}(-1 - 1 + x) = (x - 2) e^{-x}$."
+        ],
+        "expectedAnswer": "$g'(x) = (x - 2) e^{-x}$",
+        "solution": "La fonction $g(x) = (1 - x) e^{-x} + 2$ contient le produit $u(x) \\cdot v(x)$ avec $u(x) = 1 - x$ et $v(x) = e^{-x}$.\n\nOn a $u'(x) = -1$ et $v'(x) = -e^{-x}$ (règle $(e^{ax+b})' = a \\, e^{ax+b}$ avec $a = -1$).\n\nPar la règle du produit :\n\n$$[(1-x)e^{-x}]' = (-1) \\cdot e^{-x} + (1-x) \\cdot (-e^{-x}) = -e^{-x} - (1-x) e^{-x}.$$\n\nOn factorise par $e^{-x}$ :\n\n$$= e^{-x}\\bigl[-1 - (1-x)\\bigr] = e^{-x}(-1 - 1 + x) = (x - 2) e^{-x}.$$\n\nComme la dérivée de la constante $2$ est nulle, on obtient :\n\n$$g'(x) = (x - 2) e^{-x}.$$"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "En déduire les variations de $g$ sur $\\mathbb{R}$, et préciser la valeur du minimum de $g$.",
+        "marks": 1,
+        "hints": [
+          "Comme $e^{-x} > 0$, le signe de $g'(x) = (x-2) e^{-x}$ est celui de $(x - 2)$.",
+          "$g'(x) = 0 \\iff x = 2$. Négatif pour $x < 2$, positif pour $x > 2$.",
+          "Minimum en $x = 2$ : $g(2) = (1 - 2) e^{-2} + 2 = -e^{-2} + 2 = 2 - \\dfrac{1}{e^2}$."
+        ],
+        "expectedAnswer": "Minimum en $x = 2$ : $g(2) = 2 - e^{-2}$",
+        "solution": "D'après la question précédente, $g'(x) = (x - 2) e^{-x}$. Comme $e^{-x} > 0$ pour tout $x$, le signe de $g'(x)$ est celui de $(x - 2)$ :\n\n- $g'(x) < 0$ pour $x < 2$ ;\n- $g'(2) = 0$ ;\n- $g'(x) > 0$ pour $x > 2$.\n\nDonc $g$ est strictement **décroissante** sur $]-\\infty \\, ; \\, 2]$ et strictement **croissante** sur $[2 \\, ; \\, +\\infty[$.\n\n$g$ admet un **minimum** en $x = 2$, de valeur :\n\n$$g(2) = (1 - 2) e^{-2} + 2 = -e^{-2} + 2 = 2 - \\frac{1}{e^2}.$$"
+      }
+    ]
+  },
+  {
+    "id": "e-exponentielle-003",
+    "chapter": "exponentielle",
+    "title": "Propriétés algébriques et étude de $f(x) = e^{2x} - 2e^x + 1$",
+    "difficulty": 3,
+    "estimatedMinutes": 35,
+    "totalMarks": 5,
+    "order": 30,
+    "tags": ["factorisation", "equation-exponentielle", "derivee", "variations", "signe"],
+    "preamble": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par :\n\n$$f(x) = e^{2x} - 2 e^x + 1.$$\n\nOn note $\\mathcal{C}_f$ sa courbe représentative dans un repère orthogonal.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "En posant $X = e^x$, montrer que $f(x) = (e^x - 1)^2$. En déduire que $f(x) \\geq 0$ pour tout réel $x$.",
+        "marks": 1.5,
+        "hints": [
+          "Développe $(e^x - 1)^2$ en utilisant l'identité $(A - B)^2 = A^2 - 2AB + B^2$ avec $A = e^x$ et $B = 1$.",
+          "$(e^x - 1)^2 = (e^x)^2 - 2 e^x \\cdot 1 + 1^2 = e^{2x} - 2e^x + 1$.",
+          "C'est bien $f(x)$. Comme c'est un carré, $f(x) = (e^x - 1)^2 \\geq 0$."
+        ],
+        "expectedAnswer": "$f(x) = (e^x - 1)^2 \\geq 0$",
+        "solution": "On développe $(e^x - 1)^2$ par l'identité $(A - B)^2 = A^2 - 2AB + B^2$ avec $A = e^x$ et $B = 1$ :\n\n$$(e^x - 1)^2 = (e^x)^2 - 2 \\cdot e^x \\cdot 1 + 1^2 = e^{2x} - 2 e^x + 1 = f(x).$$\n\nDonc $f(x) = (e^x - 1)^2$.\n\nComme $f(x)$ est un **carré**, on a $f(x) \\geq 0$ pour tout réel $x$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Résoudre l'équation $f(x) = 0$.",
+        "marks": 1,
+        "hints": [
+          "D'après la question 1, $f(x) = (e^x - 1)^2 = 0$.",
+          "Un carré est nul si et seulement si la base est nulle : $e^x - 1 = 0$.",
+          "$e^x = 1 = e^0$, donc $x = 0$."
+        ],
+        "expectedAnswer": "$x = 0$",
+        "solution": "$f(x) = 0 \\iff (e^x - 1)^2 = 0 \\iff e^x - 1 = 0 \\iff e^x = 1 = e^0 \\iff x = 0$.\n\nL'ensemble solution est $\\{0\\}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $f'(x)$ pour tout réel $x$. On précisera le signe de $f'(x)$.",
+        "marks": 1.5,
+        "hints": [
+          "Dérive $f(x) = e^{2x} - 2 e^x + 1$ terme à terme. $(e^{2x})' = ?$",
+          "$(e^{2x})' = 2 e^{2x}$ (formule avec $a = 2$) et $(2e^x)' = 2 e^x$.",
+          "$f'(x) = 2e^{2x} - 2e^x = 2e^x(e^x - 1)$. Étudie le signe."
+        ],
+        "expectedAnswer": "$f'(x) = 2e^x(e^x - 1)$",
+        "solution": "Par linéarité et formule de dérivation :\n\n$$f'(x) = (e^{2x})' - 2(e^x)' + (1)' = 2 e^{2x} - 2 e^x + 0 = 2 e^{2x} - 2 e^x.$$\n\nOn factorise par $2 e^x$ (qui est strictement positif) :\n\n$$f'(x) = 2 e^x (e^x - 1).$$\n\n**Signe :** Comme $2 e^x > 0$ toujours, le signe de $f'(x)$ est celui de $(e^x - 1)$.\n\n$e^x - 1 < 0 \\iff e^x < 1 = e^0 \\iff x < 0$. Donc :\n\n- $f'(x) < 0$ pour $x < 0$ ;\n- $f'(0) = 0$ ;\n- $f'(x) > 0$ pour $x > 0$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Dresser le tableau de variations de $f$ sur $\\mathbb{R}$ et déterminer le minimum de $f$.",
+        "marks": 1,
+        "hints": [
+          "D'après la question 3, $f$ est décroissante avant $0$ et croissante après $0$.",
+          "$f(0) = (e^0 - 1)^2 = 0$.",
+          "$f$ admet un minimum global de valeur $0$ en $x = 0$."
+        ],
+        "expectedAnswer": "Minimum en $x = 0$, $f(0) = 0$",
+        "solution": "D'après le signe de $f'$ :\n\n- $f$ est strictement **décroissante** sur $]-\\infty \\, ; \\, 0]$ ;\n- $f$ est strictement **croissante** sur $[0 \\, ; \\, +\\infty[$.\n\n$f$ admet un **minimum** en $x = 0$, de valeur :\n\n$$f(0) = (e^0 - 1)^2 = (1 - 1)^2 = 0.$$\n\nOn retrouve le résultat de la question 1 : $f(x) \\geq 0$ pour tout $x$, avec égalité uniquement en $x = 0$.\n\n**Tableau de variations :**\n\n| $x$ | $-\\infty$ | | $0$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| $f'(x)$ | | $-$ | $0$ | $+$ | |\n| $f(x)$ | | $\\searrow$ | $0$ | $\\nearrow$ | |"
+      }
+    ]
+  }
+]
