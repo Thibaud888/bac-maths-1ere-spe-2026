@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import AppLayout from '@/components/layout/AppLayout';
 import ChapterLayout from '@/components/layout/ChapterLayout';
 import HomePage from '@/routes/HomePage';
+import BacBlancPage from '@/routes/BacBlancPage';
 import NotFoundPage from '@/routes/NotFoundPage';
 import FormularyPage from '@/routes/chapter/FormularyPage';
 import AutomatismsPage from '@/routes/chapter/AutomatismsPage';
@@ -13,6 +14,7 @@ export default function App() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/bac-blanc" element={<BacBlancPage />} />
         <Route path="/chapitre/:slug" element={<ChapterLayout />}>
           <Route index element={<Navigate to="formulaire" replace />} />
           <Route path="formulaire" element={<FormularyPage />} />

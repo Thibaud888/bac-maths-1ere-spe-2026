@@ -145,3 +145,28 @@ export type ChapterContent = {
   classics: ClassicExercise[];
   examStyle: ExamExercise[];
 };
+
+export type BacBlancPart1 = {
+  title: string;
+  description?: string;
+  totalMarks: number;
+  automatismIds: string[];
+};
+
+export type BacBlancPart2 = {
+  title: string;
+  description?: string;
+  totalMarks: number;
+  exerciseIds: string[];
+};
+
+export type BacBlancPaper = {
+  id: string;
+  title: string;
+  subtitle?: string;
+  order: number;
+  durationMinutes: number;
+  part1: BacBlancPart1;
+  part2: BacBlancPart2;
+  tags?: string[];
+};

@@ -26,6 +26,10 @@ export default function Sidebar() {
           Accueil
         </NavLink>
 
+        <NavLink to="/bac-blanc" className={navLinkClass}>
+          Bac blanc
+        </NavLink>
+
         {chapters.length > 0 && (
           <p className="mt-4 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
             Chapitres

@@ -86,6 +86,57 @@ for (const slug of readdirSync(chaptersDir)) {
   }
 }
 
+// --- Bac blanc ---
+const bacBlancDir = join(root, 'content', 'bac-blanc');
+const paperSchema = JSON.parse(
+  readFileSync(join(root, 'schemas', 'bac-blanc-paper.schema.json'), 'utf8')
+);
+const paperValidator = ajv.compile(paperSchema);
+const bacBlancValidators = {
+  papers: paperValidator,
+  automatisms: validators.automatisms,
+  'exam-style': validators['exam-style'],
+};
+if (safeStat(bacBlancDir)) {
+  for (const [type, validate] of Object.entries(bacBlancValidators)) {
+    const filePath = join(bacBlancDir, `${type}.json`);
+    if (!safeStat(filePath)) continue;
+    let data;
+    try {
+      data = JSON.parse(readFileSync(filePath, 'utf8'));
+    } catch (err) {
+      invalid += 1;
+      problems.push({
+        file: filePath,
+        message: `JSON invalide : ${err.message}`,
+      });
+      continue;
+    }
+    if (!Array.isArray(data)) {
+      invalid += 1;
+      problems.push({
+        file: filePath,
+        message: `Le fichier doit contenir un tableau (reçu ${typeof data}).`,
+      });
+      continue;
+    }
+    data.forEach((item, idx) => {
+      total += 1;
+      const ok = validate(item);
+      if (!ok) {
+        invalid += 1;
+        const id = item?.id ?? `<sans id, index ${idx}>`;
+        problems.push({
+          file: filePath,
+          message: `[${id}] ${(validate.errors ?? [])
+            .map((e) => `${e.instancePath || '<root>'} ${e.message ?? '?'}`)
+            .join(' ; ')}`,
+        });
+      }
+    });
+  }
+}
+
 console.log(`Validés : ${total - invalid} / ${total}`);
 if (problems.length === 0) {
   console.log('✓ Tout le contenu est conforme aux schémas.');
