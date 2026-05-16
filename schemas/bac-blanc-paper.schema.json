@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "bac-blanc-paper.schema.json",
+  "title": "Bac blanc — Sujet complet",
+  "description": "Sujet de bac blanc reproduisant le format de l'Épreuve Anticipée de Mathématiques (EAM) du baccalauréat session 2026. Un sujet = Partie 1 (automatismes, 6 pts) + Partie 2 (2 exercices, 14 pts), durée totale 2h, sans calculatrice. Les automatismes et exercices sont référencés par leur identifiant ; leur contenu vit dans automatisms.json et exam-style.json sous content/bac-blanc/.",
+  "type": "object",
+  "required": ["id", "title", "order", "durationMinutes", "part1", "part2"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^bb-[a-z0-9-]+$",
+      "description": "Identifiant. Format: bb-<slug>. Ex: bb-2026-01"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Sous-titre ou contexte. Ex: 'Sujet d'entraînement — début d'année'."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "durationMinutes": {
+      "type": "integer",
+      "minimum": 30,
+      "maximum": 240,
+      "description": "Durée totale de l'épreuve en minutes. Pour l'EAM 2026 : 120."
+    },
+    "part1": {
+      "type": "object",
+      "required": ["title", "totalMarks", "automatismIds"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {"type": "string"},
+        "description": {"type": "string"},
+        "totalMarks": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Barème de la Partie 1. Pour l'EAM : 6."
+        },
+        "automatismIds": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "pattern": "^a-[a-z0-9-]+$"
+          },
+          "description": "Identifiants des automatismes (résolus dans automatisms.json du dossier content/bac-blanc/)."
+        }
+      }
+    },
+    "part2": {
+      "type": "object",
+      "required": ["title", "totalMarks", "exerciseIds"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {"type": "string"},
+        "description": {"type": "string"},
+        "totalMarks": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 20,
+          "description": "Barème de la Partie 2. Pour l'EAM : 14."
+        },
+        "exerciseIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "string",
+            "pattern": "^e-[a-z0-9-]+$"
+          },
+          "description": "Identifiants des exercices Partie 2 (résolus dans exam-style.json du dossier content/bac-blanc/)."
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}
