@@ -54,8 +54,7 @@ export default function FormulaCard({
   return (
     <article
       className={[
-        'rounded-xl border border-l-4 border-slate-100 p-4 shadow-sm transition-shadow hover:shadow-md',
-        level.border,
+        'rounded-xl border border-slate-100 p-4 shadow-sm transition-shadow hover:shadow-md',
         bg,
       ].join(' ')}
     >
