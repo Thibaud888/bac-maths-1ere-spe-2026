@@ -53,8 +53,7 @@ export default function SimplifiedFormulaCard({
   const palette = CARD_PALETTE[(index - 1) % CARD_PALETTE.length] ?? CARD_PALETTE[0] ?? { bg: 'bg-gradient-to-br from-rose-100 to-white' as const, visual: 'bg-rose-100 text-rose-900' as const };
 
   const cardClass = [
-    'rounded-xl border border-l-4 border-slate-100 p-5 shadow-sm transition-shadow hover:shadow-md',
-    accentBorder[accent],
+    'rounded-xl border border-slate-100 p-5 shadow-sm transition-shadow hover:shadow-md',
     palette.bg,
   ].join(' ');
 
