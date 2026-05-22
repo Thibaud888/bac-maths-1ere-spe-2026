@@ -11,12 +11,12 @@ const accentBorder: Record<FormulaSimplifiedAccent, string> = {
 };
 
 const accentChip: Record<FormulaSimplifiedAccent, string> = {
-  red: 'bg-red-100 text-red-700',
-  blue: 'bg-blue-100 text-blue-700',
-  amber: 'bg-amber-100 text-amber-700',
-  emerald: 'bg-emerald-100 text-emerald-700',
-  violet: 'bg-violet-100 text-violet-700',
-  slate: 'bg-slate-200 text-slate-700',
+  red: 'bg-red-50 text-red-700 ring-1 ring-red-500/30',
+  blue: 'bg-blue-50 text-blue-700 ring-1 ring-blue-500/30',
+  amber: 'bg-amber-50 text-amber-700 ring-1 ring-amber-500/30',
+  emerald: 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-500/30',
+  violet: 'bg-violet-50 text-violet-700 ring-1 ring-violet-500/30',
+  slate: 'bg-slate-100 text-slate-700 ring-1 ring-slate-300/60',
 };
 
 const defaultAccent: Record<FormulaLevel, FormulaSimplifiedAccent> = {
@@ -25,15 +25,14 @@ const defaultAccent: Record<FormulaLevel, FormulaSimplifiedAccent> = {
   approfondissement: 'amber',
 };
 
-// 6-color cycling palette — warm/cool alternation, same sequence as FormulaCard
-// so the visual language is consistent across both modes.
+// Dégradés cohérents avec FormulaCard — même séquence chaud/froid.
 const CARD_PALETTE = [
-  { bg: 'bg-rose-50/80',    visual: 'bg-rose-100/60 text-rose-900' },
-  { bg: 'bg-sky-50/80',     visual: 'bg-sky-100/60 text-sky-900' },
-  { bg: 'bg-amber-50/70',   visual: 'bg-amber-100/60 text-amber-900' },
-  { bg: 'bg-emerald-50/80', visual: 'bg-emerald-100/60 text-emerald-900' },
-  { bg: 'bg-violet-50/70',  visual: 'bg-violet-100/60 text-violet-900' },
-  { bg: 'bg-teal-50/70',    visual: 'bg-teal-100/60 text-teal-900' },
+  { bg: 'bg-gradient-to-br from-rose-100 to-white',    visual: 'bg-rose-100 text-rose-900' },
+  { bg: 'bg-gradient-to-br from-sky-100 to-white',     visual: 'bg-sky-100 text-sky-900' },
+  { bg: 'bg-gradient-to-br from-amber-100 to-white',   visual: 'bg-amber-100 text-amber-900' },
+  { bg: 'bg-gradient-to-br from-emerald-100 to-white', visual: 'bg-emerald-100 text-emerald-900' },
+  { bg: 'bg-gradient-to-br from-violet-100 to-white',  visual: 'bg-violet-100 text-violet-900' },
+  { bg: 'bg-gradient-to-br from-cyan-100 to-white',    visual: 'bg-cyan-100 text-cyan-900' },
 ] as const;
 
 type Props = {
@@ -51,10 +50,10 @@ export default function SimplifiedFormulaCard({
 }: Props) {
   const accent = formula.simplified?.accent ?? defaultAccent[formula.level];
   const s = formula.simplified;
-  const palette = CARD_PALETTE[(index - 1) % CARD_PALETTE.length] ?? CARD_PALETTE[0] ?? { bg: 'bg-rose-50/80' as const, visual: 'bg-rose-100/60 text-rose-900' as const };
+  const palette = CARD_PALETTE[(index - 1) % CARD_PALETTE.length] ?? CARD_PALETTE[0] ?? { bg: 'bg-gradient-to-br from-rose-100 to-white' as const, visual: 'bg-rose-100 text-rose-900' as const };
 
   const cardClass = [
-    'rounded border border-l-4 border-slate-200 p-5 shadow-sm',
+    'rounded-xl border border-l-4 border-slate-100 p-5 shadow-sm transition-shadow hover:shadow-md',
     accentBorder[accent],
     palette.bg,
   ].join(' ');

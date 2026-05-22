@@ -7,33 +7,32 @@ const levelStyle: Record<
 > = {
   essentiel: {
     label: 'Essentiel',
-    chip: 'bg-red-100 text-red-700',
+    chip: 'bg-red-50 text-red-700 ring-1 ring-red-500/30',
     border: 'border-l-red-500',
     numBadge: 'bg-red-500 text-white',
   },
   'a-connaitre': {
     label: 'À connaître',
-    chip: 'bg-blue-100 text-blue-700',
+    chip: 'bg-blue-50 text-blue-700 ring-1 ring-blue-500/30',
     border: 'border-l-blue-500',
     numBadge: 'bg-blue-500 text-white',
   },
   approfondissement: {
     label: 'Approfondissement',
-    chip: 'bg-amber-100 text-amber-700',
+    chip: 'bg-amber-50 text-amber-700 ring-1 ring-amber-500/30',
     border: 'border-l-amber-500',
     numBadge: 'bg-amber-500 text-white',
   },
 };
 
-// 6-color cycling palette — warm/cool alternation ensures elegance and no two
-// consecutive cards share the same background.
+// Dégradés chauds/froids alternés — plus vivants et distincts qu'un aplat pâle.
 const CARD_BG = [
-  'bg-rose-50/80',
-  'bg-sky-50/80',
-  'bg-amber-50/70',
-  'bg-emerald-50/80',
-  'bg-violet-50/70',
-  'bg-teal-50/70',
+  'bg-gradient-to-br from-rose-100 to-white',
+  'bg-gradient-to-br from-sky-100 to-white',
+  'bg-gradient-to-br from-amber-100 to-white',
+  'bg-gradient-to-br from-emerald-100 to-white',
+  'bg-gradient-to-br from-violet-100 to-white',
+  'bg-gradient-to-br from-cyan-100 to-white',
 ] as const;
 
 type FormulaCardProps = {
@@ -55,7 +54,7 @@ export default function FormulaCard({
   return (
     <article
       className={[
-        'rounded border border-l-4 border-slate-200 p-4 shadow-sm',
+        'rounded-xl border border-l-4 border-slate-100 p-4 shadow-sm transition-shadow hover:shadow-md',
         level.border,
         bg,
       ].join(' ')}
@@ -116,7 +115,7 @@ export default function FormulaCard({
               <summary className="cursor-pointer text-xs font-medium text-blue-600 hover:underline">
                 Exemple
               </summary>
-              <div className="mt-2 rounded bg-white/70 p-3 text-slate-700">
+              <div className="mt-2 rounded-lg bg-white/80 p-3 text-slate-700 ring-1 ring-black/5">
                 <TextWithMath text={formula.example} />
               </div>
             </details>
@@ -127,7 +126,7 @@ export default function FormulaCard({
               {formula.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded bg-white/60 px-2 py-0.5 text-xs text-slate-600"
+                  className="rounded-full bg-white/80 px-2 py-0.5 text-xs text-slate-600 ring-1 ring-black/10"
                 >
                   {tag}
                 </span>
