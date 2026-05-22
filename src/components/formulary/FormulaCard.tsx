@@ -3,24 +3,21 @@ import type { Formula, FormulaLevel } from '@/lib/types';
 
 const levelStyle: Record<
   FormulaLevel,
-  { label: string; chip: string; border: string; numBadge: string }
+  { label: string; chip: string; numBadge: string }
 > = {
   essentiel: {
     label: 'Essentiel',
     chip: 'bg-red-50 text-red-700 ring-1 ring-red-500/30',
-    border: 'border-l-red-500',
     numBadge: 'bg-red-500 text-white',
   },
   'a-connaitre': {
     label: 'À connaître',
     chip: 'bg-blue-50 text-blue-700 ring-1 ring-blue-500/30',
-    border: 'border-l-blue-500',
     numBadge: 'bg-blue-500 text-white',
   },
   approfondissement: {
     label: 'Approfondissement',
     chip: 'bg-amber-50 text-amber-700 ring-1 ring-amber-500/30',
-    border: 'border-l-amber-500',
     numBadge: 'bg-amber-500 text-white',
   },
 };
