@@ -1,20 +1,5 @@
 import { TextWithMath } from '@/components/math/TextWithMath';
-import type { Formula, FormulaLevel, FormulaSimplifiedAccent } from '@/lib/types';
-
-const accentChip: Record<FormulaSimplifiedAccent, string> = {
-  red: 'bg-red-50 text-red-700 ring-1 ring-red-500/30',
-  blue: 'bg-blue-50 text-blue-700 ring-1 ring-blue-500/30',
-  amber: 'bg-amber-50 text-amber-700 ring-1 ring-amber-500/30',
-  emerald: 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-500/30',
-  violet: 'bg-violet-50 text-violet-700 ring-1 ring-violet-500/30',
-  slate: 'bg-slate-100 text-slate-700 ring-1 ring-slate-300/60',
-};
-
-const defaultAccent: Record<FormulaLevel, FormulaSimplifiedAccent> = {
-  essentiel: 'red',
-  'a-connaitre': 'blue',
-  approfondissement: 'amber',
-};
+import type { Formula } from '@/lib/types';
 
 // Dégradés cohérents avec FormulaCard — même séquence chaud/froid.
 const CARD_PALETTE = [
@@ -39,7 +24,6 @@ export default function SimplifiedFormulaCard({
   hidden,
   onToggleHidden,
 }: Props) {
-  const accent = formula.simplified?.accent ?? defaultAccent[formula.level];
   const s = formula.simplified;
   const palette = CARD_PALETTE[(index - 1) % CARD_PALETTE.length] ?? CARD_PALETTE[0] ?? { bg: 'bg-gradient-to-br from-rose-100 to-white' as const, visual: 'bg-rose-100 text-rose-900' as const };
 
@@ -54,8 +38,6 @@ export default function SimplifiedFormulaCard({
         <CardHeader
           title={formula.title}
           index={index}
-          accent={accent}
-          keyword={undefined}
           hidden={hidden}
           onToggleHidden={onToggleHidden}
         />
@@ -78,8 +60,6 @@ export default function SimplifiedFormulaCard({
       <CardHeader
         title={formula.title}
         index={index}
-        accent={accent}
-        keyword={s.keyword}
         hidden={hidden}
         onToggleHidden={onToggleHidden}
       />
@@ -115,20 +95,11 @@ export default function SimplifiedFormulaCard({
 type CardHeaderProps = {
   title: string;
   index: number;
-  accent: FormulaSimplifiedAccent;
-  keyword: string | undefined;
   hidden: boolean;
   onToggleHidden: () => void;
 };
 
-function CardHeader({
-  title,
-  index,
-  accent,
-  keyword,
-  hidden,
-  onToggleHidden,
-}: CardHeaderProps) {
+function CardHeader({ title, index, hidden, onToggleHidden }: CardHeaderProps) {
   return (
     <header className="flex items-start justify-between gap-3">
       <h3 className="text-sm font-semibold text-slate-900">
@@ -136,16 +107,6 @@ function CardHeader({
         <TextWithMath text={title} />
       </h3>
       <div className="flex shrink-0 items-center gap-2">
-        {keyword && !hidden && (
-          <span
-            className={[
-              'rounded-full px-2 py-0.5 text-xs font-medium',
-              accentChip[accent],
-            ].join(' ')}
-          >
-            {keyword}
-          </span>
-        )}
         <button
           type="button"
           onClick={onToggleHidden}
