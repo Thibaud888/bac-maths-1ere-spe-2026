@@ -1,15 +1,6 @@
 import { TextWithMath } from '@/components/math/TextWithMath';
 import type { Formula, FormulaLevel, FormulaSimplifiedAccent } from '@/lib/types';
 
-const accentBorder: Record<FormulaSimplifiedAccent, string> = {
-  red: 'border-l-red-500',
-  blue: 'border-l-blue-500',
-  amber: 'border-l-amber-500',
-  emerald: 'border-l-emerald-500',
-  violet: 'border-l-violet-500',
-  slate: 'border-l-slate-400',
-};
-
 const accentChip: Record<FormulaSimplifiedAccent, string> = {
   red: 'bg-red-50 text-red-700 ring-1 ring-red-500/30',
   blue: 'bg-blue-50 text-blue-700 ring-1 ring-blue-500/30',
