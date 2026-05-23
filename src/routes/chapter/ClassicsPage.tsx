@@ -16,17 +16,17 @@ const statusStyle: Record<
 > = {
   'not-started': {
     dot: 'bg-slate-300',
-    chip: 'bg-slate-100 text-slate-600',
+    chip: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300',
     label: 'Pas commencé',
   },
   'in-progress': {
     dot: 'bg-amber-500',
-    chip: 'bg-amber-100 text-amber-800',
+    chip: 'bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300',
     label: 'À retravailler',
   },
   completed: {
     dot: 'bg-green-500',
-    chip: 'bg-green-100 text-green-800',
+    chip: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300',
     label: 'Réussi',
   },
 };
@@ -79,7 +79,7 @@ export default function ClassicsPage() {
 
   if (exercises.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl p-6 text-sm text-slate-600">
+      <div className="mx-auto max-w-3xl p-6 text-sm text-slate-600 dark:text-slate-400">
         Aucun exercice classique pour ce chapitre pour le moment.
       </div>
     );
@@ -106,7 +106,7 @@ export default function ClassicsPage() {
                   onClick={() => {
                     setActive(exo.id);
                   }}
-                  className="flex w-full items-center justify-between gap-3 rounded border border-slate-200 bg-white p-3 text-left hover:border-blue-400"
+                  className="flex w-full items-center justify-between gap-3 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 text-left hover:border-blue-400 dark:hover:border-blue-500"
                 >
                   <div className="flex min-w-0 items-center gap-3">
                     <span
@@ -114,10 +114,10 @@ export default function ClassicsPage() {
                       aria-hidden="true"
                     />
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-medium text-slate-900">
+                      <p className="truncate text-sm font-medium text-slate-900 dark:text-slate-100">
                         <TextWithMath text={exo.title} />
                       </p>
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
                         {difficultyLabel[exo.difficulty]} · ~{exo.estimatedMinutes} min · {total} question{total > 1 ? 's' : ''}
                       </p>
                     </div>

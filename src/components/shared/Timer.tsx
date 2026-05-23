@@ -54,10 +54,10 @@ export default function Timer({
       className={[
         'inline-block rounded px-2 py-1 font-mono text-sm tabular-nums',
         expired
-          ? 'bg-red-100 text-red-700'
+          ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
           : danger
-            ? 'bg-amber-100 text-amber-800'
-            : 'bg-slate-100 text-slate-700',
+            ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400'
+            : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300',
       ].join(' ')}
       aria-live="polite"
     >

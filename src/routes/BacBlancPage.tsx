@@ -17,17 +17,17 @@ const statusStyle: Record<
 > = {
   'not-started': {
     dot: 'bg-slate-300',
-    chip: 'bg-slate-100 text-slate-600',
+    chip: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300',
     label: 'Pas commencé',
   },
   'in-progress': {
     dot: 'bg-amber-500',
-    chip: 'bg-amber-100 text-amber-800',
+    chip: 'bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300',
     label: 'En cours',
   },
   completed: {
     dot: 'bg-green-500',
-    chip: 'bg-green-100 text-green-800',
+    chip: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300',
     label: 'Terminé',
   },
 };
@@ -89,7 +89,7 @@ export default function BacBlancPage() {
 
   if (papers.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl p-6 text-sm text-slate-600">
+      <div className="mx-auto max-w-3xl p-6 text-sm text-slate-600 dark:text-slate-400">
         Aucun sujet de bac blanc disponible pour le moment.
       </div>
     );
@@ -111,10 +111,10 @@ export default function BacBlancPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-6 p-6">
       <section>
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
           Bac blanc
         </h2>
-        <p className="mt-2 text-sm text-slate-600">
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
           Sujets d'entraînement complets, format EAM 2026 : 2 heures, sans
           calculatrice. Chaque sujet comporte une Partie 1 d'automatismes
           (6 pts) et une Partie 2 de deux exercices indépendants (14 pts).
@@ -132,7 +132,7 @@ export default function BacBlancPage() {
                 onClick={() => {
                   setActive(paper.id);
                 }}
-                className="flex w-full items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white p-4 text-left transition-colors hover:border-blue-400"
+                className="flex w-full items-center justify-between gap-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 text-left transition-colors hover:border-blue-400 dark:hover:border-blue-500"
               >
                 <div className="flex min-w-0 items-center gap-3">
                   <span
@@ -140,15 +140,15 @@ export default function BacBlancPage() {
                     aria-hidden="true"
                   />
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-slate-900">
+                    <p className="truncate text-sm font-semibold text-slate-900 dark:text-slate-100">
                       {paper.title}
                     </p>
                     {paper.subtitle && (
-                      <p className="mt-0.5 truncate text-xs text-slate-600">
+                      <p className="mt-0.5 truncate text-xs text-slate-600 dark:text-slate-400">
                         {paper.subtitle}
                       </p>
                     )}
-                    <p className="mt-1 text-xs text-slate-500">
+                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
                       {paper.durationMinutes} min ·{' '}
                       {paper.part1.totalMarks + paper.part2.totalMarks} pts
                     </p>

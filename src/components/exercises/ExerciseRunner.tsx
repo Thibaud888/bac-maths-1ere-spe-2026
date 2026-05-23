@@ -20,7 +20,7 @@ export default function ExerciseRunner({
 
   if (!question) {
     return (
-      <div className="rounded border border-slate-200 bg-white p-4 text-sm text-slate-600">
+      <div className="rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 text-sm text-slate-600 dark:text-slate-400">
         Aucune question.
       </div>
     );
@@ -29,14 +29,14 @@ export default function ExerciseRunner({
   const isLast = cursor === exercise.questions.length - 1;
 
   return (
-    <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <article className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
       <header className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs uppercase tracking-wider text-slate-500">
+          <p className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
             Exercice classique · difficulté {exercise.difficulty} ·{' '}
             ~{exercise.estimatedMinutes} min
           </p>
-          <h2 className="mt-1 text-lg font-semibold text-slate-900">
+          <h2 className="mt-1 text-lg font-semibold text-slate-900 dark:text-slate-100">
             <TextWithMath text={exercise.title} />
           </h2>
         </div>
@@ -44,7 +44,7 @@ export default function ExerciseRunner({
           <button
             type="button"
             onClick={onClose}
-            className="text-sm text-slate-500 hover:text-slate-800"
+            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
           >
             Fermer
           </button>
@@ -52,17 +52,17 @@ export default function ExerciseRunner({
       </header>
 
       {exercise.preamble && (
-        <div className="mt-4 rounded bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
+        <div className="mt-4 rounded bg-slate-50 dark:bg-slate-700 p-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
           <TextWithMath text={exercise.preamble} />
         </div>
       )}
       {exercise.figure && <FigureRenderer figure={exercise.figure} />}
 
       <div className="mt-5">
-        <p className="text-sm font-semibold text-slate-900">
+        <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
           Question {question.label}
         </p>
-        <div className="mt-1 text-sm leading-relaxed text-slate-700">
+        <div className="mt-1 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
           <TextWithMath text={question.statement} />
         </div>
         {question.figure && <FigureRenderer figure={question.figure} />}
@@ -89,11 +89,11 @@ export default function ExerciseRunner({
           onClick={() => {
             setCursor((c) => c - 1);
           }}
-          className="rounded border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-40"
         >
           ← Précédente
         </button>
-        <span className="text-xs text-slate-500">
+        <span className="text-xs text-slate-500 dark:text-slate-400">
           {cursor + 1} / {exercise.questions.length}
         </span>
         <button
@@ -102,7 +102,7 @@ export default function ExerciseRunner({
           onClick={() => {
             setCursor((c) => c + 1);
           }}
-          className="rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+          className="rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300 dark:disabled:bg-slate-600"
         >
           Suivante →
         </button>

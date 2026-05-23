@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 import type { ChapterSlug } from '@/lib/types';
 
 export type FormularyViewMode = 'detailed' | 'simplified';
+export type Theme = 'light' | 'dark';
 
 type AppState = {
   lastVisitedChapter: string | null;
@@ -15,6 +16,8 @@ type AppState = {
   setFormularyViewMode: (slug: ChapterSlug, mode: FormularyViewMode) => void;
   hiddenFormulas: Partial<Record<ChapterSlug, string[]>>;
   toggleFormulaHidden: (slug: ChapterSlug, formulaId: string) => void;
+  theme: Theme;
+  toggleTheme: () => void;
 };
 
 export const useAppStore = create<AppState>()(
@@ -45,6 +48,10 @@ export const useAppStore = create<AppState>()(
             : [...current, formulaId];
           return { hiddenFormulas: { ...s.hiddenFormulas, [slug]: next } };
         });
+      },
+      theme: 'light',
+      toggleTheme: () => {
+        set((s) => ({ theme: s.theme === 'light' ? 'dark' : 'light' }));
       },
     }),
     { name: 'bms-2026-app' }

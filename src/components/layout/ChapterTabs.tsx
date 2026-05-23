@@ -11,8 +11,8 @@ const tabClass = ({ isActive }: { isActive: boolean }): string =>
   [
     'border-b-2 px-4 py-2 text-sm font-medium transition-colors',
     isActive
-      ? 'border-blue-600 text-blue-600'
-      : 'border-transparent text-slate-600 hover:border-slate-300 hover:text-slate-900',
+      ? 'border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400'
+      : 'border-transparent text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-900 dark:hover:text-slate-200',
   ].join(' ');
 
 export default function ChapterTabs() {
@@ -20,7 +20,7 @@ export default function ChapterTabs() {
   if (!slug) return null;
 
   return (
-    <nav className="flex gap-1 border-b border-slate-200 bg-white px-6">
+    <nav className="flex gap-1 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-6">
       {tabs.map((tab) => (
         <NavLink
           key={tab.to}

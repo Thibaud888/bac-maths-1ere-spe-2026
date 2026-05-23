@@ -30,12 +30,12 @@ export default function HomePage() {
   return (
     <div className="mx-auto max-w-4xl space-y-8 p-8">
       <section>
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
           Bac Maths · Première Spé · 2026
         </h2>
-        <p className="mt-2 text-sm text-slate-600">
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
           Application de révision pour l'Épreuve Anticipée de Mathématiques —{' '}
-          <span className="font-medium text-slate-800">
+          <span className="font-medium text-slate-800 dark:text-slate-200">
             vendredi 12 juin 2026, 8h-10h, sans calculatrice, coefficient 2.
           </span>
         </p>
@@ -48,17 +48,17 @@ export default function HomePage() {
       </section>
 
       <section>
-        <h3 className="text-lg font-semibold text-slate-900">Chapitres</h3>
+        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Chapitres</h3>
         <ul className="mt-3 space-y-2">
           {chapterContents.map(({ chapter, content }) => (
             <li key={chapter.slug}>
               <Link
                 to={`/chapitre/${chapter.slug}/formulaire`}
-                className="block rounded border border-slate-200 bg-white p-3 transition-colors hover:border-blue-400"
+                className="block rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 transition-colors hover:border-blue-400 dark:hover:border-blue-500"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-slate-900">{chapter.title}</span>
-                  <span className="text-xs text-slate-500">{chapter.domain}</span>
+                  <span className="text-sm font-medium text-slate-900 dark:text-slate-100">{chapter.title}</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">{chapter.domain}</span>
                 </div>
                 {content && (
                   <div className="mt-2 flex gap-4">
@@ -86,7 +86,7 @@ export default function HomePage() {
       </section>
 
       {lastVisited && (
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-slate-500 dark:text-slate-400">
           Dernier chapitre visité : <code>{lastVisited}</code>
         </p>
       )}
@@ -96,9 +96,9 @@ export default function HomePage() {
 
 function StatCard({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded border border-slate-200 bg-white p-4">
-      <p className="text-2xl font-semibold text-slate-900">{value}</p>
-      <p className="mt-1 text-xs text-slate-500">{label}</p>
+    <div className="rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">
+      <p className="text-2xl font-semibold text-slate-900 dark:text-slate-100">{value}</p>
+      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{label}</p>
     </div>
   );
 }
@@ -119,10 +119,10 @@ function ProgressPill({
     <span
       className={
         complete
-          ? 'text-xs font-semibold text-green-700'
+          ? 'text-xs font-semibold text-green-700 dark:text-green-400'
           : partial
-            ? 'text-xs text-blue-600'
-            : 'text-xs text-slate-400'
+            ? 'text-xs text-blue-600 dark:text-blue-400'
+            : 'text-xs text-slate-400 dark:text-slate-500'
       }
     >
       {done}/{total} {label}

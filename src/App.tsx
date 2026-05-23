@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import AppLayout from '@/components/layout/AppLayout';
+import { useAppStore } from '@/stores/app-store';
 import ChapterLayout from '@/components/layout/ChapterLayout';
 import HomePage from '@/routes/HomePage';
 import BacBlancPage from '@/routes/BacBlancPage';
@@ -10,6 +12,17 @@ import ClassicsPage from '@/routes/chapter/ClassicsPage';
 import ExamPage from '@/routes/chapter/ExamPage';
 
 export default function App() {
+  const theme = useAppStore((s) => s.theme);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [theme]);
+
   return (
     <Routes>
       <Route element={<AppLayout />}>

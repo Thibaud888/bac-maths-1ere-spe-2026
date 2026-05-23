@@ -32,7 +32,7 @@ export default function AutomatismsPage() {
 
   if (automatisms.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl p-6 text-sm text-slate-600">
+      <div className="mx-auto max-w-3xl p-6 text-sm text-slate-600 dark:text-slate-400">
         Aucun automatisme pour ce chapitre pour le moment.
       </div>
     );
@@ -50,19 +50,19 @@ export default function AutomatismsPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-4 p-6">
       <header className="flex items-center justify-between gap-3">
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-slate-600 dark:text-slate-400">
           Question {Math.min(cursor + 1, session.length)} / {session.length}
         </p>
         <button
           type="button"
           onClick={restart}
-          className="text-xs text-blue-600 hover:underline"
+          className="text-xs text-blue-600 dark:text-blue-400 hover:underline"
         >
           Recommencer une session
         </button>
       </header>
 
-      <div className="flex flex-wrap items-center gap-3 rounded border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-700">
+      <div className="flex flex-wrap items-center gap-3 rounded border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs text-slate-700 dark:text-slate-300">
         <label className="inline-flex cursor-pointer items-center gap-2">
           <input
             type="checkbox"
@@ -76,13 +76,13 @@ export default function AutomatismsPage() {
         </label>
         {timerEnabled && (
           <div className="inline-flex items-center gap-2">
-            <span className="text-slate-500">durée :</span>
+            <span className="text-slate-500 dark:text-slate-400">durée :</span>
             <select
               value={timerSeconds}
               onChange={(e) => {
                 setTimerSeconds(Number(e.target.value));
               }}
-              className="rounded border border-slate-300 bg-white px-2 py-1 text-xs"
+              className="rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 px-2 py-1 text-xs"
             >
               {TIMER_PRESETS.map((s) => (
                 <option key={s} value={s}>
@@ -105,11 +105,11 @@ export default function AutomatismsPage() {
       )}
 
       {isFinished && (
-        <div className="rounded-lg border border-blue-200 bg-blue-50 p-6 text-center">
-          <h3 className="text-lg font-semibold text-slate-900">
+        <div className="rounded-lg border border-blue-200 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/20 p-6 text-center">
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
             Session terminée
           </h3>
-          <p className="mt-2 text-sm text-slate-700">
+          <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
             {sessionCorrect} / {session.length} réussite(s) (cumul historique du chapitre).
           </p>
           <button
