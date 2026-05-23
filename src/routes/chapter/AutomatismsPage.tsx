@@ -16,19 +16,25 @@ export default function AutomatismsPage() {
 
   const [sessionId, setSessionId] = useState(0);
   const [cursor, setCursor] = useState(0);
+  const [sessionSuccesses, setSessionSuccesses] = useState(0);
 
   const timerEnabled = useAppStore((s) => s.automatismTimerEnabled);
   const setTimerEnabled = useAppStore((s) => s.setAutomatismTimerEnabled);
   const timerSeconds = useAppStore((s) => s.automatismTimerSeconds);
   const setTimerSeconds = useAppStore((s) => s.setAutomatismTimerSeconds);
-
-  const session: Automatism[] = useMemo(
-    () => shuffle(automatisms),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [sessionId, automatisms.length, slug]
-  );
+  const filterSucceeded = useAppStore((s) => s.automatismFilterSucceeded);
+  const setFilterSucceeded = useAppStore((s) => s.setAutomatismFilterSucceeded);
 
   const items = useProgressStore((s) => s.items);
+
+  // Pool figé au démarrage de la session (snapshot de items au moment du calcul).
+  // items n'est pas dans les dépendances pour éviter un reshuffling mid-session.
+  const session: Automatism[] = useMemo(() => {
+    const pending = automatisms.filter((a) => !items[a.id]?.succeeded);
+    const pool = filterSucceeded && pending.length > 0 ? pending : automatisms;
+    return shuffle(pool);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessionId, automatisms.length, slug]);
 
   if (automatisms.length === 0) {
     return (
@@ -40,19 +46,42 @@ export default function AutomatismsPage() {
 
   const current = session[cursor];
   const isFinished = cursor >= session.length;
-  const sessionCorrect = session.filter((a) => items[a.id]?.succeeded).length;
+
+  // Compteurs globaux (historique, pas spécifiques à la session).
+  const totalSucceeded = automatisms.filter((a) => items[a.id]?.succeeded).length;
+  const totalPending = automatisms.length - totalSucceeded;
 
   const restart = (): void => {
     setSessionId((n) => n + 1);
     setCursor(0);
+    setSessionSuccesses(0);
+  };
+
+  const handleFilterChange = (checked: boolean): void => {
+    setFilterSucceeded(checked);
+    restart();
   };
 
   return (
     <div className="mx-auto max-w-3xl space-y-4 p-6">
       <header className="flex items-center justify-between gap-3">
-        <p className="text-sm text-slate-600 dark:text-slate-400">
-          Question {Math.min(cursor + 1, session.length)} / {session.length}
-        </p>
+        <div className="flex flex-col gap-0.5">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            Question {Math.min(cursor + 1, session.length)} / {session.length}
+            {cursor > 0 && (
+              <span className="ml-3 font-medium text-green-600 dark:text-green-400">
+                ✓ {sessionSuccesses} réussi{sessionSuccesses !== 1 ? 's' : ''}
+              </span>
+            )}
+          </p>
+          {filterSucceeded && totalPending < automatisms.length && (
+            <p className="text-xs text-slate-400 dark:text-slate-500">
+              {totalPending > 0
+                ? `${totalPending} à travailler · ${totalSucceeded} déjà réussi${totalSucceeded !== 1 ? 's' : ''}`
+                : `Tous les ${automatisms.length} automatismes sont réussis — on revoit tout !`}
+            </p>
+          )}
+        </div>
         <button
           type="button"
           onClick={restart}
@@ -92,6 +121,17 @@ export default function AutomatismsPage() {
             </select>
           </div>
         )}
+        <label className="inline-flex cursor-pointer items-center gap-2">
+          <input
+            type="checkbox"
+            checked={filterSucceeded}
+            onChange={(e) => {
+              handleFilterChange(e.target.checked);
+            }}
+            className="h-4 w-4 cursor-pointer"
+          />
+          <span className="font-medium">Masquer les exercices déjà réussis</span>
+        </label>
       </div>
 
       {!isFinished && current && (
@@ -99,6 +139,9 @@ export default function AutomatismsPage() {
           automatism={current}
           onNext={() => {
             setCursor((c) => c + 1);
+          }}
+          onResult={(ok) => {
+            if (ok) setSessionSuccesses((n) => n + 1);
           }}
           timerSeconds={timerEnabled ? timerSeconds : null}
         />
@@ -110,7 +153,13 @@ export default function AutomatismsPage() {
             Session terminée
           </h3>
           <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
-            {sessionCorrect} / {session.length} réussite(s) (cumul historique du chapitre).
+            Cette session :{' '}
+            <span className="font-semibold text-green-700 dark:text-green-400">
+              {sessionSuccesses} / {session.length} réussi{sessionSuccesses !== 1 ? 's' : ''}
+            </span>
+          </p>
+          <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            Total du chapitre : {totalSucceeded} / {automatisms.length} réussi{totalSucceeded !== 1 ? 's' : ''}
           </p>
           <button
             type="button"

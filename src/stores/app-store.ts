@@ -12,6 +12,8 @@ type AppState = {
   setAutomatismTimerEnabled: (enabled: boolean) => void;
   automatismTimerSeconds: number;
   setAutomatismTimerSeconds: (seconds: number) => void;
+  automatismFilterSucceeded: boolean;
+  setAutomatismFilterSucceeded: (v: boolean) => void;
   formularyViewMode: Partial<Record<ChapterSlug, FormularyViewMode>>;
   setFormularyViewMode: (slug: ChapterSlug, mode: FormularyViewMode) => void;
   hiddenFormulas: Partial<Record<ChapterSlug, string[]>>;
@@ -34,6 +36,10 @@ export const useAppStore = create<AppState>()(
       automatismTimerSeconds: 120,
       setAutomatismTimerSeconds: (seconds) => {
         set({ automatismTimerSeconds: seconds });
+      },
+      automatismFilterSucceeded: true,
+      setAutomatismFilterSucceeded: (v) => {
+        set({ automatismFilterSucceeded: v });
       },
       formularyViewMode: {},
       setFormularyViewMode: (slug, mode) => {

@@ -1,5 +1,20 @@
 import { TextWithMath } from '@/components/math/TextWithMath';
-import type { Formula } from '@/lib/types';
+import type { Formula, FormulaLevel } from '@/lib/types';
+
+const levelStyle: Record<FormulaLevel, { label: string; chip: string }> = {
+  essentiel: {
+    label: 'Essentiel',
+    chip: 'bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 ring-1 ring-red-500/30',
+  },
+  'a-connaitre': {
+    label: 'À connaître',
+    chip: 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 ring-1 ring-blue-500/30',
+  },
+  approfondissement: {
+    label: 'Approfondissement',
+    chip: 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 ring-1 ring-amber-500/30',
+  },
+};
 
 // Dégradés cohérents avec FormulaCard — même séquence chaud/froid.
 const CARD_PALETTE = [
@@ -38,6 +53,7 @@ export default function SimplifiedFormulaCard({
         <CardHeader
           title={formula.title}
           index={index}
+          level={formula.level}
           hidden={hidden}
           onToggleHidden={onToggleHidden}
         />
@@ -60,6 +76,7 @@ export default function SimplifiedFormulaCard({
       <CardHeader
         title={formula.title}
         index={index}
+        level={formula.level}
         hidden={hidden}
         onToggleHidden={onToggleHidden}
       />
@@ -95,11 +112,13 @@ export default function SimplifiedFormulaCard({
 type CardHeaderProps = {
   title: string;
   index: number;
+  level: FormulaLevel;
   hidden: boolean;
   onToggleHidden: () => void;
 };
 
-function CardHeader({ title, index, hidden, onToggleHidden }: CardHeaderProps) {
+function CardHeader({ title, index, level, hidden, onToggleHidden }: CardHeaderProps) {
+  const ls = levelStyle[level];
   return (
     <header className="flex items-start justify-between gap-3">
       <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
@@ -107,6 +126,14 @@ function CardHeader({ title, index, hidden, onToggleHidden }: CardHeaderProps) {
         <TextWithMath text={title} />
       </h3>
       <div className="flex shrink-0 items-center gap-2">
+        <span
+          className={[
+            'rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap',
+            ls.chip,
+          ].join(' ')}
+        >
+          {ls.label}
+        </span>
         <button
           type="button"
           onClick={onToggleHidden}
