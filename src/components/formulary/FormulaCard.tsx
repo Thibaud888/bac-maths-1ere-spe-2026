@@ -7,29 +7,29 @@ const levelStyle: Record<
 > = {
   essentiel: {
     label: 'Essentiel',
-    chip: 'bg-red-50 text-red-700 ring-1 ring-red-500/30',
+    chip: 'bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 ring-1 ring-red-500/30',
     numBadge: 'bg-red-500 text-white',
   },
   'a-connaitre': {
     label: 'À connaître',
-    chip: 'bg-blue-50 text-blue-700 ring-1 ring-blue-500/30',
+    chip: 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 ring-1 ring-blue-500/30',
     numBadge: 'bg-blue-500 text-white',
   },
   approfondissement: {
     label: 'Approfondissement',
-    chip: 'bg-amber-50 text-amber-700 ring-1 ring-amber-500/30',
+    chip: 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 ring-1 ring-amber-500/30',
     numBadge: 'bg-amber-500 text-white',
   },
 };
 
 // Dégradés chauds/froids alternés — plus vivants et distincts qu'un aplat pâle.
 const CARD_BG = [
-  'bg-gradient-to-br from-rose-100 to-white',
-  'bg-gradient-to-br from-sky-100 to-white',
-  'bg-gradient-to-br from-amber-100 to-white',
-  'bg-gradient-to-br from-emerald-100 to-white',
-  'bg-gradient-to-br from-violet-100 to-white',
-  'bg-gradient-to-br from-cyan-100 to-white',
+  'bg-gradient-to-br from-rose-100 to-white dark:from-rose-900/30 dark:to-slate-800',
+  'bg-gradient-to-br from-sky-100 to-white dark:from-sky-900/30 dark:to-slate-800',
+  'bg-gradient-to-br from-amber-100 to-white dark:from-amber-900/30 dark:to-slate-800',
+  'bg-gradient-to-br from-emerald-100 to-white dark:from-emerald-900/30 dark:to-slate-800',
+  'bg-gradient-to-br from-violet-100 to-white dark:from-violet-900/30 dark:to-slate-800',
+  'bg-gradient-to-br from-cyan-100 to-white dark:from-cyan-900/30 dark:to-slate-800',
 ] as const;
 
 type FormulaCardProps = {
@@ -51,7 +51,7 @@ export default function FormulaCard({
   return (
     <article
       className={[
-        'rounded-xl border border-slate-100 p-4 shadow-sm transition-shadow hover:shadow-md',
+        'rounded-xl border border-slate-100 dark:border-slate-700 p-4 shadow-sm transition-shadow hover:shadow-md',
         bg,
       ].join(' ')}
     >
@@ -66,7 +66,7 @@ export default function FormulaCard({
           >
             {index}
           </span>
-          <h3 className="text-sm font-semibold text-slate-900">
+          <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
             <TextWithMath text={formula.title} />
           </h3>
         </div>
@@ -86,7 +86,7 @@ export default function FormulaCard({
             onClick={onToggleHidden}
             aria-label={hidden ? 'Développer cette formule' : 'Réduire cette formule'}
             title={hidden ? 'Développer' : 'Réduire'}
-            className="rounded p-1 text-slate-400 hover:bg-white/60 hover:text-slate-700"
+            className="rounded p-1 text-slate-400 dark:text-slate-500 hover:bg-white/60 dark:hover:bg-slate-700/60 hover:text-slate-700 dark:hover:text-slate-300"
           >
             {hidden ? <ChevronDownIcon /> : <ChevronUpIcon />}
           </button>
@@ -95,12 +95,12 @@ export default function FormulaCard({
 
       {!hidden && (
         <>
-          <div className="mt-3 text-sm leading-relaxed text-slate-700">
+          <div className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
             <TextWithMath text={formula.statement} />
           </div>
 
           {formula.conditions && (
-            <div className="mt-2 text-xs text-slate-500">
+            <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">
               <span className="font-medium">Conditions : </span>
               <TextWithMath text={formula.conditions} />
             </div>
@@ -108,10 +108,10 @@ export default function FormulaCard({
 
           {formula.example && (
             <details className="mt-3 text-sm">
-              <summary className="cursor-pointer text-xs font-medium text-blue-600 hover:underline">
+              <summary className="cursor-pointer text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline">
                 Exemple
               </summary>
-              <div className="mt-2 rounded-lg bg-white/80 p-3 text-slate-700 ring-1 ring-black/5">
+              <div className="mt-2 rounded-lg bg-white/80 dark:bg-slate-700/80 p-3 text-slate-700 dark:text-slate-300 ring-1 ring-black/5 dark:ring-white/5">
                 <TextWithMath text={formula.example} />
               </div>
             </details>
@@ -122,7 +122,7 @@ export default function FormulaCard({
               {formula.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-white/80 px-2 py-0.5 text-xs text-slate-600 ring-1 ring-black/10"
+                  className="rounded-full bg-white/80 dark:bg-slate-700/80 px-2 py-0.5 text-xs text-slate-600 dark:text-slate-400 ring-1 ring-black/10 dark:ring-white/10"
                 >
                   {tag}
                 </span>

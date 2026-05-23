@@ -14,17 +14,17 @@ export default function ExamRunner({ exercise, onClose }: ExamRunnerProps) {
   const recordAttempt = useProgressStore((s) => s.recordAttempt);
 
   return (
-    <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <article className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
       <header className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs uppercase tracking-wider text-slate-500">
+          <p className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
             Type bac · {exercise.totalMarks} pts · ~{exercise.estimatedMinutes} min
           </p>
-          <h2 className="mt-1 text-lg font-semibold text-slate-900">
+          <h2 className="mt-1 text-lg font-semibold text-slate-900 dark:text-slate-100">
             <TextWithMath text={exercise.title} />
           </h2>
           {exercise.inspiredBy && (
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
               D'après : {exercise.inspiredBy}
             </p>
           )}
@@ -38,7 +38,7 @@ export default function ExamRunner({ exercise, onClose }: ExamRunnerProps) {
             <button
               type="button"
               onClick={onClose}
-              className="text-sm text-slate-500 hover:text-slate-800"
+              className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
             >
               Fermer
             </button>
@@ -47,7 +47,7 @@ export default function ExamRunner({ exercise, onClose }: ExamRunnerProps) {
       </header>
 
       {exercise.preamble && (
-        <div className="mt-4 rounded bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
+        <div className="mt-4 rounded bg-slate-50 dark:bg-slate-700 p-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
           <TextWithMath text={exercise.preamble} />
         </div>
       )}
@@ -64,7 +64,7 @@ export default function ExamRunner({ exercise, onClose }: ExamRunnerProps) {
               }}
             />
             {question.subquestions && question.subquestions.length > 0 && (
-              <ol className="mt-4 ml-6 space-y-4 border-l-2 border-slate-200 pl-4">
+              <ol className="mt-4 ml-6 space-y-4 border-l-2 border-slate-200 dark:border-slate-600 pl-4">
                 {question.subquestions.map((sub) => (
                   <li key={sub.id}>
                     <SubQuestionBlock
@@ -101,12 +101,12 @@ function QuestionBlock({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-2">
-        <p className="text-sm font-semibold text-slate-900">
+        <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
           Question {question.label}
         </p>
-        <span className="text-xs text-slate-500">{question.marks} pts</span>
+        <span className="text-xs text-slate-500 dark:text-slate-400">{question.marks} pts</span>
       </div>
-      <div className="mt-1 text-sm leading-relaxed text-slate-700">
+      <div className="mt-1 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
         <TextWithMath text={question.statement} />
       </div>
       {question.figure && <FigureRenderer figure={question.figure} />}
@@ -141,12 +141,12 @@ function SubQuestionBlock({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-2">
-        <p className="text-sm font-medium text-slate-800">{sub.label}</p>
+        <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{sub.label}</p>
         {sub.marks !== undefined && (
-          <span className="text-xs text-slate-500">{sub.marks} pts</span>
+          <span className="text-xs text-slate-500 dark:text-slate-400">{sub.marks} pts</span>
         )}
       </div>
-      <div className="mt-1 text-sm leading-relaxed text-slate-700">
+      <div className="mt-1 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
         <TextWithMath text={sub.statement} />
       </div>
       {sub.figure && <FigureRenderer figure={sub.figure} />}

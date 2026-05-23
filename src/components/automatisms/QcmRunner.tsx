@@ -103,9 +103,9 @@ export default function QcmRunner({
   };
 
   return (
-    <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <article className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
       <header className="flex items-start justify-between gap-3">
-        <span className="text-xs uppercase tracking-wider text-slate-500">
+        <span className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">
           Automatisme · {automatism.domain}
         </span>
         {timerActive && (
@@ -118,7 +118,7 @@ export default function QcmRunner({
         )}
       </header>
 
-      <div className="mt-3 text-base leading-relaxed text-slate-800">
+      <div className="mt-3 text-base leading-relaxed text-slate-800 dark:text-slate-200">
         <TextWithMath text={automatism.statement} />
       </div>
 
@@ -146,12 +146,12 @@ export default function QcmRunner({
                   className={[
                     'w-full rounded border px-3 py-2 text-left text-sm transition-colors',
                     showAsCorrect
-                      ? 'border-green-400 bg-green-50 text-green-900'
+                      ? 'border-green-400 bg-green-50 dark:bg-green-900/30 text-green-900 dark:text-green-300'
                       : showAsWrong
-                        ? 'border-red-400 bg-red-50 text-red-900'
+                        ? 'border-red-400 bg-red-50 dark:bg-red-900/30 text-red-900 dark:text-red-300'
                         : phase === 'revealed'
-                          ? 'border-slate-200 bg-slate-50 text-slate-500'
-                          : 'border-slate-300 bg-white text-slate-800 hover:border-blue-400 hover:bg-blue-50',
+                          ? 'border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 text-slate-500 dark:text-slate-400'
+                          : 'border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20',
                   ].join(' ')}
                 >
                   <TextWithMath text={choice} />
@@ -176,13 +176,13 @@ export default function QcmRunner({
               if (e.key === 'Enter') submitNumeric();
             }}
             placeholder="Valeur ou fraction (ex. 3/4)"
-            className="flex-1 rounded border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none disabled:bg-slate-50"
+            className="flex-1 rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none disabled:bg-slate-50 dark:disabled:bg-slate-800 placeholder:text-slate-400 dark:placeholder:text-slate-500"
           />
           <button
             type="button"
             disabled={phase !== 'idle' || numericInput.trim() === ''}
             onClick={submitNumeric}
-            className="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+            className="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300 dark:disabled:bg-slate-600"
           >
             Valider
           </button>
@@ -194,25 +194,25 @@ export default function QcmRunner({
           className={[
             'mt-4 rounded border p-4',
             wasCorrect
-              ? 'border-green-200 bg-green-50/50'
-              : 'border-red-200 bg-red-50/50',
+              ? 'border-green-200 dark:border-green-700 bg-green-50/50 dark:bg-green-900/20'
+              : 'border-red-200 dark:border-red-700 bg-red-50/50 dark:bg-red-900/20',
           ].join(' ')}
         >
           <p
             className={[
               'text-sm font-semibold',
-              wasCorrect ? 'text-green-800' : 'text-red-800',
+              wasCorrect ? 'text-green-800 dark:text-green-400' : 'text-red-800 dark:text-red-400',
             ].join(' ')}
           >
             {wasCorrect ? '✓ Correct.' : '✗ Pas tout à fait.'}
           </p>
           {automatism.type === 'numeric' && !wasCorrect && (
-            <p className="mt-1 text-xs text-slate-600">
+            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
               Réponse attendue :{' '}
               <span className="font-mono">{String(automatism.answer)}</span>
             </p>
           )}
-          <div className="mt-2 text-sm leading-relaxed text-slate-700">
+          <div className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
             <TextWithMath text={automatism.explanation} />
           </div>
           {onNext && (
