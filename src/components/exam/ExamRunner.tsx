@@ -1,7 +1,6 @@
 import { FigureRenderer } from '@/components/figures';
 import { TextWithMath } from '@/components/math/TextWithMath';
 import HintSystem from '@/components/shared/HintSystem';
-import Timer from '@/components/shared/Timer';
 import type { ExamExercise, ExamQuestion, ExamSubquestion } from '@/lib/types';
 import { useProgressStore } from '@/stores/progress-store';
 
@@ -29,21 +28,15 @@ export default function ExamRunner({ exercise, onClose }: ExamRunnerProps) {
             </p>
           )}
         </div>
-        <div className="flex flex-col items-end gap-2">
-          <Timer
-            durationSeconds={exercise.estimatedMinutes * 60}
-            resetKey={exercise.id}
-          />
-          {onClose && (
-            <button
-              type="button"
-              onClick={onClose}
-              className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
-            >
-              Fermer
-            </button>
-          )}
-        </div>
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+          >
+            Fermer
+          </button>
+        )}
       </header>
 
       {exercise.preamble && (
