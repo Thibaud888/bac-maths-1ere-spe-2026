@@ -9,6 +9,8 @@ import { useProgressStore } from '@/stores/progress-store';
 type QcmRunnerProps = {
   automatism: Automatism;
   onNext?: () => void;
+  /** Appelé dès que la réponse est révélée (avant que l'élève clique "Suivant"). */
+  onResult?: (succeeded: boolean) => void;
   /**
    * Durée du timer en secondes. `null` désactive complètement le timer
    * (pas d'affichage, pas de timeout). `undefined` retombe sur la durée
@@ -41,6 +43,7 @@ function targetAnswerAsNumber(answer: number | string): number | null {
 export default function QcmRunner({
   automatism,
   onNext,
+  onResult,
   timerSeconds,
 }: QcmRunnerProps) {
   const timerActive = timerSeconds !== null;
@@ -79,6 +82,7 @@ export default function QcmRunner({
     setWasCorrect(correct);
     setPhase('revealed');
     recordAttempt(automatism.id, correct);
+    onResult?.(correct);
   };
 
   const submitNumeric = (): void => {
@@ -93,6 +97,7 @@ export default function QcmRunner({
     setWasCorrect(correct);
     setPhase('revealed');
     recordAttempt(automatism.id, correct);
+    onResult?.(correct);
   };
 
   const onTimeout = (): void => {
@@ -100,6 +105,7 @@ export default function QcmRunner({
     setWasCorrect(false);
     setPhase('revealed');
     recordAttempt(automatism.id, false);
+    onResult?.(false);
   };
 
   return (
