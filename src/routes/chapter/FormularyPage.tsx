@@ -12,7 +12,7 @@ export default function FormularyPage() {
   const chapterSlug = (slug ?? '') as ChapterSlug;
   const chapter = slug ? getChapterContent(chapterSlug) : null;
 
-  const viewMode = useAppStore((s) => s.formularyViewMode[chapterSlug] ?? 'detailed');
+  const viewMode = useAppStore((s) => s.formularyViewMode[chapterSlug] ?? 'simplified');
   const setViewMode = useAppStore((s) => s.setFormularyViewMode);
   const hiddenIds = useAppStore((s) => s.hiddenFormulas[chapterSlug] ?? []);
   const toggleHidden = useAppStore((s) => s.toggleFormulaHidden);
