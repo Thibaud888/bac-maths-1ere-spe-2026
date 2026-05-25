@@ -310,5 +310,131 @@
         "solution": "Pour tout $n \\in \\mathbb{N}$, $P_n = 10\\,000 \\times 0{,}9^n > 0$ (produit de réels strictement positifs).\n\nDe plus, $\\dfrac{P_{n+1}}{P_n} = 0{,}9$ et $0 < 0{,}9 < 1$, donc $P_{n+1} = 0{,}9 \\, P_n < P_n$.\n\nAinsi, $(P_n)$ est **strictement décroissante** : la population diminue chaque année, ce qui est cohérent avec l'effet du traitement."
       }
     ]
+  },
+  {
+    "id": "c-suites-009",
+    "chapter": "suites",
+    "title": "Lecture graphique d'une suite récurrente (escalier)",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 90,
+    "tags": [
+      "recurrence",
+      "lecture-graphique",
+      "escalier",
+      "monotonie"
+    ],
+    "preamble": "On considère la suite $(u_n)$ définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$, où $f$ est la fonction représentée ci-dessous. On a également tracé la droite d'équation $y = x$ ainsi que le « tracé en escalier » permettant de visualiser les premiers termes de la suite.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "suites/escalier-recurrente.svg",
+        "alt": "Courbe de f(x)=(x+4)/2, droite y=x, et tracé en escalier des termes u_0=0, u_1=2, u_2=3, u_3=3,5, u_4=3,75",
+        "width": 400,
+        "height": 320
+      },
+      "caption": "Construction graphique en escalier des premiers termes de la suite (u_n)."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Lire sur le graphique les valeurs de $u_0$, $u_1$ et $u_2$.",
+        "hints": [
+          "Le terme $u_0$ se lit directement sur l'axe des abscisses (point de départ de la construction). Ensuite, $u_1 = f(u_0)$ est l'ordonnée du premier point d'arrivée sur la courbe, qu'on rabat sur l'axe des abscisses via la droite $y = x$.",
+          "Pars du point d'abscisse $u_0$ sur l'axe ; monte verticalement jusqu'à la courbe pour obtenir $u_1$ ; rabats horizontalement sur $y = x$ puis lis l'abscisse, c'est $u_1$. Recommence pour $u_2$.",
+          "On lit $u_0 = 0$, $u_1 = 2$ et $u_2 = 3$."
+        ],
+        "expectedAnswer": "$u_0 = 0$, $u_1 = 2$, $u_2 = 3$",
+        "solution": "Le point de départ est $u_0 = 0$ (lu directement sur l'axe des abscisses).\n\nOn monte verticalement depuis $(u_0, 0) = (0, 0)$ jusqu'à la courbe de $f$ : on lit l'ordonnée $f(u_0) = 2$. Donc $u_1 = 2$.\n\nOn rabat horizontalement ce point sur la droite $y = x$, ce qui donne le point $(2, 2)$. On monte ensuite verticalement jusqu'à la courbe : on lit $f(u_1) = 3$. Donc $u_2 = 3$.\n\nAinsi : $u_0 = 0$, $u_1 = 2$ et $u_2 = 3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Conjecturer le sens de variation de la suite $(u_n)$.",
+        "hints": [
+          "Compare les valeurs successives lues : $u_0$, $u_1$, $u_2$, puis $u_3$ et $u_4$ visibles sur le graphique.",
+          "Sur la figure, le tracé en escalier monte continûment : chaque palier est plus haut que le précédent.",
+          "On lit $u_0 = 0 < u_1 = 2 < u_2 = 3 < u_3 = 3{,}5 < u_4 = 3{,}75$ : la suite semble strictement croissante."
+        ],
+        "expectedAnswer": "$(u_n)$ semble strictement croissante.",
+        "solution": "Sur le graphique, on lit successivement $u_0 = 0$, $u_1 = 2$, $u_2 = 3$, $u_3 = 3{,}5$ et $u_4 = 3{,}75$.\n\nOn observe que $u_0 < u_1 < u_2 < u_3 < u_4$ : les termes lus sont rangés dans l'ordre strictement croissant.\n\nOn conjecture donc que la suite $(u_n)$ est **strictement croissante**."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Conjecturer une valeur vers laquelle les termes de la suite $(u_n)$ semblent se rapprocher lorsque $n$ devient grand.",
+        "hints": [
+          "Le tracé en escalier s'« écrase » vers un point particulier du plan : l'intersection de la courbe $y = f(x)$ et de la droite $y = x$.",
+          "Repère graphiquement le point d'intersection : il a une abscisse entière facile à lire.",
+          "L'intersection se situe en $(4 ; 4)$ : on conjecture que les termes $u_n$ se rapprochent de $4$."
+        ],
+        "expectedAnswer": "Les termes semblent se rapprocher de $4$.",
+        "solution": "Sur le graphique, le tracé en escalier se resserre autour du point d'intersection de la courbe $y = f(x)$ et de la droite $y = x$.\n\nOn lit que ce point d'intersection a pour coordonnées $(4 ; 4)$.\n\nOn conjecture donc que, lorsque $n$ devient grand, les termes $u_n$ se rapprochent de la valeur $4$."
+      }
+    ]
+  },
+  {
+    "id": "c-suites-010",
+    "chapter": "suites",
+    "title": "Identifier une suite à partir d'un nuage de points",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 100,
+    "tags": [
+      "lecture-graphique",
+      "arithmetique",
+      "geometrique",
+      "nuage-de-points"
+    ],
+    "preamble": "On considère une suite $(u_n)$ dont les six premiers termes sont représentés par le nuage de points ci-dessous (points discrets, sans courbe continue).",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "suites/nuage-arith-vs-geom.svg",
+        "alt": "Nuage de six points alignés représentant les termes u_0=1, u_1=3, u_2=5, u_3=7, u_4=9, u_5=11 d'une suite",
+        "width": 400,
+        "height": 320
+      },
+      "caption": "Représentation graphique discrète des premiers termes de la suite (u_n)."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Lire sur le graphique les valeurs de $u_0$, $u_1$, $u_2$, $u_3$, $u_4$ et $u_5$.",
+        "hints": [
+          "Pour chaque point du nuage, lis son abscisse (la valeur de $n$) et son ordonnée (la valeur de $u_n$).",
+          "Pointe-toi sur l'abscisse $n = 0$ : le point a pour ordonnée $1$, donc $u_0 = 1$. Continue de la même façon pour $n = 1, 2, \\dots, 5$.",
+          "$u_0 = 1$, $u_1 = 3$, $u_2 = 5$, $u_3 = 7$, $u_4 = 9$, $u_5 = 11$."
+        ],
+        "expectedAnswer": "$u_0 = 1$, $u_1 = 3$, $u_2 = 5$, $u_3 = 7$, $u_4 = 9$, $u_5 = 11$",
+        "solution": "Pour chaque abscisse entière $n \\in \\{0, 1, 2, 3, 4, 5\\}$, on lit l'ordonnée du point correspondant :\n\n- pour $n = 0$ : $u_0 = 1$ ;\n- pour $n = 1$ : $u_1 = 3$ ;\n- pour $n = 2$ : $u_2 = 5$ ;\n- pour $n = 3$ : $u_3 = 7$ ;\n- pour $n = 4$ : $u_4 = 9$ ;\n- pour $n = 5$ : $u_5 = 11$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "À partir de l'allure du nuage, conjecturer si la suite $(u_n)$ est arithmétique, géométrique ou ni l'une ni l'autre. Justifier graphiquement.",
+        "hints": [
+          "Une suite arithmétique a un nuage de points dont les points sont **alignés** (sur une droite) ; une suite géométrique a un nuage avec une croissance/décroissance « multiplicative » qui ne donne pas un alignement.",
+          "Sur le graphique, observe la disposition des six points : sont-ils alignés ou bien suivent-ils une courbe non rectiligne ?",
+          "Les six points apparaissent **alignés** : la suite $(u_n)$ semble être arithmétique."
+        ],
+        "expectedAnswer": "$(u_n)$ semble arithmétique (points alignés).",
+        "solution": "Sur le graphique, on observe que les six points du nuage sont **alignés** sur une même droite.\n\nOr, pour une suite arithmétique de raison $r$, on a $u_n = u_0 + nr$ : c'est une fonction **affine** de $n$, dont la représentation graphique (discrète) donne des points alignés.\n\nÀ l'inverse, une suite géométrique (non triviale) aurait une croissance non linéaire, donc des points non alignés.\n\nOn conjecture donc que la suite $(u_n)$ est **arithmétique**."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "En admettant que $(u_n)$ est effectivement arithmétique, déterminer son premier terme et sa raison. En déduire l'expression de $u_n$ en fonction de $n$.",
+        "hints": [
+          "Le premier terme est $u_0$, lu sur le graphique. La raison $r$ est la différence constante $u_{n+1} - u_n$ entre deux termes consécutifs.",
+          "On a $u_1 - u_0 = 3 - 1 = 2$ ; vérifie sur d'autres couples consécutifs pour confirmer.",
+          "$u_0 = 1$, $r = 2$, donc $u_n = 1 + 2n$."
+        ],
+        "expectedAnswer": "$u_0 = 1$, $r = 2$, $u_n = 1 + 2n$.",
+        "solution": "Le premier terme se lit directement : $u_0 = 1$.\n\nLa raison $r$ est la différence constante entre deux termes consécutifs :\n$$u_1 - u_0 = 3 - 1 = 2, \\quad u_2 - u_1 = 5 - 3 = 2, \\quad u_3 - u_2 = 7 - 5 = 2.$$\n\nLa différence vaut bien $2$ à chaque fois, ce qui confirme que la suite est arithmétique de raison $r = 2$.\n\nOn en déduit l'expression du terme général :\n$$u_n = u_0 + nr = 1 + 2n.$$"
+      }
+    ]
   }
 ]
