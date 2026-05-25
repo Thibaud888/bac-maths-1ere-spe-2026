@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 400" width="440" height="400" role="img" aria-label="Quatre courbes numerotees 1 a 4 sur quatre sous-reperes : C1 cubique avec maximum local et minimum local, C2 parabole vers le haut avec racines -1 et 1, C3 parabole renversee avec racines -1 et 1, C4 droite croissante">
+  <!-- Style global -->
+  <style>
+    .grid { stroke: #e2e8f0; stroke-width: 0.5; }
+    .axis { stroke: #334155; stroke-width: 1; }
+    .curve { fill: none; stroke: #334155; stroke-width: 1.6; }
+    .lbl { font-family: Georgia,serif; font-size: 10px; fill: #475569; }
+    .title { font-family: Georgia,serif; font-size: 13px; fill: #334155; font-weight: bold; }
+    .small { font-family: Georgia,serif; font-size: 9px; fill: #475569; }
+  </style>
+
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- ── Vignette 1 (haut-gauche) : Courbe 1            ── -->
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- Cadre : x ∈ [20, 200], y ∈ [30, 180] -->
+  <!-- Repère intérieur : axe Ox y_svg = 130 ; axe Oy x_svg = 110
+       Échelle : 1 unité x = 35 px ; 1 unité y = 35 px ; x de -2 à 2, y de -2 à 2 -->
+  <text x="110" y="22" text-anchor="middle" class="title">Courbe 1</text>
+
+  <!-- Grille -->
+  <g class="grid">
+    <line x1="40"  y1="40" x2="40"  y2="180"/>
+    <line x1="75"  y1="40" x2="75"  y2="180"/>
+    <line x1="145" y1="40" x2="145" y2="180"/>
+    <line x1="180" y1="40" x2="180" y2="180"/>
+    <line x1="40" y1="60"  x2="180" y2="60"/>
+    <line x1="40" y1="95"  x2="180" y2="95"/>
+    <line x1="40" y1="165" x2="180" y2="165"/>
+  </g>
+  <!-- Axes -->
+  <line x1="30" y1="130" x2="190" y2="130" class="axis"/>
+  <polygon points="190,130 185,128 185,132" fill="#334155"/>
+  <line x1="110" y1="185" x2="110" y2="35" class="axis"/>
+  <polygon points="110,35 108,40 112,40" fill="#334155"/>
+  <text x="186" y="142" class="small" font-style="italic">x</text>
+  <text x="100" y="40" class="small" font-style="italic">y</text>
+  <text x="103" y="141" class="small">O</text>
+  <!-- Graduations principales : -2, -1, 1, 2 sur Ox ; 1, -1 sur Oy -->
+  <g class="lbl">
+    <text x="40"  y="142" text-anchor="middle">-2</text>
+    <text x="75"  y="142" text-anchor="middle">-1</text>
+    <text x="145" y="142" text-anchor="middle">1</text>
+    <text x="180" y="142" text-anchor="middle">2</text>
+    <text x="106" y="98" text-anchor="end">1</text>
+    <text x="106" y="168" text-anchor="end">-1</text>
+  </g>
+  <!-- Courbe 1 : cubique f(x) = (1/3)x^3 - x, sur [-2 ; 2]
+       Tableau : (x_math, y_math) -> (x_svg, y_svg)
+       x_svg = 110 + 35*x ; y_svg = 130 - 35*y
+       x=-2: y=-2/3 ≈ -0.667 -> (40, 153.33)
+       x=-1.5: y=-1.125+1.5=0.375 -> (57.5, 116.87)
+       x=-1: y=2/3 ≈ 0.667 (MAX) -> (75, 106.67)
+       x=-0.5: y=-0.041+0.5=0.458 -> (92.5, 113.96)
+       x=0: y=0 -> (110, 130)
+       x=0.5: y=0.041-0.5=-0.458 -> (127.5, 146.04)
+       x=1: y=-2/3 ≈ -0.667 (MIN) -> (145, 153.33)
+       x=1.5: y=1.125-1.5=-0.375 -> (162.5, 143.13)
+       x=2: y=2/3 ≈ 0.667 -> (180, 106.67) -->
+  <polyline class="curve"
+    points="40,153.33 57.5,116.87 75,106.67 92.5,113.96 110,130 127.5,146.04 145,153.33 162.5,143.13 180,106.67"/>
+
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- ── Vignette 2 (haut-droit) : Courbe 2             ── -->
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- Cadre : x ∈ [240, 420], y ∈ [30, 180] ; centre x=330 -->
+  <text x="330" y="22" text-anchor="middle" class="title">Courbe 2</text>
+  <g class="grid">
+    <line x1="260" y1="40" x2="260" y2="180"/>
+    <line x1="295" y1="40" x2="295" y2="180"/>
+    <line x1="365" y1="40" x2="365" y2="180"/>
+    <line x1="400" y1="40" x2="400" y2="180"/>
+    <line x1="260" y1="60"  x2="400" y2="60"/>
+    <line x1="260" y1="95"  x2="400" y2="95"/>
+    <line x1="260" y1="165" x2="400" y2="165"/>
+  </g>
+  <line x1="250" y1="130" x2="410" y2="130" class="axis"/>
+  <polygon points="410,130 405,128 405,132" fill="#334155"/>
+  <line x1="330" y1="185" x2="330" y2="35" class="axis"/>
+  <polygon points="330,35 328,40 332,40" fill="#334155"/>
+  <text x="406" y="142" class="small" font-style="italic">x</text>
+  <text x="320" y="40" class="small" font-style="italic">y</text>
+  <text x="323" y="141" class="small">O</text>
+  <g class="lbl">
+    <text x="260" y="142" text-anchor="middle">-2</text>
+    <text x="295" y="142" text-anchor="middle">-1</text>
+    <text x="365" y="142" text-anchor="middle">1</text>
+    <text x="400" y="142" text-anchor="middle">2</text>
+    <text x="326" y="98" text-anchor="end">1</text>
+    <text x="326" y="63" text-anchor="end">2</text>
+    <text x="326" y="168" text-anchor="end">-1</text>
+  </g>
+  <!-- Courbe 2 : parabole y = x^2 - 1 sur [-2 ; 2] ; échelle y identique (35 px = 1 unité)
+       (x_svg = 330 + 35*x ; y_svg = 130 - 35*y)
+       x=-2: y=3 -> (260, 25) — hors cadre haut, on tronquera à y=2.0
+       Pour rester dans le cadre, on affiche x ∈ [-1.7 ; 1.7]
+       x=-1.7: y=1.89 -> (270.5, 63.85)
+       x=-1.5: y=1.25 -> (277.5, 86.25)
+       x=-1: y=0 -> (295, 130)
+       x=-0.5: y=-0.75 -> (312.5, 156.25)
+       x=0: y=-1 -> (330, 165)
+       x=0.5: y=-0.75 -> (347.5, 156.25)
+       x=1: y=0 -> (365, 130)
+       x=1.5: y=1.25 -> (382.5, 86.25)
+       x=1.7: y=1.89 -> (389.5, 63.85) -->
+  <polyline class="curve"
+    points="270.5,63.85 277.5,86.25 295,130 312.5,156.25 330,165 347.5,156.25 365,130 382.5,86.25 389.5,63.85"/>
+
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- ── Vignette 3 (bas-gauche) : Courbe 3             ── -->
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- Cadre : x ∈ [20, 200], y ∈ [220, 370] ; axe Ox à y_svg = 320 ; axe Oy à x_svg = 110 -->
+  <text x="110" y="212" text-anchor="middle" class="title">Courbe 3</text>
+  <g class="grid">
+    <line x1="40"  y1="230" x2="40"  y2="370"/>
+    <line x1="75"  y1="230" x2="75"  y2="370"/>
+    <line x1="145" y1="230" x2="145" y2="370"/>
+    <line x1="180" y1="230" x2="180" y2="370"/>
+    <line x1="40" y1="250" x2="180" y2="250"/>
+    <line x1="40" y1="285" x2="180" y2="285"/>
+    <line x1="40" y1="355" x2="180" y2="355"/>
+  </g>
+  <line x1="30" y1="320" x2="190" y2="320" class="axis"/>
+  <polygon points="190,320 185,318 185,322" fill="#334155"/>
+  <line x1="110" y1="375" x2="110" y2="225" class="axis"/>
+  <polygon points="110,225 108,230 112,230" fill="#334155"/>
+  <text x="186" y="332" class="small" font-style="italic">x</text>
+  <text x="100" y="230" class="small" font-style="italic">y</text>
+  <text x="103" y="331" class="small">O</text>
+  <g class="lbl">
+    <text x="40"  y="332" text-anchor="middle">-2</text>
+    <text x="75"  y="332" text-anchor="middle">-1</text>
+    <text x="145" y="332" text-anchor="middle">1</text>
+    <text x="180" y="332" text-anchor="middle">2</text>
+    <text x="106" y="288" text-anchor="end">1</text>
+    <text x="106" y="253" text-anchor="end">2</text>
+    <text x="106" y="358" text-anchor="end">-1</text>
+  </g>
+  <!-- Courbe 3 : parabole renversée y = 1 - x^2 sur [-1.7 ; 1.7] ; mêmes échelles
+       y_svg = 320 - 35*y
+       x=-1.7: y=-1.89 -> (270.5? non c'est vignette 3) — recalcul : x_svg = 110 + 35*x
+       x=-1.7: y=1-2.89=-1.89 -> (50.5, 386.15) — hors cadre bas
+       Pour rester dans [220 ; 370], on garde y ∈ [-1.5 ; 1] : x ∈ [-sqrt(2.5) ; sqrt(2.5)] ≈ [-1.58 ; 1.58]
+       x=-1.5: y=-1.25 -> (57.5, 363.75)
+       x=-1: y=0 -> (75, 320)
+       x=-0.5: y=0.75 -> (92.5, 293.75)
+       x=0: y=1 -> (110, 285)
+       x=0.5: y=0.75 -> (127.5, 293.75)
+       x=1: y=0 -> (145, 320)
+       x=1.5: y=-1.25 -> (162.5, 363.75) -->
+  <polyline class="curve"
+    points="57.5,363.75 75,320 92.5,293.75 110,285 127.5,293.75 145,320 162.5,363.75"/>
+
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- ── Vignette 4 (bas-droit) : Courbe 4              ── -->
+  <!-- ════════════════════════════════════════════════════ -->
+  <text x="330" y="212" text-anchor="middle" class="title">Courbe 4</text>
+  <g class="grid">
+    <line x1="260" y1="230" x2="260" y2="370"/>
+    <line x1="295" y1="230" x2="295" y2="370"/>
+    <line x1="365" y1="230" x2="365" y2="370"/>
+    <line x1="400" y1="230" x2="400" y2="370"/>
+    <line x1="260" y1="250" x2="400" y2="250"/>
+    <line x1="260" y1="285" x2="400" y2="285"/>
+    <line x1="260" y1="355" x2="400" y2="355"/>
+  </g>
+  <line x1="250" y1="320" x2="410" y2="320" class="axis"/>
+  <polygon points="410,320 405,318 405,322" fill="#334155"/>
+  <line x1="330" y1="375" x2="330" y2="225" class="axis"/>
+  <polygon points="330,225 328,230 332,230" fill="#334155"/>
+  <text x="406" y="332" class="small" font-style="italic">x</text>
+  <text x="320" y="230" class="small" font-style="italic">y</text>
+  <text x="323" y="331" class="small">O</text>
+  <g class="lbl">
+    <text x="260" y="332" text-anchor="middle">-2</text>
+    <text x="295" y="332" text-anchor="middle">-1</text>
+    <text x="365" y="332" text-anchor="middle">1</text>
+    <text x="400" y="332" text-anchor="middle">2</text>
+    <text x="326" y="288" text-anchor="end">1</text>
+    <text x="326" y="358" text-anchor="end">-1</text>
+  </g>
+  <!-- Courbe 4 : droite y = x sur [-2 ; 2]
+       y_svg = 320 - 35*y ; x_svg = 330 + 35*x
+       x=-2: y=-2 -> (260, 390) — hors cadre. On limite à [-1.5 ; 1.5]
+       x=-1.5: y=-1.5 -> (277.5, 372.5) — encore légèrement hors
+       On limite à y ∈ [-1.4 ; 1.4] : x ∈ [-1.4 ; 1.4]
+       x=-1.4: y=-1.4 -> (281, 369)
+       x=1.4: y=1.4 -> (379, 271) -->
+  <line x1="281" y1="369" x2="379" y2="271" class="curve" stroke="#334155" stroke-width="1.6"/>
+</svg>
