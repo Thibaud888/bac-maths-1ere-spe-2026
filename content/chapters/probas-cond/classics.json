@@ -408,6 +408,46 @@
     "order": 80,
     "tags": ["independance", "intersection", "calcul-direct"],
     "preamble": "Soit $A$ et $B$ deux événements **indépendants** d'un univers $\\Omega$, tels que $P(A) = 0{,}3$ et $P(B) = 0{,}4$.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$A$",
+              "weight": "0,3",
+              "children": [
+                {
+                  "label": "$B$",
+                  "weight": "0,4"
+                },
+                {
+                  "label": "$\\overline{B}$",
+                  "weight": "0,6"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{A}$",
+              "weight": "0,7",
+              "children": [
+                {
+                  "label": "$B$",
+                  "weight": "0,4"
+                },
+                {
+                  "label": "$\\overline{B}$",
+                  "weight": "0,6"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      },
+      "caption": "Arbre pondere illustrant l'independance : la probabilite conditionnelle de B est la meme depuis A et depuis A-barre, et egale a P(B)."
+    },
     "questions": [
       {
         "id": "q1",
@@ -444,6 +484,46 @@
     "order": 90,
     "tags": ["independance", "contraire", "intersection"],
     "preamble": "Soit $A$ et $B$ deux événements **indépendants** tels que $P(A) = 0{,}3$ et $P(B) = 0{,}4$.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$A$",
+              "weight": "0,3",
+              "children": [
+                {
+                  "label": "$B$",
+                  "weight": "0,4"
+                },
+                {
+                  "label": "$\\overline{B}$",
+                  "weight": "0,6"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{A}$",
+              "weight": "0,7",
+              "children": [
+                {
+                  "label": "$B$",
+                  "weight": "0,4"
+                },
+                {
+                  "label": "$\\overline{B}$",
+                  "weight": "0,6"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      },
+      "caption": "Arbre pondere : par independance, chaque branche menant a B porte la meme probabilite P(B), et chaque branche menant a B-barre porte P(B-barre)."
+    },
     "questions": [
       {
         "id": "q1",
@@ -567,6 +647,46 @@
     "order": 110,
     "tags": ["independance", "tirages-successifs", "remise"],
     "preamble": "Une urne contient $5$ boules indiscernables au toucher : $2$ rouges et $3$ vertes. On tire successivement deux boules de l'urne **avec remise** : on note la couleur de la première, on la remet dans l'urne, puis on tire la seconde. On note :\n- $R_1$ : « la première boule tirée est rouge » ;\n- $R_2$ : « la seconde boule tirée est rouge ».",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$R_1$",
+              "weight": "$\\dfrac{2}{5}$",
+              "children": [
+                {
+                  "label": "$R_2$",
+                  "weight": "$\\dfrac{2}{5}$"
+                },
+                {
+                  "label": "$\\overline{R_2}$",
+                  "weight": "$\\dfrac{3}{5}$"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{R_1}$",
+              "weight": "$\\dfrac{3}{5}$",
+              "children": [
+                {
+                  "label": "$R_2$",
+                  "weight": "$\\dfrac{2}{5}$"
+                },
+                {
+                  "label": "$\\overline{R_2}$",
+                  "weight": "$\\dfrac{3}{5}$"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      },
+      "caption": "Arbre pondere : grace a la remise, la composition de l'urne est inchangee au second tirage, donc les memes probabilites apparaissent au second niveau."
+    },
     "questions": [
       {
         "id": "q1",
