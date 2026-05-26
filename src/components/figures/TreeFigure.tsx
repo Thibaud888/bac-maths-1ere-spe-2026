@@ -69,12 +69,12 @@ function NodeBox({ px, py, label }: NodeBoxProps) {
         width={NODE_W}
         height={NODE_H}
         rx={4}
-        className="fill-white stroke-slate-600"
+        className="fill-white stroke-slate-600 dark:fill-slate-800 dark:stroke-slate-400"
         strokeWidth={1.5}
       />
       <foreignObject x={x + 2} y={y + 2} width={NODE_W - 4} height={NODE_H - 4}>
         <div
-          className="flex h-full items-center justify-center text-[11px] leading-none text-slate-800"
+          className="flex h-full items-center justify-center text-[11px] leading-none text-slate-800 dark:text-slate-200"
           // @ts-expect-error xmlns required for foreignObject
           xmlns="http://www.w3.org/1999/xhtml"
           dangerouslySetInnerHTML={{ __html: renderLabel(label) }}
@@ -97,7 +97,7 @@ function Edge({ x1, y1, x2, y2, weight }: EdgeProps) {
   const my = (y1 + y2) / 2;
   return (
     <g>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} className="stroke-slate-500" strokeWidth={1.5} />
+      <line x1={x1} y1={y1} x2={x2} y2={y2} className="stroke-slate-500 dark:stroke-slate-400" strokeWidth={1.5} />
       {weight !== undefined && (
         <foreignObject
           x={mx - 28}
@@ -106,7 +106,7 @@ function Edge({ x1, y1, x2, y2, weight }: EdgeProps) {
           height={22}
         >
           <div
-            className="flex h-full items-center justify-center text-[10px] leading-none text-slate-600"
+            className="flex h-full items-center justify-center text-[10px] leading-none text-slate-600 dark:text-slate-300"
             // @ts-expect-error xmlns required for foreignObject
             xmlns="http://www.w3.org/1999/xhtml"
             dangerouslySetInnerHTML={{ __html: renderLabel(weight) }}
@@ -175,7 +175,7 @@ export default function TreeFigure({ data, caption }: Props) {
         ))}
       </svg>
       {caption && (
-        <figcaption className="text-center text-xs text-slate-500">
+        <figcaption className="text-center text-xs text-slate-500 dark:text-slate-400">
           {caption}
         </figcaption>
       )}

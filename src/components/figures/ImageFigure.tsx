@@ -14,7 +14,7 @@ export default function ImageFigure({ data, caption }: Props) {
         alt={data.alt}
         width={data.width}
         height={data.height}
-        className="max-w-full rounded border border-slate-200"
+        className="max-w-full rounded border border-slate-200 dark:border-slate-600 dark:[filter:invert(1)_hue-rotate(180deg)]"
       />
       {caption && (
         <figcaption className="text-center text-xs text-slate-500">
