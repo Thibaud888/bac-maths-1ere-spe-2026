@@ -439,5 +439,220 @@
     ],
     "tags": ["cercle", "trois-points", "systeme"],
     "order": 90
+  },
+  {
+    "id": "c-geometrie-reperee-010",
+    "chapter": "geometrie-reperee",
+    "title": "Équation cartésienne d'une droite à partir d'un graphique",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "prerequisites": [],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. La droite $d$ ci-dessous passe par deux points $A$ et $B$ aux coordonnées entières.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "geometrie-reperee/droite-deux-points.svg",
+        "alt": "Repère orthonormé avec une droite d passant par deux points A et B aux coordonnées entières"
+      },
+      "caption": "Droite d passant par les points A et B"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Lire sur le graphique les coordonnées des points $A$ et $B$.",
+        "hints": [
+          "Repérer chaque point sur le repère, lire son abscisse sur l'axe $Ox$ et son ordonnée sur l'axe $Oy$."
+        ],
+        "expectedAnswer": "$A(-1 ; 2)$ et $B(3 ; 4)$",
+        "solution": "Par lecture graphique : $A$ a pour abscisse $-1$ et pour ordonnée $2$, donc $A(-1 ; 2)$.\n\n$B$ a pour abscisse $3$ et pour ordonnée $4$, donc $B(3 ; 4)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Déterminer un vecteur directeur $\\vec{u}$ de la droite $d$ sous la forme la plus simple possible.",
+        "hints": [
+          "Un vecteur directeur de la droite $(AB)$ est $\\overrightarrow{AB}$.",
+          "Calculer $\\overrightarrow{AB} = \\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\end{pmatrix}$, puis simplifier en divisant les deux coordonnées par un même entier.",
+          "$\\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ 2 \\end{pmatrix}$. On peut prendre $\\vec{u} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$."
+        ],
+        "expectedAnswer": "$\\vec{u} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$",
+        "solution": "Un vecteur directeur de $d$ est $\\overrightarrow{AB} = \\begin{pmatrix} 3 - (-1) \\\\ 4 - 2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 2 \\end{pmatrix}$.\n\nEn divisant par $2$, on obtient le vecteur directeur plus simple $\\vec{u} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "En déduire un vecteur normal $\\vec{n}$, puis l'équation cartésienne de la droite $d$.",
+        "hints": [
+          "Un vecteur normal $\\vec{n} = \\begin{pmatrix} a \\\\ b \\end{pmatrix}$ est orthogonal à $\\vec{u}$. À partir de $\\vec{u} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$, on peut prendre $\\vec{n} = \\begin{pmatrix} 1 \\\\ -2 \\end{pmatrix}$.",
+          "L'équation est de la forme $x - 2y + c = 0$. Déterminer $c$ avec un point de $d$.",
+          "Avec $A(-1 ; 2)$ : $-1 - 4 + c = 0$, donc $c = 5$. Équation : $x - 2y + 5 = 0$."
+        ],
+        "expectedAnswer": "$x - 2y + 5 = 0$",
+        "solution": "À partir de $\\vec{u} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$, un vecteur normal est $\\vec{n} = \\begin{pmatrix} 1 \\\\ -2 \\end{pmatrix}$ (orthogonal : $2 \\times 1 + 1 \\times (-2) = 0$).\n\nL'équation cartésienne est donc de la forme $x - 2y + c = 0$. Comme $A(-1 ; 2)$ appartient à $d$ :\n$$-1 - 2 \\times 2 + c = 0 \\Rightarrow -5 + c = 0 \\Rightarrow c = 5.$$\n\nL'équation de $d$ est : $\\boxed{x - 2y + 5 = 0}$.\n\nVérification avec $B(3 ; 4)$ : $3 - 8 + 5 = 0$. ✓"
+      }
+    ],
+    "tags": ["lecture-graphique", "equation-droite", "vecteur-directeur", "vecteur-normal"],
+    "order": 100
+  },
+  {
+    "id": "c-geometrie-reperee-011",
+    "chapter": "geometrie-reperee",
+    "title": "Équation d'un cercle à partir de sa représentation graphique",
+    "difficulty": 1,
+    "estimatedMinutes": 8,
+    "prerequisites": [],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. Le cercle $\\mathcal{C}$ ci-dessous a son centre $\\Omega$ et quatre points cardinaux marqués.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "geometrie-reperee/cercle-centre-rayon.svg",
+        "alt": "Cercle tracé dans un repère avec son centre Omega et quatre points cardinaux visibles"
+      },
+      "caption": "Cercle C de centre Ω"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Lire sur la figure les coordonnées du centre $\\Omega$ du cercle.",
+        "hints": [
+          "Repérer la position du centre $\\Omega$ et lire ses coordonnées sur les axes."
+        ],
+        "expectedAnswer": "$\\Omega(2 ; -1)$",
+        "solution": "Par lecture graphique, le centre $\\Omega$ a pour abscisse $2$ et pour ordonnée $-1$.\n\nDonc $\\Omega(2 ; -1)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Déterminer le rayon $r$ du cercle.",
+        "hints": [
+          "Utiliser un point visible du cercle et calculer sa distance au centre $\\Omega$.",
+          "Par exemple, le point le plus à droite a pour coordonnées $(5 ; -1)$. La distance au centre vaut $5 - 2 = 3$."
+        ],
+        "expectedAnswer": "$r = 3$",
+        "solution": "Le point à l'extrémité droite du cercle a pour coordonnées $(5 ; -1)$ et le centre est $\\Omega(2 ; -1)$.\n\nLa distance $\\Omega$ à ce point (qui correspond au rayon) vaut :\n$$r = 5 - 2 = 3.$$\n\nDonc le rayon du cercle est $r = 3$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Écrire l'équation du cercle $\\mathcal{C}$ sous la forme $(x - a)^2 + (y - b)^2 = r^2$.",
+        "hints": [
+          "Appliquer la formule avec $\\Omega(a ; b)$ et $r$ trouvés aux questions précédentes."
+        ],
+        "expectedAnswer": "$(x-2)^2 + (y+1)^2 = 9$",
+        "solution": "Avec $\\Omega(2 ; -1)$ et $r = 3$, l'équation du cercle est :\n$$(x - 2)^2 + (y - (-1))^2 = 3^2$$\n$$(x-2)^2 + (y+1)^2 = 9.$$"
+      }
+    ],
+    "tags": ["lecture-graphique", "cercle", "equation-cercle", "centre", "rayon"],
+    "order": 110
+  },
+  {
+    "id": "c-geometrie-reperee-012",
+    "chapter": "geometrie-reperee",
+    "title": "Vecteur normal d'une droite lue sur un graphique",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "prerequisites": ["produit-scalaire"],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. La droite $d$ tracée ci-dessous passe par les points $P$ et $Q$ aux coordonnées entières.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "geometrie-reperee/droite-vecteur-normal.svg",
+        "alt": "Droite d tracée dans un repère, passant par P sur l'axe Oy et Q sur l'axe Ox"
+      },
+      "caption": "Droite d passant par P et Q"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Lire les coordonnées de $P$ et $Q$, puis déterminer un vecteur directeur de la droite $d$.",
+        "hints": [
+          "Repérer $P$ sur l'axe $Oy$ et $Q$ sur l'axe $Ox$.",
+          "Un vecteur directeur est $\\overrightarrow{PQ}$."
+        ],
+        "expectedAnswer": "$P(0 ; 2)$, $Q(4 ; 0)$, $\\vec{u} = \\overrightarrow{PQ} = \\begin{pmatrix} 4 \\\\ -2 \\end{pmatrix}$",
+        "solution": "Par lecture graphique : $P(0 ; 2)$ et $Q(4 ; 0)$.\n\nUn vecteur directeur de $d$ est :\n$$\\vec{u} = \\overrightarrow{PQ} = \\begin{pmatrix} 4 - 0 \\\\ 0 - 2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ -2 \\end{pmatrix}.$$\n\nOn peut aussi prendre $\\vec{u} = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$ (en divisant par $2$)."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Justifier que $\\vec{n} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$ est un vecteur normal à la droite $d$.",
+        "hints": [
+          "Un vecteur est normal à $d$ s'il est orthogonal à un vecteur directeur de $d$.",
+          "Calculer le produit scalaire $\\vec{u} \\cdot \\vec{n}$ et vérifier qu'il est nul."
+        ],
+        "expectedAnswer": "$\\vec{u} \\cdot \\vec{n} = 0$ donc $\\vec{n}$ est normal à $d$",
+        "solution": "Pour montrer que $\\vec{n}$ est normal à $d$, on vérifie qu'il est orthogonal à un vecteur directeur. Avec $\\vec{u} = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$ :\n$$\\vec{u} \\cdot \\vec{n} = 2 \\times 1 + (-1) \\times 2 = 2 - 2 = 0.$$\n\nLe produit scalaire est nul, donc $\\vec{u} \\perp \\vec{n}$.\n\nAinsi, $\\vec{n} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$ est bien un vecteur normal à la droite $d$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "En déduire l'équation cartésienne de la droite $d$.",
+        "hints": [
+          "Avec $\\vec{n} = \\begin{pmatrix} a \\\\ b \\end{pmatrix}$, l'équation est de la forme $ax + by + c = 0$.",
+          "Déterminer $c$ en utilisant un point de $d$, par exemple $Q(4 ; 0)$.",
+          "$1 \\times 4 + 2 \\times 0 + c = 0 \\Rightarrow c = -4$."
+        ],
+        "expectedAnswer": "$x + 2y - 4 = 0$",
+        "solution": "Avec $\\vec{n} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$, l'équation cartésienne de $d$ est de la forme :\n$$x + 2y + c = 0.$$\n\nComme $Q(4 ; 0)$ appartient à $d$ :\n$$4 + 2 \\times 0 + c = 0 \\Rightarrow c = -4.$$\n\nL'équation de $d$ est : $\\boxed{x + 2y - 4 = 0}$.\n\nVérification avec $P(0 ; 2)$ : $0 + 4 - 4 = 0$. ✓"
+      }
+    ],
+    "tags": ["lecture-graphique", "vecteur-normal", "vecteur-directeur", "equation-droite"],
+    "order": 120
+  },
+  {
+    "id": "c-geometrie-reperee-013",
+    "chapter": "geometrie-reperee",
+    "title": "Intersection d'une droite et d'un cercle (graphique puis algébrique)",
+    "difficulty": 2,
+    "estimatedMinutes": 12,
+    "prerequisites": ["second-degre"],
+    "preamble": "On se place dans un repère orthonormal $(O ; \\vec{i}, \\vec{j})$. Le cercle $\\mathcal{C}$ de centre $O$ a pour équation $x^2 + y^2 = 4$. La droite $d$ a pour équation $y = 1$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "geometrie-reperee/cercle-droite-intersection.svg",
+        "alt": "Cercle centré à l'origine de rayon 2 et droite horizontale y=1 traversant le cercle"
+      },
+      "caption": "Cercle C et droite d : y = 1"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Par lecture graphique, déterminer le nombre de points d'intersection entre la droite $d$ et le cercle $\\mathcal{C}$.",
+        "hints": [
+          "Compter sur la figure le nombre d'endroits où la droite coupe le cercle."
+        ],
+        "expectedAnswer": "$2$ points d'intersection",
+        "solution": "Sur la figure, la droite $d : y = 1$ coupe le cercle $\\mathcal{C}$ en **deux points**, situés symétriquement par rapport à l'axe $Oy$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Déterminer les coordonnées exactes des points d'intersection en résolvant le système $\\begin{cases} x^2 + y^2 = 4 \\\\ y = 1 \\end{cases}$.",
+        "hints": [
+          "Substituer $y = 1$ dans l'équation du cercle.",
+          "On obtient $x^2 + 1 = 4$, soit $x^2 = 3$.",
+          "Donc $x = \\sqrt{3}$ ou $x = -\\sqrt{3}$."
+        ],
+        "expectedAnswer": "$(-\\sqrt{3} ; 1)$ et $(\\sqrt{3} ; 1)$",
+        "solution": "On substitue $y = 1$ dans l'équation $x^2 + y^2 = 4$ :\n$$x^2 + 1^2 = 4 \\Rightarrow x^2 = 3.$$\n\nDonc $x = \\sqrt{3}$ ou $x = -\\sqrt{3}$.\n\nLes deux points d'intersection sont :\n$$P_1\\left(-\\sqrt{3} ; 1\\right) \\quad \\text{et} \\quad P_2\\left(\\sqrt{3} ; 1\\right).$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Vérifier que les coordonnées trouvées sont cohérentes avec la lecture graphique (on rappelle que $\\sqrt{3} \\approx 1{,}7$).",
+        "hints": [
+          "Localiser sur la figure les points d'abscisse environ $-1{,}7$ et $1{,}7$, d'ordonnée $1$, et vérifier qu'ils sont sur le cercle."
+        ],
+        "expectedAnswer": "Les abscisses $\\pm \\sqrt{3} \\approx \\pm 1{,}7$ sont cohérentes avec la figure",
+        "solution": "On a $\\sqrt{3} \\approx 1{,}7$. Sur le graphique, les deux points d'intersection ont bien pour abscisses environ $-1{,}7$ et $1{,}7$, et pour ordonnée $1$.\n\nLes coordonnées trouvées algébriquement sont donc cohérentes avec la lecture graphique."
+      }
+    ],
+    "tags": ["intersection", "droite", "cercle", "lecture-graphique", "systeme"],
+    "order": 130
   }
 ]
