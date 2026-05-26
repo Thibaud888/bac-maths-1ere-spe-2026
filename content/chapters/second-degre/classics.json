@@ -355,5 +355,119 @@
         "solution": "On résout l'inéquation $h(t) > 15$ en utilisant la forme canonique :\n$$-5(t - 2)^2 + 20 > 15 \\iff -5(t - 2)^2 > -5.$$\n\nOn divise par $-5$ (négatif), donc on **inverse** le sens de l'inégalité :\n$$(t - 2)^2 < 1.$$\n\nOr $(t - 2)^2 < 1$ équivaut à $|t - 2| < 1$, soit $-1 < t - 2 < 1$, c'est-à-dire :\n$$1 < t < 3.$$\n\n**Conclusion.** L'objet se trouve à une hauteur strictement supérieure à $15$ mètres sur l'intervalle $]1 \\, ; \\, 3[$, c'est-à-dire pendant $3 - 1 = 2$ secondes."
       }
     ]
+  },
+  {
+    "id": "c-second-degre-009",
+    "chapter": "second-degre",
+    "title": "Déduire le signe de $a$ et de $\\Delta$ depuis une parabole",
+    "difficulty": 1,
+    "estimatedMinutes": 6,
+    "order": 90,
+    "tags": ["lecture-graphique", "parabole", "signe-a", "discriminant"],
+    "preamble": "On a tracé ci-dessous la courbe représentative $\\mathcal{C}_f$ d'une fonction $f$ du second degré, définie sur $\\mathbb{R}$ par $f(x) = ax^2 + bx + c$.\n\nOn rappelle qu'on note $\\Delta = b^2 - 4ac$ le discriminant.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "second-degre/parabole-a-negatif-deux-racines.svg",
+        "alt": "Parabole tournée vers le bas, racines en x=-1 et x=3, sommet S(1, 4), passant par (0, 3)",
+        "width": 400,
+        "height": 320
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Déterminer, en justifiant, le signe du coefficient $a$.",
+        "hints": [
+          "Le signe de $a$ correspond à l'orientation des branches de la parabole : vers le haut si $a > 0$, vers le bas si $a < 0$.",
+          "Regarde la parabole : ses branches partent-elles vers le haut ou vers le bas du graphique ?",
+          "Les branches sont tournées vers le **bas** : donc $a < 0$."
+        ],
+        "expectedAnswer": "$a < 0$",
+        "solution": "La parabole $\\mathcal{C}_f$ a ses branches tournées vers le **bas** (le sommet est en haut, les branches descendent). D'après le cours, lorsque les branches d'une parabole sont tournées vers le bas, on a :\n$$a < 0.$$\n\nDonc le coefficient $a$ est strictement négatif."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Déterminer, en justifiant, le signe du discriminant $\\Delta$.",
+        "hints": [
+          "Le signe de $\\Delta$ est lié au **nombre de racines** de $f$ (points d'intersection de $\\mathcal{C}_f$ avec l'axe $Ox$) : $\\Delta > 0 \\Leftrightarrow$ deux racines, $\\Delta = 0 \\Leftrightarrow$ une racine double, $\\Delta < 0 \\Leftrightarrow$ aucune racine.",
+          "Compte le nombre de points d'intersection de $\\mathcal{C}_f$ avec l'axe des abscisses.",
+          "La courbe coupe l'axe $Ox$ en deux points (en $-1$ et $3$) : il y a deux racines, donc $\\Delta > 0$."
+        ],
+        "expectedAnswer": "$\\Delta > 0$",
+        "solution": "Sur le graphique, on observe que $\\mathcal{C}_f$ coupe l'axe $Ox$ en **deux** points distincts, d'abscisses $-1$ et $3$. La fonction $f$ admet donc deux racines réelles distinctes.\n\nOr, le nombre de racines d'un trinôme est donné par le signe du discriminant : deux racines réelles distinctes correspondent à $\\Delta > 0$.\n\nDonc :\n$$\\Delta > 0.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Déterminer le signe de $f(0)$ (qui correspond ici au coefficient $c$).",
+        "hints": [
+          "$f(0)$ est l'ordonnée du point d'intersection de la courbe avec l'axe $Oy$.",
+          "Lis cette ordonnée sur le graphique.",
+          "La courbe coupe l'axe $Oy$ en $(0 \\, ; \\, 3)$, donc $f(0) = 3 > 0$, et $c = 3 > 0$."
+        ],
+        "expectedAnswer": "$f(0) = c = 3 > 0$",
+        "solution": "L'ordonnée du point d'intersection de $\\mathcal{C}_f$ avec l'axe $Oy$ correspond à $f(0)$. Sur le graphique, on lit :\n$$f(0) = 3.$$\n\nOr, dans l'expression $f(x) = ax^2 + bx + c$, on a $f(0) = c$. Donc $c = 3 > 0$, et $f(0)$ est **strictement positif**.\n\n**Bilan** : on a déterminé sans aucun calcul que $a < 0$, $\\Delta > 0$ et $c > 0$, simplement à partir de la lecture graphique."
+      }
+    ]
+  },
+  {
+    "id": "c-second-degre-010",
+    "chapter": "second-degre",
+    "title": "Résolution graphique de $f(x) \\geq 0$ et $f(x) \\leq k$",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 100,
+    "tags": ["lecture-graphique", "inequation", "resolution-graphique"],
+    "preamble": "On a tracé ci-dessous la courbe représentative $\\mathcal{C}_f$ d'une fonction $f$ du second degré, ainsi que la droite $(d)$ d'équation $y = -3$.\n\nLes points $A$ et $B$ sont les points d'intersection de $\\mathcal{C}_f$ et $(d)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "second-degre/parabole-inequation-graphique.svg",
+        "alt": "Parabole de racines -1 et 3, sommet (1, -4), avec droite horizontale y=-3 ; intersections en A(0, -3) et B(2, -3)",
+        "width": 400,
+        "height": 320
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Résoudre graphiquement l'inéquation $f(x) \\geq 0$.",
+        "hints": [
+          "$f(x) \\geq 0$ signifie que la courbe $\\mathcal{C}_f$ est **au-dessus** (ou sur) l'axe des abscisses.",
+          "Repère sur le graphique les valeurs de $x$ pour lesquelles $\\mathcal{C}_f$ est au-dessus de l'axe $Ox$. La courbe coupe $Ox$ en $-1$ et $3$.",
+          "$f(x) \\geq 0 \\Leftrightarrow x \\in \\, ]-\\infty \\, ; \\, -1] \\cup [3 \\, ; \\, +\\infty[$."
+        ],
+        "expectedAnswer": "$\\mathcal{S}_1 = \\, ]-\\infty \\, ; \\, -1] \\cup [3 \\, ; \\, +\\infty[$",
+        "solution": "$f(x) \\geq 0$ correspond aux valeurs de $x$ pour lesquelles la courbe $\\mathcal{C}_f$ est **au-dessus ou sur** l'axe des abscisses.\n\nSur le graphique :\n- $\\mathcal{C}_f$ coupe l'axe $Ox$ aux points d'abscisses $-1$ et $3$ ;\n- la courbe est au-dessus de l'axe $Ox$ à l'**extérieur** de ces deux racines, c'est-à-dire pour $x \\leq -1$ ou $x \\geq 3$.\n\nDonc :\n$$\\mathcal{S}_1 = \\, ]-\\infty \\, ; \\, -1] \\cup [3 \\, ; \\, +\\infty[.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Résoudre graphiquement l'inéquation $f(x) \\leq -3$.",
+        "hints": [
+          "$f(x) \\leq -3$ signifie que la courbe $\\mathcal{C}_f$ est **en dessous ou sur** la droite $(d) : y = -3$.",
+          "Repère les abscisses des points d'intersection $A$ et $B$, puis l'intervalle où la courbe passe en dessous de la droite.",
+          "$A$ a pour abscisse $0$ et $B$ a pour abscisse $2$. Entre ces deux valeurs, la courbe est en dessous de $(d)$. Donc $\\mathcal{S}_2 = [0 \\, ; \\, 2]$."
+        ],
+        "expectedAnswer": "$\\mathcal{S}_2 = [0 \\, ; \\, 2]$",
+        "solution": "L'inéquation $f(x) \\leq -3$ se résout graphiquement en repérant l'ensemble des $x$ pour lesquels la courbe $\\mathcal{C}_f$ est **en dessous ou sur** la droite $(d) : y = -3$.\n\nSur le graphique :\n- les points d'intersection de $\\mathcal{C}_f$ et $(d)$ sont $A(0 \\, ; \\, -3)$ et $B(2 \\, ; \\, -3)$ ;\n- entre $A$ et $B$ (c'est-à-dire pour $x \\in [0 \\, ; \\, 2]$), la courbe est en dessous de la droite ;\n- à l'extérieur de cet intervalle, la courbe est strictement au-dessus de la droite.\n\nDonc :\n$$\\mathcal{S}_2 = [0 \\, ; \\, 2].$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Sachant qu'on lit également $f(0) = -3$ et que les racines de $f$ sont $-1$ et $3$, vérifier algébriquement le résultat de la question 2.",
+        "hints": [
+          "Détermine d'abord l'expression de $f(x)$ sous forme factorisée (puis développée) à partir des racines et de $f(0)$. Ensuite, résous $f(x) \\leq -3$ par le calcul.",
+          "Avec les racines $-1$ et $3$, on écrit $f(x) = a(x + 1)(x - 3)$. En utilisant $f(0) = a \\times 1 \\times (-3) = -3a = -3$, on trouve $a = 1$. Donc $f(x) = (x + 1)(x - 3) = x^2 - 2x - 3$. Résous ensuite $x^2 - 2x - 3 \\leq -3$.",
+          "$x^2 - 2x - 3 \\leq -3 \\Leftrightarrow x^2 - 2x \\leq 0 \\Leftrightarrow x(x - 2) \\leq 0$. Les racines sont $0$ et $2$, $a = 1 > 0$ : le trinôme est négatif **entre** ses racines, soit $\\mathcal{S}_2 = [0 \\, ; \\, 2]$."
+        ],
+        "expectedAnswer": "$\\mathcal{S}_2 = [0 \\, ; \\, 2]$, confirmé algébriquement.",
+        "solution": "**Détermination de $f(x)$.** $f$ admet $-1$ et $3$ pour racines, donc $f(x) = a(x + 1)(x - 3)$ pour un certain réel $a$. En utilisant $f(0) = -3$ :\n$$f(0) = a \\times 1 \\times (-3) = -3a = -3, \\quad \\text{d'où } a = 1.$$\n\nDonc $f(x) = (x + 1)(x - 3) = x^2 - 2x - 3$.\n\n**Résolution algébrique de $f(x) \\leq -3$.** On a :\n$$f(x) \\leq -3 \\iff x^2 - 2x - 3 \\leq -3 \\iff x^2 - 2x \\leq 0 \\iff x(x - 2) \\leq 0.$$\n\nLe trinôme $x(x - 2)$ a pour racines $0$ et $2$, et son coefficient dominant vaut $1 > 0$ : il est donc **négatif ou nul entre ses racines**.\n\nDonc :\n$$\\mathcal{S}_2 = [0 \\, ; \\, 2],$$\n\nce qui **confirme** le résultat lu graphiquement."
+      }
+    ]
   }
 ]

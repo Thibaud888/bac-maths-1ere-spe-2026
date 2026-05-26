@@ -269,5 +269,79 @@
         "solution": "D'après la question 1, $f(x) = 2(x - 1)(x - 5)$ avec $a = 2 > 0$ et racines $1$ et $5$. D'après la règle « même signe que $a$ sauf entre les racines », $f$ est strictement positif à l'extérieur des racines.\n\nL'inéquation $f(x) > 0$ a donc pour ensemble des solutions :\n$$\\mathcal{S} = \\, ]-\\infty \\, ; \\, 1[ \\, \\cup \\, ]5 \\, ; \\, +\\infty[.$$"
       }
     ]
+  },
+  {
+    "id": "e-second-degre-004",
+    "chapter": "second-degre",
+    "title": "Associer une expression algébrique à une parabole tracée",
+    "difficulty": 2,
+    "estimatedMinutes": 28,
+    "totalMarks": 4.5,
+    "preamble": "La courbe ci-dessous représente, dans un repère orthonormé, une fonction $f$ du second degré, définie sur $\\mathbb{R}$.\n\nUn élève hésite entre quatre expressions pour $f(x)$ :\n\n- **(a)** $\\quad x^2 - 2x - 8$\n- **(b)** $\\quad -(x + 2)(x - 4)$\n- **(c)** $\\quad -(x - 1)^2 + 9$\n- **(d)** $\\quad -(x + 4)(x - 2)$\n\nL'objectif de l'exercice est d'identifier la (ou les) expression(s) correcte(s).",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "second-degre/associer-parabole-expression.svg",
+        "alt": "Parabole tournée vers le bas, racines en x=-2 et x=4, sommet S(1, 9), passant par (0, 8)",
+        "width": 400,
+        "height": 320
+      }
+    },
+    "tags": ["lecture-graphique", "associer-expression", "forme-canonique", "forme-factorisee", "forme-developpee"],
+    "order": 40,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Déterminer le signe du coefficient dominant $a$ de $f$. En déduire la ou les expression(s) à éliminer parmi $(a), (b), (c), (d)$.",
+        "marks": 1,
+        "hints": [
+          "Le signe de $a$ dépend de l'orientation des branches de la parabole. Identifie ensuite, pour chaque expression, le signe de $a$.",
+          "Pour $(a)$ : $a = 1 > 0$. Pour $(b)$ : le signe « $-$ » devant le produit donne $a = -1 < 0$. Pour $(c)$ : forme canonique avec $a = -1 < 0$. Pour $(d)$ : $a = -1 < 0$.",
+          "Les branches sont tournées vers le bas, donc $a < 0$. On élimine l'expression $(a)$ (où $a = 1 > 0$)."
+        ],
+        "expectedAnswer": "$a < 0$ ; on élimine $(a)$.",
+        "solution": "Sur le graphique, la parabole a ses branches tournées vers le **bas**, donc $a < 0$.\n\nEn examinant le signe du coefficient de $x^2$ dans chaque expression :\n- $(a)$ : $x^2 - 2x - 8$ a pour coefficient dominant $a = 1 > 0$ ;\n- $(b)$ : $-(x + 2)(x - 4)$ a pour coefficient dominant $a = -1 < 0$ ;\n- $(c)$ : $-(x - 1)^2 + 9$ est de la forme canonique avec $a = -1 < 0$ ;\n- $(d)$ : $-(x + 4)(x - 2)$ a pour coefficient dominant $a = -1 < 0$.\n\nL'expression $(a)$ correspond à $a > 0$ : elle est donc **éliminée**. Les candidats restants sont $(b)$, $(c)$ et $(d)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Lire sur le graphique les racines de $f$. En déduire la ou les expression(s) à éliminer parmi $(b), (c), (d)$.",
+        "marks": 1.5,
+        "hints": [
+          "Les racines correspondent aux abscisses des points d'intersection de la courbe avec l'axe $Ox$.",
+          "Identifie ensuite les racines apparaissant explicitement dans chaque forme factorisée. Pour la forme canonique $(c)$, calcule en posant $-(x - 1)^2 + 9 = 0$.",
+          "Racines sur le graphique : $-2$ et $4$. La forme $(b) = -(x + 2)(x - 4)$ a bien racines $-2$ et $4$ ✓. La forme $(d) = -(x + 4)(x - 2)$ a racines $-4$ et $2$ ✗ (on l'élimine). Pour $(c)$ : $(x - 1)^2 = 9 \\Leftrightarrow x = -2$ ou $x = 4$ ✓."
+        ],
+        "expectedAnswer": "Racines : $-2$ et $4$ ; on élimine $(d)$.",
+        "solution": "**Lecture graphique.** La courbe coupe l'axe $Ox$ aux points d'abscisses $-2$ et $4$. Les racines de $f$ sont donc $x_1 = -2$ et $x_2 = 4$.\n\n**Test de chaque expression.**\n- $(b) : -(x + 2)(x - 4)$ s'annule pour $x = -2$ ou $x = 4$. Les racines coïncident ✓.\n- $(c) : -(x - 1)^2 + 9 = 0 \\Leftrightarrow (x - 1)^2 = 9 \\Leftrightarrow x - 1 = 3$ ou $x - 1 = -3 \\Leftrightarrow x = 4$ ou $x = -2$. Les racines coïncident ✓.\n- $(d) : -(x + 4)(x - 2)$ s'annule pour $x = -4$ ou $x = 2$. Ces racines ne correspondent **pas** à celles lues sur le graphique : on **élimine** $(d)$.\n\nLes candidats restants sont $(b)$ et $(c)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Montrer, par un calcul, que les deux expressions $(b)$ et $(c)$ représentent en réalité la **même** fonction $f$. Conclure.",
+        "marks": 1.5,
+        "hints": [
+          "Développe chacune des deux expressions et compare-les.",
+          "Pour $(b) : -(x + 2)(x - 4) = -(x^2 - 4x + 2x - 8) = -(x^2 - 2x - 8)$. Pour $(c)$ : développe $-(x - 1)^2 + 9$ avec l'identité remarquable $(x - 1)^2 = x^2 - 2x + 1$.",
+          "Les deux expressions valent $-x^2 + 2x + 8$. Donc $(b)$ et $(c)$ sont **deux écritures équivalentes** de la même fonction : la forme factorisée et la forme canonique."
+        ],
+        "expectedAnswer": "$(b)$ et $(c)$ donnent toutes deux $f(x) = -x^2 + 2x + 8$.",
+        "solution": "**Développement de $(b)$.**\n$$-(x + 2)(x - 4) = -(x^2 - 4x + 2x - 8) = -(x^2 - 2x - 8) = -x^2 + 2x + 8.$$\n\n**Développement de $(c)$.** En utilisant l'identité remarquable $(x - 1)^2 = x^2 - 2x + 1$ :\n$$-(x - 1)^2 + 9 = -(x^2 - 2x + 1) + 9 = -x^2 + 2x - 1 + 9 = -x^2 + 2x + 8.$$\n\nLes deux expressions $(b)$ et $(c)$ se développent en la même expression :\n$$f(x) = -x^2 + 2x + 8.$$\n\n**Conclusion.** $(b)$ et $(c)$ ne sont pas deux candidats distincts : ce sont **deux écritures équivalentes** du même trinôme. $(b)$ est la forme factorisée, $(c)$ est la forme canonique, et la forme développée est $-x^2 + 2x + 8$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "statement": "Vérifier que la valeur de $f(0)$ lue sur le graphique est cohérente avec l'expression trouvée pour $f$.",
+        "marks": 0.5,
+        "hints": [
+          "Lis $f(0)$ sur le graphique (ordonnée du point d'intersection avec l'axe $Oy$). Puis calcule $f(0)$ avec l'expression trouvée.",
+          "Sur le graphique, $f(0) = 8$. Avec $f(x) = -x^2 + 2x + 8$ : $f(0) = 8$. ✓",
+          "Les deux valeurs coïncident : la cohérence est vérifiée."
+        ],
+        "expectedAnswer": "$f(0) = 8$ par lecture graphique et par calcul.",
+        "solution": "**Lecture graphique.** La courbe coupe l'axe $Oy$ au point d'ordonnée $8$, donc $f(0) = 8$.\n\n**Calcul.** Avec $f(x) = -x^2 + 2x + 8$, on a :\n$$f(0) = -0 + 0 + 8 = 8.$$\n\nLes deux valeurs coïncident : la lecture graphique est **cohérente** avec l'expression algébrique trouvée."
+      }
+    ]
   }
 ]
