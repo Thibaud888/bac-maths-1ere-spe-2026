@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="400" height="320" role="img" aria-label="Trois courbes tracees dans un meme repere sur l'intervalle de moins 2 a 2 : courbe C1 strictement positive partout passant par 0 et 1 (exponentielle), courbe C2 parabole de sommet origine passant par 0 et 0, courbe C3 cubique passant par 0 et 0 prenant des valeurs negatives pour x negatif.">
+  <!-- ── Grille légère ── -->
+  <g stroke="#e2e8f0" stroke-width="0.5">
+    <!-- verticales : x = -2..2 → 60, 130, 200, 270, 340 -->
+    <line x1="60"  y1="40" x2="60"  y2="295"/>
+    <line x1="130" y1="40" x2="130" y2="295"/>
+    <line x1="270" y1="40" x2="270" y2="295"/>
+    <line x1="340" y1="40" x2="340" y2="295"/>
+    <!-- horizontales : y = -3..7 ; 1 unite = 24 px ; y=0 à 215
+         y=1 → 191 ; y=2 → 167 ; y=3 → 143 ; y=4 → 119 ; y=5 → 95 ; y=6 → 71 ; y=7 → 47
+         y=-1 → 239 ; y=-2 → 263 ; y=-3 → 287 -->
+    <line x1="60" y1="191" x2="340" y2="191"/>
+    <line x1="60" y1="167" x2="340" y2="167"/>
+    <line x1="60" y1="143" x2="340" y2="143"/>
+    <line x1="60" y1="119" x2="340" y2="119"/>
+    <line x1="60" y1="95"  x2="340" y2="95"/>
+    <line x1="60" y1="71"  x2="340" y2="71"/>
+    <line x1="60" y1="47"  x2="340" y2="47"/>
+    <line x1="60" y1="239" x2="340" y2="239"/>
+    <line x1="60" y1="263" x2="340" y2="263"/>
+    <line x1="60" y1="287" x2="340" y2="287"/>
+  </g>
+
+  <!-- ── Axes ── (origine x=200, y=215) -->
+  <line x1="50" y1="215" x2="355" y2="215" stroke="#334155" stroke-width="1.2"/>
+  <polygon points="355,215 349,212 349,218" fill="#334155"/>
+  <text x="350" y="228" font-size="12" font-style="italic" fill="#334155" font-family="Georgia,serif">x</text>
+
+  <line x1="200" y1="305" x2="200" y2="20" stroke="#334155" stroke-width="1.2"/>
+  <polygon points="200,20 197,26 203,26" fill="#334155"/>
+  <text x="185" y="25" font-size="12" font-style="italic" fill="#334155" font-family="Georgia,serif">y</text>
+
+  <text x="190" y="228" font-size="11" fill="#475569" font-family="Georgia,serif">O</text>
+
+  <!-- ── Graduations Ox ── -->
+  <g stroke="#334155" stroke-width="1" font-size="10" fill="#475569" font-family="Georgia,serif">
+    <line x1="60"  y1="212" x2="60"  y2="218"/>
+    <text x="60"  y="228" text-anchor="middle">-2</text>
+    <line x1="130" y1="212" x2="130" y2="218"/>
+    <text x="130" y="228" text-anchor="middle">-1</text>
+    <line x1="270" y1="212" x2="270" y2="218"/>
+    <text x="270" y="228" text-anchor="middle">1</text>
+    <line x1="340" y1="212" x2="340" y2="218"/>
+    <text x="340" y="228" text-anchor="middle">2</text>
+  </g>
+
+  <!-- ── Graduations Oy ── -->
+  <g stroke="#334155" stroke-width="1" font-size="10" fill="#475569" font-family="Georgia,serif">
+    <line x1="197" y1="191" x2="203" y2="191"/>
+    <text x="190" y="195" text-anchor="end">1</text>
+    <line x1="197" y1="167" x2="203" y2="167"/>
+    <text x="190" y="171" text-anchor="end">2</text>
+    <line x1="197" y1="143" x2="203" y2="143"/>
+    <text x="190" y="147" text-anchor="end">3</text>
+    <line x1="197" y1="119" x2="203" y2="119"/>
+    <text x="190" y="123" text-anchor="end">4</text>
+    <line x1="197" y1="95"  x2="203" y2="95"/>
+    <text x="190" y="99" text-anchor="end">5</text>
+    <line x1="197" y1="71"  x2="203" y2="71"/>
+    <text x="190" y="75" text-anchor="end">6</text>
+    <line x1="197" y1="47"  x2="203" y2="47"/>
+    <text x="190" y="51" text-anchor="end">7</text>
+    <line x1="197" y1="239" x2="203" y2="239"/>
+    <text x="190" y="243" text-anchor="end">-1</text>
+    <line x1="197" y1="263" x2="203" y2="263"/>
+    <text x="190" y="267" text-anchor="end">-2</text>
+    <line x1="197" y1="287" x2="203" y2="287"/>
+    <text x="190" y="291" text-anchor="end">-3</text>
+  </g>
+
+  <!-- ── Courbe C1 : f(x) = e^x ──
+       x_svg = 200 + 70*x ; y_svg = 215 - 24*e^x
+       x=-2 → 0.135 → (60, 211.76)
+       x=-1 → 0.368 → (130, 206.17)
+       x=0 → 1 → (200, 191)
+       x=0.5 → 1.649 → (235, 175.42)
+       x=1 → 2.718 → (270, 149.77)
+       x=1.5 → 4.482 → (305, 107.43)
+       x=1.9 → 6.686 → (333, 54.5) -->
+  <path fill="none" stroke="#334155" stroke-width="1.8"
+        d="M 60,211.76 Q 95,209.5 130,206.17 Q 165,200.5 200,191 Q 235,175.42 270,149.77 Q 305,107.43 333,54.5"/>
+  <text x="138" y="200" font-size="13" font-family="Georgia,serif" fill="#334155" font-weight="bold">C₁</text>
+
+  <!-- ── Courbe C2 : g(x) = x^2 ──
+       y_svg = 215 - 24*x^2
+       x=-2 → 4 → (60, 119)
+       x=-1.5 → 2.25 → (95, 161)
+       x=-1 → 1 → (130, 191)
+       x=-0.5 → 0.25 → (165, 209)
+       x=0 → 0 → (200, 215)
+       x=0.5 → 0.25 → (235, 209)
+       x=1 → 1 → (270, 191)
+       x=1.5 → 2.25 → (305, 161)
+       x=2 → 4 → (340, 119) -->
+  <polyline fill="none" stroke="#475569" stroke-width="1.6" stroke-dasharray="6 3"
+            points="60,119 95,161 130,191 165,209 200,215 235,209 270,191 305,161 340,119"/>
+  <text x="345" y="119" font-size="13" font-family="Georgia,serif" fill="#475569" font-weight="bold">C₂</text>
+
+  <!-- ── Courbe C3 : h(x) = x^3 ──
+       y_svg = 215 - 24*x^3
+       Limite à x ∈ [-1.44 ; 1.65] pour rester dans y ∈ [-3 ; 4.5]
+       x=-1.44 → -2.986 → (99.2, 286.66)
+       x=-1.2 → -1.728 → (116, 256.47)
+       x=-1 → -1 → (130, 239)
+       x=-0.5 → -0.125 → (165, 218)
+       x=0 → 0 → (200, 215)
+       x=0.5 → 0.125 → (235, 212)
+       x=1 → 1 → (270, 191)
+       x=1.2 → 1.728 → (284, 173.5)
+       x=1.4 → 2.744 → (298, 149.14)
+       x=1.65 → 4.492 → (315.5, 107.2) -->
+  <polyline fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="2 3"
+            points="99.2,286.66 116,256.47 130,239 165,218 200,215 235,212 270,191 284,173.5 298,149.14 315.5,107.2"/>
+  <text x="318" y="100" font-size="13" font-family="Georgia,serif" fill="#475569" font-weight="bold">C₃</text>
+</svg>

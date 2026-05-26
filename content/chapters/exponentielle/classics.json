@@ -423,5 +423,173 @@
         "solution": "L'équation de la tangente en $a = 0$ est $y = f'(0)(x - 0) + f(0)$.\n\nOn calcule :\n- $f(0) = (2 \\times 0 - 1) e^0 = -1 \\times 1 = -1$ ;\n- $f'(0) = (2 \\times 0 + 1) e^0 = 1 \\times 1 = 1$.\n\nDonc la tangente a pour équation :\n\n$$y = 1 \\cdot (x - 0) + (-1) = x - 1.$$"
       }
     ]
+  },
+  {
+    "id": "c-exponentielle-010",
+    "chapter": "exponentielle",
+    "title": "Associer une courbe à sa fonction exponentielle",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 100,
+    "tags": ["lecture-graphique", "associer-courbe", "transformations"],
+    "preamble": "Le graphique ci-dessous présente quatre courbes $\\mathcal{C}_1$, $\\mathcal{C}_2$, $\\mathcal{C}_3$ et $\\mathcal{C}_4$ tracées chacune dans son propre repère. Ces courbes représentent, dans le désordre, les quatre fonctions suivantes définies sur $\\mathbb{R}$ :\n\n- $f(x) = e^x$\n- $g(x) = e^{-x}$\n- $h(x) = -e^x$\n- $k(x) = e^x - 2$\n\nL'objectif est d'associer chaque courbe à la fonction qu'elle représente.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "exponentielle/associer-quatre-exponentielles.svg",
+        "alt": "Quatre courbes C1, C2, C3, C4 dans quatre sous-repères. C1 est strictement croissante, passe par (0;1) et reste positive. C2 est strictement décroissante, passe par (0;1) et reste positive. C3 est strictement décroissante, passe par (0;-1) et reste négative. C4 est strictement croissante, passe par (0;-1) et change de signe.",
+        "width": 440,
+        "height": 400
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "En utilisant uniquement le sens de variation des courbes, identifier celles qui peuvent correspondre à $f(x) = e^x$ ou à $k(x) = e^x - 2$.",
+        "hints": [
+          "$f$ et $k$ ont la même dérivée : $f'(x) = e^x > 0$ et $k'(x) = e^x > 0$. Quelles sont les courbes strictement croissantes ?",
+          "$g'(x) = -e^{-x} < 0$ et $h'(x) = -e^x < 0$, donc $g$ et $h$ sont décroissantes. Cherche les deux courbes croissantes sur le graphique.",
+          "Les deux courbes croissantes sont $\\mathcal{C}_1$ et $\\mathcal{C}_4$. Donc $\\{f, k\\}$ correspondent à $\\{\\mathcal{C}_1, \\mathcal{C}_4\\}$."
+        ],
+        "expectedAnswer": "$f$ et $k$ correspondent à $\\mathcal{C}_1$ et $\\mathcal{C}_4$ (sans pouvoir encore les distinguer).",
+        "solution": "On a $f'(x) = e^x > 0$ et $k'(x) = (e^x - 2)' = e^x > 0$ pour tout $x \\in \\mathbb{R}$. Donc $f$ et $k$ sont **strictement croissantes** sur $\\mathbb{R}$.\n\nAu contraire, $g'(x) = -e^{-x} < 0$ et $h'(x) = -e^x < 0$, donc $g$ et $h$ sont **strictement décroissantes**.\n\nSur le graphique, les deux courbes croissantes sont $\\mathcal{C}_1$ et $\\mathcal{C}_4$. Donc $f$ et $k$ correspondent (dans un ordre encore à déterminer) à $\\mathcal{C}_1$ et $\\mathcal{C}_4$, tandis que $g$ et $h$ correspondent à $\\mathcal{C}_2$ et $\\mathcal{C}_3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En lisant la valeur de l'image en $0$ sur chaque courbe, finir d'identifier chaque courbe.",
+        "hints": [
+          "Calcule $f(0)$, $g(0)$, $h(0)$, $k(0)$ à l'aide de $e^0 = 1$. Puis lis l'ordonnée à l'origine de chaque courbe.",
+          "$f(0) = 1$, $g(0) = 1$, $h(0) = -1$, $k(0) = 1 - 2 = -1$. Sur le graphique : $\\mathcal{C}_1$ et $\\mathcal{C}_2$ passent par $(0\\,;\\,1)$ ; $\\mathcal{C}_3$ et $\\mathcal{C}_4$ passent par $(0\\,;\\,-1)$.",
+          "$\\mathcal{C}_1 \\leftrightarrow f$, $\\mathcal{C}_2 \\leftrightarrow g$, $\\mathcal{C}_3 \\leftrightarrow h$, $\\mathcal{C}_4 \\leftrightarrow k$."
+        ],
+        "expectedAnswer": "$\\mathcal{C}_1 : f$, $\\mathcal{C}_2 : g$, $\\mathcal{C}_3 : h$, $\\mathcal{C}_4 : k$.",
+        "solution": "On utilise $e^0 = 1$ pour calculer la valeur en $0$ :\n\n- $f(0) = e^0 = 1$\n- $g(0) = e^{-0} = 1$\n- $h(0) = -e^0 = -1$\n- $k(0) = e^0 - 2 = -1$\n\nOn lit ensuite l'ordonnée à l'origine sur le graphique :\n\n- $\\mathcal{C}_1$ passe par $(0\\,;\\,1)$ et est croissante : c'est $f$.\n- $\\mathcal{C}_2$ passe par $(0\\,;\\,1)$ et est décroissante : c'est $g$.\n- $\\mathcal{C}_3$ passe par $(0\\,;\\,-1)$ et est décroissante : c'est $h$.\n- $\\mathcal{C}_4$ passe par $(0\\,;\\,-1)$ et est croissante : c'est $k$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Donner, pour chacune des quatre fonctions, le signe de l'expression sur $\\mathbb{R}$. Vérifier la cohérence avec les courbes obtenues.",
+        "hints": [
+          "Utilise $e^x > 0$ pour tout $x \\in \\mathbb{R}$.",
+          "Pour $k(x) = e^x - 2$, ce signe dépend de $x$ : étudie quand $e^x > 2$.",
+          "$f > 0$ et $g > 0$ partout ; $h < 0$ partout ; $k$ change de signe."
+        ],
+        "solution": "Comme $e^x > 0$ pour tout $x \\in \\mathbb{R}$ :\n\n- $f(x) = e^x > 0$ pour tout $x$. Cohérent : $\\mathcal{C}_1$ est entièrement au-dessus de l'axe des abscisses.\n- $g(x) = e^{-x} > 0$ pour tout $x$. Cohérent : $\\mathcal{C}_2$ est entièrement au-dessus de l'axe des abscisses.\n- $h(x) = -e^x < 0$ pour tout $x$. Cohérent : $\\mathcal{C}_3$ est entièrement en dessous de l'axe des abscisses.\n- $k(x) = e^x - 2$ est négatif quand $e^x < 2$ et positif quand $e^x > 2$ : $k$ change de signe. Cohérent : $\\mathcal{C}_4$ coupe l'axe des abscisses."
+      }
+    ]
+  },
+  {
+    "id": "c-exponentielle-011",
+    "chapter": "exponentielle",
+    "title": "Distinguer une exponentielle d'une fonction polynomiale",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 110,
+    "tags": ["lecture-graphique", "exponentielle", "polynome", "signe"],
+    "preamble": "On a tracé dans un même repère trois courbes $\\mathcal{C}_1$, $\\mathcal{C}_2$ et $\\mathcal{C}_3$ représentant, dans le désordre, les trois fonctions définies sur $\\mathbb{R}$ par :\n\n- $f(x) = e^x$\n- $g(x) = x^2$\n- $h(x) = x^3$",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "exponentielle/exp-vs-polynomes.svg",
+        "alt": "Trois courbes dans le même repère sur [-2 ; 2] : C1 strictement positive partout passant par (0 ; 1), C2 parabole de sommet O passant par (-1 ; 1) et (1 ; 1), C3 cubique passant par l'origine, négative pour x négatif et positive pour x positif.",
+        "width": 400,
+        "height": 320
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Identifier la courbe correspondant à la fonction $f(x) = e^x$.",
+        "hints": [
+          "Quelle est la propriété de signe la plus caractéristique de la fonction exponentielle ?",
+          "On a $e^x > 0$ pour tout $x \\in \\mathbb{R}$ : la courbe de $f$ est entièrement au-dessus de l'axe des abscisses. Or $g(x) = x^2 \\geq 0$ (la courbe touche l'axe en $0$) et $h(x) = x^3$ change de signe.",
+          "$\\mathcal{C}_1$ est entièrement au-dessus de l'axe et ne touche jamais cet axe : c'est la courbe de $f(x) = e^x$."
+        ],
+        "expectedAnswer": "$\\mathcal{C}_1$ représente $f(x) = e^x$.",
+        "solution": "On utilise le fait que $e^x > 0$ pour tout $x \\in \\mathbb{R}$ : la courbe de $f$ est donc **strictement au-dessus de l'axe des abscisses**, sans jamais le toucher.\n\nOr :\n- $g(x) = x^2 \\geq 0$, mais $g(0) = 0$ : la courbe de $g$ touche l'axe des abscisses en $O$.\n- $h(x) = x^3$ change de signe : $h(x) < 0$ pour $x < 0$ et $h(x) > 0$ pour $x > 0$.\n\nSeule $\\mathcal{C}_1$ est entièrement au-dessus de l'axe des abscisses (sans le toucher) : c'est la courbe représentative de $f(x) = e^x$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Vérifier l'identification précédente en utilisant les valeurs caractéristiques $f(-1)$, $f(0)$ et $f(1)$.",
+        "hints": [
+          "Calcule $f(-1) = e^{-1} = \\dfrac{1}{e}$, $f(0) = e^0 = 1$ et $f(1) = e$. Approximations : $\\dfrac{1}{e} \\approx 0{,}37$ et $e \\approx 2{,}72$.",
+          "Lis ces valeurs sur la courbe $\\mathcal{C}_1$ et compare avec les valeurs des autres fonctions en ces mêmes abscisses : $g(-1) = 1$, $g(0) = 0$, $g(1) = 1$ et $h(-1) = -1$, $h(0) = 0$, $h(1) = 1$.",
+          "Seule $\\mathcal{C}_1$ passe par $(0 \\, ; \\, 1)$ tout en étant strictement positive en $-1$ : c'est bien la courbe de $e^x$."
+        ],
+        "solution": "On calcule :\n- $f(-1) = e^{-1} = \\dfrac{1}{e} \\approx 0{,}37$\n- $f(0) = e^0 = 1$\n- $f(1) = e \\approx 2{,}72$\n\nPour les deux autres fonctions :\n- $g(-1) = 1$, $g(0) = 0$, $g(1) = 1$ (la courbe de $g$ passe par $(0\\,;\\,0)$, ce qui n'est pas le cas de $f$).\n- $h(-1) = -1$, $h(0) = 0$, $h(1) = 1$ (la courbe de $h$ prend une valeur négative en $-1$).\n\nSeule la courbe qui passe par $(0\\,;\\,1)$ et qui est strictement positive en $-1$ peut être celle de $f$. C'est bien $\\mathcal{C}_1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Citer la propriété de signe de la fonction exponentielle, et expliquer pourquoi cette propriété permet d'exclure $g(x) = x^2$ et $h(x) = x^3$ comme candidats pour la courbe $\\mathcal{C}_1$.",
+        "hints": [
+          "Quel est le signe de $e^x$ pour tout $x \\in \\mathbb{R}$ ?",
+          "Pour $g$ : que vaut $g(0)$ ? Pour $h$ : quel est le signe de $h(-1)$ ?",
+          "$e^x > 0$ pour tout $x$ : la fonction exponentielle ne s'annule jamais. Or $g$ s'annule en $0$ et $h$ prend des valeurs négatives sur $\\,]{-}\\infty\\,;\\,0[\\,$ : ni $g$, ni $h$ ne peuvent correspondre à $\\mathcal{C}_1$."
+        ],
+        "solution": "La propriété de signe de la fonction exponentielle est :\n\n$$\\forall x \\in \\mathbb{R}, \\quad e^x > 0.$$\n\nLa fonction exponentielle **ne s'annule jamais** et **ne prend que des valeurs strictement positives**.\n\n- Pour $g(x) = x^2$ : on a $g(0) = 0$, donc $g$ s'annule en $0$. Sa courbe touche l'axe des abscisses à l'origine. La courbe $\\mathcal{C}_1$, elle, est entièrement au-dessus de l'axe des abscisses, sans le toucher : $g$ ne peut donc pas être représentée par $\\mathcal{C}_1$.\n- Pour $h(x) = x^3$ : on a $h(-1) = -1 < 0$, donc $h$ prend des valeurs strictement négatives pour $x < 0$. Sa courbe descend sous l'axe des abscisses, ce qui est incompatible avec $\\mathcal{C}_1$.\n\nLa stricte positivité de $e^x$ exclut donc à la fois $g$ et $h$."
+      }
+    ]
+  },
+  {
+    "id": "c-exponentielle-012",
+    "chapter": "exponentielle",
+    "title": "Lecture graphique de la tangente à $\\mathcal{C}_f$ au point $(0\\,;\\,1)$",
+    "difficulty": 1,
+    "estimatedMinutes": 8,
+    "order": 120,
+    "tags": ["lecture-graphique", "tangente", "exponentielle", "derivee-en-0"],
+    "preamble": "Le graphique ci-dessous représente la courbe $\\mathcal{C}_f$ de la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = e^x$. On a également tracé en pointillés la droite $T$ tangente à $\\mathcal{C}_f$ au point $A$ de coordonnées $(0\\,;\\,1)$. On lit que $T$ passe par les deux points $A(0\\,;\\,1)$ et $B(-1\\,;\\,0)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "exponentielle/exp-tangente-en-0.svg",
+        "alt": "Courbe de la fonction exponentielle et sa tangente T au point A(0 ; 1). La tangente, droite croissante, passe également par le point B(-1 ; 0).",
+        "width": 400,
+        "height": 320
+      }
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Lire sur le graphique l'ordonnée à l'origine de la tangente $T$.",
+        "hints": [
+          "L'ordonnée à l'origine d'une droite est l'ordonnée du point d'intersection de la droite avec l'axe des ordonnées.",
+          "C'est le point $A$ pour la tangente $T$, et son ordonnée se lit directement.",
+          "L'ordonnée à l'origine vaut $1$."
+        ],
+        "expectedAnswer": "$1$",
+        "solution": "L'ordonnée à l'origine de la tangente $T$ est l'ordonnée du point d'intersection de $T$ avec l'axe des ordonnées. D'après le graphique, ce point est $A(0\\,;\\,1)$, donc l'ordonnée à l'origine vaut $1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Déterminer le coefficient directeur de la tangente $T$ à l'aide des points $A$ et $B$.",
+        "hints": [
+          "Le coefficient directeur d'une droite passant par $A(x_A\\,;\\,y_A)$ et $B(x_B\\,;\\,y_B)$ est $m = \\dfrac{y_B - y_A}{x_B - x_A}$.",
+          "Avec $A(0\\,;\\,1)$ et $B(-1\\,;\\,0)$ : $m = \\dfrac{0 - 1}{-1 - 0} = \\dfrac{-1}{-1}$.",
+          "$m = 1$."
+        ],
+        "expectedAnswer": "$m = 1$",
+        "solution": "Le coefficient directeur de la droite passant par $A(0\\,;\\,1)$ et $B(-1\\,;\\,0)$ est :\n\n$$m = \\frac{y_B - y_A}{x_B - x_A} = \\frac{0 - 1}{-1 - 0} = \\frac{-1}{-1} = 1.$$\n\nLa tangente $T$ a donc pour coefficient directeur $1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "En déduire une équation de la tangente $T$. Retrouver ensuite ce résultat par le calcul, en utilisant la formule $y = f'(a)(x - a) + f(a)$ avec $a = 0$.",
+        "hints": [
+          "L'équation d'une droite de coefficient directeur $m$ et d'ordonnée à l'origine $p$ est $y = mx + p$.",
+          "Pour le calcul : $f(x) = e^x$ donne $f'(x) = e^x$, donc $f(0) = 1$ et $f'(0) = 1$. La formule donne $y = 1 \\cdot (x - 0) + 1$.",
+          "$T : y = x + 1$."
+        ],
+        "expectedAnswer": "$y = x + 1$",
+        "solution": "**Par lecture graphique** : la tangente $T$ a pour coefficient directeur $m = 1$ et pour ordonnée à l'origine $p = 1$. Son équation est donc :\n\n$$T : y = x + 1.$$\n\n**Par le calcul** : avec $f(x) = e^x$, on a $f'(x) = e^x$, donc $f(0) = e^0 = 1$ et $f'(0) = e^0 = 1$.\n\nLa formule $y = f'(a)(x - a) + f(a)$ avec $a = 0$ donne :\n\n$$y = 1 \\cdot (x - 0) + 1 = x + 1.$$\n\nLes deux méthodes donnent bien la même équation. Cela illustre le fait remarquable que **la tangente à la courbe de l'exponentielle au point $(0\\,;\\,1)$ a pour coefficient directeur $1$**, conséquence directe de $(\\exp)'(0) = \\exp(0) = 1$."
+      }
+    ]
   }
 ]
