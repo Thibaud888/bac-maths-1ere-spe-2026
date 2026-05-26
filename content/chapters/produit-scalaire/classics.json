@@ -382,5 +382,173 @@
         "solution": "On calcule :\n$$AB = \\sqrt{4^2 + (-4)^2} = \\sqrt{16 + 16} = \\sqrt{32} = 4\\sqrt{2}$$\n$$AC = \\sqrt{(-2)^2 + (-2)^2} = \\sqrt{4 + 4} = \\sqrt{8} = 2\\sqrt{2}.$$\n\nPar le théorème de Pythagore (le triangle est rectangle en $A$) :\n$$BC^2 = AB^2 + AC^2 = 32 + 8 = 40.$$\n$$BC = \\sqrt{40} = \\sqrt{4 \\times 10} = 2\\sqrt{10}.$$"
       }
     ]
+  },
+  {
+    "id": "c-produit-scalaire-011",
+    "chapter": "produit-scalaire",
+    "title": "Lecture graphique — conjecturer puis prouver un angle droit",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 110,
+    "tags": ["lecture-graphique", "angle-droit", "orthogonalite", "triangle-rectangle"],
+    "preamble": "On considère le triangle $ABC$ tracé ci-dessous dans un repère orthonormé. Les coordonnées des sommets se lisent sur la figure : $A(-1 \\, ; \\, 2)$, $B(3 \\, ; \\, 1)$ et $C(-2 \\, ; \\, -2)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "produit-scalaire/triangle-angle-droit.svg",
+        "alt": "Triangle ABC tracé dans un repère orthonormé"
+      },
+      "caption": "Triangle ABC dans le repère"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Par lecture graphique, conjecturer en quel sommet le triangle $ABC$ semble être rectangle.",
+        "hints": [
+          "Regarde les trois angles du triangle et identifie celui qui semble droit.",
+          "L'angle qui paraît mesurer $90°$ est celui formé par les côtés $[AB]$ et $[AC]$.",
+          "Le triangle semble être rectangle en $A$."
+        ],
+        "expectedAnswer": "Le triangle semble être rectangle en $A$.",
+        "solution": "Par lecture graphique, on observe que l'angle $\\widehat{BAC}$ formé par les côtés $[AB]$ et $[AC]$ semble être un angle droit. On **conjecture** donc que le triangle $ABC$ est rectangle en $A$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$ à l'aide des coordonnées.",
+        "hints": [
+          "Détermine d'abord les coordonnées de $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.",
+          "$\\overrightarrow{AB} = \\begin{pmatrix} 3-(-1) \\\\ 1-2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ -1 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} -2-(-1) \\\\ -2-2 \\end{pmatrix} = \\begin{pmatrix} -1 \\\\ -4 \\end{pmatrix}$.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times (-1) + (-1) \\times (-4) = -4 + 4 = 0$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$",
+        "solution": "On calcule les coordonnées des vecteurs :\n$$\\overrightarrow{AB} = \\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\end{pmatrix} = \\begin{pmatrix} 3 - (-1) \\\\ 1 - 2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ -1 \\end{pmatrix}$$\n$$\\overrightarrow{AC} = \\begin{pmatrix} x_C - x_A \\\\ y_C - y_A \\end{pmatrix} = \\begin{pmatrix} -2 - (-1) \\\\ -2 - 2 \\end{pmatrix} = \\begin{pmatrix} -1 \\\\ -4 \\end{pmatrix}.$$\n\nDans un repère orthonormé, le produit scalaire se calcule par la formule des coordonnées :\n$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times (-1) + (-1) \\times (-4) = -4 + 4 = 0.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Conclure : le triangle $ABC$ est-il rectangle ? Si oui, en quel sommet ?",
+        "hints": [
+          "Rappelle-toi qu'un produit scalaire nul (avec des vecteurs non nuls) caractérise l'orthogonalité.",
+          "Comme $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$ et que ces vecteurs sont non nuls, on a $\\overrightarrow{AB} \\perp \\overrightarrow{AC}$.",
+          "Donc l'angle en $A$ est droit : le triangle est rectangle en $A$. La conjecture est confirmée."
+        ],
+        "expectedAnswer": "Le triangle $ABC$ est rectangle en $A$.",
+        "solution": "On a $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$ avec $\\overrightarrow{AB} \\neq \\vec{0}$ et $\\overrightarrow{AC} \\neq \\vec{0}$.\n\nOr, deux vecteurs non nuls sont orthogonaux si et seulement si leur produit scalaire est nul. Donc $\\overrightarrow{AB} \\perp \\overrightarrow{AC}$, ce qui signifie que l'angle $\\widehat{BAC} = \\dfrac{\\pi}{2}$.\n\n**Le triangle $ABC$ est rectangle en $A$**, ce qui confirme la conjecture de la question 1."
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-012",
+    "chapter": "produit-scalaire",
+    "title": "Lecture graphique — Al-Kashi pour calculer un côté",
+    "difficulty": 2,
+    "estimatedMinutes": 8,
+    "order": 120,
+    "tags": ["lecture-graphique", "al-kashi", "triangle"],
+    "preamble": "On considère le triangle $ABC$ ci-dessous, dans lequel on a marqué : $AB = 5$, $AC = 8$ et $\\widehat{BAC} = \\dfrac{\\pi}{3}$ (soit $60°$).",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "produit-scalaire/triangle-al-kashi.svg",
+        "alt": "Triangle ABC avec deux côtés mesurés et l'angle en A indiqué"
+      },
+      "caption": "Triangle ABC avec données aux deux côtés et à l'angle en A"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Énoncer la formule d'Al-Kashi reliant $BC^2$ aux longueurs $AB$, $AC$ et au cosinus de l'angle $\\widehat{BAC}$.",
+        "hints": [
+          "C'est la généralisation de Pythagore à un triangle quelconque.",
+          "Le côté opposé à un sommet apparaît à gauche ; à droite, somme des carrés des deux autres côtés, moins $2$ fois le produit, fois le cosinus de l'angle au sommet correspondant.",
+          "$BC^2 = AB^2 + AC^2 - 2 \\cdot AB \\cdot AC \\cdot \\cos(\\widehat{BAC})$."
+        ],
+        "expectedAnswer": "$BC^2 = AB^2 + AC^2 - 2 \\cdot AB \\cdot AC \\cdot \\cos(\\widehat{BAC})$",
+        "solution": "La formule d'Al-Kashi (dans un triangle $ABC$, côté $BC$ opposé à l'angle en $A$) s'écrit :\n$$BC^2 = AB^2 + AC^2 - 2 \\cdot AB \\cdot AC \\cdot \\cos(\\widehat{BAC}).$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "En utilisant les données de la figure, calculer $BC^2$ puis $BC$.",
+        "hints": [
+          "Remplace dans la formule : $AB = 5$, $AC = 8$, $\\cos\\dfrac{\\pi}{3} = \\dfrac{1}{2}$.",
+          "$BC^2 = 25 + 64 - 2 \\times 5 \\times 8 \\times \\dfrac{1}{2} = 89 - 40 = 49$.",
+          "$BC = \\sqrt{49} = 7$."
+        ],
+        "expectedAnswer": "$BC = 7$",
+        "solution": "On applique la formule d'Al-Kashi avec $AB = 5$, $AC = 8$ et $\\cos\\dfrac{\\pi}{3} = \\dfrac{1}{2}$ :\n$$BC^2 = 5^2 + 8^2 - 2 \\times 5 \\times 8 \\times \\dfrac{1}{2}$$\n$$= 25 + 64 - 40 = 49.$$\n\nDonc $BC = \\sqrt{49} = 7$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Le triangle $ABC$ est-il rectangle ? Justifier en utilisant la réciproque du théorème de Pythagore.",
+        "hints": [
+          "Vérifie si le carré du plus grand côté est égal à la somme des carrés des deux autres.",
+          "Le plus grand côté est $AC = 8$, donc on compare $AC^2$ à $AB^2 + BC^2$.",
+          "$AC^2 = 64$ et $AB^2 + BC^2 = 25 + 49 = 74$. Comme $64 \\neq 74$, le triangle n'est pas rectangle."
+        ],
+        "expectedAnswer": "Non, le triangle n'est pas rectangle.",
+        "solution": "Le plus grand côté est $AC = 8$. On compare $AC^2$ à la somme $AB^2 + BC^2$ :\n$$AC^2 = 64 \\quad \\text{et} \\quad AB^2 + BC^2 = 25 + 49 = 74.$$\n\nOr $64 \\neq 74$, donc d'après la contraposée du théorème de Pythagore, **le triangle $ABC$ n'est pas rectangle**.\n\n(On peut aussi le voir directement : aucun des angles ne vaut $\\dfrac{\\pi}{2}$, puisque $\\widehat{BAC} = \\dfrac{\\pi}{3}$ et les deux autres angles sont strictement inférieurs à $\\dfrac{\\pi}{2}$ car opposés à des côtés plus petits que $AC$.)"
+      }
+    ]
+  },
+  {
+    "id": "c-produit-scalaire-013",
+    "chapter": "produit-scalaire",
+    "title": "Lecture graphique — produit scalaire par le projeté orthogonal",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 130,
+    "tags": ["lecture-graphique", "projete-orthogonal", "produit-scalaire"],
+    "preamble": "Dans un repère orthonormé, on donne $A(0 \\, ; \\, 0)$, $B(4 \\, ; \\, 3)$ et $C(5 \\, ; \\, 0)$. On note $H$ le projeté orthogonal de $B$ sur la droite $(AC)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "produit-scalaire/projete-orthogonal.svg",
+        "alt": "Vecteurs AB et AC à partir de l'origine, avec le projeté orthogonal H de B sur l'axe portant AC"
+      },
+      "caption": "Projeté orthogonal H de B sur la droite (AC)"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Par lecture graphique, déterminer les coordonnées du point $H$, projeté orthogonal de $B$ sur $(AC)$.",
+        "hints": [
+          "La droite $(AC)$ est l'axe des abscisses (car $A$ et $C$ ont la même ordonnée $y = 0$).",
+          "$H$ est le point de l'axe $(AC)$ tel que $(BH)$ soit perpendiculaire à $(AC)$. Donc $H$ a la même abscisse que $B$ et une ordonnée nulle.",
+          "$H(4 \\, ; \\, 0)$."
+        ],
+        "expectedAnswer": "$H(4 \\, ; \\, 0)$",
+        "solution": "La droite $(AC)$ passe par $A(0\\, ; \\, 0)$ et $C(5 \\, ; \\, 0)$ : c'est donc l'axe des abscisses.\n\nLe projeté orthogonal $H$ de $B(4 \\, ; \\, 3)$ sur cette droite est le point d'intersection entre la droite $(AC)$ et la perpendiculaire à $(AC)$ passant par $B$. Cette perpendiculaire est verticale, donc :\n$$H(4 \\, ; \\, 0).$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$ à l'aide de la formule du projeté orthogonal : $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\overrightarrow{AH} \\cdot \\overrightarrow{AC}$.",
+        "hints": [
+          "Comme $\\overrightarrow{AH}$ et $\\overrightarrow{AC}$ sont colinéaires et de même sens, $\\overrightarrow{AH} \\cdot \\overrightarrow{AC} = AH \\times AC$.",
+          "$AH = 4$ (distance de $A(0;0)$ à $H(4;0)$) et $AC = 5$.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times 5 = 20$."
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 20$",
+        "solution": "D'après la propriété du projeté orthogonal :\n$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\overrightarrow{AH} \\cdot \\overrightarrow{AC}.$$\n\nOr $\\overrightarrow{AH}$ et $\\overrightarrow{AC}$ sont colinéaires et de **même sens** (les deux pointent vers les abscisses positives), donc :\n$$\\overrightarrow{AH} \\cdot \\overrightarrow{AC} = AH \\times AC.$$\n\nCalcul : $AH = 4$ et $AC = 5$, donc :\n$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times 5 = 20.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Vérifier ce résultat en calculant $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$ par la formule des coordonnées.",
+        "hints": [
+          "Calcule les coordonnées de $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, puis applique $\\vec{u} \\cdot \\vec{v} = xx' + yy'$.",
+          "$\\overrightarrow{AB} = \\begin{pmatrix} 4 \\\\ 3 \\end{pmatrix}$ et $\\overrightarrow{AC} = \\begin{pmatrix} 5 \\\\ 0 \\end{pmatrix}$.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times 5 + 3 \\times 0 = 20$. ✓"
+        ],
+        "expectedAnswer": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 20$",
+        "solution": "On calcule :\n$$\\overrightarrow{AB} = \\begin{pmatrix} 4-0 \\\\ 3-0 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 3 \\end{pmatrix}, \\quad \\overrightarrow{AC} = \\begin{pmatrix} 5-0 \\\\ 0-0 \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ 0 \\end{pmatrix}.$$\n\nDonc :\n$$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 \\times 5 + 3 \\times 0 = 20.$$\n\nLes deux méthodes donnent bien le même résultat : **les deux formulations du produit scalaire (par les coordonnées et par le projeté orthogonal) sont cohérentes.**"
+      }
+    ]
   }
 ]
