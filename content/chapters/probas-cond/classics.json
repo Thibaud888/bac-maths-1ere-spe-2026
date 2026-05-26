@@ -706,5 +706,239 @@
         "solution": "Par définition de la probabilité conditionnelle :\n$$P_M(F_A) = \\dfrac{P(F_A \\cap M)}{P(M)}.$$\n\nLe numérateur est la probabilité du chemin $F_A \\to M$ de l'arbre :\n$$P(F_A \\cap M) = P(F_A) \\times P_{F_A}(M) = 0{,}4 \\times 0{,}1 = 0{,}04.$$\n\nLe dénominateur a été calculé à la question 2 : $P(M) = 0{,}1$.\n\nDonc :\n$$P_M(F_A) = \\dfrac{0{,}04}{0{,}1} = 0{,}4.$$\n\n**Interprétation** : parmi tous les paquets mal étiquetés, $40\\,\\%$ proviennent du fournisseur $F_A$."
       }
     ]
+  },
+  {
+    "id": "c-probas-cond-013",
+    "chapter": "probas-cond",
+    "title": "Compléter un arbre pondéré partiellement rempli",
+    "difficulty": 1,
+    "estimatedMinutes": 8,
+    "order": 130,
+    "tags": ["probas-cond", "lecture-graphique", "arbre"],
+    "preamble": "Une étude porte sur les abonnés d'une plateforme de streaming. On considère les événements :\n- $A$ : « l'abonné a souscrit la formule annuelle » ;\n- $B$ : « l'abonné regarde plus de $10$ heures par semaine ».\n\nL'arbre pondéré ci-dessous traduit la situation, mais **certains poids ont été effacés** et remplacés par un point d'interrogation.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$A$",
+              "weight": "0,6",
+              "children": [
+                {
+                  "label": "$B$",
+                  "weight": "0,3"
+                },
+                {
+                  "label": "$\\overline{B}$",
+                  "weight": "?"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{A}$",
+              "weight": "?",
+              "children": [
+                {
+                  "label": "$B$",
+                  "weight": "0,5"
+                },
+                {
+                  "label": "$\\overline{B}$",
+                  "weight": "?"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      },
+      "caption": "Arbre pondéré à compléter (les trois branches marquées « ? »)."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Déterminer les trois poids manquants sur l'arbre (branches marquées « ? »).",
+        "hints": [
+          "Sur chaque nœud, la somme des poids des branches issues de ce nœud vaut $1$.",
+          "Premier niveau : $P(A) + P(\\overline{A}) = 1$. Depuis le nœud $A$ : $P_A(B) + P_A(\\overline{B}) = 1$. Depuis le nœud $\\overline{A}$ : $P_{\\overline{A}}(B) + P_{\\overline{A}}(\\overline{B}) = 1$.",
+          "$P(\\overline{A}) = 1 - 0{,}6 = 0{,}4$ ; $P_A(\\overline{B}) = 1 - 0{,}3 = 0{,}7$ ; $P_{\\overline{A}}(\\overline{B}) = 1 - 0{,}5 = 0{,}5$."
+        ],
+        "expectedAnswer": "$P(\\overline{A}) = 0{,}4$ ; $P_A(\\overline{B}) = 0{,}7$ ; $P_{\\overline{A}}(\\overline{B}) = 0{,}5$",
+        "solution": "Sur un arbre pondéré, la somme des poids des branches issues d'un même nœud vaut toujours $1$.\n\n**Premier niveau** (depuis $\\Omega$) : les deux branches portent $P(A)$ et $P(\\overline{A})$, donc\n$$P(\\overline{A}) = 1 - P(A) = 1 - 0{,}6 = 0{,}4.$$\n\n**Depuis le nœud $A$** : les deux sous-branches portent $P_A(B)$ et $P_A(\\overline{B})$, donc\n$$P_A(\\overline{B}) = 1 - P_A(B) = 1 - 0{,}3 = 0{,}7.$$\n\n**Depuis le nœud $\\overline{A}$** : les deux sous-branches portent $P_{\\overline{A}}(B)$ et $P_{\\overline{A}}(\\overline{B})$, donc\n$$P_{\\overline{A}}(\\overline{B}) = 1 - P_{\\overline{A}}(B) = 1 - 0{,}5 = 0{,}5.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $P(A \\cap B)$, puis $P(\\overline{A} \\cap B)$.",
+        "hints": [
+          "Règle du produit le long d'un chemin : $P(A \\cap B) = P(A) \\times P_A(B)$.",
+          "De même, $P(\\overline{A} \\cap B) = P(\\overline{A}) \\times P_{\\overline{A}}(B)$, en utilisant le poids $P(\\overline{A})$ trouvé à la question 1.",
+          "$P(A \\cap B) = 0{,}6 \\times 0{,}3 = 0{,}18$ ; $P(\\overline{A} \\cap B) = 0{,}4 \\times 0{,}5 = 0{,}2$."
+        ],
+        "expectedAnswer": "$P(A \\cap B) = 0{,}18$ ; $P(\\overline{A} \\cap B) = 0{,}2$",
+        "solution": "On applique la règle du produit le long de chaque chemin de l'arbre.\n\n**Chemin $A \\to B$** :\n$$P(A \\cap B) = P(A) \\times P_A(B) = 0{,}6 \\times 0{,}3 = 0{,}18.$$\n\n**Chemin $\\overline{A} \\to B$** : on utilise $P(\\overline{A}) = 0{,}4$ trouvé à la question 1.\n$$P(\\overline{A} \\cap B) = P(\\overline{A}) \\times P_{\\overline{A}}(B) = 0{,}4 \\times 0{,}5 = 0{,}2.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "En déduire $P(B)$, la probabilité qu'un abonné regarde plus de $10$ heures par semaine.",
+        "hints": [
+          "Les événements $A$ et $\\overline{A}$ forment un système complet. Applique la formule des probabilités totales.",
+          "$P(B) = P(A \\cap B) + P(\\overline{A} \\cap B)$, en utilisant les résultats de la question 2.",
+          "$P(B) = 0{,}18 + 0{,}2 = 0{,}38$."
+        ],
+        "expectedAnswer": "$P(B) = 0{,}38$",
+        "solution": "Les événements $A$ et $\\overline{A}$ forment un système complet d'événements. D'après la formule des probabilités totales :\n$$P(B) = P(A \\cap B) + P(\\overline{A} \\cap B) = 0{,}18 + 0{,}2 = 0{,}38.$$\n\nAinsi, $P(B) = 0{,}38$ : $38\\,\\%$ des abonnés regardent plus de $10$ heures par semaine."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-014",
+    "chapter": "probas-cond",
+    "title": "Vérifier l'indépendance à partir d'un tableau de contingence",
+    "difficulty": 2,
+    "estimatedMinutes": 9,
+    "order": 140,
+    "tags": ["probas-cond", "lecture-graphique", "tableau", "independance"],
+    "preamble": "Une enquête a été menée auprès de $200$ personnes pour étudier le lien entre deux caractères :\n- $V$ : « la personne est végétarienne » ;\n- $J$ : « la personne a moins de $30$ ans (« jeune ») ».\n\nLes effectifs observés sont consignés dans le tableau de contingence ci-dessous. On choisit une personne au hasard parmi les $200$ enquêtées (équiprobabilité).",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "probas-cond/tableau-contingence-independance.svg",
+        "alt": "Tableau de contingence à double entrée sur 200 personnes : V et V barre en lignes, J et J barre en colonnes. Effectifs : V et J = 30 ; V et J barre = 30 ; V barre et J = 70 ; V barre et J barre = 70. Totaux lignes 60 et 140, totaux colonnes 100 et 100, total 200.",
+        "width": 400,
+        "height": 320
+      },
+      "caption": "Tableau de contingence : effectifs observés sur 200 personnes."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Calculer $P(V)$, $P(J)$ et $P(V \\cap J)$.",
+        "hints": [
+          "Situation d'équiprobabilité : chaque probabilité est le quotient de l'effectif favorable par l'effectif total $200$.",
+          "$P(V)$ se lit sur le total de la ligne $V$ ; $P(J)$ sur le total de la colonne $J$ ; $P(V \\cap J)$ sur la case « $V$ et $J$ ».",
+          "$P(V) = \\dfrac{60}{200} = 0{,}3$ ; $P(J) = \\dfrac{100}{200} = 0{,}5$ ; $P(V \\cap J) = \\dfrac{30}{200} = 0{,}15$."
+        ],
+        "expectedAnswer": "$P(V) = 0{,}3$ ; $P(J) = 0{,}5$ ; $P(V \\cap J) = 0{,}15$",
+        "solution": "On est en situation d'équiprobabilité sur les $200$ personnes. On lit les effectifs dans le tableau :\n- Total ligne $V$ : $60$, donc $P(V) = \\dfrac{60}{200} = 0{,}3$.\n- Total colonne $J$ : $100$, donc $P(J) = \\dfrac{100}{200} = 0{,}5$.\n- Case « $V$ et $J$ » : $30$, donc $P(V \\cap J) = \\dfrac{30}{200} = 0{,}15$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Les événements $V$ et $J$ sont-ils indépendants ? Justifier.",
+        "hints": [
+          "Deux événements sont indépendants si et seulement si $P(V \\cap J) = P(V) \\times P(J)$. Calcule le produit et compare-le à $P(V \\cap J)$.",
+          "$P(V) \\times P(J) = 0{,}3 \\times 0{,}5 = 0{,}15$, à comparer avec $P(V \\cap J) = 0{,}15$.",
+          "Les deux valeurs sont égales : $V$ et $J$ sont indépendants."
+        ],
+        "expectedAnswer": "Oui, $V$ et $J$ sont indépendants",
+        "solution": "On teste l'égalité caractéristique de l'indépendance : $P(V \\cap J) = P(V) \\times P(J)$ ?\n\nOn calcule :\n$$P(V) \\times P(J) = 0{,}3 \\times 0{,}5 = 0{,}15.$$\n\nOr, d'après la question 1, $P(V \\cap J) = 0{,}15$.\n\nDonc $P(V \\cap J) = P(V) \\times P(J)$ : les événements $V$ et $J$ sont **indépendants**.\n\n**Interprétation** : être végétarien et avoir moins de $30$ ans sont, dans cet échantillon, deux caractères sans lien : la proportion de végétariens est la même chez les jeunes ($\\dfrac{30}{100} = 0{,}3$) que dans l'ensemble de la population ($0{,}3$)."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $P_J(V)$ et vérifier que $P_J(V) = P(V)$. Que peut-on en déduire ?",
+        "hints": [
+          "Restreins-toi à la colonne $J$ (effectif $100$), et compte combien sont végétariens.",
+          "L'effectif de la case « $V$ et $J$ » est $30$, donc $P_J(V) = \\dfrac{30}{100}$.",
+          "$P_J(V) = 0{,}3 = P(V)$. Cela confirme l'indépendance : savoir que la personne est jeune ne modifie pas la probabilité qu'elle soit végétarienne."
+        ],
+        "expectedAnswer": "$P_J(V) = 0{,}3 = P(V)$",
+        "solution": "Sachant que la personne appartient à $J$, on se restreint aux $100$ jeunes, parmi lesquels $30$ sont végétariens. Donc :\n$$P_J(V) = \\dfrac{30}{100} = 0{,}3.$$\n\nOr, $P(V) = 0{,}3$. On a donc bien $P_J(V) = P(V)$.\n\n**Interprétation** : c'est une autre manière de caractériser l'indépendance — savoir que la personne est jeune ne change pas la probabilité qu'elle soit végétarienne (la condition n'apporte aucune information). On a en effet l'équivalence : $V$ et $J$ indépendants $\\Leftrightarrow$ $P_J(V) = P(V)$ (avec $P(J) > 0$)."
+      }
+    ]
+  },
+  {
+    "id": "c-probas-cond-015",
+    "chapter": "probas-cond",
+    "title": "Construire l'arbre pondéré à partir d'un énoncé verbal",
+    "difficulty": 2,
+    "estimatedMinutes": 10,
+    "order": 150,
+    "tags": ["probas-cond", "lecture-graphique", "arbre", "modelisation"],
+    "preamble": "Dans une région, $5\\,\\%$ des habitants sont porteurs d'un certain virus (événement $M$, pour « malade »). On dispose d'un test de dépistage qui a les caractéristiques suivantes :\n- chez un porteur du virus, le test est positif (événement $T$) avec une probabilité de $0{,}8$ ;\n- chez un non-porteur, le test est positif avec une probabilité de $0{,}1$ (faux positif).\n\nOn choisit une personne au hasard dans la région.\n\nLe squelette d'arbre ci-dessous indique la **structure** des événements à considérer, mais aucune valeur n'y figure : à toi de la compléter à partir de l'énoncé.",
+    "figure": {
+      "type": "tree",
+      "data": {
+        "root": {
+          "label": "$\\Omega$",
+          "children": [
+            {
+              "label": "$M$",
+              "weight": "?",
+              "children": [
+                {
+                  "label": "$T$",
+                  "weight": "?"
+                },
+                {
+                  "label": "$\\overline{T}$",
+                  "weight": "?"
+                }
+              ]
+            },
+            {
+              "label": "$\\overline{M}$",
+              "weight": "?",
+              "children": [
+                {
+                  "label": "$T$",
+                  "weight": "?"
+                },
+                {
+                  "label": "$\\overline{T}$",
+                  "weight": "?"
+                }
+              ]
+            }
+          ]
+        },
+        "orientation": "horizontal"
+      },
+      "caption": "Squelette d'arbre à compléter (tous les poids sont à déterminer)."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "statement": "Compléter le squelette de l'arbre en indiquant les six poids manquants (deux au premier niveau, quatre au second).",
+        "hints": [
+          "Premier niveau : la phrase « $5\\,\\%$ des habitants sont porteurs » donne $P(M)$ ; le poids de la branche $\\overline{M}$ se déduit par complément à $1$.",
+          "Second niveau : « chez un porteur, le test est positif avec probabilité $0{,}8$ » est une probabilité **conditionnelle** $P_M(T)$. De même pour $P_{\\overline{M}}(T) = 0{,}1$. Les autres poids se déduisent par complément à $1$ depuis chaque nœud.",
+          "Premier niveau : $P(M) = 0{,}05$ et $P(\\overline{M}) = 0{,}95$. Depuis $M$ : $P_M(T) = 0{,}8$, $P_M(\\overline{T}) = 0{,}2$. Depuis $\\overline{M}$ : $P_{\\overline{M}}(T) = 0{,}1$, $P_{\\overline{M}}(\\overline{T}) = 0{,}9$."
+        ],
+        "expectedAnswer": "Niveau 1 : $0{,}05$ ; $0{,}95$. Niveau 2 : $0{,}8$ ; $0{,}2$ ; $0{,}1$ ; $0{,}9$",
+        "solution": "**Lecture de l'énoncé** :\n- « $5\\,\\%$ des habitants sont porteurs » donne $P(M) = 0{,}05$, donc par complément $P(\\overline{M}) = 1 - 0{,}05 = 0{,}95$.\n- « Chez un porteur, le test est positif avec probabilité $0{,}8$ » est une probabilité conditionnelle : sachant que la personne est malade, le test est positif avec probabilité $0{,}8$, soit $P_M(T) = 0{,}8$. On en déduit $P_M(\\overline{T}) = 1 - 0{,}8 = 0{,}2$.\n- « Chez un non-porteur, le test est positif avec probabilité $0{,}1$ » donne $P_{\\overline{M}}(T) = 0{,}1$, donc $P_{\\overline{M}}(\\overline{T}) = 1 - 0{,}1 = 0{,}9$.\n\nL'arbre complété porte donc :\n- Premier niveau : $M$ avec poids $0{,}05$ ; $\\overline{M}$ avec poids $0{,}95$.\n- Depuis $M$ : $T$ avec poids $0{,}8$ ; $\\overline{T}$ avec poids $0{,}2$.\n- Depuis $\\overline{M}$ : $T$ avec poids $0{,}1$ ; $\\overline{T}$ avec poids $0{,}9$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "statement": "Calculer $P(M \\cap T)$, la probabilité qu'une personne soit à la fois malade et que son test soit positif.",
+        "hints": [
+          "Règle du produit le long du chemin $M \\to T$ : $P(M \\cap T) = P(M) \\times P_M(T)$.",
+          "Substitue : $P(M \\cap T) = 0{,}05 \\times 0{,}8$.",
+          "$P(M \\cap T) = 0{,}04$."
+        ],
+        "expectedAnswer": "$P(M \\cap T) = 0{,}04$",
+        "solution": "D'après la règle du produit le long du chemin $M \\to T$ de l'arbre :\n$$P(M \\cap T) = P(M) \\times P_M(T) = 0{,}05 \\times 0{,}8 = 0{,}04.$$\n\nAinsi, la probabilité qu'une personne soit malade et que son test soit positif est $0{,}04$, soit $4\\,\\%$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "statement": "Calculer $P(T)$, la probabilité qu'une personne choisie au hasard ait un test positif.",
+        "hints": [
+          "Les événements $M$ et $\\overline{M}$ forment un système complet. Applique la formule des probabilités totales : $P(T) = P(M \\cap T) + P(\\overline{M} \\cap T)$.",
+          "$P(M \\cap T) = 0{,}04$ (déjà calculé) et $P(\\overline{M} \\cap T) = P(\\overline{M}) \\times P_{\\overline{M}}(T) = 0{,}95 \\times 0{,}1$.",
+          "$P(\\overline{M} \\cap T) = 0{,}095$, donc $P(T) = 0{,}04 + 0{,}095 = 0{,}135$."
+        ],
+        "expectedAnswer": "$P(T) = 0{,}135$",
+        "solution": "Les événements $M$ et $\\overline{M}$ forment un système complet. D'après la formule des probabilités totales :\n$$P(T) = P(M \\cap T) + P(\\overline{M} \\cap T).$$\n\nOn a déjà $P(M \\cap T) = 0{,}04$. On calcule l'autre terme par la règle du produit le long du chemin $\\overline{M} \\to T$ :\n$$P(\\overline{M} \\cap T) = P(\\overline{M}) \\times P_{\\overline{M}}(T) = 0{,}95 \\times 0{,}1 = 0{,}095.$$\n\nDonc :\n$$P(T) = 0{,}04 + 0{,}095 = 0{,}135.$$\n\nLa probabilité qu'une personne ait un test positif est $0{,}135$, soit $13{,}5\\,\\%$."
+      }
+    ]
   }
 ]
