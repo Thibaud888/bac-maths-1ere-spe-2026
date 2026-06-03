@@ -20,6 +20,7 @@ const schemaFiles = {
   fiches: 'fiche.schema.json',
   quiz: 'quiz.schema.json',
   exercices: 'french-exercise.schema.json',
+  sujets: 'french-subject.schema.json',
 };
 
 const validators = {};

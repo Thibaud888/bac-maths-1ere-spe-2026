@@ -16,6 +16,7 @@ import FrenchHomePage from '@/francais/routes/FrenchHomePage';
 import FichesPage from '@/francais/routes/module/FichesPage';
 import QuizPage from '@/francais/routes/module/QuizPage';
 import ExercicesPage from '@/francais/routes/module/ExercicesPage';
+import SujetsPage from '@/francais/routes/module/SujetsPage';
 
 export default function App() {
   const theme = useAppStore((s) => s.theme);
@@ -51,6 +52,7 @@ export default function App() {
           <Route path="fiches" element={<FichesPage />} />
           <Route path="quiz" element={<QuizPage />} />
           <Route path="exercices" element={<ExercicesPage />} />
+          <Route path="sujets" element={<SujetsPage />} />
         </Route>
       </Route>
 

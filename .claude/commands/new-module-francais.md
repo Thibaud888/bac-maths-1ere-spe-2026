@@ -28,7 +28,9 @@ Crée le scaffolding pour le module français dont le slug est : **$ARGUMENTS**
 
 6. Crée `content/francais/$ARGUMENTS/exercices.json` avec `[]`.
 
-7. Affiche un récapitulatif des fichiers créés et rappelle la commande pour générer le contenu :
+7. Pour un module « objet d'étude » (`poesie`, `litterature-idees`, `roman`, `theatre`), crée aussi `content/francais/$ARGUMENTS/sujets.json` avec `[]` (sujets type bac : commentaire / dissertation). Les modules de méthode (`methode-commentaire`, `methode-dissertation`) peuvent également porter des sujets.
+
+8. Affiche un récapitulatif des fichiers créés et rappelle la commande pour générer le contenu :
 ```
 Module "$ARGUMENTS" scaffoldé.
 Fichiers créés :
@@ -36,6 +38,7 @@ Fichiers créés :
   content/francais/$ARGUMENTS/fiches.json
   content/francais/$ARGUMENTS/quiz.json
   content/francais/$ARGUMENTS/exercices.json
+  content/francais/$ARGUMENTS/sujets.json   (objets d'étude / méthode)
 
 Prochaine étape : invoquer le sub-agent french-content-author pour générer le contenu.
 ```

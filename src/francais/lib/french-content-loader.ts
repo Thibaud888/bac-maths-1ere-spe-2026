@@ -4,12 +4,14 @@ import type {
   FrenchModuleContent,
   FrenchModuleMeta,
   FrenchModuleSlug,
+  FrenchSubject,
   QuizItem,
 } from './french-types';
 import {
   formatFrenchErrors,
   validateFiche,
   validateFrenchExercise,
+  validateFrenchSubject,
   validateQuiz,
 } from './french-validate';
 
@@ -27,6 +29,10 @@ const quizModules = import.meta.glob<QuizItem[]>(
 );
 const exerciceModules = import.meta.glob<FrenchExercise[]>(
   '/content/francais/*/exercices.json',
+  { eager: true, import: 'default' }
+);
+const sujetModules = import.meta.glob<FrenchSubject[]>(
+  '/content/francais/*/sujets.json',
   { eager: true, import: 'default' }
 );
 
@@ -73,6 +79,7 @@ const metaBySlug = buildSlugMap(metaModules);
 const fichesBySlug = buildSlugMap(ficheModules);
 const quizBySlug = buildSlugMap(quizModules);
 const exercicesBySlug = buildSlugMap(exerciceModules);
+const sujetsBySlug = buildSlugMap(sujetModules);
 
 export function listFrenchModules(): FrenchModuleMeta[] {
   return [...metaBySlug.values()].sort((a, b) => a.order - b.order);
@@ -87,6 +94,7 @@ export function getFrenchModuleContent(
   const rawFiches = fichesBySlug.get(slug) ?? [];
   const rawQuiz = quizBySlug.get(slug) ?? [];
   const rawExercices = exercicesBySlug.get(slug) ?? [];
+  const rawSujets = sujetsBySlug.get(slug) ?? [];
 
   return {
     meta,
@@ -107,6 +115,12 @@ export function getFrenchModuleContent(
       validateFrenchExercise,
       () => formatFrenchErrors(validateFrenchExercise),
       `exercices[${slug}]`
+    ),
+    sujets: validateArray<FrenchSubject>(
+      rawSujets,
+      validateFrenchSubject,
+      () => formatFrenchErrors(validateFrenchSubject),
+      `sujets[${slug}]`
     ),
   };
 }

@@ -37,6 +37,30 @@ Critères d'évaluation : pertinence des arguments, maîtrise de l'œuvre, cultu
 
 ---
 
+## 2bis. Œuvres au programme — session 2026 (classe de l'élève)
+
+Les œuvres intégrales effectivement étudiées cette année, avec leur parcours associé. Ce sont elles qui fondent les modules « objet d'étude » (`poesie`, `litterature-idees`, `roman`, `theatre`) et les sujets type bac (commentaire / dissertation).
+
+| Objet d'étude | Module | Œuvre intégrale | Parcours associé | Domaine public ? |
+|---|---|---|---|---|
+| Poésie | `poesie` | **Arthur Rimbaud**, *Cahiers de Douai* (1870) | « Émancipations créatrices » | ✅ Oui (Rimbaud † 1891) |
+| Littérature d'idées | `litterature-idees` | **Françoise de Graffigny**, *Lettres d'une Péruvienne* (1747) | « Un nouvel univers s'est offert à mes yeux » | ✅ Oui (Graffigny † 1758) |
+| Roman | `roman` | **Abbé Prévost**, *Manon Lescaut* (1731) | « Personnages en marge, plaisirs du romanesque » | ✅ Oui (Prévost † 1763) |
+| Théâtre | `theatre` | **Nathalie Sarraute**, *Pour un oui ou pour un non* (1981) | « Théâtre et dispute » | ⛔ **NON — sous droits** (Sarraute † 1999) |
+
+### Règles de citation par œuvre
+
+- **Rimbaud, Graffigny, Prévost** (domaine public) : citations verbatim autorisées, **à condition** qu'elles soient exactes. Privilégier les passages canoniques et vérifiables. Pour les *Cahiers de Douai*, les poèmes courts et célèbres (« Le Dormeur du val », « Ma Bohême », « Sensation », « Au Cabaret-Vert », « Roman ») peuvent servir de support de **commentaire** (texte reproductible).
+- **Sarraute, *Pour un oui ou pour un non*** : œuvre **sous droits**. **Interdiction** de reproduire des répliques verbatim sans texte source fourni en session. → Pas de sujet de **commentaire avec extrait** pour cette œuvre. Les **dissertations** restent possibles : elles s'appuient sur la structure, les personnages (H1, H2), les thèmes (la dispute, le langage, l'amitié, le non-dit) et le parcours, **sans longues citations**. Toute formule attribuée doit être marquée comme paraphrase.
+
+### Contenu attendu par module objet d'étude
+
+- **Fiches** : présentation de l'œuvre (auteur, date, contexte, mouvement), enjeux du parcours, personnages/structure, axes de lecture, citations-clés (domaine public uniquement).
+- **Quiz** : dates, auteur, parcours, mouvement, personnages, repérage de procédés sur extraits du domaine public.
+- **Sujets** (`sujets.json`) : sujets de **dissertation** (les 4 œuvres) et de **commentaire** (Rimbaud, Graffigny, Prévost uniquement — pas Sarraute), avec corrigé guidé par étapes (introduction → axes/parties → conclusion).
+
+---
+
 ## 3. Mouvements littéraires — données factuelles de référence
 
 | Mouvement | Siècle(s) | Caractéristiques principales | Auteurs / œuvres canoniques |

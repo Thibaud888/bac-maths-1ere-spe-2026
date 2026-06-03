@@ -1,6 +1,8 @@
 import { NavLink, useParams } from 'react-router-dom';
+import { getFrenchModuleContent } from '@/francais/lib/french-content-loader';
+import type { FrenchModuleSlug } from '@/francais/lib/french-types';
 
-const tabs: ReadonlyArray<{ to: string; label: string }> = [
+const baseTabs: ReadonlyArray<{ to: string; label: string }> = [
   { to: 'fiches', label: 'Fiches' },
   { to: 'quiz', label: 'Quiz' },
   { to: 'exercices', label: 'Exercices' },
@@ -17,6 +19,12 @@ const tabClass = ({ isActive }: { isActive: boolean }): string =>
 export default function FrenchTabs() {
   const { slug } = useParams<{ slug: string }>();
   if (!slug) return null;
+
+  const content = getFrenchModuleContent(slug as FrenchModuleSlug);
+  const tabs =
+    content && content.sujets.length > 0
+      ? [...baseTabs, { to: 'sujets', label: 'Sujets' }]
+      : baseTabs;
 
   return (
     <nav className="flex gap-1 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-6">

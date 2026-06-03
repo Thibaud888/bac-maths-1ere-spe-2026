@@ -102,9 +102,39 @@ export type FrenchExercise = {
   order?: number;
 };
 
+export type FrenchSubjectType = 'commentaire' | 'dissertation';
+
+export type FrenchSubjectStep = {
+  id: string;
+  label: string;
+  statement: string;
+  hints: string[];
+  expectedAnswer?: string;
+  solution: string;
+};
+
+export type FrenchSubject = {
+  id: string;
+  module: FrenchModuleSlug;
+  type: FrenchSubjectType;
+  title: string;
+  oeuvre: string;
+  parcours?: string;
+  difficulty: 1 | 2 | 3;
+  estimatedMinutes: number;
+  consigne: string;
+  extract?: string;
+  extractSource?: string;
+  methodeRappel?: string;
+  steps: FrenchSubjectStep[];
+  tags?: string[];
+  order?: number;
+};
+
 export type FrenchModuleContent = {
   meta: FrenchModuleMeta;
   fiches: Fiche[];
   quiz: QuizItem[];
   exercices: FrenchExercise[];
+  sujets: FrenchSubject[];
 };

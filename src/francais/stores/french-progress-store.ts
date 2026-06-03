@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type FrenchItemKind = 'quiz' | 'exercice';
+export type FrenchItemKind = 'quiz' | 'exercice' | 'sujet';
 
 export type FrenchItemProgress = {
   attempts: number;
@@ -22,6 +22,8 @@ const idPrefix = (kind: FrenchItemKind): string => {
       return 'qz-';
     case 'exercice':
       return 'ex-';
+    case 'sujet':
+      return 'su-';
   }
 };
 
