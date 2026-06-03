@@ -9,16 +9,19 @@ import type { FrenchModuleSlug, QuizItem } from '@/francais/lib/french-types';
 
 export default function QuizPage() {
   const { slug } = useParams<{ slug: string }>();
-  const content = slug ? getFrenchModuleContent(slug as FrenchModuleSlug) : null;
+  // Memoïsé sur le slug : getFrenchModuleContent reconstruit des tableaux
+  // neufs à chaque appel, ce qui ferait remonter le QuizRunner à chaque
+  // re-render (et masquerait la correction).
+  const content = useMemo(
+    () => (slug ? getFrenchModuleContent(slug as FrenchModuleSlug) : null),
+    [slug]
+  );
 
   const timerEnabled = useFrenchAppStore((s) => s.quizTimerEnabled);
   const setTimerEnabled = useFrenchAppStore((s) => s.setQuizTimerEnabled);
   const timerSeconds = useFrenchAppStore((s) => s.quizTimerSeconds);
   const filterSucceeded = useFrenchAppStore((s) => s.quizFilterSucceeded);
   const setFilterSucceeded = useFrenchAppStore((s) => s.setQuizFilterSucceeded);
-  const items = useFrenchProgressStore((s) => s.items);
-
-  const allQuiz = content?.quiz ?? [];
 
   const [sessionKey, setSessionKey] = useState(0);
   const [cursor, setCursor] = useState(0);
@@ -26,13 +29,19 @@ export default function QuizPage() {
   const [answered, setAnswered] = useState(0);
 
   const pool = useMemo(() => {
+    const allQuiz = content?.quiz ?? [];
+    // Le filtre "masquer les réussis" est figé au démarrage de la session
+    // (lecture ponctuelle du store, hors dépendances) pour ne pas reshuffler
+    // pendant qu'on répond.
     const base = filterSucceeded
-      ? allQuiz.filter((q) => !items[q.id]?.succeeded)
+      ? allQuiz.filter(
+          (q) => !useFrenchProgressStore.getState().items[q.id]?.succeeded
+        )
       : allQuiz;
     return shuffle(base);
     // sessionKey force le re-mélange au redémarrage.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allQuiz, filterSucceeded, sessionKey]);
+  }, [content, filterSucceeded, sessionKey]);
 
   if (!content) return null;
 
