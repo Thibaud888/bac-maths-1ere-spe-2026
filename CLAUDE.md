@@ -183,3 +183,99 @@ Chaque phase se termine par un commit `git` propre et un build qui passe.
 - ❌ Mélanger CSS custom et Tailwind sans nécessité
 - ❌ Utiliser MathJax au lieu de KaTeX
 - ❌ Ajouter des dépendances NPM sans justification (et sans accord utilisateur)
+
+---
+
+## 13. Volet Français — EAF écrit 2026
+
+### 13.1 Mission
+
+Préparer l'**Épreuve Anticipée de Français écrite** (4h, coeff 5) dans le **même dépôt** que le volet maths. L'oral EAF est **hors périmètre v1**.
+
+Principe directeur : **strictement additif**. Aucune modification des fichiers maths. Le français vit sous `/francais/*`.
+
+### 13.2 Source de vérité
+
+Le fichier **`.claude/skills/bac-francais-premiere-2026/SKILL.md`** est la source de vérité pour tout contenu pédagogique français. Il contient le cadre EAF, les 4 objets d'étude, les données factuelles (mouvements, figures, registres), la méthodologie attendue et les règles de citation.
+
+**Toute génération de contenu français doit commencer par la lecture de ce skill.**
+
+### 13.3 Architecture additionnelle
+
+```
+content/francais/<module>/
+  meta.json        # FrenchModuleMeta
+  fiches.json      # Fiche[]
+  quiz.json        # QuizItem[]
+  exercices.json   # FrenchExercise[]
+
+schemas/francais/
+  fiche.schema.json
+  quiz.schema.json
+  french-exercise.schema.json
+
+src/francais/
+  components/layout/  (FrenchLayout, FrenchSidebar, FrenchHeader, FrenchTabs, FrenchModuleLayout)
+  components/text/    LiteraryText.tsx  (fork TextWithMath, sans KaTeX)
+  components/fiches/  FicheCard.tsx
+  components/quiz/    QuizRunner.tsx   (types qcm | multi | ordering)
+  components/exercices/ FrenchExerciseRunner.tsx
+  lib/  (french-content-loader.ts, french-validate.ts, french-types.ts)
+  stores/  (french-progress-store.ts, french-app-store.ts)
+  routes/  (FrenchHomePage.tsx, module/{FichesPage, QuizPage, ExercicesPage}.tsx)
+```
+
+Route : `/francais/*` (ajout additif dans `src/App.tsx`)
+
+### 13.4 LocalStorage — isolation garantie
+
+| App | Préfixe |
+|---|---|
+| Maths (existant) | `bms-2026-*` — **JAMAIS touché par le code français** |
+| Français (nouveau) | `bfr-2026-*` |
+
+### 13.5 Conventions de contenu
+
+| Type | Préfixe d'ID | Exemple |
+|---|---|---|
+| Fiche | `fi-` | `fi-figure-metaphore` |
+| Quiz | `qz-` | `qz-mouvement-romantisme-dates` |
+| Exercice | `ex-<module>-<num>` | `ex-commentaire-001` |
+
+Modules v1 (génériques) : `methode-commentaire`, `methode-dissertation`, `figures-de-style`, `mouvements-litteraires`, `registres-genres`
+
+### 13.6 Workflow obligatoire (2 passes)
+
+```
+french-content-author  →  french-reviewer  →  commit
+```
+
+Aucun fichier JSON de contenu français ne doit être commité sans avoir passé les 2 étapes.
+
+Le **`french-reviewer`** effectue 7 passes dont **5 BLOQUANTES** :
+- A — Schéma JSON (Ajv)
+- B — Conformité programme EAF
+- D — Exactitude factuelle (dates, attributions, siècles) ← renforcée
+- E — Exactitude des citations (domaine public, textuellement exacts) ← renforcée
+- F — Cohérence réponses QCM/ordering
+
+### 13.7 Slash commands
+
+- `/new-module-francais <slug>` : scaffolding d'un nouveau module (meta.json + 3 fichiers JSON vides)
+- `/verify-francais [slug]` : validation Ajv + french-reviewer sur tous les modules (ou un seul)
+
+### 13.8 Règles de citation
+
+1. Textes du **domaine public** uniquement (auteur décédé avant 1926 en France).
+2. Citations **textuellement exactes** (pas de reformulation).
+3. Toujours indiquer : auteur + titre de l'œuvre + date.
+4. En cas de doute sur l'exactitude → ne pas citer ou demander le texte source.
+
+### 13.9 Non-régression maths
+
+À chaque commit lié au volet français :
+1. `npm run typecheck` passe sans erreur supplémentaire.
+2. `npm run build` produit un build valide.
+3. `npm run test` — 71 tests passent (score de référence).
+4. Routes maths (`/`, `/chapitre/:slug/*`, `/bac-blanc`) inchangées.
+5. LocalStorage maths `bms-2026-app` / `bms-2026-progress` **intactes**.

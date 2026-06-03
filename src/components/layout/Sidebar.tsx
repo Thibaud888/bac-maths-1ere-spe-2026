@@ -22,6 +22,13 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex-1 overflow-y-auto p-3">
+        <NavLink
+          to="/francais"
+          className="mb-2 block rounded px-3 py-2 text-sm text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
+        >
+          Français →
+        </NavLink>
+
         <NavLink to="/" end className={navLinkClass}>
           Accueil
         </NavLink>

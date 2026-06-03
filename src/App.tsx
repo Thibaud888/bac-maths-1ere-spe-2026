@@ -10,6 +10,12 @@ import FormularyPage from '@/routes/chapter/FormularyPage';
 import AutomatismsPage from '@/routes/chapter/AutomatismsPage';
 import ClassicsPage from '@/routes/chapter/ClassicsPage';
 import ExamPage from '@/routes/chapter/ExamPage';
+import FrenchLayout from '@/francais/components/layout/FrenchLayout';
+import FrenchModuleLayout from '@/francais/components/layout/FrenchModuleLayout';
+import FrenchHomePage from '@/francais/routes/FrenchHomePage';
+import FichesPage from '@/francais/routes/module/FichesPage';
+import QuizPage from '@/francais/routes/module/QuizPage';
+import ExercicesPage from '@/francais/routes/module/ExercicesPage';
 
 export default function App() {
   const theme = useAppStore((s) => s.theme);
@@ -36,6 +42,18 @@ export default function App() {
           <Route path="examen" element={<ExamPage />} />
         </Route>
       </Route>
+
+      {/* --- Volet Français (additif, routes maths inchangées) --- */}
+      <Route path="/francais" element={<FrenchLayout />}>
+        <Route index element={<FrenchHomePage />} />
+        <Route path="module/:slug" element={<FrenchModuleLayout />}>
+          <Route index element={<Navigate to="fiches" replace />} />
+          <Route path="fiches" element={<FichesPage />} />
+          <Route path="quiz" element={<QuizPage />} />
+          <Route path="exercices" element={<ExercicesPage />} />
+        </Route>
+      </Route>
+
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
