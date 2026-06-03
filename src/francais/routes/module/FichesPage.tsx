@@ -26,6 +26,21 @@ export default function FichesPage() {
         </p>
       )}
 
+      <div className="mb-4 flex flex-wrap gap-3 text-xs text-slate-600 dark:text-slate-400">
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block h-2.5 w-2.5 rounded-full bg-rose-400" />
+          Essentiel
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block h-2.5 w-2.5 rounded-full bg-sky-400" />
+          À connaître
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber-400" />
+          Approfondissement
+        </span>
+      </div>
+
       {fiches.length === 0 ? (
         <p className="rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 text-sm text-slate-500 dark:text-slate-400">
           Aucune fiche pour ce module pour l’instant.

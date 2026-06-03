@@ -29,7 +29,7 @@ const levelLabel: Record<FrenchLevel, string> = {
 };
 
 export default function FicheCard({ fiche, hidden, onToggleHidden }: FicheCardProps) {
-  const accent = fiche.simplified?.accent ?? levelAccent[fiche.level];
+  const accent = levelAccent[fiche.level];
   const classes = accentClasses[accent];
 
   return (
