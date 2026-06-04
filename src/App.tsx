@@ -17,6 +17,7 @@ import FichesPage from '@/francais/routes/module/FichesPage';
 import QuizPage from '@/francais/routes/module/QuizPage';
 import ExercicesPage from '@/francais/routes/module/ExercicesPage';
 import SujetsPage from '@/francais/routes/module/SujetsPage';
+import ExpressPage from '@/francais/routes/ExpressPage';
 
 export default function App() {
   const theme = useAppStore((s) => s.theme);
@@ -47,6 +48,7 @@ export default function App() {
       {/* --- Volet Français (additif, routes maths inchangées) --- */}
       <Route path="/francais" element={<FrenchLayout />}>
         <Route index element={<FrenchHomePage />} />
+        <Route path="express" element={<ExpressPage />} />
         <Route path="module/:slug" element={<FrenchModuleLayout />}>
           <Route index element={<Navigate to="fiches" replace />} />
           <Route path="fiches" element={<FichesPage />} />

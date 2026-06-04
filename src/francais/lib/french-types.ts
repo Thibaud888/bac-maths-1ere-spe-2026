@@ -138,3 +138,23 @@ export type FrenchModuleContent = {
   exercices: FrenchExercise[];
   sujets: FrenchSubject[];
 };
+
+export type Flashcard = {
+  id: string;
+  deck: string;
+  front: string;
+  back: string;
+  mnemonic?: string;
+  accent?: FrenchAccent;
+  tags?: string[];
+};
+
+export type FlashcardDeck = {
+  slug: string;
+  title: string;
+  description: string;
+  accent: FrenchAccent;
+  order: number;
+  estimatedMinutes: number;
+  cards: Flashcard[];
+};

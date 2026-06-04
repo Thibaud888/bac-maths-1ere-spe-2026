@@ -31,6 +31,11 @@ for (const [key, file] of Object.entries(schemaFiles)) {
   validators[key] = ajv.compile(schema);
 }
 
+const flashcardDeckSchema = JSON.parse(
+  readFileSync(join(root, 'schemas', 'francais', 'flashcard-deck.schema.json'), 'utf8')
+);
+const validateFlashcardDeck = ajv.compile(flashcardDeckSchema);
+
 const modulesDir = join(root, 'content', 'francais');
 let total = 0;
 let invalid = 0;
@@ -44,6 +49,34 @@ if (!safeStat(modulesDir)) {
 for (const slug of readdirSync(modulesDir)) {
   const modDir = join(modulesDir, slug);
   if (!statSync(modDir).isDirectory()) continue;
+
+  // Flashcard decks (express/) — each file is a FlashcardDeck object, not an array
+  if (slug === 'express') {
+    for (const filename of readdirSync(modDir)) {
+      if (!filename.startsWith('deck-') || !filename.endsWith('.json')) continue;
+      const filePath = join(modDir, filename);
+      let data;
+      try {
+        data = JSON.parse(readFileSync(filePath, 'utf8'));
+      } catch (err) {
+        invalid += 1;
+        problems.push({ file: filePath, message: `JSON invalide : ${err.message}` });
+        continue;
+      }
+      total += 1;
+      const ok = validateFlashcardDeck(data);
+      if (!ok) {
+        invalid += 1;
+        problems.push({
+          file: filePath,
+          message: (validateFlashcardDeck.errors ?? [])
+            .map((e) => `${e.instancePath || '<root>'} ${e.message ?? '?'}`)
+            .join(' ; '),
+        });
+      }
+    }
+    continue;
+  }
 
   for (const [type, validate] of Object.entries(validators)) {
     const filePath = join(modDir, `${type}.json`);

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { listFrenchModules } from '@/francais/lib/french-content-loader';
+import { getExpressDecks, listFrenchModules } from '@/francais/lib/french-content-loader';
 import type { FrenchFamily } from '@/francais/lib/french-types';
 
 const familyLabels: Record<FrenchFamily, string> = {
@@ -12,6 +12,8 @@ const familyOrder: FrenchFamily[] = ['methode', 'reperes', 'objet-etude'];
 
 export default function FrenchHomePage() {
   const modules = listFrenchModules();
+  const expressDecks = getExpressDecks();
+  const totalExpressCards = expressDecks.reduce((n, d) => n + d.cards.length, 0);
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-8">
@@ -24,6 +26,25 @@ export default function FrenchHomePage() {
         <strong>dissertation sur une œuvre</strong>. Révise la méthode et les
         repères, puis entraîne-toi avec les quiz et les exercices.
       </p>
+
+      {/* Révision express banner */}
+      <Link
+        to="/francais/express"
+        className="mt-6 flex items-center gap-4 rounded-xl border border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-900/20 p-4 shadow-sm transition-colors hover:border-amber-400 dark:hover:border-amber-500"
+      >
+        <span className="text-3xl">⚡</span>
+        <div>
+          <p className="text-sm font-bold text-amber-800 dark:text-amber-200">
+            Révision express
+          </p>
+          <p className="text-xs text-amber-700 dark:text-amber-300">
+            {totalExpressCards > 0
+              ? `${totalExpressCards} flashcards — l’essentiel à retenir en quelques jours`
+              : `Flashcards — l’essentiel à retenir en quelques jours`}
+          </p>
+        </div>
+        <span className="ml-auto text-amber-400">→</span>
+      </Link>
 
       {modules.length === 0 && (
         <p className="mt-8 rounded border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/20 p-4 text-sm text-amber-800 dark:text-amber-300">

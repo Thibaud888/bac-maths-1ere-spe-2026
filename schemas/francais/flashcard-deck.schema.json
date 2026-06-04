@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "flashcard-deck.schema.json",
+  "title": "Deck de flashcards (Révision express)",
+  "description": "Un deck de révision express avec ses cartes recto/verso.",
+  "type": "object",
+  "required": ["slug", "title", "description", "accent", "order", "estimatedMinutes", "cards"],
+  "additionalProperties": false,
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 80
+    },
+    "description": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 160
+    },
+    "accent": {
+      "type": "string",
+      "enum": ["red", "blue", "amber", "emerald", "violet", "slate"]
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "estimatedMinutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 60
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "deck", "front", "back"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^fl-[a-z0-9-]+$"
+          },
+          "deck": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "front": {
+            "type": "string",
+            "minLength": 5
+          },
+          "back": {
+            "type": "string",
+            "minLength": 5
+          },
+          "mnemonic": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "accent": {
+            "type": "string",
+            "enum": ["red", "blue", "amber", "emerald", "violet", "slate"]
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

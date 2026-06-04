@@ -37,6 +37,21 @@ export default function FrenchSidebar() {
           Accueil
         </NavLink>
 
+        <NavLink
+          to="/francais/express"
+          className={({ isActive }) =>
+            [
+              'mt-2 flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold transition-colors',
+              isActive
+                ? 'bg-amber-500 text-white'
+                : 'bg-amber-50 text-amber-700 hover:bg-amber-100 dark:bg-amber-900/20 dark:text-amber-300 dark:hover:bg-amber-900/40',
+            ].join(' ')
+          }
+        >
+          <span>⚡</span>
+          <span>Révision express</span>
+        </NavLink>
+
         {familyOrder.map((family) => {
           const inFamily = modules.filter((m) => m.family === family);
           if (inFamily.length === 0) return null;

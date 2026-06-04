@@ -1,5 +1,6 @@
 import type {
   Fiche,
+  FlashcardDeck,
   FrenchExercise,
   FrenchModuleContent,
   FrenchModuleMeta,
@@ -10,6 +11,7 @@ import type {
 import {
   formatFrenchErrors,
   validateFiche,
+  validateFlashcardDeck,
   validateFrenchExercise,
   validateFrenchSubject,
   validateQuiz,
@@ -33,6 +35,10 @@ const exerciceModules = import.meta.glob<FrenchExercise[]>(
 );
 const sujetModules = import.meta.glob<FrenchSubject[]>(
   '/content/francais/*/sujets.json',
+  { eager: true, import: 'default' }
+);
+const deckModules = import.meta.glob<FlashcardDeck>(
+  '/content/francais/express/deck-*.json',
   { eager: true, import: 'default' }
 );
 
@@ -127,4 +133,18 @@ export function getFrenchModuleContent(
 
 export function frenchModuleExists(slug: string): slug is FrenchModuleSlug {
   return metaBySlug.has(slug as FrenchModuleSlug);
+}
+
+export function getExpressDecks(): FlashcardDeck[] {
+  const decks: FlashcardDeck[] = [];
+  for (const [path, deck] of Object.entries(deckModules)) {
+    if (validateFlashcardDeck(deck)) {
+      decks.push(deck);
+    } else {
+      const message = `flashcard deck invalide (${path}) — ${formatFrenchErrors(validateFlashcardDeck)}`;
+      if (isDev) throw new Error(message);
+      console.warn(message, deck);
+    }
+  }
+  return decks.sort((a, b) => a.order - b.order);
 }
