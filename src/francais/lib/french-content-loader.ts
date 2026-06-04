@@ -1,4 +1,5 @@
 import type {
+  EntretienQuestion,
   Fiche,
   FlashcardDeck,
   FrenchExercise,
@@ -6,14 +7,23 @@ import type {
   FrenchModuleMeta,
   FrenchModuleSlug,
   FrenchSubject,
+  OralContent,
+  OralFiche,
+  OralMeta,
+  OralText,
   QuizItem,
 } from './french-types';
 import {
   formatFrenchErrors,
+  validateEntretienQuestion,
   validateFiche,
   validateFlashcardDeck,
   validateFrenchExercise,
   validateFrenchSubject,
+  validateOralFiche,
+  validateOralMeta,
+  validateOralQuiz,
+  validateOralText,
   validateQuiz,
 } from './french-validate';
 
@@ -39,6 +49,37 @@ const sujetModules = import.meta.glob<FrenchSubject[]>(
 );
 const deckModules = import.meta.glob<FlashcardDeck>(
   '/content/francais/express/deck-*.json',
+  { eager: true, import: 'default' }
+);
+
+// --- Oral EAF : espace spécial (globs dédiés, jamais des noms de fichiers
+// modules — meta/fiches/quiz/exercices/sujets — pour éviter toute collision).
+const oralMetaModule = import.meta.glob<OralMeta>(
+  '/content/francais/oral/oral-meta.json',
+  { eager: true, import: 'default' }
+);
+const oralEpreuveModule = import.meta.glob<OralFiche[]>(
+  '/content/francais/oral/epreuve.json',
+  { eager: true, import: 'default' }
+);
+const oralMethodeModule = import.meta.glob<OralFiche[]>(
+  '/content/francais/oral/methode.json',
+  { eager: true, import: 'default' }
+);
+const oralTextesModule = import.meta.glob<OralText[]>(
+  '/content/francais/oral/textes.json',
+  { eager: true, import: 'default' }
+);
+const oralGrammaireFichesModule = import.meta.glob<OralFiche[]>(
+  '/content/francais/oral/grammaire-fiches.json',
+  { eager: true, import: 'default' }
+);
+const oralGrammaireQuizModule = import.meta.glob<QuizItem[]>(
+  '/content/francais/oral/grammaire-quiz.json',
+  { eager: true, import: 'default' }
+);
+const oralEntretienModule = import.meta.glob<EntretienQuestion[]>(
+  '/content/francais/oral/entretien.json',
   { eager: true, import: 'default' }
 );
 
@@ -147,4 +188,80 @@ export function getExpressDecks(): FlashcardDeck[] {
     }
   }
   return decks.sort((a, b) => a.order - b.order);
+}
+
+// --- Oral EAF -------------------------------------------------------------
+
+// `import.meta.glob` renvoie {} quand aucun fichier ne correspond : tous les
+// accesseurs ci-dessous tolèrent l'absence de contenu (empty-states).
+function firstValue<T>(modules: Record<string, T>): T | null {
+  for (const value of Object.values(modules)) return value;
+  return null;
+}
+
+function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
+  return [...items].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+}
+
+export function getOralContent(): OralContent {
+  const rawMeta = firstValue(oralMetaModule);
+  const meta =
+    rawMeta && validateOralMeta(rawMeta) ? rawMeta : null;
+
+  const epreuve = sortByOrder(
+    validateArray<OralFiche>(
+      firstValue(oralEpreuveModule) ?? [],
+      validateOralFiche,
+      () => formatFrenchErrors(validateOralFiche),
+      'oral/epreuve'
+    )
+  );
+  const methode = sortByOrder(
+    validateArray<OralFiche>(
+      firstValue(oralMethodeModule) ?? [],
+      validateOralFiche,
+      () => formatFrenchErrors(validateOralFiche),
+      'oral/methode'
+    )
+  );
+  const textes = sortByOrder(
+    validateArray<OralText>(
+      firstValue(oralTextesModule) ?? [],
+      validateOralText,
+      () => formatFrenchErrors(validateOralText),
+      'oral/textes'
+    )
+  );
+  const grammaireFiches = sortByOrder(
+    validateArray<OralFiche>(
+      firstValue(oralGrammaireFichesModule) ?? [],
+      validateOralFiche,
+      () => formatFrenchErrors(validateOralFiche),
+      'oral/grammaire-fiches'
+    )
+  );
+  const grammaireQuiz = validateArray<QuizItem>(
+    firstValue(oralGrammaireQuizModule) ?? [],
+    validateOralQuiz,
+    () => formatFrenchErrors(validateOralQuiz),
+    'oral/grammaire-quiz'
+  );
+  const entretien = sortByOrder(
+    validateArray<EntretienQuestion>(
+      firstValue(oralEntretienModule) ?? [],
+      validateEntretienQuestion,
+      () => formatFrenchErrors(validateEntretienQuestion),
+      'oral/entretien'
+    )
+  );
+
+  return { meta, epreuve, methode, textes, grammaireFiches, grammaireQuiz, entretien };
+}
+
+export function getOralTextes(): OralText[] {
+  return getOralContent().textes;
+}
+
+export function getOralText(id: string): OralText | null {
+  return getOralTextes().find((t) => t.id === id) ?? null;
 }

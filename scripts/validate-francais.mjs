@@ -36,6 +36,30 @@ const flashcardDeckSchema = JSON.parse(
 );
 const validateFlashcardDeck = ajv.compile(flashcardDeckSchema);
 
+const validatorCache = new Map();
+function loadValidator(file) {
+  let validate = validatorCache.get(file);
+  if (!validate) {
+    validate = ajv.compile(
+      JSON.parse(readFileSync(join(root, 'schemas', 'francais', file), 'utf8'))
+    );
+    validatorCache.set(file, validate);
+  }
+  return validate;
+}
+
+// Oral EAF — un validateur par fichier (oral-meta.json est un objet, les
+// autres sont des tableaux).
+const oralValidators = {
+  'oral-meta.json': { validate: loadValidator('oral-meta.schema.json'), array: false },
+  'epreuve.json': { validate: loadValidator('oral-fiche.schema.json'), array: true },
+  'methode.json': { validate: loadValidator('oral-fiche.schema.json'), array: true },
+  'grammaire-fiches.json': { validate: loadValidator('oral-fiche.schema.json'), array: true },
+  'textes.json': { validate: loadValidator('oral-text.schema.json'), array: true },
+  'grammaire-quiz.json': { validate: loadValidator('oral-quiz.schema.json'), array: true },
+  'entretien.json': { validate: loadValidator('entretien-question.schema.json'), array: true },
+};
+
 const modulesDir = join(root, 'content', 'francais');
 let total = 0;
 let invalid = 0;
@@ -74,6 +98,45 @@ for (const slug of readdirSync(modulesDir)) {
             .join(' ; '),
         });
       }
+    }
+    continue;
+  }
+
+  // Oral EAF (oral/) — fichiers nommés à part, jamais des noms de modules.
+  if (slug === 'oral') {
+    for (const [filename, { validate, array }] of Object.entries(oralValidators)) {
+      const filePath = join(modDir, filename);
+      if (!safeStat(filePath)) continue;
+      let data;
+      try {
+        data = JSON.parse(readFileSync(filePath, 'utf8'));
+      } catch (err) {
+        invalid += 1;
+        problems.push({ file: filePath, message: `JSON invalide : ${err.message}` });
+        continue;
+      }
+      const records = array ? data : [data];
+      if (array && !Array.isArray(data)) {
+        invalid += 1;
+        problems.push({
+          file: filePath,
+          message: `Le fichier doit contenir un tableau (reçu ${typeof data}).`,
+        });
+        continue;
+      }
+      records.forEach((item, idx) => {
+        total += 1;
+        if (!validate(item)) {
+          invalid += 1;
+          const id = item?.id ?? `<sans id, index ${idx}>`;
+          problems.push({
+            file: filePath,
+            message: `[${id}] ${(validate.errors ?? [])
+              .map((e) => `${e.instancePath || '<root>'} ${e.message ?? '?'}`)
+              .join(' ; ')}`,
+          });
+        }
+      });
     }
     continue;
   }

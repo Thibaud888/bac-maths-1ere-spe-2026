@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "entretien-question.schema.json",
+  "title": "Question d'entretien (Oral EAF — 2ᵈᵉ partie)",
+  "description": "Question d'entraînement pour la seconde partie de l'oral (présentation d'une œuvre + entretien), rattachée à une œuvre. Markdown enrichi, sans LaTeX.",
+  "type": "object",
+  "required": ["id", "oeuvre", "question", "category"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^eq-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : eq-<slug>. Ex : eq-manon-choix-oeuvre"
+    },
+    "oeuvre": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Œuvre concernée, ou « transverse » pour une question générale."
+    },
+    "auteur": {
+      "type": "string",
+      "description": "Auteur de l'œuvre (facultatif)."
+    },
+    "question": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Question posée par l'examinateur lors de l'entretien."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "choix-oeuvre",
+        "comprehension",
+        "interpretation",
+        "gout-personnel",
+        "culture",
+        "ouverture"
+      ],
+      "description": "Type de question d'entretien."
+    },
+    "pistes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Pistes de réponse / éléments attendus (révélés à la demande)."
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -3,8 +3,9 @@
 ## 1. Cadre réglementaire de l'EAF (session 2026)
 
 **Épreuve Anticipée de Français (EAF)** — session 2026  
-Épreuve écrite : **4 heures**, coefficient **5** (L/ES/S)  
-Épreuve orale : coefficient **10** — **HORS PÉRIMÈTRE v1** (exclue de cette application)
+Épreuve écrite : **4 heures**, coefficient **5**  
+Épreuve orale : **20 minutes** (après **30 minutes** de préparation), coefficient **5**  
+*(Total EAF = écrit 5 + oral 5 = 10. Les deux épreuves sont dans le périmètre de l'application.)*
 
 ### Épreuve écrite (périmètre de cette application)
 
@@ -33,7 +34,7 @@ Critères d'évaluation : pertinence des arguments, maîtrise de l'œuvre, cultu
 | **Le roman et le récit du XIXe au XXIe siècle** | Roman réaliste/naturaliste, roman psychologique, récit contemporain — narratologie, points de vue, temps, incipit/excipit |
 | **Le théâtre du XVIIe au XXIe siècle** | Comédie, tragédie, drame romantique, théâtre contemporain — structure dramatique, tirade, monologue, didascalies, registres (tragique, comique, pathétique) |
 
-**Hors périmètre v1** : l'oral (explication linéaire, question de grammaire, entretien) est exclu de cette application.
+L'**oral** s'appuie sur les mêmes objets d'étude : l'examinateur interroge sur un texte du descriptif (explication linéaire) et le candidat présente une œuvre lors de l'entretien.
 
 ---
 
@@ -164,6 +165,50 @@ Les œuvres intégrales effectivement étudiées cette année, avec leur parcour
 
 ---
 
+## 6bis. L'oral de l'EAF (session 2026)
+
+### Format de l'épreuve
+
+- **Préparation** : 30 minutes (sur le texte choisi par l'examinateur). **Épreuve** : 20 minutes. **Coefficient** : 5.
+- Le candidat se présente avec son **descriptif** (récapitulatif des **lectures linéaires** étudiées dans l'année, en général **16 à 24 textes** répartis sur les 4 objets d'étude) et les **œuvres** (textes annotés autorisés selon les consignes).
+- L'examinateur **choisit un texte du descriptif** et indique le passage à expliquer + la **question de grammaire**.
+
+**Barème (sur 20)**
+
+| Partie | Épreuve | Points |
+|---|---|---|
+| 1ʳᵉ partie (12 pts) | Lecture à voix haute du texte | 2 |
+| | Explication linéaire du passage | 8 |
+| | Question de grammaire | 2 |
+| 2ᵈᵉ partie (8 pts) | Présentation d'une œuvre choisie par le candidat + entretien | 8 |
+
+### Méthode de l'explication linéaire
+
+L'explication **suit l'ordre du texte** (≠ commentaire composé, qui est thématique).
+
+1. **Introduction** : accroche, situation de l'extrait (auteur, œuvre, place du passage), **projet de lecture** (problématique), annonce des **mouvements** du texte.
+2. **Explication linéaire** : pour chaque **mouvement** (avec ses **bornes** : vers/lignes), dégager l'idée directrice puis analyser au fil du texte (**procédé → effet → citation**).
+3. **Conclusion** : bilan répondant au projet de lecture + **ouverture**.
+
+**Lecture à voix haute (2 pts)** : respect de la ponctuation et du rythme (vers/prose), articulation, intonation expressive, sans buter.
+
+### Question de grammaire (2 pts) — programme de 1ʳᵉ
+
+Points au programme (analyse sur une phrase du texte) :
+
+- **Les propositions subordonnées** : relative, conjonctive **complétive**, **circonstancielles** (temps, cause, conséquence, but, condition, concession…).
+- **L'interrogation** : interrogation totale/partielle, directe/indirecte, marques (inversion, *est-ce que*, mots interrogatifs).
+- **La négation** : totale/partielle, négation lexicale vs syntaxique, portée.
+
+Méthode de réponse : **identifier** (nature/type) → **justifier** (marques formelles) → **analyser** (fonction, sens, effet dans le texte).
+
+### Seconde partie : présentation d'une œuvre + entretien (8 pts)
+
+- Le candidat **choisit une œuvre** (parmi celles étudiées / lues dans l'année) et explique **son choix**, présente l'œuvre (enjeux, personnages, structure) et exprime un **jugement personnel argumenté**.
+- L'**entretien** est un échange avec l'examinateur : compréhension, interprétation, goût personnel, culture, ouvertures. Attendus : prendre position, justifier par des exemples précis, dialoguer.
+
+---
+
 ## 7. Règles de citation — sécurité factuelle
 
 **Règles absolues** :
@@ -178,10 +223,10 @@ Les œuvres intégrales effectivement étudiées cette année, avec leur parcour
 
 ## 8. Hors-périmètre v1
 
-- Oral EAF (explication linéaire, question de grammaire, entretien) : **exclu**
-- Œuvres sous droits (post-1926) : **exclu** sauf texte fourni par l'utilisateur en session
-- Questions de grammaire (analyse syntaxique, proposition subordonnée, etc.) : **exclu** (hors-programme écrit)
+- Reproduction d'**œuvres sous droits** (post-1926, ex. Sarraute) : **exclu** sauf texte fourni par l'utilisateur en session (pour l'oral, l'élève colle son extrait, stocké en local — voir `domainePublic: false`).
 - Littérature comparée internationale hors programme : **exclu**
+
+*(L'oral EAF — explication linéaire, question de grammaire, entretien — est désormais **dans le périmètre** : voir § 6bis.)*
 
 ---
 
@@ -195,6 +240,27 @@ Préfixes d'ID **distincts des maths** :
 | Quiz | `qz-` | `qz-mouvement-romantisme-dates` |
 | Exercice | `ex-<module>-<num>` | `ex-commentaire-001` |
 | Sujet type bac | `su-<module>-<num>` | `su-dissertation-001` |
+| Fiche d'analyse linéaire (oral) | `ot-` | `ot-rimbaud-dormeur-du-val` |
+| Mouvement (dans une fiche oral) | `otm-` | `otm-quatrains` |
+| Question d'entretien (oral) | `eq-` | `eq-manon-choix-oeuvre` |
+| Quiz de grammaire (oral) | `oq-` | `oq-subordonnee-relative-1` |
+| Auto-évaluation simulateur (progress) | `os-` | `os-<ot-id>::run1` |
+
+### Contenu oral — `content/francais/oral/`
+
+Espace spécial (comme `express/`), **jamais** des noms de fichiers de module (`meta/fiches/quiz/exercices/sujets.json`) pour éviter la collision de glob :
+
+| Fichier | Schéma | Contenu |
+|---|---|---|
+| `oral-meta.json` | `oral-meta.schema.json` | titre/description de la section |
+| `epreuve.json` | `oral-fiche.schema.json` | fiches sur le format / barème / déroulé |
+| `methode.json` | `oral-fiche.schema.json` | explication linéaire, lecture à voix haute, entretien |
+| `grammaire-fiches.json` | `oral-fiche.schema.json` | subordonnées, interrogation, négation |
+| `grammaire-quiz.json` | `oral-quiz.schema.json` | entraînement grammaire (ids `oq-`) |
+| `textes.json` | `oral-text.schema.json` | analyses linéaires du descriptif (ids `ot-`) |
+| `entretien.json` | `entretien-question.schema.json` | banque de questions d'entretien (ids `eq-`) |
+
+**Copyright** : pour une œuvre sous droits (Sarraute), la fiche `oral-text` porte `domainePublic: false` ⇒ le champ `text` est **interdit** (le schéma le refuse) et les `citation` des analyses doivent être en **paraphrase marquée**. L'élève colle son extrait dans l'app (stocké en `bfr-2026-*`).
 
 Modules v1 (génériques, sans œuvre spécifique) :
 

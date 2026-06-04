@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "oral-meta.schema.json",
+  "title": "Méta de l'espace Oral (EAF)",
+  "description": "Métadonnées de la section de préparation à l'oral. Fichier oral-meta.json (jamais meta.json, pour éviter la collision avec le glob des modules).",
+  "type": "object",
+  "required": ["title"],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "description": {
+      "type": "string"
+    },
+    "epreuveResume": {
+      "type": "string",
+      "description": "Résumé court du format de l'épreuve."
+    },
+    "accent": {
+      "type": "string",
+      "enum": ["red", "blue", "amber", "emerald", "violet", "slate"]
+    }
+  }
+}

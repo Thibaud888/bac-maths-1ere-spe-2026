@@ -1,10 +1,11 @@
 import { LiteraryText } from '@/francais/components/text/LiteraryText';
-import type { Fiche, FrenchAccent, FrenchLevel } from '@/francais/lib/french-types';
+import type { FicheLike, FrenchAccent, FrenchLevel } from '@/francais/lib/french-types';
 
 type FicheCardProps = {
-  fiche: Fiche;
-  hidden: boolean;
-  onToggleHidden: () => void;
+  fiche: FicheLike;
+  hidden?: boolean;
+  /** Si omis, le bouton « Masquer » n'est pas affiché (fiches oral). */
+  onToggleHidden?: () => void;
 };
 
 const levelAccent: Record<FrenchLevel, FrenchAccent> = {
@@ -28,7 +29,7 @@ const levelLabel: Record<FrenchLevel, string> = {
   approfondissement: 'Approfondissement',
 };
 
-export default function FicheCard({ fiche, hidden, onToggleHidden }: FicheCardProps) {
+export default function FicheCard({ fiche, hidden = false, onToggleHidden }: FicheCardProps) {
   const accent = levelAccent[fiche.level];
   const classes = accentClasses[accent];
 
@@ -45,13 +46,15 @@ export default function FicheCard({ fiche, hidden, onToggleHidden }: FicheCardPr
               {fiche.title}
             </h3>
           </div>
-          <button
-            type="button"
-            onClick={onToggleHidden}
-            className="shrink-0 rounded px-2 py-1 text-xs text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
-          >
-            {hidden ? 'Afficher' : 'Masquer'}
-          </button>
+          {onToggleHidden && (
+            <button
+              type="button"
+              onClick={onToggleHidden}
+              className="shrink-0 rounded px-2 py-1 text-xs text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700"
+            >
+              {hidden ? 'Afficher' : 'Masquer'}
+            </button>
+          )}
         </header>
 
         {!hidden && (

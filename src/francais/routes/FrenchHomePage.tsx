@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
-import { getExpressDecks, listFrenchModules } from '@/francais/lib/french-content-loader';
+import {
+  getExpressDecks,
+  getOralContent,
+  listFrenchModules,
+} from '@/francais/lib/french-content-loader';
 import type { FrenchFamily } from '@/francais/lib/french-types';
 
 const familyLabels: Record<FrenchFamily, string> = {
@@ -14,18 +18,38 @@ export default function FrenchHomePage() {
   const modules = listFrenchModules();
   const expressDecks = getExpressDecks();
   const totalExpressCards = expressDecks.reduce((n, d) => n + d.cards.length, 0);
+  const oralTextesCount = getOralContent().textes.length;
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-8">
       <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-        Préparer l’écrit du bac de français
+        Préparer le bac de français
       </h1>
       <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-        Épreuve anticipée de français (EAF) — écrit : 4 h, coefficient 5. Au
-        choix le jour de l’épreuve : <strong>commentaire de texte</strong> ou{' '}
-        <strong>dissertation sur une œuvre</strong>. Révise la méthode et les
-        repères, puis entraîne-toi avec les quiz et les exercices.
+        Épreuve anticipée de français (EAF) : <strong>écrit</strong> (4 h, coef. 5
+        — commentaire ou dissertation) et <strong>oral</strong> (20 min, coef. 5).
+        Révise la méthode et les repères, puis entraîne-toi avec les quiz, les
+        exercices et l’oral blanc.
       </p>
+
+      {/* Oral banner */}
+      <Link
+        to="/francais/oral"
+        className="mt-6 flex items-center gap-4 rounded-xl border border-emerald-300 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 p-4 shadow-sm transition-colors hover:border-emerald-400 dark:hover:border-emerald-500"
+      >
+        <span className="text-3xl">🎙️</span>
+        <div>
+          <p className="text-sm font-bold text-emerald-800 dark:text-emerald-200">
+            Préparer l’oral
+          </p>
+          <p className="text-xs text-emerald-700 dark:text-emerald-300">
+            {oralTextesCount > 0
+              ? `${oralTextesCount} texte${oralTextesCount > 1 ? 's' : ''} du descriptif, méthode, grammaire et oral blanc minuté`
+              : `Explication linéaire, grammaire, entretien et oral blanc minuté`}
+          </p>
+        </div>
+        <span className="ml-auto text-emerald-400">→</span>
+      </Link>
 
       {/* Révision express banner */}
       <Link

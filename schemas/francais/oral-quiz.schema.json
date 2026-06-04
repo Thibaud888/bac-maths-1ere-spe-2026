@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "oral-quiz.schema.json",
+  "title": "Quiz grammaire (Oral EAF)",
+  "description": "Question rapide d'entraînement pour la question de grammaire de l'oral (subordonnées, interrogation, négation). Trois types : qcm, multi, ordering. Identique au quiz écrit mais id préfixé oq- et catégorie « grammaire » autorisée.",
+  "type": "object",
+  "required": ["id", "category", "type", "statement", "explanation", "difficulty"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^oq-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : oq-<slug>. Ex : oq-subordonnee-relative-1"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["grammaire", "figures", "mouvements", "registres", "genres", "methode", "culture"],
+      "description": "Domaine de repérage. « grammaire » pour les points de l'oral."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["qcm", "multi", "ordering"]
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 5
+    },
+    "choices": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 2,
+      "maxItems": 6
+    },
+    "answer": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "answers": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 0 },
+      "minItems": 1
+    },
+    "items": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 2,
+      "maxItems": 8
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 5
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "timeLimitSeconds": {
+      "type": "integer",
+      "minimum": 15,
+      "maximum": 180,
+      "default": 60
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "qcm" } } },
+      "then": { "required": ["choices", "answer"] }
+    },
+    {
+      "if": { "properties": { "type": { "const": "multi" } } },
+      "then": { "required": ["choices", "answers"] }
+    },
+    {
+      "if": { "properties": { "type": { "const": "ordering" } } },
+      "then": { "required": ["items"] }
+    }
+  ]
+}

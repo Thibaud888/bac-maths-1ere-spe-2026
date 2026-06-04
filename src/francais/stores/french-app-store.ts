@@ -17,6 +17,13 @@ type FrenchAppState = {
   setFicheViewMode: (slug: FrenchModuleSlug, mode: FicheViewMode) => void;
   hiddenFiches: Partial<Record<FrenchModuleSlug, string[]>>;
   toggleFicheHidden: (slug: FrenchModuleSlug, ficheId: string) => void;
+  // --- Oral ---
+  /** Durée par défaut (minutes) de la préparation dans le simulateur d'oral. */
+  simulateurDefaultMinutes: number;
+  setSimulateurDefaultMinutes: (minutes: number) => void;
+  /** Textes collés par l'élève pour les œuvres hors domaine public (par id). */
+  pastedOralTexts: Record<string, string>;
+  setPastedOralText: (textId: string, value: string) => void;
 };
 
 export const useFrenchAppStore = create<FrenchAppState>()(
@@ -52,17 +59,36 @@ export const useFrenchAppStore = create<FrenchAppState>()(
           return { hiddenFiches: { ...s.hiddenFiches, [slug]: next } };
         });
       },
+      simulateurDefaultMinutes: 30,
+      setSimulateurDefaultMinutes: (minutes) => {
+        set({ simulateurDefaultMinutes: minutes });
+      },
+      pastedOralTexts: {},
+      setPastedOralText: (textId, value) => {
+        set((s) => ({
+          pastedOralTexts: { ...s.pastedOralTexts, [textId]: value },
+        }));
+      },
     }),
     {
       name: 'bfr-2026-app',
-      version: 1,
+      version: 2,
       migrate: (stored: unknown, fromVersion: number) => {
         const s = stored as Partial<FrenchAppState>;
+        let next = { ...s };
         if (fromVersion < 1) {
           // v0 → v1 : quizFilterSucceeded default changed to true
-          return { ...s, quizFilterSucceeded: true };
+          next = { ...next, quizFilterSucceeded: true };
         }
-        return s;
+        if (fromVersion < 2) {
+          // v1 → v2 : ajout des réglages oral (simulateur + textes collés)
+          next = {
+            ...next,
+            simulateurDefaultMinutes: next.simulateurDefaultMinutes ?? 30,
+            pastedOralTexts: next.pastedOralTexts ?? {},
+          };
+        }
+        return next;
       },
     }
   )
