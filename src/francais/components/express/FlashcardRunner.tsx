@@ -46,6 +46,7 @@ export default function FlashcardRunner({ cards, totalDeckCards, onClose }: Flas
   }
 
   function handleSkip() {
+    setStats((s) => ({ ...s, skip: s.skip + 1 }));
     setPhase('front');
     setPosition((p) => p + 1);
   }

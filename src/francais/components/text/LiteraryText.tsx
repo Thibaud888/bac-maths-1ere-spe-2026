@@ -17,6 +17,18 @@ function tokenize(input: string): Token[] {
   const tokens: Token[] = [];
   let i = 0;
   while (i < input.length) {
+    // Gras + italique : ***texte***
+    if (input.startsWith('***', i)) {
+      const end = input.indexOf('***', i + 3);
+      if (end !== -1) {
+        tokens.push({
+          kind: 'bold',
+          children: [{ kind: 'italic', children: tokenize(input.slice(i + 3, end)) }],
+        });
+        i = end + 3;
+        continue;
+      }
+    }
     if (input.startsWith('**', i)) {
       const end = input.indexOf('**', i + 2);
       if (end !== -1) {
@@ -32,6 +44,10 @@ function tokenize(input: string): Token[] {
         i = end + 1;
         continue;
       }
+      // « * » non apparié : caractère littéral, on avance d'un cran (anti-boucle).
+      tokens.push({ kind: 'text', value: '*' });
+      i += 1;
+      continue;
     }
     const next = input.indexOf('*', i);
     if (next === -1) {
@@ -140,11 +156,30 @@ function getIndent(line: string): number {
   return m && m[1] !== undefined ? m[1].length : 0;
 }
 
-function isListLine(line: string): boolean {
-  return /^\s*- /.test(line);
+const BULLET_RE = /^\s*- (.*)$/;
+const ORDERED_RE = /^\s*\d+\.\s+(.*)$/;
+
+type ListKind = 'ul' | 'ol';
+
+function listKind(line: string): ListKind | null {
+  if (BULLET_RE.test(line)) return 'ul';
+  if (ORDERED_RE.test(line)) return 'ol';
+  return null;
 }
 
-type ListItem = { content: string; children: ListItem[] };
+function isListLine(line: string): boolean {
+  return listKind(line) !== null;
+}
+
+function listContent(line: string): string {
+  const bullet = BULLET_RE.exec(line);
+  if (bullet && bullet[1] !== undefined) return bullet[1];
+  const ordered = ORDERED_RE.exec(line);
+  if (ordered && ordered[1] !== undefined) return ordered[1];
+  return line.trim();
+}
+
+type ListItem = { content: string; children: ListItem[]; childKind: ListKind };
 
 function parseListItems(lines: string[], baseIndent: number): ListItem[] {
   const items: ListItem[] = [];
@@ -158,7 +193,7 @@ function parseListItems(lines: string[], baseIndent: number): ListItem[] {
       i++;
       continue;
     }
-    const content = line.slice(baseIndent + 2);
+    const content = listContent(line);
     i++;
     const childLines: string[] = [];
     while (i < lines.length) {
@@ -168,26 +203,77 @@ function parseListItems(lines: string[], baseIndent: number): ListItem[] {
       i++;
     }
     let children: ListItem[] = [];
+    let childKind: ListKind = 'ul';
     if (childLines.length > 0) {
       const first = childLines[0];
-      if (first !== undefined) children = parseListItems(childLines, getIndent(first));
+      if (first !== undefined) {
+        children = parseListItems(childLines, getIndent(first));
+        childKind = listKind(first) ?? 'ul';
+      }
     }
-    items.push({ content, children });
+    items.push({ content, children, childKind });
   }
   return items;
 }
 
-function renderList(items: ListItem[], keyPrefix: string): ReactNode {
+function renderList(items: ListItem[], keyPrefix: string, kind: ListKind): ReactNode {
+  const ListTag = kind === 'ol' ? 'ol' : 'ul';
+  const listStyle = kind === 'ol' ? 'list-decimal' : 'list-disc';
   return (
-    <ul key={keyPrefix} className="my-2 ml-5 list-disc space-y-1 first:mt-0 last:mb-0">
+    <ListTag key={keyPrefix} className={`my-2 ml-5 ${listStyle} space-y-1 first:mt-0 last:mb-0`}>
       {items.map((item, idx) => (
         <li key={`l${idx}`}>
           {renderTokens(tokenize(item.content), `${keyPrefix}-l${idx}`)}
-          {item.children.length > 0 && renderList(item.children, `${keyPrefix}-l${idx}-c`)}
+          {item.children.length > 0 && renderList(item.children, `${keyPrefix}-l${idx}-c`, item.childKind)}
         </li>
       ))}
-    </ul>
+    </ListTag>
   );
+}
+
+// Découpe un bloc en segments successifs : listes (à puces ou numérotées) et
+// paragraphes. Permet à une ligne d'introduction suivie d'une liste (sans ligne
+// vide intermédiaire) de s'afficher correctement, et non « à la suite ».
+function renderMixedBlock(block: string, keyPrefix: string, preserveLineBreaks: boolean): ReactNode[] {
+  const lines = block.split('\n').filter((line) => line.length > 0);
+  const out: ReactNode[] = [];
+  let i = 0;
+  let seg = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    if (line === undefined) break;
+    if (isListLine(line)) {
+      const listLines: string[] = [];
+      while (i < lines.length) {
+        const l = lines[i];
+        if (l === undefined || !isListLine(l)) break;
+        listLines.push(l);
+        i++;
+      }
+      const first = listLines[0];
+      if (first !== undefined) {
+        const baseIndent = getIndent(first);
+        const items = parseListItems(listLines, baseIndent);
+        out.push(renderList(items, `${keyPrefix}-s${seg}`, listKind(first) ?? 'ul'));
+      }
+    } else {
+      const paraLines: string[] = [];
+      while (i < lines.length) {
+        const l = lines[i];
+        if (l === undefined || isListLine(l)) break;
+        paraLines.push(l);
+        i++;
+      }
+      const content = preserveLineBreaks ? paraLines.join('\n') : paraLines.join(' ');
+      out.push(
+        <div key={`${keyPrefix}-s${seg}`} className="my-2 first:mt-0 last:mb-0">
+          {renderTokens(tokenize(content), `${keyPrefix}-s${seg}`)}
+        </div>,
+      );
+    }
+    seg++;
+  }
+  return out;
 }
 
 function isBlockquote(block: string): boolean {
@@ -228,20 +314,10 @@ function LiteraryTextImpl({ text, className, preserveLineBreaks }: LiteraryTextP
       {blocks.map((block, bIdx) => {
         if (isMarkdownTable(block)) return renderMarkdownTable(block, `b${bIdx}`);
         if (isBlockquote(block)) return renderBlockquote(block, `b${bIdx}`);
-        const lines = block.split('\n').filter((line) => line.length > 0);
-        const isList = lines.length > 0 && lines.every(isListLine);
-        if (isList) {
-          const firstLine = lines[0];
-          if (firstLine !== undefined) {
-            const items = parseListItems(lines, getIndent(firstLine));
-            return renderList(items, `b${bIdx}`);
-          }
-        }
-        const content = preserveLineBreaks ? block : block.replace(/\n/g, ' ');
         return (
-          <div key={`b${bIdx}`} className="my-2 first:mt-0 last:mb-0">
-            {renderTokens(tokenize(content), `b${bIdx}`)}
-          </div>
+          <Fragment key={`b${bIdx}`}>
+            {renderMixedBlock(block, `b${bIdx}`, preserveLineBreaks ?? false)}
+          </Fragment>
         );
       })}
     </div>
