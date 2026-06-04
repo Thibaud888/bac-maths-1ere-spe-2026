@@ -22,6 +22,8 @@ type Phase = 'front' | 'back';
 
 export default function FlashcardRunner({ cards, totalDeckCards, onClose }: FlashcardRunnerProps) {
   const recordAttempt = useFrenchProgressStore((s) => s.recordAttempt);
+  const setFlashcardDecision = useFrenchProgressStore((s) => s.setFlashcardDecision);
+  const clearFlashcardDecisions = useFrenchProgressStore((s) => s.clearFlashcardDecisions);
 
   const [queue, setQueue] = useState<Flashcard[]>(() => [...cards]);
   const [requeuedIds, setRequeuedIds] = useState<ReadonlySet<string>>(new Set());
@@ -40,12 +42,14 @@ export default function FlashcardRunner({ cards, totalDeckCards, onClose }: Flas
   function handleKnew() {
     if (!card) return;
     recordAttempt(card.id, true);
+    setFlashcardDecision(card.id, 'known');
     setStats((s) => ({ ...s, knew: s.knew + 1 }));
     setPhase('front');
     setPosition((p) => p + 1);
   }
 
   function handleSkip() {
+    if (card) setFlashcardDecision(card.id, 'skip');
     setStats((s) => ({ ...s, skip: s.skip + 1 }));
     setPhase('front');
     setPosition((p) => p + 1);
@@ -69,6 +73,7 @@ export default function FlashcardRunner({ cards, totalDeckCards, onClose }: Flas
   }
 
   function handleRestart() {
+    clearFlashcardDecisions(cards.map((c) => c.id));
     setQueue([...cards]);
     setRequeuedIds(new Set());
     setPosition(0);

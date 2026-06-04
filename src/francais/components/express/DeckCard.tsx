@@ -44,10 +44,12 @@ const accentClasses: Record<
 };
 
 export default function DeckCard({ deck, selected, onToggle }: DeckCardProps) {
-  const items = useFrenchProgressStore((s) => s.items);
+  const decisions = useFrenchProgressStore((s) => s.flashcardDecisions);
   const classes = accentClasses[deck.accent];
 
-  const seenCount = deck.cards.filter((c) => items[c.id] !== undefined).length;
+  const doneCount = deck.cards.filter((c) => decisions[c.id] !== undefined).length;
+  const remaining = deck.cards.length - doneCount;
+  const allDone = doneCount === deck.cards.length;
 
   return (
     <button
@@ -82,12 +84,17 @@ export default function DeckCard({ deck, selected, onToggle }: DeckCardProps) {
           </span>
         </div>
         <div className="mt-3 flex items-center gap-3 text-xs text-slate-400 dark:text-slate-500">
-          <span>{deck.cards.length} cartes</span>
           <span>~{deck.estimatedMinutes} min</span>
-          {seenCount > 0 && (
-            <span className={`${classes.badge} rounded px-1.5 py-0.5 font-medium`}>
-              {seenCount}/{deck.cards.length} vues
+          {allDone ? (
+            <span className="rounded bg-emerald-100 px-1.5 py-0.5 font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+              ✓ terminé
             </span>
+          ) : doneCount > 0 ? (
+            <span className={`${classes.badge} rounded px-1.5 py-0.5 font-medium`}>
+              {remaining} restante{remaining > 1 ? 's' : ''} / {deck.cards.length}
+            </span>
+          ) : (
+            <span>{deck.cards.length} cartes</span>
           )}
         </div>
       </div>

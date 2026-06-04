@@ -9,9 +9,14 @@ export type FrenchItemProgress = {
   lastSeenAt: string;
 };
 
+export type FlashcardDecision = 'known' | 'skip';
+
 type FrenchProgressState = {
   items: Record<string, FrenchItemProgress>;
+  flashcardDecisions: Record<string, FlashcardDecision>;
   recordAttempt: (id: string, succeeded: boolean) => void;
+  setFlashcardDecision: (id: string, decision: FlashcardDecision) => void;
+  clearFlashcardDecisions: (ids: string[]) => void;
   reset: (id?: string) => void;
   countSucceeded: (kind: FrenchItemKind) => number;
 };
@@ -33,6 +38,7 @@ export const useFrenchProgressStore = create<FrenchProgressState>()(
   persist(
     (set, get) => ({
       items: {},
+      flashcardDecisions: {},
       recordAttempt: (id, succeeded) => {
         set((state) => {
           const previous = state.items[id];
@@ -42,6 +48,18 @@ export const useFrenchProgressStore = create<FrenchProgressState>()(
             lastSeenAt: new Date().toISOString(),
           };
           return { items: { ...state.items, [id]: next } };
+        });
+      },
+      setFlashcardDecision: (id, decision) => {
+        set((state) => ({
+          flashcardDecisions: { ...state.flashcardDecisions, [id]: decision },
+        }));
+      },
+      clearFlashcardDecisions: (ids) => {
+        set((state) => {
+          const next = { ...state.flashcardDecisions };
+          for (const id of ids) delete next[id];
+          return { flashcardDecisions: next };
         });
       },
       reset: (id) => {
