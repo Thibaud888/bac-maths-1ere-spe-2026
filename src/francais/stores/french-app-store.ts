@@ -53,7 +53,18 @@ export const useFrenchAppStore = create<FrenchAppState>()(
         });
       },
     }),
-    { name: 'bfr-2026-app' }
+    {
+      name: 'bfr-2026-app',
+      version: 1,
+      migrate: (stored: unknown, fromVersion: number) => {
+        const s = stored as Partial<FrenchAppState>;
+        if (fromVersion < 1) {
+          // v0 → v1 : quizFilterSucceeded default changed to true
+          return { ...s, quizFilterSucceeded: true };
+        }
+        return s;
+      },
+    }
   )
 );
 
