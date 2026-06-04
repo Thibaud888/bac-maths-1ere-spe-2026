@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "french-exercise.schema.json",
+  "title": "Exercice guidé (Français)",
+  "description": "Exercice d'entraînement à l'écrit (repérage de procédés, construction d'un paragraphe, plan, intro/conclusion) avec indices progressifs et corrigé.",
+  "type": "object",
+  "required": ["id", "module", "title", "difficulty", "estimatedMinutes", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^ex-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : ex-<module>-<num3>. Ex : ex-commentaire-001"
+    },
+    "module": {
+      "type": "string",
+      "enum": [
+        "methode-commentaire",
+        "methode-dissertation",
+        "figures-de-style",
+        "mouvements-litteraires",
+        "registres-genres",
+        "poesie",
+        "litterature-idees",
+        "roman",
+        "theatre"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "estimatedMinutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 30
+    },
+    "preamble": {
+      "type": "string",
+      "description": "Contexte / consigne commune aux questions. Markdown."
+    },
+    "extract": {
+      "type": "string",
+      "description": "Texte littéraire support (domaine public). Markdown ; les sauts de ligne sont préservés (vers)."
+    },
+    "extractSource": {
+      "type": "string",
+      "description": "Référence de l'extrait (auteur, œuvre, date). Ex : « Victor Hugo, Les Contemplations, 1856 »."
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "statement", "hints", "solution"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^q[0-9]+[a-z]?$"
+          },
+          "label": { "type": "string" },
+          "statement": {
+            "type": "string",
+            "minLength": 3
+          },
+          "hints": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "maxItems": 3
+          },
+          "expectedAnswer": { "type": "string" },
+          "solution": {
+            "type": "string",
+            "minLength": 10
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

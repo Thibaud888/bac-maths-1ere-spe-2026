@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "fiche.schema.json",
+  "title": "Fiche de révision (Français)",
+  "description": "Carte de référence pour l'écrit de l'EAF (méthode, figure de style, mouvement littéraire, registre, genre, notion). Markdown enrichi, sans LaTeX.",
+  "type": "object",
+  "required": ["id", "module", "category", "title", "statement", "level"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^fi-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : fi-<slug>. Ex : fi-figure-metaphore"
+    },
+    "module": {
+      "type": "string",
+      "enum": [
+        "methode-commentaire",
+        "methode-dissertation",
+        "figures-de-style",
+        "mouvements-litteraires",
+        "registres-genres",
+        "poesie",
+        "litterature-idees",
+        "roman",
+        "theatre"
+      ],
+      "description": "Module rattaché."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "methode",
+        "figure",
+        "mouvement",
+        "registre",
+        "genre",
+        "notion"
+      ],
+      "description": "Nature pédagogique de la fiche."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "description": "Titre de la fiche. Ex : « La métaphore »"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Contenu de la fiche (Markdown enrichi : gras, italique, listes, citations en blockquote, tableaux)."
+    },
+    "example": {
+      "type": "string",
+      "description": "Exemple illustratif (citation du domaine public, vers, courte phrase). Markdown."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "level": {
+      "type": "string",
+      "enum": ["essentiel", "a-connaitre", "approfondissement"],
+      "description": "Importance pour l'écrit."
+    },
+    "simplified": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["core"],
+      "properties": {
+        "core": {
+          "type": "string",
+          "maxLength": 280,
+          "description": "Définition nue, sans phrase d'introduction."
+        },
+        "mnemonic": {
+          "type": "string",
+          "maxLength": 140,
+          "description": "Phrase-ancre mémorielle."
+        },
+        "keyword": {
+          "type": "string",
+          "maxLength": 32,
+          "description": "Mot-indice unique au sein du module."
+        },
+        "accent": {
+          "type": "string",
+          "enum": ["red", "blue", "amber", "emerald", "violet", "slate"]
+        }
+      }
+    }
+  }
+}

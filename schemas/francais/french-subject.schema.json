@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "french-subject.schema.json",
+  "title": "Sujet type bac (Français)",
+  "description": "Sujet d'entraînement au format de l'écrit de l'EAF : commentaire de texte ou dissertation sur œuvre, avec rappel de méthode et corrigé guidé par étapes (introduction, axes/parties, conclusion). Markdown enrichi, sans LaTeX. Citations du domaine public uniquement.",
+  "type": "object",
+  "required": [
+    "id",
+    "module",
+    "type",
+    "title",
+    "oeuvre",
+    "difficulty",
+    "estimatedMinutes",
+    "consigne",
+    "steps"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^su-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : su-<module>-<num3>. Ex : su-poesie-001"
+    },
+    "module": {
+      "type": "string",
+      "enum": [
+        "methode-commentaire",
+        "methode-dissertation",
+        "poesie",
+        "litterature-idees",
+        "roman",
+        "theatre"
+      ],
+      "description": "Module rattaché (objet d'étude ou module de méthode)."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["commentaire", "dissertation"],
+      "description": "commentaire = analyse d'un extrait ; dissertation = réflexion argumentée sur une œuvre."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 140,
+      "description": "Intitulé du sujet."
+    },
+    "oeuvre": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Œuvre support : auteur, titre, date. Ex : « Arthur Rimbaud, Les Cahiers de Douai (1870) »."
+    },
+    "parcours": {
+      "type": "string",
+      "description": "Parcours associé. Ex : « Émancipations créatrices »."
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    },
+    "estimatedMinutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 240
+    },
+    "consigne": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Énoncé du sujet (citation/question pour la dissertation, consigne pour le commentaire). Markdown."
+    },
+    "extract": {
+      "type": "string",
+      "description": "Texte littéraire support (commentaire). Domaine public uniquement. Markdown ; les sauts de ligne sont préservés (vers)."
+    },
+    "extractSource": {
+      "type": "string",
+      "description": "Référence de l'extrait (auteur, œuvre, date)."
+    },
+    "methodeRappel": {
+      "type": "string",
+      "description": "Rappel méthodologique court avant le corrigé guidé. Markdown."
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Étapes du corrigé guidé (introduction, axes/parties, conclusion). Chaque étape s'appuie sur le système d'indices progressifs.",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "statement", "hints", "solution"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^e[0-9]+[a-z]?$"
+          },
+          "label": {
+            "type": "string",
+            "description": "Titre de l'étape. Ex : « Introduction », « Axe I — La fuite hors du monde »."
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 3,
+            "description": "Ce que l'élève doit produire à cette étape."
+          },
+          "hints": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "maxItems": 3
+          },
+          "expectedAnswer": { "type": "string" },
+          "solution": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Corrigé / proposition rédigée ou détaillée pour l'étape."
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "commentaire" } } },
+      "then": { "required": ["extract", "extractSource"] }
+    }
+  ]
+}
