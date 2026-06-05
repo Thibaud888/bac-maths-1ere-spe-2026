@@ -49,6 +49,31 @@ Les œuvres intégrales effectivement étudiées cette année, avec leur parcour
 | Roman | `roman` | **Abbé Prévost**, *Manon Lescaut* (1731) | « Personnages en marge, plaisirs du romanesque » | ✅ Oui (Prévost † 1763) |
 | Théâtre | `theatre` | **Nathalie Sarraute**, *Pour un oui ou pour un non* (1981) | « Théâtre et dispute » | ⛔ **NON — sous droits** (Sarraute † 1999) |
 
+Intitulés exacts des objets d'étude (CNED) : poésie **du XIXe au XXIe s.** · roman et récit **du Moyen Âge au XXIe s.** · théâtre **du XVIIe au XXIe s.** · littérature d'idées **du XVIe au XVIIIe s.**
+
+### Descriptif — 16 lectures linéaires (support de l'oral)
+
+Textes effectivement étudiés (récapitulatif CNED 2026). Fondent les fiches d'analyse linéaire de l'oral (`content/francais/oral/textes.json`, ids `ot-`).
+
+| # | Objet d'étude | Texte | Domaine public |
+|---|---|---|---|
+| 1-2 | Poésie | Rimbaud, *Cahiers de Douai* : « Vénus anadyomène », « Le Dormeur du val » | ✅ |
+| 3 | Poésie (parcours) | A. Bertrand, *Gaspard de la nuit*, « Un Rêve » (1842) | ✅ |
+| 4 | Poésie (parcours) | R. Queneau, *L'Instant fatal*, « Si tu t'imagines » (1946) | ⛔ † 1976 |
+| 5-6 | Roman | Prévost, *Manon Lescaut* : « La rencontre », « Les plaintes d'un amant » | ✅ |
+| 7 | Roman (parcours) | Stendhal, *Le Rouge et le Noir*, I, 4 (1830) | ✅ |
+| 8 | Roman (parcours) | Flaubert, *Madame Bovary*, II, 12 (1857) | ✅ |
+| 9-10 | Théâtre | Sarraute, *Pour un oui ou pour un non* (2 extraits) | ⛔ † 1999 |
+| 11 | Théâtre (parcours) | Corneille, *Cinna*, I, 1 (monologue d'Émilie, 1643) | ✅ |
+| 12 | Théâtre (parcours) | Molière, *Le Misanthrope*, I, 1 (1666) | ✅ |
+| 13-14 | Litt. d'idées | Graffigny, *Lettres d'une Péruvienne*, lettres XVI & XX | ✅ |
+| 15 | Litt. d'idées (parcours) | Bougainville, *Voyage autour du monde*, « Les Tahitiens » (1771) | ✅ |
+| 16 | Litt. d'idées (parcours) | Montesquieu, *Lettres persanes*, « La mode française » (lettre 99, 1721) | ✅ |
+
+**Lectures cursives au choix** (l'élève en présente une à l'entretien — choix non encore arrêté) : Poésie → Apollinaire *Calligrammes* / Ponge *Le Parti pris des choses* / Prévert *Paroles* ; Roman → Gaudé *Salina* / Colombani *La Tresse* / Faye *Petit pays* ; Théâtre → *Le Prénom* / Beaumarchais *Le Mariage de Figaro* / Molière *Le Tartuffe* ; Litt. d'idées → Djavann *Comment peut-on être français ?* / Nothomb *Stupeur et tremblements* / Garde *Ce qu'il advint du sauvage blanc*.
+
+> ⚠️ Oral : **Queneau et Sarraute sont sous droits** → fiches `oral-text` avec `domainePublic:false`, sans `text` ni citation verbatim (paraphrase ; l'élève colle son extrait). « Vénus anadyomène » (domaine public) : éviter toute citation du dernier tercet (contenu cru).
+
 ### Règles de citation par œuvre
 
 - **Rimbaud, Graffigny, Prévost** (domaine public) : citations verbatim autorisées, **à condition** qu'elles soient exactes. Privilégier les passages canoniques et vérifiables. Pour les *Cahiers de Douai*, les poèmes courts et célèbres (« Le Dormeur du val », « Ma Bohême », « Sensation », « Au Cabaret-Vert », « Roman ») peuvent servir de support de **commentaire** (texte reproductible).
