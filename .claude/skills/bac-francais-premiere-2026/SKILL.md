@@ -53,7 +53,7 @@ Intitulés exacts des objets d'étude (CNED) : poésie **du XIXe au XXIe s.** ·
 
 ### Descriptif — 16 lectures linéaires (support de l'oral)
 
-Textes effectivement étudiés (récapitulatif CNED 2026). Fondent les fiches d'analyse linéaire de l'oral (`content/francais/oral/textes.json`, ids `ot-`).
+Textes effectivement étudiés (récapitulatif CNED 2026) **de l'élève J**. Fondent les fiches d'analyse linéaire de son espace oral (`content/francais/oral/eleves/j/textes.json`, ids `ot-`). Chaque élève a son propre descriptif sous `oral/eleves/<id>/`.
 
 | # | Objet d'étude | Texte | Domaine public |
 |---|---|---|---|
@@ -275,6 +275,8 @@ Préfixes d'ID **distincts des maths** :
 
 Espace spécial (comme `express/`), **jamais** des noms de fichiers de module (`meta/fiches/quiz/exercices/sujets.json`) pour éviter la collision de glob :
 
+**Contenu COMMUN à tous les élèves** (à la racine de `oral/`) :
+
 | Fichier | Schéma | Contenu |
 |---|---|---|
 | `oral-meta.json` | `oral-meta.schema.json` | titre/description de la section |
@@ -282,10 +284,18 @@ Espace spécial (comme `express/`), **jamais** des noms de fichiers de module (`
 | `methode.json` | `oral-fiche.schema.json` | explication linéaire, lecture à voix haute, entretien |
 | `grammaire-fiches.json` | `oral-fiche.schema.json` | subordonnées, interrogation, négation |
 | `grammaire-quiz.json` | `oral-quiz.schema.json` | entraînement grammaire (ids `oq-`) |
+
+**Descriptif PROPRE à chaque élève** sous `oral/eleves/<id>/` (un dossier = un élève). L'app est multi-élèves : `/francais/oral` affiche un bouton par élève, puis `/francais/oral/<id>/*` ouvre son espace.
+
+| Fichier | Schéma | Contenu |
+|---|---|---|
+| `profil.json` | `oral-student.schema.json` | identité + contexte (`id` = slug d'URL, `nom`, `oeuvres`) |
 | `textes.json` | `oral-text.schema.json` | analyses linéaires du descriptif (ids `ot-`) |
 | `entretien.json` | `entretien-question.schema.json` | banque de questions d'entretien (ids `eq-`) |
 
-**Copyright** : pour une œuvre sous droits (Sarraute), la fiche `oral-text` porte `domainePublic: false` ⇒ le champ `text` est **interdit** (le schéma le refuse) et les `citation` des analyses doivent être en **paraphrase marquée**. L'élève colle son extrait dans l'app (stocké en `bfr-2026-*`).
+**Ajouter un élève** = créer `oral/eleves/<id>/` avec ces 3 fichiers (textes/entretien via le workflow 2 passes ; `profil.json` = contexte non pédagogique, validé Ajv seulement). Le bouton et l'URL apparaissent automatiquement.
+
+**Copyright** : pour une œuvre sous droits (Sarraute, Queneau), la fiche `oral-text` porte `domainePublic: false` ⇒ le champ `text` est **interdit** (le schéma le refuse) et les `citation` des analyses doivent être en **paraphrase marquée**. L'élève colle son extrait dans l'app (stocké en `bfr-2026-*`, par clé `<id>:<ot-…>`).
 
 Modules v1 (génériques, sans œuvre spécifique) :
 

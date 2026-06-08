@@ -1,9 +1,21 @@
 import { useMemo } from 'react';
-import { getOralContent } from '@/francais/lib/french-content-loader';
+import { useParams } from 'react-router-dom';
+import {
+  getOralStudentEntretien,
+  getOralStudentTextes,
+} from '@/francais/lib/french-content-loader';
 import OralSimulator from '@/francais/components/oral/OralSimulator';
 
 export default function OralSimulateurPage() {
-  const { textes, entretien } = useMemo(() => getOralContent(), []);
+  const { eleve } = useParams<{ eleve: string }>();
+  const textes = useMemo(
+    () => (eleve ? getOralStudentTextes(eleve) : []),
+    [eleve]
+  );
+  const entretien = useMemo(
+    () => (eleve ? getOralStudentEntretien(eleve) : []),
+    [eleve]
+  );
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-8">

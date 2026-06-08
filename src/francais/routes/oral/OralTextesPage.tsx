@@ -1,9 +1,14 @@
 import { useMemo } from 'react';
-import { getOralContent } from '@/francais/lib/french-content-loader';
+import { useParams } from 'react-router-dom';
+import { getOralStudentTextes } from '@/francais/lib/french-content-loader';
 import OralTextCard from '@/francais/components/oral/OralTextCard';
 
 export default function OralTextesPage() {
-  const textes = useMemo(() => getOralContent().textes, []);
+  const { eleve } = useParams<{ eleve: string }>();
+  const textes = useMemo(
+    () => (eleve ? getOralStudentTextes(eleve) : []),
+    [eleve]
+  );
 
   const byOeuvre = useMemo(() => {
     const map = new Map<string, typeof textes>();
@@ -43,7 +48,7 @@ export default function OralTextesPage() {
           </h2>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             {list.map((t) => (
-              <OralTextCard key={t.id} text={t} />
+              <OralTextCard key={t.id} text={t} eleve={eleve ?? ''} />
             ))}
           </div>
         </section>

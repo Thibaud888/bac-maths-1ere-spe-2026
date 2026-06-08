@@ -271,12 +271,38 @@ export type OralMeta = {
   accent?: FrenchAccent;
 };
 
+/** Une œuvre intégrale au programme d'un élève (affichage + repère entretien). */
+export type OralStudentOeuvre = {
+  oeuvre: string;
+  auteur?: string;
+  parcours?: string;
+};
+
+/**
+ * Profil d'un élève : identité + contexte. Son descriptif oral (textes et
+ * entretien) vit sous `content/francais/oral/eleves/<id>/` et n'est partagé
+ * avec aucun autre élève. Le reste de l'oral (épreuve, méthode, grammaire) est
+ * commun à tous.
+ */
+export type OralStudent = {
+  id: string;
+  nom: string;
+  parcours?: string;
+  contexte?: string;
+  oeuvres?: OralStudentOeuvre[];
+  accent?: FrenchAccent;
+  order?: number;
+};
+
+/**
+ * Contenu oral **commun** à tous les élèves (épreuve, méthode, grammaire).
+ * Les `textes` et `entretien`, propres à chaque élève, sont chargés séparément
+ * via `getOralStudentTextes` / `getOralStudentEntretien`.
+ */
 export type OralContent = {
   meta: OralMeta | null;
   epreuve: OralFiche[];
   methode: OralFiche[];
-  textes: OralText[];
   grammaireFiches: OralFiche[];
   grammaireQuiz: QuizItem[];
-  entretien: EntretienQuestion[];
 };

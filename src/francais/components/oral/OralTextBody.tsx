@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import { LiteraryText } from '@/francais/components/text/LiteraryText';
 import { useFrenchAppStore } from '@/francais/stores/french-app-store';
 import type { OralText } from '@/francais/lib/french-types';
@@ -14,7 +15,9 @@ type OralTextBodyProps = {
  *   ici pour réviser l'analyse à côté (persisté en `bfr-2026-*`).
  */
 export default function OralTextBody({ text }: OralTextBodyProps) {
-  const pasted = useFrenchAppStore((s) => s.pastedOralTexts[text.id] ?? '');
+  const { eleve } = useParams<{ eleve: string }>();
+  const storageKey = `${eleve ?? ''}:${text.id}`;
+  const pasted = useFrenchAppStore((s) => s.pastedOralTexts[storageKey] ?? '');
   const setPasted = useFrenchAppStore((s) => s.setPastedOralText);
 
   if (text.domainePublic && text.text) {
@@ -44,7 +47,7 @@ export default function OralTextBody({ text }: OralTextBodyProps) {
       </p>
       <textarea
         value={pasted}
-        onChange={(e) => { setPasted(text.id, e.target.value); }}
+        onChange={(e) => { setPasted(storageKey, e.target.value); }}
         rows={8}
         placeholder="Colle ici le texte de l'extrait…"
         className="mt-3 w-full rounded border border-amber-300 dark:border-amber-600 bg-white dark:bg-slate-800 p-3 font-serif text-sm leading-relaxed text-slate-800 dark:text-slate-200 focus:border-amber-500 focus:outline-none"

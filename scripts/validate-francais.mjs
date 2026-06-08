@@ -55,8 +55,13 @@ const oralValidators = {
   'epreuve.json': { validate: loadValidator('oral-fiche.schema.json'), array: true },
   'methode.json': { validate: loadValidator('oral-fiche.schema.json'), array: true },
   'grammaire-fiches.json': { validate: loadValidator('oral-fiche.schema.json'), array: true },
-  'textes.json': { validate: loadValidator('oral-text.schema.json'), array: true },
   'grammaire-quiz.json': { validate: loadValidator('oral-quiz.schema.json'), array: true },
+};
+
+// Descriptif par élève : un dossier par élève sous `oral/eleves/<id>/`.
+const oralStudentValidators = {
+  'profil.json': { validate: loadValidator('oral-student.schema.json'), array: false },
+  'textes.json': { validate: loadValidator('oral-text.schema.json'), array: true },
   'entretien.json': { validate: loadValidator('entretien-question.schema.json'), array: true },
 };
 
@@ -64,6 +69,41 @@ const modulesDir = join(root, 'content', 'francais');
 let total = 0;
 let invalid = 0;
 const problems = [];
+
+/** Valide un fichier JSON (tableau d'items ou objet unique) contre `validate`. */
+function validateJsonFile(filePath, validate, array) {
+  if (!safeStat(filePath)) return;
+  let data;
+  try {
+    data = JSON.parse(readFileSync(filePath, 'utf8'));
+  } catch (err) {
+    invalid += 1;
+    problems.push({ file: filePath, message: `JSON invalide : ${err.message}` });
+    return;
+  }
+  if (array && !Array.isArray(data)) {
+    invalid += 1;
+    problems.push({
+      file: filePath,
+      message: `Le fichier doit contenir un tableau (reçu ${typeof data}).`,
+    });
+    return;
+  }
+  const records = array ? data : [data];
+  records.forEach((item, idx) => {
+    total += 1;
+    if (!validate(item)) {
+      invalid += 1;
+      const id = item?.id ?? `<sans id, index ${idx}>`;
+      problems.push({
+        file: filePath,
+        message: `[${id}] ${(validate.errors ?? [])
+          .map((e) => `${e.instancePath || '<root>'} ${e.message ?? '?'}`)
+          .join(' ; ')}`,
+      });
+    }
+  });
+}
 
 if (!safeStat(modulesDir)) {
   console.error(`Aucun dossier ${modulesDir} — rien à valider.`);
@@ -104,39 +144,22 @@ for (const slug of readdirSync(modulesDir)) {
 
   // Oral EAF (oral/) — fichiers nommés à part, jamais des noms de modules.
   if (slug === 'oral') {
+    // Contenu commun à tous les élèves.
     for (const [filename, { validate, array }] of Object.entries(oralValidators)) {
-      const filePath = join(modDir, filename);
-      if (!safeStat(filePath)) continue;
-      let data;
-      try {
-        data = JSON.parse(readFileSync(filePath, 'utf8'));
-      } catch (err) {
-        invalid += 1;
-        problems.push({ file: filePath, message: `JSON invalide : ${err.message}` });
-        continue;
-      }
-      const records = array ? data : [data];
-      if (array && !Array.isArray(data)) {
-        invalid += 1;
-        problems.push({
-          file: filePath,
-          message: `Le fichier doit contenir un tableau (reçu ${typeof data}).`,
-        });
-        continue;
-      }
-      records.forEach((item, idx) => {
-        total += 1;
-        if (!validate(item)) {
-          invalid += 1;
-          const id = item?.id ?? `<sans id, index ${idx}>`;
-          problems.push({
-            file: filePath,
-            message: `[${id}] ${(validate.errors ?? [])
-              .map((e) => `${e.instancePath || '<root>'} ${e.message ?? '?'}`)
-              .join(' ; ')}`,
-          });
+      validateJsonFile(join(modDir, filename), validate, array);
+    }
+    // Descriptif propre à chaque élève : oral/eleves/<id>/.
+    const elevesDir = join(modDir, 'eleves');
+    if (safeStat(elevesDir)) {
+      for (const eleve of readdirSync(elevesDir)) {
+        const eleveDir = join(elevesDir, eleve);
+        if (!statSync(eleveDir).isDirectory()) continue;
+        for (const [filename, { validate, array }] of Object.entries(
+          oralStudentValidators
+        )) {
+          validateJsonFile(join(eleveDir, filename), validate, array);
         }
-      });
+      }
     }
     continue;
   }

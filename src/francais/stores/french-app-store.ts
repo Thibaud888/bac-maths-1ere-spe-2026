@@ -21,9 +21,15 @@ type FrenchAppState = {
   /** Durée par défaut (minutes) de la préparation dans le simulateur d'oral. */
   simulateurDefaultMinutes: number;
   setSimulateurDefaultMinutes: (minutes: number) => void;
-  /** Textes collés par l'élève pour les œuvres hors domaine public (par id). */
+  /**
+   * Textes collés pour les œuvres hors domaine public, par clé composite
+   * `${eleve}:${textId}` (isolation entre élèves sur un même navigateur).
+   */
   pastedOralTexts: Record<string, string>;
-  setPastedOralText: (textId: string, value: string) => void;
+  setPastedOralText: (key: string, value: string) => void;
+  /** Dernier élève ouvert dans l'espace oral (mémorisation de confort). */
+  lastOralStudent: string | null;
+  setLastOralStudent: (eleve: string) => void;
 };
 
 export const useFrenchAppStore = create<FrenchAppState>()(
@@ -64,15 +70,19 @@ export const useFrenchAppStore = create<FrenchAppState>()(
         set({ simulateurDefaultMinutes: minutes });
       },
       pastedOralTexts: {},
-      setPastedOralText: (textId, value) => {
+      setPastedOralText: (key, value) => {
         set((s) => ({
-          pastedOralTexts: { ...s.pastedOralTexts, [textId]: value },
+          pastedOralTexts: { ...s.pastedOralTexts, [key]: value },
         }));
+      },
+      lastOralStudent: null,
+      setLastOralStudent: (eleve) => {
+        set({ lastOralStudent: eleve });
       },
     }),
     {
       name: 'bfr-2026-app',
-      version: 2,
+      version: 3,
       migrate: (stored: unknown, fromVersion: number) => {
         const s = stored as Partial<FrenchAppState>;
         let next = { ...s };
@@ -86,6 +96,20 @@ export const useFrenchAppStore = create<FrenchAppState>()(
             ...next,
             simulateurDefaultMinutes: next.simulateurDefaultMinutes ?? 30,
             pastedOralTexts: next.pastedOralTexts ?? {},
+          };
+        }
+        if (fromVersion < 3) {
+          // v2 → v3 : oral multi-élèves. Les textes collés existants
+          // appartiennent à l'élève J → on préfixe leur clé par `j:`.
+          const old = next.pastedOralTexts ?? {};
+          const remapped: Record<string, string> = {};
+          for (const [k, v] of Object.entries(old)) {
+            remapped[k.includes(':') ? k : `j:${k}`] = v;
+          }
+          next = {
+            ...next,
+            pastedOralTexts: remapped,
+            lastOralStudent: next.lastOralStudent ?? null,
           };
         }
         return next;

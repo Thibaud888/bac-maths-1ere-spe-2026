@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "oral-student.schema.json",
+  "title": "Profil élève (Oral EAF)",
+  "description": "Identité et contexte d'un élève dont le descriptif oral (textes + entretien) lui est propre. Permet d'afficher un bouton par élève sur l'accueil de l'oral et de scoper son espace /francais/oral/<id>.",
+  "type": "object",
+  "required": ["id", "nom"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Identifiant d'URL de l'élève (slug). Ex : j, marie-l. Doit correspondre au nom du dossier content/francais/oral/eleves/<id>/."
+    },
+    "nom": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60,
+      "description": "Nom affiché de l'élève (bouton, en-tête)."
+    },
+    "parcours": {
+      "type": "string",
+      "description": "Mention libre (classe, parcours global) affichée sous le nom."
+    },
+    "contexte": {
+      "type": "string",
+      "description": "Note de contexte (voie, session, établissement…)."
+    },
+    "oeuvres": {
+      "type": "array",
+      "description": "Œuvres intégrales au programme de l'élève (affichage + repère pour l'entretien).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["oeuvre"],
+        "properties": {
+          "oeuvre": { "type": "string", "minLength": 2 },
+          "auteur": { "type": "string" },
+          "parcours": { "type": "string" }
+        }
+      }
+    },
+    "accent": {
+      "type": "string",
+      "enum": ["red", "blue", "amber", "emerald", "violet", "slate"]
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

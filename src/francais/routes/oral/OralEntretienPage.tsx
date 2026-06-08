@@ -1,8 +1,10 @@
-import { getOralContent } from '@/francais/lib/french-content-loader';
+import { useParams } from 'react-router-dom';
+import { getOralStudentEntretien } from '@/francais/lib/french-content-loader';
 import EntretienQuestionList from '@/francais/components/oral/EntretienQuestionList';
 
 export default function OralEntretienPage() {
-  const { entretien } = getOralContent();
+  const { eleve } = useParams<{ eleve: string }>();
+  const entretien = eleve ? getOralStudentEntretien(eleve) : [];
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-8">

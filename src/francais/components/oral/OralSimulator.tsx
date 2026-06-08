@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { shuffle } from '@/lib/randomizer';
 import { useFrenchAppStore } from '@/francais/stores/french-app-store';
 import { useFrenchProgressStore } from '@/francais/stores/french-progress-store';
@@ -41,6 +42,7 @@ function pickEntretien(all: EntretienQuestion[], oeuvre: string, n: number): Ent
 }
 
 export default function OralSimulator({ textes, entretien }: OralSimulatorProps) {
+  const { eleve } = useParams<{ eleve: string }>();
   const defaultMinutes = useFrenchAppStore((s) => s.simulateurDefaultMinutes);
   const setDefaultMinutes = useFrenchAppStore((s) => s.setSimulateurDefaultMinutes);
   const recordAttempt = useFrenchProgressStore((s) => s.recordAttempt);
@@ -74,7 +76,7 @@ export default function OralSimulator({ textes, entretien }: OralSimulatorProps)
 
   function handleSaveEval() {
     if (drawn) {
-      recordAttempt(`os-${drawn.id}::run${runId}`, total >= 10);
+      recordAttempt(`os-${eleve ?? ''}-${drawn.id}::run${runId}`, total >= 10);
     }
     setPhase('done');
   }

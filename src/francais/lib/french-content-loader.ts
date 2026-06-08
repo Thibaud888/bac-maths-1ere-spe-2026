@@ -10,6 +10,7 @@ import type {
   OralContent,
   OralFiche,
   OralMeta,
+  OralStudent,
   OralText,
   QuizItem,
 } from './french-types';
@@ -23,6 +24,7 @@ import {
   validateOralFiche,
   validateOralMeta,
   validateOralQuiz,
+  validateOralStudent,
   validateOralText,
   validateQuiz,
 } from './french-validate';
@@ -66,10 +68,6 @@ const oralMethodeModule = import.meta.glob<OralFiche[]>(
   '/content/francais/oral/methode.json',
   { eager: true, import: 'default' }
 );
-const oralTextesModule = import.meta.glob<OralText[]>(
-  '/content/francais/oral/textes.json',
-  { eager: true, import: 'default' }
-);
 const oralGrammaireFichesModule = import.meta.glob<OralFiche[]>(
   '/content/francais/oral/grammaire-fiches.json',
   { eager: true, import: 'default' }
@@ -78,8 +76,19 @@ const oralGrammaireQuizModule = import.meta.glob<QuizItem[]>(
   '/content/francais/oral/grammaire-quiz.json',
   { eager: true, import: 'default' }
 );
-const oralEntretienModule = import.meta.glob<EntretienQuestion[]>(
-  '/content/francais/oral/entretien.json',
+
+// Descriptif propre à chaque élève : un dossier par élève sous `eleves/<id>/`.
+// Seuls `textes` et `entretien` sont scopés ; le reste de l'oral est commun.
+const oralProfilModules = import.meta.glob<OralStudent>(
+  '/content/francais/oral/eleves/*/profil.json',
+  { eager: true, import: 'default' }
+);
+const oralStudentTextesModules = import.meta.glob<OralText[]>(
+  '/content/francais/oral/eleves/*/textes.json',
+  { eager: true, import: 'default' }
+);
+const oralStudentEntretienModules = import.meta.glob<EntretienQuestion[]>(
+  '/content/francais/oral/eleves/*/entretien.json',
   { eager: true, import: 'default' }
 );
 
@@ -203,6 +212,26 @@ function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
   return [...items].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 }
 
+function eleveFromPath(path: string): string {
+  const match = /\/eleves\/([^/]+)\//.exec(path);
+  if (!match || !match[1]) {
+    throw new Error(`Impossible d'extraire l'élève du chemin ${path}`);
+  }
+  return match[1];
+}
+
+function buildEleveMap<T>(modules: Record<string, T>): Map<string, T> {
+  const map = new Map<string, T>();
+  for (const [path, value] of Object.entries(modules)) {
+    map.set(eleveFromPath(path), value);
+  }
+  return map;
+}
+
+const profilByEleve = buildEleveMap(oralProfilModules);
+const textesByEleve = buildEleveMap(oralStudentTextesModules);
+const entretienByEleve = buildEleveMap(oralStudentEntretienModules);
+
 export function getOralContent(): OralContent {
   const rawMeta = firstValue(oralMetaModule);
   const meta =
@@ -224,14 +253,6 @@ export function getOralContent(): OralContent {
       'oral/methode'
     )
   );
-  const textes = sortByOrder(
-    validateArray<OralText>(
-      firstValue(oralTextesModule) ?? [],
-      validateOralText,
-      () => formatFrenchErrors(validateOralText),
-      'oral/textes'
-    )
-  );
   const grammaireFiches = sortByOrder(
     validateArray<OralFiche>(
       firstValue(oralGrammaireFichesModule) ?? [],
@@ -246,22 +267,61 @@ export function getOralContent(): OralContent {
     () => formatFrenchErrors(validateOralQuiz),
     'oral/grammaire-quiz'
   );
-  const entretien = sortByOrder(
-    validateArray<EntretienQuestion>(
-      firstValue(oralEntretienModule) ?? [],
-      validateEntretienQuestion,
-      () => formatFrenchErrors(validateEntretienQuestion),
-      'oral/entretien'
+
+  return { meta, epreuve, methode, grammaireFiches, grammaireQuiz };
+}
+
+// --- Descriptif par élève -------------------------------------------------
+
+/** Liste des élèves (pour les boutons de l'accueil oral), triés. */
+export function listOralStudents(): OralStudent[] {
+  const students: OralStudent[] = [];
+  for (const [eleve, profil] of profilByEleve.entries()) {
+    if (validateOralStudent(profil)) {
+      students.push(profil);
+    } else {
+      const message = `oral/eleves/${eleve}/profil : profil invalide — ${formatFrenchErrors(validateOralStudent)}`;
+      if (isDev) throw new Error(message);
+      console.warn(message, profil);
+    }
+  }
+  return students.sort(
+    (a, b) => (a.order ?? 0) - (b.order ?? 0) || a.nom.localeCompare(b.nom)
+  );
+}
+
+export function oralStudentExists(eleveId: string): boolean {
+  return profilByEleve.has(eleveId);
+}
+
+export function getOralStudent(eleveId: string): OralStudent | null {
+  const profil = profilByEleve.get(eleveId);
+  if (!profil) return null;
+  return validateOralStudent(profil) ? profil : null;
+}
+
+export function getOralStudentTextes(eleveId: string): OralText[] {
+  return sortByOrder(
+    validateArray<OralText>(
+      textesByEleve.get(eleveId) ?? [],
+      validateOralText,
+      () => formatFrenchErrors(validateOralText),
+      `oral/eleves/${eleveId}/textes`
     )
   );
-
-  return { meta, epreuve, methode, textes, grammaireFiches, grammaireQuiz, entretien };
 }
 
-export function getOralTextes(): OralText[] {
-  return getOralContent().textes;
+export function getOralStudentEntretien(eleveId: string): EntretienQuestion[] {
+  return sortByOrder(
+    validateArray<EntretienQuestion>(
+      entretienByEleve.get(eleveId) ?? [],
+      validateEntretienQuestion,
+      () => formatFrenchErrors(validateEntretienQuestion),
+      `oral/eleves/${eleveId}/entretien`
+    )
+  );
 }
 
-export function getOralText(id: string): OralText | null {
-  return getOralTextes().find((t) => t.id === id) ?? null;
+export function getOralText(eleveId: string, id: string): OralText | null {
+  return getOralStudentTextes(eleveId).find((t) => t.id === id) ?? null;
 }

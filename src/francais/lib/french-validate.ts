@@ -9,6 +9,7 @@ import entretienSchema from '../../../schemas/francais/entretien-question.schema
 import oralFicheSchema from '../../../schemas/francais/oral-fiche.schema.json';
 import oralQuizSchema from '../../../schemas/francais/oral-quiz.schema.json';
 import oralMetaSchema from '../../../schemas/francais/oral-meta.schema.json';
+import oralStudentSchema from '../../../schemas/francais/oral-student.schema.json';
 import type {
   EntretienQuestion,
   Fiche,
@@ -17,6 +18,7 @@ import type {
   FrenchSubject,
   OralFiche,
   OralMeta,
+  OralStudent,
   OralText,
   QuizItem,
 } from './french-types';
@@ -43,6 +45,8 @@ export const validateOralQuiz: ValidateFunction<QuizItem> =
   ajv.compile<QuizItem>(oralQuizSchema);
 export const validateOralMeta: ValidateFunction<OralMeta> =
   ajv.compile<OralMeta>(oralMetaSchema);
+export const validateOralStudent: ValidateFunction<OralStudent> =
+  ajv.compile<OralStudent>(oralStudentSchema);
 
 export function formatFrenchErrors(validate: ValidateFunction): string {
   return (validate.errors ?? [])

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import {
   getExpressDecks,
-  getOralContent,
   listFrenchModules,
+  listOralStudents,
 } from '@/francais/lib/french-content-loader';
 import type { FrenchFamily } from '@/francais/lib/french-types';
 
@@ -18,7 +18,7 @@ export default function FrenchHomePage() {
   const modules = listFrenchModules();
   const expressDecks = getExpressDecks();
   const totalExpressCards = expressDecks.reduce((n, d) => n + d.cards.length, 0);
-  const oralTextesCount = getOralContent().textes.length;
+  const oralStudentsCount = listOralStudents().length;
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-8">
@@ -43,8 +43,8 @@ export default function FrenchHomePage() {
             Préparer l’oral
           </p>
           <p className="text-xs text-emerald-700 dark:text-emerald-300">
-            {oralTextesCount > 0
-              ? `${oralTextesCount} texte${oralTextesCount > 1 ? 's' : ''} du descriptif, méthode, grammaire et oral blanc minuté`
+            {oralStudentsCount > 0
+              ? `Descriptif par élève, méthode, grammaire, entretien et oral blanc minuté`
               : `Explication linéaire, grammaire, entretien et oral blanc minuté`}
           </p>
         </div>
