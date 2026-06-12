@@ -17,6 +17,19 @@ type FrenchAppState = {
   setFicheViewMode: (slug: FrenchModuleSlug, mode: FicheViewMode) => void;
   hiddenFiches: Partial<Record<FrenchModuleSlug, string[]>>;
   toggleFicheHidden: (slug: FrenchModuleSlug, ficheId: string) => void;
+  // --- Oral ---
+  /** Durée par défaut (minutes) de la préparation dans le simulateur d'oral. */
+  simulateurDefaultMinutes: number;
+  setSimulateurDefaultMinutes: (minutes: number) => void;
+  /**
+   * Textes collés pour les œuvres hors domaine public, par clé composite
+   * `${eleve}:${textId}` (isolation entre élèves sur un même navigateur).
+   */
+  pastedOralTexts: Record<string, string>;
+  setPastedOralText: (key: string, value: string) => void;
+  /** Dernier élève ouvert dans l'espace oral (mémorisation de confort). */
+  lastOralStudent: string | null;
+  setLastOralStudent: (eleve: string) => void;
 };
 
 export const useFrenchAppStore = create<FrenchAppState>()(
@@ -52,17 +65,54 @@ export const useFrenchAppStore = create<FrenchAppState>()(
           return { hiddenFiches: { ...s.hiddenFiches, [slug]: next } };
         });
       },
+      simulateurDefaultMinutes: 30,
+      setSimulateurDefaultMinutes: (minutes) => {
+        set({ simulateurDefaultMinutes: minutes });
+      },
+      pastedOralTexts: {},
+      setPastedOralText: (key, value) => {
+        set((s) => ({
+          pastedOralTexts: { ...s.pastedOralTexts, [key]: value },
+        }));
+      },
+      lastOralStudent: null,
+      setLastOralStudent: (eleve) => {
+        set({ lastOralStudent: eleve });
+      },
     }),
     {
       name: 'bfr-2026-app',
-      version: 1,
+      version: 3,
       migrate: (stored: unknown, fromVersion: number) => {
         const s = stored as Partial<FrenchAppState>;
+        let next = { ...s };
         if (fromVersion < 1) {
           // v0 → v1 : quizFilterSucceeded default changed to true
-          return { ...s, quizFilterSucceeded: true };
+          next = { ...next, quizFilterSucceeded: true };
         }
-        return s;
+        if (fromVersion < 2) {
+          // v1 → v2 : ajout des réglages oral (simulateur + textes collés)
+          next = {
+            ...next,
+            simulateurDefaultMinutes: next.simulateurDefaultMinutes ?? 30,
+            pastedOralTexts: next.pastedOralTexts ?? {},
+          };
+        }
+        if (fromVersion < 3) {
+          // v2 → v3 : oral multi-élèves. Les textes collés existants
+          // appartiennent à l'élève J → on préfixe leur clé par `j:`.
+          const old = next.pastedOralTexts ?? {};
+          const remapped: Record<string, string> = {};
+          for (const [k, v] of Object.entries(old)) {
+            remapped[k.includes(':') ? k : `j:${k}`] = v;
+          }
+          next = {
+            ...next,
+            pastedOralTexts: remapped,
+            lastOralStudent: next.lastOralStudent ?? null,
+          };
+        }
+        return next;
       },
     }
   )

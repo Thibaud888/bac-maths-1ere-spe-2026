@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "oral-fiche.schema.json",
+  "title": "Fiche de révision (Oral EAF)",
+  "description": "Carte de référence pour l'oral de l'EAF (présentation de l'épreuve, méthode, grammaire). Identique à la fiche écrit mais sans rattachement à un module d'objet d'étude. Markdown enrichi, sans LaTeX.",
+  "type": "object",
+  "required": ["id", "category", "title", "statement", "level"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^fi-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : fi-<slug>. Ex : fi-oral-deroule-epreuve"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["methode", "figure", "mouvement", "registre", "genre", "notion"],
+      "description": "Nature pédagogique de la fiche."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Contenu de la fiche (Markdown enrichi : gras, italique, listes, citations en blockquote, tableaux)."
+    },
+    "example": {
+      "type": "string",
+      "description": "Exemple illustratif. Markdown."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "level": {
+      "type": "string",
+      "enum": ["essentiel", "a-connaitre", "approfondissement"]
+    },
+    "simplified": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["core"],
+      "properties": {
+        "core": { "type": "string", "maxLength": 280 },
+        "mnemonic": { "type": "string", "maxLength": 140 },
+        "keyword": { "type": "string", "maxLength": 32 },
+        "accent": {
+          "type": "string",
+          "enum": ["red", "blue", "amber", "emerald", "violet", "slate"]
+        }
+      }
+    }
+  }
+}

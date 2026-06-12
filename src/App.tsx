@@ -18,6 +18,15 @@ import QuizPage from '@/francais/routes/module/QuizPage';
 import ExercicesPage from '@/francais/routes/module/ExercicesPage';
 import SujetsPage from '@/francais/routes/module/SujetsPage';
 import ExpressPage from '@/francais/routes/ExpressPage';
+import OralStudentLayout from '@/francais/components/oral/OralStudentLayout';
+import OralSelectPage from '@/francais/routes/oral/OralSelectPage';
+import OralHomePage from '@/francais/routes/oral/OralHomePage';
+import OralTextesPage from '@/francais/routes/oral/OralTextesPage';
+import OralTextDetailPage from '@/francais/routes/oral/OralTextDetailPage';
+import OralMethodePage from '@/francais/routes/oral/OralMethodePage';
+import OralGrammairePage from '@/francais/routes/oral/OralGrammairePage';
+import OralEntretienPage from '@/francais/routes/oral/OralEntretienPage';
+import OralSimulateurPage from '@/francais/routes/oral/OralSimulateurPage';
 
 export default function App() {
   const theme = useAppStore((s) => s.theme);
@@ -49,6 +58,18 @@ export default function App() {
       <Route path="/francais" element={<FrenchLayout />}>
         <Route index element={<FrenchHomePage />} />
         <Route path="express" element={<ExpressPage />} />
+        <Route path="oral">
+          <Route index element={<OralSelectPage />} />
+          <Route path=":eleve" element={<OralStudentLayout />}>
+            <Route index element={<OralHomePage />} />
+            <Route path="textes" element={<OralTextesPage />} />
+            <Route path="textes/:id" element={<OralTextDetailPage />} />
+            <Route path="methode" element={<OralMethodePage />} />
+            <Route path="grammaire" element={<OralGrammairePage />} />
+            <Route path="entretien" element={<OralEntretienPage />} />
+            <Route path="simulateur" element={<OralSimulateurPage />} />
+          </Route>
+        </Route>
         <Route path="module/:slug" element={<FrenchModuleLayout />}>
           <Route index element={<Navigate to="fiches" replace />} />
           <Route path="fiches" element={<FichesPage />} />

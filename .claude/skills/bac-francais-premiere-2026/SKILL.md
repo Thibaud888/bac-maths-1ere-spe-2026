@@ -3,8 +3,9 @@
 ## 1. Cadre réglementaire de l'EAF (session 2026)
 
 **Épreuve Anticipée de Français (EAF)** — session 2026  
-Épreuve écrite : **4 heures**, coefficient **5** (L/ES/S)  
-Épreuve orale : coefficient **10** — **HORS PÉRIMÈTRE v1** (exclue de cette application)
+Épreuve écrite : **4 heures**, coefficient **5**  
+Épreuve orale : **20 minutes** (après **30 minutes** de préparation), coefficient **5**  
+*(Total EAF = écrit 5 + oral 5 = 10. Les deux épreuves sont dans le périmètre de l'application.)*
 
 ### Épreuve écrite (périmètre de cette application)
 
@@ -33,7 +34,7 @@ Critères d'évaluation : pertinence des arguments, maîtrise de l'œuvre, cultu
 | **Le roman et le récit du XIXe au XXIe siècle** | Roman réaliste/naturaliste, roman psychologique, récit contemporain — narratologie, points de vue, temps, incipit/excipit |
 | **Le théâtre du XVIIe au XXIe siècle** | Comédie, tragédie, drame romantique, théâtre contemporain — structure dramatique, tirade, monologue, didascalies, registres (tragique, comique, pathétique) |
 
-**Hors périmètre v1** : l'oral (explication linéaire, question de grammaire, entretien) est exclu de cette application.
+L'**oral** s'appuie sur les mêmes objets d'étude : l'examinateur interroge sur un texte du descriptif (explication linéaire) et le candidat présente une œuvre lors de l'entretien.
 
 ---
 
@@ -47,6 +48,31 @@ Les œuvres intégrales effectivement étudiées cette année, avec leur parcour
 | Littérature d'idées | `litterature-idees` | **Françoise de Graffigny**, *Lettres d'une Péruvienne* (1747) | « Un nouvel univers s'est offert à mes yeux » | ✅ Oui (Graffigny † 1758) |
 | Roman | `roman` | **Abbé Prévost**, *Manon Lescaut* (1731) | « Personnages en marge, plaisirs du romanesque » | ✅ Oui (Prévost † 1763) |
 | Théâtre | `theatre` | **Nathalie Sarraute**, *Pour un oui ou pour un non* (1981) | « Théâtre et dispute » | ⛔ **NON — sous droits** (Sarraute † 1999) |
+
+Intitulés exacts des objets d'étude (CNED) : poésie **du XIXe au XXIe s.** · roman et récit **du Moyen Âge au XXIe s.** · théâtre **du XVIIe au XXIe s.** · littérature d'idées **du XVIe au XVIIIe s.**
+
+### Descriptif — 16 lectures linéaires (support de l'oral)
+
+Textes effectivement étudiés (récapitulatif CNED 2026) **de l'élève J**. Fondent les fiches d'analyse linéaire de son espace oral (`content/francais/oral/eleves/j/textes.json`, ids `ot-`). Chaque élève a son propre descriptif sous `oral/eleves/<id>/`.
+
+| # | Objet d'étude | Texte | Domaine public |
+|---|---|---|---|
+| 1-2 | Poésie | Rimbaud, *Cahiers de Douai* : « Vénus anadyomène », « Le Dormeur du val » | ✅ |
+| 3 | Poésie (parcours) | A. Bertrand, *Gaspard de la nuit*, « Un Rêve » (1842) | ✅ |
+| 4 | Poésie (parcours) | R. Queneau, *L'Instant fatal*, « Si tu t'imagines » (1946) | ⛔ † 1976 |
+| 5-6 | Roman | Prévost, *Manon Lescaut* : « La rencontre », « Les plaintes d'un amant » | ✅ |
+| 7 | Roman (parcours) | Stendhal, *Le Rouge et le Noir*, I, 4 (1830) | ✅ |
+| 8 | Roman (parcours) | Flaubert, *Madame Bovary*, II, 12 (1857) | ✅ |
+| 9-10 | Théâtre | Sarraute, *Pour un oui ou pour un non* (2 extraits) | ⛔ † 1999 |
+| 11 | Théâtre (parcours) | Corneille, *Cinna*, I, 1 (monologue d'Émilie, 1643) | ✅ |
+| 12 | Théâtre (parcours) | Molière, *Le Misanthrope*, I, 1 (1666) | ✅ |
+| 13-14 | Litt. d'idées | Graffigny, *Lettres d'une Péruvienne*, lettres XVI & XX | ✅ |
+| 15 | Litt. d'idées (parcours) | Bougainville, *Voyage autour du monde*, « Les Tahitiens » (1771) | ✅ |
+| 16 | Litt. d'idées (parcours) | Montesquieu, *Lettres persanes*, « La mode française » (lettre 99, 1721) | ✅ |
+
+**Lectures cursives au choix** (l'élève en présente une à l'entretien — choix non encore arrêté) : Poésie → Apollinaire *Calligrammes* / Ponge *Le Parti pris des choses* / Prévert *Paroles* ; Roman → Gaudé *Salina* / Colombani *La Tresse* / Faye *Petit pays* ; Théâtre → *Le Prénom* / Beaumarchais *Le Mariage de Figaro* / Molière *Le Tartuffe* ; Litt. d'idées → Djavann *Comment peut-on être français ?* / Nothomb *Stupeur et tremblements* / Garde *Ce qu'il advint du sauvage blanc*.
+
+> ⚠️ Oral : **Queneau et Sarraute sont sous droits** → fiches `oral-text` avec `domainePublic:false`, sans `text` ni citation verbatim (paraphrase ; l'élève colle son extrait). « Vénus anadyomène » (domaine public) : éviter toute citation du dernier tercet (contenu cru).
 
 ### Règles de citation par œuvre
 
@@ -164,6 +190,50 @@ Les œuvres intégrales effectivement étudiées cette année, avec leur parcour
 
 ---
 
+## 6bis. L'oral de l'EAF (session 2026)
+
+### Format de l'épreuve
+
+- **Préparation** : 30 minutes (sur le texte choisi par l'examinateur). **Épreuve** : 20 minutes. **Coefficient** : 5.
+- Le candidat se présente avec son **descriptif** (récapitulatif des **lectures linéaires** étudiées dans l'année, en général **16 à 24 textes** répartis sur les 4 objets d'étude) et les **œuvres** (textes annotés autorisés selon les consignes).
+- L'examinateur **choisit un texte du descriptif** et indique le passage à expliquer + la **question de grammaire**.
+
+**Barème (sur 20)**
+
+| Partie | Épreuve | Points |
+|---|---|---|
+| 1ʳᵉ partie (12 pts) | Lecture à voix haute du texte | 2 |
+| | Explication linéaire du passage | 8 |
+| | Question de grammaire | 2 |
+| 2ᵈᵉ partie (8 pts) | Présentation d'une œuvre choisie par le candidat + entretien | 8 |
+
+### Méthode de l'explication linéaire
+
+L'explication **suit l'ordre du texte** (≠ commentaire composé, qui est thématique).
+
+1. **Introduction** : accroche, situation de l'extrait (auteur, œuvre, place du passage), **projet de lecture** (problématique), annonce des **mouvements** du texte.
+2. **Explication linéaire** : pour chaque **mouvement** (avec ses **bornes** : vers/lignes), dégager l'idée directrice puis analyser au fil du texte (**procédé → effet → citation**).
+3. **Conclusion** : bilan répondant au projet de lecture + **ouverture**.
+
+**Lecture à voix haute (2 pts)** : respect de la ponctuation et du rythme (vers/prose), articulation, intonation expressive, sans buter.
+
+### Question de grammaire (2 pts) — programme de 1ʳᵉ
+
+Points au programme (analyse sur une phrase du texte) :
+
+- **Les propositions subordonnées** : relative, conjonctive **complétive**, **circonstancielles** (temps, cause, conséquence, but, condition, concession…).
+- **L'interrogation** : interrogation totale/partielle, directe/indirecte, marques (inversion, *est-ce que*, mots interrogatifs).
+- **La négation** : totale/partielle, négation lexicale vs syntaxique, portée.
+
+Méthode de réponse : **identifier** (nature/type) → **justifier** (marques formelles) → **analyser** (fonction, sens, effet dans le texte).
+
+### Seconde partie : présentation d'une œuvre + entretien (8 pts)
+
+- Le candidat **choisit une œuvre** (parmi celles étudiées / lues dans l'année) et explique **son choix**, présente l'œuvre (enjeux, personnages, structure) et exprime un **jugement personnel argumenté**.
+- L'**entretien** est un échange avec l'examinateur : compréhension, interprétation, goût personnel, culture, ouvertures. Attendus : prendre position, justifier par des exemples précis, dialoguer.
+
+---
+
 ## 7. Règles de citation — sécurité factuelle
 
 **Règles absolues** :
@@ -178,10 +248,10 @@ Les œuvres intégrales effectivement étudiées cette année, avec leur parcour
 
 ## 8. Hors-périmètre v1
 
-- Oral EAF (explication linéaire, question de grammaire, entretien) : **exclu**
-- Œuvres sous droits (post-1926) : **exclu** sauf texte fourni par l'utilisateur en session
-- Questions de grammaire (analyse syntaxique, proposition subordonnée, etc.) : **exclu** (hors-programme écrit)
+- Reproduction d'**œuvres sous droits** (post-1926, ex. Sarraute) : **exclu** sauf texte fourni par l'utilisateur en session (pour l'oral, l'élève colle son extrait, stocké en local — voir `domainePublic: false`).
 - Littérature comparée internationale hors programme : **exclu**
+
+*(L'oral EAF — explication linéaire, question de grammaire, entretien — est désormais **dans le périmètre** : voir § 6bis.)*
 
 ---
 
@@ -195,6 +265,37 @@ Préfixes d'ID **distincts des maths** :
 | Quiz | `qz-` | `qz-mouvement-romantisme-dates` |
 | Exercice | `ex-<module>-<num>` | `ex-commentaire-001` |
 | Sujet type bac | `su-<module>-<num>` | `su-dissertation-001` |
+| Fiche d'analyse linéaire (oral) | `ot-` | `ot-rimbaud-dormeur-du-val` |
+| Mouvement (dans une fiche oral) | `otm-` | `otm-quatrains` |
+| Question d'entretien (oral) | `eq-` | `eq-manon-choix-oeuvre` |
+| Quiz de grammaire (oral) | `oq-` | `oq-subordonnee-relative-1` |
+| Auto-évaluation simulateur (progress) | `os-` | `os-<ot-id>::run1` |
+
+### Contenu oral — `content/francais/oral/`
+
+Espace spécial (comme `express/`), **jamais** des noms de fichiers de module (`meta/fiches/quiz/exercices/sujets.json`) pour éviter la collision de glob :
+
+**Contenu COMMUN à tous les élèves** (à la racine de `oral/`) :
+
+| Fichier | Schéma | Contenu |
+|---|---|---|
+| `oral-meta.json` | `oral-meta.schema.json` | titre/description de la section |
+| `epreuve.json` | `oral-fiche.schema.json` | fiches sur le format / barème / déroulé |
+| `methode.json` | `oral-fiche.schema.json` | explication linéaire, lecture à voix haute, entretien |
+| `grammaire-fiches.json` | `oral-fiche.schema.json` | subordonnées, interrogation, négation |
+| `grammaire-quiz.json` | `oral-quiz.schema.json` | entraînement grammaire (ids `oq-`) |
+
+**Descriptif PROPRE à chaque élève** sous `oral/eleves/<id>/` (un dossier = un élève). L'app est multi-élèves : `/francais/oral` affiche un bouton par élève, puis `/francais/oral/<id>/*` ouvre son espace.
+
+| Fichier | Schéma | Contenu |
+|---|---|---|
+| `profil.json` | `oral-student.schema.json` | identité + contexte (`id` = slug d'URL, `nom`, `oeuvres`) |
+| `textes.json` | `oral-text.schema.json` | analyses linéaires du descriptif (ids `ot-`) |
+| `entretien.json` | `entretien-question.schema.json` | banque de questions d'entretien (ids `eq-`) |
+
+**Ajouter un élève** = créer `oral/eleves/<id>/` avec ces 3 fichiers (textes/entretien via le workflow 2 passes ; `profil.json` = contexte non pédagogique, validé Ajv seulement). Le bouton et l'URL apparaissent automatiquement.
+
+**Copyright** : pour une œuvre sous droits (Sarraute, Queneau), la fiche `oral-text` porte `domainePublic: false` ⇒ le champ `text` est **interdit** (le schéma le refuse) et les `citation` des analyses doivent être en **paraphrase marquée**. L'élève colle son extrait dans l'app (stocké en `bfr-2026-*`, par clé `<id>:<ot-…>`).
 
 Modules v1 (génériques, sans œuvre spécifique) :
 

@@ -52,6 +52,21 @@ export default function FrenchSidebar() {
           <span>Révision express</span>
         </NavLink>
 
+        <NavLink
+          to="/francais/oral"
+          className={({ isActive }) =>
+            [
+              'mt-2 flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold transition-colors',
+              isActive
+                ? 'bg-emerald-600 text-white'
+                : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-300 dark:hover:bg-emerald-900/40',
+            ].join(' ')
+          }
+        >
+          <span>🎙️</span>
+          <span>Oral de français</span>
+        </NavLink>
+
         {familyOrder.map((family) => {
           const inFamily = modules.filter((m) => m.family === family);
           if (inFamily.length === 0) return null;

@@ -190,7 +190,7 @@ Chaque phase se termine par un commit `git` propre et un build qui passe.
 
 ### 13.1 Mission
 
-Préparer l'**Épreuve Anticipée de Français écrite** (4h, coeff 5) dans le **même dépôt** que le volet maths. L'oral EAF est **hors périmètre v1**.
+Préparer l'**Épreuve Anticipée de Français** dans le **même dépôt** que le volet maths : l'**écrit** (4h, coeff 5 — commentaire ou dissertation) **et l'oral** (20 min après 30 min de préparation, coeff 5). Voir SKILL.md § 6bis pour le format de l'oral.
 
 Principe directeur : **strictement additif**. Aucune modification des fichiers maths. Le français vit sous `/francais/*`.
 
@@ -208,11 +208,19 @@ content/francais/<module>/
   fiches.json      # Fiche[]
   quiz.json        # QuizItem[]
   exercices.json   # FrenchExercise[]
+content/francais/oral/          # espace spécial Oral (comme express/)
+  oral-meta.json                # OralMeta (jamais meta.json → évite la collision de glob)
+  epreuve.json methode.json grammaire-fiches.json   # OralFiche[]  — COMMUN à tous les élèves
+  grammaire-quiz.json           # QuizItem[] (ids oq-)             — COMMUN
+  eleves/<id>/                  # descriptif PROPRE à chaque élève (un dossier = un élève)
+    profil.json                 # OralStudent (id = slug d'URL, nom, œuvres, contexte)
+    textes.json                 # OralText[]  (analyses linéaires, ids ot-)
+    entretien.json              # EntretienQuestion[] (ids eq-)
 
 schemas/francais/
-  fiche.schema.json
-  quiz.schema.json
-  french-exercise.schema.json
+  fiche.schema.json  quiz.schema.json  french-exercise.schema.json  french-subject.schema.json
+  oral-text.schema.json  entretien-question.schema.json
+  oral-fiche.schema.json  oral-quiz.schema.json  oral-meta.schema.json  oral-student.schema.json
 
 src/francais/
   components/layout/  (FrenchLayout, FrenchSidebar, FrenchHeader, FrenchTabs, FrenchModuleLayout)
@@ -220,12 +228,17 @@ src/francais/
   components/fiches/  FicheCard.tsx
   components/quiz/    QuizRunner.tsx   (types qcm | multi | ordering)
   components/exercices/ FrenchExerciseRunner.tsx
+  components/oral/    (OralStudentLayout, OralTabs, OralTextCard, OralTextDetail, OralTextBody,
+                       EntretienQuestionList, RevealPanel, AdjustableTimer, OralSimulator)
   lib/  (french-content-loader.ts, french-validate.ts, french-types.ts)
   stores/  (french-progress-store.ts, french-app-store.ts)
-  routes/  (FrenchHomePage.tsx, module/{FichesPage, QuizPage, ExercicesPage}.tsx)
+  routes/  (FrenchHomePage.tsx, module/{FichesPage, QuizPage, ExercicesPage, SujetsPage},
+            oral/{OralSelectPage, OralHomePage, OralTextesPage, OralTextDetailPage, OralMethodePage,
+                  OralGrammairePage, OralEntretienPage, OralSimulateurPage})
 ```
 
-Route : `/francais/*` (ajout additif dans `src/App.tsx`)
+Route : `/francais/*` (ajout additif dans `src/App.tsx`), dont l'oral **par élève** :
+`/francais/oral` (sélecteur d'élève) puis `/francais/oral/:eleve/*` (descriptif de l'élève).
 
 ### 13.4 LocalStorage — isolation garantie
 
@@ -241,8 +254,14 @@ Route : `/francais/*` (ajout additif dans `src/App.tsx`)
 | Fiche | `fi-` | `fi-figure-metaphore` |
 | Quiz | `qz-` | `qz-mouvement-romantisme-dates` |
 | Exercice | `ex-<module>-<num>` | `ex-commentaire-001` |
+| Analyse linéaire (oral) | `ot-` | `ot-rimbaud-dormeur-du-val` |
+| Question d'entretien (oral) | `eq-` | `eq-manon-choix-oeuvre` |
+| Quiz grammaire (oral) | `oq-` | `oq-subordonnee-relative-1` |
+| Élève (oral) | `<id>` slug du dossier | `j`, `marie-l` (= `profil.id` + `eleves/<id>/`) |
 
 Modules v1 (génériques) : `methode-commentaire`, `methode-dissertation`, `figures-de-style`, `mouvements-litteraires`, `registres-genres`
+
+Espace **oral** (`content/francais/oral/`) : voir SKILL.md § 9. Le contenu commun (épreuve, méthode, grammaire) est partagé ; le **descriptif est propre à chaque élève** sous `eleves/<id>/` (textes + entretien + `profil.json`). Ajouter un élève = déposer un dossier `eleves/<id>/` (textes via le workflow 2 passes ; **jamais** de texte sous copyright → `domainePublic:false` + collage local) ; le bouton et l'URL `/francais/oral/<id>` apparaissent automatiquement. Le contenu pédagogique oral suit le même workflow 2 passes (`french-content-author` → `french-reviewer`) ; le `profil.json` (contexte non pédagogique) ne requiert que la validation Ajv.
 
 ### 13.6 Workflow obligatoire (2 passes)
 

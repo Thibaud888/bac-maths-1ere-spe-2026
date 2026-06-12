@@ -53,6 +53,20 @@ export type Fiche = {
   simplified?: FicheSimplified;
 };
 
+/**
+ * Sous-ensemble structurel des champs réellement affichés par `FicheCard`.
+ * Permet de réutiliser la carte aussi bien pour les fiches écrit (`Fiche`)
+ * que pour les fiches oral (`OralFiche`), qui n'ont pas de `module`.
+ */
+export type FicheLike = {
+  id: string;
+  title: string;
+  statement: string;
+  example?: string;
+  tags?: string[];
+  level: FrenchLevel;
+};
+
 export type QuizType = 'qcm' | 'multi' | 'ordering';
 
 export type QuizCategory =
@@ -61,7 +75,8 @@ export type QuizCategory =
   | 'registres'
   | 'genres'
   | 'methode'
-  | 'culture';
+  | 'culture'
+  | 'grammaire';
 
 export type QuizItem = {
   id: string;
@@ -157,4 +172,137 @@ export type FlashcardDeck = {
   order: number;
   estimatedMinutes: number;
   cards: Flashcard[];
+};
+
+// --- Oral EAF -------------------------------------------------------------
+
+/** Fiche oral (épreuve, méthode, grammaire) : comme `Fiche`, sans `module`. */
+export type OralFiche = {
+  id: string;
+  category: FicheCategory;
+  title: string;
+  statement: string;
+  example?: string;
+  tags?: string[];
+  order?: number;
+  level: FrenchLevel;
+  simplified?: FicheSimplified;
+};
+
+export type GrammairePoint =
+  | 'subordonnee-relative'
+  | 'subordonnee-completive'
+  | 'subordonnee-circonstancielle'
+  | 'interrogation'
+  | 'negation';
+
+export type OralAnalyse = {
+  citation?: string;
+  procede: string;
+  effet: string;
+};
+
+export type OralMouvement = {
+  id: string;
+  titre: string;
+  bornes: string;
+  idee: string;
+  analyses: OralAnalyse[];
+};
+
+export type OralProjetLecture = {
+  accroche?: string;
+  situation: string;
+  problematique: string;
+  annonceMouvements: string;
+};
+
+export type OralQuestionGrammaire = {
+  point: GrammairePoint;
+  enonce: string;
+  corrige: string;
+};
+
+export type OralText = {
+  id: string;
+  oeuvre: string;
+  auteur: string;
+  titre: string;
+  parcours?: string;
+  dateOeuvre?: string;
+  domainePublic: boolean;
+  textSource?: string;
+  text?: string;
+  lectureExpressive?: { conseils: string };
+  projetLecture: OralProjetLecture;
+  mouvements: OralMouvement[];
+  conclusion: { bilan: string; ouverture: string };
+  questionGrammaire: OralQuestionGrammaire;
+  level?: FrenchLevel;
+  accent?: FrenchAccent;
+  order?: number;
+  tags?: string[];
+};
+
+export type EntretienCategory =
+  | 'choix-oeuvre'
+  | 'comprehension'
+  | 'interpretation'
+  | 'gout-personnel'
+  | 'culture'
+  | 'ouverture';
+
+export type EntretienQuestion = {
+  id: string;
+  oeuvre: string;
+  auteur?: string;
+  question: string;
+  category: EntretienCategory;
+  pistes?: string[];
+  difficulty?: 1 | 2 | 3;
+  order?: number;
+  tags?: string[];
+};
+
+export type OralMeta = {
+  title: string;
+  description?: string;
+  epreuveResume?: string;
+  accent?: FrenchAccent;
+};
+
+/** Une œuvre intégrale au programme d'un élève (affichage + repère entretien). */
+export type OralStudentOeuvre = {
+  oeuvre: string;
+  auteur?: string;
+  parcours?: string;
+};
+
+/**
+ * Profil d'un élève : identité + contexte. Son descriptif oral (textes et
+ * entretien) vit sous `content/francais/oral/eleves/<id>/` et n'est partagé
+ * avec aucun autre élève. Le reste de l'oral (épreuve, méthode, grammaire) est
+ * commun à tous.
+ */
+export type OralStudent = {
+  id: string;
+  nom: string;
+  parcours?: string;
+  contexte?: string;
+  oeuvres?: OralStudentOeuvre[];
+  accent?: FrenchAccent;
+  order?: number;
+};
+
+/**
+ * Contenu oral **commun** à tous les élèves (épreuve, méthode, grammaire).
+ * Les `textes` et `entretien`, propres à chaque élève, sont chargés séparément
+ * via `getOralStudentTextes` / `getOralStudentEntretien`.
+ */
+export type OralContent = {
+  meta: OralMeta | null;
+  epreuve: OralFiche[];
+  methode: OralFiche[];
+  grammaireFiches: OralFiche[];
+  grammaireQuiz: QuizItem[];
 };

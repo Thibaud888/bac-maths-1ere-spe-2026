@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "oral-text.schema.json",
+  "title": "Fiche d'analyse linéaire (Oral EAF)",
+  "description": "Fiche de révision d'un texte du descriptif pour l'explication linéaire à l'oral : projet de lecture, mouvements (bornes + procédés/effets/citations), conclusion, question de grammaire associée. Markdown enrichi, sans LaTeX.",
+  "type": "object",
+  "required": [
+    "id",
+    "oeuvre",
+    "auteur",
+    "titre",
+    "domainePublic",
+    "projetLecture",
+    "mouvements",
+    "conclusion",
+    "questionGrammaire"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^ot-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : ot-<slug>. Ex : ot-rimbaud-dormeur-du-val"
+    },
+    "oeuvre": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Œuvre intégrale dont le texte est extrait. Ex : « Cahiers de Douai »"
+    },
+    "auteur": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Auteur de l'œuvre."
+    },
+    "titre": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 140,
+      "description": "Titre du texte / de l'extrait étudié."
+    },
+    "parcours": {
+      "type": "string",
+      "description": "Parcours associé à l'œuvre."
+    },
+    "dateOeuvre": {
+      "type": "string",
+      "description": "Date / repère chronologique (chaîne d'affichage, sans calcul)."
+    },
+    "domainePublic": {
+      "type": "boolean",
+      "description": "true si l'œuvre est dans le domaine public (texte intégrable). false ⇒ le champ `text` est interdit (copyright) ; l'élève colle le texte au runtime."
+    },
+    "textSource": {
+      "type": "string",
+      "description": "Référence précise de l'extrait (vers, acte/scène, pages)."
+    },
+    "text": {
+      "type": "string",
+      "description": "Corps du texte intégré (sauts de ligne préservés pour les vers). INTERDIT lorsque domainePublic = false."
+    },
+    "lectureExpressive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conseils"],
+      "properties": {
+        "conseils": {
+          "type": "string",
+          "description": "Conseils pour la lecture à voix haute (2 pts) : rythme, ponctuation, intonation."
+        }
+      }
+    },
+    "projetLecture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["situation", "problematique", "annonceMouvements"],
+      "properties": {
+        "accroche": {
+          "type": "string",
+          "description": "Phrase d'accroche / amorce de l'introduction."
+        },
+        "situation": {
+          "type": "string",
+          "description": "Situation de l'extrait (présentation auteur, œuvre, place du passage)."
+        },
+        "problematique": {
+          "type": "string",
+          "description": "Problématique guidant l'explication linéaire."
+        },
+        "annonceMouvements": {
+          "type": "string",
+          "description": "Annonce des mouvements du texte."
+        }
+      }
+    },
+    "mouvements": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Mouvements du texte, dans l'ordre linéaire.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "titre", "bornes", "idee", "analyses"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^otm-[a-z0-9-]+$",
+            "description": "Identifiant du mouvement. Format : otm-<slug>."
+          },
+          "titre": {
+            "type": "string",
+            "description": "Titre du mouvement."
+          },
+          "bornes": {
+            "type": "string",
+            "description": "Bornes du mouvement. Ex : « v. 1-4 » ou « l. 1-8 »."
+          },
+          "idee": {
+            "type": "string",
+            "description": "Idée directrice du mouvement."
+          },
+          "analyses": {
+            "type": "array",
+            "minItems": 1,
+            "description": "Relevés analysés : procédé → effet → citation.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["procede", "effet"],
+              "properties": {
+                "citation": {
+                  "type": "string",
+                  "description": "Citation exacte du texte (domaine public). À omettre si l'œuvre n'est pas dans le domaine public."
+                },
+                "procede": {
+                  "type": "string",
+                  "description": "Procédé / fait de langue identifié."
+                },
+                "effet": {
+                  "type": "string",
+                  "description": "Interprétation / effet produit."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "conclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bilan", "ouverture"],
+      "properties": {
+        "bilan": {
+          "type": "string",
+          "description": "Bilan répondant à la problématique."
+        },
+        "ouverture": {
+          "type": "string",
+          "description": "Ouverture (autre texte, autre œuvre, prolongement)."
+        }
+      }
+    },
+    "questionGrammaire": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["point", "enonce", "corrige"],
+      "properties": {
+        "point": {
+          "type": "string",
+          "enum": [
+            "subordonnee-relative",
+            "subordonnee-completive",
+            "subordonnee-circonstancielle",
+            "interrogation",
+            "negation"
+          ],
+          "description": "Point du programme de grammaire de 1ʳᵉ concerné."
+        },
+        "enonce": {
+          "type": "string",
+          "description": "Énoncé de la question de grammaire (sur une phrase du texte)."
+        },
+        "corrige": {
+          "type": "string",
+          "description": "Corrigé attendu (identification + analyse)."
+        }
+      }
+    },
+    "level": {
+      "type": "string",
+      "enum": ["essentiel", "a-connaitre", "approfondissement"]
+    },
+    "accent": {
+      "type": "string",
+      "enum": ["red", "blue", "amber", "emerald", "violet", "slate"]
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "domainePublic": { "const": false } },
+        "required": ["domainePublic"]
+      },
+      "then": { "not": { "required": ["text"] } }
+    }
+  ]
+}

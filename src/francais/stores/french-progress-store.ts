@@ -1,7 +1,13 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type FrenchItemKind = 'quiz' | 'exercice' | 'sujet' | 'flashcard';
+export type FrenchItemKind =
+  | 'quiz'
+  | 'exercice'
+  | 'sujet'
+  | 'flashcard'
+  | 'oral-grammaire'
+  | 'oral-sim';
 
 export type FrenchItemProgress = {
   attempts: number;
@@ -31,6 +37,10 @@ const idPrefix = (kind: FrenchItemKind): string => {
       return 'su-';
     case 'flashcard':
       return 'fl-';
+    case 'oral-grammaire':
+      return 'oq-';
+    case 'oral-sim':
+      return 'os-';
   }
 };
 
