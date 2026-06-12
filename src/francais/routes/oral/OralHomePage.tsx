@@ -3,7 +3,6 @@ import {
   getOralContent,
   getOralStudent,
 } from '@/francais/lib/french-content-loader';
-import FicheCard from '@/francais/components/fiches/FicheCard';
 
 const baremeRows: ReadonlyArray<{ partie: string; item: string; points: string }> = [
   { partie: '1ʳᵉ partie (12 pts)', item: 'Lecture à voix haute', points: '2' },
@@ -12,11 +11,113 @@ const baremeRows: ReadonlyArray<{ partie: string; item: string; points: string }
   { partie: '2ᵈᵉ partie (8 pts)', item: 'Présentation d’une œuvre + entretien', points: '8' },
 ];
 
+type AccessCard = {
+  to: string;
+  icon: string;
+  title: string;
+  subtitle: string;
+  points?: string;
+};
+
+function CardLink({ base, card }: { base: string; card: AccessCard }) {
+  return (
+    <Link
+      to={`${base}/${card.to}`}
+      className="flex items-start gap-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm transition-colors hover:border-emerald-400 dark:hover:border-emerald-500"
+    >
+      <span className="text-2xl leading-none">{card.icon}</span>
+      <div className="min-w-0">
+        <p className="font-semibold text-slate-900 dark:text-slate-100">
+          {card.title}
+          {card.points && (
+            <span className="ml-2 rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+              {card.points}
+            </span>
+          )}
+        </p>
+        <p className="mt-0.5 text-sm text-slate-600 dark:text-slate-400">
+          {card.subtitle}
+        </p>
+      </div>
+    </Link>
+  );
+}
+
+function ZoneTitle({ label, badge }: { label: string; badge?: string }) {
+  return (
+    <div className="mt-8 flex items-center gap-2">
+      <h2 className="text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+        {label}
+      </h2>
+      {badge && (
+        <span className="rounded-full bg-emerald-600 px-2 py-0.5 text-xs font-bold text-white">
+          {badge}
+        </span>
+      )}
+    </div>
+  );
+}
+
 export default function OralHomePage() {
   const { eleve } = useParams<{ eleve: string }>();
-  const { meta, epreuve } = getOralContent();
+  const { meta } = getOralContent();
   const student = eleve ? getOralStudent(eleve) : null;
   const base = `/francais/oral/${eleve ?? ''}`;
+
+  const partie1: AccessCard[] = [
+    {
+      to: 'textes',
+      icon: '📖',
+      title: 'Lecture à voix haute',
+      subtitle: 'Bien lire le texte tiré au sort (conseils dans chaque texte).',
+      points: '2 pts',
+    },
+    {
+      to: 'textes',
+      icon: '📑',
+      title: 'Explication linéaire',
+      subtitle: 'Mes textes : ce qu’il faut dire sur chacun.',
+      points: '8 pts',
+    },
+    {
+      to: 'grammaire',
+      icon: '🔤',
+      title: 'Question de grammaire',
+      subtitle: 'Les points du programme + entraînement.',
+      points: '2 pts',
+    },
+  ];
+
+  const partie2: AccessCard[] = [
+    {
+      to: 'entretien',
+      icon: '💬',
+      title: 'Présentation d’une œuvre + entretien',
+      subtitle: 'Présenter une œuvre choisie, puis échanger avec l’examinateur.',
+      points: '8 pts',
+    },
+  ];
+
+  const outils: AccessCard[] = [
+    {
+      to: 'epreuve',
+      icon: 'ℹ️',
+      title: 'L’épreuve',
+      subtitle: 'Comprendre le déroulé et les attentes.',
+    },
+    {
+      to: 'methode',
+      icon: '🧭',
+      title: 'Méthode',
+      subtitle: 'Comment faire l’explication, la lecture, l’entretien.',
+    },
+    {
+      to: 'simulateur',
+      icon: '🎬',
+      title: 'Oral blanc',
+      subtitle: 'Tirage au sort + préparation minutée.',
+    },
+  ];
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-8">
@@ -50,7 +151,7 @@ export default function OralHomePage() {
         </div>
       )}
 
-      {/* Barème */}
+      {/* Barème — carte d'ensemble de l'épreuve */}
       <div className="mt-6 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
         <table className="min-w-full text-sm">
           <thead>
@@ -76,43 +177,29 @@ export default function OralHomePage() {
         </table>
       </div>
 
-      {/* Accès rapides */}
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <Link
-          to={`${base}/textes`}
-          className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm transition-colors hover:border-emerald-400"
-        >
-          <p className="font-semibold text-slate-900 dark:text-slate-100">📑 Mes textes</p>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-            Les analyses linéaires du descriptif.
-          </p>
-        </Link>
-        <Link
-          to={`${base}/simulateur`}
-          className="rounded-lg border border-emerald-300 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 p-4 shadow-sm transition-colors hover:border-emerald-400"
-        >
-          <p className="font-semibold text-emerald-800 dark:text-emerald-200">🎙️ Oral blanc</p>
-          <p className="mt-1 text-sm text-emerald-700 dark:text-emerald-300">
-            Tirage au sort + préparation minutée.
-          </p>
-        </Link>
+      {/* Partie 1 */}
+      <ZoneTitle label="Partie 1 — sur un texte" badge="12 pts" />
+      <div className="mt-3 grid gap-3">
+        {partie1.map((card, i) => (
+          <CardLink key={`p1-${i}`} base={base} card={card} />
+        ))}
       </div>
 
-      {/* Fiches sur l'épreuve */}
-      {epreuve.length > 0 ? (
-        <div className="mt-8 space-y-4">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-            Bien connaître l’épreuve
-          </h2>
-          {epreuve.map((fiche) => (
-            <FicheCard key={fiche.id} fiche={fiche} />
-          ))}
-        </div>
-      ) : (
-        <p className="mt-8 rounded border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/20 p-4 text-sm text-amber-800 dark:text-amber-300">
-          Les fiches de présentation de l’épreuve arrivent bientôt.
-        </p>
-      )}
+      {/* Partie 2 */}
+      <ZoneTitle label="Partie 2 — sur une œuvre" badge="8 pts" />
+      <div className="mt-3 grid gap-3">
+        {partie2.map((card, i) => (
+          <CardLink key={`p2-${i}`} base={base} card={card} />
+        ))}
+      </div>
+
+      {/* Comprendre & s'entraîner */}
+      <ZoneTitle label="Comprendre & s’entraîner" />
+      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+        {outils.map((card, i) => (
+          <CardLink key={`o-${i}`} base={base} card={card} />
+        ))}
+      </div>
     </div>
   );
 }

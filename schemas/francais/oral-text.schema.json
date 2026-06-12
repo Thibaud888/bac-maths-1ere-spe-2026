@@ -186,6 +186,50 @@
         }
       }
     },
+    "essentiel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enBref", "problematique", "mouvementsCles", "conclusion"],
+      "description": "Couche simplifiée (« ce que je dois dire ») pour un élève en difficulté : l'indispensable en mots simples. Markdown simple, sans LaTeX. La version détaillée (projetLecture/mouvements/conclusion) reste la source complète.",
+      "properties": {
+        "enBref": {
+          "type": "string",
+          "maxLength": 400,
+          "description": "2-3 phrases : de quoi parle le texte, en mots simples."
+        },
+        "problematique": {
+          "type": "string",
+          "maxLength": 240,
+          "description": "Problématique reformulée simplement (une question claire)."
+        },
+        "mouvementsCles": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "description": "Les 2-3 mouvements résumés en une phrase chacun.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["titre", "phrase"],
+            "properties": {
+              "titre": { "type": "string", "maxLength": 80 },
+              "phrase": { "type": "string", "maxLength": 240 }
+            }
+          }
+        },
+        "conclusion": {
+          "type": "string",
+          "maxLength": 240,
+          "description": "Conclusion en une phrase : la réponse à la problématique."
+        },
+        "aRetenir": {
+          "type": "array",
+          "maxItems": 5,
+          "items": { "type": "string", "maxLength": 120 },
+          "description": "Points-clés à retenir absolument (procédés / citations phares)."
+        }
+      }
+    },
     "level": {
       "type": "string",
       "enum": ["essentiel", "a-connaitre", "approfondissement"]

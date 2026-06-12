@@ -1,4 +1,5 @@
 import { LiteraryText } from '@/francais/components/text/LiteraryText';
+import { useFrenchAppStore } from '@/francais/stores/french-app-store';
 import type { EntretienQuestion } from '@/francais/lib/french-types';
 import RevealPanel from './RevealPanel';
 import { entretienCategoryLabel } from './oral-labels';
@@ -8,6 +9,15 @@ type EntretienQuestionListProps = {
 };
 
 export function EntretienQuestionCard({ question }: { question: EntretienQuestion }) {
+  const oralViewMode = useFrenchAppStore((s) => s.oralViewMode);
+
+  const hasEssentiel = !!question.reponseEssentielle;
+  const hasPistes = !!question.pistes && question.pistes.length > 0;
+  // En mode Essentiel on privilégie la réponse-modèle ; sinon les pistes.
+  // Repli croisé si le champ du mode actif est absent.
+  const showEssentiel = oralViewMode === 'essentiel' && hasEssentiel;
+  const showPistes = !showEssentiel && hasPistes;
+
   return (
     <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">
       <span className="inline-block rounded bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-700 dark:text-slate-300">
@@ -16,11 +26,18 @@ export function EntretienQuestionCard({ question }: { question: EntretienQuestio
       <p className="mt-2 font-medium text-slate-900 dark:text-slate-100">
         <LiteraryText text={question.question} />
       </p>
-      {question.pistes && question.pistes.length > 0 && (
+      {showEssentiel && (
+        <div className="mt-3">
+          <RevealPanel label="Ma réponse">
+            <LiteraryText text={question.reponseEssentielle!} />
+          </RevealPanel>
+        </div>
+      )}
+      {showPistes && (
         <div className="mt-3">
           <RevealPanel label="Pistes de réponse">
             <ul className="ml-4 list-disc space-y-1">
-              {question.pistes.map((p, i) => (
+              {question.pistes!.map((p, i) => (
                 <li key={i}>
                   <LiteraryText text={p} />
                 </li>

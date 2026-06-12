@@ -14,7 +14,7 @@ export default function FrenchHeader() {
   return (
     <header className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-6 py-3">
       <h1 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-        {moduleContent?.meta.title ?? 'Bac Français · Écrit · Première · 2026'}
+        {moduleContent?.meta.title ?? 'Bac Français · Première · 2026'}
       </h1>
       <button
         type="button"
