@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import {
   getOralContent,
   getOralStudent,
+  getOralStudentOeuvre,
 } from '@/francais/lib/french-content-loader';
 import FicheCard from '@/francais/components/fiches/FicheCard';
 
@@ -16,6 +17,7 @@ export default function OralHomePage() {
   const { eleve } = useParams<{ eleve: string }>();
   const { meta, epreuve } = getOralContent();
   const student = eleve ? getOralStudent(eleve) : null;
+  const oeuvreChoisie = eleve ? getOralStudentOeuvre(eleve) : null;
   const base = `/francais/oral/${eleve ?? ''}`;
 
   return (
@@ -75,6 +77,25 @@ export default function OralHomePage() {
           </tbody>
         </table>
       </div>
+
+      {/* Œuvre choisie (2ᵈᵉ partie) */}
+      {oeuvreChoisie && (
+        <Link
+          to={`${base}/oeuvre`}
+          className="mt-6 block rounded-xl border border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-900/20 p-4 shadow-sm transition-colors hover:border-amber-400"
+        >
+          <p className="text-xs font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+            🎯 Mon œuvre choisie · 2ᵈᵉ partie (8 pts)
+          </p>
+          <p className="mt-1 font-semibold text-slate-900 dark:text-slate-100">
+            <span className="italic">{oeuvreChoisie.oeuvre}</span>
+            {oeuvreChoisie.auteur ? ` — ${oeuvreChoisie.auteur}` : ''}
+          </p>
+          <p className="mt-1 text-sm text-amber-800 dark:text-amber-300">
+            Présentation en 3 temps + entretien à préparer.
+          </p>
+        </Link>
+      )}
 
       {/* Accès rapides */}
       <div className="mt-6 grid gap-3 sm:grid-cols-2">

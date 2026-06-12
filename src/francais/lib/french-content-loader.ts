@@ -10,6 +10,7 @@ import type {
   OralContent,
   OralFiche,
   OralMeta,
+  OralOeuvre,
   OralStudent,
   OralText,
   QuizItem,
@@ -23,6 +24,7 @@ import {
   validateFrenchSubject,
   validateOralFiche,
   validateOralMeta,
+  validateOralOeuvre,
   validateOralQuiz,
   validateOralStudent,
   validateOralText,
@@ -89,6 +91,10 @@ const oralStudentTextesModules = import.meta.glob<OralText[]>(
 );
 const oralStudentEntretienModules = import.meta.glob<EntretienQuestion[]>(
   '/content/francais/oral/eleves/*/entretien.json',
+  { eager: true, import: 'default' }
+);
+const oralStudentOeuvreModules = import.meta.glob<OralOeuvre>(
+  '/content/francais/oral/eleves/*/oeuvre.json',
   { eager: true, import: 'default' }
 );
 
@@ -231,6 +237,7 @@ function buildEleveMap<T>(modules: Record<string, T>): Map<string, T> {
 const profilByEleve = buildEleveMap(oralProfilModules);
 const textesByEleve = buildEleveMap(oralStudentTextesModules);
 const entretienByEleve = buildEleveMap(oralStudentEntretienModules);
+const oeuvreByEleve = buildEleveMap(oralStudentOeuvreModules);
 
 export function getOralContent(): OralContent {
   const rawMeta = firstValue(oralMetaModule);
@@ -324,4 +331,18 @@ export function getOralStudentEntretien(eleveId: string): EntretienQuestion[] {
 
 export function getOralText(eleveId: string, id: string): OralText | null {
   return getOralStudentTextes(eleveId).find((t) => t.id === id) ?? null;
+}
+
+/**
+ * Dossier de l'œuvre choisie par l'élève pour la 2ᵈᵉ partie de l'oral.
+ * Retourne `null` si l'élève n'a pas (encore) déposé son `oeuvre.json`.
+ */
+export function getOralStudentOeuvre(eleveId: string): OralOeuvre | null {
+  const raw = oeuvreByEleve.get(eleveId);
+  if (!raw) return null;
+  if (validateOralOeuvre(raw)) return raw;
+  const message = `oral/eleves/${eleveId}/oeuvre : œuvre invalide — ${formatFrenchErrors(validateOralOeuvre)}`;
+  if (isDev) throw new Error(message);
+  console.warn(message, raw);
+  return null;
 }

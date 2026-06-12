@@ -12,6 +12,7 @@ export default function OralTabs({ eleve }: OralTabsProps) {
     { to: `${base}/textes`, label: 'Textes', end: false },
     { to: `${base}/methode`, label: 'Méthode', end: false },
     { to: `${base}/grammaire`, label: 'Grammaire', end: false },
+    { to: `${base}/oeuvre`, label: 'Œuvre choisie', end: false },
     { to: `${base}/entretien`, label: 'Entretien', end: false },
     { to: `${base}/simulateur`, label: 'Simulateur', end: false },
   ];
