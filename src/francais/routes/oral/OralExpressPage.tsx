@@ -20,7 +20,7 @@ export default function OralExpressPage() {
       </h1>
       <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
         Réviser vite et bien : des flashcards qui tournent (tu t'auto-évalues) et
-        un quiz éclair de grammaire. Idéal pour la dernière ligne droite.
+        un quiz de grammaire. Idéal pour la dernière ligne droite.
       </p>
 
       <div className="mt-5 inline-flex rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-1">
@@ -36,7 +36,7 @@ export default function OralExpressPage() {
           onClick={() => setMode('quiz')}
           className={tabClass(mode === 'quiz')}
         >
-          ⚡ Quiz éclair
+          🔤 Quiz grammaire
         </button>
       </div>
 
@@ -207,7 +207,7 @@ function FlashcardsSection({ eleve }: { eleve: string }) {
   );
 }
 
-/* ------------------------------- Quiz éclair ------------------------------ */
+/* ------------------------------ Quiz grammaire ---------------------------- */
 
 function QuizEclairSection({ eleve }: { eleve: string }) {
   const deck = useMemo(() => buildGrammarQuizDeck(eleve), [eleve]);
@@ -218,7 +218,7 @@ function QuizEclairSection({ eleve }: { eleve: string }) {
   if (!deck) {
     return (
       <p className="rounded border border-amber-200 dark:border-amber-700 bg-amber-50 dark:bg-amber-900/20 p-4 text-sm text-amber-800 dark:text-amber-300">
-        Le quiz éclair arrive bientôt.
+        Le quiz de grammaire arrive bientôt.
       </p>
     );
   }

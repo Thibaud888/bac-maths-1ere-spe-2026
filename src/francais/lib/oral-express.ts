@@ -43,7 +43,7 @@ export function buildOralExpressDecks(eleve: string): FlashcardDeck[] {
 
 /**
  * Convertit le quiz de grammaire (commun) en deck de flashcards Q→R pour le
- * « Quiz éclair » : la réponse est révélée directement, et l'élève marque la
+ * « Quiz grammaire » : la réponse est révélée directement, et l'élève marque la
  * carte « Je savais » (validée → ne réapparaît plus) ou « À revoir ». Réutilise
  * le moteur de flashcards et la persistance `flashcardDecisions`.
  */
@@ -58,7 +58,7 @@ export function buildGrammarQuizDeck(eleve: string): FlashcardDeck | null {
   }));
   return makeDeck(
     'oral-grammaire-quiz',
-    'Quiz éclair de grammaire',
+    'Quiz grammaire',
     'Question → réponse : valide ce que tu sais, garde le reste à revoir.',
     'blue',
     1,

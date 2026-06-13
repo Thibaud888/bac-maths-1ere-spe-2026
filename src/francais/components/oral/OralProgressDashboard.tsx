@@ -244,7 +244,7 @@ export default function OralProgressDashboard({ eleve }: { eleve: string }) {
               {quizCards.length > 0 && (
                 <div>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Quiz éclair validé
+                    Quiz grammaire validé
                   </p>
                   <ProgressBar done={quizKnown} total={quizCards.length} />
                 </div>
