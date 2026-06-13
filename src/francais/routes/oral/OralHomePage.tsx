@@ -1,7 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import {
   getOralContent,
-  getOralStudent,
   getOralStudentOeuvre,
 } from '@/francais/lib/french-content-loader';
 import OralProgressDashboard from '@/francais/components/oral/OralProgressDashboard';
@@ -63,7 +62,6 @@ function ZoneTitle({ label, badge }: { label: string; badge?: string }) {
 export default function OralHomePage() {
   const { eleve } = useParams<{ eleve: string }>();
   const { meta } = getOralContent();
-  const student = eleve ? getOralStudent(eleve) : null;
   const oeuvreChoisie = eleve ? getOralStudentOeuvre(eleve) : null;
   const base = `/francais/oral/${eleve ?? ''}`;
 
@@ -137,28 +135,6 @@ export default function OralHomePage() {
         {meta?.description ??
           `Épreuve anticipée de français (EAF) — oral : 20 min, après 30 min de préparation, coefficient 5. L'examinateur choisit un texte parmi ceux de ton descriptif.`}
       </p>
-
-      {student && student.oeuvres && student.oeuvres.length > 0 && (
-        <div className="mt-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40 p-4">
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-            Œuvres au programme
-          </p>
-          <ul className="mt-2 space-y-1 text-sm text-slate-700 dark:text-slate-300">
-            {student.oeuvres.map((o) => (
-              <li key={o.oeuvre}>
-                <span className="italic">{o.oeuvre}</span>
-                {o.auteur ? ` — ${o.auteur}` : ''}
-                {o.parcours ? (
-                  <span className="text-xs text-slate-500 dark:text-slate-400">
-                    {' '}
-                    · {o.parcours}
-                  </span>
-                ) : null}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       {eleve && <OralProgressDashboard eleve={eleve} />}
 
