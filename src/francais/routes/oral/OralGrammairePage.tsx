@@ -1,10 +1,13 @@
 import { useMemo, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getOralContent } from '@/francais/lib/french-content-loader';
 import FicheCard from '@/francais/components/fiches/FicheCard';
 import QuizRunner from '@/francais/components/quiz/QuizRunner';
+import RevisedToggle from '@/francais/components/oral/RevisedToggle';
 import { shuffle } from '@/lib/randomizer';
 
 export default function OralGrammairePage() {
+  const { eleve } = useParams<{ eleve: string }>();
   const { grammaireFiches, grammaireQuiz } = useMemo(() => getOralContent(), []);
 
   const [sessionKey, setSessionKey] = useState(0);
@@ -39,7 +42,16 @@ export default function OralGrammairePage() {
       {grammaireFiches.length > 0 && (
         <div className="mt-6 space-y-4">
           {grammaireFiches.map((fiche) => (
-            <FicheCard key={fiche.id} fiche={fiche} />
+            <div key={fiche.id}>
+              <FicheCard fiche={fiche} />
+              <div className="mt-2">
+                <RevisedToggle
+                  checkKey={`${eleve ?? ''}::gram::${fiche.id}`}
+                  compactLabel
+                  label="Marquer ce point comme revu"
+                />
+              </div>
+            </div>
           ))}
         </div>
       )}

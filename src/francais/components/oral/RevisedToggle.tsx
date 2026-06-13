@@ -1,12 +1,14 @@
 import { useFrenchProgressStore } from '@/francais/stores/french-progress-store';
 
 type RevisedToggleProps = {
-  /** Clé namespacée du suivi, ex. `${eleve}::oeuvre`. */
+  /** Clé namespacée du suivi, ex. `${eleve}::oeuvre::pourquoi`. */
   checkKey: string;
   /** Libellé affiché à côté de la case (par défaut « Marquer comme révisé »). */
   label?: string;
   /** Variante compacte (pastille seule + libellé court) pour les listes. */
   compact?: boolean;
+  /** Variante petit bouton avec libellé court (pour les sous-blocs). */
+  compactLabel?: boolean;
 };
 
 /**
@@ -18,9 +20,29 @@ export default function RevisedToggle({
   checkKey,
   label = 'Marquer comme révisé',
   compact = false,
+  compactLabel = false,
 }: RevisedToggleProps) {
   const checked = useFrenchProgressStore((s) => !!s.oralChecks[checkKey]);
   const toggle = useFrenchProgressStore((s) => s.toggleOralCheck);
+
+  if (compactLabel) {
+    return (
+      <button
+        type="button"
+        aria-pressed={checked}
+        onClick={() => toggle(checkKey)}
+        className={[
+          'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors',
+          checked
+            ? 'border-emerald-500 bg-emerald-50 text-emerald-700 dark:border-emerald-500 dark:bg-emerald-900/30 dark:text-emerald-300'
+            : 'border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 hover:border-emerald-400',
+        ].join(' ')}
+      >
+        <span aria-hidden>{checked ? '✓' : '○'}</span>
+        {checked ? 'Revu ✓' : label}
+      </button>
+    );
+  }
 
   if (compact) {
     return (

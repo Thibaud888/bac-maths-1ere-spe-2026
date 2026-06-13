@@ -4,7 +4,6 @@ import {
   getOralStudentOeuvre,
 } from '@/francais/lib/french-content-loader';
 import EntretienQuestionList from '@/francais/components/oral/EntretienQuestionList';
-import RevisedToggle from '@/francais/components/oral/RevisedToggle';
 
 export default function OralEntretienPage() {
   const { eleve } = useParams<{ eleve: string }>();
@@ -23,6 +22,8 @@ export default function OralEntretienPage() {
         </strong>{' '}
         et sur tes lectures personnelles — jamais sur les textes du descriptif
         (ceux-ci relèvent de la 1ʳᵉ partie). Les questions sont classées par type.
+        Marque chaque question <strong>« À retravailler »</strong> ou{' '}
+        <strong>« Maîtrisée »</strong> pour suivre ta progression.
       </p>
 
       <div className="mt-6">
@@ -34,12 +35,6 @@ export default function OralEntretienPage() {
           </p>
         )}
       </div>
-
-      {entretien.length > 0 && (
-        <div className="mt-8 border-t border-slate-200 dark:border-slate-700 pt-4">
-          <RevisedToggle checkKey={`${eleve ?? ''}::entretien`} />
-        </div>
-      )}
     </div>
   );
 }

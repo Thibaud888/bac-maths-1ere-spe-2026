@@ -104,7 +104,7 @@ export default function OralHomePage() {
       to: 'express',
       icon: '⚡',
       title: 'Révision express',
-      subtitle: 'Flashcards qui tournent + quiz éclair pour réviser vite.',
+      subtitle: 'Flashcards qui tournent + quiz de grammaire pour réviser vite.',
     },
     {
       to: 'methode',

@@ -17,19 +17,28 @@ export type FrenchItemProgress = {
 
 export type FlashcardDecision = 'known' | 'skip';
 
+/** Statut de révision d'une question d'entretien (cochage depuis la fiche). */
+export type OralStatus = 'review' | 'done';
+
 type FrenchProgressState = {
   items: Record<string, FrenchItemProgress>;
   flashcardDecisions: Record<string, FlashcardDecision>;
   /**
    * Cases « révisé » cochées manuellement par l'élève (suivi d'avancement de
    * l'oral). Clés namespacées : `${eleve}::text::${id}`, `${eleve}::gram::${id}`,
-   * `${eleve}::oeuvre`, `${eleve}::entretien`.
+   * `${eleve}::oeuvre::pourquoi|presentation|jugement`.
    */
   oralChecks: Record<string, boolean>;
+  /**
+   * Statut tri-état des questions d'entretien (`review` = à retravailler,
+   * `done` = maîtrisée). Clé : `${eleve}::eq::${questionId}`.
+   */
+  oralStatus: Record<string, OralStatus>;
   recordAttempt: (id: string, succeeded: boolean) => void;
   setFlashcardDecision: (id: string, decision: FlashcardDecision) => void;
   clearFlashcardDecisions: (ids: string[]) => void;
   toggleOralCheck: (key: string) => void;
+  setOralStatus: (key: string, status: OralStatus) => void;
   reset: (id?: string) => void;
   countSucceeded: (kind: FrenchItemKind) => number;
 };
@@ -57,6 +66,7 @@ export const useFrenchProgressStore = create<FrenchProgressState>()(
       items: {},
       flashcardDecisions: {},
       oralChecks: {},
+      oralStatus: {},
       recordAttempt: (id, succeeded) => {
         set((state) => {
           const previous = state.items[id];
@@ -86,6 +96,15 @@ export const useFrenchProgressStore = create<FrenchProgressState>()(
           if (next[key]) delete next[key];
           else next[key] = true;
           return { oralChecks: next };
+        });
+      },
+      setOralStatus: (key, status) => {
+        set((state) => {
+          const next = { ...state.oralStatus };
+          // Re-cliquer sur le statut actif l'annule (retour à « non vu »).
+          if (next[key] === status) delete next[key];
+          else next[key] = status;
+          return { oralStatus: next };
         });
       },
       reset: (id) => {
