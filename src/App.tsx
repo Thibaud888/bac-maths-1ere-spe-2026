@@ -12,7 +12,8 @@ import ClassicsPage from '@/routes/chapter/ClassicsPage';
 import ExamPage from '@/routes/chapter/ExamPage';
 import FrenchLayout from '@/francais/components/layout/FrenchLayout';
 import FrenchModuleLayout from '@/francais/components/layout/FrenchModuleLayout';
-import FrenchHomePage from '@/francais/routes/FrenchHomePage';
+import FrenchHubPage from '@/francais/routes/FrenchHubPage';
+import EcritHomePage from '@/francais/routes/EcritHomePage';
 import FichesPage from '@/francais/routes/module/FichesPage';
 import QuizPage from '@/francais/routes/module/QuizPage';
 import ExercicesPage from '@/francais/routes/module/ExercicesPage';
@@ -26,6 +27,7 @@ import OralTextDetailPage from '@/francais/routes/oral/OralTextDetailPage';
 import OralMethodePage from '@/francais/routes/oral/OralMethodePage';
 import OralGrammairePage from '@/francais/routes/oral/OralGrammairePage';
 import OralEntretienPage from '@/francais/routes/oral/OralEntretienPage';
+import OralEpreuvePage from '@/francais/routes/oral/OralEpreuvePage';
 import OralOeuvrePage from '@/francais/routes/oral/OralOeuvrePage';
 import OralSimulateurPage from '@/francais/routes/oral/OralSimulateurPage';
 
@@ -57,12 +59,14 @@ export default function App() {
 
       {/* --- Volet Français (additif, routes maths inchangées) --- */}
       <Route path="/francais" element={<FrenchLayout />}>
-        <Route index element={<FrenchHomePage />} />
+        <Route index element={<FrenchHubPage />} />
+        <Route path="ecrit" element={<EcritHomePage />} />
         <Route path="express" element={<ExpressPage />} />
         <Route path="oral">
           <Route index element={<OralSelectPage />} />
           <Route path=":eleve" element={<OralStudentLayout />}>
             <Route index element={<OralHomePage />} />
+            <Route path="epreuve" element={<OralEpreuvePage />} />
             <Route path="textes" element={<OralTextesPage />} />
             <Route path="textes/:id" element={<OralTextDetailPage />} />
             <Route path="methode" element={<OralMethodePage />} />

@@ -1,9 +1,12 @@
 import { LiteraryText } from '@/francais/components/text/LiteraryText';
+import type { FicheViewMode } from '@/francais/stores/french-app-store';
 import type { FicheLike, FrenchAccent, FrenchLevel } from '@/francais/lib/french-types';
 
 type FicheCardProps = {
   fiche: FicheLike;
   hidden?: boolean;
+  /** Mode d'affichage : détaillé (statement) ou simplifié (l'essentiel). */
+  viewMode?: FicheViewMode;
   /** Si omis, le bouton « Masquer » n'est pas affiché (fiches oral). */
   onToggleHidden?: () => void;
 };
@@ -29,9 +32,18 @@ const levelLabel: Record<FrenchLevel, string> = {
   approfondissement: 'Approfondissement',
 };
 
-export default function FicheCard({ fiche, hidden = false, onToggleHidden }: FicheCardProps) {
+export default function FicheCard({
+  fiche,
+  hidden = false,
+  viewMode = 'detailed',
+  onToggleHidden,
+}: FicheCardProps) {
   const accent = levelAccent[fiche.level];
   const classes = accentClasses[accent];
+  // En mode simplifié, on n'affiche que l'essentiel (si disponible) ;
+  // sinon on retombe sur l'énoncé détaillé.
+  const simplified =
+    viewMode === 'simplified' && fiche.simplified ? fiche.simplified : null;
 
   return (
     <article className="overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
@@ -57,7 +69,25 @@ export default function FicheCard({ fiche, hidden = false, onToggleHidden }: Fic
           )}
         </header>
 
-        {!hidden && (
+        {!hidden && simplified && (
+          <div className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+            {simplified.keyword && (
+              <span className={`inline-block rounded px-2 py-0.5 text-xs font-medium ${classes.badge}`}>
+                {simplified.keyword}
+              </span>
+            )}
+            <div className={simplified.keyword ? 'mt-2' : ''}>
+              <LiteraryText text={simplified.core} />
+            </div>
+            {simplified.mnemonic && (
+              <p className="mt-2 rounded border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40 px-3 py-2 text-xs italic text-slate-600 dark:text-slate-400">
+                💡 {simplified.mnemonic}
+              </p>
+            )}
+          </div>
+        )}
+
+        {!hidden && !simplified && (
           <div className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
             <LiteraryText text={fiche.statement} />
 

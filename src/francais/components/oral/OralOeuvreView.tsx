@@ -89,6 +89,7 @@ function ArgumentBlock({
 
 export default function OralOeuvreView({ oeuvre }: OralOeuvreViewProps) {
   const { eleve } = useParams<{ eleve: string }>();
+  const oralViewMode = useFrenchAppStore((s) => s.oralViewMode);
   const ns = `oeuvre:${eleve ?? ''}`;
   const { presentationOrale: pres } = oeuvre;
 
@@ -180,7 +181,18 @@ export default function OralOeuvreView({ oeuvre }: OralOeuvreViewProps) {
         />
       </div>
 
-      {/* ----- RÉFÉRENTIEL DE FOND ----- */}
+      {oralViewMode === 'essentiel' && (
+        <p className="mt-8 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40 p-3 text-xs text-slate-600 dark:text-slate-400">
+          Mode <strong>Essentiel</strong> : seul le propos à dire en 2-3 min est
+          affiché. Passe en <strong>Détaillé</strong> (en haut) pour le dossier
+          complet : auteur, contexte, résumé, personnages, thèmes, passages clés
+          et ouvertures.
+        </p>
+      )}
+
+      {/* ----- RÉFÉRENTIEL DE FOND (mode Détaillé) ----- */}
+      {oralViewMode === 'detaille' && (
+        <>
       {oeuvre.auteurNotice && (
         <>
           <SectionTitle>L’auteur</SectionTitle>
@@ -324,6 +336,8 @@ export default function OralOeuvreView({ oeuvre }: OralOeuvreViewProps) {
               </li>
             ))}
           </ul>
+        </>
+      )}
         </>
       )}
     </article>

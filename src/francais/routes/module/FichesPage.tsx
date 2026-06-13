@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { getFrenchModuleContent } from '@/francais/lib/french-content-loader';
 import FicheCard from '@/francais/components/fiches/FicheCard';
+import ViewModeToggle from '@/components/formulary/ViewModeToggle';
 import { useFrenchAppStore } from '@/francais/stores/french-app-store';
 import type { FrenchModuleSlug } from '@/francais/lib/french-types';
 
@@ -9,10 +10,13 @@ export default function FichesPage() {
   const content = slug ? getFrenchModuleContent(slug as FrenchModuleSlug) : null;
   const hiddenFiches = useFrenchAppStore((s) => s.hiddenFiches);
   const toggleFicheHidden = useFrenchAppStore((s) => s.toggleFicheHidden);
+  const ficheViewMode = useFrenchAppStore((s) => s.ficheViewMode);
+  const setFicheViewMode = useFrenchAppStore((s) => s.setFicheViewMode);
 
   if (!content) return null;
   const moduleSlug = content.meta.slug;
   const hidden = hiddenFiches[moduleSlug] ?? [];
+  const viewMode = ficheViewMode[moduleSlug] ?? 'detailed';
 
   const fiches = [...content.fiches].sort(
     (a, b) => (a.order ?? 0) - (b.order ?? 0)
@@ -26,7 +30,8 @@ export default function FichesPage() {
         </p>
       )}
 
-      <div className="mb-4 flex flex-wrap gap-3 text-xs text-slate-600 dark:text-slate-400">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap gap-3 text-xs text-slate-600 dark:text-slate-400">
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-rose-400" />
           Essentiel
@@ -39,6 +44,11 @@ export default function FichesPage() {
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber-400" />
           Approfondissement
         </span>
+        </div>
+        <ViewModeToggle
+          value={viewMode}
+          onChange={(next) => { setFicheViewMode(moduleSlug, next); }}
+        />
       </div>
 
       {fiches.length === 0 ? (
@@ -51,6 +61,7 @@ export default function FichesPage() {
             <FicheCard
               key={fiche.id}
               fiche={fiche}
+              viewMode={viewMode}
               hidden={hidden.includes(fiche.id)}
               onToggleHidden={() => { toggleFicheHidden(moduleSlug, fiche.id); }}
             />

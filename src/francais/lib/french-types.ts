@@ -65,6 +65,7 @@ export type FicheLike = {
   example?: string;
   tags?: string[];
   level: FrenchLevel;
+  simplified?: FicheSimplified;
 };
 
 export type QuizType = 'qcm' | 'multi' | 'ordering';
@@ -223,6 +224,25 @@ export type OralQuestionGrammaire = {
   corrige: string;
 };
 
+/** Un mouvement résumé en une phrase, pour la vue « Essentiel ». */
+export type OralEssentielMouvement = {
+  titre: string;
+  phrase: string;
+};
+
+/**
+ * Couche simplifiée d'un texte (« ce que je dois dire ») destinée à un élève
+ * en difficulté : l'indispensable, en mots simples. La version détaillée
+ * (projetLecture / mouvements / conclusion) reste inchangée.
+ */
+export type OralEssentiel = {
+  enBref: string;
+  problematique: string;
+  mouvementsCles: OralEssentielMouvement[];
+  conclusion: string;
+  aRetenir?: string[];
+};
+
 export type OralText = {
   id: string;
   oeuvre: string;
@@ -238,6 +258,7 @@ export type OralText = {
   mouvements: OralMouvement[];
   conclusion: { bilan: string; ouverture: string };
   questionGrammaire: OralQuestionGrammaire;
+  essentiel?: OralEssentiel;
   level?: FrenchLevel;
   accent?: FrenchAccent;
   order?: number;
@@ -259,6 +280,7 @@ export type EntretienQuestion = {
   question: string;
   category: EntretienCategory;
   pistes?: string[];
+  reponseEssentielle?: string;
   difficulty?: 1 | 2 | 3;
   order?: number;
   tags?: string[];

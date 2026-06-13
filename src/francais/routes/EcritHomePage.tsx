@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import {
   getExpressDecks,
   listFrenchModules,
-  listOralStudents,
 } from '@/francais/lib/french-content-loader';
 import type { FrenchFamily } from '@/francais/lib/french-types';
 
@@ -14,44 +13,26 @@ const familyLabels: Record<FrenchFamily, string> = {
 
 const familyOrder: FrenchFamily[] = ['methode', 'reperes', 'objet-etude'];
 
-export default function FrenchHomePage() {
+export default function EcritHomePage() {
   const modules = listFrenchModules();
   const expressDecks = getExpressDecks();
   const totalExpressCards = expressDecks.reduce((n, d) => n + d.cards.length, 0);
-  const oralStudentsCount = listOralStudents().length;
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-8">
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-        Préparer le bac de français
+      <p className="text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+        ✍️ Écrit
+      </p>
+      <h1 className="mt-1 text-2xl font-bold text-slate-900 dark:text-slate-100">
+        Réviser le français écrit
       </h1>
       <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-        Épreuve anticipée de français (EAF) : <strong>écrit</strong> (4 h, coef. 5
-        — commentaire ou dissertation) et <strong>oral</strong> (20 min, coef. 5).
-        Révise la méthode et les repères, puis entraîne-toi avec les quiz, les
-        exercices et l’oral blanc.
+        Épreuve anticipée de français (EAF) — écrit : 4 h, coef. 5, commentaire
+        ou dissertation. Révise la méthode et les repères, puis entraîne-toi avec
+        les quiz, les exercices et les sujets.
       </p>
 
-      {/* Oral banner */}
-      <Link
-        to="/francais/oral"
-        className="mt-6 flex items-center gap-4 rounded-xl border border-emerald-300 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 p-4 shadow-sm transition-colors hover:border-emerald-400 dark:hover:border-emerald-500"
-      >
-        <span className="text-3xl">🎙️</span>
-        <div>
-          <p className="text-sm font-bold text-emerald-800 dark:text-emerald-200">
-            Préparer l’oral
-          </p>
-          <p className="text-xs text-emerald-700 dark:text-emerald-300">
-            {oralStudentsCount > 0
-              ? `Descriptif par élève, méthode, grammaire, entretien et oral blanc minuté`
-              : `Explication linéaire, grammaire, entretien et oral blanc minuté`}
-          </p>
-        </div>
-        <span className="ml-auto text-emerald-400">→</span>
-      </Link>
-
-      {/* Révision express banner */}
+      {/* Révision express */}
       <Link
         to="/francais/express"
         className="mt-6 flex items-center gap-4 rounded-xl border border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-900/20 p-4 shadow-sm transition-colors hover:border-amber-400 dark:hover:border-amber-500"

@@ -6,6 +6,7 @@ import {
 } from '@/francais/lib/french-content-loader';
 import { useFrenchAppStore } from '@/francais/stores/french-app-store';
 import OralTabs from './OralTabs';
+import OralViewModeToggle from './OralViewModeToggle';
 
 /**
  * Espace oral d'un élève : garde le paramètre `:eleve`, mémorise le dernier
@@ -16,6 +17,8 @@ import OralTabs from './OralTabs';
 export default function OralStudentLayout() {
   const { eleve } = useParams<{ eleve: string }>();
   const setLastOralStudent = useFrenchAppStore((s) => s.setLastOralStudent);
+  const oralViewMode = useFrenchAppStore((s) => s.oralViewMode);
+  const setOralViewMode = useFrenchAppStore((s) => s.setOralViewMode);
 
   const valid = !!eleve && oralStudentExists(eleve);
 
@@ -35,12 +38,15 @@ export default function OralStudentLayout() {
         <p className="truncate text-sm font-semibold text-slate-700 dark:text-slate-300">
           🎓 {student?.nom ?? eleve}
         </p>
-        <Link
-          to="/francais/oral"
-          className="shrink-0 text-xs font-medium text-emerald-700 dark:text-emerald-400 hover:underline"
-        >
-          ← Changer d’élève
-        </Link>
+        <div className="flex shrink-0 items-center gap-3">
+          <OralViewModeToggle value={oralViewMode} onChange={setOralViewMode} />
+          <Link
+            to="/francais/oral"
+            className="text-xs font-medium text-emerald-700 dark:text-emerald-400 hover:underline"
+          >
+            ← Changer d’élève
+          </Link>
+        </div>
       </div>
       <OralTabs eleve={eleve} />
       <Outlet />
