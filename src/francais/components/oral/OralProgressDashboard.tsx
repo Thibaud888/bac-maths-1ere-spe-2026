@@ -6,6 +6,7 @@ import {
   getOralStudentOeuvre,
   getOralStudentTextes,
 } from '@/francais/lib/french-content-loader';
+import { buildGrammarQuizDeck, buildOralExpressDecks } from '@/francais/lib/oral-express';
 
 type ChecklistItem = {
   key: string;
@@ -46,6 +47,7 @@ function ProgressBar({ done, total }: { done: number; total: number }) {
 export default function OralProgressDashboard({ eleve }: { eleve: string }) {
   const checks = useFrenchProgressStore((s) => s.oralChecks);
   const statusMap = useFrenchProgressStore((s) => s.oralStatus);
+  const decisions = useFrenchProgressStore((s) => s.flashcardDecisions);
 
   const base = `/francais/oral/${eleve}`;
   const textes = getOralStudentTextes(eleve);
@@ -100,6 +102,13 @@ export default function OralProgressDashboard({ eleve }: { eleve: string }) {
   const totalDone = checklistDone + eqDone;
   const totalItems = checklistItems.length + eqTotal;
   const allDone = totalItems > 0 && totalDone === totalItems;
+
+  // Révision express : nombre de cartes « Je savais » (validées).
+  const flashCards = buildOralExpressDecks(eleve).flatMap((d) => d.cards);
+  const quizCards = buildGrammarQuizDeck(eleve)?.cards ?? [];
+  const flashKnown = flashCards.filter((c) => decisions[c.id] === 'known').length;
+  const quizKnown = quizCards.filter((c) => decisions[c.id] === 'known').length;
+  const hasExpress = flashCards.length > 0 || quizCards.length > 0;
 
   return (
     <section className="mt-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
@@ -210,6 +219,36 @@ export default function OralProgressDashboard({ eleve }: { eleve: string }) {
               <span className="rounded-full bg-slate-100 px-2 py-0.5 font-medium text-slate-500 dark:bg-slate-700 dark:text-slate-400">
                 {eqTotal} au total
               </span>
+            </div>
+          </div>
+        )}
+
+        {hasExpress && (
+          <div className="rounded-lg border border-slate-100 dark:border-slate-700/60 p-3">
+            <div className="flex items-center gap-2">
+              <span aria-hidden className="text-base leading-none">⚡</span>
+              <Link
+                to={`${base}/express`}
+                className="text-sm font-semibold text-slate-800 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-400"
+              >
+                Révision express
+              </Link>
+            </div>
+            <div className="mt-2 space-y-2">
+              <div>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
+                  Flashcards validées
+                </p>
+                <ProgressBar done={flashKnown} total={flashCards.length} />
+              </div>
+              {quizCards.length > 0 && (
+                <div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Quiz éclair validé
+                  </p>
+                  <ProgressBar done={quizKnown} total={quizCards.length} />
+                </div>
+              )}
             </div>
           </div>
         )}
