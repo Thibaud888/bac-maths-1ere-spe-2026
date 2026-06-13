@@ -7,9 +7,9 @@ import {
 
 const baremeRows: ReadonlyArray<{ partie: string; item: string; points: string }> = [
   { partie: '1ʳᵉ partie (12 pts)', item: 'Lecture à voix haute', points: '2' },
-  { partie: '', item: 'Explication linéaire d’un texte du descriptif', points: '8' },
+  { partie: '', item: `Explication linéaire d'un texte du descriptif`, points: '8' },
   { partie: '', item: 'Question de grammaire', points: '2' },
-  { partie: '2ᵈᵉ partie (8 pts)', item: 'Présentation d’une œuvre + entretien', points: '8' },
+  { partie: '2ᵈᵉ partie (8 pts)', item: `Présentation d'une œuvre + entretien`, points: '8' },
 ];
 
 type AccessCard = {
@@ -70,16 +70,9 @@ export default function OralHomePage() {
     {
       to: 'textes',
       icon: '📖',
-      title: 'Lecture à voix haute',
-      subtitle: 'Bien lire le texte tiré au sort (conseils dans chaque texte).',
-      points: '2 pts',
-    },
-    {
-      to: 'textes',
-      icon: '📑',
-      title: 'Explication linéaire',
-      subtitle: 'Mes textes : ce qu’il faut dire sur chacun.',
-      points: '8 pts',
+      title: 'Textes du descriptif',
+      subtitle: 'Lecture à voix haute (2 pts) · Explication linéaire (8 pts).',
+      points: '10 pts',
     },
     {
       to: 'grammaire',
@@ -92,25 +85,33 @@ export default function OralHomePage() {
 
   const partie2: AccessCard[] = [
     {
+      to: 'oeuvre',
+      icon: '📚',
+      title: 'Œuvre choisie',
+      subtitle: oeuvreChoisie
+        ? `${oeuvreChoisie.oeuvre}${oeuvreChoisie.auteur ? ` — ${oeuvreChoisie.auteur}` : ''}`
+        : `Ma présentation de l'œuvre choisie (pourquoi ce choix, l'œuvre, mon avis).`,
+    },
+    {
       to: 'entretien',
       icon: '💬',
       title: 'Entretien',
-      subtitle: 'Les questions possibles de l’examinateur + mes réponses.',
+      subtitle: `Les questions possibles de l'examinateur + mes réponses.`,
     },
   ];
 
   const outils: AccessCard[] = [
     {
-      to: 'epreuve',
-      icon: 'ℹ️',
-      title: 'L’épreuve',
-      subtitle: 'Comprendre le déroulé et les attentes.',
-    },
-    {
       to: 'methode',
       icon: '🧭',
       title: 'Méthode',
-      subtitle: 'Comment faire l’explication, la lecture, l’entretien.',
+      subtitle: `Comment faire l'explication, la lecture, l'entretien.`,
+    },
+    {
+      to: 'epreuve',
+      icon: 'ℹ️',
+      title: `L'épreuve`,
+      subtitle: 'Comprendre le déroulé et les attentes.',
     },
     {
       to: 'simulateur',
@@ -123,11 +124,11 @@ export default function OralHomePage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-8">
       <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-        {meta?.title ?? 'Préparer l’oral du bac de français'}
+        {meta?.title ?? `Préparer l'oral du bac de français`}
       </h1>
       <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
         {meta?.description ??
-          'Épreuve anticipée de français (EAF) — oral : 20 min, après 30 min de préparation, coefficient 5. L’examinateur choisit un texte parmi ceux de ton descriptif.'}
+          `Épreuve anticipée de français (EAF) — oral : 20 min, après 30 min de préparation, coefficient 5. L'examinateur choisit un texte parmi ceux de ton descriptif.`}
       </p>
 
       {student && student.oeuvres && student.oeuvres.length > 0 && (
@@ -152,7 +153,7 @@ export default function OralHomePage() {
         </div>
       )}
 
-      {/* Barème — carte d'ensemble de l'épreuve */}
+      {/* Barème */}
       <div className="mt-6 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
         <table className="min-w-full text-sm">
           <thead>
@@ -179,7 +180,7 @@ export default function OralHomePage() {
       </div>
 
       {/* Partie 1 */}
-      <ZoneTitle label="Partie 1 — sur un texte" badge="12 pts" />
+      <ZoneTitle label="Partie 1 — sur un texte tiré au sort" badge="12 pts" />
       <div className="mt-3 grid gap-3">
         {partie1.map((card, i) => (
           <CardLink key={`p1-${i}`} base={base} card={card} />
@@ -187,33 +188,16 @@ export default function OralHomePage() {
       </div>
 
       {/* Partie 2 */}
-      <ZoneTitle label="Partie 2 — sur une œuvre" badge="8 pts" />
-      {oeuvreChoisie && (
-        <Link
-          to={`${base}/oeuvre`}
-          className="mt-3 block rounded-xl border border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-900/20 p-4 shadow-sm transition-colors hover:border-amber-400"
-        >
-          <p className="text-xs font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-400">
-            🎯 Mon œuvre choisie
-          </p>
-          <p className="mt-1 font-semibold text-slate-900 dark:text-slate-100">
-            <span className="italic">{oeuvreChoisie.oeuvre}</span>
-            {oeuvreChoisie.auteur ? ` — ${oeuvreChoisie.auteur}` : ''}
-          </p>
-          <p className="mt-1 text-sm text-amber-800 dark:text-amber-300">
-            Ma présentation en 3 temps (pourquoi ce choix, l’œuvre, mon avis).
-          </p>
-        </Link>
-      )}
+      <ZoneTitle label="Partie 2 — sur une œuvre choisie" badge="8 pts" />
       <div className="mt-3 grid gap-3">
         {partie2.map((card, i) => (
           <CardLink key={`p2-${i}`} base={base} card={card} />
         ))}
       </div>
 
-      {/* Comprendre & s'entraîner */}
-      <ZoneTitle label="Comprendre & s’entraîner" />
-      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+      {/* Outils */}
+      <ZoneTitle label="Se préparer" />
+      <div className="mt-3 grid gap-3 sm:grid-cols-3">
         {outils.map((card, i) => (
           <CardLink key={`o-${i}`} base={base} card={card} />
         ))}

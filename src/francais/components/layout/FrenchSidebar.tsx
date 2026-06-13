@@ -1,13 +1,21 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { listFrenchModules } from '@/francais/lib/french-content-loader';
 import SubjectSwitcher from '@/francais/components/layout/SubjectSwitcher';
 import type { FrenchFamily } from '@/francais/lib/french-types';
 
-const navLinkClass = ({ isActive }: { isActive: boolean }): string =>
+const indNavLinkClass = ({ isActive }: { isActive: boolean }): string =>
   [
     'block rounded px-3 py-2 text-sm transition-colors',
     isActive
       ? 'bg-indigo-600 text-white'
+      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700',
+  ].join(' ');
+
+const emNavLinkClass = ({ isActive }: { isActive: boolean }): string =>
+  [
+    'block rounded px-3 py-2 text-sm transition-colors',
+    isActive
+      ? 'bg-emerald-600 text-white'
       : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700',
   ].join(' ');
 
@@ -19,7 +27,6 @@ const familyLabels: Record<FrenchFamily, string> = {
 
 const familyOrder: FrenchFamily[] = ['methode', 'reperes', 'objet-etude'];
 
-/** En-tête de zone (Oral / Écrit) avec barre d'accent colorée. */
 function ZoneHeader({ accent, children }: { accent: 'emerald' | 'indigo'; children: string }) {
   const bar = accent === 'emerald' ? 'bg-emerald-500' : 'bg-indigo-500';
   const text =
@@ -34,8 +41,181 @@ function ZoneHeader({ accent, children }: { accent: 'emerald' | 'indigo'; childr
   );
 }
 
-export default function FrenchSidebar() {
+function SectionLabel({ children }: { children: string }) {
+  return (
+    <p className="mt-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+      {children}
+    </p>
+  );
+}
+
+function OralStudentSidebar({ eleve }: { eleve: string }) {
+  const base = `/francais/oral/${eleve}`;
+  return (
+    <nav className="flex-1 overflow-y-auto p-3">
+      <NavLink to="/francais" end className={indNavLinkClass}>
+        ← Accueil
+      </NavLink>
+
+      <div className="mt-3 rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50/40 dark:bg-emerald-900/10 p-2">
+        <ZoneHeader accent="emerald">🎙️ Oral</ZoneHeader>
+
+        <NavLink
+          to={base}
+          end
+          className={({ isActive }) =>
+            [
+              'mt-2 block rounded px-3 py-2 text-sm font-semibold transition-colors',
+              isActive
+                ? 'bg-emerald-600 text-white'
+                : 'text-emerald-800 hover:bg-emerald-100 dark:text-emerald-200 dark:hover:bg-emerald-900/40',
+            ].join(' ')
+          }
+        >
+          Tableau de bord
+        </NavLink>
+
+        <SectionLabel>Partie 1 · 12 pts</SectionLabel>
+        <ul className="mt-1 space-y-1">
+          <li>
+            <NavLink to={`${base}/textes`} className={emNavLinkClass}>
+              📖 Textes du descriptif
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={`${base}/grammaire`} className={emNavLinkClass}>
+              🔤 Grammaire
+            </NavLink>
+          </li>
+        </ul>
+
+        <SectionLabel>Partie 2 · 8 pts</SectionLabel>
+        <ul className="mt-1 space-y-1">
+          <li>
+            <NavLink to={`${base}/oeuvre`} className={emNavLinkClass}>
+              📚 Œuvre choisie
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={`${base}/entretien`} className={emNavLinkClass}>
+              💬 Entretien
+            </NavLink>
+          </li>
+        </ul>
+
+        <SectionLabel>Se préparer</SectionLabel>
+        <ul className="mt-1 space-y-1">
+          <li>
+            <NavLink to={`${base}/methode`} className={emNavLinkClass}>
+              🧭 Méthode
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={`${base}/epreuve`} className={emNavLinkClass}>
+              ℹ️ L&apos;épreuve
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={`${base}/simulateur`} className={emNavLinkClass}>
+              🎬 Oral blanc
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+function EcritSidebar() {
   const modules = listFrenchModules();
+  return (
+    <nav className="flex-1 overflow-y-auto p-3">
+      <NavLink to="/francais" end className={indNavLinkClass}>
+        Accueil
+      </NavLink>
+
+      {/* Zone ORAL */}
+      <div className="mt-3 rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50/40 dark:bg-emerald-900/10 p-2">
+        <ZoneHeader accent="emerald">🎙️ Oral</ZoneHeader>
+        <NavLink
+          to="/francais/oral"
+          className={({ isActive }) =>
+            [
+              'mt-2 flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold transition-colors',
+              isActive
+                ? 'bg-emerald-600 text-white'
+                : 'bg-emerald-100/70 text-emerald-800 hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-200 dark:hover:bg-emerald-900/50',
+            ].join(' ')
+          }
+        >
+          <span>🎙️</span>
+          <span>Préparer l&apos;oral</span>
+        </NavLink>
+      </div>
+
+      {/* Zone ÉCRIT */}
+      <div className="mt-4 rounded-lg border border-indigo-200 dark:border-indigo-800 bg-indigo-50/40 dark:bg-indigo-900/10 p-2">
+        <ZoneHeader accent="indigo">✍️ Écrit</ZoneHeader>
+
+        <NavLink
+          to="/francais/ecrit"
+          end
+          className={({ isActive }) =>
+            [
+              'mt-2 block rounded px-3 py-2 text-sm font-semibold transition-colors',
+              isActive
+                ? 'bg-indigo-600 text-white'
+                : 'text-indigo-800 hover:bg-indigo-100 dark:text-indigo-200 dark:hover:bg-indigo-900/40',
+            ].join(' ')
+          }
+        >
+          Accueil écrit
+        </NavLink>
+
+        <NavLink
+          to="/francais/express"
+          className={({ isActive }) =>
+            [
+              'mt-1 flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold transition-colors',
+              isActive
+                ? 'bg-amber-500 text-white'
+                : 'bg-amber-50 text-amber-700 hover:bg-amber-100 dark:bg-amber-900/20 dark:text-amber-300 dark:hover:bg-amber-900/40',
+            ].join(' ')
+          }
+        >
+          <span>⚡</span>
+          <span>Révision express</span>
+        </NavLink>
+
+        {familyOrder.map((family) => {
+          const inFamily = modules.filter((m) => m.family === family);
+          if (inFamily.length === 0) return null;
+          return (
+            <div key={family}>
+              <p className="mt-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                {familyLabels[family]}
+              </p>
+              <ul className="mt-1 space-y-1">
+                {inFamily.map((m) => (
+                  <li key={m.slug}>
+                    <NavLink to={`/francais/module/${m.slug}`} className={indNavLinkClass}>
+                      {m.shortTitle ?? m.title}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+    </nav>
+  );
+}
+
+export default function FrenchSidebar() {
+  const location = useLocation();
+  const oralStudentMatch = location.pathname.match(/^\/francais\/oral\/([^/]+)/);
+  const eleve = oralStudentMatch?.[1];
 
   return (
     <aside className="flex h-screen w-64 flex-col border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
@@ -47,86 +227,7 @@ export default function FrenchSidebar() {
 
       <SubjectSwitcher current="francais" />
 
-      <nav className="flex-1 overflow-y-auto p-3">
-        <NavLink to="/francais" end className={navLinkClass}>
-          Accueil
-        </NavLink>
-
-        {/* --- Zone ORAL (épreuve à venir) --- */}
-        <div className="mt-3 rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50/40 dark:bg-emerald-900/10 p-2">
-          <ZoneHeader accent="emerald">🎙️ Oral</ZoneHeader>
-          <NavLink
-            to="/francais/oral"
-            className={({ isActive }) =>
-              [
-                'mt-2 flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold transition-colors',
-                isActive
-                  ? 'bg-emerald-600 text-white'
-                  : 'bg-emerald-100/70 text-emerald-800 hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-200 dark:hover:bg-emerald-900/50',
-              ].join(' ')
-            }
-          >
-            <span>🎙️</span>
-            <span>Préparer l’oral</span>
-          </NavLink>
-        </div>
-
-        {/* --- Zone ÉCRIT --- */}
-        <div className="mt-4 rounded-lg border border-indigo-200 dark:border-indigo-800 bg-indigo-50/40 dark:bg-indigo-900/10 p-2">
-          <ZoneHeader accent="indigo">✍️ Écrit</ZoneHeader>
-
-          <NavLink
-            to="/francais/ecrit"
-            end
-            className={({ isActive }) =>
-              [
-                'mt-2 block rounded px-3 py-2 text-sm font-semibold transition-colors',
-                isActive
-                  ? 'bg-indigo-600 text-white'
-                  : 'text-indigo-800 hover:bg-indigo-100 dark:text-indigo-200 dark:hover:bg-indigo-900/40',
-              ].join(' ')
-            }
-          >
-            Accueil écrit
-          </NavLink>
-
-          <NavLink
-            to="/francais/express"
-            className={({ isActive }) =>
-              [
-                'mt-1 flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold transition-colors',
-                isActive
-                  ? 'bg-amber-500 text-white'
-                  : 'bg-amber-50 text-amber-700 hover:bg-amber-100 dark:bg-amber-900/20 dark:text-amber-300 dark:hover:bg-amber-900/40',
-              ].join(' ')
-            }
-          >
-            <span>⚡</span>
-            <span>Révision express</span>
-          </NavLink>
-
-          {familyOrder.map((family) => {
-            const inFamily = modules.filter((m) => m.family === family);
-            if (inFamily.length === 0) return null;
-            return (
-              <div key={family}>
-                <p className="mt-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                  {familyLabels[family]}
-                </p>
-                <ul className="mt-1 space-y-1">
-                  {inFamily.map((m) => (
-                    <li key={m.slug}>
-                      <NavLink to={`/francais/module/${m.slug}`} className={navLinkClass}>
-                        {m.shortTitle ?? m.title}
-                      </NavLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
-        </div>
-      </nav>
+      {eleve ? <OralStudentSidebar eleve={eleve} /> : <EcritSidebar />}
     </aside>
   );
 }
