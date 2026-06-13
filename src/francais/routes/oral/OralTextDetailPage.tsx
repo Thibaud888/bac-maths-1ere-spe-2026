@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { getOralText } from '@/francais/lib/french-content-loader';
 import OralTextDetail from '@/francais/components/oral/OralTextDetail';
+import RevisedToggle from '@/francais/components/oral/RevisedToggle';
 
 export default function OralTextDetailPage() {
   const { eleve, id } = useParams<{ eleve: string; id: string }>();
@@ -20,6 +21,9 @@ export default function OralTextDetailPage() {
       </Link>
       <div className="mt-4">
         <OralTextDetail text={text} />
+      </div>
+      <div className="mt-8 border-t border-slate-200 dark:border-slate-700 pt-4">
+        <RevisedToggle checkKey={`${eleve ?? ''}::text::${text.id}`} />
       </div>
     </div>
   );

@@ -21,6 +21,7 @@ export default function OralTabs({ eleve }: OralTabsProps) {
     { to: `${base}/grammaire`, label: 'Grammaire', end: false, part: 1 },
     { to: `${base}/oeuvre`, label: 'Œuvre choisie', end: false, part: 2 },
     { to: `${base}/entretien`, label: 'Entretien', end: false, part: 2 },
+    { to: `${base}/express`, label: 'Express ⚡', end: false },
     { to: `${base}/methode`, label: 'Méthode', end: false },
     { to: `${base}/epreuve`, label: 'L’épreuve', end: false },
     { to: `${base}/simulateur`, label: 'Oral blanc', end: false },

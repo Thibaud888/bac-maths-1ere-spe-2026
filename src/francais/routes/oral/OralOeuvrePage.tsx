@@ -5,6 +5,7 @@ import {
 } from '@/francais/lib/french-content-loader';
 import OralOeuvreView from '@/francais/components/oral/OralOeuvreView';
 import { EntretienQuestionCard } from '@/francais/components/oral/EntretienQuestionList';
+import RevisedToggle from '@/francais/components/oral/RevisedToggle';
 
 export default function OralOeuvrePage() {
   const { eleve } = useParams<{ eleve: string }>();
@@ -33,6 +34,10 @@ export default function OralOeuvrePage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-8">
       <OralOeuvreView oeuvre={oeuvre} />
+
+      <div className="mt-8 border-t border-slate-200 dark:border-slate-700 pt-4">
+        <RevisedToggle checkKey={`${eleve ?? ''}::oeuvre`} />
+      </div>
 
       {liees.length > 0 && (
         <div className="mt-10">

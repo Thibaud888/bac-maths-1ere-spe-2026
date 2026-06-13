@@ -316,9 +316,15 @@ export type OralOeuvreArgument = {
   pistes?: string[];
 };
 
+/** Un sous-point titré du fil de présentation de l'œuvre (Auteur, Intrigue…). */
+export type OralFilSegment = {
+  titre: string;
+  contenu: string;
+};
+
 export type OralOeuvrePresentation = {
   pourquoiCeChoix: OralOeuvreArgument;
-  fil: string;
+  fil: OralFilSegment[];
   jugementPersonnel: OralOeuvreArgument;
 };
 

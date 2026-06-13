@@ -1,8 +1,18 @@
 import { LiteraryText } from '@/francais/components/text/LiteraryText';
 import { useFrenchAppStore } from '@/francais/stores/french-app-store';
-import type { EntretienQuestion } from '@/francais/lib/french-types';
+import type { EntretienCategory, EntretienQuestion } from '@/francais/lib/french-types';
 import RevealPanel from './RevealPanel';
 import { entretienCategoryLabel } from './oral-labels';
+
+/** Ordre pédagogique d'affichage des catégories d'entretien. */
+const CATEGORY_ORDER: EntretienCategory[] = [
+  'choix-oeuvre',
+  'comprehension',
+  'interpretation',
+  'gout-personnel',
+  'culture',
+  'ouverture',
+];
 
 type EntretienQuestionListProps = {
   questions: EntretienQuestion[];
@@ -51,22 +61,30 @@ export function EntretienQuestionCard({ question }: { question: EntretienQuestio
 }
 
 export default function EntretienQuestionList({ questions }: EntretienQuestionListProps) {
-  const byOeuvre = new Map<string, EntretienQuestion[]>();
+  // L'entretien P2 portant sur la seule œuvre choisie, on regroupe les questions
+  // par catégorie (choix, compréhension, interprétation, goût, culture, ouverture)
+  // pour une navigation thématique plus utile.
+  const byCategory = new Map<EntretienCategory, EntretienQuestion[]>();
   for (const q of questions) {
-    const list = byOeuvre.get(q.oeuvre) ?? [];
+    const list = byCategory.get(q.category) ?? [];
     list.push(q);
-    byOeuvre.set(q.oeuvre, list);
+    byCategory.set(q.category, list);
   }
+
+  const orderedCategories = [
+    ...CATEGORY_ORDER.filter((c) => byCategory.has(c)),
+    ...[...byCategory.keys()].filter((c) => !CATEGORY_ORDER.includes(c)),
+  ];
 
   return (
     <div className="space-y-8">
-      {[...byOeuvre.entries()].map(([oeuvre, qs]) => (
-        <section key={oeuvre}>
+      {orderedCategories.map((category) => (
+        <section key={category}>
           <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-            {oeuvre}
+            {entretienCategoryLabel[category] ?? category}
           </h2>
           <div className="mt-3 space-y-3">
-            {qs.map((q) => (
+            {byCategory.get(category)!.map((q) => (
               <EntretienQuestionCard key={q.id} question={q} />
             ))}
           </div>
