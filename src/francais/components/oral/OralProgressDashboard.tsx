@@ -7,18 +7,18 @@ import {
   getOralStudentTextes,
 } from '@/francais/lib/french-content-loader';
 
-type DashboardItem = {
+type ChecklistItem = {
   key: string;
   label: string;
   sub?: string;
   to: string;
 };
 
-type DashboardSection = {
+type ChecklistSection = {
   title: string;
   badge?: string;
   to: string;
-  items: DashboardItem[];
+  items: ChecklistItem[];
 };
 
 function ProgressBar({ done, total }: { done: number; total: number }) {
@@ -39,13 +39,13 @@ function ProgressBar({ done, total }: { done: number; total: number }) {
 }
 
 /**
- * Tableau de bord d'avancement de l'oral, affiché en tête de l'accueil élève.
- * Chaque élément (texte, point de grammaire, œuvre choisie, entretien) peut être
- * coché manuellement ; il se barre et la barre de progression se remplit.
+ * Tableau de bord d'avancement de l'oral (accueil élève). En LECTURE SEULE :
+ * il reflète l'état coché depuis les fiches (textes, grammaire, œuvre choisie)
+ * et les statuts de questions d'entretien. On coche depuis les fiches, pas ici.
  */
 export default function OralProgressDashboard({ eleve }: { eleve: string }) {
   const checks = useFrenchProgressStore((s) => s.oralChecks);
-  const toggle = useFrenchProgressStore((s) => s.toggleOralCheck);
+  const statusMap = useFrenchProgressStore((s) => s.oralStatus);
 
   const base = `/francais/oral/${eleve}`;
   const textes = getOralStudentTextes(eleve);
@@ -53,7 +53,7 @@ export default function OralProgressDashboard({ eleve }: { eleve: string }) {
   const oeuvre = getOralStudentOeuvre(eleve);
   const { grammaireFiches } = getOralContent();
 
-  const sections: DashboardSection[] = [
+  const checklistSections: ChecklistSection[] = [
     {
       title: 'Textes du descriptif',
       badge: 'P1',
@@ -81,44 +81,30 @@ export default function OralProgressDashboard({ eleve }: { eleve: string }) {
       to: `${base}/oeuvre`,
       items: oeuvre
         ? [
-            {
-              key: `${eleve}::oeuvre`,
-              label: oeuvre.oeuvre,
-              sub: oeuvre.auteur,
-              to: `${base}/oeuvre`,
-            },
+            { key: `${eleve}::oeuvre::pourquoi`, label: 'Pourquoi ce choix', to: `${base}/oeuvre` },
+            { key: `${eleve}::oeuvre::presentation`, label: `Présentation de l'œuvre`, to: `${base}/oeuvre` },
+            { key: `${eleve}::oeuvre::jugement`, label: 'Jugement personnel', to: `${base}/oeuvre` },
           ]
         : [],
     },
-    {
-      title: 'Entretien',
-      badge: 'P2',
-      to: `${base}/entretien`,
-      items:
-        entretien.length > 0
-          ? [
-              {
-                key: `${eleve}::entretien`,
-                label: `Mes réponses d'entretien`,
-                sub: `${entretien.length} questions`,
-                to: `${base}/entretien`,
-              },
-            ]
-          : [],
-    },
   ].filter((s) => s.items.length > 0);
 
-  const allItems = sections.flatMap((s) => s.items);
-  const totalDone = allItems.filter((i) => checks[i.key]).length;
-  const totalItems = allItems.length;
+  // Entretien : suivi par statut (maîtrisée / à retravailler), affiché en synthèse.
+  const eqKeys = entretien.map((q) => `${eleve}::eq::${q.id}`);
+  const eqDone = eqKeys.filter((k) => statusMap[k] === 'done').length;
+  const eqReview = eqKeys.filter((k) => statusMap[k] === 'review').length;
+  const eqTotal = entretien.length;
+
+  const checklistItems = checklistSections.flatMap((s) => s.items);
+  const checklistDone = checklistItems.filter((i) => checks[i.key]).length;
+  const totalDone = checklistDone + eqDone;
+  const totalItems = checklistItems.length + eqTotal;
   const allDone = totalItems > 0 && totalDone === totalItems;
 
   return (
     <section className="mt-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-sm font-bold text-slate-900 dark:text-slate-100">
-          Mon avancement
-        </h2>
+        <h2 className="text-sm font-bold text-slate-900 dark:text-slate-100">Mon avancement</h2>
         <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-bold text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
           {totalItems === 0 ? '—' : `${Math.round((totalDone / totalItems) * 100)} %`}
         </span>
@@ -126,14 +112,14 @@ export default function OralProgressDashboard({ eleve }: { eleve: string }) {
       <div className="mt-2">
         <ProgressBar done={totalDone} total={totalItems} />
       </div>
-      {allDone && (
-        <p className="mt-2 text-xs font-medium text-emerald-700 dark:text-emerald-400">
-          🎉 Tout est révisé — bravo, tu es prêt(e) !
-        </p>
-      )}
+      <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+        {allDone
+          ? '🎉 Tout est révisé — bravo, tu es prêt(e) !'
+          : 'On coche l’avancée directement depuis chaque fiche ; ce tableau s’actualise tout seul.'}
+      </p>
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        {sections.map((section) => {
+        {checklistSections.map((section) => {
           const done = section.items.filter((i) => checks[i.key]).length;
           return (
             <div
@@ -161,20 +147,17 @@ export default function OralProgressDashboard({ eleve }: { eleve: string }) {
                   const checked = !!checks[item.key];
                   return (
                     <li key={item.key} className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        aria-pressed={checked}
-                        onClick={() => toggle(item.key)}
-                        title={checked ? 'Révisé — cliquer pour décocher' : 'Marquer comme révisé'}
+                      <span
+                        aria-hidden
                         className={[
-                          'flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[11px] transition-colors',
+                          'flex h-4 w-4 shrink-0 items-center justify-center rounded-full border text-[10px]',
                           checked
                             ? 'border-emerald-500 bg-emerald-500 text-white'
-                            : 'border-slate-300 dark:border-slate-600 text-transparent hover:border-emerald-400',
+                            : 'border-slate-300 dark:border-slate-600 text-transparent',
                         ].join(' ')}
                       >
                         ✓
-                      </button>
+                      </span>
                       <Link
                         to={item.to}
                         className={[
@@ -198,6 +181,38 @@ export default function OralProgressDashboard({ eleve }: { eleve: string }) {
             </div>
           );
         })}
+
+        {eqTotal > 0 && (
+          <div className="rounded-lg border border-slate-100 dark:border-slate-700/60 p-3">
+            <div className="flex items-center gap-2">
+              <span className="rounded bg-emerald-100 px-1 py-0.5 text-[10px] font-bold leading-none text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+                P2
+              </span>
+              <Link
+                to={`${base}/entretien`}
+                className="text-sm font-semibold text-slate-800 hover:text-emerald-700 dark:text-slate-200 dark:hover:text-emerald-400"
+              >
+                Entretien
+              </Link>
+            </div>
+            <div className="mt-2">
+              <ProgressBar done={eqDone} total={eqTotal} />
+            </div>
+            <div className="mt-2 flex flex-wrap gap-2 text-xs">
+              <span className="rounded-full bg-emerald-50 px-2 py-0.5 font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+                ✓ {eqDone} maîtrisée{eqDone > 1 ? 's' : ''}
+              </span>
+              {eqReview > 0 && (
+                <span className="rounded-full bg-amber-50 px-2 py-0.5 font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
+                  ↻ {eqReview} à retravailler
+                </span>
+              )}
+              <span className="rounded-full bg-slate-100 px-2 py-0.5 font-medium text-slate-500 dark:bg-slate-700 dark:text-slate-400">
+                {eqTotal} au total
+              </span>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

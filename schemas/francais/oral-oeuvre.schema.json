@@ -112,12 +112,13 @@
         "pourquoiCeChoix": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["argumentaire"],
+          "required": ["points"],
           "properties": {
-            "argumentaire": {
-              "type": "string",
-              "minLength": 1,
-              "description": "Justification du choix, rédigée comme un appui à s'approprier (Markdown)."
+            "points": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 },
+              "description": "Justification du choix découpée en points à dire (puces), à s'approprier. Chaque point = une idée/raison rédigée (Markdown)."
             },
             "pistes": {
               "type": "array",
@@ -152,12 +153,13 @@
         "jugementPersonnel": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["argumentaire"],
+          "required": ["points"],
           "properties": {
-            "argumentaire": {
-              "type": "string",
-              "minLength": 1,
-              "description": "Jugement personnel argumenté, appuyé sur des exemples précis, à s'approprier (Markdown)."
+            "points": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 },
+              "description": "Jugement personnel argumenté découpé en points à dire (puces), appuyés sur des exemples précis (Markdown)."
             },
             "pistes": {
               "type": "array",

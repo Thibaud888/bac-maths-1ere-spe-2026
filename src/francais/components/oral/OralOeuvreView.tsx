@@ -7,6 +7,7 @@ import type {
 } from '@/francais/lib/french-types';
 import AdjustableTimer from './AdjustableTimer';
 import RevealPanel from './RevealPanel';
+import RevisedToggle from './RevisedToggle';
 
 type OralOeuvreViewProps = {
   oeuvre: OralOeuvre;
@@ -54,7 +55,7 @@ function PersonalNote({
   );
 }
 
-/** Un « temps » de la présentation reposant sur un argumentaire + pistes. */
+/** Un « temps » de la présentation reposant sur des points à dire + pistes. */
 function ArgumentBlock({
   arg,
   noteKey,
@@ -66,9 +67,19 @@ function ArgumentBlock({
 }) {
   return (
     <div>
-      <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">
-        <LiteraryText text={arg.argumentaire} />
-      </div>
+      <ul className="space-y-2">
+        {arg.points.map((p, i) => (
+          <li
+            key={i}
+            className="flex gap-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4"
+          >
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+            <div className="min-w-0">
+              <LiteraryText text={p} />
+            </div>
+          </li>
+        ))}
+      </ul>
       {arg.pistes && arg.pistes.length > 0 && (
         <div className="mt-3">
           <RevealPanel label="Autres pistes à développer">
@@ -162,6 +173,13 @@ export default function OralOeuvreView({ oeuvre }: OralOeuvreViewProps) {
           notePlaceholder="Ma version personnelle du « pourquoi ce choix »…"
         />
       </div>
+      <div className="mt-3">
+        <RevisedToggle
+          checkKey={`${eleve ?? ''}::oeuvre::pourquoi`}
+          compactLabel
+          label="Marquer ce temps comme revu"
+        />
+      </div>
 
       <h3 className="mt-6 text-base font-semibold text-slate-900 dark:text-slate-100">
         2. Présentation de l’œuvre
@@ -181,6 +199,13 @@ export default function OralOeuvreView({ oeuvre }: OralOeuvreViewProps) {
           </div>
         ))}
       </div>
+      <div className="mt-3">
+        <RevisedToggle
+          checkKey={`${eleve ?? ''}::oeuvre::presentation`}
+          compactLabel
+          label="Marquer ce temps comme revu"
+        />
+      </div>
 
       <h3 className="mt-6 text-base font-semibold text-slate-900 dark:text-slate-100">
         3. Mon jugement personnel
@@ -190,6 +215,13 @@ export default function OralOeuvreView({ oeuvre }: OralOeuvreViewProps) {
           arg={pres.jugementPersonnel}
           noteKey={`${ns}:jugement`}
           notePlaceholder="Ma version personnelle du jugement…"
+        />
+      </div>
+      <div className="mt-3">
+        <RevisedToggle
+          checkKey={`${eleve ?? ''}::oeuvre::jugement`}
+          compactLabel
+          label="Marquer ce temps comme revu"
         />
       </div>
 

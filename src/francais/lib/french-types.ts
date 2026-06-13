@@ -312,7 +312,8 @@ export type OralOeuvrePassage = {
 };
 
 export type OralOeuvreArgument = {
-  argumentaire: string;
+  /** Argumentaire découpé en points à dire (puces). */
+  points: string[];
   pistes?: string[];
 };
 

@@ -3,6 +3,7 @@ import type {
   FlashcardDeck,
   FrenchAccent,
   OralText,
+  QuizItem,
 } from '@/francais/lib/french-types';
 import {
   getOralContent,
@@ -38,6 +39,57 @@ export function buildOralExpressDecks(eleve: string): FlashcardDeck[] {
   if (entretien) decks.push(entretien);
 
   return decks;
+}
+
+/**
+ * Convertit le quiz de grammaire (commun) en deck de flashcards Q→R pour le
+ * « Quiz éclair » : la réponse est révélée directement, et l'élève marque la
+ * carte « Je savais » (validée → ne réapparaît plus) ou « À revoir ». Réutilise
+ * le moteur de flashcards et la persistance `flashcardDecisions`.
+ */
+export function buildGrammarQuizDeck(eleve: string): FlashcardDeck | null {
+  const { grammaireQuiz } = getOralContent();
+  const cards: Flashcard[] = grammaireQuiz.map((q) => ({
+    id: `flo-${eleve}-gquiz-${q.id}`,
+    deck: 'oral-grammaire-quiz',
+    front: quizFront(q),
+    back: quizBack(q),
+    accent: 'blue',
+  }));
+  return makeDeck(
+    'oral-grammaire-quiz',
+    'Quiz éclair de grammaire',
+    'Question → réponse : valide ce que tu sais, garde le reste à revoir.',
+    'blue',
+    1,
+    cards
+  );
+}
+
+/** Énoncé d'une question de quiz, avec ses choix listés s'il y en a. */
+function quizFront(q: QuizItem): string {
+  if (q.type === 'ordering' && q.items && q.items.length > 0) {
+    return `${q.statement}\n\n*Dans quel ordre ?*`;
+  }
+  if (q.choices && q.choices.length > 0) {
+    const list = q.choices.map((c) => `- ${c}`).join('\n');
+    return `${q.statement}\n\n${list}`;
+  }
+  return q.statement;
+}
+
+/** Réponse correcte d'une question de quiz + explication. */
+function quizBack(q: QuizItem): string {
+  let answer = '';
+  if (q.type === 'qcm' && q.choices && typeof q.answer === 'number') {
+    answer = `**Réponse :** ${q.choices[q.answer]}`;
+  } else if (q.type === 'multi' && q.choices && q.answers) {
+    const good = q.answers.map((i) => q.choices![i]).join(' · ');
+    answer = `**Réponses :** ${good}`;
+  } else if (q.type === 'ordering' && q.items) {
+    answer = `**Ordre :** ${q.items.join(' → ')}`;
+  }
+  return answer ? `${answer}\n\n${q.explanation}` : q.explanation;
 }
 
 function makeDeck(
@@ -161,7 +213,7 @@ function buildOeuvreDeck(eleve: string): FlashcardDeck | null {
     id: `flo-${eleve}-oeuvre-pourquoi`,
     deck: 'oral-oeuvre',
     front: `${oeuvre.oeuvre} — Pourquoi avoir choisi cette œuvre ?`,
-    back: pres.pourquoiCeChoix.argumentaire,
+    back: pres.pourquoiCeChoix.points.map((p) => `- ${p}`).join('\n'),
     accent: 'violet',
   });
 
@@ -179,7 +231,7 @@ function buildOeuvreDeck(eleve: string): FlashcardDeck | null {
     id: `flo-${eleve}-oeuvre-jugement`,
     deck: 'oral-oeuvre',
     front: `${oeuvre.oeuvre} — Mon jugement personnel`,
-    back: pres.jugementPersonnel.argumentaire,
+    back: pres.jugementPersonnel.points.map((p) => `- ${p}`).join('\n'),
     accent: 'violet',
   });
 
@@ -210,7 +262,9 @@ function buildEntretienDeck(eleve: string): FlashcardDeck | null {
     .map((q) => ({
       id: `flo-${eleve}-entretien-${q.id}`,
       deck: 'oral-entretien',
-      front: q.question,
+      // Préfixe l'œuvre : les cartes sont mélangées avec d'autres decks, on
+      // rappelle qu'il s'agit de l'entretien sur l'œuvre choisie.
+      front: `*${q.oeuvre}* (entretien) — ${q.question}`,
       back: q.reponseEssentielle!,
       accent: 'amber',
     }));
