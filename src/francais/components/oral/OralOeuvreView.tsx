@@ -166,8 +166,20 @@ export default function OralOeuvreView({ oeuvre }: OralOeuvreViewProps) {
       <h3 className="mt-6 text-base font-semibold text-slate-900 dark:text-slate-100">
         2. Présentation de l’œuvre
       </h3>
-      <div className="mt-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">
-        <LiteraryText text={pres.fil} />
+      <div className="mt-2 space-y-2">
+        {pres.fil.map((segment, i) => (
+          <div
+            key={i}
+            className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4"
+          >
+            <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+              {segment.titre}
+            </p>
+            <div className="mt-1">
+              <LiteraryText text={segment.contenu} />
+            </div>
+          </div>
+        ))}
       </div>
 
       <h3 className="mt-6 text-base font-semibold text-slate-900 dark:text-slate-100">

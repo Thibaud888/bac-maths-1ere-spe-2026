@@ -4,6 +4,7 @@ import {
   getOralStudent,
   getOralStudentOeuvre,
 } from '@/francais/lib/french-content-loader';
+import OralProgressDashboard from '@/francais/components/oral/OralProgressDashboard';
 
 const baremeRows: ReadonlyArray<{ partie: string; item: string; points: string }> = [
   { partie: '1ʳᵉ partie (12 pts)', item: 'Lecture à voix haute', points: '2' },
@@ -102,6 +103,12 @@ export default function OralHomePage() {
 
   const outils: AccessCard[] = [
     {
+      to: 'express',
+      icon: '⚡',
+      title: 'Révision express',
+      subtitle: 'Flashcards qui tournent + quiz éclair pour réviser vite.',
+    },
+    {
       to: 'methode',
       icon: '🧭',
       title: 'Méthode',
@@ -152,6 +159,8 @@ export default function OralHomePage() {
           </ul>
         </div>
       )}
+
+      {eleve && <OralProgressDashboard eleve={eleve} />}
 
       {/* Barème */}
       <div className="mt-6 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">

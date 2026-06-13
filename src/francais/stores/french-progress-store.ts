@@ -20,9 +20,16 @@ export type FlashcardDecision = 'known' | 'skip';
 type FrenchProgressState = {
   items: Record<string, FrenchItemProgress>;
   flashcardDecisions: Record<string, FlashcardDecision>;
+  /**
+   * Cases « révisé » cochées manuellement par l'élève (suivi d'avancement de
+   * l'oral). Clés namespacées : `${eleve}::text::${id}`, `${eleve}::gram::${id}`,
+   * `${eleve}::oeuvre`, `${eleve}::entretien`.
+   */
+  oralChecks: Record<string, boolean>;
   recordAttempt: (id: string, succeeded: boolean) => void;
   setFlashcardDecision: (id: string, decision: FlashcardDecision) => void;
   clearFlashcardDecisions: (ids: string[]) => void;
+  toggleOralCheck: (key: string) => void;
   reset: (id?: string) => void;
   countSucceeded: (kind: FrenchItemKind) => number;
 };
@@ -49,6 +56,7 @@ export const useFrenchProgressStore = create<FrenchProgressState>()(
     (set, get) => ({
       items: {},
       flashcardDecisions: {},
+      oralChecks: {},
       recordAttempt: (id, succeeded) => {
         set((state) => {
           const previous = state.items[id];
@@ -70,6 +78,14 @@ export const useFrenchProgressStore = create<FrenchProgressState>()(
           const next = { ...state.flashcardDecisions };
           for (const id of ids) delete next[id];
           return { flashcardDecisions: next };
+        });
+      },
+      toggleOralCheck: (key) => {
+        set((state) => {
+          const next = { ...state.oralChecks };
+          if (next[key]) delete next[key];
+          else next[key] = true;
+          return { oralChecks: next };
         });
       },
       reset: (id) => {

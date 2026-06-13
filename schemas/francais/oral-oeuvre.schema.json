@@ -127,9 +127,27 @@
           }
         },
         "fil": {
-          "type": "string",
-          "minLength": 1,
-          "description": "Fil de la présentation organisée de l'œuvre (auteur, enjeux, structure, personnages), à dire à l'oral (Markdown)."
+          "type": "array",
+          "minItems": 2,
+          "description": "Présentation organisée de l'œuvre découpée en sous-points titrés (ex. Auteur · Intrigue · Structure · Enjeux), à dire à l'oral. Chaque segment a un intertitre court et un contenu rédigé.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["titre", "contenu"],
+            "properties": {
+              "titre": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60,
+                "description": "Intertitre court du sous-point. Ex : « L'auteur », « L'intrigue », « La structure », « Les enjeux »."
+              },
+              "contenu": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Contenu rédigé du sous-point, à dire à l'oral (Markdown)."
+              }
+            }
+          }
         },
         "jugementPersonnel": {
           "type": "object",
