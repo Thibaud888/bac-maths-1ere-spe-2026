@@ -97,10 +97,6 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-
-          <span className="mt-auto pt-4 text-sm font-semibold text-indigo-700 dark:text-indigo-300 group-hover:underline">
-            Réviser →
-          </span>
         </Link>
       </section>
     </div>
