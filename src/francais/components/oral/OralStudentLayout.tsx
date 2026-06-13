@@ -8,12 +8,6 @@ import { useFrenchAppStore } from '@/francais/stores/french-app-store';
 import OralTabs from './OralTabs';
 import OralViewModeToggle from './OralViewModeToggle';
 
-/**
- * Espace oral d'un élève : garde le paramètre `:eleve`, mémorise le dernier
- * élève ouvert, et affiche l'en-tête (nom + « changer d'élève ») au-dessus des
- * onglets. Le contenu propre à l'élève (textes, entretien) est résolu dans les
- * pages enfant.
- */
 export default function OralStudentLayout() {
   const { eleve } = useParams<{ eleve: string }>();
   const setLastOralStudent = useFrenchAppStore((s) => s.setLastOralStudent);
@@ -35,18 +29,18 @@ export default function OralStudentLayout() {
   return (
     <>
       <div className="flex items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40 px-6 py-2">
-        <p className="truncate text-sm font-semibold text-slate-700 dark:text-slate-300">
-          🎓 {student?.nom ?? eleve}
-        </p>
-        <div className="flex shrink-0 items-center gap-3">
-          <OralViewModeToggle value={oralViewMode} onChange={setOralViewMode} />
+        <div className="flex min-w-0 items-center gap-3">
+          <p className="truncate text-sm font-semibold text-slate-700 dark:text-slate-300">
+            🎓 {student?.nom ?? eleve}
+          </p>
           <Link
             to="/francais/oral"
-            className="text-xs font-medium text-emerald-700 dark:text-emerald-400 hover:underline"
+            className="shrink-0 text-xs font-medium text-emerald-700 dark:text-emerald-400 hover:underline"
           >
-            ← Changer d’élève
+            Changer d&apos;élève
           </Link>
         </div>
+        <OralViewModeToggle value={oralViewMode} onChange={setOralViewMode} />
       </div>
       <OralTabs eleve={eleve} />
       <Outlet />
