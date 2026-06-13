@@ -28,6 +28,7 @@ import OralMethodePage from '@/francais/routes/oral/OralMethodePage';
 import OralGrammairePage from '@/francais/routes/oral/OralGrammairePage';
 import OralEntretienPage from '@/francais/routes/oral/OralEntretienPage';
 import OralEpreuvePage from '@/francais/routes/oral/OralEpreuvePage';
+import OralOeuvrePage from '@/francais/routes/oral/OralOeuvrePage';
 import OralSimulateurPage from '@/francais/routes/oral/OralSimulateurPage';
 
 export default function App() {
@@ -70,6 +71,7 @@ export default function App() {
             <Route path="textes/:id" element={<OralTextDetailPage />} />
             <Route path="methode" element={<OralMethodePage />} />
             <Route path="grammaire" element={<OralGrammairePage />} />
+            <Route path="oeuvre" element={<OralOeuvrePage />} />
             <Route path="entretien" element={<OralEntretienPage />} />
             <Route path="simulateur" element={<OralSimulateurPage />} />
           </Route>

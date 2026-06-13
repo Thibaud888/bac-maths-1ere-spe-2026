@@ -63,6 +63,7 @@ const oralStudentValidators = {
   'profil.json': { validate: loadValidator('oral-student.schema.json'), array: false },
   'textes.json': { validate: loadValidator('oral-text.schema.json'), array: true },
   'entretien.json': { validate: loadValidator('entretien-question.schema.json'), array: true },
+  'oeuvre.json': { validate: loadValidator('oral-oeuvre.schema.json'), array: false },
 };
 
 const modulesDir = join(root, 'content', 'francais');

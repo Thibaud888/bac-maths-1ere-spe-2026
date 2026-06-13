@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import {
   getOralContent,
   getOralStudent,
+  getOralStudentOeuvre,
 } from '@/francais/lib/french-content-loader';
 
 const baremeRows: ReadonlyArray<{ partie: string; item: string; points: string }> = [
@@ -62,6 +63,7 @@ export default function OralHomePage() {
   const { eleve } = useParams<{ eleve: string }>();
   const { meta } = getOralContent();
   const student = eleve ? getOralStudent(eleve) : null;
+  const oeuvreChoisie = eleve ? getOralStudentOeuvre(eleve) : null;
   const base = `/francais/oral/${eleve ?? ''}`;
 
   const partie1: AccessCard[] = [
@@ -92,9 +94,8 @@ export default function OralHomePage() {
     {
       to: 'entretien',
       icon: '💬',
-      title: 'Présentation d’une œuvre + entretien',
-      subtitle: 'Présenter une œuvre choisie, puis échanger avec l’examinateur.',
-      points: '8 pts',
+      title: 'Entretien',
+      subtitle: 'Les questions possibles de l’examinateur + mes réponses.',
     },
   ];
 
@@ -187,6 +188,23 @@ export default function OralHomePage() {
 
       {/* Partie 2 */}
       <ZoneTitle label="Partie 2 — sur une œuvre" badge="8 pts" />
+      {oeuvreChoisie && (
+        <Link
+          to={`${base}/oeuvre`}
+          className="mt-3 block rounded-xl border border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-900/20 p-4 shadow-sm transition-colors hover:border-amber-400"
+        >
+          <p className="text-xs font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+            🎯 Mon œuvre choisie
+          </p>
+          <p className="mt-1 font-semibold text-slate-900 dark:text-slate-100">
+            <span className="italic">{oeuvreChoisie.oeuvre}</span>
+            {oeuvreChoisie.auteur ? ` — ${oeuvreChoisie.auteur}` : ''}
+          </p>
+          <p className="mt-1 text-sm text-amber-800 dark:text-amber-300">
+            Ma présentation en 3 temps (pourquoi ce choix, l’œuvre, mon avis).
+          </p>
+        </Link>
+      )}
       <div className="mt-3 grid gap-3">
         {partie2.map((card, i) => (
           <CardLink key={`p2-${i}`} base={base} card={card} />

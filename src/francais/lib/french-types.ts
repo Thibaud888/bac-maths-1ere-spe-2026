@@ -293,6 +293,70 @@ export type OralMeta = {
   accent?: FrenchAccent;
 };
 
+export type OralOeuvrePersonnage = {
+  nom: string;
+  role: string;
+  description?: string;
+};
+
+export type OralOeuvreTheme = {
+  titre: string;
+  developpement: string;
+};
+
+export type OralOeuvrePassage = {
+  titre: string;
+  situation: string;
+  interet: string;
+  reference?: string;
+};
+
+export type OralOeuvreArgument = {
+  argumentaire: string;
+  pistes?: string[];
+};
+
+export type OralOeuvrePresentation = {
+  pourquoiCeChoix: OralOeuvreArgument;
+  fil: string;
+  jugementPersonnel: OralOeuvreArgument;
+};
+
+export type OralOeuvreOuverture = {
+  type?: string;
+  cible: string;
+  lien: string;
+};
+
+/**
+ * Dossier de l'œuvre choisie par l'élève pour la 2ᵈᵉ partie de l'oral (8 pts).
+ * Un objet par élève, sous `content/francais/oral/eleves/<id>/oeuvre.json`.
+ * Si `domainePublic` est `false`, aucune citation longue (collage local au
+ * runtime, jamais commité).
+ */
+export type OralOeuvre = {
+  oeuvre: string;
+  auteur: string;
+  date?: string;
+  genre?: string;
+  editeur?: string;
+  distinction?: string;
+  parcours?: string;
+  domainePublic: boolean;
+  accroche?: string;
+  auteurNotice?: string;
+  contexte?: string;
+  resume?: string;
+  structure?: string;
+  personnages?: OralOeuvrePersonnage[];
+  themes?: OralOeuvreTheme[];
+  passagesCles?: OralOeuvrePassage[];
+  presentationOrale: OralOeuvrePresentation;
+  ouvertures?: OralOeuvreOuverture[];
+  accent?: FrenchAccent;
+  tags?: string[];
+};
+
 /** Une œuvre intégrale au programme d'un élève (affichage + repère entretien). */
 export type OralStudentOeuvre = {
   oeuvre: string;

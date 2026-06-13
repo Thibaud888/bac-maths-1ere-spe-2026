@@ -19,6 +19,7 @@ export default function OralTabs({ eleve }: OralTabsProps) {
     { to: base, label: 'Tableau de bord', end: true },
     { to: `${base}/textes`, label: 'Textes', end: false, part: 1 },
     { to: `${base}/grammaire`, label: 'Grammaire', end: false, part: 1 },
+    { to: `${base}/oeuvre`, label: 'Œuvre choisie', end: false, part: 2 },
     { to: `${base}/entretien`, label: 'Entretien', end: false, part: 2 },
     { to: `${base}/methode`, label: 'Méthode', end: false },
     { to: `${base}/epreuve`, label: 'L’épreuve', end: false },

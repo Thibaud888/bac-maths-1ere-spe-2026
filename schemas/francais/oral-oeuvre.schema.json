@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "oral-oeuvre.schema.json",
+  "title": "Œuvre choisie (Oral EAF — 2ᵈᵉ partie)",
+  "description": "Dossier de présentation de l'œuvre choisie par l'élève pour la seconde partie de l'oral (8 pts) : carte d'identité, référentiel de fond (auteur, contexte, résumé, structure, personnages, thèmes, passages clés) et déroulé oral récitable en 3 temps (pourquoi ce choix → présentation → jugement personnel). Un seul objet par élève. Markdown enrichi, sans LaTeX. Si domainePublic = false (œuvre sous droits), aucune citation longue : l'élève colle ses extraits au runtime (collage local).",
+  "type": "object",
+  "required": ["oeuvre", "auteur", "domainePublic", "presentationOrale"],
+  "additionalProperties": false,
+  "properties": {
+    "oeuvre": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Titre de l'œuvre choisie. Ex : « Petit pays »."
+    },
+    "auteur": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Auteur de l'œuvre."
+    },
+    "date": {
+      "type": "string",
+      "description": "Date de publication (chaîne d'affichage). Ex : « 2016 »."
+    },
+    "genre": {
+      "type": "string",
+      "description": "Genre / forme. Ex : « Récit d'enfance autobiographique »."
+    },
+    "editeur": {
+      "type": "string",
+      "description": "Maison d'édition de la publication d'origine."
+    },
+    "distinction": {
+      "type": "string",
+      "description": "Prix ou distinction notable. Ex : « Prix Goncourt des lycéens 2016 »."
+    },
+    "parcours": {
+      "type": "string",
+      "description": "Mention libre (lecture cursive, lien avec un parcours…) affichée en sous-titre."
+    },
+    "domainePublic": {
+      "type": "boolean",
+      "description": "true si l'œuvre est dans le domaine public. false ⇒ aucune citation longue dans le JSON (copyright) ; l'élève colle ses extraits au runtime."
+    },
+    "accroche": {
+      "type": "string",
+      "description": "Phrase d'accroche facultative pour ouvrir la présentation orale."
+    },
+    "auteurNotice": {
+      "type": "string",
+      "description": "Présentation de l'auteur, en lien avec l'œuvre (Markdown)."
+    },
+    "contexte": {
+      "type": "string",
+      "description": "Contexte historique / littéraire utile à la compréhension de l'œuvre (Markdown)."
+    },
+    "resume": {
+      "type": "string",
+      "description": "Résumé de l'intrigue / du propos (Markdown)."
+    },
+    "structure": {
+      "type": "string",
+      "description": "Composition de l'œuvre : structure, organisation, point de vue narratif (Markdown)."
+    },
+    "personnages": {
+      "type": "array",
+      "description": "Personnages principaux : nom + rôle + brève caractérisation.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["nom", "role"],
+        "properties": {
+          "nom": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "minLength": 1, "description": "Rôle / fonction dans l'œuvre." },
+          "description": { "type": "string", "description": "Caractérisation brève (Markdown)." }
+        }
+      }
+    },
+    "themes": {
+      "type": "array",
+      "description": "Thèmes / enjeux majeurs de l'œuvre.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["titre", "developpement"],
+        "properties": {
+          "titre": { "type": "string", "minLength": 1 },
+          "developpement": { "type": "string", "minLength": 1, "description": "Développement du thème (Markdown)." }
+        }
+      }
+    },
+    "passagesCles": {
+      "type": "array",
+      "description": "Passages / scènes marquants à pouvoir évoquer. PAS de citation longue si domainePublic = false (l'élève colle son extrait en local).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["titre", "situation", "interet"],
+        "properties": {
+          "titre": { "type": "string", "minLength": 1 },
+          "situation": { "type": "string", "minLength": 1, "description": "Où se situe le passage / de quoi il s'agit." },
+          "interet": { "type": "string", "minLength": 1, "description": "Intérêt d'analyse : ce que le passage révèle, pourquoi le citer." },
+          "reference": { "type": "string", "description": "Repère (chapitre, page approximative) sans reproduction du texte." }
+        }
+      }
+    },
+    "presentationOrale": {
+      "type": "object",
+      "description": "Déroulé récitable (~2 à 3 min) en 3 temps : pourquoi ce choix → présentation de l'œuvre → jugement personnel.",
+      "additionalProperties": false,
+      "required": ["pourquoiCeChoix", "fil", "jugementPersonnel"],
+      "properties": {
+        "pourquoiCeChoix": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["argumentaire"],
+          "properties": {
+            "argumentaire": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Justification du choix, rédigée comme un appui à s'approprier (Markdown)."
+            },
+            "pistes": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Pistes complémentaires que l'élève peut développer à sa main."
+            }
+          }
+        },
+        "fil": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Fil de la présentation organisée de l'œuvre (auteur, enjeux, structure, personnages), à dire à l'oral (Markdown)."
+        },
+        "jugementPersonnel": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["argumentaire"],
+          "properties": {
+            "argumentaire": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Jugement personnel argumenté, appuyé sur des exemples précis, à s'approprier (Markdown)."
+            },
+            "pistes": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Autres angles d'appréciation que l'élève peut faire siens."
+            }
+          }
+        }
+      }
+    },
+    "ouvertures": {
+      "type": "array",
+      "description": "Liens et ouvertures pour l'entretien (autres œuvres, parcours, films, thèmes).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["cible", "lien"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Nature du lien. Ex : « œuvre du descriptif », « film », « thème »."
+          },
+          "cible": { "type": "string", "minLength": 1, "description": "Œuvre / auteur / objet du rapprochement." },
+          "lien": { "type": "string", "minLength": 1, "description": "En quoi consiste le rapprochement (Markdown)." }
+        }
+      }
+    },
+    "accent": {
+      "type": "string",
+      "enum": ["red", "blue", "amber", "emerald", "violet", "slate"]
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
