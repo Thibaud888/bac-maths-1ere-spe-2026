@@ -31,7 +31,7 @@ export default function OralStudentLayout() {
       <div className="flex items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40 px-6 py-2">
         <div className="flex min-w-0 items-center gap-3">
           <p className="truncate text-sm font-semibold text-slate-700 dark:text-slate-300">
-            🎓 {student?.nom ?? eleve}
+            {student?.nom ?? eleve}
           </p>
           <Link
             to="/francais/oral"

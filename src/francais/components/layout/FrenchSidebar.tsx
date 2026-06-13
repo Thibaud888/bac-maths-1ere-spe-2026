@@ -1,23 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { listFrenchModules } from '@/francais/lib/french-content-loader';
-import SubjectSwitcher from '@/francais/components/layout/SubjectSwitcher';
 import type { FrenchFamily } from '@/francais/lib/french-types';
-
-const indNavLinkClass = ({ isActive }: { isActive: boolean }): string =>
-  [
-    'block rounded px-3 py-2 text-sm transition-colors',
-    isActive
-      ? 'bg-indigo-600 text-white'
-      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700',
-  ].join(' ');
-
-const emNavLinkClass = ({ isActive }: { isActive: boolean }): string =>
-  [
-    'block rounded px-3 py-2 text-sm transition-colors',
-    isActive
-      ? 'bg-emerald-600 text-white'
-      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700',
-  ].join(' ');
 
 const familyLabels: Record<FrenchFamily, string> = {
   methode: 'Méthode',
@@ -25,224 +8,118 @@ const familyLabels: Record<FrenchFamily, string> = {
   'objet-etude': 'Objets d’étude',
 };
 
+const familyDot: Record<FrenchFamily, string> = {
+  methode: 'bg-blue-500',
+  reperes: 'bg-amber-500',
+  'objet-etude': 'bg-emerald-500',
+};
+
 const familyOrder: FrenchFamily[] = ['methode', 'reperes', 'objet-etude'];
 
-function ZoneHeader({ accent, children }: { accent: 'emerald' | 'indigo'; children: string }) {
-  const bar = accent === 'emerald' ? 'bg-emerald-500' : 'bg-indigo-500';
-  const text =
-    accent === 'emerald'
-      ? 'text-emerald-700 dark:text-emerald-400'
-      : 'text-indigo-700 dark:text-indigo-400';
-  return (
-    <div className="mt-2 flex items-center gap-2 px-3">
-      <span className={`h-3 w-1 rounded-full ${bar}`} />
-      <p className={`text-xs font-bold uppercase tracking-wider ${text}`}>{children}</p>
-    </div>
-  );
+function mainLinkClass({ isActive }: { isActive: boolean }): string {
+  return [
+    'block rounded-md px-3 py-2 text-sm font-medium transition-colors',
+    isActive
+      ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
+      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100',
+  ].join(' ');
 }
 
-function SectionLabel({ children }: { children: string }) {
-  return (
-    <p className="mt-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-      {children}
-    </p>
-  );
+function oralLinkClass({ isActive }: { isActive: boolean }): string {
+  return [
+    'block rounded-md px-3 py-2 text-sm font-medium transition-colors',
+    isActive
+      ? 'bg-emerald-600 text-white'
+      : 'text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40',
+  ].join(' ');
 }
 
-function OralStudentSidebar({ eleve }: { eleve: string }) {
-  const base = `/francais/oral/${eleve}`;
-  return (
-    <nav className="flex-1 overflow-y-auto p-3">
-      <NavLink to="/francais" end className={indNavLinkClass}>
-        ← Accueil
-      </NavLink>
-
-      <div className="mt-3 rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50/40 dark:bg-emerald-900/10 p-2">
-        <ZoneHeader accent="emerald">🎙️ Oral</ZoneHeader>
-
-        <NavLink
-          to={base}
-          end
-          className={({ isActive }) =>
-            [
-              'mt-2 block rounded px-3 py-2 text-sm font-semibold transition-colors',
-              isActive
-                ? 'bg-emerald-600 text-white'
-                : 'text-emerald-800 hover:bg-emerald-100 dark:text-emerald-200 dark:hover:bg-emerald-900/40',
-            ].join(' ')
-          }
-        >
-          Tableau de bord
-        </NavLink>
-
-        <SectionLabel>Partie 1 · 12 pts</SectionLabel>
-        <ul className="mt-1 space-y-1">
-          <li>
-            <NavLink to={`${base}/textes`} className={emNavLinkClass}>
-              📖 Textes du descriptif
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={`${base}/grammaire`} className={emNavLinkClass}>
-              🔤 Grammaire
-            </NavLink>
-          </li>
-        </ul>
-
-        <SectionLabel>Partie 2 · 8 pts</SectionLabel>
-        <ul className="mt-1 space-y-1">
-          <li>
-            <NavLink to={`${base}/oeuvre`} className={emNavLinkClass}>
-              📚 Œuvre choisie
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={`${base}/entretien`} className={emNavLinkClass}>
-              💬 Entretien
-            </NavLink>
-          </li>
-        </ul>
-
-        <NavLink
-          to={`${base}/express`}
-          className={({ isActive }) =>
-            [
-              'mt-2 flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold transition-colors',
-              isActive
-                ? 'bg-amber-500 text-white'
-                : 'bg-amber-50 text-amber-700 hover:bg-amber-100 dark:bg-amber-900/20 dark:text-amber-300 dark:hover:bg-amber-900/40',
-            ].join(' ')
-          }
-        >
-          <span>⚡</span>
-          <span>Révision express</span>
-        </NavLink>
-
-        <SectionLabel>Se préparer</SectionLabel>
-        <ul className="mt-1 space-y-1">
-          <li>
-            <NavLink to={`${base}/methode`} className={emNavLinkClass}>
-              🧭 Méthode
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={`${base}/epreuve`} className={emNavLinkClass}>
-              ℹ️ L&apos;épreuve
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={`${base}/simulateur`} className={emNavLinkClass}>
-              🎬 Oral blanc
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  );
+function moduleLinkClass({ isActive }: { isActive: boolean }): string {
+  return [
+    'block rounded px-3 py-1.5 text-sm transition-colors',
+    isActive
+      ? 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-semibold'
+      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/70 hover:text-slate-900 dark:hover:text-slate-200',
+  ].join(' ');
 }
 
-function EcritSidebar() {
+export default function FrenchSidebar() {
+  const location = useLocation();
+
+  // L'espace oral d'un élève n'a pas de barre latérale :
+  // toute la navigation est déjà assurée par les onglets en haut.
+  if (/^\/francais\/oral\/[^/]+/.test(location.pathname)) {
+    return null;
+  }
+
   const modules = listFrenchModules();
-  return (
-    <nav className="flex-1 overflow-y-auto p-3">
-      <NavLink to="/francais" end className={indNavLinkClass}>
-        Accueil
-      </NavLink>
 
-      {/* Zone ORAL */}
-      <div className="mt-3 rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50/40 dark:bg-emerald-900/10 p-2">
-        <ZoneHeader accent="emerald">🎙️ Oral</ZoneHeader>
-        <NavLink
-          to="/francais/oral"
-          className={({ isActive }) =>
-            [
-              'mt-2 flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold transition-colors',
-              isActive
-                ? 'bg-emerald-600 text-white'
-                : 'bg-emerald-100/70 text-emerald-800 hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-200 dark:hover:bg-emerald-900/50',
-            ].join(' ')
-          }
-        >
-          <span>🎙️</span>
-          <span>Préparer l&apos;oral</span>
+  return (
+    <aside className="flex h-screen w-60 flex-col border-r border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-900">
+
+      {/* Branding */}
+      <div className="shrink-0 px-5 pt-6 pb-4">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500">
+          Première · 2025–2026
+        </p>
+        <p className="mt-1 text-[17px] font-bold leading-tight text-slate-900 dark:text-white">
+          Bac Français
+        </p>
+        <p className="mt-1.5 text-[11px] leading-snug text-slate-400 dark:text-slate-500">
+          EAF · écrit &amp; oral
+        </p>
+      </div>
+
+      <div className="mx-4 shrink-0 border-t border-slate-100 dark:border-slate-800" />
+
+      {/* Navigation principale */}
+      <div className="shrink-0 px-3 py-3 space-y-0.5">
+        <NavLink to="/francais" end className={mainLinkClass}>
+          Accueil
+        </NavLink>
+        <NavLink to="/francais/oral" className={oralLinkClass}>
+          Préparer l’oral
+        </NavLink>
+        <NavLink to="/francais/express" className={mainLinkClass}>
+          Révision express
         </NavLink>
       </div>
 
-      {/* Zone ÉCRIT */}
-      <div className="mt-4 rounded-lg border border-indigo-200 dark:border-indigo-800 bg-indigo-50/40 dark:bg-indigo-900/10 p-2">
-        <ZoneHeader accent="indigo">✍️ Écrit</ZoneHeader>
+      <div className="mx-4 shrink-0 border-t border-slate-100 dark:border-slate-800" />
 
-        <NavLink
-          to="/francais/ecrit"
-          end
-          className={({ isActive }) =>
-            [
-              'mt-2 block rounded px-3 py-2 text-sm font-semibold transition-colors',
-              isActive
-                ? 'bg-indigo-600 text-white'
-                : 'text-indigo-800 hover:bg-indigo-100 dark:text-indigo-200 dark:hover:bg-indigo-900/40',
-            ].join(' ')
-          }
-        >
+      {/* Modules de l'écrit, groupés par famille */}
+      <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-5">
+        <NavLink to="/francais/ecrit" end className={mainLinkClass}>
           Accueil écrit
-        </NavLink>
-
-        <NavLink
-          to="/francais/express"
-          className={({ isActive }) =>
-            [
-              'mt-1 flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold transition-colors',
-              isActive
-                ? 'bg-amber-500 text-white'
-                : 'bg-amber-50 text-amber-700 hover:bg-amber-100 dark:bg-amber-900/20 dark:text-amber-300 dark:hover:bg-amber-900/40',
-            ].join(' ')
-          }
-        >
-          <span>⚡</span>
-          <span>Révision express</span>
         </NavLink>
 
         {familyOrder.map((family) => {
           const inFamily = modules.filter((m) => m.family === family);
           if (inFamily.length === 0) return null;
           return (
-            <div key={family}>
-              <p className="mt-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                {familyLabels[family]}
-              </p>
-              <ul className="mt-1 space-y-1">
+            <section key={family}>
+              <header className="mb-1.5 flex items-center gap-2 px-3">
+                <span
+                  className={`h-1.5 w-1.5 shrink-0 rounded-full ${familyDot[family]}`}
+                  aria-hidden="true"
+                />
+                <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500">
+                  {familyLabels[family]}
+                </span>
+              </header>
+              <ul className="space-y-0.5">
                 {inFamily.map((m) => (
                   <li key={m.slug}>
-                    <NavLink to={`/francais/module/${m.slug}`} className={indNavLinkClass}>
+                    <NavLink to={`/francais/module/${m.slug}`} className={moduleLinkClass}>
                       {m.shortTitle ?? m.title}
                     </NavLink>
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
           );
         })}
-      </div>
-    </nav>
-  );
-}
-
-export default function FrenchSidebar() {
-  const location = useLocation();
-  const oralStudentMatch = location.pathname.match(/^\/francais\/oral\/([^/]+)/);
-  const eleve = oralStudentMatch?.[1];
-
-  return (
-    <aside className="flex h-screen w-64 flex-col border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
-      <div className="border-b border-slate-200 dark:border-slate-700 px-4 py-3">
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-          Bac 1ʳᵉ · 2026
-        </p>
-      </div>
-
-      <SubjectSwitcher current="francais" />
-
-      {eleve ? <OralStudentSidebar eleve={eleve} /> : <EcritSidebar />}
+      </nav>
     </aside>
   );
 }

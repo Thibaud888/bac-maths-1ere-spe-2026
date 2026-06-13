@@ -1,6 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getFrenchModuleContent } from '@/francais/lib/french-content-loader';
 import { useAppStore } from '@/stores/app-store';
+import SubjectSwitcher from './SubjectSwitcher';
 import type { FrenchModuleSlug } from '@/francais/lib/french-types';
 
 export default function FrenchHeader() {
@@ -12,9 +13,14 @@ export default function FrenchHeader() {
   const toggleTheme = useAppStore((s) => s.toggleTheme);
 
   return (
-    <header className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-6 py-3">
-      <h1 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-        {moduleContent?.meta.title ?? 'Bac Français · Première · 2026'}
+    <header className="sticky top-0 z-10 flex items-center gap-4 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-6 py-3">
+      <SubjectSwitcher current="francais" variant="header" />
+      <h1 className="min-w-0 flex-1 truncate text-lg font-semibold text-slate-900 dark:text-slate-100">
+        {moduleContent?.meta.title ?? (
+          <Link to="/francais" className="hover:underline">
+            Bac Français · Première · 2026
+          </Link>
+        )}
       </h1>
       <button
         type="button"
