@@ -20,6 +20,13 @@ type AppState = {
   toggleFormulaHidden: (slug: ChapterSlug, formulaId: string) => void;
   theme: Theme;
   toggleTheme: () => void;
+  /**
+   * Repli de la barre latérale de navigation. Préférence d'interface partagée
+   * par les deux matières (maths + français) afin d'offrir un comportement
+   * homogène quelle que soit la page.
+   */
+  sidebarCollapsed: boolean;
+  toggleSidebar: () => void;
 };
 
 export const useAppStore = create<AppState>()(
@@ -58,6 +65,10 @@ export const useAppStore = create<AppState>()(
       theme: 'light',
       toggleTheme: () => {
         set((s) => ({ theme: s.theme === 'light' ? 'dark' : 'light' }));
+      },
+      sidebarCollapsed: false,
+      toggleSidebar: () => {
+        set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed }));
       },
     }),
     { name: 'bms-2026-app' }

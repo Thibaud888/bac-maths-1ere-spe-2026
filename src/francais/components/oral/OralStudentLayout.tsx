@@ -1,11 +1,7 @@
 import { useEffect } from 'react';
-import { Link, Navigate, Outlet, useParams } from 'react-router-dom';
-import {
-  getOralStudent,
-  oralStudentExists,
-} from '@/francais/lib/french-content-loader';
+import { Navigate, Outlet, useParams } from 'react-router-dom';
+import { oralStudentExists } from '@/francais/lib/french-content-loader';
 import { useFrenchAppStore } from '@/francais/stores/french-app-store';
-import OralTabs from './OralTabs';
 import OralViewModeToggle from './OralViewModeToggle';
 
 export default function OralStudentLayout() {
@@ -24,25 +20,11 @@ export default function OralStudentLayout() {
     return <Navigate to="/francais/oral" replace />;
   }
 
-  const student = getOralStudent(eleve);
-
   return (
     <>
-      <div className="flex items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40 px-6 py-2">
-        <div className="flex min-w-0 items-center gap-3">
-          <p className="truncate text-sm font-semibold text-slate-700 dark:text-slate-300">
-            {student?.nom ?? eleve}
-          </p>
-          <Link
-            to="/francais/oral"
-            className="shrink-0 text-xs font-medium text-emerald-700 dark:text-emerald-400 hover:underline"
-          >
-            Changer d&apos;élève
-          </Link>
-        </div>
+      <div className="flex items-center justify-end border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40 px-6 py-2">
         <OralViewModeToggle value={oralViewMode} onChange={setOralViewMode} />
       </div>
-      <OralTabs eleve={eleve} />
       <Outlet />
     </>
   );
