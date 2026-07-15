@@ -13,8 +13,10 @@ Déployé sur GitHub Pages.
 ```
 CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-patterns
 .claude/
-  skills/bac-maths-premiere-spe-2026/SKILL.md   # programme officiel maths (source de vérité)
-  skills/bac-francais-premiere-2026/SKILL.md    # cadre EAF français (source de vérité)
+  skills/
+    bac-maths-premiere-spe-2026/SKILL.md  # programme officiel maths (source de vérité)
+    bac-francais-premiere-2026/SKILL.md   # cadre EAF français (source de vérité)
+    bilan/  handoff/  reprends/SKILL.md   # rituel fin/transition de session (fleet-kit)
   agents/               # chapter-author, pedagogical-reviewer (+ équivalents français)
   commands/             # /new-chapter, /verify-conformity, /new-module-francais, /verify-francais
   figures-courbes-roadmap.md   # réserve de travail : figures/lecture graphique par chapitre
@@ -33,7 +35,8 @@ scripts/
   validate-content.mjs  validate-francais.mjs
 tests/                  # Vitest ; Playwright pour les runners critiques
 .github/workflows/
-  deploy.yml            # Pages sur push main (fait main, PAS un stub kit)
+  deploy.yml            # Pages sur push main
+  pr-ready.yml          # auto-mark PR comme ready (fleet-kit)
   map.yml  claude.yml   # stubs flotte : MAP auto + dispatch par issue `claude`
 ```
 
@@ -44,6 +47,7 @@ tests/                  # Vitest ; Playwright pour les runners critiques
 - **Toucher l'UI maths** : `src/components/<domaine>/` ; l'état est dans `src/stores/` (Zustand).
 - **Toucher l'UI français** : tout vit sous `src/francais/` — strictement additif, zéro modif maths.
 - **Ajouter un élève (oral)** : dossier `content/francais/oral/eleves/<id>/` — l'URL apparaît seule.
+- **Fin de session** : `/bilan` (récap branch/PR, mise à jour BACKLOG.md) + `/handoff` (prépare la reprise).
 
 ## Flux de données
 JSON de contenu → `content-loader` (+ Ajv `validate.ts`) → stores Zustand → runners React.
