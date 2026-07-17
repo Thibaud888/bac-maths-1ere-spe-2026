@@ -11,4 +11,4 @@
   Déjà livré par la PR #16 (2026-05-12, `feat(derivation): exercices de lecture graphique`) ;
   contenu conforme aux specs vérifié en session #57, `node scripts/verify.mjs` OK. PR : #58.
 - [ ] Automatismes de lecture graphique dérivation (3 items : signe de f', intervalle de
-  décroissance, f(x) ≥ g(x)) — specs dans le roadmap §1. DoD : verify passe, 2 passes respectées.
+  décroissance, f(x) ≥ g(x)) — specs dans le roadmap §1. DoD : verify passe, 2 passes respectées. ⚠️ Recadré le 2026-07-17 : « signe de f' » et « intervalle de décroissance » existent déjà (2 derniers items de `content/chapters/derivation/automatisms.json` + figures) — ne reste que l'automatisme f(x) ≥ g(x) (lecture graphique de comparaison) et sa figure.
