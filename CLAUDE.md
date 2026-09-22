@@ -38,7 +38,7 @@ baccalauréat (session 2027) : la **première** (2025-2026, épreuves anticipée
 |---|---|---|---|
 | Terminale | Maths — spécialité | `/terminale/maths` | à remplir |
 | Terminale | Physique-chimie — spécialité | `/terminale/physique-chimie` | à remplir |
-| Terminale | Grand oral | `/terminale/grand-oral` | à remplir |
+| Terminale | Grand oral | `/terminale/grand-oral` | rempli (« Mes 2 questions » : cadre à remplir par l'élève) |
 | Première | Maths — spécialité (EAM) | `/premiere/maths` | complet |
 | Première | Français (EAF écrit + oral) | `/premiere/francais` | complet |
 
@@ -77,7 +77,7 @@ Le fichier **`.claude/skills/bac-maths-premiere-spe-2026/SKILL.md`** est la **so
 | Géométrie | JSXGraph, **lazy-loaded** uniquement dans les composants qui l'utilisent |
 | Routing | React Router v6 |
 | État | **Zustand** |
-| Persistance | LocalStorage — un préfixe par volet : `bms-2026-` (maths), `bfr-2026-` (français), `btl-2027-` (simulateur de moyenne). Jamais croisés. |
+| Persistance | LocalStorage — un préfixe par volet : `bms-2026-` (maths), `bfr-2026-` (français), `btl-2027-` (simulateur de moyenne), `bgo-2027-` (grand oral). Jamais croisés. |
 | Validation JSON | **Ajv** contre les schémas dans `schemas/` |
 | Tests | Vitest (logique) + Playwright (runners critiques) |
 | CI/CD | GitHub Actions → GitHub Pages |
@@ -118,6 +118,7 @@ bac-maths-1ere-spe-2026/
 │   │   ├── automatisms/    (QcmRunner, QcmResult)
 │   │   ├── exercises/      (ExerciseRunner, HintSystem, ProgressiveSolution)
 │   │   ├── exam/           (ExamRunner, Timer)
+│   │   ├── grand-oral/     (FicheGrandOral, DerouleFrise, OralBlanc, Minuteur…)
 │   │   └── math/           (MathInline, MathBlock — wrappers KaTeX)
 │   ├── lib/
 │   │   ├── spaces.ts       ← REGISTRE DES ESPACES (voir §4.1)
@@ -159,6 +160,35 @@ bac-maths-1ere-spe-2026/
 
 Ce contenu n'est pas pédagogique : il ne passe pas par les deux sub-agents, mais chaque
 chiffre doit être rattaché à un texte officiel.
+
+### 4.3 Le grand oral : trois natures de contenu
+
+`content/terminale/grand-oral/` porte le grand oral (session 2027), validé par
+`schemas/grand-oral/` et chargé par `src/lib/grand-oral-content.ts`. Trois natures, jamais
+mélangées :
+
+- **Réglementaire** (page « L'épreuve », `epreuve.json`, `deroule.json`, `criteres.json`) :
+  chaque fiche `nature: "reglementaire"` cite au moins une source (le schéma le refuse
+  sinon). Les sources sont celles de `content/bac/sources.json` : pas de second registre.
+  Ce que `content/bac/` porte déjà (coefficient `co-grand-oral`, période `ca-grand-oral`,
+  format `ep-grand-oral`) est **relu** par `bac-content.ts`, jamais recopié. Les minutes de
+  chaque temps vivent dans `deroule.json` et nulle part ailleurs (la page et le minuteur de
+  l'oral blanc les lisent). Aucun point de barème : le texte ne répartit pas les 20 points.
+- **Méthode** (pages « Préparation » et « Entretien », `preparation.json`, `entretien.json`,
+  `relances.json`) : conseils, sans valeur réglementaire. Décision du 2026-09-22 (Thibaud) :
+  traités comme `content/bac/` — validation Ajv + source officielle sur toute affirmation
+  réglementaire — **sans** les deux passes, faute de référentiel. Si ce contenu prend de
+  l'ampleur, écrire d'abord un skill « grand oral » et repasser au workflow 2 passes.
+- **Personnel** (page « Mes 2 questions ») : les questions de l'élève ne sont **jamais**
+  inventées. La page est un cadre qu'il remplit lui-même, enregistré dans `bgo-2027-grand-oral`
+  (`src/stores/grand-oral-store.ts`), comme l'historique de ses oraux blancs.
+
+Le schéma `schemas/grand-oral/fiche.schema.json` est un jumeau assumé de
+`schemas/francais/oral-fiche.schema.json` (préfixe `go-`, champs `nature`, `conseil`,
+`sources`). Préfixes : `go-` (fiche), `gt-` (temps du déroulé), `gc-` (critère du jury),
+`gq-` (relance de jury). Le grand oral réutilise sans les déplacer deux composants génériques
+du volet français (`LiteraryText`, `RevealPanel`) ; son oral blanc et son minuteur lui sont
+propres (logique pure testée dans `src/lib/oral-blanc.ts`).
 
 ### 4.1 Navigation : le registre des espaces
 

@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "grand-oral/temps.schema.json",
+  "title": "Temps de l'épreuve du grand oral",
+  "description": "Une étape du déroulé officiel du grand oral, dans l'ordre. Les minutes vivent ici et nulle part ailleurs : la page « L'épreuve » les affiche, le minuteur de l'oral blanc les lit.",
+  "type": "object",
+  "required": ["id", "titre", "devantJury", "resume", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^gt-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : gt-<slug>. Ex : gt-expose"
+    },
+    "titre": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 60
+    },
+    "minutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 60,
+      "description": "Durée fixée par le texte officiel. Absente pour une étape non minutée (le choix de la question)."
+    },
+    "devantJury": {
+      "type": "boolean",
+      "description": "true si l'étape se passe face au jury (compte dans la durée de l'épreuve), false pour la préparation."
+    },
+    "resume": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 400,
+      "description": "Ce qui se passe pendant ce temps, d'après le texte officiel."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^s-[a-z0-9-]+$" }
+    }
+  }
+}

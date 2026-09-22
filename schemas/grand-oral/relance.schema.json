@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "grand-oral/relance.schema.json",
+  "title": "Relance de jury (grand oral)",
+  "description": "Question type que le jury peut poser pendant l'échange, avec des pistes pour y répondre. Contenu de méthode : la page « Entretien » les présente, l'oral blanc en tire au sort.",
+  "type": "object",
+  "required": ["id", "categorie", "question", "pistes"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^gq-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : gq-<slug>. Ex : gq-exemple-concret"
+    },
+    "categorie": {
+      "type": "string",
+      "enum": ["question", "cours", "demarche", "orientation", "piege"],
+      "description": "question = approfondir sa réponse ; cours = redémontrer, redéfinir ; demarche = sources et travail de l'année ; orientation = lien avec le projet ; piege = déstabilisation."
+    },
+    "question": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 200
+    },
+    "pistes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 5 },
+      "description": "Comment y répondre (affiché à la demande)."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

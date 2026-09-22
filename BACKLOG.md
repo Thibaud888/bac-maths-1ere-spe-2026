@@ -66,10 +66,26 @@
 - [ ] Découper le programme de physique-chimie en chapitres — même travail, avec ses quatre modes
   (formulaire, méthodes, exercices, type bac) ; le mode « méthodes » n'existe pas encore côté code.
   DoD : chapitres visibles dans le menu, gabarit de contenu défini.
-- [ ] Remplir les cinq pages du grand oral — l'épreuve, les deux questions, la préparation,
+- [x] Remplir les cinq pages du grand oral — l'épreuve, les deux questions, la préparation,
   l'entretien, l'oral blanc minuté. Le simulateur de l'oral de français sert de base pour l'oral
   blanc. Contenu réglementaire pris sur les textes officiels de la session 2027.
   DoD : pages complètes, `node scripts/verify.mjs` OK.
+  Livré le 2026-09-22 : les cinq pages n'affichent plus le gabarit vide. Contenu sous
+  `content/terminale/grand-oral/` (déroulé minuté, fiches, critères du jury, relances), schémas
+  `schemas/grand-oral/` (fiche = jumelle de `oral-fiche`, avec `nature` et `sources`), chargeur
+  `src/lib/grand-oral-content.ts` qui relit `content/bac/` (coefficient 8, période, sources)
+  sans rien recopier. Méthode traitée comme `content/bac/` sans les deux passes (choix de
+  Thibaud). « Mes 2 questions » est un cadre que l'élève remplit (rien d'inventé) ; oral blanc
+  propre au grand oral (tirage, minuteur 20 + 10 + 10 lu dans `deroule.json`, relances,
+  auto-évaluation sans points). Persistance `bgo-2027-grand-oral`, isolation vérifiée dans
+  Chromium. `node scripts/verify.mjs` OK, 152 tests (121 de référence + 31 nouveaux). PR : #PR.
+- [ ] Relire la page « L'épreuve » du grand oral sur le texte intégral du Bulletin officiel —
+  la session du 2026-09-22 n'a pas pu ouvrir education.gouv.fr (bloqué par le réseau de la
+  session) : chaque affirmation vient d'extraits du texte `s-grand-oral` obtenus par moteur de
+  recherche et recoupés. À confirmer sur le texte : la place du projet d'orientation dans
+  l'exposé (la page n'en fait pas une règle), et le contenu de la grille indicative (annexe,
+  non reproduite). DoD : fiches `content/terminale/grand-oral/epreuve.json` et `deroule.json`
+  conformes au texte, `node scripts/verify.mjs` OK.
 - [ ] Afficher le compte à rebours des épreuves — dès que les dates officielles de la session 2027
   sont publiées (aucune date inventée en attendant) : bandeau sur l'accueil et rappel dans le menu.
   DoD : dates sourcées, affichage sur l'accueil.

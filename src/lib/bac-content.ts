@@ -10,6 +10,7 @@ import type {
   BacEpreuve,
   BacJalon,
   BacMention,
+  BacPrecision,
   BacSource,
 } from './bac-types';
 
@@ -168,3 +169,11 @@ export const BLOC_ORDER: readonly BacBloc[] = [
   'continu',
   'option',
 ] as const;
+
+/** Ce qu'on sait d'une date, dit en clair (champ `precision` d'un jalon). */
+export const PRECISION_LABEL: Record<BacPrecision, string> = {
+  jour: 'Date officielle',
+  periode: 'Période officielle',
+  mois: 'Mois connu',
+  inconnue: 'Pas encore publié',
+};

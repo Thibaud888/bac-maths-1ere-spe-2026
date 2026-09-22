@@ -1,5 +1,8 @@
 # Grand oral — remplir les cinq pages de `/terminale/grand-oral`
 
+> **Livré le 2026-09-22** (voir `BACKLOG.md`). Ce prompt est gardé pour mémoire ; la suite
+> (relecture sur le texte intégral du BO) est un item distinct du backlog.
+
 > À lancer dans une session **Cloud** sur `Thibaud888/bac-maths-1ere-spe-2026`.
 > Prérequis : aucun. Les cinq pages existent déjà (gabarits vides), les routes et les onglets
 > sont en place, et `content/bac/` porte déjà la ligne officielle du grand oral.

@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "grand-oral/fiche.schema.json",
+  "title": "Fiche du grand oral",
+  "description": "Carte de référence du grand oral (session 2027). Jumelle de schemas/francais/oral-fiche.schema.json, avec deux différences : chaque fiche déclare sa nature (texte officiel ou conseil de méthode) et cite ses sources, prises dans content/bac/sources.json. Une fiche réglementaire ne circule jamais sans source. Markdown enrichi, sans LaTeX.",
+  "type": "object",
+  "required": ["id", "section", "nature", "title", "statement", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^go-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : go-<slug>. Ex : go-epreuve-jury"
+    },
+    "section": {
+      "type": "string",
+      "enum": ["epreuve", "preparation", "entretien"],
+      "description": "Page du grand oral qui affiche la fiche."
+    },
+    "nature": {
+      "type": "string",
+      "enum": ["reglementaire", "methode"],
+      "description": "reglementaire = ce que dit le texte officiel (au moins une source) ; methode = conseil de préparation, sans valeur réglementaire."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Contenu de la fiche (Markdown enrichi : gras, italique, listes). Pour une fiche réglementaire : uniquement ce que dit le texte."
+    },
+    "conseil": {
+      "type": "string",
+      "description": "Ce qu'on en tire pour se préparer. Toujours un conseil, jamais une règle : il s'affiche séparément du texte officiel."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sources": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^s-[a-z0-9-]+$" },
+      "description": "Identifiants de content/bac/sources.json. Vide autorisé pour un conseil de méthode pur."
+    }
+  },
+  "if": {
+    "properties": { "nature": { "const": "reglementaire" } }
+  },
+  "then": {
+    "properties": { "sources": { "minItems": 1 } }
+  }
+}
