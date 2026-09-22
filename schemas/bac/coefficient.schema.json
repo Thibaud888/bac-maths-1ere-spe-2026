@@ -4,7 +4,16 @@
   "title": "Coefficient du baccalauréat",
   "description": "Une ligne du barème du bac général, session 2027. C'est LA source unique des coefficients du site : la page « Le bac, mode d'emploi » et le simulateur de moyenne lisent ce fichier, personne ne recopie un chiffre.",
   "type": "object",
-  "required": ["id", "label", "bloc", "coefficient", "quand", "portee", "sources"],
+  "required": [
+    "id",
+    "label",
+    "bloc",
+    "coefficient",
+    "domaine",
+    "quand",
+    "portee",
+    "sources"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -42,6 +51,11 @@
           "part": { "type": "number", "minimum": 0, "maximum": 20 }
         }
       }
+    },
+    "domaine": {
+      "type": "string",
+      "enum": ["sciences", "langues", "lettres", "humanites", "eps-arts", "grand-oral"],
+      "description": "Famille de matières, pour regrouper et colorer les lignes dans le simulateur de moyenne. C'est une taxonomie du site, pas un chiffre officiel : elle ne demande pas de source."
     },
     "quand": {
       "type": "string",
