@@ -43,7 +43,7 @@ export default function OralOeuvrePage() {
             Questions probables sur {oeuvre.oeuvre}. Retrouve-les aussi dans
             l’onglet{' '}
             <Link
-              to={`/francais/oral/${eleve ?? ''}/entretien`}
+              to={`/premiere/francais/oral/${eleve ?? ''}/entretien`}
               className="text-emerald-700 dark:text-emerald-400 hover:underline"
             >
               Entretien

@@ -2,7 +2,14 @@ import { useEffect } from 'react';
 import { Navigate, Outlet, useParams } from 'react-router-dom';
 import { chapterExists } from '@/lib/content-loader';
 import { useAppStore } from '@/stores/app-store';
-import ChapterTabs from './ChapterTabs';
+import SectionTabs from './SectionTabs';
+
+const TABS: ReadonlyArray<{ to: string; label: string }> = [
+  { to: 'formulaire', label: 'Formulaire' },
+  { to: 'automatismes', label: 'Automatismes' },
+  { to: 'classiques', label: 'Classiques' },
+  { to: 'examen', label: 'Type bac' },
+];
 
 export default function ChapterLayout() {
   const { slug } = useParams<{ slug: string }>();
@@ -16,12 +23,19 @@ export default function ChapterLayout() {
   }, [isValid, slug, setLastVisitedChapter]);
 
   if (!isValid) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/premiere/maths" replace />;
   }
 
   return (
     <>
-      <ChapterTabs />
+      <SectionTabs
+        accent="sky"
+        label="Modes de travail"
+        items={TABS.map((tab) => ({
+          to: `/premiere/maths/${slug}/${tab.to}`,
+          label: tab.label,
+        }))}
+      />
       <Outlet />
     </>
   );

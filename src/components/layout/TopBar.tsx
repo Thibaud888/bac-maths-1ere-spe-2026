@@ -1,53 +1,47 @@
 import { Fragment } from 'react';
 import { useAppStore } from '@/stores/app-store';
-import SubjectSwitcher from '@/francais/components/layout/SubjectSwitcher';
 
 export type Crumb = { label: string; muted?: boolean };
 
 type Props = {
-  subject: 'maths' | 'francais';
-  /** Fil d'Ariane contextuel (domaine › chapitre, famille › module, etc.). */
+  /** La barre latérale est-elle ouverte ? (pilote l'icône du bouton) */
+  navOpen: boolean;
+  onToggleNav: () => void;
+  /** Fil d'Ariane contextuel (année › matière › page). */
   crumbs?: Crumb[];
 };
 
 /**
- * Bandeau supérieur global, identique sur toutes les pages de l'application.
- * Porte le repli de la barre latérale, le sélecteur de matière (toujours au
- * même endroit) et la bascule de thème.
+ * Bandeau supérieur global, identique sur toutes les pages : ouverture et
+ * fermeture du menu, fil d'Ariane, bascule de thème.
  */
-export default function TopBar({ subject, crumbs = [] }: Props) {
+export default function TopBar({ navOpen, onToggleNav, crumbs = [] }: Props) {
   const theme = useAppStore((s) => s.theme);
   const toggleTheme = useAppStore((s) => s.toggleTheme);
-  const collapsed = useAppStore((s) => s.sidebarCollapsed);
-  const toggleSidebar = useAppStore((s) => s.toggleSidebar);
 
   return (
-    <header className="sticky top-0 z-10 flex items-center gap-3 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2.5">
+    <header className="sticky top-0 z-10 flex items-center gap-3 border-b border-slate-200 bg-white px-4 py-2.5 dark:border-slate-700 dark:bg-slate-800">
       <button
         type="button"
-        onClick={toggleSidebar}
-        aria-label={collapsed ? 'Afficher le menu' : 'Masquer le menu'}
-        aria-pressed={!collapsed}
-        className="rounded-md p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+        onClick={onToggleNav}
+        aria-label={navOpen ? 'Replier le menu' : 'Afficher le menu'}
+        aria-expanded={navOpen}
+        className="flex shrink-0 items-center gap-2 rounded-md border border-slate-200 px-2.5 py-1.5 text-slate-600 transition-colors hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
       >
-        <MenuIcon />
+        {navOpen ? <CollapseIcon /> : <ExpandIcon />}
+        <span className="text-xs font-semibold">Menu</span>
       </button>
-
-      <SubjectSwitcher current={subject} />
 
       {crumbs.length > 0 && (
         <nav
           aria-label="Fil d'Ariane"
           className="flex min-w-0 items-center gap-2 text-sm"
         >
-          <span className="text-slate-300 dark:text-slate-600" aria-hidden="true">
-            /
-          </span>
           {crumbs.map((crumb, index) => (
             <Fragment key={`${crumb.label}-${index}`}>
               {index > 0 && (
                 <span
-                  className="text-slate-300 dark:text-slate-600"
+                  className="shrink-0 text-slate-300 dark:text-slate-600"
                   aria-hidden="true"
                 >
                   ›
@@ -56,7 +50,7 @@ export default function TopBar({ subject, crumbs = [] }: Props) {
               <span
                 className={
                   crumb.muted
-                    ? 'shrink-0 text-slate-400 dark:text-slate-500'
+                    ? 'hidden shrink-0 text-slate-400 sm:inline dark:text-slate-500'
                     : 'min-w-0 truncate font-semibold text-slate-900 dark:text-slate-100'
                 }
               >
@@ -71,7 +65,7 @@ export default function TopBar({ subject, crumbs = [] }: Props) {
         type="button"
         onClick={toggleTheme}
         aria-label={theme === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre'}
-        className="ml-auto rounded-md p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+        className="ml-auto shrink-0 rounded-md p-2 text-slate-500 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-700"
       >
         {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
       </button>
@@ -79,7 +73,7 @@ export default function TopBar({ subject, crumbs = [] }: Props) {
   );
 }
 
-function MenuIcon() {
+function CollapseIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -89,12 +83,30 @@ function MenuIcon() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-5 w-5"
+      className="h-4 w-4"
       aria-hidden="true"
     >
-      <line x1="3" y1="6" x2="21" y2="6" />
-      <line x1="3" y1="12" x2="21" y2="12" />
-      <line x1="3" y1="18" x2="21" y2="18" />
+      <line x1="4" y1="5" x2="4" y2="19" />
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  );
+}
+
+function ExpandIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-4 w-4"
+      aria-hidden="true"
+    >
+      <line x1="4" y1="5" x2="4" y2="19" />
+      <polyline points="9 6 15 12 9 18" />
     </svg>
   );
 }

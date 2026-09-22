@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('QCM runner — golden path', () => {
   test('répond à un QCM et voit le feedback', async ({ page }) => {
-    await page.goto('/chapitre/suites/automatismes');
+    await page.goto('/premiere/maths/suites/automatismes');
     await expect(page.locator('article').first()).toBeVisible();
     const buttons = page.locator('article button:not([disabled])');
     await buttons.first().click();
@@ -14,14 +14,14 @@ test.describe('QCM runner — golden path', () => {
 
 test.describe('ExerciseRunner — golden path', () => {
   test('ouvre un exercice classique et voit les boutons d\'aide', async ({ page }) => {
-    await page.goto('/chapitre/suites/exercices');
+    await page.goto('/premiere/maths/suites/exercices');
     const firstExercise = page.locator('article').first();
     await expect(firstExercise).toBeVisible();
     await expect(page.getByRole('button', { name: 'Voir la solution' }).first()).toBeVisible();
   });
 
   test('révèle la solution et voit les boutons d\'auto-évaluation', async ({ page }) => {
-    await page.goto('/chapitre/suites/exercices');
+    await page.goto('/premiere/maths/suites/exercices');
     await page.getByRole('button', { name: 'Voir la solution' }).first().click();
     await expect(page.getByRole('button', { name: '✓ Je l\'ai réussi' })).toBeVisible();
   });

@@ -63,7 +63,7 @@ export default function OralHomePage() {
   const { eleve } = useParams<{ eleve: string }>();
   const { meta } = getOralContent();
   const oeuvreChoisie = eleve ? getOralStudentOeuvre(eleve) : null;
-  const base = `/francais/oral/${eleve ?? ''}`;
+  const base = `/premiere/francais/oral/${eleve ?? ''}`;
 
   const partie1: AccessCard[] = [
     {

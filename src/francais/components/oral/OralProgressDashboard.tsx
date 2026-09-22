@@ -49,7 +49,7 @@ export default function OralProgressDashboard({ eleve }: { eleve: string }) {
   const statusMap = useFrenchProgressStore((s) => s.oralStatus);
   const decisions = useFrenchProgressStore((s) => s.flashcardDecisions);
 
-  const base = `/francais/oral/${eleve}`;
+  const base = `/premiere/francais/oral/${eleve}`;
   const textes = getOralStudentTextes(eleve);
   const entretien = getOralStudentEntretien(eleve);
   const oeuvre = getOralStudentOeuvre(eleve);

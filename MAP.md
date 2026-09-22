@@ -4,10 +4,15 @@
 > Le détail des conventions est dans CLAUDE.md — cette carte dit seulement OÙ aller.
 
 ## Quoi
-Application de révision pour un élève de Première : **maths** (Épreuve Anticipée 2026, 4 modes :
-formulaire, automatismes, exercices classiques, type bac) + volet **français** (EAF écrit + oral
-par élève). Vite + React 18 + TS strict, KaTeX, Zustand, contenu 100 % JSON validé par Ajv.
-Déployé sur GitHub Pages.
+Application de révision couvrant les **deux années** du bac session 2027 d'un élève.
+Cinq espaces (année × matière) + deux outils transverses :
+- Terminale : `/terminale/maths`, `/terminale/physique-chimie`, `/terminale/grand-oral` (pages
+  créées, contenu à venir)
+- Première : `/premiere/maths` (EAM, 4 modes + bac blanc), `/premiere/francais` (EAF écrit + oral
+  par élève) — complets
+- Outils : `/simulateur` (moyenne au bac), `/le-bac` (mode d'emploi) — à remplir
+
+Vite + React 18 + TS strict, KaTeX, Zustand, contenu 100 % JSON validé par Ajv. GitHub Pages.
 
 ## Arborescence annotée
 ```
@@ -26,10 +31,14 @@ content/
   francais/<module>/    # français : meta, fiches, quiz, exercices
   francais/oral/        # commun (épreuve, méthode, grammaire) + eleves/<id>/ (par élève)
 src/
-  components/           # layout, formulary, automatisms, exercises, exam, math (KaTeX)
-  francais/             # miroir isolé du volet français (components, lib, stores, routes)
-  lib/                  # content-loader, progress, randomizer, validate (Ajv)
-  routes/  stores/  App.tsx
+  lib/spaces.ts         # REGISTRE DES ESPACES : années, matières, outils → toute la navigation
+  components/layout/    # AppLayout (cadre unique), MainSidebar (LA barre), SidebarShell,
+                        # TopBar (repli + fil d'Ariane), SectionTabs, ChapterLayout
+  components/           # formulary, automatisms, exercises, exam, math (KaTeX), shared/EmptyState
+  francais/             # volet français (components, lib, stores, routes) — cadre commun
+  lib/                  # content-loader, progress, randomizer, validate (Ajv), use-is-compact
+  routes/               # premiere/, chapter/, terminale/, outils/, HomePage
+  stores/  App.tsx      # App.tsx porte aussi les redirections des anciennes adresses
 scripts/
   verify.mjs            # LA vérification : typecheck + tests + validate-content(+fr) + build
   validate-content.mjs  validate-francais.mjs
@@ -44,8 +53,10 @@ tests/                  # Vitest ; Playwright pour les runners critiques
 - **Nouveau contenu maths** : `/new-chapter <slug>` puis workflow 2 passes
   (chapter-author → pedagogical-reviewer). JAMAIS de JSON pédagogique sans les 2 passes.
 - **Nouveau contenu français** : `/new-module-francais`, mêmes règles (french-reviewer, 5 passes bloquantes).
+- **Ajouter une matière / un espace** : une entrée dans `SPACES` (`src/lib/spaces.ts`) + ses
+  routes dans `App.tsx` ; la barre latérale et l'accueil se mettent à jour seuls.
 - **Toucher l'UI maths** : `src/components/<domaine>/` ; l'état est dans `src/stores/` (Zustand).
-- **Toucher l'UI français** : tout vit sous `src/francais/` — strictement additif, zéro modif maths.
+- **Toucher l'UI français** : tout vit sous `src/francais/` (le cadre et la barre sont communs).
 - **Ajouter un élève (oral)** : dossier `content/francais/oral/eleves/<id>/` — l'URL apparaît seule.
 - **Fin de session** : `/bilan` (récap branch/PR, mise à jour BACKLOG.md) + `/handoff` (prépare la reprise).
 
@@ -63,4 +74,6 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) �
 - Hors-programme interdit (ln, intégrales… → SKILL.md §6) ; tout calcul **sans calculatrice**.
 - KaTeX seulement (pas de `\require`/macros) ; LaTeX dans les chaînes JSON (`$...$`).
 - TS strict + `noUncheckedIndexedAccess` : les accès indexés retournent `T | undefined`.
-- Le volet français ne touche JAMAIS aux fichiers/localStorage maths (non-régression §13.9 : 71 tests).
+- Le volet français ne touche JAMAIS au localStorage maths (non-régression §13.9 : 77 tests).
+- Les anciennes adresses (`/chapitre/*`, `/bac-blanc`, `/francais/*`) sont redirigées dans
+  `App.tsx` — ne pas les supprimer.

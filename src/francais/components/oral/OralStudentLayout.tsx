@@ -17,7 +17,7 @@ export default function OralStudentLayout() {
   }, [valid, eleve, setLastOralStudent]);
 
   if (!valid || !eleve) {
-    return <Navigate to="/francais/oral" replace />;
+    return <Navigate to="/premiere/francais/oral" replace />;
   }
 
   return (
