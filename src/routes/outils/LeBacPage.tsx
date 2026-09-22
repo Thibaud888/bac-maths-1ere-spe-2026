@@ -9,6 +9,7 @@ import {
   listBacJalons,
   listBacMentions,
   listBacSources,
+  PRECISION_LABEL,
   totalCoefficients,
   totalEpreuves,
   totalOfBloc,
@@ -19,7 +20,6 @@ import type {
   BacForme,
   BacJalon,
   BacMention,
-  BacPrecision,
 } from '@/lib/bac-types';
 
 const FORME_LABEL: Record<BacForme, string> = {
@@ -27,13 +27,6 @@ const FORME_LABEL: Record<BacForme, string> = {
   oral: 'Oral',
   pratique: 'Pratique',
   'ecrit-et-pratique': 'Écrit et pratique',
-};
-
-const PRECISION_LABEL: Record<BacPrecision, string> = {
-  jour: 'Date officielle',
-  periode: 'Période officielle',
-  mois: 'Mois connu',
-  inconnue: 'Pas encore publié',
 };
 
 const SOMMAIRE: readonly { to: string; label: string }[] = [

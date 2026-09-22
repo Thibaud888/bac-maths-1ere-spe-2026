@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Valide tous les fichiers JSON de `content/chapters/*` contre les schémas Ajv.
+ * Valide tous les fichiers JSON de `content/chapters/*` contre les schémas Ajv,
+ * ainsi que `content/bac-blanc/`, `content/bac/` et `content/terminale/grand-oral/`.
  * Usage : node scripts/validate-content.mjs
  * Exit 0 si tout est valide, 1 sinon.
  */
@@ -208,6 +209,74 @@ if (safeStat(bacDir)) {
         });
       }
     }
+  }
+}
+
+// --- Grand oral (terminale) ---
+// Les sources citées sont celles de content/bac/sources.json : un seul registre.
+const grandOralDir = join(root, 'content', 'terminale', 'grand-oral');
+const ficheGo = ajv.compile(readSchema(join('grand-oral', 'fiche.schema.json')));
+const grandOralFiles = {
+  deroule: { validate: ajv.compile(readSchema(join('grand-oral', 'temps.schema.json'))) },
+  epreuve: { validate: ficheGo, section: 'epreuve' },
+  preparation: { validate: ficheGo, section: 'preparation' },
+  entretien: { validate: ficheGo, section: 'entretien' },
+  criteres: { validate: ajv.compile(readSchema(join('grand-oral', 'critere.schema.json'))) },
+  relances: { validate: ajv.compile(readSchema(join('grand-oral', 'relance.schema.json'))) },
+};
+if (safeStat(grandOralDir)) {
+  const bacSourceIds = new Set(
+    JSON.parse(readFileSync(join(root, 'content', 'bac', 'sources.json'), 'utf8')).map(
+      (s) => s.id
+    )
+  );
+  const seenIds = new Set();
+  for (const [type, { validate, section }] of Object.entries(grandOralFiles)) {
+    const filePath = join(grandOralDir, `${type}.json`);
+    if (!safeStat(filePath)) {
+      invalid += 1;
+      problems.push({ file: filePath, message: 'Fichier manquant.' });
+      continue;
+    }
+    let data;
+    try {
+      data = JSON.parse(readFileSync(filePath, 'utf8'));
+    } catch (err) {
+      invalid += 1;
+      problems.push({ file: filePath, message: `JSON invalide : ${err.message}` });
+      continue;
+    }
+    if (!Array.isArray(data)) {
+      invalid += 1;
+      problems.push({
+        file: filePath,
+        message: `Le fichier doit contenir un tableau (reçu ${typeof data}).`,
+      });
+      continue;
+    }
+    data.forEach((item, idx) => {
+      total += 1;
+      const id = item?.id ?? `<sans id, index ${idx}>`;
+      const errors = [];
+      if (!validate(item)) {
+        errors.push(
+          ...(validate.errors ?? []).map(
+            (e) => `${e.instancePath || '<root>'} ${e.message ?? '?'}`
+          )
+        );
+      }
+      if (seenIds.has(id)) errors.push(`identifiant en double : ${id}`);
+      seenIds.add(id);
+      if (section && item?.section !== section) {
+        errors.push(`section « ${item?.section} » dans ${type}.json`);
+      }
+      for (const sourceId of item?.sources ?? []) {
+        if (!bacSourceIds.has(sourceId)) errors.push(`source inconnue : ${sourceId}`);
+      }
+      if (errors.length === 0) return;
+      invalid += 1;
+      problems.push({ file: filePath, message: `[${id}] ${errors.join(' ; ')}` });
+    });
   }
 }
 

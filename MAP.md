@@ -6,8 +6,9 @@
 ## Quoi
 Application de révision couvrant les **deux années** du bac session 2027 d'un élève.
 Cinq espaces (année × matière) + deux outils transverses :
-- Terminale : `/terminale/maths`, `/terminale/physique-chimie`, `/terminale/grand-oral` (pages
-  créées, contenu à venir)
+- Terminale : `/terminale/maths`, `/terminale/physique-chimie` (pages créées, contenu à venir),
+  `/terminale/grand-oral` (l'épreuve, préparation, entretien, oral blanc minuté ; « Mes 2
+  questions » = cadre rempli par l'élève)
 - Première : `/premiere/maths` (EAM, 4 modes + bac blanc), `/premiere/francais` (EAF écrit + oral
   par élève) — complets
 - Outils : `/simulateur` (régler ses notes, moyenne et mention en direct), `/le-bac` (mode
@@ -26,22 +27,27 @@ CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-
   agents/               # chapter-author, pedagogical-reviewer (+ équivalents français)
   commands/             # /new-chapter, /verify-conformity, /new-module-francais, /verify-francais
   figures-courbes-roadmap.md   # réserve de travail : figures/lecture graphique par chapitre
-schemas/                # JSON Schema Ajv (maths à la racine, français dans francais/, bac/)
+schemas/                # JSON Schema Ajv (maths à la racine, francais/, bac/, grand-oral/)
 content/
   chapters/<slug>/      # maths : meta, formulas, automatisms, classics, exam-style (JSON)
   francais/<module>/    # français : meta, fiches, quiz, exercices
   francais/oral/        # commun (épreuve, méthode, grammaire) + eleves/<id>/ (par élève)
   bac/                  # mode d'emploi du bac : coefficients, epreuves, calendrier,
                         # mentions, sources — SOURCE UNIQUE des coefficients du site
+  terminale/grand-oral/ # grand oral : deroule (minutes), epreuve, preparation, entretien,
+                        # criteres, relances — sources prises dans content/bac/sources.json
 src/
   lib/spaces.ts         # REGISTRE DES ESPACES : années, matières, outils → toute la navigation
   lib/bac-content.ts    # chargeur validé de content/bac/ (+ bac-types.ts, bac-accents.ts)
   lib/simulateur.ts     # moteur du simulateur : découpe le barème en notes réglables,
                         # moyenne pondérée, mention, leviers (aucun coefficient en dur)
+  lib/grand-oral-content.ts  # chargeur validé du grand oral (relit content/bac/ pour le
+                        # coefficient, la période et les sources) ; lib/oral-blanc.ts = minuteur
   components/layout/    # AppLayout (cadre unique), MainSidebar (LA barre), SidebarShell,
                         # TopBar (repli + fil d'Ariane), SectionTabs, ChapterLayout
   components/           # formulary, automatisms, exercises, exam, math (KaTeX), shared/EmptyState
   components/simulateur/ # LigneNote (curseur + cadenas), Repartition (camembert SVG fait main)
+  components/grand-oral/ # fiches, frise du déroulé, oral blanc minuté, cadre des 2 questions
   francais/             # volet français (components, lib, stores, routes) — cadre commun
   lib/                  # content-loader, progress, randomizer, validate (Ajv), use-is-compact
   routes/               # premiere/, chapter/, terminale/, outils/, HomePage
@@ -68,6 +74,9 @@ tests/                  # Vitest ; Playwright pour les runners critiques
 - **Toucher un coefficient du bac** : `content/bac/coefficients.json` et lui seul ; la page
   `/le-bac` et le simulateur de moyenne le lisent. Chaque ligne cite sa source
   officielle, déclarée dans `content/bac/sources.json`.
+- **Toucher le grand oral** : contenu dans `content/terminale/grand-oral/` (CLAUDE.md §4.3 :
+  réglementaire sourcé / méthode / personnel, jamais mélangés) ; les minutes des temps sont
+  dans `deroule.json` seulement ; les questions de l'élève ne sont jamais écrites dans le dépôt.
 - **Toucher le simulateur** : le calcul est dans `src/lib/simulateur.ts` (testé), l'état dans
   `src/stores/simulateur-store.ts`, l'écran dans `src/routes/outils/SimulateurPage.tsx`.
 - **Fin de session** : `/bilan` (récap branch/PR, mise à jour BACKLOG.md) + `/handoff` (prépare la reprise).
@@ -75,7 +84,7 @@ tests/                  # Vitest ; Playwright pour les runners critiques
 ## Flux de données
 JSON de contenu → `content-loader` (+ Ajv `validate.ts`) → stores Zustand → runners React.
 Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
-`btl-2027-*` (simulateur de moyenne) — ne jamais croiser.
+`btl-2027-*` (simulateur de moyenne) / `bgo-2027-*` (grand oral) — ne jamais croiser.
 
 ## Commandes
 - Dev : `npm run dev` · Tests : `npm run test` · Typecheck : `npm run typecheck`

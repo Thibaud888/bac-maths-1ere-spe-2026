@@ -176,7 +176,7 @@ export const SPACES: readonly Space[] = [
   },
   {
     id: 'tle-grand-oral',
-    status: 'soon' as const,
+    status: 'ready' as const,
     year: 'terminale',
     label: 'Grand oral',
     title: 'Grand oral',
