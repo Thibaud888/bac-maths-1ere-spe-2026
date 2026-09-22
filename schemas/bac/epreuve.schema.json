@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "bac/epreuve.schema.json",
+  "title": "Épreuve du baccalauréat",
+  "description": "Le format d'une épreuve : sa forme, sa durée, ce qu'on y fait. Le coefficient n'est pas recopié ici — il est repris de content/bac/coefficients.json via `coefficientId`.",
+  "type": "object",
+  "required": ["id", "coefficientId", "titre", "forme", "resume", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^ep-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : ep-<slug>. Ex : ep-grand-oral"
+    },
+    "coefficientId": {
+      "type": "string",
+      "pattern": "^co-[a-z0-9-]+$",
+      "description": "Ligne de barème correspondante dans coefficients.json."
+    },
+    "titre": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 80
+    },
+    "forme": {
+      "type": "string",
+      "enum": ["ecrit", "oral", "pratique", "ecrit-et-pratique"],
+      "description": "Nature de l'épreuve."
+    },
+    "duree": {
+      "type": "string",
+      "maxLength": 80,
+      "description": "Durée telle qu'annoncée par le texte officiel. Ex : « 4 h », « 20 min, après 20 min de préparation »"
+    },
+    "quand": {
+      "type": "string",
+      "maxLength": 120,
+      "description": "Moment de l'épreuve, aussi précis que les textes publiés le permettent."
+    },
+    "resume": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 600,
+      "description": "Ce qui est attendu, en français courant."
+    },
+    "detail": {
+      "type": "string",
+      "maxLength": 600,
+      "description": "Précision de second rang (barème interne, matériel autorisé, découpage en parties)."
+    },
+    "statut": {
+      "type": "string",
+      "enum": ["passee", "a-venir"],
+      "description": "passee = déjà derrière lui (juin 2026) ; a-venir = session de juin 2027."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^s-[a-z0-9-]+$" }
+    }
+  }
+}

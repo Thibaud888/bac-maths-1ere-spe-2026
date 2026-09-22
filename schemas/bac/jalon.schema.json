@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "bac/jalon.schema.json",
+  "title": "Jalon du calendrier",
+  "description": "Une date ou une période du calendrier du bac. `precision` dit ce qu'on sait vraiment : aucune date au jour près n'est écrite si le texte officiel n'en donne pas.",
+  "type": "object",
+  "required": ["id", "titre", "quand", "precision", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^ca-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : ca-<slug>. Ex : ca-philosophie"
+    },
+    "titre": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 80
+    },
+    "quand": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "description": "La date ou la période, écrite en toutes lettres. Ex : « Lundi 14 juin 2027, le matin »"
+    },
+    "precision": {
+      "type": "string",
+      "enum": ["jour", "periode", "mois", "inconnue"],
+      "description": "jour = date officielle publiée ; periode = fourchette officielle ; mois = seul le mois est connu ; inconnue = pas encore publié."
+    },
+    "detail": {
+      "type": "string",
+      "maxLength": 400,
+      "description": "Ce qui se passe ce jour-là, en français courant."
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["premiere", "terminale", "apres"],
+      "description": "premiere = épreuves déjà passées en fin de première ; terminale = session de juin 2027 ; apres = résultats, rattrapage, remplacement."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^s-[a-z0-9-]+$" }
+    }
+  }
+}

@@ -135,6 +135,30 @@ bac-maths-1ere-spe-2026/
 └── tests/
 ```
 
+### 4.2 Les données du bac : une source unique
+
+`content/bac/` porte le mode d'emploi du bac (session 2027) : `coefficients.json`,
+`epreuves.json`, `calendrier.json`, `mentions.json` et `sources.json`, validés par
+`schemas/bac/` et chargés par `src/lib/bac-content.ts`.
+
+- **`coefficients.json` est LA source des coefficients du site.** La page `/le-bac` les
+  affiche, le simulateur de moyenne les lira : aucun coefficient n'est écrit en dur dans un
+  composant, et aucun n'est recopié d'un fichier à l'autre (`epreuves.json` pointe une ligne
+  du barème par `coefficientId`).
+- **Chaque chiffre cite sa source officielle** (`sources` → `sources.json`, qui ne contient
+  que des adresses `education.gouv.fr` ou `eduscol`). `validate-content.mjs` refuse une source
+  ou un coefficient fantôme.
+- **Aucune date inventée** : le champ `precision` d'un jalon dit ce qu'on sait (`jour`,
+  `periode`, `mois`, `inconnue`). Tant qu'une date 2027 n'est pas publiée au Bulletin
+  officiel, on écrit la période, jamais un jour.
+- **Ce qui dépend de l'élève est marqué** : `portee: "profil"` (spécialités, options, langues,
+  spécialité abandonnée) par opposition à `portee: "commun"`.
+- Préfixes d'identifiants : `co-` (coefficient), `ep-` (épreuve), `ca-` (jalon de calendrier),
+  `me-` (palier de mention), `s-` (source).
+
+Ce contenu n'est pas pédagogique : il ne passe pas par les deux sub-agents, mais chaque
+chiffre doit être rattaché à un texte officiel.
+
 ### 4.1 Navigation : le registre des espaces
 
 `src/lib/spaces.ts` est **la source de vérité de la navigation**. Il déclare les années

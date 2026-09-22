@@ -15,6 +15,10 @@ const root = join(__dirname, '..');
 
 const ajv = new Ajv({ allErrors: true, strict: false });
 
+function readSchema(relativePath) {
+  return JSON.parse(readFileSync(join(root, 'schemas', relativePath), 'utf8'));
+}
+
 const figureSchema = JSON.parse(
   readFileSync(join(root, 'schemas', 'figure.schema.json'), 'utf8')
 );
@@ -134,6 +138,76 @@ if (safeStat(bacBlancDir)) {
         });
       }
     });
+  }
+}
+
+// --- Le bac, mode d'emploi ---
+const bacDir = join(root, 'content', 'bac');
+const bacValidators = {
+  sources: ajv.compile(readSchema(join('bac', 'source.schema.json'))),
+  coefficients: ajv.compile(readSchema(join('bac', 'coefficient.schema.json'))),
+  epreuves: ajv.compile(readSchema(join('bac', 'epreuve.schema.json'))),
+  calendrier: ajv.compile(readSchema(join('bac', 'jalon.schema.json'))),
+  mentions: ajv.compile(readSchema(join('bac', 'mention.schema.json'))),
+};
+const bacData = {};
+if (safeStat(bacDir)) {
+  for (const [type, validate] of Object.entries(bacValidators)) {
+    const filePath = join(bacDir, `${type}.json`);
+    if (!safeStat(filePath)) continue;
+    let data;
+    try {
+      data = JSON.parse(readFileSync(filePath, 'utf8'));
+    } catch (err) {
+      invalid += 1;
+      problems.push({ file: filePath, message: `JSON invalide : ${err.message}` });
+      continue;
+    }
+    if (!Array.isArray(data)) {
+      invalid += 1;
+      problems.push({
+        file: filePath,
+        message: `Le fichier doit contenir un tableau (reçu ${typeof data}).`,
+      });
+      continue;
+    }
+    bacData[type] = data;
+    data.forEach((item, idx) => {
+      total += 1;
+      if (validate(item)) return;
+      invalid += 1;
+      const id = item?.id ?? `<sans id, index ${idx}>`;
+      problems.push({
+        file: filePath,
+        message: `[${id}] ${(validate.errors ?? [])
+          .map((e) => `${e.instancePath || '<root>'} ${e.message ?? '?'}`)
+          .join(' ; ')}`,
+      });
+    });
+  }
+
+  // Intégrité entre fichiers : aucune source ni aucun coefficient fantôme.
+  const sourceIds = new Set((bacData.sources ?? []).map((s) => s.id));
+  const coefficientIds = new Set((bacData.coefficients ?? []).map((c) => c.id));
+  for (const [type, data] of Object.entries(bacData)) {
+    if (type === 'sources') continue;
+    for (const item of data) {
+      for (const sourceId of item.sources ?? []) {
+        if (sourceIds.has(sourceId)) continue;
+        invalid += 1;
+        problems.push({
+          file: join(bacDir, `${type}.json`),
+          message: `[${item.id}] source inconnue : ${sourceId}`,
+        });
+      }
+      if (item.coefficientId && !coefficientIds.has(item.coefficientId)) {
+        invalid += 1;
+        problems.push({
+          file: join(bacDir, `${type}.json`),
+          message: `[${item.id}] coefficient inconnu : ${item.coefficientId}`,
+        });
+      }
+    }
   }
 }
 
