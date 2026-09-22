@@ -23,6 +23,14 @@
   `/premiere/*`, `/simulateur`, `/le-bac` avec redirection des anciennes ; pages de terminale et
   d'outils créées à vide. Registre des espaces dans `src/lib/spaces.ts`.
   DoD : `node scripts/verify.mjs` OK, 77 tests. Session du 2026-09-22.
+- [x] Remettre le site en ligne — la publication automatique échouait depuis juillet :
+  `npm ci` refusait de s'installer, `package-lock.json` étant incomplet (paquet `esbuild` et ses
+  binaires par plateforme absents du verrou). Lock régénéré (ajouts seuls, aucune version
+  changée) ; les étapes du workflow rejouées à l'identique en local passent.
+  DoD : run « Deploy to GitHub Pages » vert sur `main`. Session du 2026-09-22.
+- [ ] Valider aussi le contenu français à la publication — le workflow `deploy.yml` lance
+  `validate-content.mjs` mais pas `validate-francais.mjs` : un contenu français invalide
+  passerait en ligne. DoD : étape ajoutée au workflow, run vert.
 - [ ] Remplir la page « Le bac, mode d'emploi » — ce qui compte et combien : épreuves, contrôle
   continu, coefficients, calendrier, mentions, options. Chaque chiffre rattaché à sa source
   officielle (education.gouv.fr, éduscol) ; le tableau des coefficients du dépôt
