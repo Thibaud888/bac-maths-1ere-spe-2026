@@ -42,7 +42,7 @@
   Calendrier 2027 pris au BO spécial n° 2 du 25 août 2026 ; aucune date non publiée inventée
   (la partie pratique de physique-chimie reste en « printemps 2027 »). Profil confirmé avec
   Thibaud : musique suivie en terminale seulement, d'où un total de 104 et non 106.
-  `node scripts/verify.mjs` OK, 88 tests (77 de référence + 11 nouveaux). PR : #PR_PLACEHOLDER.
+  `node scripts/verify.mjs` OK, 88 tests (77 de référence + 11 nouveaux). PR : #72.
 - [ ] Reprendre le simulateur de moyenne dans le site — l'outil existe dans le dépôt
   `notes-bac-visualisateur` (HTML/CSS/JS purs, ~600 lignes, zéro dépendance) : décider entre
   portage en React et intégration telle quelle, puis brancher sur `/simulateur`.
