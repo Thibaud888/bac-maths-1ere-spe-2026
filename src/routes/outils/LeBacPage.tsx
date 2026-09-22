@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { ACCENT_PAR_DEFAUT, MENTION_CARD } from '@/lib/bac-accents';
 import {
   BLOC_LABEL,
   BLOC_ORDER,
@@ -13,7 +14,6 @@ import {
   totalOfBloc,
 } from '@/lib/bac-content';
 import type {
-  BacAccent,
   BacCoefficient,
   BacEpreuve,
   BacForme,
@@ -34,16 +34,6 @@ const PRECISION_LABEL: Record<BacPrecision, string> = {
   periode: 'Période officielle',
   mois: 'Mois connu',
   inconnue: 'Pas encore publié',
-};
-
-const MENTION_ACCENT: Record<BacAccent, string> = {
-  rose: 'border-rose-300 bg-rose-50 dark:border-rose-800 dark:bg-rose-950/40',
-  amber: 'border-amber-300 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/40',
-  sky: 'border-sky-300 bg-sky-50 dark:border-sky-800 dark:bg-sky-950/40',
-  emerald:
-    'border-emerald-300 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/40',
-  violet:
-    'border-violet-300 bg-violet-50 dark:border-violet-800 dark:bg-violet-950/40',
 };
 
 const SOMMAIRE: readonly { to: string; label: string }[] = [
@@ -406,7 +396,7 @@ export default function LeBacPage() {
           {mentions.map((m) => (
             <li
               key={m.id}
-              className={`rounded-lg border p-3 ${MENTION_ACCENT[m.accent ?? 'sky']}`}
+              className={`rounded-lg border p-3 ${MENTION_CARD[m.accent ?? ACCENT_PAR_DEFAUT]}`}
             >
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <p className="font-semibold text-slate-900 dark:text-slate-100">

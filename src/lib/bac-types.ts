@@ -30,6 +30,18 @@ export type BacPart = { annee: BacAnnee; part: number };
 /** `commun` vaut pour tout élève de la voie générale ; `profil` dépend de ses choix. */
 export type BacPortee = 'commun' | 'profil';
 
+/**
+ * Famille de matières. Taxonomie du site (pas un chiffre officiel) : elle
+ * regroupe et colore les lignes du simulateur de moyenne.
+ */
+export type BacDomaine =
+  | 'sciences'
+  | 'langues'
+  | 'lettres'
+  | 'humanites'
+  | 'eps-arts'
+  | 'grand-oral';
+
 /** Une ligne du barème. */
 export type BacCoefficient = {
   id: string;
@@ -37,6 +49,7 @@ export type BacCoefficient = {
   bloc: BacBloc;
   coefficient: number;
   repartition?: BacPart[];
+  domaine: BacDomaine;
   quand: string;
   portee: BacPortee;
   profilNote?: string;

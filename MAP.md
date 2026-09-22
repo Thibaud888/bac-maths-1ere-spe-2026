@@ -10,7 +10,8 @@ Cinq espaces (année × matière) + deux outils transverses :
   créées, contenu à venir)
 - Première : `/premiere/maths` (EAM, 4 modes + bac blanc), `/premiere/francais` (EAF écrit + oral
   par élève) — complets
-- Outils : `/simulateur` (moyenne au bac), `/le-bac` (mode d'emploi) — à remplir
+- Outils : `/simulateur` (régler ses notes, moyenne et mention en direct), `/le-bac` (mode
+  d'emploi : épreuves, coefficients, calendrier, mentions) — complets
 
 Vite + React 18 + TS strict, KaTeX, Zustand, contenu 100 % JSON validé par Ajv. GitHub Pages.
 
@@ -34,10 +35,13 @@ content/
                         # mentions, sources — SOURCE UNIQUE des coefficients du site
 src/
   lib/spaces.ts         # REGISTRE DES ESPACES : années, matières, outils → toute la navigation
-  lib/bac-content.ts    # chargeur validé de content/bac/ (+ bac-types.ts)
+  lib/bac-content.ts    # chargeur validé de content/bac/ (+ bac-types.ts, bac-accents.ts)
+  lib/simulateur.ts     # moteur du simulateur : découpe le barème en notes réglables,
+                        # moyenne pondérée, mention, leviers (aucun coefficient en dur)
   components/layout/    # AppLayout (cadre unique), MainSidebar (LA barre), SidebarShell,
                         # TopBar (repli + fil d'Ariane), SectionTabs, ChapterLayout
   components/           # formulary, automatisms, exercises, exam, math (KaTeX), shared/EmptyState
+  components/simulateur/ # LigneNote (curseur + cadenas), Repartition (camembert SVG fait main)
   francais/             # volet français (components, lib, stores, routes) — cadre commun
   lib/                  # content-loader, progress, randomizer, validate (Ajv), use-is-compact
   routes/               # premiere/, chapter/, terminale/, outils/, HomePage
@@ -62,13 +66,16 @@ tests/                  # Vitest ; Playwright pour les runners critiques
 - **Toucher l'UI français** : tout vit sous `src/francais/` (le cadre et la barre sont communs).
 - **Ajouter un élève (oral)** : dossier `content/francais/oral/eleves/<id>/` — l'URL apparaît seule.
 - **Toucher un coefficient du bac** : `content/bac/coefficients.json` et lui seul ; la page
-  `/le-bac` et (à venir) le simulateur de moyenne le lisent. Chaque ligne cite sa source
+  `/le-bac` et le simulateur de moyenne le lisent. Chaque ligne cite sa source
   officielle, déclarée dans `content/bac/sources.json`.
+- **Toucher le simulateur** : le calcul est dans `src/lib/simulateur.ts` (testé), l'état dans
+  `src/stores/simulateur-store.ts`, l'écran dans `src/routes/outils/SimulateurPage.tsx`.
 - **Fin de session** : `/bilan` (récap branch/PR, mise à jour BACKLOG.md) + `/handoff` (prépare la reprise).
 
 ## Flux de données
 JSON de contenu → `content-loader` (+ Ajv `validate.ts`) → stores Zustand → runners React.
-Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) — ne jamais croiser.
+Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
+`btl-2027-*` (simulateur de moyenne) — ne jamais croiser.
 
 ## Commandes
 - Dev : `npm run dev` · Tests : `npm run test` · Typecheck : `npm run typecheck`
@@ -81,5 +88,7 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) �
 - KaTeX seulement (pas de `\require`/macros) ; LaTeX dans les chaînes JSON (`$...$`).
 - TS strict + `noUncheckedIndexedAccess` : les accès indexés retournent `T | undefined`.
 - Le volet français ne touche JAMAIS au localStorage maths (non-régression §13.9 : 77 tests).
+- Aucun coefficient du bac en dur dans un composant : tout vient de `content/bac/coefficients.json`
+  (un attribut qui manque au simulateur s'ajoute au schéma, pas au code).
 - Les anciennes adresses (`/chapitre/*`, `/bac-blanc`, `/francais/*`) sont redirigées dans
   `App.tsx` — ne pas les supprimer.

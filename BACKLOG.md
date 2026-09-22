@@ -43,11 +43,21 @@
   (la partie pratique de physique-chimie reste en « printemps 2027 »). Profil confirmé avec
   Thibaud : musique suivie en terminale seulement, d'où un total de 104 et non 106.
   `node scripts/verify.mjs` OK, 88 tests (77 de référence + 11 nouveaux). PR : #72.
-- [ ] Reprendre le simulateur de moyenne dans le site — l'outil existe dans le dépôt
-  `notes-bac-visualisateur` (HTML/CSS/JS purs, ~600 lignes, zéro dépendance) : décider entre
-  portage en React et intégration telle quelle, puis brancher sur `/simulateur`.
-  Préfixe LocalStorage à prévoir (`btl-2027-*`), sans toucher à `bms-2026-*` / `bfr-2026-*`.
-  DoD : simulateur utilisable depuis le menu, `node scripts/verify.mjs` OK.
+- [x] Reprendre le simulateur de moyenne dans le site — l'outil existait dans le dépôt
+  `notes-bac-visualisateur` (HTML/CSS/JS purs, ~600 lignes, zéro dépendance) ; refait en React
+  dans `/simulateur` plutôt qu'intégré tel quel.
+  Livré le 2026-09-22 : moteur testé `src/lib/simulateur.ts` (découpe `coefficients.json` en
+  21 notes réglables — une par épreuve, une par année pour le contrôle continu), store
+  `btl-2027-simulateur`, écran avec curseurs + cadenas, camembert SVG fait main et leviers.
+  Aucun coefficient en dur : le seul attribut qui manquait (`domaine`) a été ajouté au schéma
+  `schemas/bac/coefficient.schema.json`. Laissés de côté pour l'instant : treemap, radar,
+  partage par lien `#s=`, impression PDF (voir `chantiers/simulateur-de-moyenne.md`).
+  `node scripts/verify.mjs` OK, 121 tests (88 de référence + 33 nouveaux). PR : #73.
+- [ ] Compléter le simulateur de moyenne — ce que la v1 n'a pas repris de l'ancien outil :
+  partager une simulation par lien (`#s=<base64>`), l'imprimer en PDF, et deux autres façons de
+  voir la même répartition (treemap par matière, radar par domaine). À faire seulement si
+  Thibaud en a l'usage — lui demander avant d'ouvrir le chantier.
+  DoD : fonctions choisies livrées, `node scripts/verify.mjs` OK.
 - [ ] Découper le programme de maths de terminale en chapitres — la liste des chapitres et leur
   ordre, avant toute écriture de contenu ; crée `content/terminale/maths/<slug>/` et alimente
   `sections()` de l'espace `tle-maths`. Nécessite un skill « programme de terminale » sur le

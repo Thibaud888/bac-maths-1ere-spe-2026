@@ -42,8 +42,9 @@ baccalauréat (session 2027) : la **première** (2025-2026, épreuves anticipée
 | Première | Maths — spécialité (EAM) | `/premiere/maths` | complet |
 | Première | Français (EAF écrit + oral) | `/premiere/francais` | complet |
 
-Deux outils transverses, hors année : le **simulateur de moyenne** (`/simulateur`) et **le bac,
-mode d'emploi** (`/le-bac` — contrôle continu, coefficients, calendrier, mentions).
+Deux outils transverses, hors année : le **simulateur de moyenne** (`/simulateur` — régler ses
+notes, voir bouger moyenne et mention) et **le bac, mode d'emploi** (`/le-bac` — contrôle
+continu, coefficients, calendrier, mentions). Tous deux lisent `content/bac/` (§ 4.2).
 
 ### 1.2 Modes de travail (maths)
 
@@ -76,7 +77,7 @@ Le fichier **`.claude/skills/bac-maths-premiere-spe-2026/SKILL.md`** est la **so
 | Géométrie | JSXGraph, **lazy-loaded** uniquement dans les composants qui l'utilisent |
 | Routing | React Router v6 |
 | État | **Zustand** |
-| Persistance | LocalStorage (préfixe `bms-2026-`) |
+| Persistance | LocalStorage — un préfixe par volet : `bms-2026-` (maths), `bfr-2026-` (français), `btl-2027-` (simulateur de moyenne). Jamais croisés. |
 | Validation JSON | **Ajv** contre les schémas dans `schemas/` |
 | Tests | Vitest (logique) + Playwright (runners critiques) |
 | CI/CD | GitHub Actions → GitHub Pages |
@@ -142,7 +143,7 @@ bac-maths-1ere-spe-2026/
 `schemas/bac/` et chargés par `src/lib/bac-content.ts`.
 
 - **`coefficients.json` est LA source des coefficients du site.** La page `/le-bac` les
-  affiche, le simulateur de moyenne les lira : aucun coefficient n'est écrit en dur dans un
+  affiche et le simulateur de moyenne les lit : aucun coefficient n'est écrit en dur dans un
   composant, et aucun n'est recopié d'un fichier à l'autre (`epreuves.json` pointe une ligne
   du barème par `coefficientId`).
 - **Chaque chiffre cite sa source officielle** (`sources` → `sources.json`, qui ne contient

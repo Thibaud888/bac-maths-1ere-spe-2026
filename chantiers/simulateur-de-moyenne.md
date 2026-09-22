@@ -1,5 +1,9 @@
 # Simulateur de moyenne — porter l'outil du dépôt `notes-bac-visualisateur` dans `/simulateur`
 
+> **Fait le 2026-09-22 (PR #73).** `/simulateur` est en place, branché sur
+> `content/bac/coefficients.json`. Ce qui reste est listé en bas de page (« Notes pour plus
+> tard ») et repris comme item de `BACKLOG.md`.
+>
 > À lancer dans une session **Cloud** sur `Thibaud888/bac-maths-1ere-spe-2026`.
 > Prérequis : la PR #72 (« Le bac, mode d'emploi ») doit être mergée — elle apporte
 > `content/bac/coefficients.json`, sur lequel ce chantier s'appuie.
@@ -60,3 +64,9 @@ Termine en mettant à jour le `BACKLOG.md` (statut + lien PR).
   demander à Thibaud s'il veut l'archiver ou le garder comme version autonome hors-ligne.
 - L'ancien outil sait partager un état par lien (`#s=<base64>`) et imprimer en PDF. À reprendre
   dans une session ultérieure si Thibaud en a l'usage.
+- Des quatre vues de l'ancien outil, la v1 n'a repris que le camembert (avec ses deux mesures :
+  contribution et coefficient). Le treemap par matière et le radar par domaine n'ont pas été
+  portés : le camembert et la liste des leviers répondent déjà à « où est le poids ». Les
+  barres avaient déjà disparu de l'ancien outil. Idem pour la coloration au choix
+  (matière / domaine / type), les libellés modifiables et le détail épinglé : la coloration est
+  fixée au domaine et le détail passe par l'infobulle native de chaque part.
