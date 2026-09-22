@@ -1,8 +1,18 @@
 import { useEffect } from 'react';
 import { Navigate, Outlet, useParams } from 'react-router-dom';
-import { frenchModuleExists } from '@/francais/lib/french-content-loader';
+import {
+  frenchModuleExists,
+  getFrenchModuleContent,
+} from '@/francais/lib/french-content-loader';
 import { useFrenchAppStore } from '@/francais/stores/french-app-store';
-import FrenchTabs from './FrenchTabs';
+import SectionTabs from '@/components/layout/SectionTabs';
+import type { FrenchModuleSlug } from '@/francais/lib/french-types';
+
+const BASE_TABS: ReadonlyArray<{ to: string; label: string }> = [
+  { to: 'fiches', label: 'Fiches' },
+  { to: 'quiz', label: 'Quiz' },
+  { to: 'exercices', label: 'Exercices' },
+];
 
 export default function FrenchModuleLayout() {
   const { slug } = useParams<{ slug: string }>();
@@ -15,13 +25,26 @@ export default function FrenchModuleLayout() {
     }
   }, [isValid, slug, setLastVisitedModule]);
 
-  if (!isValid) {
-    return <Navigate to="/francais" replace />;
+  if (!isValid || !slug) {
+    return <Navigate to="/premiere/francais" replace />;
   }
+
+  const content = getFrenchModuleContent(slug as FrenchModuleSlug);
+  const tabs =
+    content && content.sujets.length > 0
+      ? [...BASE_TABS, { to: 'sujets', label: 'Sujets' }]
+      : BASE_TABS;
 
   return (
     <>
-      <FrenchTabs />
+      <SectionTabs
+        accent="indigo"
+        label="Modes de travail"
+        items={tabs.map((tab) => ({
+          to: `/premiere/francais/module/${slug}/${tab.to}`,
+          label: tab.label,
+        }))}
+      />
       <Outlet />
     </>
   );

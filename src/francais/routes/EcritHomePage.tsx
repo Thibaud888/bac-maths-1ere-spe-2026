@@ -34,7 +34,7 @@ export default function EcritHomePage() {
 
       {/* Révision express */}
       <Link
-        to="/francais/express"
+        to="/premiere/francais/express"
         className="mt-6 flex items-center gap-4 rounded-xl border border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-900/20 p-4 shadow-sm transition-colors hover:border-amber-400 dark:hover:border-amber-500"
       >
         <span className="text-3xl">⚡</span>
@@ -69,7 +69,7 @@ export default function EcritHomePage() {
               {inFamily.map((m) => (
                 <Link
                   key={m.slug}
-                  to={`/francais/module/${m.slug}`}
+                  to={`/premiere/francais/module/${m.slug}`}
                   className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm transition-colors hover:border-indigo-400 dark:hover:border-indigo-500"
                 >
                   <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100">

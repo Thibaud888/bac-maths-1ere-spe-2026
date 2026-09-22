@@ -21,7 +21,7 @@ export default function FrenchHubPage() {
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {/* Oral */}
         <Link
-          to="/francais/oral"
+          to="/premiere/francais/oral"
           className="group flex flex-col rounded-xl border-2 border-emerald-300 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 p-6 shadow-sm transition-colors hover:border-emerald-500 dark:hover:border-emerald-400"
         >
           <span className="text-4xl">🎙️</span>
@@ -41,7 +41,7 @@ export default function FrenchHubPage() {
 
         {/* Écrit */}
         <Link
-          to="/francais/ecrit"
+          to="/premiere/francais/ecrit"
           className="group flex flex-col rounded-xl border-2 border-indigo-300 dark:border-indigo-600 bg-indigo-50 dark:bg-indigo-900/20 p-6 shadow-sm transition-colors hover:border-indigo-500 dark:hover:border-indigo-400"
         >
           <span className="text-4xl">✍️</span>

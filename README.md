@@ -1,15 +1,27 @@
-# Bac Première · 2026 — Maths & Français
+# Bac 2027 — révisions de première et de terminale
 
-Application web statique de révision pour le baccalauréat session 2026, classe de Première. Elle regroupe **deux espaces indépendants** :
+Application web statique de révision couvrant les **deux années** du baccalauréat session 2027.
+La navigation est unique : une colonne à gauche, groupée par année, et deux outils transverses.
 
-- **Maths** (`/`) — révision de l'**Épreuve Anticipée de Mathématiques** (vendredi 12 juin 2026, 2h, sans calculatrice, coefficient 2), Première spécialité mathématiques.
-- **Français** (`/francais`) — révision de l'**Épreuve Anticipée de Français**, écrit (4h, coefficient 5) **et oral** (20 min après 30 min de préparation, coefficient 5).
+| Année | Espace | Route | État |
+|---|---|---|---|
+| Terminale | Maths — spécialité | `/terminale/maths` | pages créées, contenu à venir |
+| Terminale | Physique-chimie | `/terminale/physique-chimie` | pages créées, contenu à venir |
+| Terminale | Grand oral | `/terminale/grand-oral` | pages créées, contenu à venir |
+| Première | Maths — spécialité (EAM) | `/premiere/maths` | complet |
+| Première | Français (EAF écrit + oral) | `/premiere/francais` | complet |
+| — | Simulateur de moyenne | `/simulateur` | à porter |
+| — | Le bac, mode d'emploi | `/le-bac` | à remplir |
 
-Les deux volets partagent le même code applicatif mais sont **strictement isolés** : routes séparées, stores LocalStorage distincts (`bms-2026-*` pour les maths, `bfr-2026-*` pour le français), aucune dépendance croisée.
+Les anciennes adresses (`/chapitre/*`, `/bac-blanc`, `/francais/*`) redirigent automatiquement
+vers les nouvelles.
+
+Les volets partagent le même code applicatif mais leurs données restent **strictement isolées** :
+stores LocalStorage distincts (`bms-2026-*` pour les maths, `bfr-2026-*` pour le français).
 
 ## Modules
 
-### Maths (`/`)
+### Maths — première (`/premiere/maths`)
 
 - 📋 **Formulaire** — cartes de référence par chapitre
 - ⚡ **Automatismes** — QCM rapides au format Partie 1 de l'EAM
@@ -21,7 +33,7 @@ Chapitres disponibles : `suites`, `derivation`, `second-degre`, `exponentielle`,
 
 Thème clair/sombre disponible (bouton dans l'en-tête).
 
-### Français — Écrit (`/francais`)
+### Français — Écrit (`/premiere/francais`)
 
 - 📖 **Fiches** — fiches de méthode et de connaissances par module
 - ⚡ **Quiz** — QCM, questions à choix multiples et exercices de remise en ordre
@@ -29,9 +41,9 @@ Thème clair/sombre disponible (bouton dans l'en-tête).
 
 Modules disponibles : `methode-commentaire`, `methode-dissertation`, `figures-de-style`, `mouvements-litteraires`, `registres-genres`, `poesie`, `litterature-idees`, `roman`, `theatre`, `express` (révision rapide).
 
-### Français — Oral (`/francais/oral`)
+### Français — Oral (`/premiere/francais/oral`)
 
-Espace **par élève** (`/francais/oral/<eleve>`) : présentation de l'épreuve, méthode, fiches de grammaire + quiz, analyses linéaires des textes étudiés, questions d'entretien, œuvre choisie (2ᵈᵉ partie de l'oral), simulateur d'entretien chronométré. Le contenu commun (épreuve, méthode, grammaire) est partagé entre élèves ; les textes et l'entretien sont propres à chaque élève.
+Espace **par élève** (`/premiere/francais/oral/<eleve>`) : présentation de l'épreuve, méthode, fiches de grammaire + quiz, analyses linéaires des textes étudiés, questions d'entretien, œuvre choisie (2ᵈᵉ partie de l'oral), simulateur d'entretien chronométré. Le contenu commun (épreuve, méthode, grammaire) est partagé entre élèves ; les textes et l'entretien sont propres à chaque élève.
 
 ## Stack
 

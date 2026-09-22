@@ -1,4 +1,4 @@
-# Bac Maths Première Spé 2026 — Application de révision
+# Bac 2026-2027 — Application de révision (première & terminale)
 
 ## 0. Règles de travail (flotte)
 - **Lis `MAP.md` avant toute exploration** ; n'explore que ce qu'elle ne couvre pas.
@@ -28,14 +28,32 @@
 
 ## 1. Mission du projet
 
-Application web statique destinée à un élève précis en classe de Première spécialité mathématiques (année scolaire 2025-2026) pour préparer l'**Épreuve Anticipée de Mathématiques (EAM)** du baccalauréat session 2026 (vendredi 12 juin 2026, 8h-10h, 2h, sans calculatrice, coefficient 2).
+Application web statique destinée à un élève précis, couvrant **les deux années** de son
+baccalauréat (session 2027) : la **première** (2025-2026, épreuves anticipées passées) et la
+**terminale** (2026-2027, épreuves à venir).
 
-L'application offre quatre modes de travail :
+### 1.1 Les espaces du site
+
+| Année | Espace | Route | État |
+|---|---|---|---|
+| Terminale | Maths — spécialité | `/terminale/maths` | à remplir |
+| Terminale | Physique-chimie — spécialité | `/terminale/physique-chimie` | à remplir |
+| Terminale | Grand oral | `/terminale/grand-oral` | à remplir |
+| Première | Maths — spécialité (EAM) | `/premiere/maths` | complet |
+| Première | Français (EAF écrit + oral) | `/premiere/francais` | complet |
+
+Deux outils transverses, hors année : le **simulateur de moyenne** (`/simulateur`) et **le bac,
+mode d'emploi** (`/le-bac` — contrôle continu, coefficients, calendrier, mentions).
+
+### 1.2 Modes de travail (maths)
 
 - **Formulaire** : cartes de référence par chapitre
 - **Automatismes** : QCM rapides (Partie 1 de l'EAM, 6 points)
 - **Exercices classiques** : applications directes des notions, avec correction progressive
 - **Exercices type bac** : sujets multi-questions au format Partie 2 de l'EAM
+
+L'**EAM** (première, vendredi 12 juin 2026, 2h, sans calculatrice, coefficient 2) reste la
+référence du contenu de première ; le contenu de terminale suivra le programme de terminale.
 
 ## 2. Lecture obligatoire avant toute génération de contenu
 
@@ -93,22 +111,49 @@ bac-maths-1ere-spe-2026/
 │       └── exam-style.json
 ├── src/
 │   ├── components/
-│   │   ├── layout/         (Sidebar, Header, ChapterTabs)
+│   │   ├── layout/         (AppLayout, MainSidebar, SidebarShell, TopBar,
+│   │   │                    SectionTabs, ChapterLayout)
 │   │   ├── formulary/      (FormulaCard, FormulaSearch)
 │   │   ├── automatisms/    (QcmRunner, QcmResult)
 │   │   ├── exercises/      (ExerciseRunner, HintSystem, ProgressiveSolution)
 │   │   ├── exam/           (ExamRunner, Timer)
 │   │   └── math/           (MathInline, MathBlock — wrappers KaTeX)
 │   ├── lib/
+│   │   ├── spaces.ts       ← REGISTRE DES ESPACES (voir §4.1)
 │   │   ├── content-loader.ts
 │   │   ├── progress.ts
 │   │   ├── randomizer.ts
+│   │   ├── use-is-compact.ts
 │   │   └── validate.ts
 │   ├── routes/
+│   │   ├── premiere/       (MathsHomePage)
+│   │   ├── chapter/        (Formulary, Automatisms, Classics, Exam)
+│   │   ├── terminale/      (TerminaleMaths, PhysiqueChimie, grand-oral/*)
+│   │   └── outils/         (SimulateurPage, LeBacPage)
 │   ├── stores/
 │   └── App.tsx
 └── tests/
 ```
+
+### 4.1 Navigation : le registre des espaces
+
+`src/lib/spaces.ts` est **la source de vérité de la navigation**. Il déclare les années
+(`YEARS`), les espaces (`SPACES` : une entrée par couple année × matière) et les outils
+transverses (`TOOLS`). La barre latérale (`MainSidebar`), l'accueil (`HomePage`) et le fil
+d'Ariane (`AppLayout`) s'y alimentent : **ajouter une matière = ajouter une entrée**, rien
+d'autre à toucher dans l'interface.
+
+Chaque espace porte son chemin, sa couleur d'accent, son résumé, son état (`ready` / `soon`) et
+une fonction `sections()` qui renvoie les liens dépliés sous lui (chapitres, sections).
+
+Règles d'interface :
+
+- **Une seule barre de navigation**, à gauche, groupée par année ; seul l'espace ouvert déplie
+  son contenu. Pas de sélecteur de matière en haut.
+- La barre se replie et se rouvre par le bouton du bandeau supérieur (état persisté dans
+  `bms-2026-app`) ; sur écran étroit (< 768 px) elle s'ouvre en tiroir par-dessus la page.
+- Les **anciennes adresses** (`/chapitre/*`, `/bac-blanc`, `/francais/*`) sont redirigées vers les
+  nouvelles dans `App.tsx` (`LegacyRedirect`) : ne jamais les supprimer.
 
 ## 5. Conventions de code
 
@@ -249,7 +294,7 @@ schemas/francais/
   oral-fiche.schema.json  oral-quiz.schema.json  oral-meta.schema.json  oral-student.schema.json
 
 src/francais/
-  components/layout/  (FrenchLayout, FrenchSidebar, FrenchHeader, FrenchTabs, FrenchModuleLayout)
+  components/layout/  (FrenchModuleLayout — le cadre et la barre latérale sont communs)
   components/text/    LiteraryText.tsx  (fork TextWithMath, sans KaTeX)
   components/fiches/  FicheCard.tsx
   components/quiz/    QuizRunner.tsx   (types qcm | multi | ordering)
@@ -263,8 +308,13 @@ src/francais/
                   OralGrammairePage, OralEntretienPage, OralSimulateurPage})
 ```
 
-Route : `/francais/*` (ajout additif dans `src/App.tsx`), dont l'oral **par élève** :
-`/francais/oral` (sélecteur d'élève) puis `/francais/oral/:eleve/*` (descriptif de l'élève).
+Route : `/premiere/francais/*` (dans `src/App.tsx`), dont l'oral **par élève** :
+`/premiere/francais/oral` (sélecteur d'élève) puis `/premiere/francais/oral/:eleve/*`
+(descriptif de l'élève). Les anciennes adresses `/francais/*` redirigent vers celles-ci.
+
+Depuis la réorganisation de la navigation, le français n'a plus de cadre ni de barre latérale
+propres : il partage `AppLayout` et `MainSidebar` avec le reste du site. Seul l'espace oral d'un
+élève garde une barre dédiée (`src/francais/components/oral/OralStudentSidebar.tsx`).
 
 ### 13.4 LocalStorage — isolation garantie
 
@@ -321,6 +371,7 @@ Le **`french-reviewer`** effectue 7 passes dont **5 BLOQUANTES** :
 À chaque commit lié au volet français :
 1. `npm run typecheck` passe sans erreur supplémentaire.
 2. `npm run build` produit un build valide.
-3. `npm run test` — 71 tests passent (score de référence).
-4. Routes maths (`/`, `/chapitre/:slug/*`, `/bac-blanc`) inchangées.
+3. `npm run test` — 77 tests passent (score de référence).
+4. Routes maths (`/premiere/maths/*`, dont `/premiere/maths/bac-blanc`) inchangées, et les
+   anciennes (`/chapitre/*`, `/bac-blanc`) toujours redirigées.
 5. LocalStorage maths `bms-2026-app` / `bms-2026-progress` **intactes**.

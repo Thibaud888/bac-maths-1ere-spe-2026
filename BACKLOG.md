@@ -15,3 +15,36 @@
   Livré par la PR #60 (2026-07-19) : `a-deriv-graph-comparaison-fg` + figure
   `public/figures/derivation/comparaison-courbes-fg.svg` (parabole $f(x)=x^2-x-1$ vs droite
   $g(x)=1$), workflow 2 passes respecté (PASS pedagogical-reviewer).
+
+## Terminale, outils et mode d'emploi (ouvert le 2026-09-22)
+
+- [x] Réorganiser le site pour accueillir la terminale — une seule barre de navigation groupée
+  par année (première et terminale au même rang), repliable ; adresses `/terminale/*`,
+  `/premiere/*`, `/simulateur`, `/le-bac` avec redirection des anciennes ; pages de terminale et
+  d'outils créées à vide. Registre des espaces dans `src/lib/spaces.ts`.
+  DoD : `node scripts/verify.mjs` OK, 77 tests. Session du 2026-09-22.
+- [ ] Remplir la page « Le bac, mode d'emploi » — ce qui compte et combien : épreuves, contrôle
+  continu, coefficients, calendrier, mentions, options. Chaque chiffre rattaché à sa source
+  officielle (education.gouv.fr, éduscol) ; le tableau des coefficients du dépôt
+  `notes-bac-visualisateur` sert de point de départ (déjà vérifié).
+  DoD : page `/le-bac` complète, sources citées, `node scripts/verify.mjs` OK.
+- [ ] Reprendre le simulateur de moyenne dans le site — l'outil existe dans le dépôt
+  `notes-bac-visualisateur` (HTML/CSS/JS purs, ~600 lignes, zéro dépendance) : décider entre
+  portage en React et intégration telle quelle, puis brancher sur `/simulateur`.
+  Préfixe LocalStorage à prévoir (`btl-2027-*`), sans toucher à `bms-2026-*` / `bfr-2026-*`.
+  DoD : simulateur utilisable depuis le menu, `node scripts/verify.mjs` OK.
+- [ ] Découper le programme de maths de terminale en chapitres — la liste des chapitres et leur
+  ordre, avant toute écriture de contenu ; crée `content/terminale/maths/<slug>/` et alimente
+  `sections()` de l'espace `tle-maths`. Nécessite un skill « programme de terminale » sur le
+  modèle de celui de première.
+  DoD : chapitres visibles dans le menu, schémas de contenu prêts.
+- [ ] Découper le programme de physique-chimie en chapitres — même travail, avec ses quatre modes
+  (formulaire, méthodes, exercices, type bac) ; le mode « méthodes » n'existe pas encore côté code.
+  DoD : chapitres visibles dans le menu, gabarit de contenu défini.
+- [ ] Remplir les cinq pages du grand oral — l'épreuve, les deux questions, la préparation,
+  l'entretien, l'oral blanc minuté. Le simulateur de l'oral de français sert de base pour l'oral
+  blanc. Contenu réglementaire pris sur les textes officiels de la session 2027.
+  DoD : pages complètes, `node scripts/verify.mjs` OK.
+- [ ] Afficher le compte à rebours des épreuves — dès que les dates officielles de la session 2027
+  sont publiées (aucune date inventée en attendant) : bandeau sur l'accueil et rappel dans le menu.
+  DoD : dates sourcées, affichage sur l'accueil.

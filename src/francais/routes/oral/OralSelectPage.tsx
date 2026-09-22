@@ -26,7 +26,7 @@ export default function OralSelectPage() {
           {students.map((student) => (
             <Link
               key={student.id}
-              to={`/francais/oral/${student.id}`}
+              to={`/premiere/francais/oral/${student.id}`}
               className="block rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm transition-colors hover:border-emerald-400 dark:hover:border-emerald-500"
             >
               <div className="flex items-center gap-3">

@@ -10,7 +10,7 @@ type OralTextCardProps = {
 export default function OralTextCard({ text, eleve }: OralTextCardProps) {
   return (
     <Link
-      to={`/francais/oral/${eleve}/textes/${text.id}`}
+      to={`/premiere/francais/oral/${eleve}/textes/${text.id}`}
       className="block rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm transition-colors hover:border-emerald-400 dark:hover:border-emerald-500"
     >
       <div className="flex items-start justify-between gap-2">

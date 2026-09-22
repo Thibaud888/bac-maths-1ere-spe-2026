@@ -1,103 +1,100 @@
-import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { listChapters } from '@/lib/content-loader';
-import { useProgressStore } from '@/stores/progress-store';
-import { listFrenchModules, listOralStudents } from '@/francais/lib/french-content-loader';
+import { SPACES, TOOLS, YEARS, type Space, type SpaceAccent } from '@/lib/spaces';
+
+const TILE: Record<SpaceAccent, string> = {
+  blue: 'border-blue-200 hover:border-blue-400 dark:border-blue-800 dark:hover:border-blue-600',
+  violet:
+    'border-violet-200 hover:border-violet-400 dark:border-violet-800 dark:hover:border-violet-600',
+  amber:
+    'border-amber-200 hover:border-amber-400 dark:border-amber-800 dark:hover:border-amber-600',
+  sky: 'border-sky-200 hover:border-sky-400 dark:border-sky-800 dark:hover:border-sky-600',
+  indigo:
+    'border-indigo-200 hover:border-indigo-400 dark:border-indigo-800 dark:hover:border-indigo-600',
+};
+
+const DOT: Record<SpaceAccent, string> = {
+  blue: 'bg-blue-500',
+  violet: 'bg-violet-500',
+  amber: 'bg-amber-500',
+  sky: 'bg-sky-500',
+  indigo: 'bg-indigo-500',
+};
+
+function SpaceTile({ space }: { space: Space }) {
+  return (
+    <li>
+      <Link
+        to={space.path}
+        className={`flex h-full flex-col rounded-xl border-2 bg-white p-5 transition-colors dark:bg-slate-800 ${TILE[space.accent]}`}
+      >
+        <div className="flex items-center gap-2">
+          <span
+            className={`h-2 w-2 shrink-0 rounded-full ${DOT[space.accent]}`}
+            aria-hidden="true"
+          />
+          <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">
+            {space.title}
+          </h3>
+        </div>
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+          {space.tagline}
+        </p>
+        {space.status === 'soon' && (
+          <span className="mt-3 self-start rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:bg-slate-700 dark:text-slate-300">
+            contenu à venir
+          </span>
+        )}
+      </Link>
+    </li>
+  );
+}
 
 export default function HomePage() {
-  const chapters = useMemo(() => listChapters(), []);
-  const countSucceeded = useProgressStore((s) => s.countSucceeded);
-  const modulesCount = useMemo(() => listFrenchModules().length, []);
-  const studentsCount = useMemo(() => listOralStudents().length, []);
-
-  const autoSucceeded = countSucceeded('automatism');
-  const classicSucceeded = countSucceeded('classic');
-  const examSucceeded = countSucceeded('exam');
-  const mathsProgress = autoSucceeded + classicSucceeded + examSucceeded;
-
   return (
-    <div className="mx-auto max-w-3xl space-y-8 p-8">
-      <section>
+    <div className="mx-auto max-w-4xl space-y-8 p-8">
+      <header>
         <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-          Bac 2026 — Révisions
+          Bac 2027
         </h1>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-          Choisissez une matière pour commencer.
+          Les révisions des deux années au même endroit : les épreuves anticipées
+          passées en première, et les épreuves de terminale à venir.
         </p>
-      </section>
+      </header>
 
-      <section className="grid gap-5 sm:grid-cols-2">
-        {/* Maths */}
-        <div className="flex flex-col rounded-xl border-2 border-blue-200 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/20 p-5">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl font-bold text-blue-700 dark:text-blue-300">∑</span>
-            <div>
-              <h2 className="text-lg font-bold text-blue-800 dark:text-blue-200">Maths</h2>
-              <p className="text-xs text-blue-600 dark:text-blue-400">EAM · 12 juin 2026 · 2h · coef. 2</p>
-            </div>
-          </div>
+      {YEARS.map((year) => {
+        const spaces = SPACES.filter((s) => s.year === year.id);
+        if (spaces.length === 0) return null;
+        return (
+          <section key={year.id}>
+            <h2 className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+              {year.label}
+            </h2>
+            <ul className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {spaces.map((space) => (
+                <SpaceTile key={space.id} space={space} />
+              ))}
+            </ul>
+          </section>
+        );
+      })}
 
-          {mathsProgress > 0 && (
-            <p className="mt-3 text-xs text-blue-700 dark:text-blue-300">
-              {autoSucceeded} automatismes · {classicSucceeded} classiques · {examSucceeded} type bac réussis
-            </p>
-          )}
-
-          <ul className="mt-4 space-y-1.5">
-            {chapters.map((ch) => (
-              <li key={ch.slug}>
-                <Link
-                  to={`/chapitre/${ch.slug}/formulaire`}
-                  className="block rounded border border-blue-200 dark:border-blue-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm font-medium text-blue-900 dark:text-blue-100 hover:border-blue-400 dark:hover:border-blue-500 transition-colors"
-                >
-                  {ch.shortTitle ?? ch.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {chapters.length > 0 && (
-            <Link
-              to="/bac-blanc"
-              className="mt-3 block rounded border border-blue-300 dark:border-blue-600 px-3 py-2 text-center text-sm font-semibold text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-800/40 transition-colors"
-            >
-              Bac blanc →
-            </Link>
-          )}
-        </div>
-
-        {/* Français */}
-        <Link
-          to="/francais"
-          className="group flex flex-col rounded-xl border-2 border-indigo-200 dark:border-indigo-700 bg-indigo-50 dark:bg-indigo-900/20 p-5 shadow-sm transition-colors hover:border-indigo-400 dark:hover:border-indigo-500"
-        >
-          <div className="flex items-center gap-3">
-            <span className="text-2xl font-bold text-indigo-700 dark:text-indigo-300">A</span>
-            <div>
-              <h2 className="text-lg font-bold text-indigo-800 dark:text-indigo-200">Français</h2>
-              <p className="text-xs text-indigo-600 dark:text-indigo-400">EAF · écrit 4h coef. 5 · oral coef. 5</p>
-            </div>
-          </div>
-
-          <div className="mt-4 space-y-2">
-            <div className="rounded border border-emerald-200 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-2">
-              <p className="text-sm font-semibold text-emerald-800 dark:text-emerald-200">🎙️ Oral</p>
-              <p className="text-xs text-emerald-600 dark:text-emerald-400">
-                {studentsCount > 0
-                  ? `${studentsCount} descriptif${studentsCount > 1 ? 's' : ''} · explication linéaire, grammaire, entretien`
-                  : 'Explication linéaire, grammaire, entretien'}
-              </p>
-            </div>
-            <div className="rounded border border-indigo-200 dark:border-indigo-700 bg-white dark:bg-slate-800 px-3 py-2">
-              <p className="text-sm font-semibold text-indigo-800 dark:text-indigo-200">✍️ Écrit</p>
-              <p className="text-xs text-indigo-600 dark:text-indigo-400">
-                {modulesCount > 0
-                  ? `${modulesCount} modules · commentaire, dissertation, révision express`
-                  : 'Commentaire, dissertation, méthode, révision express'}
-              </p>
-            </div>
-          </div>
-        </Link>
+      <section>
+        <h2 className="text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+          Outils
+        </h2>
+        <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+          {TOOLS.map((tool) => (
+            <li key={tool.to}>
+              <Link
+                to={tool.to}
+                className="block rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 transition-colors hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:border-slate-500"
+              >
+                {tool.label} →
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );
