@@ -78,7 +78,7 @@
   Thibaud). « Mes 2 questions » est un cadre que l'élève remplit (rien d'inventé) ; oral blanc
   propre au grand oral (tirage, minuteur 20 + 10 + 10 lu dans `deroule.json`, relances,
   auto-évaluation sans points). Persistance `bgo-2027-grand-oral`, isolation vérifiée dans
-  Chromium. `node scripts/verify.mjs` OK, 152 tests (121 de référence + 31 nouveaux). PR : #PR.
+  Chromium. `node scripts/verify.mjs` OK, 152 tests (121 de référence + 31 nouveaux). PR : #75.
 - [ ] Relire la page « L'épreuve » du grand oral sur le texte intégral du Bulletin officiel —
   la session du 2026-09-22 n'a pas pu ouvrir education.gouv.fr (bloqué par le réseau de la
   session) : chaque affirmation vient d'extraits du texte `s-grand-oral` obtenus par moteur de
