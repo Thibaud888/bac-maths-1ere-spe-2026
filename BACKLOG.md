@@ -31,11 +31,18 @@
 - [ ] Valider aussi le contenu français à la publication — le workflow `deploy.yml` lance
   `validate-content.mjs` mais pas `validate-francais.mjs` : un contenu français invalide
   passerait en ligne. DoD : étape ajoutée au workflow, run vert.
-- [ ] Remplir la page « Le bac, mode d'emploi » — ce qui compte et combien : épreuves, contrôle
+- [x] Remplir la page « Le bac, mode d'emploi » — ce qui compte et combien : épreuves, contrôle
   continu, coefficients, calendrier, mentions, options. Chaque chiffre rattaché à sa source
   officielle (education.gouv.fr, éduscol) ; le tableau des coefficients du dépôt
   `notes-bac-visualisateur` sert de point de départ (déjà vérifié).
   DoD : page `/le-bac` complète, sources citées, `node scripts/verify.mjs` OK.
+  Livré le 2026-09-22 : contenu en JSON sous `content/bac/` (coefficients, épreuves,
+  calendrier, mentions, sources), schémas `schemas/bac/`, chargeur `src/lib/bac-content.ts`.
+  `coefficients.json` est la source unique des 104 coefficients — le simulateur la lira.
+  Calendrier 2027 pris au BO spécial n° 2 du 25 août 2026 ; aucune date non publiée inventée
+  (la partie pratique de physique-chimie reste en « printemps 2027 »). Profil confirmé avec
+  Thibaud : musique suivie en terminale seulement, d'où un total de 104 et non 106.
+  `node scripts/verify.mjs` OK, 88 tests (77 de référence + 11 nouveaux). PR : #72.
 - [ ] Reprendre le simulateur de moyenne dans le site — l'outil existe dans le dépôt
   `notes-bac-visualisateur` (HTML/CSS/JS purs, ~600 lignes, zéro dépendance) : décider entre
   portage en React et intégration telle quelle, puis brancher sur `/simulateur`.

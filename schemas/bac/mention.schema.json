@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "bac/mention.schema.json",
+  "title": "Palier de résultat",
+  "description": "Un palier de la moyenne finale : non admis, rattrapage, admis, mentions. Les bornes sont celles des textes officiels.",
+  "type": "object",
+  "required": ["id", "seuil", "label", "resume", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^me-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : me-<slug>. Ex : me-tres-bien"
+    },
+    "seuil": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 20,
+      "description": "Moyenne minimale du palier, borne incluse."
+    },
+    "plafond": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 20,
+      "description": "Moyenne au-dessus de laquelle on quitte ce palier, borne exclue. Absent pour le dernier palier."
+    },
+    "label": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 60
+    },
+    "resume": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 300,
+      "description": "Ce que ça veut dire concrètement."
+    },
+    "reglementaire": {
+      "type": "boolean",
+      "description": "false quand le palier relève de l'appréciation du jury et non d'un seuil fixé par les textes (félicitations)."
+    },
+    "accent": {
+      "type": "string",
+      "enum": ["rose", "amber", "sky", "emerald", "violet"],
+      "description": "Couleur d'accent du palier dans la page."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^s-[a-z0-9-]+$" }
+    }
+  }
+}

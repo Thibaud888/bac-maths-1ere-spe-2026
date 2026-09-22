@@ -1,20 +1,513 @@
-import EmptyState from '@/components/shared/EmptyState';
+import type { ReactNode } from 'react';
+import {
+  BLOC_LABEL,
+  BLOC_ORDER,
+  coefficientsOfBloc,
+  getBacCoefficient,
+  listBacEpreuves,
+  listBacJalons,
+  listBacMentions,
+  listBacSources,
+  totalCoefficients,
+  totalEpreuves,
+  totalOfBloc,
+} from '@/lib/bac-content';
+import type {
+  BacAccent,
+  BacCoefficient,
+  BacEpreuve,
+  BacForme,
+  BacJalon,
+  BacMention,
+  BacPrecision,
+} from '@/lib/bac-types';
+
+const FORME_LABEL: Record<BacForme, string> = {
+  ecrit: 'Écrit',
+  oral: 'Oral',
+  pratique: 'Pratique',
+  'ecrit-et-pratique': 'Écrit et pratique',
+};
+
+const PRECISION_LABEL: Record<BacPrecision, string> = {
+  jour: 'Date officielle',
+  periode: 'Période officielle',
+  mois: 'Mois connu',
+  inconnue: 'Pas encore publié',
+};
+
+const MENTION_ACCENT: Record<BacAccent, string> = {
+  rose: 'border-rose-300 bg-rose-50 dark:border-rose-800 dark:bg-rose-950/40',
+  amber: 'border-amber-300 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/40',
+  sky: 'border-sky-300 bg-sky-50 dark:border-sky-800 dark:bg-sky-950/40',
+  emerald:
+    'border-emerald-300 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/40',
+  violet:
+    'border-violet-300 bg-violet-50 dark:border-violet-800 dark:bg-violet-950/40',
+};
+
+const SOMMAIRE: readonly { to: string; label: string }[] = [
+  { to: '#epreuves', label: 'Les épreuves' },
+  { to: '#continu', label: 'Le contrôle continu' },
+  { to: '#coefficients', label: 'Les coefficients' },
+  { to: '#calendrier', label: 'Le calendrier' },
+  { to: '#mentions', label: 'Mentions et rattrapage' },
+  { to: '#options', label: 'Les options' },
+  { to: '#sources', label: 'Les sources' },
+];
+
+const sources = listBacSources();
+/** Numéro de renvoi de chaque source, pour les appels [1], [2]… dans le texte. */
+const sourceNumbers = new Map(sources.map((s, index) => [s.id, index + 1]));
+
+/** Appels de sources : renvoient à la liste numérotée en bas de page. */
+function Refs({ ids }: { ids: readonly string[] }) {
+  return (
+    <span className="whitespace-nowrap text-[0.7rem] font-medium text-sky-700 dark:text-sky-400">
+      {ids.map((id) => {
+        const number = sourceNumbers.get(id);
+        if (number === undefined) return null;
+        return (
+          <a key={id} href="#sources" className="ml-0.5 hover:underline">
+            [{number}]
+          </a>
+        );
+      })}
+    </span>
+  );
+}
+
+function Section({
+  id,
+  title,
+  lead,
+  children,
+}: {
+  id: string;
+  title: string;
+  lead?: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <section id={id} className="scroll-mt-6 space-y-4">
+      <div>
+        <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+          {title}
+        </h2>
+        {lead && (
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{lead}</p>
+        )}
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="rounded-lg border border-slate-200 bg-white p-4 text-center dark:border-slate-700 dark:bg-slate-800">
+      <p className="text-2xl font-bold text-sky-700 dark:text-sky-400">{value}</p>
+      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{label}</p>
+    </div>
+  );
+}
+
+/** Pastille « ton cas » sur les lignes qui dépendent de ses choix. */
+function ProfilBadge() {
+  return (
+    <span className="ml-2 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
+      ton cas
+    </span>
+  );
+}
+
+/** « 3 en première + 3 en terminale », quand le coefficient est partagé. */
+function repartitionLabel(coefficient: BacCoefficient): string | null {
+  const parts = coefficient.repartition;
+  if (!parts || parts.length < 2) return null;
+  return parts
+    .map((p) => `${p.part} en ${p.annee === 'premiere' ? 'première' : 'terminale'}`)
+    .join(' + ');
+}
+
+function EpreuveCard({ epreuve }: { epreuve: BacEpreuve }) {
+  const coefficient = getBacCoefficient(epreuve.coefficientId);
+  return (
+    <article className="rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="font-semibold text-slate-900 dark:text-slate-100">
+          {epreuve.titre}
+          {coefficient?.portee === 'profil' && <ProfilBadge />}
+        </h3>
+        {coefficient && (
+          <span className="rounded bg-sky-50 px-2 py-0.5 text-xs font-semibold text-sky-800 dark:bg-sky-950/60 dark:text-sky-300">
+            coefficient {coefficient.coefficient}
+          </span>
+        )}
+      </div>
+      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+        {FORME_LABEL[epreuve.forme]}
+        {epreuve.duree && ` · ${epreuve.duree}`}
+        {epreuve.quand && ` · ${epreuve.quand}`}
+      </p>
+      <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">{epreuve.resume}</p>
+      {epreuve.detail && (
+        <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+          {epreuve.detail}
+        </p>
+      )}
+      <p className="mt-2">
+        <Refs ids={epreuve.sources} />
+      </p>
+    </article>
+  );
+}
+
+function JalonRow({ jalon }: { jalon: BacJalon }) {
+  return (
+    <li className="border-l-2 border-sky-200 py-2 pl-4 dark:border-sky-800">
+      <div className="flex flex-wrap items-baseline gap-x-2">
+        <p className="font-semibold text-slate-900 dark:text-slate-100">{jalon.titre}</p>
+        <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[0.65rem] uppercase tracking-wide text-slate-500 dark:bg-slate-700 dark:text-slate-300">
+          {PRECISION_LABEL[jalon.precision]}
+        </span>
+      </div>
+      <p className="text-sm font-medium text-sky-700 dark:text-sky-400">{jalon.quand}</p>
+      {jalon.detail && (
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{jalon.detail}</p>
+      )}
+      <p className="mt-1">
+        <Refs ids={jalon.sources} />
+      </p>
+    </li>
+  );
+}
+
+/** « de 12 à moins de 14 », « 16 et plus », « moins de 8 ». */
+function palierLabel(mention: BacMention): string {
+  if (mention.plafond === undefined) return `${mention.seuil} et plus`;
+  if (mention.seuil === 0) return `moins de ${mention.plafond}`;
+  return `de ${mention.seuil} à moins de ${mention.plafond}`;
+}
+
+function CoefficientTable({ coefficients }: { coefficients: BacCoefficient[] }) {
+  return (
+    <table className="w-full border-collapse text-sm">
+      <thead>
+        <tr className="border-b border-slate-200 text-left text-xs uppercase tracking-wide text-slate-500 dark:border-slate-700 dark:text-slate-400">
+          <th className="py-2 pr-2 font-semibold">Matière</th>
+          <th className="hidden py-2 pr-2 font-semibold sm:table-cell">Quand</th>
+          <th className="py-2 pr-2 text-right font-semibold">Coef.</th>
+          <th className="py-2 text-right font-semibold">Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {coefficients.map((c) => {
+          const parts = repartitionLabel(c);
+          return (
+            <tr
+              key={c.id}
+              className="border-b border-slate-100 align-top dark:border-slate-700/60"
+            >
+              <td className="py-2 pr-2">
+                <span className="font-medium text-slate-900 dark:text-slate-100">
+                  {c.label}
+                </span>
+                {c.portee === 'profil' && <ProfilBadge />}
+                {c.profilNote && (
+                  <span className="block text-xs text-slate-500 dark:text-slate-400">
+                    {c.profilNote}
+                  </span>
+                )}
+                {/* Sur téléphone, la colonne « Quand » se replie sous la matière. */}
+                <span className="block text-xs text-slate-500 dark:text-slate-400 sm:hidden">
+                  {c.quand}
+                  {parts && ` — ${parts}`}
+                </span>
+              </td>
+              <td className="hidden py-2 pr-2 text-slate-600 dark:text-slate-400 sm:table-cell">
+                {c.quand}
+                {parts && (
+                  <span className="block text-xs text-slate-500 dark:text-slate-500">
+                    {parts}
+                  </span>
+                )}
+              </td>
+              <td className="py-2 pr-2 text-right font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+                {c.coefficient}
+              </td>
+              <td className="py-2 text-right">
+                <Refs ids={c.sources} />
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
+}
 
 export default function LeBacPage() {
+  const total = totalCoefficients();
+  const epreuves = listBacEpreuves();
+  const passees = epreuves.filter((e) => e.statut === 'passee');
+  const aVenir = epreuves.filter((e) => e.statut !== 'passee');
+  const jalons = listBacJalons();
+  const mentions = listBacMentions();
+  const continu = coefficientsOfBloc('continu');
+  const options = coefficientsOfBloc('option');
+
   return (
-    <EmptyState
-      accent="sky"
-      title="Le bac, mode d’emploi"
-      lead="Ce qui compte, et combien : quelles matières se jouent en contrôle continu, lesquelles ont une épreuve, quand elles tombent, et comment la moyenne finale est calculée."
-      planned={[
-        { label: 'Les épreuves', description: 'Écrit, oral, pratique : qui passe quoi, et quand.' },
-        { label: 'Le contrôle continu', description: 'Les matières évaluées sur les bulletins, et sur quelles années.' },
-        { label: 'Les coefficients', description: 'Le poids de chaque bloc dans la note finale.' },
-        { label: 'Le calendrier', description: 'Les dates des épreuves de la session 2027.' },
-        { label: 'Les mentions', description: 'Les seuils, et le rattrapage.' },
-        { label: 'Les options', description: 'Comment elles comptent, et ce qu’elles changent vraiment.' },
-      ]}
-      footnote="Chaque chiffre publié ici sera rattaché à sa source officielle (education.gouv.fr, éduscol)."
-    />
+    <div className="mx-auto max-w-4xl space-y-12 p-8">
+      <header>
+        <span className="inline-block rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-sky-700 dark:bg-sky-950/60 dark:text-sky-300">
+          Session 2027
+        </span>
+        <h1 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+          Le bac, mode d’emploi
+        </h1>
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+          Ce qui compte, et combien. Le bac se joue sur {total} coefficients :{' '}
+          {totalEpreuves()} sur des épreuves, {totalOfBloc('continu')} sur les moyennes
+          des bulletins, {totalOfBloc('option')} sur les deux options. Chaque chiffre de
+          cette page renvoie au texte officiel qui le fixe.
+        </p>
+      </header>
+
+      <div className="grid gap-3 sm:grid-cols-4">
+        <Stat value={String(total)} label="coefficients en tout" />
+        <Stat value={String(totalEpreuves())} label="sur des épreuves" />
+        <Stat value={String(totalOfBloc('continu'))} label="sur les bulletins" />
+        <Stat value={String(totalOfBloc('option'))} label="sur les options" />
+      </div>
+
+      <p className="rounded-lg border border-sky-200 bg-sky-50 p-4 text-sm text-slate-700 dark:border-sky-900 dark:bg-sky-950/40 dark:text-slate-300">
+        <span className="font-semibold">La note finale.</span> On multiplie chaque note
+        par son coefficient, on additionne le tout, et on divise par {total}. Une matière
+        à coefficient 16 pèse donc huit fois plus qu’une option à coefficient 2.
+      </p>
+
+      <nav aria-label="Sommaire" className="flex flex-wrap gap-2">
+        {SOMMAIRE.map((entry) => (
+          <a
+            key={entry.to}
+            href={entry.to}
+            className="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600 hover:border-sky-300 hover:text-sky-700 dark:border-slate-700 dark:text-slate-300 dark:hover:border-sky-700 dark:hover:text-sky-400"
+          >
+            {entry.label}
+          </a>
+        ))}
+      </nav>
+
+      <p className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-slate-700 dark:border-amber-900 dark:bg-amber-950/40 dark:text-slate-300">
+        <span className="font-semibold">Ce qui dépend de toi.</span> Les lignes marquées{' '}
+        <ProfilBadge /> tiennent à tes choix : spécialités maths et physique-chimie, SVT
+        arrêtée en fin de première, options maths expertes et musique, anglais en langue
+        A et italien en langue B. Tout le reste vaut pour n’importe quel élève de la voie
+        générale.
+      </p>
+
+      <Section
+        id="epreuves"
+        title="Les épreuves"
+        lead="Sept épreuves, dont trois déjà derrière toi. Ensemble, elles font 60 coefficients sur 104."
+      >
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+          Déjà passées, en fin de première
+        </h3>
+        <div className="grid gap-3">
+          {passees.map((e) => (
+            <EpreuveCard key={e.id} epreuve={e} />
+          ))}
+        </div>
+        <h3 className="pt-2 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+          En terminale
+        </h3>
+        <div className="grid gap-3">
+          {aVenir.map((e) => (
+            <EpreuveCard key={e.id} epreuve={e} />
+          ))}
+        </div>
+      </Section>
+
+      <Section
+        id="continu"
+        title="Le contrôle continu"
+        lead={`${totalOfBloc('continu')} coefficients ne se jouent sur aucune épreuve : ce sont tes moyennes annuelles, celles qui figurent sur tes bulletins.`}
+      >
+        <CoefficientTable coefficients={continu} />
+        <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+          <li>
+            <span className="font-semibold text-slate-800 dark:text-slate-200">
+              Deux années, deux moitiés.
+            </span>{' '}
+            L’histoire-géographie, les deux langues, l’enseignement scientifique et l’EMC
+            comptent moitié sur la première, moitié sur la terminale. Ce qui vient de
+            première est déjà acquis.
+          </li>
+          <li>
+            <span className="font-semibold text-slate-800 dark:text-slate-200">
+              La spécialité arrêtée pèse lourd.
+            </span>{' '}
+            8 coefficients, entièrement décidés par ta moyenne de SVT en première : cette
+            note-là ne bougera plus.
+          </li>
+          <li>
+            <span className="font-semibold text-slate-800 dark:text-slate-200">
+              L’EPS, c’est trois épreuves au lycée.
+            </span>{' '}
+            Pas une moyenne de bulletin, mais trois évaluations notées par tes
+            professeurs dans l’année de terminale.
+          </li>
+        </ul>
+      </Section>
+
+      <Section
+        id="coefficients"
+        title="Les coefficients"
+        lead="Le barème complet, bloc par bloc. C’est le même tableau que lira le simulateur de moyenne."
+      >
+        {BLOC_ORDER.map((bloc) => (
+          <div key={bloc} className="space-y-2">
+            <div className="flex items-baseline justify-between gap-2">
+              <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+                {BLOC_LABEL[bloc]}
+              </h3>
+              <span className="text-sm font-semibold tabular-nums text-sky-700 dark:text-sky-400">
+                {totalOfBloc(bloc)} coef.
+              </span>
+            </div>
+            <CoefficientTable coefficients={coefficientsOfBloc(bloc)} />
+          </div>
+        ))}
+        <p className="rounded-lg bg-slate-100 p-3 text-sm font-semibold text-slate-800 dark:bg-slate-800 dark:text-slate-200">
+          Total : {total} coefficients.
+        </p>
+      </Section>
+
+      <Section
+        id="calendrier"
+        title="Le calendrier"
+        lead="Les dates publiées au Bulletin officiel. Quand une date n’est pas encore fixée, la période est indiquée telle quelle — rien n’est inventé."
+      >
+        <ul className="space-y-1">
+          {jalons.map((j) => (
+            <JalonRow key={j.id} jalon={j} />
+          ))}
+        </ul>
+      </Section>
+
+      <Section
+        id="mentions"
+        title="Mentions et rattrapage"
+        lead="Tout se joue sur une seule moyenne, celle des 104 coefficients."
+      >
+        <ul className="grid gap-2 sm:grid-cols-2">
+          {mentions.map((m) => (
+            <li
+              key={m.id}
+              className={`rounded-lg border p-3 ${MENTION_ACCENT[m.accent ?? 'sky']}`}
+            >
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <p className="font-semibold text-slate-900 dark:text-slate-100">
+                  {m.label}
+                </p>
+                <span className="text-xs font-semibold tabular-nums text-slate-700 dark:text-slate-300">
+                  {palierLabel(m)}
+                </span>
+              </div>
+              <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">
+                {m.resume}
+              </p>
+              {m.reglementaire === false && (
+                <p className="mt-1 text-xs italic text-slate-600 dark:text-slate-400">
+                  Décision du jury, pas un seuil réglementaire.
+                </p>
+              )}
+              <p className="mt-1">
+                <Refs ids={m.sources} />
+              </p>
+            </li>
+          ))}
+        </ul>
+        <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+          <li>
+            <span className="font-semibold text-slate-800 dark:text-slate-200">
+              Le rattrapage, comment ça marche.
+            </span>{' '}
+            Entre 8 et 10, tu passes deux oraux, dans deux matières de ton choix parmi
+            celles qui ont eu un écrit — les épreuves anticipées comprises. Pour chacune,
+            c’est la meilleure des deux notes qui est retenue.
+            <Refs ids={['s-mentions']} />
+          </li>
+          <li>
+            <span className="font-semibold text-slate-800 dark:text-slate-200">
+              Une mention ne s’obtient qu’au premier tour.
+            </span>{' '}
+            Un bac décroché au rattrapage est un bac sans mention, même si la moyenne
+            finale dépasse 12.
+            <Refs ids={['s-mentions']} />
+          </li>
+        </ul>
+      </Section>
+
+      <Section
+        id="options"
+        title="Les options"
+        lead="Une option rapporte 2 coefficients par année où elle est suivie, et ces coefficients s’ajoutent aux 100 de base."
+      >
+        <CoefficientTable coefficients={options} />
+        <p className="rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+          <span className="font-semibold">Attention, ce n’est plus un bonus.</span>{' '}
+          Avant la réforme, seuls les points au-dessus de 10 comptaient : une option ne
+          pouvait que faire monter la moyenne. Aujourd’hui l’option entre dans la moyenne
+          comme les autres matières — une note en dessous de 10 la fait donc baisser,
+          faiblement puisque le coefficient est petit.
+          <Refs ids={['s-calcul-note']} />
+        </p>
+        <p className="text-sm text-slate-600 dark:text-slate-400">
+          Tes deux options se suivent en terminale seulement : elles valent 2 coefficients
+          chacune, d’où un total de {total} et non de 100. Une option suivie dès la
+          première en vaudrait 4.
+          <Refs ids={['s-calcul-note', 's-controle-continu']} />
+        </p>
+      </Section>
+
+      <Section
+        id="sources"
+        title="Les sources"
+        lead="Chaque chiffre de cette page vient d’un de ces textes. Les numéros renvoient aux appels [1], [2]… ci-dessus."
+      >
+        <ol className="space-y-2 text-sm">
+          {sources.map((s, index) => (
+            <li key={s.id} className="flex gap-2">
+              <span className="font-semibold tabular-nums text-sky-700 dark:text-sky-400">
+                [{index + 1}]
+              </span>
+              <span>
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium text-slate-800 underline decoration-slate-300 underline-offset-2 hover:text-sky-700 dark:text-slate-200 dark:decoration-slate-600 dark:hover:text-sky-400"
+                >
+                  {s.label}
+                </a>
+                <span className="text-slate-500 dark:text-slate-400"> — {s.publisher}</span>
+                {s.note && (
+                  <span className="block text-xs text-slate-500 dark:text-slate-400">
+                    {s.note}
+                  </span>
+                )}
+              </span>
+            </li>
+          ))}
+        </ol>
+        <p className="border-t border-slate-200 pt-4 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400">
+          Pages consultées le 22 septembre 2026. En cas de doute, c’est le texte officiel
+          qui fait foi, jamais cette page.
+        </p>
+      </Section>
+    </div>
   );
 }

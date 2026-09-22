@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "bac/coefficient.schema.json",
+  "title": "Coefficient du baccalauréat",
+  "description": "Une ligne du barème du bac général, session 2027. C'est LA source unique des coefficients du site : la page « Le bac, mode d'emploi » et le simulateur de moyenne lisent ce fichier, personne ne recopie un chiffre.",
+  "type": "object",
+  "required": ["id", "label", "bloc", "coefficient", "quand", "portee", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^co-[a-z0-9-]+$",
+      "description": "Identifiant unique. Format : co-<slug>. Ex : co-philosophie"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 80,
+      "description": "Nom de la matière ou de l'épreuve, tel qu'affiché."
+    },
+    "bloc": {
+      "type": "string",
+      "enum": ["anticipee", "terminale", "continu", "option"],
+      "description": "anticipee = épreuve passée en fin de première ; terminale = épreuve de terminale ; continu = contrôle continu ; option = enseignement optionnel."
+    },
+    "coefficient": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 20,
+      "description": "Poids dans la moyenne finale."
+    },
+    "repartition": {
+      "type": "array",
+      "description": "Découpage du coefficient par année, quand l'enseignement est évalué sur les deux ans. La somme doit valoir `coefficient`.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["annee", "part"],
+        "additionalProperties": false,
+        "properties": {
+          "annee": { "type": "string", "enum": ["premiere", "terminale"] },
+          "part": { "type": "number", "minimum": 0, "maximum": 20 }
+        }
+      }
+    },
+    "quand": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "description": "Quand la note se joue, en français courant. Ex : « Juin 2027 »"
+    },
+    "portee": {
+      "type": "string",
+      "enum": ["commun", "profil"],
+      "description": "commun = vaut pour tout élève de la voie générale ; profil = dépend des choix de l'élève (spécialités, options)."
+    },
+    "profilNote": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Ce que cette ligne vaut pour l'élève du site, quand son cas mérite d'être nommé."
+    },
+    "comment": {
+      "type": "string",
+      "maxLength": 400,
+      "description": "Une phrase d'explication, sans jargon."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Ordre d'affichage dans le tableau."
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^s-[a-z0-9-]+$" },
+      "description": "IDs des sources officielles qui portent ce chiffre."
+    }
+  }
+}

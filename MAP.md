@@ -25,13 +25,16 @@ CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-
   agents/               # chapter-author, pedagogical-reviewer (+ équivalents français)
   commands/             # /new-chapter, /verify-conformity, /new-module-francais, /verify-francais
   figures-courbes-roadmap.md   # réserve de travail : figures/lecture graphique par chapitre
-schemas/                # JSON Schema Ajv (maths à la racine, français dans francais/)
+schemas/                # JSON Schema Ajv (maths à la racine, français dans francais/, bac/)
 content/
   chapters/<slug>/      # maths : meta, formulas, automatisms, classics, exam-style (JSON)
   francais/<module>/    # français : meta, fiches, quiz, exercices
   francais/oral/        # commun (épreuve, méthode, grammaire) + eleves/<id>/ (par élève)
+  bac/                  # mode d'emploi du bac : coefficients, epreuves, calendrier,
+                        # mentions, sources — SOURCE UNIQUE des coefficients du site
 src/
   lib/spaces.ts         # REGISTRE DES ESPACES : années, matières, outils → toute la navigation
+  lib/bac-content.ts    # chargeur validé de content/bac/ (+ bac-types.ts)
   components/layout/    # AppLayout (cadre unique), MainSidebar (LA barre), SidebarShell,
                         # TopBar (repli + fil d'Ariane), SectionTabs, ChapterLayout
   components/           # formulary, automatisms, exercises, exam, math (KaTeX), shared/EmptyState
@@ -58,6 +61,9 @@ tests/                  # Vitest ; Playwright pour les runners critiques
 - **Toucher l'UI maths** : `src/components/<domaine>/` ; l'état est dans `src/stores/` (Zustand).
 - **Toucher l'UI français** : tout vit sous `src/francais/` (le cadre et la barre sont communs).
 - **Ajouter un élève (oral)** : dossier `content/francais/oral/eleves/<id>/` — l'URL apparaît seule.
+- **Toucher un coefficient du bac** : `content/bac/coefficients.json` et lui seul ; la page
+  `/le-bac` et (à venir) le simulateur de moyenne le lisent. Chaque ligne cite sa source
+  officielle, déclarée dans `content/bac/sources.json`.
 - **Fin de session** : `/bilan` (récap branch/PR, mise à jour BACKLOG.md) + `/handoff` (prépare la reprise).
 
 ## Flux de données
