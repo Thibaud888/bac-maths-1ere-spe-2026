@@ -1,9 +1,7 @@
 import type { ReactNode } from 'react';
-import { totalCoefficients } from '@/lib/bac-content';
 import {
   FICHE_GRILLE_ID,
   fichesOfSection,
-  grandOralCoefficient,
   grandOralJalon,
   listGrandOralCriteres,
   listGrandOralTemps,
@@ -15,24 +13,13 @@ import FicheGrandOral from '@/components/grand-oral/FicheGrandOral';
 import GrandOralIntro from '@/components/grand-oral/GrandOralIntro';
 import SectionSources from '@/components/grand-oral/SectionSources';
 import Sommaire from '@/components/shared/Sommaire';
-import { Refs, SourcesNumerotees, ordreDesSources } from '@/components/shared/Sources';
+import { SourcesNumerotees, ordreDesSources } from '@/components/shared/Sources';
 
-function Stat({
-  value,
-  label,
-  sources,
-}: {
-  value: string;
-  label: string;
-  sources?: readonly string[];
-}) {
+function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-3 text-center dark:border-slate-700 dark:bg-slate-800 sm:p-4">
       <p className="text-xl font-bold text-amber-700 dark:text-amber-400 sm:text-2xl">{value}</p>
-      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-        {label}
-        {sources && <Refs ids={sources} />}
-      </p>
+      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{label}</p>
     </div>
   );
 }
@@ -69,13 +56,12 @@ function CriteresJury() {
 }
 
 export default function EpreuvePage() {
-  const coefficient = grandOralCoefficient();
   const jalon = grandOralJalon();
   const temps = listGrandOralTemps();
   const fiches = fichesOfSection('epreuve');
-  // Numérotées dans l'ordre où la page les cite.
+  // Les textes sur lesquels s'appuie la page, listés en bas seulement : ici,
+  // pas d'appels [n] dans le corps (ils renvoyaient presque tous au même texte).
   const sources = ordreDesSources(
-    coefficient?.sources,
     jalon?.sources,
     ...temps.map((t) => t.sources),
     ...fiches.map((f) => f.sources)
@@ -87,22 +73,14 @@ export default function EpreuvePage() {
         <GrandOralIntro title="L’épreuve" />
 
         <div className="space-y-3">
-          <div className="grid grid-cols-3 gap-3">
-            {coefficient && (
-              <Stat
-                value={String(coefficient.coefficient)}
-                label={`coefficient, sur ${totalCoefficients()}`}
-                sources={coefficient.sources}
-              />
-            )}
-            <Stat value={`${minutesDevantJury()} min`} label="face au jury" />
+          <div className="grid grid-cols-2 gap-3">
             <Stat value={`${minutesPreparation()} min`} label="de préparation" />
+            <Stat value={`${minutesDevantJury()} min`} label="face au jury" />
           </div>
           {jalon && (
             <p className="text-sm text-slate-700 dark:text-slate-300">
               <span className="font-semibold">Quand :</span> {minuscule(jalon.quand)} ; la
               date exacte est donnée par le lycée.
-              <Refs ids={jalon.sources} />
             </p>
           )}
         </div>
@@ -123,7 +101,7 @@ export default function EpreuvePage() {
         <Section id="regles" title="Ce que dit le texte">
           <div className="space-y-4">
             {fiches.map((fiche) => (
-              <FicheGrandOral key={fiche.id} fiche={fiche}>
+              <FicheGrandOral key={fiche.id} fiche={fiche} appels={false}>
                 {fiche.id === FICHE_GRILLE_ID && <CriteresJury />}
               </FicheGrandOral>
             ))}

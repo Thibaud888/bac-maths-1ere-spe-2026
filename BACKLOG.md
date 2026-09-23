@@ -83,6 +83,12 @@
   dessinée dans `Repartition.tsx` au lieu du `<title>` SVG (délai du navigateur) ;
   `window.scrollTo(0, 0)` au changement de `pathname` dans `AppLayout`.
   `node scripts/verify.mjs` OK, 159 tests (155 + 4). PR : #78.
+- [x] Troisième relecture du 2026-09-23 : réordonner « Le bac » et épurer « L'épreuve » du grand
+  oral — « Les options » juste après le contrôle continu ; sur « L'épreuve », case du
+  coefficient retirée, « préparation » avant « face au jury », plus d'appels [n] dans le corps
+  (liste des sources gardée en bas).
+  Détail : prop `appels` de `FicheGrandOral` (vrai par défaut, faux sur « L'épreuve ») ;
+  `DerouleFrise` sans appels. `node scripts/verify.mjs` OK, 159 tests. PR : #79.
 - [ ] Donner au dépôt un nom général (proposé : « revisions-bac ») — à faire par Thibaud dans
   GitHub (Settings → General → Repository name) : l'outil de session ne sait pas renommer un
   dépôt. La mise en ligne suit le nouveau nom seule (`deploy.yml` lit le nom du dépôt), mais
