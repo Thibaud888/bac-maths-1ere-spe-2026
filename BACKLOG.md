@@ -93,8 +93,9 @@
   en tête de chaque page, sommaire à droite qui suit la lecture, doublons retirés, mots
   techniques expliqués, apostrophes harmonisées ; aucun fait modifié.
   Détail : gabarit `components/shared/PageLongue.tsx` (sommaire collé à droite dès `xl`,
-  section en cours surlignée) et `Essentiel.tsx` ; « Le bac » : barre des 104 coefficients
-  (une case par matière), épreuves en grille, tableaux première / terminale avec total, section
+  section en cours surlignée) et `Essentiel.tsx` ; « Le bac » : « L'essentiel » réduit à la
+  barre des 104 coefficients (une case par matière, bulle au survol ou au toucher qui nomme
+  la matière — retour de Thibaud du 2026-09-23), épreuves en grille, tableaux première / terminale avec total, section
   « Les coefficients » retirée (elle recopiait les tableaux), calendrier en frise par phase,
   échelle des mentions proportionnelle de 0 à 20 ; grand oral : barre du temps
   (`BarreDuTemps.tsx`, lue dans `deroule.json`), déroulé avec les minutes en regard, fiches

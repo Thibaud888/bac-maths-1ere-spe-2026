@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Essentiel, { Chiffre, Chiffres } from '@/components/shared/Essentiel';
+import Essentiel from '@/components/shared/Essentiel';
 import PageLongue, { SectionPage } from '@/components/shared/PageLongue';
 import { ListeSources, Refs, SourcesNumerotees } from '@/components/shared/Sources';
 import { ACCENT_PAR_DEFAUT, MENTION_BARRE, MENTION_CARD } from '@/lib/bac-accents';
@@ -87,48 +87,122 @@ function ProfilBadge() {
 // L'essentiel
 // ---------------------------------------------------------------------------
 
+/** « 3 en première + 3 en terminale », quand le coefficient est partagé entre les deux années. */
+function repartitionLabel(coefficient: BacCoefficient): string | null {
+  const parts = coefficient.repartition;
+  if (!parts || parts.length < 2) return null;
+  return parts
+    .map((p) => `${p.part} en ${p.annee === 'premiere' ? 'première' : 'terminale'}`)
+    .join(' + ');
+}
+
+/** Nom court de chaque bloc, dans la bulle d'une case. */
+const BLOC_COURT: Record<BacBloc, string> = {
+  anticipee: 'épreuve anticipée',
+  terminale: 'épreuve de terminale',
+  continu: 'contrôle continu',
+  option: 'option',
+};
+
+/**
+ * Où placer la bulle d'une case : alignée à gauche près du bord gauche de la
+ * barre, à droite près du bord droit, centrée ailleurs — elle ne déborde jamais.
+ */
+function ancrageBulle(milieu: number): string {
+  if (milieu < 0.2) return 'left-0';
+  if (milieu > 0.8) return 'right-0';
+  return 'left-1/2 -translate-x-1/2';
+}
+
+/** Une case de la barre : sa matière, son coefficient, et la bulle qui les nomme. */
+function CaseCoefficient({
+  coefficient,
+  bloc,
+  premiere,
+  derniere,
+  milieu,
+}: {
+  coefficient: BacCoefficient;
+  bloc: BacBloc;
+  premiere: boolean;
+  derniere: boolean;
+  /** Position du milieu de la case sur la barre, de 0 à 1. */
+  milieu: number;
+}) {
+  const parts = repartitionLabel(coefficient);
+  const nom = t(coefficient.label);
+  return (
+    <li
+      tabIndex={0}
+      aria-label={t(`${coefficient.label} : coefficient ${coefficient.coefficient}`)}
+      className={`group/case relative flex min-w-0 cursor-default items-center justify-center text-xs font-semibold tabular-nums outline-none transition-opacity group-hover/barre:opacity-50 hover:!opacity-100 focus-visible:!opacity-100 focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:focus-visible:ring-white dark:focus-visible:ring-offset-slate-800 ${BLOC_COULEUR[bloc]} ${premiere ? 'rounded-l-md' : ''} ${derniere ? 'rounded-r-md' : ''}`}
+      style={{ flexGrow: coefficient.coefficient, flexBasis: 0 }}
+    >
+      <span aria-hidden="true">{coefficient.coefficient >= 5 ? coefficient.coefficient : ''}</span>
+      <span
+        role="tooltip"
+        className={`pointer-events-none absolute bottom-full z-10 mb-2 hidden w-max max-w-[15rem] rounded-md bg-slate-900 px-3 py-2 text-left text-xs font-normal leading-snug text-white shadow-lg group-hover/case:block group-focus/case:block dark:bg-slate-100 dark:text-slate-900 ${ancrageBulle(milieu)}`}
+      >
+        <span className="block text-sm font-semibold">{nom}</span>
+        <span className="block opacity-80">
+          coefficient {coefficient.coefficient} · {BLOC_COURT[bloc]}
+        </span>
+        {parts && <span className="block opacity-80">{parts}</span>}
+      </span>
+    </li>
+  );
+}
+
 /**
  * Les coefficients du bac en une barre : un bloc par partie du barème, une case
- * par matière, chaque case proportionnelle à son coefficient.
+ * par matière, chaque case proportionnelle à son coefficient. Survoler (ou
+ * toucher) une case affiche sa matière ; les autres s'estompent.
  */
 function BarreCoefficients({ total }: { total: number }) {
+  let cumul = 0;
   return (
     <div>
-      <p className="mb-2 text-sm font-semibold text-slate-800 dark:text-slate-200">
+      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">
         Où se jouent les {total} coefficients
       </p>
-      <div
-        className="flex h-10 gap-1"
-        role="img"
-        aria-label={BLOC_ORDER.map((b) => `${BLOC_LABEL[b]} : ${totalOfBloc(b)}`).join(
-          ' ; '
-        )}
-      >
-        {BLOC_ORDER.map((bloc) => (
-          <div
-            key={bloc}
-            className="flex gap-px overflow-hidden rounded-md"
-            style={{ flexGrow: totalOfBloc(bloc), flexBasis: 0 }}
-          >
-            {coefficientsOfBloc(bloc).map((c) => (
-              <span
-                key={c.id}
-                title={t(`${c.label} — coefficient ${c.coefficient}`)}
-                className={`flex min-w-0 items-center justify-center text-[0.7rem] font-semibold tabular-nums ${BLOC_COULEUR[bloc]}`}
-                style={{ flexGrow: c.coefficient, flexBasis: 0 }}
-              >
-                {c.coefficient >= 5 ? c.coefficient : ''}
-              </span>
-            ))}
-          </div>
-        ))}
+      <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+        <span className="hidden sm:inline">Passe la souris sur une case pour voir la matière.</span>
+        <span className="sm:hidden">Touche une case pour voir la matière.</span>
+      </p>
+      <div className="group/barre mt-10 flex h-12 gap-1">
+        {BLOC_ORDER.map((bloc) => {
+          const lignes = coefficientsOfBloc(bloc);
+          return (
+            <ol
+              key={bloc}
+              aria-label={t(`${BLOC_LABEL[bloc]} : ${totalOfBloc(bloc)} coefficients`)}
+              className="flex gap-px"
+              style={{ flexGrow: totalOfBloc(bloc), flexBasis: 0 }}
+            >
+              {lignes.map((c, index) => {
+                const milieu = (cumul + c.coefficient / 2) / total;
+                cumul += c.coefficient;
+                return (
+                  <CaseCoefficient
+                    key={c.id}
+                    coefficient={c}
+                    bloc={bloc}
+                    premiere={index === 0}
+                    derniere={index === lignes.length - 1}
+                    milieu={milieu}
+                  />
+                );
+              })}
+            </ol>
+          );
+        })}
       </div>
-      <ul className="mt-3 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="mt-4 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
         {BLOC_ORDER.map((bloc) => (
           <li key={bloc}>
             <a
               href={`#${BLOC_SECTION[bloc]}`}
-              className="group flex items-start gap-2 rounded-md p-1 -m-1 hover:bg-slate-50 dark:hover:bg-slate-700/40"
+              className="group -m-1 flex items-start gap-2 rounded-md p-1 hover:bg-slate-50 dark:hover:bg-slate-700/40"
             >
               <span
                 className={`mt-1 h-3 w-3 shrink-0 rounded-sm ${BLOC_COULEUR[bloc]}`}
@@ -151,47 +225,9 @@ function BarreCoefficients({ total }: { total: number }) {
 }
 
 function EssentielBac() {
-  const total = totalCoefficients();
-  const specialites = coefficientsOfBloc('terminale')
-    .filter((c) => c.portee === 'profil')
-    .reduce((sum, c) => sum + c.coefficient, 0);
-  const mentions = listBacMentions();
-  const admis = mentions.find((m) => m.id === 'me-admis');
-  const rattrapage = mentions.find((m) => m.id === 'me-rattrapage');
-  const premiereMention = mentions.find(
-    (m) => m.label.startsWith('Mention') && m.reglementaire !== false
-  );
-
   return (
     <Essentiel accent="sky">
-      <Chiffres>
-        <Chiffre accent="sky" valeur={total}>
-          coefficients en tout&nbsp;: {totalEpreuves()} sur les épreuves, {totalOfBloc('continu')}{' '}
-          sur les moyennes des bulletins (le contrôle continu), {totalOfBloc('option')} pour les
-          options.
-        </Chiffre>
-        <Chiffre accent="sky" valeur={specialites}>
-          pour les deux spécialités de terminale, dans l’exemple&nbsp;: le plus gros bloc du bac.
-        </Chiffre>
-        {admis && (
-          <Chiffre accent="sky" valeur={`${admis.seuil}/20`}>
-            de moyenne pour avoir le bac
-            {premiereMention && <>, mention dès {premiereMention.seuil}</>}
-            {rattrapage && rattrapage.plafond !== undefined && (
-              <>
-                &nbsp;; entre {rattrapage.seuil} et {rattrapage.plafond}, rattrapage
-              </>
-            )}
-            .
-          </Chiffre>
-        )}
-      </Chiffres>
-      <BarreCoefficients total={total} />
-      <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-        Un coefficient, c’est le poids d’une note dans la moyenne&nbsp;: une épreuve de
-        coefficient 16 compte deux fois plus qu’une épreuve de coefficient 8.
-        <span className="hidden sm:inline"> Survole une case pour voir la matière.</span>
-      </p>
+      <BarreCoefficients total={totalCoefficients()} />
     </Essentiel>
   );
 }
