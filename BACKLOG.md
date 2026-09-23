@@ -119,6 +119,18 @@
   (`AppLayout`). Règles vérifiées sur les extraits du texte officiel relevés par la
   vérification (#76) : education.gouv.fr est bloqué par le réseau de cette session.
   `node scripts/verify.mjs` OK, 169 tests (165 + 4). PR : #81.
+- [ ] Laisser les sessions ouvrir le site du ministère — le 2026-09-23, le réseau de la session
+  a refusé `www.education.gouv.fr` (proxy : CONNECT refusé, politique de l'environnement) ;
+  la page « Exposé » a dû être vérifiée sur les extraits relevés par la vérification (#76).
+  À faire par Thibaud : ajouter `www.education.gouv.fr` (et, pour les mêmes raisons,
+  `eduscol.education.gouv.fr`, `www.legifrance.gouv.fr`) aux domaines autorisés de
+  l'environnement cloud (menu de l'environnement dans la barre de titre → Edit → accès
+  réseau). DoD : une session ouvre `https://www.education.gouv.fr/bo/2026/Special4/MENE2622694N`.
+- [ ] Décider s'il faut un référentiel du grand oral avant d'ajouter d'autres conseils —
+  CLAUDE.md § 4.3 : si le contenu « méthode » du grand oral prend de l'ampleur, écrire d'abord
+  un skill « grand oral » et repasser au workflow 2 passes. Depuis #81, trois pages de méthode
+  (préparation, exposé, entretien). À trancher par Thibaud. DoD : décision notée dans
+  CLAUDE.md § 4.3 (skill écrit, ou statu quo confirmé).
 - [ ] Donner au dépôt un nom général (proposé : « revisions-bac ») — à faire par Thibaud dans
   GitHub (Settings → General → Repository name) : l'outil de session ne sait pas renommer un
   dépôt. La mise en ligne suit le nouveau nom seule (`deploy.yml` lit le nom du dépôt), mais

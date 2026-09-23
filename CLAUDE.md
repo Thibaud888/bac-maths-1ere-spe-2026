@@ -46,6 +46,12 @@ baccalauréat (session 2027) : la **première** (2025-2026, épreuves anticipée
 titres et les textes d'interface. Ce qui dépend d'un profil est présenté comme un exemple
 (« Exemple : anglais »), et une date n'apparaît que là où elle est un fait (calendrier).
 
+**Mise en forme des pages de lecture** (décision du 2026-09-23, « Le bac » et grand oral) :
+priorité à l'affichage sur ordinateur ; « L'essentiel » en tête de page, sommaire collé à
+droite sur grand écran (`components/shared/PageLongue.tsx`), **rien de replié** ; le texte
+change peu, c'est la présentation qui porte la lisibilité. Une reformulation de `content/bac/`
+ou du grand oral se contrôle avec `node scripts/faits-inchanges.mjs`.
+
 Deux outils transverses, hors année : le **simulateur de moyenne** (`/simulateur` — régler ses
 notes, voir bouger moyenne et mention) et **le bac, mode d'emploi** (`/le-bac` — contrôle
 continu, coefficients, calendrier, mentions). Tous deux lisent `content/bac/` (§ 4.2).
