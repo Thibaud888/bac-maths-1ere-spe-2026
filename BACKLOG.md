@@ -131,7 +131,7 @@
   le premier rendu (`main.tsx`) ; `color-scheme: dark` pour les contrôles natifs en sombre.
   Relu en captures (accueil, le bac, simulateur, formulaire, exercices, bac blanc, grand oral,
   fiches de français, sélecteur sur ordinateur et téléphone).
-  `node scripts/verify.mjs` OK, 177 tests (169 + 8).
+  `node scripts/verify.mjs` OK, 177 tests (169 + 8). PR : #83.
 - [ ] Laisser les sessions ouvrir le site du ministère — le 2026-09-23, le réseau de la session
   a refusé `www.education.gouv.fr` (proxy : CONNECT refusé, politique de l'environnement) ;
   la page « Exposé » a dû être vérifiée sur les extraits relevés par la vérification (#76).
