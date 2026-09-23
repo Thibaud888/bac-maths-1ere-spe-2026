@@ -27,6 +27,7 @@ import {
 } from '@/stores/grand-oral-store';
 import Minuteur from './Minuteur';
 import RelanceCard from './RelanceCard';
+import { typographie } from '@/lib/typographie';
 import { Refs } from '@/components/shared/Sources';
 
 /** Relances proposées d'emblée pendant l'échange (on peut en tirer d'autres). */
@@ -253,7 +254,7 @@ export default function OralBlanc() {
                   </span>
                 )}
                 <span className="rounded bg-slate-100 px-2 py-1 text-slate-700 dark:bg-slate-700 dark:text-slate-200">
-                  {p.titre} · <span className="font-semibold tabular-nums">{p.minutes} min</span>
+                  {typographie(p.titre)} · <span className="font-semibold tabular-nums">{p.minutes}&nbsp;min</span>
                 </span>
               </li>
             ))}
@@ -299,13 +300,13 @@ export default function OralBlanc() {
                     : 'bg-slate-100 text-slate-500 dark:bg-slate-700 dark:text-slate-400'
               }`}
             >
-              {p.titre}
+              {typographie(p.titre)}
             </li>
           ))}
         </ol>
 
         <Minuteur
-          titre={phase.titre}
+          titre={typographie(phase.titre)}
           dureeSecondes={dureeSecondes}
           restant={restant}
           enPause={!enMarche(seance.chrono)}
@@ -324,7 +325,7 @@ export default function OralBlanc() {
             {enMarche(seance.chrono) ? 'Pause' : 'Reprendre'}
           </button>
           <button type="button" onClick={suivante} className={BOUTON}>
-            {derniere ? 'Terminer l’oral' : `Passer à : ${phases[seance.index + 1]?.titre ?? ''}`}
+            {derniere ? 'Terminer l’oral' : typographie(`Passer à : ${phases[seance.index + 1]?.titre ?? ''}`)}
           </button>
         </div>
 
@@ -339,7 +340,7 @@ export default function OralBlanc() {
 
         <div className="rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
           <p className="text-sm text-slate-700 dark:text-slate-300">
-            {phase.resume}
+            {typographie(phase.resume)}
             <Refs ids={phase.sources} />
           </p>
         </div>
@@ -402,7 +403,7 @@ export default function OralBlanc() {
                 const prevu = p.minutes * 60;
                 return (
                   <tr key={p.id} className="border-b border-slate-100 dark:border-slate-700/60">
-                    <td className="py-1.5 pr-2 text-slate-800 dark:text-slate-200">{p.titre}</td>
+                    <td className="py-1.5 pr-2 text-slate-800 dark:text-slate-200">{typographie(p.titre)}</td>
                     <td className="py-1.5 pr-2 text-right tabular-nums text-slate-600 dark:text-slate-400">
                       {formatDuree(prevu)}
                     </td>
@@ -440,9 +441,9 @@ export default function OralBlanc() {
               <li key={c.id}>
                 <fieldset>
                   <legend className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                    {c.label}
+                    {typographie(c.label)}
                   </legend>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">{c.aide}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">{typographie(c.aide)}</p>
                   <div className="mt-1.5 flex flex-wrap gap-2">
                     {NIVEAUX.map((n) => {
                       const actif = auto[c.id] === n.id;

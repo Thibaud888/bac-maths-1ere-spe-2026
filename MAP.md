@@ -48,17 +48,23 @@ src/
   components/layout/    # AppLayout (cadre unique), MainSidebar (LA barre), SidebarShell,
                         # TopBar (repli + fil d'Ariane), SectionTabs, ChapterLayout
   components/           # formulary, automatisms, exercises, exam, math (KaTeX)
-  components/shared/    # EmptyState, Sommaire (table des matières numérotée), Sources
-                        # (appels [n] → liste en bas de page, registre content/bac/sources.json)
+  components/shared/    # EmptyState, Sommaire (encadré, ou colonne collée qui suit la lecture),
+                        # Sources (appels [n] → liste en bas de page, registre
+                        # content/bac/sources.json), PageLongue (gabarit des longues pages :
+                        # sommaire à droite sur grand écran, sections numérotées), Essentiel
+                        # (« L'essentiel » en tête de page : chiffres clés ou trois idées)
   components/simulateur/ # LigneNote (curseur + cadenas), Repartition (camembert SVG fait main)
   components/grand-oral/ # fiches, frise du déroulé, oral blanc minuté, cadre des 2 questions
   francais/             # volet français (components, lib, stores, routes) — cadre commun
-  lib/                  # content-loader, progress, randomizer, validate (Ajv), use-is-compact
+  lib/                  # content-loader, progress, randomizer, validate (Ajv), use-is-compact,
+                        # typographie (apostrophe ’ et espaces insécables, à l'affichage)
   routes/               # premiere/, chapter/, terminale/, outils/, HomePage
   stores/  App.tsx      # App.tsx porte aussi les redirections des anciennes adresses
 scripts/
   verify.mjs            # LA vérification : typecheck + tests + validate-content(+fr) + build
   validate-content.mjs  validate-francais.mjs
+  faits-inchanges.mjs   # garde-fou : nombres, dates, sources de content/bac/ et du grand
+                        # oral, entrée par entrée, entre origin/main et l'arbre de travail
 tests/                  # Vitest ; Playwright pour les runners critiques
 .github/workflows/
   deploy.yml            # Pages sur push main
@@ -108,5 +114,9 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
 - Changer de page ramène en haut (`AppLayout`, sauf lien vers une ancre `#…`).
 - `<main>` ne défile pas lui-même : c'est la fenêtre qui défile. Ne pas lui remettre
   `overflow-y-auto`, sinon les éléments `sticky` des pages (simulateur) décrochent.
+- Les textes de `content/bac/` et du grand oral s'affichent via `typographie()` (apostrophe
+  courbe, espaces insécables) : le JSON garde l'apostrophe droite, ne pas le réécrire pour ça.
+- Reformuler un texte de `content/bac/` ou du grand oral : `node scripts/faits-inchanges.mjs`
+  doit répondre « Aucun fait modifié ».
 - Pas d'année (« 2027 »), d'élève (« pour lui ») ni de phrase d'accroche dans les titres et
   chapeaux de page ; une date n'apparaît que là où elle est un fait (calendrier, épreuves).

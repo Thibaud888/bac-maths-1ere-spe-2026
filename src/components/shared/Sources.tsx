@@ -1,6 +1,7 @@
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
 import { resolveBacSources } from '@/lib/bac-content';
 import type { BacSource } from '@/lib/bac-types';
+import { typographie } from '@/lib/typographie';
 
 /**
  * Sources numérotées d'une page : les affirmations portent un appel [1], [2]…
@@ -91,9 +92,9 @@ export function ListeSources() {
   if (!numerotation || numerotation.sources.length === 0) return null;
   const { sources, accent } = numerotation;
   return (
-    <ol className="space-y-2 text-sm">
+    <ol className={`gap-x-10 text-sm ${sources.length > 3 ? 'lg:columns-2' : ''}`}>
       {sources.map((s, index) => (
-        <li key={s.id} className="flex gap-2">
+        <li key={s.id} className="mb-3 flex break-inside-avoid gap-2">
           <span className={`font-semibold tabular-nums ${TEXTE[accent]}`}>[{index + 1}]</span>
           <span>
             <a
@@ -102,11 +103,13 @@ export function ListeSources() {
               rel="noreferrer"
               className={`font-medium text-slate-800 underline decoration-slate-300 underline-offset-2 dark:text-slate-200 dark:decoration-slate-600 ${SURVOL[accent]}`}
             >
-              {s.label}
+              {typographie(s.label)}
             </a>
             <span className="text-slate-500 dark:text-slate-400"> — {s.publisher}</span>
             {s.note && (
-              <span className="block text-xs text-slate-500 dark:text-slate-400">{s.note}</span>
+              <span className="block text-xs text-slate-500 dark:text-slate-400">
+                {typographie(s.note)}
+              </span>
             )}
           </span>
         </li>

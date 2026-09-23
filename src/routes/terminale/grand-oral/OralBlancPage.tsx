@@ -14,11 +14,14 @@ const SOURCES = ordreDesSources(
 export default function OralBlancPage() {
   return (
     <SourcesNumerotees ids={SOURCES} accent="amber">
-      <div className="mx-auto max-w-3xl space-y-8 p-4 sm:p-8">
-        <GrandOralIntro title="Oral blanc" />
-        <OralBlanc />
-        <Historique />
-        <SectionSources />
+      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-8 sm:py-8">
+        {/* Même bord gauche que les autres onglets ; l'outil garde une largeur de lecture. */}
+        <div className="max-w-3xl space-y-8">
+          <GrandOralIntro title="Oral blanc" />
+          <OralBlanc />
+          <Historique />
+          <SectionSources />
+        </div>
       </div>
     </SourcesNumerotees>
   );

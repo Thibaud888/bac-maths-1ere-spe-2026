@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react';
 import {
   FICHE_GRILLE_ID,
   fichesOfSection,
@@ -8,32 +7,15 @@ import {
   minutesDevantJury,
   minutesPreparation,
 } from '@/lib/grand-oral-content';
+import BarreDuTemps from '@/components/grand-oral/BarreDuTemps';
 import DerouleFrise from '@/components/grand-oral/DerouleFrise';
 import FicheGrandOral from '@/components/grand-oral/FicheGrandOral';
 import GrandOralIntro from '@/components/grand-oral/GrandOralIntro';
 import SectionSources from '@/components/grand-oral/SectionSources';
-import Sommaire from '@/components/shared/Sommaire';
+import Essentiel, { Chiffre, Chiffres } from '@/components/shared/Essentiel';
+import PageLongue, { SectionPage } from '@/components/shared/PageLongue';
 import { SourcesNumerotees, ordreDesSources } from '@/components/shared/Sources';
-
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="rounded-lg border border-slate-200 bg-white p-3 text-center dark:border-slate-700 dark:bg-slate-800 sm:p-4">
-      <p className="text-xl font-bold text-amber-700 dark:text-amber-400 sm:text-2xl">{value}</p>
-      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{label}</p>
-    </div>
-  );
-}
-
-function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
-  return (
-    <section id={id} className="scroll-mt-20 space-y-4">
-      <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-        {title}
-      </h2>
-      {children}
-    </section>
-  );
-}
+import { typographie } from '@/lib/typographie';
 
 /** « Du lundi… » → « du lundi… », après les deux-points. */
 function minuscule(texte: string): string {
@@ -42,13 +24,19 @@ function minuscule(texte: string): string {
 
 function CriteresJury() {
   return (
-    <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-      {listGrandOralCriteres().map((c) => (
+    <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+      {listGrandOralCriteres().map((c, index) => (
         <li
           key={c.id}
-          className="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-200"
+          className="flex items-center gap-2.5 rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-200"
         >
-          {c.label}
+          <span
+            className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-100 text-[0.65rem] font-bold tabular-nums text-amber-800 dark:bg-amber-950/70 dark:text-amber-300"
+            aria-hidden="true"
+          >
+            {index + 1}
+          </span>
+          {typographie(c.label)}
         </li>
       ))}
     </ul>
@@ -59,6 +47,7 @@ export default function EpreuvePage() {
   const jalon = grandOralJalon();
   const temps = listGrandOralTemps();
   const fiches = fichesOfSection('epreuve');
+  const faceAuJury = temps.filter((t) => t.devantJury && t.minutes !== undefined);
   // Les textes sur lesquels s'appuie la page, listés en bas seulement : ici,
   // pas d'appels [n] dans le corps (ils renvoyaient presque tous au même texte).
   const sources = ordreDesSources(
@@ -66,50 +55,71 @@ export default function EpreuvePage() {
     ...temps.map((t) => t.sources),
     ...fiches.map((f) => f.sources)
   );
+  const sommaire = [
+    { id: 'deroule', label: 'Le déroulé' },
+    ...fiches.map((f) => ({ id: f.id, label: typographie(f.title) })),
+    { id: 'sources', label: 'Les sources' },
+  ];
+
+  const entete = (
+    <>
+      <GrandOralIntro title="L’épreuve" />
+      <Essentiel accent="amber">
+        <Chiffres>
+          <Chiffre accent="amber" valeur="2">
+            questions préparées dans l’année&nbsp;; le jury en choisit une.
+          </Chiffre>
+          <Chiffre accent="amber" valeur={`${minutesPreparation()} min`}>
+            de préparation, pour mettre tes idées en ordre.
+          </Chiffre>
+          <Chiffre accent="amber" valeur={`${minutesDevantJury()} min`}>
+            face au jury&nbsp;:{' '}
+            {faceAuJury
+              .map((t) => typographie(`${minuscule(t.titre)} (${t.minutes} min)`))
+              .join(', puis ')}
+            .
+          </Chiffre>
+        </Chiffres>
+        <BarreDuTemps temps={temps} />
+        {jalon && (
+          <p className="text-sm text-slate-700 dark:text-slate-300">
+            <span className="font-semibold">Quand&nbsp;:</span> {typographie(minuscule(jalon.quand))}
+            &nbsp;; la date exacte est donnée par le lycée.
+          </p>
+        )}
+      </Essentiel>
+    </>
+  );
 
   return (
     <SourcesNumerotees ids={sources} accent="amber">
-      <div className="mx-auto max-w-3xl space-y-10 p-4 sm:p-8">
-        <GrandOralIntro title="L’épreuve" />
-
-        <div className="space-y-3">
-          <div className="grid grid-cols-2 gap-3">
-            <Stat value={`${minutesPreparation()} min`} label="de préparation" />
-            <Stat value={`${minutesDevantJury()} min`} label="face au jury" />
-          </div>
-          {jalon && (
-            <p className="text-sm text-slate-700 dark:text-slate-300">
-              <span className="font-semibold">Quand :</span> {minuscule(jalon.quand)} ; la
-              date exacte est donnée par le lycée.
-            </p>
-          )}
-        </div>
-
-        <Sommaire
+      <PageLongue accent="amber" sommaire={sommaire} entete={entete}>
+        <SectionPage
+          id="deroule"
+          numero={1}
+          titre="Le déroulé"
           accent="amber"
-          entries={[
-            { id: 'deroule', label: 'Le déroulé' },
-            ...fiches.map((f) => ({ id: f.id, label: f.title })),
-            { id: 'sources', label: 'Les sources' },
-          ]}
-        />
-
-        <Section id="deroule" title="Le déroulé">
+          chapeau="Étape par étape, de ton arrivée à la fin de l’échange."
+        >
           <DerouleFrise temps={temps} />
-        </Section>
+        </SectionPage>
 
-        <Section id="regles" title="Ce que dit le texte">
-          <div className="space-y-4">
-            {fiches.map((fiche) => (
-              <FicheGrandOral key={fiche.id} fiche={fiche} appels={false}>
-                {fiche.id === FICHE_GRILLE_ID && <CriteresJury />}
-              </FicheGrandOral>
-            ))}
-          </div>
-        </Section>
+        <section aria-labelledby="regles" className="space-y-4">
+          <h2
+            id="regles"
+            className="border-b border-slate-200 pb-3 text-xl font-bold tracking-tight text-slate-900 dark:border-slate-700 dark:text-slate-100"
+          >
+            Ce que dit le texte
+          </h2>
+          {fiches.map((fiche, index) => (
+            <FicheGrandOral key={fiche.id} fiche={fiche} numero={index + 2} appels={false}>
+              {fiche.id === FICHE_GRILLE_ID && <CriteresJury />}
+            </FicheGrandOral>
+          ))}
+        </section>
 
-        <SectionSources />
-      </div>
+        <SectionSources numero={fiches.length + 2} />
+      </PageLongue>
     </SourcesNumerotees>
   );
 }
