@@ -53,7 +53,7 @@ export default function ThemePicker() {
         <div
           role="radiogroup"
           aria-label="Thème d’affichage"
-          className="absolute right-0 top-full z-20 mt-2 w-80 max-w-[calc(100vw-2rem)] rounded-xl border border-slate-200 bg-white p-1.5 shadow-lg dark:border-slate-700 dark:bg-slate-800"
+          className="absolute right-0 top-full z-20 mt-2 w-52 rounded-xl border border-slate-200 bg-white p-1.5 shadow-lg dark:border-slate-700 dark:bg-slate-800"
         >
           <p className="px-2.5 pb-1.5 pt-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
             Thème
@@ -94,13 +94,8 @@ function ThemeOption({
       }`}
     >
       <Apercu theme={theme} />
-      <span className="min-w-0 flex-1">
-        <span className="block text-sm font-semibold text-slate-900 dark:text-slate-100">
-          {theme.label}
-        </span>
-        <span className="block text-xs text-slate-500 dark:text-slate-400">
-          {theme.description}
-        </span>
+      <span className="min-w-0 flex-1 text-sm font-semibold text-slate-900 dark:text-slate-100">
+        {theme.label}
       </span>
       {selected && <CheckIcon />}
     </button>
@@ -113,11 +108,11 @@ function Apercu({ theme }: { theme: ThemeMeta }) {
   return (
     <span
       aria-hidden="true"
-      className="flex h-10 w-12 shrink-0 items-end overflow-hidden rounded-md border border-slate-300/70 p-1 dark:border-slate-600"
+      className="flex h-8 w-10 shrink-0 items-end overflow-hidden rounded-md border border-slate-300/70 p-1 dark:border-slate-600"
       style={{ backgroundColor: fond }}
     >
       <span
-        className="flex h-6 w-full items-center justify-center rounded-sm text-sm font-semibold leading-none"
+        className="flex h-5 w-full items-center justify-center rounded-sm text-xs font-semibold leading-none"
         style={{ backgroundColor: carte, color: texte, fontFamily: police }}
       >
         Aa

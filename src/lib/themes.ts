@@ -15,8 +15,6 @@ export type ThemeId = 'light' | 'dark' | 'papier' | 'tableau' | 'lavande';
 export type ThemeMeta = {
   id: ThemeId;
   label: string;
-  /** Une ligne : ce que l'élève verra. */
-  description: string;
   /** Le thème s'appuie sur les classes `dark:` (fond sombre, texte clair). */
   dark: boolean;
   /** Aperçu dans le sélecteur : fond de page, carte, texte, famille de police. */
@@ -27,35 +25,30 @@ export const THEMES: readonly ThemeMeta[] = [
   {
     id: 'light',
     label: 'Clair',
-    description: 'Fond blanc, lecture nette.',
     dark: false,
     apercu: { fond: '#f8fafc', carte: '#ffffff', texte: '#0f172a', police: 'system-ui, sans-serif' },
   },
   {
     id: 'dark',
     label: 'Sombre',
-    description: 'Fond bleu nuit, repose les yeux le soir.',
     dark: true,
     apercu: { fond: '#0f172a', carte: '#1e293b', texte: '#f1f5f9', police: 'system-ui, sans-serif' },
   },
   {
     id: 'papier',
     label: 'Papier',
-    description: 'Crème et encre brune, police de livre.',
     dark: false,
     apercu: { fond: '#f7f1e6', carte: '#fffcf5', texte: '#2a2016', police: 'Charter, Georgia, serif' },
   },
   {
     id: 'tableau',
     label: 'Tableau',
-    description: 'Vert tableau d’école, texte couleur craie.',
     dark: true,
     apercu: { fond: '#17231e', carte: '#20302a', texte: '#e9f0ec', police: 'system-ui, sans-serif' },
   },
   {
     id: 'lavande',
     label: 'Lavande',
-    description: 'Tons pastel, formes arrondies.',
     dark: false,
     apercu: { fond: '#f6f4fc', carte: '#ffffff', texte: '#1f1a33', police: 'ui-rounded, system-ui, sans-serif' },
   },

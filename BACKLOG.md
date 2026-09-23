@@ -121,8 +121,8 @@
   `node scripts/verify.mjs` OK, 169 tests (165 + 4). PR : #81.
 - [x] Choisir l'apparence du site parmi cinq thèmes — en plus de clair et sombre : « Papier »
   (crème, encre brune, police de livre), « Tableau » (vert tableau d'école, texte couleur craie)
-  et « Lavande » (pastel, formes arrondies). Le bouton du bandeau ouvre la liste, avec un aperçu
-  de chaque thème ; le choix est gardé d'une visite à l'autre.
+  et « Lavande » (pastel, formes arrondies). Le bouton du bandeau ouvre la liste (nom et vignette de
+  chaque thème, sans description — retour de Thibaud) ; le choix est gardé d'une visite à l'autre.
   Détail : registre `src/lib/themes.ts` ; gris `slate-*`, `white`, `font-sans` et arrondis
   `rounded-*` lus dans des variables CSS (`tailwind.config.js`), redéfinies par thème dans
   `src/index.css` — aucun composant retouché ; les thèmes sombres posent aussi la classe
