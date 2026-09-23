@@ -79,13 +79,83 @@
   propre au grand oral (tirage, minuteur 20 + 10 + 10 lu dans `deroule.json`, relances,
   auto-évaluation sans points). Persistance `bgo-2027-grand-oral`, isolation vérifiée dans
   Chromium. `node scripts/verify.mjs` OK, 152 tests (121 de référence + 31 nouveaux). PR : #75.
-- [ ] Relire la page « L'épreuve » du grand oral sur le texte intégral du Bulletin officiel —
+- [x] Relire la page « L'épreuve » du grand oral sur le texte intégral du Bulletin officiel —
   la session du 2026-09-22 n'a pas pu ouvrir education.gouv.fr (bloqué par le réseau de la
   session) : chaque affirmation vient d'extraits du texte `s-grand-oral` obtenus par moteur de
   recherche et recoupés. À confirmer sur le texte : la place du projet d'orientation dans
   l'exposé (la page n'en fait pas une règle), et le contenu de la grille indicative (annexe,
   non reproduite). DoD : fiches `content/terminale/grand-oral/epreuve.json` et `deroule.json`
   conformes au texte, `node scripts/verify.mjs` OK.
+  Relu le 2026-09-23 sur le texte intégral (BO spécial n° 4 du 17 septembre 2026, annexe 1
+  comprise) : rapport [`chantiers/verification-contenu-bac-2027.md`](chantiers/verification-contenu-bac-2027.md),
+  n° 69 à 88. Le projet d'orientation n'apparaît plus dans le texte ; la grille compte cinq
+  rubriques et quatre niveaux, sans points. Les écarts sont devenus les items ci-dessous.
 - [ ] Afficher le compte à rebours des épreuves — dès que les dates officielles de la session 2027
   sont publiées (aucune date inventée en attendant) : bandeau sur l'accueil et rappel dans le menu.
   DoD : dates sourcées, affichage sur l'accueil.
+
+## Corriger le contenu réglementaire (vérification du 2026-09-23)
+
+> Chaque item corrige une affirmation fausse (F) ou imprécise (I) relevée dans
+> [`chantiers/verification-contenu-bac-2027.md`](chantiers/verification-contenu-bac-2027.md) ;
+> les numéros renvoient au tableau du rapport, qui donne l'extrait officiel et l'adresse.
+> DoD commune : texte corrigé et sourcé sur le texte officiel en vigueur pour 2027,
+> `node scripts/verify.mjs` OK.
+
+- [ ] Ne plus dire que la calculatrice est autorisée en spécialité maths — c'est le sujet qui
+  le précise le jour même. `content/bac/epreuves.json` ep-spe-maths · resume (n° 29, F).
+  Source à citer : note du 11-9-2026 MENE2622642N.
+- [ ] Afficher la mention « très bien avec les félicitations du jury » à partir de 18 — c'est
+  une mention officielle, pas une décision libre du jury. `content/bac/mentions.json` :
+  me-felicitations (libellé officiel, `resume`, retirer `reglementaire: false`), me-tres-bien
+  `plafond: 18` ; textes en dur `src/routes/outils/LeBacPage.tsx:407` et
+  `src/routes/outils/SimulateurPage.tsx:132` ; source s-presentation-bac (n° 50 I, n° 51 F).
+  Mettre à jour les tests du simulateur qui portent sur les paliers.
+- [ ] Donner les dates officielles de la partie pratique de physique-chimie : du 1er au 4 juin
+  2027 — publiées au BO spécial n° 2 du 25 août 2026. `content/bac/calendrier.json`
+  ca-pratique-physique-chimie (`precision: periode`, source s-calendrier-2027) ;
+  `content/bac/epreuves.json` ep-spe-physique-chimie · quand, detail (n° 40, F).
+- [ ] Remplacer les textes officiels périmés cités en source — `content/bac/sources.json` :
+  s-spe-physique-chimie → MENE2622644N (texte de 2020 abrogé, n° 63 F) ; s-spe-maths →
+  MENE2622642N (n° 62 I) ; s-eam-bo → note du 10 juin 2025 MENE2515469N et arrêté du 10 juin
+  2025 JORFTEXT000051714285, le texte cité valant pour la session 2028 (n° 60 F) ; s-mentions →
+  s-presentation-bac, la brochure citée datant de 2005 (n° 67 F) ; libellés « BO spécial n° 4
+  du 17 septembre 2026 » (n° 64 I) ; note de s-eps sans « coefficient 6 » (n° 65 I). Au passage,
+  ajouter les sources manquantes des lignes vraies mais mal sourcées (n° 12, 20, 30, 32, 34, 48,
+  53, 54), dont la note de philosophie MENE2622661N.
+- [ ] Écrire que les maths anticipées comptent pour la session 2027, pas 2026 — ep-maths-anticipee
+  · detail et note de s-eam (n° 26, F).
+- [ ] Grand oral : dire que l'échange porte sur le programme « en lien avec ta question » — le
+  texte limite l'interrogation au lien avec le premier temps. `content/terminale/grand-oral/`
+  deroule.json gt-echange, entretien.json go-ent-cours (n° 83, I).
+- [ ] Grand oral : donner les trois façons autorisées de construire ses deux questions, et ce qui
+  arrive si elles ne sont pas conformes — une sur chaque spécialité, une sur une spécialité et
+  une transversale, ou deux transversales ; sinon pas d'épreuve, puis 0 à la session de
+  remplacement. epreuve.json go-epreuve-questions (n° 69, I) ; remarque « question non
+  conforme » du rapport.
+- [ ] Grand oral : dire ce qui est permis dans la salle — de quoi écrire, et un tableau si on le
+  souhaite. epreuve.json go-epreuve-preparation-du-jour · conseil ; la page annonce « ce qui est
+  autorisé » (`src/routes/terminale/grand-oral/EpreuvePage.tsx:66`) sans le dire (n° 78, I).
+- [ ] Grand oral : ne plus présenter le projet d'orientation comme une attente du jury — le texte
+  de 2026 demande seulement pourquoi la question a été choisie « pendant sa formation ».
+  entretien.json go-ent-orientation ; `src/components/grand-oral/QuestionForm.tsx:125-126` ;
+  catégorie de relances « Ton projet » (n° 86, I).
+- [ ] Grand oral : trois nuances sur la page « L'épreuve » — grille « sur laquelle le jury peut
+  s'appuyer » et non « qu'il utilise » (go-epreuve-note, n° 80 I) ; jury pas forcément
+  non spécialiste (go-epreuve-jury · conseil, n° 75 I) ; les sept critères, et non quatre,
+  dans le mode d'emploi du bac (ep-grand-oral · detail, n° 36 I).
+- [ ] Rattrapage : prévenir qu'on ne peut pas choisir deux fois les maths — spécialité et épreuve
+  anticipée s'excluent au second groupe. `src/routes/outils/LeBacPage.tsx:419-424`, source
+  s-presentation-bac (n° 52, I).
+- [ ] Calendrier : dire que ses deux écrits de spécialité tombent le mercredi 16 et le jeudi
+  17 juin — annexe III du calendrier 2027 : maths et physique-chimie n'ont pas d'épreuve le
+  vendredi 18. calendrier.json ca-specialites · detail (n° 45, I) ; ca-grand-oral : la date
+  figure sur la convocation (n° 46, I).
+- [ ] Notes de première : écrire « connues » plutôt que « définitives » — les notes anticipées
+  restent provisoires jusqu'au jury, et la commission d'harmonisation peut modifier les
+  moyennes. co-specialite-abandonnee · profilNote, co-francais-ecrit · comment,
+  ep-francais-ecrit · detail, ca-epreuves-anticipees-2026 · detail,
+  `src/routes/outils/LeBacPage.tsx:329` et `:336` (n° 8, 22, I).
+- [ ] Physique-chimie : ne plus dire que c'est la seule épreuve pratique du bac — SVT, NSI et
+  sciences de l'ingénieur en ont aussi une ; c'est la seule de ses épreuves.
+  co-specialite-physique-chimie · comment (n° 17, I).
