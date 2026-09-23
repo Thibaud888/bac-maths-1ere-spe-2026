@@ -92,10 +92,15 @@ export default function AppLayout() {
   }, [pathname]);
 
   // Une nouvelle page (ou un nouvel onglet de section) s'ouvre en haut, pas à
-  // la hauteur où l'on avait fait défiler la précédente. Les liens vers une
-  // ancre (`#sources`) gardent leur propre défilement.
+  // la hauteur où l'on avait fait défiler la précédente. Un lien vers une ancre
+  // d'une autre page (`…/preparation#go-prep-voix`) descend jusqu'à elle.
   useEffect(() => {
-    if (!window.location.hash) window.scrollTo(0, 0);
+    const ancre = window.location.hash.slice(1);
+    if (!ancre) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    document.getElementById(decodeURIComponent(ancre))?.scrollIntoView();
   }, [pathname]);
 
   const navOpen = compact ? drawerOpen : !collapsed;

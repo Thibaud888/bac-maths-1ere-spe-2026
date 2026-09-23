@@ -21,9 +21,10 @@ import {
 } from '../grand-oral-content';
 
 describe('contenu du grand oral — chargement', () => {
-  it('charge les trois pages de fiches, le déroulé, les critères et les relances', () => {
+  it('charge les quatre pages de fiches, le déroulé, les critères et les relances', () => {
     expect(fichesOfSection('epreuve').length).toBeGreaterThan(0);
     expect(fichesOfSection('preparation').length).toBeGreaterThan(0);
+    expect(fichesOfSection('expose').length).toBeGreaterThan(0);
     expect(fichesOfSection('entretien').length).toBeGreaterThan(0);
     expect(listGrandOralTemps().length).toBeGreaterThan(0);
     expect(listGrandOralCriteres().length).toBeGreaterThan(0);
