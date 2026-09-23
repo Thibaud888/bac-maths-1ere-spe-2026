@@ -4,8 +4,9 @@
 > Le détail des conventions est dans CLAUDE.md — cette carte dit seulement OÙ aller.
 
 ## Quoi
-Application de révision couvrant les **deux années** du bac session 2027 d'un élève.
-Cinq espaces (année × matière) + deux outils transverses :
+Application de révision du bac couvrant **la première et la terminale**. Les textes restent
+généraux : ni élève, ni année, ni matière dans les titres ; le barème du bac (`content/bac/`)
+suit un profil pris **en exemple**. Cinq espaces (année × matière) + deux outils transverses :
 - Terminale : `/terminale/maths`, `/terminale/physique-chimie` (pages créées, contenu à venir),
   `/terminale/grand-oral` (l'épreuve, préparation, entretien, oral blanc minuté ; « Mes 2
   questions » = cadre rempli par l'élève)
@@ -38,6 +39,7 @@ content/
                         # criteres, relances — sources prises dans content/bac/sources.json
 src/
   lib/spaces.ts         # REGISTRE DES ESPACES : années, matières, outils → toute la navigation
+                        # + SITE_NAME et pageTitle() (titre de l'onglet, tiré du fil d'Ariane)
   lib/bac-content.ts    # chargeur validé de content/bac/ (+ bac-types.ts, bac-accents.ts)
   lib/simulateur.ts     # moteur du simulateur : découpe le barème en notes réglables,
                         # moyenne pondérée, mention, leviers (aucun coefficient en dur)
@@ -101,3 +103,7 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
   (un attribut qui manque au simulateur s'ajoute au schéma, pas au code).
 - Les anciennes adresses (`/chapitre/*`, `/bac-blanc`, `/francais/*`) sont redirigées dans
   `App.tsx` — ne pas les supprimer.
+- `<main>` ne défile pas lui-même : c'est la fenêtre qui défile. Ne pas lui remettre
+  `overflow-y-auto`, sinon les éléments `sticky` des pages (simulateur) décrochent.
+- Pas d'année (« 2027 »), d'élève (« pour lui ») ni de phrase d'accroche dans les titres et
+  chapeaux de page ; une date n'apparaît que là où elle est un fait (calendrier, épreuves).

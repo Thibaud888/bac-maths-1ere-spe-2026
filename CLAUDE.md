@@ -42,6 +42,10 @@ baccalauréat (session 2027) : la **première** (2025-2026, épreuves anticipée
 | Première | Maths — spécialité (EAM) | `/premiere/maths` | complet |
 | Première | Français (EAF écrit + oral) | `/premiere/francais` | complet |
 
+**Le site reste général** (décision du 2026-09-23) : ni élève, ni année, ni matière dans les
+titres et les textes d'interface. Ce qui dépend d'un profil est présenté comme un exemple
+(« Exemple : anglais »), et une date n'apparaît que là où elle est un fait (calendrier).
+
 Deux outils transverses, hors année : le **simulateur de moyenne** (`/simulateur` — régler ses
 notes, voir bouger moyenne et mention) et **le bac, mode d'emploi** (`/le-bac` — contrôle
 continu, coefficients, calendrier, mentions). Tous deux lisent `content/bac/` (§ 4.2).

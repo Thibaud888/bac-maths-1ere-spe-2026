@@ -58,6 +58,25 @@
   voir la même répartition (treemap par matière, radar par domaine). À faire seulement si
   Thibaud en a l'usage — lui demander avant d'ouvrir le chantier.
   DoD : fonctions choisies livrées, `node scripts/verify.mjs` OK.
+- [x] Rendre le site général et intégrer les retours de relecture du 2026-09-23 — l'onglet
+  porte le nom de la page ouverte, plus d'année ni d'élève dans les textes, phrases d'accroche
+  inutiles retirées, un seul bouton pour replier le menu, mentions en version courte, camembert
+  du simulateur toujours visible, notes figées grisées.
+  Détail : `SITE_NAME` + `pageTitle()` dans `src/lib/spaces.ts` (titre d'onglet tiré du fil
+  d'Ariane) ; années retirées de `YEARS` ; badges « Session 2027 » retirés ; « Pour lui… » →
+  « Exemple : … » dans `coefficients.json`, pastille « ton cas » → « selon le profil » ; le
+  bouton « Menu » du bandeau n'apparaît que barre repliée ; `<main>` ne défile plus lui-même
+  (la fenêtre défile, d'où le `sticky` du simulateur) ; simulateur en deux colonnes à partir
+  de `xl` (camembert collant), bandeau réduit collant en dessous ; lignes partagées nommées
+  « — moyenne de première / de terminale » (`nomLigne`). Mentions : échelle d'une ligne,
+  placée après les options, tirée de `mentions.json`. Déploiement : le chemin du site suit le
+  nom du dépôt. `node scripts/verify.mjs` OK, 155 tests (152 + 3). PR : #77.
+- [ ] Donner au dépôt un nom général (proposé : « revisions-bac ») — à faire par Thibaud dans
+  GitHub (Settings → General → Repository name) : l'outil de session ne sait pas renommer un
+  dépôt. La mise en ligne suit le nouveau nom seule (`deploy.yml` lit le nom du dépôt), mais
+  l'adresse du site change (`…github.io/revisions-bac/`) et les anciens favoris ne suivent pas.
+  Ensuite : remplacer l'ancien nom dans README, MAP, CLAUDE, `package.json`,
+  `playwright.config.ts`. DoD : site en ligne à la nouvelle adresse.
 - [ ] Découper le programme de maths de terminale en chapitres — la liste des chapitres et leur
   ordre, avant toute écriture de contenu ; crée `content/terminale/maths/<slug>/` et alimente
   `sections()` de l'espace `tle-maths`. Nécessite un skill « programme de terminale » sur le

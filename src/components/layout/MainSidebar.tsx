@@ -141,7 +141,7 @@ function SpaceItem({ space, open }: SpaceItemProps) {
 }
 
 type Props = {
-  /** Replie la colonne (bouton dupliqué dans le bandeau supérieur). */
+  /** Replie la colonne ; le bandeau supérieur offre ensuite de la rouvrir. */
   onCollapse: () => void;
 };
 

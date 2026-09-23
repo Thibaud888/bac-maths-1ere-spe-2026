@@ -24,7 +24,6 @@ export default function PhysiqueChimiePage() {
           description: 'Exercices longs au format de l’épreuve écrite.',
         },
       ]}
-      footnote="Le découpage en chapitres suivra le programme officiel de terminale ; il sera fixé avant l’écriture du contenu."
     />
   );
 }

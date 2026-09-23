@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom';
-import { SPACES, TOOLS, YEARS, type Space, type SpaceAccent } from '@/lib/spaces';
+import {
+  SITE_NAME,
+  SPACES,
+  TOOLS,
+  YEARS,
+  type Space,
+  type SpaceAccent,
+} from '@/lib/spaces';
 
 const TILE: Record<SpaceAccent, string> = {
   blue: 'border-blue-200 hover:border-blue-400 dark:border-blue-800 dark:hover:border-blue-600',
@@ -54,12 +61,8 @@ export default function HomePage() {
     <div className="mx-auto max-w-4xl space-y-8 p-8">
       <header>
         <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-          Bac 2027
+          {SITE_NAME}
         </h1>
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-          Les révisions des deux années au même endroit : les épreuves anticipées
-          passées en première, et les épreuves de terminale à venir.
-        </p>
       </header>
 
       {YEARS.map((year) => {

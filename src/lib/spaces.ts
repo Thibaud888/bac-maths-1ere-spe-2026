@@ -48,8 +48,6 @@ export type Space = {
 
 export type Year = {
   id: YearId;
-  /** Nom seul, pour le fil d'Ariane. */
-  short: string;
   label: string;
   /** Sous-titre de la section (épreuves concernées). */
   hint: string;
@@ -58,14 +56,12 @@ export type Year = {
 export const YEARS: readonly Year[] = [
   {
     id: 'terminale',
-    short: 'Terminale',
-    label: 'Terminale · 2026–2027',
+    label: 'Terminale',
     hint: 'Spécialités et grand oral',
   },
   {
     id: 'premiere',
-    short: 'Première',
-    label: 'Première · 2025–2026',
+    label: 'Première',
     hint: 'Épreuves anticipées',
   },
 ] as const;
@@ -211,6 +207,18 @@ export const SPACES: readonly Space[] = [
     emptyLabel: 'Modules à venir',
   },
 ] as const;
+
+/** Nom du site : bandeau de la barre latérale, accueil et titre de l'onglet. */
+export const SITE_NAME = 'Révisions du bac';
+
+/**
+ * Titre de l'onglet : le fil d'Ariane lu du plus précis au plus général, puis
+ * le nom du site — « Suites · Maths · Première — Révisions du bac ».
+ */
+export function pageTitle(crumbs: readonly string[]): string {
+  if (crumbs.length === 0) return SITE_NAME;
+  return `${[...crumbs].reverse().join(' · ')} — ${SITE_NAME}`;
+}
 
 /** Liens valables quelle que soit l'année. */
 export const TOOLS: readonly NavLeaf[] = [

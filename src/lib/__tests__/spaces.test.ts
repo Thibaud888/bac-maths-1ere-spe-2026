@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import {
+  SITE_NAME,
   SPACES,
   TOOLS,
   YEARS,
   findSpaceByPath,
+  pageTitle,
   spacesOfYear,
 } from '@/lib/spaces';
 
@@ -54,5 +56,22 @@ describe('registre des espaces', () => {
     for (const tool of TOOLS) {
       expect(findSpaceByPath(tool.to)).toBeUndefined();
     }
+  });
+
+  it('nomme l’onglet d’après la page ouverte, puis le site', () => {
+    expect(pageTitle([])).toBe(SITE_NAME);
+    expect(pageTitle(['Simulateur de moyenne'])).toBe(
+      `Simulateur de moyenne — ${SITE_NAME}`
+    );
+    expect(pageTitle(['Première', 'Maths', 'Suites'])).toBe(
+      `Suites · Maths · Première — ${SITE_NAME}`
+    );
+  });
+
+  it('ne date pas les années : le site vaut pour n’importe quelle session', () => {
+    for (const year of YEARS) {
+      expect(year.label).not.toMatch(/\d{4}/);
+    }
+    expect(SITE_NAME).not.toMatch(/\d{4}/);
   });
 });
