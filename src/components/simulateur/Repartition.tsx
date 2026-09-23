@@ -1,8 +1,8 @@
-import { useId } from 'react';
+import { useId, useRef, useState, type PointerEvent } from 'react';
 import { ACCENT_PAR_DEFAUT, MENTION_HEX } from '@/lib/bac-accents';
 import {
-  DOMAINE_LABEL,
   DOMAINE_ORDER,
+  contribution,
   couleurLigne,
   fmt,
   mentionPour,
@@ -23,6 +23,9 @@ import type { MesureRepartition } from '@/stores/simulateur-store';
  * (`contribution`), ou le poids brut de la matière (`coefficient`). En mesure
  * « contribution », le disque est gradué sur la mention visée : le vide qui
  * reste, ce sont les points encore à prendre pour l'atteindre.
+ *
+ * Survoler une part affiche aussitôt sa note et son poids : une bulle dessinée
+ * ici, et non l'infobulle du navigateur, qui n'apparaît qu'après un délai.
  */
 
 type Part = {
@@ -111,15 +114,41 @@ function decouper({ lignes, notes, figees, mesure, cible }: Props) {
 }
 
 type CamembertProps = Props & {
-  /** Version réduite, sans texte au centre ni infobulles (bandeau collant). */
+  /** Version réduite, sans texte au centre ni bulle au survol (bandeau collant). */
   mini?: boolean;
   className?: string;
 };
+
+type Survol = { part: Part; x: number; y: number };
+
+/** Demi-largeur maximale de la bulle (`max-w-[16rem]`), pour qu'elle ne déborde pas. */
+const DEMI_BULLE_PX = 128;
+
+/** Bulle affichée au survol d'une part : la note, son poids, ce qu'elle rapporte. */
+function Bulle({ survol, note }: { survol: Survol; note: number }) {
+  const { ligne, figee } = survol.part;
+  return (
+    <div
+      role="tooltip"
+      className="pointer-events-none absolute z-10 w-max max-w-[16rem] -translate-x-1/2 -translate-y-full rounded-md bg-slate-900 px-2.5 py-1.5 text-xs text-white shadow-lg dark:bg-slate-100 dark:text-slate-900"
+      style={{ left: survol.x, top: survol.y - 10 }}
+    >
+      <p className="font-semibold">{nomLigne(ligne)}</p>
+      <p className="tabular-nums opacity-80">
+        note {fmt(note)}/20 · coef {ligne.coefficient} · apporte{' '}
+        {fmt(contribution(ligne, note))}
+        {figee ? ' · figée' : ''}
+      </p>
+    </div>
+  );
+}
 
 /** Le disque seul : réutilisé en grand dans le panneau, en petit dans le bandeau. */
 export function Camembert(props: CamembertProps) {
   const { notes, mesure, cible, moyenne, mini = false, className } = props;
   const hachures = useId();
+  const cadre = useRef<HTMLDivElement>(null);
+  const [survol, setSurvol] = useState<Survol | null>(null);
   const total = totalSimulateur();
   const { parts, somme, tour, fin } = decouper(props);
 
@@ -127,12 +156,24 @@ export function Camembert(props: CamembertProps) {
   const couleurMention = MENTION_HEX[mention?.accent ?? ACCENT_PAR_DEFAUT];
   const partDeLaCible = tour === 0 ? 0 : Math.min(100, (somme / tour) * 100);
 
-  return (
+  const suivre = (part: Part) => (e: PointerEvent<SVGPathElement>) => {
+    const rect = cadre.current?.getBoundingClientRect();
+    if (!rect) return;
+    // La bulle suit le pointeur mais reste dans le cadre du disque.
+    const x =
+      rect.width > 2 * DEMI_BULLE_PX
+        ? Math.min(rect.width - DEMI_BULLE_PX, Math.max(DEMI_BULLE_PX, e.clientX - rect.left))
+        : rect.width / 2;
+    setSurvol({ part, x, y: e.clientY - rect.top });
+  };
+
+  const disque = (
     <svg
       viewBox="0 0 280 280"
-      className={className}
+      className={mini ? className : 'block w-full'}
       role="img"
       aria-label={`Répartition des coefficients — moyenne ${fmt(moyenne)} sur 20`}
+      onPointerLeave={mini ? undefined : () => setSurvol(null)}
     >
       <defs>
         <pattern
@@ -159,15 +200,14 @@ export function Camembert(props: CamembertProps) {
 
       {parts.map((part) => (
         <g key={part.ligne.id} opacity={part.figee ? OPACITE_FIGEE : 1}>
-          <path d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))} fill={part.couleur}>
-            {!mini && (
-              <title>
-                {nomLigne(part.ligne)} — coefficient {part.ligne.coefficient}, note{' '}
-                {fmt(noteDe(notes, part.ligne.id))}/20
-                {part.figee ? ' (figée)' : ''}
-              </title>
-            )}
-          </path>
+          <path
+            d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))}
+            fill={part.couleur}
+            stroke={survol?.part.ligne.id === part.ligne.id ? 'currentColor' : 'none'}
+            strokeWidth={2}
+            onPointerEnter={mini ? undefined : suivre(part)}
+            onPointerMove={mini ? undefined : suivre(part)}
+          />
           {part.figee && (
             <path
               d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))}
@@ -214,51 +254,32 @@ export function Camembert(props: CamembertProps) {
       )}
     </svg>
   );
+
+  if (mini) return disque;
+  return (
+    <div ref={cadre} className={`relative text-slate-900 dark:text-white ${className ?? ''}`}>
+      {disque}
+      {survol && <Bulle survol={survol} note={noteDe(notes, survol.part.ligne.id)} />}
+    </div>
+  );
 }
 
 export default function Repartition(props: Props) {
   const { mesure } = props;
   const total = totalSimulateur();
-  const { parts } = decouper(props);
-
-  const parDomaine = DOMAINE_ORDER.map((domaine) => {
-    const dedans = parts.filter((p) => p.ligne.domaine === domaine);
-    return {
-      domaine,
-      valeur: dedans.reduce((s, p) => s + p.valeur, 0),
-      coefficient: dedans.reduce((s, p) => s + p.ligne.coefficient, 0),
-      couleur: dedans[0]?.couleur ?? '#64748b',
-    };
-  }).filter((d) => d.valeur > 0);
 
   return (
-    <div className="grid gap-5 sm:grid-cols-[minmax(0,240px)_minmax(0,1fr)] sm:items-center xl:grid-cols-1">
-      <Camembert {...props} className="mx-auto w-full max-w-[240px] xl:max-w-[210px]" />
-
-      <ul className="space-y-1 text-sm">
-        {parDomaine.map((d) => (
-          <li key={d.domaine} className="flex items-baseline gap-2">
-            <span
-              className="mt-1 inline-block h-2.5 w-2.5 shrink-0 rounded-full"
-              style={{ backgroundColor: d.couleur }}
-              aria-hidden
-            />
-            <span className="grow text-slate-700 dark:text-slate-300">
-              {DOMAINE_LABEL[d.domaine]}
-            </span>
-            <span className="shrink-0 tabular-nums text-slate-500 dark:text-slate-400">
-              {mesure === 'coefficient'
-                ? `coef ${d.coefficient}`
-                : `${fmt(d.valeur / total)} pts`}
-            </span>
-          </li>
-        ))}
-        <li className="pt-2 text-xs text-slate-500 dark:text-slate-400">
-          {mesure === 'coefficient'
-            ? `Chaque part vaut le coefficient de la matière, sur ${total} au total.`
-            : 'Chaque part vaut ce que la note apporte à la moyenne. Les parts pâles et hachurées sont les notes figées.'}
-        </li>
-      </ul>
+    <div className="space-y-3">
+      <Camembert
+        {...props}
+        className="mx-auto w-full max-w-[260px] xl:max-w-[320px]"
+      />
+      <p className="text-center text-xs text-slate-500 dark:text-slate-400">
+        {mesure === 'coefficient'
+          ? `Chaque part vaut le coefficient de la matière, sur ${total} au total.`
+          : 'Chaque part vaut ce que la note apporte à la moyenne. Les parts pâles et hachurées sont les notes figées.'}{' '}
+        Survole une part pour voir le détail.
+      </p>
     </div>
   );
 }

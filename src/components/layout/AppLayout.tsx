@@ -91,6 +91,13 @@ export default function AppLayout() {
     setDrawerOpen(false);
   }, [pathname]);
 
+  // Une nouvelle page (ou un nouvel onglet de section) s'ouvre en haut, pas à
+  // la hauteur où l'on avait fait défiler la précédente. Les liens vers une
+  // ancre (`#sources`) gardent leur propre défilement.
+  useEffect(() => {
+    if (!window.location.hash) window.scrollTo(0, 0);
+  }, [pathname]);
+
   const navOpen = compact ? drawerOpen : !collapsed;
   const toggleNav = () => {
     if (compact) {

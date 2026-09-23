@@ -1,16 +1,25 @@
+import { listGrandOralCriteres, listGrandOralTemps } from '@/lib/grand-oral-content';
 import GrandOralIntro from '@/components/grand-oral/GrandOralIntro';
 import Historique from '@/components/grand-oral/Historique';
 import OralBlanc from '@/components/grand-oral/OralBlanc';
+import SectionSources from '@/components/grand-oral/SectionSources';
+import { SourcesNumerotees, ordreDesSources } from '@/components/shared/Sources';
+
+/** Les temps de l'épreuve, puis la grille d'auto-évaluation : ce que l'oral blanc cite. */
+const SOURCES = ordreDesSources(
+  ...listGrandOralTemps().map((t) => t.sources),
+  listGrandOralCriteres()[0]?.sources
+);
 
 export default function OralBlancPage() {
   return (
-    <div className="mx-auto max-w-3xl space-y-8 p-4 sm:p-8">
-      <GrandOralIntro
-        title="Oral blanc"
-        lead="S’entraîner dans les conditions de l’épreuve : une de tes deux questions tirée au sort, les temps officiels au minuteur, des relances de jury, et une auto-évaluation à la fin."
-      />
-      <OralBlanc />
-      <Historique />
-    </div>
+    <SourcesNumerotees ids={SOURCES} accent="amber">
+      <div className="mx-auto max-w-3xl space-y-8 p-4 sm:p-8">
+        <GrandOralIntro title="Oral blanc" />
+        <OralBlanc />
+        <Historique />
+        <SectionSources />
+      </div>
+    </SourcesNumerotees>
   );
 }

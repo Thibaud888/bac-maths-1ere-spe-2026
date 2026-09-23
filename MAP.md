@@ -47,7 +47,9 @@ src/
                         # coefficient, la période et les sources) ; lib/oral-blanc.ts = minuteur
   components/layout/    # AppLayout (cadre unique), MainSidebar (LA barre), SidebarShell,
                         # TopBar (repli + fil d'Ariane), SectionTabs, ChapterLayout
-  components/           # formulary, automatisms, exercises, exam, math (KaTeX), shared/EmptyState
+  components/           # formulary, automatisms, exercises, exam, math (KaTeX)
+  components/shared/    # EmptyState, Sommaire (table des matières numérotée), Sources
+                        # (appels [n] → liste en bas de page, registre content/bac/sources.json)
   components/simulateur/ # LigneNote (curseur + cadenas), Repartition (camembert SVG fait main)
   components/grand-oral/ # fiches, frise du déroulé, oral blanc minuté, cadre des 2 questions
   francais/             # volet français (components, lib, stores, routes) — cadre commun
@@ -103,6 +105,7 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
   (un attribut qui manque au simulateur s'ajoute au schéma, pas au code).
 - Les anciennes adresses (`/chapitre/*`, `/bac-blanc`, `/francais/*`) sont redirigées dans
   `App.tsx` — ne pas les supprimer.
+- Changer de page ramène en haut (`AppLayout`, sauf lien vers une ancre `#…`).
 - `<main>` ne défile pas lui-même : c'est la fenêtre qui défile. Ne pas lui remettre
   `overflow-y-auto`, sinon les éléments `sticky` des pages (simulateur) décrochent.
 - Pas d'année (« 2027 »), d'élève (« pour lui ») ni de phrase d'accroche dans les titres et
