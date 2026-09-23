@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import AppLayout from '@/components/layout/AppLayout';
 import { useAppStore } from '@/stores/app-store';
+import { applyTheme } from '@/lib/themes';
 import ChapterLayout from '@/components/layout/ChapterLayout';
 import HomePage from '@/routes/HomePage';
 import NotFoundPage from '@/routes/NotFoundPage';
@@ -57,12 +58,7 @@ export default function App() {
   const theme = useAppStore((s) => s.theme);
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
+    applyTheme(theme);
   }, [theme]);
 
   return (

@@ -1,9 +1,10 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { ChapterSlug } from '@/lib/types';
+import { DEFAULT_THEME, type ThemeId } from '@/lib/themes';
 
 export type FormularyViewMode = 'detailed' | 'simplified';
-export type Theme = 'light' | 'dark';
+export type Theme = ThemeId;
 
 type AppState = {
   lastVisitedChapter: string | null;
@@ -18,8 +19,9 @@ type AppState = {
   setFormularyViewMode: (slug: ChapterSlug, mode: FormularyViewMode) => void;
   hiddenFormulas: Partial<Record<ChapterSlug, string[]>>;
   toggleFormulaHidden: (slug: ChapterSlug, formulaId: string) => void;
+  /** Thème d'affichage (registre : `src/lib/themes.ts`). */
   theme: Theme;
-  toggleTheme: () => void;
+  setTheme: (theme: Theme) => void;
   /**
    * Repli de la barre latérale de navigation. Préférence d'interface partagée
    * par les deux matières (maths + français) afin d'offrir un comportement
@@ -62,9 +64,9 @@ export const useAppStore = create<AppState>()(
           return { hiddenFormulas: { ...s.hiddenFormulas, [slug]: next } };
         });
       },
-      theme: 'light',
-      toggleTheme: () => {
-        set((s) => ({ theme: s.theme === 'light' ? 'dark' : 'light' }));
+      theme: DEFAULT_THEME,
+      setTheme: (theme) => {
+        set({ theme });
       },
       sidebarCollapsed: false,
       toggleSidebar: () => {
