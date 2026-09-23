@@ -220,6 +220,7 @@ const grandOralFiles = {
   deroule: { validate: ajv.compile(readSchema(join('grand-oral', 'temps.schema.json'))) },
   epreuve: { validate: ficheGo, section: 'epreuve' },
   preparation: { validate: ficheGo, section: 'preparation' },
+  expose: { validate: ficheGo, section: 'expose' },
   entretien: { validate: ficheGo, section: 'entretien' },
   criteres: { validate: ajv.compile(readSchema(join('grand-oral', 'critere.schema.json'))) },
   relances: { validate: ajv.compile(readSchema(join('grand-oral', 'relance.schema.json'))) },

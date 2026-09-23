@@ -45,6 +45,7 @@ const ficheModules = import.meta.glob<GrandOralFiche[]>(
   [
     '/content/terminale/grand-oral/epreuve.json',
     '/content/terminale/grand-oral/preparation.json',
+    '/content/terminale/grand-oral/expose.json',
     '/content/terminale/grand-oral/entretien.json',
   ],
   { eager: true, import: 'default' }

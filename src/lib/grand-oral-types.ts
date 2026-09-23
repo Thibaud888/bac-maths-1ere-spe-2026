@@ -6,7 +6,7 @@
  * `content/bac/sources.json` : le registre des sources officielles reste unique.
  */
 
-export type GrandOralSection = 'epreuve' | 'preparation' | 'entretien';
+export type GrandOralSection = 'epreuve' | 'preparation' | 'expose' | 'entretien';
 
 /** `reglementaire` : ce que dit le texte officiel ; `methode` : un conseil. */
 export type GrandOralNature = 'reglementaire' | 'methode';

@@ -107,6 +107,18 @@
   sur 97 entrées. Les 7 faits signalés faux par la vérification (PR #76) sont laissés tels
   quels : leur correction est prévue par les items que cette PR ajoute au backlog.
   `node scripts/verify.mjs` OK, 165 tests (159 + 6). PR : #80.
+- [x] Ajouter la page « Exposé » au grand oral, entre la préparation et l'entretien — les
+  règles de ces minutes face au jury, puis comment les tenir : la première minute, garder le
+  fil, tenir le temps, trou de mémoire et trac, conclure et passer à l'échange.
+  Détail : `content/terminale/grand-oral/expose.json` (6 fiches `go-exp-*` : une
+  réglementaire sourcée, `go-exp-salle` — support non évalué, de quoi écrire, tableau, aucun
+  autre matériel —, cinq de méthode) ; section `expose` ajoutée au schéma `fiche`, aux types,
+  au chargeur et à `validate-content.mjs` ; page `ExposePage.tsx` sur le gabarit `PageLongue`
+  (durée et règles de l'exposé relues dans `deroule.json`, jamais recopiées) ; onglet dans
+  `GRAND_ORAL_SECTIONS` ; un lien vers la fiche d'un autre onglet descend jusqu'à elle
+  (`AppLayout`). Règles vérifiées sur les extraits du texte officiel relevés par la
+  vérification (#76) : education.gouv.fr est bloqué par le réseau de cette session.
+  `node scripts/verify.mjs` OK, 169 tests (165 + 4). PR : #81.
 - [ ] Donner au dépôt un nom général (proposé : « revisions-bac ») — à faire par Thibaud dans
   GitHub (Settings → General → Repository name) : l'outil de session ne sait pas renommer un
   dépôt. La mise en ligne suit le nouveau nom seule (`deploy.yml` lit le nom du dépôt), mais

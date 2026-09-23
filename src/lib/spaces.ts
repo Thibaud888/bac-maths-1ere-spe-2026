@@ -141,6 +141,7 @@ export const GRAND_ORAL_SECTIONS: readonly NavLeaf[] = [
   { to: '/terminale/grand-oral/epreuve', label: 'L’épreuve' },
   { to: '/terminale/grand-oral/questions', label: 'Mes 2 questions' },
   { to: '/terminale/grand-oral/preparation', label: 'Préparation' },
+  { to: '/terminale/grand-oral/expose', label: 'Exposé' },
   { to: '/terminale/grand-oral/entretien', label: 'Entretien' },
   { to: '/terminale/grand-oral/oral-blanc', label: 'Oral blanc' },
 ] as const;

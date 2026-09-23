@@ -8,7 +8,7 @@ Application de révision du bac couvrant **la première et la terminale**. Les t
 généraux : ni élève, ni année, ni matière dans les titres ; le barème du bac (`content/bac/`)
 suit un profil pris **en exemple**. Cinq espaces (année × matière) + deux outils transverses :
 - Terminale : `/terminale/maths`, `/terminale/physique-chimie` (pages créées, contenu à venir),
-  `/terminale/grand-oral` (l'épreuve, préparation, entretien, oral blanc minuté ; « Mes 2
+  `/terminale/grand-oral` (l'épreuve, préparation, exposé, entretien, oral blanc minuté ; « Mes 2
   questions » = cadre rempli par l'élève)
 - Première : `/premiere/maths` (EAM, 4 modes + bac blanc), `/premiere/francais` (EAF écrit + oral
   par élève) — complets
@@ -35,7 +35,7 @@ content/
   francais/oral/        # commun (épreuve, méthode, grammaire) + eleves/<id>/ (par élève)
   bac/                  # mode d'emploi du bac : coefficients, epreuves, calendrier,
                         # mentions, sources — SOURCE UNIQUE des coefficients du site
-  terminale/grand-oral/ # grand oral : deroule (minutes), epreuve, preparation, entretien,
+  terminale/grand-oral/ # grand oral : deroule (minutes), epreuve, preparation, expose, entretien,
                         # criteres, relances — sources prises dans content/bac/sources.json
 src/
   lib/spaces.ts         # REGISTRE DES ESPACES : années, matières, outils → toute la navigation

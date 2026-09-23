@@ -178,8 +178,10 @@ mélangées :
   format `ep-grand-oral`) est **relu** par `bac-content.ts`, jamais recopié. Les minutes de
   chaque temps vivent dans `deroule.json` et nulle part ailleurs (la page et le minuteur de
   l'oral blanc les lisent). Aucun point de barème : le texte ne répartit pas les 20 points.
-- **Méthode** (pages « Préparation » et « Entretien », `preparation.json`, `entretien.json`,
-  `relances.json`) : conseils, sans valeur réglementaire. Décision du 2026-09-22 (Thibaud) :
+- **Méthode** (pages « Préparation », « Exposé » et « Entretien », `preparation.json`,
+  `expose.json`, `entretien.json`, `relances.json`) : conseils, sans valeur réglementaire. La
+  page « Exposé » ouvre sur les règles de ce temps : l'étape `gt-expose` relue dans
+  `deroule.json` et une fiche `nature: "reglementaire"` sourcée (`go-exp-salle`). Décision du 2026-09-22 (Thibaud) :
   traités comme `content/bac/` — validation Ajv + source officielle sur toute affirmation
   réglementaire — **sans** les deux passes, faute de référentiel. Si ce contenu prend de
   l'ampleur, écrire d'abord un skill « grand oral » et repasser au workflow 2 passes.

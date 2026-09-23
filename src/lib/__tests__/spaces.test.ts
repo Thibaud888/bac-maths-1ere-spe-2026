@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  GRAND_ORAL_SECTIONS,
   SITE_NAME,
   SPACES,
   TOOLS,
@@ -50,6 +51,12 @@ describe('registre des espaces', () => {
     expect(findSpaceByPath('/terminale/grand-oral/epreuve')?.id).toBe('tle-grand-oral');
     expect(findSpaceByPath('/')).toBeUndefined();
     expect(findSpaceByPath('/simulateur')).toBeUndefined();
+  });
+
+  it('range l’onglet « Exposé » du grand oral entre la préparation et l’entretien', () => {
+    const chemins = GRAND_ORAL_SECTIONS.map((s) => s.to.split('/').pop());
+    expect(chemins.indexOf('expose')).toBe(chemins.indexOf('preparation') + 1);
+    expect(chemins.indexOf('entretien')).toBe(chemins.indexOf('expose') + 1);
   });
 
   it('place les outils hors des espaces', () => {
