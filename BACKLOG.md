@@ -90,6 +90,7 @@
   comprise) : rapport [`chantiers/verification-contenu-bac-2027.md`](chantiers/verification-contenu-bac-2027.md),
   n° 69 à 88. Le projet d'orientation n'apparaît plus dans le texte ; la grille compte cinq
   rubriques et quatre niveaux, sans points. Les écarts sont devenus les items ci-dessous.
+  `node scripts/verify.mjs` OK, 152 tests. PR : #76.
 - [ ] Afficher le compte à rebours des épreuves — dès que les dates officielles de la session 2027
   sont publiées (aucune date inventée en attendant) : bandeau sur l'accueil et rappel dans le menu.
   DoD : dates sourcées, affichage sur l'accueil.
