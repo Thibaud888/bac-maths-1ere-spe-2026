@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { LiteraryText } from '@/francais/components/text/LiteraryText';
 import type { GrandOralFiche } from '@/lib/grand-oral-types';
-import SourcesCitees from './SourcesCitees';
+import { Refs } from '@/components/shared/Sources';
 
 type Props = {
   fiche: GrandOralFiche;
@@ -12,7 +12,8 @@ type Props = {
 /**
  * Fiche du grand oral. Le texte officiel et le conseil ne se mélangent jamais :
  * l'énoncé d'une fiche réglementaire ne dit que ce que dit le texte, et le
- * conseil s'affiche à part, sous un autre intitulé.
+ * conseil s'affiche à part, sous l'intitulé « Conseil pratique ». Les sources
+ * sont des appels numérotés, renvoyant à la liste en bas de page.
  */
 export default function FicheGrandOral({ fiche, children }: Props) {
   const officiel = fiche.nature === 'reglementaire';
@@ -34,6 +35,7 @@ export default function FicheGrandOral({ fiche, children }: Props) {
         </span>
         <h3 className="mt-2 text-base font-semibold text-slate-900 dark:text-slate-100">
           {fiche.title}
+          <Refs ids={fiche.sources} className="ml-1 align-super" />
         </h3>
         <div className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
           <LiteraryText text={fiche.statement} />
@@ -42,14 +44,13 @@ export default function FicheGrandOral({ fiche, children }: Props) {
         {fiche.conseil && (
           <div className="mt-4 rounded-md border-l-4 border-amber-300 bg-amber-50/70 p-3 dark:border-amber-700 dark:bg-amber-950/30">
             <p className="text-xs font-semibold uppercase tracking-wide text-amber-800 dark:text-amber-300">
-              {officiel ? 'Conseil — pas une règle' : 'Conseil'}
+              Conseil pratique
             </p>
             <div className="mt-1 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
               <LiteraryText text={fiche.conseil} />
             </div>
           </div>
         )}
-        <SourcesCitees ids={fiche.sources} className="mt-4" />
       </div>
     </article>
   );

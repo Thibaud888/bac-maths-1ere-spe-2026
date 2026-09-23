@@ -71,6 +71,18 @@
   « — moyenne de première / de terminale » (`nomLigne`). Mentions : échelle d'une ligne,
   placée après les options, tirée de `mentions.json`. Déploiement : le chemin du site suit le
   nom du dépôt. `node scripts/verify.mjs` OK, 155 tests (152 + 3). PR : #77.
+- [x] Deuxième relecture du 2026-09-23 : alléger « Le bac » et le grand oral, régler le
+  simulateur — « Le bac » sans les chiffres d'ouverture ni « La note finale » ; vrai sommaire
+  numéroté (aussi sur le grand oral) ; simulateur en deux moitiés avec séparation à glisser,
+  sans la liste par domaine, détail d'une part affiché dès le survol ; grand oral sans phrases
+  d'accroche, bloc « Quand / Combien » réduit, sources numérotées en bas de page, « Conseil
+  pratique » au lieu de « Conseil — pas une règle » ; changer de page ramène en haut.
+  Détail : `components/shared/Sommaire.tsx` et `Sources.tsx` (`SourcesNumerotees`, `Refs`,
+  `ListeSources`, partagés par `/le-bac` et le grand oral ; `SourcesCitees` supprimé) ;
+  `largeurPanneau` (30–70 %, 50 par défaut) dans `btl-2027-simulateur` ; bulle de survol
+  dessinée dans `Repartition.tsx` au lieu du `<title>` SVG (délai du navigateur) ;
+  `window.scrollTo(0, 0)` au changement de `pathname` dans `AppLayout`.
+  `node scripts/verify.mjs` OK, 159 tests (155 + 4). PR : #78.
 - [ ] Donner au dépôt un nom général (proposé : « revisions-bac ») — à faire par Thibaud dans
   GitHub (Settings → General → Repository name) : l'outil de session ne sait pas renommer un
   dépôt. La mise en ligne suit le nouveau nom seule (`deploy.yml` lit le nom du dépôt), mais

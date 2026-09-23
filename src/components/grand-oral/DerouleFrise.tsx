@@ -1,5 +1,5 @@
 import type { GrandOralTemps } from '@/lib/grand-oral-types';
-import SourcesCitees from './SourcesCitees';
+import { Refs } from '@/components/shared/Sources';
 
 type Props = { temps: readonly GrandOralTemps[] };
 
@@ -24,8 +24,10 @@ export default function DerouleFrise({ temps }: Props) {
               <span className="text-xs text-slate-500 dark:text-slate-400">face au jury</span>
             )}
           </div>
-          <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">{t.resume}</p>
-          <SourcesCitees ids={t.sources} className="mt-1" />
+          <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">
+            {t.resume}
+            <Refs ids={t.sources} />
+          </p>
         </li>
       ))}
     </ol>

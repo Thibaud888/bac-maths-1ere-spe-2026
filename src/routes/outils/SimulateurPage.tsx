@@ -1,4 +1,13 @@
-import { useEffect, useMemo, useRef, useState, type RefObject } from 'react';
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent,
+  type PointerEvent,
+  type RefObject,
+} from 'react';
 import { Link } from 'react-router-dom';
 import LigneNote from '@/components/simulateur/LigneNote';
 import Repartition, { Camembert } from '@/components/simulateur/Repartition';
@@ -17,7 +26,7 @@ import {
   prochainPalier,
   totalSimulateur,
 } from '@/lib/simulateur';
-import { CIBLES, useSimulateurStore } from '@/stores/simulateur-store';
+import { CIBLES, LARGEUR_PANNEAU, useSimulateurStore } from '@/stores/simulateur-store';
 
 /**
  * Simulateur de moyenne au bac.
@@ -26,8 +35,9 @@ import { CIBLES, useSimulateurStore } from '@/stores/simulateur-store';
  * `content/bac/coefficients.json` : aucun coefficient n'est réécrit ici.
  *
  * Le camembert reste toujours sous les yeux pendant qu'on règle les notes :
- * sur grand écran, il occupe une colonne qui ne défile pas ; ailleurs, un
- * bandeau réduit prend le relais dès que le grand camembert sort de l'écran.
+ * sur grand écran, il occupe une colonne qui ne défile pas (moitié de la
+ * largeur, réglable en glissant la séparation) ; ailleurs, un bandeau réduit
+ * prend le relais dès que le grand camembert sort de l'écran.
  */
 
 const lignes = listSimulateurLignes();
@@ -100,6 +110,63 @@ function Segment<T extends string | number>({
   );
 }
 
+/**
+ * Séparation verticale entre les deux colonnes (grand écran) : on la glisse à
+ * la souris ou au doigt, ou on la déplace aux flèches du clavier. Un double
+ * clic la remet au milieu.
+ */
+function Separation({
+  conteneur,
+  largeur,
+  onLargeur,
+}: {
+  conteneur: RefObject<HTMLDivElement>;
+  largeur: number;
+  onLargeur: (pourcentage: number) => void;
+}) {
+  const suivre = (e: PointerEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
+    const rect = conteneur.current?.getBoundingClientRect();
+    if (!rect || rect.width === 0) return;
+    onLargeur(((e.clientX - rect.left) / rect.width) * 100);
+  };
+  const clavier = (e: KeyboardEvent<HTMLDivElement>) => {
+    const pas = { ArrowLeft: -5, ArrowRight: 5 }[e.key];
+    if (pas === undefined) return;
+    e.preventDefault();
+    onLargeur(largeur + pas);
+  };
+
+  return (
+    <div
+      role="separator"
+      aria-orientation="vertical"
+      aria-label="Largeur des deux colonnes"
+      aria-valuemin={LARGEUR_PANNEAU.min}
+      aria-valuemax={LARGEUR_PANNEAU.max}
+      aria-valuenow={Math.round(largeur)}
+      tabIndex={0}
+      title="Glisser pour élargir une colonne — double clic pour revenir au milieu"
+      onPointerDown={(e) => {
+        e.preventDefault();
+        e.currentTarget.setPointerCapture(e.pointerId);
+      }}
+      onPointerMove={suivre}
+      onPointerUp={(e) => {
+        if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+          e.currentTarget.releasePointerCapture(e.pointerId);
+        }
+      }}
+      onDoubleClick={() => onLargeur(LARGEUR_PANNEAU.defaut)}
+      onKeyDown={clavier}
+      className="group sticky top-20 mx-2 hidden h-[calc(100vh-6rem)] w-4 shrink-0 cursor-col-resize touch-none select-none justify-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 xl:flex"
+    >
+      <span className="h-full w-px bg-slate-200 transition-colors group-hover:bg-sky-400 group-active:bg-sky-500 dark:bg-slate-700" />
+      <span className="absolute top-1/2 h-10 w-2 -translate-y-1/2 rounded-full border border-slate-300 bg-white transition-colors group-hover:border-sky-400 dark:border-slate-600 dark:bg-slate-800" />
+    </div>
+  );
+}
+
 export default function SimulateurPage() {
   const notes = useSimulateurStore((s) => s.notes);
   const figees = useSimulateurStore((s) => s.figees);
@@ -111,6 +178,9 @@ export default function SimulateurPage() {
   const setCible = useSimulateurStore((s) => s.setCible);
   const setMesure = useSimulateurStore((s) => s.setMesure);
   const reinitialiser = useSimulateurStore((s) => s.reinitialiser);
+  const largeurPanneau = useSimulateurStore((s) => s.largeurPanneau);
+  const setLargeurPanneau = useSimulateurStore((s) => s.setLargeurPanneau);
+  const colonnes = useRef<HTMLDivElement>(null);
 
   const moyenne = useMemo(() => calculeMoyenne(notes), [notes]);
   const mention = mentionPour(moyenne);
@@ -167,9 +237,13 @@ export default function SimulateurPage() {
         </div>
       </div>
 
-      <div className="grid gap-8 xl:grid-cols-[300px_minmax(0,1fr)] xl:items-start">
+      <div
+        ref={colonnes}
+        className="space-y-8 xl:flex xl:items-start xl:space-y-0"
+        style={{ '--panneau': `${largeurPanneau}%` } as CSSProperties}
+      >
         {/* Résultat et répartition : colonne fixe sur grand écran */}
-        <aside className="space-y-6 xl:sticky xl:top-20 xl:max-h-[calc(100vh-6rem)] xl:overflow-y-auto">
+        <aside className="space-y-6 xl:sticky xl:top-20 xl:max-h-[calc(100vh-6rem)] xl:w-[var(--panneau)] xl:shrink-0 xl:overflow-y-auto">
           <section
             aria-label="Résultat"
             className={`rounded-xl border p-4 ${MENTION_CARD[accent]}`}
@@ -242,7 +316,13 @@ export default function SimulateurPage() {
           </section>
         </aside>
 
-        <div className="min-w-0 space-y-8">
+        <Separation
+          conteneur={colonnes}
+          largeur={largeurPanneau}
+          onLargeur={setLargeurPanneau}
+        />
+
+        <div className="min-w-0 flex-1 space-y-8">
           {/* Leviers */}
           <section aria-labelledby="leviers" className="space-y-3">
             <h2

@@ -27,7 +27,7 @@ import {
 } from '@/stores/grand-oral-store';
 import Minuteur from './Minuteur';
 import RelanceCard from './RelanceCard';
-import SourcesCitees from './SourcesCitees';
+import { Refs } from '@/components/shared/Sources';
 
 /** Relances proposées d'emblée pendant l'échange (on peut en tirer d'autres). */
 export const NB_RELANCES = 3;
@@ -178,19 +178,12 @@ export default function OralBlanc() {
               >
                 Remplis « Mes 2 questions »
               </Link>{' '}
-              pour que l’oral blanc tire l’une d’elles au sort, comme le jury qui en choisit une.
+              pour que l’oral blanc tire l’une d’elles au sort.
             </p>
           )}
           {formulees.length === 1 && (
             <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-              Une seule question est formulée : c’est elle qui sera travaillée. Le jour J, le
-              jury choisira entre les deux.
-            </p>
-          )}
-          {formulees.length > 1 && (
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-              Le jour J, le jury choisit une de tes deux questions. Ici, le hasard joue son
-              rôle.
+              Une seule question est formulée : c’est elle qui sera travaillée.
             </p>
           )}
 
@@ -345,8 +338,10 @@ export default function OralBlanc() {
         </div>
 
         <div className="rounded-lg border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
-          <p className="text-sm text-slate-700 dark:text-slate-300">{phase.resume}</p>
-          <SourcesCitees ids={phase.sources} className="mt-2" />
+          <p className="text-sm text-slate-700 dark:text-slate-300">
+            {phase.resume}
+            <Refs ids={phase.sources} />
+          </p>
         </div>
 
         {phase.id === TEMPS_ID.preparation && plan.length > 0 && (
@@ -437,8 +432,8 @@ export default function OralBlanc() {
             Auto-évaluation
           </h2>
           <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-            Les sept critères que le texte officiel dit valoriser. Pas de points : le texte ne
-            répartit pas la note entre eux.
+            Les critères que le texte officiel dit valoriser, sans points.
+            <Refs ids={criteres[0]?.sources ?? []} />
           </p>
           <ul className="mt-3 space-y-4">
             {criteres.map((c) => (
@@ -474,7 +469,6 @@ export default function OralBlanc() {
               </li>
             ))}
           </ul>
-          <SourcesCitees ids={criteres[0]?.sources ?? []} className="mt-3" />
 
           <label className="mt-4 block text-sm" htmlFor="oral-blanc-note">
             <span className="font-medium text-slate-700 dark:text-slate-300">
