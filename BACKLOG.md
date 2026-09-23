@@ -105,7 +105,7 @@
   « voir plus haut » réparé. Garde-fou `scripts/faits-inchanges.mjs` : « Aucun fait modifié »
   sur 97 entrées. Les 7 faits signalés faux par la vérification (PR #76) sont laissés tels
   quels : leur correction est prévue par les items que cette PR ajoute au backlog.
-  `node scripts/verify.mjs` OK, 165 tests (159 + 6). PR : à venir.
+  `node scripts/verify.mjs` OK, 165 tests (159 + 6). PR : #80.
 - [ ] Donner au dépôt un nom général (proposé : « revisions-bac ») — à faire par Thibaud dans
   GitHub (Settings → General → Repository name) : l'outil de session ne sait pas renommer un
   dépôt. La mise en ligne suit le nouveau nom seule (`deploy.yml` lit le nom du dépôt), mais
