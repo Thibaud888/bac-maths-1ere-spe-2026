@@ -34,8 +34,8 @@ const SOMMAIRE: readonly { to: string; label: string }[] = [
   { to: '#continu', label: 'Le contrôle continu' },
   { to: '#coefficients', label: 'Les coefficients' },
   { to: '#calendrier', label: 'Le calendrier' },
-  { to: '#mentions', label: 'Mentions et rattrapage' },
   { to: '#options', label: 'Les options' },
+  { to: '#mentions', label: 'Mentions et rattrapage' },
   { to: '#sources', label: 'Les sources' },
 ];
 
@@ -95,11 +95,11 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-/** Pastille « ton cas » sur les lignes qui dépendent de ses choix. */
+/** Pastille « selon le profil » sur les lignes qui dépendent des choix de l'élève. */
 function ProfilBadge() {
   return (
     <span className="ml-2 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-amber-800 dark:bg-amber-950/60 dark:text-amber-300">
-      ton cas
+      selon le profil
     </span>
   );
 }
@@ -166,11 +166,41 @@ function JalonRow({ jalon }: { jalon: BacJalon }) {
   );
 }
 
-/** « de 12 à moins de 14 », « 16 et plus », « moins de 8 ». */
+/** « 12 – 14 », « 16 et + », « < 8 ». */
 function palierLabel(mention: BacMention): string {
-  if (mention.plafond === undefined) return `${mention.seuil} et plus`;
-  if (mention.seuil === 0) return `moins de ${mention.plafond}`;
-  return `de ${mention.seuil} à moins de ${mention.plafond}`;
+  if (mention.plafond === undefined) return `${mention.seuil} et +`;
+  if (mention.seuil === 0) return `< ${mention.plafond}`;
+  return `${mention.seuil} – ${mention.plafond}`;
+}
+
+/** « Mention assez bien » → « Assez bien » : l'échelle dit déjà de quoi il s'agit. */
+function palierNom(mention: BacMention): string {
+  const nom = mention.label.replace(/^Mention /, '');
+  return nom.charAt(0).toUpperCase() + nom.slice(1);
+}
+
+/**
+ * Les paliers en une seule échelle, de la note la plus basse à la plus haute.
+ * Un palier marqué non réglementaire n'y figure pas : il est cité à part.
+ */
+function EchelleMentions({ paliers }: { paliers: readonly BacMention[] }) {
+  return (
+    <ol className="flex flex-wrap gap-1.5">
+      {paliers.map((m) => (
+        <li
+          key={m.id}
+          className={`min-w-0 flex-1 basis-[30%] rounded-md border px-2 py-1.5 text-center sm:basis-0 ${MENTION_CARD[m.accent ?? ACCENT_PAR_DEFAUT]}`}
+        >
+          <p className="text-xs font-semibold text-slate-900 dark:text-slate-100">
+            {palierNom(m)}
+          </p>
+          <p className="text-xs tabular-nums text-slate-600 dark:text-slate-400">
+            {palierLabel(m)}
+          </p>
+        </li>
+      ))}
+    </ol>
+  );
 }
 
 function CoefficientTable({ coefficients }: { coefficients: BacCoefficient[] }) {
@@ -237,23 +267,19 @@ export default function LeBacPage() {
   const aVenir = epreuves.filter((e) => e.statut !== 'passee');
   const jalons = listBacJalons();
   const mentions = listBacMentions();
+  const paliers = mentions.filter((m) => m.reglementaire !== false);
+  const horsEchelle = mentions.filter((m) => m.reglementaire === false);
   const continu = coefficientsOfBloc('continu');
   const options = coefficientsOfBloc('option');
 
   return (
     <div className="mx-auto max-w-4xl space-y-12 p-8">
       <header>
-        <span className="inline-block rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-sky-700 dark:bg-sky-950/60 dark:text-sky-300">
-          Session 2027
-        </span>
-        <h1 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
           Le bac, mode d’emploi
         </h1>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-          Ce qui compte, et combien. Le bac se joue sur {total} coefficients :{' '}
-          {totalEpreuves()} sur des épreuves, {totalOfBloc('continu')} sur les moyennes
-          des bulletins, {totalOfBloc('option')} sur les deux options. Chaque chiffre de
-          cette page renvoie au texte officiel qui le fixe.
+          Chaque chiffre de cette page renvoie au texte officiel qui le fixe.
         </p>
       </header>
 
@@ -283,8 +309,9 @@ export default function LeBacPage() {
       </nav>
 
       <p className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-slate-700 dark:border-amber-900 dark:bg-amber-950/40 dark:text-slate-300">
-        <span className="font-semibold">Ce qui dépend de toi.</span> Les lignes marquées{' '}
-        <ProfilBadge /> tiennent à tes choix : spécialités maths et physique-chimie, SVT
+        <span className="font-semibold">Ce qui dépend des choix de l’élève.</span> Les
+        lignes marquées <ProfilBadge /> changent d’un élève à l’autre. Le barème de cette
+        page suit un profil pris en exemple : spécialités maths et physique-chimie, SVT
         arrêtée en fin de première, options maths expertes et musique, anglais en langue
         A et italien en langue B. Tout le reste vaut pour n’importe quel élève de la voie
         générale.
@@ -293,10 +320,10 @@ export default function LeBacPage() {
       <Section
         id="epreuves"
         title="Les épreuves"
-        lead="Sept épreuves, dont trois déjà derrière toi. Ensemble, elles font 60 coefficients sur 104."
+        lead={`${epreuves.length} épreuves : ${passees.length} en fin de première, ${aVenir.length} en terminale. Ensemble, elles font ${totalEpreuves()} coefficients sur ${total}.`}
       >
         <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-          Déjà passées, en fin de première
+          En fin de première
         </h3>
         <div className="grid gap-3">
           {passees.map((e) => (
@@ -316,7 +343,7 @@ export default function LeBacPage() {
       <Section
         id="continu"
         title="Le contrôle continu"
-        lead={`${totalOfBloc('continu')} coefficients ne se jouent sur aucune épreuve : ce sont tes moyennes annuelles, celles qui figurent sur tes bulletins.`}
+        lead={`${totalOfBloc('continu')} coefficients ne se jouent sur aucune épreuve : ce sont les moyennes annuelles, celles des bulletins.`}
       >
         <CoefficientTable coefficients={continu} />
         <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
@@ -325,21 +352,21 @@ export default function LeBacPage() {
               Deux années, deux moitiés.
             </span>{' '}
             L’histoire-géographie, les deux langues, l’enseignement scientifique et l’EMC
-            comptent moitié sur la première, moitié sur la terminale. Ce qui vient de
-            première est déjà acquis.
+            comptent moitié sur la moyenne de première, moitié sur celle de terminale.
+            La moitié de première est connue dès la fin de l’année.
           </li>
           <li>
             <span className="font-semibold text-slate-800 dark:text-slate-200">
               La spécialité arrêtée pèse lourd.
             </span>{' '}
-            8 coefficients, entièrement décidés par ta moyenne de SVT en première : cette
-            note-là ne bougera plus.
+            8 coefficients, entièrement décidés par la moyenne de première de la
+            spécialité abandonnée : cette note est connue dès la fin de première.
           </li>
           <li>
             <span className="font-semibold text-slate-800 dark:text-slate-200">
               L’EPS, c’est trois épreuves au lycée.
             </span>{' '}
-            Pas une moyenne de bulletin, mais trois évaluations notées par tes
+            Pas une moyenne de bulletin, mais trois évaluations notées par les
             professeurs dans l’année de terminale.
           </li>
         </ul>
@@ -348,7 +375,7 @@ export default function LeBacPage() {
       <Section
         id="coefficients"
         title="Les coefficients"
-        lead="Le barème complet, bloc par bloc. C’est le même tableau que lira le simulateur de moyenne."
+        lead="Le barème complet, bloc par bloc."
       >
         {BLOC_ORDER.map((bloc) => (
           <div key={bloc} className="space-y-2">
@@ -381,60 +408,6 @@ export default function LeBacPage() {
       </Section>
 
       <Section
-        id="mentions"
-        title="Mentions et rattrapage"
-        lead="Tout se joue sur une seule moyenne, celle des 104 coefficients."
-      >
-        <ul className="grid gap-2 sm:grid-cols-2">
-          {mentions.map((m) => (
-            <li
-              key={m.id}
-              className={`rounded-lg border p-3 ${MENTION_CARD[m.accent ?? ACCENT_PAR_DEFAUT]}`}
-            >
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <p className="font-semibold text-slate-900 dark:text-slate-100">
-                  {m.label}
-                </p>
-                <span className="text-xs font-semibold tabular-nums text-slate-700 dark:text-slate-300">
-                  {palierLabel(m)}
-                </span>
-              </div>
-              <p className="mt-1 text-sm text-slate-700 dark:text-slate-300">
-                {m.resume}
-              </p>
-              {m.reglementaire === false && (
-                <p className="mt-1 text-xs italic text-slate-600 dark:text-slate-400">
-                  Décision du jury, pas un seuil réglementaire.
-                </p>
-              )}
-              <p className="mt-1">
-                <Refs ids={m.sources} />
-              </p>
-            </li>
-          ))}
-        </ul>
-        <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-          <li>
-            <span className="font-semibold text-slate-800 dark:text-slate-200">
-              Le rattrapage, comment ça marche.
-            </span>{' '}
-            Entre 8 et 10, tu passes deux oraux, dans deux matières de ton choix parmi
-            celles qui ont eu un écrit — les épreuves anticipées comprises. Pour chacune,
-            c’est la meilleure des deux notes qui est retenue.
-            <Refs ids={['s-mentions']} />
-          </li>
-          <li>
-            <span className="font-semibold text-slate-800 dark:text-slate-200">
-              Une mention ne s’obtient qu’au premier tour.
-            </span>{' '}
-            Un bac décroché au rattrapage est un bac sans mention, même si la moyenne
-            finale dépasse 12.
-            <Refs ids={['s-mentions']} />
-          </li>
-        </ul>
-      </Section>
-
-      <Section
         id="options"
         title="Les options"
         lead="Une option rapporte 2 coefficients par année où elle est suivie, et ces coefficients s’ajoutent aux 100 de base."
@@ -449,11 +422,41 @@ export default function LeBacPage() {
           <Refs ids={['s-calcul-note']} />
         </p>
         <p className="text-sm text-slate-600 dark:text-slate-400">
-          Tes deux options se suivent en terminale seulement : elles valent 2 coefficients
-          chacune, d’où un total de {total} et non de 100. Une option suivie dès la
-          première en vaudrait 4.
+          Dans l’exemple, les deux options ne sont suivies qu’en terminale : 2
+          coefficients chacune, d’où un total de {total} au lieu de 100. Une option
+          suivie dès la première en vaut 4.
           <Refs ids={['s-calcul-note', 's-controle-continu']} />
         </p>
+      </Section>
+
+      <Section id="mentions" title="Mentions et rattrapage">
+        <EchelleMentions paliers={paliers} />
+        <ul className="space-y-1 text-sm text-slate-600 dark:text-slate-400">
+          <li>
+            <span className="font-semibold text-slate-800 dark:text-slate-200">
+              Entre 8 et 10 :
+            </span>{' '}
+            deux oraux de rattrapage, dans des matières passées à l’écrit ; la meilleure
+            des deux notes est gardée.
+            <Refs ids={['s-mentions']} />
+          </li>
+          <li>
+            <span className="font-semibold text-slate-800 dark:text-slate-200">
+              Mention :
+            </span>{' '}
+            seulement au premier tour.
+            <Refs ids={['s-mentions']} />
+          </li>
+          {horsEchelle.map((m) => (
+            <li key={m.id}>
+              <span className="font-semibold text-slate-800 dark:text-slate-200">
+                {m.label} :
+              </span>{' '}
+              {m.resume}
+              <Refs ids={m.sources} />
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section

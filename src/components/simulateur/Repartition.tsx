@@ -1,12 +1,12 @@
 import { useId } from 'react';
 import { ACCENT_PAR_DEFAUT, MENTION_HEX } from '@/lib/bac-accents';
 import {
-  ANNEE_LABEL,
   DOMAINE_LABEL,
   DOMAINE_ORDER,
   couleurLigne,
   fmt,
   mentionPour,
+  nomLigne,
   noteDe,
   totalSimulateur,
   type SimulateurLigne,
@@ -38,6 +38,9 @@ const CX = 140;
 const CY = 140;
 const RAYON_EXT = 130;
 const RAYON_INT = 78;
+
+/** Une note figée garde sa couleur et ses hachures, mais s'efface. */
+const OPACITE_FIGEE = 0.4;
 
 function polaire(rayon: number, degres: number): { x: number; y: number } {
   const a = ((degres - 90) * Math.PI) / 180;
@@ -75,15 +78,8 @@ type Props = {
   moyenne: number;
 };
 
-export default function Repartition({
-  lignes,
-  notes,
-  figees,
-  mesure,
-  cible,
-  moyenne,
-}: Props) {
-  const hachures = useId();
+/** Les parts du disque et l'angle où elles s'arrêtent. */
+function decouper({ lignes, notes, figees, mesure, cible }: Props) {
   const total = totalSimulateur();
   const parts: Part[] = ordonner(lignes)
     .map((ligne) => ({
@@ -111,10 +107,119 @@ export default function Repartition({
     part.a1 = angle + (part.valeur / tour) * 360;
     angle = part.a1;
   }
+  return { parts, somme, tour, fin: angle };
+}
+
+type CamembertProps = Props & {
+  /** Version réduite, sans texte au centre ni infobulles (bandeau collant). */
+  mini?: boolean;
+  className?: string;
+};
+
+/** Le disque seul : réutilisé en grand dans le panneau, en petit dans le bandeau. */
+export function Camembert(props: CamembertProps) {
+  const { notes, mesure, cible, moyenne, mini = false, className } = props;
+  const hachures = useId();
+  const total = totalSimulateur();
+  const { parts, somme, tour, fin } = decouper(props);
 
   const mention = mentionPour(moyenne);
   const couleurMention = MENTION_HEX[mention?.accent ?? ACCENT_PAR_DEFAUT];
   const partDeLaCible = tour === 0 ? 0 : Math.min(100, (somme / tour) * 100);
+
+  return (
+    <svg
+      viewBox="0 0 280 280"
+      className={className}
+      role="img"
+      aria-label={`Répartition des coefficients — moyenne ${fmt(moyenne)} sur 20`}
+    >
+      <defs>
+        <pattern
+          id={hachures}
+          patternUnits="userSpaceOnUse"
+          width="7"
+          height="7"
+          patternTransform="rotate(45)"
+        >
+          <line
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="7"
+            stroke="rgba(255,255,255,.65)"
+            strokeWidth="2.6"
+          />
+        </pattern>
+      </defs>
+
+      {fin < 360 && (
+        <path d={arc(fin, 360)} className="fill-slate-200 dark:fill-slate-700" />
+      )}
+
+      {parts.map((part) => (
+        <g key={part.ligne.id} opacity={part.figee ? OPACITE_FIGEE : 1}>
+          <path d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))} fill={part.couleur}>
+            {!mini && (
+              <title>
+                {nomLigne(part.ligne)} — coefficient {part.ligne.coefficient}, note{' '}
+                {fmt(noteDe(notes, part.ligne.id))}/20
+                {part.figee ? ' (figée)' : ''}
+              </title>
+            )}
+          </path>
+          {part.figee && (
+            <path
+              d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))}
+              fill={`url(#${hachures})`}
+              pointerEvents="none"
+            />
+          )}
+        </g>
+      ))}
+
+      {!mini && (
+        <>
+          <text
+            x={CX}
+            y={CY - 4}
+            textAnchor="middle"
+            fontSize="38"
+            fontWeight="800"
+            fill={couleurMention}
+          >
+            {fmt(moyenne)}
+          </text>
+          <text
+            x={CX}
+            y={CY + 18}
+            textAnchor="middle"
+            fontSize="12"
+            className="fill-slate-500 dark:fill-slate-400"
+          >
+            {mesure === 'coefficient' ? `poids sur ${total}` : 'moyenne sur 20'}
+          </text>
+          {mesure === 'contribution' && (
+            <text
+              x={CX}
+              y={CY + 35}
+              textAnchor="middle"
+              fontSize="10.5"
+              className="fill-slate-500 dark:fill-slate-400"
+            >
+              {fmt(partDeLaCible, 1)} % de la cible {cible}/20
+            </text>
+          )}
+        </>
+      )}
+    </svg>
+  );
+}
+
+export default function Repartition(props: Props) {
+  const { mesure } = props;
+  const total = totalSimulateur();
+  const { parts } = decouper(props);
 
   const parDomaine = DOMAINE_ORDER.map((domaine) => {
     const dedans = parts.filter((p) => p.ligne.domaine === domaine);
@@ -127,89 +232,10 @@ export default function Repartition({
   }).filter((d) => d.valeur > 0);
 
   return (
-    <div className="grid gap-6 sm:grid-cols-[minmax(0,260px)_minmax(0,1fr)] sm:items-center">
-      <svg
-        viewBox="0 0 280 280"
-        className="mx-auto w-full max-w-[260px]"
-        role="img"
-        aria-label={`Répartition des coefficients — moyenne ${fmt(moyenne)} sur 20`}
-      >
-        <defs>
-          <pattern
-            id={hachures}
-            patternUnits="userSpaceOnUse"
-            width="7"
-            height="7"
-            patternTransform="rotate(45)"
-          >
-            <line
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="7"
-              stroke="rgba(255,255,255,.65)"
-              strokeWidth="2.6"
-            />
-          </pattern>
-        </defs>
+    <div className="grid gap-5 sm:grid-cols-[minmax(0,240px)_minmax(0,1fr)] sm:items-center xl:grid-cols-1">
+      <Camembert {...props} className="mx-auto w-full max-w-[240px] xl:max-w-[210px]" />
 
-        {angle < 360 && (
-          <path d={arc(angle, 360)} className="fill-slate-200 dark:fill-slate-700" />
-        )}
-
-        {parts.map((part) => (
-          <g key={part.ligne.id}>
-            <path d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))} fill={part.couleur}>
-              <title>
-                {part.ligne.label}
-                {part.ligne.partagee ? ` (${ANNEE_LABEL[part.ligne.annee]})` : ''} —
-                coefficient {part.ligne.coefficient}, note{' '}
-                {fmt(noteDe(notes, part.ligne.id))}/20
-              </title>
-            </path>
-            {part.figee && (
-              <path
-                d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))}
-                fill={`url(#${hachures})`}
-                pointerEvents="none"
-              />
-            )}
-          </g>
-        ))}
-
-        <text
-          x={CX}
-          y={CY - 4}
-          textAnchor="middle"
-          fontSize="38"
-          fontWeight="800"
-          fill={couleurMention}
-        >
-          {fmt(moyenne)}
-        </text>
-        <text
-          x={CX}
-          y={CY + 18}
-          textAnchor="middle"
-          fontSize="12"
-          className="fill-slate-500 dark:fill-slate-400"
-        >
-          {mesure === 'coefficient' ? `poids sur ${total}` : 'moyenne sur 20'}
-        </text>
-        {mesure === 'contribution' && (
-          <text
-            x={CX}
-            y={CY + 35}
-            textAnchor="middle"
-            fontSize="10.5"
-            className="fill-slate-500 dark:fill-slate-400"
-          >
-            {fmt(partDeLaCible, 1)} % de la cible {cible}/20
-          </text>
-        )}
-      </svg>
-
-      <ul className="space-y-1.5 text-sm">
+      <ul className="space-y-1 text-sm">
         {parDomaine.map((d) => (
           <li key={d.domaine} className="flex items-baseline gap-2">
             <span
@@ -230,7 +256,7 @@ export default function Repartition({
         <li className="pt-2 text-xs text-slate-500 dark:text-slate-400">
           {mesure === 'coefficient'
             ? `Chaque part vaut le coefficient de la matière, sur ${total} au total.`
-            : `Chaque part vaut ce que la note apporte à la moyenne. Les parts hachurées sont les notes figées.`}
+            : 'Chaque part vaut ce que la note apporte à la moyenne. Les parts pâles et hachurées sont les notes figées.'}
         </li>
       </ul>
     </div>

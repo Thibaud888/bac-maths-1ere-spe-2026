@@ -115,7 +115,7 @@ export default function BacBlancPage() {
           Bac blanc
         </h2>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-          Sujets d'entraînement complets, format EAM 2026 : 2 heures, sans
+          Sujets d'entraînement complets, au format de l'épreuve anticipée : 2 heures, sans
           calculatrice. Chaque sujet comporte une Partie 1 d'automatismes
           (6 pts) et une Partie 2 de deux exercices indépendants (14 pts).
         </p>

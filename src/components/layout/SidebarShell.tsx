@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
+import { SITE_NAME } from '@/lib/spaces';
 
 type Props = {
-  /** Replie la colonne (bouton dupliqué dans le bandeau supérieur). */
+  /** Replie la colonne ; le bandeau supérieur offre ensuite de la rouvrir. */
   onCollapse: () => void;
   /** Bloc d'identité ; par défaut, le titre du site. */
   brand?: ReactNode;
@@ -20,7 +21,7 @@ export default function SidebarShell({ onCollapse, brand, children }: Props) {
           {brand ?? (
             <>
               <p className="text-[17px] font-bold leading-tight text-slate-900 dark:text-white">
-                Bac 2027
+                {SITE_NAME}
               </p>
               <p className="mt-1 text-[11px] leading-snug text-slate-400 dark:text-slate-500">
                 Première &amp; terminale

@@ -9,6 +9,7 @@ import {
   listSimulateurLignes,
   mentionPour,
   moyenne,
+  nomLigne,
   noteDe,
   potentiel,
   prochainPalier,
@@ -46,6 +47,16 @@ describe('découpage du barème en notes réglables', () => {
     expect(hg.map((l) => l.annee).sort()).toEqual(['premiere', 'terminale']);
     expect(hg.every((l) => l.partagee)).toBe(true);
     expect(hg.map((l) => l.coefficient)).toEqual([3, 3]);
+  });
+
+  it('nomme la moyenne annuelle dont vient chaque note partagée', () => {
+    const hg = lignes.filter((l) => l.coefficientId === 'co-histoire-geographie');
+    expect(hg.map(nomLigne).sort()).toEqual([
+      'Histoire-géographie — moyenne de première',
+      'Histoire-géographie — moyenne de terminale',
+    ]);
+    const philo = lignes.find((l) => l.coefficientId === 'co-philosophie');
+    expect(philo && nomLigne(philo)).toBe('Philosophie');
   });
 
   it('laisse une seule note aux épreuves et aux matières d’une seule année', () => {

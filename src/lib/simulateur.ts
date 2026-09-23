@@ -43,6 +43,16 @@ export const ANNEE_LABEL: Record<BacAnnee, string> = {
   terminale: 'Terminale',
 };
 
+/**
+ * Nom affiché d'une note. Quand la matière compte sur les deux années, chaque
+ * ligne dit de quelle moyenne annuelle il s'agit : « Histoire-géographie —
+ * moyenne de première ».
+ */
+export function nomLigne(ligne: SimulateurLigne): string {
+  if (!ligne.partagee) return ligne.label;
+  return `${ligne.label} — moyenne de ${ANNEE_LABEL[ligne.annee].toLowerCase()}`;
+}
+
 export const DOMAINE_LABEL: Record<BacDomaine, string> = {
   sciences: 'Sciences',
   langues: 'Langues',

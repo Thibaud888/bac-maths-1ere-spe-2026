@@ -4,33 +4,36 @@ import { useAppStore } from '@/stores/app-store';
 export type Crumb = { label: string; muted?: boolean };
 
 type Props = {
-  /** La barre latérale est-elle ouverte ? (pilote l'icône du bouton) */
+  /** La barre latérale est-elle ouverte ? Fermée, le bandeau offre de la rouvrir. */
   navOpen: boolean;
-  onToggleNav: () => void;
+  onOpenNav: () => void;
   /** Fil d'Ariane contextuel (année › matière › page). */
   crumbs?: Crumb[];
 };
 
 /**
- * Bandeau supérieur global, identique sur toutes les pages : ouverture et
- * fermeture du menu, fil d'Ariane, bascule de thème.
+ * Bandeau supérieur global, identique sur toutes les pages : réouverture du
+ * menu (le repli se fait depuis la barre elle-même), fil d'Ariane, bascule de
+ * thème.
  */
-export default function TopBar({ navOpen, onToggleNav, crumbs = [] }: Props) {
+export default function TopBar({ navOpen, onOpenNav, crumbs = [] }: Props) {
   const theme = useAppStore((s) => s.theme);
   const toggleTheme = useAppStore((s) => s.toggleTheme);
 
   return (
     <header className="sticky top-0 z-10 flex items-center gap-3 border-b border-slate-200 bg-white px-4 py-2.5 dark:border-slate-700 dark:bg-slate-800">
-      <button
-        type="button"
-        onClick={onToggleNav}
-        aria-label={navOpen ? 'Replier le menu' : 'Afficher le menu'}
-        aria-expanded={navOpen}
-        className="flex shrink-0 items-center gap-2 rounded-md border border-slate-200 px-2.5 py-1.5 text-slate-600 transition-colors hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
-      >
-        {navOpen ? <CollapseIcon /> : <ExpandIcon />}
-        <span className="text-xs font-semibold">Menu</span>
-      </button>
+      {!navOpen && (
+        <button
+          type="button"
+          onClick={onOpenNav}
+          aria-label="Afficher le menu"
+          aria-expanded={false}
+          className="flex shrink-0 items-center gap-2 rounded-md border border-slate-200 px-2.5 py-1.5 text-slate-600 transition-colors hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
+        >
+          <ExpandIcon />
+          <span className="text-xs font-semibold">Menu</span>
+        </button>
+      )}
 
       {crumbs.length > 0 && (
         <nav
@@ -70,25 +73,6 @@ export default function TopBar({ navOpen, onToggleNav, crumbs = [] }: Props) {
         {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
       </button>
     </header>
-  );
-}
-
-function CollapseIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4"
-      aria-hidden="true"
-    >
-      <line x1="4" y1="5" x2="4" y2="19" />
-      <polyline points="15 18 9 12 15 6" />
-    </svg>
   );
 }
 
