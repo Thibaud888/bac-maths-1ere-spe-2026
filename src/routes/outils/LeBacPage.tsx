@@ -34,9 +34,9 @@ const FORME_LABEL: Record<BacForme, string> = {
 const SOMMAIRE = [
   { id: 'epreuves', label: 'Les épreuves' },
   { id: 'continu', label: 'Le contrôle continu' },
+  { id: 'options', label: 'Les options' },
   { id: 'coefficients', label: 'Les coefficients' },
   { id: 'calendrier', label: 'Le calendrier' },
-  { id: 'options', label: 'Les options' },
   { id: 'mentions', label: 'Mentions et rattrapage' },
   { id: 'sources', label: 'Les sources' },
 ] as const;
@@ -326,6 +326,28 @@ export default function LeBacPage() {
         </Section>
 
         <Section
+          id="options"
+          title="Les options"
+          lead="Une option rapporte 2 coefficients par année où elle est suivie, et ces coefficients s’ajoutent aux 100 de base."
+        >
+          <CoefficientTable coefficients={options} />
+          <p className="rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+            <span className="font-semibold">Attention, ce n’est plus un bonus.</span>{' '}
+            Avant la réforme, seuls les points au-dessus de 10 comptaient : une option ne
+            pouvait que faire monter la moyenne. Aujourd’hui l’option entre dans la moyenne
+            comme les autres matières — une note en dessous de 10 la fait donc baisser,
+            faiblement puisque le coefficient est petit.
+            <Refs ids={['s-calcul-note']} />
+          </p>
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            Dans l’exemple, les deux options ne sont suivies qu’en terminale : 2
+            coefficients chacune, d’où un total de {total} au lieu de 100. Une option
+            suivie dès la première en vaut 4.
+            <Refs ids={['s-calcul-note', 's-controle-continu']} />
+          </p>
+        </Section>
+
+        <Section
           id="coefficients"
           title="Les coefficients"
           lead="Le barème complet, bloc par bloc."
@@ -358,28 +380,6 @@ export default function LeBacPage() {
               <JalonRow key={j.id} jalon={j} />
             ))}
           </ul>
-        </Section>
-
-        <Section
-          id="options"
-          title="Les options"
-          lead="Une option rapporte 2 coefficients par année où elle est suivie, et ces coefficients s’ajoutent aux 100 de base."
-        >
-          <CoefficientTable coefficients={options} />
-          <p className="rounded-lg border border-slate-200 bg-white p-4 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
-            <span className="font-semibold">Attention, ce n’est plus un bonus.</span>{' '}
-            Avant la réforme, seuls les points au-dessus de 10 comptaient : une option ne
-            pouvait que faire monter la moyenne. Aujourd’hui l’option entre dans la moyenne
-            comme les autres matières — une note en dessous de 10 la fait donc baisser,
-            faiblement puisque le coefficient est petit.
-            <Refs ids={['s-calcul-note']} />
-          </p>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
-            Dans l’exemple, les deux options ne sont suivies qu’en terminale : 2
-            coefficients chacune, d’où un total de {total} au lieu de 100. Une option
-            suivie dès la première en vaut 4.
-            <Refs ids={['s-calcul-note', 's-controle-continu']} />
-          </p>
         </Section>
 
         <Section id="mentions" title="Mentions et rattrapage">

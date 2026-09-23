@@ -7,6 +7,8 @@ type Props = {
   fiche: GrandOralFiche;
   /** Contenu inséré après l'énoncé (liste de critères, par exemple). */
   children?: ReactNode;
+  /** Appels de sources [n] à côté du titre ; `false` quand la page ne liste ses sources qu'en bas. */
+  appels?: boolean;
 };
 
 /**
@@ -15,7 +17,7 @@ type Props = {
  * conseil s'affiche à part, sous l'intitulé « Conseil pratique ». Les sources
  * sont des appels numérotés, renvoyant à la liste en bas de page.
  */
-export default function FicheGrandOral({ fiche, children }: Props) {
+export default function FicheGrandOral({ fiche, children, appels = true }: Props) {
   const officiel = fiche.nature === 'reglementaire';
   return (
     <article
@@ -35,7 +37,7 @@ export default function FicheGrandOral({ fiche, children }: Props) {
         </span>
         <h3 className="mt-2 text-base font-semibold text-slate-900 dark:text-slate-100">
           {fiche.title}
-          <Refs ids={fiche.sources} className="ml-1 align-super" />
+          {appels && <Refs ids={fiche.sources} className="ml-1 align-super" />}
         </h3>
         <div className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
           <LiteraryText text={fiche.statement} />
