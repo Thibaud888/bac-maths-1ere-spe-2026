@@ -119,6 +119,19 @@
   (`AppLayout`). Règles vérifiées sur les extraits du texte officiel relevés par la
   vérification (#76) : education.gouv.fr est bloqué par le réseau de cette session.
   `node scripts/verify.mjs` OK, 169 tests (165 + 4). PR : #81.
+- [x] Choisir l'apparence du site parmi cinq thèmes — en plus de clair et sombre : « Papier »
+  (crème, encre brune, police de livre), « Tableau » (vert tableau d'école, texte couleur craie)
+  et « Lavande » (pastel, formes arrondies). Le bouton du bandeau ouvre la liste (nom et vignette de
+  chaque thème, sans description — retour de Thibaud) ; le choix est gardé d'une visite à l'autre.
+  Détail : registre `src/lib/themes.ts` ; gris `slate-*`, `white`, `font-sans` et arrondis
+  `rounded-*` lus dans des variables CSS (`tailwind.config.js`), redéfinies par thème dans
+  `src/index.css` — aucun composant retouché ; les thèmes sombres posent aussi la classe
+  `dark`. `ThemePicker.tsx` remplace le bouton soleil/lune ; `setTheme` remplace `toggleTheme`
+  (valeurs `light`/`dark` déjà enregistrées dans `bms-2026-app` inchangées) ; thème posé avant
+  le premier rendu (`main.tsx`) ; `color-scheme: dark` pour les contrôles natifs en sombre.
+  Relu en captures (accueil, le bac, simulateur, formulaire, exercices, bac blanc, grand oral,
+  fiches de français, sélecteur sur ordinateur et téléphone).
+  `node scripts/verify.mjs` OK, 177 tests (169 + 8). PR : #83.
 - [ ] Laisser les sessions ouvrir le site du ministère — le 2026-09-23, le réseau de la session
   a refusé `www.education.gouv.fr` (proxy : CONNECT refusé, politique de l'environnement) ;
   la page « Exposé » a dû être vérifiée sur les extraits relevés par la vérification (#76).

@@ -40,13 +40,15 @@ content/
 src/
   lib/spaces.ts         # REGISTRE DES ESPACES : années, matières, outils → toute la navigation
                         # + SITE_NAME et pageTitle() (titre de l'onglet, tiré du fil d'Ariane)
+  lib/themes.ts         # REGISTRE DES THÈMES (Clair, Sombre, Papier, Tableau, Lavande) ; les
+                        # couleurs de chaque thème = variables CSS dans index.css
   lib/bac-content.ts    # chargeur validé de content/bac/ (+ bac-types.ts, bac-accents.ts)
   lib/simulateur.ts     # moteur du simulateur : découpe le barème en notes réglables,
                         # moyenne pondérée, mention, leviers (aucun coefficient en dur)
   lib/grand-oral-content.ts  # chargeur validé du grand oral (relit content/bac/ pour le
                         # coefficient, la période et les sources) ; lib/oral-blanc.ts = minuteur
   components/layout/    # AppLayout (cadre unique), MainSidebar (LA barre), SidebarShell,
-                        # TopBar (repli + fil d'Ariane), SectionTabs, ChapterLayout
+                        # TopBar (repli + fil d'Ariane + ThemePicker), SectionTabs, ChapterLayout
   components/           # formulary, automatisms, exercises, exam, math (KaTeX)
   components/shared/    # EmptyState, Sommaire (encadré, ou colonne collée qui suit la lecture),
                         # Sources (appels [n] → liste en bas de page, registre
@@ -89,6 +91,9 @@ tests/                  # Vitest ; Playwright pour les runners critiques
   dans `deroule.json` seulement ; les questions de l'élève ne sont jamais écrites dans le dépôt.
 - **Toucher le simulateur** : le calcul est dans `src/lib/simulateur.ts` (testé), l'état dans
   `src/stores/simulateur-store.ts`, l'écran dans `src/routes/outils/SimulateurPage.tsx`.
+- **Ajouter un thème d'affichage** : une entrée dans `THEMES` (`src/lib/themes.ts`) + son bloc
+  `:root[data-theme='<id>']` dans `src/index.css` (gris, blanc, police, arrondi) ; le sélecteur
+  du bandeau le propose seul, un test vérifie que les deux sont alignés.
 - **Fin de session** : `/bilan` (récap branch/PR, mise à jour BACKLOG.md) + `/handoff` (prépare la reprise).
 
 ## Flux de données
@@ -111,6 +116,9 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
   (un attribut qui manque au simulateur s'ajoute au schéma, pas au code).
 - Les anciennes adresses (`/chapitre/*`, `/bac-blanc`, `/francais/*`) sont redirigées dans
   `App.tsx` — ne pas les supprimer.
+- Les gris `slate-*`, `white`, la police `font-sans` et les arrondis `rounded-*` passent par des
+  variables CSS (`tailwind.config.js`) : ne pas écrire de gris en dur (`#…`, `gray-*`), sinon
+  il ne suit plus le thème.
 - Changer de page ramène en haut (`AppLayout`, sauf lien vers une ancre `#…`).
 - `<main>` ne défile pas lui-même : c'est la fenêtre qui défile. Ne pas lui remettre
   `overflow-y-auto`, sinon les éléments `sticky` des pages (simulateur) décrochent.
