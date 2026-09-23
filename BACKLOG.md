@@ -118,7 +118,7 @@
   `GRAND_ORAL_SECTIONS` ; un lien vers la fiche d'un autre onglet descend jusqu'à elle
   (`AppLayout`). Règles vérifiées sur les extraits du texte officiel relevés par la
   vérification (#76) : education.gouv.fr est bloqué par le réseau de cette session.
-  `node scripts/verify.mjs` OK, 169 tests (165 + 4). PR : à venir.
+  `node scripts/verify.mjs` OK, 169 tests (165 + 4). PR : #81.
 - [ ] Donner au dépôt un nom général (proposé : « revisions-bac ») — à faire par Thibaud dans
   GitHub (Settings → General → Repository name) : l'outil de session ne sait pas renommer un
   dépôt. La mise en ligne suit le nouveau nom seule (`deploy.yml` lit le nom du dépôt), mais
