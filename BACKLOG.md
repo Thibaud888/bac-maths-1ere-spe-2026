@@ -196,7 +196,7 @@
   programme, règles des pages) ; agents `tle-architecte`, `tle-auteur-cours`,
   `tle-auteur-exercices`, `tle-auteur-bac`, `tle-relecteur`, `tle-eleve-testeur`,
   `annales-indexeur` ; commande `/tle-chapitre` ; CLAUDE.md § 14, MAP.md.
-  `node scripts/verify.mjs` OK. Session du 2026-09-24.
+  `node scripts/verify.mjs` OK. Session du 2026-09-24. PR : #85.
 
 **Phase 1 — les fondations**
 
