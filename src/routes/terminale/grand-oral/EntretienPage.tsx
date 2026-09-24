@@ -64,7 +64,7 @@ export default function EntretienPage() {
       <PageLongue accent="amber" sommaire={sommaire} entete={entete}>
         <div className="space-y-5">
           {fiches.map((fiche, index) => (
-            <FicheGrandOral key={fiche.id} fiche={fiche} numero={index + 1} />
+            <FicheGrandOral key={fiche.id} fiche={fiche} numero={index + 1} appels={false} />
           ))}
         </div>
 

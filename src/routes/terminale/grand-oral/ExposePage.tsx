@@ -5,7 +5,7 @@ import GrandOralIntro from '@/components/grand-oral/GrandOralIntro';
 import SectionSources from '@/components/grand-oral/SectionSources';
 import Essentiel, { Point, Points } from '@/components/shared/Essentiel';
 import PageLongue, { SectionPage } from '@/components/shared/PageLongue';
-import { Refs, SourcesNumerotees, ordreDesSources } from '@/components/shared/Sources';
+import { SourcesNumerotees, ordreDesSources } from '@/components/shared/Sources';
 import type { GrandOralTemps } from '@/lib/grand-oral-types';
 import { typographie } from '@/lib/typographie';
 
@@ -53,7 +53,6 @@ function TempsOfficiel({ temps }: { temps: GrandOralTemps }) {
       <div>
         <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
           {typographie(temps.titre)}
-          <Refs ids={temps.sources} className="ml-1 align-super" />
         </h3>
         <p className="mt-0.5 text-[0.7rem] font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-400">
           Texte officiel
@@ -108,14 +107,14 @@ export default function ExposePage() {
           <div className="space-y-5">
             {temps && <TempsOfficiel temps={temps} />}
             {regles.map((fiche) => (
-              <FicheGrandOral key={fiche.id} fiche={fiche} />
+              <FicheGrandOral key={fiche.id} fiche={fiche} appels={false} />
             ))}
           </div>
         </SectionPage>
 
         <div className="space-y-5">
           {methode.map((fiche, index) => (
-            <FicheGrandOral key={fiche.id} fiche={fiche} numero={index + 2} />
+            <FicheGrandOral key={fiche.id} fiche={fiche} numero={index + 2} appels={false} />
           ))}
         </div>
 

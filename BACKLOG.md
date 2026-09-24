@@ -89,6 +89,12 @@
   (liste des sources gardée en bas).
   Détail : prop `appels` de `FicheGrandOral` (vrai par défaut, faux sur « L'épreuve ») ;
   `DerouleFrise` sans appels. `node scripts/verify.mjs` OK, 159 tests. PR : #79.
+- [x] Quatrième relecture du 2026-09-24 : alléger encore le grand oral et « Le bac » — plus de
+  renvois [1] dans les titres et le texte des pages « Préparation », « Exposé » et
+  « Entretien » (la source reste en bas de page) ; « Le bac » sans le bloc « La spécialité
+  arrêtée pèse lourd ».
+  Détail : `appels={false}` sur `FicheGrandOral` dans les trois pages, `Refs` retiré de
+  `TempsOfficiel` (`ExposePage`). `node scripts/verify.mjs` OK.
 - [x] Rendre « Le bac » et le grand oral plus lisibles, surtout sur ordinateur — l'essentiel
   en tête de chaque page, sommaire à droite qui suit la lecture, doublons retirés, mots
   techniques expliqués, apostrophes harmonisées ; aucun fait modifié.
