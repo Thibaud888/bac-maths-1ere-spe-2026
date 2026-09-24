@@ -234,7 +234,7 @@ coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
   périmètre de 2021, 2022, 2023 relevé, tout le programme depuis 2024 ; **logarithme décimal
   hors programme** ; `chapitres-maths.md` relu (4 corrections, un point à trancher sur
   l'ordre). Au passage : la page demandée pour tester l'accès (MENE2622694N) est la note du
-  **grand oral**. `node scripts/verify.mjs` OK. PR : à venir.
+  **grand oral**. `node scripts/verify.mjs` OK. PR : #87.
 - [ ] (P1) Écrire la liste officielle de ce qu'il faut savoir en physique-chimie de terminale —
   même travail : `bac-physique-chimie-terminale-2027` + `programme.json` (`bo-pc-…`, avec
   capacités expérimentales et numériques, et les acquis de première mobilisables `bo-pc1-…`),
