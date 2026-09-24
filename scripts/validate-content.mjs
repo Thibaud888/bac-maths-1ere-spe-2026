@@ -2,7 +2,8 @@
 /**
  * Valide tous les fichiers JSON de `content/chapters/*` contre les schémas Ajv,
  * ainsi que `content/bac-blanc/`, `content/bac/`, `content/terminale/grand-oral/` et les
- * programmes officiels de terminale (`content/terminale/<matiere>/programme.json`).
+ * chapitres de terminale (`content/terminale/<matiere>/`, schémas `schemas/terminale/`),
+ * dont le texte exact des programmes officiels (`scripts/programme-conforme.mjs`).
  * Usage : node scripts/validate-content.mjs
  * Exit 0 si tout est valide, 1 sinon.
  */
@@ -11,6 +12,12 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
+import {
+  compilerSchemas,
+  controlerIntegrite,
+  lireRacine,
+  validerSchemas,
+} from './lib/terminale.mjs';
 import { matieresAvecProgramme, verifierProgramme } from './programme-conforme.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -283,54 +290,49 @@ if (safeStat(grandOralDir)) {
   }
 }
 
-// --- Terminale : programme officiel de chaque matière (référentiel) ---
-// Schéma, identifiants uniques et préfixe de la matière, puis texte exact du Bulletin
-// officiel (scripts/programme-conforme.mjs).
-const prefixesProgramme = { maths: ['bo-m-'], 'physique-chimie': ['bo-pc-', 'bo-pc1-'] };
-const programmeLigne = ajv.compile(readSchema(join('terminale', 'programme.schema.json')));
+// --- Chapitres de terminale (maths, physique-chimie) ---
+// Schémas propres (schemas/terminale/, instance Ajv à part : l'identifiant
+// figure.schema.json est déjà pris par la première) puis intégrité : renvois,
+// doublons, totaux de points. La couverture du programme, elle, se contrôle chapitre
+// par chapitre avec scripts/couverture-terminale.mjs.
+const matieresTerminale = lireRacine(join(root, 'content', 'terminale'));
+if (matieresTerminale.length > 0) {
+  const validateursTerminale = compilerSchemas();
+  const problemesTerminale = [];
+  for (const matiere of matieresTerminale) {
+    problemesTerminale.push(...matiere.problemes);
+    const resultat = validerSchemas(matiere, validateursTerminale);
+    total += resultat.total;
+    problemesTerminale.push(...resultat.problemes);
+  }
+  problemesTerminale.push(...controlerIntegrite(matieresTerminale));
+  invalid += problemesTerminale.length;
+  for (const p of problemesTerminale) {
+    problems.push({ file: p.fichier, message: `${p.id ? `[${p.id}] ` : ''}${p.message}` });
+  }
+}
+
+// --- Terminale : texte exact des programmes officiels ---
+// Chaque ligne de programme.json reprend mot pour mot le texte du Bulletin officiel
+// enregistré dans le référentiel de la matière (scripts/programme-conforme.mjs).
 for (const matiere of matieresAvecProgramme()) {
   const filePath = join(root, 'content', 'terminale', matiere, 'programme.json');
-  let data;
+  let resultat;
   try {
-    data = JSON.parse(readFileSync(filePath, 'utf8'));
+    resultat = verifierProgramme(matiere);
   } catch (err) {
     invalid += 1;
-    problems.push({ file: filePath, message: `JSON invalide : ${err.message}` });
+    problems.push({ file: filePath, message: `contrôle du texte officiel impossible : ${err.message}` });
     continue;
   }
-  if (!Array.isArray(data)) {
+  if (resultat.texteManquant) {
     invalid += 1;
-    problems.push({ file: filePath, message: `Le fichier doit contenir un tableau (reçu ${typeof data}).` });
-    continue;
+    problems.push({
+      file: filePath,
+      message: 'texte officiel non enregistré (texte-officiel/programme*.txt du référentiel)',
+    });
   }
-  const seenIds = new Set();
-  const prefixes = prefixesProgramme[matiere];
-  data.forEach((item, idx) => {
-    total += 1;
-    const id = item?.id ?? `<sans id, index ${idx}>`;
-    const errors = [];
-    if (!programmeLigne(item)) {
-      errors.push(
-        ...(programmeLigne.errors ?? []).map(
-          (e) => `${e.instancePath || '<root>'} ${e.message ?? '?'}`
-        )
-      );
-    }
-    if (seenIds.has(id)) errors.push(`identifiant en double : ${id}`);
-    seenIds.add(id);
-    if (prefixes && !prefixes.some((p) => String(id).startsWith(p))) {
-      errors.push(`préfixe attendu pour ${matiere} : ${prefixes.join(' ou ')}`);
-    }
-    if (errors.length === 0) return;
-    invalid += 1;
-    problems.push({ file: filePath, message: `[${id}] ${errors.join(' ; ')}` });
-  });
-  const { ecarts, texteManquant } = verifierProgramme(matiere);
-  if (texteManquant) {
-    invalid += 1;
-    problems.push({ file: filePath, message: 'texte officiel non enregistré (texte-officiel/programme*.txt du référentiel)' });
-  }
-  for (const e of ecarts) {
+  for (const e of resultat.ecarts) {
     invalid += 1;
     problems.push({ file: filePath, message: `[${e.id}] ${e.message}` });
   }

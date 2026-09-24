@@ -1,67 +1,44 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "terminale/programme.schema.json",
-  "title": "Ligne du programme officiel (terminale)",
-  "description": "Une ligne du programme d'une matière de terminale, avec le texte exact du Bulletin officiel (charte terminale § 3.1). Fichier : content/terminale/<matiere>/programme.json (tableau de lignes). Le texte est contrôlé mot à mot contre le texte officiel par scripts/programme-conforme.mjs.",
+  "title": "Ligne du programme de terminale",
+  "description": "Une entrée de content/terminale/<matiere>/programme.json (tableau) : une ligne du programme officiel, texte exact du Bulletin officiel (charte § 3.1). Tout contenu de terminale cite ces identifiants (capacites).",
   "type": "object",
-  "required": ["id", "chapitre", "partie", "section", "rubrique", "exigible", "texte", "premiere"],
+  "required": ["id", "partie", "section", "rubrique", "exigible", "texte", "premiere"],
   "additionalProperties": false,
   "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^bo-(m|pc|pc1)-[a-z0-9]+(-[a-z0-9]+)*-[0-9]{2,3}$",
-      "description": "Identifiant stable (jamais renommé). bo-m- : maths ; bo-pc- : physique-chimie ; bo-pc1- : acquis de première de physique-chimie. Ex : bo-m-suites-07"
-    },
+    "id": { "$ref": "commun.schema.json#/$defs/capacite" },
     "chapitre": {
-      "type": "string",
-      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
-      "description": "Slug du chapitre de l'année qui porte la ligne, ou methodes-<matiere> (chapitre transverse)."
+      "$ref": "commun.schema.json#/$defs/slug",
+      "description": "Slug du chapitre de la ligne, ou methodes-<matiere> (chapitre transverse, § 2.1). Facultatif pour un acquis de première."
     },
-    "partie": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Grande partie du programme, telle que le Bulletin officiel la nomme (ex. « Analyse »)."
-    },
-    "section": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Section du programme, telle que le Bulletin officiel la nomme (ex. « Suites »)."
-    },
+    "partie": { "type": "string", "minLength": 1, "description": "Partie du programme. Ex. : Analyse." },
+    "section": { "type": "string", "minLength": 1, "description": "Section du programme. Ex. : Suites." },
     "rubrique": {
       "type": "string",
-      "enum": [
-        "contenu",
-        "capacite",
-        "demonstration",
-        "algorithme",
-        "experimentale",
-        "numerique",
-        "mathematique",
-        "approfondissement"
-      ],
-      "description": "Rubrique du programme d'où vient la ligne : contenus, capacités attendues, démonstrations, exemples d'algorithme, capacités expérimentales, numériques ou mathématiques, approfondissements possibles."
+      "enum": ["contenu", "capacite", "demonstration", "algorithme", "experimentale", "numerique", "mathematique", "approfondissement"]
     },
     "exigible": {
       "type": "boolean",
-      "description": "false pour ce que le programme présente comme non exigible (approfondissements possibles) : jamais exigé par la couverture."
+      "description": "false pour ce que le programme présente comme non exigible (approfondissements possibles, commentaires) : jamais exigé par la couverture, cité seulement par un bloc complement ou un exercice de marche 3."
     },
-    "texte": {
-      "type": "string",
-      "minLength": 3,
-      "description": "Texte exact du Bulletin officiel, jamais reformulé ; les expressions mathématiques en LaTeX KaTeX ($…$)."
-    },
+    "texte": { "type": "string", "minLength": 1, "description": "Texte exact du Bulletin officiel, jamais reformulé." },
     "premiere": {
       "type": "boolean",
-      "description": "true pour un acquis de première mobilisable (bo-pc1-…) : jamais exigé par la couverture, cité par les blocs « rappel »."
+      "description": "true pour un acquis de première mobilisable (bo-pc1-…) : jamais exigé par la couverture, cité par les blocs rappel."
     }
   },
   "allOf": [
     {
-      "if": { "properties": { "rubrique": { "const": "approfondissement" } } },
+      "if": { "properties": { "rubrique": { "const": "approfondissement" } }, "required": ["rubrique"] },
       "then": { "properties": { "exigible": { "const": false } } }
     },
     {
-      "if": { "properties": { "premiere": { "const": true } } },
+      "if": { "properties": { "premiere": { "const": false } }, "required": ["premiere"] },
+      "then": { "required": ["chapitre"], "properties": { "id": { "not": { "pattern": "^bo-pc1-" } } } }
+    },
+    {
+      "if": { "properties": { "premiere": { "const": true } }, "required": ["premiere"] },
       "then": { "properties": { "id": { "pattern": "^bo-pc1-" } } }
     }
   ]

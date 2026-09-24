@@ -1,0 +1,229 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "terminale/commun.schema.json",
+  "title": "Terminale — définitions partagées",
+  "description": "Briques communes aux schémas de terminale (charte terminale-charte § 3) : identifiants, code, réponses vérifiables (§ 3.6), source d'un exercice adapté (§ 3.7). Aucun fichier de contenu ne se valide directement contre ce schéma ; les autres y renvoient par $ref.",
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Slug de chapitre : kebab-case, sans accent, unique entre les matières (charte § 2)."
+    },
+    "matiere": {
+      "type": "string",
+      "enum": ["maths", "physique-chimie"]
+    },
+    "capacite": {
+      "type": "string",
+      "pattern": "^bo-(m|pc|pc1)-[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Identifiant d'une ligne du programme (programme.json) : bo-m- (maths), bo-pc- (physique-chimie), bo-pc1- (acquis de première de physique-chimie)."
+    },
+    "capacites": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/capacite" },
+      "description": "Lignes du programme travaillées (règle d'or 2)."
+    },
+    "idNotion": {
+      "type": "string",
+      "pattern": "^n-[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "n-<chapitre>-<slug> (charte § 2.2)."
+    },
+    "idBloc": {
+      "type": "string",
+      "pattern": "^l-[a-z0-9]+(-[a-z0-9]+)*-[0-9]{3}$",
+      "description": "l-<chapitre>-<num3> (charte § 2.2)."
+    },
+    "idAnnale": {
+      "type": "string",
+      "pattern": "^an-[0-9]{4}-[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "an-<année>-<lieu>[-…] (charte § 2.2)."
+    },
+    "idQuestion": {
+      "type": "string",
+      "pattern": "^q[0-9]+[a-z]?$",
+      "description": "q<n>[a-z]? : q1, q3b (charte § 2.2)."
+    },
+    "lienCours": {
+      "type": "string",
+      "pattern": "^(n-[a-z0-9]+(-[a-z0-9]+)*|l-[a-z0-9]+(-[a-z0-9]+)*-[0-9]{3}|1e:[a-z0-9]+(-[a-z0-9]+)*)$",
+      "description": "Renvoi typé, que les pages traduisent en adresse : une notion (n-…), un bloc de cours (l-…) — du chapitre « Méthodes » compris — ou un chapitre de maths de première (1e:<slug>, vers /premiere/maths/<slug>)."
+    },
+    "texte": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Texte rendu par TextWithMath : paragraphes, **gras**, listes à tirets, tableaux, LaTeX KaTeX ($…$, $$…$$). Ni titre #, ni italique, ni code (charte § 3)."
+    },
+    "code": {
+      "type": "object",
+      "required": ["langage", "source"],
+      "additionalProperties": false,
+      "description": "Programme affiché en chasse fixe, jamais interprété comme du texte (charte § 3).",
+      "properties": {
+        "langage": { "type": "string", "enum": ["python"] },
+        "source": { "type": "string", "minLength": 1 }
+      }
+    },
+    "etape": {
+      "type": "object",
+      "required": ["texte"],
+      "additionalProperties": false,
+      "description": "Étape d'un exemple ou d'une démonstration, dévoilée une à une.",
+      "properties": {
+        "texte": { "$ref": "#/$defs/texte" },
+        "pourquoi": { "$ref": "#/$defs/texte" }
+      }
+    },
+    "reponseQcm": {
+      "type": "object",
+      "required": ["type", "choix", "bonne"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "qcm" },
+        "choix": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": { "$ref": "#/$defs/texte" }
+        },
+        "bonne": { "type": "integer", "minimum": 0, "description": "Index (à partir de 0) du bon choix." },
+        "pourquoiFaux": {
+          "type": "array",
+          "items": { "type": ["string", "null"] },
+          "description": "Un message par choix, dans l'ordre des choix ; null pour le bon."
+        }
+      }
+    },
+    "reponseQcmMultiple": {
+      "type": "object",
+      "required": ["type", "choix", "bonnes"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "qcm-multiple" },
+        "choix": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": { "$ref": "#/$defs/texte" }
+        },
+        "bonnes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "integer", "minimum": 0 },
+          "description": "Index (à partir de 0) des bons choix."
+        }
+      }
+    },
+    "reponseVraiFaux": {
+      "type": "object",
+      "required": ["type", "valeur", "justification"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "vrai-faux" },
+        "valeur": { "type": "boolean" },
+        "justification": { "$ref": "#/$defs/texte" }
+      }
+    },
+    "reponseNumerique": {
+      "type": "object",
+      "required": ["type", "valeur"],
+      "additionalProperties": false,
+      "description": "Une tolérance, absolue (tolerance) ou relative (toleranceRelative), jamais les deux. unite : obligatoire en physique-chimie si la grandeur en a une (vérifié par le relecteur).",
+      "properties": {
+        "type": { "const": "numerique" },
+        "valeur": {
+          "oneOf": [
+            { "type": "number" },
+            { "type": "string", "pattern": "^-?[0-9]+/[0-9]+$", "description": "Fraction « a/b »." }
+          ]
+        },
+        "tolerance": { "type": "number", "minimum": 0 },
+        "toleranceRelative": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+        "unite": { "type": "string", "minLength": 1, "description": "Unité attendue, en LaTeX ou en texte (ex. : \\mathrm{m\\,s^{-1}})." },
+        "chiffresSignificatifs": { "type": "integer", "minimum": 1, "maximum": 6 }
+      },
+      "oneOf": [
+        { "required": ["tolerance"] },
+        { "required": ["toleranceRelative"] }
+      ]
+    },
+    "reponseOrdre": {
+      "type": "object",
+      "required": ["type", "elements"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "ordre" },
+        "elements": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/texte" },
+          "description": "Dans le bon ordre ; mélangés à l'affichage."
+        }
+      }
+    },
+    "reponseRedaction": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "description": "Pas de contrôle automatique : l'élève compare à la solution et se note (réussi, à moitié, raté).",
+      "properties": {
+        "type": { "const": "redaction" }
+      }
+    },
+    "reponseVerifiable": {
+      "type": "object",
+      "required": ["type"],
+      "description": "Réponse contrôlée automatiquement (tout sauf redaction) : blocs « vérifie », questions éclair, marche 1.",
+      "properties": {
+        "type": { "enum": ["qcm", "qcm-multiple", "vrai-faux", "numerique", "ordre"] }
+      },
+      "allOf": [
+        { "if": { "required": ["type"], "properties": { "type": { "const": "qcm" } } }, "then": { "$ref": "#/$defs/reponseQcm" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "qcm-multiple" } } }, "then": { "$ref": "#/$defs/reponseQcmMultiple" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "vrai-faux" } } }, "then": { "$ref": "#/$defs/reponseVraiFaux" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "numerique" } } }, "then": { "$ref": "#/$defs/reponseNumerique" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "ordre" } } }, "then": { "$ref": "#/$defs/reponseOrdre" } }
+      ]
+    },
+    "reponse": {
+      "type": "object",
+      "required": ["type"],
+      "description": "Réponse d'une question d'exercice (charte § 3.6).",
+      "properties": {
+        "type": { "enum": ["qcm", "qcm-multiple", "vrai-faux", "numerique", "ordre", "redaction"] }
+      },
+      "allOf": [
+        { "if": { "required": ["type"], "properties": { "type": { "const": "redaction" } } }, "then": { "$ref": "#/$defs/reponseRedaction" }, "else": { "$ref": "#/$defs/reponseVerifiable" } }
+      ]
+    },
+    "questionVerifiable": {
+      "type": "object",
+      "required": ["enonce", "reponse", "explication"],
+      "additionalProperties": false,
+      "description": "Question d'un bloc « vérifie » (charte § 3.6) : énoncé, réponse contrôlée, explication.",
+      "properties": {
+        "enonce": { "$ref": "#/$defs/texte" },
+        "code": { "$ref": "#/$defs/code" },
+        "reponse": { "$ref": "#/$defs/reponseVerifiable" },
+        "explication": { "$ref": "#/$defs/texte" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["adaptation"],
+      "additionalProperties": false,
+      "description": "Exercice adapté d'un vrai sujet (charte § 3.7) : annale quand l'index existe, sinon url du sujet officiel ; l'un des deux au moins.",
+      "properties": {
+        "annale": { "$ref": "#/$defs/idAnnale" },
+        "url": { "type": "string", "pattern": "^https://" },
+        "adaptation": { "type": "string", "minLength": 3, "description": "Ce qui a changé. Ex. : « données modifiées »." }
+      },
+      "anyOf": [
+        { "required": ["annale"] },
+        { "required": ["url"] }
+      ]
+    }
+  }
+}
