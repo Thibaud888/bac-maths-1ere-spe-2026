@@ -138,7 +138,7 @@
   Relu en captures (accueil, le bac, simulateur, formulaire, exercices, bac blanc, grand oral,
   fiches de français, sélecteur sur ordinateur et téléphone).
   `node scripts/verify.mjs` OK, 177 tests (169 + 8). PR : #83.
-- [ ] Laisser les sessions ouvrir le site du ministère — le 2026-09-23, le réseau de la session
+- [x] Laisser les sessions ouvrir le site du ministère — le 2026-09-23, le réseau de la session
   a refusé `www.education.gouv.fr` (proxy : CONNECT refusé, politique de l'environnement) ;
   la page « Exposé » a dû être vérifiée sur les extraits relevés par la vérification (#76).
   À faire par Thibaud (en cours depuis le 2026-09-24) : menu de l'environnement dans la
@@ -158,6 +158,9 @@
   `apmep.fr` répond aussi. Contournement utilisé : le PDF du Bulletin entier (sommaire →
   numéro de page). Refusés par la politique réseau : `enseignementsup-recherche.gouv.fr`,
   sites d'académie (`ac-*.fr`).
+  Clos au bilan du 2026-09-24 : le but (lire les textes officiels depuis une session) est
+  atteint par les PDF ; la page HTML de la DoD reste refusée par le site, sans remède côté
+  environnement. Textes de lancement à jour : `chantiers/terminale/reprise-phase-1.md`.
 - [ ] Décider s'il faut un référentiel du grand oral avant d'ajouter d'autres conseils —
   CLAUDE.md § 4.3 : si le contenu « méthode » du grand oral prend de l'ampleur, écrire d'abord
   un skill « grand oral » et repasser au workflow 2 passes. Depuis #81, trois pages de méthode
