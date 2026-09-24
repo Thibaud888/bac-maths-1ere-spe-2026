@@ -165,6 +165,7 @@
   `docs/sources-officielles.md` — sujets de bac via APMEP / Labolycée, textes réglementaires
   sur le PDF officiel, sinon fournis par Thibaud (texte collé ou PDF dans
   `docs/textes-officiels/`) ; renvois dans CLAUDE.md § 0, MAP.md, `annales-indexeur`.
+  `node scripts/verify.mjs` OK. PR : #89.
 - [ ] Décider s'il faut un référentiel du grand oral avant d'ajouter d'autres conseils —
   CLAUDE.md § 4.3 : si le contenu « méthode » du grand oral prend de l'ampleur, écrire d'abord
   un skill « grand oral » et repasser au workflow 2 passes. Depuis #81, trois pages de méthode
