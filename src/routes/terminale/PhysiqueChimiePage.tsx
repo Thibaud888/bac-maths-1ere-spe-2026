@@ -5,23 +5,31 @@ export default function PhysiqueChimiePage() {
     <EmptyState
       accent="violet"
       title="Physique-chimie — spécialité, terminale"
-      lead="Même principe qu’en maths, avec une différence : les automatismes laissent la place aux méthodes-types, qui sont le vrai enjeu de l’épreuve."
+      lead="Même chemin qu’en maths, du cours à l’épreuve. Unités, chiffres significatifs et démarche expérimentale y tiennent une place à part."
       planned={[
         {
-          label: 'Formulaire',
-          description: 'Relations, unités et constantes, regroupées par thème.',
+          label: 'Aperçu',
+          description: 'Les notions du chapitre, les incontournables en tête, et où tu en es.',
         },
         {
-          label: 'Méthodes',
-          description: 'Les démarches qui reviennent : bilan d’énergie, dosage, cinétique…',
+          label: 'Cours',
+          description: 'Notion par notion : l’idée, la loi, des exemples pas à pas, les expériences.',
         },
         {
           label: 'Exercices',
-          description: 'Applications directes, avec correction progressive.',
+          description: 'Trois marches : comprendre, s’entraîner, approfondir — avec indices.',
         },
         {
           label: 'Type bac',
-          description: 'Exercices longs au format de l’épreuve écrite.',
+          description: 'Exercices avec documents, au format de l’écrit, barème compris.',
+        },
+        {
+          label: 'Mémo',
+          description: 'Relations, unités et méthodes à garder sous les yeux, et questions éclair.',
+        },
+        {
+          label: 'Épreuve pratique',
+          description: 'Les capacités expérimentales, les protocoles et les incertitudes.',
         },
       ]}
     />

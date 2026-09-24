@@ -5,23 +5,27 @@ export default function TerminaleMathsPage() {
     <EmptyState
       accent="blue"
       title="Maths — spécialité, terminale"
-      lead="Comme en première : on choisit un chapitre, puis un mode de travail. Les chapitres apparaîtront dans le menu au fur et à mesure."
+      lead="Chaque chapitre se suit de bout en bout : apprendre le cours, s’entraîner par marches, puis préparer l’épreuve. Les notions qui tombent le plus souvent au bac passent devant."
       planned={[
         {
-          label: 'Formulaire',
-          description: 'Les formules et théorèmes du chapitre, en cartes de référence.',
+          label: 'Aperçu',
+          description: 'Les notions du chapitre, les incontournables en tête, et où tu en es.',
         },
         {
-          label: 'Automatismes',
-          description: 'Questions rapides à traiter de tête, pour ancrer les réflexes.',
+          label: 'Cours',
+          description: 'Notion par notion : l’idée, la règle, des exemples pas à pas, les pièges.',
         },
         {
-          label: 'Classiques',
-          description: 'Applications directes du cours, avec correction progressive.',
+          label: 'Exercices',
+          description: 'Trois marches : comprendre, s’entraîner, approfondir — avec indices.',
         },
         {
           label: 'Type bac',
-          description: 'Exercices multi-questions au format de l’épreuve écrite.',
+          description: 'Exercices au format de l’épreuve, avec barème et attentes du correcteur.',
+        },
+        {
+          label: 'Mémo',
+          description: 'Formules et méthodes à garder sous les yeux, et questions éclair.',
         },
       ]}
     />

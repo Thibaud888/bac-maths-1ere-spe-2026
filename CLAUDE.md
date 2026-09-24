@@ -36,8 +36,8 @@ baccalauréat (session 2027) : la **première** (2025-2026, épreuves anticipée
 
 | Année | Espace | Route | État |
 |---|---|---|---|
-| Terminale | Maths — spécialité | `/terminale/maths` | à remplir |
-| Terminale | Physique-chimie — spécialité | `/terminale/physique-chimie` | à remplir |
+| Terminale | Maths — spécialité | `/terminale/maths` | cadré (§ 14), à remplir |
+| Terminale | Physique-chimie — spécialité | `/terminale/physique-chimie` | cadré (§ 14), à remplir |
 | Terminale | Grand oral | `/terminale/grand-oral` | rempli (« Mes 2 questions » : cadre à remplir par l'élève) |
 | Première | Maths — spécialité (EAM) | `/premiere/maths` | complet |
 | Première | Français (EAF écrit + oral) | `/premiere/francais` | complet |
@@ -56,7 +56,9 @@ Deux outils transverses, hors année : le **simulateur de moyenne** (`/simulateu
 notes, voir bouger moyenne et mention) et **le bac, mode d'emploi** (`/le-bac` — contrôle
 continu, coefficients, calendrier, mentions). Tous deux lisent `content/bac/` (§ 4.2).
 
-### 1.2 Modes de travail (maths)
+### 1.2 Modes de travail (maths de première)
+
+La terminale a sa propre structure (cours, trois marches d'exercices, type bac, mémo) : § 14.
 
 - **Formulaire** : cartes de référence par chapitre
 - **Automatismes** : QCM rapides (Partie 1 de l'EAM, 6 points)
@@ -87,7 +89,7 @@ Le fichier **`.claude/skills/bac-maths-premiere-spe-2026/SKILL.md`** est la **so
 | Géométrie | JSXGraph, **lazy-loaded** uniquement dans les composants qui l'utilisent |
 | Routing | React Router v6 |
 | État | **Zustand** |
-| Persistance | LocalStorage — un préfixe par volet : `bms-2026-` (maths), `bfr-2026-` (français), `btl-2027-` (simulateur de moyenne), `bgo-2027-` (grand oral). Jamais croisés. |
+| Persistance | LocalStorage — un préfixe par volet : `bms-2026-` (maths), `bfr-2026-` (français), `btl-2027-` (simulateur de moyenne), `bgo-2027-` (grand oral), `btm-2027-` / `bpc-2027-` (maths / physique-chimie de terminale, à venir). Jamais croisés. |
 | Validation JSON | **Ajv** contre les schémas dans `schemas/` |
 | Tests | Vitest (logique) + Playwright (runners critiques) |
 | CI/CD | GitHub Actions → GitHub Pages |
@@ -280,6 +282,7 @@ En cas de problème détecté, le reviewer renvoie un rapport ; le author corrig
 
 - `/new-chapter <slug>` : scaffolding d'un nouveau chapitre (5 fichiers JSON vides + meta)
 - `/verify-conformity` : passe l'ensemble du contenu au crible (schémas + reviewer pédagogique)
+- `/tle-chapitre <matiere> <slug> [cours|exercices|tout]` : produit un chapitre de terminale avec les agents `tle-*` (§ 14)
 
 ## 9. Règles d'or pour le contenu pédagogique
 
@@ -316,7 +319,7 @@ Chaque phase se termine par un commit `git` propre et un build qui passe.
 
 - ❌ Générer un fichier JSON sans passer par les 2 sub-agents
 - ❌ Inventer des notations non conformes au BO
-- ❌ Inclure des notions de terminale (ln, intégrale, récurrence formelle, etc.)
+- ❌ Inclure des notions de terminale (ln, intégrale, récurrence formelle, etc.) dans le contenu de **première**
 - ❌ Proposer des exercices nécessitant une calculatrice
 - ❌ Mélanger CSS custom et Tailwind sans nécessité
 - ❌ Utiliser MathJax au lieu de KaTeX
@@ -442,3 +445,45 @@ Le **`french-reviewer`** effectue 7 passes dont **5 BLOQUANTES** :
 4. Routes maths (`/premiere/maths/*`, dont `/premiere/maths/bac-blanc`) inchangées, et les
    anciennes (`/chapitre/*`, `/bac-blanc`) toujours redirigées.
 5. LocalStorage maths `bms-2026-app` / `bms-2026-progress` **intactes**.
+
+---
+
+## 14. Terminale — maths et physique-chimie
+
+Cadré le 2026-09-24 (aucun contenu écrit ce jour-là). Trois documents, à lire dans cet ordre :
+
+1. `chantiers/terminale/README.md` — **le plan directeur** : ce que l'élève doit trouver,
+   structure des pages, priorités, feuille de route. Découpage proposé dans
+   `chantiers/terminale/chapitres-maths.md` et `chapitres-physique-chimie.md`.
+2. `.claude/skills/terminale-charte/SKILL.md` — **la charte de construction**, normative :
+   format des données, écriture du cours, marches d'exercices, priorités et quotas,
+   rattachement au programme, règles des pages, définition de « chapitre fini ».
+3. Le **référentiel de la matière** : `.claude/skills/bac-<matiere>-terminale-2027/SKILL.md`
+   + `content/terminale/<matiere>/programme.json` (texte exact du programme, une ligne = un
+   identifiant `bo-…`). **Pas encore écrit : premier item de la feuille de route. Aucun
+   contenu de terminale sans lui.**
+
+Ce qui diffère de la première :
+
+- **Toute l'année, pas seulement la révision** : chaque chapitre a cinq onglets — Aperçu,
+  Cours, Exercices (marches *Comprendre*, *S'entraîner*, *Approfondir*), Type bac, Mémo.
+- **La notion est l'unité** : priorité bac (3 incontournable, 2 fréquent, 1 plus rare,
+  mesurée sur les annales, sinon estimée et affichée comme telle), progression, couverture.
+- **Tout item cite ses lignes du programme** (`capacites`) ; un script de couverture refuse
+  l'inconnu et signale le non-couvert.
+- **Calculatrice autorisée** au bac de terminale : la règle « sans calculatrice » du § 9 ne
+  vaut que pour la première ; chaque exercice de terminale dit si elle sert.
+- **Schémas propres** (`schemas/terminale/`) ; ceux de première ne changent pas. Stockage
+  local : `btm-2027-` (maths), `bpc-2027-` (physique-chimie).
+
+Workflow obligatoire (remplace, pour la terminale, les 2 passes du § 7) :
+
+```
+tle-architecte → tle-auteur-cours → tle-auteur-exercices + tle-auteur-bac
+      → tle-relecteur (bloquant, recalcule tout) → tle-eleve-testeur (clarté) → scripts → PR
+```
+
+Procédure : `/tle-chapitre`. `annales-indexeur` alimente `annales.json` (mesure des
+priorités, « ce que le bac demande »). Un chapitre = deux items de backlog par défaut
+(« le cours », puis « les exercices »).
+

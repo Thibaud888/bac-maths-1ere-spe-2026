@@ -7,7 +7,8 @@
 Application de révision du bac couvrant **la première et la terminale**. Les textes restent
 généraux : ni élève, ni année, ni matière dans les titres ; le barème du bac (`content/bac/`)
 suit un profil pris **en exemple**. Cinq espaces (année × matière) + deux outils transverses :
-- Terminale : `/terminale/maths`, `/terminale/physique-chimie` (pages créées, contenu à venir),
+- Terminale : `/terminale/maths`, `/terminale/physique-chimie` (pages vides ; structure et méthode
+  cadrées dans `chantiers/terminale/` + charte `terminale-charte`, contenu à venir),
   `/terminale/grand-oral` (l'épreuve, préparation, exposé, entretien, oral blanc minuté ; « Mes 2
   questions » = cadre rempli par l'élève)
 - Première : `/premiere/maths` (EAM, 4 modes + bac blanc), `/premiere/francais` (EAF écrit + oral
@@ -24,10 +25,17 @@ CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-
   skills/
     bac-maths-premiere-spe-2026/SKILL.md  # programme officiel maths (source de vérité)
     bac-francais-premiere-2026/SKILL.md   # cadre EAF français (source de vérité)
+    terminale-charte/SKILL.md   # CHARTE de construction de la terminale (données, cours,
+                          # marches d'exercices, priorités, quotas, pages, circuit)
     bilan/  handoff/  reprends/SKILL.md   # rituel fin/transition de session (fleet-kit)
   agents/               # chapter-author, pedagogical-reviewer (+ équivalents français)
-  commands/             # /new-chapter, /verify-conformity, /new-module-francais, /verify-francais
+                        # tle-* : architecte, auteur-cours, auteur-exercices, auteur-bac,
+                        # relecteur, eleve-testeur (terminale) + annales-indexeur
+  commands/             # /new-chapter, /verify-conformity, /new-module-francais, /verify-francais,
+                        # /tle-chapitre (un chapitre de terminale de bout en bout)
   figures-courbes-roadmap.md   # réserve de travail : figures/lecture graphique par chapitre
+chantiers/terminale/    # PLAN DIRECTEUR de la terminale (README) + découpage proposé des
+                        # chapitres (chapitres-maths.md, chapitres-physique-chimie.md)
 schemas/                # JSON Schema Ajv (maths à la racine, francais/, bac/, grand-oral/)
 content/
   chapters/<slug>/      # maths : meta, formulas, automatisms, classics, exam-style (JSON)
@@ -77,6 +85,10 @@ tests/                  # Vitest ; Playwright pour les runners critiques
 ## Points d'entrée
 - **Nouveau contenu maths** : `/new-chapter <slug>` puis workflow 2 passes
   (chapter-author → pedagogical-reviewer). JAMAIS de JSON pédagogique sans les 2 passes.
+- **Terminale (maths, physique-chimie)** : lire `chantiers/terminale/README.md` puis la charte
+  `.claude/skills/terminale-charte/SKILL.md` ; un chapitre = `/tle-chapitre <matiere> <slug>`
+  (agents `tle-*`). Rien sans le référentiel de la matière (`bac-<matiere>-terminale-2027`,
+  pas encore écrit).
 - **Nouveau contenu français** : `/new-module-francais`, mêmes règles (french-reviewer, 5 passes bloquantes).
 - **Ajouter une matière / un espace** : une entrée dans `SPACES` (`src/lib/spaces.ts`) + ses
   routes dans `App.tsx` ; la barre latérale et l'accueil se mettent à jour seuls.
@@ -128,3 +140,5 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
   doit répondre « Aucun fait modifié ».
 - Pas d'année (« 2027 »), d'élève (« pour lui ») ni de phrase d'accroche dans les titres et
   chapeaux de page ; une date n'apparaît que là où elle est un fait (calendrier, épreuves).
+- Terminale : calculatrice autorisée (la règle « sans calculatrice » est celle de la première) ;
+  tout item cite ses lignes du programme (`capacites`) ; les schémas de première ne bougent pas.
