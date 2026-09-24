@@ -141,10 +141,14 @@
 - [ ] Laisser les sessions ouvrir le site du ministère — le 2026-09-23, le réseau de la session
   a refusé `www.education.gouv.fr` (proxy : CONNECT refusé, politique de l'environnement) ;
   la page « Exposé » a dû être vérifiée sur les extraits relevés par la vérification (#76).
-  À faire par Thibaud : ajouter `www.education.gouv.fr` (et, pour les mêmes raisons,
-  `eduscol.education.gouv.fr`, `www.legifrance.gouv.fr`) aux domaines autorisés de
-  l'environnement cloud (menu de l'environnement dans la barre de titre → Edit → accès
-  réseau). DoD : une session ouvre `https://www.education.gouv.fr/bo/2026/Special4/MENE2622694N`.
+  À faire par Thibaud (en cours depuis le 2026-09-24) : menu de l'environnement dans la
+  barre de titre → Edit → accès réseau → **Personnalisé**, cocher la case qui garde la liste
+  par défaut (« Also include default list of common package managers ») pour conserver les
+  sites de confiance, puis une adresse par ligne : `*.education.gouv.fr` (ministère et
+  éduscol), `*.legifrance.gouv.fr`, `*.apmep.fr` et `*.labolycee.org` (sujets de bac passés
+  de maths et de physique-chimie). La recherche web marche déjà sans ce réglage ; c'est
+  l'ouverture des pages qui était bloquée. Le réglage vaut pour les **nouvelles** sessions.
+  DoD : une session ouvre `https://www.education.gouv.fr/bo/2026/Special4/MENE2622694N`.
 - [ ] Décider s'il faut un référentiel du grand oral avant d'ajouter d'autres conseils —
   CLAUDE.md § 4.3 : si le contenu « méthode » du grand oral prend de l'ampleur, écrire d'abord
   un skill « grand oral » et repasser au workflow 2 passes. Depuis #81, trois pages de méthode
@@ -156,14 +160,6 @@
   l'adresse du site change (`…github.io/revisions-bac/`) et les anciens favoris ne suivent pas.
   Ensuite : remplacer l'ancien nom dans README, MAP, CLAUDE, `package.json`,
   `playwright.config.ts`. DoD : site en ligne à la nouvelle adresse.
-- [ ] Découper le programme de maths de terminale en chapitres — la liste des chapitres et leur
-  ordre, avant toute écriture de contenu ; crée `content/terminale/maths/<slug>/` et alimente
-  `sections()` de l'espace `tle-maths`. Nécessite un skill « programme de terminale » sur le
-  modèle de celui de première.
-  DoD : chapitres visibles dans le menu, schémas de contenu prêts.
-- [ ] Découper le programme de physique-chimie en chapitres — même travail, avec ses quatre modes
-  (formulaire, méthodes, exercices, type bac) ; le mode « méthodes » n'existe pas encore côté code.
-  DoD : chapitres visibles dans le menu, gabarit de contenu défini.
 - [x] Remplir les cinq pages du grand oral — l'épreuve, les deux questions, la préparation,
   l'entretien, l'oral blanc minuté. Le simulateur de l'oral de français sert de base pour l'oral
   blanc. Contenu réglementaire pris sur les textes officiels de la session 2027.
@@ -187,3 +183,125 @@
 - [ ] Afficher le compte à rebours des épreuves — dès que les dates officielles de la session 2027
   sont publiées (aucune date inventée en attendant) : bandeau sur l'accueil et rappel dans le menu.
   DoD : dates sourcées, affichage sur l'accueil.
+
+## Terminale : maths et physique-chimie (cadré le 2026-09-24)
+
+> Plan directeur : `chantiers/terminale/README.md` · règles : `.claude/skills/terminale-charte/SKILL.md`
+> · procédure d'un chapitre : `/tle-chapitre`. Les phases 1 et 2 peuvent tourner en parallèle.
+
+- [x] Cadrer les espaces maths et physique-chimie de terminale — ce que l'élève y trouvera
+  (cours, exercices en trois marches, type bac, mémo), comment l'important passe devant, et
+  comment les prochaines sessions les rempliront. Aucun contenu écrit.
+  Détail : plan directeur `chantiers/terminale/README.md` ; découpage proposé
+  `chantiers/terminale/chapitres-maths.md` (15 chapitres) et `chapitres-physique-chimie.md`
+  (16 chapitres), priorités estimées ; charte `.claude/skills/terminale-charte/SKILL.md`
+  (modèle de données, blocs de cours, marches, priorités 3/2/1 et quotas, couverture du
+  programme, règles des pages) ; agents `tle-architecte`, `tle-auteur-cours`,
+  `tle-auteur-exercices`, `tle-auteur-bac`, `tle-relecteur`, `tle-eleve-testeur`,
+  `annales-indexeur` ; commande `/tle-chapitre` ; CLAUDE.md § 14, MAP.md.
+  `node scripts/verify.mjs` OK. Session du 2026-09-24. PR : #85.
+
+**Phase 1 — les fondations** (dans de nouvelles sessions, après le réglage réseau ; textes à
+coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
+
+- [ ] (P1) Écrire la liste officielle de ce qu'il faut savoir en maths de terminale — référentiel :
+  skill `bac-maths-terminale-2027` (format de l'épreuve 2027 relevé dans la note de service
+  de septembre 2026, liste hors programme, notations) + `content/terminale/maths/programme.json`
+  (texte exact du BO spécial n° 8 du 25 juillet 2019, une ligne = un identifiant `bo-m-…`
+  rattaché à un chapitre ou au chapitre transverse `methodes-maths`, `exigible: false` pour
+  les approfondissements possibles) + son schéma ; relève aussi le programme évalué à
+  chaque session depuis 2021 (mars 2021-2023 : parties exclues) et tranche le logarithme
+  décimal (dans le programme de spécialité ou non). Confirme ou corrige
+  `chantiers/terminale/chapitres-maths.md`. Prérequis : accès réseau au site du ministère
+  (item plus haut). DoD : `programme.json` validé, `node scripts/verify.mjs` OK.
+- [ ] (P1) Écrire la liste officielle de ce qu'il faut savoir en physique-chimie de terminale —
+  même travail : `bac-physique-chimie-terminale-2027` + `programme.json` (`bo-pc-…`, avec
+  capacités expérimentales et numériques, et les acquis de première mobilisables `bo-pc1-…`),
+  format de l'écrit et de l'épreuve pratique. DoD : idem.
+- [ ] (P2) Mettre à jour les références officielles des épreuves de spécialité —
+  `content/bac/sources.json` : `s-spe-maths` et `s-spe-physique-chimie` pointent vers les notes
+  de 2020 ; les notes de service du BO spécial n° 4 du 17 septembre 2026 redéfinissent les
+  épreuves à partir de 2027 (physique-chimie : `MENE2622644N` ; maths : à trouver). Relire
+  `epreuves.json` sur ces textes ; `node scripts/faits-inchanges.mjs` dira ce qui bouge.
+  DoD : sources à jour, `node scripts/verify.mjs` OK.
+
+**Phase 2 — la mécanique du site**
+
+- [ ] (P1) Préparer les fichiers et les contrôles des chapitres de terminale — `schemas/terminale/*`
+  d'après la charte § 3, dont un `figure.schema.json` propre (chemins
+  `terminale/<matiere>/<slug>/<nom>`, celui de première n'accepte qu'un niveau) ; chargeur
+  `src/lib/terminale/` ; validation dans `validate-content.mjs` ;
+  `scripts/couverture-terminale.mjs <matiere> <chapitre> [--partie cours|exercices]`
+  (charte § 9.3) ; `scripts/sans-reponses.mjs` (version des exercices sans réponses pour
+  l'élève-testeur) ; chapitre-témoin dans `tests/fixtures/terminale/` (jamais dans
+  `content/`), chargé en plus par le chargeur **en développement seulement** quand
+  `VITE_TEMOIN=1`, pour que les pages puissent l'afficher. N'attend pas le référentiel.
+  DoD : `node scripts/verify.mjs` OK, nouveaux tests.
+- [ ] (P1) Construire les pages « Aperçu » et « Cours » d'un chapitre de terminale — routes
+  `/terminale/<matiere>/:slug` et `/cours`, onglets, `sections()` de `tle-maths` et
+  `tle-physique-chimie`, **une page par notion** dans le cours (`/cours/<notion>`, sommaire
+  des notions, précédente / suivante — charte § 11), rendu de chaque type de bloc
+  (charte § 4.2) sur `PageLongue`, dont
+  les blocs de code en chasse fixe (jamais passés par le rendu du texte), étiquette de
+  priorité, progression par notion (`btm-2027-`, `bpc-2027-`), accueil de la matière, page
+  `/terminale/<matiere>/methodes` (chapitre transverse). Mêmes composants pour les deux
+  matières. DoD : chapitre-témoin affiché, captures
+  relues (clair, sombre, ordinateur, téléphone), `node scripts/verify.mjs` OK.
+- [ ] (P1) Construire les pages d'entraînement : exercices, type bac, mémo — trois marches
+  filtrables par notion ; réponses vérifiables (QCM, vrai-faux, numérique avec unité, remise
+  en ordre, auto-évaluation) ; indices + « revoir le cours » ; type bac (réutilise
+  `ExamRunner`, `Timer`) ; mémo et questions éclair (`FormulaCard`, `QcmRunner`) ; états de
+  maîtrise (logique pure testée). Première inchangée. DoD : idem.
+
+**Phase 3 — les chapitres pilotes**
+
+- [ ] (P1) Écrire le premier chapitre de maths, pour valider la méthode — `/tle-chapitre maths
+  <slug>` sur le chapitre que Thibaud désigne (par défaut le premier de l'ordre proposé,
+  `recurrence-suites`), partie cours
+  puis partie exercices ; Thibaud relit, la charte est ajustée à la suite ; la session ajoute
+  ici un item par chapitre suivant. DoD : chapitre fini au sens de la charte § 9, retours de
+  Thibaud notés dans la charte.
+- [ ] (P1) Écrire le premier chapitre de physique-chimie, pour valider la méthode — même
+  chose, sur le chapitre que Thibaud désigne (par défaut `acides-bases`). DoD : idem.
+
+**Phase 4 — la production**
+
+- [ ] (P2) Écrire la page « Méthodes » de chaque matière — chapitre transverse
+  `methodes-maths` (logique, raisonnements, Python, rédaction, calculatrice) et
+  `methodes-physique-chimie` (mesure et incertitudes, chiffres significatifs, analyse
+  dimensionnelle, résolution de problème, Python) ; `/tle-chapitre <matiere> methodes-<matiere>`,
+  sans type bac (charte § 2.1). DoD : § 9.4 de la charte.
+- [ ] (P2) Écrire les chapitres suivants, un par session — dans l'ordre de la classe, deux
+  items par chapitre (« le cours », « les exercices »), ajoutés ici par les sessions pilotes ;
+  plusieurs sessions en parallèle possibles, un chapitre chacune.
+- [ ] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
+  2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
+  du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
+  publiés) → `content/terminale/maths/annales.json` (objet `{ complet, depuis, sujets }`) ;
+  `scripts/frequences-annales.mjs <matiere> <chapitre>` (par notion : sujets où au moins une
+  de ses lignes est mobilisée, sur les sujets où elle pouvait tomber — sessions de mars
+  2021-2023 limitées à leur programme ; refuse de publier tant que l'index n'est pas
+  complet) ; priorités des chapitres déjà écrits recalculées (`tle-architecte`, mode
+  `priorites`).
+  Prérequis : référentiel maths + accès aux sujets (apmep.fr ou site du ministère).
+  DoD : index complet, rapport de fréquences dans la PR.
+- [ ] (P3) Compter ce qui tombe vraiment au bac de physique-chimie — même travail.
+
+**Phase 5 — réviser et donner envie**
+
+- [ ] (P3) Faire revenir les questions au bon moment — répétition espacée des questions éclair
+  (1, 3, 7, 14, 30 jours), « tes questions du jour » sur l'accueil de la matière, « mes
+  erreurs » rejouables.
+- [ ] (P3) Réviser pour le bac en commençant par l'essentiel — page `/terminale/<matiere>/reviser` :
+  incontournables puis fréquents, tous chapitres, selon ce que l'élève maîtrise déjà.
+- [ ] (P3) Passer des sujets complets de terminale chronométrés — maths 4 h, physique-chimie
+  3 h 30 ; réutilise `BacBlancRunner` ; format pris dans le référentiel.
+- [ ] (P3) Comprendre en manipulant : figures animées — composants JSXGraph chargés à la
+  demande (suite qui converge, tangente, valeurs intermédiaires, aire sous une courbe, loi
+  binomiale ; projectile, charge d'un condensateur, courbe de titrage), appelés par le bloc
+  `anime` du cours.
+- [ ] (P3) Préparer l'épreuve pratique de physique-chimie — espace
+  `/terminale/physique-chimie/pratique` : capacités expérimentales, protocoles commentés,
+  incertitudes.
+- [ ] (P3) Imprimer le mémo d'un chapitre sur une page — feuille de style d'impression, sans
+  dépendance.
