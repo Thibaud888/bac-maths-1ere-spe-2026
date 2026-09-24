@@ -27,6 +27,10 @@ CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-
     bac-francais-premiere-2026/SKILL.md   # cadre EAF français (source de vérité)
     terminale-charte/SKILL.md   # CHARTE de construction de la terminale (données, cours,
                           # marches d'exercices, priorités, quotas, pages, circuit)
+    bac-maths-terminale-2027/   # RÉFÉRENTIEL maths de terminale : programme en vigueur,
+                          # format de l'épreuve 2027, périmètre de chaque session depuis
+                          # 2021, hors programme, notations ; texte-officiel/ = extraction
+                          # brute du BO (contrôle mot à mot) + écarts admis
     bilan/  handoff/  reprends/SKILL.md   # rituel fin/transition de session (fleet-kit)
   agents/               # chapter-author, pedagogical-reviewer (+ équivalents français)
                         # tle-* : architecte, auteur-cours, auteur-exercices, auteur-bac,
@@ -47,6 +51,8 @@ content/
                         # mentions, sources — SOURCE UNIQUE des coefficients du site
   terminale/grand-oral/ # grand oral : deroule (minutes), epreuve, preparation, expose, entretien,
                         # criteres, relances — sources prises dans content/bac/sources.json
+  terminale/maths/programme.json  # les 205 lignes du programme officiel (bo-m-…, texte
+                        # exact du BO, chapitre, rubrique, exigible)
 src/
   lib/spaces.ts         # REGISTRE DES ESPACES : années, matières, outils → toute la navigation
                         # + SITE_NAME et pageTitle() (titre de l'onglet, tiré du fil d'Ariane)
@@ -80,6 +86,8 @@ scripts/
   validate-content.mjs  validate-francais.mjs
   faits-inchanges.mjs   # garde-fou : nombres, dates, sources de content/bac/ et du grand
                         # oral, entrée par entrée, entre origin/main et l'arbre de travail
+  programme-conforme.mjs # garde-fou : chaque ligne de programme.json (terminale) reprend
+                        # mot pour mot le texte officiel (appelé par validate-content)
   couverture-terminale.mjs  # un chapitre de terminale face au programme et à la charte
                         # (§ 9.3) : écarts bloquants, avertissements, tableau des planchers
   sans-reponses.mjs     # exercices d'un chapitre sans solutions ni indices (élève-testeur)
@@ -99,8 +107,8 @@ tests/                  # Playwright pour les runners critiques (Vitest : src/**
   (chapter-author → pedagogical-reviewer). JAMAIS de JSON pédagogique sans les 2 passes.
 - **Terminale (maths, physique-chimie)** : lire `chantiers/terminale/README.md` puis la charte
   `.claude/skills/terminale-charte/SKILL.md` ; un chapitre = `/tle-chapitre <matiere> <slug>`
-  (agents `tle-*`). Rien sans le référentiel de la matière (`bac-<matiere>-terminale-2027`,
-  pas encore écrit). Contrôle d'un chapitre : `node scripts/couverture-terminale.mjs <matiere>
+  (agents `tle-*`). Rien sans le référentiel de la matière (`bac-<matiere>-terminale-2027` :
+  maths écrit, physique-chimie pas encore). Contrôle d'un chapitre : `node scripts/couverture-terminale.mjs <matiere>
   <slug> [--partie cours]`. Pages : les construire sur le chapitre-témoin (`npm run dev:temoin`).
 - **Nouveau contenu français** : `/new-module-francais`, mêmes règles (french-reviewer, 5 passes bloquantes).
 - **Ajouter une matière / un espace** : une entrée dans `SPACES` (`src/lib/spaces.ts`) + ses
@@ -156,8 +164,12 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
   doit répondre « Aucun fait modifié ».
 - Pas d'année (« 2027 »), d'élève (« pour lui ») ni de phrase d'accroche dans les titres et
   chapeaux de page ; une date n'apparaît que là où elle est un fait (calendrier, épreuves).
-- Terminale : calculatrice autorisée (la règle « sans calculatrice » est celle de la première) ;
-  tout item cite ses lignes du programme (`capacites`) ; les schémas de première ne bougent pas.
+- Terminale : calculatrice selon le sujet (chaque exercice dit si elle sert ; la règle « sans
+  calculatrice » est celle de la première) ; tout item cite ses lignes du programme
+  (`capacites`) ; les schémas de première ne bougent pas.
+- `content/terminale/maths/programme.json` = texte **exact** du Bulletin officiel : toute
+  retouche d'une ligne doit passer `node scripts/programme-conforme.mjs` (appelé par
+  `verify.mjs`) ; un identifiant `bo-m-…` publié ne change plus.
 - Terminale : le chapitre-témoin (`tests/fixtures/terminale/`) n'est jamais copié dans
   `content/` et n'entre jamais dans le site (`verify.mjs` le vérifie) ; s'il ne passe plus
   `couverture-terminale.mjs` après un changement de schéma ou de contrôle, le mettre à jour.

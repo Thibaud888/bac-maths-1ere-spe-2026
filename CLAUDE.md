@@ -324,7 +324,7 @@ Chaque phase se termine par un commit `git` propre et un build qui passe.
 - ❌ Générer un fichier JSON sans passer par les 2 sub-agents (première) ou sans le circuit `tle-*` (terminale)
 - ❌ Inventer des notations non conformes au BO
 - ❌ Inclure des notions de terminale (ln, intégrale, récurrence formelle, etc.) dans le contenu de **première**
-- ❌ Proposer des exercices nécessitant une calculatrice (première ; en terminale, elle est autorisée et signalée)
+- ❌ Proposer des exercices nécessitant une calculatrice (première ; en terminale, le sujet dit si elle est permise et chaque exercice le signale)
 - ❌ Mélanger CSS custom et Tailwind sans nécessité
 - ❌ Utiliser MathJax au lieu de KaTeX
 - ❌ Ajouter des dépendances NPM sans justification (et sans accord utilisateur)
@@ -464,8 +464,9 @@ Cadré le 2026-09-24 (aucun contenu écrit ce jour-là). Trois documents, à lir
    rattachement au programme, règles des pages, définition de « chapitre fini ».
 3. Le **référentiel de la matière** : `.claude/skills/bac-<matiere>-terminale-2027/SKILL.md`
    + `content/terminale/<matiere>/programme.json` (texte exact du programme, une ligne = un
-   identifiant `bo-…`). **Pas encore écrit : premier item de la feuille de route. Aucun
-   contenu de terminale sans lui.**
+   identifiant `bo-…`). **Maths : écrit le 2026-09-24** (`bac-maths-terminale-2027`, texte
+   contrôlé mot à mot par `node scripts/programme-conforme.mjs`). **Physique-chimie : pas
+   encore écrit. Aucun contenu d'une matière sans son référentiel.**
 
 Ce qui diffère de la première :
 
@@ -475,8 +476,10 @@ Ce qui diffère de la première :
   mesurée sur les annales, sinon estimée et affichée comme telle), progression, couverture.
 - **Tout item cite ses lignes du programme** (`capacites`) ; un script de couverture refuse
   l'inconnu et signale le non-couvert.
-- **Calculatrice autorisée** au bac de terminale : la règle « sans calculatrice » du § 9 ne
-  vaut que pour la première ; chaque exercice de terminale dit si elle sert.
+- **Calculatrice selon le sujet** au bac de terminale (maths : « Le sujet précise si l'usage
+  de la calculatrice […] est autorisé », note de service de 2026) : la règle « sans
+  calculatrice » du § 9 ne vaut que pour la première ; chaque exercice de terminale dit si
+  elle sert ou non.
 - **Schémas propres** (`schemas/terminale/`) ; ceux de première ne changent pas. Stockage
   local : `btm-2027-` (maths), `bpc-2027-` (physique-chimie).
 - **Mécanique en place** (2026-09-24) : chargeur `src/lib/terminale/`, schémas et intégrité
