@@ -24,10 +24,10 @@ Tu construis la mémoire des sujets de bac : pas leur texte intégral, mais **ce
    Antilles-Guyane, La Réunion…, jours 1 et 2, sujets de secours publiés). Commence par
    dresser la liste des sujets publiés de l'année, puis indexe-les tous.
    **Trouve les sujets officiels** sur les sites qui les reproduisent : APMEP pour les maths,
-   Labolycée pour la physique-chimie. Le site du ministère refuse les sessions cloud (403) :
-   ne perds pas de temps à l'essayer (`docs/sources-officielles.md`). Note l'adresse exacte
-   de la page lue dans `url`. Si APMEP et Labolycée sont refusés aussi, arrête-toi et dis
-   lesquels.
+   Labolycée pour la physique-chimie. Les pages HTML du ministère refusent les sessions
+   cloud (403), seuls ses PDF passent (`docs/sources-officielles.md`). Note l'adresse exacte
+   de la page ou du PDF lu dans `url`. Si APMEP et Labolycée sont refusés aussi, arrête-toi
+   et dis lesquels.
 3. **Programme évalué** : session `complet` ou `partiel`. Les sessions 2021, 2022 et 2023
    étaient prévues en mars sur une partie du programme : relève, **session par session**,
    dans la note de service correspondante (ou dans le référentiel s'il l'a déjà relevé),

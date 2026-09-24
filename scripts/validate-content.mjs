@@ -2,7 +2,8 @@
 /**
  * Valide tous les fichiers JSON de `content/chapters/*` contre les schémas Ajv,
  * ainsi que `content/bac-blanc/`, `content/bac/`, `content/terminale/grand-oral/` et les
- * chapitres de terminale (`content/terminale/<matiere>/`, schémas `schemas/terminale/`).
+ * chapitres de terminale (`content/terminale/<matiere>/`, schémas `schemas/terminale/`),
+ * dont le texte exact des programmes officiels (`scripts/programme-conforme.mjs`).
  * Usage : node scripts/validate-content.mjs
  * Exit 0 si tout est valide, 1 sinon.
  */
@@ -17,6 +18,7 @@ import {
   lireRacine,
   validerSchemas,
 } from './lib/terminale.mjs';
+import { matieresAvecProgramme, verifierProgramme } from './programme-conforme.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
@@ -307,6 +309,32 @@ if (matieresTerminale.length > 0) {
   invalid += problemesTerminale.length;
   for (const p of problemesTerminale) {
     problems.push({ file: p.fichier, message: `${p.id ? `[${p.id}] ` : ''}${p.message}` });
+  }
+}
+
+// --- Terminale : texte exact des programmes officiels ---
+// Chaque ligne de programme.json reprend mot pour mot le texte du Bulletin officiel
+// enregistré dans le référentiel de la matière (scripts/programme-conforme.mjs).
+for (const matiere of matieresAvecProgramme()) {
+  const filePath = join(root, 'content', 'terminale', matiere, 'programme.json');
+  let resultat;
+  try {
+    resultat = verifierProgramme(matiere);
+  } catch (err) {
+    invalid += 1;
+    problems.push({ file: filePath, message: `contrôle du texte officiel impossible : ${err.message}` });
+    continue;
+  }
+  if (resultat.texteManquant) {
+    invalid += 1;
+    problems.push({
+      file: filePath,
+      message: 'texte officiel non enregistré (texte-officiel/programme*.txt du référentiel)',
+    });
+  }
+  for (const e of resultat.ecarts) {
+    invalid += 1;
+    problems.push({ file: filePath, message: `[${e.id}] ${e.message}` });
   }
 }
 

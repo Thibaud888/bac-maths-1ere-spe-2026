@@ -55,8 +55,8 @@ La première est complète et sert de base, pas de moule. Ce qu'on garde, ce qu'
 | Le chapitre est l'unité | **La notion** est l'unité (3 à 7 par chapitre) | Priorité, progression et couverture se mesurent à ce grain. |
 | Priorité portée par la carte de formule (`essentiel`…) | Priorité portée par **la notion**, justifiée par les annales | Ce qui tombe au bac, pas ce qui « semble » important. |
 | Onglets par type (automatismes, classiques, type bac) | **Trois marches d'exercices** + type bac | Difficulté croissante explicite. |
-| Automatismes = partie 1 de l'épreuve | **Questions éclair** au service de la mémoire | L'épreuve de terminale n'a pas de partie automatismes (à confirmer, § 7). |
-| Sans calculatrice | **Calculatrice autorisée** (mode examen) ; chaque exercice dit si elle sert | Règle de l'épreuve de terminale. |
+| Automatismes = partie 1 de l'épreuve | **Questions éclair** au service de la mémoire | L'épreuve de terminale n'a pas de partie automatismes (confirmé en maths : quatre exercices indépendants, § 7). |
+| Sans calculatrice | **Calculatrice selon le sujet** (mode examen quand elle est permise) ; chaque exercice dit si elle sert | Maths : « Le sujet précise si l'usage de la calculatrice […] est autorisé » (note de service de 2026). |
 | Progression par item réussi | Progression **par notion** : à découvrir → découverte → comprise → maîtrisée | L'élève voit ce qu'il sait, pas ce qu'il a cliqué. |
 
 On **réutilise** sans les déplacer : `ExerciseRunner` + `HintSystem` (indices progressifs),
@@ -241,14 +241,24 @@ L'exigence la plus forte de Thibaud. Trois leviers, qui s'additionnent :
 Programme de référence : **celui de 2019** (Bulletin officiel spécial n° 8 du
 25 juillet 2019) pour les deux matières. Le nouveau programme de maths de terminale publié
 au BO du 2 avril 2026 ne s'applique qu'à la rentrée 2027 : l'élève ne le suit pas.
-(À confirmer par la session référentiel, texte en main — § 7.)
+(Confirmé pour les maths, texte en main : référentiel `bac-maths-terminale-2027` § 2.)
 
 ---
 
 ## 7. Ce qui reste à confirmer, texte officiel en main
 
 Écrit sans pouvoir ouvrir `education.gouv.fr` (bloqué par le réseau de la session). Les
-sessions « référentiel » le confirment avant tout contenu :
+sessions « référentiel » le confirment avant tout contenu.
+
+**Maths : fait le 2026-09-24**, texte officiel en main (référentiel
+`.claude/skills/bac-maths-terminale-2027/`) : programme de 2019 en vigueur en 2026-2027
+(l'arrêté du 26 février 2026 s'applique « à la rentrée scolaire 2027-2028 ») ; épreuve 2027
+définie par la note de service du 11 septembre 2026 (NOR MENE2622642N) : 4 heures, quatre
+exercices indépendants de 4 à 8 points, calculatrice selon le sujet, 2 points sur 20 pour la
+maîtrise de la langue, tout le programme de terminale et les notions de première ;
+périmètre de chaque session depuis 2021 relevé ; découpage `chapitres-maths.md` relu et
+corrigé. Les pages HTML du Bulletin officiel restent fermées aux sessions Cloud (Cloudflare) ;
+ses **PDF** s'ouvrent. Reste, pour la physique-chimie :
 
 - **Programmes en vigueur en 2026-2027** : 2019 pour les deux matières (recherche web du
   2026-09-24 : le programme de maths de terminale publié le 2 avril 2026 s'applique à la
@@ -314,7 +324,7 @@ physique-chimie »), titres en clair.
 
 | Phase | Items | Prérequis | En parallèle ? |
 |---|---|---|---|
-| **1. Fondations** | Référentiel maths ; référentiel physique-chimie ; références officielles des épreuves 2027 | textes officiels fournis par Thibaud (`docs/sources-officielles.md`) | oui, entre eux et avec la phase 2 |
+| **1. Fondations** | Référentiel maths ; référentiel physique-chimie ; références officielles des épreuves 2027 | textes officiels (PDF du ministère, `docs/sources-officielles.md`) | oui, entre eux et avec la phase 2 |
 | **2. Mécanique** | Schémas + chargeur + script de couverture ; pages Aperçu + Cours ; pages Exercices + Type bac + Mémo + progression | la charte (faite) | oui avec la phase 1 |
 | **3. Pilotes** | Premier chapitre de maths complet ; premier chapitre de physique-chimie complet ; retour de Thibaud → charte ajustée | phases 1 et 2 | maths et physique en parallèle |
 | **4. Production** | La page « Méthodes » de chaque matière ; puis un chapitre à la fois, dans l'ordre de l'année (deux items par chapitre) | pilotes | plusieurs sessions en parallèle, un chapitre chacune |

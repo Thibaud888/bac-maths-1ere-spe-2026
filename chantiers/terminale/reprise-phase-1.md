@@ -1,44 +1,73 @@
 # Terminale — lancer les sessions suivantes
 
-> Écrit le 2026-09-24, à la fin de la session de cadrage (PR #85). Chaque bloc ci-dessous
-> se colle tel quel dans une **nouvelle** session Cloud sur
+> Mis à jour le 2026-09-24, au bilan de la session du référentiel maths (PR #87). Chaque bloc
+> ci-dessous se colle tel quel dans une **nouvelle** session Cloud sur
 > `Thibaud888/bac-maths-1ere-spe-2026`. Une session = un item = une PR.
 
-## Avant tout : l'accès aux textes officiels
+## Déjà fait
 
-Le réglage réseau est fait (2026-09-24) : APMEP et Labolycée s'ouvrent. Le site du ministère,
-lui, refuse les sessions cloud (403) : les sessions A et B demandent à Thibaud, en début de
-session, les textes du Bulletin officiel dont elles ont besoin — marche à suivre dans
-`docs/sources-officielles.md`.
+- Cadrage des espaces de terminale (#85), fichiers et contrôles des chapitres (#86),
+  référentiel des maths : programme officiel au mot près et format de l'épreuve 2027 (#87).
+- Réseau : le réglage de l'environnement est fait. Les pages HTML du Bulletin officiel
+  refusent quand même les sessions Cloud (c'est le site, pas le réglage) ; ses **PDF**
+  s'ouvrent et suffisent. `apmep.fr` répond. Marche à suivre : `docs/sources-officielles.md`.
 
-## Session A — la liste officielle du programme de maths (textes officiels requis)
+## À lancer maintenant — en parallèle, une session chacune
 
-```
-Traite l'item de BACKLOG.md « Écrire la liste officielle de ce qu'il faut savoir en maths
-de terminale ». Lis d'abord MAP.md, CLAUDE.md § 14, chantiers/terminale/README.md et la
-charte .claude/skills/terminale-charte/SKILL.md (§§ 2, 3.1, 9), puis
-docs/sources-officielles.md : le site du ministère refuse les sessions cloud, alors
-demande-moi d'abord, en une seule liste, les textes officiels qu'il te faut (dont
-https://www.education.gouv.fr/bo/2026/Special4/MENE2622694N). Tout vient du texte
-officiel, rien de mémoire.
-```
-
-## Session B — la même chose en physique-chimie (textes officiels requis, parallèle à A)
+### Session B — la liste officielle du programme de physique-chimie (PDF du ministère)
 
 ```
 Traite l'item de BACKLOG.md « Écrire la liste officielle de ce qu'il faut savoir en
-physique-chimie de terminale ». Mêmes lectures et même demande des textes officiels que
-pour les maths (chantiers/terminale/reprise-phase-1.md, session A).
+physique-chimie de terminale ». Lis d'abord MAP.md, CLAUDE.md § 14,
+chantiers/terminale/README.md, la charte .claude/skills/terminale-charte/SKILL.md (§§ 2, 3.1,
+9) et, comme modèle, le référentiel maths .claude/skills/bac-maths-terminale-2027/SKILL.md.
+Vérifie d'abord que tu ouvres le PDF
+https://www.education.gouv.fr/sites/default/files/document/20260917boenjsspe4pdf-520753.pdf
+(les pages HTML du BO sont refusées aux sessions Cloud, les PDF passent) ; sinon arrête-toi
+et dis-le. Tout vient du texte officiel, rien de mémoire.
 ```
 
-## Session C — la mécanique du site (sans réseau, parallèle à A et B)
+### Session D — les pages « Aperçu » et « Cours » (sans réseau)
 
 ```
-Traite l'item de BACKLOG.md « Préparer les fichiers et les contrôles des chapitres de
-terminale ». Lis d'abord MAP.md, CLAUDE.md § 14, chantiers/terminale/README.md et la charte
-.claude/skills/terminale-charte/SKILL.md en entier : son § 3 est le cahier des charges des
-schémas. Aucun contenu pédagogique : le chapitre-témoin vit dans tests/fixtures/terminale/.
+Traite l'item de BACKLOG.md « Construire les pages « Aperçu » et « Cours » d'un chapitre de
+terminale ». Lis d'abord MAP.md, CLAUDE.md § 14, chantiers/terminale/README.md (§ 4) et la
+charte .claude/skills/terminale-charte/SKILL.md (§§ 3, 4, 11). Construis sur le
+chapitre-témoin (npm run dev:temoin), aucun contenu pédagogique. Avant de conclure, regarde
+le rendu réel (Chromium) en clair et en sombre, sur ordinateur et en largeur téléphone.
 ```
 
-Ensuite, dans l'ordre du backlog : les pages « Aperçu » et « Cours », les pages
-d'entraînement, puis les chapitres pilotes (Thibaud désigne le chapitre).
+### Session E — compter ce qui tombe vraiment au bac de maths (apmep.fr, PDF)
+
+```
+Traite l'item de BACKLOG.md « Compter ce qui tombe vraiment au bac de maths ». Lis d'abord
+MAP.md, la charte .claude/skills/terminale-charte/SKILL.md (§§ 3.2, 5.1) et le référentiel
+.claude/skills/bac-maths-terminale-2027/SKILL.md (§ 4 : ce qui pouvait tomber à chaque
+session). Vérifie d'abord que tu ouvres https://www.apmep.fr/ ; sinon arrête-toi et dis-le.
+Indexe avec l'agent annales-indexeur, par lots (une session d'examen par appel) ; ne recopie
+jamais un corrigé. Si l'index ne peut pas être complet en une session, livre les lots faits
+et note précisément ce qui reste dans BACKLOG.md.
+```
+
+### Session F — corriger les références officielles des épreuves (PDF du ministère, petite)
+
+```
+Traite l'item de BACKLOG.md « Mettre à jour les références officielles des épreuves de
+spécialité ». Lis d'abord MAP.md, CLAUDE.md § 4.2 et le référentiel maths
+.claude/skills/bac-maths-terminale-2027/SKILL.md (§§ 1 et 3). Les textes sont dans le PDF
+https://www.education.gouv.fr/sites/default/files/document/20260917boenjsspe4pdf-520753.pdf
+(les pages HTML du BO sont refusées aux sessions Cloud). Rien de mémoire ;
+node scripts/faits-inchanges.mjs doit lister exactement ce qui change.
+```
+
+## Ensuite
+
+1. **Les pages d'entraînement** (exercices, type bac, mémo) : après la session D, dont elles
+   reprennent les composants.
+2. **Le premier chapitre de maths** (`/tle-chapitre maths <slug>`) : Thibaud choisit le
+   chapitre et tranche l'ordre de l'année (`chapitres-maths.md`, fin : l'espérance de la loi
+   binomiale arrive au ch. 15, quatre chapitres après la loi binomiale). Le cours peut
+   s'écrire dès maintenant ; la fin du chapitre demande les pages (captures).
+3. **Le premier chapitre de physique-chimie** : après la session B.
+4. **Les chapitres suivants**, un par session, dans l'ordre de l'année ; la page « Méthodes »
+   de chaque matière.

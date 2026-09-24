@@ -138,15 +138,33 @@
   Relu en captures (accueil, le bac, simulateur, formulaire, exercices, bac blanc, grand oral,
   fiches de français, sélecteur sur ordinateur et téléphone).
   `node scripts/verify.mjs` OK, 177 tests (169 + 8). PR : #83.
-- [x] Laisser les sessions ouvrir le site du ministère — réglage réseau fait par Thibaud
-  (2026-09-24 : `*.education.gouv.fr`, `*.legifrance.gouv.fr`, `*.apmep.fr`,
-  `*.labolycee.org`). Résultat : APMEP et Labolycée s'ouvrent ; le ministère, éduscol et
-  Légifrance répondent 403 (protection Cloudflare **du site**, qui refuse les serveurs cloud)
-  — aucun réglage ne le lève. Marche à suivre choisie par Thibaud : sujets de bac via APMEP /
-  Labolycée, textes réglementaires fournis par lui (texte collé ou PDF dans
-  `docs/textes-officiels/`). Documenté dans `docs/sources-officielles.md`, signalé dans
-  CLAUDE.md § 0, MAP.md, `annales-indexeur` et les textes de reprise.
-  `node scripts/verify.mjs` OK. Session du 2026-09-24.
+- [x] Laisser les sessions ouvrir le site du ministère — le 2026-09-23, le réseau de la session
+  a refusé `www.education.gouv.fr` (proxy : CONNECT refusé, politique de l'environnement) ;
+  la page « Exposé » a dû être vérifiée sur les extraits relevés par la vérification (#76).
+  À faire par Thibaud (en cours depuis le 2026-09-24) : menu de l'environnement dans la
+  barre de titre → Edit → accès réseau → **Personnalisé**, cocher la case qui garde la liste
+  par défaut (« Also include default list of common package managers ») pour conserver les
+  sites de confiance, puis une adresse par ligne : `*.education.gouv.fr` (ministère et
+  éduscol), `*.legifrance.gouv.fr`, `*.apmep.fr` et `*.labolycee.org` (sujets de bac passés
+  de maths et de physique-chimie). La recherche web marche déjà sans ce réglage ; c'est
+  l'ouverture des pages qui était bloquée. Le réglage vaut pour les **nouvelles** sessions.
+  DoD : une session ouvre `https://www.education.gouv.fr/bo/2026/Special4/MENE2622694N`.
+  Constat du 2026-09-24 (session du référentiel maths) : le réglage marche — le proxy laisse
+  passer —, mais c'est désormais **le site** qui refuse la machine Cloud (page Cloudflare
+  « Sorry, you have been blocked », code 403) sur les pages HTML `education.gouv.fr/bo/…`,
+  `eduscol.education.gouv.fr/` et `legifrance.gouv.fr` ; aucun réglage de l'environnement n'y
+  peut rien. Les **PDF** passent : `education.gouv.fr/sites/default/files/…`,
+  `cache.media.education.gouv.fr/…`, `eduscol.education.gouv.fr/sites/default/files/…` ;
+  `apmep.fr` répond aussi. Contournement utilisé : le PDF du Bulletin entier (sommaire →
+  numéro de page). Refusés par la politique réseau : `enseignementsup-recherche.gouv.fr`,
+  sites d'académie (`ac-*.fr`).
+  Clos au bilan du 2026-09-24 : le but (lire les textes officiels depuis une session) est
+  atteint par les PDF ; la page HTML de la DoD reste refusée par le site, sans remède côté
+  environnement. Textes de lancement à jour : `chantiers/terminale/reprise-phase-1.md`.
+  Marche à suivre écrite pour toutes les sessions (2026-09-24, choix de Thibaud) :
+  `docs/sources-officielles.md` — sujets de bac via APMEP / Labolycée, textes réglementaires
+  sur le PDF officiel, sinon fournis par Thibaud (texte collé ou PDF dans
+  `docs/textes-officiels/`) ; renvois dans CLAUDE.md § 0, MAP.md, `annales-indexeur`.
 - [ ] Décider s'il faut un référentiel du grand oral avant d'ajouter d'autres conseils —
   CLAUDE.md § 4.3 : si le contenu « méthode » du grand oral prend de l'ampleur, écrire d'abord
   un skill « grand oral » et repasser au workflow 2 passes. Depuis #81, trois pages de méthode
@@ -172,8 +190,8 @@
   auto-évaluation sans points). Persistance `bgo-2027-grand-oral`, isolation vérifiée dans
   Chromium. `node scripts/verify.mjs` OK, 152 tests (121 de référence + 31 nouveaux). PR : #75.
 - [ ] Relire la page « L'épreuve » du grand oral sur le texte intégral du Bulletin officiel —
-  la session du 2026-09-22 n'a pas pu ouvrir education.gouv.fr (le site refuse les sessions
-  cloud ; texte à demander à Thibaud, `docs/sources-officielles.md`) : chaque affirmation
+  la session du 2026-09-22 n'a pas pu ouvrir education.gouv.fr (les pages HTML refusent les
+  sessions cloud ; le PDF du Bulletin passe, `docs/sources-officielles.md`) : chaque affirmation
   vient d'extraits du texte `s-grand-oral` obtenus par moteur de recherche et recoupés. À confirmer sur le texte : la place du projet d'orientation dans
   l'exposé (la page n'en fait pas une règle), et le contenu de la grille indicative (annexe,
   non reproduite). DoD : fiches `content/terminale/grand-oral/epreuve.json` et `deroule.json`
@@ -199,11 +217,11 @@
   `annales-indexeur` ; commande `/tle-chapitre` ; CLAUDE.md § 14, MAP.md.
   `node scripts/verify.mjs` OK. Session du 2026-09-24. PR : #85.
 
-**Phase 1 — les fondations** (dans de nouvelles sessions ; textes officiels fournis par
-Thibaud, voir `docs/sources-officielles.md` ; textes à coller prêts dans
+**Phase 1 — les fondations** (dans de nouvelles sessions ; textes officiels lus sur les PDF
+du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
 `chantiers/terminale/reprise-phase-1.md`)
 
-- [ ] (P1) Écrire la liste officielle de ce qu'il faut savoir en maths de terminale — référentiel :
+- [x] (P1) Écrire la liste officielle de ce qu'il faut savoir en maths de terminale — référentiel :
   skill `bac-maths-terminale-2027` (format de l'épreuve 2027 relevé dans la note de service
   de septembre 2026, liste hors programme, notations) + `content/terminale/maths/programme.json`
   (texte exact du BO spécial n° 8 du 25 juillet 2019, une ligne = un identifiant `bo-m-…`
@@ -211,18 +229,39 @@ Thibaud, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   les approfondissements possibles) + son schéma ; relève aussi le programme évalué à
   chaque session depuis 2021 (mars 2021-2023 : parties exclues) et tranche le logarithme
   décimal (dans le programme de spécialité ou non). Confirme ou corrige
-  `chantiers/terminale/chapitres-maths.md`. Prérequis : textes du Bulletin officiel fournis
-  par Thibaud (`docs/sources-officielles.md`). DoD : `programme.json` validé,
-  `node scripts/verify.mjs` OK.
+  `chantiers/terminale/chapitres-maths.md`. Prérequis : accès réseau au site du ministère
+  (item plus haut). DoD : `programme.json` validé, `node scripts/verify.mjs` OK.
+  Fait le 2026-09-24, tout depuis les PDF officiels (les pages HTML du BO sont refusées, voir
+  l'item réseau) : skill `.claude/skills/bac-maths-terminale-2027/` ; `programme.json` =
+  205 lignes (173 exigibles, 32 approfondissements), texte relu sur l'image des pages pour
+  les formules ; schéma `schemas/terminale/programme.schema.json` ; garde-fou
+  `scripts/programme-conforme.mjs` (mot à mot contre l'extraction du BO gardée dans
+  `texte-officiel/`, branché dans `validate-content.mjs`). Établi : programme de 2019 en
+  vigueur en 2026-2027 ; épreuve 2027 = note MENE2622642N (4 h, quatre exercices de 4 à
+  8 points, **calculatrice selon le sujet**, 2 points sur 20 de maîtrise de la langue) ;
+  périmètre de 2021, 2022, 2023 relevé, tout le programme depuis 2024 ; **logarithme décimal
+  hors programme** ; `chapitres-maths.md` relu (4 corrections, un point à trancher sur
+  l'ordre). Au passage : la page demandée pour tester l'accès (MENE2622694N) est la note du
+  **grand oral**. `node scripts/verify.mjs` OK. PR : #87.
 - [ ] (P1) Écrire la liste officielle de ce qu'il faut savoir en physique-chimie de terminale —
   même travail : `bac-physique-chimie-terminale-2027` + `programme.json` (`bo-pc-…`, avec
   capacités expérimentales et numériques, et les acquis de première mobilisables `bo-pc1-…`),
   format de l'écrit et de l'épreuve pratique. DoD : idem.
+  Repris des maths : le schéma accepte déjà `bo-pc-` et `bo-pc1-` ; `programme-conforme.mjs`
+  sert tel quel (extraction du PDF dans `.claude/skills/bac-physique-chimie-terminale-2027/texte-officiel/programme*.txt`,
+  y_tolerance=6 pour garder les indices sur leur ligne ; formules relues sur l'image des
+  pages) ; `validate-content.mjs` attend les préfixes `bo-pc-`/`bo-pc1-`. Programme :
+  BO spécial n° 8 du 25-7-2019 (PDF complet : `education.gouv.fr/sites/default/files/imported_files/documents/SP8_MENJ_1159506.pdf`) ;
+  épreuve 2027 : MENE2622644N dans le PDF du BO spécial n° 4 du 17-9-2026.
 - [ ] (P2) Mettre à jour les références officielles des épreuves de spécialité —
   `content/bac/sources.json` : `s-spe-maths` et `s-spe-physique-chimie` pointent vers les notes
   de 2020 ; les notes de service du BO spécial n° 4 du 17 septembre 2026 redéfinissent les
-  épreuves à partir de 2027 (physique-chimie : `MENE2622644N` ; maths : à trouver). Relire
-  `epreuves.json` sur ces textes ; `node scripts/faits-inchanges.mjs` dira ce qui bouge.
+  épreuves à partir de 2027 (physique-chimie : `MENE2622644N` ; maths : `MENE2622642N`,
+  relevée dans le référentiel maths § 3). Relire `epreuves.json` sur ces textes ;
+  `node scripts/faits-inchanges.mjs` dira ce qui bouge. Déjà vu : `ep-spe-maths` affiche
+  « La calculatrice est autorisée. », que le texte ne dit pas (« Le sujet précise si l'usage
+  de la calculatrice […] est autorisé ») ; la note de 2026 ajoute 2 points sur 20 de maîtrise
+  de la langue. PDF du BO : `education.gouv.fr/sites/default/files/document/20260917boenjsspe4pdf-520753.pdf`.
   DoD : sources à jour, `node scripts/verify.mjs` OK.
 
 **Phase 2 — la mécanique du site**
@@ -273,7 +312,9 @@ Thibaud, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `recurrence-suites`), partie cours
   puis partie exercices ; Thibaud relit, la charte est ajustée à la suite ; la session ajoute
   ici un item par chapitre suivant. DoD : chapitre fini au sens de la charte § 9, retours de
-  Thibaud notés dans la charte.
+  Thibaud notés dans la charte. À trancher au passage (`chapitres-maths.md`, fin) : le ch. 1
+  ne porte que 3 lignes exigibles du programme (il tient seul ou rejoint les limites de
+  suites ?) ; l'espérance de la loi binomiale est au ch. 15, loin du ch. 11.
 - [ ] (P1) Écrire le premier chapitre de physique-chimie, pour valider la méthode — même
   chose, sur le chapitre que Thibaud désigne (par défaut `acides-bases`). DoD : idem.
 
@@ -292,12 +333,12 @@ Thibaud, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
   publiés) → `content/terminale/maths/annales.json` (objet `{ complet, depuis, sujets }`) ;
   `scripts/frequences-annales.mjs <matiere> <chapitre>` (par notion : sujets où au moins une
-  de ses lignes est mobilisée, sur les sujets où elle pouvait tomber — sessions de mars
-  2021-2023 limitées à leur programme ; refuse de publier tant que l'index n'est pas
+  de ses lignes est mobilisée, sur les sujets où elle pouvait tomber — sessions 2021-2023
+  limitées à leur périmètre, relevé ligne à ligne dans le référentiel maths § 4 ; refuse de
+  publier tant que l'index n'est pas
   complet) ; priorités des chapitres déjà écrits recalculées (`tle-architecte`, mode
   `priorites`).
-  Prérequis : référentiel maths ; sujets sur apmep.fr (le site du ministère refuse les
-  sessions cloud, `docs/sources-officielles.md`).
+  Prérequis : référentiel maths ; sujets sur apmep.fr (`docs/sources-officielles.md`).
   DoD : index complet, rapport de fréquences dans la PR.
 - [ ] (P3) Compter ce qui tombe vraiment au bac de physique-chimie — même travail.
 
