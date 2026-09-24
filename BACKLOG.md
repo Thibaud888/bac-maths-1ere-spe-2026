@@ -204,7 +204,10 @@
   skill `bac-maths-terminale-2027` (format de l'épreuve 2027 relevé dans la note de service
   de septembre 2026, liste hors programme, notations) + `content/terminale/maths/programme.json`
   (texte exact du BO spécial n° 8 du 25 juillet 2019, une ligne = un identifiant `bo-m-…`
-  rattaché à un chapitre) + son schéma. Confirme ou corrige
+  rattaché à un chapitre ou au chapitre transverse `methodes-maths`, `exigible: false` pour
+  les approfondissements possibles) + son schéma ; relève aussi le programme évalué à
+  chaque session depuis 2021 (mars 2021-2023 : parties exclues) et tranche le logarithme
+  décimal (dans le programme de spécialité ou non). Confirme ou corrige
   `chantiers/terminale/chapitres-maths.md`. Prérequis : accès réseau au site du ministère
   (item plus haut). DoD : `programme.json` validé, `node scripts/verify.mjs` OK.
 - [ ] (P1) Écrire la liste officielle de ce qu'il faut savoir en physique-chimie de terminale —
@@ -221,16 +224,22 @@
 **Phase 2 — la mécanique du site**
 
 - [ ] (P1) Préparer les fichiers et les contrôles des chapitres de terminale — `schemas/terminale/*`
-  d'après la charte § 3, chargeur `src/lib/terminale/`, validation dans
-  `validate-content.mjs`, `scripts/couverture-terminale.mjs` (identifiants inconnus, lignes du
-  programme non couvertes, quotas § 5.3, doublons), tests sur un chapitre-témoin rangé dans
-  `tests/fixtures/` (jamais dans `content/`). N'attend pas le référentiel.
+  d'après la charte § 3, dont un `figure.schema.json` propre (chemins
+  `terminale/<matiere>/<slug>/<nom>`, celui de première n'accepte qu'un niveau) ; chargeur
+  `src/lib/terminale/` ; validation dans `validate-content.mjs` ;
+  `scripts/couverture-terminale.mjs <matiere> <chapitre> [--partie cours|exercices]`
+  (charte § 9.3) ; `scripts/sans-reponses.mjs` (version des exercices sans réponses pour
+  l'élève-testeur) ; chapitre-témoin dans `tests/fixtures/terminale/` (jamais dans
+  `content/`), chargé en plus par le chargeur **en développement seulement** quand
+  `VITE_TEMOIN=1`, pour que les pages puissent l'afficher. N'attend pas le référentiel.
   DoD : `node scripts/verify.mjs` OK, nouveaux tests.
 - [ ] (P1) Construire les pages « Aperçu » et « Cours » d'un chapitre de terminale — routes
   `/terminale/<matiere>/:slug` et `/cours`, onglets, `sections()` de `tle-maths` et
-  `tle-physique-chimie`, rendu de chaque type de bloc (charte § 4.2) sur `PageLongue`,
-  étiquette de priorité, progression par notion (`btm-2027-`, `bpc-2027-`), accueil de la
-  matière. Mêmes composants pour les deux matières. DoD : chapitre-témoin affiché, captures
+  `tle-physique-chimie`, rendu de chaque type de bloc (charte § 4.2) sur `PageLongue`, dont
+  les blocs de code en chasse fixe (jamais passés par le rendu du texte), étiquette de
+  priorité, progression par notion (`btm-2027-`, `bpc-2027-`), accueil de la matière, page
+  `/terminale/<matiere>/methodes` (chapitre transverse). Mêmes composants pour les deux
+  matières. DoD : chapitre-témoin affiché, captures
   relues (clair, sombre, ordinateur, téléphone), `node scripts/verify.mjs` OK.
 - [ ] (P1) Construire les pages d'entraînement : exercices, type bac, mémo — trois marches
   filtrables par notion ; réponses vérifiables (QCM, vrai-faux, numérique avec unité, remise
@@ -250,13 +259,21 @@
 
 **Phase 4 — la production**
 
+- [ ] (P2) Écrire la page « Méthodes » de chaque matière — chapitre transverse
+  `methodes-maths` (logique, raisonnements, Python, rédaction, calculatrice) et
+  `methodes-physique-chimie` (mesure et incertitudes, chiffres significatifs, analyse
+  dimensionnelle, résolution de problème, Python) ; `/tle-chapitre <matiere> methodes-<matiere>`,
+  sans type bac (charte § 2.1). DoD : § 9.4 de la charte.
 - [ ] (P2) Écrire les chapitres suivants, un par session — dans l'ordre de la classe, deux
   items par chapitre (« le cours », « les exercices »), ajoutés ici par les sessions pilotes ;
   plusieurs sessions en parallèle possibles, un chapitre chacune.
 - [ ] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
-  2021-2026 → `content/terminale/maths/annales.json` ; `scripts/frequences-annales.mjs`
-  (fréquence par ligne du programme puis par notion ; sujets de mars 2022-2023 limités à leur
-  programme) ; priorités des chapitres déjà écrits passées de « estimation » à « annales ».
+  2021-2026 → `content/terminale/maths/annales.json` (objet `{ complet, depuis, sujets }`) ;
+  `scripts/frequences-annales.mjs <matiere> <chapitre>` (par notion : sujets où au moins une
+  de ses lignes est mobilisée, sur les sujets où elle pouvait tomber — sessions de mars
+  2021-2023 limitées à leur programme ; refuse de publier tant que l'index n'est pas
+  complet) ; priorités des chapitres déjà écrits recalculées (`tle-architecte`, mode
+  `priorites`).
   Prérequis : référentiel maths + accès aux sujets (apmep.fr ou site du ministère).
   DoD : index complet, rapport de fréquences dans la PR.
 - [ ] (P3) Compter ce qui tombe vraiment au bac de physique-chimie — même travail.

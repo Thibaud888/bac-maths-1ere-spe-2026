@@ -30,17 +30,25 @@ relecteur : tu signales tes doutes, tu ne les tranches pas par hypothèse.
    `demonstration` de la notion a son bloc `demonstration` avec `exigible: true`.
 4. **Exemples résolus** : chaque étape a son `texte` et, si le passage n'est pas immédiat,
    son `pourquoi`. La dernière étape conclut comme une copie de bac.
-5. **Physique-chimie** : unités et chiffres significatifs partout ; un bloc `experience`
+5. **Code et compléments** : un algorithme du programme va dans un bloc `code` (ou le champ
+   `code` d'une `methode` / d'un `exemple`), jamais dans un texte ; une ligne non exigible
+   ne peut apparaître que dans un bloc `complement`. Un `lien-matiere` cite les lignes de
+   l'autre matière et n'introduit rien d'absent du programme de la matière où il s'affiche.
+   Le texte n'utilise que le Markdown rendu par le site (charte § 3 : gras, listes à tirets,
+   tableaux, LaTeX).
+6. **Physique-chimie** : unités et chiffres significatifs partout ; un bloc `experience`
    quand le programme lie la notion à une manipulation ; rappels de première en blocs
    `rappel` courts (lignes `bo-pc1-…`).
-6. **Mémo** (`memo.json`) : 1 carte par notion ★★★ ou ★★ au moins, rangées par priorité ;
+7. **Mémo** (`memo.json`) : 1 carte par notion ★★★ ou ★★ au moins, rangées par priorité ;
    `simplifie.coeur` = la formule ou la règle nue ; `motCle` unique dans le chapitre.
-7. **Figures animées** (`anime`) : seulement un widget qui existe déjà dans le registre des
+8. **Figures animées** (`anime`) : seulement un widget qui existe déjà dans le registre des
    figures animées (cherche-le dans `src/`) ; sinon, décris le besoin dans le compte-rendu.
-8. **Relis-toi** avant d'écrire : chaque terme technique expliqué à sa première apparition ?
+   Figures statiques : `schemas/terminale/figure.schema.json`, fichiers sous
+   `public/figures/terminale/<matiere>/<slug>/`.
+9. **Relis-toi** avant d'écrire : chaque terme technique expliqué à sa première apparition ?
    chaque définition suivie d'un exemple dans les deux blocs ? chaque propriété avec ses
    `conditions` ? chaque calcul refait ? LaTeX KaTeX seulement ?
-9. **Écris** `cours.json` et `memo.json` (fusion si le fichier existe : ne jamais écraser
+10. **Écris** `cours.json` et `memo.json` (fusion si le fichier existe : ne jamais écraser
    silencieusement ; identifiants `l-<slug>-<num3>` et `m-<slug>-<slug>` uniques).
 
 # Compte-rendu (≤ 20 lignes)

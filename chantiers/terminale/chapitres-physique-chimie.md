@@ -6,8 +6,9 @@
 > note de service de septembre 2026 (à relire), l'écrit porte sur le programme de terminale,
 > et les notions de première non reprises en terminale doivent rester mobilisables.
 >
-> Priorités : **estimations** (souvenir des sujets 2022-2025), à remplacer par le décompte des
-> annales. Légende : ★★★ incontournable · ★★ fréquent · ★ plus rare.
+> Priorités : **estimations** (souvenir des sujets depuis 2021), à remplacer par le décompte des
+> annales. Légende : ★★★ incontournable · ★★ fréquent · ★ plus rare. Garde-fou de la charte
+> (§ 5.1) : au plus la moitié des notions d'un chapitre en ★★★ sans mesure des annales.
 
 ## Particularités de la matière (à respecter par tous les agents)
 
@@ -53,7 +54,7 @@ remplacé par l'ordre réel de la classe si Thibaud le fournit.
 | 15 | `thermodynamique` | Gaz parfait, premier principe, transferts thermiques | L'énergie : conversions et transferts | ★★ |
 | 16 | `fluides` | Écoulement d'un fluide | Mouvement et interactions | ★★ |
 
-**Transversal** (page « Méthodes ») : mesure et incertitudes (incertitude-type, écriture
+**Chapitre transverse `methodes-physique-chimie`** (page « Méthodes », charte § 2.1) : mesure et incertitudes (incertitude-type, écriture
 d'un résultat, comparaison à une valeur de référence), analyse dimensionnelle, chiffres
 significatifs, rédiger une réponse argumentée, résolution de problème, Python (capacités
 numériques du programme), capacités mathématiques (équations différentielles du premier
@@ -62,7 +63,7 @@ ordre, vecteurs, logarithme décimal).
 ## Notions par chapitre (estimation)
 
 ### 1. Transformations acide-base, pH
-- Couples acide-base, transfert d'ion hydrogène, espèces amphotères · ★★★
+- Couples acide-base, transfert d'ion hydrogène, espèces amphotères · ★★
 - pH et concentration en ions oxonium ; acides forts, bases fortes · ★★★
 - Autoprotolyse de l'eau, Ke · ★★
 
@@ -81,12 +82,12 @@ ordre, vecteurs, logarithme décimal).
 - Deuxième loi de Newton, référentiel galiléen, centre de masse · ★★★
 - Mouvement dans un champ de pesanteur uniforme : équations horaires, trajectoire · ★★★
 - Mouvement dans un champ électrique uniforme (condensateur plan, accélérateur) · ★★
-- Aspects énergétiques (énergies cinétique, potentielle, mécanique) · ★★★
+- Aspects énergétiques (énergies cinétique, potentielle, mécanique) · ★★
 
 ### 5. Titrages
 - Titrage direct, équivalence, suivi pH-métrique · ★★★
 - Suivi conductimétrique · ★★
-- Exploiter un titrage : concentration, incertitude · ★★★
+- Exploiter un titrage : concentration, incertitude · ★★
 
 ### 6. Mouvement des satellites et des planètes
 - Mouvement circulaire uniforme dans un champ de gravitation · ★★
@@ -111,7 +112,7 @@ ordre, vecteurs, logarithme décimal).
 
 ### 10. Force des acides et des bases
 - Constante d'acidité Ka, pKa · ★★★
-- Diagrammes de prédominance et de distribution · ★★★
+- Diagrammes de prédominance et de distribution · ★★
 - Solutions tampons, acides α-aminés (selon programme) · ★
 
 ### 11. Sens d'évolution spontanée, piles, électrolyse
@@ -149,5 +150,7 @@ ordre, vecteurs, logarithme décimal).
 ## Liens avec les maths (blocs « Et en maths ? »)
 
 Équation différentielle y' = ay + b ↔ circuit RC, décroissance radioactive, loi de Newton
-du refroidissement, cinétique d'ordre 1 ; logarithme ↔ pH, décibels ; vecteurs et
-dérivées ↔ vitesse et accélération ; exponentielle ↔ décroissance radioactive.
+du refroidissement, cinétique d'ordre 1 ; vecteurs et dérivées ↔ vitesse et accélération ;
+exponentielle ↔ décroissance radioactive. Le logarithme décimal (pH, décibels) reste **côté
+physique-chimie** : le cours de maths de spécialité ne le traite pas (à confirmer par le
+référentiel maths) et un bloc « Et en physique ? » ne doit pas l'y introduire.

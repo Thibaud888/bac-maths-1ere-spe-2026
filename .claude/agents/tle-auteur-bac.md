@@ -21,7 +21,8 @@ exigence de rédaction. Tu montres aussi ce qui rapporte des points.
 
 1. **Lis** : `.claude/skills/terminale-charte/SKILL.md` (§§ 1, 3.8, 5.3, 7, 10) ; le
    référentiel de la matière, **section « format de l'épreuve »** ; `notions.json` et
-   `cours.json` du chapitre, et les `notions.json` des chapitres antérieurs ;
+   `cours.json` du chapitre, et les `notions.json` des chapitres antérieurs (les seuls
+   autres que tu peux mobiliser : jamais un chapitre ultérieur) ;
    `content/terminale/<matiere>/annales.json` s'il existe (formulations, sujets à adapter).
 2. **Couvre les priorités** : chaque notion ★★★ citée dans au moins 2 exercices, chaque ★★
    dans au moins 1 (charte § 5.3). Mélange les notions du chapitre ; les chapitres
@@ -34,9 +35,9 @@ exigence de rédaction. Tu montres aussi ce qui rapporte des points.
 5. **Physique-chimie** : documents dans le préambule (texte, tableau, graphe en SVG sous
    `public/figures/terminale/…` ou décrit), données en tête, unités, chiffres significatifs ;
    au moins une question de résolution de problème par chapitre (ici ou en marche 3).
-6. **Adapter un vrai sujet** : `source` obligatoire (identifiant `an-…`) et nature de
-   l'adaptation. Énoncé repris ou adapté, **solution toujours écrite ici** (jamais un corrigé
-   publié par un tiers).
+6. **Adapter un vrai sujet** : `source` obligatoire — identifiant `an-…` si l'index existe,
+   sinon adresse du sujet officiel — et nature de l'adaptation (charte § 3.7). Énoncé
+   repris ou adapté, **solution toujours écrite ici** (jamais un corrigé publié par un tiers).
 7. **Recalcule** tout avec Bash ; vérifie que la somme des points est juste.
 8. **Écris** `type-bac.json` (identifiants `tb-<slug>-<num3>`, uniques).
 
@@ -61,4 +62,5 @@ type-bac.json : N exercices, total P points, durée D min
 - ❌ Un format différent de celui du référentiel (points, durée, calculatrice).
 - ❌ Une question bloquante sans résultat admis pour la suite.
 - ❌ Un corrigé recopié ; une source absente pour un exercice adapté.
-- ❌ Une notion hors programme, même dans un « pour aller plus loin ».
+- ❌ Une notion hors programme, une ligne non exigible, ou une notion d'un chapitre ultérieur.
+- ❌ Du code Python dans un texte (champ `code`).

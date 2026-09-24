@@ -16,7 +16,8 @@ jamais `git`.
 
 # Entrées
 
-- Chemin(s) des fichiers à relire, `matiere`, `slug`.
+- Chemin(s) des fichiers à relire, `matiere`, `slug`, et `tour` (1, 2 ou 3 : numéro de la
+  relecture de ces fichiers, compté par l'orchestrateur).
 
 # Procédure
 
@@ -34,10 +35,13 @@ et formats d'identifiant, unicité dans le chapitre et entre matières, `revoir`
 pointent vers des blocs existants, `notions` et `capacites` vers des identifiants existants.
 
 **B — Programme.** Chaque `capacites` existe dans `programme.json` et appartient aux notions
-de l'item, à un chapitre antérieur ou à la première. Aucune notion hors programme (liste du
-référentiel : options, programme futur, supérieur) — y compris dans un exemple, un indice
-ou une solution. Une `demonstration` marquée `exigible` correspond à une ligne de rubrique
-`demonstration`. Toute ligne du chapitre appartient à exactement une notion.
+de l'item, à un chapitre antérieur, au chapitre « Méthodes » ou à la première — **jamais à
+un chapitre ultérieur**, type bac compris. Aucune notion hors programme (liste du
+référentiel : options, programme futur, supérieur) — y compris dans un exemple, un indice,
+une solution ou un `lien-matiere`. Une ligne non exigible n'apparaît que dans un bloc
+`complement` ou en marche 3. Une `demonstration` marquée `exigible` correspond à une ligne
+de rubrique `demonstration`. Toute ligne du chapitre appartient à exactement une notion ;
+chaque ligne exigible reçoit ce que le § 9.2 de la charte exige.
 
 **C — Exactitude.** **Recalcule chaque résultat** (réponse, valeur intermédiaire, arrondi)
 avec Bash. Vérifie signes, limites, intervalles, unités, conversions, chiffres
@@ -45,8 +49,9 @@ significatifs, probabilités (somme à 1), scripts Python (exécute-les). Une se
 bloquant.
 
 **D — Cohérence.** `reponse` ↔ `choix` ↔ `solution` ↔ `explication` concordent ;
-`pourquoiFaux` aligné sur les choix ; trois indices **différents et progressifs**, le premier
-ne donne pas la réponse ; somme des points d'un type bac = total annoncé ; résultats
+`pourquoiFaux` aligné sur les choix ; nombre d'indices conforme à la marche (charte § 6 :
+0-1 en marche 1, 3 en marche 2, 2-3 en marche 3), indices **différents et progressifs**, le
+premier ne donne pas la réponse ; somme des points d'un type bac = total annoncé ; résultats
 « admis » d'un type bac cohérents avec la suite.
 
 **E — Niveau et marches.** Chaque item correspond à la définition de sa marche (charte § 6) ;
@@ -63,9 +68,10 @@ vérifiées, conclusion) ; `attenduCorrecteur` précis ; format type bac conform
 référentiel (points, durée, calculatrice) ; physique-chimie : unité sur toute grandeur,
 chiffres significatifs cohérents, documents suffisants pour répondre.
 
-**H — Notations et KaTeX.** Notations de la charte § 10 ; KaTeX seulement (pas de
+**H — Notations, KaTeX et rendu.** Notations de la charte § 10 ; KaTeX seulement (pas de
 `\newcommand`, `\require`, `\def`) ; délimiteurs `$…$` / `$$…$$` ; `\text{}` sans accent
-problématique ; décimales `{,}`.
+problématique ; décimales `{,}` ; texte limité au Markdown rendu par le site (gras, listes à
+tirets, tableaux) ; aucun code dans un texte (champ `code`).
 
 **I — Clarté (non bloquante).** Signale ce qui gênerait un élève seul ; la passe complète
 est celle de `tle-eleve-testeur`.
@@ -91,8 +97,9 @@ Items relus : N · défauts bloquants : X · non bloquants : Y · calculs refait
 - Lignes du programme sans contenu : …
 ```
 
-PASS seulement sans aucun défaut bloquant. Au troisième NEEDS_REVISION sur le même fichier,
-écris « ESCALADE » en tête du rapport : l'orchestrateur posera la question à Thibaud.
+PASS seulement sans aucun défaut bloquant. Si `tour` vaut 3 et que tu rends
+NEEDS_REVISION, écris « ESCALADE » en tête du rapport : l'orchestrateur posera la question à
+Thibaud.
 
 # Interdits
 

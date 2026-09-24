@@ -84,11 +84,11 @@ Pensé à partir de ce dont un élève a besoin à chaque moment de l'année :
    tous chapitres confondus), les exercices type bac, des sujets complets chronométrés.
 5. **Toute l'année** — des repères : où il en est notion par notion, ce qu'il lui reste
    d'important, et des liens entre matières (l'équation différentielle en maths ↔ la charge
-   d'un condensateur en physique ; le logarithme ↔ le pH et les décibels).
+   d'un condensateur en physique ; l'exponentielle ↔ la décroissance radioactive).
 
 Ce qu'il **ne** trouve **pas** : du contenu hors programme, du remplissage, des exercices qui
-demandent une notion pas encore vue dans le cours du chapitre (sauf en *Type bac*, qui
-mélange volontairement).
+demandent une notion pas encore vue (le *Type bac* mélange volontairement les notions du
+chapitre et des chapitres précédents, jamais celles d'un chapitre à venir).
 
 ---
 
@@ -103,7 +103,7 @@ mélange volontairement).
 /terminale/maths/<chapitre>/exercices    (?niveau=1|2|3 & ?notion=<id>)
 /terminale/maths/<chapitre>/type-bac
 /terminale/maths/<chapitre>/memo
-/terminale/maths/methodes                méthodes transverses (rédaction, récurrence, Python…)
+/terminale/maths/methodes                chapitre transverse « Méthodes » (logique, Python, rédaction…)
 /terminale/maths/reviser                 « Réviser pour le bac » (phase 5)
 /terminale/maths/sujets                  sujets complets chronométrés (phase 5)
 ```
@@ -163,10 +163,12 @@ L'exigence la plus forte de Thibaud. Trois leviers, qui s'additionnent :
   rattache chaque exercice aux lignes du programme qu'il mobilise ; un script compte, pour
   chaque notion, dans combien de sujets elle apparaît. Repères : ≥ 50 % des sujets →
   incontournable ; 20 à 50 % → fréquent ; < 20 % → plus rare.
-- Le décompte ne compte que les sujets où la notion **pouvait** tomber : en 2022 et 2023,
-  les épreuves de spécialité avaient lieu en mars et une partie du programme en était
-  exclue (liste à relever dans les notes de service de ces sessions). Les sujets depuis
-  2024 (épreuves en juin) portent sur tout le programme.
+- Le décompte ne compte que les sujets où la notion **pouvait** tomber : de 2021 à 2023,
+  les épreuves de spécialité étaient prévues en mars et une partie du programme en était
+  exclue (liste à relever session par session dans les notes de service). Les sujets
+  depuis 2024 (épreuves en juin) portent sur tout le programme (à confirmer).
+- Le décompte est fait par un script, sur un index **complet** des sujets depuis 2021 ;
+  tant que l'index est partiel, aucun chiffre n'est publié.
 - Une correction, toujours écrite avec sa raison : une notion **indispensable à d'autres**
   monte d'un cran (ex. les limites, sans lesquelles aucune étude de fonction).
 - Tant que l'index n'existe pas, l'étiquette est une **estimation** (`chapitres-*.md`) et le
@@ -204,9 +206,12 @@ L'exigence la plus forte de Thibaud. Trois leviers, qui s'additionnent :
 - **Tout item de contenu cite les lignes qu'il travaille** (`capacites: [...]`). Le script
   de couverture refuse un identifiant inconnu : on ne peut pas écrire un exercice qui ne se
   rattache à rien du programme.
-- **Couverture** : le même script liste les lignes du programme sans cours, sans
-  exercice ou sans question éclair, chapitre par chapitre, et vérifie les quotas par
-  priorité. Un chapitre n'est « fini » que si son rapport est vide.
+- **Couverture** : le même script vérifie que chaque ligne **exigible** du programme reçoit
+  ce que sa nature demande (cours et exercices pour une capacité, un bloc de démonstration
+  pour une démonstration exigible, un exercice pour un algorithme…) et que les quotas par
+  priorité sont atteints. Les lignes transverses (logique, Python, incertitudes) vont dans
+  un chapitre « Méthodes » propre à chaque matière ; les « approfondissements possibles »
+  du programme ne sont jamais exigés. « Fini » est défini au § 9.4 de la charte.
 - **Le relecteur** vérifie que le contenu n'utilise rien d'autre : pas de notion d'une
   option (maths expertes), pas de notion d'un programme futur, et, pour les acquis de
   première, seulement ceux du programme de première de spécialité.
@@ -261,7 +266,7 @@ tle-architecte ─→ (contrôle : couverture du chapitre = toutes ses lignes du
       │
       ├─→ tle-auteur-cours ─────┐
       ├─→ tle-auteur-exercices ─┼─→ tle-relecteur (bloquant) ─→ tle-eleve-testeur ─→ scripts ─→ captures ─→ PR
-      └─→ tle-auteur-bac ───────┘         ↑ corrections, 3 tours au plus, puis on demande à Thibaud
+      └─→ tle-auteur-bac ───────┘         ↑ corrections, 3 relectures au plus, puis on demande à Thibaud
 ```
 
 - Le cours passe **avant** les exercices : un exercice ne mobilise que ce que le cours a
@@ -276,7 +281,7 @@ tle-architecte ─→ (contrôle : couverture du chapitre = toutes ses lignes du
 1 session = 1 item = 1 PR. Un chapitre = **deux items** par défaut :
 « Chapitre X : le cours » (architecte + cours + mémo) puis « Chapitre X : les exercices »
 (trois marches + questions éclair + type bac). Le chapitre pilote dira si un seul item
-suffit.
+suffit, et fixera les quotas (charte § 5.3, provisoires jusque-là).
 
 ---
 
@@ -290,7 +295,7 @@ physique-chimie »), titres en clair.
 | **1. Fondations** | Référentiel maths ; référentiel physique-chimie ; références officielles des épreuves 2027 | accès réseau à `education.gouv.fr` / `eduscol` | oui, entre eux et avec la phase 2 |
 | **2. Mécanique** | Schémas + chargeur + script de couverture ; pages Aperçu + Cours ; pages Exercices + Type bac + Mémo + progression | la charte (faite) | oui avec la phase 1 |
 | **3. Pilotes** | Premier chapitre de maths complet ; premier chapitre de physique-chimie complet ; retour de Thibaud → charte ajustée | phases 1 et 2 | maths et physique en parallèle |
-| **4. Production** | Un chapitre à la fois, dans l'ordre de l'année (deux items par chapitre) | pilotes | plusieurs sessions en parallèle, un chapitre chacune |
+| **4. Production** | La page « Méthodes » de chaque matière ; puis un chapitre à la fois, dans l'ordre de l'année (deux items par chapitre) | pilotes | plusieurs sessions en parallèle, un chapitre chacune |
 | **4 bis. Mesure** | Index des annales maths puis physique-chimie → priorités mesurées | référentiel + accès réseau aux annales | oui, à tout moment après la phase 1 |
 | **5. Réviser et donner envie** | Répétition espacée et « mes erreurs » ; « Réviser pour le bac » ; sujets complets chronométrés ; figures animées ; épreuve pratique de physique-chimie ; fiches imprimables | phase 4 entamée | oui |
 
@@ -310,8 +315,9 @@ phases 1 et 2 tournent en parallèle, et la production suit **l'ordre de la clas
   binomiale avec curseurs n et p ; chute d'un projectile, charge d'un condensateur, courbe
   de titrage. Une figure animée = un composant React testé, appelé depuis le cours par son
   nom ; jamais de code dans le JSON.
-- **Liens entre matières** : blocs « Et en physique ? » / « Et en maths ? » ; lien vers le
-  grand oral (questions adossées aux spécialités).
+- **Liens entre matières** : blocs « Et en physique ? » / « Et en maths ? » (sans jamais
+  introduire une notion absente du programme de la matière où ils s'affichent) ; lien vers
+  le grand oral (questions adossées aux spécialités).
 - **Fiches imprimables** : le mémo d'un chapitre en une page A4 (feuille de style
   d'impression, sans dépendance).
 - **Épreuve pratique de physique-chimie** : capacités expérimentales, protocoles commentés,

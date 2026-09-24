@@ -119,8 +119,10 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
 - Déploiement : merger sur `main` (Pages via deploy.yml)
 
 ## Pièges
-- Contenu pédagogique **sans les 2 passes** = interdit (CLAUDE.md §7 et §13.6).
-- Hors-programme interdit (ln, intégrales… → SKILL.md §6) ; tout calcul **sans calculatrice**.
+- Contenu pédagogique **sans les 2 passes** = interdit (CLAUDE.md §7 et §13.6) — en terminale,
+  sans le circuit `tle-*` (charte `terminale-charte`).
+- Première : hors-programme interdit (ln, intégrales… → SKILL.md §6) ; tout calcul **sans
+  calculatrice**. Ces deux règles ne valent **pas** pour la terminale (voir la charte).
 - KaTeX seulement (pas de `\require`/macros) ; LaTeX dans les chaînes JSON (`$...$`).
 - TS strict + `noUncheckedIndexedAccess` : les accès indexés retournent `T | undefined`.
 - Le volet français ne touche JAMAIS au localStorage maths (non-régression §13.9 : 77 tests).

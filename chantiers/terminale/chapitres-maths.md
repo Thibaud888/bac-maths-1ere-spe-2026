@@ -4,9 +4,10 @@
 > programme en main) puis par `tle-architecte`, chapitre par chapitre. Programme de référence :
 > spécialité de terminale, **BO spécial n° 8 du 25 juillet 2019** (voir README § 6-7).
 >
-> Les priorités sont des **estimations** (souvenir des sujets 2021-2025), à remplacer par le
+> Les priorités sont des **estimations** (souvenir des sujets depuis 2021), à remplacer par le
 > décompte des annales (`annales-indexeur`). Légende : ★★★ incontournable · ★★ fréquent ·
-> ★ plus rare.
+> ★ plus rare. Garde-fou de la charte (§ 5.1) : au plus la moitié des notions d'un chapitre
+> en ★★★ tant que les annales ne l'ont pas mesuré — ici 17 notions sur 57.
 
 ## Ordre de l'année
 
@@ -33,9 +34,10 @@ l'ordre retenu ; la navigation le suit.
 | 14 | `integration` | Calcul intégral | Analyse | ★★ |
 | 15 | `sommes-variables-aleatoires` | Sommes de variables aléatoires, concentration, loi des grands nombres | Probabilités | ★★ |
 
-**Transversal** (page « Méthodes » de la matière, pas un chapitre) : rédiger au bac,
-vocabulaire ensembliste et logique, raisonnements (contre-exemple, absurde, disjonction de
-cas), algorithmique et programmation en Python (listes), calculatrice en mode examen.
+**Chapitre transverse `methodes-maths`** (page « Méthodes », hors liste des chapitres,
+charte § 2.1) : rédiger au bac, vocabulaire ensembliste et logique, raisonnements
+(contre-exemple, absurde, disjonction de cas), algorithmique et programmation en Python
+(listes), calculatrice en mode examen.
 Chaque chapitre porte en plus ses propres algorithmes du programme (seuil, dichotomie,
 simulation…), en bloc « méthode » du cours et en exercices.
 
@@ -46,13 +48,13 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
 ### 1. Raisonnement par récurrence et suites
 - Raisonnement par récurrence · ★★★ · « Démontrer par récurrence que pour tout entier n… »
 - Suites majorées, minorées, bornées · ★★ · « Montrer que 0 ≤ uₙ ≤ uₙ₊₁ ≤ 2 »
-- Suites définies par une fonction uₙ₊₁ = f(uₙ) · ★★★ · étude via le sens de variation de f
+- Suites définies par une fonction uₙ₊₁ = f(uₙ) · ★★ · étude via le sens de variation de f
 - Algorithme : calcul de termes, seuil (Python) · ★★ · « Compléter la fonction Python… »
 - Démonstration exigible possible : inégalité de Bernoulli (à relever dans le BO)
 
 ### 2. Limites de suites
-- Limite finie ou infinie, suites de référence · ★★★
-- Opérations sur les limites, formes indéterminées · ★★★
+- Limite finie ou infinie, suites de référence · ★★
+- Opérations sur les limites, formes indéterminées · ★★
 - Théorèmes de comparaison et des gendarmes · ★★
 - Suites géométriques : limite de qⁿ · ★★★ · très souvent avec une suite auxiliaire
 - Suite croissante majorée ⇒ convergente · ★★★ · « Justifier que la suite converge »
@@ -60,13 +62,13 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
 
 ### 3. Limites de fonctions
 - Limites en l'infini, en un réel ; asymptotes · ★★★
-- Opérations, formes indéterminées · ★★★
+- Opérations, formes indéterminées · ★★
 - Croissances comparées (exp, puissances ; puis ln au ch. 7) · ★★★
 - Limite d'une composée ; comparaison, encadrement · ★★
 
 ### 4. Compléments sur la dérivation, convexité
 - Dérivée d'une composée x ↦ g(u(x)) (dont e^u, u^n, √u) · ★★★
-- Dérivée seconde · ★★★
+- Dérivée seconde · ★★
 - Fonction convexe/concave, position par rapport aux tangentes · ★★★
 - Point d'inflexion · ★★ · « Étudier la convexité de f »
 
@@ -76,26 +78,26 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
 - Encadrement d'une solution (balayage, dichotomie en Python) · ★★
 
 ### 6. Vecteurs, droites et plans de l'espace
-- Vecteurs de l'espace, combinaisons linéaires, colinéarité · ★★★
+- Vecteurs de l'espace, combinaisons linéaires, colinéarité · ★★
 - Droites et plans : positions relatives · ★★★
-- Bases, repères, coordonnées ; vecteurs coplanaires · ★★★
+- Bases, repères, coordonnées ; vecteurs coplanaires · ★★
 
 ### 7. Fonction logarithme népérien
 - Définition (réciproque de exp), propriétés algébriques · ★★★
 - Équations et inéquations avec ln et exp · ★★★
-- Étude de la fonction ln : dérivée, limites, croissances comparées · ★★★
+- Étude de la fonction ln : dérivée, limites, croissances comparées · ★★
 - Dérivée de ln(u) · ★★
 - Seuil d'une suite géométrique (qⁿ < ε) avec ln · ★★
 
 ### 8. Orthogonalité et distances dans l'espace
-- Produit scalaire dans l'espace (dont en coordonnées) · ★★★
+- Produit scalaire dans l'espace (dont en coordonnées) · ★★
 - Orthogonalité de droites, de plans ; vecteur normal · ★★★
-- Projeté orthogonal, distance d'un point à un plan · ★★★
+- Projeté orthogonal, distance d'un point à un plan · ★★ (très présent : à remonter si les annales le confirment)
 
 ### 9. Représentations paramétriques et équations cartésiennes
-- Représentation paramétrique d'une droite · ★★★
+- Représentation paramétrique d'une droite · ★★ (très présent : à remonter si les annales le confirment)
 - Équation cartésienne d'un plan · ★★★
-- Intersections droite-plan, plan-plan ; appartenance · ★★★
+- Intersections droite-plan, plan-plan ; appartenance · ★★
 
 ### 10. Combinatoire et dénombrement
 - Principe additif/multiplicatif, k-uplets · ★★
@@ -103,9 +105,9 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
 - Combinaisons, coefficients binomiaux, triangle de Pascal · ★★
 
 ### 11. Épreuves indépendantes, loi binomiale
-- Succession d'épreuves indépendantes, arbre (rappel de première : probabilités conditionnelles) · ★★★
+- Succession d'épreuves indépendantes, arbre (rappel de première : probabilités conditionnelles) · ★★
 - Schéma et loi de Bernoulli, loi binomiale · ★★★ · « Justifier que X suit une loi binomiale »
-- Espérance, variance, écart-type de la loi binomiale · ★★★
+- Espérance, variance, écart-type de la loi binomiale · ★★
 - Calculs à la calculatrice : P(X = k), P(X ≤ k), seuil · ★★★
 
 ### 12. Fonctions sinus et cosinus

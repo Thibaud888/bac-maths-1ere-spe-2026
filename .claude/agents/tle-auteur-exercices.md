@@ -25,19 +25,22 @@ jamais `git`.
    (ce qui a été enseigné, et les identifiants de blocs pour `revoir`) ; `exercices.json` et
    `flash.json` s'ils existent (fusion, identifiants uniques). Sans cours : arrête-toi.
 2. **Marche 1 — Comprendre** : pour chaque notion, le quota de la charte ; une notion, un
-   geste ; réponse **vérifiable** (qcm, vrai-faux, numérique, ordre) ; `pourquoiFaux` sur
-   chaque choix faux d'un QCM (l'erreur typique qu'il révèle).
+   geste ; réponse **vérifiable** (qcm, vrai-faux, numérique, ordre) ; 0 ou 1 indice ;
+   `pourquoiFaux` sur chaque choix faux d'un QCM (l'erreur typique qu'il révèle).
 3. **Marche 2 — S'entraîner** : les méthodes du cours, une notion principale ; **trois
    indices** vraiment progressifs (piste + `revoir` → première étape faite → presque la
    solution) ; solution rédigée comme au bac ; réponse vérifiable si le résultat final est
    une valeur, sinon `redaction`.
-4. **Marche 3 — Approfondir** : au moins deux notions, prise d'initiative ; en
+4. **Marche 3 — Approfondir** : au moins deux notions, prise d'initiative, 2 ou 3 indices ; en
    physique-chimie, au moins une **résolution de problème** par chapitre (ici ou en type bac).
 5. **Questions éclair** : quota par notion ; < 60 s ; distracteurs = erreurs typiques ;
    `explication` qui enseigne.
 6. **Chaque item** cite `notions` (la principale d'abord) et `capacites` ; il ne mobilise
-   que le cours de ce chapitre, les chapitres antérieurs et la première. Chaque ligne
-   `algorithme` / `numerique` du chapitre a au moins un exercice.
+   que le cours de ce chapitre, les chapitres antérieurs, le chapitre « Méthodes » et la
+   première — jamais un chapitre ultérieur. Les exigences par ligne du programme sont
+   celles de la charte § 9.2 (chaque ligne `algorithme` / `numerique` : au moins un
+   exercice). Le code Python va dans le champ `code`, jamais dans un texte. Exercice adapté
+   d'un sujet : `source` (charte § 3.7).
 7. **Calculs** : refais **tous** les résultats avec Bash ; `tolerance` explicite ;
    physique-chimie : unité et chiffres significatifs cohérents avec les données.
    `calculatrice: true` seulement si elle sert.

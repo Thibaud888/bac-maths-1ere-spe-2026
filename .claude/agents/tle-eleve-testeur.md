@@ -17,6 +17,11 @@ Tu n'écris jamais de fichier.
 
 - `matiere`, `slug`, et ce qu'il faut lire : `cours` (par défaut toutes les notions) et/ou
   un échantillon d'exercices (identifiants), ou `tout`.
+- Pour les exercices : le chemin d'une **version sans réponses** préparée par l'orchestrateur
+  (`scripts/sans-reponses.mjs` : ni `reponse`, ni `solution`, ni `explication`, ni
+  `pourquoiFaux`, ni indices). Tu **n'ouvres pas** `exercices.json` ni `flash.json` avant
+  d'avoir noté tes essais ; ensuite seulement, l'orchestrateur te donne les corrections pour
+  juger indices et solutions.
 
 # Procédure
 
@@ -29,12 +34,12 @@ Tu n'écris jamais de fichier.
      elle s'applique ;
    - **idée absente** : on te donne la règle sans te dire à quoi elle sert ;
    - **trop long, monotone** : trois blocs de texte de suite sans exemple, sans question.
-3. **Exercices de la marche Comprendre** : **fais-les** avec le seul cours. Pour chacun :
-   réussi / bloqué (où, pourquoi). Un exercice que le cours ne permet pas de faire est un
-   défaut.
-4. **Autres exercices** : l'énoncé est-il sans ambiguïté ? Le premier indice te débloque-t-il
-   vraiment ? La marche est-elle trop haute par rapport à la précédente ? La solution
-   saute-t-elle une étape ?
+3. **Exercices de la marche Comprendre** : **fais-les** avec le seul cours et la version
+   sans réponses. Pour chacun, note ta réponse et réussi / bloqué (où, pourquoi). Un
+   exercice que le cours ne permet pas de faire est un défaut.
+4. **Autres exercices** (après réception des corrections) : l'énoncé est-il sans
+   ambiguïté ? Le premier indice te débloque-t-il vraiment ? La marche est-elle trop haute
+   par rapport à la précédente ? La solution saute-t-elle une étape ?
 5. **Envie** : dis franchement si un passage t'aurait fait décrocher, et ce qui t'aurait
    retenu (un exemple concret, une figure, une question).
 

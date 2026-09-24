@@ -68,9 +68,13 @@ La terminale a sa propre structure (cours, trois marches d'exercices, type bac, 
 L'**EAM** (première, vendredi 12 juin 2026, 2h, sans calculatrice, coefficient 2) reste la
 référence du contenu de première ; le contenu de terminale suivra le programme de terminale.
 
-## 2. Lecture obligatoire avant toute génération de contenu
+## 2. Lecture obligatoire avant toute génération de contenu (maths de première)
 
-Le fichier **`.claude/skills/bac-maths-premiere-spe-2026/SKILL.md`** est la **source de vérité** pour tout contenu pédagogique. Il contient :
+> Terminale : la source de vérité est la charte `.claude/skills/terminale-charte/SKILL.md`
+> et le référentiel de la matière (§ 14). Les §§ 2, 7, 9 et 12 ci-dessous valent pour la
+> **première**.
+
+Le fichier **`.claude/skills/bac-maths-premiere-spe-2026/SKILL.md`** est la **source de vérité** pour tout contenu pédagogique de maths de première. Il contient :
 
 - Le programme officiel de spécialité (BO spécial n°1 du 22 janvier 2019)
 - Le format réglementaire de l'EAM (décret du 10 juin 2025)
@@ -251,7 +255,7 @@ Notations conformes au BO :
 - Vecteurs : `\vec{u}` en LaTeX, `u⃗` en texte
 - Probabilités : `P(A)`, `P_B(A)`, `P(A \cap B)`
 
-## 7. Workflow obligatoire de génération de contenu : système 2 passes
+## 7. Workflow obligatoire de génération de contenu : système 2 passes (maths de première ; terminale : § 14)
 
 **Aucun fichier JSON de contenu pédagogique ne doit être commité sans avoir passé les 2 étapes suivantes :**
 
@@ -284,7 +288,7 @@ En cas de problème détecté, le reviewer renvoie un rapport ; le author corrig
 - `/verify-conformity` : passe l'ensemble du contenu au crible (schémas + reviewer pédagogique)
 - `/tle-chapitre <matiere> <slug> [cours|exercices|tout]` : produit un chapitre de terminale avec les agents `tle-*` (§ 14)
 
-## 9. Règles d'or pour le contenu pédagogique
+## 9. Règles d'or pour le contenu pédagogique (maths de première ; terminale : charte § 1)
 
 1. **Sans calculatrice** : tout calcul doit être faisable mentalement ou à la main avec rigueur. Pas de valeurs exotiques (`√7`, `e^3.14`, etc.). Privilégier valeurs entières, fractions simples (`1/2`, `1/3`, `1/4`, `2/3`, `3/4`), racines simples (`√2`, `√3`), valeurs trigo usuelles (`0`, `π/6`, `π/4`, `π/3`, `π/2`, `π`).
 2. **Programme strict** : si une notion ne figure pas dans SKILL.md sections 2.x, elle est interdite. En cas de doute, voir SKILL.md section 6 (liste hors-programme).
@@ -317,10 +321,10 @@ Chaque phase se termine par un commit `git` propre et un build qui passe.
 
 ## 12. Anti-patterns à éviter
 
-- ❌ Générer un fichier JSON sans passer par les 2 sub-agents
+- ❌ Générer un fichier JSON sans passer par les 2 sub-agents (première) ou sans le circuit `tle-*` (terminale)
 - ❌ Inventer des notations non conformes au BO
 - ❌ Inclure des notions de terminale (ln, intégrale, récurrence formelle, etc.) dans le contenu de **première**
-- ❌ Proposer des exercices nécessitant une calculatrice
+- ❌ Proposer des exercices nécessitant une calculatrice (première ; en terminale, elle est autorisée et signalée)
 - ❌ Mélanger CSS custom et Tailwind sans nécessité
 - ❌ Utiliser MathJax au lieu de KaTeX
 - ❌ Ajouter des dépendances NPM sans justification (et sans accord utilisateur)
