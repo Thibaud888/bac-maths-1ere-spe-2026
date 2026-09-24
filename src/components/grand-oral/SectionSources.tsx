@@ -2,8 +2,8 @@ import { SectionPage } from '@/components/shared/PageLongue';
 import { ListeSources } from '@/components/shared/Sources';
 
 /**
- * Bas de page du grand oral : la liste numérotée des textes officiels cités
- * par les appels [1], [2]… de la page (ancre `#sources`).
+ * Bas de page du grand oral : la liste numérotée des textes officiels sur
+ * lesquels s’appuie la page (ancre `#sources`).
  */
 export default function SectionSources({ numero }: { numero?: number }) {
   return (

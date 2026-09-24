@@ -646,10 +646,6 @@ export default function LeBacPage() {
                 première, moitié sur celle de terminale. La moitié de première est connue dès
                 la fin de l’année.
               </ARetenir>
-              <ARetenir titre="La spécialité arrêtée pèse lourd">
-                8 coefficients, entièrement décidés par la moyenne de première de la
-                spécialité abandonnée&nbsp;: cette note est connue dès la fin de première.
-              </ARetenir>
               <ARetenir titre="L’EPS, c’est trois épreuves au lycée">
                 Pas une moyenne de bulletin, mais trois évaluations notées par les professeurs
                 dans l’année de terminale.
