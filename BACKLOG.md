@@ -161,6 +161,10 @@
   Clos au bilan du 2026-09-24 : le but (lire les textes officiels depuis une session) est
   atteint par les PDF ; la page HTML de la DoD reste refusée par le site, sans remède côté
   environnement. Textes de lancement à jour : `chantiers/terminale/reprise-phase-1.md`.
+  Marche à suivre écrite pour toutes les sessions (2026-09-24, choix de Thibaud) :
+  `docs/sources-officielles.md` — sujets de bac via APMEP / Labolycée, textes réglementaires
+  sur le PDF officiel, sinon fournis par Thibaud (texte collé ou PDF dans
+  `docs/textes-officiels/`) ; renvois dans CLAUDE.md § 0, MAP.md, `annales-indexeur`.
 - [ ] Décider s'il faut un référentiel du grand oral avant d'ajouter d'autres conseils —
   CLAUDE.md § 4.3 : si le contenu « méthode » du grand oral prend de l'ampleur, écrire d'abord
   un skill « grand oral » et repasser au workflow 2 passes. Depuis #81, trois pages de méthode
@@ -186,9 +190,9 @@
   auto-évaluation sans points). Persistance `bgo-2027-grand-oral`, isolation vérifiée dans
   Chromium. `node scripts/verify.mjs` OK, 152 tests (121 de référence + 31 nouveaux). PR : #75.
 - [ ] Relire la page « L'épreuve » du grand oral sur le texte intégral du Bulletin officiel —
-  la session du 2026-09-22 n'a pas pu ouvrir education.gouv.fr (bloqué par le réseau de la
-  session) : chaque affirmation vient d'extraits du texte `s-grand-oral` obtenus par moteur de
-  recherche et recoupés. À confirmer sur le texte : la place du projet d'orientation dans
+  la session du 2026-09-22 n'a pas pu ouvrir education.gouv.fr (les pages HTML refusent les
+  sessions cloud ; le PDF du Bulletin passe, `docs/sources-officielles.md`) : chaque affirmation
+  vient d'extraits du texte `s-grand-oral` obtenus par moteur de recherche et recoupés. À confirmer sur le texte : la place du projet d'orientation dans
   l'exposé (la page n'en fait pas une règle), et le contenu de la grille indicative (annexe,
   non reproduite). DoD : fiches `content/terminale/grand-oral/epreuve.json` et `deroule.json`
   conformes au texte, `node scripts/verify.mjs` OK.
@@ -213,8 +217,9 @@
   `annales-indexeur` ; commande `/tle-chapitre` ; CLAUDE.md § 14, MAP.md.
   `node scripts/verify.mjs` OK. Session du 2026-09-24. PR : #85.
 
-**Phase 1 — les fondations** (dans de nouvelles sessions, après le réglage réseau ; textes à
-coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
+**Phase 1 — les fondations** (dans de nouvelles sessions ; textes officiels lus sur les PDF
+du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
+`chantiers/terminale/reprise-phase-1.md`)
 
 - [x] (P1) Écrire la liste officielle de ce qu'il faut savoir en maths de terminale — référentiel :
   skill `bac-maths-terminale-2027` (format de l'épreuve 2027 relevé dans la note de service
@@ -333,7 +338,7 @@ coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
   publier tant que l'index n'est pas
   complet) ; priorités des chapitres déjà écrits recalculées (`tle-architecte`, mode
   `priorites`).
-  Prérequis : référentiel maths + accès aux sujets (apmep.fr ou site du ministère).
+  Prérequis : référentiel maths ; sujets sur apmep.fr (`docs/sources-officielles.md`).
   DoD : index complet, rapport de fréquences dans la PR.
 - [ ] (P3) Compter ce qui tombe vraiment au bac de physique-chimie — même travail.
 

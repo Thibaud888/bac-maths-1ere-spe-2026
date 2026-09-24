@@ -10,7 +10,7 @@
   référentiel des maths : programme officiel au mot près et format de l'épreuve 2027 (#87).
 - Réseau : le réglage de l'environnement est fait. Les pages HTML du Bulletin officiel
   refusent quand même les sessions Cloud (c'est le site, pas le réglage) ; ses **PDF**
-  s'ouvrent et suffisent. `apmep.fr` répond.
+  s'ouvrent et suffisent. `apmep.fr` répond. Marche à suivre : `docs/sources-officielles.md`.
 
 ## À lancer maintenant — en parallèle, une session chacune
 

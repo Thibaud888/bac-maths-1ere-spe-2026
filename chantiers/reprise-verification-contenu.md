@@ -2,8 +2,8 @@
 
 > À coller dans la session de vérification quand Thibaud la relance (ou dans une session
 > **Cloud** neuve) sur `Thibaud888/bac-maths-1ere-spe-2026`.
-> Prérequis : aucun. Idéalement, `www.education.gouv.fr` autorisé dans le réseau de
-> l'environnement (item du backlog « Laisser les sessions ouvrir le site du ministère »).
+> Prérequis : aucun. Les pages HTML du ministère refusent les sessions cloud : lire les
+> textes intégraux sur leurs PDF (`docs/sources-officielles.md`).
 
 ## Prompt de handoff (coller tel quel)
 
@@ -50,8 +50,9 @@ Fais, dans l'ordre :
    - l'extrait officiel est cité dans la PR ;
    - `node scripts/faits-inchanges.mjs` ne montre que les faits voulus ;
    - les tests du simulateur qui portent sur les paliers de mention suivent (n° 50, 51).
-5. Si `www.education.gouv.fr` est toujours refusé, travaille sur les extraits du rapport et
-   dis-le dans chaque PR.
+5. Les pages HTML du ministère refusent les sessions cloud : lis les textes intégraux sur
+   leurs PDF, sinon demande-les à Thibaud (`docs/sources-officielles.md`) ; en attendant,
+   travaille sur les extraits du rapport et dis-le dans chaque PR.
 
 Contraintes : réponses et commits en français ; branche + PR, jamais de push sur `main` ;
 aucun coefficient en dur (CLAUDE.md § 4.2) ; aucune date inventée ; les minutes des temps du
