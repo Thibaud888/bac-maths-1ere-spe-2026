@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "terminale/notion.schema.json",
+  "title": "Notion d'un chapitre de terminale",
+  "description": "Une entrée de notions.json (tableau), écrit par tle-architecte (charte § 3.4). La notion est l'unité de priorité, de progression et de couverture.",
+  "type": "object",
+  "required": ["id", "chapitre", "titre", "ordre", "priorite", "priorisation", "pourquoi", "capacites", "prerequis", "attendusBac"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "$ref": "commun.schema.json#/$defs/idNotion" },
+    "chapitre": { "$ref": "commun.schema.json#/$defs/slug" },
+    "titre": { "type": "string", "minLength": 3, "maxLength": 100 },
+    "ordre": { "type": "integer", "minimum": 0, "description": "Ordre logique du cours." },
+    "priorite": { "type": "integer", "enum": [1, 2, 3], "description": "3 = Incontournable, 2 = Fréquent, 1 = Plus rare (charte § 5)." },
+    "priorisation": { "type": "string", "enum": ["annales", "estimation"], "description": "annales : recopiée de frequences-annales.mjs ; estimation : en attente du décompte (affichée « estimé »)." },
+    "pourquoi": { "type": "string", "minLength": 3, "maxLength": 200, "description": "Une phrase en clair pour l'élève ; sans chiffre si la priorité est estimée." },
+    "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+    "prerequis": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(n-[a-z0-9]+(-[a-z0-9]+)*|1e:[a-z0-9]+(-[a-z0-9]+)*)$"
+      },
+      "description": "Notions antérieures (n-…) ou chapitres de maths de première (1e:<slug>)."
+    },
+    "attendusBac": {
+      "type": "array",
+      "maxItems": 3,
+      "items": { "type": "string", "minLength": 3 },
+      "description": "0 à 3 formulations réelles relevées dans annales.json (vide tant que l'index n'existe pas)."
+    }
+  }
+}

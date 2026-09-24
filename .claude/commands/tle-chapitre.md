@@ -47,9 +47,9 @@ pédagogique toi-même.
    tourner en parallèle.
 3. **`tle-relecteur`** sur les trois fichiers ; même boucle (3 relectures au plus, puis
    escalade).
-4. **`tle-eleve-testeur`** : `node scripts/sans-reponses.mjs $1 $2` → donne-lui cette
-   version sans réponses (toute la marche « Comprendre » et un exercice de chaque autre
-   marche) ; **après** son rapport d'essais, donne-lui les corrections pour juger indices et
+4. **`tle-eleve-testeur`** : `node scripts/sans-reponses.mjs $1 $2 --sortie <fichier>`
+   (dans le dossier temporaire de la session) → donne-lui cette version sans réponses
+   (toute la marche « Comprendre » et un exercice de chaque autre marche) ; **après** son rapport d'essais, donne-lui les corrections pour juger indices et
    solutions. Bloquants → retour à l'auteur → relecture.
 5. `node scripts/couverture-terminale.mjs $1 $2 --partie exercices` → rapport vide (ou
    écarts tranchés, charte règle d'or 7).

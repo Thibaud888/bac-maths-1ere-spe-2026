@@ -227,7 +227,7 @@ coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
 
 **Phase 2 — la mécanique du site**
 
-- [ ] (P1) Préparer les fichiers et les contrôles des chapitres de terminale — `schemas/terminale/*`
+- [x] (P1) Préparer les fichiers et les contrôles des chapitres de terminale — `schemas/terminale/*`
   d'après la charte § 3, dont un `figure.schema.json` propre (chemins
   `terminale/<matiere>/<slug>/<nom>`, celui de première n'accepte qu'un niveau) ; chargeur
   `src/lib/terminale/` ; validation dans `validate-content.mjs` ;
@@ -237,6 +237,19 @@ coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
   `content/`), chargé en plus par le chargeur **en développement seulement** quand
   `VITE_TEMOIN=1`, pour que les pages puissent l'afficher. N'attend pas le référentiel.
   DoD : `node scripts/verify.mjs` OK, nouveaux tests.
+  Livré le 2026-09-24 : onze schémas `schemas/terminale/` (instance Ajv à part : l'`$id`
+  `figure.schema.json` reste à la première) ; précisions fixées par les schémas notées en tête
+  de la charte § 3. `scripts/lib/terminale.mjs` (lecture, schémas, intégrité : renvois,
+  doublons, totaux de points) partagé par `validate-content.mjs` et les deux scripts ;
+  `couverture-terminale.mjs` sépare écarts bloquants et avertissements, finit par le tableau
+  « compté / plancher » (`--racine`, `--json`) ; `sans-reponses.mjs --sortie`. Chargeur
+  `src/lib/terminale/` (`content.ts` : accesseurs, `segmentNotion`, `trierParPriorite` ;
+  `indexer.ts` pur et testé). Témoin : `temoin-maths` (les seize types de bloc, les six
+  types de réponse), `temoin-methodes-maths` (transverse), `temoin-physique-chimie`
+  (expérience, unités) — rapport de couverture vide ; `npm run dev:temoin`. Vérifié : le
+  build de production ne contient pas le témoin, même avec `VITE_TEMOIN=1` (nouvelle étape de
+  `verify.mjs`). Aucun schéma ni composant de première modifié.
+  `node scripts/verify.mjs` OK, 222 tests (177 + 45).
 - [ ] (P1) Construire les pages « Aperçu » et « Cours » d'un chapitre de terminale — routes
   `/terminale/<matiere>/:slug` et `/cours`, onglets, `sections()` de `tle-maths` et
   `tle-physique-chimie`, **une page par notion** dans le cours (`/cours/<notion>`, sommaire

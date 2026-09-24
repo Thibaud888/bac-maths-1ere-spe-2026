@@ -37,7 +37,8 @@ CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-
 chantiers/terminale/    # PLAN DIRECTEUR de la terminale (README) + découpage proposé des
                         # chapitres (chapitres-maths.md, chapitres-physique-chimie.md)
                         # + textes de lancement des sessions suivantes (reprise-phase-1.md)
-schemas/                # JSON Schema Ajv (maths à la racine, francais/, bac/, grand-oral/)
+schemas/                # JSON Schema Ajv (maths à la racine, francais/, bac/, grand-oral/,
+                        # terminale/ : chapitres de terminale, charte § 3 — ils font foi)
 content/
   chapters/<slug>/      # maths : meta, formulas, automatisms, classics, exam-style (JSON)
   francais/<module>/    # français : meta, fiches, quiz, exercices
@@ -56,6 +57,9 @@ src/
                         # moyenne pondérée, mention, leviers (aucun coefficient en dur)
   lib/grand-oral-content.ts  # chargeur validé du grand oral (relit content/bac/ pour le
                         # coefficient, la période et les sources) ; lib/oral-blanc.ts = minuteur
+  lib/terminale/        # chapitres de terminale : content.ts (chargeur + accesseurs), indexer.ts
+                        # (validation, pure et testée), types.ts, validate.ts ; ajoute le
+                        # chapitre-témoin en développement seulement (VITE_TEMOIN=1)
   components/layout/    # AppLayout (cadre unique), MainSidebar (LA barre), SidebarShell,
                         # TopBar (repli + fil d'Ariane + ThemePicker), SectionTabs, ChapterLayout
   components/           # formulary, automatisms, exercises, exam, math (KaTeX)
@@ -76,7 +80,14 @@ scripts/
   validate-content.mjs  validate-francais.mjs
   faits-inchanges.mjs   # garde-fou : nombres, dates, sources de content/bac/ et du grand
                         # oral, entrée par entrée, entre origin/main et l'arbre de travail
-tests/                  # Vitest ; Playwright pour les runners critiques
+  couverture-terminale.mjs  # un chapitre de terminale face au programme et à la charte
+                        # (§ 9.3) : écarts bloquants, avertissements, tableau des planchers
+  sans-reponses.mjs     # exercices d'un chapitre sans solutions ni indices (élève-testeur)
+  lib/terminale.mjs     # lecture + schémas + intégrité, partagés par les scripts ci-dessus
+                        # et validate-content.mjs
+tests/                  # Playwright pour les runners critiques (Vitest : src/**/__tests__)
+  fixtures/terminale/   # CHAPITRE-TÉMOIN (maths, méthodes, physique-chimie) : données d'essai
+                        # de chaque bloc, réponse, exercice ; jamais dans content/
 .github/workflows/
   deploy.yml            # Pages sur push main
   pr-ready.yml          # auto-mark PR comme ready (fleet-kit)
@@ -89,7 +100,8 @@ tests/                  # Vitest ; Playwright pour les runners critiques
 - **Terminale (maths, physique-chimie)** : lire `chantiers/terminale/README.md` puis la charte
   `.claude/skills/terminale-charte/SKILL.md` ; un chapitre = `/tle-chapitre <matiere> <slug>`
   (agents `tle-*`). Rien sans le référentiel de la matière (`bac-<matiere>-terminale-2027`,
-  pas encore écrit).
+  pas encore écrit). Contrôle d'un chapitre : `node scripts/couverture-terminale.mjs <matiere>
+  <slug> [--partie cours]`. Pages : les construire sur le chapitre-témoin (`npm run dev:temoin`).
 - **Nouveau contenu français** : `/new-module-francais`, mêmes règles (french-reviewer, 5 passes bloquantes).
 - **Ajouter une matière / un espace** : une entrée dans `SPACES` (`src/lib/spaces.ts`) + ses
   routes dans `App.tsx` ; la barre latérale et l'accueil se mettent à jour seuls.
@@ -115,7 +127,8 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
 `btl-2027-*` (simulateur de moyenne) / `bgo-2027-*` (grand oral) — ne jamais croiser.
 
 ## Commandes
-- Dev : `npm run dev` · Tests : `npm run test` · Typecheck : `npm run typecheck`
+- Dev : `npm run dev` (avec le chapitre-témoin de terminale : `npm run dev:temoin`) ·
+  Tests : `npm run test` · Typecheck : `npm run typecheck`
 - **Vérif complète : `node scripts/verify.mjs`** (`--quick` = sans build)
 - Déploiement : merger sur `main` (Pages via deploy.yml)
 
@@ -145,3 +158,8 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
   chapeaux de page ; une date n'apparaît que là où elle est un fait (calendrier, épreuves).
 - Terminale : calculatrice autorisée (la règle « sans calculatrice » est celle de la première) ;
   tout item cite ses lignes du programme (`capacites`) ; les schémas de première ne bougent pas.
+- Terminale : le chapitre-témoin (`tests/fixtures/terminale/`) n'est jamais copié dans
+  `content/` et n'entre jamais dans le site (`verify.mjs` le vérifie) ; s'il ne passe plus
+  `couverture-terminale.mjs` après un changement de schéma ou de contrôle, le mettre à jour.
+- Terminale : les schémas vivent sur une instance Ajv à part (`$id` `terminale/…` ;
+  `figure.schema.json` est l'identifiant de la figure de première).
