@@ -11,9 +11,13 @@
 
 ## Ordre de l'année
 
-L'ordre ci-dessous est une progression classique de terminale (suites et fonctions d'abord,
-géométrie dans l'espace et probabilités ensuite). **Il sera remplacé par l'ordre réel de la
-classe si Thibaud le fournit** (question du 2026-09-24). Le champ `ordre` de `meta.json` porte
+**Décision du 2026-09-24 (Thibaud)** : le site suit l'ordre de l'année, sans progression de
+classe fournie ; l'ordre ci-dessous est **une proposition** qui sert de base. C'est l'ordre
+des parties du programme (suites, puis fonctions, géométrie dans l'espace, probabilités),
+avec deux ajustements courants en classe : la continuité avant les compléments de dérivation
+(le théorème des valeurs intermédiaires s'appuie sur elle), et la géométrie dans l'espace
+intercalée tôt dans l'année pour ne pas tout reporter au printemps. **Thibaud dira quel
+chapitre écrire d'abord** ; par défaut, le premier. Le champ `ordre` de `meta.json` porte
 l'ordre retenu ; la navigation le suit.
 
 | # | Slug | Chapitre | Domaine | Poids estimé |
@@ -21,8 +25,8 @@ l'ordre retenu ; la navigation le suit.
 | 1 | `recurrence-suites` | Raisonnement par récurrence et suites | Analyse | ★★★ |
 | 2 | `limites-suites` | Limites de suites | Analyse | ★★★ |
 | 3 | `limites-fonctions` | Limites de fonctions | Analyse | ★★★ |
-| 4 | `derivation-convexite` | Compléments sur la dérivation, convexité | Analyse | ★★★ |
-| 5 | `continuite` | Continuité, théorème des valeurs intermédiaires | Analyse | ★★★ |
+| 4 | `continuite` | Continuité, théorème des valeurs intermédiaires | Analyse | ★★★ |
+| 5 | `derivation-convexite` | Compléments sur la dérivation, convexité | Analyse | ★★★ |
 | 6 | `vecteurs-espace` | Vecteurs, droites et plans de l'espace | Géométrie | ★★★ |
 | 7 | `logarithme` | Fonction logarithme népérien | Analyse | ★★★ |
 | 8 | `orthogonalite-espace` | Orthogonalité et distances dans l'espace | Géométrie | ★★★ |
@@ -66,16 +70,16 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
 - Croissances comparées (exp, puissances ; puis ln au ch. 7) · ★★★
 - Limite d'une composée ; comparaison, encadrement · ★★
 
-### 4. Compléments sur la dérivation, convexité
+### 4. Continuité, théorème des valeurs intermédiaires
+- Continuité (définition, fonctions de référence) · ★★
+- Théorème des valeurs intermédiaires, cas strictement monotone · ★★★ · « Montrer que f(x) = 0 admet une unique solution α »
+- Encadrement d'une solution (balayage, dichotomie en Python) · ★★
+
+### 5. Compléments sur la dérivation, convexité
 - Dérivée d'une composée x ↦ g(u(x)) (dont e^u, u^n, √u) · ★★★
 - Dérivée seconde · ★★
 - Fonction convexe/concave, position par rapport aux tangentes · ★★★
 - Point d'inflexion · ★★ · « Étudier la convexité de f »
-
-### 5. Continuité, théorème des valeurs intermédiaires
-- Continuité (définition, fonctions de référence) · ★★
-- Théorème des valeurs intermédiaires, cas strictement monotone · ★★★ · « Montrer que f(x) = 0 admet une unique solution α »
-- Encadrement d'une solution (balayage, dichotomie en Python) · ★★
 
 ### 6. Vecteurs, droites et plans de l'espace
 - Vecteurs de l'espace, combinaisons linéaires, colinéarité · ★★

@@ -19,7 +19,11 @@ Tu construis la mémoire des sujets de bac : pas leur texte intégral, mais **ce
    matière (skill + `programme.json` : **tu n'utilises que ces identifiants**, et sa liste
    du programme évalué session par session), et `annales.json` s'il existe (ne pas indexer
    deux fois). Le fichier est un objet `{ complet, depuis, sujets }` ; `depuis` vaut 2021.
-2. **Trouve les sujets officiels** du lot : de préférence les pages du ministère
+2. **Tous les lieux d'examen** du lot, pas seulement la métropole (charte § 3.2 : centres
+   étrangers, Amérique du Nord et du Sud, Asie, Polynésie, Nouvelle-Calédonie,
+   Antilles-Guyane, La Réunion…, jours 1 et 2, sujets de secours publiés). Commence par
+   dresser la liste des sujets publiés de l'année, puis indexe-les tous.
+   **Trouve les sujets officiels** : de préférence les pages du ministère
    (`education.gouv.fr`, `eduscol.education.gouv.fr`), sinon un site qui reproduit le sujet
    officiel (APMEP, etc.). Note l'adresse exacte dans `url`. Si le réseau bloque toutes les
    sources, arrête-toi et dis lesquelles ont été refusées.

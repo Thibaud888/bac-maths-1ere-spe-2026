@@ -149,8 +149,12 @@ les questions. Champs marqués `?` : facultatifs.
           "formulations": ["Démontrer par récurrence que, pour tout entier naturel n, 0 ≤ uₙ ≤ 2."] } ] } ] }
 ```
 
-- `complet: true` seulement quand toutes les sessions depuis `depuis` sont indexées ; tant
-  que `false`, **aucune fréquence n'est publiée** (§ 5.1).
+- **Tous les lieux d'examen comptent**, pas seulement la métropole : métropole (jours 1 et
+  2), centres étrangers, Amérique du Nord, Amérique du Sud, Asie, Polynésie,
+  Nouvelle-Calédonie, Antilles-Guyane, La Réunion…, ainsi que les sujets de secours ou de
+  remplacement publiés. Chaque sujet compte pour un, quel que soit le lieu.
+- `complet: true` seulement quand tous les sujets publiés depuis `depuis` sont indexés ;
+  tant que `false`, **aucune fréquence n'est publiée** (§ 5.1).
 - `programmeEvalue` ∈ `complet`, `partiel`. Les sessions 2021 à 2023 étaient prévues en
   mars sur une partie du programme (à relever session par session dans les notes de service) :
   `partiel` + `exclus: [ids]`. Depuis 2024 (juin) : programme complet, à confirmer.
@@ -192,7 +196,8 @@ formulations **réelles** relevées dans `annales.json` (vide tant que l'index n
   "sections": [ { "notion": "n-limites-suites-monotone-bornee", "blocs": [ … ] } ] }
 ```
 
-Une section par notion, dans l'ordre des notions. Chaque bloc : `id`, `type`, `titre?`,
+Une section par notion, dans l'ordre des notions ; **chaque section s'affiche sur sa propre
+page** (§ 11). Chaque bloc : `id`, `type`, `titre?`,
 `capacites` (obligatoire sur les blocs formels : `definition`, `propriete`,
 `demonstration`, `methode`, `exemple`, `experience`, `complement`, `code`, `lien-matiere` ;
 facultatif sinon) et les champs de son type (§ 4.2).
@@ -472,10 +477,19 @@ en dépendent ; `--partie exercices` contrôle tout.
   (accent `blue` maths, `violet` physique-chimie, lus dans `SPACES`).
 - Onglets du chapitre, dans cet ordre : **Aperçu · Cours · Exercices · Type bac · Mémo**
   (`SectionTabs`) ; le chapitre « Méthodes » n'a pas l'onglet Type bac.
-- **Cours** sur le gabarit `PageLongue` (sommaire à droite dès `xl`, section numérotée par
-  notion, étiquette de priorité dans le titre). Rien de replié, **sauf** : réponses des
+- **Le chapitre reste l'unité de navigation, la notion l'unité de lecture** (décision du
+  2026-09-24) : la barre latérale ne liste que les chapitres ; dans l'onglet Cours, **une
+  page par notion** (`/terminale/<matiere>/<chapitre>/cours/<notion>`, où `<notion>` est la
+  fin de l'identifiant `n-<chapitre>-<notion>` ; `/cours` seul ouvre la dernière notion lue,
+  sinon la première). Chaque page de notion suit le gabarit `PageLongue` : sommaire à droite
+  dès `xl` qui liste les notions du chapitre (celle en cours surlignée, étiquettes de
+  priorité) et les blocs de la notion ; boutons « notion précédente / suivante » ; en fin de
+  page, lien vers les exercices de la notion. Rien de replié, **sauf** : réponses des
   `verifie`, étapes des `exemple` (bouton « tout afficher »), démonstrations non exigibles
   (titre visible). À confirmer avec Thibaud sur le chapitre pilote.
+- **Taille d'un chapitre** : 3 à 6 notions, chacune lisible en 20 à 40 minutes. Au-delà de
+  6, on coupe en deux chapitres (comme « Raisonnement par récurrence et suites » et
+  « Limites de suites »), jamais en sous-chapitres.
 - **Code** : bloc à chasse fixe, défilement horizontal dans son propre cadre, jamais passé
   par le rendu Markdown.
 - **Étiquette de priorité** : un seul composant, trois niveaux, lisible sans la couleur

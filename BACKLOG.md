@@ -141,11 +141,14 @@
 - [ ] Laisser les sessions ouvrir le site du ministère — le 2026-09-23, le réseau de la session
   a refusé `www.education.gouv.fr` (proxy : CONNECT refusé, politique de l'environnement) ;
   la page « Exposé » a dû être vérifiée sur les extraits relevés par la vérification (#76).
-  À faire par Thibaud : ajouter `www.education.gouv.fr` (et, pour les mêmes raisons,
-  `eduscol.education.gouv.fr`, `www.legifrance.gouv.fr`, ainsi que `www.apmep.fr` pour les
-  sujets de bac passés de la terminale) aux domaines autorisés de
-  l'environnement cloud (menu de l'environnement dans la barre de titre → Edit → accès
-  réseau). DoD : une session ouvre `https://www.education.gouv.fr/bo/2026/Special4/MENE2622694N`.
+  À faire par Thibaud (en cours depuis le 2026-09-24) : menu de l'environnement dans la
+  barre de titre → Edit → accès réseau → **Personnalisé**, cocher la case qui garde la liste
+  par défaut (« Also include default list of common package managers ») pour conserver les
+  sites de confiance, puis une adresse par ligne : `*.education.gouv.fr` (ministère et
+  éduscol), `*.legifrance.gouv.fr`, `*.apmep.fr` et `*.labolycee.org` (sujets de bac passés
+  de maths et de physique-chimie). La recherche web marche déjà sans ce réglage ; c'est
+  l'ouverture des pages qui était bloquée. Le réglage vaut pour les **nouvelles** sessions.
+  DoD : une session ouvre `https://www.education.gouv.fr/bo/2026/Special4/MENE2622694N`.
 - [ ] Décider s'il faut un référentiel du grand oral avant d'ajouter d'autres conseils —
   CLAUDE.md § 4.3 : si le contenu « méthode » du grand oral prend de l'ampleur, écrire d'abord
   un skill « grand oral » et repasser au workflow 2 passes. Depuis #81, trois pages de méthode
@@ -198,7 +201,8 @@
   `annales-indexeur` ; commande `/tle-chapitre` ; CLAUDE.md § 14, MAP.md.
   `node scripts/verify.mjs` OK. Session du 2026-09-24. PR : #85.
 
-**Phase 1 — les fondations**
+**Phase 1 — les fondations** (dans de nouvelles sessions, après le réglage réseau ; textes à
+coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
 
 - [ ] (P1) Écrire la liste officielle de ce qu'il faut savoir en maths de terminale — référentiel :
   skill `bac-maths-terminale-2027` (format de l'épreuve 2027 relevé dans la note de service
@@ -235,7 +239,9 @@
   DoD : `node scripts/verify.mjs` OK, nouveaux tests.
 - [ ] (P1) Construire les pages « Aperçu » et « Cours » d'un chapitre de terminale — routes
   `/terminale/<matiere>/:slug` et `/cours`, onglets, `sections()` de `tle-maths` et
-  `tle-physique-chimie`, rendu de chaque type de bloc (charte § 4.2) sur `PageLongue`, dont
+  `tle-physique-chimie`, **une page par notion** dans le cours (`/cours/<notion>`, sommaire
+  des notions, précédente / suivante — charte § 11), rendu de chaque type de bloc
+  (charte § 4.2) sur `PageLongue`, dont
   les blocs de code en chasse fixe (jamais passés par le rendu du texte), étiquette de
   priorité, progression par notion (`btm-2027-`, `bpc-2027-`), accueil de la matière, page
   `/terminale/<matiere>/methodes` (chapitre transverse). Mêmes composants pour les deux
@@ -250,12 +256,13 @@
 **Phase 3 — les chapitres pilotes**
 
 - [ ] (P1) Écrire le premier chapitre de maths, pour valider la méthode — `/tle-chapitre maths
-  <slug>` sur le chapitre en cours en classe (par défaut `recurrence-suites`), partie cours
+  <slug>` sur le chapitre que Thibaud désigne (par défaut le premier de l'ordre proposé,
+  `recurrence-suites`), partie cours
   puis partie exercices ; Thibaud relit, la charte est ajustée à la suite ; la session ajoute
   ici un item par chapitre suivant. DoD : chapitre fini au sens de la charte § 9, retours de
   Thibaud notés dans la charte.
 - [ ] (P1) Écrire le premier chapitre de physique-chimie, pour valider la méthode — même
-  chose, par défaut `acides-bases` ou le chapitre en cours en classe. DoD : idem.
+  chose, sur le chapitre que Thibaud désigne (par défaut `acides-bases`). DoD : idem.
 
 **Phase 4 — la production**
 
@@ -268,7 +275,9 @@
   items par chapitre (« le cours », « les exercices »), ajoutés ici par les sessions pilotes ;
   plusieurs sessions en parallèle possibles, un chapitre chacune.
 - [ ] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
-  2021-2026 → `content/terminale/maths/annales.json` (objet `{ complet, depuis, sujets }`) ;
+  2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
+  du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
+  publiés) → `content/terminale/maths/annales.json` (objet `{ complet, depuis, sujets }`) ;
   `scripts/frequences-annales.mjs <matiere> <chapitre>` (par notion : sujets où au moins une
   de ses lignes est mobilisée, sur les sujets où elle pouvait tomber — sessions de mars
   2021-2023 limitées à leur programme ; refuse de publier tant que l'index n'est pas

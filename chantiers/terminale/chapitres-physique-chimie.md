@@ -32,8 +32,10 @@
 
 ## Chapitres
 
-L'ordre alterne chimie et physique, comme la plupart des progressions de classe ; il sera
-remplacé par l'ordre réel de la classe si Thibaud le fournit.
+**Proposition** (décision du 2026-09-24 : pas de progression de classe fournie) : l'ordre
+alterne chimie et physique, comme la plupart des progressions de classe, et place tôt ce
+qui revient le plus au bac (acides et bases, mouvement, titrages, cinétique). **Thibaud dira
+quel chapitre écrire d'abord** ; par défaut, le premier.
 
 | # | Slug | Chapitre | Thème du programme | Poids estimé |
 |---|---|---|---|---|

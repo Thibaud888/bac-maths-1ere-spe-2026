@@ -99,7 +99,7 @@ chapitre et des chapitres précédents, jamais celles d'un chapitre à venir).
 ```
 /terminale/maths                         accueil de la matière
 /terminale/maths/<chapitre>              Aperçu
-/terminale/maths/<chapitre>/cours
+/terminale/maths/<chapitre>/cours/<notion>   une page par notion (/cours seul : la dernière lue)
 /terminale/maths/<chapitre>/exercices    (?niveau=1|2|3 & ?notion=<id>)
 /terminale/maths/<chapitre>/type-bac
 /terminale/maths/<chapitre>/memo
@@ -128,8 +128,10 @@ expertes, SVT…) = un dossier de contenu + un référentiel + une entrée dans 
   tirées des sujets) ; les rappels de première utiles (liens vers `/premiere/maths/...`) ;
   deux entrées : **Apprendre le chapitre** (ordre du cours) et **Réviser l'essentiel**
   (incontournables d'abord).
-- **Cours** — gabarit `PageLongue` (sommaire collé à droite sur grand écran, une section
-  numérotée par notion, l'étiquette de priorité dans le titre de section). Blocs typés :
+- **Cours** — **une page par notion** (décision du 2026-09-24, § 4.5), sur le gabarit
+  `PageLongue` : sommaire collé à droite sur grand écran avec les notions du chapitre
+  (étiquettes de priorité, celle en cours surlignée) et les blocs de la notion ; boutons
+  « notion précédente / suivante ». Blocs typés :
   l'idée, définition, propriété, démonstration, exemple pas à pas, méthode, piège,
   à retenir, rappel de première, « vérifie que tu as compris », figure, figure animée.
   Le texte n'est jamais replié ; seules les réponses et les étapes d'un exemple se
@@ -148,6 +150,23 @@ Rien à inventer : la barre latérale groupe déjà les espaces par année (`src
 La fonction `sections()` des espaces `tle-maths` et `tle-physique-chimie` listera les
 chapitres par domaine, comme en première, avec les méthodes transverses en tête. Les onglets
 du chapitre passent par `SectionTabs`, comme `ChapterLayout`.
+
+### 4.5 Chapitre ou sous-chapitres ? (décision du 2026-09-24)
+
+Question de Thibaud : un chapitre peut contenir beaucoup de notions ; faut-il le couper en
+sous-chapitres (une page pour les suites arithmétiques, une pour les géométriques…) ?
+
+Réponse retenue : **le chapitre reste l'unité de navigation, la notion devient l'unité de
+lecture.**
+
+- La barre latérale ne liste que les chapitres, comme le cahier de l'élève et le bac : une
+  quinzaine d'entrées par matière, pas soixante.
+- Dans l'onglet Cours, **chaque notion a sa propre page** (20 à 40 minutes de lecture), avec
+  « notion précédente / suivante » : on n'a jamais un chapitre entier à faire défiler.
+- L'Aperçu donne la carte des notions ; les exercices se filtrent par notion ; la
+  progression se suit par notion.
+- Un chapitre garde **3 à 6 notions** ; s'il en faut plus, on le coupe en deux chapitres
+  (c'est déjà le cas pour « Récurrence et suites » / « Limites de suites »).
 
 ---
 
@@ -171,6 +190,9 @@ L'exigence la plus forte de Thibaud. Trois leviers, qui s'additionnent :
   tant que l'index est partiel, aucun chiffre n'est publié.
 - Une correction, toujours écrite avec sa raison : une notion **indispensable à d'autres**
   monte d'un cran (ex. les limites, sans lesquelles aucune étude de fonction).
+- On compte **tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
+  du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion…), soit une
+  dizaine de sujets par an au lieu d'un ou deux : la mesure est bien plus solide.
 - Tant que l'index n'existe pas, l'étiquette est une **estimation** (`chapitres-*.md`) et le
   site l'affiche comme telle (« estimation, en attente du décompte des sujets »).
 
@@ -300,8 +322,9 @@ physique-chimie »), titres en clair.
 | **5. Réviser et donner envie** | Répétition espacée et « mes erreurs » ; « Réviser pour le bac » ; sujets complets chronométrés ; figures animées ; épreuve pratique de physique-chimie ; fiches imprimables | phase 4 entamée | oui |
 
 **Urgence** : l'année a commencé. Le premier chapitre utile doit arriver vite : les
-phases 1 et 2 tournent en parallèle, et la production suit **l'ordre de la classe**
-(question posée à Thibaud le 2026-09-24).
+phases 1 et 2 tournent en parallèle. La production suit **l'ordre de l'année** proposé
+dans `chapitres-*.md` (décision de Thibaud du 2026-09-24 : option « ordre de la classe »,
+sans progression fournie) ; **Thibaud indique quel chapitre écrire d'abord**.
 
 ---
 

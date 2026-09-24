@@ -31,11 +31,13 @@ fait passer devant ce qui compte au bac.
      première, pour les prérequis `1e:<slug>`).
 2. **Relève les lignes du programme** dont `chapitre` vaut le slug. Ce sont celles que tu
    dois toutes répartir.
-3. **Découpe en 3 à 7 notions** (en mode `priorites`, saute les étapes 2, 3, 5 et 7 : tu ne
-   touches qu'à `priorite`, `priorisation`, `pourquoi` et `attendusBac`). Une notion = ce qu'un élève apprend en une séance (20 à 40 min
-   de cours), autour d'un geste que le bac demande. Ordre logique d'apprentissage (on ne
-   place pas un théorème avant sa définition). Chaque ligne du programme du chapitre va dans
-   **exactement une** notion.
+3. **Découpe en 3 à 6 notions** (en mode `priorites`, saute les étapes 2, 3, 5 et 7 : tu ne
+   touches qu'à `priorite`, `priorisation`, `pourquoi` et `attendusBac`). Chaque notion aura
+   sa propre page de cours (charte § 11) ; s'il en faut plus de 6, propose dans ton
+   compte-rendu de couper le chapitre en deux. Une notion = ce qu'un élève apprend en une
+   séance (20 à 40 min de cours), autour d'un geste que le bac demande. Ordre logique
+   d'apprentissage (on ne place pas un théorème avant sa définition). Chaque ligne du
+   programme du chapitre va dans **exactement une** notion.
 4. **Priorité de chaque notion** (charte § 5.1) :
    - mode `priorites` : **recopie** les chiffres du rapport (tu ne calcules rien), applique
      les repères (≥ 50 % → 3, 20-50 % → 2, < 20 % → 1), `priorisation: "annales"`,

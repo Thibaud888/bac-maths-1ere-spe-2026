@@ -36,6 +36,7 @@ CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-
   figures-courbes-roadmap.md   # réserve de travail : figures/lecture graphique par chapitre
 chantiers/terminale/    # PLAN DIRECTEUR de la terminale (README) + découpage proposé des
                         # chapitres (chapitres-maths.md, chapitres-physique-chimie.md)
+                        # + textes de lancement des sessions suivantes (reprise-phase-1.md)
 schemas/                # JSON Schema Ajv (maths à la racine, francais/, bac/, grand-oral/)
 content/
   chapters/<slug>/      # maths : meta, formulas, automatisms, classics, exam-style (JSON)
