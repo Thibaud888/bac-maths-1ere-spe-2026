@@ -4,37 +4,31 @@
 > se colle tel quel dans une **nouvelle** session Cloud sur
 > `Thibaud888/bac-maths-1ere-spe-2026`. Une session = un item = une PR.
 
-## Avant tout : le réglage réseau (à faire par Thibaud, une fois)
+## Avant tout : l'accès aux textes officiels
 
-Menu de l'environnement (barre de titre) → Edit → accès réseau → **Personnalisé** →
-cocher la case qui garde la liste par défaut (« Also include default list of common package
-managers ») → une adresse par ligne :
+Le réglage réseau est fait (2026-09-24) : APMEP et Labolycée s'ouvrent. Le site du ministère,
+lui, refuse les sessions cloud (403) : les sessions A et B demandent à Thibaud, en début de
+session, les textes du Bulletin officiel dont elles ont besoin — marche à suivre dans
+`docs/sources-officielles.md`.
 
-```
-*.education.gouv.fr
-*.legifrance.gouv.fr
-*.apmep.fr
-*.labolycee.org
-```
-
-Le réglage vaut pour les sessions **démarrées après** l'enregistrement.
-
-## Session A — la liste officielle du programme de maths (réseau requis)
+## Session A — la liste officielle du programme de maths (textes officiels requis)
 
 ```
 Traite l'item de BACKLOG.md « Écrire la liste officielle de ce qu'il faut savoir en maths
 de terminale ». Lis d'abord MAP.md, CLAUDE.md § 14, chantiers/terminale/README.md et la
-charte .claude/skills/terminale-charte/SKILL.md (§§ 2, 3.1, 9). Vérifie d'abord que tu
-ouvres https://www.education.gouv.fr/bo/2026/Special4/MENE2622694N ; sinon arrête-toi et
-dis-le. Tout vient du texte officiel, rien de mémoire.
+charte .claude/skills/terminale-charte/SKILL.md (§§ 2, 3.1, 9), puis
+docs/sources-officielles.md : le site du ministère refuse les sessions cloud, alors
+demande-moi d'abord, en une seule liste, les textes officiels qu'il te faut (dont
+https://www.education.gouv.fr/bo/2026/Special4/MENE2622694N). Tout vient du texte
+officiel, rien de mémoire.
 ```
 
-## Session B — la même chose en physique-chimie (réseau requis, parallèle à A)
+## Session B — la même chose en physique-chimie (textes officiels requis, parallèle à A)
 
 ```
 Traite l'item de BACKLOG.md « Écrire la liste officielle de ce qu'il faut savoir en
-physique-chimie de terminale ». Mêmes lectures et même contrôle d'accès que pour les maths
-(chantiers/terminale/reprise-phase-1.md, session A).
+physique-chimie de terminale ». Mêmes lectures et même demande des textes officiels que
+pour les maths (chantiers/terminale/reprise-phase-1.md, session A).
 ```
 
 ## Session C — la mécanique du site (sans réseau, parallèle à A et B)

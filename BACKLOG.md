@@ -138,17 +138,15 @@
   Relu en captures (accueil, le bac, simulateur, formulaire, exercices, bac blanc, grand oral,
   fiches de français, sélecteur sur ordinateur et téléphone).
   `node scripts/verify.mjs` OK, 177 tests (169 + 8). PR : #83.
-- [ ] Laisser les sessions ouvrir le site du ministère — le 2026-09-23, le réseau de la session
-  a refusé `www.education.gouv.fr` (proxy : CONNECT refusé, politique de l'environnement) ;
-  la page « Exposé » a dû être vérifiée sur les extraits relevés par la vérification (#76).
-  À faire par Thibaud (en cours depuis le 2026-09-24) : menu de l'environnement dans la
-  barre de titre → Edit → accès réseau → **Personnalisé**, cocher la case qui garde la liste
-  par défaut (« Also include default list of common package managers ») pour conserver les
-  sites de confiance, puis une adresse par ligne : `*.education.gouv.fr` (ministère et
-  éduscol), `*.legifrance.gouv.fr`, `*.apmep.fr` et `*.labolycee.org` (sujets de bac passés
-  de maths et de physique-chimie). La recherche web marche déjà sans ce réglage ; c'est
-  l'ouverture des pages qui était bloquée. Le réglage vaut pour les **nouvelles** sessions.
-  DoD : une session ouvre `https://www.education.gouv.fr/bo/2026/Special4/MENE2622694N`.
+- [x] Laisser les sessions ouvrir le site du ministère — réglage réseau fait par Thibaud
+  (2026-09-24 : `*.education.gouv.fr`, `*.legifrance.gouv.fr`, `*.apmep.fr`,
+  `*.labolycee.org`). Résultat : APMEP et Labolycée s'ouvrent ; le ministère, éduscol et
+  Légifrance répondent 403 (protection Cloudflare **du site**, qui refuse les serveurs cloud)
+  — aucun réglage ne le lève. Marche à suivre choisie par Thibaud : sujets de bac via APMEP /
+  Labolycée, textes réglementaires fournis par lui (texte collé ou PDF dans
+  `docs/textes-officiels/`). Documenté dans `docs/sources-officielles.md`, signalé dans
+  CLAUDE.md § 0, MAP.md, `annales-indexeur` et les textes de reprise.
+  `node scripts/verify.mjs` OK. Session du 2026-09-24.
 - [ ] Décider s'il faut un référentiel du grand oral avant d'ajouter d'autres conseils —
   CLAUDE.md § 4.3 : si le contenu « méthode » du grand oral prend de l'ampleur, écrire d'abord
   un skill « grand oral » et repasser au workflow 2 passes. Depuis #81, trois pages de méthode
@@ -174,9 +172,9 @@
   auto-évaluation sans points). Persistance `bgo-2027-grand-oral`, isolation vérifiée dans
   Chromium. `node scripts/verify.mjs` OK, 152 tests (121 de référence + 31 nouveaux). PR : #75.
 - [ ] Relire la page « L'épreuve » du grand oral sur le texte intégral du Bulletin officiel —
-  la session du 2026-09-22 n'a pas pu ouvrir education.gouv.fr (bloqué par le réseau de la
-  session) : chaque affirmation vient d'extraits du texte `s-grand-oral` obtenus par moteur de
-  recherche et recoupés. À confirmer sur le texte : la place du projet d'orientation dans
+  la session du 2026-09-22 n'a pas pu ouvrir education.gouv.fr (le site refuse les sessions
+  cloud ; texte à demander à Thibaud, `docs/sources-officielles.md`) : chaque affirmation
+  vient d'extraits du texte `s-grand-oral` obtenus par moteur de recherche et recoupés. À confirmer sur le texte : la place du projet d'orientation dans
   l'exposé (la page n'en fait pas une règle), et le contenu de la grille indicative (annexe,
   non reproduite). DoD : fiches `content/terminale/grand-oral/epreuve.json` et `deroule.json`
   conformes au texte, `node scripts/verify.mjs` OK.
@@ -201,8 +199,9 @@
   `annales-indexeur` ; commande `/tle-chapitre` ; CLAUDE.md § 14, MAP.md.
   `node scripts/verify.mjs` OK. Session du 2026-09-24. PR : #85.
 
-**Phase 1 — les fondations** (dans de nouvelles sessions, après le réglage réseau ; textes à
-coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
+**Phase 1 — les fondations** (dans de nouvelles sessions ; textes officiels fournis par
+Thibaud, voir `docs/sources-officielles.md` ; textes à coller prêts dans
+`chantiers/terminale/reprise-phase-1.md`)
 
 - [ ] (P1) Écrire la liste officielle de ce qu'il faut savoir en maths de terminale — référentiel :
   skill `bac-maths-terminale-2027` (format de l'épreuve 2027 relevé dans la note de service
@@ -212,8 +211,9 @@ coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
   les approfondissements possibles) + son schéma ; relève aussi le programme évalué à
   chaque session depuis 2021 (mars 2021-2023 : parties exclues) et tranche le logarithme
   décimal (dans le programme de spécialité ou non). Confirme ou corrige
-  `chantiers/terminale/chapitres-maths.md`. Prérequis : accès réseau au site du ministère
-  (item plus haut). DoD : `programme.json` validé, `node scripts/verify.mjs` OK.
+  `chantiers/terminale/chapitres-maths.md`. Prérequis : textes du Bulletin officiel fournis
+  par Thibaud (`docs/sources-officielles.md`). DoD : `programme.json` validé,
+  `node scripts/verify.mjs` OK.
 - [ ] (P1) Écrire la liste officielle de ce qu'il faut savoir en physique-chimie de terminale —
   même travail : `bac-physique-chimie-terminale-2027` + `programme.json` (`bo-pc-…`, avec
   capacités expérimentales et numériques, et les acquis de première mobilisables `bo-pc1-…`),
@@ -296,7 +296,8 @@ coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
   2021-2023 limitées à leur programme ; refuse de publier tant que l'index n'est pas
   complet) ; priorités des chapitres déjà écrits recalculées (`tle-architecte`, mode
   `priorites`).
-  Prérequis : référentiel maths + accès aux sujets (apmep.fr ou site du ministère).
+  Prérequis : référentiel maths ; sujets sur apmep.fr (le site du ministère refuse les
+  sessions cloud, `docs/sources-officielles.md`).
   DoD : index complet, rapport de fréquences dans la PR.
 - [ ] (P3) Compter ce qui tombe vraiment au bac de physique-chimie — même travail.
 

@@ -314,11 +314,11 @@ physique-chimie »), titres en clair.
 
 | Phase | Items | Prérequis | En parallèle ? |
 |---|---|---|---|
-| **1. Fondations** | Référentiel maths ; référentiel physique-chimie ; références officielles des épreuves 2027 | accès réseau à `education.gouv.fr` / `eduscol` | oui, entre eux et avec la phase 2 |
+| **1. Fondations** | Référentiel maths ; référentiel physique-chimie ; références officielles des épreuves 2027 | textes officiels fournis par Thibaud (`docs/sources-officielles.md`) | oui, entre eux et avec la phase 2 |
 | **2. Mécanique** | Schémas + chargeur + script de couverture ; pages Aperçu + Cours ; pages Exercices + Type bac + Mémo + progression | la charte (faite) | oui avec la phase 1 |
 | **3. Pilotes** | Premier chapitre de maths complet ; premier chapitre de physique-chimie complet ; retour de Thibaud → charte ajustée | phases 1 et 2 | maths et physique en parallèle |
 | **4. Production** | La page « Méthodes » de chaque matière ; puis un chapitre à la fois, dans l'ordre de l'année (deux items par chapitre) | pilotes | plusieurs sessions en parallèle, un chapitre chacune |
-| **4 bis. Mesure** | Index des annales maths puis physique-chimie → priorités mesurées | référentiel + accès réseau aux annales | oui, à tout moment après la phase 1 |
+| **4 bis. Mesure** | Index des annales maths puis physique-chimie → priorités mesurées | référentiel + sujets sur APMEP / Labolycée | oui, à tout moment après la phase 1 |
 | **5. Réviser et donner envie** | Répétition espacée et « mes erreurs » ; « Réviser pour le bac » ; sujets complets chronométrés ; figures animées ; épreuve pratique de physique-chimie ; fiches imprimables | phase 4 entamée | oui |
 
 **Urgence** : l'année a commencé. Le premier chapitre utile doit arriver vite : les

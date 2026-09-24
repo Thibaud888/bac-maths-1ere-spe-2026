@@ -9,6 +9,9 @@
   `BACKLOG.md` en fin de session.
 - **Écris l'outil, pas l'output** — à la 3e récurrence d'une même tâche, écris un script
   réutilisable (`scripts/`), pas juste le résultat.
+- **Textes officiels et sujets de bac** — le site du ministère (education.gouv.fr, éduscol,
+  Légifrance) refuse les sessions cloud, quel que soit le réglage réseau ; APMEP et Labolycée
+  s'ouvrent. Ne pas s'arrêter : marche à suivre dans `docs/sources-officielles.md`.
 - **La PR se merge automatiquement dès que la CI est verte** (pas d'attente de relecture par
   défaut). CI rouge → PR laissée ouverte, jamais mergée à l'aveugle. **Repo sans CI** : le
   merge auto exige une section `## Vérification` (commande + résultat) dans le corps de la PR.

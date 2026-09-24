@@ -34,6 +34,9 @@ CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-
   commands/             # /new-chapter, /verify-conformity, /new-module-francais, /verify-francais,
                         # /tle-chapitre (un chapitre de terminale de bout en bout)
   figures-courbes-roadmap.md   # réserve de travail : figures/lecture graphique par chapitre
+docs/sources-officielles.md  # ACCÈS aux textes officiels et aux sujets de bac depuis le cloud
+                        # (ministère bloqué, APMEP et Labolycée ouverts, textes fournis par
+                        # Thibaud dans docs/textes-officiels/)
 chantiers/terminale/    # PLAN DIRECTEUR de la terminale (README) + découpage proposé des
                         # chapitres (chapitres-maths.md, chapitres-physique-chimie.md)
                         # + textes de lancement des sessions suivantes (reprise-phase-1.md)
@@ -133,6 +136,9 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
 - Déploiement : merger sur `main` (Pages via deploy.yml)
 
 ## Pièges
+- Le site du ministère (education.gouv.fr, éduscol, Légifrance) répond 403 aux sessions cloud,
+  même autorisé dans le réseau : ne pas s'arrêter ni retoucher le réglage →
+  `docs/sources-officielles.md` (annales via APMEP / Labolycée, textes fournis par Thibaud).
 - Contenu pédagogique **sans les 2 passes** = interdit (CLAUDE.md §7 et §13.6) — en terminale,
   sans le circuit `tle-*` (charte `terminale-charte`).
 - Première : hors-programme interdit (ln, intégrales… → SKILL.md §6) ; tout calcul **sans
