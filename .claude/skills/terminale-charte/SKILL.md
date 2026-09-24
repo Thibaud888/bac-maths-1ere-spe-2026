@@ -67,7 +67,17 @@ content/terminale/<matiere>/            matiere ∈ { maths, physique-chimie }
   chapitres/methodes-<matiere>/         la page « Méthodes » (chapitre transverse, § 2.1)
 public/figures/terminale/<matiere>/<slug>/<nom>.svg   figures statiques (SVG de préférence)
 schemas/terminale/                      schémas Ajv, dont figure.schema.json (jamais ceux de première)
+src/lib/terminale/                      chargeur (content.ts), types, validateurs
+tests/fixtures/terminale/               chapitre-témoin : même arborescence que content/terminale/
 ```
+
+**Le chapitre-témoin** (`tests/fixtures/terminale/`) : trois chapitres d'essai
+(`temoin-maths`, `temoin-methodes-maths`, `temoin-physique-chimie`) qui contiennent chaque type
+de bloc, de réponse et d'exercice, avec des textes d'essai et des lignes de programme fictives
+(`bo-m-temoin-…`). Ce n'est pas du contenu : il sert à construire et tester les pages avant le
+premier vrai chapitre. Le chargeur ne l'ajoute qu'**en développement**, avec `VITE_TEMOIN=1`
+(`npm run dev:temoin`) ; il n'entre jamais dans le site publié (`verify.mjs` le contrôle). Il
+passe la couverture sans écart : une évolution des schémas ou des contrôles le met à jour.
 
 Les slugs de chapitre sont en `kebab-case`, sans accent, **uniques entre les matières**
 (d'où `methodes-maths` et `methodes-physique-chimie`).
@@ -107,6 +117,25 @@ croisés avec `bms-2026-*`, `bfr-2026-*`, `btl-2027-*`, `bgo-2027-*`.
 ---
 
 ## 3. Modèle de données (cahier des charges des schémas)
+
+> **Schémas écrits le 2026-09-24** : `schemas/terminale/` (`commun`, `figure`, `programme`,
+> `annales`, `meta`, `notion`, `cours`, `exercice`, `type-bac`, `memo`, `flash`). Ils font foi
+> pour les noms de champs ; cette section en est le commentaire. Précisions qu'ils ont fixées :
+> - tout bloc de cours accepte `titre?` et `capacites?` ; `propriete.conditions` est une
+>   **liste** (vide si aucune hypothèse) ; les `etapes` d'un `exemple` et d'une
+>   `demonstration` sont des `{ texte, pourquoi? }`, celles d'une `methode` du texte seul ;
+> - un renvoi (`rappel.lien`, `lien-matiere.lien`) est typé : `n-…` (notion), `l-…` (bloc)
+>   ou `1e:<slug>` (chapitre de maths de première) — les pages en font une adresse ;
+> - `indices` est facultatif (absent = aucun indice) ; `figure` se place sur l'exercice, pas
+>   sur une question ;
+> - numérique : **une** tolérance exactement (`tolerance` ou `toleranceRelative` ≤ 1) ;
+> - `meta.domaine` est absent pour le chapitre transverse ; `meta.essentiel` a trois lignes ;
+> - `programme.json` : `bo-pc1-…` ⇔ `premiere: true` (alors `chapitre` est facultatif) ;
+>   `rubrique: "approfondissement"` ⇒ `exigible: false` ;
+> - carte du mémo : `conditions?` est un texte ; question éclair : `duree` en secondes (5 à 60).
+>
+> La **forme** des marches (§ 6), le nombre d'exercices type bac et tout ce qui dépend du
+> programme se contrôlent dans `scripts/couverture-terminale.mjs`, pas dans les schémas.
 
 **Texte** : le rendu du site (`src/components/math/TextWithMath.tsx`) ne connaît que les
 paragraphes, `**gras**`, les listes à tirets, les tableaux et le LaTeX KaTeX (`$…$`,
@@ -241,7 +270,11 @@ officiel ; l'un des deux est obligatoire.
 
 Comme un exercice, avec `points` (total), `duree`, `calculatrice`, et par question
 `points`, `sousQuestions?`, `attenduCorrecteur` (ce qui rapporte les points), sans
-`niveau`. `source?` comme au § 3.7.
+`niveau`. `source?` comme au § 3.7. Une question découpée porte ses `sousQuestions` (au
+moins deux : `id`, `label`, `enonce`, `points`, `attenduCorrecteur`, `solution`, et
+`reponse?`, `indices?`, `revoir?`, `code?`, `erreurFrequente?`) et n'a alors ni solution, ni
+attendu, ni réponse propres. Les totaux (exercice = somme des questions, question = somme
+des sous-questions) sont vérifiés par `validate-content.mjs`.
 
 ### 3.9 `memo.json` et `flash.json`
 
@@ -435,12 +468,33 @@ sont au § 9.2.
 
 ### 9.3 Le contrôle automatique
 
-`scripts/couverture-terminale.mjs <matiere> <chapitre> [--partie cours|exercices]` (écrit par
-l'item « mécanique ») signale : identifiants inconnus ou dupliqués, lignes du chapitre hors
-notion, exigences du § 9.2 non remplies, planchers du § 5.3 non atteints, citations
-interdites (chapitre ultérieur, ligne non exigible hors `complement` / marche 3).
-`--partie cours` ne contrôle que `meta`, `notions`, `cours`, `memo` et les exigences qui
-en dépendent ; `--partie exercices` contrôle tout.
+`scripts/couverture-terminale.mjs <matiere> <chapitre> [--partie cours|exercices]` signale :
+identifiants inconnus ou dupliqués, lignes du chapitre hors notion, exigences du § 9.2 non
+remplies, planchers du § 5.3 non atteints, citations interdites (chapitre ultérieur, ligne
+non exigible hors `complement` / marche 3). `--partie cours` ne contrôle que `meta`,
+`notions`, `cours`, `memo` et les exigences qui en dépendent ; `--partie exercices` (par
+défaut) contrôle tout.
+
+Le rapport sépare :
+
+- les **écarts** (bloquants ; « rapport vide » = aucun écart, code de sortie 0) : fichier
+  illisible ou non conforme au schéma, renvoi vers rien, doublon, total de points faux ; les
+  règles ci-dessus ; forme des marches (§ 6 : nombre de questions et d'indices, durée,
+  réponse vérifiable et `pourquoiFaux` en marche 1, au moins deux notions en marche 3) ;
+  3 à 5 exercices type bac (aucun pour le transverse) ; déroulé d'une section (`idee` en
+  premier, `retenir` en dernier) et une section par notion, dans l'ordre ; 3 à 6 notions ;
+  incontournables minoritaires (§ 5.1) ; `motCle` unique ; `demonstration` exigible sans
+  ligne `demonstration` ; formulation d'`attendusBac` absente de `annales.json` ; image
+  introuvable sous `public/figures/` ;
+- les **avertissements** (à regarder) : plafond indicatif dépassé (double du plancher),
+  carte de mémo pour une notion ★, indices sans `revoir`, valeur numérique sans unité en
+  physique-chimie, priorité estimée dont le `pourquoi` contient un chiffre.
+
+Il se termine par le tableau « compté / plancher » par notion, à recopier dans la PR.
+Options : `--racine tests/fixtures/terminale` (le chapitre-témoin), `--json`.
+`validate-content.mjs` (dans `verify.mjs`) contrôle déjà, pour tout `content/terminale/`,
+les schémas et l'intégrité (renvois, doublons, totaux) ; la couverture, elle, se lance
+chapitre par chapitre.
 
 ### 9.4 Un chapitre (ou une partie) est fini quand
 
@@ -519,8 +573,9 @@ Procédure détaillée : `.claude/commands/tle-chapitre.md`.
    fichier : si la troisième rend encore NEEDS_REVISION, l'orchestrateur pose la question
    à Thibaud. L'orchestrateur compte les tours et les transmet au relecteur.
 6. `tle-eleve-testeur` sur le cours et les exercices, **dans une version sans réponses**
-   (`scripts/sans-reponses.mjs`, item « mécanique ») ; les corrections ne lui sont données
-   qu'après ses essais. Bloquants corrigés puis relus.
+   (`node scripts/sans-reponses.mjs <matiere> <chapitre> --sortie <fichier>` : ni solution,
+   ni indice, ni explication ; choix des QCM gardés, remises en ordre mélangées) ; les
+   corrections ne lui sont données qu'après ses essais. Bloquants corrigés puis relus.
 7. `scripts/couverture-terminale.mjs` et `node scripts/verify.mjs` → § 9.4.
 8. Captures regardées : Aperçu, Cours, une marche, un type bac, Mémo ; clair et sombre ;
    1280 px et 390 px.

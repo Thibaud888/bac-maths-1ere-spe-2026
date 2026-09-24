@@ -479,6 +479,11 @@ Ce qui diffère de la première :
   vaut que pour la première ; chaque exercice de terminale dit si elle sert.
 - **Schémas propres** (`schemas/terminale/`) ; ceux de première ne changent pas. Stockage
   local : `btm-2027-` (maths), `bpc-2027-` (physique-chimie).
+- **Mécanique en place** (2026-09-24) : chargeur `src/lib/terminale/`, schémas et intégrité
+  contrôlés par `validate-content.mjs`, couverture d'un chapitre par
+  `scripts/couverture-terminale.mjs`, version sans réponses par `scripts/sans-reponses.mjs`.
+  Les pages se construisent sur le **chapitre-témoin** (`tests/fixtures/terminale/`, données
+  d'essai, jamais dans `content/`), chargé en développement seulement : `npm run dev:temoin`.
 
 Workflow obligatoire (remplace, pour la terminale, les 2 passes du § 7) :
 

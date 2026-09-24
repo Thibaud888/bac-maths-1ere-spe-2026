@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "terminale/flash.schema.json",
+  "title": "Question éclair de terminale",
+  "description": "Une entrée de flash.json (tableau), écrit par tle-auteur-exercices (charte §§ 3.9 et 8) : un fait, un réflexe, moins de 60 secondes ; réponse contrôlée (jamais redaction).",
+  "type": "object",
+  "required": ["id", "chapitre", "notion", "capacites", "enonce", "reponse", "explication", "duree"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^fl-[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "fl-<chapitre>-<slug>."
+    },
+    "chapitre": { "$ref": "commun.schema.json#/$defs/slug" },
+    "notion": { "$ref": "commun.schema.json#/$defs/idNotion" },
+    "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+    "enonce": { "$ref": "commun.schema.json#/$defs/texte" },
+    "code": { "$ref": "commun.schema.json#/$defs/code" },
+    "reponse": { "$ref": "commun.schema.json#/$defs/reponseVerifiable" },
+    "explication": { "$ref": "commun.schema.json#/$defs/texte", "description": "1 à 3 lignes qui enseignent quelque chose." },
+    "duree": { "type": "integer", "minimum": 5, "maximum": 60, "description": "En secondes." }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "terminale/exercice.schema.json",
+  "title": "Exercice de terminale (marches 1 à 3)",
+  "description": "Une entrée de exercices.json (tableau), écrit par tle-auteur-exercices (charte §§ 3.7 et 6). notions[0] est la notion principale. La forme de chaque marche (nombre de questions et d'indices, durée, réponse vérifiable en marche 1) est contrôlée par scripts/couverture-terminale.mjs, pas par ce schéma.",
+  "type": "object",
+  "required": ["id", "chapitre", "niveau", "notions", "capacites", "titre", "duree", "calculatrice", "ordre", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^x-[a-z0-9]+(-[a-z0-9]+)*-[0-9]{3}$",
+      "description": "x-<chapitre>-<num3>."
+    },
+    "chapitre": { "$ref": "commun.schema.json#/$defs/slug" },
+    "niveau": { "type": "integer", "enum": [1, 2, 3], "description": "1 Comprendre, 2 S'entraîner, 3 Approfondir." },
+    "notions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "commun.schema.json#/$defs/idNotion" }
+    },
+    "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+    "titre": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "duree": { "type": "integer", "minimum": 1, "maximum": 60, "description": "Durée indicative, en minutes." },
+    "calculatrice": { "type": "boolean", "description": "true si elle sert vraiment." },
+    "ordre": { "type": "integer", "minimum": 0 },
+    "preambule": { "$ref": "commun.schema.json#/$defs/texte" },
+    "code": { "$ref": "commun.schema.json#/$defs/code" },
+    "figure": { "$ref": "figure.schema.json" },
+    "source": { "$ref": "commun.schema.json#/$defs/source" },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/question" }
+    }
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "required": ["id", "label", "enonce", "solution"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "commun.schema.json#/$defs/idQuestion" },
+        "label": { "type": "string", "minLength": 1, "maxLength": 12, "description": "Ex. : « 1. », « 2.b) »." },
+        "enonce": { "$ref": "commun.schema.json#/$defs/texte" },
+        "code": { "$ref": "commun.schema.json#/$defs/code" },
+        "reponse": { "$ref": "commun.schema.json#/$defs/reponse" },
+        "indices": {
+          "type": "array",
+          "maxItems": 3,
+          "items": { "$ref": "commun.schema.json#/$defs/texte" },
+          "description": "1 = la piste, 2 = la première étape faite, 3 = presque la solution. Absent : aucun indice."
+        },
+        "revoir": { "$ref": "commun.schema.json#/$defs/idBloc", "description": "Bloc de cours à revoir (lié au premier indice)." },
+        "solution": { "$ref": "commun.schema.json#/$defs/texte", "description": "Rédigée comme au bac ; dernière ligne = la réponse." },
+        "erreurFrequente": { "$ref": "commun.schema.json#/$defs/texte" }
+      }
+    }
+  }
+}

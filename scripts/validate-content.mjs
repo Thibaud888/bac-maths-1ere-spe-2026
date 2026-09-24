@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Valide tous les fichiers JSON de `content/chapters/*` contre les schémas Ajv,
- * ainsi que `content/bac-blanc/`, `content/bac/` et `content/terminale/grand-oral/`.
+ * ainsi que `content/bac-blanc/`, `content/bac/`, `content/terminale/grand-oral/` et les
+ * chapitres de terminale (`content/terminale/<matiere>/`, schémas `schemas/terminale/`).
  * Usage : node scripts/validate-content.mjs
  * Exit 0 si tout est valide, 1 sinon.
  */
@@ -10,6 +11,12 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
+import {
+  compilerSchemas,
+  controlerIntegrite,
+  lireRacine,
+  validerSchemas,
+} from './lib/terminale.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
@@ -278,6 +285,28 @@ if (safeStat(grandOralDir)) {
       invalid += 1;
       problems.push({ file: filePath, message: `[${id}] ${errors.join(' ; ')}` });
     });
+  }
+}
+
+// --- Chapitres de terminale (maths, physique-chimie) ---
+// Schémas propres (schemas/terminale/, instance Ajv à part : l'identifiant
+// figure.schema.json est déjà pris par la première) puis intégrité : renvois,
+// doublons, totaux de points. La couverture du programme, elle, se contrôle chapitre
+// par chapitre avec scripts/couverture-terminale.mjs.
+const matieresTerminale = lireRacine(join(root, 'content', 'terminale'));
+if (matieresTerminale.length > 0) {
+  const validateursTerminale = compilerSchemas();
+  const problemesTerminale = [];
+  for (const matiere of matieresTerminale) {
+    problemesTerminale.push(...matiere.problemes);
+    const resultat = validerSchemas(matiere, validateursTerminale);
+    total += resultat.total;
+    problemesTerminale.push(...resultat.problemes);
+  }
+  problemesTerminale.push(...controlerIntegrite(matieresTerminale));
+  invalid += problemesTerminale.length;
+  for (const p of problemesTerminale) {
+    problems.push({ file: p.fichier, message: `${p.id ? `[${p.id}] ` : ''}${p.message}` });
   }
 }
 
