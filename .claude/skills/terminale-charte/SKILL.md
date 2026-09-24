@@ -386,7 +386,8 @@ sont au § 9.2.
 ## 7. Type bac
 
 - Suit **le format de l'épreuve** relevé dans le référentiel (durée, points, structure,
-  calculatrice). Un exercice type bac = un exercice d'épreuve (maths : ≈ 5 points ;
+  calculatrice). Un exercice type bac = un exercice d'épreuve (maths : 4 à 8 points, un
+  sujet = quatre exercices, le sujet dit si la calculatrice est permise ;
   physique-chimie : 4 à 10 points avec documents).
 - Questions enchaînées mais **rattrapables** : résultats intermédiaires donnés (« On admet
   que… ») pour qu'un blocage n'arrête pas l'exercice.

@@ -19,7 +19,11 @@ managers ») → une adresse par ligne :
 
 Le réglage vaut pour les sessions **démarrées après** l'enregistrement.
 
-## Session A — la liste officielle du programme de maths (réseau requis)
+## Session A — la liste officielle du programme de maths (réseau requis) — faite le 2026-09-24
+
+Constat de cette session : le réglage réseau marche, mais les pages HTML du Bulletin officiel
+refusent la machine Cloud (Cloudflare) ; les **PDF** du ministère s'ouvrent, et suffisent.
+La page de contrôle ci-dessous (MENE2622694N) est d'ailleurs la note du grand oral.
 
 ```
 Traite l'item de BACKLOG.md « Écrire la liste officielle de ce qu'il faut savoir en maths
@@ -33,8 +37,13 @@ dis-le. Tout vient du texte officiel, rien de mémoire.
 
 ```
 Traite l'item de BACKLOG.md « Écrire la liste officielle de ce qu'il faut savoir en
-physique-chimie de terminale ». Mêmes lectures et même contrôle d'accès que pour les maths
-(chantiers/terminale/reprise-phase-1.md, session A).
+physique-chimie de terminale ». Lis d'abord MAP.md, CLAUDE.md § 14,
+chantiers/terminale/README.md, la charte .claude/skills/terminale-charte/SKILL.md (§§ 2, 3.1,
+9) et, comme modèle, le référentiel maths .claude/skills/bac-maths-terminale-2027/SKILL.md.
+Vérifie d'abord que tu ouvres le PDF
+https://www.education.gouv.fr/sites/default/files/document/20260917boenjsspe4pdf-520753.pdf
+(les pages HTML du BO sont refusées aux sessions Cloud, les PDF passent) ; sinon arrête-toi
+et dis-le. Tout vient du texte officiel, rien de mémoire.
 ```
 
 ## Session C — la mécanique du site (sans réseau, parallèle à A et B)

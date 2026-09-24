@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Valide tous les fichiers JSON de `content/chapters/*` contre les schémas Ajv,
- * ainsi que `content/bac-blanc/`, `content/bac/` et `content/terminale/grand-oral/`.
+ * ainsi que `content/bac-blanc/`, `content/bac/`, `content/terminale/grand-oral/` et les
+ * programmes officiels de terminale (`content/terminale/<matiere>/programme.json`).
  * Usage : node scripts/validate-content.mjs
  * Exit 0 si tout est valide, 1 sinon.
  */
@@ -10,6 +11,7 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
+import { matieresAvecProgramme, verifierProgramme } from './programme-conforme.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
@@ -278,6 +280,59 @@ if (safeStat(grandOralDir)) {
       invalid += 1;
       problems.push({ file: filePath, message: `[${id}] ${errors.join(' ; ')}` });
     });
+  }
+}
+
+// --- Terminale : programme officiel de chaque matière (référentiel) ---
+// Schéma, identifiants uniques et préfixe de la matière, puis texte exact du Bulletin
+// officiel (scripts/programme-conforme.mjs).
+const prefixesProgramme = { maths: ['bo-m-'], 'physique-chimie': ['bo-pc-', 'bo-pc1-'] };
+const programmeLigne = ajv.compile(readSchema(join('terminale', 'programme.schema.json')));
+for (const matiere of matieresAvecProgramme()) {
+  const filePath = join(root, 'content', 'terminale', matiere, 'programme.json');
+  let data;
+  try {
+    data = JSON.parse(readFileSync(filePath, 'utf8'));
+  } catch (err) {
+    invalid += 1;
+    problems.push({ file: filePath, message: `JSON invalide : ${err.message}` });
+    continue;
+  }
+  if (!Array.isArray(data)) {
+    invalid += 1;
+    problems.push({ file: filePath, message: `Le fichier doit contenir un tableau (reçu ${typeof data}).` });
+    continue;
+  }
+  const seenIds = new Set();
+  const prefixes = prefixesProgramme[matiere];
+  data.forEach((item, idx) => {
+    total += 1;
+    const id = item?.id ?? `<sans id, index ${idx}>`;
+    const errors = [];
+    if (!programmeLigne(item)) {
+      errors.push(
+        ...(programmeLigne.errors ?? []).map(
+          (e) => `${e.instancePath || '<root>'} ${e.message ?? '?'}`
+        )
+      );
+    }
+    if (seenIds.has(id)) errors.push(`identifiant en double : ${id}`);
+    seenIds.add(id);
+    if (prefixes && !prefixes.some((p) => String(id).startsWith(p))) {
+      errors.push(`préfixe attendu pour ${matiere} : ${prefixes.join(' ou ')}`);
+    }
+    if (errors.length === 0) return;
+    invalid += 1;
+    problems.push({ file: filePath, message: `[${id}] ${errors.join(' ; ')}` });
+  });
+  const { ecarts, texteManquant } = verifierProgramme(matiere);
+  if (texteManquant) {
+    invalid += 1;
+    problems.push({ file: filePath, message: 'texte officiel non enregistré (texte-officiel/programme*.txt du référentiel)' });
+  }
+  for (const e of ecarts) {
+    invalid += 1;
+    problems.push({ file: filePath, message: `[${e.id}] ${e.message}` });
   }
 }
 
