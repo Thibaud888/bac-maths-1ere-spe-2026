@@ -249,7 +249,7 @@ coller prêts dans `chantiers/terminale/reprise-phase-1.md`)
   (expérience, unités) — rapport de couverture vide ; `npm run dev:temoin`. Vérifié : le
   build de production ne contient pas le témoin, même avec `VITE_TEMOIN=1` (nouvelle étape de
   `verify.mjs`). Aucun schéma ni composant de première modifié.
-  `node scripts/verify.mjs` OK, 222 tests (177 + 45).
+  `node scripts/verify.mjs` OK, 222 tests (177 + 45). PR : #86.
 - [ ] (P1) Construire les pages « Aperçu » et « Cours » d'un chapitre de terminale — routes
   `/terminale/<matiere>/:slug` et `/cours`, onglets, `sections()` de `tle-maths` et
   `tle-physique-chimie`, **une page par notion** dans le cours (`/cours/<notion>`, sommaire
