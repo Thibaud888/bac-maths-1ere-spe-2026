@@ -205,6 +205,8 @@
 - [ ] Afficher le compte à rebours des épreuves — dès que les dates officielles de la session 2027
   sont publiées (aucune date inventée en attendant) : bandeau sur l'accueil et rappel dans le menu.
   DoD : dates sourcées, affichage sur l'accueil.
+  Prêt à démarrer : les dates sont publiées (BO spécial n° 2 du 25 août 2026) et portées par
+  `content/bac/calendrier.json` depuis la PR #76 (partie pratique de physique-chimie comprise).
 
 ## Terminale : maths et physique-chimie (cadré le 2026-09-24)
 
@@ -376,7 +378,8 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
 > [`chantiers/verification-contenu-bac-2027.md`](chantiers/verification-contenu-bac-2027.md) ;
 > les numéros renvoient au tableau du rapport, qui donne l'extrait officiel et l'adresse.
 > DoD commune : texte corrigé et sourcé sur le texte officiel en vigueur pour 2027,
-> `node scripts/verify.mjs` OK.
+> `node scripts/verify.mjs` OK. Texte de reprise pour les items ouverts :
+> `chantiers/reprise-verification-contenu.md`.
 
 - [x] Ne plus dire que la calculatrice est autorisée en spécialité maths — c'est le sujet qui
   le précise le jour même. `content/bac/epreuves.json` ep-spe-maths · resume (n° 29, F).

@@ -89,6 +89,8 @@ scripts/
   validate-content.mjs  validate-francais.mjs
   faits-inchanges.mjs   # garde-fou : nombres, dates, sources de content/bac/ et du grand
                         # oral, entrée par entrée, entre origin/main et l'arbre de travail
+  inventaire-affirmations.mjs # chaque fait de content/bac/ et du grand oral avec ses
+                        # sources ; contrôle jours de semaine, sources fantômes, domaines
   programme-conforme.mjs # garde-fou : chaque ligne de programme.json (terminale) reprend
                         # mot pour mot le texte officiel (appelé par validate-content)
   couverture-terminale.mjs  # un chapitre de terminale face au programme et à la charte
