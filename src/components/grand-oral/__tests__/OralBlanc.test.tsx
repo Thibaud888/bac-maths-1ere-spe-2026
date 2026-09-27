@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { tempsMinutes } from '@/lib/grand-oral-content';
 import { formatHorloge } from '@/lib/oral-blanc';
+import { typographie } from '@/lib/typographie';
 import { NB_QUESTIONS, questionVide, useGrandOralStore } from '@/stores/grand-oral-store';
 import OralBlanc, { NB_RELANCES } from '../OralBlanc';
 
@@ -69,14 +70,14 @@ describe('oral blanc du grand oral', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Reprendre' }));
 
     // Exposé : dépassement de 35 secondes, affiché en « +00:35 ».
-    fireEvent.click(screen.getByRole('button', { name: `Passer à : ${EXPOSE.titre}` }));
+    fireEvent.click(screen.getByRole('button', { name: typographie(`Passer à : ${EXPOSE.titre}`) }));
     expect(horloge()).toBe(formatHorloge(EXPOSE.minutes * 60));
     avancer(EXPOSE.minutes * 60 + 35);
     expect(horloge()).toBe('+00:35');
     expect(screen.getByText('Temps écoulé')).toBeInTheDocument();
 
     // Échange : des relances de jury sont proposées.
-    fireEvent.click(screen.getByRole('button', { name: `Passer à : ${ECHANGE.titre}` }));
+    fireEvent.click(screen.getByRole('button', { name: typographie(`Passer à : ${ECHANGE.titre}`) }));
     expect(screen.getByText('Relances du jury')).toBeInTheDocument();
     expect(screen.getAllByRole('button', { name: 'Pistes de réponse' })).toHaveLength(
       NB_RELANCES

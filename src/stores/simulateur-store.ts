@@ -13,6 +13,14 @@ import { clampNote } from '@/lib/simulateur';
 /** Mesure représentée par la répartition : ce que la note apporte, ou le poids brut. */
 export type MesureRepartition = 'contribution' | 'coefficient';
 
+/** Part de la colonne du camembert, en % de la largeur (grand écran), et ses bornes. */
+export const LARGEUR_PANNEAU = { min: 30, defaut: 50, max: 70 } as const;
+
+export function bornerLargeur(pourcentage: number): number {
+  if (!Number.isFinite(pourcentage)) return LARGEUR_PANNEAU.defaut;
+  return Math.min(LARGEUR_PANNEAU.max, Math.max(LARGEUR_PANNEAU.min, pourcentage));
+}
+
 /** Les mentions qu'on peut se fixer comme objectif. */
 export const CIBLES: readonly number[] = [10, 12, 14, 16, 18] as const;
 
@@ -23,12 +31,16 @@ type SimulateurState = {
   figees: Record<string, boolean>;
   cible: number;
   mesure: MesureRepartition;
+  /** Largeur de la colonne du camembert, réglée en glissant la séparation. */
+  largeurPanneau: number;
   setNote: (id: string, note: number) => void;
   toggleFigee: (id: string) => void;
   /** Fige ou libère d'un coup toutes les lignes passées. */
   figerLignes: (ids: readonly string[], figee: boolean) => void;
   setCible: (cible: number) => void;
   setMesure: (mesure: MesureRepartition) => void;
+  setLargeurPanneau: (pourcentage: number) => void;
+  /** Remet les notes à zéro ; la disposition de l'écran, elle, reste. */
   reinitialiser: () => void;
 };
 
@@ -39,6 +51,7 @@ export const useSimulateurStore = create<SimulateurState>()(
       figees: {},
       cible: 10,
       mesure: 'contribution',
+      largeurPanneau: LARGEUR_PANNEAU.defaut,
       setNote: (id, note) => {
         set((s) => ({ notes: { ...s.notes, [id]: clampNote(note) } }));
       },
@@ -57,6 +70,9 @@ export const useSimulateurStore = create<SimulateurState>()(
       },
       setMesure: (mesure) => {
         set({ mesure });
+      },
+      setLargeurPanneau: (pourcentage) => {
+        set({ largeurPanneau: bornerLargeur(pourcentage) });
       },
       reinitialiser: () => {
         set({ notes: {}, figees: {}, cible: 10, mesure: 'contribution' });

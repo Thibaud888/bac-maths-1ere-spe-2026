@@ -42,7 +42,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_BASE_URL: /bac-maths-1ere-spe-2026/
+          # Le chemin suit le nom du dépôt : un renommage ne casse pas la mise en ligne.
+          VITE_BASE_URL: /${{ github.event.repository.name }}/
 
       - name: SPA fallback (copy index.html to 404.html)
         run: cp dist/index.html dist/404.html

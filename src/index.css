@@ -4,3 +4,86 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Thèmes d'affichage (registre : src/lib/themes.ts).
+ * Les gris sont des canaux « R G B » lus par tailwind.config.js ; les valeurs
+ * par défaut sont celles de la palette `slate` de Tailwind (thèmes Clair et
+ * Sombre). Un thème redéfinit la palette, la police et l'arrondi des coins.
+ */
+@layer base {
+  :root {
+    color-scheme: light;
+    --police: 'Inter', system-ui, sans-serif;
+    --arrondi: 1;
+    --blanc: 255 255 255;
+    --gris-50: 248 250 252;
+    --gris-100: 241 245 249;
+    --gris-200: 226 232 240;
+    --gris-300: 203 213 225;
+    --gris-400: 148 163 184;
+    --gris-500: 100 116 139;
+    --gris-600: 71 85 105;
+    --gris-700: 51 65 85;
+    --gris-800: 30 41 59;
+    --gris-900: 15 23 42;
+    --gris-950: 2 6 23;
+  }
+
+  :root.dark {
+    color-scheme: dark;
+  }
+
+  /* Papier : crème et encre brune, police de livre, coins nets. */
+  :root[data-theme='papier'] {
+    --police: Charter, 'Bitstream Charter', 'Sitka Text', 'Iowan Old Style',
+      'Palatino Linotype', Palatino, Georgia, Cambria, serif;
+    --arrondi: 0.4;
+    --blanc: 255 252 245;
+    --gris-50: 247 241 230;
+    --gris-100: 239 230 214;
+    --gris-200: 227 214 192;
+    --gris-300: 207 189 159;
+    --gris-400: 168 148 111;
+    --gris-500: 127 107 79;
+    --gris-600: 98 81 59;
+    --gris-700: 74 60 44;
+    --gris-800: 51 41 30;
+    --gris-900: 42 32 22;
+    --gris-950: 23 17 11;
+  }
+
+  /* Tableau : vert tableau d'école et craie (thème sombre). */
+  :root[data-theme='tableau'] {
+    --arrondi: 1.25;
+    --gris-50: 245 248 246;
+    --gris-100: 233 240 236;
+    --gris-200: 215 226 220;
+    --gris-300: 188 203 195;
+    --gris-400: 147 168 157;
+    --gris-500: 106 129 118;
+    --gris-600: 70 93 82;
+    --gris-700: 47 68 59;
+    --gris-800: 32 48 42;
+    --gris-900: 23 35 30;
+    --gris-950: 13 21 18;
+  }
+
+  /* Lavande : gris teintés de violet, police et coins arrondis. */
+  :root[data-theme='lavande'] {
+    --police: ui-rounded, 'SF Pro Rounded', 'Nunito', 'Varela Round', 'Inter',
+      system-ui, sans-serif;
+    --arrondi: 1.75;
+    --gris-50: 246 244 252;
+    --gris-100: 238 235 248;
+    --gris-200: 224 219 241;
+    --gris-300: 201 193 226;
+    --gris-400: 159 150 192;
+    --gris-500: 117 108 151;
+    --gris-600: 90 81 121;
+    --gris-700: 68 61 96;
+    --gris-800: 45 40 66;
+    --gris-900: 31 26 51;
+    --gris-950: 17 14 31;
+  }
+}

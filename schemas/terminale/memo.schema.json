@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "terminale/memo.schema.json",
+  "title": "Carte du mémo de terminale",
+  "description": "Une entrée de memo.json (tableau), écrit par tle-auteur-cours (charte §§ 3.9 et 8). Hérite des capacites de sa notion. simplifie : même esprit que le mode « simplifié » des formules de première (coeur ≈ core, moyenMemo ≈ mnemonic, motCle ≈ keyword, image ≈ visual).",
+  "type": "object",
+  "required": ["id", "chapitre", "notion", "genre", "titre", "enonce", "simplifie"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^m-[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "m-<chapitre>-<slug>."
+    },
+    "chapitre": { "$ref": "commun.schema.json#/$defs/slug" },
+    "notion": { "$ref": "commun.schema.json#/$defs/idNotion" },
+    "genre": { "type": "string", "enum": ["definition", "propriete", "formule", "methode"] },
+    "titre": { "type": "string", "minLength": 3, "maxLength": 100 },
+    "enonce": { "$ref": "commun.schema.json#/$defs/texte" },
+    "conditions": { "$ref": "commun.schema.json#/$defs/texte", "description": "Quand elle s'applique. Ex. : « pour $q \\neq 1$ »." },
+    "exemple": { "$ref": "commun.schema.json#/$defs/texte" },
+    "simplifie": {
+      "type": "object",
+      "required": ["coeur"],
+      "additionalProperties": false,
+      "properties": {
+        "coeur": { "type": "string", "minLength": 1, "maxLength": 280, "description": "La formule ou la règle nue, sans phrase d'introduction." },
+        "moyenMemo": { "type": "string", "maxLength": 140 },
+        "motCle": { "type": "string", "maxLength": 32, "description": "Unique dans le chapitre." },
+        "image": { "type": "string", "maxLength": 280, "description": "Repère visuel textuel (image mentale)." }
+      }
+    }
+  }
+}

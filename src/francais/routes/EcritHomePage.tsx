@@ -28,8 +28,7 @@ export default function EcritHomePage() {
       </h1>
       <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
         Épreuve anticipée de français (EAF) — écrit : 4 h, coef. 5, commentaire
-        ou dissertation. Révise la méthode et les repères, puis entraîne-toi avec
-        les quiz, les exercices et les sujets.
+        ou dissertation.
       </p>
 
       {/* Révision express */}

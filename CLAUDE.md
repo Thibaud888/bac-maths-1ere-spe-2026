@@ -9,6 +9,10 @@
   `BACKLOG.md` en fin de session.
 - **Écris l'outil, pas l'output** — à la 3e récurrence d'une même tâche, écris un script
   réutilisable (`scripts/`), pas juste le résultat.
+- **Textes officiels et sujets de bac** — les pages HTML du ministère (education.gouv.fr,
+  éduscol, Légifrance) refusent les sessions cloud, quel que soit le réglage réseau ; ses PDF,
+  APMEP et Labolycée s'ouvrent. Ne pas s'arrêter : marche à suivre dans
+  `docs/sources-officielles.md`.
 - **La PR se merge automatiquement dès que la CI est verte** (pas d'attente de relecture par
   défaut). CI rouge → PR laissée ouverte, jamais mergée à l'aveugle. **Repo sans CI** : le
   merge auto exige une section `## Vérification` (commande + résultat) dans le corps de la PR.
@@ -36,17 +40,29 @@ baccalauréat (session 2027) : la **première** (2025-2026, épreuves anticipée
 
 | Année | Espace | Route | État |
 |---|---|---|---|
-| Terminale | Maths — spécialité | `/terminale/maths` | à remplir |
-| Terminale | Physique-chimie — spécialité | `/terminale/physique-chimie` | à remplir |
+| Terminale | Maths — spécialité | `/terminale/maths` | cadré (§ 14), à remplir |
+| Terminale | Physique-chimie — spécialité | `/terminale/physique-chimie` | cadré (§ 14), à remplir |
 | Terminale | Grand oral | `/terminale/grand-oral` | rempli (« Mes 2 questions » : cadre à remplir par l'élève) |
 | Première | Maths — spécialité (EAM) | `/premiere/maths` | complet |
 | Première | Français (EAF écrit + oral) | `/premiere/francais` | complet |
+
+**Le site reste général** (décision du 2026-09-23) : ni élève, ni année, ni matière dans les
+titres et les textes d'interface. Ce qui dépend d'un profil est présenté comme un exemple
+(« Exemple : anglais »), et une date n'apparaît que là où elle est un fait (calendrier).
+
+**Mise en forme des pages de lecture** (décision du 2026-09-23, « Le bac » et grand oral) :
+priorité à l'affichage sur ordinateur ; « L'essentiel » en tête de page, sommaire collé à
+droite sur grand écran (`components/shared/PageLongue.tsx`), **rien de replié** ; le texte
+change peu, c'est la présentation qui porte la lisibilité. Une reformulation de `content/bac/`
+ou du grand oral se contrôle avec `node scripts/faits-inchanges.mjs`.
 
 Deux outils transverses, hors année : le **simulateur de moyenne** (`/simulateur` — régler ses
 notes, voir bouger moyenne et mention) et **le bac, mode d'emploi** (`/le-bac` — contrôle
 continu, coefficients, calendrier, mentions). Tous deux lisent `content/bac/` (§ 4.2).
 
-### 1.2 Modes de travail (maths)
+### 1.2 Modes de travail (maths de première)
+
+La terminale a sa propre structure (cours, trois marches d'exercices, type bac, mémo) : § 14.
 
 - **Formulaire** : cartes de référence par chapitre
 - **Automatismes** : QCM rapides (Partie 1 de l'EAM, 6 points)
@@ -56,9 +72,13 @@ continu, coefficients, calendrier, mentions). Tous deux lisent `content/bac/` (�
 L'**EAM** (première, vendredi 12 juin 2026, 2h, sans calculatrice, coefficient 2) reste la
 référence du contenu de première ; le contenu de terminale suivra le programme de terminale.
 
-## 2. Lecture obligatoire avant toute génération de contenu
+## 2. Lecture obligatoire avant toute génération de contenu (maths de première)
 
-Le fichier **`.claude/skills/bac-maths-premiere-spe-2026/SKILL.md`** est la **source de vérité** pour tout contenu pédagogique. Il contient :
+> Terminale : la source de vérité est la charte `.claude/skills/terminale-charte/SKILL.md`
+> et le référentiel de la matière (§ 14). Les §§ 2, 7, 9 et 12 ci-dessous valent pour la
+> **première**.
+
+Le fichier **`.claude/skills/bac-maths-premiere-spe-2026/SKILL.md`** est la **source de vérité** pour tout contenu pédagogique de maths de première. Il contient :
 
 - Le programme officiel de spécialité (BO spécial n°1 du 22 janvier 2019)
 - Le format réglementaire de l'EAM (décret du 10 juin 2025)
@@ -77,7 +97,7 @@ Le fichier **`.claude/skills/bac-maths-premiere-spe-2026/SKILL.md`** est la **so
 | Géométrie | JSXGraph, **lazy-loaded** uniquement dans les composants qui l'utilisent |
 | Routing | React Router v6 |
 | État | **Zustand** |
-| Persistance | LocalStorage — un préfixe par volet : `bms-2026-` (maths), `bfr-2026-` (français), `btl-2027-` (simulateur de moyenne), `bgo-2027-` (grand oral). Jamais croisés. |
+| Persistance | LocalStorage — un préfixe par volet : `bms-2026-` (maths), `bfr-2026-` (français), `btl-2027-` (simulateur de moyenne), `bgo-2027-` (grand oral), `btm-2027-` / `bpc-2027-` (maths / physique-chimie de terminale, à venir). Jamais croisés. |
 | Validation JSON | **Ajv** contre les schémas dans `schemas/` |
 | Tests | Vitest (logique) + Playwright (runners critiques) |
 | CI/CD | GitHub Actions → GitHub Pages |
@@ -174,8 +194,10 @@ mélangées :
   format `ep-grand-oral`) est **relu** par `bac-content.ts`, jamais recopié. Les minutes de
   chaque temps vivent dans `deroule.json` et nulle part ailleurs (la page et le minuteur de
   l'oral blanc les lisent). Aucun point de barème : le texte ne répartit pas les 20 points.
-- **Méthode** (pages « Préparation » et « Entretien », `preparation.json`, `entretien.json`,
-  `relances.json`) : conseils, sans valeur réglementaire. Décision du 2026-09-22 (Thibaud) :
+- **Méthode** (pages « Préparation », « Exposé » et « Entretien », `preparation.json`,
+  `expose.json`, `entretien.json`, `relances.json`) : conseils, sans valeur réglementaire. La
+  page « Exposé » ouvre sur les règles de ce temps : l'étape `gt-expose` relue dans
+  `deroule.json` et une fiche `nature: "reglementaire"` sourcée (`go-exp-salle`). Décision du 2026-09-22 (Thibaud) :
   traités comme `content/bac/` — validation Ajv + source officielle sur toute affirmation
   réglementaire — **sans** les deux passes, faute de référentiel. Si ce contenu prend de
   l'ampleur, écrire d'abord un skill « grand oral » et repasser au workflow 2 passes.
@@ -237,7 +259,7 @@ Notations conformes au BO :
 - Vecteurs : `\vec{u}` en LaTeX, `u⃗` en texte
 - Probabilités : `P(A)`, `P_B(A)`, `P(A \cap B)`
 
-## 7. Workflow obligatoire de génération de contenu : système 2 passes
+## 7. Workflow obligatoire de génération de contenu : système 2 passes (maths de première ; terminale : § 14)
 
 **Aucun fichier JSON de contenu pédagogique ne doit être commité sans avoir passé les 2 étapes suivantes :**
 
@@ -268,8 +290,9 @@ En cas de problème détecté, le reviewer renvoie un rapport ; le author corrig
 
 - `/new-chapter <slug>` : scaffolding d'un nouveau chapitre (5 fichiers JSON vides + meta)
 - `/verify-conformity` : passe l'ensemble du contenu au crible (schémas + reviewer pédagogique)
+- `/tle-chapitre <matiere> <slug> [cours|exercices|tout]` : produit un chapitre de terminale avec les agents `tle-*` (§ 14)
 
-## 9. Règles d'or pour le contenu pédagogique
+## 9. Règles d'or pour le contenu pédagogique (maths de première ; terminale : charte § 1)
 
 1. **Sans calculatrice** : tout calcul doit être faisable mentalement ou à la main avec rigueur. Pas de valeurs exotiques (`√7`, `e^3.14`, etc.). Privilégier valeurs entières, fractions simples (`1/2`, `1/3`, `1/4`, `2/3`, `3/4`), racines simples (`√2`, `√3`), valeurs trigo usuelles (`0`, `π/6`, `π/4`, `π/3`, `π/2`, `π`).
 2. **Programme strict** : si une notion ne figure pas dans SKILL.md sections 2.x, elle est interdite. En cas de doute, voir SKILL.md section 6 (liste hors-programme).
@@ -302,10 +325,10 @@ Chaque phase se termine par un commit `git` propre et un build qui passe.
 
 ## 12. Anti-patterns à éviter
 
-- ❌ Générer un fichier JSON sans passer par les 2 sub-agents
+- ❌ Générer un fichier JSON sans passer par les 2 sub-agents (première) ou sans le circuit `tle-*` (terminale)
 - ❌ Inventer des notations non conformes au BO
-- ❌ Inclure des notions de terminale (ln, intégrale, récurrence formelle, etc.)
-- ❌ Proposer des exercices nécessitant une calculatrice
+- ❌ Inclure des notions de terminale (ln, intégrale, récurrence formelle, etc.) dans le contenu de **première**
+- ❌ Proposer des exercices nécessitant une calculatrice (première ; en terminale, le sujet dit si elle est permise et chaque exercice le signale)
 - ❌ Mélanger CSS custom et Tailwind sans nécessité
 - ❌ Utiliser MathJax au lieu de KaTeX
 - ❌ Ajouter des dépendances NPM sans justification (et sans accord utilisateur)
@@ -430,3 +453,53 @@ Le **`french-reviewer`** effectue 7 passes dont **5 BLOQUANTES** :
 4. Routes maths (`/premiere/maths/*`, dont `/premiere/maths/bac-blanc`) inchangées, et les
    anciennes (`/chapitre/*`, `/bac-blanc`) toujours redirigées.
 5. LocalStorage maths `bms-2026-app` / `bms-2026-progress` **intactes**.
+
+---
+
+## 14. Terminale — maths et physique-chimie
+
+Cadré le 2026-09-24 (aucun contenu écrit ce jour-là). Trois documents, à lire dans cet ordre :
+
+1. `chantiers/terminale/README.md` — **le plan directeur** : ce que l'élève doit trouver,
+   structure des pages, priorités, feuille de route. Découpage proposé dans
+   `chantiers/terminale/chapitres-maths.md` et `chapitres-physique-chimie.md`.
+2. `.claude/skills/terminale-charte/SKILL.md` — **la charte de construction**, normative :
+   format des données, écriture du cours, marches d'exercices, priorités et quotas,
+   rattachement au programme, règles des pages, définition de « chapitre fini ».
+3. Le **référentiel de la matière** : `.claude/skills/bac-<matiere>-terminale-2027/SKILL.md`
+   + `content/terminale/<matiere>/programme.json` (texte exact du programme, une ligne = un
+   identifiant `bo-…`). **Maths : écrit le 2026-09-24** (`bac-maths-terminale-2027`, texte
+   contrôlé mot à mot par `node scripts/programme-conforme.mjs`). **Physique-chimie : pas
+   encore écrit. Aucun contenu d'une matière sans son référentiel.**
+
+Ce qui diffère de la première :
+
+- **Toute l'année, pas seulement la révision** : chaque chapitre a cinq onglets — Aperçu,
+  Cours, Exercices (marches *Comprendre*, *S'entraîner*, *Approfondir*), Type bac, Mémo.
+- **La notion est l'unité** : priorité bac (3 incontournable, 2 fréquent, 1 plus rare,
+  mesurée sur les annales, sinon estimée et affichée comme telle), progression, couverture.
+- **Tout item cite ses lignes du programme** (`capacites`) ; un script de couverture refuse
+  l'inconnu et signale le non-couvert.
+- **Calculatrice selon le sujet** au bac de terminale (maths : « Le sujet précise si l'usage
+  de la calculatrice […] est autorisé », note de service de 2026) : la règle « sans
+  calculatrice » du § 9 ne vaut que pour la première ; chaque exercice de terminale dit si
+  elle sert ou non.
+- **Schémas propres** (`schemas/terminale/`) ; ceux de première ne changent pas. Stockage
+  local : `btm-2027-` (maths), `bpc-2027-` (physique-chimie).
+- **Mécanique en place** (2026-09-24) : chargeur `src/lib/terminale/`, schémas et intégrité
+  contrôlés par `validate-content.mjs`, couverture d'un chapitre par
+  `scripts/couverture-terminale.mjs`, version sans réponses par `scripts/sans-reponses.mjs`.
+  Les pages se construisent sur le **chapitre-témoin** (`tests/fixtures/terminale/`, données
+  d'essai, jamais dans `content/`), chargé en développement seulement : `npm run dev:temoin`.
+
+Workflow obligatoire (remplace, pour la terminale, les 2 passes du § 7) :
+
+```
+tle-architecte → tle-auteur-cours → tle-auteur-exercices + tle-auteur-bac
+      → tle-relecteur (bloquant, recalcule tout) → tle-eleve-testeur (clarté) → scripts → PR
+```
+
+Procédure : `/tle-chapitre`. `annales-indexeur` alimente `annales.json` (mesure des
+priorités, « ce que le bac demande »). Un chapitre = deux items de backlog par défaut
+(« le cours », puis « les exercices »).
+

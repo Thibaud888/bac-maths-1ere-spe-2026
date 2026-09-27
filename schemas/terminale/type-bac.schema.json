@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "terminale/type-bac.schema.json",
+  "title": "Exercice type bac de terminale",
+  "description": "Une entrée de type-bac.json (tableau), écrit par tle-auteur-bac (charte §§ 3.8 et 7). Comme un exercice, sans niveau, avec des points par question et « ce qu'attend le correcteur ». Une question se découpe en sous-questions, ou porte elle-même solution et attenduCorrecteur. Les totaux de points sont vérifiés par scripts/validate-content.mjs.",
+  "type": "object",
+  "required": ["id", "chapitre", "notions", "capacites", "titre", "points", "duree", "calculatrice", "ordre", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^tb-[a-z0-9]+(-[a-z0-9]+)*-[0-9]{3}$",
+      "description": "tb-<chapitre>-<num3>."
+    },
+    "chapitre": { "$ref": "commun.schema.json#/$defs/slug" },
+    "notions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "commun.schema.json#/$defs/idNotion" }
+    },
+    "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+    "titre": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "points": { "type": "number", "exclusiveMinimum": 0, "description": "Total de l'exercice = somme des points des questions." },
+    "duree": { "type": "integer", "minimum": 1, "maximum": 120, "description": "Durée indicative, en minutes." },
+    "calculatrice": { "type": "boolean" },
+    "ordre": { "type": "integer", "minimum": 0 },
+    "preambule": { "$ref": "commun.schema.json#/$defs/texte", "description": "Données, documents (texte, tableau) et « On admet que… »." },
+    "code": { "$ref": "commun.schema.json#/$defs/code" },
+    "figure": { "$ref": "figure.schema.json" },
+    "source": { "$ref": "commun.schema.json#/$defs/source" },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/question" }
+    }
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "required": ["id", "label", "enonce", "points"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "commun.schema.json#/$defs/idQuestion" },
+        "label": { "type": "string", "minLength": 1, "maxLength": 12 },
+        "enonce": { "$ref": "commun.schema.json#/$defs/texte" },
+        "code": { "$ref": "commun.schema.json#/$defs/code" },
+        "points": { "type": "number", "exclusiveMinimum": 0, "description": "Avec des sous-questions : somme de leurs points." },
+        "sousQuestions": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/sousQuestion" }
+        },
+        "reponse": { "$ref": "commun.schema.json#/$defs/reponse" },
+        "indices": {
+          "type": "array",
+          "maxItems": 3,
+          "items": { "$ref": "commun.schema.json#/$defs/texte" }
+        },
+        "revoir": { "$ref": "commun.schema.json#/$defs/idBloc" },
+        "attenduCorrecteur": { "$ref": "commun.schema.json#/$defs/texte", "description": "Les éléments qui rapportent les points." },
+        "solution": { "$ref": "commun.schema.json#/$defs/texte" },
+        "erreurFrequente": { "$ref": "commun.schema.json#/$defs/texte" }
+      },
+      "if": { "required": ["sousQuestions"] },
+      "then": { "not": { "anyOf": [{ "required": ["reponse"] }, { "required": ["solution"] }, { "required": ["attenduCorrecteur"] }] } },
+      "else": { "required": ["attenduCorrecteur", "solution"] }
+    },
+    "sousQuestion": {
+      "type": "object",
+      "required": ["id", "label", "enonce", "points", "attenduCorrecteur", "solution"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "commun.schema.json#/$defs/idQuestion" },
+        "label": { "type": "string", "minLength": 1, "maxLength": 12 },
+        "enonce": { "$ref": "commun.schema.json#/$defs/texte" },
+        "code": { "$ref": "commun.schema.json#/$defs/code" },
+        "points": { "type": "number", "exclusiveMinimum": 0 },
+        "reponse": { "$ref": "commun.schema.json#/$defs/reponse" },
+        "indices": {
+          "type": "array",
+          "maxItems": 3,
+          "items": { "$ref": "commun.schema.json#/$defs/texte" }
+        },
+        "revoir": { "$ref": "commun.schema.json#/$defs/idBloc" },
+        "attenduCorrecteur": { "$ref": "commun.schema.json#/$defs/texte" },
+        "solution": { "$ref": "commun.schema.json#/$defs/texte" },
+        "erreurFrequente": { "$ref": "commun.schema.json#/$defs/texte" }
+      }
+    }
+  }
+}

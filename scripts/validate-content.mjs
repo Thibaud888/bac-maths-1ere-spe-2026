@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
  * Valide tous les fichiers JSON de `content/chapters/*` contre les schémas Ajv,
- * ainsi que `content/bac-blanc/`, `content/bac/` et `content/terminale/grand-oral/`.
+ * ainsi que `content/bac-blanc/`, `content/bac/`, `content/terminale/grand-oral/` et les
+ * chapitres de terminale (`content/terminale/<matiere>/`, schémas `schemas/terminale/`),
+ * dont le texte exact des programmes officiels (`scripts/programme-conforme.mjs`).
  * Usage : node scripts/validate-content.mjs
  * Exit 0 si tout est valide, 1 sinon.
  */
@@ -10,6 +12,13 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
+import {
+  compilerSchemas,
+  controlerIntegrite,
+  lireRacine,
+  validerSchemas,
+} from './lib/terminale.mjs';
+import { matieresAvecProgramme, verifierProgramme } from './programme-conforme.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
@@ -220,6 +229,7 @@ const grandOralFiles = {
   deroule: { validate: ajv.compile(readSchema(join('grand-oral', 'temps.schema.json'))) },
   epreuve: { validate: ficheGo, section: 'epreuve' },
   preparation: { validate: ficheGo, section: 'preparation' },
+  expose: { validate: ficheGo, section: 'expose' },
   entretien: { validate: ficheGo, section: 'entretien' },
   criteres: { validate: ajv.compile(readSchema(join('grand-oral', 'critere.schema.json'))) },
   relances: { validate: ajv.compile(readSchema(join('grand-oral', 'relance.schema.json'))) },
@@ -277,6 +287,54 @@ if (safeStat(grandOralDir)) {
       invalid += 1;
       problems.push({ file: filePath, message: `[${id}] ${errors.join(' ; ')}` });
     });
+  }
+}
+
+// --- Chapitres de terminale (maths, physique-chimie) ---
+// Schémas propres (schemas/terminale/, instance Ajv à part : l'identifiant
+// figure.schema.json est déjà pris par la première) puis intégrité : renvois,
+// doublons, totaux de points. La couverture du programme, elle, se contrôle chapitre
+// par chapitre avec scripts/couverture-terminale.mjs.
+const matieresTerminale = lireRacine(join(root, 'content', 'terminale'));
+if (matieresTerminale.length > 0) {
+  const validateursTerminale = compilerSchemas();
+  const problemesTerminale = [];
+  for (const matiere of matieresTerminale) {
+    problemesTerminale.push(...matiere.problemes);
+    const resultat = validerSchemas(matiere, validateursTerminale);
+    total += resultat.total;
+    problemesTerminale.push(...resultat.problemes);
+  }
+  problemesTerminale.push(...controlerIntegrite(matieresTerminale));
+  invalid += problemesTerminale.length;
+  for (const p of problemesTerminale) {
+    problems.push({ file: p.fichier, message: `${p.id ? `[${p.id}] ` : ''}${p.message}` });
+  }
+}
+
+// --- Terminale : texte exact des programmes officiels ---
+// Chaque ligne de programme.json reprend mot pour mot le texte du Bulletin officiel
+// enregistré dans le référentiel de la matière (scripts/programme-conforme.mjs).
+for (const matiere of matieresAvecProgramme()) {
+  const filePath = join(root, 'content', 'terminale', matiere, 'programme.json');
+  let resultat;
+  try {
+    resultat = verifierProgramme(matiere);
+  } catch (err) {
+    invalid += 1;
+    problems.push({ file: filePath, message: `contrôle du texte officiel impossible : ${err.message}` });
+    continue;
+  }
+  if (resultat.texteManquant) {
+    invalid += 1;
+    problems.push({
+      file: filePath,
+      message: 'texte officiel non enregistré (texte-officiel/programme*.txt du référentiel)',
+    });
+  }
+  for (const e of resultat.ecarts) {
+    invalid += 1;
+    problems.push({ file: filePath, message: `[${e.id}] ${e.message}` });
   }
 }
 

@@ -157,7 +157,7 @@ export function listBacMentions(): BacMention[] {
 }
 
 export const BLOC_LABEL: Record<BacBloc, string> = {
-  anticipee: 'Épreuves passées en fin de première',
+  anticipee: 'Épreuves anticipées, en fin de première',
   terminale: 'Épreuves de terminale',
   continu: 'Contrôle continu — les moyennes des bulletins',
   option: 'Options',

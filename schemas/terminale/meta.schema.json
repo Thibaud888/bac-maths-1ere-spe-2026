@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "terminale/meta.schema.json",
+  "title": "Chapitre de terminale — meta.json",
+  "description": "content/terminale/<matiere>/chapitres/<slug>/meta.json (un objet), écrit par tle-architecte (charte § 3.3). Un chapitre transverse (« Méthodes », § 2.1) n'a pas de domaine ni de type bac.",
+  "type": "object",
+  "required": ["slug", "matiere", "titre", "titreCourt", "ordre", "transverse", "description", "essentiel"],
+  "additionalProperties": false,
+  "properties": {
+    "slug": { "$ref": "commun.schema.json#/$defs/slug" },
+    "matiere": { "$ref": "commun.schema.json#/$defs/matiere" },
+    "titre": { "type": "string", "minLength": 3, "maxLength": 100 },
+    "titreCourt": { "type": "string", "minLength": 3, "maxLength": 40, "description": "Libellé de la barre latérale." },
+    "domaine": {
+      "type": "string",
+      "enum": ["analyse", "geometrie", "probabilites", "combinatoire", "matiere", "mouvement", "energie", "ondes"],
+      "description": "maths : analyse | geometrie | probabilites | combinatoire ; physique-chimie : matiere | mouvement | energie | ondes."
+    },
+    "ordre": { "type": "integer", "minimum": 0, "multipleOf": 10, "description": "Ordre de l'année, multiple de 10." },
+    "transverse": { "type": "boolean" },
+    "description": { "type": "string", "minLength": 3, "maxLength": 200, "description": "Une phrase." },
+    "essentiel": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "string", "minLength": 3, "maxLength": 160 },
+      "description": "Les trois idées à retenir du chapitre, une ligne chacune (« L'essentiel » de l'Aperçu)."
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "transverse": { "const": false } }, "required": ["transverse"] },
+      "then": { "required": ["domaine"] }
+    },
+    {
+      "if": { "properties": { "matiere": { "const": "maths" } }, "required": ["matiere"] },
+      "then": { "properties": { "domaine": { "enum": ["analyse", "geometrie", "probabilites", "combinatoire"] } } }
+    },
+    {
+      "if": { "properties": { "matiere": { "const": "physique-chimie" } }, "required": ["matiere"] },
+      "then": { "properties": { "domaine": { "enum": ["matiere", "mouvement", "energie", "ondes"] } } }
+    }
+  ]
+}

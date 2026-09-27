@@ -72,7 +72,10 @@ export default function QuestionForm({ index, question, specialites }: Props) {
 
       <fieldset className="mt-4">
         <legend className="text-sm font-medium text-slate-700 dark:text-slate-300">
-          Adossée à
+          Adossée à{' '}
+          <span className="font-normal text-slate-500 dark:text-slate-400">
+            (la ou les spécialités sur lesquelles elle s’appuie)
+          </span>
         </legend>
         <div className="mt-1 flex flex-wrap items-center gap-2">
           {specialites.map((s) => {
@@ -97,7 +100,7 @@ export default function QuestionForm({ index, question, specialites }: Props) {
           })}
           {transversale && (
             <span className="text-xs text-slate-500 dark:text-slate-400">
-              question transversale
+              question transversale&nbsp;: elle croise les deux
             </span>
           )}
         </div>

@@ -12,7 +12,7 @@ export default function OralSelectPage() {
       <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
         Épreuve anticipée de français (EAF) — oral : 20 min, après 30 min de
         préparation, coefficient 5. Chaque élève dispose de son propre descriptif
-        (ses textes et son entretien). Choisis ton espace pour commencer.
+        (ses textes et son entretien).
       </p>
 
       {students.length === 0 ? (

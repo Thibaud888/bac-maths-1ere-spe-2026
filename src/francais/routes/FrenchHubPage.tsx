@@ -14,8 +14,7 @@ export default function FrenchHubPage() {
         Bac de français — Première
       </h1>
       <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-        Deux épreuves anticipées (EAF), chacune coef. 5. Choisis l'espace de
-        révision : l'<strong>oral</strong> ou l'<strong>écrit</strong>.
+        Deux épreuves anticipées (EAF), chacune coef. 5.
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">

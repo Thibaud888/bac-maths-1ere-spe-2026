@@ -35,3 +35,12 @@ export const MENTION_HEX: Record<BacAccent, string> = {
 };
 
 export const ACCENT_PAR_DEFAUT: BacAccent = 'sky';
+
+/** Segment plein de l'échelle des mentions, proportionnel à la note (page du mode d'emploi). */
+export const MENTION_BARRE: Record<BacAccent, string> = {
+  rose: 'bg-rose-200 text-rose-900 dark:bg-rose-900/70 dark:text-rose-100',
+  amber: 'bg-amber-200 text-amber-900 dark:bg-amber-900/70 dark:text-amber-100',
+  sky: 'bg-sky-200 text-sky-900 dark:bg-sky-900/70 dark:text-sky-100',
+  emerald: 'bg-emerald-200 text-emerald-900 dark:bg-emerald-900/70 dark:text-emerald-100',
+  violet: 'bg-violet-200 text-violet-900 dark:bg-violet-900/70 dark:text-violet-100',
+};

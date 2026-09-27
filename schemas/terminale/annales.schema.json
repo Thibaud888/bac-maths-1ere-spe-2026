@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "terminale/annales.schema.json",
+  "title": "Index des sujets de bac passés",
+  "description": "content/terminale/<matiere>/annales.json (un objet) : les sujets passés, exercice par exercice, avec les lignes du programme mobilisées et les formulations réelles (charte § 3.2). Tant que complet vaut false, aucune fréquence n'est publiée.",
+  "type": "object",
+  "required": ["complet", "depuis", "sujets"],
+  "additionalProperties": false,
+  "properties": {
+    "complet": { "type": "boolean", "description": "true seulement quand tous les sujets publiés depuis « depuis » sont indexés, tous lieux d'examen compris." },
+    "depuis": { "type": "integer", "minimum": 2021 },
+    "sujets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sujet" }
+    }
+  },
+  "$defs": {
+    "sujet": {
+      "type": "object",
+      "required": ["id", "annee", "lieu", "url", "programmeEvalue", "exercices"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "commun.schema.json#/$defs/idAnnale" },
+        "annee": { "type": "integer", "minimum": 2021 },
+        "lieu": { "type": "string", "minLength": 2, "description": "Ex. : Métropole, jour 1 ; Amérique du Nord ; Polynésie (secours)." },
+        "url": { "type": "string", "pattern": "^https://", "description": "Sujet officiel." },
+        "programmeEvalue": { "type": "string", "enum": ["complet", "partiel"] },
+        "exclus": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "commun.schema.json#/$defs/capacite" },
+          "description": "Lignes hors du programme évalué à cette session (sujets partiel)."
+        },
+        "exercices": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/exercice" }
+        }
+      },
+      "if": { "properties": { "programmeEvalue": { "const": "partiel" } }, "required": ["programmeEvalue"] },
+      "then": { "required": ["exclus"] }
+    },
+    "exercice": {
+      "type": "object",
+      "required": ["numero", "points", "titre", "capacites", "formulations"],
+      "additionalProperties": false,
+      "properties": {
+        "numero": { "type": "integer", "minimum": 1 },
+        "points": { "type": "number", "exclusiveMinimum": 0 },
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "formulations": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Formulations exactes des questions, recopiées du sujet (jamais d'un corrigé)."
+        }
+      }
+    }
+  }
+}

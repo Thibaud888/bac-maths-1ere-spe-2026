@@ -1,9 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import {
+  GRAND_ORAL_SECTIONS,
+  SITE_NAME,
   SPACES,
   TOOLS,
   YEARS,
   findSpaceByPath,
+  pageTitle,
   spacesOfYear,
 } from '@/lib/spaces';
 
@@ -50,9 +53,32 @@ describe('registre des espaces', () => {
     expect(findSpaceByPath('/simulateur')).toBeUndefined();
   });
 
+  it('range l’onglet « Exposé » du grand oral entre la préparation et l’entretien', () => {
+    const chemins = GRAND_ORAL_SECTIONS.map((s) => s.to.split('/').pop());
+    expect(chemins.indexOf('expose')).toBe(chemins.indexOf('preparation') + 1);
+    expect(chemins.indexOf('entretien')).toBe(chemins.indexOf('expose') + 1);
+  });
+
   it('place les outils hors des espaces', () => {
     for (const tool of TOOLS) {
       expect(findSpaceByPath(tool.to)).toBeUndefined();
     }
+  });
+
+  it('nomme l’onglet d’après la page ouverte, puis le site', () => {
+    expect(pageTitle([])).toBe(SITE_NAME);
+    expect(pageTitle(['Simulateur de moyenne'])).toBe(
+      `Simulateur de moyenne — ${SITE_NAME}`
+    );
+    expect(pageTitle(['Première', 'Maths', 'Suites'])).toBe(
+      `Suites · Maths · Première — ${SITE_NAME}`
+    );
+  });
+
+  it('ne date pas les années : le site vaut pour n’importe quelle session', () => {
+    for (const year of YEARS) {
+      expect(year.label).not.toMatch(/\d{4}/);
+    }
+    expect(SITE_NAME).not.toMatch(/\d{4}/);
   });
 });

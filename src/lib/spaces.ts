@@ -48,8 +48,6 @@ export type Space = {
 
 export type Year = {
   id: YearId;
-  /** Nom seul, pour le fil d'Ariane. */
-  short: string;
   label: string;
   /** Sous-titre de la section (épreuves concernées). */
   hint: string;
@@ -58,14 +56,12 @@ export type Year = {
 export const YEARS: readonly Year[] = [
   {
     id: 'terminale',
-    short: 'Terminale',
-    label: 'Terminale · 2026–2027',
+    label: 'Terminale',
     hint: 'Spécialités et grand oral',
   },
   {
     id: 'premiere',
-    short: 'Première',
-    label: 'Première · 2025–2026',
+    label: 'Première',
     hint: 'Épreuves anticipées',
   },
 ] as const;
@@ -145,6 +141,7 @@ export const GRAND_ORAL_SECTIONS: readonly NavLeaf[] = [
   { to: '/terminale/grand-oral/epreuve', label: 'L’épreuve' },
   { to: '/terminale/grand-oral/questions', label: 'Mes 2 questions' },
   { to: '/terminale/grand-oral/preparation', label: 'Préparation' },
+  { to: '/terminale/grand-oral/expose', label: 'Exposé' },
   { to: '/terminale/grand-oral/entretien', label: 'Entretien' },
   { to: '/terminale/grand-oral/oral-blanc', label: 'Oral blanc' },
 ] as const;
@@ -158,7 +155,7 @@ export const SPACES: readonly Space[] = [
     title: 'Maths — spécialité',
     path: '/terminale/maths',
     accent: 'blue',
-    tagline: 'Formulaire, automatismes, exercices classiques et sujets type bac.',
+    tagline: 'Cours, exercices par marches, sujets type bac et mémo.',
     sections: () => [],
     emptyLabel: 'Chapitres à venir',
   },
@@ -170,7 +167,7 @@ export const SPACES: readonly Space[] = [
     title: 'Physique-chimie — spécialité',
     path: '/terminale/physique-chimie',
     accent: 'violet',
-    tagline: 'Formulaire, méthodes-types, exercices et sujets type bac.',
+    tagline: 'Cours, exercices par marches, sujets type bac, mémo et épreuve pratique.',
     sections: () => [],
     emptyLabel: 'Chapitres à venir',
   },
@@ -211,6 +208,18 @@ export const SPACES: readonly Space[] = [
     emptyLabel: 'Modules à venir',
   },
 ] as const;
+
+/** Nom du site : bandeau de la barre latérale, accueil et titre de l'onglet. */
+export const SITE_NAME = 'Révisions du bac';
+
+/**
+ * Titre de l'onglet : le fil d'Ariane lu du plus précis au plus général, puis
+ * le nom du site — « Suites · Maths · Première — Révisions du bac ».
+ */
+export function pageTitle(crumbs: readonly string[]): string {
+  if (crumbs.length === 0) return SITE_NAME;
+  return `${[...crumbs].reverse().join(' · ')} — ${SITE_NAME}`;
+}
 
 /** Liens valables quelle que soit l'année. */
 export const TOOLS: readonly NavLeaf[] = [

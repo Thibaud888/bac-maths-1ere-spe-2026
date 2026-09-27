@@ -1,12 +1,12 @@
-import { useId } from 'react';
+import { useId, useRef, useState, type PointerEvent } from 'react';
 import { ACCENT_PAR_DEFAUT, MENTION_HEX } from '@/lib/bac-accents';
 import {
-  ANNEE_LABEL,
-  DOMAINE_LABEL,
   DOMAINE_ORDER,
+  contribution,
   couleurLigne,
   fmt,
   mentionPour,
+  nomLigne,
   noteDe,
   totalSimulateur,
   type SimulateurLigne,
@@ -23,6 +23,9 @@ import type { MesureRepartition } from '@/stores/simulateur-store';
  * (`contribution`), ou le poids brut de la matière (`coefficient`). En mesure
  * « contribution », le disque est gradué sur la mention visée : le vide qui
  * reste, ce sont les points encore à prendre pour l'atteindre.
+ *
+ * Survoler une part affiche aussitôt sa note et son poids : une bulle dessinée
+ * ici, et non l'infobulle du navigateur, qui n'apparaît qu'après un délai.
  */
 
 type Part = {
@@ -38,6 +41,9 @@ const CX = 140;
 const CY = 140;
 const RAYON_EXT = 130;
 const RAYON_INT = 78;
+
+/** Une note figée garde sa couleur et ses hachures, mais s'efface. */
+const OPACITE_FIGEE = 0.4;
 
 function polaire(rayon: number, degres: number): { x: number; y: number } {
   const a = ((degres - 90) * Math.PI) / 180;
@@ -75,15 +81,8 @@ type Props = {
   moyenne: number;
 };
 
-export default function Repartition({
-  lignes,
-  notes,
-  figees,
-  mesure,
-  cible,
-  moyenne,
-}: Props) {
-  const hachures = useId();
+/** Les parts du disque et l'angle où elles s'arrêtent. */
+function decouper({ lignes, notes, figees, mesure, cible }: Props) {
   const total = totalSimulateur();
   const parts: Part[] = ordonner(lignes)
     .map((ligne) => ({
@@ -111,128 +110,176 @@ export default function Repartition({
     part.a1 = angle + (part.valeur / tour) * 360;
     angle = part.a1;
   }
+  return { parts, somme, tour, fin: angle };
+}
+
+type CamembertProps = Props & {
+  /** Version réduite, sans texte au centre ni bulle au survol (bandeau collant). */
+  mini?: boolean;
+  className?: string;
+};
+
+type Survol = { part: Part; x: number; y: number };
+
+/** Demi-largeur maximale de la bulle (`max-w-[16rem]`), pour qu'elle ne déborde pas. */
+const DEMI_BULLE_PX = 128;
+
+/** Bulle affichée au survol d'une part : la note, son poids, ce qu'elle rapporte. */
+function Bulle({ survol, note }: { survol: Survol; note: number }) {
+  const { ligne, figee } = survol.part;
+  return (
+    <div
+      role="tooltip"
+      className="pointer-events-none absolute z-10 w-max max-w-[16rem] -translate-x-1/2 -translate-y-full rounded-md bg-slate-900 px-2.5 py-1.5 text-xs text-white shadow-lg dark:bg-slate-100 dark:text-slate-900"
+      style={{ left: survol.x, top: survol.y - 10 }}
+    >
+      <p className="font-semibold">{nomLigne(ligne)}</p>
+      <p className="tabular-nums opacity-80">
+        note {fmt(note)}/20 · coef {ligne.coefficient} · apporte{' '}
+        {fmt(contribution(ligne, note))}
+        {figee ? ' · figée' : ''}
+      </p>
+    </div>
+  );
+}
+
+/** Le disque seul : réutilisé en grand dans le panneau, en petit dans le bandeau. */
+export function Camembert(props: CamembertProps) {
+  const { notes, mesure, cible, moyenne, mini = false, className } = props;
+  const hachures = useId();
+  const cadre = useRef<HTMLDivElement>(null);
+  const [survol, setSurvol] = useState<Survol | null>(null);
+  const total = totalSimulateur();
+  const { parts, somme, tour, fin } = decouper(props);
 
   const mention = mentionPour(moyenne);
   const couleurMention = MENTION_HEX[mention?.accent ?? ACCENT_PAR_DEFAUT];
   const partDeLaCible = tour === 0 ? 0 : Math.min(100, (somme / tour) * 100);
 
-  const parDomaine = DOMAINE_ORDER.map((domaine) => {
-    const dedans = parts.filter((p) => p.ligne.domaine === domaine);
-    return {
-      domaine,
-      valeur: dedans.reduce((s, p) => s + p.valeur, 0),
-      coefficient: dedans.reduce((s, p) => s + p.ligne.coefficient, 0),
-      couleur: dedans[0]?.couleur ?? '#64748b',
-    };
-  }).filter((d) => d.valeur > 0);
+  const suivre = (part: Part) => (e: PointerEvent<SVGPathElement>) => {
+    const rect = cadre.current?.getBoundingClientRect();
+    if (!rect) return;
+    // La bulle suit le pointeur mais reste dans le cadre du disque.
+    const x =
+      rect.width > 2 * DEMI_BULLE_PX
+        ? Math.min(rect.width - DEMI_BULLE_PX, Math.max(DEMI_BULLE_PX, e.clientX - rect.left))
+        : rect.width / 2;
+    setSurvol({ part, x, y: e.clientY - rect.top });
+  };
 
-  return (
-    <div className="grid gap-6 sm:grid-cols-[minmax(0,260px)_minmax(0,1fr)] sm:items-center">
-      <svg
-        viewBox="0 0 280 280"
-        className="mx-auto w-full max-w-[260px]"
-        role="img"
-        aria-label={`Répartition des coefficients — moyenne ${fmt(moyenne)} sur 20`}
-      >
-        <defs>
-          <pattern
-            id={hachures}
-            patternUnits="userSpaceOnUse"
-            width="7"
-            height="7"
-            patternTransform="rotate(45)"
-          >
-            <line
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="7"
-              stroke="rgba(255,255,255,.65)"
-              strokeWidth="2.6"
+  const disque = (
+    <svg
+      viewBox="0 0 280 280"
+      className={mini ? className : 'block w-full'}
+      role="img"
+      aria-label={`Répartition des coefficients — moyenne ${fmt(moyenne)} sur 20`}
+      onPointerLeave={mini ? undefined : () => setSurvol(null)}
+    >
+      <defs>
+        <pattern
+          id={hachures}
+          patternUnits="userSpaceOnUse"
+          width="7"
+          height="7"
+          patternTransform="rotate(45)"
+        >
+          <line
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="7"
+            stroke="rgba(255,255,255,.65)"
+            strokeWidth="2.6"
+          />
+        </pattern>
+      </defs>
+
+      {fin < 360 && (
+        <path d={arc(fin, 360)} className="fill-slate-200 dark:fill-slate-700" />
+      )}
+
+      {parts.map((part) => (
+        <g key={part.ligne.id} opacity={part.figee ? OPACITE_FIGEE : 1}>
+          <path
+            d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))}
+            fill={part.couleur}
+            stroke={survol?.part.ligne.id === part.ligne.id ? 'currentColor' : 'none'}
+            strokeWidth={2}
+            onPointerEnter={mini ? undefined : suivre(part)}
+            onPointerMove={mini ? undefined : suivre(part)}
+          />
+          {part.figee && (
+            <path
+              d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))}
+              fill={`url(#${hachures})`}
+              pointerEvents="none"
             />
-          </pattern>
-        </defs>
+          )}
+        </g>
+      ))}
 
-        {angle < 360 && (
-          <path d={arc(angle, 360)} className="fill-slate-200 dark:fill-slate-700" />
-        )}
-
-        {parts.map((part) => (
-          <g key={part.ligne.id}>
-            <path d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))} fill={part.couleur}>
-              <title>
-                {part.ligne.label}
-                {part.ligne.partagee ? ` (${ANNEE_LABEL[part.ligne.annee]})` : ''} —
-                coefficient {part.ligne.coefficient}, note{' '}
-                {fmt(noteDe(notes, part.ligne.id))}/20
-              </title>
-            </path>
-            {part.figee && (
-              <path
-                d={arc(part.a0, Math.max(part.a0, part.a1 - 0.5))}
-                fill={`url(#${hachures})`}
-                pointerEvents="none"
-              />
-            )}
-          </g>
-        ))}
-
-        <text
-          x={CX}
-          y={CY - 4}
-          textAnchor="middle"
-          fontSize="38"
-          fontWeight="800"
-          fill={couleurMention}
-        >
-          {fmt(moyenne)}
-        </text>
-        <text
-          x={CX}
-          y={CY + 18}
-          textAnchor="middle"
-          fontSize="12"
-          className="fill-slate-500 dark:fill-slate-400"
-        >
-          {mesure === 'coefficient' ? `poids sur ${total}` : 'moyenne sur 20'}
-        </text>
-        {mesure === 'contribution' && (
+      {!mini && (
+        <>
           <text
             x={CX}
-            y={CY + 35}
+            y={CY - 4}
             textAnchor="middle"
-            fontSize="10.5"
+            fontSize="38"
+            fontWeight="800"
+            fill={couleurMention}
+          >
+            {fmt(moyenne)}
+          </text>
+          <text
+            x={CX}
+            y={CY + 18}
+            textAnchor="middle"
+            fontSize="12"
             className="fill-slate-500 dark:fill-slate-400"
           >
-            {fmt(partDeLaCible, 1)} % de la cible {cible}/20
+            {mesure === 'coefficient' ? `poids sur ${total}` : 'moyenne sur 20'}
           </text>
-        )}
-      </svg>
+          {mesure === 'contribution' && (
+            <text
+              x={CX}
+              y={CY + 35}
+              textAnchor="middle"
+              fontSize="10.5"
+              className="fill-slate-500 dark:fill-slate-400"
+            >
+              {fmt(partDeLaCible, 1)} % de la cible {cible}/20
+            </text>
+          )}
+        </>
+      )}
+    </svg>
+  );
 
-      <ul className="space-y-1.5 text-sm">
-        {parDomaine.map((d) => (
-          <li key={d.domaine} className="flex items-baseline gap-2">
-            <span
-              className="mt-1 inline-block h-2.5 w-2.5 shrink-0 rounded-full"
-              style={{ backgroundColor: d.couleur }}
-              aria-hidden
-            />
-            <span className="grow text-slate-700 dark:text-slate-300">
-              {DOMAINE_LABEL[d.domaine]}
-            </span>
-            <span className="shrink-0 tabular-nums text-slate-500 dark:text-slate-400">
-              {mesure === 'coefficient'
-                ? `coef ${d.coefficient}`
-                : `${fmt(d.valeur / total)} pts`}
-            </span>
-          </li>
-        ))}
-        <li className="pt-2 text-xs text-slate-500 dark:text-slate-400">
-          {mesure === 'coefficient'
-            ? `Chaque part vaut le coefficient de la matière, sur ${total} au total.`
-            : `Chaque part vaut ce que la note apporte à la moyenne. Les parts hachurées sont les notes figées.`}
-        </li>
-      </ul>
+  if (mini) return disque;
+  return (
+    <div ref={cadre} className={`relative text-slate-900 dark:text-white ${className ?? ''}`}>
+      {disque}
+      {survol && <Bulle survol={survol} note={noteDe(notes, survol.part.ligne.id)} />}
+    </div>
+  );
+}
+
+export default function Repartition(props: Props) {
+  const { mesure } = props;
+  const total = totalSimulateur();
+
+  return (
+    <div className="space-y-3">
+      <Camembert
+        {...props}
+        className="mx-auto w-full max-w-[260px] xl:max-w-[320px]"
+      />
+      <p className="text-center text-xs text-slate-500 dark:text-slate-400">
+        {mesure === 'coefficient'
+          ? `Chaque part vaut le coefficient de la matière, sur ${total} au total.`
+          : 'Chaque part vaut ce que la note apporte à la moyenne. Les parts pâles et hachurées sont les notes figées.'}{' '}
+        Survole une part pour voir le détail.
+      </p>
     </div>
   );
 }

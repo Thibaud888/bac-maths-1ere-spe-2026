@@ -12,6 +12,7 @@ import {
   TOOLS,
   YEARS,
   findSpaceByPath,
+  pageTitle,
 } from '@/lib/spaces';
 import type { ChapterSlug } from '@/lib/types';
 import type { FrenchModuleSlug } from '@/francais/lib/french-types';
@@ -61,7 +62,7 @@ function useCrumbs(): Crumb[] {
   const page = pageCrumb(pathname);
 
   const crumbs: Crumb[] = [];
-  if (year) crumbs.push({ label: year.short, muted: true });
+  if (year) crumbs.push({ label: year.label, muted: true });
   crumbs.push({ label: space.label, muted: page !== null });
   if (page) crumbs.push({ label: page });
   return crumbs;
@@ -80,9 +81,26 @@ export default function AppLayout() {
   const toggleSidebar = useAppStore((s) => s.toggleSidebar);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+  const title = pageTitle(crumbs.map((c) => c.label));
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
   // Sur téléphone, ouvrir un lien referme le tiroir.
   useEffect(() => {
     setDrawerOpen(false);
+  }, [pathname]);
+
+  // Une nouvelle page (ou un nouvel onglet de section) s'ouvre en haut, pas à
+  // la hauteur où l'on avait fait défiler la précédente. Un lien vers une ancre
+  // d'une autre page (`…/preparation#go-prep-voix`) descend jusqu'à elle.
+  useEffect(() => {
+    const ancre = window.location.hash.slice(1);
+    if (!ancre) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    document.getElementById(decodeURIComponent(ancre))?.scrollIntoView();
   }, [pathname]);
 
   const navOpen = compact ? drawerOpen : !collapsed;
@@ -118,8 +136,10 @@ export default function AppLayout() {
       )}
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <TopBar navOpen={navOpen} onToggleNav={toggleNav} crumbs={crumbs} />
-        <main className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-900">
+        <TopBar navOpen={navOpen} onOpenNav={toggleNav} crumbs={crumbs} />
+        {/* Pas de défilement propre : la fenêtre défile, et les éléments « sticky »
+            des pages (simulateur) restent accrochés sous le bandeau. */}
+        <main className="min-w-0 flex-1 bg-slate-50 dark:bg-slate-900">
           <Outlet />
         </main>
       </div>

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import AppLayout from '@/components/layout/AppLayout';
 import { useAppStore } from '@/stores/app-store';
+import { applyTheme } from '@/lib/themes';
 import ChapterLayout from '@/components/layout/ChapterLayout';
 import HomePage from '@/routes/HomePage';
 import NotFoundPage from '@/routes/NotFoundPage';
@@ -13,6 +14,7 @@ import GrandOralLayout from '@/routes/terminale/grand-oral/GrandOralLayout';
 import EpreuvePage from '@/routes/terminale/grand-oral/EpreuvePage';
 import QuestionsPage from '@/routes/terminale/grand-oral/QuestionsPage';
 import PreparationPage from '@/routes/terminale/grand-oral/PreparationPage';
+import ExposePage from '@/routes/terminale/grand-oral/ExposePage';
 import EntretienPage from '@/routes/terminale/grand-oral/EntretienPage';
 import OralBlancPage from '@/routes/terminale/grand-oral/OralBlancPage';
 import MathsHomePage from '@/routes/premiere/MathsHomePage';
@@ -56,12 +58,7 @@ export default function App() {
   const theme = useAppStore((s) => s.theme);
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
+    applyTheme(theme);
   }, [theme]);
 
   return (
@@ -82,6 +79,7 @@ export default function App() {
           <Route path="epreuve" element={<EpreuvePage />} />
           <Route path="questions" element={<QuestionsPage />} />
           <Route path="preparation" element={<PreparationPage />} />
+          <Route path="expose" element={<ExposePage />} />
           <Route path="entretien" element={<EntretienPage />} />
           <Route path="oral-blanc" element={<OralBlancPage />} />
         </Route>

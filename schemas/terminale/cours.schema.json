@@ -1,0 +1,255 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "terminale/cours.schema.json",
+  "title": "Cours d'un chapitre de terminale",
+  "description": "content/terminale/<matiere>/chapitres/<slug>/cours.json (un objet), écrit par tle-auteur-cours (charte §§ 3.5 et 4). Une section par notion, dans l'ordre des notions ; chaque section s'affiche sur sa propre page. capacites est obligatoire sur les blocs formels (definition, propriete, demonstration, methode, exemple, experience, complement, code, lien-matiere).",
+  "type": "object",
+  "required": ["chapitre", "sections"],
+  "additionalProperties": false,
+  "properties": {
+    "chapitre": { "$ref": "commun.schema.json#/$defs/slug" },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/section" }
+    }
+  },
+  "$defs": {
+    "section": {
+      "type": "object",
+      "required": ["notion", "blocs"],
+      "additionalProperties": false,
+      "properties": {
+        "notion": { "$ref": "commun.schema.json#/$defs/idNotion" },
+        "blocs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/bloc" }
+        }
+      }
+    },
+    "bloc": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "$ref": "commun.schema.json#/$defs/idBloc" },
+        "type": {
+          "type": "string",
+          "enum": ["idee", "definition", "propriete", "demonstration", "exemple", "methode", "code", "piege", "retenir", "rappel", "verifie", "figure", "anime", "experience", "complement", "lien-matiere"]
+        }
+      },
+      "allOf": [
+        { "if": { "required": ["type"], "properties": { "type": { "const": "idee" } } }, "then": { "$ref": "#/$defs/idee" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "definition" } } }, "then": { "$ref": "#/$defs/definition" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "propriete" } } }, "then": { "$ref": "#/$defs/propriete" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "demonstration" } } }, "then": { "$ref": "#/$defs/demonstration" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "exemple" } } }, "then": { "$ref": "#/$defs/exemple" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "methode" } } }, "then": { "$ref": "#/$defs/methode" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "code" } } }, "then": { "$ref": "#/$defs/code" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "piege" } } }, "then": { "$ref": "#/$defs/piege" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "retenir" } } }, "then": { "$ref": "#/$defs/retenir" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "rappel" } } }, "then": { "$ref": "#/$defs/rappel" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "verifie" } } }, "then": { "$ref": "#/$defs/verifie" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "figure" } } }, "then": { "$ref": "#/$defs/figure" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "anime" } } }, "then": { "$ref": "#/$defs/anime" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "experience" } } }, "then": { "$ref": "#/$defs/experience" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "complement" } } }, "then": { "$ref": "#/$defs/complement" } },
+        { "if": { "required": ["type"], "properties": { "type": { "const": "lien-matiere" } } }, "then": { "$ref": "#/$defs/lien-matiere" } }
+      ]
+    },
+    "idee": {
+      "description": "Pourquoi cette notion, l'intuition. Toujours en premier. ≤ 80 mots.",
+      "required": ["texte"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "texte": { "$ref": "commun.schema.json#/$defs/texte" }
+      }
+    },
+    "definition": {
+      "description": "Formulation fidèle au programme ; suivie d'un exemple.",
+      "required": ["titre", "texte", "capacites"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "texte": { "$ref": "commun.schema.json#/$defs/texte" }
+      }
+    },
+    "propriete": {
+      "description": "Hypothèses listées à part (conditions : liste vide si aucune) ; admise si le programme ne la démontre pas.",
+      "required": ["titre", "texte", "conditions", "admise", "capacites"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "texte": { "$ref": "commun.schema.json#/$defs/texte" },
+        "conditions": { "type": "array", "items": { "$ref": "commun.schema.json#/$defs/texte" } },
+        "admise": { "type": "boolean" }
+      }
+    },
+    "demonstration": {
+      "description": "Démonstration de la propriété « de ». exigible : true seulement si le programme la liste (ligne de rubrique demonstration citée dans capacites).",
+      "required": ["de", "exigible", "etapes", "capacites"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "de": { "$ref": "commun.schema.json#/$defs/idBloc" },
+        "exigible": { "type": "boolean" },
+        "etapes": { "type": "array", "minItems": 1, "items": { "$ref": "commun.schema.json#/$defs/etape" } }
+      }
+    },
+    "exemple": {
+      "description": "Exemple résolu, dévoilé étape par étape ; dernière étape = conclusion rédigée comme au bac.",
+      "required": ["titre", "enonce", "etapes", "capacites"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "enonce": { "$ref": "commun.schema.json#/$defs/texte" },
+        "etapes": { "type": "array", "minItems": 1, "items": { "$ref": "commun.schema.json#/$defs/etape" } },
+        "code": { "$ref": "commun.schema.json#/$defs/code" }
+      }
+    },
+    "methode": {
+      "description": "« Comment … ? » : 3 à 6 étapes à l'impératif ; exemple = id d'un bloc exemple.",
+      "required": ["titre", "etapes", "capacites"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "etapes": { "type": "array", "minItems": 3, "maxItems": 6, "items": { "$ref": "commun.schema.json#/$defs/texte" } },
+        "exemple": { "$ref": "commun.schema.json#/$defs/idBloc" },
+        "code": { "$ref": "commun.schema.json#/$defs/code" }
+      }
+    },
+    "code": {
+      "description": "Algorithme du programme : le code, puis ce qu'il fait et ce qu'il renvoie.",
+      "required": ["titre", "code", "texte", "capacites"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "code": { "$ref": "commun.schema.json#/$defs/code" },
+        "texte": { "$ref": "commun.schema.json#/$defs/texte" }
+      }
+    },
+    "piege": {
+      "description": "L'erreur réelle, sa correction, pourquoi.",
+      "required": ["faux", "juste", "explication"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "faux": { "$ref": "commun.schema.json#/$defs/texte" },
+        "juste": { "$ref": "commun.schema.json#/$defs/texte" },
+        "explication": { "$ref": "commun.schema.json#/$defs/texte" }
+      }
+    },
+    "retenir": {
+      "description": "Toujours en dernier : 1 à 3 lignes.",
+      "required": ["texte"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "texte": { "$ref": "commun.schema.json#/$defs/texte" }
+      }
+    },
+    "rappel": {
+      "description": "Prérequis utile tout de suite ; renvoie (lien) à la première, aux « Méthodes » ou à une notion antérieure.",
+      "required": ["texte"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "texte": { "$ref": "commun.schema.json#/$defs/texte" },
+        "lien": { "$ref": "commun.schema.json#/$defs/lienCours" }
+      }
+    },
+    "verifie": {
+      "description": "Question de moins d'une minute sur le bloc qui précède ; réponse contrôlée (jamais redaction).",
+      "required": ["question"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "question": { "$ref": "commun.schema.json#/$defs/questionVerifiable" }
+      }
+    },
+    "figure": {
+      "description": "Figure statique (SVG sous public/figures/terminale/…) ou arbre.",
+      "required": ["figure"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "figure": { "$ref": "figure.schema.json" }
+      }
+    },
+    "anime": {
+      "description": "Figure animée : nom d'un composant React déjà livré (registre des figures animées) ; aucun code dans le JSON.",
+      "required": ["widget", "parametres", "consigne"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "widget": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "parametres": { "type": "object" },
+        "consigne": { "$ref": "commun.schema.json#/$defs/texte" }
+      }
+    },
+    "experience": {
+      "description": "Physique-chimie : relie le cours à une manipulation du programme.",
+      "required": ["titre", "protocole", "observation", "interpretation", "capacites"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "protocole": { "$ref": "commun.schema.json#/$defs/texte" },
+        "observation": { "$ref": "commun.schema.json#/$defs/texte" },
+        "interpretation": { "$ref": "commun.schema.json#/$defs/texte" }
+      }
+    },
+    "complement": {
+      "description": "« Pour aller plus loin » : seule place du cours pour les lignes non exigibles.",
+      "required": ["titre", "texte", "capacites"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "texte": { "$ref": "commun.schema.json#/$defs/texte" }
+      }
+    },
+    "lien-matiere": {
+      "description": "« Et en physique ? » / « Et en maths ? » : deux phrases au plus ; capacites = lignes de l'AUTRE matière.",
+      "required": ["matiere", "texte", "capacites"],
+      "additionalProperties": false,
+      "properties": {
+        "id": true, "type": true,
+        "titre": { "type": "string", "minLength": 1 },
+        "capacites": { "$ref": "commun.schema.json#/$defs/capacites" },
+        "matiere": { "$ref": "commun.schema.json#/$defs/matiere" },
+        "texte": { "$ref": "commun.schema.json#/$defs/texte" },
+        "lien": { "$ref": "commun.schema.json#/$defs/lienCours" }
+      }
+    }
+  }
+}
