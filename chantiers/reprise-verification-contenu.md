@@ -1,62 +1,53 @@
-# Reprise de la vérification — corriger le contenu réglementaire sur le `main` du 2026-09-23
+# Reprise de la vérification — les corrections qui restent
 
-> À coller dans la session de vérification quand Thibaud la relance (ou dans une session
-> **Cloud** neuve) sur `Thibaud888/bac-maths-1ere-spe-2026`.
-> Prérequis : aucun. Les pages HTML du ministère refusent les sessions cloud : lire les
-> textes intégraux sur leurs PDF (`docs/sources-officielles.md`).
+> À coller dans une session neuve (locale de préférence, ou **Cloud**) sur
+> `Thibaud888/bac-maths-1ere-spe-2026`.
+> Prérequis : aucun. Session locale : le navigateur intégré lit les pages du ministère (`curl`
+> y reçoit un 403) ; session Cloud : lire les textes sur leurs PDF (`docs/sources-officielles.md`).
 
 ## Prompt de handoff (coller tel quel)
 
-Contexte : la PR de vérification #76 (branche `verif/contenu-bac-2027`, rapport
-`chantiers/verification-contenu-bac-2027.md`, script `scripts/inventaire-affirmations.mjs`)
-est partie d'un `main` ancien (0596678). Depuis, quatre PR ont été fusionnées : #77, #78, #79
-(relectures de Thibaud) et #80, #81 (mise en forme, page « Exposé »). Aucune n'a corrigé un fait
-signalé par le rapport : les 7 faux et les imprécisions sont toujours là. En revanche,
-plusieurs éléments ont bougé :
+Contexte : la vérification du contenu réglementaire (PR #76, fusionnée le 2026-09-27) a relu
+88 affirmations de « Le bac, mode d'emploi », du simulateur et du grand oral sur les textes
+officiels en vigueur pour la session 2027. Rapport : `chantiers/verification-contenu-bac-2027.md`,
+avec pour chaque ligne l'extrait officiel exact et son adresse. Les corrections les plus graves
+sont faites : calculatrice en spécialité maths, mentions (très bien de 16 à 18, félicitations à
+partir de 18), dates de la partie pratique de physique-chimie, deux questions et échange du grand
+oral, rattrapage, sources périmées. Restent les items ouverts de `BACKLOG.md`, section
+« Corriger le contenu réglementaire » :
 
-- **Numéros de ligne des composants** : tous périmés (`LeBacPage.tsx`, pages du grand oral).
-  Les identifiants JSON (`id` · champ) du rapport, eux, sont inchangés.
-- **« Le bac »** : la section « Les coefficients » est supprimée. L'échelle des mentions est une
-  règle proportionnelle qui lit `plafond` (sans plafond, elle va jusqu'à 20). « L'essentiel » ne
-  garde qu'une barre des coefficients. Le texte des rattrapages et des mentions est dans des
-  cartes `ARetenir` (« Entre 8 et 10 », « La mention », palier hors échelle).
-- **Textes du JSON retouchés en #80** (des mots ajoutés, aucun fait changé) :
-  - `ca-grand-oral` · detail ;
-  - `ca-rattrapage` · detail ;
-  - `ep-francais-oral` · resume ;
-  - `gt-expose` · resume ;
-  - `go-epreuve-questions` · statement ;
-  - `go-epreuve-jury` · statement ;
-  - `go-epreuve-ancien-format` (statement, conseil).
-- **Nouvelle page « Exposé »** (#81, `content/terminale/grand-oral/expose.json`) : la fiche
-  réglementaire `go-exp-salle` dit déjà « de quoi écrire, un tableau si tu le souhaites, aucun
-  autre matériel ». Elle s'appuie sur les extraits n° 76 et 78 du rapport. L'item n° 78 vaut
-  toujours pour `go-epreuve-preparation-du-jour`, sur la page « L'épreuve ».
-- **Affichage** : apostrophe courbe et espaces insécables via `src/lib/typographie.ts`. Le JSON
-  garde l'apostrophe droite ; ne pas le réécrire pour ça.
-- **Garde-fou** : `node scripts/faits-inchanges.mjs` liste, entrée par entrée, les nombres,
-  dates et sources qui changent entre `origin/main` et l'arbre de travail.
+- n° 26 (faux) : ep-maths-anticipee · detail et note de s-eam disent « créée pour la session
+  2026 » ; l'épreuve compte pour la session 2027.
+- n° 78 : go-epreuve-preparation-du-jour · conseil — la règle du matériel (de quoi écrire, un
+  tableau si on le souhaite, rien d'autre) ; la page « Exposé » la donne déjà (`go-exp-salle`).
+- n° 86 : le projet d'orientation présenté comme une attente du jury (go-ent-orientation, champ
+  « Pourquoi cette question » de `QuestionForm.tsx`, relances « Ton projet »).
+- n° 36, 75, 80 : trois nuances de « L'épreuve » (sept critères et non quatre, jury pas forcément
+  non spécialiste, grille « sur laquelle le jury peut s'appuyer »).
+- n° 8, 22 : notes de première « connues » plutôt que « définitives ».
+- n° 17 : la physique-chimie n'est pas la seule épreuve pratique du bac.
+- n° 65 et lignes « vraies mais mal sourcées » : sources à compléter.
+- n° 45, 46 : jours des écrits de spécialité — **laissé de côté par Thibaud le 2026-09-27 :
+  lui demander avant d'y toucher.**
+
+Les numéros de ligne des composants cités dans le rapport datent du commit 0596678 et sont
+périmés ; les identifiants JSON (`id` · champ) restent valables.
 
 Fais, dans l'ordre :
-1. Lis MAP.md, CLAUDE.md (§ 0, § 1.1 « Mise en forme des pages de lecture », § 4.2, § 4.3) et
-   ton rapport.
-2. Mets ta branche à jour. Fusionne `origin/main` dans `verif/contenu-bac-2027`, sans rebase.
-   Pour `BACKLOG.md`, garde les deux côtés : les items de `main` et tes items de correction.
-3. Mets à jour, dans ton rapport, les renvois vers les composants qui ont bougé (colonne
-   « Où »), sans changer les verdicts.
-4. Traite les items « Corriger le contenu réglementaire » du backlog, un par PR comme le veut
-   CLAUDE.md § 0, en commençant par les faux : n° 29, 51, 40, 60, 63, 67, 26. Pour chaque
-   correction :
-   - l'extrait officiel est cité dans la PR ;
-   - `node scripts/faits-inchanges.mjs` ne montre que les faits voulus ;
-   - les tests du simulateur qui portent sur les paliers de mention suivent (n° 50, 51).
-5. Les pages HTML du ministère refusent les sessions cloud : lis les textes intégraux sur
-   leurs PDF, sinon demande-les à Thibaud (`docs/sources-officielles.md`) ; en attendant,
-   travaille sur les extraits du rapport et dis-le dans chaque PR.
+1. Lis MAP.md, CLAUDE.md (§ 0, § 1.1 « Le site reste général » et « Mise en forme des pages de
+   lecture », § 4.2, § 4.3) et les lignes du rapport concernées.
+2. Relis chaque extrait sur le texte officiel, à l'adresse donnée par le rapport.
+3. Corrige item par item, un item par PR (CLAUDE.md § 0), sauf si Thibaud demande de les grouper.
+   **Règle d'écriture, demandée par Thibaud le 2026-09-27** : la correction se fond dans le texte
+   existant. On retravaille la phrase en place, sobrement, comme si c'était le texte d'origine ;
+   aucune phrase ajoutée qui trahit la correction, aucune insistance sur le point corrigé.
+4. `node scripts/faits-inchanges.mjs` ne montre que les faits voulus ;
+   `node scripts/inventaire-affirmations.mjs` finit sans alerte.
+5. Vérifie le rendu dans Chromium, sur ordinateur et sur téléphone.
 
-Contraintes : réponses et commits en français ; branche + PR, jamais de push sur `main` ;
-aucun coefficient en dur (CLAUDE.md § 4.2) ; aucune date inventée ; les minutes des temps du
-grand oral seulement dans `deroule.json` ; aucune dépendance NPM nouvelle.
-Definition of done : les faux du rapport corrigés et sourcés sur le texte en vigueur pour 2027,
-`node scripts/verify.mjs` OK (au moins 169 tests), rendu vérifié dans Chromium.
-Termine en mettant à jour le `BACKLOG.md` (statut + lien PR).
+Contraintes : réponses et commits en français ; branche + PR, jamais de push sur `main` ; site
+général (ce qui dépend d'un profil est un « Exemple : … ») ; aucun coefficient en dur
+(CLAUDE.md § 4.2) ; aucune date inventée ; les minutes des temps du grand oral seulement dans
+`deroule.json` ; aucune dépendance NPM nouvelle.
+Definition of done : chaque item traité coché dans `BACKLOG.md` avec le lien de sa PR, l'extrait
+officiel cité dans la PR, `node scripts/verify.mjs` OK (au moins 222 tests).
