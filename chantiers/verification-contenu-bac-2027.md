@@ -4,6 +4,8 @@
 > modifié. Chaque faute ou imprécision devient un item de `BACKLOG.md`.
 > Pages relues : « Le bac, mode d'emploi » (`/le-bac`, PR #72), le simulateur (`/simulateur`,
 > PR #73) et le grand oral (`/terminale/grand-oral`, PR #75).
+> Les numéros de ligne des composants renvoient à cet état du dépôt (commit 0596678) ; les
+> identifiants JSON restent valables. L'avancement des corrections se suit dans `BACKLOG.md`.
 
 ## En clair
 

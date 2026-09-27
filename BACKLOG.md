@@ -259,7 +259,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   pages) ; `validate-content.mjs` attend les préfixes `bo-pc-`/`bo-pc1-`. Programme :
   BO spécial n° 8 du 25-7-2019 (PDF complet : `education.gouv.fr/sites/default/files/imported_files/documents/SP8_MENJ_1159506.pdf`) ;
   épreuve 2027 : MENE2622644N dans le PDF du BO spécial n° 4 du 17-9-2026.
-- [ ] (P2) Mettre à jour les références officielles des épreuves de spécialité —
+- [x] (P2) Mettre à jour les références officielles des épreuves de spécialité —
   `content/bac/sources.json` : `s-spe-maths` et `s-spe-physique-chimie` pointent vers les notes
   de 2020 ; les notes de service du BO spécial n° 4 du 17 septembre 2026 redéfinissent les
   épreuves à partir de 2027 (physique-chimie : `MENE2622644N` ; maths : `MENE2622642N`,
@@ -269,6 +269,9 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   de la calculatrice […] est autorisé ») ; la note de 2026 ajoute 2 points sur 20 de maîtrise
   de la langue. PDF du BO : `education.gouv.fr/sites/default/files/document/20260917boenjsspe4pdf-520753.pdf`.
   DoD : sources à jour, `node scripts/verify.mjs` OK.
+  Fait le 2026-09-27 avec les corrections de la vérification : `s-spe-maths` → MENE2622642N,
+  `s-spe-physique-chimie` → MENE2622644N, `ep-spe-maths` corrigé sur la calculatrice.
+  `node scripts/verify.mjs` OK, 222 tests. PR : #76.
 
 **Phase 2 — la mécanique du site**
 
@@ -375,20 +378,30 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
 > DoD commune : texte corrigé et sourcé sur le texte officiel en vigueur pour 2027,
 > `node scripts/verify.mjs` OK.
 
-- [ ] Ne plus dire que la calculatrice est autorisée en spécialité maths — c'est le sujet qui
+- [x] Ne plus dire que la calculatrice est autorisée en spécialité maths — c'est le sujet qui
   le précise le jour même. `content/bac/epreuves.json` ep-spe-maths · resume (n° 29, F).
   Source à citer : note du 11-9-2026 MENE2622642N.
-- [ ] Afficher la mention « très bien avec les félicitations du jury » à partir de 18 — c'est
+  Fait le 2026-09-27 dans la PR de vérification : « Le sujet précise si la calculatrice est
+  autorisée » ; `s-spe-maths` pointe la note de 2026. `node scripts/verify.mjs` OK, 222 tests.
+  PR : #76.
+- [x] Afficher la mention « très bien avec les félicitations du jury » à partir de 18 — c'est
   une mention officielle, pas une décision libre du jury. `content/bac/mentions.json` :
   me-felicitations (libellé officiel, `resume`, retirer `reglementaire: false`), me-tres-bien
   `plafond: 18` ; textes en dur `src/routes/outils/LeBacPage.tsx:407` et
   `src/routes/outils/SimulateurPage.tsx:132` ; source s-presentation-bac (n° 50 I, n° 51 F).
   Mettre à jour les tests du simulateur qui portent sur les paliers.
-- [ ] Donner les dates officielles de la partie pratique de physique-chimie : du 1er au 4 juin
+  Fait le 2026-09-27 dans la PR de vérification : félicitations sur l'échelle de 0 à 20 (nom
+  court « Félicitations » par le champ `court`, le libellé officiel restant pour le simulateur),
+  très bien plafonné à 18 ; `reglementaire` retiré du schéma, du type, des deux pages et du test
+  des paliers (les seuils du simulateur n'ont pas bougé, ses tests passent tels quels).
+  `node scripts/verify.mjs` OK, 222 tests. PR : #76.
+- [x] Donner les dates officielles de la partie pratique de physique-chimie : du 1er au 4 juin
   2027 — publiées au BO spécial n° 2 du 25 août 2026. `content/bac/calendrier.json`
   ca-pratique-physique-chimie (`precision: periode`, source s-calendrier-2027) ;
   `content/bac/epreuves.json` ep-spe-physique-chimie · quand, detail (n° 40, F).
-- [ ] Remplacer les textes officiels périmés cités en source — `content/bac/sources.json` :
+  Fait le 2026-09-27 dans la PR de vérification. `node scripts/verify.mjs` OK, 222 tests.
+  PR : #76.
+- [x] Remplacer les textes officiels périmés cités en source — `content/bac/sources.json` :
   s-spe-physique-chimie → MENE2622644N (texte de 2020 abrogé, n° 63 F) ; s-spe-maths →
   MENE2622642N (n° 62 I) ; s-eam-bo → note du 10 juin 2025 MENE2515469N et arrêté du 10 juin
   2025 JORFTEXT000051714285, le texte cité valant pour la session 2028 (n° 60 F) ; s-mentions →
@@ -396,16 +409,27 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   du 17 septembre 2026 » (n° 64 I) ; note de s-eps sans « coefficient 6 » (n° 65 I). Au passage,
   ajouter les sources manquantes des lignes vraies mais mal sourcées (n° 12, 20, 30, 32, 34, 48,
   53, 54), dont la note de philosophie MENE2622661N.
+  Fait le 2026-09-27 dans la PR de vérification : les quatre textes remplacés (`s-eam-bo` → note
+  du 10-6-2025, BO n° 24 du 12 juin 2025, qui vaut « pour les épreuves présentées au titre de la
+  session 2027 » ; `s-mentions` retirée, ses entrées citent `s-presentation-bac`) et les dates
+  des BO complétées. Reste l'item suivant. `node scripts/verify.mjs` OK, 222 tests. PR : #76.
+- [ ] Compléter les sources de quelques lignes du mode d'emploi — la note de `s-eps` parle d'un
+  « coefficient 6 » que le texte EPS ne donne pas (n° 65, I) ; lignes vraies mais mal sourcées
+  (n° 12, 20, 30, 32, 34, 48, 53, 54), dont la note de philosophie MENE2622661N à déclarer.
 - [ ] Écrire que les maths anticipées comptent pour la session 2027, pas 2026 — ep-maths-anticipee
   · detail et note de s-eam (n° 26, F).
-- [ ] Grand oral : dire que l'échange porte sur le programme « en lien avec ta question » — le
+- [x] Grand oral : dire que l'échange porte sur le programme « en lien avec ta question » — le
   texte limite l'interrogation au lien avec le premier temps. `content/terminale/grand-oral/`
   deroule.json gt-echange, entretien.json go-ent-cours (n° 83, I).
-- [ ] Grand oral : donner les trois façons autorisées de construire ses deux questions, et ce qui
+  Fait le 2026-09-27 dans la PR de vérification : « en lien avec ton exposé ».
+  `node scripts/verify.mjs` OK, 222 tests. PR : #76.
+- [x] Grand oral : donner les trois façons autorisées de construire ses deux questions, et ce qui
   arrive si elles ne sont pas conformes — une sur chaque spécialité, une sur une spécialité et
   une transversale, ou deux transversales ; sinon pas d'épreuve, puis 0 à la session de
   remplacement. epreuve.json go-epreuve-questions (n° 69, I) ; remarque « question non
   conforme » du rapport.
+  Fait le 2026-09-27 dans la PR de vérification. `node scripts/verify.mjs` OK, 222 tests.
+  PR : #76.
 - [ ] Grand oral : dire ce qui est permis dans la salle — de quoi écrire, et un tableau si on le
   souhaite. epreuve.json go-epreuve-preparation-du-jour · conseil ; la page annonce « ce qui est
   autorisé » (`src/routes/terminale/grand-oral/EpreuvePage.tsx:66`) sans le dire (n° 78, I).
@@ -417,9 +441,11 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   s'appuyer » et non « qu'il utilise » (go-epreuve-note, n° 80 I) ; jury pas forcément
   non spécialiste (go-epreuve-jury · conseil, n° 75 I) ; les sept critères, et non quatre,
   dans le mode d'emploi du bac (ep-grand-oral · detail, n° 36 I).
-- [ ] Rattrapage : prévenir qu'on ne peut pas choisir deux fois les maths — spécialité et épreuve
+- [x] Rattrapage : prévenir qu'on ne peut pas choisir deux fois les maths — spécialité et épreuve
   anticipée s'excluent au second groupe. `src/routes/outils/LeBacPage.tsx:419-424`, source
   s-presentation-bac (n° 52, I).
+  Fait le 2026-09-27 dans la PR de vérification : carte « Entre 8 et 10 » ; ses deux cartes
+  citent `s-presentation-bac`. `node scripts/verify.mjs` OK, 222 tests. PR : #76.
 - [ ] Calendrier : dire que ses deux écrits de spécialité tombent le mercredi 16 et le jeudi
   17 juin — annexe III du calendrier 2027 : maths et physique-chimie n'ont pas d'épreuve le
   vendredi 18. calendrier.json ca-specialites · detail (n° 45, I) ; ca-grand-oral : la date

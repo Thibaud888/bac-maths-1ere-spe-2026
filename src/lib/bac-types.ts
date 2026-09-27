@@ -98,9 +98,9 @@ export type BacMention = {
   seuil: number;
   plafond?: number;
   label: string;
+  /** Nom affiché sur l'échelle des mentions quand `label` est trop long. */
+  court?: string;
   resume: string;
-  /** `false` quand le palier relève du jury et non d'un seuil réglementaire. */
-  reglementaire?: boolean;
   accent?: BacAccent;
   order?: number;
   sources: string[];

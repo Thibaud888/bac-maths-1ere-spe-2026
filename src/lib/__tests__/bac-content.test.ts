@@ -94,16 +94,16 @@ describe('épreuves et calendrier', () => {
 });
 
 describe('paliers de résultat', () => {
-  const reglementaires = listBacMentions().filter((m) => m.reglementaire !== false);
+  const paliers = listBacMentions();
 
   it('couvre la note de 0 à 20 sans trou ni chevauchement', () => {
-    expect(reglementaires[0]?.seuil).toBe(0);
-    for (let i = 1; i < reglementaires.length; i += 1) {
-      const precedent = reglementaires[i - 1];
-      const courant = reglementaires[i];
+    expect(paliers[0]?.seuil).toBe(0);
+    for (let i = 1; i < paliers.length; i += 1) {
+      const precedent = paliers[i - 1];
+      const courant = paliers[i];
       expect(precedent?.plafond, `palier ${courant?.id}`).toBe(courant?.seuil);
     }
-    expect(reglementaires[reglementaires.length - 1]?.plafond).toBeUndefined();
+    expect(paliers[paliers.length - 1]?.plafond).toBeUndefined();
   });
 
   it('fixe l’admission à 10 et le rattrapage à 8', () => {

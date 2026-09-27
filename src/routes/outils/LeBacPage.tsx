@@ -516,6 +516,7 @@ function palierLabel(mention: BacMention): string {
 
 /** « Mention assez bien » → « Assez bien » : l'échelle dit déjà de quoi il s'agit. */
 function palierNom(mention: BacMention): string {
+  if (mention.court) return mention.court;
   const nom = mention.label.replace(/^Mention /, '');
   return nom.charAt(0).toUpperCase() + nom.slice(1);
 }
@@ -526,7 +527,6 @@ const NOTE_MAX = 20;
 /**
  * Les paliers sur une règle de 0 à 20, chaque segment proportionnel à sa
  * largeur de notes. Sur téléphone, les segments étroits deviennent des cases.
- * Un palier marqué non réglementaire n'y figure pas : il est cité à part.
  */
 function EchelleMentions({ paliers }: { paliers: readonly BacMention[] }) {
   const bornes = [...new Set(paliers.flatMap((m) => [m.seuil, m.plafond ?? NOTE_MAX]))].sort(
@@ -589,8 +589,6 @@ export default function LeBacPage() {
   const aVenir = epreuves.filter((e) => e.statut !== 'passee');
   const jalons = listBacJalons();
   const mentions = listBacMentions();
-  const paliers = mentions.filter((m) => m.reglementaire !== false);
-  const horsEchelle = mentions.filter((m) => m.reglementaire === false);
 
   const entete = (
     <>
@@ -711,23 +709,18 @@ export default function LeBacPage() {
           chapeau={t('La moyenne finale, sur 20, décide du résultat.')}
         >
           <div className="space-y-4">
-            <EchelleMentions paliers={paliers} />
-            <div className="grid gap-3 md:grid-cols-3">
+            <EchelleMentions paliers={mentions} />
+            <div className="grid gap-3 md:grid-cols-2">
               <ARetenir titre="Entre 8 et 10">
-                Deux oraux de rattrapage, dans des matières passées à l’écrit&nbsp;; la
-                meilleure des deux notes est gardée.
-                <Refs ids={['s-mentions']} />
+                Deux oraux de rattrapage, dans des matières passées à l’écrit (les maths une
+                seule fois, en spécialité ou en épreuve anticipée)&nbsp;; la meilleure des deux
+                notes est gardée.
+                <Refs ids={['s-presentation-bac']} />
               </ARetenir>
               <ARetenir titre="La mention">
                 Seulement au premier tour, c’est-à-dire sans passer par le rattrapage.
-                <Refs ids={['s-mentions']} />
+                <Refs ids={['s-presentation-bac']} />
               </ARetenir>
-              {horsEchelle.map((m) => (
-                <ARetenir key={m.id} titre={t(m.label)}>
-                  {t(m.resume)}
-                  <Refs ids={m.sources} />
-                </ARetenir>
-              ))}
             </div>
           </div>
         </SectionPage>

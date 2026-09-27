@@ -265,11 +265,6 @@ export default function SimulateurPage() {
                 {mention?.label ?? '—'}
               </p>
             </div>
-            {mention?.reglementaire === false && (
-              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                Distinction du jury, pas un seuil fixé par les textes.
-              </p>
-            )}
             <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">{resteAPrendre}</p>
             {mention?.resume && (
               <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
