@@ -47,7 +47,6 @@ export type RelanceCategorie =
   | 'question'
   | 'cours'
   | 'demarche'
-  | 'orientation'
   | 'piege';
 
 /** Question type du jury pendant l'échange. */
