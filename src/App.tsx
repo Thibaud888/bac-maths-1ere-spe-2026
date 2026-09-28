@@ -8,8 +8,11 @@ import HomePage from '@/routes/HomePage';
 import NotFoundPage from '@/routes/NotFoundPage';
 import LeBacPage from '@/routes/outils/LeBacPage';
 import SimulateurPage from '@/routes/outils/SimulateurPage';
-import TerminaleMathsPage from '@/routes/terminale/TerminaleMathsPage';
-import PhysiqueChimiePage from '@/routes/terminale/PhysiqueChimiePage';
+import MatiereAccueilPage from '@/routes/terminale/MatiereAccueilPage';
+import ChapitreLayout from '@/routes/terminale/chapitre/ChapitreLayout';
+import ApercuPage from '@/routes/terminale/chapitre/ApercuPage';
+import { CoursIndex, CoursNotionPage } from '@/routes/terminale/chapitre/CoursPage';
+import type { Matiere } from '@/lib/terminale/types';
 import GrandOralLayout from '@/routes/terminale/grand-oral/GrandOralLayout';
 import EpreuvePage from '@/routes/terminale/grand-oral/EpreuvePage';
 import QuestionsPage from '@/routes/terminale/grand-oral/QuestionsPage';
@@ -48,6 +51,29 @@ import OralSimulateurPage from '@/francais/routes/oral/OralSimulateurPage';
  * Renvoie une ancienne adresse vers la nouvelle, en gardant le sous-chemin :
  * les liens et favoris d'avant la réorganisation continuent de fonctionner.
  */
+/**
+ * Routes d'une matière de terminale : accueil, « Méthodes » (chapitre transverse) et
+ * chapitres — mêmes pages pour les deux matières (charte § 11).
+ */
+function routesTerminale(matiere: Matiere, base: string) {
+  const pages = (
+    <>
+      <Route index element={<ApercuPage />} />
+      <Route path="cours" element={<CoursIndex />} />
+      <Route path="cours/:notion" element={<CoursNotionPage />} />
+    </>
+  );
+  return [
+    <Route key={base} path={base} element={<MatiereAccueilPage matiere={matiere} />} />,
+    <Route key={`${base}/methodes`} path={`${base}/methodes`} element={<ChapitreLayout matiere={matiere} transverse />}>
+      {pages}
+    </Route>,
+    <Route key={`${base}/:slug`} path={`${base}/:slug`} element={<ChapitreLayout matiere={matiere} />}>
+      {pages}
+    </Route>,
+  ];
+}
+
 function LegacyRedirect({ from, to }: { from: string; to: string }) {
   const { pathname, search, hash } = useLocation();
   const rest = pathname.startsWith(from) ? pathname.slice(from.length) : '';
@@ -72,8 +98,8 @@ export default function App() {
 
         {/* --- Terminale --- */}
         <Route path="/terminale" element={<Navigate to="/terminale/maths" replace />} />
-        <Route path="/terminale/maths" element={<TerminaleMathsPage />} />
-        <Route path="/terminale/physique-chimie" element={<PhysiqueChimiePage />} />
+        {routesTerminale('maths', '/terminale/maths')}
+        {routesTerminale('physique-chimie', '/terminale/physique-chimie')}
         <Route path="/terminale/grand-oral" element={<GrandOralLayout />}>
           <Route index element={<Navigate to="epreuve" replace />} />
           <Route path="epreuve" element={<EpreuvePage />} />

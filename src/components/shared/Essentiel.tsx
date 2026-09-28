@@ -4,11 +4,15 @@ import type { Accent } from '@/components/shared/Sommaire';
 const CADRE: Record<Accent, string> = {
   sky: 'border-sky-200 border-l-sky-500 dark:border-sky-900 dark:border-l-sky-500',
   amber: 'border-amber-200 border-l-amber-500 dark:border-amber-900 dark:border-l-amber-500',
+  blue: 'border-blue-200 border-l-blue-500 dark:border-blue-900 dark:border-l-blue-500',
+  violet: 'border-violet-200 border-l-violet-500 dark:border-violet-900 dark:border-l-violet-500',
 };
 
 const TITRE: Record<Accent, string> = {
   sky: 'text-sky-700 dark:text-sky-400',
   amber: 'text-amber-700 dark:text-amber-400',
+  blue: 'text-blue-700 dark:text-blue-400',
+  violet: 'text-violet-700 dark:text-violet-400',
 };
 
 /**

@@ -15,6 +15,7 @@ import {
   pageTitle,
 } from '@/lib/spaces';
 import type { ChapterSlug } from '@/lib/types';
+import { getChapitre } from '@/lib/terminale/content';
 import type { FrenchModuleSlug } from '@/francais/lib/french-types';
 import MainSidebar from './MainSidebar';
 import TopBar, { type Crumb } from './TopBar';
@@ -42,6 +43,13 @@ function pageCrumb(pathname: string): string | null {
   if (pathname.startsWith('/premiere/francais/oral')) return 'Oral';
   if (pathname.startsWith('/premiere/francais/ecrit')) return 'Écrit';
   if (pathname.startsWith('/premiere/francais/express')) return 'Révision express';
+
+  const terminale = pathname.match(/^\/terminale\/(maths|physique-chimie)\/([^/]+)/);
+  if (terminale?.[2]) {
+    if (terminale[2] === 'methodes') return 'Méthodes';
+    const chapitre = getChapitre(terminale[2]);
+    if (chapitre && chapitre.meta.matiere === terminale[1]) return chapitre.meta.titreCourt;
+  }
 
   const section = GRAND_ORAL_SECTIONS.find((s) => pathname.startsWith(s.to));
   if (section) return section.label;

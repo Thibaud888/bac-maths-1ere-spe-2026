@@ -2,6 +2,9 @@ import { listChapters } from '@/lib/content-loader';
 import type { Domain } from '@/lib/types';
 import { listFrenchModules } from '@/francais/lib/french-content-loader';
 import type { FrenchFamily } from '@/francais/lib/french-types';
+import { chapitreMethodes, listerChapitres } from '@/lib/terminale/content';
+import { MATIERES, cheminChapitre } from '@/lib/terminale/matieres';
+import type { Matiere } from '@/lib/terminale/types';
 
 /**
  * Registre des espaces du site : une entrée par couple (année, matière).
@@ -136,6 +139,34 @@ function premiereFrancaisSections(): NavSection[] {
   return sections;
 }
 
+/**
+ * Sections d'une matière de terminale : « Méthodes » en tête, puis les chapitres
+ * dans l'ordre de l'année, groupés par grand domaine (plan de la terminale § 4.4).
+ */
+function terminaleSections(matiere: Matiere): NavSection[] {
+  const sections: NavSection[] = [];
+  const methodes = chapitreMethodes(matiere);
+  if (methodes) {
+    sections.push({ items: [{ to: cheminChapitre(methodes.meta), label: 'Méthodes' }] });
+  }
+  const chapitres = listerChapitres(matiere);
+  for (const domaine of MATIERES[matiere].domaines) {
+    const liste = chapitres.filter((c) => c.meta.domaine === domaine.id);
+    if (liste.length > 0) {
+      sections.push({
+        label: domaine.label,
+        items: liste.map((c) => ({ to: cheminChapitre(c.meta), label: c.meta.titreCourt })),
+      });
+    }
+  }
+  return sections;
+}
+
+/** `ready` dès qu'un chapitre de la matière est écrit. */
+function etatTerminale(matiere: Matiere): 'ready' | 'soon' {
+  return listerChapitres(matiere).length > 0 ? 'ready' : 'soon';
+}
+
 /** Sections fixes du grand oral (pas de découpage par chapitre). */
 export const GRAND_ORAL_SECTIONS: readonly NavLeaf[] = [
   { to: '/terminale/grand-oral/epreuve', label: 'L’épreuve' },
@@ -149,26 +180,26 @@ export const GRAND_ORAL_SECTIONS: readonly NavLeaf[] = [
 export const SPACES: readonly Space[] = [
   {
     id: 'tle-maths',
-    status: 'soon' as const,
+    status: etatTerminale('maths'),
     year: 'terminale',
     label: 'Maths',
     title: 'Maths — spécialité',
     path: '/terminale/maths',
     accent: 'blue',
     tagline: 'Cours, exercices par marches, sujets type bac et mémo.',
-    sections: () => [],
+    sections: () => terminaleSections('maths'),
     emptyLabel: 'Chapitres à venir',
   },
   {
     id: 'tle-physique-chimie',
-    status: 'soon' as const,
+    status: etatTerminale('physique-chimie'),
     year: 'terminale',
     label: 'Physique-chimie',
     title: 'Physique-chimie — spécialité',
     path: '/terminale/physique-chimie',
     accent: 'violet',
     tagline: 'Cours, exercices par marches, sujets type bac, mémo et épreuve pratique.',
-    sections: () => [],
+    sections: () => terminaleSections('physique-chimie'),
     emptyLabel: 'Chapitres à venir',
   },
   {

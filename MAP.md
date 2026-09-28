@@ -7,8 +7,9 @@
 Application de révision du bac couvrant **la première et la terminale**. Les textes restent
 généraux : ni élève, ni année, ni matière dans les titres ; le barème du bac (`content/bac/`)
 suit un profil pris **en exemple**. Cinq espaces (année × matière) + deux outils transverses :
-- Terminale : `/terminale/maths`, `/terminale/physique-chimie` (pages vides ; structure et méthode
-  cadrées dans `chantiers/terminale/` + charte `terminale-charte`, contenu à venir),
+- Terminale : `/terminale/maths`, `/terminale/physique-chimie` (pages Aperçu et Cours prêtes,
+  visibles sur le chapitre-témoin ; structure et méthode dans `chantiers/terminale/` + charte
+  `terminale-charte` ; aucun chapitre écrit : page d'attente en production),
   `/terminale/grand-oral` (l'épreuve, préparation, exposé, entretien, oral blanc minuté ; « Mes 2
   questions » = cadre rempli par l'élève)
 - Première : `/premiere/maths` (EAM, 4 modes + bac blanc), `/premiere/francais` (EAF écrit + oral
@@ -69,6 +70,10 @@ src/
   lib/terminale/        # chapitres de terminale : content.ts (chargeur + accesseurs), indexer.ts
                         # (validation, pure et testée), types.ts, validate.ts ; ajoute le
                         # chapitre-témoin en développement seulement (VITE_TEMOIN=1)
+                        # + matieres.ts (registre des matières : chemin, accent, stockage,
+                        # domaines ; adresses d'un chapitre / d'une notion), progression.ts
+                        # (états par notion, maîtrise pondérée, pure et testée), reponses.ts
+                        # (contrôle des réponses vérifiables), renvois.ts (n-…, l-…, 1e:…)
   components/layout/    # AppLayout (cadre unique), MainSidebar (LA barre), SidebarShell,
                         # TopBar (repli + fil d'Ariane + ThemePicker), SectionTabs, ChapterLayout
   components/           # formulary, automatisms, exercises, exam, math (KaTeX)
@@ -79,11 +84,17 @@ src/
                         # (« L'essentiel » en tête de page : chiffres clés ou trois idées)
   components/simulateur/ # LigneNote (curseur + cadenas), Repartition (camembert SVG fait main)
   components/grand-oral/ # fiches, frise du déroulé, oral blanc minuté, cadre des 2 questions
+  components/terminale/ # BlocCours (les 16 types de bloc), QuestionVerifiable, EtiquettePriorite,
+                        # PastilleEtat, AnneauProgression, CodeSource, LienRenvoi, Unite,
+                        # figures-animees.ts (registre des widgets `anime`, vide pour l'instant)
   francais/             # volet français (components, lib, stores, routes) — cadre commun
   lib/                  # content-loader, progress, randomizer, validate (Ajv), use-is-compact,
                         # typographie (apostrophe ’ et espaces insécables, à l'affichage)
   routes/               # premiere/, chapter/, terminale/, outils/, HomePage
+                        # terminale/MatiereAccueilPage + terminale/chapitre/ (ChapitreLayout,
+                        # ApercuPage, CoursPage) : mêmes pages pour maths et physique-chimie
   stores/  App.tsx      # App.tsx porte aussi les redirections des anciennes adresses
+                        # stores/terminale-progression-store.ts : btm-2027- / bpc-2027-
 scripts/
   verify.mjs            # LA vérification : typecheck + tests + validate-content(+fr) + build
   validate-content.mjs  validate-francais.mjs
@@ -137,7 +148,8 @@ tests/                  # Playwright pour les runners critiques (Vitest : src/**
 ## Flux de données
 JSON de contenu → `content-loader` (+ Ajv `validate.ts`) → stores Zustand → runners React.
 Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
-`btl-2027-*` (simulateur de moyenne) / `bgo-2027-*` (grand oral) — ne jamais croiser.
+`btl-2027-*` (simulateur de moyenne) / `bgo-2027-*` (grand oral) / `btm-2027-*`, `bpc-2027-*`
+(terminale) — ne jamais croiser.
 
 ## Commandes
 - Dev : `npm run dev` (avec le chapitre-témoin de terminale : `npm run dev:temoin`) ·

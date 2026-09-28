@@ -300,7 +300,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   build de production ne contient pas le témoin, même avec `VITE_TEMOIN=1` (nouvelle étape de
   `verify.mjs`). Aucun schéma ni composant de première modifié.
   `node scripts/verify.mjs` OK, 222 tests (177 + 45). PR : #86.
-- [ ] (P1) Construire les pages « Aperçu » et « Cours » d'un chapitre de terminale — routes
+- [x] (P1) Construire les pages « Aperçu » et « Cours » d'un chapitre de terminale — routes
   `/terminale/<matiere>/:slug` et `/cours`, onglets, `sections()` de `tle-maths` et
   `tle-physique-chimie`, **une page par notion** dans le cours (`/cours/<notion>`, sommaire
   des notions, précédente / suivante — charte § 11), rendu de chaque type de bloc
@@ -310,6 +310,21 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `/terminale/<matiere>/methodes` (chapitre transverse). Mêmes composants pour les deux
   matières. DoD : chapitre-témoin affiché, captures
   relues (clair, sombre, ordinateur, téléphone), `node scripts/verify.mjs` OK.
+  Livré le 2026-09-28 : accueil de la matière (`MatiereAccueilPage` : reprendre, incontournables
+  à revoir, chapitres par domaine avec anneau de maîtrise ; page d'attente tant qu'aucun
+  chapitre n'est écrit) ; cadre d'un chapitre (`routes/terminale/chapitre/ChapitreLayout`,
+  onglets Aperçu · Cours, `/methodes` pour le transverse) ; Aperçu (l'essentiel, où en est
+  l'élève, carte des notions par priorité, « ce que le bac demande », rappels) ; une page par
+  notion (`CoursPage`, `/cours` seul = dernière lue), sommaire des notions à droite ; rendu des
+  seize blocs (`components/terminale/BlocCours`), questions vérifiables
+  (`QuestionVerifiable`, logique `lib/terminale/reponses.ts`) ; progression par notion
+  (`lib/terminale/progression.ts`, seuils réglables) dans `btm-2027-progression` /
+  `bpc-2027-progression`. Barre latérale et fil d'Ariane alimentés par le contenu. Les gabarits
+  partagés (`PageLongue`, `Sommaire`, `Essentiel`) acceptent les accents bleu et violet ;
+  première inchangée. « Réviser l'essentiel » mène pour l'instant au cours du premier
+  incontournable non maîtrisé (le mémo le remplacera). Captures relues (clair, sombre,
+  1280 px, 390 px). `node scripts/verify.mjs` OK.
+
 - [ ] (P1) Construire les pages d'entraînement : exercices, type bac, mémo — trois marches
   filtrables par notion ; réponses vérifiables (QCM, vrai-faux, numérique avec unité, remise
   en ordre, auto-évaluation) ; indices + « revoir le cours » ; type bac (réutilise
