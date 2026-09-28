@@ -57,6 +57,8 @@ content/
                         # criteres, relances — sources prises dans content/bac/sources.json
   terminale/maths/programme.json  # les 205 lignes du programme officiel (bo-m-…, texte
                         # exact du BO, chapitre, rubrique, exigible)
+  terminale/maths/annales.json    # index des sujets de bac 2021-2026 (tous lieux) : lignes
+                        # mobilisées et formulations exactes, par exercice
 src/
   lib/spaces.ts         # REGISTRE DES ESPACES : années, matières, outils → toute la navigation
                         # + SITE_NAME et pageTitle() (titre de l'onglet, tiré du fil d'Ariane)
@@ -111,6 +113,10 @@ scripts/
   couverture-terminale.mjs  # un chapitre de terminale face au programme et à la charte
                         # (§ 9.3) : écarts bloquants, avertissements, tableau des planchers
   sans-reponses.mjs     # exercices d'un chapitre sans solutions ni indices (élève-testeur)
+  annales-apmep.mjs     # sujets de bac de maths publiés par l'APMEP, année par année : liste,
+                        # source LaTeX du sujet (jamais le corrigé) et son corps en texte
+  frequences-annales.mjs # ce qui tombe au bac : par chapitre, par notion, par ligne du
+                        # programme ; refuse de publier tant que annales.json n'est pas complet
   lib/terminale.mjs     # lecture + schémas + intégrité, partagés par les scripts ci-dessus
                         # et validate-content.mjs
 tests/                  # Playwright pour les runners critiques (Vitest : src/**/__tests__)
