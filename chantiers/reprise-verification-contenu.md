@@ -1,5 +1,7 @@
 # Reprise de la vérification — les corrections qui restent
 
+> **Livré le 2026-09-28** (PR #92, voir `BACKLOG.md`). Ce prompt est gardé pour mémoire.
+
 > À coller dans une session neuve (locale de préférence, ou **Cloud**) sur
 > `Thibaud888/bac-maths-1ere-spe-2026`.
 > Prérequis : aucun. Session locale : le navigateur intégré lit les pages du ministère (`curl`
