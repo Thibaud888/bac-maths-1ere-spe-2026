@@ -41,7 +41,7 @@
           "Simplifie d'abord $\\dfrac{10!}{6!}$ : les facteurs de $1$ à $6$ figurent en haut et en bas."
         ],
         "revoir": "l-denombrement-030",
-        "solution": "$\\dfrac{10!}{6!} = 10 \\times 9 \\times 8 \\times 7 = 5\\,040$, donc $\\dfrac{10!}{6!\\,4!} = \\dfrac{5\\,040}{4!} = \\dfrac{5\\,040}{24} = 210$.\n\nD'après la formule $\\binom{n}{k} = \\dfrac{n!}{(n-k)!\\,k!}$ avec $n = 10$ et $k = 4$, ce nombre est $\\binom{10}{4}$ : $\\binom{10}{4} = 210$."
+        "solution": "$\\dfrac{10!}{6!} = 10 \\times 9 \\times 8 \\times 7 = 5\\,040$, donc $\\dfrac{10!}{6!\\,4!} = \\dfrac{5\\,040}{4!} = \\dfrac{5\\,040}{24} = 210$.\n\nD'après la formule $\\binom{n}{k} = \\dfrac{n!}{(n-k)!\\,k!}$ avec $n = 10$ et $k = 4$, ce nombre est $\\binom{10}{4}$ (c'est aussi $\\binom{10}{6}$) : $\\binom{10}{4} = 210$."
       }
     ]
   },
@@ -838,7 +838,17 @@
     "duree": 12,
     "calculatrice": false,
     "ordre": 170,
-    "preambule": "Dans un repère, un pion part du point $A(0\\,;\\,0)$ et doit rejoindre le point $B(5\\,;\\,3)$. À chaque pas, il avance d'une unité, soit vers la droite (on note D), soit vers le haut (on note H). Un trajet se code donc par un mot écrit avec les lettres D et H : par exemple, DDHDHDDH est un trajet de $A$ à $B$.",
+    "preambule": "Dans un repère, un pion part du point $A(0\\,;\\,0)$ et doit rejoindre le point $B(5\\,;\\,3)$. À chaque pas, il avance d'une unité, soit vers la droite (on note D), soit vers le haut (on note H). Un trajet se code donc par un mot écrit avec les lettres D et H : par exemple, DDHDHDDH est un trajet de $A$ à $B$. La figure ci-dessous représente le quadrillage, les points $A$, $B$ et $C(2\\,;\\,1)$ et, en couleur, ce trajet.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/denombrement/quadrillage-trajet.svg",
+        "alt": "Quadrillage de 5 carreaux en largeur et 3 en hauteur, gradué de 0 à 5 en abscisse et de 0 à 3 en ordonnée. Les points A(0 ; 0), C(2 ; 1) et B(5 ; 3) sont marqués. Le trajet DDHDHDDH est tracé en couleur : deux pas à droite, un vers le haut, un à droite, un vers le haut, deux à droite, un vers le haut.",
+        "width": 330,
+        "height": 230
+      },
+      "caption": "Quadrillage de A(0 ; 0) à B(5 ; 3), avec le point C(2 ; 1) ; en couleur, le trajet DDHDHDDH."
+    },
     "questions": [
       {
         "id": "q1",
@@ -846,11 +856,11 @@
         "enonce": "Justifie que tout trajet de $A$ à $B$ compte $8$ pas, dont exactement $3$ vers le haut.",
         "reponse": { "type": "redaction" },
         "indices": [
-          "Suis l'abscisse et l'ordonnée du pion : que change un pas D ? un pas H ?",
+          "Pars d'un trajet concret, par exemple celui de la figure, et suis l'abscisse et l'ordonnée du pion : que change un pas D ? un pas H ?",
           "Un pas D augmente l'abscisse de $1$ sans changer l'ordonnée ; un pas H augmente l'ordonnée de $1$ sans changer l'abscisse.",
           "Pour que l'abscisse passe de $0$ à $5$, il faut exactement $5$ pas D ; pour que l'ordonnée passe de $0$ à $3$, exactement $3$ pas H."
         ],
-        "revoir": "l-denombrement-027",
+        "revoir": "l-denombrement-055",
         "solution": "Un pas D augmente l'abscisse de $1$ sans changer l'ordonnée, et un pas H augmente l'ordonnée de $1$ sans changer l'abscisse. Pour aller de $A(0\\,;\\,0)$ à $B(5\\,;\\,3)$, l'abscisse doit augmenter de $5$ : le trajet compte exactement $5$ pas D. L'ordonnée doit augmenter de $3$ : il compte exactement $3$ pas H. Donc tout trajet de $A$ à $B$ compte $5 + 3 = 8$ pas, dont exactement $3$ vers le haut."
       },
       {
@@ -990,12 +1000,12 @@
       "annale": "an-2024-asie-j2",
       "adaptation": "affirmation 3 du vrai-faux reprise en question 4, préparée par des questions intermédiaires"
     },
-    "preambule": "Le code d'accès d'un immeuble est formé de $4$ chiffres, de $0$ à $9$, qui peuvent être identiques, suivis de deux lettres **distinctes** choisies parmi A, B et C. Exemple : 1232BA.",
+    "preambule": "Le code d'accès d'un immeuble est formé de $4$ chiffres, de $0$ à $9$, qui peuvent être identiques, suivis de deux lettres **distinctes** choisies parmi A, B et C. Exemple : 1232BA. L'ordre des deux lettres compte : 1232AB et 1232BA sont deux codes différents.",
     "questions": [
       {
         "id": "q1",
         "label": "1.",
-        "enonce": "Combien de choix y a-t-il pour les deux lettres ?",
+        "enonce": "De combien de façons peut-on écrire les deux lettres de fin du code ?",
         "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
         "indices": [
           "Les deux lettres forment un couple (première lettre ; seconde lettre) : BA n'est pas AB. Choisis-les l'une après l'autre.",
@@ -1479,7 +1489,17 @@
     "duree": 25,
     "calculatrice": false,
     "ordre": 260,
-    "preambule": "On considère un octogone régulier (polygone à $8$ côtés de même longueur) dont les sommets sont nommés A, B, C, D, E, F, G et H, dans cet ordre, en tournant autour de la figure. Ses **côtés** sont les $8$ segments qui joignent deux sommets consécutifs : $[AB]$, $[BC]$, …, $[GH]$ et $[HA]$. Ses **diagonales** sont les autres segments qui joignent deux de ses sommets. Un **triangle** est formé de trois sommets distincts de l'octogone ; l'ordre de ces sommets ne compte pas. Faire un dessin aide à répondre.",
+    "preambule": "On considère un octogone régulier (polygone à $8$ côtés de même longueur) dont les sommets sont nommés A, B, C, D, E, F, G et H, dans cet ordre, en tournant autour de la figure. Ses **côtés** sont les $8$ segments qui joignent deux sommets consécutifs : $[AB]$, $[BC]$, …, $[GH]$ et $[HA]$. Ses **diagonales** sont les autres segments qui joignent deux de ses sommets. Un **triangle** est formé de trois sommets distincts de l'octogone ; l'ordre de ces sommets ne compte pas. La figure ci-dessous représente l'octogone, deux de ses diagonales en pointillé et, en couleur, le triangle ABE.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/denombrement/octogone-triangle.svg",
+        "alt": "Octogone régulier dont les sommets A, B, C, D, E, F, G et H se suivent dans le sens des aiguilles d'une montre, A et B en haut. Les diagonales [CH] et [DG] sont tracées en pointillé. Le triangle ABE est colorié : son côté [AB] est un côté de l'octogone, ses côtés [BE] et [AE] sont des diagonales.",
+        "width": 360,
+        "height": 340
+      },
+      "caption": "Octogone ABCDEFGH : côtés en trait plein, diagonales [CH] et [DG] en pointillé, triangle ABE en couleur (un seul de ses côtés, [AB], est un côté de l'octogone)."
+    },
     "questions": [
       {
         "id": "q1",
@@ -1553,10 +1573,10 @@
         "indices": [
           "Reprends les questions 2 à 4 avec $n$ sommets, puis retire du nombre total de triangles ceux qui ont au moins un côté du polygone.",
           "Il y a $\\binom{n}{3}$ triangles, dont $n$ avec deux côtés du polygone et $n(n-4)$ avec exactement un.",
-          "Calcule $\\dfrac{n(n-1)(n-2)}{6} - n - n(n-4)$ en mettant $\\dfrac{n}{6}$ en facteur, puis vérifie que $(n-4)(n-5) = n^2 - 9n + 20$."
+          "Regroupe d'abord $n + n(n-4) = n(n-3)$. Écris ensuite $\\dfrac{n(n-1)(n-2)}{6} - n(n-3)$ en mettant $\\dfrac{n}{6}$ en facteur, puis développe."
         ],
         "revoir": "l-denombrement-061",
-        "solution": "Les raisonnements des questions 3 et 4 restent valables avec $n$ sommets, où $n \\geqslant 5$. Il y a $n$ triangles qui ont deux côtés du polygone, un par sommet du milieu. Il y en a $n(n-4)$ qui en ont exactement un : $n$ choix pour ce côté, puis $n - 4$ choix pour le troisième sommet. Un triangle a donc $0$, $1$ ou $2$ côtés du polygone, et ces trois cas sont disjoints. D'après le principe additif, le nombre de triangles sans côté du polygone est :\n\n$$\\binom{n}{3} - n - n(n-4) = \\frac{n(n-1)(n-2)}{6} - n(n-3) = \\frac{n}{6}\\big((n-1)(n-2) - 6(n-3)\\big) = \\frac{n}{6}\\left(n^2 - 9n + 20\\right) = \\frac{n(n-4)(n-5)}{6},$$\n\ncar $(n-4)(n-5) = n^2 - 9n + 20$.\n\nPour l'octogone, $n = 8$ : $\\dfrac{8 \\times 4 \\times 3}{6} = 16$, et on retrouve bien $56 - 8 - 32 = 16$."
+        "solution": "Les raisonnements des questions 3 et 4 restent valables avec $n$ sommets, où $n \\geqslant 5$. Il y a $n$ triangles qui ont deux côtés du polygone, un par sommet du milieu. Il y en a $n(n-4)$ qui en ont exactement un : $n$ choix pour ce côté, puis $n - 4$ choix pour le troisième sommet. Un triangle a donc $0$, $1$ ou $2$ côtés du polygone, et ces trois cas sont disjoints. D'après le principe additif, le nombre de triangles sans côté du polygone est $\\binom{n}{3} - n - n(n-4)$.\n\nOn regroupe d'abord les deux derniers termes : $n + n(n-4) = n(1 + n - 4) = n(n-3)$. Comme $\\binom{n}{3} = \\dfrac{n(n-1)(n-2)}{6}$ et $n(n-3) = \\dfrac{n}{6} \\times 6(n-3)$ :\n\n$$\\binom{n}{3} - n(n-3) = \\frac{n}{6}\\big((n-1)(n-2) - 6(n-3)\\big).$$\n\nOr $(n-1)(n-2) - 6(n-3) = n^2 - 3n + 2 - 6n + 18 = n^2 - 9n + 20$, et $(n-4)(n-5) = n^2 - 5n - 4n + 20 = n^2 - 9n + 20$. Donc le nombre de triangles sans côté du polygone est :\n\n$$\\frac{n}{6}\\left(n^2 - 9n + 20\\right) = \\frac{n(n-4)(n-5)}{6}.$$\n\nPour l'octogone, $n = 8$ : $\\dfrac{8 \\times 4 \\times 3}{6} = 16$, et on retrouve bien $56 - 8 - 32 = 16$."
       }
     ]
   },
