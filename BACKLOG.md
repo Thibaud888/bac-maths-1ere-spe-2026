@@ -360,11 +360,20 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     8 cartes de mémo ; relecteur PASS au 3e tour, élève-testeur (1 bloquant corrigé) ;
     couverture « cours » sans écart. Charte : « ce que le bac demande » sans affirmation de
     vrai-faux ; `CarteMemo` affiche l'image mentale en texte. PR : #96.
-  - [ ] Dénombrement : les exercices — trois marches, questions éclair, 3 à 5 exercices type
-    bac (`tle-auteur-exercices`, `tle-auteur-bac`) ; planchers : combinaisons ★★★ (3 / 3 / 1,
-    3 éclair, 2 type bac) ; un exercice pour chacun des 3 algorithmes (lignes 14 à 16).
+  - [x] Dénombrement : les exercices — 29 exercices (14 Comprendre, 11 S'entraîner,
+    4 Approfondir), 15 questions éclair, 4 exercices type bac (22 points, 3 adaptés d'annales
+    citées, 1 original) ; tous les planchers atteints, un exercice par algorithme (lignes 14
+    à 16). Type bac limité au dénombrement, à la première et aux Méthodes (les autres chapitres
+    de terminale ne sont pas écrits). Relecteur PASS au 2e tour (exercices et type bac),
+    élève-testeur (2 bloquants corrigés). Couverture « exercices » sans écart. PR : #97.
   - [ ] Faire relire le chapitre Dénombrement par Thibaud — ses retours ajustent la charte
-    (quotas du § 5.3, déroulé d'une notion, pages).
+    (quotas du § 5.3, déroulé d'une notion, pages). Relevé par l'élève-testeur, à trancher à
+    cette occasion (cours) : la section Pascal enchaîne deux démonstrations et un programme
+    sans pause (placer le vérifie l-065 entre les deux) ; l-020 annonce 0! = 1 par une
+    égalité pas encore vue.
+  - [ ] Quand un chapitre ultérieur est écrit (loi binomiale, limites, logarithme), remettre
+    dans le type bac de Dénombrement les questions retirées des sujets adaptés (voir les notes
+    `adaptation` de `type-bac.json`).
 - [ ] (P1) Écrire le premier chapitre de physique-chimie, pour valider la méthode — même
   chose, sur le chapitre que Thibaud désigne (par défaut `acides-bases`). DoD : idem.
 
