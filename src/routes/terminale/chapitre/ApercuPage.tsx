@@ -40,7 +40,6 @@ export default function ApercuPage() {
   const estimee = chapitre.notions.some((n) => n.priorisation === 'estimation');
   const reprise = derniere ? notionParSegment(chapitre, derniere) : undefined;
   const premiere = chapitre.notions[0];
-  const aReviser = carte.find((n) => n.priorite === 3 && etats.get(n.id) !== 'maitrisee') ?? carte[0];
 
   // Prérequis : chapitres de première, puis notions d'autres chapitres de terminale.
   const prerequis = [...new Set(chapitre.notions.flatMap((n) => n.prerequis))];
@@ -104,14 +103,12 @@ export default function ApercuPage() {
                 {reprise ? 'Reprendre le cours' : 'Apprendre le chapitre'}
               </Link>
             )}
-            {aReviser && (
-              <Link
-                to={cheminNotion(chapitre, aReviser)}
-                className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
-              >
-                Réviser l’essentiel
-              </Link>
-            )}
+            <Link
+              to={`${cheminChapitre(chapitre.meta)}/memo`}
+              className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
+            >
+              Réviser l’essentiel
+            </Link>
           </div>
         </div>
       </div>

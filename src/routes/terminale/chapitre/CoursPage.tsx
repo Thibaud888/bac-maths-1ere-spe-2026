@@ -117,6 +117,11 @@ function NotionsDuChapitre({
   );
 }
 
+const ENTRAINER = {
+  blue: 'bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:text-slate-950 dark:hover:bg-blue-400',
+  violet: 'bg-violet-600 text-white hover:bg-violet-700 dark:bg-violet-500 dark:text-slate-950 dark:hover:bg-violet-400',
+} as const;
+
 const CARTE_VOISINE =
   'flex min-w-0 flex-1 flex-col rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm transition-colors hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-500';
 
@@ -234,6 +239,14 @@ export function CoursNotionPage() {
             />
           ))}
         </div>
+      )}
+      {chapitre.exercices.some((x) => x.notions.includes(notion.id)) && (
+        <Link
+          to={`${cheminChapitre(chapitre.meta)}/exercices?notion=${notion.id}`}
+          className={`block rounded-xl px-5 py-4 text-center font-semibold transition-colors ${ENTRAINER[matiere.accent]}`}
+        >
+          S’entraîner sur cette notion →
+        </Link>
       )}
       <Voisines chapitre={chapitre} precedente={precedente} suivante={suivante} />
     </PageLongue>

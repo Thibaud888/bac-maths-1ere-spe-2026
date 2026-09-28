@@ -325,11 +325,26 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   incontournable non maîtrisé (le mémo le remplacera). Captures relues (clair, sombre,
   1280 px, 390 px). `node scripts/verify.mjs` OK.
 
-- [ ] (P1) Construire les pages d'entraînement : exercices, type bac, mémo — trois marches
+- [x] (P1) Construire les pages d'entraînement : exercices, type bac, mémo — trois marches
   filtrables par notion ; réponses vérifiables (QCM, vrai-faux, numérique avec unité, remise
   en ordre, auto-évaluation) ; indices + « revoir le cours » ; type bac (réutilise
   `ExamRunner`, `Timer`) ; mémo et questions éclair (`FormulaCard`, `QcmRunner`) ; états de
   maîtrise (logique pure testée). Première inchangée. DoD : idem.
+  Livré le 2026-09-28 : onglets Exercices · Type bac · Mémo (« Méthodes » sans type bac).
+  Exercices : trois marches filtrables par marche et par notion (`?niveau=&notion=`, gardé
+  dans l'adresse d'un exercice), incontournables d'abord, carte avec durée, calculatrice et
+  état ; un exercice par page (`/exercices/<num>`, précédent / suivant) : réponses
+  vérifiables corrigées tout de suite (`pourquoiFaux`, unités), indices progressifs avec
+  « revoir le cours », solution, erreur fréquente, auto-évaluation réussi / à moitié / raté ;
+  résultat de l'exercice = moyenne des questions (`lib/terminale/entrainement.ts`, testé),
+  enregistré dans la progression. Type bac : barème par (sous-)question, chronomètre
+  facultatif (`Timer` de première), « ce qu'attend le correcteur », points estimés, source
+  citée. Mémo : cartes par priorité, détaillé / simplifié ; « Teste-toi » : questions éclair
+  une par une, premier essai compté. Les runners de première ne sont pas réutilisés tels
+  quels (ils écrivent dans `bms-2026-progress` et n'ont que deux niveaux d'auto-évaluation) :
+  composants propres sous `components/terminale/`, `Timer` réutilisé. « Réviser l'essentiel »
+  mène au mémo ; fin de chaque notion du cours : « S'entraîner sur cette notion ».
+  `node scripts/verify.mjs` OK (262 tests).
 
 **Phase 3 — les chapitres pilotes**
 
