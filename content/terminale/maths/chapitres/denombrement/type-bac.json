@@ -156,8 +156,7 @@
       "bo-m-denombrement-06",
       "bo-m-denombrement-07",
       "bo-m-denombrement-09",
-      "bo-m-denombrement-10",
-      "bo-m-limites-fonctions-05"
+      "bo-m-denombrement-10"
     ],
     "titre": "École de surf : état des planches et urne de la remise",
     "points": 6,
@@ -166,7 +165,7 @@
     "ordre": 20,
     "source": {
       "annale": "an-2026-polynesie-j1",
-      "adaptation": "Exercice 1 : contexte conservé ; proportions, probabilité donnée et nombre de boules noires ($6$ au lieu de $5$) modifiés pour que tout se calcule à la main ; arbre à construire sans figure fournie ; question de limite ajoutée (partie B, question 4). Solution écrite pour le site."
+      "adaptation": "Exercice 1 : contexte conservé ; proportions, probabilité donnée et nombre de boules noires ($6$ au lieu de $5$) modifiés pour que tout se calcule à la main ; arbre à construire sans figure fournie ; question de probabilité conditionnelle ajoutée (partie B, question 4). Solution écrite pour le site."
     },
     "preambule": "Les parties A et B sont indépendantes.\n\n**Partie A.** Une école de surf possède des planches en mousse et des planches en résine ; les planches en mousse représentent $60\\,\\%$ du stock. Après chaque saison :\n\n- $80\\,\\%$ des planches en mousse sont en bon état ; les autres sont recyclées ;\n- $70\\,\\%$ des planches en résine sont en bon état ; les autres sont soit réparées, soit recyclées.\n\nAprès une saison, on choisit une planche au hasard dans le stock. On note $M$ l'événement « la planche est en mousse », $B$ l'événement « la planche est en bon état », $R$ l'événement « la planche est recyclée » et $C$ l'événement « la planche est réparée ».\n\n**Partie B.** Pour offrir des remises, la gérante imagine le jeu suivant. Une urne contient $6$ boules noires et $n$ boules rouges, où $n$ est un entier naturel supérieur ou égal à $2$ ; les boules sont indiscernables au toucher. Le client tire simultanément deux boules au hasard dans l'urne. Si les deux boules sont de la même couleur, il gagne une remise ; sinon, il n'en gagne pas. On note $p_n$ la probabilité de gagner une remise.",
     "questions": [
@@ -244,15 +243,16 @@
       {
         "id": "q7",
         "label": "B.4.",
-        "enonce": "Déterminer la limite de $p_n$ quand $n$ tend vers $+\\infty$. Interpréter ce résultat dans le contexte du jeu.",
+        "enonce": "Dans cette question, la gérante met $n = 4$ boules rouges dans l'urne. On note $G$ l'événement « le client gagne une remise » et $N$ l'événement « le client tire deux boules noires ». Un client a gagné une remise : quelle est la probabilité qu'il ait tiré deux boules noires ?",
         "points": 0.75,
         "reponse": {
           "type": "numerique",
-          "valeur": 1,
-          "tolerance": 0
+          "valeur": "5/7",
+          "tolerance": 0.001
         },
-        "attenduCorrecteur": "- Factorisation par le terme prépondérant $n^2$ au numérateur et au dénominateur : 0,25 pt.\n- Limites de $\\dfrac{1}{n}$ et de $\\dfrac{1}{n^2}$, opérations sur les limites : $\\lim\\limits_{n \\to +\\infty} p_n = 1$ : 0,25 pt.\n- Interprétation : avec un très grand nombre de boules rouges, le client est presque sûr de gagner : 0,25 pt.",
-        "solution": "Pour tout entier $n \\geqslant 2$, on développe, puis on factorise par $n^2$, le terme prépondérant :\n\n$$p_n = \\frac{n^2 - n + 30}{n^2 + 11n + 30} = \\frac{n^2\\left(1 - \\dfrac{1}{n} + \\dfrac{30}{n^2}\\right)}{n^2\\left(1 + \\dfrac{11}{n} + \\dfrac{30}{n^2}\\right)} = \\frac{1 - \\dfrac{1}{n} + \\dfrac{30}{n^2}}{1 + \\dfrac{11}{n} + \\dfrac{30}{n^2}}.$$\n\nOr $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$ et $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n^2} = 0$. Par somme, le numérateur et le dénominateur tendent vers $1$ ; par quotient, $\\lim\\limits_{n \\to +\\infty} p_n = \\dfrac{1}{1} = 1$.\n\nInterprétation : quand le nombre de boules rouges devient très grand, la probabilité de gagner une remise se rapproche de $1$. Le client tire alors presque sûrement deux boules rouges, donc deux boules de la même couleur."
+        "attenduCorrecteur": "- Probabilité cherchée identifiée : $P_G(N)$ ; $P(G) = p_4 = \\dfrac{21}{45} = \\dfrac{7}{15}$ : 0,25 pt.\n- $N \\subset G$, donc $P(N \\cap G) = P(N) = \\dfrac{\\binom{6}{2}}{\\binom{10}{2}} = \\dfrac{15}{45} = \\dfrac{1}{3}$ : 0,25 pt.\n- Formule des probabilités conditionnelles : $P_G(N) = \\dfrac{1}{3} \\times \\dfrac{15}{7} = \\dfrac{5}{7}$ : 0,25 pt.",
+        "solution": "La probabilité cherchée est $P_G(N)$. Avec $n = 4$, l'urne contient $10$ boules : il y a $\\binom{10}{2} = \\dfrac{10 \\times 9}{2} = 45$ tirages équiprobables. D'après la question B.2 :\n\n$$P(G) = p_4 = \\frac{30 + 4 \\times 3}{10 \\times 9} = \\frac{42}{90} = \\frac{7}{15}.$$\n\nSi le client tire deux boules noires, il gagne : l'événement $N$ est inclus dans $G$, donc $N \\cap G = N$. Les tirages de deux boules noires sont les parties à $2$ éléments de l'ensemble des $6$ boules noires, au nombre de $\\binom{6}{2} = 15$ :\n\n$$P(N \\cap G) = P(N) = \\frac{15}{45} = \\frac{1}{3}.$$\n\nPar définition d'une probabilité conditionnelle :\n\n$$P_G(N) = \\frac{P(N \\cap G)}{P(G)} = \\frac{1}{3} \\times \\frac{15}{7} = \\frac{5}{7}.$$\n\nSachant que le client a gagné une remise, la probabilité qu'il ait tiré deux boules noires est $\\dfrac{5}{7}$. On le retrouve en comptant : parmi les $15 + 6 = 21$ tirages gagnants, équiprobables, $15$ sont formés de deux boules noires, et $\\dfrac{15}{21} = \\dfrac{5}{7}$.",
+        "erreurFrequente": "Répondre $P(N) = \\dfrac{1}{3}$ : l'information « le client a gagné » restreint les tirages possibles aux $21$ tirages gagnants. On cherche $P_G(N)$, pas $P(N)$."
       }
     ]
   },
@@ -271,16 +271,14 @@
       "bo-m-denombrement-05",
       "bo-m-denombrement-06",
       "bo-m-denombrement-07",
-      "bo-m-denombrement-10",
-      "bo-m-logarithme-06",
-      "bo-m-suites-14"
+      "bo-m-denombrement-10"
     ],
     "titre": "Codes d'accès : dénombrer, puis chercher un seuil",
     "points": 5,
     "duree": 45,
     "calculatrice": true,
     "ordre": 30,
-    "preambule": "Un système informatique protège des fichiers par des codes. Un **caractère** est soit l'un des dix chiffres $0$, $1$, …, $9$, soit l'une des six lettres A, B, C, D, E, F.\n\nPour un entier naturel $n$ non nul, un **code de longueur $n$** est une suite de $n$ caractères écrits dans un ordre donné ; un même caractère peut apparaître plusieurs fois. Par exemple, 0A0F et A00F sont deux codes de longueur $4$ différents.\n\nDans la partie B, on choisit un code au hasard : tous les codes d'une même longueur ont la même probabilité d'être choisis.\n\n**Partie A : codes de longueur 4** (questions A.1 à A.4).\n\n**Partie B : codes de longueur $n$** (questions B.1 à B.3).",
+    "preambule": "Un système informatique protège des fichiers par des codes. Un **caractère** est soit l'un des dix chiffres $0$, $1$, …, $9$, soit l'une des six lettres A, B, C, D, E, F.\n\nPour un entier naturel $n$ non nul, un **code de longueur $n$** est une suite de $n$ caractères écrits dans un ordre donné ; un même caractère peut apparaître plusieurs fois. Par exemple, 0A0F et A00F sont deux codes de longueur $4$ différents.\n\nDans la partie B, on choisit un code au hasard : tous les codes d'une même longueur ont la même probabilité d'être choisis.\n\n**Partie A : codes de longueur 4** (questions A.1 à A.4).\n\n**Partie B : codes de longueur $n$** (questions B.1 à B.4).",
     "questions": [
       {
         "id": "q1",
@@ -309,14 +307,14 @@
         "id": "q3",
         "label": "A.3.",
         "enonce": "Combien de codes de longueur $4$ ont leurs quatre caractères deux à deux distincts ?",
-        "points": 0.75,
+        "points": 0.5,
         "reponse": {
           "type": "numerique",
           "valeur": 43680,
           "tolerance": 0
         },
         "revoir": "l-denombrement-016",
-        "attenduCorrecteur": "- Objet reconnu : $4$-uplet d'éléments distincts d'un ensemble à $16$ éléments (l'ordre compte, pas de répétition) : 0,25 pt.\n- Calcul $16 \\times 15 \\times 14 \\times 13 = 43\\,680$ : 0,5 pt.",
+        "attenduCorrecteur": "- Objet reconnu : $4$-uplet d'éléments distincts d'un ensemble à $16$ éléments (l'ordre compte, pas de répétition) : 0,25 pt.\n- Calcul $16 \\times 15 \\times 14 \\times 13 = 43\\,680$ : 0,25 pt.",
         "solution": "Un tel code est un $4$-uplet d'éléments distincts de l'ensemble des $16$ caractères : l'ordre compte et aucun caractère ne se répète. On a $16$ choix pour le premier caractère, puis $15$ pour le deuxième (tous sauf le premier), $14$ pour le troisième et $13$ pour le quatrième. Le nombre de ces codes est :\n\n$$16 \\times 15 \\times 14 \\times 13 = 240 \\times 182 = 43\\,680.$$",
         "erreurFrequente": "Écrire $\\binom{16}{4} = 1\\,820$ : ce nombre compte des groupes de $4$ caractères, sans ordre. Or 0A1F et F1A0 sont deux codes différents : l'ordre compte."
       },
@@ -349,21 +347,29 @@
       {
         "id": "q6",
         "label": "B.2.",
-        "enonce": "Déterminer, par le calcul, le plus petit entier $n$ tel que $p_n \\geqslant 0{,}5$.",
-        "points": 0.75,
+        "enonce": "Démontrer que la suite $(p_n)$ est croissante. Interpréter ce résultat dans le contexte.",
+        "points": 0.5,
+        "attenduCorrecteur": "- Différence calculée et factorisée : $p_{n+1} - p_n = \\left(\\dfrac{15}{16}\\right)^n - \\left(\\dfrac{15}{16}\\right)^{n+1} = \\dfrac{1}{16}\\left(\\dfrac{15}{16}\\right)^n$ : 0,25 pt.\n- Signe strictement positif, donc suite croissante ; interprétation : plus un code est long, plus il a de chances de contenir la lettre A : 0,25 pt.",
+        "solution": "Pour tout entier $n \\geqslant 1$ :\n\n$$p_{n+1} - p_n = \\left[1 - \\left(\\frac{15}{16}\\right)^{n+1}\\right] - \\left[1 - \\left(\\frac{15}{16}\\right)^{n}\\right] = \\left(\\frac{15}{16}\\right)^{n} - \\left(\\frac{15}{16}\\right)^{n+1} = \\left(\\frac{15}{16}\\right)^{n}\\left(1 - \\frac{15}{16}\\right) = \\frac{1}{16}\\left(\\frac{15}{16}\\right)^{n}.$$\n\nCe nombre est strictement positif, comme produit de nombres strictement positifs. Donc $p_{n+1} > p_n$ pour tout entier $n \\geqslant 1$ : la suite $(p_n)$ est strictement croissante.\n\nInterprétation : plus un code est long, plus la probabilité qu'il contienne au moins une fois la lettre A est grande."
+      },
+      {
+        "id": "q7",
+        "label": "B.3.",
+        "enonce": "À l'aide de la calculatrice, déterminer le plus petit entier $n$ tel que $p_n \\geqslant 0{,}5$. Justifier la réponse.",
+        "points": 0.5,
         "reponse": {
           "type": "numerique",
           "valeur": 11,
           "tolerance": 0
         },
-        "attenduCorrecteur": "- Inéquation transformée en $\\left(\\dfrac{15}{16}\\right)^n \\leqslant 0{,}5$ : 0,25 pt.\n- Fonction $\\ln$ appliquée (strictement croissante) et $\\ln(a^n) = n\\ln(a)$ : $n \\ln\\left(\\dfrac{15}{16}\\right) \\leqslant \\ln(0{,}5)$ : 0,25 pt.\n- Division par $\\ln\\left(\\dfrac{15}{16}\\right) < 0$ avec changement de sens justifié, $n \\geqslant 10{,}74\\ldots$, donc $n = 11$ : 0,25 pt.",
-        "solution": "Pour tout entier $n \\geqslant 1$ :\n\n$$\\begin{aligned} p_n \\geqslant 0{,}5 &\\iff 1 - \\left(\\frac{15}{16}\\right)^n \\geqslant 0{,}5 \\iff \\left(\\frac{15}{16}\\right)^n \\leqslant 0{,}5 \\\\ &\\iff \\ln\\left(\\left(\\frac{15}{16}\\right)^n\\right) \\leqslant \\ln(0{,}5) \\\\ &\\iff n \\ln\\left(\\frac{15}{16}\\right) \\leqslant \\ln(0{,}5) \\\\ &\\iff n \\geqslant \\frac{\\ln(0{,}5)}{\\ln\\left(\\frac{15}{16}\\right)}. \\end{aligned}$$\n\nLa deuxième ligne vient de ce que la fonction $\\ln$ est strictement croissante sur $]0\\,;\\,+\\infty[$, les deux membres étant strictement positifs. La troisième vient de la propriété $\\ln(a^n) = n\\ln(a)$ pour $a > 0$. La dernière vient de ce que $\\ln\\left(\\dfrac{15}{16}\\right) < 0$, car $0 < \\dfrac{15}{16} < 1$ : diviser par un nombre strictement négatif change le sens de l'inégalité.\n\nÀ la calculatrice, $\\dfrac{\\ln(0{,}5)}{\\ln\\left(\\frac{15}{16}\\right)} \\approx 10{,}74$. Le plus petit entier $n$ tel que $p_n \\geqslant 0{,}5$ est donc $n = 11$. Contrôle : $p_{10} \\approx 0{,}476$ et $p_{11} \\approx 0{,}508$.",
-        "erreurFrequente": "Oublier que $\\ln\\left(\\dfrac{15}{16}\\right)$ est négatif et conclure $n \\leqslant 10{,}74$ : diviser par un nombre strictement négatif change le sens de l'inégalité."
+        "attenduCorrecteur": "- Valeurs lues à la calculatrice : $p_{10} \\approx 0{,}476 < 0{,}5$ et $p_{11} \\approx 0{,}508 \\geqslant 0{,}5$ : 0,25 pt.\n- Croissance de $(p_n)$ invoquée pour écarter tous les $n \\leqslant 10$ ; conclusion $n = 11$ : 0,25 pt.",
+        "solution": "À la calculatrice, par exemple avec un tableau de valeurs de la suite : $p_{10} = 1 - \\left(\\dfrac{15}{16}\\right)^{10} \\approx 0{,}476$ et $p_{11} = 1 - \\left(\\dfrac{15}{16}\\right)^{11} \\approx 0{,}508$.\n\nLa suite $(p_n)$ est croissante (question B.2) : pour tout entier $n \\leqslant 10$, $p_n \\leqslant p_{10} < 0{,}5$, donc aucun de ces entiers ne convient. En revanche, $p_{11} \\geqslant 0{,}5$.\n\nLe plus petit entier $n$ tel que $p_n \\geqslant 0{,}5$ est donc $n = 11$ : il faut un code d'au moins $11$ caractères pour qu'il contienne la lettre A avec une probabilité d'au moins $0{,}5$.",
+        "erreurFrequente": "Conclure $n = 11$ à partir de la seule valeur $p_{11} \\geqslant 0{,}5$ : il faut aussi $p_{10} < 0{,}5$, et la croissance de la suite pour écarter tous les entiers plus petits."
       },
       {
-        "id": "q7",
-        "label": "B.3.",
-        "enonce": "On considère la fonction Python seuil ci-dessous, où s est un nombre réel tel que $0 < s < 1$. Expliquer ce que renvoie seuil(s), puis déterminer, par le calcul, la valeur renvoyée par l'appel seuil(0.9).",
+        "id": "q8",
+        "label": "B.4.",
+        "enonce": "On considère la fonction Python seuil ci-dessous, où s est un nombre réel tel que $0 < s < 1$. Expliquer ce que renvoie seuil(s), puis déterminer, à l'aide de la calculatrice, la valeur renvoyée par l'appel seuil(0.9).",
         "code": {
           "langage": "python",
           "source": "def seuil(s):\n    n = 1\n    while 1 - (15/16)**n < s:\n        n = n + 1\n    return n"
@@ -374,8 +380,8 @@
           "valeur": 36,
           "tolerance": 0
         },
-        "attenduCorrecteur": "- La condition de la boucle traduit $p_n < s$ ; la boucle s'arrête au premier $n$ tel que $p_n \\geqslant s$ : seuil(s) renvoie le plus petit entier $n \\geqslant 1$ tel que $p_n \\geqslant s$ : 0,25 pt.\n- Même méthode qu'en B.2 : $n \\geqslant \\dfrac{\\ln(0{,}1)}{\\ln\\left(\\frac{15}{16}\\right)} \\approx 35{,}68$, donc la valeur renvoyée est $36$ : 0,25 pt.",
-        "solution": "Dans la boucle, la condition $1 - \\left(\\frac{15}{16}\\right)^n < s$ signifie $p_n < s$. La variable n part de $1$ et augmente de $1$ tant que $p_n < s$ ; la boucle s'arrête dès que $p_n \\geqslant s$. La fonction renvoie donc le plus petit entier $n \\geqslant 1$ tel que $p_n \\geqslant s$.\n\nPour $s = 0{,}9$, on raisonne comme à la question B.2 :\n\n$$p_n \\geqslant 0{,}9 \\iff \\left(\\frac{15}{16}\\right)^n \\leqslant 0{,}1 \\iff n \\geqslant \\frac{\\ln(0{,}1)}{\\ln\\left(\\frac{15}{16}\\right)} \\approx 35{,}68.$$\n\nL'appel seuil(0.9) renvoie donc $36$."
+        "attenduCorrecteur": "- La condition de la boucle traduit $p_n < s$ ; la boucle s'arrête au premier $n$ tel que $p_n \\geqslant s$ : seuil(s) renvoie le plus petit entier $n \\geqslant 1$ tel que $p_n \\geqslant s$ : 0,25 pt.\n- Valeurs $p_{35} \\approx 0{,}896 < 0{,}9$ et $p_{36} \\approx 0{,}902 \\geqslant 0{,}9$, croissance de $(p_n)$ : la valeur renvoyée est $36$ : 0,25 pt.",
+        "solution": "Dans la boucle, la condition $1 - \\left(\\frac{15}{16}\\right)^n < s$ signifie $p_n < s$. La variable n part de $1$ et augmente de $1$ tant que $p_n < s$ ; la boucle s'arrête dès que $p_n \\geqslant s$. La fonction renvoie donc le plus petit entier $n \\geqslant 1$ tel que $p_n \\geqslant s$.\n\nPour $s = 0{,}9$ : à la calculatrice, $p_{35} \\approx 0{,}896$ et $p_{36} \\approx 0{,}902$. Comme la suite $(p_n)$ est croissante, $p_n \\leqslant p_{35} < 0{,}9$ pour tout $n \\leqslant 35$, et $p_{36} \\geqslant 0{,}9$.\n\nL'appel seuil(0.9) renvoie donc $36$."
       }
     ]
   },
@@ -390,23 +396,18 @@
       "bo-m-denombrement-02",
       "bo-m-denombrement-03",
       "bo-m-denombrement-05",
-      "bo-m-limites-fonctions-05",
-      "bo-m-limites-fonctions-06",
-      "bo-m-derivation-05",
-      "bo-m-derivation-06",
-      "bo-m-continuite-03",
-      "bo-m-continuite-04"
+      "bo-m-logique-12"
     ],
     "titre": "Des couples d'entiers à l'étude d'une fonction",
     "points": 6,
-    "duree": 60,
+    "duree": 55,
     "calculatrice": false,
     "ordre": 40,
     "source": {
       "annale": "an-2025-amerique-sud-j2",
-      "adaptation": "Exercice 4 : parties A et C adaptées ; ensemble réduit aux entiers non nuls de $-10$ à $10$ ; fonction étudiée changée ; partie B et dernière question de la partie C retirées (elles relèvent de chapitres ultérieurs). Solution écrite pour le site."
+      "adaptation": "Exercice 4 : parties A et C adaptées ; ensemble réduit aux entiers non nuls de $-10$ à $10$ ; fonction changée et étudiée sur un intervalle fermé avec les outils de première (dérivée, tangente, variations, extremums) ; partie B et questions qui relèvent d'autres chapitres de terminale retirées. Solution écrite pour le site."
     },
-    "preambule": "**Partie A.** On considère l'ensemble $E$ des entiers relatifs non nuls compris entre $-10$ et $10$ :\n\n$$E = \\{-10\\,;\\,-9\\,;\\,\\dots\\,;\\,-1\\,;\\,1\\,;\\,\\dots\\,;\\,9\\,;\\,10\\}.$$\n\nIl comporte $20$ éléments. On choisit au hasard dans $E$, successivement et sans remise, un entier $a$ puis un entier $c$ ; tous les couples $(a\\,;\\,c)$ ainsi obtenus ont la même probabilité. On leur associe l'équation, d'inconnue réelle $x$ :\n\n$$ax^2 + 2x + c = 0.$$\n\nOn note $M$ l'événement « cette équation possède deux solutions réelles distinctes ».\n\n**Partie B.** On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = (2x^2 + 2x - 2)\\,e^{-x}$, et on note $\\mathcal{C}_f$ sa courbe représentative dans un repère du plan. On admet que $f$ est dérivable sur $\\mathbb{R}$ ; on note $f'$ sa fonction dérivée.",
+    "preambule": "**Partie A.** On considère l'ensemble $E$ des entiers relatifs non nuls compris entre $-10$ et $10$ :\n\n$$E = \\{-10\\,;\\,-9\\,;\\,\\dots\\,;\\,-1\\,;\\,1\\,;\\,\\dots\\,;\\,9\\,;\\,10\\}.$$\n\nIl comporte $20$ éléments. On choisit au hasard dans $E$, successivement et sans remise, un entier $a$ puis un entier $c$ ; tous les couples $(a\\,;\\,c)$ ainsi obtenus ont la même probabilité. On leur associe l'équation, d'inconnue réelle $x$ :\n\n$$ax^2 + 2x + c = 0.$$\n\nOn note $M$ l'événement « cette équation possède deux solutions réelles distinctes ».\n\n**Partie B.** On considère la fonction $f$ définie sur l'intervalle $[-2\\,;\\,3]$ par $f(x) = (2x^2 + 2x - 2)\\,e^{-x}$, et on note $\\mathcal{C}_f$ sa courbe représentative dans un repère du plan. On admet que $f$ est dérivable sur $[-2\\,;\\,3]$ ; on note $f'$ sa fonction dérivée. On pourra utiliser l'encadrement $2 < e < 3$.",
     "questions": [
       {
         "id": "q1",
@@ -454,59 +455,46 @@
       {
         "id": "q5",
         "label": "B.1.",
-        "enonce": "En utilisant la partie A, justifier que la courbe $\\mathcal{C}_f$ coupe l'axe des abscisses en exactement deux points. On ne demande pas les abscisses de ces points.",
-        "points": 0.5,
-        "attenduCorrecteur": "- $e^{-x} > 0$, donc $f(x) = 0 \\iff 2x^2 + 2x - 2 = 0$ : 0,25 pt.\n- Équation de la forme $ax^2 + 2x + c = 0$ avec $a = 2$ et $c = -2$ ; $ac = -4 < 1$, donc deux solutions distinctes (question A.2) et deux points d'intersection : 0,25 pt.",
-        "solution": "Les points d'intersection de $\\mathcal{C}_f$ avec l'axe des abscisses ont pour abscisses les solutions de l'équation $f(x) = 0$. Pour tout réel $x$, $e^{-x} > 0$, donc :\n\n$$f(x) = 0 \\iff 2x^2 + 2x - 2 = 0.$$\n\nCette équation est de la forme $ax^2 + 2x + c = 0$, avec $a = 2 \\neq 0$ et $c = -2$. Le calcul de la question A.2 vaut pour tous réels $a \\neq 0$ et $c$ : l'équation a deux solutions réelles distinctes si et seulement si $ac < 1$. Ici $ac = -4 < 1$ : l'équation a exactement deux solutions réelles distinctes.\n\nLa courbe $\\mathcal{C}_f$ coupe donc l'axe des abscisses en exactement deux points."
+        "enonce": "En utilisant la partie A, justifier que l'équation $2x^2 + 2x - 2 = 0$ possède deux solutions réelles distinctes. Calculer ces solutions, puis en déduire que la courbe $\\mathcal{C}_f$ coupe l'axe des abscisses en exactement deux points.",
+        "points": 0.75,
+        "attenduCorrecteur": "- Équation de la forme $ax^2 + 2x + c = 0$ avec $a = 2$ et $c = -2$ ; $ac = -4 < 1$, donc deux solutions distinctes (question A.2) : 0,25 pt.\n- Solutions $\\dfrac{-1 - \\sqrt{5}}{2}$ et $\\dfrac{-1 + \\sqrt{5}}{2}$ : 0,25 pt.\n- Appartenance à $[-2\\,;\\,3]$ justifiée (par exemple avec $2 < \\sqrt{5} < 3$) et $e^{-x} > 0$, donc $f(x) = 0 \\iff 2x^2 + 2x - 2 = 0$ : deux points : 0,25 pt.",
+        "solution": "L'équation $2x^2 + 2x - 2 = 0$ est de la forme $ax^2 + 2x + c = 0$, avec $a = 2 \\neq 0$ et $c = -2$. Le calcul de la question A.2 vaut pour tous réels $a \\neq 0$ et $c$ : l'équation a deux solutions réelles distinctes si et seulement si $ac < 1$. Ici $ac = -4 < 1$ : elle a deux solutions réelles distinctes.\n\nEn divisant par $2$, elle équivaut à $x^2 + x - 1 = 0$, de discriminant $\\Delta = 1^2 - 4 \\times 1 \\times (-1) = 5$. Ses solutions sont :\n\n$$x_1 = \\frac{-1 - \\sqrt{5}}{2} \\qquad \\text{et} \\qquad x_2 = \\frac{-1 + \\sqrt{5}}{2}.$$\n\nComme $4 < 5 < 9$, on a $2 < \\sqrt{5} < 3$. Donc $-4 < -1 - \\sqrt{5} < -3$, puis $-2 < x_1 < -\\dfrac{3}{2}$ ; et $1 < -1 + \\sqrt{5} < 2$, puis $\\dfrac{1}{2} < x_2 < 1$. Les deux solutions appartiennent à $[-2\\,;\\,3]$.\n\nEnfin, pour tout $x$ de $[-2\\,;\\,3]$, $e^{-x} > 0$, donc $f(x) = 0 \\iff 2x^2 + 2x - 2 = 0 \\iff x = x_1$ ou $x = x_2$. La courbe $\\mathcal{C}_f$ coupe donc l'axe des abscisses en exactement deux points, d'abscisses $x_1$ et $x_2$."
       },
       {
         "id": "q6",
         "label": "B.2.",
-        "enonce": "Démontrer que $\\lim\\limits_{x \\to +\\infty} f(x) = 0$ et interpréter graphiquement ce résultat. Démontrer ensuite que $\\lim\\limits_{x \\to -\\infty} f(x) = +\\infty$.",
-        "points": 0.75,
-        "attenduCorrecteur": "- En $+\\infty$ : écriture $f(x) = 2\\,\\dfrac{x^2}{e^x} + 2\\,\\dfrac{x}{e^x} - 2e^{-x}$, croissances comparées citées, limite $0$ : 0,25 pt.\n- Asymptote horizontale d'équation $y = 0$ en $+\\infty$ : 0,25 pt.\n- En $-\\infty$ : $\\lim (2x^2 + 2x - 2) = +\\infty$ et $\\lim e^{-x} = +\\infty$ par composition, donc $+\\infty$ par produit : 0,25 pt.",
-        "solution": "Pour tout réel $x$ :\n\n$$f(x) = 2x^2e^{-x} + 2xe^{-x} - 2e^{-x} = 2\\,\\frac{x^2}{e^x} + 2\\,\\frac{x}{e^x} - 2e^{-x}.$$\n\nPar croissances comparées, $\\lim\\limits_{x \\to +\\infty} \\dfrac{x^2}{e^x} = 0$ et $\\lim\\limits_{x \\to +\\infty} \\dfrac{x}{e^x} = 0$ ; de plus, $\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$. Par somme, $\\lim\\limits_{x \\to +\\infty} f(x) = 0$.\n\nInterprétation graphique : l'axe des abscisses, d'équation $y = 0$, est asymptote horizontale à la courbe $\\mathcal{C}_f$ en $+\\infty$.\n\nEn $-\\infty$ : pour $x \\neq 0$, $2x^2 + 2x - 2 = x^2\\left(2 + \\dfrac{2}{x} - \\dfrac{2}{x^2}\\right)$. Quand $x$ tend vers $-\\infty$, $x^2$ tend vers $+\\infty$ et la parenthèse tend vers $2$ : par produit, $\\lim\\limits_{x \\to -\\infty} (2x^2 + 2x - 2) = +\\infty$. Par ailleurs, $-x$ tend vers $+\\infty$ quand $x$ tend vers $-\\infty$, et $\\lim\\limits_{X \\to +\\infty} e^{X} = +\\infty$ : par composition, $\\lim\\limits_{x \\to -\\infty} e^{-x} = +\\infty$. Par produit, $\\lim\\limits_{x \\to -\\infty} f(x) = +\\infty$."
+        "enonce": "Démontrer que, pour tout réel $x$ de $[-2\\,;\\,3]$, $f'(x) = (-2x^2 + 2x + 4)\\,e^{-x}$.",
+        "points": 0.5,
+        "attenduCorrecteur": "- Dérivée de $x \\mapsto e^{-x}$ : $-e^{-x}$ (dérivée de $x \\mapsto e^{kx}$ avec $k = -1$) : 0,25 pt.\n- Formule $(uv)' = u'v + uv'$ appliquée, puis factorisation par $e^{-x}$ : 0,25 pt.",
+        "solution": "On pose $u(x) = 2x^2 + 2x - 2$ et $v(x) = e^{-x}$. Alors $u'(x) = 4x + 2$ et, comme la dérivée de $x \\mapsto e^{kx}$ est $x \\mapsto k\\,e^{kx}$, avec ici $k = -1$ : $v'(x) = -e^{-x}$. D'après la formule $(uv)' = u'v + uv'$ :\n\n$$f'(x) = (4x + 2)\\,e^{-x} - (2x^2 + 2x - 2)\\,e^{-x} = (4x + 2 - 2x^2 - 2x + 2)\\,e^{-x} = (-2x^2 + 2x + 4)\\,e^{-x}.$$"
       },
       {
         "id": "q7",
         "label": "B.3.",
-        "enonce": "Étude des variations de $f$.",
-        "points": 1.25,
-        "sousQuestions": [
-          {
-            "id": "q7a",
-            "label": "a)",
-            "enonce": "Démontrer que, pour tout réel $x$, $f'(x) = (-2x^2 + 2x + 4)\\,e^{-x}$.",
-            "points": 0.5,
-            "attenduCorrecteur": "- Dérivée de $x \\mapsto e^{-x}$ : $-e^{-x}$ (dérivée d'une composée) : 0,25 pt.\n- Formule $(uv)' = u'v + uv'$ appliquée, puis factorisation par $e^{-x}$ : 0,25 pt.",
-            "solution": "On pose $u(x) = 2x^2 + 2x - 2$ et $v(x) = e^{-x}$. Alors $u'(x) = 4x + 2$. La fonction $v$ est la composée de $x \\mapsto -x$ suivie de la fonction exponentielle, donc $v'(x) = -1 \\times e^{-x} = -e^{-x}$. D'après la formule $(uv)' = u'v + uv'$ :\n\n$$f'(x) = (4x + 2)\\,e^{-x} - (2x^2 + 2x - 2)\\,e^{-x} = (4x + 2 - 2x^2 - 2x + 2)\\,e^{-x} = (-2x^2 + 2x + 4)\\,e^{-x}.$$"
-          },
-          {
-            "id": "q7b",
-            "label": "b)",
-            "enonce": "Étudier le signe de $f'(x)$ selon les valeurs de $x$, puis dresser le tableau de variations de $f$ sur $\\mathbb{R}$, limites comprises.",
-            "points": 0.75,
-            "attenduCorrecteur": "- $f'(x)$ a le signe de $-2x^2 + 2x + 4$ car $e^{-x} > 0$ ; racines $-1$ et $2$ : 0,25 pt.\n- Trinôme négatif à l'extérieur des racines (coefficient dominant $-2 < 0$), positif entre elles : 0,25 pt.\n- Tableau complet : décroissante, croissante, décroissante ; $f(-1) = -2e$, $f(2) = 10e^{-2}$ ; limites $+\\infty$ et $0$ : 0,25 pt.",
-            "solution": "Pour tout réel $x$, $e^{-x} > 0$ : $f'(x)$ a le signe du trinôme $-2x^2 + 2x + 4$. Son discriminant est $\\Delta = 2^2 - 4 \\times (-2) \\times 4 = 36$, et ses racines sont $\\dfrac{-2 + 6}{-4} = -1$ et $\\dfrac{-2 - 6}{-4} = 2$. Son coefficient dominant, $-2$, est négatif : le trinôme est négatif à l'extérieur des racines et positif entre elles.\n\nOn retrouve ce que prévoit la partie A : l'équation $-2x^2 + 2x + 4 = 0$ est de la forme $ax^2 + 2x + c = 0$ avec $ac = -8 < 1$, et elle a bien deux solutions ; la courbe $\\mathcal{C}_f$ a donc deux tangentes horizontales.\n\nOn calcule $f(-1) = (2 - 2 - 2)\\,e^{1} = -2e$ et $f(2) = (8 + 4 - 2)\\,e^{-2} = 10e^{-2}$. Avec les limites de la question B.2 :\n\n| $x$ | $-\\infty$ | | $-1$ | | $2$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $-$ | $0$ | $+$ | $0$ | $-$ | |\n| variations de $f$ | $+\\infty$ | $\\searrow$ | $-2e$ | $\\nearrow$ | $10e^{-2}$ | $\\searrow$ | $0$ |\n\nLa fonction $f$ est strictement décroissante sur $]-\\infty\\,;\\,-1]$, strictement croissante sur $[-1\\,;\\,2]$ et strictement décroissante sur $[2\\,;\\,+\\infty[$."
-          }
-        ]
+        "enonce": "Déterminer une équation de la tangente $T$ à la courbe $\\mathcal{C}_f$ au point d'abscisse $0$.",
+        "points": 0.5,
+        "attenduCorrecteur": "- Valeurs $f(0) = -2$ et $f'(0) = 4$ : 0,25 pt.\n- Formule $y = f'(0)(x - 0) + f(0)$ et équation $T : y = 4x - 2$ : 0,25 pt.",
+        "solution": "On a $f(0) = (0 + 0 - 2)\\,e^{0} = -2$ et, d'après la question B.2, $f'(0) = (0 + 0 + 4)\\,e^{0} = 4$. La tangente à $\\mathcal{C}_f$ au point d'abscisse $0$ a pour équation $y = f'(0)(x - 0) + f(0)$, soit :\n\n$$T : y = 4x - 2.$$"
       },
       {
         "id": "q8",
         "label": "B.4.",
-        "enonce": "On admet que $f$ est strictement décroissante sur $]-\\infty\\,;\\,-1]$, strictement croissante sur $[-1\\,;\\,2]$ et strictement décroissante sur $[2\\,;\\,+\\infty[$. Déterminer, en justifiant, le nombre de solutions de l'équation $f(x) = 1$ sur $\\mathbb{R}$. On pourra utiliser l'encadrement $2 < e < 3$.",
+        "enonce": "Étudier le signe de $f'(x)$ sur $[-2\\,;\\,3]$, puis dresser le tableau de variations de $f$ sur $[-2\\,;\\,3]$, avec les valeurs de $f$ aux bornes et aux points où $f'$ s'annule.",
+        "points": 0.75,
+        "attenduCorrecteur": "- $f'(x)$ a le signe de $-2x^2 + 2x + 4$ car $e^{-x} > 0$ ; racines $-1$ et $2$, toutes deux dans $[-2\\,;\\,3]$ : 0,25 pt.\n- Trinôme négatif à l'extérieur des racines (coefficient dominant $-2 < 0$), positif entre elles : 0,25 pt.\n- Tableau complet : décroissante, croissante, décroissante ; $f(-2) = 2e^2$, $f(-1) = -2e$, $f(2) = 10e^{-2}$, $f(3) = 22e^{-3}$ : 0,25 pt.",
+        "solution": "Pour tout $x$ de $[-2\\,;\\,3]$, $e^{-x} > 0$ : $f'(x)$ a le signe du trinôme $-2x^2 + 2x + 4$. Son discriminant est $\\Delta = 2^2 - 4 \\times (-2) \\times 4 = 36$, et ses racines sont $\\dfrac{-2 + 6}{-4} = -1$ et $\\dfrac{-2 - 6}{-4} = 2$, qui appartiennent à $[-2\\,;\\,3]$. Son coefficient dominant, $-2$, est négatif : le trinôme est négatif à l'extérieur des racines et positif entre elles.\n\nOn retrouve ce que prévoit la partie A : l'équation $-2x^2 + 2x + 4 = 0$ est de la forme $ax^2 + 2x + c = 0$ avec $ac = -8 < 1$, et elle a bien deux solutions ; la courbe $\\mathcal{C}_f$ a donc deux tangentes parallèles à l'axe des abscisses.\n\nValeurs utiles : $f(-2) = (8 - 4 - 2)\\,e^{2} = 2e^2$ ; $f(-1) = (2 - 2 - 2)\\,e^{1} = -2e$ ; $f(2) = (8 + 4 - 2)\\,e^{-2} = 10e^{-2}$ ; $f(3) = (18 + 6 - 2)\\,e^{-3} = 22e^{-3}$.\n\n| $x$ | $-2$ | | $-1$ | | $2$ | | $3$ |\n|---|---|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $-$ | $0$ | $+$ | $0$ | $-$ | |\n| variations de $f$ | $2e^2$ | $\\searrow$ | $-2e$ | $\\nearrow$ | $10e^{-2}$ | $\\searrow$ | $22e^{-3}$ |\n\nLa fonction $f$ est strictement décroissante sur $[-2\\,;\\,-1]$, strictement croissante sur $[-1\\,;\\,2]$ et strictement décroissante sur $[2\\,;\\,3]$."
+      },
+      {
+        "id": "q9",
+        "label": "B.5.",
+        "enonce": "On admet que $f$ est strictement décroissante sur $[-2\\,;\\,-1]$, strictement croissante sur $[-1\\,;\\,2]$ et strictement décroissante sur $[2\\,;\\,3]$, avec $f(-2) = 2e^2$, $f(-1) = -2e$, $f(2) = 10e^{-2}$ et $f(3) = 22e^{-3}$. Déterminer le minimum et le maximum de $f$ sur $[-2\\,;\\,3]$, en précisant en quelles valeurs de $x$ ils sont atteints.",
         "points": 1,
-        "reponse": {
-          "type": "numerique",
-          "valeur": 3,
-          "tolerance": 0
-        },
         "indices": [
-          "Découpe $\\mathbb{R}$ selon les variations de $f$ ; sur chaque morceau, compare $1$ aux valeurs (ou aux limites) aux bornes, puis applique le corollaire du théorème des valeurs intermédiaires."
+          "Sur un intervalle fermé, un extremum est atteint soit en un point où $f'$ s'annule, soit en une borne : compare les valeurs candidates entre elles."
         ],
-        "attenduCorrecteur": "- Comparaison à $1$ des valeurs utiles : $-2e < 1$ et $10e^{-2} > 1$, car $e^2 < 9 < 10$ : 0,25 pt.\n- Sur chacun des trois intervalles : $f$ continue (car dérivable) et strictement monotone, $1$ compris entre les valeurs ou limites aux bornes, donc une unique solution par le corollaire du théorème des valeurs intermédiaires : 0,5 pt.\n- Conclusion : exactement trois solutions : 0,25 pt.",
-        "solution": "La fonction $f$ est dérivable sur $\\mathbb{R}$, donc continue sur $\\mathbb{R}$. On a $f(-1) = -2e$ et $f(2) = 10e^{-2}$. D'une part, $-2e < 0 < 1$. D'autre part, $e < 3$ donne $e^2 < 9 < 10$, donc $\\dfrac{10}{e^2} > 1$, c'est-à-dire $10e^{-2} > 1$.\n\n- Sur $]-\\infty\\,;\\,-1]$ : $f$ est continue et strictement décroissante, $\\lim\\limits_{x \\to -\\infty} f(x) = +\\infty$ et $f(-1) = -2e < 1$. D'après le corollaire du théorème des valeurs intermédiaires (cas d'une fonction continue et strictement monotone), l'équation $f(x) = 1$ a une unique solution dans cet intervalle.\n- Sur $[-1\\,;\\,2]$ : $f$ est continue et strictement croissante, et $f(-1) < 1 < f(2)$. De même, l'équation $f(x) = 1$ a une unique solution dans cet intervalle.\n- Sur $[2\\,;\\,+\\infty[$ : $f$ est continue et strictement décroissante, $f(2) > 1$ et $\\lim\\limits_{x \\to +\\infty} f(x) = 0 < 1$. L'équation $f(x) = 1$ a une unique solution dans cet intervalle.\n\nCes trois intervalles n'ont en commun que $-1$ et $2$, qui ne sont pas solutions puisque $f(-1) \\neq 1$ et $f(2) \\neq 1$ : les trois solutions sont distinctes. L'équation $f(x) = 1$ admet donc exactement trois solutions sur $\\mathbb{R}$.",
-        "erreurFrequente": "Oublier de comparer $10e^{-2}$ à $1$ : si ce maximum local était inférieur à $1$, l'équation n'aurait qu'une solution. C'est l'inégalité $e^2 < 10$ qui donne les deux solutions supplémentaires."
+        "attenduCorrecteur": "- Candidats tirés des variations : minimum en $-1$ ou en $3$, maximum en $-2$ ou en $2$ : 0,25 pt.\n- Minimum : $f(3) = 22e^{-3} > 0 > -2e$, donc minimum $-2e$, atteint en $x = -1$ : 0,25 pt.\n- Comparaison des candidats au maximum à l'aide de $e > 2$ : $2e^2 > 8$ et $10e^{-2} < \\dfrac{10}{4} = 2{,}5$ : 0,25 pt.\n- Maximum $2e^2$, atteint en $x = -2$ : 0,25 pt.",
+        "solution": "**Minimum.** Sur $[-2\\,;\\,-1]$ et sur $[-1\\,;\\,2]$, $f(x) \\geqslant f(-1) = -2e$ d'après les variations. Sur $[2\\,;\\,3]$, $f$ est décroissante, donc $f(x) \\geqslant f(3) = 22e^{-3}$, et $22e^{-3} > 0 > -2e$. Ainsi, pour tout $x$ de $[-2\\,;\\,3]$, $f(x) \\geqslant -2e$, avec égalité en $x = -1$ : le minimum de $f$ sur $[-2\\,;\\,3]$ est $-2e$, atteint en $x = -1$.\n\n**Maximum.** Sur $[-2\\,;\\,-1]$, $f(x) \\leqslant f(-2) = 2e^2$ ; sur $[-1\\,;\\,2]$ et sur $[2\\,;\\,3]$, $f(x) \\leqslant f(2) = 10e^{-2}$. Il reste à comparer $2e^2$ et $10e^{-2}$. Comme $e > 2$, on a $e^2 > 4$, donc $2e^2 > 8$ et $10e^{-2} = \\dfrac{10}{e^2} < \\dfrac{10}{4} = 2{,}5$. Ainsi $10e^{-2} < 2e^2$.\n\nPour tout $x$ de $[-2\\,;\\,3]$, $f(x) \\leqslant 2e^2$, avec égalité en $x = -2$ : le maximum de $f$ sur $[-2\\,;\\,3]$ est $2e^2$, atteint en $x = -2$.",
+        "erreurFrequente": "Prendre le maximum local $f(2) = 10e^{-2}$ pour le maximum de $f$ sur $[-2\\,;\\,3]$ : sur un intervalle fermé, il faut aussi regarder les bornes, et ici $f(-2) = 2e^2$ est bien plus grand."
       }
     ]
   }
