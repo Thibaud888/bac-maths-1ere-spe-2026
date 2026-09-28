@@ -1,0 +1,509 @@
+[
+  {
+    "id": "tb-denombrement-001",
+    "chapitre": "denombrement",
+    "notions": [
+      "n-denombrement-combinaisons",
+      "n-denombrement-principes"
+    ],
+    "capacites": [
+      "bo-m-denombrement-02",
+      "bo-m-denombrement-06",
+      "bo-m-denombrement-07",
+      "bo-m-denombrement-16",
+      "bo-m-listes-01",
+      "bo-m-listes-04",
+      "bo-m-logique-11"
+    ],
+    "titre": "Tickets à cœurs : placements, gain moyen et variante à quatre cœurs",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2021-asie-j2",
+      "adaptation": "Exercice 3 : grille et règle du jeu conservées ; prix du ticket et gain modifiés (gain g à déterminer) ; dernière question retirée (elle relève d'un chapitre ultérieur), remplacée par une fonction Python qui génère les placements et par une variante à quatre cœurs. Solution écrite pour le site."
+    },
+    "preambule": "Une application de jeu génère des tickets. Un ticket est une grille de $3 \\times 3$ cases, numérotées de $1$ à $9$ :\n\n| | colonne 1 | colonne 2 | colonne 3 |\n|---|---|---|---|\n| **ligne 1** | $1$ | $2$ | $3$ |\n| **ligne 2** | $4$ | $5$ | $6$ |\n| **ligne 3** | $7$ | $8$ | $9$ |\n\nL'application place au hasard trois cœurs dans trois cases différentes de la grille. On appelle **placement** l'ensemble des trois cases qui portent un cœur ; tous les placements ont la même probabilité d'apparaître.\n\nLe ticket est **gagnant** si les trois cœurs sont sur une même ligne, sur une même colonne ou sur une même diagonale. Ces groupes de trois cases sont appelés les **alignements**. Par exemple, le placement $\\{1\\,;\\,5\\,;\\,9\\}$ est gagnant et le placement $\\{1\\,;\\,2\\,;\\,6\\}$ est perdant.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier qu'il y a exactement $84$ placements possibles.",
+        "points": 1,
+        "revoir": "l-denombrement-030",
+        "attenduCorrecteur": "- Objet compté identifié et justifié : un placement est une partie à $3$ éléments de l'ensemble des $9$ cases (l'ordre ne compte pas, une case n'est pas choisie deux fois) : 0,5 pt.\n- Calcul posé $\\binom{9}{3} = \\dfrac{9 \\times 8 \\times 7}{3!} = 84$ et phrase de conclusion : 0,5 pt.",
+        "solution": "Placer les trois cœurs revient à choisir les trois cases qui les reçoivent. L'ordre dans lequel on choisit ces cases n'a pas d'importance, et une case ne peut pas être choisie deux fois. Un placement est donc une partie à $3$ éléments de l'ensemble $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,9\\}$, c'est-à-dire une combinaison de $3$ éléments parmi $9$.\n\nLe nombre de placements est donc :\n\n$$\\binom{9}{3} = \\frac{9 \\times 8 \\times 7}{3!} = \\frac{504}{6} = 84.$$\n\nIl y a exactement $84$ placements possibles.",
+        "erreurFrequente": "Compter $9 \\times 8 \\times 7 = 504$ : ce nombre compte les triplets ordonnés (première case, deuxième case, troisième case). Or les cœurs sont identiques : chaque placement y est compté $3! = 6$ fois."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère le programme Python ci-dessous. La liste alignements contient les alignements de la grille, chacun écrit dans l'ordre croissant de ses cases.",
+        "code": {
+          "langage": "python",
+          "source": "alignements = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8],\n               [3, 6, 9], [1, 5, 9], [3, 5, 7]]\n\ndef placements():\n    L = []\n    for i in range(1, 10):\n        for j in range(i + 1, 10):\n            for k in range(j + 1, 10):\n                L.append([i, j, k])\n    return L\n\ndef nombre_gagnants():\n    compteur = 0\n    for p in placements():\n        if p in alignements:  # vrai si la liste p figure dans alignements\n            compteur = compteur + 1\n    return compteur"
+        },
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Expliquer pourquoi la liste renvoyée par placements() contient chacun des $84$ placements une fois et une seule, ses cases rangées dans l'ordre croissant.",
+            "points": 0.5,
+            "revoir": "l-denombrement-033",
+            "attenduCorrecteur": "- Les boucles imbriquées produisent exactement les listes $[i, j, k]$ avec $1 \\leqslant i < j < k \\leqslant 9$ : 0,25 pt.\n- Une partie à $3$ éléments s'écrit d'une seule façon dans l'ordre croissant, donc chaque placement est ajouté une fois et une seule : 0,25 pt.",
+            "solution": "La boucle en $i$ parcourt les entiers de $1$ à $9$ ; pour chaque $i$, la boucle en $j$ parcourt les entiers de $i + 1$ à $9$ ; pour chaque $j$, la boucle en $k$ parcourt les entiers de $j + 1$ à $9$. La fonction ajoute donc à la liste L toutes les listes $[i, j, k]$ telles que $1 \\leqslant i < j < k \\leqslant 9$, et seulement celles-là.\n\nOr un placement est une partie à trois éléments de $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,9\\}$ : en rangeant ses trois cases dans l'ordre croissant, on obtient une seule liste $[i, j, k]$ avec $i < j < k$. Inversement, une telle liste désigne un seul placement.\n\nLa liste renvoyée par placements() contient donc chaque placement une fois et une seule, ses cases rangées dans l'ordre croissant ; elle a $\\binom{9}{3} = 84$ éléments."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Quelle valeur renvoie l'appel nombre_gagnants() ? En déduire que la probabilité qu'un ticket soit gagnant est égale à $\\dfrac{2}{21}$.\n\nSaisis la valeur renvoyée par nombre_gagnants() ; la déduction est à rédiger.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 8,
+              "tolerance": 0
+            },
+            "attenduCorrecteur": "- La fonction compte les placements qui sont des alignements ; chaque alignement, écrit dans l'ordre croissant, figure une fois dans placements() : valeur renvoyée $8$ (0,25 pt).\n- Équiprobabilité des $84$ placements invoquée : 0,25 pt.\n- Calcul $\\dfrac{8}{84} = \\dfrac{2}{21}$ : 0,25 pt.",
+            "solution": "La fonction parcourt la liste des $84$ placements et augmente compteur de $1$ chaque fois que le placement p figure dans la liste alignements. Chacun des $8$ alignements ($3$ lignes, $3$ colonnes et $2$ diagonales) est un placement écrit dans l'ordre croissant : d'après la question a), il apparaît une fois et une seule dans placements(), sous la même forme que dans alignements. Les autres placements ne sont pas des alignements. L'appel nombre_gagnants() renvoie donc $8$.\n\nUn ticket est gagnant exactement quand son placement est un alignement : $8$ placements sont gagnants. Les $84$ placements étant équiprobables, la probabilité qu'un ticket soit gagnant est :\n\n$$\\frac{8}{84} = \\frac{2 \\times 4}{21 \\times 4} = \\frac{2}{21}.$$",
+            "erreurFrequente": "Écrire le quotient $\\dfrac{8}{84}$ sans dire que les placements sont équiprobables : c'est l'équiprobabilité qui autorise le calcul « cas favorables sur cas possibles »."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pour générer un ticket, le joueur paie $2$ euros. Si le ticket est gagnant, la société lui verse $g$ euros, où $g$ est un entier naturel non nul ; sinon, elle ne lui verse rien. On note $G$ la variable aléatoire égale au gain algébrique du joueur, c'est-à-dire la somme reçue diminuée de la somme payée.\n\nOn rappelle que la probabilité qu'un ticket soit gagnant est égale à $\\dfrac{2}{21}$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Donner la loi de probabilité de $G$, puis démontrer que $E(G) = \\dfrac{2g - 42}{21}$.",
+            "points": 0.5,
+            "attenduCorrecteur": "- Valeurs de $G$ : $g - 2$ (ticket gagnant) et $-2$ (ticket perdant), de probabilités $\\dfrac{2}{21}$ et $\\dfrac{19}{21}$, présentées dans un tableau : 0,25 pt.\n- Espérance posée avec sa définition, puis réduite à $\\dfrac{2g - 42}{21}$ : 0,25 pt.",
+            "solution": "Si le ticket est gagnant, le joueur reçoit $g$ euros après en avoir payé $2$ : $G = g - 2$. Sinon, $G = -2$. D'après l'énoncé, $P(G = g - 2) = \\dfrac{2}{21}$, donc $P(G = -2) = 1 - \\dfrac{2}{21} = \\dfrac{19}{21}$.\n\n| $x_i$ | $g - 2$ | $-2$ |\n|---|---|---|\n| $P(G = x_i)$ | $\\dfrac{2}{21}$ | $\\dfrac{19}{21}$ |\n\nPar définition de l'espérance :\n\n$$E(G) = (g - 2) \\times \\frac{2}{21} + (-2) \\times \\frac{19}{21} = \\frac{2g - 4 - 38}{21} = \\frac{2g - 42}{21}.$$"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Le jeu est favorable au joueur lorsque $E(G) > 0$. Déterminer la plus petite valeur de $g$ pour laquelle le jeu est favorable au joueur.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 22,
+              "tolerance": 0
+            },
+            "attenduCorrecteur": "- Inéquation $\\dfrac{2g - 42}{21} > 0$ résolue : $g > 21$ : 0,25 pt.\n- Conclusion avec $g$ entier : $g = 22$ ; le cas $g = 21$ donne un jeu équitable, pas favorable : 0,25 pt.",
+            "solution": "Comme $21 > 0$ :\n\n$$E(G) > 0 \\iff \\frac{2g - 42}{21} > 0 \\iff 2g - 42 > 0 \\iff g > 21.$$\n\nLe nombre $g$ est un entier naturel non nul, et le plus petit entier strictement supérieur à $21$ est $22$. Pour $g = 21$, $E(G) = 0$ : le jeu est équitable, mais pas favorable au joueur.\n\nLa plus petite valeur de $g$ qui rend le jeu favorable au joueur est $g = 22$ euros.",
+            "erreurFrequente": "Répondre $21$ : pour $g = 21$, l'espérance est nulle ; le jeu est équitable, pas favorable."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "La société propose une variante : l'application place au hasard **quatre** cœurs dans quatre cases différentes de la grille, tous les placements de quatre cases étant équiprobables. Le ticket est gagnant si trois des quatre cœurs occupent un alignement.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Justifier qu'il y a $126$ placements possibles de quatre cœurs.",
+            "points": 0.5,
+            "attenduCorrecteur": "Un placement est une partie à $4$ éléments des $9$ cases ; calcul $\\binom{9}{4} = \\dfrac{9 \\times 8 \\times 7 \\times 6}{4!} = 126$ : 0,5 pt.",
+            "solution": "Comme à la question 1, un placement de quatre cœurs est une partie à $4$ éléments de l'ensemble des $9$ cases. Il y en a :\n\n$$\\binom{9}{4} = \\frac{9 \\times 8 \\times 7 \\times 6}{4!} = \\frac{3\\,024}{24} = 126.$$"
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Justifier que deux alignements différents ont au plus une case commune. En déduire qu'un placement de quatre cœurs ne peut pas contenir deux alignements différents.",
+            "points": 0.5,
+            "revoir": "l-denombrement-005",
+            "indices": [
+              "Distingue les cas selon la nature des deux alignements : deux lignes, deux colonnes, une ligne et une colonne, une diagonale et une ligne ou une colonne, les deux diagonales."
+            ],
+            "attenduCorrecteur": "- Disjonction des cas complète (deux lignes ou deux colonnes : aucune case commune ; une ligne et une colonne, une diagonale et une ligne ou une colonne, les deux diagonales : une seule case commune) : 0,25 pt.\n- Deux alignements différents occupent au moins $3 + 3 - 1 = 5$ cases, plus que les $4$ cœurs : conclusion : 0,25 pt.",
+            "solution": "On distingue les cas selon la nature des deux alignements.\n\n- Deux lignes différentes, ou deux colonnes différentes, n'ont aucune case commune.\n- Une ligne et une colonne ont exactement une case commune : celle où elles se croisent.\n- Une diagonale contient une case de chaque ligne et une case de chaque colonne : elle a exactement une case commune avec chacune d'elles.\n- Les deux diagonales $\\{1\\,;\\,5\\,;\\,9\\}$ et $\\{3\\,;\\,5\\,;\\,7\\}$ n'ont que la case $5$ en commun.\n\nDans tous les cas, deux alignements différents ont au plus une case commune.\n\nSi un placement contenait deux alignements différents, il contiendrait toutes leurs cases, soit au moins $3 + 3 - 1 = 5$ cases. C'est impossible, puisqu'un placement de la variante ne compte que $4$ cases. Un placement de quatre cœurs contient donc au plus un alignement."
+          },
+          {
+            "id": "q4c",
+            "label": "c)",
+            "enonce": "Démontrer que $48$ placements sont gagnants, puis en déduire la probabilité de gagner avec cette variante.\n\nSaisis la probabilité, sous forme de fraction ; la démonstration est à rédiger.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "8/21",
+              "tolerance": 0.001
+            },
+            "revoir": "l-denombrement-005",
+            "attenduCorrecteur": "- Pour un alignement donné, le quatrième cœur occupe l'une des $6$ autres cases : $6$ placements contiennent cet alignement : 0,25 pt.\n- Les $8$ ensembles de placements ainsi obtenus sont deux à deux disjoints (question b) ; principe additif : $8 \\times 6 = 48$ : 0,25 pt.\n- Équiprobabilité invoquée, $\\dfrac{48}{126} = \\dfrac{8}{21}$ : 0,25 pt.",
+            "solution": "Pour un alignement donné, le quatrième cœur se place dans l'une des $9 - 3 = 6$ cases restantes : exactement $6$ placements contiennent cet alignement.\n\nNotons $A_1$, $A_2$, …, $A_8$ les ensembles des placements qui contiennent respectivement chacun des $8$ alignements. Un placement gagnant appartient à l'un d'eux, et d'après la question b), il n'appartient pas à deux d'entre eux : ces ensembles sont deux à deux disjoints. D'après le principe additif, le nombre de placements gagnants est :\n\n$$6 + 6 + \\dots + 6 = 8 \\times 6 = 48.$$\n\nLes $126$ placements étant équiprobables, la probabilité de gagner avec la variante est :\n\n$$\\frac{48}{126} = \\frac{8 \\times 6}{21 \\times 6} = \\frac{8}{21}.$$",
+            "erreurFrequente": "Calculer $8 \\times 6$ sans vérifier qu'aucun placement n'est compté deux fois : c'est la question b) qui l'autorise. Avec cinq cœurs, un placement pourrait contenir deux alignements, et ce calcul compterait certains placements deux fois."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-denombrement-002",
+    "chapitre": "denombrement",
+    "notions": [
+      "n-denombrement-combinaisons",
+      "n-denombrement-problemes",
+      "n-denombrement-pascal"
+    ],
+    "capacites": [
+      "bo-m-denombrement-06",
+      "bo-m-denombrement-07",
+      "bo-m-denombrement-08",
+      "bo-m-denombrement-09",
+      "bo-m-denombrement-10"
+    ],
+    "titre": "École de surf : état des planches et urne de la remise",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2026-polynesie-j1",
+      "adaptation": "Exercice 1 : contexte conservé ; proportions, probabilité donnée et nombre de boules noires ($6$ au lieu de $5$) modifiés pour que tout se calcule à la main ; arbre à construire sans figure fournie ; question de probabilité conditionnelle ajoutée (partie B, question 4). Solution écrite pour le site."
+    },
+    "preambule": "Les parties A et B sont indépendantes.\n\n**Partie A.** Une école de surf possède des planches en mousse et des planches en résine ; les planches en mousse représentent $60\\,\\%$ du stock. Après chaque saison :\n\n- $80\\,\\%$ des planches en mousse sont en bon état ; les autres sont recyclées ;\n- $70\\,\\%$ des planches en résine sont en bon état ; les autres sont soit réparées, soit recyclées.\n\nAprès une saison, on choisit une planche au hasard dans le stock. On note $M$ l'événement « la planche est en mousse », $B$ l'événement « la planche est en bon état », $R$ l'événement « la planche est recyclée » et $C$ l'événement « la planche est réparée ».\n\n**Partie B.** Pour offrir des remises, la gérante imagine le jeu suivant. Une urne contient $6$ boules noires et $n$ boules rouges, où $n$ est un entier naturel supérieur ou égal à $2$ ; les boules sont indiscernables au toucher. Le client tire simultanément deux boules au hasard dans l'urne. Si les deux boules sont de la même couleur, il gagne une remise ; sinon, il n'en gagne pas. On note $p_n$ la probabilité de gagner une remise.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Représenter la situation par un arbre pondéré, complété avec les données de l'énoncé. Les probabilités des branches qui mènent de $\\overline{M}$ à $R$ et à $C$ seront complétées à la question A.2.",
+        "points": 0.5,
+        "attenduCorrecteur": "- Premier niveau : $M$ avec $0{,}6$ et $\\overline{M}$ avec $0{,}4$ : 0,25 pt.\n- Second niveau : $B$ ($0{,}8$) et $R$ ($0{,}2$) après $M$ ; $B$ ($0{,}7$), $R$ et $C$ après $\\overline{M}$ : 0,25 pt.",
+        "solution": "L'arbre a deux niveaux : la matière de la planche, puis son état après la saison.\n\n- De la racine partent deux branches : $M$, de probabilité $P(M) = 0{,}6$, et $\\overline{M}$, de probabilité $P(\\overline{M}) = 1 - 0{,}6 = 0{,}4$.\n- De $M$ partent deux branches : $B$, avec $P_M(B) = 0{,}8$, et $R$, avec $P_M(R) = 1 - 0{,}8 = 0{,}2$.\n- De $\\overline{M}$ partent trois branches : $B$, avec $P_{\\overline{M}}(B) = 0{,}7$, puis $R$ et $C$, dont les probabilités $P_{\\overline{M}}(R)$ et $P_{\\overline{M}}(C)$ ont pour somme $1 - 0{,}7 = 0{,}3$ ; elles sont calculées à la question A.2."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "On sait que $P(\\overline{M} \\cap R) = 0{,}08$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Interpréter cette égalité dans le contexte de l'exercice.",
+            "points": 0.25,
+            "attenduCorrecteur": "Phrase en contexte : la probabilité que la planche choisie soit en résine **et** recyclée est $0{,}08$ (ou : $8\\,\\%$ des planches du stock sont en résine et recyclées) : 0,25 pt. Une lecture conditionnelle (« parmi les planches en résine… ») ne rapporte pas le point.",
+            "solution": "$P(\\overline{M} \\cap R) = 0{,}08$ signifie que la probabilité que la planche choisie soit en résine **et** soit recyclée est égale à $0{,}08$. Autrement dit, $8\\,\\%$ des planches du stock sont des planches en résine recyclées après la saison."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "On choisit une planche en résine. Démontrer que la probabilité qu'elle soit réparée est égale à $0{,}1$.",
+            "points": 0.75,
+            "attenduCorrecteur": "- Probabilité cherchée identifiée : $P_{\\overline{M}}(C)$ ; formule des probabilités conditionnelles, $P_{\\overline{M}}(R) = \\dfrac{P(\\overline{M} \\cap R)}{P(\\overline{M})} = \\dfrac{0{,}08}{0{,}4} = 0{,}2$ : 0,5 pt.\n- Somme des probabilités des branches issues de $\\overline{M}$ égale à $1$ : $P_{\\overline{M}}(C) = 1 - 0{,}7 - 0{,}2 = 0{,}1$ : 0,25 pt.",
+            "solution": "La probabilité cherchée est $P_{\\overline{M}}(C)$. On a $P(\\overline{M}) = 1 - P(M) = 1 - 0{,}6 = 0{,}4$, et par définition d'une probabilité conditionnelle :\n\n$$P_{\\overline{M}}(R) = \\frac{P(\\overline{M} \\cap R)}{P(\\overline{M})} = \\frac{0{,}08}{0{,}4} = 0{,}2.$$\n\nUne planche en résine est soit en bon état, soit recyclée, soit réparée, et un seul de ces cas se produit : la somme des probabilités des branches issues de $\\overline{M}$ vaut $1$. Donc :\n\n$$P_{\\overline{M}}(C) = 1 - P_{\\overline{M}}(B) - P_{\\overline{M}}(R) = 1 - 0{,}7 - 0{,}2 = 0{,}1.$$\n\nLa probabilité qu'une planche en résine soit réparée est bien égale à $0{,}1$.",
+            "erreurFrequente": "Calculer $1 - 0{,}7 - 0{,}08 = 0{,}22$ : $0{,}08$ est la probabilité de l'intersection $\\overline{M} \\cap R$, pas la probabilité conditionnelle $P_{\\overline{M}}(R)$ qu'on lit sur la branche."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "La gérante affirme qu'après une saison, au moins les trois quarts des planches sont en bon état. A-t-elle raison ? Justifier.",
+        "points": 0.75,
+        "attenduCorrecteur": "- Formule des probabilités totales, avec la partition $\\{M\\,;\\,\\overline{M}\\}$ citée : 0,25 pt.\n- Calcul $P(B) = 0{,}6 \\times 0{,}8 + 0{,}4 \\times 0{,}7 = 0{,}76$ : 0,25 pt.\n- Comparaison $0{,}76 \\geqslant 0{,}75$ et conclusion rédigée dans le contexte : 0,25 pt.",
+        "solution": "Les événements $M$ et $\\overline{M}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$P(B) = P(M) \\times P_M(B) + P(\\overline{M}) \\times P_{\\overline{M}}(B) = 0{,}6 \\times 0{,}8 + 0{,}4 \\times 0{,}7 = 0{,}48 + 0{,}28 = 0{,}76.$$\n\nLa planche étant choisie au hasard, $P(B)$ est la proportion de planches en bon état. Or $0{,}76 \\geqslant 0{,}75 = \\dfrac{3}{4}$ : $76\\,\\%$ des planches sont en bon état après une saison, la gérante a raison."
+      },
+      {
+        "id": "q4",
+        "label": "B.1.",
+        "enonce": "Justifier que $p_n = \\dfrac{\\dbinom{6}{2} + \\dbinom{n}{2}}{\\dbinom{n+6}{2}}$.",
+        "points": 1,
+        "indices": [
+          "Un tirage simultané n'a pas d'ordre : c'est une partie de l'ensemble des boules. Compte ensuite les tirages gagnants en deux cas qui ne se recouvrent pas."
+        ],
+        "revoir": "l-denombrement-058",
+        "attenduCorrecteur": "- Un tirage est une partie à $2$ éléments de l'ensemble des $n + 6$ boules : $\\binom{n+6}{2}$ tirages, équiprobables : 0,5 pt.\n- Tirages gagnants : deux noires ($\\binom{6}{2}$) ou deux rouges ($\\binom{n}{2}$), cas disjoints, donc on additionne ; quotient justifié par l'équiprobabilité : 0,5 pt.",
+        "solution": "On imagine les $n + 6$ boules numérotées pour les distinguer. Un tirage simultané de deux boules n'a pas d'ordre et ne répète pas de boule : c'est une partie à $2$ éléments de l'ensemble des $n + 6$ boules. Il y a donc $\\binom{n+6}{2}$ tirages possibles, tous équiprobables puisque le tirage se fait au hasard.\n\nLe client gagne si les deux boules sont noires ou si elles sont rouges ; ces deux cas ne peuvent pas se produire en même temps.\n\n- Les tirages de deux boules noires sont les parties à $2$ éléments de l'ensemble des $6$ boules noires : il y en a $\\binom{6}{2}$.\n- Les tirages de deux boules rouges sont les parties à $2$ éléments de l'ensemble des $n$ boules rouges : il y en a $\\binom{n}{2}$.\n\nLes deux cas étant disjoints, il y a $\\binom{6}{2} + \\binom{n}{2}$ tirages gagnants, d'après le principe additif. En situation d'équiprobabilité :\n\n$$p_n = \\frac{\\text{nombre de tirages gagnants}}{\\text{nombre de tirages possibles}} = \\frac{\\dbinom{6}{2} + \\dbinom{n}{2}}{\\dbinom{n+6}{2}}.$$",
+        "erreurFrequente": "Compter les tirages possibles avec $(n + 6)(n + 5)$, comme s'ils étaient ordonnés, et les tirages gagnants sans ordre : le numérateur et le dénominateur doivent compter le même type d'objet."
+      },
+      {
+        "id": "q5",
+        "label": "B.2.",
+        "enonce": "En déduire que $p_n = \\dfrac{30 + n(n-1)}{(n+6)(n+5)}$.",
+        "points": 0.75,
+        "revoir": "l-denombrement-039",
+        "attenduCorrecteur": "- Valeurs $\\binom{6}{2} = 15$, $\\binom{n}{2} = \\dfrac{n(n-1)}{2}$ et $\\binom{n+6}{2} = \\dfrac{(n+6)(n+5)}{2}$ : 0,5 pt.\n- Numérateur et dénominateur multipliés par $2$, expression demandée : 0,25 pt.",
+        "solution": "D'après la valeur particulière $\\binom{m}{2} = \\dfrac{m(m-1)}{2}$, valable pour tout entier $m \\geqslant 2$ :\n\n$$\\binom{6}{2} = \\frac{6 \\times 5}{2} = 15, \\qquad \\binom{n}{2} = \\frac{n(n-1)}{2}, \\qquad \\binom{n+6}{2} = \\frac{(n+6)(n+5)}{2}.$$\n\nEn multipliant le numérateur et le dénominateur par $2$ :\n\n$$p_n = \\frac{15 + \\dfrac{n(n-1)}{2}}{\\dfrac{(n+6)(n+5)}{2}} = \\frac{30 + n(n-1)}{(n+6)(n+5)}.$$"
+      },
+      {
+        "id": "q6",
+        "label": "B.3.",
+        "enonce": "La gérante souhaite que la probabilité de gagner une remise soit strictement inférieure à $\\dfrac{1}{2}$. Déterminer les valeurs possibles du nombre $n$ de boules rouges.",
+        "points": 1.25,
+        "attenduCorrecteur": "- Multiplication par $2(n+6)(n+5)$, dont le signe positif est justifié : 0,25 pt.\n- Réduction à $n^2 - 13n + 30 < 0$ : 0,25 pt.\n- Discriminant $\\Delta = 49$, racines $3$ et $10$ : 0,25 pt.\n- Signe du trinôme (strictement négatif entre les racines) : $3 < n < 10$ : 0,25 pt.\n- Conclusion avec $n$ entier : $n \\in \\{4\\,;\\,5\\,;\\,6\\,;\\,7\\,;\\,8\\,;\\,9\\}$ : 0,25 pt.",
+        "solution": "Pour tout entier $n \\geqslant 2$, $(n+6)(n+5) > 0$. On peut donc multiplier les deux membres par $2(n+6)(n+5)$ sans changer le sens de l'inégalité :\n\n$$\\begin{aligned} p_n < \\frac{1}{2} &\\iff 2\\left(30 + n(n-1)\\right) < (n+6)(n+5) \\\\ &\\iff 60 + 2n^2 - 2n < n^2 + 11n + 30 \\\\ &\\iff n^2 - 13n + 30 < 0. \\end{aligned}$$\n\nLe trinôme $n^2 - 13n + 30$ a pour discriminant $\\Delta = (-13)^2 - 4 \\times 1 \\times 30 = 169 - 120 = 49 = 7^2 > 0$. Ses racines sont $\\dfrac{13 - 7}{2} = 3$ et $\\dfrac{13 + 7}{2} = 10$. Son coefficient dominant, $1$, est positif : le trinôme est strictement négatif entre ses racines, et seulement là. Ainsi :\n\n$$p_n < \\frac{1}{2} \\iff 3 < n < 10.$$\n\nLe nombre $n$ étant un entier supérieur ou égal à $2$, la gérante doit mettre $4$, $5$, $6$, $7$, $8$ ou $9$ boules rouges dans l'urne.",
+        "erreurFrequente": "Garder $n = 3$ ou $n = 10$ : l'inégalité est stricte, et $p_3 = p_{10} = \\dfrac{1}{2}$ exactement."
+      },
+      {
+        "id": "q7",
+        "label": "B.4.",
+        "enonce": "Dans cette question, la gérante met $n = 4$ boules rouges dans l'urne. On note $G$ l'événement « le client gagne une remise » et $N$ l'événement « le client tire deux boules noires ». Un client a gagné une remise : quelle est la probabilité qu'il ait tiré deux boules noires ? Donner le résultat sous forme de fraction.",
+        "points": 0.75,
+        "reponse": {
+          "type": "numerique",
+          "valeur": "5/7",
+          "tolerance": 0.001
+        },
+        "attenduCorrecteur": "- Probabilité cherchée identifiée : $P_G(N)$ ; $P(G) = p_4 = \\dfrac{21}{45} = \\dfrac{7}{15}$ : 0,25 pt.\n- $N \\subset G$, donc $P(N \\cap G) = P(N) = \\dfrac{\\binom{6}{2}}{\\binom{10}{2}} = \\dfrac{15}{45} = \\dfrac{1}{3}$ : 0,25 pt.\n- Formule des probabilités conditionnelles : $P_G(N) = \\dfrac{1}{3} \\times \\dfrac{15}{7} = \\dfrac{5}{7}$ : 0,25 pt.",
+        "solution": "La probabilité cherchée est $P_G(N)$. Avec $n = 4$, l'urne contient $10$ boules : il y a $\\binom{10}{2} = \\dfrac{10 \\times 9}{2} = 45$ tirages équiprobables. D'après la question B.2 :\n\n$$P(G) = p_4 = \\frac{30 + 4 \\times 3}{10 \\times 9} = \\frac{42}{90} = \\frac{7}{15}.$$\n\nSi le client tire deux boules noires, il gagne : l'événement $N$ est inclus dans $G$, donc $N \\cap G = N$. Les tirages de deux boules noires sont les parties à $2$ éléments de l'ensemble des $6$ boules noires, au nombre de $\\binom{6}{2} = 15$ :\n\n$$P(N \\cap G) = P(N) = \\frac{15}{45} = \\frac{1}{3}.$$\n\nPar définition d'une probabilité conditionnelle :\n\n$$P_G(N) = \\frac{P(N \\cap G)}{P(G)} = \\frac{1}{3} \\times \\frac{15}{7} = \\frac{5}{7}.$$\n\nSachant que le client a gagné une remise, la probabilité qu'il ait tiré deux boules noires est $\\dfrac{5}{7}$. On le retrouve en comptant : parmi les $15 + 6 = 21$ tirages gagnants, équiprobables, $15$ sont formés de deux boules noires, et $\\dfrac{15}{21} = \\dfrac{5}{7}$.",
+        "erreurFrequente": "Répondre $P(N) = \\dfrac{1}{3}$ : l'information « le client a gagné » restreint les tirages possibles aux $21$ tirages gagnants. On cherche $P_G(N)$, pas $P(N)$."
+      }
+    ]
+  },
+  {
+    "id": "tb-denombrement-003",
+    "chapitre": "denombrement",
+    "notions": [
+      "n-denombrement-principes",
+      "n-denombrement-permutations",
+      "n-denombrement-combinaisons",
+      "n-denombrement-problemes"
+    ],
+    "capacites": [
+      "bo-m-denombrement-02",
+      "bo-m-denombrement-03",
+      "bo-m-denombrement-05",
+      "bo-m-denombrement-06",
+      "bo-m-denombrement-07",
+      "bo-m-denombrement-10"
+    ],
+    "titre": "Codes d'accès : dénombrer, puis chercher un seuil",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": true,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2025-etrangers-j2",
+      "adaptation": "Exercice 3, partie A adaptée : 16 caractères (les chiffres et les lettres A à F) au lieu des 64 caractères de la base64 ; « au moins une lettre A » remplacé par « au moins une lettre », « exactement deux fois la lettre A » par « exactement deux lettres ». Parties B et C retirées (loi binomiale, somme de variables aléatoires : chapitres ultérieurs), remplacées par une partie B écrite pour le site. Solution écrite pour le site."
+    },
+    "preambule": "Un système informatique protège des fichiers par des codes. Un **caractère** est soit l'un des dix chiffres $0$, $1$, …, $9$, soit l'une des six lettres A, B, C, D, E, F.\n\nPour un entier naturel $n$ non nul, un **code de longueur $n$** est une suite de $n$ caractères écrits dans un ordre donné ; un même caractère peut apparaître plusieurs fois. Par exemple, 0A0F et A00F sont deux codes de longueur $4$ différents.\n\nDans la partie B, on choisit un code au hasard : tous les codes d'une même longueur ont la même probabilité d'être choisis.\n\n**Partie A : codes de longueur 4** (questions A.1 à A.4).\n\n**Partie B : codes de longueur $n$** (questions B.1 à B.4).",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Justifier qu'il y a $16$ caractères, puis qu'il existe $65\\,536$ codes de longueur $4$.",
+        "points": 0.75,
+        "revoir": "l-denombrement-005",
+        "attenduCorrecteur": "- Principe additif : chiffres et lettres forment deux ensembles disjoints, $10 + 6 = 16$ caractères : 0,25 pt.\n- Un code de longueur $4$ est un $4$-uplet d'éléments de l'ensemble des $16$ caractères : 0,25 pt.\n- Principe multiplicatif : $16^4 = 65\\,536$ : 0,25 pt.",
+        "solution": "L'ensemble des caractères est la réunion de l'ensemble des $10$ chiffres et de l'ensemble des $6$ lettres. Ces deux ensembles sont disjoints : aucun caractère n'est à la fois un chiffre et une lettre. D'après le principe additif, il y a $10 + 6 = 16$ caractères.\n\nUn code de longueur $4$ est une suite ordonnée de $4$ caractères, avec répétitions permises : c'est un $4$-uplet d'éléments de l'ensemble des $16$ caractères. D'après le principe multiplicatif ($16$ choix pour chacune des $4$ positions), il y en a :\n\n$$16^4 = 16 \\times 16 \\times 16 \\times 16 = 256 \\times 256 = 65\\,536.$$"
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Combien de codes de longueur $4$ contiennent au moins une lettre ?",
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 55536,
+          "tolerance": 0
+        },
+        "revoir": "l-denombrement-061",
+        "attenduCorrecteur": "- Passage par le contraire : codes sans lettre, formés uniquement de chiffres, au nombre de $10^4 = 10\\,000$ : 0,25 pt.\n- $65\\,536 - 10\\,000 = 55\\,536$ : 0,25 pt.",
+        "solution": "Le contraire de « contenir au moins une lettre » est « ne contenir aucune lettre », c'est-à-dire n'être formé que de chiffres. Ces codes sont les $4$-uplets d'éléments de l'ensemble des $10$ chiffres : il y en a $10^4 = 10\\,000$.\n\nChaque code contient au moins une lettre ou n'en contient aucune, et jamais les deux. Le nombre de codes de longueur $4$ qui contiennent au moins une lettre est donc :\n\n$$65\\,536 - 10\\,000 = 55\\,536.$$"
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "Combien de codes de longueur $4$ ont leurs quatre caractères deux à deux distincts ?",
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 43680,
+          "tolerance": 0
+        },
+        "revoir": "l-denombrement-016",
+        "attenduCorrecteur": "- Objet reconnu : $4$-uplet d'éléments distincts d'un ensemble à $16$ éléments (l'ordre compte, pas de répétition) : 0,25 pt.\n- Calcul $16 \\times 15 \\times 14 \\times 13 = 43\\,680$ : 0,25 pt.",
+        "solution": "Un tel code est un $4$-uplet d'éléments distincts de l'ensemble des $16$ caractères : l'ordre compte et aucun caractère ne se répète. On a $16$ choix pour le premier caractère, puis $15$ pour le deuxième (tous sauf le premier), $14$ pour le troisième et $13$ pour le quatrième. Le nombre de ces codes est :\n\n$$16 \\times 15 \\times 14 \\times 13 = 240 \\times 182 = 43\\,680.$$",
+        "erreurFrequente": "Écrire $\\binom{16}{4} = 1\\,820$ : ce nombre compte des groupes de $4$ caractères, sans ordre. Or 0A1F et F1A0 sont deux codes différents : l'ordre compte."
+      },
+      {
+        "id": "q4",
+        "label": "A.4.",
+        "enonce": "Combien de codes de longueur $4$ contiennent exactement deux lettres ?",
+        "points": 1,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 21600,
+          "tolerance": 0
+        },
+        "indices": [
+          "Commence par choisir les deux positions des lettres dans le code : l'ordre de ces deux positions compte-t-il ?"
+        ],
+        "revoir": "l-denombrement-060",
+        "attenduCorrecteur": "- Choix des $2$ positions des lettres parmi les $4$ : $\\binom{4}{2} = 6$ : 0,25 pt.\n- Remplissage : $6^2 = 36$ choix pour les lettres, $10^2 = 100$ pour les chiffres : 0,25 pt.\n- Principe multiplicatif justifié, $6 \\times 36 \\times 100 = 21\\,600$ : 0,5 pt.",
+        "solution": "On construit un tel code en trois étapes.\n\n- On choisit les $2$ positions occupées par les lettres parmi les $4$ positions : c'est une partie à $2$ éléments de $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\}$, soit $\\binom{4}{2} = \\dfrac{4 \\times 3}{2} = 6$ choix.\n- On écrit une lettre dans chacune de ces $2$ positions : $6 \\times 6 = 36$ choix, une lettre pouvant se répéter.\n- On écrit un chiffre dans chacune des $2$ autres positions : $10 \\times 10 = 100$ choix.\n\nLe nombre de choix à chaque étape ne dépend pas des choix faits aux étapes précédentes, et deux suites de choix différentes donnent deux codes différents. D'après le principe multiplicatif, le nombre de codes de longueur $4$ qui contiennent exactement deux lettres est :\n\n$$6 \\times 36 \\times 100 = 21\\,600.$$",
+        "erreurFrequente": "Oublier le choix des positions et répondre $6^2 \\times 10^2 = 3\\,600$ : ce calcul ne compte que les codes dont les lettres occupent deux places fixées, par exemple les deux premières."
+      },
+      {
+        "id": "q5",
+        "label": "B.1.",
+        "enonce": "Pour tout entier naturel $n$ non nul, on note $p_n$ la probabilité qu'un code de longueur $n$ choisi au hasard contienne au moins une fois la lettre A. Démontrer que $p_n = 1 - \\left(\\dfrac{15}{16}\\right)^n$.",
+        "points": 0.75,
+        "attenduCorrecteur": "- Nombre de codes de longueur $n$ : $16^n$ ; codes sans la lettre A : $n$-uplets des $15$ autres caractères, au nombre de $15^n$ : 0,25 pt.\n- Équiprobabilité : la probabilité de ne pas avoir de A est $\\dfrac{15^n}{16^n} = \\left(\\dfrac{15}{16}\\right)^n$ : 0,25 pt.\n- Événement contraire : $p_n = 1 - \\left(\\dfrac{15}{16}\\right)^n$ : 0,25 pt.",
+        "solution": "Comme à la partie A, un code de longueur $n$ est un $n$-uplet d'éléments de l'ensemble des $16$ caractères : il y en a $16^n$, tous équiprobables.\n\nL'événement contraire de « le code contient au moins une fois A » est « le code ne contient pas A ». Les codes sans A sont les $n$-uplets d'éléments de l'ensemble des $15$ autres caractères : il y en a $15^n$. La probabilité qu'un code choisi au hasard ne contienne pas A est donc :\n\n$$\\frac{15^n}{16^n} = \\left(\\frac{15}{16}\\right)^n.$$\n\nPar passage à l'événement contraire : $p_n = 1 - \\left(\\dfrac{15}{16}\\right)^n$."
+      },
+      {
+        "id": "q6",
+        "label": "B.2.",
+        "enonce": "Démontrer que la suite $(p_n)$ est croissante. Interpréter ce résultat dans le contexte.",
+        "points": 0.5,
+        "attenduCorrecteur": "- Différence calculée et factorisée : $p_{n+1} - p_n = \\left(\\dfrac{15}{16}\\right)^n - \\left(\\dfrac{15}{16}\\right)^{n+1} = \\dfrac{1}{16}\\left(\\dfrac{15}{16}\\right)^n$ : 0,25 pt.\n- Signe strictement positif, donc suite croissante ; interprétation : plus un code est long, plus il a de chances de contenir la lettre A : 0,25 pt.",
+        "solution": "Pour tout entier $n \\geqslant 1$ :\n\n$$p_{n+1} - p_n = \\left[1 - \\left(\\frac{15}{16}\\right)^{n+1}\\right] - \\left[1 - \\left(\\frac{15}{16}\\right)^{n}\\right] = \\left(\\frac{15}{16}\\right)^{n} - \\left(\\frac{15}{16}\\right)^{n+1} = \\left(\\frac{15}{16}\\right)^{n}\\left(1 - \\frac{15}{16}\\right) = \\frac{1}{16}\\left(\\frac{15}{16}\\right)^{n}.$$\n\nCe nombre est strictement positif, comme produit de nombres strictement positifs. Donc $p_{n+1} > p_n$ pour tout entier $n \\geqslant 1$ : la suite $(p_n)$ est strictement croissante.\n\nInterprétation : plus un code est long, plus la probabilité qu'il contienne au moins une fois la lettre A est grande."
+      },
+      {
+        "id": "q7",
+        "label": "B.3.",
+        "enonce": "À l'aide de la calculatrice, déterminer le plus petit entier $n$ tel que $p_n \\geqslant 0{,}5$. Justifier la réponse.\n\nSaisis la valeur de $n$ ; la justification est à rédiger.",
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 11,
+          "tolerance": 0
+        },
+        "attenduCorrecteur": "- Valeurs lues à la calculatrice : $p_{10} \\approx 0{,}476 < 0{,}5$ et $p_{11} \\approx 0{,}508 \\geqslant 0{,}5$ : 0,25 pt.\n- Croissance de $(p_n)$ invoquée pour écarter tous les $n \\leqslant 10$ ; conclusion $n = 11$ : 0,25 pt.",
+        "solution": "À la calculatrice, par exemple avec un tableau de valeurs de la suite : $p_{10} = 1 - \\left(\\dfrac{15}{16}\\right)^{10} \\approx 0{,}476$ et $p_{11} = 1 - \\left(\\dfrac{15}{16}\\right)^{11} \\approx 0{,}508$.\n\nLa suite $(p_n)$ est croissante (question B.2) : pour tout entier $n \\leqslant 10$, $p_n \\leqslant p_{10} < 0{,}5$, donc aucun de ces entiers ne convient. En revanche, $p_{11} \\geqslant 0{,}5$.\n\nLe plus petit entier $n$ tel que $p_n \\geqslant 0{,}5$ est donc $n = 11$ : il faut un code d'au moins $11$ caractères pour qu'il contienne la lettre A avec une probabilité d'au moins $0{,}5$.",
+        "erreurFrequente": "Conclure $n = 11$ à partir de la seule valeur $p_{11} \\geqslant 0{,}5$ : il faut aussi $p_{10} < 0{,}5$, et la croissance de la suite pour écarter tous les entiers plus petits."
+      },
+      {
+        "id": "q8",
+        "label": "B.4.",
+        "enonce": "On considère la fonction Python seuil ci-dessous, où s est un nombre réel tel que $0 < s < 1$. Expliquer ce que renvoie seuil(s), puis déterminer, à l'aide de la calculatrice, la valeur renvoyée par l'appel seuil(0.9).\n\nSaisis la valeur renvoyée par seuil(0.9) ; l'explication est à rédiger.",
+        "code": {
+          "langage": "python",
+          "source": "def seuil(s):\n    n = 1\n    while 1 - (15/16)**n < s:\n        n = n + 1\n    return n"
+        },
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 36,
+          "tolerance": 0
+        },
+        "attenduCorrecteur": "- La condition de la boucle traduit $p_n < s$ ; la boucle s'arrête au premier $n$ tel que $p_n \\geqslant s$ : seuil(s) renvoie le plus petit entier $n \\geqslant 1$ tel que $p_n \\geqslant s$ : 0,25 pt.\n- Valeurs $p_{35} \\approx 0{,}896 < 0{,}9$ et $p_{36} \\approx 0{,}902 \\geqslant 0{,}9$, croissance de $(p_n)$ : la valeur renvoyée est $36$ : 0,25 pt.",
+        "solution": "Dans la boucle, la condition $1 - \\left(\\frac{15}{16}\\right)^n < s$ signifie $p_n < s$. La variable n part de $1$ et augmente de $1$ tant que $p_n < s$ ; la boucle s'arrête dès que $p_n \\geqslant s$. La fonction renvoie donc le plus petit entier $n \\geqslant 1$ tel que $p_n \\geqslant s$.\n\nPour $s = 0{,}9$ : à la calculatrice, $p_{35} \\approx 0{,}896$ et $p_{36} \\approx 0{,}902$. Comme la suite $(p_n)$ est croissante, $p_n \\leqslant p_{35} < 0{,}9$ pour tout $n \\leqslant 35$, et $p_{36} \\geqslant 0{,}9$.\n\nL'appel seuil(0.9) renvoie donc $36$."
+      }
+    ]
+  },
+  {
+    "id": "tb-denombrement-004",
+    "chapitre": "denombrement",
+    "notions": [
+      "n-denombrement-permutations",
+      "n-denombrement-principes"
+    ],
+    "capacites": [
+      "bo-m-denombrement-02",
+      "bo-m-denombrement-03",
+      "bo-m-denombrement-05",
+      "bo-m-logique-12"
+    ],
+    "titre": "Des couples d'entiers à l'étude d'une fonction",
+    "points": 6,
+    "duree": 65,
+    "calculatrice": false,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2025-amerique-sud-j2",
+      "adaptation": "Exercice 4 : parties A et C adaptées ; ensemble réduit aux entiers non nuls de $-10$ à $10$ ; fonction changée et étudiée sur un intervalle fermé avec les outils de première (dérivée, tangente, variations, extremums) ; partie B et questions qui relèvent d'autres chapitres de terminale retirées. Solution écrite pour le site."
+    },
+    "preambule": "**Partie A.** On considère l'ensemble $E$ des entiers relatifs non nuls compris entre $-10$ et $10$ :\n\n$$E = \\{-10\\,;\\,-9\\,;\\,\\dots\\,;\\,-1\\,;\\,1\\,;\\,\\dots\\,;\\,9\\,;\\,10\\}.$$\n\nIl comporte $20$ éléments. On choisit au hasard dans $E$, successivement et sans remise, un entier $a$ puis un entier $c$ ; tous les couples $(a\\,;\\,c)$ ainsi obtenus ont la même probabilité. On leur associe l'équation, d'inconnue réelle $x$ :\n\n$$ax^2 + 2x + c = 0.$$\n\nOn note $M$ l'événement « cette équation possède deux solutions réelles distinctes ».\n\n**Partie B.** On considère la fonction $f$ définie sur l'intervalle $[-2\\,;\\,3]$ par $f(x) = (2x^2 + 2x - 2)\\,e^{-x}$, et on note $\\mathcal{C}_f$ sa courbe représentative dans un repère du plan. On admet que $f$ est dérivable sur $[-2\\,;\\,3]$ ; on note $f'$ sa fonction dérivée. On pourra utiliser l'encadrement $2 < e < 3$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Justifier que l'on peut obtenir $380$ couples $(a\\,;\\,c)$ différents.",
+        "points": 0.5,
+        "revoir": "l-denombrement-016",
+        "attenduCorrecteur": "- Objet reconnu : couple d'éléments distincts de $E$ (tirage successif : l'ordre compte ; sans remise : $c \\neq a$) : 0,25 pt.\n- $20 \\times 19 = 380$ : 0,25 pt.",
+        "solution": "Le tirage est successif : l'ordre compte, et $(1\\,;\\,2)$ et $(2\\,;\\,1)$ sont deux couples différents. Il est sans remise : $c \\neq a$. Un résultat est donc un couple d'éléments distincts de $E$, qui a $20$ éléments. Il y a $20$ choix pour $a$, puis $19$ choix pour $c$, d'où :\n\n$$20 \\times 19 = 380 \\text{ couples.}$$"
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Démontrer que l'événement $M$ est réalisé si et seulement si $ac < 1$.",
+        "points": 0.75,
+        "attenduCorrecteur": "- $a \\neq 0$ : équation du second degré, discriminant $\\Delta = 4 - 4ac$ : 0,25 pt.\n- Deux solutions réelles distinctes si et seulement si $\\Delta > 0$ : 0,25 pt.\n- Raisonnement par équivalences : $4 - 4ac > 0 \\iff ac < 1$ : 0,25 pt.",
+        "solution": "Comme $a \\neq 0$, l'équation $ax^2 + 2x + c = 0$ est une équation du second degré. Son discriminant est $\\Delta = 2^2 - 4 \\times a \\times c = 4 - 4ac$.\n\nUne équation du second degré possède deux solutions réelles distinctes si et seulement si son discriminant est strictement positif. Donc :\n\n$$M \\text{ est réalisé} \\iff 4 - 4ac > 0 \\iff 4ac < 4 \\iff ac < 1.$$"
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "Justifier que, pour $a$ et $c$ dans $E$, l'inégalité $ac < 1$ équivaut à « $a$ et $c$ sont de signes contraires ». En déduire que l'événement $M$ est réalisé par $200$ couples.",
+        "points": 0.75,
+        "indices": [
+          "Le produit de deux entiers non nuls est un entier non nul : quels entiers non nuls sont strictement inférieurs à $1$ ? Compte ensuite en deux cas selon le signe de $a$."
+        ],
+        "revoir": "l-denombrement-005",
+        "attenduCorrecteur": "- $ac$ entier non nul, donc $ac < 1 \\iff ac < 0$, c'est-à-dire $a$ et $c$ de signes contraires : 0,25 pt.\n- Deux cas disjoints ($a > 0$ et $c < 0$ ; $a < 0$ et $c > 0$), $10 \\times 10 = 100$ couples chacun par le principe multiplicatif, $a \\neq c$ étant automatique : 0,25 pt.\n- Principe additif : $100 + 100 = 200$ : 0,25 pt.",
+        "solution": "Les nombres $a$ et $c$ sont des entiers non nuls, donc $ac$ est un entier non nul. Un entier strictement inférieur à $1$ est inférieur ou égal à $0$ ; comme $ac \\neq 0$ :\n\n$$ac < 1 \\iff ac < 0 \\iff a \\text{ et } c \\text{ sont de signes contraires.}$$\n\n$E$ contient $10$ entiers strictement positifs et $10$ entiers strictement négatifs. On compte les couples $(a\\,;\\,c)$ de signes contraires en deux cas, qui ne se recouvrent pas.\n\n- Si $a > 0$ et $c < 0$ : $10$ choix pour $a$ et $10$ choix pour $c$, soit $10 \\times 10 = 100$ couples d'après le principe multiplicatif.\n- Si $a < 0$ et $c > 0$ : de même, $100$ couples.\n\nDans ces deux cas, $a$ et $c$ sont de signes contraires, donc distincts : la condition « sans remise » est automatiquement respectée. D'après le principe additif, l'événement $M$ est réalisé par $100 + 100 = 200$ couples.",
+        "erreurFrequente": "Compter $10 \\times 9$ couples dans chaque cas, comme si le tirage sans remise retirait un choix : $a$ et $c$ étant de signes contraires, ils sont forcément différents."
+      },
+      {
+        "id": "q4",
+        "label": "A.4.",
+        "enonce": "Calculer la probabilité de l'événement $M$. Donner le résultat sous forme de fraction.",
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": "10/19",
+          "tolerance": 0.001
+        },
+        "attenduCorrecteur": "Équiprobabilité des $380$ couples invoquée et $P(M) = \\dfrac{200}{380} = \\dfrac{10}{19}$ : 0,5 pt.",
+        "solution": "Les $380$ couples sont équiprobables, et $200$ d'entre eux réalisent $M$. Donc :\n\n$$P(M) = \\frac{200}{380} = \\frac{10}{19} \\approx 0{,}526.$$"
+      },
+      {
+        "id": "q5",
+        "label": "B.1.",
+        "enonce": "En utilisant la partie A, justifier que l'équation $2x^2 + 2x - 2 = 0$ possède deux solutions réelles distinctes. Calculer ces solutions, puis en déduire que la courbe $\\mathcal{C}_f$ coupe l'axe des abscisses en exactement deux points.",
+        "points": 0.75,
+        "attenduCorrecteur": "- Équation de la forme $ax^2 + 2x + c = 0$ avec $a = 2$ et $c = -2$ ; $ac = -4 < 1$, donc deux solutions distinctes (question A.2) : 0,25 pt.\n- Solutions $\\dfrac{-1 - \\sqrt{5}}{2}$ et $\\dfrac{-1 + \\sqrt{5}}{2}$ : 0,25 pt.\n- Appartenance à $[-2\\,;\\,3]$ justifiée (par exemple avec $2 < \\sqrt{5} < 3$) et $e^{-x} > 0$, donc $f(x) = 0 \\iff 2x^2 + 2x - 2 = 0$ : deux points : 0,25 pt.",
+        "solution": "L'équation $2x^2 + 2x - 2 = 0$ est de la forme $ax^2 + 2x + c = 0$, avec $a = 2 \\neq 0$ et $c = -2$. Le calcul de la question A.2 vaut pour tous réels $a \\neq 0$ et $c$ : l'équation a deux solutions réelles distinctes si et seulement si $ac < 1$. Ici $ac = -4 < 1$ : elle a deux solutions réelles distinctes.\n\nEn divisant par $2$, elle équivaut à $x^2 + x - 1 = 0$, de discriminant $\\Delta = 1^2 - 4 \\times 1 \\times (-1) = 5$. Ses solutions sont :\n\n$$x_1 = \\frac{-1 - \\sqrt{5}}{2} \\qquad \\text{et} \\qquad x_2 = \\frac{-1 + \\sqrt{5}}{2}.$$\n\nComme $4 < 5 < 9$, on a $2 < \\sqrt{5} < 3$. Donc $-4 < -1 - \\sqrt{5} < -3$, puis $-2 < x_1 < -\\dfrac{3}{2}$ ; et $1 < -1 + \\sqrt{5} < 2$, puis $\\dfrac{1}{2} < x_2 < 1$. Les deux solutions appartiennent à $[-2\\,;\\,3]$.\n\nEnfin, pour tout $x$ de $[-2\\,;\\,3]$, $e^{-x} > 0$, donc $f(x) = 0 \\iff 2x^2 + 2x - 2 = 0 \\iff x = x_1$ ou $x = x_2$. La courbe $\\mathcal{C}_f$ coupe donc l'axe des abscisses en exactement deux points, d'abscisses $x_1$ et $x_2$."
+      },
+      {
+        "id": "q6",
+        "label": "B.2.",
+        "enonce": "Démontrer que, pour tout réel $x$ de $[-2\\,;\\,3]$, $f'(x) = (-2x^2 + 2x + 4)\\,e^{-x}$.",
+        "points": 0.5,
+        "attenduCorrecteur": "- Dérivée de $x \\mapsto e^{-x}$ : $-e^{-x}$ (dérivée de $x \\mapsto e^{kx}$ avec $k = -1$) : 0,25 pt.\n- Formule $(uv)' = u'v + uv'$ appliquée, puis factorisation par $e^{-x}$ : 0,25 pt.",
+        "solution": "On pose $u(x) = 2x^2 + 2x - 2$ et $v(x) = e^{-x}$. Alors $u'(x) = 4x + 2$ et, comme la dérivée de $x \\mapsto e^{kx}$ est $x \\mapsto k\\,e^{kx}$, avec ici $k = -1$ : $v'(x) = -e^{-x}$. D'après la formule $(uv)' = u'v + uv'$ :\n\n$$f'(x) = (4x + 2)\\,e^{-x} - (2x^2 + 2x - 2)\\,e^{-x} = (4x + 2 - 2x^2 - 2x + 2)\\,e^{-x} = (-2x^2 + 2x + 4)\\,e^{-x}.$$"
+      },
+      {
+        "id": "q7",
+        "label": "B.3.",
+        "enonce": "Déterminer une équation de la tangente $T$ à la courbe $\\mathcal{C}_f$ au point d'abscisse $0$.",
+        "points": 0.5,
+        "attenduCorrecteur": "- Valeurs $f(0) = -2$ et $f'(0) = 4$ : 0,25 pt.\n- Formule $y = f'(0)(x - 0) + f(0)$ et équation $T : y = 4x - 2$ : 0,25 pt.",
+        "solution": "On a $f(0) = (0 + 0 - 2)\\,e^{0} = -2$ et, d'après la question B.2, $f'(0) = (0 + 0 + 4)\\,e^{0} = 4$. La tangente à $\\mathcal{C}_f$ au point d'abscisse $0$ a pour équation $y = f'(0)(x - 0) + f(0)$, soit :\n\n$$T : y = 4x - 2.$$"
+      },
+      {
+        "id": "q8",
+        "label": "B.4.",
+        "enonce": "Étudier le signe de $f'(x)$ sur $[-2\\,;\\,3]$, puis dresser le tableau de variations de $f$ sur $[-2\\,;\\,3]$, avec les valeurs de $f$ aux bornes et aux points où $f'$ s'annule.",
+        "points": 0.75,
+        "attenduCorrecteur": "- $f'(x)$ a le signe de $-2x^2 + 2x + 4$ car $e^{-x} > 0$ ; racines $-1$ et $2$, toutes deux dans $[-2\\,;\\,3]$ : 0,25 pt.\n- Trinôme négatif à l'extérieur des racines (coefficient dominant $-2 < 0$), positif entre elles : 0,25 pt.\n- Tableau complet : décroissante, croissante, décroissante ; $f(-2) = 2e^2$, $f(-1) = -2e$, $f(2) = 10e^{-2}$, $f(3) = 22e^{-3}$ : 0,25 pt.",
+        "solution": "Pour tout $x$ de $[-2\\,;\\,3]$, $e^{-x} > 0$ : $f'(x)$ a le signe du trinôme $-2x^2 + 2x + 4$. Son discriminant est $\\Delta = 2^2 - 4 \\times (-2) \\times 4 = 36$, et ses racines sont $\\dfrac{-2 + 6}{-4} = -1$ et $\\dfrac{-2 - 6}{-4} = 2$, qui appartiennent à $[-2\\,;\\,3]$. Son coefficient dominant, $-2$, est négatif : le trinôme est négatif à l'extérieur des racines et positif entre elles.\n\nOn retrouve ce que prévoit la partie A : l'équation $-2x^2 + 2x + 4 = 0$ est de la forme $ax^2 + 2x + c = 0$ avec $ac = -8 < 1$, et elle a bien deux solutions ; la courbe $\\mathcal{C}_f$ a donc deux tangentes parallèles à l'axe des abscisses.\n\nValeurs utiles : $f(-2) = (8 - 4 - 2)\\,e^{2} = 2e^2$ ; $f(-1) = (2 - 2 - 2)\\,e^{1} = -2e$ ; $f(2) = (8 + 4 - 2)\\,e^{-2} = 10e^{-2}$ ; $f(3) = (18 + 6 - 2)\\,e^{-3} = 22e^{-3}$.\n\n| $x$ | $-2$ | | $-1$ | | $2$ | | $3$ |\n|---|---|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $-$ | $0$ | $+$ | $0$ | $-$ | |\n| variations de $f$ | $2e^2$ | $\\searrow$ | $-2e$ | $\\nearrow$ | $10e^{-2}$ | $\\searrow$ | $22e^{-3}$ |\n\nLa fonction $f$ est strictement décroissante sur $[-2\\,;\\,-1]$, strictement croissante sur $[-1\\,;\\,2]$ et strictement décroissante sur $[2\\,;\\,3]$."
+      },
+      {
+        "id": "q9",
+        "label": "B.5.",
+        "enonce": "On admet que $f$ est strictement décroissante sur $[-2\\,;\\,-1]$, strictement croissante sur $[-1\\,;\\,2]$ et strictement décroissante sur $[2\\,;\\,3]$, avec $f(-2) = 2e^2$, $f(-1) = -2e$, $f(2) = 10e^{-2}$ et $f(3) = 22e^{-3}$. Déterminer le minimum et le maximum de $f$ sur $[-2\\,;\\,3]$, en précisant en quelles valeurs de $x$ ils sont atteints.",
+        "points": 1,
+        "indices": [
+          "Lis les candidats sur le tableau de variations : pour le minimum, les valeurs où $f$ cesse de décroître et les bornes ; pour le maximum, les valeurs où $f$ cesse de croître et les bornes. Compare-les."
+        ],
+        "attenduCorrecteur": "- Candidats tirés des variations : minimum en $-1$ ou en $3$, maximum en $-2$ ou en $2$ : 0,25 pt.\n- Minimum : $f(3) = 22e^{-3} > 0 > -2e$, donc minimum $-2e$, atteint en $x = -1$ : 0,25 pt.\n- Comparaison des candidats au maximum à l'aide de $e > 2$ : $2e^2 > 8$ et $10e^{-2} < \\dfrac{10}{4} = 2{,}5$ : 0,25 pt.\n- Maximum $2e^2$, atteint en $x = -2$ : 0,25 pt.",
+        "solution": "**Minimum.** Sur $[-2\\,;\\,-1]$ et sur $[-1\\,;\\,2]$, $f(x) \\geqslant f(-1) = -2e$ d'après les variations. Sur $[2\\,;\\,3]$, $f$ est décroissante, donc $f(x) \\geqslant f(3) = 22e^{-3}$, et $22e^{-3} > 0 > -2e$. Ainsi, pour tout $x$ de $[-2\\,;\\,3]$, $f(x) \\geqslant -2e$, avec égalité en $x = -1$ : le minimum de $f$ sur $[-2\\,;\\,3]$ est $-2e$, atteint en $x = -1$.\n\n**Maximum.** Sur $[-2\\,;\\,-1]$, $f(x) \\leqslant f(-2) = 2e^2$ ; sur $[-1\\,;\\,2]$ et sur $[2\\,;\\,3]$, $f(x) \\leqslant f(2) = 10e^{-2}$. Il reste à comparer $2e^2$ et $10e^{-2}$. Comme $e > 2$, on a $e^2 > 4$, donc $2e^2 > 8$ et $10e^{-2} = \\dfrac{10}{e^2} < \\dfrac{10}{4} = 2{,}5$. Ainsi $10e^{-2} < 2e^2$.\n\nPour tout $x$ de $[-2\\,;\\,3]$, $f(x) \\leqslant 2e^2$, avec égalité en $x = -2$ : le maximum de $f$ sur $[-2\\,;\\,3]$ est $2e^2$, atteint en $x = -2$.",
+        "erreurFrequente": "Prendre le maximum local $f(2) = 10e^{-2}$ pour le maximum de $f$ sur $[-2\\,;\\,3]$ : sur un intervalle fermé, il faut aussi regarder les bornes, et ici $f(-2) = 2e^2$ est bien plus grand."
+      }
+    ]
+  }
+]

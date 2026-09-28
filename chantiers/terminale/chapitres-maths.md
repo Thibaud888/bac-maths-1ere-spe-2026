@@ -131,6 +131,9 @@ factorielle, permutations ★ (9/63) ; combinaisons et coefficients binomiaux �
 cran : indispensable pour la loi binomiale) ; propriétés des coefficients, triangle de Pascal ★
 (3/63) ; résoudre un problème de dénombrement ★★ (23/63). Écart avec la proposition : les
 propriétés des coefficients et la résolution de problèmes deviennent des notions à part.
+Exercices écrits le même jour : 29 exercices en trois marches, 15 questions éclair, 4 exercices
+type bac limités au dénombrement, à la première et aux Méthodes, tant que les chapitres suivants
+ne sont pas écrits.
 
 ### 11. Épreuves indépendantes, loi binomiale
 - Succession d'épreuves indépendantes, arbre (rappel de première : probabilités conditionnelles) · ★★

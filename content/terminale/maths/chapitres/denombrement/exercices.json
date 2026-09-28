@@ -1,0 +1,1821 @@
+[
+  {
+    "id": "x-denombrement-001",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-combinaisons"],
+    "capacites": ["bo-m-denombrement-07"],
+    "titre": "Calculer des coefficients binomiaux",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 10,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calcule $\\binom{7}{2}$.",
+        "reponse": { "type": "numerique", "valeur": 21, "tolerance": 0 },
+        "indices": [
+          "Applique $\\binom{n}{k} = \\dfrac{n \\times (n-1) \\times \\dots \\times (n-k+1)}{k!}$ avec $n = 7$ et $k = 2$ : $k$ facteurs au numérateur."
+        ],
+        "revoir": "l-denombrement-029",
+        "solution": "$\\binom{7}{2} = \\dfrac{7 \\times 6}{2!} = \\dfrac{42}{2} = 21$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calcule $\\binom{9}{3}$.",
+        "reponse": { "type": "numerique", "valeur": 84, "tolerance": 0 },
+        "indices": [
+          "Trois facteurs qui descendent à partir de $9$ au numérateur, et $3!$ au dénominateur."
+        ],
+        "revoir": "l-denombrement-029",
+        "solution": "$\\binom{9}{3} = \\dfrac{9 \\times 8 \\times 7}{3!} = \\dfrac{504}{6} = 84$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calcule $\\dfrac{10!}{6!\\,4!}$ et saisis sa valeur. Quel coefficient binomial reconnais-tu ? La réponse à cette seconde question est dans la solution.",
+        "reponse": { "type": "numerique", "valeur": 210, "tolerance": 0 },
+        "indices": [
+          "Simplifie d'abord $\\dfrac{10!}{6!}$ : les facteurs de $1$ à $6$ figurent en haut et en bas."
+        ],
+        "revoir": "l-denombrement-030",
+        "solution": "$\\dfrac{10!}{6!} = 10 \\times 9 \\times 8 \\times 7 = 5\\,040$, donc $\\dfrac{10!}{6!\\,4!} = \\dfrac{5\\,040}{4!} = \\dfrac{5\\,040}{24} = 210$.\n\nD'après la formule $\\binom{n}{k} = \\dfrac{n!}{(n-k)!\\,k!}$ avec $n = 10$ et $k = 4$, ce nombre est $\\binom{10}{4}$ (c'est aussi $\\binom{10}{6}$) : $\\binom{10}{4} = 210$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-002",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-combinaisons"],
+    "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07"],
+    "titre": "Choisir trois spécialités",
+    "duree": 3,
+    "calculatrice": false,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2021-etrangers-j1",
+      "adaptation": "question du QCM reprise avec d'autres propositions de réponse ; calcul ajouté"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Un élève choisit trois spécialités parmi les douze proposées par son lycée ; l'ordre dans lequel il les choisit n'a pas d'importance. Le nombre de choix possibles est :",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\binom{12}{3}$", "$12 \\times 11 \\times 10$", "$12^3$", "$3^{12}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Ce produit compte les triplets de spécialités distinctes : il tient compte de l'ordre des choix. Chaque groupe de trois spécialités y est compté $3! = 6$ fois.",
+            "$12^3$ compte les triplets avec répétitions : or on ne choisit pas deux fois la même spécialité, et l'ordre ne compte pas.",
+            "La base et l'exposant sont inversés : ce nombre ne compte aucune façon de choisir ici."
+          ]
+        },
+        "indices": [
+          "Échange deux spécialités dans un choix : obtiens-tu un autre choix ? Une spécialité peut-elle être choisie deux fois ?"
+        ],
+        "revoir": "l-denombrement-027",
+        "solution": "Échanger deux spécialités ne change pas le choix (l'ordre ne compte pas) et on ne choisit pas deux fois la même (pas de répétition). Un choix est donc une partie à $3$ éléments de l'ensemble des $12$ spécialités : il y en a $\\binom{12}{3}$.",
+        "erreurFrequente": "Répondre $12 \\times 11 \\times 10$ : ce nombre compte chaque choix $3! = 6$ fois, une fois pour chaque ordre."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calcule ce nombre de choix.",
+        "reponse": { "type": "numerique", "valeur": 220, "tolerance": 0 },
+        "indices": [
+          "Au numérateur, trois facteurs qui descendent à partir de $12$ ; au dénominateur, $3!$."
+        ],
+        "revoir": "l-denombrement-029",
+        "solution": "$\\binom{12}{3} = \\dfrac{12 \\times 11 \\times 10}{3!} = \\dfrac{1\\,320}{6} = 220$. L'élève a $220$ choix possibles."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-003",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-combinaisons"],
+    "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07"],
+    "titre": "Des binômes de délégués",
+    "duree": 3,
+    "calculatrice": false,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2024-metropole-septembre-j2",
+      "adaptation": "affirmation 1 reprise du vrai-faux ; affirmation 2 ajoutée pour expliquer l'erreur"
+    },
+    "preambule": "Une classe compte $30$ élèves. Pour chaque affirmation, dis si elle est vraie ou fausse.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Affirmation 1 : dans cette classe, on peut former $870$ binômes de délégués différents (deux élèves, sans rôle particulier).",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Un binôme est une partie à $2$ éléments de la classe : il y en a $\\binom{30}{2} = \\dfrac{30 \\times 29}{2} = 435$. Le nombre $870 = 30 \\times 29$ compte chaque binôme deux fois."
+        },
+        "indices": [
+          "Dans un binôme, y a-t-il un premier et un second élève ?"
+        ],
+        "revoir": "l-denombrement-035",
+        "solution": "Un binôme ne dépend pas de l'ordre dans lequel on cite ses deux élèves : c'est une partie à $2$ éléments de la classe. Il y en a $\\binom{30}{2} = \\dfrac{30 \\times 29}{2} = 435$. L'affirmation 1 est fausse."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Affirmation 2 : le produit $30 \\times 29 = 870$ compte chaque binôme exactement deux fois.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Le produit $30 \\times 29$ compte les choix d'un premier élève puis d'un second : chaque binôme y apparaît dans ses $2! = 2$ ordres. Donc $870 = 2 \\times 435$."
+        },
+        "indices": [
+          "Choisis un premier élève, puis un second : de combien de façons le binôme $\\{\\text{Léa}\\,;\\,\\text{Tom}\\}$ peut-il sortir ?"
+        ],
+        "revoir": "l-denombrement-031",
+        "solution": "Le produit $30 \\times 29$ compte les choix d'un premier élève ($30$ possibilités), puis d'un second, différent ($29$ possibilités). Un binôme formé de deux élèves A et B y est obtenu exactement deux fois : A puis B, ou B puis A, c'est-à-dire ses $2! = 2$ ordres. Donc $870 = 2 \\times 435$ : l'affirmation 2 est vraie.\n\nC'est pourquoi on divise par $2!$ : $\\binom{30}{2} = \\dfrac{30 \\times 29}{2!} = 435$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-004",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-combinaisons"],
+    "capacites": ["bo-m-denombrement-06"],
+    "titre": "Des mots et des chemins",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 40,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien de mots de $5$ lettres peut-on écrire avec exactement deux lettres $1$ et trois lettres $0$, comme $01001$ ?",
+        "reponse": { "type": "numerique", "valeur": 10, "tolerance": 0 },
+        "indices": [
+          "Un tel mot est déterminé par les positions de ses deux lettres $1$, prises parmi les positions $1$ à $5$."
+        ],
+        "revoir": "l-denombrement-028",
+        "solution": "Un tel mot est déterminé par l'ensemble des positions de ses deux lettres $1$, qui est une partie à $2$ éléments de $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\,;\\,5\\}$. Il y a donc $\\binom{5}{2} = \\dfrac{5 \\times 4}{2} = 10$ mots : $11000$, $10100$, $10010$, $10001$, $01100$, $01010$, $01001$, $00110$, $00101$ et $00011$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On lance $4$ fois de suite une pièce et on représente les issues par un arbre (P pour pile, F pour face). Combien de chemins de cet arbre comportent exactement $2$ fois pile ?",
+        "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+        "indices": [
+          "Un chemin à deux piles est déterminé par les numéros des deux lancers qui donnent pile."
+        ],
+        "revoir": "l-denombrement-064",
+        "solution": "Un chemin comportant exactement deux piles est déterminé par la partie de $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\}$ formée des numéros des lancers qui donnent pile. Il y a donc $\\binom{4}{2} = \\dfrac{4 \\times 3}{2} = 6$ tels chemins : PPFF, PFPF, PFFP, FPPF, FPFP et FFPP."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-005",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-principes"],
+    "capacites": ["bo-m-denombrement-02", "bo-m-denombrement-03"],
+    "titre": "Additionner ou multiplier ?",
+    "duree": 2,
+    "calculatrice": false,
+    "ordre": 50,
+    "preambule": "Une médiathèque propose $5$ romans policiers et $8$ bandes dessinées, tous différents.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Tu empruntes un seul livre : un roman policier ou une bande dessinée. Combien de choix as-tu ?",
+        "reponse": { "type": "numerique", "valeur": 13, "tolerance": 0 },
+        "indices": [
+          "Aucun livre n'est à la fois un roman policier et une bande dessinée : lequel des deux principes s'applique ?"
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "L'ensemble des romans policiers et celui des bandes dessinées sont disjoints. D'après le principe additif, il y a $5 + 8 = 13$ choix."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Tu empruntes cette fois un roman policier et une bande dessinée. Combien de choix as-tu ?",
+        "reponse": { "type": "numerique", "valeur": 40, "tolerance": 0 },
+        "indices": [
+          "Ton emprunt est un couple (roman policier ; bande dessinée)."
+        ],
+        "revoir": "l-denombrement-063",
+        "solution": "Un emprunt est un couple (roman policier ; bande dessinée), c'est-à-dire un élément du produit cartésien des deux ensembles. D'après le principe multiplicatif, il y a $5 \\times 8 = 40$ choix.",
+        "erreurFrequente": "Additionner quand il faut multiplier : « un policier **ou** une bande dessinée » se compte avec une somme, « un policier **et** une bande dessinée » avec un produit."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-006",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-principes"],
+    "capacites": ["bo-m-denombrement-01", "bo-m-denombrement-03"],
+    "titre": "Compter des k-uplets",
+    "duree": 3,
+    "calculatrice": false,
+    "ordre": 60,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $A = \\{0\\,;\\,1\\,;\\,2\\}$. Combien d'éléments l'ensemble $A^4$ possède-t-il ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$3 \\times 4 = 12$", "$3^4 = 81$", "$4^3 = 64$", "$4 \\times 3 \\times 2 \\times 1 = 24$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Tu as multiplié le nombre de choix par le nombre de composantes. Il faut multiplier $3$ par lui-même, une fois par composante : $3 \\times 3 \\times 3 \\times 3$.",
+            null,
+            "La base et l'exposant sont inversés : l'exposant est le nombre de composantes ($4$), la base le nombre de choix pour chacune ($3$).",
+            "$4!$ compte les rangements de $4$ objets distincts ; ici, chaque composante se choisit parmi les $3$ éléments de $A$, avec répétition."
+          ]
+        },
+        "indices": [
+          "$A^4$ est l'ensemble des $4$-uplets d'éléments de $A$ : combien de choix pour chaque composante ?"
+        ],
+        "revoir": "l-denombrement-063",
+        "solution": "$A^4$ est l'ensemble des $4$-uplets d'éléments de $A$. Chacune des $4$ composantes se choisit parmi les $3$ éléments de $A$, et un élément peut se répéter. D'après le principe multiplicatif, $\\mathrm{Card}(A^4) = 3^4 = 81$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Un identifiant est un triplet (lettre ; chiffre ; chiffre) : une lettre parmi les $26$ de l'alphabet, puis deux chiffres de $0$ à $9$, qui peuvent être égaux. Par exemple : (K ; 0 ; 7). Combien d'identifiants existe-t-il ?",
+        "reponse": { "type": "numerique", "valeur": 2600, "tolerance": 0 },
+        "indices": [
+          "L'ensemble des identifiants est le produit cartésien $L \\times C \\times C$, où $L$ est l'ensemble des lettres et $C$ celui des chiffres."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "L'ensemble des identifiants est $L \\times C \\times C$, avec $\\mathrm{Card}(L) = 26$ et $\\mathrm{Card}(C) = 10$. D'après le principe multiplicatif, il y a $26 \\times 10 \\times 10 = 2\\,600$ identifiants."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-007",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-principes"],
+    "capacites": ["bo-m-denombrement-04"],
+    "titre": "Compter des parties",
+    "duree": 3,
+    "calculatrice": false,
+    "ordre": 70,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien de parties possède un ensemble à $5$ éléments ?",
+        "reponse": { "type": "numerique", "valeur": 32, "tolerance": 0 },
+        "indices": [
+          "Pour chaque élément, deux possibilités : il est dans la partie, ou il n'y est pas."
+        ],
+        "revoir": "l-denombrement-008",
+        "solution": "Un ensemble à $n$ éléments possède $2^n$ parties. Avec $n = 5$, il y a $2^5 = 32$ parties, en comptant $\\emptyset$ et l'ensemble lui-même."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de mots de longueur $6$ peut-on écrire avec l'alphabet $\\{0\\,;\\,1\\}$ ?",
+        "reponse": { "type": "numerique", "valeur": 64, "tolerance": 0 },
+        "indices": [
+          "Un tel mot est un $6$-uplet d'éléments de $\\{0\\,;\\,1\\}$."
+        ],
+        "revoir": "l-denombrement-010",
+        "solution": "Un mot de longueur $6$ écrit avec l'alphabet $\\{0\\,;\\,1\\}$ est un élément de $\\{0\\,;\\,1\\}^6$. D'après le principe multiplicatif, il y en a $2^6 = 64$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Un ensemble $E$ possède $128$ parties. Combien d'éléments a-t-il ?",
+        "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0 },
+        "indices": [
+          "Écris les puissances de $2$ successives : $2$, $4$, $8$, $16$…"
+        ],
+        "revoir": "l-denombrement-008",
+        "solution": "Si $E$ a $n$ éléments, il possède $2^n$ parties. Or $2^6 = 64$ et $2^7 = 128$. Donc $E$ a $7$ éléments."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-008",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-problemes"],
+    "capacites": ["bo-m-denombrement-09"],
+    "titre": "Quel modèle choisir ?",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 80,
+    "preambule": "Un concours oppose $12$ candidats. Pour chaque situation, choisis le nombre qui compte les résultats possibles.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Le jury désigne le premier, le deuxième et le troisième du concours.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$12^3$", "$12 \\times 11 \\times 10$", "$\\binom{12}{3}$", "$3^{12}$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$12^3$ autorise les répétitions : un même candidat pourrait être à la fois premier et deuxième.",
+            null,
+            "$\\binom{12}{3}$ ne tient pas compte de l'ordre : or être premier n'est pas être troisième.",
+            "La base et l'exposant sont inversés : ce nombre ne compte rien ici."
+          ]
+        },
+        "indices": [
+          "Pose-toi les deux questions : l'ordre compte-t-il ? un même candidat peut-il revenir ?"
+        ],
+        "revoir": "l-denombrement-055",
+        "solution": "L'ordre compte et un candidat n'occupe qu'une place : un résultat est un triplet de candidats deux à deux distincts. Il y en a $12 \\times 11 \\times 10$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Le jury choisit trois candidats pour la finale, sans les classer.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$12^3$", "$12 \\times 11 \\times 10$", "$\\binom{12}{3}$", "$3^{12}$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$12^3$ tient compte de l'ordre et autorise les répétitions : ni l'un ni l'autre ici.",
+            "Ce produit tient compte de l'ordre : chaque groupe de finalistes y est compté $3! = 6$ fois.",
+            null,
+            "La base et l'exposant sont inversés : ce nombre ne compte rien ici."
+          ]
+        },
+        "indices": [
+          "Échange deux finalistes : obtiens-tu une autre finale ?"
+        ],
+        "revoir": "l-denombrement-055",
+        "solution": "L'ordre ne compte pas et un candidat n'est pas choisi deux fois : un résultat est une partie à $3$ éléments de l'ensemble des $12$ candidats. Il y en a $\\binom{12}{3}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Trois spectateurs votent chacun pour leur candidat préféré, et deux spectateurs peuvent voter pour le même. On note le triplet (vote du premier spectateur ; vote du deuxième ; vote du troisième).",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$12^3$", "$12 \\times 11 \\times 10$", "$\\binom{12}{3}$", "$3^{12}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Ce produit interdit que deux spectateurs votent pour le même candidat : or c'est permis.",
+            "Ce nombre ignore l'ordre et interdit les répétitions : or on sait qui a voté pour qui, et deux votes peuvent coïncider.",
+            "La base et l'exposant sont inversés : $3$ votes, $12$ choix pour chacun, cela donne $12^3$."
+          ]
+        },
+        "indices": [
+          "Chaque spectateur choisit librement parmi les $12$ candidats, sans tenir compte des autres."
+        ],
+        "revoir": "l-denombrement-055",
+        "solution": "L'ordre compte (on sait qui a voté pour qui) et un même candidat peut revenir : un résultat est un $3$-uplet d'éléments de l'ensemble des $12$ candidats. Il y en a $12^3$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-009",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-problemes"],
+    "capacites": ["bo-m-denombrement-09", "bo-m-denombrement-10"],
+    "titre": "Au moins un six",
+    "duree": 3,
+    "calculatrice": false,
+    "ordre": 90,
+    "preambule": "On lance trois fois de suite un dé à six faces et on note le triplet des résultats, par exemple $(2\\,;\\,6\\,;\\,2)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien de triplets sont possibles ?",
+        "reponse": { "type": "numerique", "valeur": 216, "tolerance": 0 },
+        "indices": [
+          "Chaque lancer a $6$ résultats possibles, et un résultat peut se répéter."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "Un résultat est un élément de $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,6\\}^3$. D'après le principe multiplicatif, il y en a $6^3 = 216$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de triplets contiennent au moins un $6$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$3 \\times 6^2 = 108$", "$5^3 = 125$", "$6^3 - 5^3 = 91$", "$3 \\times 5^2 = 75$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Tu as placé un $6$ à l'une des trois places et laissé les deux autres libres : un triplet comme $(6\\,;\\,6\\,;\\,1)$ est alors compté deux fois, et $(6\\,;\\,6\\,;\\,6)$ trois fois.",
+            "C'est le nombre de triplets sans aucun $6$ : il faut le retirer du total.",
+            null,
+            "C'est le nombre de triplets avec exactement un $6$ : il manque ceux qui en ont deux ou trois."
+          ]
+        },
+        "indices": [
+          "Le contraire de « au moins un $6$ » est « aucun $6$ »."
+        ],
+        "revoir": "l-denombrement-061",
+        "solution": "Les triplets sans aucun $6$ sont les éléments de $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\,;\\,5\\}^3$ : il y en a $5^3 = 125$. Un triplet contient au moins un $6$ ou n'en contient aucun, jamais les deux. Donc $216 - 125 = 91$ triplets contiennent au moins un $6$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-010",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-problemes"],
+    "capacites": ["bo-m-denombrement-09", "bo-m-denombrement-10"],
+    "titre": "Des tickets gagnants",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 100,
+    "preambule": "Une loterie vend $10$ tickets, dont $3$ sont gagnants. Tu achètes $2$ tickets au hasard : tous les ensembles de $2$ tickets ont la même probabilité d'être les tiens.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien d'ensembles de $2$ tickets peux-tu obtenir ?",
+        "reponse": { "type": "numerique", "valeur": 45, "tolerance": 0 },
+        "indices": [
+          "L'ordre dans lequel tu reçois tes deux tickets compte-t-il ?"
+        ],
+        "revoir": "l-denombrement-058",
+        "solution": "Un achat est une partie à $2$ éléments de l'ensemble des $10$ tickets. Il y en a $\\binom{10}{2} = \\dfrac{10 \\times 9}{2} = 45$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la probabilité que tes deux tickets soient perdants ? Réponds par une fraction.",
+        "reponse": { "type": "numerique", "valeur": "7/15", "tolerance": 0 },
+        "indices": [
+          "Les cas favorables : choisir tes $2$ tickets parmi les tickets perdants."
+        ],
+        "revoir": "l-denombrement-058",
+        "solution": "Il y a $10 - 3 = 7$ tickets perdants, donc $\\binom{7}{2} = \\dfrac{7 \\times 6}{2} = 21$ achats sans ticket gagnant. Les $45$ achats sont équiprobables : la probabilité cherchée est $\\dfrac{21}{45} = \\dfrac{7}{15}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la probabilité d'avoir au moins un ticket gagnant ? Réponds par une fraction.",
+        "reponse": { "type": "numerique", "valeur": "8/15", "tolerance": 0 },
+        "indices": [
+          "Passe par l'événement contraire."
+        ],
+        "revoir": "l-denombrement-057",
+        "solution": "« Avoir au moins un ticket gagnant » est l'événement contraire de « avoir deux tickets perdants ». Sa probabilité est $1 - \\dfrac{7}{15} = \\dfrac{8}{15}$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-011",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-permutations"],
+    "capacites": ["bo-m-denombrement-05"],
+    "titre": "Factorielles et listes sans répétition",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 110,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "De combien de façons $6$ personnes peuvent-elles s'asseoir sur un banc de $6$ places ?",
+        "reponse": { "type": "numerique", "valeur": 720, "tolerance": 0 },
+        "indices": [
+          "Une façon de s'asseoir range les $6$ personnes dans un ordre : c'est une permutation."
+        ],
+        "revoir": "l-denombrement-020",
+        "solution": "Une façon de s'asseoir est une permutation des $6$ personnes : il y en a $6! = 1 \\times 2 \\times 3 \\times 4 \\times 5 \\times 6 = 720$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calcule $\\dfrac{10!}{8!}$.",
+        "reponse": { "type": "numerique", "valeur": 90, "tolerance": 0 },
+        "indices": [
+          "Écris $10! = 10 \\times 9 \\times 8!$."
+        ],
+        "revoir": "l-denombrement-021",
+        "solution": "$10! = 10 \\times 9 \\times 8!$, donc $\\dfrac{10!}{8!} = 10 \\times 9 = 90$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien de mots de $3$ lettres deux à deux distinctes peut-on écrire avec les $26$ lettres de l'alphabet ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$26^3$", "$26 \\times 25 \\times 24$", "$\\binom{26}{3}$", "$3!$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$26^3$ autorise les répétitions, comme dans AAB : or les lettres doivent être distinctes.",
+            null,
+            "$\\binom{26}{3}$ ne tient pas compte de l'ordre : or ABC et BCA sont deux mots différents.",
+            "$3! = 6$ compte les façons de ranger trois lettres déjà choisies ; il faut aussi les choisir parmi $26$."
+          ]
+        },
+        "solution": "Un mot est un triplet de lettres deux à deux distinctes prises parmi $26$ : $26$ choix pour la première, $25$ pour la deuxième, $24$ pour la troisième. Il y a $26 \\times 25 \\times 24 = 15\\,600$ mots."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-012",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-permutations"],
+    "capacites": ["bo-m-denombrement-15", "bo-m-denombrement-05"],
+    "titre": "Que renvoie ce programme ?",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 120,
+    "preambule": "On applique la fonction du cours qui génère les permutations d'un ensemble à trois éléments à une liste de **quatre** éléments.",
+    "code": {
+      "langage": "python",
+      "source": "def permutations_de_3(E):\n    resultat = []\n    for x in E:\n        for y in E:\n            for z in E:\n                # != signifie « différent de »\n                if x != y and x != z and y != z:\n                    resultat.append([x, y, z])\n    return resultat\n\nL = permutations_de_3(['a', 'b', 'c', 'd'])\nprint(len(L))"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Lors de cet appel, combien de triplets les trois boucles imbriquées parcourent-elles, avant le test ?",
+        "reponse": { "type": "numerique", "valeur": 64, "tolerance": 0 },
+        "indices": [
+          "Chacune des trois boucles parcourt les $4$ éléments de la liste."
+        ],
+        "revoir": "l-denombrement-023",
+        "solution": "Chacune des trois boucles parcourt les $4$ éléments de la liste : elles parcourent $4 \\times 4 \\times 4 = 4^3 = 64$ triplets."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quel nombre le programme affiche-t-il ?",
+        "reponse": { "type": "numerique", "valeur": 24, "tolerance": 0 },
+        "indices": [
+          "Le test ne garde que les triplets dont les trois composantes sont deux à deux différentes."
+        ],
+        "revoir": "l-denombrement-016",
+        "solution": "La fonction garde les triplets d'éléments deux à deux distincts de la liste, qui a $4$ éléments. Il y en a $4 \\times 3 \\times 2 = 24$ : le programme affiche $24$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Que contient la liste L ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Les permutations de l'ensemble $\\{a\\,;\\,b\\,;\\,c\\,;\\,d\\}$",
+            "Les triplets d'éléments deux à deux distincts de $\\{a\\,;\\,b\\,;\\,c\\,;\\,d\\}$",
+            "Les parties à $3$ éléments de $\\{a\\,;\\,b\\,;\\,c\\,;\\,d\\}$",
+            "Tous les triplets d'éléments de $\\{a\\,;\\,b\\,;\\,c\\,;\\,d\\}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Une permutation de $\\{a\\,;\\,b\\,;\\,c\\,;\\,d\\}$ range ses **quatre** éléments ; chaque liste de L n'en contient que trois, comme ['a', 'b', 'c']. Il y a pourtant aussi $4! = 24$ permutations : une fois trois éléments rangés, le quatrième est imposé.",
+            null,
+            "Une partie ne tient pas compte de l'ordre : ['a', 'b', 'c'] et ['b', 'a', 'c'] sont deux listes de L, mais une seule partie. Il n'y a que $\\binom{4}{3} = 4$ parties à $3$ éléments.",
+            "Le test écarte les triplets qui ont deux composantes égales, comme ['a', 'a', 'b'] : il n'en reste que $24$ sur $64$."
+          ]
+        },
+        "solution": "Le test garde exactement les triplets dont les composantes sont deux à deux différentes : L contient les $3$-uplets d'éléments distincts de $\\{a\\,;\\,b\\,;\\,c\\,;\\,d\\}$. Ce ne sont pas des permutations de cet ensemble, qui en rangent les quatre éléments."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-013",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-pascal"],
+    "capacites": ["bo-m-denombrement-08"],
+    "titre": "Symétrie et relation de Pascal",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 130,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calcule $\\binom{50}{48}$ sans calculatrice.",
+        "reponse": { "type": "numerique", "valeur": 1225, "tolerance": 0 },
+        "indices": [
+          "Choisir $48$ éléments parmi $50$, c'est choisir les $2$ qu'on laisse."
+        ],
+        "revoir": "l-denombrement-039",
+        "solution": "Par symétrie, $\\binom{50}{48} = \\binom{50}{50 - 48} = \\binom{50}{2} = \\dfrac{50 \\times 49}{2} = 25 \\times 49 = 1\\,225$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On donne $\\binom{10}{3} = 120$ et $\\binom{10}{4} = 210$. Calcule $\\binom{11}{4}$.",
+        "reponse": { "type": "numerique", "valeur": 330, "tolerance": 0 },
+        "indices": [
+          "Les deux nombres donnés sont voisins sur la ligne $10$ du triangle de Pascal."
+        ],
+        "revoir": "l-denombrement-042",
+        "solution": "D'après la relation de Pascal avec $n = 10$ et $k = 3$ : $\\binom{11}{4} = \\binom{10}{3} + \\binom{10}{4} = 120 + 210 = 330$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "$\\binom{8}{3} + \\binom{8}{4}$ est égal à :",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\binom{9}{3}$", "$\\binom{9}{4}$", "$\\binom{16}{7}$", "$\\binom{8}{7}$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "La somme se place sous le terme de droite : l'indice du bas est le plus grand des deux, $4$. Vérifie : $56 + 70 = 126$, alors que $\\binom{9}{3} = 84$.",
+            null,
+            "On n'additionne ni les nombres du haut ni ceux du bas : la relation de Pascal descend d'une seule ligne, de la ligne $8$ à la ligne $9$.",
+            "Les deux termes sont sur la ligne $8$ ; leur somme est sur la ligne suivante, la ligne $9$."
+          ]
+        },
+        "solution": "D'après la relation de Pascal avec $n = 8$ et $k = 3$ : $\\binom{8}{3} + \\binom{8}{4} = \\binom{9}{4}$. Vérification : $56 + 70 = 126$ et $\\binom{9}{4} = \\dfrac{9 \\times 8 \\times 7 \\times 6}{4!} = 126$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-014",
+    "chapitre": "denombrement",
+    "niveau": 1,
+    "notions": ["n-denombrement-pascal"],
+    "capacites": ["bo-m-denombrement-14", "bo-m-denombrement-08"],
+    "titre": "Lire le programme du triangle de Pascal",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 140,
+    "preambule": "On reprend la fonction du cours qui calcule la ligne $n$ du triangle de Pascal.",
+    "code": {
+      "langage": "python",
+      "source": "def ligne_pascal(n):\n    ligne = [1]  # ligne 0 du triangle\n    for i in range(n):  # passage de la ligne i à la ligne i + 1\n        nouvelle = [1]\n        for k in range(len(ligne) - 1):\n            nouvelle.append(ligne[k] + ligne[k + 1])  # relation de Pascal\n        nouvelle.append(1)\n        ligne = nouvelle\n    return ligne\n\nprint(ligne_pascal(5))"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Qu'affiche ce programme ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["[1, 4, 6, 4, 1]", "[1, 5, 10, 10, 5, 1]", "[1, 5, 10, 5, 1]", "[5, 10, 10, 5]"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est la ligne $4$. La boucle extérieure fait $5$ tours, et chaque tour passe d'une ligne à la suivante : de la ligne $0$ à la ligne $5$.",
+            null,
+            "La ligne $n$ compte $n + 1$ nombres : la ligne $5$ en a $6$. Et $\\binom{5}{2} = \\binom{5}{3} = 10$ : le nombre $10$ y figure deux fois.",
+            "Chaque nouvelle ligne commence et finit par $1$ : la fonction ajoute $1$ avant et après la boucle intérieure."
+          ]
+        },
+        "indices": [
+          "La variable ligne part de la ligne $0$, [1], et chaque tour de la boucle extérieure la remplace par la ligne suivante."
+        ],
+        "revoir": "l-denombrement-046",
+        "solution": "La boucle extérieure fait $5$ tours ; la variable ligne passe de la ligne $0$ à la ligne $5$ du triangle : [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1], puis [1, 5, 10, 10, 5, 1]. Le programme affiche [1, 5, 10, 10, 5, 1]."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On exécute maintenant l'instruction ci-dessous. Dans une liste, l'élément d'indice $3$ est le quatrième, car le premier a l'indice $0$. Quel nombre s'affiche ?",
+        "code": {
+          "langage": "python",
+          "source": "print(ligne_pascal(8)[3])"
+        },
+        "reponse": { "type": "numerique", "valeur": 56, "tolerance": 0 },
+        "indices": [
+          "La liste renvoyée par ligne_pascal(8) est la ligne $8$ du triangle ; son premier élément, d'indice $0$, est $\\binom{8}{0}$."
+        ],
+        "revoir": "l-denombrement-043",
+        "solution": "ligne_pascal(8) renvoie la ligne $8$ du triangle : $\\binom{8}{0}, \\binom{8}{1}, \\dots, \\binom{8}{8}$. Son élément d'indice $3$ est $\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3!} = 56$. Le programme affiche $56$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-015",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-combinaisons", "n-denombrement-permutations"],
+    "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07", "bo-m-denombrement-05"],
+    "titre": "Un tournoi à huit équipes",
+    "duree": 10,
+    "calculatrice": false,
+    "ordre": 150,
+    "preambule": "Huit équipes participent à un tournoi.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Dans la première phase, chaque équipe rencontre une fois chacune des sept autres. Combien de matchs sont joués ?",
+        "reponse": { "type": "numerique", "valeur": 28, "tolerance": 0 },
+        "indices": [
+          "Un match est déterminé par les deux équipes qui s'affrontent. Comptes-tu des listes ordonnées ou des parties ?",
+          "Un match correspond à une partie à $2$ éléments de l'ensemble des $8$ équipes : il y en a $\\binom{8}{2}$.",
+          "$\\binom{8}{2} = \\dfrac{8 \\times 7}{2!}$."
+        ],
+        "revoir": "l-denombrement-030",
+        "solution": "Un match est déterminé par la paire des deux équipes qui s'affrontent, sans ordre : c'est une partie à $2$ éléments de l'ensemble des $8$ équipes. Il y a donc $\\binom{8}{2} = \\dfrac{8 \\times 7}{2} = 28$ matchs."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Dans la seconde phase, chaque équipe reçoit une fois chacune des sept autres sur son terrain. Combien de matchs sont joués ?",
+        "reponse": { "type": "numerique", "valeur": 56, "tolerance": 0 },
+        "indices": [
+          "Cette fois, le match « A reçoit B » n'est pas le match « B reçoit A » : l'ordre compte.",
+          "Un match est un couple (équipe qui reçoit ; équipe invitée) de deux équipes distinctes.",
+          "$8$ choix pour l'équipe qui reçoit, puis $7$ pour l'équipe invitée."
+        ],
+        "revoir": "l-denombrement-016",
+        "solution": "Un match est un couple (équipe qui reçoit ; équipe invitée) de deux équipes distinctes : $8$ choix pour la première, puis $7$ pour la seconde, quelle que soit la première. D'après le principe multiplicatif, il y a $8 \\times 7 = 56$ matchs."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Explique pourquoi le nombre de matchs de la seconde phase est le double de celui de la première.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pars d'une paire d'équipes, par exemple $\\{A\\,;\\,B\\}$ : combien de matchs de la seconde phase lui correspondent ?",
+          "La paire $\\{A\\,;\\,B\\}$ donne les deux couples $(A\\,;\\,B)$ et $(B\\,;\\,A)$ : un match sur le terrain de chacune.",
+          "Chacune des $28$ paires donne $2! = 2$ couples, et chaque couple vient d'une seule paire."
+        ],
+        "revoir": "l-denombrement-031",
+        "solution": "À chaque paire d'équipes $\\{A\\,;\\,B\\}$ correspondent exactement deux couples, $(A\\,;\\,B)$ et $(B\\,;\\,A)$ : ce sont les $2! = 2$ façons de ranger les deux équipes. Inversement, chaque couple provient d'une seule paire. Il y a donc $2 \\times 28 = 56$ couples : le nombre de matchs de la seconde phase est le double de celui de la première.\n\nC'est l'idée de la formule $\\binom{n}{k} = \\dfrac{n \\times (n-1) \\times \\dots \\times (n-k+1)}{k!}$, ici avec $n = 8$ et $k = 2$ : $\\binom{8}{2} = \\dfrac{8 \\times 7}{2!}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "À l'issue du tournoi, quatre équipes sont qualifiées pour les demi-finales, sans classement entre elles. Combien d'ensembles de demi-finalistes sont possibles ?",
+        "reponse": { "type": "numerique", "valeur": 70, "tolerance": 0 },
+        "indices": [
+          "Un ensemble de demi-finalistes : l'ordre compte-t-il ? une équipe peut-elle y figurer deux fois ?",
+          "C'est une partie à $4$ éléments de l'ensemble des $8$ équipes : il y en a $\\binom{8}{4}$.",
+          "$\\binom{8}{4} = \\dfrac{8 \\times 7 \\times 6 \\times 5}{4!} = \\dfrac{1\\,680}{24}$."
+        ],
+        "revoir": "l-denombrement-029",
+        "solution": "Un ensemble de demi-finalistes est une partie à $4$ éléments de l'ensemble des $8$ équipes : ni ordre, ni répétition. Il y en a $\\binom{8}{4} = \\dfrac{8 \\times 7 \\times 6 \\times 5}{4!} = \\dfrac{1\\,680}{24} = 70$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-016",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-combinaisons", "n-denombrement-problemes"],
+    "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07", "bo-m-denombrement-10"],
+    "titre": "Des grilles de jeu",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 160,
+    "preambule": "Dans un jeu, remplir une grille consiste à cocher $4$ numéros différents parmi les numéros de $1$ à $16$ ; l'ordre dans lequel on les coche ne compte pas.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien de grilles différentes peut-on remplir ?",
+        "reponse": { "type": "numerique", "valeur": 1820, "tolerance": 0 },
+        "indices": [
+          "Une grille est-elle une liste ordonnée ou une partie ? Reprends l'exemple de l'équipe à former.",
+          "Une grille est une partie à $4$ éléments de $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,16\\}$ : il y en a $\\binom{16}{4} = \\dfrac{16 \\times 15 \\times 14 \\times 13}{4!}$.",
+          "Écris $4! = 24 = 8 \\times 3$, puis simplifie : $\\dfrac{16}{8} = 2$ et $\\dfrac{15}{3} = 5$."
+        ],
+        "revoir": "l-denombrement-030",
+        "solution": "Une grille est une partie à $4$ éléments de l'ensemble $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,16\\}$ : l'ordre ne compte pas et un numéro n'est pas coché deux fois. Il y a donc\n\n$$\\binom{16}{4} = \\frac{16 \\times 15 \\times 14 \\times 13}{4!} = \\frac{16}{8} \\times \\frac{15}{3} \\times 14 \\times 13 = 2 \\times 5 \\times 182 = 1\\,820$$\n\ngrilles."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de grilles contiennent le numéro $7$ ?",
+        "reponse": { "type": "numerique", "valeur": 455, "tolerance": 0 },
+        "indices": [
+          "Une grille qui contient le $7$ est formée du $7$ et de trois autres numéros. Parmi combien de numéros choisit-on ces trois-là ?",
+          "On choisit les $3$ autres numéros parmi les $15$ numéros différents de $7$ : $\\binom{15}{3}$ façons.",
+          "$\\binom{15}{3} = \\dfrac{15 \\times 14 \\times 13}{6} = 5 \\times 7 \\times 13$."
+        ],
+        "revoir": "l-denombrement-045",
+        "solution": "Une grille qui contient le $7$ est déterminée par ses $3$ autres numéros, qui forment une partie à $3$ éléments de l'ensemble des $15$ numéros différents de $7$. Il y a donc $\\binom{15}{3} = \\dfrac{15 \\times 14 \\times 13}{3!} = 5 \\times 7 \\times 13 = 455$ grilles qui contiennent le $7$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien de grilles ne contiennent pas le numéro $7$ ? Vérifie la cohérence de ce résultat avec les deux questions précédentes.",
+        "reponse": { "type": "numerique", "valeur": 1365, "tolerance": 0 },
+        "indices": [
+          "Une grille sans le $7$ choisit ses $4$ numéros parmi les autres numéros.",
+          "Il y en a $\\binom{15}{4} = \\dfrac{15 \\times 14 \\times 13 \\times 12}{24}$.",
+          "$\\dfrac{15 \\times 14 \\times 13 \\times 12}{24} = \\dfrac{15 \\times 14 \\times 13}{2}$ ; ajoute ensuite ce nombre au résultat de la question 2."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "Une grille sans le $7$ est une partie à $4$ éléments de l'ensemble des $15$ autres numéros. Il y en a $\\binom{15}{4} = \\dfrac{15 \\times 14 \\times 13 \\times 12}{4!} = \\dfrac{15 \\times 14 \\times 13}{2} = 15 \\times 7 \\times 13 = 1\\,365$.\n\nCohérence : une grille contient le $7$ ou ne le contient pas, jamais les deux. D'après le principe additif, $455 + 1\\,365 = 1\\,820$ : on retrouve le nombre total de grilles."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Une grille est remplie au hasard : toutes les grilles ont la même probabilité. Quelle est la probabilité qu'elle contienne le numéro $7$ ? Réponds sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "1/4", "tolerance": 0 },
+        "indices": [
+          "Toutes les grilles sont équiprobables : cas favorables sur cas possibles.",
+          "La probabilité vaut $\\dfrac{455}{1\\,820}$.",
+          "Compare $4 \\times 455$ et $1\\,820$."
+        ],
+        "revoir": "l-denombrement-057",
+        "solution": "Les $1\\,820$ grilles sont équiprobables et $455$ d'entre elles contiennent le $7$. La probabilité cherchée est $\\dfrac{455}{1\\,820} = \\dfrac{1}{4}$, car $4 \\times 455 = 1\\,820$.\n\nOn pouvait le prévoir : on coche $4$ numéros sur $16$, et $\\dfrac{4}{16} = \\dfrac{1}{4}$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-017",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-combinaisons", "n-denombrement-principes"],
+    "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07", "bo-m-denombrement-02", "bo-m-denombrement-03"],
+    "titre": "Des chemins dans un quadrillage",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 170,
+    "preambule": "Dans un repère, un pion part du point $A(0\\,;\\,0)$ et doit rejoindre le point $B(5\\,;\\,3)$. À chaque pas, il avance d'une unité, soit vers la droite (on note D), soit vers le haut (on note H). Un trajet se code donc par un mot écrit avec les lettres D et H : par exemple, DDHDHDDH est un trajet de $A$ à $B$. La figure ci-dessous représente le quadrillage, les points $A$, $B$ et $C(2\\,;\\,1)$ et, en couleur, ce trajet.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/denombrement/quadrillage-trajet.svg",
+        "alt": "Quadrillage de 5 carreaux en largeur et 3 en hauteur, gradué de 0 à 5 en abscisse et de 0 à 3 en ordonnée. Les points A(0 ; 0), C(2 ; 1) et B(5 ; 3) sont marqués. Le trajet DDHDHDDH est tracé en couleur : deux pas à droite, un vers le haut, un à droite, un vers le haut, deux à droite, un vers le haut.",
+        "width": 330,
+        "height": 230
+      },
+      "caption": "Quadrillage de A(0 ; 0) à B(5 ; 3), avec le point C(2 ; 1) ; en couleur, le trajet DDHDHDDH."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifie que tout trajet de $A$ à $B$ compte $8$ pas, dont exactement $3$ vers le haut.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pars d'un trajet concret, par exemple celui de la figure, et suis l'abscisse et l'ordonnée du pion : que change un pas D ? un pas H ?",
+          "Un pas D augmente l'abscisse de $1$ sans changer l'ordonnée ; un pas H augmente l'ordonnée de $1$ sans changer l'abscisse.",
+          "Pour que l'abscisse passe de $0$ à $5$, il faut exactement $5$ pas D ; pour que l'ordonnée passe de $0$ à $3$, exactement $3$ pas H."
+        ],
+        "revoir": "l-denombrement-055",
+        "solution": "Un pas D augmente l'abscisse de $1$ sans changer l'ordonnée, et un pas H augmente l'ordonnée de $1$ sans changer l'abscisse. Pour aller de $A(0\\,;\\,0)$ à $B(5\\,;\\,3)$, l'abscisse doit augmenter de $5$ : le trajet compte exactement $5$ pas D. L'ordonnée doit augmenter de $3$ : il compte exactement $3$ pas H. Donc tout trajet de $A$ à $B$ compte $5 + 3 = 8$ pas, dont exactement $3$ vers le haut."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien y a-t-il de trajets de $A$ à $B$ ?",
+        "reponse": { "type": "numerique", "valeur": 56, "tolerance": 0 },
+        "indices": [
+          "Un trajet est un mot de $8$ lettres qui contient exactement $3$ lettres H. Qu'est-ce qui suffit à le déterminer ?",
+          "Un trajet est déterminé par les positions de ses $3$ lettres H : une partie à $3$ éléments de $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,8\\}$.",
+          "Il y a donc $\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3!}$ trajets."
+        ],
+        "revoir": "l-denombrement-028",
+        "solution": "D'après la question 1, un trajet est un mot de $8$ lettres qui contient exactement $3$ lettres H et $5$ lettres D. Il est déterminé par l'ensemble des positions de ses lettres H, qui est une partie à $3$ éléments de $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,8\\}$ ; inversement, une telle partie donne un seul trajet. Il y a donc $\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3!} = \\dfrac{336}{6} = 56$ trajets."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien de trajets passent par le point $C(2\\,;\\,1)$ ?",
+        "reponse": { "type": "numerique", "valeur": 30, "tolerance": 0 },
+        "indices": [
+          "Découpe un tel trajet en deux morceaux : de $A$ à $C$, puis de $C$ à $B$.",
+          "De $A$ à $C$ : $3$ pas, dont $1$ vers le haut. De $C$ à $B$ : $5$ pas, dont $2$ vers le haut.",
+          "Il y a $\\binom{3}{1} = 3$ premiers morceaux et $\\binom{5}{2} = 10$ seconds morceaux ; le choix du second ne dépend pas du premier."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "Un trajet qui passe par $C$ se compose d'un trajet de $A(0\\,;\\,0)$ à $C(2\\,;\\,1)$, puis d'un trajet de $C$ à $B(5\\,;\\,3)$. Comme à la question 2, le premier morceau compte $2$ pas D et $1$ pas H : $\\binom{3}{1} = 3$ possibilités. Le second compte $3$ pas D et $2$ pas H : $\\binom{5}{2} = 10$ possibilités, quel que soit le premier morceau. D'après le principe multiplicatif, $3 \\times 10 = 30$ trajets passent par $C$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Combien de trajets ne passent pas par $C$ ?",
+        "reponse": { "type": "numerique", "valeur": 26, "tolerance": 0 },
+        "indices": [
+          "Un trajet passe par $C$ ou n'y passe pas, jamais les deux.",
+          "Nombre de trajets qui ne passent pas par $C$ = nombre total de trajets − nombre de trajets qui passent par $C$.",
+          "Utilise les résultats des questions 2 et 3 : $56$ et $30$."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "Les trajets qui passent par $C$ et ceux qui n'y passent pas forment deux ensembles disjoints, dont la réunion est l'ensemble des $56$ trajets. D'après le principe additif, $56 - 30 = 26$ trajets ne passent pas par $C$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-018",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-combinaisons"],
+    "capacites": ["bo-m-denombrement-16", "bo-m-denombrement-07"],
+    "titre": "Compter les parties avec un programme",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 180,
+    "preambule": "La fonction ci-dessous doit compter, sans les écrire, les parties à $2$ éléments d'un ensemble dont les $n$ éléments sont numérotés de $0$ à $n - 1$ ; chaque partie $\\{i\\,;\\,j\\}$ doit être comptée une seule fois. Dans la ligne marquée (L), le contenu des parenthèses a été effacé.",
+    "code": {
+      "langage": "python",
+      "source": "def nombre_parties_a_2(n):\n    compteur = 0\n    for i in range(n):\n        for j in range(.....):  # ligne (L)\n            compteur = compteur + 1\n    return compteur"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Voici quatre propositions pour la ligne (L). Lesquelles conviennent ? Plusieurs réponses sont possibles.",
+        "code": {
+          "langage": "python",
+          "source": "# Proposition A\nfor j in range(n):\n\n# Proposition B\nfor j in range(i + 1, n):\n\n# Proposition C\nfor j in range(i, n):\n\n# Proposition D\nfor j in range(i):"
+        },
+        "reponse": {
+          "type": "qcm-multiple",
+          "choix": ["Proposition A", "Proposition B", "Proposition C", "Proposition D"],
+          "bonnes": [1, 3]
+        },
+        "indices": [
+          "Pour chaque proposition, écris les couples $(i\\,;\\,j)$ parcourus quand $n = 3$, puis compare-les aux $\\binom{3}{2} = 3$ parties à $2$ éléments de $\\{0\\,;\\,1\\,;\\,2\\}$.",
+          "Pour compter chaque partie $\\{i\\,;\\,j\\}$ une seule fois, il faut imposer un ordre entre $i$ et $j$, et exclure $j = i$.",
+          "La proposition B parcourt les $j$ tels que $i < j \\leqslant n - 1$ ; la proposition D, les $j$ tels que $0 \\leqslant j < i$."
+        ],
+        "revoir": "l-denombrement-033",
+        "solution": "Prenons $n = 3$.\n\n- La proposition A parcourt les $9$ couples $(i\\,;\\,j)$, dont $(0\\,;\\,0)$, et compte chaque partie deux fois, par exemple $(0\\,;\\,1)$ et $(1\\,;\\,0)$ : la fonction renverrait $n^2$.\n- La proposition C parcourt aussi les couples $(i\\,;\\,i)$, qui ne correspondent pas à des parties à $2$ éléments : la fonction renverrait $\\binom{n}{2} + n$.\n- La proposition B ne parcourt que les couples tels que $i < j$ : $(0\\,;\\,1)$, $(0\\,;\\,2)$, $(1\\,;\\,2)$. Chaque partie est comptée une fois, ses éléments rangés dans l'ordre croissant.\n- La proposition D ne parcourt que les couples tels que $j < i$ : $(1\\,;\\,0)$, $(2\\,;\\,0)$, $(2\\,;\\,1)$. Chaque partie est aussi comptée une fois.\n\nLes propositions B et D conviennent."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On complète la ligne (L) avec la proposition B. Que renvoie nombre_parties_a_2(10) ?",
+        "reponse": { "type": "numerique", "valeur": 45, "tolerance": 0 },
+        "indices": [
+          "La fonction compte les parties à $2$ éléments d'un ensemble à $10$ éléments.",
+          "Elle renvoie donc $\\binom{10}{2}$.",
+          "$\\binom{10}{2} = \\dfrac{10 \\times 9}{2}$."
+        ],
+        "revoir": "l-denombrement-029",
+        "solution": "Avec la proposition B, la fonction compte une fois chaque partie à $2$ éléments de $\\{0\\,;\\,1\\,;\\,\\dots\\,;\\,9\\}$. Elle renvoie $\\binom{10}{2} = \\dfrac{10 \\times 9}{2} = 45$. On le vérifie tour par tour : pour $i = 0, 1, \\dots, 9$, la variable $j$ prend $9, 8, \\dots, 0$ valeurs, et $9 + 8 + \\dots + 1 + 0 = 45$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On complète la ligne (L) avec la proposition A. Que renvoie alors nombre_parties_a_2(10) ?",
+        "reponse": { "type": "numerique", "valeur": 100, "tolerance": 0 },
+        "indices": [
+          "Avec la proposition A, les deux boucles parcourent chacune tous les indices de $0$ à $9$.",
+          "La fonction compte alors tous les couples $(i\\,;\\,j)$ d'éléments de $\\{0\\,;\\,1\\,;\\,\\dots\\,;\\,9\\}$, y compris ceux où $i = j$.",
+          "Ces couples forment l'ensemble $\\{0\\,;\\,1\\,;\\,\\dots\\,;\\,9\\}^2$."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "Avec la proposition A, pour chacune des $10$ valeurs de $i$, la variable $j$ prend $10$ valeurs. La fonction compte tous les couples $(i\\,;\\,j)$ d'éléments de $\\{0\\,;\\,1\\,;\\,\\dots\\,;\\,9\\}$ : elle renvoie $10^2 = 100$. On retrouve $100 = 2 \\times 45 + 10$ : chaque partie est comptée deux fois, et s'y ajoutent les $10$ couples $(i\\,;\\,i)$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On écrit le programme ci-dessous. Quel nombre affiche-t-il ?",
+        "code": {
+          "langage": "python",
+          "source": "def nombre_parties_a_3(n):\n    compteur = 0\n    for i in range(n):\n        for j in range(i + 1, n):\n            for k in range(j + 1, n):\n                compteur = compteur + 1\n    return compteur\n\nprint(nombre_parties_a_3(6))"
+        },
+        "reponse": { "type": "numerique", "valeur": 20, "tolerance": 0 },
+        "indices": [
+          "Les trois boucles imposent $i < j < k$ : qu'est-ce que la fonction compte ?",
+          "Chaque partie à $3$ éléments de $\\{0\\,;\\,1\\,;\\,\\dots\\,;\\,5\\}$ est comptée une seule fois, ses éléments rangés dans l'ordre croissant.",
+          "Le programme affiche $\\binom{6}{3} = \\dfrac{6 \\times 5 \\times 4}{3!}$."
+        ],
+        "revoir": "l-denombrement-033",
+        "solution": "Les boucles parcourent les triplets d'indices tels que $i < j < k$ : chaque partie à $3$ éléments de $\\{0\\,;\\,1\\,;\\,\\dots\\,;\\,5\\}$ est obtenue une seule fois, avec ses éléments rangés dans l'ordre croissant. Le programme affiche $\\binom{6}{3} = \\dfrac{6 \\times 5 \\times 4}{3!} = \\dfrac{120}{6} = 20$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-019",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-principes", "n-denombrement-problemes"],
+    "capacites": ["bo-m-denombrement-01", "bo-m-denombrement-02", "bo-m-denombrement-03", "bo-m-denombrement-09"],
+    "titre": "Les codes d'un immeuble",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 190,
+    "source": {
+      "annale": "an-2024-asie-j2",
+      "adaptation": "affirmation 3 du vrai-faux reprise en question 4, préparée par des questions intermédiaires"
+    },
+    "preambule": "Le code d'accès d'un immeuble est formé de $4$ chiffres, de $0$ à $9$, qui peuvent être identiques, suivis de deux lettres **distinctes** choisies parmi A, B et C. Exemple : 1232BA. L'ordre des deux lettres compte : 1232AB et 1232BA sont deux codes différents.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "De combien de façons peut-on écrire les deux lettres de fin du code ?",
+        "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+        "indices": [
+          "Les deux lettres forment un couple (première lettre ; seconde lettre) : BA n'est pas AB. Choisis-les l'une après l'autre.",
+          "$3$ choix pour la première lettre ; la seconde doit être différente de la première.",
+          "Quelle que soit la première lettre, il reste $2$ choix pour la seconde : $3 \\times 2$."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "Les deux lettres se choisissent l'une après l'autre : $3$ choix pour la première, puis $2$ pour la seconde, qui doit être différente, quelle que soit la première. D'après le principe multiplicatif (choix successifs), il y a $3 \\times 2 = 6$ choix : AB, AC, BA, BC, CA et CB."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de codes différents existe-t-il ?",
+        "reponse": { "type": "numerique", "valeur": 60000, "tolerance": 0 },
+        "indices": [
+          "Un code se choisit en deux étapes : les $4$ chiffres, puis les deux lettres.",
+          "Les $4$ chiffres forment un $4$-uplet d'éléments de $\\{0\\,;\\,1\\,;\\,\\dots\\,;\\,9\\}$ : $10^4$ possibilités.",
+          "Pour chacune, il y a $6$ choix de lettres : $10^4 \\times 6$."
+        ],
+        "revoir": "l-denombrement-006",
+        "solution": "Les $4$ chiffres forment un $4$-uplet d'éléments de $\\{0\\,;\\,1\\,;\\,\\dots\\,;\\,9\\}$, ensemble à $10$ éléments : $10^4 = 10\\,000$ possibilités. Pour chacune, il y a $6$ choix de lettres (question 1). D'après le principe multiplicatif, il existe $10\\,000 \\times 6 = 60\\,000$ codes."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien de codes ne contiennent aucun chiffre $0$ ?",
+        "reponse": { "type": "numerique", "valeur": 39366, "tolerance": 0 },
+        "indices": [
+          "Sans $0$, chaque chiffre se choisit parmi $9$ valeurs : attention à la base et à l'exposant.",
+          "Il y a $9^4$ suites de $4$ chiffres sans $0$, puis $6$ choix de lettres.",
+          "$9^4 = 81 \\times 81 = 6\\,561$ ; multiplie ce nombre par $6$."
+        ],
+        "revoir": "l-denombrement-013",
+        "solution": "Sans $0$, les $4$ chiffres forment un $4$-uplet d'éléments de $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,9\\}$ : $9^4 = 81 \\times 81 = 6\\,561$ possibilités. Avec les $6$ choix de lettres, il y a $6\\,561 \\times 6 = 39\\,366$ codes sans chiffre $0$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Affirmation : « Il existe $20\\,634$ codes qui contiennent au moins un $0$. » Cette affirmation est-elle vraie ?",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Il y a $60\\,000$ codes, dont $39\\,366$ sans $0$ : $60\\,000 - 39\\,366 = 20\\,634$ codes contiennent au moins un $0$."
+        },
+        "indices": [
+          "Un code contient au moins un $0$ ou n'en contient aucun, jamais les deux.",
+          "Nombre de codes avec au moins un $0$ = nombre total de codes − nombre de codes sans $0$.",
+          "Calcule $60\\,000 - 39\\,366$."
+        ],
+        "revoir": "l-denombrement-061",
+        "solution": "Les codes qui contiennent au moins un $0$ et ceux qui n'en contiennent aucun forment deux ensembles disjoints, dont la réunion est l'ensemble des $60\\,000$ codes. D'après le principe additif, il y a $60\\,000 - 39\\,366 = 20\\,634$ codes qui contiennent au moins un $0$. L'affirmation est vraie.",
+        "erreurFrequente": "Compter « un $0$ à l'une des $4$ places, le reste libre » : $4 \\times 10^3 \\times 6 = 24\\,000$. Les codes qui ont plusieurs $0$, comme 0070AB, sont alors comptés plusieurs fois."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-020",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-principes"],
+    "capacites": ["bo-m-denombrement-01", "bo-m-denombrement-03", "bo-m-denombrement-04"],
+    "titre": "Composer sa pizza",
+    "duree": 10,
+    "calculatrice": false,
+    "ordre": 200,
+    "preambule": "Une pizzeria propose $2$ bases (tomate ou crème) et $6$ garnitures différentes. Une pizza se compose d'une base et d'un choix quelconque de garnitures, chacune prise au plus une fois : de zéro garniture (pizza nature) aux six à la fois.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien de choix de garnitures sont possibles ?",
+        "reponse": { "type": "numerique", "valeur": 64, "tolerance": 0 },
+        "indices": [
+          "Un choix de garnitures est une partie de l'ensemble des $6$ garnitures.",
+          "Pour chaque garniture, deux possibilités : on la prend ou non. Un choix se code par un $6$-uplet de $\\{0\\,;\\,1\\}$.",
+          "Il y a $2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 2 = 2^6$ tels $6$-uplets."
+        ],
+        "revoir": "l-denombrement-008",
+        "solution": "Un choix de garnitures est une partie de l'ensemble des $6$ garnitures, de la partie vide (pizza nature) à l'ensemble entier. Un ensemble à $6$ éléments possède $2^6 = 64$ parties : il y a $64$ choix de garnitures."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de pizzas différentes la pizzeria peut-elle préparer ?",
+        "reponse": { "type": "numerique", "valeur": 128, "tolerance": 0 },
+        "indices": [
+          "Une pizza est un couple (base ; choix de garnitures).",
+          "Il y a $2$ bases, et pour chacune $64$ choix de garnitures.",
+          "Calcule $2 \\times 64$."
+        ],
+        "revoir": "l-denombrement-063",
+        "solution": "Une pizza est un couple (base ; choix de garnitures), élément du produit cartésien de l'ensemble des $2$ bases et de l'ensemble des $64$ choix de garnitures. D'après le principe multiplicatif, il y a $2 \\times 64 = 128$ pizzas."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Deux amis commandent chacun une pizza, éventuellement la même. On note le couple (pizza du premier ; pizza du second). Combien de commandes sont possibles ?",
+        "reponse": { "type": "numerique", "valeur": 16384, "tolerance": 0 },
+        "indices": [
+          "Une commande est un couple d'éléments de l'ensemble $P$ des pizzas : un élément de $P^2$.",
+          "$\\mathrm{Card}(P^2) = \\mathrm{Card}(P)^2$.",
+          "$128^2 = 128 \\times 128$."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "Une commande est un couple de pizzas, qui peuvent être égales : c'est un élément de $P^2$, où $P$ est l'ensemble des $128$ pizzas. D'après le principe multiplicatif, il y a $128^2 = 16\\,384$ commandes."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "La pizzeria garde ses $2$ bases et veut pouvoir préparer plus de $1\\,000$ pizzas différentes. Combien de garnitures doit-elle proposer, au minimum ?",
+        "reponse": { "type": "numerique", "valeur": 9, "tolerance": 0 },
+        "indices": [
+          "Avec $n$ garnitures, exprime le nombre de pizzas en fonction de $n$.",
+          "Avec $n$ garnitures, il y a $2 \\times 2^n = 2^{n+1}$ pizzas.",
+          "Compare $2^9 = 512$ et $2^{10} = 1\\,024$ à $1\\,000$."
+        ],
+        "revoir": "l-denombrement-008",
+        "solution": "Avec $n$ garnitures, il y a $2^n$ choix de garnitures, donc $2 \\times 2^n = 2^{n+1}$ pizzas. Or $2^9 = 512 < 1\\,000$ et $2^{10} = 1\\,024 > 1\\,000$, et $2^{n+1}$ augmente avec $n$. Il faut donc $n + 1 \\geqslant 10$, soit $n \\geqslant 9$ : la pizzeria doit proposer au moins $9$ garnitures."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-021",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-problemes", "n-denombrement-combinaisons", "n-denombrement-principes"],
+    "capacites": ["bo-m-denombrement-09", "bo-m-denombrement-10", "bo-m-denombrement-06", "bo-m-denombrement-07", "bo-m-denombrement-03"],
+    "titre": "Former un groupe de quatre",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 210,
+    "source": {
+      "annale": "an-2025-metropole-septembre-j2",
+      "adaptation": "situation de l'affirmation de vrai-faux reprise (24 élèves, 14 filles, 10 garçons) et posée en question 2 ; questions 1, 3 et 4 ajoutées"
+    },
+    "preambule": "Une classe compte $24$ élèves : $14$ filles et $10$ garçons. On forme un groupe de $4$ élèves, sans rôle particulier.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien de groupes différents peut-on former ?",
+        "reponse": { "type": "numerique", "valeur": 10626, "tolerance": 0 },
+        "indices": [
+          "Pose-toi les deux questions : l'ordre compte-t-il ? un élève peut-il revenir ?",
+          "Un groupe est une partie à $4$ éléments de la classe : il y en a $\\binom{24}{4}$.",
+          "$\\binom{24}{4} = \\dfrac{24 \\times 23 \\times 22 \\times 21}{4!}$, et $4! = 24$."
+        ],
+        "revoir": "l-denombrement-055",
+        "solution": "Un groupe ne dépend pas de l'ordre de ses membres, et un élève n'y figure qu'une fois : c'est une partie à $4$ éléments de l'ensemble des $24$ élèves. Comme $4! = 24$, il y en a $\\binom{24}{4} = \\dfrac{24 \\times 23 \\times 22 \\times 21}{4!} = 23 \\times 22 \\times 21 = 10\\,626$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de groupes sont composés de deux filles et deux garçons ?",
+        "reponse": { "type": "numerique", "valeur": 4095, "tolerance": 0 },
+        "indices": [
+          "Découpe le choix en deux étapes : les filles, puis les garçons.",
+          "Il y a $\\binom{14}{2}$ façons de choisir les deux filles, puis $\\binom{10}{2}$ de choisir les deux garçons.",
+          "$\\binom{14}{2} = 91$ et $\\binom{10}{2} = 45$ ; le choix des garçons ne dépend pas des filles choisies."
+        ],
+        "revoir": "l-denombrement-058",
+        "solution": "On choisit les deux filles parmi $14$ : $\\binom{14}{2} = \\dfrac{14 \\times 13}{2} = 91$ façons. Puis les deux garçons parmi $10$ : $\\binom{10}{2} = \\dfrac{10 \\times 9}{2} = 45$ façons, quelles que soient les filles choisies. D'après le principe multiplicatif, il y a $91 \\times 45 = 4\\,095$ groupes de deux filles et deux garçons.",
+        "erreurFrequente": "Additionner $\\binom{14}{2}$ et $\\binom{10}{2}$ : on choisit les filles **puis** les garçons, donc on multiplie."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien de groupes comptent au moins un garçon ?",
+        "reponse": { "type": "numerique", "valeur": 9625, "tolerance": 0 },
+        "indices": [
+          "Passe par le contraire de « au moins un garçon ».",
+          "Un groupe sans garçon est un groupe de $4$ filles : il y en a $\\binom{14}{4}$.",
+          "$\\binom{14}{4} = \\dfrac{14 \\times 13 \\times 12 \\times 11}{24} = 1\\,001$ ; retire ce nombre du total."
+        ],
+        "revoir": "l-denombrement-061",
+        "solution": "Le contraire de « au moins un garçon » est « aucun garçon », c'est-à-dire « quatre filles ». Il y a $\\binom{14}{4} = \\dfrac{14 \\times 13 \\times 12 \\times 11}{4!} = \\dfrac{24\\,024}{24} = 1\\,001$ groupes de quatre filles. Un groupe compte au moins un garçon ou n'en compte aucun, jamais les deux : $10\\,626 - 1\\,001 = 9\\,625$ groupes comptent au moins un garçon."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On tire au sort un groupe de quatre élèves : tous les groupes ont la même probabilité. Quelle est la probabilité qu'il compte deux filles et deux garçons ? Réponds par une fraction.",
+        "reponse": { "type": "numerique", "valeur": "195/506", "tolerance": 0 },
+        "indices": [
+          "Équiprobabilité : cas favorables sur cas possibles, comptés avec le même modèle.",
+          "Les cas favorables sont ceux de la question 2, les cas possibles ceux de la question 1.",
+          "La probabilité vaut $\\dfrac{4\\,095}{10\\,626}$ ; tu peux simplifier par $21$."
+        ],
+        "revoir": "l-denombrement-057",
+        "solution": "Les $10\\,626$ groupes sont équiprobables, et $4\\,095$ d'entre eux comptent deux filles et deux garçons. La probabilité cherchée est $\\dfrac{4\\,095}{10\\,626} = \\dfrac{195}{506} \\approx 0{,}385$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-022",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-problemes", "n-denombrement-permutations", "n-denombrement-combinaisons"],
+    "capacites": ["bo-m-denombrement-09", "bo-m-denombrement-10", "bo-m-denombrement-05", "bo-m-denombrement-06", "bo-m-denombrement-07"],
+    "titre": "Des numéros dans l'ordre croissant",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 220,
+    "preambule": "Une urne contient $6$ jetons numérotés de $1$ à $6$. On tire successivement et sans remise $3$ jetons, et on note leurs numéros dans l'ordre du tirage, par exemple $(4\\,;\\,1\\,;\\,6)$. Tous les tirages ont la même probabilité.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien y a-t-il de tirages possibles ?",
+        "reponse": { "type": "numerique", "valeur": 120, "tolerance": 0 },
+        "indices": [
+          "Successivement : l'ordre compte. Sans remise : un numéro ne revient pas.",
+          "Un tirage est un triplet de numéros deux à deux distincts pris parmi $6$.",
+          "$6$ choix pour le premier jeton, $5$ pour le deuxième, $4$ pour le troisième."
+        ],
+        "revoir": "l-denombrement-016",
+        "solution": "Un tirage est un triplet d'éléments deux à deux distincts de $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,6\\}$ : l'ordre compte et un jeton tiré n'est pas remis. Il y en a $6 \\times 5 \\times 4 = 120$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de tirages donnent des numéros rangés dans l'ordre croissant, comme $(1\\,;\\,4\\,;\\,6)$ ?",
+        "reponse": { "type": "numerique", "valeur": 20, "tolerance": 0 },
+        "indices": [
+          "Pars de trois numéros, par exemple $\\{1\\,;\\,4\\,;\\,6\\}$ : combien de tirages utilisent exactement ces trois numéros, et combien d'entre eux sont croissants ?",
+          "Chaque partie à $3$ éléments de $\\{1\\,;\\,\\dots\\,;\\,6\\}$ donne $3! = 6$ tirages, dont un seul croissant.",
+          "Les tirages croissants correspondent donc un à un aux parties à $3$ éléments : il y en a $\\binom{6}{3}$."
+        ],
+        "revoir": "l-denombrement-031",
+        "solution": "Un tirage croissant est déterminé par l'ensemble de ses trois numéros : il suffit de les ranger dans l'ordre croissant. Inversement, chaque partie à $3$ éléments de $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,6\\}$ donne un seul tirage croissant. Il y a donc autant de tirages croissants que de parties à $3$ éléments : $\\binom{6}{3} = \\dfrac{6 \\times 5 \\times 4}{3!} = 20$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la probabilité d'obtenir des numéros dans l'ordre croissant ? Réponds par une fraction.",
+        "reponse": { "type": "numerique", "valeur": "1/6", "tolerance": 0 },
+        "indices": [
+          "Tous les tirages sont équiprobables : cas favorables sur cas possibles, comptés avec le même modèle (des triplets ordonnés).",
+          "Il y a $20$ tirages favorables parmi $120$.",
+          "$\\dfrac{20}{120}$ se simplifie par $20$."
+        ],
+        "revoir": "l-denombrement-057",
+        "solution": "Les $120$ tirages sont équiprobables et $20$ d'entre eux sont croissants. La probabilité cherchée est $\\dfrac{20}{120} = \\dfrac{1}{6}$. C'est logique : parmi les $3! = 6$ ordres possibles de trois numéros donnés, un seul est croissant."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Combien de tirages contiennent le jeton numéro $6$ ?",
+        "reponse": { "type": "numerique", "valeur": 60, "tolerance": 0 },
+        "indices": [
+          "Deux méthodes possibles : placer le $6$ d'abord, ou passer par le contraire.",
+          "Le $6$ peut occuper l'une des $3$ places ; les deux autres places reçoivent deux numéros distincts pris parmi les $5$ autres.",
+          "Calcule $3 \\times (5 \\times 4)$ ; vérifie avec le contraire : $120$ moins les tirages sans le $6$, au nombre de $5 \\times 4 \\times 3$."
+        ],
+        "revoir": "l-denombrement-024",
+        "solution": "On choisit d'abord la place du $6$ : $3$ possibilités. On remplit ensuite les deux autres places, dans l'ordre, avec deux numéros distincts pris parmi les $5$ autres : $5 \\times 4 = 20$ possibilités, quelle que soit la place du $6$. D'après le principe multiplicatif, $3 \\times 20 = 60$ tirages contiennent le $6$.\n\nVérification par le contraire : il y a $5 \\times 4 \\times 3 = 60$ tirages sans le $6$, et $120 - 60 = 60$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-023",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-permutations", "n-denombrement-principes"],
+    "capacites": ["bo-m-denombrement-05", "bo-m-denombrement-03"],
+    "titre": "Ranger une étagère",
+    "duree": 10,
+    "calculatrice": false,
+    "ordre": 230,
+    "preambule": "On range côte à côte sur une étagère $7$ livres, tous différents : $3$ livres de mathématiques et $4$ livres de physique.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien de rangements sont possibles ?",
+        "reponse": { "type": "numerique", "valeur": 5040, "tolerance": 0 },
+        "indices": [
+          "Un rangement place les $7$ livres dans un certain ordre.",
+          "C'est une permutation de l'ensemble des $7$ livres : il y en a $7!$.",
+          "$7! = 7 \\times 6!$ et $6! = 720$."
+        ],
+        "revoir": "l-denombrement-020",
+        "solution": "Un rangement est une permutation de l'ensemble des $7$ livres : il y en a $7! = 1 \\times 2 \\times \\dots \\times 7 = 5\\,040$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de rangements commencent, à gauche, par un livre de mathématiques ?",
+        "reponse": { "type": "numerique", "valeur": 2160, "tolerance": 0 },
+        "indices": [
+          "Traite d'abord la place qui a une contrainte : la première.",
+          "$3$ choix pour le livre de la première place ; les $6$ autres livres se rangent ensuite librement sur les $6$ places restantes.",
+          "Calcule $3 \\times 6!$."
+        ],
+        "revoir": "l-denombrement-024",
+        "solution": "On choisit le livre de la première place parmi les $3$ livres de mathématiques : $3$ possibilités. On range ensuite les $6$ livres restants sur les $6$ autres places : $6! = 720$ possibilités, quel que soit le premier livre. D'après le principe multiplicatif, il y a $3 \\times 720 = 2\\,160$ rangements."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien de rangements placent les $3$ livres de mathématiques à gauche, puis les $4$ livres de physique ?",
+        "reponse": { "type": "numerique", "valeur": 144, "tolerance": 0 },
+        "indices": [
+          "Les places de chaque matière sont fixées : il reste à ordonner chaque groupe de livres.",
+          "On range les $3$ livres de mathématiques sur les $3$ premières places, puis les $4$ livres de physique sur les $4$ dernières.",
+          "Calcule $3! \\times 4! = 6 \\times 24$."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "On range les $3$ livres de mathématiques sur les $3$ premières places : $3! = 6$ façons. Puis les $4$ livres de physique sur les $4$ dernières : $4! = 24$ façons, quel que soit le premier rangement. D'après le principe multiplicatif, il y a $6 \\times 24 = 144$ rangements."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Combien de rangements commencent et finissent par un livre de mathématiques ?",
+        "reponse": { "type": "numerique", "valeur": 720, "tolerance": 0 },
+        "indices": [
+          "Deux places sont contraintes, la première et la dernière : traite-les d'abord.",
+          "$3$ choix pour la première place, puis $2$ pour la dernière, puis les $5$ livres restants sur les $5$ places du milieu.",
+          "Calcule $3 \\times 2 \\times 5!$."
+        ],
+        "revoir": "l-denombrement-024",
+        "solution": "On choisit le livre de gauche parmi les $3$ livres de mathématiques ($3$ possibilités), puis celui de droite parmi les $2$ restants ($2$ possibilités). On range enfin les $5$ autres livres sur les $5$ places du milieu : $5! = 120$ façons. Il y a $3 \\times 2 \\times 120 = 720$ rangements."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-024",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-permutations"],
+    "capacites": ["bo-m-denombrement-15", "bo-m-denombrement-05", "bo-m-listes-01", "bo-m-listes-02"],
+    "titre": "Tirer une permutation au hasard",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 240,
+    "preambule": "La fonction ci-dessous renvoie une permutation de la liste [1, 2, …, n] tirée au hasard. On rappelle que randint(a, b) renvoie un entier choisi au hasard entre a et b inclus, tous ces entiers ayant la même probabilité. L'instruction de la ligne marquée (R) retire de la liste restants son élément d'indice j ; le premier élément d'une liste a l'indice $0$.",
+    "code": {
+      "langage": "python",
+      "source": "from random import randint\n\ndef permutation_aleatoire(n):\n    restants = [i for i in range(1, n + 1)]  # [1, 2, ..., n]\n    p = []\n    for etape in range(n):\n        j = randint(0, len(restants) - 1)\n        p.append(restants[j])\n        restants.pop(j)  # ligne (R)\n    return p"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On appelle permutation_aleatoire(4). Combien de listes différentes la fonction peut-elle renvoyer ?",
+        "reponse": { "type": "numerique", "valeur": 24, "tolerance": 0 },
+        "indices": [
+          "Suis la liste restants : combien d'éléments contient-elle au premier passage dans la boucle ? au deuxième ?",
+          "Au premier passage, j peut prendre $4$ valeurs ; la ligne (R) retire l'élément choisi : au deuxième passage, il n'en reste que $3$, puis $2$, puis $1$.",
+          "La liste renvoyée range les nombres $1$, $2$, $3$ et $4$ sans répétition : c'est une permutation de $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\}$."
+        ],
+        "revoir": "l-denombrement-018",
+        "solution": "À chaque passage, la fonction ajoute à p un élément de restants, puis le retire de restants (ligne (R)) : il ne peut plus être choisi. Au bout des $4$ passages, p contient les nombres $1$, $2$, $3$ et $4$, chacun une fois, dans un certain ordre : c'est une permutation de $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\}$. Il y a $4$ choix au premier passage, $3$ au deuxième, $2$ au troisième et $1$ au dernier : la fonction peut renvoyer $4 \\times 3 \\times 2 \\times 1 = 4! = 24$ listes différentes."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la probabilité que permutation_aleatoire(4) renvoie la liste [1, 2, 3, 4] ? Réponds par une fraction.",
+        "reponse": { "type": "numerique", "valeur": "1/24", "tolerance": 0 },
+        "indices": [
+          "Représente les quatre choix successifs par un arbre pondéré, comme en première.",
+          "Au premier passage, la probabilité de choisir le $1$ est $\\dfrac{1}{4}$ ; ensuite, celle de choisir le $2$ parmi les $3$ nombres restants est $\\dfrac{1}{3}$.",
+          "La probabilité d'un chemin de l'arbre est le produit des probabilités de ses branches : $\\dfrac{1}{4} \\times \\dfrac{1}{3} \\times \\dfrac{1}{2} \\times 1$."
+        ],
+        "solution": "Au premier passage, randint choisit l'indice du $1$ avec la probabilité $\\dfrac{1}{4}$. Ensuite, restants contient $3$ éléments, et la probabilité de choisir le $2$ vaut $\\dfrac{1}{3}$ ; puis $\\dfrac{1}{2}$ pour le $3$, et le $4$ est alors le seul restant. D'après la règle du produit sur un arbre pondéré, la probabilité d'obtenir [1, 2, 3, 4] est $\\dfrac{1}{4} \\times \\dfrac{1}{3} \\times \\dfrac{1}{2} \\times 1 = \\dfrac{1}{24}$.\n\nLe même calcul vaut pour chacune des $24$ permutations : la fonction tire une permutation au hasard, toutes ayant la même probabilité."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On supprime la ligne (R). Que peut alors renvoyer permutation_aleatoire(4) ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Toujours une permutation de $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\}$",
+            "Une liste de $4$ nombres de $1$ à $4$, avec des répétitions possibles",
+            "Une liste de moins de $4$ nombres",
+            "Rien : le programme s'arrête sur une erreur"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Sans la ligne (R), un nombre déjà choisi reste dans restants : il peut être choisi à nouveau, par exemple [3, 3, 1, 3].",
+            null,
+            "La boucle fait toujours $4$ passages, et chacun ajoute un nombre à p : la liste en contient $4$.",
+            "restants garde ses $4$ éléments : l'indice j, entre $0$ et $3$, désigne toujours un élément existant."
+          ]
+        },
+        "indices": [
+          "Sans la ligne (R), que devient la liste restants d'un passage à l'autre ?",
+          "restants reste égale à [1, 2, 3, 4] : à chaque passage, j se choisit entre $0$ et $3$.",
+          "Un même nombre peut donc être ajouté plusieurs fois à p."
+        ],
+        "revoir": "l-denombrement-023",
+        "solution": "Sans la ligne (R), la liste restants reste égale à [1, 2, 3, 4]. À chacun des $4$ passages, la fonction ajoute à p l'un de ces $4$ nombres, qui peut avoir déjà été choisi. Elle renvoie une liste de $4$ nombres de $1$ à $4$, avec des répétitions possibles, par exemple [3, 3, 1, 3]."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Dans ce cas, combien de listes différentes la fonction peut-elle renvoyer ?",
+        "reponse": { "type": "numerique", "valeur": 256, "tolerance": 0 },
+        "indices": [
+          "La liste renvoyée est maintenant un $4$-uplet d'éléments de $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\}$, avec répétitions possibles.",
+          "Il y a $4$ choix à chacun des $4$ passages.",
+          "$4^4 = 16 \\times 16$."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "La liste renvoyée est un $4$-uplet quelconque d'éléments de $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\}$ : $4$ choix à chaque passage. D'après le principe multiplicatif, il y en a $4^4 = 256$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-025",
+    "chapitre": "denombrement",
+    "niveau": 2,
+    "notions": ["n-denombrement-pascal"],
+    "capacites": ["bo-m-denombrement-08", "bo-m-denombrement-11"],
+    "titre": "Utiliser les propriétés des coefficients binomiaux",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 250,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calcule $\\binom{30}{28}$ sans calculatrice.",
+        "reponse": { "type": "numerique", "valeur": 435, "tolerance": 0 },
+        "indices": [
+          "Choisir $28$ éléments parmi $30$, c'est choisir les $2$ qu'on laisse.",
+          "Par symétrie, $\\binom{30}{28} = \\binom{30}{2}$.",
+          "$\\binom{30}{2} = \\dfrac{30 \\times 29}{2} = 15 \\times 29$."
+        ],
+        "revoir": "l-denombrement-039",
+        "solution": "Par symétrie, $\\binom{30}{28} = \\binom{30}{30 - 28} = \\binom{30}{2} = \\dfrac{30 \\times 29}{2} = 15 \\times 29 = 435$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Détermine l'entier $n \\geqslant 2$ tel que $\\binom{n}{2} = 45$.",
+        "reponse": { "type": "numerique", "valeur": 10, "tolerance": 0 },
+        "indices": [
+          "Remplace $\\binom{n}{2}$ par son expression en fonction de $n$.",
+          "$\\dfrac{n(n-1)}{2} = 45$ équivaut à $n^2 - n - 90 = 0$.",
+          "Le discriminant vaut $\\Delta = 1 + 360 = 361 = 19^2$ ; garde la solution qui est un entier supérieur ou égal à $2$."
+        ],
+        "revoir": "l-denombrement-039",
+        "solution": "Pour $n \\geqslant 2$, $\\binom{n}{2} = \\dfrac{n(n-1)}{2}$. L'équation s'écrit $n(n-1) = 90$, soit $n^2 - n - 90 = 0$. Son discriminant est $\\Delta = (-1)^2 - 4 \\times 1 \\times (-90) = 361 = 19^2$ ; ses solutions sont $\\dfrac{1 - 19}{2} = -9$ et $\\dfrac{1 + 19}{2} = 10$. Comme $n \\geqslant 2$, on obtient $n = 10$. Vérification : $\\binom{10}{2} = \\dfrac{10 \\times 9}{2} = 45$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On donne $\\binom{9}{2} = 36$ et $\\binom{9}{3} = 84$. Calcule $\\binom{10}{7}$.",
+        "reponse": { "type": "numerique", "valeur": 120, "tolerance": 0 },
+        "indices": [
+          "Deux propriétés servent : la relation de Pascal, puis la symétrie.",
+          "D'après la relation de Pascal, $\\binom{10}{3} = \\binom{9}{2} + \\binom{9}{3}$.",
+          "$\\binom{10}{3} = 36 + 84$ ; et $\\binom{10}{7} = \\binom{10}{3}$ par symétrie."
+        ],
+        "revoir": "l-denombrement-042",
+        "solution": "D'après la relation de Pascal avec $n = 9$ et $k = 2$ : $\\binom{10}{3} = \\binom{9}{2} + \\binom{9}{3} = 36 + 84 = 120$. Par symétrie, $\\binom{10}{7} = \\binom{10}{10 - 7} = \\binom{10}{3} = 120$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Un ensemble $E$ a $8$ éléments. Combien possède-t-il de parties non vides ? Retrouve ce nombre à l'aide de la somme $\\binom{8}{0} + \\binom{8}{1} + \\dots + \\binom{8}{8}$.",
+        "reponse": { "type": "numerique", "valeur": 255, "tolerance": 0 },
+        "indices": [
+          "La somme des nombres d'une ligne du triangle de Pascal a une valeur simple.",
+          "Cette somme vaut $2^8 = 256$ : elle compte toutes les parties de $E$, rangées selon leur nombre d'éléments.",
+          "Parmi elles, une seule est vide : celle que compte $\\binom{8}{0} = 1$."
+        ],
+        "revoir": "l-denombrement-049",
+        "solution": "Pour chaque $k$ de $0$ à $8$, $E$ possède $\\binom{8}{k}$ parties à $k$ éléments. La somme $\\binom{8}{0} + \\binom{8}{1} + \\dots + \\binom{8}{8}$ compte donc toutes les parties de $E$ : elle vaut $2^8 = 256$. Seule la partie vide a $0$ élément, et $\\binom{8}{0} = 1$. $E$ possède donc $256 - 1 = 255$ parties non vides : c'est la somme $\\binom{8}{1} + \\binom{8}{2} + \\dots + \\binom{8}{8}$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-026",
+    "chapitre": "denombrement",
+    "niveau": 3,
+    "notions": ["n-denombrement-combinaisons", "n-denombrement-principes", "n-denombrement-problemes"],
+    "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07", "bo-m-denombrement-02", "bo-m-denombrement-03", "bo-m-denombrement-09", "bo-m-denombrement-10"],
+    "titre": "Des triangles dans un octogone",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 260,
+    "preambule": "On considère un octogone régulier (polygone à $8$ côtés de même longueur) dont les sommets sont nommés A, B, C, D, E, F, G et H, dans cet ordre, en tournant autour de la figure. Ses **côtés** sont les $8$ segments qui joignent deux sommets consécutifs : $[AB]$, $[BC]$, …, $[GH]$ et $[HA]$. Ses **diagonales** sont les autres segments qui joignent deux de ses sommets. Un **triangle** est formé de trois sommets distincts de l'octogone ; l'ordre de ces sommets ne compte pas. La figure ci-dessous représente l'octogone, deux de ses diagonales en pointillé et, en couleur, le triangle ABE.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/denombrement/octogone-triangle.svg",
+        "alt": "Octogone régulier dont les sommets A, B, C, D, E, F, G et H se suivent dans le sens des aiguilles d'une montre, A et B en haut. Les diagonales [CH] et [DG] sont tracées en pointillé. Le triangle ABE est colorié : son côté [AB] est un côté de l'octogone, ses côtés [BE] et [AE] sont des diagonales.",
+        "width": 360,
+        "height": 340
+      },
+      "caption": "Octogone ABCDEFGH : côtés en trait plein, diagonales [CH] et [DG] en pointillé, triangle ABE en couleur (un seul de ses côtés, [AB], est un côté de l'octogone)."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien l'octogone possède-t-il de diagonales ?",
+        "reponse": { "type": "numerique", "valeur": 20, "tolerance": 0 },
+        "indices": [
+          "Un segment qui joint deux sommets est déterminé par la paire de ses extrémités, sans ordre.",
+          "Il y a $\\binom{8}{2}$ segments qui joignent deux sommets ; $8$ d'entre eux sont des côtés.",
+          "$\\binom{8}{2} = \\dfrac{8 \\times 7}{2} = 28$ ; retire les $8$ côtés."
+        ],
+        "revoir": "l-denombrement-029",
+        "solution": "Un segment qui joint deux sommets est déterminé par la paire de ses extrémités : c'est une partie à $2$ éléments de l'ensemble des $8$ sommets. Il y en a $\\binom{8}{2} = \\dfrac{8 \\times 7}{2} = 28$. Chacun de ces segments est soit un côté, soit une diagonale, jamais les deux. D'après le principe additif, l'octogone possède $28 - 8 = 20$ diagonales."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de triangles peut-on former ?",
+        "reponse": { "type": "numerique", "valeur": 56, "tolerance": 0 },
+        "indices": [
+          "Un triangle est déterminé par l'ensemble de ses trois sommets.",
+          "$\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3!}$."
+        ],
+        "revoir": "l-denombrement-027",
+        "solution": "Un triangle est déterminé par l'ensemble de ses trois sommets, sans ordre et sans répétition : c'est une partie à $3$ éléments de l'ensemble des $8$ sommets. On peut donc former $\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3!} = \\dfrac{336}{6} = 56$ triangles."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien de triangles ont deux côtés qui sont des côtés de l'octogone ?",
+        "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+        "indices": [
+          "Deux côtés d'un triangle ont toujours un sommet commun. Que peut-on dire des trois sommets d'un tel triangle ?",
+          "Ses trois sommets sont consécutifs, comme A, B et C : un tel triangle est déterminé par son sommet du milieu.",
+          "Il y a autant de tels triangles que de sommets possibles pour le milieu."
+        ],
+        "revoir": "l-denombrement-055",
+        "solution": "Deux côtés d'un triangle ont un sommet commun. Si ce sont deux côtés de l'octogone, ils joignent ce sommet à ses deux voisins : les trois sommets du triangle sont consécutifs, comme A, B et C. Un tel triangle est déterminé par son sommet du milieu, qui peut être n'importe lequel des $8$ sommets : il y a $8$ tels triangles.\n\nAucun triangle n'a ses trois côtés parmi ceux de l'octogone : pour A, B, C, le troisième côté $[AC]$ est une diagonale."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Combien de triangles ont exactement un côté qui est un côté de l'octogone ?",
+        "reponse": { "type": "numerique", "valeur": 32, "tolerance": 0 },
+        "indices": [
+          "Choisis d'abord le côté de l'octogone, puis le troisième sommet.",
+          "Si le côté choisi est $[AB]$, le troisième sommet n'est ni A ni B, ni un voisin de A ou de B : H et C sont exclus.",
+          "$8$ choix pour le côté, puis $8 - 4 = 4$ choix pour le troisième sommet."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "On choisit d'abord le côté de l'octogone qui est un côté du triangle : $8$ possibilités, par exemple $[AB]$. Le troisième sommet n'est ni A ni B ; il n'est pas non plus un voisin de A ou de B, sinon le triangle aurait un second côté de l'octogone : H et C sont exclus. Il reste $8 - 4 = 4$ choix (D, E, F ou G), quel que soit le côté choisi. D'après le principe multiplicatif, on obtient $8 \\times 4 = 32$ triangles, et chacun une seule fois, puisqu'il n'a qu'un côté de l'octogone."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On choisit trois sommets au hasard : tous les triangles ont la même probabilité. Quelle est la probabilité que le triangle obtenu ait au moins un côté qui soit un côté de l'octogone ? Donner le résultat sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "5/7", "tolerance": 0 },
+        "indices": [
+          "« Au moins un côté de l'octogone » se découpe en deux cas : exactement un, ou exactement deux. Ces deux cas peuvent-ils se produire en même temps ?",
+          "Les deux cas sont incompatibles : $32 + 8 = 40$ triangles sont favorables, parmi $56$.",
+          "La fraction $\\dfrac{40}{56}$ se simplifie par $8$."
+        ],
+        "revoir": "l-denombrement-057",
+        "solution": "D'après la question 3, un triangle a au plus deux côtés qui sont des côtés de l'octogone. L'événement « au moins un côté de l'octogone » est donc la réunion des événements « exactement un » ($32$ triangles) et « exactement deux » ($8$ triangles), qui sont incompatibles. Il y a $32 + 8 = 40$ triangles favorables parmi $56$ triangles équiprobables : la probabilité cherchée est $\\dfrac{40}{56} = \\dfrac{5}{7}$."
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Plus généralement, on considère un polygone régulier à $n$ sommets, avec $n \\geqslant 5$. Démontrer que le nombre de triangles dont aucun côté n'est un côté du polygone est $\\dfrac{n(n-4)(n-5)}{6}$. Vérifier ce résultat pour l'octogone.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Reprends les questions 2 à 4 avec $n$ sommets, puis retire du nombre total de triangles ceux qui ont au moins un côté du polygone.",
+          "Il y a $\\binom{n}{3}$ triangles, dont $n$ avec deux côtés du polygone et $n(n-4)$ avec exactement un.",
+          "Regroupe d'abord $n + n(n-4) = n(n-3)$. Écris ensuite $\\dfrac{n(n-1)(n-2)}{6} - n(n-3)$ en mettant $\\dfrac{n}{6}$ en facteur, puis développe."
+        ],
+        "revoir": "l-denombrement-061",
+        "solution": "Les raisonnements des questions 3 et 4 restent valables avec $n$ sommets, où $n \\geqslant 5$. Il y a $n$ triangles qui ont deux côtés du polygone, un par sommet du milieu. Il y en a $n(n-4)$ qui en ont exactement un : $n$ choix pour ce côté, puis $n - 4$ choix pour le troisième sommet. Un triangle a donc $0$, $1$ ou $2$ côtés du polygone, et ces trois cas sont disjoints. D'après le principe additif, le nombre de triangles sans côté du polygone est $\\binom{n}{3} - n - n(n-4)$.\n\nOn regroupe d'abord les deux derniers termes : $n + n(n-4) = n(1 + n - 4) = n(n-3)$. Comme $\\binom{n}{3} = \\dfrac{n(n-1)(n-2)}{6}$ et $n(n-3) = \\dfrac{n}{6} \\times 6(n-3)$ :\n\n$$\\binom{n}{3} - n(n-3) = \\frac{n}{6}\\big((n-1)(n-2) - 6(n-3)\\big).$$\n\nOr $(n-1)(n-2) - 6(n-3) = n^2 - 3n + 2 - 6n + 18 = n^2 - 9n + 20$, et $(n-4)(n-5) = n^2 - 5n - 4n + 20 = n^2 - 9n + 20$. Donc le nombre de triangles sans côté du polygone est :\n\n$$\\frac{n}{6}\\left(n^2 - 9n + 20\\right) = \\frac{n(n-4)(n-5)}{6}.$$\n\nPour l'octogone, $n = 8$ : $\\dfrac{8 \\times 4 \\times 3}{6} = 16$, et on retrouve bien $56 - 8 - 32 = 16$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-027",
+    "chapitre": "denombrement",
+    "niveau": 3,
+    "notions": ["n-denombrement-combinaisons", "n-denombrement-pascal"],
+    "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07", "bo-m-denombrement-08"],
+    "titre": "Une égalité, deux démonstrations",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 270,
+    "source": {
+      "annale": "an-2025-polynesie-septembre-j1",
+      "adaptation": "égalité de l'affirmation de vrai-faux reprise et démontrée pas à pas ; vérification numérique et applications ajoutées"
+    },
+    "preambule": "Soit $n$ et $k$ deux entiers naturels non nuls tels que $k \\leqslant n$. On veut démontrer l'égalité $(\\mathcal{E})$ : $n \\times \\binom{n-1}{k-1} = k \\times \\binom{n}{k}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer chacun des deux membres de $(\\mathcal{E})$ pour $n = 6$ et $k = 2$. Quelle valeur commune obtient-on ?",
+        "reponse": { "type": "numerique", "valeur": 30, "tolerance": 0 },
+        "indices": [
+          "Pour $n = 6$ et $k = 2$, l'égalité s'écrit $6 \\times \\binom{5}{1} = 2 \\times \\binom{6}{2}$.",
+          "$\\binom{5}{1} = 5$ et $\\binom{6}{2} = 15$."
+        ],
+        "revoir": "l-denombrement-039",
+        "solution": "Pour $n = 6$ et $k = 2$ : $6 \\times \\binom{5}{1} = 6 \\times 5 = 30$ et $2 \\times \\binom{6}{2} = 2 \\times \\dfrac{6 \\times 5}{2} = 30$. Les deux membres valent $30$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer $(\\mathcal{E})$ par le calcul, à l'aide de la formule $\\binom{n}{k} = \\dfrac{n!}{(n-k)!\\,k!}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Écris $\\binom{n-1}{k-1}$ avec des factorielles : que vaut $(n-1) - (k-1)$ ?",
+          "$\\binom{n-1}{k-1} = \\dfrac{(n-1)!}{(n-k)!\\,(k-1)!}$ ; utilise ensuite $n \\times (n-1)! = n!$ et $k! = k \\times (k-1)!$.",
+          "Montre que les deux membres sont égaux à $\\dfrac{n!}{(n-k)!\\,(k-1)!}$."
+        ],
+        "revoir": "l-denombrement-044",
+        "solution": "Comme $1 \\leqslant k \\leqslant n$, on a $0 \\leqslant k - 1 \\leqslant n - 1$ et $(n-1) - (k-1) = n - k$. D'après la formule, et comme $n \\times (n-1)! = n!$ :\n\n$$n \\times \\binom{n-1}{k-1} = n \\times \\frac{(n-1)!}{(n-k)!\\,(k-1)!} = \\frac{n!}{(n-k)!\\,(k-1)!}.$$\n\nD'autre part, comme $k! = k \\times (k-1)!$ :\n\n$$k \\times \\binom{n}{k} = k \\times \\frac{n!}{(n-k)! \\times k \\times (k-1)!} = \\frac{n!}{(n-k)!\\,(k-1)!}.$$\n\nLes deux membres sont égaux : l'égalité $(\\mathcal{E})$ est démontrée."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans un club de $n$ personnes, on forme une équipe de $k$ personnes dont l'une est désignée capitaine. En comptant de deux façons les équipes avec capitaine, démontrer à nouveau $(\\mathcal{E})$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Première façon : choisis d'abord l'équipe, puis son capitaine parmi ses membres.",
+          "Seconde façon : choisis d'abord le capitaine parmi les $n$ personnes, puis les $k - 1$ autres membres parmi les personnes restantes.",
+          "La première façon donne $k \\times \\binom{n}{k}$, la seconde $n \\times \\binom{n-1}{k-1}$ ; elles comptent les mêmes équipes avec capitaine."
+        ],
+        "revoir": "l-denombrement-045",
+        "solution": "Première façon : on choisit l'équipe, partie à $k$ éléments du club ($\\binom{n}{k}$ façons), puis son capitaine parmi ses $k$ membres ($k$ façons). D'après le principe multiplicatif, il y a $k \\times \\binom{n}{k}$ équipes avec capitaine.\n\nSeconde façon : on choisit le capitaine parmi les $n$ personnes ($n$ façons), puis les $k - 1$ autres membres parmi les $n - 1$ personnes restantes ($\\binom{n-1}{k-1}$ façons, quel que soit le capitaine). Il y a donc $n \\times \\binom{n-1}{k-1}$ équipes avec capitaine.\n\nChaque équipe avec capitaine est obtenue une fois et une seule par chacune des deux façons : les deux nombres sont égaux, ce qui démontre $(\\mathcal{E})$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On donne $\\binom{11}{4} = 330$. Déduire de $(\\mathcal{E})$ la valeur de $\\binom{12}{5}$.",
+        "reponse": { "type": "numerique", "valeur": 792, "tolerance": 0 },
+        "indices": [
+          "Applique $(\\mathcal{E})$ avec $n = 12$ et $k = 5$.",
+          "$12 \\times \\binom{11}{4} = 5 \\times \\binom{12}{5}$ : isole $\\binom{12}{5}$."
+        ],
+        "revoir": "l-denombrement-029",
+        "solution": "Avec $n = 12$ et $k = 5$, l'égalité $(\\mathcal{E})$ donne $12 \\times \\binom{11}{4} = 5 \\times \\binom{12}{5}$, donc $\\binom{12}{5} = \\dfrac{12 \\times 330}{5} = \\dfrac{3\\,960}{5} = 792$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On donne aussi $\\binom{11}{5} = 462$. Retrouver $\\binom{12}{5}$ par une autre méthode.",
+        "reponse": { "type": "numerique", "valeur": 792, "tolerance": 0 },
+        "indices": [
+          "Les nombres $\\binom{11}{4}$ et $\\binom{11}{5}$ sont voisins sur la ligne $11$ du triangle de Pascal.",
+          "Relation de Pascal : $\\binom{11}{4} + \\binom{11}{5} = \\binom{12}{5}$."
+        ],
+        "revoir": "l-denombrement-042",
+        "solution": "D'après la relation de Pascal avec $n = 11$ et $k = 4$ : $\\binom{12}{5} = \\binom{11}{4} + \\binom{11}{5} = 330 + 462 = 792$. On retrouve le résultat de la question 4."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-028",
+    "chapitre": "denombrement",
+    "niveau": 3,
+    "notions": ["n-denombrement-problemes", "n-denombrement-principes", "n-denombrement-permutations"],
+    "capacites": ["bo-m-denombrement-09", "bo-m-denombrement-10", "bo-m-denombrement-03", "bo-m-denombrement-05"],
+    "titre": "Nés le même mois ?",
+    "duree": 25,
+    "calculatrice": true,
+    "ordre": 280,
+    "preambule": "On s'intéresse aux mois de naissance des membres d'un groupe. Les membres sont numérotés, et on note la liste (mois de naissance du membre 1 ; mois du membre 2 ; …). On admet que toutes ces listes ont la même probabilité.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Le groupe compte $4$ membres. Combien de listes de mois de naissance sont possibles ?",
+        "reponse": { "type": "numerique", "valeur": 20736, "tolerance": 0 },
+        "indices": [
+          "L'ordre compte-t-il ? un même mois peut-il revenir ?",
+          "Une liste est un $4$-uplet d'éléments de l'ensemble des $12$ mois : il y en a $12^4$."
+        ],
+        "revoir": "l-denombrement-005",
+        "solution": "Une liste est un $4$-uplet d'éléments de l'ensemble des $12$ mois : l'ordre compte (chaque place correspond à un membre) et deux membres peuvent être nés le même mois. D'après le principe multiplicatif, il y a $12^4 = 20\\,736$ listes."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de ces listes comportent quatre mois deux à deux différents ?",
+        "reponse": { "type": "numerique", "valeur": 11880, "tolerance": 0 },
+        "indices": [
+          "Cette fois, aucun mois ne se répète : ce sont des $4$-uplets d'éléments distincts.",
+          "Calcule $12 \\times 11 \\times 10 \\times 9$."
+        ],
+        "revoir": "l-denombrement-016",
+        "solution": "Ce sont les $4$-uplets d'éléments distincts de l'ensemble des $12$ mois : il y en a $12 \\times 11 \\times 10 \\times 9 = 11\\,880$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire la probabilité qu'au moins deux des quatre membres soient nés le même mois. Arrondir à $10^{-3}$.",
+        "reponse": { "type": "numerique", "valeur": 0.427, "tolerance": 0.0005 },
+        "indices": [
+          "« Au moins deux membres nés le même mois » est le contraire de « quatre mois deux à deux différents ».",
+          "La probabilité que les quatre mois soient deux à deux différents vaut $\\dfrac{11\\,880}{20\\,736}$.",
+          "La probabilité cherchée vaut $1 - \\dfrac{11\\,880}{20\\,736}$."
+        ],
+        "revoir": "l-denombrement-057",
+        "solution": "Les $20\\,736$ listes sont équiprobables. L'événement « au moins deux membres sont nés le même mois » est le contraire de « les quatre mois sont deux à deux différents », dont la probabilité est $\\dfrac{11\\,880}{20\\,736}$. La probabilité cherchée est donc $1 - \\dfrac{11\\,880}{20\\,736} \\approx 0{,}427$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Pour un groupe de $n$ membres, avec $1 \\leqslant n \\leqslant 12$, on note $p_n$ la probabilité qu'au moins deux membres soient nés le même mois. Exprimer $p_n$ en fonction de $n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Reprends les questions 1 à 3 en remplaçant $4$ par $n$.",
+          "Il y a $12^n$ listes, dont $12 \\times 11 \\times \\dots \\times (12 - n + 1)$ sans mois répété.",
+          "Ce produit s'écrit aussi $\\dfrac{12!}{(12-n)!}$."
+        ],
+        "revoir": "l-denombrement-021",
+        "solution": "Pour un groupe de $n$ membres, il y a $12^n$ listes équiprobables : ce sont les $n$-uplets de mois. Celles dont les $n$ mois sont deux à deux différents sont les $n$-uplets d'éléments distincts : il y en a $12 \\times 11 \\times \\dots \\times (12 - n + 1) = \\dfrac{12!}{(12-n)!}$. En passant par l'événement contraire :\n\n$$p_n = 1 - \\frac{12 \\times 11 \\times \\dots \\times (12 - n + 1)}{12^n} = 1 - \\frac{12!}{(12-n)! \\times 12^n}.$$"
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Quel est le plus petit nombre de membres pour lequel $p_n$ dépasse $\\dfrac{1}{2}$ ?",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "Calcule $p_5$ et compare-le à $\\dfrac{1}{2}$ ; tu connais déjà $p_4$.",
+          "$p_5 = 1 - \\dfrac{12 \\times 11 \\times 10 \\times 9 \\times 8}{12^5} = 1 - \\dfrac{95\\,040}{248\\,832}$.",
+          "Quand on passe de $n$ à $n + 1$ membres, la probabilité que tous les mois soient différents est multipliée par $\\dfrac{12 - n}{12}$, qui est inférieur à $1$ : $p_n$ augmente avec $n$."
+        ],
+        "revoir": "l-denombrement-057",
+        "solution": "On a $p_4 \\approx 0{,}427 < \\dfrac{1}{2}$ et $p_5 = 1 - \\dfrac{95\\,040}{248\\,832} \\approx 0{,}618 > \\dfrac{1}{2}$.\n\nDe plus, pour $1 \\leqslant n \\leqslant 11$, le $(n+1)$-ième membre doit éviter les $n$ mois déjà pris : passer de $n$ à $n + 1$ membres multiplie la probabilité $1 - p_n$ que tous les mois soient différents par $\\dfrac{12 - n}{12} < 1$. Donc $1 - p_n$ diminue et $p_n$ augmente avec $n$ : pour $n \\leqslant 4$, $p_n \\leqslant p_4 < \\dfrac{1}{2}$.\n\nLe plus petit nombre de membres pour lequel $p_n$ dépasse $\\dfrac{1}{2}$ est $5$."
+      }
+    ]
+  },
+  {
+    "id": "x-denombrement-029",
+    "chapitre": "denombrement",
+    "niveau": 3,
+    "notions": ["n-denombrement-permutations", "n-denombrement-principes"],
+    "capacites": ["bo-m-denombrement-05", "bo-m-denombrement-03"],
+    "titre": "Anagrammes avec des lettres répétées",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 290,
+    "source": {
+      "annale": "an-2025-caledonie-j1",
+      "adaptation": "affirmation du vrai-faux reprise en question 2, préparée par la question 1 ; questions 3 à 5 ajoutées"
+    },
+    "preambule": "On appelle anagramme d'un mot tout mot, ayant un sens ou non, écrit avec exactement les mêmes lettres, chacune autant de fois ; le mot lui-même compte. Une affirmation dit : « Le mot EULER possède $120$ anagrammes. »",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Pour tester cette affirmation, on distingue provisoirement les deux E en les notant $E_1$ et $E_2$. Combien de mots différents peut-on écrire en rangeant les cinq symboles $E_1$, U, L, $E_2$, R ?",
+        "reponse": { "type": "numerique", "valeur": 120, "tolerance": 0 },
+        "indices": [
+          "Les cinq symboles sont deux à deux distincts : un tel mot est une permutation.",
+          "Il y en a $5!$."
+        ],
+        "revoir": "l-denombrement-021",
+        "solution": "Les cinq symboles $E_1$, U, L, $E_2$, R sont deux à deux distincts, et un mot est une permutation de ces cinq symboles. Il y en a $5! = 120$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En effaçant les numéros, les deux mots $E_1\\mathrm{UL}E_2\\mathrm{R}$ et $E_2\\mathrm{UL}E_1\\mathrm{R}$ deviennent tous deux EULER. En déduire le nombre d'anagrammes du mot EULER, puis dire si l'affirmation est vraie. Saisis le nombre d'anagrammes ; la conclusion sur l'affirmation est dans la solution.",
+        "reponse": { "type": "numerique", "valeur": 60, "tolerance": 0 },
+        "indices": [
+          "Pars d'une anagramme de EULER, par exemple LEERU : de combien de façons peut-on numéroter ses deux E ?",
+          "Chaque anagramme de EULER provient d'exactement $2$ mots de la question 1 : on échange $E_1$ et $E_2$.",
+          "Le nombre d'anagrammes vaut donc $\\dfrac{120}{2}$."
+        ],
+        "revoir": "l-denombrement-020",
+        "solution": "À chaque mot de la question 1, on associe le mot obtenu en effaçant les numéros : c'est une anagramme de EULER. Inversement, une anagramme de EULER, par exemple LEERU, provient d'exactement $2! = 2$ mots de la question 1, $\\mathrm{L}E_1E_2\\mathrm{RU}$ et $\\mathrm{L}E_2E_1\\mathrm{RU}$, selon la façon de numéroter ses deux E. Les $120$ mots de la question 1 se regroupent donc deux par deux : le mot EULER a $\\dfrac{120}{2} = 60$ anagrammes. L'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien le mot BANANE a-t-il d'anagrammes ?",
+        "reponse": { "type": "numerique", "valeur": 180, "tolerance": 0 },
+        "indices": [
+          "Distingue provisoirement les lettres répétées : $A_1$, $A_2$, $N_1$, $N_2$.",
+          "On obtient $6!$ mots de six symboles distincts ; combien d'entre eux donnent la même anagramme une fois les numéros effacés ?",
+          "Chaque anagramme provient de $2! \\times 2! = 4$ mots : il y a $\\dfrac{6!}{4}$ anagrammes."
+        ],
+        "revoir": "l-denombrement-020",
+        "solution": "On distingue les lettres répétées : B, $A_1$, $N_1$, $A_2$, $N_2$, E sont six symboles distincts, qui donnent $6! = 720$ mots. Une anagramme de BANANE provient de $2! = 2$ numérotations des A et, pour chacune, de $2! = 2$ numérotations des N : d'après le principe multiplicatif, elle provient de $2 \\times 2 = 4$ mots. Le mot BANANE a donc $\\dfrac{720}{4} = 180$ anagrammes."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Combien d'anagrammes de EULER ont leurs deux E côte à côte ?",
+        "reponse": { "type": "numerique", "valeur": 24, "tolerance": 0 },
+        "indices": [
+          "Choisis d'abord les deux places voisines des E, puis range les trois autres lettres.",
+          "Les deux E occupent les places $1$ et $2$, $2$ et $3$, $3$ et $4$ ou $4$ et $5$ : $4$ possibilités.",
+          "Les lettres U, L et R occupent ensuite les $3$ places restantes : $3!$ façons."
+        ],
+        "revoir": "l-denombrement-024",
+        "solution": "Les deux E occupent deux places voisines : les places $1$ et $2$, $2$ et $3$, $3$ et $4$ ou $4$ et $5$, soit $4$ possibilités. Les lettres U, L et R, deux à deux distinctes, se rangent ensuite sur les $3$ places restantes : $3! = 6$ façons. D'après le principe multiplicatif, $4 \\times 6 = 24$ anagrammes de EULER ont leurs deux E côte à côte."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On choisit au hasard une anagramme de EULER, toutes ayant la même probabilité. Quelle est la probabilité que ses deux E soient côte à côte ? Donner le résultat sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "2/5", "tolerance": 0 },
+        "indices": [
+          "Équiprobabilité : cas favorables sur cas possibles.",
+          "La fraction $\\dfrac{24}{60}$ se simplifie par $12$."
+        ],
+        "revoir": "l-denombrement-057",
+        "solution": "Les $60$ anagrammes sont équiprobables, et $24$ d'entre elles ont leurs deux E côte à côte. La probabilité cherchée est $\\dfrac{24}{60} = \\dfrac{2}{5}$."
+      }
+    ]
+  }
+]
