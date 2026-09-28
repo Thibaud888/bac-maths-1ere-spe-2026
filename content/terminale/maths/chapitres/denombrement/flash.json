@@ -1,0 +1,250 @@
+[
+  {
+    "id": "fl-denombrement-formule-k-parmi-n",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-combinaisons",
+    "capacites": ["bo-m-denombrement-07"],
+    "enonce": "Pour $0 \\leqslant k \\leqslant n$, le coefficient binomial $\\binom{n}{k}$ est égal à :",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$\\dfrac{n!}{(n-k)!}$", "$\\dfrac{n!}{(n-k)!\\,k!}$", "$\\dfrac{n!}{k!}$", "$\\dfrac{n^k}{k!}$"],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "C'est le nombre de $k$-uplets d'éléments distincts : il manque la division par $k!$, qui efface l'ordre.",
+        null,
+        "Il manque $(n-k)!$ au dénominateur. Pour $n = 4$ et $k = 2$ : $\\dfrac{4!}{2!} = 12$, alors que $\\binom{4}{2} = 6$.",
+        "$n^k$ compte les $k$-uplets avec répétitions ; divisé par $k!$, il ne donne même pas toujours un entier : $\\dfrac{3^2}{2!} = 4{,}5$."
+      ]
+    },
+    "explication": "On compte les $k$-uplets d'éléments distincts, $\\dfrac{n!}{(n-k)!}$, puis on divise par $k!$ : chaque partie à $k$ éléments se range de $k!$ façons.",
+    "duree": 20
+  },
+  {
+    "id": "fl-denombrement-tirage-simultane",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-combinaisons",
+    "capacites": ["bo-m-denombrement-06"],
+    "enonce": "Une urne contient $10$ boules numérotées. On en tire simultanément $3$. Combien y a-t-il de tirages possibles ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$10^3 = 1\\,000$", "$10 \\times 9 \\times 8 = 720$", "$\\binom{10}{3} = 120$", "$10 \\times 3 = 30$"],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "$10^3$ compte les tirages successifs avec remise : l'ordre compte et les répétitions sont permises.",
+        "Ce produit compte les tirages successifs sans remise, où l'ordre compte : chaque tirage simultané y est compté $3! = 6$ fois.",
+        null,
+        "Multiplier le nombre de boules par le nombre de boules tirées ne correspond à aucun modèle."
+      ]
+    },
+    "explication": "Tirage simultané : ni ordre, ni répétition. On compte des parties à $3$ éléments : $\\binom{10}{3} = \\dfrac{10 \\times 9 \\times 8}{3!} = 120$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-denombrement-mots-deux-un",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-combinaisons",
+    "capacites": ["bo-m-denombrement-06"],
+    "enonce": "Combien de mots de $6$ lettres contiennent exactement deux lettres $1$ et quatre lettres $0$ ?",
+    "reponse": { "type": "numerique", "valeur": 15, "tolerance": 0 },
+    "explication": "Un tel mot est déterminé par les positions de ses deux $1$ : une partie à $2$ éléments de $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,6\\}$. Il y en a $\\binom{6}{2} = \\dfrac{6 \\times 5}{2} = 15$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-denombrement-prix-identiques",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-combinaisons",
+    "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07"],
+    "enonce": "Vrai ou faux ? Une course oppose $18$ concurrents, et les trois premiers reçoivent chacun le même prix. Il y a $18 \\times 17 \\times 16 = 4\\,896$ façons de distribuer ces prix.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "Les prix sont identiques : seul compte l'ensemble des trois récompensés, soit $\\binom{18}{3} = 816$ possibilités."
+    },
+    "explication": "Même prix pour tous : l'ordre ne compte pas. $\\binom{18}{3} = \\dfrac{4\\,896}{3!} = 816$ : le produit $18 \\times 17 \\times 16$ compte chaque trio $6$ fois.",
+    "duree": 40
+  },
+  {
+    "id": "fl-denombrement-base-exposant",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-principes",
+    "capacites": ["bo-m-denombrement-03"],
+    "enonce": "Combien de mots de $3$ lettres peut-on écrire avec l'alphabet $\\{A\\,;\\,B\\,;\\,C\\,;\\,D\\,;\\,E\\}$, une lettre pouvant se répéter ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$3^5 = 243$", "$5 \\times 3 = 15$", "$5 \\times 4 \\times 3 = 60$", "$5^3 = 125$"],
+      "bonne": 3,
+      "pourquoiFaux": [
+        "La base et l'exposant sont inversés : l'exposant est la longueur du mot ($3$), la base le nombre de lettres possibles ($5$).",
+        "Il faut multiplier $5$ par lui-même, une fois par position : $5 \\times 5 \\times 5$.",
+        "Ce produit interdit les répétitions : or un mot comme AAB est permis ici.",
+        null
+      ]
+    },
+    "explication": "$3$ positions, $5$ choix pour chacune : $5 \\times 5 \\times 5 = 5^3 = 125$. Dans $n^k$, l'exposant $k$ est le nombre de positions à remplir.",
+    "duree": 25
+  },
+  {
+    "id": "fl-denombrement-nombre-parties",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-principes",
+    "capacites": ["bo-m-denombrement-04"],
+    "enonce": "Combien de parties possède un ensemble à $6$ éléments ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$6^2 = 36$", "$2^6 = 64$", "$2 \\times 6 = 12$", "$2^6 - 1 = 63$"],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "La base et l'exposant sont inversés : pour chacun des $6$ éléments, $2$ choix (dans la partie ou non), soit $2^6$.",
+        null,
+        "Il faut multiplier $2$ par lui-même six fois, et non $2$ par $6$.",
+        "Tu as oublié une partie : $\\emptyset$ est aussi une partie de l'ensemble."
+      ]
+    },
+    "explication": "Pour chaque élément, deux choix : il est dans la partie ou non. Il y a $2^6 = 64$ parties, en comptant $\\emptyset$ et l'ensemble lui-même.",
+    "duree": 20
+  },
+  {
+    "id": "fl-denombrement-principe-additif",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-principes",
+    "capacites": ["bo-m-denombrement-02"],
+    "enonce": "Vrai ou faux ? Si $\\mathrm{Card}(A) = 5$ et $\\mathrm{Card}(B) = 4$, alors $\\mathrm{Card}(A \\cup B) = 9$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "C'est vrai seulement si $A$ et $B$ sont disjoints. Contre-exemple : avec $A = \\{1\\,;\\,2\\,;\\,3\\,;\\,4\\,;\\,5\\}$ et $B = \\{4\\,;\\,5\\,;\\,6\\,;\\,7\\}$, $A \\cup B$ a $7$ éléments."
+    },
+    "explication": "Le principe additif exige des ensembles deux à deux disjoints ; sinon, les éléments communs sont comptés deux fois.",
+    "duree": 30
+  },
+  {
+    "id": "fl-denombrement-produit-cartesien",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-principes",
+    "capacites": ["bo-m-denombrement-01", "bo-m-denombrement-03"],
+    "enonce": "Soit $E = \\{a\\,;\\,b\\,;\\,c\\}$ et $F = \\{1\\,;\\,2\\,;\\,3\\,;\\,4\\}$. Combien d'éléments le produit cartésien $E \\times F$ possède-t-il ?",
+    "reponse": { "type": "numerique", "valeur": 12, "tolerance": 0 },
+    "explication": "$E \\times F$ est l'ensemble des couples $(x\\,;\\,y)$ avec $x \\in E$ et $y \\in F$ : $3 \\times 4 = 12$. Attention à l'ordre : $(a\\,;\\,1) \\in E \\times F$, mais $(1\\,;\\,a) \\notin E \\times F$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-denombrement-tierce",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-problemes",
+    "capacites": ["bo-m-denombrement-09"],
+    "enonce": "Dans une course de $15$ chevaux, on parie sur les trois premiers, dans l'ordre d'arrivée. Quel nombre compte les paris possibles ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$\\binom{15}{3}$", "$15^3$", "$15 \\times 14 \\times 13$", "$3^{15}$"],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "$\\binom{15}{3}$ ne tient pas compte de l'ordre : or on parie sur l'ordre d'arrivée.",
+        "$15^3$ permet à un même cheval d'occuper plusieurs places.",
+        null,
+        "La base et l'exposant sont inversés : ce nombre ne compte rien ici."
+      ]
+    },
+    "explication": "L'ordre compte et un cheval n'occupe qu'une place : on compte des triplets d'éléments distincts, $15 \\times 14 \\times 13 = 2\\,730$ paris.",
+    "duree": 30
+  },
+  {
+    "id": "fl-denombrement-au-moins-un-sept",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-problemes",
+    "capacites": ["bo-m-denombrement-09", "bo-m-denombrement-10"],
+    "enonce": "Combien de codes de $3$ chiffres, de $0$ à $9$ et répétitions permises, contiennent au moins un $7$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$3 \\times 10^2 = 300$", "$10^3 - 9^3 = 271$", "$9^3 = 729$", "$3 \\times 9^2 = 243$"],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "Placer un $7$ à l'une des $3$ places et laisser les autres libres compte plusieurs fois les codes qui ont plusieurs $7$ : 777 est compté trois fois.",
+        null,
+        "C'est le nombre de codes sans aucun $7$ : il faut le retirer du total.",
+        "C'est le nombre de codes avec exactement un $7$ : il manque ceux qui en ont deux ou trois."
+      ]
+    },
+    "explication": "« Au moins un » : on compte le contraire, « aucun $7$ » ($9^3 = 729$ codes), et on le retire du total : $1\\,000 - 729 = 271$.",
+    "duree": 45
+  },
+  {
+    "id": "fl-denombrement-proba-boule-rouge",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-problemes",
+    "capacites": ["bo-m-denombrement-10"],
+    "enonce": "Une urne contient $4$ boules, dont une seule rouge. On en tire simultanément $2$ au hasard. Quelle est la probabilité que la boule rouge soit tirée ? Réponds par une fraction.",
+    "reponse": { "type": "numerique", "valeur": "1/2", "tolerance": 0 },
+    "explication": "Il y a $\\binom{4}{2} = 6$ tirages équiprobables. La rouge est tirée avec l'une des $3$ autres boules : $3$ cas favorables, d'où $\\dfrac{3}{6} = \\dfrac{1}{2}$.",
+    "duree": 45
+  },
+  {
+    "id": "fl-denombrement-file-attente",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-permutations",
+    "capacites": ["bo-m-denombrement-05"],
+    "enonce": "De combien de façons $5$ personnes peuvent-elles se placer dans une file d'attente ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$5^5 = 3\\,125$", "$5 \\times 5 = 25$", "$5! = 120$", "$1 + 2 + 3 + 4 + 5 = 15$"],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "$5^5$ permettrait à une même personne d'occuper plusieurs places.",
+        "Ce calcul ne correspond à aucun modèle : à chaque place, il reste une personne de moins à placer.",
+        null,
+        "Pour des choix successifs, on multiplie les nombres de possibilités ; on ne les additionne pas."
+      ]
+    },
+    "explication": "Une file est une permutation des $5$ personnes : $5 \\times 4 \\times 3 \\times 2 \\times 1 = 5! = 120$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-denombrement-quotient-factorielles",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-permutations",
+    "capacites": ["bo-m-denombrement-05"],
+    "enonce": "Que vaut $\\dfrac{9!}{7!}$ ?",
+    "reponse": { "type": "numerique", "valeur": 72, "tolerance": 0 },
+    "explication": "$9! = 9 \\times 8 \\times 7!$, donc $\\dfrac{9!}{7!} = 9 \\times 8 = 72$. C'est aussi le nombre de couples d'éléments distincts d'un ensemble à $9$ éléments.",
+    "duree": 30
+  },
+  {
+    "id": "fl-denombrement-symetrie",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-pascal",
+    "capacites": ["bo-m-denombrement-08"],
+    "enonce": "Le coefficient binomial $\\binom{100}{98}$ est égal à :",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$4\\,950$", "$9\\,900$", "$100$", "$98$"],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "$100 \\times 99$ compte des couples ordonnés : il faut encore diviser par $2! = 2$.",
+        "C'est $\\binom{100}{1} = \\binom{100}{99}$ : ici, on laisse $2$ éléments, pas $1$.",
+        "$\\binom{n}{k}$ ne vaut pas $k$ : choisir $98$ éléments parmi $100$, c'est choisir les $2$ qu'on laisse."
+      ]
+    },
+    "explication": "Symétrie : $\\binom{100}{98} = \\binom{100}{2} = \\dfrac{100 \\times 99}{2} = 4\\,950$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-denombrement-relation-pascal",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-pascal",
+    "capacites": ["bo-m-denombrement-08"],
+    "enonce": "$\\binom{7}{3} + \\binom{7}{4}$ est égal à :",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$\\binom{8}{3}$", "$\\binom{8}{4}$", "$\\binom{14}{7}$", "$\\binom{7}{7}$"],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "La somme se place sous le terme de droite : l'indice du bas est le plus grand des deux, $4$. Vérifie : $35 + 35 = 70$, alors que $\\binom{8}{3} = 56$.",
+        null,
+        "La relation de Pascal descend d'une seule ligne : on n'additionne ni les nombres du haut ni ceux du bas.",
+        "La somme de deux termes de la ligne $7$ est sur la ligne $8$."
+      ]
+    },
+    "explication": "Relation de Pascal avec $n = 7$ et $k = 3$ : $\\binom{7}{3} + \\binom{7}{4} = \\binom{8}{4}$, soit $35 + 35 = 70$.",
+    "duree": 25
+  }
+]
