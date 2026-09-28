@@ -74,7 +74,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "Pour générer un ticket, le joueur paie $2$ euros. Si le ticket est gagnant, la société lui verse $g$ euros, où $g$ est un entier naturel ; sinon, elle ne lui verse rien. On note $G$ la variable aléatoire égale au gain algébrique du joueur, c'est-à-dire la somme reçue diminuée de la somme payée.\n\nOn rappelle que la probabilité qu'un ticket soit gagnant est égale à $\\dfrac{2}{21}$.",
+        "enonce": "Pour générer un ticket, le joueur paie $2$ euros. Si le ticket est gagnant, la société lui verse $g$ euros, où $g$ est un entier naturel non nul ; sinon, elle ne lui verse rien. On note $G$ la variable aléatoire égale au gain algébrique du joueur, c'est-à-dire la somme reçue diminuée de la somme payée.\n\nOn rappelle que la probabilité qu'un ticket soit gagnant est égale à $\\dfrac{2}{21}$.",
         "points": 1,
         "sousQuestions": [
           {
@@ -96,7 +96,7 @@
               "tolerance": 0
             },
             "attenduCorrecteur": "- Inéquation $\\dfrac{2g - 42}{21} > 0$ résolue : $g > 21$ : 0,25 pt.\n- Conclusion avec $g$ entier : $g = 22$ ; le cas $g = 21$ donne un jeu équitable, pas favorable : 0,25 pt.",
-            "solution": "Comme $21 > 0$ :\n\n$$E(G) > 0 \\iff \\frac{2g - 42}{21} > 0 \\iff 2g - 42 > 0 \\iff g > 21.$$\n\nLe nombre $g$ est un entier naturel, et le plus petit entier strictement supérieur à $21$ est $22$. Pour $g = 21$, $E(G) = 0$ : le jeu est équitable, mais pas favorable au joueur.\n\nLa plus petite valeur de $g$ qui rend le jeu favorable au joueur est $g = 22$ euros.",
+            "solution": "Comme $21 > 0$ :\n\n$$E(G) > 0 \\iff \\frac{2g - 42}{21} > 0 \\iff 2g - 42 > 0 \\iff g > 21.$$\n\nLe nombre $g$ est un entier naturel non nul, et le plus petit entier strictement supérieur à $21$ est $22$. Pour $g = 21$, $E(G) = 0$ : le jeu est équitable, mais pas favorable au joueur.\n\nLa plus petite valeur de $g$ qui rend le jeu favorable au joueur est $g = 22$ euros.",
             "erreurFrequente": "Répondre $21$ : pour $g = 21$, l'espérance est nulle ; le jeu est équitable, pas favorable."
           }
         ]
@@ -120,6 +120,7 @@
             "label": "b)",
             "enonce": "Justifier que deux alignements différents ont au plus une case commune. En déduire qu'un placement de quatre cœurs ne peut pas contenir deux alignements différents.",
             "points": 0.5,
+            "revoir": "l-denombrement-005",
             "indices": [
               "Distingue les cas selon la nature des deux alignements : deux lignes, deux colonnes, une ligne et une colonne, une diagonale et une ligne ou une colonne, les deux diagonales."
             ],
@@ -150,11 +151,13 @@
     "chapitre": "denombrement",
     "notions": [
       "n-denombrement-combinaisons",
-      "n-denombrement-problemes"
+      "n-denombrement-problemes",
+      "n-denombrement-pascal"
     ],
     "capacites": [
       "bo-m-denombrement-06",
       "bo-m-denombrement-07",
+      "bo-m-denombrement-08",
       "bo-m-denombrement-09",
       "bo-m-denombrement-10"
     ],
@@ -228,8 +231,9 @@
         "label": "B.2.",
         "enonce": "En déduire que $p_n = \\dfrac{30 + n(n-1)}{(n+6)(n+5)}$.",
         "points": 0.75,
+        "revoir": "l-denombrement-039",
         "attenduCorrecteur": "- Valeurs $\\binom{6}{2} = 15$, $\\binom{n}{2} = \\dfrac{n(n-1)}{2}$ et $\\binom{n+6}{2} = \\dfrac{(n+6)(n+5)}{2}$ : 0,5 pt.\n- Numérateur et dénominateur multipliés par $2$, expression demandée : 0,25 pt.",
-        "solution": "D'après la formule $\\binom{m}{2} = \\dfrac{m(m-1)}{2}$, valable pour tout entier $m \\geqslant 2$ :\n\n$$\\binom{6}{2} = \\frac{6 \\times 5}{2} = 15, \\qquad \\binom{n}{2} = \\frac{n(n-1)}{2}, \\qquad \\binom{n+6}{2} = \\frac{(n+6)(n+5)}{2}.$$\n\nEn multipliant le numérateur et le dénominateur par $2$ :\n\n$$p_n = \\frac{15 + \\dfrac{n(n-1)}{2}}{\\dfrac{(n+6)(n+5)}{2}} = \\frac{30 + n(n-1)}{(n+6)(n+5)}.$$"
+        "solution": "D'après la valeur particulière $\\binom{m}{2} = \\dfrac{m(m-1)}{2}$, valable pour tout entier $m \\geqslant 2$ :\n\n$$\\binom{6}{2} = \\frac{6 \\times 5}{2} = 15, \\qquad \\binom{n}{2} = \\frac{n(n-1)}{2}, \\qquad \\binom{n+6}{2} = \\frac{(n+6)(n+5)}{2}.$$\n\nEn multipliant le numérateur et le dénominateur par $2$ :\n\n$$p_n = \\frac{15 + \\dfrac{n(n-1)}{2}}{\\dfrac{(n+6)(n+5)}{2}} = \\frac{30 + n(n-1)}{(n+6)(n+5)}.$$"
       },
       {
         "id": "q6",
@@ -278,6 +282,10 @@
     "duree": 45,
     "calculatrice": true,
     "ordre": 30,
+    "source": {
+      "annale": "an-2025-etrangers-j2",
+      "adaptation": "Exercice 3, partie A adaptée : 16 caractères (les chiffres et les lettres A à F) au lieu des 64 caractères de la base64 ; « au moins une lettre A » remplacé par « au moins une lettre », « exactement deux fois la lettre A » par « exactement deux lettres ». Parties B et C retirées (loi binomiale, somme de variables aléatoires : chapitres ultérieurs), remplacées par une partie B écrite pour le site. Solution écrite pour le site."
+    },
     "preambule": "Un système informatique protège des fichiers par des codes. Un **caractère** est soit l'un des dix chiffres $0$, $1$, …, $9$, soit l'une des six lettres A, B, C, D, E, F.\n\nPour un entier naturel $n$ non nul, un **code de longueur $n$** est une suite de $n$ caractères écrits dans un ordre donné ; un même caractère peut apparaître plusieurs fois. Par exemple, 0A0F et A00F sont deux codes de longueur $4$ différents.\n\nDans la partie B, on choisit un code au hasard : tous les codes d'une même longueur ont la même probabilité d'être choisis.\n\n**Partie A : codes de longueur 4** (questions A.1 à A.4).\n\n**Partie B : codes de longueur $n$** (questions B.1 à B.4).",
     "questions": [
       {
@@ -400,7 +408,7 @@
     ],
     "titre": "Des couples d'entiers à l'étude d'une fonction",
     "points": 6,
-    "duree": 55,
+    "duree": 65,
     "calculatrice": false,
     "ordre": 40,
     "source": {
@@ -450,7 +458,7 @@
           "tolerance": 0.001
         },
         "attenduCorrecteur": "Équiprobabilité des $380$ couples invoquée et $P(M) = \\dfrac{200}{380} = \\dfrac{10}{19}$ : 0,5 pt.",
-        "solution": "Les $380$ couples sont équiprobables, et $200$ d'entre eux réalisent $M$. Donc :\n\n$$P(M) = \\frac{200}{380} = \\frac{10}{19} \\approx 0{,}53.$$"
+        "solution": "Les $380$ couples sont équiprobables, et $200$ d'entre eux réalisent $M$. Donc :\n\n$$P(M) = \\frac{200}{380} = \\frac{10}{19} \\approx 0{,}526.$$"
       },
       {
         "id": "q5",
@@ -490,7 +498,7 @@
         "enonce": "On admet que $f$ est strictement décroissante sur $[-2\\,;\\,-1]$, strictement croissante sur $[-1\\,;\\,2]$ et strictement décroissante sur $[2\\,;\\,3]$, avec $f(-2) = 2e^2$, $f(-1) = -2e$, $f(2) = 10e^{-2}$ et $f(3) = 22e^{-3}$. Déterminer le minimum et le maximum de $f$ sur $[-2\\,;\\,3]$, en précisant en quelles valeurs de $x$ ils sont atteints.",
         "points": 1,
         "indices": [
-          "Sur un intervalle fermé, un extremum est atteint soit en un point où $f'$ s'annule, soit en une borne : compare les valeurs candidates entre elles."
+          "Lis les candidats sur le tableau de variations : pour le minimum, les valeurs où $f$ cesse de décroître et les bornes ; pour le maximum, les valeurs où $f$ cesse de croître et les bornes. Compare-les."
         ],
         "attenduCorrecteur": "- Candidats tirés des variations : minimum en $-1$ ou en $3$, maximum en $-2$ ou en $2$ : 0,25 pt.\n- Minimum : $f(3) = 22e^{-3} > 0 > -2e$, donc minimum $-2e$, atteint en $x = -1$ : 0,25 pt.\n- Comparaison des candidats au maximum à l'aide de $e > 2$ : $2e^2 > 8$ et $10e^{-2} < \\dfrac{10}{4} = 2{,}5$ : 0,25 pt.\n- Maximum $2e^2$, atteint en $x = -2$ : 0,25 pt.",
         "solution": "**Minimum.** Sur $[-2\\,;\\,-1]$ et sur $[-1\\,;\\,2]$, $f(x) \\geqslant f(-1) = -2e$ d'après les variations. Sur $[2\\,;\\,3]$, $f$ est décroissante, donc $f(x) \\geqslant f(3) = 22e^{-3}$, et $22e^{-3} > 0 > -2e$. Ainsi, pour tout $x$ de $[-2\\,;\\,3]$, $f(x) \\geqslant -2e$, avec égalité en $x = -1$ : le minimum de $f$ sur $[-2\\,;\\,3]$ est $-2e$, atteint en $x = -1$.\n\n**Maximum.** Sur $[-2\\,;\\,-1]$, $f(x) \\leqslant f(-2) = 2e^2$ ; sur $[-1\\,;\\,2]$ et sur $[2\\,;\\,3]$, $f(x) \\leqslant f(2) = 10e^{-2}$. Il reste à comparer $2e^2$ et $10e^{-2}$. Comme $e > 2$, on a $e^2 > 4$, donc $2e^2 > 8$ et $10e^{-2} = \\dfrac{10}{e^2} < \\dfrac{10}{4} = 2{,}5$. Ainsi $10e^{-2} < 2e^2$.\n\nPour tout $x$ de $[-2\\,;\\,3]$, $f(x) \\leqslant 2e^2$, avec égalité en $x = -2$ : le maximum de $f$ sur $[-2\\,;\\,3]$ est $2e^2$, atteint en $x = -2$.",

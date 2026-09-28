@@ -129,17 +129,17 @@
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Affirmation 2 : on peut élire un délégué et un suppléant, deux élèves différents, de $870$ façons.",
+        "enonce": "Affirmation 2 : le produit $30 \\times 29 = 870$ compte chaque binôme exactement deux fois.",
         "reponse": {
           "type": "vrai-faux",
           "valeur": true,
-          "justification": "Les deux rôles sont différents : un résultat est un couple (délégué ; suppléant) d'élèves distincts. Il y en a $30 \\times 29 = 870$."
+          "justification": "Le produit $30 \\times 29$ compte les choix d'un premier élève puis d'un second : chaque binôme y apparaît dans ses $2! = 2$ ordres. Donc $870 = 2 \\times 435$."
         },
         "indices": [
-          "Cette fois, échanger les deux élèves change-t-il le résultat de l'élection ?"
+          "Choisis un premier élève, puis un second : de combien de façons le binôme {Léa ; Tom} peut-il sortir ?"
         ],
-        "revoir": "l-denombrement-016",
-        "solution": "Les rôles sont différents, donc l'ordre compte : un résultat est un couple (délégué ; suppléant) d'élèves distincts. Il y a $30$ choix pour le délégué, puis $29$ pour le suppléant : $30 \\times 29 = 870$. L'affirmation 2 est vraie.\n\nChaque binôme donne $2! = 2$ élections (chacun des deux élèves peut être le délégué) : $870 = 2 \\times 435$."
+        "revoir": "l-denombrement-031",
+        "solution": "Le produit $30 \\times 29$ compte les choix d'un premier élève ($30$ possibilités), puis d'un second, différent ($29$ possibilités). Un binôme formé de deux élèves A et B y est obtenu exactement deux fois : A puis B, ou B puis A, c'est-à-dire ses $2! = 2$ ordres. Donc $870 = 2 \\times 435$ : l'affirmation 2 est vraie.\n\nC'est pourquoi on divise par $2!$ : $\\binom{30}{2} = \\dfrac{30 \\times 29}{2!} = 435$."
       }
     ]
   },
@@ -1473,81 +1473,90 @@
     "id": "x-denombrement-026",
     "chapitre": "denombrement",
     "niveau": 3,
-    "notions": ["n-denombrement-combinaisons", "n-denombrement-problemes"],
-    "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07", "bo-m-denombrement-09", "bo-m-denombrement-10"],
-    "titre": "Trois cœurs sur une grille",
-    "duree": 20,
+    "notions": ["n-denombrement-combinaisons", "n-denombrement-principes", "n-denombrement-problemes"],
+    "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07", "bo-m-denombrement-02", "bo-m-denombrement-03", "bo-m-denombrement-09", "bo-m-denombrement-10"],
+    "titre": "Des triangles dans un octogone",
+    "duree": 25,
     "calculatrice": false,
     "ordre": 260,
-    "source": {
-      "annale": "an-2021-asie-j2",
-      "adaptation": "situation et questions 1 et 3 reprises ; règles du jeu précisées ici, questions 2, 4 et 5 ajoutées ; la suite du sujet (loi binomiale) n'est pas reprise"
-    },
-    "preambule": "Un ticket de jeu porte une grille carrée de $3$ lignes et $3$ colonnes, soit $9$ cases. Sur chaque ticket, trois cœurs sont placés dans trois cases différentes, et toutes les positions des trois cœurs ont la même probabilité. Un ticket est **gagnant** si ses trois cœurs sont alignés sur une même ligne, une même colonne ou une même diagonale de la grille.",
+    "preambule": "On considère un octogone régulier (polygone à $8$ côtés de même longueur) dont les sommets sont nommés A, B, C, D, E, F, G et H, dans cet ordre, en tournant autour de la figure. Ses **côtés** sont les $8$ segments qui joignent deux sommets consécutifs : $[AB]$, $[BC]$, …, $[GH]$ et $[HA]$. Ses **diagonales** sont les autres segments qui joignent deux de ses sommets. Un **triangle** est formé de trois sommets distincts de l'octogone ; l'ordre de ces sommets ne compte pas. Faire un dessin aide à répondre.",
     "questions": [
       {
         "id": "q1",
         "label": "1.",
-        "enonce": "Justifier qu'il y a exactement $84$ façons différentes de positionner les trois cœurs sur une grille.",
-        "reponse": { "type": "redaction" },
+        "enonce": "Combien l'octogone possède-t-il de diagonales ?",
+        "reponse": { "type": "numerique", "valeur": 20, "tolerance": 0 },
         "indices": [
-          "Une position des cœurs : l'ordre compte-t-il ? une case peut-elle recevoir deux cœurs ?",
-          "Une position est une partie à $3$ éléments de l'ensemble des $9$ cases.",
-          "$\\binom{9}{3} = \\dfrac{9 \\times 8 \\times 7}{3!}$."
+          "Un segment qui joint deux sommets est déterminé par la paire de ses extrémités, sans ordre.",
+          "Il y a $\\binom{8}{2}$ segments qui joignent deux sommets ; $8$ d'entre eux sont des côtés.",
+          "$\\binom{8}{2} = \\dfrac{8 \\times 7}{2} = 28$ ; retire les $8$ côtés."
         ],
-        "revoir": "l-denombrement-027",
-        "solution": "Les trois cœurs sont identiques : une position est déterminée par l'ensemble des trois cases occupées, sans ordre et sans répétition. C'est une partie à $3$ éléments de l'ensemble des $9$ cases. Il y a donc $\\binom{9}{3} = \\dfrac{9 \\times 8 \\times 7}{3!} = \\dfrac{504}{6} = 84$ positions."
+        "revoir": "l-denombrement-029",
+        "solution": "Un segment qui joint deux sommets est déterminé par la paire de ses extrémités : c'est une partie à $2$ éléments de l'ensemble des $8$ sommets. Il y en a $\\binom{8}{2} = \\dfrac{8 \\times 7}{2} = 28$. Chacun de ces segments est soit un côté, soit une diagonale, jamais les deux. D'après le principe additif, l'octogone possède $28 - 8 = 20$ diagonales."
       },
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Combien de positions rendent le ticket gagnant ?",
-        "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+        "enonce": "Combien de triangles peut-on former ?",
+        "reponse": { "type": "numerique", "valeur": 56, "tolerance": 0 },
         "indices": [
-          "Dessine la grille : combien a-t-elle de lignes, de colonnes et de diagonales ?",
-          "Chaque ligne, chaque colonne et chaque diagonale compte exactement $3$ cases : elle donne une seule position gagnante.",
-          "$3$ lignes, $3$ colonnes, $2$ diagonales : ces positions sont deux à deux différentes."
+          "Un triangle est déterminé par l'ensemble de ses trois sommets.",
+          "$\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3!}$."
         ],
-        "revoir": "l-denombrement-055",
-        "solution": "Une position gagnante occupe exactement les $3$ cases d'une ligne, d'une colonne ou d'une diagonale. La grille a $3$ lignes, $3$ colonnes et $2$ diagonales, qui donnent des positions deux à deux différentes. D'après le principe additif, il y a $3 + 3 + 2 = 8$ positions gagnantes."
+        "revoir": "l-denombrement-027",
+        "solution": "Un triangle est déterminé par l'ensemble de ses trois sommets, sans ordre et sans répétition : c'est une partie à $3$ éléments de l'ensemble des $8$ sommets. On peut donc former $\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3!} = \\dfrac{336}{6} = 56$ triangles."
       },
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "Montrer que la probabilité qu'un ticket soit gagnant est égale à $\\dfrac{2}{21}$.",
-        "reponse": { "type": "redaction" },
+        "enonce": "Combien de triangles ont deux côtés qui sont des côtés de l'octogone ?",
+        "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
         "indices": [
-          "Les $84$ positions sont équiprobables : cas favorables sur cas possibles.",
-          "La fraction $\\dfrac{8}{84}$ se simplifie par $4$."
+          "Deux côtés d'un triangle ont toujours un sommet commun. Que peut-on dire des trois sommets d'un tel triangle ?",
+          "Ses trois sommets sont consécutifs, comme A, B et C : un tel triangle est déterminé par son sommet du milieu.",
+          "Il y a autant de tels triangles que de sommets possibles pour le milieu."
         ],
-        "revoir": "l-denombrement-057",
-        "solution": "Les $84$ positions sont équiprobables, et $8$ d'entre elles sont gagnantes. La probabilité qu'un ticket soit gagnant est donc $\\dfrac{8}{84} = \\dfrac{2}{21}$."
+        "revoir": "l-denombrement-055",
+        "solution": "Deux côtés d'un triangle ont un sommet commun. Si ce sont deux côtés de l'octogone, ils joignent ce sommet à ses deux voisins : les trois sommets du triangle sont consécutifs, comme A, B et C. Un tel triangle est déterminé par son sommet du milieu, qui peut être n'importe lequel des $8$ sommets : il y a $8$ tels triangles.\n\nAucun triangle n'a ses trois côtés parmi ceux de l'octogone : pour A, B, C, le troisième côté $[AC]$ est une diagonale."
       },
       {
         "id": "q4",
         "label": "4.",
-        "enonce": "Un ticket donne un lot de consolation lorsque exactement deux de ses cœurs sont sur la diagonale qui va de la case en haut à gauche à la case en bas à droite. Combien de positions donnent un lot de consolation ?",
-        "reponse": { "type": "numerique", "valeur": 18, "tolerance": 0 },
+        "enonce": "Combien de triangles ont exactement un côté qui est un côté de l'octogone ?",
+        "reponse": { "type": "numerique", "valeur": 32, "tolerance": 0 },
         "indices": [
-          "Une telle position se construit en deux étapes : les deux cases occupées sur la diagonale, puis la case du troisième cœur.",
-          "On choisit $2$ cases parmi les $3$ de la diagonale, puis la troisième parmi les $6$ cases qui ne sont pas sur cette diagonale.",
-          "Calcule $\\binom{3}{2} \\times \\binom{6}{1}$."
+          "Choisis d'abord le côté de l'octogone, puis le troisième sommet.",
+          "Si le côté choisi est $[AB]$, le troisième sommet n'est ni A ni B, ni un voisin de A ou de B : H et C sont exclus.",
+          "$8$ choix pour le côté, puis $8 - 4 = 4$ choix pour le troisième sommet."
         ],
-        "revoir": "l-denombrement-058",
-        "solution": "On choisit les $2$ cases occupées de la diagonale : $\\binom{3}{2} = 3$ façons. Puis la case du troisième cœur parmi les $9 - 3 = 6$ cases hors de cette diagonale : $\\binom{6}{1} = 6$ façons, quel que soit le premier choix. D'après le principe multiplicatif, $3 \\times 6 = 18$ positions donnent un lot de consolation."
+        "revoir": "l-denombrement-005",
+        "solution": "On choisit d'abord le côté de l'octogone qui est un côté du triangle : $8$ possibilités, par exemple $[AB]$. Le troisième sommet n'est ni A ni B ; il n'est pas non plus un voisin de A ou de B, sinon le triangle aurait un second côté de l'octogone : H et C sont exclus. Il reste $8 - 4 = 4$ choix (D, E, F ou G), quel que soit le côté choisi. D'après le principe multiplicatif, on obtient $8 \\times 4 = 32$ triangles, et chacun une seule fois, puisqu'il n'a qu'un côté de l'octogone."
       },
       {
         "id": "q5",
         "label": "5.",
-        "enonce": "Un ticket peut-il être à la fois gagnant et donner un lot de consolation ? En déduire la probabilité qu'un ticket rapporte quelque chose, gain ou lot de consolation. Donner le résultat sous forme de fraction irréductible.",
-        "reponse": { "type": "numerique", "valeur": "13/42", "tolerance": 0 },
+        "enonce": "On choisit trois sommets au hasard : tous les triangles ont la même probabilité. Quelle est la probabilité que le triangle obtenu ait au moins un côté qui soit un côté de l'octogone ? Donner le résultat sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "5/7", "tolerance": 0 },
         "indices": [
-          "Combien de cases de la diagonale considérée une ligne, une colonne ou l'autre diagonale contient-elle ?",
-          "Chaque ligne et chaque colonne contient une seule case de cette diagonale, et l'autre diagonale la coupe en la case centrale : une position gagnante a $1$ ou $3$ cœurs sur la diagonale, jamais exactement $2$.",
-          "Les deux événements sont incompatibles : la probabilité cherchée est $\\dfrac{8 + 18}{84}$."
+          "« Au moins un côté de l'octogone » se découpe en deux cas : exactement un, ou exactement deux. Ces deux cas peuvent-ils se produire en même temps ?",
+          "Les deux cas sont incompatibles : $32 + 8 = 40$ triangles sont favorables, parmi $56$.",
+          "La fraction $\\dfrac{40}{56}$ se simplifie par $8$."
         ],
-        "revoir": "l-denombrement-005",
-        "solution": "Chaque ligne et chaque colonne contient exactement une case de la diagonale considérée, et l'autre diagonale la coupe seulement en la case centrale. Une position gagnante a donc $1$ ou $3$ cœurs sur cette diagonale, jamais exactement $2$ : aucun ticket n'est à la fois gagnant et récompensé d'un lot de consolation.\n\nLes $8$ positions gagnantes et les $18$ positions de consolation forment deux ensembles disjoints : $8 + 18 = 26$ positions rapportent quelque chose. La probabilité cherchée est $\\dfrac{26}{84} = \\dfrac{13}{42}$."
+        "revoir": "l-denombrement-057",
+        "solution": "D'après la question 3, un triangle a au plus deux côtés qui sont des côtés de l'octogone. L'événement « au moins un côté de l'octogone » est donc la réunion des événements « exactement un » ($32$ triangles) et « exactement deux » ($8$ triangles), qui sont incompatibles. Il y a $32 + 8 = 40$ triangles favorables parmi $56$ triangles équiprobables : la probabilité cherchée est $\\dfrac{40}{56} = \\dfrac{5}{7}$."
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Plus généralement, on considère un polygone régulier à $n$ sommets, avec $n \\geqslant 5$. Démontrer que le nombre de triangles dont aucun côté n'est un côté du polygone est $\\dfrac{n(n-4)(n-5)}{6}$. Vérifier ce résultat pour l'octogone.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Reprends les questions 2 à 4 avec $n$ sommets, puis retire du nombre total de triangles ceux qui ont au moins un côté du polygone.",
+          "Il y a $\\binom{n}{3}$ triangles, dont $n$ avec deux côtés du polygone et $n(n-4)$ avec exactement un.",
+          "Calcule $\\dfrac{n(n-1)(n-2)}{6} - n - n(n-4)$ en mettant $\\dfrac{n}{6}$ en facteur, puis vérifie que $(n-4)(n-5) = n^2 - 9n + 20$."
+        ],
+        "revoir": "l-denombrement-061",
+        "solution": "Les raisonnements des questions 3 et 4 restent valables avec $n$ sommets, où $n \\geqslant 5$. Il y a $n$ triangles qui ont deux côtés du polygone, un par sommet du milieu. Il y en a $n(n-4)$ qui en ont exactement un : $n$ choix pour ce côté, puis $n - 4$ choix pour le troisième sommet. Un triangle a donc $0$, $1$ ou $2$ côtés du polygone, et ces trois cas sont disjoints. D'après le principe additif, le nombre de triangles sans côté du polygone est :\n\n$$\\binom{n}{3} - n - n(n-4) = \\frac{n(n-1)(n-2)}{6} - n(n-3) = \\frac{n}{6}\\big((n-1)(n-2) - 6(n-3)\\big) = \\frac{n}{6}\\left(n^2 - 9n + 20\\right) = \\frac{n(n-4)(n-5)}{6},$$\n\ncar $(n-4)(n-5) = n^2 - 9n + 20$.\n\nPour l'octogone, $n = 8$ : $\\dfrac{8 \\times 4 \\times 3}{6} = 16$, et on retrouve bien $56 - 8 - 32 = 16$."
       }
     ]
   },
@@ -1671,7 +1680,7 @@
         "id": "q3",
         "label": "3.",
         "enonce": "En déduire la probabilité qu'au moins deux des quatre membres soient nés le même mois. Arrondir à $10^{-3}$.",
-        "reponse": { "type": "numerique", "valeur": 0.427, "tolerance": 0.001 },
+        "reponse": { "type": "numerique", "valeur": 0.427, "tolerance": 0.0005 },
         "indices": [
           "« Au moins deux membres nés le même mois » est le contraire de « quatre mois deux à deux différents ».",
           "La probabilité que les quatre mois soient deux à deux différents vaut $\\dfrac{11\\,880}{20\\,736}$.",
