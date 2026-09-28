@@ -35,7 +35,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "Calcule $\\dfrac{10!}{6!\\,4!}$. Quel coefficient binomial reconnais-tu ?",
+        "enonce": "Calcule $\\dfrac{10!}{6!\\,4!}$ et saisis sa valeur. Quel coefficient binomial reconnais-tu ? La réponse à cette seconde question est dans la solution.",
         "reponse": { "type": "numerique", "valeur": 210, "tolerance": 0 },
         "indices": [
           "Simplifie d'abord $\\dfrac{10!}{6!}$ : les facteurs de $1$ à $6$ figurent en haut et en bas."
@@ -101,13 +101,13 @@
     "niveau": 1,
     "notions": ["n-denombrement-combinaisons"],
     "capacites": ["bo-m-denombrement-06", "bo-m-denombrement-07"],
-    "titre": "Binômes ou couples ?",
+    "titre": "Des binômes de délégués",
     "duree": 3,
     "calculatrice": false,
     "ordre": 30,
     "source": {
       "annale": "an-2024-metropole-septembre-j2",
-      "adaptation": "affirmation 1 reprise du vrai-faux ; affirmation 2 ajoutée pour comparer"
+      "adaptation": "affirmation 1 reprise du vrai-faux ; affirmation 2 ajoutée pour expliquer l'erreur"
     },
     "preambule": "Une classe compte $30$ élèves. Pour chaque affirmation, dis si elle est vraie ou fausse.",
     "questions": [
@@ -238,7 +238,7 @@
             "Tu as multiplié le nombre de choix par le nombre de composantes. Il faut multiplier $3$ par lui-même, une fois par composante : $3 \\times 3 \\times 3 \\times 3$.",
             null,
             "La base et l'exposant sont inversés : l'exposant est le nombre de composantes ($4$), la base le nombre de choix pour chacune ($3$).",
-            "Ce produit fait diminuer le nombre de choix à chaque étape, comme si les composantes devaient être distinctes. Or dans $A^4$ elles peuvent se répéter, comme dans $(0\\,;\\,0\\,;\\,2\\,;\\,0)$."
+            "$4!$ compte les rangements de $4$ objets distincts ; ici, chaque composante se choisit parmi les $3$ éléments de $A$, avec répétition."
           ]
         },
         "indices": [
@@ -301,6 +301,7 @@
         "indices": [
           "Écris les puissances de $2$ successives : $2$, $4$, $8$, $16$…"
         ],
+        "revoir": "l-denombrement-008",
         "solution": "Si $E$ a $n$ éléments, il possède $2^n$ parties. Or $2^6 = 64$ et $2^7 = 128$. Donc $E$ a $7$ éléments."
       }
     ]
@@ -815,7 +816,7 @@
       {
         "id": "q4",
         "label": "4.",
-        "enonce": "Une grille est remplie au hasard : toutes les grilles ont la même probabilité. Quelle est la probabilité qu'elle contienne le numéro $7$ ? Réponds par une fraction irréductible.",
+        "enonce": "Une grille est remplie au hasard : toutes les grilles ont la même probabilité. Quelle est la probabilité qu'elle contienne le numéro $7$ ? Réponds sous forme de fraction.",
         "reponse": { "type": "numerique", "valeur": "1/4", "tolerance": 0 },
         "indices": [
           "Toutes les grilles sont équiprobables : cas favorables sur cas possibles.",
@@ -915,7 +916,7 @@
         "enonce": "Voici quatre propositions pour la ligne (L). Lesquelles conviennent ? Plusieurs réponses sont possibles.",
         "code": {
           "langage": "python",
-          "source": "# Proposition A\n        for j in range(n):\n# Proposition B\n        for j in range(i + 1, n):\n# Proposition C\n        for j in range(i, n):\n# Proposition D\n        for j in range(i):"
+          "source": "# Proposition A\nfor j in range(n):\n\n# Proposition B\nfor j in range(i + 1, n):\n\n# Proposition C\nfor j in range(i, n):\n\n# Proposition D\nfor j in range(i):"
         },
         "reponse": {
           "type": "qcm-multiple",
@@ -1192,7 +1193,7 @@
     "chapitre": "denombrement",
     "niveau": 2,
     "notions": ["n-denombrement-problemes", "n-denombrement-permutations", "n-denombrement-combinaisons"],
-    "capacites": ["bo-m-denombrement-09", "bo-m-denombrement-10", "bo-m-denombrement-05", "bo-m-denombrement-06"],
+    "capacites": ["bo-m-denombrement-09", "bo-m-denombrement-10", "bo-m-denombrement-05", "bo-m-denombrement-06", "bo-m-denombrement-07"],
     "titre": "Des numéros dans l'ordre croissant",
     "duree": 12,
     "calculatrice": false,
@@ -1257,8 +1258,8 @@
     "id": "x-denombrement-023",
     "chapitre": "denombrement",
     "niveau": 2,
-    "notions": ["n-denombrement-permutations"],
-    "capacites": ["bo-m-denombrement-05"],
+    "notions": ["n-denombrement-permutations", "n-denombrement-principes"],
+    "capacites": ["bo-m-denombrement-05", "bo-m-denombrement-03"],
     "titre": "Ranger une étagère",
     "duree": 10,
     "calculatrice": false,
@@ -1324,7 +1325,7 @@
     "chapitre": "denombrement",
     "niveau": 2,
     "notions": ["n-denombrement-permutations"],
-    "capacites": ["bo-m-denombrement-15", "bo-m-denombrement-05", "bo-m-listes-02"],
+    "capacites": ["bo-m-denombrement-15", "bo-m-denombrement-05", "bo-m-listes-01", "bo-m-listes-02"],
     "titre": "Tirer une permutation au hasard",
     "duree": 12,
     "calculatrice": false,
@@ -1358,7 +1359,6 @@
           "Au premier passage, la probabilité de choisir le $1$ est $\\dfrac{1}{4}$ ; ensuite, celle de choisir le $2$ parmi les $3$ nombres restants est $\\dfrac{1}{3}$.",
           "La probabilité d'un chemin de l'arbre est le produit des probabilités de ses branches : $\\dfrac{1}{4} \\times \\dfrac{1}{3} \\times \\dfrac{1}{2} \\times 1$."
         ],
-        "revoir": "l-denombrement-057",
         "solution": "Au premier passage, randint choisit l'indice du $1$ avec la probabilité $\\dfrac{1}{4}$. Ensuite, restants contient $3$ éléments, et la probabilité de choisir le $2$ vaut $\\dfrac{1}{3}$ ; puis $\\dfrac{1}{2}$ pour le $3$, et le $4$ est alors le seul restant. D'après la règle du produit sur un arbre pondéré, la probabilité d'obtenir [1, 2, 3, 4] est $\\dfrac{1}{4} \\times \\dfrac{1}{3} \\times \\dfrac{1}{2} \\times 1 = \\dfrac{1}{24}$.\n\nLe même calcul vaut pour chacune des $24$ permutations : la fonction tire une permutation au hasard, toutes ayant la même probabilité."
       },
       {
@@ -1748,7 +1748,7 @@
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "En effaçant les numéros, les deux mots $E_1\\mathrm{UL}E_2\\mathrm{R}$ et $E_2\\mathrm{UL}E_1\\mathrm{R}$ deviennent tous deux EULER. En déduire le nombre d'anagrammes du mot EULER. L'affirmation est-elle vraie ?",
+        "enonce": "En effaçant les numéros, les deux mots $E_1\\mathrm{UL}E_2\\mathrm{R}$ et $E_2\\mathrm{UL}E_1\\mathrm{R}$ deviennent tous deux EULER. En déduire le nombre d'anagrammes du mot EULER, puis dire si l'affirmation est vraie. Saisis le nombre d'anagrammes ; la conclusion sur l'affirmation est dans la solution.",
         "reponse": { "type": "numerique", "valeur": 60, "tolerance": 0 },
         "indices": [
           "Pars d'une anagramme de EULER, par exemple LEERU : de combien de façons peut-on numéroter ses deux E ?",
@@ -1787,7 +1787,7 @@
       {
         "id": "q5",
         "label": "5.",
-        "enonce": "On choisit au hasard une anagramme de EULER, toutes ayant la même probabilité. Quelle est la probabilité que ses deux E soient côte à côte ? Donner une fraction irréductible.",
+        "enonce": "On choisit au hasard une anagramme de EULER, toutes ayant la même probabilité. Quelle est la probabilité que ses deux E soient côte à côte ? Donner le résultat sous forme de fraction.",
         "reponse": { "type": "numerique", "valeur": "2/5", "tolerance": 0 },
         "indices": [
           "Équiprobabilité : cas favorables sur cas possibles.",
