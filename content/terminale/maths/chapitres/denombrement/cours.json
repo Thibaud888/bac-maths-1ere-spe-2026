@@ -117,7 +117,7 @@
             "$E$ est un ensemble fini à $n$ éléments, où $n$ est un entier naturel."
           ],
           "admise": false,
-          "texte": "Un ensemble à $n$ éléments possède $2^n$ parties, en comptant $\\emptyset$ et l'ensemble lui-même.\n\nC'est aussi le nombre suivant ; l'arbre ci-dessous le montre pour $n = 3$ :\n\n- de $n$-uplets de $\\{0\\,;\\,1\\}$ ;\n- de **mots** de longueur $n$ écrits avec un alphabet de deux lettres (un mot est ici une suite de lettres, qu'elle ait un sens ou non) ;\n- de chemins d'un arbre à $n$ niveaux où chaque nœud a deux branches ;\n- d'issues de $n$ lancers successifs d'une pièce, et plus généralement de $n$ répétitions d'une expérience qui n'a que deux issues."
+          "texte": "Un ensemble à $n$ éléments possède $2^n$ parties, en comptant $\\emptyset$ et l'ensemble lui-même.\n\nC'est aussi le nombre (l'arbre ci-dessous le montre pour $n = 3$) :\n\n- de $n$-uplets de $\\{0\\,;\\,1\\}$ ;\n- de **mots** de longueur $n$ écrits avec un alphabet de deux lettres (un mot est ici une suite de lettres, qu'elle ait un sens ou non) ;\n- de chemins d'un arbre à $n$ niveaux où chaque nœud a deux branches ;\n- d'issues de $n$ lancers successifs d'une pièce, et plus généralement de $n$ répétitions d'une expérience qui n'a que deux issues."
         },
         {
           "id": "l-denombrement-009",
@@ -406,7 +406,7 @@
           "type": "definition",
           "titre": "Combinaison, coefficient binomial",
           "capacites": ["bo-m-denombrement-06"],
-          "texte": "Soit $E$ un ensemble à $n$ éléments et $k$ un entier, $0 \\leqslant k \\leqslant n$.\n\nUne **combinaison** de $k$ éléments de $E$ est une partie de $E$ à $k$ éléments. Leur nombre se note $\\binom{n}{k}$, lu « $k$ parmi $n$ » : c'est un **coefficient binomial**.\n\nLes éléments de $E$ étant numérotés de $1$ à $n$, une telle partie se code par un **mot** de $n$ lettres : $1$ en position $i$ si le $i$-ième élément est choisi, $0$ sinon.\n\nElle se représente aussi par un **chemin** de l'arbre de $n$ lancers d'une pièce : le chemin qui donne pile au lancer $i$ exactement quand le $i$-ième élément est choisi. Ce chemin comporte $k$ fois pile. Ainsi, $\\binom{n}{k}$ est aussi le nombre de chemins de cet arbre qui comportent exactement $k$ fois pile."
+          "texte": "Soit $E$ un ensemble à $n$ éléments et $k$ un entier, $0 \\leqslant k \\leqslant n$.\n\nUne **combinaison** de $k$ éléments de $E$ est une partie de $E$ à $k$ éléments. Leur nombre se note $\\binom{n}{k}$, lu « $k$ parmi $n$ » : c'est un **coefficient binomial**.\n\nLes éléments de $E$ étant numérotés de $1$ à $n$, une telle partie se code par un **mot** de $n$ lettres. Sa $i$-ième lettre vaut $1$ si le $i$-ième élément est choisi, $0$ sinon.\n\nElle se représente aussi par un **chemin** de l'arbre de $n$ lancers d'une pièce. C'est le chemin qui donne pile au lancer $i$ exactement quand le $i$-ième élément est choisi. Ce chemin comporte $k$ fois pile."
         },
         {
           "id": "l-denombrement-028",
@@ -441,10 +441,10 @@
             },
             {
               "texte": "Chaque chemin donne la partie de $\\{1\\,;\\,2\\,;\\,3\\}$ formée des numéros des lancers qui donnent pile : PPF donne $\\{1\\,;\\,2\\}$, PFP donne $\\{1\\,;\\,3\\}$ et FPP donne $\\{2\\,;\\,3\\}$.",
-              "pourquoi": "Ce sont exactement les parties à $2$ éléments de $\\{1\\,;\\,2\\,;\\,3\\}$, chacune une seule fois : chemins à deux piles et parties à deux éléments se correspondent une à une."
+              "pourquoi": "Ce sont exactement les parties à $2$ éléments de $\\{1\\,;\\,2\\,;\\,3\\}$, chacune une seule fois. Chemins à deux piles et parties à deux éléments se correspondent donc une à une."
             },
             {
-              "texte": "**Conclusion** : $3$ chemins comportent exactement $2$ fois pile, et $\\binom{3}{2} = 3$."
+              "texte": "**Conclusion** : $3$ chemins comportent exactement $2$ fois pile, donc $\\binom{3}{2} = 3$."
             }
           ]
         },
@@ -644,7 +644,7 @@
             "$n$ et $k$ sont des entiers naturels tels que $0 \\leqslant k \\leqslant n - 1$."
           ],
           "admise": false,
-          "texte": "$$\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}.$$\n\nOn range les coefficients dans un tableau : la ligne $n$ contient $\\binom{n}{0}, \\binom{n}{1}, \\dots, \\binom{n}{n}$. Chaque ligne commence et finit par $1$. D'après la relation, chacun des autres nombres est la somme du nombre situé juste au-dessus de lui et de celui situé au-dessus à gauche (voir le tableau de l'exemple qui suit). Ce tableau est le **triangle de Pascal**."
+          "texte": "$$\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}.$$\n\nOn range les coefficients dans un tableau : la ligne $n$ contient $\\binom{n}{0}, \\binom{n}{1}, \\dots, \\binom{n}{n}$. Chaque ligne commence et finit par $1$. D'après la relation, chacun des autres nombres est une somme. On ajoute le nombre situé juste au-dessus de lui et celui situé au-dessus à gauche (voir le tableau de l'exemple qui suit). Ce tableau est le **triangle de Pascal**."
         },
         {
           "id": "l-denombrement-043",
@@ -722,20 +722,6 @@
           ]
         },
         {
-          "id": "l-denombrement-065",
-          "type": "verifie",
-          "capacites": ["bo-m-denombrement-08"],
-          "question": {
-            "enonce": "La ligne $6$ du triangle de Pascal est : $1$, $6$, $15$, $20$, $15$, $6$, $1$. Pour commencer la ligne $7$, calcule $\\binom{7}{3}$.",
-            "reponse": {
-              "type": "numerique",
-              "valeur": 35,
-              "tolerance": 0
-            },
-            "explication": "Relation de Pascal avec $n = 6$ et $k = 2$ : $\\binom{7}{3} = \\binom{6}{2} + \\binom{6}{3} = 15 + 20 = 35$. La ligne $7$ complète est : $1$, $7$, $21$, $35$, $35$, $21$, $7$, $1$."
-          }
-        },
-        {
           "id": "l-denombrement-045",
           "type": "demonstration",
           "titre": "Démonstration de la relation de Pascal par une méthode combinatoire",
@@ -772,7 +758,21 @@
             "langage": "python",
             "source": "def ligne_pascal(n):\n    ligne = [1]  # ligne 0 du triangle\n    for i in range(n):  # passage de la ligne i à la ligne i + 1\n        nouvelle = [1]\n        for k in range(len(ligne) - 1):\n            nouvelle.append(ligne[k] + ligne[k + 1])  # relation de Pascal\n        nouvelle.append(1)\n        ligne = nouvelle\n    return ligne\n\nprint(ligne_pascal(4))\nprint(ligne_pascal(6))"
           },
-          "texte": "La variable ligne contient la ligne $i$ du triangle : $\\binom{i}{0}, \\binom{i}{1}, \\dots, \\binom{i}{i}$. La nouvelle ligne commence par $1$. Si ligne a $m$ termes, elle compte $m - 1$ paires de termes voisins, d'indices $k$ et $k + 1$. C'est pourquoi la boucle intérieure parcourt range(len(ligne) - 1), c'est-à-dire $k = 0, 1, \\dots, m - 2$. Chaque paire donne un terme, par la relation de Pascal. La nouvelle ligne finit par $1$.\n\nPar exemple, de [1, 2, 1] on passe à [1, 1 + 2, 2 + 1, 1], soit [1, 3, 3, 1]. Après $n$ tours de boucle, la fonction renvoie la ligne $n$.\n\nLe programme affiche [1, 4, 6, 4, 1] puis [1, 6, 15, 20, 15, 6, 1]."
+          "texte": "La variable ligne contient la ligne $i$ du triangle : $\\binom{i}{0}, \\binom{i}{1}, \\dots, \\binom{i}{i}$. La nouvelle ligne commence par $1$. Si ligne a $m$ termes, elle compte $m - 1$ paires de termes voisins, d'indices $k$ et $k + 1$. C'est pourquoi la boucle intérieure fait $m - 1$ tours, pour $k = 0, 1, \\dots, m - 2$. Chaque paire donne un terme, par la relation de Pascal. La nouvelle ligne finit par $1$.\n\nPar exemple, de [1, 2, 1] on passe à [1, 1 + 2, 2 + 1, 1], soit [1, 3, 3, 1]. Après $n$ tours de boucle, la fonction renvoie la ligne $n$.\n\nLe programme affiche [1, 4, 6, 4, 1] puis [1, 6, 15, 20, 15, 6, 1]."
+        },
+        {
+          "id": "l-denombrement-065",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-08"],
+          "question": {
+            "enonce": "La ligne $6$ du triangle de Pascal est : $1$, $6$, $15$, $20$, $15$, $6$, $1$. Calcule $\\binom{7}{3}$, un nombre de la ligne $7$.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 35,
+              "tolerance": 0
+            },
+            "explication": "Relation de Pascal avec $n = 6$ et $k = 2$ : $\\binom{7}{3} = \\binom{6}{2} + \\binom{6}{3} = 15 + 20 = 35$. La ligne $7$ complète est : $1$, $7$, $21$, $35$, $35$, $21$, $7$, $1$."
+          }
         },
         {
           "id": "l-denombrement-048",

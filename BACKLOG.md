@@ -348,14 +348,23 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
 
 **Phase 3 — les chapitres pilotes**
 
-- [ ] (P1) Écrire le premier chapitre de maths, pour valider la méthode — `/tle-chapitre maths
-  <slug>` sur le chapitre que Thibaud désigne (par défaut le premier de l'ordre proposé,
-  `recurrence-suites`), partie cours
-  puis partie exercices ; Thibaud relit, la charte est ajustée à la suite ; la session ajoute
-  ici un item par chapitre suivant. DoD : chapitre fini au sens de la charte § 9, retours de
-  Thibaud notés dans la charte. À trancher au passage (`chapitres-maths.md`, fin) : le ch. 1
-  ne porte que 3 lignes exigibles du programme (il tient seul ou rejoint les limites de
-  suites ?) ; l'espérance de la loi binomiale est au ch. 15, loin du ch. 11.
+- [ ] (P1) Écrire le premier chapitre de maths, pour valider la méthode — Thibaud a choisi
+  **Dénombrement** (2026-09-28). `/tle-chapitre maths denombrement`, partie cours puis partie
+  exercices ; Thibaud relit, la charte est ajustée à la suite ; la session ajoute ici un item
+  par chapitre suivant. DoD : chapitre fini au sens de la charte § 9, retours de Thibaud notés
+  dans la charte. Encore à trancher (`chapitres-maths.md`, fin) : le ch. 1 ne porte que 3
+  lignes exigibles du programme (il tient seul ou rejoint les limites de suites ?) ;
+  l'espérance de la loi binomiale est au ch. 15, loin du ch. 11.
+  - [x] Dénombrement : le cours — 5 notions (priorités mesurées : combinaisons incontournable,
+    principes et problèmes fréquents, permutations et triangle de Pascal plus rares), 65 blocs,
+    8 cartes de mémo ; relecteur PASS au 3e tour, élève-testeur (1 bloquant corrigé) ;
+    couverture « cours » sans écart. Charte : « ce que le bac demande » sans affirmation de
+    vrai-faux ; `CarteMemo` affiche l'image mentale en texte. PR : #96.
+  - [ ] Dénombrement : les exercices — trois marches, questions éclair, 3 à 5 exercices type
+    bac (`tle-auteur-exercices`, `tle-auteur-bac`) ; planchers : combinaisons ★★★ (3 / 3 / 1,
+    3 éclair, 2 type bac) ; un exercice pour chacun des 3 algorithmes (lignes 14 à 16).
+  - [ ] Faire relire le chapitre Dénombrement par Thibaud — ses retours ajustent la charte
+    (quotas du § 5.3, déroulé d'une notion, pages).
 - [ ] (P1) Écrire le premier chapitre de physique-chimie, pour valider la méthode — même
   chose, sur le chapitre que Thibaud désigne (par défaut `acides-bases`). DoD : idem.
 
