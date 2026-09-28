@@ -9,7 +9,9 @@
 > en vigueur jusqu'en 2026-2027 inclus (référentiel § 2).
 >
 > Les priorités sont des **estimations** (souvenir des sujets depuis 2021), à remplacer par le
-> décompte des annales (`annales-indexeur`). Légende : ★★★ incontournable · ★★ fréquent ·
+> décompte des annales (`annales-indexeur`). **Index complet depuis le 2026-09-28** : chiffres
+> par chapitre dans `annales-maths.md` ; la priorité de chaque notion se mesure au moment
+> d'écrire le chapitre (`node scripts/frequences-annales.mjs maths <chapitre>`). Légende : ★★★ incontournable · ★★ fréquent ·
 > ★ plus rare. Garde-fou de la charte (§ 5.1) : au plus la moitié des notions d'un chapitre
 > en ★★★ tant que les annales ne l'ont pas mesuré — ici 17 notions sur 57.
 

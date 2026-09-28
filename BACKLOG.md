@@ -369,7 +369,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
 - [ ] (P2) Écrire les chapitres suivants, un par session — dans l'ordre de la classe, deux
   items par chapitre (« le cours », « les exercices »), ajoutés ici par les sessions pilotes ;
   plusieurs sessions en parallèle possibles, un chapitre chacune.
-- [ ] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
+- [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
   publiés) → `content/terminale/maths/annales.json` (objet `{ complet, depuis, sujets }`) ;
@@ -381,6 +381,15 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `priorites`).
   Prérequis : référentiel maths ; sujets sur apmep.fr (`docs/sources-officielles.md`).
   DoD : index complet, rapport de fréquences dans la PR.
+  Livré le 2026-09-28 : 103 sujets (2021-2026, tous lieux, secours et sujet dévoilé compris ;
+  sujets 0 et recueils écartés), 423 exercices, indexés en 12 lots par `annales-indexeur` sur
+  les sources LaTeX de l'APMEP (`scripts/annales-apmep.mjs`) ; `annales.json` `complet: true`,
+  `exclus` des sessions 2021-2023 tirés du référentiel § 4 ;
+  `scripts/frequences-annales.mjs` (par chapitre, notion, ligne ; refuse un index incomplet),
+  testé. Compte rendu, règles de rattachement et doutes : `chantiers/terminale/annales-maths.md`.
+  Aucun chapitre écrit : rien à recalculer. À refaire après les sessions de novembre 2026
+  (Amérique du Sud, Nouvelle-Calédonie) : `complet` à false, indexer, remettre à true.
+
 - [ ] (P3) Compter ce qui tombe vraiment au bac de physique-chimie — même travail.
 
 **Phase 5 — réviser et donner envie**
