@@ -97,7 +97,7 @@ Le fichier **`.claude/skills/bac-maths-premiere-spe-2026/SKILL.md`** est la **so
 | Géométrie | JSXGraph, **lazy-loaded** uniquement dans les composants qui l'utilisent |
 | Routing | React Router v6 |
 | État | **Zustand** |
-| Persistance | LocalStorage — un préfixe par volet : `bms-2026-` (maths), `bfr-2026-` (français), `btl-2027-` (simulateur de moyenne), `bgo-2027-` (grand oral), `btm-2027-` / `bpc-2027-` (maths / physique-chimie de terminale, à venir). Jamais croisés. |
+| Persistance | LocalStorage — un préfixe par volet : `bms-2026-` (maths), `bfr-2026-` (français), `btl-2027-` (simulateur de moyenne), `bgo-2027-` (grand oral), `btm-2027-` / `bpc-2027-` (maths / physique-chimie de terminale). Jamais croisés. |
 | Validation JSON | **Ajv** contre les schémas dans `schemas/` |
 | Tests | Vitest (logique) + Playwright (runners critiques) |
 | CI/CD | GitHub Actions → GitHub Pages |

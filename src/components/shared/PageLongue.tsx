@@ -6,6 +6,8 @@ type PageProps = {
   sommaire: readonly SommaireEntree[];
   /** Titre de la page et « L'essentiel » : ce qui se lit avant le sommaire. */
   entete: ReactNode;
+  /** Sur grand écran, au-dessus du sommaire dans la colonne de droite (notions d'un cours). */
+  cote?: ReactNode;
   children: ReactNode;
 };
 
@@ -16,7 +18,7 @@ type PageProps = {
  * à droite, qui reste visible et montre la section en cours de lecture. En
  * dessous, il reste un encadré après l'en-tête.
  */
-export default function PageLongue({ accent, sommaire, entete, children }: PageProps) {
+export default function PageLongue({ accent, sommaire, entete, cote, children }: PageProps) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-6 sm:px-8 sm:py-8">
       <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_12.5rem] xl:gap-12">
@@ -30,7 +32,14 @@ export default function PageLongue({ accent, sommaire, entete, children }: PageP
           {children}
         </div>
         <aside className="hidden xl:block">
-          <div className="sticky top-20 pt-2">
+          <div
+            className={
+              cote
+                ? 'sticky top-20 max-h-[calc(100vh-6rem)] space-y-8 overflow-y-auto pb-4 pt-2'
+                : 'sticky top-20 pt-2'
+            }
+          >
+            {cote}
             <Sommaire entries={sommaire} accent={accent} variante="cote" />
           </div>
         </aside>
@@ -42,6 +51,8 @@ export default function PageLongue({ accent, sommaire, entete, children }: PageP
 const PASTILLE: Record<Accent, string> = {
   sky: 'bg-sky-100 text-sky-800 dark:bg-sky-950/70 dark:text-sky-300',
   amber: 'bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300',
+  blue: 'bg-blue-100 text-blue-800 dark:bg-blue-950/70 dark:text-blue-300',
+  violet: 'bg-violet-100 text-violet-800 dark:bg-violet-950/70 dark:text-violet-300',
 };
 
 type SectionProps = {

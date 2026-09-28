@@ -1,8 +1,8 @@
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useState, type ReactNode } from 'react';
 
-export type SommaireEntree = { id: string; label: string };
+export type SommaireEntree = { id: string; label: ReactNode };
 
-export type Accent = 'sky' | 'amber';
+export type Accent = 'sky' | 'amber' | 'blue' | 'violet';
 
 type Props = {
   entries: readonly SommaireEntree[];
@@ -18,16 +18,22 @@ type Props = {
 const NUMERO: Record<Accent, string> = {
   sky: 'text-sky-700 dark:text-sky-400',
   amber: 'text-amber-700 dark:text-amber-400',
+  blue: 'text-blue-700 dark:text-blue-400',
+  violet: 'text-violet-700 dark:text-violet-400',
 };
 
 const SURVOL: Record<Accent, string> = {
   sky: 'group-hover:text-sky-700 dark:group-hover:text-sky-400',
   amber: 'group-hover:text-amber-700 dark:group-hover:text-amber-400',
+  blue: 'group-hover:text-blue-700 dark:group-hover:text-blue-400',
+  violet: 'group-hover:text-violet-700 dark:group-hover:text-violet-400',
 };
 
 const ACTIF: Record<Accent, string> = {
   sky: 'border-sky-600 font-semibold text-sky-800 dark:border-sky-400 dark:text-sky-300',
   amber: 'border-amber-500 font-semibold text-amber-800 dark:border-amber-400 dark:text-amber-300',
+  blue: 'border-blue-600 font-semibold text-blue-800 dark:border-blue-400 dark:text-blue-300',
+  violet: 'border-violet-600 font-semibold text-violet-800 dark:border-violet-400 dark:text-violet-300',
 };
 
 /** Distance au haut de la fenêtre (px) à partir de laquelle une section est « en lecture ». */
