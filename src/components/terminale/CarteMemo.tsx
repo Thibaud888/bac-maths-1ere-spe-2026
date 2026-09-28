@@ -12,7 +12,7 @@ const GENRE: Record<Carte['genre'], string> = {
 type Props = {
   carte: Carte;
   notion: Notion | undefined;
-  /** `simplifie` : le cœur de la carte seul, comme le mode simplifié de la première. */
+  /** `simplifie` : le cœur de la carte, son moyen mnémotechnique et son image mentale (texte). */
   mode: 'detaille' | 'simplifie';
 };
 
@@ -44,11 +44,10 @@ export default function CarteMemo({ carte, notion, mode }: Props) {
             </p>
           )}
           {image && (
-            <img
-              src={`${import.meta.env.BASE_URL}figures/${image}`}
-              alt=""
-              className="mx-auto max-h-40 max-w-full dark:[filter:invert(1)_hue-rotate(180deg)]"
-            />
+            <p className="rounded-lg border border-dashed border-slate-300 px-3 py-2 text-sm leading-snug text-slate-700 dark:border-slate-600 dark:text-slate-300">
+              <span className="font-semibold">Image : </span>
+              <TextWithMath text={image} />
+            </p>
           )}
           {carte.simplifie.motCle && (
             <p className="text-xs text-slate-500 dark:text-slate-400">

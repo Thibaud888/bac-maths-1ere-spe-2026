@@ -1,0 +1,122 @@
+[
+  {
+    "id": "m-denombrement-k-parmi-n",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-combinaisons",
+    "genre": "formule",
+    "titre": "Coefficient binomial $\\binom{n}{k}$",
+    "enonce": "Le nombre de parties à $k$ éléments (combinaisons) d'un ensemble à $n$ éléments est $\\binom{n}{k} = \\dfrac{n \\times (n-1) \\times \\dots \\times (n-k+1)}{k!} = \\dfrac{n!}{(n-k)!\\,k!}$.",
+    "conditions": "$n$ et $k$ entiers naturels, $0 \\leqslant k \\leqslant n$.",
+    "exemple": "Équipes de $3$ personnes parmi $10$ : $\\binom{10}{3} = \\dfrac{10 \\times 9 \\times 8}{6} = 120$.",
+    "simplifie": {
+      "coeur": "$\\binom{n}{k} = \\dfrac{n!}{(n-k)!\\,k!}$ : groupes sans ordre ni répétition",
+      "moyenMemo": "Les listes ordonnées, divisées par $k!$ : les rangements d'un même groupe.",
+      "motCle": "k-parmi-n"
+    }
+  },
+  {
+    "id": "m-denombrement-additif-multiplicatif",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-principes",
+    "genre": "propriete",
+    "titre": "Principes additif et multiplicatif",
+    "enonce": "**Principe additif** : si $A_1, \\dots, A_p$ sont deux à deux disjoints, $\\mathrm{Card}(A_1 \\cup \\dots \\cup A_p) = \\mathrm{Card}(A_1) + \\dots + \\mathrm{Card}(A_p)$.\n\n**Principe multiplicatif** : $\\mathrm{Card}(E_1 \\times \\dots \\times E_k) = \\mathrm{Card}(E_1) \\times \\dots \\times \\mathrm{Card}(E_k)$. Un choix en $k$ étapes successives, avec $n_1, n_2, \\dots, n_k$ possibilités, se fait de $n_1 \\times n_2 \\times \\dots \\times n_k$ façons.",
+    "conditions": "Ensembles finis ; deux à deux disjoints pour le principe additif ; pour les étapes successives, un nombre de possibilités qui ne dépend pas des choix précédents.",
+    "exemple": "Codes de $4$ chiffres : $10^4 = 10\\,000$. Codes de $3$ ou de $4$ chiffres : $10^3 + 10^4 = 11\\,000$.",
+    "simplifie": {
+      "coeur": "Cas disjoints (« ou ») : on additionne. Étapes successives (« puis ») : on multiplie.",
+      "moyenMemo": "« Ou » s'additionne, « puis » se multiplie.",
+      "motCle": "ajouter-ou-multiplier",
+      "image": "Un arbre : chaque niveau multiplie le nombre de chemins ; deux arbres séparés s'ajoutent."
+    }
+  },
+  {
+    "id": "m-denombrement-k-uplets-parties",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-principes",
+    "genre": "formule",
+    "titre": "$k$-uplets et parties d'un ensemble à $n$ éléments",
+    "enonce": "Si $\\mathrm{Card}(A) = n$, il y a $n^k$ $k$-uplets d'éléments de $A$ (répétitions permises), et $A$ possède $2^n$ parties.",
+    "conditions": "$A$ est un ensemble fini à $n$ éléments et $k$ un entier naturel non nul.",
+    "exemple": "Mots de $3$ lettres écrits avec $\\{A\\,;\\,B\\,;\\,C\\,;\\,D\\}$ : $4^3 = 64$. Parties de $\\{1\\,;\\,2\\,;\\,3\\}$ : $2^3 = 8$.",
+    "simplifie": {
+      "coeur": "$\\mathrm{Card}(A^k) = n^k$ ; nombre de parties : $2^n$",
+      "moyenMemo": "Base = nombre de choix par place ; exposant = nombre de places.",
+      "motCle": "puissances",
+      "image": "Chaque élément est dedans ou dehors : 2 choix, n fois."
+    }
+  },
+  {
+    "id": "m-denombrement-ordre-repetition",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-problemes",
+    "genre": "methode",
+    "titre": "Reconnaître l'objet à dénombrer",
+    "enonce": "- Ordre qui compte, répétitions permises : $k$-uplets, $n^k$.\n- Ordre qui compte, sans répétition : $n \\times (n-1) \\times \\dots \\times (n-k+1)$, et $n!$ pour ranger $n$ éléments.\n- Ordre qui ne compte pas, sans répétition : combinaisons, $\\binom{n}{k}$.",
+    "exemple": "Code de $4$ chiffres : $10^4$. Podium de $3$ coureurs parmi $8$ : $8 \\times 7 \\times 6$. Main de $5$ cartes parmi $32$ : $\\binom{32}{5}$.",
+    "simplifie": {
+      "coeur": "Ordre / répétition : oui/oui → $n^k$ ; oui/non → $n(n-1)\\cdots(n-k+1)$ ; non/non → $\\binom{n}{k}$",
+      "moyenMemo": "Deux questions avant tout calcul : l'ordre, puis la répétition.",
+      "motCle": "ordre-repetition"
+    }
+  },
+  {
+    "id": "m-denombrement-au-moins-un",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-problemes",
+    "genre": "methode",
+    "titre": "« Au moins un » : passer par le contraire",
+    "enonce": "Nombre de résultats contenant au moins un élément d'un type = nombre total − nombre de résultats n'en contenant aucun. En probabilité : $P(A) = 1 - P(\\overline{A})$.",
+    "exemple": "Séquences de $5$ bases (A, C, G, T) contenant au moins un A : $4^5 - 3^5 = 1\\,024 - 243 = 781$.",
+    "simplifie": {
+      "coeur": "Au moins un = total − aucun",
+      "moyenMemo": "Jamais « j'en fixe un, puis je complète » : on compterait des cas plusieurs fois.",
+      "motCle": "au-moins-un"
+    }
+  },
+  {
+    "id": "m-denombrement-equiprobabilite",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-problemes",
+    "genre": "formule",
+    "titre": "Probabilité en situation d'équiprobabilité",
+    "enonce": "Si toutes les issues ont la même probabilité : $P(A) = \\dfrac{\\text{nombre de cas favorables}}{\\text{nombre de cas possibles}}$. Les deux nombres se dénombrent avec le même modèle.",
+    "conditions": "Situation d'équiprobabilité : tirage au hasard, pièce ou dé équilibrés.",
+    "exemple": "Urne de $5$ rouges et $3$ noires, tirage simultané de $3$ boules : la probabilité d'avoir exactement $2$ rouges est $\\dfrac{\\binom{5}{2} \\times \\binom{3}{1}}{\\binom{8}{3}} = \\dfrac{30}{56} = \\dfrac{15}{28}$.",
+    "simplifie": {
+      "coeur": "$P(A) = \\dfrac{\\text{nombre de cas favorables}}{\\text{nombre de cas possibles}}$",
+      "moyenMemo": "Favorables et possibles : même modèle, tous ordonnés ou tous non ordonnés.",
+      "motCle": "equiprobabilite"
+    }
+  },
+  {
+    "id": "m-denombrement-factorielle",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-permutations",
+    "genre": "formule",
+    "titre": "Listes sans répétition, permutations",
+    "enonce": "Nombre de $k$-uplets d'éléments distincts d'un ensemble à $n$ éléments : $n \\times (n-1) \\times \\dots \\times (n-k+1) = \\dfrac{n!}{(n-k)!}$.\n\nNombre de permutations (rangements des $n$ éléments) : $n! = 1 \\times 2 \\times \\dots \\times n$, avec $0! = 1$.",
+    "conditions": "$1 \\leqslant k \\leqslant n$.",
+    "exemple": "Podiums de $3$ coureurs parmi $8$ : $8 \\times 7 \\times 6 = 336$. Anagrammes de MATHS : $5! = 120$.",
+    "simplifie": {
+      "coeur": "$n \\times (n-1) \\times \\dots \\times (n-k+1)$ ; $n!$ permutations",
+      "moyenMemo": "Une possibilité de moins à chaque choix.",
+      "motCle": "factorielle"
+    }
+  },
+  {
+    "id": "m-denombrement-triangle-pascal",
+    "chapitre": "denombrement",
+    "notion": "n-denombrement-pascal",
+    "genre": "formule",
+    "titre": "Valeurs utiles et relation de Pascal",
+    "enonce": "$\\binom{n}{0} = \\binom{n}{n} = 1$, $\\binom{n}{1} = n$, $\\binom{n}{2} = \\dfrac{n(n-1)}{2}$, $\\binom{n}{n-k} = \\binom{n}{k}$.\n\nRelation de Pascal : $\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}$. Somme d'une ligne : $\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$.",
+    "conditions": "$0 \\leqslant k \\leqslant n$ ; pour la relation de Pascal, $0 \\leqslant k \\leqslant n - 1$.",
+    "exemple": "Binômes dans une classe de $24$ : $\\binom{24}{2} = 276$. $\\binom{9}{3} + \\binom{9}{4} = 84 + 126 = 210 = \\binom{10}{4}$.",
+    "simplifie": {
+      "coeur": "$\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}$ ; $\\binom{n}{2} = \\dfrac{n(n-1)}{2}$",
+      "motCle": "pascal",
+      "image": "Chaque ligne commence et finit par 1 ; tout autre nombre est la somme du nombre juste au-dessus et de celui au-dessus à gauche."
+    }
+  }
+]

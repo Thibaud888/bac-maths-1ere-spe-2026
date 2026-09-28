@@ -82,3 +82,15 @@ describe('TypeBacRunner', () => {
     expect(screen.getByText(`${String(x.duree).padStart(2, '0')}:00`)).toBeInTheDocument();
   });
 });
+
+describe('CarteMemo', () => {
+  it('affiche l’image mentale comme un texte, jamais comme un fichier', async () => {
+    const { default: CarteMemo } = await import('../CarteMemo');
+    const memo = (await import('../../../../tests/fixtures/terminale/maths/chapitres/temoin-maths/memo.json')).default;
+    const carte = memo.find((c: { simplifie: { image?: string } }) => c.simplifie.image);
+    if (!carte) throw new Error('carte avec image attendue');
+    const { container } = render(<CarteMemo carte={carte as never} notion={undefined} mode="simplifie" />);
+    expect(container.querySelector('img')).toBeNull();
+    expect(screen.getByText(carte.simplifie.image as string)).toBeInTheDocument();
+  });
+});

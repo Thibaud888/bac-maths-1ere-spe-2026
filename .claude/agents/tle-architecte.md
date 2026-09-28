@@ -49,8 +49,10 @@ fait passer devant ce qui compte au bac.
      contraire des annales.
 5. **Prérequis** : notions des chapitres antérieurs (ordre de l'année) et chapitres de
    première (`1e:<slug>`) réellement nécessaires — pas de liste exhaustive.
-6. **`attendusBac`** : 1 à 3 formulations **copiées** d'`annales.json` pour la notion ; liste
-   vide s'il n'y a pas d'index. Jamais de formulation inventée.
+6. **`attendusBac`** : 0 à 3 formulations **copiées** d'`annales.json` pour la notion ; liste
+   vide s'il n'y a pas d'index. Jamais de formulation inventée. **Questions ou consignes
+   seulement** (« Déterminer… », « Combien… », « Justifier que… »), compréhensibles seules ;
+   jamais une affirmation de vrai-faux (elle peut être fausse) : plutôt une liste vide.
 7. **`meta.json`** : `essentiel` = trois idées d'une ligne, compréhensibles par un élève qui
    n'a pas encore lu le cours.
 8. **Chapitre « Méthodes »** (`methodes-<matiere>`, charte § 2.1) : `transverse: true`, une

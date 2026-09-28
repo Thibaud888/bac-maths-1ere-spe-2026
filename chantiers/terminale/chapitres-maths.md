@@ -124,9 +124,13 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
   deux plans » y est un **approfondissement possible** (non exigible)
 
 ### 10. Combinatoire et dénombrement
-- Principe additif/multiplicatif, k-uplets · ★★
-- Permutations, arrangements · ★
-- Combinaisons, coefficients binomiaux, triangle de Pascal · ★★
+**Écrit le 2026-09-28** (`content/terminale/maths/chapitres/denombrement/`, domaine
+`combinatoire`) : 5 notions, priorités mesurées (sujets où le dénombrement pouvait tomber) —
+principes additif et multiplicatif, k-uplets ★★ (16/63) ; listes d'éléments distincts,
+factorielle, permutations ★ (9/63) ; combinaisons et coefficients binomiaux ★★★ (19/63, +1
+cran : indispensable pour la loi binomiale) ; propriétés des coefficients, triangle de Pascal ★
+(3/63) ; résoudre un problème de dénombrement ★★ (23/63). Écart avec la proposition : les
+propriétés des coefficients et la résolution de problèmes deviennent des notions à part.
 
 ### 11. Épreuves indépendantes, loi binomiale
 - Succession d'épreuves indépendantes, arbre (rappel de première : probabilités conditionnelles) · ★★
