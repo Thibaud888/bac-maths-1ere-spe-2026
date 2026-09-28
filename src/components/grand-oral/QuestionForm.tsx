@@ -125,8 +125,8 @@ export default function QuestionForm({ index, question, specialites }: Props) {
           Pourquoi cette question
         </span>
         <span className="block text-xs text-slate-500 dark:text-slate-400">
-          C’est par là que commence l’exposé : d’où elle vient, ce qu’elle t’apporte, le lien
-          avec ton projet après le bac.
+          C’est par là que commence l’exposé : d’où elle vient, ce qu’elle t’a apporté pendant
+          ta formation, ce qu’elle ouvre pour la suite.
         </span>
         <textarea
           id={`${prefixe}-pourquoi`}

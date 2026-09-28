@@ -378,8 +378,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
 > [`chantiers/verification-contenu-bac-2027.md`](chantiers/verification-contenu-bac-2027.md) ;
 > les numéros renvoient au tableau du rapport, qui donne l'extrait officiel et l'adresse.
 > DoD commune : texte corrigé et sourcé sur le texte officiel en vigueur pour 2027,
-> `node scripts/verify.mjs` OK. Texte de reprise pour les items ouverts :
-> `chantiers/reprise-verification-contenu.md`.
+> `node scripts/verify.mjs` OK. Tous les items sont traités (PR #76 et #92).
 
 - [x] Ne plus dire que la calculatrice est autorisée en spécialité maths — c'est le sujet qui
   le précise le jour même. `content/bac/epreuves.json` ep-spe-maths · resume (n° 29, F).
@@ -416,11 +415,13 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   du 10-6-2025, BO n° 24 du 12 juin 2025, qui vaut « pour les épreuves présentées au titre de la
   session 2027 » ; `s-mentions` retirée, ses entrées citent `s-presentation-bac`) et les dates
   des BO complétées. Reste l'item suivant. `node scripts/verify.mjs` OK, 222 tests. PR : #76.
-- [ ] Compléter les sources de quelques lignes du mode d'emploi — la note de `s-eps` parle d'un
+- [x] Compléter les sources de quelques lignes du mode d'emploi — la note de `s-eps` parle d'un
   « coefficient 6 » que le texte EPS ne donne pas (n° 65, I) ; lignes vraies mais mal sourcées
   (n° 12, 20, 30, 32, 34, 48, 53, 54), dont la note de philosophie MENE2622661N à déclarer.
-- [ ] Écrire que les maths anticipées comptent pour la session 2027, pas 2026 — ep-maths-anticipee
+  Fait le 2026-09-28. `node scripts/verify.mjs` OK, 222 tests. PR : #92.
+- [x] Écrire que les maths anticipées comptent pour la session 2027, pas 2026 — ep-maths-anticipee
   · detail et note de s-eam (n° 26, F).
+  Fait le 2026-09-28. `node scripts/verify.mjs` OK, 222 tests. PR : #92.
 - [x] Grand oral : dire que l'échange porte sur le programme « en lien avec ta question » — le
   texte limite l'interrogation au lien avec le premier temps. `content/terminale/grand-oral/`
   deroule.json gt-echange, entretien.json go-ent-cours (n° 83, I).
@@ -433,31 +434,37 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   conforme » du rapport.
   Fait le 2026-09-27 dans la PR de vérification. `node scripts/verify.mjs` OK, 222 tests.
   PR : #76.
-- [ ] Grand oral : dire ce qui est permis dans la salle — de quoi écrire, et un tableau si on le
+- [x] Grand oral : dire ce qui est permis dans la salle — de quoi écrire, et un tableau si on le
   souhaite. epreuve.json go-epreuve-preparation-du-jour · conseil ; la page annonce « ce qui est
   autorisé » (`src/routes/terminale/grand-oral/EpreuvePage.tsx:66`) sans le dire (n° 78, I).
-- [ ] Grand oral : ne plus présenter le projet d'orientation comme une attente du jury — le texte
+  Fait le 2026-09-28. `node scripts/verify.mjs` OK, 222 tests. PR : #92.
+- [x] Grand oral : ne plus présenter le projet d'orientation comme une attente du jury — le texte
   de 2026 demande seulement pourquoi la question a été choisie « pendant sa formation ».
   entretien.json go-ent-orientation ; `src/components/grand-oral/QuestionForm.tsx:125-126` ;
   catégorie de relances « Ton projet » (n° 86, I).
-- [ ] Grand oral : trois nuances sur la page « L'épreuve » — grille « sur laquelle le jury peut
+  Fait le 2026-09-28. `node scripts/verify.mjs` OK, 222 tests. PR : #92.
+- [x] Grand oral : trois nuances sur la page « L'épreuve » — grille « sur laquelle le jury peut
   s'appuyer » et non « qu'il utilise » (go-epreuve-note, n° 80 I) ; jury pas forcément
   non spécialiste (go-epreuve-jury · conseil, n° 75 I) ; les sept critères, et non quatre,
   dans le mode d'emploi du bac (ep-grand-oral · detail, n° 36 I).
+  Fait le 2026-09-28. `node scripts/verify.mjs` OK, 222 tests. PR : #92.
 - [x] Rattrapage : prévenir qu'on ne peut pas choisir deux fois les maths — spécialité et épreuve
   anticipée s'excluent au second groupe. `src/routes/outils/LeBacPage.tsx:419-424`, source
   s-presentation-bac (n° 52, I).
   Fait le 2026-09-27 dans la PR de vérification : carte « Entre 8 et 10 » ; ses deux cartes
   citent `s-presentation-bac`. `node scripts/verify.mjs` OK, 222 tests. PR : #76.
-- [ ] Calendrier : dire que ses deux écrits de spécialité tombent le mercredi 16 et le jeudi
+- [x] Calendrier : dire que ses deux écrits de spécialité tombent le mercredi 16 et le jeudi
   17 juin — annexe III du calendrier 2027 : maths et physique-chimie n'ont pas d'épreuve le
   vendredi 18. calendrier.json ca-specialites · detail (n° 45, I) ; ca-grand-oral : la date
   figure sur la convocation (n° 46, I).
-- [ ] Notes de première : écrire « connues » plutôt que « définitives » — les notes anticipées
+  Fait le 2026-09-28. `node scripts/verify.mjs` OK, 222 tests. PR : #92.
+- [x] Notes de première : écrire « connues » plutôt que « définitives » — les notes anticipées
   restent provisoires jusqu'au jury, et la commission d'harmonisation peut modifier les
   moyennes. co-specialite-abandonnee · profilNote, co-francais-ecrit · comment,
   ep-francais-ecrit · detail, ca-epreuves-anticipees-2026 · detail,
   `src/routes/outils/LeBacPage.tsx:329` et `:336` (n° 8, 22, I).
-- [ ] Physique-chimie : ne plus dire que c'est la seule épreuve pratique du bac — SVT, NSI et
+  Fait le 2026-09-28. `node scripts/verify.mjs` OK, 222 tests. PR : #92.
+- [x] Physique-chimie : ne plus dire que c'est la seule épreuve pratique du bac — SVT, NSI et
   sciences de l'ingénieur en ont aussi une ; c'est la seule de ses épreuves.
   co-specialite-physique-chimie · comment (n° 17, I).
+  Fait le 2026-09-28. `node scripts/verify.mjs` OK, 222 tests. PR : #92.

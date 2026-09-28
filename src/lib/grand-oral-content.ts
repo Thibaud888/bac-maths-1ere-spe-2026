@@ -170,7 +170,6 @@ export const RELANCE_CATEGORIE_LABEL: Record<RelanceCategorie, string> = {
   question: 'Sur ta question',
   cours: 'Questions de cours',
   demarche: 'Ta démarche',
-  orientation: 'Ton projet',
   piege: 'Pour te déstabiliser',
 };
 
@@ -178,7 +177,6 @@ export const RELANCE_CATEGORIE_ORDER: readonly RelanceCategorie[] = [
   'question',
   'cours',
   'demarche',
-  'orientation',
   'piege',
 ] as const;
 
