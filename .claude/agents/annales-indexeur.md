@@ -28,6 +28,10 @@ Tu construis la mémoire des sujets de bac : pas leur texte intégral, mais **ce
    cloud (403), seuls ses PDF passent (`docs/sources-officielles.md`). Note l'adresse exacte
    de la page ou du PDF lu dans `url`. Si APMEP et Labolycée sont refusés aussi, arrête-toi
    et dis lesquels.
+   **Règles de rattachement** déjà fixées (arbres, Python, seuils, exercices au choix…) :
+   `chantiers/terminale/annales-maths.md` — les suivre pour que le décompte reste homogène.
+   Sujets de maths : `node scripts/annales-apmep.mjs <année> --sortie <dossier>` les liste
+   et en télécharge le texte (jamais le corrigé).
 3. **Programme évalué** : session `complet` ou `partiel`. Les sessions 2021, 2022 et 2023
    étaient prévues en mars sur une partie du programme : relève, **session par session**,
    dans la note de service correspondante (ou dans le référentiel s'il l'a déjà relevé),

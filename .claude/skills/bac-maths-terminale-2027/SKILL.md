@@ -170,6 +170,10 @@ Traduction en identifiants de `programme.json` (lignes exclues du décompte d'un
 | somme de variables aléatoires (2022, 2023) | `bo-m-sommes-*` |
 | « équation différentielle y' = ay […] y' = ay + b » (2022, 2023) | `bo-m-primitives-03` (même texte) ; `bo-m-primitives-05` et `-08` portent sur ces équations |
 
+Relevé dans les sujets eux-mêmes (index des annales, 2026-09-28) : en 2021, un exercice
+« au choix du candidat » (A ou B) ; en 2022, « Le candidat choisit 3 exercices parmi les 4 »
+(7 points chacun). Index, chiffres et règles de rattachement : `chantiers/terminale/annales-maths.md`.
+
 Remarques : la note de 2023 ne cite pas la partie « Vocabulaire ensembliste et logique »
 (transversale) ; les dates des épreuves de chaque session ne sont pas dans ces textes (le
 BO n° 36 de 2022 donne, pour La Réunion, les écrits de spécialité 2023 les 27 et 28 mars).
