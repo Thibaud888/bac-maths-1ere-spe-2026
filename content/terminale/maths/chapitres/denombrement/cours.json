@@ -1,0 +1,934 @@
+{
+  "chapitre": "denombrement",
+  "sections": [
+    {
+      "notion": "n-denombrement-principes",
+      "blocs": [
+        {
+          "id": "l-denombrement-001",
+          "type": "idee",
+          "texte": "Un cadenas s'ouvre avec un code de $4$ chiffres. Combien de codes sont possibles ? Les écrire tous prendrait des heures. **Dénombrer**, c'est compter les éléments d'un ensemble sans les énumérer un à un. Deux gestes suffisent souvent : **découper** en cas qui ne se recouvrent pas, puis additionner ; ou **enchaîner** des choix successifs, puis multiplier. Ici, tu apprends à reconnaître lequel employer, et à compter les listes et les parties d'un ensemble."
+        },
+        {
+          "id": "l-denombrement-002",
+          "type": "definition",
+          "titre": "$k$-uplets, produit cartésien, cardinal",
+          "capacites": ["bo-m-denombrement-01"],
+          "texte": "Soit $k$ un entier naturel non nul.\n\n- Un **$k$-uplet** (ou **$k$-liste**) d'éléments d'un ensemble $A$ est une suite **ordonnée** $(a_1\\,;\\,a_2\\,;\\,\\dots\\,;\\,a_k)$ de $k$ éléments de $A$, distincts ou non. Pour $k = 2$, on dit **couple** ; pour $k = 3$, **triplet**. L'ordre compte : $(1\\,;\\,2) \\neq (2\\,;\\,1)$.\n- Le **produit cartésien** $E \\times F$ (lu « $E$ croix $F$ ») est l'ensemble des couples $(x\\,;\\,y)$ avec $x \\in E$ et $y \\in F$. De même, $E_1 \\times E_2 \\times \\dots \\times E_k$ est l'ensemble des $k$-uplets $(x_1\\,;\\,\\dots\\,;\\,x_k)$ avec $x_i \\in E_i$ pour chaque $i$.\n- $A^k = A \\times A \\times \\dots \\times A$ ($k$ facteurs) est l'ensemble des $k$-uplets d'éléments de $A$. Ces notions valent aussi pour des ensembles infinis : $\\mathbb{R}^2$ est l'ensemble des couples de réels.\n- Si $E$ est fini, on note $\\mathrm{Card}(E)$ (lu « cardinal de $E$ ») son nombre d'éléments."
+        },
+        {
+          "id": "l-denombrement-003",
+          "type": "exemple",
+          "titre": "Écrire tous les menus",
+          "capacites": ["bo-m-denombrement-01"],
+          "enonce": "Un restaurant propose une entrée au choix dans $E = \\{\\text{salade}\\,;\\,\\text{soupe}\\}$, puis un plat au choix dans $F = \\{\\text{poisson}\\,;\\,\\text{viande}\\,;\\,\\text{omelette}\\}$. Écrire tous les menus possibles, puis les compter.",
+          "etapes": [
+            {
+              "texte": "Un menu est un **couple** (entrée ; plat), c'est-à-dire un élément du produit cartésien $E \\times F$.",
+              "pourquoi": "L'entrée et le plat n'ont pas le même rôle : la première composante est toujours l'entrée, la seconde toujours le plat."
+            },
+            {
+              "texte": "On range les menus dans un tableau à double entrée : une ligne par entrée, une colonne par plat.\n\n| | poisson | viande | omelette |\n|---|---|---|---|\n| **salade** | (salade ; poisson) | (salade ; viande) | (salade ; omelette) |\n| **soupe** | (soupe ; poisson) | (soupe ; viande) | (soupe ; omelette) |",
+              "pourquoi": "Chaque case contient exactement un menu, et chaque menu occupe exactement une case : aucun n'est oublié, aucun n'est compté deux fois."
+            },
+            {
+              "texte": "Le tableau a $2$ lignes de $3$ cases, donc $2 \\times 3 = 6$ cases."
+            },
+            {
+              "texte": "**Conclusion** : il y a $6$ menus possibles. On remarque que $\\mathrm{Card}(E \\times F) = 6 = 2 \\times 3 = \\mathrm{Card}(E) \\times \\mathrm{Card}(F)$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-004",
+          "type": "rappel",
+          "titre": "Rappel : le vocabulaire des ensembles",
+          "capacites": ["bo-m-logique-01"],
+          "texte": "Un **ensemble** est une collection d'objets, ses **éléments** ; $a \\in E$ se lit « $a$ appartient à $E$ ». Dans un ensemble, l'ordre d'écriture ne compte pas : $\\{a\\,;\\,b\\} = \\{b\\,;\\,a\\}$.\n\n- Une **partie** (ou sous-ensemble) de $E$ est un ensemble $A$ dont tous les éléments sont dans $E$ ; on note $A \\subset E$ (« $A$ est inclus dans $E$ »). L'**ensemble vide** $\\emptyset$, qui n'a aucun élément, et $E$ lui-même sont des parties de $E$.\n- $A \\cup B$ (« $A$ union $B$ ») réunit les éléments de $A$ et ceux de $B$ ; $A \\cap B$ (« $A$ inter $B$ ») contient leurs éléments communs.\n- $A$ et $B$ sont **disjoints** si $A \\cap B = \\emptyset$ : ils n'ont aucun élément commun. En probabilités, on dit « incompatibles ».",
+          "lien": "1e:probas-cond"
+        },
+        {
+          "id": "l-denombrement-005",
+          "type": "propriete",
+          "titre": "Principe additif, principe multiplicatif",
+          "capacites": ["bo-m-denombrement-02", "bo-m-denombrement-03"],
+          "conditions": [
+            "Tous les ensembles considérés sont finis.",
+            "Principe additif : les ensembles $A_1, A_2, \\dots, A_p$ sont deux à deux disjoints (deux d'entre eux n'ont jamais d'élément commun).",
+            "Choix successifs : à chaque étape, le nombre de possibilités ne dépend pas des choix faits aux étapes précédentes."
+          ],
+          "admise": true,
+          "texte": "**Principe additif.** Si $A_1, A_2, \\dots, A_p$ sont deux à deux disjoints :\n\n$$\\mathrm{Card}(A_1 \\cup A_2 \\cup \\dots \\cup A_p) = \\mathrm{Card}(A_1) + \\mathrm{Card}(A_2) + \\dots + \\mathrm{Card}(A_p).$$\n\n**Principe multiplicatif.**\n\n$$\\mathrm{Card}(E_1 \\times E_2 \\times \\dots \\times E_k) = \\mathrm{Card}(E_1) \\times \\mathrm{Card}(E_2) \\times \\dots \\times \\mathrm{Card}(E_k).$$\n\nEn particulier, si $\\mathrm{Card}(A) = n$, le nombre de $k$-uplets d'éléments de $A$ est $\\mathrm{Card}(A^k) = n^k$.\n\n**Choix successifs.** Un choix fait en $k$ étapes, avec $n_1$ possibilités à la première étape, $n_2$ à la deuxième, …, $n_k$ à la dernière, peut se faire de $n_1 \\times n_2 \\times \\dots \\times n_k$ façons."
+        },
+        {
+          "id": "l-denombrement-006",
+          "type": "exemple",
+          "titre": "Codes de cadenas",
+          "capacites": ["bo-m-denombrement-02", "bo-m-denombrement-03"],
+          "enonce": "Un code de cadenas est une suite de chiffres de $0$ à $9$ ; un chiffre peut se répéter (par exemple 0070).\n\n**1.** Combien existe-t-il de codes de $4$ chiffres ?\n\n**2.** Un autre cadenas accepte les codes de $3$ chiffres et ceux de $4$ chiffres. Combien de codes accepte-t-il ?",
+          "etapes": [
+            {
+              "texte": "On note $C = \\{0\\,;\\,1\\,;\\,2\\,;\\,\\dots\\,;\\,9\\}$ : cet ensemble a $10$ éléments. Un code de $4$ chiffres est un $4$-uplet d'éléments de $C$, c'est-à-dire un élément de $C^4$.",
+              "pourquoi": "L'ordre compte (1234 et 4321 sont deux codes différents) et un chiffre peut revenir : ce sont exactement les caractéristiques d'un $4$-uplet."
+            },
+            {
+              "texte": "D'après le principe multiplicatif, il y a $\\mathrm{Card}(C^4) = 10^4 = 10\\,000$ codes de $4$ chiffres.",
+              "pourquoi": "On choisit le premier chiffre ($10$ possibilités), puis le deuxième ($10$, car la répétition est permise), et ainsi de suite : $10 \\times 10 \\times 10 \\times 10$."
+            },
+            {
+              "texte": "De même, il y a $10^3 = 1\\,000$ codes de $3$ chiffres."
+            },
+            {
+              "texte": "Un code accepté par le second cadenas a soit $3$ chiffres, soit $4$ chiffres : ces deux ensembles de codes sont disjoints. D'après le principe additif, il accepte $1\\,000 + 10\\,000 = 11\\,000$ codes.",
+              "pourquoi": "Aucun code n'a à la fois $3$ et $4$ chiffres : en additionnant, on ne compte aucun code deux fois."
+            },
+            {
+              "texte": "**Conclusion** : il existe $10\\,000$ codes de $4$ chiffres, et le second cadenas accepte $11\\,000$ codes."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-007",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-01", "bo-m-denombrement-03"],
+          "question": {
+            "enonce": "Soit $A = \\{a\\,;\\,b\\,;\\,c\\}$. Combien existe-t-il de couples d'éléments de $A$, un même élément pouvant être répété ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 9,
+              "tolerance": 0
+            },
+            "explication": "Un tel couple est un élément de $A^2$, et $\\mathrm{Card}(A^2) = 3^2 = 9$. Ce sont $(a\\,;\\,a)$, $(a\\,;\\,b)$, $(a\\,;\\,c)$, $(b\\,;\\,a)$, $(b\\,;\\,b)$, $(b\\,;\\,c)$, $(c\\,;\\,a)$, $(c\\,;\\,b)$ et $(c\\,;\\,c)$. Attention : $(a\\,;\\,b)$ et $(b\\,;\\,a)$ sont deux couples différents."
+          }
+        },
+        {
+          "id": "l-denombrement-008",
+          "type": "propriete",
+          "titre": "Nombre de parties d'un ensemble",
+          "capacites": ["bo-m-denombrement-04"],
+          "conditions": [
+            "$E$ est un ensemble fini à $n$ éléments, où $n$ est un entier naturel."
+          ],
+          "admise": false,
+          "texte": "Un ensemble à $n$ éléments possède $2^n$ parties, en comptant $\\emptyset$ et l'ensemble lui-même.\n\nC'est aussi le nombre :\n\n- de $n$-uplets de $\\{0\\,;\\,1\\}$ ;\n- de **mots** de longueur $n$ écrits avec un alphabet de deux lettres (un mot est ici une suite de lettres, qu'elle ait un sens ou non) ;\n- de chemins d'un arbre à $n$ niveaux où chaque nœud a deux branches ;\n- d'issues de $n$ lancers successifs d'une pièce, et plus généralement de $n$ répétitions d'une expérience qui n'a que deux issues."
+        },
+        {
+          "id": "l-denombrement-009",
+          "type": "figure",
+          "titre": "Arbre de trois lancers d'une pièce",
+          "capacites": ["bo-m-denombrement-04"],
+          "figure": {
+            "type": "tree",
+            "caption": "Trois lancers : 2 branches à chaque nœud, donc 2 × 2 × 2 = 8 chemins, un par issue (PPP en haut, FFF en bas).",
+            "data": {
+              "root": {
+                "label": "",
+                "children": [
+                  {
+                    "label": "$P$",
+                    "children": [
+                      {
+                        "label": "$P$",
+                        "children": [{ "label": "$P$" }, { "label": "$F$" }]
+                      },
+                      {
+                        "label": "$F$",
+                        "children": [{ "label": "$P$" }, { "label": "$F$" }]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "$F$",
+                    "children": [
+                      {
+                        "label": "$P$",
+                        "children": [{ "label": "$P$" }, { "label": "$F$" }]
+                      },
+                      {
+                        "label": "$F$",
+                        "children": [{ "label": "$P$" }, { "label": "$F$" }]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "l-denombrement-010",
+          "type": "exemple",
+          "titre": "Trois lancers d'une pièce et parties de $\\{1\\,;\\,2\\,;\\,3\\}$",
+          "capacites": ["bo-m-denombrement-03", "bo-m-denombrement-04"],
+          "enonce": "On lance trois fois de suite une pièce et on note la suite des résultats, par exemple PFP (P pour pile, F pour face).\n\n**1.** Combien y a-t-il d'issues ?\n\n**2.** En déduire le nombre de parties de l'ensemble $\\{1\\,;\\,2\\,;\\,3\\}$.",
+          "etapes": [
+            {
+              "texte": "Une issue est un mot de $3$ lettres écrit avec l'alphabet $\\{P\\,;\\,F\\}$, c'est-à-dire un élément de $\\{P\\,;\\,F\\}^3$. D'après le principe multiplicatif, il y en a $2^3 = 8$.",
+              "pourquoi": "$2$ résultats possibles au premier lancer, $2$ au deuxième, $2$ au troisième : $2 \\times 2 \\times 2 = 8$. Ce sont les $8$ chemins de l'arbre ci-dessus."
+            },
+            {
+              "texte": "Les $8$ issues sont : PPP, PPF, PFP, PFF, FPP, FPF, FFP, FFF."
+            },
+            {
+              "texte": "À chaque issue, on associe l'ensemble des numéros des lancers qui ont donné pile. Par exemple, PFP donne $\\{1\\,;\\,3\\}$, FFF donne $\\emptyset$ et PPP donne $\\{1\\,;\\,2\\,;\\,3\\}$.",
+              "pourquoi": "Inversement, une partie de $\\{1\\,;\\,2\\,;\\,3\\}$ dit exactement quels lancers donnent pile : elle correspond à une seule issue. Issues et parties se correspondent donc une à une."
+            },
+            {
+              "texte": "Dans l'ordre des issues, on obtient les $8$ parties : $\\{1\\,;\\,2\\,;\\,3\\}$, $\\{1\\,;\\,2\\}$, $\\{1\\,;\\,3\\}$, $\\{1\\}$, $\\{2\\,;\\,3\\}$, $\\{2\\}$, $\\{3\\}$ et $\\emptyset$."
+            },
+            {
+              "texte": "**Conclusion** : il y a $8$ issues, et l'ensemble $\\{1\\,;\\,2\\,;\\,3\\}$ possède $2^3 = 8$ parties."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-011",
+          "type": "demonstration",
+          "titre": "Pourquoi $2^n$ parties ?",
+          "capacites": ["bo-m-denombrement-04"],
+          "de": "l-denombrement-008",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "On numérote les éléments de $E$ : $E = \\{x_1\\,;\\,x_2\\,;\\,\\dots\\,;\\,x_n\\}$."
+            },
+            {
+              "texte": "À une partie $A$ de $E$, on associe le $n$-uplet $(c_1\\,;\\,c_2\\,;\\,\\dots\\,;\\,c_n)$ de $\\{0\\,;\\,1\\}$ défini par : $c_i = 1$ si $x_i \\in A$, et $c_i = 0$ sinon.",
+              "pourquoi": "Par exemple, pour $n = 3$, la partie $\\{x_1\\,;\\,x_3\\}$ est codée par $(1\\,;\\,0\\,;\\,1)$, et $\\emptyset$ par $(0\\,;\\,0\\,;\\,0)$."
+            },
+            {
+              "texte": "Chaque partie donne un seul $n$-uplet. Inversement, chaque $n$-uplet de $\\{0\\,;\\,1\\}$ provient d'une seule partie : celle formée des $x_i$ pour lesquels $c_i = 1$.",
+              "pourquoi": "On passe de l'un à l'autre dans les deux sens, sans perte ni doublon : les deux ensembles ont donc le même nombre d'éléments."
+            },
+            {
+              "texte": "Il y a donc autant de parties de $E$ que d'éléments de $\\{0\\,;\\,1\\}^n$, c'est-à-dire $2^n$ d'après le principe multiplicatif."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-012",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-04"],
+          "question": {
+            "enonce": "Combien de parties possède l'ensemble $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\}$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 16,
+              "tolerance": 0
+            },
+            "explication": "$2^4 = 16$. N'oublie pas $\\emptyset$ ni $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\}$ lui-même : ce sont aussi des parties."
+          }
+        },
+        {
+          "id": "l-denombrement-013",
+          "type": "piege",
+          "titre": "Base et exposant",
+          "capacites": ["bo-m-denombrement-03"],
+          "faux": "Avec l'alphabet $\\{A\\,;\\,B\\,;\\,C\\,;\\,D\\}$, on peut écrire $3^4 = 81$ mots de $3$ lettres.",
+          "juste": "On peut en écrire $4^3 = 64$ : $4$ choix pour chacune des $3$ positions, soit $4 \\times 4 \\times 4$.",
+          "explication": "Dans $n^k$, l'**exposant** $k$ est le nombre de positions à remplir (la longueur du mot) et la **base** $n$ le nombre de choix pour chaque position. En cas de doute, écris le produit des choix, position par position."
+        },
+        {
+          "id": "l-denombrement-014",
+          "type": "retenir",
+          "texte": "Cas disjoints (« ou ») : on **additionne**. Choix successifs (« puis ») : on **multiplie**.\n\n$k$-uplets d'un ensemble à $n$ éléments : $n^k$. Parties d'un ensemble à $n$ éléments : $2^n$."
+        }
+      ]
+    },
+    {
+      "notion": "n-denombrement-permutations",
+      "blocs": [
+        {
+          "id": "l-denombrement-015",
+          "type": "idee",
+          "texte": "Huit coureurs disputent une finale. Combien de podiums (or, argent, bronze) sont possibles ? Comme pour un code, l'ordre compte. Mais un coureur ne peut pas occuper deux marches : à chaque choix, il reste une possibilité de moins. Tu vas compter ces listes **sans répétition**, puis les façons de ranger **tous** les éléments d'un ensemble, appelées permutations."
+        },
+        {
+          "id": "l-denombrement-016",
+          "type": "propriete",
+          "titre": "Nombre de $k$-uplets d'éléments distincts",
+          "capacites": ["bo-m-denombrement-05"],
+          "conditions": [
+            "$E$ est un ensemble fini à $n$ éléments, avec $n \\geqslant 1$.",
+            "$k$ est un entier tel que $1 \\leqslant k \\leqslant n$."
+          ],
+          "admise": false,
+          "texte": "Un $k$-uplet d'éléments **distincts** de $E$ est un $k$-uplet dont les composantes sont deux à deux différentes : aucune répétition.\n\nLe nombre de $k$-uplets d'éléments distincts de $E$ est :\n\n$$n \\times (n-1) \\times (n-2) \\times \\dots \\times (n-k+1).$$\n\nC'est un produit de $k$ entiers consécutifs, qui commence à $n$ et descend."
+        },
+        {
+          "id": "l-denombrement-017",
+          "type": "exemple",
+          "titre": "Les podiums d'une finale",
+          "capacites": ["bo-m-denombrement-05"],
+          "enonce": "Huit coureurs disputent une finale. Un podium est la donnée du premier, du deuxième et du troisième. Combien y a-t-il de podiums possibles ?",
+          "etapes": [
+            {
+              "texte": "Un podium est un triplet (premier ; deuxième ; troisième) de coureurs deux à deux distincts, choisis parmi les $8$ coureurs.",
+              "pourquoi": "L'ordre compte (être premier n'est pas être troisième) et un coureur ne peut pas occuper deux places."
+            },
+            {
+              "texte": "On choisit le premier : $8$ possibilités. Puis le deuxième parmi les $7$ coureurs restants, puis le troisième parmi les $6$ restants.",
+              "pourquoi": "Quel que soit le premier choisi, il reste toujours $7$ coureurs pour la deuxième place : le nombre de possibilités ne dépend pas du choix précédent."
+            },
+            {
+              "texte": "D'après le principe multiplicatif (choix successifs), il y a $8 \\times 7 \\times 6 = 56 \\times 6 = 336$ podiums.",
+              "pourquoi": "C'est la formule avec $n = 8$ et $k = 3$ : trois facteurs, de $8$ jusqu'à $n - k + 1 = 6$."
+            },
+            {
+              "texte": "**Conclusion** : il y a $336$ podiums possibles."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-018",
+          "type": "demonstration",
+          "titre": "D'où vient ce produit ?",
+          "capacites": ["bo-m-denombrement-05"],
+          "de": "l-denombrement-016",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "On forme un $k$-uplet d'éléments distincts en choisissant ses composantes une par une. Pour la première, on a $n$ possibilités."
+            },
+            {
+              "texte": "La deuxième doit être différente de la première : il reste $n - 1$ possibilités, quelle que soit la première. Pour la troisième, il en reste $n - 2$, et ainsi de suite."
+            },
+            {
+              "texte": "Pour la $k$-ième composante, $k - 1$ éléments sont déjà pris : il reste $n - (k-1) = n - k + 1$ possibilités."
+            },
+            {
+              "texte": "D'après le principe multiplicatif (choix successifs), le nombre de $k$-uplets d'éléments distincts est $n \\times (n-1) \\times \\dots \\times (n-k+1)$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-019",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-05"],
+          "question": {
+            "enonce": "Un club de $10$ membres élit un président, un trésorier et un secrétaire, trois personnes différentes. Combien de résultats sont possibles ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 720,
+              "tolerance": 0
+            },
+            "explication": "Les rôles sont différents, donc l'ordre compte, et personne ne cumule deux rôles : $10 \\times 9 \\times 8 = 720$."
+          }
+        },
+        {
+          "id": "l-denombrement-020",
+          "type": "definition",
+          "titre": "Factorielle, permutation",
+          "capacites": ["bo-m-denombrement-05"],
+          "texte": "Pour tout entier naturel $n \\geqslant 1$, la **factorielle** de $n$, notée $n!$ et lue « factorielle $n$ », est le produit des entiers de $1$ à $n$ :\n\n$$n! = 1 \\times 2 \\times 3 \\times \\dots \\times n.$$\n\nPar convention, $0! = 1$.\n\nUne **permutation** d'un ensemble $E$ à $n$ éléments est un $n$-uplet d'éléments distincts de $E$ : une façon de ranger **tous** ses éléments dans un ordre. D'après la propriété précédente avec $k = n$, $E$ possède $n \\times (n-1) \\times \\dots \\times 1 = n!$ permutations."
+        },
+        {
+          "id": "l-denombrement-021",
+          "type": "exemple",
+          "titre": "Anagrammes et quotients de factorielles",
+          "capacites": ["bo-m-denombrement-05"],
+          "enonce": "On appelle **anagramme** d'un mot tout mot, ayant un sens ou non, écrit avec exactement les mêmes lettres ; le mot lui-même compte.\n\n**1.** Combien le mot MATHS a-t-il d'anagrammes ?\n\n**2.** Calculer $\\dfrac{8!}{5!}$ et comparer avec le nombre de podiums de l'exemple précédent.",
+          "etapes": [
+            {
+              "texte": "Les $5$ lettres de MATHS sont deux à deux distinctes. Une anagramme est une façon de ranger ces $5$ lettres : c'est une permutation de l'ensemble $\\{M\\,;\\,A\\,;\\,T\\,;\\,H\\,;\\,S\\}$.",
+              "pourquoi": "Chaque lettre sert exactement une fois et l'ordre compte : MATHS et SMATH sont deux mots différents."
+            },
+            {
+              "texte": "Il y en a $5! = 1 \\times 2 \\times 3 \\times 4 \\times 5 = 120$."
+            },
+            {
+              "texte": "$\\dfrac{8!}{5!} = \\dfrac{1 \\times 2 \\times 3 \\times 4 \\times 5 \\times 6 \\times 7 \\times 8}{1 \\times 2 \\times 3 \\times 4 \\times 5} = 6 \\times 7 \\times 8 = 336$.",
+              "pourquoi": "Les facteurs de $1$ à $5$ figurent en haut et en bas : ils se simplifient."
+            },
+            {
+              "texte": "**Conclusion** : MATHS a $120$ anagrammes, et $\\dfrac{8!}{5!} = 336$ : c'est le nombre de podiums $8 \\times 7 \\times 6$. De même, pour $1 \\leqslant k \\leqslant n$ : $n \\times (n-1) \\times \\dots \\times (n-k+1) = \\dfrac{n!}{(n-k)!}$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-022",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-05"],
+          "question": {
+            "enonce": "De combien de façons peut-on ranger $4$ livres différents côte à côte sur une étagère ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 24,
+              "tolerance": 0
+            },
+            "explication": "Un rangement est une permutation des $4$ livres : il y en a $4! = 1 \\times 2 \\times 3 \\times 4 = 24$."
+          }
+        },
+        {
+          "id": "l-denombrement-023",
+          "type": "code",
+          "titre": "Générer les permutations d'un ensemble à trois éléments",
+          "capacites": ["bo-m-denombrement-15"],
+          "code": {
+            "langage": "python",
+            "source": "def permutations_de_3(E):\n    resultat = []\n    for x in E:\n        for y in E:\n            for z in E:\n                # != signifie « différent de »\n                if x != y and x != z and y != z:\n                    resultat.append([x, y, z])\n    return resultat\n\nP = permutations_de_3(['a', 'b', 'c'])\nprint(P)\nprint(len(P))"
+          },
+          "texte": "Les trois boucles imbriquées parcourent les $3^3 = 27$ triplets d'éléments de la liste E, comme les $27$ chemins d'un arbre à trois niveaux. Le test ne garde que les triplets dont les trois composantes sont deux à deux différentes : ce sont les permutations. Pour un ensemble à $4$ éléments, on ajouterait une quatrième boucle.\n\nLe programme affiche d'abord la liste des permutations de a, b, c, dans cet ordre :\n\n[['a', 'b', 'c'], ['a', 'c', 'b'], ['b', 'a', 'c'], ['b', 'c', 'a'], ['c', 'a', 'b'], ['c', 'b', 'a']]\n\npuis leur nombre : $6$, c'est-à-dire $3!$."
+        },
+        {
+          "id": "l-denombrement-024",
+          "type": "piege",
+          "titre": "Commencer par la contrainte",
+          "capacites": ["bo-m-denombrement-05"],
+          "faux": "Codes de $3$ chiffres deux à deux distincts dont le premier chiffre n'est pas $0$ : $10 \\times 9 \\times 8 = 720$.",
+          "juste": "On traite d'abord la position qui a une contrainte : $9$ choix pour le premier chiffre (de $1$ à $9$), puis $9$ pour le deuxième ($0$ redevient permis, mais pas le premier chiffre), puis $8$ pour le troisième. Il y a $9 \\times 9 \\times 8 = 648$ codes.",
+          "explication": "Le produit $10 \\times 9 \\times 8$ compte aussi les $1 \\times 9 \\times 8 = 72$ codes qui commencent par $0$ : $720 - 72 = 648$. Quand une position est contrainte, choisis-la en premier, puis vérifie que le nombre de choix de chaque étape ne dépend pas des choix précédents."
+        },
+        {
+          "id": "l-denombrement-025",
+          "type": "retenir",
+          "texte": "$k$ éléments distincts, dans un ordre qui compte : $n \\times (n-1) \\times \\dots \\times (n-k+1) = \\dfrac{n!}{(n-k)!}$ possibilités.\n\nRanger $n$ éléments : $n!$ permutations, avec $n! = 1 \\times 2 \\times \\dots \\times n$ et $0! = 1$."
+        }
+      ]
+    },
+    {
+      "notion": "n-denombrement-combinaisons",
+      "blocs": [
+        {
+          "id": "l-denombrement-026",
+          "type": "idee",
+          "texte": "Tu dois former un groupe de $3$ délégués parmi $10$ élèves. Cette fois, l'ordre ne compte pas : le groupe Léa, Tom, Inès est le même que le groupe Tom, Inès, Léa. Tu ne comptes plus des listes, mais des **groupes**, c'est-à-dire des parties. L'astuce : un même groupe de $3$ se range de $3! = 6$ façons. Il y a donc $6$ fois moins de groupes que de listes ordonnées de $3$ élèves distincts."
+        },
+        {
+          "id": "l-denombrement-027",
+          "type": "definition",
+          "titre": "Combinaison, coefficient binomial",
+          "capacites": ["bo-m-denombrement-06"],
+          "texte": "Soit $E$ un ensemble à $n$ éléments et $k$ un entier tel que $0 \\leqslant k \\leqslant n$.\n\nUne **combinaison** de $k$ éléments de $E$ est une partie de $E$ à $k$ éléments. L'ordre n'y intervient pas : $\\{a\\,;\\,b\\} = \\{b\\,;\\,a\\}$.\n\nLe nombre de combinaisons de $k$ éléments de $E$ se note $\\binom{n}{k}$ et se lit « $k$ parmi $n$ ». C'est un **coefficient binomial**.\n\nUne telle partie se représente par un **mot** de longueur $n$ formé de $k$ lettres $1$ et de $n - k$ lettres $0$ : le $1$ en position $i$ signale que le $i$-ième élément est choisi. Elle se représente aussi par un **chemin** de l'arbre de $n$ lancers d'une pièce qui comporte exactement $k$ fois pile."
+        },
+        {
+          "id": "l-denombrement-028",
+          "type": "exemple",
+          "titre": "Les parties à deux éléments de $\\{a\\,;\\,b\\,;\\,c\\,;\\,d\\}$",
+          "capacites": ["bo-m-denombrement-06"],
+          "enonce": "Soit $E = \\{a\\,;\\,b\\,;\\,c\\,;\\,d\\}$. Écrire toutes les combinaisons de $2$ éléments de $E$, puis les coder par des mots. En déduire $\\binom{4}{2}$.",
+          "etapes": [
+            {
+              "texte": "On associe chaque élément à ceux qui le **suivent** dans l'ordre $a$, $b$, $c$, $d$ : $\\{a\\,;\\,b\\}$, $\\{a\\,;\\,c\\}$, $\\{a\\,;\\,d\\}$, puis $\\{b\\,;\\,c\\}$, $\\{b\\,;\\,d\\}$, puis $\\{c\\,;\\,d\\}$.",
+              "pourquoi": "Associer un élément seulement à ceux qui le suivent évite d'écrire $\\{b\\,;\\,a\\}$, qui est la même partie que $\\{a\\,;\\,b\\}$."
+            },
+            {
+              "texte": "On code chaque partie par un mot de $4$ lettres : la $i$-ième lettre vaut $1$ si le $i$-ième élément de $E$ est choisi, $0$ sinon.\n\n| partie | $\\{a\\,;\\,b\\}$ | $\\{a\\,;\\,c\\}$ | $\\{a\\,;\\,d\\}$ | $\\{b\\,;\\,c\\}$ | $\\{b\\,;\\,d\\}$ | $\\{c\\,;\\,d\\}$ |\n|---|---|---|---|---|---|---|\n| mot | $1100$ | $1010$ | $1001$ | $0110$ | $0101$ | $0011$ |",
+              "pourquoi": "Chaque mot obtenu contient exactement deux lettres $1$. Inversement, un mot de $4$ lettres qui contient deux $1$ et deux $0$ désigne une seule de ces parties."
+            },
+            {
+              "texte": "**Conclusion** : $E$ possède $6$ combinaisons de $2$ éléments, donc $\\binom{4}{2} = 6$. C'est aussi le nombre de mots de $4$ lettres formés de deux $1$ et de deux $0$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-029",
+          "type": "propriete",
+          "titre": "Calcul de $\\binom{n}{k}$",
+          "capacites": ["bo-m-denombrement-07"],
+          "conditions": [
+            "$n$ et $k$ sont des entiers naturels tels que $0 \\leqslant k \\leqslant n$."
+          ],
+          "admise": false,
+          "texte": "$$\\binom{n}{k} = \\frac{n \\times (n-1) \\times \\dots \\times (n-k+1)}{k!} = \\frac{n!}{(n-k)!\\,k!}.$$\n\nLa première écriture est la plus pratique à la main : au numérateur, $k$ facteurs qui descendent à partir de $n$ ; au dénominateur, $k!$. Pour $k = 0$, les deux formules donnent $1$ (le numérateur de la première, sans aucun facteur, vaut $1$ par convention)."
+        },
+        {
+          "id": "l-denombrement-030",
+          "type": "exemple",
+          "titre": "Former une équipe",
+          "capacites": ["bo-m-denombrement-07"],
+          "enonce": "Dans un club de $10$ personnes, on forme une équipe de $3$ personnes, sans rôle particulier. Combien d'équipes différentes peut-on former ?",
+          "etapes": [
+            {
+              "texte": "Une équipe est une partie à $3$ éléments de l'ensemble des $10$ membres. Le nombre d'équipes est donc $\\binom{10}{3}$.",
+              "pourquoi": "Échanger deux membres ne change pas l'équipe (pas d'ordre), et une personne ne peut pas être choisie deux fois (pas de répétition) : on compte des combinaisons."
+            },
+            {
+              "texte": "$\\binom{10}{3} = \\dfrac{10 \\times 9 \\times 8}{3!} = \\dfrac{720}{6} = 120$.",
+              "pourquoi": "Au numérateur, $3$ facteurs qui descendent à partir de $10$ ; au dénominateur, $3! = 1 \\times 2 \\times 3 = 6$."
+            },
+            {
+              "texte": "Avec l'autre formule : $\\dfrac{10!}{7!\\,3!} = \\dfrac{10 \\times 9 \\times 8}{3!} = 120$.",
+              "pourquoi": "Comme pour $\\dfrac{8!}{5!}$ dans les permutations, les facteurs de $1$ à $7$ se simplifient : $\\dfrac{10!}{7!} = 10 \\times 9 \\times 8$."
+            },
+            {
+              "texte": "**Conclusion** : on peut former $\\binom{10}{3} = 120$ équipes."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-031",
+          "type": "demonstration",
+          "titre": "Pourquoi diviser par $k!$ ?",
+          "capacites": ["bo-m-denombrement-07"],
+          "de": "l-denombrement-029",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "Soit $E$ un ensemble à $n$ éléments et $k$ un entier tel que $1 \\leqslant k \\leqslant n$. On compte de deux façons les $k$-uplets d'éléments distincts de $E$. D'après la notion précédente, il y en a $n \\times (n-1) \\times \\dots \\times (n-k+1)$."
+            },
+            {
+              "texte": "Autre façon : on choisit d'abord les $k$ éléments, c'est-à-dire une partie à $k$ éléments ($\\binom{n}{k}$ possibilités), puis l'ordre dans lequel on les range ($k!$ possibilités : les permutations de cette partie).",
+              "pourquoi": "Par exemple, la partie $\\{a\\,;\\,b\\,;\\,c\\}$ donne les $3! = 6$ triplets $(a\\,;\\,b\\,;\\,c)$, $(a\\,;\\,c\\,;\\,b)$, $(b\\,;\\,a\\,;\\,c)$, $(b\\,;\\,c\\,;\\,a)$, $(c\\,;\\,a\\,;\\,b)$ et $(c\\,;\\,b\\,;\\,a)$."
+            },
+            {
+              "texte": "D'après le principe multiplicatif, il y a donc $\\binom{n}{k} \\times k!$ tels $k$-uplets. En égalant les deux décomptes, $\\binom{n}{k} \\times k! = n \\times (n-1) \\times \\dots \\times (n-k+1)$ : on divise par $k!$ et on obtient la première formule."
+            },
+            {
+              "texte": "Enfin, $n \\times (n-1) \\times \\dots \\times (n-k+1) = \\dfrac{n!}{(n-k)!}$, ce qui donne la seconde formule. Pour $k = 0$, la seule partie à $0$ élément est $\\emptyset$, et les deux formules donnent bien $1$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-032",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-07"],
+          "question": {
+            "enonce": "À la fin d'une réunion, chacune des $6$ personnes présentes serre une fois la main de chacune des autres. Combien de poignées de main sont échangées ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 15,
+              "tolerance": 0
+            },
+            "explication": "Une poignée de main correspond à une paire de personnes, sans ordre : $\\binom{6}{2} = \\dfrac{6 \\times 5}{2} = 15$."
+          }
+        },
+        {
+          "id": "l-denombrement-033",
+          "type": "code",
+          "titre": "Générer les parties à $2$ et à $3$ éléments",
+          "capacites": ["bo-m-denombrement-16"],
+          "code": {
+            "langage": "python",
+            "source": "def parties_a_2(E):\n    resultat = []\n    n = len(E)\n    for i in range(n):\n        for j in range(i + 1, n):  # j prend les valeurs i+1, ..., n-1\n            resultat.append([E[i], E[j]])\n    return resultat\n\ndef parties_a_3(E):\n    resultat = []\n    n = len(E)\n    for i in range(n):\n        for j in range(i + 1, n):\n            for k in range(j + 1, n):  # ainsi i < j < k\n                resultat.append([E[i], E[j], E[k]])\n    return resultat\n\nE = ['a', 'b', 'c', 'd']\nprint(parties_a_2(E))\nprint(parties_a_3(E))"
+          },
+          "texte": "Les indices sont pris dans l'ordre strictement croissant ($i < j$, puis $i < j < k$) : chaque partie est produite une seule fois, ses éléments rangés dans l'ordre de la liste E. C'est le procédé de l'exemple des parties de $\\{a\\,;\\,b\\,;\\,c\\,;\\,d\\}$.\n\nLe programme affiche les $\\binom{4}{2} = 6$ parties à $2$ éléments, puis les $\\binom{4}{3} = 4$ parties à $3$ éléments :\n\n[['a', 'b'], ['a', 'c'], ['a', 'd'], ['b', 'c'], ['b', 'd'], ['c', 'd']]\n\n[['a', 'b', 'c'], ['a', 'b', 'd'], ['a', 'c', 'd'], ['b', 'c', 'd']]"
+        },
+        {
+          "id": "l-denombrement-034",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-07", "bo-m-denombrement-16"],
+          "question": {
+            "enonce": "On appelle la fonction parties_a_2 du programme ci-dessus avec une liste de $5$ éléments distincts. Combien de listes contient le résultat qu'elle renvoie ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 10,
+              "tolerance": 0
+            },
+            "explication": "La fonction produit chaque partie à $2$ éléments une seule fois : $\\binom{5}{2} = \\dfrac{5 \\times 4}{2} = 10$."
+          }
+        },
+        {
+          "id": "l-denombrement-035",
+          "type": "piege",
+          "titre": "Tirage simultané",
+          "capacites": ["bo-m-denombrement-06"],
+          "faux": "On tire simultanément $2$ cartes d'un jeu de $32$ cartes : il y a $32 \\times 31 = 992$ tirages.",
+          "juste": "Un tirage simultané est une partie à $2$ éléments du jeu : il y a $\\binom{32}{2} = \\dfrac{32 \\times 31}{2} = 496$ tirages.",
+          "explication": "Dans un tirage simultané, il n'y a ni première ni deuxième carte. Le produit $32 \\times 31$ compte chaque paire deux fois : (as de cœur ; roi de pique) et (roi de pique ; as de cœur). En revanche, pour un tirage successif sans remise, l'ordre compte et $32 \\times 31$ est juste. Demande-toi toujours si l'ordre compte."
+        },
+        {
+          "id": "l-denombrement-036",
+          "type": "complement",
+          "titre": "Combinaisons avec répétitions",
+          "capacites": ["bo-m-denombrement-13"],
+          "texte": "On choisit $3$ boules de glace parmi $4$ parfums ; un parfum peut être pris plusieurs fois et l'ordre ne compte pas. On code chaque choix par une rangée de $3$ points (les boules) et de $3$ barres (qui séparent les $4$ parfums). Par exemple, $\\bullet\\,\\bullet\\,|\\,|\\,\\bullet\\,|$ signifie : $2$ boules du premier parfum, $0$ du deuxième, $1$ du troisième et $0$ du quatrième.\n\nUne rangée compte $6$ places, et un choix revient à placer les $3$ points parmi elles : il y a $\\binom{6}{3} = 20$ choix. De même, on peut choisir $k$ objets parmi $n$ sortes, avec répétitions et sans ordre, de $\\binom{n+k-1}{k}$ façons."
+        },
+        {
+          "id": "l-denombrement-037",
+          "type": "retenir",
+          "texte": "Groupe, main de cartes, tirage simultané : l'ordre ne compte pas, on compte des parties.\n\n$\\binom{n}{k} = \\dfrac{n \\times (n-1) \\times \\dots \\times (n-k+1)}{k!} = \\dfrac{n!}{(n-k)!\\,k!}$, lu « $k$ parmi $n$ »."
+        }
+      ]
+    },
+    {
+      "notion": "n-denombrement-pascal",
+      "blocs": [
+        {
+          "id": "l-denombrement-038",
+          "type": "idee",
+          "texte": "Calculer $\\binom{20}{18}$ avec des factorielles serait long. Heureusement, les coefficients binomiaux ont des régularités. Choisir $18$ élèves parmi $20$, c'est choisir les $2$ qui restent : $\\binom{20}{18} = \\binom{20}{2}$. Et chaque coefficient est la somme de deux coefficients plus petits. Rangés en triangle, ils se calculent de proche en proche, par de simples additions : c'est le **triangle de Pascal**."
+        },
+        {
+          "id": "l-denombrement-039",
+          "type": "propriete",
+          "titre": "Valeurs particulières et symétrie",
+          "capacites": ["bo-m-denombrement-08"],
+          "conditions": [
+            "$n$ et $k$ sont des entiers naturels tels que $0 \\leqslant k \\leqslant n$.",
+            "$\\binom{n}{1} = n$ suppose $n \\geqslant 1$ ; $\\binom{n}{2} = \\dfrac{n(n-1)}{2}$ suppose $n \\geqslant 2$."
+          ],
+          "admise": false,
+          "texte": "$$\\binom{n}{0} = \\binom{n}{n} = 1, \\qquad \\binom{n}{1} = n, \\qquad \\binom{n}{2} = \\frac{n(n-1)}{2}.$$\n\n**Symétrie** :\n\n$$\\binom{n}{n-k} = \\binom{n}{k}.$$"
+        },
+        {
+          "id": "l-denombrement-040",
+          "type": "exemple",
+          "titre": "Binômes et symétrie",
+          "capacites": ["bo-m-denombrement-08"],
+          "enonce": "**1.** Combien de binômes (groupes de $2$ élèves) peut-on former dans une classe de $24$ élèves ?\n\n**2.** Calculer $\\binom{24}{22}$.",
+          "etapes": [
+            {
+              "texte": "Un binôme est une partie à $2$ éléments de la classe. Il y en a $\\binom{24}{2} = \\dfrac{24 \\times 23}{2} = 12 \\times 23 = 276$.",
+              "pourquoi": "C'est la formule de $\\binom{n}{2}$ avec $n = 24$. Diviser $24$ par $2$ d'abord simplifie le calcul."
+            },
+            {
+              "texte": "Par symétrie, $\\binom{24}{22} = \\binom{24}{24 - 22} = \\binom{24}{2} = 276$.",
+              "pourquoi": "Choisir les $22$ élèves qui restent en classe revient à choisir les $2$ qui sortent."
+            },
+            {
+              "texte": "**Conclusion** : on peut former $276$ binômes, et $\\binom{24}{22} = 276$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-041",
+          "type": "demonstration",
+          "titre": "Justification des valeurs particulières et de la symétrie",
+          "capacites": ["bo-m-denombrement-08"],
+          "de": "l-denombrement-039",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "Soit $E$ un ensemble à $n$ éléments. La seule partie de $E$ à $0$ élément est $\\emptyset$, et la seule à $n$ éléments est $E$ : $\\binom{n}{0} = \\binom{n}{n} = 1$."
+            },
+            {
+              "texte": "Les parties à $1$ élément sont les $\\{x\\}$ avec $x \\in E$ : il y en a $n$. La formule de calcul avec $k = 2$ donne $\\binom{n}{2} = \\dfrac{n(n-1)}{2!} = \\dfrac{n(n-1)}{2}$."
+            },
+            {
+              "texte": "À chaque partie $A$ à $k$ éléments, on associe son **complémentaire** $\\overline{A}$ (lu « $A$ barre »), formé des éléments de $E$ qui ne sont pas dans $A$. Il a $n - k$ éléments.",
+              "pourquoi": "Inversement, une partie $B$ à $n - k$ éléments est le complémentaire d'une seule partie à $k$ éléments : $\\overline{B}$. La correspondance marche dans les deux sens."
+            },
+            {
+              "texte": "Il y a donc autant de parties à $k$ éléments que de parties à $n - k$ éléments : $\\binom{n}{n-k} = \\binom{n}{k}$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-042",
+          "type": "propriete",
+          "titre": "Relation de Pascal, triangle de Pascal",
+          "capacites": ["bo-m-denombrement-08"],
+          "conditions": [
+            "$n$ et $k$ sont des entiers naturels tels que $0 \\leqslant k \\leqslant n - 1$."
+          ],
+          "admise": false,
+          "texte": "$$\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}.$$\n\nOn range les coefficients dans un tableau : la ligne $n$ contient $\\binom{n}{0}, \\binom{n}{1}, \\dots, \\binom{n}{n}$. Chaque ligne commence et finit par $1$. D'après la relation, chacun des autres nombres est la somme du nombre situé juste au-dessus de lui et de celui situé au-dessus à gauche. Ce tableau est le **triangle de Pascal**."
+        },
+        {
+          "id": "l-denombrement-043",
+          "type": "exemple",
+          "titre": "Construire le triangle jusqu'à la ligne $6$",
+          "capacites": ["bo-m-denombrement-08"],
+          "enonce": "Construire les lignes $0$ à $6$ du triangle de Pascal, puis y lire $\\binom{6}{3}$.",
+          "etapes": [
+            {
+              "texte": "Ligne $0$ : $1$. Ligne $1$ : $1$, $1$.",
+              "pourquoi": "Chaque ligne commence et finit par $1$, car $\\binom{n}{0} = \\binom{n}{n} = 1$."
+            },
+            {
+              "texte": "Ligne $2$ : $1$, $1 + 1 = 2$, $1$. Ligne $3$ : $1$, $1 + 2 = 3$, $2 + 1 = 3$, $1$.",
+              "pourquoi": "Par exemple, $\\binom{3}{1} = \\binom{2}{0} + \\binom{2}{1} = 1 + 2 = 3$ : c'est la relation de Pascal avec $n = 2$ et $k = 0$."
+            },
+            {
+              "texte": "On continue de la même façon :\n\n| | $k=0$ | $k=1$ | $k=2$ | $k=3$ | $k=4$ | $k=5$ | $k=6$ |\n|---|---|---|---|---|---|---|---|\n| $n=0$ | $1$ | | | | | | |\n| $n=1$ | $1$ | $1$ | | | | | |\n| $n=2$ | $1$ | $2$ | $1$ | | | | |\n| $n=3$ | $1$ | $3$ | $3$ | $1$ | | | |\n| $n=4$ | $1$ | $4$ | $6$ | $4$ | $1$ | | |\n| $n=5$ | $1$ | $5$ | $10$ | $10$ | $5$ | $1$ | |\n| $n=6$ | $1$ | $6$ | $15$ | $20$ | $15$ | $6$ | $1$ |",
+              "pourquoi": "Par exemple, ligne $5$ : $\\binom{5}{2} = \\binom{4}{1} + \\binom{4}{2} = 4 + 6 = 10$."
+            },
+            {
+              "texte": "On lit $\\binom{6}{3}$ sur la ligne $n = 6$, dans la colonne $k = 3$ : $\\binom{6}{3} = 20$. Vérification : $\\dfrac{6 \\times 5 \\times 4}{3!} = \\dfrac{120}{6} = 20$."
+            },
+            {
+              "texte": "**Conclusion** : $\\binom{6}{3} = 20$. Remarque : les sommes des lignes $0$ à $6$ valent $1$, $2$, $4$, $8$, $16$, $32$, $64$, c'est-à-dire $2^0, 2^1, \\dots, 2^6$. Ce n'est pas un hasard : voir plus bas."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-044",
+          "type": "demonstration",
+          "titre": "Démonstration de la relation de Pascal par le calcul",
+          "capacites": ["bo-m-denombrement-12"],
+          "de": "l-denombrement-042",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "Soit $n$ et $k$ des entiers naturels tels que $0 \\leqslant k \\leqslant n - 1$. D'après la formule de calcul des coefficients binomiaux :\n\n$$\\binom{n}{k} + \\binom{n}{k+1} = \\frac{n!}{(n-k)!\\,k!} + \\frac{n!}{(n-k-1)!\\,(k+1)!}.$$",
+              "pourquoi": "Pour $\\binom{n}{k+1}$, on remplace $k$ par $k + 1$ : $n - (k+1) = n - k - 1$, qui est positif ou nul car $k \\leqslant n - 1$."
+            },
+            {
+              "texte": "On réduit au même dénominateur $(n-k)!\\,(k+1)!$, en utilisant $(n-k)! = (n-k) \\times (n-k-1)!$ et $(k+1)! = (k+1) \\times k!$ :\n\n$$\\frac{n!}{(n-k)!\\,k!} = \\frac{n! \\times (k+1)}{(n-k)!\\,(k+1)!} \\quad \\text{et} \\quad \\frac{n!}{(n-k-1)!\\,(k+1)!} = \\frac{n! \\times (n-k)}{(n-k)!\\,(k+1)!}.$$",
+              "pourquoi": "Une factorielle est le produit de son dernier facteur par la factorielle précédente, par exemple $5! = 5 \\times 4!$. On multiplie donc la première fraction en haut et en bas par $k + 1$, la seconde par $n - k$."
+            },
+            {
+              "texte": "On additionne les numérateurs :\n\n$$\\binom{n}{k} + \\binom{n}{k+1} = \\frac{n! \\times \\big((k+1) + (n-k)\\big)}{(n-k)!\\,(k+1)!} = \\frac{n! \\times (n+1)}{(n-k)!\\,(k+1)!} = \\frac{(n+1)!}{(n-k)!\\,(k+1)!}.$$",
+              "pourquoi": "$(k+1) + (n-k) = n + 1$, et $n! \\times (n+1) = (n+1)!$."
+            },
+            {
+              "texte": "Or, d'après la même formule, $\\binom{n+1}{k+1} = \\dfrac{(n+1)!}{\\big((n+1)-(k+1)\\big)!\\,(k+1)!} = \\dfrac{(n+1)!}{(n-k)!\\,(k+1)!}$. Donc $\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-045",
+          "type": "demonstration",
+          "titre": "Démonstration de la relation de Pascal par une méthode combinatoire",
+          "capacites": ["bo-m-denombrement-12"],
+          "de": "l-denombrement-042",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "Soit $n$ et $k$ des entiers naturels tels que $0 \\leqslant k \\leqslant n - 1$. Soit $F$ un ensemble à $n + 1$ éléments, $a$ l'un de ses éléments, et $E$ l'ensemble des $n$ autres éléments. Il y a $\\binom{n+1}{k+1}$ parties de $F$ à $k + 1$ éléments."
+            },
+            {
+              "texte": "On sépare ces parties en deux groupes : celles qui contiennent $a$ et celles qui ne le contiennent pas.",
+              "pourquoi": "Une partie contient $a$ ou ne le contient pas, jamais les deux : les deux groupes sont disjoints, on pourra appliquer le principe additif."
+            },
+            {
+              "texte": "Une partie à $k + 1$ éléments qui contient $a$ est formée de $a$ et de $k$ éléments choisis dans $E$ : il y en a $\\binom{n}{k}$.",
+              "pourquoi": "En retirant $a$, on obtient une partie de $E$ à $k$ éléments ; en ajoutant $a$ à une telle partie, on revient au départ. La correspondance marche dans les deux sens."
+            },
+            {
+              "texte": "Une partie à $k + 1$ éléments qui ne contient pas $a$ est formée de $k + 1$ éléments de $E$ : il y en a $\\binom{n}{k+1}$.",
+              "pourquoi": "C'est possible car $k + 1 \\leqslant n$."
+            },
+            {
+              "texte": "D'après le principe additif, $\\binom{n+1}{k+1} = \\binom{n}{k} + \\binom{n}{k+1}$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-046",
+          "type": "code",
+          "titre": "Calculer la ligne $n$ du triangle de Pascal",
+          "capacites": ["bo-m-denombrement-14"],
+          "code": {
+            "langage": "python",
+            "source": "def ligne_pascal(n):\n    ligne = [1]  # ligne 0 du triangle\n    for i in range(n):  # passage de la ligne i à la ligne i + 1\n        nouvelle = [1]\n        for k in range(len(ligne) - 1):\n            nouvelle.append(ligne[k] + ligne[k + 1])  # relation de Pascal\n        nouvelle.append(1)\n        ligne = nouvelle\n    return ligne\n\nprint(ligne_pascal(4))\nprint(ligne_pascal(6))"
+          },
+          "texte": "La variable ligne contient la ligne $i$ du triangle : $\\binom{i}{0}, \\binom{i}{1}, \\dots, \\binom{i}{i}$. La ligne suivante commence par $1$ ; chacun de ses termes intérieurs est la somme de deux termes voisins de la ligne $i$, d'après la relation de Pascal $\\binom{i}{k} + \\binom{i}{k+1} = \\binom{i+1}{k+1}$ ; elle finit par $1$. Après $n$ tours de boucle, la fonction renvoie la liste des $\\binom{n}{k}$ pour $k$ allant de $0$ à $n$.\n\nLe programme affiche [1, 4, 6, 4, 1] puis [1, 6, 15, 20, 15, 6, 1]."
+        },
+        {
+          "id": "l-denombrement-047",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-08"],
+          "question": {
+            "enonce": "On donne $\\binom{9}{3} = 84$ et $\\binom{9}{4} = 126$. Combien vaut $\\binom{10}{4}$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 210,
+              "tolerance": 0
+            },
+            "explication": "Relation de Pascal avec $n = 9$ et $k = 3$ : $\\binom{10}{4} = \\binom{9}{3} + \\binom{9}{4} = 84 + 126 = 210$."
+          }
+        },
+        {
+          "id": "l-denombrement-048",
+          "type": "rappel",
+          "titre": "Rappel : le nombre de parties",
+          "texte": "Un ensemble à $n$ éléments possède $2^n$ parties, en comptant $\\emptyset$ et l'ensemble lui-même. Ce résultat a été établi en codant chaque partie par un $n$-uplet de $\\{0\\,;\\,1\\}$.",
+          "lien": "n-denombrement-principes"
+        },
+        {
+          "id": "l-denombrement-049",
+          "type": "propriete",
+          "titre": "Somme des coefficients binomiaux d'une ligne",
+          "capacites": ["bo-m-denombrement-11"],
+          "conditions": [
+            "$n$ est un entier naturel."
+          ],
+          "admise": false,
+          "texte": "$$\\sum_{k=0}^{n} \\binom{n}{k} = 2^n.$$\n\nLe symbole $\\sum$ (sigma majuscule) note une somme : $\\sum_{k=0}^{n} \\binom{n}{k}$ se lit « somme pour $k$ allant de $0$ à $n$ de $\\binom{n}{k}$ » et vaut $\\binom{n}{0} + \\binom{n}{1} + \\dots + \\binom{n}{n}$. Autrement dit, la somme des nombres de la ligne $n$ du triangle de Pascal vaut $2^n$."
+        },
+        {
+          "id": "l-denombrement-050",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-11"],
+          "question": {
+            "enonce": "Sans calculer chaque terme, que vaut $\\binom{7}{0} + \\binom{7}{1} + \\binom{7}{2} + \\dots + \\binom{7}{7}$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 128,
+              "tolerance": 0
+            },
+            "explication": "C'est la somme des nombres de la ligne $7$ du triangle : $2^7 = 128$."
+          }
+        },
+        {
+          "id": "l-denombrement-051",
+          "type": "demonstration",
+          "titre": "Démonstration par dénombrement",
+          "capacites": ["bo-m-denombrement-11"],
+          "de": "l-denombrement-049",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "Soit $n$ un entier naturel et $E$ un ensemble à $n$ éléments. On compte les parties de $E$ de deux façons."
+            },
+            {
+              "texte": "Première façon : $E$ possède $2^n$ parties (voir le rappel ci-dessus)."
+            },
+            {
+              "texte": "Seconde façon : on range les parties de $E$ selon leur nombre d'éléments $k$, qui va de $0$ à $n$. Pour chaque $k$, il y a $\\binom{n}{k}$ parties à $k$ éléments.",
+              "pourquoi": "C'est la définition de $\\binom{n}{k}$ : le nombre de parties à $k$ éléments d'un ensemble à $n$ éléments."
+            },
+            {
+              "texte": "Ces $n + 1$ groupes de parties sont deux à deux disjoints, car une partie n'a qu'un seul nombre d'éléments ; réunis, ils contiennent toutes les parties de $E$. D'après le principe additif, $E$ possède $\\binom{n}{0} + \\binom{n}{1} + \\dots + \\binom{n}{n} = \\sum_{k=0}^{n} \\binom{n}{k}$ parties."
+            },
+            {
+              "texte": "En égalant les deux décomptes : $\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-052",
+          "type": "piege",
+          "titre": "Où placer la somme ?",
+          "capacites": ["bo-m-denombrement-08"],
+          "faux": "$\\binom{5}{2} + \\binom{5}{3} = \\binom{6}{2}$.",
+          "juste": "$\\binom{5}{2} + \\binom{5}{3} = \\binom{6}{3}$ : $10 + 10 = 20$.",
+          "explication": "Les deux termes ajoutés sont voisins sur la ligne $n$ ; leur somme se place sur la ligne $n + 1$, **sous le terme de droite**. L'indice du bas est donc le plus grand des deux, $k + 1$. Vérifie sur le triangle : $\\binom{6}{2} = 15$, pas $20$."
+        },
+        {
+          "id": "l-denombrement-053",
+          "type": "retenir",
+          "texte": "$\\binom{n}{0} = \\binom{n}{n} = 1$, $\\binom{n}{1} = n$, $\\binom{n}{2} = \\dfrac{n(n-1)}{2}$ et $\\binom{n}{n-k} = \\binom{n}{k}$.\n\nPascal : $\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}$. Somme d'une ligne : $\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$."
+        }
+      ]
+    },
+    {
+      "notion": "n-denombrement-problemes",
+      "blocs": [
+        {
+          "id": "l-denombrement-054",
+          "type": "idee",
+          "texte": "Au bac, la difficulté n'est pas la formule mais le choix de la formule. Avant tout calcul, pose-toi deux questions : l'ordre compte-t-il ? Un même élément peut-il revenir ? Ensuite, découpe la situation en cas ou en étapes. Et si on te demande une probabilité alors que toutes les issues ont la même chance, tout se ramène à deux dénombrements : les cas favorables et les cas possibles."
+        },
+        {
+          "id": "l-denombrement-055",
+          "type": "methode",
+          "titre": "Comment reconnaître ce qu'on dénombre ?",
+          "capacites": ["bo-m-denombrement-09"],
+          "etapes": [
+            "Écris un résultat possible avec des éléments concrets (un code, une main de cartes, un groupe) : c'est l'objet que tu comptes. Si cela t'aide, représente la situation par un arbre, un tableau ou un schéma des ensembles.",
+            "Demande-toi si **l'ordre compte** : en échangeant deux éléments, obtiens-tu un autre résultat ? Puis si un même élément **peut revenir**.",
+            "Choisis le modèle :\n\n- ordre qui compte, répétitions permises : $k$-uplets, $n^k$ ;\n- ordre qui compte, sans répétition : $k$-uplets d'éléments distincts, $n \\times (n-1) \\times \\dots \\times (n-k+1)$, et $n!$ pour ranger $n$ éléments ;\n- ordre qui ne compte pas, sans répétition : combinaisons, $\\binom{n}{k}$.",
+            "Si la situation se découpe en cas qui ne se recouvrent pas, **additionne** les nombres de chaque cas ; si elle se fait en étapes successives, **multiplie**.",
+            "Pour « au moins un », compte plutôt le contraire (« aucun ») et retire-le du total."
+          ],
+          "exemple": "l-denombrement-058"
+        },
+        {
+          "id": "l-denombrement-056",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-09"],
+          "question": {
+            "enonce": "On distribue à un joueur une main de $5$ cartes prises dans un jeu de $32$ cartes ; l'ordre dans lequel il les reçoit n'a pas d'importance. Quel nombre compte les mains possibles ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\binom{32}{5}$",
+                "$32^5$",
+                "$32 \\times 31 \\times 30 \\times 29 \\times 28$",
+                "$5^{32}$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "$32^5$ compte des $5$-uplets avec répétitions : or une même carte ne peut pas être distribuée deux fois, et l'ordre ne compte pas.",
+                "Ce produit compte les $5$-uplets de cartes distinctes : il tient compte de l'ordre de distribution, qui n'a pas d'importance ici.",
+                "La base et l'exposant sont inversés, et ce modèle suppose des répétitions et un ordre : aucun des deux ici."
+              ]
+            },
+            "explication": "Une main est une partie à $5$ éléments du jeu : ni ordre, ni répétition. Il y en a $\\binom{32}{5}$."
+          }
+        },
+        {
+          "id": "l-denombrement-057",
+          "type": "rappel",
+          "titre": "Rappel : probabilité et équiprobabilité",
+          "texte": "Quand toutes les issues d'une expérience ont la même probabilité, on parle d'**équiprobabilité** : tirage « au hasard », pièce ou dé équilibrés. La probabilité d'un événement $A$ est alors :\n\n$$P(A) = \\frac{\\text{nombre de cas favorables}}{\\text{nombre de cas possibles}},$$\n\noù les cas favorables sont les issues qui réalisent $A$. Pour l'événement contraire $\\overline{A}$ : $P(\\overline{A}) = 1 - P(A)$.",
+          "lien": "1e:probas-cond"
+        },
+        {
+          "id": "l-denombrement-058",
+          "type": "exemple",
+          "titre": "Tirage simultané dans une urne",
+          "capacites": ["bo-m-denombrement-09", "bo-m-denombrement-10"],
+          "enonce": "Une urne contient $8$ boules indiscernables au toucher : $5$ rouges et $3$ noires. On tire simultanément $3$ boules au hasard.\n\n**1.** Combien y a-t-il de tirages possibles ?\n\n**2.** Combien de tirages contiennent exactement $2$ boules rouges ?\n\n**3.** Combien de tirages contiennent au moins une boule noire ?\n\n**4.** Quelle est la probabilité d'obtenir exactement $2$ boules rouges ?",
+          "etapes": [
+            {
+              "texte": "Un tirage simultané de $3$ boules est une partie à $3$ éléments de l'ensemble des $8$ boules. Il y a $\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3!} = \\dfrac{336}{6} = 56$ tirages.",
+              "pourquoi": "Simultané : pas d'ordre, pas de répétition. On imagine les boules numérotées pour les distinguer, même si deux boules de même couleur se ressemblent."
+            },
+            {
+              "texte": "Un tirage avec exactement $2$ rouges contient $2$ rouges et $1$ noire. On choisit les $2$ rouges parmi $5$ : $\\binom{5}{2} = 10$ façons ; puis la noire parmi $3$ : $\\binom{3}{1} = 3$ façons. D'après le principe multiplicatif, il y a $10 \\times 3 = 30$ tels tirages.",
+              "pourquoi": "Le choix se fait en deux étapes, et le nombre de noires possibles ne dépend pas des rouges choisies : on multiplie."
+            },
+            {
+              "texte": "Le contraire de « au moins une noire » est « aucune noire », c'est-à-dire « $3$ rouges » : il y a $\\binom{5}{3} = \\binom{5}{2} = 10$ tels tirages. Donc $56 - 10 = 46$ tirages contiennent au moins une noire.",
+              "pourquoi": "Chaque tirage contient au moins une noire ou n'en contient aucune, jamais les deux : les deux nombres ont pour somme le total, $56$."
+            },
+            {
+              "texte": "Le tirage se fait au hasard : les $56$ tirages sont équiprobables. La probabilité d'obtenir exactement $2$ rouges est $\\dfrac{30}{56} = \\dfrac{15}{28}$.",
+              "pourquoi": "Cas favorables et cas possibles sont comptés avec le même modèle (des parties à $3$ éléments) ; on simplifie la fraction par $2$."
+            },
+            {
+              "texte": "**Conclusion** : il y a $56$ tirages possibles, dont $30$ avec exactement $2$ rouges et $46$ avec au moins une noire ; la probabilité d'obtenir exactement $2$ rouges est $\\dfrac{15}{28}$."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-059",
+          "type": "verifie",
+          "capacites": ["bo-m-denombrement-10"],
+          "question": {
+            "enonce": "Une urne contient $5$ boules, dont $2$ rouges. On tire simultanément $2$ boules au hasard. Quelle est la probabilité de tirer les $2$ boules rouges ? Réponds par une fraction ou un nombre décimal.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": "1/10",
+              "tolerance": 0
+            },
+            "explication": "Il y a $\\binom{5}{2} = 10$ tirages équiprobables, dont un seul contient les deux rouges ($\\binom{2}{2} = 1$) : la probabilité vaut $\\dfrac{1}{10}$."
+          }
+        },
+        {
+          "id": "l-denombrement-060",
+          "type": "exemple",
+          "titre": "Séquences d'ADN",
+          "capacites": ["bo-m-denombrement-10"],
+          "enonce": "Un brin d'ADN porte une suite de bases, chacune choisie parmi A, C, G et T. On étudie les séquences de $5$ bases, par exemple GATTC.\n\n**1.** Combien y a-t-il de séquences ?\n\n**2.** Combien contiennent exactement deux fois la base A ?\n\n**3.** Combien contiennent au moins une fois la base A ?",
+          "etapes": [
+            {
+              "texte": "Une séquence est un $5$-uplet d'éléments de $\\{\\mathrm{A}\\,;\\,\\mathrm{C}\\,;\\,\\mathrm{G}\\,;\\,\\mathrm{T}\\}$ : l'ordre compte et une base peut se répéter. Il y en a $4^5 = 1\\,024$.",
+              "pourquoi": "Principe multiplicatif : $4$ choix pour chacune des $5$ positions. $4^5 = 4 \\times 4 \\times 4 \\times 4 \\times 4 = 16 \\times 16 \\times 4 = 1\\,024$."
+            },
+            {
+              "texte": "Pour une séquence qui contient exactement deux A : on choisit d'abord les $2$ positions des A parmi les $5$, soit $\\binom{5}{2} = 10$ façons ; puis on remplit chacune des $3$ autres positions avec C, G ou T, soit $3^3 = 27$ façons. Il y a donc $10 \\times 27 = 270$ séquences.",
+              "pourquoi": "Les positions des A forment une partie à $2$ éléments de $\\{1\\,;\\,2\\,;\\,3\\,;\\,4\\,;\\,5\\}$ : leur ordre ne compte pas. Le reste de la séquence est un triplet de $\\{\\mathrm{C}\\,;\\,\\mathrm{G}\\,;\\,\\mathrm{T}\\}$, où l'ordre compte."
+            },
+            {
+              "texte": "Les séquences sans A sont les $5$-uplets de $\\{\\mathrm{C}\\,;\\,\\mathrm{G}\\,;\\,\\mathrm{T}\\}$ : il y en a $3^5 = 243$. Donc $1\\,024 - 243 = 781$ séquences contiennent au moins un A.",
+              "pourquoi": "« Au moins un A » est le contraire de « aucun A » : on retire du total les séquences sans A."
+            },
+            {
+              "texte": "**Conclusion** : il y a $1\\,024$ séquences de $5$ bases ; $270$ contiennent exactement deux A et $781$ au moins un A."
+            }
+          ]
+        },
+        {
+          "id": "l-denombrement-061",
+          "type": "piege",
+          "titre": "« Au moins un » compté à la main",
+          "capacites": ["bo-m-denombrement-09"],
+          "faux": "Dans l'urne de l'exemple ($5$ rouges, $3$ noires, $3$ boules tirées simultanément), pour compter les tirages avec au moins une noire, on choisit une noire ($3$ façons) puis $2$ boules parmi les $7$ restantes ($\\binom{7}{2} = 21$ façons) : $3 \\times 21 = 63$ tirages.",
+          "juste": "On passe par le contraire : $\\binom{8}{3} - \\binom{5}{3} = 56 - 10 = 46$ tirages contiennent au moins une noire.",
+          "explication": "Le calcul $3 \\times 21$ compte plusieurs fois les tirages qui ont plusieurs noires : un tirage avec deux noires est obtenu en choisissant d'abord l'une, ou d'abord l'autre. D'ailleurs, $63$ dépasse le nombre total de tirages, $56$ : c'est impossible. Pour « au moins un », passe par le contraire."
+        },
+        {
+          "id": "l-denombrement-062",
+          "type": "retenir",
+          "texte": "Avant de calculer : **l'ordre compte-t-il ? un élément peut-il revenir ?** Puis découpe en cas (on additionne) ou en étapes (on multiplie).\n\n« Au moins un » : total moins « aucun ». En équiprobabilité : $P(A) = \\dfrac{\\text{cas favorables}}{\\text{cas possibles}}$, comptés avec le même modèle."
+        }
+      ]
+    }
+  ]
+}

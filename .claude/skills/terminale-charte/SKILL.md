@@ -215,8 +215,12 @@ ordre de l'année.
 
 `priorite` ∈ 1, 2, 3 (§ 5). `priorisation` ∈ `annales`, `estimation`. `pourquoi` : une
 phrase en clair pour l'élève. `prerequis` : identifiants de notions, ou `1e:<slug>` pour un
-chapitre de maths de première (lien vers `/premiere/maths/<slug>`). `attendusBac` : 1 à 3
+chapitre de maths de première (lien vers `/premiere/maths/<slug>`). `attendusBac` : 0 à 3
 formulations **réelles** relevées dans `annales.json` (vide tant que l'index n'existe pas).
+**Seulement des questions ou des consignes** (« Déterminer… », « Combien… », « Justifier
+que… »), qui se comprennent seules : **jamais une affirmation de vrai-faux** — elle peut être
+fausse, et l'élève la lirait comme un fait (retour du chapitre pilote `denombrement`). Mieux
+vaut une liste vide qu'une formulation trompeuse.
 
 ### 3.5 `cours.json`
 
