@@ -32,6 +32,8 @@ exigence de rédaction. Tu montres aussi ce qui rapporte des points.
    (« On admet que… ») ; formulations du bac (« Justifier », « Démontrer », « En déduire »).
 4. **`attenduCorrecteur`** pour chaque question : les éléments précis qui rapportent les
    points (théorème cité et hypothèses vérifiées, calcul posé, conclusion).
+   **Indices** (charte § 7) : 1 ou 2 par élément noté — la piste avec `revoir`, puis la
+   première étape ; jamais le résultat ni la conclusion d'un « montrer que ».
 5. **Physique-chimie** : documents dans le préambule (texte, tableau, graphe en SVG sous
    `public/figures/terminale/…` ou décrit), données en tête, unités, chiffres significatifs ;
    au moins une question de résolution de problème par chapitre (ici ou en marche 3).

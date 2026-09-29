@@ -25,13 +25,15 @@ jamais `git`.
    (ce qui a été enseigné, et les identifiants de blocs pour `revoir`) ; `exercices.json` et
    `flash.json` s'ils existent (fusion, identifiants uniques). Sans cours : arrête-toi.
 2. **Marche 1 — Comprendre** : pour chaque notion, le quota de la charte ; une notion, un
-   geste ; réponse **vérifiable** (qcm, vrai-faux, numérique, ordre) ; 0 ou 1 indice ;
+   geste ; réponse **vérifiable** (qcm, vrai-faux, numérique, ordre) ; **2 indices** (la
+   piste avec `revoir`, puis la première étape faite ou la formule appliquée aux données) ;
    `pourquoiFaux` sur chaque choix faux d'un QCM (l'erreur typique qu'il révèle).
-3. **Marche 2 — S'entraîner** : les méthodes du cours, une notion principale ; **trois
-   indices** vraiment progressifs (piste + `revoir` → première étape faite → presque la
-   solution) ; solution rédigée comme au bac ; réponse vérifiable si le résultat final est
-   une valeur, sinon `redaction`.
-4. **Marche 3 — Approfondir** : au moins deux notions, prise d'initiative, 2 ou 3 indices ; en
+3. **Marche 2 — S'entraîner** : les méthodes du cours, une notion principale ; **3 ou 4
+   indices** vraiment progressifs (piste + `revoir` → première étape faite → étape suivante
+   → presque la solution ; 4 quand la question a plusieurs étapes), aucun ne donne la valeur
+   à saisir (« Voir la réponse » vient après le dernier) ; solution rédigée comme au bac ;
+   réponse vérifiable si le résultat final est une valeur, sinon `redaction`.
+4. **Marche 3 — Approfondir** : au moins deux notions, prise d'initiative, 3 ou 4 indices ; en
    physique-chimie, au moins une **résolution de problème** par chapitre (ici ou en type bac).
 5. **Questions éclair** : quota par notion ; < 60 s ; distracteurs = erreurs typiques ;
    `explication` qui enseigne.

@@ -15,7 +15,8 @@
  * conforme au schéma, identifiant inconnu ou en double, ligne du chapitre hors notion ou
  * dans plusieurs notions, exigence du § 9.2 non remplie, plancher du § 5.3 non atteint,
  * citation interdite (chapitre ultérieur, ligne non exigible hors complement / marche 3,
- * ligne d'une notion que l'élément ne déclare pas), forme d'une marche (§ 6), déroulé d'une
+ * ligne d'une notion que l'élément ne déclare pas), forme d'une marche (§ 6), indices d'un
+ * élément noté du type bac (§ 7 : 1 ou 2), déroulé d'une
  * section (§ 4.1), nombre de notions (§ 11), garde-fou des incontournables (§ 5.1),
  * formulation « du bac » absente des annales, figure introuvable.
  * Avertissements (à regarder) : plafond indicatif dépassé (double du plancher), carte de
@@ -55,12 +56,14 @@ const PLANCHERS = {
   typeBac: { libelle: 'type bac', partie: 'exercices', valeurs: { 3: 2, 2: 1, 1: 0 } },
 };
 
-// --- Forme des marches (charte § 6) ------------------------------------------------
+// --- Forme des marches (charte § 6 ; indices relevés le 2026-09-29, retour de Thibaud) --
 const MARCHES = {
-  1: { nom: 'Comprendre', questions: [1, 3], duree: [1, 5], indices: [0, 1], notionsMin: 1, notionsMax: 1 },
-  2: { nom: "S'entraîner", questions: [2, 5], duree: [5, 15], indices: [3, 3], notionsMin: 1 },
-  3: { nom: 'Approfondir', questions: [3, 6], duree: [15, 30], indices: [2, 3], notionsMin: 2 },
+  1: { nom: 'Comprendre', questions: [1, 3], duree: [1, 5], indices: [2, 2], notionsMin: 1, notionsMax: 1 },
+  2: { nom: "S'entraîner", questions: [2, 5], duree: [5, 15], indices: [3, 4], notionsMin: 1 },
+  3: { nom: 'Approfondir', questions: [3, 6], duree: [15, 30], indices: [3, 4], notionsMin: 2 },
 };
+/** Indices d'un élément noté du type bac (question sans sous-question, ou sous-question). */
+const INDICES_TYPE_BAC = [1, 2];
 const TYPE_BAC_PAR_CHAPITRE = [3, 5];
 const NOTIONS_PAR_CHAPITRE = [3, 6];
 
@@ -320,6 +323,17 @@ export function couverture({ matiere, slug, partie, racine }) {
           if (q.reponse?.type === 'qcm' && !q.reponse.pourquoiFaux) ecart('marche', `${x.id} ${q.id}`, 'marche 1 : un QCM porte pourquoiFaux.');
         }
         if (nbIndices >= 2 && !q.revoir) avertir('revoir', `${x.id} ${q.id}`, 'indices sans « revoir » vers le bloc de cours (charte § 6).');
+      }
+    }
+    for (const x of typeBac) {
+      for (const q of liste(x.questions)) {
+        const elements = liste(q.sousQuestions).length > 0 ? liste(q.sousQuestions).map((s) => [`${q.id}.${s.id}`, s]) : [[q.id, q]];
+        for (const [id, e] of elements) {
+          const nb = liste(e.indices).length;
+          if (nb < INDICES_TYPE_BAC[0] || nb > INDICES_TYPE_BAC[1]) {
+            ecart('type-bac-indices', `${x.id} ${id}`, `${nb} indice(s), de ${INDICES_TYPE_BAC[0]} à ${INDICES_TYPE_BAC[1]} attendus par élément noté (charte § 7).`);
+          }
+        }
       }
     }
     if (matiere === 'physique-chimie') {
