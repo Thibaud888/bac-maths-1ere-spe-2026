@@ -379,7 +379,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
       en parcours dans l'ordre du cours, chacune avec ce qu'elle apprend à faire (nouveau
       champ `resume`, obligatoire) et un exemple de question de bac ; la question de loi
       binomiale (« 10 tirages avec remise ») retirée de « ce que le bac demande ». Charte
-      § 3.3, § 3.4, agent `tle-architecte`. PR : #99.
+      § 3.3, § 3.4, agent `tle-architecte`. PR : #100.
     - [ ] Plus d'indices dans les exercices, même en « Comprendre » — charte § 6 (2 en
       Comprendre, 3 ou 4 en S'entraîner et Approfondir, 1 ou 2 par question type bac),
       contrôle de `couverture-terminale.mjs`, contenu du Dénombrement.
