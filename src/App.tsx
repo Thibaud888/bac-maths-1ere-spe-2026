@@ -12,7 +12,7 @@ import MatiereAccueilPage from '@/routes/terminale/MatiereAccueilPage';
 import ChapitreLayout from '@/routes/terminale/chapitre/ChapitreLayout';
 import ApercuPage from '@/routes/terminale/chapitre/ApercuPage';
 import { CoursIndex, CoursNotionPage } from '@/routes/terminale/chapitre/CoursPage';
-import TleExercicesPage, { ExercicePage } from '@/routes/terminale/chapitre/ExercicesPage';
+import TleExercicesPage, { EclairPage, ExercicePage } from '@/routes/terminale/chapitre/ExercicesPage';
 import TypeBacPage, { TypeBacExercicePage } from '@/routes/terminale/chapitre/TypeBacPage';
 import MemoPage from '@/routes/terminale/chapitre/MemoPage';
 import type { Matiere } from '@/lib/terminale/types';
@@ -65,6 +65,7 @@ function routesTerminale(matiere: Matiere, base: string) {
       <Route path="cours" element={<CoursIndex />} />
       <Route path="cours/:notion" element={<CoursNotionPage />} />
       <Route path="exercices" element={<TleExercicesPage />} />
+      <Route path="exercices/eclair" element={<EclairPage />} />
       <Route path="exercices/:exercice" element={<ExercicePage />} />
       <Route path="type-bac" element={<TypeBacPage />} />
       <Route path="type-bac/:exercice" element={<TypeBacExercicePage />} />

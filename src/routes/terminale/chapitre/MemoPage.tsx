@@ -1,21 +1,23 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import CarteMemo from '@/components/terminale/CarteMemo';
-import SerieEclair from '@/components/terminale/SerieEclair';
 import { getNotion, prioriteDe, trierParPriorite } from '@/lib/terminale/content';
-import { serieEclair } from '@/lib/terminale/entrainement';
-import { storeProgression } from '@/stores/terminale-progression-store';
+import { cheminChapitre } from '@/lib/terminale/matieres';
+import { storeProgression, type ModeMemo } from '@/stores/terminale-progression-store';
 import { useChapitre } from './ChapitreLayout';
 
 const TITRE_SECTION = 'text-lg font-bold text-slate-900 dark:text-slate-100';
 
 /**
- * Onglet « Mémo » (charte § 8) : les cartes rangées par priorité, en mode détaillé ou
- * simplifié, puis « Teste-toi » avec les questions éclair du chapitre.
+ * Onglet « Mémo » (charte § 8), juste après le cours : les cartes rangées par priorité,
+ * simplifiées à la première visite (puis le dernier affichage choisi), et le lien vers
+ * les questions éclair de l'onglet Exercices.
  */
 export default function MemoPage() {
   const { chapitre, matiere } = useChapitre();
-  const [mode, setMode] = useState<'detaille' | 'simplifie'>('detaille');
-  const noterEclair = storeProgression(matiere.id)((s) => s.noterEclair);
+  const store = storeProgression(matiere.id);
+  const mode = store((s) => s.modeMemo);
+  const setMode = store((s) => s.choisirModeMemo);
   const cartes = useMemo(
     () =>
       trierParPriorite(
@@ -24,9 +26,7 @@ export default function MemoPage() {
       ),
     [chapitre]
   );
-  const questions = useMemo(() => serieEclair(chapitre.flash, (n) => prioriteDe(n)), [chapitre]);
-
-  const bouton = (valeur: 'detaille' | 'simplifie', libelle: string) => (
+  const bouton = (valeur: ModeMemo, libelle: string) => (
     <button
       type="button"
       aria-pressed={mode === valeur}
@@ -52,8 +52,8 @@ export default function MemoPage() {
           </h2>
           {cartes.length > 0 && (
             <div className="flex gap-1 rounded-lg bg-slate-100 p-1 dark:bg-slate-800" role="group" aria-label="Affichage des cartes">
-              {bouton('detaille', 'Détaillé')}
               {bouton('simplifie', 'Simplifié')}
+              {bouton('detaille', 'Détaillé')}
             </div>
           )}
         </div>
@@ -70,18 +70,19 @@ export default function MemoPage() {
         )}
       </section>
 
-      {questions.length > 0 && (
-        <section aria-labelledby="eclair" className="space-y-4">
-          <div>
-            <h2 id="eclair" className={TITRE_SECTION}>
-              Teste-toi
-            </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              {questions.length} questions éclair, moins d’une minute chacune, les plus importantes d’abord.
-            </p>
-          </div>
-          <SerieEclair questions={questions} onRepondre={noterEclair} />
-        </section>
+      {chapitre.flash.length > 0 && (
+        <Link
+          to={`${cheminChapitre(chapitre.meta)}/exercices/eclair`}
+          className="flex flex-col gap-1 rounded-xl border border-slate-200 bg-white p-5 transition-colors hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-500 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <span>
+            <span className="block font-semibold text-slate-900 dark:text-slate-100">Retenu ? Teste-toi</span>
+            <span className="block text-sm text-slate-600 dark:text-slate-400">
+              {chapitre.flash.length} questions éclair, moins d’une minute chacune.
+            </span>
+          </span>
+          <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">Commencer →</span>
+        </Link>
       )}
     </div>
   );

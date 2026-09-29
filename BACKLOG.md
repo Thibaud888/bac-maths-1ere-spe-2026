@@ -366,11 +366,23 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     à 16). Type bac limité au dénombrement, à la première et aux Méthodes (les autres chapitres
     de terminale ne sont pas écrits). Relecteur PASS au 2e tour (exercices et type bac),
     élève-testeur (2 bloquants corrigés). Couverture « exercices » sans écart. PR : #97.
-  - [ ] Faire relire le chapitre Dénombrement par Thibaud — ses retours ajustent la charte
-    (quotas du § 5.3, déroulé d'une notion, pages). Relevé par l'élève-testeur, à trancher à
-    cette occasion (cours) : la section Pascal enchaîne deux démonstrations et un programme
-    sans pause (placer le vérifie l-065 entre les deux) ; l-020 annonce 0! = 1 par une
-    égalité pas encore vue.
+  - [x] Faire relire le chapitre Dénombrement par Thibaud — relu le 2026-09-29 (« bien dans
+    l'ensemble »), neuf retours, notés dans la charte et répartis en trois items :
+    - [x] Retouches de l'interface des chapitres — onglet Mémo juste après le Cours ; cartes
+      du mémo en couleur (une par genre), simplifiées à la première visite ; questions
+      éclair déplacées dans l'onglet Exercices (`/exercices/eclair`) ; « Voir la réponse »
+      après le dernier indice (tout de suite dans les « vérifie » et les questions éclair) ;
+      la phrase « Tombé dans n sujets… » n'est plus répétée (une note par aperçu). En
+      passant : le lien « Revoir le cours » rend les formules de son titre. PR : #98.
+    - [ ] Une page d'aperçu plus claire — « L'essentiel » et « Les notions » peu clairs, dans
+      leur contenu comme dans leur présentation ; au passage, retirer de « ce que le bac
+      demande » la question de loi binomiale (« 10 tirages avec remise »).
+    - [ ] Plus d'indices dans les exercices, même en « Comprendre » — charte § 6 (2 en
+      Comprendre, 3 ou 4 en S'entraîner et Approfondir, 1 ou 2 par question type bac),
+      contrôle de `couverture-terminale.mjs`, contenu du Dénombrement.
+  - [ ] Cours du Dénombrement : les deux remarques de l'élève-testeur — la section Pascal
+    enchaîne deux démonstrations et un programme sans pause (placer le vérifie l-065 entre
+    les deux) ; l-020 annonce 0! = 1 par une égalité pas encore vue.
   - [ ] Quand un chapitre ultérieur est écrit (loi binomiale, limites, logarithme), remettre
     dans le type bac de Dénombrement les questions retirées des sujets adaptés (voir les notes
     `adaptation` de `type-bac.json`).

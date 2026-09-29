@@ -372,7 +372,10 @@ Question éclair : `id`, `chapitre`, `notion`, `capacites`, `enonce`, `reponse` 
 
 ### 5.2 Effets sur le site
 
-- **Affichage** : étiquette sur la notion partout où elle apparaît + `pourquoi`.
+- **Affichage** : étiquette sur la notion partout où elle apparaît. Le `pourquoi` (« Tombé
+  dans n sujets sur N… ») **n'est pas répété** sur chaque page (Thibaud, 2026-09-29 :
+  « la catégorisation suffit ») ; une seule note par page d'aperçu dit d'où viennent les
+  priorités (mesurées ou estimées). Le champ reste la trace de la mesure.
 - **Ordre** : dans chaque liste d'une marche, d'un mémo ou d'un parcours, priorité
   décroissante puis `ordre`. Le **cours** garde l'ordre logique (on n'apprend pas le
   théorème avant la définition) mais son sommaire montre les étiquettes.
@@ -442,9 +445,17 @@ sont au § 9.2.
 
 - **Mémo** : cartes rangées par priorité ; `coeur` = la formule ou la règle nue ;
   `motCle` unique dans le chapitre. Pas de carte pour une notion `★` sauf formule à
-  connaître par cœur.
+  connaître par cœur. Affichage (Thibaud, 2026-09-29) : une couleur par genre
+  (définition, propriété, formule, méthode) ; **simplifié** à la première visite, puis le
+  dernier affichage choisi.
 - **Questions éclair** : un fait, un réflexe, < 60 s ; distracteurs = erreurs typiques ;
-  `explication` qui enseigne quelque chose. Elles nourrissent la répétition espacée.
+  `explication` qui enseigne quelque chose. Elles nourrissent la répétition espacée. Elles
+  se font dans l'onglet **Exercices** (carte « Questions éclair » en tête, page
+  `/exercices/eclair`, filtrable par notion) ; le mémo se termine par un lien vers elles.
+- **Voir la réponse** (Thibaud, 2026-09-29) : toute question à réponse vérifiable propose
+  « Voir la réponse » sans passer par une réponse fausse — après le dernier indice dans
+  les exercices et le type bac, tout de suite dans les `verifie` du cours et les questions
+  éclair. Une réponse affichée compte comme ratée.
 
 ---
 
@@ -534,8 +545,9 @@ chapitre par chapitre.
 
 - **Mêmes composants pour toutes les matières** de terminale, paramétrés par la matière
   (accent `blue` maths, `violet` physique-chimie, lus dans `SPACES`).
-- Onglets du chapitre, dans cet ordre : **Aperçu · Cours · Exercices · Type bac · Mémo**
-  (`SectionTabs`) ; le chapitre « Méthodes » n'a pas l'onglet Type bac.
+- Onglets du chapitre, dans cet ordre : **Aperçu · Cours · Mémo · Exercices · Type bac**
+  (`SectionTabs` ; le mémo suit le cours depuis le 2026-09-29) ; le chapitre « Méthodes »
+  n'a pas l'onglet Type bac.
 - **Le chapitre reste l'unité de navigation, la notion l'unité de lecture** (décision du
   2026-09-24) : la barre latérale ne liste que les chapitres ; dans l'onglet Cours, **une
   page par notion** (`/terminale/<matiere>/<chapitre>/cours/<notion>`, où `<notion>` est la

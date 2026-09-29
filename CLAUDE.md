@@ -475,7 +475,8 @@ Cadré le 2026-09-24 (aucun contenu écrit ce jour-là). Trois documents, à lir
 Ce qui diffère de la première :
 
 - **Toute l'année, pas seulement la révision** : chaque chapitre a cinq onglets — Aperçu,
-  Cours, Exercices (marches *Comprendre*, *S'entraîner*, *Approfondir*), Type bac, Mémo.
+  Cours, Mémo, Exercices (questions éclair, puis marches *Comprendre*, *S'entraîner*,
+  *Approfondir*), Type bac.
 - **La notion est l'unité** : priorité bac (3 incontournable, 2 fréquent, 1 plus rare,
   mesurée sur les annales, sinon estimée et affichée comme telle), progression, couverture.
 - **Tout item cite ses lignes du programme** (`capacites`) ; un script de couverture refuse

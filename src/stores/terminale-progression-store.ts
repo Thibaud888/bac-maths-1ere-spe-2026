@@ -12,11 +12,16 @@ import type { Matiere } from '@/lib/terminale/types';
  * du grand oral (`bgo-2027-*`).
  */
 
+export type ModeMemo = 'simplifie' | 'detaille';
+
 export type EtatProgressionTerminale = Progression & {
   /** Dernier chapitre ouvert (« Reprendre » sur l'accueil de la matière). */
   dernierChapitre: string | null;
   /** Dernière notion lue, par chapitre (`/cours` seul y ramène). */
   derniereNotion: Record<string, string>;
+  /** Affichage des cartes du mémo : simplifié à la première visite, puis le dernier choisi. */
+  modeMemo: ModeMemo;
+  choisirModeMemo: (mode: ModeMemo) => void;
   marquerLu: (notionId: string) => void;
   repondreVerifie: (blocId: string, juste: boolean) => void;
   noterResultat: (itemId: string, resultat: Resultat) => void;
@@ -36,6 +41,10 @@ function creerStore(matiere: Matiere) {
         ...PROGRESSION_VIDE,
         dernierChapitre: null,
         derniereNotion: {},
+        modeMemo: 'simplifie',
+        choisirModeMemo: (mode) => {
+          set({ modeMemo: mode });
+        },
         marquerLu: (notionId) => {
           set((s) => (s.lus[notionId] ? s : { lus: { ...s.lus, [notionId]: true } }));
         },

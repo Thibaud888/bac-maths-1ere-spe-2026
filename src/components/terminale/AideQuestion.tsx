@@ -19,6 +19,11 @@ type Props = {
   autoEvaluation?: boolean;
   resultat?: Resultat | undefined;
   onEvaluer?: (resultat: Resultat) => void;
+  /**
+   * Réponse vérifiable : « Voir la réponse » est proposé une fois tous les indices lus
+   * (tout de suite s'il n'y en a pas). La question affiche alors sa correction.
+   */
+  onVoirReponse?: () => void;
 };
 
 const CHOIX: readonly { valeur: Resultat; libelle: string; style: string }[] = [
@@ -48,7 +53,8 @@ const LIBELLE_RESULTAT: Record<Resultat, string> = {
 /**
  * L'aide d'une question : indices progressifs (le premier renvoie au cours), puis la
  * solution rédigée, l'erreur fréquente, et pour une réponse rédigée l'auto-évaluation
- * (réussi, à moitié, raté — charte § 3.6).
+ * (réussi, à moitié, raté — charte § 3.6). Pour une réponse vérifiable, « Voir la
+ * réponse » vient après le dernier indice (décision du 2026-09-29).
  */
 export default function AideQuestion({
   indices = [],
@@ -59,9 +65,11 @@ export default function AideQuestion({
   autoEvaluation = false,
   resultat,
   onEvaluer,
+  onVoirReponse,
 }: Props) {
   const [vus, setVus] = useState(0);
   const [solutionVue, setSolutionVue] = useState(false);
+  const [reponseDemandee, setReponseDemandee] = useState(false);
   const lienCours = revoir ? (
     <p className="text-sm">
       <span className="text-slate-600 dark:text-slate-400">Revoir le cours : </span>
@@ -96,6 +104,18 @@ export default function AideQuestion({
             className={`${BOUTON} border-amber-300 bg-amber-50 text-amber-800 hover:bg-amber-100 dark:border-amber-700 dark:bg-amber-950/30 dark:text-amber-300 dark:hover:bg-amber-950/60`}
           >
             {indices.length === 1 ? 'Un indice' : `Indice ${vus + 1} sur ${indices.length}`}
+          </button>
+        )}
+        {onVoirReponse && vus >= indices.length && !reponseDemandee && (
+          <button
+            type="button"
+            onClick={() => {
+              setReponseDemandee(true);
+              onVoirReponse();
+            }}
+            className={`${BOUTON} border-slate-300 text-slate-700 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700`}
+          >
+            Voir la réponse
           </button>
         )}
         {solution !== undefined && !solutionVue && (

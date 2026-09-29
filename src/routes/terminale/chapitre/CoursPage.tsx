@@ -203,10 +203,6 @@ export function CoursNotionPage() {
       <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
         <TextWithMath text={notion.titre} />
       </h2>
-      <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-        <span className="font-semibold">Pourquoi c’est important : </span>
-        <TextWithMath text={notion.pourquoi} />
-      </p>
       <div className="xl:hidden">
         <Voisines chapitre={chapitre} precedente={precedente} suivante={suivante} />
       </div>

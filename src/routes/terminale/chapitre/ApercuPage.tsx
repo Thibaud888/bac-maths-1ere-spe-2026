@@ -6,7 +6,7 @@ import AnneauProgression from '@/components/terminale/AnneauProgression';
 import EtiquettePriorite from '@/components/terminale/EtiquettePriorite';
 import LienRenvoi from '@/components/terminale/LienRenvoi';
 import PastilleEtat from '@/components/terminale/PastilleEtat';
-import { notionParSegment, trierParPriorite } from '@/lib/terminale/content';
+import { getAnnales, notionParSegment, trierParPriorite } from '@/lib/terminale/content';
 import { cheminChapitre, cheminNotion } from '@/lib/terminale/matieres';
 import { etatsChapitre, maitriseChapitre } from '@/lib/terminale/progression';
 import { storeProgression, useProgression } from '@/stores/terminale-progression-store';
@@ -118,11 +118,11 @@ export default function ApercuPage() {
           <h2 id="notions" className={TITRE_SECTION}>
             Les notions, les plus importantes au bac d’abord
           </h2>
-          {estimee && (
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Priorités estimées, en attente du décompte des sujets de bac.
-            </p>
-          )}
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            {estimee
+              ? 'Priorités estimées, en attente du décompte des sujets de bac.'
+              : `Priorités mesurées sur les sujets de bac depuis ${getAnnales(matiere.id)?.depuis ?? 2021}.`}
+          </p>
         </div>
         <ul className="grid gap-3 md:grid-cols-2">
           {carte.map((notion) => {
@@ -140,9 +140,6 @@ export default function ApercuPage() {
                   <p className="font-semibold leading-snug text-slate-900 dark:text-slate-100">
                     <span className="mr-1 text-slate-400 dark:text-slate-500">{numero}.</span>
                     <TextWithMath text={notion.titre} />
-                  </p>
-                  <p className="text-sm leading-snug text-slate-600 dark:text-slate-400">
-                    <TextWithMath text={notion.pourquoi} />
                   </p>
                   {notion.attendusBac.length > 0 && (
                     <div className="mt-auto border-t border-slate-100 pt-2 dark:border-slate-700">

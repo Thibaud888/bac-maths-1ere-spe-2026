@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { TextWithMath } from '@/components/math/TextWithMath';
 import { resoudreRenvoi } from '@/lib/terminale/renvois';
 
 const STYLE =
@@ -18,7 +19,8 @@ type Props = {
 export default function LienRenvoi({ lien, cheminCourant, children }: Props) {
   const renvoi = resoudreRenvoi(lien);
   if (!renvoi) return null;
-  const texte = children ?? renvoi.libelle;
+  // Un titre de bloc peut contenir une formule : on la rend, jamais le LaTeX brut.
+  const texte = children ?? <TextWithMath text={renvoi.libelle} />;
   if (renvoi.ancre && renvoi.chemin === cheminCourant) {
     return (
       <a href={`#${renvoi.ancre}`} className={STYLE}>

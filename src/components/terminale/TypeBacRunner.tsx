@@ -49,6 +49,7 @@ function Element({
 }) {
   const reponse: ReponseVerifiable | undefined =
     element.reponse && element.reponse.type !== 'redaction' ? element.reponse : undefined;
+  const [demandeReponse, setDemandeReponse] = useState(0);
   return (
     <div className="flex gap-2">
       <span className="shrink-0 font-bold text-slate-900 dark:text-slate-100">{element.label}</span>
@@ -67,6 +68,8 @@ function Element({
                 onRepondre={(juste) => {
                   onResultat(juste ? 'reussi' : 'rate');
                 }}
+                boutonReponse={false}
+                demandeReponse={demandeReponse}
               />
             ) : (
               <>
@@ -94,6 +97,13 @@ function Element({
           autoEvaluation={!reponse}
           resultat={resultat}
           onEvaluer={onResultat}
+          {...(reponse
+            ? {
+                onVoirReponse: () => {
+                  setDemandeReponse((n) => n + 1);
+                },
+              }
+            : {})}
         />
       </div>
     </div>

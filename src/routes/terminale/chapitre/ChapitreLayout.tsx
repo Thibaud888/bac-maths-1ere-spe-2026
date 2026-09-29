@@ -19,10 +19,11 @@ export function ongletsChapitre(chapitre: Chapitre): { to: string; label: string
   return [
     { to: base, label: 'Aperçu', end: true },
     { to: `${base}/cours`, label: 'Cours' },
+    // Le mémo suit le cours : on relit l'essentiel avant de s'entraîner (Thibaud, 2026-09-29).
+    { to: `${base}/memo`, label: 'Mémo' },
     { to: `${base}/exercices`, label: 'Exercices' },
     // Le chapitre « Méthodes » n'a pas de type bac (charte § 2.1).
     ...(chapitre.meta.transverse ? [] : [{ to: `${base}/type-bac`, label: 'Type bac' }]),
-    { to: `${base}/memo`, label: 'Mémo' },
   ];
 }
 
