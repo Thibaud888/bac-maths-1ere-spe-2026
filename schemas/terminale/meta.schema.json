@@ -23,8 +23,16 @@
       "type": "array",
       "minItems": 3,
       "maxItems": 3,
-      "items": { "type": "string", "minLength": 3, "maxLength": 160 },
-      "description": "Les trois idées à retenir du chapitre, une ligne chacune (« L'essentiel » de l'Aperçu)."
+      "items": {
+        "type": "object",
+        "required": ["titre", "texte"],
+        "additionalProperties": false,
+        "properties": {
+          "titre": { "type": "string", "minLength": 3, "maxLength": 40, "description": "L'idée en quelques mots (ex. « Multiplier les choix »)." },
+          "texte": { "type": "string", "minLength": 10, "maxLength": 200, "description": "L'idée en une phrase, avec sa formule si elle en a une." }
+        }
+      },
+      "description": "Les trois idées à retenir du chapitre (« L'essentiel » de l'Aperçu) : un titre court, puis une phrase (décision du 2026-09-29)."
     }
   },
   "allOf": [

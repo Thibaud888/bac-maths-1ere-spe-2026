@@ -194,27 +194,37 @@ les questions. Champs marqués `?` : facultatifs.
 { "slug": "limites-suites", "matiere": "maths", "titre": "Limites de suites",
   "titreCourt": "Limites de suites", "domaine": "analyse", "ordre": 20,
   "transverse": false, "description": "Une phrase.",
-  "essentiel": ["Trois idées", "à retenir du chapitre,", "une ligne chacune."] }
+  "essentiel": [
+    { "titre": "Monotone et bornée", "texte": "Une suite croissante et majorée converge." },
+    { "titre": "…", "texte": "…" }, { "titre": "…", "texte": "…" } ] }
 ```
 
 `domaine` : maths `analyse | geometrie | probabilites | combinatoire` ; physique-chimie
 `matiere | mouvement | energie | ondes` (thèmes du programme). `ordre` : multiple de 10,
-ordre de l'année.
+ordre de l'année. `essentiel` (Thibaud, 2026-09-29 : « pas très clair » en simples
+phrases) : trois idées, chacune un `titre` de 2 à 5 mots et un `texte` d'une phrase (avec
+sa formule s'il y en a une), lisibles **sans avoir lu le cours**, sans jargon non expliqué.
 
 ### 3.4 `notions.json`
 
 ```json
 { "id": "n-limites-suites-monotone-bornee", "chapitre": "limites-suites",
-  "titre": "Suite croissante et majorée", "ordre": 50,
-  "priorite": 3, "priorisation": "annales",
+  "titre": "Suite croissante et majorée",
+  "resume": "Prouver qu'une suite a une limite sans la calculer, en montrant qu'elle monte sans dépasser un plafond.",
+  "ordre": 50, "priorite": 3, "priorisation": "annales",
   "pourquoi": "Tombé dans 31 sujets sur 38 depuis 2021.",
   "capacites": ["bo-m-suites-07"],
   "prerequis": ["n-recurrence-suites-recurrence", "1e:suites"],
   "attendusBac": ["Justifier que la suite (uₙ) est convergente."] }
 ```
 
-`priorite` ∈ 1, 2, 3 (§ 5). `priorisation` ∈ `annales`, `estimation`. `pourquoi` : une
-phrase en clair pour l'élève. `prerequis` : identifiants de notions, ou `1e:<slug>` pour un
+`resume` (depuis le 2026-09-29) : ce que la notion apprend à faire, en une phrase concrète
+de 160 caractères au plus, sans chiffre de fréquence — c'est ce que la carte de la notion
+montre sur l'Aperçu. `priorite` ∈ 1, 2, 3 (§ 5). `priorisation` ∈ `annales`, `estimation`.
+`pourquoi` : une phrase en clair (le chiffre de la mesure, ou ce qui fonde l'estimation),
+gardée comme trace mais **pas répétée sur chaque page** (§ 5.2). Un `attendusBac` relève du
+chapitre : jamais une question qui appartient à un chapitre voisin (ex. une loi binomiale
+dans le dénombrement). `prerequis` : identifiants de notions, ou `1e:<slug>` pour un
 chapitre de maths de première (lien vers `/premiere/maths/<slug>`). `attendusBac` : 0 à 3
 formulations **réelles** relevées dans `annales.json` (vide tant que l'index n'existe pas).
 **Seulement des questions ou des consignes** (« Déterminer… », « Combien… », « Justifier

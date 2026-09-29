@@ -123,11 +123,13 @@ expertes, SVT…) = un dossier de contenu + un référentiel + une entrée dans 
 
 ### 4.3 Page d'un chapitre (cinq onglets)
 
-- **Aperçu** — « L'essentiel » en trois idées ; la carte des notions (titre, étiquette de
-  priorité, état de l'élève, « ce que le bac demande » en une ou deux formulations réelles
-  tirées des sujets) ; les rappels de première utiles (liens vers `/premiere/maths/...`) ;
-  deux entrées : **Apprendre le chapitre** (ordre du cours) et **Réviser l'essentiel**
-  (incontournables d'abord).
+- **Aperçu** (revu le 2026-09-29 après la relecture de Thibaud) — « L'essentiel : le
+  chapitre en trois idées », chacune un titre court et une phrase ; où en est l'élève, avec
+  deux entrées : **Apprendre le chapitre** et **Réviser l'essentiel** ; puis **le parcours
+  des notions dans l'ordre du cours** (étapes numérotées, colorées selon l'état) — pour
+  chacune : titre, étiquette de priorité, ce qu'elle apprend à faire (`resume`), un exemple
+  de question de bac (la plus courte des formulations réelles) ; une seule note dit d'où
+  viennent les priorités ; enfin les rappels de première utiles.
 - **Cours** — **une page par notion** (décision du 2026-09-24, § 4.5), sur le gabarit
   `PageLongue` : sommaire collé à droite sur grand écran avec les notions du chapitre
   (étiquettes de priorité, celle en cours surlignée) et les blocs de la notion ; boutons

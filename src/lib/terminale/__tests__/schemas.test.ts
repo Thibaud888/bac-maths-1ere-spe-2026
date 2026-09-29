@@ -60,7 +60,11 @@ describe('schémas de terminale — programme, meta, notions', () => {
     ordre: 20,
     transverse: false,
     description: 'Une phrase.',
-    essentiel: ['Une.', 'Deux.', 'Trois.'],
+    essentiel: [
+      { titre: 'Une idée', texte: 'Première idée.' },
+      { titre: 'Deux idées', texte: 'Deuxième idée.' },
+      { titre: 'Trois idées', texte: 'Troisième idée.' },
+    ],
   };
 
   it('exige un domaine de la bonne matière pour un chapitre ordinaire', () => {
@@ -69,6 +73,11 @@ describe('schémas de terminale — programme, meta, notions', () => {
     const { domaine: _domaine, ...sansDomaine } = meta;
     expect(validateurs.meta(sansDomaine)).toBe(false);
     expect(validateurs.meta({ ...sansDomaine, slug: 'methodes-maths', transverse: true })).toBe(true);
+  });
+
+  it('veut trois idées titrées dans « l’essentiel »', () => {
+    expect(validateurs.meta({ ...meta, essentiel: ['Une.', 'Deux.', 'Trois.'] })).toBe(false);
+    expect(validateurs.meta({ ...meta, essentiel: meta.essentiel.slice(0, 2) })).toBe(false);
   });
 
   it('refuse un ordre qui n\'est pas un multiple de 10', () => {
@@ -80,6 +89,7 @@ describe('schémas de terminale — programme, meta, notions', () => {
       id: 'n-limites-suites-monotone-bornee',
       chapitre: 'limites-suites',
       titre: 'Suite croissante et majorée',
+      resume: 'Prouver qu’une suite a une limite sans la calculer.',
       ordre: 50,
       priorite: 3,
       priorisation: 'estimation',
@@ -92,6 +102,8 @@ describe('schémas de terminale — programme, meta, notions', () => {
     expect(validateurs.notions({ ...notion, priorite: 4 })).toBe(false);
     expect(validateurs.notions({ ...notion, attendusBac: ['a b', 'c d', 'e f', 'g h'] })).toBe(false);
     expect(validateurs.notions({ ...notion, prerequis: ['suites'] })).toBe(false);
+    const { resume: _resume, ...sansResume } = notion;
+    expect(validateurs.notions(sansResume)).toBe(false);
   });
 });
 
