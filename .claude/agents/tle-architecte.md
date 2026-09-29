@@ -53,8 +53,14 @@ fait passer devant ce qui compte au bac.
    vide s'il n'y a pas d'index. Jamais de formulation inventée. **Questions ou consignes
    seulement** (« Déterminer… », « Combien… », « Justifier que… »), compréhensibles seules ;
    jamais une affirmation de vrai-faux (elle peut être fausse) : plutôt une liste vide.
-7. **`meta.json`** : `essentiel` = trois idées d'une ligne, compréhensibles par un élève qui
-   n'a pas encore lu le cours.
+   Jamais une question d'un chapitre voisin (une loi binomiale n'illustre pas le
+   dénombrement).
+   **`resume`** de chaque notion : ce qu'elle apprend à faire, en une phrase concrète
+   (≤ 160 caractères), en français courant, sans chiffre de fréquence — c'est ce que
+   l'Aperçu montre sous le titre de la notion.
+7. **`meta.json`** : `essentiel` = trois objets `{ "titre", "texte" }` — un titre de 2 à 5
+   mots, puis l'idée en une phrase (avec sa formule s'il y en a une), compréhensibles par un
+   élève qui n'a pas encore lu le cours.
 8. **Chapitre « Méthodes »** (`methodes-<matiere>`, charte § 2.1) : `transverse: true`, une
    notion par savoir-faire transverse (logique, Python, incertitudes…).
 9. **Écris** `content/terminale/<matiere>/chapitres/<slug>/meta.json` et `notions.json`.

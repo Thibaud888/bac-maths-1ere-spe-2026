@@ -15,6 +15,7 @@ function notion(id: string, priorite: 1 | 2 | 3): Notion {
     id,
     chapitre: 'essai',
     titre: id,
+    resume: '',
     ordre: 10,
     priorite,
     priorisation: 'estimation',
@@ -51,7 +52,11 @@ const chapitre: Chapitre = {
     ordre: 10,
     transverse: false,
     description: '',
-    essentiel: ['a', 'b', 'c'],
+    essentiel: [
+      { titre: 'a', texte: 'a' },
+      { titre: 'b', texte: 'b' },
+      { titre: 'c', texte: 'c' },
+    ],
   },
   notions: [notion('n-a', 3), notion('n-b', 1)],
   cours: {

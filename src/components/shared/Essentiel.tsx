@@ -17,20 +17,29 @@ const TITRE: Record<Accent, string> = {
 
 /**
  * « L'essentiel » : ce qu'il faut retenir de la page, lu avant tout le reste.
- * Trois points au plus ; le détail suit dans les sections.
+ * Trois points au plus ; le détail suit dans les sections. `titre` précise l'intitulé
+ * quand « L'essentiel » seul ne dit pas ce qui suit (aperçu d'un chapitre de terminale).
  */
-export default function Essentiel({ accent, children }: { accent: Accent; children: ReactNode }) {
-  const titre = useId();
+export default function Essentiel({
+  accent,
+  titre = 'L’essentiel',
+  children,
+}: {
+  accent: Accent;
+  titre?: string;
+  children: ReactNode;
+}) {
+  const idTitre = useId();
   return (
     <section
-      aria-labelledby={titre}
+      aria-labelledby={idTitre}
       className={`rounded-xl border border-l-4 bg-white p-5 shadow-sm dark:bg-slate-800 sm:p-6 ${CADRE[accent]}`}
     >
       <h2
-        id={titre}
+        id={idTitre}
         className={`text-xs font-semibold uppercase tracking-[0.12em] ${TITRE[accent]}`}
       >
-        L’essentiel
+        {titre}
       </h2>
       <div className="mt-4 space-y-5">{children}</div>
     </section>

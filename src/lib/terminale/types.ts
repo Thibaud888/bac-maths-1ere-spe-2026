@@ -78,13 +78,16 @@ export type ChapitreMeta = {
   ordre: number;
   transverse: boolean;
   description: string;
-  essentiel: string[];
+  /** « L'essentiel » de l'Aperçu : trois idées, chacune un titre court et une phrase. */
+  essentiel: { titre: string; texte: string }[];
 };
 
 export type Notion = {
   id: string;
   chapitre: string;
   titre: string;
+  /** Ce que la notion apprend à faire, en une phrase (carte de l'Aperçu). */
+  resume: string;
   ordre: number;
   priorite: Priorite;
   priorisation: 'annales' | 'estimation';
