@@ -380,9 +380,11 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
       champ `resume`, obligatoire) et un exemple de question de bac ; la question de loi
       binomiale (« 10 tirages avec remise ») retirée de « ce que le bac demande ». Charte
       § 3.3, § 3.4, agent `tle-architecte`. PR : #100.
-    - [ ] Plus d'indices dans les exercices, même en « Comprendre » — charte § 6 (2 en
-      Comprendre, 3 ou 4 en S'entraîner et Approfondir, 1 ou 2 par question type bac),
-      contrôle de `couverture-terminale.mjs`, contenu du Dénombrement.
+    - [x] Plus d'indices dans les exercices, même en « Comprendre » — charte § 6 et § 7
+      (2 en Comprendre, 3 ou 4 en S'entraîner et Approfondir, 1 ou 2 par élément noté du
+      type bac ; aucun ne donne la valeur à saisir) ; schéma à 4 indices au plus ;
+      `couverture-terminale.mjs` contrôle aussi le type bac ; agents `tle-auteur-*` et
+      `tle-relecteur` ; Dénombrement : 278 indices en exercices, 63 en type bac. PR : #101.
   - [ ] Cours du Dénombrement : les deux remarques de l'élève-testeur — la section Pascal
     enchaîne deux démonstrations et un programme sans pause (placer le vérifie l-065 entre
     les deux) ; l-020 annonce 0! = 1 par une égalité pas encore vue.

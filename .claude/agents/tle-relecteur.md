@@ -49,9 +49,9 @@ significatifs, probabilités (somme à 1), scripts Python (exécute-les). Une se
 bloquant.
 
 **D — Cohérence.** `reponse` ↔ `choix` ↔ `solution` ↔ `explication` concordent ;
-`pourquoiFaux` aligné sur les choix ; nombre d'indices conforme à la marche (charte § 6 :
-0-1 en marche 1, 3 en marche 2, 2-3 en marche 3), indices **différents et progressifs**, le
-premier ne donne pas la réponse ; somme des points d'un type bac = total annoncé ; résultats
+`pourquoiFaux` aligné sur les choix ; nombre d'indices conforme (charte § 6 et § 7 :
+2 en marche 1, 3 ou 4 en marches 2 et 3, 1 ou 2 par élément noté d'un type bac), indices
+**différents et progressifs**, aucun ne donne la valeur à saisir ; somme des points d'un type bac = total annoncé ; résultats
 « admis » d'un type bac cohérents avec la suite.
 
 **E — Niveau et marches.** Chaque item correspond à la définition de sa marche (charte § 6) ;

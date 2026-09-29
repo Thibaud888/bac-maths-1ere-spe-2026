@@ -416,13 +416,15 @@ sont au § 9.2.
 
 | Marche | Nom affiché | But | Forme |
 |---|---|---|---|
-| 1 | **Comprendre** | Vérifier une notion juste après le cours | 1 à 3 questions à réponse vérifiable (pas `redaction`), 1 notion, ≤ 5 min, **0 ou 1 indice**, correction courte, `pourquoiFaux` sur les QCM |
-| 2 | **S'entraîner** | Appliquer une méthode du cours | 2 à 5 questions, 1 notion principale, 5 à 15 min, **3 indices progressifs**, solution rédigée ; réponse vérifiable quand le résultat final est une valeur, sinon `redaction` |
-| 3 | **Approfondir** | Combiner, raisonner, prendre une initiative | 3 à 6 questions, ≥ 2 notions, 15 à 30 min, **2 ou 3 indices progressifs**, solution rédigée |
+| 1 | **Comprendre** | Vérifier une notion juste après le cours | 1 à 3 questions à réponse vérifiable (pas `redaction`), 1 notion, ≤ 5 min, **2 indices** (la piste avec `revoir`, puis la première étape), correction courte, `pourquoiFaux` sur les QCM |
+| 2 | **S'entraîner** | Appliquer une méthode du cours | 2 à 5 questions, 1 notion principale, 5 à 15 min, **3 ou 4 indices progressifs**, solution rédigée ; réponse vérifiable quand le résultat final est une valeur, sinon `redaction` |
+| 3 | **Approfondir** | Combiner, raisonner, prendre une initiative | 3 à 6 questions, ≥ 2 notions, 15 à 30 min, **3 ou 4 indices progressifs**, solution rédigée |
 
-- **Indices** (quand il y en a plusieurs) : 1 = la piste (quelle notion, quelle méthode —
-  avec `revoir` vers le bloc de cours) ; 2 = la première étape faite ; 3 = presque la
-  solution. Des indices différents, jamais des reformulations.
+- **Indices** (nombre relevé le 2026-09-29, Thibaud : « plus d'indices, même en
+  Comprendre ») : 1 = la piste (quelle notion, quelle méthode — avec `revoir` vers le bloc
+  de cours) ; 2 = la première étape faite ; 3 = l'étape suivante ; 4 (question à plusieurs
+  étapes) = presque la solution. Des indices différents, jamais des reformulations ; aucun
+  ne donne la valeur à saisir : après le dernier vient **« Voir la réponse »** (§ 8).
 - **Solution** : rédigée comme au bac (« or », « donc », théorème nommé et hypothèses
   vérifiées), dernière ligne = la réponse. `erreurFrequente` quand une erreur typique existe.
 - **Calculatrice** : `calculatrice: true` si elle sert vraiment ; sinon les valeurs restent
@@ -442,6 +444,10 @@ sont au § 9.2.
 - Questions enchaînées mais **rattrapables** : résultats intermédiaires donnés (« On admet
   que… ») pour qu'un blocage n'arrête pas l'exercice.
 - `attenduCorrecteur` pour chaque question : les éléments qui rapportent les points.
+- **Indices** (depuis le 2026-09-29) : 1 ou 2 par élément noté (question sans
+  sous-question, ou chaque sous-question) — 2 quand l'élément a plusieurs étapes ; la piste
+  avec `revoir`, puis la première étape ; jamais le résultat ni la conclusion d'un « montrer
+  que ». Au bac il n'y en a pas : ici, l'élève choisit de les ouvrir.
 - Mélange volontaire des notions du chapitre et des chapitres **précédents** (jamais d'un
   chapitre ultérieur, règle d'or 5).
 - Adapté d'un vrai sujet : `source` obligatoire (§ 3.7) ; **les corrigés publiés par des
