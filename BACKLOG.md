@@ -28,6 +28,11 @@
   binaires par plateforme absents du verrou). Lock régénéré (ajouts seuls, aucune version
   changée) ; les étapes du workflow rejouées à l'identique en local passent.
   DoD : run « Deploy to GitHub Pages » vert sur `main`. Session du 2026-09-22.
+- [x] Ne plus épuiser les crédits gratuits de Netlify — la copie de test sur Netlify, inutilisée,
+  se republiait à chaque mise à jour du site (15 crédits sur 300 par mois à chaque fois) ; le
+  site en ligne reste celui de GitHub Pages. `netlify.toml` : `ignore = "exit 0"` annule tout
+  build Netlify. Pour couper net côté Netlify : Site configuration → Build & deploy → « Stop
+  builds », ou supprimer le site. Fait le 2026-09-29.
 - [ ] Valider aussi le contenu français à la publication — le workflow `deploy.yml` lance
   `validate-content.mjs` mais pas `validate-francais.mjs` : un contenu français invalide
   passerait en ligne. DoD : étape ajoutée au workflow, run vert.

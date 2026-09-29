@@ -1,6 +1,10 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  # Publication Netlify coupée (2026-09-29) : le site vit sur GitHub Pages et chaque
+  # déploiement de production coûtait 15 crédits sur les 300 du plan gratuit.
+  # « exit 0 » annule chaque build avant qu'il ne démarre. Pour réactiver : retirer cette ligne.
+  ignore = "exit 0"
 
 [[redirects]]
   from = "/*"
