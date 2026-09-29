@@ -1,4 +1,4 @@
-import { useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import { TextWithMath } from '@/components/math/TextWithMath';
 import CodeSource from '@/components/terminale/CodeSource';
 import Unite from '@/components/terminale/Unite';
@@ -14,8 +14,15 @@ type Props = {
   /** Identifiant de la question : graine du mélange des remises en ordre. */
   graine: string;
   question: Question;
-  /** Appelé à chaque validation. */
+  /** Appelé à chaque validation, et avec `false` quand l'élève affiche la réponse. */
   onRepondre?: (juste: boolean) => void;
+  /**
+   * Bouton « Voir la réponse » à côté de « Valider » (vrai par défaut). Les exercices le
+   * retirent : ils le proposent après le dernier indice, par `demandeReponse`.
+   */
+  boutonReponse?: boolean;
+  /** Chaque nouvelle valeur (> 0) affiche la réponse, comme le bouton. */
+  demandeReponse?: number;
 };
 
 const CHOIX_BASE =
@@ -57,7 +64,13 @@ function ValeurAttendue({ reponse }: { reponse: ReponseNumerique }) {
  * correction, et peut réessayer. Sert aux « vérifie » du cours, aux exercices
  * « Comprendre » et aux questions éclair.
  */
-export default function QuestionVerifiable({ graine, question, onRepondre }: Props) {
+export default function QuestionVerifiable({
+  graine,
+  question,
+  onRepondre,
+  boutonReponse = true,
+  demandeReponse = 0,
+}: Props) {
   const { reponse } = question;
   const idSaisie = useId();
   const melange = useMemo(
@@ -71,8 +84,10 @@ export default function QuestionVerifiable({ graine, question, onRepondre }: Pro
   const [saisie, setSaisie] = useState('');
   const [ordre, setOrdre] = useState<string[]>(melange);
   const [verdict, setVerdict] = useState<boolean | null>(null);
+  // Réponse affichée sans avoir été trouvée : elle compte comme ratée.
+  const [revelee, setRevelee] = useState(false);
 
-  const repondu = verdict !== null;
+  const repondu = verdict !== null || revelee;
 
   const pret = (() => {
     switch (reponse.type) {
@@ -112,8 +127,21 @@ export default function QuestionVerifiable({ graine, question, onRepondre }: Pro
     onRepondre?.(juste);
   }
 
+  function voirReponse(): void {
+    if (repondu) return;
+    setRevelee(true);
+    onRepondre?.(false);
+  }
+
+  useEffect(() => {
+    if (demandeReponse > 0) voirReponse();
+    // Seule une nouvelle demande compte, pas le reste de l'état.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [demandeReponse]);
+
   function reessayer(): void {
     setVerdict(null);
+    setRevelee(false);
     setChoix(null);
     setCoches([]);
     setVraiFaux(null);
@@ -147,7 +175,7 @@ export default function QuestionVerifiable({ graine, question, onRepondre }: Pro
                 : CHOIX_LIBRE
               : index === reponse.bonne
                 ? CHOIX_JUSTE
-                : index === choix
+                : index === choix && !revelee
                   ? CHOIX_FAUX
                   : CHOIX_LIBRE;
             return (
@@ -185,7 +213,7 @@ export default function QuestionVerifiable({ graine, question, onRepondre }: Pro
                   : CHOIX_LIBRE
                 : bonne
                   ? CHOIX_JUSTE
-                  : coche
+                  : coche && !revelee
                     ? CHOIX_FAUX
                     : CHOIX_LIBRE;
               return (
@@ -231,7 +259,7 @@ export default function QuestionVerifiable({ graine, question, onRepondre }: Pro
                 : CHOIX_LIBRE
               : valeur === reponse.valeur
                 ? CHOIX_JUSTE
-                : pris
+                : pris && !revelee
                   ? CHOIX_FAUX
                   : CHOIX_LIBRE;
             return (
@@ -327,26 +355,50 @@ export default function QuestionVerifiable({ graine, question, onRepondre }: Pro
       )}
 
       {!repondu ? (
-        <button type="button" onClick={valider} disabled={!pret} className={BOUTON_PLEIN}>
-          Valider
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <button type="button" onClick={valider} disabled={!pret} className={BOUTON_PLEIN}>
+            Valider
+          </button>
+          {boutonReponse && (
+            <button type="button" onClick={voirReponse} className={BOUTON_CLAIR}>
+              Voir la réponse
+            </button>
+          )}
+        </div>
       ) : (
         <div
           role="status"
           className={`space-y-2 rounded-lg border p-3 text-sm leading-relaxed ${
-            verdict
-              ? 'border-emerald-200 bg-emerald-50/60 dark:border-emerald-900 dark:bg-emerald-950/30'
-              : 'border-rose-200 bg-rose-50/60 dark:border-rose-900 dark:bg-rose-950/30'
+            revelee
+              ? 'border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-900/50'
+              : verdict
+                ? 'border-emerald-200 bg-emerald-50/60 dark:border-emerald-900 dark:bg-emerald-950/30'
+                : 'border-rose-200 bg-rose-50/60 dark:border-rose-900 dark:bg-rose-950/30'
           }`}
         >
           <p
             className={`font-semibold ${
-              verdict ? 'text-emerald-800 dark:text-emerald-300' : 'text-rose-800 dark:text-rose-300'
+              revelee
+                ? 'text-slate-800 dark:text-slate-200'
+                : verdict
+                  ? 'text-emerald-800 dark:text-emerald-300'
+                  : 'text-rose-800 dark:text-rose-300'
             }`}
           >
-            {verdict ? '✓ Juste.' : '✗ Pas tout à fait.'}
+            {revelee ? 'La réponse' : verdict ? '✓ Juste.' : '✗ Pas tout à fait.'}
           </p>
-          {!verdict && reponse.type === 'qcm' && choix !== null && reponse.pourquoiFaux?.[choix] && (
+          {revelee && (reponse.type === 'qcm' || reponse.type === 'qcm-multiple') && (
+            <p className="text-slate-700 dark:text-slate-300">
+              {reponse.type === 'qcm'
+                ? `Bonne réponse : ${lettre(reponse.bonne)}.`
+                : `Bonnes réponses : ${reponse.bonnes
+                    .slice()
+                    .sort((a, b) => a - b)
+                    .map(lettre)
+                    .join(', ')}.`}
+            </p>
+          )}
+          {!verdict && !revelee && reponse.type === 'qcm' && choix !== null && reponse.pourquoiFaux?.[choix] && (
             <div className="text-slate-700 dark:text-slate-300">
               <TextWithMath text={reponse.pourquoiFaux[choix] ?? ''} />
             </div>

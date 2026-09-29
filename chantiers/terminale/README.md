@@ -25,9 +25,9 @@ Chaque chapitre suit le même chemin, en cinq onglets :
 |---|---|
 | **Aperçu** | Voit les notions du chapitre, **les plus importantes pour le bac en tête**, et où il en est. |
 | **Cours** | Lit une leçon claire, notion par notion : l'idée, la définition, un exemple pas à pas, la méthode, le piège à éviter — avec de petites questions pour vérifier qu'il a compris. |
-| **Exercices** | Monte trois marches : *Comprendre* (réponses courtes corrigées tout de suite), *S'entraîner* (les méthodes du cours, avec indices), *Approfondir* (plusieurs notions à la fois). |
+| **Mémo** | Garde l'essentiel sous les yeux (formules, propriétés, méthodes), juste après le cours. |
+| **Exercices** | Se teste en questions éclair, puis monte trois marches : *Comprendre* (réponses courtes corrigées tout de suite), *S'entraîner* (les méthodes du cours, avec indices), *Approfondir* (plusieurs notions à la fois). |
 | **Type bac** | Fait des exercices au format de l'épreuve, avec le barème et ce qu'attend le correcteur. |
-| **Mémo** | Garde l'essentiel sous les yeux (formules, propriétés, méthodes) et se teste en questions éclair. |
 
 **Ce qui compte le plus au bac passe devant.** Chaque notion porte une étiquette —
 *Incontournable*, *Fréquent* ou *Plus rare* — tirée du décompte des sujets de bac des
@@ -141,8 +141,10 @@ expertes, SVT…) = un dossier de contenu + un référentiel + une entrée dans 
   calculatrice ou non, et l'état (fait, réussi).
 - **Type bac** — barème, durée indicative, chronomètre facultatif, correction avec « ce
   qu'attend le correcteur ». Sources citées quand l'exercice est adapté d'un vrai sujet.
-- **Mémo** — les cartes (formules, propriétés, méthodes-clés) rangées par priorité, avec le
-  mode « simplifié » de la première ; puis « Teste-toi » (questions éclair du chapitre).
+- **Mémo** (juste après le cours, décision du 2026-09-29) — les cartes (formules,
+  propriétés, méthodes-clés) rangées par priorité, une couleur par genre, en mode
+  « simplifié » à la première visite ; puis un lien vers les questions éclair, qui vivent
+  dans l'onglet Exercices.
 
 ### 4.4 Navigation
 

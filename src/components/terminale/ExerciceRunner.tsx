@@ -28,6 +28,7 @@ function Question({
   onResultat: (resultat: Resultat) => void;
 }) {
   const reponse = verifiable(question);
+  const [demandeReponse, setDemandeReponse] = useState(0);
   return (
     <li className="space-y-3 border-t border-slate-200 pt-4 first:border-t-0 first:pt-0 dark:border-slate-700">
       <div className="flex gap-2">
@@ -47,6 +48,8 @@ function Question({
               onRepondre={(juste) => {
                 onResultat(juste ? 'reussi' : 'rate');
               }}
+              boutonReponse={false}
+              demandeReponse={demandeReponse}
             />
           ) : (
             <>
@@ -64,6 +67,13 @@ function Question({
             autoEvaluation={!reponse}
             resultat={resultat}
             onEvaluer={onResultat}
+            {...(reponse
+              ? {
+                  onVoirReponse: () => {
+                    setDemandeReponse((n) => n + 1);
+                  },
+                }
+              : {})}
           />
         </div>
       </div>

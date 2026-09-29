@@ -30,6 +30,15 @@ describe('progression de terminale', () => {
     expect(storeProgression('physique-chimie').getState().lus['n-essai-a']).toBeUndefined();
   });
 
+  it('ouvre le mémo en simplifié, puis garde le dernier affichage choisi', () => {
+    expect(storeProgression('maths').getState().modeMemo).toBe('simplifie');
+    act(() => {
+      storeProgression('maths').getState().choisirModeMemo('detaille');
+    });
+    expect(storeProgression('maths').getState().modeMemo).toBe('detaille');
+    expect(localStorage.getItem('btm-2027-progression')).toContain('"modeMemo":"detaille"');
+  });
+
   it('retient le dernier chapitre et la dernière notion lue', () => {
     act(() => {
       storeProgression('physique-chimie').getState().ouvrirChapitre('essai');

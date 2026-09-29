@@ -2,17 +2,19 @@ import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { TextWithMath } from '@/components/math/TextWithMath';
 import ExerciceRunner from '@/components/terminale/ExerciceRunner';
 import { NotionsTravaillees, Reperes } from '@/components/terminale/FicheExercice';
+import SerieEclair from '@/components/terminale/SerieEclair';
 import { prioriteDe } from '@/lib/terminale/content';
 import {
   MARCHES,
   filtrerExercices,
   nomMarche,
   segmentExercice,
+  serieEclair,
   trierExercices,
 } from '@/lib/terminale/entrainement';
 import { cheminChapitre } from '@/lib/terminale/matieres';
 import type { Resultat } from '@/lib/terminale/progression';
-import type { Chapitre, Exercice, Niveau } from '@/lib/terminale/types';
+import type { Chapitre, Exercice, Niveau, QuestionEclair } from '@/lib/terminale/types';
 import { storeProgression } from '@/stores/terminale-progression-store';
 import { useChapitre } from './ChapitreLayout';
 
@@ -56,6 +58,12 @@ function adresse(base: string, recherche: string): string {
   return recherche ? `${base}?${recherche}` : base;
 }
 
+/** Les questions éclair de la série, restreintes à la notion choisie s'il y en a une. */
+function questionsEclair(chapitre: Chapitre, notion: string | undefined): QuestionEclair[] {
+  const liste = notion ? chapitre.flash.filter((q) => q.notion === notion) : chapitre.flash;
+  return serieEclair(liste, (n) => prioriteDe(n));
+}
+
 const PASTILLE =
   'rounded-full border px-3 py-1 text-sm font-medium transition-colors';
 const PASTILLE_ACTIVE = {
@@ -92,6 +100,7 @@ export default function ExercicesPage() {
 
   const marches = MARCHES.filter((m) => niveau === undefined || m.niveau === niveau);
   const liste = filtrerExercices(chapitre.exercices, { niveau, notion });
+  const eclair = niveau === undefined ? questionsEclair(chapitre, notion) : [];
 
   return (
     <div className="mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-8 sm:py-8">
@@ -129,6 +138,21 @@ export default function ExercicesPage() {
           </select>
         </label>
       </div>
+
+      {eclair.length > 0 && (
+        <Link
+          to={adresse(`${base}/eclair`, recherche)}
+          className="flex flex-col gap-1 rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:hover:border-slate-500 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <span>
+            <span className="block font-semibold text-slate-900 dark:text-slate-100">Questions éclair : teste-toi</span>
+            <span className="block text-sm text-slate-600 dark:text-slate-400">
+              {eclair.length} questions, moins d’une minute chacune, les plus importantes d’abord.
+            </span>
+          </span>
+          <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">Commencer →</span>
+        </Link>
+      )}
 
       {liste.length === 0 && (
         <p className="text-sm text-slate-500 dark:text-slate-400">Aucun exercice pour ce choix.</p>
@@ -231,6 +255,35 @@ export function ExercicePage() {
           {suivant ? <Voisin vers={lien(suivant)} sens="suivant" exercice={suivant} /> : <span className="hidden flex-1 sm:block" />}
         </nav>
       )}
+    </div>
+  );
+}
+
+/** Les questions éclair du chapitre (`/exercices/eclair`), une par une (charte § 8). */
+export function EclairPage() {
+  const { chapitre, matiere } = useChapitre();
+  const filtre = useFiltre(chapitre);
+  const noterEclair = storeProgression(matiere.id)((s) => s.noterEclair);
+  const base = `${cheminChapitre(chapitre.meta)}/exercices`;
+  const questions = questionsEclair(chapitre, filtre.notion);
+
+  if (questions.length === 0) return <Navigate to={adresse(base, filtre.recherche)} replace />;
+
+  return (
+    <div className="mx-auto max-w-3xl space-y-5 px-4 py-6 sm:px-8 sm:py-8">
+      <Link
+        to={adresse(base, filtre.recherche)}
+        className="inline-block text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+      >
+        ← Tous les exercices
+      </Link>
+      <div>
+        <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">Questions éclair</h2>
+        <p className="text-sm text-slate-600 dark:text-slate-400">
+          Moins d’une minute chacune, les plus importantes d’abord. Seul le premier essai compte.
+        </p>
+      </div>
+      <SerieEclair questions={questions} onRepondre={noterEclair} />
     </div>
   );
 }
