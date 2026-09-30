@@ -93,7 +93,5 @@ Termine en mettant à jour le `BACKLOG.md` (statut + lien PR).
 
 ## Notes pour plus tard (hors périmètre)
 
-- Le compte à rebours des épreuves (item de `BACKLOG.md`) pourra s'appuyer sur la date du grand
-  oral une fois le calendrier 2027 complété.
 - Les pages de terminale maths et physique-chimie restent des gabarits vides : leur découpage en
   chapitres est un item distinct, à ne pas entamer ici.

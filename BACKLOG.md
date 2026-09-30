@@ -207,11 +207,6 @@
   n° 69 à 88. Le projet d'orientation n'apparaît plus dans le texte ; la grille compte cinq
   rubriques et quatre niveaux, sans points. Les écarts sont devenus les items ci-dessous.
   `node scripts/verify.mjs` OK, 152 tests. PR : #76.
-- [ ] Afficher le compte à rebours des épreuves — dès que les dates officielles de la session 2027
-  sont publiées (aucune date inventée en attendant) : bandeau sur l'accueil et rappel dans le menu.
-  DoD : dates sourcées, affichage sur l'accueil.
-  Prêt à démarrer : les dates sont publiées (BO spécial n° 2 du 25 août 2026) et portées par
-  `content/bac/calendrier.json` depuis la PR #76 (partie pratique de physique-chimie comprise).
 
 ## Terminale : maths et physique-chimie (cadré le 2026-09-24)
 
@@ -390,9 +385,12 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
       type bac ; aucun ne donne la valeur à saisir) ; schéma à 4 indices au plus ;
       `couverture-terminale.mjs` contrôle aussi le type bac ; agents `tle-auteur-*` et
       `tle-relecteur` ; Dénombrement : 278 indices en exercices, 63 en type bac. PR : #101.
-  - [ ] Cours du Dénombrement : les deux remarques de l'élève-testeur — la section Pascal
+  - [x] Cours du Dénombrement : les deux remarques de l'élève-testeur — la section Pascal
     enchaîne deux démonstrations et un programme sans pause (placer le vérifie l-065 entre
     les deux) ; l-020 annonce 0! = 1 par une égalité pas encore vue.
+    Fait le 2026-09-30 : l-065 placé entre les deux démonstrations de la relation de Pascal ;
+    l-020 pose la convention sans justification, l-021 l'explique en conclusion (cas k = n,
+    borne de la simplification ramenée à k ≤ n − 1).
   - [ ] Quand un chapitre ultérieur est écrit (loi binomiale, limites, logarithme), remettre
     dans le type bac de Dénombrement les questions retirées des sujets adaptés (voir les notes
     `adaptation` de `type-bac.json`).
