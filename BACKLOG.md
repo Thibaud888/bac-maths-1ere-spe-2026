@@ -278,7 +278,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   le programme depuis 2024. `chapitres-physique-chimie.md` relu : 5 corrections, ordre
   `sens-evolution` avant `force-acides-bases` proposé ; charte § 7 corrigée (« 4 à
   10 points » n'est pas dans le texte). Non relu : BO n° 15 du 14-4-2022 (périmètre 2022).
-  `node scripts/verify.mjs` OK. PR : à venir.
+  `node scripts/verify.mjs` OK. PR : #103.
 - [x] (P2) Mettre à jour les références officielles des épreuves de spécialité —
   `content/bac/sources.json` : `s-spe-maths` et `s-spe-physique-chimie` pointent vers les notes
   de 2020 ; les notes de service du BO spécial n° 4 du 17 septembre 2026 redéfinissent les
