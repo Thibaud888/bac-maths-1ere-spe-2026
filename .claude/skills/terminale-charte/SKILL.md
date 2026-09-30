@@ -440,7 +440,8 @@ sont au § 9.2.
 - Suit **le format de l'épreuve** relevé dans le référentiel (durée, points, structure,
   calculatrice). Un exercice type bac = un exercice d'épreuve (maths : 4 à 8 points, un
   sujet = quatre exercices, le sujet dit si la calculatrice est permise ;
-  physique-chimie : 4 à 10 points avec documents).
+  physique-chimie : un sujet = trois exercices indépendants en 3 h 30, points par exercice
+  non fixés par la note, documents, calculatrice selon le sujet — référentiel § 3.2).
 - Questions enchaînées mais **rattrapables** : résultats intermédiaires donnés (« On admet
   que… ») pour qu'un blocage n'arrête pas l'exercice.
 - `attenduCorrecteur` pour chaque question : les éléments qui rapportent les points.

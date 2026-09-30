@@ -32,6 +32,9 @@ CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-
                           # format de l'épreuve 2027, périmètre de chaque session depuis
                           # 2021, hors programme, notations ; texte-officiel/ = extraction
                           # brute du BO (contrôle mot à mot) + écarts admis
+    bac-physique-chimie-terminale-2027/  # RÉFÉRENTIEL physique-chimie de terminale : même
+                          # plan (programme de 2019, épreuve 2027 écrit + partie pratique,
+                          # périmètre de chaque session depuis 2021) ; texte-officiel/
     bilan/  handoff/  reprends/SKILL.md   # rituel fin/transition de session (fleet-kit)
   agents/               # chapter-author, pedagogical-reviewer (+ équivalents français)
                         # tle-* : architecte, auteur-cours, auteur-exercices, auteur-bac,
@@ -57,6 +60,9 @@ content/
                         # mentions, sources — SOURCE UNIQUE des coefficients du site
   terminale/grand-oral/ # grand oral : deroule (minutes), epreuve, preparation, expose, entretien,
                         # criteres, relances — sources prises dans content/bac/sources.json
+  terminale/physique-chimie/programme.json  # les 331 lignes du programme officiel (bo-pc-…,
+                        # dont capacités expérimentales, numériques, mathématiques ; bo-pc1-… =
+                        # notions de première mobilisables)
   terminale/maths/programme.json  # les 205 lignes du programme officiel (bo-m-…, texte
                         # exact du BO, chapitre, rubrique, exigible)
   terminale/maths/annales.json    # index des sujets de bac 2021-2026 (tous lieux) : lignes
@@ -136,7 +142,7 @@ tests/                  # Playwright pour les runners critiques (Vitest : src/**
 - **Terminale (maths, physique-chimie)** : lire `chantiers/terminale/README.md` puis la charte
   `.claude/skills/terminale-charte/SKILL.md` ; un chapitre = `/tle-chapitre <matiere> <slug>`
   (agents `tle-*`). Rien sans le référentiel de la matière (`bac-<matiere>-terminale-2027` :
-  maths écrit, physique-chimie pas encore). Contrôle d'un chapitre : `node scripts/couverture-terminale.mjs <matiere>
+  maths et physique-chimie écrits). Contrôle d'un chapitre : `node scripts/couverture-terminale.mjs <matiere>
   <slug> [--partie cours]`. Pages : les construire sur le chapitre-témoin (`npm run dev:temoin`).
 - **Nouveau contenu français** : `/new-module-francais`, mêmes règles (french-reviewer, 5 passes bloquantes).
 - **Ajouter une matière / un espace** : une entrée dans `SPACES` (`src/lib/spaces.ts`) + ses

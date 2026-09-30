@@ -469,8 +469,9 @@ Cadré le 2026-09-24 (aucun contenu écrit ce jour-là). Trois documents, à lir
 3. Le **référentiel de la matière** : `.claude/skills/bac-<matiere>-terminale-2027/SKILL.md`
    + `content/terminale/<matiere>/programme.json` (texte exact du programme, une ligne = un
    identifiant `bo-…`). **Maths : écrit le 2026-09-24** (`bac-maths-terminale-2027`, texte
-   contrôlé mot à mot par `node scripts/programme-conforme.mjs`). **Physique-chimie : pas
-   encore écrit. Aucun contenu d'une matière sans son référentiel.**
+   contrôlé mot à mot par `node scripts/programme-conforme.mjs`). **Physique-chimie : écrit le
+   2026-09-30** (`bac-physique-chimie-terminale-2027`, 331 lignes dont 10 acquis de première
+   `bo-pc1-…`, même contrôle mot à mot). **Aucun contenu d'une matière sans son référentiel.**
 
 Ce qui diffère de la première :
 

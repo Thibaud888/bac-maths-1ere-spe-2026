@@ -256,7 +256,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   hors programme** ; `chapitres-maths.md` relu (4 corrections, un point à trancher sur
   l'ordre). Au passage : la page demandée pour tester l'accès (MENE2622694N) est la note du
   **grand oral**. `node scripts/verify.mjs` OK. PR : #87.
-- [ ] (P1) Écrire la liste officielle de ce qu'il faut savoir en physique-chimie de terminale —
+- [x] (P1) Écrire la liste officielle de ce qu'il faut savoir en physique-chimie de terminale —
   même travail : `bac-physique-chimie-terminale-2027` + `programme.json` (`bo-pc-…`, avec
   capacités expérimentales et numériques, et les acquis de première mobilisables `bo-pc1-…`),
   format de l'écrit et de l'épreuve pratique. DoD : idem.
@@ -266,6 +266,19 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   pages) ; `validate-content.mjs` attend les préfixes `bo-pc-`/`bo-pc1-`. Programme :
   BO spécial n° 8 du 25-7-2019 (PDF complet : `education.gouv.fr/sites/default/files/imported_files/documents/SP8_MENJ_1159506.pdf`) ;
   épreuve 2027 : MENE2622644N dans le PDF du BO spécial n° 4 du 17-9-2026.
+  Fait le 2026-09-30, tout depuis les PDF officiels : skill
+  `.claude/skills/bac-physique-chimie-terminale-2027/` ; `programme.json` = 331 lignes
+  (116 contenus, 117 capacités, 80 expérimentales dont la liste finale de 45, 10 numériques,
+  8 mathématiques, 10 acquis de première `bo-pc1-…`), tableaux du BO lus colonne par colonne
+  (italique = activité expérimentale), formules relues sur l'image des pages, une ligne en
+  écart admis. Établi : programme de 2019 en vigueur (le BO du 2-4-2026 ne change que les
+  maths) ; épreuve 2027 = écrit 3 h 30, **trois exercices**, calculatrice selon le sujet,
+  2 points de langue, + partie pratique 1 h (note = 0,8 écrit + 0,2 pratique) ; première
+  « mobilisable » mais pas « ressort essentiel » ; périmètre 2021, 2022, 2023 relevé, tout
+  le programme depuis 2024. `chapitres-physique-chimie.md` relu : 5 corrections, ordre
+  `sens-evolution` avant `force-acides-bases` proposé ; charte § 7 corrigée (« 4 à
+  10 points » n'est pas dans le texte). Non relu : BO n° 15 du 14-4-2022 (périmètre 2022).
+  `node scripts/verify.mjs` OK. PR : à venir.
 - [x] (P2) Mettre à jour les références officielles des épreuves de spécialité —
   `content/bac/sources.json` : `s-spe-maths` et `s-spe-physique-chimie` pointent vers les notes
   de 2020 ; les notes de service du BO spécial n° 4 du 17 septembre 2026 redéfinissent les
