@@ -419,6 +419,20 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
 - [ ] (P2) Écrire les chapitres suivants, un par session — dans l'ordre de la classe, deux
   items par chapitre (« le cours », « les exercices »), ajoutés ici par les sessions pilotes ;
   plusieurs sessions en parallèle possibles, un chapitre chacune.
+  - [x] Récurrence et suites : le cours — 3 notions (priorités mesurées : le raisonnement par
+    récurrence et l'encadrement / sens de variation incontournables, modéliser une évolution
+    fréquent), 40 blocs, 5 cartes de mémo ; relecteur PASS au 2e tour puis au 3e après le test
+    « élève » (2 bloquants corrigés) ; couverture « cours » sans écart. Le chapitre reste seul
+    (décision de Thibaud du 2026-10-01). PR : #104.
+  - [ ] Récurrence et suites : les exercices — `/tle-chapitre maths recurrence-suites
+    exercices` : trois marches, questions éclair, 3 à 5 exercices type bac limités à ce
+    chapitre, à la première et aux Méthodes (premier chapitre de l'année : ni limite, ni
+    seuil, ni continuité). DoD : charte § 9.4.
+  - [ ] Montrer en image comment une suite uₙ₊₁ = f(uₙ) monte sans sortir de son intervalle —
+    souhait de l'élève-testeur pour la notion « encadrement et sens de variation » : les
+    termes de l'exemple `l-recurrence-suites-022` placés sur le segment [0 ; 1] (figure SVG
+    sous `public/figures/terminale/maths/recurrence-suites/`), ou un widget « escalier » quand
+    les figures animées existeront.
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
