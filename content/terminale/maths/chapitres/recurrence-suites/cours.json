@@ -201,7 +201,7 @@
         {
           "id": "l-recurrence-suites-012",
           "type": "idee",
-          "texte": "Au bac, la récurrence sert surtout à prouver des **inégalités**. Par exemple, un **encadrement** comme « $0 \\leqslant u_n \\leqslant 2$ » (deux nombres entre lesquels $u_n$ reste), ou « $u_n \\leqslant u_{n+1}$ ». C'est précieux quand aucune formule ne donne $u_n$, comme pour $u_{n+1} = \\dfrac{2u_n}{u_n + 1}$. Une idée porte tout : une fonction croissante ne change pas l'ordre de deux nombres. Elle fait passer l'inégalité du rang $n$ au rang $n + 1$."
+          "texte": "Très souvent, au bac, la récurrence sert à prouver des **inégalités** : un **encadrement** comme « $0 \\leqslant u_n \\leqslant 2$ » (deux nombres entre lesquels $u_n$ reste), ou « $u_n \\leqslant u_{n+1}$ ». C'est utile quand on n'a pas de formule donnant $u_n$ en fonction de $n$. On raisonne alors directement sur la relation, par exemple $u_{n+1} = \\dfrac{2u_n}{u_n + 1}$. Une idée porte tout : une fonction croissante ne change pas l'ordre de deux nombres. Elle fait passer l'inégalité du rang $n$ au rang $n + 1$."
         },
         {
           "id": "l-recurrence-suites-013",
@@ -215,7 +215,7 @@
           "type": "definition",
           "titre": "Suite majorée, minorée, bornée",
           "capacites": ["bo-m-suites-08"],
-          "texte": "Soit $(u_n)$ une suite.\n\n- $(u_n)$ est **majorée** s'il existe un réel $M$ tel que, pour tout entier naturel $n$, $u_n \\leqslant M$. On dit que $M$ est **un majorant** de la suite.\n- $(u_n)$ est **minorée** s'il existe un réel $m$ tel que, pour tout entier naturel $n$, $u_n \\geqslant m$. On dit que $m$ est **un minorant** de la suite.\n- $(u_n)$ est **bornée** si elle est à la fois majorée et minorée. Autrement dit, il existe deux réels $m$ et $M$ tels que, pour tout entier naturel $n$, $m \\leqslant u_n \\leqslant M$.\n\nLe même $M$ convient pour tous les termes : il ne dépend pas de $n$. Un majorant n'est pas unique : tout réel plus grand qu'un majorant en est un aussi."
+          "texte": "Soit $(u_n)$ une suite.\n\n- $(u_n)$ est **majorée** s'il existe un réel $M$ tel que, pour tout entier naturel $n$, $u_n \\leqslant M$ ; $M$ est alors **un majorant** de la suite.\n- $(u_n)$ est **minorée** s'il existe un réel $m$ tel que, pour tout entier naturel $n$, $u_n \\geqslant m$ ; $m$ est alors **un minorant** de la suite.\n- $(u_n)$ est **bornée** si elle est à la fois majorée et minorée : il existe deux réels $m$ et $M$ tels que $m \\leqslant u_n \\leqslant M$ pour tout $n$.\n\nLe même $M$ convient pour tous les termes. Un majorant n'est pas unique : tout réel plus grand en est un aussi."
         },
         {
           "id": "l-recurrence-suites-015",
@@ -309,24 +309,24 @@
           "type": "verifie",
           "capacites": ["bo-m-suites-08"],
           "question": {
-            "enonce": "Soit $(u_n)$ une suite telle que, pour tout entier naturel $n$, $u_{n+1} = -0{,}5u_n + 3$. Dans une hérédité, tu supposes $0 \\leqslant u_n \\leqslant 2$. Quel encadrement de $u_{n+1}$ obtiens-tu ?",
+            "enonce": "Soit $(u_n)$ une suite telle que, pour tout entier naturel $n$, $u_{n+1} = -0{,}5u_n + 3$. Pour démontrer que $1 \\leqslant u_n \\leqslant 4$ pour tout $n$, tu supposes, dans l'hérédité, $1 \\leqslant u_n \\leqslant 4$. Quel encadrement de $u_{n+1}$ obtiens-tu en appliquant la relation ?",
             "reponse": {
               "type": "qcm",
               "choix": [
-                "$3 \\leqslant u_{n+1} \\leqslant 2$",
-                "$-1 \\leqslant u_{n+1} \\leqslant 0$",
-                "$0 \\leqslant u_{n+1} \\leqslant 2$",
-                "$2 \\leqslant u_{n+1} \\leqslant 3$"
+                "$2{,}5 \\leqslant u_{n+1} \\leqslant 1$",
+                "$-2 \\leqslant u_{n+1} \\leqslant -0{,}5$",
+                "$3{,}5 \\leqslant u_{n+1} \\leqslant 5$",
+                "$1 \\leqslant u_{n+1} \\leqslant 2{,}5$"
               ],
               "bonne": 3,
               "pourquoiFaux": [
-                "Tu as gardé le sens des inégalités en multipliant par $-0{,}5$. Un encadrement « $3 \\leqslant \\dots \\leqslant 2$ » est impossible : multiplier par un nombre négatif renverse les inégalités.",
-                "Tu t'es arrêté à $-0{,}5u_n$, qui est bien entre $-1$ et $0$. Il reste à ajouter $3$.",
-                "Tu as recopié l'hypothèse de récurrence sans appliquer la relation de récurrence.",
+                "Tu as gardé le sens des inégalités en multipliant par $-0{,}5$. Un encadrement « $2{,}5 \\leqslant \\dots \\leqslant 1$ » est impossible : multiplier par un nombre négatif renverse les inégalités.",
+                "Tu t'es arrêté à $-0{,}5u_n$, qui est bien entre $-2$ et $-0{,}5$. Il reste à ajouter $3$.",
+                "Tu as oublié le signe moins : tu as calculé $0{,}5u_n + 3$ au lieu de $-0{,}5u_n + 3$.",
                 null
               ]
             },
-            "explication": "On multiplie par $-0{,}5$, qui est négatif : $0 \\geqslant -0{,}5u_n \\geqslant -1$, soit $-1 \\leqslant -0{,}5u_n \\leqslant 0$. On ajoute $3$ : $2 \\leqslant u_{n+1} \\leqslant 3$."
+            "explication": "On multiplie par $-0{,}5$, qui est négatif : $-0{,}5 \\geqslant -0{,}5u_n \\geqslant -2$, soit $-2 \\leqslant -0{,}5u_n \\leqslant -0{,}5$. On ajoute $3$ : $1 \\leqslant u_{n+1} \\leqslant 2{,}5$. Comme $2{,}5 \\leqslant 4$, on a bien $1 \\leqslant u_{n+1} \\leqslant 4$ : l'encadrement se transmet au rang suivant."
           }
         },
         {
@@ -345,7 +345,7 @@
             "Repère la fonction $f$ telle que $u_{n+1} = f(u_n)$, et un intervalle $[a\\,;\\,b]$ sur lequel $f$ est croissante : étudie le signe de $f'$.",
             "Calcule $f(a)$ et $f(b)$, et vérifie que $a \\leqslant f(a)$ et $f(b) \\leqslant b$ : les termes ne pourront pas sortir de $[a\\,;\\,b]$.",
             "Pose $P(n)$ : « $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ ». **Initialisation** : calcule $u_0$ et $u_1$, puis vérifie $P(0)$. Si $u_1 \\leqslant u_0$, pose plutôt $P(n)$ : « $a \\leqslant u_{n+1} \\leqslant u_n \\leqslant b$ ».",
-            "**Hérédité** : suppose $P(n)$. Les nombres $a$, $u_n$, $u_{n+1}$ et $b$ sont dans $[a\\,;\\,b]$, où $f$ est croissante. Applique $f$ sans changer le sens : $f(a) \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant f(b)$. Termine avec l'étape 2.",
+            "**Hérédité** : suppose $P(n)$. Les nombres $a$, $u_n$, $u_{n+1}$ et $b$ sont dans $[a\\,;\\,b]$, où $f$ est croissante. Applique $f$ sans changer le sens : $f(a) \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant f(b)$, ou $f(a) \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant f(b)$ dans le cas décroissant. Termine avec l'étape 2.",
             "**Conclusion** : la suite est croissante (ou décroissante), minorée par $a$ et majorée par $b$."
           ],
           "exemple": "l-recurrence-suites-022"
@@ -355,7 +355,7 @@
           "type": "exemple",
           "titre": "Le geste du bac : $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$",
           "capacites": ["bo-m-suites-08"],
-          "enonce": "Soit $f$ la fonction définie sur $[0\\,;\\,1]$ par $f(x) = \\dfrac{2x}{x+1}$, et $(u_n)$ la suite définie par $u_0 = \\dfrac{1}{2}$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.\n\n**1.** Étudier le sens de variation de $f$ sur $[0\\,;\\,1]$.\n\n**2.** Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$.\n\n**3.** En déduire que la suite $(u_n)$ est croissante et bornée.",
+          "enonce": "Soit $f$ la fonction définie sur $[0\\,;\\,1]$ par $f(x) = \\dfrac{2x}{x+1}$. Soit $(u_n)$ la suite définie par $u_0 = \\dfrac{1}{2}$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.\n\n**1.** Étudier le sens de variation de $f$ sur $[0\\,;\\,1]$.\n\n**2.** Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$.\n\n**3.** En déduire que la suite $(u_n)$ est croissante et bornée.",
           "etapes": [
             {
               "texte": "$f$ est un quotient : $f = \\dfrac{g}{h}$ avec $g(x) = 2x$ et $h(x) = x + 1$, qui ne s'annule pas sur $[0\\,;\\,1]$. Pour tout $x$ de $[0\\,;\\,1]$ :\n\n$$f'(x) = \\frac{2(x+1) - 2x \\times 1}{(x+1)^2} = \\frac{2}{(x+1)^2}.$$",
@@ -428,7 +428,7 @@
         {
           "id": "l-recurrence-suites-026",
           "type": "retenir",
-          "texte": "Majorée : $u_n \\leqslant M$ pour tout $n$ ; minorée : $u_n \\geqslant m$ pour tout $n$ ; bornée : les deux.\n\nSi $u_{n+1} = f(u_n)$ avec $f$ croissante sur $[a\\,;\\,b]$, une seule récurrence donne l'encadrement et le sens de variation : « $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ » si $u_0 \\leqslant u_1$, « $a \\leqslant u_{n+1} \\leqslant u_n \\leqslant b$ » sinon."
+          "texte": "Majorée : $u_n \\leqslant M$ pour tout $n$ ; minorée : $u_n \\geqslant m$ pour tout $n$ ; bornée : les deux.\n\nSi $u_{n+1} = f(u_n)$, avec $f$ croissante sur $[a\\,;\\,b]$, $a \\leqslant f(a)$, $f(b) \\leqslant b$ et $a \\leqslant u_0 \\leqslant b$ : une seule récurrence donne l'encadrement et le sens de variation. On démontre « $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ » si $u_0 \\leqslant u_1$, « $a \\leqslant u_{n+1} \\leqslant u_n \\leqslant b$ » sinon."
         }
       ]
     },
@@ -529,13 +529,41 @@
           "lien": "1e:probas-cond"
         },
         {
+          "id": "l-recurrence-suites-034",
+          "type": "exemple",
+          "titre": "Bus ou vélo : une relation tirée d'un arbre",
+          "capacites": ["bo-m-suites-09"],
+          "enonce": "Chaque jour, Léa va au lycée en bus ou à vélo. Après un jour en bus, elle reprend le bus le lendemain avec une probabilité de $0{,}8$. Après un jour à vélo, elle prend le bus le lendemain avec une probabilité de $0{,}2$. Le jour $1$, elle prend le bus avec une probabilité de $0{,}25$.\n\nPour tout entier $n \\geqslant 1$, on note $B_n$ l'événement « Léa prend le bus le jour $n$ », et $p_n = P(B_n)$. Son contraire $\\overline{B_n}$, lu « $B_n$ barre », est « Léa prend le vélo le jour $n$ ».\n\n**1.** Justifier que, pour tout $n \\geqslant 1$, $p_{n+1} = 0{,}6p_n + 0{,}2$.\n\n**2.** Calculer $p_2$ et $p_3$, puis interpréter $p_3$.",
+          "etapes": [
+            {
+              "texte": "On traduit l'énoncé par un arbre pondéré, dessiné juste après cet exemple : $P(B_n) = p_n$, $P(\\overline{B_n}) = 1 - p_n$, $P_{B_n}(B_{n+1}) = 0{,}8$ et $P_{\\overline{B_n}}(B_{n+1}) = 0{,}2$.",
+              "pourquoi": "« Après un jour en bus, elle reprend le bus le lendemain avec une probabilité de $0{,}8$ » est une probabilité **sachant** $B_n$ : elle se place sur une branche issue de $B_n$."
+            },
+            {
+              "texte": "Les événements $B_n$ et $\\overline{B_n}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$p_{n+1} = P(B_n \\cap B_{n+1}) + P(\\overline{B_n} \\cap B_{n+1}) = p_n \\times 0{,}8 + (1 - p_n) \\times 0{,}2.$$",
+              "pourquoi": "Deux chemins mènent à $B_{n+1}$ : bus puis bus, et vélo puis bus. La probabilité de chacun est le produit des probabilités de ses branches."
+            },
+            {
+              "texte": "On développe : $p_{n+1} = 0{,}8p_n + 0{,}2 - 0{,}2p_n = 0{,}6p_n + 0{,}2$."
+            },
+            {
+              "texte": "D'après l'énoncé, $p_1 = 0{,}25$. Puis $p_2 = 0{,}6 \\times 0{,}25 + 0{,}2 = 0{,}15 + 0{,}2 = 0{,}35$ et $p_3 = 0{,}6 \\times 0{,}35 + 0{,}2 = 0{,}21 + 0{,}2 = 0{,}41$.",
+              "pourquoi": "On applique la relation avec $n = 1$, puis avec $n = 2$."
+            },
+            {
+              "texte": "**Conclusion** : pour tout entier $n \\geqslant 1$, $p_{n+1} = 0{,}6p_n + 0{,}2$. On a $p_2 = 0{,}35$ et $p_3 = 0{,}41$ : la probabilité que Léa prenne le bus le troisième jour est $0{,}41$.",
+              "pourquoi": "La relation a la forme $p_{n+1} = a\\,p_n + b$. La méthode du club s'applique, avec la suite auxiliaire $v_n = p_n - 0{,}5$, car $0{,}5 = 0{,}6 \\times 0{,}5 + 0{,}2$."
+            }
+          ]
+        },
+        {
           "id": "l-recurrence-suites-033",
           "type": "figure",
           "titre": "L'arbre de l'exemple « Bus ou vélo »",
           "capacites": ["bo-m-suites-09"],
           "figure": {
             "type": "tree",
-            "caption": "Du jour n au jour n + 1 : au premier niveau, Léa prend le bus ou non le jour n ; au second, le lendemain. Les deux branches issues d'un même nœud ont pour somme 1.",
+            "caption": "Arbre de l'exemple ci-dessus, du jour n au jour n + 1 : bus ou vélo le jour n, puis bus ou vélo le lendemain. Les deux branches issues d'un même nœud ont pour somme 1.",
             "data": {
               "root": {
                 "label": "$\\text{Départ}$",
@@ -561,34 +589,6 @@
               "orientation": "horizontal"
             }
           }
-        },
-        {
-          "id": "l-recurrence-suites-034",
-          "type": "exemple",
-          "titre": "Bus ou vélo : une relation tirée d'un arbre",
-          "capacites": ["bo-m-suites-09"],
-          "enonce": "Chaque jour, Léa va au lycée en bus ou à vélo. Si elle prend le bus un jour, elle le reprend le lendemain avec une probabilité de $0{,}8$. Si elle prend le vélo un jour, elle prend le bus le lendemain avec une probabilité de $0{,}2$. Le jour $1$, elle prend le bus avec une probabilité de $0{,}25$.\n\nPour tout entier $n \\geqslant 1$, on note $B_n$ l'événement « Léa prend le bus le jour $n$ » et $p_n = P(B_n)$. L'événement contraire $\\overline{B_n}$ (lu « $B_n$ barre ») est « Léa prend le vélo le jour $n$ ».\n\n**1.** Justifier que, pour tout entier $n \\geqslant 1$, $p_{n+1} = 0{,}6p_n + 0{,}2$.\n\n**2.** Calculer $p_2$ et $p_3$, puis interpréter $p_3$.",
-          "etapes": [
-            {
-              "texte": "On lit les données sur l'arbre ci-dessus : $P(B_n) = p_n$, $P(\\overline{B_n}) = 1 - p_n$, $P_{B_n}(B_{n+1}) = 0{,}8$ et $P_{\\overline{B_n}}(B_{n+1}) = 0{,}2$.",
-              "pourquoi": "« Si elle prend le bus un jour, elle le reprend le lendemain avec une probabilité de $0{,}8$ » est une probabilité **sachant** $B_n$ : elle se place sur une branche issue de $B_n$."
-            },
-            {
-              "texte": "Les événements $B_n$ et $\\overline{B_n}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$p_{n+1} = P(B_n \\cap B_{n+1}) + P(\\overline{B_n} \\cap B_{n+1}) = p_n \\times 0{,}8 + (1 - p_n) \\times 0{,}2.$$",
-              "pourquoi": "Deux chemins mènent à $B_{n+1}$ : bus puis bus, et vélo puis bus. La probabilité de chacun est le produit des probabilités de ses branches."
-            },
-            {
-              "texte": "On développe : $p_{n+1} = 0{,}8p_n + 0{,}2 - 0{,}2p_n = 0{,}6p_n + 0{,}2$."
-            },
-            {
-              "texte": "D'après l'énoncé, $p_1 = 0{,}25$. Puis $p_2 = 0{,}6 \\times 0{,}25 + 0{,}2 = 0{,}15 + 0{,}2 = 0{,}35$ et $p_3 = 0{,}6 \\times 0{,}35 + 0{,}2 = 0{,}21 + 0{,}2 = 0{,}41$.",
-              "pourquoi": "On applique la relation avec $n = 1$, puis avec $n = 2$."
-            },
-            {
-              "texte": "**Conclusion** : pour tout entier $n \\geqslant 1$, $p_{n+1} = 0{,}6p_n + 0{,}2$. On a $p_2 = 0{,}35$ et $p_3 = 0{,}41$ : la probabilité que Léa prenne le bus le troisième jour est $0{,}41$.",
-              "pourquoi": "La relation a la forme $p_{n+1} = a\\,p_n + b$. La méthode du club s'applique, avec la suite auxiliaire $v_n = p_n - 0{,}5$, car $0{,}5 = 0{,}6 \\times 0{,}5 + 0{,}2$."
-            }
-          ]
         },
         {
           "id": "l-recurrence-suites-035",
@@ -640,7 +640,7 @@
           "type": "complement",
           "titre": "Pour aller plus loin : quand chaque terme dépend des deux précédents",
           "capacites": ["bo-m-suites-17"],
-          "texte": "La **suite de Fibonacci** modélise une population de lapins : $F_1 = F_2 = 1$ et, pour tout entier $n \\geqslant 1$, $F_{n+2} = F_{n+1} + F_n$. Chaque terme est la somme des deux précédents : $1$, $1$, $2$, $3$, $5$, $8$, $13$…\n\nUne relation $u_{n+2} = a\\,u_{n+1} + b\\,u_n$, avec $a$ et $b$ réels fixés, est dite **linéaire d'ordre $2$ à coefficients constants**. Il faut alors connaître les deux premiers termes. Par exemple, $u_0 = 0$, $u_1 = 1$ et $u_{n+2} = 3u_{n+1} - 2u_n$ donnent $0$, $1$, $3$, $7$, $15$. On conjecture $u_n = 2^n - 1$. Pour le démontrer, on initialise aux rangs $0$ et $1$, et on suppose la formule vraie aux rangs $n$ et $n + 1$."
+          "texte": "La **suite de Fibonacci** modélise une population de lapins : $F_1 = F_2 = 1$ et, pour tout entier $n \\geqslant 1$, $F_{n+2} = F_{n+1} + F_n$. Ses termes sont $1$, $1$, $2$, $3$, $5$, $8$, $13$…\n\nUne relation $u_{n+2} = a\\,u_{n+1} + b\\,u_n$, avec $a$ et $b$ réels fixés, est dite **linéaire d'ordre $2$ à coefficients constants**. Il faut connaître les deux premiers termes. Par exemple, $u_0 = 0$, $u_1 = 1$ et $u_{n+2} = 3u_{n+1} - 2u_n$ donnent $0$, $1$, $3$, $7$, $15$ : on conjecture $u_n = 2^n - 1$. Pour une récurrence simple, on pose $P(n)$ : « $u_n = 2^n - 1$ et $u_{n+1} = 2^{n+1} - 1$ ». $P(0)$ est vraie, et dans l'hérédité, $u_{n+2} = 3\\left(2^{n+1} - 1\\right) - 2\\left(2^n - 1\\right) = 2^{n+2} - 1$."
         },
         {
           "id": "l-recurrence-suites-039",
