@@ -365,9 +365,8 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   **Dénombrement** (2026-09-28). `/tle-chapitre maths denombrement`, partie cours puis partie
   exercices ; Thibaud relit, la charte est ajustée à la suite ; la session ajoute ici un item
   par chapitre suivant. DoD : chapitre fini au sens de la charte § 9, retours de Thibaud notés
-  dans la charte. Encore à trancher (`chapitres-maths.md`, fin) : le ch. 1 ne porte que 3
-  lignes exigibles du programme (il tient seul ou rejoint les limites de suites ?) ;
-  l'espérance de la loi binomiale est au ch. 15, loin du ch. 11.
+  dans la charte. Encore à trancher (`chapitres-maths.md`, fin) : l'espérance de la loi
+  binomiale est au ch. 15, loin du ch. 11.
   - [x] Dénombrement : le cours — 5 notions (priorités mesurées : combinaisons incontournable,
     principes et problèmes fréquents, permutations et triangle de Pascal plus rares), 65 blocs,
     8 cartes de mémo ; relecteur PASS au 3e tour, élève-testeur (1 bloquant corrigé) ;

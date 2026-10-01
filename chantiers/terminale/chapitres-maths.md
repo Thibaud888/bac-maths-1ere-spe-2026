@@ -67,7 +67,9 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
   (qⁿ), après démonstration par récurrence de l'inégalité de Bernoulli ») est au ch. 2
 - Relu : ce chapitre ne porte que **3 lignes exigibles** (raisonner par récurrence, phénomènes
   d'évolution, démontrer par récurrence) ; « suites majorées, minorées, bornées » n'est pas une
-  ligne du programme de terminale. `tle-architecte` dira s'il tient seul ou s'il rejoint le ch. 2
+  ligne du programme de terminale.
+- **Décision du 2026-10-01 (Thibaud)** : le chapitre **reste seul**, il n'est pas fusionné
+  avec `limites-suites` (ch. 2).
 
 ### 2. Limites de suites
 - Limite finie ou infinie, suites de référence · ★★
