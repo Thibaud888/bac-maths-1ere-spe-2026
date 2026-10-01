@@ -409,6 +409,36 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     `adaptation` de `type-bac.json`).
 - [ ] (P1) Écrire le premier chapitre de physique-chimie, pour valider la méthode — même
   chose, sur le chapitre que Thibaud désigne (par défaut `acides-bases`). DoD : idem.
+  - [x] Acides, bases et pH : le cours — 4 notions (réaction acide-base et pH
+    incontournables, couples usuels et espèce amphotère fréquents ; priorités estimées, pas
+    encore d'annales de physique-chimie), 49 blocs dont 10 exemples, 9 « vérifie », une
+    expérience (pH de l'acide chlorhydrique dilué 10 fois de suite) et 2 schémas de Lewis en
+    SVG ; 7 cartes de mémo. Le logarithme décimal, jamais vu en maths, est expliqué dans la
+    notion pH. Relecteur PASS au 1er tour, puis au 2e après retouches ; élève-testeur
+    (1 bloquant corrigé : pourquoi [H₃O⁺] = c pour l'acide chlorhydrique seulement).
+    Couverture « cours » sans écart. Fait le 2026-10-01.
+  - [ ] Acides, bases et pH : les exercices — trois marches, questions éclair, 3 à 5
+    exercices type bac. `/tle-chapitre physique-chimie acides-bases exercices`. Mêmes
+    garde-fous que le cours : composition des solutions et caractère total ou non total
+    donnés dans l'énoncé, aucun mot « fort / faible », ni $K_e$, ni $\mathrm{p}K_A$ ; même
+    convention d'arrondi du pH (autant de décimales que de chiffres significatifs de
+    [H₃O⁺]), tolérances larges ; une question de résolution de problème (marche 3 ou type
+    bac). Le type bac ne peut mêler que ce chapitre, la première et les « Méthodes » (aucun
+    autre chapitre de physique-chimie écrit). DoD : charte § 9.4.
+  - [ ] Cours Acides, bases et pH : trois retouches de style laissées par le relecteur — l-035
+    et la carte `m-acides-bases-amphotere` (parenthèses emboîtées autour de
+    $\mathrm{(CO_2,H_2O)/HCO_3^-}$), l-008 (« l'eau peut donc **aussi** jouer le rôle d'un
+    acide » arrive avant qu'on l'ait vue en base), `alt` des figures l-021 et l-023 (phrases
+    de plus de 25 mots). Passer par `tle-auteur-cours` puis `tle-relecteur`.
+  - [ ] Quand la page « Méthodes » de physique-chimie est écrite : n'expliquer le logarithme
+    décimal qu'une fois — aujourd'hui dans la notion pH d'`acides-bases` (l-038, l-039) ;
+    garder ce bloc et y renvoyer, ou l'inverse avec un `rappel`.
+- [ ] (P2) Montrer la bonne réponse avec le bon nombre de chiffres (« 3,40 », pas « 3,4 ») —
+  « Voir la réponse » d'une question numérique affiche la valeur brute du JSON :
+  `ValeurAttendue` (`src/components/terminale/QuestionVerifiable.tsx`) fait `String(valeur)`
+  et ignore `chiffresSignificatifs` ; un pH se donne en décimales, pas en chiffres
+  significatifs (champ à ajouter au schéma, ou règle propre au pH). Relevé sur
+  `l-acides-bases-042` et `-045`. DoD : valeur affichée conforme, test, `verify.mjs` OK.
 
 **Phase 4 — la production**
 
