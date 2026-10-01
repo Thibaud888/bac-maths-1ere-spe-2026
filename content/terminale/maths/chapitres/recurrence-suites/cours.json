@@ -7,13 +7,13 @@
         {
           "id": "l-recurrence-suites-001",
           "type": "idee",
-          "texte": "La suite définie par $u_0 = 1$ et $u_{n+1} = 2u_n + 1$ commence par $1$, $3$, $7$, $15$, $31$. Chaque terme semble valoir une puissance de $2$ moins $1$. Mais vérifier dix termes, ou mille, ne prouve rien pour tous les entiers. Pense à une file de dominos : si le premier tombe, et si chaque domino qui tombe renverse le suivant, alors tous tombent. C'est l'idée du **raisonnement par récurrence**."
+          "texte": "La suite définie par $u_0 = 1$ et $u_{n+1} = 2u_n + 1$ commence par $1$, $3$, $7$, $15$, $31$. On devine que $u_n = 2^{n+1} - 1$. Cette affirmation dépend de $n$ : on la note $P(n)$, lu « $P$ de $n$ ». Vérifier dix rangs, ou mille, ne prouve pas $P(n)$ pour tous les entiers. Pense à des dominos : si le premier tombe, et si chacun renverse le suivant, tous tombent. C'est le **raisonnement par récurrence**."
         },
         {
           "id": "l-recurrence-suites-002",
           "type": "rappel",
           "titre": "Rappel : suite définie par récurrence, suite définie explicitement",
-          "texte": "Une suite $(u_n)$ est **définie par récurrence** quand on donne son premier terme et une relation qui calcule chaque terme à partir du précédent. Par exemple : $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = 2u_n + 1$. On calcule les termes de proche en proche : $u_1 = 2u_0 + 1 = 3$, puis $u_2 = 2u_1 + 1 = 7$.\n\nLa relation vaut pour **tout** entier $n$ : en remplaçant $n$ par $n + 1$, on obtient $u_{n+2} = 2u_{n+1} + 1$.\n\nUne suite est **définie explicitement** quand on calcule $u_n$ directement à partir de $n$. Par exemple, $u_n = u_0 + nr$ pour une suite arithmétique de raison $r$, et $u_n = u_0 \\times q^n$ pour une suite géométrique de raison $q$.",
+          "texte": "Une suite $(u_n)$ est **définie par récurrence** quand on donne son premier terme et une relation qui calcule chaque terme à partir du précédent. Par exemple : $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = 2u_n + 1$.\n\nElle est **définie explicitement** si l'on calcule $u_n$ directement à partir de $n$ : $u_n = u_0 + nr$ (arithmétique), $u_n = u_0 \\times q^n$ (géométrique).\n\nDeux sens à ne pas confondre. Une suite **définie par récurrence**, c'est une façon de donner une suite. Le **raisonnement par récurrence**, c'est une façon de démontrer : il sert aussi pour des sommes ou des inégalités.",
           "lien": "1e:suites"
         },
         {
@@ -22,13 +22,11 @@
           "titre": "Principe de récurrence",
           "capacites": ["bo-m-logique-14"],
           "conditions": [
-            "$n_0$ est un entier naturel : c'est le rang de départ, souvent $0$ ou $1$.",
-            "Les deux étapes sont démontrées : l'initialisation seule, ou l'hérédité seule, ne prouve rien.",
-            "Dans l'hérédité, $n$ est un entier quelconque supérieur ou égal à $n_0$, fixé : on ne suppose pas $P(n)$ vraie pour tous les entiers.",
-            "La conclusion ne vaut qu'à partir du rang $n_0$ où l'on a initialisé."
+            "$n_0$ est un entier naturel : le rang de départ, souvent $0$ ou $1$.",
+            "Le résultat ne vaut qu'à partir de ce rang $n_0$."
           ],
           "admise": true,
-          "texte": "Une **propriété** $P(n)$ (lu « $P$ de $n$ ») est une affirmation qui dépend d'un entier $n$ : pour chaque $n$, elle est vraie ou fausse. Par exemple, $P(n)$ : « $u_n = 2^{n+1} - 1$ ».\n\nSoit $n_0$ un entier naturel. On suppose que :\n\n- **initialisation** : $P(n_0)$ est vraie ;\n- **hérédité** : pour tout entier $n \\geqslant n_0$, si $P(n)$ est vraie, alors $P(n+1)$ est vraie.\n\nAlors $P(n)$ est vraie pour tout entier $n \\geqslant n_0$.\n\nDans l'hérédité, la supposition « $P(n)$ est vraie » s'appelle l'**hypothèse de récurrence**."
+          "texte": "Une **propriété** $P(n)$ est une affirmation qui dépend d'un entier $n$ : pour chaque $n$, elle est vraie ou fausse.\n\nSoit $n_0$ un entier naturel. On suppose que :\n\n- **initialisation** : $P(n_0)$ est vraie ;\n- **hérédité** : pour tout entier $n \\geqslant n_0$, si $P(n)$ est vraie, alors $P(n+1)$ est vraie. On dit alors que la propriété est **héréditaire** : elle se transmet d'un entier au suivant.\n\nAlors $P(n)$ est vraie pour tout entier $n \\geqslant n_0$.\n\nDans l'hérédité, on prend un entier $n \\geqslant n_0$ sans choisir sa valeur, et on raisonne sur ce seul $n$. La supposition « $P(n)$ est vraie » s'appelle l'**hypothèse de récurrence**."
         },
         {
           "id": "l-recurrence-suites-004",
@@ -68,7 +66,7 @@
               "type": "qcm",
               "choix": [
                 "$P(n)$ est vraie pour tout entier $n \\geqslant n_0$.",
-                "$P(n)$ est vraie pour un entier $n \\geqslant n_0$ fixé.",
+                "$P(n)$ est vraie pour un entier $n \\geqslant n_0$, dont on ne choisit pas la valeur.",
                 "$P(n+1)$ est vraie.",
                 "$P(n_0)$ est vraie."
               ],
@@ -77,10 +75,10 @@
                 "C'est exactement ce que tu veux démontrer : le supposer revient à tourner en rond.",
                 null,
                 "$P(n+1)$ est ce que tu dois obtenir à la fin de l'hérédité, pas ton point de départ.",
-                "C'est l'initialisation, qui se démontre à part. L'hérédité part de $P(n)$, pour un $n$ quelconque."
+                "C'est l'initialisation, qui se démontre à part. L'hérédité part de $P(n)$, pour un entier $n$ dont tu ne choisis pas la valeur."
               ]
             },
-            "explication": "Tu fixes un entier $n \\geqslant n_0$ quelconque et tu supposes $P(n)$ vraie : c'est l'hypothèse de récurrence. Tu en déduis $P(n+1)$. Comme $n$ est quelconque, la propriété se transmet de chaque entier au suivant."
+            "explication": "Tu prends un entier $n \\geqslant n_0$ sans choisir sa valeur, et tu supposes $P(n)$ vraie pour ce seul $n$ : c'est l'hypothèse de récurrence. Tu en déduis $P(n+1)$. Comme tu n'as pas choisi $n$, le raisonnement vaut pour chaque entier : la propriété se transmet de chacun au suivant."
           }
         },
         {
@@ -91,7 +89,7 @@
           "etapes": [
             "Écris la propriété à démontrer et son rang de départ : « Pour tout entier $n \\geqslant n_0$, on note $P(n)$ : … ».",
             "**Initialisation** : vérifie $P(n_0)$ par un calcul direct. Pour une égalité, calcule séparément les deux membres et constate qu'ils sont égaux. Conclus « $P(n_0)$ est vraie ».",
-            "**Hérédité** : écris « Soit $n \\geqslant n_0$ un entier. On suppose $P(n)$ vraie. » Puis écris $P(n+1)$ en remplaçant **chaque** $n$ par $n + 1$ : c'est ton objectif.",
+            "**Hérédité** : écris « Soit $n \\geqslant n_0$ un entier. On suppose $P(n)$ vraie. » Ne suppose pas $P(n)$ vraie pour tous les entiers : c'est ce que tu veux démontrer. Puis écris $P(n+1)$ en remplaçant **chaque** $n$ par $n + 1$ : c'est ton objectif.",
             "Pars du membre de $P(n+1)$ que la définition permet de relier au rang $n$ (souvent $u_{n+1}$). Utilise l'hypothèse de récurrence en le disant, et calcule jusqu'à l'autre membre.",
             "**Conclusion** : « $P(n_0)$ est vraie et la propriété est héréditaire, donc d'après le principe de récurrence, $P(n)$ est vraie pour tout entier $n \\geqslant n_0$. »"
           ],
@@ -142,7 +140,7 @@
               "pourquoi": "$S_{n+1} = 1^2 + 2^2 + \\dots + n^2 + (n+1)^2$ : ses $n$ premiers termes forment $S_n$."
             },
             {
-              "texte": "On met $\\dfrac{n+1}{6}$ en facteur, en écrivant $(n+1)^2 = \\dfrac{n+1}{6} \\times 6(n+1)$ :\n\n$$S_{n+1} = \\frac{n+1}{6}\\big(n(2n+1) + 6(n+1)\\big) = \\frac{n+1}{6}\\left(2n^2 + 7n + 6\\right).$$",
+              "texte": "On met $\\dfrac{n+1}{6}$ en facteur dans les deux termes : $\\dfrac{n(n+1)(2n+1)}{6} = \\dfrac{n+1}{6} \\times n(2n+1)$ et $(n+1)^2 = \\dfrac{n+1}{6} \\times 6(n+1)$. Donc :\n\n$$S_{n+1} = \\frac{n+1}{6}\\big(n(2n+1) + 6(n+1)\\big) = \\frac{n+1}{6}\\left(2n^2 + 7n + 6\\right).$$",
               "pourquoi": "$n(2n+1) + 6(n+1) = 2n^2 + n + 6n + 6 = 2n^2 + 7n + 6$. Garder $n + 1$ en facteur évite de tout développer : ce facteur figure aussi dans le résultat visé."
             },
             {
@@ -191,7 +189,7 @@
         {
           "id": "l-recurrence-suites-011",
           "type": "retenir",
-          "texte": "Récurrence : **initialisation** (vérifier $P(n_0)$), **hérédité** (supposer $P(n)$ pour un $n$ fixé, en déduire $P(n+1)$), **conclusion** (« d'après le principe de récurrence »).\n\nPour écrire $P(n+1)$, remplace **chaque** $n$ par $n + 1$."
+          "texte": "Récurrence : **initialisation** (vérifier $P(n_0)$), **hérédité** (supposer $P(n)$ vraie pour un entier $n$, en déduire $P(n+1)$), **conclusion** (« d'après le principe de récurrence »).\n\nPour écrire $P(n+1)$, remplace **chaque** $n$ par $n + 1$."
         }
       ]
     },
@@ -201,7 +199,7 @@
         {
           "id": "l-recurrence-suites-012",
           "type": "idee",
-          "texte": "Très souvent, au bac, la récurrence sert à prouver des **inégalités** : un **encadrement** comme « $0 \\leqslant u_n \\leqslant 2$ » (deux nombres entre lesquels $u_n$ reste), ou « $u_n \\leqslant u_{n+1}$ ». C'est utile quand on n'a pas de formule donnant $u_n$ en fonction de $n$. On raisonne alors directement sur la relation, par exemple $u_{n+1} = \\dfrac{2u_n}{u_n + 1}$. Une idée porte tout : une fonction croissante ne change pas l'ordre de deux nombres. Elle fait passer l'inégalité du rang $n$ au rang $n + 1$."
+          "texte": "Au bac, la récurrence sert souvent à prouver des **inégalités** : un **encadrement** comme « $0 \\leqslant u_n \\leqslant 2$ » (deux nombres entre lesquels $u_n$ reste), ou « $u_n \\leqslant u_{n+1}$ ». Sans formule explicite pour $u_n$, on raisonne sur la relation, comme $u_{n+1} = \\dfrac{2u_n}{u_n + 1}$. L'outil clé : si $u_{n+1} = f(u_n)$ avec $f$ croissante, appliquer $f$ garde l'ordre des nombres. L'inégalité passe ainsi du rang $n$ au rang $n + 1$."
         },
         {
           "id": "l-recurrence-suites-013",
@@ -268,7 +266,7 @@
           "etapes": [
             "Écris la propriété : « Pour tout entier naturel $n$, on note $P(n)$ : $a \\leqslant u_n \\leqslant b$ ».",
             "**Initialisation** : calcule $u_0$ et vérifie que $a \\leqslant u_0 \\leqslant b$.",
-            "**Hérédité** : suppose $a \\leqslant u_n \\leqslant b$ pour un entier $n$ fixé. Pars de cet encadrement et reconstruis $u_{n+1}$ pas à pas, en suivant la relation de récurrence.",
+            "**Hérédité** : prends un entier naturel $n$ et suppose $a \\leqslant u_n \\leqslant b$. Pars de cet encadrement et reconstruis $u_{n+1}$ pas à pas, en suivant la relation de récurrence.",
             "À chaque opération, contrôle le sens des inégalités : ajouter un même nombre le garde ; multiplier par un nombre positif le garde ; multiplier par un nombre négatif le renverse.",
             "Vérifie que l'encadrement obtenu pour $u_{n+1}$ entraîne $a \\leqslant u_{n+1} \\leqslant b$, puis conclus avec le principe de récurrence."
           ],
@@ -342,10 +340,10 @@
           "titre": "Comment étudier une suite $u_{n+1} = f(u_n)$ quand $f$ est croissante ?",
           "capacites": ["bo-m-suites-08"],
           "etapes": [
-            "Repère la fonction $f$ telle que $u_{n+1} = f(u_n)$, et un intervalle $[a\\,;\\,b]$ sur lequel $f$ est croissante : étudie le signe de $f'$.",
+            "Repère la fonction $f$ telle que $u_{n+1} = f(u_n)$, et un intervalle $[a\\,;\\,b]$ sur lequel $f$ est croissante : étudie le signe de $f'$. En général, $a$ et $b$ sont les bornes de l'encadrement que l'énoncé demande.",
             "Calcule $f(a)$ et $f(b)$, et vérifie que $a \\leqslant f(a)$ et $f(b) \\leqslant b$ : les termes ne pourront pas sortir de $[a\\,;\\,b]$.",
             "Pose $P(n)$ : « $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ ». **Initialisation** : calcule $u_0$ et $u_1$, puis vérifie $P(0)$. Si $u_1 \\leqslant u_0$, pose plutôt $P(n)$ : « $a \\leqslant u_{n+1} \\leqslant u_n \\leqslant b$ ».",
-            "**Hérédité** : suppose $P(n)$. Les nombres $a$, $u_n$, $u_{n+1}$ et $b$ sont dans $[a\\,;\\,b]$, où $f$ est croissante. Applique $f$ sans changer le sens : $f(a) \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant f(b)$, ou $f(a) \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant f(b)$ dans le cas décroissant. Termine avec l'étape 2.",
+            "**Hérédité** : suppose $P(n)$. Les nombres $a$, $u_n$, $u_{n+1}$ et $b$ sont dans $[a\\,;\\,b]$, où $f$ est croissante. Applique $f$ sans changer le sens : $f(a) \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant f(b)$. Comme $a \\leqslant f(a)$ et $f(b) \\leqslant b$, on obtient $a \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant b$. Dans le cas décroissant, on obtient de même $a \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant b$.",
             "**Conclusion** : la suite est croissante (ou décroissante), minorée par $a$ et majorée par $b$."
           ],
           "exemple": "l-recurrence-suites-022"
@@ -428,7 +426,7 @@
         {
           "id": "l-recurrence-suites-026",
           "type": "retenir",
-          "texte": "Majorée : $u_n \\leqslant M$ pour tout $n$ ; minorée : $u_n \\geqslant m$ pour tout $n$ ; bornée : les deux.\n\nSi $u_{n+1} = f(u_n)$, avec $f$ croissante sur $[a\\,;\\,b]$, $a \\leqslant f(a)$, $f(b) \\leqslant b$ et $a \\leqslant u_0 \\leqslant b$ : une seule récurrence donne l'encadrement et le sens de variation. On démontre « $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ » si $u_0 \\leqslant u_1$, « $a \\leqslant u_{n+1} \\leqslant u_n \\leqslant b$ » sinon."
+          "texte": "Si $u_{n+1} = f(u_n)$, avec $f$ croissante sur $[a\\,;\\,b]$, $a \\leqslant f(a)$, $f(b) \\leqslant b$ et $a \\leqslant u_0 \\leqslant b$ : une seule récurrence donne encadrement et sens de variation. On démontre « $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ » si $u_0 \\leqslant u_1$, sinon « $a \\leqslant u_{n+1} \\leqslant u_n \\leqslant b$ »."
         }
       ]
     },
@@ -456,7 +454,8 @@
             "Définis la suite en une phrase, avec le sens de $n$ : « $u_n$ est le nombre de membres au bout de $n$ années ». Donne le premier terme.",
             "Décris ce qui se passe entre l'étape $n$ et l'étape $n + 1$, **dans l'ordre de l'énoncé** : ce qui part, puis ce qui arrive.",
             "Traduis chaque phrase par une opération et écris $u_{n+1}$ en fonction de $u_n$. Contrôle la relation en calculant $u_1$ et $u_2$, et donne leur sens dans la situation.",
-            "Pour $u_{n+1} = a\\,u_n + b$ avec $a \\neq 1$, l'énoncé propose en général une **suite auxiliaire** (une suite intermédiaire) $v_n = u_n - c$. Calcule $v_{n+1} = u_{n+1} - c$, remplace $u_{n+1}$ par $a\\,u_n + b$, puis $u_n$ par $v_n + c$ : tu obtiens $v_{n+1} = a\\,v_n$. Le nombre $c$ vérifie $c = a\\,c + b$ : c'est ce qui fait disparaître la constante.",
+            "Pour $u_{n+1} = a\\,u_n + b$ avec $a \\neq 1$, cherche la valeur $c$ qui ne bouge pas : si $u_n = c$, alors $u_{n+1} = c$, d'où $c = a\\,c + b$. Résous cette équation. L'énoncé donne souvent $c$ à travers une **suite auxiliaire** (une suite intermédiaire) $v_n = u_n - c$.",
+            "Montre que $(v_n)$ est géométrique. Comme $u_n = v_n + c$ : $v_{n+1} = u_{n+1} - c = a\\,u_n + b - c = a(v_n + c) + b - c = a\\,v_n + (a\\,c + b - c)$. Or $a\\,c + b - c = 0$, puisque $c = a\\,c + b$. Donc $v_{n+1} = a\\,v_n$.",
             "Écris $v_n = v_0 \\times a^n$, puis reviens à $u_n = v_n + c$. Interprète le résultat dans la situation."
           ],
           "exemple": "l-recurrence-suites-030"
@@ -481,7 +480,7 @@
             },
             {
               "texte": "Comme $v_n = u_n - 500$, on a $u_n = v_n + 500$. Donc $v_{n+1} = 0{,}9(v_n + 500) - 450 = 0{,}9v_n + 450 - 450 = 0{,}9v_n$. La suite $(v_n)$ est géométrique de raison $0{,}9$ et de premier terme $v_0 = 300 - 500 = -200$.",
-              "pourquoi": "On veut exprimer $v_{n+1}$ à l'aide de $v_n$ seulement. Le nombre $500$ vérifie $500 = 0{,}9 \\times 500 + 50$ : c'est pour cela que la constante disparaît."
+              "pourquoi": "On veut exprimer $v_{n+1}$ à l'aide de $v_n$ seulement. Le nombre $500$ est la valeur qui ne bouge pas : $c = 0{,}9c + 50$ donne $0{,}1c = 50$, soit $c = 500$. C'est pourquoi les constantes s'annulent : $0{,}9 \\times 500 = 450$."
             },
             {
               "texte": "Pour tout entier naturel $n$ : $v_n = -200 \\times 0{,}9^n$, donc $u_n = v_n + 500 = 500 - 200 \\times 0{,}9^n$.",
@@ -525,7 +524,7 @@
           "id": "l-recurrence-suites-032",
           "type": "rappel",
           "titre": "Rappel : arbre pondéré et probabilités totales",
-          "texte": "$P_A(B)$ se lit « probabilité de $B$ sachant $A$ ». Sur un arbre pondéré, chaque branche porte une probabilité ; les branches issues d'un même nœud ont pour somme $1$.\n\n- La probabilité d'un chemin est le produit des probabilités de ses branches : $P(A \\cap B) = P(A) \\times P_A(B)$.\n- **Formule des probabilités totales** : comme $A$ et $\\overline{A}$ forment une partition de l'univers, $P(B) = P(A \\cap B) + P(\\overline{A} \\cap B)$. On additionne les probabilités des chemins qui mènent à $B$.",
+          "texte": "$P_A(B)$ se lit « probabilité de $B$ sachant $A$ ». Sur un arbre pondéré, chaque branche porte une probabilité ; les branches issues d'un même nœud ont pour somme $1$.\n\n- La probabilité d'un chemin est le produit des probabilités de ses branches : $P(A \\cap B) = P(A) \\times P_A(B)$.\n- **Formule des probabilités totales** : $A$ et $\\overline{A}$ forment une partition de l'univers (ils ne peuvent pas arriver ensemble, et l'un des deux arrive forcément). Donc $P(B) = P(A \\cap B) + P(\\overline{A} \\cap B)$ : on additionne les probabilités des chemins qui mènent à $B$.",
           "lien": "1e:probas-cond"
         },
         {
@@ -533,10 +532,10 @@
           "type": "exemple",
           "titre": "Bus ou vélo : une relation tirée d'un arbre",
           "capacites": ["bo-m-suites-09"],
-          "enonce": "Chaque jour, Léa va au lycée en bus ou à vélo. Après un jour en bus, elle reprend le bus le lendemain avec une probabilité de $0{,}8$. Après un jour à vélo, elle prend le bus le lendemain avec une probabilité de $0{,}2$. Le jour $1$, elle prend le bus avec une probabilité de $0{,}25$.\n\nPour tout entier $n \\geqslant 1$, on note $B_n$ l'événement « Léa prend le bus le jour $n$ », et $p_n = P(B_n)$. Son contraire $\\overline{B_n}$, lu « $B_n$ barre », est « Léa prend le vélo le jour $n$ ».\n\n**1.** Justifier que, pour tout $n \\geqslant 1$, $p_{n+1} = 0{,}6p_n + 0{,}2$.\n\n**2.** Calculer $p_2$ et $p_3$, puis interpréter $p_3$.",
+          "enonce": "Chaque jour, Léa va au lycée en bus ou à vélo. Après un jour en bus, elle reprend le bus le lendemain avec une probabilité de $0{,}8$. Après un jour à vélo, elle prend le bus le lendemain avec une probabilité de $0{,}2$. Le jour $1$, elle prend le bus avec une probabilité de $0{,}25$.\n\nPour tout entier $n \\geqslant 1$, on note $B_n$ l'événement « Léa prend le bus le jour $n$ », et $p_n = P(B_n)$.\n\n**1.** Représenter par un arbre pondéré le passage du jour $n$ au jour $n + 1$. En déduire que, pour tout $n \\geqslant 1$, $p_{n+1} = 0{,}6p_n + 0{,}2$.\n\n**2.** Calculer $p_2$ et $p_3$, puis interpréter $p_3$.",
           "etapes": [
             {
-              "texte": "On traduit l'énoncé par un arbre pondéré, dessiné juste après cet exemple : $P(B_n) = p_n$, $P(\\overline{B_n}) = 1 - p_n$, $P_{B_n}(B_{n+1}) = 0{,}8$ et $P_{\\overline{B_n}}(B_{n+1}) = 0{,}2$.",
+              "texte": "L'événement contraire de $B_n$ est $\\overline{B_n}$ (lu « $B_n$ barre ») : « Léa prend le vélo le jour $n$ ». L'arbre attendu est dessiné juste après cet exemple, pour comparer. On y lit : $P(B_n) = p_n$, $P(\\overline{B_n}) = 1 - p_n$, $P_{B_n}(B_{n+1}) = 0{,}8$ et $P_{\\overline{B_n}}(B_{n+1}) = 0{,}2$.",
               "pourquoi": "« Après un jour en bus, elle reprend le bus le lendemain avec une probabilité de $0{,}8$ » est une probabilité **sachant** $B_n$ : elle se place sur une branche issue de $B_n$."
             },
             {
@@ -552,7 +551,7 @@
             },
             {
               "texte": "**Conclusion** : pour tout entier $n \\geqslant 1$, $p_{n+1} = 0{,}6p_n + 0{,}2$. On a $p_2 = 0{,}35$ et $p_3 = 0{,}41$ : la probabilité que Léa prenne le bus le troisième jour est $0{,}41$.",
-              "pourquoi": "La relation a la forme $p_{n+1} = a\\,p_n + b$. La méthode du club s'applique, avec la suite auxiliaire $v_n = p_n - 0{,}5$, car $0{,}5 = 0{,}6 \\times 0{,}5 + 0{,}2$."
+              "pourquoi": "La relation a la forme $p_{n+1} = a\\,p_n + b$. Sa valeur qui ne bouge pas vérifie $c = 0{,}6c + 0{,}2$, soit $0{,}4c = 0{,}2$ et $c = 0{,}5$. La méthode du club s'applique donc avec $v_n = p_n - 0{,}5$."
             }
           ]
         },
@@ -563,7 +562,7 @@
           "capacites": ["bo-m-suites-09"],
           "figure": {
             "type": "tree",
-            "caption": "Arbre de l'exemple ci-dessus, du jour n au jour n + 1 : bus ou vélo le jour n, puis bus ou vélo le lendemain. Les deux branches issues d'un même nœud ont pour somme 1.",
+            "caption": "Arbre de l'exemple ci-dessus, du jour n au jour n + 1 : compare-le à celui que tu as dessiné. Les deux branches issues d'un même nœud ont pour somme 1.",
             "data": {
               "root": {
                 "label": "$\\text{Départ}$",
@@ -640,12 +639,19 @@
           "type": "complement",
           "titre": "Pour aller plus loin : quand chaque terme dépend des deux précédents",
           "capacites": ["bo-m-suites-17"],
-          "texte": "La **suite de Fibonacci** modélise une population de lapins : $F_1 = F_2 = 1$ et, pour tout entier $n \\geqslant 1$, $F_{n+2} = F_{n+1} + F_n$. Ses termes sont $1$, $1$, $2$, $3$, $5$, $8$, $13$…\n\nUne relation $u_{n+2} = a\\,u_{n+1} + b\\,u_n$, avec $a$ et $b$ réels fixés, est dite **linéaire d'ordre $2$ à coefficients constants**. Il faut connaître les deux premiers termes. Par exemple, $u_0 = 0$, $u_1 = 1$ et $u_{n+2} = 3u_{n+1} - 2u_n$ donnent $0$, $1$, $3$, $7$, $15$ : on conjecture $u_n = 2^n - 1$. Pour une récurrence simple, on pose $P(n)$ : « $u_n = 2^n - 1$ et $u_{n+1} = 2^{n+1} - 1$ ». $P(0)$ est vraie, et dans l'hérédité, $u_{n+2} = 3\\left(2^{n+1} - 1\\right) - 2\\left(2^n - 1\\right) = 2^{n+2} - 1$."
+          "texte": "Quand chaque terme dépend des deux précédents, comme dans la **suite de Fibonacci** ($0$, $1$, $1$, $2$, $3$, $5$, $8$…), on parle de relation **linéaire d'ordre $2$ à coefficients constants** : $u_{n+2} = a\\,u_{n+1} + b\\,u_n$, avec $a$ et $b$ réels fixés.\n\nExemple : $u_0 = 0$, $u_1 = 1$ et $u_{n+2} = 3u_{n+1} - 2u_n$ donnent $0$, $1$, $3$, $7$, $15$. On conjecture que $u_n = 2^n - 1$. Comme chaque terme dépend des deux précédents, la récurrence porte sur deux rangs à la fois : $P(n)$ : « $u_n = 2^n - 1$ et $u_{n+1} = 2^{n+1} - 1$ »."
+        },
+        {
+          "id": "l-recurrence-suites-040",
+          "type": "complement",
+          "titre": "Pour aller plus loin : démontrer la conjecture",
+          "capacites": ["bo-m-suites-17"],
+          "texte": "**Initialisation** : $u_0 = 0 = 2^0 - 1$ et $u_1 = 1 = 2^1 - 1$, donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $P(n)$ est vraie. La première moitié de $P(n+1)$, « $u_{n+1} = 2^{n+1} - 1$ », fait déjà partie de $P(n)$. Pour la seconde, on utilise la relation, puis $P(n)$ :\n\n$$u_{n+2} = 3\\left(2^{n+1} - 1\\right) - 2\\left(2^n - 1\\right) = 3 \\times 2^{n+1} - 3 - 2^{n+1} + 2 = 2 \\times 2^{n+1} - 1 = 2^{n+2} - 1.$$\n\nDonc $P(n+1)$ est vraie. D'après le principe de récurrence, $u_n = 2^n - 1$ pour tout entier naturel $n$."
         },
         {
           "id": "l-recurrence-suites-039",
           "type": "retenir",
-          "texte": "Modéliser : définis $u_n$ avec le sens de $n$, puis traduis le passage de l'étape $n$ à l'étape $n + 1$ dans l'ordre de l'énoncé (perdre $t\\,\\%$ : multiplier par $1 - \\dfrac{t}{100}$).\n\nPour $u_{n+1} = a\\,u_n + b$ avec $a \\neq 1$ : la suite $v_n = u_n - c$, où $c = a\\,c + b$, est géométrique de raison $a$, donc $u_n = c + (u_0 - c)\\,a^n$."
+          "texte": "Modéliser : définis $u_n$ et le sens de $n$, puis traduis chaque étape dans l'ordre de l'énoncé (perdre $t\\,\\%$ : multiplier par $1 - \\dfrac{t}{100}$).\n\nPour $u_{n+1} = a\\,u_n + b$ avec $a \\neq 1$ : la valeur $c$ qui ne bouge pas vérifie $c = a\\,c + b$ ; $v_n = u_n - c$ est géométrique de raison $a$, donc $u_n = c + (u_0 - c)\\,a^n$."
         }
       ]
     }
