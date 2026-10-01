@@ -67,7 +67,21 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
   (qⁿ), après démonstration par récurrence de l'inégalité de Bernoulli ») est au ch. 2
 - Relu : ce chapitre ne porte que **3 lignes exigibles** (raisonner par récurrence, phénomènes
   d'évolution, démontrer par récurrence) ; « suites majorées, minorées, bornées » n'est pas une
-  ligne du programme de terminale. `tle-architecte` dira s'il tient seul ou s'il rejoint le ch. 2
+  ligne du programme de terminale.
+- **Décision du 2026-10-01 (Thibaud)** : le chapitre **reste seul**, il n'est pas fusionné
+  avec `limites-suites` (ch. 2).
+- **Cours écrit le 2026-10-01** (`content/terminale/maths/chapitres/recurrence-suites/`,
+  domaine `analyse`) : 3 notions, priorités mesurées (sujets depuis 2021) — le raisonnement
+  par récurrence ★★★ (91/103, `bo-m-logique-14`) ; encadrement et sens de variation par
+  récurrence ★★★ (91/103, `bo-m-suites-08`, avec la définition de suite majorée, minorée,
+  bornée) ; modéliser une évolution par une suite ★★ (44/103, `bo-m-suites-09`, et
+  l'approfondissement `bo-m-suites-17` en « pour aller plus loin »). Écart avec la
+  proposition : « suites bornées » et « uₙ₊₁ = f(uₙ) » forment une seule notion (une seule
+  ligne exigible, `bo-m-suites-08`, pour les deux) ; le calcul de termes en Python n'est pas
+  une notion (aucune ligne ne le porte), il devient un bloc de code de la modélisation ; la
+  modélisation devient une notion (elle porte `bo-m-suites-09`). Les trois exemples de « ce
+  que le bac demande » de la modélisation sont des arbres pondérés : l'index ne garde, dans
+  les autres contextes, que des récurrences, des limites ou des seuils.
 
 ### 2. Limites de suites
 - Limite finie ou infinie, suites de référence · ★★
