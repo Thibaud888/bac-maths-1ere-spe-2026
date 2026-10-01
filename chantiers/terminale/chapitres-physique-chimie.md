@@ -86,9 +86,15 @@ règles de sécurité et capacités expérimentales communes.
 ## Notions par chapitre (estimation)
 
 ### 1. Transformations acide-base, pH
-- Couples acide-base, transfert d'ion hydrogène, espèces amphotères · ★★
-- pH et concentration en ions oxonium · ★★★
+**Écrit (cours, 2026-10-01)** — `tle-architecte` a redécoupé en 4 notions (la charte en
+exige 3 au moins), toutes estimées :
+- Acide, base, couple et réaction acide-base · ★★★ (★★ au chantier, +1 : les titrages en dépendent)
+- Couples usuels : eau, acide carbonique, acides carboxyliques, amines (schémas de Lewis) · ★★
+- Espèce amphotère · ★★
+- pH et concentration en ion oxonium · ★★★
 - (Ke, acides forts et bases fortes : chapitre 11, correction du 2026-09-30)
+- Le logarithme décimal (ligne de « Méthodes ») est expliqué dans la notion pH tant que le
+  chapitre « Méthodes » n'est pas écrit ; ce jour-là, n'en garder qu'une explication.
 
 ### 2. Décrire un mouvement
 - Vecteurs position, vitesse, accélération · ★★★
