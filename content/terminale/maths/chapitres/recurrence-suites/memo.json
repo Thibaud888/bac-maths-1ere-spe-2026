@@ -1,0 +1,79 @@
+[
+  {
+    "id": "m-recurrence-suites-principe",
+    "chapitre": "recurrence-suites",
+    "notion": "n-recurrence-suites-recurrence",
+    "genre": "methode",
+    "titre": "Démontrer par récurrence",
+    "enonce": "Pour démontrer qu'une propriété $P(n)$ est vraie pour tout entier $n \\geqslant n_0$ :\n\n- **Initialisation** : vérifier que $P(n_0)$ est vraie.\n- **Hérédité** : pour un entier $n \\geqslant n_0$ fixé, supposer $P(n)$ vraie (hypothèse de récurrence) et en déduire $P(n+1)$.\n- **Conclusion** : d'après le principe de récurrence, $P(n)$ est vraie pour tout entier $n \\geqslant n_0$.",
+    "conditions": "Les deux étapes sont indispensables. Dans l'hérédité, on ne suppose jamais $P(n)$ vraie pour tous les entiers ; pour écrire $P(n+1)$, on remplace chaque $n$ par $n + 1$.",
+    "exemple": "$u_0 = 1$ et $u_{n+1} = 2u_n + 1$. Initialisation : $u_0 = 1 = 2^1 - 1$. Hérédité : si $u_n = 2^{n+1} - 1$, alors $u_{n+1} = 2\\left(2^{n+1} - 1\\right) + 1 = 2^{n+2} - 1$. Donc $u_n = 2^{n+1} - 1$ pour tout entier naturel $n$.",
+    "simplifie": {
+      "coeur": "Initialisation : $P(n_0)$ vraie. Hérédité : si $P(n)$ est vraie, alors $P(n+1)$ l'est. Donc $P(n)$ est vraie pour tout $n \\geqslant n_0$.",
+      "moyenMemo": "Le premier domino tombe, chaque domino renverse le suivant : tous tombent.",
+      "motCle": "recurrence",
+      "image": "Une file de dominos : on pousse le premier, et chacun fait tomber celui qui le suit."
+    }
+  },
+  {
+    "id": "m-recurrence-suites-bornee",
+    "chapitre": "recurrence-suites",
+    "notion": "n-recurrence-suites-encadrement-variation",
+    "genre": "definition",
+    "titre": "Suite majorée, minorée, bornée",
+    "enonce": "$(u_n)$ est **majorée** s'il existe un réel $M$ tel que $u_n \\leqslant M$ pour tout entier naturel $n$. Elle est **minorée** s'il existe un réel $m$ tel que $u_n \\geqslant m$ pour tout entier naturel $n$. Elle est **bornée** si elle est à la fois majorée et minorée.",
+    "conditions": "Le même $M$ (ou le même $m$) doit convenir pour tous les termes. Un majorant n'est pas unique : tout réel plus grand en est un aussi.",
+    "exemple": "$u_n = 2 - \\dfrac{1}{n+1}$ : $1 \\leqslant u_n \\leqslant 2$ pour tout entier naturel $n$, donc $(u_n)$ est minorée par $1$, majorée par $2$, et bornée.",
+    "simplifie": {
+      "coeur": "Majorée : $u_n \\leqslant M$ pour tout $n$. Minorée : $u_n \\geqslant m$ pour tout $n$. Bornée : les deux.",
+      "moyenMemo": "Un plafond et un plancher fixes, que les termes ne traversent jamais.",
+      "motCle": "bornee"
+    }
+  },
+  {
+    "id": "m-recurrence-suites-f-croissante",
+    "chapitre": "recurrence-suites",
+    "notion": "n-recurrence-suites-encadrement-variation",
+    "genre": "methode",
+    "titre": "Suite $u_{n+1} = f(u_n)$ avec $f$ croissante",
+    "enonce": "On suppose $f$ croissante sur $[a\\,;\\,b]$, avec $a \\leqslant f(a)$ et $f(b) \\leqslant b$. On démontre par récurrence :\n\n- $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ si $u_0 \\leqslant u_1$ : la suite est croissante et bornée ;\n- $a \\leqslant u_{n+1} \\leqslant u_n \\leqslant b$ si $u_1 \\leqslant u_0$ : la suite est décroissante et bornée.\n\nDans l'hérédité, on applique $f$ à l'hypothèse de récurrence : l'ordre est conservé.",
+    "conditions": "Les termes doivent rester dans l'intervalle où $f$ est croissante : c'est pourquoi l'encadrement fait partie de la propriété démontrée.",
+    "exemple": "$f(x) = \\dfrac{2x}{x+1}$ est croissante sur $[0\\,;\\,1]$, avec $f(0) = 0$ et $f(1) = 1$. Pour $u_0 = \\dfrac{1}{2}$, on a $u_1 = \\dfrac{2}{3}$, et $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$ pour tout entier naturel $n$.",
+    "simplifie": {
+      "coeur": "$f$ croissante : $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ donne $f(a) \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant f(b)$",
+      "moyenMemo": "$f$ croissante garde l'ordre ; ce sont $u_0$ et $u_1$ qui décident du sens.",
+      "motCle": "f-croissante",
+      "image": "Quatre nombres rangés passent dans f : ils ressortent rangés dans le même ordre."
+    }
+  },
+  {
+    "id": "m-recurrence-suites-suite-auxiliaire",
+    "chapitre": "recurrence-suites",
+    "notion": "n-recurrence-suites-modelisation",
+    "genre": "methode",
+    "titre": "Évolution $u_{n+1} = a\\,u_n + b$ : la suite auxiliaire",
+    "enonce": "On traduit l'évolution étape par étape : perdre $t\\,\\%$, c'est multiplier par $1 - \\dfrac{t}{100}$ ; une quantité fixe qui arrive s'ajoute.\n\nSi $a \\neq 1$, soit $c$ le nombre tel que $c = a\\,c + b$. La suite $v_n = u_n - c$ vérifie $v_{n+1} = a\\,v_n$ : elle est géométrique de raison $a$. Donc $v_n = v_0 \\times a^n$ et $u_n = c + (u_0 - c)\\,a^n$.",
+    "conditions": "$a \\neq 1$. Si le premier terme est $u_1$, on obtient $u_n = c + (u_1 - c)\\,a^{n-1}$. Sur une copie, on redémontre que $(v_n)$ est géométrique.",
+    "exemple": "Club : $u_0 = 300$ et $u_{n+1} = 0{,}9u_n + 50$. Ici $c = 500$, $v_n = -200 \\times 0{,}9^n$ et $u_n = 500 - 200 \\times 0{,}9^n$.",
+    "simplifie": {
+      "coeur": "$v_n = u_n - c$, avec $c = a\\,c + b$ : $(v_n)$ est géométrique de raison $a$",
+      "moyenMemo": "On retire la valeur qui ne bouge pas : il reste une suite géométrique.",
+      "motCle": "suite-auxiliaire"
+    }
+  },
+  {
+    "id": "m-recurrence-suites-arbre",
+    "chapitre": "recurrence-suites",
+    "notion": "n-recurrence-suites-modelisation",
+    "genre": "methode",
+    "titre": "Relation de récurrence tirée d'un arbre pondéré",
+    "enonce": "Si $p_n = P(B_n)$, $P_{B_n}(B_{n+1}) = \\alpha$ et $P_{\\overline{B_n}}(B_{n+1}) = \\beta$, la formule des probabilités totales donne :\n\n$$p_{n+1} = \\alpha\\,p_n + \\beta\\,(1 - p_n) = (\\alpha - \\beta)\\,p_n + \\beta.$$",
+    "conditions": "$B_n$ et $\\overline{B_n}$ forment une partition de l'univers ; les probabilités $\\alpha$ et $\\beta$ sont les mêmes à chaque étape.",
+    "exemple": "Bus ou vélo : $\\alpha = 0{,}8$ et $\\beta = 0{,}2$, donc $p_{n+1} = 0{,}8p_n + 0{,}2(1 - p_n) = 0{,}6p_n + 0{,}2$.",
+    "simplifie": {
+      "coeur": "$p_{n+1} = \\alpha\\,p_n + \\beta\\,(1 - p_n)$",
+      "moyenMemo": "Deux chemins mènent à $B_{n+1}$ : on additionne leurs produits.",
+      "motCle": "arbre-recurrence"
+    }
+  }
+]
