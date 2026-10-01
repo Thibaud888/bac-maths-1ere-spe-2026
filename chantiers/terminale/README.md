@@ -262,17 +262,15 @@ exercices indépendants de 4 à 8 points, calculatrice selon le sujet, 2 points 
 maîtrise de la langue, tout le programme de terminale et les notions de première ;
 périmètre de chaque session depuis 2021 relevé ; découpage `chapitres-maths.md` relu et
 corrigé. Les pages HTML du Bulletin officiel restent fermées aux sessions Cloud (Cloudflare) ;
-ses **PDF** s'ouvrent. Reste, pour la physique-chimie :
+ses **PDF** s'ouvrent. Physique-chimie **relevée le 2026-09-30** (référentiel
+`.claude/skills/bac-physique-chimie-terminale-2027/`) : programme de 2019 en vigueur en
+2026-2027 (le BO du 2 avril 2026 ne change que les maths) ; épreuve 2027 définie par la note
+MENE2622644N : écrit de 3 h 30 (trois exercices indépendants, calculatrice selon le sujet,
+2 points sur 20 de maîtrise de la langue) et partie pratique d'une heure, note = 0,8 × écrit
++ 0,2 × pratique ; notions de première « connues et mobilisables » mais jamais « ressort
+essentiel du sujet » ; périmètre de chaque session depuis 2021 relevé ; 331 lignes dans
+`content/terminale/physique-chimie/programme.json`. Reste :
 
-- **Programmes en vigueur en 2026-2027** : 2019 pour les deux matières (recherche web du
-  2026-09-24 : le programme de maths de terminale publié le 2 avril 2026 s'applique à la
-  rentrée 2027).
-- **Définition des épreuves 2027** : des notes de service du Bulletin officiel spécial
-  n° 4 du 17 septembre 2026 redéfinissent les épreuves (au moins physique-chimie :
-  `MENE2622644N`). Les sources `s-spe-maths` et `s-spe-physique-chimie` de
-  `content/bac/sources.json` pointent encore vers les notes de 2020 — item de backlog.
-  À relever : durée, calculatrice, structure (nombre d'exercices, points, QCM éventuel),
-  programme évalué (tout le programme ? acquis de première ?), épreuve pratique.
 - **Découpage en chapitres et notions** (`chapitres-*.md`) : proposition de cette session.
 - **Priorités** : estimations de cette session, à remplacer par le décompte des annales.
 

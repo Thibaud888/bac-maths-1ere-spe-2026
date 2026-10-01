@@ -1,10 +1,30 @@
 # Physique-chimie de terminale — découpage proposé
 
-> **Proposition du 2026-09-24, à confirmer** par la session « référentiel physique-chimie »
-> (texte du programme en main) puis par `tle-architecte`, chapitre par chapitre. Programme de
-> référence : spécialité de terminale, **BO spécial n° 8 du 25 juillet 2019**. D'après la
-> note de service de septembre 2026 (à relire), l'écrit porte sur le programme de terminale,
-> et les notions de première non reprises en terminale doivent rester mobilisables.
+> **Proposition du 2026-09-24, relue le 2026-09-30 sur le texte officiel** (référentiel
+> `bac-physique-chimie-terminale-2027`) ; reste à confirmer par `tle-architecte`, chapitre par
+> chapitre. Programme : spécialité de terminale, **BO spécial n° 8 du 25 juillet 2019**, en
+> vigueur en 2026-2027. Note de service du 11 septembre 2026 (MENE2622644N) : l'écrit porte
+> sur le programme de terminale ; « Les notions rencontrées en classe de première mais non
+> approfondies en classe de terminale, doivent être connues et mobilisables. Elles ne peuvent
+> cependant pas constituer un ressort essentiel du sujet. »
+>
+> **Corrections du 2026-09-30** (texte en main) :
+> - `acides-bases` : $K_e$, l'autoprotolyse et les acides forts / bases fortes sont dans la
+>   partie « B) Comparer la force des acides et des bases » du BO → `force-acides-bases`.
+> - `analyse-physique` : « Pression, masse volumique, équation d'état (gaz) » relève du thème
+>   Énergie (modèle du gaz parfait) → `thermodynamique` ; seule la capacité « Exploiter la loi
+>   de Beer-Lambert, la loi de Kohlrausch ou l'équation d'état du gaz parfait pour déterminer
+>   une concentration ou une quantité de matière » reste ici.
+> - **Ordre** : `force-acides-bases` utilise $K$, $Q_r$ et le taux d'avancement final de
+>   `sens-evolution` → proposé : `sens-evolution` (10) avant `force-acides-bases` (11).
+> - `thermodynamique` : « Bilan radiatif terrestre » s'appelle dans le BO « Bilan thermique du
+>   système Terre-atmosphère. Effet de serre. »
+> - « Méthodes » : les capacités mathématiques du programme sont le logarithme décimal et sa
+>   réciproque, l'équation du second degré, dériver une fonction, la primitive, la
+>   représentation paramétrique d'une courbe et les équations différentielles (linéaires du
+>   premier ordre à coefficients constants, avec ou sans second membre constant) ; « vecteurs »
+>   n'en fait pas partie.
+> - Qui porte quelle ligne du programme : référentiel § 5.3.
 >
 > Priorités : **estimations** (souvenir des sujets depuis 2021), à remplacer par le décompte des
 > annales. Légende : ★★★ incontournable · ★★ fréquent · ★ plus rare. Garde-fou de la charte
@@ -48,8 +68,8 @@ quel chapitre écrire d'abord** ; par défaut, le premier.
 | 7 | `cinetique` | Évolution temporelle d'une transformation : cinétique | Constitution… | ★★★ |
 | 8 | `radioactivite` | Décroissance radioactive | Constitution… | ★★ |
 | 9 | `ondes` | Phénomènes ondulatoires : son, diffraction, interférences, Doppler | Ondes et signaux | ★★ |
-| 10 | `force-acides-bases` | Force des acides et des bases, pKa | Constitution… | ★★★ |
-| 11 | `sens-evolution` | Sens d'évolution spontanée, piles ; forcer le sens : électrolyse | Constitution… | ★★ |
+| 10 | `sens-evolution` | Sens d'évolution spontanée, piles ; forcer le sens : électrolyse | Constitution… | ★★ |
+| 11 | `force-acides-bases` | Force des acides et des bases, pKa | Constitution… | ★★★ |
 | 12 | `circuit-rc` | Dynamique d'un système électrique : circuit RC | Ondes et signaux | ★★ |
 | 13 | `lunette-photons` | Lunette astronomique ; lumière et photons | Ondes et signaux | ★★ |
 | 14 | `synthese-organique` | Stratégies en synthèse organique | Constitution… | ★★ |
@@ -60,14 +80,15 @@ quel chapitre écrire d'abord** ; par défaut, le premier.
 d'un résultat, comparaison à une valeur de référence), analyse dimensionnelle, chiffres
 significatifs, rédiger une réponse argumentée, résolution de problème, Python (capacités
 numériques du programme), capacités mathématiques (équations différentielles du premier
-ordre, vecteurs, logarithme décimal).
+ordre, logarithme décimal, second degré, dérivée, primitive, représentation paramétrique),
+règles de sécurité et capacités expérimentales communes.
 
 ## Notions par chapitre (estimation)
 
 ### 1. Transformations acide-base, pH
 - Couples acide-base, transfert d'ion hydrogène, espèces amphotères · ★★
-- pH et concentration en ions oxonium ; acides forts, bases fortes · ★★★
-- Autoprotolyse de l'eau, Ke · ★★
+- pH et concentration en ions oxonium · ★★★
+- (Ke, acides forts et bases fortes : chapitre 11, correction du 2026-09-30)
 
 ### 2. Décrire un mouvement
 - Vecteurs position, vitesse, accélération · ★★★
@@ -78,7 +99,6 @@ ordre, vecteurs, logarithme décimal).
 - Absorbance, loi de Beer-Lambert, dosage par étalonnage · ★★★
 - Conductivité, loi de Kohlrausch · ★★
 - Spectroscopie infrarouge et UV-visible : identifier des groupes · ★★
-- Pression, masse volumique, équation d'état (gaz) · ★
 
 ### 4. Deuxième loi de Newton, mouvement dans un champ uniforme
 - Deuxième loi de Newton, référentiel galiléen, centre de masse · ★★★
@@ -112,15 +132,15 @@ ordre, vecteurs, logarithme décimal).
 - Interférences · ★★
 - Effet Doppler · ★★
 
-### 10. Force des acides et des bases
-- Constante d'acidité Ka, pKa · ★★★
-- Diagrammes de prédominance et de distribution · ★★
-- Solutions tampons, acides α-aminés (selon programme) · ★
-
-### 11. Sens d'évolution spontanée, piles, électrolyse
+### 10. Sens d'évolution spontanée, piles, électrolyse
 - Quotient de réaction, constante d'équilibre, critère d'évolution · ★★
 - Piles : fonctionnement, capacité électrique · ★★
 - Électrolyse, stockage et conversion d'énergie chimique · ★★
+
+### 11. Force des acides et des bases
+- Constante d'acidité Ka, produit ionique de l'eau Ke ; acides forts, bases fortes · ★★★
+- Diagrammes de prédominance et de distribution · ★★
+- Solutions tampons ; indicateurs colorés et acides alpha-aminés (confirmé par le programme) · ★
 
 ### 12. Circuit RC
 - Intensité, capacité, relation charge-tension · ★★
@@ -142,7 +162,7 @@ ordre, vecteurs, logarithme décimal).
 - Énergie interne, capacité thermique, premier principe · ★★
 - Transferts thermiques, flux, résistance thermique · ★★
 - Loi phénoménologique de Newton, évolution de la température · ★★
-- Bilan radiatif terrestre · ★
+- Bilan thermique du système Terre-atmosphère, effet de serre · ★
 
 ### 16. Écoulement d'un fluide
 - Poussée d'Archimède · ★★
@@ -154,5 +174,6 @@ ordre, vecteurs, logarithme décimal).
 Équation différentielle y' = ay + b ↔ circuit RC, décroissance radioactive, loi de Newton
 du refroidissement, cinétique d'ordre 1 ; vecteurs et dérivées ↔ vitesse et accélération ;
 exponentielle ↔ décroissance radioactive. Le logarithme décimal (pH, décibels) reste **côté
-physique-chimie** : le cours de maths de spécialité ne le traite pas (à confirmer par le
-référentiel maths) et un bloc « Et en physique ? » ne doit pas l'y introduire.
+physique-chimie** : c'est une capacité mathématique du programme de physique-chimie, et il
+est hors programme de la spécialité maths (confirmé par les deux référentiels) ; un bloc
+« Et en physique ? » ne doit pas l'y introduire.
