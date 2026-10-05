@@ -426,10 +426,10 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     de Thibaud** (2026-10-05). Élève-testeur : marche Comprendre réussie avec le seul cours ;
     2 bloquants corrigés (calcul sans calculatrice montré dans le cours, l-050 et l-051, et
     entraîné en x-028 ; signe du pourcentage de x-025 q5). Couverture complète sans écart.
-    Fait le 2026-10-05.
+    Fait le 2026-10-05. PR : #106.
   - [x] Cours Acides, bases et pH : trois retouches de style laissées par le relecteur — l-035
     et la carte `m-acides-bases-amphotere`, l-008, `alt` des figures l-021 et l-023. Fait
-    le 2026-10-05, relu (PASS).
+    le 2026-10-05, relu (PASS). PR : #106.
   - [ ] Faire relire le chapitre Acides, bases et pH par Thibaud — premier chapitre de
     physique-chimie complet ; ses retours vont dans la charte (comme pour Dénombrement).
   - [ ] Acides, bases et pH : petites redites signalées par le relecteur, non bloquantes — le
@@ -451,6 +451,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   « 3,40 », « 2,0 », « 1,2 × 10⁴ » ; charte § 3.6 et chapitre-témoin à jour. En passant, la
   saisie accepte aussi les puissances de dix (« 2,0×10^-3 », « 1×10^4 », « 10⁴ ») et, quand
   l'unité porte déjà « × 10ⁿ », la valeur entière aussi bien que le nombre devant 10ⁿ.
+  PR : #106.
 
 **Phase 4 — la production**
 
