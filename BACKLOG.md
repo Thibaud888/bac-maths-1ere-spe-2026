@@ -481,7 +481,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   section `## Coût` dans la PR) ; `tle-relecteur` et `tle-eleve-testeur` écrivent leur rapport
   dans un fichier hors dépôt et ne rendent qu'un résumé ; `scripts/controle-rendu.mjs` (testé)
   remplace les 20 captures (charte §§ 12 et 9.4). Reste : l'essayer sur le prochain chapitre
-  et comparer le coût.
+  et comparer le coût. PR : #109.
 - [ ] (P2) Les formules longues font déborder la page sur téléphone en physique-chimie —
   `controle-rendu.mjs physique-chimie acides-bases` : défilement horizontal à 390 px sur les
   notions `reaction` (page de 536 px) et `couples-usuels` (635 px), causé par des équations
@@ -508,7 +508,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   référentiel 9 k) ; physique-chimie 6 à 8 k au lieu de 52 k ; Loi binomiale
   (le plus tombé au bac) ≈ 29 k pour le relecteur ; élève-testeur ≤ 2 k. Les six agents
   `tle-*` lisent la fiche (`fiche:`), sources complètes seulement en cas de doute ;
-  `/tle-chapitre` prépare les fiches. Reste : un chapitre produit avec.
+  `/tle-chapitre` prépare les fiches. Reste : un chapitre produit avec. PR : #110.
 - [x] (P2) Trouver automatiquement les défauts simples avant la relecture, et ne relire que
   ce qui a changé — script de contrôles mécaniques lancé par les auteurs avant de rendre
   (indice qui contient la valeur à saisir, nombre d'indices par marche, chaque formule compilée
@@ -524,7 +524,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `scripts/extraire-items.mjs` (par identifiant, ou `--instantane` / `--depuis`), testés ;
   auteurs (dont `tle-auteur-cours`, qui reçoit Bash pour ce seul usage), relecteur, charte
   § 12 et `/tle-chapitre` (§ 2 bis : instantané, correction dans les 5 minutes ou
-  correcteur neuf, tours 2-3 ciblés) à jour.
+  correcteur neuf, tours 2-3 ciblés) à jour. PR : #111.
 - [ ] (P3) Vérifier que quelques indices d'Acides-bases ne donnent pas la réponse — 6 indices
   qui écrivent un nombre égal à la valeur à saisir (déjà dans l'énoncé ou petit entier :
   `x-acides-bases-008` q1, `-018` q2, `-019` q4, `-020` q2, `-027` q3) ; trancher s'ils donnent
@@ -543,7 +543,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `docs/volet-francais.md` (renvois mis à jour : agents `french-*`, commandes français,
   `MAP.md`) : `CLAUDE.md` passe de 29,7 à 23,7 Ko (≈ −2 k tokens à chaque pas, moins que
   les 4,5 k estimés). Reste : vérifier sur le prochain chapitre, dans les relevés de coût,
-  que les agents tournent bien en `xhigh`.
+  que les agents tournent bien en `xhigh`. PR : #112.
 - [ ] (P2) Écrire les chapitres suivants, un par session — dans l'ordre de la classe, deux
   items par chapitre (« le cours », « les exercices »), ajoutés ici par les sessions pilotes ;
   plusieurs sessions en parallèle possibles, un chapitre chacune.
