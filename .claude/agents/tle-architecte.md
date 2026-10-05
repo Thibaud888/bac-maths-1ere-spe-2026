@@ -17,18 +17,23 @@ fait passer devant ce qui compte au bac.
   fournit le rapport de `scripts/frequences-annales.mjs` calculé sur ton `notions.json` et
   un `annales.json` complet).
 - Facultatif : une consigne de Thibaud (ordre de la classe…).
+- `fiche` : chemin de la **fiche de lecture** du chapitre pour ton rôle, préparée par
+  l'orchestrateur (`node scripts/contexte-chapitre.mjs <matiere> <slug> --role architecte`).
 
 # Procédure
 
 1. **Lis**, dans cet ordre :
    - `.claude/skills/terminale-charte/SKILL.md` (en entier : §§ 2, 3.3, 3.4, 5 et 9 surtout) ;
-   - le référentiel de la matière : `.claude/skills/bac-<matiere>-terminale-2027/SKILL.md` et
-     `content/terminale/<matiere>/programme.json`. **S'il n'existe pas, arrête-toi et dis-le.**
-   - `chantiers/terminale/chapitres-<matiere>.md` (découpage proposé, priorités estimées) ;
-   - `content/terminale/<matiere>/annales.json` s'il existe (formulations pour `attendusBac`) ;
-   - les `meta.json` / `notions.json` des autres chapitres déjà écrits (prérequis, unicité
-     des slugs et des identifiants) ; `content/chapters/*/meta.json` (chapitres de maths de
-     première, pour les prérequis `1e:<slug>`).
+   - la **fiche de lecture** (`fiche`) : ordre des chapitres, lignes du programme du chapitre
+     (texte exact) et lignes citables, formulations des annales sur ces lignes (pour
+     `attendusBac`), index des chapitres déjà écrits (notions, pour les prérequis),
+     chapitres de maths de première (`1e:<slug>`), limites et hors programme du
+     référentiel, section du chantier `chapitres-<matiere>.md` pour ce chapitre (découpage
+     proposé, priorités estimées). **Si le référentiel de la matière n'existe pas,
+     arrête-toi et dis-le.**
+   Les sources complètes (`programme.json`, `annales.json`, référentiel, chantier, chapitres
+   déjà écrits) ne s'ouvrent qu'**en cas de doute**, à l'endroit précis (`grep`) ; sans
+   fiche, lis-les comme avant.
 2. **Relève les lignes du programme** dont `chapitre` vaut le slug. Ce sont celles que tu
    dois toutes répartir.
 3. **Découpe en 3 à 6 notions** (en mode `priorites`, saute les étapes 2, 3, 5 et 7 : tu ne

@@ -123,6 +123,9 @@ scripts/
   couverture-terminale.mjs  # un chapitre de terminale face au programme et à la charte
                         # (§ 9.3) : écarts bloquants, avertissements, tableau des planchers
   sans-reponses.mjs     # exercices d'un chapitre sans solutions ni indices (élève-testeur)
+  contexte-chapitre.mjs # FICHE DE LECTURE d'un chapitre pour un agent tle-* (--role) :
+                        # programme du chapitre, lignes citables / interdites, annales
+                        # filtrées, index des chapitres antérieurs, sections du référentiel
   controle-rendu.mjs    # rendu d'un chapitre de terminale dans Chromium (clair/sombre,
                         # 1280/390 px) : défilement horizontal, KaTeX, console ; 4 captures
   annales-apmep.mjs     # sujets de bac de maths publiés par l'APMEP, année par année : liste,

@@ -280,3 +280,70 @@ describe('controle-rendu.mjs --liste (pages prévues, sans navigateur)', () => {
     expect(pages.some((p) => p.nom.startsWith('type-bac'))).toBe(false);
   });
 });
+
+describe('contexte-chapitre.mjs — la fiche de lecture', () => {
+  const fiche = (args: string[]) => {
+    const r = lancer('contexte-chapitre.mjs', args);
+    expect(r.code, r.erreur).toBe(0);
+    return r.sortie;
+  };
+  const programme = JSON.parse(readFileSync(join(DEPOT, 'content/terminale/maths/programme.json'), 'utf8')) as {
+    id: string; chapitre: string; texte: string;
+  }[];
+
+  it('relecteur : chaque ligne du chapitre, texte exact ; les chapitres ultérieurs interdits', () => {
+    const f = fiche(['maths', 'denombrement', '--role', 'relecteur']);
+    const lignes = programme.filter((l) => l.chapitre === 'denombrement');
+    expect(lignes.length).toBeGreaterThan(0);
+    for (const l of lignes) {
+      expect(f).toContain(`\`${l.id}\``);
+      expect(f).toContain(l.texte);
+    }
+    expect(f).toMatch(/`loi-binomiale`[^\n]*ultérieur : interdit/);
+    const binomiale = programme.find((l) => l.chapitre === 'loi-binomiale');
+    expect(f.split('Identifiants interdits')[1]).toContain(binomiale!.id.replace(/\d+$/, ''));
+    expect(f).toContain('Format de l\'épreuve');
+    expect(f).toContain('Hors programme');
+    // Bien plus court que les sources qu'elle remplace.
+    const sources = ['programme.json', 'annales.json'].map((n) => readFileSync(join(DEPOT, 'content/terminale/maths', n), 'utf8').length);
+    expect(f.length).toBeLessThan((sources[0]! + sources[1]!) / 4);
+  });
+
+  it('annales : seulement les exercices qui touchent le chapitre, formulations recopiées', () => {
+    const f = fiche(['maths', 'denombrement', '--role', 'auteur-bac']);
+    const annales = JSON.parse(readFileSync(join(DEPOT, 'content/terminale/maths/annales.json'), 'utf8'));
+    const ids = new Set(programme.filter((l) => l.chapitre === 'denombrement').map((l) => l.id));
+    for (const sujet of annales.sujets) {
+      for (const ex of sujet.exercices ?? []) {
+        const touche = (ex.capacites ?? []).some((c: string) => ids.has(c));
+        expect(f.includes(`\`${sujet.id}\` ex. ${ex.numero} `), `${sujet.id} ex. ${ex.numero}`).toBe(touche);
+      }
+    }
+  });
+
+  it('chapitre suivant : index des chapitres antérieurs (notions, blocs), sans leur texte', () => {
+    const f = fiche(['maths', 'loi-binomiale', '--role', 'auteur-cours']);
+    const notions = JSON.parse(readFileSync(join(DEPOT, 'content/terminale/maths/chapitres/denombrement/notions.json'), 'utf8'));
+    for (const n of notions) expect(f).toContain(`\`${n.id}\``);
+    const cours = JSON.parse(readFileSync(join(DEPOT, 'content/terminale/maths/chapitres/denombrement/cours.json'), 'utf8'));
+    const bloc = cours.sections[0].blocs.find((b: { type: string }) => b.type === 'definition');
+    expect(f).toContain(`\`${bloc.id}\``);
+    expect(f).not.toContain(bloc.texte);
+    expect(f).toMatch(/`denombrement`[^\n]*antérieur : citable/);
+  });
+
+  it('élève-testeur : l\'index seulement, ni programme ni annales ; physique-chimie sans annales', () => {
+    const f = fiche(['maths', 'loi-binomiale', '--role', 'eleve-testeur']);
+    expect(f).not.toContain('Lignes du programme');
+    expect(f).not.toContain('annales.json`)');
+    expect(f).toContain('Index des chapitres antérieurs');
+    const pc = fiche(['physique-chimie', 'acides-bases', '--role', 'architecte']);
+    expect(pc).toContain('Pas d\'index des annales');
+    expect(pc).toContain('Particularités de la matière');
+  });
+
+  it('refuse un rôle inconnu ou un chapitre sans ligne du programme', () => {
+    expect(lancer('contexte-chapitre.mjs', ['maths', 'denombrement', '--role', 'chef']).code).toBe(2);
+    expect(lancer('contexte-chapitre.mjs', ['maths', 'inexistant']).code).toBe(2);
+  });
+});
