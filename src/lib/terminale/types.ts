@@ -117,6 +117,8 @@ export type ReponseNumerique = {
   toleranceRelative?: number;
   unite?: string;
   chiffresSignificatifs?: number;
+  /** Nombre de décimales affichées (un pH), à la place des chiffres significatifs. */
+  decimales?: number;
 };
 export type ReponseOrdre = { type: 'ordre'; elements: string[] };
 export type ReponseRedaction = { type: 'redaction' };

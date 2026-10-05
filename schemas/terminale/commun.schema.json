@@ -142,12 +142,14 @@
         "tolerance": { "type": "number", "minimum": 0 },
         "toleranceRelative": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
         "unite": { "type": "string", "minLength": 1, "description": "Unité attendue, en LaTeX ou en texte (ex. : \\mathrm{m\\,s^{-1}})." },
-        "chiffresSignificatifs": { "type": "integer", "minimum": 1, "maximum": 6 }
+        "chiffresSignificatifs": { "type": "integer", "minimum": 1, "maximum": 6, "description": "Nombre de chiffres significatifs de la valeur attendue : « Voir la réponse » l’affiche ainsi (2 → 2,0 ; 0,0025)." },
+        "decimales": { "type": "integer", "minimum": 0, "maximum": 6, "description": "Nombre de décimales de la valeur attendue, pour une grandeur qui se donne en décimales (un pH : 2 → 3,40). Jamais avec chiffresSignificatifs." }
       },
       "oneOf": [
         { "required": ["tolerance"] },
         { "required": ["toleranceRelative"] }
-      ]
+      ],
+      "not": { "required": ["chiffresSignificatifs", "decimales"] }
     },
     "reponseOrdre": {
       "type": "object",

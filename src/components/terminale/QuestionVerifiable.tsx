@@ -4,6 +4,7 @@ import CodeSource from '@/components/terminale/CodeSource';
 import Unite from '@/components/terminale/Unite';
 import {
   choixMultiplesJustes,
+  ecritureValeurAttendue,
   melanger,
   numeriqueJuste,
   ordreJuste,
@@ -44,7 +45,7 @@ function lettre(index: number): string {
 }
 
 function ValeurAttendue({ reponse }: { reponse: ReponseNumerique }) {
-  const valeur = String(reponse.valeur).replace('.', ',');
+  const valeur = ecritureValeurAttendue(reponse);
   return (
     <span className="whitespace-nowrap font-semibold">
       <TextWithMath text={`$${valeur}$`} />
@@ -283,7 +284,7 @@ export default function QuestionVerifiable({
       {reponse.type === 'numerique' && (
         <div>
           <label htmlFor={idSaisie} className="text-xs text-slate-500 dark:text-slate-400">
-            Ta réponse (virgule ou fraction a/b acceptées)
+            Ta réponse (virgule, fraction a/b ou puissance de dix 2,0×10^-3 acceptées)
           </label>
           <div className="mt-1 flex items-center gap-2">
             <input

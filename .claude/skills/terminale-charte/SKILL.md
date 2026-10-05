@@ -129,6 +129,8 @@ croisés avec `bms-2026-*`, `bfr-2026-*`, `btl-2027-*`, `bgo-2027-*`.
 > - `indices` est facultatif (absent = aucun indice) ; `figure` se place sur l'exercice, pas
 >   sur une question ;
 > - numérique : **une** tolérance exactement (`tolerance` ou `toleranceRelative` ≤ 1) ;
+>   précision d'affichage par `chiffresSignificatifs` ou `decimales` (ajouté le 2026-10-01
+>   pour le pH), jamais les deux ;
 > - `meta.domaine` est absent pour le chapitre transverse ; `meta.essentiel` a trois lignes ;
 > - `programme.json` : `bo-pc1-…` ⇔ `premiere: true` (alors `chapitre` est facultatif) ;
 >   `rubrique: "approfondissement"` ⇒ `exigible: false` ;
@@ -254,7 +256,7 @@ Une question vérifiable = `enonce` + `reponse` (typée ci-dessous) + `explicati
 | `qcm` | `choix` (2-5), `bonne` (index), `pourquoiFaux?` (un message par choix, `null` pour le bon) | automatique |
 | `qcm-multiple` | `choix`, `bonnes` (indices) | automatique |
 | `vrai-faux` | `valeur` (booléen), `justification` | automatique |
-| `numerique` | `valeur` (nombre ou `"a/b"`), `tolerance` (absolue) ou `toleranceRelative`, `unite?` (**obligatoire en physique-chimie** si la grandeur en a une), `chiffresSignificatifs?` | automatique |
+| `numerique` | `valeur` (nombre ou `"a/b"`), `tolerance` (absolue) ou `toleranceRelative`, `unite?` (**obligatoire en physique-chimie** si la grandeur en a une), `chiffresSignificatifs?` ou `decimales?` (un pH : nombre de décimales ; jamais les deux) — « Voir la réponse » affiche la valeur ainsi (2,0 ; 3,40) | automatique |
 | `ordre` | `elements` (dans le bon ordre ; mélangés à l'affichage) | automatique |
 | `redaction` | — (l'élève compare à la solution et se note : réussi, à moitié, raté) | auto-évaluation |
 
@@ -410,6 +412,10 @@ Par chapitre ordinaire : 3 à 5 exercices type bac. Le chapitre « Méthodes » 
 bac. Les planchers ne portent que sur les notions ; les exigences par ligne du programme
 sont au § 9.2.
 
+Chapitres pilotes : ces planchers ont été tenus sans redite par `denombrement` (maths) et
+`acides-bases` (physique-chimie, 2026-10-05 : 4 notions, plafonds atteints en exemples,
+« vérifie » et marche 2 pour le pH seulement) ; ils restent tels quels.
+
 ---
 
 ## 6. Les exercices (trois marches)
@@ -444,6 +450,10 @@ sont au § 9.2.
   non fixés par la note, documents, calculatrice selon le sujet — référentiel § 3.2).
 - Questions enchaînées mais **rattrapables** : résultats intermédiaires donnés (« On admet
   que… ») pour qu'un blocage n'arrête pas l'exercice.
+- **Rien de noté qui n'ait été montré** (retour de l'élève-testeur sur `acides-bases`) : un
+  geste que le barème note (ex. calculer $10^{-2{,}40}$ sans calculatrice avec une puissance
+  de dix donnée) a son exemple dans le cours et au moins un exercice de marche 2 ; le premier
+  indice vise l'endroit où l'élève bloque, pas une formule qu'il connaît déjà.
 - `attenduCorrecteur` pour chaque question : les éléments qui rapportent les points.
 - **Indices** (depuis le 2026-09-29) : 1 ou 2 par élément noté (question sans
   sous-question, ou chaque sous-question) — 2 quand l'élément a plusieurs étapes ; la piste
