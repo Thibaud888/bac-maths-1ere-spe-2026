@@ -460,6 +460,45 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `methodes-physique-chimie` (mesure et incertitudes, chiffres significatifs, analyse
   dimensionnelle, résolution de problème, Python) ; `/tle-chapitre <matiere> methodes-<matiere>`,
   sans type bac (charte § 2.1). DoD : § 9.4 de la charte.
+- [x] Étudier comment produire un chapitre en consommant moins, sans perdre en qualité —
+  mesures réelles des sessions Dénombrement, Acides-bases et Récurrence : ≈ 100 $ au tarif
+  public par chapitre complet, dont ≈ 2 % pour le texte final, le reste en relectures de
+  mémoire (session principale jusqu'à 530 k tokens, ≈ 20 lancements d'agents qui relisent
+  tout) ; cinq pistes chiffrées, −35 à −45 % au total, qualité intacte (mêmes relectures,
+  même réflexion pour qui écrit et relit). Étude : `chantiers/terminale/optimisation-tokens.md`.
+  Session du 2026-10-05.
+- [ ] (P1) Alléger la session qui coordonne un chapitre, et mesurer ce que coûte chaque
+  chapitre — `/tle-chapitre` : une session par partie, jamais de travail d'interface dans la
+  même session ; ne lit que les §§ 12 et 9.4 de la charte ; rapports d'agents écrits dans un
+  fichier (la session ne garde que verdict, compteurs et défauts) ; rendu contrôlé par un
+  script (défilement horizontal, erreurs KaTeX et console), 4 captures regardées au lieu de
+  20 ; un chapitre à la fois, session neuve après une coupure de plus d'une heure ; usage de
+  la session (`get_session` → `usage`) et `total_tokens` de chaque agent dans le corps de PR.
+  Pistes 1 et 4 de l'étude, gain estimé −18 à −25 %. DoD : commande modifiée, essayée sur le
+  prochain chapitre, coût comparé à la référence (Acides-bases : 98,7 $ pour les deux parties).
+- [ ] (P1) Une fiche de lecture par chapitre, pour ne plus relire tout le programme à chaque
+  étape — `scripts/contexte-chapitre.mjs <matiere> <slug> [--role …]` : lignes du programme
+  du chapitre (+ celles qu'il peut citer) et ordre des chapitres, formulations d'annales
+  filtrées (161 k → 5 k tokens), index des chapitres antérieurs (21 k → 1 k par chapitre),
+  sections du référentiel utiles au rôle ; fiches des six agents `tle-*` mises à jour
+  (sources complètes seulement en cas de doute). À faire avant que les chapitres antérieurs
+  s'accumulent : sans elle, l'auteur du cours relit tous les cours précédents (≈ 290 k tokens
+  au 15e chapitre). Piste 2, gain estimé −8 à −12 %. DoD : script testé, verify OK, un
+  chapitre produit avec.
+- [ ] (P2) Trouver automatiquement les défauts simples avant la relecture, et ne relire que
+  ce qui a changé — script de contrôles mécaniques lancé par les auteurs avant de rendre
+  (indice qui contient la valeur à saisir, nombre d'indices par marche, chaque formule compilée
+  par KaTeX, renvois `revoir` / `de`, virgule `{,}`, unités en physique-chimie, somme des
+  points type bac, tutoiement) ; tours 2 et 3 de `tle-relecteur` sur les seuls items modifiés
+  (extraits par script) avec son rapport précédent ; corrections renvoyées à l'auteur dans les
+  5 minutes, sinon à un correcteur neuf qui ne lit que les items en cause. Piste 3, gain
+  estimé −8 à −12 %. DoD : script sans faux bloquant sur Dénombrement et Acides-bases, agents
+  mis à jour.
+- [ ] (P3) Moins de réflexion pour la session qui coordonne, consignes communes allégées —
+  session principale en `/effort high` ; agents `tle-*` en `xhigh` écrit dans leur fiche
+  (champ `effort`, à vérifier sur un agent) ; § 13 (français) de `CLAUDE.md` déplacé dans un
+  fichier lu seulement pour le français (−4,5 k tokens à chaque pas de chaque agent). Piste 5,
+  gain estimé −3 à −5 %.
 - [ ] (P2) Écrire les chapitres suivants, un par session — dans l'ordre de la classe, deux
   items par chapitre (« le cours », « les exercices »), ajoutés ici par les sessions pilotes ;
   plusieurs sessions en parallèle possibles, un chapitre chacune.
