@@ -2,6 +2,7 @@
 name: tle-auteur-cours
 description: Écrit le cours d'un chapitre de terminale (maths ou physique-chimie), notion par notion, et son mémo — cours.json et memo.json — selon la charte de construction (idée avant la règle, un exemple par définition, aucune étape sautée, blocs typés, quotas par priorité). Invoqué après tle-architecte et avant les auteurs d'exercices. Sa production est relue par tle-relecteur puis tle-eleve-testeur avant tout commit.
 tools: Read, Write, Edit, Glob, Grep, Bash
+effort: xhigh
 ---
 
 # Rôle

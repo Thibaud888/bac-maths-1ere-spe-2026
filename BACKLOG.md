@@ -530,11 +530,20 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `x-acides-bases-008` q1, `-018` q2, `-019` q4, `-020` q2, `-027` q3) ; trancher s'ils donnent
   vraiment la réponse. DoD : `controles-mecaniques.mjs` relu, corrections passées par
   `tle-relecteur`.
-- [ ] (P3) Moins de réflexion pour la session qui coordonne, consignes communes allégées —
+- [x] (P3) Moins de réflexion pour la session qui coordonne, consignes communes allégées —
   session principale en `/effort high` ; agents `tle-*` en `xhigh` écrit dans leur fiche
   (champ `effort`, à vérifier sur un agent) ; § 13 (français) de `CLAUDE.md` déplacé dans un
   fichier lu seulement pour le français (−4,5 k tokens à chaque pas de chaque agent). Piste 5,
   gain estimé −3 à −5 %.
+  Fait le 2026-10-05 : la documentation Claude Code (« Subagents », champ `effort` :
+  `low`…`xhigh`, `max` ; il l'emporte sur `/effort` de la session) confirme le champ ;
+  `effort: xhigh` écrit dans les six fiches `tle-*` — nécessaire, car la session cloud
+  démarre en `high` et un agent sans ce champ hériterait de `high`. `/effort high`
+  recommandé dans `/tle-chapitre` et `CLAUDE.md` § 14. § 13 (français) déplacé dans
+  `docs/volet-francais.md` (renvois mis à jour : agents `french-*`, commandes français,
+  `MAP.md`) : `CLAUDE.md` passe de 29,7 à 23,7 Ko (≈ −2 k tokens à chaque pas, moins que
+  les 4,5 k estimés). Reste : vérifier sur le prochain chapitre, dans les relevés de coût,
+  que les agents tournent bien en `xhigh`.
 - [ ] (P2) Écrire les chapitres suivants, un par session — dans l'ordre de la classe, deux
   items par chapitre (« le cours », « les exercices »), ajoutés ici par les sessions pilotes ;
   plusieurs sessions en parallèle possibles, un chapitre chacune.

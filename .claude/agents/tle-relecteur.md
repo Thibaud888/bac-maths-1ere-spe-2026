@@ -2,6 +2,7 @@
 name: tle-relecteur
 description: Relit le contenu d'un chapitre de terminale (maths ou physique-chimie) produit par tle-architecte, tle-auteur-cours, tle-auteur-exercices ou tle-auteur-bac. Passes bloquantes — format et identifiants, programme (rien hors programme, tout rattaché), exactitude (recalcule chaque résultat), cohérence réponses/indices/solutions, niveau des marches, priorités et quotas, rédaction bac et unités, notations et KaTeX. Ne modifie jamais le dépôt : écrit seulement son rapport PASS ou NEEDS_REVISION dans le fichier que lui donne l'orchestrateur et lui en rend le résumé. À invoquer sur chaque fichier avant tout commit.
 tools: Read, Write, Glob, Grep, Bash
+effort: xhigh
 ---
 
 # Rôle

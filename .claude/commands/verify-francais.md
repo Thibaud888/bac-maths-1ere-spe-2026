@@ -4,6 +4,8 @@ description: Validation globale du contenu pédagogique français. Lance la vali
 
 Lance la vérification complète du contenu français.
 
+Règles du volet français : `docs/volet-francais.md` (sorti de `CLAUDE.md`), à lire d'abord.
+
 **Si $ARGUMENTS est fourni** : vérifier uniquement le module dont le slug est $ARGUMENTS.
 **Sinon** : vérifier tous les modules dans `content/francais/`.
 
