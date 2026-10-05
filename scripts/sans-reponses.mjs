@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { MATIERES, RACINE_DEPOT, lireMatiere } from './lib/terminale.mjs';
 
 const CLES_RETIREES = new Set(['solution', 'indices', 'revoir', 'erreurFrequente', 'attenduCorrecteur', 'explication']);
-const CHAMPS_VISIBLES_REPONSE = ['type', 'choix', 'elements', 'unite', 'chiffresSignificatifs'];
+const CHAMPS_VISIBLES_REPONSE = ['type', 'choix', 'elements', 'unite', 'chiffresSignificatifs', 'decimales'];
 
 /** Mélange déterministe (graine = identifiant), jamais dans l'ordre d'origine. */
 export function melanger(elements, graine) {

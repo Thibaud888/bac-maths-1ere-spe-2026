@@ -416,29 +416,41 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     SVG ; 7 cartes de mémo. Le logarithme décimal, jamais vu en maths, est expliqué dans la
     notion pH. Relecteur PASS au 1er tour, puis au 2e après retouches ; élève-testeur
     (1 bloquant corrigé : pourquoi [H₃O⁺] = c pour l'acide chlorhydrique seulement).
-    Couverture « cours » sans écart. Fait le 2026-10-01.
-  - [ ] Acides, bases et pH : les exercices — trois marches, questions éclair, 3 à 5
-    exercices type bac. `/tle-chapitre physique-chimie acides-bases exercices`. Mêmes
-    garde-fous que le cours : composition des solutions et caractère total ou non total
-    donnés dans l'énoncé, aucun mot « fort / faible », ni $K_e$, ni $\mathrm{p}K_A$ ; même
-    convention d'arrondi du pH (autant de décimales que de chiffres significatifs de
-    [H₃O⁺]), tolérances larges ; une question de résolution de problème (marche 3 ou type
-    bac). Le type bac ne peut mêler que ce chapitre, la première et les « Méthodes » (aucun
-    autre chapitre de physique-chimie écrit). DoD : charte § 9.4.
-  - [ ] Cours Acides, bases et pH : trois retouches de style laissées par le relecteur — l-035
-    et la carte `m-acides-bases-amphotere` (parenthèses emboîtées autour de
-    $\mathrm{(CO_2,H_2O)/HCO_3^-}$), l-008 (« l'eau peut donc **aussi** jouer le rôle d'un
-    acide » arrive avant qu'on l'ait vue en base), `alt` des figures l-021 et l-023 (phrases
-    de plus de 25 mots). Passer par `tle-auteur-cours` puis `tle-relecteur`.
+    Couverture « cours » sans écart. Fait le 2026-10-01. PR : #105.
+  - [x] Acides, bases et pH : les exercices — 28 exercices (12 Comprendre, 13 S'entraîner,
+    3 Approfondir), 16 questions éclair, 4 exercices type bac originaux (24 points ; deux
+    sans calculatrice, deux avec ; deux questions de résolution de problème). Tous les
+    planchers atteints ; le pH est au plafond (exemples, « vérifie », marche 2). Relecteur :
+    PASS au 2e tour, puis 1 bloquant au 3e tour après les corrections de l'élève-testeur
+    (l'exemple l-050 du cours reprend les nombres de tb-001 q4) : **laissé tel quel, choix
+    de Thibaud** (2026-10-05). Élève-testeur : marche Comprendre réussie avec le seul cours ;
+    2 bloquants corrigés (calcul sans calculatrice montré dans le cours, l-050 et l-051, et
+    entraîné en x-028 ; signe du pourcentage de x-025 q5). Couverture complète sans écart.
+    Fait le 2026-10-05.
+  - [x] Cours Acides, bases et pH : trois retouches de style laissées par le relecteur — l-035
+    et la carte `m-acides-bases-amphotere`, l-008, `alt` des figures l-021 et l-023. Fait
+    le 2026-10-05, relu (PASS).
+  - [ ] Faire relire le chapitre Acides, bases et pH par Thibaud — premier chapitre de
+    physique-chimie complet ; ses retours vont dans la charte (comme pour Dénombrement).
+  - [ ] Acides, bases et pH : petites redites signalées par le relecteur, non bloquantes — le
+    « vérifie » l-051 (pH 3,30 → 5,0 × 10⁻⁴) reprend x-006 q1 ; x-003 et tb-002 q1a ont la
+    même réaction ($\mathrm{NH_4^+}$ + $\mathrm{HO^-}$) ; x-020, marche « S'entraîner »
+    assez chargée (réaction, tableau d'avancement, mélange, pH). À reprendre avec
+    `tle-auteur-exercices` / `tle-auteur-cours` puis `tle-relecteur` si Thibaud le juge utile.
   - [ ] Quand la page « Méthodes » de physique-chimie est écrite : n'expliquer le logarithme
     décimal qu'une fois — aujourd'hui dans la notion pH d'`acides-bases` (l-038, l-039) ;
     garder ce bloc et y renvoyer, ou l'inverse avec un `rappel`.
-- [ ] (P2) Montrer la bonne réponse avec le bon nombre de chiffres (« 3,40 », pas « 3,4 ») —
+- [x] (P2) Montrer la bonne réponse avec le bon nombre de chiffres (« 3,40 », pas « 3,4 ») —
   « Voir la réponse » d'une question numérique affiche la valeur brute du JSON :
   `ValeurAttendue` (`src/components/terminale/QuestionVerifiable.tsx`) fait `String(valeur)`
   et ignore `chiffresSignificatifs` ; un pH se donne en décimales, pas en chiffres
   significatifs (champ à ajouter au schéma, ou règle propre au pH). Relevé sur
   `l-acides-bases-042` et `-045`. DoD : valeur affichée conforme, test, `verify.mjs` OK.
+  Fait le 2026-10-05 : champ `decimales` (pH) ajouté au schéma, à côté de
+  `chiffresSignificatifs` (jamais les deux) ; `ecritureValeurAttendue` (testée) affiche
+  « 3,40 », « 2,0 », « 1,2 × 10⁴ » ; charte § 3.6 et chapitre-témoin à jour. En passant, la
+  saisie accepte aussi les puissances de dix (« 2,0×10^-3 », « 1×10^4 », « 10⁴ ») et, quand
+  l'unité porte déjà « × 10ⁿ », la valeur entière aussi bien que le nombre devant 10ⁿ.
 
 **Phase 4 — la production**
 
