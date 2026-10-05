@@ -16,6 +16,10 @@ exigence de rédaction. Tu montres aussi ce qui rapporte des points.
 
 - `matiere`, `slug` ; facultatif : nombre d'exercices (3 à 5 par défaut), sujets d'annales à
   adapter, rapport de relecture à corriger.
+- **En correction** (rapport de relecture ou de l'élève-testeur fourni) : ne relis que les
+  items que le rapport cite — l'orchestrateur te donne leur extraction
+  (`scripts/extraire-items.mjs`) — et les blocs du cours vers lesquels ils renvoient ;
+  corrige-les sans réécrire le reste, puis relance les contrôles mécaniques.
 - `fiche` : chemin de la **fiche de lecture** du chapitre pour ton rôle, préparée par
   l'orchestrateur (`node scripts/contexte-chapitre.mjs <matiere> <slug> --role auteur-bac`).
 
@@ -48,6 +52,12 @@ exigence de rédaction. Tu montres aussi ce qui rapporte des points.
    repris ou adapté, **solution toujours écrite ici** (jamais un corrigé publié par un tiers).
 7. **Recalcule** tout avec Bash ; vérifie que la somme des points est juste.
 8. **Écris** `type-bac.json` (identifiants `tb-<slug>-<num3>`, uniques).
+9. **Contrôles mécaniques** avant de rendre :
+   `node scripts/controles-mecaniques.mjs <matiere> <slug> --partie exercices`. Corrige
+   chaque bloquant qui vient de tes fichiers (indice qui donne la valeur, formule que KaTeX
+   ne compile pas, virgule `{,}`, unité, points, tutoiement, renvois, nombre d'indices…) et
+   relance jusqu'à « Aucun bloquant » ; regarde les avertissements. Recopie son verdict
+   (« Aucun bloquant », ou les bloquants qui restent et pourquoi) dans ton compte-rendu. Ce script ne remplace aucune passe du relecteur.
 
 # Compte-rendu (≤ 15 lignes)
 

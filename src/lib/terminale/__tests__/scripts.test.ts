@@ -347,3 +347,94 @@ describe('contexte-chapitre.mjs — la fiche de lecture', () => {
     expect(lancer('contexte-chapitre.mjs', ['maths', 'inexistant']).code).toBe(2);
   });
 });
+
+describe('controles-mecaniques.mjs — avant la relecture', () => {
+  type Resultat = { ecarts: Ecart[]; avertissements: Ecart[]; stats: { formules: number } };
+  const controler = (matiere: string, chapitre: string, racine?: string) => {
+    const r = lancer('controles-mecaniques.mjs', [matiere, chapitre, '--json', ...(racine ? ['--racine', racine] : [])]);
+    return { code: r.code, resultat: JSON.parse(r.sortie) as Resultat };
+  };
+  const reglesDe = (r: Resultat) => new Set(r.ecarts.map((e) => e.regle));
+  const PC = 'physique-chimie/chapitres/temoin-physique-chimie';
+
+  it('aucun bloquant sur les chapitres écrits et sur le témoin', () => {
+    for (const [m, c] of [['maths', 'denombrement'], ['physique-chimie', 'acides-bases']] as const) {
+      const { code, resultat } = controler(m, c);
+      expect(resultat.ecarts, `${m}/${c}`).toEqual([]);
+      expect(code).toBe(0);
+      expect(resultat.stats.formules).toBeGreaterThan(1000);
+    }
+    for (const [m, c] of [['maths', 'temoin-maths'], ['physique-chimie', 'temoin-physique-chimie']] as const) {
+      expect(controler(m, c, TEMOIN).resultat.ecarts, `${m}/${c}`).toEqual([]);
+    }
+  });
+
+  it('trouve un indice qui donne la valeur, une unité manquante, une formule cassée', () => {
+    const c = copieDuTemoin();
+    const exercices = c.lire(`${PC}/exercices.json`);
+    const q = exercices[0].questions[0];
+    q.indices[1] = 'On trouve $0{,}05$ : il reste à écrire l\'unité.';
+    const q2 = exercices[4].questions[1];
+    delete q2.reponse.unite;
+    q2.enonce = 'Calculer la vitesse du mobile.';
+    exercices[1].titre = 'Une formule $\\frac{1}{$ cassée';
+    c.ecrire(`${PC}/exercices.json`, exercices);
+    const { code, resultat } = controler('physique-chimie', 'temoin-physique-chimie', c.racine);
+    expect(code).toBe(1);
+    const ids = (regle: string) => resultat.ecarts.filter((e) => e.regle === regle).map((e) => e.id);
+    expect(ids('indice-donne-la-valeur')).toEqual([`${exercices[0].id} ${q.id}`]);
+    expect(ids('unite')).toEqual([`${exercices[4].id} ${q2.id}`]);
+    expect(ids('katex')[0]).toContain(exercices[1].id);
+  });
+
+  it('trouve une virgule décimale, un vouvoiement, des indices en trop', () => {
+    const c = copieDuTemoin();
+    const cours = c.lire('maths/chapitres/temoin-maths/cours.json');
+    const bloc = cours.sections[0].blocs.find((b: { texte?: string }) => typeof b.texte === 'string');
+    bloc.texte = `${bloc.texte} Calculez $x = 2,5$ puis vérifiez votre résultat.`;
+    c.ecrire('maths/chapitres/temoin-maths/cours.json', cours);
+    const exercices = c.lire('maths/chapitres/temoin-maths/exercices.json');
+    const m1 = exercices.find((x: { niveau: number }) => x.niveau === 1);
+    m1.questions[0].indices.push('Un troisième indice.');
+    c.ecrire('maths/chapitres/temoin-maths/exercices.json', exercices);
+    const { resultat } = controler('maths', 'temoin-maths', c.racine);
+    const r = reglesDe(resultat);
+    expect(r.has('virgule')).toBe(true);
+    expect(r.has('tutoiement')).toBe(true);
+    expect(resultat.ecarts.filter((e) => e.regle === 'tutoiement').length).toBeGreaterThanOrEqual(2);
+    expect(r.has('couverture/marche')).toBe(true);
+  });
+
+  it('trouve une somme de points fausse dans un type bac', () => {
+    const c = copieDuTemoin();
+    const tb = c.lire('maths/chapitres/temoin-maths/type-bac.json');
+    tb[0].points += 1;
+    c.ecrire('maths/chapitres/temoin-maths/type-bac.json', tb);
+    expect(reglesDe(controler('maths', 'temoin-maths', c.racine).resultat).has('integrite')).toBe(true);
+  });
+});
+
+describe('extraire-items.mjs — tours 2 et 3 du relecteur', () => {
+  it('rend les items par identifiant, avec la notion d\'un bloc', () => {
+    const r = lancer('extraire-items.mjs', ['maths', 'temoin-maths', '--racine', TEMOIN, 'x-temoin-maths-001', 'n-temoin-maths-alpha']);
+    expect(r.code).toBe(0);
+    const sortie = JSON.parse(r.sortie);
+    expect(sortie.items.map((i: { fichier: string }) => i.fichier)).toEqual(['exercices', 'notions']);
+    expect(lancer('extraire-items.mjs', ['maths', 'temoin-maths', '--racine', TEMOIN, 'x-inconnu']).code).toBe(2);
+  });
+
+  it('rend seulement ce qui a changé depuis l\'instantané, et ce qui a disparu', () => {
+    const c = copieDuTemoin();
+    const instantane = mkdtempSync(join(tmpdir(), 'instantane-'));
+    copies.push(instantane);
+    expect(lancer('extraire-items.mjs', ['maths', 'temoin-maths', '--racine', c.racine, '--instantane', instantane]).code).toBe(0);
+    const exercices = c.lire('maths/chapitres/temoin-maths/exercices.json');
+    exercices[2].titre = 'Titre corrigé';
+    const retire = exercices.pop();
+    c.ecrire('maths/chapitres/temoin-maths/exercices.json', exercices);
+    const r = lancer('extraire-items.mjs', ['maths', 'temoin-maths', '--racine', c.racine, '--depuis', instantane]);
+    const sortie = JSON.parse(r.sortie);
+    expect(sortie.items.map((i: { id: string }) => i.id)).toEqual([exercices[2].id]);
+    expect(sortie.supprimes).toEqual([retire.id]);
+  });
+});

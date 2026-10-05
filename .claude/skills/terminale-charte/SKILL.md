@@ -614,7 +614,10 @@ Procédure détaillée : `.claude/commands/tle-chapitre.md`.
 2. `tle-auteur-cours` → `cours.json`, `memo.json`.
 3. `tle-auteur-exercices` → `exercices.json`, `flash.json` (après le cours).
 4. `tle-auteur-bac` → `type-bac.json` (après le cours).
-5. `tle-relecteur` sur chaque fichier → PASS obligatoire. **Trois relectures au plus** par
+5. `tle-relecteur` sur chaque fichier → PASS obligatoire. Avant chaque relecture, l'auteur a
+   lancé `node scripts/controles-mecaniques.mjs <matiere> <chapitre>` (aucun bloquant) ; aux
+   tours 2 et 3, le relecteur refait toutes ses passes sur les items modifiés
+   (`scripts/extraire-items.mjs`), avec son rapport précédent. **Trois relectures au plus** par
    fichier : si la troisième rend encore NEEDS_REVISION, l'orchestrateur pose la question
    à Thibaud. L'orchestrateur compte les tours et les transmet au relecteur.
 6. `tle-eleve-testeur` sur le cours et les exercices, **dans une version sans réponses**

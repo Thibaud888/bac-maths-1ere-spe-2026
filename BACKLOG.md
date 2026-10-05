@@ -509,7 +509,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   (le plus tombé au bac) ≈ 29 k pour le relecteur ; élève-testeur ≤ 2 k. Les six agents
   `tle-*` lisent la fiche (`fiche:`), sources complètes seulement en cas de doute ;
   `/tle-chapitre` prépare les fiches. Reste : un chapitre produit avec.
-- [ ] (P2) Trouver automatiquement les défauts simples avant la relecture, et ne relire que
+- [x] (P2) Trouver automatiquement les défauts simples avant la relecture, et ne relire que
   ce qui a changé — script de contrôles mécaniques lancé par les auteurs avant de rendre
   (indice qui contient la valeur à saisir, nombre d'indices par marche, chaque formule compilée
   par KaTeX, renvois `revoir` / `de`, virgule `{,}`, unités en physique-chimie, somme des
@@ -518,6 +518,18 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   5 minutes, sinon à un correcteur neuf qui ne lit que les items en cause. Piste 3, gain
   estimé −8 à −12 %. DoD : script sans faux bloquant sur Dénombrement et Acides-bases, agents
   mis à jour.
+  Fait le 2026-10-05 : `scripts/controles-mecaniques.mjs` (schémas, intégrité, couverture et
+  les contrôles ci-dessus ; 3 399 + 2 358 formules compilées, aucun bloquant sur Dénombrement
+  ni Acides-bases, chaque règle prise en défaut sur une copie du témoin) et
+  `scripts/extraire-items.mjs` (par identifiant, ou `--instantane` / `--depuis`), testés ;
+  auteurs (dont `tle-auteur-cours`, qui reçoit Bash pour ce seul usage), relecteur, charte
+  § 12 et `/tle-chapitre` (§ 2 bis : instantané, correction dans les 5 minutes ou
+  correcteur neuf, tours 2-3 ciblés) à jour.
+- [ ] (P3) Vérifier que quelques indices d'Acides-bases ne donnent pas la réponse — 6 indices
+  qui écrivent un nombre égal à la valeur à saisir (déjà dans l'énoncé ou petit entier :
+  `x-acides-bases-008` q1, `-018` q2, `-019` q4, `-020` q2, `-027` q3) ; trancher s'ils donnent
+  vraiment la réponse. DoD : `controles-mecaniques.mjs` relu, corrections passées par
+  `tle-relecteur`.
 - [ ] (P3) Moins de réflexion pour la session qui coordonne, consignes communes allégées —
   session principale en `/effort high` ; agents `tle-*` en `xhigh` écrit dans leur fiche
   (champ `effort`, à vérifier sur un agent) ; § 13 (français) de `CLAUDE.md` déplacé dans un

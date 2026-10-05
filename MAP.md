@@ -126,6 +126,10 @@ scripts/
   contexte-chapitre.mjs # FICHE DE LECTURE d'un chapitre pour un agent tle-* (--role) :
                         # programme du chapitre, lignes citables / interdites, annales
                         # filtrées, index des chapitres antérieurs, sections du référentiel
+  controles-mecaniques.mjs # défauts simples d'un chapitre AVANT relecture (indice qui
+                        # donne la valeur, KaTeX, virgule, unités, points, tutoiement…)
+  extraire-items.mjs    # items par identifiant, ou modifiés depuis un instantané (tours
+                        # 2-3 du relecteur)
   controle-rendu.mjs    # rendu d'un chapitre de terminale dans Chromium (clair/sombre,
                         # 1280/390 px) : défilement horizontal, KaTeX, console ; 4 captures
   annales-apmep.mjs     # sujets de bac de maths publiés par l'APMEP, année par année : liste,
