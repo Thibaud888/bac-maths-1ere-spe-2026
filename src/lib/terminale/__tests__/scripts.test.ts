@@ -248,3 +248,35 @@ describe('sans-reponses.mjs', () => {
     expect(JSON.parse(readFileSync(fichier, 'utf8')).chapitre).toBe('temoin-physique-chimie');
   });
 });
+
+describe('controle-rendu.mjs --liste (pages prévues, sans navigateur)', () => {
+  type Liste = { pages: { nom: string; chemin: string }[]; captures: string[] };
+  const liste = (args: string[]) => JSON.parse(lancer('controle-rendu.mjs', [...args, '--temoin', '--liste']).sortie) as Liste;
+
+  it('ouvre chaque notion, le mémo, une page par marche et le premier type bac', () => {
+    const { pages, captures } = liste(['maths', 'temoin-maths']);
+    const noms = pages.map((p) => p.nom);
+    expect(noms).toEqual([
+      'apercu', 'cours-alpha', 'cours-beta', 'cours-gamma', 'memo',
+      'exercices', 'eclair', 'marche-1', 'marche-2', 'marche-3', 'type-bac', 'type-bac-1',
+    ]);
+    expect(pages[1]?.chemin).toBe('/terminale/maths/temoin-maths/cours/alpha');
+    expect(captures).toEqual([
+      'cours-alpha-clair-1280.png', 'cours-alpha-sombre-390.png',
+      'marche-1-clair-390.png', 'type-bac-1-sombre-1280.png',
+    ]);
+  });
+
+  it('partie cours : Aperçu, notions et mémo seulement ; toujours quatre captures', () => {
+    const { pages, captures } = liste(['maths', 'temoin-maths', '--partie', 'cours']);
+    expect(pages.map((p) => p.nom)).toEqual(['apercu', 'cours-alpha', 'cours-beta', 'cours-gamma', 'memo']);
+    expect(captures).toHaveLength(4);
+    expect(captures[3]).toBe('memo-sombre-1280.png');
+  });
+
+  it('« Méthodes » : adresse propre, pas de type bac', () => {
+    const { pages } = liste(['maths', 'temoin-methodes-maths']);
+    expect(pages[0]?.chemin).toBe('/terminale/maths/methodes');
+    expect(pages.some((p) => p.nom.startsWith('type-bac'))).toBe(false);
+  });
+});

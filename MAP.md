@@ -123,6 +123,8 @@ scripts/
   couverture-terminale.mjs  # un chapitre de terminale face au programme et à la charte
                         # (§ 9.3) : écarts bloquants, avertissements, tableau des planchers
   sans-reponses.mjs     # exercices d'un chapitre sans solutions ni indices (élève-testeur)
+  controle-rendu.mjs    # rendu d'un chapitre de terminale dans Chromium (clair/sombre,
+                        # 1280/390 px) : défilement horizontal, KaTeX, console ; 4 captures
   annales-apmep.mjs     # sujets de bac de maths publiés par l'APMEP, année par année : liste,
                         # source LaTeX du sujet (jamais le corrigé) et son corps en texte
   frequences-annales.mjs # ce qui tombe au bac : par chapitre, par notion, par ligne du

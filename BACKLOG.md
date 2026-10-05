@@ -467,7 +467,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   tout) ; cinq pistes chiffrées, −35 à −45 % au total, qualité intacte (mêmes relectures,
   même réflexion pour qui écrit et relit). Étude : `chantiers/terminale/optimisation-tokens.md`.
   Session du 2026-10-05.
-- [ ] (P1) Alléger la session qui coordonne un chapitre, et mesurer ce que coûte chaque
+- [x] (P1) Alléger la session qui coordonne un chapitre, et mesurer ce que coûte chaque
   chapitre — `/tle-chapitre` : une session par partie, jamais de travail d'interface dans la
   même session ; ne lit que les §§ 12 et 9.4 de la charte ; rapports d'agents écrits dans un
   fichier (la session ne garde que verdict, compteurs et défauts) ; rendu contrôlé par un
@@ -476,6 +476,23 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   la session (`get_session` → `usage`) et `total_tokens` de chaque agent dans le corps de PR.
   Pistes 1 et 4 de l'étude, gain estimé −18 à −25 %. DoD : commande modifiée, essayée sur le
   prochain chapitre, coût comparé à la référence (Acides-bases : 98,7 $ pour les deux parties).
+  Fait le 2026-10-05 : `.claude/commands/tle-chapitre.md` réécrit (hygiène de session, lecture
+  des seuls §§ 12 et 9.4, rapports dans `$TRAVAIL`, relevé `couts.tsv` + `get_session`,
+  section `## Coût` dans la PR) ; `tle-relecteur` et `tle-eleve-testeur` écrivent leur rapport
+  dans un fichier hors dépôt et ne rendent qu'un résumé ; `scripts/controle-rendu.mjs` (testé)
+  remplace les 20 captures (charte §§ 12 et 9.4). Reste : l'essayer sur le prochain chapitre
+  et comparer le coût.
+- [ ] (P2) Les formules longues font déborder la page sur téléphone en physique-chimie —
+  `controle-rendu.mjs physique-chimie acides-bases` : défilement horizontal à 390 px sur les
+  notions `reaction` (page de 536 px) et `couples-usuels` (635 px), causé par des équations
+  chimiques et des « Conclusion : … » en formule en ligne dans les étapes d'exemple, qui ne
+  se coupent pas. Trancher : couper les formules côté contenu (formule centrée `$$…$$`) ou
+  permettre la coupure / un cadre défilant côté composant. DoD : `controle-rendu.mjs` sans
+  écart sur les deux chapitres.
+- [ ] (P3) Un lien dans un lien sur la liste des sujets type bac — avertissement React
+  `validateDOMNesting` (`<a>` dans `<a>`) relevé par `controle-rendu.mjs maths denombrement` :
+  `SourceDeLExercice` (`src/components/terminale/FicheExercice.tsx`) met le lien de la source
+  dans la carte cliquable. DoD : plus d'avertissement, `verify.mjs` OK.
 - [ ] (P1) Une fiche de lecture par chapitre, pour ne plus relire tout le programme à chaque
   étape — `scripts/contexte-chapitre.mjs <matiere> <slug> [--role …]` : lignes du programme
   du chapitre (+ celles qu'il peut citer) et ordre des chapitres, formulations d'annales

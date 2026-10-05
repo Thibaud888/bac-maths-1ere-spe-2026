@@ -546,7 +546,8 @@ chapitre par chapitre.
 2. `tle-relecteur` a rendu **PASS** sur chaque fichier livré ;
 3. `tle-eleve-testeur` a rendu **CLAIR**, ou ses bloquants sont corrigés et relus ;
 4. `node scripts/verify.mjs` affiche VERIFY OK ;
-5. les captures (§ 12) ont été regardées ;
+5. `controle-rendu.mjs` ne signale aucun écart et ses quatre captures ont été regardées
+   (§ 12) ;
 6. `BACKLOG.md` est à jour.
 
 ---
@@ -621,12 +622,15 @@ Procédure détaillée : `.claude/commands/tle-chapitre.md`.
    ni indice, ni explication ; choix des QCM gardés, remises en ordre mélangées) ; les
    corrections ne lui sont données qu'après ses essais. Bloquants corrigés puis relus.
 7. `scripts/couverture-terminale.mjs` et `node scripts/verify.mjs` → § 9.4.
-8. Captures regardées : Aperçu, Cours, une marche, un type bac, Mémo ; clair et sombre ;
-   1280 px et 390 px.
+8. Rendu contrôlé par `node scripts/controle-rendu.mjs <matiere> <chapitre> --partie …` :
+   Aperçu, chaque notion, Mémo, une page par marche, un type bac ; clair et sombre ; 1280 px
+   et 390 px ; aucun défilement horizontal, aucune erreur KaTeX ni de console. Les quatre
+   captures qu'il désigne sont regardées.
 9. `BACKLOG.md` mis à jour ; PR avec le résumé des rapports.
 
-Les agents n'écrivent que leurs fichiers ; seul l'orchestrateur (la session) lance les
-scripts, commite et ouvre la PR.
+Les agents n'écrivent que leurs fichiers (le relecteur et l'élève-testeur : leur seul
+rapport, hors dépôt) ; seul l'orchestrateur (la session) lance les scripts, commite et
+ouvre la PR. Une session = une partie d'un chapitre, sans travail d'interface.
 
 ---
 
