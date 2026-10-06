@@ -365,9 +365,8 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   **Dénombrement** (2026-09-28). `/tle-chapitre maths denombrement`, partie cours puis partie
   exercices ; Thibaud relit, la charte est ajustée à la suite ; la session ajoute ici un item
   par chapitre suivant. DoD : chapitre fini au sens de la charte § 9, retours de Thibaud notés
-  dans la charte. Encore à trancher (`chapitres-maths.md`, fin) : le ch. 1 ne porte que 3
-  lignes exigibles du programme (il tient seul ou rejoint les limites de suites ?) ;
-  l'espérance de la loi binomiale est au ch. 15, loin du ch. 11.
+  dans la charte. Encore à trancher (`chapitres-maths.md`, fin) : l'espérance de la loi
+  binomiale est au ch. 15, loin du ch. 11.
   - [x] Dénombrement : le cours — 5 notions (priorités mesurées : combinaisons incontournable,
     principes et problèmes fréquents, permutations et triangle de Pascal plus rares), 65 blocs,
     8 cartes de mémo ; relecteur PASS au 3e tour, élève-testeur (1 bloquant corrigé) ;
@@ -547,6 +546,27 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
 - [ ] (P2) Écrire les chapitres suivants, un par session — dans l'ordre de la classe, deux
   items par chapitre (« le cours », « les exercices »), ajoutés ici par les sessions pilotes ;
   plusieurs sessions en parallèle possibles, un chapitre chacune.
+  - [x] Récurrence et suites : le cours — 3 notions (priorités mesurées : le raisonnement par
+    récurrence et l'encadrement / sens de variation incontournables, modéliser une évolution
+    fréquent), 40 blocs, 5 cartes de mémo ; relecteur PASS au 2e tour puis au 3e après le test
+    « élève » (2 bloquants corrigés) ; couverture « cours » sans écart. Le chapitre reste seul
+    (décision de Thibaud du 2026-10-01). PR : #104.
+  - [x] Récurrence et suites : les exercices — 24 exercices (11 Comprendre, 10 S'entraîner,
+    3 Approfondir), 12 questions éclair, 4 exercices type bac (20 points, tous adaptés
+    d'annales citées, limités à ce chapitre, à la première et aux Méthodes) ; tous les
+    planchers atteints ; relecteur PASS au 1er tour puis au 2e après le test « élève »
+    (verdict CLAIR, aucun bloquant) ; couverture « exercices » sans écart. Livré dans la même
+    PR que le cours (décision de Thibaud du 2026-10-01). PR : #104.
+  - [ ] Quand le chapitre « Limites de suites » est écrit, remettre dans le type bac de
+    Récurrence et suites les questions retirées des sujets adaptés — limites, convergence et
+    seuils (voir les notes `adaptation` de
+    `content/terminale/maths/chapitres/recurrence-suites/type-bac.json` et des exercices
+    x-012, x-017, x-020).
+  - [ ] Montrer en image comment une suite uₙ₊₁ = f(uₙ) monte sans sortir de son intervalle —
+    souhait de l'élève-testeur pour la notion « encadrement et sens de variation » : les
+    termes de l'exemple `l-recurrence-suites-022` placés sur le segment [0 ; 1] (figure SVG
+    sous `public/figures/terminale/maths/recurrence-suites/`), ou un widget « escalier » quand
+    les figures animées existeront.
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
@@ -588,6 +608,12 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   incertitudes.
 - [ ] (P3) Imprimer le mémo d'un chapitre sur une page — feuille de style d'impression, sans
   dépendance.
+- [ ] (P3) Sur la liste des sujets type bac, rendre le lien « D'après … » utilisable — chaque
+  carte d'exercice est un lien, et la source citée dedans en est un autre : un lien dans un
+  lien, que le navigateur gère mal (avertissement React `validateDOMNesting`, vu sur
+  Dénombrement et Récurrence). `SourceDeLExercice` (`src/components/terminale/FicheExercice.tsx`)
+  appelé dans la carte de `TypeBacPage.tsx` : afficher la source sans lien dans la carte (le
+  lien reste sur la page de l'exercice). DoD : plus d'avertissement, `node scripts/verify.mjs` OK.
 
 ## Corriger le contenu réglementaire (vérification du 2026-09-23)
 

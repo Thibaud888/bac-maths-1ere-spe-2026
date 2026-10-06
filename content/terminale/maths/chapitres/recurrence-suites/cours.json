@@ -1,0 +1,658 @@
+{
+  "chapitre": "recurrence-suites",
+  "sections": [
+    {
+      "notion": "n-recurrence-suites-recurrence",
+      "blocs": [
+        {
+          "id": "l-recurrence-suites-001",
+          "type": "idee",
+          "texte": "La suite définie par $u_0 = 1$ et $u_{n+1} = 2u_n + 1$ commence par $1$, $3$, $7$, $15$, $31$. On devine que $u_n = 2^{n+1} - 1$. Cette affirmation dépend de $n$ : on la note $P(n)$, lu « $P$ de $n$ ». Vérifier dix rangs, ou mille, ne prouve pas $P(n)$ pour tous les entiers. Pense à des dominos : si le premier tombe, et si chacun renverse le suivant, tous tombent. C'est le **raisonnement par récurrence**."
+        },
+        {
+          "id": "l-recurrence-suites-002",
+          "type": "rappel",
+          "titre": "Rappel : suite définie par récurrence, suite définie explicitement",
+          "texte": "Une suite $(u_n)$ est **définie par récurrence** quand on donne son premier terme et une relation qui calcule chaque terme à partir du précédent. Par exemple : $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = 2u_n + 1$.\n\nElle est **définie explicitement** si l'on calcule $u_n$ directement à partir de $n$ : $u_n = u_0 + nr$ (arithmétique), $u_n = u_0 \\times q^n$ (géométrique).\n\nDeux sens à ne pas confondre. Une suite **définie par récurrence**, c'est une façon de donner une suite. Le **raisonnement par récurrence**, c'est une façon de démontrer : il sert aussi pour des sommes ou des inégalités.",
+          "lien": "1e:suites"
+        },
+        {
+          "id": "l-recurrence-suites-003",
+          "type": "propriete",
+          "titre": "Principe de récurrence",
+          "capacites": ["bo-m-logique-14"],
+          "conditions": [
+            "$n_0$ est un entier naturel : le rang de départ, souvent $0$ ou $1$."
+          ],
+          "admise": true,
+          "texte": "Une **propriété** $P(n)$ est une affirmation qui dépend d'un entier $n$ : pour chaque $n$, elle est vraie ou fausse.\n\nSoit $n_0$ un entier naturel. On suppose que :\n\n- **initialisation** : $P(n_0)$ est vraie ;\n- **hérédité** : pour tout entier $n \\geqslant n_0$, si $P(n)$ est vraie, alors $P(n+1)$ est vraie. On dit alors que la propriété est **héréditaire** : elle se transmet d'un entier au suivant.\n\nAlors $P(n)$ est vraie pour tout entier $n \\geqslant n_0$.\n\nDans l'hérédité, on prend un entier $n \\geqslant n_0$ sans choisir sa valeur, et on raisonne sur ce seul $n$. La supposition « $P(n)$ est vraie » s'appelle l'**hypothèse de récurrence**."
+        },
+        {
+          "id": "l-recurrence-suites-004",
+          "type": "exemple",
+          "titre": "Conjecturer puis démontrer une forme explicite",
+          "capacites": ["bo-m-logique-14"],
+          "enonce": "Soit $(u_n)$ la suite définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = 2u_n + 1$.\n\n**1.** Calculer $u_1$, $u_2$ et $u_3$, puis conjecturer l'expression de $u_n$ en fonction de $n$.\n\n**2.** Démontrer cette conjecture par récurrence.",
+          "etapes": [
+            {
+              "texte": "$u_1 = 2 \\times 1 + 1 = 3$, $u_2 = 2 \\times 3 + 1 = 7$ et $u_3 = 2 \\times 7 + 1 = 15$. Les termes $1$, $3$, $7$, $15$ valent $2^1 - 1$, $2^2 - 1$, $2^3 - 1$ et $2^4 - 1$. On conjecture que, pour tout entier naturel $n$, $u_n = 2^{n+1} - 1$.",
+              "pourquoi": "Conjecturer, c'est proposer une formule plausible, qu'il reste à démontrer. En ajoutant $1$ aux termes, on obtient $2$, $4$, $8$, $16$ : des puissances de $2$, dont l'exposant vaut le rang plus $1$."
+            },
+            {
+              "texte": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n = 2^{n+1} - 1$ ».\n\n**Initialisation** : $u_0 = 1$ et $2^{0+1} - 1 = 2 - 1 = 1$. Donc $P(0)$ est vraie.",
+              "pourquoi": "On calcule séparément les deux membres de l'égalité au rang $0$, puis on constate qu'ils sont égaux."
+            },
+            {
+              "texte": "**Hérédité** : soit $n$ un entier naturel. On suppose $P(n)$ vraie, c'est-à-dire $u_n = 2^{n+1} - 1$. On veut montrer $P(n+1)$ : $u_{n+1} = 2^{n+2} - 1$.",
+              "pourquoi": "$P(n+1)$ s'obtient en remplaçant $n$ par $n + 1$ dans $P(n)$ : l'exposant $n + 1$ devient $(n+1) + 1 = n + 2$."
+            },
+            {
+              "texte": "D'après la définition de la suite, puis l'hypothèse de récurrence :\n\n$$u_{n+1} = 2u_n + 1 = 2\\left(2^{n+1} - 1\\right) + 1 = 2^{n+2} - 2 + 1 = 2^{n+2} - 1.$$\n\nDonc $P(n+1)$ est vraie.",
+              "pourquoi": "$2 \\times 2^{n+1} = 2^1 \\times 2^{n+1} = 2^{n+2}$ : on additionne les exposants."
+            },
+            {
+              "texte": "**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $u_n = 2^{n+1} - 1$."
+            }
+          ]
+        },
+        {
+          "id": "l-recurrence-suites-005",
+          "type": "verifie",
+          "capacites": ["bo-m-logique-14"],
+          "question": {
+            "enonce": "Dans l'hérédité d'une démonstration par récurrence, que supposes-tu ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$P(n)$ est vraie pour tout entier $n \\geqslant n_0$.",
+                "$P(n)$ est vraie pour un entier $n \\geqslant n_0$, dont on ne choisit pas la valeur.",
+                "$P(n+1)$ est vraie.",
+                "$P(n_0)$ est vraie."
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "C'est exactement ce que tu veux démontrer : le supposer revient à tourner en rond.",
+                null,
+                "$P(n+1)$ est ce que tu dois obtenir à la fin de l'hérédité, pas ton point de départ.",
+                "C'est l'initialisation, qui se démontre à part. L'hérédité part de $P(n)$, pour un entier $n$ dont tu ne choisis pas la valeur."
+              ]
+            },
+            "explication": "Tu prends un entier $n \\geqslant n_0$ sans choisir sa valeur, et tu supposes $P(n)$ vraie pour ce seul $n$ : c'est l'hypothèse de récurrence. Tu en déduis $P(n+1)$. Comme tu n'as pas choisi $n$, le raisonnement vaut pour chaque entier : la propriété se transmet de chacun au suivant."
+          }
+        },
+        {
+          "id": "l-recurrence-suites-006",
+          "type": "methode",
+          "titre": "Comment rédiger une démonstration par récurrence ?",
+          "capacites": ["bo-m-logique-14"],
+          "etapes": [
+            "Écris la propriété à démontrer et son rang de départ : « Pour tout entier $n \\geqslant n_0$, on note $P(n)$ : … ».",
+            "**Initialisation** : vérifie $P(n_0)$ par un calcul direct. Pour une égalité, calcule séparément les deux membres et constate qu'ils sont égaux. Conclus « $P(n_0)$ est vraie ».",
+            "**Hérédité** : écris « Soit $n \\geqslant n_0$ un entier. On suppose $P(n)$ vraie. » Ne suppose pas $P(n)$ vraie pour tous les entiers : c'est ce que tu veux démontrer. Puis écris $P(n+1)$ en remplaçant **chaque** $n$ par $n + 1$ : c'est ton objectif.",
+            "Pars du membre de $P(n+1)$ que la définition permet de relier au rang $n$ (souvent $u_{n+1}$). Utilise l'hypothèse de récurrence en le disant, et calcule jusqu'à l'autre membre.",
+            "**Conclusion** : « $P(n_0)$ est vraie et la propriété est héréditaire, donc d'après le principe de récurrence, $P(n)$ est vraie pour tout entier $n \\geqslant n_0$. »"
+          ],
+          "exemple": "l-recurrence-suites-008"
+        },
+        {
+          "id": "l-recurrence-suites-007",
+          "type": "verifie",
+          "capacites": ["bo-m-logique-14"],
+          "question": {
+            "enonce": "On veut démontrer par récurrence que, pour tout entier $n \\geqslant 1$, $1 + 2 + \\dots + n = \\dfrac{n(n+1)}{2}$. Dans l'hérédité, quelle égalité dois-tu obtenir ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$1 + 2 + \\dots + n + (n+1) = \\dfrac{n(n+1)}{2} + 1$",
+                "$1 + 2 + \\dots + n + (n+1) = \\dfrac{(n+1)(n+1)}{2}$",
+                "$1 + 2 + \\dots + n + (n+1) = \\dfrac{(n+1)(n+2)}{2}$",
+                "$1 + 2 + \\dots + n = \\dfrac{(n+1)(n+2)}{2}$"
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Tu as ajouté $1$ au membre de droite. Il faut remplacer **chaque** $n$ par $n + 1$ dans $\\dfrac{n(n+1)}{2}$.",
+                "Tu n'as remplacé que le premier $n$ : le facteur $n + 1$ devient lui aussi $(n+1) + 1 = n + 2$.",
+                null,
+                "Le membre de gauche change aussi : au rang $n + 1$, la somme va jusqu'à $n + 1$."
+              ]
+            },
+            "explication": "On remplace chaque $n$ par $n + 1$, dans les deux membres. À gauche, la somme s'arrête à $n + 1$. À droite, $\\dfrac{n(n+1)}{2}$ devient $\\dfrac{(n+1)\\big((n+1)+1\\big)}{2} = \\dfrac{(n+1)(n+2)}{2}$."
+          }
+        },
+        {
+          "id": "l-recurrence-suites-008",
+          "type": "exemple",
+          "titre": "Une formule de somme, à partir du rang 1",
+          "capacites": ["bo-m-logique-14"],
+          "enonce": "Pour tout entier $n \\geqslant 1$, on pose $S_n = 1^2 + 2^2 + \\dots + n^2$ : c'est la somme des carrés des entiers de $1$ à $n$. Démontrer par récurrence que, pour tout entier $n \\geqslant 1$ :\n\n$$S_n = \\frac{n(n+1)(2n+1)}{6}.$$",
+          "etapes": [
+            {
+              "texte": "Pour tout entier $n \\geqslant 1$, on note $P(n)$ : « $S_n = \\dfrac{n(n+1)(2n+1)}{6}$ ».\n\n**Initialisation** : $S_1 = 1^2 = 1$ et $\\dfrac{1 \\times 2 \\times 3}{6} = \\dfrac{6}{6} = 1$. Donc $P(1)$ est vraie.",
+              "pourquoi": "La somme commence à $1^2$ : le premier rang qui a un sens est $n = 1$. On initialise donc avec $n_0 = 1$."
+            },
+            {
+              "texte": "**Hérédité** : soit $n \\geqslant 1$ un entier. On suppose $P(n)$ vraie. On veut montrer $P(n+1)$ : $S_{n+1} = \\dfrac{(n+1)(n+2)(2n+3)}{6}$.",
+              "pourquoi": "On remplace chaque $n$ par $n + 1$ : le facteur $n + 1$ devient $n + 2$, et $2n + 1$ devient $2(n+1) + 1 = 2n + 3$."
+            },
+            {
+              "texte": "$S_{n+1}$ est la somme $S_n$ à laquelle on ajoute le terme $(n+1)^2$. Avec l'hypothèse de récurrence :\n\n$$S_{n+1} = S_n + (n+1)^2 = \\frac{n(n+1)(2n+1)}{6} + (n+1)^2.$$",
+              "pourquoi": "$S_{n+1} = 1^2 + 2^2 + \\dots + n^2 + (n+1)^2$ : ses $n$ premiers termes forment $S_n$."
+            },
+            {
+              "texte": "On met $\\dfrac{n+1}{6}$ en facteur dans les deux termes : $\\dfrac{n(n+1)(2n+1)}{6} = \\dfrac{n+1}{6} \\times n(2n+1)$ et $(n+1)^2 = \\dfrac{n+1}{6} \\times 6(n+1)$. Donc :\n\n$$S_{n+1} = \\frac{n+1}{6}\\big(n(2n+1) + 6(n+1)\\big) = \\frac{n+1}{6}\\left(2n^2 + 7n + 6\\right).$$",
+              "pourquoi": "$n(2n+1) + 6(n+1) = 2n^2 + n + 6n + 6 = 2n^2 + 7n + 6$. Garder $n + 1$ en facteur évite de tout développer : ce facteur figure aussi dans le résultat visé."
+            },
+            {
+              "texte": "Or $(n+2)(2n+3) = 2n^2 + 3n + 4n + 6 = 2n^2 + 7n + 6$. Donc $S_{n+1} = \\dfrac{(n+1)(n+2)(2n+3)}{6}$ : $P(n+1)$ est vraie.",
+              "pourquoi": "On développe le produit du résultat visé pour le comparer à ce qu'on a obtenu : les deux expressions sont égales."
+            },
+            {
+              "texte": "**Conclusion** : $P(1)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier $n \\geqslant 1$, $S_n = \\dfrac{n(n+1)(2n+1)}{6}$."
+            }
+          ]
+        },
+        {
+          "id": "l-recurrence-suites-009",
+          "type": "verifie",
+          "capacites": ["bo-m-logique-14"],
+          "question": {
+            "enonce": "Pour tout entier $n \\geqslant 1$, on pose $T_n = 1 + 3 + 5 + \\dots + (2n - 1)$ : c'est la somme des $n$ premiers entiers impairs. Dans une hérédité, par quoi complètes-tu l'égalité $T_{n+1} = T_n + \\dots$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$2n + 1$",
+                "$2n - 1$",
+                "$2n + 3$",
+                "$n + 1$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "$2n - 1$ est le dernier terme de $T_n$, déjà compté. Le terme ajouté est le suivant.",
+                "$2n + 3$ est l'impair qui vient après $2n + 1$ : c'est le dernier terme de $T_{n+2}$.",
+                "Les termes de la somme sont les entiers impairs, pas $1$, $2$, $3$… : le terme ajouté est le $(n+1)$-ième entier impair."
+              ]
+            },
+            "explication": "Le terme de rang $k$ est $2k - 1$. Le terme ajouté est celui de rang $n + 1$ : $2(n+1) - 1 = 2n + 1$. Ainsi $T_{n+1} = T_n + 2n + 1$. Par exemple, si $T_n = n^2$, alors $T_{n+1} = n^2 + 2n + 1 = (n+1)^2$."
+          }
+        },
+        {
+          "id": "l-recurrence-suites-010",
+          "type": "piege",
+          "titre": "L'hérédité seule ne prouve rien",
+          "capacites": ["bo-m-logique-14"],
+          "faux": "On reprend $u_0 = 1$ et $u_{n+1} = 2u_n + 1$. Si $u_n = 3 \\times 2^n - 1$, alors $u_{n+1} = 2\\left(3 \\times 2^n - 1\\right) + 1 = 3 \\times 2^{n+1} - 1$. La propriété est héréditaire, donc $u_n = 3 \\times 2^n - 1$ pour tout $n$.",
+          "juste": "L'hérédité est juste, mais l'initialisation échoue : $u_0 = 1$, alors que $3 \\times 2^0 - 1 = 2$. La propriété est fausse dès le rang $0$. Elle est même fausse à tous les rangs, puisque $u_n = 2^{n+1} - 1 = 2 \\times 2^n - 1$.",
+          "explication": "Une propriété peut se transmettre d'un entier au suivant sans être jamais vraie : c'est une file de dominos dont le premier ne tombe pas. Commence toujours par l'initialisation, et calcule-la vraiment."
+        },
+        {
+          "id": "l-recurrence-suites-011",
+          "type": "retenir",
+          "texte": "Récurrence : **initialisation** (vérifier $P(n_0)$), **hérédité** (supposer $P(n)$ vraie pour un entier $n$, en déduire $P(n+1)$), **conclusion** (« d'après le principe de récurrence »).\n\nPour écrire $P(n+1)$, remplace **chaque** $n$ par $n + 1$."
+        }
+      ]
+    },
+    {
+      "notion": "n-recurrence-suites-encadrement-variation",
+      "blocs": [
+        {
+          "id": "l-recurrence-suites-012",
+          "type": "idee",
+          "texte": "Au bac, la récurrence sert souvent à prouver des **inégalités** : un **encadrement** comme « $0 \\leqslant u_n \\leqslant 2$ » (deux nombres entre lesquels $u_n$ reste), ou « $u_n \\leqslant u_{n+1}$ ». Sans formule explicite pour $u_n$, on raisonne sur la relation, comme $u_{n+1} = \\dfrac{2u_n}{u_n + 1}$. L'outil clé : si $u_{n+1} = f(u_n)$ avec $f$ croissante, appliquer $f$ garde l'ordre des nombres. L'inégalité passe ainsi du rang $n$ au rang $n + 1$."
+        },
+        {
+          "id": "l-recurrence-suites-013",
+          "type": "rappel",
+          "titre": "Rappel : sens de variation d'une suite",
+          "texte": "Une suite $(u_n)$ est **croissante** si, pour tout entier naturel $n$, $u_n \\leqslant u_{n+1}$. Elle est **décroissante** si, pour tout entier naturel $n$, $u_n \\geqslant u_{n+1}$.\n\nPour l'étudier, on peut chercher le signe de $u_{n+1} - u_n$ : s'il est positif pour tout $n$, la suite est croissante ; s'il est négatif pour tout $n$, elle est décroissante.\n\nSi $(u_n)$ est décroissante, tous ses termes sont inférieurs ou égaux à son premier terme : $u_n \\leqslant u_0$ pour tout $n$. Si elle est croissante, $u_n \\geqslant u_0$ pour tout $n$.",
+          "lien": "1e:suites"
+        },
+        {
+          "id": "l-recurrence-suites-014",
+          "type": "definition",
+          "titre": "Suite majorée, minorée, bornée",
+          "capacites": ["bo-m-suites-08"],
+          "texte": "Soit $(u_n)$ une suite.\n\n- $(u_n)$ est **majorée** s'il existe un réel $M$ tel que, pour tout entier naturel $n$, $u_n \\leqslant M$ ; $M$ est alors **un majorant** de la suite.\n- $(u_n)$ est **minorée** s'il existe un réel $m$ tel que, pour tout entier naturel $n$, $u_n \\geqslant m$ ; $m$ est alors **un minorant** de la suite.\n- $(u_n)$ est **bornée** si elle est à la fois majorée et minorée : il existe deux réels $m$ et $M$ tels que $m \\leqslant u_n \\leqslant M$ pour tout $n$.\n\nLe même $M$ convient pour tous les termes. Un majorant n'est pas unique : tout réel plus grand en est un aussi."
+        },
+        {
+          "id": "l-recurrence-suites-015",
+          "type": "exemple",
+          "titre": "Encadrer une suite donnée explicitement",
+          "capacites": ["bo-m-suites-08"],
+          "enonce": "Soit $(u_n)$ la suite définie, pour tout entier naturel $n$, par $u_n = 2 - \\dfrac{1}{n+1}$. Démontrer que la suite $(u_n)$ est bornée.",
+          "etapes": [
+            {
+              "texte": "Soit $n$ un entier naturel. Comme $n \\geqslant 0$, on a $n + 1 \\geqslant 1$, donc $0 < \\dfrac{1}{n+1} \\leqslant 1$.",
+              "pourquoi": "L'inverse d'un nombre strictement positif est strictement positif. De plus, la fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$ : de $n + 1 \\geqslant 1$, on tire $\\dfrac{1}{n+1} \\leqslant \\dfrac{1}{1} = 1$."
+            },
+            {
+              "texte": "On multiplie par $-1$, ce qui renverse les inégalités : $-1 \\leqslant -\\dfrac{1}{n+1} < 0$.",
+              "pourquoi": "Multiplier par un nombre négatif change le sens des inégalités : $0 < a \\leqslant 1$ donne $0 > -a \\geqslant -1$. On récrit ensuite de gauche à droite, du plus petit au plus grand."
+            },
+            {
+              "texte": "On ajoute $2$, ce qui garde le sens des inégalités : $1 \\leqslant 2 - \\dfrac{1}{n+1} < 2$, c'est-à-dire $1 \\leqslant u_n < 2$."
+            },
+            {
+              "texte": "**Conclusion** : pour tout entier naturel $n$, $1 \\leqslant u_n \\leqslant 2$. La suite $(u_n)$ est minorée par $1$ et majorée par $2$ : elle est bornée.",
+              "pourquoi": "$u_n < 2$ entraîne $u_n \\leqslant 2$. On aurait aussi pu dire « majorée par $3$ » : un majorant n'est pas unique."
+            }
+          ]
+        },
+        {
+          "id": "l-recurrence-suites-016",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-08"],
+          "question": {
+            "enonce": "On reprend la suite définie par $u_n = 2 - \\dfrac{1}{n+1}$, dont les premiers termes sont $u_0 = 1$, $u_1 = 1{,}5$ et $u_2 = \\dfrac{5}{3}$. Quels nombres sont des minorants de $(u_n)$ ?",
+            "reponse": {
+              "type": "qcm-multiple",
+              "choix": [
+                "$0$",
+                "$1$",
+                "$1{,}5$",
+                "$-3$"
+              ],
+              "bonnes": [0, 1, 3]
+            },
+            "explication": "Un minorant $m$ doit vérifier $u_n \\geqslant m$ pour **tous** les entiers $n$. Comme $u_n \\geqslant 1$ pour tout $n$, les nombres $1$, $0$ et $-3$ conviennent. En revanche, $1{,}5$ ne convient pas : $u_0 = 1 < 1{,}5$."
+          }
+        },
+        {
+          "id": "l-recurrence-suites-017",
+          "type": "methode",
+          "titre": "Comment démontrer un encadrement par récurrence ?",
+          "capacites": ["bo-m-suites-08"],
+          "etapes": [
+            "Écris la propriété : « Pour tout entier naturel $n$, on note $P(n)$ : $a \\leqslant u_n \\leqslant b$ ».",
+            "**Initialisation** : calcule $u_0$ et vérifie que $a \\leqslant u_0 \\leqslant b$.",
+            "**Hérédité** : prends un entier naturel $n$ et suppose $a \\leqslant u_n \\leqslant b$. Pars de cet encadrement et reconstruis $u_{n+1}$ pas à pas, en suivant la relation de récurrence.",
+            "À chaque opération, contrôle le sens des inégalités : ajouter un même nombre le garde ; multiplier par un nombre positif le garde ; multiplier par un nombre négatif le renverse.",
+            "Vérifie que l'encadrement obtenu pour $u_{n+1}$ entraîne $a \\leqslant u_{n+1} \\leqslant b$, puis conclus avec le principe de récurrence."
+          ],
+          "exemple": "l-recurrence-suites-018"
+        },
+        {
+          "id": "l-recurrence-suites-018",
+          "type": "exemple",
+          "titre": "Encadrer, puis en déduire le sens de variation",
+          "capacites": ["bo-m-suites-08"],
+          "enonce": "Soit $(u_n)$ la suite définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = 0{,}5u_n + 1$.\n\n**1.** Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant 2$.\n\n**2.** En déduire que la suite $(u_n)$ est croissante.",
+          "etapes": [
+            {
+              "texte": "Pour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant u_n \\leqslant 2$ ».\n\n**Initialisation** : $u_0 = 1$ et $0 \\leqslant 1 \\leqslant 2$. Donc $P(0)$ est vraie."
+            },
+            {
+              "texte": "**Hérédité** : soit $n$ un entier naturel. On suppose $0 \\leqslant u_n \\leqslant 2$. On multiplie par $0{,}5$, qui est positif : $0 \\leqslant 0{,}5u_n \\leqslant 1$.",
+              "pourquoi": "$0{,}5 \\times 0 = 0$ et $0{,}5 \\times 2 = 1$. Multiplier par un nombre positif garde le sens des inégalités."
+            },
+            {
+              "texte": "On ajoute $1$ : $1 \\leqslant 0{,}5u_n + 1 \\leqslant 2$, c'est-à-dire $1 \\leqslant u_{n+1} \\leqslant 2$. Comme $0 \\leqslant 1$, on a bien $0 \\leqslant u_{n+1} \\leqslant 2$ : $P(n+1)$ est vraie.",
+              "pourquoi": "On obtient même un encadrement plus serré que celui demandé : il entraîne celui de $P(n+1)$."
+            },
+            {
+              "texte": "**Conclusion de la question 1** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant 2$."
+            },
+            {
+              "texte": "Pour tout entier naturel $n$ : $u_{n+1} - u_n = 0{,}5u_n + 1 - u_n = 1 - 0{,}5u_n = 0{,}5(2 - u_n)$. Or $u_n \\leqslant 2$ d'après la question 1. Donc $2 - u_n \\geqslant 0$, puis $u_{n+1} - u_n \\geqslant 0$.",
+              "pourquoi": "On étudie le signe de $u_{n+1} - u_n$, comme en première. La factorisation fait apparaître $2 - u_n$, dont l'encadrement de la question 1 donne le signe."
+            },
+            {
+              "texte": "**Conclusion** : pour tout entier naturel $n$, $u_{n+1} \\geqslant u_n$. La suite $(u_n)$ est croissante."
+            }
+          ]
+        },
+        {
+          "id": "l-recurrence-suites-019",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-08"],
+          "question": {
+            "enonce": "Soit $(u_n)$ une suite telle que, pour tout entier naturel $n$, $u_{n+1} = -0{,}5u_n + 3$. Pour démontrer que $1 \\leqslant u_n \\leqslant 4$ pour tout $n$, tu supposes, dans l'hérédité, $1 \\leqslant u_n \\leqslant 4$. Quel encadrement de $u_{n+1}$ obtiens-tu en appliquant la relation ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$2{,}5 \\leqslant u_{n+1} \\leqslant 1$",
+                "$-2 \\leqslant u_{n+1} \\leqslant -0{,}5$",
+                "$3{,}5 \\leqslant u_{n+1} \\leqslant 5$",
+                "$1 \\leqslant u_{n+1} \\leqslant 2{,}5$"
+              ],
+              "bonne": 3,
+              "pourquoiFaux": [
+                "Tu as gardé le sens des inégalités en multipliant par $-0{,}5$. Un encadrement « $2{,}5 \\leqslant \\dots \\leqslant 1$ » est impossible : multiplier par un nombre négatif renverse les inégalités.",
+                "Tu t'es arrêté à $-0{,}5u_n$, qui est bien entre $-2$ et $-0{,}5$. Il reste à ajouter $3$.",
+                "Tu as oublié le signe moins : tu as calculé $0{,}5u_n + 3$ au lieu de $-0{,}5u_n + 3$.",
+                null
+              ]
+            },
+            "explication": "On multiplie par $-0{,}5$, qui est négatif : $-0{,}5 \\geqslant -0{,}5u_n \\geqslant -2$, soit $-2 \\leqslant -0{,}5u_n \\leqslant -0{,}5$. On ajoute $3$ : $1 \\leqslant u_{n+1} \\leqslant 2{,}5$. Comme $2{,}5 \\leqslant 4$, on a bien $1 \\leqslant u_{n+1} \\leqslant 4$ : l'encadrement se transmet au rang suivant."
+          }
+        },
+        {
+          "id": "l-recurrence-suites-020",
+          "type": "rappel",
+          "titre": "Rappel : fonction croissante et signe de la dérivée",
+          "texte": "Une fonction $f$ est **croissante** sur un intervalle $I$ si, pour tous réels $a$ et $b$ de $I$, $a \\leqslant b$ entraîne $f(a) \\leqslant f(b)$ : appliquer $f$ **garde l'ordre**. Si $f$ est décroissante sur $I$, $a \\leqslant b$ entraîne $f(a) \\geqslant f(b)$ : l'ordre est renversé.\n\nPour le prouver, on étudie le signe de la dérivée : si $f'(x) \\geqslant 0$ pour tout $x$ de $I$, alors $f$ est croissante sur $I$.",
+          "lien": "1e:derivation"
+        },
+        {
+          "id": "l-recurrence-suites-021",
+          "type": "methode",
+          "titre": "Comment étudier une suite $u_{n+1} = f(u_n)$ quand $f$ est croissante ?",
+          "capacites": ["bo-m-suites-08"],
+          "etapes": [
+            "Repère la fonction $f$ telle que $u_{n+1} = f(u_n)$, et un intervalle $[a\\,;\\,b]$ sur lequel $f$ est croissante : étudie le signe de $f'$. En général, $a$ et $b$ sont les bornes de l'encadrement que l'énoncé demande.",
+            "Calcule $f(a)$ et $f(b)$, et vérifie que $a \\leqslant f(a)$ et $f(b) \\leqslant b$ : les termes ne pourront pas sortir de $[a\\,;\\,b]$.",
+            "Pose $P(n)$ : « $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ ». **Initialisation** : calcule $u_0$ et $u_1$, puis vérifie $P(0)$. Si $u_1 \\leqslant u_0$, pose plutôt $P(n)$ : « $a \\leqslant u_{n+1} \\leqslant u_n \\leqslant b$ ».",
+            "**Hérédité** : suppose $P(n)$. Les nombres $a$, $u_n$, $u_{n+1}$ et $b$ sont dans $[a\\,;\\,b]$, où $f$ est croissante. Applique $f$ sans changer le sens : $f(a) \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant f(b)$. Comme $a \\leqslant f(a)$ et $f(b) \\leqslant b$, on obtient $a \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant b$. Dans le cas décroissant, on obtient de même $a \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant b$.",
+            "**Conclusion** : la suite est croissante (ou décroissante), minorée par $a$ et majorée par $b$."
+          ],
+          "exemple": "l-recurrence-suites-022"
+        },
+        {
+          "id": "l-recurrence-suites-022",
+          "type": "exemple",
+          "titre": "Le geste du bac : $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$",
+          "capacites": ["bo-m-suites-08"],
+          "enonce": "Soit $f$ la fonction définie sur $[0\\,;\\,1]$ par $f(x) = \\dfrac{2x}{x+1}$. Soit $(u_n)$ la suite définie par $u_0 = \\dfrac{1}{2}$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.\n\n**1.** Étudier le sens de variation de $f$ sur $[0\\,;\\,1]$.\n\n**2.** Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$.\n\n**3.** En déduire que la suite $(u_n)$ est croissante et bornée.",
+          "etapes": [
+            {
+              "texte": "$f$ est un quotient : $f = \\dfrac{g}{h}$ avec $g(x) = 2x$ et $h(x) = x + 1$, qui ne s'annule pas sur $[0\\,;\\,1]$. Pour tout $x$ de $[0\\,;\\,1]$ :\n\n$$f'(x) = \\frac{2(x+1) - 2x \\times 1}{(x+1)^2} = \\frac{2}{(x+1)^2}.$$",
+              "pourquoi": "Formule de première : $\\left(\\dfrac{g}{h}\\right)' = \\dfrac{g'h - gh'}{h^2}$, avec $g'(x) = 2$ et $h'(x) = 1$. Au numérateur, $2(x+1) - 2x = 2x + 2 - 2x = 2$."
+            },
+            {
+              "texte": "Le numérateur $2$ est positif et le carré $(x+1)^2$ est strictement positif. Donc $f'(x) > 0$ sur $[0\\,;\\,1]$ : $f$ est croissante sur $[0\\,;\\,1]$. De plus, $f(0) = 0$ et $f(1) = \\dfrac{2}{2} = 1$.",
+              "pourquoi": "On calcule $f$ aux bornes de l'intervalle : ce sont les valeurs qui serviront à encadrer $u_{n+1}$."
+            },
+            {
+              "texte": "Pour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$ ».\n\n**Initialisation** : $u_0 = \\dfrac{1}{2}$ et $u_1 = f\\left(\\dfrac{1}{2}\\right) = \\dfrac{2 \\times \\frac{1}{2}}{\\frac{1}{2} + 1} = \\dfrac{1}{\\frac{3}{2}} = \\dfrac{2}{3}$. Or $0 \\leqslant \\dfrac{1}{2} \\leqslant \\dfrac{2}{3} \\leqslant 1$, donc $P(0)$ est vraie.",
+              "pourquoi": "Diviser par $\\dfrac{3}{2}$ revient à multiplier par $\\dfrac{2}{3}$. Pour comparer, $\\dfrac{1}{2} = \\dfrac{3}{6}$ et $\\dfrac{2}{3} = \\dfrac{4}{6}$."
+            },
+            {
+              "texte": "**Hérédité** : soit $n$ un entier naturel. On suppose $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$. Ces quatre nombres sont dans $[0\\,;\\,1]$, où $f$ est croissante. En appliquant $f$, l'ordre est conservé : $f(0) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(1)$.",
+              "pourquoi": "C'est ici que sert l'étude de $f$ : on n'applique $f$ qu'à des nombres de $[0\\,;\\,1]$, l'intervalle où l'on sait qu'elle est croissante."
+            },
+            {
+              "texte": "Or $f(0) = 0$, $f(u_n) = u_{n+1}$, $f(u_{n+1}) = u_{n+2}$ et $f(1) = 1$. Donc $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 1$ : $P(n+1)$ est vraie.",
+              "pourquoi": "La relation $u_{k+1} = f(u_k)$ vaut pour tout entier naturel $k$. Avec $k = n + 1$, elle donne $u_{n+2} = f(u_{n+1})$."
+            },
+            {
+              "texte": "**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$. Ainsi $u_n \\leqslant u_{n+1}$ pour tout $n$ : la suite $(u_n)$ est croissante. Et $0 \\leqslant u_n \\leqslant 1$ pour tout $n$ : elle est minorée par $0$ et majorée par $1$, donc bornée."
+            }
+          ]
+        },
+        {
+          "id": "l-recurrence-suites-023",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-08"],
+          "question": {
+            "enonce": "Pour une suite définie par $u_{n+1} = f(u_n)$, tu veux démontrer par récurrence que, pour tout entier naturel $n$, $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$. Quelle inégalité dois-tu établir dans l'hérédité ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$1 \\leqslant u_{n+1} \\leqslant 4$",
+                "$1 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 4$",
+                "$1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$",
+                "$2 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 5$"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "C'est une partie seulement de ce qu'il faut obtenir : il manque la comparaison de $u_{n+2}$ et $u_{n+1}$, qui donne le sens de variation.",
+                null,
+                "C'est l'hypothèse de récurrence, ton point de départ, pas ce que tu dois obtenir.",
+                "Les bornes $1$ et $4$ ne dépendent pas de $n$ : elles restent les mêmes. Seuls les indices augmentent de $1$."
+              ]
+            },
+            "explication": "On remplace $n$ par $n + 1$ dans les **indices** : $u_{n+1}$ devient $u_{n+2}$ et $u_n$ devient $u_{n+1}$. Les bornes $1$ et $4$ ne changent pas."
+          }
+        },
+        {
+          "id": "l-recurrence-suites-024",
+          "type": "piege",
+          "titre": "$f$ croissante ne veut pas dire suite croissante",
+          "capacites": ["bo-m-suites-08"],
+          "faux": "La fonction $f$ définie par $f(x) = \\dfrac{3}{4 - x}$ est croissante sur $[1\\,;\\,3]$. Donc la suite définie par $u_0 = 2$ et $u_{n+1} = f(u_n)$ est croissante.",
+          "juste": "$u_1 = \\dfrac{3}{4 - 2} = 1{,}5$, donc $u_1 < u_0$. Ici, on démontre par récurrence que $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 3$ pour tout $n$ : la suite est décroissante.",
+          "explication": "Une fonction croissante transmet l'ordre entre deux termes consécutifs. Elle transmet $u_0 \\leqslant u_1$ si c'est le cas au départ, mais aussi $u_1 \\leqslant u_0$. Compare toujours $u_0$ et $u_1$ avant de choisir la propriété à démontrer."
+        },
+        {
+          "id": "l-recurrence-suites-025",
+          "type": "piege",
+          "titre": "Rester dans l'intervalle où $f$ est croissante",
+          "capacites": ["bo-m-suites-08"],
+          "faux": "Soit $u_0 = 1{,}5$ et $u_{n+1} = u_n(4 - u_n)$. On a $u_1 = 3{,}75$, donc $u_0 \\leqslant u_1$. La fonction $f$ définie par $f(x) = x(4 - x)$ est croissante sur $[0\\,;\\,2]$. Donc, de $u_n \\leqslant u_{n+1}$, on tire $f(u_n) \\leqslant f(u_{n+1})$ : la suite est croissante.",
+          "juste": "$f$ ne garde l'ordre que pour des nombres de $[0\\,;\\,2]$. Or $u_1 = 3{,}75$ n'y est pas. D'ailleurs, $u_2 = 3{,}75 \\times 0{,}25 = 0{,}9375$, donc $u_2 < u_1$ : la suite n'est pas croissante.",
+          "explication": "Avant d'appliquer $f$ dans l'hérédité, vérifie que les termes sont dans l'intervalle où $f$ est croissante. C'est pourquoi on démontre l'encadrement $a \\leqslant u_n \\leqslant b$ **dans la même récurrence** que le sens de variation."
+        },
+        {
+          "id": "l-recurrence-suites-026",
+          "type": "retenir",
+          "texte": "Si $u_{n+1} = f(u_n)$, avec $f$ croissante sur $[a\\,;\\,b]$, $a \\leqslant f(a)$, $f(b) \\leqslant b$ et $a \\leqslant u_0 \\leqslant b$ : une seule récurrence donne encadrement et sens de variation. On démontre « $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ » si $u_0 \\leqslant u_1$, sinon « $a \\leqslant u_{n+1} \\leqslant u_n \\leqslant b$ »."
+        }
+      ]
+    },
+    {
+      "notion": "n-recurrence-suites-modelisation",
+      "blocs": [
+        {
+          "id": "l-recurrence-suites-027",
+          "type": "idee",
+          "texte": "Un club perd chaque année une partie de ses membres et en recrute de nouveaux. Une population de poissons, des abonnés ou un médicament dans le sang évoluent de la même façon : par étapes, chacune dépendant de la précédente. **Modéliser**, c'est traduire cette évolution par une suite, par exemple $u_{n+1} = 0{,}9u_n + 50$. Cette suite n'est ni arithmétique ni géométrique. Mais une astuce la ramène à une suite géométrique, que tu sais étudier."
+        },
+        {
+          "id": "l-recurrence-suites-028",
+          "type": "rappel",
+          "titre": "Rappel : pourcentages et suites géométriques",
+          "texte": "Baisser une quantité de $t\\,\\%$ revient à la multiplier par $1 - \\dfrac{t}{100}$ ; l'augmenter de $t\\,\\%$, à la multiplier par $1 + \\dfrac{t}{100}$. Par exemple, perdre $10\\,\\%$ d'un effectif, c'est en garder $90\\,\\%$ : on multiplie par $0{,}9$.\n\nSi, pour tout entier naturel $n$, $v_{n+1} = q \\times v_n$, la suite $(v_n)$ est géométrique de raison $q$, et $v_n = v_0 \\times q^n$.",
+          "lien": "1e:suites"
+        },
+        {
+          "id": "l-recurrence-suites-029",
+          "type": "methode",
+          "titre": "Comment modéliser une évolution par une suite ?",
+          "capacites": ["bo-m-suites-09"],
+          "etapes": [
+            "Définis la suite en une phrase, avec le sens de $n$ : « $u_n$ est le nombre de membres au bout de $n$ années ». Donne le premier terme.",
+            "Décris ce qui se passe entre l'étape $n$ et l'étape $n + 1$, **dans l'ordre de l'énoncé** : ce qui part, puis ce qui arrive.",
+            "Traduis chaque phrase par une opération et écris $u_{n+1}$ en fonction de $u_n$. Contrôle la relation en calculant $u_1$ et $u_2$, et donne leur sens dans la situation.",
+            "Pour $u_{n+1} = a\\,u_n + b$ avec $a \\neq 1$, cherche la valeur $c$ qui ne bouge pas : si $u_n = c$, alors $u_{n+1} = c$, d'où $c = a\\,c + b$. Résous cette équation. L'énoncé donne souvent $c$ à travers une **suite auxiliaire** (une suite intermédiaire) $v_n = u_n - c$.",
+            "Montre que $(v_n)$ est géométrique. Comme $u_n = v_n + c$ : $v_{n+1} = u_{n+1} - c = a\\,u_n + b - c = a(v_n + c) + b - c = a\\,v_n + (a\\,c + b - c)$. Or $a\\,c + b - c = 0$, puisque $c = a\\,c + b$. Donc $v_{n+1} = a\\,v_n$.",
+            "Écris $v_n = v_0 \\times a^n$, puis reviens à $u_n = v_n + c$. Interprète le résultat dans la situation."
+          ],
+          "exemple": "l-recurrence-suites-030"
+        },
+        {
+          "id": "l-recurrence-suites-030",
+          "type": "exemple",
+          "titre": "Les membres d'un club",
+          "capacites": ["bo-m-suites-09"],
+          "enonce": "Un club compte $300$ membres au départ. Chaque année, $10\\,\\%$ des membres quittent le club, puis $50$ nouveaux membres s'inscrivent. On note $u_n$ le nombre de membres au bout de $n$ années ; ainsi $u_0 = 300$.\n\n**1.** Justifier que, pour tout entier naturel $n$, $u_{n+1} = 0{,}9u_n + 50$. Calculer $u_1$ et $u_2$.\n\n**2.** On pose, pour tout entier naturel $n$, $v_n = u_n - 500$. Démontrer que la suite $(v_n)$ est géométrique, puis exprimer $u_n$ en fonction de $n$.\n\n**3.** Le club atteindra-t-il $500$ membres ?",
+          "etapes": [
+            {
+              "texte": "D'une année à la suivante, $10\\,\\%$ des $u_n$ membres partent : il en reste $90\\,\\%$, soit $0{,}9u_n$. Puis $50$ membres arrivent. Donc, pour tout entier naturel $n$, $u_{n+1} = 0{,}9u_n + 50$.",
+              "pourquoi": "Perdre $10\\,\\%$, c'est multiplier par $1 - 0{,}1 = 0{,}9$. Les nouveaux arrivent **après** les départs : ils ne sont pas touchés par la baisse de cette année-là."
+            },
+            {
+              "texte": "$u_1 = 0{,}9 \\times 300 + 50 = 270 + 50 = 320$ et $u_2 = 0{,}9 \\times 320 + 50 = 288 + 50 = 338$. Au bout de deux ans, le club compte $338$ membres."
+            },
+            {
+              "texte": "Pour tout entier naturel $n$ : $v_{n+1} = u_{n+1} - 500 = 0{,}9u_n + 50 - 500 = 0{,}9u_n - 450$.",
+              "pourquoi": "On part de la définition de $v_{n+1}$, puis on remplace $u_{n+1}$ grâce à la relation de récurrence."
+            },
+            {
+              "texte": "Comme $v_n = u_n - 500$, on a $u_n = v_n + 500$. Donc $v_{n+1} = 0{,}9(v_n + 500) - 450 = 0{,}9v_n + 450 - 450 = 0{,}9v_n$. La suite $(v_n)$ est géométrique de raison $0{,}9$ et de premier terme $v_0 = 300 - 500 = -200$.",
+              "pourquoi": "On veut exprimer $v_{n+1}$ à l'aide de $v_n$ seulement. Le nombre $500$ est la valeur qui ne bouge pas : $c = 0{,}9c + 50$ donne $0{,}1c = 50$, soit $c = 500$. C'est pourquoi les constantes s'annulent : $0{,}9 \\times 500 = 450$."
+            },
+            {
+              "texte": "Pour tout entier naturel $n$ : $v_n = -200 \\times 0{,}9^n$, donc $u_n = v_n + 500 = 500 - 200 \\times 0{,}9^n$.",
+              "pourquoi": "Contrôle : pour $n = 1$, $500 - 200 \\times 0{,}9 = 500 - 180 = 320$. On retrouve $u_1$."
+            },
+            {
+              "texte": "Pour tout entier naturel $n$, $0{,}9^n > 0$, donc $200 \\times 0{,}9^n > 0$, et $u_n = 500 - 200 \\times 0{,}9^n < 500$.",
+              "pourquoi": "Une puissance d'un nombre strictement positif est strictement positive."
+            },
+            {
+              "texte": "**Conclusion** : pour tout entier naturel $n$, $u_n = 500 - 200 \\times 0{,}9^n$. Comme $u_n < 500$ pour tout $n$, le club n'atteindra jamais $500$ membres."
+            }
+          ]
+        },
+        {
+          "id": "l-recurrence-suites-031",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-09"],
+          "question": {
+            "enonce": "Une ville compte $u_n$ habitants au bout de $n$ années. Chaque année, $5\\,\\%$ des habitants partent, puis $1\\,200$ nouveaux habitants s'installent. Quelle relation traduit cette évolution ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$u_{n+1} = 1{,}05u_n + 1\\,200$",
+                "$u_{n+1} = 0{,}05u_n + 1\\,200$",
+                "$u_{n+1} = 0{,}95u_n + 1\\,200$",
+                "$u_{n+1} = 0{,}95(u_n + 1\\,200)$"
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Multiplier par $1{,}05$, c'est augmenter de $5\\,\\%$. Ici, la ville perd $5\\,\\%$ de ses habitants.",
+                "$0{,}05u_n$ est le nombre d'habitants qui partent, pas celui qui reste.",
+                null,
+                "Cette relation applique aussi les départs aux nouveaux arrivants. Or ils s'installent après les départs."
+              ]
+            },
+            "explication": "Il reste $95\\,\\%$ des habitants, soit $0{,}95u_n$, puis on ajoute les $1\\,200$ arrivants : $u_{n+1} = 0{,}95u_n + 1\\,200$."
+          }
+        },
+        {
+          "id": "l-recurrence-suites-032",
+          "type": "rappel",
+          "titre": "Rappel : arbre pondéré et probabilités totales",
+          "texte": "$P_A(B)$ se lit « probabilité de $B$ sachant $A$ ». Sur un arbre pondéré, chaque branche porte une probabilité ; les branches issues d'un même nœud ont pour somme $1$.\n\n- La probabilité d'un chemin est le produit des probabilités de ses branches : $P(A \\cap B) = P(A) \\times P_A(B)$.\n- **Formule des probabilités totales** : $A$ et $\\overline{A}$ forment une partition de l'univers (ils ne peuvent pas arriver ensemble, et l'un des deux arrive forcément). Donc $P(B) = P(A \\cap B) + P(\\overline{A} \\cap B)$ : on additionne les probabilités des chemins qui mènent à $B$.",
+          "lien": "1e:probas-cond"
+        },
+        {
+          "id": "l-recurrence-suites-034",
+          "type": "exemple",
+          "titre": "Bus ou vélo : une relation tirée d'un arbre",
+          "capacites": ["bo-m-suites-09"],
+          "enonce": "Chaque jour, Léa va au lycée en bus ou à vélo. Après un jour en bus, elle reprend le bus le lendemain avec une probabilité de $0{,}8$. Après un jour à vélo, elle prend le bus le lendemain avec une probabilité de $0{,}2$. Le jour $1$, elle prend le bus avec une probabilité de $0{,}25$.\n\nPour tout entier $n \\geqslant 1$, on note $B_n$ l'événement « Léa prend le bus le jour $n$ », et $p_n = P(B_n)$.\n\n**1.** Représenter par un arbre pondéré le passage du jour $n$ au jour $n + 1$. En déduire que, pour tout $n \\geqslant 1$, $p_{n+1} = 0{,}6p_n + 0{,}2$.\n\n**2.** Calculer $p_2$ et $p_3$, puis interpréter $p_3$.",
+          "etapes": [
+            {
+              "texte": "L'événement contraire de $B_n$ est $\\overline{B_n}$ (lu « $B_n$ barre ») : « Léa prend le vélo le jour $n$ ». L'arbre attendu est dessiné juste après cet exemple, pour comparer. On y lit : $P(B_n) = p_n$, $P(\\overline{B_n}) = 1 - p_n$, $P_{B_n}(B_{n+1}) = 0{,}8$ et $P_{\\overline{B_n}}(B_{n+1}) = 0{,}2$.",
+              "pourquoi": "« Après un jour en bus, elle reprend le bus le lendemain avec une probabilité de $0{,}8$ » est une probabilité **sachant** $B_n$ : elle se place sur une branche issue de $B_n$."
+            },
+            {
+              "texte": "Les événements $B_n$ et $\\overline{B_n}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$p_{n+1} = P(B_n \\cap B_{n+1}) + P(\\overline{B_n} \\cap B_{n+1}) = p_n \\times 0{,}8 + (1 - p_n) \\times 0{,}2.$$",
+              "pourquoi": "Deux chemins mènent à $B_{n+1}$ : bus puis bus, et vélo puis bus. La probabilité de chacun est le produit des probabilités de ses branches."
+            },
+            {
+              "texte": "On développe : $p_{n+1} = 0{,}8p_n + 0{,}2 - 0{,}2p_n = 0{,}6p_n + 0{,}2$."
+            },
+            {
+              "texte": "D'après l'énoncé, $p_1 = 0{,}25$. Puis $p_2 = 0{,}6 \\times 0{,}25 + 0{,}2 = 0{,}15 + 0{,}2 = 0{,}35$ et $p_3 = 0{,}6 \\times 0{,}35 + 0{,}2 = 0{,}21 + 0{,}2 = 0{,}41$.",
+              "pourquoi": "On applique la relation avec $n = 1$, puis avec $n = 2$."
+            },
+            {
+              "texte": "**Conclusion** : pour tout entier $n \\geqslant 1$, $p_{n+1} = 0{,}6p_n + 0{,}2$. On a $p_2 = 0{,}35$ et $p_3 = 0{,}41$ : la probabilité que Léa prenne le bus le troisième jour est $0{,}41$.",
+              "pourquoi": "La relation a la forme $p_{n+1} = a\\,p_n + b$. Sa valeur qui ne bouge pas vérifie $c = 0{,}6c + 0{,}2$, soit $0{,}4c = 0{,}2$ et $c = 0{,}5$. La méthode du club s'applique donc avec $v_n = p_n - 0{,}5$."
+            }
+          ]
+        },
+        {
+          "id": "l-recurrence-suites-033",
+          "type": "figure",
+          "titre": "L'arbre de l'exemple « Bus ou vélo »",
+          "capacites": ["bo-m-suites-09"],
+          "figure": {
+            "type": "tree",
+            "caption": "Arbre de l'exemple ci-dessus, du jour n au jour n + 1 : compare-le à celui que tu as dessiné. Les deux branches issues d'un même nœud ont pour somme 1.",
+            "data": {
+              "root": {
+                "label": "$\\text{Départ}$",
+                "children": [
+                  {
+                    "label": "$B_n$",
+                    "weight": "$p_n$",
+                    "children": [
+                      { "label": "$B_{n+1}$", "weight": "$0{,}8$" },
+                      { "label": "$\\overline{B_{n+1}}$", "weight": "$0{,}2$" }
+                    ]
+                  },
+                  {
+                    "label": "$\\overline{B_n}$",
+                    "weight": "$1 - p_n$",
+                    "children": [
+                      { "label": "$B_{n+1}$", "weight": "$0{,}2$" },
+                      { "label": "$\\overline{B_{n+1}}$", "weight": "$0{,}8$" }
+                    ]
+                  }
+                ]
+              },
+              "orientation": "horizontal"
+            }
+          }
+        },
+        {
+          "id": "l-recurrence-suites-035",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-09"],
+          "question": {
+            "enonce": "On reprend la situation avec d'autres probabilités : $P_{B_n}(B_{n+1}) = 0{,}9$ et $P_{\\overline{B_n}}(B_{n+1}) = 0{,}3$. Quelle relation obtiens-tu ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$p_{n+1} = 0{,}6p_n + 0{,}3$",
+                "$p_{n+1} = 0{,}9p_n + 0{,}3$",
+                "$p_{n+1} = 1{,}2p_n$",
+                "$p_{n+1} = 0{,}9p_n + 0{,}1$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "Tu as oublié le facteur $1 - p_n$ sur le second chemin : sa probabilité est $(1 - p_n) \\times 0{,}3$, pas $0{,}3$.",
+                "Tu as multiplié $0{,}3$ par $p_n$ au lieu de $1 - p_n$ : le second chemin part de $\\overline{B_n}$, de probabilité $1 - p_n$.",
+                "$0{,}1 = 1 - 0{,}9$ est la probabilité de ne pas reprendre le bus après le bus : ce chemin ne mène pas à $B_{n+1}$."
+              ]
+            },
+            "explication": "Probabilités totales : $p_{n+1} = 0{,}9p_n + 0{,}3(1 - p_n) = 0{,}9p_n + 0{,}3 - 0{,}3p_n = 0{,}6p_n + 0{,}3$."
+          }
+        },
+        {
+          "id": "l-recurrence-suites-036",
+          "type": "code",
+          "titre": "Calculer les premiers termes avec une boucle",
+          "capacites": ["bo-m-suites-09", "bo-m-listes-01"],
+          "code": {
+            "langage": "python",
+            "source": "def termes(n):\n    u = 300  # u_0 : nombre de membres au départ\n    liste_termes = [u]\n    for k in range(n):  # k prend les valeurs 0, 1, ..., n-1\n        u = 0.9 * u + 50  # passage de u_k à u_(k+1)\n        liste_termes.append(round(u, 2))\n    return liste_termes\n\nprint(termes(3))"
+          },
+          "texte": "La variable u contient le terme courant. À chaque tour de boucle, elle est remplacée par le terme suivant, calculé avec la relation $u_{k+1} = 0{,}9u_k + 50$ du club ; puis ce terme est ajouté à la liste. Après $n$ tours, la liste contient $u_0, u_1, \\dots, u_n$. Python écrit les décimaux avec un point (0.9 pour $0{,}9$), et round(u, 2) arrondit à $0{,}01$ près.\n\nLe programme affiche [300, 320.0, 338.0, 354.2]. Le modèle donne $u_3 = 354{,}2$ : un nombre de membres non entier, à lire comme une valeur approchée, soit environ $354$ membres."
+        },
+        {
+          "id": "l-recurrence-suites-037",
+          "type": "piege",
+          "titre": "L'ordre des événements compte",
+          "capacites": ["bo-m-suites-09"],
+          "faux": "Chaque année, $50$ personnes s'inscrivent au club, puis $10\\,\\%$ de tous les membres partent. Donc $u_{n+1} = 0{,}9u_n + 50$.",
+          "juste": "Les départs touchent aussi les $50$ nouveaux inscrits : $u_{n+1} = 0{,}9(u_n + 50) = 0{,}9u_n + 45$.",
+          "explication": "Le pourcentage s'applique à l'effectif présent **au moment** où il intervient. Relis l'énoncé dans l'ordre, et traduis chaque phrase par une opération faite après la précédente."
+        },
+        {
+          "id": "l-recurrence-suites-038",
+          "type": "complement",
+          "titre": "Pour aller plus loin : quand chaque terme dépend des deux précédents",
+          "capacites": ["bo-m-suites-17"],
+          "texte": "Dans la **suite de Fibonacci** ($0$, $1$, $1$, $2$, $3$, $5$, $8$…), chaque terme est la somme des deux précédents. Une relation $u_{n+2} = a\\,u_{n+1} + b\\,u_n$, avec $a$ et $b$ réels fixés, est dite **linéaire d'ordre $2$ à coefficients constants**.\n\nExemple : $u_0 = 0$, $u_1 = 1$ et $u_{n+2} = 3u_{n+1} - 2u_n$ donnent $0$, $1$, $3$, $7$, $15$. On conjecture que $u_n = 2^n - 1$. Comme chaque terme dépend des deux précédents, la récurrence porte sur deux rangs à la fois : $P(n)$ : « $u_n = 2^n - 1$ et $u_{n+1} = 2^{n+1} - 1$ »."
+        },
+        {
+          "id": "l-recurrence-suites-040",
+          "type": "complement",
+          "titre": "Pour aller plus loin : démontrer la conjecture",
+          "capacites": ["bo-m-suites-17"],
+          "texte": "**Initialisation** : $u_0 = 0 = 2^0 - 1$ et $u_1 = 1 = 2^1 - 1$, donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $P(n)$ est vraie. La première moitié de $P(n+1)$, « $u_{n+1} = 2^{n+1} - 1$ », fait déjà partie de $P(n)$. Pour la seconde, on utilise la relation, puis $P(n)$ :\n\n$$u_{n+2} = 3\\left(2^{n+1} - 1\\right) - 2\\left(2^n - 1\\right) = 3 \\times 2^{n+1} - 3 - 2^{n+1} + 2 = 2 \\times 2^{n+1} - 1 = 2^{n+2} - 1.$$\n\nDonc $P(n+1)$ est vraie. D'après le principe de récurrence, $u_n = 2^n - 1$ pour tout entier naturel $n$."
+        },
+        {
+          "id": "l-recurrence-suites-039",
+          "type": "retenir",
+          "texte": "Modéliser : définis $u_n$ et le sens de $n$, puis traduis chaque étape dans l'ordre de l'énoncé (perdre $t\\,\\%$ : multiplier par $1 - \\dfrac{t}{100}$).\n\nPour $u_{n+1} = a\\,u_n + b$ avec $a \\neq 1$ : la valeur $c$ qui ne bouge pas vérifie $c = a\\,c + b$ ; $v_n = u_n - c$ est géométrique de raison $a$, donc $u_n = c + (u_0 - c)\\,a^n$."
+        }
+      ]
+    }
+  ]
+}
