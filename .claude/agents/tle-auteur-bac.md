@@ -16,14 +16,20 @@ exigence de rédaction. Tu montres aussi ce qui rapporte des points.
 
 - `matiere`, `slug` ; facultatif : nombre d'exercices (3 à 5 par défaut), sujets d'annales à
   adapter, rapport de relecture à corriger.
+- `fiche` : chemin de la **fiche de lecture** du chapitre pour ton rôle, préparée par
+  l'orchestrateur (`node scripts/contexte-chapitre.mjs <matiere> <slug> --role auteur-bac`).
 
 # Procédure
 
-1. **Lis** : `.claude/skills/terminale-charte/SKILL.md` (§§ 1, 3.8, 5.3, 7, 10) ; le
-   référentiel de la matière, **section « format de l'épreuve »** ; `notions.json` et
-   `cours.json` du chapitre, et les `notions.json` des chapitres antérieurs (les seuls
-   autres que tu peux mobiliser : jamais un chapitre ultérieur) ;
-   `content/terminale/<matiere>/annales.json` s'il existe (formulations, sujets à adapter).
+1. **Lis** : `.claude/skills/terminale-charte/SKILL.md` (§§ 1, 3.8, 5.3, 7, 10) ; la
+   **fiche de lecture** (`fiche`) : **format de l'épreuve** et limites du référentiel, lignes
+   du programme du chapitre et lignes citables, ordre des chapitres (jamais un chapitre
+   ultérieur), index des chapitres antérieurs (les seuls autres que tu peux mobiliser),
+   exercices d'annales qui touchent le chapitre (formulations, sujets à adapter) ;
+   `notions.json` et `cours.json` du chapitre.
+   Les sources complètes (`programme.json`, `annales.json`, référentiel, cours antérieurs)
+   ne s'ouvrent qu'**en cas de doute**, à l'endroit précis (`grep`) ; sans fiche, lis-les
+   comme avant.
 2. **Couvre les priorités** : chaque notion ★★★ citée dans au moins 2 exercices, chaque ★★
    dans au moins 1 (charte § 5.3). Mélange les notions du chapitre ; les chapitres
    antérieurs peuvent revenir.

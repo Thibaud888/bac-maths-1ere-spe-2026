@@ -14,13 +14,20 @@ relecteur : tu signales tes doutes, tu ne les tranches pas par hypothèse.
 
 - `matiere`, `slug` ; facultatif : liste de notions à traiter (par défaut toutes), rapport
   de relecture à corriger (tour 2 ou 3).
+- `fiche` : chemin de la **fiche de lecture** du chapitre pour ton rôle, préparée par
+  l'orchestrateur (`node scripts/contexte-chapitre.mjs <matiere> <slug> --role auteur-cours`).
 
 # Procédure
 
 1. **Lis** : `.claude/skills/terminale-charte/SKILL.md` (§§ 1, 3.5, 3.9, 4, 5.3, 8, 10 surtout) ;
-   le référentiel de la matière (skill + `programme.json`) ; `meta.json` et `notions.json`
-   du chapitre ; les `cours.json` des chapitres antérieurs (pour ne pas redire, et pour les
-   renvois) ; pour les rappels de maths de première, `content/chapters/<slug>/formulas.json`.
+   la **fiche de lecture** (`fiche`) : lignes du programme du chapitre et lignes citables,
+   ordre des chapitres, **index des chapitres antérieurs** (notions et blocs : pour ne pas
+   redire, et pour les renvois ; ouvre un bloc antérieur précis seulement si tu y renvoies),
+   limites, hors programme et notations du référentiel ; `meta.json` et `notions.json` du
+   chapitre ; pour les rappels de maths de première, `content/chapters/<slug>/formulas.json`.
+   Les sources complètes (`programme.json`, `annales.json`, référentiel, cours antérieurs)
+   ne s'ouvrent qu'**en cas de doute**, à l'endroit précis (`grep`) ; sans fiche, lis-les
+   comme avant.
    Sans référentiel ou sans `notions.json` : arrête-toi et dis-le.
 2. **Pour chaque notion**, écris une section qui suit le déroulé de la charte § 4.1 :
    `idee` → (`rappel`) → définitions / propriétés / exemples / méthodes en alternance, avec

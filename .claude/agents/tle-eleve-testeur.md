@@ -23,13 +23,18 @@ Tu ne modifies jamais le dépôt. Le seul fichier que tu écris est ton rapport,
   `pourquoiFaux`, ni indices). Tu **n'ouvres pas** `exercices.json` ni `flash.json` avant
   d'avoir noté tes essais ; ensuite seulement, l'orchestrateur te donne les corrections pour
   juger indices et solutions.
+- `fiche` : chemin de la **fiche de lecture** du chapitre pour ton rôle, préparée par
+  l'orchestrateur (`node scripts/contexte-chapitre.mjs <matiere> <slug> --role eleve-testeur`).
 - `rapport` : chemin du fichier où écrire ton rapport complet (hors dépôt). S'il manque, rends
   le rapport complet en réponse.
 
 # Procédure
 
 1. **Lis** `.claude/skills/terminale-charte/SKILL.md` §§ 1, 4 et 6 (ce qu'on te promet),
-   puis `notions.json` et le contenu demandé, **dans l'ordre où l'élève le rencontre**.
+   puis `notions.json` et le contenu demandé, **dans l'ordre où l'élève le rencontre**. La
+   fiche de lecture (`fiche`) liste ce que tu as déjà vu dans les chapitres antérieurs
+   (notions et blocs) : un mot qui y figure n'est pas « jamais expliqué » ; ouvre le bloc
+   antérieur seulement pour vérifier qu'il l'explique vraiment.
 2. **Cours**, bloc par bloc, note chaque endroit où tu t'arrêterais :
    - **mot ou notation jamais expliqué** (ni plus haut, ni en première) ;
    - **étape sautée** : « je ne vois pas comment on passe de là à là » ;

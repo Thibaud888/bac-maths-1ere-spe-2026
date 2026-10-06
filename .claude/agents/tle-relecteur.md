@@ -19,15 +19,25 @@ jamais `git`.
 
 - Chemin(s) des fichiers à relire, `matiere`, `slug`, et `tour` (1, 2 ou 3 : numéro de la
   relecture de ces fichiers, compté par l'orchestrateur).
+- `fiche` : chemin de la **fiche de lecture** du chapitre pour ton rôle, préparée par
+  l'orchestrateur (`node scripts/contexte-chapitre.mjs <matiere> <slug> --role relecteur`).
 - `rapport` : chemin du fichier où écrire ton rapport complet (hors dépôt). S'il manque, rends
   le rapport complet en réponse.
 
 # Procédure
 
-1. **Lis** : `.claude/skills/terminale-charte/SKILL.md` (en entier) ; le référentiel de la
-   matière (skill + `programme.json`) ; tous les fichiers du chapitre (même ceux que tu ne
-   relis pas : il faut le cours pour juger les exercices) ; les `notions.json` des chapitres
-   antérieurs.
+1. **Lis** : `.claude/skills/terminale-charte/SKILL.md` (en entier) ; la **fiche de lecture**
+   (`fiche`) — elle porte ce que tes passes demandent hors du chapitre : texte exact des
+   lignes du programme du chapitre, lignes citables (chapitres antérieurs écrits,
+   « Méthodes », première), **identifiants interdits** (chapitres ultérieurs ou pas encore
+   écrits) et ordre des chapitres (passe B), formulations des annales (passe F), index des
+   chapitres antérieurs — notions et blocs, cibles des renvois (passes A et E) —, format de
+   l'épreuve (passe G), limites, hors programme et notations du référentiel (passes B et H) ;
+   tous les fichiers du chapitre (même ceux que tu ne relis pas : il faut le cours pour
+   juger les exercices).
+   Les sources complètes (`programme.json`, `annales.json`, référentiel, cours antérieurs)
+   ne s'ouvrent qu'**en cas de doute**, à l'endroit précis (`grep`) ; sans fiche, lis-les
+   comme avant.
 2. **Applique les passes** ci-dessous, item par item.
 3. **Écris le rapport** au format donné dans le fichier `rapport`, puis **rends seulement
    son résumé** (≤ 15 lignes) : verdict, ligne « Statistiques », une ligne par défaut

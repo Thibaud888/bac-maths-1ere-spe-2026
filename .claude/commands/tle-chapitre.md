@@ -44,6 +44,14 @@ c'est la qualité des agents qui fait le chapitre, pas ce que tu as lu.
 - **Dossier de travail** `TRAVAIL` : le dossier temporaire de la session (scratchpad), ou
   `${TMPDIR:-/tmp}/tle-$1-$2`. Y vivent les rapports des agents, la version sans réponses,
   les captures et le relevé des coûts (`couts.tsv`). Rien de ce dossier n'est commité.
+- **Fiches de lecture** : une par rôle de la partie, préparées une fois pour la session
+  (`for r in <rôles>; do node scripts/contexte-chapitre.mjs $1 $2 --role $r --sortie $TRAVAIL/fiche-$r.md; done` ;
+  partie « cours » : `architecte auteur-cours relecteur eleve-testeur` ; partie
+  « exercices » : `auteur-exercices auteur-bac relecteur eleve-testeur`). Chaque lancement
+  d'agent reçoit `fiche: $TRAVAIL/fiche-<rôle>.md` : il y lit les lignes du programme, les
+  annales, l'index des chapitres antérieurs et les sections utiles du référentiel au lieu des
+  sources complètes. Tu ne lis pas les fiches toi-même ; inutile de les régénérer pendant la
+  session (elles ne dépendent pas des fichiers du chapitre en cours).
 
 # 2. Rapports des agents : dans un fichier, pas dans ta mémoire
 

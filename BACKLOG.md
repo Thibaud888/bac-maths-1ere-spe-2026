@@ -493,7 +493,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `validateDOMNesting` (`<a>` dans `<a>`) relevé par `controle-rendu.mjs maths denombrement` :
   `SourceDeLExercice` (`src/components/terminale/FicheExercice.tsx`) met le lien de la source
   dans la carte cliquable. DoD : plus d'avertissement, `verify.mjs` OK.
-- [ ] (P1) Une fiche de lecture par chapitre, pour ne plus relire tout le programme à chaque
+- [x] (P1) Une fiche de lecture par chapitre, pour ne plus relire tout le programme à chaque
   étape — `scripts/contexte-chapitre.mjs <matiere> <slug> [--role …]` : lignes du programme
   du chapitre (+ celles qu'il peut citer) et ordre des chapitres, formulations d'annales
   filtrées (161 k → 5 k tokens), index des chapitres antérieurs (21 k → 1 k par chapitre),
@@ -502,6 +502,13 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   s'accumulent : sans elle, l'auteur du cours relit tous les cours précédents (≈ 290 k tokens
   au 15e chapitre). Piste 2, gain estimé −8 à −12 %. DoD : script testé, verify OK, un
   chapitre produit avec.
+  Fait le 2026-10-05 : `scripts/contexte-chapitre.mjs <matiere> <slug> [--role …]` (6 rôles,
+  5 tests) ; fiches mesurées : Dénombrement 5 k (auteurs) à 12 k tokens (relecteur, avec
+  annales et format de l'épreuve) au lieu de ≈ 190 k (programme 22 k + annales 160 k +
+  référentiel 9 k) ; physique-chimie 6 à 8 k au lieu de 52 k ; Loi binomiale
+  (le plus tombé au bac) ≈ 29 k pour le relecteur ; élève-testeur ≤ 2 k. Les six agents
+  `tle-*` lisent la fiche (`fiche:`), sources complètes seulement en cas de doute ;
+  `/tle-chapitre` prépare les fiches. Reste : un chapitre produit avec.
 - [ ] (P2) Trouver automatiquement les défauts simples avant la relecture, et ne relire que
   ce qui a changé — script de contrôles mécaniques lancé par les auteurs avant de rendre
   (indice qui contient la valeur à saisir, nombre d'indices par marche, chaque formule compilée

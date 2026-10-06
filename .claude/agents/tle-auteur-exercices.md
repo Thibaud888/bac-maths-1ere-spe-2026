@@ -17,13 +17,20 @@ jamais `git`.
 
 - `matiere`, `slug` ; facultatif : marches ou notions à traiter, rapport de relecture à
   corriger.
+- `fiche` : chemin de la **fiche de lecture** du chapitre pour ton rôle, préparée par
+  l'orchestrateur (`node scripts/contexte-chapitre.mjs <matiere> <slug> --role auteur-exercices`).
 
 # Procédure
 
 1. **Lis** : `.claude/skills/terminale-charte/SKILL.md` (§§ 1, 3.6, 3.7, 3.9, 5.3, 6, 8, 10) ;
-   le référentiel de la matière ; `meta.json`, `notions.json` **et `cours.json`** du chapitre
+   la **fiche de lecture** (`fiche`) : lignes du programme du chapitre et lignes citables,
+   ordre des chapitres, index des chapitres antérieurs, limites, hors programme et notations
+   du référentiel ; `meta.json`, `notions.json` **et `cours.json`** du chapitre
    (ce qui a été enseigné, et les identifiants de blocs pour `revoir`) ; `exercices.json` et
    `flash.json` s'ils existent (fusion, identifiants uniques). Sans cours : arrête-toi.
+   Les sources complètes (`programme.json`, `annales.json`, référentiel, cours antérieurs)
+   ne s'ouvrent qu'**en cas de doute**, à l'endroit précis (`grep`) ; sans fiche, lis-les
+   comme avant.
 2. **Marche 1 — Comprendre** : pour chaque notion, le quota de la charte ; une notion, un
    geste ; réponse **vérifiable** (qcm, vrai-faux, numérique, ordre) ; **2 indices** (la
    piste avec `revoir`, puis la première étape faite ou la formule appliquée aux données) ;
