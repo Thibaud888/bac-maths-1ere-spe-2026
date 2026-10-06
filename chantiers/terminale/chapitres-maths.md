@@ -82,6 +82,11 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
   modélisation devient une notion (elle porte `bo-m-suites-09`). Les trois exemples de « ce
   que le bac demande » de la modélisation sont des arbres pondérés : l'index ne garde, dans
   les autres contextes, que des récurrences, des limites ou des seuils.
+- **Exercices écrits le 2026-10-06** (même PR que le cours, décision de Thibaud) : 24
+  exercices (11 Comprendre, 10 S'entraîner, 3 Approfondir), 12 questions éclair, 4 exercices
+  type bac (20 points), tous adaptés d'annales citées. Premier chapitre de l'année : les
+  questions de limite, de convergence et de seuil des sujets adaptés sont retirées (notes
+  `adaptation`), à remettre quand `limites-suites` sera écrit.
 
 ### 2. Limites de suites
 - Limite finie ou infinie, suites de référence · ★★

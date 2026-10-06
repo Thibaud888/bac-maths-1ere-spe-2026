@@ -424,10 +424,17 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     fréquent), 40 blocs, 5 cartes de mémo ; relecteur PASS au 2e tour puis au 3e après le test
     « élève » (2 bloquants corrigés) ; couverture « cours » sans écart. Le chapitre reste seul
     (décision de Thibaud du 2026-10-01). PR : #104.
-  - [ ] Récurrence et suites : les exercices — `/tle-chapitre maths recurrence-suites
-    exercices` : trois marches, questions éclair, 3 à 5 exercices type bac limités à ce
-    chapitre, à la première et aux Méthodes (premier chapitre de l'année : ni limite, ni
-    seuil, ni continuité). DoD : charte § 9.4.
+  - [x] Récurrence et suites : les exercices — 24 exercices (11 Comprendre, 10 S'entraîner,
+    3 Approfondir), 12 questions éclair, 4 exercices type bac (20 points, tous adaptés
+    d'annales citées, limités à ce chapitre, à la première et aux Méthodes) ; tous les
+    planchers atteints ; relecteur PASS au 1er tour puis au 2e après le test « élève »
+    (verdict CLAIR, aucun bloquant) ; couverture « exercices » sans écart. Livré dans la même
+    PR que le cours (décision de Thibaud du 2026-10-01). PR : #104.
+  - [ ] Quand le chapitre « Limites de suites » est écrit, remettre dans le type bac de
+    Récurrence et suites les questions retirées des sujets adaptés — limites, convergence et
+    seuils (voir les notes `adaptation` de
+    `content/terminale/maths/chapitres/recurrence-suites/type-bac.json` et des exercices
+    x-012, x-017, x-020).
   - [ ] Montrer en image comment une suite uₙ₊₁ = f(uₙ) monte sans sortir de son intervalle —
     souhait de l'élève-testeur pour la notion « encadrement et sens de variation » : les
     termes de l'exemple `l-recurrence-suites-022` placés sur le segment [0 ; 1] (figure SVG
@@ -474,6 +481,12 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   incertitudes.
 - [ ] (P3) Imprimer le mémo d'un chapitre sur une page — feuille de style d'impression, sans
   dépendance.
+- [ ] (P3) Sur la liste des sujets type bac, rendre le lien « D'après … » utilisable — chaque
+  carte d'exercice est un lien, et la source citée dedans en est un autre : un lien dans un
+  lien, que le navigateur gère mal (avertissement React `validateDOMNesting`, vu sur
+  Dénombrement et Récurrence). `SourceDeLExercice` (`src/components/terminale/FicheExercice.tsx`)
+  appelé dans la carte de `TypeBacPage.tsx` : afficher la source sans lien dans la carte (le
+  lien reste sur la page de l'exercice). DoD : plus d'avertissement, `node scripts/verify.mjs` OK.
 
 ## Corriger le contenu réglementaire (vérification du 2026-09-23)
 
