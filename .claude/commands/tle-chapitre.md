@@ -67,6 +67,23 @@ c'est la qualité des agents qui fait le chapitre, pas ce que tu as lu.
   `printf '%s\t%s\t%s\n' <agent> <étape> <total_tokens> >> $TRAVAIL/couts.tsv`
   (`total_tokens` figure dans le résultat du lancement).
 
+# 2 bis. Boucle de relecture : contrôles, corrections dans la foulée, tours ciblés
+
+- **Avant chaque relecture**, les auteurs ont lancé les contrôles mécaniques ; vérifie-le :
+  `node scripts/controles-mecaniques.mjs $1 $2 --partie <partie> | head -3` → « Aucun
+  bloquant » (sinon, renvoie à l'auteur sans lancer le relecteur).
+- **Avant d'envoyer des corrections**, prends un instantané :
+  `node scripts/extraire-items.mjs $1 $2 --instantane $TRAVAIL/tour<N>`.
+- **Corrections dans les 5 minutes** : si l'auteur a rendu son travail il y a moins de
+  5 minutes, renvoie-lui le chemin du rapport en continuant le même agent (`SendMessage`,
+  sa mémoire est encore chaude). Au-delà, lance un **correcteur neuf** : le même agent
+  `tle-auteur-*`, avec `fiche`, le chemin du rapport et l'extraction des seuls items cités
+  (`node scripts/extraire-items.mjs $1 $2 <ids…> --sortie $TRAVAIL/a-corriger-tour<N>.json`).
+- **Tours 2 et 3 ciblés** : `node scripts/extraire-items.mjs $1 $2 --depuis $TRAVAIL/tour<N> --sortie $TRAVAIL/items-tour<N+1>.json`,
+  puis `tle-relecteur` avec `tour: N+1`, `items` (ce fichier) et `rapport-precedent` (son
+  rapport du tour N). Il refait toutes ses passes sur ces items, sans recharger tout le
+  chapitre ; la couverture complète reste vérifiée par `couverture-terminale.mjs` à la fin.
+
 # 3. Partie « cours »
 
 1. **`tle-architecte`** (`$1`, `$2`, mode `decoupage`) → `meta.json`, `notions.json`.
@@ -80,7 +97,8 @@ c'est la qualité des agents qui fait le chapitre, pas ce que tu as lu.
    priorités restent des estimations.
 3. **`tle-auteur-cours`** → `cours.json`, `memo.json`.
 4. **`tle-relecteur`** (`tour: 1`) sur les quatre fichiers. NEEDS_REVISION → chemin du
-   rapport à l'auteur concerné → relecture (`tour: 2`, puis `3`). Si la 3e relecture rend
+   rapport à l'auteur concerné → relecture (`tour: 2`, puis `3`, ciblées :
+   § 2 bis). Si la 3e relecture rend
    encore NEEDS_REVISION (« ESCALADE »), arrête et pose la question à Thibaud (format § 0
    de `CLAUDE.md`).
 5. **`tle-eleve-testeur`** sur le cours (toutes les notions). Bloquants → retour à

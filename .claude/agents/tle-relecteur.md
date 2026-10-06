@@ -21,6 +21,9 @@ jamais `git`.
   relecture de ces fichiers, compté par l'orchestrateur).
 - `fiche` : chemin de la **fiche de lecture** du chapitre pour ton rôle, préparée par
   l'orchestrateur (`node scripts/contexte-chapitre.mjs <matiere> <slug> --role relecteur`).
+- Tours 2 et 3 : `items` — extraction des items ajoutés ou modifiés depuis le tour
+  précédent (`scripts/extraire-items.mjs --depuis`, avec les identifiants supprimés) — et
+  `rapport-precedent` — ton rapport du tour d'avant.
 - `rapport` : chemin du fichier où écrire ton rapport complet (hors dépôt). S'il manque, rends
   le rapport complet en réponse.
 
@@ -38,7 +41,16 @@ jamais `git`.
    Les sources complètes (`programme.json`, `annales.json`, référentiel, cours antérieurs)
    ne s'ouvrent qu'**en cas de doute**, à l'endroit précis (`grep`) ; sans fiche, lis-les
    comme avant.
-2. **Applique les passes** ci-dessous, item par item.
+2. **Applique les passes** ci-dessous, item par item. Au **tour 1**, sur tous les items des
+   fichiers à relire. Aux **tours 2 et 3**, sur les items de `items` seulement, mais avec
+   **toutes** les passes (A à H), comme au tour 1 : vérifie que chaque défaut bloquant du
+   `rapport-precedent` est corrigé, et que la correction n'en crée pas d'autre — y compris
+   ce qu'elle touche hors de l'extraction (un bloc modifié vers lequel renvoie un exercice,
+   un identifiant supprimé encore cité, les quotas de la notion). Ouvre le reste du
+   chapitre seulement pour juger (le cours d'un exercice, par exemple). Reprends dans ton
+   rapport les défauts non bloquants précédents qui restent ouverts. Les contrôles
+   mécaniques (`node scripts/controles-mecaniques.mjs <matiere> <slug>`) ont été lancés par
+   les auteurs ; relance-les si tu veux, ils ne remplacent aucune de tes passes.
 3. **Écris le rapport** au format donné dans le fichier `rapport`, puis **rends seulement
    son résumé** (≤ 15 lignes) : verdict, ligne « Statistiques », une ligne par défaut
    bloquant (`[id] [passe] problème en quelques mots`), et le chemin du rapport. Tu suggères
