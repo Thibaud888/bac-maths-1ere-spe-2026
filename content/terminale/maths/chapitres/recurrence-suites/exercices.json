@@ -179,7 +179,7 @@
         "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
         "indices": [
           "L'hérédité se démontre comme à la question 1, quelle que soit la valeur de $k$. C'est l'initialisation qui décide de $k$.",
-          "Écris l'initialisation : $u_0 = 0^2 + k$, où $u_0$ est donné dans l'énoncé."
+          "Écris la propriété au rang $0$ avec la valeur de $u_0$ donnée dans l'énoncé : l'initialisation donne une équation d'inconnue $k$, à résoudre."
         ],
         "revoir": "l-recurrence-suites-010",
         "solution": "Pour tout réel $k$, la propriété est héréditaire : si $u_n = n^2 + k$, alors $u_{n+1} = n^2 + k + 2n + 1 = (n+1)^2 + k$. L'initialisation impose $u_0 = 0^2 + k$, soit $k = u_0 = 1$. Avec $k = 1$, les deux étapes sont vérifiées : d'après le principe de récurrence, $u_n = n^2 + 1$ pour tout entier naturel $n$. La valeur cherchée est $k = 1$."
@@ -397,8 +397,8 @@
         "enonce": "Calcule $u_1$.",
         "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
         "indices": [
-          "$u_1 = f(u_0)$ : remplace $x$ par $u_0$ dans l'expression de $f$.",
-          "$u_1 = f(0) = \\dfrac{3 \\times 0 + 2}{0 + 2}$."
+          "Le terme $u_1$ s'obtient à partir de $u_0$ grâce à la relation de récurrence.",
+          "Calcule $u_1 = f(u_0)$ : remplace $x$ par la valeur de $u_0$ dans l'expression de $f$, puis simplifie la fraction."
         ],
         "revoir": "l-recurrence-suites-022",
         "solution": "$u_1 = f(u_0) = f(0) = \\dfrac{3 \\times 0 + 2}{0 + 2} = \\dfrac{2}{2} = 1$. Comme $0 \\leqslant 0 \\leqslant 1 \\leqslant 2$, l'initialisation est vérifiée."
@@ -572,7 +572,7 @@
         },
         "indices": [
           "La coupe s'applique maintenant à tous les arbres présents, jeunes arbres compris.",
-          "Après la plantation, il y a $u_n + 120$ arbres ; la coupe en garde $92\\,\\%$ : $u_{n+1} = 0{,}92(u_n + 120)$. Développe."
+          "Après la plantation, il y a $u_n + 120$ arbres ; la coupe en garde $92\\,\\%$."
         ],
         "revoir": "l-recurrence-suites-037",
         "solution": "Après la plantation, la forêt compte $u_n + 120$ arbres ; la coupe en garde $92\\,\\%$. Donc $u_{n+1} = 0{,}92(u_n + 120) = 0{,}92u_n + 0{,}92 \\times 120 = 0{,}92u_n + 110{,}4$."
@@ -907,7 +907,7 @@
           "$\\dfrac{10 \\times 11}{2} = 55$ : il reste à calculer $55^2 = 55 \\times 55$."
         ],
         "revoir": "l-recurrence-suites-008",
-        "solution": "$S_{10} = \\dfrac{10^2 \\times 11^2}{4} = \\left(\\dfrac{10 \\times 11}{2}\\right)^2 = 55^2 = 3\\,025$. L'appel sommes_cubes(10) renverrait une liste dont le dernier élément est $3\\,025$."
+        "solution": "$S_{10} = \\dfrac{10^2 \\times 11^2}{4} = \\left(\\dfrac{10 \\times 11}{2}\\right)^2 = 55^2 = 3\\,025$. Appelée avec $n = 10$, la fonction du programme renverrait une liste dont le dernier élément est $3\\,025$."
       }
     ]
   },
@@ -1043,7 +1043,7 @@
     "ordre": 170,
     "source": {
       "annale": "an-2024-polynesie-juin-j1",
-      "adaptation": "fonction et bornes changées (6/(7 − x) sur [1 ; 6] au lieu de 4/(5 − x) sur [1 ; 4]) ; calcul de u2 ajouté ; questions d'équivalence, de convergence et de limite retirées (chapitre « Limites de suites »)"
+      "adaptation": "fonction et bornes changées (6/(7 − x) sur [1 ; 6] au lieu de 4/(5 − x) sur [1 ; 4]) ; questions d'équivalence, de convergence et de limite retirées (chapitre « Limites de suites »)"
     },
     "preambule": "Soit $f$ la fonction définie sur $[1\\,;\\,6]$ par $f(x) = \\dfrac{6}{7 - x}$. Soit $(u_n)$ la suite définie par $u_0 = 3$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n) = \\dfrac{6}{7 - u_n}$.",
     "questions": [
@@ -1365,7 +1365,7 @@
             null,
             "Elle élimine aussi la moitié de la dose injectée : or l'injection a lieu après l'élimination. Avec elle, la quantité resterait toujours égale à $2$ mg.",
             "Éliminer la moitié, ce n'est pas retirer $0{,}5$ mg : c'est multiplier la quantité par $0{,}5$.",
-            "Cette instruction remplace la liste par un nombre : la variable q ne change plus, et la liste est perdue."
+            "Cette instruction remplace la liste par un nombre : la ligne suivante, qui doit ajouter q à la liste, provoque alors une erreur, et le programme s'arrête."
           ]
         },
         "indices": [
@@ -1374,16 +1374,16 @@
           "L'injection ajoute ensuite $2$ mg à ce qui reste. La ligne effacée doit remplacer la valeur de q par le terme suivant, avant que q soit ajouté à la liste."
         ],
         "revoir": "l-recurrence-suites-036",
-        "solution": "Après l'élimination, il reste la moitié du médicament, soit $0{,}5q_n$ ; puis on injecte $2$ mg. Donc, pour tout entier naturel $n$, $q_{n+1} = 0{,}5q_n + 2$. La ligne effacée doit remplacer q par le terme suivant : c'est la proposition A. La proposition B élimine aussi la dose injectée, la C retire $0{,}5$ mg au lieu de la moitié, et la D écrase la liste."
+        "solution": "Après l'élimination, il reste la moitié du médicament, soit $0{,}5q_n$ ; puis on injecte $2$ mg. Donc, pour tout entier naturel $n$, $q_{n+1} = 0{,}5q_n + 2$. La ligne effacée doit remplacer q par le terme suivant : c'est la proposition A. La proposition B élimine aussi la dose injectée, la C retire $0{,}5$ mg au lieu de la moitié, et la D remplace la liste par un nombre, ce qui provoque une erreur dès que le programme veut lui ajouter un terme."
       },
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Combien d'éléments contient la liste renvoyée par quantites(3) ?",
+        "enonce": "On appelle la fonction avec $n = 3$. Combien d'éléments contient la liste renvoyée ?",
         "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
         "indices": [
           "La liste contient déjà $q_0$ avant la boucle ; chaque tour de boucle lui ajoute un terme.",
-          "Avec range(3), la variable k prend les valeurs $0$, $1$ et $2$ : combien de tours la boucle fait-elle ?",
+          "Quand la fonction est appelée avec $n = 3$, la variable k prend les valeurs $0$, $1$ et $2$ : combien de tours la boucle fait-elle ?",
           "Ajoute le nombre de tours au terme présent dès le départ."
         ],
         "revoir": "l-recurrence-suites-036",
@@ -1513,7 +1513,7 @@
     "duree": 25,
     "calculatrice": false,
     "ordre": 230,
-    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 2$, $u_1 = 5$ et, pour tout entier naturel $n$, $u_{n+2} = 5u_{n+1} - 6u_n$. À partir de $u_2$, chaque terme se calcule à l'aide des **deux** termes qui le précèdent.",
+    "preambule": "Dans un modèle d'évolution d'une population d'insectes, l'effectif d'une génération dépend des effectifs des **deux** générations qui la précèdent. On note $u_n$ l'effectif de la génération $n$, en milliers d'individus. Le modèle donne $u_0 = 2$, $u_1 = 5$ et, pour tout entier naturel $n$, $u_{n+2} = 5u_{n+1} - 6u_n$. À partir de $u_2$, chaque terme se calcule donc à l'aide des deux termes qui le précèdent.",
     "questions": [
       {
         "id": "q1",
@@ -1593,7 +1593,7 @@
           "$2^5 = 32$ ; calcule $3^5$ en multipliant $3$ par lui-même cinq fois : $3^4 = 81$."
         ],
         "revoir": "l-recurrence-suites-040",
-        "solution": "$u_5 = 2^5 + 3^5 = 32 + 243 = 275$. Contrôle avec la relation : $u_4 = 5 \\times 35 - 6 \\times 13 = 175 - 78 = 97$, puis $u_5 = 5 \\times 97 - 6 \\times 35 = 485 - 210 = 275$."
+        "solution": "$u_5 = 2^5 + 3^5 = 32 + 243 = 275$. Contrôle avec la relation : $u_4 = 5 \\times 35 - 6 \\times 13 = 175 - 78 = 97$, puis $u_5 = 5 \\times 97 - 6 \\times 35 = 485 - 210 = 275$. Selon ce modèle, la génération $5$ compte $275\\,000$ insectes."
       }
     ]
   },
