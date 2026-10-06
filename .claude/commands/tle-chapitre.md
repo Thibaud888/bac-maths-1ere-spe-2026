@@ -26,8 +26,10 @@ c'est la qualité des agents qui fait le chapitre, pas ce que tu as lu.
 - **Coupure de plus d'une heure** (limite atteinte, environnement redémarré, réponse
   attendue de Thibaud) : ne réveille pas cette session ; fais `/handoff` et reprends dans
   une session neuve avec la note de reprise.
-- Réflexion : la session qui coordonne tourne en `/effort high` ; les agents `tle-*` gardent
-  la leur (fixée dans leur fiche).
+- Réflexion : la session qui coordonne tourne en **`/effort high`** (elle ne fait que
+  coordonner) ; les agents `tle-*` restent en `xhigh`, écrit dans leur fiche
+  (`effort: xhigh`), qui l'emporte sur le réglage de la session (documentation Claude Code,
+  « Subagents », champ `effort`). Ne retire jamais ce champ.
 
 # 1. Préalables (sinon, arrête-toi et dis ce qui manque)
 

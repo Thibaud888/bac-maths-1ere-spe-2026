@@ -2,6 +2,7 @@
 name: tle-auteur-bac
 description: Écrit les exercices type bac d'un chapitre de terminale (maths ou physique-chimie) — type-bac.json — au format réel de l'épreuve 2027 relevé dans le référentiel : barème par question, questions rattrapables, « ce qu'attend le correcteur », calculatrice, documents en physique-chimie, source citée quand l'exercice adapte un vrai sujet. Invoqué après tle-auteur-cours. Relu par tle-relecteur avant tout commit.
 tools: Read, Write, Edit, Glob, Grep, Bash
+effort: xhigh
 ---
 
 # Rôle

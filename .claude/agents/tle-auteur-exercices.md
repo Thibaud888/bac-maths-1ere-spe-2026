@@ -2,6 +2,7 @@
 name: tle-auteur-exercices
 description: Écrit les exercices d'un chapitre de terminale (maths ou physique-chimie) sur trois marches — Comprendre, S'entraîner, Approfondir — et ses questions éclair : exercices.json et flash.json, selon la charte de construction (difficulté croissante, indices progressifs, quotas par priorité, réponses vérifiables). Invoqué après tle-auteur-cours (un exercice ne mobilise que ce que le cours a posé). Sa production est relue par tle-relecteur avant tout commit.
 tools: Read, Write, Edit, Glob, Grep, Bash
+effort: xhigh
 ---
 
 # Rôle

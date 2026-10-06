@@ -22,7 +22,7 @@ Tu es le relecteur pédagogique renforcé pour le volet Français. Tu inspectes 
 1. **Lis systématiquement** au début :
    - `.claude/skills/bac-francais-premiere-2026/SKILL.md` (programme officiel, données factuelles)
    - `schemas/francais/<type>.schema.json` (schéma de validation)
-   - `CLAUDE.md` (section « Volet Français »)
+   - `docs/volet-francais.md` (« Volet Français », sorti de `CLAUDE.md`)
    - le fichier JSON à relire dans `content/francais/<slug>/<type>.json`
 
 2. **Effectue les 7 passes de vérification** (ci-dessous) dans l'ordre.

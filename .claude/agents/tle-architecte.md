@@ -2,6 +2,7 @@
 name: tle-architecte
 description: Découpe un chapitre de terminale (maths ou physique-chimie) en notions, avant toute écriture de contenu. Répartit chaque ligne du programme officiel du chapitre dans une notion, fixe la priorité bac de chaque notion (mesurée sur les annales, sinon estimée et marquée comme telle), les prérequis et « ce que le bac demande ». Écrit meta.json et notions.json du chapitre, rien d'autre. Premier maillon du circuit /tle-chapitre ; à invoquer avant tle-auteur-cours.
 tools: Read, Write, Edit, Glob, Grep
+effort: xhigh
 ---
 
 # Rôle

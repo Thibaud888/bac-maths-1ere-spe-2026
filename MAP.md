@@ -42,6 +42,8 @@ CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-
   commands/             # /new-chapter, /verify-conformity, /new-module-francais, /verify-francais,
                         # /tle-chapitre (un chapitre de terminale de bout en bout)
   figures-courbes-roadmap.md   # réserve de travail : figures/lecture graphique par chapitre
+docs/volet-francais.md  # RÈGLES DU FRANÇAIS (ex-§ 13 de CLAUDE.md) : à lire avant tout
+                        # travail sur /premiere/francais ou les agents french-*
 docs/sources-officielles.md  # ACCÈS aux textes officiels et aux sujets de bac depuis le cloud
                         # (pages HTML du ministère bloquées, ses PDF, APMEP et Labolycée
                         # ouverts ; sinon textes fournis par Thibaud dans docs/textes-officiels/)
@@ -155,7 +157,7 @@ tests/                  # Playwright pour les runners critiques (Vitest : src/**
   (agents `tle-*`). Rien sans le référentiel de la matière (`bac-<matiere>-terminale-2027` :
   maths et physique-chimie écrits). Contrôle d'un chapitre : `node scripts/couverture-terminale.mjs <matiere>
   <slug> [--partie cours]`. Pages : les construire sur le chapitre-témoin (`npm run dev:temoin`).
-- **Nouveau contenu français** : `/new-module-francais`, mêmes règles (french-reviewer, 5 passes bloquantes).
+- **Nouveau contenu français** : lire `docs/volet-francais.md`, puis `/new-module-francais`, mêmes règles (french-reviewer, 5 passes bloquantes).
 - **Ajouter une matière / un espace** : une entrée dans `SPACES` (`src/lib/spaces.ts`) + ses
   routes dans `App.tsx` ; la barre latérale et l'accueil se mettent à jour seuls.
 - **Toucher l'UI maths** : `src/components/<domaine>/` ; l'état est dans `src/stores/` (Zustand).
@@ -191,13 +193,13 @@ Progression en localStorage : `bms-2026-*` (maths) / `bfr-2026-*` (français) /
   sessions cloud, même autorisées dans le réseau ; ses PDF passent. Ne pas s'arrêter ni
   retoucher le réglage → `docs/sources-officielles.md` (textes : PDF officiel, sinon fournis
   par Thibaud ; annales : APMEP / Labolycée).
-- Contenu pédagogique **sans les 2 passes** = interdit (CLAUDE.md §7 et §13.6) — en terminale,
+- Contenu pédagogique **sans les 2 passes** = interdit (CLAUDE.md §7, et `docs/volet-francais.md` §13.6 pour le français) — en terminale,
   sans le circuit `tle-*` (charte `terminale-charte`).
 - Première : hors-programme interdit (ln, intégrales… → SKILL.md §6) ; tout calcul **sans
   calculatrice**. Ces deux règles ne valent **pas** pour la terminale (voir la charte).
 - KaTeX seulement (pas de `\require`/macros) ; LaTeX dans les chaînes JSON (`$...$`).
 - TS strict + `noUncheckedIndexedAccess` : les accès indexés retournent `T | undefined`.
-- Le volet français ne touche JAMAIS au localStorage maths (non-régression §13.9 : 77 tests).
+- Le volet français ne touche JAMAIS au localStorage maths (non-régression : `docs/volet-francais.md` §13.9).
 - Aucun coefficient du bac en dur dans un composant : tout vient de `content/bac/coefficients.json`
   (un attribut qui manque au simulateur s'ajoute au schéma, pas au code).
 - Les anciennes adresses (`/chapitre/*`, `/bac-blanc`, `/francais/*`) sont redirigées dans

@@ -4,6 +4,8 @@ description: Scaffolding pour un nouveau module français. Crée content/francai
 
 Crée le scaffolding pour le module français dont le slug est : **$ARGUMENTS**
 
+Règles du volet français : `docs/volet-francais.md` (sorti de `CLAUDE.md`), à lire d'abord.
+
 **Étapes à exécuter :**
 
 1. Vérifie que le dossier `content/francais/$ARGUMENTS/` n'existe pas déjà. Si oui, arrête et signale-le.
