@@ -1,0 +1,546 @@
+[
+  {
+    "id": "tb-recurrence-suites-001",
+    "chapitre": "recurrence-suites",
+    "notions": [
+      "n-recurrence-suites-recurrence"
+    ],
+    "capacites": [
+      "bo-m-logique-14",
+      "bo-m-listes-01"
+    ],
+    "titre": "Pyramides de boules : deux récurrences et une liste Python",
+    "points": 4,
+    "duree": 35,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2024-polynesie-septembre-j1",
+      "adaptation": "Exercice 3 : empilement de boules en pyramide, fonction Python à compléter et formule de somme démontrée par récurrence conservés ; base carrée remplacée par une base triangulaire (la somme des carrés est démontrée dans le cours), d'où deux récurrences ; question de la plus grande pyramide réalisable avec $200$ oranges retirée : c'est une recherche de seuil, chapitre ultérieur ; remplacée par un calcul direct. Solution écrite pour le site."
+    },
+    "preambule": "On empile des boules identiques pour former une pyramide à base triangulaire.\n\n- L'étage du sommet, appelé étage $1$, compte une seule boule.\n- Pour tout entier $k \\geqslant 1$, l'étage $k$ est un triangle formé de $k$ rangées, qui contiennent respectivement $1$, $2$, …, $k$ boules. On passe donc de l'étage $k$ à l'étage $k + 1$ en ajoutant une rangée de $k + 1$ boules.\n- Une pyramide de $n$ étages est formée des étages $1$, $2$, …, $n$, empilés du plus petit au plus grand.\n\nPour tout entier $n \\geqslant 1$, on note $t_n$ le nombre de boules de l'étage $n$, et $T_n$ le nombre total de boules d'une pyramide de $n$ étages. Ainsi $t_1 = T_1 = 1$ et, pour tout entier $n \\geqslant 1$ :\n\n$$t_{n+1} = t_n + (n + 1) \\qquad \\text{et} \\qquad T_{n+1} = T_n + t_{n+1}.$$",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $t_2$, $t_3$ et $t_4$, puis le nombre $T_4$ de boules d'une pyramide de $4$ étages.\n\nSaisis la valeur de $T_4$.",
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 20,
+          "tolerance": 0
+        },
+        "revoir": "l-recurrence-suites-002",
+        "indices": [
+          "Les deux relations de l'énoncé définissent les suites par récurrence : applique-les de proche en proche, d'abord pour $t_2$, $t_3$, $t_4$ à partir de $t_1 = 1$, puis pour $T_2$, $T_3$, $T_4$ à partir de $T_1 = 1$."
+        ],
+        "attenduCorrecteur": "- $t_2 = 3$, $t_3 = 6$ et $t_4 = 10$, calculés avec la relation $t_{n+1} = t_n + (n+1)$ : 0,25 pt.\n- $T_4 = 1 + 3 + 6 + 10 = 20$ : 0,25 pt.",
+        "solution": "D'après la relation $t_{n+1} = t_n + (n+1)$ : $t_2 = t_1 + 2 = 3$, $t_3 = t_2 + 3 = 6$ et $t_4 = t_3 + 4 = 10$.\n\nD'après la relation $T_{n+1} = T_n + t_{n+1}$ : $T_2 = 1 + 3 = 4$, $T_3 = 4 + 6 = 10$ et $T_4 = 10 + 10 = 20$.\n\nUne pyramide de $4$ étages compte $20$ boules."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier $n \\geqslant 1$, $t_n = \\dfrac{n(n+1)}{2}$.",
+        "points": 1,
+        "revoir": "l-recurrence-suites-006",
+        "indices": [
+          "Suis les temps de la méthode du cours : propriété $P(n)$ avec son rang de départ, initialisation au rang $1$, hérédité, conclusion. Dans l'hérédité, la relation $t_{n+1} = t_n + (n+1)$ relie le rang $n + 1$ au rang $n$.",
+          "L'objectif de l'hérédité s'obtient en remplaçant chaque $n$ par $n + 1$ : $t_{n+1} = \\dfrac{(n+1)(n+2)}{2}$. Pars de $t_{n+1} = t_n + (n+1)$ et remplace $t_n$ grâce à l'hypothèse de récurrence."
+        ],
+        "attenduCorrecteur": "- Propriété $P(n)$ énoncée et **initialisation** au rang $1$ : $t_1 = 1$ et $\\dfrac{1 \\times 2}{2} = 1$ : 0,25 pt.\n- **Hérédité** posée : « soit $n \\geqslant 1$ un entier tel que $P(n)$ est vraie » (hypothèse de récurrence pour un entier fixé, pas pour tous) ; objectif $t_{n+1} = \\dfrac{(n+1)(n+2)}{2}$ écrit : 0,25 pt.\n- Calcul $t_{n+1} = t_n + (n+1) = \\dfrac{n(n+1)}{2} + (n+1) = \\dfrac{(n+1)(n+2)}{2}$, en disant où sert l'hypothèse de récurrence : 0,25 pt.\n- **Conclusion** : « d'après le principe de récurrence, pour tout entier $n \\geqslant 1$… » : 0,25 pt.",
+        "solution": "Pour tout entier $n \\geqslant 1$, on note $P(n)$ : « $t_n = \\dfrac{n(n+1)}{2}$ ».\n\n**Initialisation** : $t_1 = 1$ et $\\dfrac{1 \\times 2}{2} = 1$. Donc $P(1)$ est vraie.\n\n**Hérédité** : soit $n \\geqslant 1$ un entier. On suppose $P(n)$ vraie, c'est-à-dire $t_n = \\dfrac{n(n+1)}{2}$. On veut montrer $P(n+1)$ : $t_{n+1} = \\dfrac{(n+1)(n+2)}{2}$.\n\nD'après la relation de l'énoncé, puis l'hypothèse de récurrence :\n\n$$t_{n+1} = t_n + (n+1) = \\frac{n(n+1)}{2} + \\frac{2(n+1)}{2} = \\frac{(n+1)(n+2)}{2}.$$\n\nOn a mis $\\dfrac{n+1}{2}$ en facteur : il reste $n + 2$. Donc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(1)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier $n \\geqslant 1$, $t_n = \\dfrac{n(n+1)}{2}$.",
+        "erreurFrequente": "Écrire l'hypothèse de récurrence « pour tout entier $n \\geqslant 1$, $t_n = \\dfrac{n(n+1)}{2}$ » : c'est supposer ce qu'on veut démontrer. On suppose $P(n)$ vraie pour un entier $n$ fixé."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On veut écrire une fonction Python pyramides qui prend en paramètre un entier $n \\geqslant 1$ et renvoie la liste $[T_1, T_2, \\dots, T_n]$. On propose le programme ci-dessous, dont deux lignes sont incomplètes.",
+        "code": {
+          "langage": "python",
+          "source": "def pyramides(n):\n    L = []\n    t = 0\n    T = 0\n    for k in range(1, n + 1):\n        t = ...  # à compléter\n        T = ...  # à compléter\n        L.append(T)\n    return L"
+        },
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Compléter les deux lignes incomplètes pour qu'à la fin du tour de boucle où la variable k vaut $k$, la variable t contienne $t_k$ et la variable T contienne $T_k$.",
+            "points": 0.5,
+            "revoir": "l-recurrence-suites-036",
+            "indices": [
+              "Au début du tour où k vaut $k$, t contient $t_{k-1}$ et T contient $T_{k-1}$ (au premier tour, $0$ et $0$). Les relations de l'énoncé disent comment passer de $t_{k-1}$ à $t_k$, et de $T_{k-1}$ à $T_k$.",
+              "La relation $t_k = t_{k-1} + k$ dit d'ajouter k à t. Pour T, utilise $T_k = T_{k-1} + t_k$ : au moment où l'on met T à jour, t doit déjà contenir $t_k$."
+            ],
+            "attenduCorrecteur": "- Ligne de t : t = t + k : 0,25 pt.\n- Ligne de T : T = T + t, placée **après** la mise à jour de t, pour que T reçoive $T_{k-1} + t_k$ : 0,25 pt.",
+            "solution": "Au début du tour de boucle où k vaut $k$, la variable t contient $t_{k-1}$ et la variable T contient $T_{k-1}$ ; au premier tour, elles valent $0$, ce qui donne bien $t_1 = 0 + 1 = 1$ et $T_1 = 0 + 1 = 1$. D'après les relations de l'énoncé, $t_k = t_{k-1} + k$ et $T_k = T_{k-1} + t_k$. On complète donc :\n\n- première ligne : t = t + k ;\n- seconde ligne : T = T + t.\n\nL'ordre de ces deux lignes compte : quand on met T à jour, t contient déjà $t_k$. La fonction ajoute ensuite $T_k$ à la liste L ; après les tours $k = 1$, …, $n$, elle renvoie $[T_1, \\dots, T_n]$.",
+            "erreurFrequente": "Échanger les deux lignes : T reçoit alors $T_{k-1} + t_{k-1}$, et pyramides(5) renvoie [0, 1, 4, 10, 20] au lieu de [1, 4, 10, 20, 35]."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Quelle liste renvoie l'appel pyramides(5) ?\n\nSaisis le dernier élément de cette liste ; la liste complète est à écrire.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 35,
+              "tolerance": 0
+            },
+            "revoir": "l-recurrence-suites-036",
+            "indices": [
+              "D'après la question a), la liste renvoyée est $[T_1, T_2, T_3, T_4, T_5]$ : la question 1 en donne déjà quatre éléments. Calcule $t_5$, puis $T_5$."
+            ],
+            "attenduCorrecteur": "- La liste renvoyée est $[T_1, \\dots, T_5]$ : 0,25 pt.\n- $t_5 = 15$ et $T_5 = 20 + 15 = 35$ : la liste est [1, 4, 10, 20, 35] : 0,25 pt.",
+            "solution": "D'après la question a), pyramides(5) renvoie la liste $[T_1, T_2, T_3, T_4, T_5]$. La question 1 donne $T_1 = 1$, $T_2 = 4$, $T_3 = 10$ et $T_4 = 20$ ; puis $t_5 = t_4 + 5 = 15$ et $T_5 = T_4 + t_5 = 20 + 15 = 35$.\n\nL'appel pyramides(5) renvoie [1, 4, 10, 20, 35]."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On rappelle que, pour tout entier $n \\geqslant 1$, $t_n = \\dfrac{n(n+1)}{2}$ (question 2).",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Démontrer par récurrence que, pour tout entier $n \\geqslant 1$, $T_n = \\dfrac{n(n+1)(n+2)}{6}$.",
+            "points": 1,
+            "revoir": "l-recurrence-suites-008",
+            "indices": [
+              "Même démarche que pour la somme des carrés dans le cours : initialisation au rang $1$, puis hérédité à partir de la relation $T_{n+1} = T_n + t_{n+1}$.",
+              "L'objectif de l'hérédité est $T_{n+1} = \\dfrac{(n+1)(n+2)(n+3)}{6}$. Avec l'hypothèse de récurrence et le rappel appliqué au rang $n + 1$, écris $T_{n+1} = \\dfrac{n(n+1)(n+2)}{6} + \\dfrac{(n+1)(n+2)}{2}$, puis cherche un facteur commun aux deux termes."
+            ],
+            "attenduCorrecteur": "- **Initialisation** : $T_1 = 1$ et $\\dfrac{1 \\times 2 \\times 3}{6} = 1$ : 0,25 pt.\n- **Hérédité** posée (hypothèse de récurrence pour un entier $n \\geqslant 1$ fixé, objectif au rang $n + 1$) ; relation $T_{n+1} = T_n + t_{n+1}$ utilisée avec $t_{n+1} = \\dfrac{(n+1)(n+2)}{2}$ : 0,25 pt.\n- Calcul mené jusqu'à $\\dfrac{(n+1)(n+2)(n+3)}{6}$, par mise en facteur de $\\dfrac{(n+1)(n+2)}{6}$ : 0,25 pt.\n- **Conclusion** par le principe de récurrence : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$, on note $P(n)$ : « $T_n = \\dfrac{n(n+1)(n+2)}{6}$ ».\n\n**Initialisation** : $T_1 = 1$ et $\\dfrac{1 \\times 2 \\times 3}{6} = 1$. Donc $P(1)$ est vraie.\n\n**Hérédité** : soit $n \\geqslant 1$ un entier. On suppose $P(n)$ vraie. On veut montrer $P(n+1)$ : $T_{n+1} = \\dfrac{(n+1)(n+2)(n+3)}{6}$.\n\nLe rappel, appliqué au rang $n + 1$, donne $t_{n+1} = \\dfrac{(n+1)(n+2)}{2} = \\dfrac{3(n+1)(n+2)}{6}$. Avec la relation de l'énoncé et l'hypothèse de récurrence :\n\n$$T_{n+1} = T_n + t_{n+1} = \\frac{n(n+1)(n+2)}{6} + \\frac{3(n+1)(n+2)}{6} = \\frac{(n+1)(n+2)(n+3)}{6}.$$\n\nOn a mis $\\dfrac{(n+1)(n+2)}{6}$ en facteur : il reste $n + 3$. Donc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(1)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier $n \\geqslant 1$, $T_n = \\dfrac{n(n+1)(n+2)}{6}$.",
+            "erreurFrequente": "Ajouter $t_n = \\dfrac{n(n+1)}{2}$ au lieu de $t_{n+1}$ : l'étage ajouté sous une pyramide de $n$ étages est l'étage $n + 1$, qui compte $\\dfrac{(n+1)(n+2)}{2}$ boules."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Un marchand veut empiler des oranges en pyramide à base triangulaire de $10$ étages. Combien d'oranges compte l'étage du bas ? Combien d'oranges lui faut-il en tout ?\n\nSaisis le nombre total d'oranges.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 220,
+              "tolerance": 0
+            },
+            "revoir": "l-recurrence-suites-002",
+            "indices": [
+              "Les formules des questions 2 et 4.a) donnent $t_n$ et $T_n$ directement à partir de $n$, sans calculer les étages un par un : l'étage du bas est l'étage $10$."
+            ],
+            "attenduCorrecteur": "- Étage du bas : $t_{10} = \\dfrac{10 \\times 11}{2} = 55$ oranges : 0,25 pt.\n- Total : $T_{10} = \\dfrac{10 \\times 11 \\times 12}{6} = 220$ oranges : 0,25 pt.",
+            "solution": "L'étage du bas d'une pyramide de $10$ étages est l'étage $10$. D'après la question 2, il compte $t_{10} = \\dfrac{10 \\times 11}{2} = 55$ oranges.\n\nD'après la question 4.a), la pyramide compte $T_{10} = \\dfrac{10 \\times 11 \\times 12}{6} = \\dfrac{1\\,320}{6} = 220$ oranges.\n\nLe marchand a besoin de $220$ oranges, dont $55$ pour l'étage du bas."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-recurrence-suites-002",
+    "chapitre": "recurrence-suites",
+    "notions": [
+      "n-recurrence-suites-encadrement-variation",
+      "n-recurrence-suites-recurrence"
+    ],
+    "capacites": [
+      "bo-m-suites-08",
+      "bo-m-logique-14",
+      "bo-m-logique-12"
+    ],
+    "titre": "Suite définie par une fonction : encadrement, sens de variation, forme explicite",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2024-polynesie-juin-j1",
+      "adaptation": "Exercice 4 : fonction $f$ définie par $f(x) = \\dfrac{4}{5 - x}$, premier terme $u_0 = 3$, équivalence $f(x) = x \\iff x^2 - 5x + 4 = 0$ et récurrence « $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$ » conservées ; questions de convergence et de limite retirées : chapitre ultérieur ; remplacées par le sens de variation de la suite et une forme explicite démontrée par récurrence. Solution écrite pour le site."
+    },
+    "preambule": "On considère la fonction $f$ définie sur l'intervalle $]-\\infty\\,;\\,5[$ par :\n\n$$f(x) = \\frac{4}{5 - x}.$$\n\nOn considère la suite $(u_n)$ définie par $u_0 = 3$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n) = \\dfrac{4}{5 - u_n}$. On admet que cette suite est bien définie : tous ses termes appartiennent à $]-\\infty\\,;\\,5[$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étude de la fonction $f$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Démontrer que la fonction $f$ est strictement croissante sur $]-\\infty\\,;\\,5[$.",
+            "points": 0.75,
+            "revoir": "l-recurrence-suites-020",
+            "indices": [
+              "Le sens de variation d'une fonction se lit sur le signe de sa dérivée (première) : calcule $f'(x)$, puis étudie son signe sur $]-\\infty\\,;\\,5[$.",
+              "$f(x) = 4 \\times \\dfrac{1}{v(x)}$ avec $v(x) = 5 - x$, qui ne s'annule pas sur $]-\\infty\\,;\\,5[$. Utilise la formule $\\left(\\dfrac{1}{v}\\right)' = -\\dfrac{v'}{v^2}$, avec $v'(x) = -1$."
+            ],
+            "attenduCorrecteur": "- Dérivée correcte, $f'(x) = \\dfrac{4}{(5 - x)^2}$, avec la formule utilisée (dérivée de $\\dfrac{1}{v}$ ou d'un quotient) : 0,5 pt.\n- Signe justifié (numérateur $4 > 0$, carré d'un nombre non nul strictement positif), donc $f'(x) > 0$ et $f$ strictement croissante sur $]-\\infty\\,;\\,5[$ : 0,25 pt.",
+            "solution": "Pour tout $x$ de $]-\\infty\\,;\\,5[$, on pose $v(x) = 5 - x$. La fonction $v$ est dérivable, $v'(x) = -1$, et $v(x) > 0$ : elle ne s'annule pas. Comme $f = 4 \\times \\dfrac{1}{v}$ et $\\left(\\dfrac{1}{v}\\right)' = -\\dfrac{v'}{v^2}$ :\n\n$$f'(x) = 4 \\times \\left(-\\frac{-1}{(5 - x)^2}\\right) = \\frac{4}{(5 - x)^2}.$$\n\nLe numérateur $4$ est strictement positif et, comme $5 - x \\neq 0$, le carré $(5 - x)^2$ est strictement positif. Donc $f'(x) > 0$ pour tout $x$ de $]-\\infty\\,;\\,5[$ : la fonction $f$ est strictement croissante sur $]-\\infty\\,;\\,5[$.",
+            "erreurFrequente": "Oublier le signe moins de $v'(x) = -1$ et trouver $f'(x) = -\\dfrac{4}{(5 - x)^2}$ : la fonction serait alors décroissante. Contrôle avec deux valeurs : $f(0) = 0{,}8$ et $f(4) = 4$, donc $f$ augmente bien."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Soit $x$ un réel de l'intervalle $]-\\infty\\,;\\,5[$. Prouver l'équivalence suivante : $f(x) = x \\iff x^2 - 5x + 4 = 0$. En déduire les réels $x$ de $]-\\infty\\,;\\,5[$ tels que $f(x) = x$.",
+            "points": 0.75,
+            "revoir": "l-recurrence-suites-022",
+            "indices": [
+              "Raisonne par équivalences successives : comme $x < 5$, le dénominateur $5 - x$ n'est pas nul, et multiplier les deux membres par $5 - x$ donne une égalité équivalente. Les solutions trouvées sont les valeurs que $f$ ne change pas : elles serviront de bornes à la question 2, comme $f(0) = 0$ et $f(1) = 1$ dans l'exemple du cours.",
+              "$\\dfrac{4}{5 - x} = x \\iff 4 = x(5 - x)$. Développe, regroupe tous les termes dans un même membre, puis résous l'équation du second degré obtenue."
+            ],
+            "attenduCorrecteur": "- Équivalences justifiées : $5 - x \\neq 0$, donc $f(x) = x \\iff 4 = x(5 - x) \\iff x^2 - 5x + 4 = 0$ : 0,5 pt.\n- Solutions $1$ et $4$ (discriminant $\\Delta = 9$, ou factorisation $(x - 1)(x - 4)$), toutes deux dans $]-\\infty\\,;\\,5[$ ; donc $f(1) = 1$ et $f(4) = 4$ : 0,25 pt.",
+            "solution": "Soit $x$ un réel de $]-\\infty\\,;\\,5[$. Alors $5 - x > 0$, donc $5 - x \\neq 0$ : multiplier les deux membres par $5 - x$ donne une égalité équivalente.\n\n$$f(x) = x \\iff \\frac{4}{5 - x} = x \\iff 4 = x(5 - x) \\iff 4 = 5x - x^2 \\iff x^2 - 5x + 4 = 0.$$\n\nLe trinôme $x^2 - 5x + 4$ a pour discriminant $\\Delta = (-5)^2 - 4 \\times 1 \\times 4 = 25 - 16 = 9 = 3^2 > 0$. Ses racines sont $\\dfrac{5 - 3}{2} = 1$ et $\\dfrac{5 + 3}{2} = 4$, qui appartiennent toutes deux à $]-\\infty\\,;\\,5[$.\n\nLes réels $x$ de $]-\\infty\\,;\\,5[$ tels que $f(x) = x$ sont donc $1$ et $4$ : $f(1) = 1$ et $f(4) = 4$.",
+            "erreurFrequente": "Multiplier par $5 - x$ sans dire que ce nombre est non nul : c'est la condition $x < 5$ qui rend chaque étape réversible, donc l'équivalence vraie."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que pour tout entier naturel $n$ on a : $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$.",
+        "points": 1.5,
+        "revoir": "l-recurrence-suites-021",
+        "indices": [
+          "Méthode du cours pour une suite $u_{n+1} = f(u_n)$ avec $f$ croissante : initialise avec $u_0$ et $u_1$ ; dans l'hérédité, applique $f$ à l'encadrement supposé, ce qui garde l'ordre sur $]-\\infty\\,;\\,5[$ (question 1.a). Les valeurs $f(1)$ et $f(4)$ viennent de la question 1.b.",
+          "Initialisation : $u_1 = \\dfrac{4}{5 - 3} = 2$. Hérédité : suppose $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$ pour un entier naturel $n$ ; l'objectif est $1 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 4$. Vérifie que les quatre nombres sont dans l'intervalle où $f$ est croissante avant de leur appliquer $f$."
+        ],
+        "attenduCorrecteur": "- Propriété $P(n)$ énoncée ; **initialisation** : $u_0 = 3$, $u_1 = 2$ et $1 \\leqslant 2 \\leqslant 3 \\leqslant 4$ : 0,25 pt.\n- **Hérédité** : hypothèse de récurrence pour un entier naturel $n$ fixé ; objectif $1 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 4$ écrit : 0,25 pt.\n- Argument cité : $1$, $u_{n+1}$, $u_n$ et $4$ appartiennent à $[1\\,;\\,4] \\subset ]-\\infty\\,;\\,5[$, où $f$ est croissante, donc appliquer $f$ conserve l'ordre : 0,5 pt.\n- $f(1) = 1$, $f(u_{n+1}) = u_{n+2}$, $f(u_n) = u_{n+1}$ et $f(4) = 4$, d'où $P(n+1)$ : 0,25 pt.\n- **Conclusion** par le principe de récurrence : 0,25 pt.",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$ ».\n\n**Initialisation** : $u_0 = 3$ et $u_1 = \\dfrac{4}{5 - 3} = 2$. Or $1 \\leqslant 2 \\leqslant 3 \\leqslant 4$, donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $P(n)$ vraie : $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$. On veut montrer $P(n+1)$ : $1 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 4$.\n\nLes nombres $1$, $u_{n+1}$, $u_n$ et $4$ appartiennent à $[1\\,;\\,4]$, inclus dans $]-\\infty\\,;\\,5[$, où $f$ est croissante (question 1.a). En appliquant $f$, l'ordre est conservé :\n\n$$f(1) \\leqslant f(u_{n+1}) \\leqslant f(u_n) \\leqslant f(4).$$\n\nOr $f(1) = 1$ et $f(4) = 4$ (question 1.b), et par définition de la suite, $f(u_{n+1}) = u_{n+2}$ et $f(u_n) = u_{n+1}$. Donc $1 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 4$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$.",
+        "erreurFrequente": "Écrire « $f$ est croissante, donc la suite $(u_n)$ est croissante » : c'est faux ici, puisque $u_1 = 2 < u_0 = 3$. Une fonction croissante transmet l'ordre entre deux termes consécutifs dans le sens où il est au départ."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire que la suite $(u_n)$ est décroissante, puis que, pour tout entier naturel $n$, $1 \\leqslant u_n \\leqslant 3$.",
+        "points": 0.5,
+        "revoir": "l-recurrence-suites-013",
+        "indices": [
+          "Lis l'encadrement de la question 2 morceau par morceau : une partie compare $u_{n+1}$ et $u_n$, l'autre place $u_n$ au-dessus d'un nombre. Pour le majorant $3$, pense au premier terme d'une suite décroissante."
+        ],
+        "attenduCorrecteur": "- Pour tout $n$, $u_{n+1} \\leqslant u_n$ : la suite est décroissante : 0,25 pt.\n- $u_n \\geqslant 1$ (question 2) et $u_n \\leqslant u_0 = 3$ (suite décroissante) : 0,25 pt.",
+        "solution": "D'après la question 2, pour tout entier naturel $n$, $u_{n+1} \\leqslant u_n$ : la suite $(u_n)$ est décroissante.\n\nToujours d'après la question 2, $u_n \\geqslant 1$ pour tout entier naturel $n$. Et comme la suite est décroissante, chaque terme est inférieur ou égal au premier : $u_n \\leqslant u_0 = 3$.\n\nAinsi, pour tout entier naturel $n$, $1 \\leqslant u_n \\leqslant 3$ : la suite $(u_n)$ est minorée par $1$ et majorée par $3$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Dans cette question, on étudie une expression de $u_n$ en fonction de $n$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n = 1 + \\dfrac{6}{4^n + 2}$.",
+            "points": 1,
+            "revoir": "l-recurrence-suites-004",
+            "indices": [
+              "Comme dans l'exemple du cours où l'on démontre une forme explicite, pars de $u_{n+1} = \\dfrac{4}{5 - u_n}$ et remplace $u_n$ grâce à l'hypothèse de récurrence.",
+              "Avec l'hypothèse de récurrence, $5 - u_n = 4 - \\dfrac{6}{4^n + 2}$ : réduis au même dénominateur, en utilisant $4 \\times 4^n = 4^{n+1}$, puis divise $4$ par la fraction obtenue. Écris aussi l'objectif $1 + \\dfrac{6}{4^{n+1} + 2}$ sous la forme d'une seule fraction, pour comparer."
+            ],
+            "attenduCorrecteur": "- **Initialisation** : $1 + \\dfrac{6}{4^0 + 2} = 1 + \\dfrac{6}{3} = 3 = u_0$ : 0,25 pt.\n- **Hérédité** : hypothèse de récurrence pour un entier naturel $n$ fixé, puis $5 - u_n = \\dfrac{4(4^n + 2) - 6}{4^n + 2} = \\dfrac{4^{n+1} + 2}{4^n + 2}$ : 0,25 pt.\n- $u_{n+1} = \\dfrac{4(4^n + 2)}{4^{n+1} + 2} = \\dfrac{4^{n+1} + 8}{4^{n+1} + 2} = 1 + \\dfrac{6}{4^{n+1} + 2}$ : 0,25 pt.\n- **Conclusion** par le principe de récurrence : 0,25 pt.",
+            "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n = 1 + \\dfrac{6}{4^n + 2}$ ».\n\n**Initialisation** : $1 + \\dfrac{6}{4^0 + 2} = 1 + \\dfrac{6}{3} = 3 = u_0$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $P(n)$ vraie : $u_n = 1 + \\dfrac{6}{4^n + 2}$. On veut montrer $P(n+1)$ : $u_{n+1} = 1 + \\dfrac{6}{4^{n+1} + 2}$.\n\nD'après l'hypothèse de récurrence, et comme $4 \\times 4^n = 4^{n+1}$ :\n\n$$5 - u_n = 4 - \\frac{6}{4^n + 2} = \\frac{4(4^n + 2) - 6}{4^n + 2} = \\frac{4^{n+1} + 8 - 6}{4^n + 2} = \\frac{4^{n+1} + 2}{4^n + 2}.$$\n\nDonc :\n\n$$u_{n+1} = \\frac{4}{5 - u_n} = \\frac{4(4^n + 2)}{4^{n+1} + 2} = \\frac{4^{n+1} + 8}{4^{n+1} + 2} = \\frac{(4^{n+1} + 2) + 6}{4^{n+1} + 2} = 1 + \\frac{6}{4^{n+1} + 2}.$$\n\nAinsi $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $u_n = 1 + \\dfrac{6}{4^n + 2}$.",
+            "erreurFrequente": "Écrire $4 \\times 4^n = 16^n$ : on multiplie deux puissances de $4$ en ajoutant les exposants, $4^1 \\times 4^n = 4^{n+1}$."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "En déduire la valeur exacte de $u_3$, sous forme de fraction irréductible. Retrouver ensuite, à l'aide de l'expression de la question a), que $u_n > 1$ pour tout entier naturel $n$.\n\nSaisis $u_3$ sous forme de fraction ; la justification est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "12/11",
+              "tolerance": 0.001
+            },
+            "revoir": "l-recurrence-suites-002",
+            "indices": [
+              "Avec l'expression de la question a), tu calcules $u_3$ directement, sans passer par $u_1$ et $u_2$ : remplace $n$ par $3$. Pour l'inégalité, étudie le signe de $u_n - 1$."
+            ],
+            "attenduCorrecteur": "- $u_3 = 1 + \\dfrac{6}{64 + 2} = 1 + \\dfrac{1}{11} = \\dfrac{12}{11}$ : 0,25 pt.\n- $u_n - 1 = \\dfrac{6}{4^n + 2} > 0$ (quotient de deux nombres strictement positifs), donc $u_n > 1$ : 0,25 pt.",
+            "solution": "D'après la question a), avec $n = 3$ :\n\n$$u_3 = 1 + \\frac{6}{4^3 + 2} = 1 + \\frac{6}{66} = 1 + \\frac{1}{11} = \\frac{12}{11}.$$\n\nContrôle avec la relation de récurrence : $u_1 = 2$, $u_2 = \\dfrac{4}{5 - 2} = \\dfrac{4}{3}$, puis $u_3 = \\dfrac{4}{5 - \\frac{4}{3}} = \\dfrac{4}{\\frac{11}{3}} = \\dfrac{12}{11}$.\n\nPour tout entier naturel $n$, $u_n - 1 = \\dfrac{6}{4^n + 2}$. Or $6 > 0$ et $4^n + 2 > 0$, donc $u_n - 1 > 0$ : pour tout entier naturel $n$, $u_n > 1$. L'expression explicite précise l'encadrement de la question 3 : la minoration par $1$ est stricte."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-recurrence-suites-003",
+    "chapitre": "recurrence-suites",
+    "notions": [
+      "n-recurrence-suites-modelisation",
+      "n-recurrence-suites-recurrence"
+    ],
+    "capacites": [
+      "bo-m-suites-09",
+      "bo-m-logique-14"
+    ],
+    "titre": "Plat végétarien ou non : arbre, relation de récurrence et forme explicite",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2025-amerique-sud-j1",
+      "adaptation": "Exercice 1 : situation (choix quotidien d'un plat végétarien ou non par un étudiant), probabilité conditionnelle portant sur la veille du $3^{\\text{e}}$ jour, relation $p_{n+1} = a\\,p_n + b$ tirée d'un arbre et forme explicite démontrée par récurrence conservées ; probabilités modifiées ; question sur les listes Python remplacée par l'étude du sens de variation et une interprétation, sans limite (chapitre ultérieur). Solution écrite pour le site."
+    },
+    "preambule": "Un étudiant déjeune chaque jour au restaurant universitaire, qui propose un plat végétarien et un plat non végétarien. On observe que :\n\n- s'il choisit le plat végétarien un jour donné, il choisit encore le plat végétarien le lendemain avec une probabilité de $0{,}7$ ;\n- s'il choisit le plat non végétarien un jour donné, il choisit le plat végétarien le lendemain avec une probabilité de $0{,}2$ ;\n- le premier jour, il choisit le plat végétarien avec une probabilité de $0{,}2$.\n\nPour tout entier $n \\geqslant 1$, on note $V_n$ l'événement « l'étudiant choisit le plat végétarien le jour $n$ », $\\overline{V_n}$ son événement contraire, et $p_n = P(V_n)$. Ainsi $p_1 = 0{,}2$.\n\n**Partie A : les trois premiers jours** (questions A.1 et A.2).\n\n**Partie B : le jour $n$** (questions B.1 à B.3). La partie B peut être traitée sans la partie A.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Représenter la situation des jours $1$ et $2$ par un arbre pondéré, puis démontrer que $p_2 = 0{,}3$.",
+        "points": 0.75,
+        "revoir": "l-recurrence-suites-032",
+        "indices": [
+          "Arbre à deux niveaux : le jour $1$ ($V_1$ ou $\\overline{V_1}$), puis le jour $2$. Les probabilités « s'il choisit… un jour donné » se placent sur les branches du second niveau : ce sont des probabilités conditionnelles. Termine par la formule des probabilités totales.",
+          "$P(V_1) = 0{,}2$, $P(\\overline{V_1}) = 0{,}8$, $P_{V_1}(V_2) = 0{,}7$ et $P_{\\overline{V_1}}(V_2) = 0{,}2$. Deux chemins mènent à $V_2$ : la probabilité de chacun est le produit des probabilités de ses branches."
+        ],
+        "attenduCorrecteur": "- Arbre correct : $P(V_1) = 0{,}2$ et $P(\\overline{V_1}) = 0{,}8$ ; $0{,}7$ et $0{,}3$ après $V_1$ ; $0{,}2$ et $0{,}8$ après $\\overline{V_1}$ : 0,25 pt.\n- Formule des probabilités totales citée, avec la partition $\\{V_1\\,;\\,\\overline{V_1}\\}$ : 0,25 pt.\n- Calcul $p_2 = 0{,}2 \\times 0{,}7 + 0{,}8 \\times 0{,}2 = 0{,}3$ : 0,25 pt.",
+        "solution": "L'arbre a deux niveaux : le choix du jour $1$, puis celui du jour $2$.\n\n- De la racine partent $V_1$, avec $P(V_1) = 0{,}2$, et $\\overline{V_1}$, avec $P(\\overline{V_1}) = 1 - 0{,}2 = 0{,}8$.\n- De $V_1$ partent $V_2$, avec $P_{V_1}(V_2) = 0{,}7$, et $\\overline{V_2}$, avec $P_{V_1}(\\overline{V_2}) = 1 - 0{,}7 = 0{,}3$.\n- De $\\overline{V_1}$ partent $V_2$, avec $P_{\\overline{V_1}}(V_2) = 0{,}2$, et $\\overline{V_2}$, avec $P_{\\overline{V_1}}(\\overline{V_2}) = 1 - 0{,}2 = 0{,}8$.\n\nLes événements $V_1$ et $\\overline{V_1}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$p_2 = P(V_1 \\cap V_2) + P(\\overline{V_1} \\cap V_2) = 0{,}2 \\times 0{,}7 + 0{,}8 \\times 0{,}2 = 0{,}14 + 0{,}16 = 0{,}3.$$"
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Sachant que le $3^{\\text{e}}$ jour l'étudiant a choisi un plat végétarien, quelle est la probabilité qu'il ait choisi un plat non végétarien le jour précédent ?\n\nSaisis la valeur décimale exacte ; le calcul est à rédiger.",
+        "points": 0.75,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 0.4,
+          "tolerance": 0.001
+        },
+        "revoir": "l-recurrence-suites-032",
+        "indices": [
+          "On connaît le choix du jour $3$ et on s'interroge sur celui du jour $2$ : tu cherches $P_{V_3}(\\overline{V_2})$. Utilise la définition d'une probabilité conditionnelle (première) : il te faut $P(\\overline{V_2} \\cap V_3)$ et $P(V_3) = p_3$.",
+          "Sur un arbre des jours $2$ et $3$, avec $p_2 = 0{,}3$ : $P(\\overline{V_2} \\cap V_3) = P(\\overline{V_2}) \\times P_{\\overline{V_2}}(V_3) = 0{,}7 \\times 0{,}2$. Calcule $p_3$ comme $p_2$ à la question A.1."
+        ],
+        "attenduCorrecteur": "- Probabilité cherchée identifiée et formule posée : $P_{V_3}(\\overline{V_2}) = \\dfrac{P(\\overline{V_2} \\cap V_3)}{P(V_3)}$ : 0,25 pt.\n- $p_3 = 0{,}3 \\times 0{,}7 + 0{,}7 \\times 0{,}2 = 0{,}35$ (probabilités totales) et $P(\\overline{V_2} \\cap V_3) = 0{,}14$ : 0,25 pt.\n- $P_{V_3}(\\overline{V_2}) = \\dfrac{0{,}14}{0{,}35} = 0{,}4$, avec une phrase de conclusion : 0,25 pt.",
+        "solution": "La probabilité cherchée est $P_{V_3}(\\overline{V_2})$.\n\nOn a $P(V_2) = p_2 = 0{,}3$ et $P(\\overline{V_2}) = 1 - 0{,}3 = 0{,}7$. Les événements $V_2$ et $\\overline{V_2}$ forment une partition de l'univers ; d'après la formule des probabilités totales :\n\n$$p_3 = P(V_2) \\times P_{V_2}(V_3) + P(\\overline{V_2}) \\times P_{\\overline{V_2}}(V_3) = 0{,}3 \\times 0{,}7 + 0{,}7 \\times 0{,}2 = 0{,}21 + 0{,}14 = 0{,}35.$$\n\nDe plus, $P(\\overline{V_2} \\cap V_3) = P(\\overline{V_2}) \\times P_{\\overline{V_2}}(V_3) = 0{,}7 \\times 0{,}2 = 0{,}14$. Par définition d'une probabilité conditionnelle :\n\n$$P_{V_3}(\\overline{V_2}) = \\frac{P(\\overline{V_2} \\cap V_3)}{P(V_3)} = \\frac{0{,}14}{0{,}35} = \\frac{14}{35} = \\frac{2}{5} = 0{,}4.$$\n\nSachant que l'étudiant a choisi le plat végétarien le $3^{\\text{e}}$ jour, la probabilité qu'il ait choisi le plat non végétarien le $2^{\\text{e}}$ jour est $0{,}4$.",
+        "erreurFrequente": "Répondre $P_{\\overline{V_2}}(V_3) = 0{,}2$, lue sur l'arbre : c'est la probabilité de choisir le plat végétarien le jour $3$ sachant le choix du jour $2$. Ici, l'information porte sur le jour $3$ et la question sur le jour $2$ : il faut inverser le conditionnement."
+      },
+      {
+        "id": "q3",
+        "label": "B.1.",
+        "enonce": "Représenter par un arbre pondéré le passage du jour $n$ au jour $n + 1$, puis justifier que, pour tout entier $n \\geqslant 1$, $p_{n+1} = 0{,}5\\,p_n + 0{,}2$.",
+        "points": 1,
+        "revoir": "l-recurrence-suites-034",
+        "indices": [
+          "C'est l'arbre de la question A.1, avec $V_n$ et $V_{n+1}$ à la place de $V_1$ et $V_2$ : les probabilités du second niveau ne changent pas, celles du premier niveau s'écrivent avec $p_n$. Applique ensuite la formule des probabilités totales, comme dans l'exemple « Bus ou vélo » du cours.",
+          "Au premier niveau, $P(V_n) = p_n$ et $P(\\overline{V_n}) = 1 - p_n$. Deux chemins mènent à $V_{n+1}$, l'un par $V_n$, l'autre par $\\overline{V_n}$ : écris la probabilité de chacun comme un produit, additionne-les, puis développe."
+        ],
+        "attenduCorrecteur": "- Arbre : $P(V_n) = p_n$ et $P(\\overline{V_n}) = 1 - p_n$, puis $0{,}7$ et $0{,}3$ après $V_n$, $0{,}2$ et $0{,}8$ après $\\overline{V_n}$ : 0,25 pt.\n- Formule des probabilités totales, avec la partition $\\{V_n\\,;\\,\\overline{V_n}\\}$ : $p_{n+1} = 0{,}7\\,p_n + 0{,}2(1 - p_n)$ : 0,5 pt.\n- Développement et réduction : $p_{n+1} = 0{,}5\\,p_n + 0{,}2$ : 0,25 pt.",
+        "solution": "Soit $n \\geqslant 1$ un entier. L'arbre du passage du jour $n$ au jour $n + 1$ a deux niveaux.\n\n- De la racine partent $V_n$, avec $P(V_n) = p_n$, et $\\overline{V_n}$, avec $P(\\overline{V_n}) = 1 - p_n$.\n- De $V_n$ partent $V_{n+1}$, avec $P_{V_n}(V_{n+1}) = 0{,}7$, et $\\overline{V_{n+1}}$, avec $P_{V_n}(\\overline{V_{n+1}}) = 0{,}3$.\n- De $\\overline{V_n}$ partent $V_{n+1}$, avec $P_{\\overline{V_n}}(V_{n+1}) = 0{,}2$, et $\\overline{V_{n+1}}$, avec $P_{\\overline{V_n}}(\\overline{V_{n+1}}) = 0{,}8$.\n\nLes événements $V_n$ et $\\overline{V_n}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$p_{n+1} = P(V_n \\cap V_{n+1}) + P(\\overline{V_n} \\cap V_{n+1}) = 0{,}7\\,p_n + 0{,}2(1 - p_n) = 0{,}7\\,p_n + 0{,}2 - 0{,}2\\,p_n = 0{,}5\\,p_n + 0{,}2.$$\n\nAinsi, pour tout entier $n \\geqslant 1$, $p_{n+1} = 0{,}5\\,p_n + 0{,}2$. On retrouve $p_2 = 0{,}5 \\times 0{,}2 + 0{,}2 = 0{,}3$.",
+        "erreurFrequente": "Écrire $p_{n+1} = 0{,}7\\,p_n + 0{,}2$ : le second chemin part de $\\overline{V_n}$, de probabilité $1 - p_n$ ; sa probabilité est $(1 - p_n) \\times 0{,}2$, pas $0{,}2$."
+      },
+      {
+        "id": "q4",
+        "label": "B.2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier $n \\geqslant 1$, $p_n = 0{,}4 - 0{,}2 \\times 0{,}5^{n-1}$.",
+        "points": 1.25,
+        "revoir": "l-recurrence-suites-006",
+        "indices": [
+          "Récurrence à partir du rang $1$ : initialise avec $p_1 = 0{,}2$ ; dans l'hérédité, pars de la relation de la question B.1 et utilise l'hypothèse de récurrence.",
+          "L'objectif de l'hérédité est $p_{n+1} = 0{,}4 - 0{,}2 \\times 0{,}5^{n}$ : l'exposant $n - 1$ devient $(n + 1) - 1 = n$. Remplace $p_n$ dans $p_{n+1} = 0{,}5\\,p_n + 0{,}2$, puis développe en utilisant $0{,}5 \\times 0{,}5^{n-1} = 0{,}5^{n}$."
+        ],
+        "attenduCorrecteur": "- Propriété énoncée et **initialisation** au rang $1$ : $0{,}4 - 0{,}2 \\times 0{,}5^0 = 0{,}2 = p_1$ : 0,25 pt.\n- **Hérédité** : hypothèse de récurrence pour un entier $n \\geqslant 1$ fixé ; objectif $p_{n+1} = 0{,}4 - 0{,}2 \\times 0{,}5^{n}$ écrit : 0,25 pt.\n- Calcul : $p_{n+1} = 0{,}5\\left(0{,}4 - 0{,}2 \\times 0{,}5^{n-1}\\right) + 0{,}2 = 0{,}4 - 0{,}2 \\times 0{,}5^{n}$, avec $0{,}5 \\times 0{,}5^{n-1} = 0{,}5^{n}$ : 0,5 pt.\n- **Conclusion** par le principe de récurrence : 0,25 pt.",
+        "solution": "Pour tout entier $n \\geqslant 1$, on note $P(n)$ : « $p_n = 0{,}4 - 0{,}2 \\times 0{,}5^{n-1}$ ».\n\n**Initialisation** : $0{,}4 - 0{,}2 \\times 0{,}5^{0} = 0{,}4 - 0{,}2 = 0{,}2 = p_1$. Donc $P(1)$ est vraie.\n\n**Hérédité** : soit $n \\geqslant 1$ un entier. On suppose $P(n)$ vraie : $p_n = 0{,}4 - 0{,}2 \\times 0{,}5^{n-1}$. On veut montrer $P(n+1)$ : $p_{n+1} = 0{,}4 - 0{,}2 \\times 0{,}5^{n}$.\n\nD'après la question B.1, puis l'hypothèse de récurrence :\n\n$$p_{n+1} = 0{,}5\\,p_n + 0{,}2 = 0{,}5\\left(0{,}4 - 0{,}2 \\times 0{,}5^{n-1}\\right) + 0{,}2 = 0{,}2 - 0{,}2 \\times 0{,}5^{n} + 0{,}2 = 0{,}4 - 0{,}2 \\times 0{,}5^{n}.$$\n\nOn a utilisé $0{,}5 \\times 0{,}5^{n-1} = 0{,}5^{n}$. Donc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(1)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier $n \\geqslant 1$, $p_n = 0{,}4 - 0{,}2 \\times 0{,}5^{n-1}$.",
+        "erreurFrequente": "Initialiser au rang $0$ : la suite commence au jour $1$, et $p_0$ n'a pas de sens ici. Le rang de départ de la récurrence est $1$."
+      },
+      {
+        "id": "q5",
+        "label": "B.3.",
+        "enonce": "On utilise l'expression de $p_n$ donnée à la question B.2.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Démontrer que la suite $(p_n)$ est croissante.",
+            "points": 0.5,
+            "revoir": "l-recurrence-suites-013",
+            "indices": [
+              "Pour le sens de variation d'une suite donnée par une expression en fonction de $n$, étudie le signe de $p_{n+1} - p_n$ (méthode de première).",
+              "$p_{n+1} - p_n = 0{,}2 \\times 0{,}5^{n-1} - 0{,}2 \\times 0{,}5^{n}$. Factorise par $0{,}2 \\times 0{,}5^{n-1}$, puis étudie le signe de chaque facteur."
+            ],
+            "attenduCorrecteur": "- Différence calculée et factorisée : $p_{n+1} - p_n = 0{,}2 \\times 0{,}5^{n-1}(1 - 0{,}5) = 0{,}1 \\times 0{,}5^{n-1}$ : 0,25 pt.\n- Signe strictement positif justifié, donc $(p_n)$ croissante : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$, d'après la question B.2 :\n\n$$p_{n+1} - p_n = \\left(0{,}4 - 0{,}2 \\times 0{,}5^{n}\\right) - \\left(0{,}4 - 0{,}2 \\times 0{,}5^{n-1}\\right) = 0{,}2 \\times 0{,}5^{n-1} - 0{,}2 \\times 0{,}5^{n} = 0{,}2 \\times 0{,}5^{n-1}(1 - 0{,}5) = 0{,}1 \\times 0{,}5^{n-1}.$$\n\nComme $0{,}5 > 0$, la puissance $0{,}5^{n-1}$ est strictement positive, donc $p_{n+1} - p_n > 0$. La suite $(p_n)$ est (strictement) croissante."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Démontrer que, pour tout entier $n \\geqslant 1$, $p_n < 0{,}4$. L'étudiant affirme : « Un jour, je choisirai le plat végétarien avec une probabilité d'au moins $0{,}4$. » A-t-il raison ? Interpréter les résultats des questions a) et b) dans le contexte de l'exercice.",
+            "points": 0.75,
+            "revoir": "l-recurrence-suites-030",
+            "indices": [
+              "Comme dans l'exemple du club du cours, compare $p_n$ à la valeur $0{,}4$ à l'aide de l'expression de la question B.2.",
+              "Écris $0{,}4 - p_n$ à l'aide de la question B.2 et étudie son signe. Pour l'interprétation, dis comment évolue la probabilité de choisir le plat végétarien d'un jour au suivant, et quelle valeur elle n'atteint jamais."
+            ],
+            "attenduCorrecteur": "- $0{,}4 - p_n = 0{,}2 \\times 0{,}5^{n-1} > 0$, donc $p_n < 0{,}4$ pour tout $n \\geqslant 1$ : 0,25 pt.\n- Réponse argumentée : l'étudiant a tort, aucun jour la probabilité n'atteint $0{,}4$ : 0,25 pt.\n- Interprétation : d'un jour au suivant, la probabilité de choisir le plat végétarien augmente, tout en restant strictement inférieure à $0{,}4$ : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$, d'après la question B.2 : $0{,}4 - p_n = 0{,}2 \\times 0{,}5^{n-1}$. Ce nombre est strictement positif, comme produit de deux nombres strictement positifs. Donc $p_n < 0{,}4$ pour tout entier $n \\geqslant 1$.\n\nL'étudiant a donc tort : quel que soit le jour $n$, la probabilité qu'il choisisse le plat végétarien est strictement inférieure à $0{,}4$.\n\nInterprétation : d'après la question a), cette probabilité augmente d'un jour au suivant ($0{,}2$ le premier jour, $0{,}3$ le deuxième, $0{,}35$ le troisième…) ; d'après ce qui précède, elle reste pourtant toujours strictement inférieure à $0{,}4$.",
+            "erreurFrequente": "Conclure de « la suite est croissante » qu'elle finira par dépasser n'importe quelle valeur : une suite croissante peut rester sous un plafond, ici $0{,}4$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-recurrence-suites-004",
+    "chapitre": "recurrence-suites",
+    "notions": [
+      "n-recurrence-suites-modelisation",
+      "n-recurrence-suites-encadrement-variation",
+      "n-recurrence-suites-recurrence"
+    ],
+    "capacites": [
+      "bo-m-suites-09",
+      "bo-m-suites-08",
+      "bo-m-logique-14",
+      "bo-m-listes-01"
+    ],
+    "titre": "Médicament dans l'organisme : modèle, encadrement et liste Python",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2025-asie-juin-j1",
+      "adaptation": "Exercice 3 : situation (quantité de médicament dans l'organisme juste après des prises successives, relation $u_{n+1} = a\\,u_n + b$ à partir du rang $1$) conservée ; dose et taux d'élimination modifiés ; questions de seuil (inéquation, fonction Python mystere) retirées : chapitre ultérieur ; forme explicite obtenue par une suite auxiliaire géométrique au lieu d'une récurrence ; encadrement par récurrence, risque de surdosage et liste Python des quantités ajoutés. Solution écrite pour le site."
+    },
+    "preambule": "Un patient suit un traitement : il prend une dose de $4$ mg d'un médicament toutes les $12$ heures. On admet qu'entre deux prises consécutives, l'organisme élimine $25\\,\\%$ de la quantité de médicament qu'il contenait juste après la première de ces deux prises.\n\nPour tout entier $n \\geqslant 1$, on note $u_n$ la quantité de médicament, en mg, présente dans l'organisme juste après la $n$-ième prise. Avant la première prise, l'organisme ne contient pas ce médicament : ainsi $u_1 = 4$.\n\nLe médicament devient dangereux pour le patient si la quantité présente dans l'organisme dépasse $18$ mg.\n\n**Partie A : le modèle** (questions A.1 à A.4).\n\n**Partie B : une expression de $u_n$** (questions B.1 et B.2). Seule la question B.2.b) demande la calculatrice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Calculer $u_2$ et $u_3$, puis interpréter $u_3$ dans le contexte.\n\nSaisis la valeur de $u_3$.",
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 9.25,
+          "tolerance": 0.001
+        },
+        "revoir": "l-recurrence-suites-028",
+        "indices": [
+          "Éliminer $25\\,\\%$ d'une quantité revient à en garder $75\\,\\%$, c'est-à-dire à la multiplier par $0{,}75$. Ensuite, la nouvelle prise ajoute $4$ mg."
+        ],
+        "attenduCorrecteur": "- $u_2 = 0{,}75 \\times 4 + 4 = 7$ et $u_3 = 0{,}75 \\times 7 + 4 = 9{,}25$ : 0,25 pt.\n- Interprétation : juste après la troisième prise, l'organisme contient $9{,}25$ mg de médicament : 0,25 pt.",
+        "solution": "Entre la première et la deuxième prise, l'organisme élimine $25\\,\\%$ des $4$ mg : il en reste $75\\,\\%$, soit $0{,}75 \\times 4 = 3$ mg. La deuxième prise ajoute $4$ mg : $u_2 = 3 + 4 = 7$.\n\nDe même, $u_3 = 0{,}75 \\times 7 + 4 = 5{,}25 + 4 = 9{,}25$.\n\nJuste après la troisième prise, l'organisme du patient contient $9{,}25$ mg de médicament."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Justifier que, pour tout entier $n \\geqslant 1$, $u_{n+1} = 0{,}75\\,u_n + 4$.",
+        "points": 0.75,
+        "revoir": "l-recurrence-suites-029",
+        "indices": [
+          "Méthode de modélisation du cours : décris, dans l'ordre de l'énoncé, ce qui se passe entre la $n$-ième et la $(n+1)$-ième prise (ce qui est éliminé, puis ce qui est ajouté), et traduis chaque étape par une opération sur $u_n$."
+        ],
+        "attenduCorrecteur": "- Entre la $n$-ième et la $(n+1)$-ième prise, il reste $75\\,\\%$ de $u_n$, soit $0{,}75\\,u_n$ (baisse de $25\\,\\%$ : coefficient multiplicateur $1 - 0{,}25$) : 0,5 pt.\n- La $(n+1)$-ième prise ajoute $4$ mg après l'élimination : $u_{n+1} = 0{,}75\\,u_n + 4$ : 0,25 pt.",
+        "solution": "Soit $n \\geqslant 1$ un entier. Juste après la $n$-ième prise, l'organisme contient $u_n$ mg de médicament. Jusqu'à la prise suivante, il en élimine $25\\,\\%$ : il en reste $75\\,\\%$, soit $\\left(1 - \\dfrac{25}{100}\\right)u_n = 0{,}75\\,u_n$ mg. La $(n+1)$-ième prise ajoute alors $4$ mg, qui ne sont pas touchés par cette élimination.\n\nDonc, pour tout entier $n \\geqslant 1$, $u_{n+1} = 0{,}75\\,u_n + 4$.",
+        "erreurFrequente": "Écrire $u_{n+1} = 0{,}75(u_n + 4)$ : la dose de $4$ mg est prise après l'élimination ; elle n'en subit pas les $25\\,\\%$."
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "Démontrer par récurrence que, pour tout entier $n \\geqslant 1$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 16$.",
+        "points": 1.5,
+        "revoir": "l-recurrence-suites-021",
+        "indices": [
+          "On a $u_{n+1} = f(u_n)$ avec $f(x) = 0{,}75x + 4$, fonction affine de coefficient directeur positif, donc croissante sur $\\mathbb{R}$ : applique la méthode du cours (initialisation avec $u_1$ et $u_2$, puis $f$ appliquée à l'encadrement dans l'hérédité).",
+          "Initialisation : $u_1 = 4$ et $u_2 = 7$ (question A.1). Hérédité : suppose $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 16$ pour un entier $n \\geqslant 1$, applique $f$ aux quatre membres, puis calcule $f(0)$ et $f(16)$."
+        ],
+        "attenduCorrecteur": "- Propriété $P(n)$ énoncée ; **initialisation** au rang $1$ : $0 \\leqslant u_1 = 4 \\leqslant u_2 = 7 \\leqslant 16$ : 0,25 pt.\n- **Hérédité** : hypothèse de récurrence pour un entier $n \\geqslant 1$ fixé ; objectif $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 16$ écrit : 0,25 pt.\n- Croissance de $f : x \\mapsto 0{,}75x + 4$ justifiée ($0{,}75 > 0$) et utilisée pour conserver l'ordre (ou : multiplication par $0{,}75 > 0$, puis ajout de $4$) : 0,5 pt.\n- $f(0) = 4 \\geqslant 0$ et $f(16) = 16$, d'où $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 16$ : 0,25 pt.\n- **Conclusion** par le principe de récurrence : 0,25 pt.",
+        "solution": "Pour tout entier $n \\geqslant 1$, on note $P(n)$ : « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 16$ ». On pose $f(x) = 0{,}75x + 4$ pour tout réel $x$ : ainsi $u_{n+1} = f(u_n)$. La fonction $f$ est affine, de coefficient directeur $0{,}75 > 0$ : elle est croissante sur $\\mathbb{R}$.\n\n**Initialisation** : $u_1 = 4$ et $u_2 = 7$ (question A.1). Or $0 \\leqslant 4 \\leqslant 7 \\leqslant 16$, donc $P(1)$ est vraie.\n\n**Hérédité** : soit $n \\geqslant 1$ un entier. On suppose $P(n)$ vraie : $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 16$. On veut montrer $P(n+1)$ : $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 16$.\n\nLa fonction $f$ étant croissante sur $\\mathbb{R}$, l'appliquer conserve l'ordre :\n\n$$f(0) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(16).$$\n\nOr $f(0) = 4$, $f(u_n) = u_{n+1}$, $f(u_{n+1}) = u_{n+2}$ et $f(16) = 0{,}75 \\times 16 + 4 = 12 + 4 = 16$. Donc $4 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 16$ et, comme $0 \\leqslant 4$ : $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 16$. Ainsi $P(n+1)$ est vraie.\n\n**Conclusion** : $P(1)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier $n \\geqslant 1$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 16$.",
+        "erreurFrequente": "Initialiser au rang $0$ : la suite commence à $u_1$. Ici, l'initialisation demande $u_1$ et $u_2$, puisque $P(1)$ compare ces deux termes."
+      },
+      {
+        "id": "q4",
+        "label": "A.4.",
+        "enonce": "En déduire le sens de variation de la suite $(u_n)$. Le traitement fait-il courir un danger au patient ? Justifier.",
+        "points": 0.75,
+        "revoir": "l-recurrence-suites-014",
+        "indices": [
+          "Lis l'encadrement de la question A.3 : une partie compare $u_n$ et $u_{n+1}$, l'autre donne un majorant de la suite. Compare ce majorant à la quantité dangereuse donnée dans l'énoncé."
+        ],
+        "attenduCorrecteur": "- $u_n \\leqslant u_{n+1}$ pour tout $n \\geqslant 1$ : la suite est croissante ; la quantité présente juste après une prise augmente d'une prise à l'autre : 0,25 pt.\n- La suite est majorée par $16$ : juste après chaque prise, la quantité ne dépasse pas $16$ mg, et elle diminue entre deux prises : 0,25 pt.\n- $16 < 18$ : la quantité n'atteint jamais les $18$ mg dangereux ; dans ce modèle, le traitement ne fait pas courir de danger au patient : 0,25 pt.",
+        "solution": "D'après la question A.3, pour tout entier $n \\geqslant 1$, $u_n \\leqslant u_{n+1}$ : la suite $(u_n)$ est croissante. La quantité de médicament présente juste après une prise augmente d'une prise à la suivante.\n\nToujours d'après la question A.3, $u_n \\leqslant 16$ pour tout entier $n \\geqslant 1$ : la suite est majorée par $16$. Juste après chaque prise, l'organisme contient au plus $16$ mg de médicament ; entre deux prises, la quantité diminue, donc elle reste elle aussi inférieure ou égale à $16$ mg.\n\nComme $16 < 18$, la quantité de médicament ne dépasse jamais $18$ mg : dans ce modèle, le traitement ne fait pas courir de danger au patient.",
+        "erreurFrequente": "Conclure au danger parce que la suite est croissante : une suite croissante peut rester sous un plafond. Ici, c'est le majorant $16$, inférieur à $18$, qui permet de conclure."
+      },
+      {
+        "id": "q5",
+        "label": "B.1.",
+        "enonce": "On considère la suite $(v_n)$ définie, pour tout entier $n \\geqslant 1$, par $v_n = u_n - 16$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Démontrer que la suite $(v_n)$ est géométrique ; préciser sa raison et son premier terme $v_1$.",
+            "points": 0.75,
+            "revoir": "l-recurrence-suites-030",
+            "indices": [
+              "Même démarche que dans l'exemple du club du cours : exprime $v_{n+1}$ en fonction de $v_n$, en passant par $u_{n+1}$, puis par $u_n = v_n + 16$.",
+              "$v_{n+1} = u_{n+1} - 16 = 0{,}75\\,u_n + 4 - 16$. Remplace $u_n$ par $v_n + 16$, puis réduis."
+            ],
+            "attenduCorrecteur": "- $v_{n+1} = u_{n+1} - 16 = 0{,}75\\,u_n - 12$, puis $u_n = v_n + 16$ : 0,25 pt.\n- $v_{n+1} = 0{,}75(v_n + 16) - 12 = 0{,}75\\,v_n$ pour tout $n \\geqslant 1$ : suite géométrique de raison $0{,}75$ : 0,25 pt.\n- Premier terme $v_1 = u_1 - 16 = -12$ : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$ :\n\n$$v_{n+1} = u_{n+1} - 16 = 0{,}75\\,u_n + 4 - 16 = 0{,}75\\,u_n - 12.$$\n\nComme $v_n = u_n - 16$, on a $u_n = v_n + 16$. Donc :\n\n$$v_{n+1} = 0{,}75(v_n + 16) - 12 = 0{,}75\\,v_n + 12 - 12 = 0{,}75\\,v_n.$$\n\nLa suite $(v_n)$ est donc géométrique de raison $0{,}75$, de premier terme $v_1 = u_1 - 16 = 4 - 16 = -12$.",
+            "erreurFrequente": "S'arrêter à $v_{n+1} = 0{,}75\\,u_n - 12$ : pour reconnaître une suite géométrique, il faut exprimer $v_{n+1}$ en fonction de $v_n$ seulement."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "En déduire que, pour tout entier $n \\geqslant 1$, $u_n = 16 - 12 \\times 0{,}75^{n-1}$.",
+            "points": 0.5,
+            "revoir": "l-recurrence-suites-028",
+            "indices": [
+              "Écris $v_n$ en fonction de $n$ (forme explicite d'une suite géométrique, vue en première), puis reviens à $u_n = v_n + 16$. Attention : le premier terme est $v_1$ et non $v_0$."
+            ],
+            "attenduCorrecteur": "- $v_n = v_1 \\times 0{,}75^{n-1} = -12 \\times 0{,}75^{n-1}$, l'exposant $n - 1$ venant du premier terme de rang $1$ : 0,25 pt.\n- $u_n = v_n + 16 = 16 - 12 \\times 0{,}75^{n-1}$ : 0,25 pt.",
+            "solution": "La suite $(v_n)$ est géométrique de raison $0{,}75$ et de premier terme $v_1 = -12$. Pour tout entier $n \\geqslant 1$, on passe de $v_1$ à $v_n$ en multipliant $n - 1$ fois par $0{,}75$ : $v_n = v_1 \\times 0{,}75^{n-1} = -12 \\times 0{,}75^{n-1}$.\n\nComme $u_n = v_n + 16$ : pour tout entier $n \\geqslant 1$, $u_n = 16 - 12 \\times 0{,}75^{n-1}$.\n\nContrôle : pour $n = 2$, $16 - 12 \\times 0{,}75 = 16 - 9 = 7 = u_2$.",
+            "erreurFrequente": "Écrire $v_n = -12 \\times 0{,}75^{n}$ : cette forme vaut pour un premier terme de rang $0$. Ici le premier terme est $v_1$ : pour $n = 1$, on doit retrouver $-12$, d'où l'exposant $n - 1$."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "label": "B.2.",
+        "enonce": "On considère la fonction Python quantites ci-dessous, qui prend en paramètre un entier $n \\geqslant 1$. Elle doit renvoyer la liste $[u_1, u_2, \\dots, u_n]$ ; une ligne est incomplète.",
+        "code": {
+          "langage": "python",
+          "source": "def quantites(n):\n    u = 4\n    L = [u]\n    for k in range(n - 1):\n        u = ...  # à compléter\n        L.append(u)\n    return L"
+        },
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q6a",
+            "label": "a)",
+            "enonce": "Compléter la ligne incomplète, puis donner la liste renvoyée par l'appel quantites(3).",
+            "points": 0.5,
+            "revoir": "l-recurrence-suites-036",
+            "indices": [
+              "Au début de chaque tour de boucle, u contient un terme de la suite ; la ligne incomplète doit le remplacer par le terme suivant, avec la relation de la question A.2. En Python, les décimaux s'écrivent avec un point.",
+              "range(n - 1) fait tourner la boucle $n - 1$ fois, et la liste contient déjà $u_1$ au départ. Pour quantites(3), suis l'évolution de u et de L tour par tour."
+            ],
+            "attenduCorrecteur": "- Ligne complétée : u = 0.75 * u + 4 : 0,25 pt.\n- quantites(3) renvoie [4, 7.0, 9.25], c'est-à-dire $[u_1, u_2, u_3]$ : 0,25 pt.",
+            "solution": "La variable u contient le terme courant ; la ligne incomplète doit la remplacer par le terme suivant, d'après la relation $u_{k+1} = 0{,}75\\,u_k + 4$. On écrit donc : u = 0.75 * u + 4.\n\nAppel quantites(3) : la liste L vaut d'abord [4]. La boucle fait $3 - 1 = 2$ tours. Au premier tour, u devient $0{,}75 \\times 4 + 4 = 7$, qui est ajouté à L ; au second, u devient $0{,}75 \\times 7 + 4 = 9{,}25$, qui est ajouté à L. La fonction renvoie [4, 7.0, 9.25] : ce sont $u_1$, $u_2$ et $u_3$, que Python affiche avec un point décimal."
+          },
+          {
+            "id": "q6b",
+            "label": "b)",
+            "enonce": "On exécute quantites(10). Quel terme de la suite le dernier élément de la liste renvoyée représente-t-il ? À l'aide de la question B.1 et de la calculatrice, en donner une valeur arrondie à $0{,}01$ près, puis l'interpréter dans le contexte.\n\nSaisis la valeur arrondie ; la justification est à rédiger.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 15.1,
+              "tolerance": 0.01
+            },
+            "revoir": "l-recurrence-suites-002",
+            "indices": [
+              "La liste renvoyée par quantites(n) est $[u_1, \\dots, u_n]$ : son dernier élément est $u_n$. Plutôt que de calculer les termes un par un, utilise l'expression explicite de la question B.1.",
+              "Avec $n = 10$, l'exposant de $0{,}75$ est $10 - 1 = 9$ : calcule $0{,}75^9$ à la calculatrice, puis $16 - 12 \\times 0{,}75^9$."
+            ],
+            "attenduCorrecteur": "- Le dernier élément de quantites(10) est $u_{10}$ : la liste contient $u_1$, …, $u_{10}$ : 0,25 pt.\n- $u_{10} = 16 - 12 \\times 0{,}75^{9} \\approx 15{,}10$ : 0,25 pt.\n- Interprétation : juste après la dixième prise, l'organisme contient environ $15{,}10$ mg de médicament : 0,25 pt.",
+            "solution": "La fonction renvoie la liste $[u_1, u_2, \\dots, u_n]$ ; pour $n = 10$, son dernier élément est $u_{10}$.\n\nD'après la question B.1, $u_{10} = 16 - 12 \\times 0{,}75^{9}$. À la calculatrice, $0{,}75^{9} \\approx 0{,}0751$, donc $12 \\times 0{,}75^{9} \\approx 0{,}901$ et $u_{10} \\approx 15{,}10$.\n\nJuste après la dixième prise, l'organisme du patient contient environ $15{,}10$ mg de médicament : une quantité inférieure à $16$ mg, comme le prévoit la question A.3.",
+            "erreurFrequente": "Calculer $16 - 12 \\times 0{,}75^{10} \\approx 15{,}32$ : c'est $u_{11}$. Le premier terme étant $u_1$, l'exposant est $n - 1 = 9$."
+          }
+        ]
+      }
+    ]
+  }
+]

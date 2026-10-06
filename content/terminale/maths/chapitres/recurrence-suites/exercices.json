@@ -1,0 +1,1708 @@
+[
+  {
+    "id": "x-recurrence-suites-001",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-recurrence"],
+    "capacites": ["bo-m-logique-14"],
+    "titre": "Les étapes d'une récurrence",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 10,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = 3u_n + 2$. On veut démontrer par récurrence que, pour tout entier naturel $n$, $u_n = 3^n - 1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Remets dans l'ordre les phrases de la démonstration.",
+        "reponse": {
+          "type": "ordre",
+          "elements": [
+            "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n = 3^n - 1$ ».",
+            "$u_0 = 0$ et $3^0 - 1 = 1 - 1 = 0$, donc $P(0)$ est vraie.",
+            "Soit $n$ un entier naturel. On suppose $P(n)$ vraie, c'est-à-dire $u_n = 3^n - 1$.",
+            "Alors $u_{n+1} = 3u_n + 2 = 3\\left(3^n - 1\\right) + 2 = 3^{n+1} - 1$, donc $P(n+1)$ est vraie.",
+            "$P(0)$ est vraie et la propriété est héréditaire : d'après le principe de récurrence, $u_n = 3^n - 1$ pour tout entier naturel $n$."
+          ]
+        },
+        "indices": [
+          "Une démonstration par récurrence suit toujours le même plan : la propriété, l'initialisation, l'hérédité, la conclusion.",
+          "La démonstration commence par nommer la propriété $P(n)$, puis vérifie $P(0)$ : c'est l'initialisation. Dans l'hérédité, on suppose d'abord, on calcule ensuite."
+        ],
+        "revoir": "l-recurrence-suites-006",
+        "solution": "On nomme d'abord la propriété $P(n)$. On la vérifie ensuite au rang $0$ : $u_0 = 0 = 3^0 - 1$ (initialisation). Vient l'hérédité : on suppose $P(n)$ vraie pour un entier naturel $n$, puis on calcule $u_{n+1}$ pour obtenir $P(n+1)$. On termine par la conclusion, qui cite le principe de récurrence."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Dans le calcul $u_{n+1} = 3u_n + 2 = 3\\left(3^n - 1\\right) + 2 = 3^{n+1} - 1$, quelle égalité utilise l'hypothèse de récurrence ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$u_{n+1} = 3u_n + 2$",
+            "$3u_n + 2 = 3\\left(3^n - 1\\right) + 2$",
+            "$3\\left(3^n - 1\\right) + 2 = 3^{n+1} - 1$",
+            "Aucune : l'hypothèse de récurrence ne sert que dans l'initialisation."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Cette égalité est la définition de la suite : elle est vraie pour tout $n$, sans rien supposer.",
+            null,
+            "Cette égalité est un simple calcul : $3 \\times 3^n = 3^{n+1}$ et $-3 + 2 = -1$. Elle ne fait plus intervenir $u_n$.",
+            "L'initialisation ne suppose rien : elle se vérifie par un calcul. C'est dans l'hérédité qu'on utilise l'hypothèse $u_n = 3^n - 1$."
+          ]
+        },
+        "indices": [
+          "L'hypothèse de récurrence est « $u_n = 3^n - 1$ ». Cherche l'égalité où $u_n$ est remplacé par autre chose.",
+          "La première égalité vient de la définition de la suite : elle est vraie sans rien supposer. Regarde ce que devient $u_n$ dans les égalités suivantes."
+        ],
+        "revoir": "l-recurrence-suites-004",
+        "solution": "L'hypothèse de récurrence est $u_n = 3^n - 1$. On s'en sert pour remplacer $u_n$ dans $3u_n + 2$ : c'est l'égalité $3u_n + 2 = 3\\left(3^n - 1\\right) + 2$. La première égalité est la définition de la suite, la dernière un calcul sur les puissances. Au bac, on le signale : « d'après l'hypothèse de récurrence »."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-002",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-recurrence"],
+    "capacites": ["bo-m-logique-14"],
+    "titre": "Écrire la propriété au rang n + 1",
+    "duree": 3,
+    "calculatrice": false,
+    "ordre": 20,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On veut démontrer par récurrence que, pour tout entier naturel $n$, $u_n = 4 \\times 3^n - n$. Dans l'hérédité, quelle égalité dois-tu obtenir ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$u_{n+1} = 4 \\times 3^{n+1} - (n+1)$",
+            "$u_{n+1} = 4 \\times 3^n - n + 1$",
+            "$u_{n+1} = 4 \\times 3^{n+1} - n$",
+            "$u_n + 1 = 4 \\times 3^{n+1} - (n+1)$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Tu as ajouté $1$ au membre de droite au lieu de remplacer $n$ par $n + 1$ : l'exposant doit devenir $n + 1$.",
+            "Tu n'as remplacé que le $n$ de l'exposant : le dernier terme $-n$ devient lui aussi $-(n+1)$.",
+            "$u_n + 1$ n'est pas $u_{n+1}$ : c'est l'indice qui augmente de $1$, pas le terme."
+          ]
+        },
+        "indices": [
+          "$P(n+1)$ s'obtient en remplaçant **chaque** $n$ par $n + 1$ dans $P(n)$.",
+          "Compte les endroits où $n$ apparaît dans « $u_n = 4 \\times 3^n - n$ » : il y en a trois."
+        ],
+        "revoir": "l-recurrence-suites-006",
+        "solution": "On remplace chaque $n$ par $n + 1$ : dans l'indice, dans l'exposant et dans le dernier terme. On doit obtenir $u_{n+1} = 4 \\times 3^{n+1} - (n+1)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On veut démontrer par récurrence que, pour tout entier $n \\geqslant 1$, $1 \\times 2 + 2 \\times 3 + \\dots + n(n+1) = \\dfrac{n(n+1)(n+2)}{3}$. Dans l'hérédité, quelle égalité dois-tu obtenir ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$1 \\times 2 + \\dots + n(n+1) = \\dfrac{(n+1)(n+2)(n+3)}{3}$",
+            "$1 \\times 2 + \\dots + n(n+1) + (n+1)(n+2) = \\dfrac{n(n+1)(n+2)}{3} + 1$",
+            "$1 \\times 2 + \\dots + n(n+1) + (n+1)(n+2) = \\dfrac{(n+1)(n+2)(n+3)}{3}$",
+            "$1 \\times 2 + \\dots + n(n+1) + (n+1)(n+2) = \\dfrac{(n+1)(n+1)(n+2)}{3}$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Le membre de gauche change aussi : au rang $n + 1$, la somme va jusqu'au terme $(n+1)(n+2)$.",
+            "Tu as ajouté $1$ à droite. Il faut remplacer chaque $n$ par $n + 1$ : $n$ devient $n + 1$, $n + 1$ devient $n + 2$ et $n + 2$ devient $n + 3$.",
+            null,
+            "Tu n'as remplacé que le premier facteur : $n + 1$ devient aussi $n + 2$, et $n + 2$ devient $n + 3$."
+          ]
+        },
+        "indices": [
+          "Remplace chaque $n$ par $n + 1$, dans les **deux** membres.",
+          "Le terme de rang $k$ de la somme est $k(k+1)$ : écris le dernier terme de la somme au rang $n + 1$. Fais de même avec chacun des trois facteurs du membre de droite."
+        ],
+        "revoir": "l-recurrence-suites-007",
+        "solution": "Au rang $n + 1$, la somme s'arrête au terme $(n+1)\\big((n+1)+1\\big) = (n+1)(n+2)$. À droite, les facteurs $n$, $n + 1$ et $n + 2$ deviennent $n + 1$, $n + 2$ et $n + 3$. On doit donc obtenir $1 \\times 2 + \\dots + n(n+1) + (n+1)(n+2) = \\dfrac{(n+1)(n+2)(n+3)}{3}$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-003",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-recurrence"],
+    "capacites": ["bo-m-logique-14"],
+    "titre": "L'initialisation compte",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 30,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = u_n + 2n + 1$. Pour tout entier naturel $n$, on note $P(n)$ : « $u_n = n^2 + 3$ ».",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Vrai ou faux ? La propriété $P(n)$ est héréditaire : si $P(n)$ est vraie pour un entier naturel $n$, alors $P(n+1)$ est vraie.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Si $u_n = n^2 + 3$, alors $u_{n+1} = n^2 + 3 + 2n + 1 = (n^2 + 2n + 1) + 3 = (n+1)^2 + 3$ : $P(n+1)$ est vraie."
+        },
+        "indices": [
+          "Suppose $u_n = n^2 + 3$, calcule $u_{n+1}$ avec la relation de récurrence, puis compare avec $(n+1)^2 + 3$.",
+          "$u_{n+1} = u_n + 2n + 1 = n^2 + 3 + 2n + 1$. Développe $(n+1)^2$ et compare."
+        ],
+        "revoir": "l-recurrence-suites-006",
+        "solution": "Soit $n$ un entier naturel tel que $u_n = n^2 + 3$. Alors $u_{n+1} = u_n + 2n + 1 = n^2 + 2n + 1 + 3 = (n+1)^2 + 3$, car $(n+1)^2 = n^2 + 2n + 1$. Donc $P(n+1)$ est vraie : la propriété est héréditaire. L'affirmation est vraie."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux ? On peut en conclure que $u_n = n^2 + 3$ pour tout entier naturel $n$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "L'initialisation échoue : $u_0 = 1$, alors que $0^2 + 3 = 3$. Une propriété héréditaire n'est démontrée que si elle est vraie au départ."
+        },
+        "indices": [
+          "Une récurrence a deux étapes. La première a-t-elle été vérifiée ?",
+          "Calcule les deux membres de $P(0)$ : $u_0$ d'une part, $0^2 + 3$ d'autre part."
+        ],
+        "revoir": "l-recurrence-suites-010",
+        "solution": "$u_0 = 1$ et $0^2 + 3 = 3$ : $P(0)$ est fausse. L'hérédité seule ne démontre rien : le premier domino ne tombe pas. D'ailleurs, $u_1 = u_0 + 2 \\times 0 + 1 = 2$, alors que $1^2 + 3 = 4$. L'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On cherche un réel $k$ tel que la propriété « $u_n = n^2 + k$ » soit vraie pour tout entier naturel $n$. Quelle valeur de $k$ convient ?",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "L'hérédité se démontre comme à la question 1, quelle que soit la valeur de $k$. C'est l'initialisation qui décide de $k$.",
+          "Écris l'initialisation : $u_0 = 0^2 + k$, où $u_0$ est donné dans l'énoncé."
+        ],
+        "revoir": "l-recurrence-suites-010",
+        "solution": "Pour tout réel $k$, la propriété est héréditaire : si $u_n = n^2 + k$, alors $u_{n+1} = n^2 + k + 2n + 1 = (n+1)^2 + k$. L'initialisation impose $u_0 = 0^2 + k$, soit $k = u_0 = 1$. Avec $k = 1$, les deux étapes sont vérifiées : d'après le principe de récurrence, $u_n = n^2 + 1$ pour tout entier naturel $n$. La valeur cherchée est $k = 1$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-004",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-recurrence"],
+    "capacites": ["bo-m-logique-14"],
+    "titre": "Conjecturer une forme explicite",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 40,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 2$ et, pour tout entier naturel $n$, $u_{n+1} = 3u_n - 2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calcule $u_3$.",
+        "reponse": { "type": "numerique", "valeur": 28, "tolerance": 0 },
+        "indices": [
+          "Applique la relation de récurrence trois fois, en partant de $u_0$.",
+          "$u_1 = 3 \\times 2 - 2 = 4$. Calcule $u_2$ à partir de $u_1$, puis $u_3$ à partir de $u_2$."
+        ],
+        "revoir": "l-recurrence-suites-004",
+        "solution": "$u_1 = 3 \\times 2 - 2 = 4$, $u_2 = 3 \\times 4 - 2 = 10$ et $u_3 = 3 \\times 10 - 2 = 28$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle conjecture est compatible avec les termes $u_0$ à $u_3$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$u_n = 2n + 2$", "$u_n = 2^{n+1}$", "$u_n = 3^n + 1$", "$u_n = 2 \\times 3^n$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Elle convient pour $u_0 = 2$ et $u_1 = 4$, mais donne $6$ au rang $2$, alors que $u_2 = 10$. Deux termes ne suffisent pas pour conjecturer.",
+            "Elle convient pour $u_0$ et $u_1$, mais donne $8$ au rang $2$, alors que $u_2 = 10$.",
+            null,
+            "Elle donne $6$ au rang $1$, alors que $u_1 = 4$."
+          ]
+        },
+        "indices": [
+          "Teste chaque formule sur **tous** les termes calculés, pas seulement sur les deux premiers.",
+          "Retire $1$ aux termes $2$, $4$, $10$ et $28$ : quels nombres obtiens-tu ?"
+        ],
+        "revoir": "l-recurrence-suites-004",
+        "solution": "Les termes $2$, $4$, $10$ et $28$ valent $3^0 + 1$, $3^1 + 1$, $3^2 + 1$ et $3^3 + 1$. Seule la formule $u_n = 3^n + 1$ convient aux quatre rangs : $2n + 2$ et $2^{n+1}$ échouent au rang $2$, et $2 \\times 3^n$ dès le rang $1$. On conjecture que $u_n = 3^n + 1$ ; il reste à le démontrer par récurrence."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans l'hérédité, on suppose $u_n = 3^n + 1$. Que vaut alors $u_{n+1} = 3u_n - 2$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$9^n + 1$", "$3^{n+1} + 3$", "$3^{n+1} + 1$", "$3^{n+1} - 1$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$3 \\times 3^n$ n'est pas $9^n$ : on multiplie par $3$ une fois de plus, donc l'exposant augmente de $1$.",
+            "Tu as oublié le $-2$ de la relation : $3\\left(3^n + 1\\right) = 3^{n+1} + 3$, et il reste à retirer $2$.",
+            null,
+            "Tu as oublié de multiplier le $1$ par $3$ : $3\\left(3^n + 1\\right) = 3^{n+1} + 3$, puis on retire $2$."
+          ]
+        },
+        "indices": [
+          "Remplace $u_n$ par $3^n + 1$ dans $3u_n - 2$, puis développe.",
+          "$3u_n - 2 = 3\\left(3^n + 1\\right) - 2$. Développe : $3 \\times 3^n = 3^{n+1}$, et n'oublie pas de multiplier le $1$ par $3$."
+        ],
+        "revoir": "l-recurrence-suites-004",
+        "solution": "D'après l'hypothèse de récurrence, $u_{n+1} = 3\\left(3^n + 1\\right) - 2 = 3^{n+1} + 3 - 2 = 3^{n+1} + 1$. C'est la conjecture au rang $n + 1$ : elle est héréditaire. Comme $u_0 = 2 = 3^0 + 1$, elle est vraie pour tout entier naturel $n$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-005",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-encadrement-variation"],
+    "capacites": ["bo-m-suites-08"],
+    "titre": "Majorants et minorants",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 50,
+    "preambule": "Soit $(u_n)$ la suite définie, pour tout entier naturel $n$, par $u_n = 3 + \\dfrac{2}{n+1}$. Ses premiers termes sont $u_0 = 5$, $u_1 = 4$ et $u_2 = \\dfrac{11}{3}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quels nombres sont des majorants de $(u_n)$ ? Plusieurs réponses sont possibles.",
+        "reponse": {
+          "type": "qcm-multiple",
+          "choix": ["$4$", "$5$", "$6$", "$3$"],
+          "bonnes": [1, 2]
+        },
+        "indices": [
+          "Un majorant $M$ doit vérifier $u_n \\leqslant M$ pour **tous** les entiers naturels $n$, y compris $n = 0$.",
+          "Comme $n + 1 \\geqslant 1$, on a $0 < \\dfrac{2}{n+1} \\leqslant 2$. Déduis-en un encadrement de $u_n$, puis teste chaque nombre."
+        ],
+        "revoir": "l-recurrence-suites-014",
+        "solution": "Pour tout entier naturel $n$, $n + 1 \\geqslant 1$, donc $0 < \\dfrac{2}{n+1} \\leqslant 2$, puis $3 < u_n \\leqslant 5$. Ainsi $5$ est un majorant, et $6$ aussi : tout réel plus grand qu'un majorant en est un. En revanche, $4$ n'est pas un majorant, car $u_0 = 5 > 4$, et $3$ non plus. Les majorants proposés sont $5$ et $6$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux ? La suite $(u_n)$ est minorée par $3$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Pour tout $n$, $u_n - 3 = \\dfrac{2}{n+1} > 0$, donc $u_n \\geqslant 3$."
+        },
+        "indices": [
+          "Il faut vérifier que $u_n \\geqslant 3$ pour tout entier naturel $n$.",
+          "$u_n - 3 = \\dfrac{2}{n+1}$ : quel est le signe de ce quotient ?"
+        ],
+        "revoir": "l-recurrence-suites-014",
+        "solution": "Pour tout entier naturel $n$, $u_n - 3 = \\dfrac{2}{n+1}$ est le quotient de deux nombres strictement positifs : $u_n - 3 > 0$. Ainsi $u_n \\geqslant 3$ pour tout $n$ : la suite est minorée par $3$. L'affirmation est vraie."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Comme $u_n \\leqslant 4$ pour tout entier $n \\geqslant 1$, le nombre $4$ est un majorant de $(u_n)$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Un majorant doit convenir pour tous les termes, y compris $u_0 = 5$, qui dépasse $4$."
+        },
+        "indices": [
+          "Relis la définition : « pour tout entier naturel $n$ ».",
+          "La définition s'applique aussi à $n = 0$ : compare $u_0$ à $4$."
+        ],
+        "revoir": "l-recurrence-suites-014",
+        "solution": "Un majorant $M$ vérifie $u_n \\leqslant M$ pour tout entier naturel $n$, donc aussi pour $n = 0$. Or $u_0 = 5 > 4$ : le nombre $4$ n'est pas un majorant de $(u_n)$, même si $u_n \\leqslant 4$ à partir du rang $1$. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-006",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-encadrement-variation"],
+    "capacites": ["bo-m-suites-08"],
+    "titre": "Transmettre un encadrement",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 60,
+    "preambule": "Soit $(u_n)$ une suite telle que, pour tout entier naturel $n$, $u_{n+1} = 0{,}5u_n + 2$. On veut démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant 4$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Remets dans l'ordre les étapes de l'hérédité.",
+        "reponse": {
+          "type": "ordre",
+          "elements": [
+            "Soit $n$ un entier naturel. On suppose $0 \\leqslant u_n \\leqslant 4$.",
+            "On multiplie par $0{,}5$, qui est positif : $0 \\leqslant 0{,}5u_n \\leqslant 2$.",
+            "On ajoute $2$ : $2 \\leqslant 0{,}5u_n + 2 \\leqslant 4$, c'est-à-dire $2 \\leqslant u_{n+1} \\leqslant 4$.",
+            "Comme $0 \\leqslant 2$, on a $0 \\leqslant u_{n+1} \\leqslant 4$ : $P(n+1)$ est vraie."
+          ]
+        },
+        "indices": [
+          "Pars de l'hypothèse de récurrence et reconstruis $u_{n+1} = 0{,}5u_n + 2$ opération par opération, dans l'ordre où elles s'appliquent à $u_n$.",
+          "Dans $0{,}5u_n + 2$, on multiplie d'abord $u_n$ par $0{,}5$, puis on ajoute $2$. La dernière étape compare l'encadrement obtenu à celui qu'on veut."
+        ],
+        "revoir": "l-recurrence-suites-017",
+        "solution": "L'hérédité part de l'hypothèse $0 \\leqslant u_n \\leqslant 4$. On reconstruit $u_{n+1}$ dans l'ordre des opérations : multiplication par $0{,}5$, positif, qui garde le sens des inégalités, puis ajout de $2$. On obtient $2 \\leqslant u_{n+1} \\leqslant 4$, qui entraîne $0 \\leqslant u_{n+1} \\leqslant 4$ : $P(n+1)$ est vraie."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On prend maintenant $u_0 = 5$. Que devient la démonstration ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Elle échoue à l'initialisation : $u_0 = 5$ n'est pas compris entre $0$ et $4$.",
+            "Elle échoue à l'hérédité : $0{,}5 \\times 5 + 2 = 4{,}5$ dépasse $4$.",
+            "Elle reste valable : $0 \\leqslant u_n \\leqslant 4$ pour tout entier naturel $n$.",
+            "Elle reste valable à condition de commencer au rang $1$."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "L'hérédité ne dépend pas de $u_0$ : elle part de l'hypothèse $0 \\leqslant u_n \\leqslant 4$ et reste juste. Le calcul $0{,}5 \\times 5 + 2$ part d'une valeur qui ne vérifie pas cette hypothèse.",
+            "La propriété est fausse dès le rang $0$ : $u_0 = 5 > 4$. Une récurrence sans initialisation ne prouve rien.",
+            "$u_1 = 0{,}5 \\times 5 + 2 = 4{,}5 > 4$ : la propriété est aussi fausse au rang $1$."
+          ]
+        },
+        "indices": [
+          "Reprends les deux étapes de la récurrence : laquelle dépend de la valeur de $u_0$ ?",
+          "L'hérédité part de l'hypothèse $0 \\leqslant u_n \\leqslant 4$, quel que soit $u_0$. Vérifie maintenant $P(0)$ avec $u_0 = 5$."
+        ],
+        "revoir": "l-recurrence-suites-017",
+        "solution": "L'hérédité ne dépend pas du premier terme : elle reste juste. En revanche, $P(0)$ s'écrit $0 \\leqslant 5 \\leqslant 4$, ce qui est faux : la démonstration échoue à l'initialisation. D'ailleurs, $u_1 = 4{,}5$ dépasse aussi $4$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-007",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-encadrement-variation"],
+    "capacites": ["bo-m-suites-08"],
+    "titre": "Appliquer une fonction croissante",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 70,
+    "preambule": "Soit $f$ la fonction définie sur $[0\\,;\\,2]$ par $f(x) = \\dfrac{3x + 2}{x + 2}$. On admet que $f$ est croissante sur $[0\\,;\\,2]$. Soit $(u_n)$ la suite définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$. On veut démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calcule $u_1$.",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "$u_1 = f(u_0)$ : remplace $x$ par $u_0$ dans l'expression de $f$.",
+          "$u_1 = f(0) = \\dfrac{3 \\times 0 + 2}{0 + 2}$."
+        ],
+        "revoir": "l-recurrence-suites-022",
+        "solution": "$u_1 = f(u_0) = f(0) = \\dfrac{3 \\times 0 + 2}{0 + 2} = \\dfrac{2}{2} = 1$. Comme $0 \\leqslant 0 \\leqslant 1 \\leqslant 2$, l'initialisation est vérifiée."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Dans l'hérédité, tu supposes $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 2$. Sachant que $f(0) = 1$ et $f(2) = 2$, qu'obtiens-tu en appliquant $f$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$1 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 2$",
+            "$1 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 2$",
+            "$1 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 2$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Appliquer $f$ décale les indices : $f(u_n) = u_{n+1}$ et $f(u_{n+1}) = u_{n+2}$.",
+            "Une fonction croissante garde l'ordre : de $u_n \\leqslant u_{n+1}$, on tire $f(u_n) \\leqslant f(u_{n+1})$, soit $u_{n+1} \\leqslant u_{n+2}$."
+          ]
+        },
+        "indices": [
+          "$f$ est croissante sur $[0\\,;\\,2]$, et les quatre nombres $0$, $u_n$, $u_{n+1}$ et $2$ sont dans cet intervalle : appliquer $f$ garde l'ordre.",
+          "On obtient $f(0) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(2)$. Remplace chaque image : $f(u_n)$ est le terme qui suit $u_n$."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "Les nombres $0$, $u_n$, $u_{n+1}$ et $2$ sont dans $[0\\,;\\,2]$, où $f$ est croissante : l'ordre est conservé, $f(0) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(2)$. Or $f(0) = 1$, $f(u_n) = u_{n+1}$, $f(u_{n+1}) = u_{n+2}$ et $f(2) = 2$. Donc $1 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 2$, puis $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 2$ : $P(n+1)$ est vraie."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Une fois la propriété démontrée pour tout entier naturel $n$, on peut affirmer que la suite $(u_n)$ est croissante et majorée par $2$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$u_n \\leqslant u_{n+1}$ pour tout $n$ : la suite est croissante ; $u_n \\leqslant 2$ pour tout $n$ : elle est majorée par $2$."
+        },
+        "indices": [
+          "Lis la propriété démontrée morceau par morceau.",
+          "« $u_n \\leqslant u_{n+1}$ pour tout $n$ » est la définition d'une suite croissante. Que dit le morceau « $u_n \\leqslant 2$ » ?"
+        ],
+        "revoir": "l-recurrence-suites-022",
+        "solution": "La propriété donne, pour tout entier naturel $n$, $u_n \\leqslant u_{n+1}$ : la suite $(u_n)$ est croissante. Elle donne aussi $0 \\leqslant u_n \\leqslant 2$ : la suite est minorée par $0$ et majorée par $2$. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-008",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-encadrement-variation"],
+    "capacites": ["bo-m-suites-08"],
+    "titre": "Croissante ou décroissante ?",
+    "duree": 3,
+    "calculatrice": false,
+    "ordre": 80,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 10$ et, pour tout entier naturel $n$, $u_{n+1} = 0{,}5u_n + 2$. La fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = 0{,}5x + 2$ est croissante, avec $f(4) = 4$ et $f(10) = 7$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calcule $u_1$.",
+        "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0 },
+        "indices": [
+          "Applique la relation de récurrence avec $n = 0$.",
+          "$u_1 = 0{,}5 \\times u_0 + 2$, avec $u_0 = 10$."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "$u_1 = 0{,}5 \\times 10 + 2 = 5 + 2 = 7$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle propriété faut-il démontrer par récurrence ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$4 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 10$",
+            "$4 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 10$",
+            "$4 \\leqslant u_n \\leqslant 7$",
+            "$10 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Elle est fausse dès le rang $0$ : $u_1 = 7 < u_0 = 10$. Une fonction croissante ne rend pas la suite croissante : elle transmet l'ordre de $u_0$ et $u_1$.",
+            null,
+            "Elle est fausse au rang $0$ : $u_0 = 10 > 7$.",
+            "Cet encadrement est impossible : $10$ n'est pas inférieur à $4$."
+          ]
+        },
+        "indices": [
+          "Compare $u_0$ et $u_1$ : c'est ce qui décide du sens de la propriété à démontrer.",
+          "Avec la valeur de $u_1$ trouvée à la question 1, écris chaque proposition au rang $0$ et regarde si elle est vraie."
+        ],
+        "revoir": "l-recurrence-suites-024",
+        "solution": "$u_1 = 7 \\leqslant u_0 = 10$ : les deux premiers termes descendent. Comme $f$ est croissante, avec $f(4) = 4$ et $f(10) = 7 \\leqslant 10$, on démontre « $4 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 10$ » : au rang $0$, $4 \\leqslant 7 \\leqslant 10 \\leqslant 10$ est vrai. La suite sera décroissante, minorée par $4$ et majorée par $10$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-009",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-modelisation"],
+    "capacites": ["bo-m-suites-09"],
+    "titre": "Traduire une évolution",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 90,
+    "preambule": "Une forêt compte $2\\,000$ arbres. Chaque année, on abat $8\\,\\%$ des arbres, puis on plante $120$ jeunes arbres. On note $u_n$ le nombre d'arbres au bout de $n$ années ; ainsi $u_0 = 2\\,000$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle relation traduit cette évolution ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$u_{n+1} = 0{,}08u_n + 120$",
+            "$u_{n+1} = 0{,}92u_n + 120$",
+            "$u_{n+1} = 0{,}92(u_n + 120)$",
+            "$u_{n+1} = u_n - 0{,}08 + 120$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$0{,}08u_n$ est le nombre d'arbres abattus, pas celui qui reste.",
+            null,
+            "Cette relation abat aussi $8\\,\\%$ des jeunes arbres. Or on les plante après la coupe.",
+            "Retirer $8\\,\\%$ n'est pas retirer $0{,}08$ arbre : on retire $0{,}08u_n$ arbres, ce qui revient à multiplier par $0{,}92$."
+          ]
+        },
+        "indices": [
+          "Traduis les deux phrases dans l'ordre : d'abord la coupe, puis la plantation.",
+          "Après la coupe, il reste $100\\,\\% - 8\\,\\% = 92\\,\\%$ des $u_n$ arbres. Ajoute ensuite les jeunes arbres."
+        ],
+        "revoir": "l-recurrence-suites-029",
+        "solution": "Abattre $8\\,\\%$ des arbres, c'est en garder $92\\,\\%$ : il en reste $0{,}92u_n$. Puis on plante $120$ arbres. Donc, pour tout entier naturel $n$, $u_{n+1} = 0{,}92u_n + 120$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calcule $u_1$.",
+        "reponse": { "type": "numerique", "valeur": 1960, "tolerance": 0 },
+        "indices": [
+          "Applique la relation de la question 1 avec $n = 0$.",
+          "$u_1 = 0{,}92 \\times 2\\,000 + 120$, et $0{,}92 \\times 2\\,000 = 2\\,000 - 0{,}08 \\times 2\\,000$."
+        ],
+        "revoir": "l-recurrence-suites-030",
+        "solution": "$u_1 = 0{,}92 \\times 2\\,000 + 120 = 1\\,840 + 120 = 1\\,960$. Au bout d'un an, la forêt compte $1\\,960$ arbres."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On inverse l'ordre : chaque année, on plante d'abord $120$ jeunes arbres, puis on abat $8\\,\\%$ des arbres. Quelle relation obtient-on ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$u_{n+1} = 0{,}92u_n + 120$",
+            "$u_{n+1} = 0{,}92u_n + 110{,}4$",
+            "$u_{n+1} = 0{,}92u_n - 120$",
+            "$u_{n+1} = 0{,}92u_n + 9{,}6$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est la relation de la question 1 : ici, les jeunes arbres sont plantés avant la coupe, et $8\\,\\%$ d'entre eux sont abattus aussi.",
+            null,
+            "On plante des arbres : on en ajoute, on n'en retire pas.",
+            "$9{,}6 = 0{,}08 \\times 120$ est le nombre de jeunes arbres abattus, pas celui qui reste."
+          ]
+        },
+        "indices": [
+          "La coupe s'applique maintenant à tous les arbres présents, jeunes arbres compris.",
+          "Après la plantation, il y a $u_n + 120$ arbres ; la coupe en garde $92\\,\\%$ : $u_{n+1} = 0{,}92(u_n + 120)$. Développe."
+        ],
+        "revoir": "l-recurrence-suites-037",
+        "solution": "Après la plantation, la forêt compte $u_n + 120$ arbres ; la coupe en garde $92\\,\\%$. Donc $u_{n+1} = 0{,}92(u_n + 120) = 0{,}92u_n + 0{,}92 \\times 120 = 0{,}92u_n + 110{,}4$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-010",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-modelisation"],
+    "capacites": ["bo-m-suites-09"],
+    "titre": "Une relation tirée d'un arbre",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 100,
+    "preambule": "Chaque jour, il fait beau ou il pleut. S'il fait beau un jour, il fait beau le lendemain avec une probabilité de $0{,}7$. S'il pleut un jour, il fait beau le lendemain avec une probabilité de $0{,}4$. Il fait beau le jour $1$.\n\nPour tout entier $n \\geqslant 1$, on note $B_n$ l'événement « il fait beau le jour $n$ » et $p_n = P(B_n)$ ; ainsi $p_1 = 1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle relation vérifie $p_{n+1}$, pour tout entier $n \\geqslant 1$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$p_{n+1} = 0{,}7p_n + 0{,}4$",
+            "$p_{n+1} = 0{,}3p_n + 0{,}4$",
+            "$p_{n+1} = 1{,}1p_n$",
+            "$p_{n+1} = 0{,}7p_n + 0{,}6(1 - p_n)$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Tu as oublié le facteur $1 - p_n$ sur le second chemin : sa probabilité est $(1 - p_n) \\times 0{,}4$.",
+            null,
+            "Tu as multiplié $0{,}4$ par $p_n$ au lieu de $1 - p_n$ : le second chemin part de $\\overline{B_n}$, de probabilité $1 - p_n$.",
+            "$0{,}6$ est la probabilité qu'il pleuve le lendemain d'un jour de pluie : ce chemin mène à $\\overline{B_{n+1}}$, pas à $B_{n+1}$."
+          ]
+        },
+        "indices": [
+          "Dessine l'arbre du jour $n$ au jour $n + 1$, puis applique la formule des probabilités totales : deux chemins mènent à $B_{n+1}$.",
+          "$p_{n+1} = P(B_n \\cap B_{n+1}) + P(\\overline{B_n} \\cap B_{n+1}) = p_n \\times 0{,}7 + (1 - p_n) \\times 0{,}4$. Développe et regroupe les termes en $p_n$."
+        ],
+        "revoir": "l-recurrence-suites-034",
+        "solution": "$B_n$ et $\\overline{B_n}$ forment une partition de l'univers. D'après la formule des probabilités totales, $p_{n+1} = P(B_n \\cap B_{n+1}) + P(\\overline{B_n} \\cap B_{n+1}) = 0{,}7p_n + 0{,}4(1 - p_n) = 0{,}7p_n + 0{,}4 - 0{,}4p_n = 0{,}3p_n + 0{,}4$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calcule $p_3$.",
+        "reponse": { "type": "numerique", "valeur": 0.61, "tolerance": 0 },
+        "indices": [
+          "Applique la relation de la question 1 avec $n = 1$, puis avec $n = 2$.",
+          "$p_2 = 0{,}3 \\times 1 + 0{,}4 = 0{,}7$ : c'est logique, il a fait beau le jour $1$. Calcule $p_3$ à partir de $p_2$."
+        ],
+        "revoir": "l-recurrence-suites-034",
+        "solution": "$p_2 = 0{,}3 \\times 1 + 0{,}4 = 0{,}7$, puis $p_3 = 0{,}3 \\times 0{,}7 + 0{,}4 = 0{,}21 + 0{,}4 = 0{,}61$. La probabilité qu'il fasse beau le jour $3$ est $0{,}61$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-011",
+    "chapitre": "recurrence-suites",
+    "niveau": 1,
+    "notions": ["n-recurrence-suites-modelisation"],
+    "capacites": ["bo-m-suites-09"],
+    "titre": "La valeur qui ne bouge pas",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 110,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 5$ et, pour tout entier naturel $n$, $u_{n+1} = 0{,}6u_n + 8$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Détermine le réel $c$ tel que $c = 0{,}6c + 8$.",
+        "reponse": { "type": "numerique", "valeur": 20, "tolerance": 0 },
+        "indices": [
+          "C'est la valeur qui ne bouge pas : si $u_n = c$, alors $u_{n+1} = c$. Résous l'équation.",
+          "$c = 0{,}6c + 8$ équivaut à $c - 0{,}6c = 8$, soit $0{,}4c = 8$."
+        ],
+        "revoir": "l-recurrence-suites-029",
+        "solution": "$c = 0{,}6c + 8$ équivaut à $0{,}4c = 8$, soit $c = \\dfrac{8}{0{,}4} = 20$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour tout entier naturel $n$, on pose $v_n = u_n - 20$. Que vaut $v_{n+1}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0{,}6v_n$", "$0{,}6v_n + 8$", "$0{,}6v_n - 12$", "$v_n - 12$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Tu as remplacé $u$ par $v$ dans la relation sans retirer $20$ : $v_{n+1} = u_{n+1} - 20$.",
+            "Tu t'es arrêté à $0{,}6u_n - 12$ en écrivant $v_n$ à la place de $u_n$. Or $u_n = v_n + 20$ : il faut calculer $0{,}6(v_n + 20) - 12$.",
+            "Le coefficient $0{,}6$ a disparu : $u_{n+1}$ dépend de $0{,}6u_n$, pas de $u_n$."
+          ]
+        },
+        "indices": [
+          "Pars de $v_{n+1} = u_{n+1} - 20$, remplace $u_{n+1}$ grâce à la relation, puis exprime $u_n$ à l'aide de $v_n$.",
+          "$v_{n+1} = 0{,}6u_n + 8 - 20 = 0{,}6u_n - 12$, et $u_n = v_n + 20$."
+        ],
+        "revoir": "l-recurrence-suites-030",
+        "solution": "$v_{n+1} = u_{n+1} - 20 = 0{,}6u_n + 8 - 20 = 0{,}6u_n - 12$. Comme $u_n = v_n + 20$ : $v_{n+1} = 0{,}6(v_n + 20) - 12 = 0{,}6v_n + 12 - 12 = 0{,}6v_n$. La suite $(v_n)$ est géométrique de raison $0{,}6$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On en déduit que, pour tout entier naturel $n$, $u_n = 20 - 15 \\times 0{,}6^n$. Calcule $u_2$.",
+        "reponse": { "type": "numerique", "valeur": 14.6, "tolerance": 0 },
+        "indices": [
+          "Remplace $n$ par $2$ dans la forme explicite.",
+          "$u_2 = 20 - 15 \\times 0{,}6^2$, avec $0{,}6^2 = 0{,}6 \\times 0{,}6$."
+        ],
+        "revoir": "l-recurrence-suites-030",
+        "solution": "$u_2 = 20 - 15 \\times 0{,}6^2 = 20 - 15 \\times 0{,}36 = 20 - 5{,}4 = 14{,}6$. Contrôle avec la relation : $u_1 = 0{,}6 \\times 5 + 8 = 11$ et $u_2 = 0{,}6 \\times 11 + 8 = 6{,}6 + 8 = 14{,}6$. La forme explicite vient de $v_0 = 5 - 20 = -15$ et $v_n = -15 \\times 0{,}6^n$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-012",
+    "chapitre": "recurrence-suites",
+    "niveau": 2,
+    "notions": ["n-recurrence-suites-recurrence"],
+    "capacites": ["bo-m-logique-14"],
+    "titre": "Démontrer une forme explicite",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 120,
+    "source": {
+      "annale": "an-2023-polynesie-mars-j1",
+      "adaptation": "consigne reprise (démontrer par récurrence une forme explicite) ; suite et valeurs changées ; questions de limite retirées (chapitre « Limites de suites »)"
+    },
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = 0{,}5u_n + 3$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $u_2$.",
+        "reponse": { "type": "numerique", "valeur": 4.75, "tolerance": 0 },
+        "indices": [
+          "Applique la relation de récurrence deux fois, en partant de $u_0$.",
+          "$u_1 = 0{,}5 \\times 1 + 3 = 3{,}5$.",
+          "$u_2 = 0{,}5 \\times u_1 + 3$ : prends la moitié de $3{,}5$, puis ajoute $3$."
+        ],
+        "revoir": "l-recurrence-suites-004",
+        "solution": "$u_1 = 0{,}5 \\times 1 + 3 = 3{,}5$ et $u_2 = 0{,}5 \\times 3{,}5 + 3 = 1{,}75 + 3 = 4{,}75$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n = 6 - 5 \\times 0{,}5^n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Suis le plan : propriété $P(n)$, initialisation au rang $0$, hérédité, conclusion.",
+          "Initialisation : calcule séparément $u_0$ et $6 - 5 \\times 0{,}5^0$. Hérédité : tu supposes $u_n = 6 - 5 \\times 0{,}5^n$ et tu veux $u_{n+1} = 6 - 5 \\times 0{,}5^{n+1}$.",
+          "Pars de $u_{n+1} = 0{,}5u_n + 3$ et remplace $u_n$ grâce à l'hypothèse de récurrence : $u_{n+1} = 0{,}5\\left(6 - 5 \\times 0{,}5^n\\right) + 3$.",
+          "Développe : $0{,}5 \\times 6 = 3$ et $0{,}5 \\times 0{,}5^n = 0{,}5^{n+1}$. Regroupe les constantes, puis conclus."
+        ],
+        "revoir": "l-recurrence-suites-006",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n = 6 - 5 \\times 0{,}5^n$ ».\n\n**Initialisation** : $u_0 = 1$ et $6 - 5 \\times 0{,}5^0 = 6 - 5 = 1$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $P(n)$ vraie, c'est-à-dire $u_n = 6 - 5 \\times 0{,}5^n$. D'après la définition de la suite, puis l'hypothèse de récurrence :\n\n$$u_{n+1} = 0{,}5u_n + 3 = 0{,}5\\left(6 - 5 \\times 0{,}5^n\\right) + 3 = 3 - 5 \\times 0{,}5^{n+1} + 3 = 6 - 5 \\times 0{,}5^{n+1}.$$\n\nDonc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $u_n = 6 - 5 \\times 0{,}5^n$.",
+        "erreurFrequente": "Écrire $0{,}5 \\times 0{,}5^n = 0{,}25^n$ : on multiplie par $0{,}5$ une fois de plus, donc l'exposant augmente de $1$ et l'on obtient $0{,}5^{n+1}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Pour tout entier naturel $n$, $u_n < 6$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$0{,}5^n > 0$, donc $5 \\times 0{,}5^n > 0$ et $u_n = 6 - 5 \\times 0{,}5^n < 6$."
+        },
+        "indices": [
+          "Utilise la forme explicite démontrée à la question 2.",
+          "$6 - u_n = 5 \\times 0{,}5^n$ : quel est le signe de ce nombre ?",
+          "Une puissance d'un nombre strictement positif est strictement positive."
+        ],
+        "revoir": "l-recurrence-suites-030",
+        "solution": "D'après la question 2, $6 - u_n = 5 \\times 0{,}5^n$. Or $0{,}5 > 0$, donc $0{,}5^n > 0$, puis $5 \\times 0{,}5^n > 0$. Ainsi $u_n < 6$ pour tout entier naturel $n$ : l'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-013",
+    "chapitre": "recurrence-suites",
+    "niveau": 2,
+    "notions": ["n-recurrence-suites-recurrence"],
+    "capacites": ["bo-m-logique-14"],
+    "titre": "Conjecturer, puis démontrer",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 130,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = \\dfrac{1}{2 - u_n}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $u_3$. Donner le résultat sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "3/4", "tolerance": 0 },
+        "indices": [
+          "Calcule $u_1$, puis $u_2$, puis $u_3$ avec la relation de récurrence.",
+          "$u_1 = \\dfrac{1}{2 - 0} = \\dfrac{1}{2}$, puis $u_2 = \\dfrac{1}{2 - \\frac{1}{2}} = \\dfrac{1}{\\frac{3}{2}}$.",
+          "Diviser par $\\dfrac{3}{2}$, c'est multiplier par $\\dfrac{2}{3}$ : $u_2 = \\dfrac{2}{3}$. Calcule $2 - \\dfrac{2}{3}$, puis l'inverse de ce nombre."
+        ],
+        "revoir": "l-recurrence-suites-004",
+        "solution": "$u_1 = \\dfrac{1}{2 - 0} = \\dfrac{1}{2}$, $u_2 = \\dfrac{1}{2 - \\frac{1}{2}} = \\dfrac{1}{\\frac{3}{2}} = \\dfrac{2}{3}$ et $u_3 = \\dfrac{1}{2 - \\frac{2}{3}} = \\dfrac{1}{\\frac{4}{3}} = \\dfrac{3}{4}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle conjecture peut-on faire ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$u_n = \\dfrac{1}{n+1}$",
+            "$u_n = \\dfrac{n}{n+1}$",
+            "$u_n = \\dfrac{n}{4}$",
+            "$u_n = 1 - \\dfrac{1}{2^n}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Elle donne $1$ au rang $0$, alors que $u_0 = 0$.",
+            null,
+            "Elle donne $\\dfrac{1}{4}$ au rang $1$, alors que $u_1 = \\dfrac{1}{2}$.",
+            "Elle convient aux rangs $0$ et $1$, mais donne $\\dfrac{3}{4}$ au rang $2$, alors que $u_2 = \\dfrac{2}{3}$."
+          ]
+        },
+        "indices": [
+          "Écris les termes $u_0$ à $u_3$ sous forme de fractions et observe numérateurs et dénominateurs.",
+          "Écris $u_0 = 0$ comme une fraction de dénominateur $1$. Compare ensuite chaque numérateur au rang, puis chaque dénominateur au rang.",
+          "Teste chaque proposition aux rangs $0$, $1$, $2$ et $3$ : une seule convient partout."
+        ],
+        "revoir": "l-recurrence-suites-004",
+        "solution": "$u_0 = \\dfrac{0}{1}$, $u_1 = \\dfrac{1}{2}$, $u_2 = \\dfrac{2}{3}$ et $u_3 = \\dfrac{3}{4}$ : le numérateur est le rang $n$, le dénominateur $n + 1$. Seule la proposition $u_n = \\dfrac{n}{n+1}$ convient aux quatre rangs. On conjecture que, pour tout entier naturel $n$, $u_n = \\dfrac{n}{n+1}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Démontrer cette conjecture par récurrence.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $P(n)$ : « $u_n = \\dfrac{n}{n+1}$ », vérifie $P(0)$, puis écris ce que tu dois obtenir dans l'hérédité : $u_{n+1} = \\dfrac{n+1}{n+2}$.",
+          "D'après la relation et l'hypothèse de récurrence, $u_{n+1} = \\dfrac{1}{2 - \\frac{n}{n+1}}$. Commence par simplifier le dénominateur.",
+          "Mets au même dénominateur : $2 - \\dfrac{n}{n+1} = \\dfrac{2(n+1) - n}{n+1}$.",
+          "Ce dénominateur vaut $\\dfrac{n+2}{n+1}$, qui n'est pas nul. Prends l'inverse de cette fraction, puis conclus."
+        ],
+        "revoir": "l-recurrence-suites-006",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n = \\dfrac{n}{n+1}$ ».\n\n**Initialisation** : $u_0 = 0$ et $\\dfrac{0}{0+1} = 0$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $P(n)$ vraie : $u_n = \\dfrac{n}{n+1}$. On veut montrer $u_{n+1} = \\dfrac{n+1}{n+2}$. D'après l'hypothèse de récurrence :\n\n$$2 - u_n = 2 - \\frac{n}{n+1} = \\frac{2(n+1) - n}{n+1} = \\frac{n+2}{n+1}.$$\n\nCe nombre n'est pas nul, donc $u_{n+1} = \\dfrac{1}{2 - u_n} = \\dfrac{n+1}{n+2}$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $u_n = \\dfrac{n}{n+1}$.",
+        "erreurFrequente": "Écrire $u_{n+1} = \\dfrac{n}{n+1} + 1$ ou $\\dfrac{n+1}{n+1}$ : au rang $n + 1$, on remplace **chaque** $n$ par $n + 1$, ce qui donne $\\dfrac{n+1}{n+2}$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-014",
+    "chapitre": "recurrence-suites",
+    "niveau": 2,
+    "notions": ["n-recurrence-suites-recurrence"],
+    "capacites": ["bo-m-logique-14", "bo-m-listes-01"],
+    "titre": "La somme des cubes, avec un programme",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 140,
+    "preambule": "Pour tout entier $n \\geqslant 1$, on note $S_n = 1^3 + 2^3 + \\dots + n^3$ la somme des cubes des entiers de $1$ à $n$. La fonction Python ci-dessous renvoie la liste des sommes $S_1$, $S_2$, …, $S_n$.",
+    "code": {
+      "langage": "python",
+      "source": "def sommes_cubes(n):\n    liste_sommes = []\n    s = 0\n    for k in range(1, n + 1):  # k prend les valeurs 1, 2, ..., n\n        s = s + k * k * k\n        liste_sommes.append(s)\n    return liste_sommes\n\nprint(sommes_cubes(5))"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Le programme affiche une liste de cinq nombres. Quel est le dernier de ces nombres ?",
+        "reponse": { "type": "numerique", "valeur": 225, "tolerance": 0 },
+        "indices": [
+          "Suis la boucle tour par tour : à chaque tour, s augmente du cube de k, puis sa nouvelle valeur est ajoutée à la liste.",
+          "Au premier tour, k vaut $1$ et s vaut $1$ ; au deuxième, k vaut $2$ et s vaut $1 + 8 = 9$. Continue jusqu'à ce que k vaille $5$.",
+          "Les cubes de $3$, $4$ et $5$ sont $27$, $64$ et $125$ : ajoute-les un par un à $9$."
+        ],
+        "revoir": "l-recurrence-suites-036",
+        "solution": "Les valeurs successives de s sont $1$, $1 + 8 = 9$, $9 + 27 = 36$, $36 + 64 = 100$ et $100 + 125 = 225$. Le programme affiche [1, 9, 36, 100, 225] : le dernier nombre est $S_5 = 225$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Les nombres $1$, $9$, $36$, $100$ et $225$ sont des carrés. Quelle conjecture peut-on faire ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$S_n = n^2(n+1)$",
+            "$S_n = \\left(\\dfrac{n(n+1)}{2}\\right)^2$",
+            "$S_n = (2n-1)^2$",
+            "$S_n = n^4$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Elle donne $2$ au rang $1$, alors que $S_1 = 1$.",
+            null,
+            "Elle convient aux rangs $1$ et $2$, mais donne $25$ au rang $3$, alors que $S_3 = 36$.",
+            "Elle donne $16$ au rang $2$, alors que $S_2 = 9$."
+          ]
+        },
+        "indices": [
+          "Écris chaque nombre comme un carré, $1 = 1^2$, $9 = 3^2$…, puis cherche une formule pour les nombres élevés au carré.",
+          "On obtient $1^2$, $3^2$, $6^2$, $10^2$ et $15^2$. Compare $1$, $3$, $6$, $10$, $15$ aux sommes $1$, $1 + 2$, $1 + 2 + 3$…",
+          "Quelle formule de première donne la somme $1 + 2 + \\dots + n$ ?"
+        ],
+        "revoir": "l-recurrence-suites-004",
+        "solution": "$S_1 = 1^2$, $S_2 = 3^2$, $S_3 = 6^2$, $S_4 = 10^2$ et $S_5 = 15^2$. Or $1$, $3$, $6$, $10$ et $15$ sont les sommes $1 + 2 + \\dots + n$, égales à $\\dfrac{n(n+1)}{2}$. On conjecture que, pour tout entier $n \\geqslant 1$, $S_n = \\left(\\dfrac{n(n+1)}{2}\\right)^2 = \\dfrac{n^2(n+1)^2}{4}$. Les autres propositions échouent dès les premiers rangs."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Démontrer par récurrence que, pour tout entier $n \\geqslant 1$, $S_n = \\dfrac{n^2(n+1)^2}{4}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Initialise au rang $1$, puis écris ce que tu dois obtenir dans l'hérédité : $S_{n+1} = \\dfrac{(n+1)^2(n+2)^2}{4}$.",
+          "$S_{n+1}$ est la somme $S_n$ à laquelle on ajoute le terme $(n+1)^3$. Avec l'hypothèse de récurrence : $S_{n+1} = \\dfrac{n^2(n+1)^2}{4} + (n+1)^3$.",
+          "Mets $\\dfrac{(n+1)^2}{4}$ en facteur : $(n+1)^3 = \\dfrac{(n+1)^2}{4} \\times 4(n+1)$.",
+          "Il reste $\\dfrac{(n+1)^2}{4}\\left(n^2 + 4n + 4\\right)$ : reconnais une identité remarquable."
+        ],
+        "revoir": "l-recurrence-suites-008",
+        "solution": "Pour tout entier $n \\geqslant 1$, on note $P(n)$ : « $S_n = \\dfrac{n^2(n+1)^2}{4}$ ».\n\n**Initialisation** : $S_1 = 1^3 = 1$ et $\\dfrac{1^2 \\times 2^2}{4} = \\dfrac{4}{4} = 1$. Donc $P(1)$ est vraie.\n\n**Hérédité** : soit $n \\geqslant 1$ un entier. On suppose $P(n)$ vraie. On veut montrer $S_{n+1} = \\dfrac{(n+1)^2(n+2)^2}{4}$. Comme $S_{n+1} = S_n + (n+1)^3$, l'hypothèse de récurrence donne :\n\n$$S_{n+1} = \\frac{n^2(n+1)^2}{4} + (n+1)^3 = \\frac{(n+1)^2}{4}\\big(n^2 + 4(n+1)\\big) = \\frac{(n+1)^2}{4}\\left(n^2 + 4n + 4\\right).$$\n\nOr $n^2 + 4n + 4 = (n+2)^2$. Donc $S_{n+1} = \\dfrac{(n+1)^2(n+2)^2}{4}$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(1)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier $n \\geqslant 1$, $S_n = \\dfrac{n^2(n+1)^2}{4}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire $S_{10}$.",
+        "reponse": { "type": "numerique", "valeur": 3025, "tolerance": 0 },
+        "indices": [
+          "Applique la formule démontrée avec $n = 10$ : plus besoin d'additionner les dix cubes.",
+          "$S_{10} = \\dfrac{10^2 \\times 11^2}{4} = \\left(\\dfrac{10 \\times 11}{2}\\right)^2$.",
+          "$\\dfrac{10 \\times 11}{2} = 55$ : il reste à calculer $55^2 = 55 \\times 55$."
+        ],
+        "revoir": "l-recurrence-suites-008",
+        "solution": "$S_{10} = \\dfrac{10^2 \\times 11^2}{4} = \\left(\\dfrac{10 \\times 11}{2}\\right)^2 = 55^2 = 3\\,025$. L'appel sommes_cubes(10) renverrait une liste dont le dernier élément est $3\\,025$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-015",
+    "chapitre": "recurrence-suites",
+    "niveau": 2,
+    "notions": ["n-recurrence-suites-encadrement-variation"],
+    "capacites": ["bo-m-suites-08"],
+    "titre": "Encadrer, puis en déduire le sens de variation",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 150,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 8$ et, pour tout entier naturel $n$, $u_{n+1} = 0{,}75u_n + 1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $u_2$.",
+        "reponse": { "type": "numerique", "valeur": 6.25, "tolerance": 0 },
+        "indices": [
+          "Applique la relation de récurrence deux fois, en partant de $u_0 = 8$.",
+          "$u_1 = 0{,}75 \\times 8 + 1 = 7$.",
+          "$0{,}75 \\times 7 = 7 - 0{,}25 \\times 7$ ; ajoute ensuite $1$."
+        ],
+        "revoir": "l-recurrence-suites-018",
+        "solution": "$u_1 = 0{,}75 \\times 8 + 1 = 6 + 1 = 7$ et $u_2 = 0{,}75 \\times 7 + 1 = 5{,}25 + 1 = 6{,}25$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $4 \\leqslant u_n \\leqslant 8$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Suis la méthode : initialisation avec $u_0$ ; dans l'hérédité, reconstruis $u_{n+1}$ à partir de l'encadrement de $u_n$.",
+          "Initialisation : $4 \\leqslant 8 \\leqslant 8$. Hérédité : tu supposes $4 \\leqslant u_n \\leqslant 8$ ; multiplie par $0{,}75$, qui est positif.",
+          "$0{,}75 \\times 4 = 3$ et $0{,}75 \\times 8 = 6$, donc $3 \\leqslant 0{,}75u_n \\leqslant 6$. Ajoute $1$.",
+          "Tu obtiens un encadrement de $u_{n+1}$ dont la borne supérieure est $7$ : compare-la à $8$, puis conclus."
+        ],
+        "revoir": "l-recurrence-suites-017",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $4 \\leqslant u_n \\leqslant 8$ ».\n\n**Initialisation** : $u_0 = 8$ et $4 \\leqslant 8 \\leqslant 8$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $4 \\leqslant u_n \\leqslant 8$. On multiplie par $0{,}75$, qui est positif : $3 \\leqslant 0{,}75u_n \\leqslant 6$. On ajoute $1$ : $4 \\leqslant 0{,}75u_n + 1 \\leqslant 7$, c'est-à-dire $4 \\leqslant u_{n+1} \\leqslant 7$. Comme $7 \\leqslant 8$, on a $4 \\leqslant u_{n+1} \\leqslant 8$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $4 \\leqslant u_n \\leqslant 8$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Montrer que, pour tout entier naturel $n$, $u_{n+1} - u_n = 0{,}25(4 - u_n)$. En déduire le sens de variation de la suite $(u_n)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Remplace $u_{n+1}$ par $0{,}75u_n + 1$, simplifie, puis étudie le signe du résultat.",
+          "$u_{n+1} - u_n = 0{,}75u_n + 1 - u_n = 1 - 0{,}25u_n$. Factorise par $0{,}25$.",
+          "Le signe de $0{,}25(4 - u_n)$ est celui de $4 - u_n$ : l'encadrement de la question 2 le donne."
+        ],
+        "revoir": "l-recurrence-suites-018",
+        "solution": "Pour tout entier naturel $n$ : $u_{n+1} - u_n = 0{,}75u_n + 1 - u_n = 1 - 0{,}25u_n = 0{,}25(4 - u_n)$, car $0{,}25 \\times 4 = 1$.\n\nD'après la question 2, $u_n \\geqslant 4$, donc $4 - u_n \\leqslant 0$. Comme $0{,}25 > 0$, on en déduit $u_{n+1} - u_n \\leqslant 0$.\n\nAinsi $u_{n+1} \\leqslant u_n$ pour tout entier naturel $n$ : la suite $(u_n)$ est décroissante.",
+        "erreurFrequente": "Conclure à partir des seuls termes $u_0 > u_1 > u_2$ : quelques termes ne suffisent pas, il faut le signe de $u_{n+1} - u_n$ pour **tout** entier naturel $n$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-016",
+    "chapitre": "recurrence-suites",
+    "niveau": 2,
+    "notions": ["n-recurrence-suites-encadrement-variation"],
+    "capacites": ["bo-m-suites-08"],
+    "titre": "Un coefficient négatif",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 160,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = 3 - 0{,}5u_n$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $u_3$.",
+        "reponse": { "type": "numerique", "valeur": 2.25, "tolerance": 0 },
+        "indices": [
+          "Applique la relation de récurrence trois fois, en partant de $u_0 = 0$.",
+          "$u_1 = 3 - 0{,}5 \\times 0 = 3$ et $u_2 = 3 - 0{,}5 \\times 3 = 1{,}5$.",
+          "$u_3 = 3 - 0{,}5 \\times 1{,}5$ : calcule d'abord la moitié de $1{,}5$."
+        ],
+        "revoir": "l-recurrence-suites-019",
+        "solution": "$u_1 = 3 - 0 = 3$, $u_2 = 3 - 0{,}5 \\times 3 = 1{,}5$ et $u_3 = 3 - 0{,}5 \\times 1{,}5 = 3 - 0{,}75 = 2{,}25$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant 3$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Même méthode que pour tout encadrement, avec une précaution : multiplier par un nombre négatif renverse les inégalités.",
+          "Initialisation : $0 \\leqslant 0 \\leqslant 3$. Hérédité : tu supposes $0 \\leqslant u_n \\leqslant 3$, puis tu multiplies par $-0{,}5$.",
+          "$-0{,}5 \\times 0 = 0$ et $-0{,}5 \\times 3 = -1{,}5$ ; le sens change : $-1{,}5 \\leqslant -0{,}5u_n \\leqslant 0$. Ajoute $3$.",
+          "Tu obtiens un encadrement de $u_{n+1}$ entre $1{,}5$ et $3$ : entraîne-t-il celui de $P(n+1)$ ?"
+        ],
+        "revoir": "l-recurrence-suites-017",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant u_n \\leqslant 3$ ».\n\n**Initialisation** : $u_0 = 0$ et $0 \\leqslant 0 \\leqslant 3$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $0 \\leqslant u_n \\leqslant 3$. On multiplie par $-0{,}5$, qui est négatif, ce qui renverse les inégalités : $0 \\geqslant -0{,}5u_n \\geqslant -1{,}5$, soit $-1{,}5 \\leqslant -0{,}5u_n \\leqslant 0$. On ajoute $3$ : $1{,}5 \\leqslant 3 - 0{,}5u_n \\leqslant 3$, c'est-à-dire $1{,}5 \\leqslant u_{n+1} \\leqslant 3$. Comme $0 \\leqslant 1{,}5$, on a $0 \\leqslant u_{n+1} \\leqslant 3$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant 3$. La suite $(u_n)$ est bornée.",
+        "erreurFrequente": "Garder le sens des inégalités en multipliant par $-0{,}5$ : on écrirait « $0 \\leqslant -0{,}5u_n \\leqslant -1{,}5$ », ce qui est impossible puisque $0 > -1{,}5$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est le sens de variation de la suite $(u_n)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["Croissante", "Décroissante", "Ni croissante, ni décroissante", "Constante"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$u_2 = 1{,}5 < u_1 = 3$ : la suite n'est pas croissante.",
+            "$u_1 = 3 > u_0 = 0$ : la suite n'est pas décroissante.",
+            null,
+            "$u_0 = 0$ et $u_1 = 3$ sont différents : la suite n'est pas constante."
+          ]
+        },
+        "indices": [
+          "Pour montrer qu'une suite n'est pas croissante, un contre-exemple suffit : deux termes consécutifs qui descendent.",
+          "Reprends les termes calculés à la question 1 : $0$, $3$, $1{,}5$ et $2{,}25$.",
+          "Compare $u_0$ et $u_1$, puis $u_1$ et $u_2$."
+        ],
+        "revoir": "l-recurrence-suites-013",
+        "solution": "$u_0 = 0 < u_1 = 3$ : la suite n'est pas décroissante. $u_2 = 1{,}5 < u_1 = 3$ : elle n'est pas croissante. La suite $(u_n)$ n'est ni croissante, ni décroissante : ses termes montent et descendent tour à tour, tout en restant entre $0$ et $3$. Une suite bornée n'a pas forcément de sens de variation."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-017",
+    "chapitre": "recurrence-suites",
+    "niveau": 2,
+    "notions": ["n-recurrence-suites-encadrement-variation"],
+    "capacites": ["bo-m-suites-08"],
+    "titre": "Une suite définie par une fonction",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 170,
+    "source": {
+      "annale": "an-2024-polynesie-juin-j1",
+      "adaptation": "suite et consigne de récurrence reprises avec un autre premier terme ($u_0 = 2$ au lieu de $3$) ; étude de la fonction et calcul de termes ajoutés ; convergence retirée (chapitre « Limites de suites »)"
+    },
+    "preambule": "Soit $f$ la fonction définie sur $[1\\,;\\,4]$ par $f(x) = \\dfrac{4}{5 - x}$. Soit $(u_n)$ la suite définie par $u_0 = 2$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n) = \\dfrac{4}{5 - u_n}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étudier le sens de variation de $f$ sur $[1\\,;\\,4]$, puis calculer $f(1)$ et $f(4)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f(x) = 4 \\times \\dfrac{1}{v(x)}$ avec $v(x) = 5 - x$, qui ne s'annule pas sur $[1\\,;\\,4]$. Utilise la dérivée de $\\dfrac{1}{v}$, vue en première.",
+          "$\\left(\\dfrac{1}{v}\\right)' = -\\dfrac{v'}{v^2}$, avec $v'(x) = -1$. Écris $f'(x)$.",
+          "Tu dois trouver $f'(x) = \\dfrac{4}{(5-x)^2}$ : un carré non nul est strictement positif. Pour les images, remplace $x$ par $1$, puis par $4$."
+        ],
+        "revoir": "l-recurrence-suites-020",
+        "solution": "Pour tout $x$ de $[1\\,;\\,4]$, $5 - x \\geqslant 1$, donc $5 - x \\neq 0$. On écrit $f(x) = 4 \\times \\dfrac{1}{v(x)}$ avec $v(x) = 5 - x$ et $v'(x) = -1$ :\n\n$$f'(x) = 4 \\times \\left(-\\frac{v'(x)}{v(x)^2}\\right) = 4 \\times \\frac{1}{(5-x)^2} = \\frac{4}{(5-x)^2}.$$\n\nLe numérateur est positif et le carré $(5-x)^2$ est strictement positif, donc $f'(x) > 0$ : $f$ est croissante sur $[1\\,;\\,4]$. Enfin $f(1) = \\dfrac{4}{4} = 1$ et $f(4) = \\dfrac{4}{1} = 4$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $u_2$. Donner le résultat sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "12/11", "tolerance": 0 },
+        "indices": [
+          "Calcule $u_1 = f(u_0)$, puis $u_2 = f(u_1)$.",
+          "$u_1 = \\dfrac{4}{5 - 2} = \\dfrac{4}{3}$.",
+          "$5 - \\dfrac{4}{3} = \\dfrac{11}{3}$ ; diviser par $\\dfrac{11}{3}$, c'est multiplier par $\\dfrac{3}{11}$."
+        ],
+        "revoir": "l-recurrence-suites-022",
+        "solution": "$u_1 = \\dfrac{4}{5 - 2} = \\dfrac{4}{3}$, puis $u_2 = \\dfrac{4}{5 - \\frac{4}{3}} = \\dfrac{4}{\\frac{11}{3}} = 4 \\times \\dfrac{3}{11} = \\dfrac{12}{11}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Compare $u_0$ et $u_1$ : c'est pourquoi la propriété range $u_{n+1}$ avant $u_n$. Suis ensuite la méthode avec une fonction croissante.",
+          "Initialisation : $u_0 = 2$ et $u_1 = \\dfrac{4}{3}$, et $1 \\leqslant \\dfrac{4}{3} \\leqslant 2 \\leqslant 4$. Hérédité : tu supposes $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$ et tu veux $1 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 4$.",
+          "Les quatre nombres $1$, $u_{n+1}$, $u_n$ et $4$ sont dans $[1\\,;\\,4]$, où $f$ est croissante : applique $f$ sans changer le sens des inégalités.",
+          "Tu obtiens $f(1) \\leqslant f(u_{n+1}) \\leqslant f(u_n) \\leqslant f(4)$. Remplace chaque membre grâce à la question 1 et à la définition de la suite."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$ ».\n\n**Initialisation** : $u_0 = 2$ et $u_1 = \\dfrac{4}{3}$. Or $1 \\leqslant \\dfrac{4}{3} \\leqslant 2 \\leqslant 4$, donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$. Ces quatre nombres sont dans $[1\\,;\\,4]$, où $f$ est croissante (question 1) : en appliquant $f$, l'ordre est conservé :\n\n$$f(1) \\leqslant f(u_{n+1}) \\leqslant f(u_n) \\leqslant f(4).$$\n\nOr $f(1) = 1$, $f(u_{n+1}) = u_{n+2}$, $f(u_n) = u_{n+1}$ et $f(4) = 4$. Donc $1 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 4$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 4$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Que peut-on en déduire pour la suite $(u_n)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Elle est croissante et majorée par $4$.",
+            "Elle est décroissante et minorée par $1$.",
+            "Elle est décroissante et minorée par $\\dfrac{4}{3}$.",
+            "On ne peut rien dire de son sens de variation."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "La propriété donne $u_{n+1} \\leqslant u_n$ : les termes descendent.",
+            null,
+            "$\\dfrac{4}{3} = u_1$ n'est pas un minorant : $u_2 = \\dfrac{12}{11} < \\dfrac{4}{3}$. Le minorant donné par la propriété est $1$.",
+            "La propriété démontrée donne $u_{n+1} \\leqslant u_n$ pour tout $n$ : c'est la définition d'une suite décroissante."
+          ]
+        },
+        "indices": [
+          "Lis la propriété démontrée morceau par morceau.",
+          "Quel morceau compare deux termes consécutifs ? Quel morceau compare un terme à un nombre fixe ?",
+          "Un minorant doit être inférieur ou égal à **tous** les termes : compare $\\dfrac{4}{3}$ à $u_2$."
+        ],
+        "revoir": "l-recurrence-suites-022",
+        "solution": "D'après la question 3, pour tout entier naturel $n$, $u_{n+1} \\leqslant u_n$ : la suite $(u_n)$ est décroissante. De plus, $1 \\leqslant u_n \\leqslant 4$ pour tout $n$ : elle est minorée par $1$, et majorée par $4$. Le nombre $\\dfrac{4}{3}$ n'est pas un minorant, car $u_2 = \\dfrac{12}{11} < \\dfrac{4}{3}$. La suite est décroissante et minorée par $1$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-018",
+    "chapitre": "recurrence-suites",
+    "niveau": 2,
+    "notions": ["n-recurrence-suites-encadrement-variation"],
+    "capacites": ["bo-m-suites-08"],
+    "titre": "Une suite avec l'exponentielle",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 180,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = u_n\\,e^{-u_n}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n > 0$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Initialise avec $u_0$ ; dans l'hérédité, regarde le signe de chacun des deux facteurs de $u_n\\,e^{-u_n}$.",
+          "Initialisation : $u_0 = 1 > 0$. Hérédité : tu supposes $u_n > 0$ ; quel est le signe de $e^{-u_n}$ ?",
+          "Une exponentielle est toujours strictement positive, et le produit de deux nombres strictement positifs est strictement positif."
+        ],
+        "revoir": "l-recurrence-suites-017",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n > 0$ ».\n\n**Initialisation** : $u_0 = 1 > 0$, donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $u_n > 0$. Pour tout réel $x$, $e^x > 0$, donc $e^{-u_n} > 0$. Le produit $u_n\\,e^{-u_n}$ de deux nombres strictement positifs est strictement positif : $u_{n+1} > 0$, et $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $u_n > 0$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout entier naturel $n$, $u_{n+1} - u_n = u_n\\left(e^{-u_n} - 1\\right)$. En déduire que la suite $(u_n)$ est décroissante.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Factorise $u_{n+1} - u_n$ par $u_n$, puis étudie le signe de chaque facteur.",
+          "$u_{n+1} - u_n = u_n\\,e^{-u_n} - u_n = u_n\\left(e^{-u_n} - 1\\right)$. Le signe de $u_n$ vient de la question 1.",
+          "Pour le second facteur : $u_n > 0$, donc $-u_n < 0$. Compare $e^{-u_n}$ à $e^0 = 1$ grâce au sens de variation de la fonction exponentielle.",
+          "La fonction exponentielle est croissante : de $-u_n < 0$, on tire $e^{-u_n} < e^0$. Conclus sur le signe du produit."
+        ],
+        "revoir": "l-recurrence-suites-018",
+        "solution": "Pour tout entier naturel $n$ : $u_{n+1} - u_n = u_n\\,e^{-u_n} - u_n = u_n\\left(e^{-u_n} - 1\\right)$.\n\nD'après la question 1, $u_n > 0$. Donc $-u_n < 0$ et, comme la fonction exponentielle est strictement croissante sur $\\mathbb{R}$, $e^{-u_n} < e^0 = 1$, c'est-à-dire $e^{-u_n} - 1 < 0$. Le produit d'un nombre strictement positif et d'un nombre strictement négatif est strictement négatif : $u_{n+1} - u_n < 0$.\n\nAinsi $u_{n+1} < u_n$ pour tout entier naturel $n$ : la suite $(u_n)$ est décroissante."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Parmi ces nombres, lesquels sont des majorants de la suite $(u_n)$ ? Plusieurs réponses sont possibles.",
+        "reponse": {
+          "type": "qcm-multiple",
+          "choix": ["$0$", "$e^{-1}$", "$1$", "$2$"],
+          "bonnes": [2, 3]
+        },
+        "indices": [
+          "Une suite décroissante a son plus grand terme au début.",
+          "Comme $(u_n)$ est décroissante, $u_n \\leqslant u_0$ pour tout $n$. Que vaut $u_0$ ?",
+          "Un majorant doit être supérieur ou égal à **tous** les termes, donc à $u_0 = 1$. Compare chaque nombre à $1$ ; pour $e^{-1}$, utilise $e^{-1} < e^0$."
+        ],
+        "revoir": "l-recurrence-suites-014",
+        "solution": "La suite $(u_n)$ est décroissante (question 2), donc $u_n \\leqslant u_0 = 1$ pour tout entier naturel $n$ : $1$ est un majorant, et $2$ aussi. En revanche, un majorant doit être supérieur ou égal à $u_0 = 1$ : ni $0$, ni $e^{-1}$ ne conviennent, car $e^{-1} < e^0 = 1$. Les majorants proposés sont $1$ et $2$. Avec la question 1, $0 < u_n \\leqslant 1$ pour tout $n$ : la suite est bornée."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-019",
+    "chapitre": "recurrence-suites",
+    "niveau": 2,
+    "notions": ["n-recurrence-suites-modelisation"],
+    "capacites": ["bo-m-suites-09"],
+    "titre": "Les abonnés d'une plateforme",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 190,
+    "preambule": "Une plateforme de vidéos compte $1\\,500$ abonnés au départ. Chaque mois, $20\\,\\%$ des abonnés résilient leur abonnement, puis $500$ nouvelles personnes s'abonnent. On note $u_n$ le nombre d'abonnés au bout de $n$ mois ; ainsi $u_0 = 1\\,500$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que, pour tout entier naturel $n$, $u_{n+1} = 0{,}8u_n + 500$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Traduis les deux phrases dans l'ordre : d'abord les résiliations, puis les nouveaux abonnés.",
+          "Si $20\\,\\%$ des abonnés résilient, combien en reste-t-il, en pourcentage ? Traduis-le par une multiplication.",
+          "Il reste $0{,}8u_n$ abonnés après les résiliations ; les $500$ nouveaux arrivent ensuite."
+        ],
+        "revoir": "l-recurrence-suites-029",
+        "solution": "D'un mois au suivant, $20\\,\\%$ des $u_n$ abonnés résilient : il en reste $80\\,\\%$, soit $0{,}8u_n$. Puis $500$ personnes s'abonnent, après les résiliations. Donc, pour tout entier naturel $n$, $u_{n+1} = 0{,}8u_n + 500$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $u_2$.",
+        "reponse": { "type": "numerique", "valeur": 1860, "tolerance": 0 },
+        "indices": [
+          "Applique la relation avec $n = 0$, puis avec $n = 1$.",
+          "$u_1 = 0{,}8 \\times 1\\,500 + 500 = 1\\,700$.",
+          "$0{,}8 \\times 1\\,700 = 1\\,700 - 0{,}2 \\times 1\\,700$ ; ajoute ensuite $500$."
+        ],
+        "revoir": "l-recurrence-suites-030",
+        "solution": "$u_1 = 0{,}8 \\times 1\\,500 + 500 = 1\\,200 + 500 = 1\\,700$ et $u_2 = 0{,}8 \\times 1\\,700 + 500 = 1\\,360 + 500 = 1\\,860$. Au bout de deux mois, la plateforme compte $1\\,860$ abonnés."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On pose, pour tout entier naturel $n$, $v_n = u_n - 2\\,500$. Démontrer que la suite $(v_n)$ est géométrique ; préciser sa raison et son premier terme.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Exprime $v_{n+1}$ en fonction de $u_n$, puis en fonction de $v_n$.",
+          "$v_{n+1} = u_{n+1} - 2\\,500 = 0{,}8u_n + 500 - 2\\,500 = 0{,}8u_n - 2\\,000$.",
+          "Remplace $u_n$ par $v_n + 2\\,500$ et développe : $0{,}8 \\times 2\\,500 = 2\\,000$.",
+          "Après simplification, les constantes s'annulent et il ne reste qu'un multiple de $v_n$. Calcule enfin $v_0 = u_0 - 2\\,500$."
+        ],
+        "revoir": "l-recurrence-suites-029",
+        "solution": "Pour tout entier naturel $n$ : $v_{n+1} = u_{n+1} - 2\\,500 = 0{,}8u_n + 500 - 2\\,500 = 0{,}8u_n - 2\\,000$. Comme $u_n = v_n + 2\\,500$ :\n\n$$v_{n+1} = 0{,}8(v_n + 2\\,500) - 2\\,000 = 0{,}8v_n + 2\\,000 - 2\\,000 = 0{,}8v_n.$$\n\nLa suite $(v_n)$ est géométrique de raison $0{,}8$ et de premier terme $v_0 = 1\\,500 - 2\\,500 = -1\\,000$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire l'expression de $u_n$ en fonction de $n$, puis calculer $u_3$.",
+        "reponse": { "type": "numerique", "valeur": 1988, "tolerance": 0 },
+        "indices": [
+          "Écris $v_n$ avec la formule d'une suite géométrique, puis reviens à $u_n = v_n + 2\\,500$.",
+          "$v_n = -1\\,000 \\times 0{,}8^n$, donc $u_n = 2\\,500 - 1\\,000 \\times 0{,}8^n$.",
+          "$0{,}8^3 = 0{,}8 \\times 0{,}8 \\times 0{,}8$ : calcule d'abord $0{,}8^2 = 0{,}64$."
+        ],
+        "revoir": "l-recurrence-suites-030",
+        "solution": "La suite $(v_n)$ est géométrique de raison $0{,}8$ et de premier terme $-1\\,000$, donc $v_n = -1\\,000 \\times 0{,}8^n$, puis $u_n = v_n + 2\\,500 = 2\\,500 - 1\\,000 \\times 0{,}8^n$ pour tout entier naturel $n$.\n\nAinsi $u_3 = 2\\,500 - 1\\,000 \\times 0{,}512 = 2\\,500 - 512 = 1\\,988$. Contrôle avec la relation : $u_3 = 0{,}8 \\times 1\\,860 + 500 = 1\\,488 + 500 = 1\\,988$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Vrai ou faux ? Selon ce modèle, la plateforme atteindra un jour $2\\,500$ abonnés.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$2\\,500 - u_n = 1\\,000 \\times 0{,}8^n > 0$, donc $u_n < 2\\,500$ pour tout entier naturel $n$."
+        },
+        "indices": [
+          "Utilise l'expression de $u_n$ obtenue à la question 4.",
+          "$2\\,500 - u_n = 1\\,000 \\times 0{,}8^n$ : quel est le signe de ce nombre ?",
+          "Une puissance d'un nombre strictement positif est strictement positive."
+        ],
+        "revoir": "l-recurrence-suites-030",
+        "solution": "Pour tout entier naturel $n$, $2\\,500 - u_n = 1\\,000 \\times 0{,}8^n > 0$, car $0{,}8^n > 0$. Donc $u_n < 2\\,500$ pour tout $n$ : selon ce modèle, la plateforme n'atteindra jamais $2\\,500$ abonnés. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-020",
+    "chapitre": "recurrence-suites",
+    "niveau": 2,
+    "notions": ["n-recurrence-suites-modelisation", "n-recurrence-suites-recurrence"],
+    "capacites": ["bo-m-suites-09", "bo-m-logique-14"],
+    "titre": "Un vélo en libre-service",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 200,
+    "source": {
+      "annale": "an-2022-amerique-nord-j2",
+      "adaptation": "situation (vélo garé en A ou en B) et consignes reprises ; probabilités et forme explicite changées ; question de seuil retirée (chapitre « Limites de suites »)"
+    },
+    "preambule": "Un vélo en libre-service est garé chaque matin soit au point A, soit au point B. S'il est en A un matin, il est en A le matin suivant avec une probabilité de $0{,}8$. S'il est en B un matin, il est en A le matin suivant avec une probabilité de $0{,}3$. Le premier matin, il est en A avec une probabilité de $0{,}5$.\n\nPour tout entier $n \\geqslant 1$, on note $A_n$ l'événement « le vélo est en A le $n$-ième matin » et $a_n = P(A_n)$ ; ainsi $a_1 = 0{,}5$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "À l'aide d'un arbre pondéré, montrer que, pour tout entier $n \\geqslant 1$, $a_{n+1} = 0{,}5a_n + 0{,}3$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dessine l'arbre du matin $n$ au matin $n + 1$ : deux branches $A_n$ et $\\overline{A_n}$, puis, au bout de chacune, $A_{n+1}$ et $\\overline{A_{n+1}}$.",
+          "Sur l'arbre : $P(A_n) = a_n$, $P(\\overline{A_n}) = 1 - a_n$, $P_{A_n}(A_{n+1}) = 0{,}8$ et $P_{\\overline{A_n}}(A_{n+1}) = 0{,}3$.",
+          "Deux chemins mènent à $A_{n+1}$ : applique la formule des probabilités totales.",
+          "$a_{n+1} = 0{,}8a_n + 0{,}3(1 - a_n)$ : développe et regroupe les termes en $a_n$."
+        ],
+        "revoir": "l-recurrence-suites-034",
+        "solution": "L'événement $\\overline{A_n}$ est « le vélo est en B le $n$-ième matin ». Sur l'arbre pondéré du matin $n$ au matin $n + 1$ : $P(A_n) = a_n$, $P(\\overline{A_n}) = 1 - a_n$, $P_{A_n}(A_{n+1}) = 0{,}8$ et $P_{\\overline{A_n}}(A_{n+1}) = 0{,}3$.\n\n$A_n$ et $\\overline{A_n}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$a_{n+1} = P(A_n \\cap A_{n+1}) + P(\\overline{A_n} \\cap A_{n+1}) = 0{,}8a_n + 0{,}3(1 - a_n) = 0{,}8a_n + 0{,}3 - 0{,}3a_n = 0{,}5a_n + 0{,}3.$$"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $a_3$.",
+        "reponse": { "type": "numerique", "valeur": 0.575, "tolerance": 0 },
+        "indices": [
+          "Applique la relation de la question 1 avec $n = 1$, puis avec $n = 2$.",
+          "$a_2 = 0{,}5 \\times 0{,}5 + 0{,}3 = 0{,}55$.",
+          "$a_3 = 0{,}5 \\times a_2 + 0{,}3$ : prends la moitié de $a_2$, puis ajoute $0{,}3$."
+        ],
+        "revoir": "l-recurrence-suites-034",
+        "solution": "$a_2 = 0{,}5 \\times 0{,}5 + 0{,}3 = 0{,}55$ et $a_3 = 0{,}5 \\times 0{,}55 + 0{,}3 = 0{,}275 + 0{,}3 = 0{,}575$. La probabilité que le vélo soit en A le troisième matin est $0{,}575$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Démontrer par récurrence que, pour tout entier $n \\geqslant 1$, $a_n = 0{,}6 - 0{,}1 \\times 0{,}5^{n-1}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Le rang de départ est $1$ : initialise avec $a_1$.",
+          "Initialisation : calcule $0{,}6 - 0{,}1 \\times 0{,}5^0$. Hérédité : tu veux $a_{n+1} = 0{,}6 - 0{,}1 \\times 0{,}5^{n}$, car l'exposant $n - 1$ devient $(n+1) - 1 = n$.",
+          "Pars de $a_{n+1} = 0{,}5a_n + 0{,}3$ et remplace $a_n$ par l'hypothèse de récurrence.",
+          "$0{,}5 \\times 0{,}6 = 0{,}3$ et $0{,}5 \\times 0{,}5^{n-1} = 0{,}5^n$ : développe, puis regroupe les constantes."
+        ],
+        "revoir": "l-recurrence-suites-006",
+        "solution": "Pour tout entier $n \\geqslant 1$, on note $P(n)$ : « $a_n = 0{,}6 - 0{,}1 \\times 0{,}5^{n-1}$ ».\n\n**Initialisation** : $a_1 = 0{,}5$ et $0{,}6 - 0{,}1 \\times 0{,}5^{0} = 0{,}6 - 0{,}1 = 0{,}5$. Donc $P(1)$ est vraie.\n\n**Hérédité** : soit $n \\geqslant 1$ un entier. On suppose $P(n)$ vraie. On veut montrer $a_{n+1} = 0{,}6 - 0{,}1 \\times 0{,}5^{n}$. D'après la question 1, puis l'hypothèse de récurrence :\n\n$$a_{n+1} = 0{,}5a_n + 0{,}3 = 0{,}5\\left(0{,}6 - 0{,}1 \\times 0{,}5^{n-1}\\right) + 0{,}3 = 0{,}3 - 0{,}1 \\times 0{,}5^{n} + 0{,}3 = 0{,}6 - 0{,}1 \\times 0{,}5^{n}.$$\n\nDonc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(1)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier $n \\geqslant 1$, $a_n = 0{,}6 - 0{,}1 \\times 0{,}5^{n-1}$.",
+        "erreurFrequente": "Initialiser au rang $0$ : ici, la suite commence au premier matin, $a_0$ n'existe pas. Autre piège : au rang $n + 1$, l'exposant $n - 1$ devient $n$, pas $n + 1$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Le vélo est en A le deuxième matin. Quelle est la probabilité qu'il ait été en B le premier matin ? Donner le résultat sous forme de fraction irréductible.",
+        "reponse": { "type": "numerique", "valeur": "3/11", "tolerance": 0 },
+        "indices": [
+          "On cherche une probabilité conditionnelle : celle de $\\overline{A_1}$ sachant $A_2$.",
+          "$P_{A_2}(\\overline{A_1}) = \\dfrac{P(\\overline{A_1} \\cap A_2)}{P(A_2)}$, avec $P(A_2) = a_2$ calculé à la question 2.",
+          "$P(\\overline{A_1} \\cap A_2) = (1 - a_1) \\times 0{,}3 = 0{,}5 \\times 0{,}3$. Pour simplifier le quotient, multiplie son numérateur et son dénominateur par $100$."
+        ],
+        "revoir": "l-recurrence-suites-032",
+        "solution": "On cherche $P_{A_2}(\\overline{A_1}) = \\dfrac{P(\\overline{A_1} \\cap A_2)}{P(A_2)}$. Le chemin « en B le premier matin, puis en A » a pour probabilité $P(\\overline{A_1} \\cap A_2) = 0{,}5 \\times 0{,}3 = 0{,}15$, et $P(A_2) = a_2 = 0{,}55$. Donc $P_{A_2}(\\overline{A_1}) = \\dfrac{0{,}15}{0{,}55} = \\dfrac{15}{55} = \\dfrac{3}{11}$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-021",
+    "chapitre": "recurrence-suites",
+    "niveau": 2,
+    "notions": ["n-recurrence-suites-modelisation", "n-recurrence-suites-encadrement-variation"],
+    "capacites": ["bo-m-suites-09", "bo-m-listes-01", "bo-m-suites-08"],
+    "titre": "Un médicament et un programme",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 210,
+    "preambule": "Un patient reçoit $2$ mg d'un médicament. Ensuite, chaque heure, son organisme élimine la moitié du médicament présent, puis on lui injecte $2$ mg. On note $q_n$ la quantité de médicament, en mg, présente dans l'organisme après $n$ heures ; ainsi $q_0 = 2$.\n\nLa fonction Python ci-dessous doit renvoyer la liste des quantités $q_0$, $q_1$, …, $q_n$. Une ligne a été effacée.",
+    "code": {
+      "langage": "python",
+      "source": "def quantites(n):\n    q = 2\n    liste_q = [q]\n    for k in range(n):\n        .....            # ligne effacée\n        liste_q.append(q)\n    return liste_q"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle instruction faut-il écrire à la place de la ligne effacée ?",
+        "code": {
+          "langage": "python",
+          "source": "# Proposition A\nq = 0.5 * q + 2\n\n# Proposition B\nq = 0.5 * (q + 2)\n\n# Proposition C\nq = q - 0.5 + 2\n\n# Proposition D\nliste_q = 0.5 * q + 2"
+        },
+        "reponse": {
+          "type": "qcm",
+          "choix": ["Proposition A", "Proposition B", "Proposition C", "Proposition D"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Elle élimine aussi la moitié de la dose injectée : or l'injection a lieu après l'élimination. Avec elle, la quantité resterait toujours égale à $2$ mg.",
+            "Éliminer la moitié, ce n'est pas retirer $0{,}5$ mg : c'est multiplier la quantité par $0{,}5$.",
+            "Cette instruction remplace la liste par un nombre : la variable q ne change plus, et la liste est perdue."
+          ]
+        },
+        "indices": [
+          "Traduis l'évolution d'une heure dans l'ordre de l'énoncé : d'abord l'élimination, puis l'injection.",
+          "Éliminer la moitié du médicament, c'est en garder la moitié : il reste $0{,}5q_n$ mg.",
+          "L'injection ajoute ensuite $2$ mg à ce qui reste. La ligne effacée doit remplacer la valeur de q par le terme suivant, avant que q soit ajouté à la liste."
+        ],
+        "revoir": "l-recurrence-suites-036",
+        "solution": "Après l'élimination, il reste la moitié du médicament, soit $0{,}5q_n$ ; puis on injecte $2$ mg. Donc, pour tout entier naturel $n$, $q_{n+1} = 0{,}5q_n + 2$. La ligne effacée doit remplacer q par le terme suivant : c'est la proposition A. La proposition B élimine aussi la dose injectée, la C retire $0{,}5$ mg au lieu de la moitié, et la D écrase la liste."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien d'éléments contient la liste renvoyée par quantites(3) ?",
+        "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+        "indices": [
+          "La liste contient déjà $q_0$ avant la boucle ; chaque tour de boucle lui ajoute un terme.",
+          "Avec range(3), la variable k prend les valeurs $0$, $1$ et $2$ : combien de tours la boucle fait-elle ?",
+          "Ajoute le nombre de tours au terme présent dès le départ."
+        ],
+        "revoir": "l-recurrence-suites-036",
+        "solution": "La liste contient $q_0$ au départ. La boucle fait $3$ tours (k prend les valeurs $0$, $1$ et $2$), et chacun ajoute un terme : $q_1$, $q_2$, puis $q_3$. La liste renvoyée contient $1 + 3 = 4$ éléments."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est le dernier élément de cette liste ?",
+        "reponse": { "type": "numerique", "valeur": 3.75, "tolerance": 0 },
+        "indices": [
+          "C'est $q_3$ : applique trois fois la relation $q_{n+1} = 0{,}5q_n + 2$, en partant de $q_0 = 2$.",
+          "$q_1 = 0{,}5 \\times 2 + 2 = 3$.",
+          "$q_2 = 0{,}5 \\times 3 + 2 = 3{,}5$ ; calcule $q_3$ de la même façon."
+        ],
+        "revoir": "l-recurrence-suites-036",
+        "solution": "$q_1 = 0{,}5 \\times 2 + 2 = 3$, $q_2 = 0{,}5 \\times 3 + 2 = 3{,}5$ et $q_3 = 0{,}5 \\times 3{,}5 + 2 = 1{,}75 + 2 = 3{,}75$. La fonction renvoie [2, 3.0, 3.5, 3.75] (Python écrit les décimaux avec un point) : le dernier élément est $3{,}75$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $q_n \\leqslant q_{n+1} \\leqslant 4$. Interpréter ce résultat.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "La fonction $f$ définie par $f(x) = 0{,}5x + 2$ est croissante, et $q_{n+1} = f(q_n)$ : suis la méthode avec une fonction croissante.",
+          "Initialisation : $q_0 = 2$ et $q_1 = 3$. Hérédité : tu supposes $q_n \\leqslant q_{n+1} \\leqslant 4$ et tu veux $q_{n+1} \\leqslant q_{n+2} \\leqslant 4$.",
+          "Multiplie les trois membres par $0{,}5$, qui est positif, puis ajoute $2$.",
+          "Tu obtiens $0{,}5q_n + 2 \\leqslant 0{,}5q_{n+1} + 2 \\leqslant 0{,}5 \\times 4 + 2$ : reconnais chacun des trois membres."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $q_n \\leqslant q_{n+1} \\leqslant 4$ ».\n\n**Initialisation** : $q_0 = 2$ et $q_1 = 3$, et $2 \\leqslant 3 \\leqslant 4$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $q_n \\leqslant q_{n+1} \\leqslant 4$. On multiplie par $0{,}5$, qui est positif, puis on ajoute $2$ : $0{,}5q_n + 2 \\leqslant 0{,}5q_{n+1} + 2 \\leqslant 0{,}5 \\times 4 + 2$, c'est-à-dire $q_{n+1} \\leqslant q_{n+2} \\leqslant 4$. Donc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $q_n \\leqslant q_{n+1} \\leqslant 4$.\n\n**Interprétation** : la suite $(q_n)$ est croissante et majorée par $4$. La quantité de médicament dans l'organisme augmente d'heure en heure, sans jamais dépasser $4$ mg."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-022",
+    "chapitre": "recurrence-suites",
+    "niveau": 3,
+    "notions": ["n-recurrence-suites-encadrement-variation", "n-recurrence-suites-recurrence"],
+    "capacites": ["bo-m-suites-08", "bo-m-logique-14"],
+    "titre": "Une suite définie par un quotient, de bout en bout",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 220,
+    "preambule": "Soit $f$ la fonction définie sur $[0\\,;\\,+\\infty[$ par $f(x) = \\dfrac{3x}{x+2}$. Soit $(u_n)$ la suite définie par $u_0 = 2$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étudier le sens de variation de $f$ sur $[0\\,;\\,+\\infty[$. Calculer $f(1)$ et $f(2)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f$ est un quotient : utilise $\\left(\\dfrac{g}{h}\\right)' = \\dfrac{g'h - gh'}{h^2}$.",
+          "Avec $g(x) = 3x$ et $h(x) = x + 2$ : $f'(x) = \\dfrac{3(x+2) - 3x \\times 1}{(x+2)^2}$. Simplifie le numérateur.",
+          "Le numérateur est un nombre positif, le dénominateur un carré non nul : conclus sur le signe de $f'$, puis calcule les deux images."
+        ],
+        "revoir": "l-recurrence-suites-022",
+        "solution": "Pour tout $x \\geqslant 0$, $x + 2 > 0$ et\n\n$$f'(x) = \\frac{3(x+2) - 3x \\times 1}{(x+2)^2} = \\frac{6}{(x+2)^2}.$$\n\nLe numérateur est positif et le dénominateur strictement positif : $f'(x) > 0$, donc $f$ est croissante sur $[0\\,;\\,+\\infty[$. Enfin $f(1) = \\dfrac{3}{3} = 1$ et $f(2) = \\dfrac{6}{4} = 1{,}5$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 2$. En déduire le sens de variation de la suite $(u_n)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Compare d'abord $u_0$ et $u_1$ pour comprendre l'ordre de la propriété, puis suis la méthode avec une fonction croissante.",
+          "Initialisation : $u_1 = f(2) = 1{,}5$. Hérédité : tu supposes $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 2$ ; ces nombres sont dans l'intervalle où $f$ est croissante.",
+          "Applique $f$ : $f(1) \\leqslant f(u_{n+1}) \\leqslant f(u_n) \\leqslant f(2)$, puis remplace chaque membre.",
+          "Tu obtiens un encadrement de $u_{n+2}$ et $u_{n+1}$ entre $1$ et $1{,}5$. Compare $1{,}5$ à $2$, conclus, puis lis le sens de variation dans la propriété."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 2$ ».\n\n**Initialisation** : $u_0 = 2$ et $u_1 = f(2) = 1{,}5$. Or $1 \\leqslant 1{,}5 \\leqslant 2 \\leqslant 2$, donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 2$. Ces quatre nombres sont dans $[0\\,;\\,+\\infty[$, où $f$ est croissante (question 1) : en appliquant $f$, l'ordre est conservé, $f(1) \\leqslant f(u_{n+1}) \\leqslant f(u_n) \\leqslant f(2)$. Or $f(1) = 1$, $f(u_{n+1}) = u_{n+2}$, $f(u_n) = u_{n+1}$ et $f(2) = 1{,}5$. Donc $1 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 1{,}5$ et, comme $1{,}5 \\leqslant 2$, on a $1 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 2$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $1 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 2$.\n\nEn particulier, $u_{n+1} \\leqslant u_n$ pour tout $n$ : la suite $(u_n)$ est décroissante. Elle est aussi bornée, entre $1$ et $2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $u_2$. Donner le résultat sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "9/7", "tolerance": 0 },
+        "indices": [
+          "$u_2 = f(u_1)$, avec $u_1 = 1{,}5 = \\dfrac{3}{2}$.",
+          "$u_2 = \\dfrac{3 \\times \\frac{3}{2}}{\\frac{3}{2} + 2}$ : calcule séparément le numérateur et le dénominateur.",
+          "Le numérateur vaut $\\dfrac{9}{2}$ et le dénominateur $\\dfrac{7}{2}$ ; diviser par $\\dfrac{7}{2}$, c'est multiplier par $\\dfrac{2}{7}$."
+        ],
+        "revoir": "l-recurrence-suites-022",
+        "solution": "$u_2 = f\\left(\\dfrac{3}{2}\\right) = \\dfrac{3 \\times \\frac{3}{2}}{\\frac{3}{2} + 2} = \\dfrac{\\frac{9}{2}}{\\frac{7}{2}} = \\dfrac{9}{2} \\times \\dfrac{2}{7} = \\dfrac{9}{7}$. On retrouve $1 \\leqslant u_2 \\leqslant u_1$ : $\\dfrac{9}{7} = \\dfrac{18}{14}$ et $\\dfrac{3}{2} = \\dfrac{21}{14}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n = \\dfrac{2}{2 - \\left(\\frac{2}{3}\\right)^n}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Initialise au rang $0$. Dans l'hérédité, pose $a = \\left(\\frac{2}{3}\\right)^n$ pour alléger les calculs : l'hypothèse s'écrit $u_n = \\dfrac{2}{2 - a}$, et tu veux $u_{n+1} = \\dfrac{2}{2 - \\frac{2}{3}a}$.",
+          "Calcule séparément le numérateur et le dénominateur de $u_{n+1} = \\dfrac{3u_n}{u_n + 2}$ : $3u_n = \\dfrac{6}{2 - a}$ et $u_n + 2 = \\dfrac{2 + 2(2 - a)}{2 - a}$.",
+          "$u_n + 2 = \\dfrac{6 - 2a}{2 - a}$. En divisant, les facteurs $2 - a$ se simplifient : $u_{n+1} = \\dfrac{6}{6 - 2a}$.",
+          "Divise le numérateur et le dénominateur de $\\dfrac{6}{6 - 2a}$ par $3$, puis écris $\\dfrac{2}{3}a$ comme une puissance de $\\dfrac{2}{3}$."
+        ],
+        "revoir": "l-recurrence-suites-006",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n = \\dfrac{2}{2 - \\left(\\frac{2}{3}\\right)^n}$ ».\n\n**Initialisation** : $u_0 = 2$ et $\\dfrac{2}{2 - \\left(\\frac{2}{3}\\right)^0} = \\dfrac{2}{2 - 1} = 2$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $P(n)$ est vraie. On note $a = \\left(\\frac{2}{3}\\right)^n$ ; comme $0 < a \\leqslant 1$, on a $2 - a > 0$, et $u_n = \\dfrac{2}{2 - a}$. Alors :\n\n$$3u_n = \\frac{6}{2 - a} \\quad \\text{et} \\quad u_n + 2 = \\frac{2 + 2(2 - a)}{2 - a} = \\frac{6 - 2a}{2 - a}.$$\n\nDonc $u_{n+1} = \\dfrac{3u_n}{u_n + 2} = \\dfrac{6}{2 - a} \\times \\dfrac{2 - a}{6 - 2a} = \\dfrac{6}{6 - 2a}$. En divisant le numérateur et le dénominateur par $3$ :\n\n$$u_{n+1} = \\frac{2}{2 - \\frac{2}{3}a} = \\frac{2}{2 - \\left(\\frac{2}{3}\\right)^{n+1}},$$\n\ncar $\\dfrac{2}{3} \\times \\left(\\dfrac{2}{3}\\right)^n = \\left(\\dfrac{2}{3}\\right)^{n+1}$. Donc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $u_n = \\dfrac{2}{2 - \\left(\\frac{2}{3}\\right)^n}$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Vrai ou faux ? Pour tout entier naturel $n$, $u_n > 1$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$0 < \\left(\\frac{2}{3}\\right)^n \\leqslant 1$, donc $1 \\leqslant 2 - \\left(\\frac{2}{3}\\right)^n < 2$, puis $u_n > \\dfrac{2}{2} = 1$."
+        },
+        "indices": [
+          "La question 2 donne seulement $u_n \\geqslant 1$. Utilise plutôt la forme explicite de la question 4.",
+          "Avec $a = \\left(\\frac{2}{3}\\right)^n$, qui est strictement positif : compare $2 - a$ à $2$.",
+          "Si $0 < 2 - a < 2$, la fonction inverse, décroissante sur $]0\\,;\\,+\\infty[$, permet de comparer $\\dfrac{1}{2 - a}$ à $\\dfrac{1}{2}$."
+        ],
+        "revoir": "l-recurrence-suites-014",
+        "solution": "Pour tout entier naturel $n$, $a = \\left(\\frac{2}{3}\\right)^n$ vérifie $0 < a \\leqslant 1$, donc $1 \\leqslant 2 - a < 2$. La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$ : $\\dfrac{1}{2 - a} > \\dfrac{1}{2}$, puis $u_n = \\dfrac{2}{2 - a} > 1$. L'affirmation est vraie : l'encadrement de la question 2 donnait $u_n \\geqslant 1$, la forme explicite donne l'inégalité stricte."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-023",
+    "chapitre": "recurrence-suites",
+    "niveau": 3,
+    "notions": ["n-recurrence-suites-recurrence", "n-recurrence-suites-modelisation"],
+    "capacites": ["bo-m-logique-14", "bo-m-suites-17"],
+    "titre": "Chaque terme dépend des deux précédents",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 230,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 2$, $u_1 = 5$ et, pour tout entier naturel $n$, $u_{n+2} = 5u_{n+1} - 6u_n$. À partir de $u_2$, chaque terme se calcule à l'aide des **deux** termes qui le précèdent.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $u_3$.",
+        "reponse": { "type": "numerique", "valeur": 35, "tolerance": 0 },
+        "indices": [
+          "Applique la relation avec $n = 0$ pour obtenir $u_2$, puis avec $n = 1$ pour obtenir $u_3$.",
+          "$u_2 = 5u_1 - 6u_0 = 5 \\times 5 - 6 \\times 2 = 13$.",
+          "$u_3 = 5u_2 - 6u_1$ : remplace $u_2$ et $u_1$ par leurs valeurs."
+        ],
+        "revoir": "l-recurrence-suites-038",
+        "solution": "Avec $n = 0$ : $u_2 = 5u_1 - 6u_0 = 25 - 12 = 13$. Avec $n = 1$ : $u_3 = 5u_2 - 6u_1 = 65 - 30 = 35$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle conjecture est compatible avec les termes $u_0$ à $u_3$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$u_n = 3n + 2$", "$u_n = 2^n + 3^n$", "$u_n = 2 \\times 3^n$", "$u_n = n^2 + 2n + 2$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Elle convient aux rangs $0$ et $1$, mais donne $8$ au rang $2$, alors que $u_2 = 13$.",
+            null,
+            "Elle donne $6$ au rang $1$, alors que $u_1 = 5$.",
+            "Elle convient aux rangs $0$ et $1$, mais donne $10$ au rang $2$, alors que $u_2 = 13$."
+          ]
+        },
+        "indices": [
+          "Teste chaque formule aux rangs $0$, $1$, $2$ et $3$.",
+          "Essaie d'écrire $13$ et $35$ comme des sommes de deux puissances d'entiers.",
+          "$2 = 1 + 1$, $5 = 2 + 3$, $13 = 4 + 9$ : regarde les deux termes de chaque somme."
+        ],
+        "revoir": "l-recurrence-suites-004",
+        "solution": "$2 = 2^0 + 3^0$, $5 = 2^1 + 3^1$, $13 = 2^2 + 3^2$ et $35 = 2^3 + 3^3$. Seule la formule $u_n = 2^n + 3^n$ convient aux quatre rangs ; les autres échouent dès le rang $1$ ou le rang $2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Pour démontrer cette conjecture, la propriété $P(n)$ : « $u_n = 2^n + 3^n$ » suffit, car dans l'hérédité on calcule $u_{n+1}$ à partir de $u_n$ seul.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "La relation donne $u_{n+2}$ à partir de $u_{n+1}$ et de $u_n$ : il faut connaître deux termes consécutifs. La propriété doit porter sur deux rangs à la fois."
+        },
+        "indices": [
+          "Regarde ce que la relation de récurrence permet de calculer, et à partir de quels termes.",
+          "La relation exprime $u_{n+2}$, pas $u_{n+1}$ : elle a besoin de deux termes.",
+          "Si l'hypothèse ne dit rien de $u_{n+1}$, peux-tu calculer $u_{n+2}$ ?"
+        ],
+        "revoir": "l-recurrence-suites-038",
+        "solution": "La relation ne permet pas de calculer $u_{n+1}$ à partir du seul $u_n$ : elle donne $u_{n+2}$ en fonction de $u_{n+1}$ et de $u_n$. Pour que l'hérédité fonctionne, l'hypothèse doit porter sur deux termes consécutifs : on pose $P(n)$ : « $u_n = 2^n + 3^n$ et $u_{n+1} = 2^{n+1} + 3^{n+1}$ ». L'affirmation est fausse."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n = 2^n + 3^n$ et $u_{n+1} = 2^{n+1} + 3^{n+1}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $P(n)$ : « $u_n = 2^n + 3^n$ et $u_{n+1} = 2^{n+1} + 3^{n+1}$ ». L'initialisation vérifie les deux égalités au rang $0$.",
+          "Dans l'hérédité, la première égalité de $P(n+1)$, « $u_{n+1} = 2^{n+1} + 3^{n+1}$ », fait déjà partie de $P(n)$. Il reste à montrer $u_{n+2} = 2^{n+2} + 3^{n+2}$.",
+          "$u_{n+2} = 5u_{n+1} - 6u_n = 5\\left(2^{n+1} + 3^{n+1}\\right) - 6\\left(2^n + 3^n\\right)$. Écris tout avec $2^n$ et $3^n$ : $2^{n+1} = 2 \\times 2^n$ et $3^{n+1} = 3 \\times 3^n$.",
+          "Regroupe : $(10 - 6) \\times 2^n + (15 - 6) \\times 3^n$. Reconnais $4 = 2^2$ et $9 = 3^2$."
+        ],
+        "revoir": "l-recurrence-suites-040",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n = 2^n + 3^n$ et $u_{n+1} = 2^{n+1} + 3^{n+1}$ ».\n\n**Initialisation** : $u_0 = 2 = 2^0 + 3^0$ et $u_1 = 5 = 2^1 + 3^1$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $P(n)$ est vraie. La première égalité de $P(n+1)$, $u_{n+1} = 2^{n+1} + 3^{n+1}$, fait partie de $P(n)$. Pour la seconde, on utilise la relation, puis les deux égalités de $P(n)$ :\n\n$$u_{n+2} = 5\\left(2^{n+1} + 3^{n+1}\\right) - 6\\left(2^n + 3^n\\right) = 10 \\times 2^n + 15 \\times 3^n - 6 \\times 2^n - 6 \\times 3^n = 4 \\times 2^n + 9 \\times 3^n.$$\n\nOr $4 \\times 2^n = 2^{n+2}$ et $9 \\times 3^n = 3^{n+2}$, donc $u_{n+2} = 2^{n+2} + 3^{n+2}$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, $P(n)$ est vraie pour tout entier naturel $n$ ; en particulier, $u_n = 2^n + 3^n$ pour tout entier naturel $n$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "En déduire $u_5$.",
+        "reponse": { "type": "numerique", "valeur": 275, "tolerance": 0 },
+        "indices": [
+          "Utilise la forme explicite démontrée à la question 4.",
+          "$u_5 = 2^5 + 3^5$.",
+          "$2^5 = 32$ ; calcule $3^5$ en multipliant $3$ par lui-même cinq fois : $3^4 = 81$."
+        ],
+        "revoir": "l-recurrence-suites-040",
+        "solution": "$u_5 = 2^5 + 3^5 = 32 + 243 = 275$. Contrôle avec la relation : $u_4 = 5 \\times 35 - 6 \\times 13 = 175 - 78 = 97$, puis $u_5 = 5 \\times 97 - 6 \\times 35 = 485 - 210 = 275$."
+      }
+    ]
+  },
+  {
+    "id": "x-recurrence-suites-024",
+    "chapitre": "recurrence-suites",
+    "niveau": 3,
+    "notions": ["n-recurrence-suites-modelisation", "n-recurrence-suites-encadrement-variation"],
+    "capacites": ["bo-m-suites-09", "bo-m-suites-08"],
+    "titre": "Deux modèles pour une population de poissons",
+    "duree": 30,
+    "calculatrice": false,
+    "ordre": 240,
+    "preambule": "Un lac compte $400$ poissons au départ. On compare deux modèles de l'évolution de cette population ; dans chacun, $n$ désigne le nombre d'années écoulées.\n\n**Modèle 1** : chaque année, $10\\,\\%$ des poissons meurent ou sont pêchés, puis on introduit $100$ jeunes poissons. On note $u_n$ le nombre de poissons selon ce modèle ; ainsi $u_0 = 400$.\n\n**Modèle 2** : on note $v_n$ le nombre de poissons selon ce modèle ; $v_0 = 400$ et, pour tout entier naturel $n$, $v_{n+1} = f(v_n)$, où $f$ est la fonction définie sur $[0\\,;\\,1\\,000]$ par $f(x) = 1{,}5x - \\dfrac{x^2}{2\\,000}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Modèle 1. Justifier que, pour tout entier naturel $n$, $u_{n+1} = 0{,}9u_n + 100$, puis démontrer que, pour tout entier naturel $n$, $u_n = 1\\,000 - 600 \\times 0{,}9^n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour la relation, traduis les deux phrases dans l'ordre. Pour la forme explicite, cherche la valeur qui ne bouge pas.",
+          "Perdre $10\\,\\%$, c'est multiplier par $0{,}9$. La valeur qui ne bouge pas vérifie $c = 0{,}9c + 100$.",
+          "Tu dois trouver $c = 1\\,000$ : pose $w_n = u_n - 1\\,000$ et montre que $(w_n)$ est géométrique.",
+          "$w_{n+1} = 0{,}9u_n + 100 - 1\\,000 = 0{,}9(w_n + 1\\,000) - 900$. Simplifie, calcule $w_0$, puis reviens à $u_n$."
+        ],
+        "revoir": "l-recurrence-suites-029",
+        "solution": "Chaque année, $10\\,\\%$ des $u_n$ poissons disparaissent : il en reste $0{,}9u_n$. Puis on introduit $100$ poissons. Donc $u_{n+1} = 0{,}9u_n + 100$ pour tout entier naturel $n$.\n\nLa valeur qui ne bouge pas vérifie $c = 0{,}9c + 100$, soit $0{,}1c = 100$ et $c = 1\\,000$. On pose $w_n = u_n - 1\\,000$. Pour tout entier naturel $n$ :\n\n$$w_{n+1} = u_{n+1} - 1\\,000 = 0{,}9u_n - 900 = 0{,}9(w_n + 1\\,000) - 900 = 0{,}9w_n.$$\n\nLa suite $(w_n)$ est géométrique de raison $0{,}9$ et de premier terme $w_0 = 400 - 1\\,000 = -600$. Donc $w_n = -600 \\times 0{,}9^n$ et $u_n = w_n + 1\\,000 = 1\\,000 - 600 \\times 0{,}9^n$ pour tout entier naturel $n$. On pouvait aussi démontrer cette forme explicite par récurrence."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Selon le modèle 1, combien le lac compte-t-il de poissons au bout de $2$ ans ?",
+        "reponse": { "type": "numerique", "valeur": 514, "tolerance": 0 },
+        "indices": [
+          "Utilise la forme explicite de la question 1, ou applique deux fois la relation.",
+          "$u_2 = 1\\,000 - 600 \\times 0{,}9^2$, avec $0{,}9^2 = 0{,}81$.",
+          "$600 \\times 0{,}81 = 600 \\times 0{,}8 + 600 \\times 0{,}01$."
+        ],
+        "revoir": "l-recurrence-suites-030",
+        "solution": "$u_2 = 1\\,000 - 600 \\times 0{,}81 = 1\\,000 - 486 = 514$. Contrôle : $u_1 = 0{,}9 \\times 400 + 100 = 460$ et $u_2 = 0{,}9 \\times 460 + 100 = 414 + 100 = 514$. Le lac compte $514$ poissons au bout de $2$ ans."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Modèle 2. Étudier le sens de variation de $f$ sur $[0\\,;\\,1\\,000]$, puis calculer $f(400)$ et $f(1\\,000)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive $f$ : c'est une fonction polynôme.",
+          "$f'(x) = 1{,}5 - \\dfrac{2x}{2\\,000} = 1{,}5 - \\dfrac{x}{1\\,000}$. Pour $0 \\leqslant x \\leqslant 1\\,000$, encadre $\\dfrac{x}{1\\,000}$.",
+          "$0 \\leqslant \\dfrac{x}{1\\,000} \\leqslant 1$, donc $f'(x) \\geqslant 0{,}5$. Pour les images : $400^2 = 160\\,000$ et $1\\,000^2 = 1\\,000\\,000$."
+        ],
+        "revoir": "l-recurrence-suites-020",
+        "solution": "Pour tout $x$ de $[0\\,;\\,1\\,000]$, $f'(x) = 1{,}5 - \\dfrac{2x}{2\\,000} = 1{,}5 - \\dfrac{x}{1\\,000}$. Or $0 \\leqslant \\dfrac{x}{1\\,000} \\leqslant 1$, donc $f'(x) \\geqslant 1{,}5 - 1 = 0{,}5 > 0$ : $f$ est croissante sur $[0\\,;\\,1\\,000]$.\n\nEnfin $f(400) = 600 - \\dfrac{160\\,000}{2\\,000} = 600 - 80 = 520$ et $f(1\\,000) = 1\\,500 - \\dfrac{1\\,000\\,000}{2\\,000} = 1\\,500 - 500 = 1\\,000$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $400 \\leqslant v_n \\leqslant v_{n+1} \\leqslant 1\\,000$. Interpréter ce résultat.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Suis la méthode avec une fonction croissante : les bornes vérifient-elles $400 \\leqslant f(400)$ et $f(1\\,000) \\leqslant 1\\,000$ ?",
+          "Initialisation : $v_0 = 400$ et $v_1 = f(400) = 520$. Hérédité : tu supposes $400 \\leqslant v_n \\leqslant v_{n+1} \\leqslant 1\\,000$.",
+          "Ces quatre nombres sont dans $[0\\,;\\,1\\,000]$, où $f$ est croissante : applique $f$ sans changer le sens des inégalités.",
+          "Tu obtiens $520 \\leqslant v_{n+1} \\leqslant v_{n+2} \\leqslant 1\\,000$. Compare $520$ à $400$ et conclus ; pour l'interprétation, lis le sens de variation et le majorant."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $400 \\leqslant v_n \\leqslant v_{n+1} \\leqslant 1\\,000$ ».\n\n**Initialisation** : $v_0 = 400$ et $v_1 = f(400) = 520$. Or $400 \\leqslant 400 \\leqslant 520 \\leqslant 1\\,000$, donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $400 \\leqslant v_n \\leqslant v_{n+1} \\leqslant 1\\,000$. Ces quatre nombres sont dans $[0\\,;\\,1\\,000]$, où $f$ est croissante (question 3) : en appliquant $f$, l'ordre est conservé, $f(400) \\leqslant f(v_n) \\leqslant f(v_{n+1}) \\leqslant f(1\\,000)$, c'est-à-dire $520 \\leqslant v_{n+1} \\leqslant v_{n+2} \\leqslant 1\\,000$. Comme $400 \\leqslant 520$, on a $400 \\leqslant v_{n+1} \\leqslant v_{n+2} \\leqslant 1\\,000$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $400 \\leqslant v_n \\leqslant v_{n+1} \\leqslant 1\\,000$.\n\n**Interprétation** : la suite $(v_n)$ est croissante et majorée par $1\\,000$. Selon le modèle 2, la population de poissons augmente chaque année, sans jamais dépasser $1\\,000$ poissons."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Selon le modèle 2, combien le lac compte-t-il de poissons au bout de $2$ ans ? Donner la valeur exacte fournie par le modèle.",
+        "reponse": { "type": "numerique", "valeur": 644.8, "tolerance": 0 },
+        "indices": [
+          "$v_2 = f(v_1)$, avec $v_1 = f(400)$ calculé à la question 3.",
+          "$v_2 = f(520) = 1{,}5 \\times 520 - \\dfrac{520^2}{2\\,000}$.",
+          "$1{,}5 \\times 520 = 780$ et $520^2 = 270\\,400$ ; divise ce carré par $2\\,000$."
+        ],
+        "revoir": "l-recurrence-suites-022",
+        "solution": "$v_1 = f(400) = 520$, puis $v_2 = f(520) = 1{,}5 \\times 520 - \\dfrac{520^2}{2\\,000} = 780 - \\dfrac{270\\,400}{2\\,000} = 780 - 135{,}2 = 644{,}8$. Le modèle donne $644{,}8$, soit environ $645$ poissons."
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Quelle affirmation est vraie ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Au bout de $2$ ans, le modèle 2 prévoit plus de poissons que le modèle 1, et aucun des deux modèles ne dépasse $1\\,000$ poissons.",
+            "Au bout de $2$ ans, le modèle 1 prévoit plus de poissons que le modèle 2.",
+            "Selon le modèle 1, la population finira par dépasser $1\\,000$ poissons.",
+            "Selon le modèle 2, la population diminue certaines années."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$u_2 = 514$ et $v_2 = 644{,}8$ : c'est le modèle 2 qui prévoit le plus de poissons.",
+            "$u_n = 1\\,000 - 600 \\times 0{,}9^n$, et $600 \\times 0{,}9^n > 0$ : donc $u_n < 1\\,000$ pour tout $n$.",
+            "La question 4 montre que $v_n \\leqslant v_{n+1}$ pour tout $n$ : la population augmente chaque année."
+          ]
+        },
+        "indices": [
+          "Rassemble les résultats : questions 1 et 2 pour le modèle 1, questions 4 et 5 pour le modèle 2.",
+          "Compare $u_2$ et $v_2$. Pour le modèle 1, quel est le signe de $1\\,000 - u_n$ ?",
+          "$1\\,000 - u_n = 600 \\times 0{,}9^n$ ; pour le modèle 2, la question 4 donne à la fois le sens de variation et un majorant."
+        ],
+        "revoir": "l-recurrence-suites-030",
+        "solution": "Au bout de $2$ ans, $u_2 = 514$ et $v_2 = 644{,}8$ : le modèle 2 prévoit plus de poissons. Pour le modèle 1, $1\\,000 - u_n = 600 \\times 0{,}9^n > 0$, donc $u_n < 1\\,000$ pour tout $n$. Pour le modèle 2, $v_n \\leqslant v_{n+1} \\leqslant 1\\,000$ pour tout $n$ (question 4) : la population augmente sans dépasser $1\\,000$. Seule la première affirmation est vraie."
+      }
+    ]
+  }
+]
