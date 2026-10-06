@@ -589,7 +589,7 @@
     "duree": 4,
     "calculatrice": false,
     "ordre": 100,
-    "preambule": "Chaque jour, il fait beau ou il pleut. S'il fait beau un jour, il fait beau le lendemain avec une probabilité de $0{,}7$. S'il pleut un jour, il fait beau le lendemain avec une probabilité de $0{,}4$. Il fait beau le jour $1$.\n\nPour tout entier $n \\geqslant 1$, on note $B_n$ l'événement « il fait beau le jour $n$ » et $p_n = P(B_n)$ ; ainsi $p_1 = 1$.",
+    "preambule": "Chaque jour, il fait beau ou il pleut. S'il fait beau un jour, il fait beau le lendemain avec une probabilité de $0{,}7$. S'il pleut un jour, il fait beau le lendemain avec une probabilité de $0{,}4$. Le jour $1$, il fait beau avec une probabilité de $0{,}5$.\n\nPour tout entier $n \\geqslant 1$, on note $B_n$ l'événement « il fait beau le jour $n$ » et $p_n = P(B_n)$ ; ainsi $p_1 = 0{,}5$.",
     "questions": [
       {
         "id": "q1",
@@ -622,13 +622,13 @@
         "id": "q2",
         "label": "2.",
         "enonce": "Calcule $p_3$.",
-        "reponse": { "type": "numerique", "valeur": 0.61, "tolerance": 0 },
+        "reponse": { "type": "numerique", "valeur": 0.565, "tolerance": 0 },
         "indices": [
           "Applique la relation de la question 1 avec $n = 1$, puis avec $n = 2$.",
-          "$p_2 = 0{,}3 \\times 1 + 0{,}4 = 0{,}7$ : c'est logique, il a fait beau le jour $1$. Calcule $p_3$ à partir de $p_2$."
+          "$p_2 = 0{,}3 \\times 0{,}5 + 0{,}4 = 0{,}55$. Calcule $p_3$ à partir de $p_2$ de la même façon."
         ],
         "revoir": "l-recurrence-suites-034",
-        "solution": "$p_2 = 0{,}3 \\times 1 + 0{,}4 = 0{,}7$, puis $p_3 = 0{,}3 \\times 0{,}7 + 0{,}4 = 0{,}21 + 0{,}4 = 0{,}61$. La probabilité qu'il fasse beau le jour $3$ est $0{,}61$."
+        "solution": "$p_2 = 0{,}3 \\times 0{,}5 + 0{,}4 = 0{,}15 + 0{,}4 = 0{,}55$, puis $p_3 = 0{,}3 \\times 0{,}55 + 0{,}4 = 0{,}165 + 0{,}4 = 0{,}565$. La probabilité qu'il fasse beau le jour $3$ est $0{,}565$."
       }
     ]
   },
@@ -1043,22 +1043,22 @@
     "ordre": 170,
     "source": {
       "annale": "an-2024-polynesie-juin-j1",
-      "adaptation": "suite et consigne de récurrence reprises avec un autre premier terme ($u_0 = 2$ au lieu de $3$) ; étude de la fonction et calcul de termes ajoutés ; convergence retirée (chapitre « Limites de suites »)"
+      "adaptation": "fonction et bornes changées (6/(7 − x) sur [1 ; 6] au lieu de 4/(5 − x) sur [1 ; 4]) ; calcul de u2 ajouté ; questions d'équivalence, de convergence et de limite retirées (chapitre « Limites de suites »)"
     },
-    "preambule": "Soit $f$ la fonction définie sur $[1\\,;\\,4]$ par $f(x) = \\dfrac{4}{5 - x}$. Soit $(u_n)$ la suite définie par $u_0 = 2$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n) = \\dfrac{4}{5 - u_n}$.",
+    "preambule": "Soit $f$ la fonction définie sur $[1\\,;\\,6]$ par $f(x) = \\dfrac{6}{7 - x}$. Soit $(u_n)$ la suite définie par $u_0 = 3$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n) = \\dfrac{6}{7 - u_n}$.",
     "questions": [
       {
         "id": "q1",
         "label": "1.",
-        "enonce": "Étudier le sens de variation de $f$ sur $[1\\,;\\,4]$, puis calculer $f(1)$ et $f(4)$.",
+        "enonce": "Étudier le sens de variation de $f$ sur $[1\\,;\\,6]$, puis calculer $f(1)$ et $f(6)$.",
         "reponse": { "type": "redaction" },
         "indices": [
-          "$f(x) = 4 \\times \\dfrac{1}{v(x)}$ avec $v(x) = 5 - x$, qui ne s'annule pas sur $[1\\,;\\,4]$. Utilise la dérivée de $\\dfrac{1}{v}$, vue en première.",
+          "$f(x) = 6 \\times \\dfrac{1}{v(x)}$ avec $v(x) = 7 - x$, qui ne s'annule pas sur $[1\\,;\\,6]$. Utilise la dérivée de $\\dfrac{1}{v}$, vue en première.",
           "$\\left(\\dfrac{1}{v}\\right)' = -\\dfrac{v'}{v^2}$, avec $v'(x) = -1$. Écris $f'(x)$.",
-          "Tu dois trouver $f'(x) = \\dfrac{4}{(5-x)^2}$ : un carré non nul est strictement positif. Pour les images, remplace $x$ par $1$, puis par $4$."
+          "Tu dois trouver $f'(x) = \\dfrac{6}{(7-x)^2}$ : un carré non nul est strictement positif. Pour les images, remplace $x$ par $1$, puis par $6$."
         ],
         "revoir": "l-recurrence-suites-020",
-        "solution": "Pour tout $x$ de $[1\\,;\\,4]$, $5 - x \\geqslant 1$, donc $5 - x \\neq 0$. On écrit $f(x) = 4 \\times \\dfrac{1}{v(x)}$ avec $v(x) = 5 - x$ et $v'(x) = -1$ :\n\n$$f'(x) = 4 \\times \\left(-\\frac{v'(x)}{v(x)^2}\\right) = 4 \\times \\frac{1}{(5-x)^2} = \\frac{4}{(5-x)^2}.$$\n\nLe numérateur est positif et le carré $(5-x)^2$ est strictement positif, donc $f'(x) > 0$ : $f$ est croissante sur $[1\\,;\\,4]$. Enfin $f(1) = \\dfrac{4}{4} = 1$ et $f(4) = \\dfrac{4}{1} = 4$."
+        "solution": "Pour tout $x$ de $[1\\,;\\,6]$, $7 - x \\geqslant 1$, donc $7 - x \\neq 0$. On écrit $f(x) = 6 \\times \\dfrac{1}{v(x)}$ avec $v(x) = 7 - x$ et $v'(x) = -1$ :\n\n$$f'(x) = 6 \\times \\left(-\\frac{v'(x)}{v(x)^2}\\right) = 6 \\times \\frac{1}{(7-x)^2} = \\frac{6}{(7-x)^2}.$$\n\nLe numérateur est positif et le carré $(7-x)^2$ est strictement positif, donc $f'(x) > 0$ : $f$ est croissante sur $[1\\,;\\,6]$. Enfin $f(1) = \\dfrac{6}{6} = 1$ et $f(6) = \\dfrac{6}{1} = 6$."
       },
       {
         "id": "q2",
@@ -1067,11 +1067,11 @@
         "reponse": { "type": "numerique", "valeur": "12/11", "tolerance": 0 },
         "indices": [
           "Calcule $u_1 = f(u_0)$, puis $u_2 = f(u_1)$.",
-          "$u_1 = \\dfrac{4}{5 - 2} = \\dfrac{4}{3}$.",
-          "$5 - \\dfrac{4}{3} = \\dfrac{11}{3}$ ; diviser par $\\dfrac{11}{3}$, c'est multiplier par $\\dfrac{3}{11}$."
+          "$u_1 = \\dfrac{6}{7 - 3} = \\dfrac{6}{4} = \\dfrac{3}{2}$.",
+          "$7 - \\dfrac{3}{2} = \\dfrac{11}{2}$ ; diviser par $\\dfrac{11}{2}$, c'est multiplier par $\\dfrac{2}{11}$."
         ],
         "revoir": "l-recurrence-suites-022",
-        "solution": "$u_1 = \\dfrac{4}{5 - 2} = \\dfrac{4}{3}$, puis $u_2 = \\dfrac{4}{5 - \\frac{4}{3}} = \\dfrac{4}{\\frac{11}{3}} = 4 \\times \\dfrac{3}{11} = \\dfrac{12}{11}$."
+        "solution": "$u_1 = \\dfrac{6}{7 - 3} = \\dfrac{6}{4} = \\dfrac{3}{2}$, puis $u_2 = \\dfrac{6}{7 - \\frac{3}{2}} = \\dfrac{6}{\\frac{11}{2}} = 6 \\times \\dfrac{2}{11} = \\dfrac{12}{11}$."
       },
       {
         "id": "q3",
