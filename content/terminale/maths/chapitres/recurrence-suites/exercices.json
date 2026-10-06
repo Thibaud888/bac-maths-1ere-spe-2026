@@ -26,8 +26,8 @@
           ]
         },
         "indices": [
-          "Une démonstration par récurrence suit toujours le même plan : la propriété, l'initialisation, l'hérédité, la conclusion.",
-          "La démonstration commence par nommer la propriété $P(n)$, puis vérifie $P(0)$ : c'est l'initialisation. Dans l'hérédité, on suppose d'abord, on calcule ensuite."
+          "Pour chaque phrase, demande-toi à quelle étape de la récurrence elle appartient : conclusion, hérédité, initialisation, ou énoncé de la propriété.",
+          "La démonstration commence par la phrase qui nomme la propriété $P(n)$ ; la phrase qui vérifie $P(0)$ vient juste après. Place maintenant les trois autres."
         ],
         "revoir": "l-recurrence-suites-006",
         "solution": "On nomme d'abord la propriété $P(n)$. On la vérifie ensuite au rang $0$ : $u_0 = 0 = 3^0 - 1$ (initialisation). Vient l'hérédité : on suppose $P(n)$ vraie pour un entier naturel $n$, puis on calcule $u_{n+1}$ pour obtenir $P(n+1)$. On termine par la conclusion, qui cite le principe de récurrence."
@@ -53,7 +53,7 @@
           ]
         },
         "indices": [
-          "L'hypothèse de récurrence est « $u_n = 3^n - 1$ ». Cherche l'égalité où $u_n$ est remplacé par autre chose.",
+          "Chaque égalité du calcul a sa justification : la définition de la suite, l'hypothèse de récurrence ou une règle de calcul. Que dit l'hypothèse de récurrence, et sur quel terme ?",
           "La première égalité vient de la définition de la suite : elle est vraie sans rien supposer. Regarde ce que devient $u_n$ dans les égalités suivantes."
         ],
         "revoir": "l-recurrence-suites-004",
@@ -235,7 +235,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "Dans l'hérédité, on suppose $u_n = 3^n + 1$. Que vaut alors $u_{n+1} = 3u_n - 2$ ?",
+        "enonce": "Pour démontrer la conjecture de la question 2, on suppose, dans l'hérédité, que $u_n$ est égal à l'expression conjecturée. Que vaut alors $u_{n+1} = 3u_n - 2$ ?",
         "reponse": {
           "type": "qcm",
           "choix": ["$9^n + 1$", "$3^{n+1} + 3$", "$3^{n+1} + 1$", "$3^{n+1} - 1$"],
@@ -248,7 +248,7 @@
           ]
         },
         "indices": [
-          "Remplace $u_n$ par $3^n + 1$ dans $3u_n - 2$, puis développe.",
+          "Remplace $u_n$ par l'expression conjecturée à la question 2, $3^n + 1$, dans $3u_n - 2$, puis développe.",
           "$3u_n - 2 = 3\\left(3^n + 1\\right) - 2$. Développe : $3 \\times 3^n = 3^{n+1}$, et n'oublie pas de multiplier le $1$ par $3$."
         ],
         "revoir": "l-recurrence-suites-004",
@@ -467,7 +467,7 @@
           "Applique la relation de récurrence avec $n = 0$.",
           "$u_1 = 0{,}5 \\times u_0 + 2$, avec $u_0 = 10$."
         ],
-        "revoir": "l-recurrence-suites-021",
+        "revoir": "l-recurrence-suites-002",
         "solution": "$u_1 = 0{,}5 \\times 10 + 2 = 5 + 2 = 7$."
       },
       {
@@ -659,36 +659,36 @@
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Pour tout entier naturel $n$, on pose $v_n = u_n - 20$. Que vaut $v_{n+1}$ ?",
+        "enonce": "Pour tout entier naturel $n$, on pose $v_n = u_n - c$, où $c$ est le réel trouvé à la question 1. Que vaut $v_{n+1}$ ?",
         "reponse": {
           "type": "qcm",
-          "choix": ["$0{,}6v_n$", "$0{,}6v_n + 8$", "$0{,}6v_n - 12$", "$v_n - 12$"],
+          "choix": ["$0{,}6v_n$", "$0{,}6v_n + 8$", "$0{,}6v_n + 8 - c$", "$v_n + 8 - c$"],
           "bonne": 0,
           "pourquoiFaux": [
             null,
-            "Tu as remplacé $u$ par $v$ dans la relation sans retirer $20$ : $v_{n+1} = u_{n+1} - 20$.",
-            "Tu t'es arrêté à $0{,}6u_n - 12$ en écrivant $v_n$ à la place de $u_n$. Or $u_n = v_n + 20$ : il faut calculer $0{,}6(v_n + 20) - 12$.",
+            "Tu as remplacé $u$ par $v$ dans la relation sans retirer $c$ : $v_{n+1} = u_{n+1} - c$.",
+            "Tu t'es arrêté à $0{,}6u_n + 8 - c$ en écrivant $v_n$ à la place de $u_n$. Or $u_n = v_n + c$ : il faut calculer $0{,}6(v_n + c) + 8 - c$.",
             "Le coefficient $0{,}6$ a disparu : $u_{n+1}$ dépend de $0{,}6u_n$, pas de $u_n$."
           ]
         },
         "indices": [
-          "Pars de $v_{n+1} = u_{n+1} - 20$, remplace $u_{n+1}$ grâce à la relation, puis exprime $u_n$ à l'aide de $v_n$.",
-          "$v_{n+1} = 0{,}6u_n + 8 - 20 = 0{,}6u_n - 12$, et $u_n = v_n + 20$."
+          "Pars de $v_{n+1} = u_{n+1} - c$, remplace $u_{n+1}$ grâce à la relation, puis exprime $u_n$ à l'aide de $v_n$.",
+          "$v_{n+1} = 0{,}6u_n + 8 - c$ et $u_n = v_n + c$. Remplace, développe, puis regarde ce que devient $0{,}6c + 8 - c$ avec la définition de $c$."
         ],
         "revoir": "l-recurrence-suites-030",
-        "solution": "$v_{n+1} = u_{n+1} - 20 = 0{,}6u_n + 8 - 20 = 0{,}6u_n - 12$. Comme $u_n = v_n + 20$ : $v_{n+1} = 0{,}6(v_n + 20) - 12 = 0{,}6v_n + 12 - 12 = 0{,}6v_n$. La suite $(v_n)$ est géométrique de raison $0{,}6$."
+        "solution": "$v_{n+1} = u_{n+1} - c = 0{,}6u_n + 8 - c$. Comme $u_n = v_n + c$ : $v_{n+1} = 0{,}6(v_n + c) + 8 - c = 0{,}6v_n + (0{,}6c + 8 - c)$. Or $c = 0{,}6c + 8$ par définition de $c$, donc $0{,}6c + 8 - c = 0$ ; avec $c = 20$ : $12 + 8 - 20 = 0$. Ainsi $v_{n+1} = 0{,}6v_n$ : la suite $(v_n)$ est géométrique de raison $0{,}6$."
       },
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "On en déduit que, pour tout entier naturel $n$, $u_n = 20 - 15 \\times 0{,}6^n$. Calcule $u_2$.",
+        "enonce": "On en déduit, comme dans le cours, que $u_n = c + (u_0 - c) \\times 0{,}6^n$ pour tout entier naturel $n$. Calcule $u_2$.",
         "reponse": { "type": "numerique", "valeur": 14.6, "tolerance": 0 },
         "indices": [
-          "Remplace $n$ par $2$ dans la forme explicite.",
-          "$u_2 = 20 - 15 \\times 0{,}6^2$, avec $0{,}6^2 = 0{,}6 \\times 0{,}6$."
+          "Remplace $c$ par la valeur trouvée à la question 1, $u_0$ par $5$ et $n$ par $2$. Tu peux aussi contrôler en calculant $u_1$, puis $u_2$, avec la relation de récurrence.",
+          "$u_0 - c = 5 - 20 = -15$ ; il reste à calculer $0{,}6^2 = 0{,}6 \\times 0{,}6$."
         ],
-        "revoir": "l-recurrence-suites-030",
-        "solution": "$u_2 = 20 - 15 \\times 0{,}6^2 = 20 - 15 \\times 0{,}36 = 20 - 5{,}4 = 14{,}6$. Contrôle avec la relation : $u_1 = 0{,}6 \\times 5 + 8 = 11$ et $u_2 = 0{,}6 \\times 11 + 8 = 6{,}6 + 8 = 14{,}6$. La forme explicite vient de $v_0 = 5 - 20 = -15$ et $v_n = -15 \\times 0{,}6^n$."
+        "revoir": "l-recurrence-suites-039",
+        "solution": "Avec $c = 20$ et $u_0 = 5$ : $u_n = 20 - 15 \\times 0{,}6^n$, donc $u_2 = 20 - 15 \\times 0{,}36 = 20 - 5{,}4 = 14{,}6$. Contrôle avec la relation : $u_1 = 0{,}6 \\times 5 + 8 = 11$ et $u_2 = 0{,}6 \\times 11 + 8 = 6{,}6 + 8 = 14{,}6$."
       }
     ]
   },
@@ -857,7 +857,7 @@
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Les nombres $1$, $9$, $36$, $100$ et $225$ sont des carrés. Quelle conjecture peut-on faire ?",
+        "enonce": "Les cinq nombres affichés par le programme sont des carrés d'entiers. Quelle conjecture peut-on faire ?",
         "reponse": {
           "type": "qcm",
           "choix": [
@@ -1343,7 +1343,7 @@
     "duree": 15,
     "calculatrice": false,
     "ordre": 210,
-    "preambule": "Un patient reçoit $2$ mg d'un médicament. Ensuite, chaque heure, son organisme élimine la moitié du médicament présent, puis on lui injecte $2$ mg. On note $q_n$ la quantité de médicament, en mg, présente dans l'organisme après $n$ heures ; ainsi $q_0 = 2$.\n\nLa fonction Python ci-dessous doit renvoyer la liste des quantités $q_0$, $q_1$, …, $q_n$. Une ligne a été effacée.",
+    "preambule": "Un patient reçoit une première injection de $2$ mg d'un médicament. Ensuite, au cours de chaque heure, son organisme élimine la moitié du médicament présent, puis, à la fin de l'heure, on lui injecte de nouveau $2$ mg. Pour tout entier naturel $n$, on note $q_n$ la quantité de médicament, en mg, présente dans l'organisme juste après l'injection faite au bout de $n$ heures ; ainsi $q_0 = 2$ (juste après la première injection).\n\nLa fonction Python ci-dessous doit renvoyer la liste des quantités $q_0$, $q_1$, …, $q_n$. Une ligne a été effacée.",
     "code": {
       "langage": "python",
       "source": "def quantites(n):\n    q = 2\n    liste_q = [q]\n    for k in range(n):\n        .....            # ligne effacée\n        liste_q.append(q)\n    return liste_q"
@@ -1414,7 +1414,7 @@
           "Tu obtiens $0{,}5q_n + 2 \\leqslant 0{,}5q_{n+1} + 2 \\leqslant 0{,}5 \\times 4 + 2$ : reconnais chacun des trois membres."
         ],
         "revoir": "l-recurrence-suites-021",
-        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $q_n \\leqslant q_{n+1} \\leqslant 4$ ».\n\n**Initialisation** : $q_0 = 2$ et $q_1 = 3$, et $2 \\leqslant 3 \\leqslant 4$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $q_n \\leqslant q_{n+1} \\leqslant 4$. On multiplie par $0{,}5$, qui est positif, puis on ajoute $2$ : $0{,}5q_n + 2 \\leqslant 0{,}5q_{n+1} + 2 \\leqslant 0{,}5 \\times 4 + 2$, c'est-à-dire $q_{n+1} \\leqslant q_{n+2} \\leqslant 4$. Donc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $q_n \\leqslant q_{n+1} \\leqslant 4$.\n\n**Interprétation** : la suite $(q_n)$ est croissante et majorée par $4$. La quantité de médicament dans l'organisme augmente d'heure en heure, sans jamais dépasser $4$ mg."
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $q_n \\leqslant q_{n+1} \\leqslant 4$ ».\n\n**Initialisation** : $q_0 = 2$ et $q_1 = 3$, et $2 \\leqslant 3 \\leqslant 4$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $q_n \\leqslant q_{n+1} \\leqslant 4$. On multiplie par $0{,}5$, qui est positif, puis on ajoute $2$ : $0{,}5q_n + 2 \\leqslant 0{,}5q_{n+1} + 2 \\leqslant 0{,}5 \\times 4 + 2$, c'est-à-dire $q_{n+1} \\leqslant q_{n+2} \\leqslant 4$. Donc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $q_n \\leqslant q_{n+1} \\leqslant 4$.\n\n**Interprétation** : la suite $(q_n)$ est croissante et majorée par $4$. La quantité de médicament présente juste après chaque injection augmente d'une heure à l'autre, sans jamais dépasser $4$ mg."
       }
     ]
   },
@@ -1498,7 +1498,7 @@
           "Avec $a = \\left(\\frac{2}{3}\\right)^n$, qui est strictement positif : compare $2 - a$ à $2$.",
           "Si $0 < 2 - a < 2$, la fonction inverse, décroissante sur $]0\\,;\\,+\\infty[$, permet de comparer $\\dfrac{1}{2 - a}$ à $\\dfrac{1}{2}$."
         ],
-        "revoir": "l-recurrence-suites-014",
+        "revoir": "l-recurrence-suites-015",
         "solution": "Pour tout entier naturel $n$, $a = \\left(\\frac{2}{3}\\right)^n$ vérifie $0 < a \\leqslant 1$, donc $1 \\leqslant 2 - a < 2$. La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$ : $\\dfrac{1}{2 - a} > \\dfrac{1}{2}$, puis $u_n = \\dfrac{2}{2 - a} > 1$. L'affirmation est vraie : l'encadrement de la question 2 donnait $u_n \\geqslant 1$, la forme explicite donne l'inégalité stricte."
       }
     ]
