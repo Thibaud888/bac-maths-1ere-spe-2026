@@ -590,6 +590,16 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
 
 - [ ] (P3) Compter ce qui tombe vraiment au bac de physique-chimie — même travail.
 
+- [x] Terminale : garder ce que l'élève a fait d'une visite à l'autre — un exercice n'était
+  retenu qu'une fois **toutes** ses questions faites (et revenait vierge) ; la lecture du cours ne
+  se voyait nulle part ; les questions éclair déjà réussies revenaient à chaque série. Correctif :
+  chaque question est retenue dès qu'elle est faite (`questions` sous `btm-2027-` / `bpc-2027-`,
+  clé `<exercice>::<question>`), l'exercice rouvert reprend ses réponses (« Déjà réussie » sur les
+  questions vérifiées) et la liste dit « En cours » ; « ✓ Cours lu » sur les notions ouvertes et
+  « cours lu : n notions sur N » sur l'aperçu ; série éclair figée à son début, sans les questions
+  déjà réussies (« Tout refaire » quand il n'en reste plus). La mémoire elle-même fonctionnait.
+  DoD : `node scripts/verify.mjs` OK. Session du 2026-10-08.
+
 **Phase 5 — réviser et donner envie**
 
 - [ ] (P3) Faire revenir les questions au bon moment — répétition espacée des questions éclair

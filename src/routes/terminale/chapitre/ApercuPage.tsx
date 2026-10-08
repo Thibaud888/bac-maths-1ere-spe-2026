@@ -5,7 +5,7 @@ import Essentiel from '@/components/shared/Essentiel';
 import AnneauProgression from '@/components/terminale/AnneauProgression';
 import EtiquettePriorite from '@/components/terminale/EtiquettePriorite';
 import LienRenvoi from '@/components/terminale/LienRenvoi';
-import PastilleEtat from '@/components/terminale/PastilleEtat';
+import PastilleEtat, { CoursLu } from '@/components/terminale/PastilleEtat';
 import { getAnnales, notionParSegment } from '@/lib/terminale/content';
 import { cheminChapitre, cheminNotion } from '@/lib/terminale/matieres';
 import { etatsChapitre, maitriseChapitre, type EtatNotion } from '@/lib/terminale/progression';
@@ -77,7 +77,8 @@ export default function ApercuPage() {
   );
 
   const nombre = (etat: string) => chapitre.notions.filter((n) => etats.get(n.id) === etat).length;
-  const commence = chapitre.notions.some((n) => progression.lus[n.id]);
+  const lues = chapitre.notions.filter((n) => progression.lus[n.id]).length;
+  const commence = lues > 0;
 
   return (
     <div className="mx-auto max-w-5xl space-y-10 px-4 py-6 sm:px-8 sm:py-8">
@@ -113,7 +114,7 @@ export default function ApercuPage() {
               </p>
               <p className="text-slate-600 dark:text-slate-400">
                 {[
-                  `${chapitre.notions.length} notions`,
+                  `cours lu : ${lues} notion${lues > 1 ? 's' : ''} sur ${chapitre.notions.length}`,
                   pluriel(nombre('maitrisee'), 'maîtrisée'),
                   pluriel(nombre('comprise'), 'comprise'),
                   pluriel(nombre('decouverte'), 'découverte'),
@@ -180,7 +181,11 @@ export default function ApercuPage() {
                     </p>
                     <span className="flex flex-wrap items-center gap-2">
                       <EtiquettePriorite priorite={notion.priorite} estimee={notion.priorisation === 'estimation'} />
-                      {etat !== 'a-decouvrir' && <PastilleEtat etat={etat} />}
+                      {etat !== 'a-decouvrir' ? (
+                        <PastilleEtat etat={etat} />
+                      ) : (
+                        progression.lus[notion.id] && <CoursLu />
+                      )}
                     </span>
                   </div>
                   <p className="mt-1.5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">

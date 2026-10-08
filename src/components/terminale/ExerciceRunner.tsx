@@ -3,7 +3,7 @@ import { TextWithMath } from '@/components/math/TextWithMath';
 import FigureRenderer from '@/components/figures/FigureRenderer';
 import AideQuestion from '@/components/terminale/AideQuestion';
 import CodeSource from '@/components/terminale/CodeSource';
-import { NotionsTravaillees, Reperes, SourceDeLExercice } from '@/components/terminale/FicheExercice';
+import { DejaRepondue, NotionsTravaillees, Reperes, SourceDeLExercice } from '@/components/terminale/FicheExercice';
 import QuestionVerifiable from '@/components/terminale/QuestionVerifiable';
 import { nomMarche, resultatExercice } from '@/lib/terminale/entrainement';
 import type { Resultat } from '@/lib/terminale/progression';
@@ -29,11 +29,14 @@ function Question({
 }) {
   const reponse = verifiable(question);
   const [demandeReponse, setDemandeReponse] = useState(0);
+  // Réponse d'une visite précédente : le champ est vide, on dit seulement ce qui a été fait.
+  const [precedent, setPrecedent] = useState(reponse ? resultat : undefined);
   return (
     <li className="space-y-3 border-t border-slate-200 pt-4 first:border-t-0 first:pt-0 dark:border-slate-700">
       <div className="flex gap-2">
         <span className="shrink-0 font-bold text-slate-900 dark:text-slate-100">{question.label}</span>
         <div className="min-w-0 flex-1 space-y-3">
+          {precedent && <DejaRepondue resultat={precedent} />}
           {reponse ? (
             <QuestionVerifiable
               graine={`${exercice.id}-${question.id}`}
@@ -46,6 +49,7 @@ function Question({
                   : question.solution,
               }}
               onRepondre={(juste) => {
+                setPrecedent(undefined);
                 onResultat(juste ? 'reussi' : 'rate');
               }}
               boutonReponse={false}
@@ -84,6 +88,10 @@ function Question({
 type Props = {
   exercice: Exercice;
   matiere: Matiere;
+  /** Questions déjà notées lors d'une visite précédente. */
+  dejaNotees?: Readonly<Record<string, Resultat>>;
+  /** Appelé à chaque question notée : c'est ce qui garde un exercice laissé en cours. */
+  onQuestion?: (questionId: string, resultat: Resultat) => void;
   /** Appelé quand toutes les questions ont un résultat (et à chaque changement ensuite). */
   onTermine: (resultat: Resultat) => void;
 };
@@ -93,8 +101,8 @@ type Props = {
  * tout de suite quand c'est possible, indices progressifs, solution rédigée et
  * auto-évaluation. Le résultat de l'exercice est la moyenne de ses questions.
  */
-export default function ExerciceRunner({ exercice, matiere, onTermine }: Props) {
-  const [resultats, setResultats] = useState<Record<string, Resultat>>({});
+export default function ExerciceRunner({ exercice, matiere, dejaNotees, onQuestion, onTermine }: Props) {
+  const [resultats, setResultats] = useState<Record<string, Resultat>>(() => ({ ...dejaNotees }));
   const bilan = resultatExercice(
     exercice.questions.map((q) => q.id),
     resultats
@@ -103,6 +111,7 @@ export default function ExerciceRunner({ exercice, matiere, onTermine }: Props) 
   function noter(questionId: string, resultat: Resultat): void {
     const suivants = { ...resultats, [questionId]: resultat };
     setResultats(suivants);
+    onQuestion?.(questionId, resultat);
     const final = resultatExercice(
       exercice.questions.map((q) => q.id),
       suivants

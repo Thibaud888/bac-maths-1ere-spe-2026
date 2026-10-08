@@ -1,6 +1,6 @@
 import { act } from 'react';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { cleStockage, storeProgression } from '../terminale-progression-store';
+import { cleStockage, eclairReussie, questionsDe, storeProgression } from '../terminale-progression-store';
 
 beforeEach(() => {
   localStorage.clear();
@@ -50,5 +50,24 @@ describe('progression de terminale', () => {
     expect(etat.derniereNotion.essai).toBe('beta');
     expect(etat.resultats['x-essai-001']).toBe('moitie');
     expect(Object.keys(localStorage)).toContain('bpc-2027-progression');
+  });
+
+  it('garde chaque question d’un exercice, même laissé en cours', () => {
+    act(() => {
+      storeProgression('maths').getState().noterQuestion('x-essai-001', 'q1', 'reussi');
+      storeProgression('maths').getState().noterQuestion('x-essai-001', 'q2', 'rate');
+      storeProgression('maths').getState().noterQuestion('tb-essai-001', 'q1.a', 'moitie');
+    });
+    const { questions } = storeProgression('maths').getState();
+    expect(questionsDe(questions, 'x-essai-001')).toEqual({ q1: 'reussi', q2: 'rate' });
+    expect(questionsDe(questions, 'tb-essai-001')).toEqual({ 'q1.a': 'moitie' });
+    expect(questionsDe(questions, 'x-essai-00')).toEqual({});
+    expect(localStorage.getItem('btm-2027-progression')).toContain('"x-essai-001::q1":"reussi"');
+  });
+
+  it('tient une question éclair pour réussie dès un essai juste', () => {
+    expect(eclairReussie({}, 'fl-a')).toBe(false);
+    expect(eclairReussie({ 'fl-a': { essais: 2, justes: 0 } }, 'fl-a')).toBe(false);
+    expect(eclairReussie({ 'fl-a': { essais: 2, justes: 1 } }, 'fl-a')).toBe(true);
   });
 });

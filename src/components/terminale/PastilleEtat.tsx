@@ -34,3 +34,17 @@ export default function PastilleEtat({ etat }: { etat: EtatNotion }) {
     </span>
   );
 }
+
+/**
+ * Notion dont le cours a été ouvert, sans plus : la pastille d'état reste « à
+ * découvrir » tant que les questions « Vérifie » ne sont pas répondues, mais
+ * l'élève voit que sa lecture est gardée.
+ */
+export function CoursLu() {
+  return (
+    <span className="inline-flex items-center gap-1 whitespace-nowrap text-xs font-medium text-slate-600 dark:text-slate-300">
+      <span aria-hidden="true">✓</span>
+      Cours lu
+    </span>
+  );
+}

@@ -19,16 +19,40 @@ export type EtatProgressionTerminale = Progression & {
   dernierChapitre: string | null;
   /** Dernière notion lue, par chapitre (`/cours` seul y ramène). */
   derniereNotion: Record<string, string>;
+  /**
+   * Résultat de chaque question d'exercice ou de type bac, sous `<exercice>::<question>` :
+   * un exercice laissé en cours retrouve ses réponses, et la liste dit « En cours ».
+   */
+  questions: Record<string, Resultat>;
   /** Affichage des cartes du mémo : simplifié à la première visite, puis le dernier choisi. */
   modeMemo: ModeMemo;
   choisirModeMemo: (mode: ModeMemo) => void;
   marquerLu: (notionId: string) => void;
   repondreVerifie: (blocId: string, juste: boolean) => void;
   noterResultat: (itemId: string, resultat: Resultat) => void;
+  noterQuestion: (itemId: string, questionId: string, resultat: Resultat) => void;
   noterEclair: (questionId: string, juste: boolean) => void;
   ouvrirChapitre: (slug: string) => void;
   lireNotion: (chapitre: string, segment: string) => void;
 };
+
+/** Les questions déjà notées d'un exercice, par identifiant de question. */
+export function questionsDe(
+  questions: Readonly<Record<string, Resultat>>,
+  itemId: string
+): Record<string, Resultat> {
+  const prefixe = `${itemId}::`;
+  const trouvees: Record<string, Resultat> = {};
+  for (const [cle, resultat] of Object.entries(questions)) {
+    if (cle.startsWith(prefixe)) trouvees[cle.slice(prefixe.length)] = resultat;
+  }
+  return trouvees;
+}
+
+/** Une question éclair est réussie dès qu'un premier essai a été juste. */
+export function eclairReussie(flash: Progression['flash'], questionId: string): boolean {
+  return (flash[questionId]?.justes ?? 0) > 0;
+}
 
 export function cleStockage(matiere: Matiere): string {
   return `${MATIERES[matiere].stockage}progression`;
@@ -41,6 +65,7 @@ function creerStore(matiere: Matiere) {
         ...PROGRESSION_VIDE,
         dernierChapitre: null,
         derniereNotion: {},
+        questions: {},
         modeMemo: 'simplifie',
         choisirModeMemo: (mode) => {
           set({ modeMemo: mode });
@@ -53,6 +78,9 @@ function creerStore(matiere: Matiere) {
         },
         noterResultat: (itemId, resultat) => {
           set((s) => ({ resultats: { ...s.resultats, [itemId]: resultat } }));
+        },
+        noterQuestion: (itemId, questionId, resultat) => {
+          set((s) => ({ questions: { ...s.questions, [`${itemId}::${questionId}`]: resultat } }));
         },
         noterEclair: (questionId, juste) => {
           set((s) => {

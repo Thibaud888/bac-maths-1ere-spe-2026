@@ -53,6 +53,59 @@ describe('ExerciceRunner', () => {
   });
 });
 
+describe('Mémoire d’un exercice laissé en cours', () => {
+  it('note chaque question dès qu’elle est faite, avant la fin de l’exercice', () => {
+    const onQuestion = vi.fn();
+    const onTermine = vi.fn();
+    const x = exercice('x-temoin-maths-009');
+    render(
+      <MemoryRouter>
+        <ExerciceRunner exercice={x} matiere="maths" onQuestion={onQuestion} onTermine={onTermine} />
+      </MemoryRouter>
+    );
+    for (const bouton of screen.getAllByRole('button', { name: 'Voir la solution' })) fireEvent.click(bouton);
+    fireEvent.click(screen.getAllByRole('button', { name: '✓ Réussi' })[0] as HTMLElement);
+    expect(onQuestion).toHaveBeenCalledWith(x.questions[0]?.id, 'reussi');
+    expect(onTermine).not.toHaveBeenCalled();
+  });
+
+  it('reprend les questions déjà notées : l’exercice se termine sans les refaire', () => {
+    const onTermine = vi.fn();
+    const x = exercice('x-temoin-maths-009');
+    const [premiere, ...autres] = x.questions;
+    if (!premiere || autres.length === 0) throw new Error('plusieurs questions attendues');
+    render(
+      <MemoryRouter>
+        <ExerciceRunner
+          exercice={x}
+          matiere="maths"
+          dejaNotees={{ [premiere.id]: 'reussi' }}
+          onTermine={onTermine}
+        />
+      </MemoryRouter>
+    );
+    for (const bouton of screen.getAllByRole('button', { name: 'Voir la solution' })) fireEvent.click(bouton);
+    const reussis = screen.getAllByRole('button', { name: '✓ Réussi' });
+    expect(reussis[0]).toHaveAttribute('aria-pressed', 'true');
+    for (const bouton of reussis.slice(1)) fireEvent.click(bouton);
+    expect(onTermine).toHaveBeenLastCalledWith('reussi');
+  });
+
+  it('signale une question vérifiée lors d’une visite précédente', () => {
+    render(
+      <MemoryRouter>
+        <ExerciceRunner
+          exercice={exercice('x-temoin-maths-001')}
+          matiere="maths"
+          dejaNotees={{ [exercice('x-temoin-maths-001').questions[0]?.id ?? '']: 'reussi' }}
+          onTermine={vi.fn()}
+        />
+      </MemoryRouter>
+    );
+    expect(screen.getByText('Déjà réussie')).toBeInTheDocument();
+  });
+});
+
 describe('Voir la réponse', () => {
   it('ne vient qu’après le dernier indice, et compte la question comme ratée', () => {
     const onTermine = vi.fn();

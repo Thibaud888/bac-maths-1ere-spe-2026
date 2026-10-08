@@ -6,13 +6,18 @@ type Props = {
   questions: readonly QuestionEclair[];
   /** Appelé au premier essai de chaque question (c'est lui qui compte). */
   onRepondre: (id: string, juste: boolean) => void;
+  /**
+   * « Recommencer » en fin de série : la page reforme la série (sans les questions
+   * réussies entre-temps). Sans lui, la même série reprend du début.
+   */
+  onRecommencer?: () => void;
 };
 
 /**
  * « Teste-toi » : les questions éclair une par une (charte § 8), les plus importantes
  * d'abord ; seul le premier essai compte pour la progression.
  */
-export default function SerieEclair({ questions, onRepondre }: Props) {
+export default function SerieEclair({ questions, onRepondre, onRecommencer }: Props) {
   const [rang, setRang] = useState(0);
   const [premiers, setPremiers] = useState<Record<string, boolean>>({});
   const [tour, setTour] = useState(0);
@@ -29,11 +34,19 @@ export default function SerieEclair({ questions, onRepondre }: Props) {
           {justes} sur {questions.length} du premier coup
         </p>
         <p className="text-sm text-slate-600 dark:text-slate-400">
-          Les questions ratées reviendront vite : refais la série dans quelques jours.
+          {onRecommencer
+            ? justes === questions.length
+              ? 'Ces questions sont réussies : elles ne reviendront plus dans la série.'
+              : 'Les questions réussies ne reviendront plus ; les autres t’attendent à la prochaine série.'
+            : 'Les questions ratées reviendront vite : refais la série dans quelques jours.'}
         </p>
         <button
           type="button"
           onClick={() => {
+            if (onRecommencer) {
+              onRecommencer();
+              return;
+            }
             setRang(0);
             setPremiers({});
             setTour((t) => t + 1);

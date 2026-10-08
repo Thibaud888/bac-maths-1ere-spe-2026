@@ -4,7 +4,7 @@ import FigureRenderer from '@/components/figures/FigureRenderer';
 import Timer from '@/components/shared/Timer';
 import AideQuestion from '@/components/terminale/AideQuestion';
 import CodeSource from '@/components/terminale/CodeSource';
-import { NotionsTravaillees, Reperes, SourceDeLExercice } from '@/components/terminale/FicheExercice';
+import { DejaRepondue, NotionsTravaillees, Reperes, SourceDeLExercice } from '@/components/terminale/FicheExercice';
 import QuestionVerifiable from '@/components/terminale/QuestionVerifiable';
 import { pointsTypeBac, resultatDePart } from '@/lib/terminale/entrainement';
 import type { Resultat } from '@/lib/terminale/progression';
@@ -50,12 +50,15 @@ function Element({
   const reponse: ReponseVerifiable | undefined =
     element.reponse && element.reponse.type !== 'redaction' ? element.reponse : undefined;
   const [demandeReponse, setDemandeReponse] = useState(0);
+  // Réponse d'une visite précédente : le champ est vide, on dit seulement ce qui a été fait.
+  const [precedent, setPrecedent] = useState(reponse ? resultat : undefined);
   return (
     <div className="flex gap-2">
       <span className="shrink-0 font-bold text-slate-900 dark:text-slate-100">{element.label}</span>
       <div className="min-w-0 flex-1 space-y-3">
         <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0 flex-1">
+          <div className="min-w-0 flex-1 space-y-2">
+            {precedent && <DejaRepondue resultat={precedent} />}
             {reponse ? (
               <QuestionVerifiable
                 graine={element.cle}
@@ -66,6 +69,7 @@ function Element({
                   explication: `${element.solution}\n\n**Ce qu'attend le correcteur :** ${element.attenduCorrecteur}`,
                 }}
                 onRepondre={(juste) => {
+                  setPrecedent(undefined);
                   onResultat(juste ? 'reussi' : 'rate');
                 }}
                 boutonReponse={false}
@@ -113,6 +117,10 @@ function Element({
 type Props = {
   exercice: ExerciceTypeBac;
   matiere: Matiere;
+  /** Questions déjà notées lors d'une visite précédente (clé `q` ou `q.s`). */
+  dejaNotees?: Readonly<Record<string, Resultat>>;
+  /** Appelé à chaque question notée : c'est ce qui garde un exercice laissé en cours. */
+  onQuestion?: (cle: string, resultat: Resultat) => void;
   onTermine: (resultat: Resultat) => void;
 };
 
@@ -120,14 +128,15 @@ type Props = {
  * Un exercice au format de l'épreuve (charte § 7) : barème par question, chronomètre
  * facultatif, correction avec « ce qu'attend le correcteur », estimation des points.
  */
-export default function TypeBacRunner({ exercice, matiere, onTermine }: Props) {
-  const [resultats, setResultats] = useState<Record<string, Resultat>>({});
+export default function TypeBacRunner({ exercice, matiere, dejaNotees, onQuestion, onTermine }: Props) {
+  const [resultats, setResultats] = useState<Record<string, Resultat>>(() => ({ ...dejaNotees }));
   const [chrono, setChrono] = useState(false);
   const bilan = pointsTypeBac(exercice, resultats);
 
   function noter(cle: string, resultat: Resultat): void {
     const suivants = { ...resultats, [cle]: resultat };
     setResultats(suivants);
+    onQuestion?.(cle, resultat);
     const b = pointsTypeBac(exercice, suivants);
     if (b.complet && b.total > 0) onTermine(resultatDePart(b.obtenus / b.total));
   }
