@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react';
 import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { TextWithMath } from '@/components/math/TextWithMath';
 import ExerciceRunner from '@/components/terminale/ExerciceRunner';
@@ -15,18 +16,20 @@ import {
 import { cheminChapitre } from '@/lib/terminale/matieres';
 import type { Resultat } from '@/lib/terminale/progression';
 import type { Chapitre, Exercice, Niveau, QuestionEclair } from '@/lib/terminale/types';
-import { storeProgression } from '@/stores/terminale-progression-store';
+import { eclairReussie, questionsDe, storeProgression } from '@/stores/terminale-progression-store';
 import { useChapitre } from './ChapitreLayout';
 
-const ETAT: Record<Resultat | 'aucun', { libelle: string; style: string }> = {
+const ETAT: Record<Resultat | 'encours' | 'aucun', { libelle: string; style: string }> = {
+  encours: { libelle: '… En cours', style: 'text-sky-700 dark:text-sky-300' },
   reussi: { libelle: '✓ Réussi', style: 'text-emerald-700 dark:text-emerald-300' },
   moitie: { libelle: '½ À moitié', style: 'text-amber-700 dark:text-amber-300' },
   rate: { libelle: '✗ À reprendre', style: 'text-rose-700 dark:text-rose-300' },
   aucun: { libelle: 'Pas fait', style: 'text-slate-500 dark:text-slate-400' },
 };
 
-export function EtatExercice({ resultat }: { resultat: Resultat | undefined }) {
-  const etat = ETAT[resultat ?? 'aucun'];
+/** Où en est un exercice : son résultat, sinon « En cours » s'il a des questions notées. */
+export function EtatExercice({ resultat, enCours = false }: { resultat: Resultat | undefined; enCours?: boolean }) {
+  const etat = ETAT[resultat ?? (enCours ? 'encours' : 'aucun')];
   return <span className={`whitespace-nowrap text-xs font-semibold ${etat.style}`}>{etat.libelle}</span>;
 }
 
@@ -78,7 +81,10 @@ export default function ExercicesPage() {
   const { chapitre, matiere } = useChapitre();
   const [params, setParams] = useSearchParams();
   const { niveau, notion, recherche } = useFiltre(chapitre);
-  const resultats = storeProgression(matiere.id)((s) => s.resultats);
+  const store = storeProgression(matiere.id);
+  const resultats = store((s) => s.resultats);
+  const questions = store((s) => s.questions);
+  const flash = store((s) => s.flash);
   const base = `${cheminChapitre(chapitre.meta)}/exercices`;
 
   if (chapitre.exercices.length === 0) {
@@ -101,6 +107,7 @@ export default function ExercicesPage() {
   const marches = MARCHES.filter((m) => niveau === undefined || m.niveau === niveau);
   const liste = filtrerExercices(chapitre.exercices, { niveau, notion });
   const eclair = niveau === undefined ? questionsEclair(chapitre, notion) : [];
+  const eclairAFaire = eclair.filter((q) => !eclairReussie(flash, q.id)).length;
 
   return (
     <div className="mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-8 sm:py-8">
@@ -147,7 +154,11 @@ export default function ExercicesPage() {
           <span>
             <span className="block font-semibold text-slate-900 dark:text-slate-100">Questions éclair : teste-toi</span>
             <span className="block text-sm text-slate-600 dark:text-slate-400">
-              {eclair.length} questions, moins d’une minute chacune, les plus importantes d’abord.
+              {eclairAFaire === eclair.length
+                ? `${eclair.length} questions, moins d’une minute chacune, les plus importantes d’abord.`
+                : eclairAFaire === 0
+                  ? `Les ${eclair.length} questions sont réussies : tu peux refaire la série pour t’entretenir.`
+                  : `${eclairAFaire} questions à faire sur ${eclair.length} : celles déjà réussies ne reviennent pas.`}
             </span>
           </span>
           <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">Commencer →</span>
@@ -183,7 +194,10 @@ export default function ExercicesPage() {
                       <span className="font-semibold leading-snug text-slate-900 dark:text-slate-100">
                         <TextWithMath text={x.titre} />
                       </span>
-                      <EtatExercice resultat={resultats[x.id]} />
+                      <EtatExercice
+                        resultat={resultats[x.id]}
+                        enCours={Object.keys(questionsDe(questions, x.id)).length > 0}
+                      />
                     </span>
                     <Reperes duree={x.duree} calculatrice={x.calculatrice} />
                     <NotionsTravaillees notions={x.notions} />
@@ -221,7 +235,10 @@ export function ExercicePage() {
   const { chapitre, matiere } = useChapitre();
   const { exercice: segment = '' } = useParams<{ exercice: string }>();
   const filtre = useFiltre(chapitre);
-  const noterResultat = storeProgression(matiere.id)((s) => s.noterResultat);
+  const store = storeProgression(matiere.id);
+  const noterResultat = store((s) => s.noterResultat);
+  const noterQuestion = store((s) => s.noterQuestion);
+  const questions = store((s) => s.questions);
   const base = `${cheminChapitre(chapitre.meta)}/exercices`;
 
   const ordre = exercicesOrdonnes(chapitre, filtre);
@@ -245,6 +262,10 @@ export function ExercicePage() {
         key={exercice.id}
         exercice={exercice}
         matiere={matiere.id}
+        dejaNotees={questionsDe(questions, exercice.id)}
+        onQuestion={(questionId, r) => {
+          noterQuestion(exercice.id, questionId, r);
+        }}
         onTermine={(r) => {
           noterResultat(exercice.id, r);
         }}
@@ -263,9 +284,22 @@ export function ExercicePage() {
 export function EclairPage() {
   const { chapitre, matiere } = useChapitre();
   const filtre = useFiltre(chapitre);
-  const noterEclair = storeProgression(matiere.id)((s) => s.noterEclair);
+  const store = storeProgression(matiere.id);
+  const noterEclair = store((s) => s.noterEclair);
   const base = `${cheminChapitre(chapitre.meta)}/exercices`;
   const questions = questionsEclair(chapitre, filtre.notion);
+
+  // Série figée à son début : une question réussie en cours de route ne doit pas
+  // disparaître sous les yeux de l'élève. Les questions déjà réussies sont écartées ;
+  // si toutes le sont, la série entière revient (« Tout refaire »).
+  const [tour, setTour] = useState(0);
+  const [toutRefaire, setToutRefaire] = useState(false);
+  const serie = useMemo(() => {
+    const flash = store.getState().flash;
+    const aFaire = questions.filter((q) => !eclairReussie(flash, q.id));
+    return { liste: toutRefaire ? questions : aFaire, toutesReussies: aFaire.length === 0 };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tour, toutRefaire, chapitre, filtre.notion, store]);
 
   if (questions.length === 0) return <Navigate to={adresse(base, filtre.recherche)} replace />;
 
@@ -280,10 +314,40 @@ export function EclairPage() {
       <div>
         <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">Questions éclair</h2>
         <p className="text-sm text-slate-600 dark:text-slate-400">
-          Moins d’une minute chacune, les plus importantes d’abord. Seul le premier essai compte.
+          Moins d’une minute chacune, les plus importantes d’abord. Seul le premier essai compte ; une
+          question réussie ne revient plus.
         </p>
       </div>
-      <SerieEclair questions={questions} onRepondre={noterEclair} />
+      {serie.liste.length === 0 ? (
+        <div className="space-y-3 rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-lg font-bold text-slate-900 dark:text-slate-100">
+            Toutes les questions sont réussies
+          </p>
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            Bravo. Tu peux refaire toute la série pour vérifier que tout est encore là.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              setToutRefaire(true);
+              setTour((t) => t + 1);
+            }}
+            className="rounded-md bg-slate-900 px-3 py-1.5 text-sm font-semibold text-white hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300"
+          >
+            Tout refaire
+          </button>
+        </div>
+      ) : (
+        <SerieEclair
+          key={tour}
+          questions={serie.liste}
+          onRepondre={noterEclair}
+          onRecommencer={() => {
+            setToutRefaire(false);
+            setTour((t) => t + 1);
+          }}
+        />
+      )}
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { NotionsTravaillees, Reperes, SourceDeLExercice } from '@/components/ter
 import TypeBacRunner from '@/components/terminale/TypeBacRunner';
 import { segmentExercice } from '@/lib/terminale/entrainement';
 import { cheminChapitre } from '@/lib/terminale/matieres';
-import { storeProgression } from '@/stores/terminale-progression-store';
+import { questionsDe, storeProgression } from '@/stores/terminale-progression-store';
 import { useChapitre } from './ChapitreLayout';
 import { EtatExercice } from './ExercicesPage';
 
@@ -12,6 +12,7 @@ import { EtatExercice } from './ExercicesPage';
 export default function TypeBacPage() {
   const { chapitre, matiere } = useChapitre();
   const resultats = storeProgression(matiere.id)((s) => s.resultats);
+  const questions = storeProgression(matiere.id)((s) => s.questions);
   const base = `${cheminChapitre(chapitre.meta)}/type-bac`;
   const liste = [...chapitre.typeBac].sort((a, b) => a.ordre - b.ordre);
 
@@ -43,7 +44,10 @@ export default function TypeBacPage() {
                 <span className="font-semibold leading-snug text-slate-900 dark:text-slate-100">
                   <TextWithMath text={x.titre} />
                 </span>
-                <EtatExercice resultat={resultats[x.id]} />
+                <EtatExercice
+                  resultat={resultats[x.id]}
+                  enCours={Object.keys(questionsDe(questions, x.id)).length > 0}
+                />
               </span>
               <Reperes duree={x.duree} calculatrice={x.calculatrice} points={x.points} />
               <NotionsTravaillees notions={x.notions} />
@@ -60,7 +64,10 @@ export default function TypeBacPage() {
 export function TypeBacExercicePage() {
   const { chapitre, matiere } = useChapitre();
   const { exercice: segment = '' } = useParams<{ exercice: string }>();
-  const noterResultat = storeProgression(matiere.id)((s) => s.noterResultat);
+  const store = storeProgression(matiere.id);
+  const noterResultat = store((s) => s.noterResultat);
+  const noterQuestion = store((s) => s.noterQuestion);
+  const questions = store((s) => s.questions);
   const base = `${cheminChapitre(chapitre.meta)}/type-bac`;
   const liste = [...chapitre.typeBac].sort((a, b) => a.ordre - b.ordre);
   const rang = liste.findIndex((x) => segmentExercice(x.id, chapitre.meta.slug) === segment);
@@ -80,6 +87,10 @@ export function TypeBacExercicePage() {
         key={exercice.id}
         exercice={exercice}
         matiere={matiere.id}
+        dejaNotees={questionsDe(questions, exercice.id)}
+        onQuestion={(cle, r) => {
+          noterQuestion(exercice.id, cle, r);
+        }}
         onTermine={(r) => {
           noterResultat(exercice.id, r);
         }}

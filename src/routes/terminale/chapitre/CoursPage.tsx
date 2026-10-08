@@ -5,7 +5,7 @@ import PageLongue from '@/components/shared/PageLongue';
 import type { SommaireEntree } from '@/components/shared/Sommaire';
 import BlocCours, { NOM_BLOC } from '@/components/terminale/BlocCours';
 import EtiquettePriorite from '@/components/terminale/EtiquettePriorite';
-import PastilleEtat from '@/components/terminale/PastilleEtat';
+import PastilleEtat, { CoursLu } from '@/components/terminale/PastilleEtat';
 import { notionParSegment, segmentNotion } from '@/lib/terminale/content';
 import { cheminChapitre, cheminNotion } from '@/lib/terminale/matieres';
 import { etatsChapitre, type EtatNotion } from '@/lib/terminale/progression';
@@ -70,11 +70,13 @@ function NotionsDuChapitre({
   chapitre,
   courante,
   etats,
+  lus,
   accent,
 }: {
   chapitre: Chapitre;
   courante: string;
   etats: ReadonlyMap<string, EtatNotion>;
+  lus: Readonly<Record<string, boolean>>;
   accent: keyof typeof COURANTE;
 }) {
   return (
@@ -104,8 +106,10 @@ function NotionsDuChapitre({
                 </span>
                 <span className="ml-6 mt-1 flex flex-wrap items-center gap-2">
                   <EtiquettePriorite priorite={notion.priorite} estimee={notion.priorisation === 'estimation'} forme="courte" />
-                  {etats.get(notion.id) !== 'a-decouvrir' && (
+                  {etats.get(notion.id) !== 'a-decouvrir' ? (
                     <PastilleEtat etat={etats.get(notion.id) ?? 'a-decouvrir'} />
+                  ) : (
+                    lus[notion.id] && <CoursLu />
                   )}
                 </span>
               </Link>
@@ -215,7 +219,13 @@ export function CoursNotionPage() {
       sommaire={sommaire}
       entete={entete}
       cote={
-        <NotionsDuChapitre chapitre={chapitre} courante={notion.id} etats={etats} accent={matiere.accent} />
+        <NotionsDuChapitre
+          chapitre={chapitre}
+          courante={notion.id}
+          etats={etats}
+          lus={progression.lus}
+          accent={matiere.accent}
+        />
       }
     >
       {blocs.length === 0 ? (

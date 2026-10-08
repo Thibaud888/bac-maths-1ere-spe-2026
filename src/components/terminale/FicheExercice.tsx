@@ -55,3 +55,19 @@ export function SourceDeLExercice({ source, matiere }: { source: SourceExercice;
     </p>
   );
 }
+
+const DEJA = {
+  reussi: { libelle: 'Déjà réussie', style: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300' },
+  moitie: { libelle: 'Déjà faite à moitié', style: 'bg-amber-100 text-amber-800 dark:bg-amber-950/70 dark:text-amber-300' },
+  rate: { libelle: 'Déjà tentée', style: 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300' },
+} as const;
+
+/** Une question à réponse vérifiée, déjà répondue lors d'une visite précédente. */
+export function DejaRepondue({ resultat }: { resultat: 'reussi' | 'moitie' | 'rate' }) {
+  const { libelle, style } = DEJA[resultat];
+  return (
+    <p>
+      <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${style}`}>{libelle}</span>
+    </p>
+  );
+}
