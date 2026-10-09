@@ -748,4 +748,6 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   Actif dans les sessions cloud de ce repo une fois la PR mergée (`main`).
   Mod `.claude/mods/choix-modele/`, déclaré dans `.claude/settings.json`
   (`extraKnownMarketplaces` + `enabledPlugins`) et `.claude-plugin/marketplace.json` ;
-  `claude plugin validate` et `claude plugin test` OK. Non vérifié en conditions réelles.
+  `claude plugin validate` et `claude plugin test` OK. PR : #116 (mergée le 2026-10-09).
+  ⚠️ À constater au 1er message d'une nouvelle session cloud : la question doit apparaître ;
+  sinon le chargement depuis `settings.json` est à corriger.
