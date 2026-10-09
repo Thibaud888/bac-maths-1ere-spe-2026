@@ -1,0 +1,1113 @@
+{
+  "chapitre": "limites-suites",
+  "sections": [
+    {
+      "notion": "n-limites-suites-definitions",
+      "blocs": [
+        {
+          "id": "l-limites-suites-001",
+          "type": "idee",
+          "texte": "Que deviennent les termes d'une suite quand $n$ devient très grand ? Ceux de $u_n = n^2$ finissent par dépasser n'importe quel nombre fixé. Ceux de $v_n = \\dfrac{1}{n}$ se rapprochent autant qu'on veut de $0$. Ceux de $w_n = (-1)^n$ sautent sans fin de $1$ à $-1$. La **limite** d'une suite décrit ce comportement à long terme. L'expression clé est « à partir d'un certain rang » : les premiers termes ne comptent pas, seuls comptent ceux qui viennent après."
+        },
+        {
+          "id": "l-limites-suites-002",
+          "type": "rappel",
+          "titre": "Rappel : suite croissante, suite majorée",
+          "texte": "Une suite $(u_n)$ est **croissante** si $u_n \\leqslant u_{n+1}$ pour tout entier naturel $n$, **décroissante** si $u_n \\geqslant u_{n+1}$ pour tout $n$.\n\nElle est **majorée** s'il existe un réel $M$ tel que $u_n \\leqslant M$ pour tout $n$, **minorée** s'il existe un réel $m$ tel que $u_n \\geqslant m$ pour tout $n$.\n\nDire que $(u_n)$ n'est **pas majorée**, c'est dire qu'aucun réel ne convient comme majorant : pour tout réel $A$, il existe au moins un entier $N$ tel que $u_N > A$.",
+          "lien": "n-recurrence-suites-encadrement-variation"
+        },
+        {
+          "id": "l-limites-suites-003",
+          "type": "definition",
+          "titre": "Suite qui tend vers $+\\infty$ ou vers $-\\infty$",
+          "capacites": ["bo-m-suites-01"],
+          "texte": "- La suite $(u_n)$ **tend vers $+\\infty$** si tout intervalle de la forme $[A\\,;\\,+\\infty[$ contient toutes les valeurs $u_n$ à partir d'un certain rang. On note $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$, qui se lit « limite de $u_n$ quand $n$ tend vers plus l'infini égale plus l'infini ».\n- La suite $(u_n)$ **tend vers $-\\infty$** si tout intervalle de la forme $]-\\infty\\,;\\,A]$ contient toutes les valeurs $u_n$ à partir d'un certain rang. On note $\\lim\\limits_{n \\to +\\infty} u_n = -\\infty$.\n\n« À partir d'un certain rang » signifie : il existe un entier $N$ tel que, pour tout entier $n \\geqslant N$, $u_n$ est dans l'intervalle. Ce rang $N$ peut dépendre de $A$."
+        },
+        {
+          "id": "l-limites-suites-004",
+          "type": "exemple",
+          "titre": "La suite des carrés tend vers $+\\infty$",
+          "capacites": ["bo-m-suites-01"],
+          "enonce": "Soit $(u_n)$ la suite définie, pour tout entier naturel $n$, par $u_n = n^2$.\n\n**1.** Déterminer un rang à partir duquel tous les termes sont dans l'intervalle $[10\\,000\\,;\\,+\\infty[$.\n\n**2.** Démontrer que $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$.",
+          "etapes": [
+            {
+              "texte": "**1.** Pour tout entier $n \\geqslant 100$, on a $n^2 \\geqslant 100^2$, c'est-à-dire $u_n \\geqslant 10\\,000$.",
+              "pourquoi": "Sur $[0\\,;\\,+\\infty[$, la fonction carré est croissante : de $n \\geqslant 100 \\geqslant 0$, on tire $n^2 \\geqslant 100^2 = 10\\,000$."
+            },
+            {
+              "texte": "Donc tous les termes $u_n$ avec $n \\geqslant 100$ sont dans $[10\\,000\\,;\\,+\\infty[$ : le rang $100$ convient.",
+              "pourquoi": "On ne demande pas forcément le plus petit rang : n'importe quel rang qui convient suffit. Ici, $100$ est d'ailleurs le plus petit, car $99^2 = 9\\,801$."
+            },
+            {
+              "texte": "**2.** Soit $A$ un réel quelconque. Si $A \\leqslant 0$, tous les termes conviennent : $u_n = n^2 \\geqslant 0 \\geqslant A$ pour tout $n$. Le rang $0$ convient."
+            },
+            {
+              "texte": "Si $A > 0$, on choisit un entier $N$ tel que $N \\geqslant \\sqrt{A}$. Pour tout entier $n \\geqslant N$, on a $n \\geqslant \\sqrt{A} \\geqslant 0$, donc $n^2 \\geqslant \\left(\\sqrt{A}\\right)^2 = A$.",
+              "pourquoi": "Un tel entier existe toujours : il suffit d'arrondir $\\sqrt{A}$ à l'unité supérieure. Pour $A = 10\\,000$, on retrouve $\\sqrt{A} = 100$, le rang de la question 1."
+            },
+            {
+              "texte": "**Conclusion** : pour tout réel $A$, l'intervalle $[A\\,;\\,+\\infty[$ contient tous les termes $u_n$ à partir d'un certain rang. Donc $\\lim\\limits_{n \\to +\\infty} n^2 = +\\infty$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-005",
+          "type": "propriete",
+          "titre": "Suite croissante non majorée",
+          "capacites": ["bo-m-suites-01"],
+          "texte": "- Toute suite croissante et non majorée tend vers $+\\infty$.\n- Toute suite décroissante et non minorée tend vers $-\\infty$.",
+          "conditions": [
+            "$(u_n)$ est croissante : $u_n \\leqslant u_{n+1}$ pour tout entier naturel $n$.",
+            "$(u_n)$ n'est pas majorée : pour tout réel $A$, au moins un terme est strictement supérieur à $A$.",
+            "Pour le second point : $(u_n)$ est décroissante et non minorée."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-limites-suites-006",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-01"],
+          "question": {
+            "enonce": "Une suite $(u_n)$ est croissante. De plus, pour tout entier $p \\geqslant 1$, au moins un de ses termes est supérieur à $10^p$. Que peux-tu affirmer ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$(u_n)$ converge.",
+                "$(u_n)$ n'est pas majorée, donc elle tend vers $+\\infty$.",
+                "On ne peut rien affirmer : il faudrait que **tous** les termes soient supérieurs à $10^p$.",
+                "$(u_n)$ tend vers $+\\infty$ seulement si $u_n \\geqslant n$ pour tout $n$."
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Ses termes dépassent $10$, $100$, $1\\,000$… : ils ne restent proches d'aucun nombre fixé. Une suite croissante non majorée ne converge pas : elle tend vers $+\\infty$.",
+                null,
+                "Grâce à la croissance, un seul terme suffit : si $u_N > 10^p$, tous les termes suivants dépassent aussi $10^p$.",
+                "Ce n'est pas une hypothèse de la propriété : il suffit que la suite soit croissante et non majorée."
+              ]
+            },
+            "explication": "Tout réel $A$ est inférieur à une puissance $10^p$, et un terme dépasse $10^p$ : aucun réel ne majore la suite. Elle est croissante et non majorée, donc elle tend vers $+\\infty$."
+          }
+        },
+        {
+          "id": "l-limites-suites-007",
+          "type": "demonstration",
+          "titre": "Démonstration : une suite croissante non majorée tend vers $+\\infty$",
+          "capacites": ["bo-m-suites-10", "bo-m-logique-06"],
+          "de": "l-limites-suites-005",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "Soit $(u_n)$ une suite croissante et non majorée, et soit $A$ un réel. Il s'agit de montrer que l'intervalle $[A\\,;\\,+\\infty[$ contient tous les termes $u_n$ à partir d'un certain rang.",
+              "pourquoi": "C'est la définition de « tendre vers $+\\infty$ ». On prend un réel $A$ quelconque, sans choisir sa valeur : le raisonnement vaudra pour tous."
+            },
+            {
+              "texte": "La suite n'est pas majorée, donc $A$ n'est pas un majorant : il existe un entier $N$ tel que $u_N > A$.",
+              "pourquoi": "« $A$ est un majorant » signifie : pour tout $n$, $u_n \\leqslant A$. La négation de cette phrase est : il existe au moins un entier $N$ tel que $u_N > A$."
+            },
+            {
+              "texte": "La suite est croissante, donc, pour tout entier $n \\geqslant N$, $u_n \\geqslant u_N$. Ainsi, pour tout $n \\geqslant N$ : $u_n \\geqslant u_N > A$.",
+              "pourquoi": "De proche en proche : $u_N \\leqslant u_{N+1} \\leqslant u_{N+2} \\leqslant \\dots$ Chaque terme qui vient après le rang $N$ est au moins égal à $u_N$."
+            },
+            {
+              "texte": "Donc l'intervalle $[A\\,;\\,+\\infty[$ contient tous les termes $u_n$ à partir du rang $N$. Ce raisonnement vaut pour tout réel $A$ : par définition, $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
+            },
+            {
+              "texte": "Le cas d'une suite décroissante et non minorée se traite de la même façon, avec les intervalles $]-\\infty\\,;\\,A]$ : on obtient $\\lim\\limits_{n \\to +\\infty} u_n = -\\infty$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-008",
+          "type": "piege",
+          "titre": "Croissante ne veut pas dire « tend vers $+\\infty$ »",
+          "capacites": ["bo-m-suites-01"],
+          "faux": "La suite définie par $u_n = 2 - \\dfrac{1}{n+1}$ est croissante, donc elle tend vers $+\\infty$.",
+          "juste": "Pour tout entier naturel $n$, $u_n < 2$ : l'intervalle $[2\\,;\\,+\\infty[$ ne contient aucun terme. La suite ne tend donc pas vers $+\\infty$. Ses termes $1$ ; $1{,}5$ ; $\\dfrac{5}{3}$ ; … montent, mais restent sous $2$.",
+          "explication": "Pour tendre vers $+\\infty$, une suite croissante doit aussi être **non majorée**. Celle-ci est croissante, mais majorée par $2$. Vérifie toujours les deux hypothèses de la propriété."
+        },
+        {
+          "id": "l-limites-suites-009",
+          "type": "definition",
+          "titre": "Suite convergente",
+          "capacites": ["bo-m-suites-02"],
+          "texte": "La suite $(u_n)$ **converge** vers le nombre réel $\\ell$ si tout intervalle ouvert contenant $\\ell$ contient toutes les valeurs $u_n$ à partir d'un certain rang. On note $\\lim\\limits_{n \\to +\\infty} u_n = \\ell$, et $\\ell$ est **la limite** de la suite.\n\nIl suffit de le vérifier pour les intervalles $]\\ell - r\\,;\\,\\ell + r[$, avec $r > 0$, car tout intervalle ouvert contenant $\\ell$ en contient un. Autrement dit : à partir d'un certain rang, $u_n$ est à une distance de $\\ell$ inférieure à $r$, aussi petit que soit $r$.\n\nUne suite qui ne converge pas est dite **divergente**. Elle peut tendre vers $+\\infty$, vers $-\\infty$, ou n'avoir aucune limite, comme la suite $\\left((-1)^n\\right)$."
+        },
+        {
+          "id": "l-limites-suites-010",
+          "type": "figure",
+          "titre": "La définition en image",
+          "capacites": ["bo-m-suites-02"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/limites-suites/convergence-bande.svg",
+              "alt": "Graphique : les termes uₙ, pour n de 0 à 12, sont des points qui oscillent autour de la droite horizontale d'ordonnée ℓ = 2 en s'en rapprochant. Une bande horizontale entre 1,7 et 2,3 est colorée. Les trois premiers points sont hors de la bande ; à partir du rang N = 3, marqué par un trait vertical, tous les points sont dans la bande.",
+              "width": 360,
+              "height": 310
+            },
+            "caption": "Termes de la suite définie par uₙ = 2 + 1,6 × (−0,5)ⁿ. Ici ℓ = 2 et r = 0,3 : à partir du rang N = 3, tous les termes sont dans l'intervalle ouvert ]1,7 ; 2,3[ et n'en sortent plus."
+          }
+        },
+        {
+          "id": "l-limites-suites-011",
+          "type": "exemple",
+          "titre": "La suite $\\left(\\dfrac{1}{n}\\right)$ converge vers $0$",
+          "capacites": ["bo-m-suites-02"],
+          "enonce": "Soit $(v_n)$ la suite définie, pour tout entier $n \\geqslant 1$, par $v_n = \\dfrac{1}{n}$.\n\n**1.** Déterminer un rang à partir duquel tous les termes sont dans l'intervalle $]-0{,}01\\,;\\,0{,}01[$.\n\n**2.** Démontrer que la suite $(v_n)$ converge vers $0$.",
+          "etapes": [
+            {
+              "texte": "**1.** Pour tout entier $n \\geqslant 1$, $v_n = \\dfrac{1}{n} > 0$, donc $v_n > -0{,}01$. Il reste à obtenir $v_n < 0{,}01$."
+            },
+            {
+              "texte": "Pour tout entier $n > 100$ : $\\dfrac{1}{n} < \\dfrac{1}{100} = 0{,}01$. Donc, à partir du rang $101$, tous les termes sont dans $]-0{,}01\\,;\\,0{,}01[$.",
+              "pourquoi": "La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$ : de $n > 100$, on tire $\\dfrac{1}{n} < \\dfrac{1}{100}$. Le rang $100$ ne convient pas : $v_{100} = 0{,}01$ n'est pas dans l'intervalle ouvert."
+            },
+            {
+              "texte": "**2.** Soit $r > 0$. On choisit un entier $N$ tel que $N > \\dfrac{1}{r}$. Pour tout entier $n \\geqslant N$ : $0 < \\dfrac{1}{n} \\leqslant \\dfrac{1}{N} < r$. Donc, à partir du rang $N$, tous les termes sont dans $]-r\\,;\\,r[$.",
+              "pourquoi": "De $n \\geqslant N > \\dfrac{1}{r} > 0$, la décroissance de la fonction inverse donne $\\dfrac{1}{n} \\leqslant \\dfrac{1}{N} < \\dfrac{1}{\\frac{1}{r}} = r$. Pour $r = 0{,}01$, on retrouve la condition $N > 100$ de la question 1."
+            },
+            {
+              "texte": "**Conclusion** : pour tout $r > 0$, l'intervalle $]0 - r\\,;\\,0 + r[$ contient tous les termes $v_n$ à partir d'un certain rang. La suite $(v_n)$ converge vers $0$ : $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$.",
+              "pourquoi": "D'après la définition d'une suite convergente, il suffit de vérifier la condition avec les intervalles $]\\ell - r\\,;\\,\\ell + r[$, ici avec $\\ell = 0$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-012",
+          "type": "propriete",
+          "titre": "Limites de référence",
+          "capacites": ["bo-m-suites-01", "bo-m-suites-02"],
+          "texte": "- Les suites $(n)$, $\\left(n^2\\right)$, $\\left(n^3\\right)$ et $\\left(\\sqrt{n}\\right)$ tendent vers $+\\infty$.\n- Les suites $\\left(\\dfrac{1}{n}\\right)$, $\\left(\\dfrac{1}{n^2}\\right)$, $\\left(\\dfrac{1}{n^3}\\right)$ et $\\left(\\dfrac{1}{\\sqrt{n}}\\right)$ convergent vers $0$.\n- Une suite constante, égale à un réel $c$, converge vers $c$.\n\nLes limites de $n^2$ et de $\\dfrac{1}{n}$ viennent d'être démontrées ; les autres se démontrent de la même façon.",
+          "conditions": ["Pour les quotients, $n \\geqslant 1$ : on ne divise pas par $0$."],
+          "admise": false
+        },
+        {
+          "id": "l-limites-suites-013",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-01", "bo-m-suites-02"],
+          "question": {
+            "enonce": "Parmi ces suites, définies pour tout entier $n \\geqslant 1$, lesquelles **convergent** ?",
+            "reponse": {
+              "type": "qcm-multiple",
+              "choix": [
+                "$u_n = \\sqrt{n}$",
+                "$u_n = \\dfrac{1}{n^2}$",
+                "$u_n = (-1)^n$",
+                "$u_n = \\dfrac{1}{\\sqrt{n}}$",
+                "$u_n = n^3$"
+              ],
+              "bonnes": [1, 3]
+            },
+            "explication": "$\\dfrac{1}{n^2}$ et $\\dfrac{1}{\\sqrt{n}}$ convergent vers $0$. $\\sqrt{n}$ et $n^3$ tendent vers $+\\infty$ : ces suites divergent. $(-1)^n$ vaut alternativement $1$ et $-1$ : cette suite n'a pas de limite, elle diverge aussi."
+          }
+        },
+        {
+          "id": "l-limites-suites-014",
+          "type": "retenir",
+          "texte": "Tendre vers $+\\infty$ : tout intervalle $[A\\,;\\,+\\infty[$ contient tous les termes à partir d'un certain rang. Converger vers $\\ell$ : tout intervalle ouvert contenant $\\ell$ contient tous les termes à partir d'un certain rang. Une suite croissante non majorée tend vers $+\\infty$."
+        }
+      ]
+    },
+    {
+      "notion": "n-limites-suites-operations",
+      "blocs": [
+        {
+          "id": "l-limites-suites-015",
+          "type": "idee",
+          "texte": "Tu connais les limites de $n^2$, de $\\sqrt{n}$ ou de $\\dfrac{1}{n}$. Pour une suite comme $u_n = n^2 + \\dfrac{1}{n}$, inutile de revenir à la définition : des tableaux donnent la limite d'une somme, d'un produit ou d'un quotient à partir des limites de chaque morceau. Quelques cas ne permettent pas de conclure, comme $n^2 - n$, de la forme « $+\\infty - \\infty$ ». On parle de **forme indéterminée** : il faut alors transformer l'écriture, souvent en factorisant."
+        },
+        {
+          "id": "l-limites-suites-016",
+          "type": "rappel",
+          "titre": "Rappel : limites de référence",
+          "texte": "$n$, $n^2$, $n^3$ et $\\sqrt{n}$ tendent vers $+\\infty$ ; $\\dfrac{1}{n}$, $\\dfrac{1}{n^2}$, $\\dfrac{1}{n^3}$ et $\\dfrac{1}{\\sqrt{n}}$ convergent vers $0$. Une suite constante égale à $c$ converge vers $c$.",
+          "lien": "l-limites-suites-012"
+        },
+        {
+          "id": "l-limites-suites-017",
+          "type": "propriete",
+          "titre": "Limite d'une somme, d'un produit",
+          "capacites": ["bo-m-suites-04"],
+          "texte": "Soit $(u_n)$ et $(v_n)$ deux suites, $\\ell$ et $\\ell'$ deux réels. Toutes les limites sont prises quand $n$ tend vers $+\\infty$. « FI » signale une **forme indéterminée** : connaître les deux limites ne suffit pas pour conclure.\n\n**Somme**\n\n| $\\lim u_n$ | $\\ell$ | $\\ell$ | $\\ell$ | $+\\infty$ | $-\\infty$ | $+\\infty$ |\n|---|---|---|---|---|---|---|\n| $\\lim v_n$ | $\\ell'$ | $+\\infty$ | $-\\infty$ | $+\\infty$ | $-\\infty$ | $-\\infty$ |\n| $\\lim (u_n + v_n)$ | $\\ell + \\ell'$ | $+\\infty$ | $-\\infty$ | $+\\infty$ | $-\\infty$ | FI |\n\n**Produit**\n\n| $\\lim u_n$ | $\\ell$ | $\\ell \\neq 0$ | $\\infty$ | $0$ |\n|---|---|---|---|---|\n| $\\lim v_n$ | $\\ell'$ | $\\infty$ | $\\infty$ | $\\infty$ |\n| $\\lim (u_n \\times v_n)$ | $\\ell \\times \\ell'$ | $\\infty$ | $\\infty$ | FI |\n\nDans le tableau du produit, $\\infty$ désigne $+\\infty$ ou $-\\infty$ : le signe du résultat suit la règle des signes d'un produit. Dans les deux tableaux, on peut échanger les rôles de $(u_n)$ et de $(v_n)$.",
+          "conditions": ["Les suites $(u_n)$ et $(v_n)$ ont chacune une limite, finie ou infinie, que l'on connaît."],
+          "admise": true
+        },
+        {
+          "id": "l-limites-suites-018",
+          "type": "exemple",
+          "titre": "Lire les tableaux",
+          "capacites": ["bo-m-suites-04"],
+          "enonce": "Déterminer la limite de chacune des suites définies, pour tout entier $n \\geqslant 1$, par :\n\n**a.** $a_n = n^2 + \\sqrt{n} - 4$ ;\n\n**b.** $b_n = -2n^3$ ;\n\n**c.** $c_n = \\left(3 + \\dfrac{1}{n}\\right)\\left(\\dfrac{1}{n^2} - 5\\right)$.",
+          "etapes": [
+            {
+              "texte": "**a.** $\\lim\\limits_{n \\to +\\infty} n^2 = +\\infty$ et $\\lim\\limits_{n \\to +\\infty} \\sqrt{n} = +\\infty$, donc, par somme, $\\lim\\limits_{n \\to +\\infty} \\left(n^2 + \\sqrt{n}\\right) = +\\infty$.",
+              "pourquoi": "La somme de deux suites qui tendent vers $+\\infty$ tend vers $+\\infty$ : ce n'est pas une forme indéterminée."
+            },
+            {
+              "texte": "La suite constante égale à $-4$ converge vers $-4$. Par somme d'une suite qui tend vers $+\\infty$ et d'une suite qui converge : $\\lim\\limits_{n \\to +\\infty} a_n = +\\infty$."
+            },
+            {
+              "texte": "**b.** $\\lim\\limits_{n \\to +\\infty} n^3 = +\\infty$ et la suite constante égale à $-2$ converge vers $-2$. Par produit : $\\lim\\limits_{n \\to +\\infty} b_n = -\\infty$.",
+              "pourquoi": "Produit d'une limite finie non nulle, $-2$, et d'une limite infinie : le résultat est infini. La règle des signes, « moins par plus donne moins », donne $-\\infty$."
+            },
+            {
+              "texte": "**c.** $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$, donc, par somme, $3 + \\dfrac{1}{n}$ tend vers $3 + 0 = 3$. De même, $\\dfrac{1}{n^2} - 5$ tend vers $0 - 5 = -5$."
+            },
+            {
+              "texte": "Par produit de deux limites finies : $\\lim\\limits_{n \\to +\\infty} c_n = 3 \\times (-5) = -15$."
+            },
+            {
+              "texte": "**Conclusion** : $\\lim\\limits_{n \\to +\\infty} a_n = +\\infty$, $\\lim\\limits_{n \\to +\\infty} b_n = -\\infty$, et la suite $(c_n)$ converge vers $-15$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-019",
+          "type": "propriete",
+          "titre": "Limite d'un quotient",
+          "capacites": ["bo-m-suites-04"],
+          "texte": "Soit $(u_n)$ et $(v_n)$ deux suites, avec $v_n \\neq 0$ pour tout $n$, et $\\ell$, $\\ell'$ deux réels. Les limites sont prises quand $n$ tend vers $+\\infty$.\n\n| $\\lim u_n$ | $\\ell$ | $\\ell$ | $\\ell \\neq 0$ ou $\\infty$ | $\\infty$ | $\\infty$ | $0$ |\n|---|---|---|---|---|---|---|\n| $\\lim v_n$ | $\\ell' \\neq 0$ | $\\infty$ | $0$ | $\\ell' \\neq 0$ | $\\infty$ | $0$ |\n| $\\lim \\dfrac{u_n}{v_n}$ | $\\dfrac{\\ell}{\\ell'}$ | $0$ | $\\infty$ | $\\infty$ | FI | FI |\n\nLe signe d'un résultat infini suit la règle des signes. Quand $(v_n)$ tend vers $0$, il faut connaître son signe à partir d'un certain rang : par exemple, $\\dfrac{1}{n}$ tend vers $0$ en restant positif, et son inverse $n$ tend vers $+\\infty$.",
+          "conditions": [
+            "$v_n \\neq 0$ pour tout entier $n$.",
+            "Les limites de $(u_n)$ et de $(v_n)$ sont connues.",
+            "Si $(v_n)$ tend vers $0$ : son signe est constant à partir d'un certain rang."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-limites-suites-020",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-04"],
+          "question": {
+            "enonce": "Quelle est la limite de la suite définie, pour tout entier $n \\geqslant 1$, par $w_n = \\dfrac{2 + \\frac{1}{n}}{\\frac{1}{n^2}}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$0$",
+                "$2$",
+                "$+\\infty$",
+                "On ne peut pas conclure : c'est une forme indéterminée."
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Tu as peut-être inversé le quotient : c'est $\\dfrac{\\frac{1}{n^2}}{2 + \\frac{1}{n}}$ qui tendrait vers $0$. Ici, on divise par un nombre qui devient très petit.",
+                "Le dénominateur ne tend pas vers $1$ : il tend vers $0$. Diviser par un nombre proche de $0$ donne un résultat très grand.",
+                null,
+                "« $\\dfrac{2}{0}$ » n'est pas une forme indéterminée : parmi les quotients, seuls « $\\dfrac{0}{0}$ » et « $\\dfrac{\\infty}{\\infty}$ » le sont."
+              ]
+            },
+            "explication": "Le numérateur tend vers $2$ ; le dénominateur $\\dfrac{1}{n^2}$ tend vers $0$ en restant strictement positif. Par quotient, $\\lim\\limits_{n \\to +\\infty} w_n = +\\infty$. D'ailleurs, $w_n = \\left(2 + \\dfrac{1}{n}\\right) \\times n^2$."
+          }
+        },
+        {
+          "id": "l-limites-suites-021",
+          "type": "methode",
+          "titre": "Comment lever une forme indéterminée ?",
+          "capacites": ["bo-m-suites-04"],
+          "etapes": [
+            "Écris la limite de chaque morceau et repère la forme : $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$ ou $\\dfrac{0}{0}$.",
+            "Pour une somme de puissances de $n$, comme $n^2 - 5n$, mets en facteur le **terme dominant**, c'est-à-dire celui de plus haut degré : $n^2 - 5n = n^2\\left(1 - \\dfrac{5}{n}\\right)$.",
+            "Pour un quotient, mets en facteur le terme de plus haut degré au numérateur **et** au dénominateur, puis simplifie la fraction.",
+            "Vérifie que chaque morceau restant a une limite connue, comme $\\dfrac{5}{n}$ qui tend vers $0$, puis conclus avec les tableaux : la forme n'est plus indéterminée.",
+            "Contrôle ton résultat en calculant un terme pour un grand $n$, par exemple $n = 1\\,000$."
+          ],
+          "exemple": "l-limites-suites-022"
+        },
+        {
+          "id": "l-limites-suites-022",
+          "type": "exemple",
+          "titre": "Deux formes indéterminées",
+          "capacites": ["bo-m-suites-04"],
+          "enonce": "Déterminer la limite de chacune des suites définies, pour tout entier naturel $n$, par :\n\n**a.** $u_n = n^2 - 5n$ ;\n\n**b.** $v_n = \\dfrac{3n}{n + 2}$.",
+          "etapes": [
+            {
+              "texte": "**a.** $\\lim\\limits_{n \\to +\\infty} n^2 = +\\infty$ et $\\lim\\limits_{n \\to +\\infty} (-5n) = -\\infty$ : c'est la forme indéterminée « $+\\infty - \\infty$ »."
+            },
+            {
+              "texte": "Pour $n \\geqslant 1$, on met $n^2$ en facteur : $u_n = n^2\\left(1 - \\dfrac{5}{n}\\right)$.",
+              "pourquoi": "On vérifie en développant : $n^2 \\times 1 - n^2 \\times \\dfrac{5}{n} = n^2 - 5n$. On divise par $n$, donc on prend $n \\neq 0$ : pour une limite, seuls les grands $n$ comptent."
+            },
+            {
+              "texte": "$\\lim\\limits_{n \\to +\\infty} \\dfrac{5}{n} = 0$, donc $1 - \\dfrac{5}{n}$ tend vers $1$. Par produit d'une suite qui tend vers $+\\infty$ et d'une suite qui converge vers $1 > 0$ : $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
+            },
+            {
+              "texte": "**b.** $\\lim\\limits_{n \\to +\\infty} 3n = +\\infty$ et $\\lim\\limits_{n \\to +\\infty} (n + 2) = +\\infty$ : c'est la forme indéterminée « $\\dfrac{\\infty}{\\infty}$ »."
+            },
+            {
+              "texte": "Pour $n \\geqslant 1$, on met $n$ en facteur en haut et en bas : $v_n = \\dfrac{3n}{n\\left(1 + \\frac{2}{n}\\right)} = \\dfrac{3}{1 + \\frac{2}{n}}$.",
+              "pourquoi": "$n\\left(1 + \\dfrac{2}{n}\\right) = n + 2$. On simplifie ensuite par $n$, qui n'est pas nul."
+            },
+            {
+              "texte": "$\\lim\\limits_{n \\to +\\infty} \\dfrac{2}{n} = 0$, donc le dénominateur $1 + \\dfrac{2}{n}$ tend vers $1$. Par quotient : $\\lim\\limits_{n \\to +\\infty} v_n = \\dfrac{3}{1} = 3$.",
+              "pourquoi": "Contrôle : $v_{1\\,000} = \\dfrac{3\\,000}{1\\,002} \\approx 2{,}994$, proche de $3$."
+            },
+            {
+              "texte": "**Conclusion** : $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$ et la suite $(v_n)$ converge vers $3$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-023",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-04"],
+          "question": {
+            "enonce": "Quelle est la limite de la suite définie, pour tout entier $n \\geqslant 1$, par $w_n = \\dfrac{2n^2 + 1}{n^2 + n}$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 2,
+              "tolerance": 0
+            },
+            "explication": "C'est la forme « $\\dfrac{\\infty}{\\infty}$ ». On met $n^2$ en facteur en haut et en bas : $w_n = \\dfrac{2 + \\frac{1}{n^2}}{1 + \\frac{1}{n}}$. Le numérateur tend vers $2$, le dénominateur vers $1$ : la limite est $2$."
+          }
+        },
+        {
+          "id": "l-limites-suites-024",
+          "type": "piege",
+          "titre": "Une forme indéterminée ne vaut pas $0$",
+          "capacites": ["bo-m-suites-04"],
+          "faux": "$\\lim\\limits_{n \\to +\\infty} n^2 = +\\infty$ et $\\lim\\limits_{n \\to +\\infty} n = +\\infty$, donc $\\lim\\limits_{n \\to +\\infty} \\left(n^2 - n\\right) = +\\infty - \\infty = 0$.",
+          "juste": "« $+\\infty - \\infty$ » est une forme indéterminée. On factorise : $n^2 - n = n^2\\left(1 - \\dfrac{1}{n}\\right)$, qui tend vers $+\\infty$ par produit.",
+          "explication": "Deux suites qui tendent vers $+\\infty$ peuvent le faire à des vitesses très différentes : $n^2$ dépasse $n$ de plus en plus. Une forme indéterminée ne se calcule pas : on transforme l'écriture avant de conclure. De même, « $\\dfrac{\\infty}{\\infty}$ » ne vaut pas $1$ : $\\dfrac{3n}{n+2}$ tend vers $3$."
+        },
+        {
+          "id": "l-limites-suites-025",
+          "type": "retenir",
+          "texte": "Somme, produit, quotient : on lit la limite dans les tableaux. Les quatre formes indéterminées sont $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$ et $\\dfrac{0}{0}$ : on les lève en factorisant par le terme de plus haut degré."
+        }
+      ]
+    },
+    {
+      "notion": "n-limites-suites-comparaison",
+      "blocs": [
+        {
+          "id": "l-limites-suites-026",
+          "type": "idee",
+          "texte": "Les tableaux d'opérations ne s'appliquent pas toujours : dans $\\dfrac{(-1)^n}{n}$, le facteur $(-1)^n$ n'a pas de limite, et une suite définie par récurrence n'a souvent pas de formule. L'idée est alors de **coincer** la suite. Au-dessus d'une suite qui tend vers $+\\infty$, elle est poussée vers $+\\infty$. Prise entre deux suites qui ont la même limite $\\ell$, elle est forcée de converger vers $\\ell$ : c'est le **théorème des gendarmes**."
+        },
+        {
+          "id": "l-limites-suites-027",
+          "type": "propriete",
+          "titre": "Théorème de comparaison",
+          "capacites": ["bo-m-suites-03"],
+          "texte": "Soit $(u_n)$ et $(v_n)$ deux suites telles que $u_n \\leqslant v_n$ à partir d'un certain rang.\n\n- Si $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$, alors $\\lim\\limits_{n \\to +\\infty} v_n = +\\infty$.\n- Si $\\lim\\limits_{n \\to +\\infty} v_n = -\\infty$, alors $\\lim\\limits_{n \\to +\\infty} u_n = -\\infty$.",
+          "conditions": [
+            "$u_n \\leqslant v_n$ à partir d'un certain rang.",
+            "Pour $+\\infty$, c'est la suite **du dessous**, $(u_n)$, qui tend vers $+\\infty$ ; pour $-\\infty$, c'est la suite **du dessus**, $(v_n)$, qui tend vers $-\\infty$."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-limites-suites-028",
+          "type": "exemple",
+          "titre": "Minorer pour obtenir une limite infinie",
+          "capacites": ["bo-m-suites-03", "bo-m-logique-14"],
+          "enonce": "Soit $(u_n)$ la suite définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = u_n^2 + 1$.\n\n**1.** Démontrer par récurrence que, pour tout entier naturel $n$, $u_n \\geqslant n + 1$.\n\n**2.** En déduire la limite de la suite $(u_n)$.",
+          "etapes": [
+            {
+              "texte": "**1.** Pour tout entier naturel $n$, on note $P(n)$ : « $u_n \\geqslant n + 1$ ».\n\n**Initialisation** : $u_0 = 1$ et $0 + 1 = 1$, donc $u_0 \\geqslant 0 + 1$ : $P(0)$ est vraie."
+            },
+            {
+              "texte": "**Hérédité** : soit $n$ un entier naturel tel que $u_n \\geqslant n + 1$. Alors $u_n \\geqslant 1$, donc $u_n^2 = u_n \\times u_n \\geqslant u_n \\times 1 = u_n$.",
+              "pourquoi": "$n + 1 \\geqslant 1$, donc $u_n \\geqslant 1$. On multiplie l'inégalité $u_n \\geqslant 1$ par $u_n$, qui est positif : le sens est conservé."
+            },
+            {
+              "texte": "Donc $u_{n+1} = u_n^2 + 1 \\geqslant u_n + 1 \\geqslant (n + 1) + 1 = n + 2$ : $P(n+1)$ est vraie.",
+              "pourquoi": "$P(n+1)$ s'écrit « $u_{n+1} \\geqslant (n + 1) + 1$ », c'est-à-dire $u_{n+1} \\geqslant n + 2$. On a utilisé $u_n^2 \\geqslant u_n$, puis l'hypothèse de récurrence $u_n \\geqslant n + 1$."
+            },
+            {
+              "texte": "**Conclusion de la question 1** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, $u_n \\geqslant n + 1$ pour tout entier naturel $n$."
+            },
+            {
+              "texte": "**2.** Par somme, $\\lim\\limits_{n \\to +\\infty} (n + 1) = +\\infty$. Or $u_n \\geqslant n + 1$ pour tout entier naturel $n$. **Conclusion** : d'après le théorème de comparaison, $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$.",
+              "pourquoi": "La suite $(u_n)$ est au-dessus de la suite $(n + 1)$, qui tend vers $+\\infty$ : c'est le premier point du théorème."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-029",
+          "type": "demonstration",
+          "titre": "Démonstration du théorème de comparaison (cas $+\\infty$)",
+          "capacites": ["bo-m-suites-12"],
+          "de": "l-limites-suites-027",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "On suppose que $u_n \\leqslant v_n$ pour tout entier $n \\geqslant N_1$, et que $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$. Soit $A$ un réel : il faut montrer que $[A\\,;\\,+\\infty[$ contient tous les termes $v_n$ à partir d'un certain rang.",
+              "pourquoi": "C'est la définition de $\\lim\\limits_{n \\to +\\infty} v_n = +\\infty$, que l'on veut obtenir."
+            },
+            {
+              "texte": "Comme $(u_n)$ tend vers $+\\infty$, l'intervalle $[A\\,;\\,+\\infty[$ contient tous les termes $u_n$ à partir d'un certain rang $N_2$ : pour tout $n \\geqslant N_2$, $u_n \\geqslant A$.",
+              "pourquoi": "C'est la définition de $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$, appliquée au réel $A$."
+            },
+            {
+              "texte": "Soit $N$ le plus grand des deux entiers $N_1$ et $N_2$. Pour tout entier $n \\geqslant N$, les deux inégalités sont vraies : $v_n \\geqslant u_n \\geqslant A$.",
+              "pourquoi": "Un entier $n \\geqslant N$ vérifie à la fois $n \\geqslant N_1$ et $n \\geqslant N_2$."
+            },
+            {
+              "texte": "Donc $[A\\,;\\,+\\infty[$ contient tous les termes $v_n$ à partir du rang $N$. Ce raisonnement vaut pour tout réel $A$ : $\\lim\\limits_{n \\to +\\infty} v_n = +\\infty$. Le cas $-\\infty$ se démontre de la même façon, avec les intervalles $]-\\infty\\,;\\,A]$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-030",
+          "type": "piege",
+          "titre": "Le bon sens de l'inégalité",
+          "capacites": ["bo-m-suites-03"],
+          "faux": "Pour tout $n \\geqslant 1$, $\\dfrac{1}{n} \\leqslant n$, et $\\lim\\limits_{n \\to +\\infty} n = +\\infty$. Donc, par comparaison, $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = +\\infty$.",
+          "juste": "Le théorème demande que la suite étudiée soit **au-dessus** d'une suite qui tend vers $+\\infty$. Ici, $\\dfrac{1}{n}$ est en dessous de $n$ : on ne peut rien en déduire. D'ailleurs, $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$.",
+          "explication": "Être sous une suite qui tend vers $+\\infty$ n'empêche pas de rester petit. Pour montrer que $(v_n)$ tend vers $+\\infty$, cherche une **minoration** $v_n \\geqslant u_n$, avec $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
+        },
+        {
+          "id": "l-limites-suites-031",
+          "type": "propriete",
+          "titre": "Théorème des gendarmes",
+          "capacites": ["bo-m-suites-03"],
+          "texte": "Soit $(u_n)$, $(v_n)$ et $(w_n)$ trois suites, et $\\ell$ un réel. Si $v_n \\leqslant u_n \\leqslant w_n$ à partir d'un certain rang, et si $\\lim\\limits_{n \\to +\\infty} v_n = \\lim\\limits_{n \\to +\\infty} w_n = \\ell$, alors la suite $(u_n)$ converge et $\\lim\\limits_{n \\to +\\infty} u_n = \\ell$.\n\nOn l'appelle aussi théorème d'encadrement.",
+          "conditions": [
+            "L'encadrement $v_n \\leqslant u_n \\leqslant w_n$ est vrai à partir d'un certain rang.",
+            "Les deux suites qui encadrent ont la **même** limite $\\ell$, finie."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-limites-suites-032",
+          "type": "exemple",
+          "titre": "Encadrer, puis conclure",
+          "capacites": ["bo-m-suites-03"],
+          "enonce": "Soit $(u_n)$ une suite telle que, pour tout entier $n \\geqslant 1$, $n - 1 \\leqslant u_n \\leqslant n + 2$.\n\n**1.** Déterminer la limite de la suite $(u_n)$.\n\n**2.** Démontrer que $\\lim\\limits_{n \\to +\\infty} \\dfrac{u_n}{n} = 1$.",
+          "etapes": [
+            {
+              "texte": "**1.** $\\lim\\limits_{n \\to +\\infty} (n - 1) = +\\infty$ et $u_n \\geqslant n - 1$ pour tout $n \\geqslant 1$. D'après le théorème de comparaison, $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$.",
+              "pourquoi": "Seule la minoration sert ici. La majoration par $n + 2$ ne donnerait rien : être en dessous d'une suite qui tend vers $+\\infty$ ne permet pas de conclure."
+            },
+            {
+              "texte": "**2.** Le quotient $\\dfrac{u_n}{n}$ est de la forme « $\\dfrac{\\infty}{\\infty}$ » : on encadre. Pour $n \\geqslant 1$, on divise l'encadrement par $n$, qui est strictement positif : $\\dfrac{n - 1}{n} \\leqslant \\dfrac{u_n}{n} \\leqslant \\dfrac{n + 2}{n}$, soit $1 - \\dfrac{1}{n} \\leqslant \\dfrac{u_n}{n} \\leqslant 1 + \\dfrac{2}{n}$.",
+              "pourquoi": "Diviser par un nombre strictement positif garde le sens des inégalités. Puis $\\dfrac{n - 1}{n} = \\dfrac{n}{n} - \\dfrac{1}{n} = 1 - \\dfrac{1}{n}$, et de même $\\dfrac{n + 2}{n} = 1 + \\dfrac{2}{n}$."
+            },
+            {
+              "texte": "$\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$ et $\\lim\\limits_{n \\to +\\infty} \\dfrac{2}{n} = 0$, donc les deux suites $1 - \\dfrac{1}{n}$ et $1 + \\dfrac{2}{n}$ convergent vers $1$."
+            },
+            {
+              "texte": "**Conclusion** : la suite $\\left(\\dfrac{u_n}{n}\\right)$ est encadrée par deux suites qui convergent vers $1$. D'après le théorème des gendarmes, $\\lim\\limits_{n \\to +\\infty} \\dfrac{u_n}{n} = 1$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-033",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-03"],
+          "question": {
+            "enonce": "Pour tout entier $n \\geqslant 1$, on pose $u_n = 1 + \\dfrac{(-1)^n}{n}$. Quel encadrement permet d'appliquer le théorème des gendarmes ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$0 \\leqslant u_n \\leqslant 2$",
+                "$1 - \\dfrac{1}{n} \\leqslant u_n \\leqslant 1 + \\dfrac{1}{n}$",
+                "$1 \\leqslant u_n \\leqslant 1 + \\dfrac{1}{n}$",
+                "$-1 \\leqslant u_n \\leqslant 1$"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Cet encadrement est vrai, mais $0$ et $2$ sont deux limites différentes : le théorème exige la même limite pour les deux suites qui encadrent.",
+                null,
+                "Pour $n$ impair, $(-1)^n = -1$ et $u_n = 1 - \\dfrac{1}{n} < 1$ : la minoration par $1$ est fausse.",
+                "Pour $n = 2$, $u_2 = 1 + \\dfrac{1}{2} = 1{,}5 > 1$ : cet encadrement est faux."
+              ]
+            },
+            "explication": "$(-1)^n$ vaut $1$ ou $-1$, donc $-\\dfrac{1}{n} \\leqslant \\dfrac{(-1)^n}{n} \\leqslant \\dfrac{1}{n}$. On ajoute $1$ : $1 - \\dfrac{1}{n} \\leqslant u_n \\leqslant 1 + \\dfrac{1}{n}$. Les deux suites qui encadrent convergent vers $1$ : d'après le théorème des gendarmes, $(u_n)$ converge vers $1$."
+          }
+        },
+        {
+          "id": "l-limites-suites-034",
+          "type": "propriete",
+          "titre": "Passage à la limite dans une inégalité",
+          "capacites": ["bo-m-suites-03"],
+          "texte": "Soit $(u_n)$ et $(v_n)$ deux suites qui convergent, vers $\\ell$ et $\\ell'$. Si $u_n \\leqslant v_n$ à partir d'un certain rang, alors $\\ell \\leqslant \\ell'$.\n\nEn particulier, si $(u_n)$ converge vers $\\ell$ et si $u_n \\leqslant M$ pour tout $n$, alors $\\ell \\leqslant M$. De même, si $u_n \\geqslant m$ pour tout $n$, alors $\\ell \\geqslant m$.",
+          "conditions": [
+            "Les deux suites convergent : on sait déjà qu'elles ont une limite finie.",
+            "Les inégalités larges se conservent ; une inégalité stricte devient large à la limite."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-limites-suites-035",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-03"],
+          "question": {
+            "enonce": "Une suite $(u_n)$ est minorée par $3$ et converge vers un réel $\\ell$. Que peux-tu affirmer ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\ell = 3$",
+                "$\\ell > 3$",
+                "$\\ell \\geqslant 3$",
+                "$\\ell \\leqslant 3$"
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Un minorant n'est pas forcément la limite : $u_n = 4 + \\dfrac{1}{n+1}$ est minorée par $3$ et converge vers $4$.",
+                "L'égalité est possible : $u_n = 3 + \\dfrac{1}{n+1}$ est minorée par $3$ et converge vers $3$.",
+                null,
+                "C'est le sens contraire : les termes sont tous au-dessus de $3$, leur limite aussi."
+              ]
+            },
+            "explication": "Pour tout $n$, $u_n \\geqslant 3$. Par passage à la limite dans une inégalité large, $\\ell \\geqslant 3$. On ne peut pas dire mieux : la limite peut valoir $3$, ou davantage."
+          }
+        },
+        {
+          "id": "l-limites-suites-036",
+          "type": "piege",
+          "titre": "Une inégalité stricte devient large",
+          "capacites": ["bo-m-suites-03"],
+          "faux": "Pour tout $n \\geqslant 1$, $\\dfrac{1}{n} > 0$. Donc la limite de la suite $\\left(\\dfrac{1}{n}\\right)$ est strictement positive.",
+          "juste": "Par passage à la limite, on obtient seulement $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} \\geqslant 0$. Et en effet, cette limite vaut $0$.",
+          "explication": "Tous les termes peuvent être strictement positifs et se rapprocher de $0$ autant qu'on veut. À la limite, « $>$ » devient « $\\geqslant$ », et « $<$ » devient « $\\leqslant$ »."
+        },
+        {
+          "id": "l-limites-suites-037",
+          "type": "retenir",
+          "texte": "Au-dessus d'une suite qui tend vers $+\\infty$ : limite $+\\infty$ (comparaison). Entre deux suites de même limite $\\ell$ : limite $\\ell$ (gendarmes). Si $(u_n)$ converge et si $u_n \\leqslant M$ pour tout $n$, sa limite est inférieure ou égale à $M$."
+        }
+      ]
+    },
+    {
+      "notion": "n-limites-suites-geometrique",
+      "blocs": [
+        {
+          "id": "l-limites-suites-038",
+          "type": "idee",
+          "texte": "Une quantité multipliée chaque année par $1{,}05$ finit par exploser ; multipliée par $0{,}9$, elle fond vers $0$. Tout se joue sur la raison $q$ d'une suite géométrique : la limite de $q^n$ dépend de la position de $q$ par rapport à $-1$ et à $1$. Avec ce résultat et les opérations, tu trouves la limite de suites comme $u_n = 500 - 200 \\times 0{,}9^n$, très fréquentes au bac dès qu'une évolution est modélisée par une suite."
+        },
+        {
+          "id": "l-limites-suites-039",
+          "type": "rappel",
+          "titre": "Rappel : suite géométrique",
+          "texte": "Une suite $(v_n)$ est **géométrique de raison $q$** si $v_{n+1} = q \\times v_n$ pour tout entier naturel $n$. Alors, pour tout $n$, $v_n = v_0 \\times q^n$.\n\nSi $q \\neq 1$, la somme de ses premières puissances se calcule : $1 + q + q^2 + \\dots + q^n = \\dfrac{1 - q^{n+1}}{1 - q}$.",
+          "lien": "1e:suites"
+        },
+        {
+          "id": "l-limites-suites-040",
+          "type": "propriete",
+          "titre": "Limite de $(q^n)$",
+          "capacites": ["bo-m-suites-05"],
+          "texte": "Soit $q$ un nombre réel.\n\n| valeur de $q$ | $q \\leqslant -1$ | $-1 < q < 1$ | $q = 1$ | $q > 1$ |\n|---|---|---|---|---|\n| $\\lim\\limits_{n \\to +\\infty} q^n$ | pas de limite | $0$ | $1$ | $+\\infty$ |\n\nPour $q \\leqslant -1$, les termes changent de signe à chaque rang : ils valent alternativement $1$ et $-1$ si $q = -1$, et s'éloignent de plus en plus de $0$ si $q < -1$. La suite $(q^n)$ diverge, sans limite.",
+          "conditions": ["$q$ est un réel fixé, qui ne dépend pas de $n$."],
+          "admise": false
+        },
+        {
+          "id": "l-limites-suites-041",
+          "type": "exemple",
+          "titre": "Limites avec des puissances",
+          "capacites": ["bo-m-suites-05"],
+          "enonce": "Déterminer la limite de chacune des suites définies, pour tout entier naturel $n$, par :\n\n**a.** $a_n = 5 \\times 0{,}8^n + 1$ ;\n\n**b.** $b_n = 1{,}5^n - 3$ ;\n\n**c.** $c_n = \\dfrac{1 - 3^n}{1 + 2^n}$.",
+          "etapes": [
+            {
+              "texte": "**a.** $-1 < 0{,}8 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}8^n = 0$. Par produit, $5 \\times 0{,}8^n$ tend vers $0$, puis, par somme, $\\lim\\limits_{n \\to +\\infty} a_n = 0 + 1 = 1$."
+            },
+            {
+              "texte": "**b.** $1{,}5 > 1$, donc $\\lim\\limits_{n \\to +\\infty} 1{,}5^n = +\\infty$. Par somme, $\\lim\\limits_{n \\to +\\infty} b_n = +\\infty$."
+            },
+            {
+              "texte": "**c.** $3 > 1$ et $2 > 1$ : le numérateur $1 - 3^n$ tend vers $-\\infty$ et le dénominateur $1 + 2^n$ vers $+\\infty$. C'est la forme indéterminée « $\\dfrac{\\infty}{\\infty}$ »."
+            },
+            {
+              "texte": "On met en facteur la puissance qui grandit le plus vite : $3^n$ en haut, $2^n$ en bas.\n\n$$\\begin{aligned} c_n &= \\frac{3^n\\left(\\left(\\frac{1}{3}\\right)^n - 1\\right)}{2^n\\left(\\left(\\frac{1}{2}\\right)^n + 1\\right)} \\\\ &= \\left(\\frac{3}{2}\\right)^n \\times \\frac{\\left(\\frac{1}{3}\\right)^n - 1}{\\left(\\frac{1}{2}\\right)^n + 1} \\end{aligned}$$",
+              "pourquoi": "$3^n \\times \\left(\\dfrac{1}{3}\\right)^n = \\left(3 \\times \\dfrac{1}{3}\\right)^n = 1$, donc $3^n\\left(\\left(\\dfrac{1}{3}\\right)^n - 1\\right) = 1 - 3^n$. De même en bas. Enfin, $\\dfrac{3^n}{2^n} = \\left(\\dfrac{3}{2}\\right)^n$."
+            },
+            {
+              "texte": "$\\dfrac{3}{2} > 1$, donc $\\left(\\dfrac{3}{2}\\right)^n$ tend vers $+\\infty$. Comme $\\dfrac{1}{3}$ et $\\dfrac{1}{2}$ sont entre $-1$ et $1$, leurs puissances tendent vers $0$ : le quotient tend vers $\\dfrac{0 - 1}{0 + 1} = -1$. Par produit, $\\lim\\limits_{n \\to +\\infty} c_n = -\\infty$.",
+              "pourquoi": "Produit d'une suite qui tend vers $+\\infty$ et d'une suite qui converge vers $-1$, négatif : la règle des signes donne $-\\infty$."
+            },
+            {
+              "texte": "**Conclusion** : la suite $(a_n)$ converge vers $1$, $\\lim\\limits_{n \\to +\\infty} b_n = +\\infty$ et $\\lim\\limits_{n \\to +\\infty} c_n = -\\infty$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-042",
+          "type": "demonstration",
+          "titre": "Démonstration : inégalité de Bernoulli, puis limite de $(q^n)$",
+          "capacites": ["bo-m-suites-11", "bo-m-logique-14"],
+          "de": "l-limites-suites-040",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "**Inégalité de Bernoulli.** Soit $a$ un réel strictement positif. Montrons par récurrence que, pour tout entier naturel $n$, $(1 + a)^n \\geqslant 1 + na$. On note $P(n)$ cette inégalité.\n\n**Initialisation** : $(1 + a)^0 = 1$ et $1 + 0 \\times a = 1$, donc $P(0)$ est vraie."
+            },
+            {
+              "texte": "**Hérédité** : soit $n$ un entier naturel tel que $(1 + a)^n \\geqslant 1 + na$. On multiplie par $1 + a$, qui est strictement positif : $(1 + a)^{n+1} \\geqslant (1 + na)(1 + a)$.",
+              "pourquoi": "Multiplier les deux membres par un nombre strictement positif garde le sens. Et $(1 + a)^n \\times (1 + a) = (1 + a)^{n+1}$."
+            },
+            {
+              "texte": "On développe : $(1 + na)(1 + a) = 1 + a + na + na^2 = 1 + (n + 1)a + na^2$. Or $na^2 \\geqslant 0$, donc $(1 + a)^{n+1} \\geqslant 1 + (n + 1)a$ : $P(n+1)$ est vraie. D'après le principe de récurrence, $(1 + a)^n \\geqslant 1 + na$ pour tout entier naturel $n$.",
+              "pourquoi": "$n \\geqslant 0$ et $a^2 \\geqslant 0$. Retirer le nombre positif $na^2$ ne peut que diminuer : $1 + (n + 1)a + na^2 \\geqslant 1 + (n + 1)a$."
+            },
+            {
+              "texte": "**Cas $q > 1$.** On pose $a = q - 1$, qui est strictement positif. D'après l'inégalité de Bernoulli, $q^n = (1 + a)^n \\geqslant 1 + na$ pour tout $n$. Or $\\lim\\limits_{n \\to +\\infty} (1 + na) = +\\infty$. D'après le théorème de comparaison, $\\lim\\limits_{n \\to +\\infty} q^n = +\\infty$.",
+              "pourquoi": "$na$ est le produit de $n$, qui tend vers $+\\infty$, par le réel $a > 0$ : il tend vers $+\\infty$. Ajouter $1$ ne change rien."
+            },
+            {
+              "texte": "**Cas $0 < q < 1$.** Alors $\\dfrac{1}{q} > 1$, donc $\\left(\\dfrac{1}{q}\\right)^n$ tend vers $+\\infty$ d'après le cas précédent. Comme $q^n = \\dfrac{1}{\\left(\\frac{1}{q}\\right)^n}$, par quotient, $\\lim\\limits_{n \\to +\\infty} q^n = 0$. Pour $q = 0$, la suite vaut $0$ à partir du rang $1$ : elle converge vers $0$."
+            },
+            {
+              "texte": "**Cas $-1 < q < 0$.** Alors $0 < -q < 1$, donc $(-q)^n$ tend vers $0$. Or $q^n = (-1)^n(-q)^n$ vaut $(-q)^n$ ou $-(-q)^n$, d'où $-(-q)^n \\leqslant q^n \\leqslant (-q)^n$. D'après le théorème des gendarmes, $\\lim\\limits_{n \\to +\\infty} q^n = 0$.",
+              "pourquoi": "Les deux suites qui encadrent, $-(-q)^n$ et $(-q)^n$, convergent toutes les deux vers $0$."
+            },
+            {
+              "texte": "**Cas $q = 1$** : $q^n = 1$ pour tout $n$, la suite converge vers $1$.\n\n**Cas $q \\leqslant -1$** : $q^2 \\geqslant 1$, donc $q^{2k} = \\left(q^2\\right)^k \\geqslant 1$. Puis $q^{2k+1} = q \\times q^{2k} \\leqslant -q^{2k} \\leqslant -1$, car $q \\leqslant -1$ et $q^{2k} \\geqslant 1$. Les termes de rang pair sont $\\geqslant 1$, ceux de rang impair $\\leqslant -1$. La suite ne converge pas, et ne tend ni vers $+\\infty$ ni vers $-\\infty$ : elle n'a pas de limite.",
+              "pourquoi": "Un intervalle ouvert de longueur $2$, comme $]\\ell - 1\\,;\\,\\ell + 1[$, ne peut pas contenir à la fois un nombre $\\geqslant 1$ et un nombre $\\leqslant -1$, distants d'au moins $2$. De plus, $[0\\,;\\,+\\infty[$ ne contient aucun terme de rang impair, et $]-\\infty\\,;\\,0]$ aucun terme de rang pair."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-043",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-05"],
+          "question": {
+            "enonce": "Parmi ces suites, lesquelles convergent vers $0$ ?",
+            "reponse": {
+              "type": "qcm-multiple",
+              "choix": [
+                "$u_n = 0{,}99^n$",
+                "$u_n = 1{,}01^n$",
+                "$u_n = (-0{,}3)^n$",
+                "$u_n = (-1)^n$",
+                "$u_n = (-2)^n$"
+              ],
+              "bonnes": [0, 2]
+            },
+            "explication": "$0{,}99$ et $-0{,}3$ sont strictement entre $-1$ et $1$ : leurs puissances tendent vers $0$. $1{,}01 > 1$, donc $1{,}01^n$ tend vers $+\\infty$, même si $1{,}01$ est proche de $1$. Pour $q = -1$ et $q = -2$, on a $q \\leqslant -1$ : pas de limite."
+          }
+        },
+        {
+          "id": "l-limites-suites-044",
+          "type": "methode",
+          "titre": "Comment trouver la limite d'une suite qui s'écrit avec des puissances $q^n$ ?",
+          "capacites": ["bo-m-suites-05"],
+          "etapes": [
+            "Si la suite est définie par une relation $u_{n+1} = a\\,u_n + b$, exprime d'abord $u_n$ en fonction de $n$ grâce à la suite auxiliaire géométrique : tu obtiens une forme $u_n = c + k \\times a^n$.",
+            "Repère chaque puissance $q^n$ et sa limite : regarde où se trouve $q$ par rapport à $-1$ et à $1$.",
+            "Combine les limites avec les opérations : somme, produit, quotient.",
+            "En cas de forme indéterminée, mets en facteur la puissance qui grandit le plus vite, par exemple $3^n$ plutôt que $2^n$.",
+            "Conclus en citant la propriété utilisée, puis interprète la limite dans la situation : valeur autour de laquelle la quantité se stabilise, ou croissance sans fin."
+          ],
+          "exemple": "l-limites-suites-045"
+        },
+        {
+          "id": "l-limites-suites-045",
+          "type": "exemple",
+          "titre": "Les poissons d'un lac",
+          "capacites": ["bo-m-suites-05", "bo-m-suites-09"],
+          "enonce": "Un lac compte $2\\,000$ poissons au départ. Chaque année, $20\\,\\%$ des poissons disparaissent, puis on introduit $300$ nouveaux poissons. On note $u_n$ le nombre de poissons au bout de $n$ années. Ainsi $u_0 = 2\\,000$ et, pour tout entier naturel $n$, $u_{n+1} = 0{,}8u_n + 300$.\n\n**1.** On pose, pour tout entier naturel $n$, $v_n = u_n - 1\\,500$. Démontrer que la suite $(v_n)$ est géométrique, puis exprimer $u_n$ en fonction de $n$.\n\n**2.** Déterminer la limite de la suite $(u_n)$ et l'interpréter.",
+          "etapes": [
+            {
+              "texte": "**1.** Pour tout entier naturel $n$ : $v_{n+1} = u_{n+1} - 1\\,500 = 0{,}8u_n + 300 - 1\\,500 = 0{,}8u_n - 1\\,200$."
+            },
+            {
+              "texte": "Comme $u_n = v_n + 1\\,500$ : $v_{n+1} = 0{,}8\\left(v_n + 1\\,500\\right) - 1\\,200 = 0{,}8v_n + 1\\,200 - 1\\,200 = 0{,}8v_n$. La suite $(v_n)$ est géométrique de raison $0{,}8$ et de premier terme $v_0 = 2\\,000 - 1\\,500 = 500$.",
+              "pourquoi": "$0{,}8 \\times 1\\,500 = 1\\,200$ : les constantes s'annulent. C'est la méthode de la suite auxiliaire, vue au chapitre précédent."
+            },
+            {
+              "texte": "Donc, pour tout entier naturel $n$, $v_n = 500 \\times 0{,}8^n$, puis $u_n = v_n + 1\\,500 = 1\\,500 + 500 \\times 0{,}8^n$.",
+              "pourquoi": "Contrôle : $u_1 = 0{,}8 \\times 2\\,000 + 300 = 1\\,900$, et la formule donne $1\\,500 + 500 \\times 0{,}8 = 1\\,500 + 400 = 1\\,900$."
+            },
+            {
+              "texte": "**2.** $-1 < 0{,}8 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}8^n = 0$. Par produit, $500 \\times 0{,}8^n$ tend vers $0$ ; par somme, $\\lim\\limits_{n \\to +\\infty} u_n = 1\\,500$."
+            },
+            {
+              "texte": "**Conclusion** : la suite $(u_n)$ converge vers $1\\,500$. À long terme, le nombre de poissons se stabilise autour de $1\\,500$. Comme $500 \\times 0{,}8^n > 0$, il reste toujours au-dessus de $1\\,500$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-046",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-05"],
+          "question": {
+            "enonce": "Pour tout entier naturel $n$, on pose $S_n = 1 + 0{,}5 + 0{,}5^2 + \\dots + 0{,}5^n$. D'après la formule de somme, $S_n = \\dfrac{1 - 0{,}5^{n+1}}{1 - 0{,}5} = 2\\left(1 - 0{,}5^{n+1}\\right)$. Quelle est la limite de la suite $(S_n)$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 2,
+              "tolerance": 0
+            },
+            "explication": "$-1 < 0{,}5 < 1$, donc $0{,}5^{n+1}$ tend vers $0$. Par somme puis produit, $S_n$ tend vers $2 \\times (1 - 0) = 2$. Plus on ajoute de termes, plus la somme approche $2$, sans jamais l'atteindre."
+          }
+        },
+        {
+          "id": "l-limites-suites-047",
+          "type": "piege",
+          "titre": "$q < 1$ ne suffit pas",
+          "capacites": ["bo-m-suites-05"],
+          "faux": "$-2 < 1$, donc $\\lim\\limits_{n \\to +\\infty} (-2)^n = 0$.",
+          "juste": "Il faut $-1 < q < 1$. Ici $q = -2 \\leqslant -1$ : les termes $1$ ; $-2$ ; $4$ ; $-8$ ; $16$ ; … changent de signe et s'éloignent de $0$. La suite $\\left((-2)^n\\right)$ n'a pas de limite.",
+          "explication": "Ce qui compte, c'est la taille de $q$ sans son signe : $(-0{,}5)^n$ tend vers $0$, mais $(-2)^n$ n'a pas de limite. Vérifie toujours les deux inégalités $-1 < q$ et $q < 1$."
+        },
+        {
+          "id": "l-limites-suites-048",
+          "type": "retenir",
+          "texte": "$q^n$ tend vers $0$ si $-1 < q < 1$, vers $+\\infty$ si $q > 1$ ; $1^n = 1$ ; pas de limite si $q \\leqslant -1$. Pour $u_{n+1} = a\\,u_n + b$, on écrit $u_n = c + k \\times a^n$, puis on passe à la limite."
+        }
+      ]
+    },
+    {
+      "notion": "n-limites-suites-monotone-bornee",
+      "blocs": [
+        {
+          "id": "l-limites-suites-049",
+          "type": "idee",
+          "texte": "Pour une suite définie par $u_{n+1} = f(u_n)$, on n'a souvent aucune formule pour $u_n$ : les tableaux d'opérations ne servent pas. Imagine une balle qui ne redescend jamais et ne peut pas traverser un plafond : sa hauteur finit par se rapprocher d'une valeur fixe, pas forcément celle du plafond. C'est le théorème le plus demandé du chapitre : une suite qui monte sans dépasser un plafond converge, même si on ne sait pas vers quoi."
+        },
+        {
+          "id": "l-limites-suites-050",
+          "type": "rappel",
+          "titre": "Rappel : sens de variation et encadrement par récurrence",
+          "texte": "Pour une suite $u_{n+1} = f(u_n)$ avec $f$ croissante sur $[a\\,;\\,b]$, une seule récurrence établit « $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ » (ou « $a \\leqslant u_{n+1} \\leqslant u_n \\leqslant b$ ») : la suite est croissante (ou décroissante), minorée par $a$ et majorée par $b$.\n\nSinon, on étudie le signe de $u_{n+1} - u_n$, et on démontre l'encadrement par récurrence.",
+          "lien": "l-recurrence-suites-021"
+        },
+        {
+          "id": "l-limites-suites-051",
+          "type": "propriete",
+          "titre": "Suite croissante majorée, suite décroissante minorée",
+          "capacites": ["bo-m-suites-06"],
+          "texte": "- Toute suite croissante et majorée converge.\n- Toute suite décroissante et minorée converge.\n\nC'est le **théorème de convergence monotone** : une suite **monotone** est une suite croissante, ou décroissante. Il affirme qu'une limite $\\ell$ existe, mais il ne donne pas sa valeur. Si $u_n \\leqslant M$ pour tout $n$, le passage à la limite donne $\\ell \\leqslant M$ ; mais $\\ell$ n'est pas forcément égale à $M$.",
+          "conditions": [
+            "Croissante **et** majorée, ou décroissante **et** minorée : les deux hypothèses sont nécessaires.",
+            "Le majorant (ou le minorant) est un réel fixé, qui ne dépend pas de $n$."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-limites-suites-052",
+          "type": "exemple",
+          "titre": "Conclure après une récurrence",
+          "capacites": ["bo-m-suites-06", "bo-m-suites-07"],
+          "enonce": "Soit $(u_n)$ la suite définie par $u_0 = \\dfrac{1}{2}$ et, pour tout entier naturel $n$, $u_{n+1} = \\dfrac{2u_n}{u_n + 1}$. On admet que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$ (c'est l'exemple « Le geste du bac » du chapitre précédent).\n\nEn déduire que la suite $(u_n)$ converge, et donner un encadrement de sa limite $\\ell$.",
+          "etapes": [
+            {
+              "texte": "Pour tout entier naturel $n$, $u_n \\leqslant u_{n+1}$ : la suite $(u_n)$ est croissante."
+            },
+            {
+              "texte": "Pour tout entier naturel $n$, $u_n \\leqslant 1$ : la suite $(u_n)$ est majorée par $1$."
+            },
+            {
+              "texte": "La suite $(u_n)$ est croissante et majorée : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$.",
+              "pourquoi": "On cite les deux hypothèses, puis le théorème : c'est ce que le correcteur attend. On ne connaît pas encore la valeur de $\\ell$."
+            },
+            {
+              "texte": "Pour tout $n$, $u_n \\leqslant 1$ ; par passage à la limite, $\\ell \\leqslant 1$. La suite est croissante, donc $u_n \\geqslant u_0 = \\dfrac{1}{2}$ pour tout $n$ ; par passage à la limite, $\\ell \\geqslant \\dfrac{1}{2}$.",
+              "pourquoi": "Le passage à la limite conserve les inégalités larges entre une suite qui converge et un nombre fixé."
+            },
+            {
+              "texte": "**Conclusion** : la suite $(u_n)$ est croissante et majorée par $1$, donc elle converge ; sa limite $\\ell$ vérifie $\\dfrac{1}{2} \\leqslant \\ell \\leqslant 1$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-053",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-06"],
+          "question": {
+            "enonce": "Une suite $(u_n)$ est décroissante et, pour tout entier naturel $n$, $u_n \\geqslant 2$. Que peux-tu affirmer ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$(u_n)$ converge vers $2$.",
+                "$(u_n)$ converge vers un réel $\\ell$ tel que $\\ell \\geqslant 2$.",
+                "$(u_n)$ tend vers $-\\infty$, puisqu'elle est décroissante.",
+                "On ne peut rien affirmer sans connaître $u_n$."
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Le minorant n'est pas forcément la limite : $u_n = 3 + \\dfrac{1}{n+1}$ est décroissante, minorée par $2$, et converge vers $3$.",
+                null,
+                "Une suite minorée par $2$ ne peut pas tendre vers $-\\infty$ : l'intervalle $]-\\infty\\,;\\,0]$ ne contient aucun de ses termes.",
+                "Le théorème de convergence monotone suffit : décroissante et minorée, donc convergente."
+              ]
+            },
+            "explication": "La suite est décroissante et minorée par $2$ : d'après le théorème de convergence monotone, elle converge. Comme $u_n \\geqslant 2$ pour tout $n$, le passage à la limite donne $\\ell \\geqslant 2$. On ne sait pas si $\\ell = 2$."
+          }
+        },
+        {
+          "id": "l-limites-suites-054",
+          "type": "methode",
+          "titre": "Comment établir qu'une suite converge, ou qu'elle tend vers $+\\infty$ ?",
+          "capacites": ["bo-m-suites-07"],
+          "etapes": [
+            "Si $u_n$ s'écrit en fonction de $n$, calcule directement sa limite : limites de référence, opérations, puissances $q^n$, ou encadrement (comparaison, gendarmes).",
+            "Si la suite est définie par récurrence, sans formule, étudie son sens de variation : signe de $u_{n+1} - u_n$, ou récurrence.",
+            "Cherche un majorant (si elle est croissante) ou un minorant (si elle est décroissante) **constant**, souvent par récurrence.",
+            "Conclus en citant les deux hypothèses : « $(u_n)$ est croissante et majorée par $M$ ; d'après le théorème de convergence monotone, elle converge ».",
+            "Pour une limite infinie : une suite croissante et non majorée tend vers $+\\infty$ ; une suite minorée par une suite qui tend vers $+\\infty$ aussi (comparaison)."
+          ],
+          "exemple": "l-limites-suites-055"
+        },
+        {
+          "id": "l-limites-suites-055",
+          "type": "exemple",
+          "titre": "Décroissante et minorée",
+          "capacites": ["bo-m-suites-07", "bo-m-suites-06", "bo-m-logique-14"],
+          "enonce": "Soit $(u_n)$ la suite définie par $u_0 = 2$ et, pour tout entier naturel $n$, $u_{n+1} = \\dfrac{u_n}{1 + u_n}$.\n\n**1.** Démontrer par récurrence que, pour tout entier naturel $n$, $u_n > 0$.\n\n**2.** Étudier le sens de variation de la suite $(u_n)$.\n\n**3.** En déduire que la suite $(u_n)$ converge.",
+          "etapes": [
+            {
+              "texte": "**1.** Pour tout entier naturel $n$, on note $P(n)$ : « $u_n > 0$ ».\n\n**Initialisation** : $u_0 = 2 > 0$, donc $P(0)$ est vraie."
+            },
+            {
+              "texte": "**Hérédité** : soit $n$ un entier naturel tel que $u_n > 0$. Alors $1 + u_n > 0$, et $u_{n+1} = \\dfrac{u_n}{1 + u_n}$ est le quotient de deux nombres strictement positifs : $u_{n+1} > 0$. $P(n+1)$ est vraie. D'après le principe de récurrence, $u_n > 0$ pour tout entier naturel $n$."
+            },
+            {
+              "texte": "**2.** Pour tout entier naturel $n$ : $u_{n+1} - u_n = \\dfrac{u_n}{1 + u_n} - u_n = \\dfrac{u_n - u_n(1 + u_n)}{1 + u_n} = \\dfrac{-u_n^2}{1 + u_n}$.",
+              "pourquoi": "On met au même dénominateur $1 + u_n$, qui n'est pas nul puisque $u_n > 0$. Au numérateur : $u_n - u_n - u_n^2 = -u_n^2$."
+            },
+            {
+              "texte": "Or $u_n^2 > 0$ et $1 + u_n > 0$, donc $u_{n+1} - u_n < 0$ : la suite $(u_n)$ est décroissante.",
+              "pourquoi": "$-u_n^2$ est strictement négatif et le dénominateur strictement positif : le quotient est strictement négatif."
+            },
+            {
+              "texte": "**3.** La suite $(u_n)$ est décroissante et minorée par $0$. **Conclusion** : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$, et $\\ell \\geqslant 0$ par passage à la limite.",
+              "pourquoi": "La question 1 donne $u_n > 0$, donc $u_n \\geqslant 0$ : $0$ est un minorant constant. La limite vérifie seulement $\\ell \\geqslant 0$, car une inégalité stricte devient large à la limite."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-056",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-07", "bo-m-suites-06"],
+          "question": {
+            "enonce": "Dans lequel de ces cas peux-tu affirmer que la suite $(u_n)$ converge ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$(u_n)$ est croissante et $u_n \\leqslant n^2$ pour tout $n$.",
+                "$(u_n)$ est décroissante et $u_n \\geqslant 0$ pour tout $n$.",
+                "$(u_n)$ est croissante et $u_n \\geqslant 1$ pour tout $n$.",
+                "$(u_n)$ est décroissante et $u_n \\leqslant 3$ pour tout $n$."
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "$n^2$ dépend de $n$ : ce n'est pas un majorant. Par exemple, $u_n = n$ est croissante, vérifie $u_n \\leqslant n^2$, et tend vers $+\\infty$.",
+                null,
+                "Une suite croissante est toujours minorée par son premier terme ; il faudrait un **majorant**. Par exemple, $u_n = n + 1$ convient et tend vers $+\\infty$.",
+                "Une suite décroissante est toujours majorée par son premier terme ; il faudrait un **minorant**. Par exemple, $u_n = 3 - n$ convient et tend vers $-\\infty$."
+              ]
+            },
+            "explication": "Le théorème demande : croissante **et majorée**, ou décroissante **et minorée**, par un réel constant. Seul le cas « décroissante et minorée par $0$ » convient."
+          }
+        },
+        {
+          "id": "l-limites-suites-057",
+          "type": "exemple",
+          "titre": "Une somme qui converge sans qu'on sache la calculer",
+          "capacites": ["bo-m-suites-07", "bo-m-suites-06", "bo-m-logique-14"],
+          "enonce": "Pour tout entier $n \\geqslant 1$, on pose $S_n = 1 + \\dfrac{1}{2^2} + \\dfrac{1}{3^2} + \\dots + \\dfrac{1}{n^2}$. Ainsi $S_1 = 1$ et, pour tout $n \\geqslant 1$, $S_{n+1} = S_n + \\dfrac{1}{(n+1)^2}$.\n\n**1.** Montrer que la suite $(S_n)$ est croissante.\n\n**2.** Démontrer par récurrence que, pour tout entier $n \\geqslant 1$, $S_n \\leqslant 2 - \\dfrac{1}{n}$.\n\n**3.** En déduire que la suite $(S_n)$ converge.",
+          "etapes": [
+            {
+              "texte": "**1.** Pour tout $n \\geqslant 1$, $S_{n+1} - S_n = \\dfrac{1}{(n+1)^2} > 0$ : la suite $(S_n)$ est croissante."
+            },
+            {
+              "texte": "**2.** Pour tout entier $n \\geqslant 1$, on note $P(n)$ : « $S_n \\leqslant 2 - \\dfrac{1}{n}$ ».\n\n**Initialisation** : $S_1 = 1$ et $2 - \\dfrac{1}{1} = 1$, donc $P(1)$ est vraie."
+            },
+            {
+              "texte": "**Hérédité** : soit $n \\geqslant 1$ tel que $S_n \\leqslant 2 - \\dfrac{1}{n}$. Alors $S_{n+1} = S_n + \\dfrac{1}{(n+1)^2} \\leqslant 2 - \\dfrac{1}{n} + \\dfrac{1}{(n+1)^2}$. Il suffit donc de prouver que $-\\dfrac{1}{n} + \\dfrac{1}{(n+1)^2} \\leqslant -\\dfrac{1}{n+1}$.",
+              "pourquoi": "On veut obtenir $S_{n+1} \\leqslant 2 - \\dfrac{1}{n+1}$. On compare donc ce qui s'ajoute à $2$ dans les deux membres."
+            },
+            {
+              "texte": "Or $\\dfrac{1}{n} - \\dfrac{1}{n+1} = \\dfrac{(n+1) - n}{n(n+1)} = \\dfrac{1}{n(n+1)}$. Et $n(n+1) \\leqslant (n+1)^2$, donc $\\dfrac{1}{(n+1)^2} \\leqslant \\dfrac{1}{n(n+1)} = \\dfrac{1}{n} - \\dfrac{1}{n+1}$.",
+              "pourquoi": "$(n+1)^2 = n(n+1) + (n+1)$, qui est plus grand que $n(n+1)$. De deux nombres strictement positifs, le plus grand a le plus petit inverse."
+            },
+            {
+              "texte": "On retranche $\\dfrac{1}{n}$ aux deux membres : $-\\dfrac{1}{n} + \\dfrac{1}{(n+1)^2} \\leqslant -\\dfrac{1}{n+1}$. Donc $S_{n+1} \\leqslant 2 - \\dfrac{1}{n+1}$ : $P(n+1)$ est vraie. D'après le principe de récurrence, $S_n \\leqslant 2 - \\dfrac{1}{n}$ pour tout entier $n \\geqslant 1$."
+            },
+            {
+              "texte": "**3.** Pour tout $n \\geqslant 1$, $S_n \\leqslant 2 - \\dfrac{1}{n} \\leqslant 2$ : la suite est majorée par $2$. **Conclusion** : la suite $(S_n)$ est croissante et majorée par $2$ ; d'après le théorème de convergence monotone, elle converge.",
+              "pourquoi": "$2 - \\dfrac{1}{n}$ dépend de $n$ : ce n'est pas un majorant. On le remplace par $2$, qui est constant. On sait que la limite existe et qu'elle est au plus $2$, sans connaître sa valeur."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-suites-058",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-07", "bo-m-suites-06"],
+          "question": {
+            "enonce": "Une suite $(u_n)$ est croissante, mais elle ne converge pas. Que peux-tu affirmer ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$(u_n)$ n'a pas de limite.",
+                "$(u_n)$ tend vers $+\\infty$.",
+                "$(u_n)$ tend vers $-\\infty$.",
+                "$(u_n)$ est majorée."
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Une suite croissante a toujours une limite : finie si elle est majorée, $+\\infty$ sinon.",
+                null,
+                "Une suite croissante est minorée par son premier terme $u_0$ : elle ne peut pas tendre vers $-\\infty$.",
+                "Si elle était majorée, elle serait croissante et majorée, donc convergente : c'est contraire à l'énoncé."
+              ]
+            },
+            "explication": "Si $(u_n)$ était majorée, elle convergerait, puisqu'elle est croissante. Elle n'est donc pas majorée. Croissante et non majorée : elle tend vers $+\\infty$."
+          }
+        },
+        {
+          "id": "l-limites-suites-059",
+          "type": "piege",
+          "titre": "Le majorant n'est pas la limite",
+          "capacites": ["bo-m-suites-06"],
+          "faux": "La suite $(u_n)$ est croissante et majorée par $5$, donc elle converge vers $5$.",
+          "juste": "La suite $(u_n)$ est croissante et majorée par $5$, donc elle converge vers un réel $\\ell \\leqslant 5$. Par exemple, $u_n = 2 - \\dfrac{1}{n+1}$ est croissante, majorée par $5$, et converge vers $2$.",
+          "explication": "Un majorant n'est pas unique : si $5$ en est un, $6$ et $100$ aussi. La limite ne peut pas être égale à tous ! Le théorème dit seulement qu'une limite existe ; pour la trouver, il faut un autre argument."
+        },
+        {
+          "id": "l-limites-suites-060",
+          "type": "complement",
+          "titre": "Pour aller plus loin : suites adjacentes",
+          "capacites": ["bo-m-suites-16"],
+          "texte": "Deux suites $(u_n)$ et $(v_n)$ sont **adjacentes** si $(u_n)$ est croissante, $(v_n)$ décroissante, et $\\lim\\limits_{n \\to +\\infty} (v_n - u_n) = 0$. Deux suites adjacentes convergent vers la **même** limite $\\ell$, et $u_n \\leqslant \\ell \\leqslant v_n$ pour tout $n$.\n\nPar exemple, soit $u_n$ et $v_n$ les valeurs approchées de $\\sqrt{2}$ à $10^{-n}$ près, par défaut (juste en dessous) et par excès (juste au-dessus) : $u_0 = 1$, $v_0 = 2$, $u_1 = 1{,}4$, $v_1 = 1{,}5$, $u_2 = 1{,}41$, $v_2 = 1{,}42$… Alors $v_n - u_n = 10^{-n}$ tend vers $0$ : les deux suites encadrent $\\sqrt{2}$ de plus en plus finement."
+        },
+        {
+          "id": "l-limites-suites-061",
+          "type": "retenir",
+          "texte": "Croissante et majorée, ou décroissante et minorée, par un réel constant : la suite converge. Le théorème ne donne pas la limite, seulement un encadrement par passage à la limite. Croissante et non majorée : elle tend vers $+\\infty$."
+        }
+      ]
+    },
+    {
+      "notion": "n-limites-suites-seuils",
+      "blocs": [
+        {
+          "id": "l-limites-suites-062",
+          "type": "idee",
+          "texte": "Les abonnés d'une plateforme se rapprochent de $3\\,000$. À partir de quelle année dépasseront-ils $2\\,200$ ? La limite assure que ce moment arrive, mais ne dit pas quand. On teste alors les termes un par un, jusqu'au premier qui dépasse : c'est une **recherche de seuil**, qu'une boucle Python fait en un instant. Le même principe donne des valeurs approchées de nombres comme $\\sqrt{2}$, de plus en plus précises."
+        },
+        {
+          "id": "l-limites-suites-063",
+          "type": "rappel",
+          "titre": "Rappel : la boucle while",
+          "texte": "En Python, la boucle while (« tant que ») répète un bloc d'instructions **tant qu'une condition est vraie** ; elle s'arrête dès que la condition devient fausse. Le bloc répété est décalé vers la droite. Pour calculer les termes d'une suite définie par récurrence, on garde le terme courant dans une variable u, et on la remplace à chaque tour par le terme suivant.",
+          "lien": "l-recurrence-suites-036"
+        },
+        {
+          "id": "l-limites-suites-064",
+          "type": "methode",
+          "titre": "Comment chercher un seuil avec une boucle while ?",
+          "capacites": ["bo-m-suites-14"],
+          "etapes": [
+            "Repère le but : le premier rang $n$ tel que $u_n > s$, ou tel que $u_n < s$. Dans le programme ci-dessous, $u_0 = 20$, $u_{n+1} = 0{,}8u_n$, et le but est $u_n < s$.",
+            "Initialise deux variables : n à $0$, et u au premier terme $u_0$.",
+            "Écris la condition de la boucle while : c'est le **contraire** du but. Pour le but $u_n < s$, la boucle tourne tant que $u \\geqslant s$ ; pour le but $u_n > s$, tant que $u \\leqslant s$.",
+            "Dans la boucle, remplace u par le terme suivant grâce à la relation de récurrence, puis augmente n de $1$ : les deux variables avancent ensemble.",
+            "Après la boucle, renvoie n : c'est le premier rang où le but est atteint. Ici, l'appel seuil(1) renvoie $14$, car $u_{13} \\approx 1{,}10$ et $u_{14} \\approx 0{,}88$.",
+            "Avant de lancer le programme, vérifie avec la limite que le seuil sera atteint : sinon, la boucle ne s'arrête jamais."
+          ],
+          "exemple": "l-limites-suites-065",
+          "code": {
+            "langage": "python",
+            "source": "def seuil(s):\n    n = 0\n    u = 20               # premier terme u_0\n    while u >= s:        # contraire du but « u < s »\n        u = 0.8 * u      # terme suivant : u_(n+1) = 0,8 × u_n\n        n = n + 1\n    return n\n\nprint(seuil(1))          # affiche 14"
+          }
+        },
+        {
+          "id": "l-limites-suites-065",
+          "type": "exemple",
+          "titre": "Les abonnés d'une plateforme",
+          "capacites": ["bo-m-suites-14"],
+          "enonce": "Une plateforme compte $1\\,000$ abonnés en 2025. Chaque année, $10\\,\\%$ des abonnés se désabonnent, puis $300$ nouveaux abonnés s'inscrivent. On note $u_n$ le nombre d'abonnés en l'année $2025 + n$. Ainsi $u_0 = 1\\,000$ et, pour tout entier naturel $n$, $u_{n+1} = 0{,}9u_n + 300$. On admet que, pour tout entier naturel $n$, $u_n = 3\\,000 - 2\\,000 \\times 0{,}9^n$.\n\n**1.** Justifier qu'à partir d'une certaine année, le nombre d'abonnés dépasse $2\\,200$.\n\n**2.** Écrire un programme qui permet de déterminer en quelle année le nombre d'abonnés dépassera $2\\,200$.\n\n**3.** Le programme renvoie $9$. Interpréter ce résultat.",
+          "etapes": [
+            {
+              "texte": "**1.** $-1 < 0{,}9 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}9^n = 0$. Par produit puis somme, $\\lim\\limits_{n \\to +\\infty} u_n = 3\\,000$."
+            },
+            {
+              "texte": "L'intervalle ouvert $]2\\,200\\,;\\,3\\,800[$ contient $3\\,000$. Par définition de la convergence, il contient tous les termes $u_n$ à partir d'un certain rang : à partir de ce rang, $u_n > 2\\,200$.",
+              "pourquoi": "Tout intervalle ouvert qui contient $3\\,000$ et dont la borne de gauche est $2\\,200$ convient. C'est aussi ce qui garantit que la boucle du programme s'arrête."
+            },
+            {
+              "texte": "**2.** On cherche le premier rang $n$ tel que $u_n > 2\\,200$. La boucle tourne donc tant que $u_n \\leqslant 2\\,200$ : c'est le programme ci-dessous.",
+              "pourquoi": "La condition du while est le contraire du but. Le programme utilise la relation de récurrence ; la formule explicite donnerait le même résultat."
+            },
+            {
+              "texte": "**3.** Le programme renvoie $9$ : $u_9$ est le premier terme qui dépasse $2\\,200$. Contrôle : $u_8 = 3\\,000 - 2\\,000 \\times 0{,}9^8 \\approx 2\\,139$ et $u_9 = 3\\,000 - 2\\,000 \\times 0{,}9^9 \\approx 2\\,225$.",
+              "pourquoi": "À la calculatrice, $0{,}9^8 \\approx 0{,}430\\,5$ et $0{,}9^9 \\approx 0{,}387\\,4$. On peut aussi lire ces valeurs dans un tableau de valeurs de la suite."
+            },
+            {
+              "texte": "**Conclusion** : le rang $9$ correspond à l'année $2025 + 9 = 2034$. C'est en 2034 que le nombre d'abonnés dépassera $2\\,200$ pour la première fois."
+            }
+          ],
+          "code": {
+            "langage": "python",
+            "source": "def annee_seuil():\n    n = 0\n    u = 1000             # abonnés en 2025\n    while u <= 2200:     # contraire du but « u > 2200 »\n        u = 0.9 * u + 300\n        n = n + 1\n    return n\n\nprint(annee_seuil())     # affiche 9"
+          }
+        },
+        {
+          "id": "l-limites-suites-066",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-14"],
+          "question": {
+            "enonce": "Une suite $(u_n)$ décroît vers $0$, avec $u_0 = 5$. Tu cherches le premier rang $n$ tel que $u_n < 0{,}01$. Quelle condition écris-tu après while ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$u < 0{,}01$",
+                "$u \\geqslant 0{,}01$",
+                "$u > 0{,}01$",
+                "$u \\leqslant 0{,}01$"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "C'est le but, pas la condition de la boucle. Comme $u_0 = 5$, la condition est fausse dès le départ : la boucle ne tourne pas et le programme renvoie $0$.",
+                null,
+                "Presque : si un terme vaut exactement $0{,}01$, la boucle s'arrête alors que $0{,}01 < 0{,}01$ est faux. Le rang renvoyé serait trop petit.",
+                "Comme $u_0 = 5$, la condition est fausse dès le départ : la boucle ne tourne pas et le programme renvoie $0$."
+              ]
+            },
+            "explication": "La boucle tourne **tant que** le but n'est pas atteint, c'est-à-dire tant que $u \\geqslant 0{,}01$. Elle s'arrête au premier rang où $u_n < 0{,}01$ : la condition du while est le contraire du but."
+          }
+        },
+        {
+          "id": "l-limites-suites-067",
+          "type": "code",
+          "titre": "Une valeur approchée de $\\sqrt{2}$",
+          "capacites": ["bo-m-suites-15"],
+          "code": {
+            "langage": "python",
+            "source": "def approx_racine2(p):\n    pas = 10 ** (-p)\n    x = 1                          # 1 × 1 = 1 <= 2 : on part de 1\n    while (x + pas) ** 2 <= 2:     # tant que le nombre suivant convient\n        x = x + pas\n    return round(x, p)             # arrondi d'affichage à p décimales\n\nfor p in range(1, 5):\n    print(p, approx_racine2(p))"
+          },
+          "texte": "La fonction part de $x = 1$, dont le carré est inférieur à $2$. Elle avance par pas de $10^{-p}$ tant que le nombre suivant a encore un carré inférieur ou égal à $2$. À la sortie, $x^2 \\leqslant 2 < \\left(x + 10^{-p}\\right)^2$, donc $x \\leqslant \\sqrt{2} < x + 10^{-p}$ : $x$ est la **valeur approchée de $\\sqrt{2}$ à $10^{-p}$ près par défaut**. round(x, p) corrige l'affichage, car Python calcule les décimaux de façon approchée.\n\nPour $p$ allant de $1$ à $4$, le programme affiche les valeurs $1{,}4$ ; $1{,}41$ ; $1{,}414$ ; $1{,}4142$. Comme $\\sqrt{2} - 10^{-p} < x \\leqslant \\sqrt{2}$, ces valeurs convergent vers $\\sqrt{2}$ quand $p$ augmente, d'après le théorème des gendarmes."
+        },
+        {
+          "id": "l-limites-suites-068",
+          "type": "verifie",
+          "capacites": ["bo-m-suites-15"],
+          "question": {
+            "enonce": "On reprend la fonction approx_racine2. Quelle valeur renvoie l'appel approx_racine2(2) ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 1.41,
+              "tolerance": 0
+            },
+            "explication": "Avec $p = 2$, le pas vaut $0{,}01$. On a $1{,}41^2 = 1{,}988\\,1 \\leqslant 2$ et $1{,}42^2 = 2{,}016\\,4 > 2$ : la boucle s'arrête à $x = 1{,}41$, la valeur approchée de $\\sqrt{2}$ à $10^{-2}$ près par défaut."
+          }
+        },
+        {
+          "id": "l-limites-suites-069",
+          "type": "piege",
+          "titre": "Un seuil qui n'est jamais atteint",
+          "capacites": ["bo-m-suites-14"],
+          "faux": "Pour savoir quand les abonnés de l'exemple dépasseront $3\\,500$, on lance le même programme en remplaçant $2\\,200$ par $3\\,500$.",
+          "juste": "Pour tout $n$, $u_n = 3\\,000 - 2\\,000 \\times 0{,}9^n < 3\\,000$ : le nombre d'abonnés ne dépassera jamais $3\\,500$. La condition $u \\leqslant 3\\,500$ reste toujours vraie, et la boucle ne s'arrête jamais.",
+          "explication": "Avant de lancer une recherche de seuil, vérifie que le seuil sera atteint. Ici, la limite $3\\,000$ garantit que tout seuil inférieur à $3\\,000$ finit par être dépassé. Mais les termes restent sous $3\\,000$ : un seuil plus grand ne l'est jamais."
+        },
+        {
+          "id": "l-limites-suites-070",
+          "type": "complement",
+          "titre": "Pour aller plus loin : la méthode de Héron",
+          "capacites": ["bo-m-suites-18"],
+          "texte": "Pour approcher $\\sqrt{2}$ beaucoup plus vite, on utilise la suite définie par $u_0 = 2$ et $u_{n+1} = \\dfrac{1}{2}\\left(u_n + \\dfrac{2}{u_n}\\right)$. On obtient $u_1 = 1{,}5$, $u_2 = \\dfrac{17}{12} \\approx 1{,}416\\,7$ et $u_3 = \\dfrac{577}{408} \\approx 1{,}414\\,216$, alors que $\\sqrt{2} \\approx 1{,}414\\,214$.\n\nPour l'étudier, on vérifie que $u_{n+1} - \\sqrt{2} = \\dfrac{\\left(u_n - \\sqrt{2}\\right)^2}{2u_n}$. On en déduit, pour tout $n$, $0 \\leqslant u_{n+1} - \\sqrt{2} \\leqslant \\dfrac{1}{2}\\left(u_n - \\sqrt{2}\\right)$ : l'écart à $\\sqrt{2}$ est au moins divisé par $2$ à chaque étape. Donc $0 \\leqslant u_n - \\sqrt{2} \\leqslant \\dfrac{2 - \\sqrt{2}}{2^n}$, et la suite converge vers $\\sqrt{2}$ d'après le théorème des gendarmes."
+        },
+        {
+          "id": "l-limites-suites-071",
+          "type": "retenir",
+          "texte": "Pour trouver le premier rang où $u_n$ dépasse un seuil $s$ : une boucle « tant que $u \\leqslant s$ », qui calcule le terme suivant et augmente $n$ de $1$, puis on renvoie $n$. La condition de la boucle est le contraire du but ; la limite garantit qu'elle s'arrête."
+        }
+      ]
+    }
+  ]
+}

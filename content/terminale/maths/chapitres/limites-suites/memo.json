@@ -1,0 +1,165 @@
+[
+  {
+    "id": "m-limites-suites-convergence-monotone",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-monotone-bornee",
+    "genre": "propriete",
+    "titre": "Suite croissante majorée, décroissante minorée",
+    "enonce": "- Toute suite croissante et majorée converge.\n- Toute suite décroissante et minorée converge.\n\nC'est le théorème de convergence monotone. Il prouve qu'une limite $\\ell$ existe, sans donner sa valeur. Si $u_n \\leqslant M$ pour tout $n$, alors $\\ell \\leqslant M$.",
+    "conditions": "Le majorant (ou le minorant) est un réel fixé, qui ne dépend pas de $n$. Ce n'est pas forcément la limite.",
+    "exemple": "$u_0 = 2$ et $u_{n+1} = \\dfrac{u_n}{1 + u_n}$ : la suite $(u_n)$ est décroissante et minorée par $0$, donc elle converge vers un réel $\\ell \\geqslant 0$.",
+    "simplifie": {
+      "coeur": "Croissante et majorée $\\Rightarrow$ converge. Décroissante et minorée $\\Rightarrow$ converge. La limite n'est pas donnée.",
+      "moyenMemo": "Une balle qui monte sous un plafond finit par se stabiliser, pas forcément contre le plafond.",
+      "motCle": "convergence-monotone",
+      "image": "Des points qui montent de moins en moins sous une ligne horizontale, sans jamais la traverser."
+    }
+  },
+  {
+    "id": "m-limites-suites-justifier-convergence",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-monotone-bornee",
+    "genre": "methode",
+    "titre": "Établir qu'une suite converge, ou qu'elle tend vers $+\\infty$",
+    "enonce": "- Formule explicite : limites de référence, opérations, puissances $q^n$, comparaison ou gendarmes.\n- Suite définie par récurrence : sens de variation, puis majorant ou minorant constant (souvent par récurrence), puis théorème de convergence monotone.\n- Croissante et non majorée, ou minorée par une suite qui tend vers $+\\infty$ : la limite est $+\\infty$.",
+    "conditions": "Sur la copie, cite les deux hypothèses avant le nom du théorème.",
+    "exemple": "« La suite $(u_n)$ est croissante et majorée par $1$ ; d'après le théorème de convergence monotone, elle converge. »",
+    "simplifie": {
+      "coeur": "Sens de variation + borne constante $\\Rightarrow$ converge ; croissante non majorée $\\Rightarrow$ $+\\infty$",
+      "moyenMemo": "D'abord le sens, ensuite la borne, enfin le théorème.",
+      "motCle": "justifier-convergence"
+    }
+  },
+  {
+    "id": "m-limites-suites-definition-limite",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-definitions",
+    "genre": "definition",
+    "titre": "Tendre vers $+\\infty$, converger vers $\\ell$",
+    "enonce": "- $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$ : tout intervalle $[A\\,;\\,+\\infty[$ contient toutes les valeurs $u_n$ à partir d'un certain rang.\n- $\\lim\\limits_{n \\to +\\infty} u_n = \\ell$ : tout intervalle ouvert contenant $\\ell$ contient toutes les valeurs $u_n$ à partir d'un certain rang.\n- Une suite croissante et non majorée tend vers $+\\infty$.",
+    "conditions": "« À partir d'un certain rang » : il existe un entier $N$ tel que c'est vrai pour tout $n \\geqslant N$. Une suite qui ne converge pas est divergente.",
+    "exemple": "$\\lim\\limits_{n \\to +\\infty} n^2 = +\\infty$ : pour $A = 10\\,000$, tous les termes à partir du rang $100$ sont dans $[A\\,;\\,+\\infty[$.",
+    "simplifie": {
+      "coeur": "$+\\infty$ : finit par dépasser tout nombre $A$. Limite $\\ell$ : finit par rester aussi près de $\\ell$ qu'on veut.",
+      "moyenMemo": "À partir d'un certain rang, plus aucun terme ne sort de l'intervalle.",
+      "motCle": "definition-limite"
+    }
+  },
+  {
+    "id": "m-limites-suites-limites-reference",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-definitions",
+    "genre": "formule",
+    "titre": "Limites de référence",
+    "enonce": "- $n$, $n^2$, $n^3$ et $\\sqrt{n}$ tendent vers $+\\infty$.\n- $\\dfrac{1}{n}$, $\\dfrac{1}{n^2}$, $\\dfrac{1}{n^3}$ et $\\dfrac{1}{\\sqrt{n}}$ convergent vers $0$.",
+    "conditions": "Pour les quotients, $n \\geqslant 1$.",
+    "exemple": "$\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$ : à partir du rang $101$, tous les termes sont dans $]-0{,}01\\,;\\,0{,}01[$.",
+    "simplifie": {
+      "coeur": "$n$, $n^2$, $n^3$, $\\sqrt{n}$ $\\to +\\infty$ ; leurs inverses $\\to 0$",
+      "motCle": "limites-reference"
+    }
+  },
+  {
+    "id": "m-limites-suites-formes-indeterminees",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-operations",
+    "genre": "propriete",
+    "titre": "Les quatre formes indéterminées",
+    "enonce": "Les tableaux d'opérations donnent la limite d'une somme, d'un produit ou d'un quotient, sauf dans quatre cas : $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$ et $\\dfrac{0}{0}$. Dans ces cas, on transforme l'écriture avant de conclure.",
+    "conditions": "« $\\dfrac{\\ell}{0}$ » avec $\\ell \\neq 0$ n'est pas indéterminé : la limite est infinie, et son signe suit la règle des signes.",
+    "exemple": "$n^2 - n$ est de la forme « $+\\infty - \\infty$ » ; $n^2 - n = n^2\\left(1 - \\dfrac{1}{n}\\right)$ tend vers $+\\infty$.",
+    "simplifie": {
+      "coeur": "FI : $\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$, $\\dfrac{0}{0}$",
+      "moyenMemo": "Une forme indéterminée ne vaut ni $0$ ni $1$ : on factorise.",
+      "motCle": "formes-indeterminees"
+    }
+  },
+  {
+    "id": "m-limites-suites-terme-dominant",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-operations",
+    "genre": "methode",
+    "titre": "Lever une forme indéterminée",
+    "enonce": "Mettre en facteur le terme de plus haut degré, au numérateur et au dénominateur pour un quotient. Simplifier, puis appliquer les tableaux d'opérations.",
+    "exemple": "$\\dfrac{3n}{n + 2} = \\dfrac{3}{1 + \\frac{2}{n}}$ pour $n \\geqslant 1$, qui tend vers $\\dfrac{3}{1} = 3$.",
+    "simplifie": {
+      "coeur": "Factoriser par le terme dominant, simplifier, conclure.",
+      "moyenMemo": "Le terme le plus fort impose sa loi.",
+      "motCle": "terme-dominant"
+    }
+  },
+  {
+    "id": "m-limites-suites-comparaison",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-comparaison",
+    "genre": "propriete",
+    "titre": "Théorème de comparaison, passage à la limite",
+    "enonce": "Si $u_n \\leqslant v_n$ à partir d'un certain rang :\n\n- si $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$, alors $\\lim\\limits_{n \\to +\\infty} v_n = +\\infty$ ;\n- si $\\lim\\limits_{n \\to +\\infty} v_n = -\\infty$, alors $\\lim\\limits_{n \\to +\\infty} u_n = -\\infty$ ;\n- si les deux suites convergent, vers $\\ell$ et $\\ell'$, alors $\\ell \\leqslant \\ell'$.",
+    "conditions": "Pour $+\\infty$, c'est la suite du dessous qui tend vers $+\\infty$. Une inégalité stricte devient large à la limite.",
+    "exemple": "$u_n \\geqslant n + 1$ pour tout $n$, et $n + 1$ tend vers $+\\infty$ : donc $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$.",
+    "simplifie": {
+      "coeur": "$u_n \\leqslant v_n$ et $u_n \\to +\\infty$ $\\Rightarrow$ $v_n \\to +\\infty$",
+      "moyenMemo": "La suite du dessous qui monte pousse celle du dessus.",
+      "motCle": "comparaison"
+    }
+  },
+  {
+    "id": "m-limites-suites-gendarmes",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-comparaison",
+    "genre": "propriete",
+    "titre": "Théorème des gendarmes",
+    "enonce": "Si $v_n \\leqslant u_n \\leqslant w_n$ à partir d'un certain rang, et si $(v_n)$ et $(w_n)$ convergent vers le même réel $\\ell$, alors $(u_n)$ converge vers $\\ell$.",
+    "conditions": "Les deux suites qui encadrent ont la même limite, finie.",
+    "exemple": "$1 - \\dfrac{1}{n} \\leqslant 1 + \\dfrac{(-1)^n}{n} \\leqslant 1 + \\dfrac{1}{n}$, donc $\\lim\\limits_{n \\to +\\infty} \\left(1 + \\dfrac{(-1)^n}{n}\\right) = 1$.",
+    "simplifie": {
+      "coeur": "$v_n \\leqslant u_n \\leqslant w_n$, $v_n \\to \\ell$ et $w_n \\to \\ell$ $\\Rightarrow$ $u_n \\to \\ell$",
+      "moyenMemo": "Deux gendarmes qui vont au même endroit y emmènent le suspect.",
+      "motCle": "gendarmes"
+    }
+  },
+  {
+    "id": "m-limites-suites-puissance-q",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-geometrique",
+    "genre": "formule",
+    "titre": "Limite de $q^n$",
+    "enonce": "| valeur de $q$ | $q \\leqslant -1$ | $-1 < q < 1$ | $q = 1$ | $q > 1$ |\n|---|---|---|---|---|\n| $\\lim\\limits_{n \\to +\\infty} q^n$ | pas de limite | $0$ | $1$ | $+\\infty$ |",
+    "conditions": "$q$ est un réel fixé. Pour la limite $0$, il faut $-1 < q < 1$ : $q < 1$ ne suffit pas.",
+    "exemple": "$\\lim\\limits_{n \\to +\\infty} 0{,}9^n = 0$ et $\\lim\\limits_{n \\to +\\infty} 1{,}01^n = +\\infty$ ; la suite $\\left((-2)^n\\right)$ n'a pas de limite.",
+    "simplifie": {
+      "coeur": "$-1 < q < 1$ : $q^n \\to 0$ ; $q > 1$ : $q^n \\to +\\infty$ ; $q \\leqslant -1$ : pas de limite",
+      "moyenMemo": "Entre $-1$ et $1$, ça s'écrase ; au-delà de $1$, ça explose.",
+      "motCle": "puissance-q"
+    }
+  },
+  {
+    "id": "m-limites-suites-bernoulli",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-geometrique",
+    "genre": "formule",
+    "titre": "Inégalité de Bernoulli",
+    "enonce": "Pour tout réel $a > 0$ et tout entier naturel $n$ : $(1 + a)^n \\geqslant 1 + na$. Elle se démontre par récurrence, et prouve que $q^n$ tend vers $+\\infty$ quand $q > 1$.",
+    "conditions": "$a > 0$. Pour $q > 1$, on l'applique avec $a = q - 1$.",
+    "exemple": "$1{,}1^n \\geqslant 1 + 0{,}1n$ ; comme $1 + 0{,}1n$ tend vers $+\\infty$, $1{,}1^n$ aussi, par comparaison.",
+    "simplifie": {
+      "coeur": "$(1 + a)^n \\geqslant 1 + na$ pour $a > 0$",
+      "motCle": "bernoulli"
+    }
+  },
+  {
+    "id": "m-limites-suites-seuil",
+    "chapitre": "limites-suites",
+    "notion": "n-limites-suites-seuils",
+    "genre": "methode",
+    "titre": "Algorithme de seuil",
+    "enonce": "Pour trouver le premier rang $n$ tel que $u_n > s$ :\n\n- au départ, $n$ vaut $0$ et $u$ vaut $u_0$ ;\n- tant que $u \\leqslant s$ : remplacer $u$ par le terme suivant, puis augmenter $n$ de $1$ ;\n- renvoyer $n$.",
+    "conditions": "La condition de la boucle est le contraire du but. Vérifie d'abord, avec la limite, que le seuil sera atteint : sinon la boucle ne s'arrête jamais.",
+    "exemple": "Abonnés : $u_0 = 1\\,000$ et $u_{n+1} = 0{,}9u_n + 300$. La boucle « tant que $u \\leqslant 2\\,200$ » s'arrête à $n = 9$.",
+    "simplifie": {
+      "coeur": "Tant que le but n'est pas atteint : terme suivant et $n \\leftarrow n + 1$ ; puis renvoyer $n$.",
+      "moyenMemo": "La boucle tourne tant que le but n'est pas atteint.",
+      "motCle": "seuil"
+    }
+  }
+]
