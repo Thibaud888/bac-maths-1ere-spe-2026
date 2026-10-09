@@ -492,6 +492,12 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `validateDOMNesting` (`<a>` dans `<a>`) relevé par `controle-rendu.mjs maths denombrement` :
   `SourceDeLExercice` (`src/components/terminale/FicheExercice.tsx`) met le lien de la source
   dans la carte cliquable. DoD : plus d'avertissement, `verify.mjs` OK.
+- [ ] (P2) Une page de cours peut se figer si une question contient du code avec « ** » —
+  relevé par la relecture de Limites de suites (bloc 068, corrigé côté contenu) : un `**` sans
+  pendant dans un texte (puissance Python hors du champ `code`) fait boucler sans fin
+  `tokenize` (`src/components/math/TextWithMath.tsx`, l. 40-62). DoD : `tokenize` traite un
+  `**` isolé comme du texte ; `controles-mecaniques.mjs` signale un texte au nombre impair de
+  `**` ; test ajouté ; `verify.mjs` OK.
 - [x] (P1) Une fiche de lecture par chapitre, pour ne plus relire tout le programme à chaque
   étape — `scripts/contexte-chapitre.mjs <matiere> <slug> [--role …]` : lignes du programme
   du chapitre (+ celles qu'il peut citer) et ordre des chapitres, formulations d'annales
@@ -567,6 +573,19 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     termes de l'exemple `l-recurrence-suites-022` placés sur le segment [0 ; 1] (figure SVG
     sous `public/figures/terminale/maths/recurrence-suites/`), ou un widget « escalier » quand
     les figures animées existeront.
+  - [x] Limites de suites : le cours — 6 notions (priorités mesurées sur 103 sujets : suite
+    monotone et bornée incontournable, 92 % ; définitions, opérations, comparaison, suites
+    géométriques et seuils fréquents), 72 blocs, 11 cartes de mémo, une figure (bande de
+    convergence) ; relecteur PASS au 2e tour, élève-testeur (1 bloquant corrigé), 3e relecture
+    sur les blocs modifiés : un seul défaut d'une ligne (068), corrigé et contrôlé au rendu ;
+    couverture « cours » sans écart.
+  - [ ] Limites de suites : les exercices — `/tle-chapitre maths limites-suites exercices`, dans
+    une session neuve. Interdits relevés par l'architecte : pas de ℓ = f(ℓ) (continuité), pas
+    de seuil par le calcul (ln), pas de croissances comparées ni d'exponentielle, pas de ln(2).
+  - [ ] Une animation pour voir une suite entrer dans une bande autour de sa limite — souhait de
+    l'auteur du cours (notion « définitions », bloc `l-limites-suites-010`) : un curseur pour
+    la largeur de la bande, qui affiche le rang à partir duquel tous les termes y restent.
+    Quand les figures animées existeront.
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
