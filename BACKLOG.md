@@ -740,3 +740,12 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   sciences de l'ingénieur en ont aussi une ; c'est la seule de ses épreuves.
   co-specialite-physique-chimie · comment (n° 17, I).
   Fait le 2026-09-28. `node scripts/verify.mjs` OK, 222 tests. PR : #92.
+
+## Outillage (2026-10-09)
+
+- [x] Claude propose de changer de modèle ou d'effort au premier message — si le choix de départ
+  paraît mal adapté à la demande, une question en français te laisse accepter ou garder.
+  Actif dans les sessions cloud de ce repo une fois la PR mergée (`main`).
+  Mod `.claude/mods/choix-modele/`, déclaré dans `.claude/settings.json`
+  (`extraKnownMarketplaces` + `enabledPlugins`) et `.claude-plugin/marketplace.json` ;
+  `claude plugin validate` et `claude plugin test` OK. Non vérifié en conditions réelles.

@@ -23,6 +23,8 @@ Vite + React 18 + TS strict, KaTeX, Zustand, contenu 100 % JSON validé par Ajv.
 ```
 CLAUDE.md               # LA référence : conventions, workflow 2 passes, anti-patterns
 .claude/
+  mods/choix-modele/    # mod Claude Code : au 1er prompt, propose de changer modèle/effort
+                        # (activé via settings.json + .claude-plugin/marketplace.json)
   skills/
     bac-maths-premiere-spe-2026/SKILL.md  # programme officiel maths (source de vérité)
     bac-francais-premiere-2026/SKILL.md   # cadre EAF français (source de vérité)
