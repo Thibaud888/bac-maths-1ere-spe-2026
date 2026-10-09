@@ -563,7 +563,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     planchers atteints ; relecteur PASS au 1er tour puis au 2e après le test « élève »
     (verdict CLAIR, aucun bloquant) ; couverture « exercices » sans écart. Livré dans la même
     PR que le cours (décision de Thibaud du 2026-10-01). PR : #104.
-  - [ ] Quand le chapitre « Limites de suites » est écrit, remettre dans le type bac de
+  - [ ] Quand les exercices de « Limites de suites » sont écrits (le cours l'est, PR #114), remettre dans le type bac de
     Récurrence et suites les questions retirées des sujets adaptés — limites, convergence et
     seuils (voir les notes `adaptation` de
     `content/terminale/maths/chapitres/recurrence-suites/type-bac.json` et des exercices
@@ -578,7 +578,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     géométriques et seuils fréquents), 72 blocs, 11 cartes de mémo, une figure (bande de
     convergence) ; relecteur PASS au 2e tour, élève-testeur (1 bloquant corrigé), 3e relecture
     sur les blocs modifiés : un seul défaut d'une ligne (068), corrigé et contrôlé au rendu ;
-    couverture « cours » sans écart.
+    couverture « cours » sans écart. PR : #114.
   - [ ] Limites de suites : les exercices — `/tle-chapitre maths limites-suites exercices`, dans
     une session neuve. Interdits relevés par l'architecte : pas de ℓ = f(ℓ) (continuité), pas
     de seuil par le calcul (ln), pas de croissances comparées ni d'exponentielle, pas de ln(2).
