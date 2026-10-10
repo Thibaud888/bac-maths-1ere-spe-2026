@@ -1,0 +1,961 @@
+{
+  "chapitre": "limites-fonctions",
+  "sections": [
+    {
+      "notion": "n-limites-fonctions-definitions",
+      "blocs": [
+        {
+          "id": "l-limites-fonctions-001",
+          "type": "idee",
+          "texte": "Pour une suite, $n$ ne fait que grandir. Pour une fonction, $x$ peut tendre vers $+\\infty$, vers $-\\infty$, ou vers un réel $a$, souvent au bord de l'ensemble de définition. Prends $f(x) = \\dfrac{1}{x}$ : quand $x$ devient très grand, $f(x)$ se rapproche de $0$ ; quand $x$ se rapproche de $0$ en restant positif, $f(x)$ devient énorme. Sur la courbe, cela se voit : elle se colle à une droite, appelée **asymptote**."
+        },
+        {
+          "id": "l-limites-fonctions-002",
+          "type": "rappel",
+          "titre": "Rappel : limite d'une suite",
+          "texte": "Une suite $(u_n)$ tend vers $+\\infty$ si tout intervalle $[A\\,;\\,+\\infty[$ contient tous les termes $u_n$ à partir d'un certain rang. Elle converge vers $\\ell$ si tout intervalle ouvert contenant $\\ell$ contient tous les termes $u_n$ à partir d'un certain rang. Pour une fonction, « à partir d'un certain rang » devient « pour $x$ assez grand », ou « pour $x$ assez proche de $a$ ».",
+          "lien": "n-limites-suites-definitions"
+        },
+        {
+          "id": "l-limites-fonctions-003",
+          "type": "definition",
+          "titre": "Limite en $+\\infty$ ou en $-\\infty$, asymptote horizontale",
+          "capacites": [
+            "bo-m-limites-fonctions-01",
+            "bo-m-limites-fonctions-06"
+          ],
+          "texte": "Soit $f$ une fonction définie au moins sur un intervalle $[b\\,;\\,+\\infty[$, de courbe $\\mathcal{C}_f$, et $\\ell$ un réel.\n\n- $f$ a pour limite $+\\infty$ en $+\\infty$ si tout intervalle $[A\\,;\\,+\\infty[$ contient toutes les valeurs $f(x)$ pour $x$ assez grand, c'est-à-dire pour tout $x$ supérieur à un certain réel $B$. On note $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$ : « limite de $f(x)$ quand $x$ tend vers plus l'infini égale plus l'infini ».\n- $f$ a pour limite $\\ell$ en $+\\infty$ si tout intervalle ouvert contenant $\\ell$ contient toutes les valeurs $f(x)$ pour $x$ assez grand. On note $\\lim\\limits_{x \\to +\\infty} f(x) = \\ell$. La droite d'équation $y = \\ell$ est alors **asymptote horizontale** à $\\mathcal{C}_f$ en $+\\infty$.\n- La limite $-\\infty$ se définit avec les intervalles $]-\\infty\\,;\\,A]$, et les limites en $-\\infty$ avec « pour tout $x$ inférieur à un certain réel $B$ »."
+        },
+        {
+          "id": "l-limites-fonctions-004",
+          "type": "exemple",
+          "titre": "La fonction inverse en $+\\infty$ et en $-\\infty$",
+          "capacites": [
+            "bo-m-limites-fonctions-01",
+            "bo-m-limites-fonctions-06"
+          ],
+          "enonce": "Soit $f$ la fonction inverse, définie sur $]-\\infty\\,;\\,0[ \\cup ]0\\,;\\,+\\infty[$ par $f(x) = \\dfrac{1}{x}$.\n\n**1.** Démontrer que $\\lim\\limits_{x \\to +\\infty} f(x) = 0$.\n\n**2.** On admet de même que $\\lim\\limits_{x \\to -\\infty} f(x) = 0$. Interpréter graphiquement ces deux limites.",
+          "etapes": [
+            {
+              "texte": "**1.** Soit $r > 0$. Il suffit de montrer que l'intervalle $]-r\\,;\\,r[$ contient toutes les valeurs $\\dfrac{1}{x}$ pour $x$ assez grand.",
+              "pourquoi": "Tout intervalle ouvert contenant $0$ contient un intervalle de la forme $]-r\\,;\\,r[$, avec $r > 0$ : c'est la même remarque que pour les suites."
+            },
+            {
+              "texte": "On pose $B = \\dfrac{1}{r}$. Pour tout $x > B$, on a $x > 0$, donc $\\dfrac{1}{x} > 0 > -r$. De plus, $\\dfrac{1}{x} < \\dfrac{1}{B} = r$.",
+              "pourquoi": "La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$ : de $x > B > 0$, on tire $\\dfrac{1}{x} < \\dfrac{1}{B}$. Et $\\dfrac{1}{B} = \\dfrac{1}{\\frac{1}{r}} = r$."
+            },
+            {
+              "texte": "Donc, pour tout $x > \\dfrac{1}{r}$, la valeur $\\dfrac{1}{x}$ est dans $]-r\\,;\\,r[$. Ceci vaut pour tout $r > 0$ : $\\lim\\limits_{x \\to +\\infty} \\dfrac{1}{x} = 0$.",
+              "pourquoi": "Par exemple, pour $r = 0{,}01$ : dès que $x > 100$, on a $0 < \\dfrac{1}{x} < 0{,}01$."
+            },
+            {
+              "texte": "**2.** $\\lim\\limits_{x \\to +\\infty} f(x) = 0$ et $\\lim\\limits_{x \\to -\\infty} f(x) = 0$. **Conclusion** : la droite d'équation $y = 0$, c'est-à-dire l'axe des abscisses, est asymptote horizontale à la courbe de la fonction inverse en $+\\infty$ et en $-\\infty$.",
+              "pourquoi": "Une limite finie $\\ell$ en $+\\infty$ ou en $-\\infty$ donne l'asymptote horizontale d'équation $y = \\ell$ ; ici $\\ell = 0$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-005",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-06"
+          ],
+          "question": {
+            "enonce": "La courbe $\\mathcal{C}_f$ d'une fonction $f$ admet en $+\\infty$ une asymptote horizontale d'équation $y = -1$. Quelle est la valeur de $\\lim\\limits_{x \\to +\\infty} f(x)$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": -1,
+              "tolerance": 0
+            },
+            "explication": "Par définition, la droite d'équation $y = \\ell$ est asymptote horizontale à $\\mathcal{C}_f$ en $+\\infty$ exactement quand $\\lim\\limits_{x \\to +\\infty} f(x) = \\ell$. Ici, $\\ell = -1$ : l'asymptote lue sur le graphique donne la limite."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-006",
+          "type": "definition",
+          "titre": "Limite en un réel $a$, asymptote verticale",
+          "capacites": [
+            "bo-m-limites-fonctions-01",
+            "bo-m-limites-fonctions-06"
+          ],
+          "texte": "Soit $a$ un réel et $f$ une fonction définie sur un intervalle $]a\\,;\\,b[$ ou $]c\\,;\\,a[$.\n\n- $f$ a pour limite $+\\infty$ en $a$ si tout intervalle $[A\\,;\\,+\\infty[$ contient toutes les valeurs $f(x)$ pour $x$ assez proche de $a$, c'est-à-dire pour tout $x$ de l'ensemble de définition situé dans un intervalle $]a - r\\,;\\,a + r[$, avec $r > 0$ bien choisi. On note $\\lim\\limits_{x \\to a} f(x) = +\\infty$. La limite $-\\infty$, et une limite finie $\\ell$, se définissent de même.\n- Avec seulement des $x > a$, on parle de **limite à droite**, notée $\\lim\\limits_{\\substack{x \\to a \\\\ x > a}} f(x)$ et lue « limite de $f(x)$ quand $x$ tend vers $a$ par valeurs supérieures ». Avec $x < a$ : **limite à gauche**.\n- Si la limite de $f$ en $a$, à droite ou à gauche, est infinie, la droite d'équation $x = a$ est **asymptote verticale** à $\\mathcal{C}_f$."
+        },
+        {
+          "id": "l-limites-fonctions-007",
+          "type": "figure",
+          "titre": "Deux asymptotes",
+          "capacites": [
+            "bo-m-limites-fonctions-01",
+            "bo-m-limites-fonctions-06"
+          ],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/limites-fonctions/asymptotes.svg",
+              "alt": "Courbe de la fonction f définie par f(x) = 2 + 1/(x − 1), en deux morceaux de part et d'autre de la droite verticale d'équation x = 1, tracée en pointillés. À droite de cette droite, la courbe monte très haut en la longeant quand x se rapproche de 1, puis redescend vers la droite horizontale d'équation y = 2, en pointillés, en restant au-dessus d'elle quand x devient grand. À gauche, la courbe descend très bas en longeant la droite x = 1, et se rapproche de la droite y = 2 par en dessous quand x tend vers moins l'infini.",
+              "width": 360,
+              "height": 335
+            },
+            "caption": "Courbe de f(x) = 2 + 1/(x − 1). La droite d'équation x = 1 est asymptote verticale ; la droite d'équation y = 2 est asymptote horizontale en +∞ et en −∞."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-008",
+          "type": "exemple",
+          "titre": "Une limite infinie en $1$, deux asymptotes",
+          "capacites": [
+            "bo-m-limites-fonctions-01",
+            "bo-m-limites-fonctions-06"
+          ],
+          "enonce": "Soit $f$ la fonction définie sur $]-\\infty\\,;\\,1[ \\cup ]1\\,;\\,+\\infty[$ par $f(x) = 2 + \\dfrac{1}{x - 1}$. Sa courbe $\\mathcal{C}_f$ est tracée ci-dessus.\n\n**1.** Soit $A$ un réel tel que $A > 2$. Démontrer que $f(x) \\geqslant A$ pour tout $x$ de l'intervalle $\\left]1\\,;\\,1 + \\dfrac{1}{A - 2}\\right]$. En déduire $\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} f(x)$.\n\n**2.** On admet que $\\lim\\limits_{\\substack{x \\to 1 \\\\ x < 1}} f(x) = -\\infty$, que $\\lim\\limits_{x \\to +\\infty} f(x) = 2$ et que $\\lim\\limits_{x \\to -\\infty} f(x) = 2$. Interpréter graphiquement ces résultats.\n\n**3.** Préciser la position de $\\mathcal{C}_f$ par rapport à la droite d'équation $y = 2$ sur l'intervalle $]1\\,;\\,+\\infty[$.",
+          "etapes": [
+            {
+              "texte": "**1.** Soit $x$ dans $\\left]1\\,;\\,1 + \\dfrac{1}{A - 2}\\right]$. Alors $0 < x - 1 \\leqslant \\dfrac{1}{A - 2}$.",
+              "pourquoi": "On retranche $1$ aux trois membres de $1 < x \\leqslant 1 + \\dfrac{1}{A - 2}$. Comme $A > 2$, le nombre $\\dfrac{1}{A - 2}$ est strictement positif : l'intervalle n'est pas vide."
+            },
+            {
+              "texte": "La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$, donc $\\dfrac{1}{x - 1} \\geqslant \\dfrac{1}{\\frac{1}{A - 2}} = A - 2$. En ajoutant $2$ : $f(x) = 2 + \\dfrac{1}{x - 1} \\geqslant A$.",
+              "pourquoi": "Passer à l'inverse de deux nombres strictement positifs change le sens de l'inégalité."
+            },
+            {
+              "texte": "Ainsi, pour tout réel $A > 2$, l'intervalle $[A\\,;\\,+\\infty[$ contient toutes les valeurs $f(x)$ pour $x > 1$ assez proche de $1$. C'est encore vrai si $A \\leqslant 2$, car $[A\\,;\\,+\\infty[$ contient alors $[3\\,;\\,+\\infty[$. Donc $\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} f(x) = +\\infty$.",
+              "pourquoi": "Si $A \\leqslant 2$, on applique le résultat avec $3$ à la place de $A$ : les valeurs $f(x)$ sont dans $[3\\,;\\,+\\infty[$, donc aussi dans $[A\\,;\\,+\\infty[$."
+            },
+            {
+              "texte": "**2.** Les limites de $f$ en $1$, à droite et à gauche, sont infinies : la droite d'équation $x = 1$ est asymptote verticale à $\\mathcal{C}_f$. Les limites en $+\\infty$ et en $-\\infty$ valent $2$ : la droite d'équation $y = 2$ est asymptote horizontale à $\\mathcal{C}_f$ en $+\\infty$ et en $-\\infty$.",
+              "pourquoi": "Le réel $1$ est la valeur vers laquelle tend $x$ : il donne une droite verticale. Le réel $2$ est la limite de $f(x)$, une ordonnée : il donne une droite horizontale."
+            },
+            {
+              "texte": "**3.** Pour $x > 1$ : $f(x) - 2 = \\dfrac{1}{x - 1} > 0$, car $x - 1 > 0$. **Conclusion** : sur $]1\\,;\\,+\\infty[$, la courbe $\\mathcal{C}_f$ est au-dessus de son asymptote d'équation $y = 2$.",
+              "pourquoi": "Comme en première, la position de deux courbes se lit sur le signe de la différence, ici $f(x) - 2$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-009",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-06"
+          ],
+          "question": {
+            "enonce": "Une fonction $f$ vérifie $\\lim\\limits_{\\substack{x \\to -3 \\\\ x > -3}} f(x) = -\\infty$. Que peux-tu en déduire pour sa courbe $\\mathcal{C}_f$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "La droite d'équation $y = -3$ est asymptote horizontale à $\\mathcal{C}_f$.",
+                "La droite d'équation $x = -3$ est asymptote verticale à $\\mathcal{C}_f$.",
+                "La courbe $\\mathcal{C}_f$ n'a pas d'asymptote, car la limite vaut $-\\infty$.",
+                "La droite d'équation $x = -3$ n'est asymptote que si $f$ tend aussi vers l'infini à gauche de $-3$."
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Le réel $-3$ est la valeur vers laquelle tend $x$, pas $f(x)$ : il se lit sur l'axe des abscisses, donc la droite est verticale.",
+                null,
+                "Une limite infinie quand $x$ tend vers un réel est justement ce qui donne une asymptote verticale.",
+                "Une limite infinie d'un seul côté suffit. D'ailleurs, $f$ n'est peut-être même pas définie à gauche de $-3$."
+              ]
+            },
+            "explication": "Quand $x$ tend vers le réel $-3$, ici par la droite, $f(x)$ tend vers $-\\infty$ : la courbe longe la droite verticale d'équation $x = -3$. C'est une asymptote verticale."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-010",
+          "type": "piege",
+          "titre": "Asymptote horizontale ou verticale ?",
+          "capacites": [
+            "bo-m-limites-fonctions-06"
+          ],
+          "faux": "$\\lim\\limits_{x \\to +\\infty} f(x) = 4$, donc la droite d'équation $x = 4$ est asymptote à $\\mathcal{C}_f$.",
+          "juste": "$\\lim\\limits_{x \\to +\\infty} f(x) = 4$, donc la droite d'équation $y = 4$ est asymptote horizontale à $\\mathcal{C}_f$ en $+\\infty$.",
+          "explication": "Le nombre $4$ est la limite de $f(x)$, c'est-à-dire une ordonnée : la droite est horizontale, d'équation $y = 4$. Une asymptote verticale d'équation $x = a$ vient au contraire d'un réel $a$ vers lequel tend $x$, avec une limite infinie. Repère : là où tend $x$ donne « $x = a$ », la limite finie de $f(x)$ donne « $y = \\ell$ »."
+        },
+        {
+          "id": "l-limites-fonctions-011",
+          "type": "complement",
+          "titre": "Pour aller plus loin : asymptote oblique, branches infinies",
+          "capacites": [
+            "bo-m-limites-fonctions-08"
+          ],
+          "texte": "Si $\\lim\\limits_{x \\to +\\infty} \\left[f(x) - (mx + p)\\right] = 0$, la droite d'équation $y = mx + p$ est **asymptote oblique** à $\\mathcal{C}_f$ en $+\\infty$ : l'écart vertical entre la courbe et la droite tend vers $0$. Par exemple, si $f(x) = x + 1 + \\dfrac{1}{x}$, alors $f(x) - (x + 1) = \\dfrac{1}{x}$ tend vers $0$ : la droite d'équation $y = x + 1$ est asymptote oblique à $\\mathcal{C}_f$ en $+\\infty$ et en $-\\infty$.\n\nPlus généralement, quand $x$ ou $f(x)$ tend vers l'infini, on dit que la courbe a une **branche infinie**. Une asymptote en est un cas particulier : la parabole d'équation $y = x^2$ a deux branches infinies, mais aucune asymptote."
+        },
+        {
+          "id": "l-limites-fonctions-012",
+          "type": "retenir",
+          "texte": "Limite finie $\\ell$ en $+\\infty$ ou en $-\\infty$ : la droite $y = \\ell$ est asymptote horizontale. Limite infinie quand $x$ tend vers un réel $a$, à droite ou à gauche : la droite $x = a$ est asymptote verticale."
+        }
+      ]
+    },
+    {
+      "notion": "n-limites-fonctions-operations",
+      "blocs": [
+        {
+          "id": "l-limites-fonctions-013",
+          "type": "idee",
+          "texte": "Revenir à la définition pour chaque limite serait long. Comme pour les suites, on part de **limites de référence**, puis on les combine avec les règles sur les sommes, les produits et les quotients. Deux nouveautés : $x$ peut aussi tendre vers $-\\infty$ ou vers un réel $a$, et la fonction exponentielle rejoint la liste. Les formes indéterminées restent les mêmes, et on les lève encore en factorisant par le terme qui l'emporte."
+        },
+        {
+          "id": "l-limites-fonctions-014",
+          "type": "rappel",
+          "titre": "Rappel : opérations sur les limites de suites",
+          "texte": "Pour les suites, des tableaux donnent la limite d'une somme, d'un produit ou d'un quotient à partir des limites de chaque morceau. L'essentiel :\n\n- une limite finie plus une limite infinie donne une limite infinie ;\n- le produit d'une limite infinie par une limite non nulle est infini, avec la règle des signes ;\n- « $\\dfrac{\\ell}{\\infty}$ » donne $0$ ; « $\\dfrac{\\ell}{0}$ », avec $\\ell \\neq 0$, donne une limite infinie si le dénominateur garde un signe constant ;\n- il y a quatre **formes indéterminées**, où connaître les limites des morceaux ne suffit pas : $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$ et $\\dfrac{0}{0}$.",
+          "lien": "l-limites-suites-017"
+        },
+        {
+          "id": "l-limites-fonctions-015",
+          "type": "rappel",
+          "titre": "Rappel : la fonction exponentielle",
+          "texte": "La fonction exponentielle est définie sur $\\mathbb{R}$ et strictement croissante ; $e^x > 0$ pour tout réel $x$, et $e^0 = 1$. Pour tous réels $a$ et $b$ et tout entier $n$ :\n\n$$e^{a+b} = e^a \\times e^b \\qquad e^{-a} = \\dfrac{1}{e^a} \\qquad \\left(e^a\\right)^n = e^{na}$$",
+          "lien": "1e:exponentielle"
+        },
+        {
+          "id": "l-limites-fonctions-016",
+          "type": "propriete",
+          "titre": "Limites de référence",
+          "capacites": [
+            "bo-m-limites-fonctions-02"
+          ],
+          "texte": "Pour tout entier $n \\geqslant 1$ :\n\n| $f(x)$ | limite en $+\\infty$ | limite en $-\\infty$ |\n|---|---|---|\n| $x^n$ | $+\\infty$ | $+\\infty$ si $n$ est pair, $-\\infty$ si $n$ est impair |\n| $\\dfrac{1}{x^n}$ | $0$ | $0$ |\n| $\\sqrt{x}$ | $+\\infty$ | pas de sens |\n| $e^x$ | $+\\infty$ | $0$ |\n\nEn $0$ : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\dfrac{1}{x^n} = +\\infty$ ; à gauche de $0$, $\\dfrac{1}{x^n}$ tend vers $+\\infty$ si $n$ est pair, vers $-\\infty$ si $n$ est impair.\n\nLa limite de $\\dfrac{1}{x}$ en $+\\infty$ a été démontrée dans la notion précédente ; les autres limites de puissances et de la racine carrée se démontrent de la même façon, avec la définition. Les limites de $e^x$ sont démontrées dans la notion « Comparaison et encadrement » : d'ici là, on les utilise sans démonstration.",
+          "conditions": [
+            "$n$ est un entier naturel non nul.",
+            "$\\sqrt{x}$ n'est définie que pour $x \\geqslant 0$ : sa limite en $-\\infty$ n'a pas de sens.",
+            "$\\dfrac{1}{x^n}$ n'est pas définie en $0$ : on y étudie la limite à droite et la limite à gauche."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-limites-fonctions-017",
+          "type": "exemple",
+          "titre": "Lire les limites de référence",
+          "capacites": [
+            "bo-m-limites-fonctions-02"
+          ],
+          "enonce": "Déterminer les limites suivantes, puis interpréter graphiquement la dernière.\n\n**a.** $\\lim\\limits_{x \\to -\\infty} x^3$ ;\n\n**b.** $\\lim\\limits_{\\substack{x \\to 0 \\\\ x < 0}} \\dfrac{1}{x^3}$ ;\n\n**c.** $\\lim\\limits_{x \\to -\\infty} x^4$ ;\n\n**d.** $\\lim\\limits_{x \\to -\\infty} e^x$.",
+          "etapes": [
+            {
+              "texte": "**a.** L'exposant $3$ est impair, donc $\\lim\\limits_{x \\to -\\infty} x^3 = -\\infty$.",
+              "pourquoi": "Pour $x < 0$, $x^3 = x \\times x \\times x$ est un produit de trois nombres négatifs : il est négatif. Par exemple, $(-10)^3 = -1\\,000$."
+            },
+            {
+              "texte": "**b.** L'exposant $3$ est impair, donc $\\lim\\limits_{\\substack{x \\to 0 \\\\ x < 0}} \\dfrac{1}{x^3} = -\\infty$.",
+              "pourquoi": "Pour $x < 0$ proche de $0$, $x^3$ est négatif et très proche de $0$, donc $\\dfrac{1}{x^3}$ est négatif et très grand en valeur absolue. Par exemple, $\\dfrac{1}{(-0{,}1)^3} = \\dfrac{1}{-0{,}001} = -1\\,000$."
+            },
+            {
+              "texte": "**c.** L'exposant $4$ est pair, donc $\\lim\\limits_{x \\to -\\infty} x^4 = +\\infty$.",
+              "pourquoi": "$x^4 = \\left(x^2\\right)^2$ est positif : une puissance paire efface le signe."
+            },
+            {
+              "texte": "**d.** D'après les limites de référence, $\\lim\\limits_{x \\to -\\infty} e^x = 0$. **Conclusion** : l'axe des abscisses, d'équation $y = 0$, est asymptote horizontale à la courbe de la fonction exponentielle en $-\\infty$.",
+              "pourquoi": "Par exemple, $e^{-10} = \\dfrac{1}{e^{10}}$ est inférieur à $0{,}0001$ : vers la gauche, la courbe se colle à l'axe des abscisses."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-018",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-02"
+          ],
+          "question": {
+            "enonce": "Parmi ces limites, lesquelles valent $0$ ?",
+            "reponse": {
+              "type": "qcm-multiple",
+              "choix": [
+                "$\\lim\\limits_{x \\to -\\infty} e^x$",
+                "$\\lim\\limits_{x \\to -\\infty} x^2$",
+                "$\\lim\\limits_{x \\to -\\infty} \\dfrac{1}{x^5}$",
+                "$\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\dfrac{1}{x}$",
+                "$\\lim\\limits_{x \\to +\\infty} \\sqrt{x}$"
+              ],
+              "bonnes": [
+                0,
+                2
+              ]
+            },
+            "explication": "$e^x$ tend vers $0$ en $-\\infty$, et $\\dfrac{1}{x^5}$ aussi, car son dénominateur devient infini. En revanche, $x^2$ tend vers $+\\infty$ en $-\\infty$ (puissance paire), $\\dfrac{1}{x}$ tend vers $+\\infty$ quand $x$ tend vers $0$ par la droite, et $\\sqrt{x}$ tend vers $+\\infty$ en $+\\infty$."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-019",
+          "type": "propriete",
+          "titre": "Opérations sur les limites de fonctions",
+          "capacites": [
+            "bo-m-limites-fonctions-04"
+          ],
+          "texte": "Soit $f$ et $g$ deux fonctions. On note $\\alpha$ ce vers quoi tend $x$ : $+\\infty$, $-\\infty$, un réel $a$, ou $a$ à droite ou à gauche.\n\n- Les tableaux de la somme, du produit et du quotient établis pour les suites restent valables pour les limites de $f(x)$ et de $g(x)$ quand $x$ tend vers $\\alpha$, avec les mêmes formes indéterminées.\n- La fonction $x \\mapsto x$ a pour limite $a$ en $a$ ; par sommes et produits, un polynôme $P(x)$ tend vers $P(a)$ quand $x$ tend vers $a$. Par exemple, $\\lim\\limits_{x \\to 1} (2x + 1) = 3$.\n- Quand $g(x)$ tend vers $0$, on note $0^+$ si $g(x) > 0$ pour $x$ proche de $\\alpha$, et $0^-$ si $g(x) < 0$. Si $f(x)$ tend vers $\\ell > 0$, alors $\\dfrac{f(x)}{g(x)}$ tend vers $+\\infty$ quand $g(x)$ tend vers $0^+$, et vers $-\\infty$ quand $g(x)$ tend vers $0^-$. Si $\\ell < 0$, les signes s'échangent.",
+          "conditions": [
+            "Les limites de $f(x)$ et de $g(x)$ sont connues, quand $x$ tend vers le même $\\alpha$.",
+            "Pour un quotient, $g(x) \\neq 0$ ; si $g(x)$ tend vers $0$, son signe doit être constant pour $x$ proche de $\\alpha$, du côté étudié."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-limites-fonctions-020",
+          "type": "exemple",
+          "titre": "Des limites sans forme indéterminée",
+          "capacites": [
+            "bo-m-limites-fonctions-02",
+            "bo-m-limites-fonctions-04"
+          ],
+          "enonce": "**a.** Déterminer $\\lim\\limits_{x \\to -\\infty} \\left(x^2 + e^x\\right)$.\n\n**b.** Déterminer $\\lim\\limits_{x \\to +\\infty} (3 - x)e^x$.\n\n**c.** Soit $h$ la fonction définie sur $]-\\infty\\,;\\,1[ \\cup ]1\\,;\\,+\\infty[$ par $h(x) = \\dfrac{2x + 1}{x - 1}$. Déterminer la limite de $h$ en $1$, à droite puis à gauche, et interpréter graphiquement.",
+          "etapes": [
+            {
+              "texte": "**a.** $\\lim\\limits_{x \\to -\\infty} x^2 = +\\infty$ et $\\lim\\limits_{x \\to -\\infty} e^x = 0$. Par somme : $\\lim\\limits_{x \\to -\\infty} \\left(x^2 + e^x\\right) = +\\infty$.",
+              "pourquoi": "Une limite infinie plus une limite finie donne une limite infinie : ce n'est pas une forme indéterminée."
+            },
+            {
+              "texte": "**b.** $\\lim\\limits_{x \\to +\\infty} (3 - x) = -\\infty$ et $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$. Par produit : $\\lim\\limits_{x \\to +\\infty} (3 - x)e^x = -\\infty$.",
+              "pourquoi": "$3 - x$ tend vers $-\\infty$ par somme de la constante $3$ et de $-x$, qui tend vers $-\\infty$. Puis « $-\\infty \\times (+\\infty)$ » donne $-\\infty$ par la règle des signes."
+            },
+            {
+              "texte": "**c.** Quand $x$ tend vers $1$, le numérateur $2x + 1$ tend vers $2 \\times 1 + 1 = 3$ et le dénominateur $x - 1$ tend vers $0$. C'est « $\\dfrac{3}{0}$ » : ce n'est pas une forme indéterminée, mais il faut le signe de $x - 1$.",
+              "pourquoi": "Un polynôme $P(x)$ tend vers $P(a)$ quand $x$ tend vers $a$."
+            },
+            {
+              "texte": "Si $x > 1$, alors $x - 1 > 0$ : le dénominateur tend vers $0^+$. Par quotient, $\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} h(x) = +\\infty$.",
+              "pourquoi": "On divise un nombre proche de $3$ par un nombre positif très petit : le résultat est positif et très grand. Contrôle : $h(1{,}01) = \\dfrac{3{,}02}{0{,}01} = 302$."
+            },
+            {
+              "texte": "Si $x < 1$, alors $x - 1 < 0$ : le dénominateur tend vers $0^-$. Par quotient, $\\lim\\limits_{\\substack{x \\to 1 \\\\ x < 1}} h(x) = -\\infty$.",
+              "pourquoi": "Contrôle : $h(0{,}99) = \\dfrac{2{,}98}{-0{,}01} = -298$."
+            },
+            {
+              "texte": "**Conclusion** : $\\lim\\limits_{x \\to -\\infty} \\left(x^2 + e^x\\right) = +\\infty$ et $\\lim\\limits_{x \\to +\\infty} (3 - x)e^x = -\\infty$. La fonction $h$ tend vers $+\\infty$ à droite de $1$ et vers $-\\infty$ à gauche de $1$ : la droite d'équation $x = 1$ est asymptote verticale à la courbe de $h$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-021",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-04"
+          ],
+          "question": {
+            "enonce": "Quelle est la limite de $\\dfrac{x + 1}{x - 2}$ quand $x$ tend vers $2$ par valeurs inférieures, c'est-à-dire avec $x < 2$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$+\\infty$",
+                "$-\\infty$",
+                "$3$",
+                "$0$",
+                "On ne peut pas conclure : c'est une forme indéterminée."
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Pour $x < 2$, le dénominateur $x - 2$ est négatif : on divise un nombre proche de $3$ par un nombre négatif très petit, et le résultat est négatif.",
+                null,
+                "$3$ est la limite du numérateur seulement. Le dénominateur tend vers $0$, ce qui rend le quotient infini.",
+                "C'est « $\\dfrac{\\ell}{\\infty}$ » qui donne $0$. Ici, le dénominateur tend vers $0$, pas vers l'infini.",
+                "« $\\dfrac{3}{0}$ » n'est pas une forme indéterminée : parmi les quotients, seuls « $\\dfrac{0}{0}$ » et « $\\dfrac{\\infty}{\\infty}$ » le sont."
+              ]
+            },
+            "explication": "Le numérateur tend vers $2 + 1 = 3$. Pour $x < 2$, $x - 2 < 0$ : le dénominateur tend vers $0^-$. Par quotient, la limite est $-\\infty$. Contrôle : pour $x = 1{,}99$, le quotient vaut $\\dfrac{2{,}99}{-0{,}01} = -299$."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-022",
+          "type": "methode",
+          "titre": "Comment lever une forme indéterminée ?",
+          "capacites": [
+            "bo-m-limites-fonctions-04"
+          ],
+          "etapes": [
+            "Écris la limite de chaque morceau et repère la forme : $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$ ou $\\dfrac{0}{0}$.",
+            "En $+\\infty$ ou en $-\\infty$, pour un polynôme ou un quotient de polynômes, mets en facteur le terme de plus haut degré, en haut et en bas, comme pour les suites : $2x^2 - x^3 = x^3\\left(\\dfrac{2}{x} - 1\\right)$.",
+            "Si $e^x$ apparaît avec des constantes, en $+\\infty$, mets $e^x$ en facteur : c'est le terme qui l'emporte. Il reste des $e^{-x} = \\dfrac{1}{e^x}$, qui tendent vers $0$.",
+            "En un réel $a$, si le numérateur et le dénominateur s'annulent tous les deux en $a$ (forme $\\dfrac{0}{0}$), factorise-les par $x - a$, puis simplifie pour $x \\neq a$. Un trinôme du second degré qui s'annule en $a$ s'écrit $(x - a)$ fois une expression du premier degré.",
+            "Vérifie que chaque morceau restant a une limite connue, puis conclus avec les règles d'opérations : la forme n'est plus indéterminée."
+          ],
+          "exemple": "l-limites-fonctions-023"
+        },
+        {
+          "id": "l-limites-fonctions-023",
+          "type": "exemple",
+          "titre": "Trois formes indéterminées",
+          "capacites": [
+            "bo-m-limites-fonctions-04"
+          ],
+          "enonce": "Déterminer les limites suivantes.\n\n**a.** $\\lim\\limits_{x \\to +\\infty} \\left(2x^2 - x^3\\right)$ ;\n\n**b.** $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x + 1}{e^x - 1}$ ;\n\n**c.** $\\lim\\limits_{x \\to 1} \\dfrac{x^2 + x - 2}{x - 1}$.",
+          "etapes": [
+            {
+              "texte": "**a.** $\\lim\\limits_{x \\to +\\infty} 2x^2 = +\\infty$ et $\\lim\\limits_{x \\to +\\infty} \\left(-x^3\\right) = -\\infty$ : c'est la forme indéterminée « $+\\infty - \\infty$ »."
+            },
+            {
+              "texte": "Pour $x \\neq 0$, on met $x^3$ en facteur : $2x^2 - x^3 = x^3\\left(\\dfrac{2}{x} - 1\\right)$. Or $\\dfrac{2}{x}$ tend vers $0$, donc $\\dfrac{2}{x} - 1$ tend vers $-1$. Par produit : $\\lim\\limits_{x \\to +\\infty} \\left(2x^2 - x^3\\right) = -\\infty$.",
+              "pourquoi": "On vérifie en développant : $x^3 \\times \\dfrac{2}{x} = 2x^2$ et $x^3 \\times (-1) = -x^3$. Puis « $+\\infty \\times (-1)$ » donne $-\\infty$."
+            },
+            {
+              "texte": "**b.** Le numérateur et le dénominateur tendent vers $+\\infty$ : c'est la forme indéterminée « $\\dfrac{\\infty}{\\infty}$ ». Pour $x > 0$, on met $e^x$ en facteur en haut et en bas : $\\dfrac{e^x + 1}{e^x - 1} = \\dfrac{e^x\\left(1 + e^{-x}\\right)}{e^x\\left(1 - e^{-x}\\right)} = \\dfrac{1 + e^{-x}}{1 - e^{-x}}$.",
+              "pourquoi": "$e^x \\times e^{-x} = e^{x - x} = e^0 = 1$, donc $e^x\\left(1 + e^{-x}\\right) = e^x + 1$. On simplifie par $e^x$, qui n'est jamais nul. Pour $x > 0$, $e^x > 1$, donc le dénominateur $e^x - 1$ n'est pas nul."
+            },
+            {
+              "texte": "$e^{-x} = \\dfrac{1}{e^x}$ et $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$ ; par quotient, $\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$. Donc le numérateur $1 + e^{-x}$ tend vers $1$, et le dénominateur $1 - e^{-x}$ aussi. Par quotient : $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x + 1}{e^x - 1} = \\dfrac{1}{1} = 1$.",
+              "pourquoi": "Contrôle : pour $x = 10$, $e^{-10}$ est inférieur à $0{,}0001$, et le quotient est très proche de $1$."
+            },
+            {
+              "texte": "**c.** Quand $x$ tend vers $1$, $x^2 + x - 2$ tend vers $1 + 1 - 2 = 0$ et $x - 1$ tend vers $0$ : c'est la forme indéterminée « $\\dfrac{0}{0}$ »."
+            },
+            {
+              "texte": "$1$ est une racine de $x^2 + x - 2$, qui se factorise donc par $x - 1$ : $x^2 + x - 2 = (x - 1)(x + 2)$. Pour $x \\neq 1$ : $\\dfrac{x^2 + x - 2}{x - 1} = \\dfrac{(x - 1)(x + 2)}{x - 1} = x + 2$.",
+              "pourquoi": "L'autre racine s'obtient avec le produit des racines, égal à $\\dfrac{-2}{1} = -2$ : c'est $-2$. On vérifie en développant : $(x - 1)(x + 2) = x^2 + 2x - x - 2 = x^2 + x - 2$."
+            },
+            {
+              "texte": "Donc $\\lim\\limits_{x \\to 1} \\dfrac{x^2 + x - 2}{x - 1} = \\lim\\limits_{x \\to 1} (x + 2) = 1 + 2 = 3$.",
+              "pourquoi": "Les deux expressions sont égales pour tout $x \\neq 1$, et seules ces valeurs comptent pour la limite en $1$. Puis le polynôme $x + 2$ tend vers sa valeur en $1$."
+            },
+            {
+              "texte": "**Conclusion** : $\\lim\\limits_{x \\to +\\infty} \\left(2x^2 - x^3\\right) = -\\infty$, $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x + 1}{e^x - 1} = 1$ et $\\lim\\limits_{x \\to 1} \\dfrac{x^2 + x - 2}{x - 1} = 3$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-024",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-04"
+          ],
+          "question": {
+            "enonce": "Quelle est la limite de $\\dfrac{3e^x + 2}{e^x + 5}$ quand $x$ tend vers $+\\infty$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 3,
+              "tolerance": 0
+            },
+            "explication": "C'est la forme « $\\dfrac{\\infty}{\\infty}$ ». On met $e^x$ en facteur en haut et en bas : $\\dfrac{e^x\\left(3 + 2e^{-x}\\right)}{e^x\\left(1 + 5e^{-x}\\right)} = \\dfrac{3 + 2e^{-x}}{1 + 5e^{-x}}$. Comme $e^{-x}$ tend vers $0$, le quotient tend vers $\\dfrac{3}{1} = 3$."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-025",
+          "type": "methode",
+          "titre": "Comment trouver la limite de $e^{u(x)}$ ?",
+          "capacites": [
+            "bo-m-limites-fonctions-04"
+          ],
+          "etapes": [
+            "Repère l'expression placée en exposant, $u(x)$. Par exemple, dans $e^{-x}$, c'est $u(x) = -x$.",
+            "Cherche la limite de $u(x)$ quand $x$ tend vers la valeur demandée.",
+            "Pose $X = u(x)$. Si $u(x)$ tend vers $+\\infty$, alors $e^X$ tend vers $+\\infty$ ; si $u(x)$ tend vers $-\\infty$, alors $e^X$ tend vers $0$.",
+            "Rédige : « $u(x)$ tend vers … et $e^X$ tend vers … quand $X$ tend vers … ; donc, par composition, $e^{u(x)}$ tend vers … ».",
+            "Pour $e^{-x}$, tu peux aussi écrire $e^{-x} = \\dfrac{1}{e^x}$ et conclure par quotient."
+          ],
+          "exemple": "l-limites-fonctions-026"
+        },
+        {
+          "id": "l-limites-fonctions-026",
+          "type": "exemple",
+          "titre": "L'exponentielle d'une expression",
+          "capacites": [
+            "bo-m-limites-fonctions-02",
+            "bo-m-limites-fonctions-04"
+          ],
+          "enonce": "Déterminer les limites suivantes.\n\n**a.** $\\lim\\limits_{x \\to +\\infty} e^{-x}$ et $\\lim\\limits_{x \\to -\\infty} e^{-x}$ ;\n\n**b.** $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} e^{\\frac{1}{x}}$ et $\\lim\\limits_{\\substack{x \\to 0 \\\\ x < 0}} e^{\\frac{1}{x}}$.",
+          "etapes": [
+            {
+              "texte": "**a.** $\\lim\\limits_{x \\to +\\infty} (-x) = -\\infty$ et $\\lim\\limits_{X \\to -\\infty} e^X = 0$. Par composition : $\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$.",
+              "pourquoi": "On pose $X = -x$ : quand $x$ devient très grand, $X$ est négatif et très grand en valeur absolue. Autre chemin : $e^{-x} = \\dfrac{1}{e^x}$, et « $\\dfrac{1}{+\\infty}$ » donne $0$."
+            },
+            {
+              "texte": "$\\lim\\limits_{x \\to -\\infty} (-x) = +\\infty$ et $\\lim\\limits_{X \\to +\\infty} e^X = +\\infty$. Par composition : $\\lim\\limits_{x \\to -\\infty} e^{-x} = +\\infty$."
+            },
+            {
+              "texte": "**b.** $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\dfrac{1}{x} = +\\infty$ et $\\lim\\limits_{X \\to +\\infty} e^X = +\\infty$. Par composition : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} e^{\\frac{1}{x}} = +\\infty$.",
+              "pourquoi": "Ici, $X = \\dfrac{1}{x}$. Contrôle : pour $x = 0{,}1$, on obtient $e^{10}$, qui dépasse $20\\,000$."
+            },
+            {
+              "texte": "$\\lim\\limits_{\\substack{x \\to 0 \\\\ x < 0}} \\dfrac{1}{x} = -\\infty$ et $\\lim\\limits_{X \\to -\\infty} e^X = 0$. Par composition : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x < 0}} e^{\\frac{1}{x}} = 0$.",
+              "pourquoi": "Pour $x < 0$, $\\dfrac{1}{x}$ est négatif : quand $x$ se rapproche de $0$ par la gauche, $\\dfrac{1}{x}$ tend vers $-\\infty$ (limites de référence)."
+            },
+            {
+              "texte": "**Conclusion** : $e^{-x}$ tend vers $0$ en $+\\infty$ et vers $+\\infty$ en $-\\infty$. $e^{\\frac{1}{x}}$ tend vers $+\\infty$ à droite de $0$, donc l'axe des ordonnées est asymptote verticale à sa courbe ; à gauche de $0$, $e^{\\frac{1}{x}}$ tend vers $0$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-027",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-04"
+          ],
+          "question": {
+            "enonce": "Soit $a$ et $b$ deux réels, avec $b > 0$, et $g$ la fonction définie sur $[0\\,;\\,+\\infty[$ par $g(t) = \\dfrac{a}{b + e^{-t}}$. On sait que $g(0) = 2$ et que $\\lim\\limits_{t \\to +\\infty} g(t) = 3$. Quelles sont les valeurs de $a$ et de $b$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$a = 3$ et $b = 1$",
+                "$a = 6$ et $b = 2$",
+                "$a = 4$ et $b = 1$",
+                "$a = 2$ et $b = 1$"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "La limite vaut bien $\\dfrac{3}{1} = 3$, mais $g(0) = \\dfrac{3}{1 + e^0} = \\dfrac{3}{2}$, pas $2$.",
+                null,
+                "$g(0) = \\dfrac{4}{1 + 1} = 2$ convient, mais la limite vaut $\\dfrac{4}{1} = 4$, pas $3$.",
+                "$g(0) = \\dfrac{2}{1 + 1} = 1$ et la limite vaut $2$ : aucune des deux conditions n'est remplie."
+              ]
+            },
+            "explication": "$e^{-t}$ tend vers $0$ en $+\\infty$, donc $g(t)$ tend vers $\\dfrac{a}{b}$ : $\\dfrac{a}{b} = 3$, soit $a = 3b$. Et $g(0) = \\dfrac{a}{b + e^0} = \\dfrac{a}{b + 1} = 2$, soit $a = 2b + 2$. Donc $3b = 2b + 2$, d'où $b = 2$, puis $a = 6$."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-028",
+          "type": "lien-matiere",
+          "titre": "Et en physique ?",
+          "matiere": "physique-chimie",
+          "capacites": [
+            "bo-pc-electrique-06"
+          ],
+          "texte": "Quand un condensateur initialement déchargé se charge sous une tension constante $E$, la tension à ses bornes vaut $u_C(t) = E\\left(1 - e^{-\\frac{t}{\\tau}}\\right)$, où $\\tau > 0$ est le temps caractéristique du circuit. Comme $e^{-\\frac{t}{\\tau}}$ tend vers $0$ quand $t$ tend vers $+\\infty$, $u_C(t)$ tend vers $E$ : la courbe de $u_C$ a une asymptote horizontale d'équation $u_C = E$."
+        },
+        {
+          "id": "l-limites-fonctions-029",
+          "type": "piege",
+          "titre": "Une limite en $a$ dépend du côté",
+          "capacites": [
+            "bo-m-limites-fonctions-04"
+          ],
+          "faux": "Quand $x$ tend vers $1$, $\\dfrac{1}{x - 1}$ est de la forme « $\\dfrac{1}{0}$ », donc $\\lim\\limits_{x \\to 1} \\dfrac{1}{x - 1} = +\\infty$.",
+          "juste": "À droite de $1$, $x - 1 > 0$, et $\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} \\dfrac{1}{x - 1} = +\\infty$. À gauche de $1$, $x - 1 < 0$, et $\\lim\\limits_{\\substack{x \\to 1 \\\\ x < 1}} \\dfrac{1}{x - 1} = -\\infty$.",
+          "explication": "« $\\dfrac{1}{0}$ » ne suffit pas pour conclure : c'est le signe du dénominateur qui décide entre $+\\infty$ et $-\\infty$. Étudie-le de chaque côté de $a$, avec un tableau de signes si besoin. Ici, les deux limites diffèrent : la fonction n'a pas de limite en $1$ si l'on ne précise pas le côté."
+        },
+        {
+          "id": "l-limites-fonctions-030",
+          "type": "retenir",
+          "texte": "Limites de référence ($x^n$, $\\dfrac{1}{x^n}$, $\\sqrt{x}$, $e^x$) et règles d'opérations, comme pour les suites. En un réel $a$, un dénominateur qui tend vers $0$ : regarde son signe à droite et à gauche. Une forme indéterminée : factorise par le terme qui l'emporte."
+        }
+      ]
+    },
+    {
+      "notion": "n-limites-fonctions-comparaison",
+      "blocs": [
+        {
+          "id": "l-limites-fonctions-031",
+          "type": "idee",
+          "texte": "Parfois, aucune règle d'opération ne s'applique : dans $x + \\cos x$, le morceau $\\cos x$ oscille entre $-1$ et $1$ sans se rapprocher d'un nombre fixé. Comme pour les suites, tu peux alors **coincer** la fonction : au-dessus d'une fonction qui tend vers $+\\infty$, elle est poussée vers $+\\infty$ ; entre deux fonctions de même limite, elle est forcée de les suivre. C'est aussi ainsi que l'on démontre les limites de $e^x$."
+        },
+        {
+          "id": "l-limites-fonctions-032",
+          "type": "rappel",
+          "titre": "Rappel : comparaison et gendarmes pour les suites",
+          "texte": "Si $u_n \\leqslant v_n$ à partir d'un certain rang et si $(u_n)$ tend vers $+\\infty$, alors $(v_n)$ tend vers $+\\infty$. Si $v_n \\leqslant u_n \\leqslant w_n$ à partir d'un certain rang et si $(v_n)$ et $(w_n)$ convergent vers le même réel $\\ell$, alors $(u_n)$ converge vers $\\ell$ : c'est le théorème des gendarmes. Pour une fonction, « à partir d'un certain rang » devient « pour $x$ assez grand ».",
+          "lien": "l-limites-suites-027"
+        },
+        {
+          "id": "l-limites-fonctions-033",
+          "type": "propriete",
+          "titre": "Théorèmes de comparaison",
+          "capacites": [
+            "bo-m-limites-fonctions-03"
+          ],
+          "texte": "Soit $f$, $g$ et $h$ trois fonctions et $\\ell$ un réel. Les limites sont prises en $+\\infty$ ; les énoncés restent vrais en $-\\infty$ et en un réel $a$, en adaptant « pour $x$ assez grand ».\n\n- **Minoration** : si $f(x) \\geqslant g(x)$ pour $x$ assez grand et si $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$, alors $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$.\n- **Majoration** : si $f(x) \\leqslant g(x)$ pour $x$ assez grand et si $\\lim\\limits_{x \\to +\\infty} g(x) = -\\infty$, alors $\\lim\\limits_{x \\to +\\infty} f(x) = -\\infty$.\n- **Théorème des gendarmes** : si $g(x) \\leqslant f(x) \\leqslant h(x)$ pour $x$ assez grand et si $\\lim\\limits_{x \\to +\\infty} g(x) = \\lim\\limits_{x \\to +\\infty} h(x) = \\ell$, alors $\\lim\\limits_{x \\to +\\infty} f(x) = \\ell$.",
+          "conditions": [
+            "L'inégalité est vraie pour $x$ assez grand ; en $-\\infty$, pour $x$ inférieur à un certain réel ; en $a$, pour $x$ assez proche de $a$.",
+            "Pour obtenir $+\\infty$, la fonction étudiée est **au-dessus** d'une fonction qui tend vers $+\\infty$ ; pour obtenir $-\\infty$, elle est **en dessous** d'une fonction qui tend vers $-\\infty$.",
+            "Pour les gendarmes, les deux fonctions qui encadrent ont la **même** limite $\\ell$, finie."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-limites-fonctions-034",
+          "type": "exemple",
+          "titre": "Coincer une fonction qui contient $\\cos x$",
+          "capacites": [
+            "bo-m-limites-fonctions-03"
+          ],
+          "enonce": "On rappelle que $-1 \\leqslant \\cos x \\leqslant 1$ pour tout réel $x$.\n\n**1.** Déterminer $\\lim\\limits_{x \\to +\\infty} (x + \\cos x)$.\n\n**2.** Déterminer $\\lim\\limits_{x \\to +\\infty} \\dfrac{2 + \\cos x}{x}$.",
+          "etapes": [
+            {
+              "texte": "**1.** Pour tout réel $x$, $\\cos x \\geqslant -1$, donc $x + \\cos x \\geqslant x - 1$.",
+              "pourquoi": "On ajoute $x$ aux deux membres de l'inégalité $\\cos x \\geqslant -1$ : le sens est conservé."
+            },
+            {
+              "texte": "$\\lim\\limits_{x \\to +\\infty} (x - 1) = +\\infty$. **Conclusion** : d'après le théorème de comparaison (minoration), $\\lim\\limits_{x \\to +\\infty} (x + \\cos x) = +\\infty$.",
+              "pourquoi": "Seule la minoration sert. La majoration $x + \\cos x \\leqslant x + 1$ ne donnerait rien : être sous une fonction qui tend vers $+\\infty$ n'empêche pas de rester petit."
+            },
+            {
+              "texte": "**2.** Pour tout réel $x$, $-1 \\leqslant \\cos x \\leqslant 1$, donc, en ajoutant $2$ aux trois membres : $1 \\leqslant 2 + \\cos x \\leqslant 3$."
+            },
+            {
+              "texte": "Pour $x > 0$, on divise les trois membres par $x$ : $\\dfrac{1}{x} \\leqslant \\dfrac{2 + \\cos x}{x} \\leqslant \\dfrac{3}{x}$.",
+              "pourquoi": "Diviser par un nombre strictement positif garde le sens des inégalités. On étudie la limite en $+\\infty$, donc on peut se limiter à $x > 0$."
+            },
+            {
+              "texte": "$\\lim\\limits_{x \\to +\\infty} \\dfrac{1}{x} = 0$ et $\\lim\\limits_{x \\to +\\infty} \\dfrac{3}{x} = 0$. **Conclusion** : d'après le théorème des gendarmes, $\\lim\\limits_{x \\to +\\infty} \\dfrac{2 + \\cos x}{x} = 0$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-035",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-03"
+          ],
+          "question": {
+            "enonce": "Une fonction $f$ vérifie $f(x) \\geqslant x^2 - 3$ pour tout réel $x$. Que peux-tu affirmer sur $\\lim\\limits_{x \\to -\\infty} f(x)$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "Elle vaut $+\\infty$.",
+                "Elle vaut $-\\infty$.",
+                "Elle vaut $-3$.",
+                "On ne peut rien affirmer : une minoration ne sert qu'en $+\\infty$."
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "La minoration pousse vers le haut : $f(x)$ est au-dessus de $x^2 - 3$, qui devient très grand.",
+                "$-3$ est la valeur de $x^2 - 3$ en $0$, pas sa limite en $-\\infty$.",
+                "Le théorème de comparaison vaut aussi en $-\\infty$, et $x^2 - 3$ tend vers $+\\infty$ en $-\\infty$, car la puissance est paire."
+              ]
+            },
+            "explication": "$x^2$ tend vers $+\\infty$ en $-\\infty$, donc $x^2 - 3$ aussi, par somme. Comme $f(x) \\geqslant x^2 - 3$ pour tout réel $x$, le théorème de comparaison donne $\\lim\\limits_{x \\to -\\infty} f(x) = +\\infty$."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-036",
+          "type": "rappel",
+          "titre": "Rappel : signe de la dérivée et variations",
+          "texte": "Sur un intervalle, si $f'(x) \\geqslant 0$, alors $f$ est croissante ; si $f'(x) \\leqslant 0$, alors $f$ est décroissante. Si $f$ est décroissante sur $]-\\infty\\,;\\,c]$ puis croissante sur $[c\\,;\\,+\\infty[$, alors $f(c)$ est son minimum : $f(x) \\geqslant f(c)$ pour tout réel $x$. Dérivées utiles : $\\left(e^x\\right)' = e^x$ et $\\left(x^n\\right)' = nx^{n-1}$.",
+          "lien": "1e:derivation"
+        },
+        {
+          "id": "l-limites-fonctions-037",
+          "type": "demonstration",
+          "titre": "Démonstration : limites de $e^x$ en $+\\infty$ et en $-\\infty$",
+          "capacites": [
+            "bo-m-suites-13",
+            "bo-m-limites-fonctions-03"
+          ],
+          "de": "l-limites-fonctions-016",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "On démontre les deux limites de $e^x$ données dans les limites de référence : $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$ et $\\lim\\limits_{x \\to -\\infty} e^x = 0$. On commence par comparer $e^x$ et $x$ : soit $g$ la fonction définie sur $\\mathbb{R}$ par $g(x) = e^x - x$.",
+              "pourquoi": "Pour obtenir $+\\infty$ par comparaison, il faut placer $e^x$ au-dessus d'une fonction qui tend vers $+\\infty$. La plus simple est $x \\mapsto x$."
+            },
+            {
+              "texte": "$g$ est dérivable sur $\\mathbb{R}$ et $g'(x) = e^x - 1$. Or $e^x - 1 \\geqslant 0 \\iff e^x \\geqslant e^0 \\iff x \\geqslant 0$.",
+              "pourquoi": "$1 = e^0$, et la fonction exponentielle est strictement croissante : $e^x \\geqslant e^0$ équivaut à $x \\geqslant 0$."
+            },
+            {
+              "texte": "Donc $g$ est décroissante sur $]-\\infty\\,;\\,0]$ et croissante sur $[0\\,;\\,+\\infty[$. Son minimum est $g(0) = e^0 - 0 = 1$. Ainsi, pour tout réel $x$, $g(x) \\geqslant 1 > 0$, c'est-à-dire $e^x > x$."
+            },
+            {
+              "texte": "$\\lim\\limits_{x \\to +\\infty} x = +\\infty$ et $e^x > x$ pour tout réel $x$. D'après le théorème de comparaison, $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$."
+            },
+            {
+              "texte": "Pour tout réel $x$, $e^x = \\dfrac{1}{e^{-x}}$. Quand $x$ tend vers $-\\infty$, $X = -x$ tend vers $+\\infty$, donc $e^{-x} = e^X$ tend vers $+\\infty$ d'après le point précédent.",
+              "pourquoi": "$e^x = \\dfrac{1}{e^{-x}}$ vient de $e^{-a} = \\dfrac{1}{e^a}$ appliqué à $a = -x$. Le passage par $X = -x$ est une composition en contexte, comme pour $e^{-x}$ dans la notion précédente."
+            },
+            {
+              "texte": "Par quotient, « $\\dfrac{1}{+\\infty}$ » donne $0$. **Conclusion** : $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$ et $\\lim\\limits_{x \\to -\\infty} e^x = 0$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-038",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-03",
+            "bo-m-suites-13"
+          ],
+          "question": {
+            "enonce": "Pour démontrer que $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$, quelle inégalité suffit-il d'établir pour tout réel $x$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$e^x > 0$",
+                "$e^x > x$",
+                "$e^x < x^2 + 1$",
+                "$e^x \\geqslant 1$"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "C'est vrai, mais la fonction nulle ne tend pas vers $+\\infty$ : être au-dessus de $0$ ne pousse pas $e^x$ vers l'infini.",
+                null,
+                "Une majoration ne permet pas d'obtenir $+\\infty$ : il faut placer $e^x$ au-dessus d'une fonction qui tend vers $+\\infty$. D'ailleurs, cette inégalité est fausse pour $x = 10$.",
+                "Cette inégalité est fausse pour $x < 0$ ; et la fonction constante égale à $1$ ne tend pas vers $+\\infty$."
+              ]
+            },
+            "explication": "Le théorème de comparaison demande une **minoration** par une fonction qui tend vers $+\\infty$. Avec $e^x > x$ et $\\lim\\limits_{x \\to +\\infty} x = +\\infty$, on conclut que $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-039",
+          "type": "piege",
+          "titre": "Diviser par un nombre négatif",
+          "capacites": [
+            "bo-m-limites-fonctions-03"
+          ],
+          "faux": "En $-\\infty$, on part de $1 \\leqslant 2 + \\cos x \\leqslant 3$ et on divise par $x$ : $\\dfrac{1}{x} \\leqslant \\dfrac{2 + \\cos x}{x} \\leqslant \\dfrac{3}{x}$.",
+          "juste": "En $-\\infty$, on prend $x < 0$ : diviser par $x$ change le sens des inégalités. On obtient $\\dfrac{3}{x} \\leqslant \\dfrac{2 + \\cos x}{x} \\leqslant \\dfrac{1}{x}$, puis la limite $0$ par le théorème des gendarmes.",
+          "explication": "Avec les suites, on divisait par $n > 0$ sans y penser. Avec une fonction, $x$ peut être négatif : vérifie toujours le signe du nombre par lequel tu multiplies ou tu divises. Par exemple, pour $x = -1$ : $\\dfrac{1}{-1} = -1$ est plus grand que $\\dfrac{3}{-1} = -3$."
+        },
+        {
+          "id": "l-limites-fonctions-040",
+          "type": "retenir",
+          "texte": "Au-dessus d'une fonction qui tend vers $+\\infty$ : limite $+\\infty$. Entre deux fonctions de même limite $\\ell$ : limite $\\ell$ (gendarmes). Grâce à $e^x > x$ : $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$, puis $\\lim\\limits_{x \\to -\\infty} e^x = 0$."
+        }
+      ]
+    },
+    {
+      "notion": "n-limites-fonctions-croissances-comparees",
+      "blocs": [
+        {
+          "id": "l-limites-fonctions-041",
+          "type": "idee",
+          "texte": "$e^x$ et $x^3$ tendent toutes deux vers $+\\infty$ en $+\\infty$. Laquelle va le plus vite ? Pour $x = 2$, $x^3 = 8$ dépasse $e^2 \\approx 7{,}4$. Mais pour $x = 10$, $x^3 = 1\\,000$ alors que $e^{10} \\approx 22\\,000$, et l'écart ne cesse de grandir. L'exponentielle finit toujours par l'emporter sur n'importe quelle puissance de $x$ : c'est la **croissance comparée**. Elle lève les formes indéterminées qui mélangent $e^x$ et puissances de $x$."
+        },
+        {
+          "id": "l-limites-fonctions-042",
+          "type": "propriete",
+          "titre": "Croissances comparées",
+          "capacites": [
+            "bo-m-limites-fonctions-07",
+            "bo-m-limites-fonctions-05"
+          ],
+          "texte": "Pour tout entier naturel $n \\geqslant 1$ :\n\n$$\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x^n} = +\\infty \\qquad \\lim\\limits_{x \\to +\\infty} x^n e^{-x} = 0 \\qquad \\lim\\limits_{x \\to -\\infty} x^n e^x = 0$$\n\nEn particulier, pour $n = 1$ : $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x} = +\\infty$, $\\lim\\limits_{x \\to +\\infty} x e^{-x} = 0$ et $\\lim\\limits_{x \\to -\\infty} x e^x = 0$.\n\nOn dit qu'en $+\\infty$, l'exponentielle **l'emporte** sur toute puissance de $x$ : dans ces formes indéterminées, c'est elle qui impose la limite.",
+          "conditions": [
+            "$n$ est un entier naturel non nul.",
+            "Les deux premières limites sont en $+\\infty$, la troisième en $-\\infty$.",
+            "Elles servent à lever les formes indéterminées « $\\dfrac{\\infty}{\\infty}$ » et « $0 \\times \\infty$ » qui mélangent $e^x$ et une puissance de $x$."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-limites-fonctions-043",
+          "type": "exemple",
+          "titre": "Une limite en $-\\infty$, une limite en $+\\infty$",
+          "capacites": [
+            "bo-m-limites-fonctions-05"
+          ],
+          "enonce": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = \\left(x^2 - 4\\right)e^{-x}$. Déterminer les limites de $f$ en $-\\infty$ et en $+\\infty$, puis interpréter graphiquement celle qui est finie.",
+          "etapes": [
+            {
+              "texte": "**En $-\\infty$** : $\\lim\\limits_{x \\to -\\infty} \\left(x^2 - 4\\right) = +\\infty$. Et $\\lim\\limits_{x \\to -\\infty} (-x) = +\\infty$, donc, par composition, $\\lim\\limits_{x \\to -\\infty} e^{-x} = +\\infty$.",
+              "pourquoi": "$x^2$ tend vers $+\\infty$ en $-\\infty$ (puissance paire), et on lui retranche la constante $4$."
+            },
+            {
+              "texte": "Par produit : $\\lim\\limits_{x \\to -\\infty} f(x) = +\\infty$. Ce n'est pas une forme indéterminée : la croissance comparée ne sert pas ici.",
+              "pourquoi": "« $+\\infty \\times (+\\infty)$ » donne $+\\infty$. Regarde toujours d'abord si les règles d'opérations suffisent."
+            },
+            {
+              "texte": "**En $+\\infty$** : $x^2 - 4$ tend vers $+\\infty$ et $e^{-x}$ tend vers $0$ : c'est la forme indéterminée « $\\infty \\times 0$ »."
+            },
+            {
+              "texte": "On développe : $f(x) = x^2 e^{-x} - 4e^{-x}$. Par croissance comparée, $\\lim\\limits_{x \\to +\\infty} x^2 e^{-x} = 0$ ; et $\\lim\\limits_{x \\to +\\infty} 4e^{-x} = 4 \\times 0 = 0$.",
+              "pourquoi": "En développant, on fait apparaître $x^n e^{-x}$ avec $n = 2$, une limite du cours."
+            },
+            {
+              "texte": "Par somme : $\\lim\\limits_{x \\to +\\infty} f(x) = 0 - 0 = 0$. **Conclusion** : $\\lim\\limits_{x \\to -\\infty} f(x) = +\\infty$ et $\\lim\\limits_{x \\to +\\infty} f(x) = 0$ ; l'axe des abscisses, d'équation $y = 0$, est asymptote horizontale à la courbe de $f$ en $+\\infty$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-044",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-05"
+          ],
+          "question": {
+            "enonce": "Quelle est la limite de $\\dfrac{e^x}{x^{10}}$ quand $x$ tend vers $+\\infty$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$0$",
+                "$1$",
+                "$+\\infty$",
+                "On ne peut pas conclure : c'est une forme indéterminée."
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "C'est l'inverse : l'exponentielle l'emporte et elle est au numérateur, donc le quotient devient très grand. C'est $\\dfrac{x^{10}}{e^x}$ qui tend vers $0$.",
+                "Les deux termes tendent vers $+\\infty$, mais à des vitesses très différentes : « $\\dfrac{\\infty}{\\infty}$ » ne vaut pas $1$.",
+                null,
+                "C'est bien la forme « $\\dfrac{\\infty}{\\infty}$ », mais la croissance comparée la lève : la limite est connue."
+              ]
+            },
+            "explication": "Par croissance comparée, $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x^n} = +\\infty$ pour tout entier $n \\geqslant 1$, même pour $n = 10$ : l'exponentielle finit par l'emporter."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-045",
+          "type": "demonstration",
+          "titre": "Démonstration : croissance comparée de $x^n$ et de $e^x$ en $+\\infty$",
+          "capacites": [
+            "bo-m-limites-fonctions-07"
+          ],
+          "de": "l-limites-fonctions-042",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "**Le cas $n = 1$.** Soit $h$ la fonction définie sur $[0\\,;\\,+\\infty[$ par $h(x) = e^x - \\dfrac{x^2}{2}$. Elle est dérivable et $h'(x) = e^x - x$.",
+              "pourquoi": "La dérivée de $\\dfrac{x^2}{2}$ est $\\dfrac{2x}{2} = x$. On compare $e^x$ à $\\dfrac{x^2}{2}$ pour faire apparaître ensuite $\\dfrac{e^x}{x}$."
+            },
+            {
+              "texte": "On a démontré que $e^x > x$ pour tout réel $x$. Donc $h'(x) > 0$ : $h$ est croissante sur $[0\\,;\\,+\\infty[$, et, pour tout $x \\geqslant 0$, $h(x) \\geqslant h(0) = e^0 - 0 = 1$.",
+              "pourquoi": "L'inégalité $e^x > x$ vient de la démonstration des limites de $e^x$, dans la notion « Comparaison et encadrement »."
+            },
+            {
+              "texte": "Ainsi, pour tout $x \\geqslant 0$, $e^x - \\dfrac{x^2}{2} \\geqslant 1 > 0$, soit $e^x > \\dfrac{x^2}{2}$. Pour $x > 0$, on divise par $x$, qui est strictement positif : $\\dfrac{e^x}{x} > \\dfrac{x}{2}$.",
+              "pourquoi": "$\\dfrac{x^2}{2} \\div x = \\dfrac{x^2}{2x} = \\dfrac{x}{2}$, et diviser par un nombre strictement positif garde le sens de l'inégalité."
+            },
+            {
+              "texte": "$\\lim\\limits_{x \\to +\\infty} \\dfrac{x}{2} = +\\infty$. D'après le théorème de comparaison, $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x} = +\\infty$."
+            },
+            {
+              "texte": "**Le cas général.** Soit $n \\geqslant 1$ un entier. Pour $x > 0$, $e^x = \\left(e^{\\frac{x}{n}}\\right)^n$, donc $\\dfrac{e^x}{x^n} = \\left(\\dfrac{e^{\\frac{x}{n}}}{x}\\right)^n = \\left(\\dfrac{1}{n} \\times \\dfrac{e^{\\frac{x}{n}}}{\\frac{x}{n}}\\right)^n$.",
+              "pourquoi": "On utilise $\\left(e^a\\right)^n = e^{na}$ avec $a = \\dfrac{x}{n}$. Puis $\\dfrac{1}{n} \\times \\dfrac{e^{\\frac{x}{n}}}{\\frac{x}{n}} = \\dfrac{1}{n} \\times \\dfrac{n\\,e^{\\frac{x}{n}}}{x} = \\dfrac{e^{\\frac{x}{n}}}{x}$."
+            },
+            {
+              "texte": "Quand $x$ tend vers $+\\infty$, $X = \\dfrac{x}{n}$ tend vers $+\\infty$, donc $\\dfrac{e^X}{X}$ tend vers $+\\infty$ d'après le cas $n = 1$. Par produit par $\\dfrac{1}{n} > 0$, puis en élevant à la puissance $n$ : $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x^n} = +\\infty$.",
+              "pourquoi": "Une puissance $n$-ième est un produit de $n$ facteurs égaux, qui tendent tous vers $+\\infty$ : par produit, elle tend vers $+\\infty$."
+            },
+            {
+              "texte": "Pour tout $x > 0$, $x^n e^{-x} = \\dfrac{x^n}{e^x} = \\dfrac{1}{\\frac{e^x}{x^n}}$. Par quotient, « $\\dfrac{1}{+\\infty}$ » donne $0$ : $\\lim\\limits_{x \\to +\\infty} x^n e^{-x} = 0$."
+            },
+            {
+              "texte": "**En $-\\infty$.** On pose $X = -x$, qui tend vers $+\\infty$ quand $x$ tend vers $-\\infty$. Alors $x^n e^x = (-X)^n e^{-X} = (-1)^n X^n e^{-X}$. Comme $X^n e^{-X}$ tend vers $0$ et que $(-1)^n$ vaut $1$ ou $-1$, **conclusion** : $\\lim\\limits_{x \\to -\\infty} x^n e^x = 0$.",
+              "pourquoi": "$x = -X$, donc $x^n = (-X)^n = (-1)^n X^n$, et $e^x = e^{-X}$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-046",
+          "type": "methode",
+          "titre": "Comment choisir la méthode pour calculer une limite ?",
+          "capacites": [
+            "bo-m-limites-fonctions-05"
+          ],
+          "etapes": [
+            "Écris la limite de chaque morceau, avec les limites de référence et la composition pour $e^{u(x)}$, puis applique les règles d'opérations. Si ce n'est pas une forme indéterminée, c'est fini.",
+            "Forme indéterminée avec seulement des puissances de $x$ : factorise par le terme de plus haut degré, en haut et en bas.",
+            "Forme indéterminée qui mélange $e^x$ et des puissances de $x$ : fais apparaître $\\dfrac{e^x}{x^n}$, $x^n e^{-x}$ ou, en $-\\infty$, $x^n e^x$, en développant ou en factorisant par le terme qui l'emporte. Conclus par croissance comparée.",
+            "Un morceau sans limite, comme $\\cos x$ : encadre-le, puis applique le théorème de comparaison ou celui des gendarmes.",
+            "Cite la règle à chaque étape : « par somme », « par produit », « par quotient », « par composition », « par croissance comparée », « d'après le théorème des gendarmes »."
+          ],
+          "exemple": "l-limites-fonctions-047"
+        },
+        {
+          "id": "l-limites-fonctions-047",
+          "type": "exemple",
+          "titre": "Trois limites, trois méthodes",
+          "capacites": [
+            "bo-m-limites-fonctions-05"
+          ],
+          "enonce": "**a.** Déterminer $\\lim\\limits_{x \\to +\\infty} \\left(e^x - x^2\\right)$.\n\n**b.** Déterminer $\\lim\\limits_{x \\to -\\infty} \\left[(x + 1)e^x + 2\\right]$, puis interpréter graphiquement.\n\n**c.** Déterminer $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x^2 + 1}$.",
+          "etapes": [
+            {
+              "texte": "**a.** $e^x$ tend vers $+\\infty$ et $-x^2$ vers $-\\infty$ : c'est la forme indéterminée « $+\\infty - \\infty$ », avec $e^x$ et une puissance de $x$."
+            },
+            {
+              "texte": "On met en facteur $e^x$, le terme qui l'emporte : $e^x - x^2 = e^x\\left(1 - x^2 e^{-x}\\right)$. Par croissance comparée, $x^2 e^{-x}$ tend vers $0$, donc $1 - x^2 e^{-x}$ tend vers $1$. Par produit : $\\lim\\limits_{x \\to +\\infty} \\left(e^x - x^2\\right) = +\\infty$.",
+              "pourquoi": "On vérifie en développant : $e^x \\times x^2 e^{-x} = x^2 e^{x - x} = x^2$. Puis « $+\\infty \\times 1$ » donne $+\\infty$."
+            },
+            {
+              "texte": "**b.** $x + 1$ tend vers $-\\infty$ et $e^x$ vers $0$ : c'est la forme indéterminée « $\\infty \\times 0$ ». On développe : $(x + 1)e^x + 2 = x e^x + e^x + 2$."
+            },
+            {
+              "texte": "Par croissance comparée, $\\lim\\limits_{x \\to -\\infty} x e^x = 0$ ; et $\\lim\\limits_{x \\to -\\infty} e^x = 0$. Par somme, la limite vaut $0 + 0 + 2 = 2$ : la droite d'équation $y = 2$ est asymptote horizontale à la courbe en $-\\infty$.",
+              "pourquoi": "$x e^x$ est la forme $x^n e^x$ en $-\\infty$, avec $n = 1$."
+            },
+            {
+              "texte": "**c.** Le numérateur et le dénominateur tendent vers $+\\infty$ : forme « $\\dfrac{\\infty}{\\infty}$ ». Pour $x \\neq 0$, on met $x^2$ en facteur au dénominateur : $\\dfrac{e^x}{x^2 + 1} = \\dfrac{e^x}{x^2\\left(1 + \\frac{1}{x^2}\\right)} = \\dfrac{e^x}{x^2} \\times \\dfrac{1}{1 + \\frac{1}{x^2}}$.",
+              "pourquoi": "Le but est de faire apparaître $\\dfrac{e^x}{x^2}$, dont la limite est connue. On vérifie : $x^2\\left(1 + \\dfrac{1}{x^2}\\right) = x^2 + 1$."
+            },
+            {
+              "texte": "Par croissance comparée, $\\dfrac{e^x}{x^2}$ tend vers $+\\infty$ ; et $\\dfrac{1}{1 + \\frac{1}{x^2}}$ tend vers $\\dfrac{1}{1} = 1$. Par produit : $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x^2 + 1} = +\\infty$."
+            },
+            {
+              "texte": "**Conclusion** : $\\lim\\limits_{x \\to +\\infty} \\left(e^x - x^2\\right) = +\\infty$ ; $\\lim\\limits_{x \\to -\\infty} \\left[(x + 1)e^x + 2\\right] = 2$, d'où une asymptote horizontale d'équation $y = 2$ en $-\\infty$ ; $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x^2 + 1} = +\\infty$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-048",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-05"
+          ],
+          "question": {
+            "enonce": "Quelle est la limite de $x^2 e^x + 3$ quand $x$ tend vers $-\\infty$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 3,
+              "tolerance": 0
+            },
+            "explication": "$x^2$ tend vers $+\\infty$ et $e^x$ vers $0$ : forme « $\\infty \\times 0$ ». Par croissance comparée, $\\lim\\limits_{x \\to -\\infty} x^2 e^x = 0$. Par somme, la limite vaut $0 + 3 = 3$."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-049",
+          "type": "exemple",
+          "titre": "Une exponentielle de $0{,}5x$ : changer de variable",
+          "capacites": [
+            "bo-m-limites-fonctions-05"
+          ],
+          "enonce": "Déterminer $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^{0{,}5x}}{x}$.",
+          "etapes": [
+            {
+              "texte": "$e^{0{,}5x}$ et $x$ tendent vers $+\\infty$ : forme « $\\dfrac{\\infty}{\\infty}$ ». La croissance comparée porte sur $\\dfrac{e^X}{X}$, avec la même expression $X$ en exposant et au dénominateur. Ici, l'exposant est $0{,}5x$, pas $x$.",
+              "pourquoi": "$0{,}5x$ tend vers $+\\infty$ par produit, donc $e^{0{,}5x}$ aussi, par composition."
+            },
+            {
+              "texte": "On fait apparaître $0{,}5x$ au dénominateur : pour $x > 0$, $\\dfrac{e^{0{,}5x}}{x} = 0{,}5 \\times \\dfrac{e^{0{,}5x}}{0{,}5x}$.",
+              "pourquoi": "$0{,}5 \\times \\dfrac{1}{0{,}5x} = \\dfrac{0{,}5}{0{,}5x} = \\dfrac{1}{x}$ : l'égalité est juste. Un sujet de bac peut d'ailleurs donner directement cette écriture."
+            },
+            {
+              "texte": "On pose $X = 0{,}5x$, qui tend vers $+\\infty$ quand $x$ tend vers $+\\infty$. Par croissance comparée, $\\lim\\limits_{X \\to +\\infty} \\dfrac{e^X}{X} = +\\infty$ ; donc, par composition, $\\dfrac{e^{0{,}5x}}{0{,}5x}$ tend vers $+\\infty$."
+            },
+            {
+              "texte": "Par produit, « $0{,}5 \\times (+\\infty)$ » donne $+\\infty$. **Conclusion** : $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^{0{,}5x}}{x} = +\\infty$."
+            }
+          ]
+        },
+        {
+          "id": "l-limites-fonctions-050",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-limites-fonctions-05"
+          ],
+          "question": {
+            "enonce": "Quelle est la limite de $x e^{-2x}$ quand $x$ tend vers $+\\infty$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$0$",
+                "$+\\infty$",
+                "$\\dfrac{1}{2}$",
+                "On ne peut pas conclure : la croissance comparée ne vaut que pour $x e^{-x}$."
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "L'exponentielle l'emporte : $e^{-2x}$ tend vers $0$ bien plus vite que $x$ ne grandit.",
+                "Le facteur $\\dfrac{1}{2}$ apparaît dans le calcul, mais il multiplie une expression qui tend vers $0$.",
+                "Il suffit de changer de variable : avec $X = 2x$, on se ramène à $X e^{-X}$."
+              ]
+            },
+            "explication": "$x e^{-2x} = \\dfrac{1}{2} \\times 2x\\,e^{-2x}$. Avec $X = 2x$, qui tend vers $+\\infty$, $X e^{-X}$ tend vers $0$ par croissance comparée. Par produit par $\\dfrac{1}{2}$, la limite vaut $0$."
+          }
+        },
+        {
+          "id": "l-limites-fonctions-051",
+          "type": "piege",
+          "titre": "Pas de croissance comparée sans forme indéterminée",
+          "capacites": [
+            "bo-m-limites-fonctions-05"
+          ],
+          "faux": "Par croissance comparée, $\\lim\\limits_{x \\to +\\infty} x e^x = 0$.",
+          "juste": "En $+\\infty$, $x$ et $e^x$ tendent tous deux vers $+\\infty$ : par produit, $\\lim\\limits_{x \\to +\\infty} x e^x = +\\infty$. C'est en $-\\infty$ que $\\lim\\limits_{x \\to -\\infty} x e^x = 0$.",
+          "explication": "La croissance comparée ne sert qu'à lever une forme indéterminée. Avant de la citer, écris la limite de chaque facteur : si les règles d'opérations concluent, c'est fini. Retiens les trois formes du cours : $\\dfrac{e^x}{x^n}$ et $x^n e^{-x}$ en $+\\infty$, $x^n e^x$ en $-\\infty$."
+        },
+        {
+          "id": "l-limites-fonctions-052",
+          "type": "retenir",
+          "texte": "En $+\\infty$ : $\\dfrac{e^x}{x^n}$ tend vers $+\\infty$ et $x^n e^{-x}$ tend vers $0$ ; en $-\\infty$ : $x^n e^x$ tend vers $0$. Pour une limite : les opérations d'abord ; en cas de forme indéterminée, factorisation, croissance comparée ou encadrement."
+        }
+      ]
+    }
+  ]
+}

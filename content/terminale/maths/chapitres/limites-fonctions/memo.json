@@ -1,0 +1,79 @@
+[
+  {
+    "id": "m-limites-fonctions-limites-reference",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-operations",
+    "genre": "formule",
+    "titre": "Limites de référence",
+    "enonce": "Pour tout entier $n \\geqslant 1$ :\n\n- en $+\\infty$ : $x^n$, $\\sqrt{x}$ et $e^x$ tendent vers $+\\infty$ ; $\\dfrac{1}{x^n}$ tend vers $0$ ;\n- en $-\\infty$ : $x^n$ tend vers $+\\infty$ si $n$ est pair, vers $-\\infty$ si $n$ est impair ; $\\dfrac{1}{x^n}$ et $e^x$ tendent vers $0$ ;\n- en $0$ : $\\dfrac{1}{x^n}$ tend vers $+\\infty$ à droite ; à gauche, vers $+\\infty$ si $n$ est pair, vers $-\\infty$ si $n$ est impair.",
+    "conditions": "$\\sqrt{x}$ n'est définie que pour $x \\geqslant 0$. Les opérations sur ces limites suivent les mêmes tableaux que pour les suites.",
+    "exemple": "$\\lim\\limits_{x \\to -\\infty} x^3 = -\\infty$ ; $\\lim\\limits_{x \\to -\\infty} e^x = 0$, donc l'axe des abscisses est asymptote à la courbe de l'exponentielle en $-\\infty$.",
+    "simplifie": {
+      "coeur": "$e^x \\to +\\infty$ en $+\\infty$ et $e^x \\to 0$ en $-\\infty$ ; $x^n \\to +\\infty$ en $+\\infty$ ; $\\dfrac{1}{x^n} \\to 0$ en $\\pm\\infty$",
+      "moyenMemo": "En $-\\infty$, la parité de $n$ décide du signe de $x^n$.",
+      "motCle": "limites-reference"
+    }
+  },
+  {
+    "id": "m-limites-fonctions-quotient-par-zero",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-operations",
+    "genre": "propriete",
+    "titre": "Dénominateur qui tend vers 0, formes indéterminées",
+    "enonce": "Si le numérateur tend vers un réel $\\ell \\neq 0$ et le dénominateur vers $0$, le quotient tend vers l'infini : le signe dépend de $\\ell$ et du signe du dénominateur, $0^+$ ou $0^-$, à étudier à droite et à gauche de $a$.\n\nLes quatre formes indéterminées sont $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$ et $\\dfrac{0}{0}$ : on les lève en factorisant par le terme qui l'emporte, ou par $x - a$ pour $\\dfrac{0}{0}$ en un réel $a$.",
+    "conditions": "Le dénominateur garde un signe constant du côté de $a$ étudié.",
+    "exemple": "$\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} \\dfrac{2x + 1}{x - 1} = +\\infty$ et $\\lim\\limits_{\\substack{x \\to 1 \\\\ x < 1}} \\dfrac{2x + 1}{x - 1} = -\\infty$.",
+    "simplifie": {
+      "coeur": "« $\\dfrac{\\ell}{0}$ » avec $\\ell \\neq 0$ : infini, signe donné par $\\ell$ et par $0^+$ ou $0^-$. FI : $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$, $\\dfrac{0}{0}$",
+      "moyenMemo": "Dénominateur proche de 0 : regarde son signe à gauche et à droite.",
+      "motCle": "quotient-par-zero"
+    }
+  },
+  {
+    "id": "m-limites-fonctions-croissances-comparees",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-croissances-comparees",
+    "genre": "formule",
+    "titre": "Croissances comparées",
+    "enonce": "Pour tout entier $n \\geqslant 1$ :\n\n$$\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x^n} = +\\infty \\qquad \\lim\\limits_{x \\to +\\infty} x^n e^{-x} = 0 \\qquad \\lim\\limits_{x \\to -\\infty} x^n e^x = 0$$\n\nEn $+\\infty$, l'exponentielle l'emporte sur toute puissance de $x$.",
+    "conditions": "Seulement pour lever une forme indéterminée. Avec $e^{ax}$, on change de variable : $X = ax$.",
+    "exemple": "$\\left(x^2 - 4\\right)e^{-x} = x^2 e^{-x} - 4e^{-x}$ tend vers $0 - 0 = 0$ en $+\\infty$.",
+    "simplifie": {
+      "coeur": "$\\dfrac{e^x}{x^n} \\to +\\infty$ et $x^n e^{-x} \\to 0$ en $+\\infty$ ; $x^n e^x \\to 0$ en $-\\infty$",
+      "moyenMemo": "L'exponentielle gagne toujours.",
+      "motCle": "croissances-comparees",
+      "image": "Deux courbes qui montent : celle de eˣ finit par passer au-dessus de celle de x³ et la laisse loin derrière."
+    }
+  },
+  {
+    "id": "m-limites-fonctions-choisir-methode",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-croissances-comparees",
+    "genre": "methode",
+    "titre": "Quelle méthode pour une limite ?",
+    "enonce": "- Limite de chaque morceau, puis règles d'opérations : sans forme indéterminée, c'est fini.\n- Seulement des puissances de $x$ : factoriser par le terme de plus haut degré.\n- $e^x$ et puissances de $x$ : faire apparaître $\\dfrac{e^x}{x^n}$, $x^n e^{-x}$ ou $x^n e^x$, puis croissance comparée.\n- Un morceau sans limite, comme $\\cos x$ : encadrer, puis comparaison ou gendarmes.\n- $e^{u(x)}$ : limite de $u(x)$ d'abord, puis composition.",
+    "conditions": "Sur la copie, citer la règle utilisée à chaque étape.",
+    "exemple": "$e^x - x^2 = e^x\\left(1 - x^2 e^{-x}\\right)$ tend vers $+\\infty$ en $+\\infty$.",
+    "simplifie": {
+      "coeur": "Opérations ; sinon factoriser (puissances de $x$), croissance comparée ($e^x$ et $x^n$), encadrer (morceau sans limite)",
+      "moyenMemo": "D'abord les règles, ensuite seulement les astuces.",
+      "motCle": "choisir-methode"
+    }
+  },
+  {
+    "id": "m-limites-fonctions-asymptotes",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-definitions",
+    "genre": "definition",
+    "titre": "Limite et asymptote",
+    "enonce": "- $\\lim\\limits_{x \\to +\\infty} f(x) = \\ell$, ou en $-\\infty$ : la droite d'équation $y = \\ell$ est asymptote horizontale à $\\mathcal{C}_f$.\n- $\\lim\\limits_{x \\to a} f(x) = +\\infty$ ou $-\\infty$, même d'un seul côté de $a$ : la droite d'équation $x = a$ est asymptote verticale à $\\mathcal{C}_f$.\n\nInversement, une asymptote lue sur le graphique donne la limite correspondante.",
+    "conditions": "$\\ell$ et $a$ sont des réels. La position de $\\mathcal{C}_f$ par rapport à la droite $y = \\ell$ se lit sur le signe de $f(x) - \\ell$.",
+    "exemple": "$f(x) = 2 + \\dfrac{1}{x - 1}$ : asymptote verticale d'équation $x = 1$, asymptote horizontale d'équation $y = 2$ en $+\\infty$ et en $-\\infty$.",
+    "simplifie": {
+      "coeur": "Limite finie $\\ell$ en $\\pm\\infty$ : asymptote $y = \\ell$. Limite infinie en un réel $a$ : asymptote $x = a$",
+      "moyenMemo": "Là où tend $x$ donne « $x = a$ » ; la limite de $f(x)$ donne « $y = \\ell$ ».",
+      "motCle": "asymptotes",
+      "image": "Une courbe qui se colle de plus en plus près à une droite en pointillés."
+    }
+  }
+]
