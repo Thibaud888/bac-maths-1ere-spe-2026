@@ -13,7 +13,7 @@
           "id": "l-limites-suites-002",
           "type": "rappel",
           "titre": "Rappel : suite croissante, suite majorée",
-          "texte": "Une suite $(u_n)$ est **croissante** si $u_n \\leqslant u_{n+1}$ pour tout entier naturel $n$, **décroissante** si $u_n \\geqslant u_{n+1}$ pour tout $n$.\n\nElle est **majorée** s'il existe un réel $M$ tel que $u_n \\leqslant M$ pour tout $n$, **minorée** s'il existe un réel $m$ tel que $u_n \\geqslant m$ pour tout $n$.\n\nDire que $(u_n)$ n'est **pas majorée**, c'est dire qu'aucun réel ne convient comme majorant : pour tout réel $A$, il existe au moins un entier $N$ tel que $u_N > A$.",
+          "texte": "Une suite $(u_n)$ est **croissante** si $u_n \\leqslant u_{n+1}$ pour tout entier naturel $n$, **décroissante** si $u_n \\geqslant u_{n+1}$ pour tout $n$.\n\nElle est **majorée** s'il existe un réel $M$ tel que $u_n \\leqslant M$ pour tout $n$ ; $M$ est alors **un majorant** de la suite. Elle est **minorée** s'il existe un réel $m$ tel que $u_n \\geqslant m$ pour tout $n$ ; $m$ est alors **un minorant** de la suite.\n\nDire que $(u_n)$ n'est **pas majorée**, c'est dire qu'aucun réel ne convient comme majorant : pour tout réel $A$, il existe au moins un entier $N$ tel que $u_N > A$.",
           "lien": "n-recurrence-suites-encadrement-variation"
         },
         {
@@ -116,6 +116,15 @@
               "texte": "Le cas d'une suite décroissante et non minorée se traite de la même façon, avec les intervalles $]-\\infty\\,;\\,A]$ : on obtient $\\lim\\limits_{n \\to +\\infty} u_n = -\\infty$."
             }
           ]
+        },
+        {
+          "id": "l-limites-suites-074",
+          "type": "propriete",
+          "titre": "Une suite qui tend vers $+\\infty$ n'est pas majorée",
+          "capacites": ["bo-m-suites-01"],
+          "texte": "- Toute suite qui tend vers $+\\infty$ n'est pas majorée.\n- Toute suite qui tend vers $-\\infty$ n'est pas minorée.\n\nEn effet, si $(u_n)$ tend vers $+\\infty$, soit $M$ un réel. L'intervalle $[M + 1\\,;\\,+\\infty[$ contient tous les termes à partir d'un certain rang $N$, donc $u_N \\geqslant M + 1 > M$ : $M$ n'est pas un majorant. De même pour $-\\infty$. Par exemple, $\\left(n^2\\right)$ tend vers $+\\infty$ : aucun réel ne la majore.\n\nLa réciproque est fausse : une suite non majorée ne tend pas forcément vers $+\\infty$. Si $u_n = n\\left(1 + (-1)^n\\right)$, alors $u_n = 2n$ pour $n$ pair : ces termes finissent par dépasser tout réel, donc la suite n'est pas majorée. Mais $u_n = 0$ pour $n$ impair : $[1\\,;\\,+\\infty[$ ne contient aucun de ces termes, donc la suite ne tend pas vers $+\\infty$.",
+          "conditions": ["La limite de $(u_n)$ est déjà connue : $+\\infty$ pour le premier point, $-\\infty$ pour le second."],
+          "admise": false
         },
         {
           "id": "l-limites-suites-008",
@@ -309,8 +318,9 @@
             "Écris la limite de chaque morceau et repère la forme : $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$ ou $\\dfrac{0}{0}$.",
             "Pour une somme de puissances de $n$, comme $n^2 - 5n$, mets en facteur le **terme dominant**, c'est-à-dire celui de plus haut degré : $n^2 - 5n = n^2\\left(1 - \\dfrac{5}{n}\\right)$.",
             "Pour un quotient, mets en facteur le terme de plus haut degré au numérateur **et** au dénominateur, puis simplifie la fraction. Si les degrés diffèrent, il reste une puissance de $n$, en haut ou en bas : elle tend vers $+\\infty$.",
+            "Si $n$ et $\\sqrt{n}$ apparaissent ensemble, mets $n$ en facteur : $\\sqrt{n}$ grandit moins vite que $n$, car $\\dfrac{\\sqrt{n}}{n} = \\dfrac{\\sqrt{n}}{\\sqrt{n} \\times \\sqrt{n}} = \\dfrac{1}{\\sqrt{n}}$, qui tend vers $0$. Par exemple, pour $n \\geqslant 1$, $\\dfrac{2n}{n + \\sqrt{n}} = \\dfrac{2n}{n\\left(1 + \\frac{1}{\\sqrt{n}}\\right)} = \\dfrac{2}{1 + \\frac{1}{\\sqrt{n}}}$, qui tend vers $\\dfrac{2}{1} = 2$.",
             "Vérifie que chaque morceau restant a une limite connue, comme $\\dfrac{5}{n}$ qui tend vers $0$, puis conclus avec les tableaux : la forme n'est plus indéterminée.",
-            "Contrôle ton résultat en calculant un terme pour un grand $n$, par exemple $n = 1\\,000$."
+            "Contrôle ton résultat en calculant un terme pour un grand $n$, par exemple $n = 1\\,000$. À degrés égaux en haut et en bas, la limite est le quotient des coefficients des termes de plus haut degré : $\\dfrac{3n}{n + 2}$ tend vers $\\dfrac{3}{1} = 3$. Ce raccourci n'est pas une justification : sur une copie, factorise quand même."
           ],
           "exemple": "l-limites-suites-022"
         },
@@ -814,7 +824,7 @@
           "type": "propriete",
           "titre": "Suite croissante majorée, suite décroissante minorée",
           "capacites": ["bo-m-suites-06"],
-          "texte": "- Toute suite croissante et majorée converge.\n- Toute suite décroissante et minorée converge.\n\nC'est le **théorème de convergence monotone** : une suite **monotone** est une suite croissante, ou décroissante. Il affirme qu'une limite $\\ell$ existe, mais il ne donne pas sa valeur. Si $u_n \\leqslant M$ pour tout $n$, le passage à la limite donne $\\ell \\leqslant M$ ; mais $\\ell$ n'est pas forcément égale à $M$.\n\nAvec la propriété des suites croissantes non majorées, vue au début du chapitre, on en déduit : une suite croissante a toujours une limite. Cette limite est finie si la suite est majorée, et vaut $+\\infty$ sinon.",
+          "texte": "- Toute suite croissante et majorée converge.\n- Toute suite décroissante et minorée converge.\n\nC'est le **théorème de convergence monotone** : une suite **monotone** est une suite croissante, ou décroissante. Il affirme qu'une limite $\\ell$ existe, mais il ne donne pas sa valeur. Si $u_n \\leqslant M$ pour tout $n$, le passage à la limite donne $\\ell \\leqslant M$ ; mais $\\ell$ n'est pas forcément égale à $M$.\n\nLa réciproque, « toute suite convergente est monotone », est fausse : $\\dfrac{(-1)^n}{n}$ converge vers $0$, mais ses termes $-1$ ; $\\dfrac{1}{2}$ ; $-\\dfrac{1}{3}$… montent puis descendent.\n\nAvec la propriété des suites croissantes non majorées, vue au début du chapitre, on en déduit : une suite croissante a toujours une limite. Cette limite est finie si la suite est majorée, et vaut $+\\infty$ sinon.",
           "conditions": [
             "Croissante **et** majorée, ou décroissante **et** minorée : les deux hypothèses sont nécessaires.",
             "Le majorant (ou le minorant) est un réel fixé, qui ne dépend pas de $n$."
@@ -882,7 +892,7 @@
             "Si la suite est définie par récurrence, sans formule, étudie son sens de variation : signe de $u_{n+1} - u_n$, ou récurrence.",
             "Cherche un majorant (si elle est croissante) ou un minorant (si elle est décroissante) **constant**, souvent par récurrence.",
             "Conclus en citant les deux hypothèses : « $(u_n)$ est croissante et majorée par $M$ ; d'après le théorème de convergence monotone, elle converge ».",
-            "Pour une limite infinie : une suite croissante et non majorée tend vers $+\\infty$ ; une suite minorée par une suite qui tend vers $+\\infty$ aussi (comparaison)."
+            "Pour une limite infinie : une suite croissante et non majorée tend vers $+\\infty$ ; une suite minorée par une suite qui tend vers $+\\infty$ aussi (comparaison). Pour prouver qu'une suite n'est pas majorée, écris « Soit $A$ un réel », puis trouve un rang $N$ tel que $u_N > A$, souvent grâce à une minoration."
           ],
           "exemple": "l-limites-suites-055"
         },
@@ -992,6 +1002,34 @@
             },
             "explication": "Si $(u_n)$ était majorée, elle convergerait, puisqu'elle est croissante. Elle n'est donc pas majorée. Croissante et non majorée : elle tend vers $+\\infty$."
           }
+        },
+        {
+          "id": "l-limites-suites-073",
+          "type": "exemple",
+          "titre": "Montrer qu'une suite n'est pas majorée",
+          "capacites": ["bo-m-suites-07", "bo-m-logique-06"],
+          "enonce": "Soit $(u_n)$ une suite croissante. On admet que, pour tout entier naturel $n$, $u_n \\geqslant 2n - 5$.\n\n**1.** Démontrer que la suite $(u_n)$ n'est pas majorée.\n\n**2.** En déduire la limite de la suite $(u_n)$.",
+          "etapes": [
+            {
+              "texte": "**1.** Montrer que $(u_n)$ n'est pas majorée, c'est montrer qu'aucun réel n'en est un majorant. Pour chaque réel $A$, on cherche donc un rang $N$ tel que $u_N > A$.",
+              "pourquoi": "« $A$ est un majorant » signifie : pour tout entier naturel $n$, $u_n \\leqslant A$. La négation de cette phrase est : il existe au moins un entier $N$ tel que $u_N > A$. Un seul terme qui dépasse $A$ suffit."
+            },
+            {
+              "texte": "Soit $A$ un réel. On choisit un entier naturel $N$ tel que $N > \\dfrac{A + 5}{2}$.",
+              "pourquoi": "On veut que la minoration donne un terme strictement supérieur à $A$ : il suffit que $2N - 5 > A$, c'est-à-dire $2N > A + 5$, soit $N > \\dfrac{A + 5}{2}$. Un tel entier existe toujours : les entiers naturels finissent par dépasser n'importe quel réel. Si $\\dfrac{A + 5}{2} < 0$, $N = 0$ convient."
+            },
+            {
+              "texte": "Alors $2N > A + 5$, donc $2N - 5 > A$. La minoration admise, au rang $N$, donne : $u_N \\geqslant 2N - 5 > A$. Le terme $u_N$ dépasse strictement $A$ : $A$ n'est pas un majorant de $(u_n)$.",
+              "pourquoi": "Par exemple, pour $A = 1\\,000$ : $\\dfrac{1\\,000 + 5}{2} = 502{,}5$, donc $N = 503$ convient. En effet, $u_{503} \\geqslant 2 \\times 503 - 5 = 1\\,001 > 1\\,000$."
+            },
+            {
+              "texte": "Ce raisonnement vaut pour tout réel $A$ : aucun réel ne majore la suite. **Conclusion de la question 1** : la suite $(u_n)$ n'est pas majorée."
+            },
+            {
+              "texte": "**2.** La suite $(u_n)$ est croissante et non majorée. **Conclusion** : d'après la propriété des suites croissantes non majorées, $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$.",
+              "pourquoi": "On cite les deux hypothèses, puis la propriété. Autre voie : $u_n \\geqslant 2n - 5$ et $2n - 5$ tend vers $+\\infty$, donc le théorème de comparaison donne la même limite. Et comme une suite qui tend vers $+\\infty$ n'est pas majorée, cette voie répond aussi à la question 1."
+            }
+          ]
         },
         {
           "id": "l-limites-suites-059",

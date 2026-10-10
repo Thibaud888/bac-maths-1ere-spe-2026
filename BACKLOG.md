@@ -494,13 +494,11 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `validateDOMNesting` (`<a>` dans `<a>`) relevé par `controle-rendu.mjs maths denombrement` :
   `SourceDeLExercice` (`src/components/terminale/FicheExercice.tsx`) met le lien de la source
   dans la carte cliquable. DoD : plus d'avertissement, `verify.mjs` OK.
-- [ ] (P2) Les formules s'affichent en code brut ($…$) dans la note « D'après … » des sujets
-  type bac — vu au rendu de Limites de suites ; Récurrence et Dénombrement aussi (toutes leurs
-  notes d'adaptation ou presque contiennent du LaTeX). `SourceDeLExercice`
-  (`src/components/terminale/FicheExercice.tsx`, l. 54) affiche `source.adaptation` en texte
-  simple : passer par le composant qui rend les formules (`TextWithMath`) ; `controle-rendu.mjs`
-  pourrait signaler un `$` resté visible. DoD : notes rendues sur les trois chapitres,
-  `verify.mjs` OK.
+- [x] (P2) Les formules s'affichent en code brut ($…$) dans la note « D'après … » des sujets
+  type bac — vu au rendu de Limites de suites, et sur Récurrence et Dénombrement. La note
+  d'adaptation passe par `TextWithMath` (`SourceDeLExercice`,
+  `src/components/terminale/FicheExercice.tsx`) ; test ajouté (`Entrainement.test.tsx`).
+  PR : #118.
 - [ ] (P2) Une page de cours peut se figer si une question contient du code avec « ** » —
   relevé par la relecture de Limites de suites (bloc 068, corrigé côté contenu) : un `**` sans
   pendant dans un texte (puissance Python hors du champ `code`) fait boucler sans fin
@@ -594,16 +592,19 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     planchers atteints ; relecteur PASS dès le 1er tour, puis aux 2e et 3e tours ciblés sur
     les retouches ; élève-testeur CLAIR (15/15 en Comprendre, aucun bloquant, 6 gênes levées
     dans les indices et solutions) ; couverture « exercices » sans écart. Coût : 37 $. PR : #118.
-  - [ ] Compléter le cours de Limites de suites sur cinq points où l'élève a hésité — relevés
-    par l'élève-testeur des exercices, réglés pour l'instant dans les indices : un exemple de
-    forme indéterminée avec √n (bloc `l-limites-suites-021`) ; un exemple rédigé de « montrer
-    qu'une suite n'est pas majorée » et la propriété « une suite qui tend vers +∞ n'est pas
-    majorée » (`l-005` ou méthode `l-054`) ; les mots « majorant » et « minorant » dans le
-    rappel `l-002` ; la réciproque fausse du théorème de convergence monotone ; le raccourci
-    « à degrés égaux, quotient des coefficients » comme contrôle, qui ne dispense pas de
-    factoriser (`l-021` ou `l-022`). Au passage, x-033 q4 : l'indice 2 écrit « uₙ > 0 » sans
-    renvoyer à la question 1 (dernier non bloquant du relecteur). Circuit : `tle-auteur-cours`
-    → `tle-relecteur` sur les blocs modifiés.
+  - [x] Compléter le cours de Limites de suites sur cinq points où l'élève a hésité — demandé
+    par Thibaud le 2026-10-10 : majorant et minorant nommés (`l-002`) ; √n et raccourci
+    « quotient des coefficients » comme contrôle dans la méthode `l-021` ; réciproque fausse du
+    théorème de convergence monotone (`l-051`) ; geste « Soit A un réel… » (`l-054`) ; exemple
+    « non majorée » (`l-073`, ajouté) et propriété « tend vers +∞ ⇒ non majorée » (`l-074`,
+    ajoutée). Exercices réalignés (x-020, x-021, x-033). Relecteur PASS (3 tours ciblés).
+    PR : #118.
+  - [ ] Polir cinq formulations du cours de Limites de suites — non bloquants du relecteur,
+    laissés ouverts : `l-051` (réciproque : écrire la suite (−1)ⁿ/n avec parenthèses et dire
+    pourquoi elle tend vers 0) ; `l-021` (l'étape 6 porte deux idées, méthode de 184 mots) ;
+    `l-074` (suit directement la démonstration 007 : deux blocs formels d'affilée, 117 mots) ;
+    `l-002` (une phrase de 28 mots, au-delà des 25 de la charte) ; `l-014` (le « retenir » de
+    la section 1 ne cite pas la propriété 074). Rapport : relecture « gênes », tour 3.
   - [ ] Une animation pour voir une suite entrer dans une bande autour de sa limite — souhait de
     l'auteur du cours (notion « définitions », bloc `l-limites-suites-010`) : un curseur pour
     la largeur de la bande, qui affiche le rang à partir duquel tous les termes y restent.

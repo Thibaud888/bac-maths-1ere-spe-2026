@@ -1386,7 +1386,7 @@
           "D'après la question 3, $u_N \\geqslant N + 2 > N \\geqslant A$ : le terme $u_N$ dépasse strictement $A$, donc $A$ n'est pas un majorant. Comme $A$ est un réel quelconque, aucun réel ne majore la suite.",
           "Pour la limite, rassemble deux faits : la suite est croissante (question 2) et elle n'est pas majorée. Cite alors la propriété des suites croissantes non majorées."
         ],
-        "revoir": "l-limites-suites-005",
+        "revoir": "l-limites-suites-073",
         "solution": "Montrer que $(u_n)$ n'est pas majorée, c'est montrer qu'aucun réel $A$ n'en est un majorant : pour chaque réel $A$, on cherche un terme strictement supérieur à $A$.\n\nSoit $A$ un réel. On choisit un entier naturel $N$ tel que $N \\geqslant A$ ; un tel entier existe toujours, car les entiers dépassent n'importe quel réel. D'après la question 3, $u_N \\geqslant N + 2 > N \\geqslant A$ : le terme $u_N$ dépasse strictement $A$, donc $A$ n'est pas un majorant de $(u_n)$. Ce raisonnement vaut pour tout réel $A$ : la suite $(u_n)$ n'est pas majorée.\n\nLa suite $(u_n)$ est croissante (question 2) et non majorée : d'après la propriété des suites croissantes non majorées, elle tend vers $+\\infty$. Autre voie, avec le théorème de comparaison vu plus loin dans le cours : $u_n \\geqslant n + 2$ et $\\lim\\limits_{n \\to +\\infty} (n + 2) = +\\infty$.\n\nDonc $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
       }
     ]
@@ -1431,18 +1431,18 @@
           "bonne": 0,
           "pourquoiFaux": [
             null,
-            "$n$ grandit plus vite que $3\\sqrt{n}$ : $b_n = \\sqrt{n}\\left(\\sqrt{n} - 3\\right)$, produit de deux facteurs qui tendent vers $+\\infty$.",
+            "$n$ grandit plus vite que $3\\sqrt{n}$ : $b_n = n\\left(1 - \\dfrac{3}{\\sqrt{n}}\\right)$, produit d'un facteur qui tend vers $+\\infty$ et d'un facteur qui tend vers $1$.",
             "« $+\\infty - \\infty$ » ne vaut pas $0$ : il faut transformer l'écriture.",
-            "C'est une forme indéterminée au départ, mais on la lève en factorisant par $\\sqrt{n}$."
+            "C'est une forme indéterminée au départ, mais on la lève en mettant $n$ en facteur."
           ]
         },
         "indices": [
-          "Forme « $+\\infty - \\infty$ » : factorise. La méthode du cours parle de puissances de $n$ ; ici, écris $n = \\sqrt{n} \\times \\sqrt{n}$ : les deux termes $n$ et $3\\sqrt{n}$ ont alors un facteur commun.",
-          "$b_n = \\sqrt{n} \\times \\sqrt{n} - 3 \\times \\sqrt{n} = \\sqrt{n}\\left(\\sqrt{n} - 3\\right)$.",
+          "Forme « $+\\infty - \\infty$ » : factorise. Comme dans la méthode, $n$ et $\\sqrt{n}$ apparaissent ensemble : mets $n$ en facteur, en te servant de $\\dfrac{\\sqrt{n}}{n} = \\dfrac{1}{\\sqrt{n}}$.",
+          "$b_n = n\\left(1 - \\dfrac{3\\sqrt{n}}{n}\\right) = n\\left(1 - \\dfrac{3}{\\sqrt{n}}\\right)$.",
           "Cherche la limite de chaque facteur, puis lis le tableau du produit."
         ],
         "revoir": "l-limites-suites-021",
-        "solution": "$n$ tend vers $+\\infty$ et $-3\\sqrt{n}$ vers $-\\infty$ : forme « $+\\infty - \\infty$ ». Comme $n = \\sqrt{n} \\times \\sqrt{n}$, $b_n = \\sqrt{n}\\left(\\sqrt{n} - 3\\right)$. Or $\\sqrt{n}$ tend vers $+\\infty$ et, par somme, $\\sqrt{n} - 3$ aussi. Par produit, $\\lim\\limits_{n \\to +\\infty} b_n = +\\infty$."
+        "solution": "$n$ tend vers $+\\infty$ et $-3\\sqrt{n}$ vers $-\\infty$ : forme « $+\\infty - \\infty$ ». On met $n$ en facteur : pour $n \\geqslant 1$, $\\dfrac{\\sqrt{n}}{n} = \\dfrac{1}{\\sqrt{n}}$, donc $b_n = n\\left(1 - \\dfrac{3}{\\sqrt{n}}\\right)$. Or $\\dfrac{1}{\\sqrt{n}}$ tend vers $0$, donc $1 - \\dfrac{3}{\\sqrt{n}}$ tend vers $1$. Comme $n$ tend vers $+\\infty$, par produit, $\\lim\\limits_{n \\to +\\infty} b_n = +\\infty$.\n\nAutre voie : comme $n = \\sqrt{n} \\times \\sqrt{n}$, $b_n = \\sqrt{n}\\left(\\sqrt{n} - 3\\right)$, produit de deux facteurs qui tendent vers $+\\infty$. Par somme puis par produit, on retrouve $\\lim\\limits_{n \\to +\\infty} b_n = +\\infty$."
       },
       {
         "id": "q3",
@@ -2286,11 +2286,11 @@
         "reponse": { "type": "redaction" },
         "indices": [
           "« Non majorée » veut dire qu'aucun réel n'est un majorant. Cela se rédige en trois temps : « Soit $A$ un réel » ; on trouve un rang $N$ tel que $u_N > A$ ; on conclut que $A$ n'est pas un majorant, et cela quel que soit $A$. Ici, c'est la minoration de la question 3 qui fournit le rang.",
-          "Transforme d'abord la question 3 : $u_n > 0$ et la fonction racine carrée est croissante, donc $u_n = \\sqrt{u_n^2} \\geqslant \\sqrt{2n + 1}$. Ensuite, soit $A$ un réel : si $A \\leqslant 0$, le premier terme $u_0 = 1$ dépasse déjà $A$. Il reste le cas $A > 0$.",
+          "Transforme d'abord la question 3 : $u_n \\geqslant 1 > 0$ (question 1) et la fonction racine carrée est croissante, donc $u_n = \\sqrt{u_n^2} \\geqslant \\sqrt{2n + 1}$. Ensuite, soit $A$ un réel : si $A \\leqslant 0$, le premier terme $u_0 = 1$ dépasse déjà $A$. Il reste le cas $A > 0$.",
           "Soit $A > 0$. Il suffit d'avoir $2N + 1 > A^2$, c'est-à-dire $N > \\dfrac{A^2 - 1}{2}$ : choisis un tel entier $N$. Il en existe toujours, car les entiers dépassent n'importe quel réel. Que donne alors la stricte croissance de la fonction racine carrée pour $u_N$ ?",
           "$u_N \\geqslant \\sqrt{2N + 1} > \\sqrt{A^2} = A$, car $A > 0$ : le terme $u_N$ dépasse strictement $A$, donc $A$ n'est pas un majorant. Pour la limite, rassemble deux faits : la suite est croissante (question 1) et elle n'est pas majorée. Cite alors la propriété des suites croissantes non majorées."
         ],
-        "revoir": "l-limites-suites-005",
+        "revoir": "l-limites-suites-073",
         "solution": "Montrer que $(u_n)$ n'est pas majorée, c'est montrer qu'aucun réel $A$ n'en est un majorant : pour chaque réel $A$, on cherche un terme strictement supérieur à $A$.\n\nD'après la question 3, $u_n^2 \\geqslant 2n + 1$. Comme $u_n \\geqslant 1 > 0$ (question 1) et que la fonction racine carrée est croissante sur $[0\\,;\\,+\\infty[$, $u_n = \\sqrt{u_n^2} \\geqslant \\sqrt{2n + 1}$ pour tout entier naturel $n$.\n\nSoit $A$ un réel.\n\n- Si $A \\leqslant 0$, alors $u_0 = 1 > A$.\n- Si $A > 0$, on choisit un entier naturel $N$ tel que $N > \\dfrac{A^2 - 1}{2}$, c'est-à-dire $2N + 1 > A^2$ ; un tel entier existe toujours, car les entiers dépassent n'importe quel réel. La fonction racine carrée étant strictement croissante sur $[0\\,;\\,+\\infty[$, $u_N \\geqslant \\sqrt{2N + 1} > \\sqrt{A^2} = A$, car $A > 0$.\n\nDans les deux cas, un terme dépasse strictement $A$ : $A$ n'est pas un majorant de $(u_n)$. Ce raisonnement vaut pour tout réel $A$ : la suite $(u_n)$ n'est pas majorée.\n\nLa suite $(u_n)$ est croissante (question 1) et non majorée : d'après la propriété des suites croissantes non majorées, $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
       },
       {
