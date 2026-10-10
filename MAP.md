@@ -53,7 +53,8 @@ chantiers/terminale/    # PLAN DIRECTEUR de la terminale (README) + découpage p
                         # chapitres (chapitres-maths.md, chapitres-physique-chimie.md)
                         # + annales-maths.md (ce qui tombe au bac : méthode, sessions,
                         # règles de rattachement, chiffres par chapitre)
-                        # + textes de lancement des sessions suivantes (reprise-phase-1.md)
+                        # + textes de lancement des sessions suivantes (reprise-phase-1.md,
+                        # limites-fonctions.md : prochain chapitre de maths)
                         # + optimisation-tokens.md : ce que coûte un chapitre (mesures)
                         # et les pistes pour consommer moins sans perdre en qualité
 schemas/                # JSON Schema Ajv (maths à la racine, francais/, bac/, grand-oral/,

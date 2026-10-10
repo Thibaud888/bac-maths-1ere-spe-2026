@@ -609,6 +609,12 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     l'auteur du cours (notion « définitions », bloc `l-limites-suites-010`) : un curseur pour
     la largeur de la bande, qui affiche le rang à partir duquel tous les termes y restent.
     Quand les figures animées existeront.
+  - [ ] Limites de fonctions : le cours — `/tle-chapitre maths limites-fonctions cours`, dans
+    une session neuve ; prompt prêt à coller dans `chantiers/terminale/limites-fonctions.md`
+    (logarithme et continuité viennent plus tard ; renvois aux tableaux de Limites de suites ;
+    gênes de l'élève-testeur corrigées dans la même PR).
+  - [ ] Limites de fonctions : les exercices — `/tle-chapitre maths limites-fonctions exercices`,
+    dans une autre session neuve, une fois le cours fusionné.
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
