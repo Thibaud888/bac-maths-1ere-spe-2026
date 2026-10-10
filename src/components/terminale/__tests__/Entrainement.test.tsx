@@ -191,3 +191,14 @@ describe('CarteMemo', () => {
     expect(screen.getByText(carte.simplifie.image as string)).toBeInTheDocument();
   });
 });
+
+describe('SourceDeLExercice', () => {
+  it('rend les formules de la note d’adaptation, sans dollar visible', async () => {
+    const { SourceDeLExercice } = await import('../FicheExercice');
+    const { container } = render(
+      <SourceDeLExercice source={{ url: 'https://example.org', adaptation: 'relation $u_{n+1} = 2u_n$ changée' }} matiere="maths" />
+    );
+    expect(container.querySelector('.katex')).not.toBeNull();
+    expect(container.textContent).not.toContain('$');
+  });
+});
