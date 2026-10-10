@@ -1,0 +1,591 @@
+[
+  {
+    "id": "tb-limites-suites-001",
+    "chapitre": "limites-suites",
+    "notions": ["n-limites-suites-geometrique", "n-limites-suites-seuils"],
+    "capacites": ["bo-m-suites-05", "bo-m-suites-14", "bo-m-suites-09"],
+    "titre": "Les parties de Léa : arbre, suite auxiliaire, limite et seuil en Python",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2024-asie-j2",
+      "adaptation": "Exercice 2 : situation (parties d'un jeu vidéo, probabilité de gagner après une victoire ou après une défaite), arbre pondéré, relation $g_{n+1} = a\\,g_n + b$, suite auxiliaire géométrique, sens de variation, limite et fonction Python seuil à compléter conservés ; probabilités modifiées ($80\\,\\%$ et $0{,}3$ au lieu de $70\\,\\%$ et $0{,}2$ ; $g_1 = 0{,}2$ au lieu de $0{,}5$) ; questions 1 à 3 de l'original réunies en une seule ; question 8 (plus petit entier obtenu par le calcul, qui demande le logarithme, chapitre ultérieur) remplacée par l'interprétation de la valeur renvoyée par la fonction seuil et sa vérification à la main avec la forme explicite. Solution écrite pour le site."
+    },
+    "preambule": "Léa joue à un jeu vidéo et s'intéresse à ses chances de gagner ses prochaines parties. Elle estime que :\n\n- si elle vient de gagner une partie, elle gagne la suivante dans $80\\,\\%$ des cas ;\n- si elle vient de perdre une partie, la probabilité qu'elle gagne la suivante est égale à $0{,}3$ ;\n- la probabilité qu'elle gagne la première partie de la journée est égale à $0{,}2$.\n\nOn s'appuie sur ces estimations dans tout l'exercice. Pour tout entier $n \\geqslant 1$, on note $G_n$ l'événement « Léa gagne la $n$-ième partie de la journée », $D_n$ l'événement « Léa perd la $n$-ième partie de la journée », et $g_n = P(G_n)$. Ainsi $g_1 = 0{,}2$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Construire un arbre pondéré qui modélise les deux premières parties de la journée, puis calculer $g_2$.\n\nSaisis la valeur de $g_2$.",
+        "points": 0.5,
+        "reponse": { "type": "numerique", "valeur": 0.4, "tolerance": 0.001 },
+        "revoir": "l-recurrence-suites-032",
+        "indices": [
+          "Premier niveau de l'arbre : $G_1$ et $D_1$. Second niveau : $G_2$ et $D_2$, avec les probabilités **conditionnelles** de l'énoncé (ce qui se passe après une victoire, ou après une défaite).",
+          "$G_2$ se réalise par deux chemins, $G_1 \\cap G_2$ et $D_1 \\cap G_2$ : multiplie les probabilités le long de chaque chemin, puis additionne (formule des probabilités totales)."
+        ],
+        "attenduCorrecteur": "- Arbre complet : $P(G_1) = 0{,}2$ et $P(D_1) = 0{,}8$ ; $P_{G_1}(G_2) = 0{,}8$ et $P_{G_1}(D_2) = 0{,}2$ ; $P_{D_1}(G_2) = 0{,}3$ et $P_{D_1}(D_2) = 0{,}7$ : 0,25 pt.\n- Formule des probabilités totales ($G_1$ et $D_1$ forment une partition de l'univers) et $g_2 = 0{,}2 \\times 0{,}8 + 0{,}8 \\times 0{,}3 = 0{,}4$ : 0,25 pt.",
+        "solution": "L'arbre pondéré se construit ainsi :\n\n- de la racine partent les branches $G_1$, de probabilité $0{,}2$, et $D_1$, de probabilité $1 - 0{,}2 = 0{,}8$ ;\n- après $G_1$ partent $G_2$, de probabilité $0{,}8$, et $D_2$, de probabilité $0{,}2$ ;\n- après $D_1$ partent $G_2$, de probabilité $0{,}3$, et $D_2$, de probabilité $0{,}7$.\n\nLes événements $G_1$ et $D_1$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$\\begin{aligned} g_2 &= P(G_1) \\times P_{G_1}(G_2) + P(D_1) \\times P_{D_1}(G_2) \\\\ &= 0{,}2 \\times 0{,}8 + 0{,}8 \\times 0{,}3 \\\\ &= 0{,}16 + 0{,}24 = 0{,}4. \\end{aligned}$$",
+        "erreurFrequente": "Calculer seulement $P(G_1 \\cap G_2) = 0{,}16$ : Léa peut aussi gagner la deuxième partie après avoir perdu la première."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $n$ un entier naturel non nul. Justifier que $g_{n+1} = 0{,}5\\,g_n + 0{,}3$.",
+        "points": 0.75,
+        "revoir": "l-recurrence-suites-034",
+        "indices": [
+          "Même arbre qu'à la question 1, mais entre la $n$-ième et la $(n+1)$-ième partie : au premier niveau, $P(G_n) = g_n$ et $P(D_n) = 1 - g_n$ ; les probabilités du second niveau ne changent pas.",
+          "Formule des probabilités totales : $g_{n+1} = P(G_n) \\times P_{G_n}(G_{n+1}) + P(D_n) \\times P_{D_n}(G_{n+1})$. Remplace chaque probabilité, puis développe et réduis."
+        ],
+        "attenduCorrecteur": "- Probabilités entre les parties $n$ et $n + 1$ : $P(G_n) = g_n$, $P(D_n) = 1 - g_n$, $P_{G_n}(G_{n+1}) = 0{,}8$, $P_{D_n}(G_{n+1}) = 0{,}3$ (arbre accepté) : 0,25 pt.\n- Formule des probabilités totales citée, avec la partition formée par $G_n$ et $D_n$ : 0,25 pt.\n- Calcul : $g_{n+1} = 0{,}8\\,g_n + 0{,}3(1 - g_n) = 0{,}5\\,g_n + 0{,}3$ : 0,25 pt.",
+        "solution": "Soit $n \\geqslant 1$ un entier. Léa gagne la $n$-ième partie avec la probabilité $g_n$ et la perd avec la probabilité $1 - g_n$. D'après l'énoncé, $P_{G_n}(G_{n+1}) = 0{,}8$ et $P_{D_n}(G_{n+1}) = 0{,}3$.\n\nLes événements $G_n$ et $D_n$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$\\begin{aligned} g_{n+1} &= P(G_n) \\times P_{G_n}(G_{n+1}) + P(D_n) \\times P_{D_n}(G_{n+1}) \\\\ &= 0{,}8\\,g_n + 0{,}3(1 - g_n) \\\\ &= 0{,}8\\,g_n + 0{,}3 - 0{,}3\\,g_n \\\\ &= 0{,}5\\,g_n + 0{,}3. \\end{aligned}$$\n\nDonc, pour tout entier $n \\geqslant 1$, $g_{n+1} = 0{,}5\\,g_n + 0{,}3$.",
+        "erreurFrequente": "Écrire $g_{n+1} = 0{,}8\\,g_n$ en oubliant la branche $D_n$ : la partie $n + 1$ peut être gagnée après une défaite."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pour tout entier $n \\geqslant 1$, on pose $v_n = g_n - 0{,}6$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Démontrer que la suite $(v_n)$ est géométrique ; préciser sa raison et son premier terme $v_1$.",
+            "points": 0.75,
+            "revoir": "l-limites-suites-072",
+            "indices": [
+              "Méthode de la suite auxiliaire : il faut arriver à $v_{n+1} = q \\times v_n$, avec un nombre $q$ qui ne dépend pas de $n$.",
+              "$v_{n+1} = g_{n+1} - 0{,}6$ : remplace $g_{n+1}$ grâce à la question 2, puis $g_n$ par $v_n + 0{,}6$, et réduis."
+            ],
+            "attenduCorrecteur": "- $v_{n+1} = g_{n+1} - 0{,}6 = 0{,}5\\,g_n - 0{,}3$ : 0,25 pt.\n- Avec $g_n = v_n + 0{,}6$ : $v_{n+1} = 0{,}5\\,v_n$ pour tout $n \\geqslant 1$, donc $(v_n)$ est géométrique de raison $0{,}5$ : 0,25 pt.\n- Premier terme : $v_1 = g_1 - 0{,}6 = -0{,}4$ : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$ :\n\n$$v_{n+1} = g_{n+1} - 0{,}6 = 0{,}5\\,g_n + 0{,}3 - 0{,}6 = 0{,}5\\,g_n - 0{,}3.$$\n\nComme $v_n = g_n - 0{,}6$, on a $g_n = v_n + 0{,}6$, donc :\n\n$$v_{n+1} = 0{,}5\\left(v_n + 0{,}6\\right) - 0{,}3 = 0{,}5\\,v_n + 0{,}3 - 0{,}3 = 0{,}5\\,v_n.$$\n\nLa suite $(v_n)$ est donc géométrique de raison $0{,}5$, de premier terme $v_1 = g_1 - 0{,}6 = 0{,}2 - 0{,}6 = -0{,}4$.",
+            "erreurFrequente": "S'arrêter à $v_{n+1} = 0{,}5\\,g_n - 0{,}3$ : pour reconnaître une suite géométrique, il faut exprimer $v_{n+1}$ en fonction de $v_n$ seulement."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "En déduire que, pour tout entier $n \\geqslant 1$, $g_n = 0{,}6 - 0{,}4 \\times 0{,}5^{n-1}$.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-039",
+            "indices": [
+              "Écris la forme explicite de la suite géométrique $(v_n)$ : son premier terme est $v_1$, et non $v_0$, ce qui change l'exposant. Reviens ensuite à $g_n = v_n + 0{,}6$."
+            ],
+            "attenduCorrecteur": "- $v_n = v_1 \\times 0{,}5^{n-1} = -0{,}4 \\times 0{,}5^{n-1}$, l'exposant $n - 1$ venant du premier terme de rang $1$ : 0,25 pt.\n- $g_n = v_n + 0{,}6 = 0{,}6 - 0{,}4 \\times 0{,}5^{n-1}$ : 0,25 pt.",
+            "solution": "La suite $(v_n)$ est géométrique de raison $0{,}5$ et de premier terme $v_1 = -0{,}4$. Pour passer de $v_1$ à $v_n$, on multiplie $n - 1$ fois par $0{,}5$ : pour tout entier $n \\geqslant 1$, $v_n = v_1 \\times 0{,}5^{n-1} = -0{,}4 \\times 0{,}5^{n-1}$.\n\nComme $g_n = v_n + 0{,}6$ : pour tout entier $n \\geqslant 1$, $g_n = 0{,}6 - 0{,}4 \\times 0{,}5^{n-1}$.\n\nContrôle : pour $n = 2$, $0{,}6 - 0{,}4 \\times 0{,}5 = 0{,}6 - 0{,}2 = 0{,}4 = g_2$.",
+            "erreurFrequente": "Écrire $v_n = -0{,}4 \\times 0{,}5^{n}$ : cette forme vaut pour un premier terme de rang $0$ ; pour $n = 1$, elle donne $-0{,}2$ au lieu de $v_1 = -0{,}4$."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Dans cette question, on utilise l'expression de $g_n$ obtenue à la question 3.b).",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Étudier le sens de variation de la suite $(g_n)$.",
+            "points": 0.5,
+            "revoir": "l-recurrence-suites-013",
+            "indices": [
+              "Étudie le signe de la différence $g_{n+1} - g_n$, en écrivant les deux termes avec l'expression de la question 3.b).",
+              "Les termes $0{,}6$ s'éliminent. Écris ensuite $0{,}5^{n} = 0{,}5 \\times 0{,}5^{n-1}$, puis mets $0{,}4 \\times 0{,}5^{n-1}$ en facteur."
+            ],
+            "attenduCorrecteur": "- $g_{n+1} - g_n = 0{,}4 \\times 0{,}5^{n-1} \\times (1 - 0{,}5) = 0{,}2 \\times 0{,}5^{n-1}$ : 0,25 pt.\n- Ce nombre est strictement positif, car $0{,}5^{n-1} > 0$ : la suite $(g_n)$ est strictement croissante : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$ :\n\n$$\\begin{aligned} g_{n+1} - g_n &= \\left(0{,}6 - 0{,}4 \\times 0{,}5^{n}\\right) - \\left(0{,}6 - 0{,}4 \\times 0{,}5^{n-1}\\right) \\\\ &= 0{,}4 \\times 0{,}5^{n-1} - 0{,}4 \\times 0{,}5 \\times 0{,}5^{n-1} \\\\ &= 0{,}4 \\times 0{,}5^{n-1} \\times (1 - 0{,}5) \\\\ &= 0{,}2 \\times 0{,}5^{n-1}. \\end{aligned}$$\n\nOr $0{,}5^{n-1} > 0$, donc $g_{n+1} - g_n > 0$ pour tout entier $n \\geqslant 1$. La suite $(g_n)$ est strictement croissante : d'une partie à la suivante, la probabilité que Léa gagne augmente."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Déterminer la limite de la suite $(g_n)$. Interpréter ce résultat dans le contexte de l'exercice.\n\nSaisis la valeur de la limite.",
+            "points": 0.5,
+            "reponse": { "type": "numerique", "valeur": 0.6, "tolerance": 0.001 },
+            "revoir": "l-limites-suites-044",
+            "indices": [
+              "Commence par la limite de $0{,}5^{n-1}$ : écris $0{,}5^{n-1} = 2 \\times 0{,}5^{n}$ et compare la raison $0{,}5$ à $-1$ et à $1$. Termine avec les opérations sur les limites : produit, puis somme."
+            ],
+            "attenduCorrecteur": "- $-1 < 0{,}5 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}5^{n} = 0$, puis $0{,}5^{n-1} = 2 \\times 0{,}5^{n}$ tend vers $0$ ; par produit et somme, $\\lim\\limits_{n \\to +\\infty} g_n = 0{,}6$ : 0,25 pt.\n- Interprétation : quand Léa enchaîne les parties, la probabilité qu'elle gagne une partie se rapproche de $0{,}6$ : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$, $0{,}5^{n-1} = \\dfrac{0{,}5^{n}}{0{,}5} = 2 \\times 0{,}5^{n}$. Or $-1 < 0{,}5 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}5^{n} = 0$ ; par produit, $\\lim\\limits_{n \\to +\\infty} 0{,}5^{n-1} = 0$.\n\nPar produit, $0{,}4 \\times 0{,}5^{n-1}$ tend vers $0$ ; par somme, $\\lim\\limits_{n \\to +\\infty} g_n = 0{,}6 - 0 = 0{,}6$.\n\nLa suite $(g_n)$ converge vers $0{,}6$. Interprétation : quand Léa enchaîne les parties, la probabilité qu'elle gagne la $n$-ième partie se rapproche de $0{,}6$. D'après la question 4.a), elle augmente vers cette valeur, en restant en dessous puisque $0{,}4 \\times 0{,}5^{n-1} > 0$."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On considère la fonction seuil ci-dessous, écrite en langage Python, où s est un nombre réel strictement positif. Elle doit renvoyer le plus petit entier $n \\geqslant 1$ tel que $0{,}6 - g_n \\leqslant s$. Deux lignes sont incomplètes.",
+        "code": {
+          "langage": "python",
+          "source": "def seuil(s):\n    g = 0.2\n    n = 1\n    while ...:\n        g = 0.5 * g + 0.3\n        n = ...\n    return n"
+        },
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Recopier et compléter les deux lignes incomplètes.",
+            "points": 0.75,
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "La condition du while est le **contraire** du but : la boucle doit continuer tant que le but « $0{,}6 - g_n \\leqslant s$ » n'est pas atteint.",
+              "À chaque tour, g est remplacé par le terme suivant de la suite : le rang n doit avancer en même temps."
+            ],
+            "attenduCorrecteur": "- Condition de la boucle : tant que $0{,}6 - g > s$ (ou tant que $g < 0{,}6 - s$), soit $\\texttt{while 0{.}6 - g > s:}$ : 0,5 pt.\n- Mise à jour du rang : $\\texttt{n = n + 1}$ : 0,25 pt.",
+            "solution": "La fonction cherche le premier rang où $0{,}6 - g_n \\leqslant s$. La boucle doit donc tourner tant que ce but n'est pas atteint, c'est-à-dire tant que $0{,}6 - g > s$. La ligne du while devient $\\texttt{while 0{.}6 - g > s:}$ (en Python, le séparateur décimal est un point).\n\nÀ chaque tour, g passe au terme suivant grâce à la relation $g_{n+1} = 0{,}5\\,g_n + 0{,}3$ : le rang doit augmenter de $1$ en même temps. La ligne incomplète devient $\\texttt{n = n + 1}$.\n\nQuand la boucle s'arrête, g contient le premier terme tel que $0{,}6 - g_n \\leqslant s$, et n son rang, que la fonction renvoie.",
+            "erreurFrequente": "Recopier le but comme condition, $\\texttt{while 0{.}6 - g <= s:}$ : la boucle ne ferait aucun tour, puisque $0{,}6 - g_1 = 0{,}4$ dépasse $s$ dès que $s < 0{,}4$, et la fonction renverrait toujours $1$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "L'appel seuil(0.001) renvoie la valeur $10$. Interpréter ce résultat dans le contexte de l'exercice, puis le vérifier à l'aide de l'expression de $g_n$ obtenue à la question 3.b).",
+            "points": 0.75,
+            "revoir": "l-limites-suites-065",
+            "indices": [
+              "La fonction renvoie le premier rang $n$ tel que $0{,}6 - g_n \\leqslant 0{,}001$. Pour vérifier, calcule $0{,}6 - g_n$ pour le rang renvoyé et pour le rang juste avant.",
+              "D'après la question 3.b), $0{,}6 - g_n = 0{,}4 \\times 0{,}5^{n-1} = \\dfrac{0{,}4}{2^{n-1}}$ : il suffit de connaître deux puissances de $2$."
+            ],
+            "attenduCorrecteur": "- Interprétation : la dixième partie est la première pour laquelle la probabilité que Léa gagne est à moins de $0{,}001$ de $0{,}6$ ; comme $(g_n)$ est croissante, c'est aussi vrai pour toutes les parties suivantes : 0,25 pt.\n- $0{,}6 - g_9 = \\dfrac{0{,}4}{2^{8}} = \\dfrac{0{,}4}{256} = 0{,}001\\,562\\,5 > 0{,}001$ : 0,25 pt.\n- $0{,}6 - g_{10} = \\dfrac{0{,}4}{2^{9}} = \\dfrac{0{,}4}{512} = 0{,}000\\,781\\,25 \\leqslant 0{,}001$ : 0,25 pt.",
+            "solution": "L'appel seuil(0.001) renvoie le plus petit entier $n \\geqslant 1$ tel que $0{,}6 - g_n \\leqslant 0{,}001$, c'est-à-dire tel que $g_n \\geqslant 0{,}599$.\n\nVérification. D'après la question 3.b), pour tout entier $n \\geqslant 1$, $0{,}6 - g_n = 0{,}4 \\times 0{,}5^{n-1} = \\dfrac{0{,}4}{2^{n-1}}$.\n\n- Pour $n = 9$ : $2^{8} = 256$, donc $0{,}6 - g_9 = \\dfrac{0{,}4}{256} = 0{,}001\\,562\\,5$, strictement supérieur à $0{,}001$.\n- Pour $n = 10$ : $2^{9} = 512$, donc $0{,}6 - g_{10} = \\dfrac{0{,}4}{512} = 0{,}000\\,781\\,25$, inférieur ou égal à $0{,}001$.\n\nLa suite $(g_n)$ est croissante (question 4.a), donc $0{,}6 - g_n$ diminue quand $n$ augmente : pour $n \\leqslant 9$, $0{,}6 - g_n \\geqslant 0{,}6 - g_9 > 0{,}001$. Le rang $10$ est bien le premier qui convient.\n\nInterprétation : à partir de la dixième partie de la journée, la probabilité que Léa gagne est comprise entre $0{,}599$ et $0{,}6$ ; elle est à moins de $0{,}001$ de sa limite. Comme $(g_n)$ est croissante, cela reste vrai pour toutes les parties suivantes.",
+            "erreurFrequente": "Vérifier seulement le rang $10$ : pour être sûr que $10$ est le plus petit rang, il faut aussi montrer que le rang $9$ ne convient pas."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-limites-suites-002",
+    "chapitre": "limites-suites",
+    "notions": ["n-limites-suites-geometrique", "n-limites-suites-monotone-bornee", "n-limites-suites-comparaison", "n-limites-suites-seuils"],
+    "capacites": ["bo-m-suites-05", "bo-m-suites-06", "bo-m-suites-07", "bo-m-suites-03", "bo-m-suites-14", "bo-m-suites-09", "bo-m-suites-08", "bo-m-logique-14"],
+    "titre": "Télétravail et salariés satisfaits : limite, seuil en Python et encadrement",
+    "points": 7,
+    "duree": 60,
+    "calculatrice": true,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2021-etrangers-j1",
+      "adaptation": "Exercice 3 : situation (télétravail dans une entreprise de $5\\,000$ salariés, relation $a_{n+1} = a\\,a_n + b$, puis salariés satisfaits modélisés par une suite définie par une fonction homographique croissante, récurrence « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant M$ », convergence et limite par un encadrement admis) conservée ; données modifiées ($a_0 = 300$, $80\\,\\%$ et $500$ au lieu de $200$, $85\\,\\%$ et $450$ ; $f(x) = \\dfrac{4x + 3}{x + 2}$ au lieu de $\\dfrac{5x + 4}{x + 2}$) ; forme explicite démontrée par récurrence au lieu de la suite auxiliaire géométrique (question A.3 de l'original) ; limite de $(a_n)$ ajoutée ; question A.4 (nombre de mois, sans méthode imposée) remplacée par une fonction Python seuil : valeur renvoyée, trouvée à la calculatrice, et appel qui ne s'arrête jamais. Solution écrite pour le site."
+    },
+    "preambule": "Une entreprise de $5\\,000$ salariés propose le télétravail. Le mois de la mise en place, $300$ salariés le choisissent. Ensuite, chaque mois, $80\\,\\%$ des salariés qui étaient en télétravail le mois précédent continuent, et $500$ salariés supplémentaires le choisissent.\n\nPour tout entier naturel $n$, on note $a_n$ le nombre de salariés en télétravail $n$ mois après la mise en place. Ainsi $a_0 = 300$.\n\n**Partie A : le nombre de télétravailleurs** (questions A.1 à A.4).\n\n**Partie B : les salariés satisfaits** (questions B.1 à B.4). L'entreprise modélise le nombre de salariés satisfaits par le dispositif de télétravail, qu'ils le pratiquent ou non, à l'aide de la suite $(u_n)$ définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = \\dfrac{4u_n + 3}{u_n + 2}$, où $u_n$ est le nombre de **milliers** de salariés satisfaits $n$ mois après la mise en place.\n\nLes deux parties sont indépendantes. La calculatrice est autorisée ; seule la question A.4.a) en a besoin.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Calculer $a_1$, puis justifier que, pour tout entier naturel $n$, $a_{n+1} = 0{,}8\\,a_n + 500$.\n\nSaisis la valeur de $a_1$.",
+        "points": 0.75,
+        "reponse": { "type": "numerique", "valeur": 740, "tolerance": 0 },
+        "revoir": "l-recurrence-suites-029",
+        "indices": [
+          "Garder $80\\,\\%$ d'une quantité revient à la multiplier par $0{,}8$ ; les $500$ nouveaux télétravailleurs s'ajoutent ensuite.",
+          "Pour la relation, raisonne sur un mois quelconque : le mois $n$, il y a $a_n$ télétravailleurs ; combien d'entre eux continuent le mois suivant, et combien de salariés s'y ajoutent ?"
+        ],
+        "attenduCorrecteur": "- $a_1 = 0{,}8 \\times 300 + 500 = 740$ : 0,25 pt.\n- Le mois $n + 1$, il reste $80\\,\\%$ des $a_n$ télétravailleurs, soit $0{,}8\\,a_n$ : 0,25 pt.\n- Les $500$ nouveaux s'ajoutent : $a_{n+1} = 0{,}8\\,a_n + 500$ : 0,25 pt.",
+        "solution": "Le premier mois, $80\\,\\%$ des $300$ télétravailleurs continuent, soit $0{,}8 \\times 300 = 240$ salariés, et $500$ salariés s'ajoutent : $a_1 = 240 + 500 = 740$.\n\nSoit $n$ un entier naturel. Le mois $n$, $a_n$ salariés sont en télétravail. Le mois suivant, $80\\,\\%$ d'entre eux continuent : ils sont $\\dfrac{80}{100} \\times a_n = 0{,}8\\,a_n$. S'y ajoutent les $500$ salariés qui choisissent le télétravail ce mois-là.\n\nDonc, pour tout entier naturel $n$, $a_{n+1} = 0{,}8\\,a_n + 500$."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $a_n = 2\\,500 - 2\\,200 \\times 0{,}8^n$.",
+        "points": 1,
+        "revoir": "l-recurrence-suites-006",
+        "indices": [
+          "Note $P(n)$ la propriété. Initialisation : calcule $2\\,500 - 2\\,200 \\times 0{,}8^0$ et compare-le à $a_0$.",
+          "Hérédité : pars de $a_{n+1} = 0{,}8\\,a_n + 500$, remplace $a_n$ par l'expression supposée vraie, puis développe, en utilisant $0{,}8 \\times 0{,}8^n = 0{,}8^{n+1}$."
+        ],
+        "attenduCorrecteur": "- Propriété $P(n)$ énoncée ; initialisation : $2\\,500 - 2\\,200 \\times 0{,}8^0 = 2\\,500 - 2\\,200 = 300 = a_0$ : 0,25 pt.\n- Hérédité : hypothèse de récurrence pour un entier $n$ fixé, puis $a_{n+1} = 0{,}8\\left(2\\,500 - 2\\,200 \\times 0{,}8^n\\right) + 500$ : 0,25 pt.\n- Calcul : $a_{n+1} = 2\\,000 - 2\\,200 \\times 0{,}8^{n+1} + 500 = 2\\,500 - 2\\,200 \\times 0{,}8^{n+1}$, d'où $P(n+1)$ : 0,25 pt.\n- Conclusion par le principe de récurrence : 0,25 pt.",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $a_n = 2\\,500 - 2\\,200 \\times 0{,}8^n$ ».\n\n**Initialisation** : $2\\,500 - 2\\,200 \\times 0{,}8^0 = 2\\,500 - 2\\,200 \\times 1 = 300 = a_0$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $P(n)$ vraie : $a_n = 2\\,500 - 2\\,200 \\times 0{,}8^n$. On veut montrer $P(n+1)$ : $a_{n+1} = 2\\,500 - 2\\,200 \\times 0{,}8^{n+1}$.\n\n$$\\begin{aligned} a_{n+1} &= 0{,}8\\,a_n + 500 \\\\ &= 0{,}8\\left(2\\,500 - 2\\,200 \\times 0{,}8^n\\right) + 500 \\\\ &= 2\\,000 - 2\\,200 \\times 0{,}8^{n+1} + 500 \\\\ &= 2\\,500 - 2\\,200 \\times 0{,}8^{n+1}. \\end{aligned}$$\n\nDonc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $a_n = 2\\,500 - 2\\,200 \\times 0{,}8^n$.",
+        "erreurFrequente": "Vérifier la formule pour $n = 0$, $1$ et $2$, puis conclure : quelques cas ne prouvent rien pour tous les entiers ; il faut l'hérédité."
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "Déterminer la limite de la suite $(a_n)$. Interpréter ce résultat dans le contexte de l'exercice.\n\nSaisis la valeur de la limite.",
+        "points": 0.75,
+        "reponse": { "type": "numerique", "valeur": 2500, "tolerance": 0 },
+        "revoir": "l-limites-suites-044",
+        "indices": [
+          "Pars de l'expression de la question A.2. Regarde où se trouve la raison $0{,}8$ par rapport à $-1$ et à $1$ pour obtenir la limite de $0{,}8^n$, puis termine avec les opérations : produit, puis somme."
+        ],
+        "attenduCorrecteur": "- $-1 < 0{,}8 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}8^n = 0$ : 0,25 pt.\n- Par produit et somme, $\\lim\\limits_{n \\to +\\infty} a_n = 2\\,500$ : 0,25 pt.\n- Interprétation : à long terme, le nombre de télétravailleurs se rapproche de $2\\,500$, soit la moitié des salariés : 0,25 pt.",
+        "solution": "D'après la question A.2, pour tout entier naturel $n$, $a_n = 2\\,500 - 2\\,200 \\times 0{,}8^n$.\n\nOr $-1 < 0{,}8 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}8^n = 0$. Par produit, $2\\,200 \\times 0{,}8^n$ tend vers $0$ ; par somme, $\\lim\\limits_{n \\to +\\infty} a_n = 2\\,500$.\n\nÀ long terme, le nombre de salariés en télétravail se stabilise autour de $2\\,500$, soit la moitié des $5\\,000$ salariés de l'entreprise. Comme $2\\,200 \\times 0{,}8^n > 0$, il reste toujours strictement inférieur à $2\\,500$."
+      },
+      {
+        "id": "q4",
+        "label": "A.4.",
+        "enonce": "On considère la fonction seuil ci-dessous, écrite en langage Python, où s est un nombre réel.",
+        "code": {
+          "langage": "python",
+          "source": "def seuil(s):\n    n = 0\n    a = 300\n    while a <= s:\n        a = 0.8 * a + 500\n        n = n + 1\n    return n"
+        },
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "À l'aide de la calculatrice, déterminer la valeur renvoyée par l'appel seuil(2000). Interpréter ce résultat dans le contexte de l'exercice.\n\nSaisis la valeur renvoyée.",
+            "points": 0.75,
+            "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0 },
+            "revoir": "l-limites-suites-065",
+            "indices": [
+              "La boucle tourne tant que $a_n \\leqslant 2\\,000$ : la fonction renvoie le premier rang $n$ tel que $a_n > 2\\,000$.",
+              "Calcule les termes un par un à partir de $a_0$ (tableau de valeurs de la calculatrice, ou expression de la question A.2) et repère le premier qui dépasse strictement $2\\,000$."
+            ],
+            "attenduCorrecteur": "- La fonction renvoie le plus petit entier $n$ tel que $a_n > 2\\,000$, car la boucle tourne tant que $a_n \\leqslant 2\\,000$ : 0,25 pt.\n- $a_6 \\approx 1\\,923 \\leqslant 2\\,000$ et $a_7 \\approx 2\\,039 > 2\\,000$, donc l'appel renvoie $7$ : 0,25 pt.\n- Interprétation : c'est $7$ mois après la mise en place que le nombre de télétravailleurs dépasse $2\\,000$ pour la première fois : 0,25 pt.",
+            "solution": "La boucle tourne tant que $a \\leqslant s$ : elle s'arrête au premier rang $n$ tel que $a_n > s$, et la fonction renvoie ce rang. L'appel seuil(2000) renvoie donc le plus petit entier $n$ tel que $a_n > 2\\,000$.\n\nÀ la calculatrice, avec $a_n = 2\\,500 - 2\\,200 \\times 0{,}8^n$ :\n\n- $a_6 = 2\\,500 - 2\\,200 \\times 0{,}8^6 \\approx 1\\,923{,}3$, donc $a_6 \\leqslant 2\\,000$ ;\n- $a_7 = 2\\,500 - 2\\,200 \\times 0{,}8^7 \\approx 2\\,038{,}6$, donc $a_7 > 2\\,000$.\n\nLes termes $a_0$ à $a_5$ sont plus petits que $a_6$ : quand $n$ augmente, $0{,}8^n$ diminue, donc $a_n$ augmente. Ils sont donc eux aussi inférieurs ou égaux à $2\\,000$.\n\nL'appel seuil(2000) renvoie $7$ : c'est $7$ mois après la mise en place du télétravail que le nombre de télétravailleurs dépasse $2\\,000$ pour la première fois.",
+            "erreurFrequente": "Répondre $6$, le dernier rang où $a_n \\leqslant 2\\,000$ : la boucle s'arrête quand sa condition devient fausse, et n vient alors d'être augmenté de $1$."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Que se passe-t-il lors de l'appel seuil(2600) ? Justifier.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-069",
+            "indices": [
+              "Avant de lancer une recherche de seuil, compare le seuil aux valeurs que la suite peut prendre : avec l'expression de la question A.2, les termes peuvent-ils dépasser $2\\,600$ ?"
+            ],
+            "attenduCorrecteur": "- Pour tout $n$, $2\\,200 \\times 0{,}8^n > 0$, donc $a_n < 2\\,500 < 2\\,600$ : 0,25 pt.\n- La condition $a \\leqslant 2\\,600$ reste toujours vraie : la boucle ne s'arrête jamais et l'appel ne renvoie aucune valeur : 0,25 pt.",
+            "solution": "Pour tout entier naturel $n$, $2\\,200 \\times 0{,}8^n > 0$, donc $a_n = 2\\,500 - 2\\,200 \\times 0{,}8^n < 2\\,500$. À plus forte raison, $a_n < 2\\,600$ pour tout $n$ : le nombre de télétravailleurs ne dépasse jamais $2\\,600$.\n\nLors de l'appel seuil(2600), la condition $a \\leqslant 2\\,600$ de la boucle while reste donc toujours vraie : la boucle ne s'arrête jamais, et la fonction ne renvoie aucune valeur.",
+            "erreurFrequente": "Penser que la fonction finit par renvoyer un grand rang : un seuil supérieur à la limite $2\\,500$ n'est jamais dépassé, puisque les termes restent en dessous de $2\\,500$."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "label": "B.1.",
+        "enonce": "On considère la fonction $f$ définie sur $[0\\,;\\,+\\infty[$ par $f(x) = \\dfrac{4x + 3}{x + 2}$. Ainsi, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.\n\nDémontrer que la fonction $f$ est strictement croissante sur $[0\\,;\\,+\\infty[$.",
+        "points": 0.75,
+        "revoir": "l-recurrence-suites-020",
+        "indices": [
+          "Calcule $f'(x)$ avec la formule de dérivation d'un quotient, puis étudie son signe.",
+          "Le numérateur $4x + 3$ a pour dérivée $4$ et le dénominateur $x + 2$ a pour dérivée $1$ : le numérateur de $f'(x)$ est $4(x + 2) - (4x + 3) \\times 1$. Développe-le."
+        ],
+        "attenduCorrecteur": "- $f$ dérivable sur $[0\\,;\\,+\\infty[$ (quotient, dénominateur $x + 2 > 0$) et $f'(x) = \\dfrac{4(x + 2) - (4x + 3) \\times 1}{(x + 2)^2}$ : 0,25 pt.\n- $f'(x) = \\dfrac{5}{(x + 2)^2}$ : 0,25 pt.\n- $f'(x) > 0$ sur $[0\\,;\\,+\\infty[$, donc $f$ est strictement croissante sur cet intervalle : 0,25 pt.",
+        "solution": "Pour tout $x \\geqslant 0$, $x + 2 > 0$ : $f$ est un quotient de fonctions dérivables dont le dénominateur ne s'annule pas. Elle est donc dérivable sur $[0\\,;\\,+\\infty[$, et :\n\n$$f'(x) = \\dfrac{4(x + 2) - (4x + 3) \\times 1}{(x + 2)^2} = \\dfrac{4x + 8 - 4x - 3}{(x + 2)^2} = \\dfrac{5}{(x + 2)^2}.$$\n\nPour tout $x \\geqslant 0$, $5 > 0$ et $(x + 2)^2 > 0$, donc $f'(x) > 0$. La fonction $f$ est strictement croissante sur $[0\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q6",
+        "label": "B.2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 3$.",
+        "points": 1.25,
+        "revoir": "l-recurrence-suites-021",
+        "indices": [
+          "Méthode du cours pour $u_{n+1} = f(u_n)$ avec $f$ croissante : à l'initialisation, calcule $u_1$ ; dans l'hérédité, applique $f$ aux quatre membres de l'encadrement.",
+          "Hérédité : les nombres $0$, $u_n$, $u_{n+1}$ et $3$ sont dans $[0\\,;\\,+\\infty[$, où $f$ est croissante, donc $f(0) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(3)$. Calcule $f(0)$ et $f(3)$."
+        ],
+        "attenduCorrecteur": "- Propriété $P(n)$ énoncée ; initialisation : $u_0 = 1$, $u_1 = \\dfrac{7}{3}$ et $0 \\leqslant 1 \\leqslant \\dfrac{7}{3} \\leqslant 3$ : 0,25 pt.\n- Hérédité : hypothèse de récurrence pour un entier $n$ fixé, et objectif $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 3$ écrit : 0,25 pt.\n- Croissance de $f$ sur $[0\\,;\\,+\\infty[$ (question B.1) appliquée aux quatre membres, qui sont dans cet intervalle : 0,25 pt.\n- $f(0) = \\dfrac{3}{2} \\geqslant 0$ et $f(3) = 3$, d'où $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 3$ : 0,25 pt.\n- Conclusion par le principe de récurrence : 0,25 pt.",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 3$ ».\n\n**Initialisation** : $u_0 = 1$ et $u_1 = f(1) = \\dfrac{4 + 3}{1 + 2} = \\dfrac{7}{3}$. Or $0 \\leqslant 1 \\leqslant \\dfrac{7}{3} \\leqslant 3$, donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $P(n)$ vraie : $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 3$. On veut montrer $P(n+1)$ : $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 3$.\n\nLes nombres $0$, $u_n$, $u_{n+1}$ et $3$ appartiennent à $[0\\,;\\,+\\infty[$, où $f$ est croissante (question B.1). Appliquer $f$ conserve donc l'ordre :\n\n$$f(0) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(3).$$\n\nOr $f(0) = \\dfrac{3}{2}$, $f(u_n) = u_{n+1}$, $f(u_{n+1}) = u_{n+2}$ et $f(3) = \\dfrac{12 + 3}{3 + 2} = 3$. Donc $\\dfrac{3}{2} \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 3$ et, comme $0 \\leqslant \\dfrac{3}{2}$ : $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 3$. Ainsi $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 3$.",
+        "erreurFrequente": "Écrire $u_{n+1} \\leqslant u_{n+2}$ « parce que $f$ est croissante », sans partir de l'hypothèse $u_n \\leqslant u_{n+1}$ : c'est cette inégalité, transformée par $f$, qui donne $u_{n+1} \\leqslant u_{n+2}$."
+      },
+      {
+        "id": "q7",
+        "label": "B.3.",
+        "enonce": "Justifier que la suite $(u_n)$ est convergente.",
+        "points": 0.5,
+        "revoir": "l-limites-suites-052",
+        "indices": [
+          "Lis dans l'encadrement de la question B.2 deux informations : le sens de variation de la suite, et une borne constante. Cite ensuite le théorème qui les relie."
+        ],
+        "attenduCorrecteur": "- $u_n \\leqslant u_{n+1}$ : suite croissante ; $u_n \\leqslant 3$ : suite majorée par $3$ : 0,25 pt.\n- Théorème de convergence monotone cité : la suite converge : 0,25 pt.",
+        "solution": "D'après la question B.2, pour tout entier naturel $n$, $u_n \\leqslant u_{n+1}$ : la suite $(u_n)$ est croissante. Toujours d'après la question B.2, $u_n \\leqslant 3$ pour tout $n$ : la suite est majorée par $3$.\n\nLa suite $(u_n)$ est croissante et majorée : d'après le théorème de convergence monotone, elle converge.",
+        "erreurFrequente": "Conclure que la suite converge vers $3$ parce qu'elle est majorée par $3$ : le théorème donne l'existence de la limite, pas sa valeur. C'est la question B.4 qui la détermine."
+      },
+      {
+        "id": "q8",
+        "label": "B.4.",
+        "enonce": "On admet que, pour tout entier naturel $n$, $0 \\leqslant 3 - u_n \\leqslant 2 \\times \\left(\\dfrac{1}{2}\\right)^n$.\n\nEn déduire la limite de la suite $(u_n)$, puis l'interpréter dans le contexte de l'exercice.",
+        "points": 0.75,
+        "revoir": "l-limites-suites-031",
+        "indices": [
+          "Transforme l'encadrement admis en un encadrement de $u_n$ lui-même, de la forme $v_n \\leqslant u_n \\leqslant w_n$, puis cherche la limite de chacune des deux suites qui encadrent.",
+          "De $0 \\leqslant 3 - u_n$, on tire une majoration de $u_n$ ; de l'autre inégalité, une minoration. Pour la limite de $\\left(\\dfrac{1}{2}\\right)^n$, compare $\\dfrac{1}{2}$ à $-1$ et à $1$."
+        ],
+        "attenduCorrecteur": "- Encadrement : $3 - 2 \\times \\left(\\dfrac{1}{2}\\right)^n \\leqslant u_n \\leqslant 3$ : 0,25 pt.\n- $-1 < \\dfrac{1}{2} < 1$, donc $\\left(\\dfrac{1}{2}\\right)^n$ tend vers $0$ et le minorant tend vers $3$ ; théorème des gendarmes cité : $\\lim\\limits_{n \\to +\\infty} u_n = 3$ : 0,25 pt.\n- Interprétation : à long terme, le nombre de salariés satisfaits par le dispositif, qu'ils le pratiquent ou non, se rapproche de $3\\,000$ : 0,25 pt.",
+        "solution": "Pour tout entier naturel $n$ :\n\n- de $0 \\leqslant 3 - u_n$, on tire $u_n \\leqslant 3$ ;\n- de $3 - u_n \\leqslant 2 \\times \\left(\\dfrac{1}{2}\\right)^n$, on tire $u_n \\geqslant 3 - 2 \\times \\left(\\dfrac{1}{2}\\right)^n$.\n\nDonc, pour tout entier naturel $n$, $3 - 2 \\times \\left(\\dfrac{1}{2}\\right)^n \\leqslant u_n \\leqslant 3$.\n\nOr $-1 < \\dfrac{1}{2} < 1$, donc $\\lim\\limits_{n \\to +\\infty} \\left(\\dfrac{1}{2}\\right)^n = 0$. Par produit et somme, $\\lim\\limits_{n \\to +\\infty} \\left(3 - 2 \\times \\left(\\dfrac{1}{2}\\right)^n\\right) = 3$. La suite constante égale à $3$ converge aussi vers $3$.\n\nD'après le théorème des gendarmes, la suite $(u_n)$ converge vers $3$.\n\nComme $u_n$ est un nombre de milliers de salariés, à long terme, le nombre de salariés satisfaits par le dispositif de télétravail se rapproche de $3\\,000$.\n\nIl dépasse le nombre de télétravailleurs, qui reste inférieur à $2\\,500$ d'après la partie A : ce n'est pas contradictoire, car un salarié peut être satisfait du dispositif sans le pratiquer.",
+        "erreurFrequente": "Conclure directement « $3 - u_n$ tend vers $0$ » sans citer le théorème des gendarmes, ou oublier de vérifier que les deux suites qui encadrent ont la même limite."
+      }
+    ]
+  },
+  {
+    "id": "tb-limites-suites-003",
+    "chapitre": "limites-suites",
+    "notions": ["n-limites-suites-monotone-bornee", "n-limites-suites-operations", "n-limites-suites-definitions"],
+    "capacites": ["bo-m-suites-06", "bo-m-suites-07", "bo-m-suites-04", "bo-m-suites-02", "bo-m-suites-08", "bo-m-logique-14"],
+    "titre": "Suite définie par une fonction homographique : convergence, limite et rang",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2026-asie-j2",
+      "adaptation": "Exercice 1 : fonction homographique croissante, image de $[0\\,;\\,1]$, récurrence « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$ », convergence, premiers termes en fractions et forme explicite démontrée par récurrence conservés ; fonction modifiée ($f(x) = \\dfrac{3 - 2x}{4 - 3x}$ au lieu de $\\dfrac{x - 2}{2x - 3}$) ; limites de $f$ aux bornes de son ensemble de définition retirées (limites de fonctions, chapitre ultérieur) ; question B.3 (limite déduite de l'équation $f(\\ell) = \\ell$, qui relève de la continuité, chapitre ultérieur) remplacée par le calcul de la limite à partir de la forme explicite ; question B.4 (interpréter la valeur renvoyée par une fonction Python seuil) remplacée par la recherche du plus petit rang à partir duquel tous les termes sont dans un intervalle ouvert autour de la limite ; forme explicite donnée dans l'énoncé au lieu d'être conjecturée, pour que la suite de l'exercice reste faisable. Solution écrite pour le site."
+    },
+    "preambule": "**Partie A.** On considère la fonction $f$ définie sur l'intervalle $\\left]-\\infty\\,;\\,\\dfrac{4}{3}\\right[$ par $f(x) = \\dfrac{3 - 2x}{4 - 3x}$.\n\n**Partie B.** On considère la suite $(u_n)$ définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = \\dfrac{3 - 2u_n}{4 - 3u_n}$. Ainsi $u_{n+1} = f(u_n)$ ; la question B.1 montre en particulier que tous les termes sont dans $[0\\,;\\,1]$, où $f$ est définie.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Démontrer que la fonction $f$ est strictement croissante sur $\\left]-\\infty\\,;\\,\\dfrac{4}{3}\\right[$.",
+        "points": 0.75,
+        "revoir": "l-recurrence-suites-020",
+        "indices": [
+          "Calcule $f'(x)$ avec la formule de dérivation d'un quotient, puis étudie son signe.",
+          "Le numérateur $3 - 2x$ a pour dérivée $-2$, le dénominateur $4 - 3x$ a pour dérivée $-3$. Le numérateur de $f'(x)$ est donc $-2(4 - 3x) - (3 - 2x) \\times (-3)$ : développe-le avec soin."
+        ],
+        "attenduCorrecteur": "- $f$ dérivable (quotient, dénominateur $4 - 3x > 0$ sur l'intervalle) et $f'(x) = \\dfrac{-2(4 - 3x) - (3 - 2x) \\times (-3)}{(4 - 3x)^2}$ : 0,25 pt.\n- $f'(x) = \\dfrac{1}{(4 - 3x)^2}$ : 0,25 pt.\n- $f'(x) > 0$, donc $f$ est strictement croissante sur $\\left]-\\infty\\,;\\,\\dfrac{4}{3}\\right[$ : 0,25 pt.",
+        "solution": "Pour tout $x < \\dfrac{4}{3}$, $3x < 4$, donc $4 - 3x > 0$ : le dénominateur ne s'annule pas. La fonction $f$ est un quotient de fonctions dérivables ; elle est donc dérivable sur $\\left]-\\infty\\,;\\,\\dfrac{4}{3}\\right[$, et :\n\n$$f'(x) = \\dfrac{-2(4 - 3x) - (3 - 2x) \\times (-3)}{(4 - 3x)^2} = \\dfrac{-8 + 6x + 9 - 6x}{(4 - 3x)^2} = \\dfrac{1}{(4 - 3x)^2}.$$\n\nLe carré d'un nombre non nul est strictement positif, donc $f'(x) > 0$ sur $\\left]-\\infty\\,;\\,\\dfrac{4}{3}\\right[$. La fonction $f$ est strictement croissante sur cet intervalle.",
+        "erreurFrequente": "Perdre un signe moins : la dérivée du dénominateur est $-3$, et $-(3 - 2x) \\times (-3) = 9 - 6x$."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "En déduire que, pour tout réel $x$ de l'intervalle $[0\\,;\\,1]$, $f(x)$ appartient à $[0\\,;\\,1]$.",
+        "points": 0.5,
+        "revoir": "l-recurrence-suites-021",
+        "indices": [
+          "L'intervalle $[0\\,;\\,1]$ est inclus dans celui où $f$ est croissante : de $0 \\leqslant x \\leqslant 1$, déduis un encadrement de $f(x)$ entre deux valeurs à calculer."
+        ],
+        "attenduCorrecteur": "- $f$ croissante sur un intervalle contenant $[0\\,;\\,1]$ et $0 \\leqslant x \\leqslant 1$, donc $f(0) \\leqslant f(x) \\leqslant f(1)$ : 0,25 pt.\n- $f(0) = \\dfrac{3}{4}$ et $f(1) = 1$, donc $0 \\leqslant \\dfrac{3}{4} \\leqslant f(x) \\leqslant 1$ : 0,25 pt.",
+        "solution": "Soit $x \\in [0\\,;\\,1]$. L'intervalle $[0\\,;\\,1]$ est inclus dans $\\left]-\\infty\\,;\\,\\dfrac{4}{3}\\right[$, où $f$ est croissante (question A.1). De $0 \\leqslant x \\leqslant 1$, on déduit $f(0) \\leqslant f(x) \\leqslant f(1)$.\n\nOr $f(0) = \\dfrac{3}{4}$ et $f(1) = \\dfrac{3 - 2}{4 - 3} = 1$. Donc $\\dfrac{3}{4} \\leqslant f(x) \\leqslant 1$ et, comme $0 \\leqslant \\dfrac{3}{4}$ : $f(x) \\in [0\\,;\\,1]$."
+      },
+      {
+        "id": "q3",
+        "label": "B.1.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$.",
+        "points": 1.25,
+        "revoir": "l-recurrence-suites-022",
+        "indices": [
+          "Même geste que dans l'exemple du cours « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$ » : initialisation avec $u_0$ et $u_1$, puis, dans l'hérédité, applique $f$, croissante, aux quatre membres de l'encadrement.",
+          "Hérédité : les nombres $0$, $u_n$, $u_{n+1}$ et $1$ sont dans $[0\\,;\\,1]$, donc $f(0) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(1)$. Les valeurs $f(0)$ et $f(1)$ ont été calculées à la question A.2."
+        ],
+        "attenduCorrecteur": "- Propriété $P(n)$ énoncée ; initialisation : $u_0 = 0$, $u_1 = \\dfrac{3}{4}$ et $0 \\leqslant 0 \\leqslant \\dfrac{3}{4} \\leqslant 1$ : 0,25 pt.\n- Hérédité : hypothèse de récurrence pour un entier $n$ fixé, et objectif $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 1$ écrit : 0,25 pt.\n- Croissance de $f$ sur un intervalle qui contient $0$, $u_n$, $u_{n+1}$ et $1$, appliquée aux quatre membres : 0,25 pt.\n- $f(0) = \\dfrac{3}{4} \\geqslant 0$ et $f(1) = 1$, d'où $P(n+1)$ : 0,25 pt.\n- Conclusion par le principe de récurrence : 0,25 pt.",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$ ».\n\n**Initialisation** : $u_0 = 0$ et $u_1 = f(0) = \\dfrac{3}{4}$. Or $0 \\leqslant 0 \\leqslant \\dfrac{3}{4} \\leqslant 1$, donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $P(n)$ vraie : $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$. On veut montrer $P(n+1)$ : $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 1$.\n\nLes nombres $0$, $u_n$, $u_{n+1}$ et $1$ appartiennent à $[0\\,;\\,1]$, inclus dans l'intervalle où $f$ est croissante (question A.1). Appliquer $f$ conserve donc l'ordre :\n\n$$f(0) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(1).$$\n\nOr $f(0) = \\dfrac{3}{4}$, $f(u_n) = u_{n+1}$, $f(u_{n+1}) = u_{n+2}$ et $f(1) = 1$. Donc $\\dfrac{3}{4} \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 1$ et, comme $0 \\leqslant \\dfrac{3}{4}$ : $0 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 1$. Ainsi $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 1$.",
+        "erreurFrequente": "Appliquer $f$ sans dire que les quatre nombres sont dans l'intervalle où $f$ est croissante : c'est cette hypothèse qui permet de conserver l'ordre."
+      },
+      {
+        "id": "q4",
+        "label": "B.2.",
+        "enonce": "En déduire que la suite $(u_n)$ converge.",
+        "points": 0.5,
+        "revoir": "l-limites-suites-051",
+        "indices": [
+          "Que dit l'encadrement de la question B.1 sur le sens de variation de la suite ? Et sur une borne constante ? Cite ensuite le théorème qui permet de conclure."
+        ],
+        "attenduCorrecteur": "- Suite croissante ($u_n \\leqslant u_{n+1}$) et majorée par $1$ ($u_n \\leqslant 1$) : 0,25 pt.\n- Théorème de convergence monotone cité : la suite converge : 0,25 pt.",
+        "solution": "D'après la question B.1, pour tout entier naturel $n$, $u_n \\leqslant u_{n+1}$ : la suite $(u_n)$ est croissante. Toujours d'après la question B.1, $u_n \\leqslant 1$ pour tout $n$ : la suite est majorée par $1$.\n\nLa suite $(u_n)$ est croissante et majorée : d'après le théorème de convergence monotone, elle converge."
+      },
+      {
+        "id": "q5",
+        "label": "B.3.",
+        "enonce": "Une expression de $u_n$ en fonction de $n$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Calculer $u_2$ et $u_3$ ; donner les résultats sous forme de fractions irréductibles.\n\nSaisis la valeur de $u_3$.",
+            "points": 0.5,
+            "reponse": { "type": "numerique", "valeur": "9/10", "tolerance": 0 },
+            "revoir": "l-recurrence-suites-002",
+            "indices": [
+              "Applique la relation de récurrence en partant de $u_1 = \\dfrac{3}{4}$ : calcule séparément le numérateur $3 - 2u_n$ et le dénominateur $4 - 3u_n$, chacun sous la forme d'une seule fraction, puis divise."
+            ],
+            "attenduCorrecteur": "- $u_2 = \\dfrac{3 - \\frac{3}{2}}{4 - \\frac{9}{4}} = \\dfrac{\\frac{3}{2}}{\\frac{7}{4}} = \\dfrac{6}{7}$ : 0,25 pt.\n- $u_3 = \\dfrac{3 - \\frac{12}{7}}{4 - \\frac{18}{7}} = \\dfrac{\\frac{9}{7}}{\\frac{10}{7}} = \\dfrac{9}{10}$ : 0,25 pt.",
+            "solution": "Avec $u_1 = \\dfrac{3}{4}$ :\n\n$$u_2 = \\dfrac{3 - 2 \\times \\frac{3}{4}}{4 - 3 \\times \\frac{3}{4}} = \\dfrac{3 - \\frac{3}{2}}{4 - \\frac{9}{4}} = \\dfrac{\\frac{3}{2}}{\\frac{7}{4}} = \\dfrac{3}{2} \\times \\dfrac{4}{7} = \\dfrac{6}{7}.$$\n\nPuis, avec $u_2 = \\dfrac{6}{7}$ :\n\n$$u_3 = \\dfrac{3 - 2 \\times \\frac{6}{7}}{4 - 3 \\times \\frac{6}{7}} = \\dfrac{3 - \\frac{12}{7}}{4 - \\frac{18}{7}} = \\dfrac{\\frac{9}{7}}{\\frac{10}{7}} = \\dfrac{9}{10}.$$\n\nCes fractions sont irréductibles : $6$ et $7$, puis $9$ et $10$, n'ont pas de diviseur commun autre que $1$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n = \\dfrac{3n}{3n + 1}$.",
+            "points": 1,
+            "revoir": "l-recurrence-suites-004",
+            "indices": [
+              "Initialisation : calcule $\\dfrac{3 \\times 0}{3 \\times 0 + 1}$. Hérédité : remplace $u_n$ par $\\dfrac{3n}{3n + 1}$ dans la relation de récurrence ; le but est $u_{n+1} = \\dfrac{3(n + 1)}{3(n + 1) + 1} = \\dfrac{3n + 3}{3n + 4}$.",
+              "Écris le numérateur $3 - \\dfrac{6n}{3n + 1}$ et le dénominateur $4 - \\dfrac{9n}{3n + 1}$ avec le dénominateur commun $3n + 1$, puis simplifie le quotient."
+            ],
+            "attenduCorrecteur": "- Propriété $P(n)$ énoncée ; initialisation : $\\dfrac{3 \\times 0}{3 \\times 0 + 1} = 0 = u_0$ : 0,25 pt.\n- Hérédité : hypothèse de récurrence pour un entier $n$ fixé, et objectif $u_{n+1} = \\dfrac{3n + 3}{3n + 4}$ écrit : 0,25 pt.\n- Calcul : $3 - 2u_n = \\dfrac{3n + 3}{3n + 1}$ et $4 - 3u_n = \\dfrac{3n + 4}{3n + 1}$, d'où $u_{n+1} = \\dfrac{3n + 3}{3n + 4} = \\dfrac{3(n + 1)}{3(n + 1) + 1}$ : 0,25 pt.\n- Conclusion par le principe de récurrence : 0,25 pt.",
+            "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n = \\dfrac{3n}{3n + 1}$ ».\n\n**Initialisation** : $\\dfrac{3 \\times 0}{3 \\times 0 + 1} = \\dfrac{0}{1} = 0 = u_0$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $P(n)$ vraie : $u_n = \\dfrac{3n}{3n + 1}$. On veut montrer $P(n+1)$ : $u_{n+1} = \\dfrac{3(n + 1)}{3(n + 1) + 1}$, c'est-à-dire $u_{n+1} = \\dfrac{3n + 3}{3n + 4}$.\n\nOn calcule séparément le numérateur et le dénominateur de $u_{n+1} = \\dfrac{3 - 2u_n}{4 - 3u_n}$ :\n\n$$3 - 2u_n = 3 - \\dfrac{6n}{3n + 1} = \\dfrac{9n + 3 - 6n}{3n + 1} = \\dfrac{3n + 3}{3n + 1},$$\n\n$$4 - 3u_n = 4 - \\dfrac{9n}{3n + 1} = \\dfrac{12n + 4 - 9n}{3n + 1} = \\dfrac{3n + 4}{3n + 1}.$$\n\nDonc $u_{n+1} = \\dfrac{3n + 3}{3n + 1} \\times \\dfrac{3n + 1}{3n + 4} = \\dfrac{3n + 3}{3n + 4}$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $u_n = \\dfrac{3n}{3n + 1}$.\n\nContrôle : la formule donne $u_3 = \\dfrac{9}{10}$, comme à la question B.3.a).",
+            "erreurFrequente": "Écrire l'objectif $P(n+1)$ sous la forme $\\dfrac{3n + 1}{3n + 2}$ en ajoutant $1$ au numérateur et au dénominateur : il faut remplacer $n$ par $n + 1$ partout, ce qui donne $\\dfrac{3n + 3}{3n + 4}$."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "label": "B.4.",
+        "enonce": "Déterminer la limite de la suite $(u_n)$.",
+        "points": 0.75,
+        "revoir": "l-limites-suites-021",
+        "indices": [
+          "Le numérateur et le dénominateur de $\\dfrac{3n}{3n + 1}$ tendent vers $+\\infty$ : c'est une forme indéterminée. Pour $n \\geqslant 1$, mets $n$ en facteur en haut et en bas, puis simplifie."
+        ],
+        "attenduCorrecteur": "- Forme indéterminée « $\\dfrac{\\infty}{\\infty}$ » repérée ; pour $n \\geqslant 1$, $u_n = \\dfrac{3}{3 + \\frac{1}{n}}$ : 0,25 pt.\n- $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$, donc le dénominateur tend vers $3$ : 0,25 pt.\n- Par quotient, $\\lim\\limits_{n \\to +\\infty} u_n = 1$ : 0,25 pt.",
+        "solution": "D'après la question B.3.b), $u_n = \\dfrac{3n}{3n + 1}$. Le numérateur $3n$ et le dénominateur $3n + 1$ tendent vers $+\\infty$ : c'est la forme indéterminée « $\\dfrac{\\infty}{\\infty}$ ».\n\nPour tout entier $n \\geqslant 1$, on met $n$ en facteur en haut et en bas :\n\n$$u_n = \\dfrac{3n}{n\\left(3 + \\frac{1}{n}\\right)} = \\dfrac{3}{3 + \\frac{1}{n}}.$$\n\nOr $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$, donc, par somme, le dénominateur $3 + \\dfrac{1}{n}$ tend vers $3$. Par quotient : $\\lim\\limits_{n \\to +\\infty} u_n = \\dfrac{3}{3} = 1$.\n\nLa suite $(u_n)$ converge vers $1$, ce qui est cohérent avec la question B.1 : la suite est croissante et majorée par $1$.",
+        "erreurFrequente": "Conclure « $\\dfrac{+\\infty}{+\\infty} = 1$ » : une forme indéterminée ne se calcule pas directement ; c'est la mise en facteur qui lève l'indétermination."
+      },
+      {
+        "id": "q7",
+        "label": "B.5.",
+        "enonce": "Déterminer le plus petit entier naturel $N$ tel que, pour tout entier $n \\geqslant N$, $u_n$ appartient à l'intervalle $\\left]1 - 10^{-4}\\,;\\,1 + 10^{-4}\\right[$.\n\nSaisis la valeur de $N$.",
+        "points": 0.75,
+        "reponse": { "type": "numerique", "valeur": 3334, "tolerance": 0 },
+        "revoir": "l-limites-suites-011",
+        "indices": [
+          "Commence par calculer $1 - u_n$ avec l'expression de la question B.3.b) : son signe dit de quel côté de $1$ se trouve $u_n$, et sa valeur dit à quelle distance.",
+          "$1 - u_n = \\dfrac{1}{3n + 1}$. Il reste à résoudre $\\dfrac{1}{3n + 1} < 10^{-4}$ dans les entiers naturels ; attention, l'intervalle est ouvert."
+        ],
+        "attenduCorrecteur": "- $1 - u_n = \\dfrac{1}{3n + 1} > 0$, donc $u_n < 1 < 1 + 10^{-4}$ pour tout $n$ : 0,25 pt.\n- $u_n > 1 - 10^{-4}$ équivaut à $\\dfrac{1}{3n + 1} < 10^{-4}$, puis à $3n + 1 > 10\\,000$ (fonction inverse décroissante sur $]0\\,;\\,+\\infty[$), soit $n > 3\\,333$ : 0,25 pt.\n- Plus petit rang : $N = 3\\,334$ ; le rang $3\\,333$ ne convient pas, car $1 - u_{3\\,333} = 10^{-4}$ exactement : 0,25 pt.",
+        "solution": "D'après la question B.3.b), pour tout entier naturel $n$ :\n\n$$1 - u_n = 1 - \\dfrac{3n}{3n + 1} = \\dfrac{3n + 1 - 3n}{3n + 1} = \\dfrac{1}{3n + 1}.$$\n\n- Comme $\\dfrac{1}{3n + 1} > 0$, on a $u_n < 1$, donc $u_n < 1 + 10^{-4}$ pour tout $n$ : la borne de droite est toujours respectée.\n- Il reste $u_n > 1 - 10^{-4}$, c'est-à-dire $1 - u_n < 10^{-4}$, soit $\\dfrac{1}{3n + 1} < \\dfrac{1}{10\\,000}$. Les nombres $3n + 1$ et $10\\,000$ sont strictement positifs et la fonction inverse est strictement décroissante sur $]0\\,;\\,+\\infty[$ : cette inégalité équivaut à $3n + 1 > 10\\,000$, soit $n > 3\\,333$.\n\nAinsi, $u_n$ appartient à l'intervalle exactement lorsque $n \\geqslant 3\\,334$. Pour $n = 3\\,333$, $1 - u_n = \\dfrac{1}{10\\,000} = 10^{-4}$ : le terme $u_{3\\,333} = 1 - 10^{-4}$ n'est pas dans l'intervalle ouvert.\n\nLe plus petit entier cherché est $N = 3\\,334$ : à partir de ce rang, tous les termes de la suite sont à moins de $10^{-4}$ de sa limite $1$.",
+        "erreurFrequente": "Répondre $3\\,333$ : pour ce rang, $u_n = 1 - 10^{-4}$ exactement, qui n'appartient pas à l'intervalle ouvert."
+      }
+    ]
+  },
+  {
+    "id": "tb-limites-suites-004",
+    "chapitre": "limites-suites",
+    "notions": ["n-limites-suites-definitions", "n-limites-suites-comparaison"],
+    "capacites": ["bo-m-suites-01", "bo-m-suites-03", "bo-m-suites-08", "bo-m-logique-14", "bo-m-listes-01"],
+    "titre": "Une suite qui tend vers l'infini : minoration, rang et forme explicite",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2023-amerique-sud-j2",
+      "adaptation": "Exercice 3 : suite $u_{n+1} = q\\,u_n + a\\,n + b$ de premier terme $u_0 = 0$, fonction Python à compléter, minoration par $2n$ démontrée par récurrence, limite, existence d'un rang $n_0$ à partir duquel $u_n \\geqslant 10^p$, sens de variation, liste Python des termes de la suite auxiliaire $v_n = u_n - 2n + 1$ et forme explicite conservés ; données modifiées ($u_{n+1} = 3u_n - 4n + 4$ au lieu de $5u_n - 8n + 6$) ; boucle de la fonction suite_u parcourue de $0$ à $n - 1$ au lieu de $1$ à $n$, pour que la relation de récurrence s'y écrive sans décalage d'indice, comme dans le cours ; question 3.c complétée : donner un tel rang pour $p = 3$ à l'aide de la minoration. Solution écrite pour le site."
+    },
+    "preambule": "On considère la suite $(u_n)$ définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = 3u_n - 4n + 4$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $u_1$ et $u_2$.\n\nSaisis la valeur de $u_2$.",
+        "points": 0.5,
+        "reponse": { "type": "numerique", "valeur": 12, "tolerance": 0 },
+        "revoir": "l-recurrence-suites-002",
+        "indices": [
+          "Pour $u_1$, applique la relation avec $n = 0$ ; pour $u_2$, avec $n = 1$. Le terme $-4n$ change d'un calcul à l'autre."
+        ],
+        "attenduCorrecteur": "- $u_1 = 3 \\times 0 - 4 \\times 0 + 4 = 4$ : 0,25 pt.\n- $u_2 = 3 \\times 4 - 4 \\times 1 + 4 = 12$ : 0,25 pt.",
+        "solution": "Avec $n = 0$ : $u_1 = 3u_0 - 4 \\times 0 + 4 = 0 - 0 + 4 = 4$.\n\nAvec $n = 1$ : $u_2 = 3u_1 - 4 \\times 1 + 4 = 12 - 4 + 4 = 12$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Recopier et compléter la fonction suite_u ci-dessous, écrite en langage Python, afin que l'appel suite_u(n) renvoie la valeur de $u_n$ pour tout entier naturel $n$.",
+        "code": {
+          "langage": "python",
+          "source": "def suite_u(n):\n    u = ...\n    for i in range(n):\n        u = ...\n    return u"
+        },
+        "points": 0.5,
+        "revoir": "l-recurrence-suites-036",
+        "indices": [
+          "La variable u doit d'abord contenir le premier terme. Dans la boucle, i prend les valeurs $0$, $1$, …, $n - 1$ : quand i vaut un entier donné, u contient $u_i$ et doit être remplacé par le terme suivant, comme dans le bloc de cours.",
+          "Écris la relation $u_{n+1} = 3u_n - 4n + 4$ au rang i : quel terme obtiens-tu à gauche, et que devient le terme $-4n$ ? Traduis-la ensuite en Python, où le produit s'écrit avec *."
+        ],
+        "attenduCorrecteur": "- Première ligne : $\\texttt{u = 0}$, le premier terme $u_0$ : 0,25 pt.\n- Ligne de la boucle : $\\texttt{u = 3*u - 4*i + 4}$, car quand i vaut un entier donné, u contient $u_i$ et devient $u_{i+1} = 3u_i - 4i + 4$ : 0,25 pt.",
+        "solution": "La variable u contient d'abord $u_0 = 0$ : la première ligne incomplète est $\\texttt{u = 0}$.\n\nDans la boucle, i prend les valeurs $0$, $1$, …, $n - 1$ : la boucle fait $n$ tours. Quand i vaut un entier donné, u contient $u_i$ et doit être remplacé par le terme suivant. La relation de récurrence écrite au rang i donne $u_{i+1} = 3u_i - 4i + 4$. La ligne de la boucle est donc $\\texttt{u = 3*u - 4*i + 4}$ : à droite du signe =, u contient encore $u_i$ ; après l'affectation, il contient $u_{i+1}$.\n\nAprès $n$ tours, u contient $u_n$, que la fonction renvoie. Contrôle : suite_u(2) calcule $u_1 = 3 \\times 0 - 4 \\times 0 + 4 = 4$ (i vaut $0$), puis $u_2 = 3 \\times 4 - 4 \\times 1 + 4 = 12$ (i vaut $1$), comme à la question 1.",
+        "erreurFrequente": "Écrire $\\texttt{u = 3*u - 4*n + 4}$ : n est le rang du dernier terme et ne change pas pendant la boucle ; c'est i, le rang du terme contenu dans u, qui doit figurer dans la relation. Avec cette erreur, suite_u(2) renverrait $-16$ au lieu de $12$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Minoration et limite de la suite $(u_n)$.",
+        "points": 2.25,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n \\geqslant 2n$.",
+            "points": 1,
+            "revoir": "l-recurrence-suites-006",
+            "indices": [
+              "Initialisation avec $u_0$. Hérédité : pars de $u_{n+1} = 3u_n - 4n + 4$ et utilise l'hypothèse $u_n \\geqslant 2n$ pour minorer $3u_n$.",
+              "De $u_n \\geqslant 2n$, on tire $3u_n \\geqslant 6n$, donc $u_{n+1} \\geqslant 6n - 4n + 4$. Compare ensuite ce minorant à $2(n + 1)$."
+            ],
+            "attenduCorrecteur": "- Propriété $P(n)$ énoncée ; initialisation : $u_0 = 0 \\geqslant 2 \\times 0$ : 0,25 pt.\n- Hérédité : hypothèse de récurrence pour un entier $n$ fixé, puis $3u_n \\geqslant 6n$ (multiplication par $3 > 0$) : 0,25 pt.\n- $u_{n+1} \\geqslant 6n - 4n + 4 = 2n + 4 \\geqslant 2n + 2 = 2(n + 1)$ : 0,25 pt.\n- Conclusion par le principe de récurrence : 0,25 pt.",
+            "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n \\geqslant 2n$ ».\n\n**Initialisation** : $u_0 = 0$ et $2 \\times 0 = 0$, donc $u_0 \\geqslant 2 \\times 0$ : $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel. On suppose $P(n)$ vraie : $u_n \\geqslant 2n$. On veut montrer $P(n+1)$ : $u_{n+1} \\geqslant 2(n + 1)$.\n\nEn multipliant par $3 > 0$, on obtient $3u_n \\geqslant 6n$. Donc :\n\n$$u_{n+1} = 3u_n - 4n + 4 \\geqslant 6n - 4n + 4 = 2n + 4.$$\n\nOr $2n + 4 \\geqslant 2n + 2 = 2(n + 1)$. Donc $u_{n+1} \\geqslant 2(n + 1)$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $u_n \\geqslant 2n$.",
+            "erreurFrequente": "Écrire l'objectif $P(n+1)$ sous la forme $u_{n+1} \\geqslant 2n + 1$ : il faut remplacer $n$ par $n + 1$, ce qui donne $2(n + 1) = 2n + 2$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "En déduire la limite de la suite $(u_n)$.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-028",
+            "indices": [
+              "La suite $(u_n)$ est au-dessus d'une suite dont tu connais la limite : quel théorème permet de conclure, et dans quel sens l'inégalité doit-elle être ?"
+            ],
+            "attenduCorrecteur": "- $\\lim\\limits_{n \\to +\\infty} 2n = +\\infty$ : 0,25 pt.\n- $u_n \\geqslant 2n$ pour tout $n$ ; théorème de comparaison cité : $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$ : 0,25 pt.",
+            "solution": "$\\lim\\limits_{n \\to +\\infty} n = +\\infty$, donc, par produit par $2 > 0$, $\\lim\\limits_{n \\to +\\infty} 2n = +\\infty$.\n\nOr, d'après la question 3.a), $u_n \\geqslant 2n$ pour tout entier naturel $n$. D'après le théorème de comparaison, $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$.",
+            "erreurFrequente": "Conclure avec une majoration : être en dessous d'une suite qui tend vers $+\\infty$ ne permet pas de conclure. Ici, c'est parce que $(u_n)$ est au-dessus de $(2n)$ qu'elle tend vers $+\\infty$."
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "Soit $p$ un entier naturel non nul. Pourquoi peut-on affirmer qu'il existe au moins un entier $n_0$ tel que, pour tout entier naturel $n \\geqslant n_0$, $u_n \\geqslant 10^p$ ?\n\nÀ l'aide de la question 3.a), donner un tel entier $n_0$ lorsque $p = 3$.",
+            "points": 0.75,
+            "revoir": "l-limites-suites-004",
+            "indices": [
+              "Relis la définition de « la suite $(u_n)$ tend vers $+\\infty$ » avec les intervalles $[A\\,;\\,+\\infty[$ : quel nombre joue ici le rôle de $A$ ?",
+              "Pour $p = 3$ : si $2n$ atteint $10^3$, alors $u_n$ aussi, d'après la question 3.a). À partir de quel rang $2n \\geqslant 10^3$ ?"
+            ],
+            "attenduCorrecteur": "- La suite tend vers $+\\infty$ (question 3.b) ; par définition, l'intervalle $[10^p\\,;\\,+\\infty[$ contient tous les termes $u_n$ à partir d'un certain rang $n_0$ : 0,5 pt.\n- Pour $p = 3$ : si $n \\geqslant 500$, alors $u_n \\geqslant 2n \\geqslant 1\\,000 = 10^3$, donc $n_0 = 500$ convient (tout rang justifié qui convient est accepté) : 0,25 pt.",
+            "solution": "D'après la question 3.b), la suite $(u_n)$ tend vers $+\\infty$. Par définition, tout intervalle de la forme $[A\\,;\\,+\\infty[$ contient tous les termes $u_n$ à partir d'un certain rang. Avec $A = 10^p$ : il existe un entier $n_0$ tel que, pour tout entier $n \\geqslant n_0$, $u_n \\in [10^p\\,;\\,+\\infty[$, c'est-à-dire $u_n \\geqslant 10^p$.\n\nPour $p = 3$ : pour tout entier $n \\geqslant 500$, $2n \\geqslant 1\\,000$, donc, d'après la question 3.a), $u_n \\geqslant 2n \\geqslant 1\\,000 = 10^3$. L'entier $n_0 = 500$ convient.\n\nCe rang n'est pas le plus petit possible : avec les questions 4 et 5, on peut vérifier que $n_0 = 7$ convient déjà. Mais la question demande seulement un rang qui convient."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Démontrer que la suite $(u_n)$ est croissante.",
+        "points": 0.5,
+        "revoir": "l-recurrence-suites-013",
+        "indices": [
+          "Étudie le signe de $u_{n+1} - u_n$ : exprime cette différence avec $u_n$ et $n$, puis utilise la minoration de la question 3.a)."
+        ],
+        "attenduCorrecteur": "- $u_{n+1} - u_n = 2u_n - 4n + 4$ : 0,25 pt.\n- Avec $u_n \\geqslant 2n$ : $u_{n+1} - u_n \\geqslant 4n - 4n + 4 = 4 > 0$, donc la suite est croissante : 0,25 pt.",
+        "solution": "Pour tout entier naturel $n$ : $u_{n+1} - u_n = 3u_n - 4n + 4 - u_n = 2u_n - 4n + 4$.\n\nD'après la question 3.a), $u_n \\geqslant 2n$, donc $2u_n \\geqslant 4n$ et $u_{n+1} - u_n \\geqslant 4n - 4n + 4 = 4$.\n\nAinsi $u_{n+1} - u_n > 0$ pour tout entier naturel $n$ : la suite $(u_n)$ est strictement croissante."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On considère la suite $(v_n)$ définie, pour tout entier naturel $n$, par $v_n = u_n - 2n + 1$. Sous la fonction suite_u de la question 2, on écrit la fonction suite_v ci-dessous ; l'instruction L.append(x) ajoute x à la fin de la liste L.\n\nL'appel suite_v(5) renvoie la liste [1, 3, 9, 27, 81, 243].",
+        "code": {
+          "langage": "python",
+          "source": "def suite_v(n):\n    L = []\n    for i in range(n + 1):\n        L.append(suite_u(i) - 2*i + 1)\n    return L"
+        },
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Conjecturer, pour tout entier naturel $n$, une expression de $v_{n+1}$ en fonction de $v_n$, puis démontrer cette conjecture.",
+            "points": 0.75,
+            "revoir": "l-limites-suites-072",
+            "indices": [
+              "La liste contient $v_0$, $v_1$, …, $v_5$ : par quelle opération passe-t-on d'un nombre au suivant ?",
+              "Pour la démonstration : $v_{n+1} = u_{n+1} - 2(n + 1) + 1$. Remplace $u_{n+1}$ par $3u_n - 4n + 4$, puis $u_n$ par $v_n + 2n - 1$, et réduis."
+            ],
+            "attenduCorrecteur": "- Conjecture : $v_{n+1} = 3v_n$, chaque nombre de la liste étant le triple du précédent : 0,25 pt.\n- $v_{n+1} = u_{n+1} - 2(n + 1) + 1 = 3u_n - 6n + 3$ : 0,25 pt.\n- Avec $u_n = v_n + 2n - 1$ : $v_{n+1} = 3v_n$ ; la suite $(v_n)$ est géométrique de raison $3$ : 0,25 pt.",
+            "solution": "Les nombres de la liste, $v_0$ à $v_5$, sont chacun le triple du précédent. On conjecture que, pour tout entier naturel $n$, $v_{n+1} = 3v_n$.\n\nDémonstration. Pour tout entier naturel $n$ :\n\n$$v_{n+1} = u_{n+1} - 2(n + 1) + 1 = 3u_n - 4n + 4 - 2n - 2 + 1 = 3u_n - 6n + 3.$$\n\nOr $v_n = u_n - 2n + 1$, donc $u_n = v_n + 2n - 1$, et :\n\n$$v_{n+1} = 3\\left(v_n + 2n - 1\\right) - 6n + 3 = 3v_n + 6n - 3 - 6n + 3 = 3v_n.$$\n\nLa conjecture est démontrée : la suite $(v_n)$ est géométrique de raison $3$.",
+            "erreurFrequente": "Se contenter de la liste : six valeurs ne prouvent pas que la relation est vraie pour tout $n$. La conjecture doit être démontrée par le calcul."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "En déduire que, pour tout entier naturel $n$, $u_n = 3^n + 2n - 1$.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-039",
+            "indices": [
+              "Calcule $v_0$, écris la forme explicite de la suite géométrique $(v_n)$, puis reviens à $u_n$ grâce à la définition de $v_n$."
+            ],
+            "attenduCorrecteur": "- $v_0 = u_0 - 2 \\times 0 + 1 = 1$, donc $v_n = 1 \\times 3^n = 3^n$ : 0,25 pt.\n- $u_n = v_n + 2n - 1 = 3^n + 2n - 1$ : 0,25 pt.",
+            "solution": "$v_0 = u_0 - 2 \\times 0 + 1 = 1$. La suite $(v_n)$ est géométrique de raison $3$ et de premier terme $v_0 = 1$ : pour tout entier naturel $n$, $v_n = 1 \\times 3^n = 3^n$.\n\nComme $u_n = v_n + 2n - 1$ : pour tout entier naturel $n$, $u_n = 3^n + 2n - 1$.\n\nContrôle : $u_2 = 9 + 4 - 1 = 12$, comme à la question 1."
+          }
+        ]
+      }
+    ]
+  }
+]

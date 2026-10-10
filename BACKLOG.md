@@ -458,7 +458,9 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `methodes-maths` (logique, raisonnements, Python, rédaction, calculatrice) et
   `methodes-physique-chimie` (mesure et incertitudes, chiffres significatifs, analyse
   dimensionnelle, résolution de problème, Python) ; `/tle-chapitre <matiere> methodes-<matiere>`,
-  sans type bac (charte § 2.1). DoD : § 9.4 de la charte.
+  sans type bac (charte § 2.1). Y montrer la boucle Python `for i in range(1, n + 1)` avec
+  décalage d'indice, fréquente dans les annales et retirée du type bac de Limites de suites
+  (tb-004) faute d'exemple dans le cours. DoD : § 9.4 de la charte.
 - [x] Étudier comment produire un chapitre en consommant moins, sans perdre en qualité —
   mesures réelles des sessions Dénombrement, Acides-bases et Récurrence : ≈ 100 $ au tarif
   public par chapitre complet, dont ≈ 2 % pour le texte final, le reste en relectures de
@@ -492,6 +494,13 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   `validateDOMNesting` (`<a>` dans `<a>`) relevé par `controle-rendu.mjs maths denombrement` :
   `SourceDeLExercice` (`src/components/terminale/FicheExercice.tsx`) met le lien de la source
   dans la carte cliquable. DoD : plus d'avertissement, `verify.mjs` OK.
+- [ ] (P2) Les formules s'affichent en code brut ($…$) dans la note « D'après … » des sujets
+  type bac — vu au rendu de Limites de suites ; Récurrence et Dénombrement aussi (toutes leurs
+  notes d'adaptation ou presque contiennent du LaTeX). `SourceDeLExercice`
+  (`src/components/terminale/FicheExercice.tsx`, l. 54) affiche `source.adaptation` en texte
+  simple : passer par le composant qui rend les formules (`TextWithMath`) ; `controle-rendu.mjs`
+  pourrait signaler un `$` resté visible. DoD : notes rendues sur les trois chapitres,
+  `verify.mjs` OK.
 - [ ] (P2) Une page de cours peut se figer si une question contient du code avec « ** » —
   relevé par la relecture de Limites de suites (bloc 068, corrigé côté contenu) : un `**` sans
   pendant dans un texte (puissance Python hors du champ `code`) fait boucler sans fin
@@ -563,9 +572,9 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     planchers atteints ; relecteur PASS au 1er tour puis au 2e après le test « élève »
     (verdict CLAIR, aucun bloquant) ; couverture « exercices » sans écart. Livré dans la même
     PR que le cours (décision de Thibaud du 2026-10-01). PR : #104.
-  - [ ] Quand les exercices de « Limites de suites » sont écrits (le cours l'est, PR #114), remettre dans le type bac de
-    Récurrence et suites les questions retirées des sujets adaptés — limites, convergence et
-    seuils (voir les notes `adaptation` de
+  - [ ] Remettre dans le type bac de Récurrence et suites les questions retirées des sujets
+    adaptés, maintenant que « Limites de suites » est écrit (cours PR #114, exercices PR #117) —
+    limites, convergence et seuils (voir les notes `adaptation` de
     `content/terminale/maths/chapitres/recurrence-suites/type-bac.json` et des exercices
     x-012, x-017, x-020).
   - [ ] Montrer en image comment une suite uₙ₊₁ = f(uₙ) monte sans sortir de son intervalle —
@@ -579,9 +588,22 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     convergence) ; relecteur PASS au 2e tour, élève-testeur (1 bloquant corrigé), 3e relecture
     sur les blocs modifiés : un seul défaut d'une ligne (068), corrigé et contrôlé au rendu ;
     couverture « cours » sans écart. PR : #114.
-  - [ ] Limites de suites : les exercices — `/tle-chapitre maths limites-suites exercices`, dans
-    une session neuve. Interdits relevés par l'architecte : pas de ℓ = f(ℓ) (continuité), pas
-    de seuil par le calcul (ln), pas de croissances comparées ni d'exponentielle, pas de ln(2).
+  - [x] Limites de suites : les exercices — 34 exercices (15 Comprendre, 15 S'entraîner,
+    4 Approfondir), 19 questions éclair, 4 exercices type bac (23 points, tous adaptés
+    d'annales citées, sans ℓ = f(ℓ), ln, exponentielle ni croissances comparées) ; tous les
+    planchers atteints ; relecteur PASS dès le 1er tour, puis aux 2e et 3e tours ciblés sur
+    les retouches ; élève-testeur CLAIR (15/15 en Comprendre, aucun bloquant, 6 gênes levées
+    dans les indices et solutions) ; couverture « exercices » sans écart. Coût : 37 $. PR : #117.
+  - [ ] Compléter le cours de Limites de suites sur cinq points où l'élève a hésité — relevés
+    par l'élève-testeur des exercices, réglés pour l'instant dans les indices : un exemple de
+    forme indéterminée avec √n (bloc `l-limites-suites-021`) ; un exemple rédigé de « montrer
+    qu'une suite n'est pas majorée » et la propriété « une suite qui tend vers +∞ n'est pas
+    majorée » (`l-005` ou méthode `l-054`) ; les mots « majorant » et « minorant » dans le
+    rappel `l-002` ; la réciproque fausse du théorème de convergence monotone ; le raccourci
+    « à degrés égaux, quotient des coefficients » comme contrôle, qui ne dispense pas de
+    factoriser (`l-021` ou `l-022`). Au passage, x-033 q4 : l'indice 2 écrit « uₙ > 0 » sans
+    renvoyer à la question 1 (dernier non bloquant du relecteur). Circuit : `tle-auteur-cours`
+    → `tle-relecteur` sur les blocs modifiés.
   - [ ] Une animation pour voir une suite entrer dans une bande autour de sa limite — souhait de
     l'auteur du cours (notion « définitions », bloc `l-limites-suites-010`) : un curseur pour
     la largeur de la bande, qui affiche le rang à partir duquel tous les termes y restent.

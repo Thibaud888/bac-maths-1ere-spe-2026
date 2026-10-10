@@ -1,0 +1,2394 @@
+[
+  {
+    "id": "x-limites-suites-001",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-monotone-bornee"],
+    "capacites": ["bo-m-suites-06", "bo-m-logique-07", "bo-m-logique-09"],
+    "titre": "Ce que dit le théorème de convergence monotone",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 10,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Une suite $(u_n)$ est croissante, $u_0 = 2$ et, pour tout entier naturel $n$, $u_n \\leqslant 7$. Parmi ces nombres, lesquels peuvent être sa limite ? Plusieurs réponses sont possibles.",
+        "reponse": {
+          "type": "qcm-multiple",
+          "choix": ["$1$", "$5$", "$7$", "$8$", "$+\\infty$"],
+          "bonnes": [1, 2]
+        },
+        "indices": [
+          "Le théorème de convergence monotone dit que la suite converge ; le passage à la limite dans une inégalité encadre ensuite sa limite $\\ell$.",
+          "Pour tout $n$, $u_n \\leqslant 7$, donc $\\ell \\leqslant 7$. La suite est croissante, donc $u_n \\geqslant u_0$ pour tout $n$ : qu'en déduis-tu pour $\\ell$ ?"
+        ],
+        "revoir": "l-limites-suites-052",
+        "solution": "La suite $(u_n)$ est croissante et majorée par $7$ : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$. Elle ne tend donc pas vers $+\\infty$.\n\nPour tout entier naturel $n$, $u_0 \\leqslant u_n \\leqslant 7$, soit $2 \\leqslant u_n \\leqslant 7$. Par passage à la limite, $2 \\leqslant \\ell \\leqslant 7$ : les nombres $1$ et $8$ sont exclus.\n\nEn revanche, $5$ et $7$ sont possibles : les suites définies par $u_n = 5 - \\dfrac{3}{n+1}$ et $u_n = 7 - \\dfrac{5}{n+1}$ sont croissantes, vérifient $u_0 = 2$ et $u_n \\leqslant 7$, et convergent vers $5$ et vers $7$.\n\nParmi les nombres proposés, les limites possibles sont $5$ et $7$.",
+        "erreurFrequente": "Croire que la limite est forcément le majorant $7$ : le théorème dit seulement qu'une limite existe, inférieure ou égale à $7$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux ? Une suite décroissante et minorée par $0$ converge vers $0$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "La suite définie par $u_n = 1 + \\dfrac{1}{n+1}$ est décroissante, minorée par $0$, et converge vers $1$."
+        },
+        "indices": [
+          "Relis ce que le théorème affirme sur la limite, et ce qu'il n'affirme pas.",
+          "Cherche une suite décroissante, à termes positifs, qui se rapproche d'un autre nombre que $0$ : par exemple, ajoute une constante à $\\dfrac{1}{n+1}$."
+        ],
+        "revoir": "l-limites-suites-059",
+        "solution": "La suite définie par $u_n = 1 + \\dfrac{1}{n+1}$ est décroissante, car $\\dfrac{1}{n+1}$ diminue quand $n$ augmente, et minorée par $0$, car tous ses termes sont positifs. Pourtant, elle converge vers $1$, et non vers $0$. Le théorème de convergence monotone assure seulement qu'une telle suite converge, vers une limite $\\ell \\geqslant 0$. L'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Toute suite convergente est croissante ou décroissante.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "La réciproque du théorème de convergence monotone est fausse. La suite définie par $u_n = \\dfrac{(-1)^n}{n+1}$ converge vers $0$, mais elle n'est ni croissante ni décroissante : $u_0 = 1$, $u_1 = -\\dfrac{1}{2}$, $u_2 = \\dfrac{1}{3}$."
+        },
+        "indices": [
+          "C'est la réciproque du théorème : une suite qui converge est-elle forcément monotone ? Un seul contre-exemple suffit pour répondre « faux ».",
+          "Pense à une suite qui oscille autour de sa limite en s'en rapprochant : $(-1)^n$ divisé par un nombre qui grandit."
+        ],
+        "revoir": "l-limites-suites-051",
+        "solution": "Soit $(u_n)$ la suite définie, pour tout entier naturel $n$, par $u_n = \\dfrac{(-1)^n}{n+1}$. On a $-\\dfrac{1}{n+1} \\leqslant u_n \\leqslant \\dfrac{1}{n+1}$, et les deux suites qui encadrent convergent vers $0$ : d'après le théorème des gendarmes, $(u_n)$ converge vers $0$.\n\nOr $u_0 = 1$, $u_1 = -\\dfrac{1}{2}$ et $u_2 = \\dfrac{1}{3}$ : la suite descend, puis remonte. Elle n'est ni croissante ni décroissante.\n\nLe théorème de convergence monotone affirme : « si une suite est croissante et majorée, ou décroissante et minorée, alors elle converge ». L'affirmation de l'énoncé en est la réciproque : « si une suite converge, alors elle est croissante ou décroissante ». Cette suite montre que **la réciproque est fausse** : une suite peut converger sans être monotone. Être monotone et bornée est une condition suffisante pour converger, pas une condition nécessaire.\n\nL'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-002",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-monotone-bornee"],
+    "capacites": ["bo-m-suites-06", "bo-m-suites-07"],
+    "titre": "Les hypothèses du théorème",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 20,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Dans quels cas peux-tu affirmer que la suite $(u_n)$ converge ? Plusieurs réponses sont possibles.",
+        "reponse": {
+          "type": "qcm-multiple",
+          "choix": [
+            "$(u_n)$ est décroissante et $u_n \\geqslant -5$ pour tout $n$.",
+            "$(u_n)$ est croissante et $u_n \\leqslant n$ pour tout $n$.",
+            "$(u_n)$ est croissante et $u_n \\leqslant 2 - \\dfrac{1}{n+1}$ pour tout $n$.",
+            "$(u_n)$ est décroissante et $u_n \\leqslant 10$ pour tout $n$.",
+            "$(u_n)$ est croissante et $u_n \\geqslant 0$ pour tout $n$."
+          ],
+          "bonnes": [0, 2]
+        },
+        "indices": [
+          "Il faut une suite croissante **et majorée** par un réel constant, ou décroissante **et minorée** par un réel constant.",
+          "Dans le troisième cas, compare $2 - \\dfrac{1}{n+1}$ au nombre constant $2$. Dans le deuxième, $n$ est-il un réel fixé ?"
+        ],
+        "revoir": "l-limites-suites-051",
+        "solution": "- Décroissante et minorée par $-5$ : d'après le théorème de convergence monotone, la suite converge.\n- Croissante avec $u_n \\leqslant n$ : $n$ dépend de $n$, ce n'est pas un majorant. La suite définie par $u_n = n$ vérifie ces conditions et tend vers $+\\infty$.\n- Croissante avec $u_n \\leqslant 2 - \\dfrac{1}{n+1}$ : comme $2 - \\dfrac{1}{n+1} \\leqslant 2$, on a $u_n \\leqslant 2$ pour tout $n$. La suite est croissante et majorée par $2$ : elle converge.\n- Décroissante avec $u_n \\leqslant 10$ : une suite décroissante est toujours majorée par son premier terme, il faudrait un minorant. La suite définie par $u_n = -n$ convient et tend vers $-\\infty$.\n- Croissante avec $u_n \\geqslant 0$ : il faudrait un majorant. La suite définie par $u_n = n$ convient et tend vers $+\\infty$.\n\nOn peut conclure dans le premier et dans le troisième cas."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Une suite $(u_n)$ vérifie $0 \\leqslant u_{n+1} \\leqslant u_n$ pour tout entier naturel $n$. Quelle phrase rédige correctement la conclusion ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$(u_n)$ est décroissante et minorée par $0$ ; d'après le théorème de convergence monotone, elle converge.",
+            "$(u_n)$ est décroissante et minorée par $0$, donc elle converge vers $0$.",
+            "$(u_n)$ est décroissante ; d'après le théorème de convergence monotone, elle converge.",
+            "$(u_n)$ est minorée par $0$, donc elle converge."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le minorant n'est pas forcément la limite : le théorème donne seulement une limite $\\ell \\geqslant 0$.",
+            "Il manque une hypothèse : la suite définie par $u_n = -n$ est décroissante, mais elle tend vers $-\\infty$.",
+            "Il manque le sens de variation : la suite définie par $u_n = 1 + (-1)^n$ est minorée par $0$, mais elle n'a pas de limite."
+          ]
+        },
+        "indices": [
+          "Une bonne conclusion cite les deux hypothèses, puis le théorème, sans inventer la valeur de la limite.",
+          "$u_{n+1} \\leqslant u_n$ donne le sens de variation, et $u_n \\geqslant u_{n+1} \\geqslant 0$ donne un minorant. Élimine les phrases auxquelles il manque une hypothèse, ou qui affirment trop."
+        ],
+        "revoir": "l-limites-suites-054",
+        "solution": "L'inégalité $u_{n+1} \\leqslant u_n$ montre que la suite est décroissante. Pour tout $n$, $u_n \\geqslant u_{n+1} \\geqslant 0$ : la suite est minorée par $0$. On cite les deux hypothèses, puis le théorème : « $(u_n)$ est décroissante et minorée par $0$ ; d'après le théorème de convergence monotone, elle converge. » On ne connaît pas sa limite : on sait seulement qu'elle est positive ou nulle."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-003",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-monotone-bornee"],
+    "capacites": ["bo-m-suites-06", "bo-m-suites-07"],
+    "titre": "Conclure après une récurrence",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 30,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = \\sqrt{3u_n + 4}$. On admet que, pour tout entier naturel $n$, $1 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 4$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que peux-tu déduire de l'inégalité admise ? Plusieurs réponses sont possibles.",
+        "reponse": {
+          "type": "qcm-multiple",
+          "choix": [
+            "$(u_n)$ est croissante.",
+            "$(u_n)$ est majorée par $4$.",
+            "$(u_n)$ est décroissante.",
+            "$(u_n)$ est minorée par $1$.",
+            "$(u_n)$ tend vers $+\\infty$."
+          ],
+          "bonnes": [0, 1, 3]
+        },
+        "indices": [
+          "Lis l'inégalité morceau par morceau : $u_n \\leqslant u_{n+1}$, puis $1 \\leqslant u_n$, puis $u_n \\leqslant 4$.",
+          "$u_n \\leqslant u_{n+1}$ pour tout $n$ donne le sens de variation ; les bornes $1$ et $4$ sont des réels constants. Une suite dont tous les termes restent inférieurs à $4$ peut-elle tendre vers $+\\infty$ ?"
+        ],
+        "revoir": "l-limites-suites-052",
+        "solution": "Pour tout entier naturel $n$ : $u_n \\leqslant u_{n+1}$, donc la suite est croissante, et pas décroissante ; $1 \\leqslant u_n$, donc elle est minorée par $1$ ; $u_n \\leqslant 4$, donc elle est majorée par $4$. Une suite majorée par $4$ ne tend pas vers $+\\infty$ : l'intervalle $[5\\,;\\,+\\infty[$ ne contient aucun de ses termes. On peut déduire que la suite est croissante, majorée par $4$ et minorée par $1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "La suite $(u_n)$ est croissante et majorée : elle converge vers un réel $\\ell$. Quel encadrement de $\\ell$ le passage à la limite donne-t-il ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$1 \\leqslant \\ell \\leqslant 4$",
+            "$1 < \\ell < 4$",
+            "$\\ell = 4$",
+            "$\\ell \\geqslant 4$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le passage à la limite donne des inégalités larges : rien ne garantit ici que $\\ell$ est différente de $1$ et de $4$.",
+            "Le majorant n'est pas forcément la limite : le théorème dit seulement que la limite existe, et le passage à la limite l'encadre.",
+            "Pour tout $n$, $u_n \\leqslant 4$ : la limite ne peut pas dépasser $4$, et rien n'oblige qu'elle lui soit égale."
+          ]
+        },
+        "indices": [
+          "Passe à la limite dans l'encadrement $1 \\leqslant u_n \\leqslant 4$, vrai pour tout $n$.",
+          "Le passage à la limite conserve les inégalités larges entre une suite convergente et un nombre fixé. Donne-t-il davantage que des inégalités larges ?"
+        ],
+        "revoir": "l-limites-suites-052",
+        "solution": "Pour tout entier naturel $n$, $1 \\leqslant u_n \\leqslant 4$, et la suite converge vers $\\ell$. Par passage à la limite dans ces inégalités larges : $1 \\leqslant \\ell \\leqslant 4$. On ne peut pas dire mieux avec ces seules informations : le théorème de convergence monotone ne donne pas la valeur de $\\ell$. L'encadrement obtenu est $1 \\leqslant \\ell \\leqslant 4$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-004",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-definitions"],
+    "capacites": ["bo-m-suites-01", "bo-m-suites-02"],
+    "titre": "Un rang à partir duquel",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 40,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $(u_n)$ la suite définie, pour tout entier naturel $n$, par $u_n = \\sqrt{n}$. Quel est le plus petit entier $N$ tel que, pour tout entier $n \\geqslant N$, $u_n$ appartienne à l'intervalle $[30\\,;\\,+\\infty[$ ?",
+        "reponse": { "type": "numerique", "valeur": 900, "tolerance": 0 },
+        "indices": [
+          "Cherche les entiers $n$ tels que $\\sqrt{n} \\geqslant 30$. La suite est croissante : dès qu'un terme convient, tous les suivants conviennent.",
+          "Les deux membres de $\\sqrt{n} \\geqslant 30$ sont positifs, et la fonction carré est croissante sur $[0\\,;\\,+\\infty[$ : tu peux élever les deux membres au carré sans changer le sens de l'inégalité. Vérifie ensuite que le rang juste avant ne convient pas."
+        ],
+        "revoir": "l-limites-suites-004",
+        "solution": "Pour tout entier naturel $n$, les nombres $\\sqrt{n}$ et $30$ sont positifs, et la fonction carré est croissante sur $[0\\,;\\,+\\infty[$. Donc $\\sqrt{n} \\geqslant 30$ équivaut à $n \\geqslant 30^2 = 900$.\n\nAinsi, pour tout entier $n \\geqslant 900$, $u_n \\in [30\\,;\\,+\\infty[$, alors que $u_{899} = \\sqrt{899} < 30$. Le plus petit entier qui convient est $N = 900$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $(v_n)$ la suite définie, pour tout entier $n \\geqslant 1$, par $v_n = \\dfrac{1}{n}$. Quel est le plus petit entier $N$ tel que, pour tout entier $n \\geqslant N$, $v_n$ appartienne à l'intervalle ouvert $]-0{,}05\\,;\\,0{,}05[$ ?",
+        "reponse": { "type": "numerique", "valeur": 21, "tolerance": 0 },
+        "indices": [
+          "Les termes sont positifs, donc supérieurs à $-0{,}05$ : il reste à résoudre $\\dfrac{1}{n} < 0{,}05$. Attention, l'intervalle est ouvert.",
+          "La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$ : $\\dfrac{1}{n} < 0{,}05$ équivaut à $n > \\dfrac{1}{0{,}05}$. Calcule ce quotient ; l'entier qui lui est égal convient-il ?"
+        ],
+        "revoir": "l-limites-suites-011",
+        "solution": "Pour tout entier $n \\geqslant 1$, $v_n > 0 > -0{,}05$. La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$, donc $\\dfrac{1}{n} < 0{,}05$ équivaut à $n > \\dfrac{1}{0{,}05} = 20$.\n\nLe rang $20$ ne convient pas : $v_{20} = 0{,}05$ n'appartient pas à l'intervalle ouvert. Pour tout entier $n \\geqslant 21$, $v_n$ appartient à $]-0{,}05\\,;\\,0{,}05[$. Le plus petit entier qui convient est $N = 21$.",
+        "erreurFrequente": "Répondre $20$ : $v_{20} = 0{,}05$ est une borne de l'intervalle ouvert, qui ne la contient pas."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? La suite définie par $w_n = (-1)^n$ converge vers $1$, puisqu'une infinité de ses termes valent $1$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "L'intervalle ouvert $]0\\,;\\,2[$ contient $1$, mais aucun terme de rang impair, qui vaut $-1$ : il ne contient pas tous les termes à partir d'un certain rang."
+        },
+        "indices": [
+          "Pour converger vers $1$, il faut que **tout** intervalle ouvert contenant $1$ contienne **tous** les termes à partir d'un certain rang.",
+          "Essaie l'intervalle ouvert $]0\\,;\\,2[$ : quels termes de la suite n'y entrent jamais ?"
+        ],
+        "revoir": "l-limites-suites-009",
+        "solution": "L'intervalle ouvert $]0\\,;\\,2[$ contient $1$. Or, pour tout entier $n$ impair, $w_n = -1$ n'est pas dans cet intervalle : quel que soit le rang $N$ choisi, un terme de rang impair supérieur à $N$ en sort. La suite ne converge donc pas vers $1$ ; en fait, elle n'a pas de limite. Une infinité de termes égaux à $1$ ne suffit pas : il faut **tous** les termes à partir d'un certain rang. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-005",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-definitions"],
+    "capacites": ["bo-m-suites-01", "bo-m-suites-02", "bo-m-suites-10", "bo-m-logique-06"],
+    "titre": "Tendre vers plus l'infini : les bonnes raisons",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 50,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Parmi ces suites, définies pour tout entier $n \\geqslant 1$, lesquelles tendent vers $+\\infty$ ? Plusieurs réponses sont possibles.",
+        "reponse": {
+          "type": "qcm-multiple",
+          "choix": [
+            "$u_n = n^3$",
+            "$u_n = 3 - \\dfrac{1}{n}$",
+            "$u_n = (-1)^n \\times n$",
+            "$u_n = \\sqrt{n}$",
+            "$u_n = \\dfrac{1}{\\sqrt{n}}$"
+          ],
+          "bonnes": [0, 3]
+        },
+        "indices": [
+          "Utilise les limites de référence. Pour les autres suites, demande-toi si tout intervalle $[A\\,;\\,+\\infty[$ finit par contenir **tous** les termes.",
+          "$3 - \\dfrac{1}{n}$ reste sous $3$ ; les termes de rang impair de $(-1)^n \\times n$ sont négatifs ; $\\dfrac{1}{\\sqrt{n}}$ est une limite de référence."
+        ],
+        "revoir": "l-limites-suites-012",
+        "solution": "D'après les limites de référence, $n^3$ et $\\sqrt{n}$ tendent vers $+\\infty$, et $\\dfrac{1}{\\sqrt{n}}$ converge vers $0$. La suite $3 - \\dfrac{1}{n}$ est croissante mais reste sous $3$ : l'intervalle $[3\\,;\\,+\\infty[$ ne contient aucun de ses termes. Enfin, $(-1)^n \\times n$ est négatif pour $n$ impair : l'intervalle $[0\\,;\\,+\\infty[$ ne contient pas tous les termes à partir d'un certain rang. Seules les suites $\\left(n^3\\right)$ et $\\left(\\sqrt{n}\\right)$ tendent vers $+\\infty$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux ? Toute suite croissante tend vers $+\\infty$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "La suite définie par $u_n = 3 - \\dfrac{1}{n}$ est croissante, mais tous ses termes sont inférieurs à $3$ : elle ne tend pas vers $+\\infty$."
+        },
+        "indices": [
+          "Relis les hypothèses de la propriété du cours : croissante **et** quoi d'autre ?",
+          "Cherche une suite croissante dont tous les termes restent sous un même nombre : il y en a une dans la question 1."
+        ],
+        "revoir": "l-limites-suites-008",
+        "solution": "Pour tout entier $n \\geqslant 1$, $u_n = 3 - \\dfrac{1}{n}$ vérifie $u_{n+1} - u_n = \\dfrac{1}{n} - \\dfrac{1}{n+1} > 0$ : la suite est croissante. Mais $u_n < 3$ pour tout $n$, donc l'intervalle $[3\\,;\\,+\\infty[$ ne contient aucun terme : elle ne tend pas vers $+\\infty$. Pour tendre vers $+\\infty$, une suite croissante doit aussi ne pas être majorée. L'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans la démonstration « une suite croissante et non majorée tend vers $+\\infty$ », on fixe un réel $A$. Pourquoi existe-t-il un entier $N$ tel que $u_N > A$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Parce que la suite est croissante.",
+            "Parce que la suite n'est pas majorée : $A$ n'est donc pas un majorant.",
+            "Parce que $u_n \\geqslant n$ pour tout entier $n$.",
+            "Parce que $A$ est un réel positif."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "La croissance sert à l'étape suivante : une fois $u_N > A$, tous les termes suivants dépassent aussi $A$. Elle ne fournit pas ce premier terme : $3 - \\dfrac{1}{n}$ est croissante et ne dépasse jamais $4$.",
+            null,
+            "Ce n'est pas une hypothèse : on sait seulement que la suite est croissante et non majorée.",
+            "$A$ est un réel quelconque, positif ou non : le raisonnement doit valoir pour tous les réels."
+          ]
+        },
+        "indices": [
+          "Écris ce que veut dire « $A$ est un majorant », puis sa négation.",
+          "« $A$ est un majorant » : pour tout $n$, $u_n \\leqslant A$. Sa négation : il existe au moins un entier $N$ tel que $u_N > A$. Quelle hypothèse dit que cette négation est vraie ?"
+        ],
+        "revoir": "l-limites-suites-007",
+        "solution": "« $A$ est un majorant de $(u_n)$ » signifie : pour tout entier $n$, $u_n \\leqslant A$. La suite n'est pas majorée, donc $A$ n'est pas un majorant : la négation est vraie, il existe un entier $N$ tel que $u_N > A$. C'est l'hypothèse « non majorée » qui fournit ce terme ; la croissance sert ensuite à montrer que tous les termes suivants dépassent aussi $A$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-006",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-definitions"],
+    "capacites": ["bo-m-suites-01", "bo-m-suites-10", "bo-m-logique-06"],
+    "titre": "Une démonstration à remettre dans l'ordre",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 60,
+    "preambule": "On veut démontrer que toute suite décroissante et non minorée tend vers $-\\infty$, sur le modèle de la démonstration du cours pour $+\\infty$. Soit $(u_n)$ une suite décroissante et non minorée.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la négation de « $A$ est un minorant de $(u_n)$ » ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Pour tout entier $n$, $u_n < A$.",
+            "Il existe un entier $N$ tel que $u_N < A$.",
+            "Il existe un entier $N$ tel que $u_N \\leqslant A$.",
+            "Pour tout entier $n$, $u_n > A$."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Dans une négation, « pour tout » devient « il existe » : un seul terme sous $A$ suffit pour que $A$ ne soit pas un minorant.",
+            null,
+            "Un terme égal à $A$ ne contredit pas « $A$ est un minorant » : la négation de $u_n \\geqslant A$ est $u_N < A$, avec une inégalité stricte.",
+            "Cette phrase entraîne même que $A$ est un minorant : la négation doit dire le contraire."
+          ]
+        },
+        "indices": [
+          "« $A$ est un minorant » s'écrit : pour tout entier $n$, $u_n \\geqslant A$. Pour nier une phrase qui commence par « pour tout », il suffit d'un contre-exemple.",
+          "« Pour tout » devient « il existe », et l'inégalité $u_n \\geqslant A$ devient son contraire. Quel est le contraire de « supérieur ou égal » ?"
+        ],
+        "revoir": "l-limites-suites-002",
+        "solution": "« $A$ est un minorant » signifie : pour tout entier $n$, $u_n \\geqslant A$. Pour le nier, il suffit d'un terme qui ne vérifie pas l'inégalité : il existe un entier $N$ tel que $u_N < A$. « Pour tout » devient « il existe », et « $\\geqslant$ » devient « $<$ »."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Remets dans l'ordre les phrases de la démonstration.",
+        "reponse": {
+          "type": "ordre",
+          "elements": [
+            "Soit $A$ un réel. Il s'agit de montrer que l'intervalle $]-\\infty\\,;\\,A]$ contient tous les termes $u_n$ à partir d'un certain rang.",
+            "La suite n'est pas minorée, donc $A$ n'est pas un minorant : il existe un entier $N$ tel que $u_N < A$.",
+            "La suite est décroissante, donc, pour tout entier $n \\geqslant N$, $u_n \\leqslant u_N$.",
+            "Ainsi, pour tout entier $n \\geqslant N$, $u_n \\leqslant u_N < A$ : l'intervalle $]-\\infty\\,;\\,A]$ contient tous les termes à partir du rang $N$.",
+            "Ce raisonnement vaut pour tout réel $A$ : par définition, $\\lim\\limits_{n \\to +\\infty} u_n = -\\infty$."
+          ]
+        },
+        "indices": [
+          "Suis le plan de la démonstration du cours : on fixe $A$, on trouve un premier terme sous $A$, puis on utilise le sens de variation.",
+          "La première phrase dit ce qu'il faut montrer ; la dernière conclut pour tout réel $A$. Entre les deux : d'abord l'hypothèse « non minorée », ensuite l'hypothèse « décroissante »."
+        ],
+        "revoir": "l-limites-suites-007",
+        "solution": "On fixe un réel $A$ et l'on dit ce qu'il faut montrer. L'hypothèse « non minorée » fournit un premier terme $u_N < A$ (question 1). L'hypothèse « décroissante » donne $u_n \\leqslant u_N$ pour tout $n \\geqslant N$. On en déduit que tous ces termes sont dans $]-\\infty\\,;\\,A]$, puis on conclut : le raisonnement vaut pour tout réel $A$, donc $\\lim\\limits_{n \\to +\\infty} u_n = -\\infty$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-007",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-operations"],
+    "capacites": ["bo-m-suites-04"],
+    "titre": "Lire les tableaux d'opérations",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 70,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la limite de la suite définie, pour tout entier $n \\geqslant 1$, par $u_n = \\left(2 - \\dfrac{1}{n}\\right)\\left(n + \\sqrt{n}\\right)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$2$",
+            "$+\\infty$",
+            "$-\\infty$",
+            "On ne peut pas conclure : c'est une forme indéterminée."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$2$ est la limite du premier facteur seulement ; le second tend vers $+\\infty$.",
+            null,
+            "Le premier facteur tend vers $2$, qui est positif : par la règle des signes, le produit tend vers $+\\infty$.",
+            "« $2 \\times (+\\infty)$ » n'est pas une forme indéterminée : parmi les produits, seul « $0 \\times \\infty$ » l'est."
+          ]
+        },
+        "indices": [
+          "Cherche la limite de chaque facteur, puis lis le tableau du produit.",
+          "$2 - \\dfrac{1}{n}$ tend vers $2$ et, par somme, $n + \\sqrt{n}$ tend vers $+\\infty$. Quel est le produit d'une limite finie non nulle par une limite infinie ?"
+        ],
+        "revoir": "l-limites-suites-017",
+        "solution": "$\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$, donc $2 - \\dfrac{1}{n}$ tend vers $2$. Par somme, $n + \\sqrt{n}$ tend vers $+\\infty$. Par produit d'une suite qui converge vers $2 > 0$ et d'une suite qui tend vers $+\\infty$ : $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la limite de la suite définie, pour tout entier $n \\geqslant 1$, par $v_n = \\dfrac{1 - 3n^2}{\\frac{1}{n}}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$-\\infty$",
+            "$+\\infty$",
+            "$0$",
+            "On ne peut pas conclure : c'est une forme indéterminée."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le numérateur tend vers $-\\infty$ et le dénominateur reste strictement positif : la règle des signes donne $-\\infty$.",
+            "On divise par un nombre qui devient très petit : le quotient devient très grand en valeur absolue, il ne se rapproche pas de $0$.",
+            "« $\\dfrac{\\infty}{0}$ » n'est pas une forme indéterminée : parmi les quotients, seuls « $\\dfrac{0}{0}$ » et « $\\dfrac{\\infty}{\\infty}$ » le sont."
+          ]
+        },
+        "indices": [
+          "Cherche la limite du numérateur, celle du dénominateur, et le signe du dénominateur.",
+          "$1 - 3n^2$ tend vers $-\\infty$, et $\\dfrac{1}{n}$ tend vers $0$ en restant strictement positif. Lis la colonne « $\\infty$ divisé par $0$ » du tableau du quotient, puis applique la règle des signes."
+        ],
+        "revoir": "l-limites-suites-019",
+        "solution": "Par produit puis somme, $1 - 3n^2$ tend vers $-\\infty$. Le dénominateur $\\dfrac{1}{n}$ tend vers $0$ en restant strictement positif. Par quotient, la limite est infinie, et la règle des signes (un nombre négatif divisé par un nombre positif) donne $\\lim\\limits_{n \\to +\\infty} v_n = -\\infty$. On le retrouve en écrivant $v_n = n\\left(1 - 3n^2\\right)$, produit d'un facteur qui tend vers $+\\infty$ et d'un facteur qui tend vers $-\\infty$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Parmi ces suites, définies pour tout entier $n \\geqslant 1$, lesquelles se présentent sous une forme indéterminée si l'on applique directement les tableaux ? Plusieurs réponses sont possibles.",
+        "reponse": {
+          "type": "qcm-multiple",
+          "choix": [
+            "$n^2 - n^3$",
+            "$n \\times \\dfrac{1}{n^2}$",
+            "$n^2 + \\sqrt{n}$",
+            "$\\dfrac{\\frac{1}{n}}{\\frac{1}{n^2}}$",
+            "$\\dfrac{3}{n}$"
+          ],
+          "bonnes": [0, 1, 3]
+        },
+        "indices": [
+          "Les quatre formes indéterminées sont $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$ et $\\dfrac{0}{0}$.",
+          "Écris la limite de chaque morceau : par exemple, dans $n^2 - n^3$, $n^2$ tend vers $+\\infty$ et $-n^3$ vers $-\\infty$."
+        ],
+        "revoir": "l-limites-suites-021",
+        "solution": "- $n^2 - n^3$ : forme « $+\\infty - \\infty$ », indéterminée.\n- $n \\times \\dfrac{1}{n^2}$ : forme « $\\infty \\times 0$ », indéterminée.\n- $n^2 + \\sqrt{n}$ : « $+\\infty + \\infty$ », la limite est $+\\infty$.\n- $\\dfrac{\\frac{1}{n}}{\\frac{1}{n^2}}$ : forme « $\\dfrac{0}{0}$ », indéterminée.\n- $\\dfrac{3}{n}$ : un nombre fixé divisé par une suite qui tend vers $+\\infty$, la limite est $0$.\n\nLes formes indéterminées sont $n^2 - n^3$, $n \\times \\dfrac{1}{n^2}$ et $\\dfrac{\\frac{1}{n}}{\\frac{1}{n^2}}$. Après simplification, elles s'écrivent $n^2(1 - n)$, $\\dfrac{1}{n}$ et $n$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-008",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-operations"],
+    "capacites": ["bo-m-suites-04"],
+    "titre": "Lever une forme indéterminée",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 80,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la limite de la suite définie, pour tout entier $n \\geqslant 1$, par $u_n = \\dfrac{4n^2 - n}{2n^2 + 3}$ ?",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "C'est la forme « $\\dfrac{\\infty}{\\infty}$ » : mets en facteur le terme de plus haut degré, en haut et en bas.",
+          "Pour $n \\geqslant 1$ : $u_n = \\dfrac{n^2\\left(4 - \\frac{1}{n}\\right)}{n^2\\left(2 + \\frac{3}{n^2}\\right)}$. Simplifie par $n^2$, puis cherche les limites du numérateur et du dénominateur."
+        ],
+        "revoir": "l-limites-suites-022",
+        "solution": "Le numérateur et le dénominateur tendent vers $+\\infty$ : c'est la forme indéterminée « $\\dfrac{\\infty}{\\infty}$ ». Pour $n \\geqslant 1$, on met $n^2$ en facteur et on simplifie : $u_n = \\dfrac{4 - \\frac{1}{n}}{2 + \\frac{3}{n^2}}$. Or $\\dfrac{1}{n}$ et $\\dfrac{3}{n^2}$ tendent vers $0$ : le numérateur tend vers $4$, le dénominateur vers $2$. Par quotient, $\\lim\\limits_{n \\to +\\infty} u_n = \\dfrac{4}{2} = 2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la limite de la suite définie, pour tout entier naturel $n$, par $v_n = \\dfrac{3n + 5}{n^2 + 1}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0$", "$3$", "$+\\infty$", "$1$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le quotient des coefficients des termes de plus haut degré ne donne la limite que si les degrés sont égaux. Ici, le dénominateur est de degré $2$ et le numérateur de degré $1$. Et ce raccourci sert seulement à contrôler : sur une copie, on factorise.",
+            "C'est le dénominateur qui grandit le plus vite : le quotient devient petit.",
+            "« $\\dfrac{\\infty}{\\infty}$ » ne vaut pas $1$ : c'est une forme indéterminée, qu'on lève en factorisant."
+          ]
+        },
+        "indices": [
+          "Forme « $\\dfrac{\\infty}{\\infty}$ » : mets $n$ en facteur en haut et $n^2$ en bas.",
+          "Pour $n \\geqslant 1$ : $v_n = \\dfrac{n\\left(3 + \\frac{5}{n}\\right)}{n^2\\left(1 + \\frac{1}{n^2}\\right)} = \\dfrac{3 + \\frac{5}{n}}{n\\left(1 + \\frac{1}{n^2}\\right)}$. Quelle est la limite du dénominateur ?"
+        ],
+        "revoir": "l-limites-suites-022",
+        "solution": "Pour $n \\geqslant 1$, on met $n$ en facteur en haut, $n^2$ en bas, et on simplifie par $n$ : $v_n = \\dfrac{3 + \\frac{5}{n}}{n\\left(1 + \\frac{1}{n^2}\\right)}$. Le numérateur tend vers $3$ ; par produit, le dénominateur tend vers $+\\infty$. Par quotient d'une limite finie par une limite infinie, $\\lim\\limits_{n \\to +\\infty} v_n = 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la limite de la suite définie, pour tout entier naturel $n$, par $w_n = 3n - n^2$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$-\\infty$",
+            "$+\\infty$",
+            "$0$",
+            "On ne peut pas conclure : c'est une forme indéterminée."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est le terme $-n^2$, de plus haut degré, qui l'emporte : $w_n = n^2\\left(\\dfrac{3}{n} - 1\\right)$.",
+            "« $+\\infty - \\infty$ » ne vaut pas $0$ : $n^2$ grandit beaucoup plus vite que $3n$.",
+            "C'est bien une forme indéterminée au départ, mais on la lève en factorisant par $n^2$ : on peut alors conclure."
+          ]
+        },
+        "indices": [
+          "Forme « $+\\infty - \\infty$ » : mets en facteur le terme de plus haut degré.",
+          "Pour $n \\geqslant 1$, $w_n = n^2\\left(\\dfrac{3}{n} - 1\\right)$. Cherche la limite de chaque facteur, puis applique la règle des signes."
+        ],
+        "revoir": "l-limites-suites-021",
+        "solution": "$3n$ tend vers $+\\infty$ et $-n^2$ vers $-\\infty$ : c'est la forme « $+\\infty - \\infty$ ». Pour $n \\geqslant 1$, $w_n = n^2\\left(\\dfrac{3}{n} - 1\\right)$. Or $\\dfrac{3}{n} - 1$ tend vers $-1$ et $n^2$ vers $+\\infty$. Par produit, $\\lim\\limits_{n \\to +\\infty} w_n = -\\infty$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-009",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-comparaison"],
+    "capacites": ["bo-m-suites-03"],
+    "titre": "Quel théorème, quelle conclusion ?",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 90,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Pour tout entier naturel $n$, $u_n \\geqslant \\sqrt{n}$. Que peux-tu affirmer ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$",
+            "La suite $(u_n)$ converge.",
+            "On ne peut rien affirmer sur la limite de $(u_n)$.",
+            "$\\lim\\limits_{n \\to +\\infty} u_n = -\\infty$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Les termes dépassent $\\sqrt{n}$, qui dépasse n'importe quel nombre : ils ne peuvent pas rester proches d'un réel fixé.",
+            "Le théorème de comparaison s'applique : $(u_n)$ est au-dessus d'une suite qui tend vers $+\\infty$.",
+            "Les termes sont tous positifs, puisque $\\sqrt{n} \\geqslant 0$ : l'intervalle $]-\\infty\\,;\\,-1]$ n'en contient aucun."
+          ]
+        },
+        "indices": [
+          "Compare $(u_n)$ à une suite dont tu connais la limite, et regarde de quel côté de cette suite elle se trouve.",
+          "$\\lim\\limits_{n \\to +\\infty} \\sqrt{n} = +\\infty$, et $(u_n)$ est au-dessus de $\\left(\\sqrt{n}\\right)$. Relis le premier point du théorème de comparaison."
+        ],
+        "revoir": "l-limites-suites-027",
+        "solution": "Pour tout entier naturel $n$, $u_n \\geqslant \\sqrt{n}$, et $\\lim\\limits_{n \\to +\\infty} \\sqrt{n} = +\\infty$. D'après le théorème de comparaison, $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour tout entier naturel $n$, $u_n \\leqslant n^2$. Que peux-tu affirmer ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$",
+            "La suite $(u_n)$ converge vers $0$.",
+            "On ne peut rien affirmer sur la limite de $(u_n)$.",
+            "$\\lim\\limits_{n \\to +\\infty} u_n = -\\infty$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "C'est le mauvais sens : la suite nulle vérifie $u_n \\leqslant n^2$, et elle converge vers $0$.",
+            "Ce n'est pas obligatoire : la suite définie par $u_n = n^2$ vérifie l'inégalité, et elle tend vers $+\\infty$.",
+            null,
+            "Ce n'est pas obligatoire : la suite nulle vérifie l'inégalité, et elle converge vers $0$."
+          ]
+        },
+        "indices": [
+          "Dans le théorème de comparaison, de quel côté doit se trouver la suite étudiée pour tendre vers $+\\infty$ ?",
+          "Teste quelques suites qui vérifient $u_n \\leqslant n^2$ : $u_n = 0$, $u_n = n^2$, $u_n = -n$. Ont-elles la même limite ?"
+        ],
+        "revoir": "l-limites-suites-030",
+        "solution": "Être en dessous d'une suite qui tend vers $+\\infty$ ne force rien. Les suites définies par $u_n = 0$, $u_n = n^2$ et $u_n = -n$ vérifient toutes $u_n \\leqslant n^2$ : la première converge vers $0$, la deuxième tend vers $+\\infty$, la troisième vers $-\\infty$. On ne peut rien affirmer sur la limite de $(u_n)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Si, pour tout entier $n \\geqslant 1$, $2 - \\dfrac{1}{n} \\leqslant u_n \\leqslant 2 + \\dfrac{3}{n^2}$, alors la suite $(u_n)$ converge vers $2$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Les deux suites qui encadrent convergent vers $2$ : d'après le théorème des gendarmes, $(u_n)$ converge vers $2$."
+        },
+        "indices": [
+          "Les deux suites qui encadrent $(u_n)$ ont-elles la même limite ?",
+          "$\\dfrac{1}{n}$ et $\\dfrac{3}{n^2}$ tendent vers $0$ : calcule la limite de chacune des deux bornes."
+        ],
+        "revoir": "l-limites-suites-031",
+        "solution": "$\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$ et $\\lim\\limits_{n \\to +\\infty} \\dfrac{3}{n^2} = 0$, donc, par somme, les suites $\\left(2 - \\dfrac{1}{n}\\right)$ et $\\left(2 + \\dfrac{3}{n^2}\\right)$ convergent vers $2$. La suite $(u_n)$ est encadrée par deux suites de même limite $2$ : d'après le théorème des gendarmes, elle converge vers $2$. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-010",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-comparaison"],
+    "capacites": ["bo-m-suites-03"],
+    "titre": "Encadrer pour conclure",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 100,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Pour tout entier $n \\geqslant 1$, on pose $u_n = \\dfrac{2 + (-1)^n}{n}$. Quelle est la limite de $(u_n)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$0$",
+            "$2$",
+            "$+\\infty$",
+            "Elle n'a pas de limite, car $(-1)^n$ n'en a pas."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le numérateur vaut $1$ ou $3$, mais on le divise par $n$, qui grandit : le quotient devient petit.",
+            "Le numérateur reste entre $1$ et $3$ et le dénominateur grandit : le quotient se rapproche de $0$.",
+            "Même si $(-1)^n$ n'a pas de limite, on peut encadrer $u_n$ entre $\\dfrac{1}{n}$ et $\\dfrac{3}{n}$ : le théorème des gendarmes conclut."
+          ]
+        },
+        "indices": [
+          "Encadre d'abord $2 + (-1)^n$, sachant que $(-1)^n$ vaut $1$ ou $-1$.",
+          "$1 \\leqslant 2 + (-1)^n \\leqslant 3$. Divise par $n$, qui est strictement positif, puis cherche la limite des deux suites obtenues."
+        ],
+        "revoir": "l-limites-suites-032",
+        "solution": "Pour tout entier $n \\geqslant 1$, $-1 \\leqslant (-1)^n \\leqslant 1$, donc $1 \\leqslant 2 + (-1)^n \\leqslant 3$. On divise par $n > 0$ : $\\dfrac{1}{n} \\leqslant u_n \\leqslant \\dfrac{3}{n}$. Les suites $\\left(\\dfrac{1}{n}\\right)$ et $\\left(\\dfrac{3}{n}\\right)$ convergent vers $0$. D'après le théorème des gendarmes, $\\lim\\limits_{n \\to +\\infty} u_n = 0$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour tout entier naturel $n$, on pose $v_n = n + (-1)^n$. Quelle est la limite de $(v_n)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$+\\infty$",
+            "Elle n'a pas de limite, car $(-1)^n$ n'en a pas.",
+            "$1$",
+            "$-\\infty$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$v_n \\geqslant n - 1$, qui tend vers $+\\infty$ : le théorème de comparaison conclut, même si $(-1)^n$ oscille.",
+            "Les termes grandissent sans fin : $v_n \\geqslant n - 1$.",
+            "$v_n \\geqslant n - 1 \\geqslant -1$ : aucun terme n'est dans l'intervalle $]-\\infty\\,;\\,-2]$."
+          ]
+        },
+        "indices": [
+          "Pour une limite infinie, cherche une minoration de $v_n$ par une suite qui tend vers $+\\infty$.",
+          "$(-1)^n \\geqslant -1$, donc $v_n \\geqslant n - 1$. Quelle est la limite de $n - 1$ ?"
+        ],
+        "revoir": "l-limites-suites-028",
+        "solution": "Pour tout entier naturel $n$, $(-1)^n \\geqslant -1$, donc $v_n \\geqslant n - 1$. Or $\\lim\\limits_{n \\to +\\infty} (n - 1) = +\\infty$. D'après le théorème de comparaison, $\\lim\\limits_{n \\to +\\infty} v_n = +\\infty$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Une suite $(u_n)$ converge vers un réel $\\ell$ et, pour tout entier naturel $n$, $u_n < 5$. Que peux-tu affirmer ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\ell < 5$",
+            "$\\ell \\leqslant 5$",
+            "$\\ell = 5$",
+            "$\\ell \\geqslant 5$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Une inégalité stricte devient large à la limite : la suite définie par $u_n = 5 - \\dfrac{1}{n+1}$ vérifie $u_n < 5$, et elle converge vers $5$.",
+            null,
+            "Ce n'est pas obligatoire : la suite constante égale à $1$ vérifie $u_n < 5$, et elle converge vers $1$.",
+            "C'est le sens contraire : les termes sont sous $5$, leur limite aussi."
+          ]
+        },
+        "indices": [
+          "Passe à la limite dans l'inégalité, en te méfiant de l'inégalité stricte.",
+          "Pense à $u_n = 5 - \\dfrac{1}{n+1}$ : tous ses termes sont strictement inférieurs à $5$. Vers quoi converge-t-elle ?"
+        ],
+        "revoir": "l-limites-suites-036",
+        "solution": "Pour tout entier naturel $n$, $u_n < 5$, donc $u_n \\leqslant 5$. Par passage à la limite, $\\ell \\leqslant 5$. On ne peut pas affirmer $\\ell < 5$ : la suite définie par $u_n = 5 - \\dfrac{1}{n+1}$ a tous ses termes strictement inférieurs à $5$, et pourtant elle converge vers $5$. On peut affirmer $\\ell \\leqslant 5$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-011",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-geometrique"],
+    "capacites": ["bo-m-suites-05"],
+    "titre": "Puissances d'un nombre et opérations",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 110,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la limite de la suite définie, pour tout entier naturel $n$, par $u_n = 5 - 2 \\times 0{,}6^n$ ?",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "Où se trouve $0{,}6$ par rapport à $-1$ et à $1$ ? Déduis-en la limite de $0{,}6^n$.",
+          "$-1 < 0{,}6 < 1$, donc $0{,}6^n$ tend vers $0$. Conclus par produit, puis par somme."
+        ],
+        "revoir": "l-limites-suites-040",
+        "solution": "$-1 < 0{,}6 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}6^n = 0$. Par produit, $2 \\times 0{,}6^n$ tend vers $0$ ; par somme, $\\lim\\limits_{n \\to +\\infty} u_n = 5 - 0 = 5$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la limite de la suite définie, pour tout entier naturel $n$, par $v_n = 1 - 1{,}2^n$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$-\\infty$", "$0$", "$1$", "$+\\infty$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Ni $1{,}2^n$ ni $v_n$ ne tendent vers $0$ : $1{,}2 > 1$, donc $1{,}2^n$ tend vers $+\\infty$.",
+            "Ce serait la limite si $1{,}2^n$ tendait vers $0$ ; or $1{,}2 > 1$.",
+            "On **retranche** $1{,}2^n$, qui tend vers $+\\infty$ : la différence tend vers $-\\infty$."
+          ]
+        },
+        "indices": [
+          "Compare $1{,}2$ à $1$ pour trouver la limite de $1{,}2^n$.",
+          "$1{,}2 > 1$, donc $1{,}2^n$ tend vers $+\\infty$, et $-1{,}2^n$ tend vers… ? Ajoute ensuite $1$."
+        ],
+        "revoir": "l-limites-suites-041",
+        "solution": "$1{,}2 > 1$, donc $\\lim\\limits_{n \\to +\\infty} 1{,}2^n = +\\infty$, puis, par produit par $-1$, $-1{,}2^n$ tend vers $-\\infty$. Par somme, $\\lim\\limits_{n \\to +\\infty} v_n = -\\infty$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la limite de la suite définie, pour tout entier naturel $n$, par $w_n = \\left(-\\dfrac{3}{2}\\right)^n$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0$", "$+\\infty$", "$-\\infty$", "Elle n'a pas de limite."],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Il faudrait $-1 < q < 1$ ; ici $q = -\\dfrac{3}{2} \\leqslant -1$.",
+            "Les termes changent de signe : ceux de rang impair sont négatifs, ils ne restent pas dans $[0\\,;\\,+\\infty[$.",
+            "Les termes de rang pair sont positifs : ils ne restent pas dans $]-\\infty\\,;\\,0]$.",
+            null
+          ]
+        },
+        "indices": [
+          "Repère où se trouve $q = -\\dfrac{3}{2}$ dans le tableau de la limite de $q^n$.",
+          "$-\\dfrac{3}{2} \\leqslant -1$. Calcule les premiers termes : $w_1 = -1{,}5$, $w_2 = 2{,}25$, $w_3 = -3{,}375$. Que remarques-tu sur leur signe et sur leur taille ?"
+        ],
+        "revoir": "l-limites-suites-047",
+        "solution": "$q = -\\dfrac{3}{2} = -1{,}5 \\leqslant -1$. D'après le cours, la suite $(q^n)$ n'a pas de limite : ses termes changent de signe à chaque rang ($w_1 = -1{,}5$, $w_2 = 2{,}25$, $w_3 = -3{,}375$…) et s'éloignent de $0$. La suite $(w_n)$ n'a pas de limite."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-012",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-geometrique"],
+    "capacites": ["bo-m-suites-05"],
+    "titre": "Une somme de puissances",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 120,
+    "preambule": "Pour tout entier naturel $n$, on pose $S_n = 1 + \\dfrac{1}{3} + \\left(\\dfrac{1}{3}\\right)^2 + \\dots + \\left(\\dfrac{1}{3}\\right)^n$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle expression de $S_n$ la formule de somme donne-t-elle ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$S_n = \\dfrac{1 - \\left(\\frac{1}{3}\\right)^{n+1}}{1 - \\frac{1}{3}}$",
+            "$S_n = \\dfrac{1 - \\left(\\frac{1}{3}\\right)^{n}}{1 - \\frac{1}{3}}$",
+            "$S_n = \\dfrac{1 - \\left(\\frac{1}{3}\\right)^{n+1}}{1 + \\frac{1}{3}}$",
+            "$S_n = (n + 1) \\times \\left(\\dfrac{1}{3}\\right)^n$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "La somme va de la puissance $0$ à la puissance $n$ : elle compte $n + 1$ termes, d'où l'exposant $n + 1$.",
+            "Le dénominateur de la formule est $1 - q$, avec $q = \\dfrac{1}{3}$.",
+            "Les termes ne sont pas tous égaux : on ne multiplie pas le dernier par le nombre de termes."
+          ]
+        },
+        "indices": [
+          "Utilise la formule de somme des puissances d'un réel $q \\neq 1$, avec $q = \\dfrac{1}{3}$. Combien de termes la somme compte-t-elle ?",
+          "La somme commence à $q^0 = 1$ et s'arrête à $q^n$ : elle compte $n + 1$ termes, et c'est cet exposant qui apparaît au numérateur."
+        ],
+        "revoir": "l-limites-suites-039",
+        "solution": "Pour $q \\neq 1$, $1 + q + q^2 + \\dots + q^n = \\dfrac{1 - q^{n+1}}{1 - q}$. Avec $q = \\dfrac{1}{3}$ : $S_n = \\dfrac{1 - \\left(\\frac{1}{3}\\right)^{n+1}}{1 - \\frac{1}{3}}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la limite de la suite $(S_n)$ ?",
+        "reponse": { "type": "numerique", "valeur": "3/2", "tolerance": 0 },
+        "indices": [
+          "Cherche la limite de $\\left(\\dfrac{1}{3}\\right)^{n+1}$, puis utilise les opérations.",
+          "$-1 < \\dfrac{1}{3} < 1$, donc $\\left(\\dfrac{1}{3}\\right)^{n+1}$ tend vers $0$. Le dénominateur vaut $1 - \\dfrac{1}{3} = \\dfrac{2}{3}$ : conclus par quotient."
+        ],
+        "revoir": "l-limites-suites-046",
+        "solution": "$-1 < \\dfrac{1}{3} < 1$, donc $\\left(\\dfrac{1}{3}\\right)^{n+1}$ tend vers $0$, et le numérateur tend vers $1$. Le dénominateur vaut $\\dfrac{2}{3}$. Par quotient, $\\lim\\limits_{n \\to +\\infty} S_n = \\dfrac{1}{\\frac{2}{3}} = \\dfrac{3}{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? $\\lim\\limits_{n \\to +\\infty} 0{,}999^n = 1$, car $0{,}999$ est très proche de $1$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$-1 < 0{,}999 < 1$, donc $0{,}999^n$ tend vers $0$, lentement mais sûrement."
+        },
+        "indices": [
+          "Seule compte la position de $q$ par rapport à $-1$ et à $1$, pas sa distance à $1$.",
+          "$0{,}999$ est-il strictement compris entre $-1$ et $1$ ? Relis la colonne correspondante du tableau."
+        ],
+        "revoir": "l-limites-suites-040",
+        "solution": "$-1 < 0{,}999 < 1$ : d'après le cours, $\\lim\\limits_{n \\to +\\infty} 0{,}999^n = 0$. Les termes diminuent lentement (à titre d'information, sans que ce calcul soit demandé : $0{,}999^{1\\,000} \\approx 0{,}37$), mais ils finissent par passer sous n'importe quel nombre strictement positif. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-013",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-geometrique"],
+    "capacites": ["bo-m-suites-05", "bo-m-suites-11", "bo-m-logique-09"],
+    "titre": "Ce que donne l'inégalité de Bernoulli",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 130,
+    "preambule": "D'après l'inégalité de Bernoulli, pour tout réel $a > 0$ et tout entier naturel $n$, $(1 + a)^n \\geqslant 1 + na$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Pour $q = 1{,}05$, quelle inégalité obtient-on ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$1{,}05^n \\geqslant 1 + 0{,}05n$",
+            "$1{,}05^n \\geqslant 1 + 1{,}05n$",
+            "$1{,}05^n \\leqslant 1 + 0{,}05n$",
+            "$1{,}05^n \\geqslant 1{,}05 + n$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "On écrit $1{,}05 = 1 + a$ : c'est $a = 0{,}05$ qui multiplie $n$, pas $1{,}05$.",
+            "L'inégalité de Bernoulli minore $(1 + a)^n$ : le sens est « supérieur ou égal ».",
+            "Dans $1 + na$, l'entier $n$ est multiplié par $a$ : il ne s'ajoute pas."
+          ]
+        },
+        "indices": [
+          "Écris $1{,}05$ sous la forme $1 + a$, avec $a > 0$.",
+          "$1{,}05 = 1 + a$ avec $a = 0{,}05$. Remplace $a$ dans les deux membres de l'inégalité de Bernoulli, sans changer son sens."
+        ],
+        "revoir": "l-limites-suites-042",
+        "solution": "$1{,}05 = 1 + 0{,}05$, avec $0{,}05 > 0$. L'inégalité de Bernoulli, avec $a = 0{,}05$, donne, pour tout entier naturel $n$ : $1{,}05^n \\geqslant 1 + 0{,}05n$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "D'après cette inégalité, si $1 + 0{,}05n \\geqslant 11$, alors $1{,}05^n \\geqslant 11$. Quel est le plus petit entier $n$ tel que $1 + 0{,}05n \\geqslant 11$ ?",
+        "reponse": { "type": "numerique", "valeur": 200, "tolerance": 0 },
+        "indices": [
+          "Résous l'inéquation du premier degré $1 + 0{,}05n \\geqslant 11$.",
+          "En retranchant $1$ aux deux membres : $0{,}05n \\geqslant 10$. Il reste à diviser par $0{,}05$, qui est strictement positif : le sens de l'inégalité ne change pas."
+        ],
+        "revoir": "l-limites-suites-042",
+        "solution": "$1 + 0{,}05n \\geqslant 11$ équivaut à $0{,}05n \\geqslant 10$, puis à $n \\geqslant \\dfrac{10}{0{,}05} = 200$. Le plus petit entier qui convient est $200$ : pour tout entier $n \\geqslant 200$, $1{,}05^n \\geqslant 1 + 0{,}05n \\geqslant 11$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? La question 2 permet d'affirmer que $1{,}05^{199} < 11$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "La question 2 prouve seulement : si $n \\geqslant 200$, alors $1{,}05^n \\geqslant 11$. Elle ne dit rien pour $n < 200$. À titre d'information (calcul à la machine, non demandé), $1{,}05^{199} \\approx 16\\,469$ : l'inégalité est même fausse."
+        },
+        "indices": [
+          "La question 2 prouve une implication : « si $n \\geqslant 200$, alors $1{,}05^n \\geqslant 11$ ». Que dit-elle quand $n < 200$ ?",
+          "L'inégalité de Bernoulli donne seulement une minoration : $1{,}05^n$ peut dépasser $11$ bien avant $1 + 0{,}05n$. Pour affirmer $1{,}05^{199} < 11$, il faudrait la réciproque de l'implication."
+        ],
+        "revoir": "l-limites-suites-042",
+        "solution": "La question 2 établit l'implication « si $n \\geqslant 200$, alors $1{,}05^n \\geqslant 11$ ». Pour en déduire $1{,}05^{199} < 11$, il faudrait sa réciproque, « si $1{,}05^n \\geqslant 11$, alors $n \\geqslant 200$ », qui n'est pas démontrée. Elle est d'ailleurs fausse ; à titre d'information (calculs à la machine, non demandés), $1{,}05^{50} \\approx 11{,}47$ et $1{,}05^{199} \\approx 16\\,469$. L'inégalité de Bernoulli est une minoration grossière : elle garantit un rang, pas le plus petit. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-014",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-seuils"],
+    "capacites": ["bo-m-suites-14"],
+    "titre": "La condition de la boucle while",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 140,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $(u_n)$ la suite définie par $u_0 = 100$ et, pour tout entier naturel $n$, $u_{n+1} = 1{,}1u_n$. Tu cherches le premier rang $n$ tel que $u_n > 1\\,000$. Quelle condition écris-tu après while ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$u > 1\\,000$",
+            "$u \\leqslant 1\\,000$",
+            "$u < 1\\,000$",
+            "$u \\geqslant 1\\,000$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est le but, pas la condition de la boucle. Comme $u_0 = 100$, cette condition est fausse dès le départ : la boucle ne tourne pas, et le programme renvoie $0$.",
+            null,
+            "Presque : si un terme valait exactement $1\\,000$, la boucle s'arrêterait alors que $1\\,000 > 1\\,000$ est faux. Le contraire de « $>$ » est « $\\leqslant$ ».",
+            "Comme $u_0 = 100$, cette condition est fausse dès le départ : la boucle ne tourne pas, et le programme renvoie $0$."
+          ]
+        },
+        "indices": [
+          "La boucle tourne **tant que** le but n'est pas atteint : sa condition est le contraire du but.",
+          "Le but est « $u > 1\\,000$ ». Quel est le contraire de « strictement supérieur à » ?"
+        ],
+        "revoir": "l-limites-suites-064",
+        "solution": "La boucle doit tourner tant que le but « $u_n > 1\\,000$ » n'est pas atteint, c'est-à-dire tant que $u \\leqslant 1\\,000$. Elle s'arrête au premier rang où $u_n > 1\\,000$. La condition à écrire est $u \\leqslant 1\\,000$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère la fonction Python ci-dessous. Que renvoie l'appel seuil() ?",
+        "code": {
+          "langage": "python",
+          "source": "def seuil():\n    n = 0\n    u = 1\n    while u < 50:\n        u = 2 * u + 1\n        n = n + 1\n    return n"
+        },
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "Fais tourner le programme à la main : note, à chaque tour de boucle, les valeurs de u et de n.",
+          "Au départ, u vaut $1$ et n vaut $0$. Après le premier tour, u vaut $3$ et n vaut $1$ ; après le deuxième, u vaut $7$ et n vaut $2$. Continue tant que u est strictement inférieur à $50$."
+        ],
+        "revoir": "l-limites-suites-063",
+        "solution": "Les valeurs successives de u sont $1$, $3$, $7$, $15$, $31$, puis $63$ ; n vaut alors $0$, $1$, $2$, $3$, $4$, puis $5$. Après le cinquième tour, u vaut $63$ : la condition « $u < 50$ » est fausse, et la boucle s'arrête. L'appel seuil() renvoie $5$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "La fonction seuil() calcule les termes de la suite définie par $u_0 = 1$ et $u_{n+1} = 2u_n + 1$. Que représente la valeur qu'elle renvoie ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Le premier rang $n$ tel que $u_n \\geqslant 50$.",
+            "Le dernier rang $n$ tel que $u_n < 50$.",
+            "La valeur du premier terme $u_n$ supérieur ou égal à $50$.",
+            "Le premier rang $n$ tel que $u_n < 50$."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "La boucle s'arrête dès que u atteint ou dépasse $50$ : n est alors le rang du premier terme qui convient, pas celui du dernier qui ne convient pas.",
+            "Le programme renvoie n, le rang, et non u, la valeur du terme.",
+            "Dès le départ, $u_0 = 1 < 50$ : ce rang serait $0$. La boucle tourne justement tant que $u < 50$."
+          ]
+        },
+        "indices": [
+          "La boucle s'arrête dès que sa condition devient fausse. Que vaut alors n ?",
+          "À la sortie de la boucle, u est le premier terme pour lequel « $u < 50$ » est faux, et n est son rang."
+        ],
+        "revoir": "l-limites-suites-064",
+        "solution": "La boucle tourne tant que $u < 50$ ; elle s'arrête au premier terme tel que $u_n \\geqslant 50$, et n est alors son rang. La valeur renvoyée est le premier rang $n$ tel que $u_n \\geqslant 50$ : ici, $u_4 = 31$ et $u_5 = 63$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-015",
+    "chapitre": "limites-suites",
+    "niveau": 1,
+    "notions": ["n-limites-suites-seuils"],
+    "capacites": ["bo-m-suites-15"],
+    "titre": "Approcher une racine carrée",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 150,
+    "preambule": "La fonction ci-dessous reprend la méthode du cours pour approcher $\\sqrt{a}$, où $a$ est un réel supérieur ou égal à $1$.",
+    "code": {
+      "langage": "python",
+      "source": "def approx_racine(a, p):\n    pas = 10 ** (-p)\n    x = 1\n    while (x + pas) ** 2 <= a:\n        x = x + pas\n    return round(x, p)"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que renvoie l'appel approx_racine(5, 1) ?",
+        "reponse": { "type": "numerique", "valeur": 2.2, "tolerance": 0 },
+        "indices": [
+          "Avec $p = 1$, le pas vaut $0{,}1$ : x part de $1$ et avance de $0{,}1$ tant que le nombre suivant a un carré inférieur ou égal à $5$.",
+          "À la sortie, x vérifie $x^2 \\leqslant 5 < (x + 0{,}1)^2$. Comme $2^2 = 4 \\leqslant 5 < 9 = 3^2$, cherche le nombre à une décimale qui convient, entre $2$ et $3$."
+        ],
+        "revoir": "l-limites-suites-067",
+        "solution": "La boucle s'arrête sur le dernier nombre de la liste $1$ ; $1{,}1$ ; $1{,}2$ ; … dont le carré est inférieur ou égal à $5$. Or $2{,}2^2 = 4{,}84 \\leqslant 5$ et $2{,}3^2 = 5{,}29 > 5$. L'appel approx_racine(5, 1) renvoie $2{,}2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Que représente le nombre renvoyé par approx_racine(5, 1) ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "La valeur approchée de $\\sqrt{5}$ à $10^{-1}$ près par défaut.",
+            "La valeur approchée de $\\sqrt{5}$ à $10^{-1}$ près par excès.",
+            "La valeur exacte de $\\sqrt{5}$.",
+            "Une valeur approchée de $5^2$ à $10^{-1}$ près."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le carré du nombre renvoyé est inférieur ou égal à $5$ : ce nombre est en dessous de $\\sqrt{5}$, c'est une valeur par défaut.",
+            "$\\sqrt{5}$ n'est pas un nombre décimal : le programme n'en donne qu'une valeur approchée.",
+            "La boucle compare des carrés à $5$ : elle cherche un nombre dont le carré est proche de $5$, c'est-à-dire un nombre proche de $\\sqrt{5}$."
+          ]
+        },
+        "indices": [
+          "À la sortie de la boucle, x vérifie $x^2 \\leqslant 5 < (x + 0{,}1)^2$.",
+          "La fonction racine carrée est croissante sur $[0\\,;\\,+\\infty[$ : ces inégalités donnent $x \\leqslant \\sqrt{5} < x + 0{,}1$. x est-il au-dessus ou en dessous de $\\sqrt{5}$ ?"
+        ],
+        "revoir": "l-limites-suites-067",
+        "solution": "À la sortie de la boucle, $x^2 \\leqslant 5 < (x + 0{,}1)^2$, avec $x > 0$. Comme la fonction racine carrée est croissante, $x \\leqslant \\sqrt{5} < x + 0{,}1$. Le nombre renvoyé est la valeur approchée de $\\sqrt{5}$ à $10^{-1}$ près par défaut."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Que renvoie l'appel approx_racine(5, 2) ?",
+        "reponse": { "type": "numerique", "valeur": 2.23, "tolerance": 0 },
+        "indices": [
+          "Avec $p = 2$, le pas vaut $0{,}01$ ; le nombre renvoyé x vérifie $x^2 \\leqslant 5 < (x + 0{,}01)^2$.",
+          "D'après la question 1, x est compris entre $2{,}2$ et $2{,}3$ : calcule les carrés de quelques nombres à deux décimales de cet intervalle, en partant du milieu."
+        ],
+        "revoir": "l-limites-suites-067",
+        "solution": "Le nombre renvoyé est la valeur approchée de $\\sqrt{5}$ à $10^{-2}$ près par défaut. Or $2{,}23^2 = 4{,}972\\,9 \\leqslant 5$ et $2{,}24^2 = 5{,}017\\,6 > 5$. L'appel approx_racine(5, 2) renvoie $2{,}23$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-016",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-monotone-bornee"],
+    "capacites": ["bo-m-suites-07", "bo-m-suites-06", "bo-m-suites-08", "bo-m-logique-14"],
+    "titre": "Une suite décroissante et minorée",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 160,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 3$ et, pour tout entier naturel $n$, $u_{n+1} = \\sqrt{u_n + 2}$. On note $f$ la fonction définie sur $[-2\\,;\\,+\\infty[$ par $f(x) = \\sqrt{x + 2}$ : ainsi $u_{n+1} = f(u_n)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que la fonction $f$ est croissante sur $[-2\\,;\\,+\\infty[$, puis calculer $f(2)$ et $f(3)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Prends deux réels $a$ et $b$ tels que $-2 \\leqslant a \\leqslant b$ : compare d'abord $a + 2$ et $b + 2$, puis leurs racines carrées.",
+          "$0 \\leqslant a + 2 \\leqslant b + 2$, et la fonction racine carrée est croissante sur $[0\\,;\\,+\\infty[$ : donc $f(a) \\leqslant f(b)$.",
+          "$f(2) = \\sqrt{4}$ et $f(3) = \\sqrt{5}$. Pour situer $\\sqrt{5}$, utilise $4 < 5 < 9$."
+        ],
+        "revoir": "l-recurrence-suites-020",
+        "solution": "Soit $a$ et $b$ deux réels tels que $-2 \\leqslant a \\leqslant b$. Alors $0 \\leqslant a + 2 \\leqslant b + 2$. La fonction racine carrée est croissante sur $[0\\,;\\,+\\infty[$, donc $\\sqrt{a + 2} \\leqslant \\sqrt{b + 2}$, c'est-à-dire $f(a) \\leqslant f(b)$. La fonction $f$ est croissante sur $[-2\\,;\\,+\\infty[$.\n\nDe plus, $f(2) = \\sqrt{4} = 2$ et $f(3) = \\sqrt{5}$. Comme $4 < 5 < 9$ et que la fonction racine carrée est croissante, $2 < \\sqrt{5} < 3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $2 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 3$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Suis la méthode du chapitre précédent : appliquer la fonction croissante $f$ à un encadrement conserve l'ordre.",
+          "Initialisation : $u_0 = 3$ et $u_1 = f(3) = \\sqrt{5}$, avec $2 \\leqslant \\sqrt{5} \\leqslant 3$.",
+          "Hérédité : de $2 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 3$, applique $f$ aux quatre membres : $f(2) \\leqslant f(u_{n+1}) \\leqslant f(u_n) \\leqslant f(3)$.",
+          "Reconnais $f(u_{n+1}) = u_{n+2}$ et $f(u_n) = u_{n+1}$, puis compare $f(2)$ et $f(3)$ aux bornes de l'encadrement voulu."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $2 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 3$ ».\n\n**Initialisation** : $u_0 = 3$ et $u_1 = f(3) = \\sqrt{5}$. D'après la question 1, $2 \\leqslant \\sqrt{5} \\leqslant 3$, donc $2 \\leqslant u_1 \\leqslant u_0 \\leqslant 3$ : $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $2 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 3$. Ces nombres sont dans $[-2\\,;\\,+\\infty[$, où $f$ est croissante : en appliquant $f$, l'ordre est conservé, $f(2) \\leqslant f(u_{n+1}) \\leqslant f(u_n) \\leqslant f(3)$, c'est-à-dire $2 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant \\sqrt{5}$. Comme $\\sqrt{5} \\leqslant 3$, on obtient $2 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant 3$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $2 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 3$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire que la suite $(u_n)$ converge vers un réel $\\ell$, et donner un encadrement de $\\ell$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Lis, dans l'encadrement de la question 2, le sens de variation et un minorant constant.",
+          "$u_{n+1} \\leqslant u_n$ : la suite est décroissante ; $2 \\leqslant u_n$ : elle est minorée par $2$.",
+          "Cite le théorème de convergence monotone, puis passe à la limite dans $2 \\leqslant u_n \\leqslant 3$."
+        ],
+        "revoir": "l-limites-suites-055",
+        "solution": "D'après la question 2, pour tout entier naturel $n$, $u_{n+1} \\leqslant u_n$ : la suite $(u_n)$ est décroissante. Et $u_n \\geqslant 2$ : elle est minorée par $2$. La suite est décroissante et minorée par $2$ : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$.\n\nPour tout $n$, $2 \\leqslant u_n \\leqslant 3$ ; par passage à la limite, $2 \\leqslant \\ell \\leqslant 3$.",
+        "erreurFrequente": "Affirmer que la limite vaut $2$ parce que $2$ est un minorant : le théorème assure seulement que la limite existe. Pour la trouver, il faut un autre argument."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-017",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-monotone-bornee"],
+    "capacites": ["bo-m-suites-07", "bo-m-suites-06", "bo-m-suites-08", "bo-m-logique-14"],
+    "titre": "Étudier le signe de la différence",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 170,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = \\dfrac{1}{2}$ et, pour tout entier naturel $n$, $u_{n+1} = \\dfrac{3u_n}{1 + 2u_n}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $u_1$.",
+        "reponse": { "type": "numerique", "valeur": "3/4", "tolerance": 0 },
+        "indices": [
+          "Remplace $u_n$ par $u_0 = \\dfrac{1}{2}$ dans la relation de récurrence.",
+          "Numérateur : $3 \\times \\dfrac{1}{2} = \\dfrac{3}{2}$.",
+          "Dénominateur : $1 + 2 \\times \\dfrac{1}{2} = 2$. Divise le numérateur par ce dénominateur."
+        ],
+        "revoir": "l-recurrence-suites-002",
+        "solution": "$u_1 = \\dfrac{3 \\times \\frac{1}{2}}{1 + 2 \\times \\frac{1}{2}} = \\dfrac{\\frac{3}{2}}{2} = \\dfrac{3}{4}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $0 < u_n < 1$. On pourra utiliser l'égalité $1 - u_{n+1} = \\dfrac{1 - u_n}{1 + 2u_n}$, vraie dès que $1 + 2u_n \\neq 0$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Récurrence sur la propriété « $0 < u_n < 1$ » : dans l'hérédité, traite séparément $u_{n+1} > 0$ et $u_{n+1} < 1$.",
+          "Initialisation : $0 < \\dfrac{1}{2} < 1$. Hérédité : si $u_n > 0$, le numérateur $3u_n$ et le dénominateur $1 + 2u_n$ sont strictement positifs.",
+          "Pour $u_{n+1} < 1$, vérifie d'abord l'égalité proposée en mettant $1 - \\dfrac{3u_n}{1 + 2u_n}$ au même dénominateur, puis étudie le signe de $\\dfrac{1 - u_n}{1 + 2u_n}$.",
+          "$1 - u_n > 0$ par hypothèse de récurrence et $1 + 2u_n > 0$ : le quotient est strictement positif. Conclus sur $u_{n+1}$."
+        ],
+        "revoir": "l-recurrence-suites-017",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $0 < u_n < 1$ ».\n\n**Initialisation** : $u_0 = \\dfrac{1}{2}$ et $0 < \\dfrac{1}{2} < 1$ : $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $0 < u_n < 1$. Alors $3u_n > 0$ et $1 + 2u_n > 0$, donc $u_{n+1} = \\dfrac{3u_n}{1 + 2u_n} > 0$. De plus, au même dénominateur :\n\n$$1 - u_{n+1} = \\dfrac{1 + 2u_n - 3u_n}{1 + 2u_n} = \\dfrac{1 - u_n}{1 + 2u_n}.$$\n\nOr $1 - u_n > 0$ par hypothèse de récurrence, et $1 + 2u_n > 0$ : donc $1 - u_{n+1} > 0$, c'est-à-dire $u_{n+1} < 1$. Ainsi $0 < u_{n+1} < 1$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $0 < u_n < 1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Montrer que, pour tout entier naturel $n$, $u_{n+1} - u_n = \\dfrac{2u_n(1 - u_n)}{1 + 2u_n}$. En déduire le sens de variation de la suite $(u_n)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Mets au même dénominateur $1 + 2u_n$, puis factorise le numérateur.",
+          "$u_{n+1} - u_n = \\dfrac{3u_n - u_n(1 + 2u_n)}{1 + 2u_n}$.",
+          "Le numérateur vaut $2u_n - 2u_n^2$, qui se factorise par $2u_n$. Pour le signe de chaque facteur, utilise l'encadrement $0 < u_n < 1$."
+        ],
+        "revoir": "l-limites-suites-055",
+        "solution": "Pour tout entier naturel $n$ :\n\n$$u_{n+1} - u_n = \\dfrac{3u_n - u_n(1 + 2u_n)}{1 + 2u_n} = \\dfrac{2u_n - 2u_n^2}{1 + 2u_n} = \\dfrac{2u_n(1 - u_n)}{1 + 2u_n}.$$\n\nD'après la question 2, $u_n > 0$ et $1 - u_n > 0$ ; de plus, $1 + 2u_n > 0$. Le quotient est strictement positif : $u_{n+1} - u_n > 0$ pour tout $n$. La suite $(u_n)$ est croissante."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire que la suite $(u_n)$ converge vers un réel $\\ell$, et donner un encadrement de $\\ell$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Croissante et majorée : quel théorème s'applique ?",
+          "La question 3 donne la croissance, la question 2 un majorant constant : $1$.",
+          "Pour l'encadrement : la suite est croissante, donc $u_n \\geqslant u_0$ pour tout $n$ ; passe à la limite dans $u_0 \\leqslant u_n < 1$, en te souvenant qu'une inégalité stricte devient large."
+        ],
+        "revoir": "l-limites-suites-052",
+        "solution": "La suite $(u_n)$ est croissante (question 3) et majorée par $1$ (question 2) : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$.\n\nComme elle est croissante, $u_n \\geqslant u_0 = \\dfrac{1}{2}$ pour tout $n$ ; et $u_n < 1$. Par passage à la limite, l'inégalité stricte devenant large : $\\dfrac{1}{2} \\leqslant \\ell \\leqslant 1$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-018",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-monotone-bornee"],
+    "capacites": ["bo-m-suites-07", "bo-m-suites-06", "bo-m-suites-08", "bo-m-suites-09"],
+    "titre": "Une population qui se stabilise",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 180,
+    "preambule": "On étudie une population d'insectes. Pour tout entier naturel $n$, on note $p_n$ l'effectif de la population au bout de $n$ années, en millions d'individus. On admet que $p_0 = 0{,}1$ et que, pour tout entier naturel $n$, $p_{n+1} = f(p_n)$, où $f$ est la fonction définie sur $[0\\,;\\,1]$ par $f(x) = 1{,}5x(1 - x)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $p_1$.",
+        "reponse": { "type": "numerique", "valeur": 0.135, "tolerance": 0 },
+        "indices": [
+          "Applique la relation de récurrence avec $n = 0$ : $p_1 = f(p_0)$.",
+          "$p_1 = 1{,}5 \\times 0{,}1 \\times (1 - 0{,}1)$ ; commence par $1{,}5 \\times 0{,}1 = 0{,}15$.",
+          "Il reste à multiplier $0{,}15$ par $0{,}9$, par exemple en calculant $0{,}15 - 0{,}15 \\times 0{,}1$."
+        ],
+        "revoir": "l-limites-suites-050",
+        "solution": "$p_1 = f(0{,}1) = 1{,}5 \\times 0{,}1 \\times 0{,}9 = 0{,}15 \\times 0{,}9 = 0{,}135$. Au bout d'un an, la population compte $0{,}135$ million d'insectes, soit $135\\,000$ individus."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étudier le sens de variation de $f$ sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$, puis vérifier que $f(0) = 0$ et $f\\left(\\dfrac{1}{3}\\right) = \\dfrac{1}{3}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Développe $f(x)$, puis dérive : c'est une fonction polynôme du second degré.",
+          "$f(x) = 1{,}5x - 1{,}5x^2$, donc $f'(x) = 1{,}5 - 3x$.",
+          "Pour $0 \\leqslant x \\leqslant \\dfrac{1}{2}$, $3x \\leqslant 1{,}5$ : quel est le signe de $f'(x)$ ? Pour l'image de $\\dfrac{1}{3}$, utilise $1 - \\dfrac{1}{3} = \\dfrac{2}{3}$."
+        ],
+        "revoir": "l-recurrence-suites-020",
+        "solution": "Pour tout réel $x$ de $[0\\,;\\,1]$, $f(x) = 1{,}5x - 1{,}5x^2$, donc $f'(x) = 1{,}5 - 3x$. Pour $0 \\leqslant x \\leqslant \\dfrac{1}{2}$, on a $3x \\leqslant 1{,}5$, donc $f'(x) \\geqslant 0$ : $f$ est croissante sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$.\n\nDe plus, $f(0) = 0$ et $f\\left(\\dfrac{1}{3}\\right) = 1{,}5 \\times \\dfrac{1}{3} \\times \\dfrac{2}{3} = \\dfrac{3}{2} \\times \\dfrac{2}{9} = \\dfrac{1}{3}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant p_n \\leqslant p_{n+1} \\leqslant \\dfrac{1}{3}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Même méthode que pour une suite $u_{n+1} = f(u_n)$ avec $f$ croissante : applique $f$ à l'encadrement.",
+          "Initialisation : $p_0 = 0{,}1$ et $p_1 = 0{,}135$ ; compare ces nombres à $0$ et à $\\dfrac{1}{3}$.",
+          "Hérédité : les nombres $0$, $p_n$, $p_{n+1}$ et $\\dfrac{1}{3}$ sont dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$, où $f$ est croissante : $f(0) \\leqslant f(p_n) \\leqslant f(p_{n+1}) \\leqslant f\\left(\\dfrac{1}{3}\\right)$.",
+          "Reconnais $p_{n+1}$ et $p_{n+2}$, et utilise les deux images calculées à la question 2."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant p_n \\leqslant p_{n+1} \\leqslant \\dfrac{1}{3}$ ».\n\n**Initialisation** : $p_0 = 0{,}1$ et $p_1 = 0{,}135$. Or $0 \\leqslant 0{,}1 \\leqslant 0{,}135 \\leqslant \\dfrac{1}{3}$, car $\\dfrac{1}{3} > 0{,}3$. Donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $0 \\leqslant p_n \\leqslant p_{n+1} \\leqslant \\dfrac{1}{3}$. Ces quatre nombres sont dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$, où $f$ est croissante (question 2). En appliquant $f$, l'ordre est conservé : $f(0) \\leqslant f(p_n) \\leqslant f(p_{n+1}) \\leqslant f\\left(\\dfrac{1}{3}\\right)$, c'est-à-dire $0 \\leqslant p_{n+1} \\leqslant p_{n+2} \\leqslant \\dfrac{1}{3}$. Donc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $0 \\leqslant p_n \\leqslant p_{n+1} \\leqslant \\dfrac{1}{3}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire que la suite $(p_n)$ converge vers un réel $\\ell$. Que peut-on en dire de l'effectif de la population à long terme ?",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Croissante et majorée : cite le théorème, puis passe à la limite dans un encadrement de $p_n$.",
+          "La suite est croissante et majorée par $\\dfrac{1}{3}$ : elle converge vers un réel $\\ell$. Comme elle est croissante, $p_n \\geqslant p_0$ pour tout $n$.",
+          "Le passage à la limite donne $0{,}1 \\leqslant \\ell \\leqslant \\dfrac{1}{3}$. Traduis en nombre d'insectes : un tiers de million, c'est environ $333\\,333$ individus."
+        ],
+        "revoir": "l-limites-suites-052",
+        "solution": "D'après la question 3, la suite $(p_n)$ est croissante et majorée par $\\dfrac{1}{3}$ : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$. Pour tout $n$, $p_0 \\leqslant p_n \\leqslant \\dfrac{1}{3}$ ; par passage à la limite, $0{,}1 \\leqslant \\ell \\leqslant \\dfrac{1}{3}$.\n\n**Interprétation** : selon ce modèle, la population augmente chaque année et se stabilise à long terme autour d'un effectif compris entre $100\\,000$ et environ $333\\,333$ insectes. Le théorème ne donne pas la valeur exacte de cet effectif."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-019",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-definitions"],
+    "capacites": ["bo-m-suites-01", "bo-m-suites-02"],
+    "titre": "Revenir à la définition",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 190,
+    "preambule": "Soit $(u_n)$ et $(v_n)$ les suites définies, pour tout entier naturel $n$, par $u_n = 3n - 7$ et $v_n = 2 + \\dfrac{1}{n+1}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quel est le plus petit entier $N$ tel que, pour tout entier $n \\geqslant N$, $u_n \\geqslant 500$ ?",
+        "reponse": { "type": "numerique", "valeur": 169, "tolerance": 0 },
+        "indices": [
+          "Résous l'inéquation $3n - 7 \\geqslant 500$. La suite $(u_n)$ est croissante : dès qu'un terme convient, tous les suivants conviennent.",
+          "$3n - 7 \\geqslant 500$ équivaut à $3n \\geqslant 507$.",
+          "Divise par $3$, qui est positif. Vérifie ensuite que le terme de rang juste inférieur ne convient pas."
+        ],
+        "revoir": "l-limites-suites-004",
+        "solution": "$3n - 7 \\geqslant 500$ équivaut à $3n \\geqslant 507$, puis à $n \\geqslant 169$. Ainsi, pour tout entier $n \\geqslant 169$, $u_n \\geqslant 500$ ; et $u_{168} = 497 < 500$. Le plus petit entier qui convient est $N = 169$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer, en revenant à la définition, que $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Fixe un réel $A$ quelconque et cherche un rang à partir duquel $u_n \\geqslant A$, comme à la question 1 avec $A = 500$.",
+          "$3n - 7 \\geqslant A$ équivaut à $n \\geqslant \\dfrac{A + 7}{3}$.",
+          "Choisis un entier $N$ supérieur ou égal à $\\dfrac{A + 7}{3}$ : un tel entier existe toujours. Pour tout $n \\geqslant N$, compare alors $u_n$ et $A$.",
+          "Conclus : pour tout réel $A$, l'intervalle $[A\\,;\\,+\\infty[$ contient tous les termes à partir du rang $N$. C'est la définition."
+        ],
+        "revoir": "l-limites-suites-004",
+        "solution": "Soit $A$ un réel. Pour tout entier naturel $n$, $3n - 7 \\geqslant A$ équivaut à $n \\geqslant \\dfrac{A + 7}{3}$. On choisit un entier $N$ tel que $N \\geqslant \\dfrac{A + 7}{3}$ : un tel entier existe toujours, car les entiers dépassent n'importe quel réel. Pour tout entier $n \\geqslant N$, on a $n \\geqslant \\dfrac{A + 7}{3}$, donc $u_n \\geqslant A$.\n\nAinsi, pour tout réel $A$, l'intervalle $[A\\,;\\,+\\infty[$ contient tous les termes $u_n$ à partir du rang $N$. Par définition, $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est le plus petit entier $N$ tel que, pour tout entier $n \\geqslant N$, $v_n$ appartienne à l'intervalle ouvert $]1{,}99\\,;\\,2{,}01[$ ?",
+        "reponse": { "type": "numerique", "valeur": 100, "tolerance": 0 },
+        "indices": [
+          "Tous les termes sont supérieurs à $2$, donc à $1{,}99$ : il reste à obtenir $v_n < 2{,}01$.",
+          "$v_n < 2{,}01$ équivaut à $\\dfrac{1}{n+1} < 0{,}01$.",
+          "La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$ : cela équivaut à $n + 1 > \\dfrac{1}{0{,}01}$. Attention au cas d'égalité : l'intervalle est ouvert."
+        ],
+        "revoir": "l-limites-suites-011",
+        "solution": "Pour tout entier naturel $n$, $\\dfrac{1}{n+1} > 0$, donc $v_n > 2 > 1{,}99$. Ensuite, $v_n < 2{,}01$ équivaut à $\\dfrac{1}{n+1} < 0{,}01$, puis, la fonction inverse étant décroissante sur $]0\\,;\\,+\\infty[$, à $n + 1 > 100$, c'est-à-dire $n \\geqslant 100$.\n\nLe rang $99$ ne convient pas : $v_{99} = 2{,}01$ n'est pas dans l'intervalle ouvert. Le plus petit entier qui convient est $N = 100$.",
+        "erreurFrequente": "Répondre $99$ : $v_{99} = 2 + \\dfrac{1}{100} = 2{,}01$ est une borne de l'intervalle ouvert, qui ne la contient pas."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-020",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-definitions"],
+    "capacites": ["bo-m-suites-01", "bo-m-logique-06", "bo-m-suites-08", "bo-m-logique-14"],
+    "titre": "Croissante et non majorée",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 200,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 2$ et, pour tout entier naturel $n$, $u_{n+1} = u_n^2 - u_n + 1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $u_2$.",
+        "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0 },
+        "indices": [
+          "Applique deux fois la relation de récurrence, en partant de $u_0 = 2$.",
+          "$u_1 = 2^2 - 2 + 1 = 3$.",
+          "$u_2 = u_1^2 - u_1 + 1$ : remplace $u_1$ par sa valeur."
+        ],
+        "revoir": "l-recurrence-suites-002",
+        "solution": "$u_1 = 2^2 - 2 + 1 = 3$, puis $u_2 = 3^2 - 3 + 1 = 9 - 3 + 1 = 7$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout entier naturel $n$, $u_{n+1} - u_n = (u_n - 1)^2$. En déduire le sens de variation de la suite $(u_n)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Calcule $u_{n+1} - u_n$ en remplaçant $u_{n+1}$ par son expression, puis reconnais une identité remarquable.",
+          "$u_{n+1} - u_n = u_n^2 - 2u_n + 1$.",
+          "C'est $a^2 - 2ab + b^2 = (a - b)^2$ avec $a = u_n$ et $b = 1$. Un carré est positif ou nul : conclus sur le sens de variation."
+        ],
+        "revoir": "l-recurrence-suites-013",
+        "solution": "Pour tout entier naturel $n$ : $u_{n+1} - u_n = u_n^2 - u_n + 1 - u_n = u_n^2 - 2u_n + 1 = (u_n - 1)^2$. Un carré est positif ou nul, donc $u_{n+1} - u_n \\geqslant 0$ pour tout $n$ : la suite $(u_n)$ est croissante."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n \\geqslant n + 2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dans l'hérédité, utilise la question 2 sous la forme $u_{n+1} = u_n + (u_n - 1)^2$.",
+          "Initialisation : $u_0 = 2$ et $0 + 2 = 2$. Hérédité : tu supposes $u_n \\geqslant n + 2$, et tu veux $u_{n+1} \\geqslant n + 3$.",
+          "Comme $n \\geqslant 0$, l'hypothèse donne $u_n \\geqslant 2$, donc $u_n - 1 \\geqslant 1$ et $(u_n - 1)^2 \\geqslant 1$.",
+          "Alors $u_{n+1} = u_n + (u_n - 1)^2 \\geqslant u_n + 1$ ; utilise encore l'hypothèse de récurrence pour conclure."
+        ],
+        "revoir": "l-recurrence-suites-017",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n \\geqslant n + 2$ ».\n\n**Initialisation** : $u_0 = 2$ et $0 + 2 = 2$, donc $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $u_n \\geqslant n + 2$. Comme $n \\geqslant 0$, on a $u_n \\geqslant 2$, donc $u_n - 1 \\geqslant 1$, puis $(u_n - 1)^2 \\geqslant 1$, car les deux membres de $u_n - 1 \\geqslant 1$ sont positifs. D'après la question 2, $u_{n+1} = u_n + (u_n - 1)^2 \\geqslant u_n + 1 \\geqslant (n + 2) + 1 = (n + 1) + 2$. Donc $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $u_n \\geqslant n + 2$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Démontrer que la suite $(u_n)$ n'est pas majorée, puis déterminer sa limite.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "« Non majorée » veut dire qu'aucun réel n'est un majorant. Cela se rédige en trois temps : « Soit $A$ un réel » ; on trouve un rang $N$ tel que $u_N > A$ ; on conclut que $A$ n'est pas un majorant, et cela quel que soit $A$. Ici, la minoration de la question 3 fournit le rang.",
+          "Soit $A$ un réel. Choisis un entier naturel $N$ tel que $N \\geqslant A$ : il en existe toujours, car les entiers dépassent n'importe quel réel (si $A \\leqslant 0$, $N = 0$ convient). Que donne la question 3 pour $u_N$ ?",
+          "D'après la question 3, $u_N \\geqslant N + 2 > N \\geqslant A$ : le terme $u_N$ dépasse strictement $A$, donc $A$ n'est pas un majorant. Comme $A$ est un réel quelconque, aucun réel ne majore la suite.",
+          "Pour la limite, rassemble deux faits : la suite est croissante (question 2) et elle n'est pas majorée. Cite alors la propriété des suites croissantes non majorées."
+        ],
+        "revoir": "l-limites-suites-005",
+        "solution": "Montrer que $(u_n)$ n'est pas majorée, c'est montrer qu'aucun réel $A$ n'en est un majorant : pour chaque réel $A$, on cherche un terme strictement supérieur à $A$.\n\nSoit $A$ un réel. On choisit un entier naturel $N$ tel que $N \\geqslant A$ ; un tel entier existe toujours, car les entiers dépassent n'importe quel réel. D'après la question 3, $u_N \\geqslant N + 2 > N \\geqslant A$ : le terme $u_N$ dépasse strictement $A$, donc $A$ n'est pas un majorant de $(u_n)$. Ce raisonnement vaut pour tout réel $A$ : la suite $(u_n)$ n'est pas majorée.\n\nLa suite $(u_n)$ est croissante (question 2) et non majorée : d'après la propriété des suites croissantes non majorées, elle tend vers $+\\infty$. Autre voie, avec le théorème de comparaison vu plus loin dans le cours : $u_n \\geqslant n + 2$ et $\\lim\\limits_{n \\to +\\infty} (n + 2) = +\\infty$.\n\nDonc $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-021",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-operations"],
+    "capacites": ["bo-m-suites-04"],
+    "titre": "Formes indéterminées avec des racines carrées",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 210,
+    "preambule": "Pour tout entier $n \\geqslant 1$, on pose $a_n = \\dfrac{n + \\sqrt{n}}{2n - 1}$, $b_n = n - 3\\sqrt{n}$ et $c_n = \\dfrac{2\\sqrt{n} + 1}{\\sqrt{n} + 5}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer la limite de la suite $(a_n)$.",
+        "reponse": { "type": "numerique", "valeur": "1/2", "tolerance": 0 },
+        "indices": [
+          "C'est la forme « $\\dfrac{\\infty}{\\infty}$ ». Repère le terme qui grandit le plus vite : comme $n = \\sqrt{n} \\times \\sqrt{n}$, le nombre $n$ est $\\sqrt{n}$ fois plus grand que $\\sqrt{n}$. C'est donc $n$ qui domine : mets $n$ en facteur en haut et en bas.",
+          "En haut, $n + \\sqrt{n} = n\\left(1 + \\dfrac{\\sqrt{n}}{n}\\right)$, avec $\\dfrac{\\sqrt{n}}{n} = \\dfrac{\\sqrt{n}}{\\sqrt{n} \\times \\sqrt{n}} = \\dfrac{1}{\\sqrt{n}}$. En bas, $2n - 1 = n\\left(2 - \\dfrac{1}{n}\\right)$.",
+          "Après simplification par $n$ : $a_n = \\dfrac{1 + \\frac{1}{\\sqrt{n}}}{2 - \\frac{1}{n}}$. Les limites de $\\dfrac{1}{\\sqrt{n}}$ et de $\\dfrac{1}{n}$ sont des limites de référence : cherche celle du numérateur, puis celle du dénominateur."
+        ],
+        "revoir": "l-limites-suites-021",
+        "solution": "Le numérateur et le dénominateur tendent vers $+\\infty$ : forme « $\\dfrac{\\infty}{\\infty}$ ». Pour $n \\geqslant 1$, $\\dfrac{\\sqrt{n}}{n} = \\dfrac{\\sqrt{n}}{\\sqrt{n} \\times \\sqrt{n}} = \\dfrac{1}{\\sqrt{n}}$ : c'est $n$ qui domine. On met donc $n$ en facteur en haut et en bas : $a_n = \\dfrac{n\\left(1 + \\frac{1}{\\sqrt{n}}\\right)}{n\\left(2 - \\frac{1}{n}\\right)} = \\dfrac{1 + \\frac{1}{\\sqrt{n}}}{2 - \\frac{1}{n}}$. Or $\\dfrac{1}{\\sqrt{n}}$ et $\\dfrac{1}{n}$ tendent vers $0$ : le numérateur tend vers $1$, le dénominateur vers $2$. Par quotient, $\\lim\\limits_{n \\to +\\infty} a_n = \\dfrac{1}{2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer la limite de la suite $(b_n)$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$+\\infty$",
+            "$-\\infty$",
+            "$0$",
+            "On ne peut pas conclure : c'est une forme indéterminée."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$n$ grandit plus vite que $3\\sqrt{n}$ : $b_n = \\sqrt{n}\\left(\\sqrt{n} - 3\\right)$, produit de deux facteurs qui tendent vers $+\\infty$.",
+            "« $+\\infty - \\infty$ » ne vaut pas $0$ : il faut transformer l'écriture.",
+            "C'est une forme indéterminée au départ, mais on la lève en factorisant par $\\sqrt{n}$."
+          ]
+        },
+        "indices": [
+          "Forme « $+\\infty - \\infty$ » : factorise. La méthode du cours parle de puissances de $n$ ; ici, écris $n = \\sqrt{n} \\times \\sqrt{n}$ : les deux termes $n$ et $3\\sqrt{n}$ ont alors un facteur commun.",
+          "$b_n = \\sqrt{n} \\times \\sqrt{n} - 3 \\times \\sqrt{n} = \\sqrt{n}\\left(\\sqrt{n} - 3\\right)$.",
+          "Cherche la limite de chaque facteur, puis lis le tableau du produit."
+        ],
+        "revoir": "l-limites-suites-021",
+        "solution": "$n$ tend vers $+\\infty$ et $-3\\sqrt{n}$ vers $-\\infty$ : forme « $+\\infty - \\infty$ ». Comme $n = \\sqrt{n} \\times \\sqrt{n}$, $b_n = \\sqrt{n}\\left(\\sqrt{n} - 3\\right)$. Or $\\sqrt{n}$ tend vers $+\\infty$ et, par somme, $\\sqrt{n} - 3$ aussi. Par produit, $\\lim\\limits_{n \\to +\\infty} b_n = +\\infty$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer la limite de la suite $(c_n)$.",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Forme « $\\dfrac{\\infty}{\\infty}$ » : en haut comme en bas, le terme qui grandit le plus vite est $\\sqrt{n}$, car $1$ et $5$ restent fixes. Mets $\\sqrt{n}$ en facteur en haut et en bas.",
+          "Comme $\\sqrt{n} \\times \\dfrac{1}{\\sqrt{n}} = 1$ : $2\\sqrt{n} + 1 = \\sqrt{n}\\left(2 + \\dfrac{1}{\\sqrt{n}}\\right)$ et $\\sqrt{n} + 5 = \\sqrt{n}\\left(1 + \\dfrac{5}{\\sqrt{n}}\\right)$.",
+          "Simplifie par $\\sqrt{n}$, qui n'est pas nul, puis utilise $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{\\sqrt{n}} = 0$."
+        ],
+        "revoir": "l-limites-suites-022",
+        "solution": "Le numérateur et le dénominateur tendent vers $+\\infty$ : forme « $\\dfrac{\\infty}{\\infty}$ ». On met $\\sqrt{n}$ en facteur en haut et en bas, puis on simplifie par $\\sqrt{n} \\neq 0$ : $c_n = \\dfrac{2 + \\frac{1}{\\sqrt{n}}}{1 + \\frac{5}{\\sqrt{n}}}$. Or $\\dfrac{1}{\\sqrt{n}}$ et $\\dfrac{5}{\\sqrt{n}}$ tendent vers $0$ : le numérateur tend vers $2$, le dénominateur vers $1$. Par quotient, $\\lim\\limits_{n \\to +\\infty} c_n = 2$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-022",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-operations"],
+    "capacites": ["bo-m-suites-04"],
+    "titre": "La somme des premiers entiers",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 220,
+    "preambule": "Pour tout entier $n \\geqslant 1$, on pose $S_n = 1 + 2 + \\dots + n$. On rappelle, vu en première, que $S_n = \\dfrac{n(n+1)}{2}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer la limite de la suite définie, pour tout entier $n \\geqslant 1$, par $T_n = \\dfrac{S_n}{n^2}$.",
+        "reponse": { "type": "numerique", "valeur": "1/2", "tolerance": 0 },
+        "indices": [
+          "Écris $T_n$ comme un quotient de deux polynômes en $n$ : c'est la forme « $\\dfrac{\\infty}{\\infty}$ ».",
+          "$T_n = \\dfrac{n(n+1)}{2n^2} = \\dfrac{n^2 + n}{2n^2}$.",
+          "Mets $n^2$ en facteur au numérateur et simplifie : $T_n = \\dfrac{1 + \\frac{1}{n}}{2}$. Il reste à passer à la limite."
+        ],
+        "revoir": "l-limites-suites-022",
+        "solution": "Pour tout entier $n \\geqslant 1$, $T_n = \\dfrac{n(n+1)}{2n^2} = \\dfrac{n^2\\left(1 + \\frac{1}{n}\\right)}{2n^2} = \\dfrac{1 + \\frac{1}{n}}{2}$. Or $\\dfrac{1}{n}$ tend vers $0$, donc, par somme puis quotient, $\\lim\\limits_{n \\to +\\infty} T_n = \\dfrac{1}{2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer la limite de la suite définie, pour tout entier $n \\geqslant 1$, par $D_n = S_n - \\dfrac{n^2}{2}$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0$", "$\\dfrac{1}{2}$", "$+\\infty$", "$-\\infty$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "« $+\\infty - \\infty$ » ne vaut pas $0$ : développe $S_n$ avant de conclure.",
+            "C'est la limite du quotient $\\dfrac{S_n}{n^2}$. Ici, on étudie une différence.",
+            null,
+            "$S_n$ dépasse $\\dfrac{n^2}{2}$ : la différence $D_n$ est positive."
+          ]
+        },
+        "indices": [
+          "$S_n$ et $\\dfrac{n^2}{2}$ tendent vers $+\\infty$ : c'est une forme indéterminée. Transforme l'écriture.",
+          "Développe : $S_n = \\dfrac{n^2 + n}{2} = \\dfrac{n^2}{2} + \\dfrac{n}{2}$.",
+          "Simplifie $D_n$ : il ne reste qu'un terme. Quelle est sa limite ?"
+        ],
+        "revoir": "l-limites-suites-024",
+        "solution": "$S_n$ et $\\dfrac{n^2}{2}$ tendent vers $+\\infty$ : forme « $+\\infty - \\infty$ ». Pour tout $n \\geqslant 1$, $S_n = \\dfrac{n^2}{2} + \\dfrac{n}{2}$, donc $D_n = \\dfrac{n}{2}$. Par produit, $\\lim\\limits_{n \\to +\\infty} D_n = +\\infty$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer la limite de la suite définie, pour tout entier $n \\geqslant 1$, par $Q_n = \\dfrac{S_{2n}}{S_n}$.",
+        "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+        "indices": [
+          "Exprime $S_{2n}$ en remplaçant $n$ par $2n$ dans la formule.",
+          "$S_{2n} = \\dfrac{2n(2n+1)}{2} = n(2n + 1)$.",
+          "$Q_n = \\dfrac{n(2n+1)}{\\frac{n(n+1)}{2}} = \\dfrac{2(2n+1)}{n+1}$ : mets $n$ en facteur en haut et en bas."
+        ],
+        "revoir": "l-limites-suites-022",
+        "solution": "On remplace $n$ par $2n$ dans la formule : $S_{2n} = \\dfrac{2n(2n+1)}{2} = n(2n+1)$. Donc $Q_n = \\dfrac{n(2n+1)}{\\frac{n(n+1)}{2}} = \\dfrac{2(2n+1)}{n+1} = \\dfrac{4n + 2}{n + 1}$. On met $n$ en facteur en haut et en bas : $Q_n = \\dfrac{4 + \\frac{2}{n}}{1 + \\frac{1}{n}}$, qui tend vers $\\dfrac{4}{1} = 4$. Donc $\\lim\\limits_{n \\to +\\infty} Q_n = 4$.",
+        "erreurFrequente": "Écrire $S_{2n} = 2S_n$ : on remplace $n$ par $2n$ partout dans la formule, pas seulement devant. On trouverait alors la limite $2$, qui est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-023",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-comparaison"],
+    "capacites": ["bo-m-suites-03"],
+    "titre": "Le théorème des gendarmes",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 230,
+    "preambule": "Pour tout entier naturel $n$, on pose $u_n = \\dfrac{3n + (-1)^n}{n + 1}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer que, pour tout entier naturel $n$, $\\dfrac{3n - 1}{n + 1} \\leqslant u_n \\leqslant \\dfrac{3n + 1}{n + 1}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Encadre d'abord $(-1)^n$, puis reconstruis $u_n$ étape par étape.",
+          "$-1 \\leqslant (-1)^n \\leqslant 1$ ; ajoute $3n$ aux trois membres.",
+          "Divise ensuite les trois membres par $n + 1$, qui est strictement positif : le sens des inégalités est conservé."
+        ],
+        "revoir": "l-limites-suites-032",
+        "solution": "Pour tout entier naturel $n$, $-1 \\leqslant (-1)^n \\leqslant 1$. On ajoute $3n$ : $3n - 1 \\leqslant 3n + (-1)^n \\leqslant 3n + 1$. On divise par $n + 1$, qui est strictement positif, ce qui conserve le sens des inégalités : $\\dfrac{3n - 1}{n + 1} \\leqslant u_n \\leqslant \\dfrac{3n + 1}{n + 1}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer la limite commune des suites $\\left(\\dfrac{3n - 1}{n + 1}\\right)$ et $\\left(\\dfrac{3n + 1}{n + 1}\\right)$.",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Forme « $\\dfrac{\\infty}{\\infty}$ » : mets $n$ en facteur en haut et en bas.",
+          "Pour $n \\geqslant 1$ : $\\dfrac{3n - 1}{n + 1} = \\dfrac{n\\left(3 - \\frac{1}{n}\\right)}{n\\left(1 + \\frac{1}{n}\\right)}$.",
+          "Simplifie par $n$ ; fais de même pour la seconde suite, puis cherche les limites."
+        ],
+        "revoir": "l-limites-suites-022",
+        "solution": "Pour $n \\geqslant 1$, $\\dfrac{3n - 1}{n + 1} = \\dfrac{3 - \\frac{1}{n}}{1 + \\frac{1}{n}}$. Comme $\\dfrac{1}{n}$ tend vers $0$, le numérateur tend vers $3$ et le dénominateur vers $1$ : par quotient, la limite est $3$. De même, $\\dfrac{3n + 1}{n + 1} = \\dfrac{3 + \\frac{1}{n}}{1 + \\frac{1}{n}}$ tend vers $3$. La limite commune est $3$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire que la suite $(u_n)$ converge, et préciser sa limite.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Les deux suites qui encadrent $(u_n)$ ont la même limite : quel théorème s'applique ?",
+          "Vérifie les deux hypothèses du théorème des gendarmes : l'encadrement (question 1) et une même limite finie (question 2).",
+          "Rédige : « $(u_n)$ est encadrée par deux suites qui convergent vers… ; d'après le théorème des gendarmes, … »."
+        ],
+        "revoir": "l-limites-suites-031",
+        "solution": "D'après la question 1, pour tout entier naturel $n$, $\\dfrac{3n - 1}{n + 1} \\leqslant u_n \\leqslant \\dfrac{3n + 1}{n + 1}$, et, d'après la question 2, ces deux suites convergent vers $3$. La suite $(u_n)$ est encadrée par deux suites qui convergent vers la même limite $3$ : d'après le théorème des gendarmes, $(u_n)$ converge et $\\lim\\limits_{n \\to +\\infty} u_n = 3$.",
+        "erreurFrequente": "Dire que la suite n'a pas de limite parce que $(-1)^n$ n'en a pas : l'encadrement permet de conclure malgré tout."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-024",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-comparaison"],
+    "capacites": ["bo-m-suites-03", "bo-m-suites-12", "bo-m-suites-08", "bo-m-logique-14"],
+    "titre": "Minorer par récurrence",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 240,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = 3u_n - 2n + 3$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $u_3$.",
+        "reponse": { "type": "numerique", "valeur": 29, "tolerance": 0 },
+        "indices": [
+          "Applique trois fois la relation, en remplaçant $n$ par $0$, puis par $1$, puis par $2$.",
+          "$u_1 = 3 \\times 0 - 2 \\times 0 + 3 = 3$.",
+          "$u_2 = 3 \\times 3 - 2 \\times 1 + 3 = 10$ ; attention, le terme $-2n$ change à chaque étape."
+        ],
+        "revoir": "l-recurrence-suites-002",
+        "solution": "$u_1 = 3 \\times 0 - 2 \\times 0 + 3 = 3$, $u_2 = 3 \\times 3 - 2 \\times 1 + 3 = 10$ et $u_3 = 3 \\times 10 - 2 \\times 2 + 3 = 30 - 4 + 3 = 29$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n \\geqslant n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dans l'hérédité, pars de l'hypothèse $u_n \\geqslant n$ et reconstruis $u_{n+1}$.",
+          "Initialisation : $u_0 = 0 \\geqslant 0$. Hérédité : $3u_n \\geqslant 3n$, car $3 > 0$.",
+          "Donc $u_{n+1} = 3u_n - 2n + 3 \\geqslant 3n - 2n + 3 = n + 3$.",
+          "Compare $n + 3$ à $n + 1$, puis conclus."
+        ],
+        "revoir": "l-limites-suites-028",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n \\geqslant n$ ».\n\n**Initialisation** : $u_0 = 0 \\geqslant 0$ : $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $u_n \\geqslant n$. On multiplie par $3 > 0$ : $3u_n \\geqslant 3n$. Donc $u_{n+1} = 3u_n - 2n + 3 \\geqslant 3n - 2n + 3 = n + 3$. Comme $n + 3 \\geqslant n + 1$, on obtient $u_{n+1} \\geqslant n + 1$ : $P(n+1)$ est vraie.\n\n**Conclusion** : $P(0)$ est vraie et la propriété est héréditaire. D'après le principe de récurrence, pour tout entier naturel $n$, $u_n \\geqslant n$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire la limite de la suite $(u_n)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "La suite est minorée par une suite dont tu connais la limite.",
+          "$u_n \\geqslant n$ pour tout $n$, et $\\lim\\limits_{n \\to +\\infty} n = +\\infty$.",
+          "Cite le théorème de comparaison, en précisant que $(u_n)$ est **au-dessus**."
+        ],
+        "revoir": "l-limites-suites-027",
+        "solution": "Pour tout entier naturel $n$, $u_n \\geqslant n$ (question 2), et $\\lim\\limits_{n \\to +\\infty} n = +\\infty$. La suite $(u_n)$ est minorée par une suite qui tend vers $+\\infty$ : d'après le théorème de comparaison, $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-025",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-geometrique"],
+    "capacites": ["bo-m-suites-05", "bo-m-suites-09"],
+    "titre": "Passer par une suite auxiliaire",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 250,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 10$ et, pour tout entier naturel $n$, $u_{n+1} = 0{,}5u_n + 3$. Pour tout entier naturel $n$, on pose $v_n = u_n - 6$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer que la suite $(v_n)$ est géométrique ; préciser sa raison et son premier terme.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Exprime $v_{n+1}$ en fonction de $u_n$, puis en fonction de $v_n$.",
+          "$v_{n+1} = u_{n+1} - 6 = 0{,}5u_n + 3 - 6 = 0{,}5u_n - 3$.",
+          "Remplace $u_n$ par $v_n + 6$ et développe : les constantes doivent s'annuler."
+        ],
+        "revoir": "l-limites-suites-045",
+        "solution": "Pour tout entier naturel $n$ : $v_{n+1} = u_{n+1} - 6 = 0{,}5u_n + 3 - 6 = 0{,}5u_n - 3$. Comme $u_n = v_n + 6$ : $v_{n+1} = 0{,}5(v_n + 6) - 3 = 0{,}5v_n + 3 - 3 = 0{,}5v_n$. La suite $(v_n)$ est géométrique de raison $0{,}5$ et de premier terme $v_0 = u_0 - 6 = 4$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire que, pour tout entier naturel $n$, $u_n = 6 + 4 \\times 0{,}5^n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Utilise la forme explicite d'une suite géométrique, puis reviens à $u_n$.",
+          "Pour tout $n$, $v_n = v_0 \\times 0{,}5^n$, avec $v_0$ trouvé à la question 1.",
+          "Il reste à écrire $u_n = v_n + 6$."
+        ],
+        "revoir": "l-limites-suites-072",
+        "solution": "D'après la question 1, pour tout entier naturel $n$, $v_n = v_0 \\times 0{,}5^n = 4 \\times 0{,}5^n$. Donc $u_n = v_n + 6 = 6 + 4 \\times 0{,}5^n$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer la limite de la suite $(u_n)$.",
+        "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+        "indices": [
+          "Où se trouve $0{,}5$ par rapport à $-1$ et à $1$ ?",
+          "$-1 < 0{,}5 < 1$, donc $0{,}5^n$ tend vers $0$.",
+          "Par produit, $4 \\times 0{,}5^n$ tend vers $0$ ; conclus par somme."
+        ],
+        "revoir": "l-limites-suites-044",
+        "solution": "$-1 < 0{,}5 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}5^n = 0$. Par produit, $4 \\times 0{,}5^n$ tend vers $0$ ; par somme, $\\lim\\limits_{n \\to +\\infty} u_n = 6$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Vrai ou faux ? Tous les termes de la suite $(u_n)$ sont strictement supérieurs à sa limite.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Pour tout $n$, $u_n - 6 = 4 \\times 0{,}5^n > 0$."
+        },
+        "indices": [
+          "Étudie le signe de la différence entre $u_n$ et la limite.",
+          "D'après la question 2, cette différence vaut $4 \\times 0{,}5^n$.",
+          "Une puissance d'un nombre strictement positif est strictement positive : conclus."
+        ],
+        "revoir": "l-limites-suites-045",
+        "solution": "Pour tout entier naturel $n$, $u_n - 6 = 4 \\times 0{,}5^n$. Or $0{,}5 > 0$, donc $0{,}5^n > 0$, et $u_n - 6 > 0$. Tous les termes sont strictement supérieurs à la limite $6$ : la suite s'en approche par le haut. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-026",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-geometrique", "n-limites-suites-operations"],
+    "capacites": ["bo-m-suites-05", "bo-m-suites-04"],
+    "titre": "Quotients de puissances",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 260,
+    "preambule": "Pour tout entier naturel $n$, on pose $a_n = \\dfrac{2^n + 3^n}{3^n - 2}$, $b_n = \\dfrac{4^n - 5}{2^n + 1}$ et $c_n = \\dfrac{3 \\times 2^n - 5^n}{5^n + 1}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer la limite de la suite $(a_n)$.",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "Forme « $\\dfrac{\\infty}{\\infty}$ » : mets en facteur la puissance qui grandit le plus vite, en haut et en bas.",
+          "Avec $3^n$ en facteur : $a_n = \\dfrac{3^n\\left(\\left(\\frac{2}{3}\\right)^n + 1\\right)}{3^n\\left(1 - \\frac{2}{3^n}\\right)}$, car $\\dfrac{2^n}{3^n} = \\left(\\dfrac{2}{3}\\right)^n$.",
+          "Simplifie par $3^n$, puis utilise $\\lim\\limits_{n \\to +\\infty} \\left(\\dfrac{2}{3}\\right)^n = 0$ et $\\lim\\limits_{n \\to +\\infty} \\dfrac{2}{3^n} = 0$."
+        ],
+        "revoir": "l-limites-suites-041",
+        "solution": "Comme $2 > 1$ et $3 > 1$, le numérateur et le dénominateur tendent vers $+\\infty$ : forme « $\\dfrac{\\infty}{\\infty}$ ». On met $3^n$ en facteur et on simplifie : $a_n = \\dfrac{\\left(\\frac{2}{3}\\right)^n + 1}{1 - \\frac{2}{3^n}}$. Comme $-1 < \\dfrac{2}{3} < 1$, $\\left(\\dfrac{2}{3}\\right)^n$ tend vers $0$ ; comme $3^n$ tend vers $+\\infty$, $\\dfrac{2}{3^n}$ tend vers $0$. Par quotient, $\\lim\\limits_{n \\to +\\infty} a_n = \\dfrac{0 + 1}{1 - 0} = 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer la limite de la suite $(b_n)$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$+\\infty$", "$1$", "$0$", "$-5$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "« $\\dfrac{\\infty}{\\infty}$ » ne vaut pas $1$ : $4^n$ grandit beaucoup plus vite que $2^n$.",
+            "C'est le numérateur qui grandit le plus vite : $\\dfrac{4^n}{2^n} = 2^n$.",
+            "$-5$ est le quotient des termes constants, qui deviennent négligeables devant les puissances."
+          ]
+        },
+        "indices": [
+          "Remarque que $4^n = \\left(2^n\\right)^2$ : mets $4^n$ en facteur en haut et $2^n$ en bas.",
+          "$b_n = \\dfrac{4^n\\left(1 - \\frac{5}{4^n}\\right)}{2^n\\left(1 + \\frac{1}{2^n}\\right)} = 2^n \\times \\dfrac{1 - \\frac{5}{4^n}}{1 + \\frac{1}{2^n}}$, car $\\dfrac{4^n}{2^n} = 2^n$.",
+          "Cherche la limite de $2^n$ et celle du quotient, puis lis le tableau du produit."
+        ],
+        "revoir": "l-limites-suites-041",
+        "solution": "Forme « $\\dfrac{\\infty}{\\infty}$ ». On met $4^n$ en facteur en haut et $2^n$ en bas : $b_n = \\dfrac{4^n\\left(1 - \\frac{5}{4^n}\\right)}{2^n\\left(1 + \\frac{1}{2^n}\\right)} = 2^n \\times \\dfrac{1 - \\frac{5}{4^n}}{1 + \\frac{1}{2^n}}$, car $\\dfrac{4^n}{2^n} = \\left(\\dfrac{4}{2}\\right)^n = 2^n$. Le quotient tend vers $\\dfrac{1 - 0}{1 + 0} = 1$, et $2^n$ tend vers $+\\infty$ car $2 > 1$. Par produit, $\\lim\\limits_{n \\to +\\infty} b_n = +\\infty$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer la limite de la suite $(c_n)$.",
+        "reponse": { "type": "numerique", "valeur": -1, "tolerance": 0 },
+        "indices": [
+          "Repère la puissance qui grandit le plus vite : c'est $5^n$.",
+          "$c_n = \\dfrac{5^n\\left(3 \\times \\left(\\frac{2}{5}\\right)^n - 1\\right)}{5^n\\left(1 + \\frac{1}{5^n}\\right)}$, car $\\dfrac{2^n}{5^n} = \\left(\\dfrac{2}{5}\\right)^n$.",
+          "Simplifie par $5^n$ ; $\\left(\\dfrac{2}{5}\\right)^n$ et $\\dfrac{1}{5^n}$ tendent vers $0$."
+        ],
+        "revoir": "l-limites-suites-044",
+        "solution": "Le numérateur est de la forme « $+\\infty - \\infty$ ». On met $5^n$ en facteur en haut et en bas, puis on simplifie : $c_n = \\dfrac{3 \\times \\left(\\frac{2}{5}\\right)^n - 1}{1 + \\frac{1}{5^n}}$. Comme $-1 < \\dfrac{2}{5} < 1$, $\\left(\\dfrac{2}{5}\\right)^n$ tend vers $0$, et $\\dfrac{1}{5^n}$ aussi. Par quotient, $\\lim\\limits_{n \\to +\\infty} c_n = \\dfrac{0 - 1}{1 + 0} = -1$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-027",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-geometrique"],
+    "capacites": ["bo-m-suites-05", "bo-m-suites-09"],
+    "titre": "Train ou voiture : la probabilité à long terme",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 270,
+    "preambule": "Chaque jour, une salariée se rend au travail en train ou en voiture. Si elle prend le train un jour, elle le reprend le lendemain avec la probabilité $0{,}8$. Si elle prend la voiture un jour, elle prend le train le lendemain avec la probabilité $0{,}3$. Le jour $0$, elle prend le train avec la probabilité $0{,}2$. Pour tout entier naturel $n$, on note $T_n$ l'événement « elle prend le train le jour $n$ » et $p_n = P(T_n)$ ; ainsi $p_0 = 0{,}2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que, pour tout entier naturel $n$, $p_{n+1} = 0{,}5p_n + 0{,}3$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Fais un arbre : au premier niveau, le moyen de transport du jour $n$ ; au second, celui du jour $n + 1$.",
+          "Formule des probabilités totales : $p_{n+1} = 0{,}8p_n + 0{,}3(1 - p_n)$.",
+          "Développe, puis regroupe les termes en $p_n$."
+        ],
+        "revoir": "l-recurrence-suites-032",
+        "solution": "D'après l'énoncé, $P_{T_n}(T_{n+1}) = 0{,}8$ et $P_{\\overline{T_n}}(T_{n+1}) = 0{,}3$. Les événements $T_n$ et $\\overline{T_n}$ forment une partition de l'univers ; d'après la formule des probabilités totales :\n\n$$p_{n+1} = P(T_n) \\times P_{T_n}(T_{n+1}) + P\\left(\\overline{T_n}\\right) \\times P_{\\overline{T_n}}(T_{n+1}) = 0{,}8p_n + 0{,}3(1 - p_n).$$\n\nDonc $p_{n+1} = 0{,}8p_n + 0{,}3 - 0{,}3p_n = 0{,}5p_n + 0{,}3$ pour tout entier naturel $n$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $p_1$.",
+        "reponse": { "type": "numerique", "valeur": 0.4, "tolerance": 0 },
+        "indices": [
+          "Utilise la relation de la question 1 avec $n = 0$.",
+          "$p_1 = 0{,}5 \\times 0{,}2 + 0{,}3$.",
+          "Le produit d'abord : $0{,}5 \\times 0{,}2 = 0{,}1$, car multiplier par $0{,}5$ revient à prendre la moitié. Il ne reste qu'à ajouter $0{,}3$."
+        ],
+        "revoir": "l-recurrence-suites-034",
+        "solution": "$p_1 = 0{,}5 \\times 0{,}2 + 0{,}3 = 0{,}1 + 0{,}3 = 0{,}4$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On pose, pour tout entier naturel $n$, $v_n = p_n - 0{,}6$. Démontrer que la suite $(v_n)$ est géométrique, puis exprimer $p_n$ en fonction de $n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Exprime $v_{n+1}$ en fonction de $p_n$, puis en fonction de $v_n$.",
+          "$v_{n+1} = 0{,}5p_n + 0{,}3 - 0{,}6 = 0{,}5p_n - 0{,}3$ ; remplace $p_n$ par $v_n + 0{,}6$.",
+          "Tu dois obtenir $v_{n+1} = 0{,}5v_n$. Calcule $v_0$, puis $v_n$, puis reviens à $p_n$."
+        ],
+        "revoir": "l-limites-suites-072",
+        "solution": "Pour tout entier naturel $n$ : $v_{n+1} = p_{n+1} - 0{,}6 = 0{,}5p_n + 0{,}3 - 0{,}6 = 0{,}5p_n - 0{,}3$. Comme $p_n = v_n + 0{,}6$ : $v_{n+1} = 0{,}5(v_n + 0{,}6) - 0{,}3 = 0{,}5v_n + 0{,}3 - 0{,}3 = 0{,}5v_n$. La suite $(v_n)$ est géométrique de raison $0{,}5$ et de premier terme $v_0 = 0{,}2 - 0{,}6 = -0{,}4$.\n\nDonc $v_n = -0{,}4 \\times 0{,}5^n$, puis $p_n = v_n + 0{,}6 = 0{,}6 - 0{,}4 \\times 0{,}5^n$ pour tout entier naturel $n$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Déterminer la limite de la suite $(p_n)$, puis l'interpréter.",
+        "reponse": { "type": "numerique", "valeur": 0.6, "tolerance": 0 },
+        "indices": [
+          "Repère la puissance $q^n$ dans l'expression de $p_n$, et sa limite.",
+          "$-1 < 0{,}5 < 1$, donc $0{,}5^n$ tend vers $0$.",
+          "Par produit puis somme, conclus. L'interprétation porte sur la probabilité de prendre le train un jour lointain."
+        ],
+        "revoir": "l-limites-suites-044",
+        "solution": "$-1 < 0{,}5 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}5^n = 0$. Par produit, $0{,}4 \\times 0{,}5^n$ tend vers $0$ ; par somme, $\\lim\\limits_{n \\to +\\infty} p_n = 0{,}6$.\n\n**Interprétation** : après un grand nombre de jours, la probabilité que la salariée prenne le train un jour donné est proche de $0{,}6$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-028",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-seuils", "n-limites-suites-geometrique"],
+    "capacites": ["bo-m-suites-14", "bo-m-suites-05"],
+    "titre": "Écrire un programme de seuil",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 280,
+    "preambule": "Une ville compte $50\\,000$ habitants en 2025. Chaque année, $4\\,\\%$ des habitants quittent la ville, puis $1\\,200$ personnes viennent s'y installer. On note $u_n$ le nombre d'habitants en l'année $2025 + n$. Ainsi $u_0 = 50\\,000$ et, pour tout entier naturel $n$, $u_{n+1} = 0{,}96u_n + 1\\,200$. On admet que, pour tout entier naturel $n$, $u_n = 30\\,000 + 20\\,000 \\times 0{,}96^n$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer la limite de la suite $(u_n)$, puis justifier qu'à partir d'une certaine année, la ville comptera moins de $40\\,000$ habitants.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Cherche la limite de $0{,}96^n$, puis celle de $u_n$.",
+          "$-1 < 0{,}96 < 1$, donc $0{,}96^n$ tend vers $0$ et $u_n$ tend vers $30\\,000$.",
+          "Utilise la définition de la convergence avec un intervalle ouvert qui contient $30\\,000$ et dont la borne de droite est $40\\,000$."
+        ],
+        "revoir": "l-limites-suites-065",
+        "solution": "$-1 < 0{,}96 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}96^n = 0$. Par produit puis somme, $\\lim\\limits_{n \\to +\\infty} u_n = 30\\,000$.\n\nL'intervalle ouvert $]20\\,000\\,;\\,40\\,000[$ contient $30\\,000$. Par définition de la convergence, il contient tous les termes $u_n$ à partir d'un certain rang : à partir de ce rang, $u_n < 40\\,000$. La ville comptera donc moins de $40\\,000$ habitants à partir d'une certaine année."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On complète la fonction ci-dessous pour qu'elle renvoie le rang $n$ de la première année où la ville compte moins de $40\\,000$ habitants. Quelle condition faut-il écrire à la place des pointillés ?",
+        "code": {
+          "langage": "python",
+          "source": "def seuil():\n    n = 0\n    u = 50000\n    while ..........:\n        u = 0.96 * u + 1200\n        n = n + 1\n    return n"
+        },
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$u \\geqslant 40\\,000$",
+            "$u < 40\\,000$",
+            "$u > 30\\,000$",
+            "$u \\leqslant 40\\,000$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est le but, pas la condition : comme $u_0 = 50\\,000$, la boucle ne tournerait pas, et la fonction renverrait $0$.",
+            "Tous les termes sont strictement supérieurs à $30\\,000$ : cette condition resterait toujours vraie, et la boucle ne s'arrêterait jamais.",
+            "Avec $u_0 = 50\\,000$, cette condition est fausse dès le départ : la fonction renverrait $0$."
+          ]
+        },
+        "indices": [
+          "La condition du while est le contraire du but.",
+          "Le but est « $u_n < 40\\,000$ ». La boucle doit tourner tant que ce but n'est pas atteint.",
+          "Au départ, $u_0 = 50\\,000$ : la condition doit être vraie pour que la boucle tourne. Élimine les propositions fausses pour $u = 50\\,000$, puis celle qui ne devient jamais fausse."
+        ],
+        "revoir": "l-limites-suites-064",
+        "solution": "La boucle doit tourner tant que le but « $u_n < 40\\,000$ » n'est pas atteint, c'est-à-dire tant que $u \\geqslant 40\\,000$. Elle s'arrête alors au premier rang où $u_n < 40\\,000$, et la fonction renvoie ce rang. La condition à écrire est $u \\geqslant 40\\,000$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En quelle année la ville comptera-t-elle, pour la première fois, moins de $40\\,000$ habitants ?",
+        "reponse": { "type": "numerique", "valeur": 2042, "tolerance": 0 },
+        "indices": [
+          "Cherche le premier rang $n$ tel que $u_n < 40\\,000$, en t'aidant de la calculatrice.",
+          "$u_n < 40\\,000$ équivaut à $20\\,000 \\times 0{,}96^n < 10\\,000$, soit $0{,}96^n < 0{,}5$.",
+          "À la calculatrice : $0{,}96^{16} \\approx 0{,}520$ et $0{,}96^{17} \\approx 0{,}4996$. Ajoute ensuite le rang trouvé à $2025$."
+        ],
+        "revoir": "l-limites-suites-065",
+        "solution": "$u_n < 40\\,000$ équivaut à $20\\,000 \\times 0{,}96^n < 10\\,000$, c'est-à-dire $0{,}96^n < 0{,}5$. À la calculatrice, $0{,}96^{16} \\approx 0{,}520$, donc $u_{16} \\approx 40\\,408$, et $0{,}96^{17} \\approx 0{,}4996$, donc $u_{17} \\approx 39\\,992$. Le premier rang qui convient est $17$ : c'est la valeur que renvoie la fonction. La ville comptera pour la première fois moins de $40\\,000$ habitants en $2025 + 17 = 2042$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-029",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-seuils"],
+    "capacites": ["bo-m-suites-15"],
+    "titre": "Approcher le nombre d'or",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 290,
+    "preambule": "Le nombre d'or est $\\varphi = \\dfrac{1 + \\sqrt{5}}{2}$. Pour en obtenir des valeurs approchées, on adapte la fonction approx_racine2 du cours.",
+    "code": {
+      "langage": "python",
+      "source": "def approx_or(p):\n    pas = 10 ** (-p)\n    x = 1\n    while (x + pas) ** 2 <= (x + pas) + 1:\n        x = x + pas\n    return round(x, p)"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Vérifier que $\\varphi^2 = \\varphi + 1$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Développe $\\left(\\dfrac{1 + \\sqrt{5}}{2}\\right)^2$ avec $(a + b)^2 = a^2 + 2ab + b^2$.",
+          "$\\varphi^2 = \\dfrac{1 + 2\\sqrt{5} + 5}{4} = \\dfrac{6 + 2\\sqrt{5}}{4}$.",
+          "Simplifie par $2$, puis compare avec $\\varphi + 1 = \\dfrac{1 + \\sqrt{5}}{2} + \\dfrac{2}{2}$."
+        ],
+        "revoir": "l-limites-suites-067",
+        "solution": "$\\varphi^2 = \\dfrac{\\left(1 + \\sqrt{5}\\right)^2}{4} = \\dfrac{1 + 2\\sqrt{5} + 5}{4} = \\dfrac{6 + 2\\sqrt{5}}{4} = \\dfrac{3 + \\sqrt{5}}{2}$. Et $\\varphi + 1 = \\dfrac{1 + \\sqrt{5}}{2} + \\dfrac{2}{2} = \\dfrac{3 + \\sqrt{5}}{2}$. Donc $\\varphi^2 = \\varphi + 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On admet que, pour tout réel $x \\geqslant 1$, l'inégalité $x^2 \\leqslant x + 1$ équivaut à $x \\leqslant \\varphi$. Que renvoie l'appel approx_or(p), pour un entier naturel $p$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "La valeur approchée de $\\varphi$ à $10^{-p}$ près par défaut.",
+            "La valeur approchée de $\\varphi$ à $10^{-p}$ près par excès.",
+            "Une valeur approchée de $\\varphi^2$ à $10^{-p}$ près.",
+            "Le nombre de tours effectués par la boucle."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le nombre renvoyé x vérifie $x^2 \\leqslant x + 1$, donc $x \\leqslant \\varphi$ : il est en dessous de $\\varphi$.",
+            "La boucle compare $x^2$ à $x + 1$ pour savoir si x a dépassé $\\varphi$ : c'est $\\varphi$ qu'elle approche.",
+            "La fonction renvoie x, arrondi à $p$ décimales, et non un compteur de tours."
+          ]
+        },
+        "indices": [
+          "Compare avec la fonction approx_racine2 : quelles inégalités x vérifie-t-il à la sortie de la boucle ?",
+          "À la sortie : $x^2 \\leqslant x + 1$, et le nombre suivant $y = x + 10^{-p}$ vérifie $y^2 > y + 1$.",
+          "Traduis ces deux inégalités avec l'équivalence admise : où se trouve $\\varphi$ par rapport à $x$ et à $x + 10^{-p}$ ?"
+        ],
+        "revoir": "l-limites-suites-067",
+        "solution": "Au départ, $x = 1$ et $1^2 \\leqslant 1 + 1$. La boucle avance x de $10^{-p}$ tant que le nombre suivant vérifie encore l'inégalité. À la sortie : $x^2 \\leqslant x + 1$ et $\\left(x + 10^{-p}\\right)^2 > \\left(x + 10^{-p}\\right) + 1$. D'après l'équivalence admise, $x \\leqslant \\varphi < x + 10^{-p}$. La fonction renvoie la valeur approchée de $\\varphi$ à $10^{-p}$ près par défaut."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Que renvoie l'appel approx_or(1) ?",
+        "reponse": { "type": "numerique", "valeur": 1.6, "tolerance": 0 },
+        "indices": [
+          "Avec $p = 1$, x avance de $0{,}1$ en $0{,}1$ à partir de $1$, tant que le nombre suivant $y$ vérifie $y^2 \\leqslant y + 1$.",
+          "Teste $y = 1{,}1$ : $1{,}21 \\leqslant 2{,}1$, donc x avance. Continue avec $1{,}2$, $1{,}3$, et ainsi de suite.",
+          "Repère le premier nombre $y$ pour lequel $y^2 > y + 1$ : par exemple, $1{,}7^2 = 2{,}89 > 2{,}7$. La boucle s'arrête sur le nombre qui le précède, si celui-ci convient."
+        ],
+        "revoir": "l-limites-suites-067",
+        "solution": "On a $1{,}6^2 = 2{,}56 \\leqslant 2{,}6$ : le nombre $1{,}6$ convient. Mais $1{,}7^2 = 2{,}89 > 2{,}7$ : le nombre $1{,}7$ ne convient pas, et la boucle s'arrête à $x = 1{,}6$. L'appel approx_or(1) renvoie $1{,}6$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Que renvoie l'appel approx_or(2) ?",
+        "reponse": { "type": "numerique", "valeur": 1.61, "tolerance": 0 },
+        "indices": [
+          "Avec $p = 2$, le pas vaut $0{,}01$ ; d'après la question 3, le résultat est compris entre $1{,}6$ et $1{,}7$.",
+          "Pour un nombre $y$ à deux décimales, compare $y^2$ et $y + 1$. Essaie $y = 1{,}62$.",
+          "$1{,}62^2 = 2{,}624\\,4$ et $1{,}62 + 1 = 2{,}62$ : le nombre $1{,}62$ ne convient pas. Vérifie que le nombre juste avant convient."
+        ],
+        "revoir": "l-limites-suites-067",
+        "solution": "$1{,}61^2 = 2{,}592\\,1 \\leqslant 2{,}61$, mais $1{,}62^2 = 2{,}624\\,4 > 2{,}62$. La boucle s'arrête à $x = 1{,}61$ : l'appel approx_or(2) renvoie $1{,}61$. En effet, $\\varphi \\approx 1{,}618$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-030",
+    "chapitre": "limites-suites",
+    "niveau": 2,
+    "notions": ["n-limites-suites-seuils", "n-limites-suites-geometrique"],
+    "capacites": ["bo-m-suites-14", "bo-m-suites-05"],
+    "titre": "Une boucle qui s'arrête, ou pas",
+    "duree": 12,
+    "calculatrice": true,
+    "ordre": 300,
+    "preambule": "Soit $(u_n)$ la suite définie, pour tout entier naturel $n$, par $u_n = 3 - 2 \\times 0{,}8^n$. On considère la fonction Python ci-dessous, où s est un nombre réel.",
+    "code": {
+      "langage": "python",
+      "source": "def seuil(s):\n    n = 0\n    u = 1\n    while u <= s:\n        n = n + 1\n        u = 3 - 2 * 0.8 ** n\n    return n"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer la limite de la suite $(u_n)$, et montrer que, pour tout entier naturel $n$, $u_n < 3$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Utilise la limite de $0{,}8^n$, puis les opérations.",
+          "$-1 < 0{,}8 < 1$, donc $0{,}8^n$ tend vers $0$.",
+          "Pour l'inégalité, étudie le signe de $3 - u_n = 2 \\times 0{,}8^n$."
+        ],
+        "revoir": "l-limites-suites-044",
+        "solution": "$-1 < 0{,}8 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}8^n = 0$. Par produit puis somme, $\\lim\\limits_{n \\to +\\infty} u_n = 3$. De plus, pour tout entier naturel $n$, $3 - u_n = 2 \\times 0{,}8^n > 0$, car $0{,}8 > 0$ : donc $u_n < 3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour quelles valeurs du réel s l'appel seuil(s) renvoie-t-il un résultat ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Pour tout réel $s < 3$.",
+            "Pour tout réel $s$.",
+            "Pour tout réel $s \\leqslant 3$.",
+            "Seulement pour $s < 1$."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Si $s \\geqslant 3$, tous les termes vérifient $u_n < 3 \\leqslant s$ : la condition du while reste toujours vraie.",
+            "Pour $s = 3$, la condition $u \\leqslant 3$ reste toujours vraie, car $u_n < 3$ pour tout $n$ : la boucle ne s'arrête jamais.",
+            "Pour $1 \\leqslant s < 3$, la limite $3$ garantit qu'un terme finit par dépasser s : la boucle s'arrête aussi."
+          ]
+        },
+        "indices": [
+          "La boucle s'arrête dès qu'un terme dépasse strictement s. Utilise la limite de la suite et l'inégalité $u_n < 3$ de la question 1.",
+          "Si $s < 3$, l'intervalle ouvert $]s\\,;\\,4[$ contient $3$ : que dit la définition de la convergence ?",
+          "Si $s \\geqslant 3$, compare chaque terme $u_n$ à s : la condition du while devient-elle fausse un jour ?"
+        ],
+        "revoir": "l-limites-suites-069",
+        "solution": "Si $s < 3$ : l'intervalle ouvert $]s\\,;\\,4[$ contient la limite $3$ ; par définition de la convergence, il contient tous les termes à partir d'un certain rang. Un terme finit donc par vérifier $u_n > s$ : la condition « $u \\leqslant s$ » devient fausse, et la boucle s'arrête.\n\nSi $s \\geqslant 3$ : pour tout $n$, $u_n < 3 \\leqslant s$, donc la condition « $u \\leqslant s$ » reste toujours vraie, et la boucle ne s'arrête jamais.\n\nL'appel seuil(s) renvoie un résultat pour tout réel $s < 3$, et seulement dans ce cas."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Que renvoie l'appel seuil(2.5) ?",
+        "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0 },
+        "indices": [
+          "Cherche le premier rang $n$ tel que $u_n > 2{,}5$.",
+          "$u_n > 2{,}5$ équivaut à $2 \\times 0{,}8^n < 0{,}5$, soit $0{,}8^n < 0{,}25$.",
+          "Calcule les puissances successives de $0{,}8$ : $0{,}64$ ; $0{,}512$ ; $0{,}409\\,6$… et repère la première qui est inférieure à $0{,}25$."
+        ],
+        "revoir": "l-limites-suites-065",
+        "solution": "La fonction renvoie le premier rang $n$ tel que $u_n > 2{,}5$, c'est-à-dire $2 \\times 0{,}8^n < 0{,}5$, ou encore $0{,}8^n < 0{,}25$. Or $0{,}8^6 = 0{,}262\\,144 > 0{,}25$ et $0{,}8^7 = 0{,}209\\,715\\,2 < 0{,}25$. L'appel seuil(2.5) renvoie $7$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-031",
+    "chapitre": "limites-suites",
+    "niveau": 3,
+    "notions": ["n-limites-suites-monotone-bornee", "n-limites-suites-comparaison"],
+    "capacites": ["bo-m-suites-07", "bo-m-suites-06", "bo-m-suites-03"],
+    "titre": "Une somme qui converge, et un encadrement de sa limite",
+    "duree": 30,
+    "calculatrice": false,
+    "ordre": 310,
+    "preambule": "Pour tout entier naturel $n$, on pose $T_n = \\dfrac{1}{2^0 + 1} + \\dfrac{1}{2^1 + 1} + \\dots + \\dfrac{1}{2^n + 1}$. Ainsi $T_0 = \\dfrac{1}{2}$ et, pour tout entier naturel $n$, $T_{n+1} = T_n + \\dfrac{1}{2^{n+1} + 1}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $T_2$, sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "31/30", "tolerance": 0 },
+        "indices": [
+          "Additionne les trois premiers termes, pour $k = 0$, $k = 1$ et $k = 2$.",
+          "$T_2 = \\dfrac{1}{2} + \\dfrac{1}{3} + \\dfrac{1}{5}$.",
+          "Mets ces trois fractions au même dénominateur $30$."
+        ],
+        "revoir": "l-limites-suites-057",
+        "solution": "$T_2 = \\dfrac{1}{2} + \\dfrac{1}{3} + \\dfrac{1}{5} = \\dfrac{15}{30} + \\dfrac{10}{30} + \\dfrac{6}{30} = \\dfrac{31}{30}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étudier le sens de variation de la suite $(T_n)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Calcule $T_{n+1} - T_n$.",
+          "$T_{n+1} - T_n = \\dfrac{1}{2^{n+1} + 1}$.",
+          "Un quotient de deux nombres strictement positifs est strictement positif : conclus."
+        ],
+        "revoir": "l-limites-suites-057",
+        "solution": "Pour tout entier naturel $n$, $T_{n+1} - T_n = \\dfrac{1}{2^{n+1} + 1}$, quotient de deux nombres strictement positifs : $T_{n+1} - T_n > 0$. La suite $(T_n)$ est croissante."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Montrer que, pour tout entier naturel $k$, $\\dfrac{1}{2^k + 1} \\leqslant \\left(\\dfrac{1}{2}\\right)^k$. En déduire que, pour tout entier naturel $n$, $T_n \\leqslant 2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Compare les dénominateurs $2^k + 1$ et $2^k$ ; pour la somme, utilise la formule de somme des puissances d'un réel $q \\neq 1$.",
+          "$2^k + 1 > 2^k > 0$, et de deux nombres strictement positifs, le plus grand a le plus petit inverse : $\\dfrac{1}{2^k + 1} < \\dfrac{1}{2^k} = \\left(\\dfrac{1}{2}\\right)^k$.",
+          "En additionnant ces inégalités pour $k$ allant de $0$ à $n$ : $T_n \\leqslant 1 + \\dfrac{1}{2} + \\dots + \\left(\\dfrac{1}{2}\\right)^n = \\dfrac{1 - \\left(\\frac{1}{2}\\right)^{n+1}}{1 - \\frac{1}{2}}$.",
+          "Ce quotient vaut $2\\left(1 - \\left(\\dfrac{1}{2}\\right)^{n+1}\\right)$ ; compare-le à $2$."
+        ],
+        "revoir": "l-limites-suites-039",
+        "solution": "Pour tout entier naturel $k$, $2^k + 1 > 2^k > 0$. De deux nombres strictement positifs, le plus grand a le plus petit inverse : $\\dfrac{1}{2^k + 1} < \\dfrac{1}{2^k} = \\left(\\dfrac{1}{2}\\right)^k$.\n\nEn additionnant ces inégalités pour $k$ allant de $0$ à $n$ :\n\n$$T_n \\leqslant 1 + \\dfrac{1}{2} + \\dots + \\left(\\dfrac{1}{2}\\right)^n = \\dfrac{1 - \\left(\\frac{1}{2}\\right)^{n+1}}{1 - \\frac{1}{2}} = 2\\left(1 - \\left(\\dfrac{1}{2}\\right)^{n+1}\\right).$$\n\nComme $\\left(\\dfrac{1}{2}\\right)^{n+1} > 0$, on obtient $T_n \\leqslant 2$ pour tout entier naturel $n$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire que la suite $(T_n)$ converge vers un réel $\\ell$, puis que $\\dfrac{31}{30} \\leqslant \\ell \\leqslant 2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Rassemble les questions 2 et 3, puis cite le théorème.",
+          "$(T_n)$ est croissante et majorée par $2$ : elle converge vers un réel $\\ell$.",
+          "Pour l'encadrement : la suite étant croissante, $T_n \\geqslant T_2$ pour tout $n \\geqslant 2$ ; passe à la limite dans $T_2 \\leqslant T_n \\leqslant 2$."
+        ],
+        "revoir": "l-limites-suites-052",
+        "solution": "La suite $(T_n)$ est croissante (question 2) et majorée par $2$ (question 3) : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$.\n\nComme elle est croissante, pour tout entier $n \\geqslant 2$, $T_2 \\leqslant T_n \\leqslant 2$. Par passage à la limite dans ces inégalités larges, $\\dfrac{31}{30} \\leqslant \\ell \\leqslant 2$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Améliorer la majoration : en gardant le premier terme $\\dfrac{1}{2}$ tel quel et en majorant seulement les suivants, montrer que, pour tout entier naturel $n$, $T_n \\leqslant \\dfrac{3}{2}$. Que peut-on en déduire pour $\\ell$ ?",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Garde le premier terme $\\dfrac{1}{2}$ et majore seulement les termes d'indice $k \\geqslant 1$, comme à la question 3.",
+          "Pour $n \\geqslant 1$ : $T_n \\leqslant \\dfrac{1}{2} + \\left(\\dfrac{1}{2} + \\left(\\dfrac{1}{2}\\right)^2 + \\dots + \\left(\\dfrac{1}{2}\\right)^n\\right)$.",
+          "La parenthèse est la somme $1 + \\dfrac{1}{2} + \\dots + \\left(\\dfrac{1}{2}\\right)^n$ privée de son premier terme $1$ ; cette somme est inférieure ou égale à $2$ d'après la question 3.",
+          "Conclus pour $T_n$, sans oublier le cas $n = 0$, puis passe à la limite."
+        ],
+        "revoir": "l-limites-suites-057",
+        "solution": "Pour $n = 0$, $T_0 = \\dfrac{1}{2} \\leqslant \\dfrac{3}{2}$. Pour $n \\geqslant 1$, on majore chaque terme d'indice $k \\geqslant 1$ comme à la question 3 :\n\n$$T_n \\leqslant \\dfrac{1}{2} + \\left(\\dfrac{1}{2} + \\left(\\dfrac{1}{2}\\right)^2 + \\dots + \\left(\\dfrac{1}{2}\\right)^n\\right).$$\n\nLa parenthèse vaut $S_n - 1$, où $S_n = 1 + \\dfrac{1}{2} + \\dots + \\left(\\dfrac{1}{2}\\right)^n \\leqslant 2$ (question 3). Donc $T_n \\leqslant \\dfrac{1}{2} + 2 - 1 = \\dfrac{3}{2}$.\n\nPar passage à la limite, $\\ell \\leqslant \\dfrac{3}{2}$ : finalement, $\\dfrac{31}{30} \\leqslant \\ell \\leqslant \\dfrac{3}{2}$. À titre d'information, un calcul sur ordinateur donne $\\ell \\approx 1{,}264\\,5$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-032",
+    "chapitre": "limites-suites",
+    "niveau": 3,
+    "notions": ["n-limites-suites-seuils", "n-limites-suites-comparaison", "n-limites-suites-geometrique"],
+    "capacites": ["bo-m-suites-18", "bo-m-suites-15", "bo-m-suites-14", "bo-m-suites-03", "bo-m-suites-05", "bo-m-suites-08", "bo-m-logique-14"],
+    "titre": "La méthode de Héron pour approcher la racine carrée de 2",
+    "duree": 30,
+    "calculatrice": false,
+    "ordre": 320,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 2$ et, pour tout entier naturel $n$, $u_{n+1} = \\dfrac{1}{2}\\left(u_n + \\dfrac{2}{u_n}\\right)$. On admet que, pour tout entier naturel $n$, $u_n > 0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $u_2$, sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "17/12", "tolerance": 0 },
+        "indices": [
+          "Calcule d'abord $u_1$, puis $u_2$, avec la relation de récurrence.",
+          "$u_1 = \\dfrac{1}{2}\\left(2 + \\dfrac{2}{2}\\right) = \\dfrac{3}{2}$.",
+          "$\\dfrac{2}{u_1} = \\dfrac{4}{3}$ ; additionne $\\dfrac{3}{2} + \\dfrac{4}{3}$ au même dénominateur, puis divise par $2$."
+        ],
+        "revoir": "l-recurrence-suites-002",
+        "solution": "$u_1 = \\dfrac{1}{2}\\left(2 + \\dfrac{2}{2}\\right) = \\dfrac{3}{2}$. Puis $\\dfrac{2}{u_1} = \\dfrac{4}{3}$, et $u_2 = \\dfrac{1}{2}\\left(\\dfrac{3}{2} + \\dfrac{4}{3}\\right) = \\dfrac{1}{2} \\times \\dfrac{9 + 8}{6} = \\dfrac{17}{12}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout entier naturel $n$, $u_{n+1}^2 - 2 = \\dfrac{\\left(u_n^2 - 2\\right)^2}{4u_n^2}$. En déduire que, pour tout entier naturel $n$, $u_n \\geqslant \\sqrt{2}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Écris $u_{n+1}$ comme un seul quotient, élève-le au carré, puis retranche $2$ au même dénominateur.",
+          "$u_{n+1} = \\dfrac{u_n^2 + 2}{2u_n}$, donc $u_{n+1}^2 = \\dfrac{\\left(u_n^2 + 2\\right)^2}{4u_n^2}$.",
+          "Au numérateur de $u_{n+1}^2 - 2$ : $\\left(u_n^2 + 2\\right)^2 - 8u_n^2 = u_n^4 - 4u_n^2 + 4$ ; reconnais une identité remarquable.",
+          "Un carré divisé par un nombre strictement positif est positif ou nul : $u_{n+1}^2 \\geqslant 2$ pour tout $n$, et $u_0^2 = 4$. Comme $u_n > 0$, la croissance de la fonction racine carrée permet de conclure."
+        ],
+        "revoir": "l-limites-suites-070",
+        "solution": "Pour tout entier naturel $n$, $u_{n+1} = \\dfrac{u_n^2 + 2}{2u_n}$, donc :\n\n$$u_{n+1}^2 - 2 = \\dfrac{\\left(u_n^2 + 2\\right)^2 - 8u_n^2}{4u_n^2} = \\dfrac{u_n^4 - 4u_n^2 + 4}{4u_n^2} = \\dfrac{\\left(u_n^2 - 2\\right)^2}{4u_n^2}.$$\n\nUn carré est positif ou nul, et $4u_n^2 > 0$ : donc $u_{n+1}^2 - 2 \\geqslant 0$ pour tout $n$, c'est-à-dire $u_n^2 \\geqslant 2$ pour tout $n \\geqslant 1$. De plus, $u_0^2 = 4 \\geqslant 2$. Ainsi $u_n^2 \\geqslant 2$ pour tout entier naturel $n$. Comme $u_n > 0$ et que la fonction racine carrée est croissante, $u_n = \\sqrt{u_n^2} \\geqslant \\sqrt{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On admet que, pour tout entier naturel $n$, $u_{n+1} - \\sqrt{2} = \\dfrac{\\left(u_n - \\sqrt{2}\\right)^2}{2u_n}$. Montrer que $0 \\leqslant u_{n+1} - \\sqrt{2} \\leqslant \\dfrac{1}{2}\\left(u_n - \\sqrt{2}\\right)$, puis, par récurrence, que $0 \\leqslant u_n - \\sqrt{2} \\leqslant \\left(\\dfrac{1}{2}\\right)^n$. En déduire la limite de la suite $(u_n)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Écris $\\dfrac{\\left(u_n - \\sqrt{2}\\right)^2}{2u_n} = \\left(u_n - \\sqrt{2}\\right) \\times \\dfrac{u_n - \\sqrt{2}}{2u_n}$, et majore le second facteur.",
+          "$0 \\leqslant u_n - \\sqrt{2} \\leqslant u_n$ (question 2), donc $0 \\leqslant \\dfrac{u_n - \\sqrt{2}}{2u_n} \\leqslant \\dfrac{1}{2}$.",
+          "Pour la deuxième inégalité, raisonne par récurrence : l'initialisation porte sur $u_0 - \\sqrt{2} = 2 - \\sqrt{2}$, qui est compris entre $0$ et $1$ ; l'hérédité utilise l'inégalité précédente.",
+          "$\\left(\\dfrac{1}{2}\\right)^n$ tend vers $0$ : conclus avec le théorème des gendarmes."
+        ],
+        "revoir": "l-limites-suites-070",
+        "solution": "Pour tout entier naturel $n$, $u_{n+1} - \\sqrt{2} = \\left(u_n - \\sqrt{2}\\right) \\times \\dfrac{u_n - \\sqrt{2}}{2u_n}$. D'après la question 2, $0 \\leqslant u_n - \\sqrt{2} \\leqslant u_n$, donc $0 \\leqslant \\dfrac{u_n - \\sqrt{2}}{2u_n} \\leqslant \\dfrac{1}{2}$. En multipliant par $u_n - \\sqrt{2} \\geqslant 0$ : $0 \\leqslant u_{n+1} - \\sqrt{2} \\leqslant \\dfrac{1}{2}\\left(u_n - \\sqrt{2}\\right)$.\n\nPour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant u_n - \\sqrt{2} \\leqslant \\left(\\dfrac{1}{2}\\right)^n$ ».\n\n**Initialisation** : $u_0 - \\sqrt{2} = 2 - \\sqrt{2}$, et $1 \\leqslant \\sqrt{2} \\leqslant 2$ donne $0 \\leqslant 2 - \\sqrt{2} \\leqslant 1 = \\left(\\dfrac{1}{2}\\right)^0$ : $P(0)$ est vraie.\n\n**Hérédité** : si $0 \\leqslant u_n - \\sqrt{2} \\leqslant \\left(\\dfrac{1}{2}\\right)^n$, alors $0 \\leqslant u_{n+1} - \\sqrt{2} \\leqslant \\dfrac{1}{2}\\left(u_n - \\sqrt{2}\\right) \\leqslant \\dfrac{1}{2} \\times \\left(\\dfrac{1}{2}\\right)^n = \\left(\\dfrac{1}{2}\\right)^{n+1}$ : $P(n+1)$ est vraie.\n\nD'après le principe de récurrence, $P(n)$ est vraie pour tout entier naturel $n$.\n\nEnfin, $-1 < \\dfrac{1}{2} < 1$, donc $\\left(\\dfrac{1}{2}\\right)^n$ tend vers $0$. D'après le théorème des gendarmes, $u_n - \\sqrt{2}$ tend vers $0$ ; par somme, $\\lim\\limits_{n \\to +\\infty} u_n = \\sqrt{2}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On considère la fonction Python ci-dessous. Justifier que, pour tout entier naturel $n$, $\\dfrac{2}{u_n} \\leqslant \\sqrt{2} \\leqslant u_n$ : à chaque tour, la boucle teste donc la longueur d'un intervalle qui contient $\\sqrt{2}$. Que renvoie l'appel heron(0.001) ?",
+        "code": {
+          "langage": "python",
+          "source": "def heron(s):\n    u = 2\n    n = 0\n    while u - 2 / u > s:\n        u = (u + 2 / u) / 2\n        n = n + 1\n    return n"
+        },
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Comme $u_n \\geqslant \\sqrt{2} > 0$, compare $\\dfrac{2}{u_n}$ à $\\dfrac{2}{\\sqrt{2}} = \\sqrt{2}$. La boucle s'arrête au premier rang où $u_n - \\dfrac{2}{u_n} \\leqslant 0{,}001$.",
+          "Calcule les écarts avec les fractions déjà connues : $u_0 - \\dfrac{2}{u_0} = 2 - 1$, puis $u_1 - \\dfrac{2}{u_1} = \\dfrac{3}{2} - \\dfrac{4}{3}$.",
+          "Pour $u_2$ : $\\dfrac{17}{12} - \\dfrac{24}{17} = \\dfrac{289 - 288}{204}$. Compare à $0{,}001$ ; s'il le faut, utilise $u - \\dfrac{2}{u} = \\dfrac{u^2 - 2}{u}$ et la question 2 pour majorer l'écart suivant."
+        ],
+        "revoir": "l-limites-suites-064",
+        "solution": "D'après la question 2, $u_n \\geqslant \\sqrt{2} > 0$, donc $\\dfrac{2}{u_n} \\leqslant \\dfrac{2}{\\sqrt{2}} = \\sqrt{2}$ : ainsi $\\dfrac{2}{u_n} \\leqslant \\sqrt{2} \\leqslant u_n$. La boucle tourne tant que la longueur $u - \\dfrac{2}{u}$ de cet intervalle dépasse $s$.\n\nÉcarts successifs : $u_0 - \\dfrac{2}{u_0} = 1$ ; $u_1 - \\dfrac{2}{u_1} = \\dfrac{3}{2} - \\dfrac{4}{3} = \\dfrac{1}{6}$ ; $u_2 - \\dfrac{2}{u_2} = \\dfrac{17}{12} - \\dfrac{24}{17} = \\dfrac{1}{204} \\approx 0{,}004\\,9$. Ces trois écarts dépassent $0{,}001$ : la boucle fait au moins trois tours.\n\nPour $u_3$ : $u_3 - \\dfrac{2}{u_3} = \\dfrac{u_3^2 - 2}{u_3} \\leqslant u_3^2 - 2$, car $u_3 \\geqslant \\sqrt{2} \\geqslant 1$. D'après la question 2, $u_3^2 - 2 = \\dfrac{\\left(u_2^2 - 2\\right)^2}{4u_2^2}$, avec $u_2^2 - 2 = \\dfrac{289}{144} - 2 = \\dfrac{1}{144}$ et $4u_2^2 \\geqslant 8$. Donc $u_3^2 - 2 \\leqslant \\dfrac{1}{8 \\times 144^2} < 0{,}001$. La boucle s'arrête après le troisième tour : l'appel heron(0.001) renvoie $3$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-033",
+    "chapitre": "limites-suites",
+    "niveau": 3,
+    "notions": ["n-limites-suites-definitions", "n-limites-suites-seuils"],
+    "capacites": ["bo-m-suites-01", "bo-m-suites-14", "bo-m-logique-06", "bo-m-suites-08", "bo-m-logique-14"],
+    "titre": "Une suite qui grandit lentement",
+    "duree": 30,
+    "calculatrice": false,
+    "ordre": 330,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = u_n + \\dfrac{1}{u_n}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n \\geqslant 1$. En déduire que la suite $(u_n)$ est croissante.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "L'initialisation est immédiate ; dans l'hérédité, remarque que $\\dfrac{1}{u_n} > 0$.",
+          "Si $u_n \\geqslant 1$, alors $u_n > 0$, donc $\\dfrac{1}{u_n} > 0$ et $u_{n+1} = u_n + \\dfrac{1}{u_n} > u_n \\geqslant 1$.",
+          "Pour le sens de variation : $u_{n+1} - u_n = \\dfrac{1}{u_n}$ ; quel est son signe ?"
+        ],
+        "revoir": "l-recurrence-suites-017",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $u_n \\geqslant 1$ ».\n\n**Initialisation** : $u_0 = 1 \\geqslant 1$ : $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $u_n \\geqslant 1$. Alors $u_n > 0$, donc $\\dfrac{1}{u_n} > 0$, et $u_{n+1} = u_n + \\dfrac{1}{u_n} > u_n \\geqslant 1$ : $P(n+1)$ est vraie.\n\n**Conclusion** : d'après le principe de récurrence, $u_n \\geqslant 1$ pour tout entier naturel $n$.\n\nPour tout $n$, $u_{n+1} - u_n = \\dfrac{1}{u_n} > 0$, car $u_n \\geqslant 1 > 0$ : la suite $(u_n)$ est croissante."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour obtenir la limite de $(u_n)$, que faut-il ajouter au fait qu'elle est croissante ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Rien : une suite croissante tend vers $+\\infty$.",
+            "Montrer qu'elle n'est pas majorée.",
+            "Montrer qu'elle est minorée par $1$.",
+            "Calculer ses dix premiers termes."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Une suite croissante peut converger : $3 - \\dfrac{1}{n+1}$ est croissante et converge vers $3$.",
+            null,
+            "Une suite croissante est toujours minorée par son premier terme : cela ne dit rien sur sa limite.",
+            "Quelques termes ne prouvent rien sur le comportement à long terme."
+          ]
+        },
+        "indices": [
+          "Une suite croissante peut converger : relis le piège du cours.",
+          "Une suite croissante a une limite finie si elle est majorée, et tend vers $+\\infty$ sinon. Que faut-il donc établir pour obtenir $+\\infty$ ?",
+          "Élimine les propositions qui ne permettent pas d'exclure une limite finie."
+        ],
+        "revoir": "l-limites-suites-008",
+        "solution": "Une suite croissante converge si elle est majorée, et tend vers $+\\infty$ sinon. Pour montrer que $(u_n)$ tend vers $+\\infty$, il faut donc montrer qu'elle n'est pas majorée. La minoration par $1$ ne suffit pas, et quelques termes ne prouvent rien. Il faut montrer que la suite n'est pas majorée."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Montrer que, pour tout entier naturel $n$, $u_{n+1}^2 \\geqslant u_n^2 + 2$. En déduire, par récurrence, que $u_n^2 \\geqslant 2n + 1$ pour tout entier naturel $n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Développe $\\left(u_n + \\dfrac{1}{u_n}\\right)^2$ avec $(a + b)^2 = a^2 + 2ab + b^2$.",
+          "$u_{n+1}^2 = u_n^2 + 2 + \\dfrac{1}{u_n^2}$, car $2 \\times u_n \\times \\dfrac{1}{u_n} = 2$.",
+          "$\\dfrac{1}{u_n^2} > 0$ donne la première inégalité. Pour la récurrence : $u_0^2 = 1 = 2 \\times 0 + 1$.",
+          "Hérédité : $u_{n+1}^2 \\geqslant u_n^2 + 2 \\geqslant (2n + 1) + 2$ ; reconnais $2(n + 1) + 1$."
+        ],
+        "revoir": "l-limites-suites-028",
+        "solution": "Pour tout entier naturel $n$ : $u_{n+1}^2 = \\left(u_n + \\dfrac{1}{u_n}\\right)^2 = u_n^2 + 2 \\times u_n \\times \\dfrac{1}{u_n} + \\dfrac{1}{u_n^2} = u_n^2 + 2 + \\dfrac{1}{u_n^2}$. Comme $\\dfrac{1}{u_n^2} > 0$, $u_{n+1}^2 \\geqslant u_n^2 + 2$.\n\nPour tout entier naturel $n$, on note $Q(n)$ : « $u_n^2 \\geqslant 2n + 1$ ».\n\n**Initialisation** : $u_0^2 = 1 = 2 \\times 0 + 1$ : $Q(0)$ est vraie.\n\n**Hérédité** : si $u_n^2 \\geqslant 2n + 1$, alors $u_{n+1}^2 \\geqslant u_n^2 + 2 \\geqslant 2n + 3 = 2(n + 1) + 1$ : $Q(n+1)$ est vraie.\n\n**Conclusion** : d'après le principe de récurrence, $u_n^2 \\geqslant 2n + 1$ pour tout entier naturel $n$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire que la suite $(u_n)$ n'est pas majorée, puis déterminer sa limite.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "« Non majorée » veut dire qu'aucun réel n'est un majorant. Cela se rédige en trois temps : « Soit $A$ un réel » ; on trouve un rang $N$ tel que $u_N > A$ ; on conclut que $A$ n'est pas un majorant, et cela quel que soit $A$. Ici, c'est la minoration de la question 3 qui fournit le rang.",
+          "Transforme d'abord la question 3 : $u_n > 0$ et la fonction racine carrée est croissante, donc $u_n = \\sqrt{u_n^2} \\geqslant \\sqrt{2n + 1}$. Ensuite, soit $A$ un réel : si $A \\leqslant 0$, le premier terme $u_0 = 1$ dépasse déjà $A$. Il reste le cas $A > 0$.",
+          "Soit $A > 0$. Il suffit d'avoir $2N + 1 > A^2$, c'est-à-dire $N > \\dfrac{A^2 - 1}{2}$ : choisis un tel entier $N$. Il en existe toujours, car les entiers dépassent n'importe quel réel. Que donne alors la stricte croissance de la fonction racine carrée pour $u_N$ ?",
+          "$u_N \\geqslant \\sqrt{2N + 1} > \\sqrt{A^2} = A$, car $A > 0$ : le terme $u_N$ dépasse strictement $A$, donc $A$ n'est pas un majorant. Pour la limite, rassemble deux faits : la suite est croissante (question 1) et elle n'est pas majorée. Cite alors la propriété des suites croissantes non majorées."
+        ],
+        "revoir": "l-limites-suites-005",
+        "solution": "Montrer que $(u_n)$ n'est pas majorée, c'est montrer qu'aucun réel $A$ n'en est un majorant : pour chaque réel $A$, on cherche un terme strictement supérieur à $A$.\n\nD'après la question 3, $u_n^2 \\geqslant 2n + 1$. Comme $u_n \\geqslant 1 > 0$ (question 1) et que la fonction racine carrée est croissante sur $[0\\,;\\,+\\infty[$, $u_n = \\sqrt{u_n^2} \\geqslant \\sqrt{2n + 1}$ pour tout entier naturel $n$.\n\nSoit $A$ un réel.\n\n- Si $A \\leqslant 0$, alors $u_0 = 1 > A$.\n- Si $A > 0$, on choisit un entier naturel $N$ tel que $N > \\dfrac{A^2 - 1}{2}$, c'est-à-dire $2N + 1 > A^2$ ; un tel entier existe toujours, car les entiers dépassent n'importe quel réel. La fonction racine carrée étant strictement croissante sur $[0\\,;\\,+\\infty[$, $u_N \\geqslant \\sqrt{2N + 1} > \\sqrt{A^2} = A$, car $A > 0$.\n\nDans les deux cas, un terme dépasse strictement $A$ : $A$ n'est pas un majorant de $(u_n)$. Ce raisonnement vaut pour tout réel $A$ : la suite $(u_n)$ n'est pas majorée.\n\nLa suite $(u_n)$ est croissante (question 1) et non majorée : d'après la propriété des suites croissantes non majorées, $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On considère la fonction Python ci-dessous. Expliquer pourquoi l'appel rang(10) renvoie un résultat. Déterminer ensuite le plus petit entier $N$ tel que $2N + 1 > 100$, et en déduire un majorant de la valeur renvoyée par rang(10). La réponse attendue est l'entier $N$.",
+        "code": {
+          "langage": "python",
+          "source": "def rang(s):\n    n = 0\n    u = 1\n    while u <= s:\n        u = u + 1 / u\n        n = n + 1\n    return n"
+        },
+        "reponse": { "type": "numerique", "valeur": 50, "tolerance": 0 },
+        "indices": [
+          "La boucle s'arrête dès qu'un terme dépasse $10$ : la question 4 garantit que cela arrive.",
+          "Si $2n + 1 > 100$, alors $u_n \\geqslant \\sqrt{2n + 1} > \\sqrt{100}$, c'est-à-dire $u_n > 10$.",
+          "Résous $2N + 1 > 100$ dans les entiers. Le rang renvoyé est le premier où $u_n > 10$ : compare-le à $N$."
+        ],
+        "revoir": "l-limites-suites-069",
+        "solution": "La suite tend vers $+\\infty$ (question 4) : l'intervalle $[11\\,;\\,+\\infty[$ contient tous les termes à partir d'un certain rang. La condition « $u \\leqslant 10$ » finit donc par être fausse, et la boucle s'arrête.\n\n$2N + 1 > 100$ équivaut à $N > 49{,}5$ : le plus petit entier qui convient est $N = 50$. Alors $u_{50} \\geqslant \\sqrt{101} > \\sqrt{100} = 10$. Le rang renvoyé par rang(10), premier rang où $u_n > 10$, est donc inférieur ou égal à $50$. À titre d'information (exécution à la machine, non demandée), le programme renvoie $49$ : la minoration est presque optimale.\n\n**Conclusion** : le plus petit entier tel que $2N + 1 > 100$ est $N = 50$, et rang(10) renvoie un entier inférieur ou égal à $50$."
+      }
+    ]
+  },
+  {
+    "id": "x-limites-suites-034",
+    "chapitre": "limites-suites",
+    "niveau": 3,
+    "notions": ["n-limites-suites-monotone-bornee", "n-limites-suites-geometrique", "n-limites-suites-operations"],
+    "capacites": ["bo-m-suites-16", "bo-m-suites-06", "bo-m-suites-07", "bo-m-suites-05", "bo-m-suites-04"],
+    "titre": "Deux suites qui se rapprochent",
+    "duree": 30,
+    "calculatrice": false,
+    "ordre": 340,
+    "preambule": "Soit $(u_n)$ et $(v_n)$ les suites définies par $u_0 = 1$, $v_0 = 12$ et, pour tout entier naturel $n$ :\n\n$$u_{n+1} = \\dfrac{u_n + 2v_n}{3} \\quad \\text{et} \\quad v_{n+1} = \\dfrac{u_n + 3v_n}{4}.$$\n\nPour tout entier naturel $n$, on pose $w_n = v_n - u_n$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $w_1$, sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "11/12", "tolerance": 0 },
+        "indices": [
+          "Calcule $u_1$ et $v_1$, puis leur différence.",
+          "$u_1 = \\dfrac{1 + 2 \\times 12}{3}$ et $v_1 = \\dfrac{1 + 3 \\times 12}{4}$.",
+          "Mets les deux fractions obtenues au même dénominateur $12$."
+        ],
+        "revoir": "l-limites-suites-060",
+        "solution": "$u_1 = \\dfrac{1 + 2 \\times 12}{3} = \\dfrac{25}{3}$ et $v_1 = \\dfrac{1 + 3 \\times 12}{4} = \\dfrac{37}{4}$. Donc $w_1 = \\dfrac{37}{4} - \\dfrac{25}{3} = \\dfrac{111 - 100}{12} = \\dfrac{11}{12}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que la suite $(w_n)$ est géométrique de raison $\\dfrac{1}{12}$. En déduire l'expression de $w_n$ en fonction de $n$, sa limite, et son signe.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Calcule $v_{n+1} - u_{n+1}$ au même dénominateur $12$.",
+          "$v_{n+1} - u_{n+1} = \\dfrac{3(u_n + 3v_n) - 4(u_n + 2v_n)}{12}$.",
+          "Développe le numérateur : il reste $v_n - u_n$. Ensuite, $w_0 = 11$ et $-1 < \\dfrac{1}{12} < 1$."
+        ],
+        "revoir": "l-limites-suites-072",
+        "solution": "Pour tout entier naturel $n$ :\n\n$$w_{n+1} = v_{n+1} - u_{n+1} = \\dfrac{3(u_n + 3v_n) - 4(u_n + 2v_n)}{12} = \\dfrac{v_n - u_n}{12} = \\dfrac{1}{12}w_n.$$\n\nLa suite $(w_n)$ est géométrique de raison $\\dfrac{1}{12}$ et de premier terme $w_0 = 12 - 1 = 11$. Donc $w_n = 11 \\times \\left(\\dfrac{1}{12}\\right)^n$ pour tout $n$. Comme $-1 < \\dfrac{1}{12} < 1$, $\\left(\\dfrac{1}{12}\\right)^n$ tend vers $0$ et, par produit, $\\lim\\limits_{n \\to +\\infty} w_n = 0$. Enfin, $w_n > 0$ pour tout $n$ : autrement dit, $u_n < v_n$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Montrer que la suite $(u_n)$ est croissante et que la suite $(v_n)$ est décroissante.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Exprime $u_{n+1} - u_n$ et $v_{n+1} - v_n$ en fonction de $w_n$.",
+          "$u_{n+1} - u_n = \\dfrac{u_n + 2v_n - 3u_n}{3} = \\dfrac{2(v_n - u_n)}{3}$.",
+          "De même, $v_{n+1} - v_n = \\dfrac{u_n - v_n}{4}$. Conclus avec le signe de $w_n$ (question 2)."
+        ],
+        "revoir": "l-limites-suites-055",
+        "solution": "Pour tout entier naturel $n$ : $u_{n+1} - u_n = \\dfrac{u_n + 2v_n - 3u_n}{3} = \\dfrac{2(v_n - u_n)}{3} = \\dfrac{2}{3}w_n > 0$ : la suite $(u_n)$ est croissante. Et $v_{n+1} - v_n = \\dfrac{u_n + 3v_n - 4v_n}{4} = \\dfrac{u_n - v_n}{4} = -\\dfrac{1}{4}w_n < 0$ : la suite $(v_n)$ est décroissante."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire que les suites $(u_n)$ et $(v_n)$ convergent, et qu'elles ont la même limite.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Il te faut un majorant constant pour $(u_n)$ et un minorant constant pour $(v_n)$ : utilise $u_n < v_n$ et les sens de variation.",
+          "$u_n < v_n \\leqslant v_0$ : $(u_n)$ est croissante et majorée. De même, $v_n > u_n \\geqslant u_0$.",
+          "Les deux suites convergent, vers $\\ell$ et $\\ell'$. Par différence, $w_n$ tend vers $\\ell' - \\ell$ ; or $w_n$ tend vers $0$."
+        ],
+        "revoir": "l-limites-suites-060",
+        "solution": "Pour tout entier naturel $n$, $u_n < v_n \\leqslant v_0 = 12$, car $(v_n)$ est décroissante : la suite $(u_n)$ est croissante et majorée par $12$. De même, $v_n > u_n \\geqslant u_0 = 1$ : la suite $(v_n)$ est décroissante et minorée par $1$. D'après le théorème de convergence monotone, $(u_n)$ converge vers un réel $\\ell$ et $(v_n)$ vers un réel $\\ell'$.\n\nPar différence, $w_n = v_n - u_n$ tend vers $\\ell' - \\ell$. Or $w_n$ tend vers $0$ (question 2). Donc $\\ell' - \\ell = 0$ : les deux suites ont la même limite $\\ell$. On dit qu'elles sont adjacentes."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Montrer que la suite de terme général $3u_n + 8v_n$ est constante, puis déterminer la limite commune $\\ell$.",
+        "reponse": { "type": "numerique", "valeur": 9, "tolerance": 0 },
+        "indices": [
+          "Calcule $3u_{n+1} + 8v_{n+1}$ en fonction de $u_n$ et de $v_n$.",
+          "$3u_{n+1} + 8v_{n+1} = (u_n + 2v_n) + 2(u_n + 3v_n)$.",
+          "Tu dois retrouver $3u_n + 8v_n$ : la suite est constante, égale à $3u_0 + 8v_0$. Passe ensuite à la limite, sachant que $3\\ell + 8\\ell = 11\\ell$."
+        ],
+        "revoir": "l-limites-suites-018",
+        "solution": "Pour tout entier naturel $n$ : $3u_{n+1} + 8v_{n+1} = (u_n + 2v_n) + 2(u_n + 3v_n) = 3u_n + 8v_n$. La suite est constante, égale à $3u_0 + 8v_0 = 3 + 96 = 99$. Par opérations sur les limites, $3u_n + 8v_n$ tend vers $3\\ell + 8\\ell = 11\\ell$. Une suite constante égale à $99$ converge vers $99$, donc $11\\ell = 99$, et $\\ell = 9$."
+      }
+    ]
+  }
+]
