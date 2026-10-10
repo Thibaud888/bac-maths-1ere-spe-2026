@@ -573,7 +573,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     (verdict CLAIR, aucun bloquant) ; couverture « exercices » sans écart. Livré dans la même
     PR que le cours (décision de Thibaud du 2026-10-01). PR : #104.
   - [ ] Remettre dans le type bac de Récurrence et suites les questions retirées des sujets
-    adaptés, maintenant que « Limites de suites » est écrit (cours PR #114, exercices PR #117) —
+    adaptés, maintenant que « Limites de suites » est écrit (cours PR #114, exercices PR #118) —
     limites, convergence et seuils (voir les notes `adaptation` de
     `content/terminale/maths/chapitres/recurrence-suites/type-bac.json` et des exercices
     x-012, x-017, x-020).
@@ -593,7 +593,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     d'annales citées, sans ℓ = f(ℓ), ln, exponentielle ni croissances comparées) ; tous les
     planchers atteints ; relecteur PASS dès le 1er tour, puis aux 2e et 3e tours ciblés sur
     les retouches ; élève-testeur CLAIR (15/15 en Comprendre, aucun bloquant, 6 gênes levées
-    dans les indices et solutions) ; couverture « exercices » sans écart. Coût : 37 $. PR : #117.
+    dans les indices et solutions) ; couverture « exercices » sans écart. Coût : 37 $. PR : #118.
   - [ ] Compléter le cours de Limites de suites sur cinq points où l'élève a hésité — relevés
     par l'élève-testeur des exercices, réglés pour l'instant dans les indices : un exemple de
     forme indéterminée avec √n (bloc `l-limites-suites-021`) ; un exemple rédigé de « montrer
