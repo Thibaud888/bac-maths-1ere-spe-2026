@@ -51,7 +51,7 @@ export function SourceDeLExercice({ source, matiere }: { source: SourceExercice;
       ) : (
         libelle
       )}{' '}
-      ({source.adaptation})
+      (<TextWithMath text={source.adaptation} />)
     </p>
   );
 }

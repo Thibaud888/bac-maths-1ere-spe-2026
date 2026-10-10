@@ -9,7 +9,7 @@ généraux : ni élève, ni année, ni matière dans les titres ; le barème du 
 suit un profil pris **en exemple**. Cinq espaces (année × matière) + deux outils transverses :
 - Terminale : `/terminale/maths`, `/terminale/physique-chimie` (pages Aperçu, Cours, Exercices,
   Type bac et Mémo prêtes, visibles sur le chapitre-témoin ; structure et méthode dans `chantiers/terminale/` + charte
-  `terminale-charte` ; chapitres écrits : Dénombrement, Récurrence et suites, Limites de suites (cours) en maths, Acides, bases et pH en physique-chimie),
+  `terminale-charte` ; chapitres écrits : Dénombrement, Récurrence et suites, Limites de suites en maths, Acides, bases et pH en physique-chimie),
   `/terminale/grand-oral` (l'épreuve, préparation, exposé, entretien, oral blanc minuté ; « Mes 2
   questions » = cadre rempli par l'élève)
 - Première : `/premiere/maths` (EAM, 4 modes + bac blanc), `/premiere/francais` (EAF écrit + oral
