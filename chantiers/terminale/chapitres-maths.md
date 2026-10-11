@@ -99,10 +99,14 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
   du programme)
 
 ### 3. Limites de fonctions
-- Limites en l'infini, en un réel ; asymptotes · ★★★
-- Opérations, formes indéterminées · ★★
-- Croissances comparées (exp, puissances ; puis ln au ch. 7) · ★★★
-- Limite d'une composée ; comparaison, encadrement · ★★
+Découpage retenu par `tle-architecte` (priorités mesurées sur 103 sujets, 2026-10-11) :
+- Limite d'une fonction, asymptotes · ★★ (31 sujets sur 103)
+- Limites de référence, opérations, formes indéterminées, composition « en contexte » · ★★★
+  (70 sur 103) — la composition vient ici : elle sert dès e^(−x)
+- Comparaison et encadrement · ★ (1 sur 103) — placée avant les croissances comparées, dont
+  les démonstrations l'utilisent
+- Croissances comparées (exp, puissances ; puis ln au ch. 7) et choix de la méthode · ★★★
+  (83 sur 103)
 
 ### 4. Continuité, théorème des valeurs intermédiaires
 - Continuité (définition, fonctions de référence) · ★★
