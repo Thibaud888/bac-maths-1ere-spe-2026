@@ -609,12 +609,25 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     l'auteur du cours (notion « définitions », bloc `l-limites-suites-010`) : un curseur pour
     la largeur de la bande, qui affiche le rang à partir duquel tous les termes y restent.
     Quand les figures animées existeront.
-  - [ ] Limites de fonctions : le cours — `/tle-chapitre maths limites-fonctions cours`, dans
-    une session neuve ; prompt prêt à coller dans `chantiers/terminale/limites-fonctions.md`
-    (logarithme et continuité viennent plus tard ; renvois aux tableaux de Limites de suites ;
-    gênes de l'élève-testeur corrigées dans la même PR).
+  - [x] Limites de fonctions : le cours — 4 notions (priorités mesurées sur 103 sujets :
+    opérations 68 % et croissances comparées 81 % incontournables, définitions et asymptotes
+    fréquent, comparaison plus rare 1 %), 54 blocs, 5 cartes de mémo, 2 figures (asymptotes,
+    eˣ face à x³) ; relecteur NEEDS_REVISION au 1er tour (limites en un réel a), PASS aux 2e et
+    3e ; élève-testeur À_CLARIFIER (1 bloquant : « axe des ordonnées » = droite x = 0) puis
+    bloquant et 11 gênes corrigés et relus ; couverture « cours » sans écart. Écart à la règle
+    « prérequis » de la charte tranché par l'architecte (noté dans la PR). Coût : 28,7 $.
+    PR : #120.
   - [ ] Limites de fonctions : les exercices — `/tle-chapitre maths limites-fonctions exercices`,
-    dans une autre session neuve, une fois le cours fusionné.
+    dans une autre session neuve, une fois le cours fusionné ; prompt prêt à coller dans
+    `chantiers/terminale/limites-fonctions.md`.
+  - [ ] Polir trois formulations du cours de Limites de fonctions — non bloquants du relecteur
+    (tour 3), laissés ouverts : `l-limites-fonctions-025` (étape 5 à tourner à l'impératif) ;
+    `l-limites-fonctions-053` (ajouter à l'étape 5 un renvoi vers eˣ/x en 0, notion suivante) ;
+    `l-limites-fonctions-045` (parenthèse redondante de l'étape 7).
+  - [ ] Une animation pour voir une fonction entrer dans une bande autour de sa limite — souhait
+    de l'auteur du cours (notion « définitions » de Limites de fonctions) : un curseur sur la
+    largeur r de la bande (ou sur A), qui affiche le seuil B à partir duquel la courbe y reste,
+    en +∞ et en un réel a. Quand les figures animées existeront.
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
