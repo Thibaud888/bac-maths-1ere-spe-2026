@@ -609,12 +609,40 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     l'auteur du cours (notion « définitions », bloc `l-limites-suites-010`) : un curseur pour
     la largeur de la bande, qui affiche le rang à partir duquel tous les termes y restent.
     Quand les figures animées existeront.
-  - [ ] Limites de fonctions : le cours — `/tle-chapitre maths limites-fonctions cours`, dans
-    une session neuve ; prompt prêt à coller dans `chantiers/terminale/limites-fonctions.md`
-    (logarithme et continuité viennent plus tard ; renvois aux tableaux de Limites de suites ;
-    gênes de l'élève-testeur corrigées dans la même PR).
+  - [x] Limites de fonctions : le cours — 5 notions (priorités mesurées sur 103 sujets :
+    fonctions de référence et croissances comparées incontournables, 55 % et 81 % ;
+    définitions et asymptotes, opérations, comparaison fréquents), 60 blocs dont 2
+    démonstrations exigibles (limites de exp, croissance comparée de xⁿ et exp), 9 cartes de
+    mémo, 2 figures (fonction inverse et ses asymptotes, deux asymptotes sur une même courbe) ;
+    sans logarithme ni continuité nommée. Relecteur PASS au 1er tour, élève-testeur
+    À clarifier (1 bloquant : étape sautée dans la démonstration 051 ; forme 0/0 en un réel
+    ajoutée) puis tout corrigé, relu en 2 tours ciblés (PASS au 3e) ; couverture « cours »
+    sans écart. Coût : 26 $. PR : #120.
   - [ ] Limites de fonctions : les exercices — `/tle-chapitre maths limites-fonctions exercices`,
-    dans une autre session neuve, une fois le cours fusionné.
+    dans une autre session neuve, une fois le cours fusionné. À donner aux auteurs : au moins
+    une question éclair ou un exercice « Comprendre » sur la forme 0/0 en un réel (la notion
+    « opérations » n'a pas de « vérifie » sur ce cas) ; un 0/0 en un réel seulement s'il se
+    lève par une identité remarquable ou un trinôme de racine connue ; mêmes interdits que le
+    cours (ni ln, ni continuité nommée, ni dérivée de v∘u, ni dérivées de sin et cos).
+  - [ ] Polir trois formulations du cours de Limites de fonctions — non bloquants du
+    relecteur au 3e tour, laissés ouverts : `l-limites-fonctions-029` (étape 6, phrase de
+    36 mots, à couper après le nom de la figure) ; `l-limites-fonctions-052` (étape 4,
+    « exposant ax » reprend la lettre a déjà prise par le réel de l'étape 2 : écrire kx) ;
+    `l-limites-fonctions-003` (f définie sur [m ; +∞[ puis x qui tend vers −∞).
+  - [ ] Repérer automatiquement une figure qui ne s'affiche pas — une figure du cours de
+    Limites de fonctions était cassée (une espace manquante dans le fichier) et aucun contrôle
+    ne l'a vue : seuls l'élève-testeur et le relecteur l'ont trouvée. Ajouter à
+    `controles-mecaniques.mjs` la lecture de chaque SVG cité par un bloc `figure` (XML bien
+    formé), et à `controle-rendu.mjs` un contrôle des images non chargées (`naturalWidth`
+    nul).
+  - [ ] Écrire le mot-clé des cartes du mémo en clair — l'interface affiche « Mot-clé :
+    fonctions-reference » (identifiant brut, avec tirets et sans accent) sous chaque carte
+    (`CarteMemo`), vu sur Limites de fonctions en sombre à 1280 px.
+  - [ ] Ne plus rejeter un point en début de ligne après une formule — sur téléphone, une
+    phrase qui finit par une formule voit son point passer seul à la ligne suivante (« vers
+    +∞ » puis « . Mais… », idée de la notion « croissances comparées » de Limites de
+    fonctions, 390 px) : lier la ponctuation à la formule qui la précède (rendu KaTeX en ligne,
+    `lib/typographie`).
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours

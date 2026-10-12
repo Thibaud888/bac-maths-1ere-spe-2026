@@ -9,7 +9,7 @@ généraux : ni élève, ni année, ni matière dans les titres ; le barème du 
 suit un profil pris **en exemple**. Cinq espaces (année × matière) + deux outils transverses :
 - Terminale : `/terminale/maths`, `/terminale/physique-chimie` (pages Aperçu, Cours, Exercices,
   Type bac et Mémo prêtes, visibles sur le chapitre-témoin ; structure et méthode dans `chantiers/terminale/` + charte
-  `terminale-charte` ; chapitres écrits : Dénombrement, Récurrence et suites, Limites de suites en maths, Acides, bases et pH en physique-chimie),
+  `terminale-charte` ; chapitres écrits : Dénombrement, Récurrence et suites, Limites de suites, Limites de fonctions (cours) en maths, Acides, bases et pH en physique-chimie),
   `/terminale/grand-oral` (l'épreuve, préparation, exposé, entretien, oral blanc minuté ; « Mes 2
   questions » = cadre rempli par l'élève)
 - Première : `/premiere/maths` (EAM, 4 modes + bac blanc), `/premiere/francais` (EAF écrit + oral
@@ -54,7 +54,7 @@ chantiers/terminale/    # PLAN DIRECTEUR de la terminale (README) + découpage p
                         # + annales-maths.md (ce qui tombe au bac : méthode, sessions,
                         # règles de rattachement, chiffres par chapitre)
                         # + textes de lancement des sessions suivantes (reprise-phase-1.md,
-                        # limites-fonctions.md : prochain chapitre de maths)
+                        # limites-fonctions.md : lancement du chapitre de maths en cours)
                         # + optimisation-tokens.md : ce que coûte un chapitre (mesures)
                         # et les pistes pour consommer moins sans perdre en qualité
 schemas/                # JSON Schema Ajv (maths à la racine, francais/, bac/, grand-oral/,
