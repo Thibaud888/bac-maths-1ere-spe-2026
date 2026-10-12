@@ -1,0 +1,139 @@
+[
+  {
+    "id": "m-limites-fonctions-limites-reference",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-reference",
+    "genre": "formule",
+    "titre": "Puissances, inverses, racine carrée",
+    "enonce": "- En $+\\infty$ : $x^n$ et $\\sqrt{x}$ tendent vers $+\\infty$ ; $\\dfrac{1}{x^n}$ tend vers $0$.\n- En $-\\infty$ : $x^n$ tend vers $+\\infty$ si $n$ est pair, vers $-\\infty$ si $n$ est impair ; $\\dfrac{1}{x^n}$ tend vers $0$.\n- En $0$ : $\\dfrac{1}{x^n}$ tend vers $+\\infty$ à droite ; à gauche, vers $+\\infty$ si $n$ est pair, vers $-\\infty$ si $n$ est impair.\n- En un réel $a$ où la fonction est définie : la limite est la valeur en $a$.",
+    "conditions": "$n$ est un entier naturel non nul ; $x \\neq 0$ pour $\\dfrac{1}{x^n}$, $x \\geqslant 0$ pour $\\sqrt{x}$.",
+    "exemple": "$\\lim\\limits_{x \\to -\\infty} x^3 = -\\infty$ ; $\\lim\\limits_{\\substack{x \\to 0 \\\\ x < 0}} \\dfrac{1}{x^3} = -\\infty$ ; $\\lim\\limits_{x \\to 9} \\sqrt{x} = 3$.",
+    "simplifie": {
+      "coeur": "$x^n$, $\\sqrt{x}$ $\\to +\\infty$ en $+\\infty$ ; $\\dfrac{1}{x^n} \\to 0$ en $\\pm\\infty$ ; en $-\\infty$ et à gauche de $0$, le signe dépend de la parité de $n$",
+      "moyenMemo": "Exposant pair : toujours positif. Exposant impair : le signe de $x$.",
+      "motCle": "fonctions-reference"
+    }
+  },
+  {
+    "id": "m-limites-fonctions-exponentielle",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-reference",
+    "genre": "formule",
+    "titre": "Limites de l'exponentielle",
+    "enonce": "$\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$ et $\\lim\\limits_{x \\to -\\infty} e^x = 0$. L'axe des abscisses est asymptote horizontale à la courbe de l'exponentielle en $-\\infty$.\n\nDémonstration : la suite $(e^n)$ est géométrique de raison $e > 1$, donc tend vers $+\\infty$ ; la croissance de l'exponentielle fait passer de $e^n$ à $e^x$.",
+    "conditions": "Aucune hypothèse : l'exponentielle est définie sur $\\mathbb{R}$, et $e^x > 0$ pour tout réel $x$.",
+    "exemple": "Pour $x \\geqslant 20$, $e^x > 1\\,000\\,000$, car $e^{20} > 2^{20} = 1\\,048\\,576$.",
+    "simplifie": {
+      "coeur": "$e^x \\to +\\infty$ en $+\\infty$ ; $e^x \\to 0$ en $-\\infty$ (asymptote $y = 0$)",
+      "moyenMemo": "Toujours positive : en $-\\infty$, elle s'écrase sur l'axe sans le traverser.",
+      "motCle": "limites-exponentielle",
+      "image": "La courbe de l'exponentielle, collée à l'axe des abscisses à gauche, qui s'envole à droite."
+    }
+  },
+  {
+    "id": "m-limites-fonctions-croissances-comparees",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-croissances-comparees",
+    "genre": "formule",
+    "titre": "Croissances comparées",
+    "enonce": "Pour tout entier naturel $n$ non nul :\n\n- $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x^n} = +\\infty$ ;\n- $\\lim\\limits_{x \\to +\\infty} x^ne^{-x} = 0$ ;\n- $\\lim\\limits_{x \\to -\\infty} x^ne^x = 0$.\n\nEn $+\\infty$, l'exponentielle l'emporte sur toute puissance de $x$.",
+    "conditions": "À utiliser devant une forme indéterminée qui mêle $e^x$ et une puissance de $x$ ; sinon, les tableaux d'opérations suffisent.",
+    "exemple": "$\\left(x^2 - 4\\right)e^{-x} = x^2e^{-x} - 4e^{-x}$ tend vers $0 - 0 = 0$ en $+\\infty$.",
+    "simplifie": {
+      "coeur": "$\\dfrac{e^x}{x^n} \\to +\\infty$ et $x^ne^{-x} \\to 0$ en $+\\infty$ ; $x^ne^x \\to 0$ en $-\\infty$",
+      "moyenMemo": "L'exponentielle gagne toujours.",
+      "motCle": "croissances-comparees"
+    }
+  },
+  {
+    "id": "m-limites-fonctions-choisir-methode",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-croissances-comparees",
+    "genre": "methode",
+    "titre": "Déterminer une limite",
+    "enonce": "- Écrire la limite de chaque morceau ; sans forme indéterminée, les tableaux concluent.\n- Valeur interdite $a$ : « $\\dfrac{\\ell}{0}$ » avec $\\ell \\neq 0$, signe du dénominateur de chaque côté ; « $\\dfrac{0}{0}$ », factoriser par $x - a$.\n- En $\\pm\\infty$, puissances de $x$ seules : factoriser le terme de plus haut degré.\n- $e^x$ et une puissance de $x$ : développer ou factoriser pour faire apparaître une croissance comparée.\n- $\\sin x$, $\\cos x$ ou inégalité donnée : comparaison ou gendarmes.\n- Suite $u_n = f(n)$ : même limite que $f$ en $+\\infty$.",
+    "conditions": "Sur la copie, nommer l'outil : « par somme », « par croissances comparées », « d'après le théorème des gendarmes ».",
+    "exemple": "$e^x - x^2 = e^x\\left(1 - x^2e^{-x}\\right)$ tend vers $+\\infty$ en $+\\infty$.",
+    "simplifie": {
+      "coeur": "Morceaux puis tableaux ; forme indéterminée : factoriser ou croissances comparées ; oscillation : encadrer",
+      "moyenMemo": "D'abord regarder, ensuite transformer.",
+      "motCle": "choisir-methode"
+    }
+  },
+  {
+    "id": "m-limites-fonctions-definition-limite",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-definitions",
+    "genre": "definition",
+    "titre": "Limite d'une fonction",
+    "enonce": "- $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$ : tout intervalle $[A\\,;\\,+\\infty[$ contient toutes les valeurs $f(x)$ dès que $x$ est assez grand.\n- $\\lim\\limits_{x \\to +\\infty} f(x) = \\ell$ : tout intervalle ouvert contenant $\\ell$ contient toutes les valeurs $f(x)$ dès que $x$ est assez grand.\n- En un réel $a$ : « dès que $x$ est assez proche de $a$ », souvent d'un seul côté, $x > a$ ou $x < a$.",
+    "conditions": "Quand $x$ tend vers $-\\infty$ : « dès que $x$ est assez petit », c'est-à-dire inférieur à un certain réel (très négatif, pas proche de $0$). À droite et à gauche d'un réel $a$, les limites peuvent être différentes.",
+    "exemple": "$\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\dfrac{1}{x} = +\\infty$ et $\\lim\\limits_{\\substack{x \\to 0 \\\\ x < 0}} \\dfrac{1}{x} = -\\infty$.",
+    "simplifie": {
+      "coeur": "Limite $\\ell$ : $f(x)$ finit par rester aussi près de $\\ell$ qu'on veut. Limite $+\\infty$ : $f(x)$ finit par dépasser tout réel $A$.",
+      "moyenMemo": "Comme pour les suites, avec « $x$ assez grand » à la place de « à partir d'un certain rang ».",
+      "motCle": "limite-fonction"
+    }
+  },
+  {
+    "id": "m-limites-fonctions-asymptotes",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-definitions",
+    "genre": "definition",
+    "titre": "Asymptotes parallèles aux axes",
+    "enonce": "- Si $\\lim\\limits_{x \\to +\\infty} f(x) = \\ell$ (ou en $-\\infty$), la droite d'équation $y = \\ell$ est asymptote horizontale à $\\mathcal{C}_f$ en $+\\infty$ (ou en $-\\infty$).\n- Si la limite de $f$ en un réel $a$, à droite ou à gauche, est $+\\infty$ ou $-\\infty$, la droite d'équation $x = a$ est asymptote verticale à $\\mathcal{C}_f$.",
+    "conditions": "Horizontale : limite **finie** en l'**infini**. Verticale : limite **infinie** en un **réel**.",
+    "exemple": "$f(x) = 1 + \\dfrac{1}{x - 2}$ : asymptotes d'équations $y = 1$ (en $-\\infty$ et en $+\\infty$) et $x = 2$.",
+    "simplifie": {
+      "coeur": "Limite $\\ell$ en $\\pm\\infty$ : asymptote $y = \\ell$. Limite $\\pm\\infty$ en un réel $a$ : asymptote $x = a$.",
+      "moyenMemo": "Fini en l'infini : horizontale. Infini en un réel : verticale.",
+      "motCle": "asymptotes",
+      "image": "Une courbe qui se colle à une droite horizontale vers la droite, et longe une droite verticale vers le haut."
+    }
+  },
+  {
+    "id": "m-limites-fonctions-operations-composee",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-operations",
+    "genre": "propriete",
+    "titre": "Opérations et composée",
+    "enonce": "- Somme, produit, quotient : mêmes tableaux que pour les suites. Formes indéterminées : $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$, $\\dfrac{0}{0}$.\n- « $\\dfrac{\\ell}{0}$ » avec $\\ell \\neq 0$ : limite infinie, dont le signe vient de la règle des signes.\n- Composée : si $u(x)$ tend vers $b$ quand $x$ tend vers $a$, et si $g(X)$ tend vers $c$ quand $X$ tend vers $b$, alors $g(u(x))$ tend vers $c$ quand $x$ tend vers $a$.",
+    "conditions": "Pour « $\\dfrac{\\ell}{0}$ » en un réel $a$, étudier le signe du dénominateur de chaque côté de $a$.",
+    "exemple": "$\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$ : $X = -x$ tend vers $-\\infty$, et $e^X$ tend vers $0$.",
+    "simplifie": {
+      "coeur": "Tableaux des suites ; « $\\dfrac{\\ell}{0}$ » : infini, signe par la règle des signes ; composée : poser $X = u(x)$",
+      "moyenMemo": "Pour $e^{-x}$, on cherche d'abord où va $-x$.",
+      "motCle": "operations-composee"
+    }
+  },
+  {
+    "id": "m-limites-fonctions-terme-plus-fort",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-operations",
+    "genre": "methode",
+    "titre": "Lever une forme indéterminée",
+    "enonce": "- En $+\\infty$ ou en $-\\infty$ : mettre en facteur le terme le plus fort (la puissance de plus haut degré, ou $e^x$ en $+\\infty$), au numérateur et au dénominateur, simplifier, puis conclure avec les tableaux.\n- « $\\dfrac{0}{0}$ » en un réel $a$ : factoriser le numérateur et le dénominateur par $x - a$ (identité remarquable, ou trinôme dont $a$ est une racine), puis simplifier. Si l'expression simplifiée est définie en $a$, remplacer $x$ par $a$ ; sinon, chercher sa limite avec les tableaux.",
+    "conditions": "Seulement devant une forme indéterminée ; le facteur par lequel on simplifie ne doit pas s'annuler.",
+    "exemple": "$\\dfrac{2x^2 + 1}{x^2 - 3} = \\dfrac{2 + \\frac{1}{x^2}}{1 - \\frac{3}{x^2}}$ tend vers $2$ en $+\\infty$ ; pour $x \\neq 2$, $\\dfrac{x^2 - 4}{x - 2} = x + 2$ tend vers $4$ en $2$.",
+    "simplifie": {
+      "coeur": "Forme indéterminée en $\\pm\\infty$ : factoriser par le terme le plus fort, en haut et en bas ; « $\\dfrac{0}{0}$ » en $a$ : factoriser par $x - a$",
+      "moyenMemo": "Le plus fort impose sa loi.",
+      "motCle": "terme-plus-fort"
+    }
+  },
+  {
+    "id": "m-limites-fonctions-comparaison",
+    "chapitre": "limites-fonctions",
+    "notion": "n-limites-fonctions-comparaison",
+    "genre": "propriete",
+    "titre": "Comparaison et gendarmes",
+    "enonce": "- Si $f(x) \\leqslant g(x)$ pour $x$ assez grand et si $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$, alors $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$.\n- Si $g(x) \\leqslant f(x) \\leqslant h(x)$ pour $x$ assez grand, et si $g$ et $h$ ont la même limite $\\ell$ en $+\\infty$, alors $\\lim\\limits_{x \\to +\\infty} f(x) = \\ell$.\n- Mêmes énoncés en $-\\infty$ et en un réel $a$.",
+    "conditions": "Pour $+\\infty$ : minorer. Pour $-\\infty$ : majorer par une fonction qui tend vers $-\\infty$. Pour les gendarmes : les deux bornes ont la même limite finie.",
+    "exemple": "$-e^{-x} \\leqslant e^{-x}\\cos x \\leqslant e^{-x}$, donc $e^{-x}\\cos x$ tend vers $0$ en $+\\infty$.",
+    "simplifie": {
+      "coeur": "Au-dessus d'une fonction qui tend vers $+\\infty$ : $+\\infty$. Coincée entre deux fonctions de même limite $\\ell$ : $\\ell$.",
+      "moyenMemo": "Pour monter à l'infini, il faut être poussé par en dessous.",
+      "motCle": "comparaison-gendarmes"
+    }
+  }
+]

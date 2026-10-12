@@ -103,6 +103,17 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
 - Opérations, formes indéterminées · ★★
 - Croissances comparées (exp, puissances ; puis ln au ch. 7) · ★★★
 - Limite d'une composée ; comparaison, encadrement · ★★
+- **Cours écrit le 2026-10-12** (`content/terminale/maths/chapitres/limites-fonctions/`,
+  domaine `analyse`) : 5 notions, priorités mesurées (103 sujets depuis 2021) — limite en
+  l'infini, en un réel, asymptotes ★★ (31/103) ; fonctions de référence ★★★ (57/103, avec la
+  démonstration de la limite de exp, `bo-m-suites-13`) ; opérations, composée, formes
+  indéterminées ★★ (43/103) ; comparaison et encadrement ★★ (1/103, relevée d'un cran : elle
+  démontre les croissances comparées) ; croissances comparées et choix de la méthode ★★★
+  (83/103). Écarts avec la proposition : 5 notions au lieu de 4 (la première ne tenait pas en
+  une séance : les fonctions de référence en sont sorties) ; la composée rejoint les
+  opérations (le programme les relie) ; la comparaison passe avant les croissances comparées,
+  dont la démonstration s'appuie sur une minoration. Interdits tenus (ordre de l'année) : ni
+  logarithme, ni continuité nommée, ni dérivée de v∘u, ni dérivées de sin et cos.
 
 ### 4. Continuité, théorème des valeurs intermédiaires
 - Continuité (définition, fonctions de référence) · ★★
