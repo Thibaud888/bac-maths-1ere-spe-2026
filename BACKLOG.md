@@ -617,7 +617,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     sans logarithme ni continuité nommée. Relecteur PASS au 1er tour, élève-testeur
     À clarifier (1 bloquant : étape sautée dans la démonstration 051 ; forme 0/0 en un réel
     ajoutée) puis tout corrigé, relu en 2 tours ciblés (PASS au 3e) ; couverture « cours »
-    sans écart. Coût : 26 $. PR : #120.
+    sans écart. Coût : 26 $. PR : #121.
   - [ ] Limites de fonctions : les exercices — `/tle-chapitre maths limites-fonctions exercices`,
     dans une autre session neuve, une fois le cours fusionné. À donner aux auteurs : au moins
     une question éclair ou un exercice « Comprendre » sur la forme 0/0 en un réel (la notion
