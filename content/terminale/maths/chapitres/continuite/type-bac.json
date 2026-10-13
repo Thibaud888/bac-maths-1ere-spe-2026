@@ -339,7 +339,7 @@
             "revoir": "l-limites-suites-064",
             "indices": [
               "C'est une recherche de seuil avec une boucle while : la boucle tourne tant que le but n'est pas atteint, donc sa condition est le contraire du but. Ici, le but est « la population du milieu B est strictement supérieure à celle du milieu A ».",
-              "Le but s'écrit $v > u$ : la condition de la boucle est son contraire, $v \\leqslant u$. Pour les deux autres pointillés, chaque variable passe au terme suivant de sa suite : traduis la relation de la partie A et celle de la partie B, en Python, avec un point comme séparateur décimal."
+              "Le but s'écrit $v > u$ : quel est son contraire, écrit avec un opérateur de comparaison de Python ? Pour les deux autres pointillés, chaque variable passe au terme suivant de sa suite : traduis la relation de la partie A et celle de la partie B, en Python, avec un point comme séparateur décimal."
             ],
             "attenduCorrecteur": "- Condition $\\texttt{while v <= u:}$, et mises à jour $\\texttt{u = 0{.}93 * u}$ et $\\texttt{v = -0{.}05 * v * v + 1{.}1 * v}$ : 0,25 pt.",
             "solution": "Le programme doit s'arrêter dès que $v_n > u_n$ : la boucle tourne tant que le contraire est vrai, c'est-à-dire tant que $v_n \\leqslant u_n$. La condition est donc $\\texttt{while v <= u:}$.\n\nDans la boucle, les deux variables passent au terme suivant : $u_{n+1} = 0{,}93u_n$ et $v_{n+1} = -0{,}05v_n^2 + 1{,}1v_n$. En Python, le séparateur décimal est un point, d'où les lignes $\\texttt{u = 0{.}93 * u}$ et $\\texttt{v = -0{.}05 * v * v + 1{.}1 * v}$.\n\nLa boucle finit par s'arrêter : d'après la question C.2, $v_n > u_n$ à partir d'un certain rang."
@@ -514,19 +514,19 @@
           {
             "id": "q6a",
             "label": "1.",
-            "enonce": "L'appel rang(2.888) renvoie la valeur $5$. Interpréter ce résultat dans le contexte de l'exercice.",
+            "enonce": "L'appel $\\texttt{rang(2{.}888)}$ renvoie la valeur $5$. Interpréter ce résultat dans le contexte de l'exercice.",
             "points": 0.5,
             "revoir": "l-limites-suites-064",
             "indices": [
               "La boucle tourne tant que $u < a$ : la fonction renvoie le rang du premier terme de la suite qui atteint ou dépasse a. Que dit ensuite la croissance de $(u_n)$ sur les termes suivants ?"
             ],
             "attenduCorrecteur": "- $5$ est le plus petit entier $n$ tel que $u_n \\geqslant 2{,}888$ : $u_0$, …, $u_4$ sont strictement inférieurs à $2{,}888$, et $u_5 \\geqslant 2{,}888$ : 0,25 pt.\n- Croissance de $(u_n)$ : $u_n \\geqslant 2{,}888$ pour tout $n \\geqslant 5$ ; à partir du rang $5$, tous les termes sont supérieurs ou égaux à $2{,}888$ : 0,25 pt.",
-            "solution": "La variable u prend successivement les valeurs $u_0$, $u_1$, $u_2$…, et n compte les tours de boucle. La boucle s'arrête au premier terme qui n'est plus strictement inférieur à $2{,}888$. L'appel rang(2.888) renvoie $5$ : $u_0$, $u_1$, …, $u_4$ sont strictement inférieurs à $2{,}888$, et $u_5 \\geqslant 2{,}888$. Ainsi, $5$ est le plus petit rang $n$ tel que $u_n \\geqslant 2{,}888$. À la calculatrice, $u_4 \\approx 2{,}887\\,4$ et $u_5 \\approx 2{,}888\\,6$.\n\nComme la suite $(u_n)$ est croissante, $u_n \\geqslant u_5 \\geqslant 2{,}888$ pour tout $n \\geqslant 5$ : à partir du rang $5$, tous les termes sont supérieurs ou égaux à $2{,}888$.\n\nDe plus, la question suivante montre que $u_n \\leqslant \\alpha$ pour tout $n$ ; avec $\\alpha < 2{,}889$ (question A.2.b), on a alors $2{,}888 \\leqslant u_n < 2{,}889$ pour tout $n \\geqslant 5$ : à partir du rang $5$, $u_n$ est une valeur approchée de $\\alpha$ à $10^{-3}$ près."
+            "solution": "La variable u prend successivement les valeurs $u_0$, $u_1$, $u_2$…, et n compte les tours de boucle. La boucle s'arrête au premier terme qui n'est plus strictement inférieur à $2{,}888$. L'appel $\\texttt{rang(2{.}888)}$ renvoie $5$ : $u_0$, $u_1$, …, $u_4$ sont strictement inférieurs à $2{,}888$, et $u_5 \\geqslant 2{,}888$. Ainsi, $5$ est le plus petit rang $n$ tel que $u_n \\geqslant 2{,}888$. À la calculatrice, $u_4 \\approx 2{,}887\\,4$ et $u_5 \\approx 2{,}888\\,6$.\n\nComme la suite $(u_n)$ est croissante, $u_n \\geqslant u_5 \\geqslant 2{,}888$ pour tout $n \\geqslant 5$ : à partir du rang $5$, tous les termes sont supérieurs ou égaux à $2{,}888$.\n\nDe plus, la question suivante montre que $u_n \\leqslant \\alpha$ pour tout $n$ ; avec $\\alpha < 2{,}889$ (question A.2.b), on a alors $2{,}888 \\leqslant u_n < 2{,}889$ pour tout $n \\geqslant 5$ : à partir du rang $5$, $u_n$ est une valeur approchée de $\\alpha$ à $10^{-3}$ près."
           },
           {
             "id": "q6b",
             "label": "2.",
-            "enonce": "Expliquer pourquoi l'appel rang(2.9) ne renvoie aucune valeur.",
+            "enonce": "Expliquer pourquoi l'appel $\\texttt{rang(2{.}9)}$ ne renvoie aucune valeur.",
             "points": 0.5,
             "revoir": "l-limites-suites-069",
             "indices": [
@@ -534,7 +534,7 @@
               "Pour comparer $u_n$ à $\\alpha$, raisonne par récurrence : $f$ est croissante sur $[1\\,;\\,3]$, et $g(\\alpha) = 0$ s'écrit $f(\\alpha) = \\alpha$."
             ],
             "attenduCorrecteur": "- Pour tout $n$, $u_n \\leqslant \\alpha$ : par récurrence ($u_0 = 1 \\leqslant \\alpha$ ; si $u_n \\leqslant \\alpha$, alors $u_{n+1} = f(u_n) \\leqslant f(\\alpha) = \\alpha$ par croissance de $f$), ou parce qu'une suite croissante est majorée par sa limite : 0,25 pt.\n- Donc $u_n \\leqslant \\alpha < 2{,}89 < 2{,}9$ pour tout $n$ : la condition $u < 2{,}9$ reste toujours vraie, la boucle ne s'arrête jamais et rien n'est renvoyé : 0,25 pt.",
-            "solution": "La boucle s'arrête seulement si la variable u, qui prend successivement les valeurs $u_0$, $u_1$, $u_2$…, devient supérieure ou égale à $2{,}9$.\n\nMontrons par récurrence que $u_n \\leqslant \\alpha$ pour tout entier naturel $n$. **Initialisation** : $u_0 = 1 \\leqslant \\alpha$, car $\\alpha \\in [1\\,;\\,3]$. **Hérédité** : soit $n$ un entier tel que $u_n \\leqslant \\alpha$. Les réels $u_n$ et $\\alpha$ sont dans $[1\\,;\\,3]$, où $f$ est croissante, donc $u_{n+1} = f(u_n) \\leqslant f(\\alpha)$. Or $g(\\alpha) = 0$, c'est-à-dire $f(\\alpha) = \\alpha$ : donc $u_{n+1} \\leqslant \\alpha$. **Conclusion** : pour tout entier naturel $n$, $u_n \\leqslant \\alpha$.\n\nAinsi, pour tout $n$, $u_n \\leqslant \\alpha < 2{,}89 < 2{,}9$ : la condition $u < 2{,}9$ est toujours vraie, la boucle ne s'arrête jamais, et l'appel rang(2.9) ne renvoie aucune valeur.",
+            "solution": "La boucle s'arrête seulement si la variable u, qui prend successivement les valeurs $u_0$, $u_1$, $u_2$…, devient supérieure ou égale à $2{,}9$.\n\nMontrons par récurrence que $u_n \\leqslant \\alpha$ pour tout entier naturel $n$. **Initialisation** : $u_0 = 1 \\leqslant \\alpha$, car $\\alpha \\in [1\\,;\\,3]$. **Hérédité** : soit $n$ un entier tel que $u_n \\leqslant \\alpha$. Les réels $u_n$ et $\\alpha$ sont dans $[1\\,;\\,3]$, où $f$ est croissante, donc $u_{n+1} = f(u_n) \\leqslant f(\\alpha)$. Or $g(\\alpha) = 0$, c'est-à-dire $f(\\alpha) = \\alpha$ : donc $u_{n+1} \\leqslant \\alpha$. **Conclusion** : pour tout entier naturel $n$, $u_n \\leqslant \\alpha$.\n\nAinsi, pour tout $n$, $u_n \\leqslant \\alpha < 2{,}89 < 2{,}9$ : la condition $u < 2{,}9$ est toujours vraie, la boucle ne s'arrête jamais, et l'appel $\\texttt{rang(2{.}9)}$ ne renvoie aucune valeur.",
             "erreurFrequente": "Répondre que la suite finit par dépasser tout nombre parce qu'elle est croissante : une suite croissante et convergente reste sous sa limite."
           }
         ]
