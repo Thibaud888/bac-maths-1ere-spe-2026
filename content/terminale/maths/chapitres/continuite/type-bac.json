@@ -1,0 +1,837 @@
+[
+  {
+    "id": "tb-continuite-001",
+    "chapitre": "continuite",
+    "notions": [
+      "n-continuite-valeurs-intermediaires"
+    ],
+    "capacites": [
+      "bo-m-continuite-03",
+      "bo-m-continuite-04",
+      "bo-m-limites-fonctions-01",
+      "bo-m-limites-fonctions-02",
+      "bo-m-limites-fonctions-04",
+      "bo-m-limites-fonctions-05",
+      "bo-m-limites-fonctions-06"
+    ],
+    "titre": "Une fonction exponentielle : nombre de solutions selon un paramètre, puis une tangente",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2021-metropole-mars-j1",
+      "adaptation": "Exercice 2 : fonction $f(x) = \\dfrac{e^x}{x}$ sur $]0\\,;\\,+\\infty[$, limite en $+\\infty$, asymptote verticale, dérivée à montrer, tableau de variations avec les limites, nombre de solutions de $f(x) = m$ selon $m$, et point où la tangente est parallèle à la droite d'équation $y = -x$ (fonction auxiliaire $g(x) = e^x(x - 1) + x^2$) conservés ; question 5.a posée sous forme d'équivalence, pour que la question 5.c en découle ; ajouté : l'encadrement $\\dfrac{1}{2} < a < 1$ de l'abscisse du point, sans calculatrice. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Soit $f$ la fonction définie sur l'intervalle $]0\\,;\\,+\\infty[$ par :\n\n$$f(x) = \\dfrac{e^x}{x}.$$\n\nOn note $\\mathcal{C}_f$ sa courbe représentative dans un repère orthonormé. On admet que $f$ est dérivable sur $]0\\,;\\,+\\infty[$ ; on note $f'$ sa fonction dérivée.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Limites de la fonction $f$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Déterminer la limite de la fonction $f$ en $+\\infty$.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-048",
+            "indices": [
+              "En $+\\infty$, $e^x$ et $x$ tendent tous deux vers $+\\infty$ : le quotient est une forme indéterminée. Pense aux croissances comparées entre l'exponentielle et les puissances de $x$."
+            ],
+            "attenduCorrecteur": "- Forme indéterminée « $\\dfrac{\\infty}{\\infty}$ » repérée et croissances comparées citées : 0,25 pt.\n- Conclusion : $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$ : 0,25 pt.",
+            "solution": "Quand $x$ tend vers $+\\infty$, $e^x$ et $x$ tendent vers $+\\infty$ : le quotient $\\dfrac{e^x}{x}$ est une forme indéterminée « $\\dfrac{\\infty}{\\infty}$ ». Par croissances comparées, $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x} = +\\infty$.\n\nDonc $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$.",
+            "erreurFrequente": "Conclure « $\\dfrac{\\infty}{\\infty} = 1$ » : c'est une forme indéterminée, et ici l'exponentielle l'emporte sur $x$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Justifier que l'axe des ordonnées est asymptote à la courbe $\\mathcal{C}_f$.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-006",
+            "indices": [
+              "L'axe des ordonnées est la droite d'équation $x = 0$. C'est une asymptote verticale si $f(x)$ tend vers $+\\infty$ ou vers $-\\infty$ quand $x$ tend vers $0$, ici avec $x > 0$.",
+              "Écris $f(x) = e^x \\times \\dfrac{1}{x}$ : cherche la limite de chaque facteur quand $x$ tend vers $0$ avec $x > 0$, puis celle du produit."
+            ],
+            "attenduCorrecteur": "- Limites des facteurs : quand $x$ tend vers $0$ avec $x > 0$, $e^x$ tend vers $e^0 = 1$ et $\\dfrac{1}{x}$ tend vers $+\\infty$ : 0,25 pt.\n- Par produit, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} f(x) = +\\infty$ ; conclusion : la droite d'équation $x = 0$, l'axe des ordonnées, est asymptote verticale à $\\mathcal{C}_f$ : 0,25 pt.",
+            "solution": "Quand $x$ tend vers $0$ avec $x > 0$, $e^x$ tend vers $e^0 = 1$, et $\\dfrac{1}{x}$ tend vers $+\\infty$. Par produit, comme $1 > 0$ :\n\n$$\\lim_{\\substack{x \\to 0 \\\\ x > 0}} f(x) = \\lim_{\\substack{x \\to 0 \\\\ x > 0}} \\left(e^x \\times \\dfrac{1}{x}\\right) = +\\infty.$$\n\nLa limite de $f$ en $0$ est infinie : la droite d'équation $x = 0$, c'est-à-dire l'axe des ordonnées, est asymptote verticale à la courbe $\\mathcal{C}_f$."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout réel $x$ de l'intervalle $]0\\,;\\,+\\infty[$, on a :\n\n$$f'(x) = \\dfrac{e^x(x - 1)}{x^2}.$$",
+        "points": 0.5,
+        "revoir": "l-limites-fonctions-047",
+        "indices": [
+          "$f$ est un quotient $\\dfrac{u}{v}$ avec $u(x) = e^x$ et $v(x) = x$, qui ne s'annule pas sur $]0\\,;\\,+\\infty[$. Formule de première : $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$.",
+          "Calcule $u'(x)$ et $v'(x)$, remplace-les dans la formule, puis factorise le numérateur par $e^x$."
+        ],
+        "attenduCorrecteur": "- Formule de dérivation d'un quotient appliquée avec $u(x) = e^x$, $v(x) = x$, $u'(x) = e^x$ et $v'(x) = 1$ : 0,25 pt.\n- Calcul et factorisation : $f'(x) = \\dfrac{xe^x - e^x}{x^2} = \\dfrac{e^x(x - 1)}{x^2}$ : 0,25 pt.",
+        "solution": "On pose $u(x) = e^x$ et $v(x) = x$ ; la fonction $v$ ne s'annule pas sur $]0\\,;\\,+\\infty[$, et $u'(x) = e^x$, $v'(x) = 1$. D'après la formule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$, pour tout $x > 0$ :\n\n$$f'(x) = \\dfrac{e^x \\times x - e^x \\times 1}{x^2} = \\dfrac{e^x(x - 1)}{x^2}.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer les variations de la fonction $f$ sur l'intervalle $]0\\,;\\,+\\infty[$. On établira un tableau de variations de la fonction $f$ dans lequel apparaîtront les limites.",
+        "points": 0.5,
+        "revoir": "l-continuite-015",
+        "indices": [
+          "Le signe de $f'(x)$ est celui du seul facteur qui peut changer de signe : regarde d'abord le signe de $e^x$ et celui de $x^2$ sur $]0\\,;\\,+\\infty[$.",
+          "Aux extrémités du tableau, en $0$ et en $+\\infty$, place les limites de la question 1 ; calcule l'image du réel où $f'$ s'annule."
+        ],
+        "attenduCorrecteur": "- Signe de $f'(x)$ : celui de $x - 1$, car $e^x > 0$ et $x^2 > 0$ : 0,25 pt.\n- Tableau : $f$ strictement décroissante sur $]0\\,;\\,1]$, strictement croissante sur $[1\\,;\\,+\\infty[$, $f(1) = e$, limites $+\\infty$ en $0$ et en $+\\infty$ : 0,25 pt.",
+        "solution": "Pour tout $x > 0$, $e^x > 0$ et $x^2 > 0$ : $f'(x)$ a le signe de $x - 1$. Il est strictement négatif sur $]0\\,;\\,1[$, nul en $1$, et strictement positif sur $]1\\,;\\,+\\infty[$. Donc $f$ est strictement décroissante sur $]0\\,;\\,1]$ et strictement croissante sur $[1\\,;\\,+\\infty[$, avec $f(1) = \\dfrac{e^1}{1} = e$.\n\nAvec les limites de la question 1 :\n\n| $x$ | $0$ | | $1$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $-$ | $0$ | $+$ | |\n| variations de $f$ | $+\\infty$ | $\\searrow$ | $e$ | $\\nearrow$ | $+\\infty$ |"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Soit $m$ un nombre réel. Préciser, en fonction des valeurs du nombre réel $m$, le nombre de solutions de l'équation $f(x) = m$.",
+        "points": 1,
+        "revoir": "l-continuite-027",
+        "indices": [
+          "Applique le théorème des valeurs intermédiaires, sous sa forme étendue aux limites, sur chacun des deux intervalles où $f$ est strictement monotone : quelles valeurs $f$ prend-elle sur $]0\\,;\\,1]$ ? sur $[1\\,;\\,+\\infty[$ ?",
+          "Compare ensuite $m$ au minimum de $f$ : distingue trois cas (plus petit, égal, plus grand), et additionne les solutions des deux intervalles sans compter deux fois le réel $1$."
+        ],
+        "attenduCorrecteur": "- Sur $]0\\,;\\,1]$ : $f$ continue (car dérivable) et strictement décroissante, de la limite $+\\infty$ jusqu'à $f(1) = e$ ; elle y prend une fois et une seule chaque valeur de $[e\\,;\\,+\\infty[$, et aucune autre : 0,25 pt.\n- Sur $[1\\,;\\,+\\infty[$ : $f$ continue et strictement croissante, de $e$ jusqu'à la limite $+\\infty$ ; même conclusion : 0,25 pt.\n- Conclusion par cas : aucune solution si $m < e$ ; une seule, $x = 1$, si $m = e$ ; deux si $m > e$, l'une dans $]0\\,;\\,1[$, l'autre dans $]1\\,;\\,+\\infty[$ : 0,5 pt.",
+        "solution": "D'après la question 3, le minimum de $f$ sur $]0\\,;\\,+\\infty[$ est $f(1) = e$.\n\n**Sur $]0\\,;\\,1]$.** $f$ est dérivable, donc continue, et strictement décroissante ; $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} f(x) = +\\infty$ et $f(1) = e$. D'après le théorème des valeurs intermédiaires, sous sa forme étendue aux limites, pour tout réel $m \\geqslant e$, l'équation $f(x) = m$ admet une unique solution dans $]0\\,;\\,1]$. Pour $m < e$, elle n'en a aucune, car $f(x) \\geqslant e$ pour tout $x$ de $]0\\,;\\,1]$.\n\n**Sur $[1\\,;\\,+\\infty[$.** $f$ est continue et strictement croissante ; $f(1) = e$ et $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$. De même, pour tout $m \\geqslant e$, l'équation $f(x) = m$ admet une unique solution dans $[1\\,;\\,+\\infty[$, et aucune pour $m < e$.\n\n**Bilan.** Pour $m = e$, les solutions trouvées sur les deux intervalles sont le même réel $1$. Pour $m > e$, elles sont distinctes : aucune n'est égale à $1$, car $f(1) = e \\neq m$ ; l'une est dans $]0\\,;\\,1[$, l'autre dans $]1\\,;\\,+\\infty[$. Ainsi :\n\n- si $m < e$, l'équation $f(x) = m$ n'a aucune solution ;\n- si $m = e$, elle a une seule solution, $x = 1$ ;\n- si $m > e$, elle a exactement deux solutions.",
+        "erreurFrequente": "Oublier le cas $m = e$, ou lui compter deux solutions : les solutions trouvées sur $]0\\,;\\,1]$ et sur $[1\\,;\\,+\\infty[$ sont alors le même réel $1$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On note $\\Delta$ la droite d'équation $y = -x$. On s'intéresse aux points de $\\mathcal{C}_f$ en lesquels la tangente à $\\mathcal{C}_f$ est parallèle à $\\Delta$.\n\nOn note $g$ la fonction définie sur $[0\\,;\\,+\\infty[$ par $g(x) = e^x(x - 1) + x^2$. On admet que $g$ est dérivable sur $[0\\,;\\,+\\infty[$ ; on note $g'$ sa fonction dérivée.",
+        "points": 2,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Soit $a$ un réel strictement positif. Montrer que la tangente à $\\mathcal{C}_f$ au point d'abscisse $a$ est parallèle à $\\Delta$ si, et seulement si, $a$ est solution de l'équation $e^x(x - 1) + x^2 = 0$.",
+            "points": 0.5,
+            "revoir": "l-continuite-036",
+            "indices": [
+              "Deux droites non verticales sont parallèles quand elles ont le même coefficient directeur. Celui de la tangente au point d'abscisse $a$ est $f'(a)$ ; celui de $\\Delta$ se lit sur son équation.",
+              "Écris l'égalité des coefficients directeurs avec l'expression de la question 2, puis multiplie les deux membres par $a^2$, qui n'est pas nul."
+            ],
+            "attenduCorrecteur": "- Traduction : la tangente est parallèle à $\\Delta$ si, et seulement si, $f'(a) = -1$, coefficient directeur de $\\Delta$ : 0,25 pt.\n- Équivalences : $\\dfrac{e^a(a - 1)}{a^2} = -1 \\iff e^a(a - 1) = -a^2 \\iff e^a(a - 1) + a^2 = 0$, car $a^2 \\neq 0$ : 0,25 pt.",
+            "solution": "Le coefficient directeur de la tangente à $\\mathcal{C}_f$ au point d'abscisse $a$ est $f'(a)$, et celui de $\\Delta$ est $-1$. Deux droites non verticales sont parallèles si, et seulement si, elles ont le même coefficient directeur. Comme $a > 0$, $a^2 \\neq 0$, et :\n\n$$f'(a) = -1 \\iff \\dfrac{e^a(a - 1)}{a^2} = -1 \\iff e^a(a - 1) = -a^2 \\iff e^a(a - 1) + a^2 = 0.$$\n\nLa tangente au point d'abscisse $a$ est donc parallèle à $\\Delta$ si, et seulement si, $a$ est solution de l'équation $e^x(x - 1) + x^2 = 0$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Calculer $g'(x)$ pour tout réel $x$ de l'intervalle $[0\\,;\\,+\\infty[$, puis dresser le tableau de variations de $g$ sur $[0\\,;\\,+\\infty[$, avec sa limite en $+\\infty$.",
+            "points": 0.5,
+            "revoir": "l-continuite-027",
+            "indices": [
+              "$e^x(x - 1)$ est un produit : $(uv)' = u'v + uv'$, avec $u(x) = e^x$ et $v(x) = x - 1$. N'oublie pas la dérivée de $x^2$.",
+              "Simplifie, puis factorise $g'(x)$ par $x$ et étudie le signe de chaque facteur pour $x \\geqslant 0$. Pour la limite, regarde chaque terme de $g(x)$ quand $x$ tend vers $+\\infty$."
+            ],
+            "attenduCorrecteur": "- Calcul : $g'(x) = e^x(x - 1) + e^x + 2x = xe^x + 2x = x\\left(e^x + 2\\right)$ : 0,25 pt.\n- Signe et tableau : $x \\geqslant 0$ et $e^x + 2 > 0$, donc $g'(x) \\geqslant 0$, nul seulement en $0$ ; $g$ strictement croissante sur $[0\\,;\\,+\\infty[$, de $g(0) = -1$ jusqu'à la limite $+\\infty$ : 0,25 pt.",
+            "solution": "Avec $(uv)' = u'v + uv'$, où $u(x) = e^x$ et $v(x) = x - 1$, et $\\left(x^2\\right)' = 2x$, pour tout $x \\geqslant 0$ :\n\n$$g'(x) = e^x(x - 1) + e^x \\times 1 + 2x = xe^x + 2x = x\\left(e^x + 2\\right).$$\n\nPour $x \\geqslant 0$, on a $x \\geqslant 0$ et $e^x + 2 > 0$ : $g'(x) \\geqslant 0$, et $g'(x) = 0$ seulement pour $x = 0$. Donc $g$ est strictement croissante sur $[0\\,;\\,+\\infty[$.\n\n$g(0) = e^0 \\times (0 - 1) + 0^2 = -1$. En $+\\infty$, $e^x$ et $x - 1$ tendent vers $+\\infty$, donc leur produit aussi, et $x^2$ tend vers $+\\infty$ : par somme, $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$.\n\n| $x$ | $0$ | | $+\\infty$ |\n|---|---|---|---|\n| signe de $g'(x)$ | $0$ | $+$ | |\n| variations de $g$ | $-1$ | $\\nearrow$ | $+\\infty$ |"
+          },
+          {
+            "id": "q5c",
+            "label": "c)",
+            "enonce": "Montrer qu'il existe un unique point $A$ de $\\mathcal{C}_f$ en lequel la tangente à $\\mathcal{C}_f$ est parallèle à $\\Delta$, et que son abscisse $a$ vérifie $\\dfrac{1}{2} < a < 1$.",
+            "points": 1,
+            "revoir": "l-continuite-026",
+            "indices": [
+              "D'après la question a, il s'agit de compter les solutions strictement positives de $g(x) = 0$. Applique le théorème des valeurs intermédiaires à $g$ sur $[0\\,;\\,+\\infty[$, sous sa forme étendue : borne $0$ incluse, limite en $+\\infty$.",
+              "Pour l'encadrement, calcule $g\\left(\\dfrac{1}{2}\\right)$ et $g(1)$ et compare-les à $0$. Pour le premier, écris $e^{\\frac{1}{2}} = \\sqrt{e}$ et compare $\\dfrac{1}{2}\\sqrt{e}$ à $\\dfrac{1}{4}$."
+            ],
+            "attenduCorrecteur": "- Hypothèses : $g$ continue (car dérivable) et strictement croissante sur $[0\\,;\\,+\\infty[$, $g(0) = -1 < 0$ et $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$ : 0,25 pt.\n- Conclusion du théorème des valeurs intermédiaires : l'équation $g(x) = 0$ a une unique solution $a$ dans $[0\\,;\\,+\\infty[$, avec $a \\neq 0$ car $g(0) \\neq 0$ ; avec la question a, un unique point $A$ : 0,25 pt.\n- $g\\left(\\dfrac{1}{2}\\right) = \\dfrac{1}{4} - \\dfrac{1}{2}\\sqrt{e} < 0$, justifié par $\\sqrt{e} > 1$, et $g(1) = 1 > 0$ : 0,25 pt.\n- Conclusion : $g$ strictement croissante et $g\\left(\\dfrac{1}{2}\\right) < g(a) = 0 < g(1)$, donc $\\dfrac{1}{2} < a < 1$ : 0,25 pt.",
+            "solution": "La fonction $g$ est dérivable, donc continue, et strictement croissante sur $[0\\,;\\,+\\infty[$ ; $g(0) = -1$ et $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$. Le réel $0$ est compris entre $g(0) = -1$ et cette limite : d'après le théorème des valeurs intermédiaires, sous sa forme étendue (borne $0$ incluse), l'équation $g(x) = 0$ admet une unique solution $a$ dans $[0\\,;\\,+\\infty[$. Comme $g(0) = -1 \\neq 0$, on a $a > 0$.\n\nD'après la question a, les points de $\\mathcal{C}_f$ en lesquels la tangente est parallèle à $\\Delta$ sont ceux dont l'abscisse est une solution strictement positive de $g(x) = 0$. Il y en a donc exactement un : le point $A$ d'abscisse $a$.\n\n**Encadrement.** $g\\left(\\dfrac{1}{2}\\right) = e^{\\frac{1}{2}}\\left(\\dfrac{1}{2} - 1\\right) + \\dfrac{1}{4} = \\dfrac{1}{4} - \\dfrac{1}{2}\\sqrt{e}$. Or $e > 1$, donc $\\sqrt{e} > 1$ et $\\dfrac{1}{2}\\sqrt{e} > \\dfrac{1}{2} > \\dfrac{1}{4}$ : $g\\left(\\dfrac{1}{2}\\right) < 0$. De plus, $g(1) = e^1 \\times 0 + 1 = 1 > 0$.\n\nSi l'on avait $a \\leqslant \\dfrac{1}{2}$, la croissance de $g$ donnerait $g(a) \\leqslant g\\left(\\dfrac{1}{2}\\right) < 0$ ; si l'on avait $a \\geqslant 1$, elle donnerait $g(a) \\geqslant g(1) > 0$. Les deux sont impossibles, car $g(a) = 0$. Donc $\\dfrac{1}{2} < a < 1$.",
+            "erreurFrequente": "Conclure à l'existence du point $A$ sans vérifier que $a \\neq 0$ : $f$ n'est pas définie en $0$, et la question a ne vaut que pour une abscisse strictement positive."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-continuite-002",
+    "chapitre": "continuite",
+    "notions": [
+      "n-continuite-suite-recurrente"
+    ],
+    "capacites": [
+      "bo-m-continuite-05",
+      "bo-m-continuite-02",
+      "bo-m-suites-05",
+      "bo-m-suites-08",
+      "bo-m-suites-06",
+      "bo-m-suites-07",
+      "bo-m-suites-02",
+      "bo-m-suites-09",
+      "bo-m-suites-14",
+      "bo-m-logique-14"
+    ],
+    "titre": "Deux populations animales : suite géométrique, suite récurrente et limite",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2025-etrangers-j2",
+      "adaptation": "Exercice 1 : les deux milieux, la suite géométrique de raison $0{,}93$, la suite $v_{n+1} = -0{,}05v_n^2 + 1{,}1v_n$, la croissance de $f$ sur $[0\\,;\\,11]$, la récurrence « $2 \\leqslant v_{n+1} \\leqslant v_n \\leqslant 6$ », la convergence, la limite tirée de $f(\\ell) = \\ell$ et son interprétation, la comparaison des deux milieux et le programme Python à compléter conservés ; questions A.1 et B.1 (population au 1er janvier 2026) retirées, $v_1$ étant calculé dans l'initialisation ; question C.1, résolue dans l'original avec le logarithme (chapitre ultérieur), remplacée par une recherche à la calculatrice, comme la question C.2 ; encadrement de $\\ell$ ajouté. Solution écrite pour le site."
+    },
+    "preambule": "On se propose de comparer l'évolution d'une population animale dans deux milieux distincts A et B. Au 1er janvier 2025, on introduit $6\\,000$ individus dans chacun des milieux A et B.\n\n**Partie A — le milieu A.** Dans ce milieu, on suppose que l'évolution de la population est modélisée par la suite géométrique $(u_n)$ de premier terme $u_0 = 6$ et de raison $0{,}93$. Pour tout entier naturel $n$, $u_n$ représente la population au 1er janvier de l'année $2025 + n$, exprimée en milliers d'individus.\n\n**Partie B — le milieu B.** Dans ce milieu, on suppose que l'évolution de la population est modélisée par la suite $(v_n)$ définie par $v_0 = 6$ et, pour tout entier naturel $n$ :\n\n$$v_{n+1} = -0{,}05v_n^2 + 1{,}1v_n.$$\n\nPour tout entier naturel $n$, $v_n$ représente la population au 1er janvier de l'année $2025 + n$, exprimée en milliers d'individus. Soit $f$ la fonction définie sur $[0\\,;\\,+\\infty[$ par $f(x) = -0{,}05x^2 + 1{,}1x$ : ainsi, $v_{n+1} = f(v_n)$.\n\n**Partie C** compare les deux milieux.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Exprimer $u_n$ en fonction de $n$, puis déterminer la limite de la suite $(u_n)$. Interpréter ce résultat dans le contexte de l'exercice.",
+        "points": 0.75,
+        "revoir": "l-limites-suites-040",
+        "indices": [
+          "Une suite géométrique de premier terme $u_0$ et de raison $q$ s'écrit $u_n = u_0 \\times q^n$. Pour la limite, regarde où se trouve la raison par rapport à $-1$ et à $1$.",
+          "La limite trouvée est une population en milliers d'individus : que devient la population du milieu A à long terme ?"
+        ],
+        "attenduCorrecteur": "- $u_n = 6 \\times 0{,}93^n$ pour tout entier naturel $n$ : 0,25 pt.\n- $-1 < 0{,}93 < 1$, donc $\\lim\\limits_{n \\to +\\infty} 0{,}93^n = 0$ et, par produit, $\\lim\\limits_{n \\to +\\infty} u_n = 0$ : 0,25 pt.\n- Interprétation : selon ce modèle, la population du milieu A finit par disparaître : 0,25 pt.",
+        "solution": "La suite $(u_n)$ est géométrique, de premier terme $u_0 = 6$ et de raison $0{,}93$ : pour tout entier naturel $n$, $u_n = 6 \\times 0{,}93^n$.\n\nComme $-1 < 0{,}93 < 1$, $\\lim\\limits_{n \\to +\\infty} 0{,}93^n = 0$ ; par produit par $6$, $\\lim\\limits_{n \\to +\\infty} u_n = 0$.\n\nSelon ce modèle, la population du milieu A diminue de $7\\,\\%$ chaque année et tend vers $0$ : à long terme, elle s'éteint."
+      },
+      {
+        "id": "q2",
+        "label": "B.1.",
+        "enonce": "Démontrer que la fonction $f$ est croissante sur l'intervalle $[0\\,;\\,11]$.",
+        "points": 0.5,
+        "revoir": "l-limites-fonctions-047",
+        "indices": [
+          "Étudie le signe de la dérivée $f'(x)$ sur $[0\\,;\\,11]$ ; la dérivée de $x^2$ est $2x$.",
+          "Résous l'inéquation $f'(x) \\geqslant 0$ : c'est une inéquation du premier degré."
+        ],
+        "attenduCorrecteur": "- $f'(x) = -0{,}1x + 1{,}1$ : 0,25 pt.\n- $f'(x) \\geqslant 0 \\iff x \\leqslant 11$, donc $f'(x) \\geqslant 0$ sur $[0\\,;\\,11]$ et $f$ est croissante sur cet intervalle : 0,25 pt.",
+        "solution": "La fonction $f$ est un polynôme, dérivable sur $[0\\,;\\,+\\infty[$, et $f'(x) = -0{,}05 \\times 2x + 1{,}1 = -0{,}1x + 1{,}1$.\n\nOr $-0{,}1x + 1{,}1 \\geqslant 0 \\iff 1{,}1 \\geqslant 0{,}1x \\iff x \\leqslant 11$. Donc $f'(x) \\geqslant 0$ pour tout $x$ de $[0\\,;\\,11]$ : la fonction $f$ est croissante sur $[0\\,;\\,11]$."
+      },
+      {
+        "id": "q3",
+        "label": "B.2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, on a :\n\n$$2 \\leqslant v_{n+1} \\leqslant v_n \\leqslant 6.$$",
+        "points": 1,
+        "revoir": "l-recurrence-suites-021",
+        "indices": [
+          "Pose $P(n)$ : « $2 \\leqslant v_{n+1} \\leqslant v_n \\leqslant 6$ ». Pour l'initialisation, calcule $v_1$. Pour l'hérédité, sers-toi de la croissance de $f$ sur $[0\\,;\\,11]$, qui contient $[2\\,;\\,6]$.",
+          "Dans l'hérédité, applique $f$ aux quatre membres de l'encadrement sans changer le sens des inégalités, puis calcule $f(2)$ et $f(6)$."
+        ],
+        "attenduCorrecteur": "- Initialisation : $v_1 = -0{,}05 \\times 36 + 1{,}1 \\times 6 = 4{,}8$ et $2 \\leqslant 4{,}8 \\leqslant 6 \\leqslant 6$ : 0,25 pt.\n- Hérédité : $2$, $v_{n+1}$, $v_n$ et $6$ sont dans $[0\\,;\\,11]$, où $f$ est croissante, d'où $f(2) \\leqslant f(v_{n+1}) \\leqslant f(v_n) \\leqslant f(6)$ : 0,25 pt.\n- Calculs : $f(2) = 2$ et $f(6) = 4{,}8 \\leqslant 6$, d'où $2 \\leqslant v_{n+2} \\leqslant v_{n+1} \\leqslant 6$ : 0,25 pt.\n- Conclusion rédigée par le principe de récurrence : 0,25 pt.",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $2 \\leqslant v_{n+1} \\leqslant v_n \\leqslant 6$ ».\n\n**Initialisation.** $v_0 = 6$ et $v_1 = f(6) = -0{,}05 \\times 36 + 1{,}1 \\times 6 = -1{,}8 + 6{,}6 = 4{,}8$. Comme $2 \\leqslant 4{,}8 \\leqslant 6 \\leqslant 6$, $P(0)$ est vraie.\n\n**Hérédité.** Soit $n$ un entier naturel tel que $P(n)$ est vraie : $2 \\leqslant v_{n+1} \\leqslant v_n \\leqslant 6$. Les quatre nombres $2$, $v_{n+1}$, $v_n$ et $6$ appartiennent à $[0\\,;\\,11]$, où $f$ est croissante (question B.1). On peut donc appliquer $f$ sans changer le sens des inégalités :\n\n$$f(2) \\leqslant f(v_{n+1}) \\leqslant f(v_n) \\leqslant f(6).$$\n\nOr $f(2) = -0{,}05 \\times 4 + 1{,}1 \\times 2 = -0{,}2 + 2{,}2 = 2$, $f(v_{n+1}) = v_{n+2}$, $f(v_n) = v_{n+1}$ et $f(6) = 4{,}8 \\leqslant 6$. Donc $2 \\leqslant v_{n+2} \\leqslant v_{n+1} \\leqslant 6$ : $P(n+1)$ est vraie.\n\n**Conclusion.** $P(0)$ est vraie et la propriété est héréditaire : d'après le principe de récurrence, pour tout entier naturel $n$, $2 \\leqslant v_{n+1} \\leqslant v_n \\leqslant 6$.",
+        "erreurFrequente": "Appliquer $f$ à l'encadrement sans dire pourquoi le sens des inégalités est conservé : il faut que $f$ soit croissante sur un intervalle qui contient les quatre nombres comparés."
+      },
+      {
+        "id": "q4",
+        "label": "B.3.",
+        "enonce": "En déduire que la suite $(v_n)$ converge vers un réel $\\ell$, et donner un encadrement de $\\ell$.",
+        "points": 0.5,
+        "revoir": "l-limites-suites-052",
+        "indices": [
+          "Lis l'encadrement de la question B.2 : quel est le sens de variation de $(v_n)$ ? Par quel nombre est-elle minorée ? Cite ensuite le théorème qui conclut.",
+          "Pour encadrer $\\ell$, passe à la limite dans l'encadrement de $v_n$ par deux nombres fixes."
+        ],
+        "attenduCorrecteur": "- $(v_n)$ décroissante et minorée par $2$, donc convergente d'après le théorème de convergence monotone : 0,25 pt.\n- Passage à la limite dans $2 \\leqslant v_n \\leqslant 6$ : $2 \\leqslant \\ell \\leqslant 6$ : 0,25 pt.",
+        "solution": "D'après la question B.2, pour tout entier naturel $n$, $2 \\leqslant v_{n+1} \\leqslant v_n \\leqslant 6$. La suite $(v_n)$ est donc décroissante, car $v_{n+1} \\leqslant v_n$, et minorée par $2$, car $v_n \\geqslant v_{n+1} \\geqslant 2$. D'après le théorème de convergence monotone, elle converge vers un réel $\\ell$.\n\nPour tout $n$, $2 \\leqslant v_n \\leqslant 6$ ; par passage à la limite, $2 \\leqslant \\ell \\leqslant 6$."
+      },
+      {
+        "id": "q5",
+        "label": "B.4.",
+        "enonce": "Valeur de la limite.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Justifier que la limite $\\ell$ vérifie $f(\\ell) = \\ell$, puis en déduire la valeur de $\\ell$.",
+            "points": 1,
+            "revoir": "l-continuite-055",
+            "indices": [
+              "Pour passer à la limite dans $v_{n+1} = f(v_n)$, vérifie les hypothèses : $f$ continue sur $[2\\,;\\,6]$, à valeurs dans $[2\\,;\\,6]$, et $\\ell$ dans cet intervalle (question B.3).",
+              "Résous $-0{,}05\\ell^2 + 1{,}1\\ell = \\ell$ en regroupant tout dans un membre et en factorisant par $\\ell$, puis garde la seule solution compatible avec l'encadrement de $\\ell$."
+            ],
+            "attenduCorrecteur": "- $f$ est un polynôme, donc continue sur $[2\\,;\\,6]$ : 0,25 pt.\n- $f$ est à valeurs dans $[2\\,;\\,6]$ (croissante, $f(2) = 2$ et $f(6) = 4{,}8$) et $\\ell \\in [2\\,;\\,6]$ ; en passant à la limite dans $v_{n+1} = f(v_n)$, $\\ell = f(\\ell)$ : 0,25 pt.\n- Résolution : $-0{,}05\\ell^2 + 0{,}1\\ell = 0 \\iff \\ell(-0{,}05\\ell + 0{,}1) = 0 \\iff \\ell = 0$ ou $\\ell = 2$ : 0,25 pt.\n- Choix justifié : $\\ell \\geqslant 2$, donc $\\ell = 2$ : 0,25 pt.",
+            "solution": "La fonction $f$ est un polynôme : elle est dérivable, donc continue, sur $[2\\,;\\,6]$. Elle est croissante sur $[2\\,;\\,6]$, contenu dans $[0\\,;\\,11]$ : pour tout $x$ de $[2\\,;\\,6]$, $f(2) \\leqslant f(x) \\leqslant f(6)$, soit $2 \\leqslant f(x) \\leqslant 4{,}8 \\leqslant 6$. Ainsi $f$ est à valeurs dans $[2\\,;\\,6]$.\n\nLa suite $(v_n)$ converge vers $\\ell$, qui appartient à $[2\\,;\\,6]$ (question B.3). Comme $v_{n+1} = f(v_n)$ et que $f$ est continue sur $[2\\,;\\,6]$, en passant à la limite on obtient $\\ell = f(\\ell)$.\n\n$$f(\\ell) = \\ell \\iff -0{,}05\\ell^2 + 1{,}1\\ell - \\ell = 0 \\iff -0{,}05\\ell^2 + 0{,}1\\ell = 0 \\iff \\ell(-0{,}05\\ell + 0{,}1) = 0.$$\n\nPar la règle du produit nul, $\\ell = 0$ ou $-0{,}05\\ell + 0{,}1 = 0$, c'est-à-dire $\\ell = \\dfrac{0{,}1}{0{,}05} = 2$.\n\nOr $\\ell \\geqslant 2$, donc $\\ell \\neq 0$. **Conclusion** : la suite $(v_n)$ converge vers $2$.",
+            "erreurFrequente": "Garder les deux solutions $0$ et $2$ : une suite convergente n'a qu'une limite, et l'encadrement $2 \\leqslant \\ell \\leqslant 6$ élimine $0$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Interpréter ce résultat dans le contexte de l'exercice.",
+            "points": 0.25,
+            "revoir": "l-limites-suites-044",
+            "indices": [
+              "Les termes $v_n$ sont des populations exprimées en milliers d'individus : traduis la limite en nombre d'individus, et dis ce que devient la population du milieu B à long terme."
+            ],
+            "attenduCorrecteur": "- Selon ce modèle, la population du milieu B se stabilise, à long terme, autour de $2\\,000$ individus : 0,25 pt.",
+            "solution": "$v_n$ est exprimé en milliers d'individus et tend vers $2$ : selon ce modèle, la population du milieu B diminue et se stabilise, à long terme, autour de $2\\,000$ individus. Elle ne descend jamais en dessous, puisque $v_n \\geqslant 2$ pour tout $n$."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "label": "C.1.",
+        "enonce": "Recherche à la calculatrice.",
+        "points": 0.75,
+        "sousQuestions": [
+          {
+            "id": "q6a",
+            "label": "a)",
+            "enonce": "À l'aide de la calculatrice, déterminer l'année à partir de laquelle la population du milieu A sera strictement inférieure à $3\\,000$ individus.\n\nSaisis l'année obtenue.",
+            "points": 0.25,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 2035,
+              "tolerance": 0
+            },
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "Cherche le plus petit entier $n$ tel que $u_n < 3$, avec le tableau de valeurs de $u_n = 6 \\times 0{,}93^n$. La suite est décroissante : une fois sous $3$, elle y reste. L'année correspondante est $2025 + n$."
+            ],
+            "attenduCorrecteur": "- Valeurs justificatives $u_9 \\approx 3{,}12 \\geqslant 3$ et $u_{10} \\approx 2{,}90 < 3$, décroissance de $(u_n)$, et réponse : à partir de 2035 : 0,25 pt.",
+            "solution": "$u_n$ est exprimé en milliers : on cherche le plus petit entier $n$ tel que $u_n < 3$. La suite $(u_n)$ est décroissante, car $u_n > 0$ et $u_{n+1} = 0{,}93u_n < u_n$.\n\nÀ la calculatrice : $u_9 = 6 \\times 0{,}93^9 \\approx 3{,}12$, donc $u_9 \\geqslant 3$ ; et $u_{10} = 6 \\times 0{,}93^{10} \\approx 2{,}90$, donc $u_{10} < 3$.\n\nPar décroissance, $u_n \\leqslant u_{10} < 3$ pour tout $n \\geqslant 10$, et $u_n \\geqslant u_9 \\geqslant 3$ pour tout $n \\leqslant 9$. La population du milieu A est strictement inférieure à $3\\,000$ individus à partir de l'année $2025 + 10$, c'est-à-dire **2035**."
+          },
+          {
+            "id": "q6b",
+            "label": "b)",
+            "enonce": "À l'aide de la calculatrice, déterminer l'année à partir de laquelle la population du milieu B sera strictement inférieure à $3\\,000$ individus.\n\nSaisis l'année obtenue.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 2031,
+              "tolerance": 0
+            },
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "Calcule les termes successifs $v_1$, $v_2$… avec la relation $v_{n+1} = -0{,}05v_n^2 + 1{,}1v_n$ (mode suite de la calculatrice, ou en réutilisant chaque résultat). D'après la question B.2, la suite est décroissante : une fois sous $3$, elle y reste."
+            ],
+            "attenduCorrecteur": "- Calcul des termes : $v_5 \\approx 3{,}14 \\geqslant 3$ et $v_6 \\approx 2{,}96 < 3$ : 0,25 pt.\n- Décroissance de $(v_n)$ invoquée (question B.2) et réponse : à partir de 2031 : 0,25 pt.",
+            "solution": "On cherche le plus petit entier $n$ tel que $v_n < 3$. À la calculatrice, en appliquant la relation de récurrence : $v_1 = 4{,}8$ ; $v_2 = 4{,}128$ ; $v_3 \\approx 3{,}689$ ; $v_4 \\approx 3{,}377$ ; $v_5 \\approx 3{,}145$ ; $v_6 \\approx 2{,}965$.\n\nDonc $v_5 \\geqslant 3$ et $v_6 < 3$. D'après la question B.2, la suite $(v_n)$ est décroissante : $v_n \\leqslant v_6 < 3$ pour tout $n \\geqslant 6$, et $v_n \\geqslant v_5 \\geqslant 3$ pour tout $n \\leqslant 5$. La population du milieu B est strictement inférieure à $3\\,000$ individus à partir de l'année $2025 + 6$, c'est-à-dire **2031**."
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "label": "C.2.",
+        "enonce": "Justifier qu'à partir d'une certaine année, la population du milieu B dépassera la population du milieu A.",
+        "points": 0.75,
+        "revoir": "l-limites-suites-009",
+        "indices": [
+          "Compare les deux suites à long terme : $(u_n)$ tend vers $0$, alors que $v_n \\geqslant 2$ pour tout $n$ (question B.2). Utilise la définition de la limite avec un intervalle ouvert qui contient $0$ et dont la borne de droite est $2$.",
+          "Dès que $u_n$ est dans cet intervalle, range les trois nombres $u_n$, $2$ et $v_n$ dans l'ordre."
+        ],
+        "attenduCorrecteur": "- $\\lim\\limits_{n \\to +\\infty} u_n = 0$ : l'intervalle ouvert $]-1\\,;\\,2[$ contient $0$, donc il contient tous les $u_n$ à partir d'un certain rang $N$ : 0,25 pt.\n- Pour tout $n$, $v_n \\geqslant 2$ (question B.2) : 0,25 pt.\n- Conclusion : pour tout $n \\geqslant N$, $u_n < 2 \\leqslant v_n$ ; à partir de l'année $2025 + N$, la population du milieu B dépasse celle du milieu A : 0,25 pt.",
+        "solution": "D'après la question A.1, la suite $(u_n)$ converge vers $0$. L'intervalle ouvert $]-1\\,;\\,2[$ contient $0$ : par définition de la limite, il contient tous les termes $u_n$ à partir d'un certain rang $N$. Ainsi, $u_n < 2$ pour tout entier $n \\geqslant N$.\n\nD'après la question B.2, $v_n \\geqslant 2$ pour tout entier naturel $n$.\n\nDonc, pour tout entier $n \\geqslant N$, $u_n < 2 \\leqslant v_n$ : à partir de l'année $2025 + N$, la population du milieu B est strictement supérieure à celle du milieu A. À la calculatrice, $u_{15} \\approx 2{,}02$ et $u_{16} \\approx 1{,}88$ : le rang $N = 16$ convient."
+      },
+      {
+        "id": "q8",
+        "label": "C.3.",
+        "enonce": "On considère le programme ci-dessous, écrit en langage Python ; trois éléments, remplacés par des pointillés, sont à compléter.",
+        "code": {
+          "langage": "python",
+          "source": "n = 0\nu = 6\nv = 6\nwhile ...:\n    u = ...\n    v = ...\n    n = n + 1\nprint(2025 + n)"
+        },
+        "points": 0.5,
+        "sousQuestions": [
+          {
+            "id": "q8a",
+            "label": "a)",
+            "enonce": "Compléter ce programme afin qu'après exécution, il affiche la première année où la population du milieu B est strictement supérieure à la population du milieu A.",
+            "points": 0.25,
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "La boucle tourne tant que le but n'est pas atteint : sa condition est le contraire de « $v > u$ ». Dans la boucle, les variables u et v passent chacune au terme suivant de leur suite."
+            ],
+            "attenduCorrecteur": "- Condition $\\texttt{while v <= u:}$, et mises à jour $\\texttt{u = 0{.}93 * u}$ et $\\texttt{v = -0{.}05 * v * v + 1{.}1 * v}$ : 0,25 pt.",
+            "solution": "Le programme doit s'arrêter dès que $v_n > u_n$ : la boucle tourne tant que le contraire est vrai, c'est-à-dire tant que $v_n \\leqslant u_n$. La condition est donc $\\texttt{while v <= u:}$.\n\nDans la boucle, les deux variables passent au terme suivant : $u_{n+1} = 0{,}93u_n$ et $v_{n+1} = -0{,}05v_n^2 + 1{,}1v_n$. En Python, le séparateur décimal est un point, d'où les lignes $\\texttt{u = 0{.}93 * u}$ et $\\texttt{v = -0{.}05 * v * v + 1{.}1 * v}$.\n\nLa boucle finit par s'arrêter : d'après la question C.2, $v_n > u_n$ à partir d'un certain rang."
+          },
+          {
+            "id": "q8b",
+            "label": "b)",
+            "enonce": "Déterminer l'année affichée après exécution du programme.\n\nSaisis l'année affichée.",
+            "points": 0.25,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 2038,
+              "tolerance": 0
+            },
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "Calcule à la calculatrice, côte à côte, les termes $u_n$ et $v_n$ à partir de $n = 10$ : la boucle s'arrête au premier rang où $v_n > u_n$, et le programme affiche $2025$ plus ce rang."
+            ],
+            "attenduCorrecteur": "- Valeurs justificatives $u_{12} \\approx 2{,}51$ et $v_{12} \\approx 2{,}41$, puis $u_{13} \\approx 2{,}34$ et $v_{13} \\approx 2{,}36$ ; année affichée : 2038 : 0,25 pt.",
+            "solution": "Au départ, $u = v = 6$ : la condition $v \\leqslant u$ est vraie et la boucle commence. À la calculatrice, $v_n \\leqslant u_n$ pour tous les rangs de $0$ à $12$ ; par exemple, $u_{12} \\approx 2{,}512$ et $v_{12} \\approx 2{,}406$. Au rang $13$, $u_{13} \\approx 2{,}336$ et $v_{13} \\approx 2{,}358$ : $v_{13} > u_{13}$.\n\nLa boucle s'arrête donc quand n vaut $13$, et le programme affiche $2025 + 13 = 2038$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-continuite-003",
+    "chapitre": "continuite",
+    "notions": [
+      "n-continuite-suite-recurrente",
+      "n-continuite-valeurs-intermediaires"
+    ],
+    "capacites": [
+      "bo-m-continuite-03",
+      "bo-m-continuite-04",
+      "bo-m-continuite-05",
+      "bo-m-continuite-02",
+      "bo-m-suites-08",
+      "bo-m-suites-06",
+      "bo-m-suites-07",
+      "bo-m-suites-14",
+      "bo-m-logique-14"
+    ],
+    "titre": "Une suite qui converge vers la solution d'une équation",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2026-polynesie-j2",
+      "adaptation": "Exercice 2 : structure conservée — fonction croissante qui envoie un intervalle dans lui-même, fonction $g(x) = f(x) - x$ strictement décroissante, unique solution $\\alpha$ de $g(x) = 0$ et son encadrement d'amplitude $10^{-3}$, récurrence « $u_n \\leqslant u_{n+1}$ » encadrée, convergence de la suite vers $\\alpha$, fonction Python qui renvoie un rang, et appel qui ne renvoie rien ; la fonction de l'original, écrite avec le logarithme (chapitre ultérieur), remplacée par $f(x) = 3 - 2e^{-x}$ sur $[1\\,;\\,3]$, avec $u_0 = 1$ ; décroissance de $g$ démontrée au lieu d'être admise ; question B.1 (valeur approchée de $u_1$) retirée. Solution écrite pour le site."
+    },
+    "preambule": "**Partie A.** On considère la fonction $f$ définie sur l'intervalle $[1\\,;\\,3]$ par :\n\n$$f(x) = 3 - 2e^{-x}.$$\n\nOn note $f'$ sa fonction dérivée.\n\n**Partie B.** On considère la suite $(u_n)$ définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$. La question B.1 montre que tous ses termes appartiennent à $[1\\,;\\,3]$, où $f$ est définie.\n\n**Partie C.** On utilise une fonction écrite en langage Python.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Étude de la fonction $f$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Étudier le sens de variation de la fonction $f$ sur $[1\\,;\\,3]$.",
+            "points": 0.5,
+            "revoir": "l-continuite-015",
+            "indices": [
+              "La dérivée de $x \\mapsto e^{ax+b}$ est $x \\mapsto ae^{ax+b}$ : applique-la avec $a = -1$ et $b = 0$, puis étudie le signe de $f'(x)$."
+            ],
+            "attenduCorrecteur": "- $f'(x) = -2 \\times \\left(-e^{-x}\\right) = 2e^{-x}$ : 0,25 pt.\n- $e^{-x} > 0$, donc $f'(x) > 0$ et $f$ est strictement croissante sur $[1\\,;\\,3]$ : 0,25 pt.",
+            "solution": "La fonction $f$ est dérivable sur $[1\\,;\\,3]$ ; la dérivée de $x \\mapsto e^{-x}$ est $x \\mapsto -e^{-x}$ (dérivée de $e^{ax+b}$ avec $a = -1$ et $b = 0$). Donc, pour tout $x$ de $[1\\,;\\,3]$ :\n\n$$f'(x) = 0 - 2 \\times \\left(-e^{-x}\\right) = 2e^{-x}.$$\n\nComme $e^{-x} > 0$, $f'(x) > 0$ : la fonction $f$ est strictement croissante sur $[1\\,;\\,3]$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Montrer que, pour tout réel $x$ de $[1\\,;\\,3]$, on a $1 \\leqslant f(x) \\leqslant 3$.",
+            "points": 0.5,
+            "revoir": "l-continuite-055",
+            "indices": [
+              "$f$ est croissante sur $[1\\,;\\,3]$ : pour tout $x$ de cet intervalle, $f(1) \\leqslant f(x) \\leqslant f(3)$. Compare ensuite $f(1)$ à $1$, puis $f(3)$ à $3$, sans valeur approchée : pense au signe de $e^{-3}$ et à $e > 1$."
+            ],
+            "attenduCorrecteur": "- Croissance utilisée : $f(1) \\leqslant f(x) \\leqslant f(3)$ pour tout $x$ de $[1\\,;\\,3]$ : 0,25 pt.\n- $f(1) = 3 - \\dfrac{2}{e} > 1$ (car $\\dfrac{2}{e} < 2$) et $f(3) = 3 - 2e^{-3} < 3$ (car $e^{-3} > 0$), d'où la conclusion : 0,25 pt.",
+            "solution": "D'après la question a, $f$ est croissante sur $[1\\,;\\,3]$ : pour tout $x$ de $[1\\,;\\,3]$, $f(1) \\leqslant f(x) \\leqslant f(3)$.\n\n$f(1) = 3 - 2e^{-1} = 3 - \\dfrac{2}{e}$. Comme $e > 1$, $\\dfrac{2}{e} < 2$, donc $f(1) > 3 - 2 = 1$. À la calculatrice, $f(1) \\approx 2{,}264$.\n\n$f(3) = 3 - 2e^{-3}$, et $e^{-3} > 0$, donc $f(3) < 3$.\n\nAinsi, pour tout $x$ de $[1\\,;\\,3]$, $1 < f(1) \\leqslant f(x) \\leqslant f(3) < 3$ ; donc $1 \\leqslant f(x) \\leqslant 3$."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "On considère la fonction $g$ définie sur $[1\\,;\\,3]$ par $g(x) = f(x) - x$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Montrer que la fonction $g$ est strictement décroissante sur $[1\\,;\\,3]$. On rappelle que $e > 2$.",
+            "points": 0.5,
+            "revoir": "l-continuite-015",
+            "indices": [
+              "Calcule $g'(x)$ à partir de la question A.1.a. Pour son signe, il suffit de montrer que $2e^{-x} < 1$ pour tout $x$ de $[1\\,;\\,3]$.",
+              "Pour $x \\geqslant 1$, on a $-x \\leqslant -1$ ; la fonction exponentielle étant croissante, compare $e^{-x}$ à $e^{-1} = \\dfrac{1}{e}$, puis utilise $e > 2$."
+            ],
+            "attenduCorrecteur": "- $g'(x) = 2e^{-x} - 1$ : 0,25 pt.\n- Pour $x \\geqslant 1$, $e^{-x} \\leqslant e^{-1} = \\dfrac{1}{e} < \\dfrac{1}{2}$ (car $e > 2$), donc $g'(x) < 0$ et $g$ est strictement décroissante sur $[1\\,;\\,3]$ : 0,25 pt.",
+            "solution": "La fonction $g$ est dérivable sur $[1\\,;\\,3]$ et, d'après la question A.1.a, $g'(x) = f'(x) - 1 = 2e^{-x} - 1$.\n\nSoit $x$ dans $[1\\,;\\,3]$. Comme $x \\geqslant 1$, $-x \\leqslant -1$ ; la fonction exponentielle est croissante, donc $e^{-x} \\leqslant e^{-1} = \\dfrac{1}{e}$. Or $e > 2$, donc $\\dfrac{1}{e} < \\dfrac{1}{2}$. Ainsi $2e^{-x} < 1$, soit $g'(x) < 0$.\n\nLa dérivée $g'$ est strictement négative sur $[1\\,;\\,3]$ : la fonction $g$ est strictement décroissante sur $[1\\,;\\,3]$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Montrer que l'équation $g(x) = 0$ admet une unique solution $\\alpha$ dans $[1\\,;\\,3]$, puis donner un encadrement de $\\alpha$ d'amplitude $10^{-3}$.",
+            "points": 1,
+            "revoir": "l-continuite-024",
+            "indices": [
+              "Vérifie les trois hypothèses du théorème des valeurs intermédiaires pour une fonction strictement monotone : continuité de $g$, stricte monotonie (question a), et $0$ compris entre $g(1)$ et $g(3)$.",
+              "Pour l'encadrement, utilise le tableau de valeurs de $g$ à la calculatrice, avec un pas de $0{,}1$, puis de $0{,}01$, puis de $0{,}001$ : garde deux valeurs consécutives de $x$ entre lesquelles $g(x)$ change de signe."
+            ],
+            "attenduCorrecteur": "- $g$ dérivable, donc continue, et strictement décroissante sur $[1\\,;\\,3]$ : 0,25 pt.\n- $g(1) = 2 - \\dfrac{2}{e} > 0$ et $g(3) = -2e^{-3} < 0$ : $0$ est compris entre $g(3)$ et $g(1)$ : 0,25 pt.\n- Conclusion par le théorème des valeurs intermédiaires : une unique solution $\\alpha$ dans $[1\\,;\\,3]$ : 0,25 pt.\n- Encadrement : $g(2{,}888) \\approx 6 \\times 10^{-4} > 0$ et $g(2{,}889) \\approx -3 \\times 10^{-4} < 0$, donc $2{,}888 < \\alpha < 2{,}889$ : 0,25 pt.",
+            "solution": "La fonction $g$ est dérivable, donc continue, sur $[1\\,;\\,3]$, et strictement décroissante d'après la question a.\n\n$g(1) = f(1) - 1 = 2 - \\dfrac{2}{e}$. Comme $e > 1$, $\\dfrac{2}{e} < 2$, donc $g(1) > 0$. Et $g(3) = f(3) - 3 = -2e^{-3} < 0$. Le réel $0$ est donc compris entre $g(3)$ et $g(1)$.\n\nD'après le théorème des valeurs intermédiaires, appliqué à la fonction $g$ continue et strictement décroissante sur $[1\\,;\\,3]$, l'équation $g(x) = 0$ admet une unique solution $\\alpha$ dans $[1\\,;\\,3]$.\n\n**Encadrement.** À la calculatrice : $g(2{,}8) \\approx 0{,}078 > 0$ et $g(2{,}9) \\approx -0{,}010 < 0$ ; puis $g(2{,}88) \\approx 0{,}007\\,7 > 0$ et $g(2{,}89) \\approx -0{,}001\\,2 < 0$ ; enfin $g(2{,}888) \\approx 6 \\times 10^{-4} > 0$ et $g(2{,}889) \\approx -3 \\times 10^{-4} < 0$.\n\nComme $g$ est décroissante et $g(\\alpha) = 0$ : si l'on avait $\\alpha \\leqslant 2{,}888$, on aurait $g(\\alpha) \\geqslant g(2{,}888) > 0$ ; si l'on avait $\\alpha \\geqslant 2{,}889$, on aurait $g(\\alpha) \\leqslant g(2{,}889) < 0$. Les deux sont impossibles. Donc $2{,}888 < \\alpha < 2{,}889$ : c'est un encadrement d'amplitude $10^{-3}$.",
+            "erreurFrequente": "Oublier de citer la stricte monotonie de $g$ : le théorème des valeurs intermédiaires seul donne « au moins une » solution, pas une seule."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "B.1.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, on a :\n\n$$1 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 3.$$",
+        "points": 1,
+        "revoir": "l-recurrence-suites-021",
+        "indices": [
+          "Pose $P(n)$ : « $1 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 3$ ». Pour l'initialisation, calcule $u_1 = f(1)$ ; pour l'hérédité, sers-toi de la croissance de $f$ sur $[1\\,;\\,3]$.",
+          "Dans l'hérédité, applique $f$ aux quatre membres de l'encadrement, puis utilise la question A.1.b pour comparer $f(1)$ à $1$ et $f(3)$ à $3$."
+        ],
+        "attenduCorrecteur": "- Initialisation : $u_0 = 1$, $u_1 = f(1) = 3 - \\dfrac{2}{e} \\approx 2{,}26$, et $1 \\leqslant u_0 \\leqslant u_1 \\leqslant 3$ : 0,25 pt.\n- Hérédité : $1$, $u_n$, $u_{n+1}$ et $3$ sont dans $[1\\,;\\,3]$, où $f$ est croissante, d'où $f(1) \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant f(3)$ : 0,25 pt.\n- Avec $1 \\leqslant f(1)$ et $f(3) \\leqslant 3$ (question A.1.b) : $1 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 3$ : 0,25 pt.\n- Conclusion rédigée par le principe de récurrence : 0,25 pt.",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $1 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 3$ ».\n\n**Initialisation.** $u_0 = 1$ et $u_1 = f(1) = 3 - \\dfrac{2}{e} \\approx 2{,}26$. D'après la question A.1.b, $1 \\leqslant u_1 \\leqslant 3$. Donc $1 \\leqslant u_0 \\leqslant u_1 \\leqslant 3$ : $P(0)$ est vraie.\n\n**Hérédité.** Soit $n$ un entier naturel tel que $P(n)$ est vraie : $1 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 3$. Les nombres $1$, $u_n$, $u_{n+1}$ et $3$ sont dans $[1\\,;\\,3]$, où $f$ est croissante : $f(1) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(3)$, soit $f(1) \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant f(3)$. D'après la question A.1.b, $1 \\leqslant f(1)$ et $f(3) \\leqslant 3$. Donc $1 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 3$ : $P(n+1)$ est vraie.\n\n**Conclusion.** $P(0)$ est vraie et la propriété est héréditaire : d'après le principe de récurrence, pour tout entier naturel $n$, $1 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 3$."
+      },
+      {
+        "id": "q4",
+        "label": "B.2.",
+        "enonce": "En déduire que la suite $(u_n)$ converge.",
+        "points": 0.5,
+        "revoir": "l-limites-suites-052",
+        "indices": [
+          "Lis l'encadrement de la question B.1 : il donne le sens de variation de $(u_n)$ et un majorant. Cite ensuite le théorème qui conclut."
+        ],
+        "attenduCorrecteur": "- $(u_n)$ croissante ($u_n \\leqslant u_{n+1}$) et majorée par $3$ : 0,25 pt.\n- Théorème de convergence monotone cité : la suite converge vers un réel $\\ell$ : 0,25 pt.",
+        "solution": "D'après la question B.1, pour tout entier naturel $n$, $u_n \\leqslant u_{n+1}$ : la suite $(u_n)$ est croissante ; et $u_n \\leqslant 3$ : elle est majorée par $3$. D'après le théorème de convergence monotone, la suite $(u_n)$ converge vers un réel, que l'on note $\\ell$."
+      },
+      {
+        "id": "q5",
+        "label": "B.3.",
+        "enonce": "Démontrer que la suite $(u_n)$ converge vers le nombre $\\alpha$ défini à la question A.2.b.",
+        "points": 1,
+        "revoir": "l-continuite-055",
+        "indices": [
+          "Situe d'abord la limite $\\ell$ en passant à la limite dans $1 \\leqslant u_n \\leqslant 3$. Justifie ensuite que $f(\\ell) = \\ell$ : continuité de $f$ sur $[1\\,;\\,3]$, et valeurs de $f$ dans $[1\\,;\\,3]$ (question A.1.b).",
+          "L'égalité $f(\\ell) = \\ell$ s'écrit $g(\\ell) = 0$ : utilise l'unicité démontrée à la question A.2.b."
+        ],
+        "attenduCorrecteur": "- Passage à la limite : $1 \\leqslant \\ell \\leqslant 3$ : 0,25 pt.\n- $f$ continue sur $[1\\,;\\,3]$ (car dérivable) et à valeurs dans $[1\\,;\\,3]$ ; en passant à la limite dans $u_{n+1} = f(u_n)$, $\\ell = f(\\ell)$ : 0,25 pt.\n- $f(\\ell) = \\ell \\iff g(\\ell) = 0$ : 0,25 pt.\n- Unicité de la solution de $g(x) = 0$ dans $[1\\,;\\,3]$, avec $\\ell \\in [1\\,;\\,3]$, donc $\\ell = \\alpha$ : 0,25 pt.",
+        "solution": "Notons $\\ell$ la limite de $(u_n)$ (question B.2). Pour tout $n$, $1 \\leqslant u_n \\leqslant 3$ ; par passage à la limite, $1 \\leqslant \\ell \\leqslant 3$.\n\nLa fonction $f$ est dérivable, donc continue, sur $[1\\,;\\,3]$, et elle est à valeurs dans $[1\\,;\\,3]$ (question A.1.b). La suite $(u_n)$ converge vers $\\ell \\in [1\\,;\\,3]$ : en passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = f(\\ell)$.\n\nOr $f(\\ell) = \\ell \\iff f(\\ell) - \\ell = 0 \\iff g(\\ell) = 0$ : $\\ell$ est une solution de l'équation $g(x) = 0$ dans $[1\\,;\\,3]$. D'après la question A.2.b, cette équation n'a qu'une solution dans $[1\\,;\\,3]$, le réel $\\alpha$. Donc $\\ell = \\alpha$ : la suite $(u_n)$ converge vers $\\alpha$.",
+        "erreurFrequente": "Chercher à résoudre $3 - 2e^{-\\ell} = \\ell$ par le calcul : on ne sait pas le faire. C'est l'unicité de la solution, obtenue par le théorème des valeurs intermédiaires, qui identifie la limite."
+      },
+      {
+        "id": "q6",
+        "label": "C.",
+        "enonce": "On considère la fonction rang ci-dessous, écrite en langage Python, où a est un nombre réel. Dans cette partie, on admet que $\\alpha < 2{,}89$.",
+        "code": {
+          "langage": "python",
+          "source": "from math import exp\n\ndef f(x):\n    return 3 - 2 * exp(-x)\n\ndef rang(a):\n    n = 0\n    u = 1\n    while u < a:\n        u = f(u)\n        n = n + 1\n    return n"
+        },
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q6a",
+            "label": "1.",
+            "enonce": "L'appel rang(2.888) renvoie la valeur $5$. Interpréter ce résultat dans le contexte de l'exercice.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "La boucle tourne tant que $u < a$ : la fonction renvoie le rang du premier terme de la suite qui atteint ou dépasse a. Que dit ensuite la croissance de $(u_n)$ sur les termes suivants ?"
+            ],
+            "attenduCorrecteur": "- $5$ est le plus petit entier $n$ tel que $u_n \\geqslant 2{,}888$ : $u_0$, …, $u_4$ sont strictement inférieurs à $2{,}888$, et $u_5 \\geqslant 2{,}888$ : 0,25 pt.\n- Croissance de $(u_n)$ : $u_n \\geqslant 2{,}888$ pour tout $n \\geqslant 5$ ; à partir du rang $5$, tous les termes sont supérieurs ou égaux à $2{,}888$ : 0,25 pt.",
+            "solution": "La variable u prend successivement les valeurs $u_0$, $u_1$, $u_2$…, et n compte les tours de boucle. La boucle s'arrête au premier terme qui n'est plus strictement inférieur à $2{,}888$. L'appel rang(2.888) renvoie $5$ : $u_0$, $u_1$, …, $u_4$ sont strictement inférieurs à $2{,}888$, et $u_5 \\geqslant 2{,}888$. Ainsi, $5$ est le plus petit rang $n$ tel que $u_n \\geqslant 2{,}888$. À la calculatrice, $u_4 \\approx 2{,}887\\,4$ et $u_5 \\approx 2{,}888\\,6$.\n\nComme la suite $(u_n)$ est croissante, $u_n \\geqslant u_5 \\geqslant 2{,}888$ pour tout $n \\geqslant 5$ : à partir du rang $5$, tous les termes sont supérieurs ou égaux à $2{,}888$.\n\nDe plus, la question suivante montre que $u_n \\leqslant \\alpha$ pour tout $n$ ; avec $\\alpha < 2{,}889$ (question A.2.b), on a alors $2{,}888 \\leqslant u_n < 2{,}889$ pour tout $n \\geqslant 5$ : à partir du rang $5$, $u_n$ est une valeur approchée de $\\alpha$ à $10^{-3}$ près."
+          },
+          {
+            "id": "q6b",
+            "label": "2.",
+            "enonce": "Expliquer pourquoi l'appel rang(2.9) ne renvoie aucune valeur.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-069",
+            "indices": [
+              "La boucle ne s'arrête que si u atteint ou dépasse $2{,}9$. Montre que c'est impossible : compare chaque terme $u_n$ à $\\alpha$, puis $\\alpha$ à $2{,}9$.",
+              "Pour comparer $u_n$ à $\\alpha$, raisonne par récurrence : $f$ est croissante sur $[1\\,;\\,3]$, et $g(\\alpha) = 0$ s'écrit $f(\\alpha) = \\alpha$."
+            ],
+            "attenduCorrecteur": "- Pour tout $n$, $u_n \\leqslant \\alpha$ : par récurrence ($u_0 = 1 \\leqslant \\alpha$ ; si $u_n \\leqslant \\alpha$, alors $u_{n+1} = f(u_n) \\leqslant f(\\alpha) = \\alpha$ par croissance de $f$), ou parce qu'une suite croissante est majorée par sa limite : 0,25 pt.\n- Donc $u_n \\leqslant \\alpha < 2{,}89 < 2{,}9$ pour tout $n$ : la condition $u < 2{,}9$ reste toujours vraie, la boucle ne s'arrête jamais et rien n'est renvoyé : 0,25 pt.",
+            "solution": "La boucle s'arrête seulement si la variable u, qui prend successivement les valeurs $u_0$, $u_1$, $u_2$…, devient supérieure ou égale à $2{,}9$.\n\nMontrons par récurrence que $u_n \\leqslant \\alpha$ pour tout entier naturel $n$. **Initialisation** : $u_0 = 1 \\leqslant \\alpha$, car $\\alpha \\in [1\\,;\\,3]$. **Hérédité** : soit $n$ un entier tel que $u_n \\leqslant \\alpha$. Les réels $u_n$ et $\\alpha$ sont dans $[1\\,;\\,3]$, où $f$ est croissante, donc $u_{n+1} = f(u_n) \\leqslant f(\\alpha)$. Or $g(\\alpha) = 0$, c'est-à-dire $f(\\alpha) = \\alpha$ : donc $u_{n+1} \\leqslant \\alpha$. **Conclusion** : pour tout entier naturel $n$, $u_n \\leqslant \\alpha$.\n\nAinsi, pour tout $n$, $u_n \\leqslant \\alpha < 2{,}89 < 2{,}9$ : la condition $u < 2{,}9$ est toujours vraie, la boucle ne s'arrête jamais, et l'appel rang(2.9) ne renvoie aucune valeur.",
+            "erreurFrequente": "Répondre que la suite finit par dépasser tout nombre parce qu'elle est croissante : une suite croissante et convergente reste sous sa limite."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-continuite-004",
+    "chapitre": "continuite",
+    "notions": [
+      "n-continuite-valeurs-intermediaires",
+      "n-continuite-approcher-solution"
+    ],
+    "capacites": [
+      "bo-m-continuite-03",
+      "bo-m-continuite-04",
+      "bo-m-continuite-06",
+      "bo-m-limites-fonctions-04",
+      "bo-m-limites-fonctions-05"
+    ],
+    "titre": "Une équation résolue par dichotomie",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": true,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2024-amerique-sud-j1",
+      "adaptation": "Exercice 1, partie B : fonction $f(x) = (20x + 8)e^{-\\frac{x}{4}}$ sur $[0\\,;\\,+\\infty[$, dérivée à justifier, tableau de variations avec le maximum exact, unique solution de $f(x) = 8$ dans $[14\\,;\\,15]$, exécution pas à pas de la fonction Python solution_equation et son objectif conservés ; partie A (équation différentielle), chapitre ultérieur, retirée, la fonction étant donnée directement ; limite en $+\\infty$, admise dans l'original, à démontrer à partir d'une écriture fournie ; ajoutés : nombre total de solutions de $f(x) = 8$ sur $[0\\,;\\,+\\infty[$, et justification du test de la dichotomie ; la fonction Python renvoie une liste au lieu d'un couple, le programme se limitant aux listes. Solution écrite pour le site."
+    },
+    "preambule": "On considère la fonction $f$ définie sur l'intervalle $[0\\,;\\,+\\infty[$ par :\n\n$$f(x) = (20x + 8)e^{-\\frac{x}{4}}.$$\n\nOn admet que $f$ est dérivable sur $[0\\,;\\,+\\infty[$ ; on note $f'$ sa fonction dérivée.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Vérifier que, pour tout réel $x \\geqslant 0$, $f(x) = 80 \\times \\dfrac{x}{4}e^{-\\frac{x}{4}} + 8e^{-\\frac{x}{4}}$. En déduire la limite de $f$ en $+\\infty$.",
+        "points": 0.5,
+        "revoir": "l-limites-fonctions-048",
+        "indices": [
+          "Pose $X = \\dfrac{x}{4}$ : quand $x$ tend vers $+\\infty$, $X$ aussi. Les croissances comparées donnent la limite de $Xe^{-X}$ quand $X$ tend vers $+\\infty$.",
+          "Cherche aussi la limite de $e^{-\\frac{x}{4}}$ en $+\\infty$, puis conclus par produit et somme."
+        ],
+        "attenduCorrecteur": "- Égalité vérifiée en développant ($80 \\times \\dfrac{x}{4} = 20x$) ; avec $X = \\dfrac{x}{4}$, $\\lim\\limits_{X \\to +\\infty} Xe^{-X} = 0$ par croissances comparées : 0,25 pt.\n- $\\lim\\limits_{x \\to +\\infty} e^{-\\frac{x}{4}} = 0$, puis, par produit et somme, $\\lim\\limits_{x \\to +\\infty} f(x) = 0$ : 0,25 pt.",
+        "solution": "Pour tout $x \\geqslant 0$, $80 \\times \\dfrac{x}{4} = 20x$, donc $80 \\times \\dfrac{x}{4}e^{-\\frac{x}{4}} + 8e^{-\\frac{x}{4}} = (20x + 8)e^{-\\frac{x}{4}} = f(x)$.\n\nOn pose $X = \\dfrac{x}{4}$. Quand $x$ tend vers $+\\infty$, $X$ tend vers $+\\infty$, et, par croissances comparées, $\\lim\\limits_{X \\to +\\infty} Xe^{-X} = 0$. Par composée, $\\lim\\limits_{x \\to +\\infty} \\dfrac{x}{4}e^{-\\frac{x}{4}} = 0$.\n\nDe même, $-X$ tend vers $-\\infty$ et $\\lim\\limits_{Y \\to -\\infty} e^Y = 0$, donc $\\lim\\limits_{x \\to +\\infty} e^{-\\frac{x}{4}} = 0$.\n\nPar produit et somme : $\\lim\\limits_{x \\to +\\infty} f(x) = 80 \\times 0 + 8 \\times 0 = 0$.",
+        "erreurFrequente": "Conclure « $+\\infty \\times 0 = 0$ » directement sur $(20x + 8)e^{-\\frac{x}{4}}$ : c'est une forme indéterminée, que l'écriture fournie permet de lever."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Variations de la fonction $f$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Justifier que, pour tout réel $x \\geqslant 0$, $f'(x) = (18 - 5x)e^{-\\frac{x}{4}}$.",
+            "points": 0.5,
+            "revoir": "l-continuite-027",
+            "indices": [
+              "$f$ est un produit $uv$ avec $u(x) = 20x + 8$ et $v(x) = e^{-\\frac{x}{4}}$ : $(uv)' = u'v + uv'$. La dérivée de $e^{ax+b}$ est $ae^{ax+b}$, ici avec $a = -\\dfrac{1}{4}$.",
+              "Après avoir remplacé dans la formule, factorise par $e^{-\\frac{x}{4}}$ et simplifie ce qui reste dans la parenthèse."
+            ],
+            "attenduCorrecteur": "- $u'(x) = 20$ et $v'(x) = -\\dfrac{1}{4}e^{-\\frac{x}{4}}$ : 0,25 pt.\n- $f'(x) = 20e^{-\\frac{x}{4}} - \\dfrac{20x + 8}{4}e^{-\\frac{x}{4}} = (20 - 5x - 2)e^{-\\frac{x}{4}} = (18 - 5x)e^{-\\frac{x}{4}}$ : 0,25 pt.",
+            "solution": "On pose $u(x) = 20x + 8$ et $v(x) = e^{-\\frac{x}{4}}$, de sorte que $f = uv$. On a $u'(x) = 20$ ; la dérivée de $x \\mapsto e^{ax+b}$ étant $x \\mapsto ae^{ax+b}$, avec $a = -\\dfrac{1}{4}$ et $b = 0$, on a $v'(x) = -\\dfrac{1}{4}e^{-\\frac{x}{4}}$.\n\nD'après la formule $(uv)' = u'v + uv'$, pour tout $x \\geqslant 0$ :\n\n$$f'(x) = 20e^{-\\frac{x}{4}} + (20x + 8) \\times \\left(-\\dfrac{1}{4}\\right)e^{-\\frac{x}{4}} = (20 - 5x - 2)e^{-\\frac{x}{4}} = (18 - 5x)e^{-\\frac{x}{4}}.$$"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "En déduire le tableau de variations de la fonction $f$ sur $[0\\,;\\,+\\infty[$, avec sa limite en $+\\infty$. On précisera la valeur exacte du maximum de la fonction $f$.",
+            "points": 0.75,
+            "revoir": "l-continuite-015",
+            "indices": [
+              "Comme $e^{-\\frac{x}{4}} > 0$, le signe de $f'(x)$ est celui de $18 - 5x$ : résous $18 - 5x > 0$.",
+              "Calcule $f(0)$ et l'image du réel où $f'$ s'annule, sous forme exacte, avec une exponentielle."
+            ],
+            "attenduCorrecteur": "- Signe de $f'(x)$ : celui de $18 - 5x$, positif sur $[0\\,;\\,3{,}6[$, nul en $3{,}6$, négatif sur $]3{,}6\\,;\\,+\\infty[$ : 0,25 pt.\n- $f$ strictement croissante sur $[0\\,;\\,3{,}6]$ et strictement décroissante sur $[3{,}6\\,;\\,+\\infty[$ : 0,25 pt.\n- Tableau avec $f(0) = 8$, le maximum $f(3{,}6) = 80e^{-0{,}9}$ et la limite $0$ en $+\\infty$ : 0,25 pt.",
+            "solution": "Pour tout $x \\geqslant 0$, $e^{-\\frac{x}{4}} > 0$ : $f'(x)$ a le signe de $18 - 5x$. Or $18 - 5x > 0 \\iff x < \\dfrac{18}{5} = 3{,}6$. Donc $f'(x) > 0$ sur $[0\\,;\\,3{,}6[$, $f'(3{,}6) = 0$ et $f'(x) < 0$ sur $]3{,}6\\,;\\,+\\infty[$ : $f$ est strictement croissante sur $[0\\,;\\,3{,}6]$ et strictement décroissante sur $[3{,}6\\,;\\,+\\infty[$.\n\n$f(0) = 8 \\times e^0 = 8$ et $f(3{,}6) = (20 \\times 3{,}6 + 8)e^{-\\frac{3{,}6}{4}} = 80e^{-0{,}9}$. Le maximum de $f$ sur $[0\\,;\\,+\\infty[$ est $80e^{-0{,}9} \\approx 32{,}5$. Avec la limite de la question 1 :\n\n| $x$ | $0$ | | $3{,}6$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $+$ | $0$ | $-$ | |\n| variations de $f$ | $8$ | $\\nearrow$ | $80e^{-0{,}9}$ | $\\searrow$ | $0$ |"
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans cette question, on s'intéresse à l'équation $f(x) = 8$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Justifier que l'équation $f(x) = 8$ admet une unique solution, notée $\\alpha$, dans l'intervalle $[14\\,;\\,15]$.",
+            "points": 0.75,
+            "revoir": "l-continuite-024",
+            "indices": [
+              "Quel est le sens de variation de $f$ sur $[14\\,;\\,15]$ (question 2.b) ? Vérifie les trois hypothèses du théorème des valeurs intermédiaires pour une fonction strictement monotone.",
+              "Calcule $f(14)$ et $f(15)$ à la calculatrice, puis place $8$ par rapport à ces deux nombres."
+            ],
+            "attenduCorrecteur": "- $f$ dérivable, donc continue, et strictement décroissante sur $[14\\,;\\,15]$, contenu dans $[3{,}6\\,;\\,+\\infty[$ : 0,25 pt.\n- $f(14) = 288e^{-3{,}5} \\approx 8{,}70$ et $f(15) = 308e^{-3{,}75} \\approx 7{,}24$, donc $f(15) < 8 < f(14)$ : 0,25 pt.\n- Conclusion par le théorème des valeurs intermédiaires : 0,25 pt.",
+            "solution": "Sur $[14\\,;\\,15]$, contenu dans $[3{,}6\\,;\\,+\\infty[$, la fonction $f$ est dérivable, donc continue, et strictement décroissante (question 2.b).\n\nÀ la calculatrice, $f(14) = 288e^{-3{,}5} \\approx 8{,}70$ et $f(15) = 308e^{-3{,}75} \\approx 7{,}24$ : le réel $8$ est compris entre $f(15)$ et $f(14)$.\n\nD'après le théorème des valeurs intermédiaires, appliqué à la fonction $f$ continue et strictement décroissante sur $[14\\,;\\,15]$, l'équation $f(x) = 8$ admet une unique solution $\\alpha$ dans $[14\\,;\\,15]$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Déterminer le nombre de solutions de l'équation $f(x) = 8$ sur l'intervalle $[0\\,;\\,+\\infty[$.\n\nSaisis le nombre de solutions.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 2,
+              "tolerance": 0
+            },
+            "revoir": "l-continuite-026",
+            "indices": [
+              "Travaille sur chacun des deux intervalles du tableau de variations. Sur $[0\\,;\\,3{,}6]$, compare $f(x)$ à $f(0)$ quand $x > 0$.",
+              "Sur $[3{,}6\\,;\\,+\\infty[$, $f$ décroît strictement de son maximum vers la limite $0$ : compare ce maximum à $8$ sans calculatrice (pense à $e^{0{,}9} < e < 3$), puis relie la solution obtenue au réel $\\alpha$."
+            ],
+            "attenduCorrecteur": "- Sur $[0\\,;\\,3{,}6]$ : $f$ strictement croissante, donc $f(x) > f(0) = 8$ pour $0 < x \\leqslant 3{,}6$ ; seule solution, $x = 0$ : 0,25 pt.\n- Sur $[3{,}6\\,;\\,+\\infty[$ : $f$ continue et strictement décroissante, de $80e^{-0{,}9} > 8$ jusqu'à la limite $0 < 8$ ; une unique solution, qui est $\\alpha$ : 0,25 pt.\n- Conclusion : deux solutions, $0$ et $\\alpha$ : 0,25 pt.",
+            "solution": "**Sur $[0\\,;\\,3{,}6]$.** $f$ est strictement croissante et $f(0) = 8$ : pour tout $x$ de $]0\\,;\\,3{,}6]$, $f(x) > f(0) = 8$. Sur cet intervalle, la seule solution de $f(x) = 8$ est donc $x = 0$.\n\n**Sur $[3{,}6\\,;\\,+\\infty[$.** $f$ est continue et strictement décroissante, de $f(3{,}6) = 80e^{-0{,}9}$ jusqu'à la limite $0$ en $+\\infty$. Or $e^{0{,}9} < e^1 < 3 < 10$, donc $e^{-0{,}9} = \\dfrac{1}{e^{0{,}9}} > \\dfrac{1}{10}$ et $80e^{-0{,}9} > 8$. Comme $0 < 8 < 80e^{-0{,}9}$, le théorème des valeurs intermédiaires, sous sa forme étendue à une limite, donne une unique solution dans $[3{,}6\\,;\\,+\\infty[$. Le réel $\\alpha$ de la question a appartient à $[14\\,;\\,15]$, contenu dans cet intervalle, et vérifie $f(\\alpha) = 8$ : c'est cette solution.\n\n**Conclusion** : l'équation $f(x) = 8$ admet exactement deux solutions sur $[0\\,;\\,+\\infty[$, le réel $0$ et le réel $\\alpha$.",
+            "erreurFrequente": "Oublier la solution $x = 0$ : $f(0) = 8$, et la borne $0$ fait partie de l'intervalle d'étude."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On considère la fonction solution_equation ci-dessous, écrite en langage Python.",
+        "code": {
+          "langage": "python",
+          "source": "from math import exp\n\ndef f(x):\n    return (20 * x + 8) * exp(-x / 4)\n\ndef solution_equation():\n    a = 14\n    b = 15\n    while b - a > 0.1:\n        m = (a + b) / 2\n        if f(m) > 8:\n            a = m\n        else:\n            b = m\n    return [a, b]"
+        },
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Expliquer pourquoi, lorsque $f(m) > 8$, la fonction remplace a par m.",
+            "points": 0.5,
+            "revoir": "l-continuite-041",
+            "indices": [
+              "Sur $[14\\,;\\,15]$, $f$ est strictement décroissante et $f(\\alpha) = 8$. Si $f(m) > f(\\alpha)$, où se trouve $m$ par rapport à $\\alpha$ ?"
+            ],
+            "attenduCorrecteur": "- $f$ strictement décroissante sur $[14\\,;\\,15]$ et $f(\\alpha) = 8$ : si $f(m) > 8 = f(\\alpha)$, alors $m < \\alpha$ : 0,25 pt.\n- Donc $\\alpha$ est dans $]m\\,;\\,b]$ : remplacer a par m garde un intervalle qui contient $\\alpha$, deux fois plus court : 0,25 pt.",
+            "solution": "Avant chaque tour, l'intervalle $[a\\,;\\,b]$ contient $\\alpha$ et est contenu dans $[14\\,;\\,15]$, où $f$ est strictement décroissante ; $m$ est son milieu. Si l'on avait $m \\geqslant \\alpha$, la décroissance de $f$ donnerait $f(m) \\leqslant f(\\alpha) = 8$. Donc, lorsque $f(m) > 8$, on a $m < \\alpha$ : la solution $\\alpha$ est dans $]m\\,;\\,b]$.\n\nRemplacer a par m garde donc un intervalle qui contient encore $\\alpha$, d'amplitude deux fois plus petite. Sinon, $f(m) \\leqslant 8$ donne de même $m \\geqslant \\alpha$, et la fonction remplace b par m."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Faire tourner la fonction solution_equation étape par étape, en complétant le tableau ci-dessous : une colonne par tour de boucle, en ajoutant autant de colonnes que nécessaire. Les valeurs de $f(m)$ sont arrondies au centième.\n\n| | tour 1 | tour 2 |\n|---|---|---|\n| $a$ | $14$ | |\n| $b$ | $15$ | |\n| $b - a$ | $1$ | |\n| $m$ | $14{,}5$ | |\n| $f(m)$ | $7{,}94$ | |\n| condition $f(m) > 8$ | FAUX | |\n\nQuelle liste la fonction renvoie-t-elle ?\n\nSaisis le premier nombre de la liste renvoyée.",
+            "points": 1,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 14.4375,
+              "tolerance": 0.0001
+            },
+            "revoir": "l-continuite-034",
+            "indices": [
+              "Avant chaque tour, la boucle teste si $b - a > 0{,}1$. Dans le tour, calcule $m$, puis $f(m)$ à la calculatrice : si $f(m) > 8$, a prend la valeur m ; sinon, b prend la valeur m.",
+              "Au tour 1, $f(14{,}5) \\leqslant 8$ : après ce tour, a vaut encore $14$ et b vaut $14{,}5$. Continue ainsi, et arrête-toi dès que $b - a \\leqslant 0{,}1$ : la fonction renvoie alors la liste formée de a et de b."
+            ],
+            "attenduCorrecteur": "- Exécution des tours : au début des tours 2, 3 et 4, a vaut $14$, puis $14{,}25$, puis $14{,}375$, et b vaut $14{,}5$ ; $f(14{,}25) \\approx 8{,}31$, $f(14{,}375) \\approx 8{,}12$ et $f(14{,}437\\,5) \\approx 8{,}03$, condition VRAI à chaque fois : 0,5 pt.\n- Arrêt justifié : après le tour 4, $b - a = 0{,}062\\,5 \\leqslant 0{,}1$ : 0,25 pt.\n- Liste renvoyée, formée de $14{,}437\\,5$ et de $14{,}5$ : 0,25 pt.",
+            "solution": "Le tableau donne les valeurs de a et de b au début de chaque tour :\n\n| | tour 1 | tour 2 | tour 3 | tour 4 |\n|---|---|---|---|---|\n| $a$ | $14$ | $14$ | $14{,}25$ | $14{,}375$ |\n| $b$ | $15$ | $14{,}5$ | $14{,}5$ | $14{,}5$ |\n| $b - a$ | $1$ | $0{,}5$ | $0{,}25$ | $0{,}125$ |\n| $m$ | $14{,}5$ | $14{,}25$ | $14{,}375$ | $14{,}437\\,5$ |\n| $f(m)$ | $7{,}94$ | $8{,}31$ | $8{,}12$ | $8{,}03$ |\n| condition $f(m) > 8$ | FAUX | VRAI | VRAI | VRAI |\n\nAu tour 1, $f(14{,}5) \\approx 7{,}94 \\leqslant 8$ : b prend la valeur $14{,}5$. Aux tours 2, 3 et 4, $f(m) > 8$ : a prend successivement les valeurs $14{,}25$, $14{,}375$ et $14{,}437\\,5$.\n\nAprès le tour 4, $a = 14{,}437\\,5$ et $b = 14{,}5$ : $b - a = 0{,}062\\,5 \\leqslant 0{,}1$, la boucle s'arrête. La fonction renvoie la liste formée de $14{,}437\\,5$ et de $14{,}5$.",
+            "erreurFrequente": "Faire un tour de trop ou de moins : la condition $b - a > 0{,}1$ se teste avant chaque tour, avec les valeurs de a et de b à ce moment-là."
+          },
+          {
+            "id": "q4c",
+            "label": "c)",
+            "enonce": "Quel est l'objectif de la fonction solution_equation dans le contexte de la question 3 ?",
+            "points": 0.25,
+            "revoir": "l-continuite-033",
+            "indices": [
+              "Que contient l'intervalle $[a\\,;\\,b]$ à chaque étape, et quelle est son amplitude à la sortie de la boucle ?"
+            ],
+            "attenduCorrecteur": "- Elle donne, par dichotomie, un encadrement de $\\alpha$ d'amplitude inférieure ou égale à $0{,}1$ : ici $14{,}437\\,5 \\leqslant \\alpha \\leqslant 14{,}5$ : 0,25 pt.",
+            "solution": "À chaque tour, l'intervalle $[a\\,;\\,b]$ contient la solution $\\alpha$ de l'équation $f(x) = 8$ (question a), et son amplitude est divisée par $2$. La fonction solution_equation sert donc à obtenir, par la méthode de dichotomie, un encadrement de $\\alpha$ d'amplitude inférieure ou égale à $0{,}1$ : ici, $14{,}437\\,5 \\leqslant \\alpha \\leqslant 14{,}5$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-continuite-005",
+    "chapitre": "continuite",
+    "notions": [
+      "n-continuite-fonction-continue",
+      "n-continuite-valeurs-intermediaires",
+      "n-continuite-suite-recurrente"
+    ],
+    "capacites": [
+      "bo-m-continuite-01",
+      "bo-m-continuite-03",
+      "bo-m-continuite-04",
+      "bo-m-continuite-02",
+      "bo-m-continuite-05",
+      "bo-m-limites-fonctions-05",
+      "bo-m-suites-08",
+      "bo-m-logique-07",
+      "bo-m-logique-11"
+    ],
+    "titre": "Vrai ou faux : continuité, valeurs intermédiaires et suites",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 50,
+    "source": {
+      "annale": "an-2023-amerique-nord-j2",
+      "adaptation": "Exercice 4 (QCM sans justification) transformé en vrai-faux dont chaque réponse est justifiée ; la question 2 (fonction continue $h$ avec $h(-1) = 0$, $h(1) = 4$ et $h(3) = -1$, solutions de $h(x) = 1$) conservée sous la forme de l'affirmation 3 ; affirmation 4 reprise de la question 1 de l'exercice 4 de an-2023-reunion-j2 (nombre de solutions de $2xe^x = -\\dfrac{73}{100}$), avec un encadrement de $e$ fourni puisque la calculatrice n'est pas autorisée ; affirmation 5 dans l'esprit du raisonnement par l'absurde de an-2023-polynesie-septembre-j1, exercice 3 ; affirmations 1 et 2 (continuité en un point, continuité et dérivabilité) ajoutées ; les autres questions (limites, suites, probabilités) retirées. Solution écrite pour le site."
+    },
+    "preambule": "Pour chacune des affirmations suivantes, indiquer si elle est vraie ou fausse. Chaque réponse doit être justifiée. Une réponse non justifiée ne rapporte aucun point.\n\nLes cinq affirmations sont indépendantes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $m$ un nombre réel. On considère la fonction $f$ définie sur $\\mathbb{R}$ par :\n\n- $f(x) = e^x$ si $x \\leqslant 0$ ;\n- $f(x) = mx + 1$ si $x > 0$.\n\n**Affirmation 1** : il existe une unique valeur du réel $m$ pour laquelle la fonction $f$ est continue en $0$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Pour tout réel $m$, la limite à gauche et la limite à droite de $f$ en $0$ valent $1 = f(0)$ : $f$ est continue en $0$ quelle que soit la valeur de $m$, qui n'est donc pas unique."
+        },
+        "revoir": "l-continuite-003",
+        "indices": [
+          "Compare en $0$ trois nombres : $f(0)$, la limite à gauche et la limite à droite de $f$. Chacune se calcule avec le morceau qui convient.",
+          "Calcule la limite à droite, celle de $mx + 1$ quand $x$ tend vers $0$ avec $x > 0$ : dépend-elle de $m$ ?"
+        ],
+        "attenduCorrecteur": "- $f(0) = e^0 = 1$ et limite à gauche : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x < 0}} e^x = 1$ : 0,25 pt.\n- Limite à droite : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} (mx + 1) = 1$, quel que soit $m$ : 0,5 pt.\n- Conclusion : $f$ est continue en $0$ pour toutes les valeurs de $m$ ; l'affirmation est fausse : 0,25 pt.",
+        "solution": "On compare en $0$ la valeur $f(0)$, la limite à gauche et la limite à droite.\n\n- $f(0) = e^0 = 1$, car $0 \\leqslant 0$ : on utilise la première ligne.\n- À gauche : pour $x < 0$, $f(x) = e^x$, et la fonction exponentielle est continue en $0$, donc $\\lim\\limits_{\\substack{x \\to 0 \\\\ x < 0}} f(x) = e^0 = 1$.\n- À droite : pour $x > 0$, $f(x) = mx + 1$, donc $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} f(x) = m \\times 0 + 1 = 1$.\n\nLes trois nombres sont égaux à $1$, **quelle que soit la valeur de $m$** : $f$ est continue en $0$ pour tout réel $m$. Par exemple, $m = 0$ et $m = 1$ conviennent tous les deux. Il n'existe donc pas une unique valeur de $m$ : **l'affirmation 1 est fausse**.",
+        "erreurFrequente": "Écrire l'égalité $m \\times 0 + 1 = 1$ puis chercher à en tirer $m$ : cette égalité est vraie pour tout $m$, elle ne fixe aucune valeur."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "**Affirmation 2** : si une fonction $f$, définie sur un intervalle contenant $0$, est continue en $0$, alors elle est dérivable en $0$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Contre-exemple : la fonction racine carrée est continue en $0$, mais son taux de variation entre $0$ et $h > 0$, égal à $\\dfrac{1}{\\sqrt{h}}$, tend vers $+\\infty$ : elle n'est pas dérivable en $0$."
+        },
+        "revoir": "l-continuite-011",
+        "indices": [
+          "Relis la propriété du cours qui relie « dérivable » et « continue », et regarde dans quel sens elle va. Teste ensuite l'affirmation sur les fonctions de référence définies sur un intervalle qui contient $0$ : polynômes, exponentielle, racine carrée.",
+          "Pour une fonction de référence dont le comportement en $0$ te semble particulier, calcule le taux de variation entre $0$ et $0 + h$, avec $h > 0$, puis cherche sa limite quand $h$ tend vers $0$."
+        ],
+        "attenduCorrecteur": "- Contre-exemple : la fonction racine carrée, définie sur $[0\\,;\\,+\\infty[$, est continue en $0$, car $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$ : 0,25 pt.\n- Taux de variation : pour $h > 0$, $\\dfrac{\\sqrt{h} - \\sqrt{0}}{h} = \\dfrac{1}{\\sqrt{h}}$, qui tend vers $+\\infty$ ; pas de nombre dérivé en $0$ : 0,5 pt.\n- Conclusion : l'affirmation est fausse : 0,25 pt.",
+        "solution": "Une implication générale est fausse dès qu'un seul exemple la contredit. Prenons la fonction racine carrée, définie sur l'intervalle $[0\\,;\\,+\\infty[$, qui contient $0$.\n\n**Elle est continue en $0$** : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$.\n\n**Elle n'est pas dérivable en $0$** : pour $h > 0$, $h = \\sqrt{h} \\times \\sqrt{h}$, donc le taux de variation entre $0$ et $h$ vaut\n\n$$\\dfrac{\\sqrt{h} - \\sqrt{0}}{h} = \\dfrac{\\sqrt{h}}{\\sqrt{h} \\times \\sqrt{h}} = \\dfrac{1}{\\sqrt{h}}.$$\n\nQuand $h$ tend vers $0$, $\\sqrt{h}$ tend vers $0$ en restant positif, donc $\\dfrac{1}{\\sqrt{h}}$ tend vers $+\\infty$ : le taux de variation n'a pas de limite finie, et la racine carrée n'est pas dérivable en $0$.\n\nCette fonction est continue en $0$ sans y être dérivable : **l'affirmation 2 est fausse**. C'est l'implication réciproque qui est vraie : une fonction dérivable en un réel y est continue."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On considère une fonction $h$ continue sur l'intervalle $[-2\\,;\\,4]$ telle que $h(-1) = 0$, $h(1) = 4$ et $h(3) = -1$.\n\n**Affirmation 3** : l'équation $h(x) = 1$ admet au moins deux solutions dans l'intervalle $[-2\\,;\\,4]$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Le théorème des valeurs intermédiaires, appliqué sur $[-1\\,;\\,1]$ puis sur $[1\\,;\\,3]$, donne une solution dans chacun de ces intervalles ; elles sont distinctes, car $h(1) = 4 \\neq 1$."
+        },
+        "revoir": "l-continuite-016",
+        "indices": [
+          "Parmi les réels où $h$ est connue, repère deux intervalles sur lesquels $1$ est compris entre les valeurs de $h$ aux bornes : applique le théorème des valeurs intermédiaires sur chacun.",
+          "Les deux solutions obtenues pourraient-elles être le même réel ? Regarde la seule borne commune aux deux intervalles."
+        ],
+        "attenduCorrecteur": "- Sur $[-1\\,;\\,1]$ : $h$ continue, et $1$ compris entre $h(-1) = 0$ et $h(1) = 4$ ; donc une solution $c_1$ : 0,25 pt.\n- Sur $[1\\,;\\,3]$ : $1$ compris entre $h(3) = -1$ et $h(1) = 4$ ; donc une solution $c_2$ : 0,25 pt.\n- Solutions distinctes : $h(1) = 4 \\neq 1$, donc $c_1 \\neq 1$ et $c_2 \\neq 1$, d'où $c_1 < 1 < c_2$ : 0,25 pt.\n- Conclusion : l'affirmation est vraie : 0,25 pt.",
+        "solution": "La fonction $h$ est continue sur $[-2\\,;\\,4]$, donc sur $[-1\\,;\\,1]$ et sur $[1\\,;\\,3]$.\n\n**Sur $[-1\\,;\\,1]$.** $h(-1) = 0$ et $h(1) = 4$ ; le réel $1$ est compris entre $0$ et $4$. D'après le théorème des valeurs intermédiaires, il existe un réel $c_1$ de $[-1\\,;\\,1]$ tel que $h(c_1) = 1$.\n\n**Sur $[1\\,;\\,3]$.** $h(1) = 4$ et $h(3) = -1$ ; le réel $1$ est compris entre $-1$ et $4$. De même, il existe un réel $c_2$ de $[1\\,;\\,3]$ tel que $h(c_2) = 1$.\n\n**Deux solutions distinctes.** Comme $h(1) = 4 \\neq 1$, ni $c_1$ ni $c_2$ n'est égal à $1$ : $c_1 \\in [-1\\,;\\,1[$ et $c_2 \\in ]1\\,;\\,3]$, donc $c_1 < 1 < c_2$.\n\nL'équation $h(x) = 1$ admet au moins deux solutions dans $[-2\\,;\\,4]$ : **l'affirmation 3 est vraie**. On ne peut pas dire mieux : sans connaître les variations de $h$, rien n'interdit qu'il y en ait davantage.",
+        "erreurFrequente": "Conclure à « exactement deux » solutions : le théorème des valeurs intermédiaires garantit l'existence, pas le nombre ; il faudrait savoir que $h$ est strictement monotone sur chaque intervalle."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On considère la fonction $g$ définie sur $\\mathbb{R}$ par $g(x) = 2xe^x$. On rappelle que $2{,}71 < e < 2{,}72$.\n\n**Affirmation 4** : l'équation $g(x) = -0{,}73$ admet exactement deux solutions dans $\\mathbb{R}$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$g$ décroît strictement sur $]-\\infty\\,;\\,-1]$, de la limite $0$ jusqu'à $g(-1) = -\\dfrac{2}{e}$, puis croît strictement jusqu'à $+\\infty$ ; comme $-\\dfrac{2}{e} < -0{,}73 < 0$, il y a une solution, et une seule, sur chacun des deux intervalles."
+        },
+        "revoir": "l-continuite-027",
+        "indices": [
+          "Dresse le tableau de variations de $g$ avec ses limites : dérivée d'un produit, croissances comparées en $-\\infty$. Compte ensuite les solutions sur chaque intervalle où $g$ est strictement monotone.",
+          "Pour comparer le minimum de $g$ à $-0{,}73$ sans calculatrice, compare le produit $0{,}73 \\times e$ au nombre qui apparaît au numérateur du minimum, grâce à l'encadrement de $e$."
+        ],
+        "attenduCorrecteur": "- Variations : $g'(x) = 2e^x(1 + x)$ ; $g$ strictement décroissante sur $]-\\infty\\,;\\,-1]$, strictement croissante sur $[-1\\,;\\,+\\infty[$ ; minimum $g(-1) = -\\dfrac{2}{e}$ : 0,25 pt.\n- Limites : $\\lim\\limits_{x \\to -\\infty} g(x) = 0$ par croissances comparées, $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$ : 0,25 pt.\n- Comparaison : $0{,}73e < 0{,}73 \\times 2{,}72 = 1{,}985\\,6 < 2$, donc $-\\dfrac{2}{e} < -0{,}73 < 0$ : 0,25 pt.\n- Une solution sur chaque intervalle par le théorème des valeurs intermédiaires (forme étendue), donc exactement deux ; l'affirmation est vraie : 0,25 pt.",
+        "solution": "$g$ est dérivable sur $\\mathbb{R}$ ; avec $(uv)' = u'v + uv'$, $g'(x) = 2e^x + 2xe^x = 2e^x(1 + x)$. Comme $2e^x > 0$, $g'(x)$ a le signe de $1 + x$ : $g$ est strictement décroissante sur $]-\\infty\\,;\\,-1]$ et strictement croissante sur $[-1\\,;\\,+\\infty[$. Son minimum est $g(-1) = -2e^{-1} = -\\dfrac{2}{e}$.\n\n**Limites.** Par croissances comparées, $\\lim\\limits_{x \\to -\\infty} xe^x = 0$, donc $\\lim\\limits_{x \\to -\\infty} g(x) = 0$. En $+\\infty$, $2x$ et $e^x$ tendent vers $+\\infty$, donc $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$.\n\n**Comparaison.** $e < 2{,}72$, donc $0{,}73e < 0{,}73 \\times 2{,}72 = 1{,}985\\,6 < 2$. En divisant par $e > 0$ : $0{,}73 < \\dfrac{2}{e}$, soit $-\\dfrac{2}{e} < -0{,}73$. Ainsi $-\\dfrac{2}{e} < -0{,}73 < 0$.\n\n**Sur $]-\\infty\\,;\\,-1]$.** $g$ est continue et strictement décroissante, de la limite $0$ jusqu'à $g(-1) = -\\dfrac{2}{e}$, et $-0{,}73$ est strictement compris entre $-\\dfrac{2}{e}$ et $0$ : d'après le théorème des valeurs intermédiaires, sous sa forme étendue, l'équation $g(x) = -0{,}73$ a une unique solution sur cet intervalle.\n\n**Sur $[-1\\,;\\,+\\infty[$.** $g$ est continue et strictement croissante, de $-\\dfrac{2}{e}$ jusqu'à la limite $+\\infty$ : de même, une unique solution sur cet intervalle.\n\nCes deux solutions sont distinctes, car $g(-1) = -\\dfrac{2}{e} \\neq -0{,}73$. L'équation a exactement deux solutions dans $\\mathbb{R}$ : **l'affirmation 4 est vraie**.",
+        "erreurFrequente": "Prendre la limite $0$ en $-\\infty$ pour une valeur atteinte : $g(x) < 0$ pour tout $x < 0$, et c'est parce que $-0{,}73$ est strictement entre le minimum et cette limite qu'une solution existe sur $]-\\infty\\,;\\,-1]$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On considère la suite $(u_n)$ définie par $u_0 = 2$ et, pour tout entier naturel $n$, $u_{n+1} = u_n^2$.\n\n**Affirmation 5** : la suite $(u_n)$ converge.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Pour tout $n$, $u_n \\geqslant 2$. Si la suite convergeait vers un réel $\\ell$, on aurait $\\ell \\geqslant 2$ et, par continuité de $x \\mapsto x^2$, $\\ell = \\ell^2$, donc $\\ell = 0$ ou $\\ell = 1$ : c'est contradictoire."
+        },
+        "revoir": "l-continuite-054",
+        "indices": [
+          "Calcule quelques termes, puis montre par récurrence un minorant simple de $u_n$. Si la suite convergeait vers un réel $\\ell$, où se situerait $\\ell$ ?",
+          "Dans ce cas, la continuité de $x \\mapsto x^2$ permet de passer à la limite dans $u_{n+1} = u_n^2$ : résous l'équation obtenue et confronte ses solutions à la position de $\\ell$."
+        ],
+        "attenduCorrecteur": "- Récurrence : $u_0 = 2 \\geqslant 2$ ; si $u_n \\geqslant 2$, alors $u_{n+1} = u_n^2 \\geqslant 4 \\geqslant 2$ : 0,25 pt.\n- Par l'absurde : si $(u_n)$ converge vers $\\ell$, alors $\\ell \\geqslant 2$ ; $x \\mapsto x^2$ est continue sur $[2\\,;\\,+\\infty[$ et à valeurs dans cet intervalle, donc $\\ell = \\ell^2$ : 0,5 pt.\n- $\\ell^2 = \\ell \\iff \\ell = 0$ ou $\\ell = 1$, incompatible avec $\\ell \\geqslant 2$ : la suite ne converge pas, l'affirmation est fausse : 0,25 pt.",
+        "solution": "**Un minorant.** Montrons par récurrence que $u_n \\geqslant 2$ pour tout entier naturel $n$. **Initialisation** : $u_0 = 2 \\geqslant 2$. **Hérédité** : soit $n$ un entier tel que $u_n \\geqslant 2$ ; la fonction carré étant croissante sur $[0\\,;\\,+\\infty[$, $u_{n+1} = u_n^2 \\geqslant 2^2 = 4 \\geqslant 2$. **Conclusion** : pour tout entier naturel $n$, $u_n \\geqslant 2$.\n\n**Raisonnement par l'absurde.** Supposons que la suite $(u_n)$ converge vers un réel $\\ell$. Par passage à la limite dans $u_n \\geqslant 2$, on a $\\ell \\geqslant 2$.\n\nSoit $f$ la fonction définie par $f(x) = x^2$. C'est un polynôme : elle est continue sur $I = [2\\,;\\,+\\infty[$. Elle est à valeurs dans $I$ : si $x \\geqslant 2$, alors $x^2 \\geqslant 4 \\geqslant 2$. Les termes $u_n$ et la limite $\\ell$ appartiennent à $I$. En passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = \\ell^2$.\n\nOr $\\ell^2 = \\ell \\iff \\ell(\\ell - 1) = 0 \\iff \\ell = 0$ ou $\\ell = 1$. Ces deux valeurs contredisent $\\ell \\geqslant 2$. L'hypothèse est donc fausse : la suite $(u_n)$ ne converge pas, et **l'affirmation 5 est fausse**. Ses premiers termes, $u_1 = 4$, $u_2 = 16$ et $u_3 = 256$, montrent d'ailleurs qu'elle grandit très vite.",
+        "erreurFrequente": "Résoudre $\\ell = \\ell^2$ et conclure que la suite converge vers $0$ ou vers $1$ : l'égalité $\\ell = f(\\ell)$ suppose que la suite converge, elle ne le prouve pas."
+      }
+    ]
+  }
+]
