@@ -84,12 +84,25 @@
           "id": "l-continuite-007",
           "type": "propriete",
           "titre": "Une fonction dérivable est continue",
-          "capacites": ["bo-m-continuite-01", "bo-m-logique-09"],
-          "texte": "- Si une fonction $f$ est **dérivable** sur un intervalle $I$, alors $f$ est **continue** sur $I$. C'est vrai aussi en un seul réel : si $f$ est dérivable en $a$, alors $f$ est continue en $a$ (la démonstration, plus bas, le prouve réel par réel).\n- En conséquence, les fonctions polynômes, inverse et exponentielle sont continues sur chaque intervalle où elles sont définies. Il en va de même des fonctions obtenues à partir d'elles par somme, produit, quotient ou sous la forme $x \\mapsto g(ax + b)$.\n- Par exemple, $x \\mapsto \\dfrac{1}{x}$ est continue sur $]-\\infty\\,;\\,0[$ et sur $]0\\,;\\,+\\infty[$. En $0$, où elle n'est pas définie, la question ne se pose pas.\n- La fonction racine carrée est continue sur $[0\\,;\\,+\\infty[$ : en $0$, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$. De même, $x \\mapsto \\sqrt{ax + b}$ est continue sur chaque intervalle où $ax + b \\geqslant 0$ : elle est dérivable là où $ax + b > 0$ et, là où $ax + b$ s'annule, sa limite vaut $0$, comme sa valeur. Par exemple, $x \\mapsto \\sqrt{4 - x}$ est continue sur $]-\\infty\\,;\\,4]$.\n\nAu bac, la justification habituelle est : « $f$ est dérivable sur $I$, donc continue sur $I$ ».\n\n**Réciproque et contraposée.** Pour une implication « si $P$, alors $Q$ » :\n- sa **réciproque** est « si $Q$, alors $P$ » : elle peut être fausse, même quand l'implication est vraie ;\n- sa **contraposée** est « si $Q$ est fausse, alors $P$ est fausse » : une implication vraie a toujours une contraposée vraie.\n\nIci, la réciproque est fausse : une fonction peut être continue en un réel sans y être dérivable (voir le piège plus bas). La contraposée, elle, est vraie : **une fonction qui n'est pas continue en $a$ n'est pas dérivable en $a$**. En effet, si elle était dérivable en $a$, elle y serait continue.",
+          "capacites": ["bo-m-continuite-01"],
+          "texte": "- Si une fonction $f$ est **dérivable** sur un intervalle $I$, alors $f$ est **continue** sur $I$. C'est vrai aussi en un seul réel : si $f$ est dérivable en $a$, alors $f$ est continue en $a$ (la démonstration, plus bas, le prouve réel par réel).\n- En conséquence, les fonctions polynômes, inverse et exponentielle sont continues sur chaque intervalle où elles sont définies. Il en va de même des fonctions obtenues à partir d'elles par somme, produit, quotient ou sous la forme $x \\mapsto g(ax + b)$.\n- Par exemple, $x \\mapsto \\dfrac{1}{x}$ est continue sur $]-\\infty\\,;\\,0[$ et sur $]0\\,;\\,+\\infty[$. En $0$, où elle n'est pas définie, la question ne se pose pas.\n- La fonction racine carrée est continue sur $[0\\,;\\,+\\infty[$ : en $0$, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$. De même, $x \\mapsto \\sqrt{ax + b}$ est continue sur chaque intervalle où $ax + b \\geqslant 0$ : elle est dérivable là où $ax + b > 0$ et, là où $ax + b$ s'annule, sa limite vaut $0$, comme sa valeur. Par exemple, $x \\mapsto \\sqrt{4 - x}$ est continue sur $]-\\infty\\,;\\,4]$.\n\nAu bac, la justification habituelle est : « $f$ est dérivable sur $I$, donc continue sur $I$ ».",
           "conditions": [
             "$f$ est dérivable en tout réel de l'intervalle $I$."
           ],
           "admise": false
+        },
+        {
+          "id": "l-continuite-061",
+          "type": "methode",
+          "titre": "Comment formuler la réciproque ou la contraposée d'une implication ?",
+          "capacites": ["bo-m-logique-09", "bo-m-continuite-01"],
+          "etapes": [
+            "Écris l'énoncé sous la forme « si $P$, alors $Q$ » : c'est une **implication**.",
+            "Pour la **réciproque**, échange $P$ et $Q$ : « si $Q$, alors $P$ ». Elle peut être fausse, même si l'implication est vraie.",
+            "Pour la **contraposée**, échange-les et prends leur contraire : « si $Q$ est fausse, alors $P$ est fausse ». Elle est vraie dès que l'implication l'est.",
+            "Applique-les à « si $f$ est dérivable en $a$, alors $f$ est continue en $a$ ». Sa réciproque est fausse : la racine carrée est continue en $0$ sans y être dérivable (voir le piège plus bas).",
+            "Sa contraposée est vraie : **une fonction non continue en $a$ n'est pas dérivable en $a$**. Sinon, dérivable en $a$, elle y serait continue."
+          ]
         },
         {
           "id": "l-continuite-008",
@@ -171,7 +184,7 @@
           "titre": "Continue ne veut pas dire dérivable",
           "faux": "La fonction racine carrée est continue en $0$, donc elle est dérivable en $0$.",
           "juste": "Elle est continue en $0$, car $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$. Mais elle n'est pas dérivable en $0$. Pour $h > 0$, on a $h = \\sqrt{h} \\times \\sqrt{h}$, donc le taux de variation vaut $\\dfrac{\\sqrt{h} - \\sqrt{0}}{h} = \\dfrac{\\sqrt{h}}{\\sqrt{h} \\times \\sqrt{h}} = \\dfrac{1}{\\sqrt{h}}$. Il tend vers $+\\infty$ quand $h$ tend vers $0$.",
-          "explication": "Dérivable entraîne continue, mais pas la réciproque : continue n'entraîne pas dérivable. La contraposée, elle, est vraie : une fonction **non continue** en $a$ n'est **pas dérivable** en $a$ (voir la propriété plus haut). En $0$, la courbe de la racine carrée n'a pas de saut ; elle part à la verticale, et une tangente verticale n'a pas de coefficient directeur. Ne remplace donc jamais « continue » par « dérivable » dans une justification."
+          "explication": "Dérivable entraîne continue, mais pas la réciproque : continue n'entraîne pas dérivable. La contraposée, elle, est vraie : une fonction **non continue** en $a$ n'est **pas dérivable** en $a$ (voir la méthode sur la réciproque et la contraposée, plus haut). En $0$, la courbe de la racine carrée n'a pas de saut ; elle part à la verticale, et une tangente verticale n'a pas de coefficient directeur. Ne remplace donc jamais « continue » par « dérivable » dans une justification."
         },
         {
           "id": "l-continuite-012",
