@@ -36,7 +36,7 @@
               "width": 520,
               "height": 230
             },
-            "caption": "À gauche, quand x se rapproche de a, f(x) se rapproche de f(a). À droite, quand x se rapproche de a par la droite, g(x) reste loin de g(a) : la courbe saute, g n'est pas continue en a."
+            "caption": "À gauche, quand x se rapproche de a, f(x) se rapproche de f(a). À droite, quand x se rapproche de a par la droite, g(x) reste loin de g(a) : la courbe saute, g n'est pas continue en a. Point plein : ce point appartient à la courbe. Point creux : il n'en fait pas partie, g ne prend pas cette valeur en a."
           }
         },
         {
@@ -51,11 +51,12 @@
               "pourquoi": "À gauche de $1$, la fonction est constante, égale à $2$ : tout intervalle ouvert contenant $2$ contient toutes ses valeurs."
             },
             {
-              "texte": "Pour $1 < x \\leqslant 2$, $p(x) = 4$. Donc $\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} p(x) = 4$."
+              "texte": "Pour $1 < x \\leqslant 2$, $p(x) = 4$. Donc $\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} p(x) = 4$.",
+              "pourquoi": "Ici, le morceau est constant. Si c'était un polynôme, comme $3x + 1$, sa limite à droite en $1$ s'obtiendrait en remplaçant $x$ par $1$ (voir le rappel) : $3 \\times 1 + 1 = 4$."
             },
             {
               "texte": "**2.** $p(1) = 2$, car $0 < 1 \\leqslant 1$ : on utilise la première ligne. La limite à droite, $4$, est différente de $p(1) = 2$. Quand $x$ se rapproche de $1$ par la droite, $p(x)$ ne se rapproche pas de $p(1)$ : $p$ n'est pas continue en $1$.",
-              "pourquoi": "L'intervalle ouvert $]1{,}5\\,;\\,2{,}5[$ contient $p(1) = 2$, mais pas la valeur $4$, prise par $p(x)$ pour tout $x$ de $]1\\,;\\,2]$, aussi près de $1$ qu'on veut."
+              "pourquoi": "L'intervalle ouvert $]1{,}5\\,;\\,2{,}5[$ est pris sur l'axe des ordonnées. Il contient $p(1) = 2$, mais pas la valeur $4$, prise par $p(x)$ pour tout $x$ de $]1\\,;\\,2]$, aussi près de $1$ qu'on veut."
             },
             {
               "texte": "Le réel $1$ appartient à $]0\\,;\\,3]$, et $p$ n'est pas continue en $1$ : $p$ n'est donc pas continue sur $]0\\,;\\,3]$. Sa courbe, en escalier, fait un saut en $1$, et de même en $2$."
@@ -169,7 +170,7 @@
           "type": "piege",
           "titre": "Continue ne veut pas dire dérivable",
           "faux": "La fonction racine carrée est continue en $0$, donc elle est dérivable en $0$.",
-          "juste": "Elle est continue en $0$, car $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$. Mais elle n'est pas dérivable en $0$ : pour $h > 0$, le taux de variation $\\dfrac{\\sqrt{h} - \\sqrt{0}}{h} = \\dfrac{1}{\\sqrt{h}}$ tend vers $+\\infty$ quand $h$ tend vers $0$.",
+          "juste": "Elle est continue en $0$, car $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$. Mais elle n'est pas dérivable en $0$. Pour $h > 0$, on a $h = \\sqrt{h} \\times \\sqrt{h}$, donc le taux de variation vaut $\\dfrac{\\sqrt{h} - \\sqrt{0}}{h} = \\dfrac{\\sqrt{h}}{\\sqrt{h} \\times \\sqrt{h}} = \\dfrac{1}{\\sqrt{h}}$. Il tend vers $+\\infty$ quand $h$ tend vers $0$.",
           "explication": "Dérivable entraîne continue, mais pas l'inverse. En $0$, la courbe de la racine carrée n'a pas de saut ; elle part à la verticale, et une tangente verticale n'a pas de coefficient directeur. Ne remplace donc jamais « continue » par « dérivable » dans une justification."
         },
         {
@@ -222,11 +223,11 @@
             "type": "image",
             "data": {
               "src": "terminale/maths/continuite/valeurs-intermediaires.svg",
-              "alt": "Courbe d'une fonction continue f sur l'intervalle de a à b. Elle part du point d'ordonnée f(a), en bas à gauche, monte, redescend, puis remonte jusqu'au point d'ordonnée f(b), en haut à droite. La droite horizontale d'équation y = k, avec k compris entre f(a) et f(b), coupe la courbe en trois points, d'abscisses c1, c2 et c3 : l'équation f(x) = k a ici trois solutions, et il y en a toujours au moins une.",
+              "alt": "Courbe d'une fonction continue f sur l'intervalle de a à b. Elle part du point d'ordonnée f(a), en bas à gauche, monte, redescend, puis remonte jusqu'au point d'ordonnée f(b), en haut à droite. La droite horizontale d'équation y = k, avec k compris entre f(a) et f(b), coupe la courbe en trois points, d'abscisses c1, c2 et c3 : l'équation f(x) = k a ici trois solutions, et il y en a toujours au moins une. Une bande orange, sur l'axe des ordonnées, va de f(a) à f(b) : elle marque les valeurs de k possibles.",
               "width": 370,
               "height": 300
             },
-            "caption": "Courbe de f(x) = x³ − 3x + 1 sur [−2 ; 2] : f(a) = −1, f(b) = 3 et k = 1. Toute droite horizontale d'ordonnée comprise entre f(a) et f(b) coupe la courbe ; ici, la droite y = 1 la coupe trois fois, en c₁, c₂ et c₃."
+            "caption": "Courbe de f(x) = x³ − 3x + 1 sur [−2 ; 2] : f(a) = −1, f(b) = 3 et k = 1. La bande orange, sur l'axe des ordonnées, va de f(a) à f(b) : elle marque les valeurs de k possibles. Toute droite horizontale d'ordonnée comprise entre f(a) et f(b) coupe la courbe ; ici, la droite y = 1 la coupe trois fois, en c₁, c₂ et c₃."
           }
         },
         {
@@ -342,7 +343,7 @@
               "texte": "**Existence.** $f$ est continue sur $[a\\,;\\,b]$ et $k$ est compris entre $f(a)$ et $f(b)$ : d'après le théorème des valeurs intermédiaires, l'équation $f(x) = k$ a au moins une solution dans $[a\\,;\\,b]$."
             },
             {
-              "texte": "**Unicité.** On suppose $f$ strictement croissante, et on raisonne par l'absurde : supposons que l'équation ait deux solutions distinctes $c$ et $d$ dans $[a\\,;\\,b]$, avec $c < d$.",
+              "texte": "**Unicité.** On suppose $f$ strictement croissante, et on raisonne par l'absurde : on suppose le contraire de ce qu'on veut montrer, et on aboutit à une impossibilité. Supposons donc que l'équation ait deux solutions distinctes $c$ et $d$ dans $[a\\,;\\,b]$, avec $c < d$.",
               "pourquoi": "Si les deux solutions étaient rangées dans l'autre sens, on échangerait leurs noms."
             },
             {
@@ -386,7 +387,7 @@
           "etapes": [
             "Sur l'intervalle demandé, justifie que $f$ est continue : « $f$ est dérivable sur $I$, donc continue sur $I$ ».",
             "Étudie le sens de variation (signe de $f'$, tableau de variations) et vérifie que $f$ est strictement monotone sur tout l'intervalle. Si elle change de sens, découpe l'intervalle et traite chaque morceau.",
-            "Calcule les images des bornes, ou leurs limites si une borne est exclue ou infinie, et vérifie que $k$ est compris entre elles (strictement, si ce sont des limites).",
+            "Calcule les images des bornes, ou leurs limites si une borne est exclue ou infinie (voir l'extension admise, juste après le piège qui suit). Vérifie que $k$ est compris entre elles (strictement, si ce sont des limites).",
             "Conclus en citant le théorème et ses hypothèses : « $f$ est continue et strictement croissante sur $[a\\,;\\,b]$, et $k$ est compris entre $f(a)$ et $f(b)$ ; d'après le théorème des valeurs intermédiaires, l'équation $f(x) = k$ admet une unique solution $\\alpha$ dans $[a\\,;\\,b]$ ».",
             "Pour encadrer $\\alpha$, utilise le tableau de valeurs de la calculatrice, avec un pas de $0{,}1$, puis de $0{,}01$. Garde deux valeurs consécutives de $x$ entre lesquelles $f(x) - k$ change de signe.",
             "Pour une valeur arrondie à $10^{-2}$ près, calcule aussi l'image du milieu de l'encadrement d'amplitude $10^{-2}$ : elle dit de quel côté de ce milieu se trouve $\\alpha$."
@@ -484,7 +485,7 @@
           "id": "l-continuite-032",
           "type": "rappel",
           "titre": "Rappel : fonctions et boucles en Python",
-          "texte": "En Python, def f(x): suivi de return définit une fonction qui renvoie une valeur. Une boucle while répète ses instructions tant que sa condition est vraie ; une boucle for k in range(n) les répète $n$ fois. L'instruction if … else … choisit entre deux actions selon une condition.",
+          "texte": "En Python, une ligne « def f(x): », suivie d'une ligne « return … », définit une fonction qui renvoie une valeur. Une boucle « while » répète ses instructions tant que sa condition est vraie ; une boucle « for k in range(n): » les répète $n$ fois. L'instruction « if … else … » choisit entre deux actions selon une condition. Dans les programmes ci-dessous, le texte après « # » est un commentaire : Python ne l'exécute pas.",
           "lien": "l-limites-suites-063"
         },
         {
@@ -495,7 +496,7 @@
           "etapes": [
             "Pars d'un intervalle $[a\\,;\\,b]$ sur lequel $f$ est continue, avec $f(a)$ et $f(b)$ de signes contraires : d'après le théorème des valeurs intermédiaires, l'équation $f(x) = 0$ a une solution dans $[a\\,;\\,b]$. Si $f$ y est aussi strictement monotone, cette solution est unique : note-la $\\alpha$.",
             "Calcule le milieu $m = \\dfrac{a + b}{2}$, puis le signe du produit $f(a) \\times f(m)$.",
-            "Si $f(a) \\times f(m) \\leqslant 0$, $f$ change de signe entre $a$ et $m$ : garde $[a\\,;\\,m]$, c'est-à-dire remplace $b$ par $m$. Sinon, $f$ change de signe entre $m$ et $b$ : garde $[m\\,;\\,b]$, c'est-à-dire remplace $a$ par $m$.",
+            "Si $f(a) \\times f(m) \\leqslant 0$, $f$ change de signe entre $a$ et $m$, ou s'annule en $a$ ou en $m$ : garde $[a\\,;\\,m]$, c'est-à-dire remplace $b$ par $m$. Le test dit « $\\leqslant 0$ » et pas « $< 0$ » : un produit nul signifie que $a$ ou $m$ est déjà une solution. Sinon, $f$ change de signe entre $m$ et $b$ : garde $[m\\,;\\,b]$, c'est-à-dire remplace $a$ par $m$.",
             "Recommence tant que l'amplitude $b - a$ est plus grande que la précision $p$ voulue. À chaque étape, l'amplitude est divisée par $2$ : après $n$ étapes, elle vaut $\\dfrac{b - a}{2^n}$, avec les valeurs de départ de $a$ et $b$.",
             "À la sortie, $b - a \\leqslant p$ et $[a\\,;\\,b]$ contient encore une solution ($\\alpha$, si elle est unique). Les bornes $a$ et $b$ en sont des valeurs approchées à $p$ près, par défaut et par excès."
           ],
@@ -553,7 +554,7 @@
             "langage": "python",
             "source": "def f(x):\n    return x**3 + x - 1\n\ndef derivee(x):              # f'(x) = 3x² + 1\n    return 3 * x**2 + 1\n\ndef newton(x, n):\n    for k in range(n):\n        x = x - f(x) / derivee(x)   # là où la tangente coupe l'axe\n    return x\n\nprint(newton(1, 4))          # affiche 0.6823278039465127"
           },
-          "texte": "**L'idée** : près de $\\alpha$, la courbe ressemble à sa tangente. On part de $x_0$ ; la tangente au point d'abscisse $x_0$ coupe l'axe des abscisses en $x_1$, souvent plus proche de $\\alpha$. On recommence à partir de $x_1$.\n\n**La formule** : la tangente au point d'abscisse $x_n$ a pour équation $y = f'(x_n)(x - x_n) + f(x_n)$. Elle coupe l'axe des abscisses quand $y = 0$, c'est-à-dire, si $f'(x_n) \\neq 0$, en\n\n$$x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}.$$\n\n**Le programme** : newton(x, n) applique $n$ fois cette formule. Avec $x_0 = 1$, il affiche $0{,}682\\,327\\,803\\,9\\ldots$ après $4$ étapes : $\\alpha$ à $10^{-9}$ près, quand $4$ étapes de dichotomie laissent une amplitude de $0{,}062\\,5$. La méthode échoue parfois, par exemple si $f'(x_n) = 0$ ; l'étude de sa convergence n'est pas au programme."
+          "texte": "**L'idée** : près de $\\alpha$, la courbe ressemble à sa tangente. On part de $x_0$ ; la tangente au point d'abscisse $x_0$ coupe l'axe des abscisses en $x_1$, souvent plus proche de $\\alpha$. On recommence à partir de $x_1$.\n\n**La formule** : la tangente au point d'abscisse $x_n$ a pour équation $y = f'(x_n)(x - x_n) + f(x_n)$. Elle coupe l'axe des abscisses quand $y = 0$, soit $f'(x_n)(x - x_n) = -f(x_n)$. Si $f'(x_n) \\neq 0$, on divise par $f'(x_n)$ : $x - x_n = -\\dfrac{f(x_n)}{f'(x_n)}$, d'où\n\n$$x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}.$$\n\n**Le programme** : « newton(x, n) » applique $n$ fois cette formule. Avec $x_0 = 1$, il affiche $0{,}682\\,327\\,803\\,9\\ldots$ après $4$ étapes : $\\alpha$ à $10^{-9}$ près, quand $4$ étapes de dichotomie laissent une amplitude de $0{,}062\\,5$. La méthode échoue parfois, par exemple si $f'(x_n) = 0$ ; l'étude de sa convergence n'est pas au programme."
         },
         {
           "id": "l-continuite-037",
@@ -564,11 +565,11 @@
             "type": "image",
             "data": {
               "src": "terminale/maths/continuite/methode-newton.svg",
-              "alt": "Agrandissement de la courbe de f(x) = x³ + x − 1 près de sa solution α, environ 0,68. Au point de la courbe d'abscisse x0 = 1, on trace la tangente T0 : elle coupe l'axe des abscisses en x1 = 0,75. Au point de la courbe d'abscisse x1, une nouvelle tangente coupe l'axe en x2, environ 0,686, déjà très proche de α.",
+              "alt": "Agrandissement de la courbe de f(x) = x³ + x − 1 près de sa solution α, environ 0,68. Au point de la courbe d'abscisse x0 = 1, on trace la tangente T0 : elle coupe l'axe des abscisses en x1 = 0,75. Au point de la courbe d'abscisse x1, une nouvelle tangente coupe l'axe en x2, environ 0,686. Le point x2 et le point où la courbe coupe l'axe, d'abscisse α, se confondent presque. Un petit trait relie l'étiquette α à ce second point.",
               "width": 340,
               "height": 280
             },
-            "caption": "Agrandissement de la courbe de f(x) = x³ + x − 1 autour de α ≈ 0,682. La tangente T₀ au point d'abscisse x₀ = 1 coupe l'axe des abscisses en x₁ = 0,75 ; la tangente au point d'abscisse x₁ le coupe en x₂ ≈ 0,686, déjà très proche de α."
+            "caption": "Agrandissement de la courbe de f(x) = x³ + x − 1 autour de α ≈ 0,682. La tangente T₀ au point d'abscisse x₀ = 1 coupe l'axe des abscisses en x₁ = 0,75 ; la tangente au point d'abscisse x₁ le coupe en x₂ ≈ 0,686. Sur la figure, x₂ et α (là où la courbe coupe l'axe) sont à moins de 0,004 l'un de l'autre : leurs points se confondent presque."
           }
         },
         {
@@ -621,7 +622,7 @@
             "langage": "python",
             "source": "def f(x):\n    return x**3 + x - 1\n\ndef secante(a, b, n):\n    for k in range(n):\n        c = b - f(b) * (b - a) / (f(b) - f(a))   # là où la sécante coupe l'axe\n        a = b\n        b = c\n    return b\n\nprint(secante(0, 1, 5))      # affiche 0.6823257814098928"
           },
-          "texte": "La méthode de la sécante remplace la tangente par une **sécante** : la droite qui passe par deux points de la courbe, d'abscisses $a$ et $b$. Plus besoin de la dérivée.\n\nCette droite passe par le point de coordonnées $(b\\,;\\,f(b))$ et a pour coefficient directeur $\\dfrac{f(b) - f(a)}{b - a}$. Si $f(a) \\neq f(b)$, elle n'est pas parallèle à l'axe des abscisses et le coupe en\n\n$$c = b - f(b) \\times \\dfrac{b - a}{f(b) - f(a)}.$$\n\nOn recommence avec les deux derniers points, d'abscisses $b$ et $c$. Avec $a = 0$ et $b = 1$, les valeurs successives de $c$ sont environ $0{,}5$ ; $0{,}636\\,4$ ; $0{,}690\\,1$ ; $0{,}682\\,0$ ; $0{,}682\\,33$ : cinq étapes donnent $\\alpha$ à $10^{-5}$ près. Comme pour Newton, l'étude de sa convergence n'est pas au programme."
+          "texte": "**L'idée** : on remplace la tangente par une **sécante**, droite qui passe par deux points de la courbe, d'abscisses $a$ et $b$ : plus besoin de la dérivée.\n\n**La formule** : la sécante a pour coefficient directeur $q = \\dfrac{f(b) - f(a)}{b - a}$ et passe par le point $(b\\,;\\,f(b))$. Son équation est donc $y = q(x - b) + f(b)$. Si $f(a) \\neq f(b)$, alors $q \\neq 0$ : elle coupe l'axe des abscisses quand $y = 0$, soit $q(x - b) = -f(b)$. On divise par $q$, c'est-à-dire qu'on multiplie par son inverse $\\dfrac{b - a}{f(b) - f(a)}$, puis on ajoute $b$ :\n\n$$c = b - f(b) \\times \\dfrac{b - a}{f(b) - f(a)}.$$\n\n**À la main**, avec $a = 0$ et $b = 1$ : $f(0) = -1$ et $f(1) = 1$, donc $q = \\dfrac{1 - (-1)}{1 - 0} = 2$ et $c = b - \\dfrac{f(b)}{q} = 1 - \\dfrac{1}{2} = 0{,}5$.\n\n**Le programme** recommence avec les points d'abscisses $b$ et $c$ : $c$ vaut ensuite environ $0{,}636\\,4$ ; $0{,}690\\,1$ ; $0{,}682\\,0$ ; $0{,}682\\,33$, soit $\\alpha$ à $10^{-5}$ près. L'étude de la convergence n'est pas au programme."
         },
         {
           "id": "l-continuite-041",
@@ -793,8 +794,11 @@
               "texte": "Or $f(u_n) = u_{n+1}$ pour tout $n$ : la suite $(u_{n+1})$ converge donc à la fois vers $\\ell$ et vers $f(\\ell)$."
             },
             {
-              "texte": "Une suite convergente n'a qu'une seule limite : $f(\\ell) = \\ell$.",
-              "pourquoi": "C'est ce raisonnement, en abrégé, que le correcteur attend : « $f$ est continue sur $I$, et $(u_n)$ converge vers $\\ell \\in I$ ; en passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = f(\\ell)$ »."
+              "texte": "Or une suite convergente n'a qu'**une seule** limite. Donc $f(\\ell) = \\ell$.",
+              "pourquoi": "Si $\\ell$ et $f(\\ell)$ étaient différents, on choisirait deux intervalles ouverts sans point commun, l'un contenant $\\ell$, l'autre contenant $f(\\ell)$. À partir d'un rang assez grand, tous les $u_{n+1}$ seraient dans les deux intervalles à la fois : c'est impossible."
+            },
+            {
+              "texte": "**Au bac**, le correcteur attend ce raisonnement en abrégé. On écrit : « $f$ est continue sur $I$, et $(u_n)$ converge vers $\\ell \\in I$ ; en passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = f(\\ell)$ »."
             }
           ]
         },
