@@ -667,16 +667,30 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     élève-testeur À clarifier (1 bloquant : la méthode de la sécante sautait une étape) ;
     tout corrigé avec les 13 gênes, relu au 2e tour ciblé (PASS) ; couverture « cours » sans
     écart. Coût : 27 $. PR : #123.
-  - [ ] Continuité et théorème des valeurs intermédiaires : les exercices —
-    `/tle-chapitre maths continuite exercices`, dans une session neuve. Transposer avec
-    l'exponentielle, les polynômes et les quotients les sujets qui utilisent le logarithme
-    (chapitre 7, pas encore vu) ; les exercices peuvent noter l'arrondi par l'image du milieu
-    (blocs l-continuite-021 et -025).
-  - [ ] Polir quatre détails du cours de Continuité — non bloquants du relecteur au 2e tour :
+  - [x] Continuité et théorème des valeurs intermédiaires : les exercices — 24 exercices
+    (10 Comprendre, 11 S'entraîner, 3 Approfondir), 13 questions éclair, 5 sujets type bac
+    (27 points, chacun adapté d'un vrai sujet, cité ; logarithme transposé à l'exponentielle).
+    Relecteur PASS au 1er tour ; élève-testeur À clarifier (1 bloquant : « non continue ⇒ non
+    dérivable » demandé sans que le cours dise ce qu'est une contraposée) ; cours complété
+    (méthode `l-continuite-061` « réciproque et contraposée », racine √(ax + b) continue,
+    arrondi par le milieu pour une fonction décroissante), gênes et non bloquants corrigés,
+    relu en 2 tours ciblés (PASS au 3e) ; couverture sans écart. Même PR que le cours, à la
+    demande de Thibaud. Coût : voir la PR. PR : #123.
+  - [ ] Polir six détails du cours de Continuité — non bloquants du relecteur :
     figure de Newton (`l-continuite-037`), la tangente en x₁ est cachée sous la courbe alors
     que le titre en annonce deux ; `l-continuite-026`, phrase de 31 mots (25 au plus) ;
     `l-continuite-053`, deux étapes de suite commencent par « Or » ; `l-continuite-025`
-    (facultatif), écrire les images qui justifient 0,682 < α < 0,683.
+    (facultatif), écrire les images qui justifient 0,682 < α < 0,683 ; `l-continuite-007`,
+    143 mots (120 au plus) : retirer « En 0, … ne se pose pas » (déjà en 008) et « Au bac,
+    la justification habituelle… » (déjà dans le « retenir » 013) ; `l-continuite-061`
+    (méthode réciproque et contraposée) s'intercale entre la propriété 007 et son exemple
+    008 : la déplacer entre 010 et 011, et mettre sa dernière étape à l'impératif.
+  - [ ] Polir les exercices de Continuité — non bloquants laissés ouverts : dans tb-003 q6 et
+    tb-002 q8b, « rang », « a » et « n » restent en texte simple (« dépasse a » se lit
+    d'abord comme le verbe avoir) ; dans la marche Comprendre, les exercices de la notion
+    « fonction continue » (x-007, x-008) viennent après ceux des notions ★★★ (ordre gardé :
+    la charte met la priorité d'abord). Rapports : relecture tour 3 et élève-testeur,
+    session du 2026-10-13.
   - [ ] Une animation « escalier » pour voir une suite uₙ₊₁ = f(uₙ) aller vers le point où la
     courbe coupe la droite y = x — souhait de l'auteur du cours de Continuité (notion
     « limite d'une suite », figure fixe `suite-escalier.svg` en attendant) ; à faire quand les

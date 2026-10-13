@@ -133,6 +133,12 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
   avec les limites aux bornes, n'est pas écrit au programme mais tombe presque à chaque
   sujet : présenté comme une extension admise. Interdits tenus : ni logarithme, ni dérivée
   d'une composée, ni convexité, ni fonction réciproque.
+- **Exercices écrits le 2026-10-13** (même PR que le cours, à la demande de Thibaud) : 24
+  exercices (10 Comprendre, 11 S'entraîner, 3 Approfondir), 13 questions éclair, 5 exercices
+  type bac (27 points, chacun adapté d'un vrai sujet, cité ; les sujets avec logarithme
+  transposés à l'exponentielle). Le test « élève » a fait ajouter au cours la réciproque et
+  la contraposée (« non continue en a ⇒ non dérivable en a », méthode `l-continuite-061`),
+  la continuité de √(ax + b) et l'arrondi par le milieu quand f est décroissante.
 
 ### 5. Compléments sur la dérivation, convexité
 - Dérivée d'une composée x ↦ g(u(x)) (dont e^u, u^n, √u) · ★★★
