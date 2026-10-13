@@ -493,7 +493,8 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
 - [ ] (P3) Un lien dans un lien sur la liste des sujets type bac — avertissement React
   `validateDOMNesting` (`<a>` dans `<a>`) relevé par `controle-rendu.mjs maths denombrement` :
   `SourceDeLExercice` (`src/components/terminale/FicheExercice.tsx`) met le lien de la source
-  dans la carte cliquable. DoD : plus d'avertissement, `verify.mjs` OK.
+  dans la carte cliquable (revu sur Limites de fonctions le 2026-10-12). DoD : plus
+  d'avertissement, `verify.mjs` OK.
 - [x] (P2) Les formules s'affichent en code brut ($…$) dans la note « D'après … » des sujets
   type bac — vu au rendu de Limites de suites, et sur Récurrence et Dénombrement. La note
   d'adaptation passe par `TextWithMath` (`SourceDeLExercice`,
@@ -618,12 +619,25 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     À clarifier (1 bloquant : étape sautée dans la démonstration 051 ; forme 0/0 en un réel
     ajoutée) puis tout corrigé, relu en 2 tours ciblés (PASS au 3e) ; couverture « cours »
     sans écart. Coût : 26 $. PR : #121.
-  - [ ] Limites de fonctions : les exercices — `/tle-chapitre maths limites-fonctions exercices`,
-    dans une autre session neuve, une fois le cours fusionné. À donner aux auteurs : au moins
-    une question éclair ou un exercice « Comprendre » sur la forme 0/0 en un réel (la notion
-    « opérations » n'a pas de « vérifie » sur ce cas) ; un 0/0 en un réel seulement s'il se
-    lève par une identité remarquable ou un trinôme de racine connue ; mêmes interdits que le
-    cours (ni ln, ni continuité nommée, ni dérivée de v∘u, ni dérivées de sin et cos).
+  - [x] Limites de fonctions : les exercices — 29 exercices (13 Comprendre, 13 S'entraîner,
+    3 Approfondir), 17 questions éclair, 4 sujets type bac (21 points, chacun adapté d'un
+    vrai sujet, cité) ; forme 0/0 en un réel travaillée
+    (x-011, x-022, une question éclair). Relecteur PASS au 1er tour ; élève-testeur
+    À clarifier (1 bloquant : côté de l'asymptote dans x-014) ; corrigé, avec une étape
+    « position de la courbe par rapport à l'asymptote » ajoutée à la méthode du cours
+    `l-limites-fonctions-008`, relu au 2e tour (PASS) ; couverture sans écart. Coût : 29 $.
+  - [ ] Polir les exercices de Limites de fonctions — non bloquants du relecteur au 2e tour :
+    dernier indice de x-002 q3 et x-005 q3 trop proche de la réponse ; tb-004 ne cite pas
+    `bo-m-limites-fonctions-04` ; tb-002 q3a et tb-004 n'ont qu'un indice pour plusieurs
+    étapes ; étape 3 de la méthode `l-limites-fonctions-008` dense (83 mots). Gênes de
+    l'élève-testeur : le cours n'a pas d'exemple de trinôme factorisé par (x − a) ni de
+    quotient de degrés différents en l'infini (les indices le montrent) ; dans la marche
+    Comprendre, les croissances comparées (x-004 à x-006) passent avant les opérations
+    dont elles se servent. Rapports : relecture tour 2 et élève-testeur, session du 2026-10-12.
+  - [ ] Vérifier l'année d'un sujet de septembre dans l'index des annales — l'entrée
+    `an-2026-metropole-septembre-j2` de `content/terminale/maths/annales.json` (citée par
+    tb-limites-fonctions-002) pointe vers un PDF de l'APMEP daté du 9 septembre 2025 : la
+    source affichée sous l'exercice porterait la mauvaise année. À confier à `annales-indexeur`.
   - [ ] Polir trois formulations du cours de Limites de fonctions — non bloquants du
     relecteur au 3e tour, laissés ouverts : `l-limites-fonctions-029` (étape 6, phrase de
     36 mots, à couper après le nom de la figure) ; `l-limites-fonctions-052` (étape 4,

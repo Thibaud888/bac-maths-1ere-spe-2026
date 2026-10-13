@@ -1,0 +1,591 @@
+[
+  {
+    "id": "tb-limites-fonctions-001",
+    "chapitre": "limites-fonctions",
+    "notions": [
+      "n-limites-fonctions-definitions",
+      "n-limites-fonctions-reference",
+      "n-limites-fonctions-operations"
+    ],
+    "capacites": [
+      "bo-m-limites-fonctions-01",
+      "bo-m-limites-fonctions-06",
+      "bo-m-limites-fonctions-02",
+      "bo-m-limites-fonctions-04",
+      "bo-m-suites-14"
+    ],
+    "titre": "Une fonction logistique : asymptotes, variations et seuil en Python",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": true,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2024-metropole-septembre-j2",
+      "adaptation": "Exercice 3, partie A : fonction $f(x) = \\dfrac{6}{1 + 5e^{-x}}$, asymptote d'équation $y = 6$ à montrer, dérivée donnée et tableau de variations complet conservés ; question 1 (un point de la courbe, qui demande le logarithme), questions 4 et 5 (convexité, primitive) et partie B (équation différentielle), qui relèvent de chapitres ultérieurs, retirées ; ajoutées : limite en $-\\infty$ et son interprétation, position de la courbe par rapport à l'asymptote, et fonction Python de recherche de seuil dont l'arrêt se justifie par la limite. Solution écrite pour le site."
+    },
+    "preambule": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par :\n\n$$f(x) = \\dfrac{6}{1 + 5e^{-x}}.$$\n\nOn note $\\mathcal{C}_f$ sa courbe représentative dans un repère du plan.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer la limite de $f$ en $-\\infty$. Interpréter graphiquement ce résultat.",
+        "points": 0.75,
+        "revoir": "l-limites-fonctions-029",
+        "indices": [
+          "$e^{-x}$ est une composée : pose $X = -x$. Quand $x$ tend vers $-\\infty$, vers quoi tend $X$, puis $e^X$ ?",
+          "Déduis-en la limite du dénominateur $1 + 5e^{-x}$, puis celle du quotient, dont le numérateur est constant. Une limite finie en $-\\infty$ se traduit par une asymptote horizontale."
+        ],
+        "attenduCorrecteur": "- Limite de la composée : $X = -x$ tend vers $+\\infty$, donc $\\lim\\limits_{x \\to -\\infty} e^{-x} = +\\infty$ : 0,25 pt.\n- Par produit et somme, $1 + 5e^{-x}$ tend vers $+\\infty$ ; par quotient, $\\lim\\limits_{x \\to -\\infty} f(x) = 0$ : 0,25 pt.\n- Interprétation : la droite d'équation $y = 0$, l'axe des abscisses, est asymptote horizontale à $\\mathcal{C}_f$ en $-\\infty$ : 0,25 pt.",
+        "solution": "On pose $X = -x$. Quand $x$ tend vers $-\\infty$, $X$ tend vers $+\\infty$, et $\\lim\\limits_{X \\to +\\infty} e^X = +\\infty$. Par composée, $\\lim\\limits_{x \\to -\\infty} e^{-x} = +\\infty$.\n\nPar produit par $5 > 0$, puis par somme, $\\lim\\limits_{x \\to -\\infty} \\left(1 + 5e^{-x}\\right) = +\\infty$. Le numérateur est la constante $6$ ; par quotient :\n\n$$\\lim_{x \\to -\\infty} f(x) = 0.$$\n\nLa limite de $f$ en $-\\infty$ est le réel $0$ : la droite d'équation $y = 0$, c'est-à-dire l'axe des abscisses, est asymptote horizontale à $\\mathcal{C}_f$ en $-\\infty$.",
+        "erreurFrequente": "Écrire que $e^{-x}$ tend vers $0$ en $-\\infty$ : c'est en $+\\infty$ qu'il tend vers $0$. Quand $x$ tend vers $-\\infty$, $-x$ tend vers $+\\infty$, et son exponentielle aussi."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que la droite d'équation $y = 6$ est une asymptote à la courbe $\\mathcal{C}_f$.",
+        "points": 0.75,
+        "revoir": "l-limites-fonctions-008",
+        "indices": [
+          "Une droite d'équation $y = \\ell$ est asymptote quand la limite de $f$ en $+\\infty$ ou en $-\\infty$ vaut $\\ell$. La question 1 a traité $-\\infty$ : regarde l'autre côté.",
+          "Quand $x$ tend vers $+\\infty$, cherche d'abord la limite de $e^{-x}$ (composée avec $X = -x$), puis celle du dénominateur, puis celle du quotient."
+        ],
+        "attenduCorrecteur": "- $\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$, par composée avec $X = -x$ qui tend vers $-\\infty$ : 0,25 pt.\n- Par somme puis quotient : $1 + 5e^{-x}$ tend vers $1$, donc $\\lim\\limits_{x \\to +\\infty} f(x) = \\dfrac{6}{1} = 6$ : 0,25 pt.\n- Conclusion rédigée : la limite finie $6$ en $+\\infty$ fait de la droite d'équation $y = 6$ une asymptote horizontale à $\\mathcal{C}_f$ en $+\\infty$ : 0,25 pt.",
+        "solution": "On pose $X = -x$. Quand $x$ tend vers $+\\infty$, $X$ tend vers $-\\infty$, et $\\lim\\limits_{X \\to -\\infty} e^X = 0$. Par composée, $\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$.\n\nPar produit et somme, $\\lim\\limits_{x \\to +\\infty} \\left(1 + 5e^{-x}\\right) = 1 + 5 \\times 0 = 1$. Par quotient :\n\n$$\\lim_{x \\to +\\infty} f(x) = \\dfrac{6}{1} = 6.$$\n\nLa limite de $f$ en $+\\infty$ est le réel $6$ : la droite d'équation $y = 6$ est donc asymptote horizontale à la courbe $\\mathcal{C}_f$ en $+\\infty$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On admet que $f$ est dérivable sur $\\mathbb{R}$ ; on note $f'$ sa fonction dérivée.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout réel $x$, $f'(x) = \\dfrac{30e^{-x}}{\\left(1 + 5e^{-x}\\right)^2}$.",
+            "points": 0.75,
+            "revoir": "l-limites-fonctions-047",
+            "indices": [
+              "Écris $f = 6 \\times \\dfrac{1}{v}$ avec $v(x) = 1 + 5e^{-x}$, qui ne s'annule pas. Formules de première : $\\left(\\dfrac{1}{v}\\right)' = -\\dfrac{v'}{v^2}$, et la dérivée de $x \\mapsto e^{ax+b}$ est $x \\mapsto ae^{ax+b}$.",
+              "Calcule d'abord $v'(x)$ : la dérivée de $e^{-x}$ correspond à $a = -1$. Remplace ensuite dans $f'(x) = 6 \\times \\left(-\\dfrac{v'(x)}{v(x)^2}\\right)$."
+            ],
+            "attenduCorrecteur": "- Forme reconnue : $f = 6 \\times \\dfrac{1}{v}$ avec $v(x) = 1 + 5e^{-x} > 0$, qui ne s'annule pas : 0,25 pt.\n- $v'(x) = -5e^{-x}$, la dérivée de $e^{-x}$ étant justifiée par $\\left(e^{ax+b}\\right)' = ae^{ax+b}$ : 0,25 pt.\n- Calcul : $f'(x) = -6 \\times \\dfrac{-5e^{-x}}{\\left(1 + 5e^{-x}\\right)^2} = \\dfrac{30e^{-x}}{\\left(1 + 5e^{-x}\\right)^2}$ : 0,25 pt.",
+            "solution": "Pour tout réel $x$, on pose $v(x) = 1 + 5e^{-x}$. Comme $e^{-x} > 0$, $v(x) > 1 > 0$ : $v$ ne s'annule pas sur $\\mathbb{R}$, et $f = 6 \\times \\dfrac{1}{v}$.\n\nLa dérivée de $x \\mapsto e^{-x}$ est $x \\mapsto -e^{-x}$ (dérivée de $e^{ax+b}$ avec $a = -1$ et $b = 0$), donc $v'(x) = -5e^{-x}$.\n\nD'après la formule $\\left(\\dfrac{1}{v}\\right)' = -\\dfrac{v'}{v^2}$, pour tout réel $x$ :\n\n$$f'(x) = 6 \\times \\left(-\\dfrac{-5e^{-x}}{\\left(1 + 5e^{-x}\\right)^2}\\right) = \\dfrac{30e^{-x}}{\\left(1 + 5e^{-x}\\right)^2}.$$",
+            "erreurFrequente": "Oublier le signe moins de la dérivée de $e^{-x}$ : on trouve alors $f'(x) < 0$, ce qui contredit les limites $0$ en $-\\infty$ et $6$ en $+\\infty$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "En déduire le tableau de variations complet de $f$ sur $\\mathbb{R}$.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-047",
+            "indices": [
+              "Étudie le signe de $f'(x)$ : signe de $e^{-x}$ au numérateur, signe d'un carré non nul au dénominateur. « Complet » veut dire que les limites des questions 1 et 2 figurent aux extrémités du tableau."
+            ],
+            "attenduCorrecteur": "- Signe justifié : $e^{-x} > 0$ et $\\left(1 + 5e^{-x}\\right)^2 > 0$, donc $f'(x) > 0$ et $f$ est strictement croissante sur $\\mathbb{R}$ : 0,25 pt.\n- Tableau avec les limites $0$ en $-\\infty$ et $6$ en $+\\infty$ : 0,25 pt.",
+            "solution": "Pour tout réel $x$, $e^{-x} > 0$ et $\\left(1 + 5e^{-x}\\right)^2 > 0$, donc $f'(x) > 0$ : la fonction $f$ est strictement croissante sur $\\mathbb{R}$. Avec les limites des questions 1 et 2, et $f(0) = \\dfrac{6}{1 + 5} = 1$ :\n\n| $x$ | $-\\infty$ | | $0$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $+$ | | $+$ | |\n| variations de $f$ | $0$ | $\\nearrow$ | $1$ | $\\nearrow$ | $6$ |"
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Étudier la position relative de la courbe $\\mathcal{C}_f$ et de la droite d'équation $y = 6$.",
+        "points": 0.75,
+        "revoir": "l-limites-fonctions-008",
+        "indices": [
+          "Étudie le signe de la différence $f(x) - 6$ : là où elle est négative, la courbe est en dessous de la droite.",
+          "Réduis au même dénominateur : $f(x) - 6 = \\dfrac{6 - 6\\left(1 + 5e^{-x}\\right)}{1 + 5e^{-x}}$, puis simplifie le numérateur."
+        ],
+        "attenduCorrecteur": "- Méthode : étude du signe de $f(x) - 6$ : 0,25 pt.\n- Calcul : $f(x) - 6 = \\dfrac{-30e^{-x}}{1 + 5e^{-x}}$ : 0,25 pt.\n- Signe justifié par $e^{-x} > 0$, et conclusion : $\\mathcal{C}_f$ est strictement en dessous de la droite d'équation $y = 6$ sur $\\mathbb{R}$ : 0,25 pt.",
+        "solution": "Pour tout réel $x$ :\n\n$$f(x) - 6 = \\dfrac{6}{1 + 5e^{-x}} - \\dfrac{6\\left(1 + 5e^{-x}\\right)}{1 + 5e^{-x}} = \\dfrac{6 - 6 - 30e^{-x}}{1 + 5e^{-x}} = \\dfrac{-30e^{-x}}{1 + 5e^{-x}}.$$\n\nOr $e^{-x} > 0$ : le numérateur $-30e^{-x}$ est strictement négatif et le dénominateur $1 + 5e^{-x}$ est strictement positif. Ainsi $f(x) - 6 < 0$ pour tout réel $x$ : la courbe $\\mathcal{C}_f$ est strictement en dessous de la droite d'équation $y = 6$ sur $\\mathbb{R}$. Elle s'en rapproche autant qu'on veut quand $x$ tend vers $+\\infty$, sans jamais l'atteindre."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On considère la fonction seuil ci-dessous, écrite en langage Python. À chaque tour de boucle, la condition du while compare $f(n)$ à $5{,}9$.",
+        "code": {
+          "langage": "python",
+          "source": "from math import exp\n\ndef seuil():\n    n = 0\n    while 6 / (1 + 5 * exp(-n)) <= 5.9:\n        n = n + 1\n    return n"
+        },
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Expliquer pourquoi l'exécution de seuil() se termine, c'est-à-dire pourquoi la boucle while ne tourne pas indéfiniment.",
+            "points": 0.75,
+            "revoir": "l-limites-fonctions-003",
+            "indices": [
+              "La boucle tourne tant que $f(n) \\leqslant 5{,}9$. Pour qu'elle s'arrête, il faut un entier $n$ tel que $f(n) > 5{,}9$ : relis la définition d'une limite finie en $+\\infty$.",
+              "Utilise la limite de $f$ en $+\\infty$ trouvée à la question 2, avec un intervalle ouvert qui contient cette limite et dont la borne de gauche est $5{,}9$."
+            ],
+            "attenduCorrecteur": "- La boucle s'arrête dès qu'un entier $n$ vérifie $f(n) > 5{,}9$ : 0,25 pt.\n- Définition de la limite utilisée : $\\lim\\limits_{x \\to +\\infty} f(x) = 6$ et l'intervalle ouvert $]5{,}9\\,;\\,6{,}1[$ contient $6$, donc il contient toutes les valeurs $f(x)$ dès que $x$ est assez grand : 0,25 pt.\n- En particulier, $f(n) > 5{,}9$ pour les entiers $n$ assez grands : la condition devient fausse et la boucle s'arrête : 0,25 pt.",
+            "solution": "La variable n prend les valeurs $0$, $1$, $2$… et la boucle tourne tant que $f(n) \\leqslant 5{,}9$. Elle s'arrête dès qu'un entier $n$ vérifie $f(n) > 5{,}9$.\n\nD'après la question 2, $\\lim\\limits_{x \\to +\\infty} f(x) = 6$. L'intervalle ouvert $]5{,}9\\,;\\,6{,}1[$ contient $6$ : par définition de la limite, il contient toutes les valeurs $f(x)$ dès que $x$ est assez grand, c'est-à-dire pour $x$ supérieur à un certain réel $m$.\n\nEn particulier, pour tout entier $n > m$, $f(n) > 5{,}9$. La condition $f(n) \\leqslant 5{,}9$ finit donc par être fausse : la boucle s'arrête, et l'appel seuil() renvoie un entier."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Déterminer la valeur renvoyée par l'appel seuil(). Justifier.\n\nSaisis la valeur renvoyée.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 6,
+              "tolerance": 0
+            },
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "La fonction renvoie le premier entier $n$ tel que $f(n) > 5{,}9$. Comme $f$ est croissante (question 3.b), les valeurs $f(0)$, $f(1)$, $f(2)$… augmentent.",
+              "Avec la calculatrice, calcule $f(0)$, $f(1)$, $f(2)$… et arrête-toi au premier entier dont l'image dépasse strictement $5{,}9$. Note des valeurs approchées des deux derniers calculs : elles justifient ta réponse."
+            ],
+            "attenduCorrecteur": "- Rôle de la fonction : elle renvoie le plus petit entier naturel $n$ tel que $f(n) > 5{,}9$ : 0,25 pt.\n- Valeurs justificatives : $f(5) \\approx 5{,}80 \\leqslant 5{,}9$ et $f(6) \\approx 5{,}93 > 5{,}9$, avec la croissance de $f$ pour les entiers précédents : 0,25 pt.\n- Conclusion : seuil() renvoie $6$ : 0,25 pt.",
+            "solution": "La fonction seuil renvoie le premier entier naturel $n$ tel que $f(n) > 5{,}9$. D'après la question 3.b, $f$ est strictement croissante sur $\\mathbb{R}$.\n\nÀ la calculatrice : $f(5) = \\dfrac{6}{1 + 5e^{-5}} \\approx 5{,}80$, donc $f(5) \\leqslant 5{,}9$ ; et $f(6) = \\dfrac{6}{1 + 5e^{-6}} \\approx 5{,}93$, donc $f(6) > 5{,}9$.\n\nComme $f$ est croissante, $f(n) \\leqslant f(5) \\leqslant 5{,}9$ pour tout entier $n \\leqslant 5$ : la boucle tourne pour $n = 0, 1, \\dots, 5$ et s'arrête pour $n = 6$. L'appel seuil() renvoie donc $6$.\n\nContrôle sans boucle : $f(n) > 5{,}9$ équivaut à $6 > 5{,}9 + 29{,}5e^{-n}$, soit $e^{-n} < \\dfrac{1}{295}$, soit $e^n > 295$. Or $e^5 \\approx 148$ et $e^6 \\approx 403$.",
+            "erreurFrequente": "Répondre $5$ : à $n = 5$, la condition $f(5) \\leqslant 5{,}9$ est encore vraie, donc la boucle fait un tour de plus avant de renvoyer n."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-limites-fonctions-002",
+    "chapitre": "limites-fonctions",
+    "notions": [
+      "n-limites-fonctions-croissances-comparees",
+      "n-limites-fonctions-reference",
+      "n-limites-fonctions-definitions"
+    ],
+    "capacites": [
+      "bo-m-limites-fonctions-05",
+      "bo-m-limites-fonctions-02",
+      "bo-m-limites-fonctions-01",
+      "bo-m-limites-fonctions-06"
+    ],
+    "titre": "Fonction exponentielle : limites, asymptote, variations et suite associée",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2026-metropole-septembre-j2",
+      "adaptation": "Exercice 2 : fonction $f(x) = (3x - 1)e^{-x} + 2$, limites en $-\\infty$ et en $+\\infty$ avec interprétation graphique, dérivée à vérifier et tableau de variations conservés ; question 4 (existence et valeur approchée d'une solution de $f(x) = 0$, aire) et question 5 (inégalité de tangente), qui relèvent de chapitres ultérieurs, retirées ; ajoutées : position de la courbe par rapport à son asymptote, limite et sens de variation de la suite $u_n = f(n)$. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par :\n\n$$f(x) = (3x - 1)e^{-x} + 2.$$\n\nOn note $\\mathcal{C}_f$ sa courbe représentative dans un repère orthonormé.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer la limite de la fonction $f$ en $-\\infty$.",
+        "points": 0.75,
+        "revoir": "l-limites-fonctions-049",
+        "indices": [
+          "Commence par la limite de chaque facteur : $3x - 1$ d'une part, $e^{-x}$ d'autre part (composée avec $X = -x$). Y a-t-il une forme indéterminée ?",
+          "Le produit de deux facteurs dont l'un tend vers $-\\infty$ et l'autre vers $+\\infty$ se lit dans le tableau des produits ; ajoute ensuite la constante."
+        ],
+        "attenduCorrecteur": "- $\\lim\\limits_{x \\to -\\infty} (3x - 1) = -\\infty$ et $\\lim\\limits_{x \\to -\\infty} e^{-x} = +\\infty$, par composée avec $X = -x$ qui tend vers $+\\infty$ : 0,25 pt.\n- Pas de forme indéterminée : par produit, $(3x - 1)e^{-x}$ tend vers $-\\infty$ : 0,25 pt.\n- Par somme, $\\lim\\limits_{x \\to -\\infty} f(x) = -\\infty$ : 0,25 pt.",
+        "solution": "$\\lim\\limits_{x \\to -\\infty} (3x - 1) = -\\infty$. On pose $X = -x$ : quand $x$ tend vers $-\\infty$, $X$ tend vers $+\\infty$, et $\\lim\\limits_{X \\to +\\infty} e^X = +\\infty$ ; par composée, $\\lim\\limits_{x \\to -\\infty} e^{-x} = +\\infty$.\n\nIl n'y a pas de forme indéterminée : par produit, $\\lim\\limits_{x \\to -\\infty} (3x - 1)e^{-x} = -\\infty$. Par somme :\n\n$$\\lim_{x \\to -\\infty} f(x) = -\\infty.$$",
+        "erreurFrequente": "Citer les croissances comparées en $-\\infty$ : il n'y a pas de forme indéterminée, car $e^{-x}$ tend vers $+\\infty$ et non vers $0$. Le tableau des produits suffit."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer la limite de la fonction $f$ en $+\\infty$. Interpréter graphiquement ce résultat.\n\nSaisis la limite de $f$ en $+\\infty$.",
+        "points": 1,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 2,
+          "tolerance": 0
+        },
+        "revoir": "l-limites-fonctions-049",
+        "indices": [
+          "En $+\\infty$, $3x - 1$ tend vers $+\\infty$ et $e^{-x}$ vers $0$ : c'est la forme indéterminée « $\\infty \\times 0$ ». Développe pour faire apparaître $xe^{-x}$, dont la limite est une croissance comparée.",
+          "Après développement, $(3x - 1)e^{-x} = 3xe^{-x} - e^{-x}$. Cherche la limite de chaque terme, puis ajoute la constante de $f$. Une limite finie en $+\\infty$ se traduit par une asymptote horizontale."
+        ],
+        "attenduCorrecteur": "- Forme indéterminée « $\\infty \\times 0$ » repérée et développement $(3x - 1)e^{-x} = 3xe^{-x} - e^{-x}$ : 0,25 pt.\n- Croissances comparées citées : $\\lim\\limits_{x \\to +\\infty} xe^{-x} = 0$ ; et $\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$ : 0,25 pt.\n- Par somme, $\\lim\\limits_{x \\to +\\infty} f(x) = 2$ : 0,25 pt.\n- Interprétation : la droite d'équation $y = 2$ est asymptote horizontale à $\\mathcal{C}_f$ en $+\\infty$ : 0,25 pt.",
+        "solution": "En $+\\infty$, $3x - 1$ tend vers $+\\infty$ et $e^{-x}$ tend vers $0$ (composée) : le produit $(3x - 1)e^{-x}$ est une forme indéterminée « $\\infty \\times 0$ ». On développe :\n\n$$f(x) = 3xe^{-x} - e^{-x} + 2.$$\n\nPar croissances comparées, $\\lim\\limits_{x \\to +\\infty} xe^{-x} = 0$, donc $\\lim\\limits_{x \\to +\\infty} 3xe^{-x} = 0$. De plus, $\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$. Par somme :\n\n$$\\lim_{x \\to +\\infty} f(x) = 0 - 0 + 2 = 2.$$\n\nLa limite de $f$ en $+\\infty$ est le réel $2$ : la droite d'équation $y = 2$ est asymptote horizontale à la courbe $\\mathcal{C}_f$ en $+\\infty$.",
+        "erreurFrequente": "Écrire « $\\infty \\times 0 = 0$ » sans justification : c'est une forme indéterminée, et seules les croissances comparées permettent de conclure."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On admet que $f$ est dérivable sur $\\mathbb{R}$ ; on note $f'$ sa fonction dérivée.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Vérifier que, pour tout nombre réel $x$, $f'(x) = (4 - 3x)e^{-x}$.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-047",
+            "indices": [
+              "$f$ est la somme d'un produit $uv$, avec $u(x) = 3x - 1$ et $v(x) = e^{-x}$, et de la constante $2$. Utilise $(uv)' = u'v + uv'$ avec $v'(x) = -e^{-x}$, puis mets $e^{-x}$ en facteur."
+            ],
+            "attenduCorrecteur": "- Formule du produit avec $u'(x) = 3$ et $v'(x) = -e^{-x}$ ; la constante $2$ a une dérivée nulle : 0,25 pt.\n- Factorisation par $e^{-x}$ : $f'(x) = (3 - 3x + 1)e^{-x} = (4 - 3x)e^{-x}$ : 0,25 pt.",
+            "solution": "On pose $u(x) = 3x - 1$ et $v(x) = e^{-x}$, de sorte que $f = uv + 2$. On a $u'(x) = 3$ et $v'(x) = -e^{-x}$ (dérivée de $e^{ax+b}$ avec $a = -1$). La constante $2$ a une dérivée nulle. Pour tout réel $x$ :\n\n$$f'(x) = 3e^{-x} + (3x - 1)\\left(-e^{-x}\\right) = (3 - 3x + 1)e^{-x} = (4 - 3x)e^{-x}.$$"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Étudier le signe de $f'(x)$ et en déduire le tableau de variations complet de la fonction $f$ sur $\\mathbb{R}$.",
+            "points": 1,
+            "revoir": "l-limites-fonctions-047",
+            "indices": [
+              "$e^{-x} > 0$ pour tout réel $x$ : $f'(x)$ a le signe du facteur affine $4 - 3x$. Cherche où il s'annule et quel est son signe de chaque côté.",
+              "Calcule la valeur exacte de $f$ là où $f'$ s'annule, et place aux extrémités du tableau les limites des questions 1 et 2."
+            ],
+            "attenduCorrecteur": "- Signe : $e^{-x} > 0$, donc $f'(x)$ a le signe de $4 - 3x$, positif sur $\\left]-\\infty\\,;\\,\\dfrac{4}{3}\\right]$ et négatif sur $\\left[\\dfrac{4}{3}\\,;\\,+\\infty\\right[$ : 0,25 pt.\n- Variations : $f$ strictement croissante puis strictement décroissante : 0,25 pt.\n- Maximum exact : $f\\left(\\dfrac{4}{3}\\right) = 3e^{-\\frac{4}{3}} + 2$ : 0,25 pt.\n- Limites $-\\infty$ et $2$ aux extrémités du tableau : 0,25 pt.",
+            "solution": "Pour tout réel $x$, $e^{-x} > 0$ : $f'(x)$ a le signe de $4 - 3x$. Or $4 - 3x > 0 \\iff x < \\dfrac{4}{3}$, et $4 - 3x = 0 \\iff x = \\dfrac{4}{3}$.\n\nDonc $f$ est strictement croissante sur $\\left]-\\infty\\,;\\,\\dfrac{4}{3}\\right]$ et strictement décroissante sur $\\left[\\dfrac{4}{3}\\,;\\,+\\infty\\right[$. Son maximum vaut :\n\n$$f\\left(\\dfrac{4}{3}\\right) = \\left(3 \\times \\dfrac{4}{3} - 1\\right)e^{-\\frac{4}{3}} + 2 = 3e^{-\\frac{4}{3}} + 2.$$\n\nAvec les limites des questions 1 et 2 :\n\n| $x$ | $-\\infty$ | | $\\dfrac{4}{3}$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $+$ | $0$ | $-$ | |\n| variations de $f$ | $-\\infty$ | $\\nearrow$ | $3e^{-\\frac{4}{3}} + 2$ | $\\searrow$ | $2$ |"
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Étudier la position relative de la courbe $\\mathcal{C}_f$ et de son asymptote en $+\\infty$.",
+        "points": 0.75,
+        "revoir": "l-limites-fonctions-008",
+        "indices": [
+          "L'asymptote a été trouvée à la question 2. Étudie le signe de la différence entre $f(x)$ et l'ordonnée constante de cette droite.",
+          "Cette différence est un produit dont un facteur, $e^{-x}$, est toujours strictement positif : seul le facteur affine décide du signe."
+        ],
+        "attenduCorrecteur": "- Différence : $f(x) - 2 = (3x - 1)e^{-x}$, du signe de $3x - 1$ car $e^{-x} > 0$ : 0,25 pt.\n- Signe : négative pour $x < \\dfrac{1}{3}$, nulle en $\\dfrac{1}{3}$, positive pour $x > \\dfrac{1}{3}$ : 0,25 pt.\n- Conclusion : $\\mathcal{C}_f$ est en dessous de la droite d'équation $y = 2$ sur $\\left]-\\infty\\,;\\,\\dfrac{1}{3}\\right[$, la coupe au point $\\left(\\dfrac{1}{3}\\,;\\,2\\right)$ et est au-dessus sur $\\left]\\dfrac{1}{3}\\,;\\,+\\infty\\right[$ : 0,25 pt.",
+        "solution": "D'après la question 2, l'asymptote de $\\mathcal{C}_f$ en $+\\infty$ est la droite $\\Delta$ d'équation $y = 2$. Pour tout réel $x$ :\n\n$$f(x) - 2 = (3x - 1)e^{-x}.$$\n\nComme $e^{-x} > 0$, $f(x) - 2$ a le signe de $3x - 1$, qui s'annule en $x = \\dfrac{1}{3}$.\n\n- Sur $\\left]-\\infty\\,;\\,\\dfrac{1}{3}\\right[$, $3x - 1 < 0$ : $\\mathcal{C}_f$ est strictement en dessous de $\\Delta$.\n- En $x = \\dfrac{1}{3}$, $f\\left(\\dfrac{1}{3}\\right) = 2$ : $\\mathcal{C}_f$ coupe $\\Delta$ au point de coordonnées $\\left(\\dfrac{1}{3}\\,;\\,2\\right)$.\n- Sur $\\left]\\dfrac{1}{3}\\,;\\,+\\infty\\right[$, $3x - 1 > 0$ : $\\mathcal{C}_f$ est strictement au-dessus de $\\Delta$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Pour tout entier naturel $n$, on pose $u_n = f(n)$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Déterminer la limite de la suite $(u_n)$.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-060",
+            "indices": [
+              "La suite est de la forme $u_n = f(n)$, et la limite de $f$ en $+\\infty$ est connue : relis la propriété qui relie les deux."
+            ],
+            "attenduCorrecteur": "- Propriété citée : $u_n = f(n)$ et $f$ a une limite en $+\\infty$, donc $(u_n)$ a la même limite : 0,25 pt.\n- Conclusion : $(u_n)$ converge vers $2$ : 0,25 pt.",
+            "solution": "Pour tout entier naturel $n$, $u_n = f(n)$, et d'après la question 2, $\\lim\\limits_{x \\to +\\infty} f(x) = 2$. Une suite de la forme $u_n = f(n)$ a la même limite que $f$ en $+\\infty$ : la suite $(u_n)$ converge vers $2$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Démontrer que la suite $(u_n)$ est décroissante à partir du rang $2$, c'est-à-dire que $u_{n+1} \\leqslant u_n$ pour tout entier $n \\geqslant 2$.",
+            "points": 0.5,
+            "revoir": "l-recurrence-suites-013",
+            "indices": [
+              "Pour $n \\geqslant 2$, les entiers $n$ et $n + 1$ sont tous les deux dans un intervalle où le tableau de la question 3.b donne le sens de variation de $f$."
+            ],
+            "attenduCorrecteur": "- Pour $n \\geqslant 2$ : $\\dfrac{4}{3} < n < n + 1$, donc $n$ et $n + 1$ appartiennent à $\\left[\\dfrac{4}{3}\\,;\\,+\\infty\\right[$ : 0,25 pt.\n- $f$ y est strictement décroissante, donc $f(n + 1) < f(n)$, c'est-à-dire $u_{n+1} < u_n$ : 0,25 pt.",
+            "solution": "Soit $n$ un entier tel que $n \\geqslant 2$. Alors $\\dfrac{4}{3} < 2 \\leqslant n < n + 1$ : les réels $n$ et $n + 1$ appartiennent à l'intervalle $\\left[\\dfrac{4}{3}\\,;\\,+\\infty\\right[$, sur lequel $f$ est strictement décroissante (question 3.b).\n\nComme $n < n + 1$, on en déduit $f(n + 1) < f(n)$, c'est-à-dire $u_{n+1} < u_n$. La suite $(u_n)$ est donc décroissante à partir du rang $2$.",
+            "erreurFrequente": "Conclure pour tous les rangs : $u_0 = f(0) = 1$ et $u_1 = 2e^{-1} + 2 > 2$, donc $u_1 > u_0$. Les entiers $0$ et $1$ ne sont pas dans $\\left[\\dfrac{4}{3}\\,;\\,+\\infty\\right[$, où $f$ décroît."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-limites-fonctions-003",
+    "chapitre": "limites-fonctions",
+    "notions": [
+      "n-limites-fonctions-operations",
+      "n-limites-fonctions-comparaison",
+      "n-limites-fonctions-croissances-comparees",
+      "n-limites-fonctions-reference"
+    ],
+    "capacites": [
+      "bo-m-limites-fonctions-04",
+      "bo-m-limites-fonctions-03",
+      "bo-m-limites-fonctions-05",
+      "bo-m-limites-fonctions-02"
+    ],
+    "titre": "Vrai ou faux : cinq limites à justifier",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2023-polynesie-mars-j1",
+      "adaptation": "Exercice 3 (vrai-faux, chaque réponse justifiée) : forme de l'exercice et affirmation 3, $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^{2x} - 1}{e^x - x} = 0$, conservées ; les quatre autres affirmations (convexité, équation, primitive, Python), hors de ce chapitre, remplacées par des affirmations sur les limites : forme « $\\dfrac{0}{0}$ » levée par factorisation, comparaison, théorème des gendarmes, et suite $u_n = f(n)$ dans l'esprit de l'affirmation 4 de an-2024-metropole-septembre-j1, exercice 3 ($u_n = e^n - n$, ici $e^n - n^3$). Solution écrite pour le site."
+    },
+    "preambule": "Pour chacune des affirmations suivantes, indiquer si elle est vraie ou fausse. Chaque réponse doit être justifiée. Une réponse non justifiée ne rapporte aucun point.\n\nLes cinq affirmations sont indépendantes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Affirmation 1** : $\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} \\dfrac{x^2 + x - 2}{x^2 - 1} = +\\infty$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Forme « $\\dfrac{0}{0}$ » : pour $x > 1$, le quotient se simplifie par $x - 1$ et vaut $\\dfrac{x + 2}{x + 1}$, qui tend vers $\\dfrac{3}{2}$."
+        },
+        "revoir": "l-limites-fonctions-031",
+        "indices": [
+          "Calcule les limites du numérateur et du dénominateur quand $x$ tend vers $1$. Si les deux tendent vers $0$, l'étude du signe du dénominateur ne suffit pas.",
+          "Le réel $1$ annule les deux trinômes : factorise chacun par $x - 1$ (identité remarquable au dénominateur), simplifie, puis cherche la limite de ce qui reste."
+        ],
+        "attenduCorrecteur": "- Forme indéterminée « $\\dfrac{0}{0}$ » repérée : 0,25 pt.\n- Factorisations $x^2 + x - 2 = (x - 1)(x + 2)$ et $x^2 - 1 = (x - 1)(x + 1)$, simplification par $x - 1 \\neq 0$ : 0,5 pt.\n- Limite $\\dfrac{3}{2}$ et réponse : affirmation fausse : 0,25 pt.",
+        "solution": "Quand $x$ tend vers $1$, $x^2 + x - 2$ tend vers $1 + 1 - 2 = 0$ et $x^2 - 1$ tend vers $0$ : c'est la forme indéterminée « $\\dfrac{0}{0}$ ».\n\nLe réel $1$ annule $x^2 + x - 2$ : on le factorise par $x - 1$, et l'on vérifie en développant que $(x - 1)(x + 2) = x^2 + 2x - x - 2 = x^2 + x - 2$. Par l'identité remarquable $a^2 - b^2 = (a - b)(a + b)$, $x^2 - 1 = (x - 1)(x + 1)$.\n\nPour $x > 1$, $x - 1 \\neq 0$ et :\n\n$$\\dfrac{x^2 + x - 2}{x^2 - 1} = \\dfrac{(x - 1)(x + 2)}{(x - 1)(x + 1)} = \\dfrac{x + 2}{x + 1}.$$\n\nLa fonction $x \\mapsto \\dfrac{x + 2}{x + 1}$ est définie en $1$, donc $\\lim\\limits_{x \\to 1} \\dfrac{x + 2}{x + 1} = \\dfrac{1 + 2}{1 + 1} = \\dfrac{3}{2}$. La limite cherchée vaut $\\dfrac{3}{2}$, et non $+\\infty$ : **l'affirmation 1 est fausse**.",
+        "erreurFrequente": "Conclure à $+\\infty$ en regardant seulement le dénominateur, qui tend vers $0$ en restant positif : le numérateur tend aussi vers $0$, la forme est indéterminée."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "**Affirmation 2** : la fonction $g$ définie sur $[0\\,;\\,+\\infty[$ par $g(x) = \\sqrt{x} + 3\\sin x$ vérifie $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Pour tout $x \\geqslant 0$, $\\sin x \\geqslant -1$, donc $g(x) \\geqslant \\sqrt{x} - 3$, qui tend vers $+\\infty$ : par comparaison, $g$ tend vers $+\\infty$."
+        },
+        "revoir": "l-limites-fonctions-039",
+        "indices": [
+          "$\\sin x$ n'a pas de limite en $+\\infty$ : les tableaux d'opérations ne s'appliquent pas. Encadre $\\sin x$ entre $-1$ et $1$, puis déduis-en un encadrement de $g(x)$.",
+          "Regarde la limite en $+\\infty$ de chacune des deux bornes de ton encadrement : laquelle permet, ou non, de conclure avec un théorème de comparaison ?"
+        ],
+        "attenduCorrecteur": "- $\\sin x$ sans limite : minoration $\\sin x \\geqslant -1$, d'où $g(x) \\geqslant \\sqrt{x} - 3$ pour tout $x \\geqslant 0$ : 0,5 pt.\n- $\\lim\\limits_{x \\to +\\infty} \\left(\\sqrt{x} - 3\\right) = +\\infty$ (limite de référence) et théorème de comparaison cité : 0,25 pt.\n- Réponse : affirmation vraie : 0,25 pt.",
+        "solution": "La fonction sinus n'a pas de limite en $+\\infty$ : on ne peut pas utiliser les opérations sur les limites. Pour tout réel $x$, $-1 \\leqslant \\sin x \\leqslant 1$, donc $3\\sin x \\geqslant -3$ et, pour tout $x \\geqslant 0$ :\n\n$$g(x) \\geqslant \\sqrt{x} - 3.$$\n\nOr $\\lim\\limits_{x \\to +\\infty} \\sqrt{x} = +\\infty$, donc, par somme, $\\lim\\limits_{x \\to +\\infty} \\left(\\sqrt{x} - 3\\right) = +\\infty$. La fonction $g$ est au-dessus d'une fonction qui tend vers $+\\infty$ : d'après le théorème de comparaison, $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$. **L'affirmation 2 est vraie**.",
+        "erreurFrequente": "S'appuyer sur la majoration $g(x) \\leqslant \\sqrt{x} + 3$ : être en dessous d'une fonction qui tend vers $+\\infty$ ne prouve rien. Pour conclure à $+\\infty$, il faut une minoration."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "**Affirmation 3** : soit $h$ une fonction définie sur $]0\\,;\\,+\\infty[$ telle que, pour tout réel $x > 0$, $\\dfrac{2x - 1}{x} \\leqslant h(x) \\leqslant \\dfrac{2x^2 + 3}{x^2 + 1}$. Alors $\\lim\\limits_{x \\to +\\infty} h(x) = 2$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "La borne de gauche vaut $2 - \\dfrac{1}{x}$ et tend vers $2$ ; la borne de droite, après factorisation par $x^2$, tend aussi vers $2$. D'après le théorème des gendarmes, $h$ tend vers $2$."
+        },
+        "revoir": "l-limites-fonctions-042",
+        "indices": [
+          "Calcule la limite en $+\\infty$ de chacune des deux bornes. Pour la borne de droite, forme « $\\dfrac{\\infty}{\\infty}$ » : mets $x^2$ en facteur en haut et en bas.",
+          "Compare les deux limites obtenues : le théorème des gendarmes ne s'applique que dans un cas précis."
+        ],
+        "attenduCorrecteur": "- Borne de gauche : $\\dfrac{2x - 1}{x} = 2 - \\dfrac{1}{x}$, qui tend vers $2$ : 0,25 pt.\n- Borne de droite : forme « $\\dfrac{\\infty}{\\infty}$ » levée en factorisant par $x^2$, limite $2$ : 0,25 pt.\n- Théorème des gendarmes cité, les deux bornes ayant la même limite finie : 0,25 pt.\n- Réponse : affirmation vraie : 0,25 pt.",
+        "solution": "**Borne de gauche.** Pour $x > 0$, $\\dfrac{2x - 1}{x} = \\dfrac{2x}{x} - \\dfrac{1}{x} = 2 - \\dfrac{1}{x}$. Or $\\lim\\limits_{x \\to +\\infty} \\dfrac{1}{x} = 0$, donc cette borne tend vers $2$.\n\n**Borne de droite.** Le numérateur et le dénominateur tendent vers $+\\infty$ : forme indéterminée « $\\dfrac{\\infty}{\\infty}$ ». Pour $x > 0$, on met $x^2$ en facteur :\n\n$$\\dfrac{2x^2 + 3}{x^2 + 1} = \\dfrac{x^2\\left(2 + \\frac{3}{x^2}\\right)}{x^2\\left(1 + \\frac{1}{x^2}\\right)} = \\dfrac{2 + \\frac{3}{x^2}}{1 + \\frac{1}{x^2}}.$$\n\nComme $\\dfrac{3}{x^2}$ et $\\dfrac{1}{x^2}$ tendent vers $0$, cette borne tend vers $\\dfrac{2 + 0}{1 + 0} = 2$.\n\nLes deux fonctions qui encadrent $h$ ont la même limite $2$ en $+\\infty$ : d'après le théorème des gendarmes, $\\lim\\limits_{x \\to +\\infty} h(x) = 2$. **L'affirmation 3 est vraie**."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "**Affirmation 4** : $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^{2x} - 1}{e^x - x} = 0$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "En factorisant, le quotient s'écrit $e^x \\times \\dfrac{1 - e^{-2x}}{1 - xe^{-x}}$ ; le second facteur tend vers $1$ par croissances comparées, donc le quotient tend vers $+\\infty$."
+        },
+        "revoir": "l-limites-fonctions-053",
+        "indices": [
+          "Forme « $\\dfrac{\\infty}{\\infty}$ » qui mêle exponentielles et puissance de $x$ : mets en facteur le terme le plus fort, séparément au numérateur et au dénominateur.",
+          "Écris $e^{2x} - 1 = e^{2x}\\left(1 - e^{-2x}\\right)$ et $e^x - x = e^x\\left(1 - xe^{-x}\\right)$, puis simplifie $\\dfrac{e^{2x}}{e^x}$ et cherche la limite de chaque facteur."
+        ],
+        "attenduCorrecteur": "- Forme indéterminée « $\\dfrac{\\infty}{\\infty}$ » repérée : 0,25 pt.\n- Factorisations et simplification : $\\dfrac{e^{2x} - 1}{e^x - x} = e^x \\times \\dfrac{1 - e^{-2x}}{1 - xe^{-x}}$ : 0,25 pt.\n- Croissances comparées citées, $\\lim\\limits_{x \\to +\\infty} xe^{-x} = 0$ : le second facteur tend vers $1$ et le quotient vers $+\\infty$ : 0,25 pt.\n- Réponse : affirmation fausse : 0,25 pt.",
+        "solution": "**Forme de la limite.** Pour tout réel $x$, $e^x - x = e^x\\left(1 - xe^{-x}\\right)$. Par croissances comparées, $\\lim\\limits_{x \\to +\\infty} xe^{-x} = 0$, donc $1 - xe^{-x}$ tend vers $1$ et, par produit, $e^x - x$ tend vers $+\\infty$. Le numérateur $e^{2x} - 1$ tend aussi vers $+\\infty$ : c'est la forme indéterminée « $\\dfrac{\\infty}{\\infty}$ ».\n\n**Factorisation.** Pour tout réel $x$, $e^{2x} - 1 = e^{2x}\\left(1 - e^{-2x}\\right)$. Pour $x \\geqslant 0$, $e^x - x \\geqslant 1$ (étape 1 de la démonstration des croissances comparées) : le dénominateur ne s'annule pas, et :\n\n$$\\dfrac{e^{2x} - 1}{e^x - x} = \\dfrac{e^{2x}\\left(1 - e^{-2x}\\right)}{e^x\\left(1 - xe^{-x}\\right)} = e^x \\times \\dfrac{1 - e^{-2x}}{1 - xe^{-x}},$$\n\ncar $\\dfrac{e^{2x}}{e^x} = e^{2x - x} = e^x$.\n\n**Limite.** Par composée, $\\lim\\limits_{x \\to +\\infty} e^{-2x} = 0$ ; avec $\\lim\\limits_{x \\to +\\infty} xe^{-x} = 0$, le quotient $\\dfrac{1 - e^{-2x}}{1 - xe^{-x}}$ tend vers $\\dfrac{1 - 0}{1 - 0} = 1$. Comme $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$, par produit, la limite cherchée vaut $+\\infty$, et non $0$ : **l'affirmation 4 est fausse**.",
+        "erreurFrequente": "Croire que le dénominateur l'emporte parce qu'il contient $x$ : en $+\\infty$, $e^x$ l'emporte sur $x$, et $e^{2x} = \\left(e^x\\right)^2$ l'emporte sur $e^x$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "**Affirmation 5** : la suite $(u_n)$ définie, pour tout entier naturel $n$, par $u_n = e^n - n^3$ est convergente.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Avec $f(x) = e^x - x^3 = e^x\\left(1 - x^3e^{-x}\\right)$, $f$ tend vers $+\\infty$ en $+\\infty$ par croissances comparées ; donc $u_n = f(n)$ tend vers $+\\infty$ et la suite diverge."
+        },
+        "revoir": "l-limites-fonctions-060",
+        "indices": [
+          "Introduis la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = e^x - x^3$, de sorte que $u_n = f(n)$, et cherche la limite de $f$ en $+\\infty$.",
+          "Forme « $+\\infty - \\infty$ » : mets en facteur $e^x$, le terme le plus fort, et fais apparaître une croissance comparée."
+        ],
+        "attenduCorrecteur": "- Fonction associée : $u_n = f(n)$ avec $f(x) = e^x - x^3$ : 0,25 pt.\n- Forme « $+\\infty - \\infty$ » levée : $f(x) = e^x\\left(1 - x^3e^{-x}\\right)$ et $\\lim\\limits_{x \\to +\\infty} x^3e^{-x} = 0$ par croissances comparées, donc $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$ : 0,5 pt.\n- $(u_n)$ tend vers $+\\infty$, donc n'est pas convergente : affirmation fausse : 0,25 pt.",
+        "solution": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = e^x - x^3$ : pour tout entier naturel $n$, $u_n = f(n)$.\n\nEn $+\\infty$, $e^x$ tend vers $+\\infty$ et $-x^3$ vers $-\\infty$ : c'est la forme indéterminée « $+\\infty - \\infty$ ». On met $e^x$ en facteur :\n\n$$f(x) = e^x\\left(1 - \\dfrac{x^3}{e^x}\\right) = e^x\\left(1 - x^3e^{-x}\\right).$$\n\nPar croissances comparées, $\\lim\\limits_{x \\to +\\infty} x^3e^{-x} = 0$, donc $1 - x^3e^{-x}$ tend vers $1$. Par produit, $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$.\n\nComme $u_n = f(n)$, la suite $(u_n)$ a la même limite : $\\lim\\limits_{n \\to +\\infty} u_n = +\\infty$. Elle n'a pas de limite finie, donc elle n'est pas convergente : **l'affirmation 5 est fausse**.",
+        "erreurFrequente": "Se fier aux premiers termes : $u_2 = e^2 - 8$ et $u_4 = e^4 - 64$ sont négatifs, et l'on pourrait croire que $n^3$ l'emporte. Seule la limite permet de conclure : l'exponentielle finit par écraser $n^3$."
+      }
+    ]
+  },
+  {
+    "id": "tb-limites-fonctions-004",
+    "chapitre": "limites-fonctions",
+    "notions": [
+      "n-limites-fonctions-croissances-comparees",
+      "n-limites-fonctions-reference"
+    ],
+    "capacites": [
+      "bo-m-limites-fonctions-05",
+      "bo-m-limites-fonctions-02",
+      "bo-m-suites-08",
+      "bo-m-logique-14",
+      "bo-m-suites-06",
+      "bo-m-suites-07",
+      "bo-m-suites-02",
+      "bo-m-suites-14"
+    ],
+    "titre": "Une fonction et une suite récurrente : croissances comparées, encadrement et limite",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2022-etrangers-groupe1-j1",
+      "adaptation": "Exercice 3 : fonction $f(x) = 1 + x - e^{0{,}5x - 2}$, limite en $-\\infty$, écriture factorisée donnée et limite en $+\\infty$, dérivée, suite $u_0 = 0$ et $u_{n+1} = f(u_n)$, récurrence « $u_n \\leqslant u_{n+1} \\leqslant 4$ », convergence, $\\ell = 4$ à partir de $f(\\ell) = \\ell$ admis, et fonction Python valeur conservés ; question 2.b et question 3 (signe de $f'$ et tableau de variations, qui demandent le logarithme) remplacées par « $f'(x) \\geqslant 0{,}5$ pour $x \\leqslant 4$ » ; question 4 (existence d'une solution de $f(x) = 0$), qui relève d'un chapitre ultérieur, retirée ; ajoutée : pourquoi la fonction Python s'arrête quand son paramètre est inférieur à $4$, et pas quand il vaut $4$. Solution écrite pour le site."
+    },
+    "preambule": "**Partie A.** On considère la fonction $f$ définie sur $\\mathbb{R}$ par :\n\n$$f(x) = 1 + x - e^{0{,}5x - 2}.$$\n\nOn admet que la fonction $f$ est dérivable sur $\\mathbb{R}$ ; on note $f'$ sa fonction dérivée.\n\n**Partie B.** On considère la suite $(u_n)$ définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$, où $f$ est la fonction de la partie A.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Limites de la fonction $f$.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Déterminer la limite de la fonction $f$ en $-\\infty$.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-029",
+            "indices": [
+              "Commence par l'exposant : quand $x$ tend vers $-\\infty$, vers quoi tend $0{,}5x - 2$ ? Déduis-en la limite de $e^{0{,}5x - 2}$ (composée), puis celle de $1 + x$."
+            ],
+            "attenduCorrecteur": "- Composée : $X = 0{,}5x - 2$ tend vers $-\\infty$ et $\\lim\\limits_{X \\to -\\infty} e^X = 0$, donc $e^{0{,}5x - 2}$ tend vers $0$ : 0,25 pt.\n- $1 + x$ tend vers $-\\infty$ ; par somme, $\\lim\\limits_{x \\to -\\infty} f(x) = -\\infty$ : 0,25 pt.",
+            "solution": "On pose $X = 0{,}5x - 2$. Quand $x$ tend vers $-\\infty$, $X$ tend vers $-\\infty$, et $\\lim\\limits_{X \\to -\\infty} e^X = 0$ : par composée, $\\lim\\limits_{x \\to -\\infty} e^{0{,}5x - 2} = 0$.\n\nDe plus, $\\lim\\limits_{x \\to -\\infty} (1 + x) = -\\infty$. Par somme :\n\n$$\\lim_{x \\to -\\infty} f(x) = -\\infty.$$"
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Démontrer que, pour tout réel $x$ non nul, $f(x) = 1 + 0{,}5x\\left(2 - \\dfrac{e^{0{,}5x}}{0{,}5x} \\times e^{-2}\\right)$. En déduire la limite de la fonction $f$ en $+\\infty$.",
+            "points": 1.25,
+            "revoir": "l-limites-fonctions-055",
+            "indices": [
+              "Pour l'égalité, développe le membre de droite : $0{,}5x \\times \\dfrac{e^{0{,}5x}}{0{,}5x}$ se simplifie, et $e^{0{,}5x} \\times e^{-2} = e^{0{,}5x - 2}$.",
+              "Pour la limite, pose $X = 0{,}5x$ : le quotient $\\dfrac{e^X}{X}$ a une limite connue par croissances comparées. Cherche ensuite la limite de la parenthèse, puis celle du produit par $0{,}5x$."
+            ],
+            "attenduCorrecteur": "- Égalité : développement $1 + 0{,}5x \\times 2 - 0{,}5x \\times \\dfrac{e^{0{,}5x}}{0{,}5x} \\times e^{-2} = 1 + x - e^{0{,}5x - 2}$, avec simplification par $0{,}5x \\neq 0$ : 0,5 pt.\n- Croissances comparées avec $X = 0{,}5x$ qui tend vers $+\\infty$ : $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^{0{,}5x}}{0{,}5x} = +\\infty$ : 0,25 pt.\n- Parenthèse : $e^{-2} > 0$, donc elle tend vers $-\\infty$ : 0,25 pt.\n- Produit par $0{,}5x$, qui tend vers $+\\infty$, puis somme : $\\lim\\limits_{x \\to +\\infty} f(x) = -\\infty$ : 0,25 pt.",
+            "solution": "**Égalité.** Soit $x$ un réel non nul. On développe le membre de droite :\n\n$$1 + 0{,}5x \\times 2 - 0{,}5x \\times \\dfrac{e^{0{,}5x}}{0{,}5x} \\times e^{-2} = 1 + x - e^{0{,}5x} \\times e^{-2} = 1 + x - e^{0{,}5x - 2} = f(x).$$\n\nOn a simplifié par $0{,}5x$, non nul car $x \\neq 0$, puis utilisé $e^a \\times e^b = e^{a + b}$.\n\n**Limite en $+\\infty$.** On pose $X = 0{,}5x$. Quand $x$ tend vers $+\\infty$, $X$ tend vers $+\\infty$, et, par croissances comparées, $\\lim\\limits_{X \\to +\\infty} \\dfrac{e^X}{X} = +\\infty$. Par composée, $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^{0{,}5x}}{0{,}5x} = +\\infty$.\n\nComme $e^{-2} > 0$, par produit, $\\dfrac{e^{0{,}5x}}{0{,}5x} \\times e^{-2}$ tend vers $+\\infty$ ; par somme, la parenthèse $2 - \\dfrac{e^{0{,}5x}}{0{,}5x} \\times e^{-2}$ tend vers $-\\infty$.\n\nEnfin, $0{,}5x$ tend vers $+\\infty$ : par produit, $0{,}5x\\left(2 - \\dfrac{e^{0{,}5x}}{0{,}5x} \\times e^{-2}\\right)$ tend vers $-\\infty$ et, par somme :\n\n$$\\lim_{x \\to +\\infty} f(x) = -\\infty.$$",
+            "erreurFrequente": "Conclure directement sur $1 + x - e^{0{,}5x - 2}$ : c'est la forme indéterminée « $+\\infty - \\infty$ ». L'écriture factorisée sert justement à faire apparaître la croissance comparée $\\dfrac{e^X}{X}$."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Sens de variation de $f$ sur l'intervalle $]-\\infty\\,;\\,4]$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Déterminer $f'(x)$ pour tout réel $x$.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-047",
+            "indices": [
+              "La dérivée de $x \\mapsto e^{ax + b}$ est $x \\mapsto ae^{ax + b}$ (formule de première) ; repère ici les valeurs de $a$ et de $b$."
+            ],
+            "attenduCorrecteur": "- Dérivée de $1 + x$ : la constante $1$ : 0,25 pt.\n- Dérivée de $e^{0{,}5x - 2}$ : $0{,}5e^{0{,}5x - 2}$, d'où $f'(x) = 1 - 0{,}5e^{0{,}5x - 2}$ : 0,25 pt.",
+            "solution": "La dérivée de $x \\mapsto 1 + x$ est la constante $1$. La dérivée de $x \\mapsto e^{0{,}5x - 2}$ est $x \\mapsto 0{,}5e^{0{,}5x - 2}$ (dérivée de $e^{ax+b}$ avec $a = 0{,}5$ et $b = -2$). Pour tout réel $x$ :\n\n$$f'(x) = 1 - 0{,}5e^{0{,}5x - 2}.$$"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Démontrer que, pour tout réel $x \\leqslant 4$, $f'(x) \\geqslant 0{,}5$. En déduire que $f$ est strictement croissante sur $]-\\infty\\,;\\,4]$, puis calculer $f(4)$.",
+            "points": 0.75,
+            "revoir": "l-limites-fonctions-015",
+            "indices": [
+              "Pars de $x \\leqslant 4$ et remonte jusqu'à $e^{0{,}5x - 2}$ : quel est le signe de $0{,}5x - 2$ ? La fonction exponentielle est croissante.",
+              "De $e^{0{,}5x - 2} \\leqslant e^0$, déduis une majoration de $0{,}5e^{0{,}5x - 2}$, puis une minoration de $f'(x)$ (attention au signe moins)."
+            ],
+            "attenduCorrecteur": "- $x \\leqslant 4 \\Rightarrow 0{,}5x - 2 \\leqslant 0 \\Rightarrow e^{0{,}5x - 2} \\leqslant e^0 = 1$, par croissance de l'exponentielle : 0,25 pt.\n- $f'(x) = 1 - 0{,}5e^{0{,}5x - 2} \\geqslant 1 - 0{,}5 = 0{,}5 > 0$, donc $f$ est strictement croissante sur $]-\\infty\\,;\\,4]$ : 0,25 pt.\n- $f(4) = 1 + 4 - e^0 = 4$ : 0,25 pt.",
+            "solution": "Soit $x \\leqslant 4$. Alors $0{,}5x \\leqslant 2$, donc $0{,}5x - 2 \\leqslant 0$. La fonction exponentielle est croissante : $e^{0{,}5x - 2} \\leqslant e^0 = 1$. En multipliant par $-0{,}5 < 0$, ce qui change le sens de l'inégalité : $-0{,}5e^{0{,}5x - 2} \\geqslant -0{,}5$. D'où :\n\n$$f'(x) = 1 - 0{,}5e^{0{,}5x - 2} \\geqslant 1 - 0{,}5 = 0{,}5.$$\n\nAinsi $f'(x) > 0$ pour tout $x \\leqslant 4$ : la fonction $f$ est strictement croissante sur $]-\\infty\\,;\\,4]$.\n\nEnfin, $f(4) = 1 + 4 - e^{0{,}5 \\times 4 - 2} = 5 - e^0 = 5 - 1 = 4$.",
+            "erreurFrequente": "Oublier que multiplier par $-0{,}5$ renverse l'inégalité : on obtiendrait $f'(x) \\leqslant 0{,}5$, qui ne dit rien du signe de $f'(x)$."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "B.1.",
+        "enonce": "Sens de variation et convergence de la suite $(u_n)$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n \\leqslant u_{n+1} \\leqslant 4$.",
+            "points": 1,
+            "revoir": "l-recurrence-suites-021",
+            "indices": [
+              "Pose $P(n)$ : « $u_n \\leqslant u_{n+1} \\leqslant 4$ ». Pour l'initialisation, calcule $u_1 = f(0)$ et compare-le à $u_0$ et à $4$, en te souvenant que $0 < e^{-2} < 1$.",
+              "Hérédité : les trois réels $u_n$, $u_{n+1}$ et $4$ sont dans $]-\\infty\\,;\\,4]$, où $f$ est croissante (question A.2.b). Applique $f$ aux inégalités, puis utilise la valeur de $f(4)$."
+            ],
+            "attenduCorrecteur": "- Initialisation : $u_1 = f(0) = 1 - e^{-2}$, et $0 \\leqslant 1 - e^{-2} \\leqslant 4$ car $0 < e^{-2} < 1$ : 0,25 pt.\n- Hérédité : à partir de $u_n \\leqslant u_{n+1} \\leqslant 4$, croissance de $f$ sur $]-\\infty\\,;\\,4]$ citée, $f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(4)$, puis $f(4) = 4$ : $u_{n+1} \\leqslant u_{n+2} \\leqslant 4$ : 0,5 pt.\n- Conclusion de la récurrence rédigée : 0,25 pt.",
+            "solution": "Pour tout entier naturel $n$, on note $P(n)$ la propriété : « $u_n \\leqslant u_{n+1} \\leqslant 4$ ».\n\n**Initialisation.** $u_0 = 0$ et $u_1 = f(0) = 1 + 0 - e^{-2} = 1 - e^{-2}$. Comme $0 < e^{-2} < 1$, on a $0 < 1 - e^{-2} < 1$, donc $u_0 \\leqslant u_1 \\leqslant 4$ : $P(0)$ est vraie.\n\n**Hérédité.** Soit $n$ un entier naturel tel que $P(n)$ est vraie : $u_n \\leqslant u_{n+1} \\leqslant 4$. Les réels $u_n$, $u_{n+1}$ et $4$ appartiennent à $]-\\infty\\,;\\,4]$, intervalle sur lequel $f$ est croissante (question A.2.b) : elle conserve l'ordre, donc\n\n$$f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(4),$$\n\nc'est-à-dire $u_{n+1} \\leqslant u_{n+2} \\leqslant 4$, car $f(4) = 4$. La propriété $P(n + 1)$ est vraie.\n\n**Conclusion.** $P(0)$ est vraie et la propriété est héréditaire : d'après le principe de récurrence, pour tout entier naturel $n$, $u_n \\leqslant u_{n+1} \\leqslant 4$.",
+            "erreurFrequente": "Appliquer $f$ aux inégalités sans dire pourquoi l'ordre est conservé : il faut citer la croissance de $f$ sur un intervalle qui contient $u_n$, $u_{n+1}$ et $4$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "En déduire que la suite $(u_n)$ converge. On note $\\ell$ sa limite.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-051",
+            "indices": [
+              "Que disent les inégalités de la question précédente sur le sens de variation de $(u_n)$, et sur un majorant ? Un théorème du chapitre « Limites de suites » permet de conclure."
+            ],
+            "attenduCorrecteur": "- $(u_n)$ est croissante ($u_n \\leqslant u_{n+1}$) et majorée par $4$ : 0,25 pt.\n- Théorème de convergence monotone cité : $(u_n)$ converge : 0,25 pt.",
+            "solution": "D'après la question B.1.a, pour tout entier naturel $n$, $u_n \\leqslant u_{n+1}$ : la suite $(u_n)$ est croissante. De plus, $u_n \\leqslant 4$ pour tout $n$ : elle est majorée par $4$. D'après le théorème de convergence monotone, une suite croissante et majorée converge : la suite $(u_n)$ converge vers une limite $\\ell$.",
+            "erreurFrequente": "Affirmer que la limite vaut $4$ parce que $4$ est un majorant : le théorème donne l'existence de la limite, pas sa valeur. C'est l'objet de la question B.2."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "B.2.",
+        "enonce": "On admet que la limite $\\ell$ vérifie $f(\\ell) = \\ell$. Démontrer que $\\ell = 4$.",
+        "points": 0.5,
+        "revoir": "l-limites-fonctions-015",
+        "indices": [
+          "Écris l'équation $1 + \\ell - e^{0{,}5\\ell - 2} = \\ell$ et simplifie : il reste une égalité entre une exponentielle et $1$, et $1 = e^0$."
+        ],
+        "attenduCorrecteur": "- Équation simplifiée : $e^{0{,}5\\ell - 2} = 1 = e^0$ : 0,25 pt.\n- $0{,}5\\ell - 2 = 0$, car $e^a = e^b \\iff a = b$, donc $\\ell = 4$ : 0,25 pt.",
+        "solution": "D'après l'énoncé, $f(\\ell) = \\ell$, c'est-à-dire $1 + \\ell - e^{0{,}5\\ell - 2} = \\ell$. En retranchant $\\ell$ aux deux membres : $e^{0{,}5\\ell - 2} = 1 = e^0$.\n\nOr, pour tous réels $a$ et $b$, $e^a = e^b \\iff a = b$. Donc $0{,}5\\ell - 2 = 0$, soit $\\ell = 4$ : la suite $(u_n)$ converge vers $4$."
+      },
+      {
+        "id": "q5",
+        "label": "B.3.",
+        "enonce": "On considère la fonction valeur ci-dessous, écrite en langage Python, dont le paramètre a est un nombre réel.",
+        "code": {
+          "langage": "python",
+          "source": "from math import exp\n\ndef valeur(a):\n    u = 0\n    n = 0\n    while u <= a:\n        u = 1 + u - exp(0.5 * u - 2)\n        n = n + 1\n    return n"
+        },
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "L'appel valeur(3.99) renvoie $12$. Interpréter ce résultat pour la suite $(u_n)$.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "À chaque tour de boucle, u devient le terme suivant de la suite et n augmente de $1$ : u contient $u_n$. La boucle s'arrête au premier terme pour lequel la condition du while est fausse."
+            ],
+            "attenduCorrecteur": "- La variable u contient $u_n$, et la boucle tourne tant que $u_n \\leqslant 3{,}99$ : 0,25 pt.\n- Interprétation : $u_{12}$ est le premier terme strictement supérieur à $3{,}99$ ; la suite étant croissante et majorée par $4$, tous les termes à partir du rang $12$ sont dans $]3{,}99\\,;\\,4]$ : 0,25 pt.",
+            "solution": "Au départ, u vaut $u_0 = 0$ et n vaut $0$. À chaque tour de boucle, u est remplacé par $f(u)$, le terme suivant, et n augmente de $1$ : après $k$ tours, u contient $u_k$ et n vaut $k$. La boucle tourne tant que $u_n \\leqslant 3{,}99$.\n\nL'appel renvoie $12$ : $u_{12}$ est le premier terme de la suite strictement supérieur à $3{,}99$, alors que $u_0, u_1, \\dots, u_{11}$ sont inférieurs ou égaux à $3{,}99$. Comme la suite est croissante et majorée par $4$, tous les termes à partir du rang $12$ appartiennent à l'intervalle $]3{,}99\\,;\\,4]$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Expliquer pourquoi, pour tout réel $a < 4$, l'appel valeur(a) se termine. Que se passe-t-il lors de l'appel valeur(4) ?",
+            "points": 0.5,
+            "revoir": "l-limites-suites-069",
+            "indices": [
+              "Cas $a < 4$ : la suite converge vers $4$. Utilise la définition de la convergence avec un intervalle ouvert qui contient $4$ et dont la borne de gauche est $a$.",
+              "Cas $a = 4$ : la question B.1.a donne une information sur tous les termes de la suite. La condition du while peut-elle devenir fausse ?"
+            ],
+            "attenduCorrecteur": "- Cas $a < 4$ : l'intervalle ouvert $]a\\,;\\,5[$ contient la limite $4$, donc tous les termes $u_n$ à partir d'un certain rang ; la condition $u_n \\leqslant a$ finit par être fausse et la boucle s'arrête : 0,25 pt.\n- Cas $a = 4$ : $u_n \\leqslant 4$ pour tout $n$ (question B.1.a), la condition reste toujours vraie, la boucle ne s'arrête jamais : 0,25 pt.",
+            "solution": "**Cas $a < 4$.** D'après la question B.2, $(u_n)$ converge vers $4$. L'intervalle ouvert $]a\\,;\\,5[$ contient $4$ : par définition de la convergence, il contient tous les termes $u_n$ à partir d'un certain rang. Pour ces rangs, $u_n > a$ : la condition $u_n \\leqslant a$ finit par être fausse, la boucle s'arrête et la fonction renvoie un entier.\n\n**Cas $a = 4$.** D'après la question B.1.a, $u_n \\leqslant 4$ pour tout entier naturel $n$. La condition $u_n \\leqslant 4$ reste toujours vraie : la boucle ne s'arrête jamais, et l'appel valeur(4) ne renvoie rien. Le seuil $4$, égal à la limite, n'est jamais dépassé."
+          }
+        ]
+      }
+    ]
+  }
+]
