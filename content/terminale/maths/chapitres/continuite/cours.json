@@ -55,7 +55,7 @@
             },
             {
               "texte": "**2.** $p(1) = 2$, car $0 < 1 \\leqslant 1$ : on utilise la première ligne. La limite à droite, $4$, est différente de $p(1) = 2$. Quand $x$ se rapproche de $1$ par la droite, $p(x)$ ne se rapproche pas de $p(1)$ : $p$ n'est pas continue en $1$.",
-              "pourquoi": "L'intervalle ouvert $]1\\,;\\,3[$ contient $p(1) = 2$, mais pas la valeur $4$, prise par $p(x)$ pour tout $x$ de $]1\\,;\\,2]$, aussi près de $1$ qu'on veut."
+              "pourquoi": "L'intervalle ouvert $]1{,}5\\,;\\,2{,}5[$ contient $p(1) = 2$, mais pas la valeur $4$, prise par $p(x)$ pour tout $x$ de $]1\\,;\\,2]$, aussi près de $1$ qu'on veut."
             },
             {
               "texte": "Le réel $1$ appartient à $]0\\,;\\,3]$, et $p$ n'est pas continue en $1$ : $p$ n'est donc pas continue sur $]0\\,;\\,3]$. Sa courbe, en escalier, fait un saut en $1$, et de même en $2$."
@@ -84,10 +84,9 @@
           "type": "propriete",
           "titre": "Une fonction dérivable est continue",
           "capacites": ["bo-m-continuite-01"],
-          "texte": "- Si une fonction $f$ est **dérivable** sur un intervalle $I$, alors $f$ est **continue** sur $I$.\n- En conséquence, les fonctions polynômes, la fonction inverse, la fonction exponentielle, et les fonctions obtenues à partir d'elles par somme, produit, quotient ou sous la forme $x \\mapsto g(ax + b)$, sont continues sur chaque intervalle où elles sont définies. La fonction racine carrée est continue sur $[0\\,;\\,+\\infty[$ : en $0$, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$.\n\nAu bac, on justifie la continuité par la phrase : « $f$ est dérivable sur $I$, donc continue sur $I$ ». La réciproque est fausse : une fonction peut être continue en un réel sans y être dérivable (voir le piège plus bas).",
+          "texte": "- Si une fonction $f$ est **dérivable** sur un intervalle $I$, alors $f$ est **continue** sur $I$.\n- En conséquence, les fonctions polynômes, inverse et exponentielle sont continues sur chaque intervalle où elles sont définies. Il en va de même des fonctions obtenues à partir d'elles par somme, produit, quotient ou sous la forme $x \\mapsto g(ax + b)$.\n- Par exemple, $x \\mapsto \\dfrac{1}{x}$ est continue sur $]-\\infty\\,;\\,0[$ et sur $]0\\,;\\,+\\infty[$. En $0$, où elle n'est pas définie, la question ne se pose pas.\n- La fonction racine carrée est continue sur $[0\\,;\\,+\\infty[$ : en $0$, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$.\n\nAu bac, la justification habituelle est : « $f$ est dérivable sur $I$, donc continue sur $I$ ». La réciproque est fausse : une fonction peut être continue en un réel sans y être dérivable.",
           "conditions": [
-            "$f$ est dérivable en tout réel de l'intervalle $I$.",
-            "Une fonction n'est continue que là où elle est définie : $x \\mapsto \\dfrac{1}{x}$ est continue sur $]-\\infty\\,;\\,0[$ et sur $]0\\,;\\,+\\infty[$, mais la question de la continuité en $0$ ne se pose pas."
+            "$f$ est dérivable en tout réel de l'intervalle $I$."
           ],
           "admise": false
         },
@@ -387,7 +386,7 @@
           "etapes": [
             "Sur l'intervalle demandé, justifie que $f$ est continue : « $f$ est dérivable sur $I$, donc continue sur $I$ ».",
             "Étudie le sens de variation (signe de $f'$, tableau de variations) et vérifie que $f$ est strictement monotone sur tout l'intervalle. Si elle change de sens, découpe l'intervalle et traite chaque morceau.",
-            "Calcule les images des bornes, ou leurs limites si une borne est exclue ou infinie, et vérifie que $k$ est compris entre elles.",
+            "Calcule les images des bornes, ou leurs limites si une borne est exclue ou infinie, et vérifie que $k$ est compris entre elles (strictement, si ce sont des limites).",
             "Conclus en citant le théorème et ses hypothèses : « $f$ est continue et strictement croissante sur $[a\\,;\\,b]$, et $k$ est compris entre $f(a)$ et $f(b)$ ; d'après le théorème des valeurs intermédiaires, l'équation $f(x) = k$ admet une unique solution $\\alpha$ dans $[a\\,;\\,b]$ ».",
             "Pour encadrer $\\alpha$, utilise le tableau de valeurs de la calculatrice, avec un pas de $0{,}1$, puis de $0{,}01$. Garde deux valeurs consécutives de $x$ entre lesquelles $f(x) - k$ change de signe.",
             "Pour une valeur arrondie à $10^{-2}$ près, calcule aussi l'image du milieu de l'encadrement d'amplitude $10^{-2}$ : elle dit de quel côté de ce milieu se trouve $\\alpha$."
@@ -400,17 +399,17 @@
           "titre": "Encadrement et arrondi",
           "faux": "On a trouvé $0{,}68 < \\alpha < 0{,}69$. Donc la valeur arrondie de $\\alpha$ à $10^{-2}$ près est $0{,}69$, la borne supérieure.",
           "juste": "L'encadrement ne suffit pas : il faut savoir si $\\alpha$ est avant ou après $0{,}685$. Ici, $f(0{,}685) \\approx 0{,}006\\,4 > 0 = f(\\alpha)$ et $f$ est croissante, donc $\\alpha < 0{,}685$ : la valeur arrondie est $0{,}68$.",
-          "explication": "Un encadrement d'amplitude $10^{-2}$ donne deux nombres, distants de $0{,}01$, qui entourent $\\alpha$. La valeur arrondie à $10^{-2}$ près est le nombre à deux décimales le plus proche de $\\alpha$. Pour la trouver, compare $\\alpha$ au milieu de l'encadrement."
+          "explication": "Un encadrement d'amplitude $10^{-2}$ donne deux nombres, distants de $0{,}01$, qui entourent $\\alpha$. La valeur arrondie à $10^{-2}$ près est le nombre à deux décimales le plus proche de $\\alpha$. Pour la trouver, compare $\\alpha$ au milieu de l'encadrement. Autre méthode, fréquente dans les corrigés du bac : affiner jusqu'à un encadrement d'amplitude $10^{-3}$. Ici, $0{,}682 < \\alpha < 0{,}683$ : les deux bornes s'arrondissent à $0{,}68$, donc $\\alpha$ aussi."
         },
         {
           "id": "l-continuite-026",
           "type": "propriete",
           "titre": "Extension admise : intervalle ouvert ou non borné",
           "capacites": ["bo-m-continuite-03", "bo-m-continuite-04"],
-          "texte": "Le programme énonce le théorème sur un intervalle fermé $[a\\,;\\,b]$. Les sujets de bac l'appliquent aussi sur des intervalles comme $]0\\,;\\,+\\infty[$ ou $\\mathbb{R}$, en remplaçant les images des bornes par les **limites** aux bornes. On l'**admet** sous cette forme.\n\nSoit $f$ une fonction continue et strictement monotone sur un intervalle $]a\\,;\\,b[$, où $a$ peut être $-\\infty$ et $b$ peut être $+\\infty$. On note $\\ell$ la limite de $f$ en $a$ et $L$ sa limite en $b$ (des réels, ou $\\pm\\infty$). Alors, pour tout réel $k$ **strictement** compris entre $\\ell$ et $L$, l'équation $f(x) = k$ admet une unique solution dans $]a\\,;\\,b[$.\n\nSi une borne est incluse, comme $a$ dans $[a\\,;\\,+\\infty[$, on garde son image $f(a)$, et $k$ peut être égal à $f(a)$.",
+          "texte": "Plus haut, le cours énonce le théorème sur un intervalle fermé $[a\\,;\\,b]$. Les sujets de bac l'appliquent aussi sur des intervalles comme $]0\\,;\\,+\\infty[$ ou $\\mathbb{R}$, en remplaçant les images des bornes par les **limites** aux bornes. On l'**admet** sous cette forme.\n\nSoit $f$ une fonction continue et strictement monotone sur un intervalle $]a\\,;\\,b[$, où $a$ peut être $-\\infty$ et $b$ peut être $+\\infty$. On note $\\ell$ la limite de $f$ en $a$ et $L$ sa limite en $b$ (des réels, ou $\\pm\\infty$). Alors, pour tout réel $k$ **strictement** compris entre $\\ell$ et $L$, l'équation $f(x) = k$ admet une unique solution dans $]a\\,;\\,b[$.\n\nSi une borne est incluse, comme $a$ dans $[a\\,;\\,+\\infty[$, on garde son image $f(a)$, et $k$ peut être égal à $f(a)$.",
           "conditions": [
             "$f$ est continue et strictement monotone sur tout l'intervalle.",
-            "Les limites aux bornes exclues sont calculées d'abord : en un réel exclu, c'est la limite à droite pour la borne de gauche, à gauche pour la borne de droite.",
+            "$f$ a une limite, réelle ou infinie, en chaque borne exclue : en un réel exclu, la limite à droite pour la borne de gauche, à gauche pour la borne de droite.",
             "$k$ est strictement compris entre les limites : une limite n'est pas une valeur prise par $f$."
           ],
           "admise": true
@@ -494,16 +493,16 @@
           "titre": "Comment approcher une solution par dichotomie ?",
           "capacites": ["bo-m-continuite-06"],
           "etapes": [
-            "Pars d'un intervalle $[a\\,;\\,b]$ sur lequel $f$ est continue, avec $f(a)$ et $f(b)$ de signes contraires : d'après le théorème des valeurs intermédiaires, l'équation $f(x) = 0$ a une solution $\\alpha$ dans $[a\\,;\\,b]$.",
+            "Pars d'un intervalle $[a\\,;\\,b]$ sur lequel $f$ est continue, avec $f(a)$ et $f(b)$ de signes contraires : d'après le théorème des valeurs intermédiaires, l'équation $f(x) = 0$ a une solution dans $[a\\,;\\,b]$. Si $f$ y est aussi strictement monotone, cette solution est unique : note-la $\\alpha$.",
             "Calcule le milieu $m = \\dfrac{a + b}{2}$, puis le signe du produit $f(a) \\times f(m)$.",
             "Si $f(a) \\times f(m) \\leqslant 0$, $f$ change de signe entre $a$ et $m$ : garde $[a\\,;\\,m]$, c'est-à-dire remplace $b$ par $m$. Sinon, $f$ change de signe entre $m$ et $b$ : garde $[m\\,;\\,b]$, c'est-à-dire remplace $a$ par $m$.",
-            "Recommence tant que l'amplitude $b - a$ est plus grande que la précision $e$ voulue. À chaque étape, l'amplitude est divisée par $2$ : après $n$ étapes, elle vaut $\\dfrac{b - a}{2^n}$, avec les valeurs de départ de $a$ et $b$.",
-            "À la sortie, $a \\leqslant \\alpha \\leqslant b$ et $b - a \\leqslant e$ : $a$ et $b$ sont des valeurs approchées de $\\alpha$ à $e$ près, par défaut et par excès."
+            "Recommence tant que l'amplitude $b - a$ est plus grande que la précision $p$ voulue. À chaque étape, l'amplitude est divisée par $2$ : après $n$ étapes, elle vaut $\\dfrac{b - a}{2^n}$, avec les valeurs de départ de $a$ et $b$.",
+            "À la sortie, $b - a \\leqslant p$ et $[a\\,;\\,b]$ contient encore une solution ($\\alpha$, si elle est unique). Les bornes $a$ et $b$ en sont des valeurs approchées à $p$ près, par défaut et par excès."
           ],
           "exemple": "l-continuite-034",
           "code": {
             "langage": "python",
-            "source": "def f(x):\n    return x**3 + x - 1\n\ndef dichotomie(a, b, e):\n    while b - a > e:\n        m = (a + b) / 2\n        if f(a) * f(m) <= 0:   # f change de signe entre a et m\n            b = m\n        else:                  # sinon, entre m et b\n            a = m\n    return [a, b]\n\nprint(dichotomie(0, 1, 0.1))   # affiche [0.625, 0.6875]"
+            "source": "def f(x):\n    return x**3 + x - 1\n\ndef dichotomie(a, b, p):\n    while b - a > p:\n        m = (a + b) / 2\n        if f(a) * f(m) <= 0:   # f change de signe entre a et m\n            b = m\n        else:                  # sinon, entre m et b\n            a = m\n    return [a, b]\n\nprint(dichotomie(0, 1, 0.1))   # affiche [0.625, 0.6875]"
           }
         },
         {
@@ -511,7 +510,7 @@
           "type": "exemple",
           "titre": "Faire tourner la dichotomie à la main",
           "capacites": ["bo-m-continuite-06"],
-          "enonce": "On reprend $f(x) = x^3 + x - 1$, dont l'unique solution $\\alpha$ dans $[0\\,;\\,1]$ vérifie $\\alpha \\approx 0{,}68$. On exécute la dichotomie avec $a = 0$, $b = 1$ et la précision $e = 0{,}1$.\n\n**1.** Faire tourner l'algorithme étape par étape, en notant à chaque étape $a$, $b$, $m$ et le signe de $f(m)$.\n\n**2.** Quel encadrement de $\\alpha$ la fonction renvoie-t-elle ?",
+          "enonce": "On reprend $f(x) = x^3 + x - 1$, dont l'unique solution $\\alpha$ dans $[0\\,;\\,1]$ vérifie $\\alpha \\approx 0{,}68$. On exécute la dichotomie avec $a = 0$, $b = 1$ et la précision $p = 0{,}1$.\n\n**1.** Faire tourner l'algorithme étape par étape, en notant à chaque étape $a$, $b$, $m$ et le signe de $f(m)$.\n\n**2.** Quel encadrement de $\\alpha$ la fonction renvoie-t-elle ?",
           "etapes": [
             {
               "texte": "**Étape 1** : $a = 0$, $b = 1$, $m = 0{,}5$. $f(0{,}5) = 0{,}125 + 0{,}5 - 1 = -0{,}375 < 0$, et $f(0) = -1 < 0$ : $f(a) \\times f(m) > 0$. On remplace $a$ par $0{,}5$.",
@@ -622,7 +621,7 @@
             "langage": "python",
             "source": "def f(x):\n    return x**3 + x - 1\n\ndef secante(a, b, n):\n    for k in range(n):\n        c = b - f(b) * (b - a) / (f(b) - f(a))   # là où la sécante coupe l'axe\n        a = b\n        b = c\n    return b\n\nprint(secante(0, 1, 5))      # affiche 0.6823257814098928"
           },
-          "texte": "La méthode de la sécante remplace la tangente par une **sécante** : la droite qui passe par deux points de la courbe, d'abscisses $a$ et $b$. Plus besoin de la dérivée.\n\nCette droite passe par le point de coordonnées $(b\\,;\\,f(b))$ et a pour coefficient directeur $\\dfrac{f(b) - f(a)}{b - a}$. Elle coupe l'axe des abscisses en\n\n$$c = b - f(b) \\times \\dfrac{b - a}{f(b) - f(a)}.$$\n\nOn recommence avec les deux derniers points, d'abscisses $b$ et $c$. Avec $a = 0$ et $b = 1$, les valeurs successives de $c$ sont environ $0{,}5$ ; $0{,}636\\,4$ ; $0{,}690\\,1$ ; $0{,}682\\,0$ ; $0{,}682\\,33$ : cinq étapes donnent $\\alpha$ à $10^{-5}$ près. Comme pour Newton, l'étude de sa convergence n'est pas au programme."
+          "texte": "La méthode de la sécante remplace la tangente par une **sécante** : la droite qui passe par deux points de la courbe, d'abscisses $a$ et $b$. Plus besoin de la dérivée.\n\nCette droite passe par le point de coordonnées $(b\\,;\\,f(b))$ et a pour coefficient directeur $\\dfrac{f(b) - f(a)}{b - a}$. Si $f(a) \\neq f(b)$, elle n'est pas parallèle à l'axe des abscisses et le coupe en\n\n$$c = b - f(b) \\times \\dfrac{b - a}{f(b) - f(a)}.$$\n\nOn recommence avec les deux derniers points, d'abscisses $b$ et $c$. Avec $a = 0$ et $b = 1$, les valeurs successives de $c$ sont environ $0{,}5$ ; $0{,}636\\,4$ ; $0{,}690\\,1$ ; $0{,}682\\,0$ ; $0{,}682\\,33$ : cinq étapes donnent $\\alpha$ à $10^{-5}$ près. Comme pour Newton, l'étude de sa convergence n'est pas au programme."
         },
         {
           "id": "l-continuite-041",
@@ -815,7 +814,7 @@
           "etapes": [
             "Démontre que la suite converge : par récurrence, encadre-la et trouve son sens de variation, par exemple $a \\leqslant u_n \\leqslant u_{n+1} \\leqslant b$ ; puis applique le théorème de convergence monotone. Note $\\ell$ sa limite.",
             "Situe $\\ell$ par passage à la limite dans l'encadrement : $a \\leqslant \\ell \\leqslant b$. Si la suite est croissante, $\\ell \\geqslant u_0$ ; si elle est décroissante, $\\ell \\leqslant u_0$.",
-            "Justifie que $\\ell = f(\\ell)$ : « $f$ est continue sur $[a\\,;\\,b]$ (car dérivable) et à valeurs dans $[a\\,;\\,b]$, et $(u_n)$ converge vers $\\ell \\in [a\\,;\\,b]$ ; en passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = f(\\ell)$ ».",
+            "Justifie que $\\ell = f(\\ell)$ : « $f$ est continue sur $[a\\,;\\,b]$ (car dérivable) et à valeurs dans $[a\\,;\\,b]$, et $(u_n)$ converge vers $\\ell \\in [a\\,;\\,b]$ ; en passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = f(\\ell)$ ». Pour « à valeurs dans $[a\\,;\\,b]$ » : si $f$ est croissante sur $[a\\,;\\,b]$, il suffit que $f(a) \\geqslant a$ et $f(b) \\leqslant b$, car alors $a \\leqslant f(a) \\leqslant f(x) \\leqslant f(b) \\leqslant b$ pour tout $x$ de $[a\\,;\\,b]$.",
             "Résous l'équation $f(x) = x$ : c'est souvent une équation du second degré, à résoudre par factorisation ou avec le discriminant.",
             "Garde la seule solution compatible avec l'encadrement de la deuxième étape : c'est la limite. Conclus par « la suite $(u_n)$ converge vers … »."
           ],
@@ -881,7 +880,7 @@
         {
           "id": "l-continuite-058",
           "type": "piege",
-          "titre": "Garder les deux solutions",
+          "titre": "Ne pas garder les deux solutions",
           "faux": "Pour la suite définie par $u_0 = \\dfrac{1}{2}$ et $u_{n+1} = \\dfrac{2u_n}{u_n + 1}$, on trouve $\\ell = 0$ ou $\\ell = 1$ : la suite converge vers $0$ ou vers $1$.",
           "juste": "Une suite convergente n'a qu'une limite. On élimine la valeur incompatible avec ce qu'on sait : la suite est croissante et $u_0 = \\dfrac{1}{2}$, donc $\\ell \\geqslant \\dfrac{1}{2}$, et $\\ell = 1$.",
           "explication": "L'équation $f(x) = x$ a souvent plusieurs solutions. La bonne se choisit grâce à l'encadrement ($a \\leqslant \\ell \\leqslant b$) ou au sens de variation : $\\ell \\geqslant u_0$ si la suite est croissante, $\\ell \\leqslant u_0$ si elle est décroissante."
