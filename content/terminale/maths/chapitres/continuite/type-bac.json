@@ -110,7 +110,7 @@
             "label": "a)",
             "enonce": "Soit $a$ un réel strictement positif. Montrer que la tangente à $\\mathcal{C}_f$ au point d'abscisse $a$ est parallèle à $\\Delta$ si, et seulement si, $a$ est solution de l'équation $e^x(x - 1) + x^2 = 0$.",
             "points": 0.5,
-            "revoir": "l-continuite-036",
+            "revoir": "l-continuite-038",
             "indices": [
               "Deux droites non verticales sont parallèles quand elles ont le même coefficient directeur. Celui de la tangente au point d'abscisse $a$ est $f'(a)$ ; celui de $\\Delta$ se lit sur son équation.",
               "Écris l'égalité des coefficients directeurs avec l'expression de la question 2, puis multiplie les deux membres par $a^2$, qui n'est pas nul."
@@ -300,7 +300,8 @@
             },
             "revoir": "l-limites-suites-064",
             "indices": [
-              "Calcule les termes successifs $v_1$, $v_2$… avec la relation $v_{n+1} = -0{,}05v_n^2 + 1{,}1v_n$ (mode suite de la calculatrice, ou en réutilisant chaque résultat). D'après la question B.2, la suite est décroissante : une fois sous $3$, elle y reste."
+              "Cherche le plus petit entier $n$ tel que $v_n < 3$, car $v_n$ est en milliers d'individus. D'après la question B.2, la suite $(v_n)$ est décroissante : une fois sous $3$, elle y reste. L'année correspondante est $2025 + n$.",
+              "Calcule les termes un par un avec $v_{n+1} = -0{,}05v_n^2 + 1{,}1v_n$ (mode suite de la calculatrice, ou en réutilisant chaque résultat) : $v_1 = 4{,}8$, puis $v_2 = -0{,}05 \\times 4{,}8^2 + 1{,}1 \\times 4{,}8 = 4{,}128$. Continue jusqu'au premier terme strictement inférieur à $3$."
             ],
             "attenduCorrecteur": "- Calcul des termes : $v_5 \\approx 3{,}14 \\geqslant 3$ et $v_6 \\approx 2{,}96 < 3$ : 0,25 pt.\n- Décroissance de $(v_n)$ invoquée (question B.2) et réponse : à partir de 2031 : 0,25 pt.",
             "solution": "On cherche le plus petit entier $n$ tel que $v_n < 3$. À la calculatrice, en appliquant la relation de récurrence : $v_1 = 4{,}8$ ; $v_2 = 4{,}128$ ; $v_3 \\approx 3{,}689$ ; $v_4 \\approx 3{,}377$ ; $v_5 \\approx 3{,}145$ ; $v_6 \\approx 2{,}965$.\n\nDonc $v_5 \\geqslant 3$ et $v_6 < 3$. D'après la question B.2, la suite $(v_n)$ est décroissante : $v_n \\leqslant v_6 < 3$ pour tout $n \\geqslant 6$, et $v_n \\geqslant v_5 \\geqslant 3$ pour tout $n \\leqslant 5$. La population du milieu B est strictement inférieure à $3\\,000$ individus à partir de l'année $2025 + 6$, c'est-à-dire **2031**."
@@ -337,7 +338,8 @@
             "points": 0.25,
             "revoir": "l-limites-suites-064",
             "indices": [
-              "La boucle tourne tant que le but n'est pas atteint : sa condition est le contraire de « $v > u$ ». Dans la boucle, les variables u et v passent chacune au terme suivant de leur suite."
+              "C'est une recherche de seuil avec une boucle while : la boucle tourne tant que le but n'est pas atteint, donc sa condition est le contraire du but. Ici, le but est « la population du milieu B est strictement supérieure à celle du milieu A ».",
+              "Le but s'écrit $v > u$ : la condition de la boucle est son contraire, $v \\leqslant u$. Pour les deux autres pointillés, chaque variable passe au terme suivant de sa suite : traduis la relation de la partie A et celle de la partie B, en Python, avec un point comme séparateur décimal."
             ],
             "attenduCorrecteur": "- Condition $\\texttt{while v <= u:}$, et mises à jour $\\texttt{u = 0{.}93 * u}$ et $\\texttt{v = -0{.}05 * v * v + 1{.}1 * v}$ : 0,25 pt.",
             "solution": "Le programme doit s'arrêter dès que $v_n > u_n$ : la boucle tourne tant que le contraire est vrai, c'est-à-dire tant que $v_n \\leqslant u_n$. La condition est donc $\\texttt{while v <= u:}$.\n\nDans la boucle, les deux variables passent au terme suivant : $u_{n+1} = 0{,}93u_n$ et $v_{n+1} = -0{,}05v_n^2 + 1{,}1v_n$. En Python, le séparateur décimal est un point, d'où les lignes $\\texttt{u = 0{.}93 * u}$ et $\\texttt{v = -0{.}05 * v * v + 1{.}1 * v}$.\n\nLa boucle finit par s'arrêter : d'après la question C.2, $v_n > u_n$ à partir d'un certain rang."
@@ -417,7 +419,8 @@
             "points": 0.5,
             "revoir": "l-continuite-055",
             "indices": [
-              "$f$ est croissante sur $[1\\,;\\,3]$ : pour tout $x$ de cet intervalle, $f(1) \\leqslant f(x) \\leqslant f(3)$. Compare ensuite $f(1)$ à $1$, puis $f(3)$ à $3$, sans valeur approchée : pense au signe de $e^{-3}$ et à $e > 1$."
+              "Sers-toi de la croissance de $f$ (question a) : pour tout $x$ de $[1\\,;\\,3]$, $f(1) \\leqslant f(x) \\leqslant f(3)$. Il reste à comparer $f(1)$ à $1$, puis $f(3)$ à $3$, sans valeur approchée.",
+              "$f(1) = 3 - 2e^{-1} = 3 - \\dfrac{2}{e}$ : comme $e > 1$, compare $\\dfrac{2}{e}$ à $2$. Pour $f(3) = 3 - 2e^{-3}$, pense au signe de $e^{-3}$."
             ],
             "attenduCorrecteur": "- Croissance utilisée : $f(1) \\leqslant f(x) \\leqslant f(3)$ pour tout $x$ de $[1\\,;\\,3]$ : 0,25 pt.\n- $f(1) = 3 - \\dfrac{2}{e} > 1$ (car $\\dfrac{2}{e} < 2$) et $f(3) = 3 - 2e^{-3} < 3$ (car $e^{-3} > 0$), d'où la conclusion : 0,25 pt.",
             "solution": "D'après la question a, $f$ est croissante sur $[1\\,;\\,3]$ : pour tout $x$ de $[1\\,;\\,3]$, $f(1) \\leqslant f(x) \\leqslant f(3)$.\n\n$f(1) = 3 - 2e^{-1} = 3 - \\dfrac{2}{e}$. Comme $e > 1$, $\\dfrac{2}{e} < 2$, donc $f(1) > 3 - 2 = 1$. À la calculatrice, $f(1) \\approx 2{,}264$.\n\n$f(3) = 3 - 2e^{-3}$, et $e^{-3} > 0$, donc $f(3) < 3$.\n\nAinsi, pour tout $x$ de $[1\\,;\\,3]$, $1 < f(1) \\leqslant f(x) \\leqslant f(3) < 3$ ; donc $1 \\leqslant f(x) \\leqslant 3$."
