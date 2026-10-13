@@ -48,17 +48,17 @@
           "bonne": 0,
           "pourquoiFaux": [
             null,
-            "Le théorème exige que $g$ soit continue sur tout $[-1\\,;\\,1]$. Avec un saut, la courbe peut passer au-dessus de l'axe des abscisses sans le toucher.",
+            "Le théorème exige que $g$ soit continue sur tout $[-1\\,;\\,1]$. Avec un saut, la courbe peut sauter par-dessus l'axe des abscisses sans le toucher.",
             "Le saut n'empêche pas non plus une solution : $g$ peut très bien s'annuler avant ou après $0$. On ne sait rien.",
             "Même pour une fonction continue, il faudrait la stricte monotonie pour « exactement une ». Ici, on ne sait même pas qu'il y en a une."
           ]
         },
         "indices": [
           "Relis les hypothèses du théorème : sur quel intervalle la fonction doit-elle être continue ?",
-          "$g$ n'est pas continue en $0$, qui appartient à $[-1\\,;\\,1]$ : une hypothèse manque. Que peut faire la courbe au moment du saut ?"
+          "$g$ n'est pas continue en $0$, qui appartient à $[-1\\,;\\,1]$ : une hypothèse manque. Pense au tarif du parking, qui passe de $2$ € à $4$ € sans jamais valoir $3$ € : que peut faire la courbe de $g$ au moment du saut ?"
         ],
         "revoir": "l-continuite-016",
-        "solution": "Le théorème des valeurs intermédiaires exige que $g$ soit continue sur tout l'intervalle $[-1\\,;\\,1]$. Ce n'est pas le cas : $g$ saute en $0$. Par exemple, $g$ pourrait valoir $-2$ sur $[-1\\,;\\,0]$ et $3$ sur $]0\\,;\\,1]$ : elle ne s'annulerait jamais. Le théorème ne s'applique pas, et on ne peut pas conclure."
+        "solution": "Le théorème des valeurs intermédiaires exige que $g$ soit continue sur tout l'intervalle $[-1\\,;\\,1]$. Ce n'est pas le cas : $g$ saute en $0$. Par exemple, $g$ pourrait valoir $-2$ sur $[-1\\,;\\,0]$ et $3$ sur $]0\\,;\\,1]$ : elle ne s'annulerait jamais. C'est ce que fait le tarif du parking du cours : il passe de $2$ € à $4$ € sans jamais valoir $3$ €. Le théorème ne s'applique pas, et on ne peut pas conclure."
       },
       {
         "id": "q3",
@@ -100,7 +100,7 @@
           "Sur $]-\\infty\\,;\\,1]$, $f$ prend toutes les valeurs de $]-\\infty\\,;\\,5]$, chacune une seule fois. Fais de même sur $[1\\,;\\,4]$, puis sur $[4\\,;\\,+\\infty[$, et regarde si $0$ est atteint sur chaque morceau."
         ],
         "revoir": "l-continuite-027",
-        "solution": "On applique le théorème des valeurs intermédiaires, dans le cas d'une fonction continue strictement monotone, sur chaque intervalle du tableau.\n\n- Sur $]-\\infty\\,;\\,1]$, $f$ est continue et strictement croissante, de la limite $-\\infty$ jusqu'à $f(1) = 5$ : $0$ est atteint une fois.\n- Sur $[1\\,;\\,4]$, $f$ est continue et strictement décroissante, de $5$ à $-2$ : $0$ est atteint une fois.\n- Sur $[4\\,;\\,+\\infty[$, $f$ est continue et strictement croissante, de $-2$ jusqu'à la limite $1$, non atteinte : $0$ est compris entre $-2$ et $1$, il est atteint une fois.\n\nL'équation $f(x) = 0$ admet donc $3$ solutions dans $\\mathbb{R}$."
+        "solution": "On applique le théorème des valeurs intermédiaires, dans le cas d'une fonction continue strictement monotone, sur chaque intervalle du tableau. Sur les deux intervalles non bornés, on utilise son extension admise : la borne infinie est remplacée par la limite de $f$.\n\n- Sur $]-\\infty\\,;\\,1]$, $f$ est continue et strictement croissante, de la limite $-\\infty$ jusqu'à $f(1) = 5$ : $0$ est atteint une fois.\n- Sur $[1\\,;\\,4]$, $f$ est continue et strictement décroissante, de $5$ à $-2$ : $0$ est atteint une fois.\n- Sur $[4\\,;\\,+\\infty[$, $f$ est continue et strictement croissante, de $-2$ jusqu'à la limite $1$, non atteinte : $0$ est strictement compris entre $-2$ et $1$, il est atteint une fois.\n\nLes morceaux ont en commun les réels $1$ et $4$. Comme $f(1) = 5$ et $f(4) = -2$ ne valent pas $0$, aucune solution n'est comptée deux fois. L'équation $f(x) = 0$ admet donc $3$ solutions dans $\\mathbb{R}$."
       },
       {
         "id": "q2",
@@ -271,11 +271,11 @@
         "enonce": "Soit $(v_n)$ la suite définie par $v_0 = 0$ et, pour tout entier naturel $n$, $v_{n+1} = \\sqrt{v_n + 6}$. On admet que $v_n \\geqslant 0$ pour tout $n$, et que $(v_n)$ converge vers un réel $\\ell$. Que vaut $\\ell$ ?",
         "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
         "indices": [
-          "$v_{n+1} = f(v_n)$ avec $f(x) = \\sqrt{x + 6}$, continue sur $[0\\,;\\,+\\infty[$ : la limite vérifie $\\ell = \\sqrt{\\ell + 6}$.",
+          "$v_{n+1} = f(v_n)$ avec $f(x) = \\sqrt{x + 6}$. Comme toute fonction $x \\mapsto \\sqrt{ax + b}$, $f$ est continue là où $x + 6 \\geqslant 0$, donc sur $[0\\,;\\,+\\infty[$ : la limite vérifie $\\ell = \\sqrt{\\ell + 6}$.",
           "En élevant au carré, $\\ell^2 = \\ell + 6$, soit $\\ell^2 - \\ell - 6 = 0$. Résous cette équation du second degré, puis garde la solution compatible avec $\\ell \\geqslant 0$."
         ],
         "revoir": "l-continuite-055",
-        "solution": "La fonction $f$ définie par $f(x) = \\sqrt{x + 6}$ est dérivable sur $]-6\\,;\\,+\\infty[$, donc continue sur $[0\\,;\\,+\\infty[$, et elle est à valeurs positives ; de plus, $v_{n+1} = f(v_n)$. Par passage à la limite dans $v_n \\geqslant 0$, on a $\\ell \\geqslant 0$. Comme $f$ est continue, $\\ell = f(\\ell)$, soit $\\ell = \\sqrt{\\ell + 6}$. En élevant au carré : $\\ell^2 = \\ell + 6$, soit $\\ell^2 - \\ell - 6 = 0$. Le discriminant vaut $1 + 24 = 25$ ; les solutions sont $\\dfrac{1 - 5}{2} = -2$ et $\\dfrac{1 + 5}{2} = 3$. Comme $\\ell \\geqslant 0$, $\\ell = 3$."
+        "solution": "La fonction $f$ définie par $f(x) = \\sqrt{x + 6}$ est de la forme $x \\mapsto \\sqrt{ax + b}$ : elle est continue sur $[-6\\,;\\,+\\infty[$, où $x + 6 \\geqslant 0$, donc sur $[0\\,;\\,+\\infty[$, et elle est à valeurs positives ; de plus, $v_{n+1} = f(v_n)$. Par passage à la limite dans $v_n \\geqslant 0$, on a $\\ell \\geqslant 0$. Comme $f$ est continue, $\\ell = f(\\ell)$, soit $\\ell = \\sqrt{\\ell + 6}$. En élevant au carré : $\\ell^2 = \\ell + 6$, soit $\\ell^2 - \\ell - 6 = 0$. Le discriminant vaut $1 + 24 = 25$ ; les solutions sont $\\dfrac{1 - 5}{2} = -2$ et $\\dfrac{1 + 5}{2} = 3$. Comme $\\ell \\geqslant 0$, $\\ell = 3$."
       },
       {
         "id": "q3",
@@ -432,7 +432,7 @@
           "Écris que la limite à droite de $k$ en $1$ est égale à $k(1)$. La limite à gauche, elle, vaut déjà $k(1)$, car $3x + a$ est un polynôme.",
           "$k(1) = 3 + a$, et à droite, $x^2 + 4$ tend vers $5$. Résous l'équation obtenue."
         ],
-        "revoir": "l-continuite-006",
+        "revoir": "l-continuite-003",
         "solution": "$k(1) = 3 \\times 1 + a = 3 + a$, et la limite à gauche en $1$ vaut aussi $3 + a$. À droite, $\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} \\left(x^2 + 4\\right) = 1 + 4 = 5$. La fonction $k$ est continue en $1$ si $3 + a = 5$, soit $a = 2$."
       }
     ]
@@ -498,14 +498,15 @@
         "reponse": {
           "type": "vrai-faux",
           "valeur": true,
-          "justification": "C'est la contraposée de « si $f$ est dérivable en $a$, alors $f$ est continue en $a$ », qui est vraie : une implication et sa contraposée sont vraies en même temps."
+          "justification": "Si la fonction était dérivable en $a$, elle y serait continue, d'après le cours : c'est impossible. Cette phrase est la contraposée de « si $f$ est dérivable en $a$, alors $f$ est continue en $a$ », et une implication vraie a toujours une contraposée vraie."
         },
         "indices": [
-          "Compare cette phrase à la propriété « si $f$ est dérivable en $a$, alors $f$ est continue en $a$ » : est-ce sa réciproque, ou sa contraposée ?",
-          "La contraposée de « si P, alors Q » est « si non Q, alors non P ». Elle est vraie exactement quand l'implication de départ l'est."
+          "Attention, ce n'est pas la phrase de la question 2 : ici, on part d'une fonction **non** continue en $a$. Raisonne par l'absurde : suppose qu'elle soit quand même dérivable en $a$, et applique la propriété « dérivable entraîne continue ».",
+          "Si elle était dérivable en $a$, elle serait continue en $a$, d'après le cours. Or l'hypothèse dit qu'elle n'est pas continue en $a$ : que peux-tu en conclure sur sa dérivabilité en $a$ ?"
         ],
-        "revoir": "l-continuite-010",
-        "solution": "La démonstration du cours prouve, en un réel $a$ quelconque : si $f$ est dérivable en $a$, alors $f$ est continue en $a$. La phrase proposée en est la contraposée : « si $f$ n'est pas continue en $a$, alors $f$ n'est pas dérivable en $a$ ». Une implication vraie a une contraposée vraie : l'affirmation est vraie. Par exemple, le tarif du parking, qui saute en $1$, n'est pas dérivable en $1$."
+        "revoir": "l-continuite-007",
+        "solution": "D'après le cours, démontré réel par réel : si $f$ est dérivable en $a$, alors $f$ est continue en $a$. Soit $f$ une fonction qui n'est pas continue en $a$. Si $f$ était dérivable en $a$, elle serait continue en $a$ : c'est impossible. Donc $f$ n'est pas dérivable en $a$, et l'affirmation est vraie.\n\nCette phrase est la **contraposée** de la propriété « si $P$, alors $Q$ », avec $P$ : « $f$ est dérivable en $a$ » et $Q$ : « $f$ est continue en $a$ ». La contraposée s'écrit « si $Q$ est fausse, alors $P$ est fausse », et une implication vraie a toujours une contraposée vraie. Par exemple, le tarif du parking, qui saute en $1$, n'est pas dérivable en $1$.",
+        "erreurFrequente": "Répondre « faux » en confondant cette phrase avec la réciproque de la question 2, qui part de « continue ». Ici, on part de « non continue » : c'est la contraposée, toujours vraie quand la propriété l'est."
       }
     ]
   },
@@ -996,10 +997,10 @@
         "indices": [
           "Lis les deux informations contenues dans $u_n \\leqslant u_{n+1} \\leqslant 2$ : un sens de variation et un majorant.",
           "La suite est croissante et majorée : cite le théorème de convergence monotone.",
-          "Pour encadrer $\\ell$, passe à la limite dans $0 \\leqslant u_n \\leqslant 2$."
+          "Pour encadrer $\\ell$, passe à la limite dans un encadrement de $u_n$ valable pour tout $n$, par exemple $0 \\leqslant u_n \\leqslant 2$."
         ],
         "revoir": "l-limites-suites-052",
-        "solution": "D'après la question 2, la suite $(u_n)$ est croissante et majorée par $2$. D'après le théorème de convergence monotone, elle converge vers un réel $\\ell$. Par passage à la limite dans $0 \\leqslant u_n \\leqslant 2$, on obtient $0 \\leqslant \\ell \\leqslant 2$."
+        "solution": "D'après la question 2, la suite $(u_n)$ est croissante et majorée par $2$. D'après le théorème de convergence monotone, elle converge vers un réel $\\ell$. Par passage à la limite dans $0 \\leqslant u_n \\leqslant 2$, on obtient $0 \\leqslant \\ell \\leqslant 2$.\n\nOn peut aussi écrire $1 \\leqslant \\ell \\leqslant 2$ : la suite est croissante, donc $u_n \\geqslant u_1 = 1$ pour tout $n \\geqslant 1$, et le passage à la limite donne $\\ell \\geqslant 1$. Les deux encadrements sont justes ; la question 4 n'utilise que $\\ell \\geqslant 0$."
       },
       {
         "id": "q4",
@@ -1062,11 +1063,11 @@
         "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
         "indices": [
           "La suite est décroissante et minorée : cite le théorème de convergence monotone, puis situe $\\ell$ par passage à la limite.",
-          "$f$ est continue sur $[3\\,;\\,5]$ et à valeurs dans $[3\\,;\\,5]$, donc $\\ell = \\sqrt{2\\ell + 3}$.",
+          "$f$ est dérivable sur $[3\\,;\\,5]$ (question 1), donc continue, et à valeurs dans $[3\\,;\\,5]$ : donc $\\ell = \\sqrt{2\\ell + 3}$.",
           "Élève au carré pour obtenir une équation du second degré, résous-la, puis garde la solution compatible avec l'encadrement de $\\ell$."
         ],
         "revoir": "l-continuite-055",
-        "solution": "D'après la question 2, la suite $(u_n)$ est décroissante et minorée par $3$ : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$, et par passage à la limite, $3 \\leqslant \\ell \\leqslant 5$.\n\n$f$ est dérivable, donc continue, sur $[3\\,;\\,5]$ ; elle y est croissante, avec $f(3) = 3$ et $f(5) = \\sqrt{13} \\leqslant 5$, donc à valeurs dans $[3\\,;\\,5]$. En passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = \\sqrt{2\\ell + 3}$. Comme $\\ell \\geqslant 0$, cela équivaut à $\\ell^2 = 2\\ell + 3$, soit $\\ell^2 - 2\\ell - 3 = 0$, c'est-à-dire $(\\ell - 3)(\\ell + 1) = 0$. Donc $\\ell = 3$ ou $\\ell = -1$ ; or $\\ell \\geqslant 3$. **Conclusion** : la suite $(u_n)$ converge vers $3$."
+        "solution": "D'après la question 2, la suite $(u_n)$ est décroissante et minorée par $3$ : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$, et par passage à la limite, $3 \\leqslant \\ell \\leqslant 5$.\n\n$f$ est dérivable sur $[3\\,;\\,5]$ (question 1), donc continue sur $[3\\,;\\,5]$ ; elle y est croissante, avec $f(3) = 3$ et $f(5) = \\sqrt{13} \\leqslant 5$, donc à valeurs dans $[3\\,;\\,5]$. En passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = \\sqrt{2\\ell + 3}$. Comme $\\ell \\geqslant 0$, cela équivaut à $\\ell^2 = 2\\ell + 3$, soit $\\ell^2 - 2\\ell - 3 = 0$, c'est-à-dire $(\\ell - 3)(\\ell + 1) = 0$. Donc $\\ell = 3$ ou $\\ell = -1$ ; or $\\ell \\geqslant 3$. **Conclusion** : la suite $(u_n)$ converge vers $3$."
       }
     ]
   },
@@ -1229,12 +1230,12 @@
           "justification": "Le taux de variation de $f$ entre $0$ et $h$ vaut $2$ pour $h < 0$, et $h - 3$ pour $0 < h \\leqslant 2$ : il tend vers $2$ à gauche et vers $-3$ à droite. Il n'a pas de limite en $0$, donc $f$ n'est pas dérivable en $0$."
         },
         "indices": [
-          "$f$ est dérivable en $0$ si son taux de variation $\\dfrac{f(h) - f(0)}{h}$ a une limite finie quand $h$ tend vers $0$, du même côté comme de l'autre.",
+          "Rappel de première : $f$ est dérivable en $0$ si son taux de variation $\\dfrac{f(h) - f(0)}{h}$ a une limite finie quand $h$ tend vers $0$. Comme pour la continuité d'une fonction définie par morceaux, cherche cette limite à gauche ($h < 0$) et à droite ($h > 0$).",
           "Pour $h < 0$ : $\\dfrac{f(h) - f(0)}{h} = \\dfrac{2h + 1 - 1}{h}$. Simplifie.",
           "Pour $0 < h \\leqslant 2$ : $\\dfrac{f(h) - f(0)}{h} = \\dfrac{h^2 - 3h}{h} = h - 3$. Compare les limites à gauche et à droite."
         ],
         "revoir": "l-continuite-011",
-        "solution": "$f(0) = 1$. Pour $h < 0$, $\\dfrac{f(h) - f(0)}{h} = \\dfrac{2h + 1 - 1}{h} = 2$, qui tend vers $2$. Pour $0 < h \\leqslant 2$, $\\dfrac{f(h) - f(0)}{h} = \\dfrac{h^2 - 3h + 1 - 1}{h} = h - 3$, qui tend vers $-3$. Les limites à gauche et à droite du taux de variation sont différentes : il n'a pas de limite en $0$, et $f$ n'est pas dérivable en $0$. L'affirmation est fausse : $f$ est continue en $0$ sans y être dérivable ; sa courbe y fait un angle.",
+        "solution": "Rappel de première : $f$ est dérivable en $0$ si son taux de variation $\\dfrac{f(h) - f(0)}{h}$ a une limite finie quand $h$ tend vers $0$. Comme pour la continuité, cette limite n'existe que si les limites à gauche et à droite sont égales.\n\n$f(0) = 1$. Pour $h < 0$, $\\dfrac{f(h) - f(0)}{h} = \\dfrac{2h + 1 - 1}{h} = 2$, qui tend vers $2$. Pour $0 < h \\leqslant 2$, $\\dfrac{f(h) - f(0)}{h} = \\dfrac{h^2 - 3h + 1 - 1}{h} = h - 3$, qui tend vers $-3$. Les limites à gauche et à droite du taux de variation sont différentes : il n'a pas de limite en $0$, et $f$ n'est pas dérivable en $0$. L'affirmation est fausse : $f$ est continue en $0$ sans y être dérivable ; sa courbe y fait un angle.",
         "erreurFrequente": "Conclure « continue, donc dérivable » : la réciproque de « dérivable entraîne continue » est fausse."
       }
     ]
@@ -1364,7 +1365,7 @@
           "« $f(a)$ et $f(m)$ sont de signes contraires, ou l'un d'eux est nul » s'écrit avec un produit."
         ],
         "revoir": "l-continuite-041",
-        "solution": "L'instruction « b = m » garde $[a\\,;\\,m]$ : il faut l'exécuter quand $f$ change de signe entre $a$ et $m$, ou s'annule en $a$ ou en $m$, c'est-à-dire quand $f(a) \\times f(m) \\leqslant 0$. En Python, on écrit cette condition f(a) * f(m) <= 0."
+        "solution": "L'instruction « b = m » garde $[a\\,;\\,m]$ : il faut l'exécuter quand $f$ change de signe entre $a$ et $m$, ou s'annule en $a$ ou en $m$, c'est-à-dire quand $f(a) \\times f(m) \\leqslant 0$. En Python, on écrit cette condition $\\texttt{f(a) * f(m) <= 0}$."
       },
       {
         "id": "q3",
@@ -1428,7 +1429,7 @@
       {
         "id": "q1",
         "label": "1.",
-        "enonce": "Déterminer une équation de la tangente à la courbe de $f$ au point d'abscisse $3$, puis l'abscisse $x_1$ du point où elle coupe l'axe des abscisses.",
+        "enonce": "Déterminer une équation de la tangente à la courbe de $f$ au point d'abscisse $3$, puis l'abscisse $x_1$ du point où elle coupe l'axe des abscisses. Saisis la valeur de $x_1$.",
         "reponse": { "type": "numerique", "valeur": 2.5, "tolerance": 0 },
         "indices": [
           "Une équation de la tangente au point d'abscisse $3$ est $y = f'(3)(x - 3) + f(3)$.",
@@ -1738,7 +1739,8 @@
           "D'après les questions 2 et 3, $\\ell$ est une solution de $g(x) = 0$ située dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$ : que dit l'unicité ?"
         ],
         "revoir": "l-continuite-024",
-        "solution": "$g$ est un polynôme, dérivable, donc continu, et $g'(x) = 3x^2 - 3 = 3\\left(x^2 - 1\\right)$. Pour $0 \\leqslant x \\leqslant \\dfrac{1}{2}$, $x^2 \\leqslant \\dfrac{1}{4} < 1$, donc $g'(x) < 0$ : $g$ est strictement décroissante sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$. De plus, $g(0) = 1$ et $g\\left(\\dfrac{1}{2}\\right) = \\dfrac{1}{8} - \\dfrac{3}{2} + 1 = -\\dfrac{3}{8}$ : $0$ est compris entre $-\\dfrac{3}{8}$ et $1$. D'après le théorème des valeurs intermédiaires, appliqué à une fonction continue et strictement décroissante, l'équation $g(x) = 0$ admet une unique solution $\\alpha$ dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$.\n\nD'après les questions 2 et 3, $\\ell$ appartient à $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$ et $g(\\ell) = 0$. Par unicité de la solution dans cet intervalle, $\\ell = \\alpha$ : la suite $(u_n)$ converge vers $\\alpha$."
+        "solution": "$g$ est un polynôme, dérivable, donc continu, et $g'(x) = 3x^2 - 3 = 3\\left(x^2 - 1\\right)$. Pour $0 \\leqslant x \\leqslant \\dfrac{1}{2}$, $x^2 \\leqslant \\dfrac{1}{4} < 1$, donc $g'(x) < 0$ : $g$ est strictement décroissante sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$. De plus, $g(0) = 1$ et $g\\left(\\dfrac{1}{2}\\right) = \\dfrac{1}{8} - \\dfrac{3}{2} + 1 = -\\dfrac{3}{8}$ : $0$ est compris entre $-\\dfrac{3}{8}$ et $1$. D'après le théorème des valeurs intermédiaires, appliqué à une fonction continue et strictement décroissante, l'équation $g(x) = 0$ admet une unique solution $\\alpha$ dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$.\n\nD'après les questions 2 et 3, $\\ell$ appartient à $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$ et $g(\\ell) = 0$. Par unicité de la solution dans cet intervalle, $\\ell = \\alpha$ : la suite $(u_n)$ converge vers $\\alpha$.",
+        "erreurFrequente": "Croire que la limite est $\\dfrac{1}{2}$, le majorant, ou s'arrêter à $\\ell^3 - 3\\ell + 1 = 0$ sans identifier $\\ell$ grâce à l'unicité de la solution dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$."
       },
       {
         "id": "q5",
@@ -1750,9 +1752,9 @@
           "$g(0{,}3) = 0{,}127 > 0$ et $g(0{,}4) = -0{,}136 < 0$, donc $0{,}3 < \\alpha < 0{,}4$. Affine avec un pas de $0{,}01$ à partir de $0{,}3$.",
           "Avec un pas de $0{,}01$, le signe de $g$ change entre $0{,}34$ et le nombre suivant. Calcule ensuite l'image du milieu, $g(0{,}345)$, et compare-la à $0 = g(\\alpha)$ en tenant compte de la décroissance."
         ],
-        "revoir": "l-continuite-025",
-        "solution": "À la calculatrice : $g(0{,}34) \\approx 0{,}019 > 0$ et $g(0{,}35) \\approx -0{,}007 < 0$. Comme $g$ est strictement décroissante et $g(\\alpha) = 0$, on a $0{,}34 < \\alpha < 0{,}35$. Le milieu de cet encadrement est $0{,}345$, et $g(0{,}345) \\approx 0{,}006 > 0 = g(\\alpha)$ : comme $g$ est décroissante, $0{,}345 < \\alpha$. Donc $0{,}345 < \\ell < 0{,}35$, et la valeur arrondie de $\\ell$ à $10^{-2}$ près est $0{,}35$. Les premiers termes le confirment : $u_3 \\approx 0{,}347\\,1$.",
-        "erreurFrequente": "Croire que la limite est $\\dfrac{1}{2}$, le majorant, ou s'arrêter à $\\ell^3 - 3\\ell + 1 = 0$ sans identifier $\\ell$ grâce à l'unicité de la solution dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$."
+        "revoir": "l-continuite-024",
+        "solution": "À la calculatrice : $g(0{,}34) \\approx 0{,}019 > 0$ et $g(0{,}35) \\approx -0{,}007 < 0$. Comme $g$ est strictement décroissante et $g(\\alpha) = 0$, on a $0{,}34 < \\alpha < 0{,}35$.\n\nLe milieu de cet encadrement est $0{,}345$, et $g(0{,}345) \\approx 0{,}006 > 0 = g(\\alpha)$. Si on avait $\\alpha \\leqslant 0{,}345$, la décroissance de $g$ donnerait $g(\\alpha) \\geqslant g(0{,}345) > 0$ : impossible, car $g(\\alpha) = 0$. Donc $0{,}345 < \\alpha$ : c'est entre $0{,}345$ et $0{,}35$ que $g$ change de signe.\n\nAinsi $0{,}345 < \\ell < 0{,}35$, et la valeur arrondie de $\\ell$ à $10^{-2}$ près est $0{,}35$. Les premiers termes le confirment : $u_3 \\approx 0{,}347\\,1$.",
+        "erreurFrequente": "Répondre $0{,}34$ en recopiant le cas croissant : « $g(0{,}345) > 0$, donc $\\alpha < 0{,}345$ ». Comme $g$ est décroissante, la conclusion s'inverse : $g(0{,}345) > 0$ et $g(0{,}35) < 0$ placent $\\alpha$ entre $0{,}345$ et $0{,}35$."
       }
     ]
   }
