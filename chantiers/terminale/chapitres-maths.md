@@ -122,6 +122,17 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
   sécante, exemples d'algorithme du programme) · ★★
 - Suite uₙ₊₁ = f(uₙ) avec f continue : image d'une suite convergente, valeur de la limite ·
   ★★ · « Déterminer la valeur de la limite » (venu du ch. 2)
+- **Cours écrit le 2026-10-13** (`content/terminale/maths/chapitres/continuite/`, domaine
+  `analyse`) : 4 notions, priorités mesurées (103 sujets depuis 2021) — fonction continue ★★
+  (0/103, relevée d'un cran : les deux notions incontournables en dépendent) ; théorème des
+  valeurs intermédiaires ★★★ (75/103) ; approcher une solution (dichotomie, Newton, sécante)
+  ★ (3/103) ; limite d'une suite uₙ₊₁ = f(uₙ) ★★★ (55/103, au lieu de ★★ estimé). Écarts
+  avec la proposition : l'encadrement à la calculatrice (balayage) rejoint la notion du
+  théorème (la ligne 04 dit « existence, unicité, encadrement ») ; les approfondissements
+  (lignes 08 à 10) sont des compléments. Le théorème sur un intervalle ouvert ou non borné,
+  avec les limites aux bornes, n'est pas écrit au programme mais tombe presque à chaque
+  sujet : présenté comme une extension admise. Interdits tenus : ni logarithme, ni dérivée
+  d'une composée, ni convexité, ni fonction réciproque.
 
 ### 5. Compléments sur la dérivation, convexité
 - Dérivée d'une composée x ↦ g(u(x)) (dont e^u, u^n, √u) · ★★★

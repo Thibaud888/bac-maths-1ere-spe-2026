@@ -657,6 +657,30 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     +∞ » puis « . Mais… », idée de la notion « croissances comparées » de Limites de
     fonctions, 390 px) : lier la ponctuation à la formule qui la précède (rendu KaTeX en ligne,
     `lib/typographie`).
+  - [x] Continuité et théorème des valeurs intermédiaires : le cours — 4 notions (priorités
+    mesurées sur 103 sujets : théorème des valeurs intermédiaires et limite d'une suite
+    uₙ₊₁ = f(uₙ) incontournables, 73 % et 53 % ; fonction continue fréquent, relevée d'un cran
+    car les deux autres en dépendent ; dichotomie, Newton et sécante plus rare, 3 %), 60 blocs
+    dont 10 exemples, 10 « vérifie », 3 programmes Python, 6 cartes de mémo, 4 figures ; le
+    théorème sur un intervalle ouvert présenté comme extension admise ; sans logarithme, ni
+    dérivée d'une composée, ni convexité. Relecteur NEEDS_REVISION au 1er tour (1 bloquant),
+    élève-testeur À clarifier (1 bloquant : la méthode de la sécante sautait une étape) ;
+    tout corrigé avec les 13 gênes, relu au 2e tour ciblé (PASS) ; couverture « cours » sans
+    écart. Coût : 27 $. PR : à venir.
+  - [ ] Continuité et théorème des valeurs intermédiaires : les exercices —
+    `/tle-chapitre maths continuite exercices`, dans une session neuve. Transposer avec
+    l'exponentielle, les polynômes et les quotients les sujets qui utilisent le logarithme
+    (chapitre 7, pas encore vu) ; les exercices peuvent noter l'arrondi par l'image du milieu
+    (blocs l-continuite-021 et -025).
+  - [ ] Polir quatre détails du cours de Continuité — non bloquants du relecteur au 2e tour :
+    figure de Newton (`l-continuite-037`), la tangente en x₁ est cachée sous la courbe alors
+    que le titre en annonce deux ; `l-continuite-026`, phrase de 31 mots (25 au plus) ;
+    `l-continuite-053`, deux étapes de suite commencent par « Or » ; `l-continuite-025`
+    (facultatif), écrire les images qui justifient 0,682 < α < 0,683.
+  - [ ] Une animation « escalier » pour voir une suite uₙ₊₁ = f(uₙ) aller vers le point où la
+    courbe coupe la droite y = x — souhait de l'auteur du cours de Continuité (notion
+    « limite d'une suite », figure fixe `suite-escalier.svg` en attendant) ; à faire quand les
+    figures animées existeront (rejoint l'item de Récurrence et suites ci-dessus).
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
