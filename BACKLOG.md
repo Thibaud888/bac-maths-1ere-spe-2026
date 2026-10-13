@@ -666,7 +666,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     dérivée d'une composée, ni convexité. Relecteur NEEDS_REVISION au 1er tour (1 bloquant),
     élève-testeur À clarifier (1 bloquant : la méthode de la sécante sautait une étape) ;
     tout corrigé avec les 13 gênes, relu au 2e tour ciblé (PASS) ; couverture « cours » sans
-    écart. Coût : 27 $. PR : à venir.
+    écart. Coût : 27 $. PR : #123.
   - [ ] Continuité et théorème des valeurs intermédiaires : les exercices —
     `/tle-chapitre maths continuite exercices`, dans une session neuve. Transposer avec
     l'exponentielle, les polynômes et les quotients les sujets qui utilisent le logarithme
