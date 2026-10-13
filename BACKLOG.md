@@ -675,7 +675,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     (méthode `l-continuite-061` « réciproque et contraposée », racine √(ax + b) continue,
     arrondi par le milieu pour une fonction décroissante), gênes et non bloquants corrigés,
     relu en 2 tours ciblés (PASS au 3e) ; couverture sans écart. Même PR que le cours, à la
-    demande de Thibaud. Coût : voir la PR. PR : #123.
+    demande de Thibaud. Coût : 48 $ (session entière : 75 $). PR : #123.
   - [ ] Polir six détails du cours de Continuité — non bloquants du relecteur :
     figure de Newton (`l-continuite-037`), la tangente en x₁ est cachée sous la courbe alors
     que le titre en annonce deux ; `l-continuite-026`, phrase de 31 mots (25 au plus) ;
