@@ -1,0 +1,139 @@
+[
+  {
+    "id": "m-derivation-convexite-etude-complete",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-etude-fonction",
+    "genre": "methode",
+    "titre": "Étudier une fonction de bout en bout",
+    "enonce": "- Limites aux bornes de l'intervalle : opérations, composée, croissances comparées, terme le plus fort.\n- Dérivée $f'(x)$, écrite sous forme factorisée.\n- Signe de $f'(x)$ : une exponentielle est $> 0$, un carré $\\geqslant 0$ ; tableau de signes du reste.\n- Tableau de variations : flèches, extremums calculés, limites aux bornes.\n- Exploitation : extremum, inégalité, nombre de solutions.",
+    "conditions": "Un extremum est une valeur de $f$ (ligne du bas du tableau), atteinte en une abscisse (ligne du haut).",
+    "exemple": "$f(x) = \\dfrac{e^x}{x}$ sur $]0\\,;\\,+\\infty[$ : $f'(x) = \\dfrac{(x - 1)e^x}{x^2}$ ; $f$ décroît sur $]0\\,;\\,1]$, croît sur $[1\\,;\\,+\\infty[$, de minimum $f(1) = e$ ; limite $+\\infty$ en $0$ et en $+\\infty$.",
+    "simplifie": {
+      "coeur": "limites aux bornes → $f'(x)$ factorisée → signe de $f'(x)$ → tableau de variations → réponse",
+      "moyenMemo": "Bornes, dérivée, signe, tableau, réponse.",
+      "motCle": "etude-complete"
+    }
+  },
+  {
+    "id": "m-derivation-convexite-derivee-seconde",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-derivee-seconde",
+    "genre": "definition",
+    "titre": "Dérivée seconde",
+    "enonce": "Si $f'$ est dérivable sur l'intervalle $I$, sa dérivée est la dérivée seconde de $f$ : $f'' = (f')'$.\n\nSi $f'' \\geqslant 0$ sur $I$, alors $f'$ est croissante sur $I$ ; si $f'' \\leqslant 0$ sur $I$, alors $f'$ est décroissante sur $I$.",
+    "conditions": "$f$ deux fois dérivable sur l'intervalle $I$. Le signe de $f''$ renseigne sur $f'$, pas directement sur $f$.",
+    "exemple": "$g(x) = x\\,e^{-x}$ : $g'(x) = (1 - x)e^{-x}$, puis $g''(x) = (x - 2)e^{-x}$.",
+    "simplifie": {
+      "coeur": "$f'' = (f')'$ ; signe de $f''$ → variations de $f'$",
+      "moyenMemo": "Chaque dérivée renseigne sur la fonction juste au-dessus.",
+      "motCle": "derivee-seconde"
+    }
+  },
+  {
+    "id": "m-derivation-convexite-convexe-cordes",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-convexe",
+    "genre": "definition",
+    "titre": "Fonction convexe, fonction concave",
+    "enonce": "$f$ est convexe sur l'intervalle $I$ si, pour tous points $A$ et $B$ de sa courbe d'abscisses dans $I$, la courbe est en dessous de la sécante $(AB)$ entre $A$ et $B$. Elle est concave si la courbe est au-dessus.",
+    "exemple": "La fonction carré est convexe sur $\\mathbb{R}$ ; la racine carrée est concave sur $]0\\,;\\,+\\infty[$.",
+    "simplifie": {
+      "coeur": "convexe : courbe sous ses cordes (en bol) ; concave : courbe au-dessus de ses cordes (en dôme)",
+      "moyenMemo": "Convexe comme un bol, concave comme un dôme.",
+      "motCle": "convexe-cordes",
+      "image": "Un bol et un dôme, chacun avec une corde tendue entre deux de ses points."
+    }
+  },
+  {
+    "id": "m-derivation-convexite-convexite-signe",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-convexe",
+    "genre": "propriete",
+    "titre": "Convexité et dérivée seconde",
+    "enonce": "Pour $f$ deux fois dérivable sur un intervalle $I$, ces affirmations sont équivalentes :\n\n- $f$ est convexe sur $I$ ;\n- la courbe est au-dessus de ses tangentes sur $I$ ;\n- $f'$ est croissante sur $I$ ;\n- $f''(x) \\geqslant 0$ pour tout $x$ de $I$.\n\nConcave : en dessous des tangentes, $f'$ décroissante, $f'' \\leqslant 0$.",
+    "conditions": "$f$ deux fois dérivable sur un intervalle ; si $f''$ change de signe, conclure intervalle par intervalle.",
+    "exemple": "$(e^x)'' = e^x > 0$ : l'exponentielle est convexe sur $\\mathbb{R}$. $g(x) = x\\,e^{-x}$ : $g''(x) = (x - 2)e^{-x}$, donc $g$ est concave sur $]-\\infty\\,;\\,2]$ et convexe sur $[2\\,;\\,+\\infty[$.",
+    "simplifie": {
+      "coeur": "$f'' \\geqslant 0$ sur $I$ $\\iff$ $f$ convexe sur $I$ ; $f'' \\leqslant 0$ sur $I$ $\\iff$ $f$ concave sur $I$",
+      "moyenMemo": "Dérivée seconde positive : la courbe sourit.",
+      "motCle": "signe-f-seconde"
+    }
+  },
+  {
+    "id": "m-derivation-convexite-point-inflexion",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-inflexion",
+    "genre": "propriete",
+    "titre": "Point d'inflexion",
+    "enonce": "Un point d'inflexion est un point où la courbe traverse sa tangente : la fonction y change de convexité.\n\nLe point $(a\\,;\\,f(a))$, avec $a$ qui n'est pas une borne, est un point d'inflexion de la courbe **si, et seulement si**, $f''$ s'annule en $a$ **en changeant de signe**. Les points d'inflexion se trouvent donc seulement là.",
+    "conditions": "$f''(a) = 0$ ne suffit pas : il faut un changement de signe ($x \\mapsto x^4$ n'a pas de point d'inflexion en $0$).",
+    "exemple": "$f(x) = x^3 - 3x^2 + 2$ : $f''(x) = 6(x - 1)$ change de signe en $1$, d'où le point d'inflexion $(1\\,;\\,0)$.",
+    "simplifie": {
+      "coeur": "$f''$ s'annule en $a$ en changeant de signe ⇔ point d'inflexion d'abscisse $a$",
+      "moyenMemo": "Zéro de $f''$ avec changement de signe : la courbe change de camp.",
+      "motCle": "inflexion",
+      "image": "Une courbe en S qui croise sa tangente là où le dôme devient bol."
+    }
+  },
+  {
+    "id": "m-derivation-convexite-lecture-graphique",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-inflexion",
+    "genre": "methode",
+    "titre": "Lire la convexité sur un graphique",
+    "enonce": "| Courbe tracée | $f$ convexe là où | point d'inflexion |\n|---|---|---|\n| de $f$ | elle est en bol, au-dessus de ses tangentes | elle traverse sa tangente |\n| de $f'$ | $f'$ est croissante | $f'$ change de sens de variation (jamais en une borne) |\n| de $f''$ | elle est au-dessus de l'axe des abscisses | elle traverse l'axe des abscisses |",
+    "conditions": "Repère d'abord quelle courbe est tracée : $f$, $f'$ ou $f''$.",
+    "exemple": "Courbe de $f'$ croissante sur $[-2\\,;\\,1]$ puis décroissante sur $[1\\,;\\,4]$ : $f$ est convexe sur $[-2\\,;\\,1]$, concave sur $[1\\,;\\,4]$, avec un point d'inflexion d'abscisse $1$.",
+    "simplifie": {
+      "coeur": "courbe de $f'$ : convexe où elle monte ; courbe de $f''$ : convexe où elle est au-dessus de l'axe",
+      "moyenMemo": "Quelle courbe ? Puis : sens pour $f'$, signe pour $f''$.",
+      "motCle": "lecture-graphique"
+    }
+  },
+  {
+    "id": "m-derivation-convexite-derivee-composee",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-composee",
+    "genre": "formule",
+    "titre": "Dérivée d'une fonction composée",
+    "enonce": "Si $u$ est dérivable sur l'intervalle $I$ et $v$ dérivable sur un intervalle qui contient toutes les valeurs $u(x)$, alors $v \\circ u$ est dérivable sur $I$ et :$$(v \\circ u)' = (v' \\circ u) \\times u', \\quad \\text{soit} \\quad \\big(v(u(x))\\big)' = v'\\big(u(x)\\big) \\times u'(x).$$",
+    "conditions": "$v \\circ u$ se lit « $v$ rond $u$ » : on applique $u$ d'abord, puis $v$.",
+    "exemple": "$\\left(e^{-x^2}\\right)' = -2x\\,e^{-x^2}$.",
+    "simplifie": {
+      "coeur": "$(v \\circ u)' = (v' \\circ u) \\times u'$",
+      "moyenMemo": "Dérive l'extérieur, garde l'intérieur, multiplie par la dérivée de l'intérieur.",
+      "motCle": "derivee-composee"
+    }
+  },
+  {
+    "id": "m-derivation-convexite-composees-usuelles",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-composee",
+    "genre": "formule",
+    "titre": "Dérivées de $e^u$, $u^n$ et $\\sqrt{u}$",
+    "enonce": "Pour $u$ dérivable sur un intervalle $I$ :\n\n- $(e^u)' = u'\\,e^u$ ;\n- $(u^n)' = n\\,u'\\,u^{n-1}$, pour $n$ entier, $n \\geqslant 1$ ;\n- $\\left(\\sqrt{u}\\right)' = \\dfrac{u'}{2\\sqrt{u}}$, là où $u(x) > 0$.",
+    "conditions": "Pour $\\sqrt{u}$ : $u(x) > 0$ sur $I$.",
+    "exemple": "$\\left(\\sqrt{x^2 + 1}\\right)' = \\dfrac{2x}{2\\sqrt{x^2 + 1}} = \\dfrac{x}{\\sqrt{x^2 + 1}}$ ; $\\left(\\left(x^2 - 2x\\right)^3\\right)' = 6(x - 1)\\left(x^2 - 2x\\right)^2$.",
+    "simplifie": {
+      "coeur": "$(e^u)' = u'e^u$ ; $(u^n)' = n\\,u'\\,u^{n-1}$ ; $\\left(\\sqrt{u}\\right)' = \\dfrac{u'}{2\\sqrt{u}}$",
+      "moyenMemo": "Toujours le facteur $u'$ en plus.",
+      "motCle": "composees-usuelles"
+    }
+  },
+  {
+    "id": "m-derivation-convexite-tangentes-inegalites",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-tangentes-inegalites",
+    "genre": "propriete",
+    "titre": "Convexité et tangentes : prouver une inégalité",
+    "enonce": "Si $f'' \\geqslant 0$ sur l'intervalle $I$ et $a \\in I$, alors, pour tout $x$ de $I$ : $f(x) \\geqslant f'(a)(x - a) + f(a)$ ; la courbe est au-dessus de sa tangente.\n\nSi $f'' \\leqslant 0$ sur $I$ : $f(x) \\leqslant f'(a)(x - a) + f(a)$.",
+    "conditions": "Seulement sur l'intervalle où $f''$ garde son signe ; $a$ et $x$ dans cet intervalle.",
+    "exemple": "$e^x \\geqslant x + 1$ pour tout réel $x$ (tangente en $0$) ; $\\sqrt{x} \\leqslant \\dfrac{x + 1}{2}$ pour tout $x > 0$ (tangente en $1$ ; $x = 0$ se vérifie à part).",
+    "simplifie": {
+      "coeur": "convexe ⇒ courbe au-dessus de ses tangentes ; concave ⇒ en dessous",
+      "moyenMemo": "Le bol repose sur ses tangentes.",
+      "motCle": "tangentes-inegalites",
+      "image": "La courbe de l'exponentielle posée sur la droite y = x + 1, qu'elle touche seulement au point (0 ; 1)."
+    }
+  }
+]

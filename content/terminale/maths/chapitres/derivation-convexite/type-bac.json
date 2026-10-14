@@ -1,0 +1,888 @@
+[
+  {
+    "id": "tb-derivation-convexite-001",
+    "chapitre": "derivation-convexite",
+    "notions": [
+      "n-derivation-convexite-inflexion",
+      "n-derivation-convexite-convexe",
+      "n-derivation-convexite-derivee-seconde",
+      "n-derivation-convexite-tangentes-inegalites",
+      "n-derivation-convexite-etude-fonction"
+    ],
+    "capacites": [
+      "bo-m-derivation-02",
+      "bo-m-derivation-03",
+      "bo-m-derivation-04",
+      "bo-m-derivation-06",
+      "bo-m-derivation-07",
+      "bo-m-derivation-09",
+      "bo-m-limites-fonctions-05",
+      "bo-m-limites-fonctions-06"
+    ],
+    "titre": "Une fonction exponentielle : courbe de la dérivée, convexité et inégalité de tangente",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2023-amerique-nord-j2",
+      "adaptation": "Exercice 1 : courbe de la dérivée $f'$ à lire (variations de $f$, intervalles où $f$ semble convexe), fonction $f(x) = \\left(x^2 - 5x + 6\\right)e^x$, limites en $+\\infty$ et en $-\\infty$, dérivée à montrer, sens de variation, tangente au point d'abscisse $0$, convexité et inégalité $f(x) \\leqslant x + 6$ sur $[-1\\,;\\,2]$ conservés ; dérivée seconde à démontrer au lieu d'être admise ; ajoutés : abscisses des points d'inflexion conjecturées sur la courbe de $f'$, interprétation graphique de la limite en $-\\infty$, coordonnées des points d'inflexion. Courbe redessinée pour le site, et comportement de $f'$ hors de la fenêtre tracée (strictement positive, croissante) précisé dans l'énoncé. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Le plan est muni d'un repère orthogonal. On considère une fonction $f$ définie et dérivable sur $\\mathbb{R}$ ; on note $f'$ sa fonction dérivée et $\\mathcal{C}$ la courbe représentative de $f$.\n\nLa figure ci-dessous donne la courbe représentative de la fonction dérivée $f'$ sur l'intervalle $[-7\\,;\\,2{,}7]$. Hors de cette fenêtre, $f'$ reste strictement positive et elle est croissante.\n\n**Partie A.** Dans cette partie, les résultats sont obtenus par lecture graphique de la courbe de $f'$ ; aucune justification n'est demandée.\n\n**Partie B.** On admet que la fonction $f$ de la partie A est définie sur $\\mathbb{R}$ par :\n\n$$f(x) = \\left(x^2 - 5x + 6\\right)e^x.$$\n\nOn admet que $f$ est deux fois dérivable sur $\\mathbb{R}$ ; on note $f''$ sa dérivée seconde.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/derivation-convexite/type-bac-courbe-derivee.svg",
+        "alt": "Courbe de la dérivée f′ dans un repère quadrillé, pour x allant de −7 à environ 2,7. Vers x = −7, elle est très proche de l'axe des abscisses, juste au-dessus. Elle monte lentement jusqu'à un maximum d'environ 1,8, atteint vers x = −1, puis redescend : elle passe par le point (0 ; 1), coupe l'axe des abscisses vers x = 0,4, descend jusqu'à un minimum d'environ −7,4, atteint vers x = 2, puis remonte très vite, recoupe l'axe des abscisses vers x = 2,6 et sort du cadre par le haut.",
+        "width": 406,
+        "height": 288
+      },
+      "caption": "Partie A : courbe représentative de la dérivée f′ (et non de f)."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Donner le sens de variation de la fonction $f$ sur $\\mathbb{R}$. On utilisera des valeurs approchées si besoin.",
+        "points": 0.5,
+        "revoir": "l-derivation-convexite-066",
+        "indices": [
+          "Sur la courbe de $f'$, c'est le **signe** de $f'$ qui donne les variations de $f$ : repère où la courbe est au-dessus de l'axe des abscisses, et où elle est en dessous.",
+          "Lis, à $0{,}1$ près, les abscisses des deux points où la courbe coupe l'axe des abscisses : ce sont les réels où $f$ change de sens de variation."
+        ],
+        "attenduCorrecteur": "- Lecture du signe de $f'$ : positive avant environ $0{,}4$, négative entre environ $0{,}4$ et $2{,}6$, positive après : 0,25 pt.\n- Conclusion : $f$ croissante sur $]-\\infty\\,;\\,0{,}4]$, décroissante sur $[0{,}4\\,;\\,2{,}6]$, croissante sur $[2{,}6\\,;\\,+\\infty[$ (bornes approchées acceptées à $0{,}1$ près) : 0,25 pt.",
+        "solution": "Les variations de $f$ se lisent sur le **signe** de $f'$, c'est-à-dire sur la position de la courbe par rapport à l'axe des abscisses. La courbe de $f'$ coupe l'axe des abscisses en deux points, d'abscisses environ $0{,}4$ et $2{,}6$ :\n\n- elle est au-dessus de l'axe avant $0{,}4$ (et, hors de la fenêtre, $f'$ reste positive) : $f'(x) > 0$ ;\n- elle est en dessous entre $0{,}4$ et $2{,}6$ : $f'(x) < 0$ ;\n- elle est au-dessus après $2{,}6$ : $f'(x) > 0$.\n\nDonc $f$ est croissante sur $]-\\infty\\,;\\,0{,}4]$, décroissante sur $[0{,}4\\,;\\,2{,}6]$ et croissante sur $[2{,}6\\,;\\,+\\infty[$, les bornes $0{,}4$ et $2{,}6$ étant des valeurs approchées.",
+        "erreurFrequente": "Lire les variations de la courbe tracée comme si c'était celle de $f$ : c'est la courbe de la dérivée, dont seul le signe renseigne sur les variations de $f$."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Donner les intervalles sur lesquels la fonction $f$ semble être convexe, ceux sur lesquels elle semble être concave, et les abscisses des points d'inflexion de $\\mathcal{C}$ que l'on peut conjecturer.",
+        "points": 0.5,
+        "revoir": "l-derivation-convexite-064",
+        "indices": [
+          "Cette fois, ce sont les **variations** de $f'$ qui comptent : $f$ est convexe là où $f'$ est croissante, concave là où $f'$ est décroissante.",
+          "Repère sur la figure les abscisses du maximum et du minimum de $f'$ : c'est là que $f'$ change de sens de variation."
+        ],
+        "attenduCorrecteur": "- Lecture des variations de $f'$ : croissante jusqu'à environ $-1$ (avant $-7$ aussi, d'après l'énoncé), décroissante entre environ $-1$ et $2$, croissante ensuite : 0,25 pt.\n- Conclusion : $f$ semble convexe sur $]-\\infty\\,;\\,-1]$ et sur $[2\\,;\\,+\\infty[$, concave sur $[-1\\,;\\,2]$ ; points d'inflexion conjecturés aux abscisses $-1$ et $2$ : 0,25 pt.",
+        "solution": "La convexité de $f$ se lit sur les **variations** de $f'$. Sur la figure, $f'$ est croissante de $-7$ jusqu'à son maximum, atteint vers $x = -1$, décroissante de $-1$ jusqu'à son minimum, atteint vers $x = 2$, puis de nouveau croissante. Hors de la fenêtre, l'énoncé indique que $f'$ est croissante : elle l'est donc sur tout $]-\\infty\\,;\\,-1]$ et sur tout $[2\\,;\\,+\\infty[$.\n\nDonc $f$ semble convexe sur $]-\\infty\\,;\\,-1]$ et sur $[2\\,;\\,+\\infty[$, et concave sur $[-1\\,;\\,2]$. Elle change de convexité en $-1$ et en $2$ : on conjecture deux points d'inflexion de $\\mathcal{C}$, d'abscisses $-1$ et $2$.",
+        "erreurFrequente": "Répondre avec le signe de $f'$, qui donne les variations de $f$ (question A.1), au lieu de ses variations, qui donnent la convexité de $f$."
+      },
+      {
+        "id": "q3",
+        "label": "B.1.",
+        "enonce": "Limites de la fonction $f$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Déterminer la limite de la fonction $f$ en $+\\infty$.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-028",
+            "indices": [
+              "$f(x)$ est le produit de $x^2 - 5x + 6$ par $e^x$ : cherche la limite de chaque facteur. Pour le polynôme, la forme « $+\\infty - \\infty$ » se lève en factorisant par $x^2$.",
+              "Écris $x^2 - 5x + 6 = x^2\\left(1 - \\dfrac{5}{x} + \\dfrac{6}{x^2}\\right)$ pour $x \\neq 0$, et regarde ce que devient la parenthèse."
+            ],
+            "attenduCorrecteur": "- Limite du polynôme : $x^2 - 5x + 6 = x^2\\left(1 - \\dfrac{5}{x} + \\dfrac{6}{x^2}\\right)$ tend vers $+\\infty$, forme indéterminée levée : 0,25 pt.\n- $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$ et, par produit, $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$ : 0,25 pt.",
+            "solution": "Pour $x \\neq 0$, $x^2 - 5x + 6 = x^2\\left(1 - \\dfrac{5}{x} + \\dfrac{6}{x^2}\\right)$. Quand $x$ tend vers $+\\infty$, $\\dfrac{5}{x}$ et $\\dfrac{6}{x^2}$ tendent vers $0$, donc la parenthèse tend vers $1$, et $x^2$ tend vers $+\\infty$ : par produit, $x^2 - 5x + 6$ tend vers $+\\infty$.\n\nDe plus, $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$. Par produit :\n\n$$\\lim_{x \\to +\\infty} f(x) = +\\infty.$$"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Déterminer la limite de la fonction $f$ en $-\\infty$. Interpréter graphiquement ce résultat.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-048",
+            "indices": [
+              "En $-\\infty$, le produit $\\left(x^2 - 5x + 6\\right) \\times e^x$ est une forme indéterminée « $\\infty \\times 0$ ». Développe $f(x)$ pour faire apparaître des termes que les croissances comparées savent traiter.",
+              "Écris $f(x) = x^2e^x - 5xe^x + 6e^x$, puis cherche la limite de chacun des trois termes en $-\\infty$."
+            ],
+            "attenduCorrecteur": "- Forme indéterminée repérée et développement $f(x) = x^2e^x - 5xe^x + 6e^x$ : 0,25 pt.\n- Croissances comparées citées ($x^2e^x$ et $xe^x$ tendent vers $0$), $e^x$ tend vers $0$, d'où $\\lim\\limits_{x \\to -\\infty} f(x) = 0$ ; asymptote horizontale d'équation $y = 0$ en $-\\infty$ : 0,25 pt.",
+            "solution": "Quand $x$ tend vers $-\\infty$, $x^2 - 5x + 6$ tend vers $+\\infty$ et $e^x$ tend vers $0$ : c'est une forme indéterminée « $\\infty \\times 0$ ». On développe :\n\n$$f(x) = x^2e^x - 5xe^x + 6e^x.$$\n\nPar croissances comparées, $\\lim\\limits_{x \\to -\\infty} x^2e^x = 0$ et $\\lim\\limits_{x \\to -\\infty} xe^x = 0$ ; de plus, $\\lim\\limits_{x \\to -\\infty} e^x = 0$. Par somme, $\\lim\\limits_{x \\to -\\infty} f(x) = 0 - 5 \\times 0 + 6 \\times 0 = 0$.\n\nInterprétation graphique : la droite d'équation $y = 0$, c'est-à-dire l'axe des abscisses, est asymptote horizontale à $\\mathcal{C}$ en $-\\infty$.",
+            "erreurFrequente": "Conclure « $+\\infty \\times 0 = 0$ » sans argument : c'est une forme indéterminée, que les croissances comparées permettent de lever."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "B.2.",
+        "enonce": "Montrer que, pour tout réel $x$, on a $f'(x) = \\left(x^2 - 3x + 1\\right)e^x$.",
+        "points": 0.5,
+        "revoir": "l-derivation-convexite-002",
+        "indices": [
+          "$f$ est un produit $uv$, avec $u(x) = x^2 - 5x + 6$ et $v(x) = e^x$ : utilise $(uv)' = u'v + uv'$.",
+          "Calcule $u'(x)$ et $v'(x)$, remplace-les dans la formule, puis factorise par $e^x$ et regroupe les termes de même degré."
+        ],
+        "attenduCorrecteur": "- Formule du produit appliquée avec $u'(x) = 2x - 5$ et $v'(x) = e^x$ : 0,25 pt.\n- Factorisation par $e^x$ et réduction : $\\left(2x - 5 + x^2 - 5x + 6\\right)e^x = \\left(x^2 - 3x + 1\\right)e^x$ : 0,25 pt.",
+        "solution": "On pose $u(x) = x^2 - 5x + 6$ et $v(x) = e^x$, dérivables sur $\\mathbb{R}$, avec $u'(x) = 2x - 5$ et $v'(x) = e^x$. D'après $(uv)' = u'v + uv'$, pour tout réel $x$ :\n\n$$f'(x) = (2x - 5)e^x + \\left(x^2 - 5x + 6\\right)e^x = \\left(x^2 - 3x + 1\\right)e^x.$$"
+      },
+      {
+        "id": "q5",
+        "label": "B.3.",
+        "enonce": "En déduire le sens de variation de la fonction $f$ sur $\\mathbb{R}$.",
+        "points": 0.75,
+        "revoir": "l-derivation-convexite-014",
+        "indices": [
+          "Pour tout réel $x$, $e^x > 0$ : le signe de $f'(x)$ est celui du trinôme $x^2 - 3x + 1$. Calcule son discriminant.",
+          "Calcule les deux racines du trinôme, puis rappelle-toi qu'un trinôme a le signe de son coefficient de $x^2$ à l'extérieur de ses racines."
+        ],
+        "attenduCorrecteur": "- Signe de $f'(x)$ : celui de $x^2 - 3x + 1$, car $e^x > 0$ : 0,25 pt.\n- Discriminant $\\Delta = 5$ et racines $x_1 = \\dfrac{3 - \\sqrt{5}}{2}$ et $x_2 = \\dfrac{3 + \\sqrt{5}}{2}$ : 0,25 pt.\n- Conclusion : $f$ strictement croissante sur $]-\\infty\\,;\\,x_1]$, strictement décroissante sur $[x_1\\,;\\,x_2]$, strictement croissante sur $[x_2\\,;\\,+\\infty[$ : 0,25 pt.",
+        "solution": "Pour tout réel $x$, $e^x > 0$ : $f'(x)$ a le signe de $x^2 - 3x + 1$. Son discriminant vaut $\\Delta = (-3)^2 - 4 \\times 1 \\times 1 = 5 > 0$ ; il a deux racines :\n\n$$x_1 = \\dfrac{3 - \\sqrt{5}}{2} \\approx 0{,}38 \\qquad \\text{et} \\qquad x_2 = \\dfrac{3 + \\sqrt{5}}{2} \\approx 2{,}62.$$\n\nLe coefficient de $x^2$ vaut $1 > 0$ : le trinôme est positif à l'extérieur des racines, négatif entre elles.\n\n| $x$ | $-\\infty$ | | $x_1$ | | $x_2$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n| variations de $f$ | $0$ | $\\nearrow$ | $f(x_1)$ | $\\searrow$ | $f(x_2)$ | $\\nearrow$ | $+\\infty$ |\n\nDonc $f$ est strictement croissante sur $]-\\infty\\,;\\,x_1]$, strictement décroissante sur $[x_1\\,;\\,x_2]$ et strictement croissante sur $[x_2\\,;\\,+\\infty[$, ce qui confirme la lecture de la question A.1."
+      },
+      {
+        "id": "q6",
+        "label": "B.4.",
+        "enonce": "Déterminer l'équation réduite de la tangente $(T)$ à la courbe $\\mathcal{C}$ au point d'abscisse $0$.",
+        "points": 0.5,
+        "revoir": "l-derivation-convexite-044",
+        "indices": [
+          "Équation de la tangente au point d'abscisse $a$ : $y = f'(a)(x - a) + f(a)$, ici avec $a = 0$.",
+          "Calcule $f(0)$ avec l'expression de $f$, et $f'(0)$ avec celle de la question B.2."
+        ],
+        "attenduCorrecteur": "- Calculs : $f(0) = 6$ et $f'(0) = 1$ : 0,25 pt.\n- Équation : $y = 1 \\times (x - 0) + 6$, soit $(T) : y = x + 6$ : 0,25 pt.",
+        "solution": "La tangente au point d'abscisse $0$ a pour équation $y = f'(0)(x - 0) + f(0)$. Or $f(0) = (0 - 0 + 6)e^0 = 6$ et $f'(0) = (0 - 0 + 1)e^0 = 1$. Donc :\n\n$$(T) : y = x + 6.$$"
+      },
+      {
+        "id": "q7",
+        "label": "B.5.",
+        "enonce": "Dérivée seconde, convexité et inégalité.",
+        "points": 2.25,
+        "sousQuestions": [
+          {
+            "id": "q7a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout réel $x$, $f''(x) = (x + 1)(x - 2)e^x$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-023",
+            "indices": [
+              "$f''$ est la dérivée de $f'(x) = \\left(x^2 - 3x + 1\\right)e^x$ : c'est encore un produit, à dériver comme à la question B.2.",
+              "Après avoir factorisé par $e^x$, développe le produit $(x + 1)(x - 2)$ et compare-le au trinôme obtenu."
+            ],
+            "attenduCorrecteur": "- Dérivation du produit : $f''(x) = (2x - 3)e^x + \\left(x^2 - 3x + 1\\right)e^x = \\left(x^2 - x - 2\\right)e^x$ : 0,25 pt.\n- Factorisation justifiée : $(x + 1)(x - 2) = x^2 - x - 2$ : 0,25 pt.",
+            "solution": "$f'$ est le produit de $x \\mapsto x^2 - 3x + 1$, de dérivée $x \\mapsto 2x - 3$, par $x \\mapsto e^x$. Pour tout réel $x$ :\n\n$$f''(x) = (2x - 3)e^x + \\left(x^2 - 3x + 1\\right)e^x = \\left(x^2 - x - 2\\right)e^x.$$\n\nOr $(x + 1)(x - 2) = x^2 - 2x + x - 2 = x^2 - x - 2$. Donc $f''(x) = (x + 1)(x - 2)e^x$."
+          },
+          {
+            "id": "q7b",
+            "label": "b)",
+            "enonce": "Étudier la convexité de la fonction $f$ sur $\\mathbb{R}$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-039",
+            "indices": [
+              "Le signe de $f''(x)$ donne la convexité. Écarte le facteur $e^x$, toujours strictement positif.",
+              "Fais un tableau de signes de $(x + 1)(x - 2)$ : un produit de deux facteurs affines, qui s'annulent en $-1$ et en $2$."
+            ],
+            "attenduCorrecteur": "- Signe de $f''(x)$ : celui de $(x + 1)(x - 2)$, car $e^x > 0$ ; positif sur $]-\\infty\\,;\\,-1]$ et sur $[2\\,;\\,+\\infty[$, négatif sur $[-1\\,;\\,2]$ : 0,25 pt.\n- Conclusion rédigée : $f$ convexe sur $]-\\infty\\,;\\,-1]$ et sur $[2\\,;\\,+\\infty[$, concave sur $[-1\\,;\\,2]$ : 0,25 pt.",
+            "solution": "Pour tout réel $x$, $e^x > 0$ : $f''(x)$ a le signe de $(x + 1)(x - 2)$.\n\n| $x$ | $-\\infty$ | | $-1$ | | $2$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|\n| $x + 1$ | | $-$ | $0$ | $+$ | | $+$ | |\n| $x - 2$ | | $-$ | | $-$ | $0$ | $+$ | |\n| signe de $f''(x)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n\n$f''(x) \\geqslant 0$ sur $]-\\infty\\,;\\,-1]$ et sur $[2\\,;\\,+\\infty[$ : $f$ est convexe sur chacun de ces intervalles. $f''(x) \\leqslant 0$ sur $[-1\\,;\\,2]$ : $f$ est concave sur $[-1\\,;\\,2]$. Cela confirme la conjecture de la question A.2.",
+            "erreurFrequente": "Écrire « $f$ est convexe sur $]-\\infty\\,;\\,-1] \\cup [2\\,;\\,+\\infty[$ » : la convexité se définit sur un intervalle, on conclut intervalle par intervalle."
+          },
+          {
+            "id": "q7c",
+            "label": "c)",
+            "enonce": "En déduire que la courbe $\\mathcal{C}$ admet deux points d'inflexion, dont on donnera les coordonnées exactes.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-061",
+            "indices": [
+              "Un point d'inflexion apparaît là où $f''$ s'annule **en changeant de signe** : regarde la dernière ligne de ton tableau de signes.",
+              "Calcule ensuite l'ordonnée de chacun de ces points avec l'expression de $f(x)$, sans arrondir."
+            ],
+            "attenduCorrecteur": "- $f''$ s'annule en changeant de signe en $-1$ et en $2$, d'où deux points d'inflexion : 0,25 pt.\n- Coordonnées : $\\left(-1\\,;\\,12e^{-1}\\right)$ et $(2\\,;\\,0)$ : 0,25 pt.",
+            "solution": "D'après le tableau de la question b, $f''$ s'annule en $-1$ en changeant de signe (positive avant, négative après), et en $2$ en changeant de signe (négative avant, positive après). La courbe $\\mathcal{C}$ admet donc deux points d'inflexion, d'abscisses $-1$ et $2$.\n\nOrdonnées : $f(-1) = \\left((-1)^2 - 5 \\times (-1) + 6\\right)e^{-1} = 12e^{-1}$ et $f(2) = \\left(2^2 - 5 \\times 2 + 6\\right)e^2 = 0 \\times e^2 = 0$.\n\nLes points d'inflexion de $\\mathcal{C}$ sont $\\left(-1\\,;\\,12e^{-1}\\right)$ et $(2\\,;\\,0)$."
+          },
+          {
+            "id": "q7d",
+            "label": "d)",
+            "enonce": "Montrer que, pour tout réel $x$ appartenant à l'intervalle $[-1\\,;\\,2]$, on a $f(x) \\leqslant x + 6$.",
+            "points": 0.75,
+            "revoir": "l-derivation-convexite-050",
+            "indices": [
+              "Reconnais la droite d'équation $y = x + 6$ : elle a déjà été rencontrée dans cet exercice. Regarde ensuite la convexité de $f$ sur $[-1\\,;\\,2]$.",
+              "Sur un intervalle où $f$ est concave, la courbe est en dessous de chacune de ses tangentes en des points de cet intervalle : vérifie que le point de contact appartient bien à $[-1\\,;\\,2]$."
+            ],
+            "attenduCorrecteur": "- La droite d'équation $y = x + 6$ est la tangente $(T)$ au point d'abscisse $0$ (question B.4), et $0 \\in [-1\\,;\\,2]$ : 0,25 pt.\n- $f$ est concave sur $[-1\\,;\\,2]$ (question B.5.b), donc $\\mathcal{C}$ est en dessous de ses tangentes en des points d'abscisses dans cet intervalle : 0,25 pt.\n- Conclusion, avec l'intervalle précisé : pour tout $x \\in [-1\\,;\\,2]$, $f(x) \\leqslant x + 6$ : 0,25 pt.",
+            "solution": "D'après la question B.4, la droite d'équation $y = x + 6$ est la tangente $(T)$ à $\\mathcal{C}$ au point d'abscisse $0$, et $0$ appartient à $[-1\\,;\\,2]$.\n\nD'après la question B.5.b, $f''(x) \\leqslant 0$ pour tout $x$ de l'intervalle $[-1\\,;\\,2]$ : $f$ est concave sur cet intervalle. Sur un intervalle où $f$ est concave, sa courbe est en dessous de chacune de ses tangentes en des points d'abscisses dans cet intervalle ; c'est le cas de $(T)$.\n\nDonc, pour tout réel $x$ de $[-1\\,;\\,2]$, $f(x) \\leqslant x + 6$.",
+            "erreurFrequente": "Étendre l'inégalité à tout $\\mathbb{R}$ : hors de $[-1\\,;\\,2]$, $f$ n'est plus concave et la courbe peut passer au-dessus de $(T)$. Par exemple, $f(4) = 2e^4$ dépasse $4 + 6 = 10$, car $e > 2$ donne $e^4 > 16$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-derivation-convexite-002",
+    "chapitre": "derivation-convexite",
+    "notions": [
+      "n-derivation-convexite-tangentes-inegalites",
+      "n-derivation-convexite-etude-fonction",
+      "n-derivation-convexite-derivee-seconde",
+      "n-derivation-convexite-convexe"
+    ],
+    "capacites": [
+      "bo-m-derivation-02",
+      "bo-m-derivation-03",
+      "bo-m-derivation-06",
+      "bo-m-derivation-07",
+      "bo-m-limites-fonctions-01",
+      "bo-m-limites-fonctions-04",
+      "bo-m-limites-fonctions-06",
+      "bo-m-continuite-03",
+      "bo-m-continuite-04"
+    ],
+    "titre": "Une fonction exponentielle : asymptotes, concavité et inégalité de tangente",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2024-etrangers-j2",
+      "adaptation": "Exercice 2 : fonction $f(x) = \\dfrac{e^x}{x - 1}$ sur $]-\\infty\\,;\\,1[$, limite en $1$ et interprétation graphique, limite en $-\\infty$, dérivée à montrer, tableau de variations, convexité, tangente au point d'abscisse $0$, inégalité $e^x \\geqslant (-2x - 1)(x - 1)$, unique solution de $f(x) = -2$ et encadrement d'amplitude $10^{-2}$ à la calculatrice conservés ; dérivée seconde à démontrer au lieu d'être admise ; interprétation graphique de la limite en $-\\infty$ ajoutée. Solution écrite pour le site."
+    },
+    "preambule": "On considère la fonction $f$ définie sur l'intervalle $]-\\infty\\,;\\,1[$ par :\n\n$$f(x) = \\dfrac{e^x}{x - 1}.$$\n\nOn admet que $f$ est deux fois dérivable sur $]-\\infty\\,;\\,1[$ ; on note $f'$ sa dérivée, $f''$ sa dérivée seconde et $\\mathcal{C}$ sa courbe représentative dans un repère.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Limite de $f$ en $1$.",
+        "points": 0.75,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Déterminer la limite de la fonction $f$ en $1$.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-034",
+            "indices": [
+              "$f$ n'est définie qu'à gauche de $1$ : cherche la limite quand $x$ tend vers $1$ avec $x < 1$. Étudie séparément le numérateur et le dénominateur.",
+              "Quand $x$ tend vers $1$ avec $x < 1$, quel est le signe de $x - 1$ ? C'est lui qui décide du signe de la limite du quotient."
+            ],
+            "attenduCorrecteur": "- $\\lim\\limits_{x \\to 1} e^x = e$, et $x - 1$ tend vers $0$ en restant strictement négatif : 0,25 pt.\n- Par quotient, $\\lim\\limits_{\\substack{x \\to 1 \\\\ x < 1}} f(x) = -\\infty$ : 0,25 pt.",
+            "solution": "La fonction $f$ est définie sur $]-\\infty\\,;\\,1[$ : on cherche la limite quand $x$ tend vers $1$ avec $x < 1$. Le numérateur $e^x$ tend vers $e^1 = e > 0$. Le dénominateur $x - 1$ tend vers $0$ en restant strictement négatif, car $x < 1$. Par quotient :\n\n$$\\lim_{\\substack{x \\to 1 \\\\ x < 1}} f(x) = -\\infty.$$",
+            "erreurFrequente": "Conclure $+\\infty$ en oubliant le signe du dénominateur : pour $x < 1$, $x - 1 < 0$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "En déduire une interprétation graphique.",
+            "points": 0.25,
+            "revoir": "l-limites-fonctions-008",
+            "indices": [
+              "Une limite infinie en un réel $a$ donne une asymptote : verticale ou horizontale ? Quelle est son équation ?"
+            ],
+            "attenduCorrecteur": "- La droite d'équation $x = 1$ est asymptote verticale à $\\mathcal{C}$ : 0,25 pt.",
+            "solution": "La limite de $f$ en $1$ est infinie : la droite d'équation $x = 1$ est asymptote verticale à la courbe $\\mathcal{C}$."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer la limite de la fonction $f$ en $-\\infty$. Interpréter graphiquement ce résultat.",
+        "points": 0.5,
+        "revoir": "l-limites-fonctions-019",
+        "indices": [
+          "Cherche séparément la limite du numérateur et celle du dénominateur en $-\\infty$ : ici, il n'y a pas de forme indéterminée."
+        ],
+        "attenduCorrecteur": "- $\\lim\\limits_{x \\to -\\infty} e^x = 0$ et $\\lim\\limits_{x \\to -\\infty} (x - 1) = -\\infty$, donc par quotient $\\lim\\limits_{x \\to -\\infty} f(x) = 0$ : 0,25 pt.\n- Asymptote horizontale d'équation $y = 0$ en $-\\infty$ : 0,25 pt.",
+        "solution": "Quand $x$ tend vers $-\\infty$, $e^x$ tend vers $0$ et $x - 1$ tend vers $-\\infty$. Par quotient, « $\\dfrac{0}{\\infty}$ » n'étant pas une forme indéterminée :\n\n$$\\lim_{x \\to -\\infty} f(x) = 0.$$\n\nLa droite d'équation $y = 0$, l'axe des abscisses, est donc asymptote horizontale à $\\mathcal{C}$ en $-\\infty$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dérivée et variations.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout réel $x$ de l'intervalle $]-\\infty\\,;\\,1[$, on a $f'(x) = \\dfrac{(x - 2)e^x}{(x - 1)^2}$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-002",
+            "indices": [
+              "$f$ est un quotient $\\dfrac{u}{v}$ avec $u(x) = e^x$ et $v(x) = x - 1$, qui ne s'annule pas sur $]-\\infty\\,;\\,1[$ : utilise $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$.",
+              "Remplace $u'(x)$ et $v'(x)$, puis factorise le numérateur par $e^x$."
+            ],
+            "attenduCorrecteur": "- Formule du quotient avec $u'(x) = e^x$ et $v'(x) = 1$, $v$ ne s'annulant pas sur $]-\\infty\\,;\\,1[$ : 0,25 pt.\n- Calcul : $f'(x) = \\dfrac{e^x(x - 1) - e^x}{(x - 1)^2} = \\dfrac{(x - 2)e^x}{(x - 1)^2}$ : 0,25 pt.",
+            "solution": "On pose $u(x) = e^x$ et $v(x) = x - 1$, qui ne s'annule pas sur $]-\\infty\\,;\\,1[$ ; $u'(x) = e^x$ et $v'(x) = 1$. D'après $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$ :\n\n$$f'(x) = \\dfrac{e^x(x - 1) - e^x \\times 1}{(x - 1)^2} = \\dfrac{e^x(x - 1 - 1)}{(x - 1)^2} = \\dfrac{(x - 2)e^x}{(x - 1)^2}.$$"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Dresser, en justifiant, le tableau de variations de la fonction $f$ sur l'intervalle $]-\\infty\\,;\\,1[$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-014",
+            "indices": [
+              "Étudie le signe de chaque facteur de $f'(x)$ pour $x < 1$ : $e^x$, $(x - 1)^2$ et $x - 2$.",
+              "Complète le tableau avec les limites des questions 1 et 2 aux deux bornes de l'intervalle."
+            ],
+            "attenduCorrecteur": "- Signe : pour $x < 1$, $x - 2 < 0$, $e^x > 0$ et $(x - 1)^2 > 0$, donc $f'(x) < 0$ : 0,25 pt.\n- Tableau : $f$ strictement décroissante sur $]-\\infty\\,;\\,1[$, de la limite $0$ en $-\\infty$ à la limite $-\\infty$ en $1$ : 0,25 pt.",
+            "solution": "Pour tout $x < 1$ : $e^x > 0$, $(x - 1)^2 > 0$ et $x - 2 < -1 < 0$. Donc $f'(x) < 0$ : $f$ est strictement décroissante sur $]-\\infty\\,;\\,1[$.\n\n| $x$ | $-\\infty$ | | $1$ |\n|---|---|---|---|\n| signe de $f'(x)$ | | $-$ | |\n| variations de $f$ | $0$ | $\\searrow$ | $-\\infty$ |"
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Convexité et inégalité.",
+        "points": 2.75,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout réel $x$ de l'intervalle $]-\\infty\\,;\\,1[$, $f''(x) = \\dfrac{\\left(x^2 - 4x + 5\\right)e^x}{(x - 1)^3}$.",
+            "points": 0.75,
+            "revoir": "l-derivation-convexite-023",
+            "indices": [
+              "Dérive $f'(x) = \\dfrac{(x - 2)e^x}{(x - 1)^2}$ comme un quotient : son numérateur est lui-même un produit, et la dérivée de $(x - 1)^2$ est $2(x - 1)$.",
+              "Au numérateur, mets $(x - 1)e^x$ en facteur, puis simplifie la fraction par $x - 1$, qui n'est pas nul."
+            ],
+            "attenduCorrecteur": "- Dérivées utilisées : $\\left((x - 2)e^x\\right)' = e^x + (x - 2)e^x = (x - 1)e^x$ et $\\left((x - 1)^2\\right)' = 2(x - 1)$ : 0,25 pt.\n- Formule du quotient correctement appliquée : 0,25 pt.\n- Factorisation par $(x - 1)e^x$, simplification et réduction $(x - 1)^2 - 2(x - 2) = x^2 - 4x + 5$ : 0,25 pt.",
+            "solution": "On pose $u(x) = (x - 2)e^x$ et $v(x) = (x - 1)^2$, qui ne s'annule pas sur $]-\\infty\\,;\\,1[$. Par la formule du produit, $u'(x) = 1 \\times e^x + (x - 2)e^x = (x - 1)e^x$ ; et $v'(x) = 2(x - 1)$. Donc :\n\n$$f''(x) = \\dfrac{(x - 1)e^x \\times (x - 1)^2 - (x - 2)e^x \\times 2(x - 1)}{(x - 1)^4}.$$\n\nOn met $(x - 1)e^x$ en facteur au numérateur, puis on simplifie par $x - 1 \\neq 0$ :\n\n$$f''(x) = \\dfrac{(x - 1)e^x\\left[(x - 1)^2 - 2(x - 2)\\right]}{(x - 1)^4} = \\dfrac{e^x\\left[(x - 1)^2 - 2(x - 2)\\right]}{(x - 1)^3}.$$\n\nOr $(x - 1)^2 - 2(x - 2) = x^2 - 2x + 1 - 2x + 4 = x^2 - 4x + 5$. Donc $f''(x) = \\dfrac{\\left(x^2 - 4x + 5\\right)e^x}{(x - 1)^3}$."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Étudier la convexité de la fonction $f$ sur l'intervalle $]-\\infty\\,;\\,1[$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-039",
+            "indices": [
+              "Étudie le signe de chacun des trois facteurs de $f''(x)$ pour $x < 1$. Pour le trinôme $x^2 - 4x + 5$, calcule son discriminant.",
+              "Le cube d'un nombre a le même signe que ce nombre : quel est le signe de $(x - 1)^3$ quand $x < 1$ ?"
+            ],
+            "attenduCorrecteur": "- $x^2 - 4x + 5 > 0$ (discriminant $-4 < 0$, coefficient de $x^2$ positif), $e^x > 0$ et $(x - 1)^3 < 0$ pour $x < 1$ : 0,25 pt.\n- $f''(x) < 0$ sur $]-\\infty\\,;\\,1[$, donc $f$ est concave sur $]-\\infty\\,;\\,1[$ : 0,25 pt.",
+            "solution": "Le trinôme $x^2 - 4x + 5$ a pour discriminant $\\Delta = (-4)^2 - 4 \\times 1 \\times 5 = -4 < 0$ : il ne s'annule pas et garde le signe de son coefficient $1$, donc $x^2 - 4x + 5 > 0$ pour tout réel $x$. De plus, $e^x > 0$. Enfin, pour $x < 1$, $x - 1 < 0$, donc $(x - 1)^3 < 0$.\n\nAinsi $f''(x) < 0$ pour tout $x$ de $]-\\infty\\,;\\,1[$ : la fonction $f$ est concave sur $]-\\infty\\,;\\,1[$."
+          },
+          {
+            "id": "q4c",
+            "label": "c)",
+            "enonce": "Déterminer l'équation réduite de la tangente $T$ à la courbe $\\mathcal{C}$ au point d'abscisse $0$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-044",
+            "indices": [
+              "Utilise $y = f'(a)(x - a) + f(a)$ avec $a = 0$ : calcule $f(0)$ et $f'(0)$ à partir de l'expression de l'énoncé et de celle de la question 3.a."
+            ],
+            "attenduCorrecteur": "- $f(0) = \\dfrac{e^0}{0 - 1} = -1$ et $f'(0) = \\dfrac{(0 - 2)e^0}{(0 - 1)^2} = -2$ : 0,25 pt.\n- $T : y = -2x - 1$ : 0,25 pt.",
+            "solution": "$f(0) = \\dfrac{e^0}{0 - 1} = -1$ et $f'(0) = \\dfrac{(0 - 2)e^0}{(0 - 1)^2} = -2$. La tangente au point d'abscisse $0$ a pour équation $y = f'(0)(x - 0) + f(0)$, soit :\n\n$$T : y = -2x - 1.$$"
+          },
+          {
+            "id": "q4d",
+            "label": "d)",
+            "enonce": "En déduire que, pour tout réel $x$ de l'intervalle $]-\\infty\\,;\\,1[$, on a : $e^x \\geqslant (-2x - 1)(x - 1)$.",
+            "points": 1,
+            "revoir": "l-derivation-convexite-050",
+            "indices": [
+              "Commence par une inégalité entre $f(x)$ et $-2x - 1$ : la concavité de $f$ (question b) dit de quel côté de la tangente $T$ se trouve la courbe.",
+              "Pour passer de $f(x) = \\dfrac{e^x}{x - 1}$ à $e^x$, multiplie les deux membres par $x - 1$. Quel est son signe sur $]-\\infty\\,;\\,1[$, et qu'en déduis-tu pour le sens de l'inégalité ?"
+            ],
+            "attenduCorrecteur": "- $f$ concave sur $]-\\infty\\,;\\,1[$, donc $\\mathcal{C}$ est en dessous de sa tangente $T$, dont le point de contact d'abscisse $0$ est dans l'intervalle : $f(x) \\leqslant -2x - 1$ pour tout $x < 1$ : 0,5 pt.\n- Multiplication par $x - 1 < 0$, qui change le sens de l'inégalité, justifiée : 0,25 pt.\n- Conclusion : $e^x \\geqslant (-2x - 1)(x - 1)$ pour tout $x$ de $]-\\infty\\,;\\,1[$ : 0,25 pt.",
+            "solution": "D'après la question b, $f$ est concave sur l'intervalle $]-\\infty\\,;\\,1[$ ; sa courbe est donc en dessous de chacune de ses tangentes en des points de cet intervalle, en particulier de $T$, tangente au point d'abscisse $0$. Ainsi, pour tout $x < 1$ :\n\n$$\\dfrac{e^x}{x - 1} \\leqslant -2x - 1.$$\n\nPour $x < 1$, on a $x - 1 < 0$ : en multipliant les deux membres par $x - 1$, on change le sens de l'inégalité :\n\n$$e^x \\geqslant (-2x - 1)(x - 1).$$\n\nCette inégalité est donc vraie pour tout réel $x$ de $]-\\infty\\,;\\,1[$.",
+            "erreurFrequente": "Garder le sens « $\\leqslant$ » après avoir multiplié par $x - 1$ : ce nombre est strictement négatif sur l'intervalle, le sens de l'inégalité change."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Une équation.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Justifier que l'équation $f(x) = -2$ admet une unique solution $\\alpha$ sur l'intervalle $]-\\infty\\,;\\,1[$.",
+            "points": 0.75,
+            "revoir": "l-continuite-026",
+            "indices": [
+              "Le théorème des valeurs intermédiaires s'applique ici sous sa forme étendue : intervalle ouvert, limites aux bornes au lieu des images. Relis le tableau de la question 3.b.",
+              "Vérifie les hypothèses une à une : continuité, stricte monotonie, puis position de $-2$ par rapport aux deux limites."
+            ],
+            "attenduCorrecteur": "- $f$ dérivable donc continue, et strictement décroissante sur $]-\\infty\\,;\\,1[$ : 0,25 pt.\n- Limites aux bornes : $0$ en $-\\infty$, $-\\infty$ en $1$ ; $-2$ est strictement compris entre elles : 0,25 pt.\n- Théorème des valeurs intermédiaires (forme étendue) cité et conclusion : 0,25 pt.",
+            "solution": "Sur $]-\\infty\\,;\\,1[$, $f$ est dérivable, donc continue, et strictement décroissante (question 3.b). Ses limites aux bornes sont $\\lim\\limits_{x \\to -\\infty} f(x) = 0$ et $\\lim\\limits_{\\substack{x \\to 1 \\\\ x < 1}} f(x) = -\\infty$, et $-2$ est strictement compris entre $-\\infty$ et $0$.\n\nD'après le théorème des valeurs intermédiaires, sous sa forme étendue aux intervalles ouverts, l'équation $f(x) = -2$ admet une unique solution $\\alpha$ sur $]-\\infty\\,;\\,1[$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "À l'aide de la calculatrice, déterminer un encadrement de $\\alpha$ d'amplitude $10^{-2}$.",
+            "points": 0.25,
+            "revoir": "l-continuite-024",
+            "indices": [
+              "Calcule d'abord $f(0)$ : comme $f$ est décroissante, $\\alpha$ est-il plus grand ou plus petit que $0$ ? Utilise ensuite le tableau de valeurs de la calculatrice, avec un pas de $0{,}1$, puis de $0{,}01$."
+            ],
+            "attenduCorrecteur": "- Encadrement justifié par les valeurs et la décroissance de $f$ : $f(0{,}31) \\approx -1{,}976 > -2$ et $f(0{,}32) \\approx -2{,}025 < -2$, donc $0{,}31 < \\alpha < 0{,}32$ : 0,25 pt.",
+            "solution": "$f(0) = -1 > -2$ : comme $f$ est décroissante, $\\alpha > 0$. À la calculatrice, $f(0{,}3) \\approx -1{,}928$ et $f(0{,}4) \\approx -2{,}486$, puis $f(0{,}31) \\approx -1{,}976$ et $f(0{,}32) \\approx -2{,}025$.\n\nComme $f$ est strictement décroissante et que $f(0{,}31) > -2 = f(\\alpha) > f(0{,}32)$, on a $0{,}31 < \\alpha < 0{,}32$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-derivation-convexite-003",
+    "chapitre": "derivation-convexite",
+    "notions": [
+      "n-derivation-convexite-convexe",
+      "n-derivation-convexite-inflexion",
+      "n-derivation-convexite-derivee-seconde",
+      "n-derivation-convexite-composee"
+    ],
+    "capacites": [
+      "bo-m-derivation-01",
+      "bo-m-derivation-02",
+      "bo-m-derivation-03",
+      "bo-m-derivation-04",
+      "bo-m-derivation-05"
+    ],
+    "titre": "Vrai ou faux : dérivées secondes, convexité et points d'inflexion",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2026-asie-j2",
+      "adaptation": "Exercice 4 (vrai-faux, réponses justifiées) : forme de l'exercice et affirmation 1 (la fonction $x \\mapsto \\left(-\\dfrac{1}{2}x + 3\\right)^5$ est convexe sur $\\mathbb{R}$) conservées ; les autres affirmations (dénombrement, probabilités, équation différentielle), hors de ce chapitre, remplacées : affirmation 2 reprise de an-2026-polynesie-j2, exercice 4 ($x \\mapsto x\\,e^{x^2}$ concave sur $]-\\infty\\,;\\,0]$) ; affirmation 3 reprise de an-2022-amerique-nord-j1, exercice 4 (points d'inflexion de la courbe de $x \\mapsto e^x\\left(1 - x^2\\right)$) ; affirmation 4, sur un tableau de signes de la dérivée seconde, écrite pour le site ; affirmation 5 reprise de an-2021-amerique-nord, exercice 4 ($x \\mapsto x^2 - 5x + e^x$ convexe sur $\\mathbb{R}$). Solution écrite pour le site."
+    },
+    "preambule": "Pour chacune des affirmations suivantes, indiquer si elle est vraie ou fausse. Chaque réponse doit être justifiée. Une réponse non justifiée ne rapporte aucun point.\n\nLes cinq affirmations sont indépendantes. Les fonctions considérées sont deux fois dérivables sur $\\mathbb{R}$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = \\left(-\\dfrac{1}{2}x + 3\\right)^5$.\n\n**Affirmation 1** : la fonction $f$ est convexe sur $\\mathbb{R}$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$f''(x) = 5\\left(-\\dfrac{1}{2}x + 3\\right)^3$ est strictement négatif pour $x > 6$ : par exemple, $f''(8) = -5 < 0$. Donc $f$ n'est pas convexe sur $\\mathbb{R}$ ; elle est concave sur $[6\\,;\\,+\\infty[$."
+        },
+        "revoir": "l-derivation-convexite-006",
+        "indices": [
+          "$f = u^5$ avec $u(x) = -\\dfrac{1}{2}x + 3$ : dérive avec $(u^n)' = n\\,u'\\,u^{n-1}$, deux fois de suite, sans oublier le facteur $u'(x)$.",
+          "Une fois $f''(x)$ obtenue, étudie son signe : un cube a le même signe que le nombre élevé au cube."
+        ],
+        "attenduCorrecteur": "- Dérivées de la composée : $f'(x) = -\\dfrac{5}{2}\\left(-\\dfrac{1}{2}x + 3\\right)^4$ et $f''(x) = 5\\left(-\\dfrac{1}{2}x + 3\\right)^3$ : 0,5 pt.\n- Signe : $f''(x) < 0$ pour $x > 6$ (par exemple $f''(8) = -5$), alors que la convexité sur $\\mathbb{R}$ exige $f''(x) \\geqslant 0$ pour tout réel $x$ : 0,25 pt.\n- Conclusion : l'affirmation est fausse : 0,25 pt.",
+        "solution": "On pose $u(x) = -\\dfrac{1}{2}x + 3$, donc $u'(x) = -\\dfrac{1}{2}$. Avec $(u^n)' = n\\,u'\\,u^{n-1}$ :\n\n$$f'(x) = 5 \\times \\left(-\\dfrac{1}{2}\\right) \\times \\left(-\\dfrac{1}{2}x + 3\\right)^4 = -\\dfrac{5}{2}\\left(-\\dfrac{1}{2}x + 3\\right)^4.$$\n\nOn recommence, avec cette fois $n = 4$ :\n\n$$f''(x) = -\\dfrac{5}{2} \\times 4 \\times \\left(-\\dfrac{1}{2}\\right) \\times \\left(-\\dfrac{1}{2}x + 3\\right)^3 = 5\\left(-\\dfrac{1}{2}x + 3\\right)^3.$$\n\nUn cube a le signe du nombre élevé au cube : $f''(x)$ a le signe de $-\\dfrac{1}{2}x + 3$, qui est strictement négatif pour $x > 6$. Par exemple, $f''(8) = 5 \\times (-4 + 3)^3 = -5 < 0$.\n\nOr $f$ est convexe sur $\\mathbb{R}$ si, et seulement si, $f''(x) \\geqslant 0$ pour tout réel $x$. Ce n'est pas le cas : $f$ est même concave sur $[6\\,;\\,+\\infty[$. **L'affirmation 1 est fausse.**",
+        "erreurFrequente": "Conclure à partir du signe de $f'(x)$, toujours négatif ou nul, ou de l'exposant $5$ : c'est le signe de $f''$, sur tout $\\mathbb{R}$, qui décide de la convexité."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère la fonction $g$ définie sur $\\mathbb{R}$ par $g(x) = x\\,e^{x^2}$.\n\n**Affirmation 2** : la fonction $g$ est concave sur l'intervalle $]-\\infty\\,;\\,0]$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$g''(x) = 2x\\left(2x^2 + 3\\right)e^{x^2}$ ; pour $x \\leqslant 0$, $2x \\leqslant 0$ et les deux autres facteurs sont strictement positifs, donc $g''(x) \\leqslant 0$ : $g$ est concave sur $]-\\infty\\,;\\,0]$."
+        },
+        "revoir": "l-derivation-convexite-007",
+        "indices": [
+          "$g$ est le produit de $x$ par $e^{x^2}$, et $\\left(e^{x^2}\\right)' = 2x\\,e^{x^2}$ par la formule de la dérivée de $e^u$. Calcule $g'(x)$, factorisée par $e^{x^2}$, puis recommence pour $g''(x)$.",
+          "Factorise $g''(x)$ par $2x$, puis étudie le signe de chaque facteur quand $x \\leqslant 0$."
+        ],
+        "attenduCorrecteur": "- $g'(x) = \\left(1 + 2x^2\\right)e^{x^2}$, avec la dérivée de la composée $e^{x^2}$ : 0,25 pt.\n- $g''(x) = 4x\\,e^{x^2} + \\left(1 + 2x^2\\right) \\times 2x\\,e^{x^2} = 2x\\left(2x^2 + 3\\right)e^{x^2}$ : 0,25 pt.\n- Signe sur $]-\\infty\\,;\\,0]$ : $2x \\leqslant 0$, $2x^2 + 3 > 0$ et $e^{x^2} > 0$, donc $g''(x) \\leqslant 0$ ; l'affirmation est vraie : 0,5 pt.",
+        "solution": "Avec $(e^u)' = u'e^u$ et $u(x) = x^2$ : $\\left(e^{x^2}\\right)' = 2x\\,e^{x^2}$. Par la formule du produit :\n\n$$g'(x) = 1 \\times e^{x^2} + x \\times 2x\\,e^{x^2} = \\left(1 + 2x^2\\right)e^{x^2}.$$\n\nOn dérive encore un produit, avec $\\left(1 + 2x^2\\right)' = 4x$ :\n\n$$g''(x) = 4x\\,e^{x^2} + \\left(1 + 2x^2\\right) \\times 2x\\,e^{x^2} = \\left(4x + 2x + 4x^3\\right)e^{x^2} = 2x\\left(2x^2 + 3\\right)e^{x^2}.$$\n\nPour $x \\leqslant 0$ : $2x \\leqslant 0$, $2x^2 + 3 > 0$ et $e^{x^2} > 0$. Donc $g''(x) \\leqslant 0$ pour tout $x$ de $]-\\infty\\,;\\,0]$ : $g$ est concave sur cet intervalle. **L'affirmation 2 est vraie.**"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On considère la fonction $h$ définie sur $\\mathbb{R}$ par $h(x) = e^x\\left(1 - x^2\\right)$.\n\n**Affirmation 3** : la courbe représentative de la fonction $h$ n'admet pas de point d'inflexion.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$h''(x) = \\left(-x^2 - 4x - 1\\right)e^x$ ; le trinôme $-x^2 - 4x - 1$ a deux racines, $-2 - \\sqrt{3}$ et $-2 + \\sqrt{3}$, et change de signe en chacune : la courbe de $h$ admet deux points d'inflexion."
+        },
+        "revoir": "l-derivation-convexite-062",
+        "indices": [
+          "Calcule $h'(x)$, puis $h''(x)$, avec la formule du produit, en factorisant chaque fois par $e^x$. Un point d'inflexion correspond à un changement de signe de $h''$.",
+          "Le signe de $h''(x)$ est celui d'un trinôme du second degré : calcule son discriminant."
+        ],
+        "attenduCorrecteur": "- $h'(x) = \\left(1 - 2x - x^2\\right)e^x$ et $h''(x) = \\left(-x^2 - 4x - 1\\right)e^x$ : 0,5 pt.\n- Discriminant $\\Delta = 12 > 0$ : le trinôme s'annule en $-2 - \\sqrt{3}$ et en $-2 + \\sqrt{3}$ en changeant de signe, donc $h''$ aussi : 0,25 pt.\n- Conclusion : deux points d'inflexion ; l'affirmation est fausse : 0,25 pt.",
+        "solution": "Par la formule du produit, avec $\\left(1 - x^2\\right)' = -2x$ :\n\n$$h'(x) = e^x\\left(1 - x^2\\right) + e^x \\times (-2x) = \\left(1 - 2x - x^2\\right)e^x.$$\n\nDe même, avec $\\left(1 - 2x - x^2\\right)' = -2 - 2x$ :\n\n$$h''(x) = \\left(1 - 2x - x^2\\right)e^x + (-2 - 2x)e^x = \\left(-x^2 - 4x - 1\\right)e^x.$$\n\nComme $e^x > 0$, $h''(x)$ a le signe de $-x^2 - 4x - 1$. Son discriminant vaut $\\Delta = (-4)^2 - 4 \\times (-1) \\times (-1) = 12 > 0$, et $\\sqrt{12} = 2\\sqrt{3}$. Ses racines sont $\\dfrac{4 - 2\\sqrt{3}}{-2} = -2 + \\sqrt{3}$ et $\\dfrac{4 + 2\\sqrt{3}}{-2} = -2 - \\sqrt{3}$. Le coefficient de $x^2$ vaut $-1 < 0$ : le trinôme est négatif à l'extérieur des racines et positif entre elles.\n\n$h''$ s'annule donc en changeant de signe en $-2 - \\sqrt{3}$ et en $-2 + \\sqrt{3}$ : la courbe de $h$ admet deux points d'inflexion. **L'affirmation 3 est fausse.**"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Soit $k$ une fonction deux fois dérivable sur $\\mathbb{R}$. Le tableau ci-dessous donne le signe de sa dérivée seconde $k''$.\n\n| $x$ | $-\\infty$ | | $-2$ | | $1$ | | $3$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|---|---|\n| signe de $k''(x)$ | | $+$ | $0$ | $-$ | $0$ | $-$ | $0$ | $+$ | |\n\n**Affirmation 4** : la courbe représentative de la fonction $k$ admet exactement trois points d'inflexion.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$k''$ change de signe en $-2$ et en $3$, mais pas en $1$, où elle s'annule en restant négative de part et d'autre : $k$ est concave sur $[-2\\,;\\,3]$ et sa courbe ne traverse pas sa tangente au point d'abscisse $1$. La courbe a exactement deux points d'inflexion."
+        },
+        "revoir": "l-derivation-convexite-071",
+        "indices": [
+          "Il ne suffit pas que $k''$ s'annule : regarde, en chacun des trois réels où elle s'annule, si son signe est différent avant et après.",
+          "En $1$, rappelle-toi la définition d'un point d'inflexion, une courbe qui **traverse** sa tangente, et ce que la concavité dit de la position d'une courbe par rapport à ses tangentes."
+        ],
+        "attenduCorrecteur": "- En $-2$ et en $3$, $k''$ s'annule en changeant de signe : deux points d'inflexion : 0,5 pt.\n- En $1$, $k''$ s'annule sans changer de signe : $k''(x) \\leqslant 0$ sur $[-2\\,;\\,3]$, $k$ y est concave, sa courbe reste en dessous de sa tangente au point d'abscisse $1$ et ne la traverse pas : 0,25 pt.\n- Conclusion : exactement deux points d'inflexion ; l'affirmation est fausse : 0,25 pt.",
+        "solution": "Un point d'inflexion correspond à un changement de signe de $k''$, pas seulement à une annulation.\n\n- En $-2$, $k''$ passe du signe $+$ au signe $-$ : la courbe a un point d'inflexion d'abscisse $-2$.\n- En $3$, $k''$ passe du signe $-$ au signe $+$ : la courbe a un point d'inflexion d'abscisse $3$.\n- En $1$, $k''$ s'annule mais reste négative de part et d'autre : $k''(x) \\leqslant 0$ sur tout l'intervalle $[-2\\,;\\,3]$, donc $k$ est concave sur $[-2\\,;\\,3]$. Sa courbe y reste en dessous de sa tangente au point d'abscisse $1$ : elle ne la traverse pas, ce n'est pas un point d'inflexion.\n\nLa courbe de $k$ admet exactement deux points d'inflexion. **L'affirmation 4 est fausse.**",
+        "erreurFrequente": "Compter un point d'inflexion à chaque zéro de $k''$ : il faut un changement de signe."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On considère la fonction $m$ définie sur $\\mathbb{R}$ par $m(x) = x^2 - 5x + e^x$.\n\n**Affirmation 5** : la fonction $m$ est convexe sur $\\mathbb{R}$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$m''(x) = 2 + e^x > 0$ pour tout réel $x$ : $m$ est convexe sur $\\mathbb{R}$."
+        },
+        "revoir": "l-derivation-convexite-037",
+        "indices": [
+          "Calcule $m'(x)$ puis $m''(x)$ : ici, aucune formule de produit ni de composée n'est nécessaire. Étudie ensuite le signe de $m''(x)$."
+        ],
+        "attenduCorrecteur": "- $m'(x) = 2x - 5 + e^x$ et $m''(x) = 2 + e^x$ : 0,5 pt.\n- $m''(x) > 0$ pour tout réel $x$, car $e^x > 0$ ; propriété citée : une dérivée seconde positive sur un intervalle donne la convexité sur cet intervalle : 0,25 pt.\n- Conclusion : l'affirmation est vraie : 0,25 pt.",
+        "solution": "Pour tout réel $x$, $m'(x) = 2x - 5 + e^x$ et $m''(x) = 2 + e^x$. Comme $e^x > 0$, on a $m''(x) > 2 > 0$ pour tout réel $x$. Une fonction deux fois dérivable dont la dérivée seconde est positive sur un intervalle est convexe sur cet intervalle : $m$ est convexe sur $\\mathbb{R}$. **L'affirmation 5 est vraie.**",
+        "erreurFrequente": "Répondre « fausse » parce que $m$ n'est pas croissante sur $\\mathbb{R}$ (par exemple $m'(0) = -4 < 0$) : convexe ne veut pas dire croissante."
+      }
+    ]
+  },
+  {
+    "id": "tb-derivation-convexite-004",
+    "chapitre": "derivation-convexite",
+    "notions": [
+      "n-derivation-convexite-composee",
+      "n-derivation-convexite-etude-fonction"
+    ],
+    "capacites": [
+      "bo-m-derivation-01",
+      "bo-m-derivation-05",
+      "bo-m-derivation-06",
+      "bo-m-limites-fonctions-04",
+      "bo-m-limites-fonctions-05",
+      "bo-m-continuite-03",
+      "bo-m-continuite-04"
+    ],
+    "titre": "Le point d'une courbe le plus proche de l'origine",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2021-metropole-septembre-j2",
+      "adaptation": "Exercice 3 : fonction $f(x) = x - e^{-2x}$ (limites, variations, unique solution $\\alpha$ de $f(x) = 0$ et sa valeur approchée à $10^{-2}$ près, signe), courbe de $x \\mapsto e^{-x}$, distance $h(t) = \\sqrt{t^2 + e^{-2t}}$, dérivée $h'(t) = \\dfrac{f(t)}{\\sqrt{t^2 + e^{-2t}}}$ à montrer, point $A$ de la courbe le plus proche de l'origine et tangente en $A$ perpendiculaire à $(OA)$ conservés ; constructions sur le graphique de l'annexe retirées ; valeur approchée demandée sous forme d'arrondi, obtenu par encadrement puis test du milieu. Solution écrite pour le site."
+    },
+    "preambule": "Le plan est muni d'un repère orthonormé d'origine $O$.\n\n**Partie I.** On considère la fonction $f$ définie sur $\\mathbb{R}$ par :\n\n$$f(x) = x - e^{-2x}.$$\n\n**Partie II.** On appelle $\\mathcal{C}$ la courbe représentative de la fonction $g$ définie sur $\\mathbb{R}$ par $g(x) = e^{-x}$. Le but de cette partie est de déterminer le point de $\\mathcal{C}$ le plus proche de l'origine $O$, puis d'étudier la tangente à $\\mathcal{C}$ en ce point.\n\nPour tout réel $t$, on note $M$ le point de $\\mathcal{C}$ de coordonnées $\\left(t\\,;\\,e^{-t}\\right)$, et $h(t)$ la distance $OM$ :\n\n$$h(t) = \\sqrt{t^2 + e^{-2t}}.$$\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "I.1.",
+        "enonce": "Déterminer les limites de la fonction $f$ en $-\\infty$ et en $+\\infty$.",
+        "points": 0.75,
+        "revoir": "l-limites-fonctions-028",
+        "indices": [
+          "$e^{-2x}$ est une composée : regarde d'abord vers quoi tend $-2x$, puis applique la limite de l'exponentielle.",
+          "En $-\\infty$, $x$ et $-e^{-2x}$ tendent-ils vers des infinis de même signe ? Si oui, il n'y a pas de forme indéterminée."
+        ],
+        "attenduCorrecteur": "- En $-\\infty$ : $-2x$ tend vers $+\\infty$, donc $e^{-2x}$ tend vers $+\\infty$ (composée) ; par somme, $\\lim\\limits_{x \\to -\\infty} f(x) = -\\infty$ : 0,5 pt.\n- En $+\\infty$ : $-2x$ tend vers $-\\infty$, donc $e^{-2x}$ tend vers $0$ ; par somme, $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$ : 0,25 pt.",
+        "solution": "**En $-\\infty$.** Quand $x$ tend vers $-\\infty$, $X = -2x$ tend vers $+\\infty$, et $\\lim\\limits_{X \\to +\\infty} e^X = +\\infty$ : par composée, $e^{-2x}$ tend vers $+\\infty$. Ainsi $x$ et $-e^{-2x}$ tendent tous les deux vers $-\\infty$ ; par somme :\n\n$$\\lim_{x \\to -\\infty} f(x) = -\\infty.$$\n\n**En $+\\infty$.** Quand $x$ tend vers $+\\infty$, $-2x$ tend vers $-\\infty$, et $\\lim\\limits_{X \\to -\\infty} e^X = 0$ : $e^{-2x}$ tend vers $0$. Par somme :\n\n$$\\lim_{x \\to +\\infty} f(x) = +\\infty.$$"
+      },
+      {
+        "id": "q2",
+        "label": "I.2.",
+        "enonce": "Étudier le sens de variation de la fonction $f$ sur $\\mathbb{R}$ et dresser son tableau de variations.",
+        "points": 0.75,
+        "revoir": "l-derivation-convexite-002",
+        "indices": [
+          "Dérive $e^{-2x}$ avec la formule de première $\\big(g(ax + b)\\big)' = a\\,g'(ax + b)$, ici avec $a = -2$.",
+          "Étudie le signe de $f'(x)$ : une exponentielle est toujours strictement positive."
+        ],
+        "attenduCorrecteur": "- $f'(x) = 1 + 2e^{-2x}$ : 0,25 pt.\n- $f'(x) > 0$ car $e^{-2x} > 0$, donc $f$ strictement croissante sur $\\mathbb{R}$ : 0,25 pt.\n- Tableau de variations avec les limites $-\\infty$ et $+\\infty$ : 0,25 pt.",
+        "solution": "$\\left(e^{-2x}\\right)' = -2e^{-2x}$, donc, pour tout réel $x$ :\n\n$$f'(x) = 1 - \\left(-2e^{-2x}\\right) = 1 + 2e^{-2x}.$$\n\nComme $e^{-2x} > 0$, $f'(x) > 1 > 0$ : $f$ est strictement croissante sur $\\mathbb{R}$.\n\n| $x$ | $-\\infty$ | | $+\\infty$ |\n|---|---|---|---|\n| signe de $f'(x)$ | | $+$ | |\n| variations de $f$ | $-\\infty$ | $\\nearrow$ | $+\\infty$ |"
+      },
+      {
+        "id": "q3",
+        "label": "I.3.",
+        "enonce": "Montrer que l'équation $f(x) = 0$ admet une unique solution $\\alpha$ sur $\\mathbb{R}$, dont on donnera la valeur arrondie à $10^{-2}$ près.\n\nSaisis la valeur arrondie de $\\alpha$.",
+        "points": 1,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 0.43,
+          "tolerance": 0.001
+        },
+        "revoir": "l-continuite-024",
+        "indices": [
+          "Applique le théorème des valeurs intermédiaires sous sa forme étendue à $\\mathbb{R}$ : continuité, stricte monotonie et limites aux bornes viennent des questions I.1 et I.2.",
+          "Pour l'arrondi, encadre d'abord $\\alpha$ avec le tableau de valeurs de la calculatrice, au pas de $0{,}1$ puis de $0{,}01$, puis calcule l'image du milieu de l'encadrement obtenu."
+        ],
+        "attenduCorrecteur": "- Hypothèses : $f$ continue (car dérivable) et strictement croissante sur $\\mathbb{R}$, de limites $-\\infty$ et $+\\infty$, entre lesquelles $0$ est strictement compris : 0,25 pt.\n- Théorème des valeurs intermédiaires (forme étendue) cité : unique solution $\\alpha$ : 0,25 pt.\n- Encadrement : $f(0{,}42) < 0 < f(0{,}43)$, donc $0{,}42 < \\alpha < 0{,}43$ : 0,25 pt.\n- Arrondi : $f(0{,}425) < 0$, donc $\\alpha > 0{,}425$ et $\\alpha \\approx 0{,}43$ : 0,25 pt.",
+        "solution": "$f$ est dérivable, donc continue, et strictement croissante sur $\\mathbb{R}$ ; $\\lim\\limits_{x \\to -\\infty} f(x) = -\\infty$ et $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$. Le réel $0$ est strictement compris entre ces deux limites. D'après le théorème des valeurs intermédiaires, sous sa forme étendue, l'équation $f(x) = 0$ admet une unique solution $\\alpha$ sur $\\mathbb{R}$.\n\nÀ la calculatrice : $f(0{,}4) \\approx -0{,}049$ et $f(0{,}5) \\approx 0{,}132$, puis $f(0{,}42) \\approx -0{,}012$ et $f(0{,}43) \\approx 0{,}007$. Comme $f$ est strictement croissante et que $f(0{,}42) < 0 = f(\\alpha) < f(0{,}43)$, on a $0{,}42 < \\alpha < 0{,}43$.\n\nAu milieu, $f(0{,}425) \\approx -0{,}002 < 0 = f(\\alpha)$, donc $0{,}425 < \\alpha$ : la valeur arrondie de $\\alpha$ à $10^{-2}$ près est $0{,}43$.",
+        "erreurFrequente": "Donner $0{,}42$, la borne inférieure de l'encadrement, comme valeur arrondie : sans le test du milieu, on ne sait pas de quel côté arrondir."
+      },
+      {
+        "id": "q4",
+        "label": "I.4.",
+        "enonce": "Déduire des questions précédentes le signe de $f(x)$ suivant les valeurs du réel $x$.",
+        "points": 0.5,
+        "revoir": "l-derivation-convexite-013",
+        "indices": [
+          "Utilise $f(\\alpha) = 0$ et le sens de variation de $f$ : compare $f(x)$ à $f(\\alpha)$ selon que $x < \\alpha$ ou $x > \\alpha$."
+        ],
+        "attenduCorrecteur": "- Comparaison à $f(\\alpha) = 0$ grâce à la stricte croissance de $f$ : 0,25 pt.\n- Conclusion : $f(x) < 0$ pour $x < \\alpha$, $f(\\alpha) = 0$, $f(x) > 0$ pour $x > \\alpha$ : 0,25 pt.",
+        "solution": "$f$ est strictement croissante sur $\\mathbb{R}$ et $f(\\alpha) = 0$.\n\n- Si $x < \\alpha$, alors $f(x) < f(\\alpha)$, soit $f(x) < 0$.\n- Si $x > \\alpha$, alors $f(x) > f(\\alpha)$, soit $f(x) > 0$.\n\n| $x$ | $-\\infty$ | | $\\alpha$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f(x)$ | | $-$ | $0$ | $+$ | |"
+      },
+      {
+        "id": "q5",
+        "label": "II.1.",
+        "enonce": "Étude de la distance $OM$.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout réel $t$, $h'(t) = \\dfrac{f(t)}{\\sqrt{t^2 + e^{-2t}}}$, où $f$ est la fonction étudiée dans la partie I.",
+            "points": 0.75,
+            "revoir": "l-derivation-convexite-006",
+            "indices": [
+              "$h = \\sqrt{u}$ avec $u(t) = t^2 + e^{-2t}$. Vérifie que $u(t) > 0$, puis utilise $\\left(\\sqrt{u}\\right)' = \\dfrac{u'}{2\\sqrt{u}}$.",
+              "Calcule $u'(t)$, sans oublier le facteur $-2$ dans la dérivée de $e^{-2t}$, puis simplifie la fraction par $2$."
+            ],
+            "attenduCorrecteur": "- Condition vérifiée : $u(t) = t^2 + e^{-2t} > 0$ pour tout réel $t$, car $t^2 \\geqslant 0$ et $e^{-2t} > 0$ : 0,25 pt.\n- $u'(t) = 2t - 2e^{-2t}$ et formule $\\left(\\sqrt{u}\\right)' = \\dfrac{u'}{2\\sqrt{u}}$ appliquée : 0,25 pt.\n- Simplification : $h'(t) = \\dfrac{2\\left(t - e^{-2t}\\right)}{2\\sqrt{t^2 + e^{-2t}}} = \\dfrac{f(t)}{\\sqrt{t^2 + e^{-2t}}}$ : 0,25 pt.",
+            "solution": "On pose $u(t) = t^2 + e^{-2t}$. Pour tout réel $t$, $t^2 \\geqslant 0$ et $e^{-2t} > 0$, donc $u(t) > 0$ : la fonction $h = \\sqrt{u}$ est dérivable sur $\\mathbb{R}$, et $h' = \\dfrac{u'}{2\\sqrt{u}}$.\n\nOr $u'(t) = 2t + (-2)e^{-2t} = 2t - 2e^{-2t}$. Donc, pour tout réel $t$ :\n\n$$h'(t) = \\dfrac{2t - 2e^{-2t}}{2\\sqrt{t^2 + e^{-2t}}} = \\dfrac{2\\left(t - e^{-2t}\\right)}{2\\sqrt{t^2 + e^{-2t}}} = \\dfrac{f(t)}{\\sqrt{t^2 + e^{-2t}}}.$$",
+            "erreurFrequente": "Écrire $h'(t) = \\dfrac{1}{2\\sqrt{t^2 + e^{-2t}}}$ en oubliant de multiplier par $u'(t)$, la dérivée de l'intérieur."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Démontrer que le point $A$ de coordonnées $\\left(\\alpha\\,;\\,e^{-\\alpha}\\right)$ est le point de la courbe $\\mathcal{C}$ pour lequel la longueur $OM$ est minimale.",
+            "points": 1,
+            "revoir": "l-derivation-convexite-017",
+            "indices": [
+              "Le dénominateur de $h'(t)$ est strictement positif : $h'(t)$ a le signe de $f(t)$, étudié à la question I.4.",
+              "Dresse le tableau de variations de $h$ : en quel réel $h$ atteint-elle son minimum, et quel est le point de $\\mathcal{C}$ correspondant ?"
+            ],
+            "attenduCorrecteur": "- Signe de $h'(t)$ : celui de $f(t)$, car $\\sqrt{t^2 + e^{-2t}} > 0$ : 0,25 pt.\n- Variations : $h$ strictement décroissante sur $]-\\infty\\,;\\,\\alpha]$, strictement croissante sur $[\\alpha\\,;\\,+\\infty[$ : 0,25 pt.\n- $h$ admet un minimum en $\\alpha$ : pour tout réel $t$, $h(t) \\geqslant h(\\alpha)$ : 0,25 pt.\n- Conclusion : la distance $OM$ est minimale pour $M = A\\left(\\alpha\\,;\\,e^{-\\alpha}\\right)$ : 0,25 pt.",
+            "solution": "Pour tout réel $t$, $\\sqrt{t^2 + e^{-2t}} > 0$ : $h'(t)$ a le signe de $f(t)$. D'après la question I.4 :\n\n| $t$ | $-\\infty$ | | $\\alpha$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $h'(t)$ | | $-$ | $0$ | $+$ | |\n| variations de $h$ | | $\\searrow$ | $h(\\alpha)$ | $\\nearrow$ | |\n\n$h$ est strictement décroissante sur $]-\\infty\\,;\\,\\alpha]$ et strictement croissante sur $[\\alpha\\,;\\,+\\infty[$ : elle admet un minimum en $\\alpha$. Pour tout réel $t$, $h(t) \\geqslant h(\\alpha)$, c'est-à-dire $OM \\geqslant OA$, où $A$ est le point de $\\mathcal{C}$ d'abscisse $\\alpha$, de coordonnées $\\left(\\alpha\\,;\\,e^{-\\alpha}\\right)$.\n\nLe point $A$ est donc le point de $\\mathcal{C}$ pour lequel la longueur $OM$ est minimale ; cette distance minimale vaut environ $0{,}78$."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "label": "II.2.",
+        "enonce": "On appelle $T$ la tangente à $\\mathcal{C}$ au point $A$. On rappelle que la droite $(OA)$ a pour coefficient directeur $\\dfrac{e^{-\\alpha}}{\\alpha}$, et on admet le résultat suivant : dans un repère orthonormé, deux droites de coefficients directeurs $m$ et $m'$ sont perpendiculaires si, et seulement si, $mm' = -1$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q6a",
+            "label": "a)",
+            "enonce": "Exprimer en fonction de $\\alpha$ le coefficient directeur de la tangente $T$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-044",
+            "indices": [
+              "Le coefficient directeur de la tangente à $\\mathcal{C}$ au point d'abscisse $\\alpha$ est le nombre dérivé $g'(\\alpha)$, avec $g(x) = e^{-x}$."
+            ],
+            "attenduCorrecteur": "- $g'(x) = -e^{-x}$ : 0,25 pt.\n- Coefficient directeur de $T$ : $g'(\\alpha) = -e^{-\\alpha}$ : 0,25 pt.",
+            "solution": "La dérivée de $x \\mapsto e^{ax + b}$ est $x \\mapsto a\\,e^{ax + b}$ ; avec $a = -1$ et $b = 0$, $g'(x) = -e^{-x}$ pour tout réel $x$. Le coefficient directeur de $T$, tangente à $\\mathcal{C}$ au point d'abscisse $\\alpha$, est donc $g'(\\alpha) = -e^{-\\alpha}$."
+          },
+          {
+            "id": "q6b",
+            "label": "b)",
+            "enonce": "Démontrer que la droite $(OA)$ et la tangente $T$ sont perpendiculaires.",
+            "points": 0.75,
+            "revoir": "l-derivation-convexite-044",
+            "indices": [
+              "Calcule le produit des deux coefficients directeurs : il fait apparaître $e^{-2\\alpha}$.",
+              "Traduis l'égalité $f(\\alpha) = 0$ : elle donne une autre écriture de $e^{-2\\alpha}$."
+            ],
+            "attenduCorrecteur": "- Produit : $-e^{-\\alpha} \\times \\dfrac{e^{-\\alpha}}{\\alpha} = -\\dfrac{e^{-2\\alpha}}{\\alpha}$ : 0,25 pt.\n- Utilisation de $f(\\alpha) = 0$, soit $e^{-2\\alpha} = \\alpha$, avec $\\alpha \\neq 0$ : 0,25 pt.\n- Produit égal à $-1$ et conclusion par le résultat admis : 0,25 pt.",
+            "solution": "Le produit des coefficients directeurs de $T$ et de $(OA)$ vaut :\n\n$$-e^{-\\alpha} \\times \\dfrac{e^{-\\alpha}}{\\alpha} = -\\dfrac{e^{-\\alpha} \\times e^{-\\alpha}}{\\alpha} = -\\dfrac{e^{-2\\alpha}}{\\alpha}.$$\n\nOr $f(\\alpha) = 0$, c'est-à-dire $\\alpha - e^{-2\\alpha} = 0$, soit $e^{-2\\alpha} = \\alpha$ ; et $\\alpha \\neq 0$, car $0{,}42 < \\alpha < 0{,}43$. Le produit vaut donc $-\\dfrac{\\alpha}{\\alpha} = -1$.\n\nD'après le résultat admis, la droite $(OA)$ et la tangente $T$ sont perpendiculaires."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-derivation-convexite-005",
+    "chapitre": "derivation-convexite",
+    "notions": [
+      "n-derivation-convexite-inflexion",
+      "n-derivation-convexite-convexe",
+      "n-derivation-convexite-derivee-seconde",
+      "n-derivation-convexite-etude-fonction"
+    ],
+    "capacites": [
+      "bo-m-derivation-02",
+      "bo-m-derivation-03",
+      "bo-m-derivation-04",
+      "bo-m-derivation-06",
+      "bo-m-derivation-09",
+      "bo-m-continuite-03",
+      "bo-m-continuite-04"
+    ],
+    "titre": "Le profil d'un toboggan : points d'inflexion et pente maximale",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 50,
+    "source": {
+      "annale": "an-2022-amerique-nord-j2",
+      "adaptation": "Exercice 2 : polynôme $p(x) = x^3 - 3x^2 + 5x + 1$ (variations, unique solution $\\alpha$ de $p(x) = 0$, valeur approchée au dixième, tableau de signes), fonction $f(x) = \\dfrac{e^x}{1 + x^2}$ sur $[-3\\,;\\,4]$, dérivée, tangente horizontale au point d'abscisse $1$, critère « au moins deux points d'inflexion » conjecturé sur la courbe puis démontré avec l'expression admise de $f''$ conservés ; points ramenés de $7$ à $6$ ; valeur approchée de $\\alpha$ demandée sous forme d'arrondi au dixième, obtenu par encadrement puis test du milieu ; dérivée de $f$ donnée sous forme factorisée à démontrer ; sens de variation de $f$ et question B.3 (pente maximale du toboggan, à partir des variations de $f'$) ajoutés ; courbe redessinée pour le site. Solution écrite pour le site."
+    },
+    "preambule": "Des concepteurs de toboggans utilisent la courbe d'une fonction comme profil d'un toboggan. Ils estiment que le toboggan assure de bonnes sensations si le profil possède **au moins deux points d'inflexion**.\n\n**Partie A.** Soit $p$ la fonction définie sur l'intervalle $[-3\\,;\\,4]$ par :\n\n$$p(x) = x^3 - 3x^2 + 5x + 1.$$\n\n**Partie B.** Soit $f$ la fonction définie sur l'intervalle $[-3\\,;\\,4]$ par :\n\n$$f(x) = \\dfrac{e^x}{1 + x^2}.$$\n\nOn note $\\mathcal{C}_f$ sa courbe représentative dans un repère orthogonal, tracée ci-dessous : c'est le profil du toboggan. On admet que $f$ est deux fois dérivable sur $[-3\\,;\\,4]$, et que sa dérivée seconde a pour expression, pour tout réel $x$ de $[-3\\,;\\,4]$ :\n\n$$f''(x) = \\dfrac{p(x)(x - 1)e^x}{\\left(1 + x^2\\right)^3},$$\n\noù $p$ est la fonction de la partie A.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/derivation-convexite/type-bac-toboggan.svg",
+        "alt": "Courbe Cf, profil du toboggan, dans un repère quadrillé, pour x allant de −3 à 4. Elle part presque de l'axe des abscisses au point d'abscisse −3, monte de plus en plus vite jusque vers x = −0,2, puis de moins en moins vite et devient presque horizontale autour du point d'abscisse 1, d'ordonnée environ 1,4. Elle remonte ensuite de plus en plus vite et finit au point d'abscisse 4, d'ordonnée environ 3,2.",
+        "width": 400,
+        "height": 260
+      },
+      "caption": "Partie B : la courbe Cf, profil du toboggan."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Déterminer les variations de la fonction $p$ sur l'intervalle $[-3\\,;\\,4]$.",
+        "points": 0.75,
+        "revoir": "l-derivation-convexite-013",
+        "indices": [
+          "Calcule $p'(x)$ : c'est un trinôme du second degré, dont le signe se trouve avec le discriminant.",
+          "Un trinôme de discriminant strictement négatif garde le signe de son coefficient de $x^2$ : conclus sur le sens de variation de $p$, puis calcule $p(-3)$ et $p(4)$."
+        ],
+        "attenduCorrecteur": "- $p'(x) = 3x^2 - 6x + 5$ : 0,25 pt.\n- Discriminant $\\Delta = -24 < 0$ et coefficient $3 > 0$, donc $p'(x) > 0$ : 0,25 pt.\n- $p$ strictement croissante sur $[-3\\,;\\,4]$, de $p(-3) = -68$ à $p(4) = 37$ : 0,25 pt.",
+        "solution": "Pour tout réel $x$ de $[-3\\,;\\,4]$, $p'(x) = 3x^2 - 6x + 5$. Ce trinôme a pour discriminant $\\Delta = (-6)^2 - 4 \\times 3 \\times 5 = 36 - 60 = -24 < 0$ : il ne s'annule pas et garde le signe de son coefficient $3 > 0$. Donc $p'(x) > 0$ et $p$ est strictement croissante sur $[-3\\,;\\,4]$.\n\n$p(-3) = -27 - 27 - 15 + 1 = -68$ et $p(4) = 64 - 48 + 20 + 1 = 37$.\n\n| $x$ | $-3$ | | $4$ |\n|---|---|---|---|\n| signe de $p'(x)$ | | $+$ | |\n| variations de $p$ | $-68$ | $\\nearrow$ | $37$ |"
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Justifier que l'équation $p(x) = 0$ admet dans l'intervalle $[-3\\,;\\,4]$ une unique solution, que l'on note $\\alpha$.",
+        "points": 0.5,
+        "revoir": "l-continuite-020",
+        "indices": [
+          "Utilise le cas « fonction continue strictement monotone » du théorème des valeurs intermédiaires, avec le tableau de la question A.1."
+        ],
+        "attenduCorrecteur": "- $p$ continue (dérivable) et strictement croissante sur $[-3\\,;\\,4]$, et $0$ compris entre $p(-3) = -68$ et $p(4) = 37$ : 0,25 pt.\n- Théorème des valeurs intermédiaires cité, unique solution $\\alpha$ : 0,25 pt.",
+        "solution": "La fonction $p$ est dérivable, donc continue, et strictement croissante sur $[-3\\,;\\,4]$. De plus, $0$ est compris entre $p(-3) = -68$ et $p(4) = 37$. D'après le théorème des valeurs intermédiaires, dans le cas d'une fonction continue et strictement monotone, l'équation $p(x) = 0$ admet une unique solution $\\alpha$ dans $[-3\\,;\\,4]$."
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "Déterminer la valeur arrondie au dixième du réel $\\alpha$.\n\nSaisis cette valeur arrondie.",
+        "points": 0.25,
+        "reponse": {
+          "type": "numerique",
+          "valeur": -0.2,
+          "tolerance": 0.001
+        },
+        "revoir": "l-continuite-024",
+        "indices": [
+          "Avec le tableau de valeurs de la calculatrice, cherche deux valeurs consécutives de $x$, au pas de $0{,}1$, entre lesquelles $p(x)$ change de signe ; puis compare à $0$ l'image du milieu de cet intervalle."
+        ],
+        "attenduCorrecteur": "- Encadrement $-0{,}2 < \\alpha < -0{,}1$ justifié par $p(-0{,}2) < 0 < p(-0{,}1)$, puis $p(-0{,}15) > 0$, donc $\\alpha < -0{,}15$ : valeur arrondie au dixième $\\alpha \\approx -0{,}2$ : 0,25 pt.",
+        "solution": "À la calculatrice, $p(-0{,}2) = -0{,}128 < 0$ et $p(-0{,}1) = 0{,}469 > 0$. Comme $p$ est strictement croissante, $-0{,}2 < \\alpha < -0{,}1$. Au milieu, $p(-0{,}15) \\approx 0{,}179 > 0 = p(\\alpha)$, donc $\\alpha < -0{,}15$.\n\nAinsi $-0{,}2 < \\alpha < -0{,}15$ : la valeur arrondie de $\\alpha$ au dixième est $-0{,}2$ (plus précisément, $\\alpha \\approx -0{,}18$)."
+      },
+      {
+        "id": "q4",
+        "label": "A.4.",
+        "enonce": "Donner le tableau de signes de la fonction $p$ sur l'intervalle $[-3\\,;\\,4]$.",
+        "points": 0.25,
+        "revoir": "l-derivation-convexite-013",
+        "indices": [
+          "$p$ est strictement croissante et s'annule en $\\alpha$ : compare $p(x)$ à $p(\\alpha)$ selon la position de $x$ par rapport à $\\alpha$."
+        ],
+        "attenduCorrecteur": "- $p(x) < 0$ sur $[-3\\,;\\,\\alpha[$, $p(\\alpha) = 0$ et $p(x) > 0$ sur $]\\alpha\\,;\\,4]$, justifié par la stricte croissance : 0,25 pt.",
+        "solution": "$p$ est strictement croissante et $p(\\alpha) = 0$ : pour $x < \\alpha$, $p(x) < p(\\alpha) = 0$ ; pour $x > \\alpha$, $p(x) > 0$.\n\n| $x$ | $-3$ | | $\\alpha$ | | $4$ |\n|---|---|---|---|---|---|\n| signe de $p(x)$ | | $-$ | $0$ | $+$ | |"
+      },
+      {
+        "id": "q5",
+        "label": "B.1.",
+        "enonce": "Dérivée et sens de variation de $f$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout réel $x$ de l'intervalle $[-3\\,;\\,4]$, $f'(x) = \\dfrac{(x - 1)^2e^x}{\\left(1 + x^2\\right)^2}$.",
+            "points": 0.75,
+            "revoir": "l-derivation-convexite-002",
+            "indices": [
+              "$f$ est un quotient $\\dfrac{u}{v}$ avec $u(x) = e^x$ et $v(x) = 1 + x^2$, qui ne s'annule pas : applique $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$.",
+              "Factorise le numérateur par $e^x$ et reconnais une identité remarquable dans ce qui reste."
+            ],
+            "attenduCorrecteur": "- Formule du quotient avec $u'(x) = e^x$ et $v'(x) = 2x$, $v(x) = 1 + x^2$ ne s'annulant pas : 0,25 pt.\n- Numérateur : $e^x\\left(1 + x^2\\right) - 2x\\,e^x = \\left(x^2 - 2x + 1\\right)e^x$ : 0,25 pt.\n- Identité remarquable $x^2 - 2x + 1 = (x - 1)^2$ et conclusion : 0,25 pt.",
+            "solution": "On pose $u(x) = e^x$ et $v(x) = 1 + x^2$, qui ne s'annule pas car $1 + x^2 \\geqslant 1$ ; $u'(x) = e^x$ et $v'(x) = 2x$. Pour tout $x$ de $[-3\\,;\\,4]$ :\n\n$$f'(x) = \\dfrac{e^x\\left(1 + x^2\\right) - e^x \\times 2x}{\\left(1 + x^2\\right)^2} = \\dfrac{\\left(x^2 - 2x + 1\\right)e^x}{\\left(1 + x^2\\right)^2} = \\dfrac{(x - 1)^2e^x}{\\left(1 + x^2\\right)^2}.$$"
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "En déduire le sens de variation de $f$ sur $[-3\\,;\\,4]$, et justifier que la courbe $\\mathcal{C}_f$ admet une tangente horizontale au point d'abscisse $1$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-013",
+            "indices": [
+              "Chaque facteur de $f'(x)$ est un carré ou une exponentielle : quel est le signe de $f'(x)$, et en quel réel s'annule-t-elle ?",
+              "Une tangente est horizontale quand son coefficient directeur, le nombre dérivé, est nul."
+            ],
+            "attenduCorrecteur": "- $f'(x) \\geqslant 0$, nulle seulement en $1$, donc $f$ strictement croissante sur $[-3\\,;\\,4]$ : 0,25 pt.\n- $f'(1) = 0$ : la tangente au point d'abscisse $1$ a un coefficient directeur nul, elle est horizontale : 0,25 pt.",
+            "solution": "Pour tout $x$ de $[-3\\,;\\,4]$, $(x - 1)^2 \\geqslant 0$, $e^x > 0$ et $\\left(1 + x^2\\right)^2 > 0$ : $f'(x) \\geqslant 0$, et $f'(x) = 0$ seulement pour $x = 1$. Donc $f$ est strictement croissante sur $[-3\\,;\\,4]$.\n\nDe plus, $f'(1) = \\dfrac{0 \\times e^1}{4} = 0$ : la tangente à $\\mathcal{C}_f$ au point d'abscisse $1$ a pour coefficient directeur $0$, elle est horizontale. Son équation est $y = f(1) = \\dfrac{e}{2}$."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "label": "B.2.",
+        "enonce": "Le toboggan assure-t-il de bonnes sensations ?",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q6a",
+            "label": "a)",
+            "enonce": "D'après la courbe $\\mathcal{C}_f$ tracée ci-dessus, le toboggan semble-t-il assurer de bonnes sensations ? Argumenter.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-064",
+            "indices": [
+              "Sur la courbe de $f$ elle-même, repère les parties en forme de bol (convexe) et celles en forme de dôme (concave) : un point d'inflexion est un endroit où la courbe passe de l'une à l'autre.",
+              "Parcours la courbe de gauche à droite, compte les changements de forme et donne leurs abscisses approximatives."
+            ],
+            "attenduCorrecteur": "- Lecture : la courbe semble convexe jusque vers $x = -0{,}2$, concave ensuite jusque vers $x = 1$, puis de nouveau convexe : 0,25 pt.\n- Conclusion argumentée : deux points d'inflexion semblent exister, vers $-0{,}2$ et vers $1$ ; le toboggan semble assurer de bonnes sensations : 0,25 pt.",
+            "solution": "Sur la figure, la courbe a d'abord la forme d'un bol (elle monte de plus en plus vite) jusque vers $x = -0{,}2$. Elle prend ensuite la forme d'un dôme (elle monte de moins en moins vite) et s'aplatit autour du point d'abscisse $1$. À partir de là, elle reprend la forme d'un bol.\n\nLa courbe semble donc changer de convexité deux fois, vers $x = -0{,}2$ et vers $x = 1$ : elle semble avoir deux points d'inflexion. D'après ce graphique, le toboggan semble assurer de bonnes sensations."
+          },
+          {
+            "id": "q6b",
+            "label": "b)",
+            "enonce": "En utilisant l'expression de $f''$ donnée dans l'énoncé, répondre à la question : « le toboggan assure-t-il de bonnes sensations ? ». Justifier.",
+            "points": 1.25,
+            "revoir": "l-derivation-convexite-062",
+            "indices": [
+              "Le signe de $f''(x)$ est celui du produit $p(x)(x - 1)$ : les autres facteurs sont strictement positifs. Utilise le tableau de signes de $p$ (question A.4).",
+              "Dresse un tableau de signes du produit $p(x)(x - 1)$ sur $[-3\\,;\\,4]$, avec les valeurs $\\alpha$ et $1$, puis repère les réels où $f''$ change de signe."
+            ],
+            "attenduCorrecteur": "- Signe de $f''(x)$ : celui de $p(x)(x - 1)$, car $e^x > 0$ et $\\left(1 + x^2\\right)^3 > 0$ : 0,25 pt.\n- Tableau de signes, avec $\\alpha < 1$ : $f''(x) > 0$ sur $[-3\\,;\\,\\alpha[$, $f''(x) < 0$ sur $]\\alpha\\,;\\,1[$, $f''(x) > 0$ sur $]1\\,;\\,4]$ : 0,5 pt.\n- $f''$ s'annule en changeant de signe en $\\alpha$ et en $1$, réels intérieurs à $[-3\\,;\\,4]$ : deux points d'inflexion : 0,25 pt.\n- Conclusion dans le contexte : le profil a deux points d'inflexion, le toboggan assure de bonnes sensations : 0,25 pt.",
+            "solution": "Pour tout $x$ de $[-3\\,;\\,4]$, $e^x > 0$ et $\\left(1 + x^2\\right)^3 > 0$ : $f''(x)$ a le signe du produit $p(x)(x - 1)$. On a $\\alpha \\approx -0{,}2 < 1$, et le signe de $p$ est donné par la question A.4.\n\n| $x$ | $-3$ | | $\\alpha$ | | $1$ | | $4$ |\n|---|---|---|---|---|---|---|---|\n| $p(x)$ | | $-$ | $0$ | $+$ | | $+$ | |\n| $x - 1$ | | $-$ | | $-$ | $0$ | $+$ | |\n| signe de $f''(x)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n\nAinsi $f$ est convexe sur $[-3\\,;\\,\\alpha]$, concave sur $[\\alpha\\,;\\,1]$ et convexe sur $[1\\,;\\,4]$. La dérivée seconde s'annule en changeant de signe en $\\alpha$ et en $1$, deux réels de $]-3\\,;\\,4[$ : la courbe $\\mathcal{C}_f$ admet deux points d'inflexion, d'abscisses $\\alpha$ et $1$.\n\nLe profil possède au moins deux points d'inflexion : le toboggan assure de bonnes sensations.",
+            "erreurFrequente": "Oublier le facteur $x - 1$ et ne trouver qu'un point d'inflexion, en $\\alpha$ : au point d'abscisse $1$, la tangente est horizontale et la courbe la traverse."
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "label": "B.3.",
+        "enonce": "En chaque point du profil, la raideur du toboggan est mesurée par le coefficient directeur de la tangente, c'est-à-dire par $f'(x)$. On cherche le point du profil où la pente est la plus forte.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q7a",
+            "label": "a)",
+            "enonce": "Déduire de la question B.2.b le sens de variation de la fonction $f'$ sur $[-3\\,;\\,4]$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-025",
+            "indices": [
+              "Le signe de $f''$ donne les variations de $f'$, comme le signe de $f'$ donne celles de $f$. Relis la dernière ligne de ton tableau de la question B.2.b."
+            ],
+            "attenduCorrecteur": "- Propriété citée : le signe de $f''$, dérivée de $f'$, donne les variations de $f'$ : 0,25 pt.\n- $f'$ croissante sur $[-3\\,;\\,\\alpha]$, décroissante sur $[\\alpha\\,;\\,1]$, croissante sur $[1\\,;\\,4]$ : 0,25 pt.",
+            "solution": "La fonction $f''$ est la dérivée de $f'$ : son signe donne les variations de $f'$. D'après la question B.2.b, $f''(x) \\geqslant 0$ sur $[-3\\,;\\,\\alpha]$, $f''(x) \\leqslant 0$ sur $[\\alpha\\,;\\,1]$ et $f''(x) \\geqslant 0$ sur $[1\\,;\\,4]$.\n\nDonc $f'$ est croissante sur $[-3\\,;\\,\\alpha]$, décroissante sur $[\\alpha\\,;\\,1]$ et croissante sur $[1\\,;\\,4]$."
+          },
+          {
+            "id": "q7b",
+            "label": "b)",
+            "enonce": "On admet que $f'(\\alpha) < 1{,}31$. En quel point du profil la pente du toboggan est-elle la plus forte ? Justifier.",
+            "points": 0.75,
+            "revoir": "l-derivation-convexite-068",
+            "indices": [
+              "D'après la question B.3.a, le maximum de $f'$ sur $[-3\\,;\\,4]$ ne peut être atteint qu'en deux réels : repère-les dans les variations de $f'$.",
+              "Calcule $f'(4)$ à la calculatrice avec l'expression de la question B.1.a, puis compare-le au majorant admis de $f'(\\alpha)$."
+            ],
+            "attenduCorrecteur": "- Majorations tirées des variations de $f'$ : sur $[-3\\,;\\,1]$, $f'(x) \\leqslant f'(\\alpha)$ ; sur $[1\\,;\\,4]$, $f'(x) \\leqslant f'(4)$ : 0,25 pt.\n- Calcul : $f'(4) = \\dfrac{9e^4}{289} \\approx 1{,}70$ : 0,25 pt.\n- Comparaison $f'(\\alpha) < 1{,}31 < f'(4)$ et conclusion : pente maximale au point d'abscisse $4$, de coordonnées $\\left(4\\,;\\,\\dfrac{e^4}{17}\\right)$, le haut du toboggan : 0,25 pt.",
+            "solution": "D'après la question B.3.a, $f'$ croît sur $[-3\\,;\\,\\alpha]$ puis décroît sur $[\\alpha\\,;\\,1]$ : pour tout $x$ de $[-3\\,;\\,1]$, $f'(x) \\leqslant f'(\\alpha)$. Elle croît ensuite sur $[1\\,;\\,4]$ : pour tout $x$ de $[1\\,;\\,4]$, $f'(x) \\leqslant f'(4)$.\n\nOr $f'(4) = \\dfrac{(4 - 1)^2e^4}{\\left(1 + 4^2\\right)^2} = \\dfrac{9e^4}{289} \\approx 1{,}70$, et $f'(\\alpha) < 1{,}31 < f'(4)$. Donc, pour tout $x$ de $[-3\\,;\\,4]$, $f'(x) \\leqslant f'(4)$ : le maximum de $f'$ est atteint en $4$.\n\nLa pente du toboggan est la plus forte au point d'abscisse $4$, de coordonnées $\\left(4\\,;\\,\\dfrac{e^4}{17}\\right)$, soit environ $(4\\,;\\,3{,}21)$ : c'est le haut du profil, d'où l'on s'élance.",
+            "erreurFrequente": "Répondre « au point d'inflexion d'abscisse $\\alpha$ » sans comparer : $f'(\\alpha)$ n'est qu'un maximum local de $f'$ ; sur $[1\\,;\\,4]$, $f'$ croît de nouveau et dépasse cette valeur."
+          }
+        ]
+      }
+    ]
+  }
+]

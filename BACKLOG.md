@@ -695,15 +695,41 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     courbe coupe la droite y = x — souhait de l'auteur du cours de Continuité (notion
     « limite d'une suite », figure fixe `suite-escalier.svg` en attendant) ; à faire quand les
     figures animées existeront (rejoint l'item de Récurrence et suites ci-dessus).
-  - [ ] Dérivation et convexité : le cours — chapitre 5 dans l'ordre de l'année
-    (`derivation-convexite`) : `/tle-chapitre maths derivation-convexite cours`, dans une
-    session neuve. Découpage proposé dans `chantiers/terminale/chapitres-maths.md` § 5
-    (dérivée d'une composée, dérivée seconde, convexité, point d'inflexion). Toujours sans
-    logarithme (chapitre 7). Les cours précédents admettent « dérivable donc continue » et
-    renvoient à la dérivée de g(ax + b) de première : la dérivée d'une composée générale
-    arrive ici.
-  - [ ] Dérivation et convexité : les exercices — `/tle-chapitre maths derivation-convexite
-    exercices`, après le cours (même session si Thibaud le demande, comme pour Continuité).
+  - [x] Dérivation et convexité : le cours — fait le 2026-10-14 : 6 notions (4 ★★★ mesurées
+    sur les annales : étude complète 77 %, convexité 68 %, point d'inflexion 63 %, dérivée
+    seconde 60 % ; composée ★★ à 49 % gardée malgré trois notions qui en dépendent),
+    74 blocs, 9 cartes de mémo, 5 figures. Relecture PASS au tour 2, test élève : bloquant
+    (unicité du point d'inflexion) corrigé et relu. Découpage : 6 notions au lieu des 4
+    proposées dans `chantiers/terminale/chapitres-maths.md` § 5 (étude complète et
+    tangentes/inégalités à part, lecture graphique avec le point d'inflexion).
+  - [ ] Dérivation et convexité, petites retouches du cours — non bloquants de la relecture
+    n° 2 (rapport de session du 2026-10-14) : le mot « réciproque » ambigu dans la propriété
+    du point d'inflexion (l-…-061), l'hypothèse « tableau de signes » non nommée à l'étape 4
+    de la démonstration l-…-073, la carte `point-inflexion` et le retenir l-…-072 qui
+    énoncent l'équivalence sans ses hypothèses, trois phrases de plus de 25 mots (essentiel
+    n° 2 de `meta.json`, définition l-…-033, carte `point-inflexion`). Gênes de l'élève
+    testeur sur les exercices, côté cours : dire « en dessous **ou sur** » (sens large) dans
+    la définition de la convexité l-…-033 ; un exemple qui associe f, f' et f'' à leurs
+    courbes (attendu du bac, seulement en marche 3 aujourd'hui) ; un exemple de tangente au
+    bord de l'intervalle (x-030 q4).
+  - [ ] Une animation « tangente qui glisse » le long d'une courbe : elle reste d'un côté
+    tant que la courbe est convexe ou concave, et la traverse au point d'inflexion — souhait
+    de l'auteur du cours de Dérivation et convexité ; à faire quand les figures animées
+    existeront.
+  - [x] Dérivation et convexité : les exercices — fait le 2026-10-14, même session que le
+    cours : 37 exercices (16 Comprendre, 16 S'entraîner, 5 Approfondir), 18 questions
+    éclair, 5 sujets type bac adaptés d'annales (29 points, dont les deux premières figures
+    de type bac du site). Relecture PASS au tour 2 ; test élève CLAIR (16/16 en Comprendre).
+  - [ ] Dérivation et convexité, petites retouches des exercices — non bloquants de la
+    relecture n° 2 (rapport de session du 2026-10-14) : « question b » → « question B.5.b »
+    dans tb-001 B.5.c ; « f deux fois dérivable » à préciser dans la question éclair
+    inflexion-borne ; x-033 q4, l'indice 2 parle d'un tableau de signes alors que la q3 est
+    un QCM. Et un exercice de marche S'entraîner où l'on lit la convexité sur la courbe de f'
+    (demandé par tb-001 A.2, aucun exercice ne l'entraîne) — il faut une figure.
+  - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
+    (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
+    `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source
+    et des figures) — sans effet visible, à corriger dans une session d'interface.
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
