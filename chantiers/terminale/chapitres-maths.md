@@ -145,6 +145,11 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
 - Dérivée seconde · ★★
 - Fonction convexe/concave, position par rapport aux tangentes · ★★★
 - Point d'inflexion · ★★ · « Étudier la convexité de f »
+- *Écrit le 2026-10-14 en 6 notions (priorités mesurées) :* dérivée d'une composée ★★ ·
+  étude complète d'une fonction ★★★ (ligne « calculer la dérivée, les limites, les
+  variations », absente du découpage ci-dessus) · dérivée seconde ★★★ · convexe/concave ★★★ ·
+  convexité et tangentes, inégalités ★★ (avec la démonstration exigible) · point
+  d'inflexion et lecture graphique ★★★.
 
 ### 6. Vecteurs, droites et plans de l'espace
 - Vecteurs de l'espace, combinaisons linéaires, colinéarité · ★★
