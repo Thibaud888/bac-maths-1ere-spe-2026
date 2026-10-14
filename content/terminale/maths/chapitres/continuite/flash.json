@@ -1,0 +1,249 @@
+[
+  {
+    "id": "fl-continuite-quotient-sur-r",
+    "chapitre": "continuite",
+    "notion": "n-continuite-fonction-continue",
+    "capacites": ["bo-m-continuite-01"],
+    "enonce": "Sur quel ensemble la fonction $f$ définie par $f(x) = \\dfrac{xe^x}{x^2 + 1}$ est-elle continue ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "Sur $\\mathbb{R}$",
+        "Sur $]-\\infty\\,;\\,0[$ et sur $]0\\,;\\,+\\infty[$",
+        "Sur $]-\\infty\\,;\\,-1[$, sur $]-1\\,;\\,1[$ et sur $]1\\,;\\,+\\infty[$",
+        "On ne peut pas savoir sans calculer $f'(x)$."
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "$0$ annule le numérateur, pas le dénominateur : $f(0) = 0$ existe, et $f$ est continue en $0$.",
+        "$-1$ et $1$ annulent $x^2 - 1$, pas $x^2 + 1$ : ici, $x^2 + 1 \\geqslant 1$ ne s'annule jamais.",
+        "Il suffit de savoir que $f$ est dérivable, comme quotient de fonctions dérivables dont le dénominateur ne s'annule pas : calculer $f'(x)$ est inutile."
+      ]
+    },
+    "explication": "$x \\mapsto xe^x$ et $x \\mapsto x^2 + 1$ sont dérivables sur $\\mathbb{R}$, et $x^2 + 1 \\geqslant 1 > 0$. Le quotient $f$ est donc dérivable sur $\\mathbb{R}$, donc continu sur $\\mathbb{R}$. Le réflexe : chercher où le dénominateur s'annule, pas le numérateur.",
+    "duree": 25
+  },
+  {
+    "id": "fl-continuite-racine-en-zero",
+    "chapitre": "continuite",
+    "notion": "n-continuite-fonction-continue",
+    "capacites": ["bo-m-continuite-01"],
+    "enonce": "La fonction racine carrée est-elle continue en $0$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "Oui : $\\sqrt{x}$ tend vers $0 = \\sqrt{0}$ quand $x$ tend vers $0$ par la droite.",
+        "Non : elle n'est pas dérivable en $0$.",
+        "Non : elle n'est pas définie à gauche de $0$.",
+        "La question n'a pas de sens en $0$."
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "Continue ne veut pas dire dérivable : en $0$, la courbe n'a pas de saut, même si sa tangente y est verticale.",
+        "$0$ est la borne de l'intervalle $[0\\,;\\,+\\infty[$ : seule la limite à droite compte.",
+        "$\\sqrt{0} = 0$ existe : la racine carrée est définie en $0$, la question se pose donc."
+      ]
+    },
+    "explication": "En une borne de l'intervalle, on ne regarde qu'un côté : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$. La racine carrée est continue sur $[0\\,;\\,+\\infty[$, mais dérivable seulement sur $]0\\,;\\,+\\infty[$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-continuite-inverse-deux-morceaux",
+    "chapitre": "continuite",
+    "notion": "n-continuite-fonction-continue",
+    "capacites": ["bo-m-continuite-01"],
+    "enonce": "Vrai ou faux ? La fonction inverse $x \\mapsto \\dfrac{1}{x}$ n'est pas continue, car sa courbe est formée de deux morceaux.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "Elle est dérivable, donc continue, sur $]-\\infty\\,;\\,0[$ et sur $]0\\,;\\,+\\infty[$. En $0$, elle n'est pas définie : la question de la continuité ne s'y pose pas."
+    },
+    "explication": "La continuité se regarde sur un intervalle où la fonction est définie. Les deux branches de la courbe sont séparées par $0$, valeur interdite, et non par un saut.",
+    "duree": 20
+  },
+  {
+    "id": "fl-continuite-tvi-sans-continuite",
+    "chapitre": "continuite",
+    "notion": "n-continuite-valeurs-intermediaires",
+    "capacites": ["bo-m-continuite-03"],
+    "enonce": "Vrai ou faux ? Si $f(0) = -1$ et $f(1) = 1$, alors l'équation $f(x) = 0$ a au moins une solution dans $[0\\,;\\,1]$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "Il manque la continuité de $f$ sur $[0\\,;\\,1]$ : une fonction qui vaut $-1$ sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$ et $1$ sur $\\left]\\dfrac{1}{2}\\,;\\,1\\right]$ ne s'annule jamais."
+    },
+    "explication": "Le théorème des valeurs intermédiaires a deux hypothèses : $f$ continue sur $[a\\,;\\,b]$, et $k$ compris entre $f(a)$ et $f(b)$. Sans la première, la courbe peut sauter par-dessus l'axe des abscisses.",
+    "duree": 25
+  },
+  {
+    "id": "fl-continuite-unicite",
+    "chapitre": "continuite",
+    "notion": "n-continuite-valeurs-intermediaires",
+    "capacites": ["bo-m-continuite-03", "bo-m-continuite-04"],
+    "enonce": "Une fonction $f$ est continue sur $[a\\,;\\,b]$, et $k$ est compris entre $f(a)$ et $f(b)$. Quelle hypothèse supplémentaire garantit que l'équation $f(x) = k$ a une **seule** solution dans $[a\\,;\\,b]$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$f$ est strictement monotone sur $[a\\,;\\,b]$.",
+        "$f$ est dérivable sur $[a\\,;\\,b]$.",
+        "$f(a)$ et $f(b)$ sont de signes contraires.",
+        "$f(a) < f(b)$."
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "Dérivable donne seulement continue : $x \\mapsto x^3 - 3x + 1$ est dérivable, et l'équation $x^3 - 3x + 1 = 1$ a trois solutions dans $[-2\\,;\\,2]$.",
+        "Cela concerne l'existence d'une solution de $f(x) = 0$, pas son unicité.",
+        "Une fonction qui monte, redescend, puis remonte peut avoir $f(a) < f(b)$ et plusieurs solutions."
+      ]
+    },
+    "explication": "La continuité donne l'existence ; la stricte monotonie donne l'unicité, car deux réels distincts ont alors des images distinctes.",
+    "duree": 20
+  },
+  {
+    "id": "fl-continuite-limite-non-atteinte",
+    "chapitre": "continuite",
+    "notion": "n-continuite-valeurs-intermediaires",
+    "capacites": ["bo-m-continuite-04", "bo-m-continuite-03"],
+    "enonce": "Une fonction $f$ est continue et strictement croissante sur $[0\\,;\\,+\\infty[$, avec $f(0) = -3$ et $\\lim\\limits_{x \\to +\\infty} f(x) = 2$. Pour quelles valeurs de $k$ l'équation $f(x) = k$ a-t-elle une unique solution dans $[0\\,;\\,+\\infty[$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$k \\in [-3\\,;\\,2[$",
+        "$k \\in [-3\\,;\\,2]$",
+        "$k \\in ]-3\\,;\\,2[$",
+        "$k \\in ]-\\infty\\,;\\,2[$"
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "$2$ est une limite, que $f$ n'atteint pas : $f(x) < 2$ pour tout $x \\geqslant 0$.",
+        "$-3 = f(0)$ est atteint, en $x = 0$ : l'équation $f(x) = -3$ a bien une solution.",
+        "$f$ est croissante à partir de $f(0) = -3$ : elle ne prend aucune valeur inférieure à $-3$."
+      ]
+    },
+    "explication": "Borne incluse : on garde l'image, $f(0) = -3$, qui est atteinte. Borne infinie : on prend la limite, $2$, qui ne l'est pas. Les valeurs prises une seule fois sont celles de $[-3\\,;\\,2[$.",
+    "duree": 40
+  },
+  {
+    "id": "fl-continuite-arrondi-milieu",
+    "chapitre": "continuite",
+    "notion": "n-continuite-valeurs-intermediaires",
+    "capacites": ["bo-m-continuite-04"],
+    "enonce": "On sait que $2{,}31 < \\alpha < 2{,}32$, que $f$ est strictement croissante et que $f(\\alpha) = 0$. La calculatrice donne $f(2{,}315) \\approx 0{,}004$. Quelle est la valeur arrondie de $\\alpha$ à $10^{-2}$ près ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$2{,}31$", "$2{,}32$", "$2{,}315$", "On ne peut pas savoir."],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "$f(2{,}315) > 0 = f(\\alpha)$ et $f$ est croissante : $\\alpha$ est avant le milieu $2{,}315$, donc plus près de $2{,}31$.",
+        "Une valeur arrondie à $10^{-2}$ près a deux décimales.",
+        "L'image du milieu, $f(2{,}315)$, suffit à trancher."
+      ]
+    },
+    "explication": "Pour arrondir, compare $\\alpha$ au milieu $2{,}315$ : $f(2{,}315) > 0 = f(\\alpha)$ et $f$ croissante donnent $\\alpha < 2{,}315$. Donc $2{,}31 < \\alpha < 2{,}315$, et l'arrondi est $2{,}31$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-continuite-dichotomie-amplitude",
+    "chapitre": "continuite",
+    "notion": "n-continuite-approcher-solution",
+    "capacites": ["bo-m-continuite-06"],
+    "enonce": "On applique la dichotomie à partir de l'intervalle $[0\\,;\\,4]$. Quelle est l'amplitude de l'intervalle obtenu après $3$ étapes ?",
+    "reponse": { "type": "numerique", "valeur": 0.5, "tolerance": 0 },
+    "explication": "Chaque étape divise l'amplitude par $2$ : après $3$ étapes, elle vaut $\\dfrac{4}{2^3} = \\dfrac{4}{8} = 0{,}5$, quelle que soit la fonction.",
+    "duree": 30
+  },
+  {
+    "id": "fl-continuite-newton-tangente",
+    "chapitre": "continuite",
+    "notion": "n-continuite-approcher-solution",
+    "capacites": ["bo-m-continuite-07"],
+    "enonce": "Dans la méthode de Newton, $x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}$ est l'abscisse du point où l'axe des abscisses est coupé par :",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "la tangente à la courbe de $f$ au point d'abscisse $x_n$",
+        "la courbe de $f$",
+        "la sécante qui passe par les points de la courbe d'abscisses $x_{n-1}$ et $x_n$",
+        "la droite d'équation $y = x$"
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "La courbe coupe l'axe en la solution $\\alpha$, qu'on ne connaît pas : on la remplace par une droite.",
+        "C'est l'idée de la méthode de la sécante, qui n'a pas besoin de la dérivée.",
+        "La droite d'équation $y = x$ sert pour les suites $u_{n+1} = f(u_n)$, pas pour la méthode de Newton."
+      ]
+    },
+    "explication": "La tangente au point d'abscisse $x_n$ a pour équation $y = f'(x_n)(x - x_n) + f(x_n)$ ; si $f'(x_n) \\neq 0$, elle coupe l'axe des abscisses en $x_n - \\dfrac{f(x_n)}{f'(x_n)}$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-continuite-image-suite",
+    "chapitre": "continuite",
+    "notion": "n-continuite-suite-recurrente",
+    "capacites": ["bo-m-continuite-02"],
+    "enonce": "La suite $(u_n)$ converge vers $-1$. Vers quel nombre converge la suite $\\left(u_n^3 + 2u_n\\right)$ ?",
+    "reponse": { "type": "numerique", "valeur": -3, "tolerance": 0 },
+    "explication": "La fonction $x \\mapsto x^3 + 2x$ est un polynôme, continu sur $\\mathbb{R}$ : la limite des images est l'image de la limite, soit $(-1)^3 + 2 \\times (-1) = -3$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-continuite-heron",
+    "chapitre": "continuite",
+    "notion": "n-continuite-suite-recurrente",
+    "capacites": ["bo-m-continuite-05"],
+    "enonce": "La suite définie par $u_0 = 2$ et $u_{n+1} = \\dfrac{u_n}{2} + \\dfrac{1}{u_n}$ vérifie $u_n \\geqslant 1$ pour tout $n$, et converge vers un réel $\\ell$. Que vaut $\\ell$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$\\sqrt{2}$", "$2$", "$-\\sqrt{2}$", "$1$"],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "$2$ est le premier terme ; ce n'est pas une solution de $\\ell = \\dfrac{\\ell}{2} + \\dfrac{1}{\\ell}$, car $1 + \\dfrac{1}{2} = 1{,}5 \\neq 2$.",
+        "C'est bien une solution de $\\ell^2 = 2$, mais $\\ell \\geqslant 1$ l'exclut.",
+        "$1$ est un minorant, pas la limite : $\\dfrac{1}{2} + 1 = 1{,}5 \\neq 1$."
+      ]
+    },
+    "explication": "Par passage à la limite dans $u_n \\geqslant 1$, $\\ell \\geqslant 1$. La fonction $x \\mapsto \\dfrac{x}{2} + \\dfrac{1}{x}$ est continue sur $[1\\,;\\,+\\infty[$, qui contient les $u_n$ et $\\ell$ : donc $\\ell = \\dfrac{\\ell}{2} + \\dfrac{1}{\\ell}$, soit $\\ell^2 = 2$, et $\\ell = \\sqrt{2}$ car $\\ell \\geqslant 1$.",
+    "duree": 40
+  },
+  {
+    "id": "fl-continuite-convergence-d-abord",
+    "chapitre": "continuite",
+    "notion": "n-continuite-suite-recurrente",
+    "capacites": ["bo-m-continuite-05"],
+    "enonce": "Vrai ou faux ? Si $u_{n+1} = f(u_n)$, avec $f$ continue sur $\\mathbb{R}$, et si l'équation $f(x) = x$ a une solution, alors la suite $(u_n)$ converge.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "Avec $f(x) = 2x$ et $u_0 = 1$, l'équation $f(x) = x$ a la solution $0$, mais $u_n = 2^n$ tend vers $+\\infty$."
+    },
+    "explication": "La propriété $\\ell = f(\\ell)$ suppose la convergence déjà démontrée, par exemple avec une suite monotone et bornée : elle donne la valeur de la limite, pas son existence.",
+    "duree": 25
+  },
+  {
+    "id": "fl-continuite-choisir-solution",
+    "chapitre": "continuite",
+    "notion": "n-continuite-suite-recurrente",
+    "capacites": ["bo-m-continuite-05"],
+    "enonce": "Une suite définie par $u_{n+1} = f(u_n)$, avec $f$ continue sur $\\mathbb{R}$, est croissante, de premier terme $u_0 = 2$, et converge. L'équation $f(x) = x$ a pour seules solutions $1$ et $4$. Quelle est la limite de la suite ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$4$", "$1$", "$1$ ou $4$ : on ne peut pas trancher.", "$2$"],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "La suite est croissante, donc $u_n \\geqslant u_0 = 2$ et $\\ell \\geqslant 2$ : la valeur $1$ est exclue.",
+        "Une suite convergente n'a qu'une limite, et $\\ell \\geqslant 2$ élimine $1$.",
+        "$2$ est le premier terme ; ce n'est pas une solution de $f(x) = x$."
+      ]
+    },
+    "explication": "$\\ell$ vérifie $f(\\ell) = \\ell$, donc $\\ell = 1$ ou $\\ell = 4$. Une suite croissante reste au-dessus de son premier terme : $\\ell \\geqslant u_0 = 2$, donc $\\ell = 4$.",
+    "duree": 30
+  }
+]

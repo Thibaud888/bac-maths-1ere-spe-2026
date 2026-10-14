@@ -1,0 +1,1761 @@
+[
+  {
+    "id": "x-continuite-001",
+    "chapitre": "continuite",
+    "niveau": 1,
+    "notions": ["n-continuite-valeurs-intermediaires"],
+    "capacites": ["bo-m-continuite-03", "bo-m-continuite-04"],
+    "titre": "Ce que dit le théorème des valeurs intermédiaires",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 10,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Une fonction $f$ est continue sur $[0\\,;\\,3]$, avec $f(0) = 4$ et $f(3) = 1$. Laquelle de ces équations a, à coup sûr, au moins une solution dans $[0\\,;\\,3]$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$f(x) = 2$", "$f(x) = 0$", "$f(x) = 5$", "$f(x) = -1$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$0$ n'est pas compris entre $f(3) = 1$ et $f(0) = 4$ : le théorème ne dit rien pour cette valeur. L'équation peut avoir une solution, mais rien ne la garantit.",
+            "$5$ est plus grand que $f(0)$ et que $f(3)$ : le théorème ne garantit que les valeurs comprises entre $1$ et $4$.",
+            "$-1$ est plus petit que $f(0)$ et que $f(3)$ : le théorème ne garantit que les valeurs comprises entre $1$ et $4$."
+          ]
+        },
+        "indices": [
+          "Le théorème des valeurs intermédiaires garantit une solution de $f(x) = k$ pour chaque réel $k$ compris entre $f(a)$ et $f(b)$, dans un sens ou dans l'autre.",
+          "Ici, $f(3) = 1$ et $f(0) = 4$ : cherche la seule valeur proposée qui se trouve entre $1$ et $4$."
+        ],
+        "revoir": "l-continuite-016",
+        "solution": "$f$ est continue sur $[0\\,;\\,3]$, et $2$ est compris entre $f(3) = 1$ et $f(0) = 4$. D'après le théorème des valeurs intermédiaires, l'équation $f(x) = 2$ admet au moins une solution dans $[0\\,;\\,3]$. Pour $0$, $5$ et $-1$, qui ne sont pas compris entre $1$ et $4$, le théorème ne garantit rien.",
+        "erreurFrequente": "Croire que le théorème exige $f(a) < f(b)$ : ici $f$ va de $4$ à $1$, et c'est sans importance."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Une fonction $g$ est définie sur $[-1\\,;\\,1]$, avec $g(-1) = -2$ et $g(1) = 3$, mais sa courbe fait un saut en $0$ : $g$ n'est pas continue en $0$. Que peut-on dire de l'équation $g(x) = 0$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Le théorème des valeurs intermédiaires ne s'applique pas : sans autre information, on ne peut pas conclure.",
+            "Elle admet au moins une solution dans $[-1\\,;\\,1]$, car $0$ est compris entre $-2$ et $3$.",
+            "Elle n'a aucune solution dans $[-1\\,;\\,1]$.",
+            "Elle admet exactement une solution dans $[-1\\,;\\,1]$."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le théorème exige que $g$ soit continue sur tout $[-1\\,;\\,1]$. Avec un saut, la courbe peut sauter par-dessus l'axe des abscisses sans le toucher.",
+            "Le saut n'empêche pas non plus une solution : $g$ peut très bien s'annuler avant ou après $0$. On ne sait rien.",
+            "Même pour une fonction continue, il faudrait la stricte monotonie pour « exactement une ». Ici, on ne sait même pas qu'il y en a une."
+          ]
+        },
+        "indices": [
+          "Relis les hypothèses du théorème : sur quel intervalle la fonction doit-elle être continue ?",
+          "$g$ n'est pas continue en $0$, qui appartient à $[-1\\,;\\,1]$ : une hypothèse manque. Pense au tarif du parking, qui passe de $2$ € à $4$ € sans jamais valoir $3$ € : que peut faire la courbe de $g$ au moment du saut ?"
+        ],
+        "revoir": "l-continuite-016",
+        "solution": "Le théorème des valeurs intermédiaires exige que $g$ soit continue sur tout l'intervalle $[-1\\,;\\,1]$. Ce n'est pas le cas : $g$ saute en $0$. Par exemple, $g$ pourrait valoir $-2$ sur $[-1\\,;\\,0]$ et $3$ sur $]0\\,;\\,1]$ : elle ne s'annulerait jamais. C'est ce que fait le tarif du parking du cours : il passe de $2$ € à $4$ € sans jamais valoir $3$ €. Le théorème ne s'applique pas, et on ne peut pas conclure."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Si $h$ est continue et strictement croissante sur $[2\\,;\\,5]$, avec $h(2) = -1$ et $h(5) = 7$, alors l'équation $h(x) = 0$ admet exactement une solution dans $[2\\,;\\,5]$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$h$ est continue et strictement monotone sur $[2\\,;\\,5]$, et $0$ est compris entre $-1$ et $7$ : dans le cas d'une fonction continue strictement monotone, la solution existe et elle est unique."
+        },
+        "indices": [
+          "Dans le cas d'une fonction continue strictement monotone, le théorème a trois hypothèses : vérifie-les une à une.",
+          "$h$ est continue, strictement croissante, et $h(2) < 0 < h(5)$. Que donne la stricte croissance, en plus de l'existence ?"
+        ],
+        "revoir": "l-continuite-020",
+        "solution": "$h$ est continue et strictement croissante sur $[2\\,;\\,5]$, et $0$ est compris entre $h(2) = -1$ et $h(5) = 7$. D'après le théorème des valeurs intermédiaires appliqué à une fonction continue et strictement monotone, l'équation $h(x) = 0$ admet une unique solution dans $[2\\,;\\,5]$. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-002",
+    "chapitre": "continuite",
+    "niveau": 1,
+    "notions": ["n-continuite-valeurs-intermediaires"],
+    "capacites": ["bo-m-continuite-04", "bo-m-continuite-03"],
+    "titre": "Compter les solutions sur un tableau de variations",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 20,
+    "preambule": "Une fonction $f$, continue sur $\\mathbb{R}$, a le tableau de variations ci-dessous. Les flèches indiquent que $f$ est strictement croissante ou strictement décroissante sur chaque intervalle.\n\n| $x$ | $-\\infty$ | | $1$ | | $4$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|\n| variations de $f$ | $-\\infty$ | $\\nearrow$ | $5$ | $\\searrow$ | $-2$ | $\\nearrow$ | $1$ |\n\nEn $-\\infty$ et en $+\\infty$, les valeurs écrites sont les limites de $f$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien de solutions l'équation $f(x) = 0$ admet-elle dans $\\mathbb{R}$ ?",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Découpe $\\mathbb{R}$ selon les flèches du tableau, puis applique le théorème sur chaque morceau, où $f$ est continue et strictement monotone.",
+          "Sur $]-\\infty\\,;\\,1]$, $f$ prend toutes les valeurs de $]-\\infty\\,;\\,5]$, chacune une seule fois. Fais de même sur $[1\\,;\\,4]$, puis sur $[4\\,;\\,+\\infty[$, et regarde si $0$ est atteint sur chaque morceau."
+        ],
+        "revoir": "l-continuite-027",
+        "solution": "On applique le théorème des valeurs intermédiaires, dans le cas d'une fonction continue strictement monotone, sur chaque intervalle du tableau. Sur les deux intervalles non bornés, on utilise son extension admise : la borne infinie est remplacée par la limite de $f$.\n\n- Sur $]-\\infty\\,;\\,1]$, $f$ est continue et strictement croissante, de la limite $-\\infty$ jusqu'à $f(1) = 5$ : $0$ est atteint une fois.\n- Sur $[1\\,;\\,4]$, $f$ est continue et strictement décroissante, de $5$ à $-2$ : $0$ est atteint une fois.\n- Sur $[4\\,;\\,+\\infty[$, $f$ est continue et strictement croissante, de $-2$ jusqu'à la limite $1$, non atteinte : $0$ est strictement compris entre $-2$ et $1$, il est atteint une fois.\n\nLes morceaux ont en commun les réels $1$ et $4$. Comme $f(1) = 5$ et $f(4) = -2$ ne valent pas $0$, aucune solution n'est comptée deux fois. L'équation $f(x) = 0$ admet donc $3$ solutions dans $\\mathbb{R}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de solutions l'équation $f(x) = 1$ admet-elle dans $\\mathbb{R}$ ?",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Même découpage : sur chaque morceau, regarde si la valeur cherchée est entre les deux valeurs extrêmes, et si elle est vraiment prise.",
+          "Sur le dernier morceau, la valeur cherchée est la limite de $f$ en $+\\infty$ : $f$ l'atteint-elle ? $f$ est strictement croissante et s'en rapproche par en dessous."
+        ],
+        "revoir": "l-continuite-026",
+        "solution": "- Sur $]-\\infty\\,;\\,1]$, $f$ prend chaque valeur de $]-\\infty\\,;\\,5]$ une fois : $1$ est atteint une fois.\n- Sur $[1\\,;\\,4]$, $f$ prend chaque valeur de $[-2\\,;\\,5]$ une fois : $1$ est atteint une fois.\n- Sur $[4\\,;\\,+\\infty[$, $f$ est strictement croissante de $-2$ vers sa limite $1$ : pour tout $x \\geqslant 4$, $f(x) < 1$. La valeur $1$ n'est jamais atteinte sur ce morceau.\n\nL'équation $f(x) = 1$ admet donc $2$ solutions dans $\\mathbb{R}$.",
+        "erreurFrequente": "Compter une solution sur $[4\\,;\\,+\\infty[$ : une limite n'est pas une valeur prise par $f$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien de solutions l'équation $f(x) = -3$ admet-elle dans $\\mathbb{R}$ ?",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "Même découpage : sur chaque morceau, regarde si $-3$ est entre les deux valeurs extrêmes.",
+          "Sur les deux derniers morceaux du tableau, la plus petite valeur de $f$ est $-2$. Et sur le premier ?"
+        ],
+        "revoir": "l-continuite-027",
+        "solution": "- Sur $]-\\infty\\,;\\,1]$, $f$ prend chaque valeur de $]-\\infty\\,;\\,5]$ une fois : $-3$ est atteint une fois.\n- Sur $[1\\,;\\,4]$ et sur $[4\\,;\\,+\\infty[$, $f(x) \\geqslant -2$ : $-3$ n'est pas atteint.\n\nL'équation $f(x) = -3$ admet donc une seule solution, dans $]-\\infty\\,;\\,1[$ : la réponse est $1$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-003",
+    "chapitre": "continuite",
+    "niveau": 1,
+    "notions": ["n-continuite-valeurs-intermediaires"],
+    "capacites": ["bo-m-continuite-04"],
+    "titre": "Encadrer une solution, puis l'arrondir",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 30,
+    "preambule": "Soit $f$ la fonction définie sur $[1\\,;\\,2]$ par $f(x) = x^3 + 2x - 5$. Elle est continue et strictement croissante sur $[1\\,;\\,2]$, et l'équation $f(x) = 0$ y admet une unique solution $\\alpha$. La calculatrice donne : $f(1{,}32) \\approx -0{,}060$ ; $f(1{,}325) \\approx -0{,}024$ ; $f(1{,}33) \\approx 0{,}013$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quel encadrement de $\\alpha$ d'amplitude $10^{-2}$ ces valeurs donnent-elles ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$1{,}32 < \\alpha < 1{,}33$",
+            "$1{,}33 < \\alpha < 1{,}34$",
+            "$1{,}31 < \\alpha < 1{,}32$",
+            "$-0{,}060 < \\alpha < 0{,}013$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$f(1{,}33) > 0 = f(\\alpha)$ et $f$ est croissante : $\\alpha$ est avant $1{,}33$, pas après.",
+            "$f(1{,}32) < 0 = f(\\alpha)$ et $f$ est croissante : $\\alpha$ est après $1{,}32$, pas avant.",
+            "Ce sont des images $f(x)$, pas des valeurs de $x$ : on encadre $\\alpha$ par des abscisses."
+          ]
+        },
+        "indices": [
+          "Utilise la croissance de $f$ : si $f(a) < 0 = f(\\alpha)$, alors $a < \\alpha$.",
+          "$f(1{,}32) < 0$ donne $1{,}32 < \\alpha$. Que donne $f(1{,}33) > 0$ ?"
+        ],
+        "revoir": "l-continuite-021",
+        "solution": "$f$ est strictement croissante et $f(\\alpha) = 0$. Comme $f(1{,}32) < 0 = f(\\alpha)$, on a $1{,}32 < \\alpha$ : sinon, $\\alpha \\leqslant 1{,}32$ donnerait $f(\\alpha) \\leqslant f(1{,}32) < 0$. De même, $f(1{,}33) > 0$ donne $\\alpha < 1{,}33$. Donc $1{,}32 < \\alpha < 1{,}33$, encadrement d'amplitude $10^{-2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la valeur arrondie de $\\alpha$ à $10^{-2}$ près ?",
+        "reponse": { "type": "numerique", "valeur": 1.33, "tolerance": 0 },
+        "indices": [
+          "L'encadrement ne suffit pas : compare $\\alpha$ au milieu de l'encadrement, $1{,}325$.",
+          "$f(1{,}325) < 0 = f(\\alpha)$ et $f$ est croissante : $\\alpha$ est-il avant ou après $1{,}325$ ?"
+        ],
+        "revoir": "l-continuite-025",
+        "solution": "Le milieu de l'encadrement $1{,}32 < \\alpha < 1{,}33$ est $1{,}325$. Or $f(1{,}325) < 0 = f(\\alpha)$ et $f$ est croissante, donc $1{,}325 < \\alpha < 1{,}33$. Tous les nombres de cet intervalle s'arrondissent à $1{,}33$ : la valeur arrondie de $\\alpha$ à $10^{-2}$ près est $1{,}33$.",
+        "erreurFrequente": "Répondre $1{,}32$ en gardant la borne inférieure de l'encadrement : l'arrondi dépend de la position de $\\alpha$ par rapport au milieu $1{,}325$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-004",
+    "chapitre": "continuite",
+    "niveau": 1,
+    "notions": ["n-continuite-suite-recurrente"],
+    "capacites": ["bo-m-continuite-02"],
+    "titre": "Image d'une suite convergente",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 40,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "La suite $(u_n)$ converge vers $2$. Vers quel nombre converge la suite $\\left(e^{u_n - 2}\\right)$ ?",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "La fonction $f$ définie par $f(x) = e^{x - 2}$ est continue sur $\\mathbb{R}$ : utilise la propriété « image d'une suite convergente par une fonction continue ».",
+          "La suite $\\left(f(u_n)\\right)$ converge vers $f(\\ell)$, où $\\ell$ est la limite de $(u_n)$ : calcule $f(2)$."
+        ],
+        "revoir": "l-continuite-046",
+        "solution": "La fonction $f$ définie par $f(x) = e^{x - 2}$ est de la forme $x \\mapsto g(ax + b)$, avec $g$ la fonction exponentielle : elle est dérivable, donc continue, sur $\\mathbb{R}$. Comme $(u_n)$ converge vers $2$, la suite $\\left(e^{u_n - 2}\\right)$, c'est-à-dire $\\left(f(u_n)\\right)$, converge vers $f(2) = e^0 = 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Tous les termes de la suite $(u_n)$ sont supérieurs à $2$, et $(u_n)$ converge vers $3$. Vers quel nombre converge la suite $\\left(\\dfrac{u_n}{u_n - 1}\\right)$ ?",
+        "reponse": { "type": "numerique", "valeur": 1.5, "tolerance": 0 },
+        "indices": [
+          "Pose $f(x) = \\dfrac{x}{x - 1}$, et cherche un intervalle où $f$ est continue, qui contient tous les $u_n$ et leur limite.",
+          "$f$ est continue sur $]1\\,;\\,+\\infty[$, qui contient les $u_n$ et $3$. Il reste à calculer $f(3)$."
+        ],
+        "revoir": "l-continuite-046",
+        "solution": "Soit $f$ la fonction définie sur $]1\\,;\\,+\\infty[$ par $f(x) = \\dfrac{x}{x - 1}$. C'est un quotient de polynômes dont le dénominateur ne s'annule pas sur $]1\\,;\\,+\\infty[$ : $f$ y est dérivable, donc continue. Cet intervalle contient tous les $u_n$, qui sont supérieurs à $2$, et leur limite $3$. Donc $\\left(f(u_n)\\right)$ converge vers $f(3) = \\dfrac{3}{2} = 1{,}5$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $g$ la fonction définie sur $\\mathbb{R}$ par $g(x) = x + 1$ si $x < 1$, et $g(x) = 3$ si $x \\geqslant 1$. Soit $(v_n)$ la suite définie pour tout entier naturel $n$ par $v_n = 1 - \\dfrac{1}{n + 1}$, qui converge vers $1$. Vers quoi converge la suite $\\left(g(v_n)\\right)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$2$", "$3$, car $g(1) = 3$", "Elle n'a pas de limite.", "$1$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "La limite des images n'est l'image de la limite que si $g$ est continue en $1$. Or tous les $v_n$ sont strictement inférieurs à $1$ : on utilise la formule $g(x) = x + 1$.",
+            "Pour tout $n$, $g(v_n) = v_n + 1$ : cette suite a bien une limite, celle de $(v_n)$ augmentée de $1$.",
+            "$1$ est la limite de $(v_n)$, pas celle de $\\left(g(v_n)\\right)$ : il faut appliquer $g$."
+          ]
+        },
+        "indices": [
+          "Tous les termes $v_n$ sont strictement inférieurs à $1$ : quelle formule de $g$ s'applique à eux ?",
+          "Pour tout $n$, $g(v_n) = v_n + 1$. Cherche la limite de cette suite, puis compare-la à $g(1)$."
+        ],
+        "revoir": "l-continuite-047",
+        "solution": "Pour tout entier naturel $n$, $\\dfrac{1}{n + 1} > 0$, donc $v_n < 1$ et $g(v_n) = v_n + 1$. Comme $(v_n)$ converge vers $1$, la suite $\\left(g(v_n)\\right)$ converge vers $1 + 1 = 2$. Ce n'est pas $g(1) = 3$ : la limite des images n'est pas l'image de la limite, car $g$ n'est pas continue en $1$ (sa limite à gauche vaut $2$, alors que $g(1) = 3$)."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-005",
+    "chapitre": "continuite",
+    "niveau": 1,
+    "notions": ["n-continuite-suite-recurrente"],
+    "capacites": ["bo-m-continuite-05", "bo-m-continuite-02"],
+    "titre": "La limite vérifie $\\ell = f(\\ell)$",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 50,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $(u_n)$ la suite définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = 0{,}5u_n + 3$. On admet qu'elle converge vers un réel $\\ell$. Que vaut $\\ell$ ?",
+        "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+        "indices": [
+          "La fonction $f$ définie par $f(x) = 0{,}5x + 3$ est continue sur $\\mathbb{R}$ : la limite vérifie $\\ell = f(\\ell)$.",
+          "Écris $\\ell = 0{,}5\\ell + 3$, puis regroupe les termes en $\\ell$ dans le membre de gauche."
+        ],
+        "revoir": "l-continuite-049",
+        "solution": "La fonction $f$ définie par $f(x) = 0{,}5x + 3$ est affine, donc continue sur $\\mathbb{R}$, et $u_{n+1} = f(u_n)$. La suite converge vers $\\ell$ : en passant à la limite, $\\ell = 0{,}5\\ell + 3$. Donc $0{,}5\\ell = 3$, soit $\\ell = 6$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $(v_n)$ la suite définie par $v_0 = 0$ et, pour tout entier naturel $n$, $v_{n+1} = \\sqrt{v_n + 6}$. On admet que $v_n \\geqslant 0$ pour tout $n$, et que $(v_n)$ converge vers un réel $\\ell$. Que vaut $\\ell$ ?",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "$v_{n+1} = f(v_n)$ avec $f(x) = \\sqrt{x + 6}$. Comme toute fonction $x \\mapsto \\sqrt{ax + b}$, $f$ est continue là où $x + 6 \\geqslant 0$, donc sur $[0\\,;\\,+\\infty[$ : la limite vérifie $\\ell = \\sqrt{\\ell + 6}$.",
+          "En élevant au carré, $\\ell^2 = \\ell + 6$, soit $\\ell^2 - \\ell - 6 = 0$. Résous cette équation du second degré, puis garde la solution compatible avec $\\ell \\geqslant 0$."
+        ],
+        "revoir": "l-continuite-055",
+        "solution": "La fonction $f$ définie par $f(x) = \\sqrt{x + 6}$ est de la forme $x \\mapsto \\sqrt{ax + b}$ : elle est continue sur $[-6\\,;\\,+\\infty[$, où $x + 6 \\geqslant 0$, donc sur $[0\\,;\\,+\\infty[$, et elle est à valeurs positives ; de plus, $v_{n+1} = f(v_n)$. Par passage à la limite dans $v_n \\geqslant 0$, on a $\\ell \\geqslant 0$. Comme $f$ est continue, $\\ell = f(\\ell)$, soit $\\ell = \\sqrt{\\ell + 6}$. En élevant au carré : $\\ell^2 = \\ell + 6$, soit $\\ell^2 - \\ell - 6 = 0$. Le discriminant vaut $1 + 24 = 25$ ; les solutions sont $\\dfrac{1 - 5}{2} = -2$ et $\\dfrac{1 + 5}{2} = 3$. Comme $\\ell \\geqslant 0$, $\\ell = 3$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans la question 2, quel argument permet de passer de $v_{n+1} = \\sqrt{v_n + 6}$ à $\\ell = \\sqrt{\\ell + 6}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "La fonction $x \\mapsto \\sqrt{x + 6}$ est continue sur un intervalle qui contient tous les $v_n$ et $\\ell$.",
+            "La suite $(v_n)$ est croissante.",
+            "Les suites $(v_n)$ et $(v_{n+1})$ ont la même limite, et cela suffit.",
+            "On peut toujours remplacer $v_n$ par sa limite dans une formule."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le sens de variation sert à prouver la convergence, pas à passer à la limite dans $\\sqrt{v_n + 6}$.",
+            "Cela donne la limite du membre de gauche ; pour celle du membre de droite, $\\sqrt{v_n + 6}$, il faut la continuité de la fonction.",
+            "C'est faux sans continuité : avec la fonction du parking, la limite des images n'est pas l'image de la limite."
+          ]
+        },
+        "indices": [
+          "Le membre de gauche, $v_{n+1}$, tend vers $\\ell$. Qu'est-ce qui garantit que le membre de droite tend vers $\\sqrt{\\ell + 6}$ ?",
+          "Le membre de droite est l'image de $v_n$ par la fonction $f$ définie par $f(x) = \\sqrt{x + 6}$. Quelle propriété de $f$ permet de dire que $f(v_n)$ tend vers $f(\\ell)$ ?"
+        ],
+        "revoir": "l-continuite-053",
+        "solution": "Le membre de gauche $v_{n+1}$ tend vers $\\ell$. Le membre de droite est $f(v_n)$, avec $f(x) = \\sqrt{x + 6}$ : $f$ est continue sur $[0\\,;\\,+\\infty[$, qui contient tous les $v_n$ et $\\ell$, donc $f(v_n)$ tend vers $f(\\ell)$. Une suite n'a qu'une limite : $\\ell = \\sqrt{\\ell + 6}$. L'argument est la continuité de $x \\mapsto \\sqrt{x + 6}$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-006",
+    "chapitre": "continuite",
+    "niveau": 1,
+    "notions": ["n-continuite-suite-recurrente"],
+    "capacites": ["bo-m-continuite-05", "bo-m-suites-05", "bo-m-suites-06", "bo-m-logique-07"],
+    "titre": "Prouver la convergence, puis choisir la bonne solution",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 60,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $(u_n)$ la suite définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = \\dfrac{u_n^2 + 6}{5}$. On admet que $0 \\leqslant u_n \\leqslant 2{,}5$ pour tout $n$, et que $(u_n)$ converge vers un réel $\\ell$. Que vaut $\\ell$ ?",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Commence par l'équation $\\ell = f(\\ell)$, avec $f(x) = \\dfrac{x^2 + 6}{5}$, continue sur $\\mathbb{R}$ ; puis situe $\\ell$ grâce à l'encadrement.",
+          "$\\ell = \\dfrac{\\ell^2 + 6}{5}$ équivaut à $\\ell^2 - 5\\ell + 6 = 0$. Trouve ses deux solutions, puis élimine celle qui ne vérifie pas $0 \\leqslant \\ell \\leqslant 2{,}5$."
+        ],
+        "revoir": "l-continuite-058",
+        "solution": "La fonction $f$ définie par $f(x) = \\dfrac{x^2 + 6}{5}$ est un polynôme, continue sur $\\mathbb{R}$, et $u_{n+1} = f(u_n)$. Comme $(u_n)$ converge vers $\\ell$, $\\ell = f(\\ell)$, soit $5\\ell = \\ell^2 + 6$, c'est-à-dire $\\ell^2 - 5\\ell + 6 = 0$. Le discriminant vaut $25 - 24 = 1$ : les solutions sont $\\dfrac{5 - 1}{2} = 2$ et $\\dfrac{5 + 1}{2} = 3$. Par passage à la limite dans $u_n \\leqslant 2{,}5$, $\\ell \\leqslant 2{,}5$ : donc $\\ell \\neq 3$, et $\\ell = 2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $(w_n)$ la suite définie par $w_0 = 2$ et, pour tout entier naturel $n$, $w_{n+1} = 3w_n - 2$. Vrai ou faux ? « L'équation $\\ell = 3\\ell - 2$ a pour solution $\\ell = 1$ : la suite $(w_n)$ converge donc vers $1$. »",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$w_1 = 4$, $w_2 = 10$, $w_3 = 28$ : la suite s'éloigne de $1$. En fait, $w_n = 3^n + 1$, qui tend vers $+\\infty$. L'équation dit seulement : si la suite convergeait, sa limite vaudrait $1$."
+        },
+        "indices": [
+          "La propriété $\\ell = f(\\ell)$ suppose que la suite converge. Calcule les premiers termes pour voir comment elle se comporte.",
+          "$w_1 = 4$ et $w_2 = 10$. Montre que $w_n - 1$ est multiplié par $3$ à chaque étape."
+        ],
+        "revoir": "l-continuite-054",
+        "solution": "Pour tout $n$, $w_{n+1} - 1 = 3w_n - 3 = 3(w_n - 1)$ : la suite $(w_n - 1)$ est géométrique de raison $3$ et de premier terme $w_0 - 1 = 1$. Donc $w_n = 3^n + 1$, qui tend vers $+\\infty$, car $3 > 1$. La suite ne converge pas : l'affirmation est fausse. L'équation $\\ell = 3\\ell - 2$ ne sert qu'une fois la convergence démontrée."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Une fonction $f$ est continue sur $\\mathbb{R}$, et l'équation $f(x) = x$ a exactement trois solutions : $-1$, $2$ et $5$. Une suite vérifie $u_{n+1} = f(u_n)$ ; on a démontré qu'elle est décroissante, avec $u_0 = 4$ et $u_n \\geqslant 1$ pour tout $n$. Que vaut sa limite $\\ell$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\ell = 2$", "$\\ell = 5$", "$\\ell = -1$", "$\\ell = 1$, le minorant"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "La suite est décroissante : $\\ell \\leqslant u_0 = 4$. La valeur $5$ est exclue.",
+            "Par passage à la limite dans $u_n \\geqslant 1$, $\\ell \\geqslant 1$ : la valeur $-1$ est exclue.",
+            "Un minorant n'est pas forcément la limite ; d'ailleurs, $1$ n'est pas une solution de $f(x) = x$."
+          ]
+        },
+        "indices": [
+          "La suite est décroissante et minorée : elle converge, et $\\ell = f(\\ell)$. Situe ensuite $\\ell$ entre deux nombres.",
+          "Par passage à la limite, $\\ell \\geqslant 1$ ; et comme la suite décroît, $\\ell \\leqslant u_0 = 4$. Quelle solution de $f(x) = x$ est dans $[1\\,;\\,4]$ ?"
+        ],
+        "revoir": "l-continuite-058",
+        "solution": "La suite est décroissante et minorée par $1$ : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$. Comme $f$ est continue, $\\ell = f(\\ell)$ : $\\ell$ vaut $-1$, $2$ ou $5$. Par passage à la limite dans $u_n \\geqslant 1$, $\\ell \\geqslant 1$ ; et comme la suite est décroissante, $u_n \\leqslant u_0 = 4$ pour tout $n$, donc $\\ell \\leqslant 4$. La seule solution dans $[1\\,;\\,4]$ est $2$ : $\\ell = 2$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-007",
+    "chapitre": "continuite",
+    "niveau": 1,
+    "notions": ["n-continuite-fonction-continue"],
+    "capacites": ["bo-m-continuite-01"],
+    "titre": "Continue ou pas en un point ?",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 70,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $g$ la fonction définie sur $\\mathbb{R}$ par $g(x) = x + 1$ si $x < 0$, et $g(x) = e^x$ si $x \\geqslant 0$. La fonction $g$ est-elle continue en $0$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Oui : la limite à gauche, la limite à droite et $g(0)$ valent toutes $1$.",
+            "Non : $g$ est définie par deux formules différentes.",
+            "Non : la limite à gauche en $0$ vaut $0$.",
+            "On ne peut pas savoir sans tracer la courbe."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Une fonction définie par morceaux peut être continue : ce qui compte, c'est que les morceaux se raccordent en $0$.",
+            "À gauche de $0$, $g(x) = x + 1$, qui tend vers $0 + 1 = 1$, et non vers $0$.",
+            "Le calcul des deux limites et de $g(0)$ suffit à conclure, sans courbe."
+          ]
+        },
+        "indices": [
+          "Pour une fonction définie par morceaux, compare en $0$ trois nombres : la limite à gauche, la limite à droite et $g(0)$.",
+          "À gauche, $x + 1$ tend vers $0 + 1$ ; $g(0) = e^0$. Calcule ces deux nombres, puis la limite à droite de $e^x$."
+        ],
+        "revoir": "l-continuite-003",
+        "solution": "À gauche de $0$, $g(x) = x + 1$ tend vers $1$. On a $g(0) = e^0 = 1$, et à droite, $e^x$ tend vers $e^0 = 1$. Les trois nombres sont égaux : $\\lim\\limits_{x \\to 0} g(x) = g(0)$, donc $g$ est continue en $0$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $h$ la fonction définie sur $\\mathbb{R}$ par $h(x) = x^2 - 1$ si $x < 2$, et $h(x) = 2x$ si $x \\geqslant 2$. Vrai ou faux ? $h$ est continue en $2$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "À gauche de $2$, $x^2 - 1$ tend vers $3$, alors que $h(2) = 4$ : la courbe saute de $3$ à $4$ en $2$."
+        },
+        "indices": [
+          "Calcule la limite de $h$ à gauche de $2$, et compare-la à $h(2)$.",
+          "À gauche, on utilise $x^2 - 1$ ; en $2$ même, on utilise la formule $2x$, car $2 \\geqslant 2$."
+        ],
+        "revoir": "l-continuite-005",
+        "solution": "$\\lim\\limits_{\\substack{x \\to 2 \\\\ x < 2}} h(x) = 2^2 - 1 = 3$, et $h(2) = 2 \\times 2 = 4$. La limite à gauche est différente de $h(2)$ : $h$ n'est pas continue en $2$. L'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $a$ un réel et $k$ la fonction définie sur $\\mathbb{R}$ par $k(x) = 3x + a$ si $x \\leqslant 1$, et $k(x) = x^2 + 4$ si $x > 1$. Pour quelle valeur de $a$ la fonction $k$ est-elle continue en $1$ ?",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Écris que la limite à droite de $k$ en $1$ est égale à $k(1)$. La limite à gauche, elle, vaut déjà $k(1)$, car $3x + a$ est un polynôme.",
+          "$k(1) = 3 + a$, et à droite, $x^2 + 4$ tend vers $5$. Résous l'équation obtenue."
+        ],
+        "revoir": "l-continuite-003",
+        "solution": "$k(1) = 3 \\times 1 + a = 3 + a$, et la limite à gauche en $1$ vaut aussi $3 + a$. À droite, $\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} \\left(x^2 + 4\\right) = 1 + 4 = 5$. La fonction $k$ est continue en $1$ si $3 + a = 5$, soit $a = 2$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-008",
+    "chapitre": "continuite",
+    "niveau": 1,
+    "notions": ["n-continuite-fonction-continue"],
+    "capacites": ["bo-m-continuite-01", "bo-m-logique-09"],
+    "titre": "Dérivable, donc continue : et dans l'autre sens ?",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 80,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Sur quel(s) intervalle(s) la fonction $f$ définie par $f(x) = \\dfrac{2x - 1}{x + 3}$ est-elle continue ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Sur $]-\\infty\\,;\\,-3[$ et sur $]-3\\,;\\,+\\infty[$",
+            "Sur $\\mathbb{R}$",
+            "Sur $\\left]-\\infty\\,;\\,\\dfrac{1}{2}\\right[$ et sur $\\left]\\dfrac{1}{2}\\,;\\,+\\infty\\right[$",
+            "Sur $]-3\\,;\\,+\\infty[$ seulement"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$f$ n'est pas définie en $-3$, où le dénominateur s'annule : elle ne peut pas être continue sur $\\mathbb{R}$.",
+            "$\\dfrac{1}{2}$ annule le numérateur : $f\\left(\\dfrac{1}{2}\\right) = 0$ existe. C'est la valeur qui annule le dénominateur qu'il faut exclure.",
+            "Le dénominateur ne s'annule pas non plus sur $]-\\infty\\,;\\,-3[$ : $f$ y est aussi dérivable, donc continue."
+          ]
+        },
+        "indices": [
+          "Un quotient de polynômes est dérivable, donc continu, sur chaque intervalle où son dénominateur ne s'annule pas.",
+          "Le dénominateur $x + 3$ s'annule en $-3$ : sur quels intervalles reste-t-il non nul ?"
+        ],
+        "revoir": "l-continuite-007",
+        "solution": "$x \\mapsto 2x - 1$ et $x \\mapsto x + 3$ sont des polynômes, et $x + 3 = 0$ seulement pour $x = -3$. Le quotient $f$ est dérivable sur $]-\\infty\\,;\\,-3[$ et sur $]-3\\,;\\,+\\infty[$, donc continu sur chacun de ces intervalles. En $-3$, $f$ n'est pas définie."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux ? Si une fonction est continue en un réel $a$, alors elle est dérivable en $a$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "La fonction racine carrée est continue en $0$, mais pas dérivable en $0$ : son taux de variation $\\dfrac{1}{\\sqrt{h}}$ tend vers $+\\infty$ quand $h$ tend vers $0$."
+        },
+        "indices": [
+          "Cette phrase est la réciproque de la propriété « dérivable entraîne continue ». Cherche un contre-exemple dans le cours.",
+          "Pense à la fonction racine carrée en $0$ : est-elle continue en $0$ ? Est-elle dérivable en $0$ ?"
+        ],
+        "revoir": "l-continuite-011",
+        "solution": "La fonction racine carrée est continue en $0$, car $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$. Mais elle n'est pas dérivable en $0$ : pour $h > 0$, son taux de variation vaut $\\dfrac{\\sqrt{h}}{h} = \\dfrac{1}{\\sqrt{h}}$, qui tend vers $+\\infty$. C'est un contre-exemple : l'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Si une fonction n'est pas continue en un réel $a$, alors elle n'est pas dérivable en $a$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Si la fonction était dérivable en $a$, elle y serait continue, d'après le cours : c'est impossible. Cette phrase est la contraposée de « si $f$ est dérivable en $a$, alors $f$ est continue en $a$ », et une implication vraie a toujours une contraposée vraie."
+        },
+        "indices": [
+          "Attention, ce n'est pas la phrase de la question 2 : ici, on part d'une fonction **non** continue en $a$. Raisonne par l'absurde : suppose qu'elle soit quand même dérivable en $a$, et applique la propriété « dérivable entraîne continue ».",
+          "Si elle était dérivable en $a$, elle serait continue en $a$, d'après le cours. Or l'hypothèse dit qu'elle n'est pas continue en $a$ : que peux-tu en conclure sur sa dérivabilité en $a$ ?"
+        ],
+        "revoir": "l-continuite-061",
+        "solution": "D'après le cours, démontré réel par réel : si $f$ est dérivable en $a$, alors $f$ est continue en $a$. Soit $f$ une fonction qui n'est pas continue en $a$. Si $f$ était dérivable en $a$, elle serait continue en $a$ : c'est impossible. Donc $f$ n'est pas dérivable en $a$, et l'affirmation est vraie.\n\nCette phrase est la **contraposée** de la propriété « si $P$, alors $Q$ », avec $P$ : « $f$ est dérivable en $a$ » et $Q$ : « $f$ est continue en $a$ ». La contraposée s'écrit « si $Q$ est fausse, alors $P$ est fausse », et une implication vraie a toujours une contraposée vraie. Par exemple, le tarif du parking, qui saute en $1$, n'est pas dérivable en $1$.",
+        "erreurFrequente": "Répondre « faux » en confondant cette phrase avec la réciproque de la question 2, qui part de « continue ». Ici, on part de « non continue » : c'est la contraposée, toujours vraie quand la propriété l'est."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-009",
+    "chapitre": "continuite",
+    "niveau": 1,
+    "notions": ["n-continuite-approcher-solution"],
+    "capacites": ["bo-m-continuite-06"],
+    "titre": "Faire tourner une dichotomie à la main",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 90,
+    "preambule": "On approche la solution positive de l'équation $x^2 - 5 = 0$, c'est-à-dire $\\sqrt{5}$, par dichotomie, avec le programme ci-dessous. La fonction $f$ est continue sur $[2\\,;\\,3]$, avec $f(2) = -1$ et $f(3) = 4$.",
+    "code": {
+      "langage": "python",
+      "source": "def f(x):\n    return x**2 - 5\n\ndef dichotomie(a, b, p):\n    while b - a > p:\n        m = (a + b) / 2\n        if f(a) * f(m) <= 0:   # f change de signe entre a et m\n            b = m\n        else:                  # sinon, entre m et b\n            a = m\n    return [a, b]"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On lance l'appel dichotomie(2, 3, 0.3). Au premier passage dans la boucle, quel intervalle est gardé ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$[2\\,;\\,2{,}5]$", "$[2{,}5\\,;\\,3]$", "$[2\\,;\\,3]$", "$[2{,}25\\,;\\,2{,}5]$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$f(2) < 0$ et $f(2{,}5) > 0$ : le changement de signe a lieu entre $2$ et $2{,}5$, pas entre $2{,}5$ et $3$.",
+            "À chaque passage, l'intervalle est coupé en deux : l'amplitude passe de $1$ à $0{,}5$.",
+            "Au premier passage, on ne coupe qu'une fois : le milieu de $[2\\,;\\,3]$ est $2{,}5$."
+          ]
+        },
+        "indices": [
+          "Calcule le milieu $m$ de $[2\\,;\\,3]$, puis le signe de $f(2) \\times f(m)$.",
+          "$m = 2{,}5$ et $f(2{,}5) = 6{,}25 - 5 = 1{,}25$. Le produit $f(2) \\times f(2{,}5)$ est-il négatif ou positif ?"
+        ],
+        "revoir": "l-continuite-033",
+        "solution": "Au départ, $b - a = 1 > 0{,}3$ : la boucle tourne. Le milieu est $m = 2{,}5$, et $f(2{,}5) = 6{,}25 - 5 = 1{,}25$. Donc $f(2) \\times f(2{,}5) = -1 \\times 1{,}25 < 0$ : on remplace $b$ par $2{,}5$. L'intervalle gardé est $[2\\,;\\,2{,}5]$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Que renvoie l'appel dichotomie(2, 3, 0.3) ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "La liste formée de $2$ et $2{,}25$",
+            "La liste formée de $2{,}25$ et $2{,}5$",
+            "La liste formée de $2$ et $2{,}5$",
+            "La liste formée de $2{,}125$ et $2{,}25$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$f(2{,}25) > 0$ : le changement de signe reste entre $2$ et $2{,}25$, donc $a$ ne bouge pas.",
+            "Après le premier passage, l'amplitude vaut $0{,}5 > 0{,}3$ : la boucle tourne encore une fois.",
+            "Après le deuxième passage, l'amplitude vaut $0{,}25 \\leqslant 0{,}3$ : la boucle s'arrête, il n'y a pas de troisième passage."
+          ]
+        },
+        "indices": [
+          "Repars de $[2\\,;\\,2{,}5]$ : l'amplitude $0{,}5$ est-elle plus grande que $0{,}3$ ? Si oui, fais un passage de plus.",
+          "Deuxième passage : $m = 2{,}25$ et $f(2{,}25) = 5{,}062\\,5 - 5 = 0{,}062\\,5$. Quel intervalle garde-t-on, et la boucle continue-t-elle ?"
+        ],
+        "revoir": "l-continuite-034",
+        "solution": "Après le premier passage, $a = 2$, $b = 2{,}5$, et $b - a = 0{,}5 > 0{,}3$ : la boucle tourne encore. Le milieu est $2{,}25$ et $f(2{,}25) = 0{,}062\\,5 > 0$, donc $f(2) \\times f(2{,}25) < 0$ : on remplace $b$ par $2{,}25$. Maintenant, $b - a = 0{,}25 \\leqslant 0{,}3$ : la boucle s'arrête. La fonction renvoie la liste formée de $2$ et $2{,}25$ : $2 \\leqslant \\sqrt{5} \\leqslant 2{,}25$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Toujours à partir de $[2\\,;\\,3]$, combien de passages dans la boucle faut-il au minimum pour obtenir un encadrement d'amplitude inférieure ou égale à $0{,}01$ ?",
+        "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0 },
+        "indices": [
+          "Après $n$ passages, l'amplitude de départ, égale à $1$, est divisée par $2^n$.",
+          "Il faut $\\dfrac{1}{2^n} \\leqslant 0{,}01$, soit $2^n \\geqslant 100$. Calcule les puissances de $2$ jusqu'à dépasser $100$."
+        ],
+        "revoir": "l-continuite-033",
+        "solution": "Après $n$ passages, l'amplitude vaut $\\dfrac{3 - 2}{2^n} = \\dfrac{1}{2^n}$. Il faut $\\dfrac{1}{2^n} \\leqslant 0{,}01$, soit $2^n \\geqslant 100$. Or $2^6 = 64 < 100$ et $2^7 = 128 \\geqslant 100$ : il faut $7$ passages au minimum."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-010",
+    "chapitre": "continuite",
+    "niveau": 1,
+    "notions": ["n-continuite-approcher-solution"],
+    "capacites": ["bo-m-continuite-07"],
+    "titre": "Newton et sécante : une étape à la main",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 100,
+    "preambule": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = x^2 - 5$, de dérivée $f'(x) = 2x$. On cherche une valeur approchée de $\\sqrt{5} \\approx 2{,}236$, solution positive de l'équation $f(x) = 0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On applique la méthode de Newton à partir de $x_0 = 2$. Calculer $x_1$.",
+        "reponse": { "type": "numerique", "valeur": 2.25, "tolerance": 0 },
+        "indices": [
+          "Utilise la formule $x_1 = x_0 - \\dfrac{f(x_0)}{f'(x_0)}$ : c'est l'abscisse du point où la tangente coupe l'axe des abscisses.",
+          "$f(2) = 4 - 5 = -1$ et $f'(2) = 4$. Remplace dans la formule, en faisant attention au signe."
+        ],
+        "revoir": "l-continuite-036",
+        "solution": "$f(2) = 4 - 5 = -1$ et $f'(2) = 2 \\times 2 = 4$. Donc $x_1 = 2 - \\dfrac{-1}{4} = 2 + 0{,}25 = 2{,}25$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On applique une étape de la méthode de la sécante, avec les points de la courbe d'abscisses $a = 2$ et $b = 3$. Calculer l'abscisse $c$ du point où cette sécante coupe l'axe des abscisses.",
+        "reponse": { "type": "numerique", "valeur": 2.2, "tolerance": 0 },
+        "indices": [
+          "La formule est $c = b - f(b) \\times \\dfrac{b - a}{f(b) - f(a)}$ : commence par calculer $f(2)$ et $f(3)$.",
+          "$f(2) = -1$ et $f(3) = 4$, donc $\\dfrac{b - a}{f(b) - f(a)} = \\dfrac{1}{5}$. Termine le calcul de $c$."
+        ],
+        "revoir": "l-continuite-040",
+        "solution": "$f(2) = -1$ et $f(3) = 9 - 5 = 4$. La sécante a pour coefficient directeur $\\dfrac{4 - (-1)}{3 - 2} = 5$, donc $c = 3 - 4 \\times \\dfrac{1}{5} = 3 - 0{,}8 = 2{,}2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Que se passe-t-il si on lance la méthode de Newton à partir de $x_0 = 0$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Elle échoue : $f'(0) = 0$, la tangente est horizontale et ne coupe pas l'axe des abscisses.",
+            "Elle donne $x_1 = 0$, puis reste bloquée en $0$.",
+            "Elle converge vers $-\\sqrt{5}$.",
+            "Elle converge vers $\\sqrt{5}$, comme à partir de $x_0 = 2$."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Pour calculer $x_1$, il faut diviser $f(0) = -5$ par $f'(0) = 0$ : $x_1$ n'existe pas.",
+            "La méthode s'arrête dès le premier calcul : on ne peut pas diviser par $f'(0) = 0$.",
+            "La première étape est déjà impossible : $x_1 = 0 - \\dfrac{f(0)}{f'(0)}$ demande de diviser par $f'(0) = 0$."
+          ]
+        },
+        "indices": [
+          "Écris la formule de $x_1$ avec $x_0 = 0$ : que faut-il calculer ?",
+          "$f'(0) = 2 \\times 0$. Que vaut le dénominateur de $\\dfrac{f(0)}{f'(0)}$ ? Que dit-il de la tangente au point d'abscisse $0$ ?"
+        ],
+        "revoir": "l-continuite-036",
+        "solution": "$x_1 = 0 - \\dfrac{f(0)}{f'(0)}$, avec $f(0) = -5$ et $f'(0) = 0$ : la division est impossible. Géométriquement, la tangente au point d'abscisse $0$ a pour coefficient directeur $0$ : elle est horizontale, d'équation $y = -5$, et ne coupe jamais l'axe des abscisses. La méthode échoue (en Python, une erreur de division par zéro)."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-011",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-valeurs-intermediaires"],
+    "capacites": ["bo-m-continuite-03", "bo-m-continuite-04"],
+    "titre": "Existence, unicité, puis arrondi d'une solution",
+    "duree": 12,
+    "calculatrice": true,
+    "ordre": 110,
+    "preambule": "Soit $f$ la fonction définie sur $[1\\,;\\,3]$ par $f(x) = -x^3 + 3x + 1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étudier le sens de variation de $f$ sur $[1\\,;\\,3]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f$ est un polynôme : calcule $f'(x)$ et étudie son signe sur $[1\\,;\\,3]$.",
+          "$f'(x) = -3x^2 + 3 = 3\\left(1 - x^2\\right)$.",
+          "Pour $1 \\leqslant x \\leqslant 3$, compare $x^2$ à $1$ : quel est le signe de $1 - x^2$ ? Où s'annule-t-il ?"
+        ],
+        "revoir": "l-continuite-015",
+        "solution": "$f$ est un polynôme, dérivable sur $[1\\,;\\,3]$, et $f'(x) = -3x^2 + 3 = 3\\left(1 - x^2\\right)$. Pour $1 < x \\leqslant 3$, $x^2 > 1$, donc $f'(x) < 0$ ; et $f'(1) = 0$. La dérivée est strictement négative sur $[1\\,;\\,3]$, sauf en $1$ où elle s'annule : $f$ est strictement décroissante sur $[1\\,;\\,3]$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer que l'équation $f(x) = 0$ admet une unique solution $\\alpha$ dans $[1\\,;\\,3]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Applique le théorème des valeurs intermédiaires dans le cas d'une fonction continue et strictement monotone : trois hypothèses à citer.",
+          "$f$ est dérivable, donc continue, et strictement décroissante sur $[1\\,;\\,3]$ d'après la question 1. Calcule $f(1)$ et $f(3)$.",
+          "$f(1) = 3$ et $f(3) = -17$ : $0$ est-il compris entre ces deux nombres ? Rédige la conclusion en citant le théorème."
+        ],
+        "revoir": "l-continuite-024",
+        "solution": "$f$ est dérivable sur $[1\\,;\\,3]$, donc continue sur $[1\\,;\\,3]$, et strictement décroissante d'après la question 1. De plus, $f(1) = -1 + 3 + 1 = 3$ et $f(3) = -27 + 9 + 1 = -17$ : $0$ est compris entre $-17$ et $3$. D'après le théorème des valeurs intermédiaires, appliqué à une fonction continue et strictement décroissante, l'équation $f(x) = 0$ admet une unique solution $\\alpha$ dans $[1\\,;\\,3]$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "À l'aide de la calculatrice, déterminer un encadrement de $\\alpha$ d'amplitude $10^{-2}$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$1{,}87 < \\alpha < 1{,}88$",
+            "$1{,}88 < \\alpha < 1{,}89$",
+            "$1{,}8 < \\alpha < 1{,}9$",
+            "$1{,}86 < \\alpha < 1{,}87$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$f(1{,}88) \\approx -0{,}005 < 0$ : comme $f$ est décroissante et $f(\\alpha) = 0$, $\\alpha$ est avant $1{,}88$.",
+            "C'est un encadrement juste, mais d'amplitude $10^{-1}$ : il faut l'affiner avec un pas de $0{,}01$.",
+            "$f(1{,}87) \\approx 0{,}071 > 0$ : comme $f$ est décroissante, $\\alpha$ est après $1{,}87$."
+          ]
+        },
+        "indices": [
+          "Utilise le tableau de valeurs de la calculatrice avec un pas de $0{,}1$, puis de $0{,}01$, et repère où $f(x)$ change de signe.",
+          "Avec un pas de $0{,}1$ : $f(1{,}8) = 0{,}568 > 0$ et $f(1{,}9) = -0{,}159 < 0$. Affine maintenant entre $1{,}8$ et $1{,}9$.",
+          "Attention : $f$ est décroissante. Si $f(a) > 0 = f(\\alpha)$, alors $a < \\alpha$."
+        ],
+        "revoir": "l-continuite-021",
+        "solution": "À la calculatrice, $f(1{,}8) = 0{,}568 > 0$ et $f(1{,}9) = -0{,}159 < 0$, puis $f(1{,}87) \\approx 0{,}071 > 0$ et $f(1{,}88) \\approx -0{,}005 < 0$. Comme $f$ est strictement décroissante et $f(\\alpha) = 0$ : $f(1{,}87) > f(\\alpha)$ donne $1{,}87 < \\alpha$, et $f(1{,}88) < f(\\alpha)$ donne $\\alpha < 1{,}88$. Donc $1{,}87 < \\alpha < 1{,}88$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire la valeur arrondie de $\\alpha$ à $10^{-2}$ près.",
+        "reponse": { "type": "numerique", "valeur": 1.88, "tolerance": 0 },
+        "indices": [
+          "Compare $\\alpha$ au milieu de l'encadrement, $1{,}875$, en calculant son image.",
+          "La calculatrice donne $f(1{,}875) \\approx 0{,}033 > 0$.",
+          "$f$ est décroissante : $f(1{,}875) > 0 = f(\\alpha)$ place-t-il $1{,}875$ avant $\\alpha$, ou après ?"
+        ],
+        "revoir": "l-continuite-025",
+        "solution": "Le milieu de l'encadrement est $1{,}875$, et $f(1{,}875) \\approx 0{,}033 > 0 = f(\\alpha)$. Comme $f$ est strictement décroissante, $1{,}875 < \\alpha$. Donc $1{,}875 < \\alpha < 1{,}88$ : la valeur arrondie de $\\alpha$ à $10^{-2}$ près est $1{,}88$.",
+        "erreurFrequente": "Raisonner comme pour une fonction croissante : ici, $f(1{,}875) > 0$ signifie que $\\alpha$ est après $1{,}875$, car $f$ décroît."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-012",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-valeurs-intermediaires"],
+    "capacites": ["bo-m-continuite-04", "bo-m-continuite-03", "bo-m-limites-fonctions-05"],
+    "titre": "Nombre de solutions selon un paramètre",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 120,
+    "preambule": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = -2x^3 + 3x^2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer les limites de $f$ en $-\\infty$ et en $+\\infty$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "En l'infini, les deux termes tendent vers des infinis de signes contraires : forme indéterminée. Mets le terme de plus haut degré en facteur.",
+          "Pour $x \\neq 0$, $f(x) = x^3\\left(-2 + \\dfrac{3}{x}\\right)$.",
+          "$\\dfrac{3}{x}$ tend vers $0$ en $\\pm\\infty$ : la parenthèse tend vers $-2$. Conclus par produit, en $-\\infty$ puis en $+\\infty$, avec le signe de $x^3$."
+        ],
+        "revoir": "l-limites-fonctions-031",
+        "solution": "Pour $x \\neq 0$, $f(x) = x^3\\left(-2 + \\dfrac{3}{x}\\right)$, et $\\lim\\limits_{x \\to \\pm\\infty} \\dfrac{3}{x} = 0$, donc la parenthèse tend vers $-2$. En $+\\infty$, $x^3$ tend vers $+\\infty$ : par produit, $\\lim\\limits_{x \\to +\\infty} f(x) = -\\infty$. En $-\\infty$, $x^3$ tend vers $-\\infty$ : par produit, $\\lim\\limits_{x \\to -\\infty} f(x) = +\\infty$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étudier les variations de $f$ et dresser son tableau de variations, limites comprises.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Calcule $f'(x)$, puis factorise-la pour étudier son signe.",
+          "$f'(x) = -6x^2 + 6x = 6x(1 - x)$.",
+          "Le produit $6x(1 - x)$ s'annule en $0$ et en $1$ ; il est positif entre ses racines. Calcule $f(0)$ et $f(1)$."
+        ],
+        "revoir": "l-continuite-027",
+        "solution": "$f$ est dérivable sur $\\mathbb{R}$ et $f'(x) = -6x^2 + 6x = 6x(1 - x)$. Ce trinôme s'annule en $0$ et en $1$, et il est du signe de son coefficient $-6$ à l'extérieur des racines : $f'(x) < 0$ sur $]-\\infty\\,;\\,0[$ et sur $]1\\,;\\,+\\infty[$, $f'(x) > 0$ sur $]0\\,;\\,1[$. Avec $f(0) = 0$ et $f(1) = -2 + 3 = 1$ :\n\n| $x$ | $-\\infty$ | | $0$ | | $1$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $-$ | $0$ | $+$ | $0$ | $-$ | |\n| variations de $f$ | $+\\infty$ | $\\searrow$ | $0$ | $\\nearrow$ | $1$ | $\\searrow$ | $-\\infty$ |"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien de solutions l'équation $f(x) = \\dfrac{1}{2}$ admet-elle dans $\\mathbb{R}$ ?",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Sur chacun des trois intervalles du tableau, $f$ est continue et strictement monotone : applique le théorème morceau par morceau.",
+          "Sur $]-\\infty\\,;\\,0]$, $f$ prend chaque valeur de $[0\\,;\\,+\\infty[$ une fois. Quelles valeurs prend-elle sur $[0\\,;\\,1]$, puis sur $[1\\,;\\,+\\infty[$ ?",
+          "Regarde, sur chaque morceau, si $\\dfrac{1}{2}$ fait partie des valeurs prises, puis additionne."
+        ],
+        "revoir": "l-continuite-027",
+        "solution": "- Sur $]-\\infty\\,;\\,0]$, $f$ est continue et strictement décroissante, de $+\\infty$ à $0$ : $\\dfrac{1}{2}$ est atteint une fois.\n- Sur $[0\\,;\\,1]$, $f$ est continue et strictement croissante, de $0$ à $1$ : $\\dfrac{1}{2}$ est atteint une fois.\n- Sur $[1\\,;\\,+\\infty[$, $f$ est continue et strictement décroissante, de $1$ à $-\\infty$ : $\\dfrac{1}{2}$ est atteint une fois.\n\nCes solutions sont distinctes, car $f(0) = 0$ et $f(1) = 1$ ne valent pas $\\dfrac{1}{2}$. L'équation $f(x) = \\dfrac{1}{2}$ admet $3$ solutions."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Soit $m$ un nombre réel. Préciser, en fonction des valeurs de $m$, le nombre de solutions de l'équation $f(x) = m$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Reprends le découpage de la question 3 avec une valeur $m$ quelconque : sur chaque morceau, $f$ prend chaque valeur d'un intervalle exactement une fois.",
+          "Les trois morceaux donnent les intervalles de valeurs $[0\\,;\\,+\\infty[$, $[0\\,;\\,1]$ et $]-\\infty\\,;\\,1]$. Les valeurs à part sont donc $m = 0$ et $m = 1$.",
+          "Traite cinq cas : $m < 0$, $m = 0$, $0 < m < 1$, $m = 1$, $m > 1$. Attention : $x = 0$ et $x = 1$ appartiennent chacun à deux morceaux ; ne les compte qu'une fois.",
+          "Pour $m = 0$ : $x = 0$, plus une solution dans $]1\\,;\\,+\\infty[$. Pour $m = 1$ : $x = 1$, plus une solution dans $]-\\infty\\,;\\,0[$."
+        ],
+        "revoir": "l-continuite-027",
+        "solution": "Sur chaque intervalle du tableau, $f$ est continue et strictement monotone : elle y prend chaque valeur comprise entre ses valeurs extrêmes exactement une fois. On additionne les solutions des trois morceaux, sans compter deux fois $x = 0$ et $x = 1$.\n\n- Si $m < 0$ : aucune solution sur $]-\\infty\\,;\\,1]$, où $f(x) \\geqslant 0$ ; une solution sur $]1\\,;\\,+\\infty[$. **Une solution.**\n- Si $m = 0$ : $x = 0$, et une solution sur $]1\\,;\\,+\\infty[$ (c'est $\\dfrac{3}{2}$, car $f(x) = x^2(3 - 2x)$). **Deux solutions.**\n- Si $0 < m < 1$ : une solution dans chacun des intervalles $]-\\infty\\,;\\,0[$, $]0\\,;\\,1[$ et $]1\\,;\\,+\\infty[$. **Trois solutions.**\n- Si $m = 1$ : $x = 1$, et une solution sur $]-\\infty\\,;\\,0[$. **Deux solutions.**\n- Si $m > 1$ : une solution sur $]-\\infty\\,;\\,0[$ seulement, car $f(x) \\leqslant 1$ sur $[0\\,;\\,+\\infty[$. **Une solution.**"
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-013",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-valeurs-intermediaires"],
+    "capacites": ["bo-m-continuite-03", "bo-m-continuite-04", "bo-m-limites-fonctions-05"],
+    "titre": "Le signe d'une fonction, puis les variations d'une autre",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 130,
+    "preambule": "Soit $g$ la fonction définie sur $\\mathbb{R}$ par $g(x) = (x + 2)e^x - 1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer les limites de $g$ en $-\\infty$ et en $+\\infty$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "En $+\\infty$, il n'y a pas de forme indéterminée. En $-\\infty$, le produit $(x + 2)e^x$ donne « $-\\infty \\times 0$ » : développe-le.",
+          "$(x + 2)e^x = xe^x + 2e^x$. En $-\\infty$, que donnent les croissances comparées pour $xe^x$ ?",
+          "$xe^x$ et $2e^x$ tendent vers $0$ en $-\\infty$ : conclus par somme, sans oublier le terme $-1$."
+        ],
+        "revoir": "l-limites-fonctions-053",
+        "solution": "En $+\\infty$ : $x + 2$ et $e^x$ tendent vers $+\\infty$, donc par produit puis par somme, $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$.\n\nEn $-\\infty$ : $g(x) = xe^x + 2e^x - 1$. Par croissances comparées, $\\lim\\limits_{x \\to -\\infty} xe^x = 0$, et $\\lim\\limits_{x \\to -\\infty} e^x = 0$. Par somme, $\\lim\\limits_{x \\to -\\infty} g(x) = -1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étudier les variations de $g$ sur $\\mathbb{R}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive le produit $(x + 2)e^x$ avec la formule $(uv)' = u'v + uv'$.",
+          "$g'(x) = e^x + (x + 2)e^x = (x + 3)e^x$.",
+          "$e^x > 0$ : le signe de $g'(x)$ est celui de $x + 3$. Calcule aussi $g(-3)$."
+        ],
+        "revoir": "l-continuite-027",
+        "solution": "$g$ est dérivable sur $\\mathbb{R}$ et $g'(x) = 1 \\times e^x + (x + 2)e^x = (x + 3)e^x$. Comme $e^x > 0$, $g'(x)$ a le signe de $x + 3$ : $g$ est strictement décroissante sur $]-\\infty\\,;\\,-3]$ et strictement croissante sur $[-3\\,;\\,+\\infty[$. Son minimum vaut $g(-3) = -e^{-3} - 1$.\n\n| $x$ | $-\\infty$ | | $-3$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $g'(x)$ | | $-$ | $0$ | $+$ | |\n| variations de $g$ | $-1$ | $\\searrow$ | $-e^{-3} - 1$ | $\\nearrow$ | $+\\infty$ |"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Démontrer que l'équation $g(x) = 0$ admet une unique solution $\\alpha$ dans $\\mathbb{R}$, et que $-1 < \\alpha < 0$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Traite séparément les deux morceaux du tableau. Sur $]-\\infty\\,;\\,-3]$, regarde le signe de $(x + 2)e^x$.",
+          "Pour $x \\leqslant -3$, $x + 2 < 0$ et $e^x > 0$, donc $g(x) < -1 < 0$ : aucune solution sur ce morceau. Sur $[-3\\,;\\,+\\infty[$, applique le théorème avec $g(-3)$ et la limite en $+\\infty$.",
+          "$g$ est continue et strictement croissante sur $[-3\\,;\\,+\\infty[$, de $g(-3) < 0$ jusqu'à $+\\infty$ : une unique solution $\\alpha$. Pour la situer, calcule $g(-1)$ et $g(0)$.",
+          "$g(-1) = e^{-1} - 1$ et $g(0) = 1$. Quel est le signe de $e^{-1} - 1$ ? Conclus avec la croissance de $g$."
+        ],
+        "revoir": "l-continuite-026",
+        "solution": "**Sur $]-\\infty\\,;\\,-3]$** : $x + 2 < 0$ et $e^x > 0$, donc $(x + 2)e^x < 0$ et $g(x) < -1 < 0$. L'équation n'a pas de solution sur cet intervalle.\n\n**Sur $[-3\\,;\\,+\\infty[$** : $g$ est dérivable, donc continue, et strictement croissante. $g(-3) = -e^{-3} - 1 < 0$ et $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$. D'après le théorème des valeurs intermédiaires (extension admise, fonction continue strictement croissante), l'équation $g(x) = 0$ admet une unique solution $\\alpha$ dans $[-3\\,;\\,+\\infty[$.\n\nAu total, $\\alpha$ est l'unique solution dans $\\mathbb{R}$. Enfin, $g(-1) = e^{-1} - 1 < 0$, car $e^{-1} < e^0 = 1$, et $g(0) = 2 - 1 = 1 > 0$. Comme $g$ est strictement croissante sur $[-3\\,;\\,+\\infty[$ et $g(\\alpha) = 0$, on a $g(-1) < g(\\alpha) < g(0)$, donc $-1 < \\alpha < 0$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire le signe de $g(x)$ suivant les valeurs du réel $x$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Sur $]-\\infty\\,;\\,-3]$, le signe de $g$ a déjà été trouvé. Sur $[-3\\,;\\,+\\infty[$, utilise la croissance de $g$ et $g(\\alpha) = 0$.",
+          "Si $-3 \\leqslant x < \\alpha$, alors $g(x) < g(\\alpha)$, c'est-à-dire $g(x) < 0$.",
+          "Fais de même pour $x > \\alpha$, puis rassemble les deux morceaux."
+        ],
+        "revoir": "l-continuite-024",
+        "solution": "Sur $]-\\infty\\,;\\,-3]$, $g(x) < 0$ d'après la question 3. Sur $[-3\\,;\\,+\\infty[$, $g$ est strictement croissante et $g(\\alpha) = 0$ : si $-3 \\leqslant x < \\alpha$, alors $g(x) < 0$ ; si $x > \\alpha$, alors $g(x) > 0$. Donc :\n\n- $g(x) < 0$ pour $x < \\alpha$ ;\n- $g(\\alpha) = 0$ ;\n- $g(x) > 0$ pour $x > \\alpha$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = (x + 1)e^x - x$. Montrer que $f'(x) = g(x)$ pour tout réel $x$, puis en déduire les variations de $f$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive $(x + 1)e^x$ avec la formule du produit, puis retranche la dérivée de $x$.",
+          "$f'(x) = e^x + (x + 1)e^x - 1$. Regroupe les termes en $e^x$.",
+          "Une fois $f'(x) = g(x)$ obtenu, le signe de $f'$ est celui trouvé à la question 4."
+        ],
+        "revoir": "l-continuite-015",
+        "solution": "$f$ est dérivable sur $\\mathbb{R}$ et $f'(x) = 1 \\times e^x + (x + 1)e^x - 1 = (x + 2)e^x - 1 = g(x)$. D'après la question 4, $f'(x) < 0$ pour $x < \\alpha$ et $f'(x) > 0$ pour $x > \\alpha$. Donc $f$ est strictement décroissante sur $]-\\infty\\,;\\,\\alpha]$ et strictement croissante sur $[\\alpha\\,;\\,+\\infty[$ : elle admet un minimum en $\\alpha$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-014",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-valeurs-intermediaires"],
+    "capacites": ["bo-m-continuite-04", "bo-m-continuite-03", "bo-m-limites-fonctions-05"],
+    "titre": "Un médicament efficace pendant combien de temps ?",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 140,
+    "preambule": "On injecte un médicament à un patient. La concentration du médicament dans le sang, en milligrammes par litre, $t$ heures après l'injection, est modélisée par la fonction $C$ définie sur $[0\\,;\\,+\\infty[$ par $C(t) = 5te^{-0{,}5t}$. Le médicament est efficace lorsque sa concentration est supérieure ou égale à $2$ milligrammes par litre.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que $C'(t) = 5(1 - 0{,}5t)e^{-0{,}5t}$, puis étudier les variations de $C$ sur $[0\\,;\\,+\\infty[$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive le produit $5t \\times e^{-0{,}5t}$, avec la dérivée de $t \\mapsto e^{at}$ vue en première : $t \\mapsto ae^{at}$.",
+          "$C'(t) = 5e^{-0{,}5t} + 5t \\times \\left(-0{,}5e^{-0{,}5t}\\right)$. Factorise par $5e^{-0{,}5t}$.",
+          "$5e^{-0{,}5t} > 0$ : le signe de $C'(t)$ est celui de $1 - 0{,}5t$, qui s'annule pour une seule valeur de $t$."
+        ],
+        "revoir": "l-continuite-015",
+        "solution": "$C$ est dérivable sur $[0\\,;\\,+\\infty[$ comme produit de fonctions dérivables, et $C'(t) = 5 \\times e^{-0{,}5t} + 5t \\times \\left(-0{,}5e^{-0{,}5t}\\right) = 5(1 - 0{,}5t)e^{-0{,}5t}$. Comme $5e^{-0{,}5t} > 0$, $C'(t)$ a le signe de $1 - 0{,}5t$ : positif pour $t < 2$, nul en $2$, négatif pour $t > 2$. Donc $C$ est strictement croissante sur $[0\\,;\\,2]$ et strictement décroissante sur $[2\\,;\\,+\\infty[$, avec un maximum $C(2) = 10e^{-1} \\approx 3{,}68$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer la limite de $C$ en $+\\infty$, et l'interpréter.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Forme « $+\\infty \\times 0$ » : pense aux croissances comparées, après un changement de variable.",
+          "Écris $5te^{-0{,}5t} = 10 \\times (0{,}5t)e^{-0{,}5t}$, et pose $X = 0{,}5t$.",
+          "Quand $t$ tend vers $+\\infty$, $X$ aussi, et $Xe^{-X}$ tend vers $0$ par croissances comparées. Que devient la concentration au bout d'un temps très long ?"
+        ],
+        "revoir": "l-limites-fonctions-055",
+        "solution": "Pour tout $t \\geqslant 0$, $C(t) = 10 \\times (0{,}5t)e^{-0{,}5t}$. Posons $X = 0{,}5t$ : quand $t$ tend vers $+\\infty$, $X$ tend vers $+\\infty$, et par croissances comparées, $\\lim\\limits_{X \\to +\\infty} Xe^{-X} = 0$. Par composée puis par produit, $\\lim\\limits_{t \\to +\\infty} C(t) = 0$ : au bout d'un temps très long, le médicament a presque disparu du sang."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Démontrer que l'équation $C(t) = 2$ admet exactement deux solutions $t_1$ et $t_2$ dans $[0\\,;\\,+\\infty[$, avec $t_1 < 2 < t_2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Applique le théorème sur chacun des deux intervalles du sens de variation, $[0\\,;\\,2]$ et $[2\\,;\\,+\\infty[$.",
+          "Sur $[0\\,;\\,2]$, $C$ est continue et strictement croissante, de $C(0) = 0$ à $C(2) \\approx 3{,}68$. Le nombre $2$ est-il entre ces valeurs ?",
+          "Sur $[2\\,;\\,+\\infty[$, $C$ est continue et strictement décroissante, de $C(2)$ vers la limite $0$ trouvée à la question 2 : utilise l'extension admise du théorème.",
+          "$C(2) \\neq 2$ : aucune des deux solutions n'est égale à $2$."
+        ],
+        "revoir": "l-continuite-026",
+        "solution": "**Sur $[0\\,;\\,2]$** : $C$ est dérivable, donc continue, et strictement croissante, avec $C(0) = 0$ et $C(2) = 10e^{-1} \\approx 3{,}68$. Comme $0 < 2 < C(2)$, d'après le théorème des valeurs intermédiaires (fonction continue strictement monotone), l'équation $C(t) = 2$ admet une unique solution $t_1$ dans $[0\\,;\\,2]$.\n\n**Sur $[2\\,;\\,+\\infty[$** : $C$ est continue et strictement décroissante, de $C(2) \\approx 3{,}68$ vers la limite $0$ en $+\\infty$. Comme $0 < 2 < C(2)$, d'après l'extension admise du théorème, l'équation admet une unique solution $t_2$ dans $[2\\,;\\,+\\infty[$.\n\nEnfin, $C(2) \\neq 2$, donc $t_1 < 2 < t_2$ : l'équation a exactement deux solutions."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Pendant combien de temps le médicament est-il efficace ? Donner la réponse en heures, arrondie à $0{,}1$ près.",
+        "reponse": { "type": "numerique", "valeur": 4.6, "tolerance": 0 },
+        "indices": [
+          "D'après les variations de $C$, le médicament est efficace, $C(t) \\geqslant 2$, exactement entre $t_1$ et $t_2$. La durée cherchée est $t_2 - t_1$.",
+          "Encadre $t_1$ à $10^{-2}$ près avec le tableau de valeurs de la calculatrice : $C(0{,}51) \\approx 1{,}976$ et $C(0{,}52) \\approx 2{,}005$.",
+          "Fais de même pour $t_2$ : $C(5{,}08) \\approx 2{,}003$ et $C(5{,}09) \\approx 1{,}997$. Déduis-en un encadrement de $t_2 - t_1$."
+        ],
+        "revoir": "l-continuite-021",
+        "solution": "$C$ croît sur $[0\\,;\\,2]$ et décroît sur $[2\\,;\\,+\\infty[$ : $C(t) \\geqslant 2$ exactement pour $t_1 \\leqslant t \\leqslant t_2$. À la calculatrice, $C(0{,}51) \\approx 1{,}976 < 2$ et $C(0{,}52) \\approx 2{,}005 > 2$ ; comme $C$ est croissante sur $[0\\,;\\,2]$, $0{,}51 < t_1 < 0{,}52$. De même, $C(5{,}08) \\approx 2{,}003 > 2$ et $C(5{,}09) \\approx 1{,}997 < 2$ ; comme $C$ est décroissante sur $[2\\,;\\,+\\infty[$, $5{,}08 < t_2 < 5{,}09$. Ainsi $5{,}08 - 0{,}52 < t_2 - t_1 < 5{,}09 - 0{,}51$, soit $4{,}56 < t_2 - t_1 < 4{,}58$. Le médicament est efficace pendant environ $4{,}6$ heures, soit un peu plus de $4$ h $30$ min."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-015",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-suite-recurrente"],
+    "capacites": ["bo-m-continuite-05", "bo-m-continuite-02", "bo-m-suites-08", "bo-m-suites-06"],
+    "titre": "Une suite croissante, de bout en bout",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 150,
+    "preambule": "Soit $f$ la fonction définie sur $[0\\,;\\,2]$ par $f(x) = \\dfrac{3x + 2}{x + 2}$, et $(u_n)$ la suite définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étudier le sens de variation de $f$ sur $[0\\,;\\,2]$, puis calculer $f(0)$ et $f(2)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f$ est un quotient : utilise $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$.",
+          "$f'(x) = \\dfrac{3(x + 2) - (3x + 2) \\times 1}{(x + 2)^2}$. Simplifie le numérateur.",
+          "Le numérateur vaut $4$ : quel est le signe de $f'(x)$ ? Termine avec $f(0)$ et $f(2)$."
+        ],
+        "revoir": "l-recurrence-suites-020",
+        "solution": "$f$ est dérivable sur $[0\\,;\\,2]$, car $x + 2 > 0$, et $f'(x) = \\dfrac{3(x + 2) - (3x + 2)}{(x + 2)^2} = \\dfrac{4}{(x + 2)^2} > 0$. Donc $f$ est strictement croissante sur $[0\\,;\\,2]$. De plus, $f(0) = \\dfrac{2}{2} = 1$ et $f(2) = \\dfrac{8}{4} = 2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $P(n)$ : « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 2$ ». Pour l'initialisation, calcule $u_1$.",
+          "$u_1 = f(0) = 1$, et $0 \\leqslant 0 \\leqslant 1 \\leqslant 2$ : $P(0)$ est vraie.",
+          "Pour l'hérédité, applique $f$, croissante sur $[0\\,;\\,2]$, aux quatre nombres de $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 2$.",
+          "Tu obtiens $f(0) \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant f(2)$ : remplace $f(0)$ et $f(2)$ par leurs valeurs, puis conclus."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant 2$ ».\n\n**Initialisation** : $u_0 = 0$ et $u_1 = f(0) = 1$. Comme $0 \\leqslant 0 \\leqslant 1 \\leqslant 2$, $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $P(n)$ est vraie. Les nombres $0$, $u_n$, $u_{n+1}$ et $2$ sont dans $[0\\,;\\,2]$, où $f$ est croissante : $f(0) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f(2)$, soit $1 \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant 2$. Comme $0 \\leqslant 1$, $P(n + 1)$ est vraie.\n\n**Conclusion** : d'après le principe de récurrence, $P(n)$ est vraie pour tout entier naturel $n$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire que la suite $(u_n)$ converge vers un réel $\\ell$, et donner un encadrement de $\\ell$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Lis les deux informations contenues dans $u_n \\leqslant u_{n+1} \\leqslant 2$ : un sens de variation et un majorant.",
+          "La suite est croissante et majorée : cite le théorème de convergence monotone.",
+          "Pour encadrer $\\ell$, passe à la limite dans un encadrement de $u_n$ valable pour tout $n$, par exemple $0 \\leqslant u_n \\leqslant 2$."
+        ],
+        "revoir": "l-limites-suites-052",
+        "solution": "D'après la question 2, la suite $(u_n)$ est croissante et majorée par $2$. D'après le théorème de convergence monotone, elle converge vers un réel $\\ell$. Par passage à la limite dans $0 \\leqslant u_n \\leqslant 2$, on obtient $0 \\leqslant \\ell \\leqslant 2$.\n\nOn peut aussi écrire $1 \\leqslant \\ell \\leqslant 2$ : la suite est croissante, donc $u_n \\geqslant u_1 = 1$ pour tout $n \\geqslant 1$, et le passage à la limite donne $\\ell \\geqslant 1$. Les deux encadrements sont justes ; la question 4 n'utilise que $\\ell \\geqslant 0$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Déterminer $\\ell$.",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Justifie que $\\ell = f(\\ell)$ : $f$ est continue sur $[0\\,;\\,2]$ et à valeurs dans $[0\\,;\\,2]$.",
+          "$\\ell = \\dfrac{3\\ell + 2}{\\ell + 2}$ équivaut à $\\ell(\\ell + 2) = 3\\ell + 2$, car $\\ell + 2 \\neq 0$.",
+          "Développe et regroupe tout dans le membre de gauche : tu obtiens une équation du second degré. Résous-la, puis garde la solution compatible avec l'encadrement de la question 3."
+        ],
+        "revoir": "l-continuite-055",
+        "solution": "$f$ est dérivable, donc continue, sur $[0\\,;\\,2]$. Elle y est croissante, avec $f(0) = 1$ et $f(2) = 2$ : pour tout $x$ de $[0\\,;\\,2]$, $1 \\leqslant f(x) \\leqslant 2$, donc $f$ est à valeurs dans $[0\\,;\\,2]$. Comme $(u_n)$ converge vers $\\ell \\in [0\\,;\\,2]$, en passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = f(\\ell)$.\n\nComme $\\ell + 2 > 0$ : $\\ell = \\dfrac{3\\ell + 2}{\\ell + 2} \\iff \\ell^2 + 2\\ell = 3\\ell + 2 \\iff \\ell^2 - \\ell - 2 = 0$. Le discriminant vaut $1 + 8 = 9$ : les solutions sont $\\dfrac{1 - 3}{2} = -1$ et $\\dfrac{1 + 3}{2} = 2$. Comme $\\ell \\geqslant 0$, $\\ell \\neq -1$. **Conclusion** : la suite $(u_n)$ converge vers $2$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-016",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-suite-recurrente"],
+    "capacites": ["bo-m-continuite-05", "bo-m-continuite-02", "bo-m-suites-08", "bo-m-suites-06"],
+    "titre": "Une suite décroissante avec une racine carrée",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 160,
+    "preambule": "Soit $f$ la fonction définie sur $[3\\,;\\,5]$ par $f(x) = \\sqrt{2x + 3}$, et $(u_n)$ la suite définie par $u_0 = 5$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que $f$ est croissante sur $[3\\,;\\,5]$, puis calculer $f(3)$ et comparer $f(5)$ à $5$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f$ est de la forme $x \\mapsto g(ax + b)$, avec $g$ la fonction racine carrée : sa dérivée est $x \\mapsto a\\,g'(ax + b)$.",
+          "$f'(x) = 2 \\times \\dfrac{1}{2\\sqrt{2x + 3}} = \\dfrac{1}{\\sqrt{2x + 3}}$ : quel est son signe ?",
+          "$f(3) = \\sqrt{9}$ et $f(5) = \\sqrt{13}$. Compare $13$ et $25$ pour situer $\\sqrt{13}$ par rapport à $5$."
+        ],
+        "revoir": "l-recurrence-suites-020",
+        "solution": "Pour $x$ dans $[3\\,;\\,5]$, $2x + 3 \\geqslant 9 > 0$ : $f$ est dérivable sur $[3\\,;\\,5]$, et $f'(x) = 2 \\times \\dfrac{1}{2\\sqrt{2x + 3}} = \\dfrac{1}{\\sqrt{2x + 3}} > 0$. Donc $f$ est strictement croissante sur $[3\\,;\\,5]$. De plus, $f(3) = \\sqrt{9} = 3$ et $f(5) = \\sqrt{13}$ ; comme $13 < 25$, $\\sqrt{13} < 5$ : $f(5) < 5$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $3 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 5$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $P(n)$ : « $3 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 5$ ». Pour l'initialisation, calcule $u_1$ et situe-le.",
+          "$u_1 = \\sqrt{13}$, et $9 \\leqslant 13 \\leqslant 25$ donne $3 \\leqslant \\sqrt{13} \\leqslant 5$.",
+          "Pour l'hérédité, applique $f$, croissante sur $[3\\,;\\,5]$, aux quatre nombres de $3 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 5$.",
+          "Tu obtiens $f(3) \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant f(5)$ : utilise la question 1 pour conclure."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $3 \\leqslant u_{n+1} \\leqslant u_n \\leqslant 5$ ».\n\n**Initialisation** : $u_0 = 5$ et $u_1 = f(5) = \\sqrt{13}$. Comme $9 \\leqslant 13 \\leqslant 25$, $3 \\leqslant \\sqrt{13} \\leqslant 5$ : $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $P(n)$ est vraie. Les nombres $3$, $u_{n+1}$, $u_n$ et $5$ sont dans $[3\\,;\\,5]$, où $f$ est croissante : $f(3) \\leqslant f(u_{n+1}) \\leqslant f(u_n) \\leqslant f(5)$, soit $3 \\leqslant u_{n+2} \\leqslant u_{n+1} \\leqslant \\sqrt{13}$. Comme $\\sqrt{13} \\leqslant 5$, $P(n + 1)$ est vraie.\n\n**Conclusion** : d'après le principe de récurrence, $P(n)$ est vraie pour tout entier naturel $n$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire que la suite $(u_n)$ converge, puis déterminer sa limite $\\ell$.",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "La suite est décroissante et minorée : cite le théorème de convergence monotone, puis situe $\\ell$ par passage à la limite.",
+          "$f$ est dérivable sur $[3\\,;\\,5]$ (question 1), donc continue, et à valeurs dans $[3\\,;\\,5]$ : donc $\\ell = \\sqrt{2\\ell + 3}$.",
+          "Élève au carré pour obtenir une équation du second degré, résous-la, puis garde la solution compatible avec l'encadrement de $\\ell$."
+        ],
+        "revoir": "l-continuite-055",
+        "solution": "D'après la question 2, la suite $(u_n)$ est décroissante et minorée par $3$ : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$, et par passage à la limite, $3 \\leqslant \\ell \\leqslant 5$.\n\n$f$ est dérivable sur $[3\\,;\\,5]$ (question 1), donc continue sur $[3\\,;\\,5]$ ; elle y est croissante, avec $f(3) = 3$ et $f(5) = \\sqrt{13} \\leqslant 5$, donc à valeurs dans $[3\\,;\\,5]$. En passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = \\sqrt{2\\ell + 3}$. Comme $\\ell \\geqslant 0$, cela équivaut à $\\ell^2 = 2\\ell + 3$, soit $\\ell^2 - 2\\ell - 3 = 0$, c'est-à-dire $(\\ell - 3)(\\ell + 1) = 0$. Donc $\\ell = 3$ ou $\\ell = -1$ ; or $\\ell \\geqslant 3$. **Conclusion** : la suite $(u_n)$ converge vers $3$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-017",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-suite-recurrente"],
+    "capacites": ["bo-m-continuite-05", "bo-m-continuite-02", "bo-m-suites-08", "bo-m-suites-06", "bo-m-suites-09", "bo-m-listes-01"],
+    "titre": "La lignée d'une bactérie",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 170,
+    "source": {
+      "annale": "an-2022-asie-j2",
+      "adaptation": "probabilités 0,4 et 0,6 au lieu de 0,3 et 0,7, majorant 0,7 ; questions resserrées, et la question Python porte sur le nombre de tours de la boucle"
+    },
+    "preambule": "Une bactérie meurt sans descendance avec la probabilité $0{,}4$, ou se divise en deux bactéries filles avec la probabilité $0{,}6$ ; chaque bactérie fille se comporte ensuite de la même façon, indépendamment des autres. Pour tout entier naturel $n$, on note $p_n$ la probabilité que la lignée issue d'une bactérie compte au plus $n$ générations de descendants. On admet que $p_0 = 0{,}4$ et que, pour tout entier naturel $n$, $p_{n+1} = 0{,}4 + 0{,}6p_n^2$.\n\nOn note $f$ la fonction définie sur $[0\\,;\\,0{,}7]$ par $f(x) = 0{,}4 + 0{,}6x^2$, de sorte que $p_{n+1} = f(p_n)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $p_1$.",
+        "reponse": { "type": "numerique", "valeur": 0.496, "tolerance": 0 },
+        "indices": [
+          "Applique la relation de récurrence avec $n = 0$.",
+          "$p_1 = 0{,}4 + 0{,}6 \\times p_0^2$, avec $p_0 = 0{,}4$.",
+          "$0{,}4^2 = 0{,}16$, puis $0{,}6 \\times 0{,}16 = 0{,}096$. Il reste une addition."
+        ],
+        "revoir": "l-recurrence-suites-002",
+        "solution": "$p_1 = 0{,}4 + 0{,}6 \\times 0{,}4^2 = 0{,}4 + 0{,}6 \\times 0{,}16 = 0{,}4 + 0{,}096 = 0{,}496$. La probabilité que la lignée compte au plus une génération de descendants est $0{,}496$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant p_n \\leqslant p_{n+1} \\leqslant 0{,}7$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Commence par le sens de variation de $f$ sur $[0\\,;\\,0{,}7]$, puis calcule $f(0)$ et $f(0{,}7)$.",
+          "$f'(x) = 1{,}2x \\geqslant 0$ sur $[0\\,;\\,0{,}7]$ ; $f(0) = 0{,}4$ et $f(0{,}7) = 0{,}694$. Pour l'initialisation, utilise $p_0$ et $p_1$.",
+          "Pour l'hérédité, applique $f$, croissante sur $[0\\,;\\,0{,}7]$, aux quatre nombres de $0 \\leqslant p_n \\leqslant p_{n+1} \\leqslant 0{,}7$.",
+          "Tu obtiens $0{,}4 \\leqslant p_{n+1} \\leqslant p_{n+2} \\leqslant 0{,}694$ : conclus."
+        ],
+        "revoir": "l-recurrence-suites-021",
+        "solution": "$f$ est dérivable sur $[0\\,;\\,0{,}7]$ et $f'(x) = 0{,}6 \\times 2x = 1{,}2x \\geqslant 0$ : $f$ est croissante sur $[0\\,;\\,0{,}7]$. De plus, $f(0) = 0{,}4$ et $f(0{,}7) = 0{,}4 + 0{,}6 \\times 0{,}49 = 0{,}694$.\n\nPour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant p_n \\leqslant p_{n+1} \\leqslant 0{,}7$ ».\n\n**Initialisation** : $p_0 = 0{,}4$ et $p_1 = 0{,}496$, donc $0 \\leqslant p_0 \\leqslant p_1 \\leqslant 0{,}7$ : $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $P(n)$ est vraie. Les nombres $0$, $p_n$, $p_{n+1}$ et $0{,}7$ sont dans $[0\\,;\\,0{,}7]$, où $f$ est croissante : $f(0) \\leqslant f(p_n) \\leqslant f(p_{n+1}) \\leqslant f(0{,}7)$, soit $0{,}4 \\leqslant p_{n+1} \\leqslant p_{n+2} \\leqslant 0{,}694$. Donc $0 \\leqslant p_{n+1} \\leqslant p_{n+2} \\leqslant 0{,}7$ : $P(n + 1)$ est vraie.\n\n**Conclusion** : d'après le principe de récurrence, $P(n)$ est vraie pour tout entier naturel $n$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Justifier que la suite $(p_n)$ converge vers un réel $L$, et que $L$ est solution de l'équation $0{,}6x^2 - x + 0{,}4 = 0$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "La question 2 donne un sens de variation et un majorant : cite le théorème de convergence monotone.",
+          "Par passage à la limite, $0 \\leqslant L \\leqslant 0{,}7$. Vérifie ensuite que $f$ est continue sur $[0\\,;\\,0{,}7]$ et à valeurs dans cet intervalle.",
+          "En passant à la limite dans $p_{n+1} = f(p_n)$, tu obtiens $L = 0{,}4 + 0{,}6L^2$ : fais tout passer dans un même membre."
+        ],
+        "revoir": "l-continuite-055",
+        "solution": "D'après la question 2, $(p_n)$ est croissante et majorée par $0{,}7$ : d'après le théorème de convergence monotone, elle converge vers un réel $L$, et par passage à la limite, $0 \\leqslant L \\leqslant 0{,}7$.\n\n$f$ est un polynôme, continu sur $[0\\,;\\,0{,}7]$ ; comme elle y est croissante, pour tout $x$ de $[0\\,;\\,0{,}7]$, $0{,}4 \\leqslant f(x) \\leqslant 0{,}694$ : $f$ est à valeurs dans $[0\\,;\\,0{,}7]$. En passant à la limite dans $p_{n+1} = f(p_n)$, on obtient $L = f(L)$, soit $L = 0{,}4 + 0{,}6L^2$, c'est-à-dire $0{,}6L^2 - L + 0{,}4 = 0$ : $L$ est solution de l'équation $0{,}6x^2 - x + 0{,}4 = 0$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Déterminer $L$ sous forme de fraction irréductible, puis interpréter ce résultat.",
+        "reponse": { "type": "numerique", "valeur": "2/3", "tolerance": 0 },
+        "indices": [
+          "Résous l'équation du second degré $0{,}6x^2 - x + 0{,}4 = 0$ avec le discriminant.",
+          "$\\Delta = 1 - 4 \\times 0{,}6 \\times 0{,}4 = 0{,}04 = 0{,}2^2$ : les solutions sont $\\dfrac{1 \\pm 0{,}2}{1{,}2}$.",
+          "L'une des deux solutions est $1$ ; l'encadrement $0 \\leqslant L \\leqslant 0{,}7$ permet de choisir. Écris l'autre sous forme de fraction."
+        ],
+        "revoir": "l-continuite-058",
+        "solution": "$\\Delta = (-1)^2 - 4 \\times 0{,}6 \\times 0{,}4 = 1 - 0{,}96 = 0{,}04 = 0{,}2^2$. Les solutions sont $\\dfrac{1 - 0{,}2}{1{,}2} = \\dfrac{0{,}8}{1{,}2} = \\dfrac{2}{3}$ et $\\dfrac{1 + 0{,}2}{1{,}2} = 1$. Or $L \\leqslant 0{,}7$, donc $L \\neq 1$ : $L = \\dfrac{2}{3}$.\n\n**Interprétation** : quand $n$ devient grand, la probabilité que la lignée compte au plus $n$ générations de descendants se rapproche de $\\dfrac{2}{3}$. À long terme, la lignée d'une bactérie s'éteint donc avec une probabilité proche de $\\dfrac{2}{3}$ : elle survit dans environ un cas sur trois."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "La fonction Python ci-dessous doit renvoyer la liste des $n$ premiers termes de la suite, de $p_0$ à $p_{n-1}$. Que faut-il écrire à la place des pointillés ?",
+        "code": {
+          "langage": "python",
+          "source": "def suite(n):\n    p = 0.4\n    s = [p]\n    for i in range(..........):\n        p = 0.4 + 0.6 * p**2\n        s.append(p)\n    return s"
+        },
+        "reponse": {
+          "type": "qcm",
+          "choix": ["n - 1", "n", "n + 1", "p"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "La liste contient déjà $p_0$ avant la boucle, et chaque tour ajoute un terme : avec $n$ tours, elle en aurait $n + 1$.",
+            "Avec $n + 1$ tours, la liste aurait $n + 2$ termes.",
+            "range attend un nombre entier de tours : p est la probabilité en cours, un nombre décimal."
+          ]
+        },
+        "indices": [
+          "Compte les termes : combien la liste en contient-elle avant la boucle, et combien chaque tour en ajoute-t-il ?",
+          "Avant la boucle, s contient un terme, $p_0$. Chaque tour en ajoute un, avec append.",
+          "Pour $n = 3$, la liste doit être formée de $p_0$, $p_1$ et $p_2$ : combien de tours de boucle faut-il ? Généralise à $n$ termes."
+        ],
+        "revoir": "l-recurrence-suites-036",
+        "solution": "Avant la boucle, la liste s contient un terme, $p_0$. Chaque tour calcule le terme suivant et l'ajoute à la liste. Pour obtenir $n$ termes, de $p_0$ à $p_{n-1}$, il faut donc $n - 1$ tours : on écrit range(n - 1). Par exemple, suite(3) renvoie la liste formée de $0{,}4$, $0{,}496$ et $0{,}547\\,609\\,6$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-018",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-fonction-continue"],
+    "capacites": ["bo-m-continuite-01"],
+    "titre": "Raccorder trois morceaux",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 180,
+    "preambule": "Soit $a$ et $b$ deux réels, et $f$ la fonction définie sur $\\mathbb{R}$ par :\n\n- $f(x) = 2x + a$ si $x < 0$ ;\n- $f(x) = x^2 - 3x + 1$ si $0 \\leqslant x \\leqslant 2$ ;\n- $f(x) = bx - 5$ si $x > 2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que $f$ est continue sur $]-\\infty\\,;\\,0[$, sur $]0\\,;\\,2[$ et sur $]2\\,;\\,+\\infty[$, quels que soient $a$ et $b$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Sur chacun de ces intervalles ouverts, $f$ est donnée par une seule formule : de quel type de fonction s'agit-il ?",
+          "Les trois formules sont des polynômes : que sais-tu de la dérivabilité d'un polynôme ?",
+          "Un polynôme est dérivable sur $\\mathbb{R}$, et une fonction dérivable sur un intervalle y est continue. Il reste à le rédiger pour chaque intervalle."
+        ],
+        "revoir": "l-continuite-007",
+        "solution": "Sur $]-\\infty\\,;\\,0[$, $f(x) = 2x + a$ ; sur $]0\\,;\\,2[$, $f(x) = x^2 - 3x + 1$ ; sur $]2\\,;\\,+\\infty[$, $f(x) = bx - 5$. Ce sont des polynômes : $f$ est dérivable sur chacun de ces intervalles, donc continue. Seuls les réels $0$ et $2$, où la formule change, restent à étudier."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer $a$ pour que $f$ soit continue en $0$.",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "Compare en $0$ la limite à gauche, la limite à droite et $f(0)$.",
+          "Calcule $f(0)$ avec la formule du milieu ; la limite à droite lui est égale, car cette formule est un polynôme.",
+          "La limite à gauche est celle de $2x + a$ quand $x$ tend vers $0$ : exprime-la en fonction de $a$, puis écris l'égalité avec $f(0)$."
+        ],
+        "revoir": "l-continuite-003",
+        "solution": "$f(0) = 0^2 - 3 \\times 0 + 1 = 1$, et la limite à droite en $0$ vaut aussi $1$. À gauche, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x < 0}} (2x + a) = a$. La fonction $f$ est continue en $0$ si $a = 1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer $b$ pour que $f$ soit continue en $2$.",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Même méthode à la deuxième jonction : ici, la formule du milieu donne la valeur de $f$ et la limite à gauche.",
+          "Calcule $f(2)$ avec $x^2 - 3x + 1$. La limite à droite est celle de $bx - 5$ : exprime-la en fonction de $b$.",
+          "Écris l'égalité entre la limite à droite et $f(2)$, puis résous l'équation d'inconnue $b$."
+        ],
+        "revoir": "l-continuite-003",
+        "solution": "$f(2) = 2^2 - 3 \\times 2 + 1 = -1$, et la limite à gauche en $2$ vaut aussi $-1$. À droite, $\\lim\\limits_{\\substack{x \\to 2 \\\\ x > 2}} (bx - 5) = 2b - 5$. La fonction $f$ est continue en $2$ si $2b - 5 = -1$, soit $b = 2$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On prend $a = 1$ et $b = 2$, de sorte que $f$ est continue sur $\\mathbb{R}$. Vrai ou faux ? $f$ est dérivable en $0$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Le taux de variation de $f$ entre $0$ et $h$ vaut $2$ pour $h < 0$, et $h - 3$ pour $0 < h \\leqslant 2$ : il tend vers $2$ à gauche et vers $-3$ à droite. Il n'a pas de limite en $0$, donc $f$ n'est pas dérivable en $0$."
+        },
+        "indices": [
+          "Rappel de première : $f$ est dérivable en $0$ si son taux de variation $\\dfrac{f(h) - f(0)}{h}$ a une limite finie quand $h$ tend vers $0$. Comme pour la continuité d'une fonction définie par morceaux, cherche cette limite à gauche ($h < 0$) et à droite ($h > 0$).",
+          "Pour $h < 0$ : $\\dfrac{f(h) - f(0)}{h} = \\dfrac{2h + 1 - 1}{h}$. Simplifie.",
+          "Pour $0 < h \\leqslant 2$ : $\\dfrac{f(h) - f(0)}{h} = \\dfrac{h^2 - 3h}{h} = h - 3$. Compare les limites à gauche et à droite."
+        ],
+        "revoir": "l-continuite-011",
+        "solution": "Rappel de première : $f$ est dérivable en $0$ si son taux de variation $\\dfrac{f(h) - f(0)}{h}$ a une limite finie quand $h$ tend vers $0$. Comme pour la continuité, cette limite n'existe que si les limites à gauche et à droite sont égales.\n\n$f(0) = 1$. Pour $h < 0$, $\\dfrac{f(h) - f(0)}{h} = \\dfrac{2h + 1 - 1}{h} = 2$, qui tend vers $2$. Pour $0 < h \\leqslant 2$, $\\dfrac{f(h) - f(0)}{h} = \\dfrac{h^2 - 3h + 1 - 1}{h} = h - 3$, qui tend vers $-3$. Les limites à gauche et à droite du taux de variation sont différentes : il n'a pas de limite en $0$, et $f$ n'est pas dérivable en $0$. L'affirmation est fausse : $f$ est continue en $0$ sans y être dérivable ; sa courbe y fait un angle.",
+        "erreurFrequente": "Conclure « continue, donc dérivable » : la réciproque de « dérivable entraîne continue » est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-019",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-fonction-continue", "n-continuite-valeurs-intermediaires"],
+    "capacites": ["bo-m-continuite-01", "bo-m-continuite-03"],
+    "titre": "Sans continuité, pas de valeur intermédiaire",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 190,
+    "preambule": "Soit $m$ un réel, et $f$ la fonction définie sur $[-1\\,;\\,2]$ par $f(x) = x^3 + x$ si $-1 \\leqslant x \\leqslant 1$, et $f(x) = mx + 1$ si $1 < x \\leqslant 2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer $m$ pour que $f$ soit continue sur $[-1\\,;\\,2]$.",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "Sur chaque morceau, $f$ est un polynôme : seul le réel où la formule change pose question.",
+          "Calcule $f(1)$ avec la première formule ; la limite à droite en $1$ est celle de $mx + 1$.",
+          "Écris que la limite à droite, $m + 1$, est égale à $f(1)$, puis résous."
+        ],
+        "revoir": "l-continuite-003",
+        "solution": "Sur $[-1\\,;\\,1]$ et sur $]1\\,;\\,2]$, $f$ est donnée par des polynômes : elle est continue sur $[-1\\,;\\,1]$ et sur $]1\\,;\\,2]$. En $1$ : $f(1) = 1 + 1 = 2$, et à droite, $\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} (mx + 1) = m + 1$. $f$ est continue en $1$, donc sur $[-1\\,;\\,2]$, si $m + 1 = 2$, soit $m = 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On prend $m = 1$. Justifier que l'équation $f(x) = 2{,}5$ admet au moins une solution dans $[-1\\,;\\,2]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Vérifie les deux hypothèses du théorème des valeurs intermédiaires sur $[-1\\,;\\,2]$.",
+          "Avec $m = 1$, $f$ est continue sur $[-1\\,;\\,2]$ d'après la question 1. Calcule $f(-1)$ et $f(2)$.",
+          "$f(-1) = -2$ et $f(2) = 3$ : le nombre $2{,}5$ est-il compris entre eux ?"
+        ],
+        "revoir": "l-continuite-016",
+        "solution": "Avec $m = 1$, $f$ est continue sur $[-1\\,;\\,2]$ d'après la question 1. De plus, $f(-1) = -1 - 1 = -2$ et $f(2) = 2 + 1 = 3$ : $2{,}5$ est compris entre $-2$ et $3$. D'après le théorème des valeurs intermédiaires, l'équation $f(x) = 2{,}5$ admet au moins une solution dans $[-1\\,;\\,2]$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Toujours avec $m = 1$, déterminer cette solution.",
+        "reponse": { "type": "numerique", "valeur": 1.5, "tolerance": 0 },
+        "indices": [
+          "Cherche d'abord sur quel morceau se trouve la solution : quelles valeurs $f$ prend-elle sur $[-1\\,;\\,1]$ ?",
+          "Sur $[-1\\,;\\,1]$, $x^3 + x$ est croissante, car sa dérivée $3x^2 + 1$ est positive : donc $f(x) \\leqslant f(1) = 2$, et il n'y a pas de solution sur ce morceau.",
+          "Sur $]1\\,;\\,2]$, $f(x) = x + 1$ : résous l'équation du premier degré obtenue."
+        ],
+        "revoir": "l-continuite-018",
+        "solution": "Sur $[-1\\,;\\,1]$, $f$ est dérivable et $f'(x) = 3x^2 + 1 > 0$ : $f$ est croissante, donc $f(x) \\leqslant f(1) = 2 < 2{,}5$. La solution est donc dans $]1\\,;\\,2]$, où $f(x) = x + 1$. Or $x + 1 = 2{,}5 \\iff x = 1{,}5$, qui appartient à $]1\\,;\\,2]$. La solution est $1{,}5$ ; c'est d'ailleurs la seule."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On prend maintenant $m = 4$. Ainsi $f(-1) = -2$ et $f(2) = 9$. Vrai ou faux ? L'équation $f(x) = 3$ admet au moins une solution dans $[-1\\,;\\,2]$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Sur $[-1\\,;\\,1]$, $f(x) \\leqslant 2$ ; sur $]1\\,;\\,2]$, $f(x) = 4x + 1 > 5$. La valeur $3$ n'est jamais prise : la courbe saute de $2$ à $5$ en $1$, et le théorème ne s'applique pas, car $f$ n'est pas continue en $1$."
+        },
+        "indices": [
+          "Le théorème ne s'applique que si $f$ est continue sur $[-1\\,;\\,2]$ : est-ce le cas avec $m = 4$ ?",
+          "Avec $m = 4$, la limite à droite en $1$ vaut $5$, alors que $f(1) = 2$. Étudie directement les valeurs prises sur chaque morceau.",
+          "Sur $[-1\\,;\\,1]$, $f(x) \\leqslant 2$ ; sur $]1\\,;\\,2]$, compare $4x + 1$ à $5$."
+        ],
+        "revoir": "l-continuite-016",
+        "solution": "Avec $m = 4$, $f$ n'est pas continue en $1$ : $f(1) = 2$, mais la limite à droite vaut $4 + 1 = 5$. Le théorème des valeurs intermédiaires ne s'applique donc pas, même si $3$ est compris entre $f(-1) = -2$ et $f(2) = 9$. Étudions les valeurs prises : sur $[-1\\,;\\,1]$, $f$ est croissante, donc $f(x) \\leqslant 2$ ; sur $]1\\,;\\,2]$, $x > 1$ donne $4x + 1 > 5$. La valeur $3$ n'est jamais prise : l'affirmation est fausse. La continuité est une hypothèse indispensable du théorème."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-020",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-approcher-solution", "n-continuite-valeurs-intermediaires"],
+    "capacites": ["bo-m-continuite-06", "bo-m-continuite-03", "bo-m-continuite-04"],
+    "titre": "Programmer une dichotomie",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 200,
+    "preambule": "On s'intéresse à l'équation $e^x = 3$, que l'on ne sait pas encore résoudre par le calcul. On pose $f(x) = e^x - 3$ pour tout réel $x$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer que l'équation $f(x) = 0$ admet une unique solution $\\alpha$ dans $[1\\,;\\,2]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Il faut trois hypothèses : continuité, stricte monotonie, et $0$ compris entre $f(1)$ et $f(2)$.",
+          "$f'(x) = e^x > 0$ : $f$ est continue et strictement croissante. Calcule $f(1)$ et $f(2)$.",
+          "$f(1) = e - 3$ et $f(2) = e^2 - 3$. Avec $e \\approx 2{,}718$, quels sont leurs signes ?"
+        ],
+        "revoir": "l-continuite-024",
+        "solution": "$f$ est dérivable sur $\\mathbb{R}$, donc continue, et $f'(x) = e^x > 0$ : $f$ est strictement croissante sur $[1\\,;\\,2]$. De plus, $f(1) = e - 3 \\approx -0{,}28 < 0$ et $f(2) = e^2 - 3 \\approx 4{,}39 > 0$. D'après le théorème des valeurs intermédiaires appliqué à une fonction continue et strictement croissante, l'équation $f(x) = 0$ admet une unique solution $\\alpha$ dans $[1\\,;\\,2]$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On complète la fonction ci-dessous, qui applique la dichotomie à $f$ sur $[a\\,;\\,b]$ avec la précision $p$. Quelle condition faut-il écrire à la place des pointillés ?",
+        "code": {
+          "langage": "python",
+          "source": "from math import exp\n\ndef f(x):\n    return exp(x) - 3\n\ndef dichotomie(a, b, p):\n    while b - a > p:\n        m = (a + b) / 2\n        if ..........:\n            b = m\n        else:\n            a = m\n    return [a, b]"
+        },
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$f(a) \\times f(m) \\leqslant 0$",
+            "$f(m) \\leqslant 0$",
+            "$f(a) \\times f(m) > 0$",
+            "$f(a) \\leqslant 0$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Si $f(m) \\leqslant 0$, comme $f$ est croissante, la solution est après $m$ : il faudrait garder $[m\\,;\\,b]$, pas $[a\\,;\\,m]$. Ce test inverse les deux cas.",
+            "Ce test garde $[a\\,;\\,m]$ quand $f(a)$ et $f(m)$ ont le même signe, c'est-à-dire justement quand la solution n'y est pas.",
+            "$f(a)$ reste négatif à chaque étape : ce test garderait toujours $[a\\,;\\,m]$, même quand la solution est entre $m$ et $b$."
+          ]
+        },
+        "indices": [
+          "L'instruction « b = m » garde l'intervalle $[a\\,;\\,m]$ : elle doit s'exécuter quand la solution est entre $a$ et $m$.",
+          "La solution est entre $a$ et $m$ quand $f$ change de signe entre ces deux nombres, ou s'annule en l'un d'eux.",
+          "« $f(a)$ et $f(m)$ sont de signes contraires, ou l'un d'eux est nul » s'écrit avec un produit."
+        ],
+        "revoir": "l-continuite-041",
+        "solution": "L'instruction « b = m » garde $[a\\,;\\,m]$ : il faut l'exécuter quand $f$ change de signe entre $a$ et $m$, ou s'annule en $a$ ou en $m$, c'est-à-dire quand $f(a) \\times f(m) \\leqslant 0$. En Python, on écrit cette condition $\\texttt{f(a) * f(m) <= 0}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Que renvoie l'appel $\\texttt{dichotomie(1, 2, 0{.}1)}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "La liste formée de $1{,}062\\,5$ et $1{,}125$",
+            "La liste formée de $1$ et $1{,}125$",
+            "La liste formée de $1{,}125$ et $1{,}25$",
+            "La liste formée de $1{,}062\\,5$ et $1{,}093\\,75$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Après trois passages, l'amplitude vaut $0{,}125 > 0{,}1$ : la boucle tourne une quatrième fois, et $a$ change.",
+            "$f(1{,}125) \\approx 0{,}080 > 0$ : la solution est avant $1{,}125$, donc c'est $b$ qui devient $1{,}125$.",
+            "Après quatre passages, l'amplitude vaut $0{,}062\\,5 \\leqslant 0{,}1$ : la boucle s'arrête, il n'y a pas de cinquième passage."
+          ]
+        },
+        "indices": [
+          "Fais tourner la boucle à la main, en notant $a$, $b$, $m$ et le signe de $f(m)$, tant que $b - a > 0{,}1$.",
+          "Passage 1 : $m = 1{,}5$ et $f(1{,}5) \\approx 1{,}48 > 0$, donc $b = 1{,}5$. Passage 2 : $m = 1{,}25$ et $f(1{,}25) \\approx 0{,}49 > 0$, donc $b = 1{,}25$.",
+          "Passage 3 : $m = 1{,}125$ et $f(1{,}125) \\approx 0{,}080$. Continue tant que l'amplitude dépasse $0{,}1$."
+        ],
+        "revoir": "l-continuite-034",
+        "solution": "| passage | $a$ | $b$ | $m$ | $f(m)$ |\n|---|---|---|---|---|\n| 1 | $1$ | $2$ | $1{,}5$ | $\\approx 1{,}48 > 0$ |\n| 2 | $1$ | $1{,}5$ | $1{,}25$ | $\\approx 0{,}49 > 0$ |\n| 3 | $1$ | $1{,}25$ | $1{,}125$ | $\\approx 0{,}080 > 0$ |\n| 4 | $1$ | $1{,}125$ | $1{,}062\\,5$ | $\\approx -0{,}106 < 0$ |\n\nAux passages 1 à 3, $f(1) < 0$ et $f(m) > 0$ : on remplace $b$ par $m$. Au passage 4, $f(1) \\times f(1{,}062\\,5) > 0$ : on remplace $a$ par $1{,}062\\,5$. L'amplitude vaut alors $1{,}125 - 1{,}062\\,5 = 0{,}062\\,5 \\leqslant 0{,}1$ : la boucle s'arrête. La fonction renvoie la liste formée de $1{,}062\\,5$ et $1{,}125$, donc $1{,}062\\,5 \\leqslant \\alpha \\leqslant 1{,}125$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Combien de passages dans la boucle l'appel $\\texttt{dichotomie(1, 2, 0{.}0001)}$ effectue-t-il ?",
+        "reponse": { "type": "numerique", "valeur": 14, "tolerance": 0 },
+        "indices": [
+          "À chaque passage, l'amplitude est divisée par $2$ : après $n$ passages, elle vaut $\\dfrac{1}{2^n}$.",
+          "La boucle s'arrête au premier $n$ tel que $\\dfrac{1}{2^n} \\leqslant 0{,}000\\,1$, c'est-à-dire $2^n \\geqslant 10\\,000$.",
+          "Calcule les puissances de $2$ autour de $10\\,000$, en partant de $2^{10} = 1\\,024$."
+        ],
+        "revoir": "l-continuite-033",
+        "solution": "Après $n$ passages, l'amplitude vaut $\\dfrac{2 - 1}{2^n} = \\dfrac{1}{2^n}$. La boucle s'arrête dès que $\\dfrac{1}{2^n} \\leqslant 10^{-4}$, soit $2^n \\geqslant 10\\,000$. Or $2^{13} = 8\\,192 < 10\\,000$ et $2^{14} = 16\\,384 \\geqslant 10\\,000$ : la boucle fait $14$ passages."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-021",
+    "chapitre": "continuite",
+    "niveau": 2,
+    "notions": ["n-continuite-approcher-solution"],
+    "capacites": ["bo-m-continuite-07"],
+    "titre": "Newton, bien plus rapide que la dichotomie",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 210,
+    "preambule": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = x^2 - 2x - 1$. L'équation $f(x) = 0$ a pour solutions $1 - \\sqrt{2}$ et $1 + \\sqrt{2} \\approx 2{,}414\\,213\\,56$. On approche $1 + \\sqrt{2}$ par la méthode de Newton, en partant de $x_0 = 3$.",
+    "code": {
+      "langage": "python",
+      "source": "def f(x):\n    return x**2 - 2*x - 1\n\ndef derivee(x):              # f'(x) = 2x - 2\n    return 2*x - 2\n\ndef newton(x, n):\n    for k in range(n):\n        x = x - f(x) / derivee(x)   # là où la tangente coupe l'axe\n    return x\n\nprint(newton(3, 3))"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer une équation de la tangente à la courbe de $f$ au point d'abscisse $3$, puis l'abscisse $x_1$ du point où elle coupe l'axe des abscisses. Saisis la valeur de $x_1$.",
+        "reponse": { "type": "numerique", "valeur": 2.5, "tolerance": 0 },
+        "indices": [
+          "Une équation de la tangente au point d'abscisse $3$ est $y = f'(3)(x - 3) + f(3)$.",
+          "$f(3) = 9 - 6 - 1$ et $f'(x) = 2x - 2$ : calcule $f(3)$ et $f'(3)$.",
+          "$f(3) = 2$ et $f'(3) = 4$ : la tangente a pour équation $y = 4x - 10$. Où coupe-t-elle l'axe des abscisses ?"
+        ],
+        "revoir": "l-continuite-038",
+        "solution": "$f(3) = 9 - 6 - 1 = 2$ et $f'(x) = 2x - 2$, donc $f'(3) = 4$. La tangente a pour équation $y = 4(x - 3) + 2$, soit $y = 4x - 10$. Elle coupe l'axe des abscisses quand $4x - 10 = 0$, soit $x = 2{,}5$. Donc $x_1 = 2{,}5$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout entier naturel $n$, $x_{n+1} = \\dfrac{x_n^2 + 1}{2x_n - 2}$. On admet que $x_n \\neq 1$ pour tout $n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pars de la formule de Newton $x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}$, avec $f'(x) = 2x - 2$.",
+          "$x_{n+1} = x_n - \\dfrac{x_n^2 - 2x_n - 1}{2x_n - 2}$ : mets les deux termes au même dénominateur.",
+          "$x_n = \\dfrac{x_n(2x_n - 2)}{2x_n - 2} = \\dfrac{2x_n^2 - 2x_n}{2x_n - 2}$ : soustrais les numérateurs."
+        ],
+        "revoir": "l-continuite-036",
+        "solution": "D'après la formule de Newton, avec $f'(x_n) = 2x_n - 2 \\neq 0$ :\n\n$$x_{n+1} = x_n - \\dfrac{x_n^2 - 2x_n - 1}{2x_n - 2} = \\dfrac{2x_n^2 - 2x_n - \\left(x_n^2 - 2x_n - 1\\right)}{2x_n - 2} = \\dfrac{x_n^2 + 1}{2x_n - 2}.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $x_2$, sous forme de fraction irréductible.",
+        "reponse": { "type": "numerique", "valeur": "29/12", "tolerance": 0 },
+        "indices": [
+          "Applique la formule de la question 2 avec $x_1 = \\dfrac{5}{2}$.",
+          "Calcule séparément le numérateur $x_1^2 + 1$ et le dénominateur $2x_1 - 2$.",
+          "Le numérateur vaut $\\dfrac{25}{4} + 1$, à mettre au même dénominateur ; le dénominateur vaut $3$. Diviser par $3$, c'est multiplier par $\\dfrac{1}{3}$."
+        ],
+        "revoir": "l-continuite-038",
+        "solution": "$x_1 = \\dfrac{5}{2}$, donc $x_1^2 + 1 = \\dfrac{25}{4} + \\dfrac{4}{4} = \\dfrac{29}{4}$ et $2x_1 - 2 = 5 - 2 = 3$. Ainsi $x_2 = \\dfrac{29}{4} \\times \\dfrac{1}{3} = \\dfrac{29}{12} \\approx 2{,}416\\,67$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Combien d'étapes de la méthode de Newton faut-il, à partir de $x_0 = 3$, pour que l'écart entre $x_n$ et $1 + \\sqrt{2}$ soit inférieur à $10^{-3}$ ? Tu peux utiliser le programme ci-dessus, ou la formule de la question 2 et la calculatrice.",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Calcule l'écart $\\left|x_n - \\left(1 + \\sqrt{2}\\right)\\right|$ pour les premières valeurs de $n$, dans l'ordre.",
+          "$x_1 - \\left(1 + \\sqrt{2}\\right) \\approx 0{,}086$ et $x_2 - \\left(1 + \\sqrt{2}\\right) \\approx 0{,}002\\,5$ : ces écarts sont-ils inférieurs à $10^{-3}$ ?",
+          "Calcule $x_3$ avec la formule de la question 2 à partir de $x_2 = \\dfrac{29}{12}$, ou lis la valeur affichée par le programme, puis compare."
+        ],
+        "revoir": "l-continuite-036",
+        "solution": "$x_1 = 2{,}5$ : écart $\\approx 0{,}086$. $x_2 = \\dfrac{29}{12} \\approx 2{,}416\\,67$ : écart $\\approx 0{,}002\\,5 > 10^{-3}$. $x_3 = \\dfrac{985}{408} \\approx 2{,}414\\,216$ (le programme affiche $2{,}414\\,215\\,686\\ldots$) : écart $\\approx 2 \\times 10^{-6} < 10^{-3}$. Il faut donc $3$ étapes. Par comparaison, la dichotomie à partir de $[2\\,;\\,3]$ demanderait $10$ étapes pour un encadrement d'amplitude inférieure ou égale à $10^{-3}$, car $2^9 = 512 < 1\\,000 \\leqslant 2^{10}$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-022",
+    "chapitre": "continuite",
+    "niveau": 3,
+    "notions": ["n-continuite-suite-recurrente", "n-continuite-fonction-continue"],
+    "capacites": ["bo-m-continuite-05", "bo-m-continuite-02", "bo-m-continuite-01", "bo-m-suites-05", "bo-m-suites-08", "bo-m-logique-07"],
+    "titre": "Quand la fonction n'est pas continue, la limite trompe",
+    "duree": 20,
+    "calculatrice": false,
+    "ordre": 220,
+    "preambule": "Soit $f$ la fonction définie sur $[0\\,;\\,4]$ par $f(x) = \\dfrac{x}{2} + 1$ si $0 \\leqslant x < 2$, et $f(x) = 1$ si $2 \\leqslant x \\leqslant 4$. Soit $(u_n)$ la suite définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.\n\nPour tout $x$ de $[0\\,;\\,4]$, $f(x)$ appartient à $[1\\,;\\,2[$, donc à $[0\\,;\\,4]$ : tous les termes $u_n$ sont dans $[0\\,;\\,4]$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "La fonction $f$ est-elle continue en $2$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Non : sa limite à gauche en $2$ vaut $2$, alors que $f(2) = 1$.",
+            "Oui : $f(2)$ existe.",
+            "Oui : chacun des deux morceaux est continu.",
+            "Non : $f$ n'est pas définie en $2$."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Que $f(2)$ existe ne suffit pas : il faut que $f(x)$ se rapproche de $f(2)$ quand $x$ se rapproche de $2$.",
+            "Chaque morceau est continu, mais ils ne se raccordent pas en $2$ : la courbe saute.",
+            "$f$ est définie en $2$ : comme $2 \\leqslant 2 \\leqslant 4$, $f(2) = 1$."
+          ]
+        },
+        "indices": [
+          "Compare en $2$ la limite à gauche de $f$ et la valeur $f(2)$.",
+          "À gauche de $2$, $f(x) = \\dfrac{x}{2} + 1$ ; en $2$ même, c'est la deuxième formule qui s'applique.",
+          "Calcule la limite de $\\dfrac{x}{2} + 1$ quand $x$ tend vers $2$, et compare-la à $f(2)$."
+        ],
+        "revoir": "l-continuite-003",
+        "solution": "$\\lim\\limits_{\\substack{x \\to 2 \\\\ x < 2}} f(x) = \\dfrac{2}{2} + 1 = 2$, alors que $f(2) = 1$, car $2 \\leqslant 2 \\leqslant 4$. La limite à gauche est différente de $f(2)$ : $f$ n'est pas continue en $2$. Sa courbe saute de $2$ à $1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n < 2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $P(n)$ : « $0 \\leqslant u_n < 2$ ». L'initialisation est immédiate avec $u_0$.",
+          "Pour l'hérédité : si $0 \\leqslant u_n < 2$, quelle formule de $f$ s'applique à $u_n$ ?",
+          "$u_{n+1} = \\dfrac{u_n}{2} + 1$ : à partir de $0 \\leqslant u_n < 2$, divise par $2$, puis ajoute $1$."
+        ],
+        "revoir": "l-recurrence-suites-017",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant u_n < 2$ ».\n\n**Initialisation** : $u_0 = 0$, et $0 \\leqslant 0 < 2$ : $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $0 \\leqslant u_n < 2$. Alors $u_{n+1} = f(u_n) = \\dfrac{u_n}{2} + 1$. De $0 \\leqslant u_n < 2$, on tire $0 \\leqslant \\dfrac{u_n}{2} < 1$, puis $1 \\leqslant u_{n+1} < 2$. Donc $0 \\leqslant u_{n+1} < 2$ : $P(n + 1)$ est vraie.\n\n**Conclusion** : d'après le principe de récurrence, $0 \\leqslant u_n < 2$ pour tout entier naturel $n$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On pose $v_n = 2 - u_n$ pour tout entier naturel $n$. Montrer que la suite $(v_n)$ est géométrique, puis en déduire la limite $\\ell$ de la suite $(u_n)$.",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "D'après la question 2, $u_{n+1} = \\dfrac{u_n}{2} + 1$ pour tout $n$. Exprime $v_{n+1}$ en fonction de $u_n$.",
+          "$v_{n+1} = 2 - \\dfrac{u_n}{2} - 1 = 1 - \\dfrac{u_n}{2}$ : fais apparaître $v_n = 2 - u_n$.",
+          "$v_{n+1} = \\dfrac{1}{2}v_n$ : écris $v_n$ en fonction de $n$, puis $u_n$, et cherche la limite avec celle de $\\left(\\dfrac{1}{2}\\right)^n$."
+        ],
+        "revoir": "l-limites-suites-044",
+        "solution": "D'après la question 2, $u_n < 2$, donc $u_{n+1} = \\dfrac{u_n}{2} + 1$ pour tout $n$. Alors $v_{n+1} = 2 - u_{n+1} = 1 - \\dfrac{u_n}{2} = \\dfrac{2 - u_n}{2} = \\dfrac{1}{2}v_n$ : $(v_n)$ est géométrique de raison $\\dfrac{1}{2}$, de premier terme $v_0 = 2$. Donc $v_n = 2 \\times \\left(\\dfrac{1}{2}\\right)^n$ et $u_n = 2 - 2 \\times \\left(\\dfrac{1}{2}\\right)^n$. Comme $-1 < \\dfrac{1}{2} < 1$, $\\left(\\dfrac{1}{2}\\right)^n$ tend vers $0$ : la suite $(u_n)$ converge vers $\\ell = 2$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Comparer $f(\\ell)$ et $\\ell$. Pourquoi cela ne contredit-il pas la propriété du cours sur les suites définies par $u_{n+1} = f(u_n)$ ?",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Calcule $f(\\ell)$ et compare-le à $\\ell$.",
+          "$f(\\ell) \\neq \\ell$. Relis les hypothèses de la propriété « si $(u_n)$ converge vers $\\ell$, alors $\\ell = f(\\ell)$ ».",
+          "Les termes $u_n$ et la limite sont dans $[0\\,;\\,4]$, et $f$ est à valeurs dans $[0\\,;\\,4]$. Quelle hypothèse manque ? Pense à la question 1.",
+          "Les $u_n$ s'approchent de $\\ell$ par la gauche : vers quoi tend alors $f(u_n)$ ?"
+        ],
+        "revoir": "l-continuite-049",
+        "solution": "$f(\\ell) = f(2) = 1$, alors que $\\ell = 2$ : $f(\\ell) \\neq \\ell$. Ce n'est pas une contradiction : la propriété suppose $f$ **continue** sur l'intervalle $[0\\,;\\,4]$. Les autres hypothèses sont vérifiées (les $u_n$ et $\\ell$ sont dans $[0\\,;\\,4]$, $f$ est à valeurs dans $[0\\,;\\,4]$, la suite converge), mais $f$ n'est pas continue en $2$ (question 1). Les $u_n$ s'approchent de $2$ par la gauche, donc $f(u_n) = \\dfrac{u_n}{2} + 1$ tend vers la limite à gauche, $2$, et non vers $f(2) = 1$. C'est un contre-exemple : sans continuité, la conclusion $\\ell = f(\\ell)$ peut être fausse."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On modifie $f$ sur $[2\\,;\\,4]$ : on pose désormais $f(x) = c$ pour $2 \\leqslant x \\leqslant 4$, où $c$ est un réel, sans changer $f$ sur $[0\\,;\\,2[$. Pour quelle valeur de $c$ la nouvelle fonction est-elle continue sur $[0\\,;\\,4]$ ? Vérifier qu'alors $f(\\ell) = \\ell$.",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Sur $[0\\,;\\,2[$ et sur $]2\\,;\\,4]$, la fonction est continue : seule la jonction compte.",
+          "La limite à gauche à la jonction ne change pas ; à droite, et à la jonction elle-même, la fonction vaut $c$.",
+          "Écris l'égalité entre la limite à gauche et $c$. La suite $(u_n)$ change-t-elle ? Pourquoi ?"
+        ],
+        "revoir": "l-continuite-003",
+        "solution": "Sur $[0\\,;\\,2[$, la fonction est affine ; sur $]2\\,;\\,4]$, elle est constante : elle y est continue. En $2$, la limite à gauche vaut $2$, et la fonction vaut $c$ en $2$ et à droite de $2$. Elle est continue en $2$, donc sur $[0\\,;\\,4]$, si et seulement si $c = 2$. Les termes $u_n$ sont tous dans $[0\\,;\\,2[$ (question 2), où la formule n'a pas changé : la suite est la même, et elle converge toujours vers $\\ell = 2$. Cette fois, $f(\\ell) = f(2) = c = 2 = \\ell$, comme le prévoit la propriété, désormais applicable."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-023",
+    "chapitre": "continuite",
+    "niveau": 3,
+    "notions": ["n-continuite-valeurs-intermediaires", "n-continuite-approcher-solution"],
+    "capacites": ["bo-m-continuite-03", "bo-m-continuite-04", "bo-m-continuite-06", "bo-m-continuite-07", "bo-m-limites-fonctions-05"],
+    "titre": "Une équation, deux solutions, deux méthodes pour les approcher",
+    "duree": 25,
+    "calculatrice": true,
+    "ordre": 230,
+    "preambule": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = e^x - x - 2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer les limites de $f$ en $-\\infty$ et en $+\\infty$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "En $-\\infty$, il n'y a pas de forme indéterminée : cherche la limite de chaque terme.",
+          "En $+\\infty$, « $+\\infty - \\infty$ » est une forme indéterminée : mets $e^x$ en facteur.",
+          "$f(x) = e^x\\left(1 - xe^{-x} - 2e^{-x}\\right)$. Utilise les croissances comparées pour $xe^{-x}$."
+        ],
+        "revoir": "l-limites-fonctions-053",
+        "solution": "En $-\\infty$ : $\\lim\\limits_{x \\to -\\infty} e^x = 0$ et $\\lim\\limits_{x \\to -\\infty} (-x - 2) = +\\infty$. Par somme, $\\lim\\limits_{x \\to -\\infty} f(x) = +\\infty$.\n\nEn $+\\infty$ : pour tout réel $x$, $f(x) = e^x\\left(1 - xe^{-x} - 2e^{-x}\\right)$. Par croissances comparées, $\\lim\\limits_{x \\to +\\infty} xe^{-x} = 0$, et $\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$ : la parenthèse tend vers $1$. Comme $e^x$ tend vers $+\\infty$, par produit, $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étudier les variations de $f$, puis démontrer que l'équation $f(x) = 0$ admet exactement deux solutions $\\alpha$ et $\\beta$, avec $-2 < \\alpha < -1$ et $1 < \\beta < 2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f'(x) = e^x - 1$ : son signe dépend de la position de $x$ par rapport à $0$, car $e^0 = 1$.",
+          "$f$ est strictement décroissante sur $]-\\infty\\,;\\,0]$ et strictement croissante sur $[0\\,;\\,+\\infty[$, avec $f(0) = -1$. Applique le théorème sur chaque morceau, avec les limites de la question 1.",
+          "Pour situer les solutions, calcule $f(-2) = e^{-2}$, $f(-1) = e^{-1} - 1$, $f(1) = e - 3$ et $f(2) = e^2 - 4$, et étudie leurs signes.",
+          "Sur chaque morceau, $f$ est strictement monotone : un changement de signe entre deux réels place la solution entre eux."
+        ],
+        "revoir": "l-continuite-027",
+        "solution": "$f$ est dérivable sur $\\mathbb{R}$ et $f'(x) = e^x - 1$. Comme la fonction exponentielle est strictement croissante et $e^0 = 1$ : $f'(x) < 0$ pour $x < 0$, et $f'(x) > 0$ pour $x > 0$. Donc $f$ est strictement décroissante sur $]-\\infty\\,;\\,0]$ et strictement croissante sur $[0\\,;\\,+\\infty[$, avec $f(0) = 1 - 0 - 2 = -1$.\n\n**Sur $]-\\infty\\,;\\,0]$** : $f$ est continue et strictement décroissante, de la limite $+\\infty$ jusqu'à $f(0) = -1 < 0$. D'après l'extension admise du théorème des valeurs intermédiaires, l'équation $f(x) = 0$ y a une unique solution $\\alpha$. Or $f(-2) = e^{-2} > 0$ et $f(-1) = e^{-1} - 1 < 0$ : comme $f$ est décroissante et $f(\\alpha) = 0$, on a $-2 < \\alpha < -1$.\n\n**Sur $[0\\,;\\,+\\infty[$** : $f$ est continue et strictement croissante, de $f(0) = -1$ jusqu'à la limite $+\\infty$ : l'équation y a une unique solution $\\beta$. Or $f(1) = e - 3 < 0$, car $e < 3$, et $f(2) = e^2 - 4 > 0$, car $e > 2$ ; donc $1 < \\beta < 2$.\n\nL'équation $f(x) = 0$ admet donc exactement deux solutions, $\\alpha$ et $\\beta$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire le nombre de points d'intersection de la courbe de la fonction exponentielle et de la droite d'équation $y = x + 2$.",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Un point commun aux deux courbes a une abscisse $x$ qui vérifie $e^x = x + 2$.",
+          "$e^x = x + 2$ équivaut à $e^x - x - 2 = 0$, c'est-à-dire à $f(x) = 0$.",
+          "Utilise la question 2 : à chaque solution de $f(x) = 0$ correspond un point d'intersection."
+        ],
+        "revoir": "l-continuite-016",
+        "solution": "Un point de coordonnées $(x\\,;\\,y)$ appartient aux deux courbes si et seulement si $y = e^x$ et $y = x + 2$ ; alors $e^x = x + 2$, c'est-à-dire $f(x) = 0$. D'après la question 2, cette équation a exactement deux solutions, $\\alpha$ et $\\beta$. La courbe de la fonction exponentielle et la droite se coupent donc en $2$ points, d'abscisses $\\alpha$ et $\\beta$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On approche $\\beta$ par dichotomie avec le programme ci-dessous. Que renvoie l'appel dichotomie(1, 2, 0.1) ?",
+        "code": {
+          "langage": "python",
+          "source": "from math import exp\n\ndef f(x):\n    return exp(x) - x - 2\n\ndef dichotomie(a, b, p):\n    while b - a > p:\n        m = (a + b) / 2\n        if f(a) * f(m) <= 0:\n            b = m\n        else:\n            a = m\n    return [a, b]"
+        },
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "La liste formée de $1{,}125$ et $1{,}187\\,5$",
+            "La liste formée de $1{,}062\\,5$ et $1{,}125$",
+            "La liste formée de $1{,}187\\,5$ et $1{,}25$",
+            "La liste formée de $1{,}125$ et $1{,}25$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$f(1{,}125) \\approx -0{,}045 < 0$, du même signe que $f(1)$ : la solution est après $1{,}125$, donc c'est $a$ qui devient $1{,}125$.",
+            "$f(1{,}187\\,5) \\approx 0{,}091 > 0$ : la solution est avant $1{,}187\\,5$, donc c'est $b$ qui devient $1{,}187\\,5$.",
+            "Après trois passages, l'amplitude vaut $0{,}125 > 0{,}1$ : la boucle tourne une quatrième fois."
+          ]
+        },
+        "indices": [
+          "Fais tourner la boucle à la main : à chaque passage, calcule $m$ et le signe de $f(m)$, sachant que $f(1) < 0$ et $f(2) > 0$.",
+          "Passage 1 : $f(1{,}5) \\approx 0{,}98 > 0$, donc $b = 1{,}5$. Passage 2 : $f(1{,}25) \\approx 0{,}24 > 0$, donc $b = 1{,}25$.",
+          "Passage 3 : $f(1{,}125) \\approx -0{,}045 < 0$. Quelle borne change ? L'amplitude dépasse-t-elle encore $0{,}1$ ?"
+        ],
+        "revoir": "l-continuite-034",
+        "solution": "| passage | $a$ | $b$ | $m$ | $f(m)$ |\n|---|---|---|---|---|\n| 1 | $1$ | $2$ | $1{,}5$ | $\\approx 0{,}98 > 0$ |\n| 2 | $1$ | $1{,}5$ | $1{,}25$ | $\\approx 0{,}24 > 0$ |\n| 3 | $1$ | $1{,}25$ | $1{,}125$ | $\\approx -0{,}045 < 0$ |\n| 4 | $1{,}125$ | $1{,}25$ | $1{,}187\\,5$ | $\\approx 0{,}091 > 0$ |\n\nComme $f(a) < 0$ à chaque passage, on remplace $b$ par $m$ quand $f(m) > 0$, et $a$ par $m$ quand $f(m) < 0$. Après le passage 4, $a = 1{,}125$, $b = 1{,}187\\,5$ et $b - a = 0{,}062\\,5 \\leqslant 0{,}1$ : la boucle s'arrête. La fonction renvoie la liste formée de $1{,}125$ et $1{,}187\\,5$, donc $1{,}125 \\leqslant \\beta \\leqslant 1{,}187\\,5$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On approche $\\alpha$ par la méthode de Newton, à partir de $x_0 = -2$. Montrer que $x_1 = -2 + \\dfrac{1}{e^2 - 1}$, puis en donner la valeur arrondie à $10^{-3}$ près.",
+        "reponse": { "type": "numerique", "valeur": -1.843, "tolerance": 0 },
+        "indices": [
+          "Utilise la formule $x_1 = x_0 - \\dfrac{f(x_0)}{f'(x_0)}$, avec $f'(x) = e^x - 1$.",
+          "$f(-2) = e^{-2}$ et $f'(-2) = e^{-2} - 1$, donc $x_1 = -2 - \\dfrac{e^{-2}}{e^{-2} - 1}$.",
+          "Multiplie le numérateur et le dénominateur de la fraction par $e^2$, en utilisant $e^{-2} \\times e^2 = 1$.",
+          "Tu obtiens $x_1 = -2 - \\dfrac{1}{1 - e^2}$ : change le signe, puis calcule $\\dfrac{1}{e^2 - 1}$ à la calculatrice."
+        ],
+        "revoir": "l-continuite-038",
+        "solution": "$f(-2) = e^{-2} + 2 - 2 = e^{-2}$ et $f'(-2) = e^{-2} - 1$. Donc $x_1 = -2 - \\dfrac{e^{-2}}{e^{-2} - 1}$. En multipliant le numérateur et le dénominateur par $e^2$ : $\\dfrac{e^{-2}}{e^{-2} - 1} = \\dfrac{1}{1 - e^2}$. Ainsi $x_1 = -2 - \\dfrac{1}{1 - e^2} = -2 + \\dfrac{1}{e^2 - 1}$. À la calculatrice, $\\dfrac{1}{e^2 - 1} \\approx 0{,}156\\,5$, donc $x_1 \\approx -1{,}843$, valeur arrondie à $10^{-3}$ près. C'est déjà proche de $\\alpha \\approx -1{,}841\\,4$ : l'étape suivante donne $x_2 \\approx -1{,}841\\,41$."
+      }
+    ]
+  },
+  {
+    "id": "x-continuite-024",
+    "chapitre": "continuite",
+    "niveau": 3,
+    "notions": ["n-continuite-suite-recurrente", "n-continuite-valeurs-intermediaires"],
+    "capacites": ["bo-m-continuite-05", "bo-m-continuite-02", "bo-m-continuite-03", "bo-m-continuite-04", "bo-m-suites-08", "bo-m-suites-06"],
+    "titre": "Une limite qu'on ne sait pas calculer, mais qu'on sait encadrer",
+    "duree": 25,
+    "calculatrice": true,
+    "ordre": 240,
+    "preambule": "Soit $f$ la fonction définie sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$ par $f(x) = \\dfrac{x^3 + 1}{3}$, et $(u_n)$ la suite définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étudier le sens de variation de $f$ sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$, et calculer $f(0)$ et $f\\left(\\dfrac{1}{2}\\right)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f(x) = \\dfrac{1}{3}x^3 + \\dfrac{1}{3}$ est un polynôme : calcule $f'(x)$.",
+          "$f'(x) = x^2$ : quel est son signe ? Où s'annule-t-elle ?",
+          "Pour $f\\left(\\dfrac{1}{2}\\right)$ : $\\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{1}{8}$, puis ajoute $1$ et divise par $3$."
+        ],
+        "revoir": "l-continuite-015",
+        "solution": "$f$ est un polynôme, dérivable, et $f'(x) = \\dfrac{3x^2}{3} = x^2$. Pour $x$ dans $\\left]0\\,;\\,\\dfrac{1}{2}\\right]$, $f'(x) > 0$, et $f'(0) = 0$ : $f$ est strictement croissante sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$. De plus, $f(0) = \\dfrac{1}{3}$ et $f\\left(\\dfrac{1}{2}\\right) = \\dfrac{1}{3}\\left(\\dfrac{1}{8} + 1\\right) = \\dfrac{1}{3} \\times \\dfrac{9}{8} = \\dfrac{3}{8}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant \\dfrac{1}{2}$. En déduire que $(u_n)$ converge vers un réel $\\ell$ de $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $P(n)$ : « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant \\dfrac{1}{2}$ », et calcule $u_1$ pour l'initialisation.",
+          "$u_1 = f(0) = \\dfrac{1}{3}$. Pour l'hérédité, applique $f$, croissante, aux quatre nombres de l'encadrement.",
+          "Tu obtiens $\\dfrac{1}{3} \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant \\dfrac{3}{8}$ ; or $\\dfrac{3}{8} \\leqslant \\dfrac{1}{2}$.",
+          "Croissante et majorée : cite le théorème de convergence monotone, puis passe à la limite dans l'encadrement."
+        ],
+        "revoir": "l-continuite-056",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $0 \\leqslant u_n \\leqslant u_{n+1} \\leqslant \\dfrac{1}{2}$ ».\n\n**Initialisation** : $u_0 = 0$ et $u_1 = f(0) = \\dfrac{1}{3}$, donc $0 \\leqslant u_0 \\leqslant u_1 \\leqslant \\dfrac{1}{2}$ : $P(0)$ est vraie.\n\n**Hérédité** : soit $n$ un entier naturel tel que $P(n)$ est vraie. Comme $f$ est croissante sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$ : $f(0) \\leqslant f(u_n) \\leqslant f(u_{n+1}) \\leqslant f\\left(\\dfrac{1}{2}\\right)$, soit $\\dfrac{1}{3} \\leqslant u_{n+1} \\leqslant u_{n+2} \\leqslant \\dfrac{3}{8}$. Comme $0 \\leqslant \\dfrac{1}{3}$ et $\\dfrac{3}{8} \\leqslant \\dfrac{1}{2}$, $P(n + 1)$ est vraie.\n\n**Conclusion** : d'après le principe de récurrence, $P(n)$ est vraie pour tout entier naturel $n$.\n\nLa suite $(u_n)$ est donc croissante et majorée par $\\dfrac{1}{2}$ : d'après le théorème de convergence monotone, elle converge vers un réel $\\ell$, et par passage à la limite, $0 \\leqslant \\ell \\leqslant \\dfrac{1}{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Démontrer que $\\ell^3 - 3\\ell + 1 = 0$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Vérifie les hypothèses de la propriété $\\ell = f(\\ell)$ : $f$ continue sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$ et à valeurs dans cet intervalle.",
+          "D'après la question 1, pour tout $x$ de $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$, $\\dfrac{1}{3} \\leqslant f(x) \\leqslant \\dfrac{3}{8}$.",
+          "Tu obtiens $\\ell = \\dfrac{\\ell^3 + 1}{3}$ : multiplie par $3$ et regroupe tout dans un même membre."
+        ],
+        "revoir": "l-continuite-055",
+        "solution": "$f$ est un polynôme, continu sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$. Elle y est croissante, donc pour tout $x$ de cet intervalle, $\\dfrac{1}{3} \\leqslant f(x) \\leqslant \\dfrac{3}{8}$ : $f$ est à valeurs dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$. Comme $(u_n)$ converge vers $\\ell \\in \\left[0\\,;\\,\\dfrac{1}{2}\\right]$, en passant à la limite dans $u_{n+1} = f(u_n)$, on obtient $\\ell = f(\\ell)$, soit $\\ell = \\dfrac{\\ell^3 + 1}{3}$. Donc $3\\ell = \\ell^3 + 1$, c'est-à-dire $\\ell^3 - 3\\ell + 1 = 0$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On ne sait pas résoudre cette équation de degré $3$ par le calcul. Soit $g$ la fonction définie sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$ par $g(x) = x^3 - 3x + 1$. Démontrer que l'équation $g(x) = 0$ admet une unique solution $\\alpha$ dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$, puis en déduire que $\\ell = \\alpha$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Étudie le signe de $g'(x) = 3x^2 - 3$ sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$.",
+          "$g'(x) = 3\\left(x^2 - 1\\right) < 0$ sur cet intervalle : $g$ est continue et strictement décroissante. Calcule $g(0)$ et $g\\left(\\dfrac{1}{2}\\right)$.",
+          "$g(0) = 1$ et $g\\left(\\dfrac{1}{2}\\right) = -\\dfrac{3}{8}$ : conclus avec le théorème des valeurs intermédiaires.",
+          "D'après les questions 2 et 3, $\\ell$ est une solution de $g(x) = 0$ située dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$ : que dit l'unicité ?"
+        ],
+        "revoir": "l-continuite-024",
+        "solution": "$g$ est un polynôme, dérivable, donc continu, et $g'(x) = 3x^2 - 3 = 3\\left(x^2 - 1\\right)$. Pour $0 \\leqslant x \\leqslant \\dfrac{1}{2}$, $x^2 \\leqslant \\dfrac{1}{4} < 1$, donc $g'(x) < 0$ : $g$ est strictement décroissante sur $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$. De plus, $g(0) = 1$ et $g\\left(\\dfrac{1}{2}\\right) = \\dfrac{1}{8} - \\dfrac{3}{2} + 1 = -\\dfrac{3}{8}$ : $0$ est compris entre $-\\dfrac{3}{8}$ et $1$. D'après le théorème des valeurs intermédiaires, appliqué à une fonction continue et strictement décroissante, l'équation $g(x) = 0$ admet une unique solution $\\alpha$ dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$.\n\nD'après les questions 2 et 3, $\\ell$ appartient à $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$ et $g(\\ell) = 0$. Par unicité de la solution dans cet intervalle, $\\ell = \\alpha$ : la suite $(u_n)$ converge vers $\\alpha$.",
+        "erreurFrequente": "Croire que la limite est $\\dfrac{1}{2}$, le majorant, ou s'arrêter à $\\ell^3 - 3\\ell + 1 = 0$ sans identifier $\\ell$ grâce à l'unicité de la solution dans $\\left[0\\,;\\,\\dfrac{1}{2}\\right]$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "À l'aide de la calculatrice, donner la valeur arrondie de $\\ell$ à $10^{-2}$ près.",
+        "reponse": { "type": "numerique", "valeur": 0.35, "tolerance": 0 },
+        "indices": [
+          "Encadre $\\alpha$ avec le tableau de valeurs de $g$, avec un pas de $0{,}1$, puis de $0{,}01$. Attention : $g$ est décroissante.",
+          "$g(0{,}3) = 0{,}127 > 0$ et $g(0{,}4) = -0{,}136 < 0$, donc $0{,}3 < \\alpha < 0{,}4$. Affine avec un pas de $0{,}01$ à partir de $0{,}3$.",
+          "Avec un pas de $0{,}01$, le signe de $g$ change entre $0{,}34$ et le nombre suivant. Calcule ensuite l'image du milieu, $g(0{,}345)$, et compare-la à $0 = g(\\alpha)$ en tenant compte de la décroissance."
+        ],
+        "revoir": "l-continuite-024",
+        "solution": "À la calculatrice : $g(0{,}34) \\approx 0{,}019 > 0$ et $g(0{,}35) \\approx -0{,}007 < 0$. Comme $g$ est strictement décroissante et $g(\\alpha) = 0$, on a $0{,}34 < \\alpha < 0{,}35$.\n\nLe milieu de cet encadrement est $0{,}345$, et $g(0{,}345) \\approx 0{,}006 > 0 = g(\\alpha)$. Si on avait $\\alpha \\leqslant 0{,}345$, la décroissance de $g$ donnerait $g(\\alpha) \\geqslant g(0{,}345) > 0$ : impossible, car $g(\\alpha) = 0$. Donc $0{,}345 < \\alpha$ : c'est entre $0{,}345$ et $0{,}35$ que $g$ change de signe.\n\nAinsi $0{,}345 < \\ell < 0{,}35$, et la valeur arrondie de $\\ell$ à $10^{-2}$ près est $0{,}35$. Les premiers termes le confirment : $u_3 \\approx 0{,}347\\,1$.",
+        "erreurFrequente": "Répondre $0{,}34$ en recopiant le cas croissant : « $g(0{,}345) > 0$, donc $\\alpha < 0{,}345$ ». Comme $g$ est décroissante, la conclusion s'inverse : $g(0{,}345) > 0$ et $g(0{,}35) < 0$ placent $\\alpha$ entre $0{,}345$ et $0{,}35$."
+      }
+    ]
+  }
+]

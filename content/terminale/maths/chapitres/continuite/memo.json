@@ -1,0 +1,94 @@
+[
+  {
+    "id": "m-continuite-valeurs-intermediaires",
+    "chapitre": "continuite",
+    "notion": "n-continuite-valeurs-intermediaires",
+    "genre": "propriete",
+    "titre": "Théorème des valeurs intermédiaires",
+    "enonce": "Si $f$ est continue sur $[a\\,;\\,b]$, alors, pour tout réel $k$ compris entre $f(a)$ et $f(b)$, l'équation $f(x) = k$ admet **au moins une** solution dans $[a\\,;\\,b]$.",
+    "conditions": "$f$ continue sur tout $[a\\,;\\,b]$ ; $k$ compris entre $f(a)$ et $f(b)$. Le théorème garantit l'existence d'une solution, pas leur nombre.",
+    "exemple": "$f(x) = x^3 - 3x + 1$ : $f(-2) = -1$ et $f(2) = 3$, donc $f(x) = 1$ a au moins une solution dans $[-2\\,;\\,2]$. Il y en a en fait trois : $-\\sqrt{3}$, $0$ et $\\sqrt{3}$.",
+    "simplifie": {
+      "coeur": "$f$ continue sur $[a\\,;\\,b]$ et $k$ entre $f(a)$ et $f(b)$ $\\Rightarrow$ $f(x) = k$ a au moins une solution dans $[a\\,;\\,b]$",
+      "moyenMemo": "Pour aller de $f(a)$ à $f(b)$ sans lever le crayon, on passe forcément par $k$.",
+      "motCle": "valeurs-intermediaires",
+      "image": "Une courbe sans saut qui va de f(a) à f(b) coupe forcément la droite horizontale y = k."
+    }
+  },
+  {
+    "id": "m-continuite-solution-unique",
+    "chapitre": "continuite",
+    "notion": "n-continuite-valeurs-intermediaires",
+    "genre": "propriete",
+    "titre": "Une solution unique : continue et strictement monotone",
+    "enonce": "Si $f$ est continue et **strictement monotone** sur $[a\\,;\\,b]$, alors, pour tout réel $k$ compris entre $f(a)$ et $f(b)$, l'équation $f(x) = k$ admet une **unique** solution dans $[a\\,;\\,b]$.\n\nExtension admise : sur un intervalle ouvert ou non borné, on remplace $f(a)$ et $f(b)$ par les limites aux bornes, et $k$ doit être strictement compris entre elles.",
+    "conditions": "$f$ continue (dérivable suffit) ; strictement croissante ou strictement décroissante sur tout l'intervalle ; $k$ entre les images, ou strictement entre les limites, aux bornes.",
+    "exemple": "$f(x) = x^3 + x - 1$ : $f'(x) = 3x^2 + 1 > 0$, $f(0) = -1$ et $f(1) = 1$, donc $f(x) = 0$ a une unique solution $\\alpha$ dans $[0\\,;\\,1]$ ; à la calculatrice, $0{,}68 < \\alpha < 0{,}69$.",
+    "simplifie": {
+      "coeur": "continue + strictement monotone + $k$ entre les valeurs aux bornes $\\Rightarrow$ une unique solution",
+      "moyenMemo": "Le mot « unique » dans la question : pense « strictement monotone ».",
+      "motCle": "solution-unique"
+    }
+  },
+  {
+    "id": "m-continuite-image-suite",
+    "chapitre": "continuite",
+    "notion": "n-continuite-suite-recurrente",
+    "genre": "propriete",
+    "titre": "Image d'une suite convergente",
+    "enonce": "Si $f$ est continue sur un intervalle $I$ et si $(u_n)$ est une suite de réels de $I$ qui converge vers $\\ell \\in I$, alors la suite $\\left(f(u_n)\\right)$ converge vers $f(\\ell)$.\n\nEn particulier, si $u_{n+1} = f(u_n)$, avec $f$ à valeurs dans $I$, alors $\\ell = f(\\ell)$.",
+    "conditions": "$f$ continue sur un intervalle qui contient tous les $u_n$ et la limite $\\ell$ ; la suite converge déjà.",
+    "exemple": "Si $(u_n)$ converge vers $3$, alors $\\left(u_n^2 + 1\\right)$ converge vers $3^2 + 1 = 10$.",
+    "simplifie": {
+      "coeur": "$u_n \\to \\ell$ et $f$ continue en $\\ell$ $\\Rightarrow$ $f(u_n) \\to f(\\ell)$",
+      "moyenMemo": "Quand $f$ est continue, la limite entre dans $f$.",
+      "motCle": "image-suite"
+    }
+  },
+  {
+    "id": "m-continuite-limite-recurrente",
+    "chapitre": "continuite",
+    "notion": "n-continuite-suite-recurrente",
+    "genre": "methode",
+    "titre": "Trouver la limite d'une suite $u_{n+1} = f(u_n)$",
+    "enonce": "- Prouver que la suite converge : récurrence (encadrement, sens de variation), puis théorème de convergence monotone.\n- Situer la limite $\\ell$ par passage à la limite dans l'encadrement.\n- Justifier $\\ell = f(\\ell)$ : $f$ continue sur $I$, à valeurs dans $I$, et $\\ell \\in I$.\n- Résoudre $f(x) = x$ et garder la seule solution compatible avec l'encadrement.",
+    "conditions": "L'équation $\\ell = f(\\ell)$ ne prouve pas la convergence : elle donne seulement les valeurs possibles de la limite.",
+    "exemple": "$u_0 = \\dfrac{1}{2}$ et $u_{n+1} = \\dfrac{2u_n}{u_n + 1}$ : $\\ell = \\dfrac{2\\ell}{\\ell + 1}$ donne $\\ell = 0$ ou $\\ell = 1$ ; comme $\\ell \\geqslant \\dfrac{1}{2}$, $\\ell = 1$.",
+    "simplifie": {
+      "coeur": "converge (monotone et bornée), puis $\\ell = f(\\ell)$ ($f$ continue), puis garder la solution de $f(x) = x$ compatible avec l'encadrement",
+      "moyenMemo": "Converger d'abord, résoudre ensuite, trier enfin.",
+      "motCle": "limite-recurrente",
+      "image": "L'escalier entre la courbe de f et la droite y = x s'arrête là où elles se croisent."
+    }
+  },
+  {
+    "id": "m-continuite-definition",
+    "chapitre": "continuite",
+    "notion": "n-continuite-fonction-continue",
+    "genre": "definition",
+    "titre": "Fonction continue",
+    "enonce": "$f$ est continue en $a$ si $\\lim\\limits_{x \\to a} f(x) = f(a)$. Elle est continue sur un intervalle $I$ si elle est continue en tout réel de $I$ : sa courbe se trace alors sans lever le crayon.",
+    "conditions": "$a$ appartient à l'intervalle où $f$ est définie. Pour une fonction définie par morceaux, comparer en $a$ la limite à gauche, la limite à droite et $f(a)$.",
+    "exemple": "Le tarif « 2 € par heure entamée » vaut $2$ en $x = 1$, mais $4$ juste après : il n'est pas continu en $1$.",
+    "simplifie": {
+      "coeur": "$f$ continue en $a$ $\\iff$ $\\lim\\limits_{x \\to a} f(x) = f(a)$",
+      "moyenMemo": "Pas de saut : on trace la courbe sans lever le crayon.",
+      "motCle": "continuite"
+    }
+  },
+  {
+    "id": "m-continuite-derivable-continue",
+    "chapitre": "continuite",
+    "notion": "n-continuite-fonction-continue",
+    "genre": "propriete",
+    "titre": "Dérivable implique continue",
+    "enonce": "Toute fonction dérivable sur un intervalle $I$ est continue sur $I$. Les fonctions polynômes, inverse, exponentielle, et celles qu'on en tire par somme, produit, quotient ou sous la forme $x \\mapsto g(ax + b)$, sont continues là où elles sont définies ; la racine carrée l'est sur $[0\\,;\\,+\\infty[$.\n\nLa réciproque est fausse : la racine carrée est continue en $0$ sans y être dérivable.",
+    "conditions": "Sur un intervalle où la fonction est dérivable. Au bac, c'est la justification habituelle de la continuité.",
+    "exemple": "« $f(x) = (2x + 1)e^{-x}$ : $f$ est dérivable sur $\\mathbb{R}$, donc continue sur $\\mathbb{R}$. »",
+    "simplifie": {
+      "coeur": "dérivable sur $I$ $\\Rightarrow$ continue sur $I$ (réciproque fausse)",
+      "moyenMemo": "Qui peut le plus (dérivable) peut le moins (continue).",
+      "motCle": "derivable-continue"
+    }
+  }
+]

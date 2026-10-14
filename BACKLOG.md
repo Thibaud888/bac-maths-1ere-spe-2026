@@ -657,6 +657,44 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     +∞ » puis « . Mais… », idée de la notion « croissances comparées » de Limites de
     fonctions, 390 px) : lier la ponctuation à la formule qui la précède (rendu KaTeX en ligne,
     `lib/typographie`).
+  - [x] Continuité et théorème des valeurs intermédiaires : le cours — 4 notions (priorités
+    mesurées sur 103 sujets : théorème des valeurs intermédiaires et limite d'une suite
+    uₙ₊₁ = f(uₙ) incontournables, 73 % et 53 % ; fonction continue fréquent, relevée d'un cran
+    car les deux autres en dépendent ; dichotomie, Newton et sécante plus rare, 3 %), 60 blocs
+    dont 10 exemples, 10 « vérifie », 3 programmes Python, 6 cartes de mémo, 4 figures ; le
+    théorème sur un intervalle ouvert présenté comme extension admise ; sans logarithme, ni
+    dérivée d'une composée, ni convexité. Relecteur NEEDS_REVISION au 1er tour (1 bloquant),
+    élève-testeur À clarifier (1 bloquant : la méthode de la sécante sautait une étape) ;
+    tout corrigé avec les 13 gênes, relu au 2e tour ciblé (PASS) ; couverture « cours » sans
+    écart. Coût : 27 $. PR : #123.
+  - [x] Continuité et théorème des valeurs intermédiaires : les exercices — 24 exercices
+    (10 Comprendre, 11 S'entraîner, 3 Approfondir), 13 questions éclair, 5 sujets type bac
+    (27 points, chacun adapté d'un vrai sujet, cité ; logarithme transposé à l'exponentielle).
+    Relecteur PASS au 1er tour ; élève-testeur À clarifier (1 bloquant : « non continue ⇒ non
+    dérivable » demandé sans que le cours dise ce qu'est une contraposée) ; cours complété
+    (méthode `l-continuite-061` « réciproque et contraposée », racine √(ax + b) continue,
+    arrondi par le milieu pour une fonction décroissante), gênes et non bloquants corrigés,
+    relu en 2 tours ciblés (PASS au 3e) ; couverture sans écart. Même PR que le cours, à la
+    demande de Thibaud. Coût : 48 $ (session entière : 75 $). PR : #123.
+  - [ ] Polir six détails du cours de Continuité — non bloquants du relecteur :
+    figure de Newton (`l-continuite-037`), la tangente en x₁ est cachée sous la courbe alors
+    que le titre en annonce deux ; `l-continuite-026`, phrase de 31 mots (25 au plus) ;
+    `l-continuite-053`, deux étapes de suite commencent par « Or » ; `l-continuite-025`
+    (facultatif), écrire les images qui justifient 0,682 < α < 0,683 ; `l-continuite-007`,
+    143 mots (120 au plus) : retirer « En 0, … ne se pose pas » (déjà en 008) et « Au bac,
+    la justification habituelle… » (déjà dans le « retenir » 013) ; `l-continuite-061`
+    (méthode réciproque et contraposée) s'intercale entre la propriété 007 et son exemple
+    008 : la déplacer entre 010 et 011, et mettre sa dernière étape à l'impératif.
+  - [ ] Polir les exercices de Continuité — non bloquants laissés ouverts : dans tb-003 q6 et
+    tb-002 q8b, « rang », « a » et « n » restent en texte simple (« dépasse a » se lit
+    d'abord comme le verbe avoir) ; dans la marche Comprendre, les exercices de la notion
+    « fonction continue » (x-007, x-008) viennent après ceux des notions ★★★ (ordre gardé :
+    la charte met la priorité d'abord). Rapports : relecture tour 3 et élève-testeur,
+    session du 2026-10-13.
+  - [ ] Une animation « escalier » pour voir une suite uₙ₊₁ = f(uₙ) aller vers le point où la
+    courbe coupe la droite y = x — souhait de l'auteur du cours de Continuité (notion
+    « limite d'une suite », figure fixe `suite-escalier.svg` en attendant) ; à faire quand les
+    figures animées existeront (rejoint l'item de Récurrence et suites ci-dessus).
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
