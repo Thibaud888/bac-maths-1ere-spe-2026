@@ -35,7 +35,7 @@
           "enonce": "**1.** Écrire chaque fonction, définie sur $\\mathbb{R}$, sous la forme $v \\circ u$ : $f(x) = e^{-x^2}$ ; $g(x) = \\sqrt{x^2 + 1}$ ; $h(x) = \\left(x^2 - 2x\\right)^3$.\n\n**2.** On pose $u(x) = x + 3$ et $v(x) = x^2$ pour tout réel $x$. Calculer $(v \\circ u)(x)$ et $(u \\circ v)(x)$, puis comparer $(v \\circ u)(1)$ et $(u \\circ v)(1)$.",
           "etapes": [
             {
-              "texte": "**1.** Pour $f$, on calcule d'abord $-x^2$, puis on prend l'exponentielle du résultat. Donc $f = v \\circ u$, avec $u(x) = -x^2$ et $v(X) = e^X$.",
+              "texte": "**1.** Pour $f$, on calcule d'abord $-x^2$, puis on prend l'exponentielle du résultat. Donc $f = v \\circ u$, avec $u(x) = -x^2$ et $v(X) = e^X$. La fonction $u$, appliquée en premier, s'appelle la **fonction intérieure** ; $v$, appliquée ensuite, s'appelle la **fonction extérieure**.",
               "pourquoi": "Pour trouver $u$, demande-toi ce que tu calcules en premier quand tu remplaces $x$ par un nombre. Pour $x = 2$ : d'abord $-\\left(2^2\\right) = -4$, puis $e^{-4}$. On note $X$ la valeur intermédiaire, pour ne pas la confondre avec $x$."
             },
             {
@@ -98,7 +98,7 @@
           "etapes": [
             {
               "texte": "**1.** $f = e^u$ avec $u(x) = -x^2$, donc $u'(x) = -2x$. Avec $(e^u)' = u'e^u$ : $f'(x) = -2x\\,e^{-x^2}$.",
-              "pourquoi": "Le facteur $-2x$ est la dérivée de l'intérieur. Si $x$ augmente d'un petit nombre $h$, l'intérieur $-x^2$ change d'environ $-2x \\times h$. Puis $e^{-x^2}$ change d'environ $e^{-x^2}$ fois ce changement, soit $e^{-x^2} \\times (-2x) \\times h$ : les deux facteurs se multiplient."
+              "pourquoi": "Le facteur $-2x$ est la dérivée de l'intérieur. Quand $x$ augmente d'un tout petit pas, l'intérieur $-x^2$ change d'environ $-2x$ fois ce pas. Comme $\\left(e^X\\right)' = e^X$, la dérivée de l'exponentielle en $X = -x^2$ vaut $e^{-x^2}$ : l'exponentielle multiplie ce changement par environ $e^{-x^2}$. Au total, $e^{-x^2}$ change d'environ $e^{-x^2} \\times (-2x)$ fois le pas : les deux facteurs se multiplient."
             },
             {
               "texte": "**2.** $g = \\sqrt{u}$ avec $u(x) = x^2 + 1$, strictement positif sur $\\mathbb{R}$, et $u'(x) = 2x$. Donc $g'(x) = \\dfrac{2x}{2\\sqrt{x^2 + 1}} = \\dfrac{x}{\\sqrt{x^2 + 1}}$.",
@@ -167,7 +167,7 @@
           "titre": "Oublier la dérivée de l'intérieur",
           "faux": "$\\left(e^{-x^2}\\right)' = e^{-x^2}$ et $\\left(\\sqrt{x^2 + 1}\\right)' = \\dfrac{1}{2\\sqrt{x^2 + 1}}$.",
           "juste": "$\\left(e^{-x^2}\\right)' = -2x\\,e^{-x^2}$ et $\\left(\\sqrt{x^2 + 1}\\right)' = \\dfrac{2x}{2\\sqrt{x^2 + 1}} = \\dfrac{x}{\\sqrt{x^2 + 1}}$.",
-          "explication": "La formule de la composée a deux facteurs : $v'\\big(u(x)\\big)$ et $u'(x)$. Le second s'oublie dès que l'intérieur n'est pas $x$. Contrôle rapide : en $x = 0$, la courbe de $x \\mapsto e^{-x^2}$ a un sommet, donc une tangente horizontale. La bonne formule donne bien $-2 \\times 0 \\times e^0 = 0$ ; la formule fausse donne $e^0 = 1$."
+          "explication": "La formule de la composée a deux facteurs : $v'\\big(u(x)\\big)$ et $u'(x)$. Le second s'oublie dès que l'intérieur n'est pas $x$. Contrôle rapide en $x = 0$ : comme $-x^2 \\leqslant 0$ et que l'exponentielle est croissante, $e^{-x^2} \\leqslant e^0 = 1$. La fonction $x \\mapsto e^{-x^2}$ atteint donc son maximum en $0$, où sa courbe a une tangente horizontale. La bonne formule donne bien $-2 \\times 0 \\times e^0 = 0$ ; la formule fausse donne $e^0 = 1$."
         },
         {
           "id": "l-derivation-convexite-011",
@@ -190,23 +190,6 @@
           "titre": "Rappel : signe de la dérivée, variations, extremum",
           "lien": "1e:derivation",
           "texte": "Soit $f$ dérivable sur un intervalle $I$. Si $f'(x) > 0$ pour tout $x$ de $I$, sauf peut-être en quelques réels isolés où $f'$ s'annule, alors $f$ est strictement croissante sur $I$. Si $f'(x) < 0$, elle est strictement décroissante.\n\nSi $f'$ s'annule en $a$ en changeant de signe, $f$ admet un extremum local en $a$. C'est un maximum si $f'$ passe de $+$ à $-$, un minimum si elle passe de $-$ à $+$.\n\nPour le signe d'un produit : $e^X > 0$ pour tout réel $X$, et un carré est positif ou nul."
-        },
-        {
-          "id": "l-derivation-convexite-014",
-          "type": "methode",
-          "titre": "Comment mener l'étude complète d'une fonction ?",
-          "capacites": [
-            "bo-m-derivation-06"
-          ],
-          "exemple": "l-derivation-convexite-015",
-          "etapes": [
-            "Repère l'intervalle d'étude et ses bornes où il faudra une limite : $-\\infty$, $+\\infty$, ou un réel exclu.",
-            "Calcule les limites aux bornes : opérations, composée, croissances comparées ; en cas de forme indéterminée, factorise le terme le plus fort. Note les asymptotes.",
-            "Calcule $f'(x)$ (produit, quotient, composée), puis écris-la comme un produit ou un quotient de facteurs simples.",
-            "Étudie le signe de $f'(x)$. Écarte les facteurs toujours positifs : une exponentielle, un carré, une racine carrée non nulle. Fais un tableau de signes des autres facteurs.",
-            "Dresse le tableau de variations : signe de $f'$, flèches, valeurs des extremums calculées, limites aux bornes.",
-            "Réponds à la question posée en citant le tableau : extremum, inégalité, nombre de solutions d'une équation."
-          ]
         },
         {
           "id": "l-derivation-convexite-015",
@@ -243,6 +226,23 @@
             {
               "texte": "**Conclusion** : $f$ tend vers $+\\infty$ en $0$ et en $+\\infty$, et l'axe des ordonnées est asymptote verticale. $f$ est strictement décroissante sur $]0\\,;\\,1]$ et strictement croissante sur $[1\\,;\\,+\\infty[$, de minimum $f(1) = e$. Enfin, pour tout $x > 0$, $e^x \\geqslant e \\times x$."
             }
+          ]
+        },
+        {
+          "id": "l-derivation-convexite-014",
+          "type": "methode",
+          "titre": "Comment mener l'étude complète d'une fonction ?",
+          "capacites": [
+            "bo-m-derivation-06"
+          ],
+          "exemple": "l-derivation-convexite-015",
+          "etapes": [
+            "Repère l'intervalle d'étude et ses bornes où il faudra une limite : $-\\infty$, $+\\infty$, ou un réel exclu.",
+            "Calcule les limites aux bornes : opérations, composée, croissances comparées ; en cas de forme indéterminée, factorise le terme le plus fort. Note les asymptotes.",
+            "Calcule $f'(x)$ (produit, quotient, composée), puis écris-la comme un produit ou un quotient de facteurs simples.",
+            "Étudie le signe de $f'(x)$. Écarte les facteurs toujours positifs : une exponentielle, un carré, une racine carrée non nulle. Fais un tableau de signes des autres facteurs.",
+            "Dresse le tableau de variations : signe de $f'$, flèches, valeurs des extremums calculées, limites aux bornes.",
+            "Réponds à la question posée en citant le tableau : extremum, inégalité, nombre de solutions d'une équation."
           ]
         },
         {
@@ -287,7 +287,7 @@
               "pourquoi": "Distance dans un repère orthonormé : $AM = \\sqrt{(x_M - x_A)^2 + (y_M - y_A)^2}$. Et $\\left(\\sqrt{x}\\right)^2 = x$, car $x \\geqslant 0$."
             },
             {
-              "texte": "**2.** On pose $u(x) = x^2 - 3x + 4$. Son discriminant vaut $(-3)^2 - 4 \\times 1 \\times 4 = -7 < 0$ : $u(x)$ ne s'annule pas et garde le signe de son coefficient $1$. Donc $u(x) > 0$ pour tout réel $x$, et $d = \\sqrt{u}$ est dérivable sur $[0\\,;\\,+\\infty[$.",
+              "texte": "**2.** On pose $u(x) = x^2 - 3x + 4$. Son discriminant vaut $(-3)^2 - 4 \\times 1 \\times 4 = -7 < 0$ : $u(x)$ ne s'annule pas et garde le signe de $a = 1$, le coefficient de $x^2$. Donc $u(x) > 0$ pour tout réel $x$, et $d = \\sqrt{u}$ est dérivable sur $[0\\,;\\,+\\infty[$.",
               "pourquoi": "La formule $\\left(\\sqrt{u}\\right)' = \\dfrac{u'}{2\\sqrt{u}}$ exige $u(x) > 0$ : on le vérifie avant de dériver."
             },
             {
@@ -498,7 +498,7 @@
             "bo-pc-mouvement-05"
           ],
           "matiere": "physique-chimie",
-          "texte": "Pour un point qui se déplace sur une droite, la vitesse est la dérivée de la position $x(t)$, et l'accélération celle de la vitesse : $a(t) = x''(t)$. Par exemple, si $x(t) = 4{,}9\\,t^2$ en mètres, avec $t$ en secondes, alors $v(t) = 9{,}8\\,t$ et $a(t) = 9{,}8\\ \\mathrm{m\\,s^{-2}}$ : c'est une chute libre."
+          "texte": "Pour un point qui se déplace sur une droite, la vitesse est la dérivée de la position $x(t)$, et l'accélération celle de la vitesse : $a(t) = x''(t)$. Par exemple, si $x(t) = 4{,}9\\,t^2$ en mètres, avec $t$ en secondes, alors $v(t) = 9{,}8\\,t$ en $\\mathrm{m\\,s^{-1}}$ et $a(t) = 9{,}8\\ \\mathrm{m\\,s^{-2}}$ : c'est une chute libre."
         },
         {
           "id": "l-derivation-convexite-029",
@@ -539,7 +539,7 @@
           "capacites": [
             "bo-m-derivation-03"
           ],
-          "texte": "Soit $f$ une fonction définie sur un intervalle $I$, et $\\mathcal{C}_f$ sa courbe représentative, qui se lit « courbe de $f$ ». Pour deux points $A$ et $B$ de $\\mathcal{C}_f$, la droite $(AB)$ est une **sécante** à la courbe, et le segment $[AB]$ est une **corde**.\n\n- $f$ est **convexe** sur $I$ si, entre deux points quelconques $A$ et $B$ de $\\mathcal{C}_f$ d'abscisses dans $I$, la courbe est **en dessous** de la sécante $(AB)$.\n- $f$ est **concave** sur $I$ si, dans les mêmes conditions, la courbe est **au-dessus** de la sécante $(AB)$.\n\nAinsi, $f$ est concave sur $I$ exactement quand $-f$ est convexe sur $I$."
+          "texte": "Soit $f$ une fonction définie sur un intervalle $I$, et $\\mathcal{C}_f$ sa courbe représentative, qui se lit « courbe de $f$ ». Pour deux points $A$ et $B$ de $\\mathcal{C}_f$, la droite $(AB)$ est une **sécante** à la courbe, et le segment $[AB]$ est une **corde**.\n\n- $f$ est **convexe** sur $I$ si, entre deux points quelconques $A$ et $B$ de $\\mathcal{C}_f$ d'abscisses dans $I$, la courbe est **en dessous** de la sécante $(AB)$.\n- $f$ est **concave** sur $I$ si, dans les mêmes conditions, la courbe est **au-dessus** de la sécante $(AB)$.\n\nChanger $f$ en $-f$ retourne la figure par rapport à l'axe des abscisses : « au-dessus » devient « en dessous ». Ainsi, $f$ est concave sur $I$ exactement quand $-f$ y est convexe."
         },
         {
           "id": "l-derivation-convexite-034",
@@ -690,7 +690,7 @@
                 "$f''$ change de signe en $-3$ et en $1$ : $f$ n'est pas convexe sur tout $\\mathbb{R}$."
               ]
             },
-            "explication": "$(1 - x)(x + 3) = -(x - 1)(x + 3)$ est un polynôme du second degré de coefficient $-1$ : il est positif entre ses racines $-3$ et $1$. Donc $f'' \\geqslant 0$ sur $[-3\\,;\\,1]$, et $f$ y est convexe."
+            "explication": "$(1 - x)(x + 3) = -(x - 1)(x + 3)$ est un polynôme du second degré dont le coefficient de $x^2$ vaut $a = -1$. Entre ses racines $-3$ et $1$, il est du signe de $-a$, donc positif. Donc $f'' \\geqslant 0$ sur $[-3\\,;\\,1]$, et $f$ y est convexe."
           }
         },
         {
@@ -870,7 +870,8 @@
           "enonce": "**1.** Démontrer que, pour tout réel $x > 0$, $\\sqrt{x} \\leqslant \\dfrac{x + 1}{2}$. L'inégalité est-elle encore vraie pour $x = 0$ ?\n\n**2.** En déduire, sans calculatrice, un majorant de $\\sqrt{1{,}2}$.",
           "etapes": [
             {
-              "texte": "**1.** On pose $f(x) = \\sqrt{x}$. Pour $x > 0$, $f'(x) = \\dfrac{1}{2\\sqrt{x}}$. La droite $y = \\dfrac{x + 1}{2} = \\dfrac{1}{2}x + \\dfrac{1}{2}$ a pour coefficient directeur $\\dfrac{1}{2}$, et $f'(a) = \\dfrac{1}{2}$ pour $\\sqrt{a} = 1$, soit $a = 1$."
+              "texte": "**1.** On pose $f(x) = \\sqrt{x}$. Pour $x > 0$, $f'(x) = \\dfrac{1}{2\\sqrt{x}}$. La droite $y = \\dfrac{x + 1}{2} = \\dfrac{1}{2}x + \\dfrac{1}{2}$ a pour coefficient directeur $\\dfrac{1}{2}$. On cherche donc $a > 0$ tel que $f'(a) = \\dfrac{1}{2}$ : $\\dfrac{1}{2\\sqrt{a}} = \\dfrac{1}{2} \\iff 2\\sqrt{a} = 2 \\iff \\sqrt{a} = 1 \\iff a = 1$.",
+              "pourquoi": "Deux fractions de numérateur $1$ sont égales quand leurs dénominateurs le sont. Puis $\\sqrt{a} = 1$ donne $a = 1^2 = 1$."
             },
             {
               "texte": "Tangente en $1$ : $f(1) = 1$ et $f'(1) = \\dfrac{1}{2}$, donc $y = \\dfrac{1}{2}(x - 1) + 1 = \\dfrac{x + 1}{2}$. C'est bien la droite de l'inégalité."
@@ -946,7 +947,7 @@
           "capacites": [
             "bo-m-derivation-11"
           ],
-          "texte": "Pour décrire le partage des revenus dans une population, on range les personnes de la plus pauvre à la plus riche. Pour $x \\in [0\\,;\\,1]$, on note $L(x)$ la part du revenu total que reçoit la proportion $x$ la plus pauvre de la population. La courbe de $L$ est la **courbe de Lorenz**. On a $L(0) = 0$ et $L(1) = 1$. De plus, $L$ est convexe : chaque personne ajoutée est plus riche que les précédentes, donc $L$ augmente de plus en plus vite.\n\nPar convexité, la courbe est sous sa corde qui joint $O(0\\,;\\,0)$ à $B(1\\,;\\,1)$, donc $L(x) \\leqslant x$. Plus la courbe s'éloigne de la droite $y = x$, plus le partage est inégal. Par exemple, avec $L(x) = x^2$, la moitié la plus pauvre reçoit $L(0{,}5) = 0{,}25$, soit le quart du revenu total."
+          "texte": "Pour décrire le partage des revenus dans une population, on range les personnes de la plus pauvre à la plus riche. Pour $x \\in [0\\,;\\,1]$, on note $L(x)$ la part du revenu total que reçoit la proportion $x$ la plus pauvre de la population. La courbe de $L$ est la **courbe de Lorenz**. $L$ est convexe : chaque personne ajoutée est plus riche que les précédentes, donc $L$ augmente de plus en plus vite.\n\nPar convexité, la courbe est sous sa corde qui joint $O(0\\,;\\,0)$ à $B(1\\,;\\,1)$, donc $L(x) \\leqslant x$. Plus la courbe s'éloigne de la droite $y = x$, plus le partage est inégal. Par exemple, avec $L(x) = x^2$, la moitié la plus pauvre reçoit $L(0{,}5) = 0{,}25$, soit le quart du revenu total."
         },
         {
           "id": "l-derivation-convexite-056",
@@ -1003,12 +1004,16 @@
               "texte": "**1.** $f(1) = 1 - 3 + 2 = 0$ et $f'(x) = 3x^2 - 6x$, donc $f'(1) = 3 - 6 = -3$. Ainsi $T : y = -3(x - 1) + 0$, soit $y = -3x + 3$."
             },
             {
-              "texte": "**2.** On étudie le signe de l'écart entre la courbe et la tangente : $f(x) - (-3x + 3) = x^3 - 3x^2 + 3x - 1 = (x - 1)^3$.",
-              "pourquoi": "Développe pour vérifier : $(x - 1)^2(x - 1) = \\left(x^2 - 2x + 1\\right)(x - 1) = x^3 - x^2 - 2x^2 + 2x + x - 1 = x^3 - 3x^2 + 3x - 1$."
+              "texte": "**2.** On étudie le signe de l'écart entre la courbe et la tangente : $d(x) = f(x) - (-3x + 3) = x^3 - 3x^2 + 3x - 1$. Ce signe ne se lit pas directement : on étudie les variations de $d$.",
+              "pourquoi": "$f(x) + 3x - 3 = x^3 - 3x^2 + 2 + 3x - 3 = x^3 - 3x^2 + 3x - 1$. La courbe est au-dessus de $T$ là où $d(x) > 0$, en dessous là où $d(x) < 0$."
             },
             {
-              "texte": "Pour $x < 1$, $(x - 1)^3 < 0$ : la courbe est en dessous de $T$. Pour $x > 1$, $(x - 1)^3 > 0$ : la courbe est au-dessus de $T$. La courbe traverse sa tangente en $A$ : $A$ est un point d'inflexion.",
-              "pourquoi": "Un cube a le signe du nombre qu'on élève au cube : $(x - 1)^3$ a le signe de $x - 1$."
+              "texte": "$d'(x) = 3x^2 - 6x + 3 = 3\\left(x^2 - 2x + 1\\right) = 3(x - 1)^2$. Donc $d'(x) > 0$ pour tout $x \\neq 1$ : $d$ est strictement croissante sur $\\mathbb{R}$. De plus, $d(1) = 1 - 3 + 3 - 1 = 0$.",
+              "pourquoi": "$x^2 - 2x + 1 = (x - 1)^2$ est une identité remarquable. Une dérivée positive qui ne s'annule qu'en un réel isolé donne une fonction strictement croissante."
+            },
+            {
+              "texte": "Pour $x < 1$, $d(x) < d(1) = 0$ : la courbe est en dessous de $T$. Pour $x > 1$, $d(x) > 0$ : la courbe est au-dessus de $T$. La courbe traverse sa tangente en $A$ : $A$ est un point d'inflexion.",
+              "pourquoi": "$d$ est strictement croissante et s'annule en $1$ : elle est négative avant $1$, positive après."
             },
             {
               "texte": "**3.** $f''(x) = 6x - 6 = 6(x - 1)$ : $f'' \\leqslant 0$ sur $]-\\infty\\,;\\,1]$ et $f'' \\geqslant 0$ sur $[1\\,;\\,+\\infty[$."
@@ -1025,10 +1030,11 @@
           "capacites": [
             "bo-m-derivation-04"
           ],
-          "texte": "Soit $f$ une fonction deux fois dérivable sur un intervalle $I$, et $a$ un réel de $I$ qui n'en est pas une borne. Si $f''$ s'annule en $a$ **en changeant de signe**, alors le point $A(a\\,;\\,f(a))$ est un point d'inflexion de $\\mathcal{C}_f$.\n\nPourquoi : supposons $f'' \\leqslant 0$ sur un intervalle $[c\\,;\\,a]$ et $f'' \\geqslant 0$ sur un intervalle $[a\\,;\\,d]$, avec $c < a < d$. D'après la notion précédente, la courbe est en dessous de sa tangente en $A$ sur $[c\\,;\\,a]$, et au-dessus sur $[a\\,;\\,d]$ : elle la traverse. L'autre cas se traite de même.\n\nAutrement dit, $f'$ change de sens de variation en $a$ : elle y atteint un maximum ou un minimum local.",
+          "texte": "Soit $f$ une fonction deux fois dérivable sur un intervalle $I$, et $a$ un réel de $I$ qui n'en est pas une borne. Le point $A(a\\,;\\,f(a))$ est un point d'inflexion de $\\mathcal{C}_f$ **si, et seulement si**, $f''$ s'annule en $a$ **en changeant de signe**. Autrement dit, $f'$ change de sens de variation en $a$ : elle y atteint un maximum ou un minimum local.\n\nAinsi, les points d'inflexion se trouvent **seulement** aux réels où $f''$ s'annule en changeant de signe. Le tableau de signes de $f''$ sur tout $I$ permet donc de les trouver tous, et de les compter.",
           "conditions": [
-            "$f$ est deux fois dérivable sur l'intervalle $I$.",
-            "$f''(a) = 0$ **et** $f''$ change de signe en $a$ : l'annulation seule ne suffit pas."
+            "$f$ est deux fois dérivable sur l'intervalle $I$, et $a$ n'est pas une borne de $I$.",
+            "« $f''$ change de signe en $a$ » : $f''$ est strictement négative juste avant $a$ et strictement positive juste après, ou l'inverse. L'annulation seule ne suffit pas.",
+            "Pour la réciproque, le signe de $f''$ autour de $a$ est donné par un tableau de signes, comme pour les fonctions étudiées au bac."
           ],
           "admise": false
         },
@@ -1045,18 +1051,51 @@
               "texte": "**1.** $e^{-x} > 0$, donc $g''(x)$ a le signe de $x - 2$ : elle s'annule en $2$ en changeant de signe, négative avant, positive après."
             },
             {
-              "texte": "La courbe de $g$ a donc un unique point d'inflexion, d'abscisse $2$ et d'ordonnée $g(2) = 2e^{-2} \\approx 0{,}27$.",
-              "pourquoi": "$g''$ ne s'annule qu'en $2$ : il n'y a pas d'autre candidat, d'où l'unicité."
+              "texte": "$g''$ s'annule en changeant de signe en $2$, et en aucun autre réel. D'après la propriété, la courbe de $g$ a donc un unique point d'inflexion, d'abscisse $2$ et d'ordonnée $g(2) = 2e^{-2} \\approx 0{,}27$.",
+              "pourquoi": "Les points d'inflexion sont exactement les points où $g''$ s'annule en changeant de signe. Un seul réel convient, $2$ : d'où l'unicité."
             },
             {
               "texte": "**2.** $e^{-x^2/2} > 0$, donc $h''(x)$ a le signe de $x^2 - 1 = (x - 1)(x + 1)$ : positif à l'extérieur des racines $-1$ et $1$, négatif entre elles.\n\n| $x$ | $-\\infty$ | | $-1$ | | $1$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|\n| signe de $h''(x)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n| convexité de $h$ | | convexe | | concave | | convexe | |"
             },
             {
-              "texte": "$h''$ s'annule en changeant de signe en $-1$ et en $1$. Comme $h(-1) = h(1) = e^{-1/2} \\approx 0{,}61$, la courbe de $h$ a deux points d'inflexion : $\\left(-1\\,;\\,e^{-1/2}\\right)$ et $\\left(1\\,;\\,e^{-1/2}\\right)$.",
+              "texte": "$h''$ s'annule en changeant de signe en $-1$ et en $1$, et seulement en ces deux réels. Comme $h(-1) = h(1) = e^{-1/2} \\approx 0{,}61$, la courbe de $h$ a exactement deux points d'inflexion : $\\left(-1\\,;\\,e^{-1/2}\\right)$ et $\\left(1\\,;\\,e^{-1/2}\\right)$.",
               "pourquoi": "$h(1) = e^{-1^2/2} = e^{-1/2}$, et $(-1)^2 = 1$ donne la même valeur en $-1$."
             },
             {
               "texte": "**Conclusion** : la courbe de $g$ a un unique point d'inflexion, $\\left(2\\,;\\,2e^{-2}\\right)$. Celle de $h$, en forme de cloche, en a deux : $\\left(-1\\,;\\,e^{-1/2}\\right)$ et $\\left(1\\,;\\,e^{-1/2}\\right)$."
+            }
+          ]
+        },
+        {
+          "id": "l-derivation-convexite-073",
+          "type": "demonstration",
+          "titre": "Pourquoi le signe de $f''$ décide du point d'inflexion",
+          "capacites": [
+            "bo-m-derivation-04"
+          ],
+          "de": "l-derivation-convexite-061",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "On compare la courbe et sa tangente en $A$ par leur écart : pour $x \\in I$, $g(x) = f(x) - \\big[f'(a)(x - a) + f(a)\\big]$. Alors $g(a) = 0$ et $g'(x) = f'(x) - f'(a)$.",
+              "pourquoi": "C'est la fonction écart de la démonstration de la notion précédente. La courbe traverse sa tangente en $A$ exactement quand $g$ change de signe en $a$."
+            },
+            {
+              "texte": "**Si $f''$ change de signe en $a$**, par exemple $f'' < 0$ juste avant $a$ et $f'' > 0$ juste après. Alors $f'$ est strictement décroissante juste avant $a$, puis strictement croissante juste après : elle a un minimum en $a$. Donc $g'(x) = f'(x) - f'(a) > 0$ pour tout $x \\neq a$ proche de $a$.",
+              "pourquoi": "Avant $a$, $f'$ descend jusqu'à $f'(a)$ : ses valeurs sont plus grandes que $f'(a)$. Après $a$, elle remonte à partir de $f'(a)$ : ses valeurs sont encore plus grandes."
+            },
+            {
+              "texte": "Ainsi $g$ est strictement croissante autour de $a$, et $g(a) = 0$ : $g(x) < 0$ juste avant $a$, et $g(x) > 0$ juste après. La courbe passe sous sa tangente, puis au-dessus : elle la traverse, et $A$ est un point d'inflexion. Le cas « $f''$ positive, puis négative » se traite de même."
+            },
+            {
+              "texte": "**Si $f''$ ne change pas de signe en $a$**, par exemple $f'' > 0$ juste avant $a$ et juste après. Alors $f'$ est strictement croissante autour de $a$ : $g'(x) < 0$ juste avant $a$, et $g'(x) > 0$ juste après.",
+              "pourquoi": "Avant $a$, $f'(x) < f'(a)$ ; après $a$, $f'(x) > f'(a)$. C'est ce qui se passe pour $x \\mapsto x^4$ en $0$."
+            },
+            {
+              "texte": "Ainsi $g$ décroît jusqu'à $g(a) = 0$, puis croît : $g(x) > 0$ des deux côtés de $a$. La courbe reste au-dessus de sa tangente, sans la traverser : $A$ n'est pas un point d'inflexion. Le cas « $f'' < 0$ des deux côtés » se traite de même."
+            },
+            {
+              "texte": "**Conclusion** : si $f''$ change de signe en $a$, $A$ est un point d'inflexion (étapes 2 et 3). Sinon, ce n'en est pas un (étapes 4 et 5). Dans un tableau de signes, $f''$ change de signe en un réel où elle s'annule : d'où l'équivalence de la propriété."
             }
           ]
         },
@@ -1081,10 +1120,10 @@
                 null,
                 "En $0$, $f''$ s'annule sans changer de signe : $x^2 \\geqslant 0$, donc $f''(x)$ a le signe de $x - 3$, négatif de part et d'autre de $0$.",
                 "$f''$ change de signe en $3$ : négative avant, positive après.",
-                "$f''$ ne s'annule qu'en $0$ et en $3$ : il y a au plus deux candidats."
+                "Un point d'inflexion n'existe que là où $f''$ s'annule en changeant de signe. Or $f''$ ne s'annule qu'en $0$ et en $3$ : il ne peut pas y en avoir trois."
               ]
             },
-            "explication": "Pour $x \\neq 0$, $x^2 > 0$, donc $f''(x)$ a le signe de $x - 3$. $f''$ change de signe en $3$ seulement : la courbe a un unique point d'inflexion, d'abscisse $3$."
+            "explication": "Pour $x \\neq 0$, $x^2 > 0$, donc $f''(x)$ a le signe de $x - 3$. Ainsi $f''$ s'annule en changeant de signe en $3$, et seulement en $3$ : la courbe a un unique point d'inflexion, d'abscisse $3$."
           }
         },
         {
@@ -1099,7 +1138,7 @@
           "etapes": [
             "Repère d'abord quelle courbe est tracée : celle de $f$, de $f'$ ou de $f''$. La même forme ne donne pas la même information.",
             "Courbe de $f$ : $f$ est convexe là où la courbe est en bol, au-dessus de ses tangentes, et concave là où elle est en dôme. Un point d'inflexion est un point où la courbe traverse sa tangente.",
-            "Courbe de $f'$ : $f$ est convexe là où $f'$ est croissante, et concave là où $f'$ est décroissante. Un point d'inflexion correspond à un maximum ou à un minimum de $f'$.",
+            "Courbe de $f'$ : $f$ est convexe là où $f'$ est croissante, et concave là où $f'$ est décroissante. Un point d'inflexion se lit là où $f'$ change de sens de variation (maximum ou minimum local de $f'$), jamais en une borne.",
             "Courbe de $f''$ : $f$ est convexe là où la courbe est au-dessus de l'axe des abscisses, et concave là où elle est en dessous. Un point d'inflexion correspond à un point où la courbe traverse cet axe.",
             "Pour esquisser $\\mathcal{C}_f$ à partir de tableaux, place d'abord les extremums et les points d'inflexion. Trace ensuite en bol là où $f$ est convexe, en dôme là où elle est concave."
           ]
@@ -1179,6 +1218,33 @@
           }
         },
         {
+          "id": "l-derivation-convexite-074",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-derivation-09"
+          ],
+          "question": {
+            "enonce": "Tu lis la courbe de la **dérivée seconde** $f''$ d'une fonction $f$ deux fois dérivable sur $[-2\\,;\\,5]$. Cette courbe descend sur tout l'intervalle. Elle est au-dessus de l'axe des abscisses avant $1$, le traverse en $1$, puis passe en dessous. Que peux-tu en déduire ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$f$ est convexe sur $[-2\\,;\\,1]$, concave sur $[1\\,;\\,5]$, et $\\mathcal{C}_f$ a un point d'inflexion d'abscisse $1$.",
+                "$f$ est concave sur $[-2\\,;\\,5]$, car la courbe de $f''$ descend.",
+                "$f$ est décroissante sur $[1\\,;\\,5]$.",
+                "$f$ admet un maximum en $1$."
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "Sur la courbe de $f''$, la convexité se lit sur la **position** par rapport à l'axe des abscisses. Que la courbe monte ou descende n'y change rien.",
+                "Le signe de $f''$ donne les variations de $f'$, pas celles de $f$ : pour celles de $f$, il faudrait le signe de $f'$.",
+                "Un extremum de $f$ se lit sur le signe de $f'$, que la courbe de $f''$ ne donne pas. En $1$, c'est $f'$ qui atteint un maximum."
+              ]
+            },
+            "explication": "Sur la courbe de $f''$, on lit le **signe** de $f''$. On a $f'' \\geqslant 0$ sur $[-2\\,;\\,1]$, donc $f$ y est convexe ; $f'' \\leqslant 0$ sur $[1\\,;\\,5]$, donc $f$ y est concave. La courbe traverse l'axe en $1$ : $f''$ s'annule en changeant de signe, d'où un point d'inflexion d'abscisse $1$."
+          }
+        },
+        {
           "id": "l-derivation-convexite-068",
           "type": "exemple",
           "titre": "Un problème : quand la croissance ralentit-elle ?",
@@ -1255,7 +1321,7 @@
         {
           "id": "l-derivation-convexite-072",
           "type": "retenir",
-          "texte": "Point d'inflexion : la courbe traverse sa tangente, et $f$ change de convexité. On le trouve là où $f''$ s'annule **en changeant de signe**, ou là où $f'$ atteint un maximum ou un minimum."
+          "texte": "Point d'inflexion : la courbe traverse sa tangente, et $f$ change de convexité. Il se trouve **exactement** là où $f''$ s'annule **en changeant de signe**, c'est-à-dire là où $f'$ change de sens de variation, jamais en une borne."
         }
       ]
     }
