@@ -1,0 +1,1223 @@
+{
+  "chapitre": "vecteurs-espace",
+  "sections": [
+    {
+      "notion": "n-vecteurs-espace-combinaisons",
+      "blocs": [
+        {
+          "id": "l-vecteurs-espace-001",
+          "type": "idee",
+          "texte": "Dans le plan, un vecteur décrit un déplacement : une direction, un sens, une longueur. Dans l'espace, c'est pareil, et tout ce que tu sais faire reste vrai : relation de Chasles, sommes, multiples. La nouveauté, c'est le dessin. On représente les solides en perspective, et il faut apprendre à lire une figure, comme un cube, pour y repérer des vecteurs égaux ou écrire un vecteur à partir d'autres."
+        },
+        {
+          "id": "l-vecteurs-espace-002",
+          "type": "rappel",
+          "titre": "Rappel : les vecteurs du plan",
+          "texte": "Le vecteur $\\overrightarrow{AB}$ décrit le déplacement qui mène de $A$ à $B$.\n\n- $\\overrightarrow{AB} = \\overrightarrow{DC}$ signifie que $ABCD$ est un parallélogramme, éventuellement aplati.\n- **Relation de Chasles** : $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$. Le point d'arrivée du premier vecteur est le point de départ du second.\n- $\\overrightarrow{BA} = -\\overrightarrow{AB}$. Pour un réel $k$, $k\\,\\overrightarrow{AB}$ a la direction de $\\overrightarrow{AB}$, le même sens si $k > 0$, le sens contraire si $k < 0$, et une longueur multipliée par $|k|$.\n- $I$ est le milieu de $[AB]$ si et seulement si $\\overrightarrow{AI} = \\dfrac{1}{2}\\overrightarrow{AB}$.",
+          "lien": "1e:geometrie-reperee"
+        },
+        {
+          "id": "l-vecteurs-espace-003",
+          "type": "definition",
+          "titre": "Vecteurs de l'espace, translation",
+          "capacites": [
+            "bo-m-vecteurs-01"
+          ],
+          "texte": "À deux points distincts $A$ et $B$ de l'espace, on associe le **vecteur** $\\overrightarrow{AB}$ : sa direction est celle de la droite $(AB)$, son sens va de $A$ vers $B$, sa longueur est $AB$. Le **vecteur nul** $\\vec{0} = \\overrightarrow{AA}$ n'a ni direction ni sens.\n\nDeux vecteurs sont **égaux** s'ils ont même direction, même sens et même longueur. Comme dans le plan, $\\overrightarrow{AB} = \\overrightarrow{DC}$ si et seulement si $ABCD$ est un parallélogramme, éventuellement aplati.\n\nSoit $\\vec{u}$ un vecteur. La **translation de vecteur $\\vec{u}$** associe à tout point $M$ de l'espace l'unique point $M'$ tel que $\\overrightarrow{MM'} = \\vec{u}$. On dit que $M'$ est l'**image** de $M$ par cette translation."
+        },
+        {
+          "id": "l-vecteurs-espace-004",
+          "type": "figure",
+          "titre": "Le cube $ABCDEFGH$ en perspective",
+          "capacites": [
+            "bo-m-vecteurs-01"
+          ],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/cube-perspective.svg",
+              "alt": "Un cube ABCDEFGH dessiné en perspective. La face avant ABFE est un carré vu de face ; la face du dessous est ABCD, celle du dessus EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Les quatre arêtes verticales sont des flèches bleues orientées vers le haut : elles représentent le même vecteur AE.",
+              "width": 340,
+              "height": 300
+            },
+            "caption": "Le cube ABCDEFGH : les arêtes cachées sont en pointillé, et des arêtes parallèles restent parallèles sur le dessin. Les quatre flèches bleues représentent le même vecteur : AE = BF = CG = DH. La translation de ce vecteur envoie A, B, C, D sur E, F, G, H."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-005",
+          "type": "exemple",
+          "titre": "Lire des vecteurs égaux sur un cube",
+          "capacites": [
+            "bo-m-vecteurs-01"
+          ],
+          "enonce": "On considère le cube $ABCDEFGH$ de la figure.\n\n**1.** Citer trois vecteurs égaux à $\\overrightarrow{AB}$.\n\n**2.** Quelle est l'image du point $D$ par la translation de vecteur $\\overrightarrow{AE}$ ? Celle du point $F$ par la translation de vecteur $\\overrightarrow{BC}$ ?\n\n**3.** Simplifier $\\overrightarrow{AB} + \\overrightarrow{BF} + \\overrightarrow{FG}$, puis $\\overrightarrow{AB} + \\overrightarrow{CG}$.",
+          "etapes": [
+            {
+              "texte": "**1.** Les faces d'un cube sont des carrés, donc des parallélogrammes. Avec la face $ABCD$ : $\\overrightarrow{AB} = \\overrightarrow{DC}$. Avec la face $ABFE$ : $\\overrightarrow{AB} = \\overrightarrow{EF}$. Avec la face $EFGH$ : $\\overrightarrow{EF} = \\overrightarrow{HG}$.",
+              "pourquoi": "Dans le parallélogramme $ABCD$, les côtés $[AB]$ et $[DC]$ sont parallèles, de même longueur, et parcourus dans le même sens de $A$ vers $B$ et de $D$ vers $C$. Attention à l'ordre des lettres : $\\overrightarrow{AB} = \\overrightarrow{DC}$, pas $\\overrightarrow{CD}$."
+            },
+            {
+              "texte": "Ainsi $\\overrightarrow{DC}$, $\\overrightarrow{EF}$ et $\\overrightarrow{HG}$ sont égaux à $\\overrightarrow{AB}$ : ce sont les quatre arêtes parallèles à $[AB]$, parcourues dans le même sens."
+            },
+            {
+              "texte": "**2.** L'image de $D$ est le point $M'$ tel que $\\overrightarrow{DM'} = \\overrightarrow{AE}$. Or la face $ADHE$ est un carré, donc $\\overrightarrow{DH} = \\overrightarrow{AE}$ : l'image de $D$ est $H$.",
+              "pourquoi": "La translation de vecteur $\\overrightarrow{AE}$ fait monter chaque sommet de la face du dessous jusqu'au sommet situé au-dessus de lui."
+            },
+            {
+              "texte": "La face $BCGF$ est un carré, donc $\\overrightarrow{FG} = \\overrightarrow{BC}$ : l'image de $F$ par la translation de vecteur $\\overrightarrow{BC}$ est $G$."
+            },
+            {
+              "texte": "**3.** Les vecteurs s'enchaînent : l'arrivée de chacun est le départ du suivant. Par la relation de Chasles, $\\overrightarrow{AB} + \\overrightarrow{BF} + \\overrightarrow{FG} = \\overrightarrow{AF} + \\overrightarrow{FG} = \\overrightarrow{AG}$."
+            },
+            {
+              "texte": "Dans $\\overrightarrow{AB} + \\overrightarrow{CG}$, les vecteurs ne s'enchaînent pas. On remplace $\\overrightarrow{CG}$ par le vecteur égal qui part de $B$ : $\\overrightarrow{CG} = \\overrightarrow{BF}$, donc $\\overrightarrow{AB} + \\overrightarrow{CG} = \\overrightarrow{AB} + \\overrightarrow{BF} = \\overrightarrow{AF}$.",
+              "pourquoi": "$BCGF$ est un carré, donc $\\overrightarrow{BF} = \\overrightarrow{CG}$ : ces deux arêtes verticales sont parcourues vers le haut."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{DC} = \\overrightarrow{EF} = \\overrightarrow{HG} = \\overrightarrow{AB}$ ; les images demandées sont $H$ et $G$ ; $\\overrightarrow{AB} + \\overrightarrow{BF} + \\overrightarrow{FG} = \\overrightarrow{AG}$ et $\\overrightarrow{AB} + \\overrightarrow{CG} = \\overrightarrow{AF}$."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-006",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-01"
+          ],
+          "question": {
+            "enonce": "Dans le cube $ABCDEFGH$, quelle est l'image du point $B$ par la translation de vecteur $\\overrightarrow{EH}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$C$",
+                "$F$",
+                "$A$",
+                "$G$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "$\\overrightarrow{BF} = \\overrightarrow{AE}$ : $F$ est l'image de $B$ par la translation de vecteur $\\overrightarrow{AE}$, pas $\\overrightarrow{EH}$.",
+                "$\\overrightarrow{BA} = \\overrightarrow{FE}$ : c'est la translation de vecteur $\\overrightarrow{FE}$ qui envoie $B$ sur $A$.",
+                "$\\overrightarrow{BG} = \\overrightarrow{BC} + \\overrightarrow{CG}$ : ce déplacement suit deux arêtes, pas une seule."
+              ]
+            },
+            "explication": "La face $ADHE$ est un carré, donc $\\overrightarrow{EH} = \\overrightarrow{AD}$ ; la face $ABCD$ aussi, donc $\\overrightarrow{AD} = \\overrightarrow{BC}$. Ainsi $\\overrightarrow{BC} = \\overrightarrow{EH}$ : l'image de $B$ est $C$."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-007",
+          "type": "definition",
+          "titre": "Combinaison linéaire de vecteurs",
+          "capacites": [
+            "bo-m-vecteurs-02"
+          ],
+          "texte": "Soit $\\vec{u}$, $\\vec{v}$ et $\\vec{w}$ des vecteurs de l'espace. Un vecteur de la forme $a\\,\\vec{u} + b\\,\\vec{v}$, ou $a\\,\\vec{u} + b\\,\\vec{v} + c\\,\\vec{w}$, où $a$, $b$ et $c$ sont des réels, est une **combinaison linéaire** de ces vecteurs. Les réels $a$, $b$, $c$ sont ses **coefficients**.\n\nOn calcule comme dans le plan : on peut changer l'ordre des termes, les regrouper, développer $k\\left(\\vec{u} + \\vec{v}\\right) = k\\,\\vec{u} + k\\,\\vec{v}$ et factoriser $a\\,\\vec{u} + b\\,\\vec{u} = (a + b)\\,\\vec{u}$.\n\nPar exemple, $2\\,\\vec{u} - \\vec{v}$ et $\\vec{u} + \\dfrac{1}{2}\\vec{v} - 3\\,\\vec{w}$ sont des combinaisons linéaires de $\\vec{u}$, $\\vec{v}$, $\\vec{w}$."
+        },
+        {
+          "id": "l-vecteurs-espace-008",
+          "type": "exemple",
+          "titre": "Représenter et lire des combinaisons linéaires",
+          "capacites": [
+            "bo-m-vecteurs-02",
+            "bo-m-vecteurs-08",
+            "bo-m-vecteurs-09"
+          ],
+          "enonce": "On considère le cube $ABCDEFGH$.\n\n**1.** Placer le point $M$ tel que $\\overrightarrow{AM} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}$.\n\n**2.** Exprimer $\\overrightarrow{EC}$ comme combinaison linéaire de $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$.",
+          "etapes": [
+            {
+              "texte": "**1.** On construit le vecteur terme à terme, en mettant les vecteurs bout à bout. La face $ABCD$ est un carré, donc $\\overrightarrow{AD} = \\overrightarrow{BC}$, et $\\overrightarrow{AB} + \\overrightarrow{AD} = \\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$.",
+              "pourquoi": "On remplace $\\overrightarrow{AD}$ par le vecteur égal qui part de $B$, là où s'arrête $\\overrightarrow{AB}$ : la relation de Chasles s'applique alors."
+            },
+            {
+              "texte": "Ensuite, $\\overrightarrow{AE} = \\overrightarrow{CG}$. Soit $K$ le milieu de $[CG]$ : $\\dfrac{1}{2}\\overrightarrow{AE} = \\dfrac{1}{2}\\overrightarrow{CG} = \\overrightarrow{CK}$. Donc $\\overrightarrow{AM} = \\overrightarrow{AC} + \\overrightarrow{CK} = \\overrightarrow{AK}$.",
+              "pourquoi": "$K$ est le milieu de $[CG]$, donc $\\overrightarrow{CK} = \\dfrac{1}{2}\\overrightarrow{CG}$ : on monte d'une demi-arête à partir de $C$."
+            },
+            {
+              "texte": "Comme $\\overrightarrow{AM} = \\overrightarrow{AK}$, les points $M$ et $K$ sont confondus : $M$ est le milieu de l'arête $[CG]$."
+            },
+            {
+              "texte": "**2.** On va de $E$ à $C$ en suivant des arêtes, par $A$ puis $B$. Par la relation de Chasles : $\\overrightarrow{EC} = \\overrightarrow{EA} + \\overrightarrow{AB} + \\overrightarrow{BC}$."
+            },
+            {
+              "texte": "On remplace chaque vecteur par l'un des vecteurs imposés : $\\overrightarrow{EA} = -\\overrightarrow{AE}$ et $\\overrightarrow{BC} = \\overrightarrow{AD}$. Donc $\\overrightarrow{EC} = -\\overrightarrow{AE} + \\overrightarrow{AB} + \\overrightarrow{AD}$.",
+              "pourquoi": "$\\overrightarrow{EA}$ va de $E$ vers $A$, vers le bas : c'est l'opposé de $\\overrightarrow{AE}$, qui monte."
+            },
+            {
+              "texte": "**Conclusion** : $M$ est le milieu de l'arête $[CG]$, et $\\overrightarrow{EC} = \\overrightarrow{AB} + \\overrightarrow{AD} - \\overrightarrow{AE}$."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-009",
+          "type": "methode",
+          "titre": "Comment exprimer un vecteur comme combinaison linéaire sur une figure ?",
+          "capacites": [
+            "bo-m-vecteurs-09"
+          ],
+          "etapes": [
+            "Repère le point de départ et le point d'arrivée du vecteur cherché.",
+            "Va de l'un à l'autre en suivant des arêtes ou des segments connus, et écris ce trajet avec la relation de Chasles.",
+            "Remplace chaque vecteur du trajet par un vecteur égal parmi ceux qu'on t'impose : sur un cube ou un pavé droit, des arêtes parallèles parcourues dans le même sens donnent le même vecteur.",
+            "Change le signe d'un vecteur parcouru à l'envers ($\\overrightarrow{BA} = -\\overrightarrow{AB}$) et utilise $\\overrightarrow{AI} = \\dfrac{1}{2}\\overrightarrow{AB}$ pour un milieu $I$ de $[AB]$.",
+            "Regroupe les termes, puis vérifie sur la figure que le trajet obtenu mène bien au bon point."
+          ],
+          "exemple": "l-vecteurs-espace-008"
+        },
+        {
+          "id": "l-vecteurs-espace-010",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-09"
+          ],
+          "question": {
+            "enonce": "Dans le cube $ABCDEFGH$, comment s'écrit $\\overrightarrow{HB}$ en fonction de $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\overrightarrow{AB} - \\overrightarrow{AD} - \\overrightarrow{AE}$",
+                "$\\overrightarrow{AB} + \\overrightarrow{AD} - \\overrightarrow{AE}$",
+                "$-\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$",
+                "$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "C'est $\\overrightarrow{EC}$ : ce trajet part de $E$, pas de $H$.",
+                "C'est $\\overrightarrow{BH}$, le vecteur opposé : le trajet est parcouru dans le mauvais sens.",
+                "C'est $\\overrightarrow{AG}$, la grande diagonale qui part de $A$."
+              ]
+            },
+            "explication": "Trajet de $H$ à $B$ : $\\overrightarrow{HB} = \\overrightarrow{HE} + \\overrightarrow{EA} + \\overrightarrow{AB}$. Or $\\overrightarrow{HE} = -\\overrightarrow{EH} = -\\overrightarrow{AD}$ et $\\overrightarrow{EA} = -\\overrightarrow{AE}$. Donc $\\overrightarrow{HB} = \\overrightarrow{AB} - \\overrightarrow{AD} - \\overrightarrow{AE}$."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-011",
+          "type": "lien-matiere",
+          "titre": "Et en physique ?",
+          "capacites": [
+            "bo-pc-newton-07"
+          ],
+          "matiere": "physique-chimie",
+          "texte": "En physique, une force se représente par un vecteur de l'espace. La deuxième loi de Newton, $\\sum \\vec{F} = m\\,\\vec{a}$, dit que la somme des forces appliquées à un système est égale au vecteur accélération multiplié par la masse $m$ : une égalité entre combinaisons linéaires de vecteurs."
+        },
+        {
+          "id": "l-vecteurs-espace-012",
+          "type": "piege",
+          "titre": "Le sens d'un vecteur",
+          "faux": "$\\overrightarrow{EC} = \\overrightarrow{AE} + \\overrightarrow{AC}$.",
+          "juste": "$\\overrightarrow{EC} = \\overrightarrow{EA} + \\overrightarrow{AC} = -\\overrightarrow{AE} + \\overrightarrow{AC}$.",
+          "explication": "La relation de Chasles enchaîne des vecteurs bout à bout. Le trajet de $E$ à $C$ passe par $A$ : il commence donc par $\\overrightarrow{EA}$, qui va de $E$ vers $A$. C'est l'opposé de $\\overrightarrow{AE}$. Avant d'écrire un vecteur, lis toujours son point de départ et son point d'arrivée sur la figure."
+        },
+        {
+          "id": "l-vecteurs-espace-013",
+          "type": "complement",
+          "titre": "Pour aller plus loin : barycentre et fonction de Leibniz",
+          "capacites": [
+            "bo-m-vecteurs-14",
+            "bo-m-vecteurs-15"
+          ],
+          "texte": "Soit $A$, $B$ deux points et $a$, $b$ deux réels tels que $a + b \\neq 0$. Le **barycentre** des points pondérés $(A\\,;\\,a)$ et $(B\\,;\\,b)$ est l'unique point $G$ tel que $a\\,\\overrightarrow{GA} + b\\,\\overrightarrow{GB} = \\vec{0}$ ; pour $a = b = 1$, c'est le milieu de $[AB]$.\n\nLa **fonction vectorielle de Leibniz** associe à tout point $M$ le vecteur $a\\,\\overrightarrow{MA} + b\\,\\overrightarrow{MB}$. En insérant $G$ par la relation de Chasles, elle vaut $(a + b)\\,\\overrightarrow{MG}$. Avec $M = A$, on obtient $\\overrightarrow{AG} = \\dfrac{b}{a + b}\\overrightarrow{AB}$.\n\n**Associativité** : avec trois ou quatre points, on peut remplacer deux points par leur barycentre, affecté de la somme de leurs poids. Ainsi, le barycentre de $(A\\,;\\,1)$, $(B\\,;\\,1)$, $(C\\,;\\,1)$ est celui de $(I\\,;\\,2)$ et $(C\\,;\\,1)$, où $I$ est le milieu de $[AB]$ : c'est le centre de gravité $G$ du triangle, avec $\\overrightarrow{CG} = \\dfrac{2}{3}\\overrightarrow{CI}$."
+        },
+        {
+          "id": "l-vecteurs-espace-014",
+          "type": "retenir",
+          "texte": "Dans l'espace, on calcule avec les vecteurs comme dans le plan : relation de Chasles, sommes, multiples. Pour écrire un vecteur à partir d'autres, suis un trajet sur la figure, puis remplace chaque vecteur par un vecteur égal parmi ceux imposés."
+        }
+      ]
+    },
+    {
+      "notion": "n-vecteurs-espace-droites",
+      "blocs": [
+        {
+          "id": "l-vecteurs-espace-015",
+          "type": "idee",
+          "texte": "Une droite, c'est un point et une direction. Pour savoir si un point $M$ est sur la droite $(AB)$, il suffit de regarder si le déplacement de $A$ vers $M$ suit la même direction que celui de $A$ vers $B$ : autrement dit, si $\\overrightarrow{AM}$ est un multiple de $\\overrightarrow{AB}$. Cette idée, déjà vue dans le plan, sert dans l'espace à prouver que des points sont alignés ou que des droites sont parallèles."
+        },
+        {
+          "id": "l-vecteurs-espace-016",
+          "type": "rappel",
+          "titre": "Rappel : vecteurs colinéaires dans le plan",
+          "texte": "Dans le plan, deux vecteurs sont **colinéaires** quand l'un est un multiple de l'autre. Par exemple, si $\\vec{v} = -2\\,\\vec{u}$, les vecteurs $\\vec{u}$ et $\\vec{v}$ ont la même direction, des sens contraires, et $\\vec{v}$ est deux fois plus long. C'est ce qui permettait de prouver que trois points sont alignés, ou que deux droites sont parallèles.",
+          "lien": "1e:geometrie-reperee"
+        },
+        {
+          "id": "l-vecteurs-espace-017",
+          "type": "definition",
+          "titre": "Vecteurs colinéaires, vecteur directeur d'une droite",
+          "capacites": [
+            "bo-m-vecteurs-03"
+          ],
+          "texte": "Deux vecteurs $\\vec{u}$ et $\\vec{v}$ de l'espace sont **colinéaires** s'il existe un réel $k$ tel que $\\vec{v} = k\\,\\vec{u}$, ou tel que $\\vec{u} = k\\,\\vec{v}$. Le vecteur nul est colinéaire à tout vecteur, car $\\vec{0} = 0 \\times \\vec{u}$.\n\nDeux points distincts $A$ et $B$ définissent une unique **droite** $(AB)$. Un **vecteur directeur** d'une droite $d$ est un vecteur $\\overrightarrow{AB}$, où $A$ et $B$ sont deux points distincts de $d$. Tout vecteur non nul colinéaire à un vecteur directeur de $d$ est encore un vecteur directeur de $d$."
+        },
+        {
+          "id": "l-vecteurs-espace-018",
+          "type": "figure",
+          "titre": "Le cube $ABCDEFGH$",
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/cube.svg",
+              "alt": "Un cube ABCDEFGH dessiné en perspective. La face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé.",
+              "width": 340,
+              "height": 300
+            },
+            "caption": "Le cube ABCDEFGH : ABCD est la face du dessous, EFGH celle du dessus, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les arêtes cachées sont en pointillé."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-019",
+          "type": "exemple",
+          "titre": "Reconnaître des vecteurs colinéaires",
+          "capacites": [
+            "bo-m-vecteurs-03"
+          ],
+          "enonce": "On considère le cube $ABCDEFGH$.\n\n**1.** Justifier que $\\overrightarrow{AC}$ et $\\overrightarrow{GE}$ sont colinéaires.\n\n**2.** Soit $\\vec{u} = \\overrightarrow{AB} - 2\\,\\overrightarrow{AE}$ et $\\vec{v} = -3\\,\\overrightarrow{AB} + 6\\,\\overrightarrow{AE}$. Les vecteurs $\\vec{u}$ et $\\vec{v}$ sont-ils colinéaires ?\n\n**3.** Donner deux vecteurs directeurs de la droite $(BH)$.",
+          "etapes": [
+            {
+              "texte": "**1.** Les arêtes $[AE]$ et $[CG]$ sont parallèles, de même longueur et de même sens : $\\overrightarrow{AE} = \\overrightarrow{CG}$. Donc $ACGE$ est un parallélogramme, et $\\overrightarrow{AC} = \\overrightarrow{EG}$.",
+              "pourquoi": "Dans le parallélogramme $ACGE$, les côtés opposés $[AC]$ et $[EG]$ donnent des vecteurs égaux, lus dans le même sens : $\\overrightarrow{AC} = \\overrightarrow{EG}$."
+            },
+            {
+              "texte": "Ainsi $\\overrightarrow{GE} = -\\overrightarrow{EG} = -\\overrightarrow{AC}$, soit $\\overrightarrow{GE} = (-1) \\times \\overrightarrow{AC}$ : les vecteurs $\\overrightarrow{AC}$ et $\\overrightarrow{GE}$ sont colinéaires, de sens contraires."
+            },
+            {
+              "texte": "**2.** On cherche un réel $k$ tel que $\\vec{v} = k\\,\\vec{u}$. Le coefficient de $\\overrightarrow{AB}$ passe de $1$ dans $\\vec{u}$ à $-3$ dans $\\vec{v}$ : on essaie $k = -3$. Alors $-3\\,\\vec{u} = -3\\,\\overrightarrow{AB} + 6\\,\\overrightarrow{AE}$, qui est bien $\\vec{v}$.",
+              "pourquoi": "$-3 \\times \\left(-2\\,\\overrightarrow{AE}\\right) = 6\\,\\overrightarrow{AE}$ : le second coefficient est lui aussi multiplié par $-3$. Il faut que **tous** les coefficients soient multipliés par le même réel."
+            },
+            {
+              "texte": "Donc $\\vec{v} = -3\\,\\vec{u}$ : les vecteurs $\\vec{u}$ et $\\vec{v}$ sont colinéaires."
+            },
+            {
+              "texte": "**3.** $B$ et $H$ sont deux points distincts de la droite $(BH)$, donc $\\overrightarrow{BH}$ en est un vecteur directeur. Tout multiple non nul en est un autre, par exemple $\\overrightarrow{HB} = -\\overrightarrow{BH}$."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{GE} = -\\overrightarrow{AC}$ et $\\vec{v} = -3\\,\\vec{u}$ : ces deux couples de vecteurs sont colinéaires. Les vecteurs $\\overrightarrow{BH}$ et $\\overrightarrow{HB}$ dirigent la droite $(BH)$."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-020",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-03"
+          ],
+          "question": {
+            "enonce": "Dans le cube $ABCDEFGH$, on pose $\\vec{u} = \\overrightarrow{AB} + 2\\,\\overrightarrow{AD}$ et $\\vec{v} = -2\\,\\overrightarrow{AB} - 4\\,\\overrightarrow{AD}$. Quel est le réel $k$ tel que $\\vec{v} = k\\,\\vec{u}$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": -2,
+              "tolerance": 0
+            },
+            "explication": "$-2\\,\\vec{u} = -2\\,\\overrightarrow{AB} - 4\\,\\overrightarrow{AD} = \\vec{v}$ : chaque coefficient de $\\vec{u}$ est multiplié par $-2$. Donc $k = -2$, et $\\vec{u}$, $\\vec{v}$ sont colinéaires."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-021",
+          "type": "propriete",
+          "titre": "Droite définie par un point et un vecteur directeur",
+          "capacites": [
+            "bo-m-vecteurs-04",
+            "bo-m-vecteurs-03"
+          ],
+          "texte": "Soit $A$ un point et $\\vec{u}$ un vecteur non nul. La droite $d$ passant par $A$ et de vecteur directeur $\\vec{u}$ est l'ensemble des points $M$ tels que $\\overrightarrow{AM}$ et $\\vec{u}$ sont colinéaires, c'est-à-dire tels que :\n\n$$\\overrightarrow{AM} = t\\,\\vec{u} \\quad \\text{pour un réel } t.$$\n\nConséquences, pour des points $A \\neq B$ et $C \\neq D$ :\n\n- $A$, $B$, $C$ sont **alignés** si et seulement si $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires ;\n- les droites $(AB)$ et $(CD)$ sont **parallèles** si et seulement si $\\overrightarrow{AB}$ et $\\overrightarrow{CD}$ sont colinéaires.",
+          "conditions": [
+            "$\\vec{u} \\neq \\vec{0}$ : le vecteur nul n'a pas de direction et ne dirige aucune droite.",
+            "Pour l'alignement et le parallélisme : $A \\neq B$ et $C \\neq D$, pour que les droites $(AB)$ et $(CD)$ existent."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-vecteurs-espace-022",
+          "type": "figure",
+          "titre": "Une droite, un point, un vecteur directeur",
+          "capacites": [
+            "bo-m-vecteurs-04"
+          ],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/droite-point-vecteur.svg",
+              "alt": "Une droite d. Sur elle, le point A et le vecteur u, flèche bleue qui part de A le long de la droite. Le point M1, tel que AM1 = 2u, est deux longueurs de u plus loin dans le sens de u (marqué t = 2) ; le point M2, tel que AM2 = −u, est une longueur de u en arrière (marqué t = −1). Le point N est hors de la droite : le vecteur AN, en pointillé gris, n'est pas un multiple de u.",
+              "width": 570,
+              "height": 215
+            },
+            "caption": "Chaque point M de la droite d s'obtient en partant de A et en avançant de t fois le vecteur u : t = 2 pour M1, t = −1 pour M2. Pour le point N, aucun réel t ne convient : N n'est pas sur d."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-023",
+          "type": "exemple",
+          "titre": "Prouver un alignement, un parallélisme",
+          "capacites": [
+            "bo-m-vecteurs-04",
+            "bo-m-vecteurs-03"
+          ],
+          "enonce": "Soit $ABCD$ un **tétraèdre**, c'est-à-dire un solide à quatre faces triangulaires, dont les sommets $A$, $B$, $C$, $D$ ne sont pas dans un même plan. On définit les points $P$ et $Q$ par :\n\n$$\\overrightarrow{AP} = 3\\,\\overrightarrow{AB} - 2\\,\\overrightarrow{AD} \\quad \\text{et} \\quad \\overrightarrow{CQ} = \\overrightarrow{AB} - \\overrightarrow{AD}.$$\n\n**1.** Montrer que les points $B$, $D$ et $P$ sont alignés.\n\n**2.** Montrer que les droites $(CQ)$ et $(BD)$ sont parallèles.",
+          "etapes": [
+            {
+              "texte": "**1.** On écrit $\\overrightarrow{BP}$ avec $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$, en passant par $A$ : $\\overrightarrow{BP} = \\overrightarrow{BA} + \\overrightarrow{AP} = -\\overrightarrow{AB} + 3\\,\\overrightarrow{AB} - 2\\,\\overrightarrow{AD} = 2\\,\\overrightarrow{AB} - 2\\,\\overrightarrow{AD}$.",
+              "pourquoi": "Le point $P$ est défini à partir de $A$ : on fait donc passer le trajet par $A$, avec la relation de Chasles."
+            },
+            {
+              "texte": "De même, $\\overrightarrow{BD} = \\overrightarrow{BA} + \\overrightarrow{AD} = -\\overrightarrow{AB} + \\overrightarrow{AD}$."
+            },
+            {
+              "texte": "On compare : $-2\\,\\overrightarrow{BD} = 2\\,\\overrightarrow{AB} - 2\\,\\overrightarrow{AD} = \\overrightarrow{BP}$. Ainsi $\\overrightarrow{BP} = -2\\,\\overrightarrow{BD}$ : ces vecteurs sont colinéaires, donc $B$, $D$ et $P$ sont alignés.",
+              "pourquoi": "$\\overrightarrow{BP}$ et $\\overrightarrow{BD}$ partent du même point $B$ : s'ils sont colinéaires, $P$ est sur la droite $(BD)$. Ici, $P$ est de l'autre côté de $B$ par rapport à $D$, deux fois plus loin."
+            },
+            {
+              "texte": "**2.** $\\overrightarrow{CQ} = \\overrightarrow{AB} - \\overrightarrow{AD} = -\\left(-\\overrightarrow{AB} + \\overrightarrow{AD}\\right) = -\\overrightarrow{BD}$."
+            },
+            {
+              "texte": "Les vecteurs $\\overrightarrow{CQ}$ et $\\overrightarrow{BD}$ sont donc colinéaires. De plus, $\\overrightarrow{CQ} = -\\overrightarrow{BD} \\neq \\vec{0}$, donc $C \\neq Q$ et la droite $(CQ)$ existe.",
+              "pourquoi": "$B$ et $D$ sont distincts, donc $\\overrightarrow{BD} \\neq \\vec{0}$, et son opposé non plus."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{BP} = -2\\,\\overrightarrow{BD}$, donc les points $B$, $D$, $P$ sont alignés ; $\\overrightarrow{CQ} = -\\overrightarrow{BD}$, donc les droites $(CQ)$ et $(BD)$ sont parallèles."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-024",
+          "type": "methode",
+          "titre": "Comment montrer que trois points sont alignés, ou que deux droites sont parallèles ?",
+          "capacites": [
+            "bo-m-vecteurs-04",
+            "bo-m-vecteurs-03"
+          ],
+          "etapes": [
+            "Pour l'alignement de $A$, $B$, $C$, choisis deux vecteurs qui partent du même point, comme $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$. Pour le parallélisme de $(AB)$ et $(CD)$, prends $\\overrightarrow{AB}$ et $\\overrightarrow{CD}$.",
+            "Écris ces deux vecteurs avec les mêmes vecteurs de référence, ceux de l'énoncé, grâce à la relation de Chasles.",
+            "Cherche un réel $k$ tel que l'un soit $k$ fois l'autre : déduis $k$ d'un coefficient, puis vérifie que tous les autres sont multipliés par ce même $k$.",
+            "Conclus en citant la propriété : « $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$, donc ces vecteurs sont colinéaires, donc $A$, $B$, $C$ sont alignés »."
+          ],
+          "exemple": "l-vecteurs-espace-023"
+        },
+        {
+          "id": "l-vecteurs-espace-025",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-04"
+          ],
+          "question": {
+            "enonce": "Soit $ABCD$ un tétraèdre et $M$ le point tel que $\\overrightarrow{AM} = \\dfrac{1}{4}\\overrightarrow{AB} + \\dfrac{3}{4}\\overrightarrow{AC}$. Vrai ou faux : les points $B$, $C$ et $M$ sont alignés.",
+            "reponse": {
+              "type": "vrai-faux",
+              "valeur": true,
+              "justification": "$\\overrightarrow{BM} = \\overrightarrow{BA} + \\overrightarrow{AM} = -\\overrightarrow{AB} + \\dfrac{1}{4}\\overrightarrow{AB} + \\dfrac{3}{4}\\overrightarrow{AC} = -\\dfrac{3}{4}\\overrightarrow{AB} + \\dfrac{3}{4}\\overrightarrow{AC}$, et $\\overrightarrow{BC} = -\\overrightarrow{AB} + \\overrightarrow{AC}$. Donc $\\overrightarrow{BM} = \\dfrac{3}{4}\\overrightarrow{BC}$ : les points $B$, $C$, $M$ sont alignés."
+            },
+            "explication": "On part de $B$ et on écrit $\\overrightarrow{BM}$ et $\\overrightarrow{BC}$ avec $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$. Le réel $k = \\dfrac{3}{4}$ place $M$ sur le segment $[BC]$, aux trois quarts du trajet de $B$ vers $C$."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-026",
+          "type": "piege",
+          "titre": "Colinéaires ne veut pas dire alignés",
+          "faux": "$\\overrightarrow{AB}$ et $\\overrightarrow{CD}$ sont colinéaires, donc les points $A$, $B$, $C$, $D$ sont alignés.",
+          "juste": "$\\overrightarrow{AB}$ et $\\overrightarrow{CD}$ sont colinéaires, donc les droites $(AB)$ et $(CD)$ sont parallèles. Elles ne sont confondues que si, en plus, $C$ est sur la droite $(AB)$.",
+          "explication": "Dans le cube, $\\overrightarrow{AB} = \\overrightarrow{HG}$ : ces vecteurs sont colinéaires, mais $A$, $B$, $H$, $G$ ne sont pas alignés. Pour prouver un alignement, prends deux vecteurs qui ont **un point en commun**, comme $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$."
+        },
+        {
+          "id": "l-vecteurs-espace-027",
+          "type": "retenir",
+          "texte": "$\\vec{u}$ et $\\vec{v}$ sont colinéaires si l'un est un multiple de l'autre. $M$ est sur la droite passant par $A$ et dirigée par $\\vec{u}$ si et seulement si $\\overrightarrow{AM} = t\\,\\vec{u}$. Alignés : $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$ ; parallèles : $\\overrightarrow{CD} = k\\,\\overrightarrow{AB}$."
+        }
+      ]
+    },
+    {
+      "notion": "n-vecteurs-espace-plans",
+      "blocs": [
+        {
+          "id": "l-vecteurs-espace-028",
+          "type": "idee",
+          "texte": "Pose une feuille sur une table. Depuis un point $A$ de la feuille, tu atteins n'importe quel autre point en combinant deux directions, par exemple « vers la droite » et « vers le fond ». Un plan, c'est cela : un point et deux directions différentes. C'est aussi pourquoi un tabouret à trois pieds ne boite jamais : trois points non alignés suffisent à fixer un plan."
+        },
+        {
+          "id": "l-vecteurs-espace-029",
+          "type": "figure",
+          "titre": "Le cube $ABCDEFGH$",
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/cube.svg",
+              "alt": "Un cube ABCDEFGH dessiné en perspective. La face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé.",
+              "width": 340,
+              "height": 300
+            },
+            "caption": "Le cube ABCDEFGH : ABCD est la face du dessous, EFGH celle du dessus, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les arêtes cachées sont en pointillé."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-030",
+          "type": "definition",
+          "titre": "Plan dirigé par deux vecteurs, direction d'un plan",
+          "capacites": [
+            "bo-m-vecteurs-05",
+            "bo-m-vecteurs-06"
+          ],
+          "texte": "Soit $A$ un point, et $\\vec{u}$, $\\vec{v}$ deux vecteurs **non colinéaires**. L'ensemble des points $M$ tels que\n\n$$\\overrightarrow{AM} = x\\,\\vec{u} + y\\,\\vec{v}, \\quad \\text{avec } x \\text{ et } y \\text{ réels},$$\n\nest un **plan** $\\mathcal{P}$ : le plan passant par $A$ et dirigé par $\\vec{u}$ et $\\vec{v}$. On dit que $\\left(\\vec{u}, \\vec{v}\\right)$ est un couple de **vecteurs directeurs** de $\\mathcal{P}$.\n\nL'ensemble des vecteurs $x\\,\\vec{u} + y\\,\\vec{v}$ est la **direction** de $\\mathcal{P}$ : ce sont les vecteurs $\\overrightarrow{MN}$, où $M$ et $N$ sont deux points de $\\mathcal{P}$.\n\nTrois points $A$, $B$, $C$ non alignés définissent un unique plan, noté $(ABC)$ : celui qui passe par $A$ et qui est dirigé par $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$."
+        },
+        {
+          "id": "l-vecteurs-espace-031",
+          "type": "figure",
+          "titre": "Repérer un point d'un plan avec deux vecteurs",
+          "capacites": [
+            "bo-m-vecteurs-06"
+          ],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/plan-point-deux-vecteurs.svg",
+              "alt": "Un plan P dessiné en perspective comme un parallélogramme, quadrillé par des parallèles à deux directions. Du point A partent le vecteur u, flèche bleue, et le vecteur v, flèche orange, qui ne sont pas colinéaires. Le point M est atteint en avançant de deux fois u, puis d'une fois v : la flèche noire de A à M représente AM = 2u + v.",
+              "width": 545,
+              "height": 215
+            },
+            "caption": "Depuis A, on atteint le point M du plan P en avançant de deux fois u, puis d'une fois v : AM = 2u + v. Tous les points de P s'obtiennent ainsi, avec deux réels x et y."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-032",
+          "type": "exemple",
+          "titre": "Lire la direction d'un plan sur un cube",
+          "capacites": [
+            "bo-m-vecteurs-05",
+            "bo-m-vecteurs-06"
+          ],
+          "enonce": "On considère le cube $ABCDEFGH$.\n\n**1.** Donner deux couples de vecteurs directeurs du plan $(ABC)$.\n\n**2.** Le point $M$ tel que $\\overrightarrow{AM} = \\overrightarrow{AB} + \\dfrac{1}{2}\\overrightarrow{AD}$ appartient-il au plan $(ABC)$ ? Où est-il ?\n\n**3.** Montrer que le vecteur $\\overrightarrow{EG}$ appartient à la direction du plan $(ABC)$.",
+          "etapes": [
+            {
+              "texte": "**1.** $A$, $B$, $C$ sont trois sommets d'un carré, donc ils ne sont pas alignés : ils définissent le plan $(ABC)$, dirigé par $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$. C'est le plan de la face du dessous."
+            },
+            {
+              "texte": "De plus, $\\overrightarrow{AD} = \\overrightarrow{BC} = \\overrightarrow{BA} + \\overrightarrow{AC} = -\\overrightarrow{AB} + \\overrightarrow{AC}$ : $\\overrightarrow{AD}$ est dans la direction de $(ABC)$. Comme $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$ ne sont pas colinéaires, ils dirigent aussi ce plan.",
+              "pourquoi": "Un plan a beaucoup de couples de vecteurs directeurs : deux vecteurs non colinéaires de sa direction conviennent toujours."
+            },
+            {
+              "texte": "**2.** $\\overrightarrow{AM}$ s'écrit $x\\,\\overrightarrow{AB} + y\\,\\overrightarrow{AD}$, avec $x = 1$ et $y = \\dfrac{1}{2}$. D'après la définition, $M$ appartient au plan passant par $A$ et dirigé par $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$, c'est-à-dire au plan $(ABC)$."
+            },
+            {
+              "texte": "Pour le placer : $\\overrightarrow{AD} = \\overrightarrow{BC}$, donc $\\overrightarrow{AM} = \\overrightarrow{AB} + \\dfrac{1}{2}\\overrightarrow{BC}$. On va de $A$ à $B$, puis à mi-chemin de $B$ vers $C$ : $M$ est le milieu de $[BC]$."
+            },
+            {
+              "texte": "**3.** On a vu, avec le parallélogramme $ACGE$, que $\\overrightarrow{EG} = \\overrightarrow{AC}$. Or $\\overrightarrow{AC} = 0 \\times \\overrightarrow{AB} + 1 \\times \\overrightarrow{AC}$ est dans la direction du plan $(ABC)$.",
+              "pourquoi": "La direction d'un plan contient aussi les vecteurs dessinés ailleurs, pourvu qu'ils soient égaux à un vecteur du plan. Ici, $\\overrightarrow{EG}$ est dessiné sur la face du dessus."
+            },
+            {
+              "texte": "**Conclusion** : $\\left(\\overrightarrow{AB}, \\overrightarrow{AC}\\right)$ et $\\left(\\overrightarrow{AB}, \\overrightarrow{AD}\\right)$ dirigent le plan $(ABC)$ ; $M$ est le milieu de $[BC]$, dans ce plan ; $\\overrightarrow{EG} = \\overrightarrow{AC}$ appartient à la direction du plan $(ABC)$."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-033",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-05"
+          ],
+          "question": {
+            "enonce": "Dans le cube $ABCDEFGH$, lequel de ces vecteurs appartient à la direction du plan $(ABF)$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\overrightarrow{AD}$",
+                "$\\overrightarrow{AC}$",
+                "$\\overrightarrow{BF}$",
+                "$\\overrightarrow{AG}$"
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Le plan $(ABF)$ est celui de la face avant $ABFE$. Si $\\overrightarrow{AD}$ était dans sa direction, le point $D$ serait dans ce plan, puisque $A$ y est. Or $D$ est à l'arrière.",
+                "Pour la même raison, $C$ n'est pas dans le plan $(ABF)$ : $\\overrightarrow{AC}$ sort de ce plan.",
+                null,
+                "$G$ est à l'arrière du cube : $\\overrightarrow{AG}$ sort du plan $(ABF)$."
+              ]
+            },
+            "explication": "Le plan $(ABF)$ contient la face avant $ABFE$ : il est dirigé par $\\overrightarrow{AB}$ et $\\overrightarrow{AE}$. Or $\\overrightarrow{BF} = \\overrightarrow{AE}$ : ce vecteur appartient à la direction du plan."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-034",
+          "type": "definition",
+          "titre": "Points coplanaires, vecteurs coplanaires",
+          "capacites": [
+            "bo-m-vecteurs-05",
+            "bo-m-vecteurs-06"
+          ],
+          "texte": "Des points sont **coplanaires** s'il existe un plan qui les contient tous. Trois points le sont toujours ; les quatre sommets d'un tétraèdre ne le sont pas.\n\nTrois vecteurs $\\vec{u}$, $\\vec{v}$, $\\vec{w}$ sont **coplanaires** si, placés à partir d'un même point $O$ ($\\overrightarrow{OU} = \\vec{u}$, $\\overrightarrow{OV} = \\vec{v}$, $\\overrightarrow{OW} = \\vec{w}$), les points $O$, $U$, $V$, $W$ sont coplanaires.\n\nSi $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires, cela revient à dire que $\\vec{w}$ est dans la direction du plan dirigé par $\\vec{u}$ et $\\vec{v}$ : $\\vec{w} = a\\,\\vec{u} + b\\,\\vec{v}$ pour deux réels $a$ et $b$. En particulier, $A$, $B$, $C$, $D$ sont coplanaires si et seulement si $\\overrightarrow{AB}$, $\\overrightarrow{AC}$, $\\overrightarrow{AD}$ le sont."
+        },
+        {
+          "id": "l-vecteurs-espace-035",
+          "type": "exemple",
+          "titre": "Prouver que quatre points sont coplanaires",
+          "capacites": [
+            "bo-m-vecteurs-06"
+          ],
+          "enonce": "Dans le cube $ABCDEFGH$, montrer que les points $A$, $B$, $G$, $H$ sont coplanaires.",
+          "etapes": [
+            {
+              "texte": "On cherche à écrire $\\overrightarrow{AG}$ comme combinaison linéaire de $\\overrightarrow{AB}$ et $\\overrightarrow{AH}$. Pour comparer, on écrit d'abord ces vecteurs avec les trois arêtes issues de $A$ : $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$."
+            },
+            {
+              "texte": "$\\overrightarrow{AH} = \\overrightarrow{AD} + \\overrightarrow{DH} = \\overrightarrow{AD} + \\overrightarrow{AE}$, car $\\overrightarrow{DH} = \\overrightarrow{AE}$."
+            },
+            {
+              "texte": "$\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$, car $\\overrightarrow{BC} = \\overrightarrow{AD}$ et $\\overrightarrow{CG} = \\overrightarrow{AE}$."
+            },
+            {
+              "texte": "Donc $\\overrightarrow{AG} = \\overrightarrow{AB} + \\left(\\overrightarrow{AD} + \\overrightarrow{AE}\\right) = \\overrightarrow{AB} + \\overrightarrow{AH}$.",
+              "pourquoi": "On reconnaît $\\overrightarrow{AH}$ dans les deux derniers termes : c'est ce qui donne les coefficients $a = 1$ et $b = 1$."
+            },
+            {
+              "texte": "$\\overrightarrow{AB}$ et $\\overrightarrow{AH}$ ne sont pas colinéaires, car $H$ n'est pas sur la droite $(AB)$. Donc $\\overrightarrow{AB}$, $\\overrightarrow{AH}$, $\\overrightarrow{AG}$ sont coplanaires.",
+              "pourquoi": "Si $\\overrightarrow{AH}$ était un multiple de $\\overrightarrow{AB}$, le point $H$ serait sur la droite $(AB)$, qui borde la face du dessous ; or $H$ est sur la face du dessus."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AH}$, avec $\\overrightarrow{AB}$, $\\overrightarrow{AH}$ non colinéaires, donc les points $A$, $B$, $G$, $H$ sont coplanaires. Le quadrilatère $ABGH$ est même un parallélogramme, puisque $\\overrightarrow{HG} = \\overrightarrow{AB}$."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-036",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-06"
+          ],
+          "question": {
+            "enonce": "Vrai ou faux : dans le cube $ABCDEFGH$, les vecteurs $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{EG}$ sont coplanaires.",
+            "reponse": {
+              "type": "vrai-faux",
+              "valeur": true,
+              "justification": "$\\overrightarrow{EG} = \\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AB} + \\overrightarrow{AD}$ : $\\overrightarrow{EG}$ est une combinaison linéaire de $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$, qui ne sont pas colinéaires. Les trois vecteurs sont coplanaires."
+            },
+            "explication": "Des vecteurs coplanaires ne sont pas forcément dessinés dans un même plan : $\\overrightarrow{EG}$ est sur la face du dessus, $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$ sur celle du dessous. Ce qui compte, c'est que, placés à partir d'un même point, ils restent dans un même plan."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-037",
+          "type": "piege",
+          "titre": "Deux à deux non colinéaires ne suffit pas",
+          "faux": "$\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{AC}$ ne sont pas colinéaires deux à deux, donc ils ne sont pas coplanaires.",
+          "juste": "Ils sont coplanaires : $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$, et tous les trois sont dans le plan $(ABC)$.",
+          "explication": "Trois vecteurs coplanaires n'ont aucune raison d'être colinéaires. Ne compare donc pas les vecteurs deux par deux : regarde si l'un s'écrit comme combinaison linéaire des deux autres, ou si, placés à partir d'un même point, ils restent dans un même plan."
+        },
+        {
+          "id": "l-vecteurs-espace-038",
+          "type": "retenir",
+          "texte": "Un plan est défini par un point $A$ et deux vecteurs non colinéaires $\\vec{u}$ et $\\vec{v}$ : $M$ est dans ce plan si et seulement si $\\overrightarrow{AM} = x\\,\\vec{u} + y\\,\\vec{v}$. Si $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires, $\\vec{u}$, $\\vec{v}$, $\\vec{w}$ sont coplanaires si et seulement si $\\vec{w} = a\\,\\vec{u} + b\\,\\vec{v}$."
+        }
+      ]
+    },
+    {
+      "notion": "n-vecteurs-espace-positions-relatives",
+      "blocs": [
+        {
+          "id": "l-vecteurs-espace-039",
+          "type": "idee",
+          "texte": "Dans le plan, deux droites distinctes se coupent ou sont parallèles. Dans l'espace, il existe une troisième possibilité. Pense à une autoroute qui passe sous un pont : la route du pont et l'autoroute ne se croisent jamais, et pourtant elles ne sont pas parallèles. Pour une droite et un plan, ou pour deux plans, on se pose les mêmes questions : ont-ils un point commun, et ont-ils la même direction ?"
+        },
+        {
+          "id": "l-vecteurs-espace-040",
+          "type": "definition",
+          "titre": "Positions relatives de deux droites",
+          "capacites": [
+            "bo-m-vecteurs-10"
+          ],
+          "texte": "Deux droites sont **coplanaires** s'il existe un plan qui les contient toutes les deux. Deux droites de l'espace sont :\n\n- soit **coplanaires** : elles sont alors **sécantes** (un seul point commun) ou **parallèles** (strictement parallèles, sans point commun, ou confondues) ;\n- soit **non coplanaires** : aucun plan ne les contient ; elles n'ont alors aucun point commun et ne sont pas parallèles.\n\nDeux droites parallèles sont donc toujours coplanaires. Deux droites sans point commun sont soit strictement parallèles, soit non coplanaires."
+        },
+        {
+          "id": "l-vecteurs-espace-041",
+          "type": "figure",
+          "titre": "Trois positions de deux droites, sur un cube",
+          "capacites": [
+            "bo-m-vecteurs-10"
+          ],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/deux-droites-cube.svg",
+              "alt": "Trois cubes ABCDEFGH côte à côte. Dans le premier, les droites (AB), en bleu, et (AE), en orange, se coupent en A : elles sont sécantes. Dans le deuxième, les droites (AB) et (HG) sont parallèles : l'une borde la face du dessous, l'autre la face du dessus. Dans le troisième, les droites (AB) et (CG) ne se coupent pas et ne sont pas parallèles : elles sont non coplanaires.",
+              "width": 660,
+              "height": 275
+            },
+            "caption": "Sécantes : (AB) et (AE). Parallèles : (AB) et (HG). Non coplanaires : (AB) et (CG), qui ne se coupent pas sans être parallèles."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-042",
+          "type": "exemple",
+          "titre": "Position relative de deux droites dans un cube",
+          "capacites": [
+            "bo-m-vecteurs-10",
+            "bo-m-logique-11"
+          ],
+          "enonce": "Dans le cube $ABCDEFGH$, déterminer la position relative des droites :\n\n**1.** $(AB)$ et $(HG)$ ;\n\n**2.** $(AB)$ et $(CG)$ ;\n\n**3.** $(AG)$ et $(CE)$.",
+          "etapes": [
+            {
+              "texte": "**1.** $\\overrightarrow{HG} = \\overrightarrow{DC} = \\overrightarrow{AB}$, avec les faces $DCGH$ et $ABCD$ : les vecteurs directeurs sont colinéaires, donc $(AB)$ et $(HG)$ sont parallèles. Elles ne sont pas confondues, car $H$ n'est pas sur $(AB)$ : elles sont **strictement parallèles**."
+            },
+            {
+              "texte": "**2.** Raisonnons par l'absurde : supposons que $(AB)$ et $(CG)$ soient contenues dans un même plan $\\mathcal{P}$. Alors $\\mathcal{P}$ contient $A$, $B$ et $C$, qui ne sont pas alignés : $\\mathcal{P}$ est le plan $(ABC)$.",
+              "pourquoi": "Raisonner par l'absurde, c'est supposer le contraire de ce qu'on veut prouver, puis aboutir à une contradiction. Ici, on s'appuie sur ce fait : trois points non alignés définissent un seul plan."
+            },
+            {
+              "texte": "Mais $\\mathcal{P}$ contiendrait aussi $G$, alors que $G$ n'est pas dans le plan $(ABC)$ de la face du dessous. C'est absurde : les droites $(AB)$ et $(CG)$ sont **non coplanaires**."
+            },
+            {
+              "texte": "**3.** $(AG)$ et $(CE)$ sont les deux diagonales du parallélogramme $ACGE$ : elles sont dans le plan $(ACG)$, donc coplanaires. Les diagonales d'un parallélogramme se coupent en leur milieu : les droites $(AG)$ et $(CE)$ sont **sécantes**.",
+              "pourquoi": "$ACGE$ est un parallélogramme car $\\overrightarrow{AE} = \\overrightarrow{CG}$ : c'est le rectangle qui coupe le cube en diagonale."
+            },
+            {
+              "texte": "**Conclusion** : $(AB)$ et $(HG)$ sont strictement parallèles ; $(AB)$ et $(CG)$ sont non coplanaires ; $(AG)$ et $(CE)$ sont sécantes, au centre du cube."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-043",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-10"
+          ],
+          "question": {
+            "enonce": "Dans le cube $ABCDEFGH$, quelle est la position relative des droites $(AC)$ et $(FH)$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "Sécantes",
+                "Strictement parallèles",
+                "Non coplanaires",
+                "Confondues"
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "$(AC)$ est dans le plan de la face du dessous, $(FH)$ dans celui de la face du dessus : ces deux plans sont strictement parallèles, donc les droites n'ont aucun point commun.",
+                "$\\overrightarrow{FH} = \\overrightarrow{BD}$, qui n'est pas colinéaire à $\\overrightarrow{AC}$ : les diagonales du carré $ABCD$ se coupent.",
+                null,
+                "Elles n'ont même aucun point commun."
+              ]
+            },
+            "explication": "Aucun point commun : les deux droites sont dans les plans de deux faces opposées, qui sont strictement parallèles. Pas parallèles : $\\overrightarrow{FH} = \\overrightarrow{BD}$, qui n'est pas colinéaire à $\\overrightarrow{AC}$. Ni sécantes ni parallèles : elles sont non coplanaires."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-044",
+          "type": "propriete",
+          "titre": "Une droite et un plan, deux plans",
+          "capacites": [
+            "bo-m-vecteurs-10"
+          ],
+          "texte": "Soit $d$ une droite de vecteur directeur $\\vec{w}$, et $\\mathcal{P}$ un plan dirigé par $\\vec{u}$ et $\\vec{v}$ non colinéaires.\n\n- **Une droite et un plan** sont soit sécants en un point, soit parallèles : la droite est alors contenue dans le plan, ou strictement parallèle (aucun point commun). $d$ est parallèle à $\\mathcal{P}$ si et seulement si $\\vec{w}$ est dans la direction de $\\mathcal{P}$ : $\\vec{u}$, $\\vec{v}$, $\\vec{w}$ sont coplanaires.\n- **Deux plans** sont soit sécants selon une droite, soit parallèles : confondus, ou strictement parallèles. Ils sont parallèles si et seulement si ils ont la même direction : il suffit que deux vecteurs non colinéaires de la direction de l'un soient dans la direction de l'autre.",
+          "conditions": [
+            "$\\vec{w} \\neq \\vec{0}$, et $\\vec{u}$, $\\vec{v}$ ne sont pas colinéaires.",
+            "« Parallèle » comprend le cas « contenue » pour une droite et un plan, et le cas « confondus » pour deux plans : pour trancher, cherche un point commun."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-vecteurs-espace-045",
+          "type": "figure",
+          "titre": "Une droite et un plan, deux plans",
+          "capacites": [
+            "bo-m-vecteurs-10"
+          ],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/droite-plan-deux-plans.svg",
+              "alt": "En haut, trois dessins d'un même plan P, représenté par un parallélogramme. À gauche, la droite d est tracée dans le plan : elle est contenue dans P. Au milieu, la droite d est au-dessus du plan, parallèle à son ombre en pointillé dans le plan : elle est strictement parallèle à P. À droite, la droite d traverse le plan au point I ; sa partie cachée sous le plan est en pointillé : d et P sont sécants en I. En bas à gauche, deux plans P et P′ superposés : ils sont strictement parallèles. En bas à droite, un plan horizontal P et un plan vertical P′ qui le traverse : ils se coupent selon une droite Δ, en orange.",
+              "width": 640,
+              "height": 470
+            },
+            "caption": "En haut : une droite contenue dans le plan P, strictement parallèle à P, puis sécante à P en I. En bas : deux plans strictement parallèles, puis deux plans sécants selon la droite Δ."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-046",
+          "type": "exemple",
+          "titre": "Droite et plan, deux plans dans un cube",
+          "capacites": [
+            "bo-m-vecteurs-10"
+          ],
+          "enonce": "Dans le cube $ABCDEFGH$ :\n\n**1.** Montrer que la droite $(EG)$ est strictement parallèle au plan $(ABC)$.\n\n**2.** Déterminer la position relative de la droite $(AG)$ et du plan $(EFG)$.\n\n**3.** Montrer que les plans $(ABF)$ et $(DCG)$ sont strictement parallèles.",
+          "etapes": [
+            {
+              "texte": "**1.** $\\overrightarrow{EG} = \\overrightarrow{AC}$, et $\\overrightarrow{AC}$ est dans la direction du plan $(ABC)$ : la droite $(EG)$ est parallèle au plan $(ABC)$.",
+              "pourquoi": "$\\overrightarrow{AE} = \\overrightarrow{CG}$, donc $ACGE$ est un parallélogramme, d'où $\\overrightarrow{EG} = \\overrightarrow{AC}$."
+            },
+            {
+              "texte": "Le point $E$ de $(EG)$ n'est pas dans le plan $(ABC)$ de la face du dessous : $(EG)$ n'est pas contenue dans ce plan. Elle est donc strictement parallèle au plan $(ABC)$."
+            },
+            {
+              "texte": "**2.** Le point $G$ est à la fois sur la droite $(AG)$ et dans le plan $(EFG)$, celui de la face du dessus. Le point $A$ de $(AG)$, lui, n'est pas dans ce plan."
+            },
+            {
+              "texte": "La droite n'est donc pas strictement parallèle au plan (point commun $G$), ni contenue dans le plan ($A$ n'y est pas). Il reste un cas : $(AG)$ coupe le plan $(EFG)$ au point $G$.",
+              "pourquoi": "Une droite et un plan sont soit sécants en un point, soit parallèles (contenue ou strictement parallèle) : on élimine les deux cas parallèles."
+            },
+            {
+              "texte": "**3.** Le plan $(ABF)$ contient la face $ABFE$ : il est dirigé par $\\overrightarrow{AB}$ et $\\overrightarrow{AE}$. Le plan $(DCG)$ contient la face $DCGH$ : il est dirigé par $\\overrightarrow{DC}$ et $\\overrightarrow{DH}$. Or $\\overrightarrow{DC} = \\overrightarrow{AB}$ et $\\overrightarrow{DH} = \\overrightarrow{AE}$ : les deux plans ont la même direction, ils sont parallèles."
+            },
+            {
+              "texte": "**Conclusion** : $D$ est dans $(DCG)$ mais pas dans $(ABF)$, donc ces plans ne sont pas confondus : ils sont strictement parallèles. De plus, $(EG)$ est strictement parallèle au plan $(ABC)$, et $(AG)$ coupe le plan $(EFG)$ en $G$."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-047",
+          "type": "methode",
+          "titre": "Comment déterminer une position relative ?",
+          "capacites": [
+            "bo-m-vecteurs-10"
+          ],
+          "etapes": [
+            "Repère sur la figure ce que tu conjectures, puis cherche ce qui le prouve : un vecteur pour la direction, un point pour l'intersection.",
+            "**Deux droites** : si leurs vecteurs directeurs sont colinéaires, elles sont parallèles, et confondues si elles ont un point commun. Sinon, elles sont sécantes si elles sont dans un même plan, non coplanaires sinon.",
+            "**Une droite et un plan** : si un vecteur directeur de la droite est dans la direction du plan, ils sont parallèles. Si la droite a un point dans le plan et un autre hors du plan, ils sont sécants en ce point.",
+            "**Deux plans** : s'ils ont la même direction, ils sont parallèles. Sinon, ils sont sécants selon une droite.",
+            "Pour séparer « strictement parallèles » de « contenue » ou « confondus », cherche un point de l'un qui n'est pas dans l'autre."
+          ],
+          "exemple": "l-vecteurs-espace-046"
+        },
+        {
+          "id": "l-vecteurs-espace-048",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-10"
+          ],
+          "question": {
+            "enonce": "Dans le cube $ABCDEFGH$, quelle est la position relative de la droite $(AF)$ et du plan $(DCG)$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "La droite est contenue dans le plan.",
+                "La droite est strictement parallèle au plan.",
+                "La droite et le plan sont sécants en un point."
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Le point $A$ de la droite est sur la face avant, pas dans le plan $(DCG)$ de la face arrière.",
+                null,
+                "$\\overrightarrow{AF}$ est dans la direction du plan $(DCG)$ : la droite lui est parallèle, elle ne peut pas le couper en un seul point."
+              ]
+            },
+            "explication": "$\\overrightarrow{AF} = \\overrightarrow{AB} + \\overrightarrow{BF} = \\overrightarrow{DC} + \\overrightarrow{DH}$ : ce vecteur est dans la direction du plan $(DCG)$, donc $(AF)$ est parallèle à ce plan. Comme $A$ n'est pas dans $(DCG)$, la droite est strictement parallèle au plan."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-049",
+          "type": "piege",
+          "titre": "Sans point commun ne veut pas dire parallèles",
+          "faux": "Les droites $(BE)$ et $(CD)$ n'ont aucun point commun, donc elles sont parallèles.",
+          "juste": "Elles n'ont aucun point commun, mais $\\overrightarrow{BE}$ et $\\overrightarrow{CD}$ ne sont pas colinéaires : $\\overrightarrow{CD}$ suit une arête horizontale, alors que $\\overrightarrow{BE}$ monte de $B$ vers $E$. Ces droites sont non coplanaires.",
+          "explication": "Dans le plan, deux droites sans point commun sont parallèles. Dans l'espace, c'est faux : il faut en plus que leurs vecteurs directeurs soient colinéaires. Méfie-toi aussi du dessin en perspective : deux droites peuvent y sembler se croiser sans se couper dans l'espace."
+        },
+        {
+          "id": "l-vecteurs-espace-050",
+          "type": "retenir",
+          "texte": "Deux droites : sécantes, parallèles, ou non coplanaires. Une droite et un plan : sécants en un point, ou parallèles (vecteur directeur dans la direction du plan). Deux plans : sécants selon une droite, ou parallèles (même direction). Regarde d'abord les directions, puis les points communs."
+        }
+      ]
+    },
+    {
+      "notion": "n-vecteurs-espace-bases-reperes",
+      "blocs": [
+        {
+          "id": "l-vecteurs-espace-051",
+          "type": "idee",
+          "texte": "Dans le plan, deux vecteurs non colinéaires suffisent pour tout repérer : chaque vecteur s'écrit avec deux nombres, ses coordonnées. Dans l'espace, deux directions ne couvrent qu'un plan ; il en faut une troisième qui sorte de ce plan. Trois vecteurs non coplanaires, comme les trois arêtes d'un cube issues d'un même sommet, permettent d'écrire chaque vecteur avec trois nombres."
+        },
+        {
+          "id": "l-vecteurs-espace-052",
+          "type": "rappel",
+          "titre": "Rappel : repère et coordonnées dans le plan",
+          "texte": "Dans un repère $\\left(O\\,;\\,\\vec{i}, \\vec{j}\\right)$ du plan, le point $M$ a pour coordonnées $(x\\,;\\,y)$ lorsque $\\overrightarrow{OM} = x\\,\\vec{i} + y\\,\\vec{j}$. Pour $A(x_A\\,;\\,y_A)$ et $B(x_B\\,;\\,y_B)$ :\n\n- $\\overrightarrow{AB}$ a pour coordonnées $\\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\end{pmatrix}$, « arrivée moins départ » ;\n- le milieu de $[AB]$ a pour coordonnées $\\left(\\dfrac{x_A + x_B}{2}\\,;\\,\\dfrac{y_A + y_B}{2}\\right)$.",
+          "lien": "1e:geometrie-reperee"
+        },
+        {
+          "id": "l-vecteurs-espace-053",
+          "type": "definition",
+          "titre": "Base et repère de l'espace",
+          "capacites": [
+            "bo-m-vecteurs-07",
+            "bo-m-vecteurs-11"
+          ],
+          "texte": "Trois vecteurs $\\vec{i}$, $\\vec{j}$, $\\vec{k}$ de l'espace forment une **base** lorsqu'ils ne sont pas coplanaires. On la note $\\left(\\vec{i}, \\vec{j}, \\vec{k}\\right)$ : l'ordre des vecteurs compte.\n\nUn **repère** de l'espace, noté $\\left(O\\,;\\,\\vec{i}, \\vec{j}, \\vec{k}\\right)$, est formé d'un point $O$, son **origine**, et d'une base $\\left(\\vec{i}, \\vec{j}, \\vec{k}\\right)$.\n\nDe même, deux vecteurs non colinéaires de la direction d'un plan forment une **base de ce plan** : c'est un couple de vecteurs directeurs de ce plan."
+        },
+        {
+          "id": "l-vecteurs-espace-054",
+          "type": "figure",
+          "titre": "Le cube $ABCDEFGH$",
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/cube.svg",
+              "alt": "Un cube ABCDEFGH dessiné en perspective. La face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé.",
+              "width": 340,
+              "height": 300
+            },
+            "caption": "Le cube ABCDEFGH : ABCD est la face du dessous, EFGH celle du dessus, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les arêtes cachées sont en pointillé."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-055",
+          "type": "exemple",
+          "titre": "Lire sur une figure si des vecteurs forment une base",
+          "capacites": [
+            "bo-m-vecteurs-11",
+            "bo-m-vecteurs-12"
+          ],
+          "enonce": "Dans le cube $ABCDEFGH$ :\n\n**1.** Les vecteurs $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$ forment-ils une base de l'espace ? Et $\\overrightarrow{AB}$, $\\overrightarrow{AC}$, $\\overrightarrow{AD}$ ?\n\n**2.** Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AF}$ forment-ils une base du plan $(ABF)$ ?\n\n**3.** Lire la décomposition de $\\overrightarrow{FD}$ dans la base $\\left(\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.",
+          "etapes": [
+            {
+              "texte": "**1.** Placés en $A$, les vecteurs $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$ ont pour extrémités $B$, $D$, $E$. Les points $A$, $B$, $D$ sont dans le plan de la face du dessous, et $E$ n'y est pas : $A$, $B$, $D$, $E$ ne sont pas coplanaires. Ces trois vecteurs forment donc une base.",
+              "pourquoi": "Trois vecteurs sont coplanaires quand, placés à partir d'un même point, ce point et leurs trois extrémités sont dans un même plan."
+            },
+            {
+              "texte": "En revanche, $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$ : les vecteurs $\\overrightarrow{AB}$, $\\overrightarrow{AC}$, $\\overrightarrow{AD}$ sont coplanaires, tous dans le plan $(ABC)$. Ils ne forment pas une base."
+            },
+            {
+              "texte": "**2.** $A$, $B$, $F$ ne sont pas alignés, donc $\\overrightarrow{AB}$ et $\\overrightarrow{AF}$ ne sont pas colinéaires, et ils sont dans la direction du plan $(ABF)$. Ils forment donc une base de ce plan."
+            },
+            {
+              "texte": "**3.** On suit un trajet le long des arêtes, de $F$ à $D$ : $\\overrightarrow{FD} = \\overrightarrow{FE} + \\overrightarrow{EA} + \\overrightarrow{AD}$. Or $\\overrightarrow{FE} = -\\overrightarrow{EF} = -\\overrightarrow{AB}$ et $\\overrightarrow{EA} = -\\overrightarrow{AE}$.",
+              "pourquoi": "$\\overrightarrow{FE}$ va de $F$ vers $E$, dans le sens contraire de $\\overrightarrow{EF}$, qui est égal à $\\overrightarrow{AB}$."
+            },
+            {
+              "texte": "**Conclusion** : $\\left(\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ est une base de l'espace, mais pas $\\left(\\overrightarrow{AB}, \\overrightarrow{AC}, \\overrightarrow{AD}\\right)$ ; $\\left(\\overrightarrow{AB}, \\overrightarrow{AF}\\right)$ est une base du plan $(ABF)$ ; et $\\overrightarrow{FD} = -\\overrightarrow{AB} + \\overrightarrow{AD} - \\overrightarrow{AE}$."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-056",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-11"
+          ],
+          "question": {
+            "enonce": "Vrai ou faux : dans le cube $ABCDEFGH$, les vecteurs $\\overrightarrow{AF}$, $\\overrightarrow{AH}$ et $\\overrightarrow{FH}$ forment une base de l'espace.",
+            "reponse": {
+              "type": "vrai-faux",
+              "valeur": false,
+              "justification": "$\\overrightarrow{FH} = \\overrightarrow{FA} + \\overrightarrow{AH} = -\\overrightarrow{AF} + \\overrightarrow{AH}$ : les trois vecteurs sont coplanaires, dans le plan $(AFH)$. Ils ne forment pas une base."
+            },
+            "explication": "Les vecteurs portés par les trois côtés d'un même triangle, ici $AFH$, sont toujours coplanaires, même s'ils sont deux à deux non colinéaires."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-057",
+          "type": "propriete",
+          "titre": "Décomposition sur une base, coordonnées",
+          "capacites": [
+            "bo-m-vecteurs-07",
+            "bo-m-vecteurs-12"
+          ],
+          "texte": "Soit $\\left(\\vec{i}, \\vec{j}, \\vec{k}\\right)$ une base de l'espace. Tout vecteur $\\vec{u}$ s'écrit **de façon unique** $\\vec{u} = x\\,\\vec{i} + y\\,\\vec{j} + z\\,\\vec{k}$, avec $x$, $y$, $z$ réels : ce sont les **coordonnées** de $\\vec{u}$ dans cette base, notées $\\vec{u}\\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix}$.\n\nDans un repère $\\left(O\\,;\\,\\vec{i}, \\vec{j}, \\vec{k}\\right)$, les coordonnées d'un point $M$ sont celles de $\\overrightarrow{OM}$ ; on note $M(x\\,;\\,y\\,;\\,z)$.\n\nOn calcule coordonnée par coordonnée, comme dans le plan. Deux vecteurs sont égaux si et seulement si ils ont les mêmes coordonnées. Pour $A(x_A\\,;\\,y_A\\,;\\,z_A)$ et $B(x_B\\,;\\,y_B\\,;\\,z_B)$ : $\\overrightarrow{AB}\\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\\\ z_B - z_A \\end{pmatrix}$, et le milieu de $[AB]$ a pour coordonnées $\\left(\\dfrac{x_A + x_B}{2}\\,;\\,\\dfrac{y_A + y_B}{2}\\,;\\,\\dfrac{z_A + z_B}{2}\\right)$.",
+          "conditions": [
+            "$\\vec{i}$, $\\vec{j}$, $\\vec{k}$ ne sont pas coplanaires : sinon, certains vecteurs ne s'écrivent pas ainsi.",
+            "Les coordonnées dépendent de la base choisie, et de l'ordre de ses vecteurs."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-vecteurs-espace-058",
+          "type": "figure",
+          "titre": "Lire les coordonnées d'un point",
+          "capacites": [
+            "bo-m-vecteurs-12"
+          ],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/base-coordonnees.svg",
+              "alt": "Le cube ABCDEFGH avec le repère (A ; AB, AD, AE) : trois flèches bleues partent de A vers B, D et E, celle vers D en pointillé car l'arête [AD] est cachée. Le point I, milieu de l'arête [FG], est atteint par un trajet orange : de A à B (une fois AB), puis une demi-arête parallèle à [AD] jusqu'au milieu de [BC], puis une arête verticale (une fois AE) jusqu'à I. Ses coordonnées sont (1 ; 1/2 ; 1).",
+              "width": 400,
+              "height": 330
+            },
+            "caption": "Dans le repère (A ; AB, AD, AE), on atteint I, milieu de [FG], en avançant de 1 fois AB, de 1/2 fois AD, puis de 1 fois AE : I a pour coordonnées (1 ; 1/2 ; 1)."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-059",
+          "type": "exemple",
+          "titre": "Coordonnées dans le repère d'un cube",
+          "capacites": [
+            "bo-m-vecteurs-07",
+            "bo-m-vecteurs-12"
+          ],
+          "enonce": "On munit le cube $ABCDEFGH$ du repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$. On note $I$ le milieu de $[FG]$ et $J$ le milieu de $[GH]$.\n\n**1.** Lire les coordonnées des sommets du cube.\n\n**2.** Calculer les coordonnées de $I$, de $J$ et du vecteur $\\overrightarrow{IJ}$.\n\n**3.** En déduire que les droites $(IJ)$ et $(BD)$ sont parallèles.",
+          "etapes": [
+            {
+              "texte": "**1.** $\\overrightarrow{AA} = \\vec{0}$, donc $A(0\\,;\\,0\\,;\\,0)$. Comme $\\overrightarrow{AB} = 1\\,\\overrightarrow{AB} + 0\\,\\overrightarrow{AD} + 0\\,\\overrightarrow{AE}$, on a $B(1\\,;\\,0\\,;\\,0)$ ; de même $D(0\\,;\\,1\\,;\\,0)$ et $E(0\\,;\\,0\\,;\\,1)$."
+            },
+            {
+              "texte": "Les autres sommets s'atteignent par un trajet sur les arêtes : $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$, donc $C(1\\,;\\,1\\,;\\,0)$. De même $F(1\\,;\\,0\\,;\\,1)$, $H(0\\,;\\,1\\,;\\,1)$, et $G(1\\,;\\,1\\,;\\,1)$ car $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$.",
+              "pourquoi": "$\\overrightarrow{AF} = \\overrightarrow{AB} + \\overrightarrow{BF} = \\overrightarrow{AB} + \\overrightarrow{AE}$ et $\\overrightarrow{AH} = \\overrightarrow{AD} + \\overrightarrow{DH} = \\overrightarrow{AD} + \\overrightarrow{AE}$."
+            },
+            {
+              "texte": "**2.** Avec la formule du milieu, à partir de $F(1\\,;\\,0\\,;\\,1)$ et $G(1\\,;\\,1\\,;\\,1)$ : $I\\left(\\dfrac{1 + 1}{2}\\,;\\,\\dfrac{0 + 1}{2}\\,;\\,\\dfrac{1 + 1}{2}\\right)$, soit $I\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,1\\right)$."
+            },
+            {
+              "texte": "À partir de $G(1\\,;\\,1\\,;\\,1)$ et $H(0\\,;\\,1\\,;\\,1)$ : $J\\left(\\dfrac{1 + 0}{2}\\,;\\,\\dfrac{1 + 1}{2}\\,;\\,\\dfrac{1 + 1}{2}\\right)$, soit $J\\left(\\dfrac{1}{2}\\,;\\,1\\,;\\,1\\right)$. Arrivée moins départ : $\\overrightarrow{IJ}\\begin{pmatrix} \\frac{1}{2} - 1 \\\\ 1 - \\frac{1}{2} \\\\ 1 - 1 \\end{pmatrix}$, soit $\\overrightarrow{IJ}\\begin{pmatrix} -\\frac{1}{2} \\\\ \\frac{1}{2} \\\\ 0 \\end{pmatrix}$."
+            },
+            {
+              "texte": "**3.** $\\overrightarrow{BD}\\begin{pmatrix} 0 - 1 \\\\ 1 - 0 \\\\ 0 - 0 \\end{pmatrix}$, soit $\\overrightarrow{BD}\\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$. Chaque coordonnée de $\\overrightarrow{IJ}$ est la moitié de celle de $\\overrightarrow{BD}$ : $\\overrightarrow{IJ} = \\dfrac{1}{2}\\overrightarrow{BD}$.",
+              "pourquoi": "Deux vecteurs sont égaux quand leurs coordonnées le sont : on compare $\\overrightarrow{IJ}$ et $\\dfrac{1}{2}\\overrightarrow{BD}$ coordonnée par coordonnée."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{IJ} = \\dfrac{1}{2}\\overrightarrow{BD}$, donc ces vecteurs sont colinéaires, et les droites $(IJ)$ et $(BD)$ sont parallèles."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-060",
+          "type": "methode",
+          "titre": "Comment lire les coordonnées d'un point sur une figure ?",
+          "capacites": [
+            "bo-m-vecteurs-12"
+          ],
+          "etapes": [
+            "Repère l'origine $O$ du repère et les trois vecteurs de la base, dans l'ordre.",
+            "Trouve un trajet de $O$ jusqu'au point $M$ qui avance parallèlement à $\\vec{i}$, puis à $\\vec{j}$, puis à $\\vec{k}$ : sur un cube ou un pavé droit, le long des arêtes.",
+            "Compte combien de fois chaque vecteur de la base est parcouru : $\\dfrac{1}{2}$ pour une demi-arête, un signe moins pour un trajet à l'envers.",
+            "Écris $\\overrightarrow{OM} = x\\,\\vec{i} + y\\,\\vec{j} + z\\,\\vec{k}$ : les coordonnées de $M$ sont $(x\\,;\\,y\\,;\\,z)$, dans l'ordre de la base.",
+            "Pour un milieu ou pour un vecteur entre deux points connus, utilise plutôt les formules : moyenne des coordonnées, et « arrivée moins départ »."
+          ],
+          "exemple": "l-vecteurs-espace-059"
+        },
+        {
+          "id": "l-vecteurs-espace-061",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-12"
+          ],
+          "question": {
+            "enonce": "On munit le cube $ABCDEFGH$ du repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$. Quelles sont les coordonnées du centre $K$ de la face $BCGF$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$",
+                "$\\left(\\dfrac{1}{2}\\,;\\,1\\,;\\,\\dfrac{1}{2}\\right)$",
+                "$\\left(\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\,;\\,1\\right)$",
+                "$\\left(1\\,;\\,1\\,;\\,\\dfrac{1}{2}\\right)$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "C'est le centre de la face arrière $DCGH$, où la deuxième coordonnée vaut $1$.",
+                "C'est le centre de la face du dessus $EFGH$, où la troisième coordonnée vaut $1$.",
+                "C'est le milieu de l'arête $[CG]$, pas le centre de la face."
+              ]
+            },
+            "explication": "$K$ est le milieu de la diagonale $[BG]$ de la face, avec $B(1\\,;\\,0\\,;\\,0)$ et $G(1\\,;\\,1\\,;\\,1)$ : $K\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$. Sur la figure : une fois $\\overrightarrow{AB}$, puis une demi-arête vers l'arrière et une demi-arête vers le haut."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-062",
+          "type": "piege",
+          "titre": "Arrivée moins départ",
+          "faux": "Avec $B(1\\,;\\,0\\,;\\,0)$ et $D(0\\,;\\,1\\,;\\,0)$ : $\\overrightarrow{BD}\\begin{pmatrix} 1 \\\\ -1 \\\\ 0 \\end{pmatrix}$.",
+          "juste": "$\\overrightarrow{BD}\\begin{pmatrix} x_D - x_B \\\\ y_D - y_B \\\\ z_D - z_B \\end{pmatrix} = \\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$.",
+          "explication": "Les coordonnées d'un vecteur se calculent « arrivée moins départ » : on part de $B$ pour arriver en $D$. L'erreur donne $\\overrightarrow{DB}$, le vecteur opposé. Un parallélisme reste juste, mais un sens ou un coefficient $k$ devient faux."
+        },
+        {
+          "id": "l-vecteurs-espace-063",
+          "type": "retenir",
+          "texte": "Trois vecteurs non coplanaires forment une base : tout vecteur s'écrit de façon unique $x\\,\\vec{i} + y\\,\\vec{j} + z\\,\\vec{k}$. Dans un repère, $M(x\\,;\\,y\\,;\\,z)$ signifie $\\overrightarrow{OM} = x\\,\\vec{i} + y\\,\\vec{j} + z\\,\\vec{k}$. Pour $\\overrightarrow{AB}$ : arrivée moins départ."
+        }
+      ]
+    },
+    {
+      "notion": "n-vecteurs-espace-configurations",
+      "blocs": [
+        {
+          "id": "l-vecteurs-espace-064",
+          "type": "idee",
+          "texte": "Au bac, les questions de géométrie dans l'espace se ressemblent : « Montrer que ces points sont alignés », « que cette droite est parallèle à ce plan », « que ces quatre points sont coplanaires ». Le geste est toujours le même : traduire la question en une égalité de vecteurs, écrire tous les vecteurs avec les mêmes vecteurs de référence, puis comparer."
+        },
+        {
+          "id": "l-vecteurs-espace-065",
+          "type": "rappel",
+          "titre": "Rappel : traduire une question en vecteurs",
+          "texte": "Le tableau ci-dessous résume les notions précédentes ; $k$, $a$ et $b$ sont des réels.\n\n| Pour montrer que… | il suffit de montrer que… |\n|---|---|\n| $A$, $B$, $C$ sont alignés | $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$ |\n| $(AB)$ et $(DE)$ sont parallèles | $\\overrightarrow{DE} = k\\,\\overrightarrow{AB}$ |\n| $A$, $B$, $C$, $D$ sont coplanaires | $\\overrightarrow{AD} = a\\,\\overrightarrow{AB} + b\\,\\overrightarrow{AC}$ |\n| $(DE)$ est parallèle au plan $(ABC)$ | $\\overrightarrow{DE} = a\\,\\overrightarrow{AB} + b\\,\\overrightarrow{AC}$ |\n\nDans les deux dernières lignes, $A$, $B$, $C$ ne doivent pas être alignés : $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ dirigent alors le plan $(ABC)$.",
+          "lien": "n-vecteurs-espace-positions-relatives"
+        },
+        {
+          "id": "l-vecteurs-espace-066",
+          "type": "methode",
+          "titre": "Comment démontrer un alignement, un parallélisme ou une coplanarité ?",
+          "capacites": [
+            "bo-m-vecteurs-13"
+          ],
+          "etapes": [
+            "Traduis la question en une égalité de vecteurs à obtenir, grâce au tableau du rappel.",
+            "Choisis des vecteurs de référence : en général trois arêtes issues d'un même sommet, ou les vecteurs qui définissent les points de l'énoncé.",
+            "Écris chaque vecteur utile avec ces vecteurs de référence : relation de Chasles sur la figure, ou coordonnées dans un repère.",
+            "Compare les écritures pour trouver $k$, ou $a$ et $b$, puis vérifie l'égalité terme à terme.",
+            "Conclus en citant la propriété et ses conditions : vecteurs non nuls, points non alignés.",
+            "Pour le contraire (points non alignés, non coplanaires), montre qu'aucun réel $k$ ne convient, ou qu'un point n'est pas dans le plan des trois autres."
+          ],
+          "exemple": "l-vecteurs-espace-068"
+        },
+        {
+          "id": "l-vecteurs-espace-067",
+          "type": "figure",
+          "titre": "Le tétraèdre $ABCD$ et les milieux de quatre arêtes",
+          "capacites": [
+            "bo-m-vecteurs-13"
+          ],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/tetraedre-milieux.svg",
+              "alt": "Un tétraèdre ABCD dessiné en perspective : le sommet A en haut, la face BCD en bas ; l'arête cachée [BD] est en pointillé. Les points I, J, K, L sont les milieux des arêtes [AB], [BC], [CD] et [DA]. Le quadrilatère IJKL, coloré, est un parallélogramme : ses côtés [IJ] et [LK], en orange, sont parallèles à l'arête [AC], elle aussi en orange.",
+              "width": 420,
+              "height": 320
+            },
+            "caption": "I, J, K, L sont les milieux de [AB], [BC], [CD], [DA]. Les côtés [IJ] et [LK] sont parallèles à l'arête [AC], et deux fois plus courts."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-068",
+          "type": "exemple",
+          "titre": "Dans un tétraèdre : un parallélogramme, un parallélisme",
+          "capacites": [
+            "bo-m-vecteurs-13"
+          ],
+          "enonce": "Soit $ABCD$ un tétraèdre. On note $I$, $J$, $K$, $L$ les milieux respectifs des arêtes $[AB]$, $[BC]$, $[CD]$ et $[DA]$.\n\n**1.** Exprimer $\\overrightarrow{IJ}$ et $\\overrightarrow{LK}$ en fonction de $\\overrightarrow{AC}$.\n\n**2.** En déduire que $IJKL$ est un parallélogramme, puis que les points $I$, $J$, $K$, $L$ sont coplanaires.\n\n**3.** Montrer que la droite $(IJ)$ est strictement parallèle au plan $(ACD)$.",
+          "etapes": [
+            {
+              "texte": "**1.** Par la relation de Chasles, en passant par $B$ : $\\overrightarrow{IJ} = \\overrightarrow{IB} + \\overrightarrow{BJ} = \\dfrac{1}{2}\\overrightarrow{AB} + \\dfrac{1}{2}\\overrightarrow{BC}$.",
+              "pourquoi": "$I$ est le milieu de $[AB]$, donc $\\overrightarrow{IB} = \\dfrac{1}{2}\\overrightarrow{AB}$ ; $J$ est le milieu de $[BC]$, donc $\\overrightarrow{BJ} = \\dfrac{1}{2}\\overrightarrow{BC}$."
+            },
+            {
+              "texte": "On factorise : $\\overrightarrow{IJ} = \\dfrac{1}{2}\\left(\\overrightarrow{AB} + \\overrightarrow{BC}\\right) = \\dfrac{1}{2}\\overrightarrow{AC}$."
+            },
+            {
+              "texte": "De même, en passant par $D$ : $\\overrightarrow{LK} = \\overrightarrow{LD} + \\overrightarrow{DK} = \\dfrac{1}{2}\\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{DC} = \\dfrac{1}{2}\\left(\\overrightarrow{AD} + \\overrightarrow{DC}\\right) = \\dfrac{1}{2}\\overrightarrow{AC}$.",
+              "pourquoi": "$L$ est le milieu de $[DA]$, donc $\\overrightarrow{LD} = \\dfrac{1}{2}\\overrightarrow{AD}$ ; $K$ est le milieu de $[CD]$, donc $\\overrightarrow{DK} = \\dfrac{1}{2}\\overrightarrow{DC}$."
+            },
+            {
+              "texte": "**2.** Ainsi $\\overrightarrow{IJ} = \\overrightarrow{LK}$ : le quadrilatère $IJKL$ est un parallélogramme. Un parallélogramme est une figure plane, donc $I$, $J$, $K$, $L$ sont coplanaires.",
+              "pourquoi": "En vecteurs : dans le parallélogramme $IJKL$, $\\overrightarrow{JK} = \\overrightarrow{IL}$, donc $\\overrightarrow{IK} = \\overrightarrow{IJ} + \\overrightarrow{JK} = \\overrightarrow{IJ} + \\overrightarrow{IL}$. C'est la ligne « coplanaires » du tableau."
+            },
+            {
+              "texte": "**3.** $\\overrightarrow{IJ} = \\dfrac{1}{2}\\overrightarrow{AC}$, et $\\overrightarrow{AC}$ est dans la direction du plan $(ACD)$ : la droite $(IJ)$ est parallèle au plan $(ACD)$."
+            },
+            {
+              "texte": "Si $I$ était dans le plan $(ACD)$, la droite $(AI)$, qui est la droite $(AB)$, y serait contenue, car elle aurait deux points $A$ et $I$ dans ce plan. Alors $B$ serait dans $(ACD)$, ce qui est impossible : les sommets d'un tétraèdre ne sont pas coplanaires. Donc $I$ n'est pas dans $(ACD)$.",
+              "pourquoi": "Une droite qui a deux points distincts dans un plan y est entièrement contenue."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{IJ} = \\overrightarrow{LK} = \\dfrac{1}{2}\\overrightarrow{AC}$, donc $IJKL$ est un parallélogramme et $I$, $J$, $K$, $L$ sont coplanaires. La droite $(IJ)$ est parallèle au plan $(ACD)$ et n'y est pas contenue : elle lui est strictement parallèle."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-069",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-13"
+          ],
+          "question": {
+            "enonce": "Avec les notations de l'exemple (tétraèdre $ABCD$, $J$ et $K$ milieux de $[BC]$ et de $[CD]$), à quel vecteur $\\overrightarrow{JK}$ est-il égal ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\dfrac{1}{2}\\overrightarrow{BD}$",
+                "$\\dfrac{1}{2}\\overrightarrow{AC}$",
+                "$\\dfrac{1}{2}\\overrightarrow{DB}$",
+                "$2\\,\\overrightarrow{BD}$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "C'est $\\overrightarrow{IJ}$. Le segment $[JK]$ joint les milieux de deux côtés du triangle $BCD$ : il est parallèle au troisième côté, $[BD]$.",
+                "Le sens est inversé : on va de $J$, côté $B$, vers $K$, côté $D$, comme de $B$ vers $D$.",
+                "$[JK]$ est plus court que $[BD]$ : c'est la moitié, pas le double."
+              ]
+            },
+            "explication": "$\\overrightarrow{JK} = \\overrightarrow{JC} + \\overrightarrow{CK} = \\dfrac{1}{2}\\overrightarrow{BC} + \\dfrac{1}{2}\\overrightarrow{CD} = \\dfrac{1}{2}\\left(\\overrightarrow{BC} + \\overrightarrow{CD}\\right) = \\dfrac{1}{2}\\overrightarrow{BD}$."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-070",
+          "type": "figure",
+          "titre": "Le trapèze $ACJI$ dans le cube",
+          "capacites": [
+            "bo-m-vecteurs-13"
+          ],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/cube-trapeze.svg",
+              "alt": "Le cube ABCDEFGH, avec I milieu de l'arête [EF] et J milieu de l'arête [FG]. Le quadrilatère ACJI est coloré en bleu : son côté [AC], diagonale de la face du dessous, est en pointillé car caché. Le côté [IJ], sur la face du dessus, est parallèle à [AC] et deux fois plus court : ACJI est un trapèze.",
+              "width": 400,
+              "height": 330
+            },
+            "caption": "I est le milieu de [EF], J celui de [FG]. Le segment [IJ] est parallèle à la diagonale [AC] : les points A, C, J, I sont dans un même plan."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-071",
+          "type": "exemple",
+          "titre": "Dans un cube, avec des coordonnées",
+          "capacites": [
+            "bo-m-vecteurs-13"
+          ],
+          "enonce": "On munit le cube $ABCDEFGH$ du repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$. On note $I$ le milieu de $[EF]$ et $J$ le milieu de $[FG]$.\n\n**1.** Montrer que les droites $(IJ)$ et $(AC)$ sont parallèles.\n\n**2.** Les points $A$, $I$, $J$ sont-ils alignés ?\n\n**3.** En déduire que les points $A$, $C$, $J$, $I$ sont coplanaires.",
+          "etapes": [
+            {
+              "texte": "**1.** On lit $A(0\\,;\\,0\\,;\\,0)$, $C(1\\,;\\,1\\,;\\,0)$, $E(0\\,;\\,0\\,;\\,1)$, $F(1\\,;\\,0\\,;\\,1)$ et $G(1\\,;\\,1\\,;\\,1)$. Les milieux : $I\\left(\\dfrac{1}{2}\\,;\\,0\\,;\\,1\\right)$ et $J\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,1\\right)$.",
+              "pourquoi": "Pour $I$ : $\\left(\\dfrac{0 + 1}{2}\\,;\\,\\dfrac{0 + 0}{2}\\,;\\,\\dfrac{1 + 1}{2}\\right)$. Pour $J$ : $\\left(\\dfrac{1 + 1}{2}\\,;\\,\\dfrac{0 + 1}{2}\\,;\\,\\dfrac{1 + 1}{2}\\right)$."
+            },
+            {
+              "texte": "$\\overrightarrow{IJ}\\begin{pmatrix} 1 - \\frac{1}{2} \\\\ \\frac{1}{2} - 0 \\\\ 1 - 1 \\end{pmatrix}$, soit $\\overrightarrow{IJ}\\begin{pmatrix} \\frac{1}{2} \\\\ \\frac{1}{2} \\\\ 0 \\end{pmatrix}$, et $\\overrightarrow{AC}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$. Donc $\\overrightarrow{AC} = 2\\,\\overrightarrow{IJ}$ : les droites $(IJ)$ et $(AC)$ sont parallèles."
+            },
+            {
+              "texte": "**2.** $\\overrightarrow{AI}\\begin{pmatrix} \\frac{1}{2} \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{AJ}\\begin{pmatrix} 1 \\\\ \\frac{1}{2} \\\\ 1 \\end{pmatrix}$, avec $\\overrightarrow{AI} \\neq \\vec{0}$. Si l'on avait $\\overrightarrow{AJ} = k\\,\\overrightarrow{AI}$, la première coordonnée donnerait $1 = \\dfrac{1}{2}k$, soit $k = 2$, et la troisième $1 = 1 \\times k$, soit $k = 1$."
+            },
+            {
+              "texte": "Le réel $k$ ne peut pas valoir à la fois $2$ et $1$ : $\\overrightarrow{AI}$ et $\\overrightarrow{AJ}$ ne sont pas colinéaires, donc $A$, $I$, $J$ ne sont pas alignés.",
+              "pourquoi": "Deux vecteurs égaux ont leurs trois coordonnées égales. Une seule coordonnée qui ne suit pas le même $k$ suffit donc à conclure."
+            },
+            {
+              "texte": "**3.** $A$, $I$, $J$ ne sont pas alignés : ils définissent le plan $(AIJ)$. Par la relation de Chasles, $\\overrightarrow{IJ} = \\overrightarrow{IA} + \\overrightarrow{AJ} = -\\overrightarrow{AI} + \\overrightarrow{AJ}$, donc $\\overrightarrow{AC} = 2\\,\\overrightarrow{IJ} = -2\\,\\overrightarrow{AI} + 2\\,\\overrightarrow{AJ}$.",
+              "pourquoi": "Contrôle avec les coordonnées : $-2 \\times \\dfrac{1}{2} + 2 \\times 1 = 1$, $-2 \\times 0 + 2 \\times \\dfrac{1}{2} = 1$ et $-2 \\times 1 + 2 \\times 1 = 0$ : on retrouve bien $\\overrightarrow{AC}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{AC}$ est une combinaison linéaire de $\\overrightarrow{AI}$ et $\\overrightarrow{AJ}$, qui ne sont pas colinéaires. Donc les points $A$, $C$, $J$, $I$ sont coplanaires : ils forment le trapèze $ACJI$, de côtés parallèles $[IJ]$ et $[AC]$."
+            }
+          ]
+        },
+        {
+          "id": "l-vecteurs-espace-072",
+          "type": "verifie",
+          "capacites": [
+            "bo-m-vecteurs-13"
+          ],
+          "question": {
+            "enonce": "On munit le cube $ABCDEFGH$ du repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ et on note $M\\left(\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$ le centre du cube. Vrai ou faux : les points $E$, $M$ et $C$ sont alignés.",
+            "reponse": {
+              "type": "vrai-faux",
+              "valeur": true,
+              "justification": "$\\overrightarrow{EM}\\begin{pmatrix} \\frac{1}{2} \\\\ \\frac{1}{2} \\\\ -\\frac{1}{2} \\end{pmatrix}$ et $\\overrightarrow{EC}\\begin{pmatrix} 1 \\\\ 1 \\\\ -1 \\end{pmatrix}$, donc $\\overrightarrow{EC} = 2\\,\\overrightarrow{EM}$. Ces vecteurs sont colinéaires : $E$, $M$, $C$ sont alignés."
+            },
+            "explication": "$M$ est le milieu de la grande diagonale $[EC]$ du cube : les quatre grandes diagonales passent par le centre."
+          }
+        },
+        {
+          "id": "l-vecteurs-espace-073",
+          "type": "piege",
+          "titre": "Parallèle à une droite du plan ne veut pas dire contenue",
+          "faux": "$\\overrightarrow{IJ} = \\dfrac{1}{2}\\overrightarrow{AC}$ et la droite $(AC)$ est dans le plan $(ACD)$, donc la droite $(IJ)$ est contenue dans le plan $(ACD)$.",
+          "juste": "La droite $(IJ)$ est **parallèle** au plan $(ACD)$. Comme $I$ n'est pas dans ce plan, elle lui est strictement parallèle.",
+          "explication": "Un vecteur directeur dans la direction du plan dit seulement que la direction convient. Pour savoir si la droite est dans le plan, il faut en plus un point commun : vérifie toujours si un point de la droite appartient au plan."
+        },
+        {
+          "id": "l-vecteurs-espace-074",
+          "type": "retenir",
+          "texte": "Traduis la question en vecteurs : alignés si $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$, coplanaires si $\\overrightarrow{AD} = a\\,\\overrightarrow{AB} + b\\,\\overrightarrow{AC}$. Écris tous les vecteurs avec les mêmes vecteurs de référence, par Chasles ou en coordonnées, compare, puis conclus en citant la propriété."
+        }
+      ]
+    }
+  ]
+}
