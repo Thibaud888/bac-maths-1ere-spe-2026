@@ -1,0 +1,350 @@
+[
+  {
+    "id": "fl-derivation-convexite-derivee-exp-u",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-composee",
+    "capacites": ["bo-m-derivation-05", "bo-m-derivation-01"],
+    "enonce": "Quelle est la dérivée de $x \\mapsto e^{1 - x^2}$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$e^{1 - x^2}$",
+        "$-2x\\,e^{1 - x^2}$",
+        "$-2x\\,e^{-2x}$",
+        "$\\left(1 - x^2\\right)e^{1 - x^2}$"
+      ],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "Il manque le facteur $u'(x) = -2x$, la dérivée de l'exposant.",
+        null,
+        "L'exposant ne se dérive pas à l'intérieur : $e^u$ garde son exposant $u(x) = 1 - x^2$.",
+        "On multiplie par la dérivée de l'exposant, $-2x$, pas par l'exposant lui-même."
+      ]
+    },
+    "explication": "$(e^u)' = u'e^u$ avec $u(x) = 1 - x^2$ et $u'(x) = -2x$. Le réflexe : garder l'exposant, et multiplier par sa dérivée.",
+    "duree": 25
+  },
+  {
+    "id": "fl-derivation-convexite-derivee-racine-u",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-composee",
+    "capacites": ["bo-m-derivation-05"],
+    "enonce": "Quelle est la dérivée de $x \\mapsto \\sqrt{x^2 + 5}$ sur $\\mathbb{R}$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$\\dfrac{1}{2\\sqrt{x^2 + 5}}$",
+        "$\\dfrac{2x}{\\sqrt{x^2 + 5}}$",
+        "$\\dfrac{x}{\\sqrt{x^2 + 5}}$",
+        "$\\dfrac{x}{x^2 + 5}$"
+      ],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "Il manque le facteur $u'(x) = 2x$, la dérivée de l'intérieur.",
+        "Le $2$ du dénominateur a disparu : $\\dfrac{2x}{2\\sqrt{x^2 + 5}} = \\dfrac{x}{\\sqrt{x^2 + 5}}$.",
+        null,
+        "La racine carrée reste au dénominateur : la formule est $\\dfrac{u'}{2\\sqrt{u}}$."
+      ]
+    },
+    "explication": "$\\left(\\sqrt{u}\\right)' = \\dfrac{u'}{2\\sqrt{u}}$, avec $u(x) = x^2 + 5 > 0$ et $u'(x) = 2x$ : $\\dfrac{2x}{2\\sqrt{x^2 + 5}} = \\dfrac{x}{\\sqrt{x^2 + 5}}$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-derivation-convexite-ordre-composition",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-composee",
+    "capacites": ["bo-m-derivation-01"],
+    "enonce": "On pose $u(x) = x + 1$ et $v(x) = x^2$. Calcule $(u \\circ v)(2)$.",
+    "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+    "explication": "$(u \\circ v)(2) = u\\big(v(2)\\big) = u(4) = 5$. La fonction écrite à droite, $v$, agit en premier ; dans l'autre ordre, $(v \\circ u)(2) = v(3) = 9$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-derivation-convexite-signe-derivee",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-etude-fonction",
+    "capacites": ["bo-m-derivation-06"],
+    "enonce": "Une fonction $f$ est dérivable sur $\\mathbb{R}$, avec $f'(x) = (2 - x)e^{x}$. Que peut-on dire de $f$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$f$ admet un minimum en $2$.",
+        "$f$ est croissante sur $\\mathbb{R}$, car $e^x > 0$.",
+        "$f$ est décroissante sur $]-\\infty\\,;\\,2]$.",
+        "$f$ admet un maximum en $2$."
+      ],
+      "bonne": 3,
+      "pourquoiFaux": [
+        "$2 - x$ passe de $+$ à $-$ en $2$ : $f$ croît, puis décroît. C'est un maximum.",
+        "$e^x > 0$ dit seulement que $f'(x)$ a le signe de $2 - x$, qui change en $2$.",
+        "Pour $x < 2$, $2 - x > 0$ : $f'(x) > 0$, et $f$ croît.",
+        null
+      ]
+    },
+    "explication": "$e^x > 0$, donc $f'(x)$ a le signe de $2 - x$ : positif avant $2$, négatif après. $f$ croît puis décroît : maximum en $2$. Le réflexe : écarter les facteurs toujours positifs.",
+    "duree": 30
+  },
+  {
+    "id": "fl-derivation-convexite-limite-croissances",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-etude-fonction",
+    "capacites": ["bo-m-derivation-06", "bo-m-limites-fonctions-05"],
+    "enonce": "Quelle est la limite de $x \\mapsto x^3e^{-x}$ en $+\\infty$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$+\\infty$", "$0$", "$1$", "Il n'y en a pas : c'est une forme indéterminée."],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "$e^{-x} = \\dfrac{1}{e^x}$, et $e^x$ l'emporte sur toute puissance de $x$ : le quotient $\\dfrac{x^3}{e^x}$ tend vers $0$.",
+        null,
+        "Rien ne donne $1$ : c'est une limite de croissances comparées.",
+        "« $+\\infty \\times 0$ » est indéterminée, mais les croissances comparées lèvent l'indétermination."
+      ]
+    },
+    "explication": "$x^3e^{-x} = \\dfrac{x^3}{e^x}$, et, par croissances comparées, $\\lim\\limits_{x \\to +\\infty} \\dfrac{x^n}{e^x} = 0$. C'est la limite type aux bornes d'une étude de fonction.",
+    "duree": 20
+  },
+  {
+    "id": "fl-derivation-convexite-maximum-valeur",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-etude-fonction",
+    "capacites": ["bo-m-derivation-06"],
+    "enonce": "D'après son tableau de variations, une fonction $f$ croît de $f(0) = 1$ à $f(3) = 7$, puis décroît jusqu'à $f(5) = 4$. Quel est le maximum de $f$ sur $[0\\,;\\,5]$ ?",
+    "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0 },
+    "explication": "Le maximum est une valeur de $f$ : $f(3) = 7$. Il est atteint en $x = 3$, son abscisse. Lis bien la question : « quel est le maximum » demande la valeur, « où est-il atteint » demande l'abscisse.",
+    "duree": 20
+  },
+  {
+    "id": "fl-derivation-convexite-f-seconde-polynome",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-derivee-seconde",
+    "capacites": ["bo-m-derivation-02"],
+    "enonce": "Soit $f(x) = x^3 - 5x^2 + 2x$. Calcule $f''(1)$.",
+    "reponse": { "type": "numerique", "valeur": -4, "tolerance": 0 },
+    "explication": "$f'(x) = 3x^2 - 10x + 2$, puis $f''(x) = 6x - 10$, d'où $f''(1) = -4$. On dérive deux fois, sans s'arrêter à $f'$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-derivation-convexite-f-seconde-exp",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-derivee-seconde",
+    "capacites": ["bo-m-derivation-02"],
+    "enonce": "Quelle est la dérivée seconde de $x \\mapsto e^{-2x}$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$-2e^{-2x}$", "$-4e^{-2x}$", "$4e^{-2x}$", "$e^{-2x}$"],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "C'est la dérivée première : il faut dériver une seconde fois.",
+        "$(-2) \\times (-2) = 4$ : les deux signes moins se compensent.",
+        null,
+        "Chaque dérivation multiplie par $-2$ : $e^{-2x}$ n'est pas sa propre dérivée."
+      ]
+    },
+    "explication": "Chaque dérivation multiplie par $-2$ : $f'(x) = -2e^{-2x}$, puis $f''(x) = (-2)^2e^{-2x} = 4e^{-2x}$. Elle est positive : la fonction est convexe.",
+    "duree": 20
+  },
+  {
+    "id": "fl-derivation-convexite-signe-f-seconde",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-derivee-seconde",
+    "capacites": ["bo-m-derivation-02"],
+    "enonce": "Si $f''(x) \\leqslant 0$ pour tout $x$ d'un intervalle $I$, alors…",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$f$ est décroissante sur $I$.",
+        "$f'$ est décroissante sur $I$.",
+        "$f'$ est négative sur $I$.",
+        "$f$ est négative sur $I$."
+      ],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "Le signe de $f''$ renseigne sur $f'$, pas sur $f$.",
+        null,
+        "Une fonction décroissante peut rester positive : $f''$ donne les variations de $f'$, pas son signe.",
+        "Le signe de $f''$ ne dit rien du signe de $f$."
+      ]
+    },
+    "explication": "$f''$ est la dérivée de $f'$ : son signe donne les variations de $f'$. Chaque dérivée renseigne sur la fonction juste au-dessus d'elle.",
+    "duree": 20
+  },
+  {
+    "id": "fl-derivation-convexite-definition-cordes",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-convexe",
+    "capacites": ["bo-m-derivation-03"],
+    "enonce": "Une fonction $f$ est convexe sur $I$. Entre deux points $A$ et $B$ de sa courbe d'abscisses dans $I$, la courbe est…",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "en dessous de la corde $[AB]$.",
+        "au-dessus de la corde $[AB]$.",
+        "confondue avec la corde $[AB]$.",
+        "au-dessus ou en dessous, selon que $f$ croît ou décroît."
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "Au-dessus des cordes, c'est la définition d'une fonction concave, en dôme.",
+        "Seule une fonction affine a sa courbe confondue avec ses cordes.",
+        "La convexité ne dépend pas du sens de variation : la courbe est sous ses cordes dans les deux cas."
+      ]
+    },
+    "explication": "Convexe, c'est en bol : la courbe est sous ses cordes, et au-dessus de ses tangentes. Exemple : la fonction carré, sous la corde qui joint $(-1\\,;\\,1)$ à $(2\\,;\\,4)$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-derivation-convexite-signe-convexite",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-convexe",
+    "capacites": ["bo-m-derivation-03"],
+    "enonce": "Une fonction $f$ est deux fois dérivable sur $\\mathbb{R}$, avec $f''(x) = 2 - x$. Sur $[2\\,;\\,+\\infty[$, la fonction $f$ est…",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["convexe.", "décroissante.", "croissante.", "concave."],
+      "bonne": 3,
+      "pourquoiFaux": [
+        "Pour $x > 2$, $2 - x < 0$ : $f''$ est négative, donc $f$ est concave.",
+        "Le signe de $f''$ ne donne pas les variations de $f$ : il faudrait le signe de $f'$.",
+        "Le signe de $f''$ ne donne pas les variations de $f$ : il faudrait le signe de $f'$.",
+        null
+      ]
+    },
+    "explication": "$f'' \\leqslant 0$ sur $[2\\,;\\,+\\infty[$, donc $f$ y est concave. Le réflexe : $f''$ positive, convexe (en bol) ; $f''$ négative, concave (en dôme).",
+    "duree": 20
+  },
+  {
+    "id": "fl-derivation-convexite-inverse-negatifs",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-convexe",
+    "capacites": ["bo-m-derivation-03"],
+    "enonce": "Vrai ou faux ? La fonction inverse $x \\mapsto \\dfrac{1}{x}$ est convexe sur $]-\\infty\\,;\\,0[$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "Sa dérivée seconde $\\dfrac{2}{x^3}$ est négative pour $x < 0$ : la fonction inverse est concave sur $]-\\infty\\,;\\,0[$, et convexe sur $]0\\,;\\,+\\infty[$."
+    },
+    "explication": "$\\left(\\dfrac{1}{x}\\right)' = -\\dfrac{1}{x^2}$ et $\\left(\\dfrac{1}{x}\\right)'' = \\dfrac{2}{x^3}$, du signe de $x$. La convexité se dit intervalle par intervalle.",
+    "duree": 30
+  },
+  {
+    "id": "fl-derivation-convexite-exp-tangente",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-tangentes-inegalites",
+    "capacites": ["bo-m-derivation-07"],
+    "enonce": "Quelle inégalité découle de la convexité de l'exponentielle et de sa tangente au point d'abscisse $0$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$e^x \\leqslant x + 1$ pour tout réel $x$",
+        "$e^x \\geqslant x + 1$ pour tout réel $x$",
+        "$e^x \\geqslant x + 1$ seulement pour $x \\geqslant 0$",
+        "$e^x \\geqslant e \\times x + 1$ pour tout réel $x$"
+      ],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "L'exponentielle est convexe : sa courbe est au-dessus de ses tangentes, pas en dessous.",
+        null,
+        "$(e^x)'' = e^x > 0$ sur tout $\\mathbb{R}$ : l'inégalité vaut pour tout réel $x$, des deux côtés de $0$.",
+        "La tangente en $0$ a pour coefficient directeur $e^0 = 1$, et non $e$ : c'est la droite $y = x + 1$."
+      ]
+    },
+    "explication": "Tangente en $0$ : $y = e^0(x - 0) + e^0 = x + 1$. L'exponentielle étant convexe sur $\\mathbb{R}$, $e^x \\geqslant x + 1$ pour tout réel $x$, avec égalité en $0$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-derivation-convexite-majorer-concave",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-tangentes-inegalites",
+    "capacites": ["bo-m-derivation-07"],
+    "enonce": "Une fonction $f$ vérifie $f''(x) \\leqslant 0$ pour tout réel $x$, et sa tangente au point d'abscisse $2$ a pour équation $y = -x + 5$. Quel majorant de $f(3)$ cette tangente fournit-elle ?",
+    "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+    "explication": "$f$ est concave sur $\\mathbb{R}$ : sa courbe est en dessous de ses tangentes, donc $f(x) \\leqslant -x + 5$ pour tout réel $x$. En $x = 3$ : $f(3) \\leqslant -3 + 5 = 2$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-derivation-convexite-annulation-sans-changement",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-inflexion",
+    "capacites": ["bo-m-derivation-04"],
+    "enonce": "Une fonction $f$ est deux fois dérivable sur $\\mathbb{R}$, avec $f''(x) = (x - 1)^2$. Combien sa courbe a-t-elle de points d'inflexion ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["Un, d'abscisse $1$", "Deux", "Aucun", "On ne peut pas savoir."],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "$f''$ s'annule en $1$ sans changer de signe : un carré reste positif des deux côtés.",
+        "$f''$ ne s'annule qu'en $1$, et sans y changer de signe.",
+        null,
+        "Le signe de $f''$ suffit : les points d'inflexion sont exactement les réels où $f''$ s'annule en changeant de signe."
+      ]
+    },
+    "explication": "$(x - 1)^2 \\geqslant 0$ : $f$ est convexe sur $\\mathbb{R}$, sans changement de convexité. $f''(a) = 0$ ne suffit pas : il faut un changement de signe.",
+    "duree": 20
+  },
+  {
+    "id": "fl-derivation-convexite-extremum-f-prime",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-inflexion",
+    "capacites": ["bo-m-derivation-09", "bo-m-derivation-04"],
+    "enonce": "Sur la courbe de la **dérivée** $f'$, on lit que $f'$ croît sur $[0\\,;\\,3]$, puis décroît sur $[3\\,;\\,6]$. Que représente le réel $3$ pour la courbe de $f$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "L'abscisse du maximum de $f$.",
+        "L'abscisse d'un point d'inflexion.",
+        "Un réel où la tangente à la courbe de $f$ est horizontale.",
+        "Rien de particulier."
+      ],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "Le maximum de $f$ se lit là où $f'$ s'annule en passant de $+$ à $-$, pas là où $f'$ est maximale.",
+        null,
+        "La tangente est horizontale là où $f' = 0$ ; ici, on sait seulement que $f'$ atteint un maximum en $3$.",
+        "$f$ passe de convexe ($f'$ croissante) à concave ($f'$ décroissante) : c'est un changement de convexité."
+      ]
+    },
+    "explication": "$f'$ croissante, puis décroissante : $f$ est convexe, puis concave, et change de convexité en $3$, qui n'est pas une borne. Un extremum local de $f'$ signale un point d'inflexion.",
+    "duree": 30
+  },
+  {
+    "id": "fl-derivation-convexite-inflexion-borne",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-inflexion",
+    "capacites": ["bo-m-derivation-04", "bo-m-derivation-09"],
+    "enonce": "Vrai ou faux ? Sur $[-2\\,;\\,4]$, $f'$ est décroissante sur $[-2\\,;\\,1]$, puis croissante sur $[1\\,;\\,4]$, et son maximum sur $[-2\\,;\\,4]$ est atteint en $4$. Alors la courbe de $f$ a un point d'inflexion d'abscisse $4$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "$4$ est une borne : la courbe ne peut pas y changer de convexité. Le point d'inflexion est d'abscisse $1$, là où $f'$ passe de décroissante à croissante."
+    },
+    "explication": "Un point d'inflexion se lit en un extremum local de $f'$ à l'intérieur de l'intervalle, là où $f'$ change de sens de variation : ici le minimum en $1$. Un maximum atteint en une borne ne compte pas.",
+    "duree": 30
+  },
+  {
+    "id": "fl-derivation-convexite-allure-croissante-concave",
+    "chapitre": "derivation-convexite",
+    "notion": "n-derivation-convexite-inflexion",
+    "capacites": ["bo-m-derivation-08"],
+    "enonce": "D'après ses tableaux, une fonction $f$ est croissante et concave sur $[0\\,;\\,4]$. Comment sa courbe monte-t-elle sur cet intervalle ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "De plus en plus vite, en bol.",
+        "En ligne droite.",
+        "De moins en moins vite, en dôme.",
+        "Elle monte, puis redescend."
+      ],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "En bol, la pente $f'$ augmente : c'est le cas d'une fonction convexe, pas concave.",
+        "Une droite correspond à $f'' = 0$ ; pour une fonction concave, la pente diminue.",
+        null,
+        "$f$ est croissante sur tout l'intervalle : elle ne redescend pas."
+      ]
+    },
+    "explication": "Concave : $f'$ est décroissante, donc la pente diminue, tout en restant positive puisque $f$ croît. La courbe monte de moins en moins vite, comme celle de $\\sqrt{x}$.",
+    "duree": 20
+  }
+]
