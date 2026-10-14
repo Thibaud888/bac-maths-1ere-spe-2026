@@ -695,7 +695,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     courbe coupe la droite y = x — souhait de l'auteur du cours de Continuité (notion
     « limite d'une suite », figure fixe `suite-escalier.svg` en attendant) ; à faire quand les
     figures animées existeront (rejoint l'item de Récurrence et suites ci-dessus).
-  - [x] Dérivation et convexité : le cours — fait le 2026-10-14 : 6 notions (4 ★★★ mesurées
+  - [x] Dérivation et convexité : le cours — fait le 2026-10-14 (PR #125) : 6 notions (4 ★★★ mesurées
     sur les annales : étude complète 77 %, convexité 68 %, point d'inflexion 63 %, dérivée
     seconde 60 % ; composée ★★ à 49 % gardée malgré trois notions qui en dépendent),
     74 blocs, 9 cartes de mémo, 5 figures. Relecture PASS au tour 2, test élève : bloquant
@@ -716,7 +716,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     tant que la courbe est convexe ou concave, et la traverse au point d'inflexion — souhait
     de l'auteur du cours de Dérivation et convexité ; à faire quand les figures animées
     existeront.
-  - [x] Dérivation et convexité : les exercices — fait le 2026-10-14, même session que le
+  - [x] Dérivation et convexité : les exercices — fait le 2026-10-14 (PR #125), même session que le
     cours : 37 exercices (16 Comprendre, 16 S'entraîner, 5 Approfondir), 18 questions
     éclair, 5 sujets type bac adaptés d'annales (29 points, dont les deux premières figures
     de type bac du site). Relecture PASS au tour 2 ; test élève CLAIR (16/16 en Comprendre).
@@ -726,6 +726,17 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     inflexion-borne ; x-033 q4, l'indice 2 parle d'un tableau de signes alors que la q3 est
     un QCM. Et un exercice de marche S'entraîner où l'on lit la convexité sur la courbe de f'
     (demandé par tb-001 A.2, aucun exercice ne l'entraîne) — il faut une figure.
+  - [ ] Vecteurs, droites et plans de l'espace : le cours — chapitre 6 dans l'ordre de
+    l'année, premier chapitre de géométrie dans l'espace (`vecteurs-espace`) :
+    `/tle-chapitre maths vecteurs-espace cours`, dans une session neuve. Découpage proposé
+    dans `chantiers/terminale/chapitres-maths.md` § 6 (vecteurs et colinéarité, positions
+    relatives de droites et plans, bases et coordonnées, coplanarité). Premières figures en
+    perspective du site : prévoir le temps des figures SVG. Leçon de la session du
+    2026-10-14 : lancer relecteur et élève-testeur **en parallèle** au tour 1, puis corriger
+    les deux rapports en une passe (un cycle de correction gagné par partie) ; un chapitre
+    complet a coûté 65 $ et touché deux fois la limite d'usage des 5 h.
+  - [ ] Vecteurs, droites et plans de l'espace : les exercices — `/tle-chapitre maths
+    vecteurs-espace exercices`, après le cours, dans une autre session.
   - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
     (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
     `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source
