@@ -695,6 +695,15 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     courbe coupe la droite y = x — souhait de l'auteur du cours de Continuité (notion
     « limite d'une suite », figure fixe `suite-escalier.svg` en attendant) ; à faire quand les
     figures animées existeront (rejoint l'item de Récurrence et suites ci-dessus).
+  - [ ] Dérivation et convexité : le cours — chapitre 5 dans l'ordre de l'année
+    (`derivation-convexite`) : `/tle-chapitre maths derivation-convexite cours`, dans une
+    session neuve. Découpage proposé dans `chantiers/terminale/chapitres-maths.md` § 5
+    (dérivée d'une composée, dérivée seconde, convexité, point d'inflexion). Toujours sans
+    logarithme (chapitre 7). Les cours précédents admettent « dérivable donc continue » et
+    renvoient à la dérivée de g(ax + b) de première : la dérivée d'une composée générale
+    arrive ici.
+  - [ ] Dérivation et convexité : les exercices — `/tle-chapitre maths derivation-convexite
+    exercices`, après le cours (même session si Thibaud le demande, comme pour Continuité).
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours
