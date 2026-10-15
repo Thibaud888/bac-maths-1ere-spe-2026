@@ -1,0 +1,773 @@
+[
+  {
+    "id": "tb-vecteurs-espace-001",
+    "chapitre": "vecteurs-espace",
+    "notions": [
+      "n-vecteurs-espace-positions-relatives",
+      "n-vecteurs-espace-plans",
+      "n-vecteurs-espace-droites",
+      "n-vecteurs-espace-combinaisons",
+      "n-vecteurs-espace-bases-reperes"
+    ],
+    "capacites": [
+      "bo-m-vecteurs-02",
+      "bo-m-vecteurs-09",
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-05",
+      "bo-m-vecteurs-06",
+      "bo-m-vecteurs-07",
+      "bo-m-vecteurs-12",
+      "bo-m-vecteurs-10",
+      "bo-m-logique-11"
+    ],
+    "titre": "Dans un cube : parallélisme, coplanarité, droites non coplanaires",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2021-amerique-nord",
+      "adaptation": "Exercice 3 : cube ABCDEFGH, points I, J, K milieux de [EF], [BC] et [AE], question « Les droites (AI) et (KH) sont-elles parallèles ? », coordonnées de I et J et coplanarité des vecteurs IJ, AE et AC conservées. Retirées, à remettre quand les chapitres seront écrits : question 3 (parallélisme de deux droites données par des représentations paramétriques) et question 4 (droite parallèle à un plan donné par une équation cartésienne), chapitre « Représentations paramétriques et équations cartésiennes » ; question 5 (projeté orthogonal d'un point sur un plan), chapitre « Orthogonalité et distances dans l'espace ». Ajoutées : décomposition de AI et KH sur la base (AB, AD, AE) avant la question de parallélisme, droite (IJ) strictement parallèle au plan (ACG), points A, I, K, H non coplanaires et position relative des droites (AI) et (KH). Figure redessinée pour le site. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "On considère un cube $ABCDEFGH$ : sa face du dessous est $ABCD$, sa face du dessus $EFGH$, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. Le point $I$ est le milieu du segment $[EF]$, le point $J$ est le milieu du segment $[BC]$ et le point $K$ est le milieu du segment $[AE]$.\n\n**Partie A** : on travaille sans repère.\n\n**Partie B** : on se place dans le repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.\n\nLes questions s'enchaînent, mais chacune peut être traitée en admettant les résultats des précédentes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/type-bac-cube-ijk.svg",
+        "alt": "Un cube ABCDEFGH dessiné en perspective : la face du dessous est ABCD, la face du dessus EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D ; les trois arêtes qui partent de D, cachées, sont en pointillé. Trois points sont marqués en bleu : I au milieu de l'arête [EF], J au milieu de l'arête [BC] et K au milieu de l'arête [AE].",
+        "width": 340,
+        "height": 300
+      },
+      "caption": "Le cube ABCDEFGH : I, J et K sont les milieux des arêtes [EF], [BC] et [AE]."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Exprimer les vecteurs $\\overrightarrow{AI}$ et $\\overrightarrow{KH}$ comme combinaisons linéaires des vecteurs $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$.",
+        "points": 1,
+        "revoir": "l-vecteurs-espace-009",
+        "indices": [
+          "Pars de $A$ et va jusqu'à $I$ en passant par $E$, puis utilise que $I$ est le milieu de $[EF]$. De même, va de $K$ à $H$ en passant par $E$.",
+          "La face $ABFE$ est un carré : quel vecteur imposé est égal à $\\overrightarrow{EF}$ ? Dans le carré $ADHE$, quel vecteur imposé est égal à $\\overrightarrow{EH}$ ?"
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{AI} = \\overrightarrow{AE} + \\overrightarrow{EI}$ (relation de Chasles), $\\overrightarrow{EI} = \\dfrac{1}{2}\\overrightarrow{EF}$ ($I$ milieu de $[EF]$) et $\\overrightarrow{EF} = \\overrightarrow{AB}$ (face carrée $ABFE$), d'où $\\overrightarrow{AI} = \\dfrac{1}{2}\\overrightarrow{AB} + \\overrightarrow{AE}$ : 0,5 pt.\n- $\\overrightarrow{KH} = \\overrightarrow{KE} + \\overrightarrow{EH}$, $\\overrightarrow{KE} = \\dfrac{1}{2}\\overrightarrow{AE}$ et $\\overrightarrow{EH} = \\overrightarrow{AD}$, d'où $\\overrightarrow{KH} = \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}$ : 0,5 pt.",
+        "solution": "Par la relation de Chasles, en passant par $E$ : $\\overrightarrow{AI} = \\overrightarrow{AE} + \\overrightarrow{EI}$. Comme $I$ est le milieu de $[EF]$, $\\overrightarrow{EI} = \\dfrac{1}{2}\\overrightarrow{EF}$ ; et la face $ABFE$ est un carré, donc $\\overrightarrow{EF} = \\overrightarrow{AB}$. Ainsi :\n\n$$\\overrightarrow{AI} = \\dfrac{1}{2}\\overrightarrow{AB} + \\overrightarrow{AE}.$$\n\nDe même, en passant par $E$ : $\\overrightarrow{KH} = \\overrightarrow{KE} + \\overrightarrow{EH}$. Comme $K$ est le milieu de $[AE]$, $\\overrightarrow{KE} = \\dfrac{1}{2}\\overrightarrow{AE}$ ; et la face $ADHE$ est un carré, donc $\\overrightarrow{EH} = \\overrightarrow{AD}$. Ainsi :\n\n$$\\overrightarrow{KH} = \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}.$$",
+        "erreurFrequente": "Écrire $\\overrightarrow{KE} = \\dfrac{1}{2}\\overrightarrow{EA}$ : de $K$ à $E$, on monte, dans le sens de $\\overrightarrow{AE}$."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Les droites $(AI)$ et $(KH)$ sont-elles parallèles ? Justifier la réponse.",
+        "points": 0.75,
+        "revoir": "l-vecteurs-espace-057",
+        "indices": [
+          "Deux droites sont parallèles quand leurs vecteurs directeurs sont colinéaires. Suppose $\\overrightarrow{KH} = k\\,\\overrightarrow{AI}$ pour un réel $k$, et écris les deux membres avec les résultats de la question A.1.",
+          "$\\left(\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ est une base : la décomposition d'un vecteur sur elle est unique. Compare le coefficient de $\\overrightarrow{AD}$ dans les deux membres."
+        ],
+        "attenduCorrecteur": "- Traduction : les droites sont parallèles si et seulement si $\\overrightarrow{AI}$ et $\\overrightarrow{KH}$ sont colinéaires ; supposer $\\overrightarrow{KH} = k\\,\\overrightarrow{AI}$, avec $\\overrightarrow{AI} \\neq \\vec{0}$ : 0,25 pt.\n- Comparaison des coefficients, justifiée par l'unicité de la décomposition sur la base $\\left(\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ : coefficient de $\\overrightarrow{AD}$, $1 = 0$, contradiction : 0,25 pt.\n- Conclusion : les vecteurs ne sont pas colinéaires, les droites $(AI)$ et $(KH)$ ne sont pas parallèles : 0,25 pt.",
+        "solution": "Les droites $(AI)$ et $(KH)$ sont parallèles si et seulement si leurs vecteurs directeurs $\\overrightarrow{AI}$ et $\\overrightarrow{KH}$ sont colinéaires. Comme $\\overrightarrow{AI} \\neq \\vec{0}$, cela revient à l'existence d'un réel $k$ tel que $\\overrightarrow{KH} = k\\,\\overrightarrow{AI}$.\n\nSupposons qu'un tel réel existe. D'après la question A.1 :\n\n$$0 \\times \\overrightarrow{AB} + 1 \\times \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE} = \\dfrac{k}{2}\\overrightarrow{AB} + 0 \\times \\overrightarrow{AD} + k\\,\\overrightarrow{AE}.$$\n\nLes vecteurs $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$ ne sont pas coplanaires ($E$ n'est pas dans le plan $(ABD)$ de la face du dessous) : ils forment une base, et la décomposition d'un vecteur sur cette base est unique. Les coefficients de $\\overrightarrow{AD}$ doivent donc être égaux : $1 = 0$, ce qui est absurde.\n\nAinsi $\\overrightarrow{AI}$ et $\\overrightarrow{KH}$ ne sont pas colinéaires : **les droites $(AI)$ et $(KH)$ ne sont pas parallèles.**",
+        "erreurFrequente": "Répondre « non » parce que les segments $[AI]$ et $[KH]$ ne semblent pas parallèles sur le dessin : en perspective, un parallélisme ne se lit pas, il se démontre."
+      },
+      {
+        "id": "q3",
+        "label": "B.1.",
+        "enonce": "Dans le repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ :",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Donner les coordonnées des points $I$, $J$, $K$ et $H$.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-060",
+            "indices": [
+              "Les coordonnées d'un point $M$ sont les coefficients de $\\overrightarrow{AM}$ sur $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$, dans cet ordre : pour $I$, la question A.1 les donne.",
+              "Pour un milieu, tu peux aussi faire la moyenne des coordonnées des extrémités : lis d'abord celles de $A$, $B$, $C$, $E$ et $F$."
+            ],
+            "attenduCorrecteur": "- $I\\left(\\dfrac{1}{2}\\,;\\,0\\,;\\,1\\right)$ et $K\\left(0\\,;\\,0\\,;\\,\\dfrac{1}{2}\\right)$ : 0,25 pt.\n- $J\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,0\\right)$ et $H(0\\,;\\,1\\,;\\,1)$ : 0,25 pt.",
+            "solution": "Dans ce repère, $A(0\\,;\\,0\\,;\\,0)$, $B(1\\,;\\,0\\,;\\,0)$, $C(1\\,;\\,1\\,;\\,0)$, $E(0\\,;\\,0\\,;\\,1)$ et $F(1\\,;\\,0\\,;\\,1)$.\n\n- D'après la question A.1, $\\overrightarrow{AI} = \\dfrac{1}{2}\\overrightarrow{AB} + 0\\,\\overrightarrow{AD} + 1\\,\\overrightarrow{AE}$, donc $I\\left(\\dfrac{1}{2}\\,;\\,0\\,;\\,1\\right)$ ; c'est bien le milieu de $[EF]$.\n- $J$ est le milieu de $[BC]$ : $J\\left(\\dfrac{1 + 1}{2}\\,;\\,\\dfrac{0 + 1}{2}\\,;\\,\\dfrac{0 + 0}{2}\\right)$, soit $J\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,0\\right)$.\n- $K$ est le milieu de $[AE]$ : $K\\left(0\\,;\\,0\\,;\\,\\dfrac{1}{2}\\right)$.\n- $\\overrightarrow{AH} = \\overrightarrow{AD} + \\overrightarrow{DH} = \\overrightarrow{AD} + \\overrightarrow{AE}$, donc $H(0\\,;\\,1\\,;\\,1)$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Montrer que les vecteurs $\\overrightarrow{IJ}$, $\\overrightarrow{AE}$ et $\\overrightarrow{AC}$ sont coplanaires.",
+            "points": 0.75,
+            "revoir": "l-vecteurs-espace-034",
+            "indices": [
+              "Si $\\overrightarrow{AC}$ et $\\overrightarrow{AE}$ ne sont pas colinéaires, les trois vecteurs sont coplanaires dès que $\\overrightarrow{IJ}$ s'écrit $a\\,\\overrightarrow{AC} + b\\,\\overrightarrow{AE}$. Commence par calculer les coordonnées de $\\overrightarrow{IJ}$, $\\overrightarrow{AE}$ et $\\overrightarrow{AC}$.",
+              "Écris les coordonnées de $a\\,\\overrightarrow{AC} + b\\,\\overrightarrow{AE}$ : chacune ne fait intervenir que $a$, ou que $b$, ce qui te donne les deux réels à essayer."
+            ],
+            "attenduCorrecteur": "- Coordonnées : $\\overrightarrow{IJ}\\begin{pmatrix} \\frac{1}{2} \\\\ \\frac{1}{2} \\\\ -1 \\end{pmatrix}$, $\\overrightarrow{AE}\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$, $\\overrightarrow{AC}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ : 0,25 pt.\n- $\\overrightarrow{AC}$ et $\\overrightarrow{AE}$ non colinéaires, justifié : 0,25 pt.\n- Égalité $\\overrightarrow{IJ} = \\dfrac{1}{2}\\overrightarrow{AC} - \\overrightarrow{AE}$ vérifiée coordonnée par coordonnée, et conclusion : 0,25 pt.",
+            "solution": "Arrivée moins départ : $\\overrightarrow{IJ}\\begin{pmatrix} 1 - \\frac{1}{2} \\\\ \\frac{1}{2} - 0 \\\\ 0 - 1 \\end{pmatrix}$, soit $\\overrightarrow{IJ}\\begin{pmatrix} \\frac{1}{2} \\\\ \\frac{1}{2} \\\\ -1 \\end{pmatrix}$ ; de plus $\\overrightarrow{AE}\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$.\n\nLes vecteurs $\\overrightarrow{AC}$ et $\\overrightarrow{AE}$ ne sont pas colinéaires : si l'on avait $\\overrightarrow{AC} = k\\,\\overrightarrow{AE}$, la première coordonnée donnerait $1 = k \\times 0 = 0$.\n\nPour deux réels $a$ et $b$, le vecteur $a\\,\\overrightarrow{AC} + b\\,\\overrightarrow{AE}$ a pour coordonnées $\\begin{pmatrix} a \\\\ a \\\\ b \\end{pmatrix}$. Avec $a = \\dfrac{1}{2}$ et $b = -1$, on obtient $\\begin{pmatrix} \\frac{1}{2} \\\\ \\frac{1}{2} \\\\ -1 \\end{pmatrix}$ : ce sont les coordonnées de $\\overrightarrow{IJ}$. Donc\n\n$$\\overrightarrow{IJ} = \\dfrac{1}{2}\\overrightarrow{AC} - \\overrightarrow{AE}.$$\n\n$\\overrightarrow{IJ}$ est une combinaison linéaire des vecteurs non colinéaires $\\overrightarrow{AC}$ et $\\overrightarrow{AE}$ : **les vecteurs $\\overrightarrow{IJ}$, $\\overrightarrow{AE}$ et $\\overrightarrow{AC}$ sont coplanaires.**"
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "B.2.",
+        "enonce": "En déduire que la droite $(IJ)$ est parallèle au plan $(ACG)$. Est-elle contenue dans ce plan ? Justifier.",
+        "points": 1,
+        "revoir": "l-vecteurs-espace-044",
+        "indices": [
+          "Une droite est parallèle à un plan quand l'un de ses vecteurs directeurs est dans la direction du plan. Cherche deux vecteurs non colinéaires qui dirigent le plan $(ACG)$ : pense à $\\overrightarrow{CG}$.",
+          "Pour savoir si la droite est contenue dans le plan, regarde si son point $I$ appartient au plan $(ACG)$ : suppose $\\overrightarrow{AI} = a\\,\\overrightarrow{AC} + b\\,\\overrightarrow{AE}$ et compare les deux premières coordonnées."
+        ],
+        "attenduCorrecteur": "- Le plan $(ACG)$ est dirigé par $\\overrightarrow{AC}$ et $\\overrightarrow{CG} = \\overrightarrow{AE}$, non colinéaires : 0,25 pt.\n- $\\overrightarrow{IJ} = \\dfrac{1}{2}\\overrightarrow{AC} - \\overrightarrow{AE}$ est dans la direction de ce plan, donc $(IJ)$ est parallèle au plan $(ACG)$ : 0,25 pt.\n- $I \\notin (ACG)$ : $\\overrightarrow{AI} = a\\,\\overrightarrow{AC} + b\\,\\overrightarrow{AE}$ donnerait $a = \\dfrac{1}{2}$ et $a = 0$ : 0,25 pt.\n- Conclusion : $(IJ)$ n'est pas contenue dans le plan, elle lui est strictement parallèle : 0,25 pt.",
+        "solution": "Les points $A$, $C$, $G$ ne sont pas alignés : ils définissent le plan $(ACG)$, dont la direction contient $\\overrightarrow{AC}$ et $\\overrightarrow{CG}$. Les faces $BCGF$ et $ABFE$ sont des carrés, donc $\\overrightarrow{CG} = \\overrightarrow{BF} = \\overrightarrow{AE}$. Les vecteurs $\\overrightarrow{AC}$ et $\\overrightarrow{AE}$, non colinéaires (question B.1.b), dirigent donc le plan $(ACG)$.\n\nD'après la question B.1.b, $\\overrightarrow{IJ} = \\dfrac{1}{2}\\overrightarrow{AC} - \\overrightarrow{AE}$ : ce vecteur directeur de $(IJ)$ est dans la direction du plan $(ACG)$. Donc **la droite $(IJ)$ est parallèle au plan $(ACG)$.**\n\nReste à savoir si elle y est contenue, c'est-à-dire si son point $I$ appartient au plan. Si c'était le cas, on aurait $\\overrightarrow{AI} = a\\,\\overrightarrow{AC} + b\\,\\overrightarrow{AE}$ pour deux réels $a$ et $b$, soit $\\begin{pmatrix} \\frac{1}{2} \\\\ 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} a \\\\ a \\\\ b \\end{pmatrix}$. La première coordonnée donne $a = \\dfrac{1}{2}$, la deuxième $a = 0$ : c'est impossible.\n\nDonc $I$ n'est pas dans le plan $(ACG)$ : **la droite $(IJ)$ n'est pas contenue dans ce plan, elle lui est strictement parallèle.**",
+        "erreurFrequente": "S'arrêter à « parallèle » : le vecteur directeur dit seulement que la direction convient. C'est un point de la droite, ici $I$, qui décide entre « contenue » et « strictement parallèle »."
+      },
+      {
+        "id": "q5",
+        "label": "B.3.",
+        "enonce": "Les droites $(AI)$ et $(KH)$, de nouveau.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Démontrer que les points $A$, $I$, $K$ et $H$ ne sont pas coplanaires.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-059",
+            "indices": [
+              "Vérifie d'abord que $\\overrightarrow{AI}$ et $\\overrightarrow{AK}$ ne sont pas colinéaires, puis suppose que $\\overrightarrow{AH} = a\\,\\overrightarrow{AI} + b\\,\\overrightarrow{AK}$ pour deux réels $a$ et $b$.",
+              "Écris les coordonnées de $a\\,\\overrightarrow{AI} + b\\,\\overrightarrow{AK}$ et regarde la deuxième : que vaut-elle, quels que soient $a$ et $b$ ?"
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AI}$ et $\\overrightarrow{AK}$ non colinéaires, justifié : 0,25 pt.\n- Supposition $\\overrightarrow{AH} = a\\,\\overrightarrow{AI} + b\\,\\overrightarrow{AK}$ ; deuxième coordonnée : $1 = 0$, contradiction, et conclusion : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{AI}\\begin{pmatrix} \\frac{1}{2} \\\\ 0 \\\\ 1 \\end{pmatrix}$, $\\overrightarrow{AK}\\begin{pmatrix} 0 \\\\ 0 \\\\ \\frac{1}{2} \\end{pmatrix}$ et $\\overrightarrow{AH}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$.\n\n$\\overrightarrow{AI}$ et $\\overrightarrow{AK}$ ne sont pas colinéaires : si l'on avait $\\overrightarrow{AK} = k\\,\\overrightarrow{AI}$, la première coordonnée donnerait $0 = \\dfrac{1}{2}k$, donc $k = 0$, et alors $\\overrightarrow{AK} = \\vec{0}$, ce qui est faux.\n\nSupposons les points $A$, $I$, $K$, $H$ coplanaires. Alors $\\overrightarrow{AI}$, $\\overrightarrow{AK}$, $\\overrightarrow{AH}$ sont coplanaires et, comme $\\overrightarrow{AI}$ et $\\overrightarrow{AK}$ ne sont pas colinéaires, il existe deux réels $a$ et $b$ tels que $\\overrightarrow{AH} = a\\,\\overrightarrow{AI} + b\\,\\overrightarrow{AK}$. Or la deuxième coordonnée de $a\\,\\overrightarrow{AI} + b\\,\\overrightarrow{AK}$ est $a \\times 0 + b \\times 0 = 0$, quels que soient $a$ et $b$, alors que celle de $\\overrightarrow{AH}$ vaut $1$. C'est absurde.\n\n**Les points $A$, $I$, $K$ et $H$ ne sont pas coplanaires.**"
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "En déduire la position relative des droites $(AI)$ et $(KH)$.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-040",
+            "indices": [
+              "Deux droites $(AB)$ et $(CD)$ sont coplanaires si et seulement si les points $A$, $B$, $C$, $D$ le sont : applique ce critère aux droites $(AI)$ et $(KH)$."
+            ],
+            "attenduCorrecteur": "- Critère cité : $(AI)$ et $(KH)$ sont coplanaires si et seulement si $A$, $I$, $K$, $H$ le sont : 0,25 pt.\n- Conclusion : les droites sont non coplanaires, ni sécantes ni parallèles : 0,25 pt.",
+            "solution": "Les droites $(AI)$ et $(KH)$ sont coplanaires si et seulement si les points $A$, $I$, $K$, $H$ le sont. D'après la question précédente, ce n'est pas le cas : **les droites $(AI)$ et $(KH)$ sont non coplanaires.** Elles n'ont aucun point commun et ne sont pas parallèles, ce qui confirme la réponse à la question A.2."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-vecteurs-espace-002",
+    "chapitre": "vecteurs-espace",
+    "notions": [
+      "n-vecteurs-espace-configurations",
+      "n-vecteurs-espace-droites",
+      "n-vecteurs-espace-bases-reperes",
+      "n-vecteurs-espace-positions-relatives"
+    ],
+    "capacites": [
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-04",
+      "bo-m-vecteurs-07",
+      "bo-m-vecteurs-12",
+      "bo-m-vecteurs-10",
+      "bo-m-vecteurs-13"
+    ],
+    "titre": "Un parallélogramme dans un cube, selon la position d'un point",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2021-etrangers-j2",
+      "adaptation": "Exercice 3 : cube ABCDEFGH, I centre de la face ADHE, J point de [CG] tel que CJ = a CG, droite (d) passant par I et parallèle à (FJ), points K et L où (d) coupe (AE) et (DH), coordonnées de F, I et J, question « Montrer que le point de coordonnées (0 ; 0 ; 2/3) est le point K », parallélogramme FJLK pour a = 2/3 puis dans le cas général (coordonnées de K et L admises) conservés. Le point K est identifié par colinéarité, sans représentation paramétrique ; les coordonnées de L sont données à vérifier au lieu d'être calculées. Retirées, à remettre quand les chapitres seront écrits : représentation paramétrique de (d) et calcul de L par résolution, chapitre « Représentations paramétriques et équations cartésiennes » ; losange et carré, pour a = 2/3 et dans le cas général (longueurs, orthogonalité), chapitre « Orthogonalité et distances dans l'espace ». Ajoutées : valeur de a pour laquelle (d) est la droite (DE), droite (KL) strictement parallèle au plan (BCG). Figure redessinée pour le site. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "$ABCDEFGH$ est un cube : sa face du dessous est $ABCD$, sa face du dessus $EFGH$, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. Le point $I$ est le centre de la face $ADHE$, et $J$ est un point du segment $[CG]$ : il existe donc un réel $a \\in [0\\,;\\,1]$ tel que $\\overrightarrow{CJ} = a\\,\\overrightarrow{CG}$.\n\nOn note $(d)$ la droite passant par $I$ et parallèle à la droite $(FJ)$. On note $K$ et $L$ les points d'intersection de la droite $(d)$ avec les droites $(AE)$ et $(DH)$ respectivement.\n\nOn se place dans le repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.\n\n**Partie A** : dans cette partie, $a = \\dfrac{2}{3}$ ; c'est le cas de la figure.\n\n**Partie B** : cas général ; $a$ est un réel quelconque de $[0\\,;\\,1]$, et on admet que $K\\left(0\\,;\\,0\\,;\\,1 - \\dfrac{a}{2}\\right)$ et $L\\left(0\\,;\\,1\\,;\\,\\dfrac{a}{2}\\right)$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/type-bac-parallelogramme-fjlk.svg",
+        "alt": "Le cube ABCDEFGH en perspective, avec E, F, G, H au-dessus de A, B, C, D ; les arêtes qui partent de D, cachées, sont en pointillé. Le point J est sur l'arête [CG], aux deux tiers de sa hauteur en partant de C. Le point I est le centre de la face de gauche ADHE. La droite (d), en orange, passe par I ; elle coupe l'arête [AE] en K, aux deux tiers de sa hauteur, et l'arête [DH] en L, au tiers de sa hauteur. Le quadrilatère FJLK est coloré en bleu ; ses côtés [JL] et [LK], cachés, sont en pointillé.",
+        "width": 340,
+        "height": 245
+      },
+      "caption": "Partie A (a = 2/3) : la droite (d), en orange, passe par le centre I de la face ADHE et coupe (AE) en K et (DH) en L ; le quadrilatère FJLK est en bleu."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Donner les coordonnées des points $F$, $I$ et $J$.",
+        "points": 0.75,
+        "revoir": "l-vecteurs-espace-059",
+        "indices": [
+          "Le centre d'un carré est le milieu de ses diagonales : $I$ est le milieu de $[AH]$. Pour $J$, traduis $\\overrightarrow{CJ} = \\dfrac{2}{3}\\overrightarrow{CG}$ en coordonnées.",
+          "Avec $C(1\\,;\\,1\\,;\\,0)$ et les coordonnées de $\\overrightarrow{CG}$, écris $\\overrightarrow{CJ}$ « arrivée moins départ » avec les coordonnées inconnues de $J$, puis identifie coordonnée par coordonnée."
+        ],
+        "attenduCorrecteur": "- $F(1\\,;\\,0\\,;\\,1)$ : 0,25 pt.\n- $I$ milieu de la diagonale $[AH]$ du carré $ADHE$, d'où $I\\left(0\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$ : 0,25 pt.\n- $\\overrightarrow{CJ} = \\dfrac{2}{3}\\overrightarrow{CG}$ traduit en coordonnées, d'où $J\\left(1\\,;\\,1\\,;\\,\\dfrac{2}{3}\\right)$ : 0,25 pt.",
+        "solution": "$\\overrightarrow{AF} = \\overrightarrow{AB} + \\overrightarrow{BF} = \\overrightarrow{AB} + \\overrightarrow{AE}$, donc $F(1\\,;\\,0\\,;\\,1)$.\n\nLe centre $I$ du carré $ADHE$ est le milieu de sa diagonale $[AH]$. Avec $A(0\\,;\\,0\\,;\\,0)$ et $H(0\\,;\\,1\\,;\\,1)$ : $I\\left(0\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$.\n\nAvec $C(1\\,;\\,1\\,;\\,0)$ et $G(1\\,;\\,1\\,;\\,1)$ : $\\overrightarrow{CG}\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$, donc $\\overrightarrow{CJ}\\begin{pmatrix} 0 \\\\ 0 \\\\ \\frac{2}{3} \\end{pmatrix}$. Si $J(x\\,;\\,y\\,;\\,z)$, alors $x - 1 = 0$, $y - 1 = 0$ et $z - 0 = \\dfrac{2}{3}$ : $J\\left(1\\,;\\,1\\,;\\,\\dfrac{2}{3}\\right)$."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Montrer que le point de coordonnées $\\left(0\\,;\\,0\\,;\\,\\dfrac{2}{3}\\right)$ est le point $K$.",
+        "points": 1,
+        "revoir": "l-vecteurs-espace-024",
+        "indices": [
+          "Note $K'$ ce point. $K'$ est sur $(d)$ si $\\overrightarrow{IK'}$ est colinéaire au vecteur directeur $\\overrightarrow{FJ}$ de $(d)$ ; il est sur $(AE)$ si $\\overrightarrow{AK'}$ est colinéaire à $\\overrightarrow{AE}$.",
+          "Calcule $\\overrightarrow{FJ}$ et $\\overrightarrow{IK'}$, puis cherche le réel $k$ à partir de la deuxième coordonnée. Pour finir, vérifie que $(d)$ et $(AE)$ ne sont pas parallèles : elles n'ont alors qu'un seul point commun."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{FJ}\\begin{pmatrix} 0 \\\\ 1 \\\\ -\\frac{1}{3} \\end{pmatrix}$ et $\\overrightarrow{IK'} = -\\dfrac{1}{2}\\overrightarrow{FJ}$, vérifié sur les trois coordonnées, donc $K' \\in (d)$ : 0,5 pt.\n- $\\overrightarrow{AK'} = \\dfrac{2}{3}\\overrightarrow{AE}$, donc $K' \\in (AE)$ : 0,25 pt.\n- $(d)$ et $(AE)$ non parallèles ($\\overrightarrow{FJ}$ et $\\overrightarrow{AE}$ non colinéaires), donc un seul point commun : $K' = K$ : 0,25 pt.",
+        "solution": "Notons $K'\\left(0\\,;\\,0\\,;\\,\\dfrac{2}{3}\\right)$.\n\n**$K'$ est sur $(d)$.** La droite $(d)$ passe par $I$ et a pour vecteur directeur $\\overrightarrow{FJ}\\begin{pmatrix} 1 - 1 \\\\ 1 - 0 \\\\ \\frac{2}{3} - 1 \\end{pmatrix}$, soit $\\overrightarrow{FJ}\\begin{pmatrix} 0 \\\\ 1 \\\\ -\\frac{1}{3} \\end{pmatrix}$. Or $\\overrightarrow{IK'}\\begin{pmatrix} 0 \\\\ -\\frac{1}{2} \\\\ \\frac{2}{3} - \\frac{1}{2} \\end{pmatrix}$, soit $\\overrightarrow{IK'}\\begin{pmatrix} 0 \\\\ -\\frac{1}{2} \\\\ \\frac{1}{6} \\end{pmatrix}$. La deuxième coordonnée suggère $k = -\\dfrac{1}{2}$, et l'on vérifie : $-\\dfrac{1}{2} \\times 0 = 0$ et $-\\dfrac{1}{2} \\times \\left(-\\dfrac{1}{3}\\right) = \\dfrac{1}{6}$. Donc $\\overrightarrow{IK'} = -\\dfrac{1}{2}\\overrightarrow{FJ}$ : ces vecteurs sont colinéaires, et $K'$ appartient à $(d)$.\n\n**$K'$ est sur $(AE)$.** $\\overrightarrow{AK'}\\begin{pmatrix} 0 \\\\ 0 \\\\ \\frac{2}{3} \\end{pmatrix} = \\dfrac{2}{3}\\overrightarrow{AE}$ : $K'$ appartient à $(AE)$.\n\n**Un seul point commun.** $\\overrightarrow{FJ}$ et $\\overrightarrow{AE}\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$ ne sont pas colinéaires : $\\overrightarrow{FJ} = k\\,\\overrightarrow{AE}$ donnerait, sur la deuxième coordonnée, $1 = 0$. Les droites $(d)$ et $(AE)$ ne sont donc pas parallèles : elles ont au plus un point commun.\n\n$K'$ est un point commun à $(d)$ et à $(AE)$ : c'est leur point d'intersection. **Le point de coordonnées $\\left(0\\,;\\,0\\,;\\,\\dfrac{2}{3}\\right)$ est le point $K$.**",
+        "erreurFrequente": "Ne vérifier que l'appartenance à $(AE)$ : beaucoup de points de $(AE)$ ne sont pas sur $(d)$. Le point $K$ doit être sur les deux droites."
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "Vérifier que le point $L$ a pour coordonnées $\\left(0\\,;\\,1\\,;\\,\\dfrac{1}{3}\\right)$.",
+        "points": 0.75,
+        "revoir": "l-vecteurs-espace-024",
+        "indices": [
+          "Même démarche qu'à la question A.2 : note $L'\\left(0\\,;\\,1\\,;\\,\\dfrac{1}{3}\\right)$, compare $\\overrightarrow{IL'}$ à $\\overrightarrow{FJ}$, puis $\\overrightarrow{DL'}$ à $\\overrightarrow{DH}$, et vérifie que $(d)$ et $(DH)$ ne sont pas parallèles."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{IL'} = \\dfrac{1}{2}\\overrightarrow{FJ}$, donc $L' \\in (d)$ : 0,25 pt.\n- $\\overrightarrow{DL'} = \\dfrac{1}{3}\\overrightarrow{DH}$, donc $L' \\in (DH)$ : 0,25 pt.\n- $(d)$ et $(DH)$ non parallèles, donc $L' = L$ : 0,25 pt.",
+        "solution": "Notons $L'\\left(0\\,;\\,1\\,;\\,\\dfrac{1}{3}\\right)$. On a $\\overrightarrow{IL'}\\begin{pmatrix} 0 \\\\ \\frac{1}{2} \\\\ \\frac{1}{3} - \\frac{1}{2} \\end{pmatrix}$, soit $\\overrightarrow{IL'}\\begin{pmatrix} 0 \\\\ \\frac{1}{2} \\\\ -\\frac{1}{6} \\end{pmatrix}$, donc $\\overrightarrow{IL'} = \\dfrac{1}{2}\\overrightarrow{FJ}$ : $L'$ appartient à $(d)$.\n\nAvec $D(0\\,;\\,1\\,;\\,0)$ et $H(0\\,;\\,1\\,;\\,1)$ : $\\overrightarrow{DL'}\\begin{pmatrix} 0 \\\\ 0 \\\\ \\frac{1}{3} \\end{pmatrix} = \\dfrac{1}{3}\\overrightarrow{DH}$ : $L'$ appartient à $(DH)$.\n\nEnfin, $\\overrightarrow{DH}\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$ n'est pas colinéaire à $\\overrightarrow{FJ}$ : $\\overrightarrow{FJ} = k\\,\\overrightarrow{DH}$ donnerait $1 = 0$ sur la deuxième coordonnée. Les droites $(d)$ et $(DH)$ ne sont pas parallèles et ont un seul point commun, qui est donc $L'$ : **$L$ a pour coordonnées $\\left(0\\,;\\,1\\,;\\,\\dfrac{1}{3}\\right)$.**"
+      },
+      {
+        "id": "q4",
+        "label": "A.4.",
+        "enonce": "Démontrer que le quadrilatère $FJLK$ est un parallélogramme.",
+        "points": 0.5,
+        "revoir": "l-vecteurs-espace-003",
+        "indices": [
+          "$FJLK$ est un parallélogramme quand $\\overrightarrow{FJ} = \\overrightarrow{KL}$ : attention à l'ordre des lettres. Calcule $\\overrightarrow{KL}$ et compare."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{KL}\\begin{pmatrix} 0 \\\\ 1 \\\\ -\\frac{1}{3} \\end{pmatrix} = \\overrightarrow{FJ}$ : 0,25 pt.\n- Conclusion justifiée : $\\overrightarrow{FJ} = \\overrightarrow{KL}$, donc $FJLK$ est un parallélogramme : 0,25 pt.",
+        "solution": "$\\overrightarrow{KL}\\begin{pmatrix} 0 - 0 \\\\ 1 - 0 \\\\ \\frac{1}{3} - \\frac{2}{3} \\end{pmatrix}$, soit $\\overrightarrow{KL}\\begin{pmatrix} 0 \\\\ 1 \\\\ -\\frac{1}{3} \\end{pmatrix}$ : ce sont les coordonnées de $\\overrightarrow{FJ}$. Donc $\\overrightarrow{FJ} = \\overrightarrow{KL}$, et **le quadrilatère $FJLK$ est un parallélogramme.**\n\nIl n'est pas aplati : $\\overrightarrow{FK}\\begin{pmatrix} -1 \\\\ 0 \\\\ -\\frac{1}{3} \\end{pmatrix}$ n'est pas colinéaire à $\\overrightarrow{FJ}$, dont la première coordonnée est nulle ; $K$ n'est donc pas sur la droite $(FJ)$.",
+        "erreurFrequente": "Comparer $\\overrightarrow{FJ}$ et $\\overrightarrow{LK}$ : dans $FJLK$, les côtés opposés $[FJ]$ et $[KL]$ se lisent dans le même sens, de $F$ vers $J$ et de $K$ vers $L$."
+      },
+      {
+        "id": "q5",
+        "label": "B.1.",
+        "enonce": "Déterminer les coordonnées du point $J$ en fonction de $a$.",
+        "points": 0.25,
+        "revoir": "l-vecteurs-espace-057",
+        "indices": [
+          "Reprends le calcul de la question A.1 en remplaçant $\\dfrac{2}{3}$ par $a$."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{CJ} = a\\,\\overrightarrow{CG}$ traduit en coordonnées, d'où $J(1\\,;\\,1\\,;\\,a)$ : 0,25 pt.",
+        "solution": "$\\overrightarrow{CJ} = a\\,\\overrightarrow{CG}$ a pour coordonnées $\\begin{pmatrix} 0 \\\\ 0 \\\\ a \\end{pmatrix}$. Avec $C(1\\,;\\,1\\,;\\,0)$, on obtient **$J(1\\,;\\,1\\,;\\,a)$**."
+      },
+      {
+        "id": "q6",
+        "label": "B.2.",
+        "enonce": "Montrer que, pour tout réel $a$ de $[0\\,;\\,1]$, le quadrilatère $FJLK$ est un parallélogramme.",
+        "points": 0.75,
+        "revoir": "l-vecteurs-espace-003",
+        "indices": [
+          "Comme à la question A.4, compare $\\overrightarrow{FJ}$ et $\\overrightarrow{KL}$, cette fois avec $a$ dans les coordonnées.",
+          "Pour la troisième coordonnée de $\\overrightarrow{KL}$, calcule $\\dfrac{a}{2} - \\left(1 - \\dfrac{a}{2}\\right)$ en faisant attention aux parenthèses."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{FJ}\\begin{pmatrix} 0 \\\\ 1 \\\\ a - 1 \\end{pmatrix}$ : 0,25 pt.\n- $\\overrightarrow{KL}\\begin{pmatrix} 0 \\\\ 1 \\\\ a - 1 \\end{pmatrix}$, calcul de la troisième coordonnée détaillé : 0,25 pt.\n- Conclusion : $\\overrightarrow{FJ} = \\overrightarrow{KL}$ pour tout $a$, donc $FJLK$ est un parallélogramme : 0,25 pt.",
+        "solution": "Avec $F(1\\,;\\,0\\,;\\,1)$ et $J(1\\,;\\,1\\,;\\,a)$ : $\\overrightarrow{FJ}\\begin{pmatrix} 0 \\\\ 1 \\\\ a - 1 \\end{pmatrix}$.\n\nAvec $K\\left(0\\,;\\,0\\,;\\,1 - \\dfrac{a}{2}\\right)$ et $L\\left(0\\,;\\,1\\,;\\,\\dfrac{a}{2}\\right)$, la troisième coordonnée de $\\overrightarrow{KL}$ est\n\n$$\\dfrac{a}{2} - \\left(1 - \\dfrac{a}{2}\\right) = \\dfrac{a}{2} - 1 + \\dfrac{a}{2} = a - 1,$$\n\ndonc $\\overrightarrow{KL}\\begin{pmatrix} 0 \\\\ 1 \\\\ a - 1 \\end{pmatrix}$.\n\nAinsi $\\overrightarrow{FJ} = \\overrightarrow{KL}$ pour tout réel $a$ de $[0\\,;\\,1]$ : **le quadrilatère $FJLK$ est toujours un parallélogramme.** Il n'est jamais aplati : la première coordonnée de $\\overrightarrow{FK}$ vaut $-1$, celle de $\\overrightarrow{FJ}$ vaut $0$."
+      },
+      {
+        "id": "q7",
+        "label": "B.3.",
+        "enonce": "Déterminer la valeur de $a$ pour laquelle la droite $(d)$ est la droite $(DE)$. Que deviennent alors les points $J$, $K$ et $L$ ?",
+        "points": 1,
+        "revoir": "l-vecteurs-espace-024",
+        "indices": [
+          "$I$, centre du carré $ADHE$, est aussi le milieu de sa diagonale $[DE]$ : il est donc sur $(DE)$. Les droites $(d)$ et $(DE)$, qui ont le point $I$ en commun, sont confondues dès qu'elles sont parallèles.",
+          "Cherche $a$ et un réel $k$ tels que $\\overrightarrow{FJ} = k\\,\\overrightarrow{DE}$ : la deuxième coordonnée donne $k$ ; remplace-le dans la troisième pour obtenir $a$."
+        ],
+        "attenduCorrecteur": "- $I$ milieu de $[DE]$, donc $I \\in (DE)$ ; $(d) = (DE)$ si et seulement si $\\overrightarrow{FJ}$ et $\\overrightarrow{DE}$ sont colinéaires : 0,25 pt.\n- $\\overrightarrow{DE}\\begin{pmatrix} 0 \\\\ -1 \\\\ 1 \\end{pmatrix}$ ; $\\overrightarrow{FJ} = k\\,\\overrightarrow{DE}$ donne $k = -1$ puis $a - 1 = -1$, soit $a = 0$, qui est bien dans $[0\\,;\\,1]$ : 0,5 pt.\n- Interprétation : $J = C$, $K = E$, $L = D$ : 0,25 pt.",
+        "solution": "Le centre $I$ du carré $ADHE$ est le milieu de ses deux diagonales, en particulier de $[DE]$ : $I$ appartient à la droite $(DE)$. La droite $(d)$ passe aussi par $I$. Deux droites qui ont un point commun sont confondues si et seulement si elles sont parallèles : $(d) = (DE)$ si et seulement si $\\overrightarrow{FJ}$ et $\\overrightarrow{DE}$ sont colinéaires.\n\nAvec $D(0\\,;\\,1\\,;\\,0)$ et $E(0\\,;\\,0\\,;\\,1)$ : $\\overrightarrow{DE}\\begin{pmatrix} 0 \\\\ -1 \\\\ 1 \\end{pmatrix}$, et $\\overrightarrow{FJ}\\begin{pmatrix} 0 \\\\ 1 \\\\ a - 1 \\end{pmatrix}$. Cherchons un réel $k$ tel que $\\overrightarrow{FJ} = k\\,\\overrightarrow{DE}$ :\n\n- première coordonnée : $0 = 0$, toujours vrai ;\n- deuxième coordonnée : $1 = -k$, donc $k = -1$ ;\n- troisième coordonnée : $a - 1 = k$, soit $a - 1 = -1$, donc $a = 0$.\n\nRéciproquement, pour $a = 0$, $\\overrightarrow{FJ}\\begin{pmatrix} 0 \\\\ 1 \\\\ -1 \\end{pmatrix} = -\\overrightarrow{DE}$. **La droite $(d)$ est la droite $(DE)$ pour $a = 0$, et pour cette seule valeur.**\n\nAlors $\\overrightarrow{CJ} = \\vec{0}$, donc $J = C$ ; $K(0\\,;\\,0\\,;\\,1)$ est le point $E$, et $L(0\\,;\\,1\\,;\\,0)$ est le point $D$. Le parallélogramme $FJLK$ devient $FCDE$.",
+        "erreurFrequente": "Oublier de justifier que $I$ est sur $(DE)$ : deux droites parallèles ne sont confondues que si elles ont un point commun."
+      },
+      {
+        "id": "q8",
+        "label": "B.4.",
+        "enonce": "Démontrer que, pour tout réel $a$ de $[0\\,;\\,1]$, la droite $(KL)$ est strictement parallèle au plan $(BCG)$.",
+        "points": 1,
+        "revoir": "l-vecteurs-espace-047",
+        "indices": [
+          "D'après la question B.2, $\\overrightarrow{KL} = \\overrightarrow{FJ}$. Où sont situés les points $F$ et $J$ par rapport au plan $(BCG)$ ?",
+          "Pour « strictement », montre que $K$ n'est pas dans le plan $(BCG)$, dirigé par $\\overrightarrow{BC}$ et $\\overrightarrow{BF}$ : compare la première coordonnée de $\\alpha\\,\\overrightarrow{BC} + \\beta\\,\\overrightarrow{BF}$ à celle de $\\overrightarrow{BK}$."
+        ],
+        "attenduCorrecteur": "- $F$ et $J$ sont dans le plan $(BCG)$ (face $BCGF$), donc $\\overrightarrow{KL} = \\overrightarrow{FJ}$ est dans la direction de ce plan : $(KL)$ est parallèle au plan $(BCG)$ : 0,5 pt.\n- $K \\notin (BCG)$ : toute combinaison $\\alpha\\,\\overrightarrow{BC} + \\beta\\,\\overrightarrow{BF}$ a une première coordonnée nulle, alors que celle de $\\overrightarrow{BK}$ vaut $-1$ : 0,25 pt.\n- Conclusion : $(KL)$ est strictement parallèle au plan $(BCG)$, quel que soit $a$ : 0,25 pt.",
+        "solution": "Les points $B$, $C$, $G$ ne sont pas alignés : ils définissent le plan $(BCG)$, qui contient la face $BCGF$, donc les points $F$ et $J$ (car $J \\in [CG]$). Le vecteur $\\overrightarrow{FJ}$, qui joint deux points de ce plan, est dans sa direction. Or, d'après la question B.2, $\\overrightarrow{KL} = \\overrightarrow{FJ}$ : un vecteur directeur de $(KL)$ est dans la direction du plan $(BCG)$, donc **la droite $(KL)$ est parallèle au plan $(BCG)$.**\n\nMontrons que $K$ n'appartient pas à ce plan. Le plan $(BCG)$ est dirigé par $\\overrightarrow{BC}\\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{BF}\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$, non colinéaires. Si $K$ était dans ce plan, on aurait $\\overrightarrow{BK} = \\alpha\\,\\overrightarrow{BC} + \\beta\\,\\overrightarrow{BF}$ pour deux réels $\\alpha$ et $\\beta$. Or $\\alpha\\,\\overrightarrow{BC} + \\beta\\,\\overrightarrow{BF}$ a pour coordonnées $\\begin{pmatrix} 0 \\\\ \\alpha \\\\ \\beta \\end{pmatrix}$, de première coordonnée nulle, alors que $\\overrightarrow{BK}\\begin{pmatrix} -1 \\\\ 0 \\\\ 1 - \\frac{a}{2} \\end{pmatrix}$ a pour première coordonnée $-1$. C'est impossible.\n\nLa droite $(KL)$ est parallèle au plan $(BCG)$ et n'y est pas contenue : **elle est strictement parallèle au plan $(BCG)$**, quelle que soit la valeur de $a$."
+      }
+    ]
+  },
+  {
+    "id": "tb-vecteurs-espace-003",
+    "chapitre": "vecteurs-espace",
+    "notions": [
+      "n-vecteurs-espace-plans",
+      "n-vecteurs-espace-positions-relatives",
+      "n-vecteurs-espace-combinaisons",
+      "n-vecteurs-espace-droites",
+      "n-vecteurs-espace-bases-reperes"
+    ],
+    "capacites": [
+      "bo-m-vecteurs-02",
+      "bo-m-vecteurs-09",
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-04",
+      "bo-m-vecteurs-05",
+      "bo-m-vecteurs-06",
+      "bo-m-vecteurs-07",
+      "bo-m-vecteurs-10",
+      "bo-m-logique-11"
+    ],
+    "titre": "Un cube prolongé : points coplanaires, droites sécantes, point d'un plan",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2025-metropole-septembre-j1",
+      "adaptation": "Exercice 2 : cube ABCDEFGH, point M tel que BM = AB, points A, M, G, H coplanaires, coordonnées de GM et AH et leur non-colinéarité, point N(0 ; 2 ; 2) commun aux droites (GM) et (AH), centre J de la face BCGF et appartenance de J au plan (AMN) conservés. Le point N est vérifié par colinéarité au lieu d'être calculé. Retirées, à remettre quand les chapitres seront écrits : droites (FG) et (FM) perpendiculaires, triangle AMN rectangle et son aire, vecteur FJ normal au plan (AMN), J projeté orthogonal de F, volumes du tétraèdre AMNF et de la pyramide BCGFM, chapitre « Orthogonalité et distances dans l'espace » ; représentations paramétriques de (GM) et (AH) et calcul de N par résolution, chapitre « Représentations paramétriques et équations cartésiennes ». Ajoutées : droite (FM) strictement parallèle au plan (ACH), position relative de la droite (FJ) et du plan (AMN). Figure redessinée pour le site. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "On considère le cube $ABCDEFGH$ : sa face du dessous est $ABCD$, sa face du dessus $EFGH$, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. On place le point $M$ tel que $\\overrightarrow{BM} = \\overrightarrow{AB}$.\n\n**Partie A** : on travaille sans repère.\n\n**Partie B** : on se place dans le repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.\n\nLes questions s'enchaînent, mais chacune peut être traitée en admettant les résultats des précédentes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/type-bac-cube-point-m.svg",
+        "alt": "Le cube ABCDEFGH en perspective, avec E, F, G, H au-dessus de A, B, C, D ; les arêtes qui partent de D, cachées, sont en pointillé. L'arête [AB] est prolongée au-delà de B jusqu'au point M, marqué en bleu, de sorte que BM = AB.",
+        "width": 400,
+        "height": 300
+      },
+      "caption": "Le cube ABCDEFGH et le point M, sur la droite (AB), au-delà de B, tel que BM = AB."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Montrer que les points $A$, $M$, $G$ et $H$ sont coplanaires.",
+        "points": 1,
+        "revoir": "l-vecteurs-espace-035",
+        "indices": [
+          "Cherche à écrire $\\overrightarrow{AG}$ comme combinaison linéaire de $\\overrightarrow{AM}$ et de $\\overrightarrow{AH}$ : exprime d'abord ces trois vecteurs avec $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$.",
+          "Première étape : $\\overrightarrow{AM} = \\overrightarrow{AB} + \\overrightarrow{BM}$, avec $\\overrightarrow{BM} = \\overrightarrow{AB}$. Fais de même pour $\\overrightarrow{AH}$, en passant par $D$, et pour $\\overrightarrow{AG}$, en passant par $B$ et $C$."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{AM} = 2\\,\\overrightarrow{AB}$, $\\overrightarrow{AH} = \\overrightarrow{AD} + \\overrightarrow{AE}$ et $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$, par la relation de Chasles et les arêtes égales du cube : 0,5 pt.\n- $\\overrightarrow{AG} = \\dfrac{1}{2}\\overrightarrow{AM} + \\overrightarrow{AH}$ : 0,25 pt.\n- $\\overrightarrow{AM}$ et $\\overrightarrow{AH}$ non colinéaires, justifié, et conclusion : 0,25 pt.",
+        "solution": "Par la relation de Chasles :\n\n- $\\overrightarrow{AM} = \\overrightarrow{AB} + \\overrightarrow{BM} = 2\\,\\overrightarrow{AB}$ ;\n- $\\overrightarrow{AH} = \\overrightarrow{AD} + \\overrightarrow{DH} = \\overrightarrow{AD} + \\overrightarrow{AE}$, car la face $ADHE$ est un carré ;\n- $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$, car $\\overrightarrow{BC} = \\overrightarrow{AD}$ et $\\overrightarrow{CG} = \\overrightarrow{AE}$.\n\nAinsi $\\overrightarrow{AG} = \\overrightarrow{AB} + \\left(\\overrightarrow{AD} + \\overrightarrow{AE}\\right) = \\dfrac{1}{2}\\overrightarrow{AM} + \\overrightarrow{AH}$.\n\nLes vecteurs $\\overrightarrow{AM}$ et $\\overrightarrow{AH}$ ne sont pas colinéaires : sinon, $H$ serait sur la droite $(AM)$, c'est-à-dire sur la droite $(AB)$, qui borde la face du dessous, alors que $H$ est sur la face du dessus.\n\n$\\overrightarrow{AG}$ est une combinaison linéaire des vecteurs non colinéaires $\\overrightarrow{AM}$ et $\\overrightarrow{AH}$ : **les points $A$, $M$, $G$ et $H$ sont coplanaires.**",
+        "erreurFrequente": "Écrire $\\overrightarrow{AM} = \\overrightarrow{AB}$ : $M$ est au-delà de $B$, à deux arêtes de $A$."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "La droite $(FM)$ et le plan $(ACH)$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Exprimer $\\overrightarrow{FM}$ en fonction de $\\overrightarrow{AB}$ et $\\overrightarrow{AE}$, puis vérifier que $\\overrightarrow{FM} = \\overrightarrow{AC} - \\overrightarrow{AH}$.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-009",
+            "indices": [
+              "Va de $F$ à $M$ en passant par $B$ : $\\overrightarrow{FM} = \\overrightarrow{FB} + \\overrightarrow{BM}$. Quel vecteur imposé est égal à $\\overrightarrow{FB}$, au signe près ?",
+              "Pour la vérification, écris aussi $\\overrightarrow{AC}$ et $\\overrightarrow{AH}$ avec $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$, puis calcule leur différence."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{FM} = \\overrightarrow{FB} + \\overrightarrow{BM} = \\overrightarrow{AB} - \\overrightarrow{AE}$ : 0,25 pt.\n- $\\overrightarrow{AC} - \\overrightarrow{AH} = \\left(\\overrightarrow{AB} + \\overrightarrow{AD}\\right) - \\left(\\overrightarrow{AD} + \\overrightarrow{AE}\\right) = \\overrightarrow{AB} - \\overrightarrow{AE}$ : 0,25 pt.",
+            "solution": "En passant par $B$ : $\\overrightarrow{FM} = \\overrightarrow{FB} + \\overrightarrow{BM}$. Or $\\overrightarrow{FB} = -\\overrightarrow{BF} = -\\overrightarrow{AE}$, car la face $ABFE$ est un carré, et $\\overrightarrow{BM} = \\overrightarrow{AB}$. Donc $\\overrightarrow{FM} = \\overrightarrow{AB} - \\overrightarrow{AE}$.\n\nDe plus, $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AB} + \\overrightarrow{AD}$ et, d'après la question A.1, $\\overrightarrow{AH} = \\overrightarrow{AD} + \\overrightarrow{AE}$. Donc\n\n$$\\overrightarrow{AC} - \\overrightarrow{AH} = \\overrightarrow{AB} + \\overrightarrow{AD} - \\overrightarrow{AD} - \\overrightarrow{AE} = \\overrightarrow{AB} - \\overrightarrow{AE} = \\overrightarrow{FM}.$$"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "En déduire que la droite $(FM)$ est parallèle au plan $(ACH)$.",
+            "points": 0.25,
+            "revoir": "l-vecteurs-espace-044",
+            "indices": [
+              "Le plan $(ACH)$ est dirigé par $\\overrightarrow{AC}$ et $\\overrightarrow{AH}$. Que dit la question précédente du vecteur directeur $\\overrightarrow{FM}$ de la droite ?"
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AC}$ et $\\overrightarrow{AH}$, non colinéaires, dirigent le plan $(ACH)$ ; $\\overrightarrow{FM} = \\overrightarrow{AC} - \\overrightarrow{AH}$ est dans sa direction, donc $(FM)$ est parallèle à ce plan : 0,25 pt.",
+            "solution": "Les vecteurs $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$ et $\\overrightarrow{AH} = \\overrightarrow{AD} + \\overrightarrow{AE}$ ne sont pas colinéaires : sur la base $\\left(\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$, le coefficient de $\\overrightarrow{AE}$ vaut $1$ dans $\\overrightarrow{AH}$ et $0$ dans $\\overrightarrow{AC}$, donc $\\overrightarrow{AH} = k\\,\\overrightarrow{AC}$ donnerait $1 = 0$. Ils dirigent donc le plan $(ACH)$.\n\nComme $\\overrightarrow{FM} = 1 \\times \\overrightarrow{AC} + (-1) \\times \\overrightarrow{AH}$, ce vecteur directeur de $(FM)$ est dans la direction du plan : **la droite $(FM)$ est parallèle au plan $(ACH)$.**"
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "Démontrer que le point $F$ n'appartient pas au plan $(ACH)$. Que peut-on en conclure ?",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-073",
+            "indices": [
+              "Suppose $\\overrightarrow{AF} = a\\,\\overrightarrow{AC} + b\\,\\overrightarrow{AH}$ et écris les deux membres avec $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$.",
+              "La décomposition sur une base est unique : le coefficient de $\\overrightarrow{AB}$ donne $a$, celui de $\\overrightarrow{AE}$ donne $b$ ; regarde alors celui de $\\overrightarrow{AD}$."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AF} = \\overrightarrow{AB} + \\overrightarrow{AE}$ et $a\\,\\overrightarrow{AC} + b\\,\\overrightarrow{AH} = a\\,\\overrightarrow{AB} + (a + b)\\,\\overrightarrow{AD} + b\\,\\overrightarrow{AE}$ : 0,25 pt.\n- Identification ($a = 1$, $b = 1$, puis $a + b = 0$, soit $2 = 0$), donc $F \\notin (ACH)$ ; conclusion : $(FM)$ est strictement parallèle au plan $(ACH)$ : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{AF} = \\overrightarrow{AB} + \\overrightarrow{BF} = \\overrightarrow{AB} + \\overrightarrow{AE}$. Supposons $F$ dans le plan $(ACH)$ : il existe alors deux réels $a$ et $b$ tels que $\\overrightarrow{AF} = a\\,\\overrightarrow{AC} + b\\,\\overrightarrow{AH}$, c'est-à-dire\n\n$$\\overrightarrow{AB} + 0 \\times \\overrightarrow{AD} + \\overrightarrow{AE} = a\\,\\overrightarrow{AB} + (a + b)\\,\\overrightarrow{AD} + b\\,\\overrightarrow{AE}.$$\n\nLa décomposition sur la base $\\left(\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ est unique : le coefficient de $\\overrightarrow{AB}$ donne $a = 1$, celui de $\\overrightarrow{AE}$ donne $b = 1$, et celui de $\\overrightarrow{AD}$ donne $a + b = 0$, soit $2 = 0$. C'est absurde : **$F$ n'appartient pas au plan $(ACH)$.**\n\nLa droite $(FM)$ est parallèle au plan $(ACH)$ et l'un de ses points n'est pas dans ce plan : **elle est strictement parallèle au plan $(ACH)$.**"
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "B.1.",
+        "enonce": "Déterminer les coordonnées des vecteurs $\\overrightarrow{GM}$ et $\\overrightarrow{AH}$, et montrer qu'ils ne sont pas colinéaires.",
+        "points": 0.75,
+        "revoir": "l-vecteurs-espace-071",
+        "indices": [
+          "Lis d'abord les coordonnées de $G$, de $H$ et de $M$ : pour $M$, utilise $\\overrightarrow{AM} = 2\\,\\overrightarrow{AB}$ (question A.1).",
+          "Pour la non-colinéarité, suppose $\\overrightarrow{AH} = k\\,\\overrightarrow{GM}$ et regarde la première coordonnée : que vaut alors $k$ ?"
+        ],
+        "attenduCorrecteur": "- $M(2\\,;\\,0\\,;\\,0)$, $G(1\\,;\\,1\\,;\\,1)$, $H(0\\,;\\,1\\,;\\,1)$, d'où $\\overrightarrow{GM}\\begin{pmatrix} 1 \\\\ -1 \\\\ -1 \\end{pmatrix}$ et $\\overrightarrow{AH}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$ : 0,5 pt.\n- Non-colinéarité justifiée sur une coordonnée : 0,25 pt.",
+        "solution": "$\\overrightarrow{AM} = 2\\,\\overrightarrow{AB}$, donc $M(2\\,;\\,0\\,;\\,0)$ ; de plus $G(1\\,;\\,1\\,;\\,1)$ et $H(0\\,;\\,1\\,;\\,1)$. Arrivée moins départ : $\\overrightarrow{GM}\\begin{pmatrix} 2 - 1 \\\\ 0 - 1 \\\\ 0 - 1 \\end{pmatrix}$, soit $\\overrightarrow{GM}\\begin{pmatrix} 1 \\\\ -1 \\\\ -1 \\end{pmatrix}$, et $\\overrightarrow{AH}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$.\n\nSi l'on avait $\\overrightarrow{AH} = k\\,\\overrightarrow{GM}$, la première coordonnée donnerait $0 = k \\times 1$, donc $k = 0$, et alors $\\overrightarrow{AH} = \\vec{0}$, ce qui est faux. **Les vecteurs $\\overrightarrow{GM}$ et $\\overrightarrow{AH}$ ne sont pas colinéaires.**"
+      },
+      {
+        "id": "q4",
+        "label": "B.2.",
+        "enonce": "On considère le point $N(0\\,;\\,2\\,;\\,2)$. Montrer que les droites $(GM)$ et $(AH)$ sont sécantes au point $N$.",
+        "points": 1,
+        "revoir": "l-vecteurs-espace-047",
+        "indices": [
+          "Deux droites non parallèles qui ont un point commun sont sécantes en ce point. Vérifie que $N$ est sur $(GM)$, puis sur $(AH)$, par colinéarité.",
+          "Calcule $\\overrightarrow{GN}$ et compare-le à $\\overrightarrow{GM}$ ; calcule $\\overrightarrow{AN}$ et compare-le à $\\overrightarrow{AH}$."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{GN}\\begin{pmatrix} -1 \\\\ 1 \\\\ 1 \\end{pmatrix} = -\\overrightarrow{GM}$, donc $N \\in (GM)$ : 0,25 pt.\n- $\\overrightarrow{AN}\\begin{pmatrix} 0 \\\\ 2 \\\\ 2 \\end{pmatrix} = 2\\,\\overrightarrow{AH}$, donc $N \\in (AH)$ : 0,25 pt.\n- Droites non parallèles (question B.1) ayant un point commun : sécantes en $N$, raisonnement rédigé : 0,5 pt.",
+        "solution": "$\\overrightarrow{GN}\\begin{pmatrix} 0 - 1 \\\\ 2 - 1 \\\\ 2 - 1 \\end{pmatrix}$, soit $\\overrightarrow{GN}\\begin{pmatrix} -1 \\\\ 1 \\\\ 1 \\end{pmatrix} = -\\overrightarrow{GM}$ : les vecteurs $\\overrightarrow{GN}$ et $\\overrightarrow{GM}$ sont colinéaires, donc $N$ appartient à la droite $(GM)$.\n\n$\\overrightarrow{AN}\\begin{pmatrix} 0 \\\\ 2 \\\\ 2 \\end{pmatrix} = 2\\,\\overrightarrow{AH}$ : $N$ appartient à la droite $(AH)$.\n\nD'après la question B.1, les vecteurs directeurs $\\overrightarrow{GM}$ et $\\overrightarrow{AH}$ ne sont pas colinéaires : les droites $(GM)$ et $(AH)$ ne sont pas parallèles. Elles ont un point commun, $N$, donc elles ne sont pas non coplanaires : elles sont sécantes, et $N$ est leur seul point commun. **Les droites $(GM)$ et $(AH)$ sont sécantes au point $N(0\\,;\\,2\\,;\\,2)$.**",
+        "erreurFrequente": "Ne vérifier l'appartenance de $N$ qu'à une seule droite, ou oublier la non-colinéarité : deux droites confondues ont aussi des points communs, sans être sécantes."
+      },
+      {
+        "id": "q5",
+        "label": "B.3.",
+        "enonce": "On note $J$ le centre de la face $BCGF$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Déterminer les coordonnées du point $J$.",
+            "points": 0.25,
+            "revoir": "l-vecteurs-espace-061",
+            "indices": [
+              "Le centre d'un carré est le milieu de ses diagonales : $J$ est le milieu de $[BG]$."
+            ],
+            "attenduCorrecteur": "- $J$ milieu de $[BG]$, d'où $J\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$ : 0,25 pt.",
+            "solution": "Le centre $J$ du carré $BCGF$ est le milieu de sa diagonale $[BG]$. Avec $B(1\\,;\\,0\\,;\\,0)$ et $G(1\\,;\\,1\\,;\\,1)$ : **$J\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$.**"
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Montrer que le point $J$ appartient au plan $(AMN)$.",
+            "points": 0.75,
+            "revoir": "l-vecteurs-espace-032",
+            "indices": [
+              "Vérifie d'abord que $A$, $M$, $N$ définissent un plan ($\\overrightarrow{AM}$ et $\\overrightarrow{AN}$ non colinéaires), puis cherche deux réels $\\alpha$ et $\\beta$ tels que $\\overrightarrow{AJ} = \\alpha\\,\\overrightarrow{AM} + \\beta\\,\\overrightarrow{AN}$.",
+              "Écris les coordonnées de $\\alpha\\,\\overrightarrow{AM} + \\beta\\,\\overrightarrow{AN}$ : la première ne dépend que de $\\alpha$, la deuxième que de $\\beta$."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AM}\\begin{pmatrix} 2 \\\\ 0 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AN}\\begin{pmatrix} 0 \\\\ 2 \\\\ 2 \\end{pmatrix}$ non colinéaires, donc $(AMN)$ est un plan : 0,25 pt.\n- $\\overrightarrow{AJ} = \\dfrac{1}{2}\\overrightarrow{AM} + \\dfrac{1}{4}\\overrightarrow{AN}$, vérifié sur les trois coordonnées : 0,25 pt.\n- Conclusion : $J$ appartient au plan $(AMN)$ : 0,25 pt.",
+            "solution": "$\\overrightarrow{AM}\\begin{pmatrix} 2 \\\\ 0 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AN}\\begin{pmatrix} 0 \\\\ 2 \\\\ 2 \\end{pmatrix}$ ne sont pas colinéaires : $\\overrightarrow{AN} = k\\,\\overrightarrow{AM}$ donnerait $2 = 0$ sur la deuxième coordonnée. Les points $A$, $M$, $N$ ne sont donc pas alignés : ils définissent le plan $(AMN)$, dirigé par $\\overrightarrow{AM}$ et $\\overrightarrow{AN}$.\n\nPour deux réels $\\alpha$ et $\\beta$, $\\alpha\\,\\overrightarrow{AM} + \\beta\\,\\overrightarrow{AN}$ a pour coordonnées $\\begin{pmatrix} 2\\alpha \\\\ 2\\beta \\\\ 2\\beta \\end{pmatrix}$, et $\\overrightarrow{AJ}\\begin{pmatrix} 1 \\\\ \\frac{1}{2} \\\\ \\frac{1}{2} \\end{pmatrix}$. La première coordonnée donne $2\\alpha = 1$, soit $\\alpha = \\dfrac{1}{2}$ ; la deuxième donne $2\\beta = \\dfrac{1}{2}$, soit $\\beta = \\dfrac{1}{4}$ ; la troisième est alors vérifiée, car $2 \\times \\dfrac{1}{4} = \\dfrac{1}{2}$. Donc\n\n$$\\overrightarrow{AJ} = \\dfrac{1}{2}\\overrightarrow{AM} + \\dfrac{1}{4}\\overrightarrow{AN}.$$\n\n**Le point $J$ appartient au plan $(AMN)$.**"
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "label": "B.4.",
+        "enonce": "Déterminer la position relative de la droite $(FJ)$ et du plan $(AMN)$.",
+        "points": 1,
+        "revoir": "l-vecteurs-espace-047",
+        "indices": [
+          "Commence par la direction : $\\overrightarrow{FJ}$ est-il une combinaison linéaire de $\\overrightarrow{AM}$ et de $\\overrightarrow{AN}$ ? Reprends les coordonnées de $\\alpha\\,\\overrightarrow{AM} + \\beta\\,\\overrightarrow{AN}$ obtenues à la question B.3.b.",
+          "Une droite qui n'est pas parallèle à un plan le coupe en un seul point : la question B.3.b t'en fournit un."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{FJ}\\begin{pmatrix} 0 \\\\ \\frac{1}{2} \\\\ -\\frac{1}{2} \\end{pmatrix}$ : 0,25 pt.\n- $\\overrightarrow{FJ} = \\alpha\\,\\overrightarrow{AM} + \\beta\\,\\overrightarrow{AN}$ impossible ($\\beta = \\dfrac{1}{4}$ et $\\beta = -\\dfrac{1}{4}$), donc $(FJ)$ n'est pas parallèle au plan $(AMN)$ : 0,5 pt.\n- Conclusion : la droite $(FJ)$ et le plan $(AMN)$ sont sécants, au point $J$ : 0,25 pt.",
+        "solution": "Avec $F(1\\,;\\,0\\,;\\,1)$ : $\\overrightarrow{FJ}\\begin{pmatrix} 0 \\\\ \\frac{1}{2} \\\\ -\\frac{1}{2} \\end{pmatrix}$.\n\nSi $\\overrightarrow{FJ}$ était dans la direction du plan $(AMN)$, on aurait $\\overrightarrow{FJ} = \\alpha\\,\\overrightarrow{AM} + \\beta\\,\\overrightarrow{AN}$ pour deux réels $\\alpha$ et $\\beta$, soit $\\begin{pmatrix} 0 \\\\ \\frac{1}{2} \\\\ -\\frac{1}{2} \\end{pmatrix} = \\begin{pmatrix} 2\\alpha \\\\ 2\\beta \\\\ 2\\beta \\end{pmatrix}$. La deuxième coordonnée donne $\\beta = \\dfrac{1}{4}$, la troisième $\\beta = -\\dfrac{1}{4}$ : c'est impossible. La droite $(FJ)$ n'est donc pas parallèle au plan $(AMN)$ : elle le coupe en un seul point.\n\nOr $J$ est sur la droite $(FJ)$ et, d'après la question B.3.b, dans le plan $(AMN)$. **La droite $(FJ)$ et le plan $(AMN)$ sont sécants au point $J$.**"
+      }
+    ]
+  },
+  {
+    "id": "tb-vecteurs-espace-004",
+    "chapitre": "vecteurs-espace",
+    "notions": [
+      "n-vecteurs-espace-configurations",
+      "n-vecteurs-espace-droites",
+      "n-vecteurs-espace-bases-reperes",
+      "n-vecteurs-espace-positions-relatives"
+    ],
+    "capacites": [
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-04",
+      "bo-m-vecteurs-07",
+      "bo-m-vecteurs-12",
+      "bo-m-vecteurs-10",
+      "bo-m-vecteurs-13"
+    ],
+    "titre": "La droite d'Euler d'un triangle tracé dans un cube",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2025-asie-septembre-j1",
+      "adaptation": "Exercice 2 : définition de la droite d'Euler, cube ABCDEFGH d'arête 1, I milieu de [AB], J milieu de [BG], coordonnées de A, B, G, I et J, droites (AJ) et (IG) sécantes au point S(2/3 ; 1/3 ; 1/3), identification du centre du cercle circonscrit, du centre de gravité et de l'orthocentre du triangle ABG, vérification de leur alignement conservés. Les appartenances de S aux deux droites se montrent par colinéarité, sans représentation paramétrique, et l'identification des trois points est justifiée. Retirées, à remettre quand les chapitres seront écrits : représentations paramétriques de (AJ) et (IG), chapitre « Représentations paramétriques et équations cartésiennes » ; vecteur normal et équation cartésienne du plan (ABG), intersection de la droite (d) et du plan (ABG), point L équidistant de A, B et G, triangle ABG rectangle en B (ici admis), chapitres « Orthogonalité et distances dans l'espace » et « Représentations paramétriques et équations cartésiennes ». Ajoutées : la droite d'Euler est la grande diagonale (BH) du cube ; position relative des droites (BH) et (EG). Figure redessinée pour le site. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "« Dans un triangle non équilatéral, la droite d'Euler est la droite qui passe par les trois points suivants :\n\n- le centre du cercle circonscrit à ce triangle (cercle passant par les trois sommets de ce triangle) ;\n- le centre de gravité de ce triangle, situé à l'intersection des médianes de ce triangle ;\n- l'orthocentre de ce triangle, situé à l'intersection des hauteurs de ce triangle. »\n\nLe but de l'exercice est d'étudier un exemple de droite d'Euler.\n\nOn considère un cube $ABCDEFGH$ d'arête $1$ : sa face du dessous est $ABCD$, sa face du dessus $EFGH$, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. L'espace est muni du repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$. On note $I$ le milieu du segment $[AB]$ et $J$ le milieu du segment $[BG]$.\n\nOn admet que le triangle $ABG$ est rectangle en $B$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/type-bac-triangle-abg.svg",
+        "alt": "Le cube ABCDEFGH en perspective, avec E, F, G, H au-dessus de A, B, C, D ; les arêtes qui partent de D, cachées, sont en pointillé. Le triangle ABG est coloré en bleu : son côté [AB] est une arête du cube, son côté [BG] une diagonale de la face de droite BCGF, et son côté [AG], une grande diagonale du cube, passe à l'intérieur du cube, en pointillé. Le point I est le milieu de [AB] et le point J le milieu de [BG].",
+        "width": 340,
+        "height": 300
+      },
+      "caption": "Le triangle ABG, en bleu, dans le cube ABCDEFGH ; I et J sont les milieux de [AB] et de [BG]."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Donner, sans justification, les coordonnées des points $A$, $B$, $G$, $I$ et $J$.",
+        "points": 0.5,
+        "revoir": "l-vecteurs-espace-059",
+        "indices": [
+          "Lis les sommets en suivant les arêtes issues de $A$ (par exemple $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$), puis fais la moyenne des coordonnées pour les milieux $I$ et $J$."
+        ],
+        "attenduCorrecteur": "- $A(0\\,;\\,0\\,;\\,0)$, $B(1\\,;\\,0\\,;\\,0)$, $G(1\\,;\\,1\\,;\\,1)$ : 0,25 pt.\n- $I\\left(\\dfrac{1}{2}\\,;\\,0\\,;\\,0\\right)$ et $J\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$ : 0,25 pt.",
+        "solution": "$A(0\\,;\\,0\\,;\\,0)$, $B(1\\,;\\,0\\,;\\,0)$ et $G(1\\,;\\,1\\,;\\,1)$, car $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$.\n\nMilieux : $I\\left(\\dfrac{1}{2}\\,;\\,0\\,;\\,0\\right)$ et $J\\left(\\dfrac{1 + 1}{2}\\,;\\,\\dfrac{0 + 1}{2}\\,;\\,\\dfrac{0 + 1}{2}\\right)$, soit $J\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère le point $S\\left(\\dfrac{2}{3}\\,;\\,\\dfrac{1}{3}\\,;\\,\\dfrac{1}{3}\\right)$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Démontrer que le point $S$ appartient à la droite $(AJ)$.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-024",
+            "indices": [
+              "$S$ est sur $(AJ)$ si $\\overrightarrow{AS}$ et $\\overrightarrow{AJ}$ sont colinéaires : calcule leurs coordonnées, déduis le réel $k$ de la première, puis vérifie les deux autres."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AJ}\\begin{pmatrix} 1 \\\\ \\frac{1}{2} \\\\ \\frac{1}{2} \\end{pmatrix}$ et $\\overrightarrow{AS}\\begin{pmatrix} \\frac{2}{3} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$ : 0,25 pt.\n- $\\overrightarrow{AS} = \\dfrac{2}{3}\\overrightarrow{AJ}$, vérifié sur les trois coordonnées, donc $S \\in (AJ)$ : 0,25 pt.",
+            "solution": "$\\overrightarrow{AJ}\\begin{pmatrix} 1 \\\\ \\frac{1}{2} \\\\ \\frac{1}{2} \\end{pmatrix}$ et $\\overrightarrow{AS}\\begin{pmatrix} \\frac{2}{3} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$. La première coordonnée suggère $k = \\dfrac{2}{3}$, et $\\dfrac{2}{3} \\times \\dfrac{1}{2} = \\dfrac{1}{3}$ convient pour les deux autres. Donc $\\overrightarrow{AS} = \\dfrac{2}{3}\\overrightarrow{AJ}$ : ces vecteurs sont colinéaires, et **$S$ appartient à la droite $(AJ)$.**"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Démontrer que le point $S$ appartient à la droite $(IG)$.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-024",
+            "indices": [
+              "Même démarche avec $\\overrightarrow{IS}$ et $\\overrightarrow{IG}$. Attention à la première coordonnée de $\\overrightarrow{IS}$, une différence de fractions : $\\dfrac{2}{3} - \\dfrac{1}{2}$."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{IG}\\begin{pmatrix} \\frac{1}{2} \\\\ 1 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{IS}\\begin{pmatrix} \\frac{1}{6} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$ : 0,25 pt.\n- $\\overrightarrow{IS} = \\dfrac{1}{3}\\overrightarrow{IG}$, donc $S \\in (IG)$ : 0,25 pt.",
+            "solution": "$\\overrightarrow{IG}\\begin{pmatrix} 1 - \\frac{1}{2} \\\\ 1 \\\\ 1 \\end{pmatrix}$, soit $\\overrightarrow{IG}\\begin{pmatrix} \\frac{1}{2} \\\\ 1 \\\\ 1 \\end{pmatrix}$, et $\\overrightarrow{IS}\\begin{pmatrix} \\frac{2}{3} - \\frac{1}{2} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$, soit $\\overrightarrow{IS}\\begin{pmatrix} \\frac{1}{6} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$. La deuxième coordonnée suggère $k = \\dfrac{1}{3}$, et $\\dfrac{1}{3} \\times \\dfrac{1}{2} = \\dfrac{1}{6}$. Donc $\\overrightarrow{IS} = \\dfrac{1}{3}\\overrightarrow{IG}$ : **$S$ appartient à la droite $(IG)$.**"
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "En déduire que les droites $(AJ)$ et $(IG)$ sont sécantes en $S$.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-040",
+            "indices": [
+              "Il reste à montrer que les droites ne sont pas parallèles : suppose $\\overrightarrow{IG} = k\\,\\overrightarrow{AJ}$ et compare ce que donnent les deux premières coordonnées."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AJ}$ et $\\overrightarrow{IG}$ non colinéaires ($k = \\dfrac{1}{2}$ et $k = 2$), donc droites non parallèles : 0,25 pt.\n- Point commun $S$ (questions a et b), donc droites sécantes en $S$ : 0,25 pt.",
+            "solution": "Si l'on avait $\\overrightarrow{IG} = k\\,\\overrightarrow{AJ}$, la première coordonnée donnerait $\\dfrac{1}{2} = k$ et la deuxième $1 = \\dfrac{k}{2}$, soit $k = 2$ : c'est impossible. Les vecteurs directeurs ne sont pas colinéaires, donc les droites $(AJ)$ et $(IG)$ ne sont pas parallèles.\n\nElles ont le point commun $S$ (questions a et b) : elles sont donc sécantes, et $S$ est leur unique point commun. **Les droites $(AJ)$ et $(IG)$ sont sécantes en $S$.**"
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Les trois points de la droite d'Euler du triangle $ABG$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Justifier que $S$ est le centre de gravité du triangle $ABG$, que $B$ est son orthocentre, et que le milieu $L$ du segment $[AG]$ est le centre de son cercle circonscrit. Donner les coordonnées de $L$.",
+            "points": 1,
+            "revoir": "l-vecteurs-espace-057",
+            "indices": [
+              "Une médiane joint un sommet au milieu du côté opposé : que sont les droites $(AJ)$ et $(GI)$ pour le triangle $ABG$ ? Dans un triangle rectangle, chacun des deux côtés de l'angle droit est une hauteur.",
+              "Dans un triangle rectangle, où se trouve le centre du cercle circonscrit par rapport à l'hypoténuse ? Pour les coordonnées de $L$, fais la moyenne de celles de $A$ et de $G$."
+            ],
+            "attenduCorrecteur": "- $(AJ)$ et $(GI)$ sont deux médianes du triangle $ABG$ ($J$ milieu de $[BG]$, $I$ milieu de $[AB]$), sécantes en $S$ : $S$ est le centre de gravité : 0,25 pt.\n- Triangle rectangle en $B$ : $(AB)$ est la hauteur issue de $A$, $(GB)$ la hauteur issue de $G$ ; elles se coupent en $B$, qui est l'orthocentre : 0,25 pt.\n- Le centre du cercle circonscrit à un triangle rectangle est le milieu de l'hypoténuse $[AG]$ : 0,25 pt.\n- $L\\left(\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$ : 0,25 pt.",
+            "solution": "**Centre de gravité.** $J$ est le milieu du côté $[BG]$, opposé au sommet $A$ : la droite $(AJ)$ est la médiane issue de $A$. De même, $I$ est le milieu de $[AB]$, donc $(GI)$ est la médiane issue de $G$. Les médianes se coupent au centre de gravité ; d'après la question 2, $(AJ)$ et $(IG)$ se coupent en $S$ : **$S$ est le centre de gravité du triangle $ABG$.**\n\n**Orthocentre.** Le triangle $ABG$ est rectangle en $B$, donc $(AB)$ est perpendiculaire à $(BG)$. La hauteur issue de $A$, perpendiculaire à $(BG)$ et passant par $A$, est donc la droite $(AB)$ ; de même, la hauteur issue de $G$ est la droite $(GB)$. Ces deux hauteurs se coupent en $B$ : **$B$ est l'orthocentre du triangle $ABG$.**\n\n**Centre du cercle circonscrit.** Dans un triangle rectangle, le centre du cercle circonscrit est le milieu de l'hypoténuse, ici $[AG]$ : c'est **le point $L$**, de coordonnées $\\left(\\dfrac{0 + 1}{2}\\,;\\,\\dfrac{0 + 1}{2}\\,;\\,\\dfrac{0 + 1}{2}\\right)$, soit $L\\left(\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$. C'est aussi le centre du cube."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Vérifier par un calcul que les points $L$, $S$ et $B$ sont alignés.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-024",
+            "indices": [
+              "Calcule $\\overrightarrow{BS}$ et $\\overrightarrow{BL}$, deux vecteurs qui partent du même point, et cherche un réel $k$ tel que $\\overrightarrow{BL} = k\\,\\overrightarrow{BS}$."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{BS}\\begin{pmatrix} -\\frac{1}{3} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$ et $\\overrightarrow{BL}\\begin{pmatrix} -\\frac{1}{2} \\\\ \\frac{1}{2} \\\\ \\frac{1}{2} \\end{pmatrix}$ : 0,25 pt.\n- $\\overrightarrow{BL} = \\dfrac{3}{2}\\overrightarrow{BS}$ : vecteurs colinéaires de même origine, donc $L$, $S$, $B$ alignés : 0,25 pt.",
+            "solution": "$\\overrightarrow{BS}\\begin{pmatrix} \\frac{2}{3} - 1 \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$, soit $\\overrightarrow{BS}\\begin{pmatrix} -\\frac{1}{3} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$, et $\\overrightarrow{BL}\\begin{pmatrix} -\\frac{1}{2} \\\\ \\frac{1}{2} \\\\ \\frac{1}{2} \\end{pmatrix}$. Chaque coordonnée de $\\overrightarrow{BL}$ est celle de $\\overrightarrow{BS}$ multipliée par $\\dfrac{3}{2}$ : $\\overrightarrow{BL} = \\dfrac{3}{2}\\overrightarrow{BS}$.\n\nCes vecteurs, qui partent tous deux de $B$, sont colinéaires : **les points $L$, $S$ et $B$ sont alignés.** Le centre du cercle circonscrit, le centre de gravité et l'orthocentre du triangle $ABG$ sont bien sur une même droite, sa droite d'Euler $(BL)$."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "La droite d'Euler dans le cube.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Montrer que la droite d'Euler du triangle $ABG$ passe par le sommet $H$ du cube.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-024",
+            "indices": [
+              "La droite d'Euler est la droite $(BL)$ : montre que $\\overrightarrow{BH}$ est colinéaire à $\\overrightarrow{BL}$."
+            ],
+            "attenduCorrecteur": "- $H(0\\,;\\,1\\,;\\,1)$ et $\\overrightarrow{BH}\\begin{pmatrix} -1 \\\\ 1 \\\\ 1 \\end{pmatrix} = 2\\,\\overrightarrow{BL}$ : 0,25 pt.\n- Conclusion : $H$ appartient à $(BL)$ ; la droite d'Euler est la grande diagonale $(BH)$ du cube : 0,25 pt.",
+            "solution": "Avec $H(0\\,;\\,1\\,;\\,1)$ : $\\overrightarrow{BH}\\begin{pmatrix} -1 \\\\ 1 \\\\ 1 \\end{pmatrix} = 2\\,\\overrightarrow{BL}$. Ces vecteurs sont colinéaires, donc $H$ appartient à la droite $(BL)$ : **la droite d'Euler du triangle $ABG$ est la grande diagonale $(BH)$ du cube**, dont $L$ est le milieu."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Déterminer la position relative des droites $(BH)$ et $(EG)$.",
+            "points": 1,
+            "revoir": "l-vecteurs-espace-047",
+            "indices": [
+              "Regarde d'abord si $\\overrightarrow{BH}$ et $\\overrightarrow{EG}$ sont colinéaires. Ensuite, les droites $(BH)$ et $(EG)$ sont coplanaires si et seulement si les points $B$, $H$, $E$, $G$ le sont.",
+              "Suppose $\\overrightarrow{BH} = a\\,\\overrightarrow{BE} + b\\,\\overrightarrow{BG}$ : la première coordonnée donne $a$, la deuxième donne $b$ ; regarde ce que dit alors la troisième."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{EG}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{BH}$ non colinéaires : les droites ne sont pas parallèles : 0,25 pt.\n- $\\overrightarrow{BE}\\begin{pmatrix} -1 \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{BG}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$ non colinéaires ; $\\overrightarrow{BH} = a\\,\\overrightarrow{BE} + b\\,\\overrightarrow{BG}$ donne $a = 1$, $b = 1$, puis $a + b = 1$, soit $2 = 1$ : $B$, $H$, $E$, $G$ ne sont pas coplanaires : 0,5 pt.\n- Conclusion : les droites $(BH)$ et $(EG)$ sont non coplanaires : 0,25 pt.",
+            "solution": "Avec $E(0\\,;\\,0\\,;\\,1)$ : $\\overrightarrow{EG}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$, et $\\overrightarrow{BH}\\begin{pmatrix} -1 \\\\ 1 \\\\ 1 \\end{pmatrix}$. Si l'on avait $\\overrightarrow{BH} = k\\,\\overrightarrow{EG}$, la troisième coordonnée donnerait $1 = 0$ : ces vecteurs ne sont pas colinéaires, et les droites ne sont pas parallèles.\n\nLes droites $(BH)$ et $(EG)$ sont coplanaires si et seulement si les points $B$, $H$, $E$, $G$ le sont. On a $\\overrightarrow{BE}\\begin{pmatrix} -1 \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{BG}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$, non colinéaires : si l'on avait $\\overrightarrow{BG} = k\\,\\overrightarrow{BE}$, la première coordonnée donnerait $0 = -k$, donc $k = 0$ et $\\overrightarrow{BG} = \\vec{0}$, ce qui est faux.\n\nSupposons $\\overrightarrow{BH} = a\\,\\overrightarrow{BE} + b\\,\\overrightarrow{BG}$ ; les coordonnées de $a\\,\\overrightarrow{BE} + b\\,\\overrightarrow{BG}$ sont $\\begin{pmatrix} -a \\\\ b \\\\ a + b \\end{pmatrix}$. La première coordonnée donne $-a = -1$, soit $a = 1$ ; la deuxième donne $b = 1$ ; la troisième donne alors $a + b = 1$, soit $2 = 1$ : c'est absurde.\n\nLes points $B$, $H$, $E$, $G$ ne sont donc pas coplanaires : **les droites $(BH)$ et $(EG)$ sont non coplanaires** ; elles n'ont aucun point commun et ne sont pas parallèles.",
+            "erreurFrequente": "Conclure « sécantes » parce que les deux droites ne sont pas parallèles : dans l'espace, deux droites non parallèles peuvent aussi être non coplanaires."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-vecteurs-espace-005",
+    "chapitre": "vecteurs-espace",
+    "notions": [
+      "n-vecteurs-espace-combinaisons",
+      "n-vecteurs-espace-bases-reperes",
+      "n-vecteurs-espace-positions-relatives",
+      "n-vecteurs-espace-configurations"
+    ],
+    "capacites": [
+      "bo-m-vecteurs-02",
+      "bo-m-vecteurs-09",
+      "bo-m-vecteurs-07",
+      "bo-m-vecteurs-11",
+      "bo-m-vecteurs-10",
+      "bo-m-vecteurs-13"
+    ],
+    "titre": "Vrai ou faux : cinq milieux d'arêtes dans un cube",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 50,
+    "source": {
+      "annale": "an-2025-amerique-nord-j2",
+      "adaptation": "Exercice 3, partie A (vrai-faux, réponses justifiées) : cube ABCDEFGH, points I, J, K, L, M milieux de [AB], [BF], [AE], [CD] et [DH], affirmation 1 (JH = 2 BI + DM − CB) et affirmation 2 ((AB, AH, AG) base de l'espace) conservées. Retirées, à remettre quand les chapitres seront écrits : affirmation 3 (produit scalaire IB · LM), chapitre « Orthogonalité et distances dans l'espace » ; partie B (plan donné par une équation cartésienne, plan parallèle passant par un point, distance d'un point à un plan), chapitres « Représentations paramétriques et équations cartésiennes » et « Orthogonalité et distances dans l'espace ». Ajoutées, écrites pour le site : affirmations 3 (droites (IJ) et (LM)), 4 (points I, K, M, L coplanaires) et 5 (droite (IM) et plan (BCG)). Figure redessinée pour le site. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Pour chacune des affirmations suivantes, indiquer si elle est vraie ou fausse. Chaque réponse doit être justifiée. Une réponse non justifiée ne rapporte aucun point.\n\n$ABCDEFGH$ est un cube : sa face du dessous est $ABCD$, sa face du dessus $EFGH$, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. Les points $I$, $J$, $K$, $L$ et $M$ sont les milieux respectifs des arêtes $[AB]$, $[BF]$, $[AE]$, $[CD]$ et $[DH]$.\n\nOn pourra utiliser le repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/type-bac-cinq-milieux.svg",
+        "alt": "Le cube ABCDEFGH en perspective, avec E, F, G, H au-dessus de A, B, C, D ; les arêtes qui partent de D, cachées, sont en pointillé. Cinq milieux d'arêtes sont marqués en bleu : I sur [AB], J sur [BF], K sur [AE], L sur [CD] et M sur [DH].",
+        "width": 340,
+        "height": 300
+      },
+      "caption": "Le cube ABCDEFGH et les milieux I, J, K, L, M des arêtes [AB], [BF], [AE], [CD] et [DH]."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Affirmation 1** : $\\overrightarrow{JH} = 2\\,\\overrightarrow{BI} + \\overrightarrow{DM} - \\overrightarrow{CB}$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$2\\,\\overrightarrow{BI} = \\overrightarrow{BA} = -\\overrightarrow{AB}$, $\\overrightarrow{DM} = \\dfrac{1}{2}\\overrightarrow{AE}$ et $-\\overrightarrow{CB} = \\overrightarrow{AD}$, donc le membre de droite vaut $-\\overrightarrow{AB} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}$. De même, $\\overrightarrow{JH} = \\overrightarrow{JF} + \\overrightarrow{FE} + \\overrightarrow{EH} = \\dfrac{1}{2}\\overrightarrow{AE} - \\overrightarrow{AB} + \\overrightarrow{AD}$. Les deux membres sont égaux."
+        },
+        "revoir": "l-vecteurs-espace-009",
+        "indices": [
+          "Écris chaque membre avec les mêmes vecteurs de référence, par exemple $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$, ou passe aux coordonnées dans le repère proposé.",
+          "Pour $\\overrightarrow{JH}$, suis un trajet sur les arêtes : de $J$ à $F$, puis de $F$ à $E$, puis de $E$ à $H$. Dans le membre de droite, $\\overrightarrow{BI}$ est la moitié de $\\overrightarrow{BA}$."
+        ],
+        "attenduCorrecteur": "- Membre de droite : $2\\,\\overrightarrow{BI} + \\overrightarrow{DM} - \\overrightarrow{CB} = -\\overrightarrow{AB} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}$, ou coordonnées $\\begin{pmatrix} -1 \\\\ 1 \\\\ \\frac{1}{2} \\end{pmatrix}$ : 0,5 pt.\n- $\\overrightarrow{JH} = -\\overrightarrow{AB} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}$ : 0,25 pt.\n- Conclusion : l'affirmation est vraie : 0,25 pt.",
+        "solution": "On écrit les deux membres sur la base $\\left(\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.\n\n**Membre de droite.** $I$ est le milieu de $[AB]$, donc $\\overrightarrow{BI} = \\dfrac{1}{2}\\overrightarrow{BA}$ et $2\\,\\overrightarrow{BI} = \\overrightarrow{BA} = -\\overrightarrow{AB}$. $M$ est le milieu de $[DH]$, donc $\\overrightarrow{DM} = \\dfrac{1}{2}\\overrightarrow{DH} = \\dfrac{1}{2}\\overrightarrow{AE}$. Enfin, $-\\overrightarrow{CB} = \\overrightarrow{BC} = \\overrightarrow{AD}$. Donc\n\n$$2\\,\\overrightarrow{BI} + \\overrightarrow{DM} - \\overrightarrow{CB} = -\\overrightarrow{AB} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}.$$\n\n**Membre de gauche.** Par la relation de Chasles, $\\overrightarrow{JH} = \\overrightarrow{JF} + \\overrightarrow{FE} + \\overrightarrow{EH}$. Or $\\overrightarrow{JF} = \\dfrac{1}{2}\\overrightarrow{BF} = \\dfrac{1}{2}\\overrightarrow{AE}$, car $J$ est le milieu de $[BF]$ ; $\\overrightarrow{FE} = -\\overrightarrow{AB}$ et $\\overrightarrow{EH} = \\overrightarrow{AD}$. Donc $\\overrightarrow{JH} = -\\overrightarrow{AB} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}$.\n\nLes deux membres sont égaux : **l'affirmation 1 est vraie.**\n\nAvec les coordonnées : $J\\left(1\\,;\\,0\\,;\\,\\dfrac{1}{2}\\right)$ et $H(0\\,;\\,1\\,;\\,1)$ donnent $\\overrightarrow{JH}\\begin{pmatrix} -1 \\\\ 1 \\\\ \\frac{1}{2} \\end{pmatrix}$ ; et $2\\,\\overrightarrow{BI}\\begin{pmatrix} -1 \\\\ 0 \\\\ 0 \\end{pmatrix}$, $\\overrightarrow{DM}\\begin{pmatrix} 0 \\\\ 0 \\\\ \\frac{1}{2} \\end{pmatrix}$ et $-\\overrightarrow{CB}\\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}$ ont bien pour somme ce même vecteur.",
+        "erreurFrequente": "Se tromper de sens : $-\\overrightarrow{CB}$ est $\\overrightarrow{BC}$, et $2\\,\\overrightarrow{BI}$ va de $B$ vers $A$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "**Affirmation 2** : le triplet de vecteurs $\\left(\\overrightarrow{AB}, \\overrightarrow{AH}, \\overrightarrow{AG}\\right)$ est une base de l'espace.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE} = \\overrightarrow{AB} + \\overrightarrow{AH}$ : les trois vecteurs sont coplanaires, ils ne forment pas une base."
+        },
+        "revoir": "l-vecteurs-espace-053",
+        "indices": [
+          "Trois vecteurs forment une base s'ils ne sont pas coplanaires. Écris $\\overrightarrow{AH}$ et $\\overrightarrow{AG}$ avec $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$.",
+          "Cherche si $\\overrightarrow{AG}$ s'écrit comme combinaison linéaire de $\\overrightarrow{AB}$ et de $\\overrightarrow{AH}$ : regroupe deux des trois termes de $\\overrightarrow{AG}$."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{AH} = \\overrightarrow{AD} + \\overrightarrow{AE}$ et $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$ : 0,5 pt.\n- $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AH}$, donc les trois vecteurs sont coplanaires : 0,25 pt.\n- Conclusion : ce n'est pas une base, l'affirmation est fausse : 0,25 pt.",
+        "solution": "Trois vecteurs forment une base de l'espace si et seulement si ils ne sont pas coplanaires.\n\nPar la relation de Chasles, $\\overrightarrow{AH} = \\overrightarrow{AD} + \\overrightarrow{DH} = \\overrightarrow{AD} + \\overrightarrow{AE}$ et $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$. Donc\n\n$$\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AH}.$$\n\n$\\overrightarrow{AG}$ est une combinaison linéaire de $\\overrightarrow{AB}$ et de $\\overrightarrow{AH}$ : les trois vecteurs sont coplanaires. Placés en $A$, ils restent dans le plan du rectangle $ABGH$. Ils ne forment pas une base : **l'affirmation 2 est fausse.**",
+        "erreurFrequente": "Conclure « vraie » parce que les trois vecteurs sont deux à deux non colinéaires : cela ne suffit pas, il faut qu'ils ne soient pas coplanaires."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "**Affirmation 3** : les droites $(IJ)$ et $(LM)$ sont sécantes.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$(IJ)$ est contenue dans le plan de la face $ABFE$, $(LM)$ dans celui de la face $DCGH$ ; ces plans sont strictement parallèles, donc les droites n'ont aucun point commun. De plus, $\\overrightarrow{IJ}\\begin{pmatrix} \\frac{1}{2} \\\\ 0 \\\\ \\frac{1}{2} \\end{pmatrix}$ et $\\overrightarrow{LM}\\begin{pmatrix} -\\frac{1}{2} \\\\ 0 \\\\ \\frac{1}{2} \\end{pmatrix}$ ne sont pas colinéaires : les droites sont non coplanaires."
+        },
+        "revoir": "l-vecteurs-espace-047",
+        "indices": [
+          "Dans quelles faces du cube sont tracées les droites $(IJ)$ et $(LM)$ ? Deux faces opposées d'un cube sont dans des plans strictement parallèles.",
+          "Avec les coordonnées : tous les points de $(IJ)$ ont la même deuxième coordonnée ; compare-la à celle des points de $(LM)$."
+        ],
+        "attenduCorrecteur": "- $(IJ)$ contenue dans le plan $(ABF)$, $(LM)$ dans le plan $(DCG)$, plans strictement parallèles (ou : deuxième coordonnée égale à $0$ sur $(IJ)$, à $1$ sur $(LM)$), donc aucun point commun : 0,5 pt.\n- Conclusion : les droites ne sont pas sécantes, l'affirmation est fausse : 0,25 pt.\n- Précision : vecteurs directeurs non colinéaires, donc droites non coplanaires : 0,25 pt.",
+        "solution": "Les points $I$ et $J$ sont sur les arêtes $[AB]$ et $[BF]$ de la face $ABFE$ : la droite $(IJ)$ est contenue dans le plan $(ABF)$. De même, $L$ et $M$ sont sur les arêtes $[CD]$ et $[DH]$ de la face $DCGH$ : la droite $(LM)$ est contenue dans le plan $(DCG)$. Ces deux plans, qui portent deux faces opposées du cube, sont strictement parallèles : ils n'ont aucun point commun. Les droites $(IJ)$ et $(LM)$ n'ont donc aucun point commun : elles ne sont pas sécantes, et **l'affirmation 3 est fausse.**\n\nOn peut préciser leur position. Avec $I\\left(\\dfrac{1}{2}\\,;\\,0\\,;\\,0\\right)$, $J\\left(1\\,;\\,0\\,;\\,\\dfrac{1}{2}\\right)$, $L\\left(\\dfrac{1}{2}\\,;\\,1\\,;\\,0\\right)$ et $M\\left(0\\,;\\,1\\,;\\,\\dfrac{1}{2}\\right)$ : $\\overrightarrow{IJ}\\begin{pmatrix} \\frac{1}{2} \\\\ 0 \\\\ \\frac{1}{2} \\end{pmatrix}$ et $\\overrightarrow{LM}\\begin{pmatrix} -\\frac{1}{2} \\\\ 0 \\\\ \\frac{1}{2} \\end{pmatrix}$. Si l'on avait $\\overrightarrow{LM} = k\\,\\overrightarrow{IJ}$, la première coordonnée donnerait $k = -1$ et la troisième $k = 1$ : ces vecteurs ne sont pas colinéaires. Sans point commun et non parallèles, les droites $(IJ)$ et $(LM)$ sont non coplanaires.",
+        "erreurFrequente": "Conclure « sécantes » parce que les segments $[IJ]$ et $[LM]$ se croisent sur le dessin : en perspective, l'un passe devant l'autre sans le couper."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "**Affirmation 4** : les points $I$, $K$, $M$ et $L$ sont coplanaires.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$\\overrightarrow{KM} = \\overrightarrow{KA} + \\overrightarrow{AD} + \\overrightarrow{DM} = \\overrightarrow{AD}$ et $\\overrightarrow{IL} = \\overrightarrow{IB} + \\overrightarrow{BC} + \\overrightarrow{CL} = \\overrightarrow{AD}$, donc $\\overrightarrow{KM} = \\overrightarrow{IL}$ : $KMLI$ est un parallélogramme, figure plane ; les quatre points sont coplanaires."
+        },
+        "revoir": "l-vecteurs-espace-068",
+        "indices": [
+          "Compare les vecteurs $\\overrightarrow{KM}$ et $\\overrightarrow{IL}$ : écris-les avec $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$, ou avec les coordonnées.",
+          "Si deux côtés opposés d'un quadrilatère donnent des vecteurs égaux, quelle est sa nature ? Une telle figure est-elle plane ?"
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{KM} = \\overrightarrow{AD}$, justifié (relation de Chasles et milieux, ou coordonnées $\\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}$) : 0,25 pt.\n- $\\overrightarrow{IL} = \\overrightarrow{AD}$, justifié : 0,25 pt.\n- $\\overrightarrow{KM} = \\overrightarrow{IL}$, donc $KMLI$ est un parallélogramme (ou $\\overrightarrow{KL} = \\overrightarrow{KI} + \\overrightarrow{KM}$) ; les points sont coplanaires, l'affirmation est vraie : 0,5 pt.",
+        "solution": "Par la relation de Chasles, avec $K$ milieu de $[AE]$ et $M$ milieu de $[DH]$ :\n\n$$\\overrightarrow{KM} = \\overrightarrow{KA} + \\overrightarrow{AD} + \\overrightarrow{DM} = -\\dfrac{1}{2}\\overrightarrow{AE} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{DH} = \\overrightarrow{AD},$$\n\ncar $\\overrightarrow{DH} = \\overrightarrow{AE}$. De même, avec $I$ milieu de $[AB]$ et $L$ milieu de $[CD]$ :\n\n$$\\overrightarrow{IL} = \\overrightarrow{IB} + \\overrightarrow{BC} + \\overrightarrow{CL} = \\dfrac{1}{2}\\overrightarrow{AB} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{CD} = \\overrightarrow{AD},$$\n\ncar $\\overrightarrow{CD} = -\\overrightarrow{AB}$.\n\nAinsi $\\overrightarrow{KM} = \\overrightarrow{IL}$ : le quadrilatère $KMLI$ est un parallélogramme. Un parallélogramme est une figure plane : **les points $I$, $K$, $M$ et $L$ sont coplanaires, l'affirmation 4 est vraie.**\n\nEn vecteurs : $\\overrightarrow{KL} = \\overrightarrow{KI} + \\overrightarrow{IL} = \\overrightarrow{KI} + \\overrightarrow{KM}$, combinaison linéaire de $\\overrightarrow{KI} = \\dfrac{1}{2}\\overrightarrow{AB} - \\dfrac{1}{2}\\overrightarrow{AE}$ et de $\\overrightarrow{KM} = \\overrightarrow{AD}$, qui ne sont pas colinéaires."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "**Affirmation 5** : la droite $(IM)$ est parallèle au plan $(BCG)$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Le plan $(BCG)$ est dirigé par $\\overrightarrow{BC} = \\overrightarrow{AD}$ et $\\overrightarrow{BF} = \\overrightarrow{AE}$ : toute combinaison de ces vecteurs a un coefficient nul sur $\\overrightarrow{AB}$, alors que $\\overrightarrow{IM} = -\\dfrac{1}{2}\\overrightarrow{AB} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}$. La droite $(IM)$ n'est pas parallèle au plan $(BCG)$ : elle le coupe."
+        },
+        "revoir": "l-vecteurs-espace-044",
+        "indices": [
+          "Une droite est parallèle à un plan quand son vecteur directeur est dans la direction du plan. Donne deux vecteurs non colinéaires qui dirigent le plan $(BCG)$ de la face $BCGF$.",
+          "Écris $\\overrightarrow{IM}$ avec $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$, ou en coordonnées, et regarde son coefficient sur $\\overrightarrow{AB}$."
+        ],
+        "attenduCorrecteur": "- Le plan $(BCG)$ est dirigé par $\\overrightarrow{BC} = \\overrightarrow{AD}$ et $\\overrightarrow{BF} = \\overrightarrow{AE}$ : 0,25 pt.\n- $\\overrightarrow{IM} = -\\dfrac{1}{2}\\overrightarrow{AB} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}$, ou $\\overrightarrow{IM}\\begin{pmatrix} -\\frac{1}{2} \\\\ 1 \\\\ \\frac{1}{2} \\end{pmatrix}$ : 0,25 pt.\n- $\\overrightarrow{IM} = \\alpha\\,\\overrightarrow{AD} + \\beta\\,\\overrightarrow{AE}$ impossible (coefficient de $\\overrightarrow{AB}$, ou première coordonnée : $-\\dfrac{1}{2} = 0$), donc $(IM)$ n'est pas parallèle au plan ; l'affirmation est fausse : 0,5 pt.",
+        "solution": "Le plan $(BCG)$ contient la face $BCGF$ : il est dirigé par $\\overrightarrow{BC}$ et $\\overrightarrow{BF}$, non colinéaires, avec $\\overrightarrow{BC} = \\overrightarrow{AD}$ et $\\overrightarrow{BF} = \\overrightarrow{AE}$.\n\nPar la relation de Chasles, avec $I$ milieu de $[AB]$ et $M$ milieu de $[DH]$ : $\\overrightarrow{IM} = \\overrightarrow{IA} + \\overrightarrow{AD} + \\overrightarrow{DM} = -\\dfrac{1}{2}\\overrightarrow{AB} + \\overrightarrow{AD} + \\dfrac{1}{2}\\overrightarrow{AE}$.\n\nSi la droite $(IM)$ était parallèle au plan $(BCG)$, on aurait $\\overrightarrow{IM} = \\alpha\\,\\overrightarrow{AD} + \\beta\\,\\overrightarrow{AE}$ pour deux réels $\\alpha$ et $\\beta$. La décomposition sur la base $\\left(\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ étant unique, le coefficient de $\\overrightarrow{AB}$ donnerait $-\\dfrac{1}{2} = 0$ : c'est absurde.\n\nLe vecteur directeur $\\overrightarrow{IM}$ n'est pas dans la direction du plan : la droite $(IM)$ n'est pas parallèle au plan $(BCG)$, elle le coupe en un point. **L'affirmation 5 est fausse.**",
+        "erreurFrequente": "Répondre « vraie » parce que $M$ et $I$ sont des milieux d'arêtes, comme dans un parallélisme de la droite des milieux : ici, $I$ et $M$ sont sur des faces différentes, et seul le vecteur directeur décide."
+      }
+    ]
+  }
+]
