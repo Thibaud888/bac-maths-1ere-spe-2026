@@ -367,7 +367,7 @@ describe('controles-mecaniques.mjs — avant la relecture', () => {
     for (const [m, c] of [['maths', 'temoin-maths'], ['physique-chimie', 'temoin-physique-chimie']] as const) {
       expect(controler(m, c, TEMOIN).resultat.ecarts, `${m}/${c}`).toEqual([]);
     }
-  });
+  }, 20_000); // quatre lancements du script (≈ 1,5 s chacun) : 5 s par défaut ne suffisent plus
 
   it('trouve un indice qui donne la valeur, une unité manquante, une formule cassée', () => {
     const c = copieDuTemoin();

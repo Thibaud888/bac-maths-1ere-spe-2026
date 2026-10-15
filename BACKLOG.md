@@ -648,7 +648,8 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     ne l'a vue : seuls l'élève-testeur et le relecteur l'ont trouvée. Ajouter à
     `controles-mecaniques.mjs` la lecture de chaque SVG cité par un bloc `figure` (XML bien
     formé), et à `controle-rendu.mjs` un contrôle des images non chargées (`naturalWidth`
-    nul).
+    nul). **Deuxième cas** le 2026-10-15 (Vecteurs de l'espace, `cube-plans-bde-cfh.svg`,
+    même espace manquante) : à faire en priorité, la troisième fois serait de trop.
   - [ ] Écrire le mot-clé des cartes du mémo en clair — l'interface affiche « Mot-clé :
     fonctions-reference » (identifiant brut, avec tirets et sans accent) sous chaque carte
     (`CarteMemo`), vu sur Limites de fonctions en sombre à 1280 px.
@@ -726,17 +727,42 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     inflexion-borne ; x-033 q4, l'indice 2 parle d'un tableau de signes alors que la q3 est
     un QCM. Et un exercice de marche S'entraîner où l'on lit la convexité sur la courbe de f'
     (demandé par tb-001 A.2, aucun exercice ne l'entraîne) — il faut une figure.
-  - [ ] Vecteurs, droites et plans de l'espace : le cours — chapitre 6 dans l'ordre de
-    l'année, premier chapitre de géométrie dans l'espace (`vecteurs-espace`) :
-    `/tle-chapitre maths vecteurs-espace cours`, dans une session neuve. Découpage proposé
-    dans `chantiers/terminale/chapitres-maths.md` § 6 (vecteurs et colinéarité, positions
-    relatives de droites et plans, bases et coordonnées, coplanarité). Premières figures en
-    perspective du site : prévoir le temps des figures SVG. Leçon de la session du
-    2026-10-14 : lancer relecteur et élève-testeur **en parallèle** au tour 1, puis corriger
-    les deux rapports en une passe (un cycle de correction gagné par partie) ; un chapitre
-    complet a coûté 65 $ et touché deux fois la limite d'usage des 5 h.
-  - [ ] Vecteurs, droites et plans de l'espace : les exercices — `/tle-chapitre maths
-    vecteurs-espace exercices`, après le cours, dans une autre session.
+  - [x] Vecteurs, droites et plans de l'espace : le cours — fait le 2026-10-15 : 6 notions
+    (priorités mesurées sur 103 sujets, aucune ★★★ : droites et vecteurs colinéaires 49 %,
+    positions relatives 48 %, bases et repères 33 %, démontrer un alignement / parallélisme /
+    coplanarité 31 % → ★★ ; vecteurs et combinaisons 14 %, plans 11 % → ★), 77 blocs,
+    6 cartes de mémo, 11 figures en perspective (les premières du site). Frontière posée avec
+    le chapitre des représentations paramétriques : aucun système à deux inconnues. Relecteur
+    PASS au tour 1, élève-testeur À clarifier (3 bloquants : direction d'un plan, droites non
+    coplanaires, prouver « non coplanaires ») ; corrigé et relu au tour 2 (PASS).
+  - [x] Vecteurs, droites et plans de l'espace : les exercices — même session, à la demande
+    de Thibaud : 32 exercices (15 Comprendre, 13 S'entraîner, 4 Approfondir), 17 questions
+    éclair, 5 sujets type bac adaptés d'annales (27 points ; questions de produit scalaire,
+    représentations paramétriques et équations de plan retirées et notées dans `adaptation`,
+    à remettre quand ces chapitres seront écrits), 15 figures de plus. Élève-testeur CLAIR
+    (15/15 en Comprendre) ; relecteur NEEDS_REVISION aux tours 1 et 2 (un message d'erreur
+    faux, une figure au fichier cassé, deux indices qui donnaient la réponse), PASS au
+    tour 3. Coût : 86 $ pour les deux parties, avec deux coupures (limite des 5 h, puis
+    limite de la semaine) et une première rédaction des exercices perdue.
+  - [ ] Vecteurs de l'espace, petites retouches — non bloquants laissés ouverts par le
+    relecteur (rapport du tour 3, session du 2026-10-15) : étiquette P serrée contre D dans
+    la figure des plans BDE et CFH (x-029) ; formulation du complément barycentre
+    (`l-vecteurs-espace-013`) ; étape 5 de la méthode `l-vecteurs-espace-066` longue ;
+    x-008 q2 pourrait se passer de la base (piste du relecteur, à relire si appliquée).
+  - [ ] Vecteurs de l'espace : remettre dans le type bac les questions retirées des sujets
+    adaptés, quand « Orthogonalité et distances » et « Représentations paramétriques et
+    équations cartésiennes » seront écrits (notes `adaptation` de
+    `content/terminale/maths/chapitres/vecteurs-espace/type-bac.json`).
+  - [ ] Une animation pour faire tourner un cube et voir deux droites non coplanaires —
+    souhait de l'auteur du cours de Vecteurs de l'espace (la perspective trompe : deux droites
+    semblent se couper sur le dessin) ; à faire quand les figures animées existeront.
+  - [ ] Fonction logarithme népérien : le cours — chapitre 7 dans l'ordre de l'année
+    (`logarithme`) : `/tle-chapitre maths logarithme cours`, dans une session neuve. Leçons
+    de la session du 2026-10-15 : relecteur et élève-testeur en parallèle au tour 1 a bien
+    marché ; auteurs d'exercices et de type bac lancés en parallèle dès le cours relu ;
+    commiter après chaque agent (une coupure a fait perdre une rédaction entière).
+  - [ ] Fonction logarithme népérien : les exercices — `/tle-chapitre maths logarithme
+    exercices`, après le cours.
   - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
     (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
     `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source
