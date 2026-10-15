@@ -152,6 +152,11 @@ Chaque notion : titre · priorité estimée · ce que le bac demande typiquement
   d'inflexion et lecture graphique ★★★.
 
 ### 6. Vecteurs, droites et plans de l'espace
+Écrit le 2026-10-15 en 6 notions (chaque rubrique ci-dessous coupée en deux pour tenir dans
+une séance), priorités mesurées sur 103 sujets : vecteurs et combinaisons linéaires ★ (14 %) ;
+droites, vecteurs colinéaires ★★ (49 %) ; plans, vecteurs coplanaires ★ (11 %) ; positions
+relatives ★★ (48 %) ; bases, repères, coordonnées ★★ (33 %) ; démontrer un alignement, un
+parallélisme, une coplanarité ★★ (31 %). Proposition de départ :
 - Vecteurs de l'espace, combinaisons linéaires, colinéarité · ★★
 - Droites et plans : positions relatives · ★★★
 - Bases, repères, coordonnées ; vecteurs coplanaires · ★★
