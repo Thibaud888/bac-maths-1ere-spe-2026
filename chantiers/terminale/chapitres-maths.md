@@ -162,6 +162,12 @@ parallélisme, une coplanarité ★★ (31 %). Proposition de départ :
 - Bases, repères, coordonnées ; vecteurs coplanaires · ★★
 
 ### 7. Fonction logarithme népérien
+Écrit le 2026-10-15 en 6 notions, priorités mesurées sur 103 sujets : définition, réciproque
+de exp ★★ (17 %, relevée d'un cran : tout le chapitre en dépend) ; propriétés algébriques ★★
+(23 %) ; équations, inéquations et seuils ★★★ (66 %, le seuil qⁿ < ε y entre : même
+technique) ; dérivée de ln et de ln(u), variations ★★★ (71 %) ; limites, croissances
+comparées, courbe de ln ★★★ (53 %) ; résoudre un problème avec ln et exp, algorithme de
+Briggs ★ (12 %). Proposition de départ :
 - Définition (réciproque de exp), propriétés algébriques · ★★★
 - Équations et inéquations avec ln et exp · ★★★
 - Étude de la fonction ln : dérivée, limites, croissances comparées · ★★
