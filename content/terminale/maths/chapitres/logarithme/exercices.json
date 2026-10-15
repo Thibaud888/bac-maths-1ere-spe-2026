@@ -1,0 +1,2695 @@
+[
+  {
+    "id": "x-logarithme-001",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-definition"],
+    "capacites": ["bo-m-logarithme-01"],
+    "titre": "Calculer avec la définition de $\\ln$",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 101,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $A = \\ln\\left(e^{4}\\right) + e^{\\ln 3}$.",
+        "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0 },
+        "indices": [
+          "Utilise les deux égalités de la définition : $\\ln\\left(e^x\\right) = x$ pour tout réel $x$, et $e^{\\ln a} = a$ pour tout réel $a > 0$.",
+          "$\\ln\\left(e^{4}\\right) = 4$ : le logarithme retrouve l'exposant. Simplifie de même $e^{\\ln 3}$, puis ajoute."
+        ],
+        "revoir": "l-logarithme-003",
+        "solution": "$\\ln\\left(e^{4}\\right) = 4$, car $\\ln\\left(e^x\\right) = x$ pour tout réel $x$. Et $e^{\\ln 3} = 3$, car $e^{\\ln a} = a$ pour tout réel $a > 0$. Donc $A = 4 + 3 = 7$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Que vaut $\\ln\\left(\\dfrac{1}{e^{2}}\\right)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$-2$", "$\\dfrac{1}{2}$", "$2$", "$-\\dfrac{1}{2}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le logarithme ne prend pas l'inverse de l'exposant : il retrouve l'exposant de $e$, une fois $\\dfrac{1}{e^2}$ écrit comme une puissance de $e$.",
+            "$\\dfrac{1}{e^2}$ est plus petit que $1$ : son logarithme est négatif. L'inverse change le signe de l'exposant.",
+            "Tu as mélangé inverse et opposé : $\\dfrac{1}{e^2} = e^{-2}$, et l'exposant est $-2$, pas $-\\dfrac{1}{2}$."
+          ]
+        },
+        "indices": [
+          "Écris d'abord $\\dfrac{1}{e^{2}}$ comme une puissance de $e$, avec la règle de première $\\dfrac{1}{e^a} = e^{-a}$.",
+          "$\\dfrac{1}{e^{2}} = e^{-2}$. Il reste à appliquer $\\ln\\left(e^x\\right) = x$."
+        ],
+        "revoir": "l-logarithme-005",
+        "solution": "D'après la règle $\\dfrac{1}{e^a} = e^{-a}$, $\\dfrac{1}{e^{2}} = e^{-2}$. Donc $\\ln\\left(\\dfrac{1}{e^{2}}\\right) = \\ln\\left(e^{-2}\\right) = -2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? L'équation $e^x = 0$ a pour solution $x = \\ln 0$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$e^x > 0$ pour tout réel $x$ : l'équation $e^x = 0$ n'a pas de solution. D'ailleurs $\\ln 0$ n'existe pas : $\\ln a$ n'est défini que pour $a > 0$."
+        },
+        "indices": [
+          "$\\ln a$ n'est défini que pour certains réels $a$ : lesquels ?",
+          "L'exponentielle ne prend que des valeurs strictement positives : peut-elle valoir $0$ ?"
+        ],
+        "revoir": "l-logarithme-010",
+        "solution": "Pour tout réel $x$, $e^x > 0$ : l'exponentielle ne vaut jamais $0$, et l'équation $e^x = 0$ n'a pas de solution. L'écriture $\\ln 0$ n'a pas de sens, car $\\ln a$ n'existe que pour $a > 0$. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-002",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-definition"],
+    "capacites": ["bo-m-logarithme-01"],
+    "titre": "Où le logarithme existe-t-il ?",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 102,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Sur quel ensemble la fonction $x \\mapsto \\ln(5 - x)$ est-elle définie ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$]5\\,;\\,+\\infty[$", "$]-\\infty\\,;\\,5]$", "$]0\\,;\\,5[$", "$]-\\infty\\,;\\,5[$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Pour $x > 5$, $5 - x < 0$ : c'est justement là que le logarithme n'existe pas. En multipliant par $-1$, le sens de l'inégalité change.",
+            "En $x = 5$, $5 - x = 0$, et $\\ln 0$ n'existe pas : la borne $5$ est exclue.",
+            "Rien n'impose $x > 0$ : c'est $5 - x$, et non $x$, qui doit être strictement positif. Par exemple, $\\ln\\big(5 - (-1)\\big) = \\ln 6$ existe.",
+            null
+          ]
+        },
+        "indices": [
+          "$\\ln\\big(u(x)\\big)$ n'existe que si $u(x) > 0$ : écris l'inéquation à résoudre.",
+          "$5 - x > 0 \\iff -x > -5$. Multiplie par $-1$, sans oublier ce que cela fait au sens de l'inégalité."
+        ],
+        "revoir": "l-logarithme-007",
+        "solution": "$\\ln(5 - x)$ existe si et seulement si $5 - x > 0$, soit $-x > -5$, soit $x < 5$ (on a multiplié par $-1$, ce qui change le sens). La fonction est définie sur $]-\\infty\\,;\\,5[$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Sur quel ensemble la fonction $x \\mapsto \\ln\\left(x^2 - 4\\right)$ est-elle définie ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$]2\\,;\\,+\\infty[$", "$]-2\\,;\\,2[$", "$]-\\infty\\,;\\,-2[ \\cup ]2\\,;\\,+\\infty[$", "$\\mathbb{R}$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Tu as oublié les réels négatifs : pour $x = -3$, $x^2 - 4 = 5 > 0$, et $\\ln 5$ existe.",
+            "Entre $-2$ et $2$, le trinôme est négatif : pour $x = 0$, $x^2 - 4 = -4$, et $\\ln(-4)$ n'existe pas.",
+            null,
+            "Pour $x = 0$, $x^2 - 4 = -4 < 0$ : le logarithme n'existe pas partout."
+          ]
+        },
+        "indices": [
+          "Écris la condition $x^2 - 4 > 0$, puis étudie le signe du trinôme à partir de ses racines.",
+          "$x^2 - 4 = (x - 2)(x + 2)$ a pour racines $-2$ et $2$, et son coefficient de $x^2$ vaut $1 > 0$ : où ce trinôme est-il strictement positif ?"
+        ],
+        "revoir": "l-logarithme-008",
+        "solution": "$\\ln\\left(x^2 - 4\\right)$ existe si et seulement si $x^2 - 4 > 0$. Le trinôme $x^2 - 4 = (x - 2)(x + 2)$ a pour racines $-2$ et $2$ ; son coefficient de $x^2$ est $1 > 0$, donc il est strictement positif à l'extérieur des racines. La fonction est définie sur $]-\\infty\\,;\\,-2[ \\cup ]2\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? La fonction $x \\mapsto \\ln\\left(x^2 + 1\\right)$ est définie sur $\\mathbb{R}$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Pour tout réel $x$, $x^2 \\geqslant 0$, donc $x^2 + 1 \\geqslant 1 > 0$ : le logarithme existe pour tout réel $x$."
+        },
+        "indices": [
+          "Le logarithme existe dès que ce qu'il contient est strictement positif : regarde le signe de $x^2 + 1$.",
+          "Un carré est toujours positif ou nul : quelle est la plus petite valeur possible de $x^2 + 1$ ?"
+        ],
+        "revoir": "l-logarithme-007",
+        "solution": "Pour tout réel $x$, $x^2 \\geqslant 0$, donc $x^2 + 1 \\geqslant 1 > 0$. Le logarithme $\\ln\\left(x^2 + 1\\right)$ existe pour tout réel $x$ : la fonction est définie sur $\\mathbb{R}$. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-003",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-proprietes"],
+    "capacites": ["bo-m-logarithme-02"],
+    "titre": "Développer avec les règles du logarithme",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 201,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle expression est égale à $\\ln 72$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$2\\ln 2 + 3\\ln 3$", "$\\ln 8 \\times \\ln 9$", "$3\\ln 2 + 2\\ln 3$", "$6\\ln 6$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Ce serait $\\ln\\left(2^2 \\times 3^3\\right) = \\ln 108$. Ici, $72 = 8 \\times 9 = 2^3 \\times 3^2$ : le cube porte sur le $2$.",
+            "Le logarithme change un produit en **somme**, pas en produit : $\\ln(8 \\times 9) = \\ln 8 + \\ln 9$.",
+            null,
+            "$6\\ln 6 = \\ln\\left(6^6\\right)$, un nombre bien plus grand que $\\ln 72$. On décompose $72$ en facteurs : $72 = 2^3 \\times 3^2$."
+          ]
+        },
+        "indices": [
+          "Décompose $72$ en produit de puissances de $2$ et de $3$, puis applique $\\ln(ab) = \\ln a + \\ln b$ et $\\ln\\left(a^n\\right) = n\\ln a$.",
+          "$72 = 8 \\times 9$, avec $8 = 2^3$ et $9 = 3^2$. Donc $\\ln 72 = \\ln\\left(2^3\\right) + \\ln\\left(3^2\\right)$ : fais descendre les exposants."
+        ],
+        "revoir": "l-logarithme-014",
+        "solution": "$72 = 8 \\times 9 = 2^3 \\times 3^2$. Donc $\\ln 72 = \\ln\\left(2^3\\right) + \\ln\\left(3^2\\right) = 3\\ln 2 + 2\\ln 3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $B = \\ln\\left(e^{5}\\right) - 3\\ln\\left(\\sqrt{e}\\right)$. Donner la valeur décimale exacte.",
+        "reponse": { "type": "numerique", "valeur": 3.5, "tolerance": 0 },
+        "indices": [
+          "Simplifie chaque terme : $\\ln\\left(e^x\\right) = x$ et $\\ln\\left(\\sqrt{a}\\right) = \\dfrac{1}{2}\\ln a$.",
+          "$\\ln\\left(e^{5}\\right) = 5$ et $\\ln\\left(\\sqrt{e}\\right) = \\dfrac{1}{2}\\ln e$, avec $\\ln e = 1$. Remplace, puis calcule."
+        ],
+        "revoir": "l-logarithme-013",
+        "solution": "$\\ln\\left(e^{5}\\right) = 5$. Et $\\ln\\left(\\sqrt{e}\\right) = \\dfrac{1}{2}\\ln e = \\dfrac{1}{2}$, car $\\ln e = 1$. Donc $B = 5 - 3 \\times \\dfrac{1}{2} = 5 - 1{,}5 = 3{,}5$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Pour tout réel $x$ non nul, $\\ln\\left(x^2\\right) = 2\\ln x$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Pour $x = -1$ : $\\ln\\left((-1)^2\\right) = \\ln 1 = 0$ existe, mais $\\ln(-1)$ n'existe pas. La règle $\\ln\\left(a^n\\right) = n\\ln a$ demande $a > 0$ : l'égalité n'est vraie que pour $x > 0$."
+        },
+        "indices": [
+          "La règle $\\ln\\left(a^n\\right) = n\\ln a$ a une condition sur $a$ : laquelle ?",
+          "Essaie un réel négatif, par exemple $x = -1$ : les deux membres existent-ils ?"
+        ],
+        "revoir": "l-logarithme-013",
+        "solution": "Pour $x = -1$, $\\ln\\left(x^2\\right) = \\ln 1 = 0$ existe, mais $2\\ln x = 2\\ln(-1)$ n'existe pas. L'égalité $\\ln\\left(x^2\\right) = 2\\ln x$ n'est vraie que pour $x > 0$, car la règle $\\ln\\left(a^n\\right) = n\\ln a$ suppose $a > 0$. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-004",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-proprietes"],
+    "capacites": ["bo-m-logarithme-02"],
+    "titre": "Regrouper, estimer, reconnaître une suite",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 202,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Pour tout réel $x > 0$, à quoi est égal $\\ln\\left(x^3\\right) - \\ln x$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$2\\ln x$", "$\\ln\\left(x^3 - x\\right)$", "$3$", "$\\ln 3$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Une différence de logarithmes est le logarithme d'un **quotient**, pas d'une différence.",
+            "Tu as divisé les logarithmes : $\\dfrac{\\ln\\left(x^3\\right)}{\\ln x} = 3$. Mais une différence de logarithmes n'est pas un quotient de logarithmes.",
+            "$x^3$ n'est pas $3x$ : $\\ln\\left(\\dfrac{x^3}{x}\\right) = \\ln\\left(x^2\\right)$, et non $\\ln 3$."
+          ]
+        },
+        "indices": [
+          "Fais descendre l'exposant avec $\\ln\\left(a^n\\right) = n\\ln a$, ou regroupe avec $\\ln a - \\ln b = \\ln\\left(\\dfrac{a}{b}\\right)$.",
+          "$\\ln\\left(x^3\\right) = 3\\ln x$ pour $x > 0$. Il reste à retrancher $\\ln x$."
+        ],
+        "revoir": "l-logarithme-017",
+        "solution": "Pour $x > 0$, $\\ln\\left(x^3\\right) = 3\\ln x$. Donc $\\ln\\left(x^3\\right) - \\ln x = 3\\ln x - \\ln x = 2\\ln x$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On donne $\\ln 2 \\approx 0{,}693$ et $\\ln 5 \\approx 1{,}609$. Sans calculatrice, donner une valeur approchée de $\\ln 0{,}4$ à $10^{-3}$ près.",
+        "reponse": { "type": "numerique", "valeur": -0.916, "tolerance": 0.001 },
+        "indices": [
+          "Écris $0{,}4$ comme un quotient de deux nombres dont tu connais le logarithme.",
+          "$0{,}4 = \\dfrac{2}{5}$, donc $\\ln 0{,}4 = \\ln 2 - \\ln 5$ : remplace par les valeurs données."
+        ],
+        "revoir": "l-logarithme-014",
+        "solution": "$0{,}4 = \\dfrac{2}{5}$, donc $\\ln 0{,}4 = \\ln 2 - \\ln 5 \\approx 0{,}693 - 1{,}609 = -0{,}916$. Le résultat est négatif, ce qui est cohérent : $0{,}4 < 1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? La suite $(u_n)$ définie pour tout entier naturel $n$ par $u_n = \\ln\\left(2^n\\right)$ est arithmétique, de raison $\\ln 2$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Pour tout entier naturel $n$, $u_n = n\\ln 2$, donc $u_{n+1} - u_n = (n + 1)\\ln 2 - n\\ln 2 = \\ln 2$ : la différence est constante."
+        },
+        "indices": [
+          "Simplifie $u_n$ avec la règle $\\ln\\left(a^n\\right) = n\\ln a$.",
+          "$u_n = n\\ln 2$. Calcule $u_{n+1} - u_n$ : est-ce une constante ?"
+        ],
+        "revoir": "l-logarithme-013",
+        "solution": "Pour tout entier naturel $n$, $u_n = \\ln\\left(2^n\\right) = n\\ln 2$. Donc $u_{n+1} - u_n = (n + 1)\\ln 2 - n\\ln 2 = \\ln 2$ : la suite est arithmétique de raison $\\ln 2$, de premier terme $u_0 = 0$. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-005",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-equations"],
+    "capacites": ["bo-m-logarithme-06"],
+    "titre": "Passer de $\\ln$ à l'exponentielle, et inversement",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 301,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la solution de l'équation $\\ln x = -1$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$-e$", "L'équation n'a pas de solution, car $-1 < 0$.", "$e$", "$\\dfrac{1}{e}$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "$\\ln x$ n'existe que pour $x > 0$ : la solution ne peut pas être négative. $\\ln x = k$ donne $x = e^k$, ici $e^{-1}$.",
+            "Un logarithme peut être négatif : $\\ln x < 0$ pour $0 < x < 1$. C'est ce qui est **dans** le logarithme qui doit être positif, pas sa valeur.",
+            "$\\ln e = 1$, pas $-1$.",
+            null
+          ]
+        },
+        "indices": [
+          "Passe à l'exponentielle : pour tout réel $k$, $\\ln x = k \\iff x = e^k$.",
+          "$\\ln x = -1 \\iff x = e^{-1}$. Écris $e^{-1}$ sous forme de fraction."
+        ],
+        "revoir": "l-logarithme-024",
+        "solution": "Pour $x > 0$ : $\\ln x = -1 \\iff x = e^{-1} = \\dfrac{1}{e}$. Ce nombre est strictement positif : l'équation a pour unique solution $\\dfrac{1}{e}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la solution de l'équation $e^{3x} = 6$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\ln 2$", "$\\dfrac{e^6}{3}$", "$\\ln 6 - 3$", "$\\dfrac{\\ln 6}{3}$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Tu as divisé $6$ par $3$ avant de prendre le logarithme : $e^{3x} = 6$ ne donne pas $e^x = 2$. C'est l'exposant $3x$ qui vaut $\\ln 6$.",
+            "C'est le chemin inverse : on prend le logarithme de $6$, pas son exponentielle.",
+            "$3x = \\ln 6$ donne $x$ en **divisant** par $3$, pas en retranchant $3$.",
+            null
+          ]
+        },
+        "indices": [
+          "$6 > 0$ : prends le logarithme des deux membres, avec $e^A = k \\iff A = \\ln k$.",
+          "$e^{3x} = 6 \\iff 3x = \\ln 6$. Il reste à isoler $x$."
+        ],
+        "revoir": "l-logarithme-025",
+        "solution": "$6 > 0$, donc $e^{3x} = 6 \\iff 3x = \\ln 6 \\iff x = \\dfrac{\\ln 6}{3}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Résoudre dans $]0\\,;\\,+\\infty[$ l'équation $\\ln(2x) = \\ln 10$. Donner la solution.",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "Deux logarithmes égaux : $\\ln a = \\ln b \\iff a = b$, pour $a > 0$ et $b > 0$.",
+          "L'équation équivaut à une équation du premier degré, sans logarithme : écris-la, puis isole $x$."
+        ],
+        "revoir": "l-logarithme-024",
+        "solution": "Pour $x > 0$, $2x > 0$ et : $\\ln(2x) = \\ln 10 \\iff 2x = 10 \\iff x = 5$. Le réel $5$ est bien dans $]0\\,;\\,+\\infty[$ : la solution est $5$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-006",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-equations"],
+    "capacites": ["bo-m-logarithme-06"],
+    "titre": "Ne pas oublier les conditions d'existence",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 302,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quel est l'ensemble des solutions de l'équation $\\ln(x - 1) = \\ln(3 - x)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$]1\\,;\\,3[$", "$\\{1\\,;\\,3\\}$", "$\\{2\\}$", "$\\varnothing$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$]1\\,;\\,3[$ est l'intervalle où l'équation a un sens, pas l'ensemble de ses solutions : pour $x = 1{,}5$, $\\ln 0{,}5 \\neq \\ln 1{,}5$.",
+            "En $1$ et en $3$, l'un des logarithmes vaut $\\ln 0$, qui n'existe pas.",
+            null,
+            "L'équation a une solution : $x - 1 = 3 - x$ donne $x = 2$, qui est bien entre $1$ et $3$."
+          ]
+        },
+        "indices": [
+          "Écris d'abord les conditions : $x - 1 > 0$ et $3 - x > 0$. Puis utilise $\\ln a = \\ln b \\iff a = b$.",
+          "Les conditions donnent $1 < x < 3$. Dans cet intervalle, l'équation équivaut à $x - 1 = 3 - x$."
+        ],
+        "revoir": "l-logarithme-026",
+        "solution": "Conditions : $x - 1 > 0$ et $3 - x > 0$, soit $1 < x < 3$. Pour $x$ dans $]1\\,;\\,3[$ : $\\ln(x - 1) = \\ln(3 - x) \\iff x - 1 = 3 - x \\iff 2x = 4 \\iff x = 2$. Le réel $2$ est dans $]1\\,;\\,3[$ : $S = \\{2\\}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux ? L'équation $\\ln x + \\ln(x + 1) = \\ln 2$ a deux solutions.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Pour $x > 0$, l'équation équivaut à $x(x + 1) = 2$, soit $x^2 + x - 2 = 0$, de racines $1$ et $-2$. Mais $-2$ ne vérifie pas la condition $x > 0$ : il y a une seule solution, $1$."
+        },
+        "indices": [
+          "Commence par les conditions d'existence, puis regroupe : $\\ln a + \\ln b = \\ln(ab)$.",
+          "Pour $x > 0$, l'équation devient $x^2 + x - 2 = 0$. Trouve ses racines, puis garde celles qui vérifient $x > 0$."
+        ],
+        "revoir": "l-logarithme-036",
+        "solution": "Conditions : $x > 0$ et $x + 1 > 0$, soit $x > 0$. Pour $x > 0$ : $\\ln x + \\ln(x + 1) = \\ln\\big(x(x + 1)\\big)$, et l'équation équivaut à $x^2 + x = 2$, soit $x^2 + x - 2 = 0$. $\\Delta = 1 + 8 = 9$, d'où $x_1 = \\dfrac{-1 - 3}{2} = -2$ et $x_2 = \\dfrac{-1 + 3}{2} = 1$. Seul $1$ vérifie $x > 0$ : l'équation a une seule solution. L'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est l'ensemble des solutions de l'inéquation $\\ln x > 2$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$]e^2\\,;\\,+\\infty[$", "$]2\\,;\\,+\\infty[$", "$]0\\,;\\,e^2[$", "$]\\ln 2\\,;\\,+\\infty[$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le logarithme ne s'efface pas : $\\ln x > 2$ ne donne pas $x > 2$. Par exemple, $\\ln 3 \\approx 1{,}1$ n'est pas plus grand que $2$.",
+            "Le sens est inversé : l'exponentielle est croissante, donc l'inégalité garde son sens.",
+            "On passe à l'exponentielle, pas au logarithme : on compare $x$ à $e^2$."
+          ]
+        },
+        "indices": [
+          "Passe à l'exponentielle : pour tout réel $k$, $\\ln x > k \\iff x > e^k$. Le sens ne change pas, car l'exponentielle est croissante.",
+          "$\\ln x > 2 \\iff \\ln x > \\ln\\left(e^2\\right)$, car $2 = \\ln\\left(e^2\\right)$. Compare alors les nombres eux-mêmes, sans oublier que $\\ln x$ n'existe que pour $x > 0$."
+        ],
+        "revoir": "l-logarithme-024",
+        "solution": "$\\ln x$ existe pour $x > 0$. Comme $2 = \\ln\\left(e^2\\right)$ et que $\\ln$ est strictement croissante : $\\ln x > 2 \\iff x > e^2$. Ces réels sont bien strictement positifs : $S = ]e^2\\,;\\,+\\infty[$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-007",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-equations"],
+    "capacites": ["bo-m-logarithme-06", "bo-m-suites-14"],
+    "titre": "Un seuil par le calcul : le sens de l'inégalité",
+    "duree": 5,
+    "calculatrice": true,
+    "ordre": 303,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On cherche le plus petit entier naturel $n$ tel que $0{,}8^n < 0{,}05$. Après passage au logarithme, on obtient $n\\ln 0{,}8 < \\ln 0{,}05$. Quelle inéquation lui est équivalente ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$n < \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$",
+            "$n < \\ln 0{,}05 - \\ln 0{,}8$",
+            "$n > \\ln\\left(\\dfrac{0{,}05}{0{,}8}\\right)$",
+            "$n > \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "$0 < 0{,}8 < 1$, donc $\\ln 0{,}8 < 0$ : en divisant par ce nombre négatif, le sens de l'inégalité change.",
+            "On isole $n$ en **divisant** par $\\ln 0{,}8$, pas en le retranchant : $n\\ln 0{,}8$ est un produit.",
+            "Le quotient porte sur les logarithmes, pas sur les nombres : $\\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$ n'est pas $\\ln\\left(\\dfrac{0{,}05}{0{,}8}\\right)$.",
+            null
+          ]
+        },
+        "indices": [
+          "Pour isoler $n$, on divise par $\\ln 0{,}8$ : regarde d'abord le signe de ce nombre.",
+          "$0{,}8 < 1$, donc $\\ln 0{,}8 < \\ln 1 = 0$. Que devient le sens d'une inégalité quand on divise par un nombre négatif ?"
+        ],
+        "revoir": "l-logarithme-035",
+        "solution": "$0 < 0{,}8 < 1$, donc $\\ln 0{,}8 < 0$. En divisant les deux membres par ce nombre strictement négatif, le sens change : $n\\ln 0{,}8 < \\ln 0{,}05 \\iff n > \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer le plus petit entier naturel $n$ tel que $0{,}8^n < 0{,}05$.",
+        "reponse": { "type": "numerique", "valeur": 14, "tolerance": 0 },
+        "indices": [
+          "Pars de la question 1 : $n > \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$. Calcule ce quotient à la calculatrice.",
+          "Le quotient n'est pas entier : le plus petit entier qui convient est l'entier qui le suit. Contrôle en calculant $0{,}8^n$ pour cet entier et pour le précédent."
+        ],
+        "revoir": "l-logarithme-030",
+        "solution": "D'après la question 1, $0{,}8^n < 0{,}05 \\iff n > \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$. À la calculatrice, $\\dfrac{\\ln 0{,}05}{\\ln 0{,}8} \\approx 13{,}4$. Le plus petit entier strictement supérieur est $14$. Contrôle : $0{,}8^{13} \\approx 0{,}055 \\geqslant 0{,}05$ et $0{,}8^{14} \\approx 0{,}044 < 0{,}05$. Le plus petit entier cherché est $14$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer le plus petit entier naturel $n$ tel que $1{,}1^n > 3$.",
+        "reponse": { "type": "numerique", "valeur": 12, "tolerance": 0 },
+        "indices": [
+          "Prends le logarithme des deux membres, puis divise par $\\ln 1{,}1$ en regardant son signe.",
+          "$n\\ln 1{,}1 > \\ln 3$, et $\\ln 1{,}1 > 0$ car $1{,}1 > 1$ : le sens reste, donc $n > \\dfrac{\\ln 3}{\\ln 1{,}1}$. Calcule ce quotient."
+        ],
+        "revoir": "l-logarithme-030",
+        "solution": "Les deux membres sont strictement positifs et $\\ln$ est strictement croissante : $1{,}1^n > 3 \\iff n\\ln 1{,}1 > \\ln 3$. Or $1{,}1 > 1$, donc $\\ln 1{,}1 > 0$, et le sens reste : $n > \\dfrac{\\ln 3}{\\ln 1{,}1} \\approx 11{,}5$. Contrôle : $1{,}1^{11} \\approx 2{,}85$ et $1{,}1^{12} \\approx 3{,}14$. Le plus petit entier cherché est $12$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-008",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-derivee"],
+    "capacites": ["bo-m-logarithme-03", "bo-m-derivation-05"],
+    "titre": "Dériver $\\ln$ et $\\ln(u)$",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 401,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On admet que $x^2 + 3x + 5 > 0$ pour tout réel $x$. Quelle est la dérivée de la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = \\ln\\left(x^2 + 3x + 5\\right)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$f'(x) = \\dfrac{2x + 3}{x^2 + 3x + 5}$",
+            "$f'(x) = \\dfrac{1}{x^2 + 3x + 5}$",
+            "$f'(x) = \\dfrac{1}{2x + 3}$",
+            "$f'(x) = (2x + 3)\\ln\\left(x^2 + 3x + 5\\right)$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Il manque la dérivée de l'intérieur : $(\\ln u)' = \\dfrac{u'}{u}$, avec $u'(x) = 2x + 3$.",
+            "Tu as mis la dérivée de l'intérieur au dénominateur : la formule est $\\dfrac{u'}{u}$, pas $\\dfrac{1}{u'}$.",
+            "La dérivée de $\\ln u$ n'est pas $u'\\ln u$ : tu as appliqué la règle de $e^u$."
+          ]
+        },
+        "indices": [
+          "Repère l'intérieur $u(x)$, puis applique $(\\ln u)' = \\dfrac{u'}{u}$.",
+          "$u(x) = x^2 + 3x + 5$, donc $u'(x) = 2x + 3$. Place $u'$ au numérateur et $u$ au dénominateur."
+        ],
+        "revoir": "l-logarithme-045",
+        "solution": "On pose $u(x) = x^2 + 3x + 5$, dérivable et strictement positive sur $\\mathbb{R}$, avec $u'(x) = 2x + 3$. Donc $f'(x) = \\dfrac{u'(x)}{u(x)} = \\dfrac{2x + 3}{x^2 + 3x + 5}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la dérivée de la fonction $g$ définie sur $]0\\,;\\,+\\infty[$ par $g(x) = 3\\ln x - x^2$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$g'(x) = \\dfrac{1}{3x} - 2x$",
+            "$g'(x) = 3\\ln x - 2x$",
+            "$g'(x) = \\dfrac{3}{x} - 2x$",
+            "$g'(x) = \\dfrac{3}{x} - x$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Le coefficient $3$ multiplie la dérivée : $(3\\ln x)' = 3 \\times \\dfrac{1}{x} = \\dfrac{3}{x}$, pas $\\dfrac{1}{3x}$.",
+            "Le terme $3\\ln x$ n'a pas été dérivé : la dérivée de $\\ln x$ est $\\dfrac{1}{x}$.",
+            null,
+            "La dérivée de $x^2$ est $2x$, pas $x$."
+          ]
+        },
+        "indices": [
+          "Dérive terme à terme, avec $\\ln'(x) = \\dfrac{1}{x}$ et $\\left(x^2\\right)' = 2x$.",
+          "$(3\\ln x)' = 3 \\times \\dfrac{1}{x}$. Il reste à retrancher la dérivée de $x^2$."
+        ],
+        "revoir": "l-logarithme-040",
+        "solution": "$g'(x) = 3 \\times \\dfrac{1}{x} - 2x = \\dfrac{3}{x} - 2x$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $h$ la fonction définie sur $\\left]-\\dfrac{1}{2}\\,;\\,+\\infty\\right[$ par $h(x) = \\ln(2x + 1)$. Calculer $h'(2)$, sous forme décimale.",
+        "reponse": { "type": "numerique", "valeur": 0.4, "tolerance": 0 },
+        "indices": [
+          "$h = \\ln u$ avec $u(x) = 2x + 1$ : applique $(\\ln u)' = \\dfrac{u'}{u}$, puis remplace $x$ par $2$.",
+          "$h'(x) = \\dfrac{2}{2x + 1}$. Calcule le dénominateur pour $x = 2$, puis le quotient."
+        ],
+        "revoir": "l-logarithme-046",
+        "solution": "$u(x) = 2x + 1 > 0$ sur $\\left]-\\dfrac{1}{2}\\,;\\,+\\infty\\right[$ et $u'(x) = 2$, donc $h'(x) = \\dfrac{2}{2x + 1}$. Ainsi $h'(2) = \\dfrac{2}{5} = 0{,}4$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-009",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-derivee"],
+    "capacites": ["bo-m-logarithme-03", "bo-m-derivation-05"],
+    "titre": "Produits et quotients avec $\\ln x$",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 402,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la dérivée de la fonction $f$ définie sur $]0\\,;\\,+\\infty[$ par $f(x) = (x + 1)\\ln x$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$f'(x) = \\dfrac{1}{x}$",
+            "$f'(x) = \\ln x + \\dfrac{x + 1}{x}$",
+            "$f'(x) = \\ln x + 1$",
+            "$f'(x) = \\dfrac{x + 1}{x}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Tu as multiplié les dérivées des deux facteurs, $1 \\times \\dfrac{1}{x}$. La dérivée d'un produit est $u'v + uv'$.",
+            null,
+            "C'est la dérivée de $x\\ln x$ : ici le premier facteur est $x + 1$, donc $uv' = (x + 1) \\times \\dfrac{1}{x}$.",
+            "Il manque le terme $u'v = 1 \\times \\ln x$."
+          ]
+        },
+        "indices": [
+          "C'est un produit : applique $(uv)' = u'v + uv'$ avec $u(x) = x + 1$ et $v(x) = \\ln x$.",
+          "$u'(x) = 1$ et $v'(x) = \\dfrac{1}{x}$. Écris $u'v$, puis $uv'$, et ajoute."
+        ],
+        "revoir": "l-logarithme-041",
+        "solution": "$f = uv$ avec $u(x) = x + 1$, $u'(x) = 1$, $v(x) = \\ln x$ et $v'(x) = \\dfrac{1}{x}$. Donc $f'(x) = 1 \\times \\ln x + (x + 1) \\times \\dfrac{1}{x} = \\ln x + \\dfrac{x + 1}{x}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la dérivée de la fonction $g$ définie sur $]0\\,;\\,+\\infty[$ par $g(x) = \\dfrac{\\ln x}{x^2}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$g'(x) = \\dfrac{1 - \\ln x}{x^2}$",
+            "$g'(x) = \\dfrac{1}{2x^2}$",
+            "$g'(x) = \\dfrac{1 - 2\\ln x}{x^4}$",
+            "$g'(x) = \\dfrac{1 - 2\\ln x}{x^3}$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "C'est la dérivée de $\\dfrac{\\ln x}{x}$, pas de $\\dfrac{\\ln x}{x^2}$ : ici $v(x) = x^2$ et $v'(x) = 2x$.",
+            "Tu as divisé la dérivée du numérateur par celle du dénominateur, $\\dfrac{1/x}{2x}$ : ce n'est pas la formule du quotient.",
+            "Le calcul mène à $\\dfrac{x - 2x\\ln x}{x^4}$ ; le numérateur vaut $x(1 - 2\\ln x)$, et il faut encore simplifier par $x$.",
+            null
+          ]
+        },
+        "indices": [
+          "C'est un quotient : $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$, avec $u(x) = \\ln x$ et $v(x) = x^2$.",
+          "Le numérateur vaut $\\dfrac{1}{x} \\times x^2 - \\ln x \\times 2x = x - 2x\\ln x$, et le dénominateur $\\left(x^2\\right)^2 = x^4$. Factorise le numérateur par $x$, puis simplifie."
+        ],
+        "revoir": "l-logarithme-041",
+        "solution": "$u(x) = \\ln x$, $u'(x) = \\dfrac{1}{x}$, $v(x) = x^2$, $v'(x) = 2x$. Donc $g'(x) = \\dfrac{\\frac{1}{x} \\times x^2 - \\ln x \\times 2x}{x^4} = \\dfrac{x - 2x\\ln x}{x^4} = \\dfrac{x(1 - 2\\ln x)}{x^4} = \\dfrac{1 - 2\\ln x}{x^3}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $k$ la fonction définie sur $]0\\,;\\,+\\infty[$ par $k(x) = x\\ln x$. Quel est le coefficient directeur de la tangente à sa courbe au point d'abscisse $e$ ?",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Le coefficient directeur de la tangente au point d'abscisse $e$ est le nombre dérivé $k'(e)$ : dérive le produit $x \\times \\ln x$.",
+          "$k'(x) = \\ln x + 1$. Remplace $x$ par $e$, avec $\\ln e = 1$."
+        ],
+        "revoir": "l-logarithme-041",
+        "solution": "$k'(x) = 1 \\times \\ln x + x \\times \\dfrac{1}{x} = \\ln x + 1$. Le coefficient directeur cherché est $k'(e) = \\ln e + 1 = 1 + 1 = 2$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-010",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-derivee"],
+    "capacites": ["bo-m-logarithme-08", "bo-m-logarithme-03"],
+    "titre": "Démonstration et sens de variation",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 403,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Remettre dans l'ordre les étapes de la démonstration de $\\ln'(x) = \\dfrac{1}{x}$, la dérivabilité de $\\ln$ sur $]0\\,;\\,+\\infty[$ étant admise.",
+        "reponse": {
+          "type": "ordre",
+          "elements": [
+            "Pour tout réel $x > 0$, $e^{\\ln x} = x$.",
+            "On dérive les deux membres : la dérivée de la composée $e^{\\ln x}$ est $\\ln'(x) \\times e^{\\ln x}$, celle de $x$ est $1$.",
+            "Comme $e^{\\ln x} = x$, on obtient $x \\times \\ln'(x) = 1$.",
+            "Comme $x \\neq 0$, on divise par $x$ : $\\ln'(x) = \\dfrac{1}{x}$."
+          ]
+        },
+        "indices": [
+          "On part d'une égalité, vraie pour tout $x > 0$, qui relie $\\ln$ et l'exponentielle ; puis on la dérive.",
+          "La première étape est $e^{\\ln x} = x$ ; la dernière isole $\\ln'(x)$ en divisant par $x$. Range les deux étapes du milieu."
+        ],
+        "revoir": "l-logarithme-043",
+        "solution": "On part de $e^{\\ln x} = x$, vraie pour tout $x > 0$. On dérive les deux membres : la règle de la composée donne $\\ln'(x) \\times e^{\\ln x}$ à gauche, et $1$ à droite. On remplace $e^{\\ln x}$ par $x$ : $x \\times \\ln'(x) = 1$. Enfin, $x \\neq 0$, donc $\\ln'(x) = \\dfrac{1}{x}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = \\ln\\left(x^2 + 1\\right)$. Quel est son sens de variation ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$f$ est croissante sur $\\mathbb{R}$, comme $\\ln$.",
+            "$f$ est décroissante sur $]-\\infty\\,;\\,0]$ et croissante sur $[0\\,;\\,+\\infty[$.",
+            "$f$ est croissante sur $]-\\infty\\,;\\,0]$ et décroissante sur $[0\\,;\\,+\\infty[$.",
+            "$f$ est décroissante sur $\\mathbb{R}$."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$\\ln$ est croissante, mais $f(x) = \\ln\\big(u(x)\\big)$ a les variations de $u(x) = x^2 + 1$, qui décroît puis croît. Par exemple, $f(-1) = \\ln 2 > f(0) = 0$.",
+            null,
+            "Le signe est inversé : pour $x < 0$, $f'(x) = \\dfrac{2x}{x^2 + 1} < 0$, donc $f$ décroît.",
+            "Pour $x > 0$, $f'(x) = \\dfrac{2x}{x^2 + 1} > 0$ : $f$ y est croissante."
+          ]
+        },
+        "indices": [
+          "$(\\ln u)' = \\dfrac{u'}{u}$ a le signe de $u'$, car $u > 0$ : $f$ a les mêmes variations que $u(x) = x^2 + 1$.",
+          "$f'(x) = \\dfrac{2x}{x^2 + 1}$, et $x^2 + 1 > 0$ : $f'(x)$ a le signe de $2x$. Où est-il négatif, où est-il positif ?"
+        ],
+        "revoir": "l-logarithme-045",
+        "solution": "$f'(x) = \\dfrac{2x}{x^2 + 1}$, et $x^2 + 1 > 0$ : $f'(x)$ a le signe de $x$. Donc $f'(x) \\leqslant 0$ sur $]-\\infty\\,;\\,0]$ et $f'(x) \\geqslant 0$ sur $[0\\,;\\,+\\infty[$ : $f$ est décroissante sur $]-\\infty\\,;\\,0]$ et croissante sur $[0\\,;\\,+\\infty[$, de minimum $f(0) = \\ln 1 = 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $g$ une fonction dérivable sur $]0\\,;\\,+\\infty[$ telle que $g'(x) = \\dfrac{1 - \\ln x}{x^2}$. Sur quel intervalle $g$ est-elle croissante ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$]0\\,;\\,1]$", "$[e\\,;\\,+\\infty[$", "$]0\\,;\\,+\\infty[$", "$]0\\,;\\,e]$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "$1 - \\ln x$ s'annule quand $\\ln x = 1$, c'est-à-dire en $x = e$, pas en $x = 1$ (où $\\ln x = 0$).",
+            "Le sens est inversé : pour $x > e$, $\\ln x > 1$, donc $1 - \\ln x < 0$ et $g$ décroît.",
+            "$g'(x)$ change de signe : pour $x = e^2$, $1 - \\ln x = -1 < 0$.",
+            null
+          ]
+        },
+        "indices": [
+          "$x^2 > 0$ : $g'(x)$ a le signe de $1 - \\ln x$. Résous $1 - \\ln x \\geqslant 0$.",
+          "$1 - \\ln x \\geqslant 0 \\iff \\ln x \\leqslant 1 \\iff \\ln x \\leqslant \\ln e$. Conclus avec la croissance de $\\ln$."
+        ],
+        "revoir": "l-logarithme-048",
+        "solution": "Pour $x > 0$, $x^2 > 0$, donc $g'(x)$ a le signe de $1 - \\ln x$. Or $1 - \\ln x \\geqslant 0 \\iff \\ln x \\leqslant 1 \\iff x \\leqslant e$. Donc $g' \\geqslant 0$ sur $]0\\,;\\,e]$ : $g$ est croissante sur $]0\\,;\\,e]$, et décroissante sur $[e\\,;\\,+\\infty[$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-011",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-limites"],
+    "capacites": ["bo-m-logarithme-04", "bo-m-limites-fonctions-06"],
+    "titre": "Limites de $\\ln$ et asymptotes",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 501,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la limite de $3 - \\ln x$ quand $x$ tend vers $0$, avec $x > 0$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$-\\infty$", "$3$", "$+\\infty$", "$0$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$\\ln x$ tend vers $-\\infty$, donc $-\\ln x$ tend vers $+\\infty$ : le signe moins retourne la limite.",
+            "Ce serait vrai si $\\ln x$ tendait vers $0$. Or $\\ln x$ vaut $0$ en $x = 1$ ; en $0$, il tend vers $-\\infty$.",
+            null,
+            "Aucun morceau ne tend vers $0$ ici : $\\ln x$ tend vers $-\\infty$ quand $x$ tend vers $0$."
+          ]
+        },
+        "indices": [
+          "Écris la limite de $\\ln x$ en $0$, puis celle de $-\\ln x$.",
+          "$\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\ln x = -\\infty$, donc $-\\ln x$ tend vers l'opposé. Ajoute $3$."
+        ],
+        "revoir": "l-logarithme-057",
+        "solution": "$\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\ln x = -\\infty$, donc $-\\ln x$ tend vers $+\\infty$. Par somme : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} (3 - \\ln x) = +\\infty$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la limite de $\\ln\\left(2 + e^{-x}\\right)$ quand $x$ tend vers $+\\infty$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\ln 2$", "$+\\infty$", "$0$", "$2$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$e^{-x}$ tend vers $0$, pas vers $+\\infty$ : ce qui est dans le logarithme tend vers $2$.",
+            "Tu as pris la limite de $e^{-x}$ seule : l'intérieur tend vers $2 + 0 = 2$, et le logarithme vers $\\ln 2$.",
+            "Il reste à prendre le logarithme : l'intérieur tend vers $2$, et $\\ln X$ tend vers $\\ln 2$ quand $X$ tend vers $2$."
+          ]
+        },
+        "indices": [
+          "C'est une composée : cherche d'abord la limite de l'intérieur $2 + e^{-x}$.",
+          "$e^{-x}$ tend vers $0$ en $+\\infty$, donc $X = 2 + e^{-x}$ tend vers $2$. Quelle est la limite de $\\ln X$ quand $X$ tend vers $2$ ?"
+        ],
+        "revoir": "l-logarithme-066",
+        "solution": "$\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$, donc $X = 2 + e^{-x}$ tend vers $2$. La fonction $\\ln$ est continue en $2$ : $\\ln X$ tend vers $\\ln 2$. Par composée, $\\lim\\limits_{x \\to +\\infty} \\ln\\left(2 + e^{-x}\\right) = \\ln 2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? La droite d'équation $x = 3$ est asymptote verticale à la courbe de la fonction $x \\mapsto \\ln(x - 3)$, définie sur $]3\\,;\\,+\\infty[$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Quand $x$ tend vers $3$ avec $x > 3$, $X = x - 3$ tend vers $0$ avec $X > 0$, et $\\ln X$ tend vers $-\\infty$ : la limite est infinie en $3$, d'où l'asymptote verticale d'équation $x = 3$."
+        },
+        "indices": [
+          "Une limite infinie en un réel $a$ donne une asymptote verticale d'équation $x = a$ : cherche la limite en $3$.",
+          "On pose $X = x - 3$ : quand $x$ tend vers $3$ avec $x > 3$, $X$ tend vers $0$ avec $X > 0$. Vers quoi tend $\\ln X$ ?"
+        ],
+        "revoir": "l-logarithme-059",
+        "solution": "Quand $x$ tend vers $3$ avec $x > 3$, $X = x - 3$ tend vers $0$ avec $X > 0$, et $\\ln X$ tend vers $-\\infty$. Par composée, $\\lim\\limits_{\\substack{x \\to 3 \\\\ x > 3}} \\ln(x - 3) = -\\infty$ : la droite d'équation $x = 3$ est asymptote verticale à la courbe. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-012",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-limites"],
+    "capacites": ["bo-m-logarithme-05", "bo-m-limites-fonctions-05"],
+    "titre": "Croissances comparées",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 502,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la limite de $\\dfrac{x}{\\ln x}$ quand $x$ tend vers $+\\infty$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0$", "$1$", "On ne peut pas conclure : c'est une forme indéterminée.", "$+\\infty$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "C'est la limite de $\\dfrac{\\ln x}{x}$, l'inverse de cette expression.",
+            "$x$ et $\\ln x$ tendent tous deux vers $+\\infty$, mais pas à la même vitesse : $x$ l'emporte largement.",
+            "La forme « $\\dfrac{\\infty}{\\infty}$ » se lève avec les croissances comparées : $\\dfrac{x}{\\ln x}$ est l'inverse de $\\dfrac{\\ln x}{x}$.",
+            null
+          ]
+        },
+        "indices": [
+          "Écris $\\dfrac{x}{\\ln x}$ comme l'inverse d'un quotient dont tu connais la limite.",
+          "Pour $x > 1$, $\\dfrac{x}{\\ln x} = \\dfrac{1}{\\frac{\\ln x}{x}}$, et $\\dfrac{\\ln x}{x}$ tend vers $0$ en restant positif. Que donne « $\\dfrac{1}{0^+}$ » ?"
+        ],
+        "revoir": "l-logarithme-061",
+        "solution": "Pour $x > 1$, $\\ln x > 0$ et $\\dfrac{x}{\\ln x} = \\dfrac{1}{\\frac{\\ln x}{x}}$. Par croissances comparées, $\\dfrac{\\ln x}{x}$ tend vers $0$ en restant strictement positif. Par quotient, $\\lim\\limits_{x \\to +\\infty} \\dfrac{x}{\\ln x} = +\\infty$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la limite de $x^2\\ln x$ quand $x$ tend vers $0$, avec $x > 0$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$-\\infty$", "$0$", "$+\\infty$", "$1$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$\\ln x$ tend bien vers $-\\infty$, mais $x^2$ tend vers $0$ : c'est la forme « $0 \\times \\infty$ », où la puissance l'emporte.",
+            null,
+            "Le produit est négatif pour $0 < x < 1$, car $\\ln x < 0$ : il ne peut pas tendre vers $+\\infty$.",
+            "Aucun des deux facteurs ne tend vers $1$ : $x^2$ tend vers $0$ et $\\ln x$ vers $-\\infty$."
+          ]
+        },
+        "indices": [
+          "C'est la forme « $0 \\times \\infty$ » : pense aux croissances comparées en $0$.",
+          "En $0$, $x^n\\ln x$ a la même limite pour tout entier $n \\geqslant 1$ : la puissance de $x$ l'emporte sur le logarithme."
+        ],
+        "revoir": "l-logarithme-061",
+        "solution": "Par croissances comparées, pour tout entier naturel $n$ non nul, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} x^n\\ln x = 0$. Avec $n = 2$ : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} x^2\\ln x = 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la limite de $\\ln x - x$ quand $x$ tend vers $+\\infty$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0$", "$+\\infty$", "$-\\infty$", "$-1$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Les deux termes tendent vers $+\\infty$ : leur différence n'a aucune raison de tendre vers $0$. C'est une forme indéterminée, à lever en factorisant.",
+            "C'est $x$ qui l'emporte, et il est précédé d'un signe moins : $\\ln x - x = x\\left(\\dfrac{\\ln x}{x} - 1\\right)$.",
+            null,
+            "En factorisant, $\\dfrac{\\ln x}{x} - 1$ tend vers $-1$, mais il reste multiplié par $x$, qui tend vers $+\\infty$."
+          ]
+        },
+        "indices": [
+          "C'est la forme « $+\\infty - \\infty$ » : factorise par le terme le plus fort, $x$.",
+          "$\\ln x - x = x\\left(\\dfrac{\\ln x}{x} - 1\\right)$. Vers quoi tend la parenthèse ?"
+        ],
+        "revoir": "l-logarithme-062",
+        "solution": "Pour $x > 0$, $\\ln x - x = x\\left(\\dfrac{\\ln x}{x} - 1\\right)$. Par croissances comparées, $\\dfrac{\\ln x}{x}$ tend vers $0$, donc la parenthèse tend vers $-1$. Par produit, $\\lim\\limits_{x \\to +\\infty} (\\ln x - x) = -\\infty$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-013",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-limites"],
+    "capacites": ["bo-m-logarithme-04"],
+    "titre": "Les courbes de $\\ln$ et de l'exponentielle",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 503,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Dans un repère orthonormé, le point $A\\left(-1\\,;\\,e^{-1}\\right)$ est sur la courbe de l'exponentielle. Quel est son symétrique par rapport à la droite d'équation $y = x$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left(1\\,;\\,-e^{-1}\\right)$",
+            "$\\left(-e^{-1}\\,;\\,1\\right)$",
+            "$\\left(e^{-1}\\,;\\,-1\\right)$",
+            "$\\left(1\\,;\\,e^{-1}\\right)$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "C'est le symétrique de $A$ par rapport à l'origine : la symétrie d'axe $y = x$ échange l'abscisse et l'ordonnée, sans changer leurs signes.",
+            "Les coordonnées sont bien échangées, mais leurs signes ne doivent pas changer.",
+            null,
+            "C'est le symétrique de $A$ par rapport à l'axe des ordonnées : il est sur la courbe de $x \\mapsto e^{-x}$, pas sur celle de $\\ln$."
+          ]
+        },
+        "indices": [
+          "La symétrie par rapport à la droite d'équation $y = x$ échange l'abscisse et l'ordonnée d'un point.",
+          "Le symétrique a pour abscisse l'ordonnée de $A$, et pour ordonnée son abscisse. Contrôle : il doit être sur la courbe de $\\ln$."
+        ],
+        "revoir": "l-logarithme-082",
+        "solution": "La symétrie par rapport à la droite d'équation $y = x$ échange les coordonnées : le symétrique de $A\\left(-1\\,;\\,e^{-1}\\right)$ est $A'\\left(e^{-1}\\,;\\,-1\\right)$. Il est bien sur la courbe de $\\ln$, car $\\ln\\left(e^{-1}\\right) = -1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux ? Les courbes de $\\ln$ et de l'exponentielle se coupent en un point de la droite d'équation $y = x$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Pour tout réel $x > 0$, $\\ln x \\leqslant x - 1 < x$ : la courbe de $\\ln$ est strictement sous la droite d'équation $y = x$. Par symétrie, celle de l'exponentielle est strictement au-dessus : les deux courbes ne se coupent pas."
+        },
+        "indices": [
+          "Un point commun aux deux courbes, situé sur la droite $y = x$, vérifierait $\\ln x = x$ : est-ce possible ?",
+          "Le cours montre que $\\ln x \\leqslant x - 1$ pour tout $x > 0$ : compare $\\ln x$ et $x$."
+        ],
+        "revoir": "l-logarithme-058",
+        "solution": "Un point de la droite $y = x$ commun aux deux courbes vérifierait $\\ln x = x$. Or, pour tout $x > 0$, $\\ln x \\leqslant x - 1 < x$ : la courbe de $\\ln$ est strictement sous la droite d'équation $y = x$ et, par symétrie, celle de l'exponentielle est strictement au-dessus. Les deux courbes n'ont aucun point commun. L'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "La tangente à la courbe de l'exponentielle au point $(0\\,;\\,1)$ a pour équation $y = x + 1$. Par la symétrie d'axe $y = x$, elle devient la tangente à la courbe de $\\ln$ au point $(1\\,;\\,0)$. Quelle est l'équation de cette tangente ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$y = x - 1$", "$y = x + 1$", "$y = -x + 1$", "$y = 2x - 2$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est la tangente à la courbe de l'exponentielle : elle passe par $(0\\,;\\,1)$, pas par $(1\\,;\\,0)$.",
+            "Cette droite passe bien par $(1\\,;\\,0)$, mais son coefficient directeur devrait être $\\ln'(1) = 1$, pas $-1$.",
+            "Le coefficient directeur de la tangente est $\\ln'(1) = \\dfrac{1}{1} = 1$, pas $2$."
+          ]
+        },
+        "indices": [
+          "La symétrie par rapport à la droite $y = x$ échange $x$ et $y$ : dans l'équation $y = x + 1$, échange les deux lettres.",
+          "Tu obtiens $x = y + 1$ : isole $y$. Contrôle avec le coefficient directeur attendu, $\\ln'(1)$."
+        ],
+        "revoir": "l-logarithme-082",
+        "solution": "La symétrie d'axe $y = x$ échange $x$ et $y$ : la droite d'équation $y = x + 1$ devient la droite d'équation $x = y + 1$, soit $y = x - 1$. Contrôle : elle passe par $(1\\,;\\,0)$ et a pour coefficient directeur $\\ln'(1) = \\dfrac{1}{1} = 1$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-014",
+    "chapitre": "logarithme",
+    "niveau": 1,
+    "notions": ["n-logarithme-problemes"],
+    "capacites": ["bo-m-logarithme-10", "bo-m-suites-15"],
+    "titre": "L'algorithme de Briggs à la main",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 601,
+    "preambule": "On reprend la fonction Python du cours, qui renvoie une valeur approchée de $\\ln a$ pour un réel $a > 0$ et un entier naturel $n$.",
+    "code": {
+      "langage": "python",
+      "source": "from math import sqrt\n\ndef briggs(a, n):\n    x = a\n    for k in range(n):\n        x = sqrt(x)\n    return 2 ** n * (x - 1)"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle valeur renvoie l'appel briggs(81, 2) ?",
+        "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+        "indices": [
+          "Fais tourner la boucle à la main : $x$ part de $81$, et la boucle prend $2$ fois la racine carrée.",
+          "Après le premier passage, $x = \\sqrt{81}$. Fais le second passage, puis calcule $2^2 \\times (x - 1)$."
+        ],
+        "revoir": "l-logarithme-077",
+        "solution": "Au départ, $x = 81$. Premier passage : $x = \\sqrt{81} = 9$. Second passage : $x = \\sqrt{9} = 3$. La fonction renvoie $2^2 \\times (3 - 1) = 4 \\times 2 = 8$. C'est une mauvaise approximation de $\\ln 81 \\approx 4{,}39$ : avec $n = 2$, $x = 3$ est encore loin de $1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux ? Après les $n$ passages dans la boucle, la variable $x$ vérifie $\\ln x = \\dfrac{\\ln a}{2^n}$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Chaque racine carrée divise le logarithme par $2$, car $\\ln\\sqrt{y} = \\dfrac{1}{2}\\ln y$ : après $n$ racines carrées, $\\ln x = \\dfrac{\\ln a}{2^n}$."
+        },
+        "indices": [
+          "Que devient le logarithme d'un nombre quand on prend sa racine carrée ? Utilise $\\ln\\sqrt{y} = \\dfrac{1}{2}\\ln y$.",
+          "Après un passage, $\\ln x = \\dfrac{1}{2}\\ln a$ ; après deux passages, $\\ln x = \\dfrac{1}{4}\\ln a$. Continue."
+        ],
+        "revoir": "l-logarithme-077",
+        "solution": "Pour $y > 0$, $\\ln\\sqrt{y} = \\dfrac{1}{2}\\ln y$ : chaque passage dans la boucle divise le logarithme de $x$ par $2$. Après $n$ passages, $\\ln x = \\dfrac{\\ln a}{2^n}$. L'affirmation est vraie."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pourquoi la valeur renvoyée, $2^n(x - 1)$, est-elle proche de $\\ln a$ quand $n$ est grand ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Parce que $x$ devient très grand, et que $\\ln x$ est alors proche de $x - 1$.",
+            "Parce que $x$ devient proche de $1$, où la courbe de $\\ln$ se confond presque avec sa tangente d'équation $y = x - 1$.",
+            "Parce que $2^n$ devient proche de $\\ln a$.",
+            "Parce que $x - 1$ est toujours égal à $\\ln x$."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Les racines carrées successives rapprochent $x$ de $1$ : elles ne le font pas grandir. Et loin de $1$, $\\ln x$ et $x - 1$ sont très différents.",
+            null,
+            "$2^n$ devient très grand ; c'est le produit $2^n(x - 1)$ qui approche $\\ln a$.",
+            "$\\ln x \\leqslant x - 1$, avec égalité seulement pour $x = 1$ : c'est une approximation, pas une égalité."
+          ]
+        },
+        "indices": [
+          "Utilise la question 2 : vers quoi tend $\\ln x = \\dfrac{\\ln a}{2^n}$ quand $n$ grandit ? Et donc $x$ ?",
+          "Près de $1$, $\\ln x \\approx x - 1$ (tangente en $1$). Or $\\ln a = 2^n\\ln x$."
+        ],
+        "revoir": "l-logarithme-077",
+        "solution": "$\\ln x = \\dfrac{\\ln a}{2^n}$ tend vers $0$ quand $n$ grandit, donc $x$ devient proche de $1$. Près de $1$, la courbe de $\\ln$ se confond presque avec sa tangente d'équation $y = x - 1$ : $\\ln x \\approx x - 1$. Donc $\\ln a = 2^n\\ln x \\approx 2^n(x - 1)$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-015",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-definition", "n-logarithme-proprietes"],
+    "capacites": ["bo-m-logarithme-01", "bo-m-logarithme-02"],
+    "titre": "Ensembles de définition : somme ou produit ?",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 111,
+    "preambule": "On considère les fonctions $f$, $g$ et $h$ définies par $f(x) = \\ln\\left(x^2 - 2x - 3\\right)$, $g(x) = \\ln(x - 1) + \\ln(x + 2)$ et $h(x) = \\ln\\big((x - 1)(x + 2)\\big)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer l'ensemble de définition de $f$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$]-1\\,;\\,3[$",
+            "$]-\\infty\\,;\\,-1[ \\cup ]3\\,;\\,+\\infty[$",
+            "$]3\\,;\\,+\\infty[$",
+            "$]-\\infty\\,;\\,-3[ \\cup ]1\\,;\\,+\\infty[$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Entre les racines, le trinôme a le signe contraire de son coefficient $1 > 0$ : il y est négatif. Pour $x = 0$, $x^2 - 2x - 3 = -3$.",
+            null,
+            "Tu as oublié les réels négatifs : pour $x = -2$, $x^2 - 2x - 3 = 5 > 0$.",
+            "Les racines sont $-1$ et $3$ : vérifie avec $(-1)^2 - 2 \\times (-1) - 3 = 0$."
+          ]
+        },
+        "indices": [
+          "Écris la condition $x^2 - 2x - 3 > 0$ : c'est le signe d'un trinôme.",
+          "$\\Delta = (-2)^2 - 4 \\times 1 \\times (-3) = 16$ : calcule les deux racines.",
+          "Les racines sont $-1$ et $3$, et le coefficient de $x^2$ est positif : où un tel trinôme est-il strictement positif ?"
+        ],
+        "revoir": "l-logarithme-008",
+        "solution": "$f(x)$ existe si et seulement si $x^2 - 2x - 3 > 0$. $\\Delta = (-2)^2 - 4 \\times 1 \\times (-3) = 16$, donc $x_1 = \\dfrac{2 - 4}{2} = -1$ et $x_2 = \\dfrac{2 + 4}{2} = 3$. Le coefficient de $x^2$ est $1 > 0$ : le trinôme est strictement positif à l'extérieur de ses racines. $f$ est définie sur $]-\\infty\\,;\\,-1[ \\cup ]3\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer l'ensemble de définition de $g$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$]1\\,;\\,+\\infty[$",
+            "$]-2\\,;\\,+\\infty[$",
+            "$]-2\\,;\\,1[$",
+            "$]-\\infty\\,;\\,-2[ \\cup ]1\\,;\\,+\\infty[$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Pour $x$ entre $-2$ et $1$, $x - 1 < 0$ et $\\ln(x - 1)$ n'existe pas : les **deux** conditions doivent être vraies.",
+            "Sur cet intervalle, $x - 1 < 0$ : le premier logarithme n'existe pas.",
+            "Pour $x = -3$, $\\ln(-3 - 1) = \\ln(-4)$ n'existe pas : chacun des deux logarithmes doit exister."
+          ]
+        },
+        "indices": [
+          "Il y a deux logarithmes : écris une condition pour chacun.",
+          "Il faut $x - 1 > 0$ **et** $x + 2 > 0$, soit $x > 1$ et $x > -2$.",
+          "Garde les réels qui vérifient les deux conditions à la fois : la plus exigeante l'emporte."
+        ],
+        "revoir": "l-logarithme-007",
+        "solution": "$g(x)$ existe si et seulement si $x - 1 > 0$ et $x + 2 > 0$, soit $x > 1$ et $x > -2$. Les deux à la fois donnent $x > 1$ : $g$ est définie sur $]1\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer l'ensemble de définition de $h$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$]1\\,;\\,+\\infty[$",
+            "$]-2\\,;\\,1[$",
+            "$]-\\infty\\,;\\,-2[ \\cup ]1\\,;\\,+\\infty[$",
+            "$\\mathbb{R}$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Un produit est strictement positif quand ses deux facteurs sont strictement positifs, **ou** quand ils sont tous les deux strictement négatifs : pour $x = -3$, $(-4) \\times (-1) = 4 > 0$.",
+            "Entre $-2$ et $1$, les deux facteurs sont de signes contraires : le produit est négatif.",
+            null,
+            "En $x = 0$, $(0 - 1)(0 + 2) = -2 < 0$ : le logarithme n'existe pas."
+          ]
+        },
+        "indices": [
+          "Ici, il n'y a qu'un logarithme : la condition porte sur le produit, $(x - 1)(x + 2) > 0$.",
+          "Le produit $(x - 1)(x + 2)$ s'annule en $1$ et en $-2$.",
+          "Dresse le tableau de signes des deux facteurs $x - 1$ et $x + 2$, puis lis où le produit est strictement positif."
+        ],
+        "revoir": "l-logarithme-008",
+        "solution": "$h(x)$ existe si et seulement si $(x - 1)(x + 2) > 0$. Ce trinôme a pour racines $1$ et $-2$, et son coefficient de $x^2$ est $1 > 0$ : il est strictement positif à l'extérieur de ses racines. $h$ est définie sur $]-\\infty\\,;\\,-2[ \\cup ]1\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Vrai ou faux ? $h(-3)$ existe, mais $g(-3)$ n'existe pas : les fonctions $g$ et $h$ ne sont égales que sur $]1\\,;\\,+\\infty[$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$h(-3) = \\ln\\big((-4) \\times (-1)\\big) = \\ln 4$ existe, mais $g(-3)$ demande $\\ln(-4)$, qui n'existe pas. Sur $]1\\,;\\,+\\infty[$, les deux facteurs sont strictement positifs et $\\ln(ab) = \\ln a + \\ln b$ donne $g(x) = h(x)$."
+        },
+        "indices": [
+          "Calcule $h(-3)$ et $g(-3)$ : chaque logarithme existe-t-il ?",
+          "$h(-3) = \\ln\\big((-4) \\times (-1)\\big)$ : le produit est positif. Et $g(-3) = \\ln(-4) + \\ln(-1)$.",
+          "Sur $]1\\,;\\,+\\infty[$, $x - 1 > 0$ et $x + 2 > 0$ : la règle $\\ln(ab) = \\ln a + \\ln b$ s'applique-t-elle ?"
+        ],
+        "revoir": "l-logarithme-013",
+        "solution": "$h(-3) = \\ln\\big((-3 - 1)(-3 + 2)\\big) = \\ln\\big((-4) \\times (-1)\\big) = \\ln 4$ existe. Mais $g(-3) = \\ln(-4) + \\ln(-1)$ n'existe pas. Sur $]1\\,;\\,+\\infty[$, $x - 1 > 0$ et $x + 2 > 0$, donc $\\ln\\big((x - 1)(x + 2)\\big) = \\ln(x - 1) + \\ln(x + 2)$ : $g(x) = h(x)$. Les deux fonctions ne coïncident que là où elles sont toutes deux définies, sur $]1\\,;\\,+\\infty[$. L'affirmation est vraie.",
+        "erreurFrequente": "Croire que $\\ln\\big((x - 1)(x + 2)\\big)$ et $\\ln(x - 1) + \\ln(x + 2)$ sont toujours égaux : la règle du produit suppose les deux facteurs strictement positifs."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-016",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-definition"],
+    "capacites": ["bo-m-logarithme-01", "bo-m-continuite-03", "bo-m-continuite-04"],
+    "titre": "Le logarithme, un exposant",
+    "duree": 10,
+    "calculatrice": false,
+    "ordre": 112,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que l'équation $e^x = 0{,}5$ admet une unique solution dans $\\mathbb{R}$ et donner sa valeur exacte. Justifier ensuite, sans calculatrice, que cette solution est strictement négative.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "C'est le théorème des valeurs intermédiaires, cas strictement monotone, sur $\\mathbb{R}$ : rappelle les propriétés de l'exponentielle et ses limites en $-\\infty$ et en $+\\infty$.",
+          "L'exponentielle est continue et strictement croissante, de limites $0$ et $+\\infty$ ; $0{,}5$ est entre les deux. Par définition, la solution se note $\\ln 0{,}5$.",
+          "Pour le signe, compare $e^{\\ln 0{,}5} = 0{,}5$ avec $1 = e^0$, puis utilise la croissance stricte de l'exponentielle."
+        ],
+        "revoir": "l-logarithme-005",
+        "solution": "La fonction exponentielle est continue et strictement croissante sur $\\mathbb{R}$, avec $\\lim\\limits_{x \\to -\\infty} e^x = 0$ et $\\lim\\limits_{x \\to +\\infty} e^x = +\\infty$. Or $0{,}5$ appartient à $]0\\,;\\,+\\infty[$ : d'après le théorème des valeurs intermédiaires (cas strictement monotone), l'équation $e^x = 0{,}5$ admet une unique solution dans $\\mathbb{R}$. Par définition, c'est $\\ln 0{,}5$.\n\nDe plus, $e^{\\ln 0{,}5} = 0{,}5 < 1 = e^0$. L'exponentielle étant strictement croissante, $\\ln 0{,}5 < 0$. La solution est $\\ln 0{,}5$, et elle est strictement négative.",
+        "erreurFrequente": "Écrire $x = \\ln 0{,}5$ sans justifier l'existence et l'unicité, ou croire qu'un logarithme est toujours positif."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On donne $e^2 \\approx 7{,}39$ et $e^3 \\approx 20{,}09$. Sans calculatrice, déterminer l'entier $n$ tel que $n < \\ln 20 < n + 1$.",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "$\\ln 20$ est l'exposant $x$ tel que $e^x = 20$ : place $20$ entre deux puissances entières de $e$.",
+          "Compare $20$ avec les deux valeurs données : $20$ est-il plus grand ou plus petit que $e^3 \\approx 20{,}09$ ?",
+          "L'exponentielle est strictement croissante : $e^a < e^x < e^b$ équivaut à $a < x < b$. Applique-le avec $x = \\ln 20$."
+        ],
+        "revoir": "l-logarithme-004",
+        "solution": "$e^{\\ln 20} = 20$. Or $e^2 \\approx 7{,}39 < 20 < 20{,}09 \\approx e^3$, donc $e^2 < e^{\\ln 20} < e^3$. L'exponentielle est strictement croissante, donc $2 < \\ln 20 < 3$. L'entier cherché est $n = 2$ (en fait, $\\ln 20 \\approx 2{,}996$, très proche de $3$).",
+        "erreurFrequente": "Répondre $3$ en pensant que $\\ln 20$ dépasse $3$ : $e^3$ est légèrement plus grand que $20$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $A = e^{2\\ln 3} + e^{-\\ln 4}$. Donner la valeur décimale exacte.",
+        "reponse": { "type": "numerique", "valeur": 9.25, "tolerance": 0 },
+        "indices": [
+          "Ramène chaque terme à $e^{\\ln a} = a$, avec les règles de première sur l'exponentielle : $e^{na} = \\left(e^a\\right)^n$ et $e^{-a} = \\dfrac{1}{e^a}$.",
+          "$e^{2\\ln 3} = \\left(e^{\\ln 3}\\right)^2$. Simplifie $e^{\\ln 3}$, puis élève au carré.",
+          "$e^{-\\ln 4} = \\dfrac{1}{e^{\\ln 4}}$ : simplifie de même, puis ajoute les deux résultats."
+        ],
+        "revoir": "l-logarithme-003",
+        "solution": "$e^{2\\ln 3} = \\left(e^{\\ln 3}\\right)^2 = 3^2 = 9$ et $e^{-\\ln 4} = \\dfrac{1}{e^{\\ln 4}} = \\dfrac{1}{4} = 0{,}25$. Donc $A = 9 + 0{,}25 = 9{,}25$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-017",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-proprietes"],
+    "capacites": ["bo-m-logarithme-02"],
+    "titre": "Simplifier et démontrer des égalités",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 211,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Écrire $A = \\ln 32 - \\ln\\left(\\dfrac{1}{8}\\right) + 2\\ln\\left(\\sqrt{2}\\right)$ sous la forme $k\\ln 2$, avec $k$ entier. Donner $k$.",
+        "reponse": { "type": "numerique", "valeur": 9, "tolerance": 0 },
+        "indices": [
+          "Écris $32$, $\\dfrac{1}{8}$ et $\\sqrt{2}$ à l'aide de $2$ : puissance, inverse, racine carrée.",
+          "$\\ln 32 = \\ln\\left(2^5\\right) = 5\\ln 2$ et $\\ln\\left(\\dfrac{1}{8}\\right) = -\\ln 8 = -3\\ln 2$.",
+          "$\\ln\\left(\\sqrt{2}\\right) = \\dfrac{1}{2}\\ln 2$. Remplace les trois termes, en faisant attention au signe moins devant le deuxième."
+        ],
+        "revoir": "l-logarithme-014",
+        "solution": "$\\ln 32 = \\ln\\left(2^5\\right) = 5\\ln 2$ ; $\\ln\\left(\\dfrac{1}{8}\\right) = -\\ln\\left(2^3\\right) = -3\\ln 2$ ; $\\ln\\left(\\sqrt{2}\\right) = \\dfrac{1}{2}\\ln 2$. Donc $A = 5\\ln 2 - (-3\\ln 2) + 2 \\times \\dfrac{1}{2}\\ln 2 = (5 + 3 + 1)\\ln 2 = 9\\ln 2$. Ainsi $k = 9$.",
+        "erreurFrequente": "Oublier que retrancher $-3\\ln 2$ revient à ajouter $3\\ln 2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout réel $x > 0$, $\\ln\\left(x^2 + x\\right) - \\ln x = \\ln(x + 1)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Vérifie d'abord que chaque logarithme existe pour $x > 0$, puis transforme le membre de gauche.",
+          "Pour $x > 0$, $x^2 + x = x(x + 1) > 0$. Une différence de logarithmes est le logarithme d'un quotient.",
+          "$\\ln\\left(x^2 + x\\right) - \\ln x = \\ln\\left(\\dfrac{x^2 + x}{x}\\right)$ : factorise le numérateur par $x$ et simplifie."
+        ],
+        "revoir": "l-logarithme-017",
+        "solution": "Soit $x > 0$. Alors $x + 1 > 0$ et $x^2 + x = x(x + 1) > 0$ : les trois logarithmes existent. On a :$$\\ln\\left(x^2 + x\\right) - \\ln x = \\ln\\left(\\dfrac{x(x + 1)}{x}\\right) = \\ln(x + 1).$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Montrer que, pour tout réel $x$, $\\ln\\left(1 + e^{-x}\\right) = \\ln\\left(e^x + 1\\right) - x$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pars du membre de gauche et fais apparaître $e^x + 1$ en mettant $e^{-x}$ en facteur.",
+          "$1 + e^{-x} = e^{-x}\\left(e^x + 1\\right)$, car $e^{-x} \\times e^x = 1$.",
+          "Applique $\\ln(ab) = \\ln a + \\ln b$, avec $a = e^{-x} > 0$ et $b = e^x + 1 > 0$, puis simplifie $\\ln\\left(e^{-x}\\right)$."
+        ],
+        "revoir": "l-logarithme-018",
+        "solution": "Pour tout réel $x$, $e^{-x} > 0$ et $e^x + 1 > 0$. De plus, $e^{-x}\\left(e^x + 1\\right) = e^0 + e^{-x} = 1 + e^{-x}$. Donc :$$\\ln\\left(1 + e^{-x}\\right) = \\ln\\left(e^{-x}\\right) + \\ln\\left(e^x + 1\\right) = -x + \\ln\\left(e^x + 1\\right).$$",
+        "erreurFrequente": "Écrire $\\ln\\left(1 + e^{-x}\\right) = \\ln 1 + \\ln\\left(e^{-x}\\right)$ : il n'existe aucune règle pour le logarithme d'une somme."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-018",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-proprietes"],
+    "capacites": ["bo-m-logarithme-02"],
+    "titre": "Logarithme d'une suite géométrique",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 212,
+    "preambule": "Soit $(u_n)$ la suite géométrique de premier terme $u_0 = 3$ et de raison $2$ : pour tout entier naturel $n$, $u_n = 3 \\times 2^n$. On pose, pour tout entier naturel $n$, $v_n = \\ln(u_n)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que $v_n$ existe, puis montrer que la suite $(v_n)$ est arithmétique. Préciser sa raison et son premier terme.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour l'existence, regarde le signe de $u_n$. Puis développe $v_n = \\ln\\left(3 \\times 2^n\\right)$ avec les règles du produit et de la puissance.",
+          "$v_n = \\ln 3 + \\ln\\left(2^n\\right) = \\ln 3 + n\\ln 2$.",
+          "Calcule $v_{n+1} - v_n$ : si cette différence ne dépend pas de $n$, la suite est arithmétique."
+        ],
+        "revoir": "l-logarithme-013",
+        "solution": "Pour tout entier naturel $n$, $u_n = 3 \\times 2^n > 0$ : $v_n$ existe. De plus, $v_n = \\ln 3 + \\ln\\left(2^n\\right) = \\ln 3 + n\\ln 2$. Donc $v_{n+1} - v_n = \\ln 3 + (n + 1)\\ln 2 - \\ln 3 - n\\ln 2 = \\ln 2$. La suite $(v_n)$ est arithmétique, de raison $\\ln 2$ et de premier terme $v_0 = \\ln 3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer l'entier $n$ tel que $v_n = \\ln 96$.",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "Écris l'équation $\\ln 3 + n\\ln 2 = \\ln 96$, puis décompose $96$ à l'aide de $3$ et d'une puissance de $2$.",
+          "$96 = 3 \\times 32$, donc $\\ln 96 = \\ln 3 + \\ln 32$.",
+          "Écris $\\ln 32$ sous la forme $p\\ln 2$, puis identifie avec $n\\ln 2$ (on peut diviser par $\\ln 2$, qui n'est pas nul)."
+        ],
+        "revoir": "l-logarithme-014",
+        "solution": "$96 = 3 \\times 32 = 3 \\times 2^5$, donc $\\ln 96 = \\ln 3 + 5\\ln 2$. L'équation $\\ln 3 + n\\ln 2 = \\ln 3 + 5\\ln 2$ équivaut à $n\\ln 2 = 5\\ln 2$, soit $n = 5$, car $\\ln 2 \\neq 0$. Contrôle : $u_5 = 3 \\times 2^5 = 96$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "À quoi est égal $\\ln(u_0 \\times u_1 \\times u_2)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$3\\ln 3 + 3\\ln 2$", "$\\ln 3 \\times \\ln 6 \\times \\ln 12$", "$3\\ln 3 + 2\\ln 2$", "$\\ln 21$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le logarithme d'un produit est la **somme** des logarithmes, pas leur produit.",
+            "$v_0 + v_1 + v_2 = \\ln 3 + (\\ln 3 + \\ln 2) + (\\ln 3 + 2\\ln 2)$ : les coefficients de $\\ln 2$ sont $0$, $1$ et $2$, de somme $3$.",
+            "$\\ln 21 = \\ln(3 + 6 + 12)$ : tu as ajouté les termes au lieu de les multiplier."
+          ]
+        },
+        "indices": [
+          "Le logarithme d'un produit est une somme : $\\ln(u_0 \\times u_1 \\times u_2) = v_0 + v_1 + v_2$.",
+          "Avec $v_n = \\ln 3 + n\\ln 2$ : $v_0 = \\ln 3$, $v_1 = \\ln 3 + \\ln 2$, $v_2 = \\ln 3 + 2\\ln 2$.",
+          "Ajoute séparément les termes en $\\ln 3$ et ceux en $\\ln 2$."
+        ],
+        "revoir": "l-logarithme-013",
+        "solution": "$\\ln(u_0 \\times u_1 \\times u_2) = v_0 + v_1 + v_2 = \\ln 3 + (\\ln 3 + \\ln 2) + (\\ln 3 + 2\\ln 2) = 3\\ln 3 + 3\\ln 2$. Contrôle : $u_0u_1u_2 = 3 \\times 6 \\times 12 = 216 = 6^3$, et $\\ln\\left(6^3\\right) = 3\\ln 6 = 3\\ln 2 + 3\\ln 3$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-019",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-equations"],
+    "capacites": ["bo-m-logarithme-06"],
+    "titre": "Équations avec des logarithmes",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 311,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Résoudre dans $\\mathbb{R}$ l'équation $\\ln(x + 3) + \\ln(x - 1) = \\ln 12$. Elle a une unique solution : la donner.",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Commence par les conditions d'existence : ce qui est dans chaque logarithme doit être strictement positif.",
+          "Les conditions donnent $x > 1$. Sur cet intervalle, regroupe le membre de gauche : $\\ln\\big((x + 3)(x - 1)\\big) = \\ln 12$.",
+          "L'équation devient $(x + 3)(x - 1) = 12$, soit $x^2 + 2x - 15 = 0$ : calcule le discriminant et les racines.",
+          "Une seule des deux racines vérifie la condition $x > 1$ : c'est la solution."
+        ],
+        "revoir": "l-logarithme-026",
+        "solution": "Conditions : $x + 3 > 0$ et $x - 1 > 0$, soit $x > 1$. Pour $x > 1$ : $\\ln(x + 3) + \\ln(x - 1) = \\ln\\big((x + 3)(x - 1)\\big)$, et l'équation équivaut à $(x + 3)(x - 1) = 12$, soit $x^2 + 2x - 3 = 12$, soit $x^2 + 2x - 15 = 0$. $\\Delta = 4 + 60 = 64$, d'où $x_1 = \\dfrac{-2 - 8}{2} = -5$ et $x_2 = \\dfrac{-2 + 8}{2} = 3$. Seul $3$ vérifie $x > 1$ : $S = \\{3\\}$.",
+        "erreurFrequente": "Garder $-5$ : $\\ln(-5 + 3) = \\ln(-2)$ n'existe pas."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Résoudre dans $\\mathbb{R}$ l'équation $\\ln x + \\ln(x - 3) = 2\\ln 2$. Elle a une unique solution : la donner.",
+        "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+        "indices": [
+          "Conditions d'existence d'abord, puis écris chaque membre sous la forme d'un seul logarithme.",
+          "Pour $x > 3$ : le membre de gauche vaut $\\ln\\big(x(x - 3)\\big)$ et le membre de droite $\\ln\\left(2^2\\right)$.",
+          "L'équation devient $x(x - 3) = 2^2$ : développe, résous l'équation du second degré obtenue, puis trie les racines avec la condition $x > 3$."
+        ],
+        "revoir": "l-logarithme-025",
+        "solution": "Conditions : $x > 0$ et $x - 3 > 0$, soit $x > 3$. Pour $x > 3$ : $\\ln x + \\ln(x - 3) = \\ln\\big(x(x - 3)\\big)$ et $2\\ln 2 = \\ln\\left(2^2\\right) = \\ln 4$. L'équation équivaut à $x^2 - 3x = 4$, soit $x^2 - 3x - 4 = 0$. $\\Delta = 9 + 16 = 25$, d'où $x_1 = \\dfrac{3 - 5}{2} = -1$ et $x_2 = \\dfrac{3 + 5}{2} = 4$. Seul $4$ vérifie $x > 3$ : $S = \\{4\\}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Résoudre dans $\\mathbb{R}$ l'équation $\\ln(2x - 1) = 1 + \\ln x$. Quel est l'ensemble des solutions ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left\\{\\dfrac{1 + e}{2}\\right\\}$",
+            "$\\left\\{\\dfrac{1}{2 - e}\\right\\}$",
+            "$\\varnothing$",
+            "$\\left\\{\\dfrac{1}{2}\\right\\}$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Ce nombre vérifie $2x - 1 = e$, c'est-à-dire $\\ln(2x - 1) = 1$ : tu as oublié le terme $\\ln x$.",
+            "Le calcul $x(2 - e) = 1$ est juste, mais $2 - e < 0$ : ce réel est négatif, et $\\ln x$ n'y existe pas. Il faut confronter la solution aux conditions.",
+            null,
+            "En $\\dfrac{1}{2}$, $2x - 1 = 0$, et $\\ln 0$ n'existe pas."
+          ]
+        },
+        "indices": [
+          "Conditions : $2x - 1 > 0$ et $x > 0$. Puis écris le membre de droite comme un seul logarithme, avec $1 = \\ln e$.",
+          "Pour $x > \\dfrac{1}{2}$ : $1 + \\ln x = \\ln e + \\ln x = \\ln(ex)$. L'équation devient $2x - 1 = ex$.",
+          "$2x - 1 = ex \\iff x(2 - e) = 1$. Isole $x$, puis regarde le signe de $2 - e$ : la valeur trouvée vérifie-t-elle $x > \\dfrac{1}{2}$ ?"
+        ],
+        "revoir": "l-logarithme-036",
+        "solution": "Conditions : $2x - 1 > 0$ et $x > 0$, soit $x > \\dfrac{1}{2}$. Pour $x > \\dfrac{1}{2}$ : $1 + \\ln x = \\ln e + \\ln x = \\ln(ex)$, donc l'équation équivaut à $2x - 1 = ex$, soit $x(2 - e) = 1$, soit $x = \\dfrac{1}{2 - e}$. Or $e \\approx 2{,}72 > 2$, donc $2 - e < 0$ et $\\dfrac{1}{2 - e} < 0$ : ce réel ne vérifie pas $x > \\dfrac{1}{2}$. L'équation n'a pas de solution : $S = \\varnothing$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-020",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-equations"],
+    "capacites": ["bo-m-logarithme-06"],
+    "titre": "Inéquations avec $\\ln$ et l'exponentielle",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 312,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Résoudre dans $\\mathbb{R}$ l'inéquation $e^{2x - 3} > 5$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left]\\dfrac{3 + \\ln 5}{2}\\,;\\,+\\infty\\right[$",
+            "$\\left]-\\infty\\,;\\,\\dfrac{3 + \\ln 5}{2}\\right[$",
+            "$\\left]\\dfrac{\\ln 5 - 3}{2}\\,;\\,+\\infty\\right[$",
+            "$]4\\,;\\,+\\infty[$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le sens est inversé : $\\ln$ est croissante, donc le passage au logarithme garde le sens de l'inégalité.",
+            "En isolant $x$, on **ajoute** $3$ aux deux membres : $2x > \\ln 5 + 3$.",
+            "L'exponentielle ne s'efface pas : $e^{2x - 3} > 5$ ne donne pas $2x - 3 > 5$."
+          ]
+        },
+        "indices": [
+          "$5 > 0$ : prends le logarithme des deux membres. La fonction $\\ln$ est strictement croissante : le sens ne change pas.",
+          "$e^{2x - 3} > 5 \\iff 2x - 3 > \\ln 5$.",
+          "Ajoute $3$, puis divise par $2$, qui est positif."
+        ],
+        "revoir": "l-logarithme-028",
+        "solution": "$5 > 0$ et $\\ln$ est strictement croissante : $e^{2x - 3} > 5 \\iff 2x - 3 > \\ln 5 \\iff 2x > 3 + \\ln 5 \\iff x > \\dfrac{3 + \\ln 5}{2}$. $S = \\left]\\dfrac{3 + \\ln 5}{2}\\,;\\,+\\infty\\right[$, avec $\\dfrac{3 + \\ln 5}{2} \\approx 2{,}30$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Résoudre dans $\\mathbb{R}$ l'inéquation $\\ln(3 - x) \\leqslant 0$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$]-\\infty\\,;\\,2]$", "$[2\\,;\\,3[$", "$[2\\,;\\,+\\infty[$", "$]2\\,;\\,3]$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Tu as oublié une des conditions : pour $x = 0$, $\\ln 3 > 0$. Il faut à la fois $3 - x > 0$ et $3 - x \\leqslant 1$.",
+            null,
+            "Pour $x \\geqslant 3$, $3 - x \\leqslant 0$ et le logarithme n'existe pas.",
+            "La borne $3$ est exclue ($\\ln 0$ n'existe pas), et la borne $2$ est incluse, car $\\ln 1 = 0 \\leqslant 0$."
+          ]
+        },
+        "indices": [
+          "Écris la condition d'existence, puis remplace $0$ par $\\ln 1$.",
+          "Il faut $3 - x > 0$, et $\\ln(3 - x) \\leqslant \\ln 1 \\iff 3 - x \\leqslant 1$.",
+          "Résous les deux inéquations $3 - x > 0$ et $3 - x \\leqslant 1$, puis garde les réels qui vérifient les deux."
+        ],
+        "revoir": "l-logarithme-026",
+        "solution": "Condition : $3 - x > 0$, soit $x < 3$. Pour $x < 3$ : $\\ln(3 - x) \\leqslant 0 \\iff \\ln(3 - x) \\leqslant \\ln 1 \\iff 3 - x \\leqslant 1 \\iff x \\geqslant 2$. Avec la condition : $S = [2\\,;\\,3[$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Résoudre dans $\\mathbb{R}$ l'inéquation $\\ln\\left(x^2 - 1\\right) < \\ln 3$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$]-2\\,;\\,2[$",
+            "$]1\\,;\\,2[$",
+            "$]-\\infty\\,;\\,-1[ \\cup ]1\\,;\\,+\\infty[$",
+            "$]-2\\,;\\,-1[ \\cup ]1\\,;\\,2[$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Tu as oublié la condition d'existence : pour $x = 0$, $x^2 - 1 = -1 < 0$.",
+            "Les réels négatifs comptent aussi : pour $x = -1{,}5$, $x^2 - 1 = 1{,}25$, qui est bien entre $0$ et $3$.",
+            "C'est seulement l'ensemble où $\\ln\\left(x^2 - 1\\right)$ existe : il reste à résoudre $x^2 - 1 < 3$.",
+            null
+          ]
+        },
+        "indices": [
+          "Deux conditions : $x^2 - 1 > 0$ pour l'existence, et $x^2 - 1 < 3$ par croissance de $\\ln$.",
+          "Ces deux conditions s'écrivent ensemble $1 < x^2 < 4$.",
+          "$x^2 > 1$ pour $x < -1$ ou $x > 1$, et $x^2 < 4$ pour $-2 < x < 2$ : garde les réels qui vérifient les deux."
+        ],
+        "revoir": "l-logarithme-028",
+        "solution": "Condition : $x^2 - 1 > 0$, soit $x < -1$ ou $x > 1$. Sur cet ensemble : $\\ln\\left(x^2 - 1\\right) < \\ln 3 \\iff x^2 - 1 < 3 \\iff x^2 < 4 \\iff -2 < x < 2$. Les deux conditions ensemble : $S = ]-2\\,;\\,-1[ \\cup ]1\\,;\\,2[$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-021",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-equations"],
+    "capacites": ["bo-m-logarithme-06"],
+    "titre": "Un changement d'inconnue : $X = e^x$ ou $X = \\ln x$",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 313,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Résoudre dans $\\mathbb{R}$ l'équation $e^{2x} - 4e^x + 3 = 0$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\{1\\,;\\,3\\}$", "$\\{0\\,;\\,\\ln 3\\}$", "$\\{\\ln 3\\}$", "$\\{e\\,;\\,e^3\\}$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Ce sont les valeurs de $X = e^x$, pas de $x$ : il reste à résoudre $e^x = 1$ et $e^x = 3$.",
+            null,
+            "$e^x = 1$ a aussi une solution : $x = \\ln 1 = 0$.",
+            "On prend le logarithme de $X$, pas son exponentielle : $e^x = 3 \\iff x = \\ln 3$."
+          ]
+        },
+        "indices": [
+          "Pose $X = e^x$ : comme $e^{2x} = \\left(e^x\\right)^2$, l'équation devient une équation du second degré en $X$.",
+          "$X^2 - 4X + 3 = 0$ a pour discriminant $\\Delta = 16 - 12 = 4$ : calcule ses racines.",
+          "Les racines sont $X = 1$ et $X = 3$. Reviens à $x$ en résolvant $e^x = 1$ et $e^x = 3$."
+        ],
+        "revoir": "l-logarithme-033",
+        "solution": "Avec $X = e^x$, l'équation s'écrit $X^2 - 4X + 3 = 0$. $\\Delta = 16 - 12 = 4$, d'où $X_1 = \\dfrac{4 - 2}{2} = 1$ et $X_2 = \\dfrac{4 + 2}{2} = 3$. Puis $e^x = 1 \\iff x = 0$ et $e^x = 3 \\iff x = \\ln 3$. $S = \\{0\\,;\\,\\ln 3\\}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Résoudre dans $]0\\,;\\,+\\infty[$ l'équation $(\\ln x)^2 - \\ln x - 2 = 0$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\{-1\\,;\\,2\\}$",
+            "$\\{e^2\\}$",
+            "$\\left\\{\\dfrac{1}{e}\\,;\\,e^2\\right\\}$",
+            "$\\{\\ln 2\\}$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Ce sont les valeurs de $X = \\ln x$, pas de $x$ : il reste à résoudre $\\ln x = -1$ et $\\ln x = 2$.",
+            "La racine $X = -1$ n'est pas à rejeter : un logarithme peut être négatif, et $\\ln x = -1$ donne $x = e^{-1} > 0$.",
+            null,
+            "$\\ln x = 2$ donne $x = e^2$, pas $\\ln 2$ : on passe à l'exponentielle."
+          ]
+        },
+        "indices": [
+          "Pose $X = \\ln x$ : l'équation devient $X^2 - X - 2 = 0$.",
+          "$\\Delta = 1 + 8 = 9$ : les racines sont $X = -1$ et $X = 2$.",
+          "Reviens à $x$ : $\\ln x = k \\iff x = e^k$, pour chacune des deux valeurs."
+        ],
+        "revoir": "l-logarithme-033",
+        "solution": "Avec $X = \\ln x$ : $X^2 - X - 2 = 0$, $\\Delta = 1 + 8 = 9$, d'où $X_1 = \\dfrac{1 - 3}{2} = -1$ et $X_2 = \\dfrac{1 + 3}{2} = 2$. Puis $\\ln x = -1 \\iff x = e^{-1} = \\dfrac{1}{e}$ et $\\ln x = 2 \\iff x = e^2$. Ces deux réels sont strictement positifs : $S = \\left\\{\\dfrac{1}{e}\\,;\\,e^2\\right\\}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire l'ensemble des solutions, dans $]0\\,;\\,+\\infty[$, de l'inéquation $(\\ln x)^2 - \\ln x - 2 < 0$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left]\\dfrac{1}{e}\\,;\\,e^2\\right[$",
+            "$]-1\\,;\\,2[$",
+            "$\\left]0\\,;\\,\\dfrac{1}{e}\\right[ \\cup ]e^2\\,;\\,+\\infty[$",
+            "$]0\\,;\\,e^2[$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est l'intervalle où se trouve $X = \\ln x$ ; il faut le traduire pour $x$ : $-1 < \\ln x < 2 \\iff e^{-1} < x < e^2$.",
+            "C'est là où le trinôme est positif : un trinôme de coefficient $1 > 0$ est négatif **entre** ses racines.",
+            "Pour $x$ proche de $0$, $\\ln x$ est très négatif et $(\\ln x)^2 - \\ln x - 2$ est positif : la borne $\\dfrac{1}{e}$ compte."
+          ]
+        },
+        "indices": [
+          "Avec $X = \\ln x$, étudie le signe du trinôme $X^2 - X - 2$, de racines $-1$ et $2$.",
+          "Le coefficient de $X^2$ est positif : le trinôme est strictement négatif entre ses racines, soit $-1 < \\ln x < 2$.",
+          "Passe à l'exponentielle, qui est strictement croissante : elle garde le sens des deux inégalités."
+        ],
+        "revoir": "l-logarithme-028",
+        "solution": "Avec $X = \\ln x$, le trinôme $X^2 - X - 2$, de racines $-1$ et $2$ et de coefficient $1 > 0$, est strictement négatif entre ses racines. L'inéquation équivaut donc à $-1 < \\ln x < 2$, soit $e^{-1} < x < e^2$, car l'exponentielle est strictement croissante. $S = \\left]\\dfrac{1}{e}\\,;\\,e^2\\right[$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Résoudre dans $\\mathbb{R}$ l'équation $e^x - e^{\\frac{x}{2}} - 6 = 0$, en posant $X = e^{\\frac{x}{2}}$. Elle a une unique solution : en donner une valeur approchée à $10^{-2}$ près, sachant que $\\ln 3 \\approx 1{,}0986$.",
+        "reponse": { "type": "numerique", "valeur": 2.2, "tolerance": 0.01 },
+        "indices": [
+          "$e^x = \\left(e^{\\frac{x}{2}}\\right)^2$ : avec $X = e^{\\frac{x}{2}}$, l'équation devient du second degré en $X$.",
+          "$X^2 - X - 6 = 0$ a pour racines $X = -2$ et $X = 3$.",
+          "$X = e^{\\frac{x}{2}} > 0$ : une seule racine convient. Résous $e^{\\frac{x}{2}} = 3$, puis multiplie par $2$."
+        ],
+        "revoir": "l-logarithme-033",
+        "solution": "Pour tout réel $x$, $e^x = \\left(e^{\\frac{x}{2}}\\right)^2$. Avec $X = e^{\\frac{x}{2}}$ : $X^2 - X - 6 = 0$, $\\Delta = 1 + 24 = 25$, d'où $X_1 = \\dfrac{1 - 5}{2} = -2$ et $X_2 = \\dfrac{1 + 5}{2} = 3$. Or $X = e^{\\frac{x}{2}} > 0$ : $X = -2$ est impossible. Et $e^{\\frac{x}{2}} = 3 \\iff \\dfrac{x}{2} = \\ln 3 \\iff x = 2\\ln 3$. $S = \\{2\\ln 3\\}$, avec $2\\ln 3 \\approx 2 \\times 1{,}0986 \\approx 2{,}20$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-022",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-equations"],
+    "capacites": ["bo-m-logarithme-06", "bo-m-suites-14"],
+    "titre": "Seuils par le calcul et par un programme",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 314,
+    "preambule": "Une citerne de $5$ m³ contient $2$ m³ d'eau. On la remplit progressivement : on admet que, $n$ jours plus tard, elle contient $u_n = 5 - 3 \\times 0{,}85^n$ mètres cubes d'eau.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer par le calcul le plus petit entier naturel $n$ tel que $u_n \\geqslant 4{,}9$.",
+        "reponse": { "type": "numerique", "valeur": 21, "tolerance": 0 },
+        "indices": [
+          "Isole la puissance : mets l'inéquation sous la forme $0{,}85^n \\leqslant s$.",
+          "$5 - 3 \\times 0{,}85^n \\geqslant 4{,}9 \\iff 3 \\times 0{,}85^n \\leqslant 0{,}1 \\iff 0{,}85^n \\leqslant \\dfrac{1}{30}$.",
+          "Prends le logarithme, puis divise par $\\ln 0{,}85$, qui est négatif : le sens change. Calcule le quotient obtenu.",
+          "Prends le premier entier supérieur ou égal à ce quotient, puis contrôle avec $u_n$ pour cet entier et pour le précédent."
+        ],
+        "revoir": "l-logarithme-030",
+        "solution": "$u_n \\geqslant 4{,}9 \\iff 5 - 3 \\times 0{,}85^n \\geqslant 4{,}9 \\iff 3 \\times 0{,}85^n \\leqslant 0{,}1 \\iff 0{,}85^n \\leqslant \\dfrac{1}{30}$. Les deux membres sont strictement positifs et $\\ln$ est strictement croissante : $0{,}85^n \\leqslant \\dfrac{1}{30} \\iff n\\ln 0{,}85 \\leqslant \\ln\\left(\\dfrac{1}{30}\\right)$. Or $\\ln 0{,}85 < 0$, car $0{,}85 < 1$ : en divisant, le sens change, et $n \\geqslant \\dfrac{\\ln\\left(\\frac{1}{30}\\right)}{\\ln 0{,}85} \\approx 20{,}9$. Contrôle : $u_{20} \\approx 4{,}884 < 4{,}9$ et $u_{21} \\approx 4{,}901 \\geqslant 4{,}9$. Le plus petit entier cherché est $21$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère la fonction Python ci-dessous. Quelle valeur renvoie l'appel seuil(4.9), et que se passe-t-il lors de l'appel seuil(6) ?",
+        "code": {
+          "langage": "python",
+          "source": "def seuil(s):\n    n = 0\n    u = 2\n    while u < s:\n        n = n + 1\n        u = 5 - 3 * 0.85 ** n\n    return n"
+        },
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Elle renvoie $20$ ; l'appel seuil(6) renvoie $0$.",
+            "Elle renvoie $21$ ; l'appel seuil(6) renvoie un entier plus grand que $21$.",
+            "Elle renvoie $21$ ; l'appel seuil(6) ne s'arrête jamais.",
+            "Elle renvoie la valeur $4{,}9$ ; l'appel seuil(6) ne s'arrête jamais."
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Pour $n = 20$, $u_{20} \\approx 4{,}884 < 4{,}9$ : la boucle continue. Et pour seuil(6), la condition $u < 6$ est vraie dès le départ, la boucle tourne.",
+            "Pour tout $n$, $u_n < 5 < 6$ : la condition $u < 6$ reste toujours vraie, la boucle ne s'arrête pas.",
+            null,
+            "La fonction renvoie le rang $n$, pas la valeur de la suite."
+          ]
+        },
+        "indices": [
+          "La boucle tourne tant que $u < s$ : elle s'arrête au premier rang où $u_n \\geqslant s$, et renvoie ce rang $n$.",
+          "Pour seuil(4.9), relis la question 1 : c'est le même rang.",
+          "Pour seuil(6) : compare $u_n = 5 - 3 \\times 0{,}85^n$ avec $6$. La condition $u < 6$ devient-elle fausse un jour ?"
+        ],
+        "revoir": "l-limites-suites-064",
+        "solution": "La boucle s'arrête au premier rang $n$ tel que $u_n \\geqslant s$ et renvoie ce rang. Pour seuil(4.9), c'est le plus petit $n$ tel que $u_n \\geqslant 4{,}9$ : $21$, d'après la question 1. Pour seuil(6) : pour tout $n$, $3 \\times 0{,}85^n > 0$, donc $u_n < 5 < 6$. La condition $u < 6$ reste toujours vraie : la boucle ne s'arrête jamais, car le seuil $6$ n'est jamais atteint."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Un site internet compte $200$ abonnés ; on admet que, $n$ mois plus tard, il en compte $v_n = 200 \\times 1{,}04^n$. Déterminer par le calcul le plus petit entier naturel $n$ tel que $v_n > 500$.",
+        "reponse": { "type": "numerique", "valeur": 24, "tolerance": 0 },
+        "indices": [
+          "Isole la puissance : divise les deux membres par $200$.",
+          "$v_n > 500 \\iff 1{,}04^n > 2{,}5$. Prends le logarithme des deux membres.",
+          "$n\\ln 1{,}04 > \\ln 2{,}5$, et $\\ln 1{,}04 > 0$ : le sens reste. Calcule le quotient, puis prends le premier entier qui convient."
+        ],
+        "revoir": "l-logarithme-031",
+        "solution": "$v_n > 500 \\iff 1{,}04^n > 2{,}5 \\iff n\\ln 1{,}04 > \\ln 2{,}5$. Or $1{,}04 > 1$, donc $\\ln 1{,}04 > 0$ et le sens reste : $n > \\dfrac{\\ln 2{,}5}{\\ln 1{,}04} \\approx 23{,}4$. Contrôle : $v_{23} \\approx 492{,}9$ et $v_{24} \\approx 512{,}7$. Le plus petit entier cherché est $24$ : le site dépasse $500$ abonnés au bout de $24$ mois."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-023",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-derivee"],
+    "capacites": ["bo-m-logarithme-03", "bo-m-derivation-06"],
+    "titre": "Variations de $x\\ln x - 2x$",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 411,
+    "preambule": "Soit $f$ la fonction définie sur $]0\\,;\\,+\\infty[$ par $f(x) = x\\ln x - 2x$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que, pour tout réel $x > 0$, $f'(x) = \\ln x - 1$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive le produit $x \\times \\ln x$ avec $(uv)' = u'v + uv'$, puis le terme $-2x$.",
+          "$(x\\ln x)' = 1 \\times \\ln x + x \\times \\dfrac{1}{x}$.",
+          "Simplifie $x \\times \\dfrac{1}{x}$, puis ajoute la dérivée de $-2x$."
+        ],
+        "revoir": "l-logarithme-041",
+        "solution": "$f$ est dérivable sur $]0\\,;\\,+\\infty[$. $(x\\ln x)' = 1 \\times \\ln x + x \\times \\dfrac{1}{x} = \\ln x + 1$, et $(-2x)' = -2$. Donc $f'(x) = \\ln x + 1 - 2 = \\ln x - 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étudier le signe de $f'(x)$, puis dresser le tableau de variations de $f$ sur $]0\\,;\\,+\\infty[$ (sans les limites).",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Le signe de $\\ln x - 1$ s'obtient en résolvant une inéquation : $\\ln x - 1 > 0 \\iff \\ln x > 1$.",
+          "$\\ln x > 1 \\iff x > e$, car $\\ln$ est strictement croissante et $\\ln e = 1$. Déduis-en le signe de $f'$ de part et d'autre de $e$.",
+          "Calcule $f(e)$ avec $\\ln e = 1$, et place cette valeur dans le tableau."
+        ],
+        "revoir": "l-logarithme-048",
+        "solution": "$f'(x) > 0 \\iff \\ln x > 1 \\iff x > e$, car $\\ln$ est strictement croissante et $\\ln e = 1$. De même, $f'(x) < 0 \\iff 0 < x < e$, et $f'(e) = 0$. Donc $f$ est strictement décroissante sur $]0\\,;\\,e]$ et strictement croissante sur $[e\\,;\\,+\\infty[$. Avec $f(e) = e\\ln e - 2e = -e$ :\n\n| $x$ | $0$ | | $e$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $-$ | $0$ | $+$ | |\n| variations de $f$ | | $\\searrow$ | $-e$ | $\\nearrow$ | |"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est le minimum de $f$ sur $]0\\,;\\,+\\infty[$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$e$", "$-e$", "$-1$", "$0$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$e$ est l'abscisse où le minimum est atteint ; le minimum est la valeur $f(e)$.",
+            null,
+            "$-1$ est la valeur de $f'(1)$, pas un minimum de $f$. Le minimum est atteint là où $f'$ s'annule, en $e$.",
+            "$f(e) = e \\times 1 - 2e$, qui n'est pas nul."
+          ]
+        },
+        "indices": [
+          "Le minimum est atteint là où $f'$ s'annule en changeant de signe : calcule l'image de ce réel.",
+          "$f'$ s'annule en $e$ : calcule $f(e) = e\\ln e - 2e$.",
+          "Remplace $\\ln e$ par sa valeur, puis réduis."
+        ],
+        "revoir": "l-logarithme-049",
+        "solution": "$f$ atteint son minimum en $e$ : $f(e) = e\\ln e - 2e = e - 2e = -e$. Le minimum de $f$ est $-e \\approx -2{,}72$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Résoudre dans $]0\\,;\\,+\\infty[$ l'équation $f(x) = 0$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\{0\\,;\\,e^2\\}$", "$\\{2\\}$", "$\\{e^2\\}$", "$\\{e\\}$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$0$ n'appartient pas à $]0\\,;\\,+\\infty[$ : $\\ln 0$ n'existe pas.",
+            "$\\ln x - 2 = 0$ donne $\\ln x = 2$, soit $x = e^2$, pas $x = 2$.",
+            null,
+            "En $e$, $f$ atteint son minimum $-e$, qui n'est pas nul."
+          ]
+        },
+        "indices": [
+          "Factorise $f(x)$ par $x$.",
+          "$f(x) = x(\\ln x - 2)$, et $x > 0$ : un produit est nul si et seulement si l'un de ses facteurs l'est.",
+          "Il reste à résoudre $\\ln x - 2 = 0$, en passant à l'exponentielle."
+        ],
+        "revoir": "l-logarithme-024",
+        "solution": "Pour $x > 0$, $f(x) = x(\\ln x - 2)$. Comme $x \\neq 0$, $f(x) = 0 \\iff \\ln x = 2 \\iff x = e^2$. $S = \\{e^2\\}$, avec $e^2 \\approx 7{,}39$. C'est cohérent avec le tableau : $f$ croît sur $[e\\,;\\,+\\infty[$ à partir de $-e$, et s'annule une fois."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-024",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-derivee"],
+    "capacites": ["bo-m-logarithme-03", "bo-m-derivation-06"],
+    "titre": "Dérivée de $\\ln(u)$ : un minimum",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 412,
+    "preambule": "Soit $f$ la fonction définie par $f(x) = \\ln\\left(x^2 - 4x + 7\\right)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que, pour tout réel $x$, $x^2 - 4x + 7 = (x - 2)^2 + 3$. En déduire que $f$ est définie sur $\\mathbb{R}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Développe $(x - 2)^2 + 3$ et compare.",
+          "$(x - 2)^2 + 3 = x^2 - 4x + 4 + 3$. Puis regarde le signe de cette expression : un carré est positif ou nul.",
+          "Pour tout réel $x$, $(x - 2)^2 + 3 \\geqslant 3 > 0$ : conclus sur l'existence du logarithme."
+        ],
+        "revoir": "l-logarithme-007",
+        "solution": "$(x - 2)^2 + 3 = x^2 - 4x + 4 + 3 = x^2 - 4x + 7$. Pour tout réel $x$, $(x - 2)^2 \\geqslant 0$, donc $x^2 - 4x + 7 \\geqslant 3 > 0$ : le logarithme existe, et $f$ est définie sur $\\mathbb{R}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $f'(x)$, puis étudier les variations de $f$ sur $\\mathbb{R}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f = \\ln u$ avec $u(x) = x^2 - 4x + 7 > 0$ : applique $(\\ln u)' = \\dfrac{u'}{u}$.",
+          "$f'(x) = \\dfrac{2x - 4}{x^2 - 4x + 7}$ : le dénominateur est strictement positif.",
+          "$f'(x)$ a le signe de $2x - 4$ : trouve où il s'annule, puis conclus sur les variations."
+        ],
+        "revoir": "l-logarithme-046",
+        "solution": "$u(x) = x^2 - 4x + 7$ est dérivable et strictement positive sur $\\mathbb{R}$, avec $u'(x) = 2x - 4$. Donc $f'(x) = \\dfrac{2x - 4}{x^2 - 4x + 7}$. Le dénominateur est strictement positif : $f'(x)$ a le signe de $2x - 4 = 2(x - 2)$. Donc $f'(x) < 0$ sur $]-\\infty\\,;\\,2[$, $f'(2) = 0$ et $f'(x) > 0$ sur $]2\\,;\\,+\\infty[$ : $f$ est strictement décroissante sur $]-\\infty\\,;\\,2]$ et strictement croissante sur $[2\\,;\\,+\\infty[$.",
+        "erreurFrequente": "Écrire $f'(x) = \\dfrac{1}{x^2 - 4x + 7}$ en oubliant la dérivée de l'intérieur."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est le minimum de $f$ sur $\\mathbb{R}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\ln 7$", "$0$", "$3$", "$\\ln 3$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "$\\ln 7 = f(0)$ : le minimum est atteint en $2$, pas en $0$.",
+            "Le minimum vaudrait $0$ si l'intérieur valait $1$ en $2$ ; ici, il vaut $3$.",
+            "$3$ est le minimum de $u(x) = x^2 - 4x + 7$, mais il reste à prendre son logarithme.",
+            null
+          ]
+        },
+        "indices": [
+          "Le minimum est atteint en $2$ : calcule $f(2)$.",
+          "$f(2) = \\ln\\big(u(2)\\big)$ : calcule d'abord $u(2) = 2^2 - 4 \\times 2 + 7$.",
+          "Contrôle avec la forme $(x - 2)^2 + 3$ : $u$ est minimale en $2$, et $\\ln$ est croissante."
+        ],
+        "revoir": "l-logarithme-049",
+        "solution": "$f$ atteint son minimum en $2$ : $f(2) = \\ln(4 - 8 + 7) = \\ln 3$. C'est le minimum de $u$, transporté par $\\ln$ : $\\ln u$ et $u$ ont les mêmes variations. Le minimum de $f$ est $\\ln 3 \\approx 1{,}10$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-025",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-derivee"],
+    "capacites": ["bo-m-logarithme-03", "bo-m-derivation-06"],
+    "titre": "Étude de $\\dfrac{1 + \\ln x}{x}$",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 413,
+    "preambule": "Soit $f$ la fonction définie sur $]0\\,;\\,+\\infty[$ par $f(x) = \\dfrac{1 + \\ln x}{x}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que, pour tout réel $x > 0$, $f'(x) = -\\dfrac{\\ln x}{x^2}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "C'est un quotient : $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$, avec $u(x) = 1 + \\ln x$ et $v(x) = x$.",
+          "$u'(x) = \\dfrac{1}{x}$ et $v'(x) = 1$. Le numérateur vaut $\\dfrac{1}{x} \\times x - (1 + \\ln x) \\times 1$.",
+          "Simplifie $\\dfrac{1}{x} \\times x$, puis réduis le numérateur."
+        ],
+        "revoir": "l-logarithme-041",
+        "solution": "$f = \\dfrac{u}{v}$ avec $u(x) = 1 + \\ln x$, $u'(x) = \\dfrac{1}{x}$, $v(x) = x$ et $v'(x) = 1$. Donc $f'(x) = \\dfrac{\\frac{1}{x} \\times x - (1 + \\ln x) \\times 1}{x^2} = \\dfrac{1 - 1 - \\ln x}{x^2} = -\\dfrac{\\ln x}{x^2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étudier les variations de $f$ sur $]0\\,;\\,+\\infty[$ et préciser la valeur de son extremum.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$x^2 > 0$ : $f'(x)$ a le signe de $-\\ln x$. Rappelle le signe de $\\ln x$ selon la position de $x$ par rapport à $1$.",
+          "$\\ln x < 0$ sur $]0\\,;\\,1[$ et $\\ln x > 0$ sur $]1\\,;\\,+\\infty[$ : déduis-en le signe de $-\\ln x$.",
+          "$f$ croît puis décroît : son extremum est un maximum, atteint en $1$. Calcule $f(1)$ avec $\\ln 1 = 0$."
+        ],
+        "revoir": "l-logarithme-048",
+        "solution": "$x^2 > 0$, donc $f'(x)$ a le signe de $-\\ln x$. Sur $]0\\,;\\,1[$, $\\ln x < 0$, donc $f'(x) > 0$ ; sur $]1\\,;\\,+\\infty[$, $\\ln x > 0$, donc $f'(x) < 0$ ; et $f'(1) = 0$. Ainsi $f$ est strictement croissante sur $]0\\,;\\,1]$ et strictement décroissante sur $[1\\,;\\,+\\infty[$. Elle admet un maximum en $1$, égal à $f(1) = \\dfrac{1 + 0}{1} = 1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est une équation de la tangente à la courbe de $f$ au point d'abscisse $1$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$y = x$", "$y = 1$", "$y = -x + 2$", "$x = 1$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Le coefficient directeur de la tangente est $f'(1) = -\\dfrac{\\ln 1}{1} = 0$, pas $1$.",
+            null,
+            "La tangente en un extremum est horizontale : $f'(1) = 0$.",
+            "La tangente n'est pas verticale : c'est la droite $y = f'(1)(x - 1) + f(1)$."
+          ]
+        },
+        "indices": [
+          "La tangente au point d'abscisse $1$ a pour équation $y = f'(1)(x - 1) + f(1)$.",
+          "$f'(1) = -\\dfrac{\\ln 1}{1^2}$ : calcule cette valeur, ainsi que $f(1)$.",
+          "Remplace dans l'équation : que devient le terme $f'(1)(x - 1)$ ?"
+        ],
+        "revoir": "l-logarithme-051",
+        "solution": "$f'(1) = -\\dfrac{\\ln 1}{1} = 0$ et $f(1) = 1$. La tangente a pour équation $y = 0 \\times (x - 1) + 1$, soit $y = 1$ : elle est horizontale, comme en tout extremum d'une fonction dérivable."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Résoudre dans $]0\\,;\\,+\\infty[$ l'équation $f(x) = 0$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\left\\{e^{-1}\\right\\}$", "$\\{-1\\}$", "$\\{e\\}$", "$\\varnothing$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$-1$ est la valeur de $\\ln x$, pas celle de $x$ : il reste à résoudre $\\ln x = -1$.",
+            "$1 + \\ln e = 2 \\neq 0$ : il faut $\\ln x = -1$, pas $\\ln x = 1$.",
+            "L'équation a une solution : un logarithme peut valoir $-1$."
+          ]
+        },
+        "indices": [
+          "Un quotient est nul quand son numérateur est nul, son dénominateur ne l'étant pas.",
+          "$f(x) = 0 \\iff 1 + \\ln x = 0 \\iff \\ln x = -1$.",
+          "Passe à l'exponentielle : $\\ln x = k \\iff x = e^k$."
+        ],
+        "revoir": "l-logarithme-024",
+        "solution": "Pour $x > 0$, $f(x) = 0 \\iff 1 + \\ln x = 0 \\iff \\ln x = -1 \\iff x = e^{-1}$. $S = \\left\\{e^{-1}\\right\\}$, avec $e^{-1} = \\dfrac{1}{e} \\approx 0{,}37$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-026",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-derivee"],
+    "capacites": ["bo-m-logarithme-03", "bo-m-derivation-06"],
+    "titre": "Une inégalité : $\\ln x \\geqslant 1 - \\dfrac{1}{x}$",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 414,
+    "preambule": "Soit $g$ la fonction définie sur $]0\\,;\\,+\\infty[$ par $g(x) = \\ln x - 1 + \\dfrac{1}{x}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que, pour tout réel $x > 0$, $g'(x) = \\dfrac{x - 1}{x^2}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive terme à terme : $\\ln'(x) = \\dfrac{1}{x}$ et $\\left(\\dfrac{1}{x}\\right)' = -\\dfrac{1}{x^2}$.",
+          "$g'(x) = \\dfrac{1}{x} - \\dfrac{1}{x^2}$ : mets au même dénominateur $x^2$.",
+          "$\\dfrac{1}{x} = \\dfrac{x}{x^2}$ : réduis la différence."
+        ],
+        "revoir": "l-logarithme-040",
+        "solution": "$g'(x) = \\dfrac{1}{x} - \\dfrac{1}{x^2} = \\dfrac{x}{x^2} - \\dfrac{1}{x^2} = \\dfrac{x - 1}{x^2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étudier les variations de $g$, puis en déduire que, pour tout réel $x > 0$, $\\ln x \\geqslant 1 - \\dfrac{1}{x}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$x^2 > 0$ : $g'(x)$ a le signe de $x - 1$. Déduis-en les variations de $g$ et son minimum.",
+          "$g$ est décroissante sur $]0\\,;\\,1]$ et croissante sur $[1\\,;\\,+\\infty[$ : son minimum est $g(1)$.",
+          "$g(1) = \\ln 1 - 1 + 1$. Pour tout $x > 0$, $g(x) \\geqslant g(1)$ : traduis cette inégalité."
+        ],
+        "revoir": "l-logarithme-049",
+        "solution": "$x^2 > 0$, donc $g'(x)$ a le signe de $x - 1$ : $g' < 0$ sur $]0\\,;\\,1[$ et $g' > 0$ sur $]1\\,;\\,+\\infty[$. Donc $g$ est strictement décroissante sur $]0\\,;\\,1]$ et strictement croissante sur $[1\\,;\\,+\\infty[$, de minimum $g(1) = 0 - 1 + 1 = 0$. Pour tout réel $x > 0$, $g(x) \\geqslant 0$, soit $\\ln x - 1 + \\dfrac{1}{x} \\geqslant 0$, c'est-à-dire $\\ln x \\geqslant 1 - \\dfrac{1}{x}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Le cours établit que $\\ln x \\leqslant x - 1$ pour tout réel $x > 0$. En appliquant les deux inégalités à $x = 1{,}1$, on obtient un encadrement de $\\ln 1{,}1$. Donner la borne inférieure de cet encadrement, arrondie à $10^{-3}$.",
+        "reponse": { "type": "numerique", "valeur": 0.091, "tolerance": 0.001 },
+        "indices": [
+          "Remplace $x$ par $1{,}1$ dans $1 - \\dfrac{1}{x} \\leqslant \\ln x \\leqslant x - 1$.",
+          "La borne supérieure vaut $1{,}1 - 1$. La borne inférieure vaut $1 - \\dfrac{1}{1{,}1}$ : écris $\\dfrac{1}{1{,}1}$ sous forme de fraction.",
+          "$\\dfrac{1}{1{,}1} = \\dfrac{10}{11}$, donc la borne inférieure est $1 - \\dfrac{10}{11}$ : calcule-la, puis arrondis."
+        ],
+        "revoir": "l-logarithme-051",
+        "solution": "Avec $x = 1{,}1$ : $1 - \\dfrac{1}{1{,}1} \\leqslant \\ln 1{,}1 \\leqslant 1{,}1 - 1$. Or $1 - \\dfrac{1}{1{,}1} = 1 - \\dfrac{10}{11} = \\dfrac{1}{11} \\approx 0{,}091$. Donc $\\dfrac{1}{11} \\leqslant \\ln 1{,}1 \\leqslant 0{,}1$ ; la borne inférieure arrondie à $10^{-3}$ est $0{,}091$. La calculatrice donne $\\ln 1{,}1 \\approx 0{,}095$, bien dans l'encadrement."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-027",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-limites"],
+    "capacites": ["bo-m-logarithme-05", "bo-m-logarithme-04", "bo-m-limites-fonctions-05"],
+    "titre": "Lever des formes indéterminées",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 511,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer $\\lim\\limits_{x \\to +\\infty} \\left(x^2 - 3\\ln x\\right)$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$-\\infty$", "$+\\infty$", "$0$", "On ne peut pas conclure."],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Le terme $x^2$ l'emporte sur $3\\ln x$ : en factorisant, $x^2\\left(1 - 3 \\times \\dfrac{\\ln x}{x^2}\\right)$, la parenthèse tend vers $1$.",
+            null,
+            "« $+\\infty - \\infty$ » ne vaut pas $0$ : c'est une forme indéterminée, qui se lève en factorisant.",
+            "La forme indéterminée se lève : factorise par $x^2$ et utilise les croissances comparées."
+          ]
+        },
+        "indices": [
+          "C'est la forme « $+\\infty - \\infty$ » : factorise par le terme le plus fort.",
+          "$x^2 - 3\\ln x = x^2\\left(1 - 3 \\times \\dfrac{\\ln x}{x^2}\\right)$.",
+          "Par croissances comparées, $\\dfrac{\\ln x}{x^2}$ tend vers $0$ : vers quoi tend la parenthèse ? Conclus par produit."
+        ],
+        "revoir": "l-logarithme-062",
+        "solution": "Pour $x > 0$ : $x^2 - 3\\ln x = x^2\\left(1 - 3 \\times \\dfrac{\\ln x}{x^2}\\right)$. Par croissances comparées, $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln x}{x^2} = 0$, donc la parenthèse tend vers $1$. Et $x^2$ tend vers $+\\infty$ : par produit, $\\lim\\limits_{x \\to +\\infty} \\left(x^2 - 3\\ln x\\right) = +\\infty$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer $\\lim\\limits_{x \\to +\\infty} \\dfrac{2\\ln x + 1}{x}$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$2$", "$+\\infty$", "$0$", "$1$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Le coefficient $2$ ne survit pas : $2 \\times \\dfrac{\\ln x}{x}$ tend vers $2 \\times 0$.",
+            "Le numérateur tend vers $+\\infty$, mais bien moins vite que le dénominateur $x$.",
+            null,
+            "Le terme $\\dfrac{1}{x}$ tend vers $0$, pas vers $1$."
+          ]
+        },
+        "indices": [
+          "Sépare la fraction en deux.",
+          "$\\dfrac{2\\ln x + 1}{x} = 2 \\times \\dfrac{\\ln x}{x} + \\dfrac{1}{x}$.",
+          "Cherche la limite de chaque morceau : croissances comparées pour le premier, limite de référence pour le second."
+        ],
+        "revoir": "l-logarithme-066",
+        "solution": "Pour $x > 0$ : $\\dfrac{2\\ln x + 1}{x} = 2 \\times \\dfrac{\\ln x}{x} + \\dfrac{1}{x}$. Par croissances comparées, $\\dfrac{\\ln x}{x}$ tend vers $0$, et $\\dfrac{1}{x}$ tend vers $0$. Par somme, la limite vaut $0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\left(\\dfrac{1}{x} + \\ln x\\right)$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$-\\infty$", "$0$", "$1$", "$+\\infty$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Près de $0$, $\\dfrac{1}{x}$ grandit bien plus vite que $\\ln x$ ne descend : au même dénominateur, $\\dfrac{1 + x\\ln x}{x}$ a un numérateur qui tend vers $1$.",
+            "« $+\\infty - \\infty$ » ne vaut pas $0$ : réduis au même dénominateur pour lever l'indétermination.",
+            "C'est la limite du numérateur $1 + x\\ln x$ ; il reste à diviser par $x$, qui tend vers $0$ en restant positif.",
+            null
+          ]
+        },
+        "indices": [
+          "C'est la forme « $+\\infty - \\infty$ » : réduis au même dénominateur $x$.",
+          "$\\dfrac{1}{x} + \\ln x = \\dfrac{1 + x\\ln x}{x}$. Par croissances comparées, $x\\ln x$ tend vers $0$ en $0$.",
+          "Le numérateur tend vers $1$ et le dénominateur vers $0$ en restant positif : conclus par quotient."
+        ],
+        "revoir": "l-logarithme-066",
+        "solution": "Pour $x > 0$ : $\\dfrac{1}{x} + \\ln x = \\dfrac{1 + x\\ln x}{x}$. Par croissances comparées, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} x\\ln x = 0$, donc le numérateur tend vers $1$. Le dénominateur tend vers $0$ en restant strictement positif. Par quotient, la limite vaut $+\\infty$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Déterminer $\\lim\\limits_{x \\to +\\infty} \\big(\\ln(2x + 1) - \\ln(x + 3)\\big)$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0$", "$\\ln 2$", "$+\\infty$", "$\\ln\\left(\\dfrac{1}{3}\\right)$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Les deux logarithmes tendent vers $+\\infty$, mais leur différence ne tend pas vers $0$ : regroupe-les en un seul logarithme.",
+            null,
+            "« $+\\infty - \\infty$ » est une forme indéterminée : il faut regrouper avant de conclure.",
+            "$\\dfrac{1}{3}$ est la valeur du quotient $\\dfrac{2x + 1}{x + 3}$ en $x = 0$ ; en $+\\infty$, on factorise par $x$."
+          ]
+        },
+        "indices": [
+          "Regroupe la différence en un seul logarithme : $\\ln a - \\ln b = \\ln\\left(\\dfrac{a}{b}\\right)$.",
+          "La différence vaut $\\ln\\left(\\dfrac{2x + 1}{x + 3}\\right)$. Cherche la limite du quotient en factorisant par $x$.",
+          "$\\dfrac{2x + 1}{x + 3} = \\dfrac{2 + \\frac{1}{x}}{1 + \\frac{3}{x}}$ : sa limite est un réel strictement positif. Conclus par composée."
+        ],
+        "revoir": "l-logarithme-066",
+        "solution": "Pour $x > 0$ : $\\ln(2x + 1) - \\ln(x + 3) = \\ln\\left(\\dfrac{2x + 1}{x + 3}\\right)$, et $\\dfrac{2x + 1}{x + 3} = \\dfrac{2 + \\frac{1}{x}}{1 + \\frac{3}{x}}$ tend vers $2$. La fonction $\\ln$ est continue en $2$ : par composée, la limite vaut $\\ln 2$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-028",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-limites"],
+    "capacites": ["bo-m-logarithme-04", "bo-m-logarithme-05", "bo-m-limites-fonctions-06"],
+    "titre": "Limites et asymptotes de $\\dfrac{1 + 2\\ln x}{x}$",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 512,
+    "preambule": "Soit $f$ la fonction définie sur $]0\\,;\\,+\\infty[$ par $f(x) = \\dfrac{1 + 2\\ln x}{x}$, et $\\mathcal{C}$ sa courbe dans un repère.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer la limite de $f$ en $0$ et en déduire une asymptote à $\\mathcal{C}$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$f$ tend vers $0$ ; la droite d'équation $y = 0$ est asymptote.",
+            "$f$ tend vers $+\\infty$ ; la droite d'équation $x = 0$ est asymptote.",
+            "$f$ tend vers $-\\infty$ ; la droite d'équation $x = 0$ est asymptote.",
+            "On ne peut pas conclure : c'est une forme indéterminée."
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Il n'y a pas de forme indéterminée en $0$, et les croissances comparées ne servent pas : le numérateur tend vers $-\\infty$ et $\\dfrac{1}{x}$ vers $+\\infty$.",
+            "Le numérateur $1 + 2\\ln x$ tend vers $-\\infty$, pas vers $+\\infty$ : le quotient est négatif près de $0$.",
+            null,
+            "« $(-\\infty) \\times (+\\infty)$ » n'est pas une forme indéterminée : le produit tend vers $-\\infty$."
+          ]
+        },
+        "indices": [
+          "Écris $f(x) = (1 + 2\\ln x) \\times \\dfrac{1}{x}$ et cherche la limite de chaque facteur en $0$.",
+          "En $0$, $\\ln x$ tend vers $-\\infty$, donc $1 + 2\\ln x$ aussi ; et $\\dfrac{1}{x}$ tend vers $+\\infty$.",
+          "Applique la règle des signes au produit, puis traduis une limite infinie en $0$ en asymptote."
+        ],
+        "revoir": "l-logarithme-059",
+        "solution": "$\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\ln x = -\\infty$, donc $1 + 2\\ln x$ tend vers $-\\infty$, et $\\dfrac{1}{x}$ tend vers $+\\infty$. Par produit, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} f(x) = -\\infty$. La droite d'équation $x = 0$, l'axe des ordonnées, est asymptote verticale à $\\mathcal{C}$.",
+        "erreurFrequente": "Voir une forme indéterminée en $0$ et citer les croissances comparées : il n'y a aucune indétermination."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer la limite de $f$ en $+\\infty$ et en déduire une asymptote à $\\mathcal{C}$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$f$ tend vers $0$ ; la droite d'équation $y = 0$ est asymptote.",
+            "$f$ tend vers $2$ ; la droite d'équation $y = 2$ est asymptote.",
+            "$f$ tend vers $+\\infty$ ; il n'y a pas d'asymptote horizontale.",
+            "$f$ tend vers $0$ ; la droite d'équation $x = 0$ est asymptote."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le facteur $2$ multiplie $\\dfrac{\\ln x}{x}$, qui tend vers $0$ : $2 \\times 0 = 0$.",
+            "Le dénominateur $x$ l'emporte sur le numérateur, qui ne contient qu'un logarithme.",
+            "Une limite finie en $+\\infty$ donne une asymptote **horizontale**, d'équation $y = \\ell$."
+          ]
+        },
+        "indices": [
+          "C'est la forme « $\\dfrac{\\infty}{\\infty}$ » : sépare la fraction en deux.",
+          "$f(x) = \\dfrac{1}{x} + 2 \\times \\dfrac{\\ln x}{x}$ : utilise les croissances comparées.",
+          "Une limite réelle $\\ell$ en $+\\infty$ donne l'asymptote horizontale d'équation $y = \\ell$."
+        ],
+        "revoir": "l-logarithme-066",
+        "solution": "$f(x) = \\dfrac{1}{x} + 2 \\times \\dfrac{\\ln x}{x}$. Or $\\dfrac{1}{x}$ tend vers $0$ et, par croissances comparées, $\\dfrac{\\ln x}{x}$ aussi. Par somme, $\\lim\\limits_{x \\to +\\infty} f(x) = 0$ : la droite d'équation $y = 0$ est asymptote horizontale à $\\mathcal{C}$ en $+\\infty$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Sur quel intervalle la courbe $\\mathcal{C}$ est-elle strictement au-dessus de l'axe des abscisses ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$]1\\,;\\,+\\infty[$",
+            "$\\left]e^{-\\frac{1}{2}}\\,;\\,+\\infty\\right[$",
+            "$\\left]0\\,;\\,e^{-\\frac{1}{2}}\\right[$",
+            "$\\left]-\\dfrac{1}{2}\\,;\\,+\\infty\\right[$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Pour $x = 0{,}9$, $\\ln x \\approx -0{,}1$ et $1 + 2\\ln x > 0$ : la courbe est déjà au-dessus avant $1$.",
+            null,
+            "C'est là où $1 + 2\\ln x < 0$ : la courbe y est en dessous de l'axe.",
+            "$-\\dfrac{1}{2}$ est la valeur de $\\ln x$ à la frontière, pas celle de $x$ ; et $f$ n'est définie que pour $x > 0$."
+          ]
+        },
+        "indices": [
+          "La courbe est au-dessus de l'axe là où $f(x) > 0$. Le dénominateur $x$ est positif : étudie le signe du numérateur.",
+          "$1 + 2\\ln x > 0 \\iff \\ln x > -\\dfrac{1}{2}$.",
+          "Passe à l'exponentielle, strictement croissante : $\\ln x > k \\iff x > e^k$."
+        ],
+        "revoir": "l-logarithme-024",
+        "solution": "Pour $x > 0$, $f(x)$ a le signe de $1 + 2\\ln x$. Or $1 + 2\\ln x > 0 \\iff \\ln x > -\\dfrac{1}{2} \\iff x > e^{-\\frac{1}{2}}$. La courbe $\\mathcal{C}$ est strictement au-dessus de l'axe des abscisses sur $\\left]e^{-\\frac{1}{2}}\\,;\\,+\\infty\\right[$, avec $e^{-\\frac{1}{2}} = \\dfrac{1}{\\sqrt{e}} \\approx 0{,}61$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-029",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-limites"],
+    "capacites": ["bo-m-logarithme-05", "bo-m-logarithme-09", "bo-m-limites-fonctions-05"],
+    "titre": "Un changement de variable : $X = \\ln x$",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 513,
+    "preambule": "Pour lever certaines formes indéterminées avec $(\\ln x)^2$, on pose $X = \\ln x$, comme dans la démonstration de la limite de $x\\ln x$ en $0$. On rappelle que, pour tout entier naturel $n$ non nul, $\\lim\\limits_{X \\to -\\infty} X^ne^X = 0$ et $\\lim\\limits_{X \\to +\\infty} X^ne^{-X} = 0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $x > 0$ et $X = \\ln x$. Montrer que $x(\\ln x)^2 = X^2e^X$ et que $\\dfrac{(\\ln x)^2}{x} = X^2e^{-X}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Exprime $x$ à l'aide de $X$ : si $X = \\ln x$, que vaut $e^X$ ?",
+          "$x = e^{\\ln x} = e^X$. Remplace $x$ par $e^X$ et $\\ln x$ par $X$.",
+          "Pour le quotient, utilise $\\dfrac{1}{e^X} = e^{-X}$."
+        ],
+        "revoir": "l-logarithme-064",
+        "solution": "Pour $x > 0$, $x = e^{\\ln x} = e^X$. Donc $x(\\ln x)^2 = e^X \\times X^2 = X^2e^X$ et $\\dfrac{(\\ln x)^2}{x} = \\dfrac{X^2}{e^X} = X^2e^{-X}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} x(\\ln x)^2$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$+\\infty$", "$-\\infty$", "$0$", "$1$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$(\\ln x)^2$ tend bien vers $+\\infty$, mais $x$ tend vers $0$ et l'emporte : $X^2e^X$ tend vers $0$ quand $X$ tend vers $-\\infty$.",
+            "L'expression est positive, produit de $x > 0$ et d'un carré : elle ne peut pas tendre vers $-\\infty$.",
+            null,
+            "Aucun des facteurs ne tend vers $1$ ; avec $X = \\ln x$, la limite est celle de $X^2e^X$."
+          ]
+        },
+        "indices": [
+          "Quand $x$ tend vers $0$ avec $x > 0$, vers quoi tend $X = \\ln x$ ?",
+          "$X$ tend vers $-\\infty$ : cherche la limite de $X^2e^X$ avec les croissances comparées rappelées.",
+          "Conclus par composée : la limite de $x(\\ln x)^2$ est celle de $X^2e^X$."
+        ],
+        "revoir": "l-logarithme-064",
+        "solution": "Quand $x$ tend vers $0$ avec $x > 0$, $X = \\ln x$ tend vers $-\\infty$. Par croissances comparées, $\\lim\\limits_{X \\to -\\infty} X^2e^X = 0$. Par composée, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} x(\\ln x)^2 = 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire $\\lim\\limits_{x \\to +\\infty} \\dfrac{(\\ln x)^2}{x}$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0$", "$+\\infty$", "$1$", "On ne peut pas conclure : c'est une forme indéterminée."],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le numérateur grandit, mais bien moins vite que $x$ : avec $X = \\ln x$, l'expression vaut $X^2e^{-X}$.",
+            "Rien ne tend vers $1$ ici : avec $X = \\ln x$, l'expression vaut $X^2e^{-X}$.",
+            "La forme « $\\dfrac{\\infty}{\\infty}$ » se lève avec le changement de variable de la question 1."
+          ]
+        },
+        "indices": [
+          "Quand $x$ tend vers $+\\infty$, vers quoi tend $X = \\ln x$ ?",
+          "$X$ tend vers $+\\infty$, et $\\dfrac{(\\ln x)^2}{x} = X^2e^{-X}$.",
+          "Utilise la croissance comparée rappelée en $+\\infty$, puis conclus par composée."
+        ],
+        "revoir": "l-logarithme-061",
+        "solution": "Quand $x$ tend vers $+\\infty$, $X = \\ln x$ tend vers $+\\infty$. Par croissances comparées, $\\lim\\limits_{X \\to +\\infty} X^2e^{-X} = 0$. Par composée, $\\lim\\limits_{x \\to +\\infty} \\dfrac{(\\ln x)^2}{x} = 0$ : $x$ l'emporte même sur le carré du logarithme."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire $\\lim\\limits_{x \\to +\\infty} \\left(x - (\\ln x)^2\\right)$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0$", "$-\\infty$", "$1$", "$+\\infty$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "« $+\\infty - \\infty$ » ne vaut pas $0$ : factorise par $x$.",
+            "C'est $x$ qui l'emporte, pas $(\\ln x)^2$ : la question 3 le montre.",
+            "En factorisant, la parenthèse tend vers $1$, mais elle reste multipliée par $x$.",
+            null
+          ]
+        },
+        "indices": [
+          "C'est la forme « $+\\infty - \\infty$ » : factorise par $x$.",
+          "$x - (\\ln x)^2 = x\\left(1 - \\dfrac{(\\ln x)^2}{x}\\right)$.",
+          "D'après la question 3, la parenthèse tend vers $1$ : conclus par produit."
+        ],
+        "revoir": "l-logarithme-062",
+        "solution": "Pour $x > 0$ : $x - (\\ln x)^2 = x\\left(1 - \\dfrac{(\\ln x)^2}{x}\\right)$. D'après la question 3, la parenthèse tend vers $1$, et $x$ tend vers $+\\infty$. Par produit, la limite vaut $+\\infty$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-030",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-problemes"],
+    "capacites": ["bo-m-logarithme-07"],
+    "titre": "Le refroidissement d'un café",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 611,
+    "preambule": "Un café est servi à $80$ °C dans une pièce à $20$ °C. On admet que sa température, en degrés Celsius, $t$ minutes après avoir été servi, est $T(t) = 20 + 60e^{-0{,}05t}$, pour $t \\geqslant 0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la température du café au bout de $10$ minutes ? Donner une valeur arrondie au dixième de degré.",
+        "reponse": { "type": "numerique", "valeur": 56.4, "tolerance": 0.05, "unite": "°C" },
+        "indices": [
+          "Remplace $t$ par $10$ dans l'expression de $T(t)$.",
+          "$T(10) = 20 + 60e^{-0{,}05 \\times 10} = 20 + 60e^{-0{,}5}$.",
+          "Calcule $e^{-0{,}5}$ à la calculatrice, multiplie par $60$, ajoute $20$, puis arrondis."
+        ],
+        "revoir": "l-logarithme-073",
+        "solution": "$T(10) = 20 + 60e^{-0{,}5} \\approx 20 + 60 \\times 0{,}606\\,5 \\approx 56{,}4$. Au bout de $10$ minutes, le café est à environ $56{,}4$ °C."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Au bout de combien de temps le café est-il à $50$ °C ? Donner la valeur exacte, puis une valeur approchée en minutes à $0{,}01$ près.",
+        "reponse": { "type": "numerique", "valeur": 13.86, "tolerance": 0.01, "unite": "min" },
+        "indices": [
+          "Résous l'équation $T(t) = 50$ : isole d'abord l'exponentielle.",
+          "$20 + 60e^{-0{,}05t} = 50 \\iff e^{-0{,}05t} = 0{,}5$.",
+          "Prends le logarithme : $-0{,}05t = \\ln 0{,}5 = -\\ln 2$. Isole $t$, puis calcule une valeur approchée."
+        ],
+        "revoir": "l-logarithme-074",
+        "solution": "$T(t) = 50 \\iff 60e^{-0{,}05t} = 30 \\iff e^{-0{,}05t} = 0{,}5 \\iff -0{,}05t = \\ln 0{,}5 \\iff t = \\dfrac{\\ln 0{,}5}{-0{,}05} = 20\\ln 2$, car $\\ln 0{,}5 = -\\ln 2$. Le café est à $50$ °C au bout de $20\\ln 2 \\approx 13{,}86$ minutes, soit environ $13$ min $52$ s."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "À partir de quel instant le café est-il à moins de $30$ °C ? Donner une valeur approchée en minutes à $0{,}01$ près.",
+        "reponse": { "type": "numerique", "valeur": 35.84, "tolerance": 0.01, "unite": "min" },
+        "indices": [
+          "Résous l'inéquation $T(t) < 30$, en isolant l'exponentielle.",
+          "$T(t) < 30 \\iff e^{-0{,}05t} < \\dfrac{1}{6}$. Prends le logarithme, qui garde le sens.",
+          "$-0{,}05t < \\ln\\left(\\dfrac{1}{6}\\right) = -\\ln 6$ : divise par $-0{,}05$, qui est négatif, en changeant le sens."
+        ],
+        "revoir": "l-logarithme-074",
+        "solution": "$T(t) < 30 \\iff 60e^{-0{,}05t} < 10 \\iff e^{-0{,}05t} < \\dfrac{1}{6} \\iff -0{,}05t < -\\ln 6$. En divisant par $-0{,}05 < 0$, le sens change : $t > \\dfrac{\\ln 6}{0{,}05} = 20\\ln 6 \\approx 35{,}84$. Le café est à moins de $30$ °C au-delà d'environ $35{,}84$ minutes, soit environ $35$ min $50$ s.",
+        "erreurFrequente": "Lire $35{,}84$ minutes comme $35$ min $84$ s : $0{,}84$ minute vaut $0{,}84 \\times 60 \\approx 50$ secondes."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Vrai ou faux ? Si on attend assez longtemps, le café finira par descendre en dessous de $15$ °C.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Pour tout $t \\geqslant 0$, $60e^{-0{,}05t} > 0$, donc $T(t) > 20$ : le café ne descend jamais sous la température de la pièce. D'ailleurs, $T(t)$ tend vers $20$ quand $t$ tend vers $+\\infty$."
+        },
+        "indices": [
+          "Regarde le signe de $60e^{-0{,}05t}$ pour tout $t$.",
+          "$T(t) = 20 + 60e^{-0{,}05t}$ : peut-elle passer sous $20$ ?",
+          "Calcule aussi la limite de $T(t)$ quand $t$ tend vers $+\\infty$, et interprète-la."
+        ],
+        "revoir": "l-logarithme-073",
+        "solution": "Pour tout $t \\geqslant 0$, $e^{-0{,}05t} > 0$, donc $T(t) > 20$. De plus, $\\lim\\limits_{t \\to +\\infty} e^{-0{,}05t} = 0$, donc $T(t)$ tend vers $20$ : le café se rapproche de la température de la pièce sans jamais l'atteindre. Il ne descendra pas sous $15$ °C : l'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-031",
+    "chapitre": "logarithme",
+    "niveau": 2,
+    "notions": ["n-logarithme-problemes", "n-logarithme-derivee"],
+    "capacites": ["bo-m-logarithme-07", "bo-m-logarithme-03", "bo-m-continuite-04"],
+    "titre": "Un bénéfice maximal",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 612,
+    "preambule": "Un artisan fabrique entre $100$ et $1\\,000$ objets par mois. On admet que, pour $x$ centaines d'objets fabriqués, avec $x \\in [1\\,;\\,10]$, son bénéfice mensuel, en milliers d'euros, est $B(x) = 3\\ln x - x + 2$. Un bénéfice négatif est une perte.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étudier les variations de $B$ sur $[1\\,;\\,10]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Calcule $B'(x)$ avec $\\ln'(x) = \\dfrac{1}{x}$, puis mets au même dénominateur.",
+          "$B'(x) = \\dfrac{3}{x} - 1 = \\dfrac{3 - x}{x}$, et $x > 0$ sur $[1\\,;\\,10]$.",
+          "$B'(x)$ a le signe de $3 - x$ : conclus sur $[1\\,;\\,3]$, puis sur $[3\\,;\\,10]$."
+        ],
+        "revoir": "l-logarithme-048",
+        "solution": "$B$ est dérivable sur $[1\\,;\\,10]$ et $B'(x) = \\dfrac{3}{x} - 1 = \\dfrac{3 - x}{x}$. Comme $x > 0$, $B'(x)$ a le signe de $3 - x$ : $B'(x) > 0$ sur $[1\\,;\\,3[$, $B'(3) = 0$ et $B'(x) < 0$ sur $]3\\,;\\,10]$. Donc $B$ est strictement croissante sur $[1\\,;\\,3]$ et strictement décroissante sur $[3\\,;\\,10]$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour quel nombre d'objets le bénéfice est-il maximal ? Donner ce bénéfice maximal en euros, arrondi à l'euro.",
+        "reponse": { "type": "numerique", "valeur": 2296, "tolerance": 1, "unite": "€" },
+        "indices": [
+          "D'après la question 1, le maximum est atteint en $x = 3$ : traduis en nombre d'objets, puis calcule $B(3)$.",
+          "$B(3) = 3\\ln 3 - 3 + 2 = 3\\ln 3 - 1$, en milliers d'euros.",
+          "Calcule $3\\ln 3 - 1$ à la calculatrice, puis multiplie par $1\\,000$ pour passer en euros."
+        ],
+        "revoir": "l-logarithme-073",
+        "solution": "$B$ est maximale en $x = 3$, soit pour $300$ objets. Le bénéfice vaut alors $B(3) = 3\\ln 3 - 3 + 2 = 3\\ln 3 - 1 \\approx 2{,}296$ milliers d'euros. Le bénéfice maximal est d'environ $2\\,296$ euros, obtenu pour $300$ objets."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Montrer que l'équation $B(x) = 0$ admet une unique solution $\\alpha$ dans $[3\\,;\\,10]$, puis donner une valeur approchée de $\\alpha$ arrondie au centième.",
+        "reponse": { "type": "numerique", "valeur": 8.38, "tolerance": 0.005 },
+        "indices": [
+          "Sur $[3\\,;\\,10]$, $B$ est continue et strictement décroissante : c'est le cas strictement monotone du théorème des valeurs intermédiaires.",
+          "Calcule $B(3)$ et $B(10)$ et vérifie que $0$ est compris entre ces deux valeurs.",
+          "$B(3) > 0$ et $B(10) = 3\\ln 10 - 8 < 0$. Pour l'arrondi, cherche à la calculatrice l'intervalle d'amplitude $0{,}01$ où $B$ change de signe, puis le signe de $B$ en son milieu."
+        ],
+        "revoir": "l-continuite-024",
+        "solution": "Sur $[3\\,;\\,10]$, $B$ est dérivable donc continue, et strictement décroissante. $B(3) = 3\\ln 3 - 1 \\approx 2{,}30 > 0$ et $B(10) = 3\\ln 10 - 8 \\approx -1{,}09 < 0$ : $0$ est compris entre $B(10)$ et $B(3)$. D'après le théorème des valeurs intermédiaires (cas strictement monotone), l'équation $B(x) = 0$ admet une unique solution $\\alpha$ dans $[3\\,;\\,10]$.\n\nÀ la calculatrice, $B(8{,}37) \\approx 0{,}004 > 0$ et $B(8{,}38) \\approx -0{,}002 < 0$, donc $8{,}37 < \\alpha < 8{,}38$ ; de plus, $B(8{,}375) \\approx 0{,}000\\,8 > 0$, donc $8{,}375 < \\alpha < 8{,}38$. Arrondi au centième : $\\alpha \\approx 8{,}38$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire le nombre maximal d'objets que l'artisan peut fabriquer en un mois sans subir de perte.",
+        "reponse": { "type": "numerique", "valeur": 837, "tolerance": 0 },
+        "indices": [
+          "Cherche les $x$ de $[1\\,;\\,10]$ tels que $B(x) \\geqslant 0$, en utilisant les variations de $B$ et le réel $\\alpha$.",
+          "Sur $[1\\,;\\,3]$, $B(x) \\geqslant B(1) = 1 > 0$ ; sur $[3\\,;\\,10]$, $B$ décroît et s'annule en $\\alpha$. Donc $B(x) \\geqslant 0 \\iff x \\leqslant \\alpha$.",
+          "Le nombre d'objets $100x$ est un entier inférieur ou égal à $100\\alpha$ : utilise l'encadrement $8{,}37 < \\alpha < 8{,}38$."
+        ],
+        "revoir": "l-logarithme-073",
+        "solution": "Sur $[1\\,;\\,3]$, $B$ est croissante, donc $B(x) \\geqslant B(1) = 1 > 0$. Sur $[3\\,;\\,10]$, $B$ est strictement décroissante et $B(\\alpha) = 0$ : $B(x) \\geqslant 0 \\iff x \\leqslant \\alpha$. L'artisan ne subit donc pas de perte tant que le nombre d'objets $100x$ ne dépasse pas $100\\alpha$. Comme $8{,}37 < \\alpha < 8{,}38$, on a $837 < 100\\alpha < 838$ : il peut fabriquer au plus $837$ objets sans perte."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-032",
+    "chapitre": "logarithme",
+    "niveau": 3,
+    "notions": ["n-logarithme-derivee", "n-logarithme-limites", "n-logarithme-equations"],
+    "capacites": ["bo-m-logarithme-03", "bo-m-logarithme-04", "bo-m-logarithme-06", "bo-m-derivation-06", "bo-m-continuite-04"],
+    "titre": "Étude complète de $\\ln x\\,(2 - \\ln x)$",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 421,
+    "preambule": "Soit $f$ la fonction définie sur $]0\\,;\\,+\\infty[$ par $f(x) = \\ln x\\,(2 - \\ln x)$, et $\\mathcal{C}$ sa courbe représentative dans un repère.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer les limites de $f$ en $0$ et en $+\\infty$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "En $0$ : $-\\infty$ ; en $+\\infty$ : $+\\infty$.",
+            "En $0$ : $-\\infty$ ; en $+\\infty$ : $-\\infty$.",
+            "En $0$ : $0$ ; en $+\\infty$ : $-\\infty$.",
+            "On ne peut pas conclure : ce sont des formes indéterminées."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "En $+\\infty$, $\\ln x$ tend vers $+\\infty$ mais $2 - \\ln x$ tend vers $-\\infty$ : le produit tend vers $-\\infty$.",
+            null,
+            "En $0$, $\\ln x$ tend vers $-\\infty$, pas vers $0$ : aucun facteur ne tend vers $0$.",
+            "Aucune forme indéterminée ici : en $0$, c'est « $(-\\infty) \\times (+\\infty)$ », et en $+\\infty$, « $(+\\infty) \\times (-\\infty)$ »."
+          ]
+        },
+        "indices": [
+          "Cherche la limite de chaque facteur, $\\ln x$ et $2 - \\ln x$, en $0$ puis en $+\\infty$.",
+          "En $0$ : $\\ln x$ tend vers $-\\infty$, donc $2 - \\ln x$ tend vers $+\\infty$.",
+          "En $+\\infty$ : $\\ln x$ tend vers $+\\infty$ et $2 - \\ln x$ vers $-\\infty$. Conclus dans les deux cas par produit, avec la règle des signes."
+        ],
+        "revoir": "l-logarithme-066",
+        "solution": "En $0$ : $\\ln x$ tend vers $-\\infty$ et $2 - \\ln x$ vers $+\\infty$ ; par produit, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} f(x) = -\\infty$, et l'axe des ordonnées est asymptote verticale à $\\mathcal{C}$. En $+\\infty$ : $\\ln x$ tend vers $+\\infty$ et $2 - \\ln x$ vers $-\\infty$ ; par produit, $\\lim\\limits_{x \\to +\\infty} f(x) = -\\infty$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout réel $x > 0$, $f'(x) = \\dfrac{2(1 - \\ln x)}{x}$, puis dresser le tableau de variations complet de $f$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Développe d'abord : $f(x) = 2\\ln x - (\\ln x)^2$. La dérivée d'un carré $u^2$ est $2u'u$.",
+          "$\\left((\\ln x)^2\\right)' = 2 \\times \\dfrac{1}{x} \\times \\ln x$. Donc $f'(x) = \\dfrac{2}{x} - \\dfrac{2\\ln x}{x}$ : factorise.",
+          "$x > 0$ : $f'(x)$ a le signe de $1 - \\ln x$, positif pour $x < e$. Calcule $f(e)$, puis place les limites de la question 1."
+        ],
+        "revoir": "l-logarithme-048",
+        "solution": "$f(x) = 2\\ln x - (\\ln x)^2$. La dérivée de $u^2$ est $2u'u$, donc $\\left((\\ln x)^2\\right)' = \\dfrac{2\\ln x}{x}$. Ainsi $f'(x) = \\dfrac{2}{x} - \\dfrac{2\\ln x}{x} = \\dfrac{2(1 - \\ln x)}{x}$.\n\nComme $x > 0$, $f'(x)$ a le signe de $1 - \\ln x$ : $1 - \\ln x > 0 \\iff \\ln x < 1 \\iff x < e$. Donc $f$ est strictement croissante sur $]0\\,;\\,e]$ et strictement décroissante sur $[e\\,;\\,+\\infty[$, de maximum $f(e) = 1 \\times (2 - 1) = 1$.\n\n| $x$ | $0$ | | $e$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $+$ | $0$ | $-$ | |\n| variations de $f$ | $-\\infty$ | $\\nearrow$ | $1$ | $\\searrow$ | $-\\infty$ |"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Résoudre dans $]0\\,;\\,+\\infty[$ l'équation $f(x) = 0$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\{0\\,;\\,2\\}$", "$\\{e^2\\}$", "$\\{1\\,;\\,2\\}$", "$\\{1\\,;\\,e^2\\}$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Ce sont les valeurs de $\\ln x$ qui annulent le produit, pas celles de $x$ ; et $0$ n'est pas dans l'ensemble de définition.",
+            "$\\ln x = 0$ donne aussi une solution : $x = 1$.",
+            "$\\ln x = 2$ donne $x = e^2$, pas $x = 2$.",
+            null
+          ]
+        },
+        "indices": [
+          "Un produit est nul si et seulement si l'un de ses facteurs est nul.",
+          "$f(x) = 0 \\iff \\ln x = 0$ ou $2 - \\ln x = 0$.",
+          "Résous chacune de ces équations : $\\ln x = k \\iff x = e^k$."
+        ],
+        "revoir": "l-logarithme-025",
+        "solution": "$f(x) = 0 \\iff \\ln x = 0$ ou $\\ln x = 2 \\iff x = 1$ ou $x = e^2$. Ces deux réels sont dans $]0\\,;\\,+\\infty[$ : $S = \\{1\\,;\\,e^2\\}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Sur quel ensemble la courbe $\\mathcal{C}$ est-elle au-dessus de l'axe des abscisses, au sens large ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$[1\\,;\\,e^2]$",
+            "$]0\\,;\\,1] \\cup [e^2\\,;\\,+\\infty[$",
+            "$[1\\,;\\,e]$",
+            "$[e\\,;\\,+\\infty[$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est là où $f(x) \\leqslant 0$ : par exemple, $f(e) = 1 > 0$.",
+            "En $e$, $f$ atteint son maximum, mais elle reste positive jusqu'à $e^2$ : par exemple, $f\\left(e^{1{,}5}\\right) = 1{,}5 \\times 0{,}5 > 0$.",
+            "Sur $[e\\,;\\,+\\infty[$, $f$ décroît et devient négative après $e^2$."
+          ]
+        },
+        "indices": [
+          "Étudie le signe du produit $\\ln x\\,(2 - \\ln x)$ avec un tableau de signes.",
+          "$\\ln x \\geqslant 0 \\iff x \\geqslant 1$, et $2 - \\ln x \\geqslant 0 \\iff x \\leqslant e^2$.",
+          "Le produit est positif ou nul quand les deux facteurs ont le même signe : repère où c'est le cas, en t'aidant de la question 3."
+        ],
+        "revoir": "l-logarithme-028",
+        "solution": "$\\ln x \\geqslant 0 \\iff x \\geqslant 1$ et $2 - \\ln x \\geqslant 0 \\iff x \\leqslant e^2$. Sur $]0\\,;\\,1[$, le premier facteur est négatif et le second positif : $f(x) < 0$. Sur $[1\\,;\\,e^2]$, les deux sont positifs ou nuls : $f(x) \\geqslant 0$. Sur $]e^2\\,;\\,+\\infty[$, le premier est positif et le second négatif : $f(x) < 0$. La courbe est au-dessus de l'axe des abscisses sur $[1\\,;\\,e^2]$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Selon la valeur du réel $k$, combien l'équation $f(x) = k$ a-t-elle de solutions dans $]0\\,;\\,+\\infty[$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Deux solutions si $0 < k < 1$, une si $k \\leqslant 0$ ou $k = 1$, aucune si $k > 1$.",
+            "Deux solutions si $k < 1$, une seule si $k = 1$, aucune si $k > 1$.",
+            "Une seule solution pour tout réel $k$, car $f$ est continue.",
+            "Deux solutions si $k \\leqslant 1$, aucune si $k > 1$."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Pour $k \\leqslant 0$ aussi, il y a deux solutions : les limites en $0$ et en $+\\infty$ valent $-\\infty$, donc chaque branche prend toutes les valeurs inférieures à $1$. Par exemple, $f(x) = 0$ a deux solutions, $1$ et $e^2$.",
+            null,
+            "La continuité seule ne donne ni l'existence ni l'unicité : $f$ n'est pas monotone sur $]0\\,;\\,+\\infty[$, et $f(x) = 2$ n'a aucune solution, car $f \\leqslant 1$.",
+            "Pour $k = 1$, la seule solution est $e$ : le maximum n'est atteint qu'une fois."
+          ]
+        },
+        "indices": [
+          "Utilise le tableau de variations : sur chacun des intervalles $]0\\,;\\,e]$ et $[e\\,;\\,+\\infty[$, $f$ est continue et strictement monotone.",
+          "Sur $]0\\,;\\,e]$, $f$ croît de $-\\infty$ à $1$ ; sur $[e\\,;\\,+\\infty[$, elle décroît de $1$ à $-\\infty$. Applique le théorème des valeurs intermédiaires sur chaque intervalle.",
+          "Pour $k < 1$, compte une solution par intervalle ; examine à part les cas $k = 1$ et $k > 1$, en comparant $k$ au maximum."
+        ],
+        "revoir": "l-continuite-027",
+        "solution": "Sur $]0\\,;\\,e]$, $f$ est continue et strictement croissante, de $-\\infty$ (limite en $0$) à $f(e) = 1$ ; sur $[e\\,;\\,+\\infty[$, elle est continue et strictement décroissante, de $1$ à $-\\infty$. D'après le théorème des valeurs intermédiaires (cas strictement monotone, étendu aux intervalles non bornés), pour $k < 1$, l'équation $f(x) = k$ a une unique solution dans $]0\\,;\\,e[$ et une unique solution dans $]e\\,;\\,+\\infty[$ : deux solutions. Pour $k = 1$, la seule solution est $e$, où le maximum est atteint. Pour $k > 1$, il n'y a aucune solution, car $f(x) \\leqslant 1$ pour tout $x > 0$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-033",
+    "chapitre": "logarithme",
+    "niveau": 3,
+    "notions": ["n-logarithme-proprietes", "n-logarithme-equations", "n-logarithme-definition"],
+    "capacites": ["bo-m-logarithme-02", "bo-m-logarithme-06", "bo-m-logarithme-01", "bo-m-suites-08", "bo-m-suites-05", "bo-m-limites-fonctions-02"],
+    "titre": "Une suite étudiée grâce au logarithme",
+    "duree": 30,
+    "calculatrice": true,
+    "ordre": 221,
+    "preambule": "Soit $(u_n)$ la suite définie par $u_0 = 2$ et, pour tout entier naturel $n$, $u_{n+1} = \\dfrac{u_n^2}{e}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, $u_n > 0$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Rédige les deux étapes d'une récurrence : initialisation pour $n = 0$, puis hérédité.",
+          "Initialisation : $u_0 = 2 > 0$. Hérédité : suppose $u_n > 0$ pour un entier naturel $n$ donné.",
+          "Si $u_n > 0$, alors $u_n^2 > 0$ ; et $e > 0$. Conclus sur le signe du quotient $\\dfrac{u_n^2}{e}$."
+        ],
+        "revoir": "l-recurrence-suites-006",
+        "solution": "Soit $P(n)$ la propriété « $u_n > 0$ ». **Initialisation** : $u_0 = 2 > 0$ : $P(0)$ est vraie. **Hérédité** : soit $n$ un entier naturel tel que $u_n > 0$. Alors $u_n^2 > 0$ et, comme $e > 0$, $u_{n+1} = \\dfrac{u_n^2}{e} > 0$ : $P(n + 1)$ est vraie. **Conclusion** : par récurrence, pour tout entier naturel $n$, $u_n > 0$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On pose, pour tout entier naturel $n$, $v_n = \\ln(u_n) - 1$. Montrer que la suite $(v_n)$ est géométrique de raison $2$, et préciser son premier terme.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "D'après la question 1, $v_n$ existe. Exprime $\\ln(u_{n+1})$ avec les règles du quotient et de la puissance.",
+          "$\\ln(u_{n+1}) = \\ln\\left(u_n^2\\right) - \\ln e = 2\\ln(u_n) - 1$.",
+          "Calcule $v_{n+1} = \\ln(u_{n+1}) - 1$, puis factorise par $2$ pour faire apparaître $v_n$.",
+          "$v_{n+1} = 2\\ln(u_n) - 2$. Pour le premier terme, calcule $v_0$ à partir de $u_0 = 2$."
+        ],
+        "revoir": "l-logarithme-017",
+        "solution": "$u_n > 0$, donc $v_n$ existe. Pour tout entier naturel $n$ : $\\ln(u_{n+1}) = \\ln\\left(\\dfrac{u_n^2}{e}\\right) = \\ln\\left(u_n^2\\right) - \\ln e = 2\\ln(u_n) - 1$. Donc $v_{n+1} = 2\\ln(u_n) - 1 - 1 = 2\\ln(u_n) - 2 = 2\\big(\\ln(u_n) - 1\\big) = 2v_n$. La suite $(v_n)$ est géométrique de raison $2$, de premier terme $v_0 = \\ln 2 - 1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire que, pour tout entier naturel $n$, $u_n = e^{1 + (\\ln 2 - 1) \\times 2^n}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Écris d'abord $v_n$ en fonction de $n$, comme pour toute suite géométrique.",
+          "$v_n = (\\ln 2 - 1) \\times 2^n$, donc $\\ln(u_n) = 1 + v_n$.",
+          "Passe à l'exponentielle : pour $a > 0$, $a = e^{\\ln a}$."
+        ],
+        "revoir": "l-logarithme-003",
+        "solution": "$(v_n)$ est géométrique de raison $2$ et de premier terme $\\ln 2 - 1$ : $v_n = (\\ln 2 - 1) \\times 2^n$. Donc $\\ln(u_n) = 1 + v_n = 1 + (\\ln 2 - 1) \\times 2^n$ et, comme $u_n > 0$, $u_n = e^{\\ln(u_n)} = e^{1 + (\\ln 2 - 1) \\times 2^n}$. Contrôle pour $n = 1$ : $e^{1 + 2\\ln 2 - 2} = e^{2\\ln 2 - 1} = \\dfrac{4}{e} = \\dfrac{u_0^2}{e}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Quelle est la limite de la suite $(u_n)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$+\\infty$", "$e$", "$1$", "$0$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "$2^n$ tend bien vers $+\\infty$, mais il est multiplié par $\\ln 2 - 1$, qui est négatif : l'exposant tend vers $-\\infty$.",
+            "Ce serait vrai si $v_n$ tendait vers $0$ ; or une suite géométrique de raison $2$ et de premier terme non nul ne tend pas vers $0$.",
+            "$e^X$ tend vers $1$ quand $X$ tend vers $0$ ; ici, l'exposant tend vers $-\\infty$.",
+            null
+          ]
+        },
+        "indices": [
+          "Commence par le signe de $\\ln 2 - 1$, puis la limite de $2^n$.",
+          "$2 < e$, donc $\\ln 2 < 1$ et $\\ln 2 - 1 < 0$ ; et $2^n$ tend vers $+\\infty$, car $2 > 1$. Vers quoi tend l'exposant ?",
+          "L'exposant tend vers $-\\infty$ : quelle est la limite de $e^X$ quand $X$ tend vers $-\\infty$ ?"
+        ],
+        "revoir": "l-limites-suites-040",
+        "solution": "$2 > 1$, donc $\\lim\\limits_{n \\to +\\infty} 2^n = +\\infty$. Or $\\ln 2 - 1 < 0$, car $\\ln 2 < \\ln e = 1$. Par produit, $(\\ln 2 - 1) \\times 2^n$ tend vers $-\\infty$, donc l'exposant $1 + (\\ln 2 - 1) \\times 2^n$ aussi. Comme $\\lim\\limits_{X \\to -\\infty} e^X = 0$, par composée, $\\lim\\limits_{n \\to +\\infty} u_n = 0$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Déterminer par le calcul le plus petit entier naturel $n$ tel que $u_n < 0{,}001$.",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "Passe au logarithme, qui garde l'ordre : $u_n < 0{,}001 \\iff \\ln(u_n) < \\ln 0{,}001$. Puis isole $2^n$.",
+          "$1 + (\\ln 2 - 1) \\times 2^n < \\ln 0{,}001$. Retranche $1$, puis divise par $\\ln 2 - 1$, qui est négatif : le sens change.",
+          "Tu obtiens $2^n > \\dfrac{1 - \\ln 0{,}001}{1 - \\ln 2}$ : calcule ce quotient, puis compare-le aux puissances de $2$.",
+          "Contrôle avec $u_n$ pour l'entier trouvé et pour le précédent."
+        ],
+        "revoir": "l-logarithme-030",
+        "solution": "$\\ln$ est strictement croissante : $u_n < 0{,}001 \\iff 1 + (\\ln 2 - 1) \\times 2^n < \\ln 0{,}001 \\iff (\\ln 2 - 1) \\times 2^n < \\ln 0{,}001 - 1$. Comme $\\ln 2 - 1 < 0$, en divisant, le sens change : $2^n > \\dfrac{1 - \\ln 0{,}001}{1 - \\ln 2} \\approx 25{,}8$. Or $2^4 = 16$ et $2^5 = 32$ : le plus petit entier tel que $2^n > 25{,}8$ est $5$. Contrôle : $u_4 \\approx 0{,}020$ et $u_5 \\approx 0{,}000\\,15$. Le plus petit entier cherché est $5$."
+      }
+    ]
+  },
+  {
+    "id": "x-logarithme-034",
+    "chapitre": "logarithme",
+    "niveau": 3,
+    "notions": ["n-logarithme-problemes", "n-logarithme-derivee", "n-logarithme-limites"],
+    "capacites": ["bo-m-logarithme-07", "bo-m-logarithme-03", "bo-m-logarithme-05", "bo-m-derivation-06"],
+    "titre": "Le plus grand triangle sous une tangente",
+    "duree": 30,
+    "calculatrice": false,
+    "ordre": 621,
+    "preambule": "Dans un repère orthonormé d'origine $O$, on note $\\mathcal{C}$ la courbe de la fonction $\\ln$. Pour un réel $a$ de $]0\\,;\\,e[$, on note $M$ le point de $\\mathcal{C}$ d'abscisse $a$ et $T_a$ la tangente à $\\mathcal{C}$ en $M$. La droite $T_a$ coupe l'axe des abscisses en $P$ et l'axe des ordonnées en $Q$. La figure montre la situation pour $a = 0{,}5$.\n\nExiste-t-il une valeur de $a$ pour laquelle l'aire du triangle $OPQ$ est maximale ?",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/logarithme/x-triangle-tangente.svg",
+        "width": 370,
+        "height": 400,
+        "alt": "Dans un repère orthonormé, la courbe de la fonction ln, en vert, et sa tangente au point M d'abscisse a = 0,5, en orange. La tangente coupe l'axe des abscisses au point P, d'abscisse environ 0,85, et l'axe des ordonnées au point Q, d'ordonnée environ −1,69. Le triangle OPQ, coloré, est sous l'axe des abscisses."
+      },
+      "caption": "La tangente en M coupe les axes en P et Q : quand a varie, le triangle OPQ change d'aire."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que $T_a$ a pour équation $y = \\dfrac{x}{a} + \\ln a - 1$. En déduire les coordonnées de $P$ et de $Q$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "La tangente au point d'abscisse $a$ a pour équation $y = \\ln'(a)(x - a) + \\ln a$.",
+          "$\\ln'(a) = \\dfrac{1}{a}$, donc $y = \\dfrac{1}{a}(x - a) + \\ln a$ : développe.",
+          "$Q$ est sur l'axe des ordonnées : remplace $x$ par $0$. $P$ est sur l'axe des abscisses : résous $\\dfrac{x}{a} + \\ln a - 1 = 0$."
+        ],
+        "revoir": "l-logarithme-051",
+        "solution": "$T_a$ a pour équation $y = \\ln'(a)(x - a) + \\ln a = \\dfrac{1}{a}(x - a) + \\ln a = \\dfrac{x}{a} + \\ln a - 1$. Pour $x = 0$, $y = \\ln a - 1$ : $Q(0\\,;\\,\\ln a - 1)$. Pour $y = 0$ : $\\dfrac{x}{a} = 1 - \\ln a$, soit $x = a(1 - \\ln a)$ : $P\\big(a(1 - \\ln a)\\,;\\,0\\big)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Justifier que, pour $a$ dans $]0\\,;\\,e[$, l'aire du triangle $OPQ$, en unités d'aire, est $\\mathcal{A}(a) = \\dfrac{a(1 - \\ln a)^2}{2}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Le triangle $OPQ$ est rectangle en $O$ : son aire vaut $\\dfrac{OP \\times OQ}{2}$.",
+          "Pour $0 < a < e$, $\\ln a < 1$ : quel est le signe de $1 - \\ln a$ ? Déduis-en la longueur $OP$.",
+          "$OQ$ est une longueur : c'est la valeur absolue de l'ordonnée $\\ln a - 1$, qui est négative."
+        ],
+        "revoir": "l-logarithme-076",
+        "solution": "Le triangle $OPQ$ est rectangle en $O$. Pour $0 < a < e$, $\\ln a < \\ln e = 1$, donc $1 - \\ln a > 0$. Ainsi $OP = a(1 - \\ln a)$ et $OQ = -(\\ln a - 1) = 1 - \\ln a$. L'aire vaut $\\mathcal{A}(a) = \\dfrac{OP \\times OQ}{2} = \\dfrac{a(1 - \\ln a)^2}{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On admet que $\\lim\\limits_{\\substack{a \\to 0 \\\\ a > 0}} a(\\ln a)^2 = 0$ (cela se démontre en posant $X = \\ln a$). Quelles sont les limites de $\\mathcal{A}$ en $0$ et en $e$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$+\\infty$ en $0$ et $0$ en $e$",
+            "$0$ en $0$ et $\\dfrac{e}{2}$ en $e$",
+            "$\\dfrac{1}{2}$ en $0$ et $0$ en $e$",
+            "$0$ en $0$ et $0$ en $e$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Le carré $(1 - \\ln a)^2$ tend vers $+\\infty$, mais il est multiplié par $a$, qui tend vers $0$ : en développant, chaque terme tend vers $0$.",
+            "En $e$, $1 - \\ln e = 0$ : le facteur $(1 - \\ln a)^2$ s'annule.",
+            "Le terme constant du développement est multiplié par $a$ : $\\dfrac{a}{2}$ tend vers $0$, pas vers $\\dfrac{1}{2}$.",
+            null
+          ]
+        },
+        "indices": [
+          "En $0$, c'est une forme « $0 \\times \\infty$ » : développe $a(1 - \\ln a)^2$.",
+          "$a(1 - \\ln a)^2 = a - 2a\\ln a + a(\\ln a)^2$ : utilise les croissances comparées et le résultat admis.",
+          "En $e$, il n'y a pas d'indétermination : $a$ tend vers $e$ et $1 - \\ln a$ vers $1 - \\ln e$."
+        ],
+        "revoir": "l-logarithme-066",
+        "solution": "En $0$ : $\\mathcal{A}(a) = \\dfrac{1}{2}\\left(a - 2a\\ln a + a(\\ln a)^2\\right)$. Or $a$ tend vers $0$, $a\\ln a$ tend vers $0$ par croissances comparées, et $a(\\ln a)^2$ tend vers $0$ (résultat admis). Par somme, $\\mathcal{A}(a)$ tend vers $0$. En $e$ : $a$ tend vers $e$ et $1 - \\ln a$ vers $0$, donc $\\mathcal{A}(a)$ tend vers $\\dfrac{e \\times 0}{2} = 0$. Le triangle s'écrase dans les deux cas : en $e$, la tangente passe par l'origine."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Montrer que, pour tout $a$ de $]0\\,;\\,e[$, $\\mathcal{A}'(a) = -\\dfrac{(1 - \\ln a)(1 + \\ln a)}{2}$, puis étudier les variations de $\\mathcal{A}$ sur $]0\\,;\\,e[$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$\\mathcal{A}(a) = \\dfrac{1}{2} \\times a \\times w(a)^2$ avec $w(a) = 1 - \\ln a$ : dérive le produit, avec $\\left(w^2\\right)' = 2w'w$.",
+          "$\\left((1 - \\ln a)^2\\right)' = 2 \\times \\left(-\\dfrac{1}{a}\\right) \\times (1 - \\ln a)$. Donc $\\mathcal{A}'(a) = \\dfrac{1}{2}\\left[(1 - \\ln a)^2 - 2(1 - \\ln a)\\right]$.",
+          "Factorise par $1 - \\ln a$. Sur $]0\\,;\\,e[$, $1 - \\ln a > 0$ : le signe de $\\mathcal{A}'(a)$ est celui de $-(1 + \\ln a)$.",
+          "$-(1 + \\ln a) > 0 \\iff \\ln a < -1 \\iff a < e^{-1}$ : conclus sur les variations."
+        ],
+        "revoir": "l-logarithme-048",
+        "solution": "$\\mathcal{A}'(a) = \\dfrac{1}{2}\\left[1 \\times (1 - \\ln a)^2 + a \\times 2 \\times \\left(-\\dfrac{1}{a}\\right)(1 - \\ln a)\\right] = \\dfrac{1}{2}(1 - \\ln a)\\big[(1 - \\ln a) - 2\\big] = -\\dfrac{(1 - \\ln a)(1 + \\ln a)}{2}$.\n\nSur $]0\\,;\\,e[$, $1 - \\ln a > 0$, donc $\\mathcal{A}'(a)$ a le signe de $-(1 + \\ln a)$. Or $-(1 + \\ln a) > 0 \\iff \\ln a < -1 \\iff a < e^{-1}$. Donc $\\mathcal{A}$ est strictement croissante sur $\\left]0\\,;\\,e^{-1}\\right]$ et strictement décroissante sur $\\left[e^{-1}\\,;\\,e\\right[$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Conclure : pour quelle valeur de $a$ l'aire est-elle maximale ? Donner la valeur exacte de l'aire maximale, puis une valeur approchée à $10^{-2}$ près, sachant que $e^{-1} \\approx 0{,}368$. Saisir la valeur approchée.",
+        "reponse": { "type": "numerique", "valeur": 0.74, "tolerance": 0.005 },
+        "indices": [
+          "D'après la question 4, le maximum est atteint en $a = e^{-1}$ : calcule $\\mathcal{A}\\left(e^{-1}\\right)$.",
+          "$\\ln\\left(e^{-1}\\right) = -1$, donc $1 - \\ln\\left(e^{-1}\\right) = 2$.",
+          "$\\mathcal{A}\\left(e^{-1}\\right) = \\dfrac{e^{-1} \\times 2^2}{2}$ : simplifie, puis utilise la valeur approchée donnée."
+        ],
+        "revoir": "l-logarithme-076",
+        "solution": "D'après la question 4, $\\mathcal{A}$ est maximale pour $a = e^{-1} = \\dfrac{1}{e}$, c'est-à-dire quand $M$ est le point $\\left(e^{-1}\\,;\\,-1\\right)$. L'aire vaut alors $\\mathcal{A}\\left(e^{-1}\\right) = \\dfrac{e^{-1}(1 + 1)^2}{2} = 2e^{-1} = \\dfrac{2}{e} \\approx 2 \\times 0{,}368 \\approx 0{,}74$ unité d'aire. Oui : l'aire du triangle $OPQ$ est maximale, égale à $\\dfrac{2}{e}$, pour $a = \\dfrac{1}{e}$."
+      }
+    ]
+  }
+]
