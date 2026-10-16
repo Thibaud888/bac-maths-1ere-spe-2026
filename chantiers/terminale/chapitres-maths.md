@@ -175,6 +175,13 @@ Briggs ★ (12 %). Proposition de départ :
 - Seuil d'une suite géométrique (qⁿ < ε) avec ln · ★★
 
 ### 8. Orthogonalité et distances dans l'espace
+Écrit le 2026-10-16 en 5 notions, priorités mesurées sur 103 sujets : produit scalaire dans
+l'espace ★★ (10 %, relevé d'un cran : tout le chapitre en dépend) ; vecteurs orthogonaux,
+calculs en repère orthonormé ★★★ (95 %) ; droites et plans orthogonaux, vecteur normal ★★★
+(91 %) ; projeté orthogonal, distance ★★★ (69 %) ; longueurs, angles, aires et volumes ★★★
+(53 %, à part : le volume d'un tétraèdre est un geste distinct au bac). Le produit scalaire
+en coordonnées est séparé de sa définition (87 % contre 10 %). Les coordonnées d'un projeté
+par un système restent au chapitre 9. Proposition de départ :
 - Produit scalaire dans l'espace (dont en coordonnées) · ★★
 - Orthogonalité de droites, de plans ; vecteur normal · ★★★
 - Projeté orthogonal, distance d'un point à un plan · ★★ (très présent : à remonter si les annales le confirment)
