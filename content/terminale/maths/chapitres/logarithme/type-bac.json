@@ -49,7 +49,7 @@
           "Sur la courbe de $f$ elle-même, une fonction convexe a une courbe « en bol », située au-dessus de ses tangentes ; une fonction concave a une courbe « en dôme », située en dessous.",
           "Regarde la position de la courbe par rapport à la tangente $T$ de part et d'autre du point A, puis la forme de la courbe sur chacune des deux parties."
         ],
-        "attenduCorrecteur": "- Lecture de la forme de la courbe de part et d'autre de A (en bol à gauche, en dôme à droite) : 0,25 pt.\n- Conjecture : $f$ semble convexe sur $]-\\infty\\,;\\,1]$ (partie visible à partir de $x \\approx -0{,}9$) et concave sur $[1\\,;\\,+\\infty[$ : 0,25 pt.",
+        "attenduCorrecteur": "- Lecture de la forme de la courbe de part et d'autre de A (en bol à gauche, en dôme à droite) : 0,25 pt.\n- Conjecture : $f$ semble convexe sur $]-\\infty\\,;\\,1]$ (partie visible à partir de $x \\approx -0{,}9$ ; ou : sur la partie visible à gauche de A) et concave sur $[1\\,;\\,+\\infty[$ : 0,25 pt.",
         "solution": "Sur la figure, à gauche du point A, la courbe $\\mathcal{C}_f$ est tournée vers le haut, « en bol » : elle est au-dessus de ses tangentes, en particulier au-dessus de $T$ près de A. À droite de A, elle est tournée vers le bas, « en dôme » : elle passe en dessous de $T$.\n\nOn conjecture donc que $f$ est convexe sur $]-\\infty\\,;\\,1]$ et concave sur $[1\\,;\\,+\\infty[$ : le point A semble être un point d'inflexion, où la courbe traverse sa tangente.\n\nAttention : la figure ne montre la courbe que pour $x$ supérieur à $-0{,}9$ environ ; pour les réels plus petits, la conjecture n'est qu'un prolongement de ce qu'on voit.",
         "erreurFrequente": "Lire la convexité sur le sens de variation : une fonction peut être croissante et concave, comme ici entre $1$ et $3$."
       },
@@ -79,12 +79,12 @@
             "points": 0.5,
             "revoir": "l-logarithme-013",
             "indices": [
-              "Pour $x > 0$, factorise $x^2$ dans $x^2 + 1$, puis utilise $\\ln(ab) = \\ln a + \\ln b$, valable pour $a > 0$ et $b > 0$.",
-              "Tu obtiens $\\ln\\left(x^2\\right) + \\ln\\left(1 + \\dfrac{1}{x^2}\\right)$ ; transforme $\\ln\\left(x^2\\right)$ avec la règle de la puissance, puis développe le membre de droite de l'égalité demandée pour comparer."
+              "Pars du membre de droite et développe le premier produit. Pour le dernier terme, aucune règle ne transforme le logarithme d'une somme : écris d'abord $1 + \\dfrac{1}{x^2}$ comme un seul quotient.",
+              "$1 + \\dfrac{1}{x^2} = \\dfrac{x^2 + 1}{x^2}$, avec $x^2 + 1 > 0$ et $x^2 > 0$ : applique $\\ln\\left(\\dfrac{a}{b}\\right) = \\ln a - \\ln b$, puis la règle de la puissance à $\\ln\\left(x^2\\right)$, valable car $x > 0$."
             ],
-            "attenduCorrecteur": "- Factorisation $x^2 + 1 = x^2\\left(1 + \\dfrac{1}{x^2}\\right)$ et propriété $\\ln(ab) = \\ln a + \\ln b$ (facteurs strictement positifs) : 0,25 pt.\n- $\\ln\\left(x^2\\right) = 2\\ln x$ pour $x > 0$, puis $10\\ln x - 3x = x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right)$ et conclusion : 0,25 pt.",
-            "solution": "Soit $x > 0$. On factorise $x^2$ dans $x^2 + 1$ :\n\n$$x^2 + 1 = x^2\\left(1 + \\dfrac{1}{x^2}\\right).$$\n\nLes deux facteurs $x^2$ et $1 + \\dfrac{1}{x^2}$ sont strictement positifs, donc, d'après la propriété $\\ln(ab) = \\ln a + \\ln b$ :\n\n$$\\ln\\left(x^2 + 1\\right) = \\ln\\left(x^2\\right) + \\ln\\left(1 + \\dfrac{1}{x^2}\\right) = 2\\ln x + \\ln\\left(1 + \\dfrac{1}{x^2}\\right),$$\n\ncar $\\ln\\left(x^2\\right) = 2\\ln x$ pour $x > 0$. Par conséquent :\n\n$$f(x) = 10\\ln x + 5\\ln\\left(1 + \\dfrac{1}{x^2}\\right) - 3x.$$\n\nEnfin, comme $x \\neq 0$, $10\\ln x - 3x = x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right)$. On obtient bien, pour tout $x > 0$ :\n\n$$f(x) = x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) + 5\\ln\\left(1 + \\dfrac{1}{x^2}\\right).$$",
-            "erreurFrequente": "Écrire $\\ln\\left(x^2 + 1\\right) = \\ln\\left(x^2\\right) + \\ln 1$ : le logarithme d'une somme n'est pas la somme des logarithmes ; il faut d'abord écrire $x^2 + 1$ comme un produit."
+            "attenduCorrecteur": "- Transformation du logarithme par une règle du cours, conditions vérifiées : $\\ln\\left(1 + \\dfrac{1}{x^2}\\right) = \\ln\\left(\\dfrac{x^2 + 1}{x^2}\\right) = \\ln\\left(x^2 + 1\\right) - \\ln\\left(x^2\\right)$ (quotient de deux réels strictement positifs) ; ou bien, en partant de $f(x)$, factorisation $x^2 + 1 = x^2\\left(1 + \\dfrac{1}{x^2}\\right)$ et propriété $\\ln(ab) = \\ln a + \\ln b$ : 0,25 pt.\n- $\\ln\\left(x^2\\right) = 2\\ln x$ pour $x > 0$, $x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) = 10\\ln x - 3x$ et conclusion : 0,25 pt.",
+            "solution": "Soit $x > 0$. On part du membre de droite.\n\nD'une part, comme $x \\neq 0$ : $x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) = 10\\ln x - 3x$.\n\nD'autre part, en réduisant au même dénominateur, $1 + \\dfrac{1}{x^2} = \\dfrac{x^2 + 1}{x^2}$. Les réels $x^2 + 1$ et $x^2$ sont strictement positifs : d'après la règle du quotient, puis celle de la puissance (valable car $x > 0$),\n\n$$\\ln\\left(1 + \\dfrac{1}{x^2}\\right) = \\ln\\left(x^2 + 1\\right) - \\ln\\left(x^2\\right) = \\ln\\left(x^2 + 1\\right) - 2\\ln x.$$\n\nPar conséquent :\n\n$$x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) + 5\\ln\\left(1 + \\dfrac{1}{x^2}\\right) = 10\\ln x - 3x + 5\\ln\\left(x^2 + 1\\right) - 10\\ln x = 5\\ln\\left(x^2 + 1\\right) - 3x.$$\n\nOn reconnaît $f(x)$ : pour tout réel $x > 0$,\n\n$$f(x) = x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) + 5\\ln\\left(1 + \\dfrac{1}{x^2}\\right).$$\n\n**Autre méthode**, en partant de $f(x)$. On factorise $x^2$ dans $x^2 + 1$ : $x^2 + 1 = x^2\\left(1 + \\dfrac{1}{x^2}\\right)$, produit de deux facteurs strictement positifs. La règle du produit donne $\\ln\\left(x^2 + 1\\right) = \\ln\\left(x^2\\right) + \\ln\\left(1 + \\dfrac{1}{x^2}\\right) = 2\\ln x + \\ln\\left(1 + \\dfrac{1}{x^2}\\right)$, d'où $f(x) = 10\\ln x - 3x + 5\\ln\\left(1 + \\dfrac{1}{x^2}\\right)$ ; il reste à factoriser $10\\ln x - 3x$ par $x$.",
+            "erreurFrequente": "Écrire $\\ln\\left(1 + \\dfrac{1}{x^2}\\right) = \\ln 1 + \\ln\\left(\\dfrac{1}{x^2}\\right)$, ou $\\ln\\left(x^2 + 1\\right) = \\ln\\left(x^2\\right) + \\ln 1$ : le logarithme d'une somme n'est pas la somme des logarithmes ; il faut d'abord écrire la somme comme un quotient ou comme un produit."
           },
           {
             "id": "q3b",
@@ -161,7 +161,7 @@
             "label": "b)",
             "enonce": "Déterminer l'équation réduite de la tangente $T$ à la courbe $\\mathcal{C}_f$ au point A d'abscisse $1$.",
             "points": 0.5,
-            "revoir": "l-derivation-convexite-045",
+            "revoir": "l-derivation-convexite-044",
             "indices": [
               "La tangente au point d'abscisse $a$ a pour équation $y = f'(a)(x - a) + f(a)$. Calcule $f(1)$, puis $f'(1)$ avec la question 4.a).",
               "Garde $\\ln 2$ en valeur exacte dans $f(1)$, puis développe pour obtenir une équation de la forme $y = mx + p$."
@@ -241,7 +241,7 @@
               "source": "from math import log\n\ndef mystere(k):\n    u = 8\n    S = 0\n    for i in range(k):\n        S = S + u\n        u = u - log(u / 4)\n    return S\n\nprint(mystere(10))   # affiche 58.44045206721732"
             },
             "points": 0.5,
-            "revoir": "l-limites-suites-064",
+            "revoir": "l-recurrence-suites-036",
             "indices": [
               "Suis la boucle pas à pas : au premier tour, quelle valeur de u est ajoutée à S ? Que contient u à la fin de ce tour ? Et au tour suivant ?",
               "La boucle fait $k$ tours, la variable i allant de $0$ à $k - 1$ : compte combien de termes de la suite sont ajoutés à S, et lesquels."
@@ -255,7 +255,7 @@
             "label": "c)",
             "enonce": "Modifier la fonction mystere afin qu'elle renvoie la moyenne des $k$ premiers termes de la suite $(u_n)$.",
             "points": 0.5,
-            "revoir": "l-limites-suites-064",
+            "revoir": "l-recurrence-suites-036",
             "indices": [
               "La moyenne de $k$ nombres est leur somme divisée par $k$. Que contient S à la fin de la boucle ? Une seule ligne est à changer."
             ],
@@ -378,7 +378,7 @@
       "bo-m-continuite-02",
       "bo-m-continuite-05"
     ],
-    "titre": "Approcher ln 2 avec des racines carrées : la méthode de Briggs",
+    "titre": "Approcher $\\ln 2$ avec des racines carrées : la méthode de Briggs",
     "points": 5,
     "duree": 45,
     "calculatrice": true,
@@ -562,7 +562,7 @@
       "bo-m-continuite-03",
       "bo-m-continuite-04"
     ],
-    "titre": "Vrai ou faux : ensemble de définition, équations, inéquations et limites avec ln",
+    "titre": "Vrai ou faux : ensemble de définition, équations, inéquations et limites avec $\\ln$",
     "points": 5,
     "duree": 45,
     "calculatrice": false,
@@ -623,7 +623,7 @@
         "revoir": "l-logarithme-033",
         "indices": [
           "Pose $X = \\ln x$ : l'équation devient une équation du second degré d'inconnue $X$.",
-          "Pour chaque valeur de $X$ trouvée, résous $\\ln x = X$ : l'équation $\\ln x = k$ a une solution pour tout réel $k$, même négatif."
+          "Calcule le discriminant de $X^2 + 10X + 21$. Puis, pour chaque valeur de $X$ trouvée, résous $\\ln x = X$ : le signe de $X$ empêche-t-il cette équation d'avoir une solution ?"
         ],
         "attenduCorrecteur": "- Changement d'inconnue $X = \\ln x$ et équation $X^2 + 10X + 21 = 0$ : 0,25 pt.\n- Discriminant $16$, racines $X = -7$ et $X = -3$ : 0,25 pt.\n- Retour à $x$ : $x = e^{-7}$ ou $x = e^{-3}$, deux solutions distinctes, donc l'affirmation est vraie : 0,5 pt.",
         "solution": "On pose $X = \\ln x$, pour $x > 0$. L'équation devient $X^2 + 10X + 21 = 0$, de discriminant $\\Delta = 100 - 84 = 16 = 4^2$, d'où $X = \\dfrac{-10 - 4}{2} = -7$ ou $X = \\dfrac{-10 + 4}{2} = -3$.\n\nOr $\\ln x = -7 \\iff x = e^{-7}$, et $\\ln x = -3 \\iff x = e^{-3}$. Ces deux réels sont strictement positifs et distincts.\n\nL'équation a exactement deux solutions, $e^{-7}$ et $e^{-3}$ : **l'affirmation 3 est vraie.**",
@@ -683,7 +683,7 @@
       "bo-m-continuite-03",
       "bo-m-continuite-04"
     ],
-    "titre": "Une équation à paramètre : combien de solutions pour ln(x) = kx ?",
+    "titre": "Une équation à paramètre : combien de solutions pour $\\ln x = kx$ ?",
     "points": 5,
     "duree": 45,
     "calculatrice": false,
@@ -709,7 +709,7 @@
         "label": "1.",
         "enonce": "À partir du graphique, conjecturer le nombre de solutions de l'équation $\\ln x = kx$ pour $k = 1$, puis pour $k = 0{,}2$.",
         "points": 0.5,
-        "revoir": "l-continuite-016",
+        "revoir": "l-logarithme-058",
         "indices": [
           "Les solutions de $\\ln x = kx$ sont les abscisses des points d'intersection de la courbe d'équation $y = \\ln x$ et de la droite d'équation $y = kx$.",
           "Pour chacune des deux droites, compte ses points communs avec la courbe, y compris près de l'origine."
@@ -805,8 +805,8 @@
               "$\\ln x = kx$ équivaut à $g(x) = 0$. Selon le signe du maximum $g\\left(\\dfrac{1}{k}\\right)$, distingue trois cas : maximum strictement positif, nul ou strictement négatif.",
               "Quand le maximum est strictement positif, applique le théorème des valeurs intermédiaires (avec les limites aux bornes) sur chacun des deux intervalles où $g$ est strictement monotone."
             ],
-            "attenduCorrecteur": "- Équivalence $\\ln x = kx \\iff g(x) = 0$ et découpage selon le signe de $g\\left(\\dfrac{1}{k}\\right)$ : 0,25 pt.\n- Si $0 < k < \\dfrac{1}{e}$ : $g$ continue et strictement croissante sur $\\left]0\\,;\\,\\dfrac{1}{k}\\right]$, de $-\\infty$ à $g\\left(\\dfrac{1}{k}\\right) > 0$, puis strictement décroissante sur $\\left[\\dfrac{1}{k}\\,;\\,+\\infty\\right[$ jusqu'à $-\\infty$ : une solution sur chaque intervalle (théorème des valeurs intermédiaires), donc deux solutions : 0,5 pt.\n- Si $k = \\dfrac{1}{e}$ : maximum nul, une seule solution, $x = e$ ; si $k > \\dfrac{1}{e}$ : $g(x) < 0$ pour tout $x > 0$, aucune solution : 0,25 pt.\n- Cohérence avec la question 1 : $k = 1 > \\dfrac{1}{e}$, aucune solution ; $0{,}2 = \\dfrac{1}{5} < \\dfrac{1}{e}$ car $e < 5$, deux solutions : 0,25 pt.",
-            "solution": "Pour $x > 0$, $\\ln x = kx \\iff g(x) = 0$. La fonction $g$ est dérivable, donc continue, sur $]0\\,;\\,+\\infty[$, et son maximum est $g\\left(\\dfrac{1}{k}\\right) = -\\ln k - 1$. Trois cas se présentent.\n\n**Premier cas** : $0 < k < \\dfrac{1}{e}$. Alors $g\\left(\\dfrac{1}{k}\\right) > 0$ (question c).\n\n- Sur $\\left]0\\,;\\,\\dfrac{1}{k}\\right]$, $g$ est continue et strictement croissante, de limite $-\\infty$ en $0$, et $g\\left(\\dfrac{1}{k}\\right) > 0$ : d'après le théorème des valeurs intermédiaires, l'équation $g(x) = 0$ a une unique solution dans cet intervalle.\n- Sur $\\left[\\dfrac{1}{k}\\,;\\,+\\infty\\right[$, $g$ est continue et strictement décroissante, avec $g\\left(\\dfrac{1}{k}\\right) > 0$ et une limite $-\\infty$ en $+\\infty$ : l'équation a une unique solution dans cet intervalle.\n\nL'équation $\\ln x = kx$ a alors exactement deux solutions.\n\n**Deuxième cas** : $k = \\dfrac{1}{e}$. Le maximum vaut $-\\ln\\left(e^{-1}\\right) - 1 = 0$ : $g(e) = 0$, et $g(x) < 0$ pour tout $x \\neq e$, car $g$ est strictement monotone de part et d'autre de $e$. L'équation a une unique solution : $x = e$.\n\n**Troisième cas** : $k > \\dfrac{1}{e}$. D'après la question c) et le deuxième cas, le maximum est strictement négatif, donc $g(x) < 0$ pour tout $x > 0$ : l'équation n'a aucune solution.\n\n**Retour aux conjectures.** $k = 1 > \\dfrac{1}{e}$ : aucune solution, comme conjecturé. $0{,}2 = \\dfrac{1}{5}$ et $5 > e$, donc $0{,}2 < \\dfrac{1}{e}$ : deux solutions, comme conjecturé.\n\nEn résumé : deux solutions si $0 < k < \\dfrac{1}{e}$, une seule si $k = \\dfrac{1}{e}$, aucune si $k > \\dfrac{1}{e}$.",
+            "attenduCorrecteur": "- Équivalence $\\ln x = kx \\iff g(x) = 0$ et découpage selon le signe de $g\\left(\\dfrac{1}{k}\\right)$ : 0,25 pt.\n- Si $0 < k < \\dfrac{1}{e}$ : $g$ continue et strictement croissante sur $\\left]0\\,;\\,\\dfrac{1}{k}\\right]$, de $-\\infty$ à $g\\left(\\dfrac{1}{k}\\right) > 0$, puis strictement décroissante sur $\\left[\\dfrac{1}{k}\\,;\\,+\\infty\\right[$ jusqu'à $-\\infty$ : une solution sur chaque intervalle (théorème des valeurs intermédiaires), donc deux solutions : 0,5 pt.\n- Si $k = \\dfrac{1}{e}$ : maximum nul, une seule solution, $x = e$ ; si $k > \\dfrac{1}{e}$ : $\\ln k > -1$, donc $g\\left(\\dfrac{1}{k}\\right) = -\\ln k - 1 < 0$, $g(x) < 0$ pour tout $x > 0$, aucune solution : 0,25 pt.\n- Cohérence avec la question 1 : $k = 1 > \\dfrac{1}{e}$, aucune solution ; $0{,}2 = \\dfrac{1}{5} < \\dfrac{1}{e}$ car $e < 5$, deux solutions : 0,25 pt.",
+            "solution": "Pour $x > 0$, $\\ln x = kx \\iff g(x) = 0$. La fonction $g$ est dérivable, donc continue, sur $]0\\,;\\,+\\infty[$, et son maximum est $g\\left(\\dfrac{1}{k}\\right) = -\\ln k - 1$. Trois cas se présentent.\n\n**Premier cas** : $0 < k < \\dfrac{1}{e}$. Alors $g\\left(\\dfrac{1}{k}\\right) > 0$ (question c).\n\n- Sur $\\left]0\\,;\\,\\dfrac{1}{k}\\right]$, $g$ est continue et strictement croissante, de limite $-\\infty$ en $0$, et $g\\left(\\dfrac{1}{k}\\right) > 0$ : d'après le théorème des valeurs intermédiaires, l'équation $g(x) = 0$ a une unique solution dans cet intervalle.\n- Sur $\\left[\\dfrac{1}{k}\\,;\\,+\\infty\\right[$, $g$ est continue et strictement décroissante, avec $g\\left(\\dfrac{1}{k}\\right) > 0$ et une limite $-\\infty$ en $+\\infty$ : l'équation a une unique solution dans cet intervalle.\n\nL'équation $\\ln x = kx$ a alors exactement deux solutions.\n\n**Deuxième cas** : $k = \\dfrac{1}{e}$. Le maximum vaut $-\\ln\\left(e^{-1}\\right) - 1 = 0$ : $g(e) = 0$, et $g(x) < 0$ pour tout $x \\neq e$, car $g$ est strictement monotone de part et d'autre de $e$. L'équation a une unique solution : $x = e$.\n\n**Troisième cas** : $k > \\dfrac{1}{e}$. La fonction $\\ln$ est strictement croissante, donc $\\ln k > \\ln\\left(e^{-1}\\right) = -1$ ; ainsi $g\\left(\\dfrac{1}{k}\\right) = -\\ln k - 1 < 0$. Ce maximum est strictement négatif, donc $g(x) \\leqslant g\\left(\\dfrac{1}{k}\\right) < 0$ pour tout $x > 0$ : l'équation n'a aucune solution.\n\n**Retour aux conjectures.** $k = 1 > \\dfrac{1}{e}$ : aucune solution, comme conjecturé. $0{,}2 = \\dfrac{1}{5}$ et $5 > e$, donc $0{,}2 < \\dfrac{1}{e}$ : deux solutions, comme conjecturé.\n\nEn résumé : deux solutions si $0 < k < \\dfrac{1}{e}$, une seule si $k = \\dfrac{1}{e}$, aucune si $k > \\dfrac{1}{e}$.",
             "erreurFrequente": "Oublier le cas $k = \\dfrac{1}{e}$, où la droite d'équation $y = kx$ est tangente à la courbe de $\\ln$ au point d'abscisse $e$ : l'équation a alors une seule solution."
           }
         ]
