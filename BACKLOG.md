@@ -783,7 +783,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     logarithme (dont les auteurs ont réparti les positions à la main). Mélanger les choix à
     l'affichage, avec une graine stable par question (session d'interface), ou réordonner
     les choix de ces deux chapitres.
-  - [x] Orthogonalité et distances dans l'espace : le cours — fait le 2026-10-16 : 5 notions
+  - [x] Orthogonalité et distances dans l'espace : le cours — fait le 2026-10-16 (PR #129) : 5 notions
     (priorités mesurées sur 103 sujets : repère orthonormé 95 %, vecteur normal 91 %,
     projeté et distance 69 %, longueurs, aires et volumes 53 % → ★★★ ; produit scalaire 10 %
     relevé d'un cran, tout le chapitre en dépend → ★★), 80 blocs dont la démonstration
@@ -800,6 +800,10 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     sautée) ; relecteur NEEDS_REVISION au tour 1 (un sujet passait par un système du
     chapitre suivant, trois indices donnaient la réponse), PASS au tour 2. Coût : 71 $ pour
     les deux parties, avec une coupure de limite d'usage (agent repris sans rien perdre).
+    PR : #129. Leçons : relecture ciblée des retouches du cours lancée en même temps que la
+    relecture complète des exercices (un tour de gagné) ; l'architecte n'a pas de terminal :
+    c'est l'orchestrateur qui lance la validation et recopie les chiffres de
+    `frequences-annales.mjs` une fois le découpage écrit.
   - [ ] Orthogonalité, petites retouches du cours — non bloquants laissés ouverts (rapports
     du 2026-10-16) : la règle ‖k·u⃗‖ = |k|·‖u⃗‖, la polarisation en 1/4, le produit
     « 3 termes × 3 termes » et la « droite incluse dans un plan » n'ont pas d'exemple dans
