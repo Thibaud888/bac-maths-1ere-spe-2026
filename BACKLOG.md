@@ -756,7 +756,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   - [ ] Une animation pour faire tourner un cube et voir deux droites non coplanaires —
     souhait de l'auteur du cours de Vecteurs de l'espace (la perspective trompe : deux droites
     semblent se couper sur le dessin) ; à faire quand les figures animées existeront.
-  - [x] Fonction logarithme népérien : le cours — fait le 2026-10-16 : 6 notions (priorités
+  - [x] Fonction logarithme népérien : le cours — fait le 2026-10-16 (PR #128) : 6 notions (priorités
     mesurées sur 103 sujets : dérivée de ln et de ln(u) 71 %, équations, inéquations et
     seuils 66 %, limites et croissances comparées 53 % → ★★★ ; propriétés algébriques 23 % et
     définition 17 % relevée d'un cran (tout le chapitre en dépend) → ★★ ; problèmes et
