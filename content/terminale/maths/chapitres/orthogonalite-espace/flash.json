@@ -1,0 +1,329 @@
+[
+  {
+    "id": "fl-orthogonalite-espace-definition-cosinus",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-produit-scalaire",
+    "capacites": ["bo-m-orthogonalite-01"],
+    "enonce": "On sait que $\\lVert \\vec{u} \\rVert = 2$, $\\lVert \\vec{v} \\rVert = 5$ et que ces vecteurs, placés en un même point, font un angle de $60^\\circ$. Que vaut $\\vec{u} \\cdot \\vec{v}$ ?",
+    "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+    "explication": "$\\vec{u} \\cdot \\vec{v} = \\lVert \\vec{u} \\rVert \\times \\lVert \\vec{v} \\rVert \\times \\cos 60^\\circ = 2 \\times 5 \\times \\dfrac{1}{2} = 5$. Comme dans le plan : on place les deux vecteurs en un même point.",
+    "duree": 30
+  },
+  {
+    "id": "fl-orthogonalite-espace-bilinearite",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-produit-scalaire",
+    "capacites": ["bo-m-orthogonalite-01"],
+    "enonce": "On sait que $\\vec{u} \\cdot \\vec{v} = 3$. Que vaut $(2\\vec{u}) \\cdot (-\\vec{v})$ ?",
+    "reponse": { "type": "numerique", "valeur": -6, "tolerance": 0 },
+    "explication": "Par bilinéarité, chaque facteur sort du produit scalaire : $(2\\vec{u}) \\cdot (-\\vec{v}) = 2 \\times (-1) \\times (\\vec{u} \\cdot \\vec{v}) = -6$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-orthogonalite-espace-diagonales-egales",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-produit-scalaire",
+    "capacites": ["bo-m-orthogonalite-05"],
+    "enonce": "Si $\\lVert \\vec{u} + \\vec{v} \\rVert = \\lVert \\vec{u} - \\vec{v} \\rVert$, que vaut $\\vec{u} \\cdot \\vec{v}$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$\\lVert \\vec{u} \\rVert^2$",
+        "$1$",
+        "$\\lVert \\vec{u} \\rVert \\times \\lVert \\vec{v} \\rVert$",
+        "$0$"
+      ],
+      "bonne": 3,
+      "pourquoiFaux": [
+        "Les carrés des normes s'éliminent quand on soustrait les deux développements : il ne reste que les doubles produits.",
+        "Les deux développements ne diffèrent que par $4\\,\\vec{u} \\cdot \\vec{v}$ : rien ne donne $1$.",
+        "Ce serait le cas de deux vecteurs colinéaires de même sens, pour lesquels $\\lVert \\vec{u} + \\vec{v} \\rVert > \\lVert \\vec{u} - \\vec{v} \\rVert$.",
+        null
+      ]
+    },
+    "explication": "Par polarisation, $\\vec{u} \\cdot \\vec{v} = \\dfrac{1}{4}\\left(\\lVert \\vec{u} + \\vec{v} \\rVert^2 - \\lVert \\vec{u} - \\vec{v} \\rVert^2\\right) = 0$ : un parallélogramme a des diagonales de même longueur seulement si ses côtés sont orthogonaux.",
+    "duree": 40
+  },
+  {
+    "id": "fl-orthogonalite-espace-orthogonaux-coordonnees",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-repere-orthonorme",
+    "capacites": ["bo-m-orthogonalite-02", "bo-m-orthogonalite-04"],
+    "enonce": "Dans un repère orthonormé, les vecteurs $\\vec{u}(1\\,;\\,2\\,;\\,3)$ et $\\vec{v}(3\\,;\\,0\\,;\\,-1)$ sont-ils orthogonaux ?",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": true,
+      "justification": "$1 \\times 3 + 2 \\times 0 + 3 \\times (-1) = 3 + 0 - 3 = 0$."
+    },
+    "explication": "En repère orthonormé, deux vecteurs sont orthogonaux si et seulement si $xx' + yy' + zz' = 0$. Ici, deux termes non nuls se compensent.",
+    "duree": 25
+  },
+  {
+    "id": "fl-orthogonalite-espace-distance-deux-points",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-repere-orthonorme",
+    "capacites": ["bo-m-orthogonalite-04"],
+    "enonce": "Dans un repère orthonormé, quelle est la distance entre $A(1\\,;\\,2\\,;\\,3)$ et $B(3\\,;\\,3\\,;\\,1)$ ?",
+    "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+    "explication": "$\\overrightarrow{AB}(2\\,;\\,1\\,;\\,-2)$, donc $AB = \\sqrt{4 + 1 + 4} = \\sqrt{9} = 3$ : on élève au carré les différences de coordonnées, puis on prend la racine.",
+    "duree": 30
+  },
+  {
+    "id": "fl-orthogonalite-espace-base-orthonormee",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-repere-orthonorme",
+    "capacites": ["bo-m-orthogonalite-03"],
+    "enonce": "Une base $\\left(\\vec{i}, \\vec{j}, \\vec{k}\\right)$ de l'espace est orthonormée lorsque :",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "ses trois vecteurs sont orthogonaux deux à deux",
+        "ses trois vecteurs ont la même norme",
+        "ses trois vecteurs sont orthogonaux deux à deux et de norme $1$",
+        "ses trois vecteurs sont de norme $1$"
+      ],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "Il faut aussi des normes égales à $1$ : dans un pavé droit de côtés $4$, $2$ et $3$, les arêtes issues d'un sommet sont orthogonales sans être de norme $1$.",
+        "Il faut l'orthogonalité deux à deux, et une norme égale à $1$.",
+        null,
+        "Il faut aussi que les vecteurs soient orthogonaux deux à deux."
+      ]
+    },
+    "explication": "« Ortho » pour orthogonaux deux à deux, « normée » pour la norme $1$ : c'est ce qui permet d'écrire $\\vec{u} \\cdot \\vec{v} = xx' + yy' + zz'$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-orthogonalite-espace-cosinus-negatif",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-repere-orthonorme",
+    "capacites": ["bo-m-orthogonalite-09"],
+    "enonce": "On a trouvé $\\cos\\widehat{BAC} = -\\dfrac{1}{2}$. Que mesure l'angle $\\widehat{BAC}$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$60^\\circ$", "$30^\\circ$", "$150^\\circ$", "$120^\\circ$"],
+      "bonne": 3,
+      "pourquoiFaux": [
+        "$\\cos 60^\\circ = \\dfrac{1}{2}$ : le signe moins indique un angle obtus.",
+        "$\\cos 30^\\circ = \\dfrac{\\sqrt{3}}{2}$.",
+        "$\\cos 150^\\circ = -\\dfrac{\\sqrt{3}}{2}$.",
+        null
+      ]
+    },
+    "explication": "Un cosinus négatif donne un angle obtus : $\\cos 120^\\circ = -\\cos 60^\\circ = -\\dfrac{1}{2}$. Un produit scalaire négatif signale donc un angle obtus.",
+    "duree": 25
+  },
+  {
+    "id": "fl-orthogonalite-espace-sommet-angle",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-repere-orthonorme",
+    "capacites": ["bo-m-orthogonalite-09"],
+    "enonce": "Pour calculer $\\cos\\widehat{ABC}$ avec un produit scalaire, quels vecteurs utilise-t-on ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$\\overrightarrow{AB}$ et $\\overrightarrow{AC}$",
+        "$\\overrightarrow{AB}$ et $\\overrightarrow{BC}$",
+        "$\\overrightarrow{BA}$ et $\\overrightarrow{BC}$",
+        "$\\overrightarrow{CA}$ et $\\overrightarrow{CB}$"
+      ],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "Ces vecteurs partent de $A$ : ils donnent l'angle $\\widehat{BAC}$.",
+        "$\\overrightarrow{AB}$ arrive en $B$ au lieu d'en partir : le cosinus change de signe, et l'on trouve le supplémentaire de l'angle.",
+        null,
+        "Ces vecteurs partent de $C$ : ils donnent l'angle $\\widehat{ACB}$."
+      ]
+    },
+    "explication": "Le sommet de l'angle $\\widehat{ABC}$ est la lettre du milieu, $B$ : les deux vecteurs partent de $B$, et $\\cos\\widehat{ABC} = \\dfrac{\\overrightarrow{BA} \\cdot \\overrightarrow{BC}}{BA \\times BC}$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-orthogonalite-espace-orthogonales-secantes",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-vecteur-normal",
+    "capacites": ["bo-m-orthogonalite-06"],
+    "enonce": "Vrai ou faux : dans l'espace, deux droites orthogonales sont toujours sécantes.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "Dans le cube $ABCDEFGH$, les droites $(AB)$ et $(FG)$ sont orthogonales sans avoir de point commun."
+    },
+    "explication": "Orthogonales : vecteurs directeurs orthogonaux. Perpendiculaires : orthogonales et sécantes. Dans l'espace, la première propriété n'entraîne pas la seconde.",
+    "duree": 20
+  },
+  {
+    "id": "fl-orthogonalite-espace-deux-produits-nuls",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-vecteur-normal",
+    "capacites": ["bo-m-orthogonalite-07"],
+    "enonce": "Les points $A$, $B$, $C$ ne sont pas alignés et $\\vec{n} \\neq \\vec{0}$. Que suffit-il de vérifier pour prouver que $\\vec{n}$ est normal au plan $(ABC)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$\\vec{n} \\cdot \\overrightarrow{AB} = 0$",
+        "$\\vec{n} \\cdot \\overrightarrow{AB} = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = 0$",
+        "$\\vec{n} \\cdot \\overrightarrow{AB} = \\vec{n} \\cdot \\overrightarrow{AC}$",
+        "$\\vec{n} \\cdot \\overrightarrow{OA} = 0$"
+      ],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "Un seul produit nul montre seulement que $\\vec{n}$ est orthogonal à la droite $(AB)$.",
+        null,
+        "Deux produits égaux mais non nuls ne prouvent rien.",
+        "$\\overrightarrow{OA}$ part de l'origine : en général, il n'est pas dans la direction du plan."
+      ]
+    },
+    "explication": "Il faut deux produits scalaires nuls, avec deux vecteurs non colinéaires du plan, comme $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ quand $A$, $B$, $C$ ne sont pas alignés.",
+    "duree": 25
+  },
+  {
+    "id": "fl-orthogonalite-espace-plan-point-normal",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-vecteur-normal",
+    "capacites": ["bo-m-orthogonalite-07"],
+    "enonce": "$\\mathcal{P}$ est le plan passant par $A$ et normal à $\\vec{n}$. Un point $M$ est dans $\\mathcal{P}$ si et seulement si :",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$\\overrightarrow{AM} \\cdot \\vec{n} = 0$",
+        "$\\overrightarrow{AM}$ et $\\vec{n}$ sont colinéaires",
+        "$\\overrightarrow{OM} \\cdot \\vec{n} = 0$",
+        "$AM = \\lVert \\vec{n} \\rVert$"
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "Ce sont les points de la droite passant par $A$ et dirigée par $\\vec{n}$, qui traverse le plan.",
+        "Le vecteur doit partir de $A$, point du plan, pas de l'origine.",
+        "Les points tels que $AM = \\lVert \\vec{n} \\rVert$ forment une sphère de centre $A$, pas un plan."
+      ]
+    },
+    "explication": "$M \\in \\mathcal{P}$ si et seulement si $\\overrightarrow{AM} \\cdot \\vec{n} = 0$ : tout vecteur qui joint deux points du plan est orthogonal au vecteur normal.",
+    "duree": 25
+  },
+  {
+    "id": "fl-orthogonalite-espace-plan-mediateur",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-vecteur-normal",
+    "capacites": ["bo-m-orthogonalite-12"],
+    "enonce": "$A$ et $B$ sont deux points distincts, et $I$ est le milieu de $[AB]$. Quel est l'ensemble des points de l'espace équidistants de $A$ et de $B$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "la droite passant par $I$ et perpendiculaire à $(AB)$",
+        "la sphère de centre $I$ et de rayon $\\dfrac{AB}{2}$",
+        "le plan passant par $I$ et normal à $\\overrightarrow{AB}$",
+        "le point $I$ seulement"
+      ],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "Dans le plan, ce serait la médiatrice ; dans l'espace, une infinité de droites passent par $I$ perpendiculairement à $(AB)$, et elles forment un plan.",
+        "Le point $A$ est sur cette sphère, et pourtant $AA = 0 \\neq AB$ : ses points ne sont pas tous équidistants de $A$ et de $B$.",
+        null,
+        "$I$ convient, mais il n'est pas le seul : tous les points du plan médiateur conviennent."
+      ]
+    },
+    "explication": "C'est le plan médiateur de $[AB]$ : $MA = MB$ si et seulement si $\\overrightarrow{IM} \\cdot \\overrightarrow{AB} = 0$. Il joue dans l'espace le rôle de la médiatrice.",
+    "duree": 30
+  },
+  {
+    "id": "fl-orthogonalite-espace-conditions-projete",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-projete-distance",
+    "capacites": ["bo-m-orthogonalite-08"],
+    "enonce": "$H$ est le projeté orthogonal de $M$ sur le plan $\\mathcal{P}$ si et seulement si :",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$H \\in \\mathcal{P}$",
+        "$\\overrightarrow{MH}$ est normal à $\\mathcal{P}$",
+        "$MH < MA$ pour un point $A$ de $\\mathcal{P}$",
+        "$H \\in \\mathcal{P}$ et $\\overrightarrow{MH}$ est normal à $\\mathcal{P}$, ou nul"
+      ],
+      "bonne": 3,
+      "pourquoiFaux": [
+        "Il manque la direction : tous les points du plan vérifient cette condition.",
+        "Il manque $H \\in \\mathcal{P}$ : tous les points de la droite passant par $M$ et orthogonale au plan vérifient cette condition.",
+        "Une seule comparaison ne prouve rien : d'autres points du plan peuvent être encore plus proches de $M$.",
+        null
+      ]
+    },
+    "explication": "Deux conditions, toujours : $H$ est dans le plan, et $\\overrightarrow{MH}$ est normal au plan (nul quand $M$ est déjà dans le plan).",
+    "duree": 25
+  },
+  {
+    "id": "fl-orthogonalite-espace-projete-face-cube",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-projete-distance",
+    "capacites": ["bo-m-orthogonalite-08"],
+    "enonce": "Dans le cube $ABCDEFGH$ (face du dessous $ABCD$, et $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$), quel est le projeté orthogonal de $E$ sur le plan $(BCG)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$B$", "$G$", "$F$", "$H$"],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "$B$ est dans le plan $(BCG)$, mais $\\overrightarrow{EB}$, diagonale de la face avant, n'est pas normal à ce plan.",
+        "$G$ est dans le plan $(BCG)$, mais $\\overrightarrow{EG}$, diagonale de la face du dessus, n'est pas normal à ce plan.",
+        null,
+        "$H$ n'est pas dans le plan $(BCG)$, qui contient la face de droite $BCGF$."
+      ]
+    },
+    "explication": "L'arête $[EF]$ est orthogonale à la face $BCGF$, et $F$ est dans cette face : le projeté de $E$ est $F$. Dans un cube, on suit l'arête perpendiculaire à la face.",
+    "duree": 30
+  },
+  {
+    "id": "fl-orthogonalite-espace-pythagore-projete",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-projete-distance",
+    "capacites": ["bo-m-orthogonalite-10"],
+    "enonce": "Le point $M$ est à la distance $5$ du plan $\\mathcal{P}$, et $H$ est son projeté orthogonal. Le point $N$ de $\\mathcal{P}$ vérifie $MN = 13$. Que vaut $HN$ ?",
+    "reponse": { "type": "numerique", "valeur": 12, "tolerance": 0 },
+    "explication": "Le triangle $MHN$ est rectangle en $H$ : $HN^2 = MN^2 - MH^2 = 169 - 25 = 144$, donc $HN = 12$.",
+    "duree": 40
+  },
+  {
+    "id": "fl-orthogonalite-espace-distance-point-du-plan",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-projete-distance",
+    "capacites": ["bo-m-orthogonalite-10"],
+    "enonce": "Vrai ou faux : si $A$ est un point du plan $\\mathcal{P}$, la distance du point $M$ au plan $\\mathcal{P}$ est $MA$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "La distance au plan est $MH$, où $H$ est le projeté orthogonal de $M$ ; on a $MA = MH$ seulement si $A = H$."
+    },
+    "explication": "La distance d'un point à un plan est la plus petite des distances $MN$, avec $N$ dans le plan : elle est atteinte au projeté orthogonal, et seulement là.",
+    "duree": 20
+  },
+  {
+    "id": "fl-orthogonalite-espace-volume-pyramide",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-mesures",
+    "capacites": ["bo-m-orthogonalite-11"],
+    "enonce": "Une pyramide a une base d'aire $12$ et une hauteur $5$. Quel est son volume ?",
+    "reponse": { "type": "numerique", "valeur": 20, "tolerance": 0 },
+    "explication": "$V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h = \\dfrac{1}{3} \\times 12 \\times 5 = 20$. Sans le facteur $\\dfrac{1}{3}$, on trouverait le volume du prisme, trois fois plus grand.",
+    "duree": 20
+  },
+  {
+    "id": "fl-orthogonalite-espace-hauteur-par-volume",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-mesures",
+    "capacites": ["bo-m-orthogonalite-11"],
+    "enonce": "Un tétraèdre a pour volume $8$, et l'une de ses faces a pour aire $6$. Quelle est la distance du sommet opposé au plan de cette face ?",
+    "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+    "explication": "$h = \\dfrac{3V}{\\mathcal{B}} = \\dfrac{24}{6} = 4$ : on retourne la formule du volume, sans oublier le facteur $3$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-orthogonalite-espace-coin-cube",
+    "chapitre": "orthogonalite-espace",
+    "notion": "n-orthogonalite-espace-mesures",
+    "capacites": ["bo-m-orthogonalite-11"],
+    "enonce": "Les arêtes $[OA]$, $[OB]$ et $[OC]$ d'un tétraèdre $OABC$ sont perpendiculaires deux à deux et mesurent toutes $1$. Quel est son volume ? Donne la valeur exacte.",
+    "reponse": { "type": "numerique", "valeur": "1/6", "tolerance": 0 },
+    "explication": "Base $OAB$, triangle rectangle d'aire $\\dfrac{1}{2}$, et hauteur $OC = 1$ : $V = \\dfrac{1}{3} \\times \\dfrac{1}{2} \\times 1 = \\dfrac{1}{6}$, le sixième du cube d'arête $1$.",
+    "duree": 30
+  }
+]

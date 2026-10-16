@@ -174,5 +174,2538 @@
         "solution": "Par bilinéarité, on sort le facteur $3$ du premier vecteur, puis celui du second : $(3\\vec{u}) \\cdot (3\\vec{v}) = 3 \\times 3 \\times (\\vec{u} \\cdot \\vec{v}) = 9 \\times 3 = 27$. L'affirmation est fausse."
       }
     ]
+  },
+  {
+    "id": "x-orthogonalite-espace-004",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-repere-orthonorme"],
+    "capacites": ["bo-m-orthogonalite-02", "bo-m-orthogonalite-04"],
+    "titre": "Orthogonal ou non ?",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 201,
+    "preambule": "L'espace est muni d'un repère orthonormé. On considère le vecteur $\\vec{u}\\begin{pmatrix} 2 \\\\ -1 \\\\ 3 \\end{pmatrix}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Lequel de ces vecteurs est orthogonal à $\\vec{u}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\begin{pmatrix} 1 \\\\ -2 \\\\ 0 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 3 \\\\ 0 \\\\ -2 \\end{pmatrix}$",
+            "$\\begin{pmatrix} -4 \\\\ 2 \\\\ -6 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$2 \\times 1 + (-1) \\times (-2) + 3 \\times 0 = 2 + 2 = 4 \\neq 0$ : le produit de deux nombres négatifs est positif.",
+            null,
+            "Ce vecteur est $-2\\,\\vec{u}$ : il est colinéaire à $\\vec{u}$, pas orthogonal. Le produit vaut $-8 - 2 - 18 = -28$.",
+            "$2 - 1 + 3 = 4 \\neq 0$."
+          ]
+        },
+        "indices": [
+          "Deux vecteurs sont orthogonaux si et seulement si $xx' + yy' + zz' = 0$ : calcule ce nombre pour chaque proposition.",
+          "Pour la première : $2 \\times 1 + (-1) \\times (-2) + 3 \\times 0$. Attention au produit de deux nombres négatifs ; fais de même pour les trois autres."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "Le repère est orthonormé : on calcule $xx' + yy' + zz'$ avec $\\vec{u}$. Pour $\\begin{pmatrix} 3 \\\\ 0 \\\\ -2 \\end{pmatrix}$ : $2 \\times 3 + (-1) \\times 0 + 3 \\times (-2) = 6 + 0 - 6 = 0$. Les trois autres donnent $4$, $-28$ et $4$.\n\nLe vecteur orthogonal à $\\vec{u}$ est $\\begin{pmatrix} 3 \\\\ 0 \\\\ -2 \\end{pmatrix}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour quelle valeur du réel $a$ le vecteur $\\vec{v}\\begin{pmatrix} a \\\\ 2 \\\\ -1 \\end{pmatrix}$ est-il orthogonal à $\\vec{u}$ ? Donne la valeur exacte.",
+        "reponse": { "type": "numerique", "valeur": "5/2", "tolerance": 0 },
+        "indices": [
+          "Écris la condition $\\vec{u} \\cdot \\vec{v} = 0$ avec les coordonnées : c'est une équation d'inconnue $a$.",
+          "$\\vec{u} \\cdot \\vec{v} = 2 \\times a + (-1) \\times 2 + 3 \\times (-1)$ : simplifie, puis résous l'équation."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "$\\vec{u}$ et $\\vec{v}$ sont orthogonaux si et seulement si $\\vec{u} \\cdot \\vec{v} = 0$, soit $2a - 2 - 3 = 0$, c'est-à-dire $2a = 5$.\n\nDonc $a = \\dfrac{5}{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On donne $A(3\\,;\\,2\\,;\\,-1)$, $B(1\\,;\\,1\\,;\\,1)$ et $C(2\\,;\\,1\\,;\\,2)$. Vrai ou faux : le triangle $ABC$ est rectangle en $B$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$\\overrightarrow{BA}\\begin{pmatrix} 2 \\\\ 1 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{BC}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$ : $\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = 2 + 0 - 2 = 0$. Les droites $(BA)$ et $(BC)$ sont perpendiculaires en $B$."
+        },
+        "indices": [
+          "Le triangle est rectangle en $B$ si les vecteurs issus de $B$, $\\overrightarrow{BA}$ et $\\overrightarrow{BC}$, sont orthogonaux.",
+          "Arrivée moins départ : $\\overrightarrow{BA}\\begin{pmatrix} 2 \\\\ 1 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{BC}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$. Calcule $xx' + yy' + zz'$."
+        ],
+        "revoir": "l-orthogonalite-espace-023",
+        "solution": "$\\overrightarrow{BA}\\begin{pmatrix} 2 \\\\ 1 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{BC}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$, donc $\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = 2 + 0 - 2 = 0$ : ces vecteurs sont orthogonaux, et le triangle $ABC$ est rectangle en $B$. L'affirmation est vraie.",
+        "erreurFrequente": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$, qui vaut $9$ : c'est l'angle en $A$, pas en $B$. Les vecteurs partent du sommet de l'angle étudié."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-005",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-repere-orthonorme"],
+    "capacites": ["bo-m-orthogonalite-04"],
+    "titre": "Normes et distances",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 202,
+    "preambule": "L'espace est muni d'un repère orthonormé d'origine $O$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que vaut la norme du vecteur $\\vec{u}\\begin{pmatrix} 2 \\\\ -3 \\\\ 6 \\end{pmatrix}$ ?",
+        "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0 },
+        "indices": [
+          "En repère orthonormé, $\\lVert \\vec{u} \\rVert = \\sqrt{x^2 + y^2 + z^2}$.",
+          "$x^2 + y^2 + z^2 = 4 + 9 + 36$ : le carré de $-3$ est positif. Il reste à prendre la racine carrée."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "$\\lVert \\vec{u} \\rVert = \\sqrt{2^2 + (-3)^2 + 6^2} = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On donne $A(1\\,;\\,-2\\,;\\,3)$ et $B(3\\,;\\,2\\,;\\,-1)$. Que vaut la distance $AB$ ?",
+        "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+        "indices": [
+          "Calcule d'abord les coordonnées de $\\overrightarrow{AB}$, arrivée moins départ : $AB$ est sa norme.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 4 \\\\ -4 \\end{pmatrix}$ : élève chaque coordonnée au carré, ajoute, puis prends la racine."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "$\\overrightarrow{AB}\\begin{pmatrix} 3 - 1 \\\\ 2 - (-2) \\\\ -1 - 3 \\end{pmatrix}$, soit $\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 4 \\\\ -4 \\end{pmatrix}$, donc $AB = \\sqrt{4 + 16 + 16} = \\sqrt{36} = 6$.",
+        "erreurFrequente": "Écrire $2 - 2 = 0$ au lieu de $2 - (-2) = 4$ pour la deuxième coordonnée."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Lequel de ces points est à la distance $3$ de $O$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$M_1(1\\,;\\,1\\,;\\,1)$",
+            "$M_2(1\\,;\\,2\\,;\\,0)$",
+            "$M_3(3\\,;\\,3\\,;\\,3)$",
+            "$M_4(2\\,;\\,-1\\,;\\,2)$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "$OM_1 = \\sqrt{1 + 1 + 1} = \\sqrt{3}$ : la somme des carrés vaut $3$, mais il reste la racine carrée.",
+            "$OM_2 = \\sqrt{1 + 4 + 0} = \\sqrt{5}$ : la somme des coordonnées vaut $3$, mais ce sont leurs carrés qu'on ajoute.",
+            "$OM_3 = \\sqrt{9 + 9 + 9} = 3\\sqrt{3}$ : chaque coordonnée vaut $3$, la distance est donc plus grande.",
+            null
+          ]
+        },
+        "indices": [
+          "$OM = \\sqrt{x^2 + y^2 + z^2}$ : c'est la somme des carrés des coordonnées qu'on compare à $3^2$.",
+          "Il faut $x^2 + y^2 + z^2 = 9$. Pour $M_1$ : $1 + 1 + 1$ ; pour $M_2$ : $1 + 4 + 0$. Continue avec $M_3$ et $M_4$."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "$OM_4 = \\sqrt{2^2 + (-1)^2 + 2^2} = \\sqrt{9} = 3$, alors que $OM_1 = \\sqrt{3}$, $OM_2 = \\sqrt{5}$ et $OM_3 = \\sqrt{27} = 3\\sqrt{3}$. Le point cherché est $M_4$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-006",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-repere-orthonorme"],
+    "capacites": ["bo-m-orthogonalite-03", "bo-m-orthogonalite-04"],
+    "titre": "Un repère orthonormé dans un pavé droit",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 203,
+    "preambule": "$ABCDEFGH$ est le pavé droit de la figure : ses six faces sont des rectangles, $ABCD$ est la face du dessous, $EFGH$ celle du dessus, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$, et $AB = 4$, $AD = 2$, $AE = 3$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/pave-droit.svg",
+        "alt": "Un pavé droit ABCDEFGH dessiné en perspective. La face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Les longueurs sont indiquées : AB = 4, BC = 2 et AE = 3.",
+        "width": 340,
+        "height": 290
+      },
+      "caption": "Le pavé droit ABCDEFGH : AB = 4, AD = BC = 2 et AE = 3. Les arêtes cachées sont en pointillé."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Vrai ou faux : le repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ est orthonormé.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Les trois vecteurs sont orthogonaux deux à deux, car les faces sont des rectangles, mais leurs normes valent $4$, $2$ et $3$, et non $1$."
+        },
+        "indices": [
+          "Orthonormé : trois vecteurs orthogonaux deux à deux, et chacun de norme $1$.",
+          "Les faces sont des rectangles : les angles $\\widehat{BAD}$, $\\widehat{BAE}$ et $\\widehat{DAE}$ sont droits. Regarde maintenant les normes $AB$, $AD$ et $AE$."
+        ],
+        "revoir": "l-orthogonalite-espace-020",
+        "solution": "Les faces du pavé sont des rectangles, donc $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$ sont orthogonaux deux à deux. Mais $\\lVert \\overrightarrow{AB} \\rVert = 4 \\neq 1$, et de même pour les deux autres : le repère n'est pas orthonormé. L'affirmation est fausse."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Lequel de ces repères est orthonormé ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left(A\\,;\\,\\dfrac{1}{4}\\overrightarrow{AB}, \\dfrac{1}{2}\\overrightarrow{AD}, \\dfrac{1}{3}\\overrightarrow{AE}\\right)$",
+            "$\\left(A\\,;\\,4\\overrightarrow{AB}, 2\\overrightarrow{AD}, 3\\overrightarrow{AE}\\right)$",
+            "$\\left(A\\,;\\,\\dfrac{1}{4}\\overrightarrow{AB}, \\dfrac{1}{4}\\overrightarrow{AD}, \\dfrac{1}{4}\\overrightarrow{AE}\\right)$",
+            "$\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AC}, \\overrightarrow{AE}\\right)$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Multiplier par $4$ allonge le vecteur : $\\lVert 4\\overrightarrow{AB} \\rVert = 16$. Il faut diviser chaque vecteur par sa norme.",
+            "Les normes deviennent $1$, $\\dfrac{1}{2}$ et $\\dfrac{3}{4}$ : chaque vecteur doit être divisé par sa propre norme.",
+            "$\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ ne sont pas orthogonaux : le triangle $ABC$ est rectangle en $B$, pas en $A$."
+          ]
+        },
+        "indices": [
+          "Garde trois vecteurs orthogonaux deux à deux, et ramène chaque norme à $1$.",
+          "$\\lVert k\\,\\vec{u} \\rVert = |k| \\times \\lVert \\vec{u} \\rVert$ : par quel nombre multiplier $\\overrightarrow{AB}$, de norme $4$, pour obtenir une norme égale à $1$ ? Fais de même avec $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$."
+        ],
+        "revoir": "l-orthogonalite-espace-021",
+        "solution": "Les vecteurs $\\dfrac{1}{4}\\overrightarrow{AB}$, $\\dfrac{1}{2}\\overrightarrow{AD}$ et $\\dfrac{1}{3}\\overrightarrow{AE}$ restent orthogonaux deux à deux, par bilinéarité, et ont pour normes $\\dfrac{1}{4} \\times 4 = 1$, $\\dfrac{1}{2} \\times 2 = 1$ et $\\dfrac{1}{3} \\times 3 = 1$. Le repère orthonormé est $\\left(A\\,;\\,\\dfrac{1}{4}\\overrightarrow{AB}, \\dfrac{1}{2}\\overrightarrow{AD}, \\dfrac{1}{3}\\overrightarrow{AE}\\right)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans le repère orthonormé trouvé à la question 2, quelles sont les coordonnées du point $G$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$(1\\,;\\,1\\,;\\,1)$",
+            "$(4\\,;\\,2\\,;\\,3)$",
+            "$\\left(\\dfrac{1}{4}\\,;\\,\\dfrac{1}{2}\\,;\\,\\dfrac{1}{3}\\right)$",
+            "$(4\\,;\\,0\\,;\\,3)$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Ce sont les coordonnées de $G$ dans le repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$, qui n'est pas orthonormé.",
+            null,
+            "Les coefficients sont inversés : $\\overrightarrow{AB} = 4 \\times \\dfrac{1}{4}\\overrightarrow{AB}$, donc la première coordonnée vaut $4$.",
+            "Ce sont les coordonnées de $F$ : il manque le déplacement selon $\\overrightarrow{AD}$, vers l'arrière."
+          ]
+        },
+        "indices": [
+          "$\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$ : écris chaque vecteur avec les vecteurs du nouveau repère.",
+          "$\\overrightarrow{AB} = 4 \\times \\left(\\dfrac{1}{4}\\overrightarrow{AB}\\right)$ : le coefficient devant le vecteur du repère est la coordonnée. Fais de même pour $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$."
+        ],
+        "revoir": "l-orthogonalite-espace-016",
+        "solution": "$\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE} = 4 \\times \\dfrac{1}{4}\\overrightarrow{AB} + 2 \\times \\dfrac{1}{2}\\overrightarrow{AD} + 3 \\times \\dfrac{1}{3}\\overrightarrow{AE}$.\n\nDans ce repère, $G(4\\,;\\,2\\,;\\,3)$ : les coordonnées sont les longueurs des arêtes, ce qui permet ensuite d'appliquer les formules du repère orthonormé."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-007",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-repere-orthonorme"],
+    "capacites": ["bo-m-orthogonalite-09", "bo-m-orthogonalite-04"],
+    "titre": "Un angle remarquable",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 204,
+    "preambule": "Dans un repère orthonormé, on donne $A(1\\,;\\,1\\,;\\,1)$, $B(3\\,;\\,3\\,;\\,1)$ et $C(1\\,;\\,3\\,;\\,3)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$.",
+        "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+        "indices": [
+          "Calcule les coordonnées des deux vecteurs issus du sommet $A$, puis $xx' + yy' + zz'$.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 0 \\\\ 2 \\\\ 2 \\end{pmatrix}$ : multiplie coordonnée par coordonnée, puis ajoute."
+        ],
+        "revoir": "l-orthogonalite-espace-027",
+        "solution": "$\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 0 \\\\ 2 \\\\ 2 \\end{pmatrix}$. Le repère est orthonormé : $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 2 \\times 0 + 2 \\times 2 + 0 \\times 2 = 4$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Que vaut $\\cos\\widehat{BAC}$ ? Donne la valeur exacte.",
+        "reponse": { "type": "numerique", "valeur": "1/2", "tolerance": 0 },
+        "indices": [
+          "$\\cos\\widehat{BAC} = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{AC}}{AB \\times AC}$ : il reste à calculer les deux longueurs.",
+          "$AB = \\sqrt{4 + 4 + 0}$ et $AC = \\sqrt{0 + 4 + 4}$ : remarque que $AB = AC$, donc $AB \\times AC = AB^2$, sans racine à calculer."
+        ],
+        "revoir": "l-orthogonalite-espace-026",
+        "solution": "$AB = \\sqrt{8}$ et $AC = \\sqrt{8}$, donc $AB \\times AC = 8$. Ainsi $\\cos\\widehat{BAC} = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{AC}}{AB \\times AC} = \\dfrac{4}{8} = \\dfrac{1}{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la mesure de l'angle $\\widehat{BAC}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$30^\\circ$", "$45^\\circ$", "$60^\\circ$", "$120^\\circ$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$\\cos 30^\\circ = \\dfrac{\\sqrt{3}}{2}$, pas $\\dfrac{1}{2}$.",
+            "$\\cos 45^\\circ = \\dfrac{\\sqrt{2}}{2}$, pas $\\dfrac{1}{2}$.",
+            null,
+            "$\\cos 120^\\circ = -\\dfrac{1}{2}$ : le cosinus trouvé est positif, l'angle est aigu."
+          ]
+        },
+        "indices": [
+          "Cherche l'angle compris entre $0^\\circ$ et $180^\\circ$ dont le cosinus vaut la valeur de la question 2.",
+          "Le cosinus est positif : l'angle est aigu. Et $\\cos 45^\\circ = \\dfrac{\\sqrt{2}}{2}$, $\\cos 30^\\circ = \\dfrac{\\sqrt{3}}{2}$ : ces deux angles ne conviennent pas."
+        ],
+        "revoir": "l-orthogonalite-espace-026",
+        "solution": "$\\cos\\widehat{BAC} = \\dfrac{1}{2}$ et l'angle est compris entre $0^\\circ$ et $180^\\circ$, donc $\\widehat{BAC} = 60^\\circ$. D'ailleurs $BC = \\sqrt{4 + 0 + 4} = \\sqrt{8}$ : le triangle $ABC$ est équilatéral."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-008",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-vecteur-normal"],
+    "capacites": ["bo-m-orthogonalite-06", "bo-m-orthogonalite-07"],
+    "titre": "Orthogonales, perpendiculaires, normales dans un cube",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 301,
+    "preambule": "On considère le cube $ABCDEFGH$ de la figure, d'arête $1$ : $ABCD$ est la face du dessous, $EFGH$ celle du dessus, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. On munit l'espace du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/orthogonalite-espace/cube-repere.svg",
+        "alt": "Le cube ABCDEFGH en perspective : la face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Trois flèches bleues partent de A : vers B, vers D (en pointillé, car cachée) et vers E. À côté de chaque sommet sont écrites ses coordonnées : A(0 ; 0 ; 0), B(1 ; 0 ; 0), C(1 ; 1 ; 0), D(0 ; 1 ; 0), E(0 ; 0 ; 1), F(1 ; 0 ; 1), G(1 ; 1 ; 1) et H(0 ; 1 ; 1).",
+        "width": 440,
+        "height": 305
+      },
+      "caption": "Le cube ABCDEFGH d'arête 1 et le repère (A ; AB, AD, AE) : à côté de chaque sommet, ses coordonnées dans ce repère. En pointillé : ce qui est caché."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Laquelle de ces paires est formée de deux droites orthogonales, mais non perpendiculaires ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$(AB)$ et $(BF)$",
+            "$(AB)$ et $(HG)$",
+            "$(AB)$ et $(EG)$",
+            "$(AB)$ et $(FG)$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Elles sont orthogonales et sécantes en $B$ : elles sont perpendiculaires.",
+            "Elles sont parallèles : $\\overrightarrow{HG} = \\overrightarrow{AB}$.",
+            "$\\overrightarrow{EG} = \\overrightarrow{AC}$ fait un angle de $45^\\circ$ avec $\\overrightarrow{AB}$ : ces droites ne sont pas orthogonales.",
+            null
+          ]
+        },
+        "indices": [
+          "Orthogonales : leurs vecteurs directeurs sont orthogonaux. Perpendiculaires : orthogonales et, en plus, sécantes.",
+          "Place les vecteurs directeurs en $B$ : $\\overrightarrow{HG} = \\overrightarrow{AB}$, $\\overrightarrow{EG} = \\overrightarrow{AC}$ et $\\overrightarrow{FG} = \\overrightarrow{BC}$. Puis demande-toi si chaque paire de droites a un point commun."
+        ],
+        "revoir": "l-orthogonalite-espace-033",
+        "solution": "$\\overrightarrow{FG} = \\overrightarrow{BC}$, et les droites $(AB)$ et $(BC)$ sont perpendiculaires (face $ABCD$) : $(AB)$ et $(FG)$ sont orthogonales. Mais $(AB)$ est dans le plan de la face du dessous et $(FG)$ dans celui de la face du dessus ; ces deux plans sont parallèles et distincts, donc les deux droites n'ont aucun point commun.\n\nLa paire cherchée est $(AB)$ et $(FG)$ : orthogonales, mais non perpendiculaires."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux : la droite $(AG)$ est orthogonale à la droite $(BD)$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$\\overrightarrow{AG}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{BD}\\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ : $\\overrightarrow{AG} \\cdot \\overrightarrow{BD} = -1 + 1 + 0 = 0$."
+        },
+        "indices": [
+          "Deux droites sont orthogonales quand leurs vecteurs directeurs le sont : calcule $\\overrightarrow{AG} \\cdot \\overrightarrow{BD}$ avec les coordonnées.",
+          "Dans le repère : $G(1\\,;\\,1\\,;\\,1)$, $B(1\\,;\\,0\\,;\\,0)$ et $D(0\\,;\\,1\\,;\\,0)$. Calcule $\\overrightarrow{AG}$ et $\\overrightarrow{BD}$, puis $xx' + yy' + zz'$."
+        ],
+        "revoir": "l-orthogonalite-espace-034",
+        "solution": "$\\overrightarrow{AG}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{BD}\\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$. Le repère est orthonormé : $\\overrightarrow{AG} \\cdot \\overrightarrow{BD} = -1 + 1 + 0 = 0$. Les vecteurs directeurs sont orthogonaux, donc les droites $(AG)$ et $(BD)$ sont orthogonales.\n\nL'affirmation est vraie : l'orthogonalité de deux droites se lit sur leurs vecteurs directeurs, que les droites se coupent ou non."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Lequel de ces vecteurs est normal au plan $(ABF)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\overrightarrow{AD}$",
+            "$\\overrightarrow{AE}$",
+            "$\\overrightarrow{AC}$",
+            "$\\overrightarrow{AG}$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$\\overrightarrow{AE}$ est dans la direction du plan $(ABF)$, qui contient la face $ABFE$ : $\\overrightarrow{AE} \\cdot \\overrightarrow{AE} = 1 \\neq 0$.",
+            "$\\overrightarrow{AC} \\cdot \\overrightarrow{AB} = 1 + 0 + 0 = 1 \\neq 0$.",
+            "$\\overrightarrow{AG} \\cdot \\overrightarrow{AB} = 1 \\neq 0$ et $\\overrightarrow{AG} \\cdot \\overrightarrow{AE} = 1 \\neq 0$."
+          ]
+        },
+        "indices": [
+          "Le plan $(ABF)$ contient la face $ABFE$ : il est dirigé par $\\overrightarrow{AB}$ et $\\overrightarrow{AE}$, non colinéaires. Cherche un vecteur orthogonal à ces deux-là.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AE}\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$ : pour chaque proposition, il faut deux produits scalaires nuls."
+        ],
+        "revoir": "l-orthogonalite-espace-040",
+        "solution": "$\\overrightarrow{AD}\\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}$ vérifie $\\overrightarrow{AD} \\cdot \\overrightarrow{AB} = 0$ et $\\overrightarrow{AD} \\cdot \\overrightarrow{AE} = 0$. Il est non nul et orthogonal à deux vecteurs non colinéaires du plan $(ABF)$ : $\\overrightarrow{AD}$ est normal à ce plan."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-009",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-vecteur-normal"],
+    "capacites": ["bo-m-orthogonalite-07", "bo-m-orthogonalite-06"],
+    "titre": "Reconnaître un vecteur normal par le calcul",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 302,
+    "preambule": "Dans un repère orthonormé d'origine $O$, on donne $A(1\\,;\\,0\\,;\\,0)$, $B(0\\,;\\,2\\,;\\,0)$ et $C(0\\,;\\,0\\,;\\,3)$. Ces trois points ne sont pas alignés.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Lequel de ces vecteurs est normal au plan $(ABC)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\begin{pmatrix} 2 \\\\ 1 \\\\ 0 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 3 \\\\ 0 \\\\ 1 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 6 \\\\ 3 \\\\ 2 \\end{pmatrix}$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Il est orthogonal à $\\overrightarrow{AB}$ ($-2 + 2 + 0 = 0$), mais pas à $\\overrightarrow{AC}$ : $-2 + 0 + 0 = -2$. Un seul produit nul ne suffit pas.",
+            "Ce vecteur reprend les coordonnées non nulles de $A$, $B$, $C$ : son produit avec $\\overrightarrow{AB}$ vaut $-1 + 4 + 0 = 3 \\neq 0$.",
+            "Il est orthogonal à $\\overrightarrow{AC}$ ($-3 + 0 + 3 = 0$), mais pas à $\\overrightarrow{AB}$ : $-3 + 0 + 0 = -3$.",
+            null
+          ]
+        },
+        "indices": [
+          "Il faut deux produits scalaires nuls : avec $\\overrightarrow{AB}$ et avec $\\overrightarrow{AC}$, deux vecteurs non colinéaires du plan.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} -1 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -1 \\\\ 0 \\\\ 3 \\end{pmatrix}$ : teste chaque proposition avec les deux."
+        ],
+        "revoir": "l-orthogonalite-espace-040",
+        "solution": "Avec $\\vec{n}\\begin{pmatrix} 6 \\\\ 3 \\\\ 2 \\end{pmatrix}$ : $\\vec{n} \\cdot \\overrightarrow{AB} = -6 + 6 + 0 = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = -6 + 0 + 6 = 0$. Ce vecteur non nul est orthogonal à deux vecteurs non colinéaires du plan $(ABC)$ : il est normal à ce plan."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Le vecteur $\\vec{m}\\begin{pmatrix} 3 \\\\ b \\\\ 1 \\end{pmatrix}$ est normal au plan $(ABC)$. Que vaut le réel $b$ ? Donne la valeur exacte.",
+        "reponse": { "type": "numerique", "valeur": "3/2", "tolerance": 0 },
+        "indices": [
+          "$\\vec{m}$ est en particulier orthogonal à $\\overrightarrow{AB}$ : écris $\\vec{m} \\cdot \\overrightarrow{AB} = 0$, une équation d'inconnue $b$.",
+          "$\\vec{m} \\cdot \\overrightarrow{AB} = 3 \\times (-1) + b \\times 2 + 1 \\times 0$. Résous, puis vérifie que $\\vec{m} \\cdot \\overrightarrow{AC} = 0$ aussi."
+        ],
+        "revoir": "l-orthogonalite-espace-041",
+        "solution": "$\\vec{m}$ est orthogonal à $\\overrightarrow{AB}$ : $-3 + 2b = 0$, donc $b = \\dfrac{3}{2}$. Vérification : $\\vec{m} \\cdot \\overrightarrow{AC} = -3 + 0 + 3 = 0$.\n\nAinsi $b = \\dfrac{3}{2}$, et $\\vec{m} = \\dfrac{1}{2}\\begin{pmatrix} 6 \\\\ 3 \\\\ 2 \\end{pmatrix}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux : le vecteur $\\overrightarrow{OA}$ est normal au plan $(OBC)$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = 0$ et $\\overrightarrow{OA} \\cdot \\overrightarrow{OC} = 0$, avec $\\overrightarrow{OB}$ et $\\overrightarrow{OC}$ non colinéaires."
+        },
+        "indices": [
+          "Le plan $(OBC)$ est dirigé par $\\overrightarrow{OB}$ et $\\overrightarrow{OC}$ : calcule leurs produits scalaires avec $\\overrightarrow{OA}$.",
+          "$\\overrightarrow{OA}\\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}$, $\\overrightarrow{OB}\\begin{pmatrix} 0 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{OC}\\begin{pmatrix} 0 \\\\ 0 \\\\ 3 \\end{pmatrix}$ ; les deux derniers ne sont pas colinéaires."
+        ],
+        "revoir": "l-orthogonalite-espace-040",
+        "solution": "$\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = 0 + 0 + 0 = 0$ et $\\overrightarrow{OA} \\cdot \\overrightarrow{OC} = 0$, et $\\overrightarrow{OB}$, $\\overrightarrow{OC}$ ne sont pas colinéaires. Le vecteur $\\overrightarrow{OA}$, non nul, est normal au plan $(OBC)$. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-010",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-vecteur-normal"],
+    "capacites": ["bo-m-orthogonalite-07", "bo-m-orthogonalite-12"],
+    "titre": "Plan passant par un point, plan médiateur",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 303,
+    "preambule": "L'espace est muni d'un repère orthonormé d'origine $O$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "$\\mathcal{P}$ est le plan passant par $A(2\\,;\\,-1\\,;\\,0)$ et normal à $\\vec{n}\\begin{pmatrix} 1 \\\\ 3 \\\\ -2 \\end{pmatrix}$. Lequel de ces points est dans $\\mathcal{P}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$M_1(3\\,;\\,2\\,;\\,-2)$",
+            "$M_2(4\\,;\\,-1\\,;\\,1)$",
+            "$M_3(1\\,;\\,3\\,;\\,-2)$",
+            "$M_4(1\\,;\\,1\\,;\\,2)$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$\\overrightarrow{AM_1} = \\vec{n}$ : $M_1$ est sur la droite passant par $A$ et dirigée par $\\vec{n}$, qui traverse le plan. Ici $\\overrightarrow{AM_1} \\cdot \\vec{n} = 14$.",
+            null,
+            "Ce point a les coordonnées de $\\vec{n}$, mais un point n'est pas un vecteur : $\\overrightarrow{AM_3}\\begin{pmatrix} -1 \\\\ 4 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{AM_3} \\cdot \\vec{n} = 15$.",
+            "$\\overrightarrow{OM_4} \\cdot \\vec{n} = 0$, mais le vecteur doit partir de $A$, point du plan : $\\overrightarrow{AM_4}\\begin{pmatrix} -1 \\\\ 2 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AM_4} \\cdot \\vec{n} = 1 \\neq 0$."
+          ]
+        },
+        "indices": [
+          "$M$ est dans $\\mathcal{P}$ si et seulement si $\\overrightarrow{AM} \\cdot \\vec{n} = 0$ : le vecteur part de $A$, le point donné du plan.",
+          "Pour $M_1$ : $\\overrightarrow{AM_1}\\begin{pmatrix} 1 \\\\ 3 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{AM_1} \\cdot \\vec{n} = 1 + 9 + 4$. Fais de même pour les trois autres."
+        ],
+        "revoir": "l-orthogonalite-espace-043",
+        "solution": "$\\overrightarrow{AM_2}\\begin{pmatrix} 2 \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{AM_2} \\cdot \\vec{n} = 2 + 0 - 2 = 0$ : $M_2 \\in \\mathcal{P}$. Les trois autres points donnent $14$, $15$ et $1$.\n\nLe point cherché est $M_2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On donne $B(1\\,;\\,2\\,;\\,3)$ et $C(3\\,;\\,0\\,;\\,1)$. Vrai ou faux : le point $M(3\\,;\\,2\\,;\\,2)$ appartient au plan médiateur du segment $[BC]$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$MB^2 = 4 + 0 + 1 = 5$ et $MC^2 = 0 + 4 + 1 = 5$ : $M$ est équidistant de $B$ et de $C$."
+        },
+        "indices": [
+          "Le plan médiateur de $[BC]$ est l'ensemble des points équidistants de $B$ et de $C$ : compare $MB$ et $MC$.",
+          "$\\overrightarrow{MB}\\begin{pmatrix} -2 \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{MC}\\begin{pmatrix} 0 \\\\ -2 \\\\ -1 \\end{pmatrix}$ : compare les carrés de leurs normes."
+        ],
+        "revoir": "l-orthogonalite-espace-044",
+        "solution": "$\\overrightarrow{MB}\\begin{pmatrix} -2 \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{MC}\\begin{pmatrix} 0 \\\\ -2 \\\\ -1 \\end{pmatrix}$, donc $MB = \\sqrt{5}$ et $MC = \\sqrt{5}$. Le point $M$ est à égale distance de $B$ et de $C$ : il est dans le plan médiateur de $[BC]$. L'affirmation est vraie."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Avec les points $B$ et $C$ de la question 2 : pour quelle valeur du réel $z$ le point $N(3\\,;\\,1\\,;\\,z)$ appartient-il au plan médiateur de $[BC]$ ?",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "$N$ est dans le plan médiateur si et seulement si $\\overrightarrow{IN} \\cdot \\overrightarrow{BC} = 0$, où $I$ est le milieu de $[BC]$.",
+          "$I(2\\,;\\,1\\,;\\,2)$, $\\overrightarrow{BC}\\begin{pmatrix} 2 \\\\ -2 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{IN}\\begin{pmatrix} 1 \\\\ 0 \\\\ z - 2 \\end{pmatrix}$ : écris le produit scalaire, une équation d'inconnue $z$."
+        ],
+        "revoir": "l-orthogonalite-espace-044",
+        "solution": "Avec $I(2\\,;\\,1\\,;\\,2)$, milieu de $[BC]$ : $\\overrightarrow{IN} \\cdot \\overrightarrow{BC} = 2 + 0 - 2(z - 2) = 6 - 2z$. Il est nul si et seulement si $z = 3$.\n\nVérification : pour $N(3\\,;\\,1\\,;\\,3)$, $NB^2 = 4 + 1 + 0 = 5$ et $NC^2 = 0 + 1 + 4 = 5$. Donc $z = 3$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-011",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-projete-distance"],
+    "capacites": ["bo-m-orthogonalite-08"],
+    "titre": "Des projetés dans un cube",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 401,
+    "preambule": "On considère le cube $ABCDEFGH$ de la figure, d'arête $1$ : $ABCD$ est la face du dessous, $EFGH$ celle du dessus, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. On munit l'espace du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/orthogonalite-espace/cube-repere.svg",
+        "alt": "Le cube ABCDEFGH en perspective : la face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Trois flèches bleues partent de A : vers B, vers D (en pointillé, car cachée) et vers E. À côté de chaque sommet sont écrites ses coordonnées : A(0 ; 0 ; 0), B(1 ; 0 ; 0), C(1 ; 1 ; 0), D(0 ; 1 ; 0), E(0 ; 0 ; 1), F(1 ; 0 ; 1), G(1 ; 1 ; 1) et H(0 ; 1 ; 1).",
+        "width": 440,
+        "height": 305
+      },
+      "caption": "Le cube ABCDEFGH d'arête 1 et le repère (A ; AB, AD, AE) : à côté de chaque sommet, ses coordonnées dans ce repère. En pointillé : ce qui est caché."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quel est le projeté orthogonal du point $F$ sur le plan $(ADH)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$A$", "$H$", "$E$", "$B$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$A$ est dans le plan $(ADH)$, mais $\\overrightarrow{FA}$, diagonale de la face $ABFE$, n'est pas normal à ce plan : $\\overrightarrow{FA} \\cdot \\overrightarrow{AE} = -1 \\neq 0$.",
+            "$H$ est dans le plan $(ADH)$, mais $\\overrightarrow{FH}$, diagonale de la face du dessus, n'est pas normal à ce plan : $\\overrightarrow{FH} \\cdot \\overrightarrow{AD} = 1 \\neq 0$.",
+            null,
+            "$B$ n'est pas dans le plan $(ADH)$ : c'est le projeté de $F$ sur le plan $(ABC)$."
+          ]
+        },
+        "indices": [
+          "Cherche le point $K$ du plan $(ADH)$ tel que $\\overrightarrow{FK}$ soit normal à ce plan.",
+          "Le plan $(ADH)$ contient la face $ADHE$. Quelle arête part de $F$ et arrive sur cette face en lui étant perpendiculaire ?"
+        ],
+        "revoir": "l-orthogonalite-espace-052",
+        "solution": "Le point $E$ est dans le plan $(ADH)$, qui contient la face $ADHE$. Et $\\overrightarrow{FE} = -\\overrightarrow{AB}$ est orthogonal à $\\overrightarrow{AD}$ et à $\\overrightarrow{AE}$, non colinéaires : il est normal au plan $(ADH)$.\n\nLe projeté orthogonal de $F$ sur le plan $(ADH)$ est $E$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quel est le projeté orthogonal du point $G$ sur la droite $(AB)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$B$", "$A$", "le milieu de $[AB]$", "$F$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$\\overrightarrow{GA} \\cdot \\overrightarrow{AB} = -1 \\neq 0$ : la droite $(GA)$ n'est pas perpendiculaire à $(AB)$.",
+            "Avec $K\\left(\\dfrac{1}{2}\\,;\\,0\\,;\\,0\\right)$ : $\\overrightarrow{GK} \\cdot \\overrightarrow{AB} = -\\dfrac{1}{2} \\neq 0$.",
+            "$F$ n'est pas sur la droite $(AB)$ : c'est le projeté de $G$ sur le plan $(ABF)$."
+          ]
+        },
+        "indices": [
+          "Le projeté de $G$ sur $(AB)$ est le point $K$ de $(AB)$ tel que $\\overrightarrow{GK} \\cdot \\overrightarrow{AB} = 0$.",
+          "Teste les points proposés qui sont sur $(AB)$ : par exemple, $\\overrightarrow{GB} = \\overrightarrow{GC} + \\overrightarrow{CB}$ est-il orthogonal à $\\overrightarrow{AB}$ ?"
+        ],
+        "revoir": "l-orthogonalite-espace-050",
+        "solution": "$B$ est sur $(AB)$, et $\\overrightarrow{GB}\\begin{pmatrix} 0 \\\\ -1 \\\\ -1 \\end{pmatrix}$ vérifie $\\overrightarrow{GB} \\cdot \\overrightarrow{AB} = 0$, avec $\\overrightarrow{AB}\\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}$.\n\nLe projeté orthogonal de $G$ sur la droite $(AB)$ est $B$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est le projeté orthogonal du point $C$ sur la droite $(BD)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$B$", "$D$", "$A$", "le centre de la face $ABCD$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "$\\overrightarrow{CB} \\cdot \\overrightarrow{BD} = -1 \\neq 0$ : l'angle $\\widehat{CBD}$ mesure $45^\\circ$, pas $90^\\circ$.",
+            "$\\overrightarrow{CD} \\cdot \\overrightarrow{BD} = 1 \\neq 0$ : l'angle $\\widehat{CDB}$ mesure $45^\\circ$, pas $90^\\circ$.",
+            "$A$ n'est pas sur la droite $(BD)$.",
+            null
+          ]
+        },
+        "indices": [
+          "Le projeté de $C$ sur $(BD)$ est le pied de la perpendiculaire à $(BD)$ menée de $C$ : tout se passe dans le carré $ABCD$.",
+          "Dans un carré, les diagonales sont perpendiculaires et se coupent en leur milieu."
+        ],
+        "revoir": "l-orthogonalite-espace-050",
+        "solution": "Dans le carré $ABCD$, les diagonales $[AC]$ et $[BD]$ sont perpendiculaires et se coupent en leur milieu $I$, le centre de la face. Par le calcul : $I\\left(\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\,;\\,0\\right)$ est sur $(BD)$, et $\\overrightarrow{CI} \\cdot \\overrightarrow{BD} = \\dfrac{1}{2} - \\dfrac{1}{2} + 0 = 0$.\n\nLe projeté orthogonal de $C$ sur $(BD)$ est le centre de la face $ABCD$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-012",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-projete-distance"],
+    "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10"],
+    "titre": "Vérifier un projeté sur un plan, lire la distance",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 402,
+    "preambule": "Dans un repère orthonormé, $\\mathcal{P}$ est le plan passant par $A(1\\,;\\,0\\,;\\,1)$ et normal au vecteur $\\vec{n}\\begin{pmatrix} 1 \\\\ 2 \\\\ 2 \\end{pmatrix}$. On donne les points $H(3\\,;\\,-1\\,;\\,1)$ et $M(5\\,;\\,3\\,;\\,5)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Vrai ou faux : le point $H$ appartient au plan $\\mathcal{P}$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$\\overrightarrow{AH}\\begin{pmatrix} 2 \\\\ -1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AH} \\cdot \\vec{n} = 2 - 2 + 0 = 0$."
+        },
+        "indices": [
+          "$H \\in \\mathcal{P}$ si et seulement si $\\overrightarrow{AH} \\cdot \\vec{n} = 0$.",
+          "$\\overrightarrow{AH}\\begin{pmatrix} 2 \\\\ -1 \\\\ 0 \\end{pmatrix}$ : calcule son produit scalaire avec $\\vec{n}$."
+        ],
+        "revoir": "l-orthogonalite-espace-043",
+        "solution": "$\\overrightarrow{AH}\\begin{pmatrix} 2 \\\\ -1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AH} \\cdot \\vec{n} = 2 - 2 + 0 = 0$ : le point $H$ appartient au plan $\\mathcal{P}$. L'affirmation est vraie."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux : $H$ est le projeté orthogonal de $M$ sur le plan $\\mathcal{P}$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$H \\in \\mathcal{P}$ et $\\overrightarrow{MH}\\begin{pmatrix} -2 \\\\ -4 \\\\ -4 \\end{pmatrix} = -2\\,\\vec{n}$ est normal à $\\mathcal{P}$."
+        },
+        "indices": [
+          "Deux conditions : $H \\in \\mathcal{P}$ (question 1), et $\\overrightarrow{MH}$ normal à $\\mathcal{P}$, par exemple colinéaire à $\\vec{n}$.",
+          "$\\overrightarrow{MH}\\begin{pmatrix} -2 \\\\ -4 \\\\ -4 \\end{pmatrix}$ : par quel nombre faut-il multiplier $\\vec{n}$ pour l'obtenir ?"
+        ],
+        "revoir": "l-orthogonalite-espace-058",
+        "solution": "$H \\in \\mathcal{P}$ d'après la question 1, et $\\overrightarrow{MH}\\begin{pmatrix} -2 \\\\ -4 \\\\ -4 \\end{pmatrix} = -2\\,\\vec{n}$ est colinéaire à $\\vec{n}$, donc normal à $\\mathcal{P}$. Ainsi $H$ est le projeté orthogonal de $M$ sur $\\mathcal{P}$ : l'affirmation est vraie."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la distance du point $M$ au plan $\\mathcal{P}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\sqrt{41}$", "$6$", "$36$", "$3$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est $MA$ : $A$ est un point du plan, mais pas le projeté de $M$. La distance au plan est la plus petite des distances $MN$, avec $N$ dans le plan.",
+            null,
+            "C'est $MH^2$ : il reste à prendre la racine carrée.",
+            "C'est la norme de $\\vec{n}$ ; or $\\overrightarrow{MH} = -2\\,\\vec{n}$ est deux fois plus long."
+          ]
+        },
+        "indices": [
+          "$H$ est le projeté orthogonal de $M$ sur $\\mathcal{P}$ : la distance de $M$ au plan est la longueur $MH$.",
+          "$MH = \\sqrt{(-2)^2 + (-4)^2 + (-4)^2}$, ou bien $MH = 2\\,\\lVert \\vec{n} \\rVert$."
+        ],
+        "revoir": "l-orthogonalite-espace-054",
+        "solution": "$H$ est le projeté orthogonal de $M$ sur $\\mathcal{P}$, donc la distance de $M$ à $\\mathcal{P}$ est $MH = \\sqrt{4 + 16 + 16} = \\sqrt{36} = 6$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-013",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-projete-distance"],
+    "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10"],
+    "titre": "Vérifier un projeté sur une droite",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 403,
+    "preambule": "Dans un repère orthonormé, $d$ est la droite passant par $B(1\\,;\\,2\\,;\\,-1)$ et de vecteur directeur $\\vec{u}\\begin{pmatrix} 2 \\\\ -1 \\\\ 2 \\end{pmatrix}$. On donne les points $H(3\\,;\\,1\\,;\\,1)$ et $M(4\\,;\\,3\\,;\\,1)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Vrai ou faux : le point $H$ appartient à la droite $d$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$\\overrightarrow{BH}\\begin{pmatrix} 2 \\\\ -1 \\\\ 2 \\end{pmatrix} = \\vec{u}$ : $\\overrightarrow{BH}$ et $\\vec{u}$ sont colinéaires."
+        },
+        "indices": [
+          "$H \\in d$ si et seulement si $\\overrightarrow{BH}$ et $\\vec{u}$ sont colinéaires (chapitre « Vecteurs, droites et plans de l'espace »).",
+          "Calcule $\\overrightarrow{BH}$, arrivée moins départ, et compare-le à $\\vec{u}$."
+        ],
+        "revoir": "l-orthogonalite-espace-055",
+        "solution": "$\\overrightarrow{BH}\\begin{pmatrix} 3 - 1 \\\\ 1 - 2 \\\\ 1 - (-1) \\end{pmatrix}$, soit $\\overrightarrow{BH} = \\vec{u}$ : ces vecteurs sont colinéaires, donc $H \\in d$. L'affirmation est vraie."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux : $H$ est le projeté orthogonal du point $M$ sur la droite $d$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$H \\in d$ et $\\overrightarrow{MH}\\begin{pmatrix} -1 \\\\ -2 \\\\ 0 \\end{pmatrix}$ vérifie $\\overrightarrow{MH} \\cdot \\vec{u} = -2 + 2 + 0 = 0$."
+        },
+        "indices": [
+          "Deux conditions : $H \\in d$ (question 1), et $\\overrightarrow{MH} \\cdot \\vec{u} = 0$.",
+          "$\\overrightarrow{MH}\\begin{pmatrix} -1 \\\\ -2 \\\\ 0 \\end{pmatrix}$ : calcule $\\overrightarrow{MH} \\cdot \\vec{u}$."
+        ],
+        "revoir": "l-orthogonalite-espace-058",
+        "solution": "$H \\in d$ d'après la question 1, et $\\overrightarrow{MH}\\begin{pmatrix} -1 \\\\ -2 \\\\ 0 \\end{pmatrix}$ vérifie $\\overrightarrow{MH} \\cdot \\vec{u} = -2 + 2 + 0 = 0$. Donc $H$ est le projeté orthogonal de $M$ sur $d$ : l'affirmation est vraie."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la distance du point $M$ à la droite $d$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\sqrt{5}$", "$\\sqrt{14}$", "$5$", "$3$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est $MB$ : $B$ est sur $d$, mais ce n'est pas le projeté de $M$.",
+            "C'est $MH^2$ : il reste à prendre la racine carrée.",
+            "C'est la norme de $\\vec{u}$, qui ne dépend pas de la position de $M$."
+          ]
+        },
+        "indices": [
+          "La distance de $M$ à $d$ est $MH$, où $H$ est le projeté orthogonal de $M$ sur $d$.",
+          "$MH$ est la norme de $\\overrightarrow{MH}$, calculé à la question 2 : $\\sqrt{x^2 + y^2 + z^2}$."
+        ],
+        "revoir": "l-orthogonalite-espace-054",
+        "solution": "$H$ est le projeté orthogonal de $M$ sur $d$, donc la distance de $M$ à $d$ est $MH = \\sqrt{1 + 4 + 0} = \\sqrt{5}$. Les autres points de $d$ sont plus loin : par exemple $MB = \\sqrt{9 + 1 + 4} = \\sqrt{14}$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-014",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-projete-distance"],
+    "capacites": ["bo-m-orthogonalite-10", "bo-m-orthogonalite-13"],
+    "titre": "Le point le plus proche",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 404,
+    "preambule": "Le point $M$ est à la distance $6$ d'un plan $\\mathcal{P}$, et $H$ est son projeté orthogonal sur $\\mathcal{P}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Le point $N$ du plan $\\mathcal{P}$ vérifie $MN = 10$. Que vaut $HN$ ?",
+        "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+        "indices": [
+          "Le triangle $MHN$ est rectangle en $H$ : $\\overrightarrow{MH}$ est normal au plan, qui contient le segment $[HN]$.",
+          "Théorème de Pythagore : $MN^2 = MH^2 + HN^2$, donc $HN^2 = 100 - 36$."
+        ],
+        "revoir": "l-orthogonalite-espace-056",
+        "solution": "$\\overrightarrow{MH}$ est normal à $\\mathcal{P}$ et $\\overrightarrow{HN}$ est dans sa direction : le triangle $MHN$ est rectangle en $H$. Donc $HN^2 = MN^2 - MH^2 = 100 - 36 = 64$, et $HN = 8$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux : il existe un point $N$ du plan $\\mathcal{P}$ tel que $MN = 5$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$H$ est le point du plan le plus proche de $M$ : pour tout point $N$ de $\\mathcal{P}$, $MN \\geqslant MH = 6 > 5$."
+        },
+        "indices": [
+          "Le projeté orthogonal $H$ est le point du plan le plus proche de $M$.",
+          "Pour tout point $N$ de $\\mathcal{P}$, $MN \\geqslant MH$. Compare $5$ à la distance de $M$ au plan."
+        ],
+        "revoir": "l-orthogonalite-espace-054",
+        "solution": "Le projeté $H$ est le point de $\\mathcal{P}$ le plus proche de $M$ : pour tout point $N$ de $\\mathcal{P}$, $MN \\geqslant MH = 6$. Aucun point du plan n'est donc à la distance $5$ de $M$ : l'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On considère maintenant une droite $d$ et un point $R$ hors de $d$, dont le projeté orthogonal $K$ sur $d$ vérifie $RK = 3$. Combien de points $N$ de la droite $d$ vérifient $RN = 5$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["aucun", "un seul", "deux", "une infinité"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$5$ est plus grand que la distance $RK = 3$ de $R$ à $d$ : de tels points existent.",
+            "De part et d'autre de $K$, deux points de $d$ conviennent.",
+            null,
+            "Ce serait le cas pour un plan, où les points cherchés forment un cercle ; sur une droite, il n'y en a que deux."
+          ]
+        },
+        "indices": [
+          "Pour un point $N$ de $d$, le triangle $RKN$ est rectangle en $K$ : $RN^2 = RK^2 + KN^2$.",
+          "$RN = 5$ équivaut à $KN^2 = 25 - 9$ : combien de points de la droite $d$ sont à cette distance de $K$ ?"
+        ],
+        "revoir": "l-orthogonalite-espace-056",
+        "solution": "Pour $N$ sur $d$, $\\overrightarrow{RK} \\cdot \\overrightarrow{KN} = 0$, donc $RN^2 = RK^2 + KN^2$. Ainsi $RN = 5$ équivaut à $KN^2 = 16$, soit $KN = 4$. Sur la droite $d$, il y a exactement deux points à la distance $4$ de $K$, un de chaque côté.\n\nDeux points conviennent."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-015",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-mesures"],
+    "capacites": ["bo-m-orthogonalite-11"],
+    "titre": "Volumes dans un cube",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 501,
+    "preambule": "On considère le cube $ABCDEFGH$ de la figure, d'arête $3$ : $ABCD$ est la face du dessous, $EFGH$ celle du dessus, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/cube.svg",
+        "alt": "Un cube ABCDEFGH dessiné en perspective. La face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé.",
+        "width": 340,
+        "height": 300
+      },
+      "caption": "Le cube ABCDEFGH : ABCD est la face du dessous, EFGH celle du dessus, avec E, F, G, H au-dessus de A, B, C, D. Les arêtes cachées sont en pointillé."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quel est le volume de la pyramide $EABCD$, de sommet $E$ et de base le carré $ABCD$ ?",
+        "reponse": { "type": "numerique", "valeur": 9, "tolerance": 0 },
+        "indices": [
+          "$V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h$ : la base est le carré $ABCD$, et $h$ est la distance de $E$ au plan $(ABC)$.",
+          "La droite $(EA)$ est orthogonale au plan $(ABC)$ : la hauteur est $EA$, et l'aire de la base est $AB^2$."
+        ],
+        "revoir": "l-orthogonalite-espace-067",
+        "solution": "La droite $(EA)$ est orthogonale au plan de la base, donc $A$ est le projeté orthogonal de $E$ sur ce plan et $h = EA = 3$. L'aire de la base est $3^2 = 9$.\n\nDonc $V = \\dfrac{1}{3} \\times 9 \\times 3 = 9$ unités de volume."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On prend pour base du tétraèdre $ABCG$ le triangle $ABC$. Quelle est sa hauteur issue de $G$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$GB = 3\\sqrt{2}$", "$GC = 3$", "$GA = 3\\sqrt{3}$", "$GD = 3\\sqrt{2}$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$[GB]$ est une diagonale de la face $BCGF$ : elle est oblique par rapport au plan $(ABC)$.",
+            null,
+            "$[GA]$ est une grande diagonale du cube : elle n'est pas orthogonale au plan $(ABC)$.",
+            "$[GD]$ est une diagonale de la face $CDHG$ : oblique, elle ne mesure pas la hauteur."
+          ]
+        },
+        "indices": [
+          "La hauteur issue de $G$ est la distance de $G$ au plan $(ABC)$ : cherche le projeté orthogonal de $G$ sur ce plan.",
+          "L'arête $[GC]$ est orthogonale à la face $ABCD$, et le point $C$ est dans le plan $(ABC)$."
+        ],
+        "revoir": "l-orthogonalite-espace-076",
+        "solution": "$C$ est dans le plan $(ABC)$ et la droite $(GC)$ est orthogonale à ce plan : $C$ est le projeté orthogonal de $G$ sur $(ABC)$.\n\nLa hauteur issue de $G$ est donc $GC = 3$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est le volume du tétraèdre $ABCG$ ? Donne la valeur exacte.",
+        "reponse": { "type": "numerique", "valeur": "9/2", "tolerance": 0 },
+        "indices": [
+          "Base : le triangle $ABC$, moitié du carré $ABCD$ ; hauteur : celle de la question 2.",
+          "$\\mathcal{B} = \\dfrac{3 \\times 3}{2}$, puis $V = \\dfrac{1}{3} \\times \\mathcal{B} \\times GC$."
+        ],
+        "revoir": "l-orthogonalite-espace-069",
+        "solution": "Le triangle $ABC$ est rectangle en $B$, d'aire $\\dfrac{3 \\times 3}{2} = \\dfrac{9}{2}$. Avec la hauteur $GC = 3$ :\n\n$V = \\dfrac{1}{3} \\times \\dfrac{9}{2} \\times 3 = \\dfrac{9}{2}$ unités de volume."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-016",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-mesures"],
+    "capacites": ["bo-m-orthogonalite-11"],
+    "titre": "Retourner le calcul du volume",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 502,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Une pyramide a pour volume $10$ et pour hauteur $6$. Quelle est l'aire de sa base ?",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "$V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h$ : isole $\\mathcal{B}$.",
+          "$\\mathcal{B} = \\dfrac{3V}{h} = \\dfrac{3 \\times 10}{6}$."
+        ],
+        "revoir": "l-orthogonalite-espace-073",
+        "solution": "$V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h$ donne $\\mathcal{B} = \\dfrac{3V}{h} = \\dfrac{30}{6} = 5$ unités d'aire."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "$OABC$ est un tétraèdre dont les arêtes $[OA]$, $[OB]$ et $[OC]$ sont perpendiculaires deux à deux, avec $OA = OB = OC = 6$. On admet que le triangle $ABC$ a pour aire $18\\sqrt{3}$. Quelle est la distance du point $O$ au plan $(ABC)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$6$", "$3\\sqrt{2}$", "$2\\sqrt{3}$", "$\\dfrac{2\\sqrt{3}}{3}$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "C'est la longueur $OA$ : l'arête $[OA]$ n'est pas orthogonale au plan $(ABC)$.",
+            "C'est la distance de $O$ à la droite $(AB)$, dans le triangle $OAB$ : la distance au plan $(ABC)$ est plus petite.",
+            null,
+            "C'est $\\dfrac{V}{\\mathcal{B}}$ : on a oublié le facteur $3$ de $h = \\dfrac{3V}{\\mathcal{B}}$."
+          ]
+        },
+        "indices": [
+          "Calcule le volume avec la base $OAB$, puis écris-le avec la base $ABC$ : la hauteur est alors la distance cherchée.",
+          "Avec la base $OAB$ et la hauteur $OC$ : $V = \\dfrac{1}{3} \\times \\dfrac{6 \\times 6}{2} \\times 6$. Avec la base $ABC$ : $V = \\dfrac{1}{3} \\times 18\\sqrt{3} \\times h$."
+        ],
+        "revoir": "l-orthogonalite-espace-074",
+        "solution": "La droite $(OC)$ est orthogonale aux droites $(OA)$ et $(OB)$, sécantes, donc au plan $(OAB)$ : $V = \\dfrac{1}{3} \\times \\dfrac{6 \\times 6}{2} \\times 6 = 36$. Avec la base $ABC$ : $36 = \\dfrac{1}{3} \\times 18\\sqrt{3} \\times h$, soit $h = \\dfrac{108}{18\\sqrt{3}} = \\dfrac{6}{\\sqrt{3}} = 2\\sqrt{3}$.\n\nLa distance de $O$ au plan $(ABC)$ est $2\\sqrt{3}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux : le volume d'un tétraèdre dépend de la face choisie comme base.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Chacune des quatre faces peut servir de base, avec la hauteur issue du sommet opposé : le volume trouvé est le même."
+        },
+        "indices": [
+          "Relis la propriété du volume d'un tétraèdre : que dit-elle de ses quatre faces ?",
+          "Changer de base change aussi la hauteur : la question 2 utilise justement deux bases pour un même volume."
+        ],
+        "revoir": "l-orthogonalite-espace-067",
+        "solution": "Le volume est une propriété du solide. Changer de face change l'aire de la base et la hauteur, mais pas le produit $\\dfrac{1}{3} \\times \\mathcal{B} \\times h$ : c'est ce qui permet de calculer un volume de deux façons. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-017",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 1,
+    "notions": ["n-orthogonalite-espace-mesures"],
+    "capacites": ["bo-m-orthogonalite-11"],
+    "titre": "Aires de triangles de l'espace",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 503,
+    "preambule": "L'espace est muni d'un repère orthonormé.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On donne $A(1\\,;\\,1\\,;\\,0)$, $B(3\\,;\\,2\\,;\\,2)$ et $C(0\\,;\\,3\\,;\\,0)$. Quelle est l'aire du triangle $ABC$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$3\\sqrt{5}$", "$\\dfrac{3\\sqrt{5}}{2}$", "$\\dfrac{3\\sqrt{14}}{2}$", "$\\dfrac{9}{2}$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est $AB \\times AC$ : l'aire d'un triangle rectangle est la moitié de ce produit.",
+            null,
+            "C'est $\\dfrac{AB \\times BC}{2}$ : l'angle droit est en $A$, ce sont $AB$ et $AC$ qu'il faut multiplier.",
+            "C'est $\\dfrac{AB^2}{2}$ : il faut les deux côtés de l'angle droit, $AB$ et $AC$."
+          ]
+        },
+        "indices": [
+          "Cherche d'abord un angle droit : calcule $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 1 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -1 \\\\ 2 \\\\ 0 \\end{pmatrix}$ : leur produit scalaire est nul, donc l'aire vaut $\\dfrac{AB \\times AC}{2}$."
+        ],
+        "revoir": "l-orthogonalite-espace-071",
+        "solution": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = -2 + 2 + 0 = 0$ : le triangle est rectangle en $A$. Avec $AB = \\sqrt{9} = 3$ et $AC = \\sqrt{5}$, son aire vaut $\\dfrac{AB \\times AC}{2} = \\dfrac{3\\sqrt{5}}{2}$ unités d'aire."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On donne $A(0\\,;\\,0\\,;\\,4)$, $B(2\\,;\\,0\\,;\\,0)$ et $C(0\\,;\\,2\\,;\\,0)$ : le triangle $ABC$ est isocèle en $A$. Quelle est son aire ?",
+        "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+        "indices": [
+          "Dans un triangle isocèle en $A$, la médiane issue de $A$ est aussi la hauteur : prends $I$, milieu de $[BC]$.",
+          "$I(1\\,;\\,1\\,;\\,0)$ : calcule $AI$ et $BC$, puis $\\dfrac{BC \\times AI}{2}$."
+        ],
+        "revoir": "l-orthogonalite-espace-071",
+        "solution": "Le milieu de $[BC]$ est $I(1\\,;\\,1\\,;\\,0)$, d'où $AI = \\sqrt{1 + 1 + 16} = \\sqrt{18} = 3\\sqrt{2}$ et $BC = \\sqrt{4 + 4 + 0} = 2\\sqrt{2}$. Le triangle étant isocèle en $A$, $[AI]$ est la hauteur issue de $A$.\n\nL'aire vaut $\\dfrac{BC \\times AI}{2} = \\dfrac{2\\sqrt{2} \\times 3\\sqrt{2}}{2} = \\dfrac{12}{2} = 6$ unités d'aire."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-018",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-produit-scalaire"],
+    "capacites": ["bo-m-orthogonalite-01", "bo-m-orthogonalite-05", "bo-m-vecteurs-09"],
+    "titre": "Les grandes diagonales d'un cube, sans repère",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 111,
+    "preambule": "On considère le cube $ABCDEFGH$ de la figure, d'arête $2$ : $ABCD$ est la face du dessous, $EFGH$ celle du dessus, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. On n'utilise pas de repère : seulement les règles de calcul du produit scalaire.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/cube.svg",
+        "alt": "Un cube ABCDEFGH dessiné en perspective. La face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé.",
+        "width": 340,
+        "height": 300
+      },
+      "caption": "Le cube ABCDEFGH : ABCD est la face du dessous, EFGH celle du dessus, avec E, F, G, H au-dessus de A, B, C, D. Les arêtes cachées sont en pointillé."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Exprimer $\\overrightarrow{AG}$ et $\\overrightarrow{BH}$ en fonction de $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Suis un chemin d'arêtes de $A$ à $G$, puis de $B$ à $H$, et remplace chaque arête par l'un des trois vecteurs imposés.",
+          "$\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CG}$, avec $\\overrightarrow{BC} = \\overrightarrow{AD}$ et $\\overrightarrow{CG} = \\overrightarrow{AE}$.",
+          "Pour $\\overrightarrow{BH}$ : $\\overrightarrow{BH} = \\overrightarrow{BA} + \\overrightarrow{AD} + \\overrightarrow{DH}$. Que valent $\\overrightarrow{BA}$ et $\\overrightarrow{DH}$ ?"
+        ],
+        "revoir": "l-orthogonalite-espace-008",
+        "solution": "Par la relation de Chasles, $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CG}$. Les faces sont des carrés : $\\overrightarrow{BC} = \\overrightarrow{AD}$ et $\\overrightarrow{CG} = \\overrightarrow{AE}$. Donc $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$.\n\nDe même, $\\overrightarrow{BH} = \\overrightarrow{BA} + \\overrightarrow{AD} + \\overrightarrow{DH}$, avec $\\overrightarrow{BA} = -\\overrightarrow{AB}$ et $\\overrightarrow{DH} = \\overrightarrow{AE}$. Donc $\\overrightarrow{BH} = -\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En développant $\\overrightarrow{AG} \\cdot \\overrightarrow{AG}$, calculer $AG^2$.",
+        "reponse": { "type": "numerique", "valeur": 12, "tolerance": 0 },
+        "indices": [
+          "Développe $\\left(\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}\\right) \\cdot \\left(\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}\\right)$ par bilinéarité : neuf produits.",
+          "Le produit de deux vecteurs différents parmi $\\overrightarrow{AB}$, $\\overrightarrow{AD}$, $\\overrightarrow{AE}$ est nul : les angles $\\widehat{BAD}$, $\\widehat{BAE}$ et $\\widehat{DAE}$ sont droits.",
+          "Il reste $\\overrightarrow{AB} \\cdot \\overrightarrow{AB} + \\overrightarrow{AD} \\cdot \\overrightarrow{AD} + \\overrightarrow{AE} \\cdot \\overrightarrow{AE} = AB^2 + AD^2 + AE^2$."
+        ],
+        "revoir": "l-orthogonalite-espace-007",
+        "solution": "Par bilinéarité, $AG^2 = \\overrightarrow{AG} \\cdot \\overrightarrow{AG}$ est la somme de neuf produits. Les six produits de deux vecteurs différents sont nuls, car les angles $\\widehat{BAD}$, $\\widehat{BAE}$ et $\\widehat{DAE}$ sont droits.\n\nIl reste $AG^2 = AB^2 + AD^2 + AE^2 = 4 + 4 + 4 = 12$, d'où $AG = 2\\sqrt{3}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $\\overrightarrow{AG} \\cdot \\overrightarrow{BH}$.",
+        "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+        "indices": [
+          "Même méthode : développe le produit avec les écritures de la question 1.",
+          "Les produits de deux vecteurs différents sont encore nuls ; il reste $\\overrightarrow{AB} \\cdot \\left(-\\overrightarrow{AB}\\right) + \\overrightarrow{AD} \\cdot \\overrightarrow{AD} + \\overrightarrow{AE} \\cdot \\overrightarrow{AE}$.",
+          "Le premier terme vaut $-AB^2$ : attention au signe."
+        ],
+        "revoir": "l-orthogonalite-espace-007",
+        "solution": "$\\overrightarrow{AG} \\cdot \\overrightarrow{BH} = \\left(\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}\\right) \\cdot \\left(-\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}\\right)$. Les produits de deux vecteurs différents sont nuls, donc\n\n$\\overrightarrow{AG} \\cdot \\overrightarrow{BH} = -AB^2 + AD^2 + AE^2 = -4 + 4 + 4 = 4$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Le centre $O$ du cube est le milieu de $[AG]$ et de $[BH]$. Calculer $\\cos\\widehat{AOB}$. Donne la valeur exacte.",
+        "reponse": { "type": "numerique", "valeur": "1/3", "tolerance": 0 },
+        "indices": [
+          "Écris $\\overrightarrow{OA}$ et $\\overrightarrow{OB}$ à l'aide de $\\overrightarrow{AG}$ et de $\\overrightarrow{BH}$, puis utilise la définition $\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = OA \\times OB \\times \\cos\\widehat{AOB}$.",
+          "$\\overrightarrow{OA} = -\\dfrac{1}{2}\\overrightarrow{AG}$ et $\\overrightarrow{OB} = -\\dfrac{1}{2}\\overrightarrow{BH}$ : par bilinéarité, $\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = \\dfrac{1}{4}\\,\\overrightarrow{AG} \\cdot \\overrightarrow{BH}$.",
+          "Comme pour $AG^2$, $BH^2 = AB^2 + AD^2 + AE^2$ : donc $OA = OB = \\dfrac{AG}{2}$. Calcule $OA \\times OB$, puis isole le cosinus."
+        ],
+        "revoir": "l-orthogonalite-espace-003",
+        "solution": "$O$ est le milieu de $[AG]$ et de $[BH]$, donc $\\overrightarrow{OA} = -\\dfrac{1}{2}\\overrightarrow{AG}$ et $\\overrightarrow{OB} = -\\dfrac{1}{2}\\overrightarrow{BH}$. Par bilinéarité, $\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = \\dfrac{1}{4}\\,\\overrightarrow{AG} \\cdot \\overrightarrow{BH} = 1$.\n\nComme à la question 2, $BH^2 = 4 + 4 + 4 = 12$, donc $BH = AG$ et $OA = OB = \\dfrac{AG}{2} = \\sqrt{3}$, d'où $OA \\times OB = 3$. Par définition, $\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = OA \\times OB \\times \\cos\\widehat{AOB}$, donc $\\cos\\widehat{AOB} = \\dfrac{1}{3}$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-019",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-produit-scalaire"],
+    "capacites": ["bo-m-orthogonalite-05", "bo-m-orthogonalite-01"],
+    "titre": "Un tétraèdre régulier, par la polarisation",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 112,
+    "preambule": "$ABCD$ est un tétraèdre régulier d'arête $4$ : ses six arêtes mesurent $4$, et ses quatre faces sont des triangles équilatéraux.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/tetraedre.svg",
+        "alt": "Un tétraèdre ABCD dessiné en perspective : le sommet A en haut, B à gauche, C devant à droite et D à l'arrière. Les trois arêtes qui partent de D, cachées, sont en pointillé.",
+        "width": 400,
+        "height": 290
+      },
+      "caption": "Le tétraèdre ABCD : quatre faces triangulaires. Les arêtes cachées, qui partent de D, sont en pointillé."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "À l'aide d'une formule de polarisation, calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$.",
+        "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+        "indices": [
+          "Pose $\\vec{u} = \\overrightarrow{AB}$ et $\\vec{v} = \\overrightarrow{AC}$ : quel vecteur est $\\vec{u} - \\vec{v}$, et quelle est sa norme ?",
+          "$\\overrightarrow{AB} - \\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{CA} = \\overrightarrow{CB}$, de norme $BC$. Utilise $\\vec{u} \\cdot \\vec{v} = \\dfrac{1}{2}\\left(\\lVert \\vec{u} \\rVert^2 + \\lVert \\vec{v} \\rVert^2 - \\lVert \\vec{u} - \\vec{v} \\rVert^2\\right)$.",
+          "Les trois longueurs $AB$, $AC$, $BC$ valent $4$ : élève au carré, puis remplace."
+        ],
+        "revoir": "l-orthogonalite-espace-008",
+        "solution": "Avec $\\vec{u} = \\overrightarrow{AB}$ et $\\vec{v} = \\overrightarrow{AC}$, on a $\\vec{u} - \\vec{v} = \\overrightarrow{CB}$. La formule de polarisation donne\n\n$\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = \\dfrac{1}{2}\\left(AB^2 + AC^2 - BC^2\\right) = \\dfrac{1}{2}(16 + 16 - 16) = 8$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En écrivant $\\overrightarrow{CD} = \\overrightarrow{CA} + \\overrightarrow{AD}$, calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{CD}$.",
+        "reponse": { "type": "numerique", "valeur": 0, "tolerance": 0 },
+        "indices": [
+          "Développe $\\overrightarrow{AB} \\cdot \\left(\\overrightarrow{CA} + \\overrightarrow{AD}\\right)$ par bilinéarité.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{CA} = -\\,\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$, connu grâce à la question 1.",
+          "$\\overrightarrow{AB} \\cdot \\overrightarrow{AD}$ se calcule comme à la question 1, dans la face $ABD$, qui est aussi un triangle équilatéral de côté $4$."
+        ],
+        "revoir": "l-orthogonalite-espace-007",
+        "solution": "Par bilinéarité, $\\overrightarrow{AB} \\cdot \\overrightarrow{CD} = \\overrightarrow{AB} \\cdot \\overrightarrow{CA} + \\overrightarrow{AB} \\cdot \\overrightarrow{AD} = -\\,\\overrightarrow{AB} \\cdot \\overrightarrow{AC} + \\overrightarrow{AB} \\cdot \\overrightarrow{AD}$. Comme à la question 1, dans la face équilatérale $ABD$, $\\overrightarrow{AB} \\cdot \\overrightarrow{AD} = \\dfrac{1}{2}(16 + 16 - 16) = 8$.\n\nDonc $\\overrightarrow{AB} \\cdot \\overrightarrow{CD} = -8 + 8 = 0$ : deux arêtes opposées d'un tétraèdre régulier sont portées par des vecteurs de produit scalaire nul."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On note $I$ le milieu de $[BC]$. Justifier que $\\overrightarrow{AI} = \\dfrac{1}{2}\\left(\\overrightarrow{AB} + \\overrightarrow{AC}\\right)$, puis calculer $AI^2$.",
+        "reponse": { "type": "numerique", "valeur": 12, "tolerance": 0 },
+        "indices": [
+          "$I$ est le milieu de $[BC]$ : $\\overrightarrow{IB} + \\overrightarrow{IC} = \\vec{0}$. Décompose $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ en passant par $I$.",
+          "$\\overrightarrow{AB} + \\overrightarrow{AC} = 2\\,\\overrightarrow{AI} + \\overrightarrow{IB} + \\overrightarrow{IC} = 2\\,\\overrightarrow{AI}$. Donc $AI^2 = \\dfrac{1}{4}\\lVert \\overrightarrow{AB} + \\overrightarrow{AC} \\rVert^2$.",
+          "Développe $\\lVert \\overrightarrow{AB} + \\overrightarrow{AC} \\rVert^2 = AB^2 + 2\\,\\overrightarrow{AB} \\cdot \\overrightarrow{AC} + AC^2$ avec le résultat de la question 1."
+        ],
+        "revoir": "l-orthogonalite-espace-007",
+        "solution": "Par la relation de Chasles, $\\overrightarrow{AB} + \\overrightarrow{AC} = \\overrightarrow{AI} + \\overrightarrow{IB} + \\overrightarrow{AI} + \\overrightarrow{IC} = 2\\,\\overrightarrow{AI}$, car $\\overrightarrow{IB} + \\overrightarrow{IC} = \\vec{0}$. Donc $\\overrightarrow{AI} = \\dfrac{1}{2}\\left(\\overrightarrow{AB} + \\overrightarrow{AC}\\right)$.\n\nEn développant : $AI^2 = \\dfrac{1}{4}\\left(AB^2 + 2\\,\\overrightarrow{AB} \\cdot \\overrightarrow{AC} + AC^2\\right) = \\dfrac{1}{4}(16 + 16 + 16) = 12$, et $AI = 2\\sqrt{3}$ : c'est bien la hauteur d'un triangle équilatéral de côté $4$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-020",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-repere-orthonorme"],
+    "capacites": ["bo-m-orthogonalite-02", "bo-m-orthogonalite-04", "bo-m-orthogonalite-09"],
+    "titre": "Un triangle rectangle, puis un angle au dixième de degré",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 211,
+    "preambule": "Dans un repère orthonormé, on donne $A(1\\,;\\,0\\,;\\,2)$, $B(2\\,;\\,2\\,;\\,4)$ et $C(5\\,;\\,0\\,;\\,0)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$. Que peut-on en déduire pour le triangle $ABC$ ?",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Arrivée moins départ pour les coordonnées, puis $xx' + yy' + zz'$ : le repère est orthonormé.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} 1 \\\\ 2 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 4 \\\\ 0 \\\\ -2 \\end{pmatrix}$.",
+          "Un produit scalaire nul signifie que les vecteurs sont orthogonaux : que dire alors des droites $(AB)$ et $(AC)$, qui passent toutes deux par $A$ ?"
+        ],
+        "revoir": "l-orthogonalite-espace-023",
+        "solution": "$\\overrightarrow{AB}\\begin{pmatrix} 1 \\\\ 2 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 4 \\\\ 0 \\\\ -2 \\end{pmatrix}$. Le repère est orthonormé : $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 1 \\times 4 + 2 \\times 0 + 2 \\times (-2) = 0$.\n\nLes vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont orthogonaux : les droites $(AB)$ et $(AC)$ sont perpendiculaires en $A$, et le triangle $ABC$ est rectangle en $A$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $AB$ et $AC$, puis $BC^2$ de deux façons.",
+        "reponse": { "type": "numerique", "valeur": 29, "tolerance": 0 },
+        "indices": [
+          "$AB = \\sqrt{x^2 + y^2 + z^2}$ avec les coordonnées de $\\overrightarrow{AB}$ ; de même pour $AC$.",
+          "$AB^2 = 1 + 4 + 4$ et $AC^2 = 16 + 0 + 4$.",
+          "Le triangle est rectangle en $A$ : le théorème de Pythagore donne $BC^2$. Contrôle avec les coordonnées de $\\overrightarrow{BC}$."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "$AB = \\sqrt{1 + 4 + 4} = 3$ et $AC = \\sqrt{16 + 0 + 4} = \\sqrt{20} = 2\\sqrt{5}$. Le triangle est rectangle en $A$, donc $BC^2 = AB^2 + AC^2 = 9 + 20 = 29$.\n\nContrôle : $\\overrightarrow{BC}\\begin{pmatrix} 3 \\\\ -2 \\\\ -4 \\end{pmatrix}$, d'où $BC^2 = 9 + 4 + 16 = 29$. Donc $BC^2 = 29$ et $BC = \\sqrt{29}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "À l'aide d'un produit scalaire, déterminer une valeur approchée de l'angle $\\widehat{ABC}$ au dixième de degré.",
+        "reponse": { "type": "numerique", "valeur": 56.1, "tolerance": 0.05, "decimales": 1 },
+        "indices": [
+          "L'angle $\\widehat{ABC}$ a pour sommet $B$ : utilise les vecteurs $\\overrightarrow{BA}$ et $\\overrightarrow{BC}$.",
+          "$\\overrightarrow{BA}\\begin{pmatrix} -1 \\\\ -2 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{BC}\\begin{pmatrix} 3 \\\\ -2 \\\\ -4 \\end{pmatrix}$ : calcule leur produit scalaire.",
+          "$\\cos\\widehat{ABC} = \\dfrac{\\overrightarrow{BA} \\cdot \\overrightarrow{BC}}{BA \\times BC}$, avec $BA = 3$ et $BC = \\sqrt{29}$ ; puis la touche $\\cos^{-1}$ de la calculatrice, en mode degrés."
+        ],
+        "revoir": "l-orthogonalite-espace-026",
+        "solution": "$\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = -3 + 4 + 8 = 9$. Or $\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = BA \\times BC \\times \\cos\\widehat{ABC}$, donc $\\cos\\widehat{ABC} = \\dfrac{9}{3\\sqrt{29}} = \\dfrac{3}{\\sqrt{29}}$. Contrôle dans le triangle rectangle en $A$ : $\\cos\\widehat{ABC} = \\dfrac{AB}{BC} = \\dfrac{3}{\\sqrt{29}}$.\n\nLa calculatrice, en mode degrés, donne $\\widehat{ABC} \\approx 56{,}1^\\circ$ au dixième de degré.",
+        "erreurFrequente": "Prendre $\\overrightarrow{AB}$ au lieu de $\\overrightarrow{BA}$ : le cosinus change de signe, et l'on trouve $123{,}9^\\circ$, le supplémentaire de l'angle cherché."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-021",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-repere-orthonorme"],
+    "capacites": ["bo-m-orthogonalite-03", "bo-m-orthogonalite-04", "bo-m-orthogonalite-09", "bo-m-orthogonalite-02"],
+    "titre": "Dans un cube : un triangle isocèle et son angle au sommet",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 212,
+    "preambule": "On considère le cube $ABCDEFGH$ de la figure, d'arête $1$ : $ABCD$ est la face du dessous, $EFGH$ celle du dessus, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. On note $M$ le milieu de l'arête $[GH]$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/orthogonalite-espace/cube-repere.svg",
+        "alt": "Le cube ABCDEFGH en perspective : la face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Trois flèches bleues partent de A : vers B, vers D (en pointillé, car cachée) et vers E. À côté de chaque sommet sont écrites ses coordonnées : A(0 ; 0 ; 0), B(1 ; 0 ; 0), C(1 ; 1 ; 0), D(0 ; 1 ; 0), E(0 ; 0 ; 1), F(1 ; 0 ; 1), G(1 ; 1 ; 1) et H(0 ; 1 ; 1).",
+        "width": 440,
+        "height": 305
+      },
+      "caption": "Le cube ABCDEFGH d'arête 1 et le repère (A ; AB, AD, AE) : à côté de chaque sommet, ses coordonnées dans ce repère. En pointillé : ce qui est caché."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que le repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ est orthonormé. Quelles sont les coordonnées de $M$ dans ce repère ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left(\\dfrac{1}{2}\\,;\\,1\\,;\\,1\\right)$",
+            "$\\left(1\\,;\\,\\dfrac{1}{2}\\,;\\,1\\right)$",
+            "$\\left(\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\,;\\,1\\right)$",
+            "$\\left(\\dfrac{1}{2}\\,;\\,1\\,;\\,0\\right)$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est le milieu de $[FG]$, avec $F(1\\,;\\,0\\,;\\,1)$ et $G(1\\,;\\,1\\,;\\,1)$.",
+            "C'est le centre de la face du dessus $EFGH$.",
+            "C'est le milieu de $[CD]$, sur la face du dessous."
+          ]
+        },
+        "indices": [
+          "Les faces du cube sont des carrés de côté $1$ : regarde les angles en $A$ et les longueurs $AB$, $AD$, $AE$.",
+          "$\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AE}$ et $\\overrightarrow{AH} = \\overrightarrow{AD} + \\overrightarrow{AE}$ donnent les coordonnées de $G$ et de $H$.",
+          "Les coordonnées du milieu d'un segment sont les moyennes des coordonnées de ses extrémités."
+        ],
+        "revoir": "l-orthogonalite-espace-021",
+        "solution": "Les faces $ABCD$, $ABFE$ et $ADHE$ sont des carrés de côté $1$ : $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ et $\\overrightarrow{AE}$ sont orthogonaux deux à deux et de norme $1$. Le repère est orthonormé.\n\nAvec $G(1\\,;\\,1\\,;\\,1)$ et $H(0\\,;\\,1\\,;\\,1)$, le milieu de $[GH]$ est $M\\left(\\dfrac{1}{2}\\,;\\,1\\,;\\,1\\right)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $MA$. Donne la valeur exacte.",
+        "reponse": { "type": "numerique", "valeur": "3/2", "tolerance": 0 },
+        "indices": [
+          "$MA$ est la norme de $\\overrightarrow{MA}$ : arrivée moins départ, puis $\\sqrt{x^2 + y^2 + z^2}$.",
+          "$\\overrightarrow{MA}\\begin{pmatrix} -\\frac{1}{2} \\\\ -1 \\\\ -1 \\end{pmatrix}$.",
+          "$MA^2 = \\dfrac{1}{4} + 1 + 1$ : écris-le comme une seule fraction, dont la racine carrée se calcule de tête."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "$\\overrightarrow{MA}\\begin{pmatrix} -\\frac{1}{2} \\\\ -1 \\\\ -1 \\end{pmatrix}$, donc $MA^2 = \\dfrac{1}{4} + 1 + 1 = \\dfrac{9}{4}$ et $MA = \\dfrac{3}{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $MB$ et $\\overrightarrow{MA} \\cdot \\overrightarrow{MB}$. Quelle est la nature du triangle $ABM$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "rectangle en $M$",
+            "isocèle en $M$, mais pas équilatéral",
+            "équilatéral",
+            "rectangle et isocèle en $M$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = \\dfrac{7}{4} \\neq 0$ : l'angle en $M$ n'est pas droit.",
+            null,
+            "$MA = MB = \\dfrac{3}{2}$, mais $AB = 1$ : les trois côtés ne sont pas égaux.",
+            "L'angle en $M$ n'est pas droit, car $\\overrightarrow{MA} \\cdot \\overrightarrow{MB} \\neq 0$."
+          ]
+        },
+        "indices": [
+          "Compare $MB$ à $MA$ et à $AB$, puis cherche un angle droit en $M$ avec $\\overrightarrow{MA} \\cdot \\overrightarrow{MB}$.",
+          "$\\overrightarrow{MB}\\begin{pmatrix} \\frac{1}{2} \\\\ -1 \\\\ -1 \\end{pmatrix}$ : sa norme se calcule comme celle de $\\overrightarrow{MA}$.",
+          "$\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = -\\dfrac{1}{4} + 1 + 1$ : ce nombre est-il nul ?"
+        ],
+        "revoir": "l-orthogonalite-espace-023",
+        "solution": "$\\overrightarrow{MB}\\begin{pmatrix} \\frac{1}{2} \\\\ -1 \\\\ -1 \\end{pmatrix}$, donc $MB^2 = \\dfrac{9}{4}$ et $MB = \\dfrac{3}{2} = MA$, alors que $AB = 1$. Et $\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = -\\dfrac{1}{4} + 1 + 1 = \\dfrac{7}{4} \\neq 0$ : l'angle en $M$ n'est pas droit.\n\nLe triangle $ABM$ est isocèle en $M$, mais pas équilatéral."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Déterminer $\\cos\\widehat{AMB}$, puis une valeur approchée de l'angle $\\widehat{AMB}$ au dixième de degré.",
+        "reponse": { "type": "numerique", "valeur": 38.9, "tolerance": 0.05, "decimales": 1 },
+        "indices": [
+          "Sommet $M$ : $\\cos\\widehat{AMB} = \\dfrac{\\overrightarrow{MA} \\cdot \\overrightarrow{MB}}{MA \\times MB}$.",
+          "Le produit scalaire vient de la question 3, et $MA \\times MB = \\dfrac{9}{4}$.",
+          "Simplifie le quotient des deux fractions, puis utilise la touche $\\cos^{-1}$ de la calculatrice, en mode degrés."
+        ],
+        "revoir": "l-orthogonalite-espace-027",
+        "solution": "$\\cos\\widehat{AMB} = \\dfrac{\\overrightarrow{MA} \\cdot \\overrightarrow{MB}}{MA \\times MB} = \\dfrac{7}{4} \\times \\dfrac{4}{9} = \\dfrac{7}{9}$.\n\nLa calculatrice, en mode degrés, donne $\\widehat{AMB} \\approx 38{,}9^\\circ$ au dixième de degré."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-022",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-repere-orthonorme"],
+    "capacites": ["bo-m-orthogonalite-02", "bo-m-orthogonalite-04"],
+    "titre": "Où placer un point pour obtenir un angle droit ?",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 213,
+    "preambule": "Dans un repère orthonormé, on donne $A(1\\,;\\,0\\,;\\,2)$ et $B(3\\,;\\,2\\,;\\,0)$. Pour un réel $x$, on considère le point $M(x\\,;\\,0\\,;\\,0)$ de l'axe des abscisses. On cherche les positions de $M$ pour lesquelles le triangle $ABM$ est rectangle.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Pour quelle valeur de $x$ le triangle $ABM$ est-il rectangle en $B$ ?",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "Rectangle en $B$ : les vecteurs issus de $B$, $\\overrightarrow{BA}$ et $\\overrightarrow{BM}$, sont orthogonaux.",
+          "$\\overrightarrow{BA}\\begin{pmatrix} -2 \\\\ -2 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{BM}\\begin{pmatrix} x - 3 \\\\ -2 \\\\ 0 \\end{pmatrix}$.",
+          "Écris $\\overrightarrow{BA} \\cdot \\overrightarrow{BM} = 0$ : c'est une équation du premier degré en $x$."
+        ],
+        "revoir": "l-orthogonalite-espace-023",
+        "solution": "Le triangle $ABM$ est rectangle en $B$ si et seulement si $\\overrightarrow{BA} \\cdot \\overrightarrow{BM} = 0$. Or $\\overrightarrow{BA} \\cdot \\overrightarrow{BM} = -2(x - 3) + (-2) \\times (-2) + 2 \\times 0 = -2x + 10$.\n\nIl est nul pour $x = 5$ : le triangle est rectangle en $B$ pour $M(5\\,;\\,0\\,;\\,0)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour quelle valeur de $x$ le triangle $ABM$ est-il rectangle en $A$ ?",
+        "reponse": { "type": "numerique", "valeur": -1, "tolerance": 0 },
+        "indices": [
+          "Rectangle en $A$ : cette fois, ce sont $\\overrightarrow{AB}$ et $\\overrightarrow{AM}$ qui doivent être orthogonaux.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 2 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{AM}\\begin{pmatrix} x - 1 \\\\ 0 \\\\ -2 \\end{pmatrix}$.",
+          "Développe $\\overrightarrow{AB} \\cdot \\overrightarrow{AM}$, puis résous l'équation obtenue."
+        ],
+        "revoir": "l-orthogonalite-espace-023",
+        "solution": "$\\overrightarrow{AB} \\cdot \\overrightarrow{AM} = 2(x - 1) + 0 + (-2) \\times (-2) = 2x + 2$.\n\nIl est nul pour $x = -1$ : le triangle est rectangle en $A$ pour $M(-1\\,;\\,0\\,;\\,0)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pour quelles valeurs de $x$ le triangle $ABM$ est-il rectangle en $M$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "aucune valeur",
+            "$x = 2$",
+            "$x = -1$ ou $x = 5$",
+            "$x = 1$ ou $x = 3$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "L'équation obtenue a des solutions : le produit $\\overrightarrow{MA} \\cdot \\overrightarrow{MB}$ s'annule.",
+            "Pour $x = 2$, $\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = (-1) \\times 1 = -1 \\neq 0$.",
+            "Ce sont les valeurs des questions 1 et 2 : l'angle droit est alors en $B$ ou en $A$, pas en $M$.",
+            null
+          ]
+        },
+        "indices": [
+          "Rectangle en $M$ : $\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = 0$.",
+          "$\\overrightarrow{MA}\\begin{pmatrix} 1 - x \\\\ 0 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{MB}\\begin{pmatrix} 3 - x \\\\ 2 \\\\ 0 \\end{pmatrix}$ : le produit scalaire se réduit à un seul terme.",
+          "$\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = (1 - x)(3 - x)$ : un produit est nul si et seulement si l'un de ses facteurs est nul."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "$\\overrightarrow{MA} \\cdot \\overrightarrow{MB} = (1 - x)(3 - x) + 0 \\times 2 + 2 \\times 0 = (1 - x)(3 - x)$. Il est nul si et seulement si $x = 1$ ou $x = 3$.\n\nLe triangle $ABM$ est rectangle en $M$ pour $M(1\\,;\\,0\\,;\\,0)$ ou $M(3\\,;\\,0\\,;\\,0)$. Avec les questions 1 et 2, quatre positions de $M$ sur l'axe donnent un triangle rectangle."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-023",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-vecteur-normal"],
+    "capacites": ["bo-m-orthogonalite-06", "bo-m-orthogonalite-07", "bo-m-orthogonalite-12"],
+    "titre": "Une grande diagonale orthogonale au plan $(ACH)$",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 311,
+    "preambule": "On considère le cube $ABCDEFGH$ de la figure, d'arête $1$ : $ABCD$ est la face du dessous, $EFGH$ celle du dessus, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. On munit l'espace du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/orthogonalite-espace/cube-repere.svg",
+        "alt": "Le cube ABCDEFGH en perspective : la face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Trois flèches bleues partent de A : vers B, vers D (en pointillé, car cachée) et vers E. À côté de chaque sommet sont écrites ses coordonnées : A(0 ; 0 ; 0), B(1 ; 0 ; 0), C(1 ; 1 ; 0), D(0 ; 1 ; 0), E(0 ; 0 ; 1), F(1 ; 0 ; 1), G(1 ; 1 ; 1) et H(0 ; 1 ; 1).",
+        "width": 440,
+        "height": 305
+      },
+      "caption": "Le cube ABCDEFGH d'arête 1 et le repère (A ; AB, AD, AE) : à côté de chaque sommet, ses coordonnées dans ce repère. En pointillé : ce qui est caché."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Donner les coordonnées des vecteurs $\\overrightarrow{AC}$, $\\overrightarrow{AH}$ et $\\overrightarrow{DF}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Lis les coordonnées des sommets sur la figure : chacun s'atteint depuis $A$ en suivant des arêtes parallèles à $(AB)$, $(AD)$ et $(AE)$.",
+          "$C(1\\,;\\,1\\,;\\,0)$, $H(0\\,;\\,1\\,;\\,1)$, $D(0\\,;\\,1\\,;\\,0)$ et $F(1\\,;\\,0\\,;\\,1)$.",
+          "Arrivée moins départ : $\\overrightarrow{DF}$ a pour coordonnées $x_F - x_D$, $y_F - y_D$ et $z_F - z_D$."
+        ],
+        "revoir": "l-orthogonalite-espace-038",
+        "solution": "Avec $A(0\\,;\\,0\\,;\\,0)$, $C(1\\,;\\,1\\,;\\,0)$, $H(0\\,;\\,1\\,;\\,1)$, $D(0\\,;\\,1\\,;\\,0)$ et $F(1\\,;\\,0\\,;\\,1)$, arrivée moins départ :\n\n$\\overrightarrow{AC}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$, $\\overrightarrow{AH}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{DF}\\begin{pmatrix} 1 \\\\ -1 \\\\ 1 \\end{pmatrix}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer que la droite $(DF)$ est orthogonale au plan $(ACH)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Méthode : deux vecteurs non colinéaires du plan, puis deux produits scalaires nuls avec $\\overrightarrow{DF}$.",
+          "$\\overrightarrow{AC}$ et $\\overrightarrow{AH}$ ne sont pas colinéaires : compare leurs premières et leurs troisièmes coordonnées.",
+          "Calcule $\\overrightarrow{DF} \\cdot \\overrightarrow{AC}$ et $\\overrightarrow{DF} \\cdot \\overrightarrow{AH}$ avec $xx' + yy' + zz'$, puis conclus avec la phrase de la méthode."
+        ],
+        "revoir": "l-orthogonalite-espace-040",
+        "solution": "$\\overrightarrow{AC}$ et $\\overrightarrow{AH}$ ne sont pas colinéaires : $\\overrightarrow{AH} = k\\,\\overrightarrow{AC}$ donnerait $1 = k \\times 0$ sur la troisième coordonnée, et $\\overrightarrow{AC} = k\\,\\overrightarrow{AH}$ donnerait $1 = k \\times 0$ sur la première. Ils dirigent donc le plan $(ACH)$.\n\nLe repère est orthonormé : $\\overrightarrow{DF} \\cdot \\overrightarrow{AC} = 1 - 1 + 0 = 0$ et $\\overrightarrow{DF} \\cdot \\overrightarrow{AH} = 0 - 1 + 1 = 0$. Le vecteur $\\overrightarrow{DF}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(ACH)$ : il est normal à ce plan, et la droite $(DF)$ est orthogonale au plan $(ACH)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire que les droites $(DF)$ et $(CH)$ sont orthogonales.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Une droite orthogonale à un plan est orthogonale à toutes les droites de ce plan.",
+          "Les points $C$ et $H$ sont dans le plan $(ACH)$ : la droite $(CH)$ aussi.",
+          "Pour contrôler par le calcul : $\\overrightarrow{CH}\\begin{pmatrix} -1 \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{DF} \\cdot \\overrightarrow{CH}$."
+        ],
+        "revoir": "l-orthogonalite-espace-041",
+        "solution": "La droite $(CH)$ est contenue dans le plan $(ACH)$, et la droite $(DF)$ est orthogonale à ce plan, donc à toutes ses droites : $(DF)$ et $(CH)$ sont orthogonales.\n\nContrôle : $\\overrightarrow{CH}\\begin{pmatrix} -1 \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{DF} \\cdot \\overrightarrow{CH} = -1 + 0 + 1 = 0$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Parmi ces quatre vecteurs, portés par les grandes diagonales du cube, lequel est aussi normal au plan $(ACH)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\overrightarrow{AG}$",
+            "$\\overrightarrow{FD}$",
+            "$\\overrightarrow{EC}$",
+            "$\\overrightarrow{BH}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$\\overrightarrow{AG}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ : $\\overrightarrow{AG} \\cdot \\overrightarrow{AC} = 2 \\neq 0$.",
+            null,
+            "$\\overrightarrow{EC}\\begin{pmatrix} 1 \\\\ 1 \\\\ -1 \\end{pmatrix}$ : $\\overrightarrow{EC} \\cdot \\overrightarrow{AC} = 2 \\neq 0$.",
+            "$\\overrightarrow{BH}\\begin{pmatrix} -1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ est orthogonal à $\\overrightarrow{AC}$, mais $\\overrightarrow{BH} \\cdot \\overrightarrow{AH} = 2 \\neq 0$."
+          ]
+        },
+        "indices": [
+          "Un vecteur normal au plan est non nul et orthogonal à $\\overrightarrow{AC}$ et à $\\overrightarrow{AH}$ ; tout vecteur non nul colinéaire à $\\overrightarrow{DF}$ convient aussi.",
+          "Calcule les coordonnées des vecteurs proposés, par exemple $\\overrightarrow{AG}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$, puis leurs produits scalaires avec $\\overrightarrow{AC}$ et $\\overrightarrow{AH}$.",
+          "Une seule des quatre diagonales est parallèle à $(DF)$ : c'est $[DF]$ elle-même, parcourue dans l'autre sens."
+        ],
+        "revoir": "l-orthogonalite-espace-033",
+        "solution": "$\\overrightarrow{FD} = -\\overrightarrow{DF}$ est non nul et, par bilinéarité, orthogonal à $\\overrightarrow{AC}$ et à $\\overrightarrow{AH}$ : c'est un vecteur normal au plan $(ACH)$. Les trois autres ne le sont pas : par exemple $\\overrightarrow{AG} \\cdot \\overrightarrow{AC} = 2 \\neq 0$.\n\nLe vecteur cherché est $\\overrightarrow{FD}$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-024",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-vecteur-normal"],
+    "capacites": ["bo-m-orthogonalite-07", "bo-m-orthogonalite-06"],
+    "titre": "Un vecteur normal, puis des points du plan",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 312,
+    "preambule": "Dans un repère orthonormé d'origine $O$, on donne $A(1\\,;\\,0\\,;\\,2)$, $B(3\\,;\\,-1\\,;\\,2)$, $C(1\\,;\\,1\\,;\\,3)$ et le vecteur $\\vec{n}\\begin{pmatrix} 1 \\\\ 2 \\\\ -2 \\end{pmatrix}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer que les points $A$, $B$, $C$ définissent un plan.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Trois points définissent un plan quand ils ne sont pas alignés, c'est-à-dire quand $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ ne sont pas colinéaires.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ -1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$.",
+          "Suppose $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$ : que donne la troisième coordonnée ?"
+        ],
+        "revoir": "l-orthogonalite-espace-041",
+        "solution": "$\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ -1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$. Le vecteur $\\overrightarrow{AB}$ n'est pas nul ; si $\\overrightarrow{AC}$ lui était colinéaire, on aurait $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$, et la troisième coordonnée donnerait $1 = k \\times 0 = 0$, ce qui est impossible.\n\nLes points $A$, $B$, $C$ ne sont pas alignés : ils définissent le plan $(ABC)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer que $\\vec{n}$ est un vecteur normal au plan $(ABC)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Il faut deux produits scalaires nuls, avec deux vecteurs non colinéaires du plan.",
+          "Prends $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, non colinéaires d'après la question 1.",
+          "$\\vec{n} \\cdot \\overrightarrow{AB} = 1 \\times 2 + 2 \\times (-1) + (-2) \\times 0$ ; calcule de même $\\vec{n} \\cdot \\overrightarrow{AC}$."
+        ],
+        "revoir": "l-orthogonalite-espace-040",
+        "solution": "Le repère est orthonormé : $\\vec{n} \\cdot \\overrightarrow{AB} = 2 - 2 + 0 = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = 0 + 2 - 2 = 0$.\n\nLe vecteur $\\vec{n}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(ABC)$ : c'est un vecteur normal à ce plan."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Lequel de ces points appartient au plan $(ABC)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$(2\\,;\\,1\\,;\\,2)$",
+            "$(2\\,;\\,2\\,;\\,0)$",
+            "$(3\\,;\\,1\\,;\\,4)$",
+            "$(1\\,;\\,2\\,;\\,-2)$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Pour ce point $M$, $\\overrightarrow{OM} \\cdot \\vec{n} = 0$, mais le vecteur doit partir d'un point du plan : $\\overrightarrow{AM} \\cdot \\vec{n} = 1 + 2 + 0 = 3 \\neq 0$.",
+            "C'est le point $M$ tel que $\\overrightarrow{AM} = \\vec{n}$ : il est sur la droite passant par $A$ et orthogonale au plan, pas dans le plan. Ici $\\overrightarrow{AM} \\cdot \\vec{n} = 9$.",
+            null,
+            "Ce point a les coordonnées de $\\vec{n}$, mais un point n'est pas un vecteur : $\\overrightarrow{AM}\\begin{pmatrix} 0 \\\\ 2 \\\\ -4 \\end{pmatrix}$ et $\\overrightarrow{AM} \\cdot \\vec{n} = 12 \\neq 0$."
+          ]
+        },
+        "indices": [
+          "Le plan $(ABC)$ passe par $A$ et il est normal à $\\vec{n}$ : un point $M$ est dans ce plan si et seulement si $\\overrightarrow{AM} \\cdot \\vec{n} = 0$.",
+          "Pour chaque point, calcule $\\overrightarrow{AM}$, en partant de $A$, puis son produit scalaire avec $\\vec{n}$.",
+          "Pour le premier : $\\overrightarrow{AM}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$, et $\\overrightarrow{AM} \\cdot \\vec{n} = 1 + 2 + 0$. Continue avec les trois autres."
+        ],
+        "revoir": "l-orthogonalite-espace-043",
+        "solution": "Pour $M(3\\,;\\,1\\,;\\,4)$ : $\\overrightarrow{AM}\\begin{pmatrix} 2 \\\\ 1 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AM} \\cdot \\vec{n} = 2 + 2 - 4 = 0$, donc $M$ appartient au plan $(ABC)$. Les trois autres points donnent $3$, $9$ et $12$ : ils n'y sont pas.\n\nLe point cherché est $(3\\,;\\,1\\,;\\,4)$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Déterminer le réel $k$ tel que le point $E(k\\,;\\,3\\,;\\,1)$ appartienne au plan $(ABC)$.",
+        "reponse": { "type": "numerique", "valeur": -7, "tolerance": 0 },
+        "indices": [
+          "Même critère : $E \\in (ABC)$ si et seulement si $\\overrightarrow{AE} \\cdot \\vec{n} = 0$.",
+          "$\\overrightarrow{AE}\\begin{pmatrix} k - 1 \\\\ 3 \\\\ -1 \\end{pmatrix}$.",
+          "$\\overrightarrow{AE} \\cdot \\vec{n} = (k - 1) + 6 + 2$ : résous l'équation du premier degré obtenue."
+        ],
+        "revoir": "l-orthogonalite-espace-043",
+        "solution": "$\\overrightarrow{AE}\\begin{pmatrix} k - 1 \\\\ 3 \\\\ -1 \\end{pmatrix}$, donc $\\overrightarrow{AE} \\cdot \\vec{n} = (k - 1) + 2 \\times 3 + (-2) \\times (-1) = k + 7$.\n\nIl est nul si et seulement si $k = -7$ : le point $E(-7\\,;\\,3\\,;\\,1)$ est dans le plan $(ABC)$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-025",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-vecteur-normal"],
+    "capacites": ["bo-m-orthogonalite-12", "bo-m-orthogonalite-07"],
+    "titre": "Le plan médiateur, lieu des points équidistants",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 313,
+    "preambule": "Dans un repère orthonormé d'origine $O$, on donne $A(-1\\,;\\,2\\,;\\,1)$ et $B(3\\,;\\,0\\,;\\,5)$. On note $I$ le milieu de $[AB]$ et $\\mathcal{P}$ le plan médiateur de $[AB]$ : l'ensemble des points équidistants de $A$ et de $B$, qui est le plan passant par $I$ et normal à $\\overrightarrow{AB}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer les coordonnées de $I$ et de $\\overrightarrow{AB}$. Le point $M(2\\,;\\,3\\,;\\,3)$ appartient-il à $\\mathcal{P}$ ? Contrôler en calculant $MA$ et $MB$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Le milieu a pour coordonnées les moyennes de celles de $A$ et de $B$ ; puis $M \\in \\mathcal{P}$ si et seulement si $\\overrightarrow{IM} \\cdot \\overrightarrow{AB} = 0$.",
+          "$I(1\\,;\\,1\\,;\\,3)$, $\\overrightarrow{AB}\\begin{pmatrix} 4 \\\\ -2 \\\\ 4 \\end{pmatrix}$ et $\\overrightarrow{IM}\\begin{pmatrix} 1 \\\\ 2 \\\\ 0 \\end{pmatrix}$.",
+          "Calcule $\\overrightarrow{IM} \\cdot \\overrightarrow{AB}$, puis $MA^2$ et $MB^2$ pour contrôler."
+        ],
+        "revoir": "l-orthogonalite-espace-044",
+        "solution": "$I\\left(\\dfrac{-1 + 3}{2}\\,;\\,\\dfrac{2 + 0}{2}\\,;\\,\\dfrac{1 + 5}{2}\\right)$, soit $I(1\\,;\\,1\\,;\\,3)$, et $\\overrightarrow{AB}\\begin{pmatrix} 4 \\\\ -2 \\\\ 4 \\end{pmatrix}$. Avec $\\overrightarrow{IM}\\begin{pmatrix} 1 \\\\ 2 \\\\ 0 \\end{pmatrix}$ : $\\overrightarrow{IM} \\cdot \\overrightarrow{AB} = 4 - 4 + 0 = 0$, donc $M \\in \\mathcal{P}$.\n\nContrôle : $MA^2 = 9 + 1 + 4 = 14$ et $MB^2 = 1 + 9 + 4 = 14$, donc $MA = MB = \\sqrt{14}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer le réel $a$ tel que le point $P(a\\,;\\,a\\,;\\,a)$ soit équidistant de $A$ et de $B$. Donne la valeur exacte.",
+        "reponse": { "type": "numerique", "valeur": "7/3", "tolerance": 0 },
+        "indices": [
+          "$P$ est équidistant de $A$ et de $B$ si et seulement si $P \\in \\mathcal{P}$, c'est-à-dire $\\overrightarrow{IP} \\cdot \\overrightarrow{AB} = 0$.",
+          "$\\overrightarrow{IP}\\begin{pmatrix} a - 1 \\\\ a - 1 \\\\ a - 3 \\end{pmatrix}$ : développe $4(a - 1) - 2(a - 1) + 4(a - 3)$.",
+          "Tu obtiens une équation du premier degré en $a$ : résous-la en gardant la fraction exacte."
+        ],
+        "revoir": "l-orthogonalite-espace-044",
+        "solution": "$\\overrightarrow{IP} \\cdot \\overrightarrow{AB} = 4(a - 1) - 2(a - 1) + 4(a - 3) = 6a - 14$. Il est nul si et seulement si $a = \\dfrac{14}{6} = \\dfrac{7}{3}$.\n\nLe point $P\\left(\\dfrac{7}{3}\\,;\\,\\dfrac{7}{3}\\,;\\,\\dfrac{7}{3}\\right)$ est équidistant de $A$ et de $B$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On admet que, pour tout point $M$, $MA^2 - MB^2 = 2\\,\\overrightarrow{IM} \\cdot \\overrightarrow{AB}$ (exemple « Le plan médiateur d'un segment » du cours). En calculant $\\overrightarrow{IO} \\cdot \\overrightarrow{AB}$, dire si l'origine $O$ est plus proche de $A$ ou de $B$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "de $A$",
+            "de $B$",
+            "elle est équidistante de $A$ et de $B$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le signe est inversé : $OA^2 - OB^2 = 2\\,\\overrightarrow{IO} \\cdot \\overrightarrow{AB} < 0$, donc $OA < OB$.",
+            "$\\overrightarrow{IO} \\cdot \\overrightarrow{AB} = -14 \\neq 0$ : $O$ n'est pas dans le plan médiateur."
+          ]
+        },
+        "indices": [
+          "Le signe de $\\overrightarrow{IO} \\cdot \\overrightarrow{AB}$ donne celui de $OA^2 - OB^2$.",
+          "$\\overrightarrow{IO}\\begin{pmatrix} -1 \\\\ -1 \\\\ -3 \\end{pmatrix}$ : calcule son produit scalaire avec $\\overrightarrow{AB}$.",
+          "Si $OA^2 - OB^2 < 0$, alors $OA^2 < OB^2$ : des longueurs positives sont rangées comme leurs carrés."
+        ],
+        "revoir": "l-orthogonalite-espace-044",
+        "solution": "$\\overrightarrow{IO} \\cdot \\overrightarrow{AB} = -4 + 2 - 12 = -14$, donc $OA^2 - OB^2 = -28 < 0$ et $OA < OB$. Contrôle : $OA^2 = 1 + 4 + 1 = 6$ et $OB^2 = 9 + 0 + 25 = 34$, et $6 - 34 = -28$.\n\nL'origine $O$ est plus proche de $A$ que de $B$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-026",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-vecteur-normal"],
+    "capacites": ["bo-m-orthogonalite-06", "bo-m-orthogonalite-07", "bo-m-orthogonalite-12"],
+    "titre": "Dans une pyramide à base carrée",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 314,
+    "preambule": "$SABCD$ est la pyramide de la figure, de sommet $S$ et de base le carré $ABCD$ de centre $O$. Dans un repère orthonormé d'origine $O$, on donne $A(1\\,;\\,0\\,;\\,0)$, $B(0\\,;\\,1\\,;\\,0)$, $C(-1\\,;\\,0\\,;\\,0)$, $D(0\\,;\\,-1\\,;\\,0)$ et $S(0\\,;\\,0\\,;\\,2)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/pyramide.svg",
+        "alt": "Une pyramide SABCD dessinée en perspective, de sommet S et de base carrée ABCD : A devant à gauche, B devant à droite, C derrière à droite, D derrière à gauche. Le sommet S est dessiné au-dessus du centre O de la base. Les arêtes cachées [SD], [AD] et [DC] sont en pointillé, comme les diagonales [AC] et [BD] de la base, qui se coupent en O, et le segment [SO], en gris.",
+        "width": 380,
+        "height": 285
+      },
+      "caption": "La pyramide SABCD : base carrée ABCD de centre O, sommet S. En pointillé : les arêtes cachées, les diagonales de la base et le segment [SO]."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer que la droite $(BD)$ est orthogonale au plan $(SAC)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Méthode : deux vecteurs non colinéaires du plan $(SAC)$, et deux produits scalaires nuls avec $\\overrightarrow{BD}$.",
+          "$\\overrightarrow{BD}\\begin{pmatrix} 0 \\\\ -2 \\\\ 0 \\end{pmatrix}$, $\\overrightarrow{SA}\\begin{pmatrix} 1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{SC}\\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$.",
+          "Si $\\overrightarrow{SC} = k\\,\\overrightarrow{SA}$, que donnent la première et la troisième coordonnée ? Calcule ensuite $\\overrightarrow{BD} \\cdot \\overrightarrow{SA}$ et $\\overrightarrow{BD} \\cdot \\overrightarrow{SC}$."
+        ],
+        "revoir": "l-orthogonalite-espace-040",
+        "solution": "$\\overrightarrow{SA}\\begin{pmatrix} 1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{SC}\\begin{pmatrix} -1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ ne sont pas colinéaires : $\\overrightarrow{SC} = k\\,\\overrightarrow{SA}$ donnerait $k = -1$ par la première coordonnée et $k = 1$ par la troisième. Ils dirigent le plan $(SAC)$.\n\nAvec $\\overrightarrow{BD}\\begin{pmatrix} 0 \\\\ -2 \\\\ 0 \\end{pmatrix}$ : $\\overrightarrow{BD} \\cdot \\overrightarrow{SA} = 0 + 0 + 0 = 0$ et $\\overrightarrow{BD} \\cdot \\overrightarrow{SC} = 0$. Le vecteur $\\overrightarrow{BD}$, non nul, est normal au plan $(SAC)$ : la droite $(BD)$ est orthogonale à ce plan."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire que les droites $(BD)$ et $(SA)$ sont orthogonales. Sont-elles perpendiculaires ?",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "La droite $(SA)$ est contenue dans le plan $(SAC)$.",
+          "Perpendiculaires veut dire orthogonales et sécantes : les droites $(BD)$ et $(SA)$ ont-elles un point commun ?",
+          "La droite $(SA)$ coupe le plan de la base seulement en $A$, car $S$ n'est pas dans ce plan ; or $(BD)$ est dans le plan de la base. Le point $A$ est-il sur $(BD)$ ?"
+        ],
+        "revoir": "l-orthogonalite-espace-034",
+        "solution": "La droite $(SA)$ est dans le plan $(SAC)$, et $(BD)$ est orthogonale à ce plan, donc à $(SA)$ : les droites $(BD)$ et $(SA)$ sont orthogonales.\n\nElles ne sont pas perpendiculaires. En effet, $(BD)$ est dans le plan de la base, que la droite $(SA)$ coupe seulement en $A$, puisque $S$ n'est pas dans ce plan ; et $A$ n'est pas sur la diagonale $(BD)$. Les deux droites n'ont donc aucun point commun."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Lequel de ces vecteurs est normal au plan $(SAB)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\begin{pmatrix} 2 \\\\ 0 \\\\ 1 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 2 \\\\ 2 \\\\ 1 \\end{pmatrix}$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Il est orthogonal à $\\overrightarrow{SA}$, mais pas à $\\overrightarrow{SB}\\begin{pmatrix} 0 \\\\ 1 \\\\ -2 \\end{pmatrix}$ : le produit vaut $-2$.",
+            "Son produit avec $\\overrightarrow{SA}$ vaut $1 \\neq 0$.",
+            "Ce vecteur est normal au plan de la base, pas à la face $SAB$ : son produit avec $\\overrightarrow{SA}$ vaut $-2$.",
+            null
+          ]
+        },
+        "indices": [
+          "Il faut deux produits scalaires nuls, avec $\\overrightarrow{SA}$ et $\\overrightarrow{SB}$, qui ne sont pas colinéaires.",
+          "$\\overrightarrow{SA}\\begin{pmatrix} 1 \\\\ 0 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{SB}\\begin{pmatrix} 0 \\\\ 1 \\\\ -2 \\end{pmatrix}$.",
+          "Teste chaque proposition avec les deux vecteurs : un seul produit nul ne suffit pas."
+        ],
+        "revoir": "l-orthogonalite-espace-046",
+        "solution": "Avec $\\vec{n}\\begin{pmatrix} 2 \\\\ 2 \\\\ 1 \\end{pmatrix}$ : $\\vec{n} \\cdot \\overrightarrow{SA} = 2 + 0 - 2 = 0$ et $\\vec{n} \\cdot \\overrightarrow{SB} = 0 + 2 - 2 = 0$, et $\\overrightarrow{SA}$, $\\overrightarrow{SB}$ ne sont pas colinéaires.\n\nCe vecteur non nul est normal au plan $(SAB)$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-027",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-projete-distance", "n-orthogonalite-espace-vecteur-normal"],
+    "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10", "bo-m-orthogonalite-07"],
+    "titre": "Le projeté d'un point sur le plan $(ABC)$",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 411,
+    "preambule": "Dans un repère orthonormé, on donne $A(1\\,;\\,2\\,;\\,3)$, $B(2\\,;\\,4\\,;\\,3)$, $C(1\\,;\\,4\\,;\\,4)$, $D(6\\,;\\,0\\,;\\,6)$, $H(2\\,;\\,2\\,;\\,2)$ et le vecteur $\\vec{n}\\begin{pmatrix} 2 \\\\ -1 \\\\ 2 \\end{pmatrix}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer que les points $A$, $B$, $C$ définissent un plan, et que $\\vec{n}$ est normal à ce plan.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Deux étapes : $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ non colinéaires, puis deux produits scalaires nuls avec $\\vec{n}$.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} 1 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 0 \\\\ 2 \\\\ 1 \\end{pmatrix}$ : regarde les coordonnées nulles pour exclure la colinéarité.",
+          "$\\vec{n} \\cdot \\overrightarrow{AB} = 2 - 2 + 0$ ; calcule de même $\\vec{n} \\cdot \\overrightarrow{AC}$."
+        ],
+        "revoir": "l-orthogonalite-espace-041",
+        "solution": "$\\overrightarrow{AB}\\begin{pmatrix} 1 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 0 \\\\ 2 \\\\ 1 \\end{pmatrix}$ : $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$ donnerait $1 = k \\times 0$ sur la troisième coordonnée. Ils ne sont pas colinéaires, et $A$, $B$, $C$ définissent un plan.\n\n$\\vec{n} \\cdot \\overrightarrow{AB} = 2 - 2 + 0 = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = 0 - 2 + 2 = 0$ : le vecteur $\\vec{n}$, non nul, est normal au plan $(ABC)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer que $H$ est le projeté orthogonal de $D$ sur le plan $(ABC)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Deux conditions : $H$ est dans le plan $(ABC)$, et $\\overrightarrow{DH}$ est normal à ce plan.",
+          "Le plan passe par $A$ et il est normal à $\\vec{n}$ : $H$ y est si et seulement si $\\overrightarrow{AH} \\cdot \\vec{n} = 0$.",
+          "$\\overrightarrow{AH}\\begin{pmatrix} 1 \\\\ 0 \\\\ -1 \\end{pmatrix}$ et $\\overrightarrow{DH}\\begin{pmatrix} -4 \\\\ 2 \\\\ -4 \\end{pmatrix}$ : compare $\\overrightarrow{DH}$ à $\\vec{n}$."
+        ],
+        "revoir": "l-orthogonalite-espace-058",
+        "solution": "$\\overrightarrow{AH}\\begin{pmatrix} 1 \\\\ 0 \\\\ -1 \\end{pmatrix}$ et $\\overrightarrow{AH} \\cdot \\vec{n} = 2 + 0 - 2 = 0$ : $H$ est dans le plan passant par $A$ et normal à $\\vec{n}$, c'est-à-dire le plan $(ABC)$.\n\n$\\overrightarrow{DH}\\begin{pmatrix} -4 \\\\ 2 \\\\ -4 \\end{pmatrix} = -2\\,\\vec{n}$ est colinéaire à $\\vec{n}$, donc normal au plan $(ABC)$. Ainsi $H$ est le projeté orthogonal de $D$ sur le plan $(ABC)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire la distance du point $D$ au plan $(ABC)$.",
+        "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+        "indices": [
+          "La distance de $D$ au plan est $DH$, puisque $H$ est le projeté orthogonal de $D$.",
+          "$\\overrightarrow{DH} = -2\\,\\vec{n}$, donc $DH = 2\\,\\lVert \\vec{n} \\rVert$.",
+          "$\\lVert \\vec{n} \\rVert = \\sqrt{4 + 1 + 4}$."
+        ],
+        "revoir": "l-orthogonalite-espace-054",
+        "solution": "$H$ est le projeté orthogonal de $D$ sur le plan $(ABC)$, donc la distance de $D$ à ce plan est $DH = \\sqrt{16 + 4 + 16} = \\sqrt{36} = 6$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Vrai ou faux : la distance du point $D$ au plan $(ABC)$ est égale à $DA$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$DA = \\sqrt{25 + 4 + 9} = \\sqrt{38}$, plus grand que $DH$ : $A$ est un point du plan, mais pas le projeté de $D$."
+        },
+        "indices": [
+          "$A$ est un point du plan, mais est-ce le projeté orthogonal de $D$ ?",
+          "Calcule $DA$ avec $\\overrightarrow{DA}\\begin{pmatrix} -5 \\\\ 2 \\\\ -3 \\end{pmatrix}$, puis compare-le à $DH$.",
+          "Le projeté est le seul point du plan à la plus petite distance de $D$ : pour tout autre point $N$ du plan, $DN > DH$."
+        ],
+        "revoir": "l-orthogonalite-espace-062",
+        "solution": "$\\overrightarrow{DA}\\begin{pmatrix} -5 \\\\ 2 \\\\ -3 \\end{pmatrix}$, donc $DA = \\sqrt{38} \\approx 6{,}16$, alors que la distance de $D$ au plan vaut $DH = 6$. Comme $A \\neq H$, $DA > DH$.\n\nL'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-028",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-projete-distance"],
+    "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10", "bo-m-orthogonalite-13"],
+    "titre": "La distance d'un point à une droite",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 412,
+    "preambule": "Dans un repère orthonormé, on donne $A(1\\,;\\,0\\,;\\,1)$, $B(5\\,;\\,2\\,;\\,5)$, $H(3\\,;\\,1\\,;\\,3)$ et $M(4\\,;\\,3\\,;\\,1)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que le point $H$ appartient à la droite $(AB)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$H \\in (AB)$ si et seulement si $\\overrightarrow{AH}$ et $\\overrightarrow{AB}$ sont colinéaires.",
+          "$\\overrightarrow{AH}\\begin{pmatrix} 2 \\\\ 1 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AB}\\begin{pmatrix} 4 \\\\ 2 \\\\ 4 \\end{pmatrix}$.",
+          "Cherche le réel $k$ tel que $\\overrightarrow{AB} = k\\,\\overrightarrow{AH}$."
+        ],
+        "revoir": "l-orthogonalite-espace-055",
+        "solution": "$\\overrightarrow{AH}\\begin{pmatrix} 2 \\\\ 1 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AB}\\begin{pmatrix} 4 \\\\ 2 \\\\ 4 \\end{pmatrix}$, donc $\\overrightarrow{AB} = 2\\,\\overrightarrow{AH}$ : ces vecteurs sont colinéaires et $H \\in (AB)$.\n\nPlus précisément, $H$ est le milieu de $[AB]$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que $H$ est le projeté orthogonal du point $M$ sur la droite $(AB)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Deux conditions : $H \\in (AB)$ (question 1), et $\\overrightarrow{MH}$ orthogonal à un vecteur directeur de $(AB)$.",
+          "$\\overrightarrow{MH}\\begin{pmatrix} -1 \\\\ -2 \\\\ 2 \\end{pmatrix}$ ; prends $\\overrightarrow{AB}$ comme vecteur directeur.",
+          "Calcule $\\overrightarrow{MH} \\cdot \\overrightarrow{AB}$ avec $xx' + yy' + zz'$."
+        ],
+        "revoir": "l-orthogonalite-espace-058",
+        "solution": "$H \\in (AB)$ et $\\overrightarrow{MH}\\begin{pmatrix} -1 \\\\ -2 \\\\ 2 \\end{pmatrix}$ vérifie $\\overrightarrow{MH} \\cdot \\overrightarrow{AB} = -4 - 4 + 8 = 0$.\n\nDonc $H$ est le projeté orthogonal de $M$ sur la droite $(AB)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire la distance du point $M$ à la droite $(AB)$.",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "La distance de $M$ à $(AB)$ est $MH$.",
+          "$MH$ est la norme de $\\overrightarrow{MH}$, trouvé à la question 2.",
+          "$MH^2 = (-1)^2 + (-2)^2 + 2^2$ : calcule, puis prends la racine carrée."
+        ],
+        "revoir": "l-orthogonalite-espace-054",
+        "solution": "D'après la propriété du projeté, la distance de $M$ à la droite $(AB)$ est $MH = \\sqrt{1 + 4 + 4} = \\sqrt{9} = 3$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Soit $N$ un point quelconque de la droite $(AB)$, distinct de $H$. Démontrer que $MN^2 = MH^2 + HN^2$, puis que $MN > 3$. Vérifier avec $N = A$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Relation de Chasles : $\\overrightarrow{MN} = \\overrightarrow{MH} + \\overrightarrow{HN}$, puis développe $\\lVert \\overrightarrow{MH} + \\overrightarrow{HN} \\rVert^2$.",
+          "$H$ et $N$ sont sur $(AB)$ : $\\overrightarrow{HN}$ est colinéaire à $\\overrightarrow{AB}$, donc $\\overrightarrow{MH} \\cdot \\overrightarrow{HN} = 0$ par bilinéarité.",
+          "Le double produit disparaît : $MN^2 = MH^2 + HN^2$, avec $HN^2 > 0$ puisque $N \\neq H$. Pour $N = A$, calcule $MA$ avec $\\overrightarrow{MA}\\begin{pmatrix} -3 \\\\ -3 \\\\ 0 \\end{pmatrix}$."
+        ],
+        "revoir": "l-orthogonalite-espace-056",
+        "solution": "Par la relation de Chasles, $\\overrightarrow{MN} = \\overrightarrow{MH} + \\overrightarrow{HN}$. Les points $H$ et $N$ sont sur $(AB)$, donc $\\overrightarrow{HN} = k\\,\\overrightarrow{AB}$ pour un réel $k$, et par bilinéarité $\\overrightarrow{MH} \\cdot \\overrightarrow{HN} = k\\left(\\overrightarrow{MH} \\cdot \\overrightarrow{AB}\\right) = 0$.\n\nAinsi $MN^2 = MH^2 + 2\\,\\overrightarrow{MH} \\cdot \\overrightarrow{HN} + HN^2 = MH^2 + HN^2$. Comme $N \\neq H$, $HN^2 > 0$, donc $MN^2 > MH^2 = 9$ et, les longueurs étant positives, $MN > 3$.\n\nVérification avec $N = A$ : $\\overrightarrow{MA}\\begin{pmatrix} -3 \\\\ -3 \\\\ 0 \\end{pmatrix}$, $MA = \\sqrt{18} = 3\\sqrt{2} > 3$, et $MH^2 + HA^2 = 9 + 9 = 18$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-029",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-projete-distance", "n-orthogonalite-espace-vecteur-normal"],
+    "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10", "bo-m-orthogonalite-07"],
+    "titre": "Le projeté d'un sommet du cube sur le plan $(ACF)$",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 413,
+    "preambule": "On considère le cube $ABCDEFGH$ de la figure, d'arête $1$ : $ABCD$ est la face du dessous, $EFGH$ celle du dessus, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. On munit l'espace du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$, et l'on note $L$ le point de coordonnées $\\left(\\dfrac{2}{3}\\,;\\,\\dfrac{1}{3}\\,;\\,\\dfrac{1}{3}\\right)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/orthogonalite-espace/cube-repere.svg",
+        "alt": "Le cube ABCDEFGH en perspective : la face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Trois flèches bleues partent de A : vers B, vers D (en pointillé, car cachée) et vers E. À côté de chaque sommet sont écrites ses coordonnées : A(0 ; 0 ; 0), B(1 ; 0 ; 0), C(1 ; 1 ; 0), D(0 ; 1 ; 0), E(0 ; 0 ; 1), F(1 ; 0 ; 1), G(1 ; 1 ; 1) et H(0 ; 1 ; 1).",
+        "width": 440,
+        "height": 305
+      },
+      "caption": "Le cube ABCDEFGH d'arête 1 et le repère (A ; AB, AD, AE) : à côté de chaque sommet, ses coordonnées dans ce repère. En pointillé : ce qui est caché."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer que $\\overrightarrow{BH}$ est un vecteur normal au plan $(ACF)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Deux vecteurs non colinéaires du plan, et deux produits scalaires nuls avec $\\overrightarrow{BH}$.",
+          "$\\overrightarrow{AC}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$, $\\overrightarrow{AF}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{BH}\\begin{pmatrix} -1 \\\\ 1 \\\\ 1 \\end{pmatrix}$.",
+          "$\\overrightarrow{AC}$ et $\\overrightarrow{AF}$ ne sont pas colinéaires (regarde leurs coordonnées nulles) ; calcule $\\overrightarrow{BH} \\cdot \\overrightarrow{AC}$ et $\\overrightarrow{BH} \\cdot \\overrightarrow{AF}$."
+        ],
+        "revoir": "l-orthogonalite-espace-040",
+        "solution": "$\\overrightarrow{AC}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AF}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$ ne sont pas colinéaires : $\\overrightarrow{AF} = k\\,\\overrightarrow{AC}$ donnerait $1 = k \\times 0$ sur la troisième coordonnée.\n\nAvec $\\overrightarrow{BH}\\begin{pmatrix} -1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ : $\\overrightarrow{BH} \\cdot \\overrightarrow{AC} = -1 + 1 + 0 = 0$ et $\\overrightarrow{BH} \\cdot \\overrightarrow{AF} = -1 + 0 + 1 = 0$. Le vecteur $\\overrightarrow{BH}$, non nul, est normal au plan $(ACF)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer que $L$ est le projeté orthogonal de $B$ sur le plan $(ACF)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Deux conditions : $L \\in (ACF)$, et $\\overrightarrow{BL}$ normal à ce plan.",
+          "Le plan $(ACF)$ passe par $A$ et il est normal à $\\overrightarrow{BH}$ : $L$ y est si et seulement si $\\overrightarrow{AL} \\cdot \\overrightarrow{BH} = 0$.",
+          "$\\overrightarrow{BL}\\begin{pmatrix} -\\frac{1}{3} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$ : par quel nombre multiplier $\\overrightarrow{BH}$ pour l'obtenir ?"
+        ],
+        "revoir": "l-orthogonalite-espace-060",
+        "solution": "$\\overrightarrow{AL}\\begin{pmatrix} \\frac{2}{3} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$ et $\\overrightarrow{AL} \\cdot \\overrightarrow{BH} = -\\dfrac{2}{3} + \\dfrac{1}{3} + \\dfrac{1}{3} = 0$ : $L$ est dans le plan passant par $A$ et normal à $\\overrightarrow{BH}$, c'est-à-dire le plan $(ACF)$.\n\n$\\overrightarrow{BL}\\begin{pmatrix} -\\frac{1}{3} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix} = \\dfrac{1}{3}\\,\\overrightarrow{BH}$ est colinéaire à $\\overrightarrow{BH}$, donc normal au plan. Ainsi $L$ est le projeté orthogonal de $B$ sur le plan $(ACF)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la distance du point $B$ au plan $(ACF)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\sqrt{3}$",
+            "$\\dfrac{1}{3}$",
+            "$\\dfrac{\\sqrt{3}}{3}$",
+            "$\\dfrac{\\sqrt{2}}{2}$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "C'est $BH$, la longueur de la grande diagonale : $L$ n'est qu'au tiers du chemin de $B$ à $H$.",
+            "C'est $BL^2$ : il reste à prendre la racine carrée.",
+            null,
+            "C'est la distance de $B$ au milieu de $[AC]$ : ce point est dans le plan $(ACF)$, mais ce n'est pas le projeté de $B$."
+          ]
+        },
+        "indices": [
+          "La distance de $B$ au plan est $BL$, puisque $L$ est le projeté orthogonal de $B$.",
+          "$\\overrightarrow{BL} = \\dfrac{1}{3}\\,\\overrightarrow{BH}$, donc $BL = \\dfrac{1}{3}\\,BH$.",
+          "$BH = \\sqrt{1 + 1 + 1}$ : simplifie ensuite le quotient par $3$."
+        ],
+        "revoir": "l-orthogonalite-espace-054",
+        "solution": "La distance de $B$ au plan $(ACF)$ est $BL = \\sqrt{\\dfrac{1}{9} + \\dfrac{1}{9} + \\dfrac{1}{9}} = \\sqrt{\\dfrac{3}{9}} = \\dfrac{\\sqrt{3}}{3}$, soit environ $0{,}58$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Démontrer que $L$ est aussi le projeté orthogonal de $H$ sur le plan $(ACF)$. Que peut-on en déduire pour les points $B$, $L$ et $H$, et pour la distance de $H$ au plan $(ACF)$ ?",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$L$ est déjà dans le plan $(ACF)$ (question 2) : il reste à étudier $\\overrightarrow{HL}$.",
+          "$\\overrightarrow{HL}\\begin{pmatrix} \\frac{2}{3} \\\\ -\\frac{2}{3} \\\\ -\\frac{2}{3} \\end{pmatrix}$ : écris-le comme un multiple de $\\overrightarrow{BH}$.",
+          "$\\overrightarrow{BL}$ et $\\overrightarrow{BH}$ sont colinéaires : que dire des points $B$, $L$, $H$ ? Calcule enfin $HL$."
+        ],
+        "revoir": "l-orthogonalite-espace-058",
+        "solution": "$L \\in (ACF)$ et $\\overrightarrow{HL}\\begin{pmatrix} \\frac{2}{3} \\\\ -\\frac{2}{3} \\\\ -\\frac{2}{3} \\end{pmatrix} = -\\dfrac{2}{3}\\,\\overrightarrow{BH}$ est normal au plan : $L$ est aussi le projeté orthogonal de $H$ sur $(ACF)$.\n\nComme $\\overrightarrow{BL} = \\dfrac{1}{3}\\,\\overrightarrow{BH}$, les points $B$, $L$, $H$ sont alignés : la grande diagonale $[BH]$ traverse le plan $(ACF)$ en $L$, au tiers de sa longueur à partir de $B$. La distance de $H$ au plan est $HL = \\dfrac{2}{3}\\,BH = \\dfrac{2\\sqrt{3}}{3}$, le double de celle de $B$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-030",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-mesures", "n-orthogonalite-espace-projete-distance"],
+    "capacites": ["bo-m-orthogonalite-11", "bo-m-orthogonalite-08", "bo-m-orthogonalite-10"],
+    "titre": "Volume, aire, puis distance par le volume",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 511,
+    "preambule": "Dans un repère orthonormé, on donne $O(0\\,;\\,0\\,;\\,0)$, $A(3\\,;\\,0\\,;\\,0)$, $B(0\\,;\\,3\\,;\\,0)$ et $C(0\\,;\\,0\\,;\\,3)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que la droite $(OC)$ est orthogonale au plan $(OAB)$, puis calculer le volume du tétraèdre $OABC$. Donne la valeur exacte.",
+        "reponse": { "type": "numerique", "valeur": "9/2", "tolerance": 0 },
+        "indices": [
+          "$\\overrightarrow{OC}$ est-il orthogonal à $\\overrightarrow{OA}$ et à $\\overrightarrow{OB}$, qui ne sont pas colinéaires ? C'est la méthode du vecteur normal.",
+          "Base : le triangle $OAB$, rectangle en $O$, d'aire $\\dfrac{OA \\times OB}{2}$ ; hauteur : $OC$, car $O$ est le projeté orthogonal de $C$ sur le plan $(OAB)$.",
+          "$V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h$, avec $OA = OB = OC = 3$."
+        ],
+        "revoir": "l-orthogonalite-espace-069",
+        "solution": "$\\overrightarrow{OC} \\cdot \\overrightarrow{OA} = 0$ et $\\overrightarrow{OC} \\cdot \\overrightarrow{OB} = 0$, avec $\\overrightarrow{OA}$ et $\\overrightarrow{OB}$ non colinéaires : $\\overrightarrow{OC}$ est normal au plan $(OAB)$, et $O$ est le projeté orthogonal de $C$ sur ce plan.\n\nAvec la base $OAB$, rectangle en $O$, d'aire $\\dfrac{3 \\times 3}{2} = \\dfrac{9}{2}$, et la hauteur $OC = 3$ : $V = \\dfrac{1}{3} \\times \\dfrac{9}{2} \\times 3 = \\dfrac{9}{2}$ unités de volume."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer que le triangle $ABC$ est équilatéral, puis calculer son aire.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$9$", "$\\dfrac{9\\sqrt{3}}{2}$", "$18$", "$\\dfrac{9\\sqrt{3}}{4}$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est $\\dfrac{AB^2}{2}$, l'aire d'un triangle rectangle isocèle de côté $AB$ : or l'angle en $A$ n'est pas droit.",
+            null,
+            "C'est $AB^2$, l'aire du carré de côté $AB$.",
+            "Il manque un facteur $2$ : avec $BC = 3\\sqrt{2}$ et $AI = \\dfrac{3\\sqrt{6}}{2}$, l'aire vaut $\\dfrac{BC \\times AI}{2}$."
+          ]
+        },
+        "indices": [
+          "Calcule les trois côtés avec les coordonnées ; puis, le triangle étant isocèle en $A$, prends pour hauteur la médiane issue de $A$.",
+          "$AB = BC = CA = \\sqrt{18}$. Avec $I$, milieu de $[BC]$ : $I\\left(0\\,;\\,\\dfrac{3}{2}\\,;\\,\\dfrac{3}{2}\\right)$ et $AI^2 = 9 + \\dfrac{9}{4} + \\dfrac{9}{4} = \\dfrac{27}{2}$.",
+          "Pour éviter les racines, calcule le carré de l'aire : $\\mathcal{A}^2 = \\dfrac{BC^2 \\times AI^2}{4}$, puis simplifie sa racine carrée."
+        ],
+        "revoir": "l-orthogonalite-espace-071",
+        "solution": "$\\overrightarrow{AB}\\begin{pmatrix} -3 \\\\ 3 \\\\ 0 \\end{pmatrix}$, $\\overrightarrow{AC}\\begin{pmatrix} -3 \\\\ 0 \\\\ 3 \\end{pmatrix}$ et $\\overrightarrow{BC}\\begin{pmatrix} 0 \\\\ -3 \\\\ 3 \\end{pmatrix}$ ont tous trois pour norme $\\sqrt{18} = 3\\sqrt{2}$ : le triangle $ABC$ est équilatéral.\n\nAvec $I\\left(0\\,;\\,\\dfrac{3}{2}\\,;\\,\\dfrac{3}{2}\\right)$, milieu de $[BC]$, la médiane $[AI]$ est la hauteur issue de $A$, et $AI^2 = 9 + \\dfrac{9}{4} + \\dfrac{9}{4} = \\dfrac{27}{2}$. Alors $\\mathcal{A}^2 = \\dfrac{BC^2 \\times AI^2}{4} = \\dfrac{18 \\times \\frac{27}{2}}{4} = \\dfrac{243}{4}$, donc $\\mathcal{A} = \\dfrac{\\sqrt{243}}{2} = \\dfrac{9\\sqrt{3}}{2}$ unités d'aire."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En calculant le volume de deux façons, déterminer la distance du point $O$ au plan $(ABC)$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\sqrt{3}$", "$3$", "$\\dfrac{\\sqrt{3}}{3}$", "$3\\sqrt{3}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est la longueur $OA$ : l'arête $[OA]$ n'est pas orthogonale au plan $(ABC)$.",
+            "C'est $\\dfrac{V}{\\mathcal{A}}$ : il manque le facteur $3$ de $h = \\dfrac{3V}{\\mathcal{A}}$.",
+            "C'est trois fois trop : $h = \\dfrac{3V}{\\mathcal{A}}$, avec $V = \\dfrac{9}{2}$ et $\\mathcal{A} = \\dfrac{9\\sqrt{3}}{2}$."
+          ]
+        },
+        "indices": [
+          "Avec la base $ABC$, la hauteur est la distance cherchée $h$ : $V = \\dfrac{1}{3} \\times \\mathcal{A} \\times h$.",
+          "$h = \\dfrac{3V}{\\mathcal{A}}$, avec $V$ de la question 1 et $\\mathcal{A}$ de la question 2.",
+          "$3V = \\dfrac{27}{2}$ : divise par $\\dfrac{9\\sqrt{3}}{2}$, puis simplifie et rends le dénominateur entier."
+        ],
+        "revoir": "l-orthogonalite-espace-073",
+        "solution": "Avec la base $ABC$ et la hauteur $h$, distance de $O$ au plan $(ABC)$ : $V = \\dfrac{1}{3} \\times \\dfrac{9\\sqrt{3}}{2} \\times h$.\n\nDonc $h = \\dfrac{3V}{\\mathcal{A}} = \\dfrac{27}{2} \\times \\dfrac{2}{9\\sqrt{3}} = \\dfrac{3}{\\sqrt{3}} = \\sqrt{3}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Contrôle : démontrer que le point $K(1\\,;\\,1\\,;\\,1)$ est le projeté orthogonal de $O$ sur le plan $(ABC)$, et retrouver la distance de la question 3.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Deux conditions : $K$ est dans le plan $(ABC)$, et $\\overrightarrow{OK}$ est normal à ce plan.",
+          "$\\overrightarrow{OK}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ : calcule ses produits scalaires avec $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.",
+          "Pour $K \\in (ABC)$ : vérifie que $\\overrightarrow{AK} = \\dfrac{1}{3}\\overrightarrow{AB} + \\dfrac{1}{3}\\overrightarrow{AC}$, puis calcule $OK$."
+        ],
+        "revoir": "l-orthogonalite-espace-058",
+        "solution": "$\\overrightarrow{OK} \\cdot \\overrightarrow{AB} = -3 + 3 + 0 = 0$ et $\\overrightarrow{OK} \\cdot \\overrightarrow{AC} = -3 + 0 + 3 = 0$ : $\\overrightarrow{OK}$, non nul, est normal au plan $(ABC)$. De plus $\\overrightarrow{AK}\\begin{pmatrix} -2 \\\\ 1 \\\\ 1 \\end{pmatrix} = \\dfrac{1}{3}\\overrightarrow{AB} + \\dfrac{1}{3}\\overrightarrow{AC}$, donc $K \\in (ABC)$.\n\n$K$ est le projeté orthogonal de $O$ sur $(ABC)$, et la distance de $O$ au plan vaut $OK = \\sqrt{1 + 1 + 1} = \\sqrt{3}$ : on retrouve le résultat de la question 3."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-031",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-mesures"],
+    "capacites": ["bo-m-orthogonalite-11"],
+    "titre": "Une pyramide à base carrée : volume, aire d'une face, distance",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 512,
+    "preambule": "$SABCD$ est la pyramide de la figure : sa base $ABCD$ est un carré de côté $4$ et de centre $O$, la droite $(SO)$ est orthogonale au plan $(ABC)$, et $SO = 6$. On note $M$ le milieu de l'arête $[AB]$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/pyramide.svg",
+        "alt": "Une pyramide SABCD dessinée en perspective, de sommet S et de base carrée ABCD : A devant à gauche, B devant à droite, C derrière à droite, D derrière à gauche. Le sommet S est dessiné au-dessus du centre O de la base. Les arêtes cachées [SD], [AD] et [DC] sont en pointillé, comme les diagonales [AC] et [BD] de la base, qui se coupent en O, et le segment [SO], en gris.",
+        "width": 380,
+        "height": 285
+      },
+      "caption": "La pyramide SABCD : base carrée ABCD de centre O, sommet S. En pointillé : les arêtes cachées, les diagonales de la base et le segment [SO]."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer le volume de la pyramide $SABCD$.",
+        "reponse": { "type": "numerique", "valeur": 32, "tolerance": 0 },
+        "indices": [
+          "$V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h$ : la base est le carré $ABCD$.",
+          "La droite $(SO)$ est orthogonale au plan de la base et $O$ est dans ce plan : $O$ est le projeté orthogonal de $S$, et la hauteur est $SO$.",
+          "$\\mathcal{B} = 4^2$ et $h = 6$."
+        ],
+        "revoir": "l-orthogonalite-espace-067",
+        "solution": "$O$ est dans le plan de la base et $(SO)$ est orthogonale à ce plan : la hauteur de la pyramide est $SO = 6$. La base a pour aire $4^2 = 16$.\n\nDonc $V = \\dfrac{1}{3} \\times 16 \\times 6 = 32$ unités de volume."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Justifier que $SA = SB$, puis calculer l'aire du triangle $SAB$, arrondie au centième.",
+        "reponse": { "type": "numerique", "valeur": 12.65, "tolerance": 0.005, "decimales": 2 },
+        "indices": [
+          "$(SO)$ est orthogonale au plan de la base, donc aux droites $(OA)$ et $(OB)$ : les triangles $SOA$ et $SOB$ sont rectangles en $O$, avec $OA = OB$.",
+          "Le triangle $SAB$ est isocèle en $S$ : sa médiane $[SM]$ est sa hauteur. Le triangle $SOM$ est rectangle en $O$, et $OM$ vaut la moitié du côté du carré.",
+          "$SM^2 = SO^2 + OM^2$, puis l'aire vaut $\\dfrac{AB \\times SM}{2}$."
+        ],
+        "revoir": "l-orthogonalite-espace-071",
+        "solution": "La droite $(SO)$ est orthogonale au plan de la base, donc aux droites $(OA)$, $(OB)$ et $(OM)$ de ce plan. Les diagonales du carré ont même longueur et se coupent en leur milieu $O$, donc $OA = OB$ ; le théorème de Pythagore donne $SA^2 = SO^2 + OA^2 = SO^2 + OB^2 = SB^2$, d'où $SA = SB$.\n\nLe triangle $SAB$ est isocèle en $S$, donc sa médiane $[SM]$ est aussi sa hauteur. Le triangle $SOM$ est rectangle en $O$ et $OM = 2$, la moitié du côté : $SM^2 = 36 + 4 = 40$, $SM = 2\\sqrt{10}$. L'aire du triangle $SAB$ vaut $\\dfrac{4 \\times 2\\sqrt{10}}{2} = 4\\sqrt{10} \\approx 12{,}65$ unités d'aire."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer le volume du tétraèdre $SOAB$.",
+        "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+        "indices": [
+          "Prends pour base le triangle $OAB$ : la hauteur issue de $S$ est encore $SO$.",
+          "Le triangle $OAB$ est le quart du carré $ABCD$ : son aire est $\\dfrac{16}{4}$.",
+          "$V' = \\dfrac{1}{3} \\times \\mathcal{B}' \\times SO$."
+        ],
+        "revoir": "l-orthogonalite-espace-069",
+        "solution": "Les diagonales du carré le partagent en quatre triangles de même aire : le triangle $OAB$ a pour aire $\\dfrac{16}{4} = 4$. Avec la hauteur $SO = 6$ :\n\n$V' = \\dfrac{1}{3} \\times 4 \\times 6 = 8$ unités de volume."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En calculant autrement le volume du tétraèdre $SOAB$, déterminer la distance du point $O$ au plan $(SAB)$, arrondie au centième.",
+        "reponse": { "type": "numerique", "valeur": 1.9, "tolerance": 0.005, "decimales": 2 },
+        "indices": [
+          "Prends maintenant pour base la face $SAB$ et pour sommet $O$ : la hauteur est la distance cherchée $d$.",
+          "$V' = \\dfrac{1}{3} \\times \\mathcal{A}_{SAB} \\times d$, avec $V'$ de la question 3 et l'aire de la question 2.",
+          "$d = \\dfrac{3V'}{\\mathcal{A}_{SAB}}$ : remplace par les valeurs exactes, simplifie, puis utilise la calculatrice."
+        ],
+        "revoir": "l-orthogonalite-espace-073",
+        "solution": "Avec la base $SAB$ et le sommet $O$ : $V' = \\dfrac{1}{3} \\times 4\\sqrt{10} \\times d = 8$, donc $d = \\dfrac{24}{4\\sqrt{10}} = \\dfrac{6}{\\sqrt{10}} = \\dfrac{3\\sqrt{10}}{5}$.\n\nLa distance du point $O$ au plan $(SAB)$ vaut environ $1{,}90$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-032",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 2,
+    "notions": ["n-orthogonalite-espace-mesures"],
+    "capacites": ["bo-m-orthogonalite-11"],
+    "titre": "L'aire d'un triangle quelconque, par la formule du projeté",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 513,
+    "preambule": "Dans un repère orthonormé, on donne $A(1\\,;\\,-1\\,;\\,2)$, $B(3\\,;\\,1\\,;\\,3)$ et $C(3\\,;\\,-1\\,;\\,1)$. On note $K$ le projeté orthogonal de $C$ sur la droite $(AB)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$. Le triangle $ABC$ est-il rectangle en $A$ ?",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Coordonnées des deux vecteurs issus de $A$, puis $xx' + yy' + zz'$.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 2 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 2 \\\\ 0 \\\\ -1 \\end{pmatrix}$.",
+          "Multiplie coordonnée par coordonnée et ajoute : si le résultat n'est pas nul, l'angle en $A$ n'est pas droit."
+        ],
+        "revoir": "l-orthogonalite-espace-072",
+        "solution": "$\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 2 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 2 \\\\ 0 \\\\ -1 \\end{pmatrix}$, donc $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 + 0 - 1 = 3$.\n\nCe produit n'est pas nul : le triangle n'est pas rectangle en $A$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Justifier que $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AK$, puis calculer $AK$.",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "C'est la formule du projeté vue en première, dans le plan $(ABC)$ : elle s'écrit ainsi quand le produit scalaire est positif.",
+          "Calcule la longueur $AB$ à partir des coordonnées de $\\overrightarrow{AB}$.",
+          "$AK = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{AC}}{AB}$."
+        ],
+        "revoir": "l-orthogonalite-espace-066",
+        "solution": "$K$ est le projeté orthogonal de $C$ sur $(AB)$ et $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 3 > 0$ : la formule du projeté, dans le plan $(ABC)$, donne $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AK$.\n\nOr $AB = \\sqrt{4 + 4 + 1} = 3$, donc $AK = \\dfrac{3}{3} = 1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $CK$, puis en déduire l'aire du triangle $ABC$.",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Le triangle $AKC$ est rectangle en $K$ : utilise le théorème de Pythagore pour obtenir $CK$.",
+          "$CK^2 = AC^2 - AK^2$, avec $AC^2$ calculé à partir des coordonnées de $\\overrightarrow{AC}$.",
+          "$[CK]$ est la hauteur relative à la base $[AB]$ : l'aire vaut $\\dfrac{AB \\times CK}{2}$."
+        ],
+        "revoir": "l-orthogonalite-espace-071",
+        "solution": "Le triangle $AKC$ est rectangle en $K$, et $AC^2 = 4 + 0 + 1 = 5$, donc $CK^2 = AC^2 - AK^2 = 5 - 1 = 4$ et $CK = 2$.\n\n$[CK]$ est la hauteur issue de $C$, relative à la base $[AB]$ : l'aire du triangle $ABC$ vaut $\\dfrac{AB \\times CK}{2} = \\dfrac{3 \\times 2}{2} = 3$ unités d'aire."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-033",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 3,
+    "notions": ["n-orthogonalite-espace-produit-scalaire", "n-orthogonalite-espace-repere-orthonorme"],
+    "capacites": ["bo-m-orthogonalite-01", "bo-m-orthogonalite-05", "bo-m-orthogonalite-04", "bo-m-orthogonalite-16"],
+    "titre": "Les points $M$ tels que $MA^2 + MB^2 = k$",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 121,
+    "preambule": "Soit $A$ et $B$ deux points distincts de l'espace et $I$ le milieu de $[AB]$. On rappelle que la sphère de centre $\\Omega$ et de rayon $R > 0$ est l'ensemble des points $M$ tels que $\\Omega M = R$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer que, pour tout point $M$ de l'espace, $MA^2 + MB^2 = 2\\,MI^2 + \\dfrac{AB^2}{2}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Écris $\\overrightarrow{MA} = \\overrightarrow{MI} + \\overrightarrow{IA}$ et $\\overrightarrow{MB} = \\overrightarrow{MI} + \\overrightarrow{IB}$, puis développe les carrés des normes.",
+          "$MA^2 = MI^2 + 2\\,\\overrightarrow{MI} \\cdot \\overrightarrow{IA} + IA^2$, et de même $MB^2 = MI^2 + 2\\,\\overrightarrow{MI} \\cdot \\overrightarrow{IB} + IB^2$.",
+          "En ajoutant, les doubles produits donnent $2\\,\\overrightarrow{MI} \\cdot \\left(\\overrightarrow{IA} + \\overrightarrow{IB}\\right)$ : que vaut $\\overrightarrow{IA} + \\overrightarrow{IB}$ ? Et $IA = IB = \\dfrac{AB}{2}$."
+        ],
+        "revoir": "l-orthogonalite-espace-013",
+        "solution": "Par la relation de Chasles et le développement du carré d'une norme : $MA^2 = \\lVert \\overrightarrow{MI} + \\overrightarrow{IA} \\rVert^2 = MI^2 + 2\\,\\overrightarrow{MI} \\cdot \\overrightarrow{IA} + IA^2$, et de même $MB^2 = MI^2 + 2\\,\\overrightarrow{MI} \\cdot \\overrightarrow{IB} + IB^2$.\n\nEn ajoutant, par bilinéarité : $MA^2 + MB^2 = 2\\,MI^2 + 2\\,\\overrightarrow{MI} \\cdot \\left(\\overrightarrow{IA} + \\overrightarrow{IB}\\right) + IA^2 + IB^2$. Or $I$ est le milieu de $[AB]$ : $\\overrightarrow{IA} + \\overrightarrow{IB} = \\vec{0}$ et $IA = IB = \\dfrac{AB}{2}$, donc $IA^2 + IB^2 = 2 \\times \\dfrac{AB^2}{4} = \\dfrac{AB^2}{2}$.\n\nAinsi, pour tout point $M$, $MA^2 + MB^2 = 2\\,MI^2 + \\dfrac{AB^2}{2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Dans un repère orthonormé, on donne $A(1\\,;\\,0\\,;\\,2)$ et $B(3\\,;\\,2\\,;\\,0)$. Calculer les coordonnées de $I$, puis $AB^2$.",
+        "reponse": { "type": "numerique", "valeur": 12, "tolerance": 0 },
+        "indices": [
+          "$I$ a pour coordonnées les moyennes de celles de $A$ et de $B$ ; $AB^2$ est la somme des carrés des coordonnées de $\\overrightarrow{AB}$.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 2 \\\\ -2 \\end{pmatrix}$.",
+          "Élève chaque coordonnée au carré, sans te tromper sur $(-2)^2$, puis ajoute."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "$I\\left(\\dfrac{1 + 3}{2}\\,;\\,\\dfrac{0 + 2}{2}\\,;\\,\\dfrac{2 + 0}{2}\\right)$, soit $I(2\\,;\\,1\\,;\\,1)$. Et $\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 2 \\\\ -2 \\end{pmatrix}$, donc $AB^2 = 4 + 4 + 4 = 12$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On note $\\mathcal{S}$ l'ensemble des points $M$ tels que $MA^2 + MB^2 = 14$. Démontrer que $\\mathcal{S}$ est une sphère dont on précisera le centre et le rayon.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Avec la question 1, l'égalité $MA^2 + MB^2 = 14$ devient une condition sur la seule distance $MI$.",
+          "$2\\,MI^2 + \\dfrac{AB^2}{2} = 14$, avec $AB^2$ trouvé à la question 2 : isole $MI^2$.",
+          "Une distance est positive : $MI^2 = r^2$ équivaut à $MI = r$. Conclus avec la définition de la sphère rappelée en tête de l'exercice."
+        ],
+        "revoir": "l-orthogonalite-espace-013",
+        "solution": "D'après la question 1, $MA^2 + MB^2 = 2\\,MI^2 + \\dfrac{12}{2} = 2\\,MI^2 + 6$. Donc $M \\in \\mathcal{S}$ si et seulement si $2\\,MI^2 + 6 = 14$, soit $MI^2 = 4$, c'est-à-dire $MI = 2$, car une distance est positive.\n\n$\\mathcal{S}$ est la sphère de centre $I(2\\,;\\,1\\,;\\,1)$ et de rayon $2$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Lesquels de ces points appartiennent à $\\mathcal{S}$ ?",
+        "reponse": {
+          "type": "qcm-multiple",
+          "choix": [
+            "$P(2\\,;\\,1\\,;\\,3)$",
+            "$O(0\\,;\\,0\\,;\\,0)$",
+            "$Q(2\\,;\\,3\\,;\\,1)$",
+            "$R(3\\,;\\,2\\,;\\,2)$"
+          ],
+          "bonnes": [0, 2]
+        },
+        "indices": [
+          "$M \\in \\mathcal{S}$ si et seulement si $MI = 2$ : calcule la distance de chaque point à $I$.",
+          "Pour $P$ : $\\overrightarrow{IP}\\begin{pmatrix} 0 \\\\ 0 \\\\ 2 \\end{pmatrix}$. Pour $O$ : $\\overrightarrow{IO}\\begin{pmatrix} -2 \\\\ -1 \\\\ -1 \\end{pmatrix}$.",
+          "Contrôle avec la définition de $\\mathcal{S}$ : pour $P$, calcule directement $PA^2 + PB^2$."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "$IP = \\sqrt{0 + 0 + 4} = 2$ et $IQ = \\sqrt{0 + 4 + 0} = 2$ : $P$ et $Q$ sont sur $\\mathcal{S}$. En revanche $IO = \\sqrt{4 + 1 + 1} = \\sqrt{6}$ et $IR = \\sqrt{1 + 1 + 1} = \\sqrt{3}$ : $O$ et $R$ n'y sont pas.\n\nContrôle pour $P$ : $PA^2 = 1 + 1 + 1 = 3$ et $PB^2 = 1 + 1 + 9 = 11$, et $3 + 11 = 14$. Les points de $\\mathcal{S}$ sont $P$ et $Q$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Pour quelles valeurs du réel $k$ l'ensemble des points $M$ tels que $MA^2 + MB^2 = k$ est-il vide ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$k < 0$", "$k < 6$", "$k \\leqslant 6$", "$k < 12$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Pour $0 \\leqslant k < 6$, l'ensemble est aussi vide : $MA^2 + MB^2 \\geqslant 6$ pour tout point $M$.",
+            null,
+            "Pour $k = 6$, le point $I$ convient : $IA^2 + IB^2 = 3 + 3 = 6$. L'ensemble n'est pas vide, il est réduit à $I$.",
+            "Pour $6 < k < 12$, on obtient une sphère de centre $I$ : par exemple, $k = 8$ donne $MI = 1$."
+          ]
+        },
+        "indices": [
+          "Reprends la question 3 avec $k$ à la place de $14$ : isole $MI^2$.",
+          "$MI^2 = \\dfrac{k - 6}{2}$ : un carré n'est jamais négatif.",
+          "Que se passe-t-il pour $k = 6$ ? Le point $I$ convient-il ?"
+        ],
+        "revoir": "l-orthogonalite-espace-013",
+        "solution": "$MA^2 + MB^2 = k$ équivaut à $MI^2 = \\dfrac{k - 6}{2}$. Si $k < 6$, le second membre est négatif : aucun point ne convient. Si $k = 6$, seul $I$ convient ; si $k > 6$, c'est la sphère de centre $I$ et de rayon $\\sqrt{\\dfrac{k - 6}{2}}$.\n\nL'ensemble est vide si et seulement si $k < 6$."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-034",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 3,
+    "notions": ["n-orthogonalite-espace-projete-distance", "n-orthogonalite-espace-mesures", "n-orthogonalite-espace-vecteur-normal"],
+    "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10", "bo-m-orthogonalite-11", "bo-m-orthogonalite-07"],
+    "titre": "Un tétraèdre : projeté, distance, puis aire par le volume",
+    "duree": 30,
+    "calculatrice": false,
+    "ordre": 421,
+    "preambule": "Dans un repère orthonormé, on donne $O(0\\,;\\,0\\,;\\,0)$, $A(4\\,;\\,0\\,;\\,0)$, $B(0\\,;\\,4\\,;\\,0)$, $C(0\\,;\\,0\\,;\\,2)$, le vecteur $\\vec{n}\\begin{pmatrix} 1 \\\\ 1 \\\\ 2 \\end{pmatrix}$ et le point $H\\left(\\dfrac{2}{3}\\,;\\,\\dfrac{2}{3}\\,;\\,\\dfrac{4}{3}\\right)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Démontrer que $\\vec{n}$ est un vecteur normal au plan $(ABC)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Deux vecteurs non colinéaires du plan $(ABC)$, puis deux produits scalaires nuls avec $\\vec{n}$.",
+          "$\\overrightarrow{AB}\\begin{pmatrix} -4 \\\\ 4 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -4 \\\\ 0 \\\\ 2 \\end{pmatrix}$ ne sont pas colinéaires : regarde les coordonnées nulles.",
+          "Calcule $\\vec{n} \\cdot \\overrightarrow{AB}$ et $\\vec{n} \\cdot \\overrightarrow{AC}$."
+        ],
+        "revoir": "l-orthogonalite-espace-040",
+        "solution": "$\\overrightarrow{AB}\\begin{pmatrix} -4 \\\\ 4 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -4 \\\\ 0 \\\\ 2 \\end{pmatrix}$ : $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$ donnerait $2 = k \\times 0$ sur la troisième coordonnée ; ils ne sont pas colinéaires.\n\n$\\vec{n} \\cdot \\overrightarrow{AB} = -4 + 4 + 0 = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = -4 + 0 + 4 = 0$ : le vecteur $\\vec{n}$, non nul, est normal au plan $(ABC)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Démontrer que $H$ est le projeté orthogonal de $O$ sur le plan $(ABC)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Deux conditions : $H \\in (ABC)$, et $\\overrightarrow{OH}$ normal au plan.",
+          "$\\overrightarrow{AH}\\begin{pmatrix} -\\frac{10}{3} \\\\ \\frac{2}{3} \\\\ \\frac{4}{3} \\end{pmatrix}$ : calcule $\\overrightarrow{AH} \\cdot \\vec{n}$.",
+          "Compare $\\overrightarrow{OH}$ à $\\vec{n}$ : par quel nombre faut-il multiplier $\\vec{n}$ ?"
+        ],
+        "revoir": "l-orthogonalite-espace-058",
+        "solution": "$\\overrightarrow{AH} \\cdot \\vec{n} = -\\dfrac{10}{3} + \\dfrac{2}{3} + \\dfrac{8}{3} = 0$ : $H$ est dans le plan passant par $A$ et normal à $\\vec{n}$, c'est-à-dire le plan $(ABC)$.\n\nEt $\\overrightarrow{OH} = \\dfrac{2}{3}\\,\\vec{n}$ est colinéaire à $\\vec{n}$, donc normal au plan. Ainsi $H$ est le projeté orthogonal de $O$ sur le plan $(ABC)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire la distance du point $O$ au plan $(ABC)$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$2$", "$\\dfrac{2}{3}$", "$\\sqrt{6}$", "$\\dfrac{2\\sqrt{6}}{3}$"],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "C'est $OC$ : l'arête $[OC]$ n'est pas orthogonale au plan $(ABC)$.",
+            "C'est le coefficient $k$ de $\\overrightarrow{OH} = k\\,\\vec{n}$ : il faut encore multiplier par $\\lVert \\vec{n} \\rVert$.",
+            "C'est la norme de $\\vec{n}$ ; or $\\overrightarrow{OH} = \\dfrac{2}{3}\\,\\vec{n}$.",
+            null
+          ]
+        },
+        "indices": [
+          "La distance de $O$ au plan est $OH$.",
+          "$\\overrightarrow{OH} = \\dfrac{2}{3}\\,\\vec{n}$, donc $OH = \\dfrac{2}{3}\\,\\lVert \\vec{n} \\rVert$.",
+          "$\\lVert \\vec{n} \\rVert = \\sqrt{1 + 1 + 4}$."
+        ],
+        "revoir": "l-orthogonalite-espace-054",
+        "solution": "$H$ est le projeté orthogonal de $O$ sur $(ABC)$, donc la distance cherchée est $OH = \\dfrac{2}{3}\\,\\lVert \\vec{n} \\rVert = \\dfrac{2}{3}\\sqrt{1 + 1 + 4} = \\dfrac{2\\sqrt{6}}{3}$, soit environ $1{,}63$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Calculer le volume du tétraèdre $OABC$. Donne la valeur exacte.",
+        "reponse": { "type": "numerique", "valeur": "16/3", "tolerance": 0 },
+        "indices": [
+          "Choisis une base commode : le triangle $OAB$, avec l'arête $[OC]$ orthogonale à son plan.",
+          "Le triangle $OAB$ est rectangle en $O$ : son aire est $\\dfrac{OA \\times OB}{2}$.",
+          "$V = \\dfrac{1}{3} \\times \\mathcal{B} \\times OC$."
+        ],
+        "revoir": "l-orthogonalite-espace-069",
+        "solution": "$\\overrightarrow{OC}$ est orthogonal à $\\overrightarrow{OA}$ et à $\\overrightarrow{OB}$, non colinéaires : la droite $(OC)$ est orthogonale au plan $(OAB)$, et $OC = 2$ est la hauteur pour la base $OAB$. Ce triangle, rectangle en $O$, a pour aire $\\dfrac{4 \\times 4}{2} = 8$.\n\nDonc $V = \\dfrac{1}{3} \\times 8 \\times 2 = \\dfrac{16}{3}$ unités de volume."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "En déduire l'aire du triangle $ABC$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\dfrac{4\\sqrt{6}}{3}$", "$8$", "$4\\sqrt{6}$", "$2\\sqrt{6}$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "C'est $\\dfrac{V}{OH}$ : il manque le facteur $3$ de $\\mathcal{B} = \\dfrac{3V}{h}$.",
+            "C'est $\\dfrac{3V}{OC}$ : avec la base $ABC$, la hauteur est $OH$, pas l'arête $OC$.",
+            null,
+            "C'est la moitié de la bonne valeur : reprends le calcul de $\\dfrac{3V}{OH}$."
+          ]
+        },
+        "indices": [
+          "Écris le volume avec la base $ABC$ : la hauteur associée est la distance de $O$ au plan $(ABC)$.",
+          "$V = \\dfrac{1}{3} \\times \\mathcal{A} \\times OH$, donc $\\mathcal{A} = \\dfrac{3V}{OH}$.",
+          "$3V = 16$ : divise par $\\dfrac{2\\sqrt{6}}{3}$, puis rends le dénominateur entier."
+        ],
+        "revoir": "l-orthogonalite-espace-073",
+        "solution": "Avec la base $ABC$, la hauteur est $OH$ : $V = \\dfrac{1}{3} \\times \\mathcal{A} \\times OH$. Donc\n\n$\\mathcal{A} = \\dfrac{3V}{OH} = 16 \\times \\dfrac{3}{2\\sqrt{6}} = \\dfrac{24}{\\sqrt{6}} = \\dfrac{24\\sqrt{6}}{6} = 4\\sqrt{6}$ unités d'aire, soit environ $9{,}80$."
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Contrôler ce résultat en calculant l'aire du triangle $ABC$ d'une autre façon.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Compare les longueurs $CA$ et $CB$ : le triangle a-t-il une particularité ?",
+          "$CA = CB = \\sqrt{20}$ : le triangle est isocèle en $C$. Prends $J$, milieu de $[AB]$ : la médiane $[CJ]$ est la hauteur issue de $C$.",
+          "$J(2\\,;\\,2\\,;\\,0)$ : calcule $CJ$ et $AB$, puis $\\dfrac{AB \\times CJ}{2}$."
+        ],
+        "revoir": "l-orthogonalite-espace-071",
+        "solution": "$\\overrightarrow{CA}\\begin{pmatrix} 4 \\\\ 0 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{CB}\\begin{pmatrix} 0 \\\\ 4 \\\\ -2 \\end{pmatrix}$ ont pour norme $\\sqrt{20}$ : le triangle $ABC$ est isocèle en $C$. Avec $J(2\\,;\\,2\\,;\\,0)$, milieu de $[AB]$, la médiane $[CJ]$ est la hauteur issue de $C$ : $CJ = \\sqrt{4 + 4 + 4} = 2\\sqrt{3}$ et $AB = \\sqrt{16 + 16} = 4\\sqrt{2}$.\n\nL'aire vaut $\\dfrac{4\\sqrt{2} \\times 2\\sqrt{3}}{2} = 4\\sqrt{6}$ : on retrouve le résultat de la question 5."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-035",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 3,
+    "notions": ["n-orthogonalite-espace-projete-distance", "n-orthogonalite-espace-repere-orthonorme"],
+    "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10", "bo-m-orthogonalite-09", "bo-m-orthogonalite-04"],
+    "titre": "La distance d'un sommet du cube à une grande diagonale",
+    "duree": 25,
+    "calculatrice": true,
+    "ordre": 422,
+    "preambule": "On considère le cube $ABCDEFGH$ de la figure, d'arête $1$ : $ABCD$ est la face du dessous, $EFGH$ celle du dessus, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$. On munit l'espace du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$. On cherche la distance du sommet $D$ à la grande diagonale $(BH)$, et l'on note $K$ le projeté orthogonal de $D$ sur la droite $(BH)$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/orthogonalite-espace/cube-repere.svg",
+        "alt": "Le cube ABCDEFGH en perspective : la face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Trois flèches bleues partent de A : vers B, vers D (en pointillé, car cachée) et vers E. À côté de chaque sommet sont écrites ses coordonnées : A(0 ; 0 ; 0), B(1 ; 0 ; 0), C(1 ; 1 ; 0), D(0 ; 1 ; 0), E(0 ; 0 ; 1), F(1 ; 0 ; 1), G(1 ; 1 ; 1) et H(0 ; 1 ; 1).",
+        "width": 440,
+        "height": 305
+      },
+      "caption": "Le cube ABCDEFGH d'arête 1 et le repère (A ; AB, AD, AE) : à côté de chaque sommet, ses coordonnées dans ce repère. En pointillé : ce qui est caché."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $\\overrightarrow{BD} \\cdot \\overrightarrow{BH}$.",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Lis les coordonnées de $B$, $D$ et $H$, puis calcule celles des deux vecteurs issus de $B$.",
+          "$\\overrightarrow{BD}\\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{BH}\\begin{pmatrix} -1 \\\\ 1 \\\\ 1 \\end{pmatrix}$.",
+          "Le repère est orthonormé : calcule $xx' + yy' + zz'$."
+        ],
+        "revoir": "l-orthogonalite-espace-022",
+        "solution": "$B(1\\,;\\,0\\,;\\,0)$, $D(0\\,;\\,1\\,;\\,0)$ et $H(0\\,;\\,1\\,;\\,1)$, donc $\\overrightarrow{BD}\\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{BH}\\begin{pmatrix} -1 \\\\ 1 \\\\ 1 \\end{pmatrix}$.\n\nLe repère est orthonormé : $\\overrightarrow{BD} \\cdot \\overrightarrow{BH} = 1 + 1 + 0 = 2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Sans chercher les coordonnées de $K$, calculer $BK$ à l'aide de la formule du projeté, puis la distance $DK$ du point $D$ à la droite $(BH)$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\dfrac{\\sqrt{6}}{3}$", "$\\dfrac{2\\sqrt{3}}{3}$", "$\\dfrac{2}{3}$", "$\\sqrt{2}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est $BK$, pas $DK$ : il reste à utiliser le triangle $BKD$, rectangle en $K$.",
+            "C'est $DK^2$ : il reste à prendre la racine carrée.",
+            "C'est $DB$ : $B$ est sur la droite $(BH)$, mais ce n'est pas le projeté de $D$."
+          ]
+        },
+        "indices": [
+          "Dans le plan $(BDH)$, $K$ est le projeté de $D$ sur $(BH)$ : comme $\\overrightarrow{BH} \\cdot \\overrightarrow{BD} > 0$, on a $\\overrightarrow{BH} \\cdot \\overrightarrow{BD} = BH \\times BK$.",
+          "$BH = \\sqrt{3}$, donc $BK = \\dfrac{2}{\\sqrt{3}}$ et $BK^2 = \\dfrac{4}{3}$.",
+          "Le triangle $BKD$ est rectangle en $K$ : $DK^2 = BD^2 - BK^2$, avec $BD^2 = 2$."
+        ],
+        "revoir": "l-orthogonalite-espace-071",
+        "solution": "$K$ est le projeté orthogonal de $D$ sur $(BH)$, et $\\overrightarrow{BH} \\cdot \\overrightarrow{BD} = 2 > 0$ : la formule du projeté, dans le plan $(BDH)$, donne $BH \\times BK = 2$. Avec $BH = \\sqrt{3}$ : $BK = \\dfrac{2}{\\sqrt{3}} = \\dfrac{2\\sqrt{3}}{3}$.\n\nLe triangle $BKD$ est rectangle en $K$ : $DK^2 = BD^2 - BK^2 = 2 - \\dfrac{4}{3} = \\dfrac{2}{3}$, donc $DK = \\sqrt{\\dfrac{2}{3}} = \\dfrac{\\sqrt{6}}{3}$. La distance de $D$ à la droite $(BH)$ vaut $\\dfrac{\\sqrt{6}}{3}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vérification : on considère le point $L\\left(\\dfrac{1}{3}\\,;\\,\\dfrac{2}{3}\\,;\\,\\dfrac{2}{3}\\right)$. Démontrer que $L$ est le projeté orthogonal de $D$ sur $(BH)$, c'est-à-dire que $L = K$, puis retrouver $DK$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Deux conditions : $L \\in (BH)$, et $\\overrightarrow{DL} \\cdot \\overrightarrow{BH} = 0$.",
+          "$\\overrightarrow{BL}\\begin{pmatrix} -\\frac{2}{3} \\\\ \\frac{2}{3} \\\\ \\frac{2}{3} \\end{pmatrix}$ : écris-le comme un multiple de $\\overrightarrow{BH}$.",
+          "$\\overrightarrow{DL}\\begin{pmatrix} \\frac{1}{3} \\\\ -\\frac{1}{3} \\\\ \\frac{2}{3} \\end{pmatrix}$ : calcule $\\overrightarrow{DL} \\cdot \\overrightarrow{BH}$, puis $DL$."
+        ],
+        "revoir": "l-orthogonalite-espace-058",
+        "solution": "$\\overrightarrow{BL} = \\dfrac{2}{3}\\,\\overrightarrow{BH}$ : ces vecteurs sont colinéaires, donc $L \\in (BH)$. Et $\\overrightarrow{DL} \\cdot \\overrightarrow{BH} = -\\dfrac{1}{3} - \\dfrac{1}{3} + \\dfrac{2}{3} = 0$. Donc $L$ est le projeté orthogonal de $D$ sur $(BH)$ : $L = K$.\n\nAlors $DK = \\sqrt{\\dfrac{1}{9} + \\dfrac{1}{9} + \\dfrac{4}{9}} = \\sqrt{\\dfrac{6}{9}} = \\dfrac{\\sqrt{6}}{3}$ : on retrouve la question 2. De plus $BK = \\dfrac{2}{3}\\,BH = \\dfrac{2\\sqrt{3}}{3}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Déterminer une valeur approchée de l'angle $\\widehat{DBH}$ au dixième de degré.",
+        "reponse": { "type": "numerique", "valeur": 35.3, "tolerance": 0.05, "decimales": 1 },
+        "indices": [
+          "Sommet $B$ : $\\cos\\widehat{DBH} = \\dfrac{\\overrightarrow{BD} \\cdot \\overrightarrow{BH}}{BD \\times BH}$.",
+          "Le produit scalaire vient de la question 1 ; $BD = \\sqrt{2}$ et $BH = \\sqrt{3}$.",
+          "$\\cos\\widehat{DBH} = \\dfrac{2}{\\sqrt{6}}$ : utilise la touche $\\cos^{-1}$ de la calculatrice, en mode degrés."
+        ],
+        "revoir": "l-orthogonalite-espace-026",
+        "solution": "$\\cos\\widehat{DBH} = \\dfrac{2}{\\sqrt{2} \\times \\sqrt{3}} = \\dfrac{2}{\\sqrt{6}} = \\dfrac{\\sqrt{6}}{3}$. Contrôle dans le triangle $BKD$, rectangle en $K$ : $\\cos\\widehat{DBH} = \\dfrac{BK}{BD} = \\dfrac{2\\sqrt{3}}{3\\sqrt{2}} = \\dfrac{\\sqrt{6}}{3}$.\n\nLa calculatrice, en mode degrés, donne $\\widehat{DBH} \\approx 35{,}3^\\circ$ au dixième de degré."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Vrai ou faux : il existe un point $N$ de la droite $(BH)$ tel que $DN = 0{,}8$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Pour tout point $N$ de $(BH)$, $DN \\geqslant DK = \\dfrac{\\sqrt{6}}{3} \\approx 0{,}816$, et $0{,}8 < 0{,}816$."
+        },
+        "indices": [
+          "Le projeté $K$ est le point de $(BH)$ le plus proche de $D$.",
+          "Compare $0{,}8$ à la distance $DK$ trouvée à la question 2 : une valeur approchée au millième suffit.",
+          "Un point $N$ de la droite peut-il être plus près de $D$ que le projeté $K$ ?"
+        ],
+        "revoir": "l-orthogonalite-espace-054",
+        "solution": "$K$ est le point de la droite $(BH)$ le plus proche de $D$ : pour tout point $N$ de $(BH)$, $DN \\geqslant DK = \\dfrac{\\sqrt{6}}{3} \\approx 0{,}816$. Comme $0{,}8 < 0{,}816$, aucun point de $(BH)$ n'est à la distance $0{,}8$ de $D$.\n\nL'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-orthogonalite-espace-036",
+    "chapitre": "orthogonalite-espace",
+    "niveau": 3,
+    "notions": ["n-orthogonalite-espace-mesures", "n-orthogonalite-espace-produit-scalaire"],
+    "capacites": ["bo-m-orthogonalite-11", "bo-m-orthogonalite-05", "bo-m-orthogonalite-01"],
+    "titre": "Le coin d'un pavé droit, sans repère",
+    "duree": 30,
+    "calculatrice": true,
+    "ordre": 521,
+    "preambule": "$ABCDEFGH$ est le pavé droit de la figure : ses six faces sont des rectangles, $ABCD$ est la face du dessous, $EFGH$ celle du dessus, avec $E$, $F$, $G$, $H$ au-dessus de $A$, $B$, $C$, $D$, et $AB = 4$, $AD = 2$, $AE = 3$. On étudie le tétraèdre $ABDE$, qui découpe le coin $A$ du pavé, et l'on travaille sans repère.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/vecteurs-espace/pave-droit.svg",
+        "alt": "Un pavé droit ABCDEFGH dessiné en perspective. La face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Les longueurs sont indiquées : AB = 4, BC = 2 et AE = 3.",
+        "width": 340,
+        "height": 290
+      },
+      "caption": "Le pavé droit ABCDEFGH : AB = 4, AD = BC = 2 et AE = 3. Les arêtes cachées sont en pointillé."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer le volume du tétraèdre $ABDE$.",
+        "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+        "indices": [
+          "Prends pour base le triangle $ABD$, sur la face du dessous, et pour sommet $E$.",
+          "Le triangle $ABD$ est rectangle en $A$ ; la droite $(AE)$ est orthogonale aux droites $(AB)$ et $(AD)$, sécantes, donc au plan $(ABD)$.",
+          "$V = \\dfrac{1}{3} \\times \\dfrac{AB \\times AD}{2} \\times AE$."
+        ],
+        "revoir": "l-orthogonalite-espace-069",
+        "solution": "La droite $(AE)$ est orthogonale aux droites $(AB)$ et $(AD)$, sécantes en $A$, car les faces sont des rectangles : elle est orthogonale au plan $(ABD)$. Donc $A$ est le projeté orthogonal de $E$ sur ce plan, et la hauteur est $AE = 3$. La base $ABD$, rectangle en $A$, a pour aire $\\dfrac{4 \\times 2}{2} = 4$.\n\nDonc $V = \\dfrac{1}{3} \\times 4 \\times 3 = 4$ unités de volume."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $BD^2$, $BE^2$ et $DE^2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Chacun de ces segments est une diagonale d'une face rectangulaire du pavé.",
+          "$[BD]$ est une diagonale de la face $ABCD$ : dans le triangle $ABD$, rectangle en $A$, $BD^2 = AB^2 + AD^2$.",
+          "Fais de même avec les triangles $ABE$ et $ADE$, rectangles en $A$."
+        ],
+        "revoir": "l-orthogonalite-espace-072",
+        "solution": "Les triangles $ABD$, $ABE$ et $ADE$ sont rectangles en $A$. Par le théorème de Pythagore :\n\n$BD^2 = 16 + 4 = 20$, $BE^2 = 16 + 9 = 25$ et $DE^2 = 4 + 9 = 13$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "À l'aide d'une formule de polarisation, calculer $\\overrightarrow{BD} \\cdot \\overrightarrow{BE}$.",
+        "reponse": { "type": "numerique", "valeur": 16, "tolerance": 0 },
+        "indices": [
+          "Pose $\\vec{u} = \\overrightarrow{BD}$ et $\\vec{v} = \\overrightarrow{BE}$ : quel vecteur est $\\vec{u} - \\vec{v}$ ?",
+          "$\\overrightarrow{BD} - \\overrightarrow{BE} = \\overrightarrow{BD} + \\overrightarrow{EB} = \\overrightarrow{ED}$, de norme $DE$.",
+          "$\\vec{u} \\cdot \\vec{v} = \\dfrac{1}{2}\\left(\\lVert \\vec{u} \\rVert^2 + \\lVert \\vec{v} \\rVert^2 - \\lVert \\vec{u} - \\vec{v} \\rVert^2\\right)$ : remplace par les carrés de la question 2."
+        ],
+        "revoir": "l-orthogonalite-espace-008",
+        "solution": "$\\overrightarrow{BD} - \\overrightarrow{BE} = \\overrightarrow{ED}$, donc la formule de polarisation donne\n\n$\\overrightarrow{BD} \\cdot \\overrightarrow{BE} = \\dfrac{1}{2}\\left(BD^2 + BE^2 - DE^2\\right) = \\dfrac{1}{2}(20 + 25 - 13) = 16$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Calculer l'aire du triangle $BDE$ : valeur exacte, puis arrondi au centième.",
+        "reponse": { "type": "numerique", "valeur": 7.81, "tolerance": 0.005, "decimales": 2 },
+        "indices": [
+          "Méthode du cours : prends $[BD]$ pour base et $K$, projeté orthogonal de $E$ sur $(BD)$ ; le produit scalaire de la question 3 est positif.",
+          "La formule du projeté donne $BK = \\dfrac{\\overrightarrow{BD} \\cdot \\overrightarrow{BE}}{BD}$, donc $BK^2 = \\dfrac{256}{20}$. Puis $EK^2 = BE^2 - BK^2$.",
+          "L'aire $\\mathcal{A}$ vérifie $\\mathcal{A}^2 = \\dfrac{BD^2 \\times EK^2}{4}$ : calcule ce nombre, puis sa racine."
+        ],
+        "revoir": "l-orthogonalite-espace-071",
+        "solution": "Soit $K$ le projeté orthogonal de $E$ sur $(BD)$. Comme $\\overrightarrow{BD} \\cdot \\overrightarrow{BE} = 16 > 0$, la formule du projeté donne $BD \\times BK = 16$, d'où $BK^2 = \\dfrac{256}{20} = \\dfrac{64}{5}$. Le triangle $BKE$ est rectangle en $K$ : $EK^2 = BE^2 - BK^2 = 25 - \\dfrac{64}{5} = \\dfrac{61}{5}$.\n\nL'aire vérifie $\\mathcal{A}^2 = \\dfrac{BD^2 \\times EK^2}{4} = \\dfrac{20 \\times \\frac{61}{5}}{4} = 61$, donc $\\mathcal{A} = \\sqrt{61} \\approx 7{,}81$ unités d'aire."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "En déduire la distance du point $A$ au plan $(BDE)$, arrondie au centième.",
+        "reponse": { "type": "numerique", "valeur": 1.54, "tolerance": 0.005, "decimales": 2 },
+        "indices": [
+          "Écris le volume du tétraèdre avec la base $BDE$ et le sommet $A$ : la hauteur est la distance cherchée $h$.",
+          "$V = \\dfrac{1}{3} \\times \\mathcal{A} \\times h$, donc $h = \\dfrac{3V}{\\mathcal{A}}$.",
+          "Remplace $V$ et $\\mathcal{A}$ par leurs valeurs exactes, puis utilise la calculatrice et arrondis au centième."
+        ],
+        "revoir": "l-orthogonalite-espace-073",
+        "solution": "Avec la base $BDE$, la hauteur issue de $A$ est la distance $h$ de $A$ au plan $(BDE)$ : $V = \\dfrac{1}{3} \\times \\sqrt{61} \\times h$.\n\nDonc $h = \\dfrac{3V}{\\sqrt{61}} = \\dfrac{12}{\\sqrt{61}} \\approx 1{,}54$."
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Déterminer une valeur approchée de l'angle $\\widehat{DBE}$ au dixième de degré.",
+        "reponse": { "type": "numerique", "valeur": 44.3, "tolerance": 0.05, "decimales": 1 },
+        "indices": [
+          "Sommet $B$ : utilise la définition $\\overrightarrow{BD} \\cdot \\overrightarrow{BE} = BD \\times BE \\times \\cos\\widehat{DBE}$.",
+          "$BD = \\sqrt{20} = 2\\sqrt{5}$ et $BE = 5$, avec le produit scalaire de la question 3.",
+          "Isole le cosinus, puis utilise la touche $\\cos^{-1}$ de la calculatrice, en mode degrés."
+        ],
+        "revoir": "l-orthogonalite-espace-026",
+        "solution": "$\\cos\\widehat{DBE} = \\dfrac{\\overrightarrow{BD} \\cdot \\overrightarrow{BE}}{BD \\times BE} = \\dfrac{16}{2\\sqrt{5} \\times 5} = \\dfrac{8}{5\\sqrt{5}}$.\n\nLa calculatrice, en mode degrés, donne $\\widehat{DBE} \\approx 44{,}3^\\circ$ au dixième de degré."
+      }
+    ]
   }
 ]
