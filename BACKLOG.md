@@ -783,15 +783,50 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     logarithme (dont les auteurs ont réparti les positions à la main). Mélanger les choix à
     l'affichage, avec une graine stable par question (session d'interface), ou réordonner
     les choix de ces deux chapitres.
-  - [ ] Orthogonalité et distances dans l'espace : le cours — chapitre 8 dans l'ordre de
-    l'année (`orthogonalite-espace`) : `/tle-chapitre maths orthogonalite-espace cours`.
-    Leçons des sessions du 2026-10-15 et 16 : relecteur et élève-testeur en parallèle à
-    chaque tour ; auteurs d'exercices et de type bac lancés dès le cours relu, en parallèle
-    avec les retouches du cours (identifiants gelés) ; commiter après chaque agent ; une
-    seule relecture ciblée finale pour toutes les retouches. Penser à remettre les questions
-    de produit scalaire retirées du type bac de Vecteurs de l'espace (item ci-dessus).
-  - [ ] Orthogonalité et distances dans l'espace : les exercices — `/tle-chapitre maths
-    orthogonalite-espace exercices`, après le cours.
+  - [x] Orthogonalité et distances dans l'espace : le cours — fait le 2026-10-16 : 5 notions
+    (priorités mesurées sur 103 sujets : repère orthonormé 95 %, vecteur normal 91 %,
+    projeté et distance 69 %, longueurs, aires et volumes 53 % → ★★★ ; produit scalaire 10 %
+    relevé d'un cran, tout le chapitre en dépend → ★★), 80 blocs dont la démonstration
+    exigible « le projeté est le point le plus proche », 10 cartes de mémo, 6 figures.
+    Frontière posée avec le chapitre 9 : ni équation de plan, ni représentation
+    paramétrique, ni système ; les projetés sont donnés puis vérifiés. Relecteur PASS au
+    tour 1, élève-testeur À clarifier (1 bloquant : la méthode du projeté sautait une
+    étape) ; corrigé, relu au tour 2 (PASS).
+  - [x] Orthogonalité et distances dans l'espace : les exercices — même session, à la
+    demande de Thibaud : 36 exercices (17 Comprendre, 15 S'entraîner, 4 Approfondir),
+    19 questions éclair, 4 sujets type bac adaptés d'annales (24 points ; questions
+    d'équation de plan et de représentation paramétrique retirées et notées dans
+    `adaptation`). Élève-testeur 17/17 en Comprendre (1 bloquant : une étape de calcul
+    sautée) ; relecteur NEEDS_REVISION au tour 1 (un sujet passait par un système du
+    chapitre suivant, trois indices donnaient la réponse), PASS au tour 2. Coût : 71 $ pour
+    les deux parties, avec une coupure de limite d'usage (agent repris sans rien perdre).
+  - [ ] Orthogonalité, petites retouches du cours — non bloquants laissés ouverts (rapports
+    du 2026-10-16) : la règle ‖k·u⃗‖ = |k|·‖u⃗‖, la polarisation en 1/4, le produit
+    « 3 termes × 3 termes » et la « droite incluse dans un plan » n'ont pas d'exemple dans
+    le cours (les indices des exercices x-002, x-006, x-018, x-024 q5 et tb-001, tb-002
+    comblent le manque) ; dire que u⃗·n⃗ = 0 met u⃗ dans la direction du plan ; la légende
+    des figures 079 et 080 parle du « cube des exemples de cette page » alors que 041 et
+    055 utilisent d'autres points A, B, C ; l'arête cachée [AD] touche l'étiquette D
+    (`cube-diagonale-ec.svg`) ; marques d'angle droit en O serrées (`tetraedre-oabc.svg`) ;
+    le titre de la notion « Longueurs, angles, aires et volumes » annonce des angles traités
+    en notion 2 ; quelques phrases de plus de 25 mots (058, 071, 020).
+  - [ ] Orthogonalité, petites retouches des exercices — non bloquants du relecteur au
+    tour 2 : le 2e indice de x-016 q3 tranche presque le vrai-faux (faire calculer 𝓑 × h
+    avec les deux bases) ; le 2e indice de x-011 q1 et q2 désigne le bon choix.
+  - [ ] Orthogonalité : remettre dans le type bac les questions retirées des sujets adaptés
+    (équation cartésienne, représentation paramétrique, intersection), quand « Représentations
+    paramétriques et équations cartésiennes » sera écrit (notes `adaptation` de
+    `content/terminale/maths/chapitres/orthogonalite-espace/type-bac.json`).
+  - [ ] Une animation pour faire tourner un cube avec un plan et sa diagonale orthogonale, ou
+    un point et son projeté — souhait de l'auteur du cours d'Orthogonalité ; à faire quand
+    les figures animées existeront (rejoint l'item du cube de Vecteurs de l'espace).
+  - [ ] Représentations paramétriques et équations cartésiennes : le cours — chapitre 9 dans
+    l'ordre de l'année (`equations-espace`) : `/tle-chapitre maths equations-espace cours`.
+    Penser à remettre les questions retirées des types bac de Vecteurs de l'espace et
+    d'Orthogonalité (items ci-dessus) ; le produit scalaire existe désormais, ses questions
+    retirées du type bac de Vecteurs de l'espace peuvent déjà revenir.
+  - [ ] Représentations paramétriques et équations cartésiennes : les exercices —
+    `/tle-chapitre maths equations-espace exercices`, après le cours.
   - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
     (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
     `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source
