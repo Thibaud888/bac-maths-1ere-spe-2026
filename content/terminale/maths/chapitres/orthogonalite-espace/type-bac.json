@@ -1,0 +1,683 @@
+[
+  {
+    "id": "tb-orthogonalite-espace-001",
+    "chapitre": "orthogonalite-espace",
+    "notions": [
+      "n-orthogonalite-espace-mesures",
+      "n-orthogonalite-espace-projete-distance",
+      "n-orthogonalite-espace-vecteur-normal",
+      "n-orthogonalite-espace-repere-orthonorme"
+    ],
+    "capacites": [
+      "bo-m-orthogonalite-07",
+      "bo-m-orthogonalite-06",
+      "bo-m-orthogonalite-02",
+      "bo-m-orthogonalite-04",
+      "bo-m-orthogonalite-08",
+      "bo-m-orthogonalite-10",
+      "bo-m-orthogonalite-11",
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-06"
+    ],
+    "titre": "Un tétraèdre sur les axes : projeté, distance, aire par le volume",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2021-metropole-mars-j2",
+      "adaptation": "Exercice 3 (4 points) : points A(2 ; 0 ; 0), B(0 ; 3 ; 0) et C(0 ; 0 ; 1), vecteur n(3 ; 2 ; 6) normal au plan (ABC), point H(18/49 ; 12/49 ; 36/49), distance OH, aire du triangle ABC par le volume de la pyramide OABC calculé de deux façons : conservés. Retirées, à remettre quand le chapitre « Représentations paramétriques et équations cartésiennes » sera écrit : question 1.b (en déduire que 3x + 2y + 6z − 6 = 0 est une équation cartésienne du plan (ABC)), question 2.a (représentation paramétrique de la droite d passant par O et orthogonale au plan (ABC)) et question 2.b (montrer que d coupe le plan (ABC) en H, par le calcul de l'intersection). Remplacées par : vérifier que H est dans le plan (ABC) par un produit scalaire nul, puis démontrer que H est le projeté orthogonal de O sur ce plan. Ajoutés : le non-alignement de A, B, C et la question 3.a (droite (OC) orthogonale au plan (OAB), volume avec la base OAB). Pour que l'exercice reste rattrapable, la distance 6/7 et le volume 1 sont donnés dans l'énoncé (« En déduire que… », « démontrer que… »). Barème porté à 5 points. Le sujet d'origine autorisait la calculatrice ; ici elle ne l'est pas, tous les calculs se font à la main. Figure redessinée pour le site. Solution écrite pour le site."
+    },
+    "preambule": "Dans l'espace muni d'un repère orthonormé $\\left(O\\,;\\,\\vec{\\imath}, \\vec{\\jmath}, \\vec{k}\\right)$, on considère les points $A(2\\,;\\,0\\,;\\,0)$, $B(0\\,;\\,3\\,;\\,0)$ et $C(0\\,;\\,0\\,;\\,1)$, placés sur les trois axes.\n\nL'objectif de l'exercice est de calculer l'aire du triangle $ABC$.\n\nOn rappelle que le volume d'une pyramide est $V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h$, où $\\mathcal{B}$ est l'aire d'une base et $h$ la hauteur associée à cette base.\n\nLes questions s'enchaînent, mais chacune peut être traitée en admettant les résultats des précédentes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/orthogonalite-espace/tb-tetraedre-axes.svg",
+        "alt": "Le tétraèdre OABC dans un repère orthonormé : O est l'origine, A(2 ; 0 ; 0) est sur l'axe qui vient vers l'avant à gauche, B(0 ; 3 ; 0) sur l'axe horizontal vers la droite, C(0 ; 0 ; 1) sur l'axe vertical. La face ABC est colorée en bleu ; les arêtes [OA], [OB] et [OC], cachées derrière cette face, sont en pointillé. Le point H est marqué sur la face ABC, et le segment [OH], caché lui aussi, est en pointillé orange.",
+        "width": 380,
+        "height": 190
+      },
+      "caption": "Le tétraèdre OABC : A, B et C sont sur les axes ; H est le point de la face ABC étudié aux questions 1.b et 2."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Le plan $(ABC)$ et un vecteur normal.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Justifier que les points $A$, $B$ et $C$ définissent un plan, puis montrer que le vecteur $\\vec{n}\\begin{pmatrix} 3 \\\\ 2 \\\\ 6 \\end{pmatrix}$ est normal au plan $(ABC)$.",
+            "points": 1,
+            "revoir": "l-orthogonalite-espace-040",
+            "indices": [
+              "Revois la méthode : il faut deux vecteurs non colinéaires du plan, par exemple $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, puis deux produits scalaires avec $\\vec{n}$. Commence par les coordonnées de ces deux vecteurs : arrivée moins départ.",
+              "Avec $\\overrightarrow{AB}\\begin{pmatrix} -2 \\\\ 3 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -2 \\\\ 0 \\\\ 1 \\end{pmatrix}$, cherche une coordonnée nulle chez l'un et pas chez l'autre : elle empêche la colinéarité. Calcule ensuite $\\vec{n} \\cdot \\overrightarrow{AB}$ et $\\vec{n} \\cdot \\overrightarrow{AC}$ avec $xx' + yy' + zz'$, le repère étant orthonormé."
+            ],
+            "attenduCorrecteur": "- Coordonnées $\\overrightarrow{AB}\\begin{pmatrix} -2 \\\\ 3 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -2 \\\\ 0 \\\\ 1 \\end{pmatrix}$, non-colinéarité justifiée, donc $A$, $B$, $C$ non alignés définissent un plan : 0,25 pt.\n- Deux produits scalaires calculés en repère orthonormé : $\\vec{n} \\cdot \\overrightarrow{AB} = -6 + 6 + 0 = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = -6 + 0 + 6 = 0$ : 0,5 pt.\n- Conclusion rédigée : $\\vec{n}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(ABC)$, donc il est normal à ce plan : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{AB}\\begin{pmatrix} -2 \\\\ 3 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -2 \\\\ 0 \\\\ 1 \\end{pmatrix}$. Le vecteur $\\overrightarrow{AC}$ n'est pas nul ; s'il existait un réel $k$ tel que $\\overrightarrow{AB} = k\\,\\overrightarrow{AC}$, la deuxième coordonnée donnerait $3 = k \\times 0 = 0$, ce qui est faux. Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ ne sont donc pas colinéaires : les points $A$, $B$, $C$ ne sont pas alignés, ils définissent le plan $(ABC)$, dirigé par $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.\n\nLe repère est orthonormé, donc :\n\n$$\\vec{n} \\cdot \\overrightarrow{AB} = 3 \\times (-2) + 2 \\times 3 + 6 \\times 0 = 0 \\quad \\text{et} \\quad \\vec{n} \\cdot \\overrightarrow{AC} = 3 \\times (-2) + 2 \\times 0 + 6 \\times 1 = 0.$$\n\nLe vecteur $\\vec{n}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(ABC)$ : **$\\vec{n}$ est un vecteur normal au plan $(ABC)$.**",
+            "erreurFrequente": "Ne calculer qu'un seul produit scalaire : un vecteur orthogonal au seul vecteur $\\overrightarrow{AB}$ n'est pas forcément normal au plan $(ABC)$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "On considère le point $H\\left(\\dfrac{18}{49}\\,;\\,\\dfrac{12}{49}\\,;\\,\\dfrac{36}{49}\\right)$. Démontrer que le point $H$ appartient au plan $(ABC)$.",
+            "points": 0.75,
+            "revoir": "l-orthogonalite-espace-043",
+            "indices": [
+              "Le plan $(ABC)$ passe par $A$ et admet $\\vec{n}$ pour vecteur normal (question a). Revois la propriété : quelle condition sur $\\overrightarrow{AM}$ caractérise les points $M$ de ce plan ?",
+              "Calcule les coordonnées de $\\overrightarrow{AH}$ en écrivant $2 = \\dfrac{98}{49}$, puis le produit scalaire $\\overrightarrow{AH} \\cdot \\vec{n}$ : garde le dénominateur $49$ jusqu'au bout."
+            ],
+            "attenduCorrecteur": "- Propriété citée : le plan $(ABC)$ est le plan passant par $A$ et normal à $\\vec{n}$, c'est-à-dire l'ensemble des points $M$ tels que $\\overrightarrow{AM} \\cdot \\vec{n} = 0$ : 0,25 pt.\n- Calcul : $\\overrightarrow{AH}\\begin{pmatrix} -\\frac{80}{49} \\\\ \\frac{12}{49} \\\\ \\frac{36}{49} \\end{pmatrix}$ et $\\overrightarrow{AH} \\cdot \\vec{n} = \\dfrac{-240 + 24 + 216}{49} = 0$ : 0,25 pt.\n- Conclusion : $H \\in (ABC)$ : 0,25 pt. Toute autre méthode juste est acceptée, par exemple $\\overrightarrow{AH} = \\dfrac{4}{49}\\,\\overrightarrow{AB} + \\dfrac{36}{49}\\,\\overrightarrow{AC}$.",
+            "solution": "D'après la question a, $\\vec{n}$ est normal au plan $(ABC)$, qui passe par $A$. Ce plan est donc l'ensemble des points $M$ de l'espace tels que $\\overrightarrow{AM} \\cdot \\vec{n} = 0$.\n\nOr $2 = \\dfrac{98}{49}$, donc $\\overrightarrow{AH}\\begin{pmatrix} \\frac{18}{49} - \\frac{98}{49} \\\\ \\frac{12}{49} \\\\ \\frac{36}{49} \\end{pmatrix}$, soit $\\overrightarrow{AH}\\begin{pmatrix} -\\frac{80}{49} \\\\ \\frac{12}{49} \\\\ \\frac{36}{49} \\end{pmatrix}$, et :\n\n$$\\overrightarrow{AH} \\cdot \\vec{n} = \\dfrac{3 \\times (-80) + 2 \\times 12 + 6 \\times 36}{49} = \\dfrac{-240 + 24 + 216}{49} = 0.$$\n\n**Le point $H$ appartient au plan $(ABC)$.**"
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Le projeté orthogonal de $O$ sur le plan $(ABC)$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Démontrer que $H$ est le projeté orthogonal du point $O$ sur le plan $(ABC)$.",
+            "points": 0.75,
+            "revoir": "l-orthogonalite-espace-058",
+            "indices": [
+              "Revois la méthode : deux conditions à vérifier. L'une est déjà acquise grâce à la question 1.b ; l'autre porte sur le vecteur $\\overrightarrow{OH}$.",
+              "Écris les coordonnées de $\\overrightarrow{OH}$ et compare-les à celles de $\\vec{n}$ : cherche un réel $k$ tel que $\\overrightarrow{OH} = k\\,\\vec{n}$."
+            ],
+            "attenduCorrecteur": "- $H \\in (ABC)$, d'après la question 1.b : 0,25 pt.\n- $\\overrightarrow{OH} = \\dfrac{6}{49}\\,\\vec{n}$ (car $18 = 6 \\times 3$, $12 = 6 \\times 2$ et $36 = 6 \\times 6$) : $\\overrightarrow{OH}$ est colinéaire au vecteur normal $\\vec{n}$, donc normal au plan $(ABC)$ : 0,25 pt.\n- Conclusion avec la définition : $H$ est dans le plan et $\\overrightarrow{OH}$ est normal au plan, donc $H$ est le projeté orthogonal de $O$ sur $(ABC)$ : 0,25 pt.",
+            "solution": "D'après la question 1.b, le point $H$ appartient au plan $(ABC)$.\n\nDe plus, $\\overrightarrow{OH}\\begin{pmatrix} \\frac{18}{49} \\\\ \\frac{12}{49} \\\\ \\frac{36}{49} \\end{pmatrix}$ ; comme $18 = 6 \\times 3$, $12 = 6 \\times 2$ et $36 = 6 \\times 6$, on a $\\overrightarrow{OH} = \\dfrac{6}{49}\\,\\vec{n}$. Le vecteur $\\overrightarrow{OH}$, non nul et colinéaire au vecteur normal $\\vec{n}$, est lui aussi normal au plan $(ABC)$.\n\n$H$ est un point du plan $(ABC)$ et $\\overrightarrow{OH}$ est normal à ce plan : **$H$ est le projeté orthogonal de $O$ sur le plan $(ABC)$.**",
+            "erreurFrequente": "Oublier de rappeler que $H$ est dans le plan : la droite passant par $O$ et dirigée par $\\vec{n}$ contient une infinité de points, et un seul d'entre eux est dans le plan $(ABC)$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "En déduire que la distance du point $O$ au plan $(ABC)$ est égale à $\\dfrac{6}{7}$.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-054",
+            "indices": [
+              "Revois la propriété : la distance d'un point à un plan se lit sur son projeté orthogonal. Il reste à calculer une longueur.",
+              "Utilise $\\overrightarrow{OH} = \\dfrac{6}{49}\\,\\vec{n}$ : la norme de $k\\,\\vec{n}$, pour $k > 0$, vaut $k \\times \\lVert \\vec{n} \\rVert$, et $\\lVert \\vec{n} \\rVert = \\sqrt{9 + 4 + 36}$."
+            ],
+            "attenduCorrecteur": "- La distance de $O$ au plan $(ABC)$ est $OH$, car $H$ est le projeté orthogonal de $O$ sur ce plan (le point du plan le plus proche de $O$) : 0,25 pt.\n- Calcul : $\\lVert \\vec{n} \\rVert = \\sqrt{49} = 7$, d'où $OH = \\dfrac{6}{49} \\times 7 = \\dfrac{6}{7}$ (ou directement $OH^2 = \\dfrac{324 + 144 + 1\\,296}{2\\,401} = \\dfrac{36}{49}$) : 0,25 pt.",
+            "solution": "Comme $H$ est le projeté orthogonal de $O$ sur le plan $(ABC)$, la distance du point $O$ à ce plan est la longueur $OH$.\n\nOr $\\overrightarrow{OH} = \\dfrac{6}{49}\\,\\vec{n}$ et $\\lVert \\vec{n} \\rVert = \\sqrt{3^2 + 2^2 + 6^2} = \\sqrt{49} = 7$, donc $OH = \\dfrac{6}{49} \\times 7 = \\dfrac{6}{7}$.\n\n**La distance du point $O$ au plan $(ABC)$ est $\\dfrac{6}{7}$.**"
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Le volume du tétraèdre $OABC$, calculé de deux façons.",
+        "points": 2,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Démontrer que la droite $(OC)$ est orthogonale au plan $(OAB)$, puis que le volume $V$ du tétraèdre $OABC$ est égal à $1$ unité de volume.",
+            "points": 1,
+            "revoir": "l-orthogonalite-espace-067",
+            "indices": [
+              "Pour l'orthogonalité, deux produits scalaires suffisent, avec deux vecteurs non colinéaires du plan $(OAB)$. Pour le volume, choisis la base $OAB$ : revois quelle longueur sert alors de hauteur.",
+              "$\\overrightarrow{OC} \\cdot \\overrightarrow{OA}$ et $\\overrightarrow{OC} \\cdot \\overrightarrow{OB}$ se calculent tout de suite. Le point $O$ est alors le projeté orthogonal de $C$ sur le plan $(OAB)$, et le triangle $OAB$ est rectangle en $O$."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{OA}\\begin{pmatrix} 2 \\\\ 0 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{OB}\\begin{pmatrix} 0 \\\\ 3 \\\\ 0 \\end{pmatrix}$ non colinéaires, $\\overrightarrow{OC} \\cdot \\overrightarrow{OA} = 0$ et $\\overrightarrow{OC} \\cdot \\overrightarrow{OB} = 0$ : la droite $(OC)$ est orthogonale au plan $(OAB)$ : 0,5 pt.\n- Base $OAB$, rectangle en $O$, d'aire $\\dfrac{OA \\times OB}{2} = 3$ ; hauteur $OC = 1$, car $O$ est le projeté orthogonal de $C$ sur $(OAB)$ ; $V = \\dfrac{1}{3} \\times 3 \\times 1 = 1$ unité de volume : 0,5 pt.",
+            "solution": "On a $\\overrightarrow{OA}\\begin{pmatrix} 2 \\\\ 0 \\\\ 0 \\end{pmatrix}$, $\\overrightarrow{OB}\\begin{pmatrix} 0 \\\\ 3 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{OC}\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$. Les vecteurs $\\overrightarrow{OA}$ et $\\overrightarrow{OB}$ ne sont pas colinéaires : $\\overrightarrow{OB} = k\\,\\overrightarrow{OA}$ donnerait $3 = k \\times 0 = 0$ sur la deuxième coordonnée. Ils dirigent donc le plan $(OAB)$.\n\nLe repère est orthonormé : $\\overrightarrow{OC} \\cdot \\overrightarrow{OA} = 0 + 0 + 0 = 0$ et $\\overrightarrow{OC} \\cdot \\overrightarrow{OB} = 0 + 0 + 0 = 0$. Le vecteur $\\overrightarrow{OC}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(OAB)$ : **la droite $(OC)$ est orthogonale au plan $(OAB)$.**\n\nPrenons pour base le triangle $OAB$ et pour sommet $C$. Le point $O$ est dans le plan $(OAB)$ et $\\overrightarrow{CO}$ est normal à ce plan : $O$ est le projeté orthogonal de $C$ sur $(OAB)$, et la hauteur associée est $OC = 1$.\n\nLe triangle $OAB$ est rectangle en $O$, car $\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = 0$ ; son aire vaut $\\dfrac{OA \\times OB}{2} = \\dfrac{2 \\times 3}{2} = 3$. Donc :\n\n$$V = \\dfrac{1}{3} \\times 3 \\times 1 = 1.$$\n\n**Le volume du tétraèdre $OABC$ est $1$ unité de volume.**"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "En exprimant le volume $V$ d'une seconde façon, déterminer l'aire du triangle $ABC$.\n\nSaisis l'aire obtenue, en unités d'aire.",
+            "points": 1,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "7/2",
+              "tolerance": 0.001
+            },
+            "revoir": "l-orthogonalite-espace-073",
+            "indices": [
+              "Revois la méthode du volume calculé de deux façons : prends maintenant la face $ABC$ pour base et $O$ pour sommet. Quelle est la hauteur associée ? La question 2 te la donne.",
+              "Écris $V = \\dfrac{1}{3} \\times \\mathcal{A} \\times OH$, où $\\mathcal{A}$ est l'aire cherchée, remplace $V$ et $OH$ par leurs valeurs, puis isole $\\mathcal{A}$."
+            ],
+            "attenduCorrecteur": "- Base $ABC$, sommet $O$ : la hauteur associée est la distance de $O$ au plan $(ABC)$, soit $OH = \\dfrac{6}{7}$ (question 2) : 0,5 pt.\n- Égalité $1 = \\dfrac{1}{3} \\times \\mathcal{A} \\times \\dfrac{6}{7} = \\dfrac{2}{7}\\,\\mathcal{A}$, d'où $\\mathcal{A} = \\dfrac{7}{2}$, conclusion rédigée avec l'unité : 0,5 pt.",
+            "solution": "Prenons maintenant pour base le triangle $ABC$ et pour sommet $O$. La hauteur associée est la distance du point $O$ au plan $(ABC)$ : d'après la question 2, c'est $OH = \\dfrac{6}{7}$. En notant $\\mathcal{A}$ l'aire du triangle $ABC$ :\n\n$$V = \\dfrac{1}{3} \\times \\mathcal{A} \\times \\dfrac{6}{7} = \\dfrac{2}{7}\\,\\mathcal{A}.$$\n\nOr $V = 1$ d'après la question a, donc $\\dfrac{2}{7}\\,\\mathcal{A} = 1$, soit $\\mathcal{A} = \\dfrac{7}{2}$.\n\n**L'aire du triangle $ABC$ est $\\dfrac{7}{2} = 3{,}5$ unités d'aire.**",
+            "erreurFrequente": "Prendre $OA$, $OB$ ou $OC$ comme hauteur pour la base $ABC$ : aucune de ces arêtes n'est orthogonale au plan $(ABC)$ ; la hauteur associée à cette base est $OH$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-orthogonalite-espace-002",
+    "chapitre": "orthogonalite-espace",
+    "notions": [
+      "n-orthogonalite-espace-projete-distance",
+      "n-orthogonalite-espace-vecteur-normal",
+      "n-orthogonalite-espace-repere-orthonorme",
+      "n-orthogonalite-espace-produit-scalaire"
+    ],
+    "capacites": [
+      "bo-m-orthogonalite-06",
+      "bo-m-orthogonalite-07",
+      "bo-m-orthogonalite-08",
+      "bo-m-orthogonalite-10",
+      "bo-m-orthogonalite-13",
+      "bo-m-orthogonalite-12",
+      "bo-m-orthogonalite-02",
+      "bo-m-orthogonalite-04",
+      "bo-m-orthogonalite-01",
+      "bo-m-orthogonalite-05",
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-04",
+      "bo-m-vecteurs-06"
+    ],
+    "titre": "Projeté sur un plan, point le plus proche, projeté sur une droite",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2023-metropole-septembre-j1",
+      "adaptation": "Exercice 2 (5 points) : points A(1 ; 0 ; −1), B(3 ; −1 ; 2), C(2 ; −2 ; −1) et D(4 ; −1 ; −2), questions 1.a, 1.b, 2.a, 2.b et 3.c conservées. Retirée, à remettre quand le chapitre « Représentations paramétriques et équations cartésiennes » sera écrit : question 1.c (montrer que 2x + y − z − 3 = 0 est une équation cartésienne du plan P). La droite Δ, donnée dans le sujet par une représentation paramétrique, est décrite ici par un point E(0 ; 2 ; −1) et un vecteur directeur u(0 ; 1 ; 1) (chapitre « Vecteurs, droites et plans de l'espace ») : la question 3.a (Δ incluse dans P) se traite avec le produit scalaire et sa bilinéarité, et la question 3.b (H est le point de Δ de paramètre t = −2) devient : démontrer que le point donné H(0 ; 0 ; −3) est le projeté orthogonal de D sur Δ. Ajoutée : question 2.c (P est le plan médiateur du segment [DD'], où D' est le symétrique de D par rapport à C). Barème porté à 6 points. Calculatrice non autorisée dans cette version. Solution écrite pour le site."
+    },
+    "preambule": "Dans l'espace muni d'un repère orthonormé $\\left(O\\,;\\,\\vec{\\imath}, \\vec{\\jmath}, \\vec{k}\\right)$, on considère les points\n\n$$A(1\\,;\\,0\\,;\\,-1), \\quad B(3\\,;\\,-1\\,;\\,2), \\quad C(2\\,;\\,-2\\,;\\,-1) \\quad \\text{et} \\quad D(4\\,;\\,-1\\,;\\,-2).$$\n\nOn note $\\Delta$ la droite passant par le point $E(0\\,;\\,2\\,;\\,-1)$ et de vecteur directeur $\\vec{u}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$.\n\nLes questions s'enchaînent, mais chacune peut être traitée en admettant les résultats des précédentes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Le plan $\\mathcal{P}$ et la droite $(CD)$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Montrer que les points $A$, $B$ et $C$ définissent un plan, que l'on notera $\\mathcal{P}$.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-024",
+            "indices": [
+              "Trois points définissent un plan quand ils ne sont pas alignés : revois comment le montrer avec deux vecteurs non colinéaires.",
+              "Calcule $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, puis cherche une coordonnée qui rend impossible une égalité $\\overrightarrow{AB} = k\\,\\overrightarrow{AC}$."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ -1 \\\\ 3 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 1 \\\\ -2 \\\\ 0 \\end{pmatrix}$ : 0,25 pt.\n- Non-colinéarité justifiée ($\\overrightarrow{AB} = k\\,\\overrightarrow{AC}$ donnerait $3 = 0$ sur la troisième coordonnée), donc $A$, $B$, $C$, non alignés, définissent un plan : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ -1 \\\\ 3 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 1 \\\\ -2 \\\\ 0 \\end{pmatrix}$. Le vecteur $\\overrightarrow{AC}$ n'est pas nul ; s'il existait un réel $k$ tel que $\\overrightarrow{AB} = k\\,\\overrightarrow{AC}$, la troisième coordonnée donnerait $3 = k \\times 0 = 0$, ce qui est faux.\n\nLes vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ ne sont pas colinéaires, donc les points $A$, $B$, $C$ ne sont pas alignés : **ils définissent un plan $\\mathcal{P}$**, dirigé par $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Montrer que la droite $(CD)$ est orthogonale au plan $\\mathcal{P}$. Sur le plan $\\mathcal{P}$, que représente le point $C$ par rapport au point $D$ ?",
+            "points": 1,
+            "revoir": "l-orthogonalite-espace-040",
+            "indices": [
+              "Revois la méthode : $\\overrightarrow{CD}$ doit être orthogonal à deux vecteurs non colinéaires du plan $\\mathcal{P}$ ; ceux de la question a conviennent. Pour la seconde partie, revois la définition du projeté orthogonal d'un point sur un plan.",
+              "Calcule $\\overrightarrow{CD}$, puis $\\overrightarrow{CD} \\cdot \\overrightarrow{AB}$ et $\\overrightarrow{CD} \\cdot \\overrightarrow{AC}$. Pour le point $C$ : il est dans $\\mathcal{P}$, et le vecteur $\\overrightarrow{DC}$ est porté par la droite $(CD)$."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{CD}\\begin{pmatrix} 2 \\\\ 1 \\\\ -1 \\end{pmatrix}$, $\\overrightarrow{CD} \\cdot \\overrightarrow{AB} = 4 - 1 - 3 = 0$ et $\\overrightarrow{CD} \\cdot \\overrightarrow{AC} = 2 - 2 + 0 = 0$ : 0,5 pt.\n- Conclusion : $\\overrightarrow{CD}$, non nul, est orthogonal à deux vecteurs non colinéaires de $\\mathcal{P}$, donc normal à $\\mathcal{P}$ ; la droite $(CD)$ est orthogonale à $\\mathcal{P}$ : 0,25 pt.\n- $C \\in \\mathcal{P}$ et $\\overrightarrow{DC}$ normal à $\\mathcal{P}$ : $C$ est le projeté orthogonal de $D$ sur $\\mathcal{P}$ : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{CD}\\begin{pmatrix} 2 \\\\ 1 \\\\ -1 \\end{pmatrix}$. Le repère est orthonormé, donc :\n\n$$\\overrightarrow{CD} \\cdot \\overrightarrow{AB} = 2 \\times 2 + 1 \\times (-1) + (-1) \\times 3 = 0 \\quad \\text{et} \\quad \\overrightarrow{CD} \\cdot \\overrightarrow{AC} = 2 \\times 1 + 1 \\times (-2) + (-1) \\times 0 = 0.$$\n\nLe vecteur $\\overrightarrow{CD}$, non nul, est orthogonal aux deux vecteurs non colinéaires $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ qui dirigent $\\mathcal{P}$ : c'est un vecteur normal à $\\mathcal{P}$, et **la droite $(CD)$ est orthogonale au plan $\\mathcal{P}$.**\n\nDe plus, $C$ est un point de $\\mathcal{P}$ et $\\overrightarrow{DC} = -\\overrightarrow{CD}$ est normal à $\\mathcal{P}$ : **$C$ est le projeté orthogonal du point $D$ sur le plan $\\mathcal{P}$.**"
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Distances au point $D$.",
+        "points": 2.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Calculer la distance $CD$. Que représente cette longueur pour le point $D$ et le plan $\\mathcal{P}$ ?",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-054",
+            "indices": [
+              "La longueur se calcule avec la formule de la distance en repère orthonormé. Pour son sens, revois la propriété du projeté orthogonal, point du plan le plus proche.",
+              "Tu as déjà les coordonnées de $\\overrightarrow{CD}$ : additionne les carrés de ses trois coordonnées, puis prends la racine carrée."
+            ],
+            "attenduCorrecteur": "- $CD = \\sqrt{2^2 + 1^2 + (-1)^2} = \\sqrt{6}$ : 0,25 pt.\n- $C$ étant le projeté orthogonal de $D$ sur $\\mathcal{P}$, $CD$ est la distance du point $D$ au plan $\\mathcal{P}$ : 0,25 pt.",
+            "solution": "Le repère est orthonormé : $CD = \\sqrt{2^2 + 1^2 + (-1)^2} = \\sqrt{6}$.\n\nComme $C$ est le projeté orthogonal de $D$ sur $\\mathcal{P}$ (question 1.b), **$CD = \\sqrt{6}$ est la distance du point $D$ au plan $\\mathcal{P}$.**"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Existe-t-il un point $M$ du plan $\\mathcal{P}$, différent de $C$, vérifiant $MD = \\sqrt{6}$ ? Justifier la réponse.",
+            "points": 1,
+            "revoir": "l-orthogonalite-espace-056",
+            "indices": [
+              "Revois la démonstration du cours : comment se compare $MD$ à $CD$ quand $M$ est un point du plan différent du projeté $C$ ?",
+              "Pour un point $M$ de $\\mathcal{P}$, écris $\\overrightarrow{MD} = \\overrightarrow{MC} + \\overrightarrow{CD}$ et développe $MD^2 = \\lVert \\overrightarrow{MC} + \\overrightarrow{CD} \\rVert^2$. Que vaut $\\overrightarrow{MC} \\cdot \\overrightarrow{CD}$ ?"
+            ],
+            "attenduCorrecteur": "- Pour $M \\in \\mathcal{P}$ : $\\overrightarrow{MC} \\cdot \\overrightarrow{CD} = 0$, car $\\overrightarrow{CD}$ est normal à $\\mathcal{P}$ et $\\overrightarrow{MC}$ est un vecteur du plan : 0,25 pt.\n- $MD^2 = \\lVert \\overrightarrow{MC} + \\overrightarrow{CD} \\rVert^2 = MC^2 + 2\\,\\overrightarrow{MC} \\cdot \\overrightarrow{CD} + CD^2 = MC^2 + 6$ (ou le théorème de Pythagore dans le triangle $MCD$ rectangle en $C$, ou la propriété du cours : le projeté est le point du plan le plus proche) : 0,5 pt.\n- Conclusion : si $M \\neq C$, $MC^2 > 0$, donc $MD > \\sqrt{6}$ : aucun point de $\\mathcal{P}$ autre que $C$ ne convient, la réponse est non : 0,25 pt.",
+            "solution": "Soit $M$ un point du plan $\\mathcal{P}$. Le vecteur $\\overrightarrow{MC}$ relie deux points de $\\mathcal{P}$, et $\\overrightarrow{CD}$ est normal à $\\mathcal{P}$ (question 1.b) : donc $\\overrightarrow{MC} \\cdot \\overrightarrow{CD} = 0$.\n\nPar la relation de Chasles, $\\overrightarrow{MD} = \\overrightarrow{MC} + \\overrightarrow{CD}$, et en développant :\n\n$$MD^2 = \\lVert \\overrightarrow{MC} + \\overrightarrow{CD} \\rVert^2 = MC^2 + 2\\,\\overrightarrow{MC} \\cdot \\overrightarrow{CD} + CD^2 = MC^2 + 6.$$\n\nSi $M \\neq C$, alors $MC^2 > 0$, donc $MD^2 > 6$ et $MD > \\sqrt{6}$. On retrouve la propriété du cours : le projeté orthogonal $C$ est le point du plan $\\mathcal{P}$ le plus proche de $D$.\n\n**Non : aucun point $M$ du plan $\\mathcal{P}$ autre que $C$ ne vérifie $MD = \\sqrt{6}$.**",
+            "erreurFrequente": "Répondre « oui » en imaginant, dans le plan, un cercle de centre $C$ : les points de ce cercle sont à la même distance de $C$, mais tous sont strictement plus loin de $D$ que $C$."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "On note $D'$ le symétrique du point $D$ par rapport au point $C$. Démontrer que $\\mathcal{P}$ est le plan médiateur du segment $[DD']$. Que peut-on en déduire pour un point $M$ quelconque du plan $\\mathcal{P}$ ?",
+            "points": 0.75,
+            "revoir": "l-orthogonalite-espace-044",
+            "indices": [
+              "Revois l'exemple du plan médiateur : c'est le plan qui passe par le milieu du segment et qui est normal au vecteur qui le porte. Ici, quel point est le milieu de $[DD']$ ?",
+              "$C$ est le milieu de $[DD']$, donc $\\overrightarrow{DD'} = 2\\,\\overrightarrow{DC}$. Relie ce vecteur au vecteur normal $\\overrightarrow{CD}$ trouvé à la question 1.b."
+            ],
+            "attenduCorrecteur": "- $C$ est le milieu de $[DD']$ et $C \\in \\mathcal{P}$ : 0,25 pt.\n- $\\overrightarrow{DD'} = 2\\,\\overrightarrow{DC} = -2\\,\\overrightarrow{CD}$, colinéaire au vecteur normal $\\overrightarrow{CD}$ : $\\mathcal{P}$ passe par le milieu de $[DD']$ et il est normal à $\\overrightarrow{DD'}$, c'est le plan médiateur de $[DD']$ : 0,25 pt.\n- Conséquence : tout point $M$ de $\\mathcal{P}$ est équidistant de $D$ et de $D'$, $MD = MD'$ : 0,25 pt.",
+            "solution": "Par définition du symétrique, $C$ est le milieu du segment $[DD']$ ; on trouve $D'(0\\,;\\,-3\\,;\\,0)$, mais ces coordonnées ne sont pas nécessaires. Le point $C$ appartient au plan $\\mathcal{P}$.\n\nDe plus, $\\overrightarrow{DD'} = 2\\,\\overrightarrow{DC} = -2\\,\\overrightarrow{CD}$ : ce vecteur, non nul, est colinéaire au vecteur normal $\\overrightarrow{CD}$, donc il est lui aussi normal à $\\mathcal{P}$.\n\nAinsi $\\mathcal{P}$ est le plan passant par le milieu $C$ de $[DD']$ et normal à $\\overrightarrow{DD'}$ : **$\\mathcal{P}$ est le plan médiateur du segment $[DD']$.** Le plan médiateur étant l'ensemble des points équidistants de $D$ et de $D'$, **tout point $M$ de $\\mathcal{P}$ vérifie $MD = MD'$.**"
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "La droite $\\Delta$ et le projeté de $D$ sur $\\Delta$.",
+        "points": 2.25,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Montrer que la droite $\\Delta$ est incluse dans le plan $\\mathcal{P}$.",
+            "points": 1,
+            "revoir": "l-orthogonalite-espace-043",
+            "indices": [
+              "D'après la question 1.b, $\\mathcal{P}$ est le plan passant par $C$ et normal à $\\overrightarrow{CD}$ : revois la caractérisation de ses points par un produit scalaire. Il faut la vérifier pour tous les points de $\\Delta$, pas seulement pour $E$.",
+              "Un point $M$ de $\\Delta$ vérifie $\\overrightarrow{EM} = t\\,\\vec{u}$ pour un réel $t$. Écris $\\overrightarrow{CM} = \\overrightarrow{CE} + t\\,\\vec{u}$, puis développe $\\overrightarrow{CM} \\cdot \\overrightarrow{CD}$ par bilinéarité."
+            ],
+            "attenduCorrecteur": "- Caractérisation : $\\mathcal{P}$ passe par $C$ et admet $\\overrightarrow{CD}$ pour vecteur normal, donc $M \\in \\mathcal{P}$ si et seulement si $\\overrightarrow{CM} \\cdot \\overrightarrow{CD} = 0$ : 0,25 pt.\n- Calculs : $\\overrightarrow{CE}\\begin{pmatrix} -2 \\\\ 4 \\\\ 0 \\end{pmatrix}$, $\\overrightarrow{CE} \\cdot \\overrightarrow{CD} = -4 + 4 + 0 = 0$ et $\\vec{u} \\cdot \\overrightarrow{CD} = 0 + 1 - 1 = 0$ : 0,25 pt.\n- Pour tout point $M$ de $\\Delta$, $\\overrightarrow{EM} = t\\,\\vec{u}$ et, par bilinéarité, $\\overrightarrow{CM} \\cdot \\overrightarrow{CD} = \\overrightarrow{CE} \\cdot \\overrightarrow{CD} + t\\left(\\vec{u} \\cdot \\overrightarrow{CD}\\right) = 0$ : 0,25 pt.\n- Conclusion : tout point de $\\Delta$ est dans $\\mathcal{P}$, la droite $\\Delta$ est incluse dans $\\mathcal{P}$ : 0,25 pt. Autre méthode acceptée : $E \\in \\mathcal{P}$ et $\\vec{u} = \\dfrac{1}{3}\\,\\overrightarrow{AB} - \\dfrac{2}{3}\\,\\overrightarrow{AC}$, vecteur de la direction de $\\mathcal{P}$.",
+            "solution": "D'après la question 1.b, $\\mathcal{P}$ passe par $C$ et admet $\\overrightarrow{CD}$ pour vecteur normal. C'est donc l'ensemble des points $M$ de l'espace tels que $\\overrightarrow{CM} \\cdot \\overrightarrow{CD} = 0$.\n\nOn a $\\overrightarrow{CE}\\begin{pmatrix} -2 \\\\ 4 \\\\ 0 \\end{pmatrix}$, donc $\\overrightarrow{CE} \\cdot \\overrightarrow{CD} = -4 + 4 + 0 = 0$ ; et $\\vec{u} \\cdot \\overrightarrow{CD} = 0 \\times 2 + 1 \\times 1 + 1 \\times (-1) = 0$.\n\nSoit $M$ un point de $\\Delta$ : il existe un réel $t$ tel que $\\overrightarrow{EM} = t\\,\\vec{u}$. Par la relation de Chasles, $\\overrightarrow{CM} = \\overrightarrow{CE} + t\\,\\vec{u}$, et par bilinéarité du produit scalaire :\n\n$$\\overrightarrow{CM} \\cdot \\overrightarrow{CD} = \\overrightarrow{CE} \\cdot \\overrightarrow{CD} + t\\left(\\vec{u} \\cdot \\overrightarrow{CD}\\right) = 0 + t \\times 0 = 0.$$\n\nAinsi tout point de $\\Delta$ appartient à $\\mathcal{P}$ : **la droite $\\Delta$ est incluse dans le plan $\\mathcal{P}$.**",
+            "erreurFrequente": "Vérifier seulement que $E$ est dans $\\mathcal{P}$ : une droite qui passe par un point du plan peut aussi le traverser. Il faut en plus que sa direction soit parallèle au plan, ici $\\vec{u} \\cdot \\overrightarrow{CD} = 0$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "On considère le point $H(0\\,;\\,0\\,;\\,-3)$. Démontrer que $H$ est le projeté orthogonal du point $D$ sur la droite $\\Delta$.",
+            "points": 0.75,
+            "revoir": "l-orthogonalite-espace-055",
+            "indices": [
+              "Revois l'exemple de la distance d'un point à une droite : deux conditions, l'une sur l'appartenance de $H$ à $\\Delta$, l'autre sur un produit scalaire avec $\\vec{u}$.",
+              "Calcule $\\overrightarrow{EH}$ et compare-le à $\\vec{u}$ ; calcule ensuite $\\overrightarrow{DH}$ et le produit scalaire $\\overrightarrow{DH} \\cdot \\vec{u}$."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{EH}\\begin{pmatrix} 0 \\\\ -2 \\\\ -2 \\end{pmatrix} = -2\\,\\vec{u}$ : $\\overrightarrow{EH}$ et $\\vec{u}$ sont colinéaires, donc $H \\in \\Delta$ : 0,25 pt.\n- $\\overrightarrow{DH}\\begin{pmatrix} -4 \\\\ 1 \\\\ -1 \\end{pmatrix}$ et $\\overrightarrow{DH} \\cdot \\vec{u} = 0 + 1 - 1 = 0$ : 0,25 pt.\n- Conclusion : $H$ est le point de $\\Delta$ tel que $\\overrightarrow{DH}$ est orthogonal au vecteur directeur $\\vec{u}$ : c'est le projeté orthogonal de $D$ sur $\\Delta$ : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{EH}\\begin{pmatrix} 0 \\\\ -2 \\\\ -2 \\end{pmatrix}$, donc $\\overrightarrow{EH} = -2\\,\\vec{u}$ : les vecteurs $\\overrightarrow{EH}$ et $\\vec{u}$ sont colinéaires, et $H$ appartient à la droite $\\Delta$, qui passe par $E$ et est dirigée par $\\vec{u}$.\n\nDe plus, $\\overrightarrow{DH}\\begin{pmatrix} -4 \\\\ 1 \\\\ -1 \\end{pmatrix}$ et, le repère étant orthonormé, $\\overrightarrow{DH} \\cdot \\vec{u} = (-4) \\times 0 + 1 \\times 1 + (-1) \\times 1 = 0$.\n\n$H$ est un point de $\\Delta$ et $\\overrightarrow{DH}$ est orthogonal au vecteur directeur $\\vec{u}$ de $\\Delta$ : **$H$ est le projeté orthogonal du point $D$ sur la droite $\\Delta$.**"
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "En déduire la distance du point $D$ à la droite $\\Delta$.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-054",
+            "indices": [
+              "Revois la propriété : la distance d'un point à une droite est la longueur qui le sépare de son projeté orthogonal sur cette droite.",
+              "Additionne les carrés des coordonnées de $\\overrightarrow{DH}$, puis simplifie la racine carrée en faisant apparaître un carré parfait."
+            ],
+            "attenduCorrecteur": "- La distance de $D$ à $\\Delta$ est $DH$, car $H$ est le projeté orthogonal de $D$ sur $\\Delta$ : 0,25 pt.\n- $DH = \\sqrt{16 + 1 + 1} = \\sqrt{18} = 3\\sqrt{2}$ : 0,25 pt.",
+            "solution": "Comme $H$ est le projeté orthogonal de $D$ sur $\\Delta$, la distance du point $D$ à la droite $\\Delta$ est $DH$ :\n\n$$DH = \\sqrt{(-4)^2 + 1^2 + (-1)^2} = \\sqrt{18} = \\sqrt{9 \\times 2} = 3\\sqrt{2}.$$\n\nCohérence : $\\Delta$ est incluse dans $\\mathcal{P}$, donc $H$ est un point de $\\mathcal{P}$ et, d'après la question 2.b, $DH \\geqslant CD$. C'est bien le cas : $3\\sqrt{2} \\approx 4{,}24$ et $\\sqrt{6} \\approx 2{,}45$.\n\n**La distance du point $D$ à la droite $\\Delta$ est $3\\sqrt{2}$.**"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-orthogonalite-espace-003",
+    "chapitre": "orthogonalite-espace",
+    "notions": [
+      "n-orthogonalite-espace-mesures",
+      "n-orthogonalite-espace-repere-orthonorme",
+      "n-orthogonalite-espace-projete-distance",
+      "n-orthogonalite-espace-vecteur-normal"
+    ],
+    "capacites": [
+      "bo-m-orthogonalite-02",
+      "bo-m-orthogonalite-04",
+      "bo-m-orthogonalite-09",
+      "bo-m-orthogonalite-08",
+      "bo-m-orthogonalite-10",
+      "bo-m-orthogonalite-06",
+      "bo-m-orthogonalite-07",
+      "bo-m-orthogonalite-11",
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-06",
+      "bo-m-vecteurs-13"
+    ],
+    "titre": "Calcul d'un angle, d'une aire et d'un volume",
+    "points": 7,
+    "duree": 60,
+    "calculatrice": true,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2022-etrangers-j1",
+      "adaptation": "Exercice 2 (7 points) : points A(2 ; 0 ; 3), B(0 ; 2 ; 1), C(−1 ; −1 ; 2), D(3 ; −3 ; −1) et F(1 ; −1 ; 3), structure en trois parties (angle, aire, volume), questions 1.a à 1.c, 2.d et 3.a à 3.c conservées. Retirées, à remettre quand le chapitre « Représentations paramétriques et équations cartésiennes » sera écrit : question 2.a (équation du plan passant par C et perpendiculaire à la droite (AB)), question 2.b (représentation paramétrique de la droite (AB)) et question 2.c (coordonnées du projeté orthogonal E de C sur (AB), intersection de (AB) et de ce plan). Remplacées par : démontrer que le point donné E(1 ; 1 ; 2) est le projeté orthogonal de C sur (AB), puis en déduire la distance de C à (AB) et l'aire du triangle ABC. Pour que l'exercice reste rattrapable, les longueurs AB et AC (question 1.b) et l'aire 2√6 (question 2.d du sujet) sont données dans l'énoncé (« Montrer que… »). Calculatrice autorisée, pour la mesure de l'angle au dixième de degré. Solution écrite pour le site."
+    },
+    "preambule": "Dans l'espace muni d'un repère orthonormé $\\left(O\\,;\\,\\vec{\\imath}, \\vec{\\jmath}, \\vec{k}\\right)$, on considère les points\n\n$$A(2\\,;\\,0\\,;\\,3), \\quad B(0\\,;\\,2\\,;\\,1), \\quad C(-1\\,;\\,-1\\,;\\,2) \\quad \\text{et} \\quad D(3\\,;\\,-3\\,;\\,-1).$$\n\nOn rappelle que le volume d'un tétraèdre est égal au tiers du produit de l'aire d'une base par la hauteur associée à cette base.\n\nLes trois parties s'enchaînent, mais chaque question peut être traitée en admettant les résultats des précédentes.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Calcul d'un angle.**",
+        "points": 2.25,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Calculer les coordonnées des vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, et en déduire que les points $A$, $B$ et $C$ ne sont pas alignés.",
+            "points": 0.75,
+            "revoir": "l-vecteurs-espace-024",
+            "indices": [
+              "Coordonnées d'un vecteur : arrivée moins départ. Trois points sont alignés si et seulement si deux de ces vecteurs sont colinéaires : revois la méthode.",
+              "Suppose $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$ : la première coordonnée donne une valeur de $k$ ; teste-la sur la deuxième coordonnée."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AB}\\begin{pmatrix} -2 \\\\ 2 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -3 \\\\ -1 \\\\ -1 \\end{pmatrix}$ : 0,25 pt.\n- Non-colinéarité : $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$ donnerait $k = \\dfrac{3}{2}$ sur la première coordonnée et $k = -\\dfrac{1}{2}$ sur la deuxième, ce qui est contradictoire : 0,25 pt.\n- Conclusion : $A$, $B$, $C$ ne sont pas alignés : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{AB}\\begin{pmatrix} 0 - 2 \\\\ 2 - 0 \\\\ 1 - 3 \\end{pmatrix}$, soit $\\overrightarrow{AB}\\begin{pmatrix} -2 \\\\ 2 \\\\ -2 \\end{pmatrix}$, et $\\overrightarrow{AC}\\begin{pmatrix} -1 - 2 \\\\ -1 - 0 \\\\ 2 - 3 \\end{pmatrix}$, soit $\\overrightarrow{AC}\\begin{pmatrix} -3 \\\\ -1 \\\\ -1 \\end{pmatrix}$.\n\nLe vecteur $\\overrightarrow{AB}$ n'est pas nul. S'il existait un réel $k$ tel que $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$, la première coordonnée donnerait $-3 = -2k$, soit $k = \\dfrac{3}{2}$, et la deuxième $-1 = 2k$, soit $k = -\\dfrac{1}{2}$ : c'est impossible.\n\nLes vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ ne sont pas colinéaires : **les points $A$, $B$ et $C$ ne sont pas alignés.**"
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Montrer que $AB = 2\\sqrt{3}$ et que $AC = \\sqrt{11}$.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-022",
+            "indices": [
+              "Revois la formule de la norme en repère orthonormé, $\\lVert \\vec{w} \\rVert = \\sqrt{x^2 + y^2 + z^2}$, avec les coordonnées trouvées à la question a. Pour $AB$, fais apparaître un carré parfait sous la racine."
+            ],
+            "attenduCorrecteur": "- $AB = \\sqrt{4 + 4 + 4} = \\sqrt{12} = 2\\sqrt{3}$ : 0,25 pt.\n- $AC = \\sqrt{9 + 1 + 1} = \\sqrt{11}$ : 0,25 pt.",
+            "solution": "Le repère est orthonormé, donc :\n\n$$AB = \\sqrt{(-2)^2 + 2^2 + (-2)^2} = \\sqrt{12} = \\sqrt{4 \\times 3} = 2\\sqrt{3} \\quad \\text{et} \\quad AC = \\sqrt{(-3)^2 + (-1)^2 + (-1)^2} = \\sqrt{11}.$$\n\n**$AB = 2\\sqrt{3}$ et $AC = \\sqrt{11}$.**"
+          },
+          {
+            "id": "q1c",
+            "label": "c)",
+            "enonce": "À l'aide du produit scalaire $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$, déterminer la valeur exacte du cosinus de l'angle $\\widehat{BAC}$, puis une valeur approchée de la mesure de l'angle $\\widehat{BAC}$ au dixième de degré.\n\nSaisis la mesure de l'angle, en degrés, arrondie au dixième.",
+            "points": 1,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 58.5,
+              "tolerance": 0.05,
+              "decimales": 1
+            },
+            "revoir": "l-orthogonalite-espace-026",
+            "indices": [
+              "Revois la méthode : le produit scalaire s'écrit de deux façons, avec les coordonnées et avec les longueurs et le cosinus. Égale les deux expressions, puis isole le cosinus.",
+              "En coordonnées, $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = (-2) \\times (-3) + 2 \\times (-1) + (-2) \\times (-1)$. Avec les longueurs de la question b, c'est aussi $2\\sqrt{3} \\times \\sqrt{11} \\times \\cos\\widehat{BAC}$. La touche $\\cos^{-1}$ de la calculatrice, en mode degrés, donne ensuite l'angle."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 6 - 2 + 2 = 6$, en repère orthonormé : 0,25 pt.\n- $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AC \\times \\cos\\widehat{BAC}$, d'où $\\cos\\widehat{BAC} = \\dfrac{6}{2\\sqrt{3} \\times \\sqrt{11}} = \\dfrac{3}{\\sqrt{33}} = \\dfrac{\\sqrt{33}}{11}$ : 0,5 pt.\n- $\\widehat{BAC} \\approx 58{,}5^\\circ$ au dixième de degré (calculatrice en mode degrés) : 0,25 pt.",
+            "solution": "Le repère est orthonormé : $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = (-2) \\times (-3) + 2 \\times (-1) + (-2) \\times (-1) = 6 - 2 + 2 = 6$.\n\nD'autre part, $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AC \\times \\cos\\widehat{BAC} = 2\\sqrt{3} \\times \\sqrt{11} \\times \\cos\\widehat{BAC}$. Donc :\n\n$$\\cos\\widehat{BAC} = \\dfrac{6}{2\\sqrt{3} \\times \\sqrt{11}} = \\dfrac{3}{\\sqrt{33}} = \\dfrac{3\\sqrt{33}}{33} = \\dfrac{\\sqrt{33}}{11}.$$\n\nUn angle d'un triangle est compris entre $0^\\circ$ et $180^\\circ$, et sur cet intervalle un cosinus correspond à un seul angle. La calculatrice, en mode degrés, donne $\\cos^{-1}\\left(\\dfrac{\\sqrt{33}}{11}\\right) \\approx 58{,}52$.\n\n**$\\cos\\widehat{BAC} = \\dfrac{\\sqrt{33}}{11}$ et $\\widehat{BAC} \\approx 58{,}5^\\circ$ au dixième de degré.**",
+            "erreurFrequente": "Laisser la calculatrice en mode radians : elle affiche alors environ $1{,}02$, une mesure en radians et non en degrés."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "**Calcul d'une aire.** On considère le point $E(1\\,;\\,1\\,;\\,2)$.",
+        "points": 2,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Démontrer que le point $E$ est le projeté orthogonal du point $C$ sur la droite $(AB)$.",
+            "points": 1,
+            "revoir": "l-orthogonalite-espace-055",
+            "indices": [
+              "Revois l'exemple de la distance d'un point à une droite : il faut que $E$ soit sur la droite $(AB)$, et que $\\overrightarrow{CE}$ soit orthogonal à un vecteur directeur de $(AB)$.",
+              "Cherche un réel $k$ tel que $\\overrightarrow{AE} = k\\,\\overrightarrow{AB}$, puis calcule le produit scalaire $\\overrightarrow{CE} \\cdot \\overrightarrow{AB}$."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AE}\\begin{pmatrix} -1 \\\\ 1 \\\\ -1 \\end{pmatrix} = \\dfrac{1}{2}\\,\\overrightarrow{AB}$ : $E$ appartient à la droite $(AB)$ (c'est le milieu de $[AB]$) : 0,25 pt.\n- $\\overrightarrow{CE}\\begin{pmatrix} 2 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{CE} \\cdot \\overrightarrow{AB} = -4 + 4 + 0 = 0$ : 0,5 pt.\n- Conclusion : $E$ est le point de $(AB)$ tel que $\\overrightarrow{CE}$ est orthogonal au vecteur directeur $\\overrightarrow{AB}$ : c'est le projeté orthogonal de $C$ sur $(AB)$ : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{AE}\\begin{pmatrix} -1 \\\\ 1 \\\\ -1 \\end{pmatrix}$, donc $\\overrightarrow{AE} = \\dfrac{1}{2}\\,\\overrightarrow{AB}$ : les vecteurs $\\overrightarrow{AE}$ et $\\overrightarrow{AB}$ sont colinéaires et $E$ appartient à la droite $(AB)$. C'est même le milieu du segment $[AB]$.\n\nDe plus, $\\overrightarrow{CE}\\begin{pmatrix} 2 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et, le repère étant orthonormé, $\\overrightarrow{CE} \\cdot \\overrightarrow{AB} = 2 \\times (-2) + 2 \\times 2 + 0 \\times (-2) = 0$.\n\n$E$ est un point de $(AB)$ et $\\overrightarrow{CE}$ est orthogonal au vecteur directeur $\\overrightarrow{AB}$ : **$E$ est le projeté orthogonal du point $C$ sur la droite $(AB)$.**",
+            "erreurFrequente": "Vérifier seulement $\\overrightarrow{CE} \\cdot \\overrightarrow{AB} = 0$ : les points $M$ tels que $\\overrightarrow{CM} \\cdot \\overrightarrow{AB} = 0$ forment tout un plan, celui qui passe par $C$ et qui est normal à $\\overrightarrow{AB}$ ; un seul d'entre eux est sur la droite $(AB)$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "En déduire la distance du point $C$ à la droite $(AB)$, puis démontrer que l'aire du triangle $ABC$ est égale à $2\\sqrt{6}$ unités d'aire.",
+            "points": 1,
+            "revoir": "l-orthogonalite-espace-071",
+            "indices": [
+              "La distance de $C$ à $(AB)$ est la longueur $CE$, d'après la propriété du projeté. Revois ensuite la méthode de l'aire : base $[AB]$, hauteur issue de $C$.",
+              "$CE$ se calcule avec les coordonnées de $\\overrightarrow{CE}$ ; l'aire vaut $\\dfrac{AB \\times CE}{2}$, avec $AB$ trouvée à la question 1.b. Pour simplifier, $\\sqrt{8} = 2\\sqrt{2}$ et $\\sqrt{3} \\times \\sqrt{2} = \\sqrt{6}$."
+            ],
+            "attenduCorrecteur": "- $CE = \\sqrt{4 + 4 + 0} = \\sqrt{8} = 2\\sqrt{2}$ : c'est la distance de $C$ à $(AB)$, car $E$ est le projeté orthogonal de $C$ sur $(AB)$ : 0,5 pt.\n- $[CE]$ est la hauteur issue de $C$ du triangle $ABC$, donc l'aire vaut $\\dfrac{AB \\times CE}{2} = \\dfrac{2\\sqrt{3} \\times 2\\sqrt{2}}{2} = 2\\sqrt{6}$ unités d'aire : 0,5 pt.",
+            "solution": "Comme $E$ est le projeté orthogonal de $C$ sur $(AB)$, la distance du point $C$ à la droite $(AB)$ est :\n\n$$CE = \\sqrt{2^2 + 2^2 + 0^2} = \\sqrt{8} = 2\\sqrt{2}.$$\n\nLe segment $[CE]$ est donc la hauteur issue de $C$ du triangle $ABC$, de base $[AB]$. D'après la question 1.b, $AB = 2\\sqrt{3}$, d'où :\n\n$$\\mathcal{A}_{ABC} = \\dfrac{AB \\times CE}{2} = \\dfrac{2\\sqrt{3} \\times 2\\sqrt{2}}{2} = 2\\sqrt{6}.$$\n\n**La distance de $C$ à $(AB)$ est $2\\sqrt{2}$, et l'aire du triangle $ABC$ est $2\\sqrt{6} \\approx 4{,}90$ unités d'aire.**"
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "**Calcul d'un volume.** On considère le point $F(1\\,;\\,-1\\,;\\,3)$.",
+        "points": 2.75,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Montrer que les points $A$, $B$, $C$ et $F$ sont coplanaires.",
+            "points": 1,
+            "revoir": "l-vecteurs-espace-066",
+            "indices": [
+              "Quatre points sont coplanaires quand $\\overrightarrow{AF}$ s'écrit avec les deux vecteurs non colinéaires $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ : revois la méthode du chapitre « Vecteurs, droites et plans de l'espace ».",
+              "Cherche deux réels $a$ et $b$ tels que $\\overrightarrow{AF} = a\\,\\overrightarrow{AB} + b\\,\\overrightarrow{AC}$ : écris le système des trois coordonnées, résous-le avec deux équations, puis vérifie la troisième."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AF}\\begin{pmatrix} -1 \\\\ -1 \\\\ 0 \\end{pmatrix}$ et le système $-2a - 3b = -1$, $2a - b = -1$, $-2a - b = 0$ : 0,25 pt.\n- Résolution : $a = -\\dfrac{1}{4}$ et $b = \\dfrac{1}{2}$, vérifiés dans les trois équations : 0,5 pt.\n- Conclusion : $\\overrightarrow{AF} = -\\dfrac{1}{4}\\,\\overrightarrow{AB} + \\dfrac{1}{2}\\,\\overrightarrow{AC}$, avec $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ non colinéaires : $F$ est dans le plan $(ABC)$, les quatre points sont coplanaires : 0,25 pt. Autre méthode acceptée après la question b : $\\overrightarrow{AF} \\cdot \\overrightarrow{FD} = 0$, avec $\\overrightarrow{FD}$ normal au plan $(ABC)$.",
+            "solution": "On a $\\overrightarrow{AF}\\begin{pmatrix} -1 \\\\ -1 \\\\ 0 \\end{pmatrix}$. Cherchons deux réels $a$ et $b$ tels que $\\overrightarrow{AF} = a\\,\\overrightarrow{AB} + b\\,\\overrightarrow{AC}$, c'est-à-dire :\n\n$$\\begin{cases} -2a - 3b = -1 \\\\ 2a - b = -1 \\\\ -2a - b = 0 \\end{cases}$$\n\nEn ajoutant la deuxième et la troisième équation : $-2b = -1$, soit $b = \\dfrac{1}{2}$. La troisième donne alors $-2a = b = \\dfrac{1}{2}$, soit $a = -\\dfrac{1}{4}$. On vérifie la première : $-2 \\times \\left(-\\dfrac{1}{4}\\right) - 3 \\times \\dfrac{1}{2} = \\dfrac{1}{2} - \\dfrac{3}{2} = -1$.\n\nAinsi $\\overrightarrow{AF} = -\\dfrac{1}{4}\\,\\overrightarrow{AB} + \\dfrac{1}{2}\\,\\overrightarrow{AC}$. Comme $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ ne sont pas colinéaires (question 1.a), ils dirigent le plan $(ABC)$, et $F$ appartient à ce plan : **les points $A$, $B$, $C$ et $F$ sont coplanaires.**"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Vérifier que la droite $(FD)$ est orthogonale au plan $(ABC)$.",
+            "points": 0.75,
+            "revoir": "l-orthogonalite-espace-040",
+            "indices": [
+              "Revois la méthode : un vecteur directeur de $(FD)$ doit être orthogonal à deux vecteurs non colinéaires du plan $(ABC)$.",
+              "Calcule $\\overrightarrow{FD}$, puis les produits scalaires $\\overrightarrow{FD} \\cdot \\overrightarrow{AB}$ et $\\overrightarrow{FD} \\cdot \\overrightarrow{AC}$ avec les coordonnées."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{FD}\\begin{pmatrix} 2 \\\\ -2 \\\\ -4 \\end{pmatrix}$, $\\overrightarrow{FD} \\cdot \\overrightarrow{AB} = -4 - 4 + 8 = 0$ et $\\overrightarrow{FD} \\cdot \\overrightarrow{AC} = -6 + 2 + 4 = 0$ : 0,5 pt.\n- Conclusion : $\\overrightarrow{FD}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(ABC)$, donc la droite $(FD)$ est orthogonale à ce plan : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{FD}\\begin{pmatrix} 2 \\\\ -2 \\\\ -4 \\end{pmatrix}$ et, le repère étant orthonormé :\n\n$$\\overrightarrow{FD} \\cdot \\overrightarrow{AB} = 2 \\times (-2) + (-2) \\times 2 + (-4) \\times (-2) = 0 \\quad \\text{et} \\quad \\overrightarrow{FD} \\cdot \\overrightarrow{AC} = 2 \\times (-3) + (-2) \\times (-1) + (-4) \\times (-1) = 0.$$\n\nLe vecteur $\\overrightarrow{FD}$, non nul, est orthogonal aux vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, non colinéaires, qui dirigent le plan $(ABC)$ : c'est un vecteur normal à ce plan, et **la droite $(FD)$ est orthogonale au plan $(ABC)$.**"
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "Calculer le volume du tétraèdre $ABCD$.\n\nSaisis le volume obtenu, en unités de volume.",
+            "points": 1,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 8,
+              "tolerance": 0
+            },
+            "revoir": "l-orthogonalite-espace-067",
+            "indices": [
+              "Prends la face $ABC$ pour base : son aire est connue (question 2.b). La hauteur associée est la distance de $D$ au plan $(ABC)$ : quel point est le projeté orthogonal de $D$ sur ce plan ? Les questions a et b te le disent.",
+              "$F$ est dans le plan $(ABC)$ et $\\overrightarrow{FD}$ est normal à ce plan : la hauteur est $FD$. Calcule cette longueur, simplifie la racine, puis applique la formule du volume."
+            ],
+            "attenduCorrecteur": "- $F$ est le projeté orthogonal de $D$ sur le plan $(ABC)$ ($F \\in (ABC)$ et $\\overrightarrow{FD}$ normal au plan), donc la hauteur associée à la base $ABC$ est $FD = \\sqrt{4 + 4 + 16} = \\sqrt{24} = 2\\sqrt{6}$ : 0,5 pt.\n- $V = \\dfrac{1}{3} \\times 2\\sqrt{6} \\times 2\\sqrt{6} = \\dfrac{24}{3} = 8$ unités de volume : 0,5 pt.",
+            "solution": "D'après la question a, $F$ appartient au plan $(ABC)$ ; d'après la question b, $\\overrightarrow{FD}$ est normal à ce plan. Donc $F$ est le projeté orthogonal de $D$ sur le plan $(ABC)$, et la hauteur du tétraèdre associée à la base $ABC$ est :\n\n$$FD = \\sqrt{2^2 + (-2)^2 + (-4)^2} = \\sqrt{24} = 2\\sqrt{6}.$$\n\nAvec l'aire $2\\sqrt{6}$ du triangle $ABC$ (question 2.b) :\n\n$$V = \\dfrac{1}{3} \\times 2\\sqrt{6} \\times 2\\sqrt{6} = \\dfrac{1}{3} \\times 4 \\times 6 = 8.$$\n\n**Le volume du tétraèdre $ABCD$ est $8$ unités de volume.**",
+            "erreurFrequente": "Prendre comme hauteur une arête issue de $D$, comme $DA$ ou $DC$ : aucune n'est orthogonale au plan $(ABC)$. La hauteur est la distance $FD$, mesurée perpendiculairement au plan."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-orthogonalite-espace-004",
+    "chapitre": "orthogonalite-espace",
+    "notions": [
+      "n-orthogonalite-espace-projete-distance",
+      "n-orthogonalite-espace-repere-orthonorme",
+      "n-orthogonalite-espace-vecteur-normal",
+      "n-orthogonalite-espace-mesures"
+    ],
+    "capacites": [
+      "bo-m-orthogonalite-08",
+      "bo-m-orthogonalite-10",
+      "bo-m-orthogonalite-02",
+      "bo-m-orthogonalite-04",
+      "bo-m-orthogonalite-06",
+      "bo-m-orthogonalite-07",
+      "bo-m-orthogonalite-11",
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-04",
+      "bo-m-derivation-01",
+      "bo-m-derivation-05",
+      "bo-m-derivation-06"
+    ],
+    "titre": "Distance minimale, orthocentre et aire d'un triangle",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2025-amerique-sud-j1",
+      "adaptation": "Exercice 4 (5 points) : points A(2√3 ; 0 ; 0), B(0 ; 2 ; 0), C(0 ; 0 ; 1) et K(√3/2 ; 3/2 ; 0), distance OM(t) = √(4t² − 2t + 1), étude des variations de la fonction f(t) = OM(t) et de son minimum, point H(√3/8 ; 3/8 ; 3/4) projeté orthogonal de O sur (CK), orthocentre du triangle ABC par le produit scalaire, droite (OH) orthogonale au plan (ABC) et aire du triangle ABC : conservés. Retirées, à remettre quand le chapitre « Représentations paramétriques et équations cartésiennes » sera écrit : question 1 (justifier une représentation paramétrique de la droite (CK)) et question 6.b (en déduire une équation du plan (ABC)). La question 1 devient : coordonnées du point M(t) défini par CM(t) = t CK (chapitre « Vecteurs, droites et plans de l'espace »). Ajoutées : K est sur le segment [AB] et (CK) est perpendiculaire à (AB), distance du point O à la droite (CK), puis au plan (ABC). Barème porté à 6 points. Calculatrice non autorisée dans cette version : toutes les valeurs sont exactes. Figure redessinée pour le site. Solution écrite pour le site."
+    },
+    "preambule": "Dans l'espace muni d'un repère orthonormé $\\left(O\\,;\\,\\vec{\\imath}, \\vec{\\jmath}, \\vec{k}\\right)$, on considère les points\n\n$$A\\left(2\\sqrt{3}\\,;\\,0\\,;\\,0\\right), \\quad B(0\\,;\\,2\\,;\\,0), \\quad C(0\\,;\\,0\\,;\\,1) \\quad \\text{et} \\quad K\\left(\\dfrac{\\sqrt{3}}{2}\\,;\\,\\dfrac{3}{2}\\,;\\,0\\right).$$\n\nPour tout réel $t$, on note $M(t)$ le point défini par $\\overrightarrow{CM(t)} = t\\,\\overrightarrow{CK}$.\n\nOn rappelle que l'orthocentre d'un triangle est le point d'intersection de ses hauteurs.\n\nLes questions s'enchaînent, mais chacune peut être traitée en admettant les résultats des précédentes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/orthogonalite-espace/tb-triangle-orthocentre.svg",
+        "alt": "Le triangle ABC dans un repère orthonormé d'origine O : A est sur l'axe qui vient vers l'avant à gauche, B sur l'axe horizontal vers la droite, C sur l'axe vertical. La face ABC est colorée en bleu ; les segments [OA], [OB] et [OC], cachés derrière elle, sont en pointillé. Le point K est sur le côté [AB], le segment [CK] est tracé en bleu, et le point H est placé sur [CK], plus près de C que de K. Le segment [OH], caché, est en pointillé orange.",
+        "width": 310,
+        "height": 215
+      },
+      "caption": "Le triangle ABC, le segment [CK] et le point H de l'exercice."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que, pour tout réel $t$, le point $M(t)$ appartient à la droite $(CK)$ et a pour coordonnées $\\left(\\dfrac{\\sqrt{3}}{2}\\,t\\,;\\,\\dfrac{3}{2}\\,t\\,;\\,1 - t\\right)$.",
+        "points": 0.5,
+        "revoir": "l-vecteurs-espace-021",
+        "indices": [
+          "Revois la propriété « droite définie par un point et un vecteur directeur » : les vecteurs $\\overrightarrow{CM(t)}$ et $\\overrightarrow{CK}$ sont colinéaires. Pour les coordonnées, commence par celles de $\\overrightarrow{CK}$.",
+          "Si $M(t)$ a pour coordonnées $(x\\,;\\,y\\,;\\,z)$, alors $\\overrightarrow{CM(t)}\\begin{pmatrix} x \\\\ y \\\\ z - 1 \\end{pmatrix}$ : égale ces coordonnées à celles de $t\\,\\overrightarrow{CK}$."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{CM(t)} = t\\,\\overrightarrow{CK}$, avec $\\overrightarrow{CK}$ non nul : $M(t)$ est sur la droite passant par $C$ et dirigée par $\\overrightarrow{CK}$, c'est-à-dire $(CK)$ : 0,25 pt.\n- $\\overrightarrow{CK}\\begin{pmatrix} \\frac{\\sqrt{3}}{2} \\\\ \\frac{3}{2} \\\\ -1 \\end{pmatrix}$, puis $x = \\dfrac{\\sqrt{3}}{2}\\,t$, $y = \\dfrac{3}{2}\\,t$ et $z - 1 = -t$ : 0,25 pt.",
+        "solution": "Les vecteurs $\\overrightarrow{CM(t)}$ et $\\overrightarrow{CK}$ sont colinéaires, et $\\overrightarrow{CK}$ n'est pas nul : le point $M(t)$ appartient donc à la droite passant par $C$ et de vecteur directeur $\\overrightarrow{CK}$, c'est-à-dire à la droite $(CK)$.\n\nOn a $\\overrightarrow{CK}\\begin{pmatrix} \\frac{\\sqrt{3}}{2} \\\\ \\frac{3}{2} \\\\ -1 \\end{pmatrix}$. Si $M(t)$ a pour coordonnées $(x\\,;\\,y\\,;\\,z)$, l'égalité $\\overrightarrow{CM(t)} = t\\,\\overrightarrow{CK}$ s'écrit $x - 0 = \\dfrac{\\sqrt{3}}{2}\\,t$, $y - 0 = \\dfrac{3}{2}\\,t$ et $z - 1 = -t$.\n\n**Le point $M(t)$ appartient à $(CK)$ et a pour coordonnées $\\left(\\dfrac{\\sqrt{3}}{2}\\,t\\,;\\,\\dfrac{3}{2}\\,t\\,;\\,1 - t\\right)$.**"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Établir que, pour tout réel $t$, $OM(t) = \\sqrt{4t^2 - 2t + 1}$.",
+        "points": 0.5,
+        "revoir": "l-orthogonalite-espace-022",
+        "indices": [
+          "Revois la formule de la distance en repère orthonormé, appliquée aux points $O$ et $M(t)$ : commence par calculer $OM(t)^2$.",
+          "$\\left(\\dfrac{\\sqrt{3}}{2}\\,t\\right)^2 = \\dfrac{3}{4}\\,t^2$ et $\\left(\\dfrac{3}{2}\\,t\\right)^2 = \\dfrac{9}{4}\\,t^2$ ; développe $(1 - t)^2$, puis regroupe les termes en $t^2$."
+        ],
+        "attenduCorrecteur": "- $OM(t)^2 = \\dfrac{3}{4}\\,t^2 + \\dfrac{9}{4}\\,t^2 + (1 - t)^2$, en repère orthonormé : 0,25 pt.\n- $OM(t)^2 = 3t^2 + 1 - 2t + t^2 = 4t^2 - 2t + 1$, et une distance est positive, d'où $OM(t) = \\sqrt{4t^2 - 2t + 1}$ : 0,25 pt.",
+        "solution": "Le repère est orthonormé, donc :\n\n$$OM(t)^2 = \\left(\\dfrac{\\sqrt{3}}{2}\\,t\\right)^2 + \\left(\\dfrac{3}{2}\\,t\\right)^2 + (1 - t)^2 = \\dfrac{3}{4}\\,t^2 + \\dfrac{9}{4}\\,t^2 + 1 - 2t + t^2 = 3t^2 + t^2 - 2t + 1 = 4t^2 - 2t + 1.$$\n\nUne distance est positive, donc **$OM(t) = \\sqrt{4t^2 - 2t + 1}$ pour tout réel $t$.**"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On note $f$ la fonction définie sur $\\mathbb{R}$ par $f(t) = \\sqrt{4t^2 - 2t + 1}$, qui donne la distance $OM(t)$. On admet que $4t^2 - 2t + 1 > 0$ pour tout réel $t$, et que $f$ est dérivable sur $\\mathbb{R}$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Étudier les variations de la fonction $f$ sur $\\mathbb{R}$.",
+            "points": 1,
+            "revoir": "l-derivation-convexite-008",
+            "indices": [
+              "$f$ est la composée de $u : t \\mapsto 4t^2 - 2t + 1$, suivie de la racine carrée : revois la dérivée d'une fonction composée, qui donne ici $\\left(\\sqrt{u}\\right)' = \\dfrac{u'}{2\\sqrt{u}}$.",
+              "Calcule $u'(t)$, écris $f'(t)$, puis simplifie par $2$. Le dénominateur est strictement positif : le signe de $f'(t)$ est celui d'une expression du premier degré."
+            ],
+            "attenduCorrecteur": "- Dérivée d'une composée : $f'(t) = \\dfrac{8t - 2}{2\\sqrt{4t^2 - 2t + 1}} = \\dfrac{4t - 1}{\\sqrt{4t^2 - 2t + 1}}$ : 0,5 pt.\n- Signe : le dénominateur est strictement positif, donc $f'(t)$ a le signe de $4t - 1$, négatif pour $t < \\dfrac{1}{4}$ et positif pour $t > \\dfrac{1}{4}$ : 0,25 pt.\n- Conclusion : $f$ est strictement décroissante sur $\\left]-\\infty\\,;\\,\\dfrac{1}{4}\\right]$ et strictement croissante sur $\\left[\\dfrac{1}{4}\\,;\\,+\\infty\\right[$ (un tableau de variations est accepté) : 0,25 pt.",
+            "solution": "On a $f = \\sqrt{u}$ avec $u(t) = 4t^2 - 2t + 1$, strictement positive, et $u'(t) = 8t - 2$. D'après la dérivée d'une fonction composée, avec la dérivée $\\dfrac{1}{2\\sqrt{x}}$ de la racine carrée :\n\n$$f'(t) = \\dfrac{u'(t)}{2\\sqrt{u(t)}} = \\dfrac{8t - 2}{2\\sqrt{4t^2 - 2t + 1}} = \\dfrac{4t - 1}{\\sqrt{4t^2 - 2t + 1}}.$$\n\nLe dénominateur est strictement positif, donc $f'(t)$ a le signe de $4t - 1$ : $f'(t) < 0$ pour $t < \\dfrac{1}{4}$, $f'\\left(\\dfrac{1}{4}\\right) = 0$, et $f'(t) > 0$ pour $t > \\dfrac{1}{4}$.\n\n**La fonction $f$ est strictement décroissante sur $\\left]-\\infty\\,;\\,\\dfrac{1}{4}\\right]$ et strictement croissante sur $\\left[\\dfrac{1}{4}\\,;\\,+\\infty\\right[$.**",
+            "erreurFrequente": "Dériver $\\sqrt{u}$ en $\\dfrac{1}{2\\sqrt{u}}$ en oubliant de multiplier par $u'$ : la dérivée de l'intérieur ne disparaît jamais."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "En déduire la valeur de $t$ pour laquelle $f$ atteint son minimum, ainsi que la valeur de ce minimum.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-019",
+            "indices": [
+              "Lis les variations trouvées à la question a : $f$ décroît, puis croît. Revois le piège : le minimum est une valeur de $f$, pas une valeur de $t$.",
+              "Calcule l'image par $f$ du réel où $f'$ change de signe, en simplifiant $4t^2$ et $2t$ avant d'additionner."
+            ],
+            "attenduCorrecteur": "- $f$ atteint son minimum en $t = \\dfrac{1}{4}$, où elle passe de décroissante à croissante : 0,25 pt.\n- Minimum : $f\\left(\\dfrac{1}{4}\\right) = \\sqrt{\\dfrac{1}{4} - \\dfrac{1}{2} + 1} = \\sqrt{\\dfrac{3}{4}} = \\dfrac{\\sqrt{3}}{2}$ : 0,25 pt.",
+            "solution": "D'après la question a, $f$ est décroissante sur $\\left]-\\infty\\,;\\,\\dfrac{1}{4}\\right]$ puis croissante sur $\\left[\\dfrac{1}{4}\\,;\\,+\\infty\\right[$ : elle atteint son minimum en $t = \\dfrac{1}{4}$.\n\nOr $4 \\times \\left(\\dfrac{1}{4}\\right)^2 = \\dfrac{1}{4}$ et $2 \\times \\dfrac{1}{4} = \\dfrac{1}{2}$, donc :\n\n$$f\\left(\\dfrac{1}{4}\\right) = \\sqrt{\\dfrac{1}{4} - \\dfrac{1}{2} + 1} = \\sqrt{\\dfrac{3}{4}} = \\dfrac{\\sqrt{3}}{2}.$$\n\n**Le minimum de $f$ est atteint pour $t = \\dfrac{1}{4}$ ; il vaut $\\dfrac{\\sqrt{3}}{2}$.**"
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On considère le point $H\\left(\\dfrac{\\sqrt{3}}{8}\\,;\\,\\dfrac{3}{8}\\,;\\,\\dfrac{3}{4}\\right)$. Démontrer que $H$ est le projeté orthogonal du point $O$ sur la droite $(CK)$, puis donner la distance du point $O$ à la droite $(CK)$.",
+        "points": 0.75,
+        "revoir": "l-orthogonalite-espace-054",
+        "indices": [
+          "Deux chemins : vérifier les deux conditions de la définition (un point de la droite, un produit scalaire nul avec un vecteur directeur), ou utiliser la propriété du projeté, point de la droite le plus proche de $O$, avec la question 3.",
+          "Repère la valeur de $t$ pour laquelle $M(t) = H$ grâce à la question 1, puis calcule $\\overrightarrow{OH} \\cdot \\overrightarrow{CK}$ en coordonnées."
+        ],
+        "attenduCorrecteur": "- $H = M\\left(\\dfrac{1}{4}\\right)$ d'après la question 1, donc $H \\in (CK)$ : 0,25 pt.\n- $\\overrightarrow{OH} \\cdot \\overrightarrow{CK} = \\dfrac{3}{16} + \\dfrac{9}{16} - \\dfrac{3}{4} = 0$ ; ou bien : $H$ est le point de $(CK)$ le plus proche de $O$ (question 3), et le projeté orthogonal de $O$ sur $(CK)$ est le seul point de cette droite à réaliser la plus petite distance. Conclusion : $H$ est le projeté orthogonal de $O$ sur $(CK)$ : 0,25 pt.\n- Distance de $O$ à $(CK)$ : $OH = f\\left(\\dfrac{1}{4}\\right) = \\dfrac{\\sqrt{3}}{2}$ : 0,25 pt.",
+        "solution": "D'après la question 1, $M\\left(\\dfrac{1}{4}\\right)$ a pour coordonnées $\\left(\\dfrac{\\sqrt{3}}{8}\\,;\\,\\dfrac{3}{8}\\,;\\,\\dfrac{3}{4}\\right)$ : c'est le point $H$, qui appartient donc à la droite $(CK)$.\n\nLe repère est orthonormé, donc :\n\n$$\\overrightarrow{OH} \\cdot \\overrightarrow{CK} = \\dfrac{\\sqrt{3}}{8} \\times \\dfrac{\\sqrt{3}}{2} + \\dfrac{3}{8} \\times \\dfrac{3}{2} + \\dfrac{3}{4} \\times (-1) = \\dfrac{3}{16} + \\dfrac{9}{16} - \\dfrac{12}{16} = 0.$$\n\n$H$ est un point de $(CK)$ et $\\overrightarrow{OH}$ est orthogonal au vecteur directeur $\\overrightarrow{CK}$ : **$H$ est le projeté orthogonal de $O$ sur la droite $(CK)$.** On retrouve la question 3 : le projeté est le point de la droite le plus proche de $O$.\n\nLa distance du point $O$ à la droite $(CK)$ est donc $OH = f\\left(\\dfrac{1}{4}\\right)$ : **elle vaut $\\dfrac{\\sqrt{3}}{2}$.**"
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Le point $H$ et les hauteurs du triangle $ABC$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Vérifier que le point $K$ appartient au segment $[AB]$, puis que les droites $(CK)$ et $(AB)$ sont perpendiculaires en $K$.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-033",
+            "indices": [
+              "Pour le segment, compare $\\overrightarrow{AK}$ et $\\overrightarrow{AB}$ : $K$ est sur $[AB]$ si $\\overrightarrow{AK} = k\\,\\overrightarrow{AB}$ avec $0 \\leqslant k \\leqslant 1$. Pour la perpendicularité, revois la définition : deux droites orthogonales qui se coupent.",
+              "Écris $\\dfrac{\\sqrt{3}}{2} - 2\\sqrt{3} = -\\dfrac{3\\sqrt{3}}{2}$ pour la première coordonnée de $\\overrightarrow{AK}$, puis calcule le produit scalaire $\\overrightarrow{CK} \\cdot \\overrightarrow{AB}$."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AB}\\begin{pmatrix} -2\\sqrt{3} \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AK}\\begin{pmatrix} -\\frac{3\\sqrt{3}}{2} \\\\ \\frac{3}{2} \\\\ 0 \\end{pmatrix} = \\dfrac{3}{4}\\,\\overrightarrow{AB}$, avec $0 \\leqslant \\dfrac{3}{4} \\leqslant 1$ : $K \\in [AB]$ : 0,25 pt.\n- $\\overrightarrow{CK} \\cdot \\overrightarrow{AB} = -3 + 3 + 0 = 0$ : les droites $(CK)$ et $(AB)$, sécantes en $K$, sont orthogonales, donc perpendiculaires en $K$ : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{AB}\\begin{pmatrix} -2\\sqrt{3} \\\\ 2 \\\\ 0 \\end{pmatrix}$ et, comme $\\dfrac{\\sqrt{3}}{2} - 2\\sqrt{3} = -\\dfrac{3\\sqrt{3}}{2}$, $\\overrightarrow{AK}\\begin{pmatrix} -\\frac{3\\sqrt{3}}{2} \\\\ \\frac{3}{2} \\\\ 0 \\end{pmatrix}$. Ainsi $\\overrightarrow{AK} = \\dfrac{3}{4}\\,\\overrightarrow{AB}$, avec $0 \\leqslant \\dfrac{3}{4} \\leqslant 1$ : **le point $K$ appartient au segment $[AB]$.**\n\nLe repère est orthonormé : $\\overrightarrow{CK} \\cdot \\overrightarrow{AB} = \\dfrac{\\sqrt{3}}{2} \\times \\left(-2\\sqrt{3}\\right) + \\dfrac{3}{2} \\times 2 + (-1) \\times 0 = -3 + 3 + 0 = 0$. Les droites $(CK)$ et $(AB)$ sont donc orthogonales ; comme elles se coupent en $K$, **elles sont perpendiculaires en $K$.**"
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Démontrer, à l'aide du produit scalaire, que le point $H$ est l'orthocentre du triangle $ABC$.",
+            "points": 0.75,
+            "revoir": "l-orthogonalite-espace-022",
+            "indices": [
+              "Il suffit que $H$ soit sur deux hauteurs du triangle. La question a donne la hauteur issue de $C$ : $H$ est-il dessus ? Pour une deuxième hauteur, teste la droite $(AH)$ avec le côté $[BC]$.",
+              "Calcule $\\overrightarrow{AH}$, en écrivant $\\dfrac{\\sqrt{3}}{8} - 2\\sqrt{3} = -\\dfrac{15\\sqrt{3}}{8}$, et $\\overrightarrow{BC}$, puis leur produit scalaire. Justifie aussi que $H$ est dans le plan $(ABC)$ : la droite $(CK)$ y est contenue."
+            ],
+            "attenduCorrecteur": "- $H$ est dans le plan $(ABC)$ : il est sur la droite $(CK)$, qui passe par deux points $C$ et $K$ de ce plan ; et $(CK)$ est la hauteur issue de $C$ (question a) : 0,25 pt.\n- $\\overrightarrow{AH}\\begin{pmatrix} -\\frac{15\\sqrt{3}}{8} \\\\ \\frac{3}{8} \\\\ \\frac{3}{4} \\end{pmatrix}$, $\\overrightarrow{BC}\\begin{pmatrix} 0 \\\\ -2 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{AH} \\cdot \\overrightarrow{BC} = 0 - \\dfrac{3}{4} + \\dfrac{3}{4} = 0$ : la droite $(AH)$, contenue dans le plan $(ABC)$, est perpendiculaire à $(BC)$, c'est la hauteur issue de $A$ : 0,25 pt.\n- Conclusion : $H$ est sur deux hauteurs du triangle $ABC$, c'est son orthocentre : 0,25 pt.",
+            "solution": "D'après la question a, $K$ est sur $[AB]$, donc dans le plan $(ABC)$, comme $C$. La droite $(CK)$ est donc contenue dans ce plan, et elle est perpendiculaire à $(AB)$ : c'est la hauteur du triangle $ABC$ issue de $C$. Le point $H$ est sur cette droite (question 4) : il est dans le plan $(ABC)$ et sur la hauteur issue de $C$.\n\nOn a $\\overrightarrow{AH}\\begin{pmatrix} -\\frac{15\\sqrt{3}}{8} \\\\ \\frac{3}{8} \\\\ \\frac{3}{4} \\end{pmatrix}$ et $\\overrightarrow{BC}\\begin{pmatrix} 0 \\\\ -2 \\\\ 1 \\end{pmatrix}$, donc, le repère étant orthonormé :\n\n$$\\overrightarrow{AH} \\cdot \\overrightarrow{BC} = -\\dfrac{15\\sqrt{3}}{8} \\times 0 + \\dfrac{3}{8} \\times (-2) + \\dfrac{3}{4} \\times 1 = -\\dfrac{3}{4} + \\dfrac{3}{4} = 0.$$\n\nLes droites $(AH)$ et $(BC)$ sont orthogonales et toutes deux contenues dans le plan $(ABC)$ : elles sont perpendiculaires, et $(AH)$ est la hauteur issue de $A$.\n\n$H$ appartient à deux hauteurs du triangle $ABC$, qui se coupent en un seul point : **$H$ est l'orthocentre du triangle $ABC$.**"
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Démontrer que la droite $(OH)$ est orthogonale au plan $(ABC)$. En déduire la distance du point $O$ au plan $(ABC)$.",
+        "points": 0.75,
+        "revoir": "l-orthogonalite-espace-058",
+        "indices": [
+          "Revois la méthode : $\\overrightarrow{OH}$ doit être orthogonal à deux vecteurs non colinéaires du plan $(ABC)$. Ensuite, $H$ est dans ce plan (question 5.b) : que représente-t-il pour $O$ ?",
+          "Calcule $\\overrightarrow{OH} \\cdot \\overrightarrow{AB}$ et $\\overrightarrow{OH} \\cdot \\overrightarrow{AC}$, avec $\\overrightarrow{AC}\\begin{pmatrix} -2\\sqrt{3} \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\dfrac{\\sqrt{3}}{8} \\times 2\\sqrt{3} = \\dfrac{3}{4}$."
+        ],
+        "attenduCorrecteur": "- $\\overrightarrow{OH} \\cdot \\overrightarrow{AB} = -\\dfrac{3}{4} + \\dfrac{3}{4} + 0 = 0$ et $\\overrightarrow{OH} \\cdot \\overrightarrow{AC} = -\\dfrac{3}{4} + 0 + \\dfrac{3}{4} = 0$, avec $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ non colinéaires : $(OH)$ est orthogonale au plan $(ABC)$ : 0,5 pt.\n- $H \\in (ABC)$ et $\\overrightarrow{OH}$ normal au plan : $H$ est le projeté orthogonal de $O$ sur $(ABC)$, et la distance de $O$ au plan $(ABC)$ est $OH = \\dfrac{\\sqrt{3}}{2}$ : 0,25 pt.",
+        "solution": "On a $\\overrightarrow{OH}\\begin{pmatrix} \\frac{\\sqrt{3}}{8} \\\\ \\frac{3}{8} \\\\ \\frac{3}{4} \\end{pmatrix}$, $\\overrightarrow{AB}\\begin{pmatrix} -2\\sqrt{3} \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -2\\sqrt{3} \\\\ 0 \\\\ 1 \\end{pmatrix}$. Ces deux derniers vecteurs ne sont pas colinéaires : $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$ donnerait $1 = k \\times 0 = 0$ sur la troisième coordonnée. Le repère étant orthonormé :\n\n$$\\overrightarrow{OH} \\cdot \\overrightarrow{AB} = -\\dfrac{3}{4} + \\dfrac{3}{4} + 0 = 0 \\quad \\text{et} \\quad \\overrightarrow{OH} \\cdot \\overrightarrow{AC} = -\\dfrac{3}{4} + 0 + \\dfrac{3}{4} = 0.$$\n\nLe vecteur $\\overrightarrow{OH}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(ABC)$ : **la droite $(OH)$ est orthogonale au plan $(ABC)$.**\n\nDe plus, $H$ est dans le plan $(ABC)$ (question 5.b) : c'est donc le projeté orthogonal de $O$ sur ce plan, et **la distance du point $O$ au plan $(ABC)$ est $OH = \\dfrac{\\sqrt{3}}{2}$.**"
+      },
+      {
+        "id": "q7",
+        "label": "7.",
+        "enonce": "Calculer, en unités d'aire, l'aire du triangle $ABC$.\n\nSaisis l'aire obtenue.",
+        "points": 0.75,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 4,
+          "tolerance": 0
+        },
+        "revoir": "l-orthogonalite-espace-071",
+        "indices": [
+          "Revois la méthode de l'aire d'un triangle : une base et la hauteur qui lui correspond. La question 5.a te donne une hauteur du triangle $ABC$ et son pied.",
+          "Prends $[AB]$ pour base et $[CK]$ pour hauteur : calcule les longueurs $AB$ et $CK$ avec les coordonnées des vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{CK}$."
+        ],
+        "attenduCorrecteur": "- Base $[AB]$ et hauteur $[CK]$ issue de $C$, car $(CK)$ est perpendiculaire à $(AB)$ en $K$ (question 5.a) : 0,25 pt.\n- $AB = \\sqrt{12 + 4 + 0} = 4$ et $CK = \\sqrt{\\dfrac{3}{4} + \\dfrac{9}{4} + 1} = 2$ : 0,25 pt.\n- Aire : $\\dfrac{AB \\times CK}{2} = \\dfrac{4 \\times 2}{2} = 4$ unités d'aire : 0,25 pt. Autre méthode acceptée : le volume du tétraèdre $OABC$ calculé de deux façons, $V = \\dfrac{2\\sqrt{3}}{3}$ avec la base $OAB$ et la hauteur $OC$, puis $\\mathcal{A} = \\dfrac{3V}{OH}$.",
+        "solution": "D'après la question 5.a, la droite $(CK)$ est perpendiculaire à $(AB)$ en $K$ : le segment $[CK]$ est la hauteur du triangle $ABC$ issue de $C$, associée à la base $[AB]$.\n\nLe repère est orthonormé :\n\n$$AB = \\sqrt{\\left(-2\\sqrt{3}\\right)^2 + 2^2 + 0^2} = \\sqrt{16} = 4 \\quad \\text{et} \\quad CK = \\sqrt{\\dfrac{3}{4} + \\dfrac{9}{4} + 1} = \\sqrt{4} = 2.$$\n\nDonc $\\mathcal{A}_{ABC} = \\dfrac{AB \\times CK}{2} = \\dfrac{4 \\times 2}{2} = 4$.\n\nVérification par le volume : avec la base $OAB$, rectangle en $O$, et la hauteur $OC = 1$, $V = \\dfrac{1}{3} \\times \\dfrac{2\\sqrt{3} \\times 2}{2} \\times 1 = \\dfrac{2\\sqrt{3}}{3}$ ; avec la base $ABC$ et la hauteur $OH = \\dfrac{\\sqrt{3}}{2}$, $V = \\dfrac{1}{3} \\times 4 \\times \\dfrac{\\sqrt{3}}{2} = \\dfrac{2\\sqrt{3}}{3}$ : les deux calculs concordent.\n\n**L'aire du triangle $ABC$ est $4$ unités d'aire.**"
+      }
+    ]
+  }
+]
