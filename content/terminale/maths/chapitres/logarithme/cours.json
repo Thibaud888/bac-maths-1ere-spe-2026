@@ -24,7 +24,7 @@
             "bo-m-logarithme-01",
             "bo-m-continuite-03"
           ],
-          "texte": "Pour tout réel $a > 0$, l'équation $e^x = a$ admet une **unique** solution dans $\\mathbb{R}$ (théorème des valeurs intermédiaires, exemple ci-dessous). Cette solution se note $\\ln a$, qui se lit « logarithme népérien de $a$ ».\n\nLa **fonction logarithme népérien**, notée $\\ln$, est définie sur $]0\\,;\\,+\\infty[$ par $x \\mapsto \\ln x$. C'est la **réciproque** de la fonction exponentielle : elle va de la valeur $e^x$ vers l'exposant $x$. Ainsi :\n\n- pour tout réel $a > 0$ et tout réel $x$ : $e^x = a \\iff x = \\ln a$ (le symbole $\\iff$ se lit « équivaut à ») ;\n- pour tout réel $a > 0$, $e^{\\ln a} = a$, et pour tout réel $x$, $\\ln\\left(e^x\\right) = x$ ;\n- $\\ln 1 = 0$, car $e^0 = 1$, et $\\ln e = 1$, car $e^1 = e$.\n\nSans parenthèses, $\\ln$ porte sur un seul nombre ou une seule lettre : $\\ln 5$, $\\ln x$. Sinon, on écrit $\\ln(2x)$, $\\ln\\left(x^2\\right)$, et $(\\ln x)^2$ pour le carré de $\\ln x$."
+          "texte": "Pour tout réel $a > 0$, l'équation $e^x = a$ admet une **unique** solution dans $\\mathbb{R}$ (théorème des valeurs intermédiaires, exemple ci-dessous). Cette solution se note $\\ln a$, qui se lit « logarithme népérien de $a$ ».\n\nLa **fonction logarithme népérien**, notée $\\ln$, est définie sur $]0\\,;\\,+\\infty[$ par $x \\mapsto \\ln x$. C'est la **réciproque** de l'exponentielle : elle ramène $e^x$ à son exposant $x$. Ainsi :\n\n- pour tout réel $a > 0$ et tout réel $x$ : $e^x = a \\iff x = \\ln a$ (le symbole $\\iff$ se lit « équivaut à ») ;\n- pour tout réel $a > 0$, $e^{\\ln a} = a$, et pour tout réel $x$, $\\ln\\left(e^x\\right) = x$ ;\n- $\\ln 1 = 0$, car $e^0 = 1$, et $\\ln e = 1$, car $e^1 = e$.\n\nSans parenthèses, $\\ln$ ne porte que sur un nombre ou une lettre : $\\ln 5$, $\\ln x$. Sinon, on écrit $\\ln(2x)$, $\\ln\\left(x^2\\right)$ ou $(\\ln x)^2$, le carré de $\\ln x$."
         },
         {
           "id": "l-logarithme-004",
@@ -697,14 +697,14 @@
         {
           "id": "l-logarithme-033",
           "type": "exemple",
-          "titre": "Une équation du second degré en $e^x$",
+          "titre": "Une équation du second degré en $e^x$, puis en $\\ln x$",
           "capacites": [
             "bo-m-logarithme-06"
           ],
-          "enonce": "Résoudre dans $\\mathbb{R}$ l'équation $e^{2x} - e^x - 6 = 0$.",
+          "enonce": "**1.** Résoudre dans $\\mathbb{R}$ l'équation $e^{2x} - e^x - 6 = 0$.\n\n**2.** Résoudre dans $]0\\,;\\,+\\infty[$ l'équation $(\\ln x)^2 - \\ln x - 6 = 0$.",
           "etapes": [
             {
-              "texte": "Pour tout réel $x$, $e^{2x} = \\left(e^x\\right)^2$. On pose $X = e^x$ : l'équation devient $X^2 - X - 6 = 0$.",
+              "texte": "**1.** Pour tout réel $x$, $e^{2x} = \\left(e^x\\right)^2$. On pose $X = e^x$ : l'équation devient $X^2 - X - 6 = 0$.",
               "pourquoi": "Propriété de première : $\\left(e^a\\right)^n = e^{na}$, avec $a = x$ et $n = 2$. Ce changement d'inconnue transforme l'équation en une équation du second degré."
             },
             {
@@ -715,7 +715,18 @@
               "pourquoi": "Le changement d'inconnue n'est fini qu'une fois revenu à l'inconnue de départ, $x$."
             },
             {
-              "texte": "**Conclusion** : l'équation a une unique solution, $S = \\{\\ln 3\\}$. Contrôle : $e^{2\\ln 3} = \\left(e^{\\ln 3}\\right)^2 = 9$, et $9 - 3 - 6 = 0$."
+              "texte": "**Conclusion du 1.** : l'équation a une unique solution, $S = \\{\\ln 3\\}$. Contrôle : $e^{2\\ln 3} = \\left(e^{\\ln 3}\\right)^2 = 9$, et $9 - 3 - 6 = 0$."
+            },
+            {
+              "texte": "**2.** L'équation est définie pour $x > 0$. On pose $X = \\ln x$ : elle devient $X^2 - X - 6 = 0$. C'est l'équation du **1.**, de solutions $X = -2$ et $X = 3$.",
+              "pourquoi": "$(\\ln x)^2$ est le carré de $\\ln x$, donc $X^2$. À ne pas confondre avec $\\ln\\left(x^2\\right)$, le logarithme de $x^2$."
+            },
+            {
+              "texte": "On revient à $x$ : $\\ln x = -2 \\iff x = e^{-2}$, et $\\ln x = 3 \\iff x = e^3$. Ces deux nombres sont strictement positifs : on les garde.",
+              "pourquoi": "Cette fois, on ne rejette aucune valeur de $X$. En effet, $\\ln x$ prend toutes les valeurs réelles, même négatives, alors que $e^x$ est toujours strictement positif."
+            },
+            {
+              "texte": "**Conclusion du 2.** : l'équation a deux solutions, $S = \\left\\{e^{-2}\\,;\\,e^3\\right\\}$. Contrôle : $\\ln\\left(e^{-2}\\right) = -2$ et $(-2)^2 - (-2) - 6 = 4 + 2 - 6 = 0$ ; $\\ln\\left(e^3\\right) = 3$ et $3^2 - 3 - 6 = 0$."
             }
           ]
         },
@@ -781,7 +792,7 @@
           "id": "l-logarithme-039",
           "type": "rappel",
           "titre": "Rappel : dériver un produit, un quotient, une composée",
-          "texte": "Pour $u$ et $v$ dérivables : $(uv)' = u'v + uv'$ et $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$ là où $v$ ne s'annule pas. Pour une composée : $\\big(v(u(x))\\big)' = v'\\big(u(x)\\big) \\times u'(x)$. On dérive la fonction extérieure en gardant l'intérieur, puis on multiplie par la dérivée de l'intérieur. Par exemple, $\\left(e^{u(x)}\\right)' = u'(x)\\,e^{u(x)}$.",
+          "texte": "Pour $u$ et $v$ dérivables : $(uv)' = u'v + uv'$ et $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$ là où $v$ ne s'annule pas. Pour une composée : $\\big(v(u(x))\\big)' = v'\\big(u(x)\\big) \\times u'(x)$. On dérive la fonction extérieure en gardant l'intérieur, puis on multiplie par la dérivée de l'intérieur. Cas usuels : $\\left(e^{u}\\right)' = u'\\,e^{u}$ et, pour $n$ entier avec $n \\geqslant 1$, $\\left(u^n\\right)' = n\\,u'\\,u^{n-1}$. Par exemple, $\\left(u^2\\right)' = 2\\,u'\\,u$.",
           "lien": "l-derivation-convexite-006"
         },
         {
@@ -806,7 +817,7 @@
             "bo-m-logarithme-03",
             "bo-m-derivation-05"
           ],
-          "enonce": "Calculer la dérivée de chacune des fonctions suivantes, définies et dérivables sur $]0\\,;\\,+\\infty[$.\n\n**a.** $f(x) = x^2\\ln x$ ;\n\n**b.** $g(x) = \\dfrac{\\ln x}{x}$ ;\n\n**c.** $h(x) = x\\ln x - x$.",
+          "enonce": "Calculer la dérivée de chacune des fonctions suivantes, définies et dérivables sur $]0\\,;\\,+\\infty[$.\n\n**a.** $f(x) = x^2\\ln x$ ;\n\n**b.** $g(x) = \\dfrac{\\ln x}{x}$ ;\n\n**c.** $h(x) = x\\ln x - x$ ;\n\n**d.** $k(x) = (\\ln x)^2$.",
           "etapes": [
             {
               "texte": "**a.** $f = uv$ avec $u(x) = x^2$, $u'(x) = 2x$, $v(x) = \\ln x$ et $v'(x) = \\dfrac{1}{x}$. Donc $f'(x) = 2x\\ln x + x^2 \\times \\dfrac{1}{x} = 2x\\ln x + x$.",
@@ -825,7 +836,11 @@
               "pourquoi": "Encore la dérivée d'un produit, avec $u(x) = x$ et $v(x) = \\ln x$."
             },
             {
-              "texte": "**Conclusion** : $f'(x) = x(2\\ln x + 1)$, $g'(x) = \\dfrac{1 - \\ln x}{x^2}$ et $h'(x) = \\ln x$."
+              "texte": "**d.** $k = u^2$ avec $u(x) = \\ln x$ et $u'(x) = \\dfrac{1}{x}$. Donc $k'(x) = 2 \\times \\dfrac{1}{x} \\times \\ln x = \\dfrac{2\\ln x}{x}$.",
+              "pourquoi": "Dérivée d'une puissance (rappel ci-dessus) : $\\left(u^n\\right)' = n\\,u'\\,u^{n-1}$, ici avec $n = 2$. Le facteur $u'(x) = \\dfrac{1}{x}$ ne s'oublie pas."
+            },
+            {
+              "texte": "**Conclusion** : $f'(x) = x(2\\ln x + 1)$, $g'(x) = \\dfrac{1 - \\ln x}{x^2}$, $h'(x) = \\ln x$ et $k'(x) = \\dfrac{2\\ln x}{x}$."
             }
           ]
         },
@@ -1200,7 +1215,7 @@
           "capacites": [
             "bo-m-logarithme-04"
           ],
-          "texte": "Dans un repère orthonormé, le symétrique du point $M(a\\,;\\,b)$ par rapport à la droite d'équation $y = x$ est le point $M'(b\\,;\\,a)$ : on échange l'abscisse et l'ordonnée.\n\nOr $M(a\\,;\\,b)$ est sur la courbe de l'exponentielle si et seulement si $b = e^a$, c'est-à-dire $a = \\ln b$. Cela revient à dire que $M'(b\\,;\\,a)$ est sur la courbe de $\\ln$.\n\nAinsi, les courbes de $\\ln$ et de l'exponentielle sont **symétriques** par rapport à la droite d'équation $y = x$.",
+          "texte": "Dans un repère orthonormé, le symétrique du point $M(a\\,;\\,b)$ par rapport à la droite d'équation $y = x$ est le point $M'(b\\,;\\,a)$. On échange l'abscisse et l'ordonnée.\n\nOr $M(a\\,;\\,b)$ est sur la courbe de l'exponentielle si et seulement si $b = e^a$, c'est-à-dire $a = \\ln b$. Cela revient à dire que $M'(b\\,;\\,a)$ est sur la courbe de $\\ln$.\n\nAinsi, les courbes de $\\ln$ et de l'exponentielle sont **symétriques** par rapport à la droite d'équation $y = x$.",
           "conditions": [
             "Le repère est orthonormé : sinon, échanger les coordonnées n'est plus une symétrie par rapport à la droite d'équation $y = x$."
           ],
@@ -1209,7 +1224,7 @@
         {
           "id": "l-logarithme-058",
           "type": "figure",
-          "titre": "Les courbes de $\\ln$ et de l'exponentielle",
+          "titre": "Les deux courbes, symétriques par rapport à $y = x$",
           "figure": {
             "type": "image",
             "data": {
@@ -1232,7 +1247,7 @@
           "etapes": [
             {
               "texte": "**1.** Le symétrique de $A(0\\,;\\,1)$ est $A'(1\\,;\\,0)$. Il est sur la courbe de $\\ln$, car $\\ln 1 = 0$.",
-              "pourquoi": "On échange l'abscisse et l'ordonnée. Contrôle : le milieu de $[AA']$ a pour coordonnées $\\left(\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$, il est bien sur la droite d'équation $y = x$."
+              "pourquoi": "On échange l'abscisse et l'ordonnée. Contrôle : le milieu de $[AA']$, de coordonnées $\\left(\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\right)$, est sur la droite d'équation $y = x$. De plus, $\\overrightarrow{AA'}(1\\,;\\,-1)$ est orthogonal au vecteur $\\vec{u}(1\\,;\\,1)$, qui dirige cette droite : $1 \\times 1 + (-1) \\times 1 = 0$. Ces deux conditions font de cette droite la médiatrice de $[AA']$ : $A'$ est bien le symétrique de $A$."
             },
             {
               "texte": "Le symétrique de $B\\left(2\\,;\\,e^2\\right)$ est $B'\\left(e^2\\,;\\,2\\right)$. Il est sur la courbe de $\\ln$, car $\\ln\\left(e^2\\right) = 2$.",
@@ -1240,7 +1255,7 @@
             },
             {
               "texte": "**2.** La symétrie échange les deux axes : un point $(a\\,;\\,0)$ de l'axe des abscisses a pour symétrique $(0\\,;\\,a)$, sur l'axe des ordonnées. L'asymptote horizontale d'équation $y = 0$ devient donc l'asymptote verticale d'équation $x = 0$.",
-              "pourquoi": "C'est le lien entre les limites : $e^x$ tend vers $0$ quand $x$ tend vers $-\\infty$, et $\\ln x$ tend vers $-\\infty$ quand $x$ tend vers $0$."
+              "pourquoi": "C'est le lien entre les limites. Quand $x$ tend vers $-\\infty$, $e^x$ tend vers $0$. Quand $x$ tend vers $0$, avec $x > 0$, $\\ln x$ tend vers $-\\infty$."
             },
             {
               "texte": "**Conclusion** : $A'(1\\,;\\,0)$ et $B'\\left(e^2\\,;\\,2\\right)$ sont sur la courbe de $\\ln$. À l'asymptote horizontale d'équation $y = 0$ de la courbe de l'exponentielle correspond l'asymptote verticale d'équation $x = 0$ de la courbe de $\\ln$."
