@@ -1,0 +1,1219 @@
+{
+  "chapitre": "orthogonalite-espace",
+  "sections": [
+    {
+      "notion": "n-orthogonalite-espace-produit-scalaire",
+      "blocs": [
+        {
+          "id": "l-orthogonalite-espace-001",
+          "type": "idee",
+          "texte": "En première, le produit scalaire de deux vecteurs du plan servait à calculer des angles, des longueurs, et à prouver que deux droites sont perpendiculaires. Dans l'espace, place deux vecteurs à partir d'un même point $A$ : leurs extrémités $B$ et $C$ forment avec $A$ trois points, et trois points sont toujours dans un même plan. Le produit scalaire se calcule donc dans ce plan, avec les formules de première. Les règles de calcul ne changent pas."
+        },
+        {
+          "id": "l-orthogonalite-espace-002",
+          "type": "rappel",
+          "titre": "Rappel : le produit scalaire dans le plan",
+          "texte": "Dans le plan, pour deux vecteurs non nuls $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ :\n\n- $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AC \\times \\cos\\widehat{BAC}$ ;\n- si $K$ est le projeté orthogonal de $C$ sur la droite $(AB)$, alors $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AK$ quand $\\overrightarrow{AB}$ et $\\overrightarrow{AK}$ ont le même sens, et $-AB \\times AK$ sinon.\n\nSi l'un des deux vecteurs est nul, le produit scalaire vaut $0$. Enfin, $\\vec{u} \\cdot \\vec{u} = \\lVert \\vec{u} \\rVert^2$, où la **norme** $\\lVert \\vec{u} \\rVert$ est la longueur du vecteur $\\vec{u}$.",
+          "lien": "1e:produit-scalaire"
+        },
+        {
+          "id": "l-orthogonalite-espace-003",
+          "type": "definition",
+          "titre": "Produit scalaire de deux vecteurs de l'espace",
+          "capacites": ["bo-m-orthogonalite-01"],
+          "texte": "Soit $\\vec{u}$ et $\\vec{v}$ deux vecteurs de l'espace, et $A$, $B$, $C$ trois points tels que $\\vec{u} = \\overrightarrow{AB}$ et $\\vec{v} = \\overrightarrow{AC}$. Il existe au moins un plan $\\mathcal{P}$ qui contient $A$, $B$ et $C$.\n\nLe **produit scalaire** de $\\vec{u}$ et $\\vec{v}$ se note $\\vec{u} \\cdot \\vec{v}$ (se lit « $u$ scalaire $v$ »). C'est le produit scalaire $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$ calculé dans le plan $\\mathcal{P}$ : un nombre réel, qui ne dépend pas du plan choisi.\n\nAinsi, si $\\vec{u}$ et $\\vec{v}$ sont non nuls, $\\vec{u} \\cdot \\vec{v} = \\lVert \\vec{u} \\rVert \\times \\lVert \\vec{v} \\rVert \\times \\cos\\widehat{BAC}$ ; si l'un d'eux est nul, $\\vec{u} \\cdot \\vec{v} = 0$. La norme $\\lVert \\vec{u} \\rVert$ est la longueur $AB$, et $\\vec{u} \\cdot \\vec{u} = \\lVert \\vec{u} \\rVert^2$."
+        },
+        {
+          "id": "l-orthogonalite-espace-004",
+          "type": "figure",
+          "titre": "Des vecteurs placés à partir d'un même point",
+          "capacites": ["bo-m-orthogonalite-01"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/orthogonalite-espace/cube-produit-scalaire.svg",
+              "alt": "Le cube ABCDEFGH en perspective, avec la face avant ABFE colorée. Une flèche bleue va de A à B, une flèche orange de A à F, le long de la diagonale de la face ABFE. Une flèche verte va de E à G sur la face du dessus ; une flèche verte en pointillé, cachée, va de A à C sur la face du dessous : elles sont parallèles et de même longueur.",
+              "width": 340,
+              "height": 300
+            },
+            "caption": "Les vecteurs AB (bleu) et AF (orange) partent de A : on calcule leur produit scalaire dans le plan de la face ABFE. Le vecteur EG (vert) est égal au vecteur AC (vert, en pointillé) : on le déplace en A avant de calculer."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-005",
+          "type": "exemple",
+          "titre": "Calculer dans un cube",
+          "capacites": ["bo-m-orthogonalite-01"],
+          "enonce": "$ABCDEFGH$ est un cube d'arête $3$ : toutes ses faces sont des carrés de côté $3$. Calculer :\n\n**1.** $\\overrightarrow{AB} \\cdot \\overrightarrow{AF}$, de deux façons ;\n\n**2.** $\\overrightarrow{AB} \\cdot \\overrightarrow{EG}$ ;\n\n**3.** $\\overrightarrow{AB} \\cdot \\overrightarrow{AE}$.",
+          "etapes": [
+            {
+              "texte": "**1.** Les points $A$, $B$, $F$ sont dans le plan de la face $ABFE$. Dans ce carré, l'angle $\\widehat{ABF}$ est droit : le projeté orthogonal de $F$ sur la droite $(AB)$ est $B$. Donc $\\overrightarrow{AB} \\cdot \\overrightarrow{AF} = AB \\times AB = 3 \\times 3 = 9$.",
+              "pourquoi": "C'est la formule du projeté, dans le plan $(ABF)$, avec $K = B$. Le vecteur $\\overrightarrow{AB}$ a le même sens que lui-même : le signe est plus."
+            },
+            {
+              "texte": "Autre façon : $[AF]$ est une diagonale du carré $ABFE$, donc $AF = 3\\sqrt{2}$ et $\\widehat{BAF} = 45^\\circ$. Alors $\\overrightarrow{AB} \\cdot \\overrightarrow{AF} = 3 \\times 3\\sqrt{2} \\times \\cos 45^\\circ = 3 \\times 3\\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2} = 9$.",
+              "pourquoi": "Par le théorème de Pythagore, $AF^2 = 3^2 + 3^2 = 18$, donc $AF = \\sqrt{18} = 3\\sqrt{2}$. Puis $3\\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2} = \\dfrac{3 \\times 2}{2} = 3$."
+            },
+            {
+              "texte": "**2.** $\\overrightarrow{AB}$ et $\\overrightarrow{EG}$ ne partent pas du même point. Or $ACGE$ est un rectangle, donc $\\overrightarrow{EG} = \\overrightarrow{AC}$, et $\\overrightarrow{AB} \\cdot \\overrightarrow{EG} = \\overrightarrow{AB} \\cdot \\overrightarrow{AC}$.",
+              "pourquoi": "Pour appliquer la définition, on place les deux vecteurs à partir d'un même point. Le rectangle $ACGE$ a été vu au chapitre « Vecteurs, droites et plans de l'espace »."
+            },
+            {
+              "texte": "Dans le carré $ABCD$, l'angle $\\widehat{ABC}$ est droit : le projeté orthogonal de $C$ sur $(AB)$ est $B$. Donc $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AB = 9$."
+            },
+            {
+              "texte": "**3.** Dans le carré $ABFE$, l'angle $\\widehat{BAE}$ est droit : $\\overrightarrow{AB} \\cdot \\overrightarrow{AE} = 3 \\times 3 \\times \\cos 90^\\circ = 0$."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{AB} \\cdot \\overrightarrow{AF} = 9$, $\\overrightarrow{AB} \\cdot \\overrightarrow{EG} = 9$ et $\\overrightarrow{AB} \\cdot \\overrightarrow{AE} = 0$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-006",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-01"],
+          "question": {
+            "enonce": "$ABCDEFGH$ est un cube d'arête $2$. Que vaut $\\overrightarrow{EH} \\cdot \\overrightarrow{AC}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": ["$0$", "$4\\sqrt{2}$", "$4$", "$-4$"],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Placés en $A$, ces vecteurs sont $\\overrightarrow{AD}$ et $\\overrightarrow{AC}$ : ils font un angle de $45^\\circ$, pas de $90^\\circ$.",
+                "C'est $AD \\times AC = 2 \\times 2\\sqrt{2}$ : il manque le cosinus de l'angle $\\widehat{DAC}$, qui vaut $\\dfrac{\\sqrt{2}}{2}$.",
+                null,
+                "Le projeté de $C$ sur $(AD)$ est $D$, et $\\overrightarrow{AD}$ a le même sens que lui-même : le signe est plus."
+              ]
+            },
+            "explication": "La face $ADHE$ est un carré, donc $\\overrightarrow{EH} = \\overrightarrow{AD}$. Dans le carré $ABCD$, le projeté orthogonal de $C$ sur $(AD)$ est $D$ : $\\overrightarrow{AD} \\cdot \\overrightarrow{AC} = AD \\times AD = 4$."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-007",
+          "type": "propriete",
+          "titre": "Règles de calcul, formules de polarisation",
+          "capacites": ["bo-m-orthogonalite-01", "bo-m-orthogonalite-05"],
+          "texte": "Pour tous vecteurs $\\vec{u}$, $\\vec{v}$, $\\vec{w}$ de l'espace et tout réel $k$ :\n\n- **symétrie** : $\\vec{u} \\cdot \\vec{v} = \\vec{v} \\cdot \\vec{u}$ ;\n- **bilinéarité** : $\\vec{u} \\cdot (\\vec{v} + \\vec{w}) = \\vec{u} \\cdot \\vec{v} + \\vec{u} \\cdot \\vec{w}$ et $\\vec{u} \\cdot (k\\,\\vec{v}) = k\\,(\\vec{u} \\cdot \\vec{v})$, et de même pour le premier vecteur. « Bilinéaire » veut dire qu'on développe par rapport à chacun des deux vecteurs, comme un produit de nombres ;\n- **développements** :\n\n$$\\begin{aligned} \\lVert \\vec{u} + \\vec{v} \\rVert^2 &= \\lVert \\vec{u} \\rVert^2 + 2\\,\\vec{u} \\cdot \\vec{v} + \\lVert \\vec{v} \\rVert^2 \\\\ \\lVert \\vec{u} - \\vec{v} \\rVert^2 &= \\lVert \\vec{u} \\rVert^2 - 2\\,\\vec{u} \\cdot \\vec{v} + \\lVert \\vec{v} \\rVert^2 \\\\ (\\vec{u} + \\vec{v}) \\cdot (\\vec{u} - \\vec{v}) &= \\lVert \\vec{u} \\rVert^2 - \\lVert \\vec{v} \\rVert^2 \\end{aligned}$$\n\n- **formules de polarisation**, qui donnent le produit scalaire à partir de longueurs seulement :\n\n$$\\begin{aligned} \\vec{u} \\cdot \\vec{v} &= \\dfrac{1}{2}\\left(\\lVert \\vec{u} + \\vec{v} \\rVert^2 - \\lVert \\vec{u} \\rVert^2 - \\lVert \\vec{v} \\rVert^2\\right) = \\dfrac{1}{2}\\left(\\lVert \\vec{u} \\rVert^2 + \\lVert \\vec{v} \\rVert^2 - \\lVert \\vec{u} - \\vec{v} \\rVert^2\\right) \\\\ &= \\dfrac{1}{4}\\left(\\lVert \\vec{u} + \\vec{v} \\rVert^2 - \\lVert \\vec{u} - \\vec{v} \\rVert^2\\right) \\end{aligned}$$\n\nLa symétrie et la bilinéarité sont admises, comme dans le plan ; les développements et la polarisation s'en déduisent (démonstration plus bas).",
+          "conditions": [
+            "Aucune hypothèse : ces règles valent pour tous vecteurs de l'espace, colinéaires ou non, nuls ou non."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-orthogonalite-espace-008",
+          "type": "exemple",
+          "titre": "Développer, puis polariser",
+          "capacites": ["bo-m-orthogonalite-01", "bo-m-orthogonalite-05"],
+          "enonce": "**1.** $ABCDEFGH$ est un cube d'arête $3$. En écrivant $\\overrightarrow{AG} = \\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CG}$, calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AG}$.\n\n**2.** $\\vec{u}$ et $\\vec{v}$ sont deux vecteurs tels que $\\lVert \\vec{u} \\rVert = 3$, $\\lVert \\vec{v} \\rVert = 2$ et $\\lVert \\vec{u} + \\vec{v} \\rVert = 4$. Calculer $\\vec{u} \\cdot \\vec{v}$, puis $\\lVert \\vec{u} - \\vec{v} \\rVert$.",
+          "etapes": [
+            {
+              "texte": "**1.** Par bilinéarité : $\\overrightarrow{AB} \\cdot \\overrightarrow{AG} = \\overrightarrow{AB} \\cdot \\overrightarrow{AB} + \\overrightarrow{AB} \\cdot \\overrightarrow{BC} + \\overrightarrow{AB} \\cdot \\overrightarrow{CG}$.",
+              "pourquoi": "On développe $\\overrightarrow{AB} \\cdot \\left(\\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CG}\\right)$ terme à terme, comme $a(b + c + d) = ab + ac + ad$ pour des nombres."
+            },
+            {
+              "texte": "D'abord, $\\overrightarrow{AB} \\cdot \\overrightarrow{AB} = AB^2 = 9$. Ensuite, $\\overrightarrow{BC} = \\overrightarrow{AD}$ et $\\overrightarrow{CG} = \\overrightarrow{AE}$ ; les angles $\\widehat{BAD}$ et $\\widehat{BAE}$ sont droits, donc $\\overrightarrow{AB} \\cdot \\overrightarrow{BC} = 0$ et $\\overrightarrow{AB} \\cdot \\overrightarrow{CG} = 0$.",
+              "pourquoi": "On place chaque vecteur en $A$. Les faces $ABCD$ et $ABFE$ sont des carrés, et $\\cos 90^\\circ = 0$."
+            },
+            {
+              "texte": "Donc $\\overrightarrow{AB} \\cdot \\overrightarrow{AG} = 9 + 0 + 0 = 9$."
+            },
+            {
+              "texte": "**2.** Première formule de polarisation : $\\vec{u} \\cdot \\vec{v} = \\dfrac{1}{2}\\left(\\lVert \\vec{u} + \\vec{v} \\rVert^2 - \\lVert \\vec{u} \\rVert^2 - \\lVert \\vec{v} \\rVert^2\\right) = \\dfrac{1}{2}(16 - 9 - 4) = \\dfrac{3}{2}$.",
+              "pourquoi": "On élève les normes au carré : $4^2 = 16$, $3^2 = 9$ et $2^2 = 4$."
+            },
+            {
+              "texte": "Développement : $\\lVert \\vec{u} - \\vec{v} \\rVert^2 = \\lVert \\vec{u} \\rVert^2 - 2\\,\\vec{u} \\cdot \\vec{v} + \\lVert \\vec{v} \\rVert^2 = 9 - 2 \\times \\dfrac{3}{2} + 4 = 10$. Une norme est positive, donc $\\lVert \\vec{u} - \\vec{v} \\rVert = \\sqrt{10}$."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{AB} \\cdot \\overrightarrow{AG} = 9$ ; $\\vec{u} \\cdot \\vec{v} = \\dfrac{3}{2}$ et $\\lVert \\vec{u} - \\vec{v} \\rVert = \\sqrt{10}$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-009",
+          "type": "demonstration",
+          "titre": "Démonstration : les développements et la polarisation",
+          "capacites": ["bo-m-orthogonalite-05"],
+          "de": "l-orthogonalite-espace-007",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "On écrit le carré de la norme comme un produit scalaire : $\\lVert \\vec{u} + \\vec{v} \\rVert^2 = (\\vec{u} + \\vec{v}) \\cdot (\\vec{u} + \\vec{v})$.",
+              "pourquoi": "Pour tout vecteur $\\vec{w}$, $\\vec{w} \\cdot \\vec{w} = \\lVert \\vec{w} \\rVert^2$ : c'est la définition, appliquée à $\\vec{w} = \\vec{u} + \\vec{v}$."
+            },
+            {
+              "texte": "Par bilinéarité : $(\\vec{u} + \\vec{v}) \\cdot (\\vec{u} + \\vec{v}) = \\vec{u} \\cdot \\vec{u} + \\vec{u} \\cdot \\vec{v} + \\vec{v} \\cdot \\vec{u} + \\vec{v} \\cdot \\vec{v}$. Par symétrie, $\\vec{v} \\cdot \\vec{u} = \\vec{u} \\cdot \\vec{v}$, d'où $\\lVert \\vec{u} + \\vec{v} \\rVert^2 = \\lVert \\vec{u} \\rVert^2 + 2\\,\\vec{u} \\cdot \\vec{v} + \\lVert \\vec{v} \\rVert^2$."
+            },
+            {
+              "texte": "On remplace $\\vec{v}$ par $-\\vec{v}$ : $\\lVert \\vec{u} - \\vec{v} \\rVert^2 = \\lVert \\vec{u} \\rVert^2 - 2\\,\\vec{u} \\cdot \\vec{v} + \\lVert \\vec{v} \\rVert^2$. De même, $(\\vec{u} + \\vec{v}) \\cdot (\\vec{u} - \\vec{v}) = \\vec{u} \\cdot \\vec{u} - \\vec{u} \\cdot \\vec{v} + \\vec{v} \\cdot \\vec{u} - \\vec{v} \\cdot \\vec{v} = \\lVert \\vec{u} \\rVert^2 - \\lVert \\vec{v} \\rVert^2$.",
+              "pourquoi": "Par bilinéarité avec $k = -1$ : $\\vec{u} \\cdot (-\\vec{v}) = -\\,\\vec{u} \\cdot \\vec{v}$ et $(-\\vec{v}) \\cdot (-\\vec{v}) = \\vec{v} \\cdot \\vec{v}$."
+            },
+            {
+              "texte": "**Polarisation.** Dans la première égalité, on isole le double produit : $2\\,\\vec{u} \\cdot \\vec{v} = \\lVert \\vec{u} + \\vec{v} \\rVert^2 - \\lVert \\vec{u} \\rVert^2 - \\lVert \\vec{v} \\rVert^2$, puis on divise par $2$. On fait de même avec la deuxième égalité."
+            },
+            {
+              "texte": "On retranche la deuxième égalité de la première : $\\lVert \\vec{u} + \\vec{v} \\rVert^2 - \\lVert \\vec{u} - \\vec{v} \\rVert^2 = 4\\,\\vec{u} \\cdot \\vec{v}$. On divise par $4$ : c'est la dernière formule. **Conclusion** : tout découle de la symétrie et de la bilinéarité.",
+              "pourquoi": "Les termes $\\lVert \\vec{u} \\rVert^2$ et $\\lVert \\vec{v} \\rVert^2$ s'en vont, et $2\\,\\vec{u} \\cdot \\vec{v} - \\left(-2\\,\\vec{u} \\cdot \\vec{v}\\right) = 4\\,\\vec{u} \\cdot \\vec{v}$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-010",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-05"],
+          "question": {
+            "enonce": "On sait que $\\lVert \\vec{u} \\rVert = 2$, $\\lVert \\vec{v} \\rVert = 3$ et $\\vec{u} \\cdot \\vec{v} = -1$. Que vaut $\\lVert \\vec{u} + \\vec{v} \\rVert^2$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 11,
+              "tolerance": 0
+            },
+            "explication": "$\\lVert \\vec{u} + \\vec{v} \\rVert^2 = \\lVert \\vec{u} \\rVert^2 + 2\\,\\vec{u} \\cdot \\vec{v} + \\lVert \\vec{v} \\rVert^2 = 4 + 2 \\times (-1) + 9 = 11$. Le double produit compte, avec son signe."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-011",
+          "type": "lien-matiere",
+          "titre": "Et en physique ?",
+          "capacites": ["bo-pc1-energie-01"],
+          "matiere": "physique-chimie",
+          "texte": "En physique, le travail d'une force constante $\\vec{F}$ lors d'un déplacement de $A$ à $B$ est un produit scalaire : $W_{AB}(\\vec{F}) = \\vec{F} \\cdot \\overrightarrow{AB}$, en joules. Une force perpendiculaire au déplacement, comme le poids pendant un trajet horizontal, a donc un travail nul."
+        },
+        {
+          "id": "l-orthogonalite-espace-012",
+          "type": "piege",
+          "titre": "Le carré d'une somme de vecteurs",
+          "faux": "$\\lVert \\vec{u} + \\vec{v} \\rVert^2 = \\lVert \\vec{u} \\rVert^2 + \\lVert \\vec{v} \\rVert^2$, et donc $\\lVert \\vec{u} + \\vec{v} \\rVert = \\lVert \\vec{u} \\rVert + \\lVert \\vec{v} \\rVert$.",
+          "juste": "$\\lVert \\vec{u} + \\vec{v} \\rVert^2 = \\lVert \\vec{u} \\rVert^2 + 2\\,\\vec{u} \\cdot \\vec{v} + \\lVert \\vec{v} \\rVert^2$ : on développe comme $(a + b)^2$, sans oublier le double produit.",
+          "explication": "Sans le double produit, l'égalité n'est vraie que si $\\vec{u} \\cdot \\vec{v} = 0$ : c'est le théorème de Pythagore. Et les normes ne s'ajoutent pas : dans l'exemple « Développer, puis polariser », $\\lVert \\vec{u} + \\vec{v} \\rVert = 4$ alors que $\\lVert \\vec{u} \\rVert + \\lVert \\vec{v} \\rVert = 5$."
+        },
+        {
+          "id": "l-orthogonalite-espace-013",
+          "type": "complement",
+          "titre": "Pour aller plus loin : la fonction scalaire de Leibniz",
+          "capacites": ["bo-m-orthogonalite-16"],
+          "texte": "Soit $A$ et $B$ deux points, $a$ et $b$ deux réels avec $a + b \\neq 0$, et $G$ le barycentre de $(A\\,;\\,a)$ et $(B\\,;\\,b)$ : $a\\,\\overrightarrow{GA} + b\\,\\overrightarrow{GB} = \\vec{0}$ (complément du chapitre « Vecteurs, droites et plans de l'espace »). La **fonction scalaire de Leibniz** associe à tout point $M$ le nombre $a\\,MA^2 + b\\,MB^2$.\n\nOn développe $MA^2 = \\lVert \\overrightarrow{MG} + \\overrightarrow{GA} \\rVert^2 = MG^2 + 2\\,\\overrightarrow{MG} \\cdot \\overrightarrow{GA} + GA^2$, de même $MB^2$, puis on ajoute :\n\n$$\\begin{aligned} a\\,MA^2 + b\\,MB^2 &= (a + b)\\,MG^2 + 2\\,\\overrightarrow{MG} \\cdot \\left(a\\,\\overrightarrow{GA} + b\\,\\overrightarrow{GB}\\right) + a\\,GA^2 + b\\,GB^2 \\\\ &= (a + b)\\,MG^2 + a\\,GA^2 + b\\,GB^2. \\end{aligned}$$\n\nAvec $a = b = 1$, $G$ est le milieu $I$ de $[AB]$ : $MA^2 + MB^2 = 2\\,MI^2 + \\dfrac{AB^2}{2}$. Les points $M$ où cette somme prend une valeur donnée sont tous à la même distance de $I$ : ils forment une sphère de centre $I$, ou le seul point $I$, ou aucun point."
+        },
+        {
+          "id": "l-orthogonalite-espace-014",
+          "type": "retenir",
+          "texte": "Dans l'espace, $\\vec{u} \\cdot \\vec{v}$ se calcule dans un plan qui contient les deux vecteurs placés en un même point : $\\lVert \\vec{u} \\rVert \\times \\lVert \\vec{v} \\rVert \\times \\cos\\widehat{BAC}$, ou par un projeté. Il se développe comme un produit : $\\lVert \\vec{u} + \\vec{v} \\rVert^2 = \\lVert \\vec{u} \\rVert^2 + 2\\,\\vec{u} \\cdot \\vec{v} + \\lVert \\vec{v} \\rVert^2$."
+        }
+      ]
+    },
+    {
+      "notion": "n-orthogonalite-espace-repere-orthonorme",
+      "blocs": [
+        {
+          "id": "l-orthogonalite-espace-015",
+          "type": "idee",
+          "texte": "Avec un angle ou un projeté, il faut bien voir la figure. Dans un repère bien choisi, tout devient calcul. Si les trois axes sont perpendiculaires deux à deux et gradués avec la même unité, le produit scalaire s'obtient avec les coordonnées, comme dans le plan en première. Au bac, c'est l'outil de presque tous les exercices de géométrie : prouver qu'un triangle est rectangle, calculer une longueur ou un angle."
+        },
+        {
+          "id": "l-orthogonalite-espace-016",
+          "type": "rappel",
+          "titre": "Rappel : coordonnées d'un point, d'un vecteur",
+          "texte": "Dans un repère $\\left(O\\,;\\,\\vec{i}, \\vec{j}, \\vec{k}\\right)$, $M(x\\,;\\,y\\,;\\,z)$ signifie $\\overrightarrow{OM} = x\\,\\vec{i} + y\\,\\vec{j} + z\\,\\vec{k}$. Pour $A(x_A\\,;\\,y_A\\,;\\,z_A)$ et $B(x_B\\,;\\,y_B\\,;\\,z_B)$, le vecteur $\\overrightarrow{AB}$ a pour coordonnées $\\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\\\ z_B - z_A \\end{pmatrix}$ : arrivée moins départ.\n\nEn première, dans un repère orthonormé du plan, pour $\\vec{u}\\begin{pmatrix} x \\\\ y \\end{pmatrix}$ et $\\vec{v}\\begin{pmatrix} x' \\\\ y' \\end{pmatrix}$ : $\\vec{u} \\cdot \\vec{v} = xx' + yy'$.",
+          "lien": "n-vecteurs-espace-bases-reperes"
+        },
+        {
+          "id": "l-orthogonalite-espace-017",
+          "type": "definition",
+          "titre": "Vecteurs orthogonaux",
+          "capacites": ["bo-m-orthogonalite-02"],
+          "texte": "Deux vecteurs $\\vec{u}$ et $\\vec{v}$ de l'espace sont **orthogonaux** lorsque l'un d'eux est nul, ou lorsque les droites qui les portent, une fois placés en un même point, sont perpendiculaires. Autrement dit, avec $\\vec{u} = \\overrightarrow{AB}$ et $\\vec{v} = \\overrightarrow{AC}$, les droites $(AB)$ et $(AC)$ sont perpendiculaires.\n\n**Caractérisation par le produit scalaire** : $\\vec{u}$ et $\\vec{v}$ sont orthogonaux si et seulement si $\\vec{u} \\cdot \\vec{v} = 0$.\n\nEn effet, pour des vecteurs non nuls, $\\vec{u} \\cdot \\vec{v} = AB \\times AC \\times \\cos\\widehat{BAC}$. Ce nombre est nul si et seulement si $\\cos\\widehat{BAC} = 0$, c'est-à-dire si l'angle $\\widehat{BAC}$ est droit."
+        },
+        {
+          "id": "l-orthogonalite-espace-018",
+          "type": "exemple",
+          "titre": "Des vecteurs orthogonaux dans un cube",
+          "capacites": ["bo-m-orthogonalite-02"],
+          "enonce": "$ABCDEFGH$ est un cube. Les vecteurs suivants sont-ils orthogonaux ?\n\n**1.** $\\overrightarrow{AB}$ et $\\overrightarrow{CG}$ ;\n\n**2.** $\\overrightarrow{AB}$ et $\\overrightarrow{AF}$ ;\n\n**3.** $\\overrightarrow{EG}$ et $\\overrightarrow{BD}$.",
+          "etapes": [
+            {
+              "texte": "**1.** On place les deux vecteurs en $A$ : $\\overrightarrow{CG} = \\overrightarrow{AE}$. Les droites $(AB)$ et $(AE)$ sont perpendiculaires, car $ABFE$ est un carré. Donc $\\overrightarrow{AB}$ et $\\overrightarrow{CG}$ sont orthogonaux.",
+              "pourquoi": "Les droites $(AB)$ et $(CG)$, elles, ne se coupent pas : l'orthogonalité de deux vecteurs se lit après les avoir placés en un même point."
+            },
+            {
+              "texte": "**2.** Dans le carré $ABFE$, le projeté orthogonal de $F$ sur $(AB)$ est $B$, donc $\\overrightarrow{AB} \\cdot \\overrightarrow{AF} = AB^2$. Ce nombre n'est pas nul : $\\overrightarrow{AB}$ et $\\overrightarrow{AF}$ ne sont pas orthogonaux.",
+              "pourquoi": "C'est le calcul de l'exemple « Calculer dans un cube », pour une arête quelconque. D'ailleurs, l'angle $\\widehat{BAF}$ mesure $45^\\circ$."
+            },
+            {
+              "texte": "**3.** $\\overrightarrow{EG} = \\overrightarrow{AC} = \\overrightarrow{AD} + \\overrightarrow{AB}$ et $\\overrightarrow{BD} = \\overrightarrow{BA} + \\overrightarrow{AD} = \\overrightarrow{AD} - \\overrightarrow{AB}$.",
+              "pourquoi": "$ACGE$ est un rectangle, et $ABCD$ un carré, donc $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AB} + \\overrightarrow{AD}$. Puis la relation de Chasles pour $\\overrightarrow{BD}$."
+            },
+            {
+              "texte": "Donc $\\overrightarrow{EG} \\cdot \\overrightarrow{BD} = \\left(\\overrightarrow{AD} + \\overrightarrow{AB}\\right) \\cdot \\left(\\overrightarrow{AD} - \\overrightarrow{AB}\\right) = AD^2 - AB^2 = 0$, car $AD = AB$.",
+              "pourquoi": "C'est le développement $(\\vec{u} + \\vec{v}) \\cdot (\\vec{u} - \\vec{v}) = \\lVert \\vec{u} \\rVert^2 - \\lVert \\vec{v} \\rVert^2$, avec $\\vec{u} = \\overrightarrow{AD}$ et $\\vec{v} = \\overrightarrow{AB}$."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{AB}$ et $\\overrightarrow{CG}$ sont orthogonaux, de même que $\\overrightarrow{EG}$ et $\\overrightarrow{BD}$ ; $\\overrightarrow{AB}$ et $\\overrightarrow{AF}$ ne le sont pas."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-019",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-02"],
+          "question": {
+            "enonce": "Vrai ou faux : dans le cube $ABCDEFGH$, les vecteurs $\\overrightarrow{AE}$ et $\\overrightarrow{BD}$ sont orthogonaux.",
+            "reponse": {
+              "type": "vrai-faux",
+              "valeur": true,
+              "justification": "$\\overrightarrow{BD} = \\overrightarrow{AD} - \\overrightarrow{AB}$, donc par bilinéarité $\\overrightarrow{AE} \\cdot \\overrightarrow{BD} = \\overrightarrow{AE} \\cdot \\overrightarrow{AD} - \\overrightarrow{AE} \\cdot \\overrightarrow{AB} = 0 - 0 = 0$."
+            },
+            "explication": "Les droites $(AE)$ et $(BD)$ ne se coupent pas, et pourtant les vecteurs sont orthogonaux : on le voit en les plaçant en un même point, ou par le calcul."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-020",
+          "type": "definition",
+          "titre": "Base orthonormée, repère orthonormé",
+          "capacites": ["bo-m-orthogonalite-03"],
+          "texte": "Une base $\\left(\\vec{i}, \\vec{j}, \\vec{k}\\right)$ de l'espace est **orthonormée** lorsque ses trois vecteurs sont orthogonaux deux à deux et de norme $1$ :\n\n$$\\vec{i} \\cdot \\vec{j} = \\vec{i} \\cdot \\vec{k} = \\vec{j} \\cdot \\vec{k} = 0 \\qquad \\text{et} \\qquad \\lVert \\vec{i} \\rVert = \\lVert \\vec{j} \\rVert = \\lVert \\vec{k} \\rVert = 1.$$\n\nUn repère $\\left(O\\,;\\,\\vec{i}, \\vec{j}, \\vec{k}\\right)$ est **orthonormé** lorsque sa base $\\left(\\vec{i}, \\vec{j}, \\vec{k}\\right)$ l'est : ses trois axes sont perpendiculaires deux à deux et ont la même unité de longueur."
+        },
+        {
+          "id": "l-orthogonalite-espace-021",
+          "type": "exemple",
+          "titre": "Reconnaître un repère orthonormé",
+          "capacites": ["bo-m-orthogonalite-03"],
+          "enonce": "**1.** $ABCDEFGH$ est un cube d'arête $1$. Le repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ est-il orthonormé ?\n\n**2.** Même question pour un pavé droit $ABCDEFGH$ tel que $AB = 2$, $AD = 1$ et $AE = 1$. Proposer alors un repère orthonormé d'origine $A$.",
+          "etapes": [
+            {
+              "texte": "**1.** Les faces $ABCD$, $ABFE$ et $ADHE$ sont des carrés : les droites $(AB)$, $(AD)$ et $(AE)$ sont perpendiculaires deux à deux. Les trois vecteurs sont donc orthogonaux deux à deux."
+            },
+            {
+              "texte": "Leurs normes sont $AB = AD = AE = 1$. Le repère $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ est donc orthonormé."
+            },
+            {
+              "texte": "**2.** Les faces du pavé droit sont des rectangles : les trois vecteurs sont encore orthogonaux deux à deux. Mais $\\lVert \\overrightarrow{AB} \\rVert = 2 \\neq 1$ : ce repère n'est pas orthonormé."
+            },
+            {
+              "texte": "Le vecteur $\\dfrac{1}{2}\\overrightarrow{AB}$ a la même direction que $\\overrightarrow{AB}$ et pour norme $\\dfrac{1}{2} \\times 2 = 1$. Il reste orthogonal à $\\overrightarrow{AD}$ et à $\\overrightarrow{AE}$.",
+              "pourquoi": "$\\lVert k\\,\\vec{u} \\rVert = |k| \\times \\lVert \\vec{u} \\rVert$ : multiplier par $\\dfrac{1}{2}$ divise la longueur par $2$. Et $\\left(\\dfrac{1}{2}\\overrightarrow{AB}\\right) \\cdot \\overrightarrow{AD} = \\dfrac{1}{2}\\left(\\overrightarrow{AB} \\cdot \\overrightarrow{AD}\\right) = 0$ par bilinéarité."
+            },
+            {
+              "texte": "**Conclusion** : $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ est orthonormé pour le cube, pas pour le pavé droit ; pour le pavé, $\\left(A\\,;\\,\\dfrac{1}{2}\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$ est un repère orthonormé."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-022",
+          "type": "propriete",
+          "titre": "Produit scalaire, norme et distance en repère orthonormé",
+          "capacites": ["bo-m-orthogonalite-04", "bo-m-orthogonalite-02"],
+          "texte": "Dans un repère orthonormé, soit $\\vec{u}\\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix}$ et $\\vec{v}\\begin{pmatrix} x' \\\\ y' \\\\ z' \\end{pmatrix}$ ; on écrit aussi $\\vec{u}(x\\,;\\,y\\,;\\,z)$. Alors :\n\n$$\\vec{u} \\cdot \\vec{v} = xx' + yy' + zz' \\qquad \\text{et} \\qquad \\lVert \\vec{u} \\rVert = \\sqrt{x^2 + y^2 + z^2}.$$\n\nLa distance entre deux points $A(x_A\\,;\\,y_A\\,;\\,z_A)$ et $B(x_B\\,;\\,y_B\\,;\\,z_B)$ est la norme de $\\overrightarrow{AB}$ :\n\n$$AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}.$$\n\nEn particulier, $\\vec{u}$ et $\\vec{v}$ sont orthogonaux si et seulement si $xx' + yy' + zz' = 0$.",
+          "conditions": [
+            "Le repère est orthonormé : dans un autre repère, ces formules sont fausses en général.",
+            "Les coordonnées des deux vecteurs sont lues dans le même repère."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-orthogonalite-espace-023",
+          "type": "exemple",
+          "titre": "Prouver qu'un triangle est rectangle",
+          "capacites": ["bo-m-orthogonalite-04", "bo-m-orthogonalite-02", "bo-m-orthogonalite-09"],
+          "enonce": "Dans un repère orthonormé, on donne $A(1\\,;\\,2\\,;\\,0)$, $B(3\\,;\\,1\\,;\\,2)$ et $C(0\\,;\\,4\\,;\\,2)$.\n\n**1.** Calculer $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$.\n\n**2.** Calculer $AB$ et $AC$.\n\n**3.** En déduire la nature du triangle $ABC$, puis calculer $BC$.",
+          "etapes": [
+            {
+              "texte": "**1.** Arrivée moins départ : $\\overrightarrow{AB}\\begin{pmatrix} 3 - 1 \\\\ 1 - 2 \\\\ 2 - 0 \\end{pmatrix}$, soit $\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ -1 \\\\ 2 \\end{pmatrix}$, et $\\overrightarrow{AC}\\begin{pmatrix} 0 - 1 \\\\ 4 - 2 \\\\ 2 - 0 \\end{pmatrix}$, soit $\\overrightarrow{AC}\\begin{pmatrix} -1 \\\\ 2 \\\\ 2 \\end{pmatrix}$."
+            },
+            {
+              "texte": "Le repère est orthonormé, donc $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 2 \\times (-1) + (-1) \\times 2 + 2 \\times 2 = -2 - 2 + 4 = 0$."
+            },
+            {
+              "texte": "**2.** $AB = \\sqrt{2^2 + (-1)^2 + 2^2} = \\sqrt{9} = 3$ et $AC = \\sqrt{(-1)^2 + 2^2 + 2^2} = \\sqrt{9} = 3$."
+            },
+            {
+              "texte": "**3.** Le produit scalaire est nul, donc $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont orthogonaux : les droites $(AB)$ et $(AC)$ sont perpendiculaires en $A$. Comme de plus $AB = AC$, le triangle $ABC$ est rectangle et isocèle en $A$."
+            },
+            {
+              "texte": "Par le théorème de Pythagore, $BC^2 = AB^2 + AC^2 = 9 + 9 = 18$, donc $BC = \\sqrt{18} = 3\\sqrt{2}$. On le vérifie avec $\\overrightarrow{BC}\\begin{pmatrix} -3 \\\\ 3 \\\\ 0 \\end{pmatrix}$ : $BC = \\sqrt{9 + 9 + 0} = \\sqrt{18}$.",
+              "pourquoi": "$\\sqrt{18} = \\sqrt{9 \\times 2} = \\sqrt{9} \\times \\sqrt{2} = 3\\sqrt{2}$."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$ et $AB = AC = 3$ : le triangle $ABC$ est rectangle isocèle en $A$, et $BC = 3\\sqrt{2}$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-024",
+          "type": "demonstration",
+          "titre": "Démonstration : d'où vient $xx' + yy' + zz'$",
+          "capacites": ["bo-m-orthogonalite-04"],
+          "de": "l-orthogonalite-espace-022",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "Dans la base orthonormée $\\left(\\vec{i}, \\vec{j}, \\vec{k}\\right)$ : $\\vec{u} = x\\,\\vec{i} + y\\,\\vec{j} + z\\,\\vec{k}$ et $\\vec{v} = x'\\,\\vec{i} + y'\\,\\vec{j} + z'\\,\\vec{k}$.",
+              "pourquoi": "C'est le sens des coordonnées d'un vecteur dans une base (chapitre « Vecteurs, droites et plans de l'espace »)."
+            },
+            {
+              "texte": "Par bilinéarité, on développe $\\vec{u} \\cdot \\vec{v}$ : chaque terme de $\\vec{u}$ multiplie chaque terme de $\\vec{v}$. On obtient neuf termes, comme $xx'\\,\\left(\\vec{i} \\cdot \\vec{i}\\right)$ ou $xy'\\,\\left(\\vec{i} \\cdot \\vec{j}\\right)$.",
+              "pourquoi": "Trois termes dans $\\vec{u}$, trois dans $\\vec{v}$ : $3 \\times 3 = 9$ produits, comme pour $(a + b + c)(a' + b' + c')$."
+            },
+            {
+              "texte": "La base est orthonormée : $\\vec{i} \\cdot \\vec{i} = \\lVert \\vec{i} \\rVert^2 = 1$, de même $\\vec{j} \\cdot \\vec{j} = \\vec{k} \\cdot \\vec{k} = 1$, et le produit de deux vecteurs différents de la base est nul. Il reste $\\vec{u} \\cdot \\vec{v} = xx' + yy' + zz'$."
+            },
+            {
+              "texte": "Avec $\\vec{v} = \\vec{u}$ : $\\lVert \\vec{u} \\rVert^2 = \\vec{u} \\cdot \\vec{u} = x^2 + y^2 + z^2$. Une norme est positive, d'où $\\lVert \\vec{u} \\rVert = \\sqrt{x^2 + y^2 + z^2}$. **Conclusion** : la distance $AB$, norme de $\\overrightarrow{AB}$, s'en déduit avec les coordonnées de $\\overrightarrow{AB}$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-025",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-04", "bo-m-orthogonalite-02"],
+          "question": {
+            "enonce": "Dans un repère orthonormé, lequel de ces vecteurs est orthogonal à $\\vec{u}\\begin{pmatrix} 1 \\\\ 2 \\\\ -1 \\end{pmatrix}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\begin{pmatrix} 3 \\\\ -1 \\\\ 1 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$",
+                "$\\begin{pmatrix} -1 \\\\ 0 \\\\ 1 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 2 \\\\ 4 \\\\ -2 \\end{pmatrix}$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "$1 \\times 1 + 2 \\times 1 + (-1) \\times 1 = 2 \\neq 0$.",
+                "$1 \\times (-1) + 2 \\times 0 + (-1) \\times 1 = -2 \\neq 0$ : attention au signe du dernier produit.",
+                "Ce vecteur est $2\\,\\vec{u}$ : il est colinéaire à $\\vec{u}$, pas orthogonal. Le produit vaut $2 + 8 + 2 = 12$."
+              ]
+            },
+            "explication": "On calcule $xx' + yy' + zz'$ pour chaque vecteur. Seul le premier donne $0$ : $1 \\times 3 + 2 \\times (-1) + (-1) \\times 1 = 3 - 2 - 1 = 0$."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-026",
+          "type": "methode",
+          "titre": "Comment calculer un angle ou une longueur avec le produit scalaire ?",
+          "capacites": ["bo-m-orthogonalite-09"],
+          "etapes": [
+            "Pour l'angle $\\widehat{BAC}$, prends les deux vecteurs qui partent du sommet $A$ : $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$. Calcule leurs coordonnées.",
+            "Calcule $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = xx' + yy' + zz'$, puis les longueurs $AB$ et $AC$ avec $\\sqrt{x^2 + y^2 + z^2}$.",
+            "Écris la définition $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AC \\times \\cos\\widehat{BAC}$ et isole le cosinus : $\\cos\\widehat{BAC} = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{AC}}{AB \\times AC}$.",
+            "Reconnais une valeur connue : $0$ donne $90^\\circ$, $\\dfrac{1}{2}$ donne $60^\\circ$, $\\dfrac{\\sqrt{2}}{2}$ donne $45^\\circ$. Sinon, utilise la touche $\\cos^{-1}$ de la calculatrice en mode degrés, et arrondis comme demandé.",
+            "Pour une longueur, applique directement $AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}$. Pour la nature d'un triangle, compare ses trois côtés et cherche un produit scalaire nul."
+          ],
+          "exemple": "l-orthogonalite-espace-027"
+        },
+        {
+          "id": "l-orthogonalite-espace-027",
+          "type": "exemple",
+          "titre": "Un angle au dixième de degré",
+          "capacites": ["bo-m-orthogonalite-09", "bo-m-orthogonalite-04"],
+          "enonce": "Dans un repère orthonormé, on donne $A(1\\,;\\,1\\,;\\,0)$, $B(3\\,;\\,2\\,;\\,2)$ et $C(1\\,;\\,3\\,;\\,1)$. À l'aide du produit scalaire $\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$, déterminer $\\cos\\widehat{BAC}$, puis une valeur approchée de l'angle $\\widehat{BAC}$ au dixième de degré (calculatrice).",
+          "etapes": [
+            {
+              "texte": "Les vecteurs issus du sommet $A$ : $\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 1 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 0 \\\\ 2 \\\\ 1 \\end{pmatrix}$."
+            },
+            {
+              "texte": "Le repère est orthonormé : $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 2 \\times 0 + 1 \\times 2 + 2 \\times 1 = 4$."
+            },
+            {
+              "texte": "$AB = \\sqrt{4 + 1 + 4} = 3$ et $AC = \\sqrt{0 + 4 + 1} = \\sqrt{5}$."
+            },
+            {
+              "texte": "D'autre part, $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AC \\times \\cos\\widehat{BAC} = 3\\sqrt{5}\\,\\cos\\widehat{BAC}$. Donc $\\cos\\widehat{BAC} = \\dfrac{4}{3\\sqrt{5}} = \\dfrac{4\\sqrt{5}}{15}$.",
+              "pourquoi": "On multiplie le numérateur et le dénominateur par $\\sqrt{5}$ : $\\dfrac{4\\sqrt{5}}{3 \\times 5}$. Les deux écritures sont justes."
+            },
+            {
+              "texte": "La calculatrice, en mode degrés, donne $\\cos^{-1}\\left(\\dfrac{4}{3\\sqrt{5}}\\right) \\approx 53{,}396$.",
+              "pourquoi": "Un angle d'un triangle est compris entre $0^\\circ$ et $180^\\circ$ ; sur cet intervalle, chaque cosinus correspond à un seul angle."
+            },
+            {
+              "texte": "**Conclusion** : $\\cos\\widehat{BAC} = \\dfrac{4\\sqrt{5}}{15}$ et $\\widehat{BAC} \\approx 53{,}4^\\circ$ au dixième de degré."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-028",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-09", "bo-m-orthogonalite-04"],
+          "question": {
+            "enonce": "$ABCDEFGH$ est un cube d'arête $1$, muni du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$. Quelle est la nature du triangle $EGD$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "rectangle en $E$",
+                "rectangle isocèle en $G$",
+                "isocèle en $E$, mais pas équilatéral",
+                "équilatéral"
+              ],
+              "bonne": 3,
+              "pourquoiFaux": [
+                "$\\overrightarrow{EG} \\cdot \\overrightarrow{ED} = 1 \\times 0 + 1 \\times 1 + 0 \\times (-1) = 1 \\neq 0$ : l'angle en $E$ n'est pas droit.",
+                "$\\overrightarrow{GE} \\cdot \\overrightarrow{GD} = (-1) \\times (-1) + (-1) \\times 0 + 0 \\times (-1) = 1 \\neq 0$ : l'angle en $G$ n'est pas droit.",
+                "Calcule aussi $GD$ : il est égal à $EG$ et à $ED$.",
+                null
+              ]
+            },
+            "explication": "Avec $E(0\\,;\\,0\\,;\\,1)$, $G(1\\,;\\,1\\,;\\,1)$ et $D(0\\,;\\,1\\,;\\,0)$ : $EG = \\sqrt{1 + 1 + 0} = \\sqrt{2}$, $ED = \\sqrt{0 + 1 + 1} = \\sqrt{2}$ et $GD = \\sqrt{1 + 0 + 1} = \\sqrt{2}$. Les trois côtés sont des diagonales de faces du cube."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-029",
+          "type": "piege",
+          "titre": "Les vecteurs d'un angle partent de son sommet",
+          "faux": "Pour l'angle $\\widehat{ABC}$, on calcule $\\overrightarrow{AB} \\cdot \\overrightarrow{BC}$, puis on divise par $AB \\times BC$.",
+          "juste": "L'angle $\\widehat{ABC}$ a pour sommet $B$ : on calcule $\\overrightarrow{BA} \\cdot \\overrightarrow{BC}$, et $\\cos\\widehat{ABC} = \\dfrac{\\overrightarrow{BA} \\cdot \\overrightarrow{BC}}{BA \\times BC}$.",
+          "explication": "Comme $\\overrightarrow{AB} = -\\overrightarrow{BA}$, l'erreur change le signe du cosinus et donne l'angle $180^\\circ - \\widehat{ABC}$. Avant de calculer, repère le sommet de l'angle : c'est la lettre du milieu."
+        },
+        {
+          "id": "l-orthogonalite-espace-030",
+          "type": "retenir",
+          "texte": "Dans un repère orthonormé : $\\vec{u} \\cdot \\vec{v} = xx' + yy' + zz'$ et $\\lVert \\vec{u} \\rVert = \\sqrt{x^2 + y^2 + z^2}$. $\\vec{u}$ et $\\vec{v}$ sont orthogonaux si et seulement si $\\vec{u} \\cdot \\vec{v} = 0$. Pour un angle : $\\cos\\widehat{BAC} = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{AC}}{AB \\times AC}$, avec les vecteurs issus du sommet."
+        }
+      ]
+    },
+    {
+      "notion": "n-orthogonalite-espace-vecteur-normal",
+      "blocs": [
+        {
+          "id": "l-orthogonalite-espace-031",
+          "type": "idee",
+          "texte": "Un mât planté bien droit dans un sol plat fait un angle droit avec toutes les directions du sol, même avec une droite tracée loin de lui. Pour le vérifier, deux directions du sol suffisent, par exemple deux bords du terrain. En vecteurs : une droite est orthogonale à un plan quand son vecteur directeur est orthogonal à deux vecteurs non colinéaires du plan. Deux produits scalaires nuls, et c'est prouvé."
+        },
+        {
+          "id": "l-orthogonalite-espace-032",
+          "type": "rappel",
+          "titre": "Rappel : la direction d'un plan",
+          "texte": "Soit $\\vec{u}$ et $\\vec{v}$ deux vecteurs non colinéaires. Le plan $\\mathcal{P}$ passant par $A$ et dirigé par $\\vec{u}$ et $\\vec{v}$ est l'ensemble des points $M$ tels que $\\overrightarrow{AM} = x\\,\\vec{u} + y\\,\\vec{v}$, avec $x$ et $y$ réels. Sa **direction** est l'ensemble des vecteurs $x\\,\\vec{u} + y\\,\\vec{v}$. Si $A$, $B$, $C$ ne sont pas alignés, le plan $(ABC)$ passe par $A$ et il est dirigé par $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.",
+          "lien": "l-vecteurs-espace-030"
+        },
+        {
+          "id": "l-orthogonalite-espace-033",
+          "type": "definition",
+          "titre": "Orthogonalité de deux droites, d'une droite et d'un plan",
+          "capacites": ["bo-m-orthogonalite-06", "bo-m-orthogonalite-07"],
+          "texte": "Soit $d$ et $d'$ deux droites de vecteurs directeurs $\\vec{u}$ et $\\vec{u}'$, et $\\mathcal{P}$ un plan.\n\n- $d$ et $d'$ sont **orthogonales** lorsque $\\vec{u}$ et $\\vec{u}'$ sont orthogonaux. Si, de plus, elles sont sécantes, elles sont **perpendiculaires**. Deux droites orthogonales ne se coupent pas forcément.\n- $d$ est **orthogonale au plan** $\\mathcal{P}$ lorsqu'elle est orthogonale à toutes les droites de $\\mathcal{P}$. Cela revient à dire que $\\vec{u}$ est orthogonal à tous les vecteurs de la direction de $\\mathcal{P}$.\n- Un **vecteur normal** au plan $\\mathcal{P}$ est un vecteur **non nul** qui dirige une droite orthogonale à $\\mathcal{P}$ : il est orthogonal à tous les vecteurs de la direction de $\\mathcal{P}$."
+        },
+        {
+          "id": "l-orthogonalite-espace-034",
+          "type": "exemple",
+          "titre": "Lire des orthogonalités dans un cube",
+          "capacites": ["bo-m-orthogonalite-06", "bo-m-orthogonalite-07"],
+          "enonce": "$ABCDEFGH$ est un cube d'arête $1$, muni du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.\n\n**1.** Les droites $(AE)$ et $(BC)$ sont-elles orthogonales ? perpendiculaires ?\n\n**2.** Montrer que $\\overrightarrow{AE}$ est un vecteur normal au plan $(ABC)$.",
+          "etapes": [
+            {
+              "texte": "**1.** $\\overrightarrow{AE}\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{BC} = \\overrightarrow{AD}$, donc $\\overrightarrow{BC}\\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}$. Le repère est orthonormé : $\\overrightarrow{AE} \\cdot \\overrightarrow{BC} = 0 + 0 + 0 = 0$. Les droites $(AE)$ et $(BC)$ sont orthogonales."
+            },
+            {
+              "texte": "Elles ne sont pas perpendiculaires, car elles ne se coupent pas. En effet, la droite $(BC)$ est dans le plan $(ABC)$, que la droite $(AE)$ coupe seulement en $A$ ; et $A$ n'est pas sur $(BC)$.",
+              "pourquoi": "$(AE)$ n'est pas contenue dans le plan $(ABC)$, car $E$ n'y est pas : elle a donc un seul point commun avec lui, le point $A$. Les deux droites sont non coplanaires."
+            },
+            {
+              "texte": "**2.** Le plan $(ABC)$ passe par $A$ et il est dirigé par $\\overrightarrow{AB}$ et $\\overrightarrow{AD}$. Un vecteur $\\vec{w}$ de sa direction s'écrit donc $\\vec{w} = x\\,\\overrightarrow{AB} + y\\,\\overrightarrow{AD}$, de coordonnées $\\begin{pmatrix} x \\\\ y \\\\ 0 \\end{pmatrix}$.",
+              "pourquoi": "$D$ est dans le plan $(ABC)$, qui contient la face $ABCD$, et $\\overrightarrow{AB}$, $\\overrightarrow{AD}$ ne sont pas colinéaires : ils dirigent ce plan."
+            },
+            {
+              "texte": "Alors $\\overrightarrow{AE} \\cdot \\vec{w} = 0 \\times x + 0 \\times y + 1 \\times 0 = 0$ : le vecteur $\\overrightarrow{AE}$, non nul, est orthogonal à tous les vecteurs de la direction du plan $(ABC)$."
+            },
+            {
+              "texte": "**Conclusion** : $(AE)$ et $(BC)$ sont orthogonales sans être perpendiculaires. Le vecteur $\\overrightarrow{AE}$ est normal au plan $(ABC)$, et la droite $(AE)$ est orthogonale à ce plan."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-035",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-06"],
+          "question": {
+            "enonce": "Vrai ou faux : dans le cube $ABCDEFGH$, les droites $(HG)$ et $(BF)$ sont perpendiculaires.",
+            "reponse": {
+              "type": "vrai-faux",
+              "valeur": false,
+              "justification": "$\\overrightarrow{HG} = \\overrightarrow{AB}$ et $\\overrightarrow{BF} = \\overrightarrow{AE}$ sont orthogonaux : les droites sont orthogonales. Mais elles n'ont aucun point commun, donc elles ne sont pas perpendiculaires."
+            },
+            "explication": "Perpendiculaires veut dire orthogonales et sécantes. Dans l'espace, deux droites orthogonales peuvent être non coplanaires, comme ici : $(HG)$ est sur la face du dessus, $(BF)$ sur la face de droite, sans se toucher."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-036",
+          "type": "propriete",
+          "titre": "Deux vecteurs suffisent",
+          "capacites": ["bo-m-orthogonalite-06", "bo-m-orthogonalite-07"],
+          "texte": "Soit $\\mathcal{P}$ un plan dirigé par deux vecteurs non colinéaires $\\vec{u}$ et $\\vec{v}$, et $\\vec{n}$ un vecteur non nul.\n\n$\\vec{n}$ est normal à $\\mathcal{P}$ si et seulement si $\\vec{n} \\cdot \\vec{u} = 0$ et $\\vec{n} \\cdot \\vec{v} = 0$.\n\nConséquence : une droite est orthogonale à un plan si et seulement si elle est orthogonale à deux droites sécantes de ce plan.",
+          "conditions": [
+            "$\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires : un seul vecteur, ou deux vecteurs colinéaires, ne suffisent pas.",
+            "$\\vec{n}$ n'est pas le vecteur nul."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-orthogonalite-espace-037",
+          "type": "figure",
+          "titre": "La diagonale $(EC)$ et le plan $(BDG)$",
+          "capacites": ["bo-m-orthogonalite-06"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/orthogonalite-espace/cube-diagonale-ec.svg",
+              "alt": "Le cube ABCDEFGH en perspective. Le triangle BDG est coloré en bleu : son côté [BG], diagonale de la face de droite, est en trait plein ; ses côtés [BD] et [DG], cachés, sont en pointillé bleu. La grande diagonale [EC], qui traverse le cube, est en pointillé orange ; elle perce le triangle BDG en un point marqué.",
+              "width": 340,
+              "height": 300
+            },
+            "caption": "Le plan (BDG), en bleu, et la grande diagonale (EC), en orange : elle traverse le triangle BDG en le coupant à angle droit. En pointillé : ce qui est caché."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-038",
+          "type": "exemple",
+          "titre": "Une diagonale orthogonale à un plan",
+          "capacites": ["bo-m-orthogonalite-06", "bo-m-orthogonalite-07", "bo-m-orthogonalite-12"],
+          "enonce": "$ABCDEFGH$ est un cube d'arête $1$, muni du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$. Démontrer que la droite $(EC)$ est orthogonale au plan $(GBD)$.",
+          "etapes": [
+            {
+              "texte": "Coordonnées utiles : $E(0\\,;\\,0\\,;\\,1)$, $C(1\\,;\\,1\\,;\\,0)$, $B(1\\,;\\,0\\,;\\,0)$, $D(0\\,;\\,1\\,;\\,0)$ et $G(1\\,;\\,1\\,;\\,1)$. Arrivée moins départ : $\\overrightarrow{EC}\\begin{pmatrix} 1 \\\\ 1 \\\\ -1 \\end{pmatrix}$, $\\overrightarrow{BD}\\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{BG}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$."
+            },
+            {
+              "texte": "$\\overrightarrow{BD}$ et $\\overrightarrow{BG}$ ne sont pas colinéaires : ils dirigent le plan $(GBD)$.",
+              "pourquoi": "$\\overrightarrow{BD} = k\\,\\overrightarrow{BG}$ donnerait, sur la première coordonnée, $-1 = k \\times 0 = 0$ ; $\\overrightarrow{BG} = k\\,\\overrightarrow{BD}$ donnerait, sur la troisième, $1 = k \\times 0 = 0$. Les deux sont impossibles."
+            },
+            {
+              "texte": "Le repère est orthonormé : $\\overrightarrow{EC} \\cdot \\overrightarrow{BD} = 1 \\times (-1) + 1 \\times 1 + (-1) \\times 0 = 0$ et $\\overrightarrow{EC} \\cdot \\overrightarrow{BG} = 1 \\times 0 + 1 \\times 1 + (-1) \\times 1 = 0$."
+            },
+            {
+              "texte": "**Conclusion** : $\\overrightarrow{EC}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(GBD)$. C'est donc un vecteur normal à ce plan, et la droite $(EC)$ est orthogonale au plan $(GBD)$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-039",
+          "type": "demonstration",
+          "titre": "Démonstration : pourquoi deux vecteurs suffisent",
+          "capacites": ["bo-m-orthogonalite-06", "bo-m-orthogonalite-07"],
+          "de": "l-orthogonalite-espace-036",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "Si $\\vec{n}$ est normal à $\\mathcal{P}$, il est orthogonal à tous les vecteurs de la direction de $\\mathcal{P}$. En particulier, $\\vec{n} \\cdot \\vec{u} = 0$ et $\\vec{n} \\cdot \\vec{v} = 0$."
+            },
+            {
+              "texte": "Réciproquement, supposons $\\vec{n} \\cdot \\vec{u} = 0$ et $\\vec{n} \\cdot \\vec{v} = 0$. Un vecteur $\\vec{w}$ de la direction de $\\mathcal{P}$ s'écrit $\\vec{w} = x\\,\\vec{u} + y\\,\\vec{v}$, avec $x$ et $y$ réels.",
+              "pourquoi": "C'est la définition de la direction d'un plan dirigé par deux vecteurs non colinéaires (rappel en tête de cette notion)."
+            },
+            {
+              "texte": "Par bilinéarité : $\\vec{n} \\cdot \\vec{w} = x\\,\\left(\\vec{n} \\cdot \\vec{u}\\right) + y\\,\\left(\\vec{n} \\cdot \\vec{v}\\right) = x \\times 0 + y \\times 0 = 0$."
+            },
+            {
+              "texte": "**Conclusion** : $\\vec{n}$, non nul, est orthogonal à tous les vecteurs de la direction de $\\mathcal{P}$ : il est normal à $\\mathcal{P}$. Pour la conséquence, on prend pour $\\vec{u}$ et $\\vec{v}$ des vecteurs directeurs des deux droites sécantes, qui ne sont pas colinéaires."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-040",
+          "type": "methode",
+          "titre": "Comment démontrer qu'un vecteur est normal à un plan, ou qu'une droite est orthogonale à un plan ?",
+          "capacites": ["bo-m-orthogonalite-07", "bo-m-orthogonalite-06"],
+          "etapes": [
+            "Choisis deux vecteurs du plan : pour le plan $(ABC)$, prends $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$. Pour une droite, prends son vecteur directeur comme vecteur $\\vec{n}$.",
+            "Vérifie que ces deux vecteurs ne sont pas colinéaires, si l'énoncé ne dit pas déjà que $A$, $B$, $C$ définissent un plan.",
+            "Calcule les deux produits scalaires $\\vec{n} \\cdot \\overrightarrow{AB}$ et $\\vec{n} \\cdot \\overrightarrow{AC}$, avec les coordonnées dans le repère orthonormé.",
+            "S'ils sont nuls tous les deux, conclus : « $\\vec{n}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(ABC)$, donc il est normal à ce plan ».",
+            "Pour une droite dirigée par $\\vec{n}$ : elle est alors orthogonale au plan, donc à toutes les droites de ce plan."
+          ],
+          "exemple": "l-orthogonalite-espace-041"
+        },
+        {
+          "id": "l-orthogonalite-espace-041",
+          "type": "exemple",
+          "titre": "Un vecteur normal au plan $(ABC)$",
+          "capacites": ["bo-m-orthogonalite-07", "bo-m-orthogonalite-06"],
+          "enonce": "Dans un repère orthonormé, on donne $A(1\\,;\\,0\\,;\\,1)$, $B(0\\,;\\,2\\,;\\,1)$, $C(2\\,;\\,2\\,;\\,-1)$ et le vecteur $\\vec{n}\\begin{pmatrix} 2 \\\\ 1 \\\\ 2 \\end{pmatrix}$.\n\n**1.** Justifier que $A$, $B$, $C$ définissent un plan.\n\n**2.** Démontrer que $\\vec{n}$ est un vecteur normal au plan $(ABC)$.\n\n**3.** En déduire que la droite $d$ passant par $A$ et dirigée par $\\vec{n}$ est orthogonale à la droite $(BC)$.",
+          "etapes": [
+            {
+              "texte": "**1.** $\\overrightarrow{AB}\\begin{pmatrix} -1 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 1 \\\\ 2 \\\\ -2 \\end{pmatrix}$. S'ils étaient colinéaires, on aurait $\\overrightarrow{AC} = k\\,\\overrightarrow{AB}$, et la troisième coordonnée donnerait $-2 = k \\times 0 = 0$, ce qui est faux.",
+              "pourquoi": "$\\overrightarrow{AB}$ n'est pas nul : s'ils étaient colinéaires, $\\overrightarrow{AC}$ serait un multiple de $\\overrightarrow{AB}$."
+            },
+            {
+              "texte": "Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ ne sont pas colinéaires : les points $A$, $B$, $C$ ne sont pas alignés, ils définissent le plan $(ABC)$."
+            },
+            {
+              "texte": "**2.** $\\vec{n} \\cdot \\overrightarrow{AB} = 2 \\times (-1) + 1 \\times 2 + 2 \\times 0 = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = 2 \\times 1 + 1 \\times 2 + 2 \\times (-2) = 0$. Le vecteur $\\vec{n}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(ABC)$ : il est normal à ce plan."
+            },
+            {
+              "texte": "**3.** La droite $d$ est dirigée par un vecteur normal au plan $(ABC)$ : elle est orthogonale à ce plan, donc à toutes ses droites, en particulier à $(BC)$.",
+              "pourquoi": "On peut le vérifier : $\\overrightarrow{BC}\\begin{pmatrix} 2 \\\\ 0 \\\\ -2 \\end{pmatrix}$ et $\\vec{n} \\cdot \\overrightarrow{BC} = 4 + 0 - 4 = 0$."
+            },
+            {
+              "texte": "**Conclusion** : $\\vec{n}$ est un vecteur normal au plan $(ABC)$, et la droite $d$ est orthogonale à la droite $(BC)$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-042",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-07"],
+          "question": {
+            "enonce": "Dans un repère orthonormé, $A(0\\,;\\,0\\,;\\,0)$, $B(1\\,;\\,2\\,;\\,0)$ et $C(0\\,;\\,1\\,;\\,1)$. Lequel de ces vecteurs est normal au plan $(ABC)$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\begin{pmatrix} 0 \\\\ 0 \\\\ 1 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 2 \\\\ -1 \\\\ 1 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 2 \\\\ -1 \\\\ -1 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 1 \\\\ 2 \\\\ 0 \\end{pmatrix}$"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Il est orthogonal à $\\overrightarrow{AB}$, mais son produit avec $\\overrightarrow{AC}$ vaut $0 + 0 + 1 = 1 \\neq 0$.",
+                null,
+                "Il est orthogonal à $\\overrightarrow{AB}$, mais son produit avec $\\overrightarrow{AC}$ vaut $0 - 1 - 1 = -2 \\neq 0$.",
+                "C'est $\\overrightarrow{AB}$ lui-même : il est dans la direction du plan, et $\\overrightarrow{AB} \\cdot \\overrightarrow{AB} = 5 \\neq 0$."
+              ]
+            },
+            "explication": "$\\overrightarrow{AB}\\begin{pmatrix} 1 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$ ne sont pas colinéaires. Pour $\\vec{n}\\begin{pmatrix} 2 \\\\ -1 \\\\ 1 \\end{pmatrix}$ : $\\vec{n} \\cdot \\overrightarrow{AB} = 2 - 2 + 0 = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = 0 - 1 + 1 = 0$. Il faut les deux produits nuls."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-043",
+          "type": "propriete",
+          "titre": "Plan passant par un point et normal à un vecteur",
+          "capacites": ["bo-m-orthogonalite-07"],
+          "texte": "Soit $A$ un point et $\\vec{n}$ un vecteur non nul. Il existe un unique plan $\\mathcal{P}$ passant par $A$ et normal à $\\vec{n}$, c'est-à-dire dont $\\vec{n}$ est un vecteur normal. C'est l'ensemble des points $M$ de l'espace tels que\n\n$$\\overrightarrow{AM} \\cdot \\vec{n} = 0.$$\n\nAutrement dit, un point $M$ est dans $\\mathcal{P}$ si et seulement si $\\overrightarrow{AM}$ est orthogonal à $\\vec{n}$.",
+          "conditions": [
+            "$\\vec{n}$ n'est pas le vecteur nul : sinon, tous les points de l'espace vérifieraient l'égalité.",
+            "$A$ est un point du plan cherché, et $\\overrightarrow{AM}$ part de ce point."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-orthogonalite-espace-044",
+          "type": "exemple",
+          "titre": "Le plan médiateur d'un segment",
+          "capacites": ["bo-m-orthogonalite-12", "bo-m-orthogonalite-07"],
+          "enonce": "Soit $A$ et $B$ deux points distincts, et $I$ le milieu de $[AB]$.\n\n**1.** Démontrer qu'un point $M$ vérifie $MA = MB$ si et seulement si $\\overrightarrow{IM} \\cdot \\overrightarrow{AB} = 0$. En déduire l'ensemble des points équidistants de $A$ et de $B$.\n\n**2.** Dans un repère orthonormé, $A(1\\,;\\,-1\\,;\\,2)$ et $B(3\\,;\\,1\\,;\\,0)$. Le point $M(3\\,;\\,0\\,;\\,2)$ est-il à égale distance de $A$ et de $B$ ?",
+          "etapes": [
+            {
+              "texte": "**1.** Des longueurs sont positives, donc $MA = MB$ équivaut à $MA^2 - MB^2 = 0$. Or $MA^2 - MB^2 = \\left(\\overrightarrow{MA} + \\overrightarrow{MB}\\right) \\cdot \\left(\\overrightarrow{MA} - \\overrightarrow{MB}\\right)$.",
+              "pourquoi": "C'est le développement $(\\vec{u} + \\vec{v}) \\cdot (\\vec{u} - \\vec{v}) = \\lVert \\vec{u} \\rVert^2 - \\lVert \\vec{v} \\rVert^2$, avec $\\vec{u} = \\overrightarrow{MA}$ et $\\vec{v} = \\overrightarrow{MB}$."
+            },
+            {
+              "texte": "Comme $I$ est le milieu de $[AB]$, $\\overrightarrow{MA} + \\overrightarrow{MB} = 2\\,\\overrightarrow{MI}$. Et $\\overrightarrow{MA} - \\overrightarrow{MB} = \\overrightarrow{MA} + \\overrightarrow{BM} = \\overrightarrow{BA}$. Donc $MA^2 - MB^2 = 2\\,\\overrightarrow{MI} \\cdot \\overrightarrow{BA} = 2\\,\\overrightarrow{IM} \\cdot \\overrightarrow{AB}$.",
+              "pourquoi": "Relation de Chasles : $\\overrightarrow{MA} + \\overrightarrow{MB} = \\overrightarrow{MI} + \\overrightarrow{IA} + \\overrightarrow{MI} + \\overrightarrow{IB}$, avec $\\overrightarrow{IA} + \\overrightarrow{IB} = \\vec{0}$. Puis $\\overrightarrow{MI} = -\\overrightarrow{IM}$ et $\\overrightarrow{BA} = -\\overrightarrow{AB}$ : les deux signes moins se compensent."
+            },
+            {
+              "texte": "Ainsi, $MA = MB$ si et seulement si $\\overrightarrow{IM} \\cdot \\overrightarrow{AB} = 0$. D'après la propriété précédente, l'ensemble des points équidistants de $A$ et de $B$ est le plan passant par $I$ et normal à $\\overrightarrow{AB}$. On l'appelle le **plan médiateur** du segment $[AB]$.",
+              "pourquoi": "On applique la propriété au point $I$ et au vecteur $\\vec{n} = \\overrightarrow{AB}$, non nul car $A \\neq B$."
+            },
+            {
+              "texte": "**2.** $I\\left(\\dfrac{1 + 3}{2}\\,;\\,\\dfrac{-1 + 1}{2}\\,;\\,\\dfrac{2 + 0}{2}\\right)$, soit $I(2\\,;\\,0\\,;\\,1)$. Puis $\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ 2 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{IM}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$, d'où $\\overrightarrow{IM} \\cdot \\overrightarrow{AB} = 2 + 0 - 2 = 0$."
+            },
+            {
+              "texte": "Vérification directe : $MA = \\sqrt{(1 - 3)^2 + (-1 - 0)^2 + (2 - 2)^2} = \\sqrt{5}$ et $MB = \\sqrt{(3 - 3)^2 + (1 - 0)^2 + (0 - 2)^2} = \\sqrt{5}$."
+            },
+            {
+              "texte": "**Conclusion** : les points équidistants de $A$ et de $B$ forment le plan médiateur de $[AB]$, passant par $I$ et normal à $\\overrightarrow{AB}$. Le point $M(3\\,;\\,0\\,;\\,2)$ en fait partie : $MA = MB = \\sqrt{5}$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-045",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-07", "bo-m-orthogonalite-12"],
+          "question": {
+            "enonce": "Dans un repère orthonormé, $\\mathcal{P}$ est le plan passant par $A(1\\,;\\,2\\,;\\,3)$ et normal à $\\vec{n}\\begin{pmatrix} 1 \\\\ -1 \\\\ 2 \\end{pmatrix}$. Lequel de ces points est dans $\\mathcal{P}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$M_1(2\\,;\\,1\\,;\\,5)$",
+                "$M_2(2\\,;\\,3\\,;\\,4)$",
+                "$M_3(1\\,;\\,-1\\,;\\,2)$",
+                "$M_4(3\\,;\\,4\\,;\\,3)$"
+              ],
+              "bonne": 3,
+              "pourquoiFaux": [
+                "$\\overrightarrow{AM_1}\\begin{pmatrix} 1 \\\\ -1 \\\\ 2 \\end{pmatrix}$ est égal à $\\vec{n}$ : $M_1$ est sur la droite passant par $A$ et dirigée par $\\vec{n}$, pas dans le plan. Ici $\\overrightarrow{AM_1} \\cdot \\vec{n} = 6$.",
+                "$\\overrightarrow{AM_2}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$, et $\\overrightarrow{AM_2} \\cdot \\vec{n} = 1 - 1 + 2 = 2 \\neq 0$.",
+                "Ce point a les coordonnées de $\\vec{n}$, mais un point n'est pas un vecteur : $\\overrightarrow{AM_3}\\begin{pmatrix} 0 \\\\ -3 \\\\ -1 \\end{pmatrix}$ et $\\overrightarrow{AM_3} \\cdot \\vec{n} = 0 + 3 - 2 = 1 \\neq 0$.",
+                null
+              ]
+            },
+            "explication": "$M$ est dans $\\mathcal{P}$ si et seulement si $\\overrightarrow{AM} \\cdot \\vec{n} = 0$. Pour $M_4$ : $\\overrightarrow{AM_4}\\begin{pmatrix} 2 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $2 \\times 1 + 2 \\times (-1) + 0 \\times 2 = 0$."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-046",
+          "type": "piege",
+          "titre": "Un seul produit scalaire nul ne suffit pas",
+          "faux": "$\\vec{n} \\cdot \\overrightarrow{AB} = 0$, donc $\\vec{n}$ est normal au plan $(ABC)$.",
+          "juste": "Il faut deux produits nuls, avec deux vecteurs non colinéaires du plan : $\\vec{n} \\cdot \\overrightarrow{AB} = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = 0$.",
+          "explication": "Dans le cube $ABCDEFGH$, $\\overrightarrow{AD} \\cdot \\overrightarrow{AB} = 0$, et pourtant $\\overrightarrow{AD}$ n'est pas normal au plan $(ABC)$ : il est dans ce plan. Un seul produit nul dit seulement que $\\vec{n}$ est orthogonal à une droite du plan."
+        },
+        {
+          "id": "l-orthogonalite-espace-047",
+          "type": "complement",
+          "titre": "Pour aller plus loin : la sphère circonscrite à un tétraèdre",
+          "capacites": ["bo-m-orthogonalite-15"],
+          "texte": "La **sphère** de centre $\\Omega$ et de rayon $R > 0$ est l'ensemble des points $M$ tels que $\\Omega M = R$. La sphère **circonscrite** à un tétraèdre $ABCD$ passe par ses quatre sommets : son centre est équidistant de $A$, $B$, $C$ et $D$. Il est donc dans les plans médiateurs de $[AB]$, de $[AC]$ et de $[AD]$, qui ont un seul point commun (admis).\n\nExemple, dans un repère orthonormé : $O(0\\,;\\,0\\,;\\,0)$, $A(2\\,;\\,0\\,;\\,0)$, $B(0\\,;\\,2\\,;\\,0)$ et $C(0\\,;\\,0\\,;\\,2)$. Le point $\\Omega(1\\,;\\,1\\,;\\,1)$ vérifie $\\Omega O = \\Omega A = \\Omega B = \\Omega C = \\sqrt{3}$ ; par exemple $\\overrightarrow{\\Omega A}\\begin{pmatrix} 1 \\\\ -1 \\\\ -1 \\end{pmatrix}$ a pour norme $\\sqrt{1 + 1 + 1}$. La sphère circonscrite au tétraèdre $OABC$ a pour centre $\\Omega$ et pour rayon $\\sqrt{3}$."
+        },
+        {
+          "id": "l-orthogonalite-espace-048",
+          "type": "retenir",
+          "texte": "$\\vec{n}$ est normal au plan $(ABC)$ si $\\vec{n} \\neq \\vec{0}$, $\\vec{n} \\cdot \\overrightarrow{AB} = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = 0$, avec $\\overrightarrow{AB}$, $\\overrightarrow{AC}$ non colinéaires. Le plan passant par $A$ et normal à $\\vec{n}$ est l'ensemble des points $M$ tels que $\\overrightarrow{AM} \\cdot \\vec{n} = 0$. Perpendiculaires = orthogonales et sécantes."
+        }
+      ]
+    },
+    {
+      "notion": "n-orthogonalite-espace-projete-distance",
+      "blocs": [
+        {
+          "id": "l-orthogonalite-espace-049",
+          "type": "idee",
+          "texte": "Quelle est la distance d'une lampe au sol ? Parmi tous les points du sol, le plus proche est celui situé juste en dessous, au pied de la verticale. Ce point s'appelle le projeté orthogonal de la lampe sur le sol. Au bac, on te donne souvent un point $H$ et on te demande de montrer que c'est ce projeté : tu vérifies deux choses, puis la distance se calcule comme une longueur."
+        },
+        {
+          "id": "l-orthogonalite-espace-050",
+          "type": "definition",
+          "titre": "Projeté orthogonal d'un point sur un plan, sur une droite",
+          "capacites": ["bo-m-orthogonalite-08"],
+          "texte": "Soit $M$ un point.\n\n- Le **projeté orthogonal** de $M$ sur un plan $\\mathcal{P}$ est le point $H$ où la droite passant par $M$ et orthogonale à $\\mathcal{P}$ coupe ce plan. Ainsi, $H$ est le projeté de $M$ sur $\\mathcal{P}$ si et seulement si $H \\in \\mathcal{P}$ et $\\overrightarrow{MH}$ est normal à $\\mathcal{P}$, ou nul.\n- Le **projeté orthogonal** de $M$ sur une droite $d$ de vecteur directeur $\\vec{u}$ est le point $H$ de $d$ tel que $\\overrightarrow{MH} \\cdot \\vec{u} = 0$. Si $M$ n'est pas sur $d$, la droite $(MH)$ est perpendiculaire à $d$ en $H$.\n\nSi $M$ est dans le plan, ou sur la droite, son projeté est $M$ lui-même."
+        },
+        {
+          "id": "l-orthogonalite-espace-051",
+          "type": "figure",
+          "titre": "Le projeté orthogonal $H$ de $M$ sur un plan",
+          "capacites": ["bo-m-orthogonalite-08"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/orthogonalite-espace/projete-plan.svg",
+              "alt": "Un plan P dessiné en perspective comme un parallélogramme bleu. Le point M est au-dessus du plan. Le segment orange [MH] descend tout droit de M jusqu'au point H du plan, avec un angle droit marqué en H. Un autre point N du plan est relié à H par un segment du plan et à M par un segment : le triangle MHN est rectangle en H, et MN est plus long que MH.",
+              "width": 360,
+              "height": 250
+            },
+            "caption": "H est dans le plan P et la droite (MH) est orthogonale à P. Pour un autre point N du plan, le triangle MHN est rectangle en H : MN est plus long que MH."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-052",
+          "type": "exemple",
+          "titre": "Des projetés dans un cube",
+          "capacites": ["bo-m-orthogonalite-08"],
+          "enonce": "$ABCDEFGH$ est un cube d'arête $1$, muni du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.\n\n**1.** Quel est le projeté orthogonal de $G$ sur le plan $(ABC)$ ?\n\n**2.** On note $I$ le centre de la face $ABCD$. Montrer que $I$ est le projeté orthogonal de $E$ sur la droite $(BD)$.",
+          "etapes": [
+            {
+              "texte": "**1.** Le point $C$ est dans le plan $(ABC)$, et $\\overrightarrow{GC} = -\\overrightarrow{AE}$. Or $\\overrightarrow{AE}$ est normal au plan $(ABC)$ (exemple « Lire des orthogonalités dans un cube »), donc $\\overrightarrow{GC}$ aussi.",
+              "pourquoi": "Si $\\vec{n}$ est orthogonal à un vecteur $\\vec{w}$, alors $-\\vec{n}$ aussi, par bilinéarité : $(-\\vec{n}) \\cdot \\vec{w} = -\\left(\\vec{n} \\cdot \\vec{w}\\right) = 0$."
+            },
+            {
+              "texte": "$C \\in (ABC)$ et $\\overrightarrow{GC}$ est normal à $(ABC)$ : le projeté orthogonal de $G$ sur le plan $(ABC)$ est $C$."
+            },
+            {
+              "texte": "**2.** Le centre d'un carré est le milieu de ses diagonales. Avec $B(1\\,;\\,0\\,;\\,0)$ et $D(0\\,;\\,1\\,;\\,0)$ : $I\\left(\\dfrac{1}{2}\\,;\\,\\dfrac{1}{2}\\,;\\,0\\right)$, milieu de $[BD]$. Donc $I$ est sur la droite $(BD)$."
+            },
+            {
+              "texte": "Avec $E(0\\,;\\,0\\,;\\,1)$ : $\\overrightarrow{EI}\\begin{pmatrix} \\frac{1}{2} \\\\ \\frac{1}{2} \\\\ -1 \\end{pmatrix}$ et $\\overrightarrow{BD}\\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$, donc $\\overrightarrow{EI} \\cdot \\overrightarrow{BD} = -\\dfrac{1}{2} + \\dfrac{1}{2} + 0 = 0$."
+            },
+            {
+              "texte": "**Conclusion** : le projeté orthogonal de $G$ sur le plan $(ABC)$ est $C$. Le point $I$ est sur $(BD)$ et $\\overrightarrow{EI} \\cdot \\overrightarrow{BD} = 0$ : $I$ est le projeté orthogonal de $E$ sur la droite $(BD)$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-053",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-08"],
+          "question": {
+            "enonce": "$ABCDEFGH$ est un cube d'arête $1$, muni du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$. Quel est le projeté orthogonal du point $H$ sur le plan $(ABF)$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": ["$E$", "$A$", "$F$", "$D$"],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "$A$ est dans le plan $(ABF)$, mais $\\overrightarrow{HA}$ n'est pas normal à ce plan : $\\overrightarrow{HA}\\begin{pmatrix} 0 \\\\ -1 \\\\ -1 \\end{pmatrix}$ et $\\overrightarrow{HA} \\cdot \\overrightarrow{AE} = -1 \\neq 0$.",
+                "$F$ est dans le plan $(ABF)$, mais $\\overrightarrow{HF}\\begin{pmatrix} 1 \\\\ -1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{HF} \\cdot \\overrightarrow{AB} = 1 \\neq 0$.",
+                "$D$ n'est pas dans le plan $(ABF)$ : c'est le projeté de $H$ sur le plan $(ABC)$."
+              ]
+            },
+            "explication": "$E$ est dans le plan $(ABF)$, qui contient la face $ABFE$. Et $\\overrightarrow{HE} = -\\overrightarrow{AD}$ est orthogonal à $\\overrightarrow{AB}$ et à $\\overrightarrow{AE}$, non colinéaires : il est normal au plan $(ABF)$."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-054",
+          "type": "propriete",
+          "titre": "Le projeté est le point le plus proche : distance à un plan, à une droite",
+          "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10"],
+          "texte": "Soit $M$ un point et $H$ son projeté orthogonal sur un plan $\\mathcal{P}$. Pour tout point $N$ de $\\mathcal{P}$ distinct de $H$, $MN > MH$ : $H$ est le point de $\\mathcal{P}$ le plus proche de $M$.\n\nLa **distance du point $M$ au plan $\\mathcal{P}$** est la longueur $MH$.\n\nDe même, si $H$ est le projeté orthogonal de $M$ sur une droite $d$, alors $H$ est le point de $d$ le plus proche de $M$. La **distance du point $M$ à la droite $d$** est $MH$.",
+          "conditions": [
+            "$H$ est bien le projeté orthogonal de $M$ : $H$ est dans le plan et $\\overrightarrow{MH}$ est normal au plan ou nul ; pour une droite, $H$ est sur la droite et $\\overrightarrow{MH}$ est orthogonal à son vecteur directeur."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-orthogonalite-espace-055",
+          "type": "exemple",
+          "titre": "La distance d'un point à une droite",
+          "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10"],
+          "enonce": "Dans un repère orthonormé, $d$ est la droite passant par $B(1\\,;\\,2\\,;\\,0)$ et de vecteur directeur $\\vec{u}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$. On donne $A(3\\,;\\,1\\,;\\,4)$ et $H(4\\,;\\,2\\,;\\,3)$.\n\n**1.** Montrer que $H$ est le projeté orthogonal de $A$ sur $d$.\n\n**2.** En déduire la distance du point $A$ à la droite $d$.",
+          "etapes": [
+            {
+              "texte": "**1.** $H$ est-il sur $d$ ? $\\overrightarrow{BH}\\begin{pmatrix} 3 \\\\ 0 \\\\ 3 \\end{pmatrix}$, donc $\\overrightarrow{BH} = 3\\,\\vec{u}$ : les vecteurs $\\overrightarrow{BH}$ et $\\vec{u}$ sont colinéaires, et $H \\in d$.",
+              "pourquoi": "Vu au chapitre « Vecteurs, droites et plans de l'espace » : un point $M$ est sur la droite passant par $B$ et dirigée par $\\vec{u}$ si et seulement si $\\overrightarrow{BM}$ et $\\vec{u}$ sont colinéaires."
+            },
+            {
+              "texte": "$\\overrightarrow{AH}\\begin{pmatrix} 1 \\\\ 1 \\\\ -1 \\end{pmatrix}$, et le repère est orthonormé : $\\overrightarrow{AH} \\cdot \\vec{u} = 1 \\times 1 + 1 \\times 0 + (-1) \\times 1 = 0$."
+            },
+            {
+              "texte": "$H$ est sur $d$ et $\\overrightarrow{AH} \\cdot \\vec{u} = 0$ : $H$ est le projeté orthogonal de $A$ sur $d$."
+            },
+            {
+              "texte": "**2.** D'après la propriété, la distance de $A$ à $d$ est $AH = \\sqrt{1^2 + 1^2 + (-1)^2} = \\sqrt{3}$.",
+              "pourquoi": "Les autres points de $d$ sont plus loin. Par exemple $B$ : $\\overrightarrow{AB}\\begin{pmatrix} -2 \\\\ 1 \\\\ -4 \\end{pmatrix}$ et $AB = \\sqrt{4 + 1 + 16} = \\sqrt{21}$, plus grand que $\\sqrt{3}$."
+            },
+            {
+              "texte": "**Conclusion** : $H$ est le projeté orthogonal de $A$ sur $d$, et la distance du point $A$ à la droite $d$ vaut $\\sqrt{3}$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-056",
+          "type": "demonstration",
+          "titre": "Démonstration : le projeté est le point du plan le plus proche",
+          "capacites": ["bo-m-orthogonalite-13"],
+          "de": "l-orthogonalite-espace-054",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "Soit $N$ un point de $\\mathcal{P}$ distinct de $H$. Par la relation de Chasles, $\\overrightarrow{MN} = \\overrightarrow{MH} + \\overrightarrow{HN}$."
+            },
+            {
+              "texte": "$H$ et $N$ sont dans $\\mathcal{P}$, donc $\\overrightarrow{HN}$ est dans la direction de $\\mathcal{P}$. Or $\\overrightarrow{MH}$ est normal à $\\mathcal{P}$, ou nul. Dans les deux cas, $\\overrightarrow{MH} \\cdot \\overrightarrow{HN} = 0$.",
+              "pourquoi": "Un vecteur normal à un plan est orthogonal à tous les vecteurs de sa direction ; et le produit scalaire avec le vecteur nul vaut $0$."
+            },
+            {
+              "texte": "On développe : $MN^2 = \\lVert \\overrightarrow{MH} + \\overrightarrow{HN} \\rVert^2 = MH^2 + 2\\,\\overrightarrow{MH} \\cdot \\overrightarrow{HN} + HN^2 = MH^2 + HN^2$.",
+              "pourquoi": "C'est le développement de $\\lVert \\vec{u} + \\vec{v} \\rVert^2$, avec un double produit nul : le théorème de Pythagore dans le triangle $MHN$, rectangle en $H$."
+            },
+            {
+              "texte": "Comme $N \\neq H$, $HN^2 > 0$, donc $MN^2 > MH^2$. Ce sont des longueurs, donc des nombres positifs : $MN > MH$.",
+              "pourquoi": "Pour deux nombres positifs $a$ et $b$, $a^2 > b^2$ équivaut à $a > b$, car la fonction carré est strictement croissante sur $[0\\,;\\,+\\infty[$."
+            },
+            {
+              "texte": "**Conclusion** : tout point de $\\mathcal{P}$ autre que $H$ est plus loin de $M$ que $H$. Le projeté orthogonal $H$ est le point de $\\mathcal{P}$ le plus proche de $M$, et c'est le seul. Pour une droite, le même calcul vaut avec $N$ sur la droite."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-057",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-10", "bo-m-orthogonalite-13"],
+          "question": {
+            "enonce": "Le point $M$ est à la distance $3$ du plan $\\mathcal{P}$, et $H$ est son projeté orthogonal sur $\\mathcal{P}$. Le point $N$ du plan $\\mathcal{P}$ vérifie $HN = 4$. Que vaut $MN$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 5,
+              "tolerance": 0
+            },
+            "explication": "Comme dans la démonstration, $MN^2 = MH^2 + HN^2 = 9 + 16 = 25$, donc $MN = 5$. Le point $N$ est bien plus loin de $M$ que $H$."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-058",
+          "type": "methode",
+          "titre": "Comment montrer qu'un point $H$ est le projeté orthogonal de $M$ sur un plan, puis calculer la distance ?",
+          "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10"],
+          "etapes": [
+            "Montre que $H$ est dans le plan. Si tu connais un vecteur normal $\\vec{n}$ au plan et un point $A$ du plan, vérifie $\\overrightarrow{AH} \\cdot \\vec{n} = 0$. Sinon, pour le plan $(ABC)$, écris $\\overrightarrow{AH} = x\\,\\overrightarrow{AB} + y\\,\\overrightarrow{AC}$.",
+            "Montre que $\\overrightarrow{MH}$ est normal au plan : il est colinéaire à un vecteur normal $\\vec{n}$ déjà connu, ou orthogonal à deux vecteurs non colinéaires du plan.",
+            "Conclus : « $H$ est dans le plan et $\\overrightarrow{MH}$ est normal au plan, donc $H$ est le projeté orthogonal de $M$ sur ce plan ».",
+            "Calcule la distance de $M$ au plan : $MH = \\sqrt{(x_H - x_M)^2 + (y_H - y_M)^2 + (z_H - z_M)^2}$.",
+            "Pour une droite $d$ de vecteur directeur $\\vec{u}$ : montre que $H \\in d$, puis que $\\overrightarrow{MH} \\cdot \\vec{u} = 0$ ; la distance de $M$ à $d$ est encore $MH$."
+          ],
+          "exemple": "l-orthogonalite-espace-060"
+        },
+        {
+          "id": "l-orthogonalite-espace-059",
+          "type": "figure",
+          "titre": "Le projeté de $A$ sur le plan $(BDE)$",
+          "capacites": ["bo-m-orthogonalite-08"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/orthogonalite-espace/cube-projete-bde.svg",
+              "alt": "Le cube ABCDEFGH en perspective. Le triangle BDE est coloré en bleu : son côté [BE], diagonale de la face avant, est en trait plein ; ses côtés [BD] et [DE], cachés, sont en pointillé bleu. Le point K, au centre du triangle BDE, est relié au sommet A par un segment orange en pointillé : c'est le chemin le plus court de A au plan (BDE).",
+              "width": 340,
+              "height": 300
+            },
+            "caption": "Le plan (BDE), en bleu, coupe le coin A du cube. Le point K est le projeté orthogonal de A sur ce plan : le segment [AK], en orange, mesure la distance de A au plan (BDE). En pointillé : ce qui est caché."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-060",
+          "type": "exemple",
+          "titre": "Le projeté d'un sommet du cube sur le plan $(BDE)$",
+          "capacites": ["bo-m-orthogonalite-08", "bo-m-orthogonalite-10"],
+          "enonce": "$ABCDEFGH$ est un cube d'arête $1$, muni du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$. On note $\\vec{n}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ et $K\\left(\\dfrac{1}{3}\\,;\\,\\dfrac{1}{3}\\,;\\,\\dfrac{1}{3}\\right)$.\n\n**1.** Démontrer que $\\vec{n}$ est un vecteur normal au plan $(BDE)$.\n\n**2.** Démontrer que $K$ est le projeté orthogonal de $A$ sur le plan $(BDE)$.\n\n**3.** En déduire la distance du point $A$ au plan $(BDE)$.",
+          "etapes": [
+            {
+              "texte": "**1.** Avec $B(1\\,;\\,0\\,;\\,0)$, $D(0\\,;\\,1\\,;\\,0)$ et $E(0\\,;\\,0\\,;\\,1)$ : $\\overrightarrow{BD}\\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{BE}\\begin{pmatrix} -1 \\\\ 0 \\\\ 1 \\end{pmatrix}$. Ces deux vecteurs ne sont pas colinéaires.",
+              "pourquoi": "$\\overrightarrow{BE} = k\\,\\overrightarrow{BD}$ donnerait, sur la troisième coordonnée, $1 = k \\times 0$ ; $\\overrightarrow{BD} = k\\,\\overrightarrow{BE}$ donnerait, sur la deuxième, $1 = k \\times 0$. Les deux sont impossibles."
+            },
+            {
+              "texte": "$\\vec{n} \\cdot \\overrightarrow{BD} = -1 + 1 + 0 = 0$ et $\\vec{n} \\cdot \\overrightarrow{BE} = -1 + 0 + 1 = 0$ : le vecteur $\\vec{n}$, non nul, est normal au plan $(BDE)$."
+            },
+            {
+              "texte": "**2.** $K$ est-il dans le plan $(BDE)$ ? Ce plan passe par $B$ et il est normal à $\\vec{n}$. Or $\\overrightarrow{BK}\\begin{pmatrix} -\\frac{2}{3} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$, donc $\\overrightarrow{BK} \\cdot \\vec{n} = -\\dfrac{2}{3} + \\dfrac{1}{3} + \\dfrac{1}{3} = 0$ : $K \\in (BDE)$.",
+              "pourquoi": "Propriété de la notion « Droites et plans orthogonaux, vecteur normal » : le plan passant par $B$ et normal à $\\vec{n}$ est l'ensemble des points $M$ tels que $\\overrightarrow{BM} \\cdot \\vec{n} = 0$. Autre façon : $\\overrightarrow{BK} = \\dfrac{1}{3}\\overrightarrow{BD} + \\dfrac{1}{3}\\overrightarrow{BE}$."
+            },
+            {
+              "texte": "$\\overrightarrow{AK}\\begin{pmatrix} \\frac{1}{3} \\\\ \\frac{1}{3} \\\\ \\frac{1}{3} \\end{pmatrix}$, donc $\\overrightarrow{AK} = \\dfrac{1}{3}\\,\\vec{n}$. Ce vecteur est colinéaire à $\\vec{n}$ : il est normal au plan $(BDE)$. Ainsi $K$ est le projeté orthogonal de $A$ sur $(BDE)$.",
+              "pourquoi": "$\\dfrac{1}{3}\\,\\vec{n}$ n'est pas nul et, par bilinéarité, il est orthogonal aux mêmes vecteurs que $\\vec{n}$ : $\\left(\\dfrac{1}{3}\\,\\vec{n}\\right) \\cdot \\overrightarrow{BD} = \\dfrac{1}{3} \\times 0 = 0$, de même avec $\\overrightarrow{BE}$."
+            },
+            {
+              "texte": "**3.** La distance de $A$ au plan $(BDE)$ est $AK = \\sqrt{\\left(\\dfrac{1}{3}\\right)^2 + \\left(\\dfrac{1}{3}\\right)^2 + \\left(\\dfrac{1}{3}\\right)^2} = \\sqrt{\\dfrac{3}{9}} = \\dfrac{\\sqrt{3}}{3}$.",
+              "pourquoi": "$\\sqrt{\\dfrac{3}{9}} = \\dfrac{\\sqrt{3}}{\\sqrt{9}} = \\dfrac{\\sqrt{3}}{3}$."
+            },
+            {
+              "texte": "**Conclusion** : $K$ est le projeté orthogonal de $A$ sur le plan $(BDE)$. La distance du point $A$ à ce plan vaut $\\dfrac{\\sqrt{3}}{3}$, soit environ $0{,}58$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-061",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-08"],
+          "question": {
+            "enonce": "Les points $A$, $B$, $C$ ne sont pas alignés. Pour montrer que $H$ est le projeté orthogonal de $M$ sur le plan $(ABC)$, que faut-il vérifier ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\overrightarrow{MH} \\cdot \\overrightarrow{AB} = 0$ et $\\overrightarrow{MH} \\cdot \\overrightarrow{AC} = 0$, rien de plus",
+                "$H \\in (ABC)$, $\\overrightarrow{MH} \\cdot \\overrightarrow{AB} = 0$ et $\\overrightarrow{MH} \\cdot \\overrightarrow{AC} = 0$",
+                "$H \\in (ABC)$ et $\\overrightarrow{MH} \\cdot \\overrightarrow{AB} = 0$",
+                "$MH < MA$"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Il manque $H \\in (ABC)$ : tous les points de la droite passant par $M$ et orthogonale au plan vérifient ces deux égalités.",
+                null,
+                "Un seul produit nul ne suffit pas : $\\overrightarrow{MH}$ doit être orthogonal à deux vecteurs non colinéaires du plan.",
+                "Le projeté est plus proche de $M$ que $A$, mais d'autres points du plan le sont aussi : cette inégalité ne prouve rien."
+              ]
+            },
+            "explication": "Deux conditions : $H$ est dans le plan, et $\\overrightarrow{MH}$ est normal au plan, c'est-à-dire orthogonal à $\\overrightarrow{AB}$ et à $\\overrightarrow{AC}$, qui ne sont pas colinéaires."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-062",
+          "type": "piege",
+          "titre": "La distance à un plan n'est pas la distance à un point du plan",
+          "faux": "$B$ est un point du plan $(BDE)$, donc la distance de $A$ au plan $(BDE)$ est $AB$.",
+          "juste": "La distance de $A$ au plan $(BDE)$ est $AK$, où $K$ est le projeté orthogonal de $A$ sur ce plan. Pour tout point $N$ du plan, $AN \\geqslant AK$.",
+          "explication": "Une longueur $AN$, avec $N$ dans le plan, n'est égale à la distance que si $N$ est le projeté. Dans le cube d'arête $1$, $AB = 1$, alors que la distance de $A$ au plan $(BDE)$ vaut $\\dfrac{\\sqrt{3}}{3} \\approx 0{,}58$."
+        },
+        {
+          "id": "l-orthogonalite-espace-063",
+          "type": "complement",
+          "titre": "Pour aller plus loin : une sphère et un plan",
+          "capacites": ["bo-m-orthogonalite-14"],
+          "texte": "Soit $\\mathcal{S}$ la sphère de centre $\\Omega$ et de rayon $R$ : les points $M$ tels que $\\Omega M = R$. Soit $\\mathcal{P}$ un plan, $H$ le projeté orthogonal de $\\Omega$ sur $\\mathcal{P}$ et $d = \\Omega H$. Pour tout point $M$ de $\\mathcal{P}$, comme dans la démonstration, $\\Omega M^2 = d^2 + HM^2$.\n\n- Si $d > R$ : aucun point commun, car $\\Omega M > R$ pour tout $M$ de $\\mathcal{P}$.\n- Si $d = R$ : seul $H$ est sur la sphère. Le plan est **tangent** à la sphère en $H$ : il passe par $H$ et il est normal à $\\overrightarrow{\\Omega H}$.\n- Si $d < R$ : $\\Omega M = R$ équivaut à $HM = \\sqrt{R^2 - d^2}$. L'intersection est le cercle du plan $\\mathcal{P}$ de centre $H$ et de rayon $\\sqrt{R^2 - d^2}$."
+        },
+        {
+          "id": "l-orthogonalite-espace-064",
+          "type": "retenir",
+          "texte": "$H$ est le projeté orthogonal de $M$ sur un plan si $H$ est dans le plan et $\\overrightarrow{MH}$ est normal au plan ; sur une droite dirigée par $\\vec{u}$, si $H$ est sur la droite et $\\overrightarrow{MH} \\cdot \\vec{u} = 0$. C'est le point le plus proche de $M$ : la distance de $M$ au plan, ou à la droite, est $MH$."
+        }
+      ]
+    },
+    {
+      "notion": "n-orthogonalite-espace-mesures",
+      "blocs": [
+        {
+          "id": "l-orthogonalite-espace-065",
+          "type": "idee",
+          "texte": "Au bac, un exercice de géométrie dans l'espace se termine souvent par un volume. Celui d'une pyramide demande deux nombres : l'aire de sa base et sa hauteur, qui est la distance du sommet au plan de la base. Tout ce que tu as appris sert à les trouver : longueurs, produit scalaire, projeté. Et l'on retourne parfois le calcul : connaissant le volume, on en déduit une aire ou une distance."
+        },
+        {
+          "id": "l-orthogonalite-espace-066",
+          "type": "rappel",
+          "titre": "Rappel : aire d'un triangle, formule du projeté",
+          "texte": "- L'aire d'un triangle vaut $\\dfrac{\\text{base} \\times \\text{hauteur}}{2}$, où la hauteur est la distance du troisième sommet à la droite qui porte la base. Pour un triangle rectangle, c'est la moitié du produit des deux côtés de l'angle droit.\n- Dans un triangle isocèle en $A$, la médiane issue de $A$ est aussi la hauteur issue de $A$.\n- Si $K$ est le projeté orthogonal de $C$ sur $(AB)$ et si $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} > 0$, alors $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AK$.",
+          "lien": "1e:produit-scalaire"
+        },
+        {
+          "id": "l-orthogonalite-espace-067",
+          "type": "propriete",
+          "titre": "Volume d'une pyramide, d'un tétraèdre",
+          "capacites": ["bo-m-orthogonalite-11"],
+          "texte": "Le volume d'une pyramide de sommet $S$ est\n\n$$V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h,$$\n\noù $\\mathcal{B}$ est l'aire de sa base et $h$ sa **hauteur** : la distance du sommet $S$ au plan de la base, c'est-à-dire $SH$, où $H$ est le projeté orthogonal de $S$ sur ce plan. La droite $(SH)$, orthogonale au plan de la base, s'appelle aussi la hauteur de la pyramide issue de $S$.\n\nUn **tétraèdre** est une pyramide dont la base est un triangle. Chacune de ses quatre faces peut servir de base, avec la hauteur issue du sommet opposé : le volume trouvé est le même.",
+          "conditions": [
+            "$h$ se mesure perpendiculairement au plan de la base : c'est la distance $SH$, pas la longueur d'une arête oblique.",
+            "Les longueurs sont dans la même unité : le volume est alors en unités de volume."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-orthogonalite-espace-068",
+          "type": "figure",
+          "titre": "Le tétraèdre $OABC$",
+          "capacites": ["bo-m-orthogonalite-11"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/orthogonalite-espace/tetraedre-oabc.svg",
+              "alt": "Le tétraèdre OABC dans un repère orthonormé : O est l'origine, A(2 ; 0 ; 0) est sur l'axe qui vient vers l'avant à gauche, B(0 ; 4 ; 0) sur l'axe horizontal vers la droite, C(0 ; 0 ; 4) sur l'axe vertical. Les trois arêtes [OA], [OB], [OC] sont perpendiculaires deux à deux, avec des angles droits marqués en O. L'arête [OC] est en orange : c'est la hauteur pour la base OAB. La face ABC est colorée en bleu.",
+              "width": 380,
+              "height": 290
+            },
+            "caption": "Les arêtes [OA], [OB] et [OC] sont perpendiculaires deux à deux. Avec la base OAB, la hauteur est l'arête [OC], en orange. Avec la base ABC, en bleu, la hauteur est la distance de O au plan (ABC)."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-069",
+          "type": "exemple",
+          "titre": "Le volume d'un tétraèdre",
+          "capacites": ["bo-m-orthogonalite-11"],
+          "enonce": "Dans un repère orthonormé, on donne $O(0\\,;\\,0\\,;\\,0)$, $A(2\\,;\\,0\\,;\\,0)$, $B(0\\,;\\,4\\,;\\,0)$ et $C(0\\,;\\,0\\,;\\,4)$.\n\n**1.** Montrer que la droite $(OC)$ est orthogonale au plan $(OAB)$.\n\n**2.** Calculer le volume du tétraèdre $OABC$.",
+          "etapes": [
+            {
+              "texte": "**1.** $\\overrightarrow{OA}\\begin{pmatrix} 2 \\\\ 0 \\\\ 0 \\end{pmatrix}$, $\\overrightarrow{OB}\\begin{pmatrix} 0 \\\\ 4 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{OC}\\begin{pmatrix} 0 \\\\ 0 \\\\ 4 \\end{pmatrix}$. Les vecteurs $\\overrightarrow{OA}$ et $\\overrightarrow{OB}$ ne sont pas colinéaires : ils dirigent le plan $(OAB)$.",
+              "pourquoi": "$\\overrightarrow{OB} = k\\,\\overrightarrow{OA}$ donnerait $4 = k \\times 0$ sur la deuxième coordonnée ; $\\overrightarrow{OA} = k\\,\\overrightarrow{OB}$ donnerait $2 = k \\times 0$ sur la première."
+            },
+            {
+              "texte": "$\\overrightarrow{OC} \\cdot \\overrightarrow{OA} = 0 + 0 + 0 = 0$ et $\\overrightarrow{OC} \\cdot \\overrightarrow{OB} = 0 + 0 + 0 = 0$ : le vecteur $\\overrightarrow{OC}$, non nul, est normal au plan $(OAB)$, et la droite $(OC)$ est orthogonale à ce plan."
+            },
+            {
+              "texte": "**2.** On prend pour base le triangle $OAB$ et pour sommet $C$. Le point $O$ est dans le plan $(OAB)$ et $\\overrightarrow{CO} = -\\overrightarrow{OC}$ est normal à ce plan : $O$ est le projeté orthogonal de $C$ sur $(OAB)$. La hauteur est donc $h = CO = 4$."
+            },
+            {
+              "texte": "Le triangle $OAB$ est rectangle en $O$, car $\\overrightarrow{OA} \\cdot \\overrightarrow{OB} = 0$. Son aire est $\\mathcal{B} = \\dfrac{OA \\times OB}{2} = \\dfrac{2 \\times 4}{2} = 4$."
+            },
+            {
+              "texte": "**Conclusion** : $V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h = \\dfrac{1}{3} \\times 4 \\times 4 = \\dfrac{16}{3}$ unités de volume."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-070",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-11"],
+          "question": {
+            "enonce": "$ABCDEFGH$ est un cube d'arête $1$. Quel est le volume du tétraèdre $ABDE$ ? Donne la valeur exacte, en fraction.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": "1/6",
+              "tolerance": 0
+            },
+            "explication": "Base $ABD$ : la moitié de la face $ABCD$, d'aire $\\dfrac{1}{2}$. Hauteur issue de $E$ : $EA = 1$, car la droite $(EA)$ est orthogonale au plan $(ABD)$. Donc $V = \\dfrac{1}{3} \\times \\dfrac{1}{2} \\times 1 = \\dfrac{1}{6}$."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-071",
+          "type": "methode",
+          "titre": "Comment calculer l'aire d'un triangle de l'espace ?",
+          "capacites": ["bo-m-orthogonalite-11"],
+          "etapes": [
+            "Cherche d'abord un angle droit : si $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$, le triangle est rectangle en $A$ et son aire vaut $\\dfrac{AB \\times AC}{2}$.",
+            "Si le triangle est isocèle en $A$, prends pour hauteur la médiane : avec $I$ milieu de $[BC]$, l'aire vaut $\\dfrac{BC \\times AI}{2}$.",
+            "Sinon, prends $[AB]$ pour base et cherche la hauteur $CK$, où $K$ est le projeté orthogonal de $C$ sur $(AB)$. Si $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} > 0$, la formule du projeté donne $AK = \\dfrac{\\overrightarrow{AB} \\cdot \\overrightarrow{AC}}{AB}$.",
+            "Le triangle $AKC$ est rectangle en $K$ : $CK^2 = AC^2 - AK^2$ par le théorème de Pythagore. Conclus avec l'aire $\\mathcal{A} = \\dfrac{AB \\times CK}{2}$, ou avec son carré $\\mathcal{A}^2 = \\dfrac{AB^2 \\times CK^2}{4}$ pour éviter les racines.",
+            "Si l'énoncé donne le volume d'un tétraèdre et la hauteur qui va avec cette face, utilise plutôt $\\mathcal{B} = \\dfrac{3V}{h}$ (méthode suivante)."
+          ],
+          "exemple": "l-orthogonalite-espace-072"
+        },
+        {
+          "id": "l-orthogonalite-espace-072",
+          "type": "exemple",
+          "titre": "L'aire du triangle $ABC$",
+          "capacites": ["bo-m-orthogonalite-11"],
+          "enonce": "On reprend $A(2\\,;\\,0\\,;\\,0)$, $B(0\\,;\\,4\\,;\\,0)$ et $C(0\\,;\\,0\\,;\\,4)$ dans un repère orthonormé. Calculer l'aire du triangle $ABC$.",
+          "etapes": [
+            {
+              "texte": "$\\overrightarrow{AB}\\begin{pmatrix} -2 \\\\ 4 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -2 \\\\ 0 \\\\ 4 \\end{pmatrix}$ : $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 4 + 0 + 0 = 4$. Ce produit n'est pas nul : l'angle en $A$ n'est pas droit. Et $AB^2 = 4 + 16 + 0 = 20$, $AC^2 = 4 + 0 + 16 = 20$."
+            },
+            {
+              "texte": "On prend $[AB]$ pour base, et $K$ le projeté orthogonal de $C$ sur $(AB)$. Le produit scalaire est positif, donc $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = AB \\times AK$, d'où $AK = \\dfrac{4}{AB}$ et $AK^2 = \\dfrac{16}{20} = \\dfrac{4}{5}$.",
+              "pourquoi": "Formule du projeté, dans le plan $(ABC)$ : un produit scalaire positif signifie que $\\overrightarrow{AB}$ et $\\overrightarrow{AK}$ ont le même sens. Puis $AK^2 = \\dfrac{16}{AB^2}$."
+            },
+            {
+              "texte": "Le triangle $AKC$ est rectangle en $K$ : $CK^2 = AC^2 - AK^2 = 20 - \\dfrac{4}{5} = \\dfrac{96}{5}$.",
+              "pourquoi": "$20 = \\dfrac{100}{5}$, et $\\dfrac{100}{5} - \\dfrac{4}{5} = \\dfrac{96}{5}$."
+            },
+            {
+              "texte": "L'aire $\\mathcal{A}$ du triangle vérifie $\\mathcal{A}^2 = \\dfrac{AB^2 \\times CK^2}{4} = \\dfrac{20 \\times \\frac{96}{5}}{4} = \\dfrac{384}{4} = 96$. Donc $\\mathcal{A} = \\sqrt{96} = 4\\sqrt{6}$.",
+              "pourquoi": "$\\mathcal{A} = \\dfrac{AB \\times CK}{2}$, donc $\\mathcal{A}^2 = \\dfrac{AB^2 \\times CK^2}{4}$ : on évite ainsi les racines. Puis $20 \\times \\dfrac{96}{5} = 4 \\times 96 = 384$, et $\\sqrt{96} = \\sqrt{16 \\times 6} = 4\\sqrt{6}$."
+            },
+            {
+              "texte": "Vérification : $AB = AC$, le triangle est isocèle en $A$. Avec $I(0\\,;\\,2\\,;\\,2)$, milieu de $[BC]$ : $AI = \\sqrt{4 + 4 + 4} = 2\\sqrt{3}$ et $BC = \\sqrt{0 + 16 + 16} = 4\\sqrt{2}$, d'où une aire de $\\dfrac{4\\sqrt{2} \\times 2\\sqrt{3}}{2} = 4\\sqrt{6}$.",
+              "pourquoi": "$\\sqrt{12} = \\sqrt{4 \\times 3} = 2\\sqrt{3}$, $\\sqrt{32} = \\sqrt{16 \\times 2} = 4\\sqrt{2}$, et $\\sqrt{2} \\times \\sqrt{3} = \\sqrt{6}$."
+            },
+            {
+              "texte": "**Conclusion** : l'aire du triangle $ABC$ est $4\\sqrt{6}$ unités d'aire, soit environ $9{,}80$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-073",
+          "type": "methode",
+          "titre": "Comment trouver une distance ou une aire en calculant un volume de deux façons ?",
+          "capacites": ["bo-m-orthogonalite-11"],
+          "etapes": [
+            "Repère une face du tétraèdre dont l'aire et la hauteur associée sont faciles : souvent un triangle rectangle, avec une arête orthogonale à son plan.",
+            "Calcule le volume $V$ avec cette base.",
+            "Écris le volume avec l'autre face : $V = \\dfrac{1}{3} \\times \\mathcal{B}' \\times h'$, où $h'$ est la distance du sommet opposé au plan de cette face.",
+            "Si tu connais $\\mathcal{B}'$, déduis la distance : $h' = \\dfrac{3V}{\\mathcal{B}'}$. Si tu connais $h'$, déduis l'aire : $\\mathcal{B}' = \\dfrac{3V}{h'}$.",
+            "Conclus avec l'unité : unités de longueur pour une distance, unités d'aire pour une aire."
+          ],
+          "exemple": "l-orthogonalite-espace-074"
+        },
+        {
+          "id": "l-orthogonalite-espace-074",
+          "type": "exemple",
+          "titre": "La distance de $O$ au plan $(ABC)$, par le volume",
+          "capacites": ["bo-m-orthogonalite-11"],
+          "enonce": "On reprend les points $O$, $A$, $B$, $C$ des deux exemples précédents. Le tétraèdre $OABC$ a pour volume $V = \\dfrac{16}{3}$, et le triangle $ABC$ a pour aire $4\\sqrt{6}$. En déduire la distance du point $O$ au plan $(ABC)$.",
+          "etapes": [
+            {
+              "texte": "On prend maintenant pour base le triangle $ABC$ et pour sommet $O$. La hauteur $h'$ est la distance de $O$ au plan $(ABC)$, et $V = \\dfrac{1}{3} \\times 4\\sqrt{6} \\times h'$."
+            },
+            {
+              "texte": "Donc $\\dfrac{16}{3} = \\dfrac{4\\sqrt{6}}{3}\\,h'$, soit $16 = 4\\sqrt{6}\\,h'$ et $h' = \\dfrac{4}{\\sqrt{6}} = \\dfrac{4\\sqrt{6}}{6} = \\dfrac{2\\sqrt{6}}{3}$.",
+              "pourquoi": "On multiplie les deux membres par $3$, puis on divise par $4\\sqrt{6}$. Enfin, $\\dfrac{4}{\\sqrt{6}} = \\dfrac{4 \\times \\sqrt{6}}{\\sqrt{6} \\times \\sqrt{6}} = \\dfrac{4\\sqrt{6}}{6}$."
+            },
+            {
+              "texte": "Contrôle par le projeté : $\\vec{n}\\begin{pmatrix} 2 \\\\ 1 \\\\ 1 \\end{pmatrix}$ est normal au plan $(ABC)$, et $H\\left(\\dfrac{4}{3}\\,;\\,\\dfrac{2}{3}\\,;\\,\\dfrac{2}{3}\\right)$ est le projeté orthogonal de $O$ sur ce plan. Comme $\\overrightarrow{OH} = \\dfrac{2}{3}\\,\\vec{n}$, on a $OH = \\dfrac{2}{3}\\sqrt{4 + 1 + 1} = \\dfrac{2\\sqrt{6}}{3}$.",
+              "pourquoi": "Méthode de la notion précédente : $\\vec{n} \\cdot \\overrightarrow{AB} = -4 + 4 + 0 = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = -4 + 0 + 4 = 0$ ; puis $\\overrightarrow{AH}\\begin{pmatrix} -\\frac{2}{3} \\\\ \\frac{2}{3} \\\\ \\frac{2}{3} \\end{pmatrix}$ donne $\\overrightarrow{AH} \\cdot \\vec{n} = -\\dfrac{4}{3} + \\dfrac{2}{3} + \\dfrac{2}{3} = 0$, donc $H \\in (ABC)$."
+            },
+            {
+              "texte": "**Conclusion** : la distance du point $O$ au plan $(ABC)$ est $\\dfrac{2\\sqrt{6}}{3}$, soit environ $1{,}63$."
+            }
+          ]
+        },
+        {
+          "id": "l-orthogonalite-espace-075",
+          "type": "verifie",
+          "capacites": ["bo-m-orthogonalite-11"],
+          "question": {
+            "enonce": "Un tétraèdre a pour volume $12$. L'une de ses faces a pour aire $9$. Quelle est la distance du sommet opposé à cette face au plan de cette face ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 4,
+              "tolerance": 0
+            },
+            "explication": "$V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h$ donne $h = \\dfrac{3V}{\\mathcal{B}} = \\dfrac{3 \\times 12}{9} = 4$. Sans le facteur $3$, on trouverait $\\dfrac{12}{9}$, trois fois trop peu."
+          }
+        },
+        {
+          "id": "l-orthogonalite-espace-076",
+          "type": "piege",
+          "titre": "La hauteur n'est pas une arête quelconque",
+          "faux": "Volume du tétraèdre $OABC$ avec la base $ABC$ et la hauteur $OA$ : $V = \\dfrac{1}{3} \\times 4\\sqrt{6} \\times 2$.",
+          "juste": "Avec la base $ABC$, la hauteur est la distance de $O$ au plan $(ABC)$, soit $\\dfrac{2\\sqrt{6}}{3}$. L'arête $OA$ ne convient pas : elle n'est pas orthogonale à ce plan.",
+          "explication": "La hauteur se mesure perpendiculairement au plan de la base. Une arête ne convient que si elle est orthogonale à ce plan, comme $(OC)$ pour la base $OAB$. Le calcul faux donne $\\dfrac{8\\sqrt{6}}{3} \\approx 6{,}53$ au lieu de $\\dfrac{16}{3} \\approx 5{,}33$."
+        },
+        {
+          "id": "l-orthogonalite-espace-077",
+          "type": "retenir",
+          "texte": "Volume d'une pyramide : $V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h$, où $h$ est la distance du sommet au plan de la base. Calculer un volume de deux façons donne une aire, $\\mathcal{B} = \\dfrac{3V}{h}$, ou une distance, $h = \\dfrac{3V}{\\mathcal{B}}$."
+        }
+      ]
+    }
+  ]
+}
