@@ -756,13 +756,42 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   - [ ] Une animation pour faire tourner un cube et voir deux droites non coplanaires —
     souhait de l'auteur du cours de Vecteurs de l'espace (la perspective trompe : deux droites
     semblent se couper sur le dessin) ; à faire quand les figures animées existeront.
-  - [ ] Fonction logarithme népérien : le cours — chapitre 7 dans l'ordre de l'année
-    (`logarithme`) : `/tle-chapitre maths logarithme cours`, dans une session neuve. Leçons
-    de la session du 2026-10-15 : relecteur et élève-testeur en parallèle au tour 1 a bien
-    marché ; auteurs d'exercices et de type bac lancés en parallèle dès le cours relu ;
-    commiter après chaque agent (une coupure a fait perdre une rédaction entière).
-  - [ ] Fonction logarithme népérien : les exercices — `/tle-chapitre maths logarithme
-    exercices`, après le cours.
+  - [x] Fonction logarithme népérien : le cours — fait le 2026-10-16 (PR #128) : 6 notions (priorités
+    mesurées sur 103 sujets : dérivée de ln et de ln(u) 71 %, équations, inéquations et
+    seuils 66 %, limites et croissances comparées 53 % → ★★★ ; propriétés algébriques 23 % et
+    définition 17 % relevée d'un cran (tout le chapitre en dépend) → ★★ ; problèmes et
+    algorithme de Briggs 12 % → ★), 84 blocs, 9 cartes de mémo, 4 figures. Relecteur PASS au
+    tour 1, élève-testeur CLAIR (18/18 « vérifie ») ; non bloquants et gênes corrigés, relus
+    aux tours 2 et 3 (PASS).
+  - [x] Fonction logarithme népérien : les exercices — même session, à la demande de
+    Thibaud : 34 exercices (14 Comprendre, 17 S'entraîner, 3 Approfondir), 17 questions
+    éclair, 5 sujets type bac adaptés d'annales (26 points, aucune question retirée).
+    Relecteur PASS au tour 1, élève-testeur CLAIR (14/14 en Comprendre) ; retouches relues au
+    tour 2 (PASS). Coût : environ 73 $ pour les deux parties, avec deux coupures de limite
+    d'usage (agents repris sans rien perdre, grâce aux commits après chaque agent).
+  - [ ] Logarithme népérien, petites retouches — non bloquants laissés ouverts (rapports de
+    relecture et d'élève-testeur du 2026-10-16) : nommer l'outil « produit scalaire nul,
+    critère de première » dans l'exemple `l-logarithme-083` ; le premier indice de x-007 q2
+    redonne la réponse de q1 ; « ln » en italique et graduation « 5 » traversée par un
+    pointillé dans les figures du cours et `x-triangle-tangente.svg` ; deux `attendusBac` de
+    `notions.json` citent f et h sans les définir ; « intervalle » au lieu de « réunion
+    d'intervalles » à l'étape 5 de la méthode `l-logarithme-007` ; le passage à l'inverse
+    (x-012 q1) n'est pas montré dans le cours ; pas de « vérifie » après la concavité
+    (`l-logarithme-051`, plafond de la notion atteint).
+  - [ ] Les QCM des cours de Continuité, Dérivation et convexité ont toujours la bonne
+    réponse en premier — le composant ne mélange pas les choix ; relevé par le relecteur du
+    logarithme (dont les auteurs ont réparti les positions à la main). Mélanger les choix à
+    l'affichage, avec une graine stable par question (session d'interface), ou réordonner
+    les choix de ces deux chapitres.
+  - [ ] Orthogonalité et distances dans l'espace : le cours — chapitre 8 dans l'ordre de
+    l'année (`orthogonalite-espace`) : `/tle-chapitre maths orthogonalite-espace cours`.
+    Leçons des sessions du 2026-10-15 et 16 : relecteur et élève-testeur en parallèle à
+    chaque tour ; auteurs d'exercices et de type bac lancés dès le cours relu, en parallèle
+    avec les retouches du cours (identifiants gelés) ; commiter après chaque agent ; une
+    seule relecture ciblée finale pour toutes les retouches. Penser à remettre les questions
+    de produit scalaire retirées du type bac de Vecteurs de l'espace (item ci-dessus).
+  - [ ] Orthogonalité et distances dans l'espace : les exercices — `/tle-chapitre maths
+    orthogonalite-espace exercices`, après le cours.
   - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
     (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
     `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source

@@ -1,0 +1,310 @@
+[
+  {
+    "id": "fl-logarithme-exp-de-ln",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-definition",
+    "capacites": ["bo-m-logarithme-01"],
+    "enonce": "Combien vaut $e^{\\ln 5} + \\ln 1$ ?",
+    "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+    "explication": "$e^{\\ln a} = a$ pour $a > 0$, donc $e^{\\ln 5} = 5$ ; et $\\ln 1 = 0$, car $e^0 = 1$. Exponentielle et logarithme se défont l'un l'autre.",
+    "duree": 20
+  },
+  {
+    "id": "fl-logarithme-ensemble-definition",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-definition",
+    "capacites": ["bo-m-logarithme-01"],
+    "enonce": "Sur quel intervalle la fonction $x \\mapsto \\ln(1 - x)$ est-elle définie ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$]1\\,;\\,+\\infty[$", "$]-\\infty\\,;\\,1[$", "$]0\\,;\\,1[$", "$]-\\infty\\,;\\,1]$"],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "Pour $x > 1$, $1 - x < 0$ : c'est là que le logarithme n'existe pas.",
+        null,
+        "Rien n'impose $x > 0$ : pour $x = -2$, $\\ln 3$ existe.",
+        "En $x = 1$, $\\ln 0$ n'existe pas : la borne est exclue."
+      ]
+    },
+    "explication": "$\\ln(1 - x)$ existe si et seulement si $1 - x > 0$, soit $x < 1$. C'est ce qui est dans le logarithme qui doit être strictement positif, pas $x$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-logarithme-somme-de-logarithmes",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-proprietes",
+    "capacites": ["bo-m-logarithme-02"],
+    "enonce": "À quoi est égal $\\ln 3 + \\ln 4$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$\\ln 7$", "$\\ln 3 \\times \\ln 4$", "$\\ln 12$", "$12$"],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "Une somme de logarithmes est le logarithme d'un **produit**, pas d'une somme.",
+        "Le logarithme change un produit en somme, pas l'inverse : $\\ln 3 + \\ln 4$ n'est pas un produit de logarithmes.",
+        null,
+        "Il reste un logarithme : $\\ln 3 + \\ln 4 = \\ln(3 \\times 4)$."
+      ]
+    },
+    "explication": "$\\ln a + \\ln b = \\ln(ab)$ pour $a > 0$ et $b > 0$ : $\\ln 3 + \\ln 4 = \\ln 12$. C'est l'équation fonctionnelle du logarithme.",
+    "duree": 20
+  },
+  {
+    "id": "fl-logarithme-puissance",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-proprietes",
+    "capacites": ["bo-m-logarithme-02"],
+    "enonce": "On écrit $\\ln 32 = k\\ln 2$. Que vaut l'entier $k$ ?",
+    "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+    "explication": "$32 = 2^5$ et $\\ln\\left(a^n\\right) = n\\ln a$ : $\\ln 32 = 5\\ln 2$. L'exposant descend devant le logarithme.",
+    "duree": 20
+  },
+  {
+    "id": "fl-logarithme-racine",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-proprietes",
+    "capacites": ["bo-m-logarithme-02"],
+    "enonce": "Combien vaut $\\ln\\left(\\sqrt{e}\\right)$ ? Donne la valeur décimale.",
+    "reponse": { "type": "numerique", "valeur": 0.5, "tolerance": 0 },
+    "explication": "$\\ln\\left(\\sqrt{a}\\right) = \\dfrac{1}{2}\\ln a$, et $\\ln e = 1$ : $\\ln\\left(\\sqrt{e}\\right) = \\dfrac{1}{2} = 0{,}5$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-logarithme-exp-egal-un-demi",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-equations",
+    "capacites": ["bo-m-logarithme-06"],
+    "enonce": "Quelle est la solution de l'équation $e^x = \\dfrac{1}{2}$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$\\sqrt{e}$", "$-\\ln 2$", "$\\ln(-2)$", "$-2$"],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "$\\sqrt{e} = e^{\\frac{1}{2}}$ : tu as pris l'exponentielle de $\\dfrac{1}{2}$ au lieu de son logarithme.",
+        null,
+        "$\\ln(-2)$ n'existe pas. C'est $\\ln\\left(\\dfrac{1}{2}\\right) = -\\ln 2$ qui est négatif, pas le nombre dont on prend le logarithme.",
+        "$e^{-2} \\approx 0{,}14$, pas $0{,}5$ : il faut prendre le logarithme de $\\dfrac{1}{2}$."
+      ]
+    },
+    "explication": "$\\dfrac{1}{2} > 0$, donc $e^x = \\dfrac{1}{2} \\iff x = \\ln\\left(\\dfrac{1}{2}\\right) = -\\ln 2 \\approx -0{,}69$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-logarithme-signe",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-equations",
+    "capacites": ["bo-m-logarithme-06"],
+    "enonce": "Vrai ou faux ? $\\ln 0{,}7 > 0$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "$0{,}7 < 1$ et $\\ln$ est strictement croissante, donc $\\ln 0{,}7 < \\ln 1 = 0$."
+    },
+    "explication": "Le logarithme d'un nombre compris entre $0$ et $1$ est négatif : $\\ln x < 0$ sur $]0\\,;\\,1[$, $\\ln 1 = 0$ et $\\ln x > 0$ sur $]1\\,;\\,+\\infty[$.",
+    "duree": 15
+  },
+  {
+    "id": "fl-logarithme-inequation",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-equations",
+    "capacites": ["bo-m-logarithme-06"],
+    "enonce": "Quel est l'ensemble des solutions de l'inéquation $\\ln x \\geqslant 3$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$[3\\,;\\,+\\infty[$", "$]0\\,;\\,e^3]$", "$[\\ln 3\\,;\\,+\\infty[$", "$[e^3\\,;\\,+\\infty[$"],
+      "bonne": 3,
+      "pourquoiFaux": [
+        "Le logarithme ne s'efface pas : $\\ln x \\geqslant 3$ donne $x \\geqslant e^3$, pas $x \\geqslant 3$.",
+        "Le sens est inversé : l'exponentielle est croissante, elle garde le sens de l'inégalité.",
+        "On passe à l'exponentielle, pas au logarithme.",
+        null
+      ]
+    },
+    "explication": "$\\ln x \\geqslant 3 \\iff x \\geqslant e^3$, car l'exponentielle est croissante ; ces réels sont bien strictement positifs. Et $e^3 \\approx 20{,}1$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-logarithme-seuil-sens",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-equations",
+    "capacites": ["bo-m-logarithme-06"],
+    "enonce": "À quoi équivaut l'inéquation $0{,}6^n < 0{,}1$, pour un entier naturel $n$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$n > \\dfrac{\\ln 0{,}1}{\\ln 0{,}6}$",
+        "$n < \\dfrac{\\ln 0{,}1}{\\ln 0{,}6}$",
+        "$n > \\dfrac{0{,}1}{0{,}6}$",
+        "$n > \\ln 0{,}1 - \\ln 0{,}6$"
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "$\\ln 0{,}6 < 0$ : en divisant par ce nombre négatif, le sens change.",
+        "Il faut d'abord passer au logarithme pour faire descendre l'exposant $n$.",
+        "$n\\ln 0{,}6$ est un produit : on isole $n$ en divisant, pas en retranchant."
+      ]
+    },
+    "explication": "$0{,}6^n < 0{,}1 \\iff n\\ln 0{,}6 < \\ln 0{,}1$, puis on divise par $\\ln 0{,}6 < 0$ et le sens change. Le quotient vaut environ $4{,}5$ : le plus petit entier qui convient est $5$.",
+    "duree": 40
+  },
+  {
+    "id": "fl-logarithme-derivee-ln-affine",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-derivee",
+    "capacites": ["bo-m-logarithme-03"],
+    "enonce": "Quelle est la dérivée de $x \\mapsto \\ln(3x + 1)$ sur $\\left]-\\dfrac{1}{3}\\,;\\,+\\infty\\right[$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$\\dfrac{1}{3x + 1}$", "$\\dfrac{1}{3}$", "$3\\ln(3x + 1)$", "$\\dfrac{3}{3x + 1}$"],
+      "bonne": 3,
+      "pourquoiFaux": [
+        "Il manque la dérivée de l'intérieur, $3$ : $(\\ln u)' = \\dfrac{u'}{u}$.",
+        "C'est l'inverse de la dérivée de l'intérieur : la formule est $\\dfrac{u'}{u}$.",
+        "La dérivée de $\\ln u$ ne contient plus de logarithme : c'est $\\dfrac{u'}{u}$.",
+        null
+      ]
+    },
+    "explication": "$(\\ln u)' = \\dfrac{u'}{u}$ avec $u(x) = 3x + 1 > 0$ et $u'(x) = 3$ : la dérivée est $\\dfrac{3}{3x + 1}$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-logarithme-derivee-ln-carre",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-derivee",
+    "capacites": ["bo-m-logarithme-03"],
+    "enonce": "Quelle est la dérivée de $x \\mapsto (\\ln x)^2$ sur $]0\\,;\\,+\\infty[$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$\\dfrac{2\\ln x}{x}$", "$2\\ln x$", "$\\dfrac{2}{x}$", "$\\dfrac{1}{x^2}$"],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "Il manque la dérivée de l'intérieur, $\\dfrac{1}{x}$ : $\\left(u^2\\right)' = 2u'u$.",
+        "C'est la dérivée de $\\ln\\left(x^2\\right) = 2\\ln x$, pas celle de $(\\ln x)^2$.",
+        "On ne dérive pas un carré en élevant la dérivée au carré : $\\left(u^2\\right)' = 2u'u$."
+      ]
+    },
+    "explication": "$(\\ln x)^2 = u^2$ avec $u = \\ln x$, et $\\left(u^2\\right)' = 2u'u = 2 \\times \\dfrac{1}{x} \\times \\ln x$ : c'est le cas $n = 2$ de $\\left(u^n\\right)' = nu'u^{n-1}$. Ne confonds pas $(\\ln x)^2$ et $\\ln\\left(x^2\\right)$.",
+    "duree": 40
+  },
+  {
+    "id": "fl-logarithme-variations-ln-u",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-derivee",
+    "capacites": ["bo-m-logarithme-03"],
+    "enonce": "Vrai ou faux ? Si $u$ est dérivable et strictement positive sur un intervalle, alors $\\ln u$ a les mêmes variations que $u$ sur cet intervalle.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": true,
+      "justification": "$(\\ln u)' = \\dfrac{u'}{u}$ et $u > 0$ : la dérivée de $\\ln u$ a le signe de $u'$."
+    },
+    "explication": "Pour étudier les variations de $\\ln\\left(x^2 - 4x + 7\\right)$, il suffit d'étudier celles de $x^2 - 4x + 7$ : même signe de dérivée, donc mêmes variations.",
+    "duree": 25
+  },
+  {
+    "id": "fl-logarithme-limite-quotient-en-0",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-limites",
+    "capacites": ["bo-m-logarithme-04"],
+    "enonce": "Quelle est la limite de $\\dfrac{\\ln x}{x}$ quand $x$ tend vers $0$, avec $x > 0$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$0$", "$-\\infty$", "$+\\infty$", "On ne peut pas conclure : c'est une forme indéterminée."],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "$\\dfrac{\\ln x}{x}$ tend vers $0$ en $+\\infty$, pas en $0$ : ne confonds pas les deux bornes.",
+        null,
+        "$\\ln x$ est négatif près de $0$, et $x$ positif : le quotient est négatif.",
+        "Aucune indétermination : c'est « $(-\\infty) \\times (+\\infty)$ », puisque $\\dfrac{1}{x}$ tend vers $+\\infty$."
+      ]
+    },
+    "explication": "$\\dfrac{\\ln x}{x} = \\ln x \\times \\dfrac{1}{x}$, produit d'un facteur qui tend vers $-\\infty$ et d'un facteur qui tend vers $+\\infty$ : la limite est $-\\infty$. Les croissances comparées ne servent qu'en cas d'indétermination.",
+    "duree": 30
+  },
+  {
+    "id": "fl-logarithme-croissances-comparees-en-0",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-limites",
+    "capacites": ["bo-m-logarithme-05"],
+    "enonce": "Quelle est la limite de $x^3\\ln x$ quand $x$ tend vers $0$, avec $x > 0$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$-\\infty$", "$+\\infty$", "$0$", "$1$"],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "$\\ln x$ tend vers $-\\infty$, mais $x^3$ tend vers $0$ et l'emporte.",
+        "Le produit est négatif près de $0$, car $\\ln x < 0$ : il ne peut pas tendre vers $+\\infty$.",
+        null,
+        "Aucun des deux facteurs ne tend vers $1$."
+      ]
+    },
+    "explication": "Croissances comparées en $0$ : pour tout entier $n \\geqslant 1$, $x^n\\ln x$ tend vers $0$. La puissance de $x$ l'emporte sur le logarithme.",
+    "duree": 25
+  },
+  {
+    "id": "fl-logarithme-symetrie-courbes",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-limites",
+    "capacites": ["bo-m-logarithme-04"],
+    "enonce": "Dans un repère orthonormé, le point $M(a\\,;\\,b)$ est sur la courbe de l'exponentielle. Quel point est sûrement sur la courbe de $\\ln$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$(-a\\,;\\,b)$", "$(a\\,;\\,-b)$", "$(a\\,;\\,\\ln b)$", "$(b\\,;\\,a)$"],
+      "bonne": 3,
+      "pourquoiFaux": [
+        "C'est le symétrique de $M$ par rapport à l'axe des ordonnées : il est sur la courbe de $x \\mapsto e^{-x}$, pas sur celle de $\\ln$.",
+        "C'est le symétrique de $M$ par rapport à l'axe des abscisses.",
+        "Comme $b = e^a$, $\\ln b = a$ : ce point est $(a\\,;\\,a)$, sur la droite $y = x$, pas sur la courbe de $\\ln$.",
+        null
+      ]
+    },
+    "explication": "$b = e^a \\iff a = \\ln b$ : le point $(b\\,;\\,a)$ est sur la courbe de $\\ln$. Les deux courbes sont symétriques par rapport à la droite d'équation $y = x$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-logarithme-asymptote-verticale",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-limites",
+    "capacites": ["bo-m-logarithme-04"],
+    "enonce": "Quelle droite est asymptote à la courbe de $x \\mapsto \\ln(x + 2)$, définie sur $]-2\\,;\\,+\\infty[$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "La droite d'équation $y = -2$",
+        "La droite d'équation $x = 2$",
+        "La droite d'équation $x = -2$",
+        "L'axe des ordonnées"
+      ],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "Une limite infinie en un réel donne une asymptote **verticale**, d'équation $x = a$.",
+        "$x + 2$ s'annule en $-2$, pas en $2$.",
+        null,
+        "L'axe des ordonnées est l'asymptote de la courbe de $\\ln$ ; ici, c'est $x + 2$ qui tend vers $0$, quand $x$ tend vers $-2$."
+      ]
+    },
+    "explication": "Quand $x$ tend vers $-2$ avec $x > -2$, $x + 2$ tend vers $0$ en restant positif, et $\\ln(x + 2)$ tend vers $-\\infty$ : la droite d'équation $x = -2$ est asymptote verticale.",
+    "duree": 30
+  },
+  {
+    "id": "fl-logarithme-demi-vie",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-problemes",
+    "capacites": ["bo-m-logarithme-07"],
+    "enonce": "Une quantité vaut $Q(t) = 50e^{-0{,}2t}$ au bout de $t$ heures. Au bout de combien de temps a-t-elle diminué de moitié ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$5\\ln 2$ heures", "$-5\\ln 2$ heures", "$\\dfrac{\\ln 2}{5}$ heure", "$25$ heures"],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "Une durée est positive : $-0{,}2t = -\\ln 2$ donne $t = \\dfrac{\\ln 2}{0{,}2} = 5\\ln 2$, les deux signes moins disparaissent ensemble.",
+        "On divise par $0{,}2$, ce qui revient à multiplier par $5$ : $\\dfrac{\\ln 2}{0{,}2} = 5\\ln 2$.",
+        "$25$ est la quantité restante, pas la durée : on résout $Q(t) = 25$."
+      ]
+    },
+    "explication": "$50e^{-0{,}2t} = 25 \\iff e^{-0{,}2t} = \\dfrac{1}{2} \\iff -0{,}2t = -\\ln 2 \\iff t = 5\\ln 2 \\approx 3{,}47$ h, soit environ $3$ h $28$ min.",
+    "duree": 45
+  }
+]

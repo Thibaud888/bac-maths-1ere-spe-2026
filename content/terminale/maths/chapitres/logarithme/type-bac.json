@@ -1,0 +1,816 @@
+[
+  {
+    "id": "tb-logarithme-001",
+    "chapitre": "logarithme",
+    "notions": ["n-logarithme-derivee", "n-logarithme-limites", "n-logarithme-proprietes"],
+    "capacites": [
+      "bo-m-logarithme-02",
+      "bo-m-logarithme-03",
+      "bo-m-logarithme-04",
+      "bo-m-logarithme-05",
+      "bo-m-derivation-01",
+      "bo-m-derivation-03",
+      "bo-m-derivation-04",
+      "bo-m-derivation-05",
+      "bo-m-derivation-06",
+      "bo-m-derivation-07",
+      "bo-m-derivation-09",
+      "bo-m-limites-fonctions-04",
+      "bo-m-limites-fonctions-05"
+    ],
+    "titre": "Le logarithme d'un polynôme : limites, variations, convexité et inégalité de tangente",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2026-amerique-nord-j1",
+      "adaptation": "Exercice 4 : fonction $f(x) = 5\\ln\\left(x^2 + 1\\right) - 3x$ sur $\\mathbb{R}$, conjecture de la convexité sur la courbe, limite en $-\\infty$, écriture de $f(x)$ pour $x > 0$ et limite en $+\\infty$, dérivée à démontrer, variations, dérivée seconde admise et validation de la conjecture, tangente au point A d'abscisse $1$ et inégalité $\\ln\\left(x^2 + 1\\right) \\leqslant x + \\ln 2 - 1$ pour $x \\geqslant 1$ conservés ; ajoutés : tableau de variations complet (limites, valeurs exactes des extremums locaux) et nature du point A. Aucune question retirée. Courbe redessinée pour le site (fenêtre $[-2\\,;\\,7]$ en abscisse, $[-2\\,;\\,6]$ en ordonnée). Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par\n\n$$f(x) = 5\\ln\\left(x^2 + 1\\right) - 3x,$$\n\net on admet que la fonction $f$ est dérivable sur $\\mathbb{R}$. On note $\\mathcal{C}_f$ sa courbe représentative dans un repère orthonormé du plan.\n\nLa figure ci-dessous donne la courbe $\\mathcal{C}_f$ et la tangente $T$ à la courbe $\\mathcal{C}_f$ au point A d'abscisse $1$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/logarithme/tb-courbe-tangente.svg",
+        "alt": "Courbe Cf de la fonction f et sa tangente T au point A d'abscisse 1, dans un repère orthonormé quadrillé, pour x allant de −2 à 7 et y de −2 à 6. La courbe entre dans le cadre par le haut vers x = −0,9, descend en passant par l'origine jusqu'à un minimum d'environ −0,5 vers x = 0,3, remonte en passant par A, de coordonnées environ (1 ; 0,5), jusqu'à un maximum d'environ 2,5 vers x = 3, puis redescend et coupe l'axe des abscisses un peu après x = 6. La tangente T est une droite de coefficient directeur 2 qui touche la courbe au point A ; elle coupe l'axe des ordonnées vers y = −1,5.",
+        "width": 360,
+        "height": 318
+      },
+      "caption": "La courbe Cf et sa tangente T au point A d'abscisse 1."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Conjecturer, à l'aide de la représentation graphique, les intervalles sur lesquels la fonction $f$ semble convexe ou concave.",
+        "points": 0.5,
+        "revoir": "l-derivation-convexite-064",
+        "indices": [
+          "Sur la courbe de $f$ elle-même, une fonction convexe a une courbe « en bol », située au-dessus de ses tangentes ; une fonction concave a une courbe « en dôme », située en dessous.",
+          "Regarde la position de la courbe par rapport à la tangente $T$ de part et d'autre du point A, puis la forme de la courbe sur chacune des deux parties."
+        ],
+        "attenduCorrecteur": "- Lecture de la forme de la courbe de part et d'autre de A (en bol à gauche, en dôme à droite) : 0,25 pt.\n- Conjecture : $f$ semble convexe sur $]-\\infty\\,;\\,1]$ (partie visible à partir de $x \\approx -0{,}9$ ; ou : sur la partie visible à gauche de A) et concave sur $[1\\,;\\,+\\infty[$ : 0,25 pt.",
+        "solution": "Sur la figure, à gauche du point A, la courbe $\\mathcal{C}_f$ est tournée vers le haut, « en bol » : elle est au-dessus de ses tangentes, en particulier au-dessus de $T$ près de A. À droite de A, elle est tournée vers le bas, « en dôme » : elle passe en dessous de $T$.\n\nOn conjecture donc que $f$ est convexe sur $]-\\infty\\,;\\,1]$ et concave sur $[1\\,;\\,+\\infty[$ : le point A semble être un point d'inflexion, où la courbe traverse sa tangente.\n\nAttention : la figure ne montre la courbe que pour $x$ supérieur à $-0{,}9$ environ ; pour les réels plus petits, la conjecture n'est qu'un prolongement de ce qu'on voit.",
+        "erreurFrequente": "Lire la convexité sur le sens de variation : une fonction peut être croissante et concave, comme ici entre $1$ et $3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer, en justifiant, la limite de la fonction $f$ en $-\\infty$.",
+        "points": 0.5,
+        "revoir": "l-logarithme-066",
+        "indices": [
+          "Cherche séparément la limite de $5\\ln\\left(x^2 + 1\\right)$ et celle de $-3x$ quand $x$ tend vers $-\\infty$. Pour la première, c'est une composée : trouve d'abord vers quoi tend $x^2 + 1$.",
+          "Quand $X$ tend vers $+\\infty$, $\\ln X$ tend vers $+\\infty$. Regarde ensuite le signe de $-3x$ quand $x$ est un grand nombre négatif."
+        ],
+        "attenduCorrecteur": "- Limite par composée : $\\lim\\limits_{x \\to -\\infty} \\left(x^2 + 1\\right) = +\\infty$ et $\\lim\\limits_{X \\to +\\infty} \\ln X = +\\infty$, donc $\\lim\\limits_{x \\to -\\infty} 5\\ln\\left(x^2 + 1\\right) = +\\infty$ : 0,25 pt.\n- $\\lim\\limits_{x \\to -\\infty} (-3x) = +\\infty$ et, par somme, $\\lim\\limits_{x \\to -\\infty} f(x) = +\\infty$ : 0,25 pt.",
+        "solution": "Quand $x$ tend vers $-\\infty$, $x^2 + 1$ tend vers $+\\infty$. Or $\\lim\\limits_{X \\to +\\infty} \\ln X = +\\infty$ : par composée, $\\lim\\limits_{x \\to -\\infty} \\ln\\left(x^2 + 1\\right) = +\\infty$, donc $\\lim\\limits_{x \\to -\\infty} 5\\ln\\left(x^2 + 1\\right) = +\\infty$.\n\nDe plus, $\\lim\\limits_{x \\to -\\infty} (-3x) = +\\infty$. Par somme :\n\n$$\\lim_{x \\to -\\infty} f(x) = +\\infty.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Limite de la fonction $f$ en $+\\infty$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Démontrer que, pour tout réel $x$ strictement positif,\n\n$$f(x) = x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) + 5\\ln\\left(1 + \\dfrac{1}{x^2}\\right).$$",
+            "points": 0.5,
+            "revoir": "l-logarithme-013",
+            "indices": [
+              "Pars du membre de droite et développe le premier produit. Pour le dernier terme, aucune règle ne transforme le logarithme d'une somme : écris d'abord $1 + \\dfrac{1}{x^2}$ comme un seul quotient.",
+              "$1 + \\dfrac{1}{x^2} = \\dfrac{x^2 + 1}{x^2}$, avec $x^2 + 1 > 0$ et $x^2 > 0$ : applique $\\ln\\left(\\dfrac{a}{b}\\right) = \\ln a - \\ln b$, puis la règle de la puissance à $\\ln\\left(x^2\\right)$, valable car $x > 0$."
+            ],
+            "attenduCorrecteur": "- Transformation du logarithme par une règle du cours, conditions vérifiées : $\\ln\\left(1 + \\dfrac{1}{x^2}\\right) = \\ln\\left(\\dfrac{x^2 + 1}{x^2}\\right) = \\ln\\left(x^2 + 1\\right) - \\ln\\left(x^2\\right)$ (quotient de deux réels strictement positifs) ; ou bien, en partant de $f(x)$, factorisation $x^2 + 1 = x^2\\left(1 + \\dfrac{1}{x^2}\\right)$ et propriété $\\ln(ab) = \\ln a + \\ln b$ : 0,25 pt.\n- $\\ln\\left(x^2\\right) = 2\\ln x$ pour $x > 0$, $x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) = 10\\ln x - 3x$ et conclusion : 0,25 pt.",
+            "solution": "Soit $x > 0$. On part du membre de droite.\n\nD'une part, comme $x \\neq 0$ : $x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) = 10\\ln x - 3x$.\n\nD'autre part, en réduisant au même dénominateur, $1 + \\dfrac{1}{x^2} = \\dfrac{x^2 + 1}{x^2}$. Les réels $x^2 + 1$ et $x^2$ sont strictement positifs : d'après la règle du quotient, puis celle de la puissance (valable car $x > 0$),\n\n$$\\ln\\left(1 + \\dfrac{1}{x^2}\\right) = \\ln\\left(x^2 + 1\\right) - \\ln\\left(x^2\\right) = \\ln\\left(x^2 + 1\\right) - 2\\ln x.$$\n\nPar conséquent :\n\n$$x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) + 5\\ln\\left(1 + \\dfrac{1}{x^2}\\right) = 10\\ln x - 3x + 5\\ln\\left(x^2 + 1\\right) - 10\\ln x = 5\\ln\\left(x^2 + 1\\right) - 3x.$$\n\nOn reconnaît $f(x)$ : pour tout réel $x > 0$,\n\n$$f(x) = x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) + 5\\ln\\left(1 + \\dfrac{1}{x^2}\\right).$$\n\n**Autre méthode**, en partant de $f(x)$. On factorise $x^2$ dans $x^2 + 1$ : $x^2 + 1 = x^2\\left(1 + \\dfrac{1}{x^2}\\right)$, produit de deux facteurs strictement positifs. La règle du produit donne $\\ln\\left(x^2 + 1\\right) = \\ln\\left(x^2\\right) + \\ln\\left(1 + \\dfrac{1}{x^2}\\right) = 2\\ln x + \\ln\\left(1 + \\dfrac{1}{x^2}\\right)$, d'où $f(x) = 10\\ln x - 3x + 5\\ln\\left(1 + \\dfrac{1}{x^2}\\right)$ ; il reste à factoriser $10\\ln x - 3x$ par $x$.",
+            "erreurFrequente": "Écrire $\\ln\\left(1 + \\dfrac{1}{x^2}\\right) = \\ln 1 + \\ln\\left(\\dfrac{1}{x^2}\\right)$, ou $\\ln\\left(x^2 + 1\\right) = \\ln\\left(x^2\\right) + \\ln 1$ : le logarithme d'une somme n'est pas la somme des logarithmes ; il faut d'abord écrire la somme comme un quotient ou comme un produit."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "En déduire, en justifiant, la limite de la fonction $f$ en $+\\infty$.",
+            "points": 0.5,
+            "revoir": "l-logarithme-061",
+            "indices": [
+              "Dans l'écriture de la question a), la parenthèse contient $\\dfrac{\\ln x}{x}$ : sa limite en $+\\infty$ est une croissance comparée du cours.",
+              "Pour le dernier terme, cherche la limite de $1 + \\dfrac{1}{x^2}$, puis celle de $\\ln$ en ce nombre (composée)."
+            ],
+            "attenduCorrecteur": "- Croissances comparées citées : $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln x}{x} = 0$, donc la parenthèse tend vers $-3$ et, par produit avec $x$, le premier terme tend vers $-\\infty$ : 0,25 pt.\n- $1 + \\dfrac{1}{x^2}$ tend vers $1$ et $\\ln 1 = 0$ : le dernier terme tend vers $0$ ; par somme, $\\lim\\limits_{x \\to +\\infty} f(x) = -\\infty$ : 0,25 pt.",
+            "solution": "Par croissances comparées, $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln x}{x} = 0$, donc $\\lim\\limits_{x \\to +\\infty} \\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) = -3$. Comme $\\lim\\limits_{x \\to +\\infty} x = +\\infty$, par produit :\n\n$$\\lim_{x \\to +\\infty} x\\left(10\\,\\dfrac{\\ln x}{x} - 3\\right) = -\\infty.$$\n\nD'autre part, $\\lim\\limits_{x \\to +\\infty} \\left(1 + \\dfrac{1}{x^2}\\right) = 1$ et $\\lim\\limits_{X \\to 1} \\ln X = \\ln 1 = 0$ : par composée, $\\lim\\limits_{x \\to +\\infty} 5\\ln\\left(1 + \\dfrac{1}{x^2}\\right) = 0$.\n\nPar somme :\n\n$$\\lim_{x \\to +\\infty} f(x) = -\\infty.$$",
+            "erreurFrequente": "Conclure directement sur $5\\ln\\left(x^2 + 1\\right) - 3x$ : c'est une forme indéterminée « $+\\infty - \\infty$ », que l'écriture de la question a) permet de lever."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Variations de la fonction $f$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Démontrer que, pour tout réel $x$,\n\n$$f'(x) = \\dfrac{-3x^2 + 10x - 3}{x^2 + 1}.$$",
+            "points": 0.5,
+            "revoir": "l-logarithme-045",
+            "indices": [
+              "$x \\mapsto \\ln\\left(x^2 + 1\\right)$ est de la forme $\\ln u$ avec $u(x) = x^2 + 1$, strictement positif sur $\\mathbb{R}$ : sa dérivée est $\\dfrac{u'}{u}$.",
+              "Écris $f'(x)$ comme $5$ fois la dérivée de $\\ln u$, moins $3$, puis mets tout au même dénominateur $x^2 + 1$."
+            ],
+            "attenduCorrecteur": "- Dérivée de $\\ln u$ avec $u(x) = x^2 + 1 > 0$ et $u'(x) = 2x$ : $f'(x) = \\dfrac{10x}{x^2 + 1} - 3$ : 0,25 pt.\n- Réduction au même dénominateur et égalité demandée : 0,25 pt.",
+            "solution": "La fonction $u : x \\mapsto x^2 + 1$ est dérivable et strictement positive sur $\\mathbb{R}$, avec $u'(x) = 2x$. Donc $x \\mapsto \\ln\\left(x^2 + 1\\right)$ est dérivable sur $\\mathbb{R}$, de dérivée $\\dfrac{u'(x)}{u(x)} = \\dfrac{2x}{x^2 + 1}$.\n\nPour tout réel $x$ :\n\n$$f'(x) = 5 \\times \\dfrac{2x}{x^2 + 1} - 3 = \\dfrac{10x - 3\\left(x^2 + 1\\right)}{x^2 + 1} = \\dfrac{-3x^2 + 10x - 3}{x^2 + 1}.$$",
+            "erreurFrequente": "Écrire que la dérivée de $\\ln\\left(x^2 + 1\\right)$ est $\\dfrac{1}{x^2 + 1}$, en oubliant de multiplier par la dérivée $2x$ de l'intérieur."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Étudier les variations de la fonction $f$ sur $\\mathbb{R}$ et dresser son tableau de variations, en y faisant figurer les limites trouvées aux questions 2 et 3 et la valeur exacte des extremums locaux.",
+            "points": 0.75,
+            "revoir": "l-logarithme-048",
+            "indices": [
+              "Le dénominateur $x^2 + 1$ est strictement positif : $f'(x)$ a le signe du trinôme $-3x^2 + 10x - 3$. Cherche ses racines avec le discriminant.",
+              "Un trinôme a le signe de son coefficient de $x^2$ à l'extérieur de ses racines. Pour les extremums, calcule l'image des deux racines en gardant les logarithmes en valeur exacte."
+            ],
+            "attenduCorrecteur": "- Signe de $f'(x)$ : $x^2 + 1 > 0$ ; trinôme de discriminant $64$, de racines $\\dfrac{1}{3}$ et $3$, négatif à l'extérieur des racines (coefficient $-3 < 0$) et positif entre elles : 0,25 pt.\n- Sens de variation : $f$ décroissante sur $\\left]-\\infty\\,;\\,\\dfrac{1}{3}\\right]$ et sur $[3\\,;\\,+\\infty[$, croissante sur $\\left[\\dfrac{1}{3}\\,;\\,3\\right]$ : 0,25 pt.\n- Tableau complet : limites $+\\infty$ et $-\\infty$, minimum local $f\\left(\\dfrac{1}{3}\\right) = 5\\ln\\left(\\dfrac{10}{9}\\right) - 1$ et maximum local $f(3) = 5\\ln 10 - 9$ : 0,25 pt.",
+            "solution": "Pour tout réel $x$, $x^2 + 1 > 0$ : $f'(x)$ a le signe du trinôme $-3x^2 + 10x - 3$.\n\nSon discriminant vaut $\\Delta = 10^2 - 4 \\times (-3) \\times (-3) = 100 - 36 = 64 = 8^2$, d'où deux racines :\n\n$$x_1 = \\dfrac{-10 + 8}{-6} = \\dfrac{1}{3} \\qquad \\text{et} \\qquad x_2 = \\dfrac{-10 - 8}{-6} = 3.$$\n\nLe coefficient de $x^2$ est $-3 < 0$ : le trinôme est strictement négatif à l'extérieur des racines et strictement positif entre elles.\n\nValeurs des extremums locaux :\n\n- $f\\left(\\dfrac{1}{3}\\right) = 5\\ln\\left(\\dfrac{1}{9} + 1\\right) - 1 = 5\\ln\\left(\\dfrac{10}{9}\\right) - 1$ ;\n- $f(3) = 5\\ln 10 - 9$.\n\n| $x$ | $-\\infty$ | | $\\frac{1}{3}$ | | $3$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $-$ | $0$ | $+$ | $0$ | $-$ | |\n| variations de $f$ | $+\\infty$ | $\\searrow$ | $5\\ln\\left(\\frac{10}{9}\\right) - 1$ | $\\nearrow$ | $5\\ln 10 - 9$ | $\\searrow$ | $-\\infty$ |\n\nLa fonction $f$ est décroissante sur $\\left]-\\infty\\,;\\,\\dfrac{1}{3}\\right]$, croissante sur $\\left[\\dfrac{1}{3}\\,;\\,3\\right]$ et décroissante sur $[3\\,;\\,+\\infty[$."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On admet que la fonction $f$ est deux fois dérivable sur $\\mathbb{R}$ et que, pour tout réel $x$,\n\n$$f''(x) = \\dfrac{-10x^2 + 10}{\\left(x^2 + 1\\right)^2}.$$",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Étudier la convexité de la fonction $f$ sur $\\mathbb{R}$, puis valider ou rejeter la conjecture faite à la question 1. Que représente le point A pour la courbe $\\mathcal{C}_f$ ?",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-039",
+            "indices": [
+              "Le dénominateur est un carré non nul : $f''(x)$ a le signe de $-10x^2 + 10 = 10\\left(1 - x^2\\right)$. Factorise $1 - x^2$.",
+              "Compare les intervalles obtenus avec ceux de la question 1, y compris pour les réels $x$ que la figure ne montre pas. Où la convexité change-t-elle ?"
+            ],
+            "attenduCorrecteur": "- Signe de $f''(x)$, celui de $1 - x^2 = (1 - x)(1 + x)$ : positif sur $]-1\\,;\\,1[$, négatif sur $]-\\infty\\,;\\,-1[$ et sur $]1\\,;\\,+\\infty[$ ; $f$ convexe sur $[-1\\,;\\,1]$, concave sur $]-\\infty\\,;\\,-1]$ et sur $[1\\,;\\,+\\infty[$ : 0,25 pt.\n- Conjecture confirmée sur $[-1\\,;\\,+\\infty[$, rejetée sur $]-\\infty\\,;\\,-1]$ (hors de la figure) ; A est un point d'inflexion, car $f''$ s'annule en $1$ en changeant de signe : 0,25 pt.",
+            "solution": "Pour tout réel $x$, $\\left(x^2 + 1\\right)^2 > 0$ : $f''(x)$ a le signe de $-10x^2 + 10 = 10\\left(1 - x^2\\right) = 10(1 - x)(1 + x)$.\n\n| $x$ | $-\\infty$ | | $-1$ | | $1$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|\n| signe de $f''(x)$ | | $-$ | $0$ | $+$ | $0$ | $-$ | |\n\nDonc $f$ est concave sur $]-\\infty\\,;\\,-1]$, convexe sur $[-1\\,;\\,1]$ et concave sur $[1\\,;\\,+\\infty[$.\n\nLa conjecture de la question 1 est confirmée sur $[-1\\,;\\,1]$ et sur $[1\\,;\\,+\\infty[$, mais elle est rejetée sur $]-\\infty\\,;\\,-1]$ : sur cet intervalle, que la figure ne montre pas, $f$ est concave et non convexe.\n\nEn $1$, $f''$ s'annule en changeant de signe : la convexité change, et le point A est un point d'inflexion de $\\mathcal{C}_f$. Il en est de même au point d'abscisse $-1$, hors de la figure."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Déterminer l'équation réduite de la tangente $T$ à la courbe $\\mathcal{C}_f$ au point A d'abscisse $1$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-044",
+            "indices": [
+              "La tangente au point d'abscisse $a$ a pour équation $y = f'(a)(x - a) + f(a)$. Calcule $f(1)$, puis $f'(1)$ avec la question 4.a).",
+              "Garde $\\ln 2$ en valeur exacte dans $f(1)$, puis développe pour obtenir une équation de la forme $y = mx + p$."
+            ],
+            "attenduCorrecteur": "- $f(1) = 5\\ln 2 - 3$ et $f'(1) = \\dfrac{-3 + 10 - 3}{2} = 2$ : 0,25 pt.\n- $T : y = 2(x - 1) + 5\\ln 2 - 3$, soit $y = 2x + 5\\ln 2 - 5$ : 0,25 pt.",
+            "solution": "$f(1) = 5\\ln\\left(1^2 + 1\\right) - 3 = 5\\ln 2 - 3$ et, d'après la question 4.a), $f'(1) = \\dfrac{-3 + 10 - 3}{1 + 1} = 2$.\n\nLa tangente $T$ au point A a pour équation $y = f'(1)(x - 1) + f(1)$, soit $y = 2(x - 1) + 5\\ln 2 - 3$ :\n\n$$T : y = 2x + 5\\ln 2 - 5.$$"
+          },
+          {
+            "id": "q5c",
+            "label": "c)",
+            "enonce": "En déduire que, pour tout réel $x \\geqslant 1$,\n\n$$\\ln\\left(x^2 + 1\\right) \\leqslant x + \\ln 2 - 1.$$",
+            "points": 0.75,
+            "revoir": "l-derivation-convexite-050",
+            "indices": [
+              "Sur un intervalle où $f$ est concave, la courbe est en dessous de chacune de ses tangentes en un point de cet intervalle. Le point A a pour abscisse $1$, qui appartient à $[1\\,;\\,+\\infty[$.",
+              "Écris l'inégalité « $f(x)$ est inférieur ou égal à l'ordonnée du point de $T$ d'abscisse $x$ » pour $x \\geqslant 1$, remplace $f(x)$ par son expression, puis isole $\\ln\\left(x^2 + 1\\right)$."
+            ],
+            "attenduCorrecteur": "- $f$ concave sur $[1\\,;\\,+\\infty[$ (question 5.a) et $1 \\in [1\\,;\\,+\\infty[$ : sur cet intervalle, $\\mathcal{C}_f$ est en dessous de sa tangente $T$, donc $f(x) \\leqslant 2x + 5\\ln 2 - 5$ pour tout $x \\geqslant 1$ : 0,5 pt.\n- Calcul : $5\\ln\\left(x^2 + 1\\right) \\leqslant 5x + 5\\ln 2 - 5$, puis division par $5 > 0$ : 0,25 pt.",
+            "solution": "D'après la question 5.a), $f$ est concave sur l'intervalle $[1\\,;\\,+\\infty[$, et le point A a pour abscisse $1$, qui appartient à cet intervalle. Sur $[1\\,;\\,+\\infty[$, la courbe $\\mathcal{C}_f$ est donc en dessous de sa tangente $T$ en A : pour tout $x \\geqslant 1$,\n\n$$5\\ln\\left(x^2 + 1\\right) - 3x \\leqslant 2x + 5\\ln 2 - 5.$$\n\nEn ajoutant $3x$ aux deux membres : $5\\ln\\left(x^2 + 1\\right) \\leqslant 5x + 5\\ln 2 - 5$. En divisant par $5 > 0$, le sens est conservé : pour tout réel $x \\geqslant 1$,\n\n$$\\ln\\left(x^2 + 1\\right) \\leqslant x + \\ln 2 - 1.$$",
+            "erreurFrequente": "Utiliser la position par rapport à la tangente sur tout $\\mathbb{R}$ : la courbe n'est en dessous de $T$ que sur un intervalle où $f$ est concave et qui contient le point de contact ; sur $[-1\\,;\\,1]$, elle est au-dessus."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-logarithme-002",
+    "chapitre": "logarithme",
+    "notions": ["n-logarithme-derivee", "n-logarithme-equations"],
+    "capacites": [
+      "bo-m-logarithme-03",
+      "bo-m-logarithme-06",
+      "bo-m-derivation-06",
+      "bo-m-suites-06",
+      "bo-m-suites-07",
+      "bo-m-suites-08",
+      "bo-m-logique-14",
+      "bo-m-continuite-02",
+      "bo-m-continuite-05"
+    ],
+    "titre": "Une suite définie avec un logarithme : récurrence, convergence et limite",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2024-polynesie-juin-j2",
+      "adaptation": "Exercice 3 : suite $u_0 = 8$, $u_{n+1} = u_n - \\ln\\left(\\dfrac{u_n}{4}\\right)$, valeurs arrondies de $u_1$ et $u_2$, fonction Python mystere (somme des termes) et sa modification pour la moyenne, variations de $f(x) = x - \\ln\\left(\\dfrac{x}{4}\\right)$ avec son minimum exact, récurrence $1 \\leqslant u_{n+1} \\leqslant u_n$, convergence, résolution de $f(x) = x$ et limite conservés ; expression de $f'(x)$ donnée à démontrer, pour que la suite de l'exercice reste accessible ; justification de $f(\\ell) = \\ell$ demandée explicitement ; courbe de $f$ sur $]0\\,;\\,6]$ retirée (simple support graphique, sans question propre). Solution écrite pour le site."
+    },
+    "preambule": "On considère la suite $(u_n)$ définie par $u_0 = 8$ et, pour tout entier naturel $n$ :\n\n$$u_{n+1} = u_n - \\ln\\left(\\dfrac{u_n}{4}\\right).$$\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Premiers termes et programme.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Donner les valeurs arrondies au centième de $u_1$ et de $u_2$.",
+            "points": 0.5,
+            "revoir": "l-recurrence-suites-002",
+            "indices": [
+              "Applique la relation de récurrence avec $n = 0$ pour obtenir $u_1$ à partir de $u_0$, puis avec $n = 1$ pour obtenir $u_2$ à partir de $u_1$.",
+              "Pour $u_2$, utilise la valeur de $u_1$ gardée en mémoire dans la calculatrice, et non son arrondi ; n'arrondis qu'à la fin."
+            ],
+            "attenduCorrecteur": "- $u_1 = 8 - \\ln 2 \\approx 7{,}31$ : 0,25 pt.\n- $u_2 = u_1 - \\ln\\left(\\dfrac{u_1}{4}\\right) \\approx 6{,}70$ : 0,25 pt.",
+            "solution": "Avec $n = 0$ : $u_1 = u_0 - \\ln\\left(\\dfrac{u_0}{4}\\right) = 8 - \\ln 2 \\approx 7{,}31$.\n\nAvec $n = 1$ : $u_2 = u_1 - \\ln\\left(\\dfrac{u_1}{4}\\right)$. À la calculatrice, en gardant la valeur exacte de $u_1$ en mémoire, on trouve $u_2 \\approx 6{,}704$.\n\nArrondis au centième : $u_1 \\approx 7{,}31$ et $u_2 \\approx 6{,}70$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "On considère la fonction mystere ci-dessous, écrite en langage Python. On admet que, pour tout réel $a$ strictement positif, log(a) renvoie le logarithme népérien de $a$.\n\nL'appel mystere(10) renvoie environ $58{,}44$. Que représente ce résultat ?",
+            "code": {
+              "langage": "python",
+              "source": "from math import log\n\ndef mystere(k):\n    u = 8\n    S = 0\n    for i in range(k):\n        S = S + u\n        u = u - log(u / 4)\n    return S\n\nprint(mystere(10))   # affiche 58.44045206721732"
+            },
+            "points": 0.5,
+            "revoir": "l-recurrence-suites-036",
+            "indices": [
+              "Suis la boucle pas à pas : au premier tour, quelle valeur de u est ajoutée à S ? Que contient u à la fin de ce tour ? Et au tour suivant ?",
+              "La boucle fait $k$ tours, la variable i allant de $0$ à $k - 1$ : compte combien de termes de la suite sont ajoutés à S, et lesquels."
+            ],
+            "attenduCorrecteur": "- Analyse de la boucle : au tour où i vaut un entier donné, S reçoit le terme de même indice de la suite, puis u devient le terme suivant : 0,25 pt.\n- Conclusion : mystere(10) renvoie $u_0 + u_1 + \\dots + u_9$, la somme des dix premiers termes de la suite, environ $58{,}44$ : 0,25 pt.",
+            "solution": "Au départ, u contient $u_0 = 8$ et S contient $0$. À chaque tour de boucle, on ajoute à S la valeur de u, puis on remplace u par le terme suivant de la suite : au tour où i vaut $0$, S reçoit $u_0$ et u devient $u_1$ ; au tour où i vaut $1$, S reçoit $u_1$ et u devient $u_2$ ; et ainsi de suite.\n\nLa boucle fait $k$ tours (i va de $0$ à $k - 1$) : à la fin, S contient $u_0 + u_1 + \\dots + u_{k-1}$.\n\nL'appel mystere(10) renvoie donc la somme des dix premiers termes de la suite : $u_0 + u_1 + \\dots + u_9 \\approx 58{,}44$.",
+            "erreurFrequente": "Croire que la fonction renvoie $u_{10}$ : la variable renvoyée est S, qui cumule les termes, et non u."
+          },
+          {
+            "id": "q1c",
+            "label": "c)",
+            "enonce": "Modifier la fonction mystere afin qu'elle renvoie la moyenne des $k$ premiers termes de la suite $(u_n)$.",
+            "points": 0.5,
+            "revoir": "l-recurrence-suites-036",
+            "indices": [
+              "La moyenne de $k$ nombres est leur somme divisée par $k$. Que contient S à la fin de la boucle ? Une seule ligne est à changer."
+            ],
+            "attenduCorrecteur": "- La somme S des $k$ premiers termes est divisée par $k$ : 0,25 pt.\n- Instruction correcte : la dernière ligne devient $\\texttt{return S / k}$, le reste étant inchangé : 0,25 pt.",
+            "solution": "La moyenne des $k$ premiers termes est leur somme divisée par $k$, et cette somme est déjà contenue dans S à la fin de la boucle. Il suffit de remplacer la dernière ligne par $\\texttt{return S / k}$ ; les autres lignes ne changent pas.\n\nLa fonction renvoie alors $\\dfrac{u_0 + u_1 + \\dots + u_{k-1}}{k}$ ; par exemple, l'appel mystere(10) renverrait environ $5{,}84$."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère la fonction $f$ définie et dérivable sur $]0\\,;\\,+\\infty[$ par\n\n$$f(x) = x - \\ln\\left(\\dfrac{x}{4}\\right).$$\n\nAinsi, pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Démontrer que, pour tout réel $x > 0$, $f'(x) = \\dfrac{x - 1}{x}$.",
+            "points": 0.5,
+            "revoir": "l-logarithme-045",
+            "indices": [
+              "$x \\mapsto \\ln\\left(\\dfrac{x}{4}\\right)$ est de la forme $\\ln u$ avec $u(x) = \\dfrac{x}{4}$ ; tu peux aussi écrire d'abord $\\ln\\left(\\dfrac{x}{4}\\right) = \\ln x - \\ln 4$.",
+              "Avec la seconde écriture, dérive terme à terme : $\\ln 4$ est une constante, sa dérivée est nulle. Réduis ensuite au même dénominateur."
+            ],
+            "attenduCorrecteur": "- Dérivée de $\\ln\\left(\\dfrac{x}{4}\\right)$ égale à $\\dfrac{1}{x}$ (par $\\dfrac{u'}{u}$, ou par $\\ln x - \\ln 4$) : 0,25 pt.\n- $f'(x) = 1 - \\dfrac{1}{x} = \\dfrac{x - 1}{x}$ : 0,25 pt.",
+            "solution": "Pour $x > 0$, $\\dfrac{x}{4} > 0$ et $\\ln\\left(\\dfrac{x}{4}\\right) = \\ln x - \\ln 4$. La fonction $f$ s'écrit donc $f(x) = x - \\ln x + \\ln 4$, où $\\ln 4$ est une constante.\n\nEn dérivant terme à terme, avec $\\ln'(x) = \\dfrac{1}{x}$ : pour tout $x > 0$,\n\n$$f'(x) = 1 - \\dfrac{1}{x} = \\dfrac{x - 1}{x}.$$\n\nOn peut aussi dériver $\\ln u$ avec $u(x) = \\dfrac{x}{4}$ : $\\dfrac{u'(x)}{u(x)} = \\dfrac{1/4}{x/4} = \\dfrac{1}{x}$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Étudier les variations de $f$ sur $]0\\,;\\,+\\infty[$ et dresser son tableau de variations. On précisera la valeur exacte du minimum de $f$ sur $]0\\,;\\,+\\infty[$ ; les limites ne sont pas demandées.",
+            "points": 0.75,
+            "revoir": "l-logarithme-048",
+            "indices": [
+              "Sur $]0\\,;\\,+\\infty[$, le dénominateur $x$ est strictement positif : $f'(x)$ a le signe de son numérateur.",
+              "Le minimum est atteint là où $f'$ s'annule en changeant de signe. Pour sa valeur exacte, utilise $\\ln\\left(\\dfrac{1}{a}\\right) = -\\ln a$."
+            ],
+            "attenduCorrecteur": "- Signe : $f'(x) < 0$ sur $]0\\,;\\,1[$, $f'(1) = 0$, $f'(x) > 0$ sur $]1\\,;\\,+\\infty[$ : 0,25 pt.\n- $f$ strictement décroissante sur $]0\\,;\\,1]$, strictement croissante sur $[1\\,;\\,+\\infty[$ : 0,25 pt.\n- Minimum $f(1) = 1 - \\ln\\left(\\dfrac{1}{4}\\right) = 1 + \\ln 4$ et tableau : 0,25 pt.",
+            "solution": "Sur $]0\\,;\\,+\\infty[$, $x > 0$ : $f'(x)$ a le signe de $x - 1$. Ainsi $f'(x) < 0$ sur $]0\\,;\\,1[$, $f'(1) = 0$ et $f'(x) > 0$ sur $]1\\,;\\,+\\infty[$.\n\nLa fonction $f$ est donc strictement décroissante sur $]0\\,;\\,1]$ et strictement croissante sur $[1\\,;\\,+\\infty[$. Elle admet un minimum en $1$ :\n\n$$f(1) = 1 - \\ln\\left(\\dfrac{1}{4}\\right) = 1 + \\ln 4.$$\n\n| $x$ | $0$ | | $1$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $-$ | $0$ | $+$ | |\n| variations de $f$ | | $\\searrow$ | $1 + \\ln 4$ | $\\nearrow$ | |\n\nLe minimum de $f$ sur $]0\\,;\\,+\\infty[$ vaut $1 + \\ln 4$, soit environ $2{,}39$."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Convergence et limite de la suite $(u_n)$.",
+        "points": 3.25,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Démontrer par récurrence que, pour tout entier naturel $n$, on a :\n\n$$1 \\leqslant u_{n+1} \\leqslant u_n.$$",
+            "points": 1.25,
+            "revoir": "l-recurrence-suites-021",
+            "indices": [
+              "Pose $P(n)$ : « $1 \\leqslant u_{n+1} \\leqslant u_n$ ». Pour l'initialisation, utilise la valeur exacte $u_1 = 8 - \\ln 2$. Pour l'hérédité, sers-toi du sens de variation de $f$ sur $[1\\,;\\,+\\infty[$ (question 2).",
+              "Dans l'hérédité, applique $f$ aux trois membres de $1 \\leqslant u_{n+1} \\leqslant u_n$ : le sens est conservé, car $f$ est croissante sur un intervalle qui contient ces trois réels. Compare ensuite $f(1)$ à $1$."
+            ],
+            "attenduCorrecteur": "- Initialisation : $u_0 = 8$ et $u_1 = 8 - \\ln 2$, avec $0 < \\ln 2 < 1$, donc $1 \\leqslant u_1 \\leqslant u_0$ : 0,25 pt.\n- Hérédité : $1$, $u_{n+1}$ et $u_n$ appartiennent à $[1\\,;\\,+\\infty[$, où $f$ est croissante, d'où $f(1) \\leqslant f(u_{n+1}) \\leqslant f(u_n)$ : 0,5 pt.\n- $f(1) = 1 + \\ln 4 \\geqslant 1$, d'où $1 \\leqslant u_{n+2} \\leqslant u_{n+1}$ : 0,25 pt.\n- Conclusion par le principe de récurrence : 0,25 pt.",
+            "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $1 \\leqslant u_{n+1} \\leqslant u_n$ ».\n\n**Initialisation.** $u_0 = 8$ et $u_1 = 8 - \\ln 2$. Or $0 < \\ln 2 < 1$, car $1 < 2 < e$ et la fonction $\\ln$ est strictement croissante ; donc $7 < u_1 < 8$, et en particulier $1 \\leqslant u_1 \\leqslant u_0$. $P(0)$ est vraie.\n\n**Hérédité.** Soit $n$ un entier naturel tel que $P(n)$ est vraie : $1 \\leqslant u_{n+1} \\leqslant u_n$. Les réels $1$, $u_{n+1}$ et $u_n$ appartiennent à $[1\\,;\\,+\\infty[$, intervalle sur lequel $f$ est croissante (question 2). Donc :\n\n$$f(1) \\leqslant f(u_{n+1}) \\leqslant f(u_n), \\quad \\text{soit} \\quad 1 + \\ln 4 \\leqslant u_{n+2} \\leqslant u_{n+1}.$$\n\nComme $\\ln 4 > 0$, $1 \\leqslant 1 + \\ln 4$, d'où $1 \\leqslant u_{n+2} \\leqslant u_{n+1}$ : $P(n + 1)$ est vraie.\n\n**Conclusion.** $P(0)$ est vraie et la propriété est héréditaire : d'après le principe de récurrence, pour tout entier naturel $n$, $1 \\leqslant u_{n+1} \\leqslant u_n$.",
+            "erreurFrequente": "Appliquer $f$ aux inégalités sans dire pourquoi leur sens est conservé : il faut que $f$ soit croissante sur un intervalle qui contient $1$, $u_{n+1}$ et $u_n$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "En déduire que la suite $(u_n)$ converge vers un réel $\\ell$, et que $\\ell \\geqslant 1$.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-051",
+            "indices": [
+              "D'après la question a), la suite est décroissante et chacun de ses termes est supérieur ou égal à $1$ : quel théorème du cours conclut ?",
+              "Pour situer $\\ell$, passe à la limite dans l'inégalité $u_n \\geqslant 1$."
+            ],
+            "attenduCorrecteur": "- $(u_n)$ décroissante ($u_{n+1} \\leqslant u_n$) et minorée par $1$ (y compris $u_0 = 8$) : 0,25 pt.\n- Théorème de convergence monotone : $(u_n)$ converge vers un réel $\\ell$ ; par passage à la limite, $\\ell \\geqslant 1$ : 0,25 pt.",
+            "solution": "D'après la question a), $u_{n+1} \\leqslant u_n$ pour tout entier naturel $n$ : la suite $(u_n)$ est décroissante. De plus, $u_{n+1} \\geqslant 1$ pour tout $n$, et $u_0 = 8 \\geqslant 1$ : la suite est minorée par $1$.\n\nUne suite décroissante et minorée converge (théorème de convergence monotone) : $(u_n)$ converge vers un réel $\\ell$.\n\nEnfin, $u_n \\geqslant 1$ pour tout $n$ ; par passage à la limite dans cette inégalité, $\\ell \\geqslant 1$."
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "Résoudre dans $]0\\,;\\,+\\infty[$ l'équation $f(x) = x$.",
+            "points": 0.5,
+            "revoir": "l-logarithme-026",
+            "indices": [
+              "Simplifie l'équation $x - \\ln\\left(\\dfrac{x}{4}\\right) = x$ : il reste une équation de la forme $\\ln A = k$.",
+              "Utilise $\\ln A = k \\iff A = e^k$, puis vérifie que la solution trouvée appartient bien à $]0\\,;\\,+\\infty[$."
+            ],
+            "attenduCorrecteur": "- $f(x) = x \\iff \\ln\\left(\\dfrac{x}{4}\\right) = 0$ : 0,25 pt.\n- $\\iff \\dfrac{x}{4} = 1 \\iff x = 4$, qui appartient à $]0\\,;\\,+\\infty[$ : $S = \\{4\\}$ : 0,25 pt.",
+            "solution": "Pour $x > 0$ :\n\n$$f(x) = x \\iff x - \\ln\\left(\\dfrac{x}{4}\\right) = x \\iff \\ln\\left(\\dfrac{x}{4}\\right) = 0 \\iff \\dfrac{x}{4} = e^0 = 1 \\iff x = 4.$$\n\nLe réel $4$ appartient à $]0\\,;\\,+\\infty[$ : l'ensemble des solutions est $S = \\{4\\}$."
+          },
+          {
+            "id": "q3d",
+            "label": "d)",
+            "enonce": "Justifier que $f(\\ell) = \\ell$, puis en déduire la valeur de $\\ell$.",
+            "points": 1,
+            "revoir": "l-continuite-055",
+            "indices": [
+              "La fonction $f$ est dérivable, donc continue, sur $[1\\,;\\,+\\infty[$, et $\\ell$ appartient à cet intervalle. Passe à la limite des deux côtés de l'égalité $u_{n+1} = f(u_n)$.",
+              "La suite $(u_{n+1})$ a la même limite que $(u_n)$. Une fois l'égalité $f(\\ell) = \\ell$ obtenue, utilise la question c)."
+            ],
+            "attenduCorrecteur": "- Hypothèses : $f$ dérivable donc continue sur $[1\\,;\\,+\\infty[$, à valeurs dans $[1\\,;\\,+\\infty[$ (croissante, avec $f(1) \\geqslant 1$), et $\\ell \\in [1\\,;\\,+\\infty[$ : 0,5 pt.\n- Passage à la limite dans $u_{n+1} = f(u_n)$ : $\\ell = f(\\ell)$ : 0,25 pt.\n- D'après la question c), $\\ell = 4$ : 0,25 pt.",
+            "solution": "La fonction $f$ est dérivable, donc continue, sur $[1\\,;\\,+\\infty[$. Elle est croissante sur cet intervalle, avec $f(1) = 1 + \\ln 4 \\geqslant 1$ : pour tout $x \\geqslant 1$, $f(x) \\geqslant f(1) \\geqslant 1$, donc $f$ est à valeurs dans $[1\\,;\\,+\\infty[$. Tous les termes $u_n$ appartiennent à $[1\\,;\\,+\\infty[$, et leur limite $\\ell$ aussi (question b).\n\nLa suite $(u_{n+1})$ converge vers $\\ell$, comme $(u_n)$ ; et, $f$ étant continue en $\\ell$, la suite $\\left(f(u_n)\\right)$ converge vers $f(\\ell)$. En passant à la limite dans l'égalité $u_{n+1} = f(u_n)$, on obtient $\\ell = f(\\ell)$.\n\nDonc $\\ell$ est une solution de l'équation $f(x) = x$ sur $]0\\,;\\,+\\infty[$ : d'après la question c), $\\ell = 4$.\n\nLa suite $(u_n)$ converge vers $4$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-logarithme-003",
+    "chapitre": "logarithme",
+    "notions": ["n-logarithme-proprietes", "n-logarithme-definition", "n-logarithme-problemes"],
+    "capacites": [
+      "bo-m-logarithme-01",
+      "bo-m-logarithme-02",
+      "bo-m-logarithme-10",
+      "bo-m-suites-05",
+      "bo-m-suites-06",
+      "bo-m-suites-07",
+      "bo-m-suites-08",
+      "bo-m-suites-15",
+      "bo-m-logique-14",
+      "bo-m-continuite-02",
+      "bo-m-continuite-05"
+    ],
+    "titre": "Approcher $\\ln 2$ avec des racines carrées : la méthode de Briggs",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": true,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2025-amerique-nord-j2",
+      "adaptation": "Exercice 2 : suite $u_0 = 2$, $u_{n+1} = \\sqrt{u_n}$, valeurs exactes de $u_1$ et $u_2$, conjecture, récurrence $1 \\leqslant u_{n+1} \\leqslant u_n$, convergence, équation $\\sqrt{x} = x$ et limite ; suite $v_n = \\ln(u_n)$ géométrique de raison $\\dfrac{1}{2}$, égalité $\\ln 2 = 2^n\\ln(u_n)$, approximation de $\\ln x$ par $x - 1$ sur $]0{,}99\\,;\\,1{,}01[$, plus petit $k$ tel que $u_k$ y appartienne, approximation de $\\ln 2$ et fonction Briggs à compléter conservés ; ajouté : expression de $u_n$ en fonction de $n$ par la définition du logarithme ; regroupés : valeurs exactes et conjecture (A.1), équation et limite (A.2.c), approximations de $\\ln(u_k)$ et de $\\ln 2$ (B.2.b) ; figure de la courbe de $\\ln$ et de sa tangente en $1$ retirée, l'équation de la tangente restant donnée dans l'énoncé. Solution écrite pour le site."
+    },
+    "preambule": "Un des objectifs de cet exercice est de déterminer une valeur approchée du nombre $\\ln 2$, en utilisant une méthode du mathématicien anglais Henry Briggs (1561-1630).\n\nOn désigne par $(u_n)$ la suite définie par $u_0 = 2$ et, pour tout entier naturel $n$ :\n\n$$u_{n+1} = \\sqrt{u_n}.$$\n\n**Partie A** : étude de la suite $(u_n)$. **Partie B** : approximation de $\\ln 2$.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Donner la valeur exacte de $u_1$ et de $u_2$, puis émettre une conjecture, à l'aide de la calculatrice, sur le sens de variation et la limite éventuelle de la suite $(u_n)$.",
+        "points": 0.5,
+        "revoir": "l-recurrence-suites-002",
+        "indices": [
+          "$u_1$ est la racine carrée de $u_0$, et $u_2$ celle de $u_1$ : garde les racines carrées, sans arrondir.",
+          "À la calculatrice, prends plusieurs fois de suite la racine carrée en partant de $2$ : observe si les résultats montent ou descendent, et de quel nombre ils s'approchent."
+        ],
+        "attenduCorrecteur": "- $u_1 = \\sqrt{2}$ et $u_2 = \\sqrt{\\sqrt{2}}$ : 0,25 pt.\n- Conjecture appuyée sur des valeurs ($u_1 \\approx 1{,}414$, $u_2 \\approx 1{,}189$, $u_3 \\approx 1{,}091$…) : suite décroissante, qui semble converger vers $1$ : 0,25 pt.",
+        "solution": "$u_1 = \\sqrt{u_0} = \\sqrt{2}$ et $u_2 = \\sqrt{u_1} = \\sqrt{\\sqrt{2}}$.\n\nÀ la calculatrice : $u_1 \\approx 1{,}414$, $u_2 \\approx 1{,}189$, $u_3 \\approx 1{,}091$, $u_4 \\approx 1{,}044$, $u_5 \\approx 1{,}022$… Les termes diminuent et se rapprochent de $1$.\n\nConjecture : la suite $(u_n)$ est décroissante et converge vers $1$."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Convergence de la suite $(u_n)$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Montrer par récurrence que, pour tout entier naturel $n$, $1 \\leqslant u_{n+1} \\leqslant u_n$.",
+            "points": 0.75,
+            "revoir": "l-recurrence-suites-021",
+            "indices": [
+              "Pose $P(n)$ : « $1 \\leqslant u_{n+1} \\leqslant u_n$ ». L'hérédité repose sur le sens de variation de la fonction racine carrée sur $[0\\,;\\,+\\infty[$.",
+              "Si $1 \\leqslant u_{n+1} \\leqslant u_n$, prends la racine carrée des trois membres : le sens des inégalités est conservé. Que vaut $\\sqrt{1}$ ?"
+            ],
+            "attenduCorrecteur": "- Initialisation : $u_1 = \\sqrt{2}$ et $1 \\leqslant \\sqrt{2} \\leqslant 2$ : 0,25 pt.\n- Hérédité : la fonction racine carrée est croissante sur $[0\\,;\\,+\\infty[$, donc $\\sqrt{1} \\leqslant \\sqrt{u_{n+1}} \\leqslant \\sqrt{u_n}$, soit $1 \\leqslant u_{n+2} \\leqslant u_{n+1}$ : 0,25 pt.\n- Conclusion par le principe de récurrence : 0,25 pt.",
+            "solution": "Pour tout entier naturel $n$, on note $P(n)$ : « $1 \\leqslant u_{n+1} \\leqslant u_n$ ».\n\n**Initialisation.** $u_0 = 2$ et $u_1 = \\sqrt{2}$. Comme $1 \\leqslant 2 \\leqslant 4$ et que la fonction racine carrée est croissante sur $[0\\,;\\,+\\infty[$, $1 \\leqslant \\sqrt{2} \\leqslant 2$ : $P(0)$ est vraie.\n\n**Hérédité.** Soit $n$ un entier naturel tel que $1 \\leqslant u_{n+1} \\leqslant u_n$. La fonction racine carrée est croissante sur $[0\\,;\\,+\\infty[$ : $\\sqrt{1} \\leqslant \\sqrt{u_{n+1}} \\leqslant \\sqrt{u_n}$, soit $1 \\leqslant u_{n+2} \\leqslant u_{n+1}$. $P(n + 1)$ est vraie.\n\n**Conclusion.** D'après le principe de récurrence, pour tout entier naturel $n$, $1 \\leqslant u_{n+1} \\leqslant u_n$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "En déduire que la suite $(u_n)$ est convergente.",
+            "points": 0.25,
+            "revoir": "l-limites-suites-051",
+            "indices": [
+              "D'après la question a), la suite est décroissante et minorée : cite le théorème du cours qui s'applique."
+            ],
+            "attenduCorrecteur": "- Suite décroissante et minorée par $1$, donc convergente, d'après le théorème de convergence monotone : 0,25 pt.",
+            "solution": "D'après la question a), la suite $(u_n)$ est décroissante ($u_{n+1} \\leqslant u_n$) et minorée par $1$ ($u_n \\geqslant 1$ pour tout $n$, $u_0 = 2$ compris). D'après le théorème de convergence monotone, la suite $(u_n)$ converge."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "Résoudre dans l'intervalle $[0\\,;\\,+\\infty[$ l'équation $\\sqrt{x} = x$, puis déterminer, en justifiant, la limite $\\ell$ de la suite $(u_n)$.",
+            "points": 0.5,
+            "revoir": "l-continuite-055",
+            "indices": [
+              "Les deux membres de $\\sqrt{x} = x$ sont positifs : l'équation équivaut à l'égalité de leurs carrés. Factorise.",
+              "La fonction racine carrée est continue sur $[1\\,;\\,+\\infty[$, qui contient tous les termes et $\\ell$ : en passant à la limite dans $u_{n+1} = \\sqrt{u_n}$, $\\ell$ est une solution de l'équation. Laquelle convient ?"
+            ],
+            "attenduCorrecteur": "- $\\sqrt{x} = x \\iff x = x^2 \\iff x(x - 1) = 0$ : solutions $0$ et $1$ : 0,25 pt.\n- Continuité de la racine carrée et passage à la limite : $\\sqrt{\\ell} = \\ell$, avec $\\ell \\geqslant 1$ (passage à la limite dans $u_n \\geqslant 1$), donc $\\ell = 1$ : 0,25 pt.",
+            "solution": "Pour $x \\geqslant 0$, les deux membres de $\\sqrt{x} = x$ sont positifs, et deux réels positifs sont égaux si, et seulement si, leurs carrés le sont :\n\n$$\\sqrt{x} = x \\iff x = x^2 \\iff x(x - 1) = 0 \\iff x = 0 \\text{ ou } x = 1.$$\n\nLes solutions sont $0$ et $1$.\n\nNotons $\\ell$ la limite de $(u_n)$. Comme $u_n \\geqslant 1$ pour tout $n$, par passage à la limite, $\\ell \\geqslant 1$. La fonction racine carrée est continue sur $[1\\,;\\,+\\infty[$ et à valeurs dans cet intervalle ; en passant à la limite dans $u_{n+1} = \\sqrt{u_n}$, on obtient $\\ell = \\sqrt{\\ell}$. Donc $\\ell = 0$ ou $\\ell = 1$ et, comme $\\ell \\geqslant 1$, $\\ell = 1$.\n\nLa suite $(u_n)$ converge vers $1$."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "B.1.",
+        "enonce": "On désigne par $(v_n)$ la suite définie, pour tout entier naturel $n$, par $v_n = \\ln(u_n)$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Démontrer que la suite $(v_n)$ est géométrique de raison $\\dfrac{1}{2}$, et préciser son premier terme.",
+            "points": 0.5,
+            "revoir": "l-logarithme-013",
+            "indices": [
+              "Exprime $v_{n+1} = \\ln(u_{n+1})$ à l'aide de $u_n$, puis cherche dans le cours la propriété algébrique qui transforme le logarithme d'une racine carrée.",
+              "Écris $v_{n+1} = \\ln\\left(\\sqrt{u_n}\\right)$ : ce logarithme existe, car $u_n \\geqslant 1 > 0$ d'après la partie A."
+            ],
+            "attenduCorrecteur": "- $u_n > 0$ (partie A) et $v_{n+1} = \\ln\\left(\\sqrt{u_n}\\right) = \\dfrac{1}{2}\\ln(u_n) = \\dfrac{1}{2}v_n$ : 0,25 pt.\n- Conclusion : $(v_n)$ géométrique de raison $\\dfrac{1}{2}$ et de premier terme $v_0 = \\ln 2$ : 0,25 pt.",
+            "solution": "D'après la partie A, $u_n \\geqslant 1 > 0$ pour tout entier naturel $n$ : $v_n = \\ln(u_n)$ existe. Pour tout entier naturel $n$, avec $\\ln\\left(\\sqrt{a}\\right) = \\dfrac{1}{2}\\ln a$ pour $a > 0$ :\n\n$$v_{n+1} = \\ln(u_{n+1}) = \\ln\\left(\\sqrt{u_n}\\right) = \\dfrac{1}{2}\\ln(u_n) = \\dfrac{1}{2}v_n.$$\n\nLa suite $(v_n)$ est donc géométrique de raison $\\dfrac{1}{2}$, de premier terme $v_0 = \\ln(u_0) = \\ln 2$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Exprimer $v_n$ en fonction de $n$. En déduire, pour tout entier naturel $n$, une expression de $u_n$ en fonction de $n$, et retrouver la limite de la suite $(u_n)$.",
+            "points": 0.5,
+            "revoir": "l-logarithme-003",
+            "indices": [
+              "Pour une suite géométrique, $v_n = v_0 \\times q^n$. Ensuite, par définition du logarithme, $v_n = \\ln(u_n)$ équivaut à $u_n = e^{v_n}$.",
+              "Pour la limite, cherche d'abord celle de $\\left(\\dfrac{1}{2}\\right)^n$, puis celle de $v_n$, et enfin celle de $e^{v_n}$ : l'exponentielle est continue."
+            ],
+            "attenduCorrecteur": "- $v_n = \\ln 2 \\times \\left(\\dfrac{1}{2}\\right)^n = \\dfrac{\\ln 2}{2^n}$ : 0,25 pt.\n- $u_n = e^{v_n} = e^{\\frac{\\ln 2}{2^n}}$ ; comme $-1 < \\dfrac{1}{2} < 1$, $v_n$ tend vers $0$, donc $u_n$ tend vers $e^0 = 1$ (exponentielle continue en $0$) : 0,25 pt.",
+            "solution": "Pour tout entier naturel $n$, $v_n = v_0 \\times \\left(\\dfrac{1}{2}\\right)^n = \\dfrac{\\ln 2}{2^n}$.\n\nPar définition du logarithme, $v_n = \\ln(u_n)$ équivaut à $u_n = e^{v_n}$, car $u_n > 0$. Donc, pour tout entier naturel $n$ :\n\n$$u_n = e^{\\frac{\\ln 2}{2^n}}.$$\n\nComme $-1 < \\dfrac{1}{2} < 1$, $\\lim\\limits_{n \\to +\\infty} \\left(\\dfrac{1}{2}\\right)^n = 0$, donc $\\lim\\limits_{n \\to +\\infty} v_n = 0$. La fonction exponentielle est continue en $0$ : $\\lim\\limits_{n \\to +\\infty} u_n = e^0 = 1$. On retrouve la limite de la partie A."
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "En déduire que, pour tout entier naturel $n$, $\\ln 2 = 2^n\\ln(u_n)$.",
+            "points": 0.25,
+            "revoir": "l-logarithme-013",
+            "indices": [
+              "Pars de l'expression de $v_n$ trouvée à la question b), en te rappelant que $v_n = \\ln(u_n)$."
+            ],
+            "attenduCorrecteur": "- $\\ln(u_n) = v_n = \\dfrac{\\ln 2}{2^n}$, d'où, en multipliant par $2^n$, $\\ln 2 = 2^n\\ln(u_n)$ : 0,25 pt.",
+            "solution": "Pour tout entier naturel $n$, $\\ln(u_n) = v_n = \\dfrac{\\ln 2}{2^n}$. En multipliant les deux membres par $2^n$ :\n\n$$\\ln 2 = 2^n\\ln(u_n).$$"
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "B.2.",
+        "enonce": "La tangente à la courbe de la fonction $\\ln$ au point d'abscisse $1$ a pour équation $y = x - 1$. Près de $1$, la courbe et sa tangente sont très proches : on décide de prendre $x - 1$ comme valeur approchée de $\\ln x$ lorsque $x$ appartient à l'intervalle $]0{,}99\\,;\\,1{,}01[$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Déterminer, à l'aide de la calculatrice, le plus petit entier naturel $k$ tel que $u_k$ appartienne à l'intervalle $]0{,}99\\,;\\,1{,}01[$, et donner une valeur approchée de $u_k$ à $10^{-5}$ près.",
+            "points": 0.5,
+            "revoir": "l-logarithme-030",
+            "indices": [
+              "Tous les termes sont supérieurs ou égaux à $1$ : seule la condition $u_k < 1{,}01$ compte. Calcule les termes successifs à la calculatrice, ou bien utilise l'expression de $u_k$ trouvée à la question B.1.b).",
+              "Avec cette expression, la condition $u_k < 1{,}01$ s'écrit $\\dfrac{\\ln 2}{2^k} < \\ln(1{,}01)$ : isole $2^k$, puis cherche la plus petite puissance de $2$ qui convient."
+            ],
+            "attenduCorrecteur": "- Méthode expliquée (termes successifs, ou inéquation $2^k > \\dfrac{\\ln 2}{\\ln(1{,}01)} \\approx 69{,}7$) et contrôle : $u_6 \\approx 1{,}010\\,89 \\geqslant 1{,}01$ et $u_7 \\approx 1{,}005\\,43 < 1{,}01$ : 0,25 pt.\n- $k = 7$ et $u_7 \\approx 1{,}005\\,43$ à $10^{-5}$ près : 0,25 pt.",
+            "solution": "Tous les termes vérifient $u_k \\geqslant 1 > 0{,}99$ : il suffit que $u_k < 1{,}01$.\n\nÀ la calculatrice, en prenant plusieurs fois de suite la racine carrée à partir de $2$ : $u_5 \\approx 1{,}021\\,90$, $u_6 \\approx 1{,}010\\,89$ et $u_7 \\approx 1{,}005\\,43$. Comme la suite est décroissante, $u_k \\geqslant u_6 > 1{,}01$ pour tout $k \\leqslant 6$, alors que $u_7 < 1{,}01$.\n\nPar le calcul, on retrouve ce résultat : $u_k < 1{,}01 \\iff \\dfrac{\\ln 2}{2^k} < \\ln(1{,}01) \\iff 2^k > \\dfrac{\\ln 2}{\\ln(1{,}01)} \\approx 69{,}7$, car $\\ln$ est strictement croissante et $\\ln(1{,}01) > 0$ ; or $2^6 = 64$ et $2^7 = 128$.\n\nLe plus petit entier cherché est $k = 7$, et $u_7 \\approx 1{,}005\\,43$ à $10^{-5}$ près."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "En déduire une valeur approchée de $\\ln(u_k)$, puis, à l'aide de la question B.1.c), une valeur approchée de $\\ln 2$. La comparer à la valeur donnée par la calculatrice.",
+            "points": 0.5,
+            "revoir": "l-logarithme-077",
+            "indices": [
+              "$u_k$ appartient à $]0{,}99\\,;\\,1{,}01[$ : on remplace $\\ln(u_k)$ par $u_k - 1$.",
+              "La question B.1.c), écrite pour $n = k$, donne $\\ln 2 = 2^k\\ln(u_k)$ : remplace $\\ln(u_k)$ par sa valeur approchée."
+            ],
+            "attenduCorrecteur": "- $\\ln(u_7) \\approx u_7 - 1 \\approx 0{,}005\\,43$ : 0,25 pt.\n- $\\ln 2 = 2^7\\ln(u_7) \\approx 128 \\times 0{,}005\\,43 \\approx 0{,}695$, proche de $\\ln 2 \\approx 0{,}693$ donné par la calculatrice : 0,25 pt.",
+            "solution": "Comme $u_7$ appartient à $]0{,}99\\,;\\,1{,}01[$, on prend $\\ln(u_7) \\approx u_7 - 1 \\approx 0{,}005\\,43$.\n\nD'après la question B.1.c) avec $n = 7$, $\\ln 2 = 2^7\\ln(u_7) = 128\\ln(u_7)$, d'où :\n\n$$\\ln 2 \\approx 128 \\times 0{,}005\\,43 \\approx 0{,}695.$$\n\nLa calculatrice donne $\\ln 2 \\approx 0{,}693$ : l'approximation obtenue est correcte à $0{,}002$ près environ."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "label": "B.3.",
+        "enonce": "On généralise la méthode à tout réel $a$ strictement supérieur à $1$. Recopier et compléter l'instruction L = ... de la fonction Briggs ci-dessous, écrite en langage Python, afin que l'appel Briggs(a) renvoie une valeur approchée de $\\ln a$. On rappelle que sqrt(a) renvoie $\\sqrt{a}$.",
+        "code": {
+          "langage": "python",
+          "source": "from math import sqrt\n\ndef Briggs(a):\n    n = 0\n    while a >= 1.01:\n        a = sqrt(a)\n        n = n + 1\n    L = ...\n    return L"
+        },
+        "points": 0.75,
+        "revoir": "l-logarithme-077",
+        "indices": [
+          "À la sortie de la boucle, a a été remplacé n fois de suite par sa racine carrée, et sa valeur est comprise entre $1$ et $1{,}01$. Comme à la question B.1.c), le logarithme du réel de départ vaut $2^n$ fois le logarithme du réel final.",
+          "Remplace le logarithme du réel final par son approximation de la question B.2, puis écris ce calcul en Python : la puissance $2^n$ s'y écrit $\\texttt{2**n}$."
+        ],
+        "attenduCorrecteur": "- Justification : après $n$ racines carrées, le réel de départ $a_0$ et le réel final $a$ vérifient $\\ln a_0 = 2^n\\ln a$, et $\\ln a \\approx a - 1$ car $1 \\leqslant a < 1{,}01$ : 0,5 pt.\n- Instruction : $\\texttt{L = 2**n * (a - 1)}$ : 0,25 pt.",
+        "solution": "Dans la boucle, a est remplacé par sa racine carrée tant qu'il est supérieur ou égal à $1{,}01$, et n compte le nombre de racines carrées prises. Notons $a_0 > 1$ le réel de départ : la valeur finale de a s'obtient en prenant $n$ fois la racine carrée de $a_0$, et elle reste supérieure à $1$.\n\nComme à la question B.1, chaque racine carrée divise le logarithme par $2$ : $\\ln a = \\dfrac{\\ln a_0}{2^n}$, soit $\\ln a_0 = 2^n\\ln a$. À la sortie de la boucle, $1 \\leqslant a < 1{,}01$, donc $\\ln a \\approx a - 1$, et $\\ln a_0 \\approx 2^n(a - 1)$.\n\nL'instruction à compléter est donc $\\texttt{L = 2**n * (a - 1)}$. Par exemple, Briggs(2) renvoie environ $0{,}695$, la valeur trouvée à la question B.2."
+      }
+    ]
+  },
+  {
+    "id": "tb-logarithme-004",
+    "chapitre": "logarithme",
+    "notions": ["n-logarithme-equations", "n-logarithme-limites", "n-logarithme-definition", "n-logarithme-derivee"],
+    "capacites": [
+      "bo-m-logarithme-01",
+      "bo-m-logarithme-03",
+      "bo-m-logarithme-04",
+      "bo-m-logarithme-05",
+      "bo-m-logarithme-06",
+      "bo-m-limites-fonctions-04",
+      "bo-m-limites-fonctions-05",
+      "bo-m-continuite-03",
+      "bo-m-continuite-04"
+    ],
+    "titre": "Vrai ou faux : ensemble de définition, équations, inéquations et limites avec $\\ln$",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2024-metropole-juin-j1-secours",
+      "adaptation": "Exercice 4 (vrai-faux, réponses justifiées) : forme de l'exercice et affirmation 5 (l'équation $x\\ln x = 1$ admet exactement deux solutions sur $]0\\,;\\,+\\infty[$) conservées ; les affirmations 1 et 2 (asymptote et limite lues sur un tableau de variations) et 3 et 4 (point d'inflexion de la courbe de $x \\mapsto xe^{-x}$, inégalité $xe^{-x} \\leqslant x$ sur $]-\\infty\\,;\\,2[$), qui portent sur des chapitres déjà traités et non sur le logarithme, remplacées : affirmation 1 tirée d'une question du QCM de an-2022-etrangers-j1, exercice 1 (ensemble de définition de $x \\mapsto \\ln\\left(-x^2 - x + 6\\right)$), transformée en affirmation fausse ; affirmation 2 reprise de an-2026-metropole-septembre-j2, exercice 3 (inéquation $\\ln\\left(2x^2 - 6x - 56\\right) \\geqslant \\ln(4x - 8)$ sur $]7\\,;\\,+\\infty[$) ; affirmation 3 tirée d'une question du QCM de an-2023-reunion-j2, exercice 4 (nombre de solutions de $(\\ln x)^2 + 10\\ln x + 21 = 0$) ; affirmation 4 reprise de an-2024-polynesie-septembre-j1, exercice 2 (limite de $\\dfrac{\\ln x - x^2 + 2}{3x^2}$ en $+\\infty$). Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Pour chacune des affirmations suivantes, indiquer si elle est vraie ou fausse. Chaque réponse doit être justifiée. Une réponse non justifiée ne rapporte aucun point.\n\nLes cinq affirmations sont indépendantes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Affirmation 1** : la fonction $x \\mapsto \\ln\\left(-x^2 - x + 6\\right)$ est définie sur l'intervalle $]-2\\,;\\,3[$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$-x^2 - x + 6$ est strictement positif si, et seulement si, $-3 < x < 2$ : la fonction est définie sur $]-3\\,;\\,2[$. Par exemple, $\\dfrac{5}{2}$ appartient à $]-2\\,;\\,3[$, mais $-\\left(\\dfrac{5}{2}\\right)^2 - \\dfrac{5}{2} + 6 = -\\dfrac{11}{4} < 0$."
+        },
+        "revoir": "l-logarithme-007",
+        "indices": [
+          "$\\ln\\big(u(x)\\big)$ existe si, et seulement si, $u(x) > 0$ : étudie le signe du trinôme $-x^2 - x + 6$.",
+          "Cherche les racines du trinôme avec le discriminant, puis rappelle-toi qu'un trinôme a le signe de son coefficient de $x^2$ à l'extérieur de ses racines."
+        ],
+        "attenduCorrecteur": "- Condition d'existence : $-x^2 - x + 6 > 0$ : 0,25 pt.\n- Discriminant $25$, racines $-3$ et $2$, trinôme strictement positif exactement sur $]-3\\,;\\,2[$ : 0,5 pt.\n- Conclusion : l'affirmation est fausse, avec un contre-exemple, par exemple $x = \\dfrac{5}{2}$ : 0,25 pt.",
+        "solution": "La fonction $x \\mapsto \\ln\\left(-x^2 - x + 6\\right)$ est définie pour les réels $x$ tels que $-x^2 - x + 6 > 0$.\n\nLe trinôme $-x^2 - x + 6$ a pour discriminant $\\Delta = (-1)^2 - 4 \\times (-1) \\times 6 = 25$ et pour racines $\\dfrac{1 - 5}{-2} = 2$ et $\\dfrac{1 + 5}{-2} = -3$. Son coefficient de $x^2$ est $-1 < 0$ : il est strictement positif entre ses racines, c'est-à-dire sur $]-3\\,;\\,2[$, et négatif ou nul ailleurs.\n\nLa fonction est donc définie sur $]-3\\,;\\,2[$, et non sur $]-2\\,;\\,3[$. Par exemple, $\\dfrac{5}{2}$ appartient à $]-2\\,;\\,3[$, mais $-\\left(\\dfrac{5}{2}\\right)^2 - \\dfrac{5}{2} + 6 = -\\dfrac{11}{4} < 0$ : $\\ln\\left(-\\dfrac{11}{4}\\right)$ n'existe pas.\n\n**L'affirmation 1 est fausse.**",
+        "erreurFrequente": "Confondre avec le trinôme $x^2 + x - 6$, qui a les mêmes racines mais est positif à l'extérieur d'elles : c'est le signe du coefficient de $x^2$ qui décide."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère l'inéquation $\\ln\\left(2x^2 - 6x - 56\\right) \\geqslant \\ln(4x - 8)$, d'inconnue $x$ dans l'intervalle $]7\\,;\\,+\\infty[$.\n\n**Affirmation 2** : l'ensemble des solutions de cette inéquation est l'intervalle $[8\\,;\\,+\\infty[$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Sur $]7\\,;\\,+\\infty[$, $2x^2 - 6x - 56 = 2(x - 7)(x + 4) > 0$ et $4x - 8 > 0$. La fonction $\\ln$ étant strictement croissante, l'inéquation équivaut à $2x^2 - 6x - 56 \\geqslant 4x - 8$, soit $(x - 8)(x + 3) \\geqslant 0$, soit $x \\geqslant 8$ puisque $x + 3 > 0$."
+        },
+        "revoir": "l-logarithme-026",
+        "indices": [
+          "Vérifie d'abord que les deux logarithmes existent pour tout $x > 7$. Ensuite, pour $A > 0$ et $B > 0$, $\\ln A \\geqslant \\ln B \\iff A \\geqslant B$.",
+          "Tu obtiens une inéquation du second degré : regroupe tout dans un membre, divise par $2$, puis factorise le trinôme ou calcule ses racines."
+        ],
+        "attenduCorrecteur": "- Conditions d'existence vérifiées sur $]7\\,;\\,+\\infty[$ : 0,25 pt.\n- Croissance stricte de $\\ln$ : l'inéquation équivaut à $x^2 - 5x - 24 \\geqslant 0$ : 0,25 pt.\n- Racines $-3$ et $8$, d'où $x \\geqslant 8$ sur $]7\\,;\\,+\\infty[$ : 0,25 pt.\n- Conclusion : l'affirmation est vraie : 0,25 pt.",
+        "solution": "Pour $x > 7$ : $4x - 8 > 0$, et $2x^2 - 6x - 56 = 2\\left(x^2 - 3x - 28\\right) = 2(x - 7)(x + 4) > 0$, car $x - 7 > 0$ et $x + 4 > 0$. Les deux logarithmes existent sur tout l'intervalle $]7\\,;\\,+\\infty[$.\n\nLa fonction $\\ln$ est strictement croissante sur $]0\\,;\\,+\\infty[$ : pour $x > 7$,\n\n$$\\ln\\left(2x^2 - 6x - 56\\right) \\geqslant \\ln(4x - 8) \\iff 2x^2 - 10x - 48 \\geqslant 0 \\iff x^2 - 5x - 24 \\geqslant 0.$$\n\nOr $x^2 - 5x - 24 = (x - 8)(x + 3)$. Pour $x > 7$, $x + 3 > 0$ : l'inéquation équivaut à $x - 8 \\geqslant 0$, soit $x \\geqslant 8$.\n\nL'ensemble des solutions est $[8\\,;\\,+\\infty[$ : **l'affirmation 2 est vraie.**"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On considère l'équation $(\\ln x)^2 + 10\\ln x + 21 = 0$, d'inconnue $x$ dans l'intervalle $]0\\,;\\,+\\infty[$.\n\n**Affirmation 3** : cette équation admet exactement deux solutions.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "En posant $X = \\ln x$, on obtient $X^2 + 10X + 21 = 0$, de racines $-7$ et $-3$. Donc $\\ln x = -7$ ou $\\ln x = -3$, soit $x = e^{-7}$ ou $x = e^{-3}$ : deux solutions distinctes de $]0\\,;\\,+\\infty[$."
+        },
+        "revoir": "l-logarithme-033",
+        "indices": [
+          "Pose $X = \\ln x$ : l'équation devient une équation du second degré d'inconnue $X$.",
+          "Calcule le discriminant de $X^2 + 10X + 21$. Puis, pour chaque valeur de $X$ trouvée, résous $\\ln x = X$ : le signe de $X$ empêche-t-il cette équation d'avoir une solution ?"
+        ],
+        "attenduCorrecteur": "- Changement d'inconnue $X = \\ln x$ et équation $X^2 + 10X + 21 = 0$ : 0,25 pt.\n- Discriminant $16$, racines $X = -7$ et $X = -3$ : 0,25 pt.\n- Retour à $x$ : $x = e^{-7}$ ou $x = e^{-3}$, deux solutions distinctes, donc l'affirmation est vraie : 0,5 pt.",
+        "solution": "On pose $X = \\ln x$, pour $x > 0$. L'équation devient $X^2 + 10X + 21 = 0$, de discriminant $\\Delta = 100 - 84 = 16 = 4^2$, d'où $X = \\dfrac{-10 - 4}{2} = -7$ ou $X = \\dfrac{-10 + 4}{2} = -3$.\n\nOr $\\ln x = -7 \\iff x = e^{-7}$, et $\\ln x = -3 \\iff x = e^{-3}$. Ces deux réels sont strictement positifs et distincts.\n\nL'équation a exactement deux solutions, $e^{-7}$ et $e^{-3}$ : **l'affirmation 3 est vraie.**",
+        "erreurFrequente": "Rejeter les valeurs négatives de $X = \\ln x$ : un logarithme peut être négatif (c'est $x$ qui doit être strictement positif), et $\\ln x = -3$ a pour solution $e^{-3}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "**Affirmation 4** : $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln x - x^2 + 2}{3x^2} = -\\dfrac{1}{3}$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Pour $x > 0$, $\\dfrac{\\ln x - x^2 + 2}{3x^2} = \\dfrac{1}{3} \\times \\dfrac{\\ln x}{x^2} - \\dfrac{1}{3} + \\dfrac{2}{3x^2}$. Par croissances comparées, $\\dfrac{\\ln x}{x^2}$ tend vers $0$ en $+\\infty$, et $\\dfrac{2}{3x^2}$ aussi : la limite vaut $-\\dfrac{1}{3}$."
+        },
+        "revoir": "l-logarithme-066",
+        "indices": [
+          "Numérateur et dénominateur tendent vers l'infini : c'est une forme indéterminée. Sépare la fraction en trois fractions de dénominateur $3x^2$.",
+          "L'une des trois fractions fait apparaître $\\dfrac{\\ln x}{x^2}$ : sa limite en $+\\infty$ est une croissance comparée du cours."
+        ],
+        "attenduCorrecteur": "- Forme indéterminée repérée et écriture $\\dfrac{1}{3} \\times \\dfrac{\\ln x}{x^2} - \\dfrac{1}{3} + \\dfrac{2}{3x^2}$ : 0,5 pt.\n- Croissances comparées citées, limites de chaque terme et conclusion : l'affirmation est vraie : 0,5 pt.",
+        "solution": "Le numérateur tend vers $-\\infty$ et le dénominateur vers $+\\infty$ : c'est une forme indéterminée. Pour $x > 0$ :\n\n$$\\dfrac{\\ln x - x^2 + 2}{3x^2} = \\dfrac{1}{3} \\times \\dfrac{\\ln x}{x^2} - \\dfrac{1}{3} + \\dfrac{2}{3x^2}.$$\n\nPar croissances comparées, $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln x}{x^2} = 0$ ; de plus, $\\lim\\limits_{x \\to +\\infty} \\dfrac{2}{3x^2} = 0$. Par somme :\n\n$$\\lim_{x \\to +\\infty} \\dfrac{\\ln x - x^2 + 2}{3x^2} = -\\dfrac{1}{3}.$$\n\n**L'affirmation 4 est vraie.**"
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "**Affirmation 5** : l'équation $x\\ln x = 1$ admet exactement deux solutions sur l'intervalle $]0\\,;\\,+\\infty[$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Sur $]0\\,;\\,1]$, $x\\ln x \\leqslant 0 < 1$ : pas de solution. Sur $[1\\,;\\,+\\infty[$, $g(x) = x\\ln x$ a pour dérivée $\\ln x + 1 > 0$ : $g$ est continue et strictement croissante, avec $g(1) = 0$ et une limite $+\\infty$ en $+\\infty$ ; d'après le théorème des valeurs intermédiaires, $g(x) = 1$ y a une unique solution. L'équation a donc exactement une solution."
+        },
+        "revoir": "l-logarithme-048",
+        "indices": [
+          "Étudie $g(x) = x\\ln x$. Sur $]0\\,;\\,1]$, quel est le signe de $\\ln x$, donc celui de $g(x)$ ? La valeur $1$ peut-elle y être atteinte ?",
+          "Sur $[1\\,;\\,+\\infty[$, calcule $g'(x)$ avec la dérivée d'un produit et étudie son signe, puis applique le théorème des valeurs intermédiaires avec $g(1)$ et la limite de $g$ en $+\\infty$."
+        ],
+        "attenduCorrecteur": "- Aucune solution sur $]0\\,;\\,1]$, car $x > 0$ et $\\ln x \\leqslant 0$ donnent $x\\ln x \\leqslant 0$ : 0,25 pt.\n- Sur $[1\\,;\\,+\\infty[$ : $g'(x) = \\ln x + 1 > 0$, $g(1) = 0$, $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$ : 0,25 pt.\n- Théorème des valeurs intermédiaires (fonction continue et strictement croissante) : une unique solution sur $[1\\,;\\,+\\infty[$ : 0,25 pt.\n- Conclusion : une seule solution sur $]0\\,;\\,+\\infty[$, l'affirmation est fausse : 0,25 pt.",
+        "solution": "On étudie $g(x) = x\\ln x$ sur $]0\\,;\\,+\\infty[$.\n\n- Sur $]0\\,;\\,1]$ : $x > 0$ et $\\ln x \\leqslant 0$, donc $g(x) \\leqslant 0 < 1$. L'équation $g(x) = 1$ n'a aucune solution dans $]0\\,;\\,1]$.\n- Sur $[1\\,;\\,+\\infty[$ : $g$ est dérivable et $g'(x) = 1 \\times \\ln x + x \\times \\dfrac{1}{x} = \\ln x + 1 \\geqslant 1 > 0$. La fonction $g$ est continue et strictement croissante sur $[1\\,;\\,+\\infty[$, avec $g(1) = 0$ et $\\lim\\limits_{x \\to +\\infty} g(x) = +\\infty$ (produit de deux limites infinies). Comme $1$ est compris entre $0$ et $+\\infty$, d'après le théorème des valeurs intermédiaires (cas strictement monotone), l'équation $g(x) = 1$ a une unique solution dans $[1\\,;\\,+\\infty[$.\n\nL'équation $x\\ln x = 1$ a donc exactement une solution sur $]0\\,;\\,+\\infty[$, et non deux : **l'affirmation 5 est fausse.**",
+        "erreurFrequente": "Conclure à deux solutions parce que $g$ change de sens de variation : $g$ est décroissante sur $\\left]0\\,;\\,\\dfrac{1}{e}\\right]$, mais elle y reste négative, donc elle n'y atteint pas la valeur $1$."
+      }
+    ]
+  },
+  {
+    "id": "tb-logarithme-005",
+    "chapitre": "logarithme",
+    "notions": ["n-logarithme-derivee", "n-logarithme-limites", "n-logarithme-equations", "n-logarithme-problemes"],
+    "capacites": [
+      "bo-m-logarithme-03",
+      "bo-m-logarithme-04",
+      "bo-m-logarithme-05",
+      "bo-m-logarithme-06",
+      "bo-m-logarithme-07",
+      "bo-m-derivation-06",
+      "bo-m-limites-fonctions-05",
+      "bo-m-continuite-03",
+      "bo-m-continuite-04"
+    ],
+    "titre": "Une équation à paramètre : combien de solutions pour $\\ln x = kx$ ?",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 50,
+    "source": {
+      "annale": "an-2023-asie-j1",
+      "adaptation": "Exercice 3 : conjectures graphiques pour $k = 1$ et $k = 0{,}2$ (courbe de $\\ln$, droites $y = x$ et $y = 0{,}2x$), étude de $f(x) = \\ln x - x$ et nombre de solutions de $\\ln x = x$, étude de $g(x) = \\ln x - kx$, valeur $g\\left(\\dfrac{1}{k}\\right)$, équivalence $g\\left(\\dfrac{1}{k}\\right) > 0 \\iff \\ln k < -1$ et nombre de solutions selon $k$ conservés ; tableau de variations de $g$, admis dans l'original, démontré ici (limites en $0$ et en $+\\infty$ par croissances comparées, dérivée) ; équivalence prolongée jusqu'à $k < \\dfrac{1}{e}$ ; questions 3.a, 3.d et 3.e regroupées en une seule discussion selon $k$, rédigée avec le théorème des valeurs intermédiaires. Figure redessinée pour le site. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Soit $k$ un réel strictement positif. Le but de cet exercice est de déterminer, selon la valeur de $k$, le nombre de solutions de l'équation\n\n$$\\ln x = kx,$$\n\nd'inconnue $x$ dans l'intervalle $]0\\,;\\,+\\infty[$.\n\nLa figure ci-dessous représente, dans un repère orthogonal, la courbe d'équation $y = \\ln x$ et les droites d'équations $y = x$ et $y = 0{,}2x$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/logarithme/tb-ln-droites.svg",
+        "alt": "Dans un repère orthogonal quadrillé, pour x allant de 0 à 16 et y de −1 à 8 : la courbe d'équation y = ln x, qui monte lentement depuis le bas du cadre près de l'axe des ordonnées, passe par le point (1 ; 0) et atteint environ 2,8 en x = 16 ; la droite d'équation y = x, qui part de l'origine et sort du cadre par le haut en x = 8, en restant toujours au-dessus de la courbe ; la droite d'équation y = 0,2x, qui part de l'origine et atteint 3,2 en x = 16. Cette dernière droite coupe la courbe en deux points, d'abscisses environ 1,3 et 12,7.",
+        "width": 430,
+        "height": 300
+      },
+      "caption": "La courbe d'équation y = ln x et les droites d'équations y = x et y = 0,2x."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "À partir du graphique, conjecturer le nombre de solutions de l'équation $\\ln x = kx$ pour $k = 1$, puis pour $k = 0{,}2$.",
+        "points": 0.5,
+        "revoir": "l-logarithme-058",
+        "indices": [
+          "Les solutions de $\\ln x = kx$ sont les abscisses des points d'intersection de la courbe d'équation $y = \\ln x$ et de la droite d'équation $y = kx$.",
+          "Pour chacune des deux droites, compte ses points communs avec la courbe, y compris près de l'origine."
+        ],
+        "attenduCorrecteur": "- Lien entre les solutions et les points d'intersection de la courbe avec la droite $y = kx$ : 0,25 pt.\n- Conjectures : aucune solution pour $k = 1$ (la droite $y = x$ reste au-dessus de la courbe) ; deux solutions pour $k = 0{,}2$ (vers $1{,}3$ et vers $12{,}7$) : 0,25 pt.",
+        "solution": "Les solutions de $\\ln x = kx$ sont les abscisses des points d'intersection de la courbe d'équation $y = \\ln x$ et de la droite d'équation $y = kx$.\n\n- Pour $k = 1$ : la droite d'équation $y = x$ ne rencontre pas la courbe, elle reste au-dessus. On conjecture que l'équation $\\ln x = x$ n'a aucune solution.\n- Pour $k = 0{,}2$ : la droite d'équation $y = 0{,}2x$ coupe la courbe en deux points, d'abscisses environ $1{,}3$ et $12{,}7$. On conjecture que l'équation $\\ln x = 0{,}2x$ a deux solutions."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étude du cas $k = 1$. On considère la fonction $f$ définie et dérivable sur $]0\\,;\\,+\\infty[$ par $f(x) = \\ln x - x$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Étudier le sens de variation de $f$ sur $]0\\,;\\,+\\infty[$ et dresser son tableau de variations, en y faisant figurer la valeur exacte de l'extremum. Les limites aux bornes ne sont pas demandées.",
+            "points": 0.75,
+            "revoir": "l-logarithme-048",
+            "indices": [
+              "Dérive terme à terme avec $\\ln'(x) = \\dfrac{1}{x}$, puis réduis au même dénominateur : comme $x > 0$, $f'(x)$ a le signe de son numérateur.",
+              "$f'$ s'annule et change de signe en un seul réel : calcule l'image de ce réel en valeur exacte."
+            ],
+            "attenduCorrecteur": "- $f'(x) = \\dfrac{1}{x} - 1 = \\dfrac{1 - x}{x}$ : 0,25 pt.\n- Signe : $f'(x) > 0$ sur $]0\\,;\\,1[$, $f'(x) < 0$ sur $]1\\,;\\,+\\infty[$ ; $f$ croissante sur $]0\\,;\\,1]$, décroissante sur $[1\\,;\\,+\\infty[$ : 0,25 pt.\n- Maximum $f(1) = \\ln 1 - 1 = -1$ dans le tableau : 0,25 pt.",
+            "solution": "Pour tout $x > 0$, $f'(x) = \\dfrac{1}{x} - 1 = \\dfrac{1 - x}{x}$. Comme $x > 0$, $f'(x)$ a le signe de $1 - x$ : $f'(x) > 0$ sur $]0\\,;\\,1[$, $f'(1) = 0$ et $f'(x) < 0$ sur $]1\\,;\\,+\\infty[$.\n\nLa fonction $f$ est strictement croissante sur $]0\\,;\\,1]$ et strictement décroissante sur $[1\\,;\\,+\\infty[$ ; elle admet un maximum en $1$, égal à $f(1) = \\ln 1 - 1 = -1$.\n\n| $x$ | $0$ | | $1$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $+$ | $0$ | $-$ | |\n| variations de $f$ | | $\\nearrow$ | $-1$ | $\\searrow$ | |"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "En déduire le nombre de solutions de l'équation $\\ln x = x$.",
+            "points": 0.5,
+            "revoir": "l-logarithme-049",
+            "indices": [
+              "Pour $x > 0$, l'équation $\\ln x = x$ équivaut à $f(x) = 0$ : compare cette valeur au maximum de $f$."
+            ],
+            "attenduCorrecteur": "- $\\ln x = x \\iff f(x) = 0$ : 0,25 pt.\n- Pour tout $x > 0$, $f(x) \\leqslant -1 < 0$ : l'équation n'a aucune solution, ce qui confirme la conjecture : 0,25 pt.",
+            "solution": "Pour $x > 0$, $\\ln x = x \\iff \\ln x - x = 0 \\iff f(x) = 0$. Or, d'après le tableau, pour tout $x > 0$, $f(x) \\leqslant f(1) = -1 < 0$ : $f$ ne s'annule pas.\n\nL'équation $\\ln x = x$ n'a aucune solution : la conjecture faite pour $k = 1$ est confirmée."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Étude du cas général. Le réel $k$ est strictement positif. On considère la fonction $g$ définie et dérivable sur $]0\\,;\\,+\\infty[$ par $g(x) = \\ln x - kx$.",
+        "points": 3.25,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Montrer que la fonction $g$ tend vers $-\\infty$ en $0$ et en $+\\infty$.",
+            "points": 0.75,
+            "revoir": "l-logarithme-066",
+            "indices": [
+              "En $0$, il n'y a pas de forme indéterminée : cherche la limite de chaque terme. En $+\\infty$, la forme « $+\\infty - \\infty$ » se lève en factorisant par $x$.",
+              "Pour $x > 0$, $g(x) = x\\left(\\dfrac{\\ln x}{x} - k\\right)$ : la parenthèse contient une croissance comparée ; n'oublie pas que $k > 0$."
+            ],
+            "attenduCorrecteur": "- En $0$ : $\\ln x$ tend vers $-\\infty$ et $kx$ vers $0$, donc $g(x)$ tend vers $-\\infty$ : 0,25 pt.\n- En $+\\infty$ : $g(x) = x\\left(\\dfrac{\\ln x}{x} - k\\right)$ et $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln x}{x} = 0$ (croissances comparées), donc la parenthèse tend vers $-k < 0$ : 0,25 pt.\n- Par produit avec $x$, qui tend vers $+\\infty$, $\\lim\\limits_{x \\to +\\infty} g(x) = -\\infty$ : 0,25 pt.",
+            "solution": "**En $0$.** $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\ln x = -\\infty$ et $\\lim\\limits_{x \\to 0} kx = 0$ : par somme, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} g(x) = -\\infty$.\n\n**En $+\\infty$.** $\\ln x$ tend vers $+\\infty$ et $-kx$ vers $-\\infty$ : c'est une forme indéterminée. Pour $x > 0$, on factorise par $x$ :\n\n$$g(x) = x\\left(\\dfrac{\\ln x}{x} - k\\right).$$\n\nPar croissances comparées, $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln x}{x} = 0$, donc la parenthèse tend vers $-k$, qui est strictement négatif. Comme $x$ tend vers $+\\infty$, par produit :\n\n$$\\lim_{x \\to +\\infty} g(x) = -\\infty.$$"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Étudier les variations de $g$ sur $]0\\,;\\,+\\infty[$. Montrer que $g$ admet un maximum, atteint en $\\dfrac{1}{k}$, égal à $-\\ln k - 1$.",
+            "points": 0.75,
+            "revoir": "l-logarithme-048",
+            "indices": [
+              "Dérive terme à terme, réduis au même dénominateur, puis étudie le signe du numérateur, qui est une expression du premier degré en $x$ ; utilise $k > 0$.",
+              "Pour la valeur du maximum, calcule $g\\left(\\dfrac{1}{k}\\right)$ et transforme $\\ln\\left(\\dfrac{1}{k}\\right)$ avec la règle de l'inverse."
+            ],
+            "attenduCorrecteur": "- $g'(x) = \\dfrac{1}{x} - k = \\dfrac{1 - kx}{x}$ : 0,25 pt.\n- $x > 0$ et $1 - kx > 0 \\iff x < \\dfrac{1}{k}$ (car $k > 0$) : $g$ strictement croissante sur $\\left]0\\,;\\,\\dfrac{1}{k}\\right]$, strictement décroissante sur $\\left[\\dfrac{1}{k}\\,;\\,+\\infty\\right[$ : 0,25 pt.\n- Maximum $g\\left(\\dfrac{1}{k}\\right) = \\ln\\left(\\dfrac{1}{k}\\right) - 1 = -\\ln k - 1$ : 0,25 pt.",
+            "solution": "Pour tout $x > 0$, $g'(x) = \\dfrac{1}{x} - k = \\dfrac{1 - kx}{x}$. Comme $x > 0$, $g'(x)$ a le signe de $1 - kx$ et, puisque $k > 0$ :\n\n$$1 - kx > 0 \\iff kx < 1 \\iff x < \\dfrac{1}{k}.$$\n\nLa fonction $g$ est donc strictement croissante sur $\\left]0\\,;\\,\\dfrac{1}{k}\\right]$ et strictement décroissante sur $\\left[\\dfrac{1}{k}\\,;\\,+\\infty\\right[$ : elle admet un maximum en $\\dfrac{1}{k}$, égal à\n\n$$g\\left(\\dfrac{1}{k}\\right) = \\ln\\left(\\dfrac{1}{k}\\right) - k \\times \\dfrac{1}{k} = -\\ln k - 1.$$\n\n| $x$ | $0$ | | $\\frac{1}{k}$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $g'(x)$ | | $+$ | $0$ | $-$ | |\n| variations de $g$ | $-\\infty$ | $\\nearrow$ | $-\\ln k - 1$ | $\\searrow$ | $-\\infty$ |"
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "Montrer que $g\\left(\\dfrac{1}{k}\\right) > 0$ équivaut à $\\ln k < -1$, puis à $k < \\dfrac{1}{e}$.",
+            "points": 0.5,
+            "revoir": "l-logarithme-024",
+            "indices": [
+              "Remplace $g\\left(\\dfrac{1}{k}\\right)$ par son expression de la question b), puis isole $\\ln k$.",
+              "Pour passer de $\\ln k < -1$ à une inégalité sur $k$, utilise $\\ln a < b \\iff a < e^b$, valable pour $a > 0$."
+            ],
+            "attenduCorrecteur": "- $-\\ln k - 1 > 0 \\iff \\ln k < -1$ : 0,25 pt.\n- $\\ln k < -1 \\iff k < e^{-1} = \\dfrac{1}{e}$, par stricte croissance de $\\ln$ (ou de l'exponentielle) : 0,25 pt.",
+            "solution": "$g\\left(\\dfrac{1}{k}\\right) > 0 \\iff -\\ln k - 1 > 0 \\iff \\ln k < -1$.\n\nLa fonction $\\ln$ est strictement croissante sur $]0\\,;\\,+\\infty[$ et $-1 = \\ln\\left(e^{-1}\\right)$ ; pour $k > 0$ :\n\n$$\\ln k < -1 \\iff k < e^{-1} = \\dfrac{1}{e}.$$\n\nAinsi, $g\\left(\\dfrac{1}{k}\\right) > 0$ équivaut à $\\ln k < -1$, et à $0 < k < \\dfrac{1}{e}$."
+          },
+          {
+            "id": "q3d",
+            "label": "d)",
+            "enonce": "Donner, en justifiant, le nombre de solutions de l'équation $\\ln x = kx$ selon les valeurs du réel $k > 0$. Ce résultat confirme-t-il les conjectures de la question 1 ?",
+            "points": 1.25,
+            "revoir": "l-continuite-026",
+            "indices": [
+              "$\\ln x = kx$ équivaut à $g(x) = 0$. Selon le signe du maximum $g\\left(\\dfrac{1}{k}\\right)$, distingue trois cas : maximum strictement positif, nul ou strictement négatif.",
+              "Quand le maximum est strictement positif, applique le théorème des valeurs intermédiaires (avec les limites aux bornes) sur chacun des deux intervalles où $g$ est strictement monotone."
+            ],
+            "attenduCorrecteur": "- Équivalence $\\ln x = kx \\iff g(x) = 0$ et découpage selon le signe de $g\\left(\\dfrac{1}{k}\\right)$ : 0,25 pt.\n- Si $0 < k < \\dfrac{1}{e}$ : $g$ continue et strictement croissante sur $\\left]0\\,;\\,\\dfrac{1}{k}\\right]$, de $-\\infty$ à $g\\left(\\dfrac{1}{k}\\right) > 0$, puis strictement décroissante sur $\\left[\\dfrac{1}{k}\\,;\\,+\\infty\\right[$ jusqu'à $-\\infty$ : une solution sur chaque intervalle (théorème des valeurs intermédiaires), donc deux solutions : 0,5 pt.\n- Si $k = \\dfrac{1}{e}$ : maximum nul, une seule solution, $x = e$ ; si $k > \\dfrac{1}{e}$ : $\\ln k > -1$, donc $g\\left(\\dfrac{1}{k}\\right) = -\\ln k - 1 < 0$, $g(x) < 0$ pour tout $x > 0$, aucune solution : 0,25 pt.\n- Cohérence avec la question 1 : $k = 1 > \\dfrac{1}{e}$, aucune solution ; $0{,}2 = \\dfrac{1}{5} < \\dfrac{1}{e}$ car $e < 5$, deux solutions : 0,25 pt.",
+            "solution": "Pour $x > 0$, $\\ln x = kx \\iff g(x) = 0$. La fonction $g$ est dérivable, donc continue, sur $]0\\,;\\,+\\infty[$, et son maximum est $g\\left(\\dfrac{1}{k}\\right) = -\\ln k - 1$. Trois cas se présentent.\n\n**Premier cas** : $0 < k < \\dfrac{1}{e}$. Alors $g\\left(\\dfrac{1}{k}\\right) > 0$ (question c).\n\n- Sur $\\left]0\\,;\\,\\dfrac{1}{k}\\right]$, $g$ est continue et strictement croissante, de limite $-\\infty$ en $0$, et $g\\left(\\dfrac{1}{k}\\right) > 0$ : d'après le théorème des valeurs intermédiaires, l'équation $g(x) = 0$ a une unique solution dans cet intervalle.\n- Sur $\\left[\\dfrac{1}{k}\\,;\\,+\\infty\\right[$, $g$ est continue et strictement décroissante, avec $g\\left(\\dfrac{1}{k}\\right) > 0$ et une limite $-\\infty$ en $+\\infty$ : l'équation a une unique solution dans cet intervalle.\n\nL'équation $\\ln x = kx$ a alors exactement deux solutions.\n\n**Deuxième cas** : $k = \\dfrac{1}{e}$. Le maximum vaut $-\\ln\\left(e^{-1}\\right) - 1 = 0$ : $g(e) = 0$, et $g(x) < 0$ pour tout $x \\neq e$, car $g$ est strictement monotone de part et d'autre de $e$. L'équation a une unique solution : $x = e$.\n\n**Troisième cas** : $k > \\dfrac{1}{e}$. La fonction $\\ln$ est strictement croissante, donc $\\ln k > \\ln\\left(e^{-1}\\right) = -1$ ; ainsi $g\\left(\\dfrac{1}{k}\\right) = -\\ln k - 1 < 0$. Ce maximum est strictement négatif, donc $g(x) \\leqslant g\\left(\\dfrac{1}{k}\\right) < 0$ pour tout $x > 0$ : l'équation n'a aucune solution.\n\n**Retour aux conjectures.** $k = 1 > \\dfrac{1}{e}$ : aucune solution, comme conjecturé. $0{,}2 = \\dfrac{1}{5}$ et $5 > e$, donc $0{,}2 < \\dfrac{1}{e}$ : deux solutions, comme conjecturé.\n\nEn résumé : deux solutions si $0 < k < \\dfrac{1}{e}$, une seule si $k = \\dfrac{1}{e}$, aucune si $k > \\dfrac{1}{e}$.",
+            "erreurFrequente": "Oublier le cas $k = \\dfrac{1}{e}$, où la droite d'équation $y = kx$ est tangente à la courbe de $\\ln$ au point d'abscisse $e$ : l'équation a alors une seule solution."
+          }
+        ]
+      }
+    ]
+  }
+]

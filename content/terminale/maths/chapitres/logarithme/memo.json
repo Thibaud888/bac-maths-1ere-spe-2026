@@ -1,0 +1,135 @@
+[
+  {
+    "id": "m-logarithme-comparer",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-equations",
+    "genre": "propriete",
+    "titre": "Comparer avec $\\ln$ et avec l'exponentielle",
+    "enonce": "Pour $a > 0$ et $b > 0$ : $\\ln a = \\ln b \\iff a = b$, et $\\ln a < \\ln b \\iff a < b$. Pour tout réel $k$ : $\\ln a = k \\iff a = e^k$, et $\\ln a < k \\iff a < e^k$. Pour tous réels $x$ et $y$ : $e^x < e^y \\iff x < y$.\n\nPrendre le logarithme ou l'exponentielle des deux membres ne change pas le sens d'une inégalité.",
+    "conditions": "Ce qui est dans chaque logarithme doit être strictement positif : écris ces conditions avant de transformer, puis trie les solutions.",
+    "exemple": "$\\ln(2x - 1) = 3$, avec $x > \\dfrac{1}{2}$ : $2x - 1 = e^3$, donc $x = \\dfrac{1 + e^3}{2} \\approx 10{,}54$.",
+    "simplifie": {
+      "coeur": "$\\ln a < \\ln b \\iff a < b$ ; $\\ln A < k \\iff A < e^k$ ; conditions : ce qui est dans $\\ln$ est $> 0$",
+      "moyenMemo": "ln et exponentielle sont croissantes : elles gardent le sens des inégalités.",
+      "motCle": "comparer"
+    }
+  },
+  {
+    "id": "m-logarithme-seuil",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-equations",
+    "genre": "methode",
+    "titre": "Plus petit entier $n$ tel que $q^n < s$",
+    "enonce": "Avec $q > 0$ et $s > 0$ : $q^n < s \\iff n\\ln q < \\ln s$. Si $0 < q < 1$, $\\ln q < 0$ et le sens change : $n > \\dfrac{\\ln s}{\\ln q}$. Si $q > 1$, le sens reste. On prend le plus petit entier qui vérifie l'inégalité obtenue, puis on contrôle avec $q^n$ pour cet entier et le précédent.",
+    "conditions": "$q > 0$ et $s > 0$, pour pouvoir prendre les logarithmes.",
+    "exemple": "$0{,}9^n < 0{,}01 \\iff n > \\dfrac{\\ln 0{,}01}{\\ln 0{,}9} \\approx 43{,}7$, donc $n = 44$.",
+    "simplifie": {
+      "coeur": "$q^n < s \\iff n\\ln q < \\ln s$ ; diviser par $\\ln q < 0$ (cas $0 < q < 1$) change le sens",
+      "moyenMemo": "Plus petit que 1, logarithme négatif : on retourne l'inégalité.",
+      "motCle": "seuil"
+    }
+  },
+  {
+    "id": "m-logarithme-derivee",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-derivee",
+    "genre": "formule",
+    "titre": "Dérivée de $\\ln$ et de $\\ln(u)$",
+    "enonce": "$\\ln$ est dérivable sur $]0\\,;\\,+\\infty[$ et $\\ln'(x) = \\dfrac{1}{x}$ : elle est strictement croissante. Pour $u$ dérivable et strictement positive sur un intervalle $I$ : $(\\ln u)' = \\dfrac{u'}{u}$, du signe de $u'$.\n\nDémonstration exigible : on dérive $e^{\\ln x} = x$, ce qui donne $\\ln'(x) \\times x = 1$.",
+    "conditions": "$x > 0$ pour $\\ln x$ ; $u(x) > 0$ sur $I$ pour $\\ln\\big(u(x)\\big)$.",
+    "exemple": "$\\Big(\\ln\\left(x^2 + 1\\right)\\Big)' = \\dfrac{2x}{x^2 + 1}$ ; $(x\\ln x)' = \\ln x + 1$.",
+    "simplifie": {
+      "coeur": "$\\ln'(x) = \\dfrac{1}{x}$ ; $(\\ln u)' = \\dfrac{u'}{u}$",
+      "moyenMemo": "La dérivée de l'intérieur, divisée par l'intérieur.",
+      "motCle": "derivee-ln"
+    }
+  },
+  {
+    "id": "m-logarithme-concavite",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-derivee",
+    "genre": "propriete",
+    "titre": "$\\ln$ est concave : $\\ln x \\leqslant x - 1$",
+    "enonce": "$\\ln''(x) = -\\dfrac{1}{x^2} < 0$ : $\\ln$ est concave sur $]0\\,;\\,+\\infty[$. Sa courbe est en dessous de ses tangentes, en particulier de la tangente au point d'abscisse $1$, d'équation $y = x - 1$. Donc, pour tout réel $x > 0$, $\\ln x \\leqslant x - 1$.",
+    "conditions": "$x > 0$.",
+    "exemple": "Près de $1$, $\\ln x \\approx x - 1$ : $\\ln 1{,}01 \\approx 0{,}01$.",
+    "simplifie": {
+      "coeur": "$\\ln$ concave ; pour tout $x > 0$, $\\ln x \\leqslant x - 1$",
+      "motCle": "concavite",
+      "image": "La courbe de ln, en dôme, posée sous la droite y = x − 1 qu'elle touche au point (1 ; 0)."
+    }
+  },
+  {
+    "id": "m-logarithme-limites",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-limites",
+    "genre": "formule",
+    "titre": "Limites de $\\ln$, courbe",
+    "enonce": "$\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\ln x = -\\infty$ : l'axe des ordonnées est asymptote verticale. $\\lim\\limits_{x \\to +\\infty} \\ln x = +\\infty$, sans asymptote horizontale.\n\nDans un repère orthonormé, les courbes de $\\ln$ et de l'exponentielle sont symétriques par rapport à la droite d'équation $y = x$.",
+    "conditions": "La limite en $0$ se prend à droite : $x > 0$.",
+    "exemple": "$\\lim\\limits_{\\substack{x \\to 1 \\\\ x > 1}} \\ln(x - 1) = -\\infty$ : la droite d'équation $x = 1$ est asymptote verticale.",
+    "simplifie": {
+      "coeur": "$\\ln x \\to -\\infty$ en $0$ (asymptote $x = 0$) ; $\\ln x \\to +\\infty$ en $+\\infty$ ; symétrique de $e^x$ par rapport à $y = x$",
+      "motCle": "limites-ln",
+      "image": "La courbe de l'exponentielle, renvoyée par le miroir de la droite y = x."
+    }
+  },
+  {
+    "id": "m-logarithme-croissances-comparees",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-limites",
+    "genre": "formule",
+    "titre": "Croissances comparées avec $\\ln$",
+    "enonce": "Pour tout entier naturel $n$ non nul : $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln x}{x^n} = 0$ et $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} x^n\\ln x = 0$. La puissance de $x$ l'emporte sur le logarithme.\n\nDémonstration exigible pour $x\\ln x$ en $0$ : avec $X = \\ln x$, $x\\ln x = Xe^X$, qui tend vers $0$ quand $X$ tend vers $-\\infty$.",
+    "conditions": "À utiliser devant une forme indéterminée qui mêle $\\ln x$ et une puissance de $x$.",
+    "exemple": "$x - \\ln x = x\\left(1 - \\dfrac{\\ln x}{x}\\right)$ tend vers $+\\infty$ en $+\\infty$.",
+    "simplifie": {
+      "coeur": "$\\dfrac{\\ln x}{x^n} \\to 0$ en $+\\infty$ ; $x^n\\ln x \\to 0$ en $0$",
+      "moyenMemo": "Le logarithme perd toujours contre une puissance de x.",
+      "motCle": "croissances-comparees-ln"
+    }
+  },
+  {
+    "id": "m-logarithme-definition",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-definition",
+    "genre": "definition",
+    "titre": "Le logarithme népérien",
+    "enonce": "Pour tout réel $a > 0$, $\\ln a$ est l'unique solution de l'équation $e^x = a$. La fonction $\\ln$, définie sur $]0\\,;\\,+\\infty[$, est la réciproque de l'exponentielle : $e^x = a \\iff x = \\ln a$.\n\nAinsi $e^{\\ln a} = a$, $\\ln\\left(e^x\\right) = x$, $\\ln 1 = 0$ et $\\ln e = 1$.",
+    "conditions": "$a > 0$ : pour $a \\leqslant 0$, $\\ln a$ n'existe pas et $e^x = a$ n'a pas de solution.",
+    "exemple": "$e^x = 5 \\iff x = \\ln 5 \\approx 1{,}61$ ; $e^x = -2$ n'a pas de solution.",
+    "simplifie": {
+      "coeur": "$e^x = a \\iff x = \\ln a$ (pour $a > 0$) ; $\\ln 1 = 0$, $\\ln e = 1$",
+      "moyenMemo": "ln retrouve l'exposant : il défait l'exponentielle.",
+      "motCle": "definition-ln"
+    }
+  },
+  {
+    "id": "m-logarithme-domaine",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-definition",
+    "genre": "methode",
+    "titre": "Où $\\ln\\big(u(x)\\big)$ existe",
+    "enonce": "$\\ln\\big(u(x)\\big)$ existe si et seulement si $u(x) > 0$. On résout cette inéquation pour chaque logarithme de l'expression, puis on garde les $x$ qui vérifient toutes les conditions à la fois.",
+    "exemple": "$\\ln\\left(-x^2 - x + 6\\right)$ existe sur $]-3\\,;\\,2[$, entre les racines du trinôme.",
+    "simplifie": {
+      "coeur": "$\\ln\\big(u(x)\\big)$ existe $\\iff u(x) > 0$ (inégalité stricte)",
+      "motCle": "domaine"
+    }
+  },
+  {
+    "id": "m-logarithme-proprietes-algebriques",
+    "chapitre": "logarithme",
+    "notion": "n-logarithme-proprietes",
+    "genre": "formule",
+    "titre": "Propriétés algébriques",
+    "enonce": "Pour $a > 0$, $b > 0$ et $n$ entier relatif :\n\n- $\\ln(ab) = \\ln a + \\ln b$ : c'est l'équation fonctionnelle, une égalité vraie pour tous $a > 0$ et $b > 0$ ;\n- $\\ln\\left(\\dfrac{1}{a}\\right) = -\\ln a$ et $\\ln\\left(\\dfrac{a}{b}\\right) = \\ln a - \\ln b$ ;\n- $\\ln\\left(a^n\\right) = n\\ln a$ et $\\ln\\left(\\sqrt{a}\\right) = \\dfrac{1}{2}\\ln a$.",
+    "conditions": "$a > 0$ et $b > 0$. Aucune règle pour $\\ln(a + b)$.",
+    "exemple": "$\\ln 12 = \\ln\\left(2^2 \\times 3\\right) = 2\\ln 2 + \\ln 3$.",
+    "simplifie": {
+      "coeur": "$\\ln(ab) = \\ln a + \\ln b$ ; $\\ln\\left(\\dfrac{a}{b}\\right) = \\ln a - \\ln b$ ; $\\ln\\left(a^n\\right) = n\\ln a$",
+      "moyenMemo": "Le produit devient somme, la puissance descend devant.",
+      "motCle": "proprietes-algebriques"
+    }
+  }
+]
