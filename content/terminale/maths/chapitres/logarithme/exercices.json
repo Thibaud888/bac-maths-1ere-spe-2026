@@ -142,31 +142,25 @@
     "notions": ["n-logarithme-proprietes"],
     "capacites": ["bo-m-logarithme-02"],
     "titre": "Développer avec les règles du logarithme",
-    "duree": 4,
+    "duree": 5,
     "calculatrice": false,
     "ordre": 201,
     "questions": [
       {
         "id": "q1",
         "label": "1.",
-        "enonce": "Quelle expression est égale à $\\ln 72$ ?",
+        "enonce": "Parmi ces expressions, lesquelles sont égales à $\\ln 72$ ? Plusieurs réponses sont possibles.",
         "reponse": {
-          "type": "qcm",
-          "choix": ["$2\\ln 2 + 3\\ln 3$", "$\\ln 8 \\times \\ln 9$", "$3\\ln 2 + 2\\ln 3$", "$6\\ln 6$"],
-          "bonne": 2,
-          "pourquoiFaux": [
-            "Ce serait $\\ln\\left(2^2 \\times 3^3\\right) = \\ln 108$. Ici, $72 = 8 \\times 9 = 2^3 \\times 3^2$ : le cube porte sur le $2$.",
-            "Le logarithme change un produit en **somme**, pas en produit : $\\ln(8 \\times 9) = \\ln 8 + \\ln 9$.",
-            null,
-            "$6\\ln 6 = \\ln\\left(6^6\\right)$, un nombre bien plus grand que $\\ln 72$. On décompose $72$ en facteurs : $72 = 2^3 \\times 3^2$."
-          ]
+          "type": "qcm-multiple",
+          "choix": ["$3\\ln 2 + 2\\ln 3$", "$2\\ln 2 + 3\\ln 3$", "$\\ln 8 \\times \\ln 9$", "$\\ln 8 + \\ln 9$", "$\\ln 2 + 2\\ln 6$"],
+          "bonnes": [0, 3, 4]
         },
         "indices": [
-          "Décompose $72$ en produit de puissances de $2$ et de $3$, puis applique $\\ln(ab) = \\ln a + \\ln b$ et $\\ln\\left(a^n\\right) = n\\ln a$.",
-          "$72 = 8 \\times 9$, avec $8 = 2^3$ et $9 = 3^2$. Donc $\\ln 72 = \\ln\\left(2^3\\right) + \\ln\\left(3^2\\right)$ : fais descendre les exposants."
+          "Décompose $72$ en produit de puissances de $2$ et de $3$, puis applique $\\ln(ab) = \\ln a + \\ln b$ et $\\ln\\left(a^n\\right) = n\\ln a$. Teste ensuite chaque expression.",
+          "$72 = 8 \\times 9 = 2^3 \\times 3^2$. Ramène chaque expression à la forme « un multiple de $\\ln 2$ plus un multiple de $\\ln 3$ » (par exemple, $\\ln 6 = \\ln 2 + \\ln 3$), puis compare les coefficients avec les exposants $3$ et $2$."
         ],
         "revoir": "l-logarithme-014",
-        "solution": "$72 = 8 \\times 9 = 2^3 \\times 3^2$. Donc $\\ln 72 = \\ln\\left(2^3\\right) + \\ln\\left(3^2\\right) = 3\\ln 2 + 2\\ln 3$."
+        "solution": "$72 = 8 \\times 9 = 2^3 \\times 3^2$, donc $\\ln 72 = \\ln 8 + \\ln 9 = \\ln\\left(2^3\\right) + \\ln\\left(3^2\\right) = 3\\ln 2 + 2\\ln 3$.\n\n- $3\\ln 2 + 2\\ln 3$ : égale à $\\ln 72$, d'après le calcul ci-dessus.\n- $2\\ln 2 + 3\\ln 3 = \\ln\\left(2^2 \\times 3^3\\right) = \\ln 108$ : les exposants sont inversés, le cube porte sur le $2$.\n- $\\ln 8 \\times \\ln 9$ : le logarithme change un produit en **somme**, pas en produit. Ce nombre vaut environ $4{,}57$, alors que $\\ln 72 \\approx 4{,}28$.\n- $\\ln 8 + \\ln 9 = \\ln(8 \\times 9) = \\ln 72$ : égale.\n- $\\ln 2 + 2\\ln 6 = \\ln 2 + \\ln 36 = \\ln(2 \\times 36) = \\ln 72$ : égale.\n\nLes expressions égales à $\\ln 72$ sont $3\\ln 2 + 2\\ln 3$, $\\ln 8 + \\ln 9$ et $\\ln 2 + 2\\ln 6$."
       },
       {
         "id": "q2",
@@ -194,7 +188,8 @@
           "Essaie un réel négatif, par exemple $x = -1$ : les deux membres existent-ils ?"
         ],
         "revoir": "l-logarithme-013",
-        "solution": "Pour $x = -1$, $\\ln\\left(x^2\\right) = \\ln 1 = 0$ existe, mais $2\\ln x = 2\\ln(-1)$ n'existe pas. L'égalité $\\ln\\left(x^2\\right) = 2\\ln x$ n'est vraie que pour $x > 0$, car la règle $\\ln\\left(a^n\\right) = n\\ln a$ suppose $a > 0$. L'affirmation est fausse."
+        "solution": "Pour $x = -1$, $\\ln\\left(x^2\\right) = \\ln 1 = 0$ existe, mais $2\\ln x = 2\\ln(-1)$ n'existe pas. L'égalité $\\ln\\left(x^2\\right) = 2\\ln x$ n'est vraie que pour $x > 0$, car la règle $\\ln\\left(a^n\\right) = n\\ln a$ suppose $a > 0$. L'affirmation est fausse.\n\nPour tout réel $x$ non nul, on peut en revanche écrire $\\ln\\left(x^2\\right) = \\ln\\left(|x|^2\\right) = 2\\ln|x|$, car $x^2 = |x|^2$ et $|x| > 0$.",
+        "erreurFrequente": "Appliquer $\\ln\\left(a^n\\right) = n\\ln a$ sans vérifier que $a > 0$. Ici, $x^2 > 0$ pour tout $x$ non nul, donc $\\ln\\left(x^2\\right)$ existe ; mais $\\ln x$ n'existe que pour $x > 0$. Avant d'utiliser une règle du logarithme, regarde le signe de **chaque** nombre dont tu prends le logarithme."
       }
     ]
   },
@@ -289,7 +284,7 @@
         },
         "indices": [
           "Passe à l'exponentielle : pour tout réel $k$, $\\ln x = k \\iff x = e^k$.",
-          "$\\ln x = -1 \\iff x = e^{-1}$. Écris $e^{-1}$ sous forme de fraction."
+          "Applique cette équivalence avec $k = -1$. Le nombre obtenu est-il strictement positif ? Parmi les choix, lequel lui est égal ?"
         ],
         "revoir": "l-logarithme-024",
         "solution": "Pour $x > 0$ : $\\ln x = -1 \\iff x = e^{-1} = \\dfrac{1}{e}$. Ce nombre est strictement positif : l'équation a pour unique solution $\\dfrac{1}{e}$."
@@ -417,29 +412,19 @@
       {
         "id": "q1",
         "label": "1.",
-        "enonce": "On cherche le plus petit entier naturel $n$ tel que $0{,}8^n < 0{,}05$. Après passage au logarithme, on obtient $n\\ln 0{,}8 < \\ln 0{,}05$. Quelle inéquation lui est équivalente ?",
+        "enonce": "On cherche le plus petit entier naturel $n$ tel que $0{,}8^n < 0{,}05$. Après passage au logarithme, on obtient $n\\ln 0{,}8 < \\ln 0{,}05$. Vrai ou faux ? Cette inéquation équivaut à $n < \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$.",
         "reponse": {
-          "type": "qcm",
-          "choix": [
-            "$n < \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$",
-            "$n < \\ln 0{,}05 - \\ln 0{,}8$",
-            "$n > \\ln\\left(\\dfrac{0{,}05}{0{,}8}\\right)$",
-            "$n > \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$"
-          ],
-          "bonne": 3,
-          "pourquoiFaux": [
-            "$0 < 0{,}8 < 1$, donc $\\ln 0{,}8 < 0$ : en divisant par ce nombre négatif, le sens de l'inégalité change.",
-            "On isole $n$ en **divisant** par $\\ln 0{,}8$, pas en le retranchant : $n\\ln 0{,}8$ est un produit.",
-            "Le quotient porte sur les logarithmes, pas sur les nombres : $\\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$ n'est pas $\\ln\\left(\\dfrac{0{,}05}{0{,}8}\\right)$.",
-            null
-          ]
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$0 < 0{,}8 < 1$, donc $\\ln 0{,}8 < 0$ : en divisant les deux membres par ce nombre négatif, le sens de l'inégalité change. L'inéquation équivaut à $n > \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$."
         },
         "indices": [
           "Pour isoler $n$, on divise par $\\ln 0{,}8$ : regarde d'abord le signe de ce nombre.",
           "$0{,}8 < 1$, donc $\\ln 0{,}8 < \\ln 1 = 0$. Que devient le sens d'une inégalité quand on divise par un nombre négatif ?"
         ],
         "revoir": "l-logarithme-035",
-        "solution": "$0 < 0{,}8 < 1$, donc $\\ln 0{,}8 < 0$. En divisant les deux membres par ce nombre strictement négatif, le sens change : $n\\ln 0{,}8 < \\ln 0{,}05 \\iff n > \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$."
+        "solution": "$0 < 0{,}8 < 1$, donc $\\ln 0{,}8 < 0$. En divisant les deux membres par ce nombre strictement négatif, le sens change : $n\\ln 0{,}8 < \\ln 0{,}05 \\iff n > \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$. L'affirmation est fausse. Contrôle de bon sens : $0{,}8^n$ diminue quand $n$ augmente, donc il passe sous $0{,}05$ pour les grandes valeurs de $n$, pas pour les petites.",
+        "erreurFrequente": "Diviser par $\\ln 0{,}8$ sans regarder son signe. Autres erreurs à éviter : retrancher $\\ln 0{,}8$ au lieu de diviser, ou écrire $\\ln\\left(\\dfrac{0{,}05}{0{,}8}\\right)$ à la place du quotient $\\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$."
       },
       {
         "id": "q2",
@@ -508,29 +493,15 @@
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Quelle est la dérivée de la fonction $g$ définie sur $]0\\,;\\,+\\infty[$ par $g(x) = 3\\ln x - x^2$ ?",
-        "reponse": {
-          "type": "qcm",
-          "choix": [
-            "$g'(x) = \\dfrac{1}{3x} - 2x$",
-            "$g'(x) = 3\\ln x - 2x$",
-            "$g'(x) = \\dfrac{3}{x} - 2x$",
-            "$g'(x) = \\dfrac{3}{x} - x$"
-          ],
-          "bonne": 2,
-          "pourquoiFaux": [
-            "Le coefficient $3$ multiplie la dérivée : $(3\\ln x)' = 3 \\times \\dfrac{1}{x} = \\dfrac{3}{x}$, pas $\\dfrac{1}{3x}$.",
-            "Le terme $3\\ln x$ n'a pas été dérivé : la dérivée de $\\ln x$ est $\\dfrac{1}{x}$.",
-            null,
-            "La dérivée de $x^2$ est $2x$, pas $x$."
-          ]
-        },
+        "enonce": "Soit $g$ la fonction définie sur $]0\\,;\\,+\\infty[$ par $g(x) = 3\\ln x - x^2$. Calculer $g'(3)$.",
+        "reponse": { "type": "numerique", "valeur": -5, "tolerance": 0 },
         "indices": [
-          "Dérive terme à terme, avec $\\ln'(x) = \\dfrac{1}{x}$ et $\\left(x^2\\right)' = 2x$.",
-          "$(3\\ln x)' = 3 \\times \\dfrac{1}{x}$. Il reste à retrancher la dérivée de $x^2$."
+          "Dérive terme à terme, avec $\\ln'(x) = \\dfrac{1}{x}$ et $\\left(x^2\\right)' = 2x$, puis remplace $x$ par $3$.",
+          "$(3\\ln x)' = 3 \\times \\dfrac{1}{x}$ : écris $g'(x)$ en retranchant la dérivée de $x^2$, puis calcule sa valeur en $3$."
         ],
         "revoir": "l-logarithme-040",
-        "solution": "$g'(x) = 3 \\times \\dfrac{1}{x} - 2x = \\dfrac{3}{x} - 2x$."
+        "solution": "$g'(x) = 3 \\times \\dfrac{1}{x} - 2x = \\dfrac{3}{x} - 2x$. Donc $g'(3) = \\dfrac{3}{3} - 2 \\times 3 = 1 - 6 = -5$.",
+        "erreurFrequente": "Écrire $(3\\ln x)' = \\dfrac{1}{3x}$ : le coefficient $3$ reste en facteur, $(3\\ln x)' = 3 \\times \\dfrac{1}{x} = \\dfrac{3}{x}$. Autre oubli : dériver $x^2$ en $x$ au lieu de $2x$."
       },
       {
         "id": "q3",
@@ -609,7 +580,8 @@
           "Le numérateur vaut $\\dfrac{1}{x} \\times x^2 - \\ln x \\times 2x = x - 2x\\ln x$, et le dénominateur $\\left(x^2\\right)^2 = x^4$. Factorise le numérateur par $x$, puis simplifie."
         ],
         "revoir": "l-logarithme-041",
-        "solution": "$u(x) = \\ln x$, $u'(x) = \\dfrac{1}{x}$, $v(x) = x^2$, $v'(x) = 2x$. Donc $g'(x) = \\dfrac{\\frac{1}{x} \\times x^2 - \\ln x \\times 2x}{x^4} = \\dfrac{x - 2x\\ln x}{x^4} = \\dfrac{x(1 - 2\\ln x)}{x^4} = \\dfrac{1 - 2\\ln x}{x^3}$."
+        "solution": "$u(x) = \\ln x$, $u'(x) = \\dfrac{1}{x}$, $v(x) = x^2$, $v'(x) = 2x$. Donc $g'(x) = \\dfrac{\\frac{1}{x} \\times x^2 - \\ln x \\times 2x}{x^4} = \\dfrac{x - 2x\\ln x}{x^4} = \\dfrac{x(1 - 2\\ln x)}{x^4} = \\dfrac{1 - 2\\ln x}{x^3}$.",
+        "erreurFrequente": "Ne simplifier qu'à moitié : retirer le facteur $x$ du numérateur sans le retirer du dénominateur, ce qui donne $\\dfrac{1 - 2\\ln x}{x^4}$. On factorise le numérateur, puis on simplifie la fraction par $x$ en haut **et** en bas : $\\dfrac{x(1 - 2\\ln x)}{x \\times x^3} = \\dfrac{1 - 2\\ln x}{x^3}$. Ce réflexe resservira : avec $\\ln x$ au numérateur, la formule du quotient fait souvent apparaître un facteur $x$ à simplifier."
       },
       {
         "id": "q3",
@@ -811,29 +783,23 @@
           "Pour $x > 1$, $\\dfrac{x}{\\ln x} = \\dfrac{1}{\\frac{\\ln x}{x}}$, et $\\dfrac{\\ln x}{x}$ tend vers $0$ en restant positif. Que donne « $\\dfrac{1}{0^+}$ » ?"
         ],
         "revoir": "l-logarithme-061",
-        "solution": "Pour $x > 1$, $\\ln x > 0$ et $\\dfrac{x}{\\ln x} = \\dfrac{1}{\\frac{\\ln x}{x}}$. Par croissances comparées, $\\dfrac{\\ln x}{x}$ tend vers $0$ en restant strictement positif. Par quotient, $\\lim\\limits_{x \\to +\\infty} \\dfrac{x}{\\ln x} = +\\infty$."
+        "solution": "Pour $x > 1$, $\\ln x > 0$ et $\\dfrac{x}{\\ln x} = \\dfrac{1}{\\frac{\\ln x}{x}}$. Par croissances comparées, $\\dfrac{\\ln x}{x}$ tend vers $0$ en restant strictement positif. Par quotient, $\\lim\\limits_{x \\to +\\infty} \\dfrac{x}{\\ln x} = +\\infty$.\n\nÀ retenir : quand une expression tend vers $0$ en restant strictement positive, son inverse tend vers $+\\infty$. C'est ainsi qu'on passe de $\\dfrac{\\ln x}{x} \\to 0$ à $\\dfrac{x}{\\ln x} \\to +\\infty$."
       },
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Quelle est la limite de $x^2\\ln x$ quand $x$ tend vers $0$, avec $x > 0$ ?",
+        "enonce": "Vrai ou faux ? Quand $x$ tend vers $0$, avec $x > 0$, $x^2\\ln x$ tend vers $-\\infty$, puisque $\\ln x$ tend vers $-\\infty$.",
         "reponse": {
-          "type": "qcm",
-          "choix": ["$-\\infty$", "$0$", "$+\\infty$", "$1$"],
-          "bonne": 1,
-          "pourquoiFaux": [
-            "$\\ln x$ tend bien vers $-\\infty$, mais $x^2$ tend vers $0$ : c'est la forme « $0 \\times \\infty$ », où la puissance l'emporte.",
-            null,
-            "Le produit est négatif pour $0 < x < 1$, car $\\ln x < 0$ : il ne peut pas tendre vers $+\\infty$.",
-            "Aucun des deux facteurs ne tend vers $1$ : $x^2$ tend vers $0$ et $\\ln x$ vers $-\\infty$."
-          ]
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$\\ln x$ tend bien vers $-\\infty$, mais $x^2$ tend vers $0$ : c'est la forme indéterminée « $0 \\times \\infty$ ». Par croissances comparées, $x^n\\ln x$ tend vers $0$ en $0$ pour tout entier $n \\geqslant 1$ : la puissance de $x$ l'emporte. La limite est $0$, pas $-\\infty$."
         },
         "indices": [
-          "C'est la forme « $0 \\times \\infty$ » : pense aux croissances comparées en $0$.",
-          "En $0$, $x^n\\ln x$ a la même limite pour tout entier $n \\geqslant 1$ : la puissance de $x$ l'emporte sur le logarithme."
+          "Écris la limite de chacun des deux facteurs. Si la forme est indéterminée, pense aux croissances comparées en $0$.",
+          "$x^2$ tend vers $0$ et $\\ln x$ vers $-\\infty$ : c'est la forme « $0 \\times \\infty$ ». Que dit le cours sur $x^n\\ln x$ en $0$, pour un entier $n \\geqslant 1$ ? Qui l'emporte ?"
         ],
         "revoir": "l-logarithme-061",
-        "solution": "Par croissances comparées, pour tout entier naturel $n$ non nul, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} x^n\\ln x = 0$. Avec $n = 2$ : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} x^2\\ln x = 0$."
+        "solution": "$x^2$ tend vers $0$ et $\\ln x$ vers $-\\infty$ : c'est la forme indéterminée « $0 \\times \\infty$ », on ne peut pas conclure en regardant le seul logarithme. Par croissances comparées, pour tout entier naturel $n$ non nul, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} x^n\\ln x = 0$. Avec $n = 2$ : $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} x^2\\ln x = 0$. L'affirmation est fausse."
       },
       {
         "id": "q3",
@@ -910,7 +876,7 @@
           "Un point commun aux deux courbes, situé sur la droite $y = x$, vérifierait $\\ln x = x$ : est-ce possible ?",
           "Le cours montre que $\\ln x \\leqslant x - 1$ pour tout $x > 0$ : compare $\\ln x$ et $x$."
         ],
-        "revoir": "l-logarithme-058",
+        "revoir": "l-logarithme-051",
         "solution": "Un point de la droite $y = x$ commun aux deux courbes vérifierait $\\ln x = x$. Or, pour tout $x > 0$, $\\ln x \\leqslant x - 1 < x$ : la courbe de $\\ln$ est strictement sous la droite d'équation $y = x$ et, par symétrie, celle de l'exponentielle est strictement au-dessus. Les deux courbes n'ont aucun point commun. L'affirmation est fausse."
       },
       {
@@ -2253,7 +2219,7 @@
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Au bout de combien de temps le café est-il à $50$ °C ? Donner la valeur exacte, puis une valeur approchée en minutes à $0{,}01$ près.",
+        "enonce": "Au bout de combien de temps le café est-il à $50$ °C ? Donner la valeur exacte, puis une valeur approchée en minutes à $0{,}01$ près. Saisir la valeur approchée.",
         "reponse": { "type": "numerique", "valeur": 13.86, "tolerance": 0.01, "unite": "min" },
         "indices": [
           "Résous l'équation $T(t) = 50$ : isole d'abord l'exponentielle.",
@@ -2324,7 +2290,7 @@
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Pour quel nombre d'objets le bénéfice est-il maximal ? Donner ce bénéfice maximal en euros, arrondi à l'euro.",
+        "enonce": "Pour quel nombre d'objets le bénéfice est-il maximal ? Donner ce bénéfice maximal en euros, arrondi à l'euro. Saisir le bénéfice maximal, en euros.",
         "reponse": { "type": "numerique", "valeur": 2296, "tolerance": 1, "unite": "€" },
         "indices": [
           "D'après la question 1, le maximum est atteint en $x = 3$ : traduis en nombre d'objets, puis calcule $B(3)$.",
@@ -2358,7 +2324,8 @@
           "Le nombre d'objets $100x$ est un entier inférieur ou égal à $100\\alpha$ : utilise l'encadrement $8{,}37 < \\alpha < 8{,}38$."
         ],
         "revoir": "l-logarithme-073",
-        "solution": "Sur $[1\\,;\\,3]$, $B$ est croissante, donc $B(x) \\geqslant B(1) = 1 > 0$. Sur $[3\\,;\\,10]$, $B$ est strictement décroissante et $B(\\alpha) = 0$ : $B(x) \\geqslant 0 \\iff x \\leqslant \\alpha$. L'artisan ne subit donc pas de perte tant que le nombre d'objets $100x$ ne dépasse pas $100\\alpha$. Comme $8{,}37 < \\alpha < 8{,}38$, on a $837 < 100\\alpha < 838$ : il peut fabriquer au plus $837$ objets sans perte."
+        "solution": "Sur $[1\\,;\\,3]$, $B$ est croissante, donc $B(x) \\geqslant B(1) = 1 > 0$. Sur $[3\\,;\\,10]$, $B$ est strictement décroissante et $B(\\alpha) = 0$ : $B(x) \\geqslant 0 \\iff x \\leqslant \\alpha$. L'artisan ne subit donc pas de perte tant que le nombre d'objets $100x$ ne dépasse pas $100\\alpha$. Comme $8{,}37 < \\alpha < 8{,}38$, on a $837 < 100\\alpha < 838$ : il peut fabriquer au plus $837$ objets sans perte.",
+        "erreurFrequente": "Répondre $838$ en multipliant par $100$ l'arrondi $\\alpha \\approx 8{,}38$. Cet arrondi est **au-dessus** de $\\alpha$ : $B(8{,}38) \\approx -0{,}002 < 0$, donc $838$ objets donnent déjà une perte. On garde le plus grand entier inférieur ou égal à $100\\alpha$, que l'on lit sur l'encadrement $8{,}37 < \\alpha < 8{,}38$, et non sur l'arrondi."
       }
     ]
   },
@@ -2408,11 +2375,11 @@
         "enonce": "Montrer que, pour tout réel $x > 0$, $f'(x) = \\dfrac{2(1 - \\ln x)}{x}$, puis dresser le tableau de variations complet de $f$.",
         "reponse": { "type": "redaction" },
         "indices": [
-          "Développe d'abord : $f(x) = 2\\ln x - (\\ln x)^2$. La dérivée d'un carré $u^2$ est $2u'u$.",
+          "Développe d'abord : $f(x) = 2\\ln x - (\\ln x)^2$. La dérivée d'un carré $u^2$ est $2u'u$ : c'est le cas $n = 2$ de $\\left(u^n\\right)' = nu'u^{n-1}$, appliqué à $(\\ln x)^2$ dans l'exemple du cours.",
           "$\\left((\\ln x)^2\\right)' = 2 \\times \\dfrac{1}{x} \\times \\ln x$. Donc $f'(x) = \\dfrac{2}{x} - \\dfrac{2\\ln x}{x}$ : factorise.",
           "$x > 0$ : $f'(x)$ a le signe de $1 - \\ln x$, positif pour $x < e$. Calcule $f(e)$, puis place les limites de la question 1."
         ],
-        "revoir": "l-logarithme-048",
+        "revoir": "l-logarithme-041",
         "solution": "$f(x) = 2\\ln x - (\\ln x)^2$. La dérivée de $u^2$ est $2u'u$, donc $\\left((\\ln x)^2\\right)' = \\dfrac{2\\ln x}{x}$. Ainsi $f'(x) = \\dfrac{2}{x} - \\dfrac{2\\ln x}{x} = \\dfrac{2(1 - \\ln x)}{x}$.\n\nComme $x > 0$, $f'(x)$ a le signe de $1 - \\ln x$ : $1 - \\ln x > 0 \\iff \\ln x < 1 \\iff x < e$. Donc $f$ est strictement croissante sur $]0\\,;\\,e]$ et strictement décroissante sur $[e\\,;\\,+\\infty[$, de maximum $f(e) = 1 \\times (2 - 1) = 1$.\n\n| $x$ | $0$ | | $e$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $+$ | $0$ | $-$ | |\n| variations de $f$ | $-\\infty$ | $\\nearrow$ | $1$ | $\\searrow$ | $-\\infty$ |"
       },
       {
@@ -2669,12 +2636,12 @@
         "enonce": "Montrer que, pour tout $a$ de $]0\\,;\\,e[$, $\\mathcal{A}'(a) = -\\dfrac{(1 - \\ln a)(1 + \\ln a)}{2}$, puis étudier les variations de $\\mathcal{A}$ sur $]0\\,;\\,e[$.",
         "reponse": { "type": "redaction" },
         "indices": [
-          "$\\mathcal{A}(a) = \\dfrac{1}{2} \\times a \\times w(a)^2$ avec $w(a) = 1 - \\ln a$ : dérive le produit, avec $\\left(w^2\\right)' = 2w'w$.",
+          "$\\mathcal{A}(a) = \\dfrac{1}{2} \\times a \\times w(a)^2$ avec $w(a) = 1 - \\ln a$ : dérive le produit, avec $\\left(w^2\\right)' = 2w'w$, cas $n = 2$ de $\\left(w^n\\right)' = nw'w^{n-1}$.",
           "$\\left((1 - \\ln a)^2\\right)' = 2 \\times \\left(-\\dfrac{1}{a}\\right) \\times (1 - \\ln a)$. Donc $\\mathcal{A}'(a) = \\dfrac{1}{2}\\left[(1 - \\ln a)^2 - 2(1 - \\ln a)\\right]$.",
           "Factorise par $1 - \\ln a$. Sur $]0\\,;\\,e[$, $1 - \\ln a > 0$ : le signe de $\\mathcal{A}'(a)$ est celui de $-(1 + \\ln a)$.",
           "$-(1 + \\ln a) > 0 \\iff \\ln a < -1 \\iff a < e^{-1}$ : conclus sur les variations."
         ],
-        "revoir": "l-logarithme-048",
+        "revoir": "l-logarithme-039",
         "solution": "$\\mathcal{A}'(a) = \\dfrac{1}{2}\\left[1 \\times (1 - \\ln a)^2 + a \\times 2 \\times \\left(-\\dfrac{1}{a}\\right)(1 - \\ln a)\\right] = \\dfrac{1}{2}(1 - \\ln a)\\big[(1 - \\ln a) - 2\\big] = -\\dfrac{(1 - \\ln a)(1 + \\ln a)}{2}$.\n\nSur $]0\\,;\\,e[$, $1 - \\ln a > 0$, donc $\\mathcal{A}'(a)$ a le signe de $-(1 + \\ln a)$. Or $-(1 + \\ln a) > 0 \\iff \\ln a < -1 \\iff a < e^{-1}$. Donc $\\mathcal{A}$ est strictement croissante sur $\\left]0\\,;\\,e^{-1}\\right]$ et strictement décroissante sur $\\left[e^{-1}\\,;\\,e\\right[$."
       },
       {
