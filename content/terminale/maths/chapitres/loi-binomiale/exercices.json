@@ -59,7 +59,7 @@
     "niveau": 1,
     "notions": ["n-loi-binomiale-epreuves-independantes"],
     "capacites": ["bo-m-bernoulli-05"],
-    "titre": "Un arbre pondéré à compléter",
+    "titre": "Un arbre pondéré à construire",
     "duree": 5,
     "calculatrice": false,
     "ordre": 102,
@@ -176,16 +176,16 @@
         "reponse": {
           "type": "qcm",
           "choix": [
+            "On tire une carte d'un jeu de $32$ cartes et on regarde si c'est une figure (valet, dame ou roi).",
             "On lance un dé à six faces et on note le numéro obtenu.",
             "On lance deux pièces et on note le nombre de piles obtenus.",
-            "On tire une carte d'un jeu de $32$ cartes et on regarde si c'est une figure (valet, dame ou roi).",
             "On tire deux boules d'une urne de boules rouges et noires, et on note leurs deux couleurs dans l'ordre."
           ],
-          "bonne": 2,
+          "bonne": 0,
           "pourquoiFaux": [
+            null,
             "Six issues possibles, de $1$ à $6$ : une épreuve de Bernoulli n'en a que deux.",
             "Le nombre de piles peut valoir $0$, $1$ ou $2$ : trois issues, pas deux.",
-            null,
             "Les couleurs notées dans l'ordre donnent quatre issues (rouge-rouge, rouge-noire, noire-rouge, noire-noire), pas deux."
           ]
         },
@@ -355,16 +355,16 @@
         "reponse": {
           "type": "qcm",
           "choix": [
+            "On lance $10$ fois une pièce équilibrée ; $X$ est le nombre de faces obtenues.",
             "On tire successivement $3$ boules **sans remise** dans une urne de $5$ boules, dont $2$ rouges ; $X$ est le nombre de boules rouges tirées.",
             "On lance $10$ fois un dé équilibré ; $X$ est la somme des numéros obtenus.",
-            "On lance $10$ fois une pièce équilibrée ; $X$ est le nombre de faces obtenues.",
             "On lance un dé équilibré jusqu'à obtenir $6$ ; $X$ est le nombre de lancers effectués."
           ],
-          "bonne": 2,
+          "bonne": 0,
           "pourquoiFaux": [
+            null,
             "Sans remise, la composition de l'urne change à chaque tirage : les tirages ne sont pas indépendants.",
             "$X$ ne compte pas des succès : c'est une somme de numéros, qui peut valoir de $10$ à $60$.",
-            null,
             "Le nombre d'épreuves n'est pas fixé à l'avance : on ne répète pas $n$ fois la même épreuve, on s'arrête au premier $6$."
           ]
         },
@@ -383,16 +383,16 @@
           "type": "qcm",
           "choix": [
             "$\\mathcal{B}(5\\,;\\,0{,}7)$",
-            "$\\mathcal{B}(5\\,;\\,0{,}3)$",
             "$\\mathcal{B}(10\\,;\\,0{,}3)$",
-            "$\\mathcal{B}(3\\,;\\,0{,}5)$"
+            "$\\mathcal{B}(3\\,;\\,0{,}5)$",
+            "$\\mathcal{B}(5\\,;\\,0{,}3)$"
           ],
-          "bonne": 1,
+          "bonne": 3,
           "pourquoiFaux": [
             "$0{,}7$ est la probabilité de tirer une boule noire ; or $X$ compte les boules **blanches**.",
-            null,
             "$10$ est le nombre de boules dans l'urne, pas le nombre de tirages : il y a $5$ tirages.",
-            "$3$ est le nombre de boules blanches, ni le nombre de tirages ni une probabilité."
+            "$3$ est le nombre de boules blanches, ni le nombre de tirages ni une probabilité.",
+            null
           ]
         },
         "indices": [
@@ -625,7 +625,7 @@
         },
         "indices": [
           "$\\{2 \\leqslant X \\leqslant 5\\}$ contient les valeurs $2, 3, 4, 5$. Pars de $\\{X \\leqslant 5\\}$ : quelles valeurs faut-il en retirer ?",
-          "Il faut retirer les valeurs strictement inférieures à $2$ : écris la probabilité cumulée qui les regroupe."
+          "Il faut retirer les valeurs $0$ et $1$, strictement inférieures à $2$ : écris avec une seule inégalité l'événement « $X$ vaut $0$ ou $1$ »."
         ],
         "revoir": "l-loi-binomiale-047",
         "solution": "$\\{X \\leqslant 5\\}$ contient $0, 1, \\dots, 5$ ; on en retire $\\{X \\leqslant 1\\}$, qui contient $0$ et $1$. Il reste $2, 3, 4, 5$ : $P(2 \\leqslant X \\leqslant 5) = P(X \\leqslant 5) - P(X \\leqslant 1)$."
@@ -633,7 +633,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "On donne $P(X \\leqslant 3) = 0{,}171\\,875$. Calculer la probabilité d'obtenir au moins $4$ succès.",
+        "enonce": "On donne $P(X \\leqslant 3) = 0{,}171\\,875$. Calculer la probabilité d'obtenir au moins $4$ succès. Donner la valeur décimale exacte.",
         "reponse": { "type": "numerique", "valeur": 0.828125, "tolerance": 0.0001 },
         "indices": [
           "Utilise l'égalité trouvée à la question 1.",
@@ -712,11 +712,11 @@
         "enonce": "Calculer $P(X = 6)$.",
         "reponse": { "type": "numerique", "valeur": 0.179, "tolerance": 0.001 },
         "indices": [
-          "Avec $n = 30$, le calcul à la main serait long : utilise la loi binomiale de ta calculatrice, qui donne $P(X = k)$.",
-          "Sur TI, binomFdp(30, 0.2, 6) ; sur Casio, Bpd ; sur NumWorks, l'application Probabilités. Contrôle l'ordre des paramètres sur $P(X = 0) = 0{,}8^{30}$."
+          "Avec $n = 30$, le calcul à la main serait long. La calculatrice a une fonction qui donne $P(X = k)$ pour une loi binomiale : la méthode du cours dit où la trouver sur chaque modèle (TI, Casio, NumWorks).",
+          "Sur TI, tape binomFdp(30, 0.2, 6) : $n$, puis $p$ (avec un point décimal), puis $k$. Sur Casio ou NumWorks, suis le chemin de la méthode du cours et entre $n = 30$, $p = 0{,}2$ et $k = 6$. Pour contrôler ta saisie, le même calcul avec $k = 0$ doit donner $0{,}8^{30} \\approx 0{,}001\\,2$."
         ],
         "revoir": "l-loi-binomiale-050",
-        "solution": "À la calculatrice (loi binomiale, probabilité simple), $P(X = 6) \\approx 0{,}179$. Par la formule, c'est $\\binom{30}{6} \\times 0{,}2^6 \\times 0{,}8^{24}$."
+        "solution": "Par la formule, $P(X = 6) = \\binom{30}{6} \\times 0{,}2^6 \\times 0{,}8^{24}$ : trop long à la main. Sur TI, on tape binomFdp(30, 0.2, 6) ; sur Casio ou NumWorks, on entre $n = 30$, $p = 0{,}2$ et $k = 6$ dans la loi binomiale (probabilité de « $X = k$ »). La calculatrice affiche $0{,}179\\,4\\ldots$, donc $P(X = 6) \\approx 0{,}179$."
       },
       {
         "id": "q2",
@@ -724,11 +724,11 @@
         "enonce": "Calculer la probabilité d'obtenir au plus $4$ succès.",
         "reponse": { "type": "numerique", "valeur": 0.255, "tolerance": 0.001 },
         "indices": [
-          "« Au plus $4$ » se traduit par $X \\leqslant 4$ : c'est une probabilité cumulée.",
-          "La calculatrice donne directement $P(X \\leqslant k)$ : binomFRép sur TI, Bcd sur Casio."
+          "« Au plus $4$ » se traduit par $X \\leqslant 4$. C'est une probabilité **cumulée** : la somme $P(X = 0) + P(X = 1) + \\dots + P(X = 4)$, que la calculatrice donne en une seule fois.",
+          "Sur TI, tape binomFRép(30, 0.2, 4) : binomFRép donne $P(X \\leqslant k)$, alors que binomFdp donne $P(X = k)$. Sur Casio ou NumWorks, choisis la probabilité cumulée en suivant la méthode du cours, avec $n = 30$, $p = 0{,}2$ et $k = 4$."
         ],
         "revoir": "l-loi-binomiale-050",
-        "solution": "« Au plus $4$ succès » se traduit par $X \\leqslant 4$. La calculatrice (probabilité cumulée) donne $P(X \\leqslant 4) \\approx 0{,}255$."
+        "solution": "« Au plus $4$ succès » se traduit par $X \\leqslant 4$. Sur TI, on tape binomFRép(30, 0.2, 4) ; sur Casio ou NumWorks, on choisit la probabilité cumulée avec $n = 30$, $p = 0{,}2$ et $k = 4$. La calculatrice affiche $0{,}255\\,2\\ldots$, donc $P(X \\leqslant 4) \\approx 0{,}255$."
       },
       {
         "id": "q3",
@@ -737,10 +737,10 @@
         "reponse": { "type": "numerique", "valeur": 0.239, "tolerance": 0.001 },
         "indices": [
           "La calculatrice ne donne que $P(X = k)$ et $P(X \\leqslant k)$ : passe par l'événement contraire de $X \\geqslant 8$.",
-          "$P(X \\geqslant 8) = 1 - P(X \\leqslant 7)$ : calcule $P(X \\leqslant 7)$, puis retranche de $1$."
+          "$P(X \\geqslant 8) = 1 - P(X \\leqslant 7)$ : calcule $P(X \\leqslant 7)$ comme à la question 2 (sur TI, binomFRép(30, 0.2, 7)), puis retranche le résultat de $1$."
         ],
         "revoir": "l-loi-binomiale-058",
-        "solution": "« Au moins $8$ » se traduit par $X \\geqslant 8$, dont le contraire est $X \\leqslant 7$. Donc $P(X \\geqslant 8) = 1 - P(X \\leqslant 7) \\approx 1 - 0{,}760\\,8 = 0{,}239\\,2$, soit environ $0{,}239$.",
+        "solution": "« Au moins $8$ » se traduit par $X \\geqslant 8$, dont le contraire est $X \\leqslant 7$. Donc $P(X \\geqslant 8) = 1 - P(X \\leqslant 7)$. Sur TI, binomFRép(30, 0.2, 7) donne $P(X \\leqslant 7) \\approx 0{,}760\\,8$ (même saisie que la question 2 sur les autres modèles, avec $k = 7$). Donc $P(X \\geqslant 8) \\approx 1 - 0{,}760\\,8 = 0{,}239\\,2$, soit environ $0{,}239$.",
         "erreurFrequente": "Calculer $1 - P(X \\leqslant 8)$, qui vaut $P(X \\geqslant 9)$ : la valeur $8$ fait partie de « au moins $8$ »."
       }
     ]
@@ -802,8 +802,8 @@
           ]
         },
         "indices": [
-          "$\\{X \\leqslant 6\\}$ s'écrit aussi $\\{X \\in I\\}$ pour un intervalle $I$ : lequel ?",
-          "$X$ prend des valeurs entières de $0$ à $12$ ; l'événement $X \\leqslant 6$ regroupe les valeurs de $0$ jusqu'à $6$."
+          "« $X \\in [a\\,;\\,b]$ » signifie $a \\leqslant X \\leqslant b$. L'événement $\\{X \\leqslant 6\\}$ s'écrit aussi $\\{X \\in I\\}$ pour un intervalle $I$ : lequel ?",
+          "$X$ ne prend que des valeurs entières, de $0$ à $12$. Liste celles qui vérifient $X \\leqslant 6$ : la plus petite et la plus grande sont les bornes de $I$."
         ],
         "revoir": "l-loi-binomiale-054",
         "solution": "$\\{X \\leqslant 6\\} = \\{X \\in [0\\,;\\,6]\\}$, et $P(X \\leqslant 6) \\geqslant 0{,}95$ : donc $P(X \\in [0\\,;\\,6]) \\geqslant 0{,}95$. De façon équivalente, $P(X \\in [7\\,;\\,12]) \\leqslant 0{,}05$."
@@ -828,16 +828,16 @@
         "reponse": {
           "type": "qcm",
           "choix": [
+            "$0{,}8^n \\leqslant 0{,}05$",
             "$0{,}8^n \\geqslant 0{,}05$",
             "$0{,}8^n \\leqslant 0{,}95$",
-            "$0{,}8^n \\leqslant 0{,}05$",
             "$n \\leqslant \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$"
           ],
-          "bonne": 2,
+          "bonne": 0,
           "pourquoiFaux": [
+            null,
             "En passant de $-0{,}8^n$ à $0{,}8^n$, on multiplie par $-1$ : le sens de l'inégalité change.",
             "On retranche $1$ aux deux membres : à droite, il reste $0{,}95 - 1 = -0{,}05$, pas $0{,}95$.",
-            null,
             "En divisant par $\\ln 0{,}8$, qui est négatif, le sens change : on obtient $n \\geqslant \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$."
           ]
         },
@@ -1220,7 +1220,7 @@
           "Le montage fonctionne si la partie en parallèle fonctionne **et** si le troisième composant fonctionne : par indépendance, multiplie les deux probabilités.",
           "Calcule $1 - 0{,}1^2$, puis multiplie le résultat par $0{,}9$."
         ],
-        "revoir": "l-loi-binomiale-003",
+        "revoir": "l-loi-binomiale-024",
         "solution": "La partie en parallèle fonctionne si au moins un des deux premiers composants fonctionne : par l'événement contraire, sa probabilité est $1 - 0{,}1^2 = 1 - 0{,}01 = 0{,}99$. Le troisième composant fonctionne avec la probabilité $0{,}9$, indépendamment des deux premiers. Le montage fonctionne si les deux parties fonctionnent : sa probabilité est $0{,}99 \\times 0{,}9 = 0{,}891$."
       },
       {
@@ -1266,21 +1266,21 @@
           "type": "qcm",
           "choix": [
             "La probabilité que le footballeur marque un penalty",
-            "Un penalty : il renvoie $1$ si le penalty est marqué et $0$ sinon",
             "Le nombre de penaltys marqués",
-            "Un nombre réel pris au hasard entre $0$ et $0{,}8$"
+            "Un nombre réel pris au hasard entre $0$ et $0{,}8$",
+            "Un penalty : il renvoie $1$ si le penalty est marqué et $0$ sinon"
           ],
-          "bonne": 1,
+          "bonne": 3,
           "pourquoiFaux": [
             "La fonction ne calcule pas de probabilité : elle simule un tir au hasard, et son résultat change à chaque appel.",
-            null,
             "tir ne simule qu'un seul tir : elle renvoie $0$ ou $1$, pas un nombre de penaltys.",
-            "Le réel tiré au hasard est comparé à p, mais il n'est pas renvoyé : la fonction renvoie $1$ ou $0$."
+            "Le réel tiré au hasard est comparé à p, mais il n'est pas renvoyé : la fonction renvoie $1$ ou $0$.",
+            null
           ]
         },
         "indices": [
           "Regarde ce que renvoie la fonction tir : quelles valeurs peut-elle prendre ?",
-          "Le réel tiré au hasard dans $[0\\,;\\,1[$ est inférieur à p avec la probabilité p : la condition du test est vraie avec cette probabilité.",
+          "Le réel tiré au hasard dans $[0\\,;\\,1[$ tombe dans $[0\\,;\\,p[$, intervalle de longueur p, avec la probabilité p : la condition du test est vraie avec cette probabilité.",
           "La fonction renvoie $1$ quand la condition est vraie et $0$ sinon : c'est une épreuve de Bernoulli. Quel est ici le succès ?"
         ],
         "revoir": "l-loi-binomiale-026",
@@ -1293,16 +1293,16 @@
         "reponse": {
           "type": "qcm",
           "choix": [
+            "print(sum(serie(5, 0.8)))",
             "print(len(serie(5, 0.8)))",
             "print(serie(5, 0.8))",
-            "print(sum(serie(5, 0.8)))",
             "print(tir(5))"
           ],
-          "bonne": 2,
+          "bonne": 0,
           "pourquoiFaux": [
+            null,
             "len donne la longueur de la liste : toujours $5$, quel que soit le nombre de penaltys marqués.",
             "Cette instruction affiche la liste des $5$ résultats, par exemple [1, 1, 0, 1, 1], et non le nombre de penaltys marqués.",
-            null,
             "tir attend une probabilité, pas un nombre de tirs ; et elle ne simule qu'un seul tir."
           ]
         },
@@ -1612,7 +1612,7 @@
         "id": "q3",
         "label": "3.",
         "enonce": "Calculer la probabilité qu'aucune paire de l'échantillon ne présente de défaut, arrondie à $10^{-3}$.",
-        "reponse": { "type": "numerique", "valeur": 0.13, "tolerance": 0.001 },
+        "reponse": { "type": "numerique", "valeur": 0.13, "tolerance": 0.001, "decimales": 3 },
         "indices": [
           "Traduis avec $X$ : « aucune paire avec un défaut » s'écrit $X = 0$.",
           "Avec $k = 0$ : $\\binom{50}{0} = 1$ et $0{,}04^0 = 1$.",
@@ -1655,11 +1655,11 @@
         "reponse": { "type": "numerique", "valeur": 0.174, "tolerance": 0.001 },
         "indices": [
           "Traduis avec $X$ : « exactement $6$ » s'écrit $X = 6$.",
-          "La calculatrice donne $P(X = k)$ : sur TI, binomFdp ; sur Casio, Bpd ; sur NumWorks, l'application Probabilités.",
-          "Entre $n = 40$, $p = 0{,}15$ et $k = 6$, en contrôlant l'ordre des paramètres de ton modèle."
+          "La calculatrice donne $P(X = k)$ : sur TI, c'est binomFdp(n, p, k) ; pour Casio et NumWorks, le chemin est dans la méthode du cours.",
+          "Sur TI, tape binomFdp(40, 0.15, 6) ; sur un autre modèle, entre $n = 40$, $p = 0{,}15$ et $k = 6$ en contrôlant l'ordre des paramètres."
         ],
         "revoir": "l-loi-binomiale-050",
-        "solution": "On cherche $P(X = 6) = \\binom{40}{6} \\times 0{,}15^6 \\times 0{,}85^{34}$. La calculatrice donne $P(X = 6) \\approx 0{,}174$."
+        "solution": "On cherche $P(X = 6) = \\binom{40}{6} \\times 0{,}15^6 \\times 0{,}85^{34}$. À la calculatrice (sur TI, binomFdp(40, 0.15, 6)), $P(X = 6) \\approx 0{,}174$."
       },
       {
         "id": "q2",
@@ -1668,11 +1668,11 @@
         "reponse": { "type": "numerique", "valeur": 0.865, "tolerance": 0.001 },
         "indices": [
           "« Au plus $8$ » se traduit par $X \\leqslant 8$ : $0$, $1$, … ou $8$ chats.",
-          "C'est une probabilité cumulée, que la calculatrice donne directement.",
-          "Sur TI, binomFRép ; sur Casio, Bcd : entre $40$, $0{,}15$ et $8$."
+          "C'est une probabilité cumulée, $P(X = 0) + \\dots + P(X = 8)$, que la calculatrice donne directement : sur TI, binomFRép(n, p, k) ; pour Casio et NumWorks, voir la méthode du cours.",
+          "Sur TI, tape binomFRép(40, 0.15, 8) ; sur un autre modèle, choisis la probabilité cumulée avec $n = 40$, $p = 0{,}15$ et $k = 8$."
         ],
         "revoir": "l-loi-binomiale-050",
-        "solution": "« Au plus $8$ » se traduit par $X \\leqslant 8$. La calculatrice (probabilité cumulée) donne $P(X \\leqslant 8) \\approx 0{,}865$."
+        "solution": "« Au plus $8$ » se traduit par $X \\leqslant 8$. La calculatrice (probabilité cumulée ; sur TI, binomFRép(40, 0.15, 8)) donne $P(X \\leqslant 8) \\approx 0{,}865$."
       },
       {
         "id": "q3",
@@ -1723,22 +1723,22 @@
           "type": "qcm",
           "choix": [
             "$X \\geqslant k$",
-            "$X > k$",
             "$X < k$",
+            "$X > k$",
             "$X \\leqslant k$"
           ],
-          "bonne": 1,
+          "bonne": 2,
           "pourquoiFaux": [
             "Si $X = k$, chaque spectateur qui demande un cornet le reçoit : il n'en manque pas.",
-            null,
             "Si moins de $k$ cornets sont demandés, il en reste : le vendeur n'en manque pas.",
+            null,
             "$X \\leqslant k$ est l'événement « tous les cornets demandés sont servis », le contraire de celui qu'on cherche."
           ]
         },
         "indices": [
-          "Le vendeur a $k$ cornets. Jusqu'à combien de demandes peut-il servir tout le monde ?",
-          "Avec $k$ cornets, il sert jusqu'à $k$ demandes. Il en manque dès que le nombre de demandes dépasse $k$.",
-          "Teste le cas $X = k$ : manque-t-il un cornet ?"
+          "C'est la situation des repas végétariens du cours. Le vendeur a $k$ cornets : jusqu'à combien de demandes peut-il servir tout le monde ?",
+          "Avec $k$ cornets, il sert jusqu'à $k$ demandes : écris avec $X$ l'événement « tout le monde est servi », puis prends son contraire.",
+          "Teste $X = k$, puis $X = k + 1$ : dans quel cas manque-t-il un cornet ?"
         ],
         "revoir": "l-loi-binomiale-055",
         "solution": "Avec $k$ cornets, le vendeur peut servir jusqu'à $k$ demandes. Il manque de cornets si et seulement si plus de $k$ cornets sont demandés, c'est-à-dire si $X > k$."
@@ -1764,7 +1764,7 @@
         "indices": [
           "Traduis : on cherche le plus petit entier $k$ tel que $P(X > k) \\leqslant 0{,}05$.",
           "$P(X > k) \\leqslant 0{,}05$ équivaut à $P(X \\leqslant k) \\geqslant 0{,}95$.",
-          "Affiche un tableau de valeurs de $P(X \\leqslant k)$ à partir de $k = 18$, et repère la première valeur qui atteint $0{,}95$.",
+          "Affiche un tableau de valeurs de $P(X \\leqslant k)$ à partir de $k = 18$ (sur TI : définis la fonction Y1 = binomFRép(50, 0.3, X), puis ouvre sa table de valeurs), et repère la première valeur qui atteint $0{,}95$.",
           "Justifie avec les deux valeurs consécutives qui encadrent $0{,}95$."
         ],
         "revoir": "l-loi-binomiale-054",
@@ -1791,20 +1791,20 @@
       {
         "id": "q1",
         "label": "1.",
-        "enonce": "L'hôtel dispose de $36$ chambres. Calculer la probabilité qu'un client qui se présente n'ait pas de chambre, arrondie à $10^{-3}$.",
-        "reponse": { "type": "numerique", "valeur": 0.13, "tolerance": 0.001 },
+        "enonce": "L'hôtel dispose de $36$ chambres. Calculer la probabilité qu'au moins un client qui se présente n'ait pas de chambre, arrondie à $10^{-3}$.",
+        "reponse": { "type": "numerique", "valeur": 0.13, "tolerance": 0.001, "decimales": 3 },
         "indices": [
-          "Un client n'a pas de chambre quand plus de $36$ clients se présentent : traduis avec $X$.",
+          "Au moins un client n'a pas de chambre quand plus de $36$ clients se présentent : traduis avec $X$.",
           "On cherche $P(X > 36) = 1 - P(X \\leqslant 36)$.",
-          "Calcule $P(X \\leqslant 36)$ à la calculatrice avec la loi $\\mathcal{B}(40\\,;\\,0{,}85)$, puis retranche de $1$."
+          "Calcule $P(X \\leqslant 36)$ à la calculatrice avec la loi $\\mathcal{B}(40\\,;\\,0{,}85)$ (sur TI, binomFRép(40, 0.85, 36)), puis retranche le résultat de $1$."
         ],
         "revoir": "l-loi-binomiale-056",
-        "solution": "Un client n'a pas de chambre si plus de $36$ clients se présentent, c'est-à-dire si $X > 36$. Or $P(X > 36) = 1 - P(X \\leqslant 36) \\approx 1 - 0{,}869\\,8 = 0{,}130\\,2$, soit environ $0{,}130$."
+        "solution": "Au moins un client n'a pas de chambre si plus de $36$ clients se présentent, c'est-à-dire si $X > 36$. Or $P(X > 36) = 1 - P(X \\leqslant 36) \\approx 1 - 0{,}869\\,8 = 0{,}130\\,2$, soit environ $0{,}130$."
       },
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Quel appel renvoie le plus petit nombre $k$ de chambres pour lequel la probabilité qu'un client n'ait pas de chambre est au plus $5\\,\\%$ ?",
+        "enonce": "Quel appel renvoie le plus petit nombre $k$ de chambres pour lequel la probabilité qu'au moins un client qui se présente n'ait pas de chambre est au plus $5\\,\\%$ ?",
         "reponse": {
           "type": "qcm",
           "choix": [
@@ -1841,7 +1841,7 @@
           "Conclus avec deux valeurs consécutives : $P(X \\leqslant k - 1) < 0{,}95 \\leqslant P(X \\leqslant k)$."
         ],
         "revoir": "l-loi-binomiale-054",
-        "solution": "On cherche le plus petit $k$ tel que $P(X > k) \\leqslant 0{,}05$, soit $P(X \\leqslant k) \\geqslant 0{,}95$. La calculatrice donne $P(X \\leqslant 36) \\approx 0{,}869\\,8 < 0{,}95$ et $P(X \\leqslant 37) \\approx 0{,}951\\,4 \\geqslant 0{,}95$. L'appel renvoie donc $37$ : avec $37$ chambres, la probabilité qu'un client n'ait pas de chambre est $P(X > 37) \\approx 0{,}049$."
+        "solution": "On cherche le plus petit $k$ tel que $P(X > k) \\leqslant 0{,}05$, soit $P(X \\leqslant k) \\geqslant 0{,}95$. La calculatrice donne $P(X \\leqslant 36) \\approx 0{,}869\\,8 < 0{,}95$ et $P(X \\leqslant 37) \\approx 0{,}951\\,4 \\geqslant 0{,}95$. L'appel renvoie donc $37$ : avec $37$ chambres, la probabilité qu'au moins un client n'ait pas de chambre est $P(X > 37) \\approx 0{,}049$."
       },
       {
         "id": "q4",
@@ -1874,7 +1874,7 @@
         "id": "q1",
         "label": "1.",
         "enonce": "Exprimer $a_n$ en fonction de $n$, puis calculer $a_{10}$, arrondie à $10^{-3}$.",
-        "reponse": { "type": "numerique", "valeur": 0.86, "tolerance": 0.001 },
+        "reponse": { "type": "numerique", "valeur": 0.86, "tolerance": 0.001, "decimales": 3 },
         "indices": [
           "Un lot sans composant défectueux, ce sont $n$ composants non défectueux, de façon indépendante.",
           "Un composant n'est pas défectueux avec la probabilité $1 - 0{,}015 = 0{,}985$.",
@@ -2124,7 +2124,7 @@
         "id": "q5",
         "label": "5.",
         "enonce": "Calculer la probabilité qu'au moins $2$ tests soient positifs, arrondie à $10^{-3}$.",
-        "reponse": { "type": "numerique", "valeur": 0.51, "tolerance": 0.001 },
+        "reponse": { "type": "numerique", "valeur": 0.51, "tolerance": 0.001, "decimales": 3 },
         "indices": [
           "Traduis : « au moins $2$ » s'écrit $X \\geqslant 2$. Passe par l'événement contraire.",
           "Le contraire de $X \\geqslant 2$ est $X \\leqslant 1$ : $P(X \\geqslant 2) = 1 - P(X \\leqslant 1)$.",
@@ -2141,7 +2141,7 @@
         "indices": [
           "Avec $k$ analyses, le laboratoire confirme tous les tests positifs si $X \\leqslant k$.",
           "On cherche le plus petit entier $k$ tel que $P(X \\leqslant k) \\geqslant 0{,}95$.",
-          "Affiche à la calculatrice les valeurs de $P(X \\leqslant k)$ pour $k = 0, 1, 2, \\dots$ ; elles augmentent avec $k$.",
+          "Affiche à la calculatrice les valeurs de $P(X \\leqslant k)$ pour $k = 0, 1, 2, \\dots$ (sur TI : Y1 = binomFRép(20, 0.084, X), puis sa table de valeurs) ; elles augmentent avec $k$.",
           "Repère deux valeurs consécutives qui encadrent $0{,}95$, et conclus."
         ],
         "revoir": "l-loi-binomiale-054",
@@ -2292,7 +2292,7 @@
           "$(1 - p)^4 = 0{,}1^4$ et $4p(1 - p)^3 = 4 \\times 0{,}9 \\times 0{,}1^3$ : calcule ces deux termes.",
           "Retranche-les de $1$."
         ],
-        "revoir": "l-loi-binomiale-048",
+        "revoir": "l-loi-binomiale-035",
         "solution": "Avec $p = 0{,}9$ : $(1 - p)^4 = 0{,}1^4 = 0{,}000\\,1$ et $4p(1 - p)^3 = 4 \\times 0{,}9 \\times 0{,}001 = 0{,}003\\,6$. Donc $f_4(0{,}9) = 1 - 0{,}000\\,1 - 0{,}003\\,6 = 0{,}996\\,3$. Pour comparer, $f_2(0{,}9) = 1 - 0{,}1^2 = 0{,}99$."
       },
       {
@@ -2370,12 +2370,12 @@
         "enonce": "La compagnie vend $54$ billets. Calculer la probabilité qu'au moins un passager qui se présente n'ait pas de place, arrondie à $10^{-3}$.",
         "reponse": { "type": "numerique", "valeur": 0.198, "tolerance": 0.001 },
         "indices": [
-          "Un passager qui se présente n'a pas de place quand plus de $50$ passagers se présentent.",
+          "Au moins un passager qui se présente n'a pas de place quand plus de $50$ passagers se présentent.",
           "On cherche $P(X_{54} > 50)$, avec $X_{54}$ de loi $\\mathcal{B}(54\\,;\\,0{,}9)$.",
           "$P(X_{54} > 50) = 1 - P(X_{54} \\leqslant 50)$ : calcule la probabilité cumulée à la calculatrice."
         ],
         "revoir": "l-loi-binomiale-056",
-        "solution": "Un passager n'a pas de place si plus de $50$ passagers se présentent, c'est-à-dire si $X_{54} > 50$. La calculatrice donne $P(X_{54} \\leqslant 50) \\approx 0{,}801\\,54$, donc $P(X_{54} > 50) = 1 - P(X_{54} \\leqslant 50) \\approx 0{,}198\\,46$, soit environ $0{,}198$."
+        "solution": "Au moins un passager présent n'a pas de place si plus de $50$ passagers se présentent, c'est-à-dire si $X_{54} > 50$. La calculatrice donne $P(X_{54} \\leqslant 50) \\approx 0{,}801\\,54$, donc $P(X_{54} > 50) = 1 - P(X_{54} \\leqslant 50) \\approx 0{,}198\\,46$, soit environ $0{,}198$."
       },
       {
         "id": "q3",
@@ -2388,16 +2388,16 @@
         "reponse": {
           "type": "qcm",
           "choix": [
+            "$P(X_n > 50)$",
             "$P(X_n \\leqslant 50)$",
             "$P(X_n = 50)$",
-            "$P(X_n > 50)$",
             "$P(X_n \\geqslant 50)$"
           ],
-          "bonne": 2,
+          "bonne": 0,
           "pourquoiFaux": [
+            null,
             "C'est la valeur de cumul à la fin de la boucle ; la fonction renvoie $1$ moins cumul.",
             "cumul ne contient pas un seul terme : la boucle ajoute $P(X_n = k)$ pour $k$ allant de $0$ à $50$.",
-            null,
             "$1 - P(X_n \\leqslant 50)$ vaut $P(X_n \\geqslant 51)$, c'est-à-dire $P(X_n > 50)$ : la valeur $50$ n'en fait pas partie."
           ]
         },
@@ -2412,7 +2412,7 @@
       {
         "id": "q4",
         "label": "4.",
-        "enonce": "La compagnie veut que ce risque ne dépasse pas $5\\,\\%$. Déterminer le nombre maximal de billets qu'elle peut vendre.",
+        "enonce": "La compagnie veut que ce risque ne dépasse pas $5\\,\\%$. On admet que ce risque augmente avec le nombre de billets vendus. Déterminer le nombre maximal de billets qu'elle peut vendre.",
         "reponse": { "type": "numerique", "valeur": 52, "tolerance": 0 },
         "indices": [
           "On cherche le plus grand entier $n \\geqslant 50$ tel que $P(X_n > 50) \\leqslant 0{,}05$, c'est-à-dire tel que risque(n) renvoie au plus $0{,}05$.",
@@ -2421,17 +2421,17 @@
           "Arrête-toi au premier $n$ dont le risque dépasse $0{,}05$ : la réponse est l'entier précédent."
         ],
         "revoir": "l-loi-binomiale-056",
-        "solution": "Avec $50$ billets, aucun passager ne peut manquer de place. À la calculatrice : $P(X_{51} > 50) = 0{,}9^{51} \\approx 0{,}005$, $P(X_{52} > 50) \\approx 0{,}028 \\leqslant 0{,}05$ et $P(X_{53} > 50) \\approx 0{,}090 > 0{,}05$ ; le risque continue d'augmenter ensuite (environ $0{,}198$ pour $54$ billets, question 2). La compagnie peut donc vendre au plus $52$ billets."
+        "solution": "Avec $50$ billets, aucun passager ne peut manquer de place. À la calculatrice : $P(X_{51} > 50) = 0{,}9^{51} \\approx 0{,}005$, $P(X_{52} > 50) \\approx 0{,}028 \\leqslant 0{,}05$ et $P(X_{53} > 50) \\approx 0{,}090 > 0{,}05$. Comme le risque augmente avec le nombre de billets vendus, il dépasse $0{,}05$ pour tout $n \\geqslant 53$ (environ $0{,}198$ pour $54$ billets, question 2). La compagnie peut donc vendre au plus $52$ billets."
       },
       {
         "id": "q5",
         "label": "5.",
-        "enonce": "La compagnie vend finalement $54$ billets. Combien de places faudrait-il, au minimum, pour que la probabilité qu'un passager présent n'ait pas de place soit au plus $1\\,\\%$ ?",
+        "enonce": "La compagnie vend finalement $54$ billets. Combien de places faudrait-il, au minimum, pour que la probabilité qu'au moins un passager présent n'ait pas de place soit au plus $1\\,\\%$ ?",
         "reponse": { "type": "numerique", "valeur": 53, "tolerance": 0 },
         "indices": [
           "On cherche le plus petit entier $k$ tel que $P(X_{54} > k) \\leqslant 0{,}01$ : c'est le problème de la surréservation du cours.",
           "$P(X_{54} > k) \\leqslant 0{,}01 \\iff P(X_{54} \\leqslant k) \\geqslant 0{,}99$.",
-          "Affiche les valeurs de $P(X_{54} \\leqslant k)$ à partir de $k = 50$, et repère la première qui atteint $0{,}99$."
+          "Affiche les valeurs de $P(X_{54} \\leqslant k)$ à partir de $k = 50$ (sur TI : Y1 = binomFRép(54, 0.9, X), puis sa table de valeurs), et repère la première qui atteint $0{,}99$."
         ],
         "revoir": "l-loi-binomiale-054",
         "solution": "On cherche le plus petit $k$ tel que $P(X_{54} > k) \\leqslant 0{,}01$, soit $P(X_{54} \\leqslant k) \\geqslant 0{,}99$. La calculatrice donne $P(X_{54} \\leqslant 52) \\approx 0{,}976\\,3 < 0{,}99$ et $P(X_{54} \\leqslant 53) \\approx 0{,}996\\,6 \\geqslant 0{,}99$. Il faudrait au moins $53$ places."

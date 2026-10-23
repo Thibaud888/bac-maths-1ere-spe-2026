@@ -163,9 +163,9 @@
     "reponse": {
       "type": "vrai-faux",
       "valeur": false,
-      "justification": "Sans remise, la probabilité de tirer une rouge change d'un tirage à l'autre : les tirages ne sont ni identiques ni indépendants. Ce n'est pas un schéma de Bernoulli."
+      "justification": "Sans remise, la probabilité de tirer une rouge dépend des boules déjà tirées (après une rouge, il ne reste qu'une rouge sur $4$ boules) : les tirages ne sont pas indépendants. Ce n'est pas un schéma de Bernoulli."
     },
-    "explication": "Pour une loi binomiale, il faut des répétitions identiques et indépendantes : tirages avec remise, ou assimilés à des tirages avec remise. Ici, après une rouge, il ne reste qu'une rouge sur $4$ boules.",
+    "explication": "Pour une loi binomiale, il faut des répétitions indépendantes : tirages avec remise, ou assimilés à des tirages avec remise. Ici, la probabilité d'une rouge **sachant** le premier tirage vaut $\\dfrac{1}{4}$ après une rouge, mais $\\dfrac{2}{4}$ après une noire.",
     "duree": 20
   },
   {
@@ -258,7 +258,7 @@
     "capacites": ["bo-m-bernoulli-07"],
     "enonce": "On lance $n$ fois une pièce équilibrée. Quel est le plus petit entier $n$ pour lequel la probabilité d'obtenir au moins un pile est supérieure ou égale à $0{,}9$ ?",
     "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
-    "explication": "Il faut $1 - 0{,}5^n \\geqslant 0{,}9$, soit $0{,}5^n \\leqslant 0{,}1$, c'est-à-dire $2^n \\geqslant 10$. Or $2^3 = 8 < 10$ et $2^4 = 16 \\geqslant 10$ : le plus petit entier est $4$.",
+    "explication": "Il faut $1 - 0{,}5^n \\geqslant 0{,}9$, soit $0{,}5^n \\leqslant 0{,}1$, c'est-à-dire $\\dfrac{1}{2^n} \\leqslant \\dfrac{1}{10}$ ; en passant aux inverses de ces nombres positifs, $2^n \\geqslant 10$. Or $2^3 = 8 < 10$ et $2^4 = 16 \\geqslant 10$ : le plus petit entier est $4$.",
     "duree": 40
   }
 ]
