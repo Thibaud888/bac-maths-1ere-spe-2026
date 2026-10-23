@@ -871,7 +871,12 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     tour 1 (une justification fausse en éclair, un indice qui donnait la réponse), PASS au
     tour 2 ; élève-testeur 15/16 en Comprendre (x-012 bloqué par la calculatrice, corrigé).
     Coût : 53,7 $ pour les deux parties, avec deux coupures (limite des 5 h) ; agents repris
-    sans rien perdre.
+    sans rien perdre. PR : #132, fusionnée par la session à la demande de Thibaud (la fusion
+    automatique ne s'était pas faite une heure après l'ajout de « Vérification »). Leçons :
+    le tour de correction unique à trois correcteurs, puis une seule relecture ciblée
+    (40 items), a suffi ; le bloquant de l'élève-testeur n'était pas mathématique mais le
+    mode d'emploi de la calculatrice — dans un chapitre où elle sert, demander à l'auteur du
+    cours, dès le départ, le chemin d'accès par modèle et la saisie écrite dans les exemples.
   - [ ] Loi binomiale, petites retouches — non bloquants laissés ouverts (rapport de
     relecture du tour 2, 2026-10-23) : x-028 et x-035 q3 gardent `from math import comb`
     alors que le cours (`l-loi-binomiale-056`) donne un programme qui marche sur
