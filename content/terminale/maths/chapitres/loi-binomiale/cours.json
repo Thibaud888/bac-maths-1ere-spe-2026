@@ -1,0 +1,1138 @@
+{
+  "chapitre": "loi-binomiale",
+  "sections": [
+    {
+      "notion": "n-loi-binomiale-epreuves-independantes",
+      "blocs": [
+        {
+          "id": "l-loi-binomiale-001",
+          "type": "idee",
+          "texte": "Tu lances un dé, puis une pièce : ce sont deux **épreuves**, c'est-à-dire deux expériences dont le résultat dépend du hasard. Le dé ne change rien aux chances de la pièce : les épreuves sont **indépendantes**. Pour obtenir « $6$ puis pile », il suffit de multiplier : $\\dfrac{1}{6} \\times \\dfrac{1}{2} = \\dfrac{1}{12}$.\n\nSi tu tires deux boules d'une urne sans remettre la première, la seconde dépend de la première. Un arbre pondéré traite les deux cas."
+        },
+        {
+          "id": "l-loi-binomiale-002",
+          "type": "rappel",
+          "titre": "Rappel : arbre pondéré, probabilités conditionnelles",
+          "texte": "$P_A(B)$ se lit « probabilité de $B$ sachant $A$ » : c'est la probabilité de $B$ quand on sait que $A$ est réalisé. Si $P(A) \\neq 0$, $P_A(B) = \\dfrac{P(A \\cap B)}{P(A)}$.\n\n- Sur un arbre pondéré, les branches issues d'un même nœud ont pour somme $1$.\n- La probabilité d'un chemin est le produit des probabilités de ses branches : $P(A \\cap B) = P(A) \\times P_A(B)$.\n- **Probabilités totales** : si $A$ et $\\overline{A}$ forment une **partition** de l'univers (toute issue est dans l'un des deux, et dans un seul), $P(B) = P(A \\cap B) + P(\\overline{A} \\cap B)$.\n- $A$ et $B$ sont **indépendants** quand $P(A \\cap B) = P(A) \\times P(B)$.",
+          "lien": "1e:probas-cond"
+        },
+        {
+          "id": "l-loi-binomiale-003",
+          "type": "definition",
+          "titre": "Succession d'épreuves indépendantes",
+          "capacites": ["bo-m-bernoulli-01"],
+          "texte": "On réalise successivement $n$ épreuves. Les issues possibles de l'épreuve numéro $i$ forment un ensemble fini $\\Omega_i$ (lettre grecque oméga).\n\nUne issue de la succession est un $n$-uplet $(x_1, \\dots, x_n)$, où $x_i$ est l'issue de l'épreuve numéro $i$. L'univers est le produit cartésien $\\Omega_1 \\times \\Omega_2 \\times \\dots \\times \\Omega_n$.\n\nLes épreuves sont **indépendantes** lorsque la probabilité de chaque issue est le produit des probabilités de ses composantes :\n\n$$P\\big((x_1, \\dots, x_n)\\big) = P(x_1) \\times P(x_2) \\times \\dots \\times P(x_n).$$\n\nSur un arbre, chaque issue est un chemin. Chaque branche porte la probabilité d'une issue de l'épreuve correspondante, la même quel que soit le chemin suivi avant."
+        },
+        {
+          "id": "l-loi-binomiale-004",
+          "type": "exemple",
+          "titre": "Deux tours d'une roue",
+          "capacites": ["bo-m-bernoulli-01", "bo-m-bernoulli-05"],
+          "enonce": "Une roue de loterie a trois secteurs : rouge ($R$), bleu ($B$) et vert ($V$). À chaque tour, elle s'arrête sur rouge avec la probabilité $\\dfrac{1}{2}$, sur bleu avec la probabilité $\\dfrac{1}{3}$ et sur vert avec la probabilité $\\dfrac{1}{6}$. On la fait tourner deux fois ; les deux tours sont indépendants.\n\n**1.** Décrire l'univers et donner son nombre d'issues.\n\n**2.** Calculer la probabilité d'obtenir rouge puis bleu.\n\n**3.** Calculer la probabilité d'obtenir deux fois la même couleur.",
+          "etapes": [
+            {
+              "texte": "**1.** Une issue est un couple $(x_1, x_2)$ : $x_1$ est la couleur du premier tour, $x_2$ celle du second. L'univers est le produit cartésien $\\{R\\,;\\,B\\,;\\,V\\}^2 = \\{R\\,;\\,B\\,;\\,V\\} \\times \\{R\\,;\\,B\\,;\\,V\\}$. Il compte $3 \\times 3 = 9$ issues : ce sont les $9$ chemins de l'arbre dessiné juste après cet exemple.",
+              "pourquoi": "Principe multiplicatif : $3$ couleurs possibles au premier tour, puis $3$ au second."
+            },
+            {
+              "texte": "**2.** Les tours sont indépendants, donc la probabilité de l'issue $(R, B)$ est le produit des probabilités de ses composantes : $P\\big((R, B)\\big) = \\dfrac{1}{2} \\times \\dfrac{1}{3} = \\dfrac{1}{6}$.",
+              "pourquoi": "Sur l'arbre, c'est le produit des probabilités des deux branches du chemin « $R$ puis $B$ »."
+            },
+            {
+              "texte": "**3.** L'événement « deux fois la même couleur » est réalisé par trois issues : $(R, R)$, $(B, B)$ et $(V, V)$. On additionne leurs probabilités.",
+              "pourquoi": "Deux issues différentes ne se produisent jamais en même temps : la probabilité d'un événement est la somme des probabilités des issues qui le réalisent."
+            },
+            {
+              "texte": "$P\\big((R, R)\\big) = \\dfrac{1}{2} \\times \\dfrac{1}{2} = \\dfrac{1}{4}$, $P\\big((B, B)\\big) = \\dfrac{1}{3} \\times \\dfrac{1}{3} = \\dfrac{1}{9}$ et $P\\big((V, V)\\big) = \\dfrac{1}{6} \\times \\dfrac{1}{6} = \\dfrac{1}{36}$.\n\nAu dénominateur commun $36$ : $\\dfrac{9}{36} + \\dfrac{4}{36} + \\dfrac{1}{36} = \\dfrac{14}{36} = \\dfrac{7}{18}$."
+            },
+            {
+              "texte": "**Conclusion** : l'univers $\\{R\\,;\\,B\\,;\\,V\\}^2$ compte $9$ issues ; la probabilité d'obtenir rouge puis bleu est $\\dfrac{1}{6}$, et celle d'obtenir deux fois la même couleur est $\\dfrac{7}{18}$.",
+              "pourquoi": "Les $9$ issues ne sont pas équiprobables : $(R, R)$ a la probabilité $\\dfrac{1}{4}$, $(V, V)$ seulement $\\dfrac{1}{36}$. On ne peut donc pas compter « cas favorables sur cas possibles » : on multiplie, puis on additionne."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-005",
+          "type": "figure",
+          "titre": "L'arbre des deux tours de roue",
+          "capacites": ["bo-m-bernoulli-01"],
+          "figure": {
+            "type": "tree",
+            "caption": "Les 9 chemins de cet arbre sont les 9 issues de l'exemple ci-dessus. Au second tour, les mêmes probabilités 1/2, 1/3 et 1/6 se répètent sous chaque couleur : les deux tours sont indépendants.",
+            "data": {
+              "orientation": "horizontal",
+              "root": {
+                "label": "$\\text{Départ}$",
+                "children": [
+                  {
+                    "label": "$R$",
+                    "weight": "$\\frac{1}{2}$",
+                    "children": [
+                      { "label": "$R$", "weight": "$\\frac{1}{2}$" },
+                      { "label": "$B$", "weight": "$\\frac{1}{3}$" },
+                      { "label": "$V$", "weight": "$\\frac{1}{6}$" }
+                    ]
+                  },
+                  {
+                    "label": "$B$",
+                    "weight": "$\\frac{1}{3}$",
+                    "children": [
+                      { "label": "$R$", "weight": "$\\frac{1}{2}$" },
+                      { "label": "$B$", "weight": "$\\frac{1}{3}$" },
+                      { "label": "$V$", "weight": "$\\frac{1}{6}$" }
+                    ]
+                  },
+                  {
+                    "label": "$V$",
+                    "weight": "$\\frac{1}{6}$",
+                    "children": [
+                      { "label": "$R$", "weight": "$\\frac{1}{2}$" },
+                      { "label": "$B$", "weight": "$\\frac{1}{3}$" },
+                      { "label": "$V$", "weight": "$\\frac{1}{6}$" }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "l-loi-binomiale-006",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-01"],
+          "question": {
+            "enonce": "On fait tourner trois fois la roue de l'exemple ; les tours sont indépendants. Quelle est la probabilité d'obtenir rouge, puis bleu, puis rouge ? Donne une fraction, ou un décimal arrondi au millième.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": "1/12",
+              "tolerance": 0.001
+            },
+            "explication": "La probabilité de l'issue $(R, B, R)$ est le produit des probabilités de ses composantes : $\\dfrac{1}{2} \\times \\dfrac{1}{3} \\times \\dfrac{1}{2} = \\dfrac{1}{12} \\approx 0{,}083$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-007",
+          "type": "methode",
+          "titre": "Comment calculer une probabilité à l'aide d'un arbre pondéré ?",
+          "capacites": ["bo-m-bernoulli-05"],
+          "etapes": [
+            "Nomme les événements de chaque épreuve avec des lettres, par exemple $M$ et $\\overline{M}$, puis $T$ et $\\overline{T}$.",
+            "Dessine l'arbre : un niveau par épreuve, dans l'ordre où elles se déroulent. Au second niveau, écris les probabilités **conditionnelles**, comme $P_M(T)$. Si les épreuves sont indépendantes, ce sont simplement les probabilités de la seconde épreuve.",
+            "Contrôle que les branches issues d'un même nœud ont pour somme $1$ ; complète celles qui manquent par soustraction à $1$.",
+            "Calcule la probabilité d'un chemin en multipliant les probabilités de ses branches. Pour un événement, additionne les chemins qui y mènent : c'est la formule des probabilités totales.",
+            "Pour une probabilité « à l'envers », comme $P_T(M)$, applique la définition : $P_T(M) = \\dfrac{P(M \\cap T)}{P(T)}$."
+          ],
+          "exemple": "l-loi-binomiale-008"
+        },
+        {
+          "id": "l-loi-binomiale-008",
+          "type": "exemple",
+          "titre": "Un test de dépistage",
+          "capacites": ["bo-m-bernoulli-05"],
+          "enonce": "Une maladie touche $2\\,\\%$ d'une population. Un test de dépistage est positif chez $95\\,\\%$ des personnes malades et chez $4\\,\\%$ des personnes non malades. On choisit une personne au hasard dans cette population. On note $M$ l'événement « la personne est malade » et $T$ l'événement « son test est positif ».\n\n**1.** Traduire la situation par un arbre pondéré.\n\n**2.** Montrer que $P(T) = 0{,}058\\,2$.\n\n**3.** Calculer la probabilité qu'une personne dont le test est positif soit malade, arrondie à $10^{-3}$.",
+          "etapes": [
+            {
+              "texte": "**1.** On lit $P(M) = 0{,}02$, donc $P(\\overline{M}) = 1 - 0{,}02 = 0{,}98$. Ensuite $P_M(T) = 0{,}95$ et $P_{\\overline{M}}(T) = 0{,}04$, d'où $P_M(\\overline{T}) = 0{,}05$ et $P_{\\overline{M}}(\\overline{T}) = 0{,}96$. L'arbre est dessiné juste après cet exemple.",
+              "pourquoi": "« Positif chez $95\\,\\%$ des personnes malades » : on sait que la personne est malade, c'est donc une probabilité **sachant** $M$. Elle se place sur la branche qui va de $M$ à $T$."
+            },
+            {
+              "texte": "**2.** Deux chemins mènent à $T$ : « $M$ puis $T$ » et « $\\overline{M}$ puis $T$ ». Leurs probabilités sont $P(M \\cap T) = 0{,}02 \\times 0{,}95 = 0{,}019$ et $P(\\overline{M} \\cap T) = 0{,}98 \\times 0{,}04 = 0{,}039\\,2$.",
+              "pourquoi": "La probabilité d'un chemin est le produit des probabilités de ses branches : $P(M \\cap T) = P(M) \\times P_M(T)$."
+            },
+            {
+              "texte": "$M$ et $\\overline{M}$ forment une partition de l'univers. D'après la formule des probabilités totales : $P(T) = P(M \\cap T) + P(\\overline{M} \\cap T) = 0{,}019 + 0{,}039\\,2 = 0{,}058\\,2$.",
+              "pourquoi": "Une partition : toute personne est malade ou non malade, et jamais les deux à la fois."
+            },
+            {
+              "texte": "**3.** On cherche $P_T(M)$, car on sait que le test est positif. Par définition, $P_T(M) = \\dfrac{P(M \\cap T)}{P(T)} = \\dfrac{0{,}019}{0{,}058\\,2} \\approx 0{,}326$.",
+              "pourquoi": "À la calculatrice, $0{,}019 \\div 0{,}058\\,2 \\approx 0{,}326\\,5$. Attention : $0{,}95$ est $P_M(T)$, et non $P_T(M)$."
+            },
+            {
+              "texte": "**Conclusion** : $P(T) = 0{,}058\\,2$, et la probabilité qu'une personne au test positif soit malade est d'environ $0{,}326$. Une personne positive sur trois environ est malade : la maladie est rare, donc les personnes saines au test positif ($0{,}039\\,2$) sont plus nombreuses que les malades au test positif ($0{,}019$)."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-009",
+          "type": "figure",
+          "titre": "L'arbre du test de dépistage",
+          "capacites": ["bo-m-bernoulli-05"],
+          "figure": {
+            "type": "tree",
+            "caption": "Arbre de l'exemple ci-dessus : compare-le à celui que tu as dessiné. Au second niveau, les branches portent des probabilités sachant M, ou sachant non M.",
+            "data": {
+              "orientation": "horizontal",
+              "root": {
+                "label": "$\\text{Départ}$",
+                "children": [
+                  {
+                    "label": "$M$",
+                    "weight": "$0{,}02$",
+                    "children": [
+                      { "label": "$T$", "weight": "$0{,}95$" },
+                      { "label": "$\\overline{T}$", "weight": "$0{,}05$" }
+                    ]
+                  },
+                  {
+                    "label": "$\\overline{M}$",
+                    "weight": "$0{,}98$",
+                    "children": [
+                      { "label": "$T$", "weight": "$0{,}04$" },
+                      { "label": "$\\overline{T}$", "weight": "$0{,}96$" }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "l-loi-binomiale-010",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-05"],
+          "question": {
+            "enonce": "Dans l'exemple du test de dépistage, quelle est la probabilité que le test d'une personne choisie au hasard soit négatif ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.9418,
+              "tolerance": 0.0001
+            },
+            "explication": "« Négatif » est l'événement contraire $\\overline{T}$ : $P(\\overline{T}) = 1 - P(T) = 1 - 0{,}058\\,2 = 0{,}941\\,8$. On le retrouve par les probabilités totales : $0{,}02 \\times 0{,}05 + 0{,}98 \\times 0{,}96 = 0{,}001 + 0{,}940\\,8 = 0{,}941\\,8$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-011",
+          "type": "piege",
+          "titre": "Sans remise, les tirages ne sont pas indépendants",
+          "faux": "Une urne contient $3$ boules rouges et $2$ noires. On tire deux boules l'une après l'autre, **sans remise**. Alors la probabilité de tirer deux rouges est $\\dfrac{3}{5} \\times \\dfrac{3}{5} = \\dfrac{9}{25}$.",
+          "juste": "On note $R_1$ « la première boule est rouge » et $R_2$ « la seconde est rouge ». Après une rouge, il reste $2$ rouges parmi $4$ boules : $P_{R_1}(R_2) = \\dfrac{2}{4}$. Donc $P(R_1 \\cap R_2) = \\dfrac{3}{5} \\times \\dfrac{2}{4} = \\dfrac{6}{20} = \\dfrac{3}{10}$.",
+          "explication": "Sans remise, l'urne change après le premier tirage : la seconde épreuve dépend de la première. Tu multiplies toujours le long du chemin, mais par une probabilité **conditionnelle**. Les tirages ne sont indépendants qu'avec remise, ou quand l'énoncé le dit."
+        },
+        {
+          "id": "l-loi-binomiale-012",
+          "type": "retenir",
+          "texte": "Épreuves indépendantes : la probabilité d'une issue $(x_1, \\dots, x_n)$ est le produit $P(x_1) \\times \\dots \\times P(x_n)$. Sinon, on multiplie le long d'un chemin par des probabilités conditionnelles. Pour un événement, on additionne les chemins qui y mènent (probabilités totales)."
+        }
+      ]
+    },
+    {
+      "notion": "n-loi-binomiale-schema-bernoulli",
+      "blocs": [
+        {
+          "id": "l-loi-binomiale-013",
+          "type": "idee",
+          "texte": "Beaucoup d'expériences n'ont, pour ce qui t'intéresse, que deux issues : le tir touche la cible ou non, l'ampoule est défectueuse ou non. On appelle l'une « succès », l'autre « échec ».\n\nSi tu répètes cette expérience plusieurs fois, dans les mêmes conditions et de façon indépendante, deux questions reviennent sans cesse au bac. Quelle est la probabilité de n'avoir que des succès ? Et celle d'avoir au moins un succès ?"
+        },
+        {
+          "id": "l-loi-binomiale-014",
+          "type": "rappel",
+          "titre": "Rappel : variable aléatoire et loi de probabilité",
+          "texte": "Une **variable aléatoire** $X$ associe un nombre réel à chaque issue d'une expérience. Sa **loi de probabilité** donne, pour chaque valeur $x_i$ que prend $X$, la probabilité $P(X = x_i)$ ; on la présente dans un tableau. La somme de ces probabilités vaut $1$.",
+          "lien": "1e:variables-aleatoires"
+        },
+        {
+          "id": "l-loi-binomiale-015",
+          "type": "definition",
+          "titre": "Épreuve de Bernoulli, loi de Bernoulli",
+          "capacites": ["bo-m-bernoulli-02"],
+          "texte": "Une **épreuve de Bernoulli** est une épreuve qui n'a que deux issues : le **succès**, noté $S$, et l'**échec**, noté $\\overline{S}$ (lu « $S$ barre »). Si $p$ est la probabilité du succès, celle de l'échec est $1 - p$.\n\nSoit $X$ la variable aléatoire qui vaut $1$ en cas de succès et $0$ en cas d'échec. Sa loi est la **loi de Bernoulli de paramètre $p$** :\n\n| $x_i$ | $0$ | $1$ |\n|---|---|---|\n| $P(X = x_i)$ | $1 - p$ | $p$ |\n\nLe paramètre $p$ est un réel de l'intervalle $[0\\,;\\,1]$."
+        },
+        {
+          "id": "l-loi-binomiale-016",
+          "type": "exemple",
+          "titre": "Reconnaître une épreuve de Bernoulli",
+          "capacites": ["bo-m-bernoulli-02"],
+          "enonce": "Pour chaque expérience, dire si c'est une épreuve de Bernoulli. Si oui, préciser le succès et le paramètre $p$.\n\n**1.** On lance un dé équilibré à six faces ; on gagne si l'on obtient $6$.\n\n**2.** On tire une carte au hasard dans un jeu de $32$ cartes et on regarde si c'est un cœur.\n\n**3.** On lance un dé équilibré et on note le numéro obtenu.",
+          "etapes": [
+            {
+              "texte": "**1.** Deux issues : « obtenir $6$ » (le succès) et « ne pas obtenir $6$ » (l'échec). C'est une épreuve de Bernoulli de paramètre $p = \\dfrac{1}{6}$.",
+              "pourquoi": "Le dé est équilibré : chacune des six faces a la probabilité $\\dfrac{1}{6}$."
+            },
+            {
+              "texte": "**2.** Deux issues : « cœur » (le succès) et « pas cœur » (l'échec). Le jeu compte $8$ cœurs sur $32$ cartes, donc $p = \\dfrac{8}{32} = \\dfrac{1}{4}$.",
+              "pourquoi": "Un jeu de $32$ cartes a quatre couleurs (cœur, carreau, trèfle, pique) de $8$ cartes chacune. Le tirage au hasard rend les cartes équiprobables."
+            },
+            {
+              "texte": "**3.** Six issues : $1$, $2$, $3$, $4$, $5$ ou $6$. Ce n'est pas une épreuve de Bernoulli. Elle le devient si l'on ne regarde qu'une question à deux réponses, par exemple « le numéro est-il pair ? », de paramètre $p = \\dfrac{1}{2}$."
+            },
+            {
+              "texte": "**Conclusion** : les expériences **1** et **2** sont des épreuves de Bernoulli, de paramètres $\\dfrac{1}{6}$ et $\\dfrac{1}{4}$ ; la troisième n'en est pas une. Pour la deuxième, la variable $X$ égale à $1$ si la carte est un cœur et à $0$ sinon suit la loi de Bernoulli de paramètre $\\dfrac{1}{4}$ : $P(X = 1) = \\dfrac{1}{4}$ et $P(X = 0) = \\dfrac{3}{4}$."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-017",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-02"],
+          "question": {
+            "enonce": "Une joueuse de basket réussit chaque lancer franc avec la probabilité $0{,}7$. La variable $X$ vaut $1$ si son prochain lancer est réussi, $0$ sinon. Que vaut $P(X = 0)$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.3,
+              "tolerance": 0
+            },
+            "explication": "$X$ suit la loi de Bernoulli de paramètre $p = 0{,}7$. $P(X = 0)$ est la probabilité de l'échec : $1 - p = 1 - 0{,}7 = 0{,}3$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-018",
+          "type": "definition",
+          "titre": "Schéma de Bernoulli",
+          "capacites": ["bo-m-bernoulli-03"],
+          "texte": "Un **schéma de Bernoulli** de paramètres $n$ et $p$ est la répétition de $n$ épreuves de Bernoulli **identiques** (même probabilité de succès $p$) et **indépendantes**. Ici, $n$ est un entier naturel non nul et $p \\in [0\\,;\\,1]$.\n\nUne issue est un $n$-uplet de $\\{S\\,;\\,\\overline{S}\\}^n$, par exemple $(S, \\overline{S}, S)$ pour $n = 3$. On la représente par un chemin d'un arbre à $n$ niveaux, où chaque nœud a deux branches. Il y a $2^n$ issues.\n\nPar indépendance, une issue qui comporte $k$ succès et $n - k$ échecs a pour probabilité $p^k(1 - p)^{n-k}$."
+        },
+        {
+          "id": "l-loi-binomiale-019",
+          "type": "figure",
+          "titre": "L'arbre d'un schéma de Bernoulli à $3$ épreuves",
+          "capacites": ["bo-m-bernoulli-03"],
+          "figure": {
+            "type": "tree",
+            "caption": "Chaque nœud a deux branches : S (succès, probabilité p) et non S (échec, probabilité 1 − p). Les 8 chemins sont les 8 issues ; par exemple, le chemin S, non S, S a pour probabilité p × (1 − p) × p.",
+            "data": {
+              "orientation": "horizontal",
+              "root": {
+                "label": "$\\text{Départ}$",
+                "children": [
+                  {
+                    "label": "$S$",
+                    "weight": "$p$",
+                    "children": [
+                      {
+                        "label": "$S$",
+                        "weight": "$p$",
+                        "children": [
+                          { "label": "$S$", "weight": "$p$" },
+                          { "label": "$\\overline{S}$", "weight": "$1-p$" }
+                        ]
+                      },
+                      {
+                        "label": "$\\overline{S}$",
+                        "weight": "$1-p$",
+                        "children": [
+                          { "label": "$S$", "weight": "$p$" },
+                          { "label": "$\\overline{S}$", "weight": "$1-p$" }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "$\\overline{S}$",
+                    "weight": "$1-p$",
+                    "children": [
+                      {
+                        "label": "$S$",
+                        "weight": "$p$",
+                        "children": [
+                          { "label": "$S$", "weight": "$p$" },
+                          { "label": "$\\overline{S}$", "weight": "$1-p$" }
+                        ]
+                      },
+                      {
+                        "label": "$\\overline{S}$",
+                        "weight": "$1-p$",
+                        "children": [
+                          { "label": "$S$", "weight": "$p$" },
+                          { "label": "$\\overline{S}$", "weight": "$1-p$" }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "l-loi-binomiale-020",
+          "type": "exemple",
+          "titre": "Trois tirs à l'arc",
+          "capacites": ["bo-m-bernoulli-03"],
+          "enonce": "Une archère atteint la cible avec la probabilité $0{,}8$ à chaque tir, indépendamment des tirs précédents. Elle tire trois flèches.\n\n**1.** Justifier que la situation est un schéma de Bernoulli, et donner ses paramètres.\n\n**2.** Calculer la probabilité qu'elle atteigne la cible aux deux premiers tirs et la manque au troisième.\n\n**3.** Calculer la probabilité qu'elle atteigne la cible exactement deux fois.",
+          "etapes": [
+            {
+              "texte": "**1.** Chaque tir est une épreuve de Bernoulli : le succès $S$ est « la flèche atteint la cible », de probabilité $p = 0{,}8$. Les trois tirs sont identiques et indépendants. La situation est donc un schéma de Bernoulli de paramètres $n = 3$ et $p = 0{,}8$.",
+              "pourquoi": "Trois points à justifier : deux issues, mêmes conditions (même $p$), indépendance. Ici l'énoncé donne l'indépendance : on la cite."
+            },
+            {
+              "texte": "**2.** L'issue cherchée est $(S, S, \\overline{S})$. Par indépendance, sa probabilité est $0{,}8 \\times 0{,}8 \\times 0{,}2 = 0{,}128$.",
+              "pourquoi": "La probabilité de l'échec est $1 - 0{,}8 = 0{,}2$. On multiplie le long du chemin $S$, $S$, $\\overline{S}$ de l'arbre ci-dessus, avec $p = 0{,}8$."
+            },
+            {
+              "texte": "**3.** Trois issues comportent exactement deux succès : $(S, S, \\overline{S})$, $(S, \\overline{S}, S)$ et $(\\overline{S}, S, S)$. Chacune a pour probabilité $0{,}8^2 \\times 0{,}2 = 0{,}128$, quel que soit l'ordre des facteurs.",
+              "pourquoi": "L'échec peut être au premier, au deuxième ou au troisième tir : trois places possibles."
+            },
+            {
+              "texte": "Ces trois issues sont différentes, donc on additionne leurs probabilités : $0{,}128 + 0{,}128 + 0{,}128 = 3 \\times 0{,}128 = 0{,}384$."
+            },
+            {
+              "texte": "**Conclusion** : la situation est un schéma de Bernoulli de paramètres $3$ et $0{,}8$. La probabilité d'atteindre la cible aux deux premiers tirs seulement est $0{,}128$ ; celle de l'atteindre exactement deux fois est $0{,}384$.",
+              "pourquoi": "Le facteur $3$ est le nombre de chemins à deux succès, c'est-à-dire $\\binom{3}{2}$. La notion suivante généralise ce calcul."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-021",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-03"],
+          "question": {
+            "enonce": "On lance $4$ fois une pièce équilibrée. Quelle est la probabilité d'obtenir pile, face, face, pile, dans cet ordre ? Donne une fraction ou un nombre décimal.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.0625,
+              "tolerance": 0
+            },
+            "explication": "C'est un schéma de Bernoulli de paramètres $4$ et $\\dfrac{1}{2}$ (succès : pile). Par indépendance, l'issue $(S, \\overline{S}, \\overline{S}, S)$ a pour probabilité $\\left(\\dfrac{1}{2}\\right)^4 = \\dfrac{1}{16} = 0{,}062\\,5$. Les $2^4 = 16$ issues ont toutes cette probabilité."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-022",
+          "type": "propriete",
+          "titre": "Que des succès, aucun succès, au moins un succès",
+          "capacites": ["bo-m-bernoulli-03"],
+          "conditions": [
+            "On répète $n$ fois ($n \\geqslant 1$), de façon indépendante, une épreuve de Bernoulli dont le succès a la probabilité $p$ : c'est un schéma de Bernoulli de paramètres $n$ et $p$."
+          ],
+          "admise": false,
+          "texte": "- La probabilité de n'obtenir que des succès est $p^n$.\n- La probabilité de n'obtenir aucun succès est $(1 - p)^n$.\n- La probabilité d'obtenir **au moins un** succès est $1 - (1 - p)^n$.\n\nJustification : « que des succès » est la seule issue $(S, \\dots, S)$, de probabilité $p \\times \\dots \\times p = p^n$ par indépendance. De même, « aucun succès » est l'issue $(\\overline{S}, \\dots, \\overline{S})$, de probabilité $(1 - p)^n$. Enfin, « au moins un succès » est l'événement contraire de « aucun succès »."
+        },
+        {
+          "id": "l-loi-binomiale-023",
+          "type": "exemple",
+          "titre": "Des ampoules contrôlées",
+          "capacites": ["bo-m-bernoulli-03"],
+          "enonce": "Une usine fabrique des ampoules ; chacune est défectueuse avec la probabilité $0{,}05$. On prélève $n$ ampoules dans un très grand stock. Le stock est assez grand pour qu'on assimile ce prélèvement à $n$ tirages avec remise.\n\n**1.** On note $p_n$ la probabilité qu'aucune des $n$ ampoules ne soit défectueuse. Montrer que $p_n = 0{,}95^n$.\n\n**2.** En déduire la probabilité $q_n$ qu'au moins une ampoule soit défectueuse.\n\n**3.** Calculer $q_{10}$, arrondie à $10^{-3}$.",
+          "etapes": [
+            {
+              "texte": "**1.** Prélever une ampoule est une épreuve de Bernoulli dont le succès $S$ est « l'ampoule est défectueuse », de probabilité $p = 0{,}05$. Les $n$ prélèvements sont assimilés à des tirages avec remise : ils sont identiques et indépendants. C'est donc un schéma de Bernoulli de paramètres $n$ et $0{,}05$.",
+              "pourquoi": "« Assimiler à des tirages avec remise » : le stock est si grand que retirer quelques ampoules ne change presque pas la proportion de défectueuses. On traite donc les prélèvements comme indépendants."
+            },
+            {
+              "texte": "« Aucune ampoule défectueuse » est l'issue $(\\overline{S}, \\dots, \\overline{S})$ : $n$ échecs. Par indépendance, $p_n = (1 - 0{,}05)^n = 0{,}95^n$.",
+              "pourquoi": "Ici, le « succès » est d'être défectueuse : ce mot ne juge pas, il désigne seulement l'issue que l'on compte."
+            },
+            {
+              "texte": "**2.** « Au moins une ampoule défectueuse » est l'événement contraire de « aucune ampoule défectueuse ». Donc $q_n = 1 - p_n = 1 - 0{,}95^n$."
+            },
+            {
+              "texte": "**3.** À la calculatrice, $0{,}95^{10} \\approx 0{,}598\\,7$, donc $q_{10} = 1 - 0{,}95^{10} \\approx 0{,}401$.",
+              "pourquoi": "On garde plusieurs décimales dans le calcul intermédiaire et on n'arrondit qu'à la fin : $1 - 0{,}598\\,7 = 0{,}401\\,3$."
+            },
+            {
+              "texte": "**Conclusion** : $p_n = 0{,}95^n$ et $q_n = 1 - 0{,}95^n$. Sur $10$ ampoules prélevées, la probabilité qu'au moins une soit défectueuse est d'environ $0{,}401$."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-024",
+          "type": "methode",
+          "titre": "Comment calculer la probabilité d'au moins un succès ?",
+          "capacites": ["bo-m-bernoulli-03"],
+          "etapes": [
+            "Repère l'épreuve répétée, nomme le succès et donne sa probabilité $p$.",
+            "Justifie le schéma de Bernoulli : $n$ répétitions identiques et indépendantes (tirages avec remise, ou « assimilés à des tirages avec remise »).",
+            "Passe par l'événement contraire : « au moins un succès » a pour contraire « aucun succès », c'est-à-dire $n$ échecs.",
+            "Calcule la probabilité de « aucun succès » par indépendance : $(1 - p)^n$.",
+            "Conclus : la probabilité d'obtenir au moins un succès est $1 - (1 - p)^n$."
+          ],
+          "exemple": "l-loi-binomiale-023"
+        },
+        {
+          "id": "l-loi-binomiale-025",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-03"],
+          "question": {
+            "enonce": "On lance $3$ fois un dé équilibré à six faces. Quelle est la probabilité d'obtenir au moins un $6$ ? Donne une fraction, ou un décimal arrondi au millième.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": "91/216",
+              "tolerance": 0.001
+            },
+            "explication": "Schéma de Bernoulli de paramètres $3$ et $\\dfrac{1}{6}$. « Aucun $6$ » a pour probabilité $\\left(\\dfrac{5}{6}\\right)^3 = \\dfrac{125}{216}$. Donc la probabilité d'obtenir au moins un $6$ est $1 - \\dfrac{125}{216} = \\dfrac{91}{216} \\approx 0{,}421$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-026",
+          "type": "code",
+          "titre": "Simuler un échantillon d'une loi de Bernoulli",
+          "capacites": ["bo-m-bernoulli-12", "bo-m-listes-01"],
+          "code": {
+            "langage": "python",
+            "source": "from random import random\n\ndef bernoulli(p):\n    if random() < p:      # vrai avec la probabilité p\n        return 1          # succès\n    return 0              # échec\n\ndef echantillon(n, p):\n    return [bernoulli(p) for i in range(n)]\n\ne = echantillon(20, 0.3)\nprint(e)                  # 20 valeurs, chacune égale à 0 ou à 1\nprint(sum(e))             # nombre de succès dans l'échantillon"
+          },
+          "texte": "random() renvoie un nombre réel pris au hasard dans $[0\\,;\\,1[$, de sorte que la condition random() < p est vraie avec la probabilité $p$. La fonction bernoulli simule donc une épreuve de Bernoulli de paramètre $p$.\n\nLa fonction echantillon répète $n$ fois cette simulation, de façon indépendante, et renvoie la liste des $n$ résultats. C'est un **échantillon de taille $n$** de la loi de Bernoulli : $n$ valeurs obtenues en répétant l'expérience dans les mêmes conditions.\n\nLe programme affiche par exemple [0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0], puis $6$ : la somme compte les succès. L'affichage change à chaque exécution, car les tirages sont aléatoires."
+        },
+        {
+          "id": "l-loi-binomiale-027",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-12"],
+          "question": {
+            "enonce": "Dans le programme ci-dessus, que contient la variable e après l'instruction e = echantillon(20, 0.3) ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "Une liste de $20$ nombres, chacun égal à $0$ ou à $1$",
+                "Le nombre de succès obtenus en $20$ épreuves",
+                "La probabilité d'obtenir $20$ succès",
+                "Une liste de $20$ nombres réels compris entre $0$ et $1$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "Le nombre de succès, c'est sum(e) : la somme des valeurs de la liste.",
+                "Le programme ne calcule aucune probabilité : il simule des résultats au hasard.",
+                "Ces réels sont ceux que renvoie random() ; la fonction bernoulli les transforme en $1$ (succès) ou en $0$ (échec)."
+              ]
+            },
+            "explication": "echantillon renvoie la liste des $20$ résultats simulés : $1$ pour un succès, $0$ pour un échec. Le nombre de succès s'obtient ensuite avec sum(e)."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-028",
+          "type": "piege",
+          "titre": "Le contraire de « au moins un succès »",
+          "faux": "Chaque ampoule est défectueuse avec la probabilité $0{,}05$ ; on en prélève $10$. La probabilité qu'au moins une soit défectueuse est $1 - 0{,}05^{10}$.",
+          "juste": "La probabilité qu'au moins une soit défectueuse est $1 - (\\text{probabilité qu'aucune ne le soit}) = 1 - 0{,}95^{10} \\approx 0{,}401$.",
+          "explication": "Le contraire de « au moins une défectueuse » est « aucune défectueuse », soit $10$ ampoules **non** défectueuses : $0{,}95^{10}$. Le nombre $0{,}05^{10}$ est la probabilité que les $10$ soient **toutes** défectueuses. Contrôle de bon sens : $1 - 0{,}05^{10}$ est presque égal à $1$, bien trop grand quand une ampoule sur vingt seulement est défectueuse."
+        },
+        {
+          "id": "l-loi-binomiale-029",
+          "type": "retenir",
+          "texte": "Schéma de Bernoulli : $n$ épreuves à deux issues, identiques et indépendantes. Que des succès : $p^n$ ; aucun succès : $(1 - p)^n$ ; au moins un succès : $1 - (1 - p)^n$."
+        }
+      ]
+    },
+    {
+      "notion": "n-loi-binomiale-loi-binomiale",
+      "blocs": [
+        {
+          "id": "l-loi-binomiale-030",
+          "type": "idee",
+          "texte": "Dans l'exemple des trois tirs à l'arc, « exactement deux succès » était réalisé par $3$ chemins, tous de probabilité $0{,}8^2 \\times 0{,}2$. Ce calcul se généralise : pour $k$ succès en $n$ épreuves, tous les chemins ont la même probabilité, et il suffit de les **compter**.\n\nCompter ces chemins, tu sais le faire depuis le chapitre de dénombrement : c'est un coefficient binomial."
+        },
+        {
+          "id": "l-loi-binomiale-031",
+          "type": "rappel",
+          "titre": "Rappel : le coefficient binomial $\\binom{n}{k}$",
+          "texte": "$\\binom{n}{k}$, lu « $k$ parmi $n$ », est le nombre de parties à $k$ éléments d'un ensemble à $n$ éléments. C'est aussi le nombre de chemins de l'arbre de $n$ lancers d'une pièce qui comportent exactement $k$ fois pile : choisir un tel chemin, c'est choisir les $k$ lancers qui donnent pile.\n\n$$\\binom{n}{k} = \\frac{n \\times (n-1) \\times \\dots \\times (n-k+1)}{k!}, \\qquad \\binom{n}{0} = \\binom{n}{n} = 1, \\qquad \\binom{n}{1} = n.$$\n\nPar exemple, $\\binom{4}{2} = \\dfrac{4 \\times 3}{2 \\times 1} = 6$.",
+          "lien": "l-denombrement-027"
+        },
+        {
+          "id": "l-loi-binomiale-032",
+          "type": "definition",
+          "titre": "Loi binomiale",
+          "capacites": ["bo-m-bernoulli-04"],
+          "texte": "On considère un schéma de Bernoulli de paramètres $n$ et $p$, avec $n$ entier naturel non nul et $p \\in [0\\,;\\,1]$. La variable aléatoire $X$ égale au **nombre de succès** obtenus suit la **loi binomiale de paramètres $n$ et $p$**, notée $\\mathcal{B}(n\\,;\\,p)$.\n\nOn écrit « $X$ suit la loi $\\mathcal{B}(n\\,;\\,p)$ », qui se lit « $X$ suit la loi binomiale de paramètres $n$ et $p$ ». La variable $X$ prend les valeurs entières $0, 1, 2, \\dots, n$."
+        },
+        {
+          "id": "l-loi-binomiale-033",
+          "type": "exemple",
+          "titre": "Loi binomiale ou non ?",
+          "capacites": ["bo-m-bernoulli-04", "bo-m-bernoulli-06"],
+          "enonce": "Dans chaque cas, dire si $X$ suit une loi binomiale ; si oui, préciser ses paramètres.\n\n**1.** On lance $4$ fois un dé équilibré ; $X$ est le nombre de $6$ obtenus.\n\n**2.** Une urne contient $6$ boules noires et $4$ rouges. On tire successivement $10$ boules **avec remise** ; $X$ est le nombre de boules noires tirées.\n\n**3.** Même urne, mais on tire successivement $3$ boules **sans remise** ; $X$ est le nombre de boules noires tirées.",
+          "etapes": [
+            {
+              "texte": "**1.** Chaque lancer est une épreuve de Bernoulli de succès « obtenir $6$ », de probabilité $\\dfrac{1}{6}$. Les $4$ lancers sont identiques et indépendants : c'est un schéma de Bernoulli. $X$ compte les succès, donc $X$ suit la loi $\\mathcal{B}\\left(4\\,;\\,\\dfrac{1}{6}\\right)$."
+            },
+            {
+              "texte": "**2.** Chaque tirage est une épreuve de Bernoulli de succès « la boule est noire », de probabilité $\\dfrac{6}{10} = 0{,}6$. Avec remise, les $10$ tirages sont identiques et indépendants. Donc $X$ suit la loi $\\mathcal{B}(10\\,;\\,0{,}6)$.",
+              "pourquoi": "On remet la boule tirée : la composition de l'urne, $6$ noires sur $10$ boules, ne change jamais."
+            },
+            {
+              "texte": "**3.** Sans remise, la probabilité de tirer une noire au deuxième tirage dépend du premier : $\\dfrac{5}{9}$ si la première boule était noire, $\\dfrac{6}{9}$ sinon. Les tirages ne sont pas indépendants : ce n'est pas un schéma de Bernoulli, et $X$ ne suit pas une loi binomiale.",
+              "pourquoi": "Après une noire, il reste $5$ noires sur $9$ boules ; après une rouge, il reste $6$ noires sur $9$ boules."
+            },
+            {
+              "texte": "**Conclusion** : dans le cas **1**, $X$ suit la loi $\\mathcal{B}\\left(4\\,;\\,\\dfrac{1}{6}\\right)$ ; dans le cas **2**, la loi $\\mathcal{B}(10\\,;\\,0{,}6)$ ; dans le cas **3**, $X$ ne suit pas une loi binomiale."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-034",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-06"],
+          "question": {
+            "enonce": "Un QCM comporte $8$ questions. Chaque question propose $4$ réponses, dont une seule est juste. Un élève répond au hasard à chaque question, indépendamment. Quelle loi suit le nombre $X$ de bonnes réponses ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\mathcal{B}(8\\,;\\,0{,}25)$",
+                "$\\mathcal{B}(8\\,;\\,0{,}75)$",
+                "$\\mathcal{B}(4\\,;\\,0{,}25)$",
+                "$\\mathcal{B}(0{,}25\\,;\\,8)$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "$0{,}75$ est la probabilité d'une mauvaise réponse ; or $X$ compte les **bonnes** réponses.",
+                "$4$ est le nombre de réponses proposées pour chaque question, pas le nombre de répétitions : il y a $8$ questions.",
+                "Les paramètres s'écrivent dans l'ordre : d'abord le nombre $n$ de répétitions, puis la probabilité $p$ du succès."
+              ]
+            },
+            "explication": "Chaque question est une épreuve de Bernoulli de succès « bonne réponse », de probabilité $\\dfrac{1}{4} = 0{,}25$. Les $8$ questions sont identiques et indépendantes, et $X$ compte les succès : $X$ suit la loi $\\mathcal{B}(8\\,;\\,0{,}25)$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-035",
+          "type": "propriete",
+          "titre": "Probabilité de $k$ succès",
+          "capacites": ["bo-m-bernoulli-04"],
+          "conditions": [
+            "$X$ suit la loi binomiale $\\mathcal{B}(n\\,;\\,p)$, avec $n$ entier naturel non nul et $p \\in [0\\,;\\,1]$.",
+            "$k$ est un entier tel que $0 \\leqslant k \\leqslant n$."
+          ],
+          "admise": false,
+          "texte": "$$P(X = k) = \\binom{n}{k}\\,p^k\\,(1 - p)^{n-k}.$$\n\nLecture : $\\binom{n}{k}$ compte les chemins à $k$ succès, et $p^k(1 - p)^{n-k}$ est la probabilité de chacun d'eux ($k$ succès et $n - k$ échecs)."
+        },
+        {
+          "id": "l-loi-binomiale-036",
+          "type": "exemple",
+          "titre": "Répondre au hasard à un QCM",
+          "capacites": ["bo-m-bernoulli-04", "bo-m-bernoulli-06"],
+          "enonce": "Un QCM comporte $4$ questions, chacune avec $3$ réponses dont une seule est juste. Un élève répond au hasard à chaque question, indépendamment. On note $X$ le nombre de bonnes réponses.\n\n**1.** Justifier que $X$ suit une loi binomiale et préciser ses paramètres.\n\n**2.** Calculer $P(X = 2)$.\n\n**3.** Donner la loi de $X$ sous forme de tableau.",
+          "etapes": [
+            {
+              "texte": "**1.** Chaque question est une épreuve de Bernoulli de succès « la réponse est juste », de probabilité $p = \\dfrac{1}{3}$. Les $4$ questions sont identiques et indépendantes, et $X$ compte les succès : $X$ suit la loi $\\mathcal{B}\\left(4\\,;\\,\\dfrac{1}{3}\\right)$."
+            },
+            {
+              "texte": "**2.** D'après la formule, $P(X = 2) = \\binom{4}{2}\\left(\\dfrac{1}{3}\\right)^2\\left(\\dfrac{2}{3}\\right)^2$.",
+              "pourquoi": "Ici $n = 4$, $k = 2$, $p = \\dfrac{1}{3}$ et $1 - p = \\dfrac{2}{3}$ ; l'exposant de $1 - p$ est $n - k = 2$."
+            },
+            {
+              "texte": "Or $\\binom{4}{2} = 6$, donc $P(X = 2) = 6 \\times \\dfrac{1}{9} \\times \\dfrac{4}{9} = \\dfrac{24}{81} = \\dfrac{8}{27} \\approx 0{,}296$.",
+              "pourquoi": "$\\binom{4}{2} = \\dfrac{4 \\times 3}{2} = 6$ : ce sont les $6$ façons de placer les $2$ bonnes réponses parmi les $4$ questions."
+            },
+            {
+              "texte": "**3.** De même, avec le dénominateur $81 = 3^4$ :\n\n- $P(X = 0) = \\left(\\dfrac{2}{3}\\right)^4 = \\dfrac{16}{81}$ ;\n- $P(X = 1) = 4 \\times \\dfrac{1}{3} \\times \\left(\\dfrac{2}{3}\\right)^3 = 4 \\times \\dfrac{1}{3} \\times \\dfrac{8}{27} = \\dfrac{32}{81}$ ;\n- $P(X = 3) = 4 \\times \\left(\\dfrac{1}{3}\\right)^3 \\times \\dfrac{2}{3} = 4 \\times \\dfrac{1}{27} \\times \\dfrac{2}{3} = \\dfrac{8}{81}$ ;\n- $P(X = 4) = \\left(\\dfrac{1}{3}\\right)^4 = \\dfrac{1}{81}$.",
+              "pourquoi": "$\\binom{4}{0} = \\binom{4}{4} = 1$ et $\\binom{4}{1} = \\binom{4}{3} = 4$."
+            },
+            {
+              "texte": "**Conclusion** : la loi de $X$ est donnée par le tableau\n\n| $k$ | $0$ | $1$ | $2$ | $3$ | $4$ |\n|---|---|---|---|---|---|\n| $P(X = k)$ | $\\dfrac{16}{81}$ | $\\dfrac{32}{81}$ | $\\dfrac{24}{81}$ | $\\dfrac{8}{81}$ | $\\dfrac{1}{81}$ |\n\nContrôle : $16 + 32 + 24 + 8 + 1 = 81$, donc la somme des probabilités vaut bien $1$."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-037",
+          "type": "demonstration",
+          "titre": "Démonstration : la probabilité de $k$ succès",
+          "capacites": ["bo-m-bernoulli-09", "bo-m-bernoulli-04"],
+          "de": "l-loi-binomiale-035",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "On représente le schéma de Bernoulli par un arbre à $n$ niveaux. Chaque issue est un chemin, c'est-à-dire un $n$-uplet de $\\{S\\,;\\,\\overline{S}\\}^n$. L'événement $\\{X = k\\}$ est formé des chemins qui comportent exactement $k$ succès $S$ et $n - k$ échecs $\\overline{S}$."
+            },
+            {
+              "texte": "**Probabilité d'un tel chemin.** Les épreuves sont indépendantes : la probabilité du chemin est le produit des probabilités de ses $n$ branches. Il y a $k$ facteurs égaux à $p$ et $n - k$ facteurs égaux à $1 - p$. Ce produit vaut donc $p^k(1 - p)^{n-k}$, quel que soit l'ordre des succès.",
+              "pourquoi": "Un produit ne dépend pas de l'ordre de ses facteurs : par exemple, $p \\times (1 - p) \\times p = p^2(1 - p)$."
+            },
+            {
+              "texte": "**Nombre de ces chemins.** Un chemin à $k$ succès est entièrement déterminé par l'ensemble des numéros des épreuves qui donnent un succès. Cet ensemble est une partie à $k$ éléments de $\\{1\\,;\\,2\\,;\\,\\dots\\,;\\,n\\}$. Il y a donc $\\binom{n}{k}$ chemins à $k$ succès.",
+              "pourquoi": "Pour $n = 3$, le chemin $(S, \\overline{S}, S)$ correspond à la partie $\\{1\\,;\\,3\\}$. Inversement, chaque partie à $k$ éléments donne un seul chemin : on place les succès aux numéros choisis."
+            },
+            {
+              "texte": "**Somme.** Ces chemins sont des issues différentes : $P(X = k)$ est la somme de leurs probabilités. On additionne $\\binom{n}{k}$ fois le même nombre $p^k(1 - p)^{n-k}$."
+            },
+            {
+              "texte": "**Conclusion** : pour tout entier $k$ tel que $0 \\leqslant k \\leqslant n$, $P(X = k) = \\binom{n}{k}\\,p^k\\,(1 - p)^{n-k}$."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-038",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-04"],
+          "question": {
+            "enonce": "$X$ suit la loi $\\mathcal{B}(3\\,;\\,0{,}1)$. Calcule $P(X = 1)$.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.243,
+              "tolerance": 0.001
+            },
+            "explication": "$P(X = 1) = \\binom{3}{1} \\times 0{,}1^1 \\times 0{,}9^2 = 3 \\times 0{,}1 \\times 0{,}81 = 0{,}243$. Les $3$ chemins à un succès ont chacun la probabilité $0{,}1 \\times 0{,}81 = 0{,}081$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-039",
+          "type": "methode",
+          "titre": "Comment justifier qu'une variable aléatoire suit une loi binomiale ?",
+          "capacites": ["bo-m-bernoulli-06"],
+          "etapes": [
+            "Décris l'épreuve répétée et ses deux issues ; nomme le succès, celui que $X$ compte.",
+            "Donne la probabilité $p$ du succès, lue ou calculée dans l'énoncé.",
+            "Justifie que les répétitions sont identiques et indépendantes : tirages avec remise, tirages « assimilés à des tirages avec remise », ou indépendance donnée par l'énoncé. Donne leur nombre $n$.",
+            "Conclus par la phrase attendue : « $X$ compte le nombre de succès dans ce schéma de Bernoulli, donc $X$ suit la loi binomiale de paramètres $n$ et $p$. »",
+            "Pour calculer ensuite $P(X = k)$, écris d'abord la formule avec les valeurs, puis le résultat."
+          ],
+          "exemple": "l-loi-binomiale-040"
+        },
+        {
+          "id": "l-loi-binomiale-040",
+          "type": "exemple",
+          "titre": "Une urne, dix tirages avec remise",
+          "capacites": ["bo-m-bernoulli-04", "bo-m-bernoulli-06"],
+          "enonce": "Une urne contient $6$ boules noires et $4$ boules rouges. On effectue successivement $10$ tirages au hasard **avec remise**. On note $X$ le nombre de boules noires obtenues.\n\n**1.** Justifier que $X$ suit une loi binomiale.\n\n**2.** Calculer la probabilité d'obtenir exactement $4$ boules noires, arrondie à $10^{-4}$.",
+          "etapes": [
+            {
+              "texte": "**1.** Chaque tirage est une épreuve de Bernoulli dont le succès est « la boule est noire », de probabilité $p = \\dfrac{6}{10} = 0{,}6$. Les tirages se font avec remise : ils sont identiques et indépendants, au nombre de $10$. $X$ compte le nombre de succès dans ce schéma de Bernoulli, donc $X$ suit la loi binomiale $\\mathcal{B}(10\\,;\\,0{,}6)$."
+            },
+            {
+              "texte": "**2.** On cherche $P(X = 4) = \\binom{10}{4} \\times 0{,}6^4 \\times 0{,}4^6$.",
+              "pourquoi": "$4$ noires sur $10$ tirages, c'est aussi $6$ rouges : l'exposant de $1 - p = 0{,}4$ est $10 - 4 = 6$."
+            },
+            {
+              "texte": "$\\binom{10}{4} = \\dfrac{10 \\times 9 \\times 8 \\times 7}{4 \\times 3 \\times 2 \\times 1} = \\dfrac{5\\,040}{24} = 210$."
+            },
+            {
+              "texte": "À la calculatrice, $0{,}6^4 = 0{,}129\\,6$ et $0{,}4^6 = 0{,}004\\,096$. Donc $P(X = 4) = 210 \\times 0{,}129\\,6 \\times 0{,}004\\,096 \\approx 0{,}111\\,5$.",
+              "pourquoi": "$210 \\times 0{,}129\\,6 = 27{,}216$, puis $27{,}216 \\times 0{,}004\\,096 \\approx 0{,}111\\,48$. La calculatrice donne aussi directement $P(X = 4)$ : la notion suivante montre comment."
+            },
+            {
+              "texte": "**Conclusion** : $X$ suit la loi $\\mathcal{B}(10\\,;\\,0{,}6)$, et la probabilité d'obtenir exactement $4$ boules noires est d'environ $0{,}111\\,5$."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-041",
+          "type": "figure",
+          "titre": "La planche de Galton",
+          "capacites": ["bo-m-bernoulli-10"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/loi-binomiale/planche-galton.svg",
+              "alt": "Planche de Galton à 4 rangées de clous (1, 2, 3 puis 4 clous). Le trajet d'une bille est dessiné : à droite, à gauche, à droite, à droite ; elle tombe dans la case 3. Sous les clous, 5 cases numérotées de 0 à 4 ; des barres de hauteurs proportionnelles à 1, 4, 6, 4 et 1 montrent la répartition de beaucoup de billes.",
+              "width": 360,
+              "height": 330
+            },
+            "caption": "La bille dessinée part 3 fois à droite et 1 fois à gauche : elle tombe dans la case 3. Le numéro de la case est le nombre de rebonds à droite. Avec beaucoup de billes, les cases 0 à 4 se remplissent à peu près comme 1, 4, 6, 4, 1 : les coefficients binomiaux de la ligne 4 du triangle de Pascal."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-042",
+          "type": "code",
+          "titre": "Simuler la planche de Galton",
+          "capacites": ["bo-m-bernoulli-10", "bo-m-bernoulli-04", "bo-m-listes-01"],
+          "code": {
+            "langage": "python",
+            "source": "from random import random\n\ndef bille(n):\n    case = 0                    # numéro de la case d'arrivée\n    for rangee in range(n):     # n rangées de clous\n        if random() < 0.5:      # la bille part à droite\n            case = case + 1\n    return case\n\ndef planche(n, nb_billes):\n    cases = [0 for k in range(n + 1)]   # effectifs des cases 0 à n\n    for i in range(nb_billes):\n        k = bille(n)\n        cases[k] = cases[k] + 1\n    return cases\n\nprint(planche(4, 1600))   # par exemple [97, 405, 596, 402, 100]"
+          },
+          "texte": "Une **planche de Galton** porte des rangées de clous (figure ci-dessus). À chaque clou, la bille part à droite ou à gauche avec la probabilité $\\dfrac{1}{2}$, indépendamment des autres clous. Elle tombe enfin dans l'une des cases numérotées de $0$ à $n$.\n\nLa fonction bille compte les rebonds à droite : c'est le numéro $X$ de la case. Les $n$ rebonds forment un schéma de Bernoulli, donc $X$ suit la loi $\\mathcal{B}\\left(n\\,;\\,\\dfrac{1}{2}\\right)$.\n\nLa fonction planche lâche nb_billes billes et renvoie la liste des effectifs des cases. Pour $n = 4$, $P(X = 2) = \\binom{4}{2} \\times \\dfrac{1}{16} = \\dfrac{6}{16}$ : environ $600$ billes sur $1\\,600$ tombent dans la case $2$. L'affichage change à chaque exécution."
+        },
+        {
+          "id": "l-loi-binomiale-043",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-10"],
+          "question": {
+            "enonce": "Une planche de Galton a $3$ rangées de clous ; à chaque clou, la bille part à droite avec la probabilité $\\dfrac{1}{2}$. Quelle est la probabilité qu'une bille tombe dans la case $0$, tout à gauche ? Donne une fraction ou un nombre décimal.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.125,
+              "tolerance": 0
+            },
+            "explication": "La case $0$ correspond à $0$ rebond à droite : les $3$ rebonds sont à gauche. Le numéro $X$ de la case suit la loi $\\mathcal{B}\\left(3\\,;\\,\\dfrac{1}{2}\\right)$, donc $P(X = 0) = \\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{1}{8} = 0{,}125$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-044",
+          "type": "piege",
+          "titre": "Oublier le coefficient binomial",
+          "faux": "$X$ suit la loi $\\mathcal{B}\\left(4\\,;\\,\\dfrac{1}{3}\\right)$, donc $P(X = 2) = \\left(\\dfrac{1}{3}\\right)^2\\left(\\dfrac{2}{3}\\right)^2 = \\dfrac{4}{81}$.",
+          "juste": "$P(X = 2) = \\binom{4}{2}\\left(\\dfrac{1}{3}\\right)^2\\left(\\dfrac{2}{3}\\right)^2 = 6 \\times \\dfrac{4}{81} = \\dfrac{24}{81}$.",
+          "explication": "$\\dfrac{4}{81}$ est la probabilité d'**un seul** chemin, par exemple « juste, juste, faux, faux ». Or les deux bonnes réponses peuvent être placées de $\\binom{4}{2} = 6$ façons : $6$ chemins réalisent $\\{X = 2\\}$. Contrôle : la somme des $P(X = k)$ doit valoir $1$ ; sans les coefficients, tu trouverais $\\dfrac{31}{81}$."
+        },
+        {
+          "id": "l-loi-binomiale-045",
+          "type": "retenir",
+          "texte": "Le nombre $X$ de succès d'un schéma de Bernoulli de paramètres $n$ et $p$ suit la loi $\\mathcal{B}(n\\,;\\,p)$, et $P(X = k) = \\binom{n}{k}p^k(1 - p)^{n-k}$. Pour le justifier : deux issues, la probabilité $p$, $n$ répétitions identiques et indépendantes."
+        }
+      ]
+    },
+    {
+      "notion": "n-loi-binomiale-calculatrice",
+      "blocs": [
+        {
+          "id": "l-loi-binomiale-046",
+          "type": "idee",
+          "texte": "Au bac, on demande rarement « exactement $k$ succès ». On demande plutôt « au plus $3$ », « au moins $6$ » ou « entre $3$ et $7$ ». Ce sont des **sommes** de probabilités $P(X = k)$, souvent nombreuses : la calculatrice les fait pour toi.\n\nTon travail : traduire l'événement avec $X$, puis le ramener à ce que la calculatrice sait calculer, $P(X = k)$ et $P(X \\leqslant k)$."
+        },
+        {
+          "id": "l-loi-binomiale-047",
+          "type": "propriete",
+          "titre": "Au plus, au moins, entre deux valeurs",
+          "capacites": ["bo-m-bernoulli-08"],
+          "conditions": [
+            "$X$ suit la loi $\\mathcal{B}(n\\,;\\,p)$ : elle ne prend que les valeurs entières $0, 1, \\dots, n$.",
+            "$k$ et $k'$ sont des entiers tels que $1 \\leqslant k \\leqslant k' \\leqslant n$."
+          ],
+          "admise": false,
+          "texte": "- Au plus $k$ succès : $P(X \\leqslant k) = P(X = 0) + P(X = 1) + \\dots + P(X = k)$.\n- Au moins $k$ succès : $P(X \\geqslant k) = 1 - P(X \\leqslant k - 1)$.\n- Plus de $k$ succès : $P(X > k) = 1 - P(X \\leqslant k)$.\n- Entre $k$ et $k'$ succès : $P(k \\leqslant X \\leqslant k') = P(X \\leqslant k') - P(X \\leqslant k - 1)$.\n\nJustification : les événements $\\{X = i\\}$ sont deux à deux incompatibles (deux d'entre eux ne se produisent jamais ensemble), donc leurs probabilités s'additionnent. Comme $X$ est entier, le contraire de $\\{X \\geqslant k\\}$ est $\\{X \\leqslant k - 1\\}$."
+        },
+        {
+          "id": "l-loi-binomiale-048",
+          "type": "exemple",
+          "titre": "À la main, avec la loi du QCM",
+          "capacites": ["bo-m-bernoulli-08"],
+          "enonce": "Un élève répond au hasard aux $4$ questions d'un QCM ; chaque question a $3$ réponses dont une seule juste. Le nombre $X$ de bonnes réponses suit la loi $\\mathcal{B}\\left(4\\,;\\,\\dfrac{1}{3}\\right)$, calculée dans la notion précédente :\n\n| $k$ | $0$ | $1$ | $2$ | $3$ | $4$ |\n|---|---|---|---|---|---|\n| $P(X = k)$ | $\\dfrac{16}{81}$ | $\\dfrac{32}{81}$ | $\\dfrac{24}{81}$ | $\\dfrac{8}{81}$ | $\\dfrac{1}{81}$ |\n\nCalculer la probabilité que l'élève ait : **1.** au plus une bonne réponse ; **2.** au moins deux bonnes réponses ; **3.** entre une et trois bonnes réponses.",
+          "etapes": [
+            {
+              "texte": "**1.** « Au plus une » signifie $X \\leqslant 1$ : $P(X \\leqslant 1) = P(X = 0) + P(X = 1) = \\dfrac{16}{81} + \\dfrac{32}{81} = \\dfrac{48}{81} = \\dfrac{16}{27}$.",
+              "pourquoi": "« Au plus une » : $0$ ou $1$ bonne réponse, pas davantage."
+            },
+            {
+              "texte": "**2.** « Au moins deux » signifie $X \\geqslant 2$ : c'est l'événement contraire de $X \\leqslant 1$. Donc $P(X \\geqslant 2) = 1 - P(X \\leqslant 1) = 1 - \\dfrac{48}{81} = \\dfrac{33}{81} = \\dfrac{11}{27}$.",
+              "pourquoi": "Contrôle par la somme directe : $\\dfrac{24 + 8 + 1}{81} = \\dfrac{33}{81}$."
+            },
+            {
+              "texte": "**3.** « Entre une et trois » signifie $1 \\leqslant X \\leqslant 3$ : $P(1 \\leqslant X \\leqslant 3) = P(X \\leqslant 3) - P(X \\leqslant 0)$. Or $P(X \\leqslant 3) = 1 - P(X = 4) = \\dfrac{80}{81}$, donc $P(1 \\leqslant X \\leqslant 3) = \\dfrac{80}{81} - \\dfrac{16}{81} = \\dfrac{64}{81}$.",
+              "pourquoi": "Contrôle : $\\dfrac{32 + 24 + 8}{81} = \\dfrac{64}{81}$. Ici, « entre une et trois » inclut $1$ et $3$."
+            },
+            {
+              "texte": "**Conclusion** : $P(X \\leqslant 1) = \\dfrac{16}{27} \\approx 0{,}593$ ; $P(X \\geqslant 2) = \\dfrac{11}{27} \\approx 0{,}407$ ; $P(1 \\leqslant X \\leqslant 3) = \\dfrac{64}{81} \\approx 0{,}790$."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-049",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-08"],
+          "question": {
+            "enonce": "$X$ suit la loi $\\mathcal{B}(20\\,;\\,0{,}25)$. Quelle écriture est égale à $P(X \\geqslant 6)$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$1 - P(X \\leqslant 5)$",
+                "$1 - P(X \\leqslant 6)$",
+                "$P(X \\leqslant 20) - P(X \\leqslant 6)$",
+                "$1 - P(X \\geqslant 5)$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "$1 - P(X \\leqslant 6)$ vaut $P(X \\geqslant 7)$ : la valeur $6$, qui fait partie de « au moins $6$ », a été retirée.",
+                "$P(X \\leqslant 20) - P(X \\leqslant 6)$ vaut $P(7 \\leqslant X \\leqslant 20)$ : la valeur $6$ manque encore.",
+                "$1 - P(X \\geqslant 5)$ vaut $P(X \\leqslant 4)$ : le contraire de « au moins $6$ » est « au plus $5$ »."
+              ]
+            },
+            "explication": "$X$ ne prend que des valeurs entières : le contraire de « au moins $6$ » est « au plus $5$ ». Donc $P(X \\geqslant 6) = 1 - P(X \\leqslant 5)$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-050",
+          "type": "methode",
+          "titre": "Comment calculer une probabilité binomiale à la calculatrice ?",
+          "capacites": ["bo-m-bernoulli-08"],
+          "etapes": [
+            "Écris la loi de $X$ avec ses paramètres : « $X$ suit la loi $\\mathcal{B}(n\\,;\\,p)$ ».",
+            "Traduis l'événement avec $X$ : « au plus $k$ » donne $X \\leqslant k$ ; « au moins $k$ » donne $X \\geqslant k$ ; « moins de $k$ » donne $X \\leqslant k - 1$.",
+            "Ramène-toi à $P(X = k)$ ou à $P(X \\leqslant k)$ avec la propriété ci-dessus. Écris ce calcul sur ta copie, par exemple $P(X \\geqslant 6) = 1 - P(X \\leqslant 5)$.",
+            "Calcule avec la loi binomiale de ta calculatrice. Sur TI, binomFdp(n, p, k) donne $P(X = k)$ et binomFRép(n, p, k) donne $P(X \\leqslant k)$. Sur Casio, ce sont Bpd et Bcd dans le menu de la loi binomiale ; sur NumWorks, l'application Probabilités.",
+            "L'ordre des paramètres change selon le modèle : contrôle-le sur un cas connu, comme $P(X = 0) = (1 - p)^n$. Arrondis seulement à la fin, puis conclus par une phrase."
+          ],
+          "exemple": "l-loi-binomiale-052"
+        },
+        {
+          "id": "l-loi-binomiale-051",
+          "type": "figure",
+          "titre": "La loi $\\mathcal{B}(20\\,;\\,0{,}25)$ en bâtons",
+          "capacites": ["bo-m-bernoulli-08"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/loi-binomiale/binomiale-20-025.svg",
+              "alt": "Diagramme en bâtons de la loi binomiale de paramètres 20 et 0,25, pour k de 0 à 20. Les bâtons montent jusqu'à k = 5 (environ 0,20), puis redescendent ; au-delà de k = 12, ils sont trop petits pour être vus. Les bâtons de 0 à 5, en bleu, totalisent P(X ≤ 5) ≈ 0,617 ; ceux de 6 à 20, en orange, totalisent P(X ≥ 6) ≈ 0,383.",
+              "width": 360,
+              "height": 260
+            },
+            "caption": "Chaque bâton a pour hauteur P(X = k). Les bâtons bleus (k de 0 à 5) totalisent P(X ≤ 5) ≈ 0,617 ; les bâtons orange (k de 6 à 20) totalisent P(X ≥ 6) = 1 − P(X ≤ 5) ≈ 0,383."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-052",
+          "type": "exemple",
+          "titre": "Le stage des salariés",
+          "capacites": ["bo-m-bernoulli-08"],
+          "enonce": "Dans une grande entreprise, $25\\,\\%$ des salariés ont suivi un stage de secourisme. On choisit $20$ salariés au hasard ; l'effectif est assez grand pour assimiler ce choix à $20$ tirages avec remise. On note $X$ le nombre de salariés choisis qui ont suivi le stage ; on admet que $X$ suit la loi $\\mathcal{B}(20\\,;\\,0{,}25)$.\n\nCalculer, arrondies à $10^{-3}$ :\n\n**1.** $P(X = 5)$ ;\n\n**2.** la probabilité qu'au plus $3$ salariés aient suivi le stage ;\n\n**3.** la probabilité qu'au moins $6$ salariés l'aient suivi ;\n\n**4.** la probabilité que leur nombre soit compris entre $3$ et $7$, bornes incluses.",
+          "etapes": [
+            {
+              "texte": "**1.** La calculatrice donne directement $P(X = 5) \\approx 0{,}202$.",
+              "pourquoi": "Par la formule, $P(X = 5) = \\binom{20}{5} \\times 0{,}25^5 \\times 0{,}75^{15}$, avec $\\binom{20}{5} = 15\\,504$ : la calculatrice évite ce long calcul."
+            },
+            {
+              "texte": "**2.** « Au plus $3$ » se traduit par $X \\leqslant 3$. La calculatrice donne la probabilité cumulée $P(X \\leqslant 3) \\approx 0{,}225$."
+            },
+            {
+              "texte": "**3.** « Au moins $6$ » se traduit par $X \\geqslant 6$ : $P(X \\geqslant 6) = 1 - P(X \\leqslant 5) \\approx 1 - 0{,}617\\,2 = 0{,}382\\,8$, soit environ $0{,}383$.",
+              "pourquoi": "La calculatrice donne $P(X \\leqslant 5)$ ; on passe par l'événement contraire. Sur la figure ci-dessus, ce sont les bâtons orange."
+            },
+            {
+              "texte": "**4.** $P(3 \\leqslant X \\leqslant 7) = P(X \\leqslant 7) - P(X \\leqslant 2) \\approx 0{,}898\\,2 - 0{,}091\\,3 = 0{,}806\\,9$, soit environ $0{,}807$.",
+              "pourquoi": "On retire $P(X \\leqslant 2)$, et non $P(X \\leqslant 3)$ : la valeur $3$ fait partie de l'événement."
+            },
+            {
+              "texte": "**Conclusion** : $P(X = 5) \\approx 0{,}202$ ; $P(X \\leqslant 3) \\approx 0{,}225$ ; $P(X \\geqslant 6) \\approx 0{,}383$ ; $P(3 \\leqslant X \\leqslant 7) \\approx 0{,}807$."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-053",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-08"],
+          "question": {
+            "enonce": "$X$ suit la loi $\\mathcal{B}(20\\,;\\,0{,}25)$. Avec les valeurs de l'exemple ci-dessus, ou à la calculatrice, donne $P(X \\leqslant 4)$ arrondie à $10^{-3}$.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.415,
+              "tolerance": 0.001
+            },
+            "explication": "$\\{X \\leqslant 5\\}$ réunit $\\{X \\leqslant 4\\}$ et $\\{X = 5\\}$, donc $P(X \\leqslant 4) = P(X \\leqslant 5) - P(X = 5) \\approx 0{,}617 - 0{,}202 = 0{,}415$. La calculatrice donne directement $P(X \\leqslant 4) \\approx 0{,}414\\,8$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-054",
+          "type": "methode",
+          "titre": "Comment trouver le plus petit $k$ tel que $P(X \\leqslant k) \\geqslant 0{,}95$ ?",
+          "capacites": ["bo-m-bernoulli-08", "bo-m-bernoulli-11"],
+          "etapes": [
+            "Traduis la question. Chercher le plus petit $k$ tel que $P(X \\leqslant k) \\geqslant 0{,}95$, c'est chercher le plus petit $k$ tel que $P(X > k) \\leqslant 0{,}05$, car $P(X > k) = 1 - P(X \\leqslant k)$.",
+            "Affiche à la calculatrice un tableau de valeurs de $P(X \\leqslant k)$ pour $k = 0, 1, 2, \\dots$ : ces valeurs augmentent avec $k$.",
+            "Repère le premier $k$ pour lequel $P(X \\leqslant k)$ atteint $0{,}95$.",
+            "Justifie avec les deux valeurs qui encadrent le seuil : $P(X \\leqslant k - 1) < 0{,}95 \\leqslant P(X \\leqslant k)$.",
+            "Si l'on demande un intervalle, conclus : $P(X \\in [0\\,;\\,k]) \\geqslant 0{,}95$, ou, ce qui revient au même, $P(X \\in [k + 1\\,;\\,n]) \\leqslant 0{,}05$."
+          ],
+          "exemple": "l-loi-binomiale-055"
+        },
+        {
+          "id": "l-loi-binomiale-055",
+          "type": "exemple",
+          "titre": "Prévoir les repas végétariens",
+          "capacites": ["bo-m-bernoulli-08", "bo-m-bernoulli-11"],
+          "enonce": "Pour une sortie, $20$ élèves sont inscrits. Chacun demande un repas végétarien avec la probabilité $0{,}25$, indépendamment des autres. Le nombre $X$ de repas végétariens demandés suit donc la loi $\\mathcal{B}(20\\,;\\,0{,}25)$.\n\nCombien de repas végétariens faut-il commander, au minimum, pour que la probabilité d'en manquer soit inférieure ou égale à $0{,}05$ ?",
+          "etapes": [
+            {
+              "texte": "Si l'on commande $k$ repas, on en manque quand $X > k$. On cherche donc le plus petit entier $k$ tel que $P(X > k) \\leqslant 0{,}05$, c'est-à-dire tel que $P(X \\leqslant k) \\geqslant 0{,}95$.",
+              "pourquoi": "$P(X > k) = 1 - P(X \\leqslant k)$, et $1 - P(X \\leqslant k) \\leqslant 0{,}05$ équivaut à $P(X \\leqslant k) \\geqslant 0{,}95$."
+            },
+            {
+              "texte": "Un tableau de valeurs de la calculatrice donne, en arrondissant à $10^{-3}$ :\n\n| $k$ | $5$ | $6$ | $7$ | $8$ | $9$ |\n|---|---|---|---|---|---|\n| $P(X \\leqslant k)$ | $0{,}617$ | $0{,}786$ | $0{,}898$ | $0{,}959$ | $0{,}986$ |"
+            },
+            {
+              "texte": "$P(X \\leqslant 7) \\approx 0{,}898 < 0{,}95$ et $P(X \\leqslant 8) \\approx 0{,}959 \\geqslant 0{,}95$. Le plus petit entier qui convient est donc $k = 8$.",
+              "pourquoi": "Les valeurs de $P(X \\leqslant k)$ augmentent avec $k$ : une fois le seuil atteint, il le reste."
+            },
+            {
+              "texte": "**Conclusion** : il faut commander au moins $8$ repas végétariens. Avec $8$ repas, la probabilité d'en manquer est $P(X > 8) \\approx 1 - 0{,}959 = 0{,}041$. Autrement dit, $P(X \\in [0\\,;\\,8]) \\geqslant 0{,}95$."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-056",
+          "type": "code",
+          "titre": "La surréservation : le plus petit $k$ tel que $P(X > k) \\leqslant \\alpha$",
+          "capacites": ["bo-m-bernoulli-11", "bo-m-bernoulli-08"],
+          "code": {
+            "langage": "python",
+            "source": "from math import comb\n\ndef p_egal(n, p, k):\n    # P(X = k) pour X de loi binomiale B(n ; p)\n    return comb(n, k) * p**k * (1 - p)**(n - k)\n\ndef plus_petit_k(n, p, alpha):\n    k = 0\n    cumul = p_egal(n, p, 0)          # P(X <= 0)\n    while 1 - cumul > alpha:         # tant que P(X > k) > alpha\n        k = k + 1\n        cumul = cumul + p_egal(n, p, k)\n    return k\n\nprint(plus_petit_k(20, 0.25, 0.05))  # affiche 8\nprint(plus_petit_k(20, 0.75, 0.05))  # affiche 18"
+          },
+          "texte": "$\\alpha$ (lettre grecque alpha) est le risque accepté. comb(n, k) calcule $\\binom{n}{k}$, et la variable cumul contient $P(X \\leqslant k)$ : à chaque tour, $k$ augmente de $1$ et cumul reçoit le terme $P(X = k)$. La boucle s'arrête dès que $P(X > k) = 1 - P(X \\leqslant k)$ ne dépasse plus $\\alpha$. Le premier appel retrouve les $8$ repas de l'exemple.\n\n**Surréservation** : une compagnie vend $20$ billets pour un trajet, mais chaque client ne se présente qu'avec la probabilité $0{,}75$, indépendamment. Le nombre $X$ de clients présents suit la loi $\\mathcal{B}(20\\,;\\,0{,}75)$. Le second appel renvoie $18$ : avec $18$ places, le risque d'avoir plus de clients que de places est au plus $5\\,\\%$."
+        },
+        {
+          "id": "l-loi-binomiale-057",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-11"],
+          "question": {
+            "enonce": "On lance le programme ci-dessus. Pour le premier appel, que vaut la variable cumul quand la boucle s'arrête ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$P(X \\leqslant 8)$, environ $0{,}959$",
+                "$P(X > 8)$, environ $0{,}041$",
+                "$P(X = 8)$, environ $0{,}061$",
+                "$P(X \\leqslant 7)$, environ $0{,}898$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "$P(X > 8)$ est égale à $1$ moins cumul : c'est la quantité que la boucle compare à alpha, pas la valeur de cumul.",
+                "cumul ne contient pas un seul terme : à chaque tour, on lui **ajoute** $P(X = k)$.",
+                "Pour $k = 7$, $1 - 0{,}898 = 0{,}102 > 0{,}05$ : la boucle continue et ajoute encore $P(X = 8)$."
+              ]
+            },
+            "explication": "cumul contient toujours $P(X \\leqslant k)$. La boucle s'arrête pour $k = 8$, quand $1 - P(X \\leqslant 8) \\approx 0{,}041 \\leqslant 0{,}05$ : cumul vaut alors $P(X \\leqslant 8) \\approx 0{,}959$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-058",
+          "type": "piege",
+          "titre": "Au moins $6$, ce n'est pas $1 - P(X \\leqslant 6)$",
+          "faux": "$X$ suit la loi $\\mathcal{B}(20\\,;\\,0{,}25)$, donc $P(X \\geqslant 6) = 1 - P(X \\leqslant 6) \\approx 1 - 0{,}786 = 0{,}214$.",
+          "juste": "$P(X \\geqslant 6) = 1 - P(X \\leqslant 5) \\approx 1 - 0{,}617 = 0{,}383$.",
+          "explication": "Le contraire de « au moins $6$ » est « au plus $5$ » : la valeur $6$ appartient à l'événement, il ne faut pas la retirer. Écris la liste des valeurs pour vérifier : $\\{X \\geqslant 6\\}$ contient $6, 7, \\dots, 20$, et son contraire contient $0, 1, \\dots, 5$."
+        },
+        {
+          "id": "l-loi-binomiale-059",
+          "type": "complement",
+          "titre": "Pour aller plus loin : la loi de Poisson, loi des événements rares",
+          "capacites": ["bo-m-bernoulli-14"],
+          "texte": "Quand $n$ est grand et $p$ petit, avec un produit $np$ constant noté $\\lambda$ (lettre grecque lambda), les probabilités binomiales se rapprochent de celles d'une autre loi :\n\n$$P(X = k) \\approx e^{-\\lambda}\\,\\frac{\\lambda^k}{k!}.$$\n\nC'est la **loi de Poisson** de paramètre $\\lambda$. Elle décrit des événements rares : pannes, désintégrations, fautes de frappe. Par exemple, pour $X$ de loi $\\mathcal{B}(1\\,000\\,;\\,0{,}002)$, on a $\\lambda = 2$ et $P(X = 0) = 0{,}998^{1\\,000} \\approx 0{,}135\\,1$, très proche de $e^{-2} \\approx 0{,}135\\,3$."
+        },
+        {
+          "id": "l-loi-binomiale-060",
+          "type": "retenir",
+          "texte": "Traduis l'événement avec $X$, puis ramène-le à $P(X = k)$ ou à $P(X \\leqslant k)$ : $P(X \\geqslant k) = 1 - P(X \\leqslant k - 1)$ et $P(k \\leqslant X \\leqslant k') = P(X \\leqslant k') - P(X \\leqslant k - 1)$. Pour un seuil, encadre-le par deux valeurs consécutives de $P(X \\leqslant k)$."
+        }
+      ]
+    },
+    {
+      "notion": "n-loi-binomiale-seuils",
+      "blocs": [
+        {
+          "id": "l-loi-binomiale-061",
+          "type": "idee",
+          "texte": "Combien d'ampoules faut-il contrôler pour être presque sûr d'en trouver au moins une défectueuse ? Plus tu en contrôles, plus la probabilité $1 - 0{,}95^n$ s'approche de $1$. Mais à partir de quel $n$ dépasse-t-elle $0{,}99$ ?\n\nL'inconnue $n$ est dans un exposant : le logarithme la fait descendre. Les problèmes de comparaison et d'optimisation se traitent avec les mêmes outils : la formule de la loi binomiale, $\\ln$ et la dérivée."
+        },
+        {
+          "id": "l-loi-binomiale-062",
+          "type": "rappel",
+          "titre": "Rappel : le plus petit $n$ tel que $q^n < s$",
+          "texte": "Pour $0 < q < 1$ et $s > 0$ :\n\n$$q^n < s \\iff n\\ln q < \\ln s \\iff n > \\frac{\\ln s}{\\ln q}.$$\n\nLe sens change à la dernière étape, car $\\ln q < 0$ quand $0 < q < 1$. On garde ensuite le plus petit entier qui vérifie l'inégalité, puis on contrôle avec la calculatrice.",
+          "lien": "l-logarithme-030"
+        },
+        {
+          "id": "l-loi-binomiale-063",
+          "type": "methode",
+          "titre": "Comment trouver le nombre d'épreuves $n$ pour que la probabilité d'au moins un succès atteigne un seuil ?",
+          "capacites": ["bo-m-bernoulli-07", "bo-m-logarithme-06", "bo-m-suites-14"],
+          "etapes": [
+            "Exprime la probabilité d'au moins un succès en $n$ épreuves : $p_n = 1 - (1 - p)^n$.",
+            "Écris l'inéquation et isole la puissance : $1 - (1 - p)^n \\geqslant 0{,}99 \\iff (1 - p)^n \\leqslant 0{,}01$. Le sens change quand tu multiplies par $-1$.",
+            "Applique $\\ln$, qui est strictement croissante, puis divise par $\\ln(1 - p)$, qui est négatif : le sens change encore. Tu obtiens $n \\geqslant \\dfrac{\\ln 0{,}01}{\\ln(1 - p)}$.",
+            "Calcule ce quotient, prends le plus petit entier qui convient, et contrôle avec $p_n$ pour cet entier et pour le précédent.",
+            "Variante sans logarithme : une boucle while qui augmente $n$ tant que $p_n < 0{,}99$ (programme ci-dessous), ou un tableau de valeurs de la calculatrice."
+          ],
+          "exemple": "l-loi-binomiale-064",
+          "code": {
+            "langage": "python",
+            "source": "def plus_petit_n(p, seuil):\n    n = 1\n    while 1 - (1 - p)**n < seuil:   # tant que P(au moins un succès) < seuil\n        n = n + 1\n    return n\n\nprint(plus_petit_n(0.05, 0.99))     # affiche 90"
+          }
+        },
+        {
+          "id": "l-loi-binomiale-064",
+          "type": "exemple",
+          "titre": "Contrôler assez d'ampoules",
+          "capacites": ["bo-m-bernoulli-07", "bo-m-logarithme-06"],
+          "enonce": "Chaque ampoule d'un très grand stock est défectueuse avec la probabilité $0{,}05$. On a vu que la probabilité qu'au moins une ampoule soit défectueuse, parmi $n$ ampoules prélevées, est $q_n = 1 - 0{,}95^n$.\n\nDéterminer le plus petit nombre $n$ d'ampoules à prélever pour que $q_n \\geqslant 0{,}99$.",
+          "etapes": [
+            {
+              "texte": "$q_n \\geqslant 0{,}99 \\iff 1 - 0{,}95^n \\geqslant 0{,}99 \\iff -0{,}95^n \\geqslant -0{,}01 \\iff 0{,}95^n \\leqslant 0{,}01$.",
+              "pourquoi": "On retranche $1$ aux deux membres, puis on multiplie par $-1$ : le sens de l'inégalité change."
+            },
+            {
+              "texte": "Les deux membres sont strictement positifs et $\\ln$ est strictement croissante : $0{,}95^n \\leqslant 0{,}01 \\iff n\\ln 0{,}95 \\leqslant \\ln 0{,}01$.",
+              "pourquoi": "$\\ln\\left(0{,}95^n\\right) = n\\ln 0{,}95$."
+            },
+            {
+              "texte": "Or $0 < 0{,}95 < 1$, donc $\\ln 0{,}95 < 0$. En divisant par ce nombre négatif, le sens change : $n \\geqslant \\dfrac{\\ln 0{,}01}{\\ln 0{,}95}$."
+            },
+            {
+              "texte": "À la calculatrice, $\\dfrac{\\ln 0{,}01}{\\ln 0{,}95} \\approx 89{,}8$. Le plus petit entier supérieur ou égal à $89{,}8$ est $90$.",
+              "pourquoi": "$\\ln 0{,}01 \\approx -4{,}605$ et $\\ln 0{,}95 \\approx -0{,}051\\,3$ : le quotient de deux nombres négatifs est positif."
+            },
+            {
+              "texte": "Contrôle : $q_{89} = 1 - 0{,}95^{89} \\approx 0{,}989\\,6 < 0{,}99$ et $q_{90} = 1 - 0{,}95^{90} \\approx 0{,}990\\,1 \\geqslant 0{,}99$."
+            },
+            {
+              "texte": "**Conclusion** : il faut prélever au moins $90$ ampoules pour que la probabilité d'en trouver au moins une défectueuse soit supérieure ou égale à $0{,}99$."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-065",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-07"],
+          "question": {
+            "enonce": "On lance $n$ fois une pièce équilibrée. Quel est le plus petit $n$ pour lequel la probabilité d'obtenir au moins un pile est supérieure ou égale à $0{,}99$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 7,
+              "tolerance": 0
+            },
+            "explication": "Il faut $1 - 0{,}5^n \\geqslant 0{,}99$, soit $0{,}5^n \\leqslant 0{,}01$, c'est-à-dire $2^n \\geqslant 100$. Or $2^6 = 64 < 100$ et $2^7 = 128 \\geqslant 100$ : le plus petit $n$ est $7$. Par le logarithme : $n \\geqslant \\dfrac{\\ln 0{,}01}{\\ln 0{,}5} \\approx 6{,}6$."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-066",
+          "type": "verifie",
+          "capacites": ["bo-m-bernoulli-07"],
+          "question": {
+            "enonce": "Une comparaison célèbre, posée au XVIIe siècle par le chevalier de Méré. Jeu A : obtenir au moins un $6$ en $4$ lancers d'un dé. Jeu B : obtenir au moins un double $6$ en $24$ lancers de deux dés. On donne $\\left(\\dfrac{5}{6}\\right)^4 \\approx 0{,}482$ et $\\left(\\dfrac{35}{36}\\right)^{24} \\approx 0{,}509$. Quel jeu donne la plus grande probabilité de gagner ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "Le jeu A",
+                "Le jeu B",
+                "Les deux jeux ont la même probabilité de gain"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "$0{,}509$ est la probabilité de **perdre** au jeu B (aucun double $6$) : sa probabilité de gain est $1 - 0{,}509 = 0{,}491$.",
+                "L'égalité $4 \\times \\dfrac{1}{6} = 24 \\times \\dfrac{1}{36}$ n'est pas un calcul de probabilité : il faut passer par « aucun succès »."
+              ]
+            },
+            "explication": "Au moins un succès : $1 - (1 - p)^n$. Jeu A : $1 - \\left(\\dfrac{5}{6}\\right)^4 \\approx 1 - 0{,}482 = 0{,}518$. Jeu B : un double $6$ a la probabilité $\\dfrac{1}{36}$, donc $1 - \\left(\\dfrac{35}{36}\\right)^{24} \\approx 1 - 0{,}509 = 0{,}491$. Le jeu A est le plus favorable."
+          }
+        },
+        {
+          "id": "l-loi-binomiale-067",
+          "type": "exemple",
+          "titre": "Optimiser : quand une probabilité est-elle la plus grande ?",
+          "capacites": ["bo-m-bernoulli-07", "bo-m-derivation-06"],
+          "enonce": "Un jeu comporte $3$ épreuves identiques et indépendantes, chacune gagnée avec la probabilité $p$, où $p \\in [0\\,;\\,1]$. Le joueur remporte le lot s'il gagne **exactement une** épreuve. On note $f(p)$ la probabilité qu'il remporte le lot.\n\n**1.** Montrer que $f(p) = 3p(1 - p)^2$.\n\n**2.** Pour quelle valeur de $p$ cette probabilité est-elle maximale ? Donner ce maximum.",
+          "etapes": [
+            {
+              "texte": "**1.** Le nombre $X$ d'épreuves gagnées compte les succès d'un schéma de Bernoulli de paramètres $3$ et $p$ : $X$ suit la loi $\\mathcal{B}(3\\,;\\,p)$. Donc $f(p) = P(X = 1) = \\binom{3}{1}p^1(1 - p)^2 = 3p(1 - p)^2$."
+            },
+            {
+              "texte": "**2.** On étudie $f$ sur $[0\\,;\\,1]$. On développe : $f(p) = 3p(1 - 2p + p^2) = 3p - 6p^2 + 3p^3$. Donc $f'(p) = 3 - 12p + 9p^2$."
+            },
+            {
+              "texte": "On factorise : $f'(p) = 3(3p^2 - 4p + 1) = 3(1 - p)(1 - 3p)$.",
+              "pourquoi": "Le trinôme $3p^2 - 4p + 1$ a pour discriminant $16 - 12 = 4$, et pour racines $\\dfrac{4 - 2}{6} = \\dfrac{1}{3}$ et $\\dfrac{4 + 2}{6} = 1$. Contrôle : $(1 - p)(1 - 3p) = 1 - 4p + 3p^2$."
+            },
+            {
+              "texte": "Sur $[0\\,;\\,1]$, $1 - p \\geqslant 0$. Donc $f'(p)$ a le signe de $1 - 3p$ : positif sur $\\left[0\\,;\\,\\dfrac{1}{3}\\right]$, négatif sur $\\left[\\dfrac{1}{3}\\,;\\,1\\right]$. La fonction $f$ est croissante, puis décroissante : elle atteint son maximum en $p = \\dfrac{1}{3}$."
+            },
+            {
+              "texte": "$f\\left(\\dfrac{1}{3}\\right) = 3 \\times \\dfrac{1}{3} \\times \\left(\\dfrac{2}{3}\\right)^2 = \\dfrac{4}{9}$."
+            },
+            {
+              "texte": "**Conclusion** : la probabilité de gagner exactement une épreuve sur trois est maximale pour $p = \\dfrac{1}{3}$ ; elle vaut alors $\\dfrac{4}{9} \\approx 0{,}444$.",
+              "pourquoi": "Le résultat est intuitif : pour gagner une épreuve sur trois, le meilleur réglage est une chance sur trois."
+            }
+          ]
+        },
+        {
+          "id": "l-loi-binomiale-068",
+          "type": "piege",
+          "titre": "Isoler la puissance sans changer le sens",
+          "faux": "$1 - 0{,}95^n \\geqslant 0{,}99 \\iff 0{,}95^n \\geqslant 0{,}01$.",
+          "juste": "$1 - 0{,}95^n \\geqslant 0{,}99 \\iff -0{,}95^n \\geqslant -0{,}01 \\iff 0{,}95^n \\leqslant 0{,}01$.",
+          "explication": "Passer de $-0{,}95^n$ à $0{,}95^n$, c'est multiplier par $-1$ : le sens change. Contrôle de bon sens : $0{,}95^n$ est la probabilité de n'avoir **aucune** ampoule défectueuse. Pour être presque sûr d'en trouver une, cette probabilité doit être **petite**."
+        },
+        {
+          "id": "l-loi-binomiale-069",
+          "type": "complement",
+          "titre": "Pour aller plus loin : la loi géométrique",
+          "capacites": ["bo-m-bernoulli-13"],
+          "texte": "On répète une épreuve de Bernoulli de paramètre $p$, de façon indépendante, jusqu'au premier succès. Le rang $T$ de ce premier succès suit la **loi géométrique** de paramètre $p$ : pour tout entier $k \\geqslant 1$,\n\n$$P(T = k) = (1 - p)^{k-1}\\,p.$$\n\nEn effet, $\\{T = k\\}$ correspond au chemin « $k - 1$ échecs, puis un succès ». Par exemple, la probabilité que le premier $6$ d'un dé arrive au troisième lancer est $\\left(\\dfrac{5}{6}\\right)^2 \\times \\dfrac{1}{6} = \\dfrac{25}{216}$. De même, $P(T > k) = (1 - p)^k$ : les $k$ premières épreuves sont des échecs."
+        },
+        {
+          "id": "l-loi-binomiale-070",
+          "type": "retenir",
+          "texte": "Pour un seuil sur $n$ : écris $1 - (1 - p)^n \\geqslant s$, isole $(1 - p)^n$, applique $\\ln$ et divise par $\\ln(1 - p) < 0$ en changeant le sens. Pour une optimisation, exprime la probabilité avec la formule binomiale, puis étudie la fonction obtenue."
+        }
+      ]
+    }
+  ]
+}
