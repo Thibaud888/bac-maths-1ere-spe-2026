@@ -1,0 +1,751 @@
+[
+  {
+    "id": "tb-loi-binomiale-001",
+    "chapitre": "loi-binomiale",
+    "notions": [
+      "n-loi-binomiale-epreuves-independantes",
+      "n-loi-binomiale-loi-binomiale",
+      "n-loi-binomiale-calculatrice"
+    ],
+    "capacites": [
+      "bo-m-bernoulli-05",
+      "bo-m-bernoulli-04",
+      "bo-m-bernoulli-06",
+      "bo-m-bernoulli-08",
+      "bo-m-bernoulli-11",
+      "bo-m-derivation-06"
+    ],
+    "titre": "Dépistage d'un virus : fiabilité du test, puis un échantillon de 50 habitants",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": true,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2025-asie-juin-j2",
+      "adaptation": "Exercice 1 : contexte du dépistage et deux formulations reprises (probabilité qu'un individu au test positif soit atteint ; expression de $P_T(M)$ en fonction de $p$) ; données modifiées (test positif avec la probabilité $0{,}98$ chez une personne atteinte et $0{,}03$ chez une personne saine, d'où $P_T(M) = \\dfrac{98p}{95p + 3}$) ; étude de la fonction $p \\mapsto P_T(M)$ et seuil $p \\geqslant 0{,}216$ écrits pour le site ; question de seuil sur le nombre $n$ d'individus remplacée par des calculs binomiaux à la calculatrice (au moins trois personnes atteintes, plus petit nombre de doses). Aucune question d'espérance ni de variance de la loi binomiale (chapitre ultérieur). Calculatrice autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Dans une région, un virus touche une proportion $p$ de la population, où $p$ est un réel tel que $0 < p < 1$. Un laboratoire met au point un test de dépistage :\n\n- si la personne testée est atteinte par le virus, le test est positif avec la probabilité $0{,}98$ ;\n- si la personne testée n'est pas atteinte, le test est positif avec la probabilité $0{,}03$.\n\nOn choisit une personne au hasard dans la population de la région et on lui fait passer le test. On note $M$ l'événement « la personne est atteinte par le virus » et $T$ l'événement « son test est positif ».\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Dans cette question, $p = 0{,}02$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Traduire la situation à l'aide d'un arbre pondéré.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-007",
+            "indices": [
+              "Le premier niveau de l'arbre porte l'état de la personne ($M$ ou $\\overline{M}$), le second le résultat du test. Les probabilités de l'énoncé sur le test sont-elles des probabilités simples ou des probabilités sachant $M$ ou $\\overline{M}$ ?"
+            ],
+            "attenduCorrecteur": "- Premier niveau : $P(M) = 0{,}02$ et $P(\\overline{M}) = 0{,}98$ : 0,25 pt.\n- Second niveau : probabilités conditionnelles $P_M(T) = 0{,}98$, $P_M(\\overline{T}) = 0{,}02$, $P_{\\overline{M}}(T) = 0{,}03$ et $P_{\\overline{M}}(\\overline{T}) = 0{,}97$, placées sur les bonnes branches : 0,25 pt.",
+            "solution": "On a $P(M) = 0{,}02$, donc $P(\\overline{M}) = 1 - 0{,}02 = 0{,}98$.\n\nLes probabilités données sur le test sont conditionnelles : on sait si la personne est atteinte ou non. Ainsi $P_M(T) = 0{,}98$, donc $P_M(\\overline{T}) = 1 - 0{,}98 = 0{,}02$ ; et $P_{\\overline{M}}(T) = 0{,}03$, donc $P_{\\overline{M}}(\\overline{T}) = 1 - 0{,}03 = 0{,}97$.\n\nL'arbre pondéré :\n\n- branche $M$, de probabilité $0{,}02$, suivie de $T$ ($0{,}98$) ou de $\\overline{T}$ ($0{,}02$) ;\n- branche $\\overline{M}$, de probabilité $0{,}98$, suivie de $T$ ($0{,}03$) ou de $\\overline{T}$ ($0{,}97$).",
+            "erreurFrequente": "Lire $0{,}98$ comme $P(T)$ : c'est la probabilité d'un test positif **sachant** que la personne est atteinte, $P_M(T)$. Elle se place sur la branche qui va de $M$ à $T$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Montrer que $P(T) = 0{,}049$.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-008",
+            "indices": [
+              "Repère dans l'arbre les chemins qui aboutissent à $T$ : la formule des probabilités totales additionne leurs probabilités.",
+              "Calcule séparément $P(M \\cap T)$ et $P(\\overline{M} \\cap T)$, chacune comme le produit des probabilités des branches de son chemin."
+            ],
+            "attenduCorrecteur": "- $M$ et $\\overline{M}$ forment une partition de l'univers ; formule des probabilités totales citée : 0,25 pt.\n- Calculs $P(M \\cap T) = 0{,}02 \\times 0{,}98 = 0{,}019\\,6$ et $P(\\overline{M} \\cap T) = 0{,}98 \\times 0{,}03 = 0{,}029\\,4$, puis somme $0{,}049$ : 0,25 pt.",
+            "solution": "Les événements $M$ et $\\overline{M}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$P(T) = P(M \\cap T) + P(\\overline{M} \\cap T) = P(M) \\times P_M(T) + P(\\overline{M}) \\times P_{\\overline{M}}(T).$$\n\nDonc $P(T) = 0{,}02 \\times 0{,}98 + 0{,}98 \\times 0{,}03 = 0{,}019\\,6 + 0{,}029\\,4 = 0{,}049$."
+          },
+          {
+            "id": "q1c",
+            "label": "c)",
+            "enonce": "Calculer la probabilité qu'une personne dont le test est positif soit atteinte par le virus. Interpréter le résultat.\n\nSaisis la valeur exacte de cette probabilité ; l'interprétation est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.4,
+              "tolerance": 0.001
+            },
+            "revoir": "l-loi-binomiale-007",
+            "indices": [
+              "On sait que le test est positif : la probabilité cherchée est conditionnée par $T$. Écris-la avec la notation du cours avant de calculer.",
+              "Applique la définition d'une probabilité conditionnelle : le numérateur est la probabilité d'un chemin déjà calculée à la question b)."
+            ],
+            "attenduCorrecteur": "- Probabilité cherchée identifiée, $P_T(M)$, et définition écrite $P_T(M) = \\dfrac{P(M \\cap T)}{P(T)}$ : 0,25 pt.\n- Calcul $P_T(M) = \\dfrac{0{,}019\\,6}{0{,}049} = 0{,}4$ et interprétation (seulement $40\\,\\%$ des personnes au test positif sont atteintes) : 0,25 pt.",
+            "solution": "On cherche $P_T(M)$. Par définition d'une probabilité conditionnelle :\n\n$$P_T(M) = \\frac{P(M \\cap T)}{P(T)} = \\frac{0{,}019\\,6}{0{,}049} = 0{,}4.$$\n\nUne personne dont le test est positif n'est atteinte qu'avec la probabilité $0{,}4$ : parmi les personnes au test positif, $60\\,\\%$ ne sont pas atteintes. Le virus est rare, donc les faux positifs, pourtant peu probables pour chaque personne saine, sont plus nombreux que les vrais positifs.",
+            "erreurFrequente": "Répondre $0{,}98$ : c'est $P_M(T)$, la probabilité d'un test positif sachant que la personne est atteinte, et non $P_T(M)$."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Dans cette question, $p$ est un réel quelconque de l'intervalle $]0\\,;\\,1[$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Montrer que $P_T(M) = \\dfrac{98p}{95p + 3}$.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-008",
+            "indices": [
+              "Reprends les calculs de la question 1 avec $P(M) = p$ et $P(\\overline{M}) = 1 - p$ : commence par exprimer $P(T)$ en fonction de $p$.",
+              "Réduis $P(T)$ à la forme $ap + b$, écris $P_T(M)$ comme un quotient, puis multiplie son numérateur et son dénominateur par $100$."
+            ],
+            "attenduCorrecteur": "- $P(T) = 0{,}98p + 0{,}03(1 - p) = 0{,}95p + 0{,}03$ par la formule des probabilités totales : 0,25 pt.\n- $P_T(M) = \\dfrac{0{,}98p}{0{,}95p + 0{,}03} = \\dfrac{98p}{95p + 3}$ (numérateur et dénominateur multipliés par $100$) : 0,25 pt.",
+            "solution": "L'arbre est le même, avec $P(M) = p$ et $P(\\overline{M}) = 1 - p$. D'après la formule des probabilités totales :\n\n$$P(T) = p \\times 0{,}98 + (1 - p) \\times 0{,}03 = 0{,}98p + 0{,}03 - 0{,}03p = 0{,}95p + 0{,}03.$$\n\nCe nombre est strictement positif, et $P(M \\cap T) = 0{,}98p$. Donc, en multipliant le numérateur et le dénominateur par $100$ :\n\n$$P_T(M) = \\frac{P(M \\cap T)}{P(T)} = \\frac{0{,}98p}{0{,}95p + 0{,}03} = \\frac{98p}{95p + 3}.$$"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "On note $f$ la fonction définie sur $]0\\,;\\,1[$ par $f(p) = \\dfrac{98p}{95p + 3}$. Étudier le sens de variation de $f$, puis interpréter le résultat dans le contexte de l'exercice.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-014",
+            "indices": [
+              "Le dénominateur de $f'(p)$ est le carré $(95p + 3)^2$, strictement positif : le signe de $f'(p)$ est celui de son numérateur. Calcule ce numérateur avec $u(p) = 98p$ et $v(p) = 95p + 3$.",
+              "Développe le numérateur $98(95p + 3) - 98p \\times 95$ : les termes en $p$ s'éliminent. Un numérateur constant garde le même signe sur tout l'intervalle : que peux-tu en conclure pour $f$ ?"
+            ],
+            "attenduCorrecteur": "- $f'(p) = \\dfrac{98(95p + 3) - 98p \\times 95}{(95p + 3)^2} = \\dfrac{294}{(95p + 3)^2}$ : 0,25 pt.\n- $f'(p) > 0$, donc $f$ est strictement croissante sur $]0\\,;\\,1[$ ; interprétation : plus le virus est répandu, plus un test positif est fiable : 0,25 pt.",
+            "solution": "Le dénominateur $95p + 3$ ne s'annule pas sur $]0\\,;\\,1[$. Avec $u(p) = 98p$ et $v(p) = 95p + 3$, on a $u'(p) = 98$ et $v'(p) = 95$, donc :\n\n$$f'(p) = \\frac{98(95p + 3) - 98p \\times 95}{(95p + 3)^2} = \\frac{98 \\times 3}{(95p + 3)^2} = \\frac{294}{(95p + 3)^2}.$$\n\nPour tout $p$ de $]0\\,;\\,1[$, $f'(p) > 0$ : la fonction $f$ est strictement croissante sur $]0\\,;\\,1[$.\n\nInterprétation : plus la proportion de personnes atteintes est grande, plus la probabilité qu'une personne au test positif soit réellement atteinte est grande. Le test est d'autant plus fiable que le virus est répandu."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "Déterminer les valeurs de $p$ pour lesquelles la probabilité qu'une personne au test positif soit atteinte est supérieure ou égale à $0{,}9$.\n\nSaisis la plus petite valeur de $p$ qui convient ; la résolution est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.216,
+              "tolerance": 0.0005
+            },
+            "revoir": "l-loi-binomiale-008",
+            "indices": [
+              "Traduis la condition par l'inéquation $f(p) \\geqslant 0{,}9$. Pour te débarrasser du quotient, regarde le signe du dénominateur $95p + 3$ sur $]0\\,;\\,1[$.",
+              "Comme $95p + 3 > 0$, multiplie les deux membres par $95p + 3$ sans changer le sens : $98p \\geqslant 0{,}9(95p + 3)$. Développe, puis regroupe les termes en $p$ dans le membre de gauche."
+            ],
+            "attenduCorrecteur": "- Inéquation posée puis multipliée par $95p + 3 > 0$ : $98p \\geqslant 0{,}9(95p + 3)$ : 0,25 pt.\n- Résolution $12{,}5p \\geqslant 2{,}7$, soit $p \\geqslant 0{,}216$ ; conclusion : $p \\in [0{,}216\\,;\\,1[$ : 0,25 pt.",
+            "solution": "On cherche les réels $p$ de $]0\\,;\\,1[$ tels que $f(p) \\geqslant 0{,}9$. Comme $95p + 3 > 0$ :\n\n$$\\frac{98p}{95p + 3} \\geqslant 0{,}9 \\iff 98p \\geqslant 0{,}9(95p + 3) \\iff 98p - 85{,}5p \\geqslant 2{,}7 \\iff 12{,}5p \\geqslant 2{,}7 \\iff p \\geqslant 0{,}216.$$\n\nLa probabilité qu'une personne au test positif soit atteinte est supérieure ou égale à $0{,}9$ si et seulement si $p \\in [0{,}216\\,;\\,1[$, c'est-à-dire si au moins $21{,}6\\,\\%$ de la population est atteinte. C'est cohérent avec la croissance de $f$ établie à la question b)."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans cette question, $p = 0{,}02$. On choisit au hasard $50$ habitants de la région ; la population est assez grande pour que ce choix soit assimilé à $50$ tirages avec remise. On note $X$ la variable aléatoire égale au nombre d'habitants atteints par le virus parmi ces $50$ habitants.",
+        "points": 2,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Justifier que $X$ suit une loi binomiale dont on précisera les paramètres.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-039",
+            "indices": [
+              "Suis la méthode du cours : l'épreuve répétée, le succès compté par $X$ et sa probabilité, puis la raison pour laquelle les répétitions sont identiques et indépendantes, et leur nombre."
+            ],
+            "attenduCorrecteur": "- Épreuve de Bernoulli identifiée : succès « l'habitant est atteint », de probabilité $0{,}02$ : 0,25 pt.\n- $50$ répétitions identiques et indépendantes (choix assimilé à des tirages avec remise) ; $X$ compte les succès, donc $X$ suit la loi $\\mathcal{B}(50\\,;\\,0{,}02)$ : 0,25 pt.",
+            "solution": "Choisir un habitant et regarder s'il est atteint est une épreuve de Bernoulli : le succès « l'habitant est atteint » a la probabilité $0{,}02$. Le choix des $50$ habitants est assimilé à $50$ tirages avec remise : on répète $50$ fois cette épreuve, de façon identique et indépendante. C'est un schéma de Bernoulli.\n\n$X$ compte le nombre de succès dans ce schéma de Bernoulli, donc $X$ suit la loi binomiale $\\mathcal{B}(50\\,;\\,0{,}02)$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Calculer la probabilité qu'au moins trois des $50$ habitants soient atteints par le virus. Arrondir le résultat à $10^{-3}$.\n\nSaisis la valeur arrondie ; le calcul est à rédiger.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.078,
+              "tolerance": 0.001
+            },
+            "revoir": "l-loi-binomiale-050",
+            "indices": [
+              "Traduis « au moins trois » par une inégalité sur $X$, puis passe par l'événement contraire : quelles valeurs de $X$ contient-il ?",
+              "La calculatrice donne directement une probabilité cumulée $P(X \\leqslant k)$ : écris d'abord sur ta copie l'égalité qui relie la probabilité cherchée à une telle probabilité."
+            ],
+            "attenduCorrecteur": "- Traduction : $P(X \\geqslant 3) = 1 - P(X \\leqslant 2)$ : 0,25 pt.\n- Calcul à la calculatrice : $P(X \\leqslant 2) \\approx 0{,}921\\,6$ : 0,25 pt.\n- Résultat $P(X \\geqslant 3) \\approx 0{,}078$ et phrase de conclusion : 0,25 pt.",
+            "solution": "L'événement « au moins trois habitants atteints » s'écrit $\\{X \\geqslant 3\\}$. Son contraire est $\\{X \\leqslant 2\\}$, car $X$ ne prend que des valeurs entières. Donc :\n\n$$P(X \\geqslant 3) = 1 - P(X \\leqslant 2).$$\n\nLa calculatrice (loi binomiale cumulée, avec $n = 50$ et $p = 0{,}02$ ; sur TI, binomFRép(50, 0.02, 2)) donne $P(X \\leqslant 2) \\approx 0{,}921\\,6$. Ainsi $P(X \\geqslant 3) \\approx 1 - 0{,}921\\,6 = 0{,}078\\,4$.\n\nLa probabilité qu'au moins trois des $50$ habitants soient atteints est d'environ $0{,}078$.",
+            "erreurFrequente": "Écrire $P(X \\geqslant 3) = 1 - P(X \\leqslant 3)$ : la valeur $3$ fait partie de l'événement « au moins trois », il ne faut pas la retirer."
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "Chaque habitant atteint de l'échantillon doit recevoir une dose d'un traitement. Déterminer le plus petit nombre $k$ de doses à prévoir pour que la probabilité d'en avoir assez soit supérieure ou égale à $0{,}99$. Justifier.\n\nSaisis la valeur de $k$ ; la justification est à rédiger.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 4,
+              "tolerance": 0
+            },
+            "revoir": "l-loi-binomiale-054",
+            "indices": [
+              "Avec $k$ doses, on en a assez quand le nombre d'habitants atteints ne dépasse pas $k$ : traduis la condition par une inégalité portant sur $P(X \\leqslant k)$.",
+              "Affiche à la calculatrice un tableau de valeurs de $P(X \\leqslant k)$ pour les premières valeurs de $k$, et repère les deux valeurs consécutives qui encadrent le seuil."
+            ],
+            "attenduCorrecteur": "- Traduction : on cherche le plus petit entier $k$ tel que $P(X \\leqslant k) \\geqslant 0{,}99$ : 0,25 pt.\n- Valeurs qui justifient : $P(X \\leqslant 3) \\approx 0{,}982 < 0{,}99$ et $P(X \\leqslant 4) \\approx 0{,}997 \\geqslant 0{,}99$ : 0,25 pt.\n- Conclusion : il faut prévoir $4$ doses : 0,25 pt.",
+            "solution": "Avec $k$ doses, on en a assez si et seulement si $X \\leqslant k$. On cherche donc le plus petit entier $k$ tel que $P(X \\leqslant k) \\geqslant 0{,}99$ ; les valeurs de $P(X \\leqslant k)$ augmentent avec $k$.\n\nLa calculatrice donne, arrondies à $10^{-3}$ (sur TI, table de Y1 = binomFRép(50, 0.02, X)) :\n\n| $k$ | $1$ | $2$ | $3$ | $4$ |\n|---|---|---|---|---|\n| $P(X \\leqslant k)$ | $0{,}736$ | $0{,}922$ | $0{,}982$ | $0{,}997$ |\n\n$P(X \\leqslant 3) \\approx 0{,}982 < 0{,}99$ et $P(X \\leqslant 4) \\approx 0{,}997 \\geqslant 0{,}99$.\n\nIl faut donc prévoir $4$ doses : c'est le plus petit nombre de doses pour lequel la probabilité d'en avoir assez atteint $0{,}99$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-loi-binomiale-002",
+    "chapitre": "loi-binomiale",
+    "notions": [
+      "n-loi-binomiale-loi-binomiale",
+      "n-loi-binomiale-schema-bernoulli",
+      "n-loi-binomiale-seuils"
+    ],
+    "capacites": [
+      "bo-m-bernoulli-02",
+      "bo-m-bernoulli-03",
+      "bo-m-bernoulli-12",
+      "bo-m-bernoulli-04",
+      "bo-m-bernoulli-06",
+      "bo-m-bernoulli-07",
+      "bo-m-derivation-06",
+      "bo-m-continuite-03",
+      "bo-m-continuite-04"
+    ],
+    "titre": "Lancers francs : gagner un défi en réussissant deux lancers sur trois",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2026-asie-j2",
+      "adaptation": "Exercice 2 : contexte des lancers francs et formulation « Montrer que $P(Y \\geqslant 2) = -2p^3 + 3p^2$ » repris ; question « au moins six lancers-francs » (calcul à la calculatrice) remplacée par une série de trois lancers avec $p = 0{,}7$, calculable à la main ; simulation en Python, étude de la fonction $g$, comparaison avec un lancer unique et encadrement par le théorème des valeurs intermédiaires écrits pour le site. Aucune question d'espérance ni de variance de la loi binomiale (chapitre ultérieur). Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Un joueur de basket-ball s'entraîne aux lancers francs. Chaque lancer est réussi avec la même probabilité $p$, où $0 < p < 1$, indépendamment des autres lancers.\n\nSon entraîneur lui propose un défi : le joueur tire une série de trois lancers francs, et il gagne le défi s'il en réussit **au moins deux**. On note $Y$ la variable aléatoire égale au nombre de lancers réussis au cours de la série.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Partie A.** Dans cette partie, $p = 0{,}7$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Justifier que $Y$ suit une loi binomiale dont on précisera les paramètres.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-039",
+            "indices": [
+              "Une série de trois lancers est-elle un schéma de Bernoulli ? Nomme le succès et sa probabilité, puis dis pourquoi les trois lancers sont identiques et indépendants."
+            ],
+            "attenduCorrecteur": "- Épreuve de Bernoulli : un lancer, succès « le lancer est réussi », de probabilité $0{,}7$ : 0,25 pt.\n- Trois répétitions identiques et indépendantes (énoncé) ; $Y$ compte les succès, donc $Y$ suit la loi $\\mathcal{B}(3\\,;\\,0{,}7)$ : 0,25 pt.",
+            "solution": "Un lancer franc est une épreuve de Bernoulli : le succès « le lancer est réussi » a la probabilité $0{,}7$. La série répète trois fois cette épreuve, dans les mêmes conditions et de façon indépendante (énoncé) : c'est un schéma de Bernoulli de paramètres $3$ et $0{,}7$.\n\n$Y$ compte le nombre de succès de ce schéma de Bernoulli, donc $Y$ suit la loi binomiale $\\mathcal{B}(3\\,;\\,0{,}7)$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Calculer la probabilité que le joueur gagne le défi.\n\nSaisis la valeur exacte ; le calcul est à rédiger.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.784,
+              "tolerance": 0.0005
+            },
+            "revoir": "l-loi-binomiale-048",
+            "indices": [
+              "Gagner le défi, c'est obtenir $Y = 2$ ou $Y = 3$ : ces deux événements sont incompatibles, leurs probabilités s'additionnent.",
+              "Écris $P(Y = 2) = \\binom{3}{2} \\times 0{,}7^2 \\times 0{,}3^1$, puis calcule à la main ; fais de même pour $P(Y = 3)$."
+            ],
+            "attenduCorrecteur": "- Traduction : $P(Y \\geqslant 2) = P(Y = 2) + P(Y = 3)$ : 0,25 pt.\n- Formule de la loi binomiale avec le coefficient binomial : $P(Y = 2) = \\binom{3}{2} \\times 0{,}7^2 \\times 0{,}3 = 0{,}441$ et $P(Y = 3) = 0{,}7^3 = 0{,}343$ : 0,25 pt.\n- Résultat $0{,}784$ et phrase de conclusion : 0,25 pt.",
+            "solution": "Le joueur gagne le défi si et seulement si $Y \\geqslant 2$, c'est-à-dire $Y = 2$ ou $Y = 3$. Ces événements sont incompatibles, donc $P(Y \\geqslant 2) = P(Y = 2) + P(Y = 3)$.\n\nD'après la formule de la loi binomiale :\n\n$$P(Y = 2) = \\binom{3}{2} \\times 0{,}7^2 \\times 0{,}3^1 = 3 \\times 0{,}49 \\times 0{,}3 = 0{,}441 \\quad \\text{et} \\quad P(Y = 3) = \\binom{3}{3} \\times 0{,}7^3 \\times 0{,}3^0 = 0{,}343.$$\n\nDonc $P(Y \\geqslant 2) = 0{,}441 + 0{,}343 = 0{,}784$. La probabilité que le joueur gagne le défi est $0{,}784$.",
+            "erreurFrequente": "Oublier le coefficient $\\binom{3}{2} = 3$ dans $P(Y = 2)$ : trois séries différentes comptent exactement deux réussites (l'échec peut être au premier, au deuxième ou au troisième lancer)."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère le programme Python ci-dessous, où random() renvoie un nombre réel pris au hasard dans l'intervalle $[0\\,;\\,1[$.",
+        "code": {
+          "langage": "python",
+          "source": "from random import random\n\ndef serie(p):\n    reussites = 0\n    for i in range(3):\n        if random() < p:\n            reussites = reussites + 1\n    return reussites\n\ndef frequence(p, N):\n    gagnes = 0\n    for j in range(N):\n        if serie(p) >= 2:\n            gagnes = gagnes + 1\n    return gagnes / N"
+        },
+        "points": 0.75,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Expliquer pourquoi le nombre renvoyé par l'appel serie(p) est une valeur prise au hasard selon la même loi que $Y$.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-026",
+            "indices": [
+              "Commence par la condition random() < p : elle est vraie quand random() tombe dans l'intervalle $[0\\,;\\,p[$. Le cours (simulation d'une épreuve de Bernoulli) dit avec quelle probabilité. Que simule alors un passage dans la boucle, et que compte la variable reussites ?"
+            ],
+            "attenduCorrecteur": "- La condition random() < p est vraie avec la probabilité $p$ (random() tombe dans $[0\\,;\\,p[$, de longueur $p$) : chaque passage dans la boucle simule un lancer, réussi avec la probabilité $p$ : 0,25 pt.\n- Trois passages, avec des tirages indépendants, et la variable reussites compte les lancers réussis : la valeur renvoyée suit la loi $\\mathcal{B}(3\\,;\\,p)$, comme $Y$ : 0,25 pt.",
+            "solution": "random() renvoie un réel pris au hasard dans $[0\\,;\\,1[$. La condition random() < p est vraie quand ce réel tombe dans l'intervalle $[0\\,;\\,p[$, de longueur $p$ : elle est donc vraie avec la probabilité $p$. Chaque passage dans la boucle simule donc un lancer franc, réussi avec la probabilité $p$, et la variable reussites augmente de $1$ quand le lancer simulé est réussi.\n\nLa boucle s'exécute trois fois, avec des tirages indépendants : elle simule une série de trois lancers. La fonction renvoie le nombre de lancers réussis, c'est-à-dire le nombre de succès d'un schéma de Bernoulli de paramètres $3$ et $p$. Cette valeur suit donc la même loi que $Y$, la loi $\\mathcal{B}(3\\,;\\,p)$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Dans le contexte de l'exercice, que représente le nombre renvoyé par l'appel frequence(p, N) ? Lorsque $p$ vaut $0{,}7$ et $N$ vaut $1\\,000$, de quelle probabilité calculée à la question 1 ce nombre est-il une estimation ?",
+            "points": 0.25,
+            "revoir": "l-loi-binomiale-026",
+            "indices": [
+              "La variable gagnes augmente de $1$ quand la série simulée compte au moins deux réussites : que compte-t-elle sur les $N$ séries ? Que devient ce nombre une fois divisé par $N$ ?"
+            ],
+            "attenduCorrecteur": "- Fréquence des défis gagnés sur $N$ séries simulées ; pour $p = 0{,}7$, estimation de $P(Y \\geqslant 2) = 0{,}784$ : 0,25 pt.",
+            "solution": "La fonction simule $N$ séries de trois lancers ; la variable gagnes compte celles où le joueur réussit au moins deux lancers, c'est-à-dire les défis gagnés. Le nombre renvoyé, gagnes / N, est donc la **fréquence** des défis gagnés sur $N$ séries simulées.\n\nLorsque $p$ vaut $0{,}7$ et $N$ vaut $1\\,000$, c'est une estimation de la probabilité de gagner le défi, $P(Y \\geqslant 2) = 0{,}784$, calculée à la question 1. b). Le nombre renvoyé change à chaque exécution, par exemple $0{,}772$."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "**Partie B.** Dans cette partie, $p$ est un réel quelconque de $]0\\,;\\,1[$ ; on admet que $Y$ suit la loi $\\mathcal{B}(3\\,;\\,p)$.\n\nMontrer que $P(Y \\geqslant 2) = -2p^3 + 3p^2$.",
+        "points": 0.5,
+        "revoir": "l-loi-binomiale-035",
+        "indices": [
+          "Reprends le calcul de la question 1. b) en remplaçant $0{,}7$ par $p$ et $0{,}3$ par $1 - p$, puis développe et réduis."
+        ],
+        "attenduCorrecteur": "- $P(Y \\geqslant 2) = P(Y = 2) + P(Y = 3) = \\binom{3}{2}p^2(1 - p) + p^3$ : 0,25 pt.\n- Développement et réduction : $3p^2 - 3p^3 + p^3 = -2p^3 + 3p^2$ : 0,25 pt.",
+        "solution": "Comme dans la partie A, $P(Y \\geqslant 2) = P(Y = 2) + P(Y = 3)$, avec :\n\n$$P(Y = 2) = \\binom{3}{2}p^2(1 - p)^1 = 3p^2 - 3p^3 \\quad \\text{et} \\quad P(Y = 3) = \\binom{3}{3}p^3(1 - p)^0 = p^3.$$\n\nDonc $P(Y \\geqslant 2) = 3p^2 - 3p^3 + p^3 = -2p^3 + 3p^2$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On note $g$ la fonction définie sur $[0\\,;\\,1]$ par $g(p) = -2p^3 + 3p^2$. Étudier les variations de $g$ sur $[0\\,;\\,1]$ et dresser son tableau de variations.",
+        "points": 0.75,
+        "revoir": "l-loi-binomiale-067",
+        "indices": [
+          "Dérive $g$ comme une fonction polynôme, puis cherche le signe de $g'(p)$ sur $[0\\,;\\,1]$.",
+          "$g'(p) = -6p^2 + 6p$ se factorise par $6p$ : étudie le signe de chaque facteur sur $[0\\,;\\,1]$."
+        ],
+        "attenduCorrecteur": "- $g'(p) = -6p^2 + 6p = 6p(1 - p)$ : 0,25 pt.\n- Signe : $g'(p) > 0$ sur $]0\\,;\\,1[$, nul en $0$ et en $1$ : 0,25 pt.\n- $g$ strictement croissante sur $[0\\,;\\,1]$ ; tableau avec $g(0) = 0$ et $g(1) = 1$ : 0,25 pt.",
+        "solution": "$g$ est une fonction polynôme, dérivable sur $[0\\,;\\,1]$, et $g'(p) = -6p^2 + 6p = 6p(1 - p)$.\n\nSur $]0\\,;\\,1[$, $6p > 0$ et $1 - p > 0$, donc $g'(p) > 0$ ; $g'$ s'annule seulement en $0$ et en $1$. La fonction $g$ est donc strictement croissante sur $[0\\,;\\,1]$, avec $g(0) = 0$ et $g(1) = -2 + 3 = 1$.\n\n| $p$ | $0$ | | $1$ |\n|---|---|---|---|\n| signe de $g'(p)$ | $0$ | $+$ | $0$ |\n| variations de $g$ | $0$ | $\\nearrow$ | $1$ |"
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "L'entraîneur propose une autre règle : le joueur ne tire qu'un seul lancer franc, et il gagne le défi si ce lancer est réussi.",
+        "points": 0.75,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Vérifier que, pour tout réel $p$ de $[0\\,;\\,1]$, $g(p) - p = p(1 - p)(2p - 1)$.",
+            "points": 0.25,
+            "revoir": "l-loi-binomiale-067",
+            "indices": [
+              "Le plus sûr : développe le membre de droite, puis compare-le à $g(p) - p$ écrit sous forme développée."
+            ],
+            "attenduCorrecteur": "- Développement de $p(1 - p)(2p - 1)$ et égalité avec $g(p) - p = -2p^3 + 3p^2 - p$ : 0,25 pt.",
+            "solution": "D'une part, $g(p) - p = -2p^3 + 3p^2 - p$. D'autre part, $(1 - p)(2p - 1) = 2p - 1 - 2p^2 + p = -2p^2 + 3p - 1$, donc $p(1 - p)(2p - 1) = -2p^3 + 3p^2 - p$.\n\nLes deux expressions sont égales : pour tout $p$ de $[0\\,;\\,1]$, $g(p) - p = p(1 - p)(2p - 1)$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Selon la valeur de $p$, quelle règle le joueur a-t-il intérêt à choisir ? Justifier.\n\nSaisis la valeur de $p$ au-delà de laquelle la série de trois lancers devient plus favorable ; la justification est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "1/2",
+              "tolerance": 0.001
+            },
+            "revoir": "l-loi-binomiale-067",
+            "indices": [
+              "Avec un seul lancer, le joueur gagne avec la probabilité $p$ ; avec la série, avec la probabilité $g(p)$. Étudie le signe de $g(p) - p$ sur $]0\\,;\\,1[$ grâce à la factorisation de la question a)."
+            ],
+            "attenduCorrecteur": "- Comparaison des deux probabilités de gagner, $p$ (un lancer) et $g(p)$ (trois lancers), par le signe de $g(p) - p$ : 0,25 pt.\n- Sur $]0\\,;\\,1[$, $p > 0$ et $1 - p > 0$, donc $g(p) - p$ a le signe de $2p - 1$ ; conclusion : la série de trois lancers est plus favorable si $p > \\dfrac{1}{2}$, le lancer unique si $p < \\dfrac{1}{2}$, égalité pour $p = \\dfrac{1}{2}$ : 0,25 pt.",
+            "solution": "Avec un seul lancer, le joueur gagne avec la probabilité $p$ ; avec la série de trois lancers, avec la probabilité $g(p)$. On étudie le signe de $g(p) - p = p(1 - p)(2p - 1)$ sur $]0\\,;\\,1[$.\n\nSur cet intervalle, $p > 0$ et $1 - p > 0$, donc $g(p) - p$ a le signe de $2p - 1$ :\n\n- si $p > \\dfrac{1}{2}$, $g(p) > p$ : le joueur a intérêt à choisir la série de trois lancers ;\n- si $p < \\dfrac{1}{2}$, $g(p) < p$ : il a intérêt à choisir le lancer unique ;\n- si $p = \\dfrac{1}{2}$, les deux règles donnent la même probabilité de gagner, $\\dfrac{1}{2}$.\n\nUn bon tireur a donc intérêt à la série de trois lancers, qui atténue le rôle du hasard ; un tireur faible a intérêt au lancer unique."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "L'entraîneur souhaite que le joueur gagne le défi des trois lancers avec une probabilité d'au moins $0{,}9$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q6a",
+            "label": "a)",
+            "enonce": "Montrer que l'équation $g(p) = 0{,}9$ admet une unique solution $\\alpha$ dans l'intervalle $[0\\,;\\,1]$.",
+            "points": 0.5,
+            "revoir": "l-continuite-024",
+            "indices": [
+              "Utilise le tableau de variations de $g$ : c'est le cas d'une fonction continue et strictement monotone du théorème des valeurs intermédiaires. Vérifie chacune de ses hypothèses."
+            ],
+            "attenduCorrecteur": "- $g$ continue sur $[0\\,;\\,1]$ (fonction polynôme) et strictement croissante sur $[0\\,;\\,1]$ : 0,25 pt.\n- $g(0) = 0$, $g(1) = 1$ et $0{,}9 \\in [0\\,;\\,1]$ ; corollaire du théorème des valeurs intermédiaires cité ; conclusion : une unique solution $\\alpha$ : 0,25 pt.",
+            "solution": "La fonction $g$ est continue sur $[0\\,;\\,1]$, car c'est une fonction polynôme, et elle est strictement croissante sur $[0\\,;\\,1]$ (question 4). De plus $g(0) = 0$, $g(1) = 1$, et $0{,}9$ est compris entre $0$ et $1$.\n\nD'après le corollaire du théorème des valeurs intermédiaires (cas d'une fonction continue et strictement monotone sur un intervalle), l'équation $g(p) = 0{,}9$ admet une unique solution $\\alpha$ dans $[0\\,;\\,1]$."
+          },
+          {
+            "id": "q6b",
+            "label": "b)",
+            "enonce": "On donne $g(0{,}81) \\approx 0{,}905$. Calculer $g(0{,}8)$, puis en déduire un encadrement de $\\alpha$ d'amplitude $0{,}01$. Interpréter ce résultat dans le contexte de l'exercice.\n\nSaisis la valeur exacte de $g(0{,}8)$ ; l'encadrement et l'interprétation sont à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.896,
+              "tolerance": 0.0005
+            },
+            "revoir": "l-continuite-024",
+            "indices": [
+              "Pour encadrer $\\alpha$, place $0{,}9 = g(\\alpha)$ entre deux valeurs de $g$. Commence par $g(0{,}8)$, à la main : calcule $0{,}8^2$, puis $0{,}8^3 = 0{,}8^2 \\times 0{,}8$.",
+              "Compare $g(0{,}8)$ et $g(0{,}81)$ à $0{,}9 = g(\\alpha)$ : la stricte croissance de $g$ fait passer d'une inégalité entre les images à une inégalité entre $0{,}8$, $\\alpha$ et $0{,}81$. Pour l'interprétation, dis pour quelles valeurs de $p$ on a $g(p) \\geqslant 0{,}9$."
+            ],
+            "attenduCorrecteur": "- Calcul $g(0{,}8) = -2 \\times 0{,}512 + 3 \\times 0{,}64 = 0{,}896$ : 0,25 pt.\n- $g(0{,}8) < 0{,}9 < g(0{,}81)$ et $g$ strictement croissante, donc $0{,}8 < \\alpha < 0{,}81$ ; interprétation : le joueur gagne le défi avec une probabilité d'au moins $0{,}9$ si et seulement si $p \\geqslant \\alpha$, soit un peu plus de $0{,}8$ : 0,25 pt.",
+            "solution": "$0{,}8^2 = 0{,}64$ et $0{,}8^3 = 0{,}512$, donc $g(0{,}8) = -2 \\times 0{,}512 + 3 \\times 0{,}64 = -1{,}024 + 1{,}92 = 0{,}896$.\n\nAinsi $g(0{,}8) < 0{,}9 < g(0{,}81)$, c'est-à-dire $g(0{,}8) < g(\\alpha) < g(0{,}81)$. Comme $g$ est strictement croissante sur $[0\\,;\\,1]$, on en déduit $0{,}8 < \\alpha < 0{,}81$.\n\nInterprétation : $g$ étant strictement croissante, $g(p) \\geqslant 0{,}9$ si et seulement si $p \\geqslant \\alpha$. Le joueur gagne le défi des trois lancers avec une probabilité d'au moins $0{,}9$ si et seulement si chacun de ses lancers est réussi avec une probabilité au moins égale à $\\alpha$, c'est-à-dire un peu plus de $0{,}8$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-loi-binomiale-003",
+    "chapitre": "loi-binomiale",
+    "notions": [
+      "n-loi-binomiale-epreuves-independantes",
+      "n-loi-binomiale-loi-binomiale",
+      "n-loi-binomiale-calculatrice"
+    ],
+    "capacites": [
+      "bo-m-bernoulli-01",
+      "bo-m-bernoulli-05",
+      "bo-m-bernoulli-04",
+      "bo-m-bernoulli-06",
+      "bo-m-bernoulli-08",
+      "bo-m-bernoulli-11",
+      "bo-m-suites-08",
+      "bo-m-logique-14",
+      "bo-m-suites-09",
+      "bo-m-suites-06",
+      "bo-m-suites-07",
+      "bo-m-continuite-05"
+    ],
+    "titre": "Pannes d'un serveur : un modèle binomial, puis un modèle avec mémoire",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2025-metropole-septembre-j2",
+      "adaptation": "Exercice 1 : structure reprise (loi binomiale justifiée, puis suite de probabilités tirée d'un arbre, majoration par récurrence et convergence) ; contexte (pannes d'un serveur) et données écrits pour le site : loi $\\mathcal{B}(30\\,;\\,0{,}1)$, relation $p_{n+1} = 0{,}35p_n + 0{,}05$, encadrement $\\dfrac{1}{13} \\leqslant p_{n+1} \\leqslant p_n \\leqslant 0{,}1$ ; non-indépendance de deux jours consécutifs et probabilité conditionnelle « à l'envers » ajoutées. Aucune question d'espérance ni de variance de la loi binomiale (chapitre ultérieur). Calculatrice autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Une entreprise surveille chaque jour le serveur informatique qui héberge son site. Chaque jour, le serveur est soit en état de marche, soit en panne. On étudie deux modèles de ce fonctionnement.\n\nLes probabilités demandées sont arrondies à $10^{-3}$ si nécessaire. La calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Partie A : un modèle à épreuves indépendantes.** Dans cette partie, on suppose que, chaque jour, le serveur est en panne avec la probabilité $0{,}1$, indépendamment des autres jours. On observe le serveur pendant $30$ jours et on note $X$ le nombre de jours où il est en panne.",
+        "points": 2.25,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Justifier que $X$ suit une loi binomiale dont on précisera les paramètres.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-039",
+            "indices": [
+              "Le « succès » d'une épreuve de Bernoulli est simplement l'issue que l'on compte, même si c'est une panne. Nomme-le, donne sa probabilité, puis justifie que les $30$ jours sont des répétitions identiques et indépendantes."
+            ],
+            "attenduCorrecteur": "- Épreuve de Bernoulli : observer le serveur un jour donné, succès « le serveur est en panne », de probabilité $0{,}1$ : 0,25 pt.\n- $30$ répétitions identiques et indépendantes (hypothèse du modèle) ; $X$ compte les succès, donc $X$ suit la loi $\\mathcal{B}(30\\,;\\,0{,}1)$ : 0,25 pt.",
+            "solution": "Observer le serveur un jour donné est une épreuve de Bernoulli : on appelle succès l'issue « le serveur est en panne ce jour-là », de probabilité $0{,}1$. On répète cette épreuve $30$ fois, de façon identique et indépendante (hypothèse du modèle) : c'est un schéma de Bernoulli.\n\n$X$ compte le nombre de succès de ce schéma, donc $X$ suit la loi binomiale $\\mathcal{B}(30\\,;\\,0{,}1)$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Calculer la probabilité que le serveur soit en panne exactement $3$ jours sur les $30$.\n\nSaisis la valeur arrondie à $10^{-3}$ ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.236,
+              "tolerance": 0.001
+            },
+            "revoir": "l-loi-binomiale-050",
+            "indices": [
+              "Écris d'abord $P(X = 3)$ avec la formule de la loi binomiale (coefficient binomial, puissance de $0{,}1$, puissance de $0{,}9$), puis calcule à la calculatrice."
+            ],
+            "attenduCorrecteur": "- Formule posée : $P(X = 3) = \\binom{30}{3} \\times 0{,}1^3 \\times 0{,}9^{27}$ : 0,25 pt.\n- Valeur $P(X = 3) \\approx 0{,}236$ et phrase de conclusion : 0,25 pt.",
+            "solution": "D'après la formule de la loi binomiale, avec $\\binom{30}{3} = 4\\,060$ :\n\n$$P(X = 3) = \\binom{30}{3} \\times 0{,}1^3 \\times 0{,}9^{27} = 4\\,060 \\times 0{,}1^3 \\times 0{,}9^{27} \\approx 0{,}236.$$\n\nLa calculatrice donne aussi cette valeur directement (sur TI, binomFdp(30, 0.1, 3)).\n\nLa probabilité que le serveur soit en panne exactement $3$ jours sur $30$ est d'environ $0{,}236$."
+          },
+          {
+            "id": "q1c",
+            "label": "c)",
+            "enonce": "Calculer la probabilité que le serveur soit en panne au moins $5$ jours sur les $30$.\n\nSaisis la valeur arrondie à $10^{-3}$ ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.175,
+              "tolerance": 0.001
+            },
+            "revoir": "l-loi-binomiale-058",
+            "indices": [
+              "Traduis « au moins $5$ » par une inégalité sur $X$. La calculatrice donne des probabilités du type $P(X \\leqslant k)$ : passe par l'événement contraire, en choisissant bien la valeur de $k$."
+            ],
+            "attenduCorrecteur": "- Traduction : $P(X \\geqslant 5) = 1 - P(X \\leqslant 4)$ : 0,25 pt.\n- $P(X \\leqslant 4) \\approx 0{,}824\\,51$ à la calculatrice, d'où $P(X \\geqslant 5) \\approx 0{,}175$ : 0,25 pt.",
+            "solution": "Le contraire de l'événement $\\{X \\geqslant 5\\}$ est $\\{X \\leqslant 4\\}$, car $X$ ne prend que des valeurs entières. Donc $P(X \\geqslant 5) = 1 - P(X \\leqslant 4)$.\n\nLa calculatrice (sur TI, binomFRép(30, 0.1, 4)) donne $P(X \\leqslant 4) \\approx 0{,}824\\,51$, d'où $P(X \\geqslant 5) \\approx 1 - 0{,}824\\,51 = 0{,}175\\,49$.\n\nLa probabilité que le serveur soit en panne au moins $5$ jours sur $30$ est d'environ $0{,}175$.",
+            "erreurFrequente": "Écrire $1 - P(X \\leqslant 5)$ : on retirerait la valeur $5$, qui fait partie de l'événement « au moins $5$ ». Autre piège : arrondir trop tôt ; $P(X \\leqslant 4)$ arrondi à $0{,}824\\,5$ donnerait $0{,}175\\,5$, puis $0{,}176$ au lieu de $0{,}175$."
+          },
+          {
+            "id": "q1d",
+            "label": "d)",
+            "enonce": "Le contrat de maintenance prévoit, pour ces $30$ jours, un nombre $k$ d'interventions de réparation ; chaque jour de panne demande une intervention. Déterminer le plus petit entier $k$ tel que la probabilité que le nombre de jours de panne dépasse $k$ soit inférieure ou égale à $0{,}05$.\n\nSaisis la valeur de $k$ ; la justification est à rédiger.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 6,
+              "tolerance": 0
+            },
+            "revoir": "l-loi-binomiale-055",
+            "indices": [
+              "Traduis la condition par $P(X > k) \\leqslant 0{,}05$, puis transforme-la en une condition sur $P(X \\leqslant k)$, que la calculatrice sait calculer.",
+              "Dresse à la calculatrice un tableau de valeurs de $P(X \\leqslant k)$ et repère les deux valeurs consécutives qui encadrent le seuil."
+            ],
+            "attenduCorrecteur": "- Traduction : $P(X > k) \\leqslant 0{,}05 \\iff P(X \\leqslant k) \\geqslant 0{,}95$ : 0,25 pt.\n- Valeurs qui justifient : $P(X \\leqslant 5) \\approx 0{,}927 < 0{,}95$ et $P(X \\leqslant 6) \\approx 0{,}974 \\geqslant 0{,}95$ : 0,25 pt.\n- Conclusion : $k = 6$ : 0,25 pt.",
+            "solution": "$P(X > k) = 1 - P(X \\leqslant k)$, donc $P(X > k) \\leqslant 0{,}05 \\iff P(X \\leqslant k) \\geqslant 0{,}95$. Les valeurs de $P(X \\leqslant k)$ augmentent avec $k$ ; la calculatrice donne, arrondies à $10^{-3}$ (sur TI, table de Y1 = binomFRép(30, 0.1, X)) :\n\n| $k$ | $4$ | $5$ | $6$ | $7$ |\n|---|---|---|---|---|\n| $P(X \\leqslant k)$ | $0{,}825$ | $0{,}927$ | $0{,}974$ | $0{,}992$ |\n\n$P(X \\leqslant 5) \\approx 0{,}927 < 0{,}95$ et $P(X \\leqslant 6) \\approx 0{,}974 \\geqslant 0{,}95$. Le plus petit entier qui convient est donc $k = 6$.\n\nEn prévoyant $6$ interventions, la probabilité d'avoir plus de jours de panne que d'interventions est $P(X > 6) \\approx 0{,}026$, inférieure à $0{,}05$."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "**Partie B : un modèle avec mémoire.** Les relevés montrent que les pannes ne sont pas indépendantes d'un jour à l'autre :\n\n- si le serveur est en panne un jour donné, il est encore en panne le lendemain avec la probabilité $0{,}4$ ;\n- si le serveur est en état de marche un jour donné, il tombe en panne le lendemain avec la probabilité $0{,}05$.\n\nLe jour $1$, le serveur est en panne avec la probabilité $0{,}1$. Pour tout entier $n \\geqslant 1$, on note $D_n$ l'événement « le serveur est en panne le jour $n$ » et $p_n = P(D_n)$. Ainsi $p_1 = 0{,}1$.",
+        "points": 2,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Construire un arbre pondéré qui représente la situation entre le jour $n$ et le jour $n + 1$, puis démontrer que, pour tout entier $n \\geqslant 1$, $p_{n+1} = 0{,}35p_n + 0{,}05$.",
+            "points": 0.75,
+            "revoir": "l-recurrence-suites-034",
+            "indices": [
+              "Premier niveau : $D_n$ ou $\\overline{D_n}$, de probabilités $p_n$ et $1 - p_n$ ; second niveau : $D_{n+1}$ ou $\\overline{D_{n+1}}$, avec les probabilités conditionnelles données par les relevés.",
+              "Applique la formule des probabilités totales à $D_{n+1}$ avec la partition formée par $D_n$ et $\\overline{D_n}$, puis réduis l'expression."
+            ],
+            "attenduCorrecteur": "- Arbre : $P(D_n) = p_n$, $P(\\overline{D_n}) = 1 - p_n$, $P_{D_n}(D_{n+1}) = 0{,}4$, $P_{\\overline{D_n}}(D_{n+1}) = 0{,}05$ et les branches complémentaires $0{,}6$ et $0{,}95$ : 0,25 pt.\n- Formule des probabilités totales : $p_{n+1} = 0{,}4p_n + 0{,}05(1 - p_n)$ : 0,25 pt.\n- Réduction : $p_{n+1} = 0{,}35p_n + 0{,}05$ : 0,25 pt.",
+            "solution": "Arbre pondéré entre le jour $n$ et le jour $n + 1$ :\n\n- branche $D_n$, de probabilité $p_n$, suivie de $D_{n+1}$ ($0{,}4$) ou de $\\overline{D_{n+1}}$ ($0{,}6$) ;\n- branche $\\overline{D_n}$, de probabilité $1 - p_n$, suivie de $D_{n+1}$ ($0{,}05$) ou de $\\overline{D_{n+1}}$ ($0{,}95$).\n\nLes événements $D_n$ et $\\overline{D_n}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$p_{n+1} = P(D_n \\cap D_{n+1}) + P(\\overline{D_n} \\cap D_{n+1}) = 0{,}4p_n + 0{,}05(1 - p_n) = 0{,}35p_n + 0{,}05.$$\n\nPour tout entier $n \\geqslant 1$, $p_{n+1} = 0{,}35p_n + 0{,}05$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Calculer $p_2$ et $p_3$. Les événements $D_2$ et $D_3$ sont-ils indépendants ? Le modèle de la partie A convient-il pour décrire ces relevés ?\n\nSaisis la valeur exacte de $p_3$ ; la justification est à rédiger.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.07975,
+              "tolerance": 0.000001
+            },
+            "revoir": "l-loi-binomiale-003",
+            "indices": [
+              "Applique deux fois la relation de la question a), en partant de $p_1$.",
+              "Deux événements sont indépendants quand la probabilité de leur intersection est égale au produit de leurs probabilités : calcule $P(D_2 \\cap D_3)$ en suivant un chemin de l'arbre, puis compare."
+            ],
+            "attenduCorrecteur": "- $p_2 = 0{,}35 \\times 0{,}1 + 0{,}05 = 0{,}085$ et $p_3 = 0{,}35 \\times 0{,}085 + 0{,}05 = 0{,}079\\,75$ : 0,25 pt.\n- $P(D_2 \\cap D_3) = p_2 \\times 0{,}4 = 0{,}034$ et $P(D_2) \\times P(D_3) \\approx 0{,}006\\,8$ ; ces nombres diffèrent, donc $D_2$ et $D_3$ ne sont pas indépendants : 0,25 pt.\n- Conclusion : les jours ne sont plus des épreuves indépendantes de même probabilité, donc le schéma de Bernoulli de la partie A ne convient pas : 0,25 pt.",
+            "solution": "$p_2 = 0{,}35 \\times 0{,}1 + 0{,}05 = 0{,}085$ et $p_3 = 0{,}35 \\times 0{,}085 + 0{,}05 = 0{,}029\\,75 + 0{,}05 = 0{,}079\\,75$.\n\nEn suivant le chemin « $D_2$ puis $D_3$ » : $P(D_2 \\cap D_3) = P(D_2) \\times P_{D_2}(D_3) = 0{,}085 \\times 0{,}4 = 0{,}034$. Or $P(D_2) \\times P(D_3) = 0{,}085 \\times 0{,}079\\,75 \\approx 0{,}006\\,8$. Comme $P(D_2 \\cap D_3) \\neq P(D_2) \\times P(D_3)$, les événements $D_2$ et $D_3$ ne sont pas indépendants : une panne un jour rend une panne le lendemain plus probable.\n\nLe modèle de la partie A suppose des jours indépendants, avec la même probabilité de panne $0{,}1$ chaque jour. Ici, les jours ne sont pas indépendants et la probabilité de panne change d'un jour à l'autre ($0{,}1$, puis $0{,}085$, puis $0{,}079\\,75$) : ce n'est plus un schéma de Bernoulli, et le nombre de jours de panne ne suit plus une loi binomiale."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "Le serveur est en panne le jour $3$. Calculer la probabilité qu'il ait été en état de marche le jour $2$.\n\nSaisis la valeur arrondie à $10^{-3}$ ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.574,
+              "tolerance": 0.001
+            },
+            "revoir": "l-loi-binomiale-007",
+            "indices": [
+              "On sait que le serveur est en panne le jour $3$ : écris la probabilité cherchée comme une probabilité conditionnelle sachant $D_3$, puis applique sa définition."
+            ],
+            "attenduCorrecteur": "- Probabilité cherchée : $P_{D_3}(\\overline{D_2}) = \\dfrac{P(\\overline{D_2} \\cap D_3)}{P(D_3)}$ : 0,25 pt.\n- $P(\\overline{D_2} \\cap D_3) = 0{,}915 \\times 0{,}05 = 0{,}045\\,75$, d'où $P_{D_3}(\\overline{D_2}) \\approx 0{,}574$ : 0,25 pt.",
+            "solution": "On cherche $P_{D_3}(\\overline{D_2})$. Par définition d'une probabilité conditionnelle :\n\n$$P_{D_3}(\\overline{D_2}) = \\frac{P(\\overline{D_2} \\cap D_3)}{P(D_3)} = \\frac{(1 - p_2) \\times 0{,}05}{p_3} = \\frac{0{,}915 \\times 0{,}05}{0{,}079\\,75} = \\frac{0{,}045\\,75}{0{,}079\\,75} \\approx 0{,}574.$$\n\nSachant que le serveur est en panne le jour $3$, la probabilité qu'il ait été en état de marche le jour $2$ est d'environ $0{,}574$ : plus d'une panne sur deux est une panne nouvelle.",
+            "erreurFrequente": "Répondre $0{,}05$ : c'est $P_{\\overline{D_2}}(D_3)$, la probabilité de tomber en panne le jour $3$ sachant que le serveur marchait le jour $2$. Ici, l'information connue est la panne du jour $3$."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Démontrer par récurrence que, pour tout entier $n \\geqslant 1$ : $\\dfrac{1}{13} \\leqslant p_{n+1} \\leqslant p_n \\leqslant 0{,}1$.",
+        "points": 1,
+        "revoir": "l-recurrence-suites-022",
+        "indices": [
+          "Initialisation au rang $1$ : calcule $p_2$ et compare les nombres ($\\dfrac{1}{13} \\approx 0{,}077$). Hérédité : pars de l'encadrement au rang $n$ et transforme-le pour faire apparaître la relation de la question 2. a).",
+          "Multiplie chaque membre par $0{,}35$, qui est positif, puis ajoute $0{,}05$ ; pour le membre de gauche, calcule $0{,}35 \\times \\dfrac{1}{13} + 0{,}05$ en écrivant $0{,}05$ sous la forme d'une fraction de dénominateur $13$."
+        ],
+        "attenduCorrecteur": "- Propriété énoncée ; initialisation : $p_1 = 0{,}1$, $p_2 = 0{,}085$ et $\\dfrac{1}{13} \\leqslant 0{,}085 \\leqslant 0{,}1 \\leqslant 0{,}1$ : 0,25 pt.\n- Hérédité : multiplication par $0{,}35 > 0$ (sens conservé), puis ajout de $0{,}05$ et utilisation de $p_{n+1} = 0{,}35p_n + 0{,}05$ : 0,5 pt.\n- Calcul $0{,}35 \\times \\dfrac{1}{13} + 0{,}05 = \\dfrac{1}{13}$, majoration $0{,}085 \\leqslant 0{,}1$ et conclusion de la récurrence : 0,25 pt.",
+        "solution": "Pour tout entier $n \\geqslant 1$, on note $\\mathcal{P}(n)$ la propriété : « $\\dfrac{1}{13} \\leqslant p_{n+1} \\leqslant p_n \\leqslant 0{,}1$ ».\n\n**Initialisation.** $p_1 = 0{,}1$ et $p_2 = 0{,}085$. Comme $\\dfrac{1}{13} \\approx 0{,}077$, on a bien $\\dfrac{1}{13} \\leqslant p_2 \\leqslant p_1 \\leqslant 0{,}1$ : $\\mathcal{P}(1)$ est vraie.\n\n**Hérédité.** Soit $n \\geqslant 1$ un entier tel que $\\mathcal{P}(n)$ est vraie : $\\dfrac{1}{13} \\leqslant p_{n+1} \\leqslant p_n \\leqslant 0{,}1$. En multipliant par $0{,}35$, qui est strictement positif, le sens des inégalités est conservé :\n\n$$0{,}35 \\times \\frac{1}{13} \\leqslant 0{,}35p_{n+1} \\leqslant 0{,}35p_n \\leqslant 0{,}035.$$\n\nEn ajoutant $0{,}05$ à chaque membre :\n\n$$0{,}35 \\times \\frac{1}{13} + 0{,}05 \\leqslant 0{,}35p_{n+1} + 0{,}05 \\leqslant 0{,}35p_n + 0{,}05 \\leqslant 0{,}085.$$\n\nOr $0{,}05 = \\dfrac{0{,}65}{13}$, donc $0{,}35 \\times \\dfrac{1}{13} + 0{,}05 = \\dfrac{0{,}35 + 0{,}65}{13} = \\dfrac{1}{13}$ ; de plus $0{,}085 \\leqslant 0{,}1$. D'après la relation $p_{n+1} = 0{,}35p_n + 0{,}05$, on obtient $\\dfrac{1}{13} \\leqslant p_{n+2} \\leqslant p_{n+1} \\leqslant 0{,}1$ : $\\mathcal{P}(n + 1)$ est vraie.\n\n**Conclusion.** $\\mathcal{P}(1)$ est vraie et la propriété est héréditaire, donc, par récurrence, pour tout entier $n \\geqslant 1$, $\\dfrac{1}{13} \\leqslant p_{n+1} \\leqslant p_n \\leqslant 0{,}1$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire que la suite $(p_n)$ converge, puis déterminer sa limite. Interpréter ce résultat dans le contexte de l'exercice.\n\nSaisis la valeur exacte de la limite ; la justification est à rédiger.",
+        "points": 0.75,
+        "reponse": {
+          "type": "numerique",
+          "valeur": "1/13",
+          "tolerance": 0.0001
+        },
+        "revoir": "l-continuite-055",
+        "indices": [
+          "Relis l'encadrement de la question 3 : que dit-il du sens de variation de $(p_n)$, et quel minorant fournit-il ? Un théorème du cours en déduit la convergence.",
+          "Pour trouver la limite $\\ell$, écris $p_{n+1} = f(p_n)$ avec $f(x) = 0{,}35x + 0{,}05$ : $f$ est continue, donc $\\ell$ vérifie $f(\\ell) = \\ell$. Il reste une équation du premier degré à résoudre."
+        ],
+        "attenduCorrecteur": "- $(p_n)$ décroissante et minorée par $\\dfrac{1}{13}$, donc convergente (théorème cité) : 0,25 pt.\n- $f : x \\mapsto 0{,}35x + 0{,}05$ continue, donc la limite $\\ell$ vérifie $\\ell = 0{,}35\\ell + 0{,}05$, d'où $\\ell = \\dfrac{1}{13}$ : 0,25 pt.\n- Interprétation : à long terme, la probabilité que le serveur soit en panne un jour donné est proche de $\\dfrac{1}{13} \\approx 0{,}077$ : 0,25 pt.",
+        "solution": "D'après la question 3, pour tout entier $n \\geqslant 1$, $p_{n+1} \\leqslant p_n$ et $p_{n+1} \\geqslant \\dfrac{1}{13}$ ; de plus $p_1 = 0{,}1 \\geqslant \\dfrac{1}{13}$. La suite $(p_n)$ est donc décroissante et minorée par $\\dfrac{1}{13}$. Or toute suite décroissante et minorée converge : $(p_n)$ converge vers un réel $\\ell$.\n\nPour tout $n \\geqslant 1$, $p_{n+1} = f(p_n)$ avec $f(x) = 0{,}35x + 0{,}05$. La fonction $f$ est continue sur $\\mathbb{R}$ (fonction affine), donc la limite $\\ell$ vérifie $f(\\ell) = \\ell$ :\n\n$$\\ell = 0{,}35\\ell + 0{,}05 \\iff 0{,}65\\ell = 0{,}05 \\iff \\ell = \\frac{0{,}05}{0{,}65} = \\frac{5}{65} = \\frac{1}{13}.$$\n\nLa suite $(p_n)$ converge vers $\\dfrac{1}{13} \\approx 0{,}077$.\n\nInterprétation : au bout d'un grand nombre de jours, la probabilité que le serveur soit en panne un jour donné est proche de $0{,}077$, un peu moins que la probabilité $0{,}1$ du premier jour."
+      }
+    ]
+  },
+  {
+    "id": "tb-loi-binomiale-004",
+    "chapitre": "loi-binomiale",
+    "notions": [
+      "n-loi-binomiale-seuils",
+      "n-loi-binomiale-schema-bernoulli",
+      "n-loi-binomiale-loi-binomiale"
+    ],
+    "capacites": [
+      "bo-m-bernoulli-03",
+      "bo-m-bernoulli-04",
+      "bo-m-bernoulli-06",
+      "bo-m-bernoulli-07",
+      "bo-m-logarithme-03",
+      "bo-m-logarithme-05",
+      "bo-m-logarithme-06",
+      "bo-m-logarithme-07",
+      "bo-m-derivation-06",
+      "bo-m-limites-fonctions-05",
+      "bo-m-suites-07"
+    ],
+    "titre": "Tickets à gratter : au moins un gagnant, exactement un gagnant",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": true,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2021-etrangers-j2",
+      "adaptation": "Exercice 4 (partie probabilités) : idée reprise d'une variable $X_n$ qui dépend du nombre $n$ de répétitions, et de la fonction $f(x) = \\ln x + x\\ln q$ (dans le sujet, $q = 0{,}95$ et $f$ est étudiée sur $[20\\,;\\,+\\infty[$) ; contexte (tickets à gratter), données (loi $\\mathcal{B}(n\\,;\\,0{,}04)$) et questions écrits pour le site : seuil « au moins un ticket gagnant » par le logarithme, suite $u_n = P(X_n = 1)$, variations de $f$ sur $[1\\,;\\,+\\infty[$, maximum de $(u_n)$ atteint pour $24$ et $25$ tickets, limite par croissances comparées. Pas d'équation $f(x) = 0$ ni de théorème des valeurs intermédiaires. Aucune question d'espérance ni de variance de la loi binomiale (chapitre ultérieur). Calculatrice autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Une loterie propose des tickets à gratter. Chaque ticket est gagnant avec la probabilité $0{,}04$. Le nombre de tickets mis en vente est assez grand pour que l'achat de plusieurs tickets soit assimilé à des tirages avec remise : les tickets achetés sont gagnants ou non indépendamment les uns des autres.\n\nUn club achète $n$ tickets, où $n$ est un entier naturel non nul. On note $X_n$ la variable aléatoire égale au nombre de tickets gagnants parmi ces $n$ tickets.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que $X_n$ suit une loi binomiale dont on précisera les paramètres.",
+        "points": 0.5,
+        "revoir": "l-loi-binomiale-039",
+        "indices": [
+          "Suis la méthode du cours : l'épreuve répétée et son succès, la probabilité du succès, puis la raison pour laquelle les $n$ répétitions sont identiques et indépendantes."
+        ],
+        "attenduCorrecteur": "- Épreuve de Bernoulli : un ticket, succès « le ticket est gagnant », de probabilité $0{,}04$ : 0,25 pt.\n- $n$ répétitions identiques et indépendantes (achat assimilé à des tirages avec remise) ; $X_n$ compte les succès, donc $X_n$ suit la loi $\\mathcal{B}(n\\,;\\,0{,}04)$ : 0,25 pt.",
+        "solution": "Acheter un ticket et regarder s'il est gagnant est une épreuve de Bernoulli, dont le succès « le ticket est gagnant » a la probabilité $0{,}04$. L'achat des $n$ tickets répète $n$ fois cette épreuve, de façon identique et indépendante (achat assimilé à des tirages avec remise) : c'est un schéma de Bernoulli.\n\n$X_n$ compte le nombre de succès de ce schéma, donc $X_n$ suit la loi binomiale $\\mathcal{B}(n\\,;\\,0{,}04)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Le club souhaite obtenir au moins un ticket gagnant.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Montrer que la probabilité qu'au moins un des $n$ tickets soit gagnant est égale à $1 - 0{,}96^n$.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-024",
+            "indices": [
+              "Passe par l'événement contraire de « au moins un ticket gagnant » : traduis-le avec $X_n$, puis calcule sa probabilité."
+            ],
+            "attenduCorrecteur": "- Événement contraire : « aucun ticket gagnant », c'est-à-dire $X_n = 0$ : 0,25 pt.\n- $P(X_n = 0) = 0{,}96^n$, d'où $P(X_n \\geqslant 1) = 1 - 0{,}96^n$ : 0,25 pt.",
+            "solution": "L'événement « au moins un ticket gagnant » est $\\{X_n \\geqslant 1\\}$ ; son contraire est « aucun ticket gagnant », c'est-à-dire $\\{X_n = 0\\}$.\n\nD'après la formule de la loi binomiale, $P(X_n = 0) = \\binom{n}{0} \\times 0{,}04^0 \\times 0{,}96^n = 0{,}96^n$ : les $n$ tickets sont perdants, chacun avec la probabilité $0{,}96$.\n\nDonc $P(X_n \\geqslant 1) = 1 - P(X_n = 0) = 1 - 0{,}96^n$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Déterminer, par le calcul, le plus petit nombre $n$ de tickets que le club doit acheter pour que la probabilité d'obtenir au moins un ticket gagnant soit supérieure ou égale à $0{,}5$.\n\nSaisis la valeur de $n$ ; la résolution est à rédiger.",
+            "points": 1,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 17,
+              "tolerance": 0
+            },
+            "revoir": "l-loi-binomiale-063",
+            "indices": [
+              "Écris l'inéquation $1 - 0{,}96^n \\geqslant 0{,}5$ et isole la puissance $0{,}96^n$ en surveillant le sens de l'inégalité.",
+              "Applique la fonction $\\ln$, strictement croissante, puis divise par $\\ln 0{,}96$ : quel est le signe de ce nombre, et que devient le sens de l'inégalité ?"
+            ],
+            "attenduCorrecteur": "- Puissance isolée : $1 - 0{,}96^n \\geqslant 0{,}5 \\iff 0{,}96^n \\leqslant 0{,}5$ : 0,25 pt.\n- Passage au logarithme justifié ($\\ln$ strictement croissante) : $n\\ln 0{,}96 \\leqslant \\ln 0{,}5$ : 0,25 pt.\n- Division par $\\ln 0{,}96 < 0$, avec changement de sens : $n \\geqslant \\dfrac{\\ln 0{,}5}{\\ln 0{,}96} \\approx 16{,}98$ : 0,25 pt.\n- Conclusion : $17$ tickets au minimum : 0,25 pt.",
+            "solution": "$$1 - 0{,}96^n \\geqslant 0{,}5 \\iff -0{,}96^n \\geqslant -0{,}5 \\iff 0{,}96^n \\leqslant 0{,}5.$$\n\nLes deux membres sont strictement positifs et la fonction $\\ln$ est strictement croissante sur $]0\\,;\\,+\\infty[$ :\n\n$$0{,}96^n \\leqslant 0{,}5 \\iff \\ln\\left(0{,}96^n\\right) \\leqslant \\ln 0{,}5 \\iff n\\ln 0{,}96 \\leqslant \\ln 0{,}5.$$\n\nComme $0 < 0{,}96 < 1$, $\\ln 0{,}96 < 0$ : en divisant par ce nombre négatif, le sens de l'inégalité change :\n\n$$n \\geqslant \\frac{\\ln 0{,}5}{\\ln 0{,}96}, \\quad \\text{avec} \\quad \\frac{\\ln 0{,}5}{\\ln 0{,}96} \\approx 16{,}98.$$\n\nLe plus petit entier qui convient est $17$. Contrôle : $1 - 0{,}96^{16} \\approx 0{,}480 < 0{,}5$ et $1 - 0{,}96^{17} \\approx 0{,}500\\,4 \\geqslant 0{,}5$.\n\nLe club doit acheter au moins $17$ tickets.",
+            "erreurFrequente": "Oublier de changer le sens de l'inégalité en divisant par $\\ln 0{,}96$, qui est négatif : on obtiendrait $n \\leqslant 16{,}98$, ce qui n'a pas de sens ici (plus on achète de tickets, plus on a de chances d'en avoir un gagnant)."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On s'intéresse maintenant à la probabilité qu'**exactement un** des $n$ tickets soit gagnant. Pour tout entier $n \\geqslant 1$, on note $u_n = P(X_n = 1)$.",
+        "points": 3,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout entier $n \\geqslant 1$, $u_n = \\dfrac{n}{24} \\times 0{,}96^n$.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-035",
+            "indices": [
+              "Écris $P(X_n = 1)$ avec la formule de la loi binomiale, puis fais apparaître $0{,}96^n$ en écrivant $0{,}96^{n-1} = \\dfrac{0{,}96^n}{0{,}96}$."
+            ],
+            "attenduCorrecteur": "- Formule : $u_n = \\binom{n}{1} \\times 0{,}04 \\times 0{,}96^{n-1} = 0{,}04n \\times 0{,}96^{n-1}$ : 0,25 pt.\n- $\\dfrac{0{,}04}{0{,}96} = \\dfrac{1}{24}$, d'où $u_n = \\dfrac{n}{24} \\times 0{,}96^n$ : 0,25 pt.",
+            "solution": "D'après la formule de la loi binomiale, avec $\\binom{n}{1} = n$ :\n\n$$u_n = \\binom{n}{1} \\times 0{,}04^1 \\times 0{,}96^{n-1} = 0{,}04n \\times \\frac{0{,}96^n}{0{,}96} = \\frac{0{,}04}{0{,}96} \\times n \\times 0{,}96^n.$$\n\nOr $\\dfrac{0{,}04}{0{,}96} = \\dfrac{4}{96} = \\dfrac{1}{24}$. Donc, pour tout entier $n \\geqslant 1$, $u_n = \\dfrac{n}{24} \\times 0{,}96^n$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "On considère la fonction $f$ définie sur $[1\\,;\\,+\\infty[$ par $f(x) = \\ln x + x\\ln 0{,}96$. Étudier les variations de $f$ sur $[1\\,;\\,+\\infty[$. On notera $x_0$ le réel en lequel $f'$ s'annule ; on en donnera l'expression exacte, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée de $x_0$ ; l'étude est à rédiger.",
+            "points": 1,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 24.5,
+              "tolerance": 0.01
+            },
+            "revoir": "l-logarithme-048",
+            "indices": [
+              "$\\ln 0{,}96$ est une constante : dérive $f$ terme à terme, puis réduis $f'(x)$ au même dénominateur $x$.",
+              "Comme $x > 0$, le signe de $f'(x)$ est celui de son numérateur : résous l'inéquation « numérateur positif ou nul » en tenant compte du signe de $\\ln 0{,}96$."
+            ],
+            "attenduCorrecteur": "- $f'(x) = \\dfrac{1}{x} + \\ln 0{,}96 = \\dfrac{1 + x\\ln 0{,}96}{x}$ : 0,25 pt.\n- $x > 0$ et $\\ln 0{,}96 < 0$ : $f'(x) \\geqslant 0 \\iff x \\leqslant -\\dfrac{1}{\\ln 0{,}96}$ : 0,25 pt.\n- $x_0 = -\\dfrac{1}{\\ln 0{,}96} \\approx 24{,}50$ : 0,25 pt.\n- $f$ strictement croissante sur $[1\\,;\\,x_0]$, strictement décroissante sur $[x_0\\,;\\,+\\infty[$ (tableau ou phrase) : 0,25 pt.",
+            "solution": "Pour tout $x \\geqslant 1$ :\n\n$$f'(x) = \\frac{1}{x} + \\ln 0{,}96 = \\frac{1 + x\\ln 0{,}96}{x}.$$\n\nComme $x > 0$, $f'(x)$ a le signe de $1 + x\\ln 0{,}96$. Or $0 < 0{,}96 < 1$, donc $\\ln 0{,}96 < 0$, et, en divisant par ce nombre négatif :\n\n$$1 + x\\ln 0{,}96 \\geqslant 0 \\iff x\\ln 0{,}96 \\geqslant -1 \\iff x \\leqslant -\\frac{1}{\\ln 0{,}96}.$$\n\nOn pose $x_0 = -\\dfrac{1}{\\ln 0{,}96}$ ; la calculatrice donne $x_0 \\approx 24{,}50$, qui appartient bien à $[1\\,;\\,+\\infty[$.\n\nAinsi $f'(x) > 0$ sur $[1\\,;\\,x_0[$, $f'(x_0) = 0$ et $f'(x) < 0$ sur $]x_0\\,;\\,+\\infty[$ : la fonction $f$ est strictement croissante sur $[1\\,;\\,x_0]$ et strictement décroissante sur $[x_0\\,;\\,+\\infty[$."
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "On admet que $f$ est strictement croissante sur $[1\\,;\\,x_0]$ et strictement décroissante sur $[x_0\\,;\\,+\\infty[$, avec $24 < x_0 < 25$.\n\nJustifier que, pour tout entier $n \\geqslant 1$, $u_n = \\dfrac{e^{f(n)}}{24}$, puis comparer $u_{24}$ et $u_{25}$. En déduire pour quel nombre de tickets, ou quels nombres de tickets, la probabilité d'obtenir exactement un ticket gagnant est la plus grande possible, et donner cette probabilité maximale arrondie à $10^{-3}$.\n\nSaisis la probabilité maximale arrondie ; la justification est à rédiger.",
+            "points": 1,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.375,
+              "tolerance": 0.001
+            },
+            "revoir": "l-loi-binomiale-067",
+            "indices": [
+              "Écris $n \\times 0{,}96^n$ sous la forme $e^{\\ln(\\dots)}$ et reconnais $f(n)$. La fonction exponentielle étant croissante, $u_n$ varie comme $f(n)$ : l'encadrement de $x_0$ rappelé dans l'énoncé dit entre quels entiers chercher le maximum.",
+              "Pour comparer $u_{24}$ et $u_{25}$, calcule le quotient $\\dfrac{u_{25}}{u_{24}}$ à l'aide de l'expression de la question a)."
+            ],
+            "attenduCorrecteur": "- $n \\times 0{,}96^n = e^{\\ln n + n\\ln 0{,}96} = e^{f(n)}$, d'où $u_n = \\dfrac{e^{f(n)}}{24}$ : 0,25 pt.\n- Exponentielle strictement croissante et $24 < x_0 < 25$ : $u_1 < u_2 < \\dots < u_{24}$ et $u_{25} > u_{26} > \\dots$ ; le maximum est $u_{24}$ ou $u_{25}$ : 0,25 pt.\n- $\\dfrac{u_{25}}{u_{24}} = \\dfrac{25}{24} \\times 0{,}96 = 1$, donc $u_{24} = u_{25}$ : 0,25 pt.\n- Conclusion : $24$ ou $25$ tickets ; probabilité maximale $u_{24} = 0{,}96^{24} \\approx 0{,}375$ : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$, $n > 0$ et $0{,}96^n > 0$, donc :\n\n$$n \\times 0{,}96^n = e^{\\ln\\left(n \\times 0{,}96^n\\right)} = e^{\\ln n + n\\ln 0{,}96} = e^{f(n)}, \\quad \\text{d'où} \\quad u_n = \\frac{e^{f(n)}}{24}.$$\n\nLa fonction exponentielle est strictement croissante, donc $u_n$ varie dans le même sens que $f(n)$. Comme $24 < x_0 < 25$ :\n\n- $f$ est strictement croissante sur $[1\\,;\\,x_0]$, donc $u_1 < u_2 < \\dots < u_{24}$ ;\n- $f$ est strictement décroissante sur $[x_0\\,;\\,+\\infty[$, donc $u_{25} > u_{26} > u_{27} > \\dots$\n\nLe plus grand terme de la suite est donc $u_{24}$ ou $u_{25}$. Or :\n\n$$\\frac{u_{25}}{u_{24}} = \\frac{25 \\times 0{,}96^{25}}{24 \\times 0{,}96^{24}} = \\frac{25}{24} \\times 0{,}96 = 25 \\times 0{,}04 = 1,$$\n\ndonc $u_{24} = u_{25}$.\n\nLa probabilité d'obtenir exactement un ticket gagnant est la plus grande lorsque le club achète $24$ ou $25$ tickets. Elle vaut alors $u_{24} = \\dfrac{24}{24} \\times 0{,}96^{24} = 0{,}96^{24} \\approx 0{,}375$.",
+            "erreurFrequente": "Arrondir $x_0 \\approx 24{,}50$ à l'entier le plus proche et conclure sans comparer les deux entiers qui l'encadrent : le maximum d'une suite se cherche parmi $u_{24}$ et $u_{25}$, et ici les deux sont égaux."
+          },
+          {
+            "id": "q3d",
+            "label": "d)",
+            "enonce": "Déterminer la limite de la suite $(u_n)$, puis interpréter ce résultat dans le contexte de l'exercice.",
+            "points": 0.5,
+            "revoir": "l-logarithme-066",
+            "indices": [
+              "D'après la question c), $u_n = \\dfrac{e^{f(n)}}{24}$ : cherche d'abord la limite de $f(n)$ quand $n$ tend vers $+\\infty$, puis compose avec la fonction exponentielle.",
+              "$f(n) = \\ln n + n\\ln 0{,}96$ est une forme indéterminée, car $\\ln 0{,}96 < 0$. Factorise par $n$ : $f(n) = n\\left(\\dfrac{\\ln n}{n} + \\ln 0{,}96\\right)$, puis utilise les croissances comparées."
+            ],
+            "attenduCorrecteur": "- $\\lim\\limits_{n \\to +\\infty} \\dfrac{\\ln n}{n} = 0$ (croissances comparées), donc $f(n) = n\\left(\\dfrac{\\ln n}{n} + \\ln 0{,}96\\right)$ tend vers $-\\infty$, car $\\ln 0{,}96 < 0$ : 0,25 pt.\n- Par composition avec $\\lim\\limits_{X \\to -\\infty} e^X = 0$ : $\\lim\\limits_{n \\to +\\infty} u_n = 0$ ; interprétation : avec un très grand nombre de tickets, il devient très peu probable de n'avoir qu'un seul ticket gagnant : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$, $f(n) = \\ln n + n\\ln 0{,}96 = n\\left(\\dfrac{\\ln n}{n} + \\ln 0{,}96\\right)$.\n\nPar croissances comparées, $\\lim\\limits_{n \\to +\\infty} \\dfrac{\\ln n}{n} = 0$, donc $\\lim\\limits_{n \\to +\\infty} \\left(\\dfrac{\\ln n}{n} + \\ln 0{,}96\\right) = \\ln 0{,}96$, qui est strictement négatif. Par produit avec $n$, qui tend vers $+\\infty$, $\\lim\\limits_{n \\to +\\infty} f(n) = -\\infty$.\n\nComme $\\lim\\limits_{X \\to -\\infty} e^X = 0$, par composition $\\lim\\limits_{n \\to +\\infty} e^{f(n)} = 0$, donc $\\lim\\limits_{n \\to +\\infty} u_n = 0$.\n\nInterprétation : quand le club achète un très grand nombre de tickets, la probabilité d'obtenir exactement un ticket gagnant devient presque nulle ; il obtiendra très probablement plusieurs tickets gagnants."
+          }
+        ]
+      }
+    ]
+  }
+]

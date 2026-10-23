@@ -1,0 +1,264 @@
+[
+  {
+    "id": "fl-loi-binomiale-produit-chemin",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-epreuves-independantes",
+    "capacites": ["bo-m-bernoulli-01"],
+    "enonce": "On lance un dé équilibré à quatre faces, numérotées de $1$ à $4$, puis une pièce équilibrée ; les deux épreuves sont indépendantes. Quelle est la probabilité d'obtenir $4$ puis face ? Donne une fraction ou un décimal.",
+    "reponse": { "type": "numerique", "valeur": "1/8", "tolerance": 0.001 },
+    "explication": "Par indépendance, la probabilité de l'issue $(4, F)$ est le produit des probabilités de ses composantes : $\\dfrac{1}{4} \\times \\dfrac{1}{2} = \\dfrac{1}{8}$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-loi-binomiale-branche-manquante",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-epreuves-independantes",
+    "capacites": ["bo-m-bernoulli-05"],
+    "enonce": "Sur un arbre pondéré, $P(A) = 0{,}3$ et $P_A(B) = 0{,}4$. Que vaut $P_A(\\overline{B})$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$0{,}7$", "$0{,}6$", "$0{,}12$", "$0{,}18$"],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "$0{,}7$ est $P(\\overline{A})$ : la branche cherchée part du nœud $A$, pas de la racine.",
+        null,
+        "$0{,}12 = 0{,}3 \\times 0{,}4$ est la probabilité du chemin $A \\cap B$, pas une branche.",
+        "$0{,}18 = 0{,}3 \\times 0{,}6$ est la probabilité du chemin $A \\cap \\overline{B}$ ; la branche, elle, vaut $0{,}6$."
+      ]
+    },
+    "explication": "Les branches issues d'un même nœud ont pour somme $1$ : $P_A(\\overline{B}) = 1 - P_A(B) = 1 - 0{,}4 = 0{,}6$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-loi-binomiale-probabilites-totales",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-epreuves-independantes",
+    "capacites": ["bo-m-bernoulli-05"],
+    "enonce": "$P(A) = 0{,}5$, $P_A(B) = 0{,}2$ et $P_{\\overline{A}}(B) = 0{,}6$. Que vaut $P(B)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$0{,}8$", "$0{,}1$", "$0{,}4$", "$0{,}12$"],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "On n'additionne pas les probabilités conditionnelles : chaque branche doit d'abord être multipliée par $P(A)$ ou $P(\\overline{A})$.",
+        "$0{,}1 = 0{,}5 \\times 0{,}2$ est le seul chemin « $A$ puis $B$ » ; il manque le chemin « $\\overline{A}$ puis $B$ ».",
+        null,
+        "$0{,}12 = 0{,}2 \\times 0{,}6$ multiplie deux branches qui ne sont pas sur le même chemin."
+      ]
+    },
+    "explication": "Probabilités totales : $P(B) = P(A) \\times P_A(B) + P(\\overline{A}) \\times P_{\\overline{A}}(B) = 0{,}5 \\times 0{,}2 + 0{,}5 \\times 0{,}6 = 0{,}1 + 0{,}3 = 0{,}4$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-loi-binomiale-probabilite-inverse",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-epreuves-independantes",
+    "capacites": ["bo-m-bernoulli-05"],
+    "enonce": "On sait que $P(A \\cap B) = 0{,}1$ et $P(B) = 0{,}4$. Que vaut $P_B(A)$ ?",
+    "reponse": { "type": "numerique", "valeur": 0.25, "tolerance": 0.001 },
+    "explication": "Par définition, $P_B(A) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0{,}1}{0{,}4} = 0{,}25$. On divise par la probabilité de l'événement que l'on sait réalisé.",
+    "duree": 20
+  },
+  {
+    "id": "fl-loi-binomiale-parametre-bernoulli",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-schema-bernoulli",
+    "capacites": ["bo-m-bernoulli-02"],
+    "enonce": "On lance un dé équilibré à six faces ; le succès est « obtenir un multiple de $3$ ». Quel est le paramètre $p$ de cette épreuve de Bernoulli ? Donne une fraction, ou un décimal arrondi à $10^{-3}$.",
+    "reponse": { "type": "numerique", "valeur": "1/3", "tolerance": 0.001 },
+    "explication": "Les multiples de $3$ sur un dé sont $3$ et $6$ : deux faces sur six, donc $p = \\dfrac{2}{6} = \\dfrac{1}{3}$. Le paramètre est toujours la probabilité du succès.",
+    "duree": 20
+  },
+  {
+    "id": "fl-loi-binomiale-nombre-issues",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-schema-bernoulli",
+    "capacites": ["bo-m-bernoulli-03"],
+    "enonce": "Combien d'issues compte un schéma de Bernoulli à $6$ épreuves ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$12$", "$64$", "$36$", "$6$"],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "$12 = 2 \\times 6$ : on ne multiplie pas le nombre d'issues par le nombre d'épreuves, on l'élève à la puissance.",
+        null,
+        "$36 = 6^2$ : la base et l'exposant sont inversés. Chaque épreuve a $2$ issues, et il y a $6$ épreuves.",
+        "$6$ est le nombre d'épreuves, pas le nombre de chemins de l'arbre."
+      ]
+    },
+    "explication": "Chaque épreuve a $2$ issues ($S$ ou $\\overline{S}$) ; d'après le principe multiplicatif, $6$ épreuves donnent $2^6 = 64$ issues, les chemins d'un arbre à $6$ niveaux.",
+    "duree": 20
+  },
+  {
+    "id": "fl-loi-binomiale-au-moins-un-succes",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-schema-bernoulli",
+    "capacites": ["bo-m-bernoulli-03"],
+    "enonce": "On répète $3$ fois, de façon indépendante, une épreuve de Bernoulli de paramètre $0{,}1$. Quelle est la probabilité d'obtenir au moins un succès ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$0{,}999$", "$0{,}3$", "$0{,}729$", "$0{,}271$"],
+      "bonne": 3,
+      "pourquoiFaux": [
+        "$0{,}999 = 1 - 0{,}1^3$ : $0{,}1^3$ est la probabilité de trois succès, alors que le contraire de « au moins un succès » est « aucun succès ».",
+        "$0{,}3 = 3 \\times 0{,}1$ : on ne multiplie pas $p$ par le nombre d'épreuves.",
+        "$0{,}729 = 0{,}9^3$ est la probabilité de n'obtenir **aucun** succès.",
+        null
+      ]
+    },
+    "explication": "Le contraire de « au moins un succès » est « aucun succès », de probabilité $0{,}9^3 = 0{,}729$. Donc la probabilité cherchée est $1 - 0{,}729 = 0{,}271$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-loi-binomiale-reconnaitre-parametres",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-loi-binomiale",
+    "capacites": ["bo-m-bernoulli-06"],
+    "enonce": "On lance $12$ fois un dé équilibré à six faces ; $X$ est le nombre de fois où l'on obtient $1$ ou $2$. Quelle est la loi de $X$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$\\mathcal{B}\\left(12\\,;\\,\\dfrac{1}{3}\\right)$",
+        "$\\mathcal{B}\\left(12\\,;\\,\\dfrac{1}{6}\\right)$",
+        "$\\mathcal{B}\\left(2\\,;\\,\\dfrac{1}{3}\\right)$",
+        "$\\mathcal{B}\\left(12\\,;\\,\\dfrac{2}{3}\\right)$"
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "Le succès « $1$ ou $2$ » est réalisé par deux faces : sa probabilité est $\\dfrac{2}{6}$, pas $\\dfrac{1}{6}$.",
+        "Le premier paramètre est le nombre de répétitions, ici $12$ lancers.",
+        "$\\dfrac{2}{3}$ est la probabilité de l'échec, « ni $1$ ni $2$ » ; or $X$ compte les succès."
+      ]
+    },
+    "explication": "Chaque lancer est une épreuve de Bernoulli de succès « $1$ ou $2$ », de probabilité $\\dfrac{2}{6} = \\dfrac{1}{3}$ ; les $12$ lancers sont identiques et indépendants, et $X$ compte les succès.",
+    "duree": 30
+  },
+  {
+    "id": "fl-loi-binomiale-que-des-succes",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-loi-binomiale",
+    "capacites": ["bo-m-bernoulli-04"],
+    "enonce": "$X$ suit la loi $\\mathcal{B}(5\\,;\\,0{,}5)$. Que vaut $P(X = 5)$ ? Donne une fraction ou un décimal.",
+    "reponse": { "type": "numerique", "valeur": "1/32", "tolerance": 0.0001 },
+    "explication": "$P(X = 5) = \\binom{5}{5} \\times 0{,}5^5 \\times 0{,}5^0 = 0{,}5^5 = \\dfrac{1}{32}$ : un seul chemin, celui des cinq succès.",
+    "duree": 20
+  },
+  {
+    "id": "fl-loi-binomiale-nombre-chemins",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-loi-binomiale",
+    "capacites": ["bo-m-bernoulli-04"],
+    "enonce": "$X$ suit la loi $\\mathcal{B}(6\\,;\\,p)$. Combien de chemins de l'arbre réalisent l'événement $\\{X = 2\\}$ ?",
+    "reponse": { "type": "numerique", "valeur": 15, "tolerance": 0 },
+    "explication": "Un chemin à $2$ succès est déterminé par le choix des $2$ épreuves réussies parmi $6$ : il y en a $\\binom{6}{2} = \\dfrac{6 \\times 5}{2} = 15$. C'est le coefficient de la formule de $P(X = 2)$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-loi-binomiale-sans-remise",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-loi-binomiale",
+    "capacites": ["bo-m-bernoulli-06"],
+    "enonce": "Vrai ou faux ? Une urne contient $5$ boules, dont $2$ rouges. On tire successivement $3$ boules **sans remise** ; le nombre de boules rouges tirées suit une loi binomiale.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "Sans remise, la probabilité de tirer une rouge dépend des boules déjà tirées (après une rouge, il ne reste qu'une rouge sur $4$ boules) : les tirages ne sont pas indépendants. Ce n'est pas un schéma de Bernoulli."
+    },
+    "explication": "Pour une loi binomiale, il faut des répétitions indépendantes : tirages avec remise, ou assimilés à des tirages avec remise. Ici, la probabilité d'une rouge **sachant** le premier tirage vaut $\\dfrac{1}{4}$ après une rouge, mais $\\dfrac{2}{4}$ après une noire.",
+    "duree": 20
+  },
+  {
+    "id": "fl-loi-binomiale-contraire-au-moins",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-calculatrice",
+    "capacites": ["bo-m-bernoulli-08"],
+    "enonce": "$X$ suit la loi $\\mathcal{B}(15\\,;\\,0{,}4)$. On écrit $P(X \\geqslant 3) = 1 - P(X \\leqslant k)$. Quelle est la valeur de $k$ ?",
+    "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+    "explication": "$X$ ne prend que des valeurs entières : le contraire de « au moins $3$ » est « au plus $2$ ». Donc $P(X \\geqslant 3) = 1 - P(X \\leqslant 2)$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-loi-binomiale-entre-deux-valeurs",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-calculatrice",
+    "capacites": ["bo-m-bernoulli-08"],
+    "enonce": "$X$ suit une loi binomiale. À quoi est égal $P(3 \\leqslant X \\leqslant 6)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$P(X \\leqslant 6) - P(X \\leqslant 3)$",
+        "$P(X \\leqslant 6) - P(X \\leqslant 2)$",
+        "$P(X \\leqslant 6) - P(X \\geqslant 3)$",
+        "$P(X \\leqslant 7) - P(X \\leqslant 3)$"
+      ],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "En retirant $P(X \\leqslant 3)$, tu retires aussi la valeur $3$, qui fait partie de l'événement.",
+        null,
+        "On retire les valeurs trop petites, $0$, $1$ et $2$, pas les valeurs supérieures ou égales à $3$.",
+        "$P(X \\leqslant 7) - P(X \\leqslant 3)$ vaut $P(4 \\leqslant X \\leqslant 7)$ : mauvaises bornes des deux côtés."
+      ]
+    },
+    "explication": "On part de $\\{X \\leqslant 6\\}$, qui contient $0, 1, \\dots, 6$, et on retire $\\{X \\leqslant 2\\}$, qui contient $0$, $1$ et $2$. Il reste $3, 4, 5, 6$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-loi-binomiale-moins-de",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-calculatrice",
+    "capacites": ["bo-m-bernoulli-08"],
+    "enonce": "Vrai ou faux ? Pour une variable $X$ qui suit une loi binomiale, « moins de $4$ succès » se traduit par $X \\leqslant 4$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "« Moins de $4$ » signifie strictement moins de $4$ : $X < 4$, c'est-à-dire $X \\leqslant 3$, car $X$ est entier."
+    },
+    "explication": "« Moins de $4$ » exclut $4$ : $X \\leqslant 3$. En revanche, « au plus $4$ » inclut $4$ : $X \\leqslant 4$.",
+    "duree": 15
+  },
+  {
+    "id": "fl-loi-binomiale-lire-seuil",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-calculatrice",
+    "capacites": ["bo-m-bernoulli-11"],
+    "enonce": "Pour une variable $X$ de loi binomiale, la calculatrice donne $P(X \\leqslant 7) \\approx 0{,}93$ et $P(X \\leqslant 8) \\approx 0{,}97$. Quel est le plus petit entier $k$ tel que $P(X > k) \\leqslant 0{,}05$ ?",
+    "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+    "explication": "$P(X > k) \\leqslant 0{,}05$ équivaut à $P(X \\leqslant k) \\geqslant 0{,}95$. Or $P(X \\leqslant 7) < 0{,}95 \\leqslant P(X \\leqslant 8)$ : le plus petit entier est $8$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-loi-binomiale-isoler-puissance",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-seuils",
+    "capacites": ["bo-m-bernoulli-07"],
+    "enonce": "L'inéquation $1 - 0{,}7^n \\geqslant 0{,}9$ équivaut à $0{,}7^n \\leqslant s$. Quelle est la valeur de $s$ ?",
+    "reponse": { "type": "numerique", "valeur": 0.1, "tolerance": 0.001 },
+    "explication": "On retranche $1$ : $-0{,}7^n \\geqslant -0{,}1$, puis on multiplie par $-1$, ce qui change le sens : $0{,}7^n \\leqslant 0{,}1$. La probabilité de « aucun succès » doit être petite.",
+    "duree": 20
+  },
+  {
+    "id": "fl-loi-binomiale-diviser-ln-negatif",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-seuils",
+    "capacites": ["bo-m-bernoulli-07"],
+    "enonce": "Vrai ou faux ? $n\\ln 0{,}8 \\leqslant \\ln 0{,}05 \\iff n \\leqslant \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "$0 < 0{,}8 < 1$, donc $\\ln 0{,}8 < 0$ : en divisant par ce nombre négatif, le sens change. On obtient $n \\geqslant \\dfrac{\\ln 0{,}05}{\\ln 0{,}8}$."
+    },
+    "explication": "Le logarithme d'un nombre compris entre $0$ et $1$ est négatif. Diviser les deux membres d'une inégalité par un nombre négatif change son sens.",
+    "duree": 20
+  },
+  {
+    "id": "fl-loi-binomiale-seuil-pile",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-seuils",
+    "capacites": ["bo-m-bernoulli-07"],
+    "enonce": "On lance $n$ fois une pièce équilibrée. Quel est le plus petit entier $n$ pour lequel la probabilité d'obtenir au moins un pile est supérieure ou égale à $0{,}9$ ?",
+    "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+    "explication": "Il faut $1 - 0{,}5^n \\geqslant 0{,}9$, soit $0{,}5^n \\leqslant 0{,}1$, c'est-à-dire $\\dfrac{1}{2^n} \\leqslant \\dfrac{1}{10}$ ; en passant aux inverses de ces nombres positifs, $2^n \\geqslant 10$. Or $2^3 = 8 < 10$ et $2^4 = 16 \\geqslant 10$ : le plus petit entier est $4$.",
+    "duree": 40
+  }
+]

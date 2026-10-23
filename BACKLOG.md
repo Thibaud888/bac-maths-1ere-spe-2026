@@ -405,7 +405,8 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     borne de la simplification ramenée à k ≤ n − 1).
   - [ ] Quand un chapitre ultérieur est écrit (loi binomiale, limites, logarithme), remettre
     dans le type bac de Dénombrement les questions retirées des sujets adaptés (voir les notes
-    `adaptation` de `type-bac.json`).
+    `adaptation` de `type-bac.json`). Maintenant possible : loi binomiale (2026-10-23),
+    limites et logarithme sont écrits.
 - [ ] (P1) Écrire le premier chapitre de physique-chimie, pour valider la méthode — même
   chose, sur le chapitre que Thibaud désigne (par défaut `acides-bases`). DoD : idem.
   - [x] Acides, bases et pH : le cours — 4 notions (réaction acide-base et pH
@@ -854,11 +855,47 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   - [ ] Remettre dans les types bac de Vecteurs de l'espace et d'Orthogonalité les questions
     retirées des sujets adaptés — maintenant possible : équations de plan, représentations
     paramétriques et systèmes sont écrits (items de ces deux chapitres ci-dessus).
-  - [ ] Épreuves indépendantes, loi binomiale : le cours — chapitre 11 dans l'ordre de
-    l'année (`loi-binomiale` ; le chapitre 10, Dénombrement, est écrit) :
-    `/tle-chapitre maths loi-binomiale cours`.
-  - [ ] Épreuves indépendantes, loi binomiale : les exercices —
-    `/tle-chapitre maths loi-binomiale exercices`, après le cours.
+  - [x] Épreuves indépendantes, loi binomiale : le cours — fait le 2026-10-23 (PR #132) :
+    5 notions au lieu des 3 proposées (le schéma de Bernoulli et la loi binomiale séparés ;
+    « au plus, au moins » à la calculatrice séparé des seuils), priorités mesurées sur 103
+    sujets (épreuves indépendantes 91 %, loi binomiale 85 %, calculatrice 81 %, schéma 68 %
+    → ★★★ ; seuils 38 % → ★★). 70 blocs dont la démonstration exigible (probabilité de
+    k succès), 13 exemples, 14 « vérifie », 9 cartes de mémo, 2 figures neuves (planche de
+    Galton, diagramme de B(20 ; 0,25)), 3 programmes Python (échantillon, Galton,
+    surréservation). Espérance et variance laissées au ch. 15. Relecteur PASS au tour 1 ;
+    élève-testeur : 1 bloquant (où trouver la loi binomiale sur la calculatrice), corrigé
+    (chemins TI, Casio, NumWorks et saisies écrites), relu PASS au tour 2 ciblé.
+  - [x] Épreuves indépendantes, loi binomiale : les exercices — même session : 35 exercices
+    (16 Comprendre, 15 S'entraîner, 4 Approfondir), 18 questions éclair, 4 sujets type bac
+    (21 points, 3 adaptés d'annales, un sans calculatrice). Relecteur NEEDS_REVISION au
+    tour 1 (une justification fausse en éclair, un indice qui donnait la réponse), PASS au
+    tour 2 ; élève-testeur 15/16 en Comprendre (x-012 bloqué par la calculatrice, corrigé).
+    Coût : 53,7 $ pour les deux parties, avec deux coupures (limite des 5 h) ; agents repris
+    sans rien perdre.
+  - [ ] Loi binomiale, petites retouches — non bloquants laissés ouverts (rapport de
+    relecture du tour 2, 2026-10-23) : x-028 et x-035 q3 gardent `from math import comb`
+    alors que le cours (`l-loi-binomiale-056`) donne un programme qui marche sur
+    calculatrice (aligner, ou dire « programme pour ordinateur ») ; la question éclair
+    « sans remise » parle d'une boule noire non définie ; `-026` admet « probabilité =
+    longueur de l'intervalle » en général, seul [0 ; p[ sert ; quatre blocs dépassent
+    120 mots (`-003`, `-026`, `-056`, une étape de `-050`) ; tb-001 réutilise 0,98 pour deux
+    probabilités (piège signalé, laissé) ; pas de « vérifie » après l'exemple d'optimisation
+    `-067` (plafond de la notion atteint). Écart de quota accepté : 3 exercices Approfondir
+    sur la notion « loi binomiale » (plafond indicatif 2).
+  - [ ] Vérifier sur de vraies calculatrices les touches indiquées pour la loi binomiale —
+    chemins TI (binomFdp, binomFRép, table), Casio (BINOMIAL ou BINM, Lower/Upper selon le
+    modèle) et NumWorks (application Probabilités) dans `l-loi-binomiale-050`, `-052`,
+    `-054` : jugés exacts par le relecteur, mais jamais essayés sur un appareil.
+  - [ ] Une planche de Galton animée (les billes tombent, l'histogramme se forme) — souhait
+    de l'auteur du cours de Loi binomiale ; à faire quand les figures animées existeront.
+  - [ ] Quand « Sommes de variables aléatoires » (ch. 15) sera écrit, ajouter aux types bac
+    de Loi binomiale les questions « en moyenne, combien… » (espérance np) que le chapitre
+    ne peut pas encore poser.
+  - [ ] Fonctions sinus et cosinus : le cours — chapitre 12 dans l'ordre de l'année
+    (`trigonometrie` ; le chapitre 11, Loi binomiale, est écrit) :
+    `/tle-chapitre maths trigonometrie cours`.
+  - [ ] Fonctions sinus et cosinus : les exercices —
+    `/tle-chapitre maths trigonometrie exercices`, après le cours.
   - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
     (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
     `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source

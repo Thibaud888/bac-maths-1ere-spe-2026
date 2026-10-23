@@ -1,0 +1,139 @@
+[
+  {
+    "id": "m-loi-binomiale-produit-independant",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-epreuves-independantes",
+    "genre": "propriete",
+    "titre": "Épreuves indépendantes : on multiplie",
+    "enonce": "Dans une succession d'épreuves indépendantes, la probabilité d'une issue $(x_1, \\dots, x_n)$ est le produit des probabilités de ses composantes : $P\\big((x_1, \\dots, x_n)\\big) = P(x_1) \\times \\dots \\times P(x_n)$. Sur l'arbre, chaque niveau porte les mêmes probabilités, quel que soit le chemin suivi avant.",
+    "conditions": "Épreuves indépendantes : tirages avec remise, lancers successifs, ou indépendance donnée par l'énoncé. Sans remise, on multiplie par des probabilités conditionnelles.",
+    "exemple": "Roue : rouge avec la probabilité $\\dfrac{1}{2}$, bleu avec $\\dfrac{1}{3}$. Rouge puis bleu : $\\dfrac{1}{2} \\times \\dfrac{1}{3} = \\dfrac{1}{6}$.",
+    "simplifie": {
+      "coeur": "$P\\big((x_1, \\dots, x_n)\\big) = P(x_1) \\times \\dots \\times P(x_n)$",
+      "moyenMemo": "Indépendantes : on multiplie le long du chemin, sans « sachant ».",
+      "motCle": "multiplier-le-chemin",
+      "image": "Un arbre dont chaque niveau répète les mêmes probabilités."
+    }
+  },
+  {
+    "id": "m-loi-binomiale-probabilites-totales",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-epreuves-independantes",
+    "genre": "methode",
+    "titre": "Arbre pondéré et probabilités totales",
+    "enonce": "Un niveau par épreuve. Pour un chemin, on multiplie les probabilités des branches : $P(A \\cap B) = P(A) \\times P_A(B)$. Pour un événement, on additionne les chemins qui y mènent : $P(B) = P(A \\cap B) + P(\\overline{A} \\cap B)$. Pour une probabilité « à l'envers » : $P_B(A) = \\dfrac{P(A \\cap B)}{P(B)}$.",
+    "conditions": "$A$ et $\\overline{A}$ forment une partition de l'univers ; $P(B) \\neq 0$ pour calculer $P_B(A)$.",
+    "exemple": "Test de dépistage : $P(T) = 0{,}02 \\times 0{,}95 + 0{,}98 \\times 0{,}04 = 0{,}058\\,2$, puis $P_T(M) = \\dfrac{0{,}019}{0{,}058\\,2} \\approx 0{,}326$.",
+    "simplifie": {
+      "coeur": "Un chemin : on multiplie. Plusieurs chemins : on additionne. « Sachant $B$ » : on divise par $P(B)$.",
+      "moyenMemo": "On multiplie en descendant, on additionne en ramassant les chemins.",
+      "motCle": "probabilites-totales"
+    }
+  },
+  {
+    "id": "m-loi-binomiale-schema-bernoulli",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-schema-bernoulli",
+    "genre": "definition",
+    "titre": "Épreuve et schéma de Bernoulli",
+    "enonce": "Épreuve de Bernoulli : deux issues, le succès (probabilité $p$) et l'échec (probabilité $1 - p$). Loi de Bernoulli : $P(X = 1) = p$ et $P(X = 0) = 1 - p$. Schéma de Bernoulli de paramètres $n$ et $p$ : $n$ épreuves de Bernoulli identiques et indépendantes.",
+    "conditions": "$n$ entier naturel non nul, $p \\in [0\\,;\\,1]$.",
+    "exemple": "Trois tirs à l'arc, chacun réussi avec la probabilité $0{,}8$, indépendamment : schéma de Bernoulli de paramètres $3$ et $0{,}8$.",
+    "simplifie": {
+      "coeur": "Deux issues, même probabilité $p$ de succès, répétitions indépendantes",
+      "moyenMemo": "Oui ou non, toujours la même chance, sans mémoire.",
+      "motCle": "schema-bernoulli"
+    }
+  },
+  {
+    "id": "m-loi-binomiale-au-moins-un",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-schema-bernoulli",
+    "genre": "formule",
+    "titre": "Que des succès, aucun, au moins un",
+    "enonce": "Dans un schéma de Bernoulli de paramètres $n$ et $p$ : que des succès, $p^n$ ; aucun succès, $(1 - p)^n$ ; au moins un succès, $1 - (1 - p)^n$.",
+    "conditions": "Épreuves identiques et indépendantes.",
+    "exemple": "Au moins un $6$ en $3$ lancers d'un dé : $1 - \\left(\\dfrac{5}{6}\\right)^3 = 1 - \\dfrac{125}{216} = \\dfrac{91}{216}$.",
+    "simplifie": {
+      "coeur": "$P(\\text{au moins un succès}) = 1 - (1 - p)^n$",
+      "moyenMemo": "Le contraire de « au moins un », c'est « aucun ».",
+      "motCle": "au-moins-un"
+    }
+  },
+  {
+    "id": "m-loi-binomiale-formule",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-loi-binomiale",
+    "genre": "formule",
+    "titre": "Loi binomiale $\\mathcal{B}(n\\,;\\,p)$",
+    "enonce": "Le nombre $X$ de succès d'un schéma de Bernoulli de paramètres $n$ et $p$ suit la loi binomiale $\\mathcal{B}(n\\,;\\,p)$ : pour tout entier $k$ de $0$ à $n$, $P(X = k) = \\binom{n}{k}p^k(1 - p)^{n-k}$.",
+    "conditions": "$n$ entier naturel non nul, $p \\in [0\\,;\\,1]$, $k$ entier tel que $0 \\leqslant k \\leqslant n$.",
+    "exemple": "$X$ de loi $\\mathcal{B}\\left(4\\,;\\,\\dfrac{1}{3}\\right)$ : $P(X = 2) = 6 \\times \\dfrac{1}{9} \\times \\dfrac{4}{9} = \\dfrac{24}{81}$.",
+    "simplifie": {
+      "coeur": "$P(X = k) = \\binom{n}{k}p^k(1 - p)^{n-k}$",
+      "moyenMemo": "Nombre de chemins à $k$ succès, fois la probabilité d'un chemin.",
+      "motCle": "k-succes",
+      "image": "L'arbre à n niveaux : on compte les chemins à k succès, tous de même probabilité."
+    }
+  },
+  {
+    "id": "m-loi-binomiale-justifier",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-loi-binomiale",
+    "genre": "methode",
+    "titre": "Justifier qu'une variable suit une loi binomiale",
+    "enonce": "Nommer l'épreuve répétée et le succès que $X$ compte ; donner $p$ ; justifier que les $n$ répétitions sont identiques et indépendantes (avec remise, ou assimilées à des tirages avec remise) ; conclure : « $X$ suit la loi binomiale de paramètres $n$ et $p$ ».",
+    "conditions": "Des tirages sans remise dans une petite urne ne sont pas indépendants : pas de loi binomiale.",
+    "exemple": "$10$ tirages avec remise dans une urne de $6$ boules noires et $4$ rouges, $X$ = nombre de noires : $X$ suit la loi $\\mathcal{B}(10\\,;\\,0{,}6)$.",
+    "simplifie": {
+      "coeur": "Deux issues, $p$, $n$ répétitions identiques et indépendantes : $X$ suit $\\mathcal{B}(n\\,;\\,p)$",
+      "moyenMemo": "Quatre mots à écrire : deux issues, p, n, indépendantes.",
+      "motCle": "justifier-binomiale"
+    }
+  },
+  {
+    "id": "m-loi-binomiale-au-plus-au-moins",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-calculatrice",
+    "genre": "formule",
+    "titre": "Au plus, au moins, entre deux valeurs",
+    "enonce": "$P(X \\geqslant k) = 1 - P(X \\leqslant k - 1)$ ; $P(X > k) = 1 - P(X \\leqslant k)$ ; $P(k \\leqslant X \\leqslant k') = P(X \\leqslant k') - P(X \\leqslant k - 1)$. La calculatrice donne $P(X = k)$ et la probabilité cumulée $P(X \\leqslant k)$ (sur TI : binomFdp et binomFRép ; sur Casio : Bpd et Bcd).",
+    "conditions": "$X$ à valeurs entières, par exemple de loi $\\mathcal{B}(n\\,;\\,p)$ ; $k$ et $k'$ entiers tels que $1 \\leqslant k \\leqslant k' \\leqslant n$.",
+    "exemple": "$X$ de loi $\\mathcal{B}(20\\,;\\,0{,}25)$ : $P(X \\geqslant 6) = 1 - P(X \\leqslant 5) \\approx 1 - 0{,}617 = 0{,}383$.",
+    "simplifie": {
+      "coeur": "$P(X \\geqslant k) = 1 - P(X \\leqslant k - 1)$",
+      "moyenMemo": "Au moins 6 : on retire « au plus 5 », jamais « au plus 6 ».",
+      "motCle": "au-moins-k"
+    }
+  },
+  {
+    "id": "m-loi-binomiale-plus-petit-k",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-calculatrice",
+    "genre": "methode",
+    "titre": "Le plus petit $k$ tel que $P(X > k) \\leqslant \\alpha$",
+    "enonce": "$P(X > k) \\leqslant \\alpha$ équivaut à $P(X \\leqslant k) \\geqslant 1 - \\alpha$. On lit un tableau de valeurs de $P(X \\leqslant k)$, qui augmente avec $k$, et on garde le premier $k$ qui atteint $1 - \\alpha$. On justifie par $P(X \\leqslant k - 1) < 1 - \\alpha \\leqslant P(X \\leqslant k)$.",
+    "conditions": "$\\alpha$ est un risque fixé, strictement positif (souvent $0{,}05$).",
+    "exemple": "$X$ de loi $\\mathcal{B}(20\\,;\\,0{,}25)$, $\\alpha = 0{,}05$ : $P(X \\leqslant 7) \\approx 0{,}898$ et $P(X \\leqslant 8) \\approx 0{,}959$, donc $k = 8$.",
+    "simplifie": {
+      "coeur": "$P(X > k) \\leqslant \\alpha \\iff P(X \\leqslant k) \\geqslant 1 - \\alpha$",
+      "moyenMemo": "Surréservation : assez de places pour que le risque de déborder reste sous alpha.",
+      "motCle": "surreservation"
+    }
+  },
+  {
+    "id": "m-loi-binomiale-seuil-n",
+    "chapitre": "loi-binomiale",
+    "notion": "n-loi-binomiale-seuils",
+    "genre": "methode",
+    "titre": "Combien d'essais pour au moins un succès ?",
+    "enonce": "$1 - (1 - p)^n \\geqslant s \\iff (1 - p)^n \\leqslant 1 - s \\iff n \\geqslant \\dfrac{\\ln(1 - s)}{\\ln(1 - p)}$, car diviser par $\\ln(1 - p) < 0$ change le sens. On prend le plus petit entier qui convient, puis on contrôle avec la calculatrice.",
+    "conditions": "$0 < p < 1$ et $0 < s < 1$.",
+    "exemple": "$p = 0{,}05$ et $s = 0{,}99$ : $n \\geqslant \\dfrac{\\ln 0{,}01}{\\ln 0{,}95} \\approx 89{,}8$, donc $n = 90$.",
+    "simplifie": {
+      "coeur": "$n \\geqslant \\dfrac{\\ln(1 - s)}{\\ln(1 - p)}$",
+      "moyenMemo": "Deux changements de sens : le signe moins, puis le logarithme négatif.",
+      "motCle": "seuil-ln"
+    }
+  }
+]

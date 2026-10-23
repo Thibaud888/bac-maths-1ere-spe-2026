@@ -212,11 +212,16 @@ type bac limités au dénombrement, à la première et aux Méthodes, tant que l
 ne sont pas écrits.
 
 ### 11. Épreuves indépendantes, loi binomiale
-- Succession d'épreuves indépendantes, arbre (rappel de première : probabilités conditionnelles) · ★★
-- Schéma et loi de Bernoulli, loi binomiale · ★★★ · « Justifier que X suit une loi binomiale »
-- ~~Espérance, variance, écart-type de la loi binomiale~~ → ch. 15 (c'est la section
-  « Sommes de variables aléatoires » du programme ; voir « Point à trancher » en fin de fichier)
-- Calculs à la calculatrice : P(X = k), P(X ≤ k), seuil · ★★★
+**Écrit le 2026-10-23** (`content/terminale/maths/chapitres/loi-binomiale/`, domaine
+`probabilites`) : 5 notions, priorités mesurées sur 103 sujets — épreuves indépendantes,
+arbres pondérés ★★★ (94/103) ; épreuve et schéma de Bernoulli ★★★ (70/103) ; loi binomiale et
+probabilité de k succès ★★★ (88/103) ; au plus, au moins : calculer à la calculatrice ★★★
+(83/103) ; problèmes de seuil, de comparaison, d'optimisation ★★ (39/103). Écart avec la
+proposition (3 notions) : le schéma de Bernoulli et la loi binomiale sont séparés, les
+calculs « au plus / au moins » à la calculatrice et les seuils aussi (deux gestes distincts).
+Espérance, variance et écart type de la loi binomiale restent au ch. 15 (« Point à
+trancher » en fin de fichier). Exercices écrits le même jour : 35 exercices en trois
+marches, 18 questions éclair, 4 exercices type bac.
 
 ### 12. Fonctions sinus et cosinus
 - Dérivées, variations, courbes représentatives · ★ (parité et périodicité : acquis de
