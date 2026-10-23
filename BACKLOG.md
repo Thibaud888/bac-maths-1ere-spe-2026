@@ -824,13 +824,41 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   - [ ] Une animation pour faire tourner un cube avec un plan et sa diagonale orthogonale, ou
     un point et son projeté — souhait de l'auteur du cours d'Orthogonalité ; à faire quand
     les figures animées existeront (rejoint l'item du cube de Vecteurs de l'espace).
-  - [ ] Représentations paramétriques et équations cartésiennes : le cours — chapitre 9 dans
-    l'ordre de l'année (`equations-espace`) : `/tle-chapitre maths equations-espace cours`.
-    Penser à remettre les questions retirées des types bac de Vecteurs de l'espace et
-    d'Orthogonalité (items ci-dessus) ; le produit scalaire existe désormais, ses questions
-    retirées du type bac de Vecteurs de l'espace peuvent déjà revenir.
-  - [ ] Représentations paramétriques et équations cartésiennes : les exercices —
-    `/tle-chapitre maths equations-espace exercices`, après le cours.
+  - [x] Représentations paramétriques et équations cartésiennes : le cours — fait le
+    2026-10-23 (PR #131) : 4 notions, toutes ★★★ mesurées sur 103 sujets (représentation
+    paramétrique 98 %, équation de plan 91 %, intersections 71 %, coordonnées d'un projeté
+    57 % ; ce projeté, oublié par le découpage proposé, devient une notion à part), 68 blocs
+    dont la démonstration exigible (équation du plan normal à n⃗ passant par A), 13 exemples,
+    14 « vérifie », 8 cartes de mémo, 2 figures neuves et 3 reprises. Le cours calcule enfin
+    les projetés seulement donnés dans Orthogonalité (`-074`, `-055`) et résout un système à
+    trois inconnues par substitution. Relecteur PASS aux tours 1, 2 et 3 (ciblés), élève-testeur
+    CLAIR (14/14 « vérifie »).
+  - [x] Représentations paramétriques et équations cartésiennes : les exercices — même
+    session, à la demande de Thibaud : 32 exercices (15 Comprendre, 14 S'entraîner,
+    3 Approfondir), 17 questions éclair, 4 sujets type bac adaptés d'annales (23 points,
+    aucune question retirée). Relecteur NEEDS_REVISION au tour 1 (une case de réponse
+    ambiguë, un critère « droite parallèle à un plan » absent du cours), PASS au tour 2 ;
+    élève-testeur 15/15 en Comprendre (mêmes 2 bloquants). Coût : 67 $ pour les deux
+    parties, avec deux coupures (limite des 5 h, puis limite de la semaine) ; agents repris
+    sans rien perdre.
+  - [ ] Équations de l'espace, petites retouches — non bloquants laissés ouverts (rapport de
+    relecture du tour 3, 2026-10-23) : la propriété `l-equations-espace-050` est passée à
+    192 mots avec le critère de parallélisme (120 au plus) : sortir le critère dans un bloc
+    à lui ; y écrire « repère orthonormé » comme 034 et 039 ; la solution de x-013 q2 saute
+    « soit t = 2 » ; pas de renvoi en tb-002 q4 (conversion d'unités) ; « tangente » non
+    défini en x-032 q4 (marche 3). Gênes de l'élève-testeur : pas de carte de mémo « base et
+    coordonnées » (plafond de 2 cartes atteint).
+  - [ ] Une animation pour voir une droite percer un plan selon la valeur du paramètre t —
+    souhait de l'auteur du cours d'Équations de l'espace ; à faire quand les figures animées
+    existeront.
+  - [ ] Remettre dans les types bac de Vecteurs de l'espace et d'Orthogonalité les questions
+    retirées des sujets adaptés — maintenant possible : équations de plan, représentations
+    paramétriques et systèmes sont écrits (items de ces deux chapitres ci-dessus).
+  - [ ] Épreuves indépendantes, loi binomiale : le cours — chapitre 11 dans l'ordre de
+    l'année (`loi-binomiale` ; le chapitre 10, Dénombrement, est écrit) :
+    `/tle-chapitre maths loi-binomiale cours`.
+  - [ ] Épreuves indépendantes, loi binomiale : les exercices —
+    `/tle-chapitre maths loi-binomiale exercices`, après le cours.
   - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
     (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
     `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source
