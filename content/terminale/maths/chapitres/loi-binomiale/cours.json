@@ -21,7 +21,7 @@
           "type": "definition",
           "titre": "Succession d'épreuves indépendantes",
           "capacites": ["bo-m-bernoulli-01"],
-          "texte": "On réalise successivement $n$ épreuves. Les issues possibles de l'épreuve numéro $i$ forment un ensemble fini $\\Omega_i$ (lettre grecque oméga).\n\nUne issue de la succession est un $n$-uplet $(x_1, \\dots, x_n)$, où $x_i$ est l'issue de l'épreuve numéro $i$. L'univers est le produit cartésien $\\Omega_1 \\times \\Omega_2 \\times \\dots \\times \\Omega_n$.\n\nLes épreuves sont **indépendantes** lorsque la probabilité de chaque issue est le produit des probabilités de ses composantes :\n\n$$P\\big((x_1, \\dots, x_n)\\big) = P(x_1) \\times P(x_2) \\times \\dots \\times P(x_n).$$\n\nSur un arbre, chaque issue est un chemin. Chaque branche porte la probabilité d'une issue de l'épreuve correspondante, la même quel que soit le chemin suivi avant."
+          "texte": "On réalise successivement $n$ épreuves. Les issues possibles de l'épreuve numéro $i$ forment un ensemble fini $\\Omega_i$ (lettre grecque oméga). Pour un dé puis une pièce : $\\Omega_1 = \\{1\\,;\\,2\\,;\\,3\\,;\\,4\\,;\\,5\\,;\\,6\\}$ et $\\Omega_2 = \\{\\text{pile}\\,;\\,\\text{face}\\}$.\n\nUne issue de la succession est un $n$-uplet $(x_1, \\dots, x_n)$, où $x_i$ est l'issue de l'épreuve numéro $i$ : ici, $(6, \\text{pile})$. On écrit aussi $(x_1\\,;\\,\\dots\\,;\\,x_n)$, avec des points-virgules. L'univers est le produit cartésien $\\Omega_1 \\times \\Omega_2 \\times \\dots \\times \\Omega_n$.\n\nLes épreuves sont **indépendantes** lorsque la probabilité de chaque issue est le produit des probabilités de ses composantes :\n\n$$P\\big((x_1, \\dots, x_n)\\big) = P(x_1) \\times P(x_2) \\times \\dots \\times P(x_n).$$\n\nIci, $P(x_i)$ désigne la probabilité de l'issue $x_i$ à l'épreuve numéro $i$. Pour le dé et la pièce : $P\\big((6, \\text{pile})\\big) = P(6) \\times P(\\text{pile}) = \\dfrac{1}{6} \\times \\dfrac{1}{2} = \\dfrac{1}{12}$.\n\nSur un arbre, chaque issue est un chemin. Chaque niveau porte les mêmes probabilités, quel que soit le chemin suivi avant."
         },
         {
           "id": "l-loi-binomiale-004",
@@ -191,7 +191,7 @@
           "type": "verifie",
           "capacites": ["bo-m-bernoulli-05"],
           "question": {
-            "enonce": "Dans l'exemple du test de dépistage, quelle est la probabilité que le test d'une personne choisie au hasard soit négatif ?",
+            "enonce": "Dans l'exemple du test de dépistage, quelle est la probabilité que le test d'une personne choisie au hasard soit négatif ? Donne la valeur exacte, sous forme décimale.",
             "reponse": {
               "type": "numerique",
               "valeur": 0.9418,
@@ -256,7 +256,7 @@
               "texte": "**3.** Six issues : $1$, $2$, $3$, $4$, $5$ ou $6$. Ce n'est pas une épreuve de Bernoulli. Elle le devient si l'on ne regarde qu'une question à deux réponses, par exemple « le numéro est-il pair ? », de paramètre $p = \\dfrac{1}{2}$."
             },
             {
-              "texte": "**Conclusion** : les expériences **1** et **2** sont des épreuves de Bernoulli, de paramètres $\\dfrac{1}{6}$ et $\\dfrac{1}{4}$ ; la troisième n'en est pas une. Pour la deuxième, la variable $X$ égale à $1$ si la carte est un cœur et à $0$ sinon suit la loi de Bernoulli de paramètre $\\dfrac{1}{4}$ : $P(X = 1) = \\dfrac{1}{4}$ et $P(X = 0) = \\dfrac{3}{4}$."
+              "texte": "**Conclusion** : les expériences **1** et **2** sont des épreuves de Bernoulli, de paramètres $\\dfrac{1}{6}$ et $\\dfrac{1}{4}$ ; la troisième n'en est pas une. Pour la deuxième, on note $X$ la variable égale à $1$ si la carte est un cœur, et à $0$ sinon. Elle suit la loi de Bernoulli de paramètre $\\dfrac{1}{4}$ : $P(X = 1) = \\dfrac{1}{4}$ et $P(X = 0) = \\dfrac{3}{4}$."
             }
           ]
         },
@@ -458,16 +458,16 @@
           "capacites": ["bo-m-bernoulli-12", "bo-m-listes-01"],
           "code": {
             "langage": "python",
-            "source": "from random import random\n\ndef bernoulli(p):\n    if random() < p:      # vrai avec la probabilité p\n        return 1          # succès\n    return 0              # échec\n\ndef echantillon(n, p):\n    return [bernoulli(p) for i in range(n)]\n\ne = echantillon(20, 0.3)\nprint(e)                  # 20 valeurs, chacune égale à 0 ou à 1\nprint(sum(e))             # nombre de succès dans l'échantillon"
+            "source": "from random import random\n\ndef bernoulli(p):\n    if random() < p:      # vrai avec la probabilité p\n        return 1          # succès\n    return 0              # échec\n\ndef echantillon(n, p):\n    # liste des n résultats : une valeur bernoulli(p) pour chaque i de 0 à n - 1\n    return [bernoulli(p) for i in range(n)]\n\nech = echantillon(20, 0.3)\nprint(ech)                # 20 valeurs, chacune égale à 0 ou à 1\nprint(sum(ech))           # nombre de succès dans l'échantillon"
           },
-          "texte": "random() renvoie un nombre réel pris au hasard dans $[0\\,;\\,1[$, de sorte que la condition random() < p est vraie avec la probabilité $p$. La fonction bernoulli simule donc une épreuve de Bernoulli de paramètre $p$.\n\nLa fonction echantillon répète $n$ fois cette simulation, de façon indépendante, et renvoie la liste des $n$ résultats. C'est un **échantillon de taille $n$** de la loi de Bernoulli : $n$ valeurs obtenues en répétant l'expérience dans les mêmes conditions.\n\nLe programme affiche par exemple [0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0], puis $6$ : la somme compte les succès. L'affichage change à chaque exécution, car les tirages sont aléatoires."
+          "texte": "random() renvoie un nombre réel pris au hasard dans $[0\\,;\\,1[$. On admet qu'il tombe dans un intervalle $[a\\,;\\,b[$ inclus dans $[0\\,;\\,1[$ avec la probabilité $b - a$, la longueur de cet intervalle. Or la condition random() < p signifie que ce nombre tombe dans $[0\\,;\\,p[$, de longueur $p$ : elle est vraie avec la probabilité $p$. La fonction bernoulli simule donc une épreuve de Bernoulli de paramètre $p$.\n\nLa fonction echantillon appelle bernoulli(p) $n$ fois, de façon indépendante, et range les $n$ résultats dans une liste. C'est un **échantillon de taille $n$** de la loi de Bernoulli : $n$ valeurs obtenues en répétant l'expérience dans les mêmes conditions.\n\nLe programme affiche par exemple une liste de $20$ valeurs, dont six égales à $1$, puis $6$ : la somme compte les succès. L'affichage change à chaque exécution."
         },
         {
           "id": "l-loi-binomiale-027",
           "type": "verifie",
           "capacites": ["bo-m-bernoulli-12"],
           "question": {
-            "enonce": "Dans le programme ci-dessus, que contient la variable e après l'instruction e = echantillon(20, 0.3) ?",
+            "enonce": "Dans le programme ci-dessus, que contient la variable ech après l'instruction ech = echantillon(20, 0.3) ?",
             "reponse": {
               "type": "qcm",
               "choix": [
@@ -479,12 +479,12 @@
               "bonne": 0,
               "pourquoiFaux": [
                 null,
-                "Le nombre de succès, c'est sum(e) : la somme des valeurs de la liste.",
+                "Le nombre de succès, c'est sum(ech) : la somme des valeurs de la liste.",
                 "Le programme ne calcule aucune probabilité : il simule des résultats au hasard.",
                 "Ces réels sont ceux que renvoie random() ; la fonction bernoulli les transforme en $1$ (succès) ou en $0$ (échec)."
               ]
             },
-            "explication": "echantillon renvoie la liste des $20$ résultats simulés : $1$ pour un succès, $0$ pour un échec. Le nombre de succès s'obtient ensuite avec sum(e)."
+            "explication": "echantillon renvoie la liste des $20$ résultats simulés : $1$ pour un succès, $0$ pour un échec. Le nombre de succès s'obtient ensuite avec sum(ech)."
           }
         },
         {
@@ -705,7 +705,7 @@
               "width": 360,
               "height": 330
             },
-            "caption": "La bille dessinée part 3 fois à droite et 1 fois à gauche : elle tombe dans la case 3. Le numéro de la case est le nombre de rebonds à droite. Avec beaucoup de billes, les cases 0 à 4 se remplissent à peu près comme 1, 4, 6, 4, 1 : les coefficients binomiaux de la ligne 4 du triangle de Pascal."
+            "caption": "Une planche de Galton : la bille descend à travers des rangées de clous. À chaque clou, elle part à droite ou à gauche avec la probabilité 1/2. Elle finit dans une case dont le numéro est son nombre de rebonds à droite. La bille dessinée part 3 fois à droite et 1 fois à gauche : elle tombe dans la case 3. Avec beaucoup de billes, les cases 0 à 4 se remplissent à peu près comme 1, 4, 6, 4, 1 : les coefficients binomiaux de la ligne 4 du triangle de Pascal."
           }
         },
         {
@@ -754,7 +754,7 @@
         {
           "id": "l-loi-binomiale-046",
           "type": "idee",
-          "texte": "Au bac, on demande rarement « exactement $k$ succès ». On demande plutôt « au plus $3$ », « au moins $6$ » ou « entre $3$ et $7$ ». Ce sont des **sommes** de probabilités $P(X = k)$, souvent nombreuses : la calculatrice les fait pour toi.\n\nTon travail : traduire l'événement avec $X$, puis le ramener à ce que la calculatrice sait calculer, $P(X = k)$ et $P(X \\leqslant k)$."
+          "texte": "Au bac, on demande parfois « exactement $k$ succès », mais plus souvent « au plus $3$ », « au moins $6$ » ou « entre $3$ et $7$ ». Ce sont des **sommes** de probabilités $P(X = k)$, souvent nombreuses : la calculatrice les fait pour toi.\n\nTon travail : traduire l'événement avec $X$, puis le ramener à ce que la calculatrice sait calculer, $P(X = k)$ et $P(X \\leqslant k)$."
         },
         {
           "id": "l-loi-binomiale-047",
@@ -766,7 +766,7 @@
             "$k$ et $k'$ sont des entiers tels que $1 \\leqslant k \\leqslant k' \\leqslant n$."
           ],
           "admise": false,
-          "texte": "- Au plus $k$ succès : $P(X \\leqslant k) = P(X = 0) + P(X = 1) + \\dots + P(X = k)$.\n- Au moins $k$ succès : $P(X \\geqslant k) = 1 - P(X \\leqslant k - 1)$.\n- Plus de $k$ succès : $P(X > k) = 1 - P(X \\leqslant k)$.\n- Entre $k$ et $k'$ succès : $P(k \\leqslant X \\leqslant k') = P(X \\leqslant k') - P(X \\leqslant k - 1)$.\n\nJustification : les événements $\\{X = i\\}$ sont deux à deux incompatibles (deux d'entre eux ne se produisent jamais ensemble), donc leurs probabilités s'additionnent. Comme $X$ est entier, le contraire de $\\{X \\geqslant k\\}$ est $\\{X \\leqslant k - 1\\}$."
+          "texte": "- Au plus $k$ succès : $P(X \\leqslant k) = P(X = 0) + P(X = 1) + \\dots + P(X = k)$. Cette somme s'appelle la **probabilité cumulée** jusqu'à $k$.\n- Au moins $k$ succès : $P(X \\geqslant k) = 1 - P(X \\leqslant k - 1)$.\n- Plus de $k$ succès : $P(X > k) = 1 - P(X \\leqslant k)$.\n- Entre $k$ et $k'$ succès : $P(k \\leqslant X \\leqslant k') = P(X \\leqslant k') - P(X \\leqslant k - 1)$.\n\nJustification : les événements $\\{X = i\\}$ sont deux à deux incompatibles (deux d'entre eux ne se produisent jamais ensemble), donc leurs probabilités s'additionnent. Comme $X$ est entier, le contraire de $\\{X \\geqslant k\\}$ est $\\{X \\leqslant k - 1\\}$."
         },
         {
           "id": "l-loi-binomiale-048",
@@ -825,9 +825,9 @@
           "etapes": [
             "Écris la loi de $X$ avec ses paramètres : « $X$ suit la loi $\\mathcal{B}(n\\,;\\,p)$ ».",
             "Traduis l'événement avec $X$ : « au plus $k$ » donne $X \\leqslant k$ ; « au moins $k$ » donne $X \\geqslant k$ ; « moins de $k$ » donne $X \\leqslant k - 1$.",
-            "Ramène-toi à $P(X = k)$ ou à $P(X \\leqslant k)$ avec la propriété ci-dessus. Écris ce calcul sur ta copie, par exemple $P(X \\geqslant 6) = 1 - P(X \\leqslant 5)$.",
-            "Calcule avec la loi binomiale de ta calculatrice. Sur TI, binomFdp(n, p, k) donne $P(X = k)$ et binomFRép(n, p, k) donne $P(X \\leqslant k)$. Sur Casio, ce sont Bpd et Bcd dans le menu de la loi binomiale ; sur NumWorks, l'application Probabilités.",
-            "L'ordre des paramètres change selon le modèle : contrôle-le sur un cas connu, comme $P(X = 0) = (1 - p)^n$. Arrondis seulement à la fin, puis conclus par une phrase."
+            "Ramène-toi à $P(X = k)$ ou à la probabilité cumulée $P(X \\leqslant k)$ avec la propriété ci-dessus. Écris ce calcul sur ta copie, par exemple $P(X \\geqslant 6) = 1 - P(X \\leqslant 5)$.",
+            "Calcule avec la loi binomiale de ta calculatrice. Elle écrit les décimaux avec un point : tape 0.25 pour $0{,}25$.\n\n- **TI** : touche « 2nde », puis « var » (menu distrib). binomFdp donne $P(X = k)$, binomFRép donne $P(X \\leqslant k)$. Saisis dans l'ordre $n$, $p$, puis $k$ : binomFRép(20, 0.25, 3) donne $P(X \\leqslant 3)$ pour la loi $\\mathcal{B}(20\\,;\\,0{,}25)$.\n- **Casio** : menu STAT, touche F5 (DIST), puis BINOMIAL (ou BINM). Bpd donne $P(X = k)$, Bcd donne $P(X \\leqslant k)$. Règle Data sur Variable, entre $k$ dans x, $n$ dans Numtrial et $p$ dans p, puis valide la ligne Execute avec la touche EXE. Si l'écran demande Lower et Upper, entre $0$ et $k$.\n- **NumWorks** : application Probabilités, puis Binomiale ; entre $n$ et $p$, puis Suivant. En haut de l'écran, choisis la forme $P(X = a)$ ou $P(X \\leqslant a)$, puis remplace $a$ par $k$.",
+            "Contrôle ta saisie sur un cas connu : $P(X = 0)$ doit valoir $(1 - p)^n$. Arrondis seulement à la fin, puis conclus par une phrase. Sur ta copie, écris le calcul et le résultat, pas les touches."
           ],
           "exemple": "l-loi-binomiale-052"
         },
@@ -855,19 +855,20 @@
           "enonce": "Dans une grande entreprise, $25\\,\\%$ des salariés ont suivi un stage de secourisme. On choisit $20$ salariés au hasard ; l'effectif est assez grand pour assimiler ce choix à $20$ tirages avec remise. On note $X$ le nombre de salariés choisis qui ont suivi le stage ; on admet que $X$ suit la loi $\\mathcal{B}(20\\,;\\,0{,}25)$.\n\nCalculer, arrondies à $10^{-3}$ :\n\n**1.** $P(X = 5)$ ;\n\n**2.** la probabilité qu'au plus $3$ salariés aient suivi le stage ;\n\n**3.** la probabilité qu'au moins $6$ salariés l'aient suivi ;\n\n**4.** la probabilité que leur nombre soit compris entre $3$ et $7$, bornes incluses.",
           "etapes": [
             {
-              "texte": "**1.** La calculatrice donne directement $P(X = 5) \\approx 0{,}202$.",
+              "texte": "**1.** C'est une probabilité simple. Sur TI, on tape binomFdp(20, 0.25, 5). Sur Casio (Bpd) ou NumWorks ($P(X = a)$), on entre 20 pour $n$, 0.25 pour $p$ et 5 pour $k$, comme dans la méthode. La calculatrice affiche environ $0{,}202\\,3$, donc $P(X = 5) \\approx 0{,}202$.",
               "pourquoi": "Par la formule, $P(X = 5) = \\binom{20}{5} \\times 0{,}25^5 \\times 0{,}75^{15}$, avec $\\binom{20}{5} = 15\\,504$ : la calculatrice évite ce long calcul."
             },
             {
-              "texte": "**2.** « Au plus $3$ » se traduit par $X \\leqslant 3$. La calculatrice donne la probabilité cumulée $P(X \\leqslant 3) \\approx 0{,}225$."
+              "texte": "**2.** « Au plus $3$ » se traduit par $X \\leqslant 3$ : c'est une probabilité cumulée. Sur TI, on tape binomFRép(20, 0.25, 3). Sur Casio (Bcd) ou NumWorks ($P(X \\leqslant a)$), on entre 20 pour $n$, 0.25 pour $p$ et 3 pour $k$. On obtient $P(X \\leqslant 3) \\approx 0{,}225$.",
+              "pourquoi": "Probabilité cumulée : $P(X \\leqslant 3) = P(X = 0) + P(X = 1) + P(X = 2) + P(X = 3)$. La calculatrice fait cette somme en une seule saisie."
             },
             {
-              "texte": "**3.** « Au moins $6$ » se traduit par $X \\geqslant 6$ : $P(X \\geqslant 6) = 1 - P(X \\leqslant 5) \\approx 1 - 0{,}617\\,2 = 0{,}382\\,8$, soit environ $0{,}383$.",
+              "texte": "**3.** « Au moins $6$ » se traduit par $X \\geqslant 6$, donc $P(X \\geqslant 6) = 1 - P(X \\leqslant 5)$. Sur TI, binomFRép(20, 0.25, 5) donne $P(X \\leqslant 5) \\approx 0{,}617\\,2$. Donc $P(X \\geqslant 6) \\approx 1 - 0{,}617\\,2 = 0{,}382\\,8$, soit environ $0{,}383$.",
               "pourquoi": "La calculatrice donne $P(X \\leqslant 5)$ ; on passe par l'événement contraire. Sur la figure ci-dessus, ce sont les bâtons orange."
             },
             {
-              "texte": "**4.** $P(3 \\leqslant X \\leqslant 7) = P(X \\leqslant 7) - P(X \\leqslant 2) \\approx 0{,}898\\,2 - 0{,}091\\,3 = 0{,}806\\,9$, soit environ $0{,}807$.",
-              "pourquoi": "On retire $P(X \\leqslant 2)$, et non $P(X \\leqslant 3)$ : la valeur $3$ fait partie de l'événement."
+              "texte": "**4.** $P(3 \\leqslant X \\leqslant 7) = P(X \\leqslant 7) - P(X \\leqslant 2)$. Sur TI, binomFRép(20, 0.25, 7) donne environ $0{,}898\\,2$ et binomFRép(20, 0.25, 2) environ $0{,}091\\,3$. Donc $P(3 \\leqslant X \\leqslant 7) \\approx 0{,}898\\,2 - 0{,}091\\,3 = 0{,}806\\,9$, soit environ $0{,}807$.",
+              "pourquoi": "On retire $P(X \\leqslant 2)$, et non $P(X \\leqslant 3)$ : la valeur $3$ fait partie de l'événement. Sur NumWorks, la forme $P(a \\leqslant X \\leqslant b)$, avec $a = 3$ et $b = 7$, donne ce résultat directement."
             },
             {
               "texte": "**Conclusion** : $P(X = 5) \\approx 0{,}202$ ; $P(X \\leqslant 3) \\approx 0{,}225$ ; $P(X \\geqslant 6) \\approx 0{,}383$ ; $P(3 \\leqslant X \\leqslant 7) \\approx 0{,}807$."
@@ -895,10 +896,10 @@
           "capacites": ["bo-m-bernoulli-08", "bo-m-bernoulli-11"],
           "etapes": [
             "Traduis la question. Chercher le plus petit $k$ tel que $P(X \\leqslant k) \\geqslant 0{,}95$, c'est chercher le plus petit $k$ tel que $P(X > k) \\leqslant 0{,}05$, car $P(X > k) = 1 - P(X \\leqslant k)$.",
-            "Affiche à la calculatrice un tableau de valeurs de $P(X \\leqslant k)$ pour $k = 0, 1, 2, \\dots$ : ces valeurs augmentent avec $k$.",
+            "Affiche à la calculatrice les probabilités cumulées $P(X \\leqslant k)$ pour $k = 0, 1, 2, \\dots$ : elles augmentent avec $k$. Pour la loi $\\mathcal{B}(20\\,;\\,0{,}25)$ :\n\n- **TI** : touche « f(x) », saisis Y1 = binomFRép(20, 0.25, X). binomFRép s'obtient par « 2nde » puis « var », et X par la touche « X,T,θ,n ». Règle le début à 0 et le pas à 1 (« 2nde » puis « fenêtre »), puis ouvre la table (« 2nde » puis « graphe »).\n- **Casio** ou **NumWorks** : refais le calcul de $P(X \\leqslant k)$ de la méthode précédente en changeant seulement $k$, une valeur après l'autre, et note les résultats dans un tableau.",
             "Repère le premier $k$ pour lequel $P(X \\leqslant k)$ atteint $0{,}95$.",
             "Justifie avec les deux valeurs qui encadrent le seuil : $P(X \\leqslant k - 1) < 0{,}95 \\leqslant P(X \\leqslant k)$.",
-            "Si l'on demande un intervalle, conclus : $P(X \\in [0\\,;\\,k]) \\geqslant 0{,}95$, ou, ce qui revient au même, $P(X \\in [k + 1\\,;\\,n]) \\leqslant 0{,}05$."
+            "Si l'énoncé demande un intervalle $I$ tel que $P(X \\in I) \\geqslant 0{,}95$, conclus que $I = [0\\,;\\,k]$ convient. $X \\in [0\\,;\\,k]$ se lit « $X$ appartient à l'intervalle $[0\\,;\\,k]$ » : c'est $0 \\leqslant X \\leqslant k$, autrement dit $X \\leqslant k$, car $X$ n'est jamais négatif. Cela revient à dire que $P(X \\in [k + 1\\,;\\,n]) \\leqslant 0{,}05$."
           ],
           "exemple": "l-loi-binomiale-055"
         },
@@ -914,7 +915,7 @@
               "pourquoi": "$P(X > k) = 1 - P(X \\leqslant k)$, et $1 - P(X \\leqslant k) \\leqslant 0{,}05$ équivaut à $P(X \\leqslant k) \\geqslant 0{,}95$."
             },
             {
-              "texte": "Un tableau de valeurs de la calculatrice donne, en arrondissant à $10^{-3}$ :\n\n| $k$ | $5$ | $6$ | $7$ | $8$ | $9$ |\n|---|---|---|---|---|---|\n| $P(X \\leqslant k)$ | $0{,}617$ | $0{,}786$ | $0{,}898$ | $0{,}959$ | $0{,}986$ |"
+              "texte": "Un tableau de valeurs de la calculatrice (sur TI, la table de Y1 = binomFRép(20, 0.25, X)) donne, en arrondissant à $10^{-3}$ :\n\n| $k$ | $5$ | $6$ | $7$ | $8$ | $9$ |\n|---|---|---|---|---|---|\n| $P(X \\leqslant k)$ | $0{,}617$ | $0{,}786$ | $0{,}898$ | $0{,}959$ | $0{,}986$ |"
             },
             {
               "texte": "$P(X \\leqslant 7) \\approx 0{,}898 < 0{,}95$ et $P(X \\leqslant 8) \\approx 0{,}959 \\geqslant 0{,}95$. Le plus petit entier qui convient est donc $k = 8$.",
@@ -932,9 +933,9 @@
           "capacites": ["bo-m-bernoulli-11", "bo-m-bernoulli-08"],
           "code": {
             "langage": "python",
-            "source": "from math import comb\n\ndef p_egal(n, p, k):\n    # P(X = k) pour X de loi binomiale B(n ; p)\n    return comb(n, k) * p**k * (1 - p)**(n - k)\n\ndef plus_petit_k(n, p, alpha):\n    k = 0\n    cumul = p_egal(n, p, 0)          # P(X <= 0)\n    while 1 - cumul > alpha:         # tant que P(X > k) > alpha\n        k = k + 1\n        cumul = cumul + p_egal(n, p, k)\n    return k\n\nprint(plus_petit_k(20, 0.25, 0.05))  # affiche 8\nprint(plus_petit_k(20, 0.75, 0.05))  # affiche 18"
+            "source": "def coef_binomial(n, k):\n    # (n-k+1)(n-k+2)...n / (1*2*...*k), facteur par facteur\n    c = 1\n    for i in range(1, k + 1):\n        c = c * (n - k + i) / i\n    return c\n\ndef p_egal(n, p, k):\n    # P(X = k) pour X de loi binomiale B(n ; p)\n    return coef_binomial(n, k) * p**k * (1 - p)**(n - k)\n\ndef plus_petit_k(n, p, alpha):\n    k = 0\n    cumul = p_egal(n, p, 0)          # P(X <= 0)\n    while 1 - cumul > alpha:         # tant que P(X > k) > alpha\n        k = k + 1\n        cumul = cumul + p_egal(n, p, k)\n    return k\n\nprint(plus_petit_k(20, 0.25, 0.05))  # affiche 8\nprint(plus_petit_k(20, 0.75, 0.05))  # affiche 18"
           },
-          "texte": "$\\alpha$ (lettre grecque alpha) est le risque accepté. comb(n, k) calcule $\\binom{n}{k}$, et la variable cumul contient $P(X \\leqslant k)$ : à chaque tour, $k$ augmente de $1$ et cumul reçoit le terme $P(X = k)$. La boucle s'arrête dès que $P(X > k) = 1 - P(X \\leqslant k)$ ne dépasse plus $\\alpha$. Le premier appel retrouve les $8$ repas de l'exemple.\n\n**Surréservation** : une compagnie vend $20$ billets pour un trajet, mais chaque client ne se présente qu'avec la probabilité $0{,}75$, indépendamment. Le nombre $X$ de clients présents suit la loi $\\mathcal{B}(20\\,;\\,0{,}75)$. Le second appel renvoie $18$ : avec $18$ places, le risque d'avoir plus de clients que de places est au plus $5\\,\\%$."
+          "texte": "$\\alpha$ (lettre grecque alpha) est le risque accepté. coef_binomial(n, k) calcule $\\binom{n}{k} = \\dfrac{n(n-1)\\dots(n-k+1)}{k!}$ facteur par facteur, sans module : le programme marche aussi sur calculatrice. La variable cumul contient $P(X \\leqslant k)$ : à chaque tour, $k$ augmente de $1$ et cumul reçoit le terme $P(X = k)$. La boucle s'arrête dès que $P(X > k) = 1 - P(X \\leqslant k)$ ne dépasse plus $\\alpha$. Le premier appel retrouve les $8$ repas de l'exemple.\n\n**Surréservation** : une compagnie vend $20$ billets, mais chaque client ne se présente qu'avec la probabilité $0{,}75$, indépendamment des autres. Le nombre $X$ de clients présents suit la loi $\\mathcal{B}(20\\,;\\,0{,}75)$. Le second appel renvoie $18$ : avec $18$ places, le risque d'avoir plus de clients que de places est au plus $5\\,\\%$. La compagnie peut donc vendre $20$ billets pour $18$ places seulement : c'est la surréservation."
         },
         {
           "id": "l-loi-binomiale-057",
@@ -974,7 +975,7 @@
           "type": "complement",
           "titre": "Pour aller plus loin : la loi de Poisson, loi des événements rares",
           "capacites": ["bo-m-bernoulli-14"],
-          "texte": "Quand $n$ est grand et $p$ petit, avec un produit $np$ constant noté $\\lambda$ (lettre grecque lambda), les probabilités binomiales se rapprochent de celles d'une autre loi :\n\n$$P(X = k) \\approx e^{-\\lambda}\\,\\frac{\\lambda^k}{k!}.$$\n\nC'est la **loi de Poisson** de paramètre $\\lambda$. Elle décrit des événements rares : pannes, désintégrations, fautes de frappe. Par exemple, pour $X$ de loi $\\mathcal{B}(1\\,000\\,;\\,0{,}002)$, on a $\\lambda = 2$ et $P(X = 0) = 0{,}998^{1\\,000} \\approx 0{,}135\\,1$, très proche de $e^{-2} \\approx 0{,}135\\,3$."
+          "texte": "On prend $n$ grand et $p$ petit, avec un produit $np$ constant, noté $\\lambda$ (lettre grecque lambda). Les probabilités binomiales se rapprochent alors de celles d'une autre loi :\n\n$$P(X = k) \\approx e^{-\\lambda}\\,\\frac{\\lambda^k}{k!}.$$\n\nC'est la **loi de Poisson** de paramètre $\\lambda$. Elle décrit des événements rares : pannes, désintégrations, fautes de frappe. Par exemple, pour $X$ de loi $\\mathcal{B}(1\\,000\\,;\\,0{,}002)$, on a $\\lambda = 2$ et $P(X = 0) = 0{,}998^{1\\,000} \\approx 0{,}135\\,1$, très proche de $e^{-2} \\approx 0{,}135\\,3$."
         },
         {
           "id": "l-loi-binomiale-060",
@@ -1008,7 +1009,8 @@
             "Écris l'inéquation et isole la puissance : $1 - (1 - p)^n \\geqslant 0{,}99 \\iff (1 - p)^n \\leqslant 0{,}01$. Le sens change quand tu multiplies par $-1$.",
             "Applique $\\ln$, qui est strictement croissante, puis divise par $\\ln(1 - p)$, qui est négatif : le sens change encore. Tu obtiens $n \\geqslant \\dfrac{\\ln 0{,}01}{\\ln(1 - p)}$.",
             "Calcule ce quotient, prends le plus petit entier qui convient, et contrôle avec $p_n$ pour cet entier et pour le précédent.",
-            "Variante sans logarithme : une boucle while qui augmente $n$ tant que $p_n < 0{,}99$ (programme ci-dessous), ou un tableau de valeurs de la calculatrice."
+            "Variante sans logarithme : une boucle while qui augmente $n$ tant que $p_n < 0{,}99$ (programme ci-dessous), ou un tableau de valeurs de la calculatrice.",
+            "Sans calculatrice, quand $1 - p = 0{,}5$ : écris $0{,}5^n = \\dfrac{1}{2^n}$, puis passe aux inverses, ce qui change le sens (les deux membres sont strictement positifs). Par exemple, $\\dfrac{1}{2^n} \\leqslant \\dfrac{1}{50} \\iff 2^n \\geqslant 50$. Or $2^n$ augmente avec $n$, $2^5 = 32 < 50$ et $2^6 = 64 \\geqslant 50$ : le plus petit $n$ est $6$."
           ],
           "exemple": "l-loi-binomiale-064",
           "code": {
@@ -1057,7 +1059,7 @@
               "valeur": 7,
               "tolerance": 0
             },
-            "explication": "Il faut $1 - 0{,}5^n \\geqslant 0{,}99$, soit $0{,}5^n \\leqslant 0{,}01$, c'est-à-dire $2^n \\geqslant 100$. Or $2^6 = 64 < 100$ et $2^7 = 128 \\geqslant 100$ : le plus petit $n$ est $7$. Par le logarithme : $n \\geqslant \\dfrac{\\ln 0{,}01}{\\ln 0{,}5} \\approx 6{,}6$."
+            "explication": "Il faut $1 - 0{,}5^n \\geqslant 0{,}99$, soit $0{,}5^n \\leqslant 0{,}01$. Or $0{,}5^n = \\dfrac{1}{2^n}$ et $0{,}01 = \\dfrac{1}{100}$ : l'inégalité s'écrit $\\dfrac{1}{2^n} \\leqslant \\dfrac{1}{100}$. Deux nombres strictement positifs sont rangés dans l'ordre inverse de leurs inverses, donc $2^n \\geqslant 100$. Enfin, $2^6 = 64 < 100$ et $2^7 = 128 \\geqslant 100$ : le plus petit $n$ est $7$. Par le logarithme : $n \\geqslant \\dfrac{\\ln 0{,}01}{\\ln 0{,}5} \\approx 6{,}6$."
           }
         },
         {
