@@ -807,9 +807,10 @@
           "type": "propriete",
           "titre": "Intersection d'une droite et d'un plan",
           "capacites": ["bo-m-representations-06"],
-          "texte": "Soit $d$ une droite de représentation paramétrique $x = x_0 + ta$, $y = y_0 + tb$, $z = z_0 + tc$ ($t \\in \\mathbb{R}$), et $\\mathcal{P}$ un plan donné par une équation cartésienne. On remplace $x$, $y$, $z$ par ces expressions dans l'équation de $\\mathcal{P}$. On obtient une équation de la forme $\\alpha t + \\beta = 0$, où $\\alpha$ et $\\beta$ sont des réels ; $\\alpha$ se lit « alpha » et $\\beta$ « bêta ».\n\n- Si $\\alpha \\neq 0$ : une seule solution, $d$ et $\\mathcal{P}$ sont **sécants** en un point.\n- Si $\\alpha = 0$ et $\\beta \\neq 0$ : aucune solution, $d$ est **strictement parallèle** à $\\mathcal{P}$.\n- Si $\\alpha = 0$ et $\\beta = 0$ : tout réel $t$ convient, $d$ est **contenue** dans $\\mathcal{P}$.",
+          "texte": "Soit $d$ une droite de représentation paramétrique $x = x_0 + ta$, $y = y_0 + tb$, $z = z_0 + tc$ ($t \\in \\mathbb{R}$), et $\\mathcal{P}$ un plan donné par une équation cartésienne. On remplace $x$, $y$, $z$ par ces expressions dans l'équation de $\\mathcal{P}$. On obtient une équation $\\alpha t + \\beta = 0$, où $\\alpha$ et $\\beta$ sont des réels ; $\\alpha$ se lit « alpha » et $\\beta$ « bêta ».\n\n- Si $\\alpha \\neq 0$ : une seule solution, $d$ et $\\mathcal{P}$ sont **sécants** en un point.\n- Si $\\alpha = 0$ et $\\beta \\neq 0$ : aucune solution, $d$ est **strictement parallèle** à $\\mathcal{P}$.\n- Si $\\alpha = 0$ et $\\beta = 0$ : tout réel $t$ convient, $d$ est **contenue** dans $\\mathcal{P}$.\n\n**Critère de parallélisme.** Soit $\\vec{u}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$, qui dirige $d$, et $\\vec{n}$, le vecteur normal lu dans l'équation de $\\mathcal{P}$. Dans l'équation, les coordonnées de $\\vec{n}$ multiplient $ta$, $tb$, $tc$ : ainsi $\\alpha = \\vec{u} \\cdot \\vec{n}$. Donc $d$ est **parallèle** à $\\mathcal{P}$ (strictement, ou contenue) si et seulement si $\\vec{u} \\cdot \\vec{n} = 0$. Un seul point de $d$ suffit alors pour trancher : s'il est dans $\\mathcal{P}$, $d$ est contenue dans $\\mathcal{P}$ ; sinon, elle est strictement parallèle à $\\mathcal{P}$.",
           "conditions": [
-            "$d$ est donnée par une représentation paramétrique et $\\mathcal{P}$ par une équation cartésienne.",
+            "Pour les trois cas, $d$ est donnée par une représentation paramétrique et $\\mathcal{P}$ par une équation cartésienne.",
+            "Le critère $\\vec{u} \\cdot \\vec{n} = 0$ vaut pour n'importe quel vecteur directeur de $d$ et n'importe quel vecteur normal à $\\mathcal{P}$ : il ne demande aucun point de $d$.",
             "Chaque solution $t$ donne un point commun : on obtient ses coordonnées en remettant $t$ dans la représentation de $d$."
           ],
           "admise": false
@@ -846,10 +847,11 @@
             },
             {
               "texte": "**Droite $d_2$.** $2t + (1 + t) + (3 - 3t) - 6 = 0$ donne $0 \\times t - 2 = 0$, c'est-à-dire $-2 = 0$ : c'est impossible, quel que soit $t$. Aucun point commun : $d_2$ est strictement parallèle à $\\mathcal{P}$.",
-              "pourquoi": "Les termes en $t$ s'annulent : $2t + t - 3t = 0$. Ce coefficient, $2 + 1 - 3$, est le produit scalaire de $\\vec{u}_2\\begin{pmatrix} 2 \\\\ 1 \\\\ -3 \\end{pmatrix}$, vecteur directeur de $d_2$, avec $\\vec{n}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$, vecteur normal à $\\mathcal{P}$ : ils sont orthogonaux."
+              "pourquoi": "Les termes en $t$ s'annulent : $2t + t - 3t = 0$. Ce coefficient, $2 + 1 - 3$, est $\\vec{u}_2 \\cdot \\vec{n}$, avec $\\vec{u}_2\\begin{pmatrix} 2 \\\\ 1 \\\\ -3 \\end{pmatrix}$ qui dirige $d_2$ et $\\vec{n}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ normal à $\\mathcal{P}$ : le critère dit que $d_2$ est parallèle à $\\mathcal{P}$. Son point $(0\\,;\\,1\\,;\\,3)$, obtenu pour $t = 0$, n'est pas dans $\\mathcal{P}$, car $0 + 1 + 3 - 6 = -2 \\neq 0$."
             },
             {
-              "texte": "**Droite $d_3$.** $(1 + t) + (5 - t) + 0 - 6 = 0$ donne $0 = 0$ : c'est vrai pour tout réel $t$. Tous les points de $d_3$ sont dans $\\mathcal{P}$ : $d_3$ est contenue dans $\\mathcal{P}$."
+              "texte": "**Droite $d_3$.** $(1 + t) + (5 - t) + 0 - 6 = 0$ donne $0 = 0$ : c'est vrai pour tout réel $t$. Tous les points de $d_3$ sont dans $\\mathcal{P}$ : $d_3$ est contenue dans $\\mathcal{P}$.",
+              "pourquoi": "Le critère le confirme. $\\vec{u}_3\\begin{pmatrix} 1 \\\\ -1 \\\\ 0 \\end{pmatrix}$ dirige $d_3$, et $\\vec{u}_3 \\cdot \\vec{n} = 1 - 1 + 0 = 0$ : $d_3$ est parallèle à $\\mathcal{P}$. Son point $(1\\,;\\,5\\,;\\,0)$ est dans $\\mathcal{P}$, car $1 + 5 + 0 - 6 = 0$."
             },
             {
               "texte": "**Conclusion** : $d_1$ coupe $\\mathcal{P}$ au point $I(2\\,;\\,1\\,;\\,3)$ ; $d_2$ est strictement parallèle à $\\mathcal{P}$ ; $d_3$ est contenue dans $\\mathcal{P}$."
@@ -1045,7 +1047,7 @@
           "capacites": ["bo-m-representations-06"],
           "etapes": [
             "Traduis la question par une égalité de vecteurs. Ici, $a$, $b$, $c$ sont des réels inconnus, pas des coordonnées. Trois vecteurs coplanaires ? Cherche $a$, $b$ tels que $\\vec{w} = a\\,\\vec{u} + b\\,\\vec{v}$. Coordonnées de $\\vec{p}$ dans la base $\\left(\\vec{u}, \\vec{v}, \\vec{w}\\right)$ ? Cherche $a$, $b$, $c$ tels que $\\vec{p} = a\\,\\vec{u} + b\\,\\vec{v} + c\\,\\vec{w}$.",
-            "Quatre points $A$, $B$, $C$, $D$, avec $A$, $B$, $C$ non alignés, sont coplanaires si $D$ est dans le plan $(ABC)$. Teste $D$ dans une équation de $(ABC)$, ou cherche $a$, $b$ tels que $\\overrightarrow{AD} = a\\,\\overrightarrow{AB} + b\\,\\overrightarrow{AC}$.",
+            "Quatre points $A$, $B$, $C$, $D$, avec $A$, $B$, $C$ non alignés, sont coplanaires si et seulement si $D$ est dans le plan $(ABC)$. Teste $D$ dans une équation de $(ABC)$, ou cherche $a$, $b$ tels que $\\overrightarrow{AD} = a\\,\\overrightarrow{AB} + b\\,\\overrightarrow{AC}$.",
             "Écris l'égalité de vecteurs coordonnée par coordonnée : tu obtiens trois équations.",
             "Avec deux inconnues, résous deux équations, puis teste la troisième. Avec trois inconnues, procède par substitution : tire une inconnue d'une équation et remplace-la dans les autres. Recommence jusqu'à une équation à une seule inconnue, puis remonte.",
             "Interprète. Si $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires, et si $\\vec{w} = a\\,\\vec{u} + b\\,\\vec{v}$ n'a aucune solution, alors $\\vec{u}$, $\\vec{v}$, $\\vec{w}$ ne sont pas coplanaires. Ils forment une base.",
@@ -1082,7 +1084,7 @@
             },
             {
               "texte": "On remplace $b$ dans la deuxième : $(1 + c) + c = 3$, soit $2c = 2$, donc $c = 1$. On remonte : $b = 1 + c = 2$, puis $a = 2 - c = 1$.",
-              "pourquoi": "Ici, on pouvait aller plus vite. Chaque inconnue apparaît deux fois : la somme des trois équations donne $2a + 2b + 2c = 8$, donc $a + b + c = 4$. Cette astuce ne sert que pour un système aussi régulier ; la substitution sert toujours."
+              "pourquoi": "Ici, on pouvait aller plus vite. Chaque inconnue apparaît deux fois : la somme des trois équations donne $2a + 2b + 2c = 8$, donc $a + b + c = 4$. On retire alors chaque équation de cette somme : $b = 4 - (a + c) = 4 - 2 = 2$, $a = 4 - (b + c) = 4 - 3 = 1$ et $c = 4 - (a + b) = 4 - 3 = 1$. Cette astuce ne sert que pour un système aussi régulier ; la substitution sert toujours."
             },
             {
               "texte": "Contrôle : $\\vec{u} + 2\\,\\vec{v} + \\vec{w}$ a pour coordonnées $\\begin{pmatrix} 1 + 0 + 1 \\\\ 0 + 2 + 1 \\\\ 1 + 2 + 0 \\end{pmatrix}$, soit $\\begin{pmatrix} 2 \\\\ 3 \\\\ 3 \\end{pmatrix}$ : c'est bien $\\vec{p}$."
@@ -1123,7 +1125,7 @@
         {
           "id": "l-equations-espace-065",
           "type": "retenir",
-          "texte": "Une question d'intersection devient un système. Droite et plan : une équation en $t$. Deux droites : trois équations en $t$ et $s$, deux lettres différentes ; on en résout deux, puis on teste la troisième. Deux plans sont parallèles si leurs vecteurs normaux sont colinéaires, perpendiculaires si leur produit scalaire est nul."
+          "texte": "Une intersection devient un système. Droite et plan : une équation en $t$ ; parallèles si et seulement si $\\vec{u} \\cdot \\vec{n} = 0$ ($\\vec{u}$ directeur, $\\vec{n}$ normal). Deux droites : deux paramètres $t$ et $s$, trois équations ; on en résout deux, on teste la troisième. Deux plans : parallèles si $\\vec{n}$ et $\\vec{n}'$ sont colinéaires, perpendiculaires si $\\vec{n} \\cdot \\vec{n}' = 0$."
         }
       ]
     }
