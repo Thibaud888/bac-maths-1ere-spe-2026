@@ -1,0 +1,764 @@
+[
+  {
+    "id": "tb-equations-espace-001",
+    "chapitre": "equations-espace",
+    "notions": [
+      "n-equations-espace-projete",
+      "n-equations-espace-equation-plan",
+      "n-equations-espace-representation-parametrique",
+      "n-equations-espace-intersections"
+    ],
+    "capacites": [
+      "bo-m-representations-01",
+      "bo-m-representations-02",
+      "bo-m-representations-03",
+      "bo-m-representations-04",
+      "bo-m-representations-05",
+      "bo-m-representations-06",
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-06",
+      "bo-m-vecteurs-13",
+      "bo-m-orthogonalite-02",
+      "bo-m-orthogonalite-04",
+      "bo-m-orthogonalite-07",
+      "bo-m-orthogonalite-08",
+      "bo-m-orthogonalite-10",
+      "bo-m-orthogonalite-11"
+    ],
+    "titre": "Un tétraèdre : plan, projeté orthogonal, volume, puis un sommet mobile",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2026-metropole-juin-j2",
+      "adaptation": "Exercice 1 (5 points) : points A(2 ; 1 ; 1), B(3 ; −2 ; 0), C(0 ; −1 ; 1) et D(0 ; 0 ; 2), vecteur n(1 ; −1 ; 4) normal au plan (ABC), équation x − y + 4z − 5 = 0, droite Δ passant par D et orthogonale au plan (ABC), projeté orthogonal H(−1/6 ; 1/6 ; 4/3), triangle ABC isocèle en B d'aire 3√2, volume 1 du tétraèdre ABCD, points D_k(0 ; 0 ; k) (coplanarité, puis A projeté de D_k) : conservés, dans le même ordre. Renommé : le réel k du sujet est noté m (points D_m), pour ne pas le confondre avec le vecteur k du repère. Question 3 : « Vérifier qu'une représentation paramétrique de Δ est … » devient « Déterminer une représentation paramétrique de Δ ». Ajoutée : question 4.b (distance du point D au plan (ABC), qui sert ensuite au volume). Retirée : question 6.b (aire du triangle BCD à partir de la distance admise du point A au plan (BCD)), qui ne travaille que le chapitre « Orthogonalité et distances dans l'espace ». Rien n'est retiré pour un chapitre non encore écrit. Barème porté à 6 points. Calculatrice non autorisée dans cette version : toutes les valeurs sont exactes. Figure du sujet non reprise : toutes les données sont dans l'énoncé. Solution écrite pour le site."
+    },
+    "preambule": "Dans l'espace muni d'un repère orthonormé $\\left(O\\,;\\,\\vec{i}, \\vec{j}, \\vec{k}\\right)$, on considère les points $A(2\\,;\\,1\\,;\\,1)$, $B(3\\,;\\,-2\\,;\\,0)$, $C(0\\,;\\,-1\\,;\\,1)$ et $D(0\\,;\\,0\\,;\\,2)$.\n\nOn rappelle que le volume d'un tétraèdre est $V = \\dfrac{1}{3} \\times \\mathcal{B} \\times h$, où $\\mathcal{B}$ est l'aire d'une base et $h$ la hauteur relative à cette base.\n\nLes questions s'enchaînent, mais chacune peut être traitée en admettant les résultats des précédentes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que les points $A$, $B$ et $C$ définissent un plan.",
+        "points": 0.5,
+        "revoir": "l-vecteurs-espace-024",
+        "indices": [
+          "Trois points définissent un plan lorsqu'ils ne sont pas alignés. Revois la méthode : il suffit de montrer que deux vecteurs, par exemple $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, ne sont pas colinéaires.",
+          "Calcule $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ (arrivée moins départ), puis repère une coordonnée nulle chez l'un et pas chez l'autre."
+        ],
+        "attenduCorrecteur": "- Coordonnées $\\overrightarrow{AB}\\begin{pmatrix} 1 \\\\ -3 \\\\ -1 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -2 \\\\ -2 \\\\ 0 \\end{pmatrix}$ : 0,25 pt.\n- Non-colinéarité justifiée (par exemple : $\\overrightarrow{AB} = \\lambda\\,\\overrightarrow{AC}$ donnerait $-1 = 0$ sur la troisième coordonnée), donc $A$, $B$, $C$ ne sont pas alignés et définissent un plan : 0,25 pt.",
+        "solution": "On a $\\overrightarrow{AB}\\begin{pmatrix} 3 - 2 \\\\ -2 - 1 \\\\ 0 - 1 \\end{pmatrix}$, soit $\\overrightarrow{AB}\\begin{pmatrix} 1 \\\\ -3 \\\\ -1 \\end{pmatrix}$, et $\\overrightarrow{AC}\\begin{pmatrix} 0 - 2 \\\\ -1 - 1 \\\\ 1 - 1 \\end{pmatrix}$, soit $\\overrightarrow{AC}\\begin{pmatrix} -2 \\\\ -2 \\\\ 0 \\end{pmatrix}$.\n\nLe vecteur $\\overrightarrow{AC}$ n'est pas nul. S'il existait un réel $\\lambda$ (lambda) tel que $\\overrightarrow{AB} = \\lambda\\,\\overrightarrow{AC}$, la troisième coordonnée donnerait $-1 = \\lambda \\times 0 = 0$, ce qui est faux. Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ ne sont donc pas colinéaires : les points $A$, $B$, $C$ ne sont pas alignés.\n\n**Les points $A$, $B$ et $C$ définissent un plan, le plan $(ABC)$.**"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Un vecteur normal et une équation cartésienne du plan $(ABC)$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Montrer que le vecteur $\\vec{n}\\begin{pmatrix} 1 \\\\ -1 \\\\ 4 \\end{pmatrix}$ est normal au plan $(ABC)$.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-040",
+            "indices": [
+              "Revois la méthode : un vecteur est normal à un plan s'il est orthogonal à deux vecteurs non colinéaires de ce plan. La question 1 t'en fournit deux.",
+              "Calcule $\\vec{n} \\cdot \\overrightarrow{AB}$ et $\\vec{n} \\cdot \\overrightarrow{AC}$ avec la formule $xx' + yy' + zz'$, valable car le repère est orthonormé."
+            ],
+            "attenduCorrecteur": "- Deux produits scalaires calculés en repère orthonormé : $\\vec{n} \\cdot \\overrightarrow{AB} = 1 + 3 - 4 = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = -2 + 2 + 0 = 0$ : 0,25 pt.\n- Conclusion rédigée : $\\vec{n}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan $(ABC)$, donc il est normal à ce plan : 0,25 pt.",
+            "solution": "Le repère est orthonormé, donc :\n\n$$\\vec{n} \\cdot \\overrightarrow{AB} = 1 \\times 1 + (-1) \\times (-3) + 4 \\times (-1) = 1 + 3 - 4 = 0$$\n\net\n\n$$\\vec{n} \\cdot \\overrightarrow{AC} = 1 \\times (-2) + (-1) \\times (-2) + 4 \\times 0 = -2 + 2 + 0 = 0.$$\n\nLe vecteur $\\vec{n}$, non nul, est orthogonal aux vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, qui ne sont pas colinéaires (question 1) et dirigent le plan $(ABC)$.\n\n**$\\vec{n}$ est un vecteur normal au plan $(ABC)$.**",
+            "erreurFrequente": "Ne calculer qu'un seul produit scalaire : un vecteur orthogonal au seul vecteur $\\overrightarrow{AB}$ n'est pas forcément normal au plan $(ABC)$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "En déduire qu'une équation cartésienne du plan $(ABC)$ est $x - y + 4z - 5 = 0$.",
+            "points": 0.5,
+            "revoir": "l-equations-espace-025",
+            "indices": [
+              "Revois la méthode : les coordonnées d'un vecteur normal donnent les coefficients de $x$, $y$ et $z$. Il reste à trouver le nombre seul $d$.",
+              "Écris $x - y + 4z + d = 0$, puis remplace $x$, $y$, $z$ par les coordonnées de $A$, qui est dans le plan."
+            ],
+            "attenduCorrecteur": "- $\\vec{n}$ est normal au plan, donc celui-ci a une équation de la forme $x - y + 4z + d = 0$ : 0,25 pt.\n- $A$ appartient au plan : $2 - 1 + 4 + d = 0$, d'où $d = -5$, et conclusion : 0,25 pt. Méthode acceptée aussi : les coefficients de l'équation proposée sont ceux de $\\vec{n}$, et $A$ vérifie cette équation.",
+            "solution": "D'après la question a, $\\vec{n}\\begin{pmatrix} 1 \\\\ -1 \\\\ 4 \\end{pmatrix}$ est normal au plan $(ABC)$ : ce plan a donc une équation cartésienne de la forme $x - y + 4z + d = 0$, où $d$ est un réel.\n\nLe point $A(2\\,;\\,1\\,;\\,1)$ appartient au plan $(ABC)$, donc ses coordonnées vérifient cette équation : $2 - 1 + 4 \\times 1 + d = 0$, soit $5 + d = 0$, donc $d = -5$.\n\nContrôle : pour $B$, $3 + 2 + 0 - 5 = 0$ ; pour $C$, $0 + 1 + 4 - 5 = 0$.\n\n**Une équation cartésienne du plan $(ABC)$ est $x - y + 4z - 5 = 0$.**"
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer une représentation paramétrique de la droite $\\Delta$ passant par $D$ et orthogonale au plan $(ABC)$.",
+        "points": 0.5,
+        "revoir": "l-equations-espace-010",
+        "indices": [
+          "Revois la méthode : il faut un point de la droite et un vecteur directeur. Pour une droite orthogonale à un plan, quel vecteur déjà connu peut servir de vecteur directeur ?",
+          "Une droite orthogonale au plan $(ABC)$ est dirigée par n'importe quel vecteur normal à ce plan, comme celui de la question 2.a. Contrôle ensuite ta réponse : pour $t = 0$, tu dois retrouver $D$."
+        ],
+        "attenduCorrecteur": "- Vecteur directeur justifié : $\\Delta$ est orthogonale au plan $(ABC)$, donc dirigée par le vecteur normal $\\vec{n}$ : 0,25 pt.\n- Représentation paramétrique correcte, avec « $t \\in \\mathbb{R}$ » : $x = t$, $y = -t$, $z = 2 + 4t$ (toute représentation équivalente est acceptée) : 0,25 pt.",
+        "solution": "La droite $\\Delta$ est orthogonale au plan $(ABC)$ : elle est donc dirigée par un vecteur normal à ce plan, par exemple $\\vec{n}\\begin{pmatrix} 1 \\\\ -1 \\\\ 4 \\end{pmatrix}$. Elle passe par $D(0\\,;\\,0\\,;\\,2)$. Un point $M(x\\,;\\,y\\,;\\,z)$ est sur $\\Delta$ si et seulement s'il existe un réel $t$ tel que $\\overrightarrow{DM} = t\\,\\vec{n}$, c'est-à-dire $x = 0 + t \\times 1$, $y = 0 + t \\times (-1)$ et $z = 2 + t \\times 4$.\n\n**Une représentation paramétrique de $\\Delta$ est :**\n\n$$\\begin{cases} x = t \\\\ y = -t \\\\ z = 2 + 4t \\end{cases} \\quad t \\in \\mathbb{R}.$$"
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Le projeté orthogonal du point $D$ sur le plan $(ABC)$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Démontrer que le projeté orthogonal du point $D$ sur le plan $(ABC)$ est le point $H\\left(-\\dfrac{1}{6}\\,;\\,\\dfrac{1}{6}\\,;\\,\\dfrac{4}{3}\\right)$.",
+            "points": 0.75,
+            "revoir": "l-equations-espace-042",
+            "indices": [
+              "Revois la méthode : le projeté orthogonal de $D$ sur le plan est le point d'intersection de ce plan avec la droite $\\Delta$ de la question 3.",
+              "Remplace $x$, $y$ et $z$ dans l'équation du plan par les expressions de la représentation de $\\Delta$ : tu obtiens une équation du premier degré en $t$. Attention au signe : $x - y$ devient $t - (-t)$."
+            ],
+            "attenduCorrecteur": "- Le projeté orthogonal de $D$ est le point d'intersection du plan $(ABC)$ et de la droite $\\Delta$, qui passe par $D$ et lui est orthogonale : 0,25 pt.\n- Équation $t + t + 4(2 + 4t) - 5 = 0$, soit $18t + 3 = 0$, d'où $t = -\\dfrac{1}{6}$ : 0,25 pt.\n- Coordonnées obtenues $\\left(-\\dfrac{1}{6}\\,;\\,\\dfrac{1}{6}\\,;\\,\\dfrac{4}{3}\\right)$ et conclusion : 0,25 pt. Méthode acceptée aussi : $H$ vérifie l'équation du plan et $\\overrightarrow{DH} = -\\dfrac{1}{6}\\,\\vec{n}$ est normal au plan.",
+            "solution": "La droite $\\Delta$ passe par $D$ et elle est orthogonale au plan $(ABC)$ : le projeté orthogonal de $D$ sur ce plan est le point d'intersection de $\\Delta$ et du plan $(ABC)$.\n\nUn point de $\\Delta$ a pour coordonnées $(t\\,;\\,-t\\,;\\,2 + 4t)$. Il est dans le plan $(ABC)$ si et seulement si :\n\n$$t - (-t) + 4(2 + 4t) - 5 = 0 \\iff 2t + 8 + 16t - 5 = 0 \\iff 18t + 3 = 0 \\iff t = -\\dfrac{1}{6}.$$\n\nPour $t = -\\dfrac{1}{6}$ : $x = -\\dfrac{1}{6}$, $y = \\dfrac{1}{6}$ et $z = 2 - \\dfrac{4}{6} = 2 - \\dfrac{2}{3} = \\dfrac{4}{3}$.\n\nContrôle : $-\\dfrac{1}{6} - \\dfrac{1}{6} + \\dfrac{16}{3} - 5 = -\\dfrac{1}{3} + \\dfrac{16}{3} - \\dfrac{15}{3} = 0$.\n\n**Le projeté orthogonal de $D$ sur le plan $(ABC)$ est le point $H\\left(-\\dfrac{1}{6}\\,;\\,\\dfrac{1}{6}\\,;\\,\\dfrac{4}{3}\\right)$.**",
+            "erreurFrequente": "Se contenter de vérifier que $H$ est dans le plan $(ABC)$ : une infinité de points vérifient l'équation du plan. Il faut aussi que $\\overrightarrow{DH}$ soit normal au plan, ce que garantit le passage par la droite $\\Delta$."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "En déduire la distance du point $D$ au plan $(ABC)$.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-054",
+            "indices": [
+              "Revois la propriété : la distance d'un point à un plan est la longueur qui sépare ce point de son projeté orthogonal sur le plan.",
+              "Calcule les coordonnées de $\\overrightarrow{DH}$, puis $DH^2$ : écris les trois carrés avec le dénominateur $36$."
+            ],
+            "attenduCorrecteur": "- La distance de $D$ au plan $(ABC)$ est $DH$, car $H$ est le projeté orthogonal de $D$ sur ce plan : 0,25 pt.\n- Calcul : $\\overrightarrow{DH}\\begin{pmatrix} -\\frac{1}{6} \\\\ \\frac{1}{6} \\\\ -\\frac{2}{3} \\end{pmatrix}$, $DH^2 = \\dfrac{1 + 1 + 16}{36} = \\dfrac{1}{2}$, d'où $DH = \\dfrac{\\sqrt{2}}{2}$ (ou $DH = \\dfrac{1}{6} \\times \\lVert \\vec{n} \\rVert = \\dfrac{\\sqrt{18}}{6}$) : 0,25 pt.",
+            "solution": "Comme $H$ est le projeté orthogonal de $D$ sur le plan $(ABC)$, la distance du point $D$ à ce plan est la longueur $DH$.\n\nOn a $\\overrightarrow{DH}\\begin{pmatrix} -\\frac{1}{6} - 0 \\\\ \\frac{1}{6} - 0 \\\\ \\frac{4}{3} - 2 \\end{pmatrix}$, soit $\\overrightarrow{DH}\\begin{pmatrix} -\\frac{1}{6} \\\\ \\frac{1}{6} \\\\ -\\frac{2}{3} \\end{pmatrix}$. Comme $\\dfrac{2}{3} = \\dfrac{4}{6}$ et que le repère est orthonormé :\n\n$$DH^2 = \\dfrac{1}{36} + \\dfrac{1}{36} + \\dfrac{16}{36} = \\dfrac{18}{36} = \\dfrac{1}{2}, \\quad \\text{donc} \\quad DH = \\dfrac{1}{\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}.$$\n\n**La distance du point $D$ au plan $(ABC)$ est $\\dfrac{\\sqrt{2}}{2}$.**",
+            "erreurFrequente": "Prendre $|t| = \\dfrac{1}{6}$ pour la distance : le paramètre n'est pas une longueur. Ici $\\overrightarrow{DH} = -\\dfrac{1}{6}\\,\\vec{n}$, donc $DH = \\dfrac{1}{6} \\times \\lVert \\vec{n} \\rVert$, avec $\\lVert \\vec{n} \\rVert = \\sqrt{18}$."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "L'aire du triangle $ABC$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Montrer que le triangle $ABC$ est isocèle en $B$.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-022",
+            "indices": [
+              "Isocèle en $B$ : il s'agit de comparer les longueurs $BA$ et $BC$. Revois l'expression de la distance entre deux points dans un repère orthonormé.",
+              "Calcule $BA^2$ et $BC^2$ à partir de $\\overrightarrow{BA}$ et de $\\overrightarrow{BC}$ : comparer les carrés suffit, car des longueurs sont positives."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{BA}\\begin{pmatrix} -1 \\\\ 3 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{BC}\\begin{pmatrix} -3 \\\\ 1 \\\\ 1 \\end{pmatrix}$, puis $BA^2 = 11$ et $BC^2 = 11$ en repère orthonormé : 0,25 pt.\n- Conclusion : $BA = BC = \\sqrt{11}$, le triangle $ABC$ est isocèle en $B$ : 0,25 pt.",
+            "solution": "Le repère est orthonormé. On a $\\overrightarrow{BA}\\begin{pmatrix} 2 - 3 \\\\ 1 + 2 \\\\ 1 - 0 \\end{pmatrix}$, soit $\\overrightarrow{BA}\\begin{pmatrix} -1 \\\\ 3 \\\\ 1 \\end{pmatrix}$, et $\\overrightarrow{BC}\\begin{pmatrix} 0 - 3 \\\\ -1 + 2 \\\\ 1 - 0 \\end{pmatrix}$, soit $\\overrightarrow{BC}\\begin{pmatrix} -3 \\\\ 1 \\\\ 1 \\end{pmatrix}$. Donc :\n\n$$BA^2 = (-1)^2 + 3^2 + 1^2 = 11 \\quad \\text{et} \\quad BC^2 = (-3)^2 + 1^2 + 1^2 = 11.$$\n\nAinsi $BA = BC = \\sqrt{11}$.\n\n**Le triangle $ABC$ est isocèle en $B$.**"
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Montrer que l'aire du triangle $ABC$ est égale à $3\\sqrt{2}$ unités d'aire.",
+            "points": 0.75,
+            "revoir": "l-orthogonalite-espace-071",
+            "indices": [
+              "Revois la méthode pour l'aire d'un triangle isocèle : la médiane issue du sommet principal $B$ est aussi la hauteur. Note $I$ le milieu de $[AC]$.",
+              "Calcule les coordonnées de $I$ (moyenne des coordonnées de $A$ et de $C$), puis les longueurs $AC$ et $BI$."
+            ],
+            "attenduCorrecteur": "- $I(1\\,;\\,0\\,;\\,1)$, milieu de $[AC]$ ; dans le triangle isocèle en $B$, la médiane $(BI)$ est la hauteur issue de $B$ (ou : $\\overrightarrow{BI} \\cdot \\overrightarrow{AC} = 4 - 4 + 0 = 0$) : 0,25 pt.\n- Longueurs $AC = \\sqrt{8} = 2\\sqrt{2}$ et $BI = \\sqrt{9} = 3$ : 0,25 pt.\n- Aire $\\dfrac{AC \\times BI}{2} = \\dfrac{2\\sqrt{2} \\times 3}{2} = 3\\sqrt{2}$, avec l'unité : 0,25 pt.",
+            "solution": "Soit $I$ le milieu de $[AC]$ : $I\\left(\\dfrac{2 + 0}{2}\\,;\\,\\dfrac{1 - 1}{2}\\,;\\,\\dfrac{1 + 1}{2}\\right)$, soit $I(1\\,;\\,0\\,;\\,1)$. Le triangle $ABC$ est isocèle en $B$ (question a) : la médiane $(BI)$ est aussi la hauteur issue de $B$. On peut le vérifier : $\\overrightarrow{BI}\\begin{pmatrix} -2 \\\\ 2 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{BI} \\cdot \\overrightarrow{AC} = (-2) \\times (-2) + 2 \\times (-2) + 1 \\times 0 = 0$.\n\nOr $AC = \\sqrt{(-2)^2 + (-2)^2 + 0^2} = \\sqrt{8} = 2\\sqrt{2}$ et $BI = \\sqrt{(-2)^2 + 2^2 + 1^2} = \\sqrt{9} = 3$. L'aire du triangle $ABC$ vaut donc :\n\n$$\\mathcal{A} = \\dfrac{AC \\times BI}{2} = \\dfrac{2\\sqrt{2} \\times 3}{2} = 3\\sqrt{2}.$$\n\n**L'aire du triangle $ABC$ est $3\\sqrt{2}$ unités d'aire.**"
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "En déduire que le volume du tétraèdre $ABCD$ est égal à $1$ unité de volume.",
+        "points": 0.5,
+        "revoir": "l-orthogonalite-espace-067",
+        "indices": [
+          "Revois la formule du volume, en prenant le triangle $ABC$ pour base : la hauteur associée est la distance du sommet $D$ au plan $(ABC)$, déjà calculée."
+        ],
+        "attenduCorrecteur": "- Base $ABC$ d'aire $3\\sqrt{2}$ et hauteur associée $DH = \\dfrac{\\sqrt{2}}{2}$, car $H$ est le projeté orthogonal de $D$ sur le plan $(ABC)$ : 0,25 pt.\n- Calcul $V = \\dfrac{1}{3} \\times 3\\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2} = 1$ : 0,25 pt.",
+        "solution": "Prenons pour base le triangle $ABC$ et pour sommet $D$. La hauteur associée est la distance du point $D$ au plan $(ABC)$, c'est-à-dire $DH = \\dfrac{\\sqrt{2}}{2}$ (question 4.b), et l'aire de la base vaut $3\\sqrt{2}$ (question 5.b). Comme $\\sqrt{2} \\times \\sqrt{2} = 2$ :\n\n$$V = \\dfrac{1}{3} \\times 3\\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2} = \\dfrac{3 \\times 2}{3 \\times 2} = 1.$$\n\n**Le volume du tétraèdre $ABCD$ est égal à $1$ unité de volume.**",
+        "erreurFrequente": "Prendre $DA$, $DB$ ou $DC$ comme hauteur : aucune de ces arêtes n'est orthogonale au plan $(ABC)$ ; la hauteur associée à la base $ABC$ est $DH$."
+      },
+      {
+        "id": "q7",
+        "label": "7.",
+        "enonce": "Dans cette question, on note $D_m$ le point de coordonnées $(0\\,;\\,0\\,;\\,m)$, où $m$ est un réel.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q7a",
+            "label": "a)",
+            "enonce": "Déterminer la valeur de $m$ pour laquelle les points $A$, $B$, $C$ et $D_m$ sont coplanaires. Quel est alors le projeté orthogonal du point $D_m$ sur le plan $(ABC)$ ?\n\nSaisis la valeur de $m$.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "5/4",
+              "tolerance": 0.001
+            },
+            "revoir": "l-equations-espace-018",
+            "indices": [
+              "$A$, $B$ et $C$ définissent le plan $(ABC)$ : les quatre points sont coplanaires exactement quand $D_m$ appartient à ce plan. Revois comment on teste un point avec une équation cartésienne.",
+              "Remplace $x$, $y$, $z$ par $0$, $0$ et $m$ dans l'équation $x - y + 4z - 5 = 0$, puis résous l'équation obtenue, d'inconnue $m$."
+            ],
+            "attenduCorrecteur": "- Traduction : $A$, $B$, $C$, $D_m$ sont coplanaires si et seulement si $D_m \\in (ABC)$, car $A$, $B$, $C$ définissent un plan ; d'où $4m - 5 = 0$ et $m = \\dfrac{5}{4}$ : 0,25 pt.\n- Le projeté orthogonal d'un point du plan est ce point lui-même : c'est le point $\\left(0\\,;\\,0\\,;\\,\\dfrac{5}{4}\\right)$ : 0,25 pt.",
+            "solution": "Les points $A$, $B$, $C$ définissent le plan $(ABC)$ (question 1). Les quatre points $A$, $B$, $C$, $D_m$ sont donc coplanaires si et seulement si $D_m$ appartient au plan $(ABC)$, c'est-à-dire si et seulement si ses coordonnées vérifient $x - y + 4z - 5 = 0$ :\n\n$$0 - 0 + 4m - 5 = 0 \\iff m = \\dfrac{5}{4}.$$\n\nPour $m = \\dfrac{5}{4}$, le point $D_m\\left(0\\,;\\,0\\,;\\,\\dfrac{5}{4}\\right)$ est dans le plan $(ABC)$ : son projeté orthogonal sur ce plan est le point lui-même (le vecteur qui le relie à son projeté est alors nul).\n\n**Les points $A$, $B$, $C$, $D_m$ sont coplanaires pour $m = \\dfrac{5}{4}$, et le projeté orthogonal de $D_m$ sur le plan $(ABC)$ est alors le point $D_m\\left(0\\,;\\,0\\,;\\,\\dfrac{5}{4}\\right)$ lui-même.**"
+          },
+          {
+            "id": "q7b",
+            "label": "b)",
+            "enonce": "Existe-t-il une valeur de $m$ pour laquelle $A$ est le projeté orthogonal de $D_m$ sur le plan $(ABC)$ ? Justifier.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-058",
+            "indices": [
+              "Revois les deux conditions qui font de $A$ le projeté orthogonal de $D_m$ : l'une est vraie pour tout $m$ ; l'autre porte sur le vecteur $\\overrightarrow{D_mA}$.",
+              "Écris $\\overrightarrow{D_mA}$ en fonction de $m$, puis cherche s'il peut être colinéaire à $\\vec{n}$ : compare d'abord les deux premières coordonnées."
+            ],
+            "attenduCorrecteur": "- $A$ est dans le plan $(ABC)$ ; il est le projeté orthogonal de $D_m$ si et seulement si $\\overrightarrow{D_mA}$ est colinéaire au vecteur normal $\\vec{n}$ : 0,25 pt.\n- $\\overrightarrow{D_mA}\\begin{pmatrix} 2 \\\\ 1 \\\\ 1 - m \\end{pmatrix}$ : $\\overrightarrow{D_mA} = \\lambda\\,\\vec{n}$ imposerait $\\lambda = 2$ et $\\lambda = -1$, ce qui est impossible ; réponse : aucune valeur de $m$ : 0,25 pt. Argument accepté aussi : les points de la droite passant par $D_m$ et dirigée par $\\vec{n}$, de coordonnées $(t\\,;\\,-t\\,;\\,m + 4t)$, ont une abscisse et une ordonnée opposées, ce qui n'est pas le cas de $A$.",
+            "solution": "Le point $A$ appartient au plan $(ABC)$. Il est donc le projeté orthogonal de $D_m$ sur ce plan si et seulement si le vecteur $\\overrightarrow{D_mA}$ est nul ou normal au plan, c'est-à-dire colinéaire au vecteur normal $\\vec{n}\\begin{pmatrix} 1 \\\\ -1 \\\\ 4 \\end{pmatrix}$.\n\nOr $\\overrightarrow{D_mA}\\begin{pmatrix} 2 - 0 \\\\ 1 - 0 \\\\ 1 - m \\end{pmatrix}$, soit $\\overrightarrow{D_mA}\\begin{pmatrix} 2 \\\\ 1 \\\\ 1 - m \\end{pmatrix}$. S'il existait un réel $\\lambda$ (lambda) tel que $\\overrightarrow{D_mA} = \\lambda\\,\\vec{n}$, la première coordonnée donnerait $\\lambda = 2$ et la deuxième $1 = -\\lambda$, soit $\\lambda = -1$ : c'est impossible, quel que soit $m$. Le vecteur $\\overrightarrow{D_mA}$ n'est donc jamais colinéaire à $\\vec{n}$ (et il n'est jamais nul, puisque sa première coordonnée vaut $2$).\n\n**Il n'existe aucune valeur de $m$ pour laquelle $A$ est le projeté orthogonal de $D_m$ sur le plan $(ABC)$.**"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-equations-espace-002",
+    "chapitre": "equations-espace",
+    "notions": [
+      "n-equations-espace-intersections",
+      "n-equations-espace-representation-parametrique",
+      "n-equations-espace-equation-plan",
+      "n-equations-espace-projete"
+    ],
+    "capacites": [
+      "bo-m-representations-01",
+      "bo-m-representations-02",
+      "bo-m-representations-03",
+      "bo-m-representations-04",
+      "bo-m-representations-05",
+      "bo-m-representations-06",
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-10",
+      "bo-m-orthogonalite-02",
+      "bo-m-orthogonalite-04",
+      "bo-m-orthogonalite-06",
+      "bo-m-orthogonalite-07",
+      "bo-m-orthogonalite-08",
+      "bo-m-orthogonalite-10",
+      "bo-m-orthogonalite-11"
+    ],
+    "titre": "Deux avions en approche : trajectoires, collision, distance de sécurité",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2025-polynesie-juin-j1",
+      "adaptation": "Exercice 2 (5 points) : repère d'origine le pied de la tour de contrôle, sol d'équation z = 0, unité 1 km, avion Alpha en A(−7 ; 1 ; 7) dirigé par u(2 ; −1 ; −3), trajectoire de l'avion Bêta donnée par une représentation paramétrique, point S où Bêta touche le sol, question de la collision, point E(−3 ; −1 ; 1), plan P_E d'équation 2x − y − 3z + 8 = 0, point F(−1 ; −3 ; 3), distance EF et règle des 3 milles nautiques : conservés, dans le même ordre. Question 3.c (« Vérifier que F est le point d'intersection de P_E et de d_B ») devient : démontrer que d_B coupe P_E en un seul point, et que ce point est F. Ajoutée : question 3.d (E est le projeté orthogonal de F sur la droite d_A, donc EF est la distance du point F à la trajectoire d'Alpha). Rien n'est retiré pour un chapitre non encore écrit. Barème porté à 6 points. Calculatrice autorisée, pour la valeur approchée de la distance au mètre près. Figure du sujet non reprise : toutes les données sont dans l'énoncé. Solution écrite pour le site."
+    },
+    "preambule": "Deux avions sont en approche d'un aéroport. On munit l'espace d'un repère orthonormé $\\left(O\\,;\\,\\vec{i}, \\vec{j}, \\vec{k}\\right)$ dont l'origine $O$ est le pied de la tour de contrôle. Le sol est le plan $\\mathcal{P}_0$ d'équation $z = 0$, et la cote $z$ d'un point est son altitude. L'unité de longueur est le kilomètre. Les avions sont modélisés par des points.\n\nL'avion Alpha transmet à la tour sa position $A(-7\\,;\\,1\\,;\\,7)$ ; sa trajectoire est la droite $d_A$ passant par $A$ et dirigée par le vecteur $\\vec{u}\\begin{pmatrix} 2 \\\\ -1 \\\\ -3 \\end{pmatrix}$.\n\nL'avion Bêta transmet sa trajectoire : c'est la droite $d_B$ de représentation paramétrique\n\n$$\\begin{cases} x = -11 + 5t \\\\ y = -5 + t \\\\ z = 11 - 4t \\end{cases} \\quad t \\in \\mathbb{R}.$$\n\nLes questions s'enchaînent, mais chacune peut être traitée en admettant les résultats des précédentes.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "S'il ne dévie pas de sa trajectoire, l'avion Bêta touchera le sol en un point $S$. Déterminer les coordonnées du point $S$.",
+        "points": 0.75,
+        "revoir": "l-equations-espace-050",
+        "indices": [
+          "Le sol est le plan d'équation $z = 0$ : $S$ est le point d'intersection de la droite $d_B$ et de ce plan. Revois la propriété sur l'intersection d'une droite et d'un plan.",
+          "Remplace $z$ par son expression en fonction de $t$ dans l'équation $z = 0$ et résous ; remets ensuite cette valeur de $t$ dans les trois égalités de $d_B$."
+        ],
+        "attenduCorrecteur": "- Traduction : $S$ est le point de $d_B$ de cote nulle, d'où $11 - 4t = 0$ et $t = \\dfrac{11}{4}$ : 0,5 pt.\n- Coordonnées $S\\left(\\dfrac{11}{4}\\,;\\,-\\dfrac{9}{4}\\,;\\,0\\right)$ : 0,25 pt.",
+        "solution": "Le point $S$ est sur la droite $d_B$ et sur le sol, plan d'équation $z = 0$. Un point de $d_B$ est sur le sol si et seulement si son paramètre $t$ vérifie :\n\n$$11 - 4t = 0 \\iff t = \\dfrac{11}{4}.$$\n\nPour $t = \\dfrac{11}{4}$ : $x = -11 + 5 \\times \\dfrac{11}{4} = \\dfrac{-44 + 55}{4} = \\dfrac{11}{4}$, $y = -5 + \\dfrac{11}{4} = \\dfrac{-20 + 11}{4} = -\\dfrac{9}{4}$ et $z = 0$.\n\n**L'avion Bêta touchera le sol au point $S\\left(\\dfrac{11}{4}\\,;\\,-\\dfrac{9}{4}\\,;\\,0\\right)$, soit $S(2{,}75\\,;\\,-2{,}25\\,;\\,0)$.**"
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Les trajectoires des deux avions.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Déterminer une représentation paramétrique de la droite $d_A$, trajectoire de l'avion Alpha.",
+            "points": 0.5,
+            "revoir": "l-equations-espace-010",
+            "indices": [
+              "Revois la méthode : tu connais un point de $d_A$ et un vecteur directeur. Choisis pour le paramètre une autre lettre que $t$, déjà prise par $d_B$ : cela servira à la question suivante."
+            ],
+            "attenduCorrecteur": "- Représentation paramétrique correcte, construite avec le point $A$ et le vecteur $\\vec{u}$ : $x = -7 + 2s$, $y = 1 - s$, $z = 7 - 3s$, avec $s \\in \\mathbb{R}$ (toute représentation équivalente est acceptée) : 0,5 pt.",
+            "solution": "La droite $d_A$ passe par $A(-7\\,;\\,1\\,;\\,7)$ et elle est dirigée par $\\vec{u}\\begin{pmatrix} 2 \\\\ -1 \\\\ -3 \\end{pmatrix}$. On note $s$ son paramètre, pour ne pas le confondre avec celui de $d_B$.\n\n**Une représentation paramétrique de $d_A$ est :**\n\n$$\\begin{cases} x = -7 + 2s \\\\ y = 1 - s \\\\ z = 7 - 3s \\end{cases} \\quad s \\in \\mathbb{R}.$$"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Les deux avions peuvent-ils entrer en collision ? Justifier.",
+            "points": 1.25,
+            "revoir": "l-equations-espace-053",
+            "indices": [
+              "Une collision n'est possible que si les deux trajectoires ont un point commun. Revois la méthode pour la position relative de deux droites : on compare d'abord les vecteurs directeurs.",
+              "Lis un vecteur directeur de $d_B$ dans les coefficients de $t$. Écris ensuite l'égalité des trois coordonnées : tire $s$ de l'égalité des ordonnées, remplace dans celle des abscisses, puis teste le couple obtenu dans la troisième."
+            ],
+            "attenduCorrecteur": "- Vecteur directeur de $d_B$ : $\\vec{v}\\begin{pmatrix} 5 \\\\ 1 \\\\ -4 \\end{pmatrix}$, non colinéaire à $\\vec{u}$ : les droites ne sont pas parallèles : 0,25 pt.\n- Système de trois équations à deux inconnues $s$ et $t$, avec deux paramètres distincts : 0,25 pt.\n- Résolution de deux équations ($t = \\dfrac{16}{7}$ et $s = \\dfrac{26}{7}$), et troisième équation non vérifiée ($-\\dfrac{29}{7} \\neq \\dfrac{13}{7}$) : 0,5 pt.\n- Conclusion : les trajectoires sont non coplanaires et n'ont aucun point commun, donc les avions ne peuvent pas entrer en collision : 0,25 pt.",
+            "solution": "Sur la représentation de $d_B$, on lit le vecteur directeur $\\vec{v}\\begin{pmatrix} 5 \\\\ 1 \\\\ -4 \\end{pmatrix}$. S'il existait un réel $\\lambda$ (lambda) tel que $\\vec{v} = \\lambda\\,\\vec{u}$, la première coordonnée donnerait $\\lambda = \\dfrac{5}{2}$ et la deuxième $\\lambda = -1$ : c'est impossible. Les vecteurs $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires, donc les droites $d_A$ et $d_B$ ne sont pas parallèles.\n\nCherchons un point commun : il faut des réels $s$ et $t$ tels que\n\n$$\\begin{cases} -7 + 2s = -11 + 5t \\\\ 1 - s = -5 + t \\\\ 7 - 3s = 11 - 4t \\end{cases}$$\n\nLa deuxième équation donne $s = 6 - t$. En remplaçant dans la première : $-7 + 12 - 2t = -11 + 5t$, soit $16 = 7t$, donc $t = \\dfrac{16}{7}$, puis $s = 6 - \\dfrac{16}{7} = \\dfrac{26}{7}$.\n\nOn teste ce couple dans la troisième équation : $7 - 3 \\times \\dfrac{26}{7} = \\dfrac{49 - 78}{7} = -\\dfrac{29}{7}$, alors que $11 - 4 \\times \\dfrac{16}{7} = \\dfrac{77 - 64}{7} = \\dfrac{13}{7}$. La troisième équation n'est pas vérifiée : le système n'a pas de solution.\n\nLes droites $d_A$ et $d_B$ ne sont ni parallèles, ni sécantes : elles sont non coplanaires, et elles n'ont aucun point commun.\n\n**Les trajectoires ne se coupent pas : les deux avions ne peuvent pas entrer en collision.**",
+            "erreurFrequente": "Utiliser la même lettre pour les deux paramètres : on imposerait aux deux droites de passer par le point commun pour la même valeur du paramètre, ce que rien ne justifie."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Le plan $\\mathcal{P}_E$ et la position $F$ de l'avion Bêta.",
+        "points": 3,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Démontrer que la trajectoire de l'avion Alpha passe par le point $E(-3\\,;\\,-1\\,;\\,1)$.",
+            "points": 0.5,
+            "revoir": "l-equations-espace-010",
+            "indices": [
+              "Revois comment tester un point : remplace $x$, $y$, $z$ par les coordonnées de $E$ dans la représentation de $d_A$, puis tire le paramètre de chacune des trois égalités."
+            ],
+            "attenduCorrecteur": "- Les trois égalités donnent la même valeur du paramètre, $s = 2$ (ou : $\\overrightarrow{AE} = 2\\,\\vec{u}$) : 0,25 pt.\n- Conclusion : $E \\in d_A$ : 0,25 pt.",
+            "solution": "On cherche un réel $s$ tel que $-3 = -7 + 2s$, $-1 = 1 - s$ et $1 = 7 - 3s$. La première égalité donne $2s = 4$, soit $s = 2$ ; la deuxième donne $s = 2$ ; la troisième donne $3s = 6$, soit $s = 2$. La même valeur convient aux trois égalités.\n\n**Le point $E$ est sur la droite $d_A$ : la trajectoire de l'avion Alpha passe par $E$.**"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Justifier qu'une équation cartésienne du plan $\\mathcal{P}_E$ passant par $E$ et perpendiculaire à la droite $d_A$ est $2x - y - 3z + 8 = 0$.",
+            "points": 0.5,
+            "revoir": "l-equations-espace-025",
+            "indices": [
+              "Un plan perpendiculaire à une droite admet pour vecteur normal un vecteur directeur de cette droite. Revois la méthode pour écrire son équation, puis trouve le nombre seul $d$ avec le point $E$."
+            ],
+            "attenduCorrecteur": "- $\\mathcal{P}_E$ est perpendiculaire à $d_A$, donc $\\vec{u}\\begin{pmatrix} 2 \\\\ -1 \\\\ -3 \\end{pmatrix}$ est normal à $\\mathcal{P}_E$, d'où une équation $2x - y - 3z + d = 0$ : 0,25 pt.\n- $E \\in \\mathcal{P}_E$ : $-6 + 1 - 3 + d = 0$, d'où $d = 8$ : 0,25 pt.",
+            "solution": "Le plan $\\mathcal{P}_E$ est perpendiculaire à la droite $d_A$ : un vecteur directeur de $d_A$, comme $\\vec{u}\\begin{pmatrix} 2 \\\\ -1 \\\\ -3 \\end{pmatrix}$, est donc normal à $\\mathcal{P}_E$. Ce plan a une équation de la forme $2x - y - 3z + d = 0$, où $d$ est un réel.\n\nLe point $E(-3\\,;\\,-1\\,;\\,1)$ appartient à $\\mathcal{P}_E$ : $2 \\times (-3) - (-1) - 3 \\times 1 + d = 0$, soit $-8 + d = 0$, donc $d = 8$.\n\n**Une équation cartésienne de $\\mathcal{P}_E$ est $2x - y - 3z + 8 = 0$.**"
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "Démontrer que la droite $d_B$ coupe le plan $\\mathcal{P}_E$ en un seul point, et que ce point est $F(-1\\,;\\,-3\\,;\\,3)$.",
+            "points": 0.75,
+            "revoir": "l-equations-espace-050",
+            "indices": [
+              "Revois la propriété : remplace $x$, $y$, $z$ dans l'équation de $\\mathcal{P}_E$ par les expressions de $d_B$. Tu obtiens une équation de la forme $\\alpha t + \\beta = 0$.",
+              "Développe avec soin : $-(-5 + t) = 5 - t$ et $-3(11 - 4t) = -33 + 12t$. Regroupe ensuite les termes en $t$ d'un côté et les nombres seuls de l'autre."
+            ],
+            "attenduCorrecteur": "- Substitution : $2(-11 + 5t) - (-5 + t) - 3(11 - 4t) + 8 = 0$, soit $21t - 42 = 0$ : 0,25 pt.\n- Le coefficient de $t$ n'est pas nul : une seule solution, $t = 2$, donc la droite et le plan sont sécants en un seul point : 0,25 pt.\n- Pour $t = 2$, on obtient $(-1\\,;\\,-3\\,;\\,3)$ : c'est $F$ : 0,25 pt.",
+            "solution": "Un point de $d_B$, de paramètre $t$, appartient à $\\mathcal{P}_E$ si et seulement si :\n\n$$2(-11 + 5t) - (-5 + t) - 3(11 - 4t) + 8 = 0 \\iff -22 + 10t + 5 - t - 33 + 12t + 8 = 0 \\iff 21t - 42 = 0.$$\n\nLe coefficient de $t$, $21$, n'est pas nul : cette équation a une seule solution, $t = 2$. La droite $d_B$ et le plan $\\mathcal{P}_E$ sont donc sécants en un seul point.\n\nPour $t = 2$ : $x = -11 + 10 = -1$, $y = -5 + 2 = -3$ et $z = 11 - 8 = 3$.\n\n**La droite $d_B$ coupe le plan $\\mathcal{P}_E$ en un seul point, le point $F(-1\\,;\\,-3\\,;\\,3)$.**"
+          },
+          {
+            "id": "q3d",
+            "label": "d)",
+            "enonce": "Démontrer que $E$ est le projeté orthogonal du point $F$ sur la droite $d_A$. Que représente alors la longueur $EF$ pour le point $F$ et la trajectoire de l'avion Alpha ?",
+            "points": 0.75,
+            "revoir": "l-equations-espace-039",
+            "indices": [
+              "Revois les deux conditions pour qu'un point soit le projeté orthogonal d'un autre sur une droite : l'une a été établie à la question a.",
+              "Calcule $\\overrightarrow{EF}$, puis son produit scalaire avec $\\vec{u}$. Tu peux aussi raisonner avec le plan $\\mathcal{P}_E$ : il contient $E$ et $F$, et il est perpendiculaire à $d_A$."
+            ],
+            "attenduCorrecteur": "- $E \\in d_A$ (question a) : 0,25 pt.\n- $\\overrightarrow{EF}\\begin{pmatrix} 2 \\\\ -2 \\\\ 2 \\end{pmatrix}$ et $\\overrightarrow{EF} \\cdot \\vec{u} = 4 + 2 - 6 = 0$ (ou : $E$ et $F$ sont dans $\\mathcal{P}_E$, dont $\\vec{u}$ est un vecteur normal), donc $E$ est le projeté orthogonal de $F$ sur $d_A$ : 0,25 pt.\n- Interprétation : $E$ est le point de $d_A$ le plus proche de $F$, et $EF$ est la distance du point $F$ à la droite $d_A$ : 0,25 pt.",
+            "solution": "D'après la question a, le point $E$ appartient à la droite $d_A$, dirigée par $\\vec{u}$.\n\nDe plus, $\\overrightarrow{EF}\\begin{pmatrix} -1 + 3 \\\\ -3 + 1 \\\\ 3 - 1 \\end{pmatrix}$, soit $\\overrightarrow{EF}\\begin{pmatrix} 2 \\\\ -2 \\\\ 2 \\end{pmatrix}$, et, le repère étant orthonormé :\n\n$$\\overrightarrow{EF} \\cdot \\vec{u} = 2 \\times 2 + (-2) \\times (-1) + 2 \\times (-3) = 4 + 2 - 6 = 0.$$\n\nLe point $E$ est sur $d_A$ et $\\overrightarrow{EF}$ est orthogonal au vecteur directeur $\\vec{u}$ : **$E$ est le projeté orthogonal de $F$ sur la droite $d_A$.**\n\nLe projeté orthogonal d'un point sur une droite est le point de la droite le plus proche de ce point. **$E$ est donc le point de la trajectoire d'Alpha le plus proche de $F$, et $EF$ est la distance du point $F$ à la droite $d_A$.**"
+          },
+          {
+            "id": "q3e",
+            "label": "e)",
+            "enonce": "Calculer la valeur exacte de la distance $EF$, puis en donner une valeur approchée au mètre près.\n\nSaisis la valeur approchée, en mètres.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 3464,
+              "tolerance": 1
+            },
+            "revoir": "l-orthogonalite-espace-022",
+            "indices": [
+              "Revois l'expression de la distance dans un repère orthonormé, avec les coordonnées de $\\overrightarrow{EF}$ trouvées à la question d. Attention à l'unité : le repère est gradué en kilomètres."
+            ],
+            "attenduCorrecteur": "- $EF = \\sqrt{2^2 + (-2)^2 + 2^2} = \\sqrt{12} = 2\\sqrt{3}$ km : 0,25 pt.\n- Conversion : $2\\sqrt{3}$ km, soit environ $3\\,464$ m au mètre près : 0,25 pt.",
+            "solution": "Le repère est orthonormé, d'unité $1$ km :\n\n$$EF = \\sqrt{2^2 + (-2)^2 + 2^2} = \\sqrt{12} = 2\\sqrt{3}.$$\n\nÀ la calculatrice, $2\\sqrt{3} \\approx 3{,}464\\,1$ : la distance $EF$ vaut environ $3{,}464\\,1$ km, soit $3\\,464{,}1$ m.\n\n**$EF = 2\\sqrt{3}$ km, soit environ $3\\,464$ m au mètre près.**"
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "La réglementation aérienne impose que deux avions en approche soient, à tout instant, à au moins $3$ milles nautiques l'un de l'autre ; un mille nautique vaut $1\\,852$ m. Si les avions Alpha et Bêta sont respectivement en $E$ et en $F$ au même instant, la distance de sécurité est-elle respectée ? Justifier.",
+        "points": 0.5,
+        "indices": [
+          "Convertis la distance minimale imposée en mètres, puis compare-la à la distance $EF$ obtenue à la question 3.e."
+        ],
+        "attenduCorrecteur": "- Distance minimale : $3 \\times 1\\,852 = 5\\,556$ m : 0,25 pt.\n- Comparaison avec $EF$, qui vaut environ $3\\,464$ m, et conclusion rédigée : la distance de sécurité n'est pas respectée : 0,25 pt.",
+        "solution": "La distance minimale imposée vaut $3 \\times 1\\,852 = 5\\,556$ m. Or, d'après la question 3.e, $EF \\approx 3\\,464$ m, et $3\\,464 < 5\\,556$.\n\n**Si les avions sont en $E$ et en $F$ au même instant, ils sont à moins de $3$ milles nautiques l'un de l'autre : la distance de sécurité n'est pas respectée.**"
+      }
+    ]
+  },
+  {
+    "id": "tb-equations-espace-003",
+    "chapitre": "equations-espace",
+    "notions": [
+      "n-equations-espace-intersections",
+      "n-equations-espace-representation-parametrique",
+      "n-equations-espace-equation-plan",
+      "n-equations-espace-projete"
+    ],
+    "capacites": [
+      "bo-m-representations-01",
+      "bo-m-representations-02",
+      "bo-m-representations-03",
+      "bo-m-representations-04",
+      "bo-m-representations-05",
+      "bo-m-representations-06",
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-06",
+      "bo-m-vecteurs-10",
+      "bo-m-orthogonalite-02",
+      "bo-m-orthogonalite-04",
+      "bo-m-orthogonalite-06",
+      "bo-m-orthogonalite-07",
+      "bo-m-orthogonalite-08",
+      "bo-m-orthogonalite-09",
+      "bo-m-orthogonalite-10"
+    ],
+    "titre": "Deux droites non coplanaires et une droite perpendiculaire aux deux",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2023-polynesie-mars-j1",
+      "adaptation": "Exercice 2 (5 points) : droite d1 passant par H(2 ; 3 ; 0) et dirigée par u(1 ; −1 ; 1), droite d2 de représentation x = 2k − 3, y = k, z = 5 (paramètre renommé s, pour ne pas le confondre avec le vecteur k du repère), vecteur w(−1 ; 2 ; 3), plan P passant par H et dirigé par u et w, point M(3 ; 3 ; 5), droite Δ passant par M et dirigée par w, point L : conservés, avec la même progression. Question 1.a complétée : on demande aussi une représentation paramétrique de d1, qui sert aux questions 1.c et 3.a. Question 2.b : l'équation 5x + 4y − z − 22 = 0 du plan P, admise dans le sujet, est à démontrer. Ajoutée : question 3.c (L est le projeté orthogonal de M sur d1 ; distance du point M à la droite d1), où les coordonnées de L sont redonnées. Rien n'est retiré pour un chapitre non encore écrit. Barème porté à 6 points. Calculatrice non autorisée dans cette version. Solution écrite pour le site."
+    },
+    "preambule": "L'espace est muni d'un repère orthonormé $\\left(O\\,;\\,\\vec{i}, \\vec{j}, \\vec{k}\\right)$. On considère :\n\n- la droite $d_1$ passant par le point $H(2\\,;\\,3\\,;\\,0)$ et de vecteur directeur $\\vec{u}\\begin{pmatrix} 1 \\\\ -1 \\\\ 1 \\end{pmatrix}$ ;\n- la droite $d_2$ de représentation paramétrique $\\begin{cases} x = 2s - 3 \\\\ y = s \\\\ z = 5 \\end{cases}$, où $s$ décrit $\\mathbb{R}$.\n\nLe but de l'exercice est de déterminer une droite $\\Delta$ perpendiculaire à la fois à $d_1$ et à $d_2$.\n\nLes questions s'enchaînent, mais chacune peut être traitée en admettant les résultats des précédentes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Position relative des droites $d_1$ et $d_2$.",
+        "points": 2,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Déterminer une représentation paramétrique de la droite $d_1$, puis un vecteur directeur $\\vec{v}$ de la droite $d_2$.",
+            "points": 0.5,
+            "revoir": "l-equations-espace-007",
+            "indices": [
+              "Revois comment lire une droite sur une représentation paramétrique : le point se lit dans les nombres seuls, le vecteur directeur dans les coefficients du paramètre. Une coordonnée qui ne contient pas le paramètre a un coefficient nul.",
+              "Pour $d_1$, écris $x = x_H + ta$, $y = y_H + tb$, $z = z_H + tc$ avec les coordonnées de $\\vec{u}$ ; garde une autre lettre que $s$ pour ce paramètre."
+            ],
+            "attenduCorrecteur": "- $d_1$ : $x = 2 + t$, $y = 3 - t$, $z = t$, avec $t \\in \\mathbb{R}$ (toute représentation équivalente est acceptée) : 0,25 pt.\n- $\\vec{v}\\begin{pmatrix} 2 \\\\ 1 \\\\ 0 \\end{pmatrix}$, lu sur les coefficients de $s$ (tout vecteur non nul colinéaire est accepté) : 0,25 pt.",
+            "solution": "La droite $d_1$ passe par $H(2\\,;\\,3\\,;\\,0)$ et elle est dirigée par $\\vec{u}\\begin{pmatrix} 1 \\\\ -1 \\\\ 1 \\end{pmatrix}$. En notant $t$ son paramètre, une représentation paramétrique de $d_1$ est :\n\n$$\\begin{cases} x = 2 + t \\\\ y = 3 - t \\\\ z = t \\end{cases} \\quad t \\in \\mathbb{R}.$$\n\nDans la représentation de $d_2$, les coefficients de $s$ sont $2$, $1$ et $0$ : la cote $z = 5$ ne dépend pas de $s$.\n\n**Un vecteur directeur de $d_2$ est $\\vec{v}\\begin{pmatrix} 2 \\\\ 1 \\\\ 0 \\end{pmatrix}$.**",
+            "erreurFrequente": "Prendre $\\begin{pmatrix} -3 \\\\ 0 \\\\ 5 \\end{pmatrix}$ pour vecteur directeur de $d_2$ : ce sont les coordonnées du point de $d_2$ obtenu pour $s = 0$, pas celles d'un vecteur directeur."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Démontrer que les droites $d_1$ et $d_2$ ne sont pas parallèles.",
+            "points": 0.5,
+            "revoir": "l-equations-espace-053",
+            "indices": [
+              "Deux droites sont parallèles si et seulement si leurs vecteurs directeurs sont colinéaires. Suppose $\\vec{v} = \\lambda\\,\\vec{u}$ et compare ce que donnent la première et la troisième coordonnée."
+            ],
+            "attenduCorrecteur": "- Critère : $d_1$ et $d_2$ sont parallèles si et seulement si $\\vec{u}$ et $\\vec{v}$ sont colinéaires : 0,25 pt.\n- Non-colinéarité justifiée ($\\vec{v} = \\lambda\\,\\vec{u}$ donnerait $\\lambda = 2$ puis $\\lambda = 0$) et conclusion : 0,25 pt.",
+            "solution": "Les droites $d_1$ et $d_2$ sont parallèles si et seulement si leurs vecteurs directeurs $\\vec{u}$ et $\\vec{v}$ sont colinéaires. S'il existait un réel $\\lambda$ (lambda) tel que $\\vec{v} = \\lambda\\,\\vec{u}$, la première coordonnée donnerait $2 = \\lambda$ et la troisième $0 = \\lambda$ : c'est impossible.\n\n**Les vecteurs $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires : les droites $d_1$ et $d_2$ ne sont pas parallèles.**"
+          },
+          {
+            "id": "q1c",
+            "label": "c)",
+            "enonce": "Démontrer que les droites $d_1$ et $d_2$ ne sont pas sécantes.",
+            "points": 0.75,
+            "revoir": "l-equations-espace-053",
+            "indices": [
+              "Revois la méthode : écris l'égalité des trois coordonnées d'un point de $d_1$ (paramètre $t$) et d'un point de $d_2$ (paramètre $s$). Ce sont deux inconnues différentes.",
+              "Commence par l'équation la plus simple, celle des cotes : elle donne $t$ tout de suite. Déduis $s$ de celle des ordonnées, puis teste la dernière."
+            ],
+            "attenduCorrecteur": "- Système avec deux paramètres distincts : $2 + t = 2s - 3$, $3 - t = s$, $t = 5$ : 0,25 pt.\n- Résolution : $t = 5$, puis $s = -2$, et la première équation devient $7 = -7$, ce qui est faux : 0,25 pt.\n- Conclusion : aucun point commun, les droites ne sont pas sécantes : 0,25 pt.",
+            "solution": "Un point commun à $d_1$ et à $d_2$ correspondrait à des réels $t$ et $s$ tels que :\n\n$$\\begin{cases} 2 + t = 2s - 3 \\\\ 3 - t = s \\\\ t = 5 \\end{cases}$$\n\nLa troisième équation donne $t = 5$, puis la deuxième $s = 3 - 5 = -2$. Dans la première équation, on obtient alors $2 + 5 = 7$ à gauche et $2 \\times (-2) - 3 = -7$ à droite : $7 \\neq -7$. Le système n'a pas de solution.\n\n**Les droites $d_1$ et $d_2$ n'ont aucun point commun : elles ne sont pas sécantes.**"
+          },
+          {
+            "id": "q1d",
+            "label": "d)",
+            "enonce": "Quelle est la position relative des droites $d_1$ et $d_2$ ?",
+            "points": 0.25,
+            "revoir": "l-vecteurs-espace-040",
+            "indices": [
+              "Revois les positions relatives possibles de deux droites de l'espace : lesquelles les questions b et c excluent-elles ?"
+            ],
+            "attenduCorrecteur": "- Ni parallèles ni sécantes, donc non coplanaires (deux droites coplanaires sont parallèles ou sécantes) : 0,25 pt.",
+            "solution": "D'après les questions b et c, les droites $d_1$ et $d_2$ ne sont ni parallèles, ni sécantes. Or deux droites coplanaires sont soit parallèles, soit sécantes.\n\n**Les droites $d_1$ et $d_2$ sont non coplanaires.**"
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Le vecteur $\\vec{w}$ et le plan $\\mathcal{P}$.",
+        "points": 2,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Vérifier que le vecteur $\\vec{w}\\begin{pmatrix} -1 \\\\ 2 \\\\ 3 \\end{pmatrix}$ est orthogonal à $\\vec{u}$ et à $\\vec{v}$.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-022",
+            "indices": [
+              "Deux vecteurs sont orthogonaux lorsque leur produit scalaire est nul ; le repère étant orthonormé, calcule-le avec $xx' + yy' + zz'$."
+            ],
+            "attenduCorrecteur": "- $\\vec{w} \\cdot \\vec{u} = -1 - 2 + 3 = 0$ : 0,25 pt.\n- $\\vec{w} \\cdot \\vec{v} = -2 + 2 + 0 = 0$, et conclusion : 0,25 pt.",
+            "solution": "Le repère est orthonormé, donc :\n\n$$\\vec{w} \\cdot \\vec{u} = (-1) \\times 1 + 2 \\times (-1) + 3 \\times 1 = -1 - 2 + 3 = 0$$\n\net\n\n$$\\vec{w} \\cdot \\vec{v} = (-1) \\times 2 + 2 \\times 1 + 3 \\times 0 = -2 + 2 + 0 = 0.$$\n\n**Le vecteur $\\vec{w}$ est orthogonal à $\\vec{u}$ et à $\\vec{v}$.**"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "On considère le plan $\\mathcal{P}$ passant par le point $H$ et dirigé par les vecteurs $\\vec{u}$ et $\\vec{w}$. Démontrer qu'une équation cartésienne du plan $\\mathcal{P}$ est $5x + 4y - z - 22 = 0$.",
+            "points": 0.75,
+            "revoir": "l-equations-espace-025",
+            "indices": [
+              "Revois la méthode : le vecteur $\\vec{n}\\begin{pmatrix} 5 \\\\ 4 \\\\ -1 \\end{pmatrix}$, lu sur l'équation proposée, doit être normal à $\\mathcal{P}$, et le point $H$ doit vérifier l'équation.",
+              "Pour que $\\vec{n}$ soit normal à $\\mathcal{P}$, deux produits scalaires suffisent : avec $\\vec{u}$ et avec $\\vec{w}$, qui ne sont pas colinéaires."
+            ],
+            "attenduCorrecteur": "- $\\vec{n} \\cdot \\vec{u} = 5 - 4 - 1 = 0$ et $\\vec{n} \\cdot \\vec{w} = -5 + 8 - 3 = 0$, avec $\\vec{u}$ et $\\vec{w}$ non colinéaires : $\\vec{n}$ est normal à $\\mathcal{P}$ : 0,5 pt.\n- Une équation est donc $5x + 4y - z + d = 0$, et $H \\in \\mathcal{P}$ donne $d = -22$ (ou : $H$ vérifie l'équation proposée) : 0,25 pt.",
+            "solution": "Les vecteurs $\\vec{u}\\begin{pmatrix} 1 \\\\ -1 \\\\ 1 \\end{pmatrix}$ et $\\vec{w}\\begin{pmatrix} -1 \\\\ 2 \\\\ 3 \\end{pmatrix}$ ne sont pas colinéaires : $\\vec{w} = \\lambda\\,\\vec{u}$ donnerait $\\lambda = -1$ sur la première coordonnée et $\\lambda = -2$ sur la deuxième.\n\nSoit $\\vec{n}\\begin{pmatrix} 5 \\\\ 4 \\\\ -1 \\end{pmatrix}$. Le repère est orthonormé, donc $\\vec{n} \\cdot \\vec{u} = 5 - 4 - 1 = 0$ et $\\vec{n} \\cdot \\vec{w} = -5 + 8 - 3 = 0$. Le vecteur $\\vec{n}$, non nul, est orthogonal à deux vecteurs non colinéaires qui dirigent $\\mathcal{P}$ : il est normal à $\\mathcal{P}$. Ce plan a donc une équation de la forme $5x + 4y - z + d = 0$.\n\nLe point $H(2\\,;\\,3\\,;\\,0)$ appartient à $\\mathcal{P}$ : $5 \\times 2 + 4 \\times 3 - 0 + d = 0$, soit $22 + d = 0$, donc $d = -22$.\n\n**Une équation cartésienne du plan $\\mathcal{P}$ est $5x + 4y - z - 22 = 0$.**"
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "Démontrer que l'intersection du plan $\\mathcal{P}$ et de la droite $d_2$ est le point $M(3\\,;\\,3\\,;\\,5)$.",
+            "points": 0.75,
+            "revoir": "l-equations-espace-050",
+            "indices": [
+              "Revois la propriété : remplace $x$, $y$, $z$ dans l'équation de $\\mathcal{P}$ par les expressions de $d_2$ en fonction de $s$, puis résous l'équation obtenue.",
+              "Développe $5(2s - 3)$, puis regroupe les termes en $s$ d'un côté et les nombres seuls de l'autre. Combien de solutions l'équation a-t-elle ?"
+            ],
+            "attenduCorrecteur": "- Substitution : $5(2s - 3) + 4s - 5 - 22 = 0$, soit $14s - 42 = 0$ : 0,25 pt.\n- Coefficient de $s$ non nul : une seule solution, $s = 3$, donc un seul point commun : 0,25 pt.\n- Pour $s = 3$, on obtient $(3\\,;\\,3\\,;\\,5)$ : c'est $M$ : 0,25 pt.",
+            "solution": "Un point de $d_2$, de paramètre $s$, appartient à $\\mathcal{P}$ si et seulement si :\n\n$$5(2s - 3) + 4s - 5 - 22 = 0 \\iff 10s - 15 + 4s - 27 = 0 \\iff 14s - 42 = 0 \\iff s = 3.$$\n\nCette équation a une seule solution : la droite $d_2$ et le plan $\\mathcal{P}$ ont un seul point commun. Pour $s = 3$ : $x = 2 \\times 3 - 3 = 3$, $y = 3$ et $z = 5$.\n\n**L'intersection du plan $\\mathcal{P}$ et de la droite $d_2$ est le point $M(3\\,;\\,3\\,;\\,5)$.**"
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $\\Delta$ la droite passant par le point $M$ et de vecteur directeur $\\vec{w}$. Une représentation paramétrique de $\\Delta$ est donc :\n\n$$\\begin{cases} x = 3 - r \\\\ y = 3 + 2r \\\\ z = 5 + 3r \\end{cases} \\quad r \\in \\mathbb{R}.$$",
+        "points": 2,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Justifier que les droites $\\Delta$ et $d_1$ sont perpendiculaires en un point $L$ dont on déterminera les coordonnées.",
+            "points": 1,
+            "revoir": "l-equations-espace-053",
+            "indices": [
+              "Deux droites sont perpendiculaires lorsqu'elles sont orthogonales et sécantes. L'orthogonalité découle de la question 2.a ; il reste à trouver un point commun, avec deux paramètres différents.",
+              "Écris l'égalité des coordonnées d'un point de $d_1$ (paramètre $t$) et d'un point de $\\Delta$ (paramètre $r$). L'équation des ordonnées donne $t$ en fonction de $r$ : remplace dans celle des cotes, puis teste la première."
+            ],
+            "attenduCorrecteur": "- Orthogonalité : $\\vec{w} \\cdot \\vec{u} = 0$ (question 2.a), donc $\\Delta$ et $d_1$ sont orthogonales : 0,25 pt.\n- Système $2 + t = 3 - r$, $3 - t = 3 + 2r$, $t = 5 + 3r$, et résolution : $t = -2r$, puis $r = -1$ et $t = 2$ : 0,25 pt.\n- Vérification de la dernière équation ($4 = 4$) : les droites sont sécantes : 0,25 pt.\n- Point commun $L(4\\,;\\,1\\,;\\,2)$ et conclusion : orthogonales et sécantes en $L$, donc perpendiculaires en $L$ : 0,25 pt.",
+            "solution": "D'après la question 2.a, $\\vec{w} \\cdot \\vec{u} = 0$ : les vecteurs directeurs de $\\Delta$ et de $d_1$ sont orthogonaux, donc les droites $\\Delta$ et $d_1$ sont orthogonales.\n\nCherchons un point commun : il faut des réels $t$ et $r$ tels que\n\n$$\\begin{cases} 2 + t = 3 - r \\\\ 3 - t = 3 + 2r \\\\ t = 5 + 3r \\end{cases}$$\n\nLa deuxième équation donne $t = -2r$. En remplaçant dans la troisième : $-2r = 5 + 3r$, soit $-5r = 5$, donc $r = -1$, puis $t = 2$. On teste ce couple dans la première équation : $2 + 2 = 4$ et $3 - (-1) = 4$. Elle est vérifiée : les droites $\\Delta$ et $d_1$ sont sécantes.\n\nAvec $t = 2$ dans la représentation de $d_1$, on obtient $x = 4$, $y = 1$, $z = 2$ ; avec $r = -1$ dans celle de $\\Delta$, on retrouve le même point.\n\n**Les droites $\\Delta$ et $d_1$ sont orthogonales et sécantes : elles sont perpendiculaires au point $L(4\\,;\\,1\\,;\\,2)$.**",
+            "erreurFrequente": "Conclure « perpendiculaires » avec le seul produit scalaire nul : deux droites orthogonales peuvent être non coplanaires ; il faut aussi un point commun."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Expliquer pourquoi la droite $\\Delta$ répond au problème posé.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-033",
+            "indices": [
+              "Pour $d_1$, c'est la question a. Pour $d_2$, cherche un point commun déjà connu, et un produit scalaire déjà calculé."
+            ],
+            "attenduCorrecteur": "- $M$ appartient à $d_2$ (question 2.c) et à $\\Delta$ : les droites sont sécantes en $M$ ; $\\vec{w} \\cdot \\vec{v} = 0$ (question 2.a) : elles sont orthogonales ; donc $\\Delta$ est perpendiculaire à $d_2$ en $M$ : 0,25 pt.\n- Avec la question a ($\\Delta$ perpendiculaire à $d_1$ en $L$), conclusion rédigée : 0,25 pt.",
+            "solution": "Le point $M$ appartient à $d_2$ (question 2.c) et à $\\Delta$, qui passe par $M$ (paramètre $r = 0$) : les droites $\\Delta$ et $d_2$ sont sécantes en $M$. De plus, $\\vec{w} \\cdot \\vec{v} = 0$ (question 2.a) : elles sont orthogonales. Donc $\\Delta$ est perpendiculaire à $d_2$ en $M$.\n\nD'après la question a, $\\Delta$ est aussi perpendiculaire à $d_1$ en $L$.\n\n**La droite $\\Delta$ est perpendiculaire à la fois à $d_1$, en $L$, et à $d_2$, en $M$ : elle répond au problème posé.**"
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "On admet que le point $L$ a pour coordonnées $(4\\,;\\,1\\,;\\,2)$. Démontrer que $L$ est le projeté orthogonal du point $M$ sur la droite $d_1$, puis calculer la distance du point $M$ à la droite $d_1$.",
+            "points": 0.5,
+            "revoir": "l-equations-espace-039",
+            "indices": [
+              "Revois les deux conditions : $L$ doit être sur $d_1$, et $\\overrightarrow{ML}$ doit être orthogonal au vecteur directeur $\\vec{u}$. Les questions précédentes donnent presque tout.",
+              "Calcule $\\overrightarrow{ML}$ et compare-le à $\\vec{w}$ : $M$ et $L$ sont deux points de $\\Delta$."
+            ],
+            "attenduCorrecteur": "- $L \\in d_1$ et $\\overrightarrow{ML}\\begin{pmatrix} 1 \\\\ -2 \\\\ -3 \\end{pmatrix} = -\\vec{w}$ est orthogonal à $\\vec{u}$ : $L$ est le projeté orthogonal de $M$ sur $d_1$ : 0,25 pt.\n- La distance de $M$ à $d_1$ est $ML = \\sqrt{1 + 4 + 9} = \\sqrt{14}$ : 0,25 pt.",
+            "solution": "Le point $L$ appartient à $d_1$ (question a) ; on le vérifie avec $t = 2$ dans la représentation de $d_1$. De plus, $\\overrightarrow{ML}\\begin{pmatrix} 4 - 3 \\\\ 1 - 3 \\\\ 2 - 5 \\end{pmatrix}$, soit $\\overrightarrow{ML}\\begin{pmatrix} 1 \\\\ -2 \\\\ -3 \\end{pmatrix}$ : c'est $-\\vec{w}$. Comme $\\vec{w} \\cdot \\vec{u} = 0$, on a $\\overrightarrow{ML} \\cdot \\vec{u} = 0$. Le point $L$ est sur $d_1$ et $\\overrightarrow{ML}$ est orthogonal au vecteur directeur de $d_1$ : **$L$ est le projeté orthogonal de $M$ sur la droite $d_1$.**\n\nLa distance du point $M$ à la droite $d_1$ est donc $ML$, et le repère est orthonormé :\n\n$$ML = \\sqrt{1^2 + (-2)^2 + (-3)^2} = \\sqrt{14}.$$\n\n**La distance du point $M$ à la droite $d_1$ est $\\sqrt{14}$.**"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-equations-espace-004",
+    "chapitre": "equations-espace",
+    "notions": [
+      "n-equations-espace-equation-plan",
+      "n-equations-espace-intersections",
+      "n-equations-espace-projete",
+      "n-equations-espace-representation-parametrique"
+    ],
+    "capacites": [
+      "bo-m-representations-01",
+      "bo-m-representations-02",
+      "bo-m-representations-03",
+      "bo-m-representations-04",
+      "bo-m-representations-05",
+      "bo-m-representations-06",
+      "bo-m-vecteurs-03",
+      "bo-m-vecteurs-06",
+      "bo-m-vecteurs-10",
+      "bo-m-orthogonalite-02",
+      "bo-m-orthogonalite-04",
+      "bo-m-orthogonalite-07",
+      "bo-m-orthogonalite-08",
+      "bo-m-orthogonalite-10",
+      "bo-m-orthogonalite-11"
+    ],
+    "titre": "Plans perpendiculaires, droite contenue dans un plan, projeté sur une droite",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2026-polynesie-j2",
+      "adaptation": "Exercice 3 (5 points) : points A(−1 ; 1 ; 1), B(1 ; −6 ; −1) et C(−5 ; 2 ; 3), vecteur n(6 ; −2 ; 13) normal au plan (ABC), équation 6x − 2y + 13z − 5 = 0, plan (P) d'équation 8x − 2y − 4z + 18 = 0 perpendiculaire au plan (ABC), droite (d), point E(−3 ; −5 ; 1), point H(−2 ; 1 ; 0), distance du point A à la droite (d), triangle AHE rectangle d'aire √19 : conservés, dans le même ordre. Ajoutée : question 3.b (la droite (d) est contenue dans le plan (P)). Question 4.a : « Montrer que H est le projeté orthogonal de A sur (d) » devient « Déterminer les coordonnées du projeté orthogonal H de A sur (d) » ; les coordonnées de H sont ensuite données (« On admet que… ») pour que la suite reste faisable. La définition des plans perpendiculaires, admise dans le sujet, est rappelée dans l'énoncé ; le plan (P) est noté avec un P rond, comme dans le programme. Rien n'est retiré pour un chapitre non encore écrit. Calculatrice non autorisée dans cette version. Solution écrite pour le site."
+    },
+    "preambule": "Dans l'espace muni d'un repère orthonormé $\\left(O\\,;\\,\\vec{i}, \\vec{j}, \\vec{k}\\right)$, on considère les points $A(-1\\,;\\,1\\,;\\,1)$, $B(1\\,;\\,-6\\,;\\,-1)$ et $C(-5\\,;\\,2\\,;\\,3)$.\n\nLes questions s'enchaînent, mais chacune peut être traitée en admettant les résultats des précédentes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Le plan $(ABC)$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Démontrer que les points $A$, $B$ et $C$ ne sont pas alignés.",
+            "points": 0.5,
+            "revoir": "l-vecteurs-espace-024",
+            "indices": [
+              "Revois la méthode : trois points sont alignés si et seulement si $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ sont colinéaires. Calcule leurs coordonnées, puis compare ce que donnent deux coordonnées."
+            ],
+            "attenduCorrecteur": "- $\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ -7 \\\\ -2 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} -4 \\\\ 1 \\\\ 2 \\end{pmatrix}$ : 0,25 pt.\n- Non-colinéarité justifiée ($\\overrightarrow{AC} = \\lambda\\,\\overrightarrow{AB}$ donnerait $\\lambda = -2$ et $\\lambda = -\\dfrac{1}{7}$) et conclusion : 0,25 pt.",
+            "solution": "On a $\\overrightarrow{AB}\\begin{pmatrix} 1 + 1 \\\\ -6 - 1 \\\\ -1 - 1 \\end{pmatrix}$, soit $\\overrightarrow{AB}\\begin{pmatrix} 2 \\\\ -7 \\\\ -2 \\end{pmatrix}$, et $\\overrightarrow{AC}\\begin{pmatrix} -5 + 1 \\\\ 2 - 1 \\\\ 3 - 1 \\end{pmatrix}$, soit $\\overrightarrow{AC}\\begin{pmatrix} -4 \\\\ 1 \\\\ 2 \\end{pmatrix}$.\n\nS'il existait un réel $\\lambda$ (lambda) tel que $\\overrightarrow{AC} = \\lambda\\,\\overrightarrow{AB}$, la première coordonnée donnerait $-4 = 2\\lambda$, soit $\\lambda = -2$, et la deuxième $1 = -7\\lambda$, soit $\\lambda = -\\dfrac{1}{7}$ : c'est impossible. Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ ne sont pas colinéaires.\n\n**Les points $A$, $B$ et $C$ ne sont pas alignés : ils définissent le plan $(ABC)$.**"
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Démontrer que le vecteur $\\vec{n}\\begin{pmatrix} 6 \\\\ -2 \\\\ 13 \\end{pmatrix}$ est normal au plan $(ABC)$.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-040",
+            "indices": [
+              "Revois la méthode : il faut deux produits scalaires nuls, avec deux vecteurs non colinéaires du plan $(ABC)$, par exemple ceux de la question a."
+            ],
+            "attenduCorrecteur": "- $\\vec{n} \\cdot \\overrightarrow{AB} = 12 + 14 - 26 = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = -24 - 2 + 26 = 0$ : 0,25 pt.\n- Conclusion : $\\vec{n}$, non nul, est orthogonal à deux vecteurs non colinéaires du plan, donc normal au plan $(ABC)$ : 0,25 pt.",
+            "solution": "Le repère est orthonormé, donc :\n\n$$\\vec{n} \\cdot \\overrightarrow{AB} = 6 \\times 2 + (-2) \\times (-7) + 13 \\times (-2) = 12 + 14 - 26 = 0$$\n\net\n\n$$\\vec{n} \\cdot \\overrightarrow{AC} = 6 \\times (-4) + (-2) \\times 1 + 13 \\times 2 = -24 - 2 + 26 = 0.$$\n\nLe vecteur $\\vec{n}$, non nul, est orthogonal aux vecteurs non colinéaires $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, qui dirigent le plan $(ABC)$.\n\n**$\\vec{n}$ est normal au plan $(ABC)$.**"
+          },
+          {
+            "id": "q1c",
+            "label": "c)",
+            "enonce": "En déduire que le plan $(ABC)$ admet pour équation cartésienne $6x - 2y + 13z - 5 = 0$.",
+            "points": 0.5,
+            "revoir": "l-equations-espace-025",
+            "indices": [
+              "Revois la méthode : les coordonnées de $\\vec{n}$ donnent les coefficients de $x$, $y$ et $z$ ; le nombre seul s'obtient avec un point du plan."
+            ],
+            "attenduCorrecteur": "- Équation de la forme $6x - 2y + 13z + d = 0$, car $\\vec{n}$ est normal au plan : 0,25 pt.\n- $A \\in (ABC)$ : $-6 - 2 + 13 + d = 0$, d'où $d = -5$, et conclusion : 0,25 pt.",
+            "solution": "Le vecteur $\\vec{n}\\begin{pmatrix} 6 \\\\ -2 \\\\ 13 \\end{pmatrix}$ est normal au plan $(ABC)$ (question b) : ce plan a une équation de la forme $6x - 2y + 13z + d = 0$, où $d$ est un réel.\n\nLe point $A(-1\\,;\\,1\\,;\\,1)$ appartient au plan : $6 \\times (-1) - 2 \\times 1 + 13 \\times 1 + d = 0$, soit $5 + d = 0$, donc $d = -5$.\n\nContrôle : pour $B$, $6 + 12 - 13 - 5 = 0$ ; pour $C$, $-30 - 4 + 39 - 5 = 0$.\n\n**Le plan $(ABC)$ admet pour équation cartésienne $6x - 2y + 13z - 5 = 0$.**"
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère le plan $\\mathcal{P}$ d'équation cartésienne $8x - 2y - 4z + 18 = 0$. On rappelle que deux plans sont perpendiculaires lorsque leurs vecteurs normaux sont orthogonaux.\n\nDémontrer que les plans $(ABC)$ et $\\mathcal{P}$ sont perpendiculaires.",
+        "points": 0.5,
+        "revoir": "l-equations-espace-068",
+        "indices": [
+          "Lis un vecteur normal à $\\mathcal{P}$ dans les coefficients de $x$, $y$ et $z$ de son équation, puis calcule son produit scalaire avec $\\vec{n}$."
+        ],
+        "attenduCorrecteur": "- Vecteur normal à $\\mathcal{P}$ lu sur l'équation : $\\vec{n}'\\begin{pmatrix} 8 \\\\ -2 \\\\ -4 \\end{pmatrix}$ : 0,25 pt.\n- $\\vec{n} \\cdot \\vec{n}' = 48 + 4 - 52 = 0$, donc les plans sont perpendiculaires : 0,25 pt.",
+        "solution": "Sur l'équation de $\\mathcal{P}$, on lit le vecteur normal $\\vec{n}'\\begin{pmatrix} 8 \\\\ -2 \\\\ -4 \\end{pmatrix}$. Le repère est orthonormé, donc :\n\n$$\\vec{n} \\cdot \\vec{n}' = 6 \\times 8 + (-2) \\times (-2) + 13 \\times (-4) = 48 + 4 - 52 = 0.$$\n\nLes vecteurs normaux $\\vec{n}$ et $\\vec{n}'$ sont orthogonaux.\n\n**Les plans $(ABC)$ et $\\mathcal{P}$ sont perpendiculaires.**"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $(d)$ la droite de représentation paramétrique :\n\n$$\\begin{cases} x = -4 + t \\\\ y = -11 + 6t \\\\ z = 2 - t \\end{cases} \\quad t \\in \\mathbb{R}.$$",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Démontrer que la droite $(d)$ coupe le plan $(ABC)$ en un unique point $E$, de coordonnées $(-3\\,;\\,-5\\,;\\,1)$.",
+            "points": 0.75,
+            "revoir": "l-equations-espace-050",
+            "indices": [
+              "Revois la propriété : remplace $x$, $y$, $z$ dans l'équation du plan $(ABC)$ par les expressions de $(d)$. Tu obtiens une équation de la forme $\\alpha t + \\beta = 0$.",
+              "Développe chaque produit : $6(-4 + t)$, $-2(-11 + 6t)$ et $13(2 - t)$. Pour qu'il y ait un seul point commun, le coefficient de $t$ doit être non nul."
+            ],
+            "attenduCorrecteur": "- Substitution : $6(-4 + t) - 2(-11 + 6t) + 13(2 - t) - 5 = 0$, soit $-19t + 19 = 0$ : 0,25 pt.\n- Coefficient de $t$ non nul : une seule solution, $t = 1$, donc un seul point commun : 0,25 pt.\n- Pour $t = 1$, on obtient $E(-3\\,;\\,-5\\,;\\,1)$ : 0,25 pt.",
+            "solution": "Un point de $(d)$, de paramètre $t$, appartient au plan $(ABC)$ si et seulement si :\n\n$$6(-4 + t) - 2(-11 + 6t) + 13(2 - t) - 5 = 0 \\iff -24 + 6t + 22 - 12t + 26 - 13t - 5 = 0 \\iff -19t + 19 = 0.$$\n\nLe coefficient de $t$, $-19$, n'est pas nul : l'équation a une seule solution, $t = 1$. La droite $(d)$ et le plan $(ABC)$ ont donc un seul point commun. Pour $t = 1$ : $x = -3$, $y = -11 + 6 = -5$ et $z = 1$.\n\n**La droite $(d)$ coupe le plan $(ABC)$ en un unique point, $E(-3\\,;\\,-5\\,;\\,1)$.**"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Démontrer que la droite $(d)$ est contenue dans le plan $\\mathcal{P}$.",
+            "points": 0.5,
+            "revoir": "l-equations-espace-051",
+            "indices": [
+              "Même méthode qu'à la question a, avec l'équation de $\\mathcal{P}$ : regarde ce que deviennent les termes en $t$ et les nombres seuls, puis revois les trois cas possibles."
+            ],
+            "attenduCorrecteur": "- Substitution : $8(-4 + t) - 2(-11 + 6t) - 4(2 - t) + 18 = 0$, soit $0 \\times t + 0 = 0$ : 0,25 pt.\n- Tout réel $t$ convient : tous les points de $(d)$ sont dans $\\mathcal{P}$, la droite est contenue dans le plan : 0,25 pt. Méthode acceptée aussi : deux points distincts de $(d)$ appartiennent à $\\mathcal{P}$.",
+            "solution": "Un point de $(d)$, de paramètre $t$, appartient à $\\mathcal{P}$ si et seulement si :\n\n$$8(-4 + t) - 2(-11 + 6t) - 4(2 - t) + 18 = 0 \\iff -32 + 8t + 22 - 12t - 8 + 4t + 18 = 0 \\iff 0 \\times t + 0 = 0.$$\n\nLes termes en $t$ s'annulent ($8t - 12t + 4t = 0$), ainsi que les nombres seuls ($-32 + 22 - 8 + 18 = 0$) : l'égalité est vraie pour tout réel $t$. Tous les points de $(d)$ appartiennent donc à $\\mathcal{P}$.\n\n**La droite $(d)$ est contenue dans le plan $\\mathcal{P}$.**",
+            "erreurFrequente": "Conclure « aucune solution » en voyant les termes en $t$ disparaître : ici l'égalité obtenue, $0 = 0$, est vraie quel que soit $t$. Seule une égalité fausse, comme $-2 = 0$, signifie que la droite est strictement parallèle au plan."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Le projeté orthogonal du point $A$ sur la droite $(d)$.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Déterminer les coordonnées du point $H$, projeté orthogonal du point $A$ sur la droite $(d)$.",
+            "points": 0.75,
+            "revoir": "l-equations-espace-042",
+            "indices": [
+              "Revois la méthode sur une droite : écris les coordonnées d'un point $H$ de $(d)$ en fonction de $t$, puis traduis le fait que $\\overrightarrow{AH}$ est orthogonal à un vecteur directeur de $(d)$.",
+              "Un vecteur directeur de $(d)$ est $\\vec{u}\\begin{pmatrix} 1 \\\\ 6 \\\\ -1 \\end{pmatrix}$, et $\\overrightarrow{AH}$ a pour coordonnées $(-3 + t\\,;\\,-12 + 6t\\,;\\,1 - t)$. Résous l'équation $\\overrightarrow{AH} \\cdot \\vec{u} = 0$, d'inconnue $t$."
+            ],
+            "attenduCorrecteur": "- Point de $(d)$ de paramètre $t$, $\\overrightarrow{AH}\\begin{pmatrix} -3 + t \\\\ -12 + 6t \\\\ 1 - t \\end{pmatrix}$, et condition $\\overrightarrow{AH} \\cdot \\vec{u} = 0$ avec $\\vec{u}\\begin{pmatrix} 1 \\\\ 6 \\\\ -1 \\end{pmatrix}$ : 0,25 pt.\n- Équation $38t - 76 = 0$, d'où $t = 2$ : 0,25 pt.\n- Coordonnées $H(-2\\,;\\,1\\,;\\,0)$ : 0,25 pt. Méthode acceptée aussi : intersection de $(d)$ avec le plan passant par $A$ et de vecteur normal $\\vec{u}$.",
+            "solution": "Un vecteur directeur de $(d)$ est $\\vec{u}\\begin{pmatrix} 1 \\\\ 6 \\\\ -1 \\end{pmatrix}$, lu sur les coefficients de $t$. Un point $H$ de $(d)$ a pour coordonnées $(-4 + t\\,;\\,-11 + 6t\\,;\\,2 - t)$, donc :\n\n$$\\overrightarrow{AH}\\begin{pmatrix} -4 + t + 1 \\\\ -11 + 6t - 1 \\\\ 2 - t - 1 \\end{pmatrix}, \\text{ soit } \\overrightarrow{AH}\\begin{pmatrix} -3 + t \\\\ -12 + 6t \\\\ 1 - t \\end{pmatrix}.$$\n\nLe point $H$ est le projeté orthogonal de $A$ sur $(d)$ si et seulement si $\\overrightarrow{AH} \\cdot \\vec{u} = 0$ :\n\n$$(-3 + t) + 6(-12 + 6t) - (1 - t) = 0 \\iff -3 + t - 72 + 36t - 1 + t = 0 \\iff 38t - 76 = 0 \\iff t = 2.$$\n\nPour $t = 2$ : $x = -2$, $y = -11 + 12 = 1$ et $z = 0$.\n\n**Le projeté orthogonal de $A$ sur la droite $(d)$ est le point $H(-2\\,;\\,1\\,;\\,0)$.**",
+            "erreurFrequente": "Oublier le signe moins devant la troisième coordonnée : le produit scalaire contient $(1 - t) \\times (-1) = -1 + t$, et non $1 - t$."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "On admet que le point $H$ a pour coordonnées $(-2\\,;\\,1\\,;\\,0)$. En déduire la distance du point $A$ à la droite $(d)$.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-054",
+            "indices": [
+              "Revois la propriété : la distance d'un point à une droite est la longueur qui sépare ce point de son projeté orthogonal sur la droite."
+            ],
+            "attenduCorrecteur": "- La distance de $A$ à $(d)$ est $AH$, car $H$ est le projeté orthogonal de $A$ sur $(d)$ : 0,25 pt.\n- $AH = \\sqrt{(-1)^2 + 0^2 + (-1)^2} = \\sqrt{2}$ : 0,25 pt.",
+            "solution": "Comme $H$ est le projeté orthogonal de $A$ sur $(d)$, la distance du point $A$ à la droite $(d)$ est $AH$. Or $\\overrightarrow{AH}\\begin{pmatrix} -2 + 1 \\\\ 1 - 1 \\\\ 0 - 1 \\end{pmatrix}$, soit $\\overrightarrow{AH}\\begin{pmatrix} -1 \\\\ 0 \\\\ -1 \\end{pmatrix}$, et le repère est orthonormé :\n\n$$AH = \\sqrt{(-1)^2 + 0^2 + (-1)^2} = \\sqrt{2}.$$\n\n**La distance du point $A$ à la droite $(d)$ est $\\sqrt{2}$.**"
+          },
+          {
+            "id": "q4c",
+            "label": "c)",
+            "enonce": "Montrer que le triangle $AHE$ est rectangle en $H$ et que son aire est égale à $\\sqrt{19}$ unités d'aire.",
+            "points": 0.5,
+            "revoir": "l-orthogonalite-espace-071",
+            "indices": [
+              "Revois la méthode : un triangle rectangle a pour aire la moitié du produit des côtés de l'angle droit. Pour l'angle droit, remarque que $H$ et $E$ sont deux points de $(d)$.",
+              "Calcule $\\overrightarrow{HE}$, puis $HE$ ; pour simplifier le produit des deux racines, décompose $76$ en un produit dont un facteur est un carré."
+            ],
+            "attenduCorrecteur": "- Angle droit : $H$ et $E$ sont deux points distincts de $(d)$ et $\\overrightarrow{HA}$ est orthogonal à $(d)$ (question a), ou $\\overrightarrow{HA} \\cdot \\overrightarrow{HE} = -1 + 0 + 1 = 0$ : 0,25 pt.\n- $HE = \\sqrt{38}$, puis aire $\\dfrac{AH \\times HE}{2} = \\dfrac{\\sqrt{2} \\times \\sqrt{38}}{2} = \\dfrac{\\sqrt{76}}{2} = \\dfrac{2\\sqrt{19}}{2} = \\sqrt{19}$ : 0,25 pt.",
+            "solution": "Les points $H$ (paramètre $t = 2$) et $E$ (paramètre $t = 1$) sont deux points distincts de $(d)$ : la droite $(HE)$ est la droite $(d)$. Comme $H$ est le projeté orthogonal de $A$ sur $(d)$, le vecteur $\\overrightarrow{HA}$ est orthogonal à $(d)$, donc à $\\overrightarrow{HE}$ : le triangle $AHE$ est rectangle en $H$. On peut le vérifier : $\\overrightarrow{HA}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$, $\\overrightarrow{HE}\\begin{pmatrix} -1 \\\\ -6 \\\\ 1 \\end{pmatrix}$ et $\\overrightarrow{HA} \\cdot \\overrightarrow{HE} = -1 + 0 + 1 = 0$.\n\nOr $HE = \\sqrt{(-1)^2 + (-6)^2 + 1^2} = \\sqrt{38}$ et $AH = \\sqrt{2}$ (question b). L'aire du triangle rectangle $AHE$ vaut :\n\n$$\\mathcal{A} = \\dfrac{AH \\times HE}{2} = \\dfrac{\\sqrt{2} \\times \\sqrt{38}}{2} = \\dfrac{\\sqrt{76}}{2} = \\dfrac{\\sqrt{4 \\times 19}}{2} = \\dfrac{2\\sqrt{19}}{2} = \\sqrt{19}.$$\n\n**Le triangle $AHE$ est rectangle en $H$ et son aire est égale à $\\sqrt{19}$ unités d'aire.**"
+          }
+        ]
+      }
+    ]
+  }
+]

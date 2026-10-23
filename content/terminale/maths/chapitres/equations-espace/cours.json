@@ -1,0 +1,1133 @@
+{
+  "chapitre": "equations-espace",
+  "sections": [
+    {
+      "notion": "n-equations-espace-representation-parametrique",
+      "blocs": [
+        {
+          "id": "l-equations-espace-001",
+          "type": "idee",
+          "texte": "Un drone part du point $A$ et vole en ligne droite : à chaque seconde, il avance du même vecteur $\\vec{u}$. Au bout de $t$ secondes, il est au point $M$ tel que $\\overrightarrow{AM} = t\\,\\vec{u}$. En coordonnées, cela fait trois égalités, une par coordonnée, qui ne dépendent que du nombre $t$. Quand $t$ parcourt tous les réels, même négatifs, $M$ parcourt toute la droite. Ces trois égalités forment une représentation paramétrique de la droite."
+        },
+        {
+          "id": "l-equations-espace-002",
+          "type": "rappel",
+          "titre": "Rappel : droite définie par un point et un vecteur directeur",
+          "texte": "Soit $A$ un point et $\\vec{u}$ un vecteur non nul. La droite $d$ passant par $A$ et de vecteur directeur $\\vec{u}$ est l'ensemble des points $M$ tels que $\\overrightarrow{AM} = t\\,\\vec{u}$ pour un réel $t$.\n\nDans un repère, deux vecteurs sont égaux si et seulement s'ils ont les mêmes coordonnées. Pour $A(x_A\\,;\\,y_A\\,;\\,z_A)$ et $M(x\\,;\\,y\\,;\\,z)$, le vecteur $\\overrightarrow{AM}$ a pour coordonnées $\\begin{pmatrix} x - x_A \\\\ y - y_A \\\\ z - z_A \\end{pmatrix}$ : arrivée moins départ.",
+          "lien": "l-vecteurs-espace-021"
+        },
+        {
+          "id": "l-equations-espace-003",
+          "type": "definition",
+          "titre": "Représentation paramétrique d'une droite",
+          "capacites": ["bo-m-representations-01"],
+          "texte": "L'espace est muni d'un repère $\\left(O\\,;\\,\\vec{i}, \\vec{j}, \\vec{k}\\right)$, orthonormé dans tout ce chapitre. Soit $d$ la droite passant par $A(x_A\\,;\\,y_A\\,;\\,z_A)$ et de vecteur directeur $\\vec{u}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$, non nul.\n\nUn point $M(x\\,;\\,y\\,;\\,z)$ est sur $d$ si et seulement s'il existe un réel $t$ tel que :\n\n$$\\begin{cases} x = x_A + ta \\\\ y = y_A + tb \\\\ z = z_A + tc \\end{cases}$$\n\nCes trois égalités traduisent $\\overrightarrow{AM} = t\\,\\vec{u}$ coordonnée par coordonnée. Ce système, accompagné de « $t \\in \\mathbb{R}$ », est une **représentation paramétrique** de $d$ ; le réel $t$ est le **paramètre**. « $t \\in \\mathbb{R}$ » se lit « $t$ appartient à l'ensemble des réels ». Chaque valeur de $t$ donne un point de $d$, et chaque point de $d$ correspond à une seule valeur de $t$."
+        },
+        {
+          "id": "l-equations-espace-004",
+          "type": "figure",
+          "titre": "Le paramètre $t$ repère les points de la droite",
+          "capacites": ["bo-m-representations-01"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/droite-point-vecteur.svg",
+              "alt": "Une droite d. Sur elle, le point A et le vecteur u, flèche bleue qui part de A le long de la droite. Le point M1, marqué t = 2, est deux longueurs de u plus loin dans le sens de u ; le point M2, marqué t = −1, est une longueur de u en arrière. Le point N est hors de la droite : le vecteur AN, en gris, n'est pas un multiple de u.",
+              "width": 570,
+              "height": 215
+            },
+            "caption": "Chaque valeur du paramètre t donne un point de d : t = 0 donne A, t = 2 donne M1 et t = −1 donne M2. Le point N, hors de d, ne correspond à aucune valeur de t."
+          }
+        },
+        {
+          "id": "l-equations-espace-005",
+          "type": "exemple",
+          "titre": "Écrire une représentation paramétrique, placer des points",
+          "capacites": ["bo-m-representations-01", "bo-m-representations-03"],
+          "enonce": "Soit $d$ la droite passant par $A(1\\,;\\,-2\\,;\\,3)$ et de vecteur directeur $\\vec{u}\\begin{pmatrix} 2 \\\\ 1 \\\\ -1 \\end{pmatrix}$.\n\n**1.** Donner une représentation paramétrique de $d$.\n\n**2.** Quels points de $d$ obtient-on pour $t = 2$, puis pour $t = -1$ ?\n\n**3.** Le point $B(7\\,;\\,1\\,;\\,0)$ est-il sur $d$ ?",
+          "etapes": [
+            {
+              "texte": "**1.** $M(x\\,;\\,y\\,;\\,z)$ est sur $d$ si et seulement si $\\overrightarrow{AM} = t\\,\\vec{u}$ pour un réel $t$, c'est-à-dire $x - 1 = 2t$, $y + 2 = t$ et $z - 3 = -t$. Une représentation paramétrique de $d$ est donc :\n\n$$\\begin{cases} x = 1 + 2t \\\\ y = -2 + t \\\\ z = 3 - t \\end{cases} \\quad t \\in \\mathbb{R}.$$",
+              "pourquoi": "$\\overrightarrow{AM}$ a pour coordonnées $\\begin{pmatrix} x - 1 \\\\ y - (-2) \\\\ z - 3 \\end{pmatrix}$, et $y - (-2) = y + 2$. Les nombres seuls $1$, $-2$, $3$ sont les coordonnées de $A$ ; les coefficients de $t$, $2$, $1$, $-1$, sont celles de $\\vec{u}$."
+            },
+            {
+              "texte": "**2.** Pour $t = 2$ : $x = 1 + 4 = 5$, $y = -2 + 2 = 0$ et $z = 3 - 2 = 1$, d'où le point $(5\\,;\\,0\\,;\\,1)$. Pour $t = -1$ : $x = 1 - 2 = -1$, $y = -2 - 1 = -3$ et $z = 3 + 1 = 4$, d'où le point $(-1\\,;\\,-3\\,;\\,4)$.",
+              "pourquoi": "Pour $t = 0$, on retrouve $A$. Pour $t = -1$, on part de $A$ et l'on recule d'un vecteur $\\vec{u}$."
+            },
+            {
+              "texte": "**3.** $B$ est sur $d$ s'il existe un même réel $t$ tel que $7 = 1 + 2t$, $1 = -2 + t$ et $0 = 3 - t$. La première égalité donne $t = 3$, la deuxième $t = 3$, la troisième $t = 3$.",
+              "pourquoi": "$7 = 1 + 2t$ donne $2t = 6$, soit $t = 3$. Les trois égalités doivent être vraies pour la même valeur de $t$."
+            },
+            {
+              "texte": "**Conclusion** : une représentation paramétrique de $d$ est $x = 1 + 2t$, $y = -2 + t$, $z = 3 - t$, avec $t \\in \\mathbb{R}$. Le point $B$ est sur $d$ : il correspond à $t = 3$."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-006",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-01"],
+          "question": {
+            "enonce": "Quelle est une représentation paramétrique de la droite passant par $A(2\\,;\\,0\\,;\\,-1)$ et de vecteur directeur $\\vec{u}\\begin{pmatrix} 1 \\\\ -3 \\\\ 2 \\end{pmatrix}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\begin{cases} x = 1 + 2t \\\\ y = -3 \\\\ z = 2 - t \\end{cases}$, $t \\in \\mathbb{R}$",
+                "$\\begin{cases} x = 2 + t \\\\ y = -3t \\\\ z = 1 + 2t \\end{cases}$, $t \\in \\mathbb{R}$",
+                "$\\begin{cases} x = 2 + t \\\\ y = -3t \\\\ z = -1 + 2t \\end{cases}$, $t \\in \\mathbb{R}$",
+                "$\\begin{cases} x = 2t \\\\ y = 0 \\\\ z = -t \\end{cases}$, $t \\in \\mathbb{R}$"
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Les rôles sont échangés : ce système passe par le point $(1\\,;\\,-3\\,;\\,2)$, qui a les coordonnées de $\\vec{u}$, et il est dirigé par $\\begin{pmatrix} 2 \\\\ 0 \\\\ -1 \\end{pmatrix}$, qui a celles de $A$.",
+                "Erreur de signe sur la troisième égalité : pour $t = 0$, elle donne $z = 1$, alors que $A$ a pour troisième coordonnée $-1$.",
+                null,
+                "Ce système passe par l'origine, obtenue pour $t = 0$, et il est dirigé par $\\begin{pmatrix} 2 \\\\ 0 \\\\ -1 \\end{pmatrix}$ : il décrit la droite $(OA)$."
+              ]
+            },
+            "explication": "Les nombres seuls sont les coordonnées du point $A(2\\,;\\,0\\,;\\,-1)$ ; les coefficients de $t$ sont celles de $\\vec{u}$ : $1$, $-3$ et $2$. Contrôle : pour $t = 0$, on doit retrouver $A$."
+          }
+        },
+        {
+          "id": "l-equations-espace-007",
+          "type": "propriete",
+          "titre": "Reconnaître une droite donnée par une représentation paramétrique",
+          "capacites": ["bo-m-representations-03", "bo-m-representations-01"],
+          "texte": "Inversement, tout système de cette forme décrit une droite, dont on lit un point et un vecteur directeur. Soit $x_0$, $y_0$, $z_0$, $a$, $b$, $c$ des réels, avec $a$, $b$, $c$ non tous nuls. L'ensemble des points $M(x\\,;\\,y\\,;\\,z)$ tels que\n\n$$\\begin{cases} x = x_0 + ta \\\\ y = y_0 + tb \\\\ z = z_0 + tc \\end{cases} \\quad t \\in \\mathbb{R}$$\n\nest la droite passant par le point $A(x_0\\,;\\,y_0\\,;\\,z_0)$, obtenu pour $t = 0$, et de vecteur directeur $\\vec{u}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$. En effet, ce système dit exactement $\\overrightarrow{AM} = t\\,\\vec{u}$. On lit donc le point dans les nombres seuls, et le vecteur dans les coefficients de $t$.\n\nUne même droite a une infinité de représentations paramétriques. On peut changer de point, et remplacer $\\vec{u}$ par n'importe quel vecteur non nul colinéaire à $\\vec{u}$.",
+          "conditions": [
+            "$a$, $b$, $c$ ne sont pas tous nuls : sinon, le système décrit un seul point.",
+            "Une égalité peut ne pas contenir $t$ : le coefficient de $t$ y vaut $0$, et cette coordonnée reste constante.",
+            "Le paramètre est le même dans les trois égalités, et il parcourt tous les réels."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-equations-espace-008",
+          "type": "exemple",
+          "titre": "Lire un point et un vecteur directeur, reconnaître la même droite",
+          "capacites": ["bo-m-representations-03"],
+          "enonce": "On donne la droite $d$ de représentation paramétrique $\\begin{cases} x = 2 - t \\\\ y = 3t \\\\ z = 1 \\end{cases}$, $t \\in \\mathbb{R}$, et la droite $d'$ de représentation paramétrique $\\begin{cases} x = 1 + 2s \\\\ y = 3 - 6s \\\\ z = 1 \\end{cases}$, $s \\in \\mathbb{R}$.\n\n**1.** Donner un point et un vecteur directeur de $d$.\n\n**2.** Démontrer que $d$ et $d'$ sont la même droite.",
+          "etapes": [
+            {
+              "texte": "**1.** On fait apparaître les coefficients : $x = 2 + (-1)\\,t$, $y = 0 + 3t$ et $z = 1 + 0\\,t$. Pour $t = 0$, on obtient le point $C(2\\,;\\,0\\,;\\,1)$. Un vecteur directeur est $\\vec{u}\\begin{pmatrix} -1 \\\\ 3 \\\\ 0 \\end{pmatrix}$.",
+              "pourquoi": "« $-t$ » a pour coefficient $-1$. Dans $y = 3t$, il n'y a pas de nombre seul : il vaut $0$. L'égalité $z = 1$ ne contient pas $t$ : le coefficient de $t$ est $0$. Le $1$ de $z = 1$ est une coordonnée du point, pas du vecteur."
+            },
+            {
+              "texte": "**2.** Un vecteur directeur de $d'$ est $\\vec{v}\\begin{pmatrix} 2 \\\\ -6 \\\\ 0 \\end{pmatrix}$. Or $\\vec{v} = -2\\,\\vec{u}$ : les deux vecteurs sont colinéaires, donc $d$ et $d'$ sont parallèles.",
+              "pourquoi": "$-2 \\times (-1) = 2$, $-2 \\times 3 = -6$ et $-2 \\times 0 = 0$."
+            },
+            {
+              "texte": "Le point de $d'$ obtenu pour $s = 0$ est $D(1\\,;\\,3\\,;\\,1)$. Il est sur $d$ : pour $t = 1$, la représentation de $d$ donne $x = 2 - 1 = 1$, $y = 3 \\times 1 = 3$ et $z = 1$.",
+              "pourquoi": "Pour trouver $t$, on part de $x$ : $2 - t = 1$ donne $t = 1$. On vérifie ensuite que cette valeur donne aussi $y = 3$ et $z = 1$."
+            },
+            {
+              "texte": "**Conclusion** : $d$ passe par $C(2\\,;\\,0\\,;\\,1)$ et elle est dirigée par $\\vec{u}\\begin{pmatrix} -1 \\\\ 3 \\\\ 0 \\end{pmatrix}$. Les droites $d$ et $d'$ sont parallèles et ont le point $D$ en commun : elles sont confondues. Ce sont deux représentations paramétriques de la même droite.",
+              "pourquoi": "Deux droites parallèles qui ont un point commun sont confondues (chapitre « Vecteurs, droites et plans de l'espace »)."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-009",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-03"],
+          "question": {
+            "enonce": "Quel est un vecteur directeur de la droite de représentation paramétrique $\\begin{cases} x = 3t \\\\ y = 1 - t \\\\ z = 2 \\end{cases}$, $t \\in \\mathbb{R}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\begin{pmatrix} 3 \\\\ -1 \\\\ 2 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 0 \\\\ 1 \\\\ 2 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 3 \\\\ -1 \\\\ 0 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 3 \\\\ 1 \\\\ 0 \\end{pmatrix}$"
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Le $2$ de $z = 2$ n'est pas un coefficient de $t$ : c'est une coordonnée d'un point. La troisième égalité ne contient pas $t$, donc son coefficient est $0$.",
+                "Ce sont les coordonnées du point obtenu pour $t = 0$, pas celles d'un vecteur directeur.",
+                null,
+                "Le coefficient de $t$ dans $y = 1 - t$ est $-1$, pas $1$."
+              ]
+            },
+            "explication": "On lit les coefficients de $t$ : $3$ dans $x = 3t$, $-1$ dans $y = 1 - t$, et $0$ dans $z = 2$, qui ne contient pas $t$. Les nombres seuls donnent le point $(0\\,;\\,1\\,;\\,2)$."
+          }
+        },
+        {
+          "id": "l-equations-espace-010",
+          "type": "methode",
+          "titre": "Comment déterminer une représentation paramétrique d'une droite, puis tester un point ?",
+          "capacites": ["bo-m-representations-03"],
+          "etapes": [
+            "Trouve un point $A$ de la droite et un vecteur directeur $\\vec{u}$ non nul. Pour la droite $(AB)$, prends $A$ et $\\overrightarrow{AB}$. Pour une droite parallèle à une droite donnée, reprends son vecteur directeur. Pour une droite orthogonale à un plan, prends un vecteur normal à ce plan.",
+            "Écris les trois égalités $x = x_A + ta$, $y = y_A + tb$, $z = z_A + tc$, puis « $t \\in \\mathbb{R}$ ».",
+            "Contrôle : pour $t = 0$, tu dois retrouver $A$ ; pour la droite $(AB)$ écrite avec $\\overrightarrow{AB}$, $t = 1$ doit donner $B$.",
+            "Pour savoir si un point est sur la droite, remplace $x$, $y$, $z$ par ses coordonnées, puis tire $t$ de chacune des trois égalités.",
+            "Conclus : si les trois égalités donnent la même valeur de $t$, le point est sur la droite ; sinon, il n'y est pas."
+          ],
+          "exemple": "l-equations-espace-011"
+        },
+        {
+          "id": "l-equations-espace-011",
+          "type": "exemple",
+          "titre": "La droite $(BC)$, puis deux points à tester",
+          "capacites": ["bo-m-representations-03", "bo-m-representations-01"],
+          "enonce": "On donne les points $B(1\\,;\\,2\\,;\\,0)$, $C(3\\,;\\,1\\,;\\,4)$, $E(5\\,;\\,0\\,;\\,8)$ et $F(-1\\,;\\,3\\,;\\,-3)$.\n\n**1.** Déterminer une représentation paramétrique de la droite $(BC)$.\n\n**2.** Les points $E$ et $F$ sont-ils sur la droite $(BC)$ ?",
+          "etapes": [
+            {
+              "texte": "**1.** La droite $(BC)$ passe par $B$ et elle est dirigée par $\\overrightarrow{BC}\\begin{pmatrix} 3 - 1 \\\\ 1 - 2 \\\\ 4 - 0 \\end{pmatrix}$, soit $\\overrightarrow{BC}\\begin{pmatrix} 2 \\\\ -1 \\\\ 4 \\end{pmatrix}$. Ce vecteur n'est pas nul, car $B \\neq C$."
+            },
+            {
+              "texte": "Une représentation paramétrique de $(BC)$ est donc :\n\n$$\\begin{cases} x = 1 + 2t \\\\ y = 2 - t \\\\ z = 4t \\end{cases} \\quad t \\in \\mathbb{R}.$$\n\nContrôle : $t = 1$ donne $(1 + 2\\,;\\,2 - 1\\,;\\,4)$, soit $(3\\,;\\,1\\,;\\,4)$ : c'est bien $C$.",
+              "pourquoi": "Pour $z$, on écrit $z = 0 + 4t$, c'est-à-dire simplement $z = 4t$."
+            },
+            {
+              "texte": "**2.** Pour $E(5\\,;\\,0\\,;\\,8)$ : $5 = 1 + 2t$ donne $t = 2$ ; $0 = 2 - t$ donne $t = 2$ ; $8 = 4t$ donne $t = 2$. La même valeur convient aux trois égalités : $E$ est sur $(BC)$."
+            },
+            {
+              "texte": "Pour $F(-1\\,;\\,3\\,;\\,-3)$ : $-1 = 1 + 2t$ donne $t = -1$ ; $3 = 2 - t$ donne $t = -1$ ; mais $-3 = 4t$ donne $t = -\\dfrac{3}{4}$. Aucun réel $t$ ne vérifie les trois égalités : $F$ n'est pas sur $(BC)$.",
+              "pourquoi": "Deux égalités sur trois ne suffisent pas. Pour $t = -1$, la représentation donne le point $(-1\\,;\\,3\\,;\\,-4)$, qui n'est pas $F$."
+            },
+            {
+              "texte": "**Conclusion** : la droite $(BC)$ a pour représentation paramétrique $x = 1 + 2t$, $y = 2 - t$, $z = 4t$, avec $t \\in \\mathbb{R}$. Le point $E$ est sur $(BC)$, obtenu pour $t = 2$ ; le point $F$ n'y est pas."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-012",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-03"],
+          "question": {
+            "enonce": "Le point $M(x_M\\,;\\,5\\,;\\,-3)$ est sur la droite de représentation paramétrique $\\begin{cases} x = 2 - t \\\\ y = 1 + 2t \\\\ z = 1 - 2t \\end{cases}$, $t \\in \\mathbb{R}$. Que vaut $x_M$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0,
+              "tolerance": 0
+            },
+            "explication": "La deuxième égalité donne $5 = 1 + 2t$, soit $t = 2$. Contrôle avec la troisième : $1 - 2 \\times 2 = -3$, c'est bien la troisième coordonnée de $M$. Alors $x_M = 2 - 2 = 0$."
+          }
+        },
+        {
+          "id": "l-equations-espace-013",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-03"],
+          "question": {
+            "enonce": "Le vecteur $\\vec{n}\\begin{pmatrix} 2 \\\\ -1 \\\\ 3 \\end{pmatrix}$ est normal à un plan $\\mathcal{P}$. Quelle représentation paramétrique décrit la droite passant par $E(1\\,;\\,0\\,;\\,-2)$ et orthogonale à $\\mathcal{P}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\begin{cases} x = 2 + t \\\\ y = -1 \\\\ z = 3 - 2t \\end{cases}$, $t \\in \\mathbb{R}$",
+                "$\\begin{cases} x = 1 + 2t \\\\ y = -t \\\\ z = -2 + 3t \\end{cases}$, $t \\in \\mathbb{R}$",
+                "$\\begin{cases} x = 1 + 2t \\\\ y = t \\\\ z = -2 + 3t \\end{cases}$, $t \\in \\mathbb{R}$"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Les rôles sont échangés : ce système passe par le point $(2\\,;\\,-1\\,;\\,3)$ et il est dirigé par $\\begin{pmatrix} 1 \\\\ 0 \\\\ -2 \\end{pmatrix}$.",
+                null,
+                "Le coefficient de $t$ dans la deuxième égalité doit être $-1$, la deuxième coordonnée de $\\vec{n}$."
+              ]
+            },
+            "explication": "Une droite orthogonale à $\\mathcal{P}$ est dirigée par un vecteur normal à $\\mathcal{P}$ (chapitre « Orthogonalité et distances dans l'espace »). On écrit la droite passant par $E$ et dirigée par $\\vec{n}$ : $x = 1 + 2t$, $y = 0 + (-1)\\,t = -t$ et $z = -2 + 3t$."
+          }
+        },
+        {
+          "id": "l-equations-espace-014",
+          "type": "piege",
+          "titre": "La même valeur de $t$ dans les trois égalités",
+          "faux": "Le point $M(4\\,;\\,6\\,;\\,1)$ est-il sur la droite $d$ : $x = 1 + t$, $y = 2t$, $z = 3 - t$ ? La première égalité donne $t = 3$, la deuxième aussi : $M$ est sur $d$.",
+          "juste": "La troisième égalité donne $1 = 3 - t$, soit $t = 2$, et non $3$. Aucun réel $t$ ne vérifie les trois égalités à la fois : $M$ n'est pas sur $d$.",
+          "explication": "Pour $t = 3$, la représentation donne le point $(4\\,;\\,6\\,;\\,0)$, et non $M$. Un point est sur la droite seulement si une même valeur de $t$ convient aux trois coordonnées : teste toujours la troisième égalité."
+        },
+        {
+          "id": "l-equations-espace-015",
+          "type": "retenir",
+          "texte": "La droite passant par $A(x_A\\,;\\,y_A\\,;\\,z_A)$ et dirigée par $\\vec{u}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix} \\neq \\vec{0}$ a pour représentation paramétrique $x = x_A + ta$, $y = y_A + tb$, $z = z_A + tc$, $t \\in \\mathbb{R}$. Nombres seuls : un point ; coefficients de $t$ : un vecteur directeur. Un point est sur la droite si une même valeur de $t$ vérifie les trois égalités."
+        }
+      ]
+    },
+    {
+      "notion": "n-equations-espace-equation-plan",
+      "blocs": [
+        {
+          "id": "l-equations-espace-016",
+          "type": "idee",
+          "texte": "En première, une droite du plan de vecteur normal $\\vec{n}\\begin{pmatrix} a \\\\ b \\end{pmatrix}$ a une équation $ax + by + c = 0$. Dans l'espace, l'idée gagne une dimension. Le plan passant par $A$ et normal à $\\vec{n}$ est formé des points $M$ tels que $\\overrightarrow{AM} \\cdot \\vec{n} = 0$. En coordonnées, c'est une seule équation : $ax + by + cz + d = 0$. Savoir si un point est dans le plan devient alors un calcul d'une ligne."
+        },
+        {
+          "id": "l-equations-espace-017",
+          "type": "rappel",
+          "titre": "Rappel : le plan passant par un point et normal à un vecteur",
+          "texte": "Soit $A$ un point et $\\vec{n}$ un vecteur non nul. Le plan passant par $A$ et normal à $\\vec{n}$ est l'ensemble des points $M$ tels que $\\overrightarrow{AM} \\cdot \\vec{n} = 0$.\n\nDans un repère orthonormé, si $\\vec{u}\\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix}$ et $\\vec{v}\\begin{pmatrix} x' \\\\ y' \\\\ z' \\end{pmatrix}$, alors $\\vec{u} \\cdot \\vec{v} = xx' + yy' + zz'$.",
+          "lien": "l-orthogonalite-espace-043"
+        },
+        {
+          "id": "l-equations-espace-018",
+          "type": "propriete",
+          "titre": "Équation cartésienne d'un plan",
+          "capacites": ["bo-m-representations-02", "bo-m-representations-04"],
+          "texte": "Dans un repère orthonormé :\n\n- Le plan $\\mathcal{P}$ passant par $A(x_A\\,;\\,y_A\\,;\\,z_A)$ et de vecteur normal $\\vec{n}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$ est l'ensemble des points $M(x\\,;\\,y\\,;\\,z)$ tels que $a(x - x_A) + b(y - y_A) + c(z - z_A) = 0$. En développant, cette équation s'écrit $ax + by + cz + d = 0$, où $d$ est un nombre réel (ici, $d$ ne désigne pas une droite).\n- Réciproquement, si $a$, $b$, $c$ ne sont pas tous nuls, l'ensemble des points $M(x\\,;\\,y\\,;\\,z)$ tels que $ax + by + cz + d = 0$ est un plan, de vecteur normal $\\vec{n}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$.\n\nUne telle équation s'appelle une **équation cartésienne** du plan : un point est dans le plan si et seulement si ses coordonnées la vérifient.",
+          "conditions": [
+            "Le repère est orthonormé : l'équation vient du produit scalaire $xx' + yy' + zz'$.",
+            "$\\vec{n}$ n'est pas nul : $a$, $b$, $c$ ne sont pas tous nuls.",
+            "L'équation n'est pas unique : en multipliant tous ses coefficients, $d$ compris, par un même réel non nul, on obtient une autre équation du même plan."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-equations-espace-019",
+          "type": "figure",
+          "titre": "Un point $M$ du plan et le vecteur normal $\\vec{n}$",
+          "capacites": ["bo-m-representations-02"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/equations-espace/plan-vecteur-normal.svg",
+              "alt": "Un plan P dessiné en perspective comme un parallélogramme bleu. Le point A est dans le plan ; de A part, vers le haut, une flèche orange : le vecteur normal n. Un autre point M du plan est relié à A par une flèche bleue tracée dans le plan : le vecteur AM. Un angle droit est marqué en A entre n et AM.",
+              "width": 380,
+              "height": 250
+            },
+            "caption": "M est dans le plan P si et seulement si le vecteur AM est orthogonal au vecteur normal n, c'est-à-dire AM · n = 0. En coordonnées, cette condition devient l'équation du plan."
+          }
+        },
+        {
+          "id": "l-equations-espace-020",
+          "type": "exemple",
+          "titre": "Écrire l'équation d'un plan, tester des points",
+          "capacites": ["bo-m-representations-04", "bo-m-representations-02"],
+          "enonce": "Soit $\\mathcal{P}$ le plan passant par $A(1\\,;\\,2\\,;\\,-1)$ et de vecteur normal $\\vec{n}\\begin{pmatrix} 2 \\\\ -1 \\\\ 3 \\end{pmatrix}$.\n\n**1.** Déterminer une équation cartésienne de $\\mathcal{P}$.\n\n**2.** Les points $B(0\\,;\\,3\\,;\\,0)$ et $C(1\\,;\\,1\\,;\\,1)$ sont-ils dans $\\mathcal{P}$ ?",
+          "etapes": [
+            {
+              "texte": "**1.** $\\vec{n}\\begin{pmatrix} 2 \\\\ -1 \\\\ 3 \\end{pmatrix}$ est normal à $\\mathcal{P}$, donc $\\mathcal{P}$ a une équation de la forme $2x - y + 3z + d = 0$.",
+              "pourquoi": "Les coefficients de $x$, $y$, $z$ sont les coordonnées du vecteur normal : $2$, $-1$ et $3$. Il reste à trouver le réel $d$."
+            },
+            {
+              "texte": "$A$ est dans $\\mathcal{P}$, donc ses coordonnées vérifient l'équation : $2 \\times 1 - 2 + 3 \\times (-1) + d = 0$, soit $-3 + d = 0$, donc $d = 3$.",
+              "pourquoi": "$2 - 2 - 3 = -3$."
+            },
+            {
+              "texte": "Une équation cartésienne de $\\mathcal{P}$ est donc $2x - y + 3z + 3 = 0$. Contrôle avec l'autre forme : $2(x - 1) - (y - 2) + 3(z + 1) = 2x - 2 - y + 2 + 3z + 3 = 2x - y + 3z + 3$.",
+              "pourquoi": "$z - z_A = z - (-1) = z + 1$."
+            },
+            {
+              "texte": "**2.** Pour $B(0\\,;\\,3\\,;\\,0)$ : $2 \\times 0 - 3 + 3 \\times 0 + 3 = 0$, donc $B \\in \\mathcal{P}$. Pour $C(1\\,;\\,1\\,;\\,1)$ : $2 \\times 1 - 1 + 3 \\times 1 + 3 = 7 \\neq 0$, donc $C \\notin \\mathcal{P}$.",
+              "pourquoi": "« $B \\in \\mathcal{P}$ » se lit « $B$ appartient au plan $\\mathcal{P}$ » ; « $C \\notin \\mathcal{P}$ » se lit « $C$ n'appartient pas à $\\mathcal{P}$ »."
+            },
+            {
+              "texte": "**Conclusion** : $\\mathcal{P}$ a pour équation cartésienne $2x - y + 3z + 3 = 0$. Le point $B$ est dans $\\mathcal{P}$, le point $C$ n'y est pas."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-021",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-04"],
+          "question": {
+            "enonce": "Quelle est une équation cartésienne du plan passant par $A(1\\,;\\,0\\,;\\,2)$ et de vecteur normal $\\vec{n}\\begin{pmatrix} 3 \\\\ -1 \\\\ 1 \\end{pmatrix}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$3x - y + z + 5 = 0$",
+                "$x + 2z - 5 = 0$",
+                "$3x - y + z - 5 = 0$",
+                "$3x - y + z = 0$"
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Erreur de signe sur $d$ : avec $A$, on obtient $3 - 0 + 2 + 5 = 10 \\neq 0$. Il faut $5 + d = 0$, soit $d = -5$.",
+                "Tu as pris les coordonnées de $A$ comme coefficients. Ce plan passe bien par $A$, mais son vecteur normal est $\\begin{pmatrix} 1 \\\\ 0 \\\\ 2 \\end{pmatrix}$, pas $\\vec{n}$.",
+                null,
+                "Tu as oublié $d$ : avec $A$, on obtient $3 - 0 + 2 = 5 \\neq 0$, donc ce plan ne passe pas par $A$."
+              ]
+            },
+            "explication": "Le plan a une équation de la forme $3x - y + z + d = 0$. $A$ la vérifie : $3 \\times 1 - 0 + 2 + d = 0$, soit $5 + d = 0$ et $d = -5$."
+          }
+        },
+        {
+          "id": "l-equations-espace-022",
+          "type": "demonstration",
+          "titre": "Démonstration : l'équation cartésienne du plan passant par $A$ et normal à $\\vec{n}$",
+          "capacites": ["bo-m-representations-07", "bo-m-representations-02"],
+          "de": "l-equations-espace-018",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "Soit $M(x\\,;\\,y\\,;\\,z)$ un point quelconque. $M$ est dans $\\mathcal{P}$ si et seulement si $\\overrightarrow{AM} \\cdot \\vec{n} = 0$.",
+              "pourquoi": "C'est la caractérisation du plan passant par $A$ et normal à $\\vec{n}$, rappelée en tête de cette notion. Elle vaut car $\\vec{n}$ n'est pas nul."
+            },
+            {
+              "texte": "$\\overrightarrow{AM}$ a pour coordonnées $\\begin{pmatrix} x - x_A \\\\ y - y_A \\\\ z - z_A \\end{pmatrix}$. Le repère est orthonormé, donc $\\overrightarrow{AM} \\cdot \\vec{n} = a(x - x_A) + b(y - y_A) + c(z - z_A)$."
+            },
+            {
+              "texte": "En développant : $\\overrightarrow{AM} \\cdot \\vec{n} = ax + by + cz - (a x_A + b y_A + c z_A)$. On pose $d = -(a x_A + b y_A + c z_A)$ : c'est un réel qui ne dépend pas de $M$."
+            },
+            {
+              "texte": "Ainsi, $M \\in \\mathcal{P}$ si et seulement si $ax + by + cz + d = 0$ : c'est une équation cartésienne de $\\mathcal{P}$."
+            },
+            {
+              "texte": "**Réciproque.** Soit $a$, $b$, $c$ non tous nuls et $d$ un réel. Supposons par exemple $a \\neq 0$. Le point $A\\left(-\\dfrac{d}{a}\\,;\\,0\\,;\\,0\\right)$ vérifie l'équation, car $a \\times \\left(-\\dfrac{d}{a}\\right) + b \\times 0 + c \\times 0 + d = -d + d = 0$.",
+              "pourquoi": "Si $a = 0$, l'un des réels $b$ ou $c$ n'est pas nul, et l'on fait de même avec lui : par exemple $A\\left(0\\,;\\,-\\dfrac{d}{b}\\,;\\,0\\right)$ si $b \\neq 0$."
+            },
+            {
+              "texte": "Avec ce point $A$ et le vecteur non nul $\\vec{n}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$, on reprend le calcul des étapes 2 et 3 : $\\overrightarrow{AM} \\cdot \\vec{n} = ax + by + cz - (a x_A + b y_A + c z_A)$. Ici, $a x_A + b y_A + c z_A = a \\times \\left(-\\dfrac{d}{a}\\right) + b \\times 0 + c \\times 0 = -d$. Donc $\\overrightarrow{AM} \\cdot \\vec{n} = ax + by + cz - (-d) = ax + by + cz + d$.",
+              "pourquoi": "On simplifie par $a$, qui n'est pas nul : $a \\times \\left(-\\dfrac{d}{a}\\right) = -d$. Puis $-(-d) = d$."
+            },
+            {
+              "texte": "**Conclusion** : $ax + by + cz + d = 0$ équivaut à $\\overrightarrow{AM} \\cdot \\vec{n} = 0$. L'ensemble des points qui vérifient l'équation est donc le plan passant par $A$ et normal à $\\vec{n}$."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-023",
+          "type": "exemple",
+          "titre": "Reconnaître un plan et le situer",
+          "capacites": ["bo-m-representations-04", "bo-m-representations-02"],
+          "enonce": "On donne le plan $\\mathcal{Q}$ d'équation $x - 2y + 2z - 6 = 0$.\n\n**1.** Donner un vecteur normal à $\\mathcal{Q}$.\n\n**2.** Déterminer les points où $\\mathcal{Q}$ coupe les trois axes du repère.\n\n**3.** La droite $d$ passant par $O$ et dirigée par $\\vec{w}\\begin{pmatrix} 2 \\\\ -4 \\\\ 4 \\end{pmatrix}$ est-elle orthogonale à $\\mathcal{Q}$ ?",
+          "etapes": [
+            {
+              "texte": "**1.** Les coefficients de $x$, $y$, $z$ donnent un vecteur normal : $\\vec{n}\\begin{pmatrix} 1 \\\\ -2 \\\\ 2 \\end{pmatrix}$.",
+              "pourquoi": "Le nombre seul $-6$ ne fait pas partie du vecteur : c'est $d$."
+            },
+            {
+              "texte": "**2.** L'axe des abscisses est formé des points $(x\\,;\\,0\\,;\\,0)$. Un tel point est dans $\\mathcal{Q}$ si $x - 0 + 0 - 6 = 0$, soit $x = 6$ : $\\mathcal{Q}$ coupe cet axe au point $(6\\,;\\,0\\,;\\,0)$."
+            },
+            {
+              "texte": "De même, sur l'axe des ordonnées, formé des points $(0\\,;\\,y\\,;\\,0)$ : $-2y - 6 = 0$ donne $y = -3$, d'où le point $(0\\,;\\,-3\\,;\\,0)$. Sur l'axe des cotes, formé des points $(0\\,;\\,0\\,;\\,z)$ : $2z - 6 = 0$ donne $z = 3$, d'où le point $(0\\,;\\,0\\,;\\,3)$.",
+              "pourquoi": "La troisième coordonnée d'un point s'appelle sa **cote** : d'où le nom « axe des cotes »."
+            },
+            {
+              "texte": "**3.** $\\vec{w} = 2\\,\\vec{n}$ : $\\vec{w}$ est non nul et colinéaire à $\\vec{n}$, donc c'est aussi un vecteur normal à $\\mathcal{Q}$. La droite $d$, dirigée par un vecteur normal à $\\mathcal{Q}$, est orthogonale à $\\mathcal{Q}$.",
+              "pourquoi": "$2 \\times 1 = 2$, $2 \\times (-2) = -4$ et $2 \\times 2 = 4$. Par bilinéarité du produit scalaire, $2\\,\\vec{n}$ est orthogonal aux mêmes vecteurs que $\\vec{n}$."
+            },
+            {
+              "texte": "**Conclusion** : $\\vec{n}\\begin{pmatrix} 1 \\\\ -2 \\\\ 2 \\end{pmatrix}$ est un vecteur normal à $\\mathcal{Q}$, qui coupe les axes aux points $(6\\,;\\,0\\,;\\,0)$, $(0\\,;\\,-3\\,;\\,0)$ et $(0\\,;\\,0\\,;\\,3)$. La droite $d$ est orthogonale à $\\mathcal{Q}$."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-024",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-04"],
+          "question": {
+            "enonce": "Le plan $\\mathcal{P}$ a pour équation $3x - z + 2 = 0$. Lequel de ces vecteurs est normal à $\\mathcal{P}$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\begin{pmatrix} 3 \\\\ -1 \\\\ 2 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 3 \\\\ -1 \\\\ 0 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 3 \\\\ 0 \\\\ -1 \\end{pmatrix}$",
+                "$\\begin{pmatrix} 0 \\\\ 3 \\\\ -1 \\end{pmatrix}$"
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Le $2$ est le nombre seul $d$, pas un coefficient : il ne fait pas partie du vecteur.",
+                "Le $-1$ est le coefficient de $z$ : il se place en troisième position. $y$ n'apparaît pas, son coefficient est $0$.",
+                null,
+                "Le coefficient de $x$, $3$, se place en première position ; celui de $y$ est $0$."
+              ]
+            },
+            "explication": "On écrit l'équation sous la forme $3x + 0y + (-1)z + 2 = 0$ : un vecteur normal est $\\begin{pmatrix} 3 \\\\ 0 \\\\ -1 \\end{pmatrix}$."
+          }
+        },
+        {
+          "id": "l-equations-espace-025",
+          "type": "methode",
+          "titre": "Comment déterminer une équation cartésienne d'un plan ?",
+          "capacites": ["bo-m-representations-04", "bo-m-representations-02"],
+          "etapes": [
+            "Trouve un vecteur normal $\\vec{n}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$. Il est donné, ou c'est $\\overrightarrow{AB}$ pour un plan orthogonal à la droite $(AB)$. Les sujets disent aussi « plan perpendiculaire à la droite $(AB)$ » : c'est la même chose. Pour le plan $(ABC)$ avec un vecteur $\\vec{n}$ proposé, vérifie d'abord $\\vec{n} \\cdot \\overrightarrow{AB} = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = 0$.",
+            "Écris l'équation $ax + by + cz + d = 0$ avec ces coefficients.",
+            "Trouve $d$ en écrivant qu'un point connu du plan vérifie l'équation.",
+            "Pour vérifier qu'une équation donnée est celle du plan $(ABC)$, montre d'abord que $A$, $B$, $C$ ne sont pas alignés. Vérifie ensuite que leurs coordonnées satisfont l'équation : un seul plan passe par trois points non alignés.",
+            "Contrôle : un deuxième point connu du plan doit aussi vérifier ton équation."
+          ],
+          "exemple": "l-equations-espace-027"
+        },
+        {
+          "id": "l-equations-espace-026",
+          "type": "figure",
+          "titre": "Le cube $ABCDEFGH$ et ses coordonnées",
+          "capacites": ["bo-m-representations-04"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/orthogonalite-espace/cube-repere.svg",
+              "alt": "Le cube ABCDEFGH en perspective : la face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Trois flèches bleues partent de A : vers B, vers D (en pointillé, car cachée) et vers E. À côté de chaque sommet sont écrites ses coordonnées : A(0 ; 0 ; 0), B(1 ; 0 ; 0), C(1 ; 1 ; 0), D(0 ; 1 ; 0), E(0 ; 0 ; 1), F(1 ; 0 ; 1), G(1 ; 1 ; 1) et H(0 ; 1 ; 1).",
+              "width": 440,
+              "height": 305
+            },
+            "caption": "Le cube ABCDEFGH de l'exemple, avec le repère (A ; AB, AD, AE), orthonormé car l'arête vaut 1. À côté de chaque sommet : ses coordonnées dans ce repère. En pointillé : ce qui est caché."
+          }
+        },
+        {
+          "id": "l-equations-espace-027",
+          "type": "exemple",
+          "titre": "Le plan $(BDG)$ dans un cube",
+          "capacites": ["bo-m-representations-04", "bo-m-representations-02"],
+          "enonce": "$ABCDEFGH$ est un cube d'arête $1$, muni du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$.\n\n**1.** Vérifier que $x + y - z - 1 = 0$ est une équation cartésienne du plan $(BDG)$.\n\n**2.** Déterminer une équation cartésienne du plan $\\mathcal{R}$ passant par $E$ et perpendiculaire à la droite $(AG)$.",
+          "etapes": [
+            {
+              "texte": "**1.** Coordonnées : $B(1\\,;\\,0\\,;\\,0)$, $D(0\\,;\\,1\\,;\\,0)$ et $G(1\\,;\\,1\\,;\\,1)$. Les vecteurs $\\overrightarrow{BD}\\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{BG}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$ ne sont pas colinéaires : les points $B$, $D$, $G$ ne sont pas alignés.",
+              "pourquoi": "$\\overrightarrow{BG}$ n'est pas nul, et $\\overrightarrow{BD} = k\\,\\overrightarrow{BG}$ donnerait, sur la première coordonnée, $-1 = k \\times 0 = 0$ : c'est impossible."
+            },
+            {
+              "texte": "On teste les trois points dans $x + y - z - 1 = 0$. Pour $B$ : $1 + 0 - 0 - 1 = 0$. Pour $D$ : $0 + 1 - 0 - 1 = 0$. Pour $G$ : $1 + 1 - 1 - 1 = 0$."
+            },
+            {
+              "texte": "Les coefficients $1$, $1$, $-1$ ne sont pas tous nuls : l'équation $x + y - z - 1 = 0$ définit un plan. Ce plan contient les trois points non alignés $B$, $D$, $G$ : c'est le plan $(BDG)$.",
+              "pourquoi": "Par trois points non alignés passe un seul plan."
+            },
+            {
+              "texte": "**2.** $A(0\\,;\\,0\\,;\\,0)$ et $G(1\\,;\\,1\\,;\\,1)$, donc $\\overrightarrow{AG}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$. Le plan $\\mathcal{R}$ est perpendiculaire, c'est-à-dire orthogonal, à la droite $(AG)$. Donc $\\overrightarrow{AG}$ est un vecteur normal à $\\mathcal{R}$, qui a une équation de la forme $x + y + z + d = 0$.",
+              "pourquoi": "Une droite orthogonale à un plan le coupe toujours en un point : on dit aussi qu'elle est perpendiculaire au plan. Elle est dirigée par un vecteur normal au plan : son vecteur directeur $\\overrightarrow{AG}$, non nul, en est un."
+            },
+            {
+              "texte": "$E(0\\,;\\,0\\,;\\,1)$ est dans $\\mathcal{R}$ : $0 + 0 + 1 + d = 0$, donc $d = -1$. Contrôle : $B$ et $D$ vérifient aussi $x + y + z - 1 = 0$. Les vecteurs $\\overrightarrow{BD}\\begin{pmatrix} -1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{BE}\\begin{pmatrix} -1 \\\\ 0 \\\\ 1 \\end{pmatrix}$ ne sont pas colinéaires, donc $B$, $D$, $E$ ne sont pas alignés : $\\mathcal{R}$ est le plan $(BDE)$.",
+              "pourquoi": "$\\overrightarrow{BD} = k\\,\\overrightarrow{BE}$ donnerait $0 = k \\times 1$ sur la troisième coordonnée, donc $k = 0$, puis $-1 = 0$ sur la première : c'est impossible."
+            },
+            {
+              "texte": "**Conclusion** : $x + y - z - 1 = 0$ est une équation cartésienne du plan $(BDG)$. Le plan passant par $E$ et perpendiculaire à $(AG)$ a pour équation $x + y + z - 1 = 0$ : c'est le plan $(BDE)$."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-028",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-02"],
+          "question": {
+            "enonce": "Le point $M(2\\,;\\,y_M\\,;\\,1)$ est dans le plan d'équation $x - 3y + 2z + 5 = 0$. Que vaut $y_M$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 3,
+              "tolerance": 0
+            },
+            "explication": "Les coordonnées de $M$ vérifient l'équation : $2 - 3y_M + 2 \\times 1 + 5 = 0$, soit $9 - 3y_M = 0$, donc $y_M = 3$."
+          }
+        },
+        {
+          "id": "l-equations-espace-029",
+          "type": "piege",
+          "titre": "Dans l'espace, une seule équation décrit un plan",
+          "faux": "Dans l'espace, $x + y - 1 = 0$ est l'équation d'une droite, comme en première.",
+          "juste": "Dans l'espace, $x + y - 1 = 0$ est l'équation d'un plan, de vecteur normal $\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ : $z$ peut prendre n'importe quelle valeur. Une droite de l'espace se décrit par une représentation paramétrique.",
+          "explication": "Les points $(1\\,;\\,0\\,;\\,0)$, $(1\\,;\\,0\\,;\\,5)$ et $(0\\,;\\,1\\,;\\,0)$ vérifient tous $x + y - 1 = 0$, et ils ne sont pas alignés : l'ensemble n'est donc pas une droite. C'est le coefficient $0$ devant $z$ qui donne l'illusion d'une équation de droite de première."
+        },
+        {
+          "id": "l-equations-espace-030",
+          "type": "complement",
+          "titre": "Pour aller plus loin : trouver soi-même un vecteur normal",
+          "capacites": ["bo-m-representations-09"],
+          "texte": "Quand l'énoncé ne donne pas de vecteur normal au plan $(ABC)$, on cherche $\\vec{n}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$ non nul, orthogonal aux vecteurs non colinéaires $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$.\n\nExemple : $\\overrightarrow{AB}\\begin{pmatrix} 1 \\\\ 2 \\\\ 0 \\end{pmatrix}$ et $\\overrightarrow{AC}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$. Les conditions $\\vec{n} \\cdot \\overrightarrow{AB} = 0$ et $\\vec{n} \\cdot \\overrightarrow{AC} = 0$ donnent $a + 2b = 0$ et $b + c = 0$ : deux équations, trois inconnues. Elles ont une infinité de solutions, toutes colinéaires ; on en choisit une en fixant une inconnue, par exemple $c = 1$. Alors $b = -1$, puis $a = -2b = 2$ : $\\vec{n}\\begin{pmatrix} 2 \\\\ -1 \\\\ 1 \\end{pmatrix}$ convient. Contrôle : $2 - 2 + 0 = 0$ et $0 - 1 + 1 = 0$."
+        },
+        {
+          "id": "l-equations-espace-031",
+          "type": "retenir",
+          "texte": "Un plan de vecteur normal $\\vec{n}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$ a une équation $ax + by + cz + d = 0$ ; on trouve $d$ avec un point du plan. Inversement, sur une équation, les coefficients de $x$, $y$, $z$ donnent un vecteur normal. Un point est dans le plan si et seulement si ses coordonnées vérifient l'équation."
+        }
+      ]
+    },
+    {
+      "notion": "n-equations-espace-projete",
+      "blocs": [
+        {
+          "id": "l-equations-espace-032",
+          "type": "idee",
+          "texte": "Au chapitre précédent, on te donnait le projeté orthogonal $H$, et tu vérifiais que c'était le bon. Ici, tu vas le trouver. Imagine que le plan est le sol. Un fil à plomb tendu depuis $M$ descend en suivant un vecteur normal au plan, et touche le plan en $H$. Ce fil est une droite. Sa représentation paramétrique, reportée dans l'équation du plan, donne une équation à une seule inconnue : $t$."
+        },
+        {
+          "id": "l-equations-espace-033",
+          "type": "rappel",
+          "titre": "Rappel : projeté orthogonal sur un plan, sur une droite",
+          "texte": "Le projeté orthogonal de $M$ sur un plan $\\mathcal{P}$ est le point $H$ de $\\mathcal{P}$ tel que $\\overrightarrow{MH}$ est normal à $\\mathcal{P}$, ou nul. Le projeté orthogonal de $M$ sur une droite $d$ de vecteur directeur $\\vec{u}$ est le point $H$ de $d$ tel que $\\overrightarrow{MH} \\cdot \\vec{u} = 0$.\n\nDans les deux cas, $H$ est le point le plus proche de $M$. La distance de $M$ au plan, ou à la droite, est donc la longueur $MH$.",
+          "lien": "l-orthogonalite-espace-050"
+        },
+        {
+          "id": "l-equations-espace-034",
+          "type": "propriete",
+          "titre": "Le projeté orthogonal sur un plan donné par une équation",
+          "capacites": ["bo-m-representations-05"],
+          "texte": "Soit $\\mathcal{P}$ le plan d'équation $ax + by + cz + d = 0$, de vecteur normal $\\vec{n}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$, et $M(x_M\\,;\\,y_M\\,;\\,z_M)$ un point. On note $\\Delta$, qui se lit « delta », la droite passant par $M$ et dirigée par $\\vec{n}$ :\n\n$$\\Delta : \\begin{cases} x = x_M + ta \\\\ y = y_M + tb \\\\ z = z_M + tc \\end{cases} \\quad t \\in \\mathbb{R}.$$\n\nLa droite $\\Delta$ coupe $\\mathcal{P}$ en un seul point : c'est le projeté orthogonal $H$ de $M$ sur $\\mathcal{P}$. On l'obtient pour la seule valeur de $t$ qui vérifie\n\n$$a(x_M + ta) + b(y_M + tb) + c(z_M + tc) + d = 0.$$",
+          "conditions": [
+            "Le repère est orthonormé.",
+            "$\\vec{n}$ est un vecteur normal à $\\mathcal{P}$ : on le lit sur l'équation, avec $a$, $b$, $c$ non tous nuls."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-equations-espace-035",
+          "type": "figure",
+          "titre": "La droite $\\Delta$, de $M$ jusqu'au plan",
+          "capacites": ["bo-m-representations-05"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/equations-espace/projete-droite-normale.svg",
+              "alt": "Un plan P dessiné en perspective comme un parallélogramme bleu. Le point M est au-dessus du plan. La droite Δ passe par M et descend tout droit jusqu'au point H du plan, avec un angle droit marqué en H ; elle continue sous le plan, en pointillé tant qu'elle est cachée par le plan. Sur la droite, à partir de M, une flèche orange : le vecteur normal n, qui dirige Δ.",
+              "width": 360,
+              "height": 270
+            },
+            "caption": "La droite Δ passe par M et elle est dirigée par le vecteur normal n : elle est orthogonale au plan P. Son point d'intersection avec P est le projeté orthogonal H de M."
+          }
+        },
+        {
+          "id": "l-equations-espace-036",
+          "type": "exemple",
+          "titre": "Le projeté de $O$ sur le plan $(ABC)$, enfin calculé",
+          "capacites": ["bo-m-representations-05"],
+          "enonce": "On reprend le tétraèdre $OABC$ du chapitre « Orthogonalité et distances dans l'espace » : $O(0\\,;\\,0\\,;\\,0)$, $A(2\\,;\\,0\\,;\\,0)$, $B(0\\,;\\,4\\,;\\,0)$ et $C(0\\,;\\,0\\,;\\,4)$. Le plan $(ABC)$ a pour équation $2x + y + z - 4 = 0$.\n\n**1.** Déterminer une représentation paramétrique de la droite $\\Delta$ passant par $O$ et orthogonale au plan $(ABC)$.\n\n**2.** En déduire les coordonnées du projeté orthogonal $H$ de $O$ sur le plan $(ABC)$.\n\n**3.** Calculer la distance du point $O$ au plan $(ABC)$.",
+          "etapes": [
+            {
+              "texte": "**1.** Sur l'équation $2x + y + z - 4 = 0$, on lit un vecteur normal au plan $(ABC)$ : $\\vec{n}\\begin{pmatrix} 2 \\\\ 1 \\\\ 1 \\end{pmatrix}$. La droite $\\Delta$, orthogonale au plan, est dirigée par $\\vec{n}$.",
+              "pourquoi": "Contrôle de l'équation : $A$ donne $4 + 0 + 0 - 4 = 0$, $B$ donne $0 + 4 + 0 - 4 = 0$ et $C$ donne $0 + 0 + 4 - 4 = 0$."
+            },
+            {
+              "texte": "$\\Delta$ passe par $O(0\\,;\\,0\\,;\\,0)$. Une représentation paramétrique de $\\Delta$ est donc :\n\n$$\\begin{cases} x = 2t \\\\ y = t \\\\ z = t \\end{cases} \\quad t \\in \\mathbb{R}.$$"
+            },
+            {
+              "texte": "**2.** $H$ est le point de $\\Delta$ qui est dans le plan. On remplace $x$, $y$, $z$ dans l'équation du plan : $2 \\times 2t + t + t - 4 = 0$, soit $6t - 4 = 0$, donc $t = \\dfrac{4}{6} = \\dfrac{2}{3}$.",
+              "pourquoi": "$4t + t + t = 6t$. On obtient une équation du premier degré, à une seule inconnue : $t$."
+            },
+            {
+              "texte": "On remet $t = \\dfrac{2}{3}$ dans la représentation de $\\Delta$ : $x = 2 \\times \\dfrac{2}{3} = \\dfrac{4}{3}$, $y = \\dfrac{2}{3}$ et $z = \\dfrac{2}{3}$. Donc $H\\left(\\dfrac{4}{3}\\,;\\,\\dfrac{2}{3}\\,;\\,\\dfrac{2}{3}\\right)$.",
+              "pourquoi": "Contrôle : $2 \\times \\dfrac{4}{3} + \\dfrac{2}{3} + \\dfrac{2}{3} - 4 = \\dfrac{8 + 2 + 2}{3} - 4 = 4 - 4 = 0$ : $H$ est bien dans le plan."
+            },
+            {
+              "texte": "**3.** La distance de $O$ au plan $(ABC)$ est $OH = \\sqrt{\\left(\\dfrac{4}{3}\\right)^2 + \\left(\\dfrac{2}{3}\\right)^2 + \\left(\\dfrac{2}{3}\\right)^2} = \\sqrt{\\dfrac{16 + 4 + 4}{9}} = \\dfrac{\\sqrt{24}}{3} = \\dfrac{2\\sqrt{6}}{3}$.",
+              "pourquoi": "$\\sqrt{24} = \\sqrt{4 \\times 6} = 2\\sqrt{6}$ et $\\sqrt{9} = 3$. On retrouve la distance calculée par le volume au chapitre précédent."
+            },
+            {
+              "texte": "**Conclusion** : $\\Delta$ a pour représentation paramétrique $x = 2t$, $y = t$, $z = t$, avec $t \\in \\mathbb{R}$. Le projeté orthogonal de $O$ sur $(ABC)$ est $H\\left(\\dfrac{4}{3}\\,;\\,\\dfrac{2}{3}\\,;\\,\\dfrac{2}{3}\\right)$, et la distance de $O$ au plan $(ABC)$ vaut $\\dfrac{2\\sqrt{6}}{3}$, soit environ $1{,}63$."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-037",
+          "type": "demonstration",
+          "titre": "Pourquoi ce point est le projeté, et pourquoi il est unique",
+          "capacites": ["bo-m-representations-05"],
+          "de": "l-equations-espace-034",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "Un point $N$ de $\\Delta$ a pour coordonnées $(x_M + ta\\,;\\,y_M + tb\\,;\\,z_M + tc)$ pour un réel $t$, et alors $\\overrightarrow{MN} = t\\,\\vec{n}$."
+            },
+            {
+              "texte": "On remplace dans l'équation de $\\mathcal{P}$, puis on regroupe les termes en $t$ : $(a^2 + b^2 + c^2)\\,t + (a x_M + b y_M + c z_M + d) = 0$.",
+              "pourquoi": "$a(x_M + ta) = a x_M + a^2 t$, et de même pour les deux autres termes."
+            },
+            {
+              "texte": "$a$, $b$, $c$ ne sont pas tous nuls, donc $a^2 + b^2 + c^2 > 0$ : cette équation du premier degré a une seule solution, que l'on note $t_0$. La droite $\\Delta$ coupe donc $\\mathcal{P}$ en un seul point $H$, obtenu pour $t = t_0$."
+            },
+            {
+              "texte": "**Conclusion** : $H$ est dans $\\mathcal{P}$, et $\\overrightarrow{MH} = t_0\\,\\vec{n}$ est colinéaire au vecteur normal $\\vec{n}$ : il est normal à $\\mathcal{P}$, ou nul si $t_0 = 0$. Par définition, $H$ est le projeté orthogonal de $M$ sur $\\mathcal{P}$."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-038",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-05"],
+          "question": {
+            "enonce": "Quel est le projeté orthogonal du point $M(1\\,;\\,1\\,;\\,1)$ sur le plan $\\mathcal{P}$ d'équation $x + y + z - 6 = 0$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$(3\\,;\\,3\\,;\\,3)$",
+                "$(2\\,;\\,2\\,;\\,2)$",
+                "$(6\\,;\\,0\\,;\\,0)$",
+                "$(0\\,;\\,0\\,;\\,0)$"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "$(3\\,;\\,3\\,;\\,3)$ n'est pas dans $\\mathcal{P}$ : $3 + 3 + 3 - 6 = 3 \\neq 0$. C'est le point de la droite obtenu pour $t = 2$.",
+                null,
+                "$(6\\,;\\,0\\,;\\,0)$ est bien dans $\\mathcal{P}$, mais le vecteur qui va de $M$ à ce point, $\\begin{pmatrix} 5 \\\\ -1 \\\\ -1 \\end{pmatrix}$, n'est pas colinéaire au vecteur normal $\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$.",
+                "Erreur de signe : $(0\\,;\\,0\\,;\\,0)$ correspond à $t = -1$, et il n'est pas dans $\\mathcal{P}$, car $0 + 0 + 0 - 6 \\neq 0$."
+              ]
+            },
+            "explication": "La droite passant par $M$ et dirigée par $\\vec{n}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ : $x = 1 + t$, $y = 1 + t$, $z = 1 + t$. Dans l'équation : $3(1 + t) - 6 = 0$, soit $3t - 3 = 0$ et $t = 1$. D'où $H(2\\,;\\,2\\,;\\,2)$."
+          }
+        },
+        {
+          "id": "l-equations-espace-039",
+          "type": "propriete",
+          "titre": "Le projeté orthogonal sur une droite donnée par un point et un vecteur directeur",
+          "capacites": ["bo-m-representations-05"],
+          "texte": "Soit $d$ la droite passant par $B$ et de vecteur directeur $\\vec{u}$, et $M$ un point. Chaque point $H$ de $d$ vérifie $\\overrightarrow{BH} = t\\,\\vec{u}$ pour un réel $t$. Ses coordonnées s'écrivent donc en fonction de $t$, grâce à une représentation paramétrique de $d$.\n\nLe projeté orthogonal de $M$ sur $d$ est le point $H$ obtenu pour la seule valeur de $t$ telle que\n\n$$\\overrightarrow{MH} \\cdot \\vec{u} = 0.$$\n\nEn effet, par la relation de Chasles, $\\overrightarrow{MH} = \\overrightarrow{MB} + \\overrightarrow{BH} = \\overrightarrow{MB} + t\\,\\vec{u}$. Donc $\\overrightarrow{MH} \\cdot \\vec{u} = \\overrightarrow{MB} \\cdot \\vec{u} + t\\,\\lVert \\vec{u} \\rVert^2$ : c'est une équation du premier degré en $t$, avec $\\lVert \\vec{u} \\rVert^2 \\neq 0$.",
+          "conditions": [
+            "Le repère est orthonormé.",
+            "$\\vec{u}$ n'est pas le vecteur nul : le coefficient de $t$, $\\lVert \\vec{u} \\rVert^2$, n'est donc pas nul."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-equations-espace-040",
+          "type": "exemple",
+          "titre": "Le point d'une droite le plus proche d'un point",
+          "capacites": ["bo-m-representations-05"],
+          "enonce": "Soit $d$ la droite passant par $B(1\\,;\\,2\\,;\\,0)$ et de vecteur directeur $\\vec{u}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$, et $A(3\\,;\\,1\\,;\\,4)$. Déterminer les coordonnées du point $H$ de la droite $d$ pour lequel la distance $AH$ est minimale, puis cette distance minimale.",
+          "etapes": [
+            {
+              "texte": "La distance $AH$ est minimale quand $H$ est le projeté orthogonal de $A$ sur $d$ : c'est le point de $d$ le plus proche de $A$.",
+              "pourquoi": "Propriété vue au chapitre « Orthogonalité et distances dans l'espace », rappelée en tête de cette notion."
+            },
+            {
+              "texte": "Une représentation paramétrique de $d$ est $x = 1 + t$, $y = 2$, $z = t$, avec $t \\in \\mathbb{R}$. Un point $H$ de $d$ a donc pour coordonnées $(1 + t\\,;\\,2\\,;\\,t)$, et $\\overrightarrow{AH}\\begin{pmatrix} 1 + t - 3 \\\\ 2 - 1 \\\\ t - 4 \\end{pmatrix}$, soit $\\overrightarrow{AH}\\begin{pmatrix} t - 2 \\\\ 1 \\\\ t - 4 \\end{pmatrix}$."
+            },
+            {
+              "texte": "$H$ est le projeté si $\\overrightarrow{AH} \\cdot \\vec{u} = 0$ : $(t - 2) \\times 1 + 1 \\times 0 + (t - 4) \\times 1 = 0$, soit $2t - 6 = 0$, donc $t = 3$."
+            },
+            {
+              "texte": "Pour $t = 3$ : $H(4\\,;\\,2\\,;\\,3)$. Alors $\\overrightarrow{AH}\\begin{pmatrix} 1 \\\\ 1 \\\\ -1 \\end{pmatrix}$ et $AH = \\sqrt{1^2 + 1^2 + (-1)^2} = \\sqrt{3}$.",
+              "pourquoi": "C'est le point $H$ que l'énoncé donnait dans l'exemple « La distance d'un point à une droite » du chapitre précédent : cette fois, on l'a trouvé."
+            },
+            {
+              "texte": "**Conclusion** : la distance $AH$ est minimale pour $H(4\\,;\\,2\\,;\\,3)$, projeté orthogonal de $A$ sur $d$. Cette distance minimale vaut $\\sqrt{3}$."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-041",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-05"],
+          "question": {
+            "enonce": "La droite $d$ a pour représentation paramétrique $\\begin{cases} x = 1 + 2t \\\\ y = -t \\\\ z = 3 \\end{cases}$, $t \\in \\mathbb{R}$. Quelle est la première coordonnée (l'abscisse) du projeté orthogonal $H$ du point $M(4\\,;\\,1\\,;\\,5)$ sur $d$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 3,
+              "tolerance": 0
+            },
+            "explication": "$H(1 + 2t\\,;\\,-t\\,;\\,3)$, donc $\\overrightarrow{MH}\\begin{pmatrix} 2t - 3 \\\\ -t - 1 \\\\ -2 \\end{pmatrix}$, et $\\vec{u}\\begin{pmatrix} 2 \\\\ -1 \\\\ 0 \\end{pmatrix}$. Ainsi $\\overrightarrow{MH} \\cdot \\vec{u} = 4t - 6 + t + 1 + 0 = 5t - 5$, nul pour $t = 1$. Donc $H(3\\,;\\,-1\\,;\\,3)$."
+          }
+        },
+        {
+          "id": "l-equations-espace-042",
+          "type": "methode",
+          "titre": "Comment calculer les coordonnées d'un projeté orthogonal ?",
+          "capacites": ["bo-m-representations-05"],
+          "etapes": [
+            "**Sur un plan** d'équation $ax + by + cz + d = 0$, lis le vecteur normal $\\vec{n}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$. Écris une représentation paramétrique de la droite $\\Delta$ passant par $M$ et dirigée par $\\vec{n}$ : c'est la droite perpendiculaire au plan passant par $M$.",
+            "Remplace $x$, $y$, $z$ dans l'équation du plan par les expressions de $\\Delta$ : tu obtiens une équation du premier degré en $t$. Résous-la.",
+            "Remets cette valeur de $t$ dans la représentation de $\\Delta$ : tu obtiens les coordonnées de $H$. Contrôle qu'elles vérifient l'équation du plan.",
+            "**Sur une droite** passant par $B$ et dirigée par $\\vec{u}$, écris les coordonnées d'un point $H$ de la droite en fonction de $t$. Calcule $\\overrightarrow{MH}$, puis résous $\\overrightarrow{MH} \\cdot \\vec{u} = 0$.",
+            "Pour la distance de $M$ au plan, ou à la droite, calcule la longueur $MH$ avec les coordonnées de $M$ et de $H$."
+          ],
+          "exemple": "l-equations-espace-044"
+        },
+        {
+          "id": "l-equations-espace-043",
+          "type": "figure",
+          "titre": "Le cube $ABCDEFGH$ et ses coordonnées",
+          "capacites": ["bo-m-representations-05"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/orthogonalite-espace/cube-repere.svg",
+              "alt": "Le cube ABCDEFGH en perspective : la face du dessous est ABCD, avec A devant à gauche, B devant à droite, C derrière à droite et D derrière à gauche ; la face du dessus est EFGH, avec E au-dessus de A, F au-dessus de B, G au-dessus de C et H au-dessus de D. Les trois arêtes qui partent de D, cachées, sont en pointillé. Trois flèches bleues partent de A : vers B, vers D (en pointillé, car cachée) et vers E. À côté de chaque sommet sont écrites ses coordonnées : A(0 ; 0 ; 0), B(1 ; 0 ; 0), C(1 ; 1 ; 0), D(0 ; 1 ; 0), E(0 ; 0 ; 1), F(1 ; 0 ; 1), G(1 ; 1 ; 1) et H(0 ; 1 ; 1).",
+              "width": 440,
+              "height": 305
+            },
+            "caption": "Le cube ABCDEFGH de l'exemple, avec le repère (A ; AB, AD, AE), orthonormé car l'arête vaut 1. À côté de chaque sommet : ses coordonnées dans ce repère. En pointillé : ce qui est caché."
+          }
+        },
+        {
+          "id": "l-equations-espace-044",
+          "type": "exemple",
+          "titre": "Le point $L$ du plan $(BDG)$, une distance, un volume",
+          "capacites": ["bo-m-representations-05", "bo-m-orthogonalite-10", "bo-m-orthogonalite-11"],
+          "enonce": "$ABCDEFGH$ est un cube d'arête $1$, muni du repère orthonormé $\\left(A\\,;\\,\\overrightarrow{AB}, \\overrightarrow{AD}, \\overrightarrow{AE}\\right)$. Le plan $(BDG)$ a pour équation $x + y - z - 1 = 0$ (voir la notion « Équation cartésienne d'un plan »). On note $\\Delta$ la droite passant par $E$ et orthogonale au plan $(BDG)$, et $L$ son point d'intersection avec ce plan.\n\n**1.** Déterminer les coordonnées du point $L$.\n\n**2.** En déduire la distance du point $E$ au plan $(BDG)$.\n\n**3.** On admet que le triangle $BDG$ a pour aire $\\dfrac{\\sqrt{3}}{2}$. Calculer le volume du tétraèdre $EBDG$.",
+          "etapes": [
+            {
+              "texte": "**1.** Un vecteur normal au plan $(BDG)$ est $\\vec{n}\\begin{pmatrix} 1 \\\\ 1 \\\\ -1 \\end{pmatrix}$, et $E(0\\,;\\,0\\,;\\,1)$. La droite $\\Delta$, dirigée par $\\vec{n}$, a pour représentation paramétrique $x = t$, $y = t$, $z = 1 - t$, avec $t \\in \\mathbb{R}$."
+            },
+            {
+              "texte": "On remplace dans l'équation du plan : $t + t - (1 - t) - 1 = 0$, soit $3t - 2 = 0$, donc $t = \\dfrac{2}{3}$.",
+              "pourquoi": "Attention au signe : $-(1 - t) = -1 + t$. Donc $t + t - 1 + t - 1 = 3t - 2$."
+            },
+            {
+              "texte": "Pour $t = \\dfrac{2}{3}$ : $L\\left(\\dfrac{2}{3}\\,;\\,\\dfrac{2}{3}\\,;\\,\\dfrac{1}{3}\\right)$. Contrôle : $\\dfrac{2}{3} + \\dfrac{2}{3} - \\dfrac{1}{3} - 1 = \\dfrac{3}{3} - 1 = 0$.",
+              "pourquoi": "$z = 1 - \\dfrac{2}{3} = \\dfrac{1}{3}$."
+            },
+            {
+              "texte": "**2.** $L$ est dans $(BDG)$ et $\\overrightarrow{EL} = \\dfrac{2}{3}\\,\\vec{n}$ est normal à ce plan : $L$ est le projeté orthogonal de $E$ sur $(BDG)$. Avec $\\overrightarrow{EL}\\begin{pmatrix} \\frac{2}{3} \\\\ \\frac{2}{3} \\\\ -\\frac{2}{3} \\end{pmatrix}$, on obtient $EL = \\sqrt{\\dfrac{4}{9} + \\dfrac{4}{9} + \\dfrac{4}{9}} = \\sqrt{\\dfrac{12}{9}} = \\dfrac{2\\sqrt{3}}{3}$.",
+              "pourquoi": "$\\sqrt{12} = \\sqrt{4 \\times 3} = 2\\sqrt{3}$ et $\\sqrt{9} = 3$."
+            },
+            {
+              "texte": "**3.** On prend pour base le triangle $BDG$ et pour sommet $E$. La hauteur est la distance de $E$ au plan $(BDG)$, c'est-à-dire $EL$. Donc $V = \\dfrac{1}{3} \\times \\dfrac{\\sqrt{3}}{2} \\times \\dfrac{2\\sqrt{3}}{3} = \\dfrac{2 \\times 3}{18} = \\dfrac{1}{3}$.",
+              "pourquoi": "Volume d'un tétraèdre : $\\dfrac{1}{3} \\times \\text{aire de la base} \\times \\text{hauteur}$. Au numérateur, $\\sqrt{3} \\times 2\\sqrt{3} = 2 \\times 3$ ; au dénominateur, $3 \\times 2 \\times 3 = 18$."
+            },
+            {
+              "texte": "**Conclusion** : $L\\left(\\dfrac{2}{3}\\,;\\,\\dfrac{2}{3}\\,;\\,\\dfrac{1}{3}\\right)$. La distance de $E$ au plan $(BDG)$ vaut $\\dfrac{2\\sqrt{3}}{3}$, et le tétraèdre $EBDG$ a pour volume $\\dfrac{1}{3}$ unité de volume."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-045",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-05"],
+          "question": {
+            "enonce": "Le projeté orthogonal $H$ du point $M(2\\,;\\,3\\,;\\,1)$ sur le plan $\\mathcal{P} : x + 2y + 2z - 1 = 0$ est sur la droite $\\Delta : x = 2 + t$, $y = 3 + 2t$, $z = 1 + 2t$ ($t \\in \\mathbb{R}$). Il est obtenu pour $t = -1$. Quelle est la distance du point $M$ au plan $\\mathcal{P}$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 3,
+              "tolerance": 0
+            },
+            "explication": "Pour $t = -1$ : $H(1\\,;\\,1\\,;\\,-1)$, et $1 + 2 - 2 - 1 = 0$ confirme que $H$ est dans $\\mathcal{P}$. Alors $\\overrightarrow{MH}\\begin{pmatrix} -1 \\\\ -2 \\\\ -2 \\end{pmatrix}$ et $MH = \\sqrt{1 + 4 + 4} = 3$. La distance est la longueur $MH$, pas la valeur de $t$."
+          }
+        },
+        {
+          "id": "l-equations-espace-046",
+          "type": "piege",
+          "titre": "Le paramètre $t$ n'est pas la distance",
+          "faux": "Pour le projeté de $O$ sur le plan $(ABC)$, on trouve $t = \\dfrac{2}{3}$ : la distance de $O$ au plan vaut donc $\\dfrac{2}{3}$.",
+          "juste": "$t$ dit seulement où se trouve $H$ sur la droite $\\Delta$. On calcule les coordonnées de $H$, puis la longueur $OH = \\dfrac{2\\sqrt{6}}{3}$.",
+          "explication": "$\\overrightarrow{OH} = t\\,\\vec{n}$, donc $OH = |t| \\times \\lVert \\vec{n} \\rVert$. Ici $\\lVert \\vec{n} \\rVert = \\sqrt{4 + 1 + 1} = \\sqrt{6}$, et non $1$ : la distance vaut $\\dfrac{2}{3} \\times \\sqrt{6}$, pas $\\dfrac{2}{3}$."
+        },
+        {
+          "id": "l-equations-espace-047",
+          "type": "retenir",
+          "texte": "Projeté de $M$ sur le plan $ax + by + cz + d = 0$ : la droite passant par $M$ et dirigée par $\\vec{n}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$, reportée dans l'équation, donne $t$, puis $H$. Sur une droite dirigée par $\\vec{u}$ : $H$ en fonction de $t$, puis $\\overrightarrow{MH} \\cdot \\vec{u} = 0$. La distance cherchée est $MH$, pas $t$."
+        }
+      ]
+    },
+    {
+      "notion": "n-equations-espace-intersections",
+      "blocs": [
+        {
+          "id": "l-equations-espace-048",
+          "type": "idee",
+          "texte": "Deux droites se coupent-elles ? Une droite perce-t-elle un plan ? Tu cherches les points dont les coordonnées vérifient toutes les équations à la fois : c'est un système. Tu le résous, puis tu traduis. Une solution : un point commun. Aucune : aucun point commun. Une infinité : toute une droite (droite contenue dans un plan, deux plans sécants), ou deux objets confondus. Le même geste dit aussi si trois vecteurs forment une base, ou si quatre points sont coplanaires."
+        },
+        {
+          "id": "l-equations-espace-049",
+          "type": "rappel",
+          "titre": "Rappel : positions relatives de droites et de plans",
+          "texte": "- Deux droites de l'espace sont sécantes, parallèles ou non coplanaires. Sécantes : un seul point commun. Parallèles : vecteurs directeurs colinéaires ; elles sont alors strictement parallèles ou confondues. Non coplanaires : aucun plan ne les contient toutes les deux.\n- Une droite et un plan sont sécants en un point, ou parallèles. Une droite parallèle à un plan est contenue dans ce plan, ou n'a aucun point commun avec lui.\n- Deux plans sont sécants selon une droite, ou parallèles : confondus, ou strictement parallèles.",
+          "lien": "n-vecteurs-espace-positions-relatives"
+        },
+        {
+          "id": "l-equations-espace-050",
+          "type": "propriete",
+          "titre": "Intersection d'une droite et d'un plan",
+          "capacites": ["bo-m-representations-06"],
+          "texte": "Soit $d$ une droite de représentation paramétrique $x = x_0 + ta$, $y = y_0 + tb$, $z = z_0 + tc$ ($t \\in \\mathbb{R}$), et $\\mathcal{P}$ un plan donné par une équation cartésienne. On remplace $x$, $y$, $z$ par ces expressions dans l'équation de $\\mathcal{P}$. On obtient une équation $\\alpha t + \\beta = 0$, où $\\alpha$ et $\\beta$ sont des réels ; $\\alpha$ se lit « alpha » et $\\beta$ « bêta ».\n\n- Si $\\alpha \\neq 0$ : une seule solution, $d$ et $\\mathcal{P}$ sont **sécants** en un point.\n- Si $\\alpha = 0$ et $\\beta \\neq 0$ : aucune solution, $d$ est **strictement parallèle** à $\\mathcal{P}$.\n- Si $\\alpha = 0$ et $\\beta = 0$ : tout réel $t$ convient, $d$ est **contenue** dans $\\mathcal{P}$.\n\n**Critère de parallélisme.** Soit $\\vec{u}\\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$, qui dirige $d$, et $\\vec{n}$, le vecteur normal lu dans l'équation de $\\mathcal{P}$. Dans l'équation, les coordonnées de $\\vec{n}$ multiplient $ta$, $tb$, $tc$ : ainsi $\\alpha = \\vec{u} \\cdot \\vec{n}$. Donc $d$ est **parallèle** à $\\mathcal{P}$ (strictement, ou contenue) si et seulement si $\\vec{u} \\cdot \\vec{n} = 0$. Un seul point de $d$ suffit alors pour trancher : s'il est dans $\\mathcal{P}$, $d$ est contenue dans $\\mathcal{P}$ ; sinon, elle est strictement parallèle à $\\mathcal{P}$.",
+          "conditions": [
+            "Pour les trois cas, $d$ est donnée par une représentation paramétrique et $\\mathcal{P}$ par une équation cartésienne.",
+            "Le critère $\\vec{u} \\cdot \\vec{n} = 0$ vaut pour n'importe quel vecteur directeur de $d$ et n'importe quel vecteur normal à $\\mathcal{P}$ : il ne demande aucun point de $d$.",
+            "Chaque solution $t$ donne un point commun : on obtient ses coordonnées en remettant $t$ dans la représentation de $d$."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-equations-espace-066",
+          "type": "figure",
+          "titre": "Une droite et un plan : les trois cas ; deux plans",
+          "capacites": ["bo-m-representations-06"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/droite-plan-deux-plans.svg",
+              "alt": "En haut, trois dessins d'un même plan P, représenté par un parallélogramme. À gauche, la droite d est tracée dans le plan : elle est contenue dans P. Au milieu, la droite d est au-dessus du plan, parallèle à son ombre en pointillé dans le plan : elle est strictement parallèle à P ; deux traits verticaux en pointillé relient d à son ombre. À droite, la droite d traverse le plan au point I ; sa partie cachée sous le plan est en pointillé : d et P sont sécants en I. En bas à gauche, deux plans P et P′ superposés : ils sont strictement parallèles. En bas à droite, un plan horizontal P et un plan vertical P′ qui le traverse : ils se coupent selon une droite Δ, en orange.",
+              "width": 640,
+              "height": 470
+            },
+            "caption": "En haut, les trois cas de la propriété. d contenue dans P : α = 0 et β = 0. d strictement parallèle à P : α = 0 et β ≠ 0. d sécante à P en I : α ≠ 0. En bas : deux plans strictement parallèles, puis deux plans sécants selon la droite Δ."
+          }
+        },
+        {
+          "id": "l-equations-espace-051",
+          "type": "exemple",
+          "titre": "Une droite et un plan : les trois cas",
+          "capacites": ["bo-m-representations-06"],
+          "enonce": "Soit $\\mathcal{P}$ le plan d'équation $x + y + z - 6 = 0$. Étudier l'intersection de $\\mathcal{P}$ avec chacune des droites suivantes, où $t \\in \\mathbb{R}$ :\n\n- $d_1$ : $x = 1 + t$, $y = 2 - t$, $z = 3t$ ;\n- $d_2$ : $x = 2t$, $y = 1 + t$, $z = 3 - 3t$ ;\n- $d_3$ : $x = 1 + t$, $y = 5 - t$, $z = 0$.",
+          "etapes": [
+            {
+              "texte": "**Droite $d_1$.** On remplace $x$, $y$, $z$ dans l'équation de $\\mathcal{P}$ : $(1 + t) + (2 - t) + 3t - 6 = 0$, soit $3t - 3 = 0$, donc $t = 1$.",
+              "pourquoi": "Nombres seuls : $1 + 2 - 6 = -3$. Termes en $t$ : $t - t + 3t = 3t$."
+            },
+            {
+              "texte": "Une seule solution : $d_1$ et $\\mathcal{P}$ sont sécants. Pour $t = 1$, on obtient le point $I(2\\,;\\,1\\,;\\,3)$. Contrôle : $2 + 1 + 3 - 6 = 0$."
+            },
+            {
+              "texte": "**Droite $d_2$.** $2t + (1 + t) + (3 - 3t) - 6 = 0$ donne $0 \\times t - 2 = 0$, c'est-à-dire $-2 = 0$ : c'est impossible, quel que soit $t$. Aucun point commun : $d_2$ est strictement parallèle à $\\mathcal{P}$.",
+              "pourquoi": "Les termes en $t$ s'annulent : $2t + t - 3t = 0$. Ce coefficient, $2 + 1 - 3$, est $\\vec{u}_2 \\cdot \\vec{n}$, avec $\\vec{u}_2\\begin{pmatrix} 2 \\\\ 1 \\\\ -3 \\end{pmatrix}$ qui dirige $d_2$ et $\\vec{n}\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ normal à $\\mathcal{P}$ : le critère dit que $d_2$ est parallèle à $\\mathcal{P}$. Son point $(0\\,;\\,1\\,;\\,3)$, obtenu pour $t = 0$, n'est pas dans $\\mathcal{P}$, car $0 + 1 + 3 - 6 = -2 \\neq 0$."
+            },
+            {
+              "texte": "**Droite $d_3$.** $(1 + t) + (5 - t) + 0 - 6 = 0$ donne $0 = 0$ : c'est vrai pour tout réel $t$. Tous les points de $d_3$ sont dans $\\mathcal{P}$ : $d_3$ est contenue dans $\\mathcal{P}$.",
+              "pourquoi": "Le critère le confirme. $\\vec{u}_3\\begin{pmatrix} 1 \\\\ -1 \\\\ 0 \\end{pmatrix}$ dirige $d_3$, et $\\vec{u}_3 \\cdot \\vec{n} = 1 - 1 + 0 = 0$ : $d_3$ est parallèle à $\\mathcal{P}$. Son point $(1\\,;\\,5\\,;\\,0)$ est dans $\\mathcal{P}$, car $1 + 5 + 0 - 6 = 0$."
+            },
+            {
+              "texte": "**Conclusion** : $d_1$ coupe $\\mathcal{P}$ au point $I(2\\,;\\,1\\,;\\,3)$ ; $d_2$ est strictement parallèle à $\\mathcal{P}$ ; $d_3$ est contenue dans $\\mathcal{P}$."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-052",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-06"],
+          "question": {
+            "enonce": "La droite $d$ : $x = 2 + t$, $y = -1 + 2t$, $z = 3 - t$ ($t \\in \\mathbb{R}$) coupe le plan d'équation $2x - y + z - 9 = 0$ en un seul point. Quelle valeur du paramètre $t$ donne ce point ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": -1,
+              "tolerance": 0
+            },
+            "explication": "$2(2 + t) - (-1 + 2t) + (3 - t) - 9 = 4 + 2t + 1 - 2t + 3 - t - 9 = -1 - t$. L'équation $-1 - t = 0$ donne $t = -1$, d'où le point $(1\\,;\\,-3\\,;\\,4)$."
+          }
+        },
+        {
+          "id": "l-equations-espace-067",
+          "type": "figure",
+          "titre": "Deux droites : sécantes, parallèles ou non coplanaires",
+          "capacites": ["bo-m-representations-06"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/vecteurs-espace/deux-droites-cube.svg",
+              "alt": "Trois cubes ABCDEFGH côte à côte. Dans le premier, les droites (AB), en bleu, et (AE), en orange, se coupent en A : elles sont sécantes. Dans le deuxième, les droites (AB) et (HG) sont parallèles : l'une borde la face du dessous, l'autre la face du dessus. Dans le troisième, les droites (AB) et (CG) ne se coupent pas et ne sont pas parallèles : elles sont non coplanaires.",
+              "width": 660,
+              "height": 275
+            },
+            "caption": "Les trois positions possibles de deux droites, sur un cube. Sécantes : (AB) et (AE). Parallèles : (AB) et (HG). Non coplanaires : (AB) et (CG), qui ne se coupent pas sans être parallèles. La méthode qui suit les distingue par le calcul."
+          }
+        },
+        {
+          "id": "l-equations-espace-053",
+          "type": "methode",
+          "titre": "Comment étudier la position relative de deux droites données par des représentations paramétriques ?",
+          "capacites": ["bo-m-representations-06"],
+          "etapes": [
+            "Donne un nom différent au paramètre de chaque droite, par exemple $t$ pour la première et $s$ pour la seconde.",
+            "Compare les vecteurs directeurs. S'ils sont colinéaires, les droites sont parallèles. Teste alors un point de l'une dans la représentation de l'autre : s'il y est, elles sont confondues.",
+            "Sinon, cherche un point commun : écris l'égalité des trois coordonnées. Tu obtiens trois équations à deux inconnues, $t$ et $s$.",
+            "Résous deux de ces équations : exprime une inconnue en fonction de l'autre dans l'une, puis remplace dans l'autre. Teste ensuite le couple $(t\\,;\\,s)$ trouvé dans la troisième équation.",
+            "Conclus : si la troisième est vérifiée, les droites sont sécantes, et le point commun s'obtient avec $t$ dans la première représentation. Sinon, elles n'ont aucun point commun sans être parallèles : elles sont non coplanaires.",
+            "Pour l'orthogonalité, calcule le produit scalaire des vecteurs directeurs : s'il est nul, les droites sont orthogonales, et perpendiculaires si elles sont aussi sécantes."
+          ],
+          "exemple": "l-equations-espace-054"
+        },
+        {
+          "id": "l-equations-espace-054",
+          "type": "exemple",
+          "titre": "Deux droites sécantes, deux droites non coplanaires",
+          "capacites": ["bo-m-representations-06"],
+          "enonce": "On donne trois droites, de paramètres respectifs $t$, $s$ et $r$, réels :\n\n- $\\mathcal{D}_1$ : $x = 1 + t$, $y = 2t$, $z = -1 + t$ ;\n- $\\mathcal{D}_2$ : $x = 3 - s$, $y = 2s$, $z = -2 + 2s$ ;\n- $\\mathcal{D}_3$ : $x = r$, $y = 1 + r$, $z = 2 - r$.\n\n**1.** Démontrer que $\\mathcal{D}_1$ et $\\mathcal{D}_2$ sont sécantes et déterminer les coordonnées de leur point d'intersection.\n\n**2.** Démontrer que $\\mathcal{D}_1$ et $\\mathcal{D}_3$ sont non coplanaires.",
+          "etapes": [
+            {
+              "texte": "**1.** Vecteurs directeurs : $\\vec{u}_1\\begin{pmatrix} 1 \\\\ 2 \\\\ 1 \\end{pmatrix}$ et $\\vec{u}_2\\begin{pmatrix} -1 \\\\ 2 \\\\ 2 \\end{pmatrix}$. Ils ne sont pas colinéaires, donc $\\mathcal{D}_1$ et $\\mathcal{D}_2$ ne sont pas parallèles.",
+              "pourquoi": "$\\vec{u}_2 = k\\,\\vec{u}_1$ donnerait $-1 = k$ sur la première coordonnée et $2 = 2k$, soit $k = 1$, sur la deuxième. Un même réel $k$ ne peut pas valoir à la fois $-1$ et $1$."
+            },
+            {
+              "texte": "Un point commun correspond à des réels $t$ et $s$ tels que $1 + t = 3 - s$, $2t = 2s$ et $-1 + t = -2 + 2s$.",
+              "pourquoi": "On ne prend pas la même lettre pour les deux paramètres. Un point commun n'a aucune raison d'être obtenu pour la même valeur sur les deux droites."
+            },
+            {
+              "texte": "La deuxième équation donne $t = s$. Dans la première : $1 + t = 3 - t$, soit $2t = 2$, donc $t = 1$, puis $s = 1$."
+            },
+            {
+              "texte": "On teste $t = 1$ et $s = 1$ dans la troisième équation : à gauche, $-1 + 1 = 0$ ; à droite, $-2 + 2 \\times 1 = 0$. Elle est vérifiée : les droites ont un point commun. Comme elles ne sont pas parallèles, elles sont sécantes."
+            },
+            {
+              "texte": "Avec $t = 1$ dans $\\mathcal{D}_1$ : $I(2\\,;\\,2\\,;\\,0)$. Contrôle avec $s = 1$ dans $\\mathcal{D}_2$ : $(3 - 1\\,;\\,2 \\times 1\\,;\\,-2 + 2)$, soit $(2\\,;\\,2\\,;\\,0)$."
+            },
+            {
+              "texte": "**2.** $\\vec{u}_3\\begin{pmatrix} 1 \\\\ 1 \\\\ -1 \\end{pmatrix}$ n'est pas colinéaire à $\\vec{u}_1$ : $\\vec{u}_1 = k\\,\\vec{u}_3$ imposerait $k = 1$ sur la première coordonnée, puis $2 = 1$ sur la deuxième. Un point commun vérifierait $1 + t = r$, $2t = 1 + r$ et $-1 + t = 2 - r$."
+            },
+            {
+              "texte": "La première équation donne $r = 1 + t$. Dans la deuxième : $2t = 2 + t$, donc $t = 2$, puis $r = 3$. Troisième équation : à gauche, $-1 + 2 = 1$ ; à droite, $2 - 3 = -1$. Comme $1 \\neq -1$, elle n'est pas vérifiée : aucun point commun."
+            },
+            {
+              "texte": "**Conclusion** : $\\mathcal{D}_1$ et $\\mathcal{D}_2$ sont sécantes au point $I(2\\,;\\,2\\,;\\,0)$. $\\mathcal{D}_1$ et $\\mathcal{D}_3$ ne sont ni parallèles ni sécantes : elles sont non coplanaires."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-055",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-06"],
+          "question": {
+            "enonce": "Deux droites $d_1$ (paramètre $t$) et $d_2$ (paramètre $s$) ne sont pas parallèles. Les deux premières équations du système donnent $t = 1$ et $s = 2$, mais ce couple ne vérifie pas la troisième équation. Que conclure ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "Les droites sont sécantes, au point de $d_1$ obtenu pour $t = 1$.",
+                "Les droites sont non coplanaires.",
+                "Les droites sont strictement parallèles.",
+                "On ne peut rien conclure : il faut recommencer avec deux autres équations."
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Un point commun doit vérifier les trois équations. La troisième ne l'est pas : le point de $d_1$ obtenu pour $t = 1$ n'est pas sur $d_2$.",
+                null,
+                "L'énoncé dit que les droites ne sont pas parallèles : leurs vecteurs directeurs ne sont pas colinéaires.",
+                "Un point commun devrait correspondre au seul couple qui vérifie les deux premières équations, $t = 1$ et $s = 2$. Ce couple ne vérifie pas la troisième : il n'y a aucun point commun, et c'est déjà une conclusion."
+              ]
+            },
+            "explication": "Aucun couple $(t\\,;\\,s)$ ne vérifie les trois équations : les droites n'ont pas de point commun. Deux droites non parallèles et sans point commun ne sont pas dans un même plan : elles sont non coplanaires."
+          }
+        },
+        {
+          "id": "l-equations-espace-062",
+          "type": "piege",
+          "titre": "Le même paramètre pour deux droites",
+          "faux": "$\\mathcal{D}_1$ : $x = 1 + t$, $y = 2t$, $z = -1 + t$ et $\\mathcal{D}_2$ : $x = 2 + t$, $y = 2 - t$, $z = 3t$. Un point commun vérifierait $1 + t = 2 + t$, soit $1 = 2$ : c'est impossible, donc les droites n'ont aucun point commun.",
+          "juste": "Renomme le paramètre de $\\mathcal{D}_2$ : $x = 2 + s$, $y = 2 - s$, $z = 3s$. Le système devient $1 + t = 2 + s$, $2t = 2 - s$ et $-1 + t = 3s$. La première donne $s = t - 1$. Dans la deuxième : $2t = 2 - (t - 1) = 3 - t$, donc $t = 1$, puis $s = 0$. La troisième est vérifiée : $-1 + 1 = 0$ et $3 \\times 0 = 0$. Les droites sont sécantes au point $(2\\,;\\,2\\,;\\,0)$.",
+          "explication": "Le point commun est atteint pour $t = 1$ sur $\\mathcal{D}_1$, mais pour $s = 0$ sur $\\mathcal{D}_2$. Garder la même lettre impose, sans raison, la même valeur du paramètre sur les deux droites."
+        },
+        {
+          "id": "l-equations-espace-056",
+          "type": "propriete",
+          "titre": "Deux plans : parallèles ou sécants",
+          "capacites": ["bo-m-representations-06"],
+          "texte": "Soit $\\mathcal{P}$ et $\\mathcal{P}'$ deux plans de vecteurs normaux $\\vec{n}$ et $\\vec{n}'$.\n\n- $\\mathcal{P}$ et $\\mathcal{P}'$ sont **parallèles** si et seulement si $\\vec{n}$ et $\\vec{n}'$ sont colinéaires. Ils sont alors confondus s'ils ont un point commun, strictement parallèles sinon.\n- Sinon, $\\mathcal{P}$ et $\\mathcal{P}'$ sont **sécants** selon une droite.",
+          "conditions": [
+            "$\\vec{n}$ et $\\vec{n}'$ sont des vecteurs normaux, donc non nuls : sur des équations cartésiennes, on les lit dans les coefficients de $x$, $y$, $z$.",
+            "Pour séparer « confondus » de « strictement parallèles », on teste un point de l'un dans l'équation de l'autre."
+          ],
+          "admise": true
+        },
+        {
+          "id": "l-equations-espace-058",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-06"],
+          "question": {
+            "enonce": "Les plans $\\mathcal{P} : 2x - y + z - 1 = 0$ et $\\mathcal{P}' : -4x + 2y - 2z + 2 = 0$ sont :",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "sécants",
+                "strictement parallèles",
+                "confondus"
+              ],
+              "bonne": 2,
+              "pourquoiFaux": [
+                "Leurs vecteurs normaux $\\begin{pmatrix} 2 \\\\ -1 \\\\ 1 \\end{pmatrix}$ et $\\begin{pmatrix} -4 \\\\ 2 \\\\ -2 \\end{pmatrix}$ sont colinéaires : le second vaut $-2$ fois le premier. Les plans sont parallèles.",
+                "Ils sont bien parallèles, mais teste un point : $(0\\,;\\,0\\,;\\,1)$ est dans $\\mathcal{P}$, car $1 - 1 = 0$, et aussi dans $\\mathcal{P}'$, car $-2 + 2 = 0$.",
+                null
+              ]
+            },
+            "explication": "L'équation de $\\mathcal{P}'$ est celle de $\\mathcal{P}$ multipliée par $-2$ : les deux équations ont exactement les mêmes solutions. Elles décrivent le même plan."
+          }
+        },
+        {
+          "id": "l-equations-espace-068",
+          "type": "definition",
+          "titre": "Plans perpendiculaires",
+          "capacites": ["bo-m-representations-06"],
+          "texte": "Deux plans $\\mathcal{P}$ et $\\mathcal{P}'$, de vecteurs normaux $\\vec{n}$ et $\\vec{n}'$, sont **perpendiculaires** lorsque $\\vec{n}$ et $\\vec{n}'$ sont orthogonaux, c'est-à-dire lorsque $\\vec{n} \\cdot \\vec{n}' = 0$. Par exemple, le sol d'une pièce et un mur sont perpendiculaires.\n\nDeux plans perpendiculaires sont toujours sécants. En effet, si $\\vec{n}' = k\\,\\vec{n}$, alors $\\vec{n} \\cdot \\vec{n}' = k\\,\\lVert \\vec{n} \\rVert^2$, qui n'est nul que pour $k = 0$, c'est-à-dire $\\vec{n}' = \\vec{0}$ : c'est impossible pour un vecteur normal."
+        },
+        {
+          "id": "l-equations-espace-057",
+          "type": "exemple",
+          "titre": "Trois plans face au plan $\\mathcal{P}_1$",
+          "capacites": ["bo-m-representations-06"],
+          "enonce": "On donne les plans $\\mathcal{P}_1 : x - y + 2z - 1 = 0$, $\\mathcal{P}_2 : 2x + y - z + 3 = 0$, $\\mathcal{P}_3 : -2x + 2y - 4z + 5 = 0$ et $\\mathcal{P}_4 : x + y - 3 = 0$. Préciser la position relative de $\\mathcal{P}_1$ et de chacun des trois autres plans. Lesquels sont perpendiculaires à $\\mathcal{P}_1$ ?",
+          "etapes": [
+            {
+              "texte": "Vecteurs normaux, lus sur les équations : $\\vec{n}_1\\begin{pmatrix} 1 \\\\ -1 \\\\ 2 \\end{pmatrix}$, $\\vec{n}_2\\begin{pmatrix} 2 \\\\ 1 \\\\ -1 \\end{pmatrix}$, $\\vec{n}_3\\begin{pmatrix} -2 \\\\ 2 \\\\ -4 \\end{pmatrix}$ et $\\vec{n}_4\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$.",
+              "pourquoi": "$\\mathcal{P}_4$ ne contient pas $z$ : le coefficient de $z$ est $0$."
+            },
+            {
+              "texte": "**$\\mathcal{P}_2$.** $\\vec{n}_2 = k\\,\\vec{n}_1$ donnerait $k = 2$ sur la première coordonnée et $k = -1$ sur la deuxième : $\\vec{n}_1$ et $\\vec{n}_2$ ne sont pas colinéaires, donc $\\mathcal{P}_1$ et $\\mathcal{P}_2$ sont sécants. De plus, $\\vec{n}_1 \\cdot \\vec{n}_2 = 2 - 1 - 2 = -1 \\neq 0$ : ils ne sont pas perpendiculaires."
+            },
+            {
+              "texte": "**$\\mathcal{P}_3$.** $\\vec{n}_3 = -2\\,\\vec{n}_1$ : les plans sont parallèles. Le point $A(1\\,;\\,0\\,;\\,0)$ est dans $\\mathcal{P}_1$, car $1 - 0 + 0 - 1 = 0$. Il n'est pas dans $\\mathcal{P}_3$, car $-2 + 0 - 0 + 5 = 3 \\neq 0$. Les plans sont strictement parallèles.",
+              "pourquoi": "$-2 \\times 1 = -2$, $-2 \\times (-1) = 2$ et $-2 \\times 2 = -4$."
+            },
+            {
+              "texte": "**$\\mathcal{P}_4$.** $\\vec{n}_4$ n'est pas colinéaire à $\\vec{n}_1$, donc les plans sont sécants. Et $\\vec{n}_1 \\cdot \\vec{n}_4 = 1 - 1 + 0 = 0$ : ils sont perpendiculaires.",
+              "pourquoi": "$\\vec{n}_4 = k\\,\\vec{n}_1$ donnerait $0 = 2k$ sur la troisième coordonnée, donc $k = 0$, puis $1 = 0$ sur la première : c'est impossible."
+            },
+            {
+              "texte": "**Conclusion** : $\\mathcal{P}_1$ et $\\mathcal{P}_2$ sont sécants sans être perpendiculaires ; $\\mathcal{P}_1$ et $\\mathcal{P}_3$ sont strictement parallèles ; $\\mathcal{P}_1$ et $\\mathcal{P}_4$ sont sécants et perpendiculaires. Seul $\\mathcal{P}_4$ est perpendiculaire à $\\mathcal{P}_1$."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-059",
+          "type": "methode",
+          "titre": "Comment tester une base ou une coplanarité, et trouver des coordonnées dans une base ?",
+          "capacites": ["bo-m-representations-06"],
+          "etapes": [
+            "Traduis la question par une égalité de vecteurs. Ici, $a$, $b$, $c$ sont des réels inconnus, pas des coordonnées. Trois vecteurs coplanaires ? Cherche $a$, $b$ tels que $\\vec{w} = a\\,\\vec{u} + b\\,\\vec{v}$. Coordonnées de $\\vec{p}$ dans la base $\\left(\\vec{u}, \\vec{v}, \\vec{w}\\right)$ ? Cherche $a$, $b$, $c$ tels que $\\vec{p} = a\\,\\vec{u} + b\\,\\vec{v} + c\\,\\vec{w}$.",
+            "Quatre points $A$, $B$, $C$, $D$, avec $A$, $B$, $C$ non alignés, sont coplanaires si et seulement si $D$ est dans le plan $(ABC)$. Teste $D$ dans une équation de $(ABC)$, ou cherche $a$, $b$ tels que $\\overrightarrow{AD} = a\\,\\overrightarrow{AB} + b\\,\\overrightarrow{AC}$.",
+            "Écris l'égalité de vecteurs coordonnée par coordonnée : tu obtiens trois équations.",
+            "Avec deux inconnues, résous deux équations, puis teste la troisième. Avec trois inconnues, procède par substitution : tire une inconnue d'une équation et remplace-la dans les autres. Recommence jusqu'à une équation à une seule inconnue, puis remonte.",
+            "Interprète. Si $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires, et si $\\vec{w} = a\\,\\vec{u} + b\\,\\vec{v}$ n'a aucune solution, alors $\\vec{u}$, $\\vec{v}$, $\\vec{w}$ ne sont pas coplanaires. Ils forment une base.",
+            "Pour des coordonnées, la solution $(a\\,;\\,b\\,;\\,c)$ est unique : ce sont les coordonnées de $\\vec{p}$ dans la base. Contrôle-les en recalculant $a\\,\\vec{u} + b\\,\\vec{v} + c\\,\\vec{w}$."
+          ],
+          "exemple": "l-equations-espace-060"
+        },
+        {
+          "id": "l-equations-espace-060",
+          "type": "exemple",
+          "titre": "Une base et des coordonnées, par un système",
+          "capacites": ["bo-m-representations-06"],
+          "enonce": "On donne $\\vec{u}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$, $\\vec{v}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$, $\\vec{w}\\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}$ et $\\vec{p}\\begin{pmatrix} 2 \\\\ 3 \\\\ 3 \\end{pmatrix}$.\n\n**1.** Démontrer que $\\left(\\vec{u}, \\vec{v}, \\vec{w}\\right)$ est une base de l'espace.\n\n**2.** Déterminer les coordonnées de $\\vec{p}$ dans cette base.",
+          "etapes": [
+            {
+              "texte": "**1.** $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires : $\\vec{v} = k\\,\\vec{u}$ donnerait $0 = k$ sur la première coordonnée, puis $1 = 0$ sur la deuxième.",
+              "pourquoi": "Comme $\\vec{u}$ n'est pas nul, dire que $\\vec{u}$ et $\\vec{v}$ sont colinéaires revient à dire que $\\vec{v} = k\\,\\vec{u}$ pour un réel $k$. Il suffit donc de tester cette égalité."
+            },
+            {
+              "texte": "Supposons $\\vec{w} = a\\,\\vec{u} + b\\,\\vec{v}$. Coordonnée par coordonnée : $1 = a$, $1 = b$ et $0 = a + b$. Les deux premières donnent $a = 1$ et $b = 1$, mais alors $a + b = 2 \\neq 0$.",
+              "pourquoi": "$a\\,\\vec{u} + b\\,\\vec{v}$ a pour coordonnées $\\begin{pmatrix} a \\\\ b \\\\ a + b \\end{pmatrix}$."
+            },
+            {
+              "texte": "Le système n'a pas de solution : $\\vec{w}$ ne s'écrit pas avec $\\vec{u}$ et $\\vec{v}$. Les trois vecteurs ne sont pas coplanaires, donc $\\left(\\vec{u}, \\vec{v}, \\vec{w}\\right)$ est une base.",
+              "pourquoi": "C'est un critère du chapitre « Vecteurs, droites et plans de l'espace ». Si $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires, alors $\\vec{u}$, $\\vec{v}$, $\\vec{w}$ sont coplanaires si et seulement si $\\vec{w}$ s'écrit $a\\,\\vec{u} + b\\,\\vec{v}$."
+            },
+            {
+              "texte": "**2.** On cherche $a$, $b$, $c$ tels que $\\vec{p} = a\\,\\vec{u} + b\\,\\vec{v} + c\\,\\vec{w}$. Coordonnée par coordonnée : $a + c = 2$, $b + c = 3$ et $a + b = 3$.",
+              "pourquoi": "$a\\,\\vec{u} + b\\,\\vec{v} + c\\,\\vec{w}$ a pour coordonnées $\\begin{pmatrix} a + c \\\\ b + c \\\\ a + b \\end{pmatrix}$."
+            },
+            {
+              "texte": "On procède par substitution. La première équation donne $a = 2 - c$. On remplace $a$ dans la troisième : $(2 - c) + b = 3$, soit $b = 1 + c$.",
+              "pourquoi": "Chaque remplacement fait disparaître une inconnue. La deuxième équation ne contient pas $a$ : elle reste $b + c = 3$."
+            },
+            {
+              "texte": "On remplace $b$ dans la deuxième : $(1 + c) + c = 3$, soit $2c = 2$, donc $c = 1$. On remonte : $b = 1 + c = 2$, puis $a = 2 - c = 1$.",
+              "pourquoi": "Ici, on pouvait aller plus vite. Chaque inconnue apparaît deux fois : la somme des trois équations donne $2a + 2b + 2c = 8$, donc $a + b + c = 4$. On retire alors chaque équation de cette somme : $b = 4 - (a + c) = 4 - 2 = 2$, $a = 4 - (b + c) = 4 - 3 = 1$ et $c = 4 - (a + b) = 4 - 3 = 1$. Cette astuce ne sert que pour un système aussi régulier ; la substitution sert toujours."
+            },
+            {
+              "texte": "Contrôle : $\\vec{u} + 2\\,\\vec{v} + \\vec{w}$ a pour coordonnées $\\begin{pmatrix} 1 + 0 + 1 \\\\ 0 + 2 + 1 \\\\ 1 + 2 + 0 \\end{pmatrix}$, soit $\\begin{pmatrix} 2 \\\\ 3 \\\\ 3 \\end{pmatrix}$ : c'est bien $\\vec{p}$."
+            },
+            {
+              "texte": "**Conclusion** : $\\left(\\vec{u}, \\vec{v}, \\vec{w}\\right)$ est une base de l'espace, et $\\vec{p} = \\vec{u} + 2\\,\\vec{v} + \\vec{w}$ : les coordonnées de $\\vec{p}$ dans cette base sont $(1\\,;\\,2\\,;\\,1)$."
+            }
+          ]
+        },
+        {
+          "id": "l-equations-espace-061",
+          "type": "verifie",
+          "capacites": ["bo-m-representations-06"],
+          "question": {
+            "enonce": "Vrai ou faux : les vecteurs $\\vec{u}\\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}$, $\\vec{v}\\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}$ et $\\vec{w}\\begin{pmatrix} 2 \\\\ -1 \\\\ 1 \\end{pmatrix}$ forment une base de l'espace.",
+            "reponse": {
+              "type": "vrai-faux",
+              "valeur": false,
+              "justification": "$\\vec{w} = a\\,\\vec{u} + b\\,\\vec{v}$ donne $a = 2$ et $b = -1$ avec les deux premières coordonnées ; la troisième, $a + b = 1$, est alors vérifiée. Donc $\\vec{w} = 2\\,\\vec{u} - \\vec{v}$ : les trois vecteurs sont coplanaires, ils ne forment pas une base."
+            },
+            "explication": "Ici le système a une solution : $2\\,\\vec{u} - \\vec{v}$ a pour coordonnées $\\begin{pmatrix} 2 \\\\ -1 \\\\ 2 - 1 \\end{pmatrix}$, soit $\\begin{pmatrix} 2 \\\\ -1 \\\\ 1 \\end{pmatrix}$ : c'est $\\vec{w}$. Trois vecteurs forment une base seulement s'ils ne sont pas coplanaires."
+          }
+        },
+        {
+          "id": "l-equations-espace-063",
+          "type": "complement",
+          "titre": "Pour aller plus loin : la droite d'intersection de deux plans",
+          "capacites": ["bo-m-representations-08"],
+          "texte": "Quand deux plans sont sécants, on peut décrire leur droite commune par une représentation paramétrique. Exemple : $\\mathcal{P} : x + y + z - 2 = 0$ et $\\mathcal{Q} : x - y + z = 0$. Leurs vecteurs normaux $\\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ et $\\begin{pmatrix} 1 \\\\ -1 \\\\ 1 \\end{pmatrix}$ ne sont pas colinéaires : les plans sont sécants.\n\nOn laisse une inconnue libre, ici $z = t$. En soustrayant les deux équations : $2y - 2 = 0$, donc $y = 1$. La deuxième équation donne alors $x = y - z = 1 - t$. Un point est dans les deux plans si et seulement si $x = 1 - t$, $y = 1$, $z = t$, avec $t \\in \\mathbb{R}$. C'est la droite passant par $(1\\,;\\,1\\,;\\,0)$ et dirigée par $\\begin{pmatrix} -1 \\\\ 0 \\\\ 1 \\end{pmatrix}$."
+        },
+        {
+          "id": "l-equations-espace-064",
+          "type": "complement",
+          "titre": "Pour aller plus loin : la sphère et une droite",
+          "capacites": ["bo-m-representations-10", "bo-m-representations-11"],
+          "texte": "Soit $\\Omega(a\\,;\\,b\\,;\\,c)$ un point, où $\\Omega$ se lit « oméga », et $R > 0$. La **sphère** de centre $\\Omega$ et de rayon $R$ est l'ensemble des points $M$ tels que $\\Omega M = R$, c'est-à-dire $\\Omega M^2 = R^2$. Elle a donc pour équation\n\n$$(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2.$$\n\nPour la couper par une droite, on remplace $x$, $y$, $z$ dans cette équation par une représentation paramétrique. On obtient une équation du second degré en $t$ : zéro, un ou deux points communs.\n\nExemple : la sphère de centre $O$ et de rayon $3$, d'équation $x^2 + y^2 + z^2 = 9$, et la droite $x = 1 + t$, $y = 2$, $z = t$. On obtient $(1 + t)^2 + 4 + t^2 = 9$, soit $2t^2 + 2t - 4 = 0$, puis $t^2 + t - 2 = 0$, c'est-à-dire $(t - 1)(t + 2) = 0$ : $t = 1$ ou $t = -2$. Les points communs sont $(2\\,;\\,2\\,;\\,1)$ et $(-1\\,;\\,2\\,;\\,-2)$."
+        },
+        {
+          "id": "l-equations-espace-065",
+          "type": "retenir",
+          "texte": "Une intersection devient un système. Droite et plan : une équation en $t$ ; parallèles si et seulement si $\\vec{u} \\cdot \\vec{n} = 0$ ($\\vec{u}$ directeur, $\\vec{n}$ normal). Deux droites : deux paramètres $t$ et $s$, trois équations ; on en résout deux, on teste la troisième. Deux plans : parallèles si $\\vec{n}$ et $\\vec{n}'$ sont colinéaires, perpendiculaires si $\\vec{n} \\cdot \\vec{n}' = 0$."
+        }
+      ]
+    }
+  ]
+}

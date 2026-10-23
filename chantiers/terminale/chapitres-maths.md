@@ -187,6 +187,12 @@ par un système restent au chapitre 9. Proposition de départ :
 - Projeté orthogonal, distance d'un point à un plan · ★★ (très présent : à remonter si les annales le confirment)
 
 ### 9. Représentations paramétriques et équations cartésiennes
+**Écrit le 2026-10-23** (`content/terminale/maths/chapitres/equations-espace/`) : 4 notions,
+toutes ★★★ mesurées sur 103 sujets — représentation paramétrique (98 %), équation de plan
+(91 %), intersections et positions relatives par le calcul (71 %), et une 4e notion
+**coordonnées d'un projeté orthogonal** (57 %), que la proposition ci-dessous oubliait
+(le chapitre 8 la renvoie ici). L'appartenance d'un point va avec la droite ou le plan, pas
+avec les intersections. Proposition de départ :
 - Représentation paramétrique d'une droite · ★★ (très présent : à remonter si les annales le confirment)
 - Équation cartésienne d'un plan · ★★★
 - Intersections droite-plan, plan-plan ; appartenance · ★★ — relu : le programme traite
