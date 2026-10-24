@@ -922,8 +922,11 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     l'avenir, demander à l'auteur des exercices de lister les gestes qu'il suppose montrés.
   - [ ] Sinus et cosinus, petites retouches — non bloquants laissés ouverts : dans
     `l-trigonometrie-025` étape 2, « les bornes » → « des bornes » ; le « retenir » 029
-    reste long (3 à 4 lignes) ; les touches du mode radian (`-010`) sont écrites de mémoire,
-    jugées plausibles mais jamais essayées sur une calculatrice.
+    reste long (3 à 4 lignes) ; le mini-exemple de l'étape 5 de `-025` (cos(x) < −1/2)
+    donne la réponse finale de x-010 q3 (le relecteur propose sin(x) < 1/2) ; x-004 q2 :
+    « sens » au lieu de « stricte ou large », `revoir` vers `-025` plutôt que `-026` ; les
+    touches du mode radian (`-010`) sont écrites de mémoire, jugées plausibles mais jamais
+    essayées sur une calculatrice.
   - [ ] Une animation « point sur le cercle ↔ point sur la courbe » pour sinus et cosinus —
     souhait de l'auteur du cours ; à faire quand les figures animées existeront.
   - [ ] Quand « Primitives, équations différentielles » (ch. 13) et « Calcul intégral »
