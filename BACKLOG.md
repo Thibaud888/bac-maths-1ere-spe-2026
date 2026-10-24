@@ -915,8 +915,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     étrangers 2026 ; un original sur une grande roue), 2 figures neuves. Relecteur :
     NEEDS_REVISION aux tours 1 et 2, PASS au tour 3 ; élève-testeur : 2 bloquants
     (encadrer α assez finement, saisie d'une durée), corrigés. Deux coupures (limite
-    d'usage), agents repris sans rien perdre. PR : voir l'historique de la branche
-    `claude/charming-keller-lkgrv8`. Leçon : lancer exercices et type bac pendant la
+    d'usage), agents repris sans rien perdre. PR : #134. Leçon : lancer exercices et type bac pendant la
     correction du cours a fait gagner du temps, mais la relecture des exercices a renvoyé
     deux retouches au cours (méthode utilisée par un exercice et absente du cours) — à
     l'avenir, demander à l'auteur des exercices de lister les gestes qu'il suppose montrés.
