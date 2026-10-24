@@ -228,6 +228,11 @@ marches, 18 questions éclair, 4 exercices type bac.
   première)
 - Équations et inéquations trigonométriques simples · ★
 
+Écrit le 2026-10-24 en **3 notions** (la charte en exige au moins 3) : l'étude d'une
+fonction trigonométrique dans un problème (`bo-m-trigonometrie-03`, avec la fonction
+tangente, non exigible, en complément) devient la 3e. Priorités mesurées, toutes ★ :
+18 %, 0 %, 6 % des sujets. 42 blocs, 14 exercices, 6 questions éclair, 4 exercices type bac.
+
 ### 13. Primitives, équations différentielles
 - Primitives : définition, primitives usuelles, opérations · ★★
 - Équation y' = ay · ★★

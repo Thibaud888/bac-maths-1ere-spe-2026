@@ -896,11 +896,46 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   - [ ] Quand « Sommes de variables aléatoires » (ch. 15) sera écrit, ajouter aux types bac
     de Loi binomiale les questions « en moyenne, combien… » (espérance np) que le chapitre
     ne peut pas encore poser.
-  - [ ] Fonctions sinus et cosinus : le cours — chapitre 12 dans l'ordre de l'année
-    (`trigonometrie` ; le chapitre 11, Loi binomiale, est écrit) :
-    `/tle-chapitre maths trigonometrie cours`.
-  - [ ] Fonctions sinus et cosinus : les exercices —
-    `/tle-chapitre maths trigonometrie exercices`, après le cours.
+  - [x] Fonctions sinus et cosinus : le cours — fait le 2026-10-24 : 3 notions (le
+    chantier en proposait 2, la charte en exige 3 : l'étude de fonction dans un problème
+    devient la 3e), priorités mesurées sur 103 sujets, toutes ★ (dérivées et variations 18 %,
+    équations et inéquations 0 %, étude de fonction 6 %). 42 blocs dont 7 exemples,
+    8 « vérifie », 4 figures neuves (courbes de sin et cos, cercle pour cos(x) = 1/2 et
+    sin(x) = −1/2, trapèze dans le demi-cercle), 3 cartes de mémo ; fonction tangente
+    (non exigible) en complément seulement ; réglage de la calculatrice en radians (TI,
+    Casio, NumWorks). Relecteur : NEEDS_REVISION aux tours 1 et 2, PASS au tour 3 ;
+    élève-testeur : 1 bloquant (sin(x) = a avec a négatif), corrigé. Deux ajouts après le
+    PASS, demandés par la relecture des exercices et relus avec eux : le changement de
+    variable X = 2x (exemple `l-trigonometrie-026` d.) et les crochets en −π et π
+    (`-025`). Plafonds dépassés et acceptés : notion 1 (3 exemples, 3 « vérifie » : dériver,
+    variations, limite de sin(x)/x), notion 2 (3 « vérifie »).
+  - [x] Fonctions sinus et cosinus : les exercices — même session : 14 exercices
+    (6 Comprendre, 6 S'entraîner, 2 Approfondir), 6 questions éclair, 4 sujets type bac
+    (20 points ; 3 adaptés d'Asie 2026, Amérique du Nord 2025, Antilles-Guyane et centres
+    étrangers 2026 ; un original sur une grande roue), 2 figures neuves. Relecteur :
+    NEEDS_REVISION aux tours 1 et 2, PASS au tour 3 ; élève-testeur : 2 bloquants
+    (encadrer α assez finement, saisie d'une durée), corrigés. Deux coupures (limite
+    d'usage), agents repris sans rien perdre. PR : voir l'historique de la branche
+    `claude/charming-keller-lkgrv8`. Leçon : lancer exercices et type bac pendant la
+    correction du cours a fait gagner du temps, mais la relecture des exercices a renvoyé
+    deux retouches au cours (méthode utilisée par un exercice et absente du cours) — à
+    l'avenir, demander à l'auteur des exercices de lister les gestes qu'il suppose montrés.
+  - [ ] Sinus et cosinus, petites retouches — non bloquants laissés ouverts : dans
+    `l-trigonometrie-025` étape 2, « les bornes » → « des bornes » ; le « retenir » 029
+    reste long (3 à 4 lignes) ; les touches du mode radian (`-010`) sont écrites de mémoire,
+    jugées plausibles mais jamais essayées sur une calculatrice.
+  - [ ] Une animation « point sur le cercle ↔ point sur la courbe » pour sinus et cosinus —
+    souhait de l'auteur du cours ; à faire quand les figures animées existeront.
+  - [ ] Quand « Primitives, équations différentielles » (ch. 13) et « Calcul intégral »
+    (ch. 14) seront écrits, remettre dans les types bac de Sinus et cosinus les questions
+    retirées des sujets adaptés — tb-002 (partie B : intégration par parties, aire) et
+    tb-004 (deux affirmations sur les équations différentielles) ; voir leurs notes
+    `adaptation`.
+  - [ ] Primitives, équations différentielles : le cours — chapitre 13 dans l'ordre de
+    l'année (`primitives-equations-differentielles`) :
+    `/tle-chapitre maths primitives-equations-differentielles cours`.
+  - [ ] Primitives, équations différentielles : les exercices —
+    `/tle-chapitre maths primitives-equations-differentielles exercices`, après le cours.
   - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
     (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
     `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source
