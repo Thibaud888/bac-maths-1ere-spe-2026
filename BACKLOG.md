@@ -1105,3 +1105,10 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   Mod `.claude/mods/choix-modele/`, déclaré dans `.claude/settings.json`
   (`extraKnownMarketplaces` + `enabledPlugins`) et `.claude-plugin/marketplace.json` ;
   `claude plugin validate` et `claude plugin test` OK. Non vérifié en conditions réelles.
+- [ ] Les PR prêtes ne se fusionnent pas seules — deux fois de suite (Loi binomiale PR #132,
+  Sinus et cosinus PR #134), la PR est restée ouverte plus de 50 minutes alors que la règle
+  « repo sans CI » de `CLAUDE.md` § 0 était remplie (section `## Vérification` présente,
+  `mergeable_state: clean`, seuls les contrôles Netlify, neutres) ; fusionnée chaque fois par
+  la session à la demande de Thibaud. Trouver ce qui doit déclencher la fusion automatique
+  (flotte, `pr-ready.yml`, réglage « auto-merge » du dépôt) et le réparer, ou corriger la règle
+  dans `CLAUDE.md`. DoD : la prochaine PR de chapitre fusionne seule, ou la règle dit la vérité.
