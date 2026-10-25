@@ -1,0 +1,1242 @@
+[
+  {
+    "id": "x-trigonometrie-001",
+    "chapitre": "trigonometrie",
+    "niveau": 1,
+    "notions": ["n-trigonometrie-derivees-variations"],
+    "capacites": ["bo-m-trigonometrie-01", "bo-m-derivation-05"],
+    "titre": "Dériver sinus et cosinus",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 101,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = \\cos\\left(2x + \\dfrac{\\pi}{4}\\right)$. Quelle est sa fonction dérivée ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$f'(x) = -\\sin\\left(2x + \\dfrac{\\pi}{4}\\right)$",
+            "$f'(x) = 2\\sin\\left(2x + \\dfrac{\\pi}{4}\\right)$",
+            "$f'(x) = -2\\sin\\left(2x + \\dfrac{\\pi}{4}\\right)$",
+            "$f'(x) = -2\\sin(2x)$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Il manque la dérivée de l'intérieur : pour $\\cos(ax + b)$, on multiplie par $a$, ici $2$.",
+            "Le signe est faux : la dérivée de $\\cos$ est $-\\sin$, donc un signe moins apparaît.",
+            null,
+            "L'intérieur ne change pas : on garde $2x + \\dfrac{\\pi}{4}$ dans le sinus. La constante $\\dfrac{\\pi}{4}$ disparaît seulement de la dérivée de l'intérieur, qui vaut $2$."
+          ]
+        },
+        "indices": [
+          "Reconnais la forme $\\cos(ax + b)$ et applique la formule du cours : $\\big(\\cos(ax + b)\\big)' = -a\\sin(ax + b)$.",
+          "Ici $a = 2$ et $b = \\dfrac{\\pi}{4}$. Que devient l'intérieur du cosinus dans le sinus ? Quel facteur vient devant, et quel signe impose la dérivée de $\\cos$ ? Compare les choix sur ces deux points."
+        ],
+        "revoir": "l-trigonometrie-003",
+        "solution": "$f(x) = \\cos(ax + b)$ avec $a = 2$ et $b = \\dfrac{\\pi}{4}$. Or $\\big(\\cos(ax + b)\\big)' = -a\\sin(ax + b)$. Donc, pour tout réel $x$, $f'(x) = -2\\sin\\left(2x + \\dfrac{\\pi}{4}\\right)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $g$ la fonction définie sur $\\mathbb{R}$ par $g(x) = 2\\sin(x) + 3\\cos(x) - x$. Calculer $g'\\left(\\dfrac{\\pi}{2}\\right)$.",
+        "reponse": {
+          "type": "numerique",
+          "valeur": -4,
+          "tolerance": 0
+        },
+        "indices": [
+          "Dérive terme à terme avec $\\sin' = \\cos$ et $\\cos' = -\\sin$ ; la dérivée de $x$ vaut $1$. Remplace ensuite $x$ par $\\dfrac{\\pi}{2}$.",
+          "$g'(x) = 2\\cos(x) - 3\\sin(x) - 1$. Utilise maintenant $\\cos\\left(\\dfrac{\\pi}{2}\\right) = 0$ et $\\sin\\left(\\dfrac{\\pi}{2}\\right) = 1$."
+        ],
+        "revoir": "l-trigonometrie-004",
+        "solution": "Pour tout réel $x$, $g'(x) = 2\\cos(x) + 3 \\times \\big(-\\sin(x)\\big) - 1 = 2\\cos(x) - 3\\sin(x) - 1$. Donc $g'\\left(\\dfrac{\\pi}{2}\\right) = 2 \\times 0 - 3 \\times 1 - 1 = -4$.",
+        "erreurFrequente": "Oublier le signe moins de $\\cos' = -\\sin$ : on trouve alors $2 \\times 0 + 3 \\times 1 - 1 = 2$ au lieu de $-4$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $h$ la fonction définie sur $\\mathbb{R}$ par $h(x) = \\sin(x)\\cos(x)$. Quelle est sa fonction dérivée ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$h'(x) = \\cos^2(x) - \\sin^2(x)$",
+            "$h'(x) = -\\sin(x)\\cos(x)$",
+            "$h'(x) = \\cos^2(x) + \\sin^2(x)$",
+            "$h'(x) = -\\sin^2(x)$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Tu as multiplié les deux dérivées : $\\cos(x) \\times \\big(-\\sin(x)\\big)$. La dérivée d'un produit est $u'v + uv'$, pas $u'v'$.",
+            "Le signe de $uv'$ est faux : $v'(x) = -\\sin(x)$, donc $uv' = \\sin(x) \\times \\big(-\\sin(x)\\big) = -\\sin^2(x)$.",
+            "Il manque le terme $u'v = \\cos(x) \\times \\cos(x) = \\cos^2(x)$."
+          ]
+        },
+        "indices": [
+          "$h$ est un produit $uv$ : applique $(uv)' = u'v + uv'$ avec $u(x) = \\sin(x)$ et $v(x) = \\cos(x)$.",
+          "$u'(x) = \\cos(x)$ et $v'(x) = -\\sin(x)$ : calcule $u'v$, puis $uv'$, et additionne-les. Rappel : $\\cos^2(x)$ désigne $\\big(\\cos(x)\\big)^2$."
+        ],
+        "revoir": "l-trigonometrie-004",
+        "solution": "$h = uv$ avec $u(x) = \\sin(x)$, $u'(x) = \\cos(x)$, $v(x) = \\cos(x)$ et $v'(x) = -\\sin(x)$. Donc $h'(x) = \\cos(x) \\times \\cos(x) + \\sin(x) \\times \\big(-\\sin(x)\\big) = \\cos^2(x) - \\sin^2(x)$."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-002",
+    "chapitre": "trigonometrie",
+    "niveau": 1,
+    "notions": ["n-trigonometrie-derivees-variations"],
+    "capacites": ["bo-m-trigonometrie-01", "bo-m-limites-fonctions-05"],
+    "titre": "Variations, tangente et limite en $0$",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 102,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Sur l'intervalle $[\\pi\\,;\\,2\\pi]$, comment varie la fonction $\\cos$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Elle est strictement décroissante, de $1$ à $-1$.",
+            "Elle est strictement croissante, de $-1$ à $1$.",
+            "Elle est croissante, puis décroissante.",
+            "Elle est strictement décroissante, de $0$ à $-1$."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est son sens de variation sur $[0\\,;\\,\\pi]$. Sur $[\\pi\\,;\\,2\\pi]$, $M(x)$ parcourt la moitié basse du cercle : $\\sin(x) \\leqslant 0$, donc $\\cos'(x) = -\\sin(x) \\geqslant 0$.",
+            null,
+            "La dérivée $-\\sin(x)$ ne change pas de signe sur $[\\pi\\,;\\,2\\pi]$ : le sens de variation ne change pas à l'intérieur de l'intervalle.",
+            "Ce sont les variations de $\\sin$ sur $\\left[\\pi\\,;\\,\\dfrac{3\\pi}{2}\\right]$. Pour $\\cos$ : $\\cos(\\pi) = -1$, $\\cos(2\\pi) = 1$, et $\\cos'(x) = -\\sin(x) \\geqslant 0$."
+          ]
+        },
+        "indices": [
+          "Étudie le signe de $\\cos'(x) = -\\sin(x)$ sur $[\\pi\\,;\\,2\\pi]$ : où se trouve $M(x)$ sur le cercle ?",
+          "Quand $x$ va de $\\pi$ à $2\\pi$, $M(x)$ va de $(-1\\,;\\,0)$ à $I(1\\,;\\,0)$ par la moitié basse du cercle : $\\sin(x) \\leqslant 0$. Déduis-en le signe de $-\\sin(x)$, puis calcule $\\cos(\\pi)$ et $\\cos(2\\pi)$."
+        ],
+        "revoir": "l-trigonometrie-008",
+        "solution": "Pour $x$ dans $[\\pi\\,;\\,2\\pi]$, $M(x)$ est sur la moitié basse du cercle, donc $\\sin(x) \\leqslant 0$ et $\\cos'(x) = -\\sin(x) \\geqslant 0$, avec égalité seulement en $\\pi$ et en $2\\pi$. La fonction $\\cos$ est donc strictement croissante sur $[\\pi\\,;\\,2\\pi]$, de $\\cos(\\pi) = -1$ à $\\cos(2\\pi) = 1$. On le retrouve par périodicité : c'est le morceau tracé sur $[-\\pi\\,;\\,0]$, décalé de $2\\pi$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux : la tangente à la courbe de la fonction $\\cos$ au point d'abscisse $\\dfrac{\\pi}{2}$ a pour équation $y = -x + \\dfrac{\\pi}{2}$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$\\cos\\left(\\dfrac{\\pi}{2}\\right) = 0$ et $\\cos'\\left(\\dfrac{\\pi}{2}\\right) = -\\sin\\left(\\dfrac{\\pi}{2}\\right) = -1$. La tangente a pour équation $y = -1 \\times \\left(x - \\dfrac{\\pi}{2}\\right) + 0$, soit $y = -x + \\dfrac{\\pi}{2}$."
+        },
+        "indices": [
+          "La tangente au point d'abscisse $a$ a pour équation $y = f'(a)(x - a) + f(a)$ : ici $f = \\cos$ et $a = \\dfrac{\\pi}{2}$.",
+          "$\\cos\\left(\\dfrac{\\pi}{2}\\right) = 0$, et $\\cos'(x) = -\\sin(x)$ : calcule $\\cos'\\left(\\dfrac{\\pi}{2}\\right)$, puis remplace dans l'équation."
+        ],
+        "revoir": "l-trigonometrie-003",
+        "solution": "Une équation de la tangente au point d'abscisse $\\dfrac{\\pi}{2}$ est $y = \\cos'\\left(\\dfrac{\\pi}{2}\\right)\\left(x - \\dfrac{\\pi}{2}\\right) + \\cos\\left(\\dfrac{\\pi}{2}\\right)$. Or $\\cos\\left(\\dfrac{\\pi}{2}\\right) = 0$ et $\\cos'\\left(\\dfrac{\\pi}{2}\\right) = -\\sin\\left(\\dfrac{\\pi}{2}\\right) = -1$. Donc $y = -\\left(x - \\dfrac{\\pi}{2}\\right) = -x + \\dfrac{\\pi}{2}$ : l'affirmation est vraie."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer $\\lim\\limits_{x \\to 0} \\dfrac{\\sin(x)}{2x}$.",
+        "reponse": {
+          "type": "numerique",
+          "valeur": "1/2",
+          "tolerance": 0
+        },
+        "indices": [
+          "Fais apparaître le quotient $\\dfrac{\\sin(x)}{x}$, dont la limite en $0$ est connue.",
+          "Pour $x \\neq 0$, $\\dfrac{\\sin(x)}{2x} = \\dfrac{1}{2} \\times \\dfrac{\\sin(x)}{x}$ : utilise la limite de $\\dfrac{\\sin(x)}{x}$ en $0$, puis le produit par une constante."
+        ],
+        "revoir": "l-trigonometrie-012",
+        "solution": "Pour tout $x \\neq 0$, $\\dfrac{\\sin(x)}{2x} = \\dfrac{1}{2} \\times \\dfrac{\\sin(x)}{x}$. Or $\\lim\\limits_{x \\to 0} \\dfrac{\\sin(x)}{x} = 1$. Par produit, $\\lim\\limits_{x \\to 0} \\dfrac{\\sin(x)}{2x} = \\dfrac{1}{2} \\times 1 = \\dfrac{1}{2}$.",
+        "erreurFrequente": "Conclure « $\\dfrac{0}{0} = 0$ » : c'est une forme indéterminée, qui ne vaut pas $0$."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-003",
+    "chapitre": "trigonometrie",
+    "niveau": 1,
+    "notions": ["n-trigonometrie-equations-inequations"],
+    "capacites": ["bo-m-trigonometrie-02"],
+    "titre": "Résoudre $\\cos(x) = a$ sur $[-\\pi\\,;\\,\\pi]$",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 201,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quel est l'ensemble des solutions de l'équation $2\\cos(x) - \\sqrt{3} = 0$ sur $[-\\pi\\,;\\,\\pi]$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left\\{\\dfrac{\\pi}{6}\\right\\}$",
+            "$\\left\\{-\\dfrac{\\pi}{6}\\,;\\,\\dfrac{\\pi}{6}\\right\\}$",
+            "$\\left\\{\\dfrac{\\pi}{6}\\,;\\,\\dfrac{5\\pi}{6}\\right\\}$",
+            "$\\left\\{-\\dfrac{\\pi}{3}\\,;\\,\\dfrac{\\pi}{3}\\right\\}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Il manque une solution : la droite verticale d'abscisse $\\dfrac{\\sqrt{3}}{2}$ coupe le cercle en deux points, $M\\left(\\dfrac{\\pi}{6}\\right)$ et $M\\left(-\\dfrac{\\pi}{6}\\right)$.",
+            null,
+            "Tu as appliqué la règle du sinus ($\\alpha$ et $\\pi - \\alpha$). Pour le cosinus, la seconde solution est $-\\alpha$ : d'ailleurs $\\cos\\left(\\dfrac{5\\pi}{6}\\right) = -\\dfrac{\\sqrt{3}}{2}$.",
+            "$\\cos\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{1}{2}$, pas $\\dfrac{\\sqrt{3}}{2}$ : relis la ligne $\\cos$ du tableau des valeurs remarquables."
+          ]
+        },
+        "indices": [
+          "Isole $\\cos(x)$, puis cherche dans le tableau des valeurs remarquables un réel $\\alpha$ de $[0\\,;\\,\\pi]$ qui a ce cosinus.",
+          "L'équation équivaut à $\\cos(x) = \\dfrac{\\sqrt{3}}{2}$. Trouve $\\alpha$, puis applique : $\\cos(x) = \\cos(\\alpha) \\iff x = \\alpha$ ou $x = -\\alpha$."
+        ],
+        "revoir": "l-trigonometrie-022",
+        "solution": "$2\\cos(x) - \\sqrt{3} = 0 \\iff \\cos(x) = \\dfrac{\\sqrt{3}}{2}$. Or $\\cos\\left(\\dfrac{\\pi}{6}\\right) = \\dfrac{\\sqrt{3}}{2}$, avec $\\dfrac{\\pi}{6}$ dans $[0\\,;\\,\\pi]$. Donc, sur $[-\\pi\\,;\\,\\pi]$, $x = \\dfrac{\\pi}{6}$ ou $x = -\\dfrac{\\pi}{6}$ : $S = \\left\\{-\\dfrac{\\pi}{6}\\,;\\,\\dfrac{\\pi}{6}\\right\\}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Combien de solutions l'équation $\\cos(x) = -1$ a-t-elle sur $[-\\pi\\,;\\,\\pi]$ ?",
+        "reponse": {
+          "type": "numerique",
+          "valeur": 2,
+          "tolerance": 0
+        },
+        "indices": [
+          "Cherche les points du cercle d'abscisse $-1$, puis les réels de $[-\\pi\\,;\\,\\pi]$ qui y mènent.",
+          "Un seul point du cercle a pour abscisse $-1$ : le point $(-1\\,;\\,0)$. Quand $x$ parcourt $[-\\pi\\,;\\,\\pi]$, pour quelles valeurs de $x$ passe-t-on par ce point ?"
+        ],
+        "revoir": "l-trigonometrie-022",
+        "solution": "Le seul point du cercle d'abscisse $-1$ est $(-1\\,;\\,0)$. Sur $[-\\pi\\,;\\,\\pi]$, on y passe au départ, pour $x = -\\pi$, et à l'arrivée, pour $x = \\pi$. Avec $\\alpha = \\pi$, la propriété du cours donne bien $x = \\pi$ ou $x = -\\pi$ : l'équation a $2$ solutions.",
+        "erreurFrequente": "Répondre $1$ en ne gardant que $\\pi$ : l'intervalle $[-\\pi\\,;\\,\\pi]$ est fermé, et $\\cos(-\\pi) = -1$ aussi."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux : l'équation $4\\cos(x) + 5 = 0$ n'a aucune solution sur $[-\\pi\\,;\\,\\pi]$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$4\\cos(x) + 5 = 0 \\iff \\cos(x) = -\\dfrac{5}{4}$. Or $-\\dfrac{5}{4} < -1$, alors que $\\cos(x) \\geqslant -1$ pour tout réel $x$ : aucune solution."
+        },
+        "indices": [
+          "Isole $\\cos(x)$, puis compare la valeur obtenue à l'intervalle $[-1\\,;\\,1]$.",
+          "L'équation équivaut à $\\cos(x) = -\\dfrac{5}{4}$. Un cosinus peut-il être plus petit que $-1$ ?"
+        ],
+        "revoir": "l-trigonometrie-022",
+        "solution": "$4\\cos(x) + 5 = 0 \\iff \\cos(x) = -\\dfrac{5}{4} = -1{,}25$. Or, pour tout réel $x$, $-1 \\leqslant \\cos(x) \\leqslant 1$, et $-1{,}25 < -1$. L'équation n'a donc aucune solution : $S = \\varnothing$. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-004",
+    "chapitre": "trigonometrie",
+    "niveau": 1,
+    "notions": ["n-trigonometrie-equations-inequations"],
+    "capacites": ["bo-m-trigonometrie-02"],
+    "titre": "Résoudre une inéquation sur le cercle",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 202,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quel est l'ensemble des solutions de l'inéquation $\\cos(x) \\geqslant -\\dfrac{\\sqrt{3}}{2}$ sur $[-\\pi\\,;\\,\\pi]$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left[-\\pi\\,;\\,-\\dfrac{5\\pi}{6}\\right] \\cup \\left[\\dfrac{5\\pi}{6}\\,;\\,\\pi\\right]$",
+            "$\\left[-\\dfrac{\\pi}{6}\\,;\\,\\dfrac{\\pi}{6}\\right]$",
+            "$\\left[0\\,;\\,\\dfrac{5\\pi}{6}\\right]$",
+            "$\\left[-\\dfrac{5\\pi}{6}\\,;\\,\\dfrac{5\\pi}{6}\\right]$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "C'est l'arc à gauche de la droite verticale d'abscisse $-\\dfrac{\\sqrt{3}}{2}$ : il donne $\\cos(x) \\leqslant -\\dfrac{\\sqrt{3}}{2}$. Pour $\\geqslant$, garde l'arc de droite.",
+            "Ces bornes viennent de $\\cos(x) = \\dfrac{\\sqrt{3}}{2}$. Ici $a = -\\dfrac{\\sqrt{3}}{2}$, et $\\cos\\left(\\dfrac{5\\pi}{6}\\right) = -\\dfrac{\\sqrt{3}}{2}$. Contrôle : $\\cos\\left(\\dfrac{\\pi}{2}\\right) = 0 \\geqslant -\\dfrac{\\sqrt{3}}{2}$, mais $\\dfrac{\\pi}{2}$ n'est pas dans cet intervalle.",
+            "Il manque les réels négatifs : $\\cos$ est paire, donc si $x$ est solution, $-x$ l'est aussi.",
+            null
+          ]
+        },
+        "indices": [
+          "Résous d'abord $\\cos(x) = -\\dfrac{\\sqrt{3}}{2}$ sur $[-\\pi\\,;\\,\\pi]$, puis trace la droite verticale d'abscisse $-\\dfrac{\\sqrt{3}}{2}$ : $\\cos(x) \\geqslant -\\dfrac{\\sqrt{3}}{2}$ correspond à l'arc situé à droite.",
+          "$\\cos\\left(\\dfrac{5\\pi}{6}\\right) = -\\cos\\left(\\dfrac{\\pi}{6}\\right) = -\\dfrac{\\sqrt{3}}{2}$ : la droite coupe le cercle en $M\\left(-\\dfrac{5\\pi}{6}\\right)$ et $M\\left(\\dfrac{5\\pi}{6}\\right)$. L'arc de droite passe par $I(1\\,;\\,0)$, atteint pour $x = 0$."
+        ],
+        "revoir": "l-trigonometrie-025",
+        "solution": "$\\cos\\left(\\dfrac{5\\pi}{6}\\right) = -\\cos\\left(\\dfrac{\\pi}{6}\\right) = -\\dfrac{\\sqrt{3}}{2}$ avec $\\dfrac{5\\pi}{6}$ dans $[0\\,;\\,\\pi]$ : l'équation $\\cos(x) = -\\dfrac{\\sqrt{3}}{2}$ a pour solutions $-\\dfrac{5\\pi}{6}$ et $\\dfrac{5\\pi}{6}$. Les points d'abscisse supérieure ou égale à $-\\dfrac{\\sqrt{3}}{2}$ forment l'arc de droite, de $M\\left(-\\dfrac{5\\pi}{6}\\right)$ à $M\\left(\\dfrac{5\\pi}{6}\\right)$ en passant par $I$. Contrôle : $\\cos(0) = 1 \\geqslant -\\dfrac{\\sqrt{3}}{2}$ ; en revanche, $\\cos(\\pm\\pi) = -1 < -\\dfrac{\\sqrt{3}}{2}$ : $-\\pi$ et $\\pi$ ne sont pas solutions. Donc $S = \\left[-\\dfrac{5\\pi}{6}\\,;\\,\\dfrac{5\\pi}{6}\\right]$, avec des crochets fermés car l'inégalité est large."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quel est l'ensemble des solutions de l'inéquation $2\\cos(x) + \\sqrt{2} < 0$ sur $[-\\pi\\,;\\,\\pi]$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left[-\\pi\\,;\\,-\\dfrac{3\\pi}{4}\\right[ \\cup \\left]\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$",
+            "$\\left[-\\pi\\,;\\,-\\dfrac{3\\pi}{4}\\right] \\cup \\left[\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$",
+            "$\\left]-\\dfrac{3\\pi}{4}\\,;\\,\\dfrac{3\\pi}{4}\\right[$",
+            "$\\left]-\\pi\\,;\\,-\\dfrac{3\\pi}{4}\\right[ \\cup \\left]\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right[$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "L'inégalité est stricte : en $\\pm\\dfrac{3\\pi}{4}$, $2\\cos(x) + \\sqrt{2} = 0$, qui n'est pas $< 0$. Les crochets doivent être ouverts en ces bornes.",
+            "C'est l'arc de droite, où $\\cos(x) > -\\dfrac{\\sqrt{2}}{2}$. Contrôle avec $x = 0$ : $2\\cos(0) + \\sqrt{2} > 0$, donc $0$ n'est pas solution.",
+            "En $-\\pi$ et $\\pi$, les bornes de l'intervalle d'étude, le crochet ne dépend pas du sens de l'inégalité : il est fermé si ces réels sont solutions. Or $2\\cos(\\pm\\pi) + \\sqrt{2} = -2 + \\sqrt{2} < 0$ : ils le sont. Seuls $\\pm\\dfrac{3\\pi}{4}$, où l'égalité a lieu, sont exclus."
+          ]
+        },
+        "indices": [
+          "Isole $\\cos(x)$ : l'inéquation devient $\\cos(x) < -\\dfrac{\\sqrt{2}}{2}$. Résous l'équation $\\cos(x) = -\\dfrac{\\sqrt{2}}{2}$, puis garde l'arc à gauche de la droite verticale.",
+          "$\\cos\\left(\\dfrac{3\\pi}{4}\\right) = -\\dfrac{\\sqrt{2}}{2}$. L'arc de gauche contient $M(\\pi) = M(-\\pi)$, le point $(-1\\,;\\,0)$. Crochets : ouverts en $\\pm\\dfrac{3\\pi}{4}$, où l'égalité a lieu ; en $-\\pi$ et $\\pi$, bornes de l'intervalle d'étude, regarde si ces réels vérifient l'inéquation."
+        ],
+        "revoir": "l-trigonometrie-026",
+        "solution": "$2\\cos(x) + \\sqrt{2} < 0 \\iff \\cos(x) < -\\dfrac{\\sqrt{2}}{2}$. Or $\\cos\\left(\\dfrac{3\\pi}{4}\\right) = -\\dfrac{\\sqrt{2}}{2}$ : la droite verticale d'abscisse $-\\dfrac{\\sqrt{2}}{2}$ coupe le cercle en $M\\left(-\\dfrac{3\\pi}{4}\\right)$ et $M\\left(\\dfrac{3\\pi}{4}\\right)$. Les points situés strictement à gauche sont atteints pour $x$ de $-\\pi$ à $-\\dfrac{3\\pi}{4}$ exclu, puis de $\\dfrac{3\\pi}{4}$ exclu à $\\pi$. Donc $S = \\left[-\\pi\\,;\\,-\\dfrac{3\\pi}{4}\\right[ \\cup \\left]\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$ : $-\\pi$ et $\\pi$ sont solutions, car $\\cos(\\pm\\pi) = -1 < -\\dfrac{\\sqrt{2}}{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Un élève affirme : « Sur $[-\\pi\\,;\\,\\pi]$, l'ensemble des solutions de l'inéquation $\\cos(x) \\leqslant \\dfrac{1}{2}$ est $\\left[-\\dfrac{\\pi}{3}\\,;\\,\\dfrac{\\pi}{3}\\right]$. » Vrai ou faux ?",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$0$ est dans l'intervalle proposé, mais $\\cos(0) = 1 > \\dfrac{1}{2}$ : $0$ n'est pas solution. L'élève a pris l'arc de droite ; l'ensemble des solutions est $\\left[-\\pi\\,;\\,-\\dfrac{\\pi}{3}\\right] \\cup \\left[\\dfrac{\\pi}{3}\\,;\\,\\pi\\right]$."
+        },
+        "indices": [
+          "Contrôle avec une valeur simple de l'intervalle proposé, comme $x = 0$.",
+          "$\\cos(0)$ est l'abscisse du point $I(1\\,;\\,0)$ : compare-la à $\\dfrac{1}{2}$. Si $0$ ne vérifie pas l'inéquation, l'intervalle proposé ne peut pas être le bon."
+        ],
+        "revoir": "l-trigonometrie-025",
+        "solution": "$0$ appartient à $\\left[-\\dfrac{\\pi}{3}\\,;\\,\\dfrac{\\pi}{3}\\right]$. Or $\\cos(0) = 1$ et $1 > \\dfrac{1}{2}$ : $0$ n'est pas solution de $\\cos(x) \\leqslant \\dfrac{1}{2}$. L'affirmation est donc fausse. L'élève a gardé l'arc à droite de la droite verticale d'abscisse $\\dfrac{1}{2}$, celui de $\\cos(x) \\geqslant \\dfrac{1}{2}$ ; le bon ensemble est $\\left[-\\pi\\,;\\,-\\dfrac{\\pi}{3}\\right] \\cup \\left[\\dfrac{\\pi}{3}\\,;\\,\\pi\\right]$."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-005",
+    "chapitre": "trigonometrie",
+    "niveau": 1,
+    "notions": ["n-trigonometrie-etude-fonction"],
+    "capacites": ["bo-m-trigonometrie-03"],
+    "titre": "Du signe de la dérivée à l'optimum",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 301,
+    "preambule": "Soit $f$ la fonction définie sur $[0\\,;\\,\\pi]$ par $f(x) = \\cos(x) - \\cos^2(x)$. On admet que, pour tout $x$ de $[0\\,;\\,\\pi]$, $f'(x) = \\sin(x)\\big(2\\cos(x) - 1\\big)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quel est le signe de $f'(x)$ sur $[0\\,;\\,\\pi]$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$f'(x) \\leqslant 0$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{3}\\right]$ et $f'(x) \\geqslant 0$ sur $\\left[\\dfrac{\\pi}{3}\\,;\\,\\pi\\right]$",
+            "$f'(x) \\geqslant 0$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{6}\\right]$ et $f'(x) \\leqslant 0$ sur $\\left[\\dfrac{\\pi}{6}\\,;\\,\\pi\\right]$",
+            "$f'(x) \\geqslant 0$ sur tout $[0\\,;\\,\\pi]$",
+            "$f'(x) \\geqslant 0$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{3}\\right]$ et $f'(x) \\leqslant 0$ sur $\\left[\\dfrac{\\pi}{3}\\,;\\,\\pi\\right]$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Les signes sont inversés : pour $x$ proche de $0$, $\\cos(x)$ est proche de $1$, donc $2\\cos(x) - 1 > 0$.",
+            "$\\dfrac{\\pi}{6}$ est une solution de $\\sin(x) = \\dfrac{1}{2}$. Ici, $2\\cos(x) - 1 = 0$ donne $\\cos(x) = \\dfrac{1}{2}$.",
+            "$\\sin(x) \\geqslant 0$ sur $[0\\,;\\,\\pi]$, mais l'autre facteur, $2\\cos(x) - 1$, change de signe.",
+            null
+          ]
+        },
+        "indices": [
+          "Sur $[0\\,;\\,\\pi]$, $\\sin(x) \\geqslant 0$ : $f'(x)$ a le signe de $2\\cos(x) - 1$. Étudie ce facteur sur le cercle.",
+          "$2\\cos(x) - 1 \\geqslant 0 \\iff \\cos(x) \\geqslant \\dfrac{1}{2}$. Sur $[0\\,;\\,\\pi]$, pour quels $x$ le point $M(x)$ est-il à droite de la droite verticale d'abscisse $\\dfrac{1}{2}$ ?"
+        ],
+        "revoir": "l-trigonometrie-034",
+        "solution": "Sur $[0\\,;\\,\\pi]$, $M(x)$ est sur la moitié haute du cercle, donc $\\sin(x) \\geqslant 0$ : $f'(x)$ a le signe de $2\\cos(x) - 1$. Or $2\\cos(x) - 1 \\geqslant 0 \\iff \\cos(x) \\geqslant \\dfrac{1}{2}$, ce qui, sur $[0\\,;\\,\\pi]$, donne $x \\in \\left[0\\,;\\,\\dfrac{\\pi}{3}\\right]$. Donc $f'(x) \\geqslant 0$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{3}\\right]$ et $f'(x) \\leqslant 0$ sur $\\left[\\dfrac{\\pi}{3}\\,;\\,\\pi\\right]$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quel est le maximum de $f$ sur $[0\\,;\\,\\pi]$ ?",
+        "reponse": {
+          "type": "numerique",
+          "valeur": "1/4",
+          "tolerance": 0
+        },
+        "indices": [
+          "$f$ croît sur $\\left[0\\,;\\,\\dfrac{\\pi}{3}\\right]$ puis décroît : son maximum est atteint en $\\dfrac{\\pi}{3}$. Calcule cette image.",
+          "$\\cos\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{1}{2}$ : remplace dans $f(x) = \\cos(x) - \\cos^2(x)$, en élevant $\\dfrac{1}{2}$ au carré."
+        ],
+        "revoir": "l-trigonometrie-038",
+        "solution": "D'après la question 1, $f$ est croissante sur $\\left[0\\,;\\,\\dfrac{\\pi}{3}\\right]$ et décroissante sur $\\left[\\dfrac{\\pi}{3}\\,;\\,\\pi\\right]$ : son maximum est $f\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{1}{2} - \\left(\\dfrac{1}{2}\\right)^2 = \\dfrac{1}{2} - \\dfrac{1}{4} = \\dfrac{1}{4}$.",
+        "erreurFrequente": "Répondre $\\dfrac{\\pi}{3}$ : c'est la valeur de $x$ où le maximum est atteint, pas le maximum lui-même."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est le minimum de $f$ sur $[0\\,;\\,\\pi]$ ?",
+        "reponse": {
+          "type": "numerique",
+          "valeur": -2,
+          "tolerance": 0
+        },
+        "indices": [
+          "D'après le sens de variation, le minimum est atteint à l'une des bornes : compare $f(0)$ et $f(\\pi)$.",
+          "$\\cos(0) = 1$ et $\\cos(\\pi) = -1$ : calcule $f(0) = 1 - 1^2$ et $f(\\pi) = (-1) - (-1)^2$, puis garde la plus petite valeur."
+        ],
+        "revoir": "l-trigonometrie-032",
+        "solution": "$f$ est croissante sur $\\left[0\\,;\\,\\dfrac{\\pi}{3}\\right]$ puis décroissante sur $\\left[\\dfrac{\\pi}{3}\\,;\\,\\pi\\right]$ : le minimum est atteint en $0$ ou en $\\pi$. Or $f(0) = 1 - 1^2 = 0$ et $f(\\pi) = -1 - (-1)^2 = -1 - 1 = -2$. Le minimum de $f$ sur $[0\\,;\\,\\pi]$ est $-2$, atteint en $\\pi$.",
+        "erreurFrequente": "Écrire $(-1)^2 = -1$ : un carré est positif, $(-1)^2 = 1$."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-006",
+    "chapitre": "trigonometrie",
+    "niveau": 1,
+    "notions": ["n-trigonometrie-etude-fonction"],
+    "capacites": ["bo-m-trigonometrie-03"],
+    "titre": "Le rectangle dans un quart de cercle",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 302,
+    "preambule": "Dans un repère orthonormé d'origine $O$, on considère le quart de cercle de centre $O$ et de rayon $1$ formé des points d'abscisse et d'ordonnée positives. Pour tout réel $x$ de $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, on place sur ce quart de cercle le point $M\\big(\\cos(x)\\,;\\,\\sin(x)\\big)$, puis les points $H\\big(\\cos(x)\\,;\\,0\\big)$ et $K\\big(0\\,;\\,\\sin(x)\\big)$ (voir la figure). On note $\\mathcal{A}(x)$ l'aire du rectangle $OHMK$.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/trigonometrie/x-rectangle-quart-cercle.svg",
+        "width": 300,
+        "height": 285,
+        "alt": "Dans un repère d'origine O, le quart de cercle de centre O et de rayon 1, entre le point (1 ; 0) de l'axe des abscisses et le point (0 ; 1) de l'axe des ordonnées. Le point M est sur ce quart de cercle ; l'angle entre l'axe des abscisses et le rayon [OM], tracé en pointillés, mesure x. H est le pied de M sur l'axe des abscisses, K son pied sur l'axe des ordonnées. Le rectangle OHMK est colorié."
+      },
+      "caption": "Le point M du quart de cercle repéré par l'angle x, et le rectangle OHMK (colorié)."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est l'expression de $\\mathcal{A}(x)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\mathcal{A}(x) = \\cos(x) + \\sin(x)$",
+            "$\\mathcal{A}(x) = \\sin(x)\\cos(x)$",
+            "$\\mathcal{A}(x) = \\dfrac{\\sin(x)\\cos(x)}{2}$",
+            "$\\mathcal{A}(x) = 2\\big(\\cos(x) + \\sin(x)\\big)$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Une aire de rectangle est un produit de deux longueurs, pas une somme.",
+            null,
+            "C'est l'aire du triangle $OHM$, la moitié du rectangle. Le rectangle a pour aire longueur $\\times$ largeur.",
+            "C'est le périmètre du rectangle, pas son aire."
+          ]
+        },
+        "indices": [
+          "Le rectangle $OHMK$ a pour côtés $[OH]$ et $[OK]$ : exprime ces longueurs avec les coordonnées de $H$ et de $K$.",
+          "$OH = \\cos(x)$ et $OK = \\sin(x)$, positives car $x \\in \\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$. L'aire d'un rectangle vaut longueur $\\times$ largeur."
+        ],
+        "revoir": "l-trigonometrie-032",
+        "solution": "$H$ et $O$ sont sur l'axe des abscisses : $OH = \\cos(x)$. $K$ et $O$ sont sur l'axe des ordonnées : $OK = \\sin(x)$. Ces longueurs sont positives, car $\\cos(x) \\geqslant 0$ et $\\sin(x) \\geqslant 0$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$. Donc $\\mathcal{A}(x) = OH \\times OK = \\sin(x)\\cos(x)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On admet que, pour tout $x$ de $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $\\mathcal{A}'(x) = 2\\cos^2(x) - 1$. Pour quelle valeur de $x$ l'aire est-elle maximale ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\dfrac{\\pi}{2}$",
+            "$\\dfrac{\\pi}{3}$",
+            "$\\dfrac{\\pi}{4}$",
+            "$\\dfrac{\\pi}{6}$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "En $\\dfrac{\\pi}{2}$, $\\sin(x)$ est maximal, mais $\\cos(x) = 0$ : le rectangle est aplati, son aire est nulle.",
+            "$\\cos\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{1}{2}$ annule $2\\cos(x) - 1$, pas $2\\cos^2(x) - 1$ : en $\\dfrac{\\pi}{3}$, $\\mathcal{A}'(x) = -\\dfrac{1}{2} < 0$.",
+            null,
+            "En $\\dfrac{\\pi}{6}$, $2\\cos^2(x) - 1 = 2 \\times \\dfrac{3}{4} - 1 = \\dfrac{1}{2} > 0$ : l'aire augmente encore."
+          ]
+        },
+        "indices": [
+          "Étudie le signe de $\\mathcal{A}'(x)$ : $2\\cos^2(x) - 1 \\geqslant 0 \\iff \\cos^2(x) \\geqslant \\dfrac{1}{2}$.",
+          "Sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $\\cos(x) \\geqslant 0$, donc $\\cos^2(x) \\geqslant \\dfrac{1}{2} \\iff \\cos(x) \\geqslant \\dfrac{\\sqrt{2}}{2}$. Lis sur le cercle où cette inégalité est vraie."
+        ],
+        "revoir": "l-trigonometrie-034",
+        "solution": "Sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $\\cos(x) \\geqslant 0$, donc $\\mathcal{A}'(x) \\geqslant 0 \\iff \\cos^2(x) \\geqslant \\dfrac{1}{2} \\iff \\cos(x) \\geqslant \\dfrac{\\sqrt{2}}{2} \\iff x \\in \\left[0\\,;\\,\\dfrac{\\pi}{4}\\right]$. Ainsi $\\mathcal{A}$ est croissante sur $\\left[0\\,;\\,\\dfrac{\\pi}{4}\\right]$ et décroissante sur $\\left[\\dfrac{\\pi}{4}\\,;\\,\\dfrac{\\pi}{2}\\right]$ : l'aire est maximale pour $x = \\dfrac{\\pi}{4}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est l'aire maximale du rectangle, en unités d'aire ?",
+        "reponse": {
+          "type": "numerique",
+          "valeur": "1/2",
+          "tolerance": 0
+        },
+        "indices": [
+          "Calcule $\\mathcal{A}\\left(\\dfrac{\\pi}{4}\\right)$ avec l'expression trouvée à la question 1.",
+          "$\\cos\\left(\\dfrac{\\pi}{4}\\right) = \\sin\\left(\\dfrac{\\pi}{4}\\right) = \\dfrac{\\sqrt{2}}{2}$ : multiplie ces deux nombres, sachant que $\\sqrt{2} \\times \\sqrt{2} = 2$."
+        ],
+        "revoir": "l-trigonometrie-038",
+        "solution": "$\\mathcal{A}\\left(\\dfrac{\\pi}{4}\\right) = \\dfrac{\\sqrt{2}}{2} \\times \\dfrac{\\sqrt{2}}{2} = \\dfrac{2}{4} = \\dfrac{1}{2}$. L'aire maximale vaut $\\dfrac{1}{2}$ unité d'aire : le rectangle est alors un carré de côté $\\dfrac{\\sqrt{2}}{2}$."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-007",
+    "chapitre": "trigonometrie",
+    "niveau": 2,
+    "notions": ["n-trigonometrie-derivees-variations"],
+    "capacites": ["bo-m-trigonometrie-01", "bo-m-limites-fonctions-05"],
+    "titre": "Des limites par le taux d'accroissement",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 111,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer $\\lim\\limits_{x \\to \\pi} \\dfrac{\\sin(x)}{x - \\pi}$.",
+        "reponse": {
+          "type": "numerique",
+          "valeur": -1,
+          "tolerance": 0
+        },
+        "indices": [
+          "En remplaçant $x$ par $\\pi$, on obtient « $\\dfrac{0}{0}$ » : cherche un taux d'accroissement de la forme $\\dfrac{g(x) - g(a)}{x - a}$, ici avec $a = \\pi$.",
+          "Comme $\\sin(\\pi) = 0$, $\\dfrac{\\sin(x)}{x - \\pi} = \\dfrac{\\sin(x) - \\sin(\\pi)}{x - \\pi}$ : c'est le taux d'accroissement de $\\sin$ entre $\\pi$ et $x$.",
+          "Ce taux tend vers le nombre dérivé $\\sin'(\\pi)$. Calcule-le avec $\\sin' = \\cos$."
+        ],
+        "revoir": "l-trigonometrie-014",
+        "solution": "Pour $x \\neq \\pi$, comme $\\sin(\\pi) = 0$ : $\\dfrac{\\sin(x)}{x - \\pi} = \\dfrac{\\sin(x) - \\sin(\\pi)}{x - \\pi}$. C'est le taux d'accroissement de la fonction $\\sin$ entre $\\pi$ et $x$. Or $\\sin$ est dérivable en $\\pi$, de nombre dérivé $\\sin'(\\pi) = \\cos(\\pi) = -1$. Donc $\\lim\\limits_{x \\to \\pi} \\dfrac{\\sin(x)}{x - \\pi} = -1$.",
+        "erreurFrequente": "Répondre $1$ par réflexe, comme pour $\\dfrac{\\sin(x)}{x}$ en $0$ : ici le taux est pris en $\\pi$, et $\\cos(\\pi) = -1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer $\\lim\\limits_{x \\to 0} \\dfrac{\\sin\\left(x + \\dfrac{\\pi}{6}\\right) - \\dfrac{1}{2}}{x}$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\dfrac{\\sqrt{3}}{2}$",
+            "$\\dfrac{1}{2}$",
+            "$1$",
+            "$0$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$\\dfrac{1}{2}$ est la valeur $g(0) = \\sin\\left(\\dfrac{\\pi}{6}\\right)$. La limite d'un taux d'accroissement est le nombre dérivé $g'(0)$, pas $g(0)$.",
+            "Ce n'est pas $\\dfrac{\\sin(x)}{x}$ : la fonction cachée est $g(x) = \\sin\\left(x + \\dfrac{\\pi}{6}\\right)$, dont le nombre dérivé en $0$ n'est pas $1$.",
+            "La forme « $\\dfrac{0}{0}$ » ne vaut pas $0$ : c'est une forme indéterminée, qu'on lève avec le nombre dérivé."
+          ]
+        },
+        "indices": [
+          "Trouve la fonction $g$ cachée au numérateur : écris-le sous la forme $g(x) - g(0)$.",
+          "Avec $g(x) = \\sin\\left(x + \\dfrac{\\pi}{6}\\right)$, on a $g(0) = \\sin\\left(\\dfrac{\\pi}{6}\\right) = \\dfrac{1}{2}$ : le quotient est le taux d'accroissement de $g$ entre $0$ et $x$.",
+          "Il tend vers $g'(0)$. Dérive $g$ avec $\\big(\\sin(ax + b)\\big)' = a\\cos(ax + b)$, puis remplace $x$ par $0$."
+        ],
+        "revoir": "l-trigonometrie-014",
+        "solution": "On pose $g(x) = \\sin\\left(x + \\dfrac{\\pi}{6}\\right)$. Alors $g(0) = \\sin\\left(\\dfrac{\\pi}{6}\\right) = \\dfrac{1}{2}$ et, pour $x \\neq 0$, le quotient vaut $\\dfrac{g(x) - g(0)}{x - 0}$ : c'est le taux d'accroissement de $g$ entre $0$ et $x$. Or $g$ est dérivable sur $\\mathbb{R}$, avec $g'(x) = \\cos\\left(x + \\dfrac{\\pi}{6}\\right)$, donc $g'(0) = \\cos\\left(\\dfrac{\\pi}{6}\\right) = \\dfrac{\\sqrt{3}}{2}$. La limite vaut $\\dfrac{\\sqrt{3}}{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer $\\lim\\limits_{x \\to 0} \\dfrac{\\sin(2x)}{e^x - 1}$.",
+        "reponse": {
+          "type": "numerique",
+          "valeur": 2,
+          "tolerance": 0
+        },
+        "indices": [
+          "Le numérateur et le dénominateur tendent vers $0$. Divise-les tous les deux par $x$ : deux taux d'accroissement apparaissent.",
+          "Pour $x \\neq 0$ : $\\dfrac{\\sin(2x)}{e^x - 1} = \\dfrac{\\sin(2x)}{x} \\div \\dfrac{e^x - 1}{x}$. Le premier quotient est le taux d'accroissement en $0$ de $x \\mapsto \\sin(2x)$, le second celui de $x \\mapsto e^x$.",
+          "Le premier tend vers le nombre dérivé en $0$ de $x \\mapsto \\sin(2x)$, le second vers le nombre dérivé en $0$ de $x \\mapsto e^x$, soit $e^0$. Conclus avec la limite d'un quotient."
+        ],
+        "revoir": "l-trigonometrie-013",
+        "solution": "Pour $x \\neq 0$, $\\dfrac{\\sin(2x)}{e^x - 1} = \\dfrac{\\sin(2x)}{x} \\div \\dfrac{e^x - 1}{x}$.\n\nAvec $g(x) = \\sin(2x)$ : $g(0) = 0$, donc $\\dfrac{\\sin(2x)}{x} = \\dfrac{g(x) - g(0)}{x - 0}$, qui tend vers $g'(0) = 2\\cos(0) = 2$, car $g'(x) = 2\\cos(2x)$.\n\nDe même, $\\dfrac{e^x - 1}{x} = \\dfrac{e^x - e^0}{x - 0}$ tend vers le nombre dérivé en $0$ de $x \\mapsto e^x$, soit $e^0 = 1$.\n\nPar quotient, le dénominateur ayant une limite non nulle : $\\lim\\limits_{x \\to 0} \\dfrac{\\sin(2x)}{e^x - 1} = \\dfrac{2}{1} = 2$.",
+        "erreurFrequente": "Écrire « $\\dfrac{0}{0} = 1$ » : il faut faire apparaître les deux taux d'accroissement avant de conclure."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-008",
+    "chapitre": "trigonometrie",
+    "niveau": 2,
+    "notions": ["n-trigonometrie-derivees-variations"],
+    "capacites": ["bo-m-trigonometrie-01", "bo-m-derivation-02", "bo-m-derivation-03", "bo-m-derivation-04", "bo-m-derivation-07"],
+    "titre": "La courbe de sinus : convexité et tangente en $0$",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 112,
+    "preambule": "On étudie la fonction $\\sin$ sur l'intervalle $[0\\,;\\,2\\pi]$. On note $\\mathcal{C}$ sa courbe représentative dans un repère orthonormé.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $\\sin''(x)$, puis étudier son signe sur $[0\\,;\\,2\\pi]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "La dérivée seconde est la dérivée de la dérivée : dérive $\\sin' = \\cos$.",
+          "$\\sin''(x) = \\cos'(x) = -\\sin(x)$ : son signe est l'opposé de celui de $\\sin(x)$. Étudie donc le signe de $\\sin(x)$ sur $[0\\,;\\,2\\pi]$.",
+          "Quand $x$ va de $0$ à $2\\pi$, $M(x)$ fait un tour complet à partir de $I(1\\,;\\,0)$ : il parcourt la moitié haute du cercle pour $x \\in [0\\,;\\,\\pi]$, puis la moitié basse pour $x \\in [\\pi\\,;\\,2\\pi]$. $\\sin(x)$ est son ordonnée."
+        ],
+        "revoir": "l-trigonometrie-008",
+        "solution": "$\\sin'(x) = \\cos(x)$, donc $\\sin''(x) = \\cos'(x) = -\\sin(x)$.\n\nQuand $x$ va de $0$ à $\\pi$, $M(x)$ parcourt la moitié haute du cercle : $\\sin(x) \\geqslant 0$, donc $\\sin''(x) \\leqslant 0$. Quand $x$ va de $\\pi$ à $2\\pi$, $M(x)$ parcourt la moitié basse : $\\sin(x) \\leqslant 0$, donc $\\sin''(x) \\geqslant 0$. On le retrouve par périodicité : $[\\pi\\,;\\,2\\pi]$ donne les mêmes points du cercle que $[-\\pi\\,;\\,0]$. $\\sin''$ s'annule en $0$, $\\pi$ et $2\\pi$, et change de signe en $\\pi$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la convexité de la fonction $\\sin$ sur $[0\\,;\\,2\\pi]$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Convexe sur $[0\\,;\\,\\pi]$, concave sur $[\\pi\\,;\\,2\\pi]$ ; point d'inflexion de coordonnées $(\\pi\\,;\\,0)$.",
+            "Concave sur $[0\\,;\\,\\pi]$, convexe sur $[\\pi\\,;\\,2\\pi]$ ; point d'inflexion de coordonnées $(\\pi\\,;\\,0)$.",
+            "Concave sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\dfrac{3\\pi}{2}\\right]$ ; points d'inflexion d'abscisses $\\dfrac{\\pi}{2}$ et $\\dfrac{3\\pi}{2}$.",
+            "Concave sur tout $[0\\,;\\,2\\pi]$ ; aucun point d'inflexion."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Tu as inversé la règle : $f$ est convexe là où $f'' \\geqslant 0$. Ici $\\sin'' \\leqslant 0$ sur $[0\\,;\\,\\pi]$ : la courbe y est en forme de dôme.",
+            null,
+            "Tu as lu le signe de $\\sin' = \\cos$, qui donne les variations de $\\sin$. La convexité se lit sur le signe de $\\sin'' = -\\sin$.",
+            "$\\sin''(x) = -\\sin(x)$ est positive sur $[\\pi\\,;\\,2\\pi]$ : la courbe y est convexe, en forme de bol."
+          ]
+        },
+        "indices": [
+          "Une fonction est convexe sur un intervalle où $f'' \\geqslant 0$, concave où $f'' \\leqslant 0$. Un point d'inflexion est un point où $f''$ s'annule en changeant de signe.",
+          "D'après la question 1, $\\sin'' \\leqslant 0$ sur $[0\\,;\\,\\pi]$ et $\\sin'' \\geqslant 0$ sur $[\\pi\\,;\\,2\\pi]$ : conclus sur chaque intervalle.",
+          "$\\sin''$ change de signe en $\\pi$ : le point de $\\mathcal{C}$ d'abscisse $\\pi$ est un point d'inflexion. Calcule son ordonnée."
+        ],
+        "revoir": "l-derivation-convexite-039",
+        "solution": "D'après la question 1, $\\sin'' \\leqslant 0$ sur $[0\\,;\\,\\pi]$ : $\\sin$ est concave sur $[0\\,;\\,\\pi]$. De même, $\\sin'' \\geqslant 0$ sur $[\\pi\\,;\\,2\\pi]$ : $\\sin$ est convexe sur $[\\pi\\,;\\,2\\pi]$. $\\sin''$ s'annule en $\\pi$ en changeant de signe, donc le point de $\\mathcal{C}$ de coordonnées $\\big(\\pi\\,;\\,\\sin(\\pi)\\big) = (\\pi\\,;\\,0)$ est un point d'inflexion : la courbe y traverse sa tangente."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer une équation de la tangente $T$ à $\\mathcal{C}$ au point d'abscisse $0$, puis démontrer que, pour tout $x$ de $[0\\,;\\,\\pi]$, $\\sin(x) \\leqslant x$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Une courbe concave sur un intervalle est en dessous de ses tangentes sur cet intervalle : trouve d'abord la tangente en $0$.",
+          "$T$ a pour équation $y = \\sin'(0)(x - 0) + \\sin(0)$, avec $\\sin'(0) = \\cos(0)$ et $\\sin(0) = 0$.",
+          "Avec $\\cos(0) = 1$, $T$ a pour équation $y = x$. Sur $[0\\,;\\,\\pi]$, $\\sin$ est concave (question 2) : où se situe $\\mathcal{C}$ par rapport à $T$ ?"
+        ],
+        "revoir": "l-trigonometrie-012",
+        "solution": "$\\sin'(0) = \\cos(0) = 1$ et $\\sin(0) = 0$, donc $T$ a pour équation $y = 1 \\times (x - 0) + 0$, soit $y = x$.\n\nD'après la question 2, $\\sin$ est concave sur $[0\\,;\\,\\pi]$ ; or la courbe d'une fonction concave sur un intervalle est en dessous de chacune de ses tangentes en un point de cet intervalle. Le point d'abscisse $0$ appartient à $[0\\,;\\,\\pi]$, donc $\\mathcal{C}$ est en dessous de $T$ sur $[0\\,;\\,\\pi]$ : pour tout $x$ de $[0\\,;\\,\\pi]$, $\\sin(x) \\leqslant x$.",
+        "erreurFrequente": "Invoquer la concavité sur tout $[0\\,;\\,2\\pi]$ : $\\sin$ n'est concave que sur $[0\\,;\\,\\pi]$. Au-delà, l'inégalité reste vraie, mais pour une autre raison : $\\sin(x) \\leqslant 1 < \\pi \\leqslant x$."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-009",
+    "chapitre": "trigonometrie",
+    "niveau": 2,
+    "notions": ["n-trigonometrie-equations-inequations"],
+    "capacites": ["bo-m-trigonometrie-02"],
+    "titre": "Poser $X = kx$ pour se ramener à $[-\\pi\\,;\\,\\pi]$",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 211,
+    "preambule": "Ces questions appliquent le changement de variable $X = kx$ vu dans le cours (exemple des inéquations, cas **d.**).",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Pour $x$ dans $\\left[-\\dfrac{\\pi}{2}\\,;\\,\\dfrac{\\pi}{2}\\right]$, on pose $X = 2x$. Dans quel intervalle varie $X$ ? En déduire les solutions de l'équation $\\cos(2x) = \\dfrac{1}{2}$ sur $\\left[-\\dfrac{\\pi}{2}\\,;\\,\\dfrac{\\pi}{2}\\right]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Comme dans l'exemple du cours, multiplie par $2$ l'encadrement $-\\dfrac{\\pi}{2} \\leqslant x \\leqslant \\dfrac{\\pi}{2}$ : tu obtiens l'intervalle où varie $X = 2x$.",
+          "$X$ parcourt $[-\\pi\\,;\\,\\pi]$ : résous $\\cos(X) = \\dfrac{1}{2}$ sur cet intervalle.",
+          "$\\cos(X) = \\dfrac{1}{2} \\iff X = \\dfrac{\\pi}{3}$ ou $X = -\\dfrac{\\pi}{3}$. Reviens à $x$ avec $x = \\dfrac{X}{2}$."
+        ],
+        "revoir": "l-trigonometrie-026",
+        "solution": "Si $-\\dfrac{\\pi}{2} \\leqslant x \\leqslant \\dfrac{\\pi}{2}$, alors, en multipliant par $2 > 0$, $-\\pi \\leqslant 2x \\leqslant \\pi$ : $X$ parcourt $[-\\pi\\,;\\,\\pi]$.\n\nSur $[-\\pi\\,;\\,\\pi]$, $\\cos(X) = \\dfrac{1}{2} \\iff X = \\dfrac{\\pi}{3}$ ou $X = -\\dfrac{\\pi}{3}$, car $\\cos\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{1}{2}$ avec $\\dfrac{\\pi}{3} \\in [0\\,;\\,\\pi]$.\n\nDonc $2x = \\dfrac{\\pi}{3}$ ou $2x = -\\dfrac{\\pi}{3}$, soit $x = \\dfrac{\\pi}{6}$ ou $x = -\\dfrac{\\pi}{6}$ : $S = \\left\\{-\\dfrac{\\pi}{6}\\,;\\,\\dfrac{\\pi}{6}\\right\\}$.",
+        "erreurFrequente": "Oublier de revenir à $x$ et répondre $\\pm\\dfrac{\\pi}{3}$ : ce sont les valeurs de $X = 2x$. Contrôle : $\\cos\\left(2 \\times \\dfrac{\\pi}{3}\\right) = -\\dfrac{1}{2}$, pas $\\dfrac{1}{2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quel est l'ensemble des solutions de l'inéquation $\\cos(2x) \\geqslant \\dfrac{1}{2}$ sur $\\left[-\\dfrac{\\pi}{2}\\,;\\,\\dfrac{\\pi}{2}\\right]$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left[-\\dfrac{\\pi}{3}\\,;\\,\\dfrac{\\pi}{3}\\right]$",
+            "$\\left[-\\dfrac{\\pi}{2}\\,;\\,-\\dfrac{\\pi}{6}\\right] \\cup \\left[\\dfrac{\\pi}{6}\\,;\\,\\dfrac{\\pi}{2}\\right]$",
+            "$\\left[0\\,;\\,\\dfrac{\\pi}{6}\\right]$",
+            "$\\left[-\\dfrac{\\pi}{6}\\,;\\,\\dfrac{\\pi}{6}\\right]$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "Ce sont les valeurs de $X = 2x$ qui conviennent : il reste à diviser les bornes par $2$ pour revenir à $x$.",
+            "C'est l'arc à gauche de la droite verticale d'abscisse $\\dfrac{1}{2}$ : il donne $\\cos(2x) \\leqslant \\dfrac{1}{2}$. Contrôle avec $x = 0$ : $\\cos(0) = 1 \\geqslant \\dfrac{1}{2}$.",
+            "Il manque la partie négative : si $x$ est solution, $-x$ l'est aussi, car $\\cos(-2x) = \\cos(2x)$.",
+            null
+          ]
+        },
+        "indices": [
+          "Avec $X = 2x$, qui parcourt $[-\\pi\\,;\\,\\pi]$, l'inéquation devient $\\cos(X) \\geqslant \\dfrac{1}{2}$.",
+          "Sur le cercle, $\\cos(X) \\geqslant \\dfrac{1}{2}$ correspond à l'arc à droite de la droite verticale d'abscisse $\\dfrac{1}{2}$, entre $M\\left(-\\dfrac{\\pi}{3}\\right)$ et $M\\left(\\dfrac{\\pi}{3}\\right)$.",
+          "Tu obtiens un encadrement de $X = 2x$ : divise chaque membre par $2$ pour obtenir celui de $x$."
+        ],
+        "revoir": "l-trigonometrie-026",
+        "solution": "On pose $X = 2x$ : quand $x$ parcourt $\\left[-\\dfrac{\\pi}{2}\\,;\\,\\dfrac{\\pi}{2}\\right]$, $X$ parcourt $[-\\pi\\,;\\,\\pi]$. Sur cet intervalle, $\\cos(X) \\geqslant \\dfrac{1}{2} \\iff -\\dfrac{\\pi}{3} \\leqslant X \\leqslant \\dfrac{\\pi}{3}$ : arc de droite, crochets fermés car l'inégalité est large. Donc $-\\dfrac{\\pi}{3} \\leqslant 2x \\leqslant \\dfrac{\\pi}{3}$, soit $-\\dfrac{\\pi}{6} \\leqslant x \\leqslant \\dfrac{\\pi}{6}$ : $S = \\left[-\\dfrac{\\pi}{6}\\,;\\,\\dfrac{\\pi}{6}\\right]$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Un signal périodique vaut $s(t) = \\cos\\left(\\dfrac{\\pi t}{4}\\right)$ à l'instant $t$, en secondes, pour $t$ dans $[-4\\,;\\,4]$. Quel est l'ensemble des instants $t$ de $[-4\\,;\\,4]$ tels que $s(t) \\leqslant -\\dfrac{\\sqrt{2}}{2}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left[-\\pi\\,;\\,-\\dfrac{3\\pi}{4}\\right] \\cup \\left[\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$",
+            "$[-4\\,;\\,-3] \\cup [3\\,;\\,4]$",
+            "$[-3\\,;\\,3]$",
+            "$[-4\\,;\\,-1] \\cup [1\\,;\\,4]$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Ce sont les valeurs de $X = \\dfrac{\\pi t}{4}$, pas de $t$ : il reste à multiplier par $\\dfrac{4}{\\pi}$ pour revenir à $t$.",
+            null,
+            "C'est l'arc de droite, où $s(t) \\geqslant -\\dfrac{\\sqrt{2}}{2}$. Contrôle avec $t = 0$ : $s(0) = 1$, qui n'est pas $\\leqslant -\\dfrac{\\sqrt{2}}{2}$.",
+            "Les bornes $\\pm 1$ viennent de $X = \\pm\\dfrac{\\pi}{4}$, solutions de $\\cos(X) = \\dfrac{\\sqrt{2}}{2}$. Ici $a = -\\dfrac{\\sqrt{2}}{2}$ : les bornes en $X$ sont $\\pm\\dfrac{3\\pi}{4}$."
+          ]
+        },
+        "indices": [
+          "Pose $X = \\dfrac{\\pi t}{4}$ : multiplie l'encadrement $-4 \\leqslant t \\leqslant 4$ par $\\dfrac{\\pi}{4} > 0$ pour savoir où varie $X$.",
+          "$X$ parcourt $[-\\pi\\,;\\,\\pi]$, et l'inéquation devient $\\cos(X) \\leqslant -\\dfrac{\\sqrt{2}}{2}$. Avec $\\cos\\left(\\dfrac{3\\pi}{4}\\right) = -\\dfrac{\\sqrt{2}}{2}$, garde l'arc à gauche de la droite verticale.",
+          "Tu dois trouver $X \\in \\left[-\\pi\\,;\\,-\\dfrac{3\\pi}{4}\\right] \\cup \\left[\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$. Reviens à $t$ avec $t = \\dfrac{4X}{\\pi}$, borne par borne."
+        ],
+        "revoir": "l-trigonometrie-026",
+        "solution": "On pose $X = \\dfrac{\\pi t}{4}$. Si $-4 \\leqslant t \\leqslant 4$, alors, en multipliant par $\\dfrac{\\pi}{4} > 0$, $-\\pi \\leqslant X \\leqslant \\pi$.\n\nSur $[-\\pi\\,;\\,\\pi]$, $\\cos(X) = -\\dfrac{\\sqrt{2}}{2} \\iff X = \\pm\\dfrac{3\\pi}{4}$, et $\\cos(X) \\leqslant -\\dfrac{\\sqrt{2}}{2}$ correspond à l'arc à gauche de la droite verticale d'abscisse $-\\dfrac{\\sqrt{2}}{2}$, qui contient le point $(-1\\,;\\,0)$ : $X \\in \\left[-\\pi\\,;\\,-\\dfrac{3\\pi}{4}\\right] \\cup \\left[\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$.\n\nOn revient à $t = \\dfrac{4X}{\\pi}$ : $X = -\\pi$ donne $t = -4$, $X = -\\dfrac{3\\pi}{4}$ donne $t = -3$, et de même $t = 3$ et $t = 4$. Donc $S = [-4\\,;\\,-3] \\cup [3\\,;\\,4]$. Contrôle : $s(4) = \\cos(\\pi) = -1 \\leqslant -\\dfrac{\\sqrt{2}}{2}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Sur $[-4\\,;\\,4]$, pendant combien de secondes au total a-t-on $s(t) \\leqslant -\\dfrac{\\sqrt{2}}{2}$ ?",
+        "reponse": {
+          "type": "numerique",
+          "valeur": 2,
+          "tolerance": 0,
+          "unite": "s"
+        },
+        "indices": [
+          "Reprends l'ensemble des instants trouvé à la question précédente : c'est une réunion d'intervalles de temps.",
+          "Un intervalle $[t_1\\,;\\,t_2]$ dure $t_2 - t_1$ secondes : calcule la durée de chaque intervalle.",
+          "Les deux intervalles ne se chevauchent pas : additionne leurs durées."
+        ],
+        "revoir": "l-trigonometrie-026",
+        "solution": "D'après la question 3, $s(t) \\leqslant -\\dfrac{\\sqrt{2}}{2}$ pour $t \\in [-4\\,;\\,-3] \\cup [3\\,;\\,4]$. Chaque intervalle dure $1$ seconde : au total, $1 + 1 = 2$ secondes sur les $8$ secondes de l'intervalle $[-4\\,;\\,4]$, c'est-à-dire un quart du temps.",
+        "erreurFrequente": "Mesurer la durée en $X$ : l'arc des solutions mesure $\\dfrac{\\pi}{2}$ en $X$, mais la durée se compte en $t$, en secondes."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-010",
+    "chapitre": "trigonometrie",
+    "niveau": 2,
+    "notions": ["n-trigonometrie-equations-inequations"],
+    "capacites": ["bo-m-trigonometrie-02"],
+    "titre": "Une équation du second degré en $\\cos(x)$",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 212,
+    "preambule": "Pour tout $x$ de $[-\\pi\\,;\\,\\pi]$, on pose $E(x) = 2\\cos^2(x) - \\cos(x) - 1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Vérifier que, pour tout réel $X$, $2X^2 - X - 1 = (2X + 1)(X - 1)$. En déduire une factorisation de $E(x)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Développe le produit $(2X + 1)(X - 1)$ et compare avec $2X^2 - X - 1$.",
+          "$(2X + 1)(X - 1) = 2X^2 - 2X + X - 1$ : réduis.",
+          "Remplace ensuite $X$ par $\\cos(x)$ : $\\cos^2(x)$ est le carré de $\\cos(x)$."
+        ],
+        "revoir": "l-trigonometrie-034",
+        "solution": "$(2X + 1)(X - 1) = 2X^2 - 2X + X - 1 = 2X^2 - X - 1$. Avec $X = \\cos(x)$, on obtient, pour tout $x$ de $[-\\pi\\,;\\,\\pi]$ : $E(x) = \\big(2\\cos(x) + 1\\big)\\big(\\cos(x) - 1\\big)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quel est l'ensemble des solutions de l'équation $E(x) = 0$ sur $[-\\pi\\,;\\,\\pi]$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left\\{-\\dfrac{2\\pi}{3}\\,;\\,\\dfrac{2\\pi}{3}\\right\\}$",
+            "$\\left\\{-\\dfrac{2\\pi}{3}\\,;\\,0\\,;\\,\\dfrac{2\\pi}{3}\\right\\}$",
+            "$\\left\\{-\\dfrac{\\pi}{3}\\,;\\,0\\,;\\,\\dfrac{\\pi}{3}\\right\\}$",
+            "$\\left\\{0\\,;\\,\\dfrac{2\\pi}{3}\\right\\}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Il manque les solutions du second facteur : $\\cos(x) - 1 = 0$ donne $\\cos(x) = 1$, soit $x = 0$.",
+            null,
+            "$2\\cos(x) + 1 = 0$ donne $\\cos(x) = -\\dfrac{1}{2}$, pas $\\dfrac{1}{2}$ : les solutions sont $\\pm\\dfrac{2\\pi}{3}$.",
+            "Il manque $-\\dfrac{2\\pi}{3}$ : sur $[-\\pi\\,;\\,\\pi]$, $\\cos(x) = \\cos(\\alpha)$ donne $\\alpha$ et $-\\alpha$."
+          ]
+        },
+        "indices": [
+          "Un produit est nul si et seulement si l'un de ses facteurs est nul : résous $2\\cos(x) + 1 = 0$, puis $\\cos(x) - 1 = 0$.",
+          "$2\\cos(x) + 1 = 0 \\iff \\cos(x) = -\\dfrac{1}{2}$ ; $\\cos(x) - 1 = 0 \\iff \\cos(x) = 1$. Cherche $\\alpha$ dans $[0\\,;\\,\\pi]$ pour chacune.",
+          "$\\cos\\left(\\dfrac{2\\pi}{3}\\right) = -\\dfrac{1}{2}$ donne deux solutions ; $\\cos(x) = 1$ n'en donne qu'une sur $[-\\pi\\,;\\,\\pi]$. Réunis-les."
+        ],
+        "revoir": "l-trigonometrie-023",
+        "solution": "D'après la question 1, $E(x) = 0 \\iff 2\\cos(x) + 1 = 0$ ou $\\cos(x) - 1 = 0$.\n\nD'une part, $2\\cos(x) + 1 = 0 \\iff \\cos(x) = -\\dfrac{1}{2} = \\cos\\left(\\dfrac{2\\pi}{3}\\right) \\iff x = \\dfrac{2\\pi}{3}$ ou $x = -\\dfrac{2\\pi}{3}$. D'autre part, $\\cos(x) = 1 \\iff x = 0$ sur $[-\\pi\\,;\\,\\pi]$.\n\nDonc $S = \\left\\{-\\dfrac{2\\pi}{3}\\,;\\,0\\,;\\,\\dfrac{2\\pi}{3}\\right\\}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est l'ensemble des solutions de l'inéquation $E(x) > 0$ sur $[-\\pi\\,;\\,\\pi]$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left]-\\dfrac{2\\pi}{3}\\,;\\,0\\right[ \\cup \\left]0\\,;\\,\\dfrac{2\\pi}{3}\\right[$",
+            "$\\left]-\\dfrac{2\\pi}{3}\\,;\\,\\dfrac{2\\pi}{3}\\right[$",
+            "$\\left[-\\pi\\,;\\,-\\dfrac{2\\pi}{3}\\right] \\cup \\left[\\dfrac{2\\pi}{3}\\,;\\,\\pi\\right]$",
+            "$\\left[-\\pi\\,;\\,-\\dfrac{2\\pi}{3}\\right[ \\cup \\left]\\dfrac{2\\pi}{3}\\,;\\,\\pi\\right]$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "C'est l'ensemble où $E(x) < 0$ : là, $2\\cos(x) + 1 > 0$ et $\\cos(x) - 1 < 0$, donc le produit est négatif.",
+            "Contrôle avec $x = 0$ : $E(0) = 2 - 1 - 1 = 0$, qui n'est pas strictement positif. Sur cet intervalle, le produit est négatif ou nul.",
+            "L'inégalité est stricte : en $\\pm\\dfrac{2\\pi}{3}$, $E(x) = 0$. Les crochets sont ouverts en ces bornes.",
+            null
+          ]
+        },
+        "indices": [
+          "Étudie le signe de chaque facteur. Le facteur $\\cos(x) - 1$ est simple : $\\cos(x) \\leqslant 1$ pour tout réel $x$.",
+          "$\\cos(x) - 1 < 0$, sauf en $x = 0$ où il est nul. Donc $E(x) > 0$ exactement quand $2\\cos(x) + 1 < 0$.",
+          "$2\\cos(x) + 1 < 0 \\iff \\cos(x) < -\\dfrac{1}{2}$ : garde l'arc à gauche de la droite verticale d'abscisse $-\\dfrac{1}{2}$. Crochets ouverts en $\\pm\\dfrac{2\\pi}{3}$, où $E(x) = 0$ ; en $-\\pi$ et $\\pi$, bornes de l'intervalle d'étude, calcule $E(\\pm\\pi)$ pour savoir s'ils sont solutions."
+        ],
+        "revoir": "l-trigonometrie-026",
+        "solution": "Pour tout $x$, $\\cos(x) \\leqslant 1$, donc $\\cos(x) - 1 \\leqslant 0$, avec égalité seulement pour $x = 0$ sur $[-\\pi\\,;\\,\\pi]$. Un produit est strictement positif quand ses deux facteurs sont non nuls et de même signe : ici, $E(x) > 0 \\iff 2\\cos(x) + 1 < 0$ et $x \\neq 0$.\n\nOr $2\\cos(x) + 1 < 0 \\iff \\cos(x) < -\\dfrac{1}{2}$ : c'est l'arc à gauche de la droite verticale d'abscisse $-\\dfrac{1}{2}$, parcouru pour $x$ de $-\\pi$ à $-\\dfrac{2\\pi}{3}$ exclu, puis de $\\dfrac{2\\pi}{3}$ exclu à $\\pi$ ; $0$ n'en fait pas partie. Les bornes $-\\pi$ et $\\pi$ de l'intervalle d'étude sont solutions : $E(\\pm\\pi) = 2 \\times (-1)^2 - (-1) - 1 = 2 > 0$.\n\nDonc $S = \\left[-\\pi\\,;\\,-\\dfrac{2\\pi}{3}\\right[ \\cup \\left]\\dfrac{2\\pi}{3}\\,;\\,\\pi\\right]$."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-011",
+    "chapitre": "trigonometrie",
+    "niveau": 2,
+    "notions": ["n-trigonometrie-etude-fonction", "n-trigonometrie-derivees-variations", "n-trigonometrie-equations-inequations"],
+    "capacites": ["bo-m-trigonometrie-03", "bo-m-trigonometrie-01", "bo-m-trigonometrie-02", "bo-m-derivation-06"],
+    "titre": "La portée d'un tir",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 311,
+    "preambule": "Un ballon est lancé depuis le sol avec une vitesse de 14 mètres par seconde, dans une direction qui fait avec le sol un angle $x$, mesuré en radians, avec $x \\in \\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$. En négligeant les frottements de l'air, on admet que la distance horizontale parcourue par le ballon avant de retomber, appelée portée, vaut, en mètres :$$R(x) = 20\\sin(2x).$$",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $R'(x)$, puis étudier son signe sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive avec $\\big(\\sin(ax + b)\\big)' = a\\cos(ax + b)$, ici $a = 2$ et $b = 0$. Pour le signe de $\\cos(2x)$, pose $X = 2x$ comme dans l'exemple du cours : dans quel intervalle varie $X$ ?",
+          "$R'(x) = 40\\cos(2x)$. Pour $x$ dans $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, le réel $X = 2x$ parcourt $[0\\,;\\,\\pi]$ : étudie le signe de $\\cos(X)$ sur $[0\\,;\\,\\pi]$.",
+          "$\\cos(X) \\geqslant 0$ pour $X \\in \\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, et $\\cos(X) \\leqslant 0$ pour $X \\in \\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$. Reviens à $x = \\dfrac{X}{2}$."
+        ],
+        "revoir": "l-trigonometrie-026",
+        "solution": "$R$ est dérivable et $R'(x) = 20 \\times 2\\cos(2x) = 40\\cos(2x)$.\n\nPour $x \\in \\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $2x \\in [0\\,;\\,\\pi]$. Sur $[0\\,;\\,\\pi]$, le cosinus est positif ou nul sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, moitié droite du cercle, et négatif ou nul sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$. Donc $R'(x) \\geqslant 0$ quand $2x \\leqslant \\dfrac{\\pi}{2}$, c'est-à-dire sur $\\left[0\\,;\\,\\dfrac{\\pi}{4}\\right]$, et $R'(x) \\leqslant 0$ sur $\\left[\\dfrac{\\pi}{4}\\,;\\,\\dfrac{\\pi}{2}\\right]$ ; $R'$ ne s'annule qu'en $\\dfrac{\\pi}{4}$.",
+        "erreurFrequente": "Écrire $R'(x) = 20\\cos(2x)$ : la dérivée de l'intérieur $2x$ vaut $2$, il faut multiplier par $2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour quel angle de tir la portée est-elle maximale ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$x = \\dfrac{\\pi}{6}$",
+            "$x = \\dfrac{\\pi}{4}$",
+            "$x = \\dfrac{\\pi}{3}$",
+            "$x = \\dfrac{\\pi}{2}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "En $\\dfrac{\\pi}{6}$, $R'(x) = 40\\cos\\left(\\dfrac{\\pi}{3}\\right) > 0$ : la portée augmente encore.",
+            null,
+            "En $\\dfrac{\\pi}{3}$, $R'(x) = 40\\cos\\left(\\dfrac{2\\pi}{3}\\right) < 0$ : la portée diminue déjà.",
+            "Un tir vertical retombe au point de départ : $R\\left(\\dfrac{\\pi}{2}\\right) = 20\\sin(\\pi) = 0$."
+          ]
+        },
+        "indices": [
+          "Dresse le tableau de variations de $R$ à partir du signe de $R'$ trouvé à la question 1.",
+          "$R$ est croissante puis décroissante : le maximum est atteint là où $R'$ change de signe.",
+          "$R'$ change de signe quand $2x = \\dfrac{\\pi}{2}$ : résous pour trouver $x$."
+        ],
+        "revoir": "l-trigonometrie-032",
+        "solution": "D'après la question 1, $R$ est croissante sur $\\left[0\\,;\\,\\dfrac{\\pi}{4}\\right]$ et décroissante sur $\\left[\\dfrac{\\pi}{4}\\,;\\,\\dfrac{\\pi}{2}\\right]$. La portée est donc maximale pour $x = \\dfrac{\\pi}{4}$, c'est-à-dire pour un angle de $45^\\circ$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la portée maximale, en mètres ?",
+        "reponse": {
+          "type": "numerique",
+          "valeur": 20,
+          "tolerance": 0,
+          "unite": "m"
+        },
+        "indices": [
+          "La portée maximale est une valeur de $R$, en mètres, et non un angle : calcule l'image par $R$ de l'angle trouvé à la question 2.",
+          "Remplace $x$ par $\\dfrac{\\pi}{4}$ dans l'expression de $R(x)$, en simplifiant d'abord $2 \\times \\dfrac{\\pi}{4}$.",
+          "$2 \\times \\dfrac{\\pi}{4} = \\dfrac{\\pi}{2}$ et $\\sin\\left(\\dfrac{\\pi}{2}\\right) = 1$ : termine le calcul."
+        ],
+        "revoir": "l-trigonometrie-038",
+        "solution": "$R\\left(\\dfrac{\\pi}{4}\\right) = 20\\sin\\left(\\dfrac{\\pi}{2}\\right) = 20 \\times 1 = 20$. La portée maximale est de $20$ m, obtenue pour un tir à $45^\\circ$.",
+        "erreurFrequente": "Répondre $\\dfrac{\\pi}{4}$ : c'est l'angle de tir qui donne la portée maximale, pas la portée elle-même."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Pour quels angles de tir la portée est-elle d'au moins $10$ m ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\left[\\dfrac{\\pi}{6}\\,;\\,\\dfrac{5\\pi}{6}\\right]$",
+            "$\\left[\\dfrac{\\pi}{12}\\,;\\,\\dfrac{\\pi}{4}\\right]$",
+            "$\\left[\\dfrac{\\pi}{12}\\,;\\,\\dfrac{5\\pi}{12}\\right]$",
+            "$\\left[0\\,;\\,\\dfrac{\\pi}{12}\\right] \\cup \\left[\\dfrac{5\\pi}{12}\\,;\\,\\dfrac{\\pi}{2}\\right]$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "Ce sont les valeurs de $2x$, pas de $x$ : il reste à diviser par $2$. D'ailleurs $\\dfrac{5\\pi}{6} > \\dfrac{\\pi}{2}$ sort de l'intervalle d'étude.",
+            "Tu n'as gardé que la partie où $R$ croît : après $\\dfrac{\\pi}{4}$, $R$ décroît mais reste supérieure ou égale à $10$ jusqu'à $\\dfrac{5\\pi}{12}$.",
+            null,
+            "C'est là que la portée est d'au plus $10$ m : près de $0$ et de $\\dfrac{\\pi}{2}$, le tir est trop rasant ou trop vertical."
+          ]
+        },
+        "indices": [
+          "Résous d'abord l'équation $R(x) = 10$, puis sers-toi des variations de $R$.",
+          "$R(x) = 10 \\iff \\sin(2x) = \\dfrac{1}{2}$. Pose $X = 2x$, qui parcourt $[0\\,;\\,\\pi]$ : résous $\\sin(X) = \\dfrac{1}{2}$, la seconde solution étant $\\pi - \\alpha$.",
+          "$X = \\dfrac{\\pi}{6}$ ou $X = \\dfrac{5\\pi}{6}$ : divise par $2$ pour obtenir $x$. Puis, avec le tableau de variations, dis où $R(x) \\geqslant 10$."
+        ],
+        "revoir": "l-trigonometrie-026",
+        "solution": "$R(x) = 10 \\iff \\sin(2x) = \\dfrac{1}{2}$. Pour $x \\in \\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $X = 2x$ parcourt $[0\\,;\\,\\pi]$, et $\\sin(X) = \\dfrac{1}{2} \\iff X = \\dfrac{\\pi}{6}$ ou $X = \\pi - \\dfrac{\\pi}{6} = \\dfrac{5\\pi}{6}$. Donc $R(x) = 10 \\iff x = \\dfrac{\\pi}{12}$ ou $x = \\dfrac{5\\pi}{12}$.\n\nOr $R$ croît de $0$ à $20$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{4}\\right]$, puis décroît de $20$ à $0$ sur $\\left[\\dfrac{\\pi}{4}\\,;\\,\\dfrac{\\pi}{2}\\right]$. Donc $R(x) \\geqslant 10 \\iff x \\in \\left[\\dfrac{\\pi}{12}\\,;\\,\\dfrac{5\\pi}{12}\\right]$ : pour un angle de tir compris entre $15^\\circ$ et $75^\\circ$."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-012",
+    "chapitre": "trigonometrie",
+    "niveau": 2,
+    "notions": ["n-trigonometrie-etude-fonction", "n-trigonometrie-derivees-variations"],
+    "capacites": ["bo-m-trigonometrie-03", "bo-m-trigonometrie-01", "bo-m-derivation-06", "bo-m-continuite-04"],
+    "titre": "Le tableau de variations de $x\\sin(x) + \\cos(x)$",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 312,
+    "preambule": "Soit $g$ la fonction définie sur $[0\\,;\\,2\\pi]$ par $g(x) = x\\sin(x) + \\cos(x)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que, pour tout réel $x$ de $[0\\,;\\,2\\pi]$, $g'(x) = x\\cos(x)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$x\\sin(x)$ est un produit : dérive-le avec $(uv)' = u'v + uv'$, puis ajoute la dérivée de $\\cos(x)$.",
+          "$\\big(x\\sin(x)\\big)' = 1 \\times \\sin(x) + x\\cos(x)$, et $\\cos'(x) = -\\sin(x)$.",
+          "Additionne : deux termes s'éliminent."
+        ],
+        "revoir": "l-trigonometrie-004",
+        "solution": "Avec $u(x) = x$, $u'(x) = 1$, $v(x) = \\sin(x)$ et $v'(x) = \\cos(x)$ : $\\big(x\\sin(x)\\big)' = \\sin(x) + x\\cos(x)$. Donc $g'(x) = \\sin(x) + x\\cos(x) - \\sin(x) = x\\cos(x)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étudier le signe de $g'(x)$ sur $[0\\,;\\,2\\pi]$, puis dresser le tableau de variations de $g$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$g'(x)$ est le produit de $x$ et de $\\cos(x)$ : fais un tableau de signes avec une ligne par facteur. Sur $[0\\,;\\,2\\pi]$, $x \\geqslant 0$.",
+          "Quand $x$ va de $0$ à $2\\pi$, $M(x)$ fait un tour complet à partir de $I(1\\,;\\,0)$. $\\cos(x)$ est positif sur la moitié droite du cercle : au début du tour, puis à la fin. Par périodicité, $\\left[\\dfrac{3\\pi}{2}\\,;\\,2\\pi\\right]$ donne les mêmes points que $\\left[-\\dfrac{\\pi}{2}\\,;\\,0\\right]$.",
+          "$\\cos(x) \\geqslant 0$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$ et sur $\\left[\\dfrac{3\\pi}{2}\\,;\\,2\\pi\\right]$, $\\cos(x) \\leqslant 0$ sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\dfrac{3\\pi}{2}\\right]$. Calcule ensuite $g(0)$, $g\\left(\\dfrac{\\pi}{2}\\right)$, $g\\left(\\dfrac{3\\pi}{2}\\right)$ et $g(2\\pi)$.",
+          "Utilise $\\sin\\left(\\dfrac{\\pi}{2}\\right) = 1$, $\\sin\\left(\\dfrac{3\\pi}{2}\\right) = -1$, et $\\cos = 0$ en ces deux réels ; $\\sin(2\\pi) = 0$ et $\\cos(2\\pi) = 1$."
+        ],
+        "revoir": "l-trigonometrie-008",
+        "solution": "Sur $[0\\,;\\,2\\pi]$, $x \\geqslant 0$, nul seulement en $0$ : $g'(x)$ a le signe de $\\cos(x)$. Quand $x$ va de $0$ à $2\\pi$, $M(x)$ fait un tour complet : il est dans la moitié droite du cercle pour $x \\in \\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$ et pour $x \\in \\left[\\dfrac{3\\pi}{2}\\,;\\,2\\pi\\right]$, ce qui revient à $\\left[-\\dfrac{\\pi}{2}\\,;\\,0\\right]$ par périodicité, et dans la moitié gauche pour $x \\in \\left[\\dfrac{\\pi}{2}\\,;\\,\\dfrac{3\\pi}{2}\\right]$.\n\nValeurs : $g(0) = 0 + 1 = 1$, $g\\left(\\dfrac{\\pi}{2}\\right) = \\dfrac{\\pi}{2} \\times 1 + 0 = \\dfrac{\\pi}{2}$, $g\\left(\\dfrac{3\\pi}{2}\\right) = \\dfrac{3\\pi}{2} \\times (-1) + 0 = -\\dfrac{3\\pi}{2}$ et $g(2\\pi) = 2\\pi \\times 0 + 1 = 1$.\n\n| $x$ | $0$ | | $\\frac{\\pi}{2}$ | | $\\frac{3\\pi}{2}$ | | $2\\pi$ |\n|---|---|---|---|---|---|---|---|\n| signe de $x$ | $0$ | $+$ | | $+$ | | $+$ | |\n| signe de $\\cos(x)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n| signe de $g'(x)$ | $0$ | $+$ | $0$ | $-$ | $0$ | $+$ | |\n| variations de $g$ | $1$ | $\\nearrow$ | $\\frac{\\pi}{2}$ | $\\searrow$ | $-\\frac{3\\pi}{2}$ | $\\nearrow$ | $1$ |\n\nDonc $g$ est croissante sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, décroissante sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\dfrac{3\\pi}{2}\\right]$, puis croissante sur $\\left[\\dfrac{3\\pi}{2}\\,;\\,2\\pi\\right]$.",
+        "erreurFrequente": "Croire que $\\cos(x) \\geqslant 0$ seulement sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$ : à la fin du tour, sur $\\left[\\dfrac{3\\pi}{2}\\,;\\,2\\pi\\right]$, $M(x)$ revient dans la moitié droite du cercle."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel est le minimum de $g$ sur $[0\\,;\\,2\\pi]$, et en quel réel est-il atteint ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$-1$, atteint en $\\pi$",
+            "$\\dfrac{3\\pi}{2}$, atteint en $\\dfrac{3\\pi}{2}$",
+            "$1$, atteint en $0$ et en $2\\pi$",
+            "$-\\dfrac{3\\pi}{2}$, atteint en $\\dfrac{3\\pi}{2}$"
+          ],
+          "bonne": 3,
+          "pourquoiFaux": [
+            "$\\cos(\\pi) = -1$ est le minimum de $\\cos$, pas celui de $g$ : le terme $x\\sin(x)$ compte aussi. D'ailleurs $g'(\\pi) = -\\pi \\neq 0$.",
+            "Le signe est faux : $\\sin\\left(\\dfrac{3\\pi}{2}\\right) = -1$, donc $g\\left(\\dfrac{3\\pi}{2}\\right) = -\\dfrac{3\\pi}{2}$.",
+            "Ce sont les valeurs aux bornes, mais $g$ descend bien plus bas entre les deux : regarde le sommet « en bas » du tableau.",
+            null
+          ]
+        },
+        "indices": [
+          "Lis le tableau de variations : le minimum est la plus petite des valeurs du tableau, bornes comprises.",
+          "Le seul sommet « en bas » du tableau est en $\\dfrac{3\\pi}{2}$ : compare sa valeur à celles des bornes.",
+          "$g\\left(\\dfrac{3\\pi}{2}\\right) = \\dfrac{3\\pi}{2}\\sin\\left(\\dfrac{3\\pi}{2}\\right) + \\cos\\left(\\dfrac{3\\pi}{2}\\right)$ : attention au signe de $\\sin\\left(\\dfrac{3\\pi}{2}\\right)$."
+        ],
+        "revoir": "l-trigonometrie-038",
+        "solution": "D'après le tableau, $g$ décroît de $\\dfrac{\\pi}{2}$ à $-\\dfrac{3\\pi}{2}$ sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\dfrac{3\\pi}{2}\\right]$, puis remonte jusqu'à $1$. Les valeurs aux bornes valent $1$, plus grand que $-\\dfrac{3\\pi}{2} \\approx -4{,}71$. Le minimum de $g$ sur $[0\\,;\\,2\\pi]$ est $-\\dfrac{3\\pi}{2}$, atteint en $\\dfrac{3\\pi}{2}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Combien de solutions l'équation $g(x) = 0$ a-t-elle sur $[0\\,;\\,2\\pi]$ ?",
+        "reponse": {
+          "type": "numerique",
+          "valeur": 2,
+          "tolerance": 0
+        },
+        "indices": [
+          "Raisonne intervalle par intervalle avec le tableau de variations : sur chaque intervalle où $g$ est strictement monotone, pense au théorème des valeurs intermédiaires.",
+          "Sur le premier intervalle du tableau, $g$ croît à partir de $g(0) = 1$, strictement positif : aucune solution là.",
+          "Sur l'intervalle où elle décroît, $g$ est continue et passe d'une valeur positive à une valeur négative. Raisonne de même sur le dernier intervalle, où elle croît."
+        ],
+        "revoir": "l-trigonometrie-032",
+        "solution": "Sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $g$ est croissante, donc $g(x) \\geqslant g(0) = 1 > 0$ : l'équation n'y a aucune solution.\n\nSur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\dfrac{3\\pi}{2}\\right]$, $g$ est continue, car dérivable, et strictement décroissante, avec $g\\left(\\dfrac{\\pi}{2}\\right) = \\dfrac{\\pi}{2} > 0$ et $g\\left(\\dfrac{3\\pi}{2}\\right) = -\\dfrac{3\\pi}{2} < 0$. D'après le théorème des valeurs intermédiaires, cas d'une fonction continue strictement monotone, l'équation $g(x) = 0$ y a une unique solution.\n\nDe même, sur $\\left[\\dfrac{3\\pi}{2}\\,;\\,2\\pi\\right]$, $g$ est continue et strictement croissante de $-\\dfrac{3\\pi}{2} < 0$ à $1 > 0$ : une unique solution.\n\nAu total, l'équation $g(x) = 0$ a $2$ solutions sur $[0\\,;\\,2\\pi]$.",
+        "erreurFrequente": "S'arrêter à la première solution : le tableau se lit en entier, de $0$ à $2\\pi$, et $g$ remonte au-dessus de $0$ après $\\dfrac{3\\pi}{2}$."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-013",
+    "chapitre": "trigonometrie",
+    "niveau": 3,
+    "notions": ["n-trigonometrie-equations-inequations", "n-trigonometrie-derivees-variations", "n-trigonometrie-etude-fonction"],
+    "capacites": ["bo-m-trigonometrie-02", "bo-m-trigonometrie-01", "bo-m-trigonometrie-03", "bo-m-continuite-03", "bo-m-continuite-04", "bo-m-continuite-06"],
+    "titre": "$\\cos(x) = 0{,}3$ : une solution hors du tableau",
+    "duree": 30,
+    "calculatrice": true,
+    "ordre": 401,
+    "preambule": "La calculatrice est autorisée : règle-la en mode radian, et contrôle le réglage avec $\\sin\\left(\\dfrac{\\pi}{6}\\right) = 0{,}5$.\n\nAucune valeur remarquable n'a pour cosinus $0{,}3$ : on ne peut pas lire de solution de $\\cos(x) = 0{,}3$ dans le tableau. Cet exercice montre comment résoudre quand même cette équation, puis s'en servir dans une étude de fonction.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que l'équation $\\cos(x) = 0{,}3$ admet une unique solution, notée $\\alpha$, dans l'intervalle $[0\\,;\\,\\pi]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pense au théorème des valeurs intermédiaires, dans le cas d'une fonction continue et strictement monotone.",
+          "Sur $[0\\,;\\,\\pi]$, $\\cos$ est continue, car dérivable, et strictement décroissante : c'est la première notion du chapitre.",
+          "Calcule $\\cos(0)$ et $\\cos(\\pi)$, puis vérifie que $0{,}3$ est compris entre ces deux valeurs."
+        ],
+        "revoir": "l-trigonometrie-022",
+        "solution": "La fonction $\\cos$ est dérivable, donc continue, sur $[0\\,;\\,\\pi]$, et elle y est strictement décroissante. De plus, $\\cos(0) = 1$ et $\\cos(\\pi) = -1$, et $0{,}3$ est compris entre $-1$ et $1$. D'après le théorème des valeurs intermédiaires, cas d'une fonction continue strictement monotone, l'équation $\\cos(x) = 0{,}3$ admet une unique solution $\\alpha$ dans $[0\\,;\\,\\pi]$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Sur $[-\\pi\\,;\\,\\pi]$, quels sont l'ensemble des solutions de l'équation $\\cos(x) = 0{,}3$ et celui de l'inéquation $\\cos(x) \\leqslant 0{,}3$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\{\\alpha\\,;\\,\\pi - \\alpha\\}$ et $[\\alpha\\,;\\,\\pi - \\alpha]$",
+            "$\\{-\\alpha\\,;\\,\\alpha\\}$ et $[-\\alpha\\,;\\,\\alpha]$",
+            "$\\{-\\alpha\\,;\\,\\alpha\\}$ et $[-\\pi\\,;\\,-\\alpha] \\cup [\\alpha\\,;\\,\\pi]$",
+            "$\\{\\alpha\\}$ et $[\\alpha\\,;\\,\\pi]$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "C'est la règle du sinus. Pour le cosinus, le second point d'abscisse $0{,}3$ est le symétrique de $M(\\alpha)$ par rapport à l'axe des abscisses : $M(-\\alpha)$.",
+            "L'équation est juste, mais $[-\\alpha\\,;\\,\\alpha]$ est l'ensemble des solutions de $\\cos(x) \\geqslant 0{,}3$ : l'arc de droite. Pour $\\leqslant$, garde l'arc de gauche.",
+            null,
+            "Il manque la partie négative : $\\cos$ est paire, donc $-\\alpha$ est aussi solution de l'équation, et $[-\\pi\\,;\\,-\\alpha]$ fait partie des solutions de l'inéquation."
+          ]
+        },
+        "indices": [
+          "La propriété du cours vaut pour tout $\\alpha$ de $[0\\,;\\,\\pi]$, même non remarquable : $\\cos(x) = \\cos(\\alpha) \\iff x = \\alpha$ ou $x = -\\alpha$.",
+          "Pour l'inéquation, trace la droite verticale d'abscisse $0{,}3$ : elle coupe le cercle en $M(\\alpha)$ et $M(-\\alpha)$. $\\cos(x) \\leqslant 0{,}3$ correspond à l'arc de gauche.",
+          "Parcours le cercle de $M(-\\pi)$ à $M(\\pi)$ : l'arc de gauche contient le point $(-1\\,;\\,0)$. Contrôle avec $x = 0$, qui ne doit pas être solution."
+        ],
+        "revoir": "l-trigonometrie-025",
+        "solution": "Comme $\\cos(\\alpha) = 0{,}3$ avec $\\alpha \\in [0\\,;\\,\\pi]$, sur $[-\\pi\\,;\\,\\pi]$ : $\\cos(x) = 0{,}3 \\iff x = \\alpha$ ou $x = -\\alpha$.\n\nLes points d'abscisse inférieure ou égale à $0{,}3$ forment l'arc à gauche de la droite verticale d'abscisse $0{,}3$, atteint pour $x$ de $-\\pi$ à $-\\alpha$, puis de $\\alpha$ à $\\pi$. Contrôle : $\\cos(0) = 1 > 0{,}3$, et $0$ n'est pas dans cet ensemble.\n\nDonc $S = \\{-\\alpha\\,;\\,\\alpha\\}$ pour l'équation, et $S = [-\\pi\\,;\\,-\\alpha] \\cup [\\alpha\\,;\\,\\pi]$ pour l'inéquation."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pour encadrer $\\alpha$, on programme la méthode de dichotomie en Python, en partant de l'intervalle $[1\\,;\\,2]$. Il contient $\\alpha$, car $\\cos(1) \\approx 0{,}54 > 0{,}3$ et $\\cos(2) \\approx -0{,}42 < 0{,}3$. Par quelle condition faut-il remplacer le mot CONDITION pour que la fonction renvoie un encadrement de $\\alpha$ ?",
+        "code": {
+          "langage": "python",
+          "source": "from math import cos\n\ndef encadrement(precision):\n    a = 1\n    b = 2\n    while b - a > precision:\n        m = (a + b) / 2\n        if CONDITION:\n            a = m\n        else:\n            b = m\n    return a, b"
+        },
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\cos(m) < 0{,}3$",
+            "$\\cos(m) > 0{,}3$",
+            "$m < 0{,}3$",
+            "$\\cos(m) > 0$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Ce serait la bonne condition pour une fonction croissante. Ici $\\cos$ est décroissante sur $[1\\,;\\,2]$ : si $\\cos(m) < 0{,}3$, alors $m$ est déjà après $\\alpha$, et c'est $b$ qu'il faut remplacer par $m$.",
+            null,
+            "On ne compare pas $m$ à $0{,}3$, mais son image $\\cos(m)$ : on cherche où $\\cos$ vaut $0{,}3$.",
+            "On cherche $\\cos(x) = 0{,}3$, pas $\\cos(x) = 0$ : avec cette condition, la fonction encadrerait $\\dfrac{\\pi}{2}$."
+          ]
+        },
+        "indices": [
+          "Dans la boucle, $\\alpha$ reste toujours entre $a$ et $b$. Si la condition est vraie, $a$ prend la valeur $m$ : il faut donc que $\\alpha$ soit après $m$.",
+          "$\\cos$ est strictement décroissante sur $[1\\,;\\,2]$, et $\\cos(\\alpha) = 0{,}3$. Pour un réel $m$ de $[1\\,;\\,2]$, que devient l'inégalité $m < \\alpha$ quand on applique $\\cos$ ?",
+          "Une fonction strictement décroissante renverse l'ordre : $m < \\alpha \\iff \\cos(m) > \\cos(\\alpha)$."
+        ],
+        "revoir": "l-trigonometrie-008",
+        "solution": "Dans la boucle, on garde $a \\leqslant \\alpha \\leqslant b$ : on remplace $a$ par $m$ quand $\\alpha$ est après $m$, c'est-à-dire quand $m < \\alpha$. Or $\\cos$ est strictement décroissante sur $[1\\,;\\,2]$, donc $m < \\alpha \\iff \\cos(m) > \\cos(\\alpha) = 0{,}3$. La condition est $\\cos(m) > 0{,}3$. La boucle s'arrête dès que l'amplitude $b - a$ est inférieure ou égale à la précision demandée, et la fonction renvoie les deux bornes de l'encadrement : avec une précision de $0{,}01$, elle renvoie $1{,}265\\,625$ et $1{,}273\\,437\\,5$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Encadrer $\\alpha$ à la calculatrice, en mode radian : faire un tableau de valeurs de $\\cos$, avec un pas de plus en plus fin, et repérer où $\\cos(x)$ passe sous $0{,}3$ (on peut aussi faire tourner la dichotomie de la question 3). Donner l'arrondi de $\\alpha$ au centième.",
+        "reponse": {
+          "type": "numerique",
+          "valeur": 1.27,
+          "tolerance": 0.005
+        },
+        "indices": [
+          "Commence par un tableau de valeurs de $\\cos$ sur $[1\\,;\\,2]$ avec un pas de $0{,}1$ : entre quelles valeurs consécutives $\\cos(x)$ passe-t-il sous $0{,}3$ ?",
+          "$\\cos(1{,}2) \\approx 0{,}36$ et $\\cos(1{,}3) \\approx 0{,}27$ : $\\alpha$ est entre $1{,}2$ et $1{,}3$. Affine avec un pas de $0{,}01$.",
+          "Repère les deux centièmes consécutifs entre lesquels $\\cos(x) - 0{,}3$ change de signe, puis cherche lequel des deux est le plus proche de $\\alpha$, en calculant $\\cos$ en leur milieu."
+        ],
+        "revoir": "l-trigonometrie-010",
+        "solution": "À la calculatrice, en mode radian : $\\cos(1{,}26) \\approx 0{,}305\\,8 > 0{,}3$ et $\\cos(1{,}27) \\approx 0{,}296\\,3 < 0{,}3$. Comme $\\cos$ est décroissante, $1{,}26 < \\alpha < 1{,}27$. De plus, $\\cos(1{,}265) \\approx 0{,}301\\,1 > 0{,}3$, donc $\\alpha > 1{,}265$ : l'arrondi de $\\alpha$ au centième est $1{,}27$. Avec un pas de $0{,}000\\,1$, ou la dichotomie de la question 3 avec une précision de $0{,}000\\,1$, on obtient même $\\alpha \\approx 1{,}266\\,1$.",
+        "erreurFrequente": "Calculatrice en mode degrés : $\\cos(1{,}27)$ y vaut environ $0{,}999\\,8$, et la recherche n'aboutit pas. Contrôle le mode avec $\\sin\\left(\\dfrac{\\pi}{6}\\right) = 0{,}5$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Soit $f$ la fonction définie sur $[0\\,;\\,\\pi]$ par $f(x) = 3x - 10\\sin(x)$. Étudier les variations de $f$ sur $[0\\,;\\,\\pi]$ et exprimer son minimum en fonction de $\\alpha$, sous forme exacte. Saisir ensuite l'arrondi de ce minimum au centième.",
+        "reponse": {
+          "type": "numerique",
+          "valeur": -5.74,
+          "tolerance": 0.005
+        },
+        "indices": [
+          "Dérive $f$, puis étudie le signe de $f'(x)$ sur $[0\\,;\\,\\pi]$ : il se ramène à une inéquation de la question 2.",
+          "$f'(x) = 3 - 10\\cos(x)$, et $f'(x) \\geqslant 0 \\iff \\cos(x) \\leqslant 0{,}3$. Sur $[0\\,;\\,\\pi]$, la question 2 donne $x \\in [\\alpha\\,;\\,\\pi]$.",
+          "$f$ décroît puis croît : son minimum est $f(\\alpha) = 3\\alpha - 10\\sin(\\alpha)$. Calcule $\\sin(\\alpha)$ avec $\\cos^2(\\alpha) + \\sin^2(\\alpha) = 1$, sans oublier son signe.",
+          "$\\sin(\\alpha) \\geqslant 0$ car $\\alpha \\in [0\\,;\\,\\pi]$, donc $\\sin(\\alpha) = \\sqrt{1 - 0{,}09} = \\sqrt{0{,}91}$. Remplace. Pour l'arrondi, l'arrondi $1{,}27$ de $\\alpha$ ne suffit pas : encadre $\\alpha$ à $0{,}000\\,1$ près, en relançant la dichotomie de la question 3 avec une précision de $0{,}000\\,1$, ou par un tableau de valeurs de $\\cos$ au pas de $0{,}000\\,1$ à partir de $1{,}266$."
+        ],
+        "revoir": "l-trigonometrie-032",
+        "solution": "$f'(x) = 3 - 10\\cos(x)$. Or $f'(x) \\geqslant 0 \\iff \\cos(x) \\leqslant 0{,}3$ et, d'après la question 2, sur $[0\\,;\\,\\pi]$ cela équivaut à $x \\in [\\alpha\\,;\\,\\pi]$. Donc $f$ est strictement décroissante sur $[0\\,;\\,\\alpha]$ et strictement croissante sur $[\\alpha\\,;\\,\\pi]$ : son minimum est $f(\\alpha) = 3\\alpha - 10\\sin(\\alpha)$.\n\nComme $\\alpha \\in [0\\,;\\,\\pi]$, $\\sin(\\alpha) \\geqslant 0$ ; et $\\sin^2(\\alpha) = 1 - \\cos^2(\\alpha) = 1 - 0{,}09 = 0{,}91$, donc $\\sin(\\alpha) = \\sqrt{0{,}91}$.\n\nLe minimum vaut $3\\alpha - 10\\sqrt{0{,}91} = 3\\alpha - \\sqrt{91}$.\n\nPour l'arrondir, on encadre $\\alpha$ plus finement qu'à la question 4 : la fonction de la question 3, relancée avec une précision de $0{,}000\\,1$, renvoie environ $1{,}266\\,052$ et $1{,}266\\,113$, entre lesquels se trouve $\\alpha$ : donc $1{,}266\\,05 < \\alpha < 1{,}266\\,12$. On le retrouve avec un tableau de valeurs : $\\cos(1{,}266\\,1) \\approx 0{,}300\\,004 > 0{,}3$ et $\\cos(1{,}266\\,2) \\approx 0{,}299\\,91 < 0{,}3$. Avec $\\sqrt{91} \\approx 9{,}539\\,39$ : $3 \\times 1{,}266\\,05 - 9{,}539\\,39 \\approx -5{,}741\\,2$ et $3 \\times 1{,}266\\,12 - 9{,}539\\,39 \\approx -5{,}741\\,0$. Le minimum est compris entre ces deux nombres : son arrondi au centième est $-5{,}74$.",
+        "erreurFrequente": "Arrondir $\\alpha$ à $1{,}27$ avant de calculer : on trouve $3{,}81 - 9{,}54 \\approx -5{,}73$, faux au centième. Le facteur $3$ triple l'erreur commise sur $\\alpha$ : encadre $\\alpha$ à $0{,}000\\,1$ près avant de remplacer."
+      }
+    ]
+  },
+  {
+    "id": "x-trigonometrie-014",
+    "chapitre": "trigonometrie",
+    "niveau": 3,
+    "notions": ["n-trigonometrie-etude-fonction", "n-trigonometrie-derivees-variations"],
+    "capacites": ["bo-m-trigonometrie-03", "bo-m-trigonometrie-01", "bo-m-derivation-05", "bo-m-derivation-06", "bo-m-limites-fonctions-05"],
+    "titre": "Passer une barre d'un couloir à l'autre",
+    "duree": 30,
+    "calculatrice": false,
+    "ordre": 402,
+    "preambule": "Deux couloirs se rejoignent à angle droit. Le premier a pour largeur $3\\sqrt{3}$ m, soit environ $5{,}2$ m, le second $1$ m. On veut faire passer une longue barre rigide, tenue à l'horizontale, du premier couloir dans le second.\n\nPour tout réel $x$ de $\\left]0\\,;\\,\\dfrac{\\pi}{2}\\right[$, on considère le segment qui touche le coin intérieur et dont les extrémités sont sur les murs extérieurs des deux couloirs ; $x$ est l'angle aigu entre ce segment et les murs du premier couloir (voir la figure, vue de dessus). Ce segment traverse le premier couloir, de largeur $3\\sqrt{3}$, puis le second, de largeur $1$ ; on admet que sa longueur, en mètres, est :$$L(x) = \\dfrac{3\\sqrt{3}}{\\sin(x)} + \\dfrac{1}{\\cos(x)}.$$",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/trigonometrie/x-couloirs-barre.svg",
+        "width": 345,
+        "height": 385,
+        "alt": "Vue de dessus de deux couloirs qui se rejoignent à angle droit. Le premier couloir, horizontal, a pour largeur 3√3 m ; à son extrémité droite part vers le haut le second couloir, de largeur 1 m. Un segment vert touche le coin intérieur, là où se rejoignent les murs intérieurs des deux couloirs ; une extrémité est sur le mur extérieur du premier couloir, en bas, l'autre sur le mur extérieur du second couloir, à droite. L'angle x, marqué à l'extrémité du bas, est l'angle aigu entre le segment et ce mur du premier couloir."
+      },
+      "caption": "Vue de dessus : le segment (en vert) touche le coin intérieur, ses extrémités sont sur les murs extérieurs, et x est son angle avec les murs du premier couloir. Quand x varie, le segment pivote autour du coin."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelles sont les limites de $L(x)$ quand $x$ tend vers $0$ en restant positif, et quand $x$ tend vers $\\dfrac{\\pi}{2}$ en restant inférieur à $\\dfrac{\\pi}{2}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$+\\infty$ en $0$, et $1$ en $\\dfrac{\\pi}{2}$",
+            "$3\\sqrt{3} + 1$ en $0$ comme en $\\dfrac{\\pi}{2}$",
+            "$+\\infty$ en $0$ comme en $\\dfrac{\\pi}{2}$",
+            "$0$ en $0$, et $+\\infty$ en $\\dfrac{\\pi}{2}$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "En $\\dfrac{\\pi}{2}$, c'est $\\cos(x)$ qui tend vers $0$, par valeurs positives : $\\dfrac{1}{\\cos(x)}$ tend vers $+\\infty$.",
+            "Tu as remplacé $\\sin(x)$ et $\\cos(x)$ par $1$ : en $0$, $\\sin(x)$ tend vers $0$, pas vers $1$.",
+            null,
+            "Diviser par un nombre qui tend vers $0$ par valeurs positives donne $+\\infty$, pas $0$."
+          ]
+        },
+        "indices": [
+          "Étudie chaque terme séparément. Quand $x$ tend vers $0$ en restant positif, vers quoi tendent $\\sin(x)$ et $\\cos(x)$ ?",
+          "En $0$ : $\\sin(x)$ tend vers $0$ en restant positif, et $\\cos(x)$ vers $1$. Quelle est alors la limite de $\\dfrac{3\\sqrt{3}}{\\sin(x)}$ ?",
+          "En $\\dfrac{\\pi}{2}$, les rôles s'échangent : c'est $\\cos(x)$ qui tend vers $0$ en restant positif."
+        ],
+        "revoir": "l-trigonometrie-006",
+        "solution": "Quand $x$ tend vers $0$ avec $x > 0$, $\\sin(x)$ tend vers $0$ en restant strictement positif, donc $\\dfrac{3\\sqrt{3}}{\\sin(x)}$ tend vers $+\\infty$ ; et $\\dfrac{1}{\\cos(x)}$ tend vers $1$. Par somme, $L(x)$ tend vers $+\\infty$.\n\nQuand $x$ tend vers $\\dfrac{\\pi}{2}$ avec $x < \\dfrac{\\pi}{2}$, $\\cos(x)$ tend vers $0$ en restant strictement positif, donc $\\dfrac{1}{\\cos(x)}$ tend vers $+\\infty$, et $\\dfrac{3\\sqrt{3}}{\\sin(x)}$ tend vers $3\\sqrt{3}$ : $L(x)$ tend vers $+\\infty$.\n\nConcrètement, un segment presque parallèle aux murs d'un couloir est très long."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout $x$ de $\\left]0\\,;\\,\\dfrac{\\pi}{2}\\right[$, $L'(x) = \\dfrac{\\sin^3(x) - 3\\sqrt{3}\\cos^3(x)}{\\sin^2(x)\\cos^2(x)}$, où $\\sin^3(x)$ désigne $\\big(\\sin(x)\\big)^3$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive chaque terme avec la dérivée d'un inverse : $\\left(\\dfrac{1}{v}\\right)' = -\\dfrac{v'}{v^2}$.",
+          "$\\left(\\dfrac{1}{\\sin(x)}\\right)' = -\\dfrac{\\cos(x)}{\\sin^2(x)}$ et $\\left(\\dfrac{1}{\\cos(x)}\\right)' = \\dfrac{\\sin(x)}{\\cos^2(x)}$.",
+          "Écris $L'(x) = -\\dfrac{3\\sqrt{3}\\cos(x)}{\\sin^2(x)} + \\dfrac{\\sin(x)}{\\cos^2(x)}$, puis réduis au même dénominateur $\\sin^2(x)\\cos^2(x)$."
+        ],
+        "revoir": "l-trigonometrie-003",
+        "solution": "Sur $\\left]0\\,;\\,\\dfrac{\\pi}{2}\\right[$, $\\sin(x) > 0$ et $\\cos(x) > 0$ : $L$ est dérivable. Avec $\\left(\\dfrac{1}{v}\\right)' = -\\dfrac{v'}{v^2}$ :\n\n$\\left(\\dfrac{3\\sqrt{3}}{\\sin(x)}\\right)' = -\\dfrac{3\\sqrt{3}\\cos(x)}{\\sin^2(x)}$ et $\\left(\\dfrac{1}{\\cos(x)}\\right)' = -\\dfrac{-\\sin(x)}{\\cos^2(x)} = \\dfrac{\\sin(x)}{\\cos^2(x)}$.\n\nDonc $$L'(x) = \\dfrac{-3\\sqrt{3}\\cos(x) \\times \\cos^2(x) + \\sin(x) \\times \\sin^2(x)}{\\sin^2(x)\\cos^2(x)} = \\dfrac{\\sin^3(x) - 3\\sqrt{3}\\cos^3(x)}{\\sin^2(x)\\cos^2(x)}.$$"
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On pose, pour $x$ dans $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $\\varphi(x) = \\sin^3(x) - 3\\sqrt{3}\\cos^3(x)$. Étudier les variations de $\\varphi$, calculer $\\varphi\\left(\\dfrac{\\pi}{3}\\right)$, puis en déduire le signe de $L'(x)$ sur $\\left]0\\,;\\,\\dfrac{\\pi}{2}\\right[$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$\\varphi$ est une fonction auxiliaire : le signe de $L'(x)$ est celui de son numérateur $\\varphi(x)$, car le dénominateur est strictement positif.",
+          "Dérive $u^3$ avec $\\left(u^3\\right)' = 3u'u^2$ : $\\left(\\sin^3(x)\\right)' = 3\\cos(x)\\sin^2(x)$ et $\\left(\\cos^3(x)\\right)' = -3\\sin(x)\\cos^2(x)$.",
+          "$\\varphi'(x) = 3\\cos(x)\\sin^2(x) + 9\\sqrt{3}\\sin(x)\\cos^2(x)$ : quel est son signe sur $\\left]0\\,;\\,\\dfrac{\\pi}{2}\\right[$ ?",
+          "$\\varphi$ est strictement croissante. Avec $\\sin\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{\\sqrt{3}}{2}$ et $\\cos\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{1}{2}$, calcule $\\varphi\\left(\\dfrac{\\pi}{3}\\right)$, sachant que $\\left(\\sqrt{3}\\right)^3 = 3\\sqrt{3}$."
+        ],
+        "revoir": "l-trigonometrie-036",
+        "solution": "$\\varphi'(x) = 3\\cos(x)\\sin^2(x) - 3\\sqrt{3} \\times 3\\cos^2(x) \\times \\big(-\\sin(x)\\big) = 3\\cos(x)\\sin^2(x) + 9\\sqrt{3}\\sin(x)\\cos^2(x)$. Sur $\\left]0\\,;\\,\\dfrac{\\pi}{2}\\right[$, $\\sin(x) > 0$ et $\\cos(x) > 0$, donc $\\varphi'(x) > 0$ : $\\varphi$ est strictement croissante sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$.\n\nDe plus, $\\varphi\\left(\\dfrac{\\pi}{3}\\right) = \\left(\\dfrac{\\sqrt{3}}{2}\\right)^3 - 3\\sqrt{3}\\left(\\dfrac{1}{2}\\right)^3 = \\dfrac{3\\sqrt{3}}{8} - \\dfrac{3\\sqrt{3}}{8} = 0$. Donc $\\varphi(x) < 0$ sur $\\left]0\\,;\\,\\dfrac{\\pi}{3}\\right[$ et $\\varphi(x) > 0$ sur $\\left]\\dfrac{\\pi}{3}\\,;\\,\\dfrac{\\pi}{2}\\right[$.\n\nComme $\\sin^2(x)\\cos^2(x) > 0$, $L'(x)$ a le signe de $\\varphi(x)$ : $L'(x) < 0$ sur $\\left]0\\,;\\,\\dfrac{\\pi}{3}\\right[$, $L'\\left(\\dfrac{\\pi}{3}\\right) = 0$ et $L'(x) > 0$ sur $\\left]\\dfrac{\\pi}{3}\\,;\\,\\dfrac{\\pi}{2}\\right[$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Dresser le tableau de variations de $L$ sur $\\left]0\\,;\\,\\dfrac{\\pi}{2}\\right[$ et déterminer son minimum, en mètres.",
+        "reponse": {
+          "type": "numerique",
+          "valeur": 8,
+          "tolerance": 0,
+          "unite": "m"
+        },
+        "indices": [
+          "D'après la question 3, $L$ décroît puis croît : son minimum est atteint en $\\dfrac{\\pi}{3}$.",
+          "Calcule $L\\left(\\dfrac{\\pi}{3}\\right)$ avec $\\sin\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{\\sqrt{3}}{2}$ et $\\cos\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{1}{2}$.",
+          "Diviser par $\\dfrac{\\sqrt{3}}{2}$, c'est multiplier par $\\dfrac{2}{\\sqrt{3}}$ : simplifie le premier terme, puis ajoute le second."
+        ],
+        "revoir": "l-trigonometrie-034",
+        "solution": "$L\\left(\\dfrac{\\pi}{3}\\right) = 3\\sqrt{3} \\times \\dfrac{2}{\\sqrt{3}} + 1 \\times \\dfrac{2}{1} = 6 + 2 = 8$.\n\n| $x$ | $0$ | | $\\frac{\\pi}{3}$ | | $\\frac{\\pi}{2}$ |\n|---|---|---|---|---|---|\n| signe de $L'(x)$ | | $-$ | $0$ | $+$ | |\n| variations de $L$ | $+\\infty$ | $\\searrow$ | $8$ | $\\nearrow$ | $+\\infty$ |\n\nLe minimum de $L$ sur $\\left]0\\,;\\,\\dfrac{\\pi}{2}\\right[$ est $8$ m, atteint pour $x = \\dfrac{\\pi}{3}$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Quelle est la plus grande longueur d'une barre que l'on peut faire passer, à l'horizontale, d'un couloir à l'autre ? Justifier.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pendant la manœuvre, la barre prend toutes les directions $x$ de $\\left]0\\,;\\,\\dfrac{\\pi}{2}\\right[$, en frôlant le coin intérieur.",
+          "Dans la direction $x$, la place disponible entre les murs extérieurs, en passant contre le coin, est $L(x)$ : la longueur de la barre doit être inférieure ou égale à $L(x)$, et cela pour tout $x$.",
+          "Être inférieur ou égal à tous les nombres $L(x)$, c'est être inférieur ou égal au plus petit d'entre eux : utilise la question 4."
+        ],
+        "revoir": "l-trigonometrie-038",
+        "solution": "Pour passer d'un couloir à l'autre, la barre doit tourner : elle prend successivement toutes les directions $x$ de $\\left]0\\,;\\,\\dfrac{\\pi}{2}\\right[$. Dans la direction $x$, en passant contre le coin intérieur, elle dispose d'une longueur $L(x)$ entre les murs extérieurs. Elle passe donc si sa longueur $\\ell$ vérifie $\\ell \\leqslant L(x)$ pour tout $x$, c'est-à-dire si $\\ell$ est inférieure ou égale au minimum de $L$, qui vaut $8$ d'après la question 4.\n\nLa position la plus étroite est $x = \\dfrac{\\pi}{3}$ : une barre de $8$ m y touche à la fois les deux murs extérieurs et le coin. La plus grande longueur possible est donc $8$ m.",
+        "erreurFrequente": "Chercher le maximum de $L$, qui n'existe pas puisque $L$ tend vers $+\\infty$ aux bornes : c'est la position la plus serrée, donc le minimum de $L$, qui limite la barre."
+      }
+    ]
+  }
+]

@@ -1,0 +1,658 @@
+[
+  {
+    "id": "tb-trigonometrie-001",
+    "chapitre": "trigonometrie",
+    "notions": [
+      "n-trigonometrie-etude-fonction",
+      "n-trigonometrie-derivees-variations"
+    ],
+    "capacites": [
+      "bo-m-trigonometrie-01",
+      "bo-m-trigonometrie-03",
+      "bo-m-derivation-05",
+      "bo-m-derivation-06",
+      "bo-m-continuite-03",
+      "bo-m-continuite-04",
+      "bo-m-limites-fonctions-05"
+    ],
+    "titre": "Une fonction auxiliaire, un zéro $\\alpha$ et les variations de $\\dfrac{\\sin(x)}{x}$ sur $]0\\,;\\,2\\pi]$",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": true,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2026-asie-j1",
+      "adaptation": "Exercice 4 : fonction $g(x) = x\\cos(x) - \\sin(x)$ sur $[0\\,;\\,2\\pi]$, dérivée $g'(x) = -x\\sin(x)$ à démontrer, justification du tableau de variations donné, existence et unicité de $\\alpha$ dans $[\\pi\\,;\\,2\\pi]$, tableau de signes de $g$, fonction $f(x) = \\dfrac{\\sin(x)}{x}$ sur $]0\\,;\\,2\\pi]$, égalité $f'(x) = \\dfrac{g(x)}{x^2}$, signe de $f'$, sens de variation de $f$, limite en $0$ par le taux d'accroissement de $\\sin$ et inégalité $\\dfrac{r}{s} < \\dfrac{\\sin(r)}{\\sin(s)}$ pour $0 < r < s < \\pi$ conservés. Ajoutés : encadrement de $\\alpha$ d'amplitude $10^{-2}$ à la calculatrice (1.c) et égalité $f(\\alpha) = \\cos(\\alpha)$ (2.c). Aucune question retirée. Calculatrice autorisée, réglée en radians. Barème fixé pour le site. Solution écrite pour le site."
+    },
+    "preambule": "Dans tout l'exercice, les réels sont des mesures d'angles en radians.\n\nLa calculatrice est autorisée dans cet exercice ; elle doit être réglée en radians.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On considère la fonction $g$ définie sur l'intervalle $[0\\,;\\,2\\pi]$ par :\n\n$$g(x) = x\\cos(x) - \\sin(x).$$\n\nOn admet que la fonction $g$ est dérivable sur l'intervalle $[0\\,;\\,2\\pi]$ et on note $g'$ sa dérivée.",
+        "points": 2.5,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout réel $x$ de l'intervalle $[0\\,;\\,2\\pi]$, on a $g'(x) = -x\\sin(x)$.",
+            "points": 0.5,
+            "revoir": "l-trigonometrie-003",
+            "indices": [
+              "$x\\cos(x)$ est un produit : dérive-le avec $(uv)' = u'v + uv'$, en prenant $u(x) = x$ et $v(x) = \\cos(x)$. La dérivée de $\\cos$ est $-\\sin$.",
+              "Dérive ensuite $-\\sin(x)$ à part, puis additionne les deux résultats : deux termes s'éliminent."
+            ],
+            "attenduCorrecteur": "- Dérivée du produit $x\\cos(x)$ par la règle $(uv)' = u'v + uv'$ : $1 \\times \\cos(x) + x \\times \\big(-\\sin(x)\\big) = \\cos(x) - x\\sin(x)$ : 0,25 pt.\n- Dérivée de $-\\sin(x)$ égale à $-\\cos(x)$, somme et simplification jusqu'à $g'(x) = -x\\sin(x)$ : 0,25 pt.",
+            "solution": "Pour tout réel $x$ de $[0\\,;\\,2\\pi]$, on pose $u(x) = x$ et $v(x) = \\cos(x)$ ; alors $u'(x) = 1$ et $v'(x) = -\\sin(x)$. La dérivée du produit $x\\cos(x)$ est donc $u'(x)v(x) + u(x)v'(x) = \\cos(x) - x\\sin(x)$.\n\nLa dérivée de $-\\sin(x)$ est $-\\cos(x)$. Par somme :\n\n$$g'(x) = \\cos(x) - x\\sin(x) - \\cos(x) = -x\\sin(x).$$",
+            "erreurFrequente": "Écrire $\\big(x\\cos(x)\\big)' = 1 \\times \\big(-\\sin(x)\\big)$ en dérivant chaque facteur : la dérivée d'un produit n'est pas le produit des dérivées."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "On donne le tableau de variations de la fonction $g$ sur l'intervalle $[0\\,;\\,2\\pi]$ ci-dessous. Justifier chacun des éléments qui figurent dans ce tableau de variations.\n\n| $x$ | $0$ | | $\\pi$ | | $2\\pi$ |\n|---|---|---|---|---|---|\n| variations de $g$ | $0$ | $\\searrow$ | $-\\pi$ | $\\nearrow$ | $2\\pi$ |",
+            "points": 0.75,
+            "revoir": "l-trigonometrie-008",
+            "indices": [
+              "Le tableau contient deux sortes d'éléments : les flèches, qui viennent du signe de $g'(x) = -x\\sin(x)$, et les trois valeurs, qui se calculent. Pour le signe de $\\sin(x)$, regarde l'ordonnée du point $M(x)$ du cercle trigonométrique.",
+              "Sur $[\\pi\\,;\\,2\\pi]$, écris $\\sin(x) = \\sin(x - 2\\pi)$ (périodicité) avec $x - 2\\pi$ dans $[-\\pi\\,;\\,0]$ : où se trouve alors le point $M(x)$ sur le cercle ?"
+            ],
+            "attenduCorrecteur": "- Sur $[0\\,;\\,\\pi]$ : $x \\geqslant 0$ et $\\sin(x) \\geqslant 0$, donc $g'(x) \\leqslant 0$, nul seulement en $0$ et en $\\pi$ ; $g$ strictement décroissante : 0,25 pt.\n- Sur $[\\pi\\,;\\,2\\pi]$ : $\\sin(x) \\leqslant 0$ (moitié basse du cercle, par périodicité), donc $g'(x) \\geqslant 0$, nul seulement en $\\pi$ et en $2\\pi$ ; $g$ strictement croissante : 0,25 pt.\n- Valeurs calculées : $g(0) = 0$, $g(\\pi) = \\pi\\cos(\\pi) - \\sin(\\pi) = -\\pi$ et $g(2\\pi) = 2\\pi\\cos(2\\pi) - \\sin(2\\pi) = 2\\pi$ : 0,25 pt.",
+            "solution": "**Les flèches.** D'après la question 1.a, $g'(x) = -x\\sin(x)$. Sur $[0\\,;\\,2\\pi]$, $x \\geqslant 0$ : $g'(x)$ a le signe contraire de $\\sin(x)$.\n\n- Pour $x$ dans $[0\\,;\\,\\pi]$, le point $M(x)$ du cercle trigonométrique est dans la moitié haute : $\\sin(x) \\geqslant 0$, donc $g'(x) \\leqslant 0$. De plus, $g'(x) = 0$ seulement pour $x = 0$ et pour $x = \\pi$. La fonction $g$ est donc strictement décroissante sur $[0\\,;\\,\\pi]$.\n- Pour $x$ dans $[\\pi\\,;\\,2\\pi]$, on a $\\sin(x) = \\sin(x - 2\\pi)$ avec $x - 2\\pi$ dans $[-\\pi\\,;\\,0]$ : le point $M(x)$ est dans la moitié basse du cercle, et $\\sin(x) \\leqslant 0$. Donc $g'(x) \\geqslant 0$, avec $g'(x) = 0$ seulement pour $x = \\pi$ et pour $x = 2\\pi$. La fonction $g$ est donc strictement croissante sur $[\\pi\\,;\\,2\\pi]$.\n\n**Les valeurs.**\n\n- $g(0) = 0 \\times \\cos(0) - \\sin(0) = 0$ ;\n- $g(\\pi) = \\pi\\cos(\\pi) - \\sin(\\pi) = \\pi \\times (-1) - 0 = -\\pi$ ;\n- $g(2\\pi) = 2\\pi\\cos(2\\pi) - \\sin(2\\pi) = 2\\pi \\times 1 - 0 = 2\\pi$.\n\nTous les éléments du tableau sont justifiés.",
+            "erreurFrequente": "Lire les variations sur le signe de $\\sin(x)$ seul : c'est le signe de $g'(x) = -x\\sin(x)$ qui compte, et le signe moins inverse celui de $\\sin(x)$."
+          },
+          {
+            "id": "q1c",
+            "label": "c)",
+            "enonce": "Montrer qu'il existe une unique valeur réelle $\\alpha$ dans l'intervalle $[\\pi\\,;\\,2\\pi]$ telle que $g(\\alpha) = 0$. Donner un encadrement de $\\alpha$ d'amplitude $10^{-2}$.",
+            "points": 0.75,
+            "revoir": "l-continuite-024",
+            "indices": [
+              "Applique le théorème des valeurs intermédiaires pour une fonction strictement monotone sur $[\\pi\\,;\\,2\\pi]$ : vérifie la continuité de $g$, sa stricte monotonie (question 1.b) et la position de $0$ par rapport à $g(\\pi)$ et à $g(2\\pi)$.",
+              "Pour l'encadrement, calculatrice réglée en radians : tableau de valeurs de $g$ avec un pas de $0{,}1$, puis de $0{,}01$ ; garde deux valeurs consécutives de $x$ entre lesquelles $g(x)$ change de signe."
+            ],
+            "attenduCorrecteur": "- Hypothèses : $g$ dérivable donc continue, et strictement croissante sur $[\\pi\\,;\\,2\\pi]$ ; $g(\\pi) = -\\pi < 0$ et $g(2\\pi) = 2\\pi > 0$ : 0,25 pt.\n- Théorème des valeurs intermédiaires nommé, cas d'une fonction strictement monotone : une unique solution $\\alpha$ dans $[\\pi\\,;\\,2\\pi]$ : 0,25 pt.\n- Encadrement : $g(4{,}49) \\approx -0{,}015 < 0$ et $g(4{,}50) \\approx 0{,}029 > 0$, donc $4{,}49 < \\alpha < 4{,}50$ : 0,25 pt.",
+            "solution": "La fonction $g$ est dérivable, donc continue, sur $[\\pi\\,;\\,2\\pi]$, et strictement croissante sur cet intervalle (question 1.b). De plus, $g(\\pi) = -\\pi < 0$ et $g(2\\pi) = 2\\pi > 0$ : le réel $0$ est compris entre $g(\\pi)$ et $g(2\\pi)$.\n\nD'après le théorème des valeurs intermédiaires, appliqué à la fonction $g$ continue et strictement croissante sur $[\\pi\\,;\\,2\\pi]$, l'équation $g(x) = 0$ admet une unique solution $\\alpha$ dans $[\\pi\\,;\\,2\\pi]$. Comme $g(\\pi) \\neq 0$ et $g(2\\pi) \\neq 0$, on a même $\\pi < \\alpha < 2\\pi$.\n\n**Encadrement.** À la calculatrice, réglée en radians : $g(4{,}4) \\approx -0{,}40 < 0$ et $g(4{,}5) \\approx 0{,}029 > 0$ ; puis $g(4{,}49) \\approx -0{,}015 < 0$ et $g(4{,}50) \\approx 0{,}029 > 0$.\n\nComme $g$ est strictement croissante sur $[\\pi\\,;\\,2\\pi]$ et que $g(\\alpha) = 0$ : si l'on avait $\\alpha \\leqslant 4{,}49$, on aurait $g(\\alpha) \\leqslant g(4{,}49) < 0$ ; si l'on avait $\\alpha \\geqslant 4{,}50$, on aurait $g(\\alpha) \\geqslant g(4{,}50) > 0$. Les deux sont impossibles. Donc $4{,}49 < \\alpha < 4{,}50$.",
+            "erreurFrequente": "Calculatrice réglée en degrés : elle affiche alors $g(4{,}49) \\approx 4{,}40$, positif, et l'encadrement est faux. Contrôle d'abord que $\\sin\\left(\\dfrac{\\pi}{6}\\right)$ affiche $0{,}5$."
+          },
+          {
+            "id": "q1d",
+            "label": "d)",
+            "enonce": "En déduire le tableau de signes de la fonction $g$ sur l'intervalle $[0\\,;\\,2\\pi]$.",
+            "points": 0.5,
+            "revoir": "l-trigonometrie-036",
+            "indices": [
+              "Traite séparément $]0\\,;\\,\\pi]$ et $[\\pi\\,;\\,2\\pi]$. Sur chacun, compare $g(x)$ à une valeur où $g$ s'annule : $g(0)$ d'un côté, $g(\\alpha)$ de l'autre.",
+              "Une fonction strictement décroissante renverse l'ordre, une fonction strictement croissante le conserve : pour $x > 0$, compare $g(x)$ et $g(0)$ ; sur $[\\pi\\,;\\,2\\pi]$, compare $x$ et $\\alpha$."
+            ],
+            "attenduCorrecteur": "- Sur $]0\\,;\\,\\pi]$ : $g$ strictement décroissante et $g(0) = 0$, donc $g(x) < 0$ : 0,25 pt.\n- Sur $[\\pi\\,;\\,2\\pi]$ : $g$ strictement croissante et $g(\\alpha) = 0$, donc $g(x) < 0$ pour $x < \\alpha$ et $g(x) > 0$ pour $x > \\alpha$ ; tableau de signes complet, avec $0$ en $0$ et en $\\alpha$ : 0,25 pt.",
+            "solution": "- Sur $]0\\,;\\,\\pi]$ : $g$ est strictement décroissante sur $[0\\,;\\,\\pi]$, donc pour $0 < x \\leqslant \\pi$, $g(x) < g(0) = 0$.\n- Sur $[\\pi\\,;\\,2\\pi]$ : $g$ est strictement croissante et $g(\\alpha) = 0$. Pour $\\pi \\leqslant x < \\alpha$, $g(x) < g(\\alpha) = 0$ ; pour $\\alpha < x \\leqslant 2\\pi$, $g(x) > g(\\alpha) = 0$.\n\nAvec $g(0) = 0$, on obtient le tableau de signes de $g$ :\n\n| $x$ | $0$ | | $\\alpha$ | | $2\\pi$ |\n|---|---|---|---|---|---|\n| signe de $g(x)$ | $0$ | $-$ | $0$ | $+$ | |"
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère la fonction $f$ définie sur l'intervalle $]0\\,;\\,2\\pi]$ par :\n\n$$f(x) = \\dfrac{\\sin(x)}{x}.$$\n\nOn admet que la fonction $f$ est dérivable sur l'intervalle $]0\\,;\\,2\\pi]$ et on note $f'$ sa dérivée.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout réel $x$ de l'intervalle $]0\\,;\\,2\\pi]$, on a $f'(x) = \\dfrac{g(x)}{x^2}$.",
+            "points": 0.5,
+            "revoir": "l-logarithme-039",
+            "indices": [
+              "$f$ est un quotient $\\dfrac{u}{v}$ avec $u(x) = \\sin(x)$ et $v(x) = x$, qui ne s'annule pas sur $]0\\,;\\,2\\pi]$ : applique $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$.",
+              "Compare le numérateur obtenu avec l'expression de $g(x)$ donnée à la question 1."
+            ],
+            "attenduCorrecteur": "- Formule de la dérivée d'un quotient, avec $u(x) = \\sin(x)$, $u'(x) = \\cos(x)$, $v(x) = x$, $v'(x) = 1$, et $v(x) \\neq 0$ sur $]0\\,;\\,2\\pi]$ : 0,25 pt.\n- Calcul $f'(x) = \\dfrac{x\\cos(x) - \\sin(x)}{x^2}$ et reconnaissance de $g(x)$ au numérateur : 0,25 pt.",
+            "solution": "On écrit $f = \\dfrac{u}{v}$ avec $u(x) = \\sin(x)$, $u'(x) = \\cos(x)$, $v(x) = x$ et $v'(x) = 1$ ; la fonction $v$ ne s'annule pas sur $]0\\,;\\,2\\pi]$. Pour tout $x$ de $]0\\,;\\,2\\pi]$ :\n\n$$f'(x) = \\dfrac{u'(x)v(x) - u(x)v'(x)}{v(x)^2} = \\dfrac{\\cos(x) \\times x - \\sin(x) \\times 1}{x^2} = \\dfrac{x\\cos(x) - \\sin(x)}{x^2} = \\dfrac{g(x)}{x^2}.$$"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Étudier le signe de la fonction $f'$ sur l'intervalle $]0\\,;\\,2\\pi]$.",
+            "points": 0.25,
+            "revoir": "l-trigonometrie-032",
+            "indices": [
+              "Dans $f'(x) = \\dfrac{g(x)}{x^2}$, quel est le signe du dénominateur ? Le signe du numérateur a été établi à la question 1.d."
+            ],
+            "attenduCorrecteur": "- $x^2 > 0$ sur $]0\\,;\\,2\\pi]$, donc $f'(x)$ a le signe de $g(x)$ : $f'(x) < 0$ sur $]0\\,;\\,\\alpha[$, $f'(\\alpha) = 0$ et $f'(x) > 0$ sur $]\\alpha\\,;\\,2\\pi]$ : 0,25 pt.",
+            "solution": "Pour tout $x$ de $]0\\,;\\,2\\pi]$, $x^2 > 0$ : $f'(x)$ a le signe de $g(x)$. D'après la question 1.d :\n\n- $f'(x) < 0$ pour $x$ dans $]0\\,;\\,\\alpha[$ ;\n- $f'(\\alpha) = 0$ ;\n- $f'(x) > 0$ pour $x$ dans $]\\alpha\\,;\\,2\\pi]$."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "En déduire le sens de variation de la fonction $f$ sur l'intervalle $]0\\,;\\,2\\pi]$, puis montrer que $f(\\alpha) = \\cos(\\alpha)$.",
+            "points": 0.5,
+            "revoir": "l-trigonometrie-031",
+            "indices": [
+              "Le signe de $f'$, établi à la question 2.b, donne directement le sens de variation de $f$.",
+              "Pour $f(\\alpha)$, traduis l'égalité $g(\\alpha) = 0$ : elle relie $\\sin(\\alpha)$ et $\\alpha\\cos(\\alpha)$. Vérifie aussi que $\\alpha \\neq 0$ avant de diviser."
+            ],
+            "attenduCorrecteur": "- $f$ strictement décroissante sur $]0\\,;\\,\\alpha]$ et strictement croissante sur $[\\alpha\\,;\\,2\\pi]$, déduit du signe de $f'$ : 0,25 pt.\n- $g(\\alpha) = 0$ donne $\\sin(\\alpha) = \\alpha\\cos(\\alpha)$, puis $f(\\alpha) = \\dfrac{\\alpha\\cos(\\alpha)}{\\alpha} = \\cos(\\alpha)$, car $\\alpha \\neq 0$ : 0,25 pt.",
+            "solution": "D'après la question 2.b, $f'(x) < 0$ sur $]0\\,;\\,\\alpha[$ et $f'(x) > 0$ sur $]\\alpha\\,;\\,2\\pi]$ : la fonction $f$ est strictement décroissante sur $]0\\,;\\,\\alpha]$ et strictement croissante sur $[\\alpha\\,;\\,2\\pi]$. Elle atteint donc son minimum sur $]0\\,;\\,2\\pi]$ en $\\alpha$.\n\nOr $g(\\alpha) = 0$, c'est-à-dire $\\alpha\\cos(\\alpha) - \\sin(\\alpha) = 0$, soit $\\sin(\\alpha) = \\alpha\\cos(\\alpha)$. Comme $\\alpha \\geqslant \\pi$, on a $\\alpha \\neq 0$, et :\n\n$$f(\\alpha) = \\dfrac{\\sin(\\alpha)}{\\alpha} = \\dfrac{\\alpha\\cos(\\alpha)}{\\alpha} = \\cos(\\alpha).$$\n\nÀ la calculatrice, ce minimum vaut $\\cos(\\alpha) \\approx -0{,}22$."
+          },
+          {
+            "id": "q2d",
+            "label": "d)",
+            "enonce": "Déterminer la limite de $f$ en $0$. On pourra utiliser le taux d'accroissement de la fonction sinus en $0$.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 1,
+              "tolerance": 0
+            },
+            "revoir": "l-trigonometrie-014",
+            "indices": [
+              "Comme $\\sin(0) = 0$, écris $\\dfrac{\\sin(x)}{x}$ sous la forme $\\dfrac{\\sin(x) - \\sin(0)}{x - 0}$ : c'est un taux d'accroissement de la fonction $\\sin$.",
+              "Quand $x$ tend vers $0$, le taux d'accroissement d'une fonction dérivable en $0$ tend vers son nombre dérivé en $0$ : calcule $\\sin'(0)$."
+            ],
+            "attenduCorrecteur": "- Écriture $\\dfrac{\\sin(x)}{x} = \\dfrac{\\sin(x) - \\sin(0)}{x - 0}$, reconnue comme taux d'accroissement de $\\sin$ entre $0$ et $x$ : 0,25 pt.\n- $\\sin$ dérivable en $0$ et $\\sin'(0) = \\cos(0) = 1$, donc $\\lim\\limits_{x \\to 0} f(x) = 1$ : 0,25 pt.",
+            "solution": "Comme $\\sin(0) = 0$, pour tout $x$ de $]0\\,;\\,2\\pi]$ :\n\n$$f(x) = \\dfrac{\\sin(x)}{x} = \\dfrac{\\sin(x) - \\sin(0)}{x - 0}.$$\n\nC'est le taux d'accroissement de la fonction $\\sin$ entre $0$ et $x$. La fonction $\\sin$ est dérivable en $0$, de nombre dérivé $\\sin'(0) = \\cos(0) = 1$ ; quand $x$ tend vers $0$, ce taux d'accroissement tend vers le nombre dérivé. Donc :\n\n$$\\lim_{x \\to 0} f(x) = 1.$$",
+            "erreurFrequente": "Conclure « $\\dfrac{0}{0}$, donc la limite vaut $0$ » : c'est une forme indéterminée, que le taux d'accroissement permet de lever."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On considère deux nombres réels $r$ et $s$ qui vérifient l'inégalité $0 < r < s < \\pi$. Montrer que :\n\n$$\\dfrac{r}{s} < \\dfrac{\\sin(r)}{\\sin(s)}.$$",
+        "points": 0.75,
+        "revoir": "l-trigonometrie-031",
+        "indices": [
+          "Utilise le sens de variation de $f$ (question 2.c) : $r$ et $s$ sont-ils dans un intervalle où $f$ est monotone ? Pour le savoir, compare $\\pi$ et $\\alpha$.",
+          "De $r < s$, déduis une inégalité entre $\\dfrac{\\sin(r)}{r}$ et $\\dfrac{\\sin(s)}{s}$, puis transforme-la en vérifiant le signe des nombres par lesquels tu multiplies ou divises."
+        ],
+        "attenduCorrecteur": "- $\\pi < \\alpha$ (car $g(\\pi) \\neq 0$), donc $]0\\,;\\,\\pi[$ est contenu dans $]0\\,;\\,\\alpha]$, où $f$ est strictement décroissante : 0,25 pt.\n- $0 < r < s$ donne $f(r) > f(s)$, soit $\\dfrac{\\sin(r)}{r} > \\dfrac{\\sin(s)}{s}$ : 0,25 pt.\n- Multiplication par $\\dfrac{r}{\\sin(s)}$, strictement positif car $r > 0$ et $\\sin(s) > 0$ pour $s$ dans $]0\\,;\\,\\pi[$ ; conclusion : 0,25 pt.",
+        "solution": "D'après la question 1.c, $\\alpha$ appartient à $[\\pi\\,;\\,2\\pi]$ et $\\alpha \\neq \\pi$, car $g(\\pi) = -\\pi \\neq 0$ : donc $\\pi < \\alpha$. Les réels $r$ et $s$ appartiennent ainsi à $]0\\,;\\,\\pi[$, contenu dans $]0\\,;\\,\\alpha]$, où $f$ est strictement décroissante (question 2.c).\n\nComme $r < s$ et que $f$ renverse l'ordre sur cet intervalle :\n\n$$f(r) > f(s), \\quad \\text{soit} \\quad \\dfrac{\\sin(r)}{r} > \\dfrac{\\sin(s)}{s}.$$\n\nOr $r > 0$ et, comme $s$ appartient à $]0\\,;\\,\\pi[$, le point $M(s)$ est dans la moitié haute du cercle, hors de l'axe des abscisses : $\\sin(s) > 0$. Le nombre $\\dfrac{r}{\\sin(s)}$ est donc strictement positif ; en multipliant les deux membres par ce nombre, l'inégalité garde son sens :\n\n$$\\dfrac{\\sin(r)}{r} \\times \\dfrac{r}{\\sin(s)} > \\dfrac{\\sin(s)}{s} \\times \\dfrac{r}{\\sin(s)}, \\quad \\text{soit} \\quad \\dfrac{\\sin(r)}{\\sin(s)} > \\dfrac{r}{s}.$$\n\nOn a bien montré que $\\dfrac{r}{s} < \\dfrac{\\sin(r)}{\\sin(s)}$.",
+        "erreurFrequente": "Multiplier ou diviser une inégalité sans vérifier le signe du nombre utilisé : ici, c'est $\\sin(s) > 0$, vrai car $0 < s < \\pi$, qui permet de garder le sens de l'inégalité."
+      }
+    ]
+  },
+  {
+    "id": "tb-trigonometrie-002",
+    "chapitre": "trigonometrie",
+    "notions": [
+      "n-trigonometrie-derivees-variations",
+      "n-trigonometrie-etude-fonction"
+    ],
+    "capacites": [
+      "bo-m-trigonometrie-01",
+      "bo-m-trigonometrie-03",
+      "bo-m-derivation-02",
+      "bo-m-derivation-03",
+      "bo-m-derivation-04",
+      "bo-m-derivation-05",
+      "bo-m-derivation-06",
+      "bo-m-derivation-07"
+    ],
+    "titre": "La fonction $x \\mapsto e^x\\sin(x)$ : variations, convexité, inégalité de tangente et maximum",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2025-amerique-nord-j2",
+      "adaptation": "Exercice 4, partie A : fonction $f(x) = e^x\\sin(x)$ sur $[0\\,;\\,\\pi]$, dérivée à démontrer, stricte croissance sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, tangente au point d'abscisse $0$, convexité sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, inégalité $e^x\\sin(x) \\geqslant x$ et point d'inflexion d'abscisse $\\dfrac{\\pi}{2}$ conservés ; expression $f''(x) = 2e^x\\cos(x)$ donnée à démontrer (2.b), pour que la suite reste accessible. Partie B retirée (intégration par parties, aire entre deux courbes) : elle relève du calcul intégral, chapitre qui vient plus tard dans l'année. Ajoutée à sa place : question 4, signe de $\\sin(x) + \\cos(x)$ sur $[0\\,;\\,\\pi]$ par l'étude de ses variations, puis tableau de variations complet de $f$ et valeur exacte de son maximum. Calculatrice non autorisée. Barème fixé pour le site. Solution écrite pour le site."
+    },
+    "preambule": "On désigne par $f$ la fonction définie sur l'intervalle $[0\\,;\\,\\pi]$ par :\n\n$$f(x) = e^x\\sin(x).$$\n\nOn note $\\mathcal{C}_f$ sa courbe représentative dans un repère. On admet que $f$ est deux fois dérivable sur $[0\\,;\\,\\pi]$ ; on note $f'$ sa dérivée et $f''$ sa dérivée seconde.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Dérivée de $f$ et sens de variation sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Démontrer que, pour tout réel $x$ de l'intervalle $[0\\,;\\,\\pi]$, $f'(x) = e^x\\big(\\sin(x) + \\cos(x)\\big)$.",
+            "points": 0.5,
+            "revoir": "l-trigonometrie-004",
+            "indices": [
+              "$f$ est le produit de $u(x) = e^x$ et de $v(x) = \\sin(x)$ : applique $(uv)' = u'v + uv'$.",
+              "Une fois les deux termes écrits, mets $e^x$ en facteur."
+            ],
+            "attenduCorrecteur": "- Dérivée d'un produit avec $u(x) = e^x$, $u'(x) = e^x$, $v(x) = \\sin(x)$ et $v'(x) = \\cos(x)$ : 0,25 pt.\n- $f'(x) = e^x\\sin(x) + e^x\\cos(x)$, puis factorisation par $e^x$ : 0,25 pt.",
+            "solution": "On pose $u(x) = e^x$ et $v(x) = \\sin(x)$ ; alors $u'(x) = e^x$ et $v'(x) = \\cos(x)$. D'après la formule $(uv)' = u'v + uv'$, pour tout $x$ de $[0\\,;\\,\\pi]$ :\n\n$$f'(x) = e^x\\sin(x) + e^x\\cos(x) = e^x\\big(\\sin(x) + \\cos(x)\\big).$$"
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Justifier que la fonction $f$ est strictement croissante sur l'intervalle $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$.",
+            "points": 0.5,
+            "revoir": "l-trigonometrie-008",
+            "indices": [
+              "Étudie le signe de chaque facteur de $f'(x)$. Pour $x$ dans $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, où se trouve le point $M(x)$ sur le cercle trigonométrique ? Que dire de son abscisse et de son ordonnée ?",
+              "Pour obtenir une inégalité stricte, vérifie que $\\sin(x)$ et $\\cos(x)$ ne peuvent pas être nuls en même temps : pense à $\\cos^2(x) + \\sin^2(x) = 1$."
+            ],
+            "attenduCorrecteur": "- $e^x > 0$ ; pour $x$ dans $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $\\sin(x) \\geqslant 0$ et $\\cos(x) \\geqslant 0$, justifié par le cercle ou par les variations de $\\sin$ et de $\\cos$ : 0,25 pt.\n- $\\sin(x)$ et $\\cos(x)$ jamais nuls en même temps, donc $\\sin(x) + \\cos(x) > 0$, $f'(x) > 0$ et $f$ strictement croissante : 0,25 pt.",
+            "solution": "Pour tout réel $x$, $e^x > 0$ : $f'(x)$ a le signe de $\\sin(x) + \\cos(x)$.\n\nPour $x$ dans $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, le point $M(x)$ du cercle trigonométrique est sur le quart de cercle qui va de $I(1\\,;\\,0)$ au point $(0\\,;\\,1)$ : son abscisse $\\cos(x)$ et son ordonnée $\\sin(x)$ sont positives ou nulles. Elles ne sont jamais nulles en même temps, car $\\cos^2(x) + \\sin^2(x) = 1$. Donc $\\sin(x) + \\cos(x) > 0$.\n\nAinsi, $f'(x) > 0$ pour tout $x$ de $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$ : la fonction $f$ est strictement croissante sur cet intervalle."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Tangente au point d'abscisse $0$ et convexité.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Déterminer une équation de la tangente $T$ à la courbe $\\mathcal{C}_f$ au point d'abscisse $0$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-044",
+            "indices": [
+              "La tangente au point d'abscisse $a$ a pour équation $y = f'(a)(x - a) + f(a)$ : calcule $f(0)$, puis $f'(0)$ avec la question 1.a."
+            ],
+            "attenduCorrecteur": "- $f(0) = e^0\\sin(0) = 0$ et $f'(0) = e^0\\big(\\sin(0) + \\cos(0)\\big) = 1$ : 0,25 pt.\n- Formule de la tangente et équation $T : y = x$ : 0,25 pt.",
+            "solution": "$f(0) = e^0 \\times \\sin(0) = 1 \\times 0 = 0$ et, d'après la question 1.a, $f'(0) = e^0\\big(\\sin(0) + \\cos(0)\\big) = 1 \\times (0 + 1) = 1$.\n\nLa tangente $T$ à $\\mathcal{C}_f$ au point d'abscisse $0$ a pour équation $y = f'(0)(x - 0) + f(0)$, soit :\n\n$$T : y = x.$$"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Démontrer que, pour tout réel $x$ de l'intervalle $[0\\,;\\,\\pi]$, $f''(x) = 2e^x\\cos(x)$. En déduire que la fonction $f$ est convexe sur l'intervalle $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$.",
+            "points": 0.75,
+            "revoir": "l-derivation-convexite-039",
+            "indices": [
+              "Dérive $f'(x) = e^x\\big(\\sin(x) + \\cos(x)\\big)$ comme un produit : $u(x) = e^x$ et $v(x) = \\sin(x) + \\cos(x)$. Attention au signe dans la dérivée de $\\cos$.",
+              "Une fonction deux fois dérivable est convexe sur un intervalle où sa dérivée seconde est positive : étudie le signe de $e^x$ et celui de $\\cos(x)$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$."
+            ],
+            "attenduCorrecteur": "- Dérivée du produit $e^x\\big(\\sin(x) + \\cos(x)\\big)$, avec $\\big(\\sin(x) + \\cos(x)\\big)' = \\cos(x) - \\sin(x)$ : 0,25 pt.\n- Simplification : $f''(x) = e^x\\big(\\sin(x) + \\cos(x) + \\cos(x) - \\sin(x)\\big) = 2e^x\\cos(x)$ : 0,25 pt.\n- $e^x > 0$ et $\\cos(x) \\geqslant 0$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, donc $f''(x) \\geqslant 0$ et $f$ convexe, propriété citée : 0,25 pt.",
+            "solution": "On dérive $f'(x) = e^x\\big(\\sin(x) + \\cos(x)\\big)$ comme un produit, avec $u(x) = e^x$, $u'(x) = e^x$, $v(x) = \\sin(x) + \\cos(x)$ et $v'(x) = \\cos(x) - \\sin(x)$. Pour tout $x$ de $[0\\,;\\,\\pi]$ :\n\n$$f''(x) = e^x\\big(\\sin(x) + \\cos(x)\\big) + e^x\\big(\\cos(x) - \\sin(x)\\big) = e^x\\big(\\sin(x) + \\cos(x) + \\cos(x) - \\sin(x)\\big) = 2e^x\\cos(x).$$\n\nPour $x$ dans $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $e^x > 0$ et $\\cos(x) \\geqslant 0$, abscisse d'un point du quart de cercle vu à la question 1.b. Donc $f''(x) \\geqslant 0$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$ : la fonction $f$ est convexe sur cet intervalle.",
+            "erreurFrequente": "Oublier le signe moins de $\\cos' = -\\sin$ : on écrit alors $\\big(\\sin(x) + \\cos(x)\\big)' = \\cos(x) + \\sin(x)$, et l'expression de $f''$ est fausse."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "En déduire que, pour tout réel $x$ de l'intervalle $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $e^x\\sin(x) \\geqslant x$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-050",
+            "indices": [
+              "Sur un intervalle où une fonction est convexe, où se trouve sa courbe par rapport à ses tangentes ? Utilise la tangente $T$ de la question 2.a."
+            ],
+            "attenduCorrecteur": "- Propriété citée : sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, où $f$ est convexe, la courbe $\\mathcal{C}_f$ est au-dessus de ses tangentes, en particulier de $T$, tangente au point d'abscisse $0$ de cet intervalle : 0,25 pt.\n- Traduction : $f(x) \\geqslant x$, soit $e^x\\sin(x) \\geqslant x$ : 0,25 pt.",
+            "solution": "La fonction $f$ est convexe sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$ (question 2.b). Sur cet intervalle, sa courbe $\\mathcal{C}_f$ est donc au-dessus de ses tangentes en des points de l'intervalle, en particulier de la tangente $T$ au point d'abscisse $0$, d'équation $y = x$ (question 2.a).\n\nAinsi, pour tout réel $x$ de $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $f(x) \\geqslant x$, c'est-à-dire :\n\n$$e^x\\sin(x) \\geqslant x.$$",
+            "erreurFrequente": "Étendre l'inégalité à tout l'intervalle $[0\\,;\\,\\pi]$ : la convexité n'est établie que sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, et l'inégalité est d'ailleurs fausse en $\\pi$, puisque $f(\\pi) = 0 < \\pi$."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Justifier que le point d'abscisse $\\dfrac{\\pi}{2}$ de la courbe représentative de la fonction $f$ est un point d'inflexion.",
+        "points": 0.5,
+        "revoir": "l-derivation-convexite-061",
+        "indices": [
+          "Un point d'inflexion est un point où la courbe change de convexité : étudie le signe de $f''(x) = 2e^x\\cos(x)$ de part et d'autre de $\\dfrac{\\pi}{2}$, sur $[0\\,;\\,\\pi]$.",
+          "Pour $x$ entre $\\dfrac{\\pi}{2}$ et $\\pi$, le point $M(x)$ est dans la moitié gauche du cercle trigonométrique : quel est le signe de son abscisse ?"
+        ],
+        "attenduCorrecteur": "- Signe de $f''$, du signe de $\\cos(x)$ car $2e^x > 0$ : $f''(x) > 0$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right[$ et $f''(x) < 0$ sur $\\left]\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$ : 0,25 pt.\n- $f''$ s'annule en changeant de signe en $\\dfrac{\\pi}{2}$ : la courbe passe de convexe à concave, le point d'abscisse $\\dfrac{\\pi}{2}$ est un point d'inflexion : 0,25 pt.",
+        "solution": "D'après la question 2.b, $f''(x) = 2e^x\\cos(x)$ est du signe de $\\cos(x)$, car $2e^x > 0$.\n\n- Pour $x$ dans $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right[$, le point $M(x)$ est dans la moitié droite du cercle : $\\cos(x) > 0$, donc $f''(x) > 0$ et $f$ est convexe sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$.\n- Pour $x$ dans $\\left]\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$, $M(x)$ est dans la moitié gauche : $\\cos(x) < 0$, donc $f''(x) < 0$ et $f$ est concave sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$.\n\nLa dérivée seconde $f''$ s'annule en changeant de signe en $\\dfrac{\\pi}{2}$ : la courbe $\\mathcal{C}_f$ passe de convexe à concave. Le point de $\\mathcal{C}_f$ d'abscisse $\\dfrac{\\pi}{2}$, de coordonnées $\\left(\\dfrac{\\pi}{2}\\,;\\,e^{\\frac{\\pi}{2}}\\right)$, est donc un point d'inflexion.",
+        "erreurFrequente": "Se contenter de $f''\\left(\\dfrac{\\pi}{2}\\right) = 0$ : ce n'est pas suffisant, il faut que $f''$ change de signe en $\\dfrac{\\pi}{2}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Variations de $f$ sur $[0\\,;\\,\\pi]$. On note $h$ la fonction définie sur $[0\\,;\\,\\pi]$ par $h(x) = \\sin(x) + \\cos(x)$, de sorte que $f'(x) = e^x h(x)$.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Calculer $h\\left(\\dfrac{3\\pi}{4}\\right)$.",
+            "points": 0.25,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0,
+              "tolerance": 0
+            },
+            "revoir": "l-trigonometrie-020",
+            "indices": [
+              "Écris $\\dfrac{3\\pi}{4} = \\pi - \\dfrac{\\pi}{4}$ et utilise les symétries du cercle : $\\sin(\\pi - x) = \\sin(x)$ et $\\cos(\\pi - x) = -\\cos(x)$."
+            ],
+            "attenduCorrecteur": "- $\\sin\\left(\\dfrac{3\\pi}{4}\\right) = \\dfrac{\\sqrt{2}}{2}$ et $\\cos\\left(\\dfrac{3\\pi}{4}\\right) = -\\dfrac{\\sqrt{2}}{2}$, justifiés par une symétrie, d'où $h\\left(\\dfrac{3\\pi}{4}\\right) = 0$ : 0,25 pt.",
+            "solution": "On a $\\dfrac{3\\pi}{4} = \\pi - \\dfrac{\\pi}{4}$. Par symétrie par rapport à l'axe des ordonnées : $\\sin\\left(\\dfrac{3\\pi}{4}\\right) = \\sin\\left(\\dfrac{\\pi}{4}\\right) = \\dfrac{\\sqrt{2}}{2}$ et $\\cos\\left(\\dfrac{3\\pi}{4}\\right) = -\\cos\\left(\\dfrac{\\pi}{4}\\right) = -\\dfrac{\\sqrt{2}}{2}$. Donc :\n\n$$h\\left(\\dfrac{3\\pi}{4}\\right) = \\dfrac{\\sqrt{2}}{2} - \\dfrac{\\sqrt{2}}{2} = 0.$$"
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Étudier les variations de $h$ sur l'intervalle $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$. En déduire le signe de $h(x)$ sur $[0\\,;\\,\\pi]$.",
+            "points": 0.75,
+            "revoir": "l-trigonometrie-032",
+            "indices": [
+              "Calcule $h'(x)$, puis étudie le signe de chacun de ses deux termes sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$ en lisant le cercle trigonométrique.",
+              "$h$ est strictement monotone sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$ et s'annule en $\\dfrac{3\\pi}{4}$ (question 4.a) : compare $h(x)$ et $h\\left(\\dfrac{3\\pi}{4}\\right)$ selon la position de $x$. Sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, la question 1.b a déjà répondu."
+            ],
+            "attenduCorrecteur": "- $h'(x) = \\cos(x) - \\sin(x)$ ; sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$, $\\cos(x) \\leqslant 0$ et $\\sin(x) \\geqslant 0$, jamais nuls ensemble, donc $h'(x) < 0$ et $h$ strictement décroissante : 0,25 pt.\n- Avec $h\\left(\\dfrac{3\\pi}{4}\\right) = 0$ : $h(x) > 0$ sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\dfrac{3\\pi}{4}\\right[$ et $h(x) < 0$ sur $\\left]\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$ : 0,25 pt.\n- Synthèse sur $[0\\,;\\,\\pi]$, avec la question 1.b : $h(x) > 0$ sur $\\left[0\\,;\\,\\dfrac{3\\pi}{4}\\right[$, $h\\left(\\dfrac{3\\pi}{4}\\right) = 0$ et $h(x) < 0$ sur $\\left]\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$ : 0,25 pt.",
+            "solution": "Pour tout $x$ de $[0\\,;\\,\\pi]$, $h'(x) = \\cos(x) - \\sin(x)$.\n\nPour $x$ dans $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$, le point $M(x)$ est sur le quart de cercle qui va du point $(0\\,;\\,1)$ au point $(-1\\,;\\,0)$ : $\\cos(x) \\leqslant 0$ et $\\sin(x) \\geqslant 0$. Ces deux nombres ne sont pas nuls en même temps, car $\\cos^2(x) + \\sin^2(x) = 1$ ; donc $h'(x) = \\cos(x) - \\sin(x) < 0$. La fonction $h$ est strictement décroissante sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$.\n\nOr $h\\left(\\dfrac{3\\pi}{4}\\right) = 0$ (question 4.a), avec $\\dfrac{3\\pi}{4}$ dans $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$. Comme $h$ est strictement décroissante sur cet intervalle :\n\n- pour $\\dfrac{\\pi}{2} \\leqslant x < \\dfrac{3\\pi}{4}$, $h(x) > h\\left(\\dfrac{3\\pi}{4}\\right) = 0$ ;\n- pour $\\dfrac{3\\pi}{4} < x \\leqslant \\pi$, $h(x) < h\\left(\\dfrac{3\\pi}{4}\\right) = 0$.\n\nEnfin, d'après la question 1.b, $h(x) = \\sin(x) + \\cos(x) > 0$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$.\n\n**Conclusion** : $h(x) > 0$ pour $x$ dans $\\left[0\\,;\\,\\dfrac{3\\pi}{4}\\right[$, $h\\left(\\dfrac{3\\pi}{4}\\right) = 0$ et $h(x) < 0$ pour $x$ dans $\\left]\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$."
+          },
+          {
+            "id": "q4c",
+            "label": "c)",
+            "enonce": "Dresser le tableau de variations de $f$ sur $[0\\,;\\,\\pi]$. Donner la valeur exacte du maximum de $f$ sur cet intervalle.",
+            "points": 0.75,
+            "revoir": "l-trigonometrie-031",
+            "indices": [
+              "$f'(x) = e^x h(x)$ avec $e^x > 0$ : $f'(x)$ a le signe de $h(x)$, établi à la question 4.b.",
+              "Calcule $f(0)$, $f(\\pi)$ et $f\\left(\\dfrac{3\\pi}{4}\\right)$ avec les valeurs trouvées à la question 4.a. Le maximum est une valeur de $f$, pas une abscisse."
+            ],
+            "attenduCorrecteur": "- $f'(x)$ du signe de $h(x)$ ; $f$ strictement croissante sur $\\left[0\\,;\\,\\dfrac{3\\pi}{4}\\right]$ et strictement décroissante sur $\\left[\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$ : 0,25 pt.\n- Valeurs : $f(0) = 0$, $f(\\pi) = e^{\\pi}\\sin(\\pi) = 0$ et $f\\left(\\dfrac{3\\pi}{4}\\right) = \\dfrac{\\sqrt{2}}{2}e^{\\frac{3\\pi}{4}}$ ; tableau complet : 0,25 pt.\n- Conclusion : le maximum de $f$ sur $[0\\,;\\,\\pi]$ vaut $\\dfrac{\\sqrt{2}}{2}e^{\\frac{3\\pi}{4}}$, atteint pour $x = \\dfrac{3\\pi}{4}$ : 0,25 pt.",
+            "solution": "Pour tout $x$ de $[0\\,;\\,\\pi]$, $f'(x) = e^x h(x)$ avec $e^x > 0$ : $f'(x)$ a le signe de $h(x)$. D'après la question 4.b, $f'(x) > 0$ sur $\\left[0\\,;\\,\\dfrac{3\\pi}{4}\\right[$ et $f'(x) < 0$ sur $\\left]\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$ : la fonction $f$ est strictement croissante sur $\\left[0\\,;\\,\\dfrac{3\\pi}{4}\\right]$ et strictement décroissante sur $\\left[\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$.\n\nValeurs : $f(0) = 0$, $f(\\pi) = e^{\\pi}\\sin(\\pi) = 0$ et $f\\left(\\dfrac{3\\pi}{4}\\right) = e^{\\frac{3\\pi}{4}}\\sin\\left(\\dfrac{3\\pi}{4}\\right) = \\dfrac{\\sqrt{2}}{2}e^{\\frac{3\\pi}{4}}$.\n\n| $x$ | $0$ | | $\\dfrac{3\\pi}{4}$ | | $\\pi$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $+$ | $0$ | $-$ | |\n| variations de $f$ | $0$ | $\\nearrow$ | $\\dfrac{\\sqrt{2}}{2}e^{\\frac{3\\pi}{4}}$ | $\\searrow$ | $0$ |\n\nLe maximum de $f$ sur $[0\\,;\\,\\pi]$ vaut $\\dfrac{\\sqrt{2}}{2}e^{\\frac{3\\pi}{4}}$ ; il est atteint pour $x = \\dfrac{3\\pi}{4}$.",
+            "erreurFrequente": "Placer le maximum en $\\dfrac{\\pi}{2}$, là où $\\sin$ est maximal : le facteur $e^x$ continue de croître après $\\dfrac{\\pi}{2}$, et seul le signe de $f'$ situe le maximum."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-trigonometrie-003",
+    "chapitre": "trigonometrie",
+    "notions": [
+      "n-trigonometrie-etude-fonction",
+      "n-trigonometrie-equations-inequations",
+      "n-trigonometrie-derivees-variations"
+    ],
+    "capacites": [
+      "bo-m-trigonometrie-01",
+      "bo-m-trigonometrie-02",
+      "bo-m-trigonometrie-03",
+      "bo-m-derivation-01",
+      "bo-m-derivation-02",
+      "bo-m-derivation-03",
+      "bo-m-derivation-04",
+      "bo-m-derivation-05",
+      "bo-m-derivation-06",
+      "bo-m-derivation-09"
+    ],
+    "titre": "La grande roue : hauteur d'une nacelle, vue dégagée et vitesse de montée",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": true,
+    "ordre": 30,
+    "preambule": "Une grande roue a un rayon de $18$ mètres ; son centre est situé à $20$ mètres au-dessus du sol. Elle tourne à vitesse constante et fait un tour complet en $20$ minutes.\n\nOn suit une nacelle pendant un tour. Le temps $t$ est exprimé en minutes et compté à partir de l'instant où la nacelle passe au point le plus haut : $t$ est négatif avant ce passage. Le tour étudié commence à l'embarquement, au point le plus bas, à l'instant $t = -10$, et se termine à l'instant $t = 10$.\n\nOn admet que la hauteur de la nacelle au-dessus du sol, en mètres, à l'instant $t$ est :\n\n$$h(t) = 20 + 18\\cos\\left(\\dfrac{\\pi t}{10}\\right), \\quad t \\in [-10\\,;\\,10].$$\n\nOn admet que $h$ est deux fois dérivable sur $[-10\\,;\\,10]$ ; on note $h'$ sa dérivée et $h''$ sa dérivée seconde.\n\nLa calculatrice est autorisée dans cet exercice ; elle doit être réglée en radians.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $h(-10)$, $h(0)$ et $h(10)$. Justifier que, pour tout $t$ de $[-10\\,;\\,10]$, $2 \\leqslant h(t) \\leqslant 38$, puis interpréter ces deux nombres dans le contexte.",
+        "points": 0.5,
+        "revoir": "l-trigonometrie-002",
+        "indices": [
+          "Calcule $\\cos(-\\pi)$, $\\cos(0)$ et $\\cos(\\pi)$, puis remplace dans $h$. Pour l'encadrement, pars de l'encadrement du cosinus valable pour tout réel.",
+          "Multiplie cet encadrement par $18$, qui est strictement positif, puis ajoute $20$. Pour l'interprétation, relis l'énoncé : où se trouve la nacelle aux instants $t = -10$, $t = 0$ et $t = 10$ ?"
+        ],
+        "attenduCorrecteur": "- $h(-10) = 20 + 18\\cos(-\\pi) = 2$, $h(0) = 20 + 18\\cos(0) = 38$ et $h(10) = 20 + 18\\cos(\\pi) = 2$ : 0,25 pt.\n- Encadrement déduit de $-1 \\leqslant \\cos\\left(\\dfrac{\\pi t}{10}\\right) \\leqslant 1$ ; interprétation : $2$ m au point le plus bas, $38$ m au point le plus haut, soit la hauteur du centre diminuée ou augmentée du rayon : 0,25 pt.",
+        "solution": "$h(-10) = 20 + 18\\cos(-\\pi) = 20 - 18 = 2$ ; $h(0) = 20 + 18\\cos(0) = 20 + 18 = 38$ ; $h(10) = 20 + 18\\cos(\\pi) = 2$.\n\nPour tout réel $t$ de $[-10\\,;\\,10]$, $-1 \\leqslant \\cos\\left(\\dfrac{\\pi t}{10}\\right) \\leqslant 1$. En multipliant par $18 > 0$, puis en ajoutant $20$ :\n\n$$20 - 18 \\leqslant h(t) \\leqslant 20 + 18, \\quad \\text{soit} \\quad 2 \\leqslant h(t) \\leqslant 38.$$\n\nInterprétation : au point le plus bas, à l'embarquement ($t = -10$) et à la fin du tour ($t = 10$), la nacelle est à $2$ mètres du sol ; au point le plus haut ($t = 0$), elle est à $38$ mètres. Ce sont la hauteur du centre diminuée, puis augmentée, du rayon de la roue."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Sens de variation de $h$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout $t$ de $[-10\\,;\\,10]$, $h'(t) = -\\dfrac{9\\pi}{5}\\sin\\left(\\dfrac{\\pi t}{10}\\right)$.",
+            "points": 0.5,
+            "revoir": "l-trigonometrie-003",
+            "indices": [
+              "$\\cos\\left(\\dfrac{\\pi t}{10}\\right)$ est de la forme $\\cos(at + b)$ : écris $a$ et $b$, puis applique $\\big(\\cos(at + b)\\big)' = -a\\sin(at + b)$.",
+              "Multiplie ensuite par le coefficient $18$ et simplifie le produit des coefficients ; la constante $20$ a une dérivée nulle."
+            ],
+            "attenduCorrecteur": "- Dérivée de $\\cos(at + b)$ avec $a = \\dfrac{\\pi}{10}$ et $b = 0$ : $-\\dfrac{\\pi}{10}\\sin\\left(\\dfrac{\\pi t}{10}\\right)$ : 0,25 pt.\n- Coefficient $18 \\times \\dfrac{\\pi}{10} = \\dfrac{9\\pi}{5}$, dérivée de la constante nulle, résultat : 0,25 pt.",
+            "solution": "La fonction $t \\mapsto \\cos\\left(\\dfrac{\\pi t}{10}\\right)$ est de la forme $t \\mapsto \\cos(at + b)$ avec $a = \\dfrac{\\pi}{10}$ et $b = 0$ ; sa dérivée est $t \\mapsto -\\dfrac{\\pi}{10}\\sin\\left(\\dfrac{\\pi t}{10}\\right)$. La dérivée de la constante $20$ est nulle. Donc, pour tout $t$ de $[-10\\,;\\,10]$ :\n\n$$h'(t) = 18 \\times \\left(-\\dfrac{\\pi}{10}\\right)\\sin\\left(\\dfrac{\\pi t}{10}\\right) = -\\dfrac{9\\pi}{5}\\sin\\left(\\dfrac{\\pi t}{10}\\right).$$",
+            "erreurFrequente": "Oublier le facteur $\\dfrac{\\pi}{10}$, dérivée de l'intérieur : on obtient alors $-18\\sin\\left(\\dfrac{\\pi t}{10}\\right)$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Étudier le signe de $h'(t)$ sur $[-10\\,;\\,10]$ et en déduire le sens de variation de $h$. Le résultat est-il conforme à la situation ?",
+            "points": 0.75,
+            "revoir": "l-trigonometrie-026",
+            "indices": [
+              "Pose $X = \\dfrac{\\pi t}{10}$. Quand $t$ parcourt $[-10\\,;\\,10]$, dans quel intervalle se trouve $X$ ? Lis ensuite le signe de $\\sin(X)$ sur le cercle trigonométrique.",
+              "Attention au signe moins devant $\\dfrac{9\\pi}{5}$ : $h'(t)$ a le signe contraire de $\\sin\\left(\\dfrac{\\pi t}{10}\\right)$."
+            ],
+            "attenduCorrecteur": "- Pour $t$ dans $[-10\\,;\\,10]$, $X = \\dfrac{\\pi t}{10}$ parcourt $[-\\pi\\,;\\,\\pi]$ ; $\\sin(X) \\leqslant 0$ sur $[-\\pi\\,;\\,0]$ et $\\sin(X) \\geqslant 0$ sur $[0\\,;\\,\\pi]$ : 0,25 pt.\n- $h'(t) \\geqslant 0$ sur $[-10\\,;\\,0]$ et $h'(t) \\leqslant 0$ sur $[0\\,;\\,10]$, nulle seulement en $-10$, $0$ et $10$ ; $h$ strictement croissante sur $[-10\\,;\\,0]$ et strictement décroissante sur $[0\\,;\\,10]$ : 0,25 pt.\n- Interprétation : la nacelle monte jusqu'au point le plus haut, atteint à $t = 0$, puis redescend : 0,25 pt.",
+            "solution": "On pose $X = \\dfrac{\\pi t}{10}$. Pour $t$ dans $[-10\\,;\\,10]$, $X$ appartient à $[-\\pi\\,;\\,\\pi]$, et $X$ a le signe de $t$.\n\n- Pour $t$ dans $[-10\\,;\\,0]$, $X$ est dans $[-\\pi\\,;\\,0]$ : le point $M(X)$ est dans la moitié basse du cercle, donc $\\sin(X) \\leqslant 0$ et $h'(t) = -\\dfrac{9\\pi}{5}\\sin(X) \\geqslant 0$.\n- Pour $t$ dans $[0\\,;\\,10]$, $X$ est dans $[0\\,;\\,\\pi]$ : $M(X)$ est dans la moitié haute, donc $\\sin(X) \\geqslant 0$ et $h'(t) \\leqslant 0$.\n\nDe plus, $h'(t) = 0$ seulement quand $\\sin(X) = 0$, c'est-à-dire pour $X$ égal à $-\\pi$, $0$ ou $\\pi$, soit $t$ égal à $-10$, $0$ ou $10$. La fonction $h$ est donc strictement croissante sur $[-10\\,;\\,0]$ et strictement décroissante sur $[0\\,;\\,10]$.\n\n| $t$ | $-10$ | | $0$ | | $10$ |\n|---|---|---|---|---|---|\n| signe de $h'(t)$ | $0$ | $+$ | $0$ | $-$ | $0$ |\n| variations de $h$ | $2$ | $\\nearrow$ | $38$ | $\\searrow$ | $2$ |\n\nC'est conforme à la situation : la nacelle monte depuis l'embarquement jusqu'au point le plus haut, atteint à $t = 0$, puis redescend jusqu'au point le plus bas."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On dit que la nacelle offre une vue dégagée sur la ville lorsqu'elle se trouve à au moins $29$ mètres du sol.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Montrer que, pour $t$ dans $[-10\\,;\\,10]$, l'inégalité $h(t) \\geqslant 29$ équivaut à $\\cos\\left(\\dfrac{\\pi t}{10}\\right) \\geqslant \\dfrac{1}{2}$.",
+            "points": 0.25,
+            "revoir": "l-trigonometrie-025",
+            "indices": [
+              "Isole $\\cos\\left(\\dfrac{\\pi t}{10}\\right)$ dans l'inégalité $20 + 18\\cos\\left(\\dfrac{\\pi t}{10}\\right) \\geqslant 29$ : retranche, puis divise par un nombre strictement positif."
+            ],
+            "attenduCorrecteur": "- Chaîne d'équivalences $h(t) \\geqslant 29 \\iff 18\\cos\\left(\\dfrac{\\pi t}{10}\\right) \\geqslant 9 \\iff \\cos\\left(\\dfrac{\\pi t}{10}\\right) \\geqslant \\dfrac{1}{2}$, avec la division par $18 > 0$ signalée : 0,25 pt.",
+            "solution": "Pour $t$ dans $[-10\\,;\\,10]$ :\n\n$$h(t) \\geqslant 29 \\iff 20 + 18\\cos\\left(\\dfrac{\\pi t}{10}\\right) \\geqslant 29 \\iff 18\\cos\\left(\\dfrac{\\pi t}{10}\\right) \\geqslant 9 \\iff \\cos\\left(\\dfrac{\\pi t}{10}\\right) \\geqslant \\dfrac{1}{2}.$$\n\nLa dernière équivalence s'obtient en divisant par $18$, qui est strictement positif : le sens de l'inégalité ne change pas."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Résoudre dans l'intervalle $[-\\pi\\,;\\,\\pi]$ l'inéquation $\\cos(X) \\geqslant \\dfrac{1}{2}$.",
+            "points": 0.75,
+            "revoir": "l-trigonometrie-026",
+            "indices": [
+              "Commence par l'équation $\\cos(X) = \\dfrac{1}{2}$ sur $[-\\pi\\,;\\,\\pi]$ : cherche dans le tableau des valeurs remarquables un réel de $[0\\,;\\,\\pi]$ dont le cosinus vaut $\\dfrac{1}{2}$.",
+              "Sur le cercle, trace la droite verticale d'abscisse $\\dfrac{1}{2}$ : $\\cos(X) \\geqslant \\dfrac{1}{2}$ correspond aux points situés à sa droite. Parcours le cercle de $M(-\\pi)$ à $M(\\pi)$ pour lire l'arc."
+            ],
+            "attenduCorrecteur": "- Équation associée : sur $[-\\pi\\,;\\,\\pi]$, $\\cos(X) = \\dfrac{1}{2} \\iff X = -\\dfrac{\\pi}{3}$ ou $X = \\dfrac{\\pi}{3}$ : 0,25 pt.\n- Lecture sur le cercle (points sur la droite d'abscisse $\\dfrac{1}{2}$ ou à sa droite), justifiée par une figure ou par une phrase : 0,25 pt.\n- Ensemble des solutions $\\left[-\\dfrac{\\pi}{3}\\,;\\,\\dfrac{\\pi}{3}\\right]$, crochets fermés car l'inégalité est large : 0,25 pt.",
+            "solution": "**Équation.** $\\cos\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{1}{2}$, avec $\\dfrac{\\pi}{3}$ dans $[0\\,;\\,\\pi]$ : sur $[-\\pi\\,;\\,\\pi]$, $\\cos(X) = \\dfrac{1}{2} \\iff X = -\\dfrac{\\pi}{3}$ ou $X = \\dfrac{\\pi}{3}$.\n\n**Inéquation.** Sur le cercle trigonométrique, $\\cos(X) \\geqslant \\dfrac{1}{2}$ correspond aux points $M(X)$ situés sur la droite verticale d'abscisse $\\dfrac{1}{2}$ ou à sa droite : c'est l'arc qui va de $M\\left(-\\dfrac{\\pi}{3}\\right)$ à $M\\left(\\dfrac{\\pi}{3}\\right)$ en passant par $I(1\\,;\\,0)$. En parcourant le cercle de $M(-\\pi)$ à $M(\\pi)$, on est sur cet arc exactement pour $X$ compris entre $-\\dfrac{\\pi}{3}$ et $\\dfrac{\\pi}{3}$. Contrôle : $\\cos(0) = 1 \\geqslant \\dfrac{1}{2}$, et $0$ est bien solution.\n\nL'inégalité est large, donc les bornes sont solutions :\n\n$$S = \\left[-\\dfrac{\\pi}{3}\\,;\\,\\dfrac{\\pi}{3}\\right].$$",
+            "erreurFrequente": "Répondre $\\left[-\\pi\\,;\\,-\\dfrac{\\pi}{3}\\right] \\cup \\left[\\dfrac{\\pi}{3}\\,;\\,\\pi\\right]$ : ce sont les solutions de $\\cos(X) \\leqslant \\dfrac{1}{2}$, les points situés à gauche de la droite."
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "En déduire les instants $t$ de $[-10\\,;\\,10]$ où la nacelle offre une vue dégagée. Pendant combien de minutes la vue est-elle dégagée au cours d'un tour ? Donner la valeur exacte de cette durée, en minutes, puis la convertir en minutes et secondes.\n\nSaisis la durée en minutes : la valeur exacte sous forme de fraction, ou sa valeur arrondie au centième. La conversion en minutes et secondes est à rédiger.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "20/3",
+              "tolerance": 0.005,
+              "unite": "min"
+            },
+            "revoir": "l-trigonometrie-026",
+            "indices": [
+              "Avec $X = \\dfrac{\\pi t}{10}$, qui parcourt $[-\\pi\\,;\\,\\pi]$ quand $t$ parcourt $[-10\\,;\\,10]$, traduis la condition sur $X$ trouvée à la question 3.b en une condition sur $t$ : multiplie par $\\dfrac{10}{\\pi}$, qui est strictement positif.",
+              "La durée est la longueur de l'intervalle de temps obtenu. Pour convertir la partie décimale d'un nombre de minutes en secondes, multiplie-la par $60$."
+            ],
+            "attenduCorrecteur": "- Traduction : vue dégagée si, et seulement si, $-\\dfrac{\\pi}{3} \\leqslant \\dfrac{\\pi t}{10} \\leqslant \\dfrac{\\pi}{3}$, en utilisant que $X$ parcourt $[-\\pi\\,;\\,\\pi]$ : 0,25 pt.\n- Ensemble des instants $\\left[-\\dfrac{10}{3}\\,;\\,\\dfrac{10}{3}\\right]$ : 0,25 pt.\n- Durée $\\dfrac{20}{3}$ minutes, soit $6$ minutes et $40$ secondes : 0,25 pt.",
+            "solution": "On pose $X = \\dfrac{\\pi t}{10}$ ; quand $t$ parcourt $[-10\\,;\\,10]$, $X$ parcourt $[-\\pi\\,;\\,\\pi]$. D'après les questions 3.a et 3.b :\n\n$$h(t) \\geqslant 29 \\iff \\cos(X) \\geqslant \\dfrac{1}{2} \\iff -\\dfrac{\\pi}{3} \\leqslant \\dfrac{\\pi t}{10} \\leqslant \\dfrac{\\pi}{3} \\iff -\\dfrac{10}{3} \\leqslant t \\leqslant \\dfrac{10}{3},$$\n\nen multipliant par $\\dfrac{10}{\\pi} > 0$. La nacelle offre une vue dégagée pour $t$ dans $\\left[-\\dfrac{10}{3}\\,;\\,\\dfrac{10}{3}\\right]$.\n\nDurée : $\\dfrac{10}{3} - \\left(-\\dfrac{10}{3}\\right) = \\dfrac{20}{3}$ minutes. Or $\\dfrac{20}{3} = 6 + \\dfrac{2}{3}$ et $\\dfrac{2}{3} \\times 60 = 40$ : la vue est dégagée pendant $6$ minutes et $40$ secondes par tour, soit le tiers du tour.",
+            "erreurFrequente": "Écrire $\\dfrac{20}{3} \\approx 6{,}67$ minutes, puis « $6$ minutes et $67$ secondes » : la partie décimale d'un nombre de minutes n'est pas un nombre de secondes."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Le nombre $h'(t)$ est la vitesse verticale de la nacelle à l'instant $t$, en mètres par minute : il est positif quand la nacelle monte, négatif quand elle descend. On cherche à quel instant la nacelle monte le plus vite.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout $t$ de $[-10\\,;\\,10]$, $h''(t) = -\\dfrac{9\\pi^2}{50}\\cos\\left(\\dfrac{\\pi t}{10}\\right)$.",
+            "points": 0.25,
+            "revoir": "l-trigonometrie-003",
+            "indices": [
+              "Dérive $h'(t) = -\\dfrac{9\\pi}{5}\\sin\\left(\\dfrac{\\pi t}{10}\\right)$ avec $\\big(\\sin(at + b)\\big)' = a\\cos(at + b)$, puis simplifie le produit des coefficients."
+            ],
+            "attenduCorrecteur": "- Dérivée de $\\sin\\left(\\dfrac{\\pi t}{10}\\right)$ égale à $\\dfrac{\\pi}{10}\\cos\\left(\\dfrac{\\pi t}{10}\\right)$, et produit $\\dfrac{9\\pi}{5} \\times \\dfrac{\\pi}{10} = \\dfrac{9\\pi^2}{50}$ : 0,25 pt.",
+            "solution": "D'après la question 2.a, $h'(t) = -\\dfrac{9\\pi}{5}\\sin\\left(\\dfrac{\\pi t}{10}\\right)$. La dérivée de $t \\mapsto \\sin\\left(\\dfrac{\\pi t}{10}\\right)$ est $t \\mapsto \\dfrac{\\pi}{10}\\cos\\left(\\dfrac{\\pi t}{10}\\right)$. Donc, pour tout $t$ de $[-10\\,;\\,10]$ :\n\n$$h''(t) = -\\dfrac{9\\pi}{5} \\times \\dfrac{\\pi}{10}\\cos\\left(\\dfrac{\\pi t}{10}\\right) = -\\dfrac{9\\pi^2}{50}\\cos\\left(\\dfrac{\\pi t}{10}\\right).$$"
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Étudier le signe de $h''(t)$ sur $[-10\\,;\\,10]$. En déduire le sens de variation de la fonction $h'$ sur $[-10\\,;\\,10]$, et dresser son tableau de variations.",
+            "points": 0.75,
+            "revoir": "l-trigonometrie-026",
+            "indices": [
+              "Avec $X = \\dfrac{\\pi t}{10}$ dans $[-\\pi\\,;\\,\\pi]$, résous l'inéquation $\\cos(X) \\geqslant 0$ sur le cercle : ce sont les points situés à droite de l'axe des ordonnées, ou sur lui. Le signe moins devant $\\dfrac{9\\pi^2}{50}$ inverse ensuite le signe.",
+              "Le signe de $h''$, dérivée de $h'$, donne le sens de variation de $h'$. Calcule $h'$ aux instants où $h''$ change de signe et aux bornes ; pour $\\sin\\left(-\\dfrac{\\pi}{2}\\right)$, utilise l'imparité de $\\sin$."
+            ],
+            "attenduCorrecteur": "- Sur $[-\\pi\\,;\\,\\pi]$, $\\cos(X) \\geqslant 0 \\iff X \\in \\left[-\\dfrac{\\pi}{2}\\,;\\,\\dfrac{\\pi}{2}\\right]$, soit $t \\in [-5\\,;\\,5]$ ; donc $h''(t) \\leqslant 0$ sur $[-5\\,;\\,5]$, et $h''(t) \\geqslant 0$ sur $[-10\\,;\\,-5]$ et sur $[5\\,;\\,10]$ : 0,25 pt.\n- $h'$ croissante sur $[-10\\,;\\,-5]$, décroissante sur $[-5\\,;\\,5]$ et croissante sur $[5\\,;\\,10]$ : 0,25 pt.\n- Valeurs : $h'(-10) = 0$, $h'(-5) = \\dfrac{9\\pi}{5}$, $h'(5) = -\\dfrac{9\\pi}{5}$ et $h'(10) = 0$ ; tableau complet : 0,25 pt.",
+            "solution": "On pose $X = \\dfrac{\\pi t}{10}$, qui parcourt $[-\\pi\\,;\\,\\pi]$ quand $t$ parcourt $[-10\\,;\\,10]$. Comme $\\dfrac{9\\pi^2}{50} > 0$, $h''(t)$ a le signe contraire de $\\cos(X)$.\n\nSur le cercle, $\\cos(X) \\geqslant 0$ pour les points $M(X)$ situés à droite de l'axe des ordonnées, ou sur cet axe. Sur $[-\\pi\\,;\\,\\pi]$ :\n\n$$\\cos(X) \\geqslant 0 \\iff -\\dfrac{\\pi}{2} \\leqslant X \\leqslant \\dfrac{\\pi}{2} \\iff -5 \\leqslant t \\leqslant 5,$$\n\net $\\cos(X) = 0$ seulement pour $X = -\\dfrac{\\pi}{2}$ ou $X = \\dfrac{\\pi}{2}$, c'est-à-dire $t = -5$ ou $t = 5$. Donc :\n\n- $h''(t) > 0$ pour $t$ dans $[-10\\,;\\,-5[$ et dans $]5\\,;\\,10]$ ;\n- $h''(t) < 0$ pour $t$ dans $]-5\\,;\\,5[$.\n\nLa fonction $h'$ a pour dérivée $h''$ : elle est strictement croissante sur $[-10\\,;\\,-5]$, strictement décroissante sur $[-5\\,;\\,5]$ et strictement croissante sur $[5\\,;\\,10]$.\n\nValeurs : $h'(-10) = -\\dfrac{9\\pi}{5}\\sin(-\\pi) = 0$ ; $h'(-5) = -\\dfrac{9\\pi}{5}\\sin\\left(-\\dfrac{\\pi}{2}\\right) = \\dfrac{9\\pi}{5}$, car $\\sin\\left(-\\dfrac{\\pi}{2}\\right) = -\\sin\\left(\\dfrac{\\pi}{2}\\right) = -1$ ; $h'(5) = -\\dfrac{9\\pi}{5}\\sin\\left(\\dfrac{\\pi}{2}\\right) = -\\dfrac{9\\pi}{5}$ ; $h'(10) = -\\dfrac{9\\pi}{5}\\sin(\\pi) = 0$.\n\n| $t$ | $-10$ | | $-5$ | | $5$ | | $10$ |\n|---|---|---|---|---|---|---|---|\n| signe de $h''(t)$ | | $+$ | $0$ | $-$ | $0$ | $+$ | |\n| variations de $h'$ | $0$ | $\\nearrow$ | $\\dfrac{9\\pi}{5}$ | $\\searrow$ | $-\\dfrac{9\\pi}{5}$ | $\\nearrow$ | $0$ |"
+          },
+          {
+            "id": "q4c",
+            "label": "c)",
+            "enonce": "À quel instant la nacelle monte-t-elle le plus vite ? Donner cette vitesse maximale de montée, arrondie au dixième de mètre par minute, et la hauteur de la nacelle à cet instant. Que représente, pour la courbe représentative de $h$, son point d'abscisse $-5$ ?",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-061",
+            "indices": [
+              "Lis le maximum de $h'$ dans le tableau de variations de la question 4.b, en comparant les deux maximums locaux ; calcule ensuite $h(-5)$.",
+              "Un point d'inflexion est un point où la courbe change de convexité, c'est-à-dire où $h''$ s'annule en changeant de signe."
+            ],
+            "attenduCorrecteur": "- Maximum de $h'$ sur $[-10\\,;\\,10]$ égal à $\\dfrac{9\\pi}{5} \\approx 5{,}7$ m/min, atteint à $t = -5$ (comparé à $h'(10) = 0$) ; hauteur $h(-5) = 20$ m, celle du centre de la roue : 0,25 pt.\n- $h''$ s'annule en changeant de signe en $-5$ : le point d'abscisse $-5$ est un point d'inflexion de la courbe de $h$, qui passe de convexe à concave : 0,25 pt.",
+            "solution": "D'après le tableau de la question 4.b, la fonction $h'$ a deux maximums locaux sur $[-10\\,;\\,10]$ : $h'(-5) = \\dfrac{9\\pi}{5}$ et $h'(10) = 0$. Le plus grand est $\\dfrac{9\\pi}{5}$ : la nacelle monte le plus vite à l'instant $t = -5$, c'est-à-dire $5$ minutes après l'embarquement, à la vitesse de $\\dfrac{9\\pi}{5} \\approx 5{,}7$ mètres par minute.\n\nÀ cet instant, $h(-5) = 20 + 18\\cos\\left(-\\dfrac{\\pi}{2}\\right) = 20 + 18 \\times 0 = 20$ : la nacelle est à $20$ mètres du sol, à la hauteur du centre de la roue.\n\nEn $t = -5$, $h''$ s'annule en changeant de signe : la fonction $h$ est convexe sur $[-10\\,;\\,-5]$ et concave sur $[-5\\,;\\,5]$. Le point d'abscisse $-5$ de la courbe représentative de $h$ est donc un point d'inflexion : c'est là que la montée, qui accélérait depuis l'embarquement, commence à ralentir.",
+            "erreurFrequente": "Chercher le maximum de $h$, le point le plus haut atteint à $t = 0$, au lieu de celui de $h'$ : au sommet, la nacelle ne monte plus, sa vitesse verticale est nulle."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-trigonometrie-004",
+    "chapitre": "trigonometrie",
+    "notions": [
+      "n-trigonometrie-equations-inequations",
+      "n-trigonometrie-derivees-variations",
+      "n-trigonometrie-etude-fonction"
+    ],
+    "capacites": [
+      "bo-m-trigonometrie-01",
+      "bo-m-trigonometrie-02",
+      "bo-m-trigonometrie-03",
+      "bo-m-derivation-02",
+      "bo-m-derivation-03",
+      "bo-m-derivation-06",
+      "bo-m-limites-fonctions-01",
+      "bo-m-limites-fonctions-03",
+      "bo-m-limites-fonctions-06",
+      "bo-m-suites-03",
+      "bo-m-suites-04",
+      "bo-m-suites-07"
+    ],
+    "titre": "Vrai ou faux : inéquation, convexité, asymptote, intersection de courbes et suite avec $\\sin$",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2026-antilles-guyane-j2",
+      "adaptation": "Exercice 3 (vrai-faux, réponses justifiées) : forme de l'exercice et affirmations 2 (courbe de $x \\mapsto x - \\cos(x)$ au-dessus de ses tangentes sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$) et 3 (asymptote d'équation $y = 1$ pour $x \\mapsto 1 + \\dfrac{\\sin(x)}{x}$) conservées, sous les mêmes numéros ; affirmations 1 et 4 retirées : elles portent sur les équations différentielles, chapitre qui vient plus tard dans l'année. Ajoutées : affirmation 1, écrite pour le site (inéquation $2\\cos(x) + \\sqrt{2} \\leqslant 0$ sur $[-\\pi\\,;\\,\\pi]$, affirmation fausse) ; affirmations 4 et 5 reprises de an-2026-etrangers-j1, exercice 2, affirmations 2 (un seul point d'intersection des courbes de $x \\mapsto 2x$ et de $\\sin$) et 3 (divergence de la suite de terme général $\\dfrac{2n + \\sin(n)}{n + 1}$). Exercice porté de 4 à 5 points. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Pour chacune des affirmations suivantes, indiquer si elle est vraie ou fausse. Chaque réponse doit être justifiée. Une réponse non justifiée ne rapporte aucun point.\n\nLes cinq affirmations sont indépendantes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Affirmation 1** : sur l'intervalle $[-\\pi\\,;\\,\\pi]$, l'ensemble des solutions de l'inéquation $2\\cos(x) + \\sqrt{2} \\leqslant 0$ est $\\left[-\\dfrac{3\\pi}{4}\\,;\\,\\dfrac{3\\pi}{4}\\right]$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$2\\cos(x) + \\sqrt{2} \\leqslant 0 \\iff \\cos(x) \\leqslant -\\dfrac{\\sqrt{2}}{2}$ : sur $[-\\pi\\,;\\,\\pi]$, l'ensemble des solutions est $\\left[-\\pi\\,;\\,-\\dfrac{3\\pi}{4}\\right] \\cup \\left[\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$. Par exemple, $0$ appartient à l'intervalle proposé, mais $2\\cos(0) + \\sqrt{2} = 2 + \\sqrt{2} > 0$."
+        },
+        "revoir": "l-trigonometrie-025",
+        "indices": [
+          "Isole $\\cos(x)$, puis résous d'abord l'équation associée sur $[-\\pi\\,;\\,\\pi]$ avec les symétries du cercle : quel réel de $[0\\,;\\,\\pi]$ a pour cosinus $-\\dfrac{\\sqrt{2}}{2}$ ?",
+          "Sur le cercle, $\\cos(x) \\leqslant a$ correspond aux points situés à gauche de la droite verticale d'abscisse $a$. Teste aussi une valeur simple de l'intervalle proposé, comme $x = 0$."
+        ],
+        "attenduCorrecteur": "- Transformation en $\\cos(x) \\leqslant -\\dfrac{\\sqrt{2}}{2}$ : 0,25 pt.\n- Équation associée : $\\cos(x) = -\\dfrac{\\sqrt{2}}{2} \\iff x = -\\dfrac{3\\pi}{4}$ ou $x = \\dfrac{3\\pi}{4}$, avec $\\cos\\left(\\dfrac{3\\pi}{4}\\right) = -\\cos\\left(\\dfrac{\\pi}{4}\\right)$ : 0,25 pt.\n- Lecture sur le cercle : $S = \\left[-\\pi\\,;\\,-\\dfrac{3\\pi}{4}\\right] \\cup \\left[\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right]$ : 0,25 pt.\n- Conclusion : affirmation fausse, avec un contre-exemple, par exemple $x = 0$ : 0,25 pt.",
+        "solution": "$2\\cos(x) + \\sqrt{2} \\leqslant 0 \\iff \\cos(x) \\leqslant -\\dfrac{\\sqrt{2}}{2}$.\n\n**Équation associée.** $\\cos\\left(\\dfrac{3\\pi}{4}\\right) = \\cos\\left(\\pi - \\dfrac{\\pi}{4}\\right) = -\\cos\\left(\\dfrac{\\pi}{4}\\right) = -\\dfrac{\\sqrt{2}}{2}$, avec $\\dfrac{3\\pi}{4}$ dans $[0\\,;\\,\\pi]$ : sur $[-\\pi\\,;\\,\\pi]$, $\\cos(x) = -\\dfrac{\\sqrt{2}}{2} \\iff x = -\\dfrac{3\\pi}{4}$ ou $x = \\dfrac{3\\pi}{4}$.\n\n**Inéquation.** $\\cos(x) \\leqslant -\\dfrac{\\sqrt{2}}{2}$ correspond aux points $M(x)$ du cercle situés sur la droite verticale d'abscisse $-\\dfrac{\\sqrt{2}}{2}$ ou à sa gauche. En parcourant le cercle de $M(-\\pi)$ à $M(\\pi)$, on y est pour $x$ allant de $-\\pi$ à $-\\dfrac{3\\pi}{4}$, puis de $\\dfrac{3\\pi}{4}$ à $\\pi$. L'ensemble des solutions est donc :\n\n$$S = \\left[-\\pi\\,;\\,-\\dfrac{3\\pi}{4}\\right] \\cup \\left[\\dfrac{3\\pi}{4}\\,;\\,\\pi\\right].$$\n\nL'intervalle proposé, $\\left[-\\dfrac{3\\pi}{4}\\,;\\,\\dfrac{3\\pi}{4}\\right]$, est l'ensemble des solutions de $\\cos(x) \\geqslant -\\dfrac{\\sqrt{2}}{2}$. Par exemple, $0$ lui appartient, mais $2\\cos(0) + \\sqrt{2} = 2 + \\sqrt{2} > 0$ : $0$ n'est pas solution.\n\n**L'affirmation 1 est fausse.**",
+        "erreurFrequente": "Confondre les deux côtés de la droite verticale : $\\cos(x) \\leqslant a$ se lit à gauche, du côté des abscisses plus petites ; $\\cos(x) \\geqslant a$ se lit à droite."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "**Affirmation 2** : on considère la fonction $f$ définie sur l'intervalle $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$ par $f(x) = x - \\cos(x)$. Sur l'intervalle $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$, la courbe représentative de la fonction $f$ est au-dessus de ses tangentes.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$f''(x) = \\cos(x) \\leqslant 0$ sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$ : $f$ est concave et sa courbe est en dessous de ses tangentes. Par exemple, la tangente au point d'abscisse $\\pi$ a pour équation $y = x + 1$, et $f\\left(\\dfrac{\\pi}{2}\\right) = \\dfrac{\\pi}{2} < \\dfrac{\\pi}{2} + 1$."
+        },
+        "revoir": "l-derivation-convexite-039",
+        "indices": [
+          "Une courbe est au-dessus de ses tangentes sur un intervalle où la fonction est convexe : calcule $f'(x)$, puis $f''(x)$, et étudie le signe de $f''$ sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$.",
+          "Pour conclure sans hésitation, écris l'équation d'une tangente bien choisie, par exemple au point d'abscisse $\\pi$, et compare-la à la courbe en un autre point de l'intervalle."
+        ],
+        "attenduCorrecteur": "- $f'(x) = 1 + \\sin(x)$ et $f''(x) = \\cos(x)$ : 0,25 pt.\n- $\\cos(x) \\leqslant 0$ sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$ (moitié gauche du cercle), donc $f$ concave et sa courbe en dessous de ses tangentes : 0,25 pt.\n- Contre-exemple : tangente au point d'abscisse $\\pi$, d'équation $y = x + 1$, et $f\\left(\\dfrac{\\pi}{2}\\right) = \\dfrac{\\pi}{2} < \\dfrac{\\pi}{2} + 1$ : 0,25 pt.\n- Conclusion : l'affirmation est fausse : 0,25 pt.",
+        "solution": "Pour tout $x$ de $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$, $f'(x) = 1 - \\big(-\\sin(x)\\big) = 1 + \\sin(x)$ et $f''(x) = \\cos(x)$.\n\nPour $x$ dans $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$, le point $M(x)$ est dans la moitié gauche du cercle trigonométrique : $\\cos(x) \\leqslant 0$, donc $f''(x) \\leqslant 0$. La fonction $f$ est concave sur cet intervalle : sa courbe est **en dessous** de ses tangentes.\n\nVérifions-le sur un exemple, avec la tangente au point d'abscisse $\\pi$ : $f(\\pi) = \\pi - \\cos(\\pi) = \\pi + 1$ et $f'(\\pi) = 1 + \\sin(\\pi) = 1$, d'où l'équation $y = 1 \\times (x - \\pi) + \\pi + 1$, soit $y = x + 1$. Au point d'abscisse $\\dfrac{\\pi}{2}$, la courbe a pour ordonnée $f\\left(\\dfrac{\\pi}{2}\\right) = \\dfrac{\\pi}{2} - \\cos\\left(\\dfrac{\\pi}{2}\\right) = \\dfrac{\\pi}{2}$, et la tangente $\\dfrac{\\pi}{2} + 1$ : la courbe est strictement en dessous de cette tangente.\n\n**L'affirmation 2 est fausse.**",
+        "erreurFrequente": "Écrire $f'(x) = 1 - \\sin(x)$ en oubliant que la dérivée de $\\cos$ est $-\\sin$ : on trouve alors $f''(x) = -\\cos(x) \\geqslant 0$, et la conclusion inverse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "**Affirmation 3** : on considère la fonction $f$ définie sur l'intervalle $]0\\,;\\,+\\infty[$ par $f(x) = 1 + \\dfrac{\\sin(x)}{x}$. La droite d'équation $y = 1$ est une asymptote horizontale de la courbe représentative de la fonction $f$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Pour $x > 0$, $-\\dfrac{1}{x} \\leqslant \\dfrac{\\sin(x)}{x} \\leqslant \\dfrac{1}{x}$, et $-\\dfrac{1}{x}$ et $\\dfrac{1}{x}$ tendent vers $0$ en $+\\infty$ : d'après le théorème des gendarmes, $\\dfrac{\\sin(x)}{x}$ tend vers $0$, donc $f(x)$ tend vers $1$ en $+\\infty$."
+        },
+        "revoir": "l-limites-fonctions-041",
+        "indices": [
+          "La droite d'équation $y = 1$ est asymptote horizontale si $f(x)$ tend vers $1$ en $+\\infty$. Le sinus n'a pas de limite en $+\\infty$ : encadre-le.",
+          "Pars de $-1 \\leqslant \\sin(x) \\leqslant 1$, divise par $x > 0$, puis applique un théorème de la leçon sur les limites."
+        ],
+        "attenduCorrecteur": "- Lien entre asymptote horizontale et limite : il suffit d'établir $\\lim\\limits_{x \\to +\\infty} f(x) = 1$ : 0,25 pt.\n- Encadrement $-\\dfrac{1}{x} \\leqslant \\dfrac{\\sin(x)}{x} \\leqslant \\dfrac{1}{x}$ pour $x > 0$, division par $x > 0$ signalée : 0,25 pt.\n- Théorème des gendarmes nommé : $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\sin(x)}{x} = 0$ : 0,25 pt.\n- Conclusion : $\\lim\\limits_{x \\to +\\infty} f(x) = 1$, l'affirmation est vraie : 0,25 pt.",
+        "solution": "Pour tout réel $x > 0$, $-1 \\leqslant \\sin(x) \\leqslant 1$ ; en divisant par $x > 0$, le sens des inégalités ne change pas :\n\n$$-\\dfrac{1}{x} \\leqslant \\dfrac{\\sin(x)}{x} \\leqslant \\dfrac{1}{x}.$$\n\nOr $\\lim\\limits_{x \\to +\\infty} \\left(-\\dfrac{1}{x}\\right) = 0$ et $\\lim\\limits_{x \\to +\\infty} \\dfrac{1}{x} = 0$. D'après le théorème des gendarmes, $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\sin(x)}{x} = 0$, donc $\\lim\\limits_{x \\to +\\infty} f(x) = 1 + 0 = 1$.\n\nLa droite d'équation $y = 1$ est donc asymptote horizontale à la courbe représentative de $f$ en $+\\infty$.\n\n**L'affirmation 3 est vraie.**",
+        "erreurFrequente": "Confondre avec la limite en $0$ : $\\dfrac{\\sin(x)}{x}$ tend vers $1$ quand $x$ tend vers $0$, mais vers $0$ quand $x$ tend vers $+\\infty$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "**Affirmation 4** : on considère les fonctions $f$ et $g$ définies sur $\\mathbb{R}$ par $f(x) = 2x$ et $g(x) = \\sin(x)$. On note $\\mathcal{C}_f$ et $\\mathcal{C}_g$ leurs courbes représentatives dans un repère. Les courbes $\\mathcal{C}_f$ et $\\mathcal{C}_g$ ont un seul point d'intersection.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "La fonction $d$ définie par $d(x) = 2x - \\sin(x)$ a pour dérivée $d'(x) = 2 - \\cos(x) \\geqslant 1 > 0$ : elle est strictement croissante sur $\\mathbb{R}$, donc s'annule au plus une fois. Comme $d(0) = 0$, l'équation $2x = \\sin(x)$ a pour seule solution $0$ : un seul point d'intersection, l'origine."
+        },
+        "revoir": "l-trigonometrie-032",
+        "indices": [
+          "Les abscisses des points d'intersection sont les solutions de $2x = \\sin(x)$ : étudie la fonction différence $d$, définie par $d(x) = 2x - \\sin(x)$ sur $\\mathbb{R}$.",
+          "Encadre $d'(x)$ grâce à l'encadrement du cosinus, puis cherche une solution évidente de $d(x) = 0$."
+        ],
+        "attenduCorrecteur": "- Traduction : les abscisses des points d'intersection sont les solutions de $d(x) = 2x - \\sin(x) = 0$ : 0,25 pt.\n- $d'(x) = 2 - \\cos(x) \\geqslant 1 > 0$, donc $d$ strictement croissante sur $\\mathbb{R}$ : 0,25 pt.\n- $d(0) = 0$ et stricte monotonie : $0$ est l'unique solution : 0,25 pt.\n- Conclusion : un seul point d'intersection, l'origine du repère ; l'affirmation est vraie : 0,25 pt.",
+        "solution": "Un point d'intersection de $\\mathcal{C}_f$ et de $\\mathcal{C}_g$ a une abscisse $x$ telle que $2x = \\sin(x)$, c'est-à-dire $d(x) = 0$, où $d(x) = 2x - \\sin(x)$ pour tout réel $x$.\n\nLa fonction $d$ est dérivable sur $\\mathbb{R}$ et $d'(x) = 2 - \\cos(x)$. Comme $\\cos(x) \\leqslant 1$, on a $d'(x) \\geqslant 2 - 1 = 1 > 0$ : la fonction $d$ est strictement croissante sur $\\mathbb{R}$. Elle prend donc au plus une fois la valeur $0$ : si $a < b$, alors $d(a) < d(b)$, et $d(a)$ et $d(b)$ ne peuvent pas être tous deux nuls.\n\nOr $d(0) = 2 \\times 0 - \\sin(0) = 0$ : $0$ est l'unique solution de l'équation $2x = \\sin(x)$. Les deux courbes ont un seul point d'intersection, l'origine du repère, de coordonnées $(0\\,;\\,0)$.\n\n**L'affirmation 4 est vraie.**",
+        "erreurFrequente": "Se contenter de remarquer que $0$ est solution : cela prouve qu'il y a au moins un point d'intersection, pas qu'il n'y en a qu'un. C'est la stricte croissance de $d$ qui garantit l'unicité."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "**Affirmation 5** : on considère la suite $(v_n)$ définie pour tout entier naturel $n$ par $v_n = \\dfrac{2n + \\sin(n)}{n + 1}$. La suite $(v_n)$ diverge.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Pour tout entier naturel $n$, $\\dfrac{2n - 1}{n + 1} \\leqslant v_n \\leqslant \\dfrac{2n + 1}{n + 1}$, et les deux suites qui encadrent $(v_n)$ convergent vers $2$ : d'après le théorème des gendarmes, $(v_n)$ converge vers $2$."
+        },
+        "revoir": "l-limites-suites-031",
+        "indices": [
+          "Le terme $\\sin(n)$ n'a pas de limite, mais il est borné : encadre $2n + \\sin(n)$, puis divise par $n + 1 > 0$.",
+          "Pour la limite des deux suites qui encadrent, factorise par $n$ au numérateur et au dénominateur."
+        ],
+        "attenduCorrecteur": "- Encadrement $\\dfrac{2n - 1}{n + 1} \\leqslant v_n \\leqslant \\dfrac{2n + 1}{n + 1}$, déduit de $-1 \\leqslant \\sin(n) \\leqslant 1$ et de $n + 1 > 0$ : 0,25 pt.\n- Limites des deux suites qui encadrent égales à $2$, forme indéterminée levée en factorisant par $n$ : 0,25 pt.\n- Théorème des gendarmes nommé : $(v_n)$ converge vers $2$ : 0,25 pt.\n- Conclusion : la suite converge, l'affirmation est fausse : 0,25 pt.",
+        "solution": "Pour tout entier naturel $n$, $-1 \\leqslant \\sin(n) \\leqslant 1$, donc $2n - 1 \\leqslant 2n + \\sin(n) \\leqslant 2n + 1$. En divisant par $n + 1 > 0$ :\n\n$$\\dfrac{2n - 1}{n + 1} \\leqslant v_n \\leqslant \\dfrac{2n + 1}{n + 1}.$$\n\nPour $n \\geqslant 1$, on factorise par $n$ : $\\dfrac{2n - 1}{n + 1} = \\dfrac{2 - \\frac{1}{n}}{1 + \\frac{1}{n}}$ et $\\dfrac{2n + 1}{n + 1} = \\dfrac{2 + \\frac{1}{n}}{1 + \\frac{1}{n}}$. Comme $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$, ces deux suites convergent vers $\\dfrac{2}{1} = 2$.\n\nD'après le théorème des gendarmes, la suite $(v_n)$ converge vers $2$ : elle ne diverge pas.\n\n**L'affirmation 5 est fausse.**",
+        "erreurFrequente": "Penser que $(v_n)$ diverge parce que $\\sin(n)$ n'a pas de limite : divisé par $n + 1$, ce terme borné devient négligeable."
+      }
+    ]
+  }
+]
