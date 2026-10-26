@@ -80,10 +80,10 @@
           "type": "propriete",
           "titre": "Les primitives d'une fonction diffèrent d'une constante",
           "capacites": ["bo-m-primitives-01"],
-          "texte": "Soit $f$ une fonction continue sur un intervalle $I$.\n\n- $f$ admet des primitives sur $I$. Ce premier point est admis.\n- Si $F$ est une primitive de $f$ sur $I$, les primitives de $f$ sur $I$ sont exactement les fonctions $x \\mapsto F(x) + C$, où $C$ est un réel quelconque. Autrement dit, deux primitives de $f$ sur $I$ diffèrent d'une constante.\n- Pour un réel $x_0$ de $I$ et un réel $y_0$, une seule primitive $F$ de $f$ sur $I$ vérifie $F(x_0) = y_0$.\n\nPour certaines fonctions, comme $x \\mapsto e^{-x^2}$, on ne sait pas écrire de primitive avec les fonctions usuelles : pourtant, il en existe.",
+          "texte": "Soit $f$ une fonction continue sur un intervalle $I$.\n\n- $f$ admet des primitives sur $I$. Ce premier point est admis.\n- Si $F$ est une primitive de $f$ sur $I$, les primitives de $f$ sur $I$ sont exactement les fonctions $x \\mapsto F(x) + C$, avec $C$ réel. Autrement dit, deux primitives de $f$ sur $I$ diffèrent d'une constante.\n- Pour un réel $x_0$ de $I$ et un réel $y_0$, une seule primitive $F$ de $f$ sur $I$ vérifie $F(x_0) = y_0$.\n\nPour certaines fonctions, comme $x \\mapsto e^{-x^2}$, on ne sait pas écrire de primitive avec les fonctions usuelles : pourtant, il en existe.",
           "conditions": [
             "$f$ est continue sur $I$.",
-            "$I$ est un **intervalle**. Sur une réunion d'intervalles, comme $]-\\infty\\,;\\,0[\\; \\cup \\;]0\\,;\\,+\\infty[$, la constante peut changer d'un morceau à l'autre. Par exemple, la fonction égale à $-\\dfrac{1}{x}$ sur $]-\\infty\\,;\\,0[$ et à $-\\dfrac{1}{x} + 1$ sur $]0\\,;\\,+\\infty[$ a pour dérivée $\\dfrac{1}{x^2}$ en tout réel non nul, sans être de la forme $x \\mapsto -\\dfrac{1}{x} + C$."
+            "$I$ est un **intervalle**. Sur une réunion d'intervalles, comme $]-\\infty\\,;\\,0[\\; \\cup \\;]0\\,;\\,+\\infty[$, la constante peut changer d'un morceau à l'autre. Par exemple, soit $G$ la fonction égale à $-\\dfrac{1}{x}$ sur $]-\\infty\\,;\\,0[$ et à $-\\dfrac{1}{x} + 1$ sur $]0\\,;\\,+\\infty[$. Elle a pour dérivée $\\dfrac{1}{x^2}$ en tout réel non nul, mais elle n'est pas de la forme $x \\mapsto -\\dfrac{1}{x} + C$."
           ],
           "admise": false
         },
@@ -187,7 +187,7 @@
             "Vérifie que $F$ est dérivable sur l'intervalle $I$ de l'énoncé : somme, produit, quotient ou composée de fonctions dérivables.",
             "Calcule $F'(x)$ avec les règles de dérivation, puis simplifie : développe, réduis ou mets en facteur, pour obtenir la même écriture que $f(x)$.",
             "Compare : si $F'(x) = f(x)$ pour tout $x$ de $I$, conclus « $F$ est une primitive de $f$ sur $I$ ». Sinon, trouve un réel $x$ où $F'(x) \\neq f(x)$ : ce contre-exemple prouve que non.",
-            "Si $F$ contient des coefficients inconnus, comme $F(x) = (ax + b)e^{-x}$ : dérive, mets l'exponentielle en facteur, puis **identifie** avec $f(x)$, c'est-à-dire égale les coefficients de $x$, puis les termes constants (voir l'exemple qui suit).",
+            "Si $F$ contient des coefficients inconnus, comme $F(x) = (ax + b)e^{-x}$ : dérive, mets l'exponentielle en facteur, puis **identifie** avec $f(x)$. L'exponentielle n'étant jamais nulle, divise par elle, puis égale les coefficients de $x$ et les termes constants (voir l'exemple qui suit).",
             "Pour écrire toutes les primitives, ajoute une constante : $x \\mapsto F(x) + C$, avec $C$ réel.",
             "Pour la primitive qui vaut $y_0$ en $x_0$, résous l'équation $F(x_0) + C = y_0$ d'inconnue $C$, puis remplace $C$ par sa valeur."
           ],
@@ -548,7 +548,7 @@
           "type": "propriete",
           "titre": "Solutions de l'équation $y' = ay$",
           "capacites": ["bo-m-primitives-03"],
-          "texte": "Soit $a$ un nombre réel. Les solutions sur $\\mathbb{R}$ de l'équation différentielle $y' = ay$ sont les fonctions$$x \\mapsto Ce^{ax},$$où $C$ est un nombre réel quelconque.\n\nEn particulier, la somme de deux solutions et le produit d'une solution par un réel sont encore des solutions. Une solution autre que la fonction nulle ne s'annule jamais, car $e^{ax} > 0$.\n\nLe résultat est le même sur tout intervalle $I$, par exemple $[0\\,;\\,+\\infty[$ : les solutions sur $I$ sont les fonctions $x \\mapsto Ce^{ax}$, pour $x$ dans $I$, et la démonstration est identique.",
+          "texte": "Soit $a$ un nombre réel. Les solutions sur $\\mathbb{R}$ de l'équation différentielle $y' = ay$ sont les fonctions$$x \\mapsto Ce^{ax},$$où $C$ est un nombre réel quelconque.\n\nEn particulier, la somme de deux solutions et le produit d'une solution par un réel sont encore des solutions. Une solution autre que la fonction nulle ne s'annule jamais, car $e^{ax} > 0$.\n\nLe résultat est le même sur tout intervalle $I$, par exemple $[0\\,;\\,+\\infty[$ : les solutions sur $I$ sont les fonctions $x \\mapsto Ce^{ax}$, pour $x$ dans $I$. La démonstration est identique.",
           "conditions": [
             "$a$ est un nombre réel constant : il ne dépend pas de $x$.",
             "Les solutions sont cherchées parmi les fonctions dérivables sur $\\mathbb{R}$, ou sur un intervalle $I$ : le résultat est le même."
@@ -968,10 +968,10 @@
           "titre": "Comment approcher une solution par la méthode d'Euler ?",
           "capacites": ["bo-m-primitives-10"],
           "etapes": [
-            "Sers-toi de cette méthode quand tu ne sais pas écrire la solution exacte : par exemple pour $y' = e^{-x^2}$, dont on ne sait pas écrire de primitive. Elle donne des valeurs approchées de la solution, point par point.",
+            "Sers-toi de cette méthode quand tu ne sais pas écrire la solution exacte, ou quand l'énoncé te la demande. Par exemple, pour $y' = e^{-x^2}$, on ne sait pas écrire de primitive de $x \\mapsto e^{-x^2}$. La méthode donne des valeurs approchées de la solution, point par point.",
             "Choisis un pas $h > 0$, petit, et pars du point $(x_0\\,;\\,y_0)$ donné par la condition initiale. Les abscisses suivantes sont $x_1 = x_0 + h$, $x_2 = x_1 + h$, et ainsi de suite. On note $y_n$ l'ordonnée du point d'abscisse $x_n$ : c'est une valeur approchée de $y(x_n)$, la valeur inconnue de la solution.",
-            "Avance le long de la tangente. Au point d'abscisse $x$, la tangente à la courbe de la solution $y$ a pour équation $Y = y(x) + y'(x)(X - x)$, où $X$ et $Y$ sont les coordonnées d'un point de la tangente. En $X = x + h$, elle passe à la hauteur $y(x) + h \\times y'(x)$. Pour $h$ petit, la courbe est proche de sa tangente : $y(x + h) \\approx y(x) + h \\times y'(x)$.",
-            "Calcule la pente avec l'équation, en remplaçant la valeur inconnue $y(x_n)$ par sa valeur approchée $y_n$ : la pente vaut $ay_n + b$ pour $y' = ay + b$, et $f(x_n)$ pour $y' = f$. D'où $y_{n+1} = y_n + h(ay_n + b)$, ou $y_{n+1} = y_n + hf(x_n)$.",
+            "Avance le long de la tangente. Au point d'abscisse $x$, la tangente à la courbe de la solution $y$ a pour équation $Y = y(x) + y'(x)(X - x)$. Ici, $X$ et $Y$ sont les coordonnées d'un point de la tangente. En $X = x + h$, la tangente passe à la hauteur $y(x) + h \\times y'(x)$. Pour $h$ petit, la courbe est proche de sa tangente : $y(x + h) \\approx y(x) + h \\times y'(x)$.",
+            "Calcule la pente avec l'équation, en remplaçant la valeur inconnue $y(x_n)$ par sa valeur approchée $y_n$. La pente vaut $ay_n + b$ pour $y' = ay + b$, et $f(x_n)$ pour $y' = f$. D'où $y_{n+1} = y_n + h(ay_n + b)$, ou $y_{n+1} = y_n + hf(x_n)$.",
             "Répète : après $n$ étapes, $y_n$ est une valeur approchée de la solution en $x_n = x_0 + nh$. Par exemple, pour $y' = y$, $y(0) = 1$ et $h = 0{,}5$ : $y_1 = 1 + 0{,}5 \\times 1 = 1{,}5$, puis $y_2 = 1{,}5 + 0{,}5 \\times 1{,}5 = 2{,}25$. En général, plus $h$ est petit, meilleure est l'approximation, mais il faut plus d'étapes."
           ],
           "code": {
@@ -1050,12 +1050,20 @@
           "type": "propriete",
           "titre": "Solutions de $y' = ay + f$ à partir d'une solution particulière",
           "capacites": ["bo-m-primitives-06"],
-          "texte": "Soit $a$ un réel et $f$ une fonction continue sur un intervalle $I$. On note $(E)$ l'équation $y' = ay + f$, et $(E_0)$ l'équation $y' = ay$, appelée **équation sans second membre** associée à $(E)$.\n\nSi $g$ est une solution particulière de $(E)$ sur $I$, alors :\n\n- une fonction $h$ dérivable sur $I$ est solution de $(E)$ si et seulement si $h - g$ est solution de $(E_0)$ ;\n- les solutions de $(E)$ sur $I$ sont les fonctions$$x \\mapsto Ce^{ax} + g(x),$$où $C$ est un réel quelconque.\n\n**Pourquoi** : $g' = ag + f$. Si $h' = ah + f$, alors $(h - g)' = ah + f - ag - f = a(h - g)$. Réciproquement, si $(h - g)' = a(h - g)$, alors $h' = a(h - g) + g' = ah - ag + ag + f = ah + f$. Les solutions de $(E_0)$ sur $I$ étant les fonctions $x \\mapsto Ce^{ax}$, on obtient $h = Ce^{ax} + g$.\n\n**Attention aux lettres** : ici, $f$ est le second membre, $g$ la solution particulière et $h$ une solution quelconque. Les lettres changent d'un sujet à l'autre : au bac, la solution s'appelle souvent $f$, et la solution particulière $h$ ou $g$. Repère d'abord quelle fonction est la solution particulière donnée.",
+          "texte": "Soit $a$ un réel et $f$ une fonction continue sur un intervalle $I$. On note $(E)$ l'équation $y' = ay + f$, et $(E_0)$ l'équation $y' = ay$, appelée **équation sans second membre** associée à $(E)$.\n\nSi $g$ est une solution particulière de $(E)$ sur $I$, alors :\n\n- une fonction $h$ dérivable sur $I$ est solution de $(E)$ si et seulement si $h - g$ est solution de $(E_0)$ ;\n- les solutions de $(E)$ sur $I$ sont les fonctions$$x \\mapsto Ce^{ax} + g(x),$$où $C$ est un réel quelconque.\n\n**Pourquoi** : $g' = ag + f$. Si $h' = ah + f$, alors $(h - g)' = ah + f - ag - f = a(h - g)$. Réciproquement, si $(h - g)' = a(h - g)$, alors $h' = a(h - g) + g' = ah - ag + ag + f = ah + f$. Les solutions de $(E_0)$ sur $I$ étant les fonctions $x \\mapsto Ce^{ax}$, on obtient $h = Ce^{ax} + g$.",
           "conditions": [
             "$a$ est un réel et $f$ une fonction continue sur l'intervalle $I$.",
             "$g$ est une solution de $(E)$ sur $I$, donnée par l'énoncé ou cherchée sous une forme imposée."
           ],
           "admise": false
+        },
+        {
+          "id": "l-primitives-equations-differentielles-074",
+          "type": "piege",
+          "titre": "Qui est la solution particulière ?",
+          "faux": "Les solutions de $y' = y + x$ sont les fonctions $x \\mapsto Ce^{x} + x$ : on ajoute le second membre $x$ aux solutions de $y' = y$.",
+          "juste": "On ajoute une **solution particulière**, pas le second membre. La fonction $x \\mapsto -x - 1$ est solution de $y' = y + x$ : sa dérivée vaut $-1$, et $-x - 1 + x = -1$. Les solutions sont donc les fonctions $x \\mapsto Ce^{x} - x - 1$.",
+          "explication": "Dans la propriété ci-dessus, $f$ est le second membre, $g$ la solution particulière et $h$ une solution quelconque. Les lettres changent d'un sujet à l'autre : au bac, la solution s'appelle souvent $f$, et la solution particulière $h$ ou $g$. Repère d'abord la fonction que l'énoncé donne comme solution particulière : c'est elle qu'on ajoute à $Ce^{ax}$. Contrôle : $(Ce^{x} + x)' = Ce^{x} + 1$, alors que $Ce^{x} + x + x = Ce^{x} + 2x$. Ces deux expressions diffèrent dès que $x \\neq \\dfrac{1}{2}$ : aucune de ces fonctions n'est solution."
         },
         {
           "id": "l-primitives-equations-differentielles-067",
