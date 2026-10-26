@@ -1,0 +1,713 @@
+[
+  {
+    "id": "tb-primitives-equations-differentielles-001",
+    "chapitre": "primitives-equations-differentielles",
+    "notions": [
+      "n-primitives-equations-differentielles-primitive",
+      "n-primitives-equations-differentielles-calcul"
+    ],
+    "capacites": [
+      "bo-m-primitives-01",
+      "bo-m-primitives-04",
+      "bo-m-logarithme-03",
+      "bo-m-logarithme-04",
+      "bo-m-logarithme-05",
+      "bo-m-limites-fonctions-04",
+      "bo-m-derivation-02",
+      "bo-m-derivation-03",
+      "bo-m-derivation-04",
+      "bo-m-derivation-07"
+    ],
+    "titre": "La fonction $\\dfrac{2\\ln(x)}{x}$ et sa primitive $[\\ln(x)]^2$ : variations, convexité, inégalité",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2022-polynesie-aout-j1",
+      "adaptation": "Exercice 3 (7 points) : partie 1 (dérivée de $g(x) = \\dfrac{2\\ln(x)}{x}$ ; justification du tableau de variations donné : valeur $\\dfrac{2}{e}$, variations, limites aux bornes ; tableau de signes de $g$) et partie 2 ($f(x) = [\\ln(x)]^2$ primitive de $g$, convexité et variations de $f$ déduites de la partie 1, tangente au point d'abscisse $e$, inégalité $[\\ln(x)]^2 \\geqslant \\dfrac{2}{e}x - 1$ sur $]0\\,;\\,e]$) conservées, renommées parties A et B. La question 2.1 (« démontrer que $f$ est une primitive de $g$ ») devient deux questions : trouver une primitive de $g$ en reconnaissant la forme $u'u$ (B.1.a), puis démontrer que $f$ est la primitive de $g$ qui s'annule en $1$ (B.1.b). Ajouté : coordonnées du point d'inflexion (B.2.a). Aucune question retirée. Exercice ramené de 7 à 6 points. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Dans tout l'exercice, $\\ln$ désigne la fonction logarithme népérien.\n\n**Partie A.** Soit $g$ la fonction définie sur l'intervalle $]0\\,;\\,+\\infty[$ par :\n\n$$g(x) = \\dfrac{2\\ln(x)}{x}.$$\n\nOn admet que $g$ est dérivable sur $]0\\,;\\,+\\infty[$ et on note $g'$ sa fonction dérivée.\n\n**Partie B.** Soit $f$ la fonction définie sur l'intervalle $]0\\,;\\,+\\infty[$ par :\n\n$$f(x) = [\\ln(x)]^2.$$\n\nDans cette partie, chaque étude est effectuée sur l'intervalle $]0\\,;\\,+\\infty[$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Démontrer que, pour tout réel $x$ strictement positif :\n\n$$g'(x) = \\dfrac{2 - 2\\ln(x)}{x^2}.$$",
+        "points": 0.5,
+        "revoir": "l-logarithme-039",
+        "indices": [
+          "$g$ est un quotient $\\dfrac{u}{v}$, avec $u(x) = 2\\ln(x)$ et $v(x) = x$ : applique $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$, avec $\\ln'(x) = \\dfrac{1}{x}$.",
+          "Calcule d'abord le produit $u'(x) \\times v(x)$ : $\\dfrac{2}{x} \\times x$ se simplifie."
+        ],
+        "attenduCorrecteur": "- Formule de la dérivée d'un quotient, avec $u(x) = 2\\ln(x)$, $u'(x) = \\dfrac{2}{x}$, $v(x) = x$ et $v'(x) = 1$ ; $v$ ne s'annule pas sur $]0\\,;\\,+\\infty[$ : 0,25 pt.\n- Calcul $\\dfrac{\\frac{2}{x} \\times x - 2\\ln(x) \\times 1}{x^2}$ et simplification jusqu'à l'expression demandée : 0,25 pt.",
+        "solution": "Pour tout réel $x > 0$, on écrit $g = \\dfrac{u}{v}$ avec $u(x) = 2\\ln(x)$, $u'(x) = \\dfrac{2}{x}$, $v(x) = x$ et $v'(x) = 1$ ; la fonction $v$ ne s'annule pas sur $]0\\,;\\,+\\infty[$. Alors :\n\n$$g'(x) = \\dfrac{u'(x)v(x) - u(x)v'(x)}{v(x)^2} = \\dfrac{\\dfrac{2}{x} \\times x - 2\\ln(x) \\times 1}{x^2} = \\dfrac{2 - 2\\ln(x)}{x^2}.$$",
+        "erreurFrequente": "Dériver le numérateur et le dénominateur séparément, ce qui donne $\\dfrac{2}{x}$ : la dérivée d'un quotient n'est pas le quotient des dérivées."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "On dispose du tableau de variations de la fonction $g$ sur l'intervalle $]0\\,;\\,+\\infty[$ :\n\n| $x$ | $0$ | | $1$ | | $e$ | | $+\\infty$ |\n|---|---|---|---|---|---|---|---|\n| variations de $g$ | $-\\infty$ | $\\nearrow$ | $0$ | $\\nearrow$ | $\\dfrac{2}{e}$ | $\\searrow$ | $0$ |\n\nJustifier les informations suivantes lues dans ce tableau.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "La valeur $\\dfrac{2}{e}$.",
+            "points": 0.25,
+            "revoir": "l-logarithme-005",
+            "indices": [
+              "La valeur $\\dfrac{2}{e}$ est placée sous $x = e$ : calcule $g(e)$, en te rappelant ce que vaut $\\ln(e)$."
+            ],
+            "attenduCorrecteur": "- $g(e) = \\dfrac{2\\ln(e)}{e} = \\dfrac{2}{e}$, car $\\ln(e) = 1$ : 0,25 pt.",
+            "solution": "Comme $\\ln(e) = 1$ :\n\n$$g(e) = \\dfrac{2\\ln(e)}{e} = \\dfrac{2 \\times 1}{e} = \\dfrac{2}{e}.$$\n\nC'est la valeur placée sous $x = e$. De même, $g(1) = \\dfrac{2\\ln(1)}{1} = 0$, la valeur placée sous $x = 1$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Les variations de la fonction $g$ sur l'intervalle $]0\\,;\\,+\\infty[$.",
+            "points": 0.5,
+            "revoir": "l-logarithme-048",
+            "indices": [
+              "Les variations se lisent sur le signe de $g'(x)$ : le dénominateur $x^2$ est strictement positif, tout dépend donc du numérateur $2 - 2\\ln(x)$.",
+              "Résous l'inéquation $2 - 2\\ln(x) > 0$ : isole $\\ln(x)$, puis passe à l'exponentielle, qui garde le sens des inégalités."
+            ],
+            "attenduCorrecteur": "- Signe de $g'(x)$ : $x^2 > 0$, et $2 - 2\\ln(x) > 0 \\iff \\ln(x) < 1 \\iff x < e$ ; donc $g'(x) > 0$ sur $]0\\,;\\,e[$, $g'(e) = 0$ et $g'(x) < 0$ sur $]e\\,;\\,+\\infty[$ : 0,25 pt.\n- Conclusion : $g$ strictement croissante sur $]0\\,;\\,e]$ et strictement décroissante sur $[e\\,;\\,+\\infty[$ : 0,25 pt.",
+            "solution": "D'après la question A.1, pour tout $x > 0$, $g'(x) = \\dfrac{2 - 2\\ln(x)}{x^2}$, avec $x^2 > 0$ : $g'(x)$ a le signe de $2 - 2\\ln(x)$. Or :\n\n$$2 - 2\\ln(x) > 0 \\iff \\ln(x) < 1 \\iff x < e,$$\n\ncar la fonction exponentielle est strictement croissante et $e^{\\ln(x)} = x$. De même, $2 - 2\\ln(x) < 0 \\iff x > e$, et $g'(e) = 0$.\n\nDonc $g'(x) > 0$ sur $]0\\,;\\,e[$ et $g'(x) < 0$ sur $]e\\,;\\,+\\infty[$ : la fonction $g$ est strictement croissante sur $]0\\,;\\,e]$ et strictement décroissante sur $[e\\,;\\,+\\infty[$, comme l'indique le tableau."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "Les limites de la fonction $g$ aux bornes de l'intervalle $]0\\,;\\,+\\infty[$.",
+            "points": 0.75,
+            "revoir": "l-logarithme-066",
+            "indices": [
+              "En $0$, écris $g(x) = 2\\ln(x) \\times \\dfrac{1}{x}$ : vers quoi tend chaque facteur quand $x$ tend vers $0$ en restant positif ? Le produit est-il une forme indéterminée ?",
+              "En $+\\infty$, $\\dfrac{\\ln(x)}{x}$ est une forme indéterminée « $\\dfrac{\\infty}{\\infty}$ » : une croissance comparée du cours permet de la lever."
+            ],
+            "attenduCorrecteur": "- En $0$ : $\\ln(x)$ tend vers $-\\infty$ et $\\dfrac{1}{x}$ vers $+\\infty$ quand $x$ tend vers $0$ avec $x > 0$ ; par produit, $g(x)$ tend vers $-\\infty$ : 0,25 pt.\n- En $+\\infty$ : forme indéterminée repérée et croissance comparée citée, $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln(x)}{x} = 0$ : 0,25 pt.\n- Conclusion $\\lim\\limits_{x \\to +\\infty} g(x) = 2 \\times 0 = 0$ : 0,25 pt.",
+            "solution": "**En $0$.** Pour $x > 0$, $g(x) = 2\\ln(x) \\times \\dfrac{1}{x}$. Or $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\ln(x) = -\\infty$ et $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\dfrac{1}{x} = +\\infty$. Par produit, sans forme indéterminée :\n\n$$\\lim_{\\substack{x \\to 0 \\\\ x > 0}} g(x) = -\\infty.$$\n\n**En $+\\infty$.** $\\ln(x)$ et $x$ tendent tous deux vers $+\\infty$ : le quotient $\\dfrac{\\ln(x)}{x}$ est une forme indéterminée. Par croissances comparées, $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln(x)}{x} = 0$. Donc, par produit par $2$ :\n\n$$\\lim_{x \\to +\\infty} g(x) = 2 \\times 0 = 0.$$",
+            "erreurFrequente": "Voir une forme indéterminée en $0$ : « $-\\infty \\times (+\\infty)$ » n'en est pas une, le produit tend vers $-\\infty$."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "En déduire le tableau de signes de la fonction $g$ sur l'intervalle $]0\\,;\\,+\\infty[$.",
+        "points": 0.5,
+        "revoir": "l-logarithme-024",
+        "indices": [
+          "Le tableau montre que $g$ s'annule en $1$. Sur $]0\\,;\\,1[$, compare $g(x)$ à $g(1)$ grâce au sens de variation de $g$.",
+          "Sur $]1\\,;\\,+\\infty[$, le plus simple est de revenir à l'expression de $g(x)$ : $x > 0$, donc $g(x)$ a le signe de $\\ln(x)$."
+        ],
+        "attenduCorrecteur": "- $g(x) < 0$ sur $]0\\,;\\,1[$ et $g(1) = 0$, justifié (stricte croissance de $g$ sur $]0\\,;\\,e]$, ou signe de $\\ln(x)$) : 0,25 pt.\n- $g(x) > 0$ sur $]1\\,;\\,+\\infty[$, justifié ($\\ln(x) > 0$ et $x > 0$), et tableau de signes complet : 0,25 pt.",
+        "solution": "- Sur $]0\\,;\\,1[$ : $g$ est strictement croissante sur $]0\\,;\\,e]$, qui contient $]0\\,;\\,1]$, et $g(1) = 0$. Donc, pour $0 < x < 1$, $g(x) < g(1) = 0$.\n- Sur $]1\\,;\\,+\\infty[$ : pour $x > 1$, $\\ln(x) > 0$ et $x > 0$, donc $g(x) = \\dfrac{2\\ln(x)}{x} > 0$.\n\nD'où le tableau de signes de $g$ :\n\n| $x$ | $0$ | | $1$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $g(x)$ | | $-$ | $0$ | $+$ | |"
+      },
+      {
+        "id": "q4",
+        "label": "B.1.",
+        "enonce": "Une primitive de la fonction $g$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Vérifier que, pour tout réel $x > 0$, $g(x) = 2 \\times \\dfrac{1}{x} \\times \\ln(x)$. En reconnaissant une forme $u'u$, où $u$ est une fonction à préciser, déterminer une primitive de la fonction $g$ sur $]0\\,;\\,+\\infty[$.",
+            "points": 0.75,
+            "revoir": "l-primitives-equations-differentielles-024",
+            "indices": [
+              "Prends $u(x) = \\ln(x)$ : que vaut $u'(x)$ ? Repère ensuite, dans le tableau des primitives des fonctions composées, la ligne $u'u^n$ et la valeur de $n$ qui convient.",
+              "Avec $n = 1$, la ligne du tableau donne une primitive de $u'u^1$ : $\\dfrac{u^{1+1}}{1+1}$. Le facteur $2$ reste devant ; contrôle ensuite en dérivant."
+            ],
+            "attenduCorrecteur": "- Écriture $g(x) = 2u'(x)u(x)$, avec $u(x) = \\ln(x)$ et $u'(x) = \\dfrac{1}{x}$ : 0,25 pt.\n- Forme $u'u^n$ avec $n = 1$ reconnue, dont une primitive est $\\dfrac{u^2}{2}$ : 0,25 pt.\n- Une primitive de $g$ : $x \\mapsto 2 \\times \\dfrac{[\\ln(x)]^2}{2} = [\\ln(x)]^2$ : 0,25 pt.",
+            "solution": "Pour tout $x > 0$, $g(x) = \\dfrac{2\\ln(x)}{x} = 2 \\times \\dfrac{1}{x} \\times \\ln(x)$.\n\nOn pose $u(x) = \\ln(x)$ : $u$ est dérivable sur $]0\\,;\\,+\\infty[$ et $u'(x) = \\dfrac{1}{x}$. Ainsi $g(x) = 2u'(x)u(x)$ : au facteur $2$ près, c'est la forme $u'u^n$ avec $n = 1$.\n\nUne primitive de $u'u^1$ est $\\dfrac{u^{1+1}}{1+1} = \\dfrac{u^2}{2}$, et le facteur $2$ reste devant. Une primitive de $g$ sur $]0\\,;\\,+\\infty[$ est donc :\n\n$$x \\mapsto 2 \\times \\dfrac{[\\ln(x)]^2}{2} = [\\ln(x)]^2.$$\n\nContrôle : la dérivée de $[\\ln(x)]^2$ est $2 \\times \\dfrac{1}{x} \\times \\ln(x) = g(x)$.",
+            "erreurFrequente": "Proposer $\\dfrac{[\\ln(x)]^2}{2}$ en oubliant le facteur $2$ : sa dérivée est $\\dfrac{\\ln(x)}{x}$, la moitié de $g(x)$."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Démontrer que $f$ est la primitive de $g$ sur $]0\\,;\\,+\\infty[$ qui s'annule en $1$.",
+            "points": 0.5,
+            "revoir": "l-primitives-equations-differentielles-011",
+            "indices": [
+              "Deux points à établir : $f$ est une primitive de $g$ (dérive $f$, avec $\\left(u^2\\right)' = 2u'u$), puis la condition en $1$.",
+              "Les primitives de $g$ sont les fonctions $f + C$, avec $C$ réel : laquelle vaut $0$ en $1$ ? Utilise $\\ln(1) = 0$."
+            ],
+            "attenduCorrecteur": "- $f'(x) = 2 \\times \\dfrac{1}{x} \\times \\ln(x) = g(x)$ pour tout $x > 0$, donc $f$ est une primitive de $g$ : 0,25 pt.\n- $f(1) = [\\ln(1)]^2 = 0$, et c'est la seule : les primitives de $g$ sont les fonctions $f + C$, et $f(1) + C = 0$ impose $C = 0$ : 0,25 pt.",
+            "solution": "La fonction $f = u^2$, avec $u = \\ln$, est dérivable sur $]0\\,;\\,+\\infty[$, et $\\left(u^2\\right)' = 2u'u$. Pour tout $x > 0$ :\n\n$$f'(x) = 2 \\times \\dfrac{1}{x} \\times \\ln(x) = \\dfrac{2\\ln(x)}{x} = g(x).$$\n\nDonc $f$ est une primitive de $g$ sur l'intervalle $]0\\,;\\,+\\infty[$. Les primitives de $g$ sur cet intervalle sont alors les fonctions $x \\mapsto f(x) + C$, avec $C$ réel. Une telle primitive s'annule en $1$ si et seulement si $f(1) + C = 0$ ; or $f(1) = [\\ln(1)]^2 = 0$, donc $C = 0$.\n\nAinsi, $f$ est la primitive de $g$ sur $]0\\,;\\,+\\infty[$ qui s'annule en $1$."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "label": "B.2.",
+        "enonce": "À l'aide de la partie A, étudier :",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "la convexité de la fonction $f$, en précisant les coordonnées du point d'inflexion de sa courbe représentative ;",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-039",
+            "indices": [
+              "$f' = g$ (question B.1.b) : la dérivée seconde de $f$ est donc la dérivée de $g$, dont tu as étudié le signe à la question A.2.b.",
+              "La convexité se lit sur le signe de $f''$ ; le point d'inflexion est là où $f''$ s'annule en changeant de signe. Calcule son ordonnée avec $f$."
+            ],
+            "attenduCorrecteur": "- $f'' = g'$, de signe connu (A.2.b) : $f''(x) > 0$ sur $]0\\,;\\,e[$ et $f''(x) < 0$ sur $]e\\,;\\,+\\infty[$, donc $f$ convexe sur $]0\\,;\\,e]$ et concave sur $[e\\,;\\,+\\infty[$ : 0,25 pt.\n- $f''$ s'annule en changeant de signe en $e$ : point d'inflexion de coordonnées $(e\\,;\\,1)$, car $f(e) = [\\ln(e)]^2 = 1$ : 0,25 pt.",
+            "solution": "D'après la question B.1.b, $f' = g$. La fonction $g$ étant dérivable, $f$ est deux fois dérivable et $f'' = g'$. D'après la question A.2.b :\n\n- $f''(x) = g'(x) > 0$ pour $x$ dans $]0\\,;\\,e[$ : $f$ est convexe sur $]0\\,;\\,e]$ ;\n- $f''(x) = g'(x) < 0$ pour $x$ dans $]e\\,;\\,+\\infty[$ : $f$ est concave sur $[e\\,;\\,+\\infty[$.\n\nLa dérivée seconde $f''$ s'annule en $e$ en changeant de signe : la courbe de $f$ admet un point d'inflexion d'abscisse $e$. Comme $f(e) = [\\ln(e)]^2 = 1$, ce point a pour coordonnées $(e\\,;\\,1)$.",
+            "erreurFrequente": "Lire la convexité de $f$ sur le signe de $g$ : c'est le signe de $g'$, la dérivée seconde de $f$, qui compte. Le signe de $g = f'$ donne les variations de $f$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "les variations de la fonction $f$.",
+            "points": 0.5,
+            "revoir": "l-primitives-equations-differentielles-013",
+            "indices": [
+              "$f$ est une primitive de $g$ : sa dérivée est $g$, dont tu connais le signe grâce à la question A.3."
+            ],
+            "attenduCorrecteur": "- $f' = g$, donc $f'(x)$ a le signe de $g(x)$, étudié en A.3 : 0,25 pt.\n- $f$ strictement décroissante sur $]0\\,;\\,1]$ et strictement croissante sur $[1\\,;\\,+\\infty[$, de minimum $f(1) = 0$ : 0,25 pt.",
+            "solution": "Comme $f' = g$, le signe de $f'(x)$ est celui de $g(x)$, étudié à la question A.3 : $f'(x) < 0$ sur $]0\\,;\\,1[$, $f'(1) = 0$ et $f'(x) > 0$ sur $]1\\,;\\,+\\infty[$.\n\nLa fonction $f$ est donc strictement décroissante sur $]0\\,;\\,1]$ et strictement croissante sur $[1\\,;\\,+\\infty[$ ; elle atteint son minimum en $1$, égal à $f(1) = 0$."
+          }
+        ]
+      },
+      {
+        "id": "q6",
+        "label": "B.3.",
+        "enonce": "Tangente au point d'abscisse $e$ et inégalité.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q6a",
+            "label": "a)",
+            "enonce": "Donner une équation de la tangente à la courbe représentative de la fonction $f$ au point d'abscisse $e$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-044",
+            "indices": [
+              "La tangente au point d'abscisse $a$ a pour équation $y = f'(a)(x - a) + f(a)$. Ici $a = e$, et $f'(e) = g(e)$ a déjà été calculé à la question A.2.a.",
+              "Calcule $f(e)$ avec $\\ln(e) = 1$, puis développe et réduis l'expression."
+            ],
+            "attenduCorrecteur": "- $f(e) = 1$ et $f'(e) = g(e) = \\dfrac{2}{e}$ : 0,25 pt.\n- Équation $y = \\dfrac{2}{e}(x - e) + 1$, soit $y = \\dfrac{2}{e}x - 1$ : 0,25 pt.",
+            "solution": "$f(e) = [\\ln(e)]^2 = 1$ et $f'(e) = g(e) = \\dfrac{2}{e}$ (question A.2.a). La tangente au point d'abscisse $e$ a pour équation :\n\n$$y = f'(e)(x - e) + f(e) = \\dfrac{2}{e}(x - e) + 1 = \\dfrac{2}{e}x - 2 + 1,$$\n\nsoit $y = \\dfrac{2}{e}x - 1$."
+          },
+          {
+            "id": "q6b",
+            "label": "b)",
+            "enonce": "En déduire que, pour tout réel $x$ de l'intervalle $]0\\,;\\,e]$ :\n\n$$[\\ln(x)]^2 \\geqslant \\dfrac{2}{e}x - 1.$$",
+            "points": 0.75,
+            "revoir": "l-derivation-convexite-050",
+            "indices": [
+              "Sur un intervalle où une fonction est convexe, sa courbe est au-dessus de chacune de ses tangentes en un point de cet intervalle. Sur quel intervalle $f$ est-elle convexe (question B.2.a) ?",
+              "Vérifie que le point de contact, d'abscisse $e$, appartient à cet intervalle, puis traduis « la courbe est au-dessus de la tangente » par une inégalité entre $f(x)$ et l'expression trouvée en B.3.a."
+            ],
+            "attenduCorrecteur": "- $f$ convexe sur $]0\\,;\\,e]$ (question B.2.a), intervalle qui contient le point de contact $e$ : 0,25 pt.\n- Propriété citée : sur un intervalle où $f$ est convexe, la courbe est au-dessus de ses tangentes : 0,25 pt.\n- Traduction : pour tout $x$ de $]0\\,;\\,e]$, $f(x) \\geqslant \\dfrac{2}{e}x - 1$, c'est l'inégalité demandée : 0,25 pt.",
+            "solution": "D'après la question B.2.a, $f$ est convexe sur l'intervalle $]0\\,;\\,e]$. Sur un intervalle où une fonction est convexe, sa courbe est au-dessus de chacune de ses tangentes en un point de cet intervalle. Le réel $e$ appartient à $]0\\,;\\,e]$ : sur cet intervalle, la courbe de $f$ est donc au-dessus de sa tangente au point d'abscisse $e$, d'équation $y = \\dfrac{2}{e}x - 1$ (question B.3.a).\n\nAinsi, pour tout réel $x$ de $]0\\,;\\,e]$ :\n\n$$f(x) \\geqslant \\dfrac{2}{e}x - 1, \\quad \\text{soit} \\quad [\\ln(x)]^2 \\geqslant \\dfrac{2}{e}x - 1.$$",
+            "erreurFrequente": "Étendre l'inégalité à tout $]0\\,;\\,+\\infty[$ : sur $[e\\,;\\,+\\infty[$, $f$ est concave et sa courbe est sous sa tangente. Par exemple, pour $x = e^2$ : $[\\ln(e^2)]^2 = 4$, alors que $\\dfrac{2}{e} \\times e^2 - 1 = 2e - 1 > 4$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-primitives-equations-differentielles-002",
+    "chapitre": "primitives-equations-differentielles",
+    "notions": [
+      "n-primitives-equations-differentielles-equation-ay-f",
+      "n-primitives-equations-differentielles-equation-ay"
+    ],
+    "capacites": [
+      "bo-m-primitives-06",
+      "bo-m-primitives-03",
+      "bo-m-logique-12",
+      "bo-m-limites-fonctions-05",
+      "bo-m-derivation-05",
+      "bo-m-derivation-06",
+      "bo-m-continuite-03",
+      "bo-m-continuite-04"
+    ],
+    "titre": "L'équation $2y' + 3y = 8e^{-\\frac{3}{2}t}$, puis la quantité d'un médicament dans le sang",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2026-metropole-septembre-j1",
+      "adaptation": "Exercice 4 (6 points) : partie A (résolution de $2y' + 3y = 0$, équivalence entre « $g$ solution de $(E)$ » et « $g - f$ solution de $(E')$ », solutions de $(E)$, solutions qui s'annulent en $0$) et partie B (limite en $+\\infty$ et interprétation, dérivée, tableau de variations, instant du maximum, unique solution de $f(t) = 0{,}5$ sur $[1\\,;\\,3]$ et encadrement à $10^{-2}$ près, condition 1 de l'essai clinique) conservées. Condition 2 retirée : elle demande une quantité moyenne, donc une intégrale, du chapitre « Calcul intégral », qui vient plus tard dans l'année. Condition 1 précisée (traduite par la quantité de médicament dans le sang) ; coquille de l'énoncé corrigée (« fonction de la variable $t$ »). Barème fixé pour le site. Calculatrice autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Les parties A et B peuvent être traitées indépendamment.\n\n**Partie A.** On considère l'équation différentielle\n\n$$(E) : \\quad 2y' + 3y = 8e^{-\\frac{3}{2}t},$$\n\noù $y$ est une fonction de la variable $t$, définie et dérivable sur $[0\\,;\\,+\\infty[$.\n\n**Partie B.** Un essai clinique est réalisé auprès de patients volontaires, afin de valider ou non l'efficacité d'un médicament. Chaque patient avale le médicament sous la forme d'un comprimé de $1$ mg, puis on étudie la quantité de ce médicament présente dans son sang au cours du temps. Cette quantité, en mg, est modélisée par la fonction $f$ définie et dérivable sur $[0\\,;\\,+\\infty[$ par :\n\n$$f(t) = 4te^{-\\frac{3}{2}t},$$\n\noù $t$ est le temps écoulé depuis la prise du comprimé, exprimé en heures.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Résoudre sur l'intervalle $[0\\,;\\,+\\infty[$ l'équation différentielle\n\n$$(E') : \\quad 2y' + 3y = 0.$$",
+        "points": 0.5,
+        "revoir": "l-primitives-equations-differentielles-038",
+        "indices": [
+          "Isole $y'$ : fais passer $3y$ dans l'autre membre, puis divise par le coefficient de $y'$. Tu lis alors la valeur de $a$ dans $y' = ay$, avec son signe."
+        ],
+        "attenduCorrecteur": "- Mise sous la forme $y' = -\\dfrac{3}{2}y$ : 0,25 pt.\n- Solutions : les fonctions $t \\mapsto Ce^{-\\frac{3}{2}t}$, où $C$ est un réel : 0,25 pt.",
+        "solution": "$2y' + 3y = 0 \\iff 2y' = -3y \\iff y' = -\\dfrac{3}{2}y$ : c'est une équation de la forme $y' = ay$, avec $a = -\\dfrac{3}{2}$.\n\nSes solutions sur $[0\\,;\\,+\\infty[$ sont les fonctions $t \\mapsto Ce^{-\\frac{3}{2}t}$, où $C$ est un nombre réel quelconque.",
+        "erreurFrequente": "Lire $a = -3$ sans diviser par $2$ : les fonctions $t \\mapsto Ce^{-3t}$ ne vérifient pas $(E')$, car $2 \\times (-3)Ce^{-3t} + 3Ce^{-3t} = -3Ce^{-3t}$, qui n'est pas nul si $C \\neq 0$."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Soit $f$ la fonction définie et dérivable sur $[0\\,;\\,+\\infty[$ par $f(t) = 4te^{-\\frac{3}{2}t}$. On admet que $f$ est une solution de l'équation différentielle $(E)$.\n\nOn considère une fonction $g$ définie et dérivable sur $[0\\,;\\,+\\infty[$. Démontrer que : « $g$ est solution de $(E)$ » est équivalent à « $g - f$ est solution de $(E')$ ».",
+        "points": 1,
+        "revoir": "l-primitives-equations-differentielles-067",
+        "indices": [
+          "Pose $d = g - f$ et calcule $2d'(t) + 3d(t)$ en regroupant d'un côté ce qui concerne $g$, de l'autre ce qui concerne $f$.",
+          "Remplace $2f'(t) + 3f(t)$ par sa valeur, puisque $f$ est solution de $(E)$, puis enchaîne des équivalences jusqu'à « $g$ est solution de $(E)$ »."
+        ],
+        "attenduCorrecteur": "- $d = g - f$ dérivable et, pour tout $t \\geqslant 0$, $2d'(t) + 3d(t) = \\big(2g'(t) + 3g(t)\\big) - \\big(2f'(t) + 3f(t)\\big)$ : 0,25 pt.\n- $f$ solution de $(E)$ : $2f'(t) + 3f(t) = 8e^{-\\frac{3}{2}t}$, d'où $2d'(t) + 3d(t) = 2g'(t) + 3g(t) - 8e^{-\\frac{3}{2}t}$ : 0,25 pt.\n- Chaîne d'équivalences rédigée, valable dans les deux sens, jusqu'à la conclusion : 0,5 pt.",
+        "solution": "On pose $d = g - f$ : $d$ est dérivable sur $[0\\,;\\,+\\infty[$, comme différence de deux fonctions dérivables. Pour tout $t \\geqslant 0$ :\n\n$$2d'(t) + 3d(t) = 2g'(t) - 2f'(t) + 3g(t) - 3f(t) = \\big(2g'(t) + 3g(t)\\big) - \\big(2f'(t) + 3f(t)\\big).$$\n\nOr $f$ est solution de $(E)$ : $2f'(t) + 3f(t) = 8e^{-\\frac{3}{2}t}$. Donc :\n\n$$2d'(t) + 3d(t) = 2g'(t) + 3g(t) - 8e^{-\\frac{3}{2}t}.$$\n\nAinsi :\n\n- $g - f$ est solution de $(E')$\n- $\\iff$ pour tout $t \\geqslant 0$, $2d'(t) + 3d(t) = 0$\n- $\\iff$ pour tout $t \\geqslant 0$, $2g'(t) + 3g(t) - 8e^{-\\frac{3}{2}t} = 0$\n- $\\iff$ pour tout $t \\geqslant 0$, $2g'(t) + 3g(t) = 8e^{-\\frac{3}{2}t}$\n- $\\iff$ $g$ est solution de $(E)$.\n\n« $g$ est solution de $(E)$ » est donc équivalent à « $g - f$ est solution de $(E')$ ».",
+        "erreurFrequente": "Ne prouver qu'un sens : partir de « $g$ solution de $(E)$ » pour arriver à « $g - f$ solution de $(E')$ » ne suffit pas. Des équivalences à chaque ligne règlent les deux sens d'un coup."
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "En déduire toutes les solutions de l'équation différentielle $(E)$.",
+        "points": 0.5,
+        "revoir": "l-primitives-equations-differentielles-069",
+        "indices": [
+          "D'après la question A.2, $g$ est solution de $(E)$ si et seulement si $g - f$ est l'une des solutions de $(E')$ trouvées à la question A.1. Écris-le, puis isole $g(t)$."
+        ],
+        "attenduCorrecteur": "- $g$ solution de $(E)$ si et seulement s'il existe un réel $C$ tel que $g(t) - f(t) = Ce^{-\\frac{3}{2}t}$ pour tout $t \\geqslant 0$ : 0,25 pt.\n- Solutions de $(E)$ : les fonctions $t \\mapsto Ce^{-\\frac{3}{2}t} + 4te^{-\\frac{3}{2}t} = (4t + C)e^{-\\frac{3}{2}t}$, $C$ réel : 0,25 pt.",
+        "solution": "D'après la question A.2, une fonction $g$ dérivable sur $[0\\,;\\,+\\infty[$ est solution de $(E)$ si et seulement si $g - f$ est solution de $(E')$, c'est-à-dire, d'après la question A.1, si et seulement s'il existe un réel $C$ tel que, pour tout $t \\geqslant 0$, $g(t) - f(t) = Ce^{-\\frac{3}{2}t}$.\n\nLes solutions de $(E)$ sont donc les fonctions :\n\n$$t \\mapsto Ce^{-\\frac{3}{2}t} + 4te^{-\\frac{3}{2}t} = (4t + C)e^{-\\frac{3}{2}t}, \\quad \\text{où } C \\text{ est un réel quelconque.}$$"
+      },
+      {
+        "id": "q4",
+        "label": "A.4.",
+        "enonce": "Déterminer toutes les solutions de $(E)$ qui s'annulent en $0$.",
+        "points": 0.5,
+        "revoir": "l-primitives-equations-differentielles-070",
+        "indices": [
+          "Prends une solution quelconque de $(E)$, avec l'expression trouvée à la question A.3, et calcule sa valeur en $0$, avec $e^0 = 1$. Que doit valoir $C$ ?"
+        ],
+        "attenduCorrecteur": "- Pour une solution $g(t) = (4t + C)e^{-\\frac{3}{2}t}$ : $g(0) = (0 + C)e^0 = C$ : 0,25 pt.\n- $g(0) = 0 \\iff C = 0$ : une seule solution, la fonction $f$ : 0,25 pt.",
+        "solution": "Soit $g$ une solution de $(E)$ : d'après la question A.3, il existe un réel $C$ tel que $g(t) = (4t + C)e^{-\\frac{3}{2}t}$ pour tout $t \\geqslant 0$. Alors $g(0) = (4 \\times 0 + C)e^{0} = C$.\n\nDonc $g(0) = 0 \\iff C = 0$ : la seule solution de $(E)$ qui s'annule en $0$ est la fonction $t \\mapsto 4te^{-\\frac{3}{2}t}$, c'est-à-dire $f$."
+      },
+      {
+        "id": "q5",
+        "label": "B.1.",
+        "enonce": "Déterminer $\\lim\\limits_{t \\to +\\infty} f(t)$. Interpréter ce résultat dans le contexte de l'exercice.",
+        "points": 0.5,
+        "revoir": "l-limites-fonctions-055",
+        "indices": [
+          "En $+\\infty$, $4t$ tend vers $+\\infty$ et $e^{-\\frac{3}{2}t}$ vers $0$ : forme indéterminée. Fais apparaître $Xe^{-X}$ avec $X = \\dfrac{3}{2}t$, comme le cours fait apparaître $2x$ dans $\\dfrac{e^{2x}}{x}$.",
+          "Écris $4t = \\dfrac{8}{3} \\times \\dfrac{3}{2}t$, puis utilise la croissance comparée $\\lim\\limits_{X \\to +\\infty} Xe^{-X} = 0$ et la limite d'une composée."
+        ],
+        "attenduCorrecteur": "- Forme indéterminée levée : $f(t) = \\dfrac{8}{3} \\times \\dfrac{3}{2}t\\,e^{-\\frac{3}{2}t}$, croissance comparée $\\lim\\limits_{X \\to +\\infty} Xe^{-X} = 0$ avec $X = \\dfrac{3}{2}t$, d'où $\\lim\\limits_{t \\to +\\infty} f(t) = 0$ : 0,25 pt.\n- Interprétation : à long terme, la quantité de médicament dans le sang tend vers $0$ mg ; le médicament finit par être éliminé : 0,25 pt.",
+        "solution": "Quand $t$ tend vers $+\\infty$, $4t$ tend vers $+\\infty$ et $e^{-\\frac{3}{2}t}$ tend vers $0$ : c'est la forme indéterminée « $\\infty \\times 0$ ». Pour tout $t \\geqslant 0$ :\n\n$$f(t) = \\dfrac{8}{3} \\times \\dfrac{3}{2}t \\times e^{-\\frac{3}{2}t}.$$\n\nOn pose $X = \\dfrac{3}{2}t$ : quand $t$ tend vers $+\\infty$, $X$ tend vers $+\\infty$, et $\\lim\\limits_{X \\to +\\infty} Xe^{-X} = 0$ par croissances comparées. Par composée, $\\dfrac{3}{2}t\\,e^{-\\frac{3}{2}t}$ tend vers $0$, puis, par produit par $\\dfrac{8}{3}$ :\n\n$$\\lim_{t \\to +\\infty} f(t) = 0.$$\n\n**Interprétation** : à long terme, la quantité de médicament présente dans le sang tend vers $0$ mg : le médicament finit par être éliminé de l'organisme."
+      },
+      {
+        "id": "q6",
+        "label": "B.2.",
+        "enonce": "Étude des variations de la fonction $f$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q6a",
+            "label": "a)",
+            "enonce": "Vérifier, en détaillant les calculs, que pour tout réel $t \\geqslant 0$ :\n\n$$f'(t) = (4 - 6t)e^{-\\frac{3}{2}t}.$$",
+            "points": 0.5,
+            "revoir": "l-primitives-equations-differentielles-070",
+            "indices": [
+              "$f$ est le produit de $u(t) = 4t$ et de $v(t) = e^{-\\frac{3}{2}t}$ : applique $(uv)' = u'v + uv'$, avec $\\left(e^{at}\\right)' = ae^{at}$.",
+              "Mets $e^{-\\frac{3}{2}t}$ en facteur dans les deux termes obtenus."
+            ],
+            "attenduCorrecteur": "- $u'(t) = 4$ et $v'(t) = -\\dfrac{3}{2}e^{-\\frac{3}{2}t}$, formule du produit appliquée : 0,25 pt.\n- $f'(t) = 4e^{-\\frac{3}{2}t} - 6te^{-\\frac{3}{2}t} = (4 - 6t)e^{-\\frac{3}{2}t}$ : 0,25 pt.",
+            "solution": "On écrit $f = uv$ avec $u(t) = 4t$, $u'(t) = 4$, $v(t) = e^{-\\frac{3}{2}t}$ et $v'(t) = -\\dfrac{3}{2}e^{-\\frac{3}{2}t}$. Pour tout $t \\geqslant 0$ :\n\n$$f'(t) = 4e^{-\\frac{3}{2}t} + 4t \\times \\left(-\\dfrac{3}{2}e^{-\\frac{3}{2}t}\\right) = 4e^{-\\frac{3}{2}t} - 6te^{-\\frac{3}{2}t} = (4 - 6t)e^{-\\frac{3}{2}t}.$$"
+          },
+          {
+            "id": "q6b",
+            "label": "b)",
+            "enonce": "Étudier le signe de $f'(t)$ et en déduire le tableau de variations de la fonction $f$ sur $[0\\,;\\,+\\infty[$.",
+            "points": 0.75,
+            "revoir": "l-derivation-convexite-014",
+            "indices": [
+              "$e^{-\\frac{3}{2}t} > 0$ : le signe de $f'(t)$ est celui de $4 - 6t$, une expression affine. En quelle valeur de $t$ s'annule-t-elle ?",
+              "Complète le tableau avec $f(0)$, la valeur exacte de $f$ là où $f'$ s'annule (elle contient $e^{-1}$), et la limite trouvée à la question B.1."
+            ],
+            "attenduCorrecteur": "- Signe : $e^{-\\frac{3}{2}t} > 0$, donc $f'(t)$ a le signe de $4 - 6t$ : positif sur $\\left[0\\,;\\,\\dfrac{2}{3}\\right[$, nul en $\\dfrac{2}{3}$, négatif ensuite : 0,25 pt.\n- Variations : $f$ strictement croissante sur $\\left[0\\,;\\,\\dfrac{2}{3}\\right]$, strictement décroissante sur $\\left[\\dfrac{2}{3}\\,;\\,+\\infty\\right[$ : 0,25 pt.\n- Valeurs du tableau : $f(0) = 0$, $f\\left(\\dfrac{2}{3}\\right) = \\dfrac{8}{3e}$, limite $0$ en $+\\infty$ : 0,25 pt.",
+            "solution": "Pour tout $t \\geqslant 0$, $e^{-\\frac{3}{2}t} > 0$ : $f'(t)$ a le signe de $4 - 6t$. Or $4 - 6t > 0 \\iff t < \\dfrac{2}{3}$, et $4 - 6t = 0 \\iff t = \\dfrac{2}{3}$.\n\nDonc $f'(t) > 0$ sur $\\left[0\\,;\\,\\dfrac{2}{3}\\right[$ et $f'(t) < 0$ sur $\\left]\\dfrac{2}{3}\\,;\\,+\\infty\\right[$ : $f$ est strictement croissante sur $\\left[0\\,;\\,\\dfrac{2}{3}\\right]$ et strictement décroissante sur $\\left[\\dfrac{2}{3}\\,;\\,+\\infty\\right[$.\n\nValeurs : $f(0) = 0$ ; $f\\left(\\dfrac{2}{3}\\right) = 4 \\times \\dfrac{2}{3} \\times e^{-\\frac{3}{2} \\times \\frac{2}{3}} = \\dfrac{8}{3}e^{-1} = \\dfrac{8}{3e}$ ; et $\\lim\\limits_{t \\to +\\infty} f(t) = 0$ (question B.1).\n\n| $t$ | $0$ | | $\\dfrac{2}{3}$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(t)$ | | $+$ | $0$ | $-$ | |\n| variations de $f$ | $0$ | $\\nearrow$ | $\\dfrac{8}{3e}$ | $\\searrow$ | $0$ |"
+          },
+          {
+            "id": "q6c",
+            "label": "c)",
+            "enonce": "Au bout de combien de temps la quantité de médicament présente dans le sang est-elle maximale ?",
+            "points": 0.25,
+            "revoir": "l-derivation-convexite-019",
+            "indices": [
+              "Le maximum se lit dans le tableau de variations : la question porte sur l'instant où il est atteint, pas sur sa valeur. Convertis ensuite cet instant, exprimé en heures, en minutes."
+            ],
+            "attenduCorrecteur": "- Maximum atteint en $t = \\dfrac{2}{3}$, soit $40$ minutes après la prise (quantité maximale $\\dfrac{8}{3e} \\approx 0{,}98$ mg) : 0,25 pt.",
+            "solution": "D'après le tableau de variations, $f$ atteint son maximum en $t = \\dfrac{2}{3}$. La quantité de médicament dans le sang est donc maximale $\\dfrac{2}{3}$ d'heure après la prise du comprimé, soit $\\dfrac{2}{3} \\times 60 = 40$ minutes. Elle vaut alors $\\dfrac{8}{3e} \\approx 0{,}98$ mg."
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "label": "B.3.",
+        "enonce": "Démontrer que l'équation $f(t) = 0{,}5$ admet une unique solution sur l'intervalle $[1\\,;\\,3]$. Donner un encadrement de cette solution, notée $\\alpha$, à $10^{-2}$ près.",
+        "points": 1,
+        "revoir": "l-continuite-024",
+        "indices": [
+          "Applique le théorème des valeurs intermédiaires pour une fonction strictement monotone : sur $[1\\,;\\,3]$, quel est le sens de variation de $f$ (question B.2.b) ? Calcule $f(1)$ et $f(3)$, et situe $0{,}5$ par rapport à ces deux valeurs.",
+          "Pour l'encadrement, fais un tableau de valeurs de $f$ à la calculatrice, avec un pas de $0{,}1$, puis de $0{,}01$ : garde deux valeurs consécutives de $t$ de part et d'autre de la solution."
+        ],
+        "attenduCorrecteur": "- $f$ continue (car dérivable) et strictement décroissante sur $[1\\,;\\,3]$, contenu dans $\\left[\\dfrac{2}{3}\\,;\\,+\\infty\\right[$ : 0,25 pt.\n- $f(1) = 4e^{-\\frac{3}{2}} \\approx 0{,}89 > 0{,}5$ et $f(3) = 12e^{-\\frac{9}{2}} \\approx 0{,}13 < 0{,}5$ : 0,25 pt.\n- Théorème des valeurs intermédiaires, cas d'une fonction strictement monotone, nommé : solution unique $\\alpha$ dans $[1\\,;\\,3]$ : 0,25 pt.\n- Encadrement $1{,}76 < \\alpha < 1{,}77$, justifié par $f(1{,}76) \\approx 0{,}502 > 0{,}5$ et $f(1{,}77) \\approx 0{,}498 < 0{,}5$ : 0,25 pt.",
+        "solution": "**Existence et unicité.** La fonction $f$ est dérivable, donc continue, sur $[1\\,;\\,3]$. Cet intervalle est contenu dans $\\left[\\dfrac{2}{3}\\,;\\,+\\infty\\right[$, où $f$ est strictement décroissante (question B.2.b). De plus, à la calculatrice :\n\n$$f(1) = 4e^{-\\frac{3}{2}} \\approx 0{,}89 > 0{,}5 \\quad \\text{et} \\quad f(3) = 12e^{-\\frac{9}{2}} \\approx 0{,}13 < 0{,}5.$$\n\nLe réel $0{,}5$ est donc compris entre $f(3)$ et $f(1)$. D'après le théorème des valeurs intermédiaires, appliqué à la fonction $f$ continue et strictement décroissante sur $[1\\,;\\,3]$, l'équation $f(t) = 0{,}5$ admet une unique solution $\\alpha$ dans $[1\\,;\\,3]$.\n\n**Encadrement.** À la calculatrice : $f(1{,}7) \\approx 0{,}531 > 0{,}5$ et $f(1{,}8) \\approx 0{,}484 < 0{,}5$ ; puis $f(1{,}76) \\approx 0{,}502 > 0{,}5$ et $f(1{,}77) \\approx 0{,}498 < 0{,}5$.\n\nComme $f$ est strictement décroissante sur $[1\\,;\\,3]$ et que $f(1{,}76) > f(\\alpha) > f(1{,}77)$, on obtient $1{,}76 < \\alpha < 1{,}77$.",
+        "erreurFrequente": "Arrêter l'encadrement dès que $f(t)$ semble proche de $0{,}5$ : il faut deux valeurs consécutives de $t$, au pas $0{,}01$, dont les images sont de part et d'autre de $0{,}5$."
+      },
+      {
+        "id": "q8",
+        "label": "B.4.",
+        "enonce": "L'essai clinique n'est validé que si la condition suivante est réalisée : au plus tard $2$ heures après la prise du comprimé, la moitié au moins de la dose a été éliminée, c'est-à-dire que la quantité de médicament présente dans le sang est inférieure ou égale à $0{,}5$ mg à partir de cet instant.\n\nCette condition est-elle réalisée ? Justifier.",
+        "points": 0.5,
+        "revoir": "l-continuite-024",
+        "indices": [
+          "Utilise le sens de variation de $f$ sur $\\left[\\dfrac{2}{3}\\,;\\,+\\infty\\right[$ : à partir de l'instant $\\alpha$, comment se compare $f(t)$ à $f(\\alpha) = 0{,}5$ ?",
+          "Compare ensuite $\\alpha$ à $2$ grâce à l'encadrement de la question B.3."
+        ],
+        "attenduCorrecteur": "- Pour tout $t \\geqslant \\alpha$, $f(t) \\leqslant f(\\alpha) = 0{,}5$, car $\\alpha \\geqslant 1$ et $f$ est décroissante sur $\\left[\\dfrac{2}{3}\\,;\\,+\\infty\\right[$ : 0,25 pt.\n- $\\alpha < 1{,}77 < 2$ : la condition est réalisée, environ 1 h 46 min après la prise : 0,25 pt.",
+        "solution": "D'après la question B.3, $\\alpha \\geqslant 1$ : $\\alpha$ appartient à $\\left[\\dfrac{2}{3}\\,;\\,+\\infty\\right[$, où $f$ est décroissante. Pour tout $t \\geqslant \\alpha$, on a donc $f(t) \\leqslant f(\\alpha) = 0{,}5$ : à partir de l'instant $\\alpha$, la quantité de médicament dans le sang reste inférieure ou égale à $0{,}5$ mg.\n\nOr $\\alpha < 1{,}77 < 2$ : cet instant arrive moins de $2$ heures après la prise, vers 1 h 46 min, car $0{,}76 \\times 60 \\approx 46$. On le vérifie aussi avec $f(2) = 8e^{-3} \\approx 0{,}40 \\leqslant 0{,}5$.\n\nLa condition est donc réalisée."
+      }
+    ]
+  },
+  {
+    "id": "tb-primitives-equations-differentielles-003",
+    "chapitre": "primitives-equations-differentielles",
+    "notions": [
+      "n-primitives-equations-differentielles-equation-ay-b",
+      "n-primitives-equations-differentielles-equation-ay"
+    ],
+    "capacites": [
+      "bo-m-primitives-05",
+      "bo-m-primitives-03",
+      "bo-m-logarithme-06",
+      "bo-m-logarithme-07",
+      "bo-m-logique-14",
+      "bo-m-suites-08",
+      "bo-m-suites-09",
+      "bo-m-suites-04",
+      "bo-m-suites-05",
+      "bo-m-suites-06",
+      "bo-m-suites-07",
+      "bo-m-suites-14"
+    ],
+    "titre": "Chauffer puis laisser refroidir une pièce : l'équation $y' = -0{,}035y + 0{,}91$, une suite et un programme de seuil",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2026-metropole-juin-j1",
+      "adaptation": "Exercice 3 (6 points) : partie A (solutions de $y' = -0{,}035y + 0{,}91$, expression $T(t) = 26 - 8e^{-0{,}035t}$, instant où la pièce atteint 20 °C, impossibilité de dépasser 28 °C) et partie B (suite $u_{n+1} = 0{,}965u_n + 0{,}35 + 0{,}07e^{-0{,}1n}$ : calcul de $u_1$, minoration $u_n > 10$ par récurrence, convergence, limite et interprétation, programme Python de seuil et temps de remise en marche) conservées. Ligne d'importation de la fonction exp ajoutée au programme ; les lignes à compléter sont désignées sans numéro. Aucune question retirée. Barème fixé pour le site. Calculatrice autorisée. Solution écrite pour le site."
+    },
+    "preambule": "On étudie le fonctionnement d'un système de chauffage installé dans une pièce. Ce système se déclenche automatiquement dès que la température de la pièce est inférieure ou égale à 18 °C, et s'éteint lorsqu'elle atteint 20 °C.\n\n**Partie A : phase de chauffage.** Pour une température de la pièce allant de 18 °C à 20 °C, le système de chauffage fonctionne en continu et la température de la pièce augmente progressivement. On modélise la température de la pièce, en degrés Celsius, à l'instant $t$, exprimé en dizaines de minutes, par une fonction $T$ définie sur $[0\\,;\\,+\\infty[$. On admet que la fonction $T$ est dérivable sur $[0\\,;\\,+\\infty[$ et qu'elle est solution de l'équation différentielle\n\n$$(E) : \\quad y' = -0{,}035y + 0{,}91,$$\n\noù $y$ est une fonction de la variable $t$, définie et dérivable sur $[0\\,;\\,+\\infty[$. Au début de l'étude, la température de la pièce est de 18 °C : $T(0) = 18$.\n\n**Partie B : phase de refroidissement.** Lorsque la pièce atteint 20 °C, le système de chauffage s'éteint et la pièce refroidit. On modélise alors la température de la pièce par la suite $(u_n)$ définie par $u_0 = 20$ et, pour tout entier naturel $n$ :\n\n$$u_{n+1} = 0{,}965u_n + 0{,}35 + 0{,}07e^{-0{,}1n},$$\n\noù $n$ est le temps écoulé depuis l'arrêt du chauffage, exprimé en dizaines de minutes.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Donner les solutions de l'équation différentielle $(E)$ sur $[0\\,;\\,+\\infty[$.",
+        "points": 0.5,
+        "revoir": "l-primitives-equations-differentielles-054",
+        "indices": [
+          "Cherche d'abord la solution constante $k$ : sa dérivée est nulle, donc $0 = -0{,}035k + 0{,}91$.",
+          "Ajoute ensuite à cette solution constante les solutions de l'équation $y' = -0{,}035y$."
+        ],
+        "attenduCorrecteur": "- Solution constante $k$ telle que $0 = -0{,}035k + 0{,}91$, soit $k = \\dfrac{0{,}91}{0{,}035} = 26$ : 0,25 pt.\n- Solutions : les fonctions $t \\mapsto Ce^{-0{,}035t} + 26$, où $C$ est un réel : 0,25 pt.",
+        "solution": "L'équation $(E)$ est de la forme $y' = ay + b$, avec $a = -0{,}035 \\neq 0$ et $b = 0{,}91$.\n\n**Solution constante.** Une fonction constante égale à $k$ a une dérivée nulle : elle est solution de $(E)$ si et seulement si $0 = -0{,}035k + 0{,}91$, soit $k = \\dfrac{0{,}91}{0{,}035} = \\dfrac{910}{35} = 26$.\n\n**Toutes les solutions.** Les solutions de $y' = -0{,}035y$ sont les fonctions $t \\mapsto Ce^{-0{,}035t}$. Les solutions de $(E)$ sur $[0\\,;\\,+\\infty[$ sont donc les fonctions :\n\n$$t \\mapsto Ce^{-0{,}035t} + 26, \\quad \\text{où } C \\text{ est un réel quelconque.}$$"
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "En déduire que, pour tout réel $t$ de l'intervalle $[0\\,;\\,+\\infty[$, on a :\n\n$$T(t) = 26 - 8e^{-0{,}035t}.$$",
+        "points": 0.5,
+        "revoir": "l-primitives-equations-differentielles-055",
+        "indices": [
+          "$T$ est l'une des solutions trouvées à la question A.1 : écris $T(0)$ avec la constante $C$, sans oublier le terme constant, puis utilise $T(0) = 18$."
+        ],
+        "attenduCorrecteur": "- $T(t) = Ce^{-0{,}035t} + 26$ et $T(0) = C + 26$ : 0,25 pt.\n- $C + 26 = 18$, d'où $C = -8$ et $T(t) = 26 - 8e^{-0{,}035t}$ : 0,25 pt.",
+        "solution": "$T$ est solution de $(E)$ : d'après la question A.1, il existe un réel $C$ tel que $T(t) = Ce^{-0{,}035t} + 26$ pour tout $t \\geqslant 0$. Alors $T(0) = Ce^{0} + 26 = C + 26$.\n\nLa condition $T(0) = 18$ donne $C + 26 = 18$, soit $C = -8$. Donc, pour tout $t \\geqslant 0$ :\n\n$$T(t) = -8e^{-0{,}035t} + 26 = 26 - 8e^{-0{,}035t}.$$",
+        "erreurFrequente": "Prendre $C = 18$ : en $0$, la solution vaut $C$ plus la solution constante $26$, et non $C$ seul."
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "Selon ce modèle, déterminer au bout de combien de temps la pièce atteindra la température de 20 °C. On exprimera le résultat en heures et minutes, arrondi à la minute.",
+        "points": 0.75,
+        "revoir": "l-primitives-equations-differentielles-055",
+        "indices": [
+          "Résous l'équation $T(t) = 20$ : isole l'exponentielle, puis applique la fonction $\\ln$.",
+          "Le résultat est un nombre de dizaines de minutes : multiplie-le par $10$ pour obtenir des minutes, puis convertis en heures et minutes."
+        ],
+        "attenduCorrecteur": "- Équation $26 - 8e^{-0{,}035t} = 20 \\iff e^{-0{,}035t} = \\dfrac{3}{4}$ : 0,25 pt.\n- Passage au logarithme : $t = \\dfrac{\\ln\\left(\\frac{4}{3}\\right)}{0{,}035} \\approx 8{,}22$ dizaines de minutes : 0,25 pt.\n- Conversion : environ $82$ minutes, soit 1 h 22 min : 0,25 pt.",
+        "solution": "La pièce atteint 20 °C à l'instant $t$ tel que $T(t) = 20$ :\n\n$$26 - 8e^{-0{,}035t} = 20 \\iff 8e^{-0{,}035t} = 6 \\iff e^{-0{,}035t} = \\dfrac{3}{4}.$$\n\nPar définition du logarithme népérien, $e^X = \\dfrac{3}{4} \\iff X = \\ln\\left(\\dfrac{3}{4}\\right)$. Donc :\n\n$$e^{-0{,}035t} = \\dfrac{3}{4} \\iff -0{,}035t = \\ln\\left(\\dfrac{3}{4}\\right) \\iff t = \\dfrac{-\\ln\\left(\\frac{3}{4}\\right)}{0{,}035} = \\dfrac{\\ln\\left(\\frac{4}{3}\\right)}{0{,}035}.$$\n\nCet instant est le seul, car $T'(t) = 0{,}28e^{-0{,}035t} > 0$ : $T$ est strictement croissante. À la calculatrice, $t \\approx 8{,}22$. Comme $t$ est exprimé en dizaines de minutes, cela fait environ $82{,}2$ minutes, soit $82$ minutes à la minute près.\n\nSelon ce modèle, la pièce atteint 20 °C au bout d'environ 1 h 22 min.",
+        "erreurFrequente": "Oublier l'unité : $t \\approx 8{,}22$ est un nombre de dizaines de minutes, ni 8 h 22 min, ni 8 minutes."
+      },
+      {
+        "id": "q4",
+        "label": "A.4.",
+        "enonce": "Si une panne du système de chauffage l'empêche de s'éteindre lorsque la température de la pièce atteint 20 °C, la température de la pièce pourra-t-elle dépasser 28 °C selon ce modèle ? Justifier.",
+        "points": 0.5,
+        "revoir": "l-primitives-equations-differentielles-054",
+        "indices": [
+          "Quel est le signe de $8e^{-0{,}035t}$ ? Compare alors $T(t)$ à $26$."
+        ],
+        "attenduCorrecteur": "- $8e^{-0{,}035t} > 0$ pour tout $t \\geqslant 0$, donc $T(t) < 26$ : 0,25 pt.\n- Conclusion : la température reste sous 26 °C, elle ne pourra pas dépasser 28 °C : 0,25 pt.",
+        "solution": "Pour tout réel $t \\geqslant 0$, $e^{-0{,}035t} > 0$, donc $8e^{-0{,}035t} > 0$ et :\n\n$$T(t) = 26 - 8e^{-0{,}035t} < 26 < 28.$$\n\nSelon ce modèle, même si le chauffage ne s'éteint pas, la température de la pièce reste inférieure à 26 °C : elle ne pourra pas dépasser 28 °C. Elle se rapproche de 26 °C, car $\\lim\\limits_{t \\to +\\infty} e^{-0{,}035t} = 0$."
+      },
+      {
+        "id": "q5",
+        "label": "B.1.",
+        "enonce": "Montrer que $u_1 = 19{,}72$.",
+        "points": 0.25,
+        "revoir": "l-recurrence-suites-002",
+        "indices": [
+          "Remplace $n$ par $0$ dans la relation de récurrence, en te rappelant que $e^0 = 1$."
+        ],
+        "attenduCorrecteur": "- Calcul avec $n = 0$ et $e^0 = 1$ : $u_1 = 0{,}965 \\times 20 + 0{,}35 + 0{,}07 = 19{,}72$ : 0,25 pt.",
+        "solution": "Avec $n = 0$ dans la relation de récurrence, et $e^{0} = 1$ :\n\n$$u_1 = 0{,}965 \\times 20 + 0{,}35 + 0{,}07 \\times e^{0} = 19{,}3 + 0{,}35 + 0{,}07 = 19{,}72.$$"
+      },
+      {
+        "id": "q6",
+        "label": "B.2.",
+        "enonce": "Montrer par récurrence que, pour tout entier naturel $n$, on a $u_n > 10$.",
+        "points": 0.75,
+        "revoir": "l-recurrence-suites-017",
+        "indices": [
+          "Initialisation avec $u_0$. Pour l'hérédité, suppose $u_n > 10$ et minore chacun des termes de $u_{n+1}$.",
+          "Multiplie l'hypothèse par $0{,}965 > 0$, puis ajoute $0{,}35$. Que sais-tu du signe de $0{,}07e^{-0{,}1n}$ ?"
+        ],
+        "attenduCorrecteur": "- Initialisation : $u_0 = 20 > 10$ : 0,25 pt.\n- Hérédité : de $u_n > 10$, on tire $0{,}965u_n + 0{,}35 > 10$ ; avec $0{,}07e^{-0{,}1n} > 0$, on obtient $u_{n+1} > 10$ : 0,25 pt.\n- Conclusion de la récurrence rédigée : 0,25 pt.",
+        "solution": "Pour tout entier naturel $n$, on note $P(n)$ la propriété : « $u_n > 10$ ».\n\n**Initialisation.** $u_0 = 20 > 10$ : $P(0)$ est vraie.\n\n**Hérédité.** Soit $n$ un entier naturel tel que $P(n)$ est vraie : $u_n > 10$. Comme $0{,}965 > 0$, en multipliant : $0{,}965u_n > 9{,}65$, puis, en ajoutant $0{,}35$ : $0{,}965u_n + 0{,}35 > 10$. De plus, une exponentielle est strictement positive : $0{,}07e^{-0{,}1n} > 0$. En ajoutant ces deux inégalités :\n\n$$u_{n+1} = 0{,}965u_n + 0{,}35 + 0{,}07e^{-0{,}1n} > 10 + 0 = 10.$$\n\nDonc $P(n+1)$ est vraie.\n\n**Conclusion.** La propriété est vraie au rang $0$ et héréditaire : d'après le principe de récurrence, pour tout entier naturel $n$, $u_n > 10$.",
+        "erreurFrequente": "Oublier le terme $0{,}07e^{-0{,}1n}$ dans l'hérédité, ou ne pas justifier son signe : c'est sa stricte positivité qui permet de conclure."
+      },
+      {
+        "id": "q7",
+        "label": "B.3.",
+        "enonce": "On admet que la suite $(u_n)$ est décroissante. En déduire que la suite $(u_n)$ est convergente.",
+        "points": 0.5,
+        "revoir": "l-limites-suites-054",
+        "indices": [
+          "Une suite décroissante qui ne descend jamais sous un réel fixé : quel théorème du cours s'applique ? La question B.2 fournit ce réel."
+        ],
+        "attenduCorrecteur": "- Les deux hypothèses citées : $(u_n)$ décroissante et minorée par $10$ : 0,25 pt.\n- Théorème de convergence monotone nommé, conclusion : 0,25 pt.",
+        "solution": "La suite $(u_n)$ est décroissante (admis) et minorée par $10$ (question B.2). D'après le théorème de convergence monotone, toute suite décroissante et minorée converge : la suite $(u_n)$ est convergente.",
+        "erreurFrequente": "Affirmer dès maintenant que la limite vaut le minorant $10$ : le théorème de convergence monotone donne seulement l'existence de la limite ; sa valeur se calcule à la question suivante."
+      },
+      {
+        "id": "q8",
+        "label": "B.4.",
+        "enonce": "On note $\\ell$ la limite de la suite $(u_n)$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q8a",
+            "label": "a)",
+            "enonce": "Justifier que $\\ell$ est solution de l'équation $x = 0{,}965x + 0{,}35$.",
+            "points": 0.5,
+            "revoir": "l-continuite-053",
+            "indices": [
+              "Cherche la limite de chaque membre de la relation $u_{n+1} = 0{,}965u_n + 0{,}35 + 0{,}07e^{-0{,}1n}$ quand $n$ tend vers $+\\infty$. Pour $e^{-0{,}1n}$, écris-le $\\left(e^{-0{,}1}\\right)^n$.",
+              "Le membre de gauche, $u_{n+1}$, tend vers $\\ell$ ; une suite n'a qu'une limite : égale les deux limites obtenues."
+            ],
+            "attenduCorrecteur": "- $\\lim\\limits_{n \\to +\\infty} e^{-0{,}1n} = 0$ (suite géométrique de raison $e^{-0{,}1}$, comprise entre $0$ et $1$) et, par opérations, le membre de droite tend vers $0{,}965\\ell + 0{,}35$ : 0,25 pt.\n- $u_{n+1}$ tend aussi vers $\\ell$ ; par unicité de la limite, $\\ell = 0{,}965\\ell + 0{,}35$ : 0,25 pt.",
+            "solution": "**Limite du terme en $e^{-0{,}1n}$.** Pour tout entier naturel $n$, $e^{-0{,}1n} = \\left(e^{-0{,}1}\\right)^n$, et $0 < e^{-0{,}1} < 1$, car $-0{,}1 < 0$ et la fonction exponentielle est strictement croissante, avec $e^0 = 1$. C'est une suite géométrique de raison comprise entre $0$ et $1$ : $\\lim\\limits_{n \\to +\\infty} e^{-0{,}1n} = 0$.\n\n**Passage à la limite.** La suite $(u_n)$ converge vers $\\ell$, donc, par opérations sur les limites :\n\n$$\\lim_{n \\to +\\infty} \\left(0{,}965u_n + 0{,}35 + 0{,}07e^{-0{,}1n}\\right) = 0{,}965\\ell + 0{,}35 + 0{,}07 \\times 0 = 0{,}965\\ell + 0{,}35.$$\n\nOr cette expression est égale à $u_{n+1}$, et la suite $(u_{n+1})$ converge aussi vers $\\ell$ : ce sont les mêmes termes, décalés d'un rang. Par unicité de la limite, $\\ell = 0{,}965\\ell + 0{,}35$ : $\\ell$ est solution de l'équation $x = 0{,}965x + 0{,}35$."
+          },
+          {
+            "id": "q8b",
+            "label": "b)",
+            "enonce": "Déterminer $\\ell$ et interpréter le résultat dans le contexte de l'exercice.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 10,
+              "tolerance": 0
+            },
+            "revoir": "l-continuite-055",
+            "indices": [
+              "Résous l'équation du premier degré $x = 0{,}965x + 0{,}35$ : regroupe les termes en $x$ dans un même membre."
+            ],
+            "attenduCorrecteur": "- Résolution : $0{,}035\\ell = 0{,}35$, donc $\\ell = 10$ : 0,25 pt.\n- Interprétation : si le chauffage ne se remettait pas en marche, la température de la pièce se rapprocherait de 10 °C : 0,25 pt.",
+            "solution": "$$\\ell = 0{,}965\\ell + 0{,}35 \\iff 0{,}035\\ell = 0{,}35 \\iff \\ell = \\dfrac{0{,}35}{0{,}035} = 10.$$\n\n**Interprétation** : si le chauffage ne se remettait jamais en marche, la température de la pièce se rapprocherait de 10 °C."
+          }
+        ]
+      },
+      {
+        "id": "q9",
+        "label": "B.5.",
+        "enonce": "On rappelle que le système de chauffage se met en marche automatiquement dès que la température de la pièce est inférieure ou égale à 18 °C. On considère le programme ci-dessous, écrit en langage Python, où la fonction exp, importée du module math, calcule l'exponentielle d'un réel.",
+        "code": {
+          "langage": "python",
+          "source": "from math import exp\n\ndef marche():\n    n = 0\n    u = 20\n    while ...:\n        u = ...\n        n = ...\n    return n"
+        },
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q9a",
+            "label": "a)",
+            "enonce": "Recopier et compléter les trois lignes incomplètes, afin que la fonction marche renvoie le nombre de dizaines de minutes à partir duquel le système de chauffage se remettra en marche.",
+            "points": 0.75,
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "La boucle doit tourner tant que le chauffage ne s'est pas remis en marche : sa condition est le contraire de « la température est inférieure ou égale à 18 ».",
+              "Dans la boucle, u passe au terme suivant avec la relation de récurrence, qui utilise la valeur courante de n ; n avance ensuite de 1. L'ordre de ces deux lignes compte."
+            ],
+            "attenduCorrecteur": "- Condition de la boucle : $\\texttt{while u > 18:}$ : 0,25 pt.\n- Mise à jour du terme : $\\texttt{u = 0{.}965*u + 0{.}35 + 0{.}07*exp(-0{.}1*n)}$, calculée avec la valeur de n avant son augmentation : 0,25 pt.\n- Mise à jour du rang : $\\texttt{n = n + 1}$, après celle de u : 0,25 pt.",
+            "solution": "La fonction cherche le premier rang $n$ tel que $u_n \\leqslant 18$. La boucle doit donc tourner tant que ce but n'est pas atteint, c'est-à-dire tant que $u > 18$ : la ligne du while devient $\\texttt{while u > 18:}$.\n\nDans la boucle, u est remplacé par le terme suivant, d'après la relation $u_{n+1} = 0{,}965u_n + 0{,}35 + 0{,}07e^{-0{,}1n}$ ; en Python, le séparateur décimal est un point, d'où la ligne $\\texttt{u = 0{.}965*u + 0{.}35 + 0{.}07*exp(-0{.}1*n)}$. Elle utilise la valeur de n **avant** son augmentation : quand n vaut un entier $k$, u contient $u_k$ et devient $u_{k+1}$, calculé avec $e^{-0{,}1k}$.\n\nLe rang avance ensuite de $1$ : $\\texttt{n = n + 1}$.\n\nQuand la boucle s'arrête, u contient le premier terme inférieur ou égal à $18$, et n son rang, que la fonction renvoie.",
+            "erreurFrequente": "Placer la ligne $\\texttt{n = n + 1}$ avant la mise à jour de u : le terme en $e^{-0{,}1n}$ est alors calculé avec le rang suivant, et u ne contient plus les termes de la suite."
+          },
+          {
+            "id": "q9b",
+            "label": "b)",
+            "enonce": "Déterminer le temps, en dizaines de minutes, à partir duquel le système de chauffage se remettra en marche.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 8,
+              "tolerance": 0
+            },
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "Fais tourner le programme, ou calcule les termes successifs à la calculatrice à partir de $u_1 = 19{,}72$, jusqu'au premier terme inférieur ou égal à $18$. Attention : le terme en $e^{-0{,}1n}$ change à chaque étape."
+            ],
+            "attenduCorrecteur": "- Termes calculés jusqu'au premier terme inférieur ou égal à $18$ : $u_7 \\approx 18{,}12 > 18$ et $u_8 \\approx 17{,}87 \\leqslant 18$ : 0,25 pt.\n- Conclusion : le chauffage se remet en marche au bout de $8$ dizaines de minutes, soit $80$ minutes après son arrêt : 0,25 pt.",
+            "solution": "On fait tourner le programme, ou l'on calcule les termes à la calculatrice (valeurs arrondies au centième) :\n\n| $n$ | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ |\n|---|---|---|---|---|---|---|---|---|---|\n| $u_n$ | $20$ | $19{,}72$ | $19{,}44$ | $19{,}17$ | $18{,}90$ | $18{,}64$ | $18{,}38$ | $18{,}12$ | $17{,}87$ |\n\nOn a $u_7 \\approx 18{,}12 > 18$ et $u_8 \\approx 17{,}87 \\leqslant 18$ : l'appel marche() renvoie $8$.\n\nLe système de chauffage se remettra en marche au bout de $8$ dizaines de minutes, soit $80$ minutes (1 h 20 min) après son arrêt."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-primitives-equations-differentielles-004",
+    "chapitre": "primitives-equations-differentielles",
+    "notions": [
+      "n-primitives-equations-differentielles-primitive",
+      "n-primitives-equations-differentielles-calcul",
+      "n-primitives-equations-differentielles-equation-ay",
+      "n-primitives-equations-differentielles-equation-ay-b",
+      "n-primitives-equations-differentielles-equation-ay-f"
+    ],
+    "capacites": [
+      "bo-m-primitives-01",
+      "bo-m-primitives-04",
+      "bo-m-primitives-03",
+      "bo-m-primitives-05",
+      "bo-m-primitives-06",
+      "bo-m-logique-07",
+      "bo-m-limites-fonctions-02",
+      "bo-m-derivation-05"
+    ],
+    "titre": "Vrai ou faux : primitives et équations différentielles",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": false,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2025-metropole-septembre-j2",
+      "adaptation": "Exercice 2 (vrai-faux, réponses justifiées) : forme de l'exercice et affirmations 3 ($F(x) = (2x + 1)\\ln(x)$ primitive de $x \\mapsto \\dfrac{2}{x}$, fausse) et 4 ($g(t) = 45e^{0{,}06t} + 20$ unique solution de $y' + 0{,}06y = 1{,}2$ telle que $g(0) = 65$, fausse) conservées, devenues affirmations 1 et 4. Affirmations 1 et 2 retirées (dénombrement, tangente : hors du sujet de ce chapitre) ; affirmation 5 retirée (convexité des solutions de $y' - y = 3e^{0{,}4x}$, qui demande soit de dériver l'équation, geste que le cours ne montre pas, soit une solution particulière que l'énoncé ne donne pas). Ajoutées : affirmation 2, tirée de an-2022-etrangers-j1, exercice 1 (primitive de $x \\mapsto \\dfrac{x}{1 - x^2}$ sur $]-1\\,;\\,1[$ ; QCM transformé en affirmation, avec une condition en $0$) ; affirmation 3, tirée de an-2021-etrangers-j1, exercice 5 au choix B (solution de $3y' + y = 0$ dont la courbe passe par $M(0\\,;\\,2)$ ; question transformée en affirmation sur son sens de variation et son asymptote) ; affirmation 5, reprise de an-2024-metropole-juin-j1, exercice 1, affirmation 2 ($x \\mapsto 5xe^{-x}$ solution de $y' + y = 5e^{-x}$). Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Pour chacune des affirmations suivantes, indiquer si elle est vraie ou fausse. Chaque réponse doit être justifiée. Une réponse non justifiée ne rapporte aucun point.\n\nLes cinq affirmations sont indépendantes.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Affirmation 1** : on considère la fonction $F$ définie sur $]0\\,;\\,+\\infty[$ par $F(x) = (2x + 1)\\ln(x)$. La fonction $F$ est une primitive sur $]0\\,;\\,+\\infty[$ de la fonction $f$ définie par $f(x) = \\dfrac{2}{x}$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$F'(x) = 2\\ln(x) + \\dfrac{2x + 1}{x} = 2\\ln(x) + 2 + \\dfrac{1}{x}$, donc $F'(1) = 3$, alors que $f(1) = 2$ : $F' \\neq f$, et $F$ n'est pas une primitive de $f$."
+        },
+        "revoir": "l-primitives-equations-differentielles-011",
+        "indices": [
+          "Pour savoir si $F$ est une primitive de $f$, dérive $F$ (c'est un produit) et compare $F'(x)$ à $f(x)$ pour tout $x > 0$.",
+          "Si les deux expressions semblent différentes, un seul réel où elles diffèrent suffit à conclure : essaie une valeur de $x$ où $\\ln(x)$ est simple."
+        ],
+        "attenduCorrecteur": "- Dérivée d'un produit : $F'(x) = 2\\ln(x) + (2x + 1) \\times \\dfrac{1}{x}$ : 0,25 pt.\n- Simplification : $F'(x) = 2\\ln(x) + 2 + \\dfrac{1}{x}$ : 0,25 pt.\n- Contre-exemple : $F'(1) = 3 \\neq 2 = f(1)$ : 0,25 pt.\n- Conclusion : l'affirmation est fausse : 0,25 pt.",
+        "solution": "La fonction $F$ est dérivable sur $]0\\,;\\,+\\infty[$, comme produit de fonctions dérivables. Avec $u(x) = 2x + 1$, $u'(x) = 2$, $v(x) = \\ln(x)$ et $v'(x) = \\dfrac{1}{x}$ :\n\n$$F'(x) = 2\\ln(x) + (2x + 1) \\times \\dfrac{1}{x} = 2\\ln(x) + 2 + \\dfrac{1}{x}.$$\n\nPour $x = 1$ : $F'(1) = 2\\ln(1) + 2 + 1 = 3$, alors que $f(1) = \\dfrac{2}{1} = 2$. Donc $F'(1) \\neq f(1)$ : la fonction $F$ n'est pas une primitive de $f$ sur $]0\\,;\\,+\\infty[$.\n\n**L'affirmation 1 est fausse.**",
+        "erreurFrequente": "Se contenter de repérer $\\dfrac{1}{x}$ dans $F'(x)$ : il faut l'égalité $F'(x) = f(x)$ pour **tout** $x$ de l'intervalle, et un seul contre-exemple suffit à la mettre en défaut."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "**Affirmation 2** : on considère la fonction $f$ définie sur l'intervalle $]-1\\,;\\,1[$ par $f(x) = \\dfrac{x}{1 - x^2}$. La primitive $G$ de $f$ sur $]-1\\,;\\,1[$ telle que $G(0) = 1$ est définie par $G(x) = 1 - \\dfrac{1}{2}\\ln\\left(1 - x^2\\right)$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Avec $u(x) = 1 - x^2 > 0$ sur $]-1\\,;\\,1[$ et $u'(x) = -2x$, $f = -\\dfrac{1}{2} \\times \\dfrac{u'}{u}$ : ses primitives sont les fonctions $x \\mapsto -\\dfrac{1}{2}\\ln\\left(1 - x^2\\right) + C$. La condition $G(0) = 1$ donne $C = 1$, car $\\ln(1) = 0$."
+        },
+        "revoir": "l-primitives-equations-differentielles-023",
+        "indices": [
+          "Pose $u(x) = 1 - x^2$ : calcule $u'(x)$, vérifie le signe de $u(x)$ sur $]-1\\,;\\,1[$, puis fais apparaître $\\dfrac{u'}{u}$ dans $f(x)$, à un facteur constant près.",
+          "Une primitive de $\\dfrac{u'}{u}$ est $\\ln(u)$ quand $u > 0$. Ajoute une constante, puis utilise la condition $G(0) = 1$, avec $\\ln(1) = 0$."
+        ],
+        "attenduCorrecteur": "- $u(x) = 1 - x^2 > 0$ sur $]-1\\,;\\,1[$, $u'(x) = -2x$, et $f(x) = -\\dfrac{1}{2} \\times \\dfrac{u'(x)}{u(x)}$ : 0,25 pt.\n- Primitives de $f$ : $x \\mapsto -\\dfrac{1}{2}\\ln\\left(1 - x^2\\right) + C$ (ou, autre méthode, $G'(x) = f(x)$ vérifié en dérivant) : 0,25 pt.\n- Condition : $G(0) = 1 - \\dfrac{1}{2}\\ln(1) = 1$, et une seule primitive vaut $1$ en $0$ : 0,25 pt.\n- Conclusion : l'affirmation est vraie : 0,25 pt.",
+        "solution": "On pose $u(x) = 1 - x^2$. Pour $x$ dans $]-1\\,;\\,1[$, $x^2 < 1$, donc $u(x) > 0$ ; et $u'(x) = -2x$. On fait apparaître $\\dfrac{u'}{u}$ :\n\n$$f(x) = \\dfrac{x}{1 - x^2} = -\\dfrac{1}{2} \\times \\dfrac{-2x}{1 - x^2} = -\\dfrac{1}{2} \\times \\dfrac{u'(x)}{u(x)}.$$\n\nComme $u > 0$ sur $]-1\\,;\\,1[$, une primitive de $\\dfrac{u'}{u}$ est $\\ln(u)$ : les primitives de $f$ sur $]-1\\,;\\,1[$ sont les fonctions $x \\mapsto -\\dfrac{1}{2}\\ln\\left(1 - x^2\\right) + C$, avec $C$ réel.\n\nLa condition $G(0) = 1$ s'écrit $-\\dfrac{1}{2}\\ln(1) + C = 1$, soit $C = 1$, car $\\ln(1) = 0$. Donc $G(x) = 1 - \\dfrac{1}{2}\\ln\\left(1 - x^2\\right)$.\n\nContrôle en dérivant : $G'(x) = -\\dfrac{1}{2} \\times \\dfrac{-2x}{1 - x^2} = \\dfrac{x}{1 - x^2} = f(x)$.\n\n**L'affirmation 2 est vraie.**",
+        "erreurFrequente": "Oublier le facteur $-\\dfrac{1}{2}$ et proposer $\\ln\\left(1 - x^2\\right)$ : sa dérivée est $\\dfrac{-2x}{1 - x^2}$, soit $-2f(x)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "**Affirmation 3** : on considère l'équation différentielle $(E) : 3y' + y = 0$. La solution de $(E)$ dont la courbe représentative, dans un repère du plan, passe par le point $M(0\\,;\\,2)$ est strictement décroissante sur $\\mathbb{R}$, et sa courbe admet l'axe des abscisses pour asymptote en $+\\infty$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$(E) \\iff y' = -\\dfrac{1}{3}y$ ; la solution qui vaut $2$ en $0$ est $f : x \\mapsto 2e^{-\\frac{1}{3}x}$. $f'(x) = -\\dfrac{2}{3}e^{-\\frac{1}{3}x} < 0$, donc $f$ est strictement décroissante, et $\\lim\\limits_{x \\to +\\infty} f(x) = 0$ : l'axe des abscisses est asymptote en $+\\infty$."
+        },
+        "revoir": "l-primitives-equations-differentielles-040",
+        "indices": [
+          "Mets $(E)$ sous la forme $y' = ay$ pour écrire ses solutions, puis traduis « la courbe passe par $M(0\\,;\\,2)$ » par une condition initiale.",
+          "Pour le sens de variation, regarde le signe de $aC$ ; pour l'asymptote, cherche la limite en $+\\infty$, qui dépend du signe de $a$."
+        ],
+        "attenduCorrecteur": "- $(E) \\iff y' = -\\dfrac{1}{3}y$ ; solutions $x \\mapsto Ce^{-\\frac{1}{3}x}$, $C$ réel : 0,25 pt.\n- Passage par $M(0\\,;\\,2)$ : $C = 2$, soit $f(x) = 2e^{-\\frac{1}{3}x}$ : 0,25 pt.\n- $f'(x) = -\\dfrac{2}{3}e^{-\\frac{1}{3}x} < 0$, donc $f$ strictement décroissante ; $\\lim\\limits_{x \\to +\\infty} f(x) = 0$, donc asymptote d'équation $y = 0$ en $+\\infty$ : 0,25 pt.\n- Conclusion : l'affirmation est vraie : 0,25 pt.",
+        "solution": "$3y' + y = 0 \\iff 3y' = -y \\iff y' = -\\dfrac{1}{3}y$. Les solutions de $(E)$ sont les fonctions $x \\mapsto Ce^{-\\frac{1}{3}x}$, avec $C$ réel.\n\nLa courbe passe par $M(0\\,;\\,2)$ si et seulement si la solution vaut $2$ en $0$ : $Ce^{0} = C = 2$. La solution cherchée est $f : x \\mapsto 2e^{-\\frac{1}{3}x}$.\n\n**Sens de variation.** $f'(x) = 2 \\times \\left(-\\dfrac{1}{3}\\right)e^{-\\frac{1}{3}x} = -\\dfrac{2}{3}e^{-\\frac{1}{3}x} < 0$ pour tout réel $x$ : $f$ est strictement décroissante sur $\\mathbb{R}$.\n\n**Asymptote.** Quand $x$ tend vers $+\\infty$, $-\\dfrac{1}{3}x$ tend vers $-\\infty$, donc $e^{-\\frac{1}{3}x}$ tend vers $0$ (limite d'une composée), et $\\lim\\limits_{x \\to +\\infty} f(x) = 0$ : l'axe des abscisses, d'équation $y = 0$, est asymptote à la courbe de $f$ en $+\\infty$.\n\n**L'affirmation 3 est vraie.**",
+        "erreurFrequente": "Lire $a = -3$ dans $3y' + y = 0$ : il faut d'abord isoler $y'$, en divisant par $3$, d'où $a = -\\dfrac{1}{3}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "**Affirmation 4** : on considère la fonction $g$ définie sur $\\mathbb{R}$ par $g(t) = 45e^{0{,}06t} + 20$. La fonction $g$ est l'unique solution de l'équation différentielle $(E_1) : y' + 0{,}06y = 1{,}2$ vérifiant $g(0) = 65$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$g'(t) + 0{,}06g(t) = 2{,}7e^{0{,}06t} + 2{,}7e^{0{,}06t} + 1{,}2 = 5{,}4e^{0{,}06t} + 1{,}2 \\neq 1{,}2$ : $g$ n'est pas solution de $(E_1)$. L'unique solution qui vaut $65$ en $0$ est $t \\mapsto 45e^{-0{,}06t} + 20$."
+        },
+        "revoir": "l-primitives-equations-differentielles-054",
+        "indices": [
+          "Une piste rapide : calcule $g'(t) + 0{,}06g(t)$ et compare au second membre $1{,}2$.",
+          "Autre piste : isole $y'$ pour lire $a$ et $b$ avec leurs signes, cherche la solution constante, puis écris la solution qui vaut $65$ en $0$ et compare-la à $g$."
+        ],
+        "attenduCorrecteur": "- Dérivée : $g'(t) = 45 \\times 0{,}06e^{0{,}06t} = 2{,}7e^{0{,}06t}$ : 0,25 pt.\n- $g'(t) + 0{,}06g(t) = 5{,}4e^{0{,}06t} + 1{,}2 \\neq 1{,}2$ (ou : l'unique solution telle que $y(0) = 65$ est $t \\mapsto 45e^{-0{,}06t} + 20$, différente de $g$) : 0,5 pt.\n- Conclusion : $g(0) = 65$, mais $g$ n'est pas solution ; l'affirmation est fausse : 0,25 pt.",
+        "solution": "La fonction $g$ est dérivable sur $\\mathbb{R}$ et $g'(t) = 45 \\times 0{,}06e^{0{,}06t} = 2{,}7e^{0{,}06t}$. Pour tout réel $t$ :\n\n$$g'(t) + 0{,}06g(t) = 2{,}7e^{0{,}06t} + 2{,}7e^{0{,}06t} + 1{,}2 = 5{,}4e^{0{,}06t} + 1{,}2.$$\n\nComme $5{,}4e^{0{,}06t} > 0$, on a $g'(t) + 0{,}06g(t) > 1{,}2$ : $g$ n'est pas solution de $(E_1)$, même si $g(0) = 45 + 20 = 65$.\n\nOn peut aussi trouver la bonne solution : $(E_1) \\iff y' = -0{,}06y + 1{,}2$. La solution constante $k$ vérifie $0 = -0{,}06k + 1{,}2$, soit $k = 20$, et les solutions sont les fonctions $t \\mapsto Ce^{-0{,}06t} + 20$. La condition $y(0) = 65$ donne $C + 20 = 65$, soit $C = 45$ : l'unique solution est $t \\mapsto 45e^{-0{,}06t} + 20$, et non $g$.\n\n**L'affirmation 4 est fausse.**",
+        "erreurFrequente": "S'arrêter à $g(0) = 65$ : la condition initiale est vérifiée, mais $g$ doit aussi être solution. Le piège est le signe : $y' + 0{,}06y = 1{,}2$ s'écrit $y' = -0{,}06y + 1{,}2$, d'où $e^{-0{,}06t}$ et non $e^{0{,}06t}$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "**Affirmation 5** : on considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = 5xe^{-x}$. La fonction $f$ est solution sur $\\mathbb{R}$ de l'équation différentielle $(E) : y' + y = 5e^{-x}$.",
+        "points": 1,
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$f'(x) = 5e^{-x} - 5xe^{-x}$, donc $f'(x) + f(x) = 5e^{-x}$ pour tout réel $x$ : $f$ est solution de $(E)$."
+        },
+        "revoir": "l-primitives-equations-differentielles-069",
+        "indices": [
+          "Calcule $f'(x)$ avec la dérivée d'un produit, en te rappelant que $\\left(e^{-x}\\right)' = -e^{-x}$.",
+          "Calcule ensuite $f'(x) + f(x)$ et compare-le, pour tout réel $x$, au second membre $5e^{-x}$."
+        ],
+        "attenduCorrecteur": "- Dérivée d'un produit : $f'(x) = 5e^{-x} + 5x \\times \\left(-e^{-x}\\right) = 5e^{-x} - 5xe^{-x}$ : 0,5 pt.\n- $f'(x) + f(x) = 5e^{-x}$ pour tout réel $x$ : 0,25 pt.\n- Conclusion : l'affirmation est vraie : 0,25 pt.",
+        "solution": "La fonction $f$ est dérivable sur $\\mathbb{R}$. Avec $u(x) = 5x$, $u'(x) = 5$, $v(x) = e^{-x}$ et $v'(x) = -e^{-x}$ :\n\n$$f'(x) = 5e^{-x} + 5x \\times \\left(-e^{-x}\\right) = 5e^{-x} - 5xe^{-x}.$$\n\nPour tout réel $x$ : $f'(x) + f(x) = 5e^{-x} - 5xe^{-x} + 5xe^{-x} = 5e^{-x}$. La fonction $f$ vérifie donc $(E)$ sur $\\mathbb{R}$.\n\n**L'affirmation 5 est vraie.**",
+        "erreurFrequente": "Dériver $5xe^{-x}$ en $5e^{-x}$, ou en $-5xe^{-x}$ : c'est un produit, dont la dérivée a deux termes."
+      }
+    ]
+  }
+]
