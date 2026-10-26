@@ -1,0 +1,152 @@
+[
+  {
+    "id": "m-primitives-equations-differentielles-primitive",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-primitive",
+    "genre": "definition",
+    "titre": "Primitive d'une fonction",
+    "enonce": "Soit $f$ une fonction continue sur un intervalle $I$. Une primitive de $f$ sur $I$ est une fonction $F$ dérivable sur $I$ telle que $F' = f$ : c'est une solution de l'équation différentielle $y' = f$. Pour vérifier que $F$ est une primitive de $f$, on dérive $F$ et on compare avec $f$.",
+    "conditions": "$f$ continue sur un intervalle $I$ ; toute fonction continue sur un intervalle admet des primitives (résultat admis).",
+    "exemple": "$\\big(x\\ln x - x\\big)' = \\ln x + 1 - 1 = \\ln x$ : $x \\mapsto x\\ln x - x$ est une primitive de $\\ln$ sur $]0\\,;\\,+\\infty[$.",
+    "simplifie": {
+      "coeur": "$F$ primitive de $f$ sur $I$ $\\iff$ $F' = f$ sur $I$",
+      "moyenMemo": "Une primitive, c'est dériver à l'envers ; pour vérifier, on dérive.",
+      "motCle": "primitive"
+    }
+  },
+  {
+    "id": "m-primitives-equations-differentielles-plus-constante",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-primitive",
+    "genre": "propriete",
+    "titre": "Deux primitives diffèrent d'une constante",
+    "enonce": "Si $F$ est une primitive de $f$ sur un intervalle $I$, les primitives de $f$ sur $I$ sont les fonctions $x \\mapsto F(x) + C$, avec $C$ réel. Une condition $F(x_0) = y_0$ fixe $C$ : une seule primitive la vérifie. Le sens de variation d'une primitive se lit sur le signe de $f$, car $F' = f$.",
+    "conditions": "$I$ est un intervalle.",
+    "exemple": "Les primitives de $x \\mapsto 2x$ sont les fonctions $x \\mapsto x^2 + C$ ; celle qui vaut $7$ en $2$ est $x \\mapsto x^2 + 3$.",
+    "simplifie": {
+      "coeur": "Primitives de $f$ : $F + C$, $C \\in \\mathbb{R}$ ; la condition $F(x_0) = y_0$ fixe $C$",
+      "moyenMemo": "Même dérivée, courbes décalées verticalement.",
+      "motCle": "plus C",
+      "image": "Les courbes des primitives sont empilées : une même courbe, translatée vers le haut ou vers le bas."
+    }
+  },
+  {
+    "id": "m-primitives-equations-differentielles-equation-ay",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay",
+    "genre": "formule",
+    "titre": "Solutions de $y' = ay$",
+    "enonce": "Pour un réel $a$, les solutions sur $\\mathbb{R}$ de $y' = ay$ sont les fonctions $x \\mapsto Ce^{ax}$, avec $C$ réel. La solution telle que $f(0) = y_0$ est $x \\mapsto y_0e^{ax}$ ; pour une condition $f(x_0) = y_0$, on résout $Ce^{ax_0} = y_0$.",
+    "conditions": "Isoler $y'$ avant de lire $a$ : $3y' + y = 0$ s'écrit $y' = -\\dfrac{1}{3}y$.",
+    "exemple": "$y' = -2y$ et $f(0) = 5$ : $f(x) = 5e^{-2x}$.",
+    "simplifie": {
+      "coeur": "$y' = ay$ : solutions $x \\mapsto Ce^{ax}$, $C \\in \\mathbb{R}$",
+      "moyenMemo": "Le $a$ de l'équation monte dans l'exposant ; le $C$ reste devant.",
+      "motCle": "exponentielle"
+    }
+  },
+  {
+    "id": "m-primitives-equations-differentielles-allure",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay",
+    "genre": "propriete",
+    "titre": "Allure des courbes de $x \\mapsto Ce^{ax}$",
+    "enonce": "Pour $f(x) = Ce^{ax}$, avec $a$ et $C$ non nuls : $f(x)$ a le signe de $C$ ; $f$ est strictement croissante si $aC > 0$, strictement décroissante si $aC < 0$ ; l'axe des abscisses est asymptote en $-\\infty$ si $a > 0$, en $+\\infty$ si $a < 0$. La courbe passe par le point $(0\\,;\\,C)$.",
+    "conditions": "$a \\neq 0$ et $C \\neq 0$ ; pour $C = 0$, la courbe est l'axe des abscisses.",
+    "exemple": "$x \\mapsto -2e^{0{,}3x}$ : négative, strictement décroissante, asymptote d'équation $y = 0$ en $-\\infty$.",
+    "simplifie": {
+      "coeur": "Signe de $f$ : celui de $C$. Sens de variation : signe de $aC$. Limite $0$ en $-\\infty$ si $a > 0$, en $+\\infty$ si $a < 0$",
+      "moyenMemo": "C donne le signe, aC donne le sens.",
+      "motCle": "allure",
+      "image": "Pour a > 0, des courbes qui décollent vers la droite ; pour a < 0, leurs symétriques, qui se couchent sur l'axe vers la droite."
+    }
+  },
+  {
+    "id": "m-primitives-equations-differentielles-reference",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-calcul",
+    "genre": "formule",
+    "titre": "Primitives des fonctions de référence",
+    "enonce": "| $f(x)$ | Une primitive $F(x)$ | Sur |\n|---|---|---|\n| $x^n$, $n \\in \\mathbb{Z}$, $n \\neq -1$ | $\\dfrac{x^{n+1}}{n+1}$ | $\\mathbb{R}$ si $n \\geqslant 0$ ; $]-\\infty\\,;\\,0[$ ou $]0\\,;\\,+\\infty[$ si $n \\leqslant -2$ |\n| $\\dfrac{1}{x}$ | $\\ln x$ | $]0\\,;\\,+\\infty[$ |\n| $\\dfrac{1}{\\sqrt{x}}$ | $2\\sqrt{x}$ | $]0\\,;\\,+\\infty[$ |\n| $e^x$ | $e^x$ | $\\mathbb{R}$ |\n| $\\sin(x)$ | $-\\cos(x)$ | $\\mathbb{R}$ |\n| $\\cos(x)$ | $\\sin(x)$ | $\\mathbb{R}$ |\n\nUne primitive de $f + g$ est $F + G$ ; une primitive de $kf$ est $kF$, pour un réel $k$.",
+    "exemple": "Une primitive de $x \\mapsto 4x^3 + \\dfrac{1}{x^2}$ sur $]0\\,;\\,+\\infty[$ est $x \\mapsto x^4 - \\dfrac{1}{x}$.",
+    "simplifie": {
+      "coeur": "$\\dfrac{x^{n+1}}{n+1}$ pour $x^n$ ; $\\ln x$ pour $\\dfrac{1}{x}$ ; $2\\sqrt{x}$ pour $\\dfrac{1}{\\sqrt{x}}$ ; $e^x$ pour $e^x$ ; $-\\cos$ pour $\\sin$ ; $\\sin$ pour $\\cos$",
+      "moyenMemo": "Le signe moins accompagne le cosinus : une primitive de sinus est moins cosinus.",
+      "motCle": "reference"
+    }
+  },
+  {
+    "id": "m-primitives-equations-differentielles-composees",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-calcul",
+    "genre": "formule",
+    "titre": "Primitives des formes composées",
+    "enonce": "Pour $u$ dérivable sur un intervalle $I$, une primitive de $(v' \\circ u) \\times u'$ est $v \\circ u$. En particulier :\n\n- $u'e^{u}$ a pour primitive $e^{u}$ ;\n- $u'u^n$, pour $n$ entier, $n \\geqslant 0$, a pour primitive $\\dfrac{u^{n+1}}{n+1}$ ; $\\dfrac{u'}{u^2}$ a pour primitive $-\\dfrac{1}{u}$ ;\n- $\\dfrac{u'}{u}$ a pour primitive $\\ln(u)$, et $\\dfrac{u'}{\\sqrt{u}}$ a pour primitive $2\\sqrt{u}$ ;\n- $u'\\cos(u)$ et $u'\\sin(u)$ ont pour primitives $\\sin(u)$ et $-\\cos(u)$.\n\nCas affine : pour $a \\neq 0$, une primitive de $x \\mapsto f(ax + b)$ est $x \\mapsto \\dfrac{1}{a}F(ax + b)$.",
+    "conditions": "$u(x) > 0$ sur $I$ pour $\\ln(u)$ et $2\\sqrt{u}$ ; $u$ ne s'annule pas sur $I$ pour $-\\dfrac{1}{u}$.",
+    "exemple": "$xe^{x^2} = \\dfrac{1}{2} \\times 2xe^{x^2}$ a pour primitive $\\dfrac{1}{2}e^{x^2}$.",
+    "simplifie": {
+      "coeur": "Faire apparaître $u'$ : $u'e^{u}$ donne $e^{u}$ ; $\\dfrac{u'}{u}$ donne $\\ln(u)$ ; $u'u^n$ donne $\\dfrac{u^{n+1}}{n+1}$ ; $\\dfrac{u'}{\\sqrt{u}}$ donne $2\\sqrt{u}$",
+      "moyenMemo": "Repère l'intérieur u, cherche u' en facteur, ajuste la constante, vérifie en dérivant.",
+      "motCle": "u prime"
+    }
+  },
+  {
+    "id": "m-primitives-equations-differentielles-equation-ay-b",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-b",
+    "genre": "formule",
+    "titre": "Solutions de $y' = ay + b$",
+    "enonce": "Pour $a \\neq 0$, la fonction constante $x \\mapsto -\\dfrac{b}{a}$ est solution de $y' = ay + b$, et toutes les solutions sont les fonctions $x \\mapsto Ce^{ax} - \\dfrac{b}{a}$, avec $C$ réel. La condition $f(0) = y_0$ s'écrit $C - \\dfrac{b}{a} = y_0$.",
+    "conditions": "$a \\neq 0$.",
+    "exemple": "$y' = -0{,}1y + 2$ et $T(0) = 80$ : la solution constante est $20$, et $T(t) = 60e^{-0{,}1t} + 20$.",
+    "simplifie": {
+      "coeur": "$y' = ay + b$ : solutions $x \\mapsto Ce^{ax} + k$, où la constante $k = -\\dfrac{b}{a}$ vérifie $0 = ak + b$",
+      "moyenMemo": "Solution constante d'abord : dérivée nulle, donc 0 = ak + b.",
+      "motCle": "solution constante",
+      "image": "Si a < 0, toutes les courbes se rapprochent de la droite horizontale y = −b/a : le café finit à la température de la pièce."
+    }
+  },
+  {
+    "id": "m-primitives-equations-differentielles-euler",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-b",
+    "genre": "methode",
+    "titre": "Méthode d'Euler",
+    "enonce": "Avec un pas $h$ petit, on part du point $(x_0\\,;\\,y_0)$ et on répète : $x_{n+1} = x_n + h$ et $y_{n+1} = y_n + h \\times p_n$, où la pente $p_n$ est donnée par l'équation. Pour $y' = ay + b$ : $y_{n+1} = y_n + h(ay_n + b)$. Pour $y' = f$ : $y_{n+1} = y_n + hf(x_n)$. C'est l'approximation par la tangente.",
+    "exemple": "$y' = y$, $y(0) = 1$, $h = 0{,}5$ : $y_1 = 1{,}5$ et $y_2 = 2{,}25$, valeurs approchées de $e^{0{,}5}$ et de $e^{1}$.",
+    "simplifie": {
+      "coeur": "$x_{n+1} = x_n + h$ ; $y_{n+1} = y_n + h \\times (\\text{pente en } x_n)$",
+      "moyenMemo": "Avancer d'un pas le long de la tangente, puis recommencer.",
+      "motCle": "Euler"
+    }
+  },
+  {
+    "id": "m-primitives-equations-differentielles-equation-ay-f",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-f",
+    "genre": "propriete",
+    "titre": "Solutions de $y' = ay + f$",
+    "enonce": "Si $g$ est une solution particulière de $(E) : y' = ay + f$, alors $h$ est solution de $(E)$ si et seulement si $h - g$ est solution de $y' = ay$. Les solutions de $(E)$ sont donc les fonctions $x \\mapsto Ce^{ax} + g(x)$, avec $C$ réel.",
+    "conditions": "$a$ réel ; $g$ solution de $(E)$ sur l'intervalle $I$.",
+    "exemple": "$g(x) = x + 1$ est solution de $y' = y - x$ ; les solutions sont les fonctions $x \\mapsto Ce^{x} + x + 1$.",
+    "simplifie": {
+      "coeur": "Solutions de $y' = ay + f$ : $x \\mapsto Ce^{ax} + g(x)$, où $g$ est une solution particulière",
+      "moyenMemo": "Toutes les solutions = une solution particulière + les solutions sans second membre.",
+      "motCle": "solution particulière"
+    }
+  },
+  {
+    "id": "m-primitives-equations-differentielles-forme-imposee",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-f",
+    "genre": "methode",
+    "titre": "Trouver une solution particulière de forme imposée",
+    "enonce": "On dérive la forme donnée (par exemple $g(x) = mx + p$ ou $g(x) = mxe^{-x}$), on remplace dans l'équation, on regroupe les termes de même nature, puis on identifie les coefficients des deux membres. On termine en vérifiant que $g$ est solution.",
+    "exemple": "$y' = 2y - 4x$ avec $g(x) = mx + p$ : $m = (2m - 4)x + 2p$ pour tout $x$, donc $2m - 4 = 0$ et $2p = m$, d'où $g(x) = 2x + 1$.",
+    "simplifie": {
+      "coeur": "Dériver, remplacer, regrouper, identifier les coefficients, vérifier",
+      "moyenMemo": "Deux expressions égales pour tout x ont les mêmes coefficients.",
+      "motCle": "identifier"
+    }
+  }
+]
