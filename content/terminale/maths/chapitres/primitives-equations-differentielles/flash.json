@@ -1,0 +1,283 @@
+[
+  {
+    "id": "fl-primitives-equations-differentielles-primitive-de-xex",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-primitive",
+    "capacites": ["bo-m-primitives-01"],
+    "enonce": "Quelle fonction est une primitive sur $\\mathbb{R}$ de $x \\mapsto xe^x$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$x \\mapsto (x - 1)e^x$",
+        "$x \\mapsto (x + 1)e^x$",
+        "$x \\mapsto \\dfrac{x^2}{2}e^x$",
+        "$x \\mapsto xe^x$"
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "C'est la **dérivée** de $x \\mapsto xe^x$, pas une primitive.",
+        "Une primitive d'un produit n'est pas le produit des primitives : la dérivée de $\\dfrac{x^2}{2}e^x$ est $xe^x + \\dfrac{x^2}{2}e^x$.",
+        "Sa dérivée est $(x + 1)e^x$, et non $xe^x$."
+      ]
+    },
+    "explication": "On ne devine pas une primitive, on la vérifie en dérivant : $\\big((x - 1)e^x\\big)' = e^x + (x - 1)e^x = xe^x$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-difference-constante",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-primitive",
+    "capacites": ["bo-m-primitives-01"],
+    "enonce": "$F$ et $G$ sont deux primitives sur $\\mathbb{R}$ d'une même fonction continue, avec $F(0) = 2$ et $G(0) = 5$. Que vaut $G(4) - F(4)$ ?",
+    "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+    "explication": "Deux primitives d'une même fonction sur un intervalle diffèrent d'une constante : $G - F$ garde partout sa valeur en $0$, $G(0) - F(0) = 3$. Donc $G(4) - F(4) = 3$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-variations-primitive",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-primitive",
+    "capacites": ["bo-m-primitives-01"],
+    "enonce": "$F$ est une primitive sur $\\mathbb{R}$ de $f : x \\mapsto x^2 + 1$. Que peut-on affirmer ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$F$ est strictement croissante sur $\\mathbb{R}$.",
+        "$F$ est décroissante sur $]-\\infty\\,;\\,0]$.",
+        "$F$ est positive sur $\\mathbb{R}$.",
+        "On ne peut rien dire sans connaître $F$."
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "C'est $f$ qui est décroissante sur $]-\\infty\\,;\\,0]$. Les variations de $F$ se lisent sur le **signe** de $f$, ici toujours positif.",
+        "Le signe de $F$ dépend de la constante : $F$ et $F - 100$ sont deux primitives de $f$. Seul le sens de variation est connu.",
+        "$F' = f > 0$ : cela suffit pour connaître le sens de variation de $F$."
+      ]
+    },
+    "explication": "$F' = f$ et $f(x) = x^2 + 1 > 0$ pour tout réel $x$ : toute primitive de $f$ est strictement croissante sur $\\mathbb{R}$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-primitive-sinus",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-calcul",
+    "capacites": ["bo-m-primitives-02"],
+    "enonce": "Quelle fonction est une primitive de $\\sin$ sur $\\mathbb{R}$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$x \\mapsto \\cos(x)$",
+        "$x \\mapsto -\\cos(x)$",
+        "$x \\mapsto -\\sin(x)$"
+      ],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "$(\\cos)' = -\\sin$ : il manque un signe moins.",
+        null,
+        "On cherche une fonction dont la dérivée est $\\sin$ ; la dérivée de $-\\sin$ est $-\\cos$."
+      ]
+    },
+    "explication": "$(-\\cos)' = -(-\\sin) = \\sin$ : une primitive de $\\sin$ est $-\\cos$, et une primitive de $\\cos$ est $\\sin$.",
+    "duree": 15
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-u-prime-sur-u",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-calcul",
+    "capacites": ["bo-m-primitives-04"],
+    "enonce": "Quelle fonction est une primitive sur $\\mathbb{R}$ de $x \\mapsto \\dfrac{2x}{x^2 + 1}$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$x \\mapsto \\ln\\left(x^2 + 1\\right)$",
+        "$x \\mapsto -\\dfrac{1}{x^2 + 1}$",
+        "$x \\mapsto 2x\\ln\\left(x^2 + 1\\right)$",
+        "$x \\mapsto x^2\\ln\\left(x^2 + 1\\right)$"
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "C'est une primitive de $\\dfrac{2x}{\\left(x^2 + 1\\right)^2}$, la forme $\\dfrac{u'}{u^2}$ : ici le dénominateur n'est pas au carré.",
+        "Inutile de garder $2x$ devant : c'est déjà la dérivée de $u(x) = x^2 + 1$.",
+        "Une primitive d'un quotient ne se calcule pas morceau par morceau : dérive cette fonction, tu ne retrouves pas $\\dfrac{2x}{x^2 + 1}$."
+      ]
+    },
+    "explication": "C'est la forme $\\dfrac{u'}{u}$, avec $u(x) = x^2 + 1 > 0$ et $u'(x) = 2x$ : une primitive est $\\ln(u)$. Le logarithme n'est permis que parce que $u > 0$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-cas-affine",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-calcul",
+    "capacites": ["bo-m-primitives-04", "bo-m-primitives-02"],
+    "enonce": "Quelle fonction est une primitive sur $\\mathbb{R}$ de $x \\mapsto e^{-2x}$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$x \\mapsto e^{-2x}$",
+        "$x \\mapsto -2e^{-2x}$",
+        "$x \\mapsto -\\dfrac{1}{2}e^{-2x}$",
+        "$x \\mapsto \\dfrac{1}{2}e^{-2x}$"
+      ],
+      "bonne": 2,
+      "pourquoiFaux": [
+        "Sa dérivée est $-2e^{-2x}$ : il faut diviser par $-2$.",
+        "C'est la **dérivée** de $x \\mapsto e^{-2x}$, pas une primitive.",
+        null,
+        "Sa dérivée est $-e^{-2x}$ : le signe de $-2$ compte."
+      ]
+    },
+    "explication": "Cas affine : une primitive de $x \\mapsto e^{ax + b}$ est $x \\mapsto \\dfrac{1}{a}e^{ax + b}$, ici avec $a = -2$. Contrôle : $\\left(-\\dfrac{1}{2}e^{-2x}\\right)' = -\\dfrac{1}{2} \\times (-2)e^{-2x} = e^{-2x}$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-isoler-y-prime",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay",
+    "capacites": ["bo-m-primitives-03"],
+    "enonce": "Quelles sont les solutions sur $\\mathbb{R}$ de l'équation différentielle $y' + 2y = 0$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$x \\mapsto Ce^{2x}$, avec $C$ réel",
+        "$x \\mapsto Ce^{-2x}$, avec $C$ réel",
+        "$x \\mapsto e^{-2x} + C$, avec $C$ réel",
+        "$x \\mapsto Ce^{-\\frac{1}{2}x}$, avec $C$ réel"
+      ],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "En isolant $y'$, le terme $2y$ change de membre et de signe : $y' = -2y$.",
+        null,
+        "La constante multiplie l'exponentielle, elle ne s'ajoute pas.",
+        "Le coefficient de $y'$ vaut $1$ : il n'y a rien à diviser, donc $a = -2$."
+      ]
+    },
+    "explication": "$y' + 2y = 0 \\iff y' = -2y$ : $a = -2$, et les solutions sont les fonctions $x \\mapsto Ce^{-2x}$, $C$ réel. On lit toujours $a$ après avoir isolé $y'$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-condition-initiale-ay",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay",
+    "capacites": ["bo-m-primitives-03"],
+    "enonce": "$f$ est la solution de $y' = 3y$ telle que $f(0) = 2$. Que vaut $f(1)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$2e^{3}$", "$3e^{2}$", "$e^{3} + 2$", "$6$"],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "Les rôles sont inversés : $f(x) = 2e^{3x}$, avec $C = 2$ devant et $a = 3$ dans l'exposant.",
+        "La constante multiplie l'exponentielle : $f(x) = Ce^{3x}$, et non $e^{3x} + C$.",
+        "$6 = 3 \\times 2$ est la valeur de $f'(0)$, pas celle de $f(1)$."
+      ]
+    },
+    "explication": "$f(x) = Ce^{3x}$ et $f(0) = C = 2$ : la condition en $0$ donne directement $C$. Donc $f(x) = 2e^{3x}$ et $f(1) = 2e^{3}$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-signe-de-ac",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay",
+    "capacites": ["bo-m-primitives-03"],
+    "enonce": "Affirmation : la solution $f$ de $y' = -y$ telle que $f(0) = -1$ est croissante sur $\\mathbb{R}$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": true,
+      "justification": "$f(x) = -e^{-x}$, et $f'(x) = -f(x) = e^{-x} > 0$ : $f$ est strictement croissante sur $\\mathbb{R}$."
+    },
+    "explication": "Le sens de variation de $x \\mapsto Ce^{ax}$ se lit sur le signe de $aC$, ici $(-1) \\times (-1) = 1 > 0$. Avec $C < 0$, une solution de $y' = ay$ où $a < 0$ est croissante.",
+    "duree": 30
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-solution-constante",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-b",
+    "capacites": ["bo-m-primitives-05"],
+    "enonce": "Quelle est la solution constante de l'équation différentielle $y' = 4y - 2$ ? (Écriture décimale ou fractionnaire.)",
+    "reponse": { "type": "numerique", "valeur": "1/2", "tolerance": 0 },
+    "explication": "Une constante $k$ a une dérivée nulle : elle est solution si et seulement si $0 = 4k - 2$, soit $k = \\dfrac{1}{2}$. Résoudre $0 = ak + b$ évite l'erreur de signe de la formule $-\\dfrac{b}{a}$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-condition-initiale-ay-b",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-b",
+    "capacites": ["bo-m-primitives-05"],
+    "enonce": "Les solutions de $y' = -2y + 8$ sont les fonctions $x \\mapsto Ce^{-2x} + 4$. Pour la solution $f$ telle que $f(0) = 1$, que vaut $C$ ?",
+    "reponse": { "type": "numerique", "valeur": -3, "tolerance": 0 },
+    "explication": "$f(0) = C + 4$, et non $C$ : la solution constante compte aussi en $0$. La condition $f(0) = 1$ donne $C = 1 - 4 = -3$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-limite-ay-b",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-b",
+    "capacites": ["bo-m-primitives-05"],
+    "enonce": "Vers quelle valeur tend, quand $x$ tend vers $+\\infty$, n'importe quelle solution de $y' = -0{,}5y + 3$ ?",
+    "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+    "explication": "Les solutions sont les fonctions $x \\mapsto Ce^{-0{,}5x} + k$, où $0 = -0{,}5k + 3$, soit $k = 6$. Comme $e^{-0{,}5x}$ tend vers $0$, toute solution tend vers la solution constante $6$, quelle que soit $C$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-un-pas-euler",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-b",
+    "capacites": ["bo-m-primitives-10"],
+    "enonce": "On applique la méthode d'Euler à $y' = 2y$, avec $y(0) = 1$ et le pas $h = 0{,}1$. Que vaut $y_1$ ? (Écriture décimale.)",
+    "reponse": { "type": "numerique", "valeur": 1.2, "tolerance": 0.001 },
+    "explication": "Un pas : $y_1 = y_0 + h \\times (\\text{pente en } x_0) = 1 + 0{,}1 \\times 2 \\times 1 = 1{,}2$. La solution exacte, $x \\mapsto e^{2x}$, vaut $e^{0{,}2} \\approx 1{,}221$ en $0{,}1$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-structure-ay-f",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-f",
+    "capacites": ["bo-m-primitives-06"],
+    "enonce": "On sait que $g$ est une solution particulière sur $\\mathbb{R}$ de $(E) : y' = 2y + x$. Quelles sont les solutions de $(E)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$x \\mapsto Ce^{2x}$, avec $C$ réel",
+        "$x \\mapsto Ce^{2x} + g(x)$, avec $C$ réel",
+        "$x \\mapsto g(x) + C$, avec $C$ réel",
+        "$x \\mapsto Ce^{x} + g(x)$, avec $C$ réel"
+      ],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "Ce sont les solutions de $y' = 2y$, sans second membre : il manque $g$.",
+        null,
+        "Ajouter une constante à $g$ ne donne pas une solution : la constante disparaît en dérivant, mais pas dans $2y$.",
+        "Le coefficient $a$ est celui de $y$, ici $2$ : l'exponentielle est $e^{2x}$."
+      ]
+    },
+    "explication": "Solutions de $y' = ay + f$ = solutions de $y' = ay$ + une solution particulière : ici les fonctions $x \\mapsto Ce^{2x} + g(x)$, $C$ réel.",
+    "duree": 25
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-verifier-solution-ay-f",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-f",
+    "capacites": ["bo-m-primitives-06"],
+    "enonce": "Affirmation : la fonction $g : x \\mapsto -\\dfrac{1}{2}x - \\dfrac{1}{4}$ est solution sur $\\mathbb{R}$ de l'équation différentielle $y' = 2y + x$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": true,
+      "justification": "$g'(x) = -\\dfrac{1}{2}$ et $2g(x) + x = -x - \\dfrac{1}{2} + x = -\\dfrac{1}{2}$ : les deux membres sont égaux pour tout réel $x$."
+    },
+    "explication": "Pour vérifier qu'une fonction est solution, calcule séparément les deux membres, $g'(x)$ et $2g(x) + x$, puis compare : pas besoin de résoudre l'équation.",
+    "duree": 40
+  },
+  {
+    "id": "fl-primitives-equations-differentielles-forme-imposee",
+    "chapitre": "primitives-equations-differentielles",
+    "notion": "n-primitives-equations-differentielles-equation-ay-f",
+    "capacites": ["bo-m-primitives-06"],
+    "enonce": "On cherche une solution de $y' = 3y + 4e^{x}$ de la forme $g(x) = me^{x}$, où $m$ est un réel. Que vaut $m$ ?",
+    "reponse": { "type": "numerique", "valeur": -2, "tolerance": 0 },
+    "explication": "$g'(x) = me^{x}$ et $3g(x) + 4e^{x} = (3m + 4)e^{x}$. On identifie les coefficients de $e^{x}$ : $m = 3m + 4$, soit $m = -2$.",
+    "duree": 40
+  }
+]
