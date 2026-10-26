@@ -7,14 +7,14 @@
         {
           "id": "l-primitives-equations-differentielles-001",
           "type": "idee",
-          "texte": "Tu sais dériver : à partir de $f$, tu trouves $f'$. Ici, tu fais le chemin inverse : tu connais la dérivée, tu cherches la fonction. Une voiture roule à la vitesse $v(t) = 2t$, en mètres par seconde. Quelle distance $d(t)$ a-t-elle parcourue depuis l'instant $0$ ? Il faut une fonction dont la dérivée est $2t$ : $d(t) = t^2$ convient. Une telle fonction s'appelle une **primitive**. Elle n'est jamais seule : $t^2 + 5$ a aussi pour dérivée $2t$."
+          "texte": "Tu sais dériver : à partir de $f$, tu trouves $f'$. Ici, tu fais le chemin inverse : tu connais la dérivée, tu cherches la fonction. Une voiture roule à la vitesse $v(t) = 2t$, en mètres par seconde. Quelle distance $d(t)$ a-t-elle parcourue depuis l'instant $0$ ? Il faut une fonction de dérivée $2t$ : une **primitive**. Elle n'est jamais seule : $t^2$ et $t^2 + 5$ ont pour dérivée $2t$. Seule $t^2$ vaut $0$ à l'instant $0$ : c'est la distance cherchée."
         },
         {
           "id": "l-primitives-equations-differentielles-002",
           "type": "rappel",
           "titre": "Rappel : dérivées usuelles, fonction de dérivée nulle",
           "lien": "1e:derivation",
-          "texte": "**Dérivées usuelles** : $(k)' = 0$ pour une constante $k$ ; $(x^n)' = nx^{n-1}$ pour $n$ entier, $n \\geqslant 1$ ; $\\left(\\dfrac{1}{x}\\right)' = -\\dfrac{1}{x^2}$ ; $\\left(\\sqrt{x}\\right)' = \\dfrac{1}{2\\sqrt{x}}$ ; $(e^x)' = e^x$ ; $(\\ln x)' = \\dfrac{1}{x}$ ; $\\sin' = \\cos$ et $\\cos' = -\\sin$.\n\n**Opérations** : $(u + v)' = u' + v'$, $(ku)' = ku'$ pour un réel $k$, et $(uv)' = u'v + uv'$.\n\n**Fonction de dérivée nulle** : si $g'(x) = 0$ pour tout $x$ d'un **intervalle** $I$, alors $g$ est constante sur $I$. En effet, $g' \\geqslant 0$ et $g' \\leqslant 0$ sur $I$ : $g$ y est à la fois croissante et décroissante."
+          "texte": "**Dérivées usuelles** : $(k)' = 0$ pour une constante $k$ ; $(x^n)' = nx^{n-1}$ pour $n$ entier, $n \\geqslant 1$ ; $\\left(\\dfrac{1}{x}\\right)' = -\\dfrac{1}{x^2}$ ; $\\left(\\sqrt{x}\\right)' = \\dfrac{1}{2\\sqrt{x}}$ ; $(e^x)' = e^x$ ; $(\\ln x)' = \\dfrac{1}{x}$ ; $\\sin' = \\cos$ et $\\cos' = -\\sin$.\n\n**Opérations** : $(u + v)' = u' + v'$, $(ku)' = ku'$ pour un réel $k$, $(uv)' = u'v + uv'$, et $\\left(\\dfrac{1}{v}\\right)' = -\\dfrac{v'}{v^2}$ là où $v$ ne s'annule pas.\n\n**Puissances négatives** : la formule $(x^n)' = nx^{n-1}$ reste vraie pour $n$ entier négatif, sur $]-\\infty\\,;\\,0[$ ou sur $]0\\,;\\,+\\infty[$. Par exemple, avec $v(x) = x^2$ : $\\left(x^{-2}\\right)' = \\left(\\dfrac{1}{x^2}\\right)' = -\\dfrac{2x}{x^4} = -\\dfrac{2}{x^3} = -2x^{-3}$.\n\n**Fonction de dérivée nulle** : si $g'(x) = 0$ pour tout $x$ d'un **intervalle** $I$, alors $g$ est constante sur $I$. En effet, $g' \\geqslant 0$ et $g' \\leqslant 0$ sur $I$ : $g$ y est à la fois croissante et décroissante."
         },
         {
           "id": "l-primitives-equations-differentielles-003",
@@ -83,7 +83,7 @@
           "texte": "Soit $f$ une fonction continue sur un intervalle $I$.\n\n- $f$ admet des primitives sur $I$. Ce premier point est admis.\n- Si $F$ est une primitive de $f$ sur $I$, les primitives de $f$ sur $I$ sont exactement les fonctions $x \\mapsto F(x) + C$, où $C$ est un réel quelconque. Autrement dit, deux primitives de $f$ sur $I$ diffèrent d'une constante.\n- Pour un réel $x_0$ de $I$ et un réel $y_0$, une seule primitive $F$ de $f$ sur $I$ vérifie $F(x_0) = y_0$.\n\nPour certaines fonctions, comme $x \\mapsto e^{-x^2}$, on ne sait pas écrire de primitive avec les fonctions usuelles : pourtant, il en existe.",
           "conditions": [
             "$f$ est continue sur $I$.",
-            "$I$ est un **intervalle**. Sur une réunion d'intervalles, comme $]-\\infty\\,;\\,0[\\; \\cup \\;]0\\,;\\,+\\infty[$, la constante peut changer d'un morceau à l'autre."
+            "$I$ est un **intervalle**. Sur une réunion d'intervalles, comme $]-\\infty\\,;\\,0[\\; \\cup \\;]0\\,;\\,+\\infty[$, la constante peut changer d'un morceau à l'autre. Par exemple, la fonction égale à $-\\dfrac{1}{x}$ sur $]-\\infty\\,;\\,0[$ et à $-\\dfrac{1}{x} + 1$ sur $]0\\,;\\,+\\infty[$ a pour dérivée $\\dfrac{1}{x^2}$ en tout réel non nul, sans être de la forme $x \\mapsto -\\dfrac{1}{x} + C$."
           ],
           "admise": false
         },
@@ -181,12 +181,13 @@
         {
           "id": "l-primitives-equations-differentielles-011",
           "type": "methode",
-          "titre": "Comment vérifier qu'une fonction $F$ est une primitive de $f$, puis fixer la constante ?",
+          "titre": "Comment vérifier qu'une fonction $F$ est une primitive de $f$ (ou trouver ses coefficients), puis fixer la constante ?",
           "capacites": ["bo-m-primitives-01"],
           "etapes": [
             "Vérifie que $F$ est dérivable sur l'intervalle $I$ de l'énoncé : somme, produit, quotient ou composée de fonctions dérivables.",
             "Calcule $F'(x)$ avec les règles de dérivation, puis simplifie : développe, réduis ou mets en facteur, pour obtenir la même écriture que $f(x)$.",
             "Compare : si $F'(x) = f(x)$ pour tout $x$ de $I$, conclus « $F$ est une primitive de $f$ sur $I$ ». Sinon, trouve un réel $x$ où $F'(x) \\neq f(x)$ : ce contre-exemple prouve que non.",
+            "Si $F$ contient des coefficients inconnus, comme $F(x) = (ax + b)e^{-x}$ : dérive, mets l'exponentielle en facteur, puis **identifie** avec $f(x)$, c'est-à-dire égale les coefficients de $x$, puis les termes constants (voir l'exemple qui suit).",
             "Pour écrire toutes les primitives, ajoute une constante : $x \\mapsto F(x) + C$, avec $C$ réel.",
             "Pour la primitive qui vaut $y_0$ en $x_0$, résous l'équation $F(x_0) + C = y_0$ d'inconnue $C$, puis remplace $C$ par sa valeur."
           ],
@@ -306,14 +307,14 @@
           "type": "rappel",
           "titre": "Rappel : dérivées des fonctions composées",
           "lien": "n-derivation-convexite-composee",
-          "texte": "Pour une fonction $u$ dérivable sur un intervalle $I$ :\n\n- $\\left(e^{u}\\right)' = u'e^{u}$ ;\n- $\\left(u^n\\right)' = nu'u^{n-1}$, pour $n$ entier, $n \\geqslant 1$ ;\n- $\\left(\\dfrac{1}{u}\\right)' = -\\dfrac{u'}{u^2}$, si $u$ ne s'annule pas sur $I$ ;\n- $\\left(\\sqrt{u}\\right)' = \\dfrac{u'}{2\\sqrt{u}}$ et $\\big(\\ln(u)\\big)' = \\dfrac{u'}{u}$, si $u > 0$ sur $I$ ;\n- $\\big(\\sin(u)\\big)' = u'\\cos(u)$ et $\\big(\\cos(u)\\big)' = -u'\\sin(u)$.\n\nToutes viennent de $(v \\circ u)' = (v' \\circ u) \\times u'$ : on dérive l'extérieur, on garde l'intérieur, on multiplie par $u'$."
+          "texte": "Pour une fonction $u$ dérivable sur un intervalle $I$ :\n\n- $\\left(e^{u}\\right)' = u'e^{u}$ ;\n- $\\left(u^n\\right)' = nu'u^{n-1}$, pour $n$ entier, $n \\geqslant 1$, et aussi pour $n$ entier négatif si $u$ ne s'annule pas sur $I$ ;\n- $\\left(\\dfrac{1}{u}\\right)' = -\\dfrac{u'}{u^2}$, si $u$ ne s'annule pas sur $I$ ;\n- $\\left(\\sqrt{u}\\right)' = \\dfrac{u'}{2\\sqrt{u}}$ et $\\big(\\ln(u)\\big)' = \\dfrac{u'}{u}$, si $u > 0$ sur $I$ ;\n- $\\big(\\sin(u)\\big)' = u'\\cos(u)$ et $\\big(\\cos(u)\\big)' = -u'\\sin(u)$.\n\nToutes viennent de $(v \\circ u)' = (v' \\circ u) \\times u'$ : on dérive l'extérieur, on garde l'intérieur, on multiplie par $u'$."
         },
         {
           "id": "l-primitives-equations-differentielles-019",
           "type": "propriete",
           "titre": "Primitives des fonctions de référence",
           "capacites": ["bo-m-primitives-02"],
-          "texte": "Chaque ligne se vérifie en dérivant la deuxième colonne.\n\n| Fonction $f$ | Une primitive $F$ | Sur l'intervalle |\n|---|---|---|\n| $k$ (constante) | $kx$ | $\\mathbb{R}$ |\n| $x^n$, $n$ entier, $n \\geqslant 0$ | $\\dfrac{x^{n+1}}{n+1}$ | $\\mathbb{R}$ |\n| $x^n$, $n$ entier, $n \\leqslant -2$ | $\\dfrac{x^{n+1}}{n+1}$ | $]-\\infty\\,;\\,0[$ ou $]0\\,;\\,+\\infty[$ |\n| $\\dfrac{1}{x}$ (le cas $n = -1$) | $\\ln x$ | $]0\\,;\\,+\\infty[$ |\n| $\\dfrac{1}{\\sqrt{x}}$ | $2\\sqrt{x}$ | $]0\\,;\\,+\\infty[$ |\n| $e^x$ | $e^x$ | $\\mathbb{R}$ |\n| $\\sin(x)$ | $-\\cos(x)$ | $\\mathbb{R}$ |\n| $\\cos(x)$ | $\\sin(x)$ | $\\mathbb{R}$ |\n\nPar exemple, avec $n = -2$ : $\\dfrac{1}{x^2} = x^{-2}$ a pour primitive $\\dfrac{x^{-1}}{-1} = -\\dfrac{1}{x}$.\n\n**Somme, produit par un réel** : si $F$ et $G$ sont des primitives de $f$ et de $g$ sur $I$, et $k$ un réel, alors $F + G$ est une primitive de $f + g$, et $kF$ une primitive de $kf$, sur $I$.",
+          "texte": "Chaque ligne se vérifie en dérivant la deuxième colonne.\n\n| Fonction $f$ | Une primitive $F$ | Sur l'intervalle |\n|---|---|---|\n| $k$ (constante) | $kx$ | $\\mathbb{R}$ |\n| $x^n$, $n$ entier, $n \\geqslant 0$ | $\\dfrac{x^{n+1}}{n+1}$ | $\\mathbb{R}$ |\n| $x^n$, $n$ entier, $n \\leqslant -2$ | $\\dfrac{x^{n+1}}{n+1}$ | $]-\\infty\\,;\\,0[$ ou $]0\\,;\\,+\\infty[$ |\n| $\\dfrac{1}{x}$ (le cas $n = -1$) | $\\ln x$ | $]0\\,;\\,+\\infty[$ |\n| $\\dfrac{1}{\\sqrt{x}}$ | $2\\sqrt{x}$ | $]0\\,;\\,+\\infty[$ |\n| $e^x$ | $e^x$ | $\\mathbb{R}$ |\n| $\\sin(x)$ | $-\\cos(x)$ | $\\mathbb{R}$ |\n| $\\cos(x)$ | $\\sin(x)$ | $\\mathbb{R}$ |\n\nPar exemple, avec $n = -2$ : $\\dfrac{1}{x^2} = x^{-2}$ a pour primitive $\\dfrac{x^{-1}}{-1} = -\\dfrac{1}{x}$. Et sur $]-\\infty\\,;\\,0[$, une primitive de $\\dfrac{1}{x}$ est $x \\mapsto \\ln(-x)$, car $\\big(\\ln(-x)\\big)' = \\dfrac{-1}{-x} = \\dfrac{1}{x}$.\n\n**Somme, produit par un réel** : si $F$ et $G$ sont des primitives de $f$ et de $g$ sur $I$, et $k$ un réel, alors $F + G$ est une primitive de $f + g$, et $kF$ une primitive de $kf$, sur $I$.",
           "conditions": [
             "Chaque primitive vaut sur l'intervalle de la dernière colonne.",
             "Pour une somme ou un produit par un réel : $F$ et $G$ sont des primitives de $f$ et de $g$ sur le même intervalle $I$, et $k$ est un réel."
@@ -366,11 +367,11 @@
               "pourquoiFaux": [
                 "C'est la **dérivée** de $\\dfrac{1}{x^3}$, pas une primitive.",
                 null,
-                "$\\left(\\dfrac{1}{2x^2}\\right)' = -\\dfrac{1}{x^3}$ : il manque un signe moins.",
+                "$\\dfrac{1}{2x^2} = \\dfrac{1}{2}x^{-2}$ a pour dérivée $\\dfrac{1}{2} \\times (-2)x^{-3} = -\\dfrac{1}{x^3}$ : il manque un signe moins.",
                 "$\\Big(\\ln\\left(x^3\\right)\\Big)' = \\dfrac{3x^2}{x^3} = \\dfrac{3}{x}$."
               ]
             },
-            "explication": "$\\dfrac{1}{x^3} = x^{-3}$ a pour primitive $\\dfrac{x^{-3+1}}{-3+1} = \\dfrac{x^{-2}}{-2} = -\\dfrac{1}{2x^2}$."
+            "explication": "$\\dfrac{1}{x^3} = x^{-3}$ a pour primitive $\\dfrac{x^{-3+1}}{-3+1} = \\dfrac{x^{-2}}{-2} = -\\dfrac{1}{2x^2}$. Contrôle : $\\left(-\\dfrac{1}{2}x^{-2}\\right)' = -\\dfrac{1}{2} \\times (-2)x^{-3} = x^{-3}$."
           }
         },
         {
@@ -378,10 +379,10 @@
           "type": "propriete",
           "titre": "Primitives des fonctions composées",
           "capacites": ["bo-m-primitives-04", "bo-m-derivation-01"],
-          "texte": "Soit $u$ une fonction dérivable sur un intervalle $I$. Lue à l'envers, la formule $(v \\circ u)' = (v' \\circ u) \\times u'$ dit : **une primitive de $(v' \\circ u) \\times u'$ est $v \\circ u$**. D'où le tableau suivant.\n\n| Fonction | Une primitive | Condition sur $I$ |\n|---|---|---|\n| $u'e^{u}$ | $e^{u}$ | aucune |\n| $u'u^n$, $n$ entier, $n \\geqslant 0$ | $\\dfrac{u^{n+1}}{n+1}$ | aucune |\n| $u'u^n$, $n$ entier, $n \\leqslant -2$ | $\\dfrac{u^{n+1}}{n+1}$ | $u$ ne s'annule pas |\n| $\\dfrac{u'}{u}$ | $\\ln(u)$ | $u > 0$ |\n| $\\dfrac{u'}{\\sqrt{u}}$ | $2\\sqrt{u}$ | $u > 0$ |\n| $u'\\cos(u)$ | $\\sin(u)$ | aucune |\n| $u'\\sin(u)$ | $-\\cos(u)$ | aucune |\n\nAvec $n = -2$ : $\\dfrac{u'}{u^2}$ a pour primitive $-\\dfrac{1}{u}$.\n\n**Cas affine** : si $F$ est une primitive de $f$ et $a \\neq 0$, une primitive de $x \\mapsto f(ax + b)$ est $x \\mapsto \\dfrac{1}{a}F(ax + b)$. Par exemple, une primitive de $x \\mapsto e^{3x}$ est $x \\mapsto \\dfrac{1}{3}e^{3x}$.",
+          "texte": "Soit $u$ une fonction dérivable sur un intervalle $I$. Lue à l'envers, la formule $(v \\circ u)' = (v' \\circ u) \\times u'$ dit : **une primitive de $(v' \\circ u) \\times u'$ est $v \\circ u$**. D'où le tableau suivant.\n\n| Fonction | Une primitive | Condition sur $I$ |\n|---|---|---|\n| $u'e^{u}$ | $e^{u}$ | aucune |\n| $u'u^n$, $n$ entier, $n \\geqslant 0$ | $\\dfrac{u^{n+1}}{n+1}$ | aucune |\n| $u'u^n$, $n$ entier, $n \\leqslant -2$ | $\\dfrac{u^{n+1}}{n+1}$ | $u$ ne s'annule pas |\n| $\\dfrac{u'}{u}$ | $\\ln(u)$ | $u > 0$ |\n| $\\dfrac{u'}{\\sqrt{u}}$ | $2\\sqrt{u}$ | $u > 0$ |\n| $u'\\cos(u)$ | $\\sin(u)$ | aucune |\n| $u'\\sin(u)$ | $-\\cos(u)$ | aucune |\n\nAvec $n = -2$ : $\\dfrac{u'}{u^2}$ a pour primitive $-\\dfrac{1}{u}$. Si $u < 0$ sur $I$, une primitive de $\\dfrac{u'}{u}$ est $\\ln(-u)$, car $\\big(\\ln(-u)\\big)' = \\dfrac{-u'}{-u} = \\dfrac{u'}{u}$.\n\n**Cas affine** : si $F$ est une primitive de $f$ et $a \\neq 0$, une primitive de $x \\mapsto f(ax + b)$ est $x \\mapsto \\dfrac{1}{a}F(ax + b)$. En effet, $\\big(F(ax + b)\\big)' = aF'(ax + b) = af(ax + b)$ : le facteur $\\dfrac{1}{a}$ compense ce $a$. Par exemple, une primitive de $x \\mapsto e^{3x}$ est $x \\mapsto \\dfrac{1}{3}e^{3x}$.",
           "conditions": [
             "$u$ est dérivable sur l'intervalle $I$.",
-            "Pour $\\ln(u)$ et $2\\sqrt{u}$ : $u(x) > 0$ pour tout $x$ de $I$. Pour $u'u^n$ avec $n \\leqslant -2$ : $u(x) \\neq 0$ pour tout $x$ de $I$.",
+            "Pour $\\ln(u)$ et $2\\sqrt{u}$ : $u(x) > 0$ pour tout $x$ de $I$. Pour $\\ln(-u)$ : $u(x) < 0$ pour tout $x$ de $I$. Pour $u'u^n$ avec $n \\leqslant -2$ : $u(x) \\neq 0$ pour tout $x$ de $I$.",
             "Cas affine : $a \\neq 0$, et $ax + b$ reste dans un intervalle où $F$ est une primitive de $f$."
           ],
           "admise": false
@@ -547,10 +548,10 @@
           "type": "propriete",
           "titre": "Solutions de l'équation $y' = ay$",
           "capacites": ["bo-m-primitives-03"],
-          "texte": "Soit $a$ un nombre réel. Les solutions sur $\\mathbb{R}$ de l'équation différentielle $y' = ay$ sont les fonctions$$x \\mapsto Ce^{ax},$$où $C$ est un nombre réel quelconque.\n\nEn particulier, la somme de deux solutions et le produit d'une solution par un réel sont encore des solutions. Une solution autre que la fonction nulle ne s'annule jamais, car $e^{ax} > 0$.",
+          "texte": "Soit $a$ un nombre réel. Les solutions sur $\\mathbb{R}$ de l'équation différentielle $y' = ay$ sont les fonctions$$x \\mapsto Ce^{ax},$$où $C$ est un nombre réel quelconque.\n\nEn particulier, la somme de deux solutions et le produit d'une solution par un réel sont encore des solutions. Une solution autre que la fonction nulle ne s'annule jamais, car $e^{ax} > 0$.\n\nLe résultat est le même sur tout intervalle $I$, par exemple $[0\\,;\\,+\\infty[$ : les solutions sur $I$ sont les fonctions $x \\mapsto Ce^{ax}$, pour $x$ dans $I$, et la démonstration est identique.",
           "conditions": [
             "$a$ est un nombre réel constant : il ne dépend pas de $x$.",
-            "Les solutions sont cherchées parmi les fonctions dérivables sur $\\mathbb{R}$."
+            "Les solutions sont cherchées parmi les fonctions dérivables sur $\\mathbb{R}$, ou sur un intervalle $I$ : le résultat est le même."
           ],
           "admise": false
         },
@@ -644,7 +645,7 @@
             },
             {
               "texte": "Donc $C = \\dfrac{1}{e^{-2}} = e^{2}$, et $g(x) = e^{2}e^{-x} = e^{2 - x}$.",
-              "pourquoi": "On divise par $e^{-2}$, qui n'est pas nul. Puis $e^{2} \\times e^{-x} = e^{2 + (-x)}$."
+              "pourquoi": "On divise par $e^{-2}$, qui n'est pas nul, et $\\dfrac{1}{e^{-2}} = e^{-(-2)} = e^{2}$, car $\\dfrac{1}{e^{X}} = e^{-X}$. Puis $e^{2} \\times e^{-x} = e^{2 + (-x)}$."
             },
             {
               "texte": "**c.** $N$ est solution de $y' = 0{,}7y$, avec $N(0) = 2$ : $N(t) = 2e^{0{,}7t}$. La population a doublé quand $N(t) = 4$, soit $2e^{0{,}7t} = 4$, c'est-à-dire $e^{0{,}7t} = 2$."
@@ -809,7 +810,7 @@
         {
           "id": "l-primitives-equations-differentielles-048",
           "type": "idee",
-          "texte": "Un café servi à 80 °C refroidit dans une pièce à 20 °C. Plus il est chaud, plus il refroidit vite : sa température $T$ baisse à une vitesse proportionnelle à l'écart $T - 20$. On obtient par exemple $T' = -0{,}1(T - 20)$, soit $T' = -0{,}1T + 2$ : c'est la forme $y' = ay + b$. L'astuce : la fonction constante égale à $20$ est solution. À partir d'elle, tu te ramènes à $y' = ay$."
+          "texte": "Un café servi à 80 °C refroidit dans une pièce à 20 °C : sa température $T$ baisse à une vitesse proportionnelle à l'écart $T - 20$. On obtient par exemple $T' = -0{,}1(T - 20)$, soit $T' = -0{,}1T + 2$ : c'est la forme $y' = ay + b$. L'astuce : la fonction constante égale à $20$ est solution, car un café déjà à 20 °C ne refroidit plus ($T' = 0$ et $-0{,}1(20 - 20) = 0$). À partir d'elle, tu te ramènes à $y' = ay$."
         },
         {
           "id": "l-primitives-equations-differentielles-049",
@@ -823,7 +824,7 @@
           "type": "propriete",
           "titre": "Solutions de l'équation $y' = ay + b$",
           "capacites": ["bo-m-primitives-05"],
-          "texte": "Soit $a$ et $b$ deux réels, avec $a \\neq 0$.\n\n- La fonction constante $x \\mapsto -\\dfrac{b}{a}$ est une **solution particulière** de l'équation différentielle $y' = ay + b$, c'est-à-dire une solution précise, choisie parmi toutes.\n- Les solutions de $y' = ay + b$ sur $\\mathbb{R}$ sont les fonctions$$x \\mapsto Ce^{ax} - \\dfrac{b}{a},$$où $C$ est un réel quelconque : une solution de $y' = ay$, plus la solution constante.\n- Pour deux réels $x_0$ et $y_0$, une seule solution vérifie la condition initiale $f(x_0) = y_0$.",
+          "texte": "Soit $a$ et $b$ deux réels, avec $a \\neq 0$.\n\n- La fonction constante $x \\mapsto -\\dfrac{b}{a}$ est une **solution particulière** de l'équation différentielle $y' = ay + b$, c'est-à-dire une solution précise, choisie parmi toutes.\n- Les solutions de $y' = ay + b$ sur $\\mathbb{R}$ sont les fonctions$$x \\mapsto Ce^{ax} - \\dfrac{b}{a},$$où $C$ est un réel quelconque : une solution de $y' = ay$, plus la solution constante.\n- Pour deux réels $x_0$ et $y_0$, une seule solution vérifie la condition initiale $f(x_0) = y_0$.\n\nComme pour $y' = ay$, le résultat est le même sur tout intervalle $I$, par exemple $[0\\,;\\,+\\infty[$ : la démonstration est identique.",
           "conditions": [
             "$a$ et $b$ sont des réels, avec $a \\neq 0$. Pour $a = 0$, l'équation $y' = b$ a pour solutions les primitives $x \\mapsto bx + C$."
           ],
@@ -923,7 +924,7 @@
           "etapes": [
             {
               "texte": "**1.** Solution constante : $0 = -0{,}1k + 2$, donc $k = \\dfrac{2}{0{,}1} = 20$. Les solutions de $(E)$ sont les fonctions $t \\mapsto Ce^{-0{,}1t} + 20$, avec $C$ réel.",
-              "pourquoi": "La solution constante est la température de la pièce : un café déjà à 20 °C y reste."
+              "pourquoi": "La solution constante est la température de la pièce : un café déjà à 20 °C y reste. Sur l'intervalle $[0\\,;\\,+\\infty[$, les solutions ont la même forme que sur $\\mathbb{R}$."
             },
             {
               "texte": "$T(0) = Ce^{0} + 20 = C + 20$, et $T(0) = 80$ donne $C = 60$. Donc $T(t) = 60e^{-0{,}1t} + 20$."
@@ -946,6 +947,14 @@
           ]
         },
         {
+          "id": "l-primitives-equations-differentielles-062",
+          "type": "piege",
+          "titre": "La condition initiale et la solution constante",
+          "faux": "Pour $y' = -y + 5$ avec $f(0) = 2$ : les solutions sont les fonctions $x \\mapsto Ce^{-x} + 5$, et $f(0) = 2$ donne $C = 2$.",
+          "juste": "$f(0) = C + 5 = 2$ donne $C = -3$, donc $f(x) = -3e^{-x} + 5$.",
+          "explication": "En $0$, la solution vaut $C$ **plus** la solution constante $-\\dfrac{b}{a}$. Contrôle : $f(0) = -3 + 5 = 2$. Autre erreur fréquente : le signe de la solution constante. Résous $0 = ak + b$ plutôt que d'appliquer la formule de mémoire."
+        },
+        {
           "id": "l-primitives-equations-differentielles-056",
           "type": "lien-matiere",
           "titre": "Et en physique ?",
@@ -959,14 +968,15 @@
           "titre": "Comment approcher une solution par la méthode d'Euler ?",
           "capacites": ["bo-m-primitives-10"],
           "etapes": [
-            "Choisis un pas $h > 0$, petit, et pars du point $(x_0\\,;\\,y_0)$ donné par la condition initiale. Les abscisses suivantes sont $x_1 = x_0 + h$, $x_2 = x_1 + h$, et ainsi de suite.",
-            "Avance le long de la tangente : pour $h$ petit, $y(x + h) \\approx y(x) + h \\times y'(x)$, car près du point de contact la courbe est proche de sa tangente.",
-            "Calcule la pente $y'(x_n)$ avec l'équation : $ay_n + b$ pour $y' = ay + b$, et $f(x_n)$ pour $y' = f$. D'où $y_{n+1} = y_n + h(ay_n + b)$, ou $y_{n+1} = y_n + hf(x_n)$.",
-            "Répète : après $n$ étapes, $y_n$ est une valeur approchée de la solution en $x_n = x_0 + nh$. En général, plus $h$ est petit, meilleure est l'approximation, mais il faut plus d'étapes."
+            "Sers-toi de cette méthode quand tu ne sais pas écrire la solution exacte : par exemple pour $y' = e^{-x^2}$, dont on ne sait pas écrire de primitive. Elle donne des valeurs approchées de la solution, point par point.",
+            "Choisis un pas $h > 0$, petit, et pars du point $(x_0\\,;\\,y_0)$ donné par la condition initiale. Les abscisses suivantes sont $x_1 = x_0 + h$, $x_2 = x_1 + h$, et ainsi de suite. On note $y_n$ l'ordonnée du point d'abscisse $x_n$ : c'est une valeur approchée de $y(x_n)$, la valeur inconnue de la solution.",
+            "Avance le long de la tangente. Au point d'abscisse $x$, la tangente à la courbe de la solution $y$ a pour équation $Y = y(x) + y'(x)(X - x)$, où $X$ et $Y$ sont les coordonnées d'un point de la tangente. En $X = x + h$, elle passe à la hauteur $y(x) + h \\times y'(x)$. Pour $h$ petit, la courbe est proche de sa tangente : $y(x + h) \\approx y(x) + h \\times y'(x)$.",
+            "Calcule la pente avec l'équation, en remplaçant la valeur inconnue $y(x_n)$ par sa valeur approchée $y_n$ : la pente vaut $ay_n + b$ pour $y' = ay + b$, et $f(x_n)$ pour $y' = f$. D'où $y_{n+1} = y_n + h(ay_n + b)$, ou $y_{n+1} = y_n + hf(x_n)$.",
+            "Répète : après $n$ étapes, $y_n$ est une valeur approchée de la solution en $x_n = x_0 + nh$. Par exemple, pour $y' = y$, $y(0) = 1$ et $h = 0{,}5$ : $y_1 = 1 + 0{,}5 \\times 1 = 1{,}5$, puis $y_2 = 1{,}5 + 0{,}5 \\times 1{,}5 = 2{,}25$. En général, plus $h$ est petit, meilleure est l'approximation, mais il faut plus d'étapes."
           ],
           "code": {
             "langage": "python",
-            "source": "def euler(a, b, x0, y0, h, n):\n    x = x0\n    y = y0\n    abscisses = [x]\n    ordonnees = [y]\n    for k in range(n):\n        y = y + h * (a * y + b)   # un pas le long de la tangente\n        x = x + h\n        abscisses.append(x)\n        ordonnees.append(y)\n    return abscisses, ordonnees\n\n# y' = y (a = 1, b = 0), y(0) = 1, pas 0.5, 4 étapes\nprint(euler(1, 0, 0, 1, 0.5, 4))\n# affiche ([0, 0.5, 1.0, 1.5, 2.0], [1, 1.5, 2.25, 3.375, 5.0625])"
+            "source": "def euler(a, b, x0, y0, h, n):\n    x = x0\n    y = y0\n    abscisses = [x]\n    ordonnees = [y]\n    for k in range(n):\n        y = y + h * (a * y + b)   # un pas le long de la tangente\n        x = x + h\n        abscisses.append(x)\n        ordonnees.append(y)\n    return abscisses, ordonnees\n\n# y' = y (a = 1, b = 0), y(0) = 1, pas 0.5, 4 étapes\nprint(euler(1, 0, 0, 1, 0.5, 4))\n# affiche ([0, 0.5, 1.0, 1.5, 2.0], [1, 1.5, 2.25, 3.375, 5.0625])\n# c'est-à-dire la liste des x, puis la liste des y"
           }
         },
         {
@@ -982,7 +992,7 @@
               "height": 300,
               "alt": "Dans un repère où les unités diffèrent sur les deux axes, pour x entre 0 et 2 : la courbe de la fonction exponentielle, en bleu, et la ligne brisée de la méthode d'Euler, en orange, pour l'équation y' = y avec y(0) = 1 et le pas 0,5. La ligne brisée part du point (0 ; 1), comme la courbe, puis passe par les points (0,5 ; 1,5), (1 ; 2,25), (1,5 ; 3,375) et (2 ; 5,0625). Elle reste sous la courbe, et l'écart grandit : en x = 2, la courbe est à e² ≈ 7,39, la ligne brisée à 5,0625. Un segment vertical en pointillés montre cet écart."
             },
-            "caption": "Le programme ci-dessus, dessiné : chaque segment avance de 0,5 avec la pente donnée par l'équation à son point de départ, ici y' = y. La ligne brisée reste sous la courbe de l'exponentielle, et l'écart grandit : 5,0625 au lieu de e² ≈ 7,39 en x = 2."
+            "caption": "Le programme ci-dessus, dessiné. On essaie la méthode sur un cas dont on connaît la solution exacte, x ↦ eˣ, pour voir l'erreur. Chaque segment avance de 0,5 avec la pente donnée par l'équation à son point de départ, ici y' = y. La ligne brisée reste sous la courbe de l'exponentielle, et l'écart grandit : 5,0625 au lieu de e² ≈ 7,39 en x = 2."
           }
         },
         {
@@ -1011,15 +1021,7 @@
           "type": "complement",
           "titre": "Pour aller plus loin : l'équation logistique",
           "capacites": ["bo-m-primitives-09"],
-          "texte": "Une population ne grandit pas sans limite : la nourriture finit par manquer. Le modèle **logistique** freine la croissance quand l'effectif $y$ approche une valeur maximale $K$ :$$y' = ry\\left(1 - \\dfrac{y}{K}\\right), \\quad r > 0.$$Ce n'est plus la forme $y' = ay + b$, à cause du terme en $y^2$. On peut pourtant vérifier, en dérivant, qu'une fonction donnée en est solution. Par exemple, avec $r = 0{,}5$ et $K = 10$, la fonction $f : x \\mapsto \\dfrac{10}{1 + 9e^{-0{,}5x}}$ est solution, et $f(0) = 1$. Comme $e^{-0{,}5x}$ tend vers $0$ en $+\\infty$, $f(x)$ tend vers $10$ : la population se stabilise. Aucune connaissance n'est exigible sur cette équation."
-        },
-        {
-          "id": "l-primitives-equations-differentielles-062",
-          "type": "piege",
-          "titre": "La condition initiale et la solution constante",
-          "faux": "Pour $y' = -y + 5$ avec $f(0) = 2$ : les solutions sont les fonctions $x \\mapsto Ce^{-x} + 5$, et $f(0) = 2$ donne $C = 2$.",
-          "juste": "$f(0) = C + 5 = 2$ donne $C = -3$, donc $f(x) = -3e^{-x} + 5$.",
-          "explication": "En $0$, la solution vaut $C$ **plus** la solution constante $-\\dfrac{b}{a}$. Contrôle : $f(0) = -3 + 5 = 2$. Autre erreur fréquente : le signe de la solution constante. Résous $0 = ak + b$ plutôt que d'appliquer la formule de mémoire."
+          "texte": "Une population ne grandit pas sans limite : la nourriture finit par manquer. Le modèle **logistique** freine la croissance quand l'effectif $y$ approche une valeur maximale $K$ :$$y' = ry\\left(1 - \\dfrac{y}{K}\\right), \\quad r > 0.$$Ce n'est plus la forme $y' = ay + b$ : en développant, $ry\\left(1 - \\dfrac{y}{K}\\right) = ry - \\dfrac{r}{K}y^2$, et ce terme en $y^2$ n'est ni de la forme $ay$, ni une constante. On peut pourtant vérifier, en dérivant, qu'une fonction donnée en est solution. Par exemple, avec $r = 0{,}5$ et $K = 10$, la fonction $f : x \\mapsto \\dfrac{10}{1 + 9e^{-0{,}5x}}$ est solution, et $f(0) = 1$. Comme $e^{-0{,}5x}$ tend vers $0$ en $+\\infty$, $f(x)$ tend vers $10$ : la population se stabilise. Aucune connaissance n'est exigible sur cette équation."
         },
         {
           "id": "l-primitives-equations-differentielles-063",
@@ -1048,7 +1050,7 @@
           "type": "propriete",
           "titre": "Solutions de $y' = ay + f$ à partir d'une solution particulière",
           "capacites": ["bo-m-primitives-06"],
-          "texte": "Soit $a$ un réel et $f$ une fonction définie sur un intervalle $I$. On note $(E)$ l'équation $y' = ay + f$, et $(E_0)$ l'équation $y' = ay$, appelée **équation sans second membre** associée à $(E)$.\n\nSi $g$ est une solution particulière de $(E)$ sur $I$, alors :\n\n- une fonction $h$ dérivable sur $I$ est solution de $(E)$ si et seulement si $h - g$ est solution de $(E_0)$ ;\n- les solutions de $(E)$ sur $I$ sont les fonctions$$x \\mapsto Ce^{ax} + g(x),$$où $C$ est un réel quelconque.\n\n**Pourquoi** : $g' = ag + f$. Si $h' = ah + f$, alors $(h - g)' = ah + f - ag - f = a(h - g)$. Réciproquement, si $(h - g)' = a(h - g)$, alors $h' = a(h - g) + g' = ah - ag + ag + f = ah + f$. Les solutions de $(E_0)$ étant les fonctions $x \\mapsto Ce^{ax}$, on obtient $h = Ce^{ax} + g$.",
+          "texte": "Soit $a$ un réel et $f$ une fonction continue sur un intervalle $I$. On note $(E)$ l'équation $y' = ay + f$, et $(E_0)$ l'équation $y' = ay$, appelée **équation sans second membre** associée à $(E)$.\n\nSi $g$ est une solution particulière de $(E)$ sur $I$, alors :\n\n- une fonction $h$ dérivable sur $I$ est solution de $(E)$ si et seulement si $h - g$ est solution de $(E_0)$ ;\n- les solutions de $(E)$ sur $I$ sont les fonctions$$x \\mapsto Ce^{ax} + g(x),$$où $C$ est un réel quelconque.\n\n**Pourquoi** : $g' = ag + f$. Si $h' = ah + f$, alors $(h - g)' = ah + f - ag - f = a(h - g)$. Réciproquement, si $(h - g)' = a(h - g)$, alors $h' = a(h - g) + g' = ah - ag + ag + f = ah + f$. Les solutions de $(E_0)$ sur $I$ étant les fonctions $x \\mapsto Ce^{ax}$, on obtient $h = Ce^{ax} + g$.\n\n**Attention aux lettres** : ici, $f$ est le second membre, $g$ la solution particulière et $h$ une solution quelconque. Les lettres changent d'un sujet à l'autre : au bac, la solution s'appelle souvent $f$, et la solution particulière $h$ ou $g$. Repère d'abord quelle fonction est la solution particulière donnée.",
           "conditions": [
             "$a$ est un réel et $f$ une fonction continue sur l'intervalle $I$.",
             "$g$ est une solution de $(E)$ sur $I$, donnée par l'énoncé ou cherchée sous une forme imposée."
