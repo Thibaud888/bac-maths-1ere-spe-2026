@@ -1148,3 +1148,6 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   la session à la demande de Thibaud. Trouver ce qui doit déclencher la fusion automatique
   (flotte, `pr-ready.yml`, réglage « auto-merge » du dépôt) et le réparer, ou corriger la règle
   dans `CLAUDE.md`. DoD : la prochaine PR de chapitre fusionne seule, ou la règle dit la vérité.
+  Piste trouvée le 2026-10-26 (PR #136) : activer la fusion automatique répond « Auto-merge
+  is not enabled for this repository » — le réglage du dépôt Settings → General → Pull
+  Requests → « Allow auto-merge » est éteint (à allumer par Thibaud).
