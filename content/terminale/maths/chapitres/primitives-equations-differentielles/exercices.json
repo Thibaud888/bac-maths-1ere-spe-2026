@@ -1,0 +1,2255 @@
+[
+  {
+    "id": "x-primitives-equations-differentielles-001",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-primitive"],
+    "capacites": ["bo-m-primitives-01", "bo-m-derivation-05", "bo-m-logique-07"],
+    "titre": "Vérifier une primitive en dérivant",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 101,
+    "source": { "annale": "an-2023-caledonie-j1", "adaptation": "question 1 : fonction du QCM reprise avec d'autres propositions de réponse ; questions 2 et 3 ajoutées" },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = (x + 1)e^x$. Une primitive $F$ de $f$ sur $\\mathbb{R}$ est définie par :",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$F(x) = (x + 2)e^x$",
+            "$F(x) = xe^x$",
+            "$F(x) = \\left(\\dfrac{x^2}{2} + x\\right)e^x$",
+            "$F(x) = (x + 1)e^x$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est la **dérivée** de $f$ : $f'(x) = e^x + (x + 1)e^x = (x + 2)e^x$. Une primitive $F$ vérifie $F' = f$, pas $F = f'$.",
+            null,
+            "Une primitive d'un produit n'est pas le produit des primitives : la dérivée de cette fonction est $(x + 1)e^x + \\left(\\dfrac{x^2}{2} + x\\right)e^x$.",
+            "C'est $f$ elle-même : sa dérivée est $e^x + (x + 1)e^x = (x + 2)e^x$, et non $f(x)$. Seules les fonctions $x \\mapsto Ce^x$ sont égales à leur dérivée."
+          ]
+        },
+        "indices": [
+          "Pas besoin de chercher : dérive chaque proposition avec $(uv)' = u'v + uv'$, et garde celle dont la dérivée est exactement $f(x)$.",
+          "Pour une fonction $(mx + p)e^x$, la dérivée vaut $me^x + (mx + p)e^x = (mx + p + m)e^x$. Fais ce calcul pour chaque proposition, puis compare avec $(x + 1)e^x$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-011",
+        "solution": "On dérive la proposition $F(x) = xe^x$ : $F = uv$ avec $u(x) = x$, $u'(x) = 1$ et $v(x) = v'(x) = e^x$. Donc $F'(x) = 1 \\times e^x + x \\times e^x = (x + 1)e^x = f(x)$ pour tout réel $x$. Ainsi $F : x \\mapsto xe^x$ est une primitive de $f$ sur $\\mathbb{R}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère les fonctions $f$ et $F$ définies sur $\\mathbb{R}$ par $f(x) = 3x^2 - 4x + 7$ et $F(x) = x^3 - 2x^2 + kx + 1$, où $k$ est un réel. Pour quelle valeur de $k$ la fonction $F$ est-elle une primitive de $f$ sur $\\mathbb{R}$ ?",
+        "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0 },
+        "indices": [
+          "$F$ est une primitive de $f$ si $F'(x) = f(x)$ pour tout réel $x$ : dérive $F$, en traitant $k$ comme un nombre fixé.",
+          "$F'(x) = 3x^2 - 4x + k$. Compare le terme constant de $F'(x)$ avec celui de $f(x)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-003",
+        "solution": "$F$ est un polynôme, dérivable sur $\\mathbb{R}$, et $F'(x) = 3x^2 - 4x + k$. Donc $F$ est une primitive de $f$ si et seulement si $3x^2 - 4x + k = 3x^2 - 4x + 7$ pour tout réel $x$, c'est-à-dire $k = 7$.",
+        "erreurFrequente": "Chercher aussi une condition sur le terme constant $1$ de $F(x)$ : il disparaît en dérivant, il peut prendre n'importe quelle valeur."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Affirmation : la fonction $F$ définie sur $]0\\,;\\,+\\infty[$ par $F(x) = x\\ln x$ est une primitive de la fonction $\\ln$ sur $]0\\,;\\,+\\infty[$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$F'(x) = 1 \\times \\ln x + x \\times \\dfrac{1}{x} = \\ln x + 1$. Par exemple $F'(1) = 1$, alors que $\\ln 1 = 0$ : $F'$ n'est pas la fonction $\\ln$. Une primitive de $\\ln$ est $x \\mapsto x\\ln x - x$."
+        },
+        "indices": [
+          "Dérive $F$ comme un produit, puis compare $F'(x)$ et $\\ln x$ : un seul réel où ils diffèrent suffit pour conclure.",
+          "$F'(x) = 1 \\times \\ln x + x \\times \\dfrac{1}{x}$. Simplifie, puis calcule $F'(1)$ et $\\ln 1$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-004",
+        "solution": "$F$ est dérivable sur $]0\\,;\\,+\\infty[$ et $F'(x) = 1 \\times \\ln x + x \\times \\dfrac{1}{x} = \\ln x + 1$. En $x = 1$ : $F'(1) = 0 + 1 = 1$, alors que $\\ln 1 = 0$. Ce contre-exemple montre que $F' \\neq \\ln$ : l'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-002",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-primitive"],
+    "capacites": ["bo-m-primitives-01"],
+    "titre": "Une primitive parmi une infinité",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 102,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Les primitives sur $\\mathbb{R}$ de la fonction $f : x \\mapsto e^x - 2x$ sont les fonctions $F : x \\mapsto e^x - x^2 + C$, où $C$ est un réel. Pour quelle valeur de $C$ a-t-on $F(0) = 6$ ?",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "Remplace $x$ par $0$ dans $F(x)$, puis résous l'équation $F(0) = 6$ d'inconnue $C$.",
+          "$F(0) = e^0 - 0^2 + C$. Attention : $e^0$ ne vaut pas $0$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-008",
+        "solution": "$F(0) = e^0 - 0^2 + C = 1 + C$. La condition $F(0) = 6$ donne $1 + C = 6$, soit $C = 5$ : la primitive cherchée est $x \\mapsto e^x - x^2 + 5$.",
+        "erreurFrequente": "Écrire $e^0 = 0$ : on trouve alors $C = 6$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "La fonction $G : x \\mapsto x^2 + 3x$ est une primitive sur $\\mathbb{R}$ d'une fonction $g$. Laquelle de ces fonctions est **aussi** une primitive de $g$ sur $\\mathbb{R}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$x \\mapsto 2x + 3$",
+            "$x \\mapsto x^2 + 3x - 7$",
+            "$x \\mapsto 2x^2 + 6x$",
+            "$x \\mapsto x^2 + 4x$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est la fonction $g = G'$ elle-même, pas une primitive de $g$ : sa dérivée est $2$.",
+            null,
+            "Sa dérivée est $4x + 6$, le double de $g(x) = 2x + 3$ : multiplier une primitive par $2$ ne donne pas une primitive de $g$.",
+            "Sa dérivée est $2x + 4$, et non $2x + 3$ : on ajoute une **constante** à $G$, pas un terme en $x$."
+          ]
+        },
+        "indices": [
+          "Deux primitives d'une même fonction sur un intervalle diffèrent d'une constante : cherche la proposition qui s'écrit $G(x) + C$.",
+          "Calcule $g(x) = G'(x)$, puis dérive chaque proposition : une seule dérivée est égale à $g(x)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-006",
+        "solution": "$g(x) = G'(x) = 2x + 3$. La fonction $x \\mapsto x^2 + 3x - 7$ s'écrit $G(x) + C$, avec $C = -7$ ; sa dérivée est $2x + 3 = g(x)$. C'est donc une primitive de $g$ sur $\\mathbb{R}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Combien existe-t-il de primitives $F$ de la fonction $f : x \\mapsto 2x + 1$ sur $\\mathbb{R}$ telles que $F(1) = 0$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["Aucune", "Exactement une", "Exactement deux", "Une infinité"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Tu penses à la seule primitive $x \\mapsto x^2 + x$, qui vaut $2$ en $1$. Mais $x \\mapsto x^2 + x - 2$ est aussi une primitive de $f$, et elle s'annule en $1$.",
+            null,
+            "Les primitives sont les fonctions $x \\mapsto x^2 + x + C$ ; la condition $2 + C = 0$ n'a qu'une solution.",
+            "Il y a une infinité de primitives, mais la condition $F(1) = 0$ n'en retient qu'une : elle fixe la constante."
+          ]
+        },
+        "indices": [
+          "Écris toutes les primitives de $f$ : une primitive connue, plus une constante $C$. Puis traduis la condition $F(1) = 0$.",
+          "Les primitives sont les fonctions $x \\mapsto x^2 + x + C$. La condition s'écrit $1^2 + 1 + C = 0$ : combien de valeurs de $C$ la vérifient ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-006",
+        "solution": "Les primitives de $f$ sur $\\mathbb{R}$ sont les fonctions $x \\mapsto x^2 + x + C$, $C$ réel. La condition $F(1) = 0$ équivaut à $2 + C = 0$, soit $C = -2$ : une seule valeur convient. Il existe donc exactement une primitive telle que $F(1) = 0$ : $x \\mapsto x^2 + x - 2$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-003",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-primitive"],
+    "capacites": ["bo-m-primitives-01", "bo-m-logarithme-06"],
+    "titre": "Les variations d'une primitive, sans la calculer",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 103,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $F$ une primitive sur $\\mathbb{R}$ de la fonction $f : x \\mapsto (x - 2)e^x$. Sur lequel des intervalles suivants $F$ est-elle décroissante ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$]-\\infty\\,;\\,2]$",
+            "$[2\\,;\\,+\\infty[$",
+            "$[1\\,;\\,+\\infty[$",
+            "On ne peut pas le savoir sans connaître $F$."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Sur $[2\\,;\\,+\\infty[$, $x - 2 \\geqslant 0$, donc $f(x) \\geqslant 0$ : $F$ y est croissante.",
+            "Sur $[1\\,;\\,+\\infty[$, c'est $f$ qui est croissante, car $f'(x) = (x - 1)e^x \\geqslant 0$. Mais les variations de $F$ se lisent sur le **signe** de $f$, pas sur celui de $f'$ : $f(x) \\geqslant 0$ pour $x \\geqslant 2$, donc $F$ croît sur $[2\\,;\\,+\\infty[$.",
+            "$F' = f$ : le signe de $f$ suffit pour connaître les variations de $F$, quelle que soit la primitive."
+          ]
+        },
+        "indices": [
+          "$F' = f$ : $F$ est décroissante là où $f(x) \\leqslant 0$. Étudie le signe de $f(x)$.",
+          "$e^x > 0$ pour tout réel $x$ : $f(x)$ a le signe de $x - 2$. Pour quels $x$ ce facteur est-il négatif ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-013",
+        "solution": "$F$ est dérivable sur $\\mathbb{R}$ et $F' = f$. Comme $e^x > 0$, $f(x)$ a le signe de $x - 2$ : $f(x) \\leqslant 0$ pour $x \\leqslant 2$ et $f(x) \\geqslant 0$ pour $x \\geqslant 2$. Donc $F$ est décroissante sur $]-\\infty\\,;\\,2]$ et croissante sur $[2\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $F$ une primitive quelconque sur $]0\\,;\\,+\\infty[$ de la fonction $f : x \\mapsto \\dfrac{2 - \\ln x}{x}$. Affirmation : $F$ est strictement décroissante sur $[e\\,;\\,+\\infty[$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$F' = f$, et $f(x)$ a le signe de $2 - \\ln x$, car $x > 0$. Or $2 - \\ln x > 0 \\iff x < e^2$. Par exemple $f(e) = \\dfrac{1}{e} > 0$ : $F$ est strictement croissante sur $\\left[e\\,;\\,e^2\\right]$. Elle n'est strictement décroissante que sur $\\left[e^2\\,;\\,+\\infty\\right[$."
+        },
+        "indices": [
+          "Le sens de variation de $F$ se lit sur le signe de $F' = f$ ; le dénominateur $x$ est positif.",
+          "Résous $2 - \\ln x > 0$ : isole $\\ln x$, puis applique l'exponentielle. Où se place $e$ par rapport à la valeur trouvée ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-013",
+        "solution": "$F$ est dérivable sur $]0\\,;\\,+\\infty[$ et $F' = f$. Pour $x > 0$, $f(x)$ a le signe de $2 - \\ln x$. Or $2 - \\ln x > 0 \\iff \\ln x < 2 \\iff x < e^2$, car l'exponentielle est strictement croissante. Comme $e < e^2$, $f(x) > 0$ sur $\\left[e\\,;\\,e^2\\right[$ : par exemple $f(e) = \\dfrac{2 - 1}{e} = \\dfrac{1}{e} > 0$. Donc $F$ est strictement croissante sur $\\left[e\\,;\\,e^2\\right]$ : l'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $F$ une primitive sur $\\mathbb{R}$ de la fonction $f : x \\mapsto 6 - 2x$. En quelle abscisse $F$ atteint-elle son maximum ?",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "$F' = f$ : cherche où $f$ change de signe, en passant du positif au négatif.",
+          "Résous l'inéquation $6 - 2x > 0$, puis dresse le tableau de variations de $F$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-013",
+        "solution": "$F$ est dérivable sur $\\mathbb{R}$ et $F' = f$. Or $6 - 2x > 0 \\iff x < 3$ et $6 - 2x < 0 \\iff x > 3$. Donc $F$ est strictement croissante sur $]-\\infty\\,;\\,3]$ et strictement décroissante sur $[3\\,;\\,+\\infty[$ : elle atteint son maximum en $x = 3$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-004",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-calcul"],
+    "capacites": ["bo-m-primitives-02"],
+    "titre": "Lire le tableau des primitives de référence",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 201,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle fonction est une primitive sur $\\mathbb{R}$ de $f : x \\mapsto 6x^2 - 4x + 1$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$x \\mapsto 12x - 4$",
+            "$x \\mapsto 6x^3 - 4x^2 + x$",
+            "$x \\mapsto 2x^3 - 2x^2 + x$",
+            "$x \\mapsto 2x^3 - 2x^2$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "C'est la **dérivée** de $f$, pas une primitive.",
+            "Tu as augmenté les exposants sans diviser : $x^2$ a pour primitive $\\dfrac{x^3}{3}$, et $x$ a pour primitive $\\dfrac{x^2}{2}$.",
+            null,
+            "Le terme constant $1$ a pour primitive $x$, qui manque ici : la dérivée vaut $6x^2 - 4x$."
+          ]
+        },
+        "indices": [
+          "Prends une primitive de chaque terme : $x^n$ a pour primitive $\\dfrac{x^{n+1}}{n+1}$, un réel $k$ a pour primitive $kx$, et les coefficients restent devant.",
+          "Commence par $6x^2$ : sa primitive est $6 \\times \\dfrac{x^3}{3}$. Fais de même pour $-4x$ et pour $1$, puis contrôle en dérivant."
+        ],
+        "revoir": "l-primitives-equations-differentielles-019",
+        "solution": "Terme à terme : $6x^2$ a pour primitive $6 \\times \\dfrac{x^3}{3} = 2x^3$, $-4x$ a pour primitive $-4 \\times \\dfrac{x^2}{2} = -2x^2$, et $1$ a pour primitive $x$. Une primitive de $f$ est donc $x \\mapsto 2x^3 - 2x^2 + x$. Contrôle : sa dérivée est $6x^2 - 4x + 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle fonction est une primitive sur $]0\\,;\\,+\\infty[$ de $g : x \\mapsto \\dfrac{1}{\\sqrt{x}} + \\dfrac{1}{x^2}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$x \\mapsto 2\\sqrt{x} - \\dfrac{1}{x}$",
+            "$x \\mapsto 2\\sqrt{x} + \\dfrac{1}{x}$",
+            "$x \\mapsto \\sqrt{x} - \\dfrac{1}{x}$",
+            "$x \\mapsto 2\\sqrt{x} + \\ln\\left(x^2\\right)$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$\\left(\\dfrac{1}{x}\\right)' = -\\dfrac{1}{x^2}$ : il faut un signe moins devant $\\dfrac{1}{x}$.",
+            "$\\left(\\sqrt{x}\\right)' = \\dfrac{1}{2\\sqrt{x}}$ : une primitive de $\\dfrac{1}{\\sqrt{x}}$ est $2\\sqrt{x}$, pas $\\sqrt{x}$.",
+            "$\\Big(\\ln\\left(x^2\\right)\\Big)' = \\dfrac{2x}{x^2} = \\dfrac{2}{x}$, et non $\\dfrac{1}{x^2}$ : le logarithme ne sert que pour $\\dfrac{1}{x}$."
+          ]
+        },
+        "indices": [
+          "Utilise deux lignes du tableau : la primitive de $\\dfrac{1}{\\sqrt{x}}$, et celle de $x^n$ avec $n = -2$.",
+          "$\\dfrac{1}{x^2} = x^{-2}$ a pour primitive $\\dfrac{x^{-1}}{-1}$ : écris-la sous forme de fraction. Contrôle ensuite les propositions en dérivant."
+        ],
+        "revoir": "l-primitives-equations-differentielles-019",
+        "solution": "Une primitive de $\\dfrac{1}{\\sqrt{x}}$ est $2\\sqrt{x}$, et une primitive de $\\dfrac{1}{x^2} = x^{-2}$ est $\\dfrac{x^{-1}}{-1} = -\\dfrac{1}{x}$. Donc $x \\mapsto 2\\sqrt{x} - \\dfrac{1}{x}$ est une primitive de $g$ sur $]0\\,;\\,+\\infty[$. Contrôle : sa dérivée est $\\dfrac{2}{2\\sqrt{x}} + \\dfrac{1}{x^2} = g(x)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle fonction est une primitive sur $\\mathbb{R}$ de $h : x \\mapsto 3\\sin(x) - \\cos(x)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$x \\mapsto 3\\cos(x) + \\sin(x)$",
+            "$x \\mapsto -3\\cos(x) - \\sin(x)$",
+            "$x \\mapsto 3\\cos(x) - \\sin(x)$",
+            "$x \\mapsto -3\\cos(x) + \\sin(x)$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est la **dérivée** de $h$ : $h'(x) = 3\\cos(x) + \\sin(x)$.",
+            null,
+            "Une primitive de $\\sin$ est $-\\cos$, et non $\\cos$, car $\\cos' = -\\sin$. Ici la dérivée vaut $-3\\sin(x) - \\cos(x)$.",
+            "Une primitive de $\\cos$ est $\\sin$ : une primitive de $-\\cos(x)$ est donc $-\\sin(x)$. Ici la dérivée vaut $3\\sin(x) + \\cos(x)$."
+          ]
+        },
+        "indices": [
+          "Lis le tableau à l'envers : $\\sin' = \\cos$ et $\\cos' = -\\sin$. Une primitive de $\\cos$ est donc $\\sin$ ; et une primitive de $\\sin$ ?",
+          "Une primitive de $\\sin$ est $-\\cos$, car $(-\\cos)' = \\sin$. Applique-le à $3\\sin(x)$, traite ensuite $-\\cos(x)$, puis contrôle en dérivant."
+        ],
+        "revoir": "l-primitives-equations-differentielles-020",
+        "solution": "Une primitive de $\\sin$ est $-\\cos$ et une primitive de $\\cos$ est $\\sin$. Donc une primitive de $h$ est $x \\mapsto 3 \\times \\big(-\\cos(x)\\big) - \\sin(x) = -3\\cos(x) - \\sin(x)$. Contrôle : sa dérivée est $3\\sin(x) - \\cos(x) = h(x)$.",
+        "erreurFrequente": "Prendre $\\cos$ comme primitive de $\\sin$ : c'est le signe le plus souvent oublié."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-005",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-calcul"],
+    "capacites": ["bo-m-primitives-04", "bo-m-primitives-02"],
+    "titre": "Reconnaître une forme composée",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 202,
+    "source": { "annale": "an-2023-metropole-septembre-j1", "adaptation": "question 1 : fonction du QCM reprise avec d'autres propositions de réponse ; questions 2 et 3 ajoutées" },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = xe^{x^2 - 3}$. Une des primitives $F$ de la fonction $f$ sur $\\mathbb{R}$ est définie par :",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$F(x) = e^{x^2 - 3}$",
+            "$F(x) = \\dfrac{1}{2}e^{x^2 - 3}$",
+            "$F(x) = 2e^{x^2 - 3}$",
+            "$F(x) = \\dfrac{x^2}{2}e^{x^2 - 3}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Sa dérivée est $2xe^{x^2 - 3}$ : il y a un facteur $2$ de trop.",
+            null,
+            "Sa dérivée est $4xe^{x^2 - 3}$ : tu as multiplié par $2$ au lieu de diviser.",
+            "Une primitive d'un produit n'est pas le produit des primitives : la dérivée de cette fonction contient un terme en $x^3e^{x^2 - 3}$."
+          ]
+        },
+        "indices": [
+          "Pense à la forme $u'e^{u}$, dont une primitive est $e^{u}$, avec $u(x) = x^2 - 3$.",
+          "$u'(x) = 2x$ : fais apparaître ce facteur en écrivant $x = \\dfrac{1}{2} \\times 2x$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-023",
+        "solution": "Avec $u(x) = x^2 - 3$, on a $u'(x) = 2x$ et $f(x) = \\dfrac{1}{2} \\times 2xe^{x^2 - 3} = \\dfrac{1}{2}u'(x)e^{u(x)}$. Une primitive de $u'e^{u}$ est $e^{u}$, donc $F(x) = \\dfrac{1}{2}e^{x^2 - 3}$ convient. Contrôle : $F'(x) = \\dfrac{1}{2} \\times 2xe^{x^2 - 3} = f(x)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle fonction est une primitive sur $\\mathbb{R}$ de $g : x \\mapsto \\dfrac{x}{x^2 + 4}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$x \\mapsto \\ln\\left(x^2 + 4\\right)$",
+            "$x \\mapsto \\dfrac{1}{2}\\ln\\left(x^2 + 4\\right)$",
+            "$x \\mapsto 2\\ln\\left(x^2 + 4\\right)$",
+            "$x \\mapsto -\\dfrac{1}{2\\left(x^2 + 4\\right)}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Sa dérivée est $\\dfrac{2x}{x^2 + 4}$ : le facteur $2$ de $u'(x) = 2x$ est en trop.",
+            null,
+            "Sa dérivée est $\\dfrac{4x}{x^2 + 4}$ : tu as multiplié par $2$ au lieu de diviser.",
+            "Sa dérivée est $\\dfrac{x}{\\left(x^2 + 4\\right)^2}$ : c'est la forme $\\dfrac{u'}{u^2}$, avec un carré au dénominateur, qui donne $-\\dfrac{1}{u}$."
+          ]
+        },
+        "indices": [
+          "Pense à la forme $\\dfrac{u'}{u}$, avec $u(x) = x^2 + 4$, strictement positive sur $\\mathbb{R}$ : une primitive de $\\dfrac{u'}{u}$ est $\\ln(u)$.",
+          "$u'(x) = 2x$ : écris $\\dfrac{x}{x^2 + 4} = \\dfrac{1}{2} \\times \\dfrac{2x}{x^2 + 4}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-022",
+        "solution": "Avec $u(x) = x^2 + 4 > 0$ et $u'(x) = 2x$ : $g(x) = \\dfrac{1}{2} \\times \\dfrac{u'(x)}{u(x)}$. Une primitive de $\\dfrac{u'}{u}$ est $\\ln(u)$, car $u > 0$ sur $\\mathbb{R}$. Donc $x \\mapsto \\dfrac{1}{2}\\ln\\left(x^2 + 4\\right)$ est une primitive de $g$ sur $\\mathbb{R}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $F$ la primitive sur $\\mathbb{R}$ de la fonction $x \\mapsto e^{3x}$ telle que $F(0) = 1$. Calculer $F\\left(\\dfrac{\\ln 2}{3}\\right)$. Donner la valeur exacte, sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "4/3", "tolerance": 0 },
+        "indices": [
+          "Cas affine : une primitive de $x \\mapsto e^{3x}$ est $x \\mapsto \\dfrac{1}{3}e^{3x}$. Ajoute une constante $C$, puis utilise $F(0) = 1$.",
+          "$F(0) = \\dfrac{1}{3}e^0 + C = \\dfrac{1}{3} + C$ donne $C$. Ensuite, pour $x = \\dfrac{\\ln 2}{3}$, on a $e^{3x} = e^{\\ln 2}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-022",
+        "solution": "Une primitive de $x \\mapsto e^{3x}$ est $x \\mapsto \\dfrac{1}{3}e^{3x}$ (cas affine, avec $a = 3$). Donc $F(x) = \\dfrac{1}{3}e^{3x} + C$, et $F(0) = \\dfrac{1}{3} + C = 1$ donne $C = \\dfrac{2}{3}$. Enfin $F\\left(\\dfrac{\\ln 2}{3}\\right) = \\dfrac{1}{3}e^{\\ln 2} + \\dfrac{2}{3} = \\dfrac{2}{3} + \\dfrac{2}{3} = \\dfrac{4}{3}$.",
+        "erreurFrequente": "Prendre $e^{3x}$ comme primitive de $e^{3x}$ : sa dérivée est $3e^{3x}$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-006",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-equation-ay"],
+    "capacites": ["bo-m-primitives-03"],
+    "titre": "Lire $a$, écrire les solutions",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 301,
+    "source": { "annale": "an-2025-etrangers-j1", "adaptation": "question 2 : consigne reprise et posée en QCM ; questions 1 et 3 ajoutées" },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "L'équation différentielle $2y' + 5y = 0$ s'écrit sous la forme $y' = ay$. Que vaut $a$ ? (Écriture décimale ou fractionnaire.)",
+        "reponse": { "type": "numerique", "valeur": "-5/2", "tolerance": 0 },
+        "indices": [
+          "Isole $y'$ : passe le terme en $y$ dans l'autre membre, puis divise par le coefficient de $y'$.",
+          "$2y' + 5y = 0 \\iff 2y' = -5y$. Il reste à diviser par $2$, sans perdre le signe."
+        ],
+        "revoir": "l-primitives-equations-differentielles-030",
+        "solution": "$2y' + 5y = 0 \\iff 2y' = -5y \\iff y' = -\\dfrac{5}{2}y$. Donc $a = -\\dfrac{5}{2} = -2{,}5$.",
+        "erreurFrequente": "Lire $a = 5$ ou $a = -5$ sans diviser par le coefficient de $y'$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Donner la forme générale des solutions de l'équation différentielle $y' + 0{,}48y = 0$.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$x \\mapsto Ce^{0{,}48x}$, avec $C$ réel",
+            "$x \\mapsto Ce^{-0{,}48x}$, avec $C$ réel",
+            "$x \\mapsto e^{-0{,}48x} + C$, avec $C$ réel",
+            "$x \\mapsto e^{-0{,}48x}$ seulement"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "En isolant $y'$, le terme $0{,}48y$ change de membre et de signe : $a = -0{,}48$.",
+            null,
+            "La constante **multiplie** l'exponentielle : la dérivée de $e^{-0{,}48x} + C$ est $-0{,}48e^{-0{,}48x}$, qui ne vaut pas $-0{,}48\\left(e^{-0{,}48x} + C\\right)$ si $C \\neq 0$.",
+            "C'est une solution, mais pas la seule : toutes les fonctions $x \\mapsto Ce^{-0{,}48x}$ conviennent, par exemple $x \\mapsto 2e^{-0{,}48x}$."
+          ]
+        },
+        "indices": [
+          "Mets l'équation sous la forme $y' = ay$, puis applique la propriété du cours : les solutions sont les fonctions $x \\mapsto Ce^{ax}$.",
+          "$y' + 0{,}48y = 0 \\iff y' = -0{,}48y$ : lis $a$ avec son signe."
+        ],
+        "revoir": "l-primitives-equations-differentielles-034",
+        "solution": "$y' + 0{,}48y = 0 \\iff y' = -0{,}48y$ : c'est la forme $y' = ay$ avec $a = -0{,}48$. Les solutions sont les fonctions $x \\mapsto Ce^{-0{,}48x}$, où $C$ est un réel."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Affirmation : si $f$ et $g$ sont deux solutions sur $\\mathbb{R}$ de l'équation différentielle $y' = 4y$, alors $f + g$ est aussi une solution de $y' = 4y$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$(f + g)' = f' + g' = 4f + 4g = 4(f + g)$. Autre façon : $f(x) = C_1e^{4x}$ et $g(x) = C_2e^{4x}$, donc $(f + g)(x) = (C_1 + C_2)e^{4x}$, qui est de la forme $Ce^{4x}$."
+        },
+        "indices": [
+          "Écris ce que signifient « $f$ est solution » et « $g$ est solution », puis calcule $(f + g)'$.",
+          "$f' = 4f$ et $g' = 4g$. Or $(f + g)' = f' + g'$ : remplace, puis factorise par $4$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-033",
+        "solution": "$f$ et $g$ sont solutions, donc $f' = 4f$ et $g' = 4g$. La fonction $f + g$ est dérivable et $(f + g)' = f' + g' = 4f + 4g = 4(f + g)$ : $f + g$ est solution de $y' = 4y$. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-007",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-equation-ay"],
+    "capacites": ["bo-m-primitives-03"],
+    "titre": "Trouver la solution qui vérifie une condition",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 302,
+    "source": { "annale": "an-2021-etrangers-j1", "adaptation": "question 1 : équation et point $M(0\\,;\\,2)$ repris, consigne posée en QCM ; questions 2 et 3 ajoutées" },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On considère l'équation différentielle $(E) : 3y' + y = 0$. Parmi toutes les solutions de $(E)$, quelle est celle dont la courbe représentative, dans un repère du plan, passe par le point $M(0\\,;\\,2)$ ? (Au bac, on l'appelle la **solution particulière** de $(E)$ qui vérifie cette condition : une solution précise, choisie parmi toutes.)",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$x \\mapsto 2e^{-3x}$",
+            "$x \\mapsto 2e^{-\\frac{1}{3}x}$",
+            "$x \\mapsto e^{-\\frac{1}{3}x} + 2$",
+            "$x \\mapsto -\\dfrac{1}{3}e^{2x}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$3y' + y = 0$ donne $y' = -\\dfrac{1}{3}y$ : on divise par $3$, on ne multiplie pas.",
+            null,
+            "$e^{-\\frac{1}{3}x} + 2$ n'est pas solution : la constante doit multiplier l'exponentielle.",
+            "Les rôles sont échangés : $a = -\\dfrac{1}{3}$ va dans l'exponentielle, et la condition initiale donne la constante $C$ devant."
+          ]
+        },
+        "indices": [
+          "Écris $(E)$ sous la forme $y' = ay$, puis traduis « la courbe passe par $M(0\\,;\\,2)$ » : c'est la condition $f(0) = 2$.",
+          "$y' = -\\dfrac{1}{3}y$ : les solutions sont les fonctions $x \\mapsto Ce^{-\\frac{1}{3}x}$. Que vaut $f(0)$ pour une telle fonction ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-038",
+        "solution": "$3y' + y = 0 \\iff y' = -\\dfrac{1}{3}y$ : les solutions sont les fonctions $x \\mapsto Ce^{-\\frac{1}{3}x}$, $C$ réel. La courbe passe par $M(0\\,;\\,2)$ si et seulement si $f(0) = 2$ ; or $f(0) = Ce^0 = C$, donc $C = 2$. La solution cherchée est $x \\mapsto 2e^{-\\frac{1}{3}x}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "La fonction $f$ est la solution de l'équation différentielle $y' = -y$ telle que $f(1) = 2$. Que vaut $f(0)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$2$", "$2e$", "$\\dfrac{2}{e}$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "On a bien $f(0) = C$, mais la condition est donnée en $x = 1$, pas en $0$ : $C$ n'est pas égal à $2$.",
+            null,
+            "Tu as pris $a = 1$ : avec $f(x) = Ce^{x}$, on trouverait $C = \\dfrac{2}{e}$. Ici $a = -1$, donc $f(x) = Ce^{-x}$."
+          ]
+        },
+        "indices": [
+          "Les solutions de $y' = -y$ sont les fonctions $x \\mapsto Ce^{-x}$. Écris la condition $f(1) = 2$ : c'est une équation d'inconnue $C$.",
+          "$f(1) = Ce^{-1} = 2$ : multiplie par $e$ pour isoler $C$. Puis $f(0) = Ce^0 = C$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-037",
+        "solution": "Les solutions de $y' = -y$ sont les fonctions $x \\mapsto Ce^{-x}$. La condition $f(1) = 2$ s'écrit $Ce^{-1} = 2$, soit $C = 2e$. Donc $f(x) = 2e \\times e^{-x} = 2e^{1 - x}$, et $f(0) = 2e$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "La fonction $f$ est solution de l'équation différentielle $y' = 3y$ et vérifie $f(0) = -2$. Que vaut $f'(0)$ ?",
+        "reponse": { "type": "numerique", "valeur": -6, "tolerance": 0 },
+        "indices": [
+          "Inutile de résoudre : $f$ est solution, donc $f'(x) = 3f(x)$ pour tout réel $x$. Choisis $x = 0$.",
+          "Remplace $f(0)$ par sa valeur dans l'égalité $f'(0) = 3f(0)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-030",
+        "solution": "$f$ est solution de $y' = 3y$, donc $f'(x) = 3f(x)$ pour tout réel $x$. En $x = 0$ : $f'(0) = 3f(0) = 3 \\times (-2) = -6$. Contrôle : $f(x) = -2e^{3x}$ et $f'(x) = -6e^{3x}$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-008",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-equation-ay"],
+    "capacites": ["bo-m-primitives-03"],
+    "titre": "L'allure des solutions de $y' = ay$",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 303,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "La fonction $f : x \\mapsto -3e^{0{,}2x}$ est une solution de l'équation différentielle $y' = 0{,}2y$. Quel est son sens de variation sur $\\mathbb{R}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Strictement croissante",
+            "Strictement décroissante",
+            "Croissante, puis décroissante",
+            "Constante"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Le signe de $a = 0{,}2$ ne suffit pas : $f'(x) = 0{,}2f(x)$ a le signe de $aC = 0{,}2 \\times (-3) < 0$.",
+            null,
+            "$f'(x) = -0{,}6e^{0{,}2x}$ ne change jamais de signe, car $e^{0{,}2x} > 0$ : $f$ est monotone.",
+            "Une solution de $y' = ay$ n'est constante que si $C = 0$ ou $a = 0$ ; ici $f'(x) \\neq 0$."
+          ]
+        },
+        "indices": [
+          "Le sens de variation de $x \\mapsto Ce^{ax}$ dépend du signe de $aC$, car sa dérivée est $x \\mapsto aCe^{ax}$.",
+          "Ici $a = 0{,}2$ et $C = -3$ : quel est le signe du produit $aC$ ? Et celui de $e^{0{,}2x}$ ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-040",
+        "solution": "$f'(x) = 0{,}2 \\times (-3)e^{0{,}2x} = -0{,}6e^{0{,}2x}$. Comme $e^{0{,}2x} > 0$, $f'(x) < 0$ pour tout réel $x$ : $f$ est strictement décroissante sur $\\mathbb{R}$.",
+        "erreurFrequente": "Conclure « croissante » parce que $a > 0$ : c'est le signe de $aC$ qui compte."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Une solution $f$ de l'équation différentielle $y' = ay$ vérifie $f(0) = 2$, et elle est strictement décroissante sur $\\mathbb{R}$. Que peut-on dire du réel $a$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$a > 0$",
+            "$a < 0$",
+            "$a = -2$",
+            "Rien : le sens de variation ne dépend pas de $a$."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Avec $a > 0$ et $C = f(0) = 2 > 0$, on a $aC > 0$ : $f$ serait croissante.",
+            null,
+            "$a = -2$ est possible, mais pas obligatoire : toute valeur $a < 0$ donne une fonction décroissante, par exemple $x \\mapsto 2e^{-x}$.",
+            "$f'(x) = aCe^{ax}$ : le signe de $f'$ dépend de $a$ et de $C$."
+          ]
+        },
+        "indices": [
+          "$f(x) = Ce^{ax}$, et la condition $f(0) = 2$ donne $C$. Le sens de variation se lit sur le signe de $aC$.",
+          "$C = f(0) = 2$ est positif. Pour que $f'(x) = aCe^{ax}$ soit négatif, quel doit être le signe de $a$ ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-040",
+        "solution": "$f(x) = Ce^{ax}$ avec $C = f(0) = 2 > 0$. Alors $f'(x) = 2ae^{ax}$ a le signe de $a$, car $e^{ax} > 0$. Or $f$ est strictement décroissante, donc $f'(x) < 0$ : $a < 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Affirmation : une solution de l'équation différentielle $y' = ay$ qui n'est pas la fonction nulle peut s'annuler en un réel.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Une solution s'écrit $x \\mapsto Ce^{ax}$. Si elle n'est pas la fonction nulle, $C \\neq 0$ ; comme $e^{ax} > 0$, $Ce^{ax} \\neq 0$ pour tout réel $x$. Elle ne s'annule jamais : elle garde le signe de $C$."
+        },
+        "indices": [
+          "Écris la forme générale des solutions, puis cherche pour quels $x$ on a $Ce^{ax} = 0$.",
+          "Un produit est nul si et seulement si l'un de ses facteurs est nul. Le facteur $e^{ax}$ peut-il être nul ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-033",
+        "solution": "Une solution de $y' = ay$ s'écrit $x \\mapsto Ce^{ax}$, avec $C$ réel. Si ce n'est pas la fonction nulle, alors $C \\neq 0$. Or $e^{ax} > 0$ pour tout réel $x$, donc $Ce^{ax} \\neq 0$ : la solution ne s'annule jamais. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-009",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-b"],
+    "capacites": ["bo-m-primitives-05"],
+    "titre": "La solution constante d'abord",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 401,
+    "source": { "annale": "an-2025-polynesie-juin-j1", "adaptation": "question 2 : affirmation du vrai-faux reprise telle quelle ; questions 1 et 3 ajoutées" },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la solution constante de l'équation différentielle $y' = 2y - 5$ ? (Écriture décimale ou fractionnaire.)",
+        "reponse": { "type": "numerique", "valeur": "5/2", "tolerance": 0 },
+        "indices": [
+          "Une fonction constante égale à $k$ a une dérivée nulle : remplace $y'$ par $0$ et $y$ par $k$.",
+          "Résous l'équation $0 = 2k - 5$ d'inconnue $k$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "Une constante $k$ a pour dérivée $0$. Elle est solution si et seulement si $0 = 2k - 5$, soit $k = \\dfrac{5}{2} = 2{,}5$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On considère l'équation différentielle $(E) : y' = \\dfrac{1}{2}y + 4$. Affirmation : les solutions de $(E)$ sont les fonctions $f$ définies sur $\\mathbb{R}$ par $f(x) = ke^{\\frac{1}{2}x} - 8$, avec $k \\in \\mathbb{R}$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Solution constante : $0 = \\dfrac{1}{2}c + 4$ donne $c = -8$. Les solutions de $y' = \\dfrac{1}{2}y$ sont les fonctions $x \\mapsto ke^{\\frac{1}{2}x}$ ; on leur ajoute la solution constante $-8$."
+        },
+        "indices": [
+          "Attention aux lettres : ici, $k$ est la constante quelconque (le $C$ du cours), et on note $c$ la solution constante. Cherche $c$, puis écris toutes les solutions : les fonctions $x \\mapsto ke^{ax}$, plus cette constante $c$.",
+          "La solution constante $c$ vérifie $0 = \\dfrac{1}{2}c + 4$, et ici $a = \\dfrac{1}{2}$. Compare avec l'affirmation."
+        ],
+        "revoir": "l-primitives-equations-differentielles-050",
+        "solution": "La solution constante $c$ vérifie $0 = \\dfrac{1}{2}c + 4$, soit $c = -8$. Les solutions de $y' = \\dfrac{1}{2}y$ sont les fonctions $x \\mapsto ke^{\\frac{1}{2}x}$, $k$ réel. Donc les solutions de $(E)$ sont les fonctions $x \\mapsto ke^{\\frac{1}{2}x} - 8$ : l'affirmation est vraie."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelles sont les solutions sur $\\mathbb{R}$ de l'équation différentielle $y' = -y + \\dfrac{1}{6}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$x \\mapsto Ce^{-x} + \\dfrac{1}{6}$, avec $C$ réel",
+            "$x \\mapsto Ce^{-x} - \\dfrac{1}{6}$, avec $C$ réel",
+            "$x \\mapsto Ce^{x} + \\dfrac{1}{6}$, avec $C$ réel",
+            "$x \\mapsto e^{-x} + C$, avec $C$ réel"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Erreur de signe sur la solution constante : $0 = -k + \\dfrac{1}{6}$ donne $k = \\dfrac{1}{6}$.",
+            "Ici $a = -1$ : les solutions de $y' = -y$ sont les fonctions $x \\mapsto Ce^{-x}$.",
+            "La constante doit multiplier l'exponentielle, et il manque la solution constante $\\dfrac{1}{6}$."
+          ]
+        },
+        "indices": [
+          "Applique la méthode : cherche la solution constante $k$, qui vérifie $0 = ak + b$, puis écris les solutions $x \\mapsto Ce^{ax} + k$.",
+          "Ici $a = -1$ et $b = \\dfrac{1}{6}$ : résous $0 = -k + \\dfrac{1}{6}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "Ici $a = -1$ et $b = \\dfrac{1}{6}$. La solution constante vérifie $0 = -k + \\dfrac{1}{6}$, soit $k = \\dfrac{1}{6}$. Les solutions de $y' = -y$ sont les fonctions $x \\mapsto Ce^{-x}$ ; celles de l'équation sont donc les fonctions $x \\mapsto Ce^{-x} + \\dfrac{1}{6}$, $C$ réel."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-010",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-b"],
+    "capacites": ["bo-m-primitives-05", "bo-m-limites-fonctions-02"],
+    "titre": "Condition initiale et valeur limite",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 402,
+    "source": { "annale": "an-2024-polynesie-juin-j2", "adaptation": "question 1 : équation et condition initiale du QCM reprises, avec d'autres propositions de réponse ; questions 2 et 3 ajoutées" },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "La solution $f$ de l'équation différentielle $y' = -3y + 7$ telle que $f(0) = 1$ est la fonction définie sur $\\mathbb{R}$ par :",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$f(x) = e^{-3x} + \\dfrac{7}{3}$",
+            "$f(x) = -\\dfrac{4}{3}e^{-3x} + \\dfrac{7}{3}$",
+            "$f(x) = -\\dfrac{4}{3}e^{3x} + \\dfrac{7}{3}$",
+            "$f(x) = \\dfrac{10}{3}e^{-3x} - \\dfrac{7}{3}$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Tu as pris $C = f(0) = 1$. Or $f(0) = C + \\dfrac{7}{3}$ : la solution constante compte aussi en $0$.",
+            null,
+            "Ici $a = -3$ : l'exponentielle est $e^{-3x}$, pas $e^{3x}$.",
+            "Erreur de signe sur la solution constante : $0 = -3k + 7$ donne $k = \\dfrac{7}{3}$, et non $-\\dfrac{7}{3}$."
+          ]
+        },
+        "indices": [
+          "Cherche la solution constante $k$, écris les solutions $x \\mapsto Ce^{-3x} + k$, puis utilise la condition $f(0) = 1$.",
+          "$0 = -3k + 7$ donne $k = \\dfrac{7}{3}$. Attention : $f(0)$ ne vaut pas $C$, il faut lui ajouter $k$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "La solution constante vérifie $0 = -3k + 7$, soit $k = \\dfrac{7}{3}$. Les solutions sont les fonctions $x \\mapsto Ce^{-3x} + \\dfrac{7}{3}$, $C$ réel. Or $f(0) = C + \\dfrac{7}{3}$, et $f(0) = 1$ donne $C = 1 - \\dfrac{7}{3} = -\\dfrac{4}{3}$. Donc $f(x) = -\\dfrac{4}{3}e^{-3x} + \\dfrac{7}{3}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "La fonction $g$ est solution de l'équation différentielle $y' = 0{,}2y - 1$ et vérifie $g(0) = 3$. Que vaut $g'(0)$ ? (Écriture décimale.)",
+        "reponse": { "type": "numerique", "valeur": -0.4, "tolerance": 0.001 },
+        "indices": [
+          "Inutile de résoudre : $g$ est solution, donc $g'(x) = 0{,}2g(x) - 1$ pour tout réel $x$.",
+          "Remplace $x$ par $0$ : $g'(0) = 0{,}2 \\times g(0) - 1$, puis utilise la valeur de $g(0)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-030",
+        "solution": "$g$ est solution de l'équation, donc $g'(0) = 0{,}2g(0) - 1 = 0{,}2 \\times 3 - 1 = 0{,}6 - 1 = -0{,}4$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $f$ la solution de l'équation différentielle $y' = -2y + 6$ telle que $f(0) = 1$. Que vaut $\\lim\\limits_{x \\to +\\infty} f(x)$ ?",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Les solutions s'écrivent $x \\mapsto Ce^{-2x} + k$, où $k$ est la solution constante. Que devient $Ce^{-2x}$ quand $x$ tend vers $+\\infty$ ?",
+          "$e^{-2x}$ tend vers $0$ en $+\\infty$, quelle que soit la valeur de $C$ : la limite est la solution constante. Résous $0 = -2k + 6$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "La solution constante vérifie $0 = -2k + 6$, soit $k = 3$. Donc $f(x) = Ce^{-2x} + 3$, avec $C = f(0) - 3 = -2$. Quand $x$ tend vers $+\\infty$, $-2x$ tend vers $-\\infty$, donc $e^{-2x}$ tend vers $0$ : $\\lim\\limits_{x \\to +\\infty} f(x) = 3$. La valeur de $C$ ne change pas cette limite."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-011",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-b"],
+    "capacites": ["bo-m-primitives-10"],
+    "titre": "La méthode d'Euler à la main",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 403,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On applique la méthode d'Euler à l'équation $y' = 0{,}5y + 1$, avec $y(0) = 2$ et le pas $h = 0{,}2$ : $y_{n+1} = y_n + 0{,}2 \\times (0{,}5y_n + 1)$. Calculer $y_2$, valeur approchée de la solution en $0{,}4$.",
+        "reponse": { "type": "numerique", "valeur": 2.84, "tolerance": 0.001 },
+        "indices": [
+          "Calcule d'abord $y_1$ à partir de $y_0 = 2$, puis $y_2$ à partir de $y_1$ : chaque pas ajoute $h$ fois la pente.",
+          "$y_1 = 2 + 0{,}2 \\times (0{,}5 \\times 2 + 1) = 2 + 0{,}2 \\times 2$. Calcule-le, puis recommence avec $y_1$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-057",
+        "solution": "$y_1 = 2 + 0{,}2 \\times (0{,}5 \\times 2 + 1) = 2 + 0{,}4 = 2{,}4$, puis $y_2 = 2{,}4 + 0{,}2 \\times (0{,}5 \\times 2{,}4 + 1) = 2{,}4 + 0{,}2 \\times 2{,}2 = 2{,}4 + 0{,}44 = 2{,}84$. La solution exacte, $x \\mapsto 4e^{0{,}5x} - 2$, vaut environ $2{,}886$ en $0{,}4$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On applique la méthode d'Euler à l'équation $y' = 3x^2$, avec $y(0) = 0$ et le pas $h = 0{,}5$ : $y_{n+1} = y_n + 0{,}5 \\times 3x_n^2$, où $x_n = 0{,}5n$. Calculer $y_2$, valeur approchée de la solution en $1$.",
+        "reponse": { "type": "numerique", "valeur": 0.375, "tolerance": 0.001 },
+        "indices": [
+          "Pour une équation $y' = f$, la pente au point d'abscisse $x_n$ est $f(x_n) = 3x_n^2$ : elle dépend de $x_n$, pas de $y_n$.",
+          "$x_0 = 0$, donc $y_1 = 0 + 0{,}5 \\times 3 \\times 0^2$. Pour $y_2$, la pente se calcule en $x_1 = 0{,}5$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-060",
+        "solution": "$y_1 = y_0 + 0{,}5 \\times 3 \\times 0^2 = 0$, puis $y_2 = y_1 + 0{,}5 \\times 3 \\times 0{,}5^2 = 0 + 0{,}5 \\times 0{,}75 = 0{,}375$. La solution exacte est la primitive $x \\mapsto x^3$, qui vaut $1$ en $1$ : avec un pas aussi grand, l'approximation est grossière."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On applique la méthode d'Euler à l'équation $y' = y$, avec $y(0) = 1$ et le pas $h = 0{,}5$. On obtient $y_4 = 5{,}0625$. De quel nombre $y_4$ est-il une valeur approchée ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$e^{0{,}5}$", "$e$", "$e^2$", "$e^4$"],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$e^{0{,}5}$ est la valeur de la solution au premier pas, en $x_1 = 0{,}5$.",
+            "$e = e^1$ correspond à $x = 1$, atteint après $2$ pas seulement.",
+            null,
+            "$4$ est le nombre de pas, pas l'abscisse atteinte : $x_4 = 0 + 4 \\times 0{,}5$."
+          ]
+        },
+        "indices": [
+          "$y_n$ approche la solution en $x_n = x_0 + nh$. La solution exacte de $y' = y$ avec $y(0) = 1$ est la fonction exponentielle.",
+          "Calcule $x_4 = 0 + 4 \\times 0{,}5$, puis la valeur de $e^x$ en ce point."
+        ],
+        "revoir": "l-primitives-equations-differentielles-058",
+        "solution": "La solution exacte est $x \\mapsto e^x$, et $y_4$ approche sa valeur en $x_4 = 0 + 4 \\times 0{,}5 = 2$, soit $e^2 \\approx 7{,}39$. L'approximation est grossière avec un pas de $0{,}5$ ; elle s'améliore quand le pas diminue."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-012",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-f"],
+    "capacites": ["bo-m-primitives-06", "bo-m-derivation-05"],
+    "titre": "Vérifier une solution particulière",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 501,
+    "source": { "annale": "an-2024-metropole-juin-j1", "adaptation": "question 1 : affirmation 2 du vrai-faux reprise telle quelle ; questions 2 et 3 ajoutées" },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = 5xe^{-x}$. Affirmation : la fonction $f$ est solution sur $\\mathbb{R}$ de l'équation différentielle $(E) : y' + y = 5e^{-x}$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$f'(x) = 5e^{-x} + 5x \\times \\left(-e^{-x}\\right) = 5e^{-x} - 5xe^{-x}$. Donc $f'(x) + f(x) = 5e^{-x} - 5xe^{-x} + 5xe^{-x} = 5e^{-x}$ pour tout réel $x$."
+        },
+        "indices": [
+          "Calcule $f'(x)$ avec la dérivée d'un produit, puis $f'(x) + f(x)$, et compare avec le second membre $5e^{-x}$.",
+          "$f'(x) = 5e^{-x} - 5xe^{-x}$. Ajoute $f(x) = 5xe^{-x}$ : que reste-t-il ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-069",
+        "solution": "$f = uv$ avec $u(x) = 5x$ et $v(x) = e^{-x}$, donc $f'(x) = 5e^{-x} + 5x \\times \\left(-e^{-x}\\right) = 5e^{-x} - 5xe^{-x}$. Alors $f'(x) + f(x) = 5e^{-x} - 5xe^{-x} + 5xe^{-x} = 5e^{-x}$ pour tout réel $x$ : $f$ est solution de $(E)$. L'affirmation est vraie."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Affirmation : la fonction $g : x \\mapsto 2x + 1$ est solution sur $\\mathbb{R}$ de l'équation différentielle $y' = 2y - 4x + 2$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$g'(x) = 2$, alors que $2g(x) - 4x + 2 = 4x + 2 - 4x + 2 = 4$. Les deux membres diffèrent pour tout réel $x$ : $g$ n'est pas solution. En revanche, $x \\mapsto 2x$ en est une."
+        },
+        "indices": [
+          "Calcule séparément le membre de gauche, $g'(x)$, et le membre de droite, $2g(x) - 4x + 2$.",
+          "$g'(x) = 2$. Développe $2(2x + 1) - 4x + 2$ et réduis : obtiens-tu la même chose ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-069",
+        "solution": "$g'(x) = 2$ et $2g(x) - 4x + 2 = 2(2x + 1) - 4x + 2 = 4x + 2 - 4x + 2 = 4$. Comme $2 \\neq 4$, $g$ n'est pas solution de l'équation : l'affirmation est fausse."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On sait que $g$ est une solution particulière sur $\\mathbb{R}$ de l'équation différentielle $(E) : y' = 3y + x^2$. Quelles sont toutes les solutions de $(E)$ sur $\\mathbb{R}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Les fonctions $x \\mapsto Ce^{3x}$, avec $C$ réel",
+            "Les fonctions $x \\mapsto Ce^{3x} + g(x)$, avec $C$ réel",
+            "Les fonctions $x \\mapsto Ce^{3x}g(x)$, avec $C$ réel",
+            "Les fonctions $x \\mapsto g(x) + C$, avec $C$ réel"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Ce sont les solutions de $y' = 3y$, l'équation sans second membre : il manque $g$.",
+            null,
+            "On **ajoute** $g$ aux solutions de $y' = 3y$ ; on ne multiplie pas.",
+            "Ajouter une constante à $g$ ne donne pas une solution : la constante disparaît en dérivant, mais pas dans $3y$."
+          ]
+        },
+        "indices": [
+          "D'après le cours, les solutions de $y' = ay + f$ s'obtiennent à partir des solutions de $y' = ay$ et d'une solution particulière.",
+          "Ici $a = 3$ : les solutions de $y' = 3y$ sont les fonctions $x \\mapsto Ce^{3x}$. Que faut-il leur ajouter ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-066",
+        "solution": "Les solutions de l'équation sans second membre $y' = 3y$ sont les fonctions $x \\mapsto Ce^{3x}$. Comme $g$ est une solution particulière de $(E)$, les solutions de $(E)$ sont les fonctions $x \\mapsto Ce^{3x} + g(x)$, où $C$ est un réel."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-013",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 1,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-f"],
+    "capacites": ["bo-m-primitives-06"],
+    "titre": "Une solution de forme imposée",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 502,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On cherche une solution de l'équation différentielle $(E) : y' = y + 6e^{-x}$ de la forme $g(x) = me^{-x}$, où $m$ est un réel. Que vaut $m$ ?",
+        "reponse": { "type": "numerique", "valeur": -3, "tolerance": 0 },
+        "indices": [
+          "Calcule $g'(x)$, remplace dans l'équation, puis identifie les coefficients de $e^{-x}$ dans les deux membres.",
+          "$g'(x) = -me^{-x}$ et $g(x) + 6e^{-x} = (m + 6)e^{-x}$ : résous $-m = m + 6$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-069",
+        "solution": "$g'(x) = -me^{-x}$ et $g(x) + 6e^{-x} = (m + 6)e^{-x}$. $g$ est solution si et seulement si $-me^{-x} = (m + 6)e^{-x}$ pour tout réel $x$, c'est-à-dire, comme $e^{-x} \\neq 0$, $-m = m + 6$, soit $m = -3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On cherche une solution de l'équation différentielle $(E) : y' = 3y - 6x$ de la forme $g(x) = mx + p$, où $m$ et $p$ sont des réels. Que vaut $m$ ?",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Calcule $g'(x)$ et $3g(x) - 6x$, puis identifie les coefficients de $x$ et les termes constants des deux membres.",
+          "$g'(x) = m$ et $3g(x) - 6x = (3m - 6)x + 3p$. Dans le membre de gauche, le coefficient de $x$ est nul."
+        ],
+        "revoir": "l-primitives-equations-differentielles-070",
+        "solution": "$g'(x) = m$ et $3g(x) - 6x = 3mx + 3p - 6x = (3m - 6)x + 3p$. $g$ est solution si et seulement si $m = (3m - 6)x + 3p$ pour tout réel $x$. On identifie les coefficients de $x$ : $3m - 6 = 0$, soit $m = 2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Avec la même équation $(E) : y' = 3y - 6x$ et la même forme $g(x) = mx + p$, que vaut $p$ ? Donner la valeur exacte, sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "2/3", "tolerance": 0 },
+        "indices": [
+          "Identifie maintenant les termes constants des deux membres de l'égalité $m = (3m - 6)x + 3p$.",
+          "Dans le membre de gauche, le terme constant est $m$ ; dans celui de droite, c'est $3p$. Utilise la valeur de $m$ trouvée à la question 2."
+        ],
+        "revoir": "l-primitives-equations-differentielles-070",
+        "solution": "Les termes constants donnent $3p = m = 2$, soit $p = \\dfrac{2}{3}$. Donc $g(x) = 2x + \\dfrac{2}{3}$. Contrôle : $g'(x) = 2$ et $3\\left(2x + \\dfrac{2}{3}\\right) - 6x = 2$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-014",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-primitive"],
+    "capacites": ["bo-m-primitives-01", "bo-m-derivation-05", "bo-m-logarithme-03"],
+    "titre": "Une primitive de $x\\ln x$, puis son signe",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 111,
+    "preambule": "Soit $f$ la fonction définie sur $]0\\,;\\,+\\infty[$ par $f(x) = x\\ln x$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que la fonction $F$ définie sur $]0\\,;\\,+\\infty[$ par $F(x) = \\dfrac{x^2}{2}\\ln x - \\dfrac{x^2}{4}$ est une primitive de $f$ sur $]0\\,;\\,+\\infty[$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive $F$ et compare avec $f(x)$. Le premier terme est un produit $uv$, avec $u(x) = \\dfrac{x^2}{2}$ et $v(x) = \\ln x$.",
+          "$u'(x) = x$ et $v'(x) = \\dfrac{1}{x}$, donc la dérivée de $\\dfrac{x^2}{2}\\ln x$ est $x\\ln x + \\dfrac{x^2}{2} \\times \\dfrac{1}{x}$.",
+          "Simplifie $\\dfrac{x^2}{2} \\times \\dfrac{1}{x}$, puis ajoute la dérivée de $-\\dfrac{x^2}{4}$ : les termes sans $\\ln$ doivent s'annuler."
+        ],
+        "revoir": "l-primitives-equations-differentielles-011",
+        "solution": "$F$ est dérivable sur $]0\\,;\\,+\\infty[$, comme somme et produit de fonctions dérivables. Pour $x > 0$, la dérivée de $\\dfrac{x^2}{2}\\ln x$ est $x \\times \\ln x + \\dfrac{x^2}{2} \\times \\dfrac{1}{x} = x\\ln x + \\dfrac{x}{2}$, et celle de $-\\dfrac{x^2}{4}$ est $-\\dfrac{2x}{4} = -\\dfrac{x}{2}$. Donc $F'(x) = x\\ln x + \\dfrac{x}{2} - \\dfrac{x}{2} = x\\ln x = f(x)$. Ainsi $F$ est une primitive de $f$ sur $]0\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On note $G$ la primitive de $f$ sur $]0\\,;\\,+\\infty[$ telle que $G(1) = 0$. Elle s'écrit $G(x) = F(x) + C$, où $C$ est un réel. Que vaut $C$ ? Donner la valeur exacte, sous forme de fraction ou d'écriture décimale.",
+        "reponse": { "type": "numerique", "valeur": "1/4", "tolerance": 0 },
+        "indices": [
+          "Toutes les primitives de $f$ s'écrivent $F + C$ : traduis la condition $G(1) = 0$ par une équation d'inconnue $C$.",
+          "$G(1) = \\dfrac{1^2}{2}\\ln 1 - \\dfrac{1^2}{4} + C$. Que vaut $\\ln 1$ ?",
+          "Avec $\\ln 1 = 0$, il reste $G(1) = -\\dfrac{1}{4} + C$ : écris que cette quantité est nulle."
+        ],
+        "revoir": "l-primitives-equations-differentielles-008",
+        "solution": "$G(x) = \\dfrac{x^2}{2}\\ln x - \\dfrac{x^2}{4} + C$. Comme $\\ln 1 = 0$, $G(1) = 0 - \\dfrac{1}{4} + C = C - \\dfrac{1}{4}$. La condition $G(1) = 0$ donne $C = \\dfrac{1}{4}$, donc $G(x) = \\dfrac{x^2}{2}\\ln x - \\dfrac{x^2}{4} + \\dfrac{1}{4}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Étudier le signe de $f(x)$ sur $]0\\,;\\,+\\infty[$, puis en déduire le sens de variation de $G$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$G' = f$ : les variations de $G$ se lisent sur le signe de $f(x) = x\\ln x$, sans utiliser l'expression de $G$.",
+          "Pour $x > 0$, le facteur $x$ est positif : $f(x)$ a le signe de $\\ln x$.",
+          "$\\ln x < 0$ pour $0 < x < 1$ et $\\ln x > 0$ pour $x > 1$ : dresse le tableau de signes de $f$, puis le tableau de variations de $G$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-013",
+        "solution": "Pour $x > 0$, $f(x) = x\\ln x$ a le signe de $\\ln x$ : $f(x) < 0$ sur $]0\\,;\\,1[$, $f(1) = 0$ et $f(x) > 0$ sur $]1\\,;\\,+\\infty[$. Or $G$ est une primitive de $f$, donc $G' = f$. Ainsi $G$ est strictement décroissante sur $]0\\,;\\,1]$ et strictement croissante sur $[1\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire que, pour tout réel $x > 0$, $G(x) \\geqslant 0$. Écrire ensuite cette inégalité avec l'expression de $G(x)$ obtenue à la question 2.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Utilise le tableau de variations de $G$ obtenu à la question 3 : où $G$ atteint-elle son minimum ?",
+          "$G$ décroît sur $]0\\,;\\,1]$ puis croît sur $[1\\,;\\,+\\infty[$ : son minimum sur $]0\\,;\\,+\\infty[$ est atteint en $1$.",
+          "La valeur de ce minimum est donnée par la condition qui définit $G$ : conclus avec $G(x) \\geqslant G(1)$, puis remplace $G(x)$ par son expression."
+        ],
+        "revoir": "l-primitives-equations-differentielles-013",
+        "solution": "D'après la question 3, $G$ admet sur $]0\\,;\\,+\\infty[$ un minimum en $x = 1$, égal à $G(1) = 0$. Donc, pour tout réel $x > 0$, $G(x) \\geqslant G(1) = 0$, c'est-à-dire $\\dfrac{x^2}{2}\\ln x - \\dfrac{x^2}{4} + \\dfrac{1}{4} \\geqslant 0$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-015",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-primitive"],
+    "capacites": ["bo-m-primitives-01", "bo-m-derivation-05"],
+    "titre": "Trouver les coefficients d'une primitive",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 112,
+    "source": { "annale": "an-2024-asie-j1", "adaptation": "forme $(ax + b)e^{-x+1}$ de la primitive reprise, avec une fonction $f$ choisie ici ; question 4 ajoutée" },
+    "preambule": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = (3 - x)e^{-x + 1}$. On cherche deux réels $a$ et $b$ tels que la fonction $F$ définie sur $\\mathbb{R}$ par $F(x) = (ax + b)e^{-x + 1}$ soit une primitive de $f$ sur $\\mathbb{R}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que, pour tout réel $x$, $F'(x) = (-ax + a - b)e^{-x + 1}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$F$ est un produit $uv$ : dérive-le avec $(uv)' = u'v + uv'$.",
+          "$u(x) = ax + b$ et $u'(x) = a$ ; $v(x) = e^{-x + 1}$ et $v'(x) = -e^{-x + 1}$, car la dérivée de $e^{u}$ est $u'e^{u}$.",
+          "Tu obtiens $F'(x) = ae^{-x + 1} - (ax + b)e^{-x + 1}$ : mets $e^{-x + 1}$ en facteur, puis range le facteur."
+        ],
+        "revoir": "l-primitives-equations-differentielles-012",
+        "solution": "$F = uv$ avec $u(x) = ax + b$, $u'(x) = a$, $v(x) = e^{-x + 1}$ et $v'(x) = -e^{-x + 1}$. Donc, pour tout réel $x$, $F'(x) = ae^{-x + 1} + (ax + b) \\times \\left(-e^{-x + 1}\\right) = (a - ax - b)e^{-x + 1} = (-ax + a - b)e^{-x + 1}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire la valeur de $a$.",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "$F$ est une primitive de $f$ si $F'(x) = f(x)$ pour tout réel $x$. Comme $e^{-x + 1} > 0$, tu peux simplifier par $e^{-x + 1}$.",
+          "Il reste $-ax + (a - b) = -x + 3$ pour tout réel $x$ : deux expressions affines égales pour tout $x$ ont les mêmes coefficients.",
+          "Le coefficient de $x$ vaut $-a$ dans le membre de gauche ; quel est-il dans $3 - x$ ? Écris l'égalité de ces coefficients."
+        ],
+        "revoir": "l-primitives-equations-differentielles-012",
+        "solution": "$F$ est une primitive de $f$ si et seulement si, pour tout réel $x$, $(-ax + a - b)e^{-x + 1} = (3 - x)e^{-x + 1}$, c'est-à-dire, en divisant par $e^{-x + 1} > 0$, $-ax + (a - b) = -x + 3$. On identifie les coefficients de $x$ : $-a = -1$, donc $a = 1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire la valeur de $b$.",
+        "reponse": { "type": "numerique", "valeur": -2, "tolerance": 0 },
+        "indices": [
+          "Identifie maintenant les termes constants des deux membres de $-ax + (a - b) = -x + 3$.",
+          "Tu obtiens $a - b = 3$, avec la valeur de $a$ trouvée à la question 2.",
+          "Isole $b$ dans $a - b = 3$, puis remplace $a$ par sa valeur."
+        ],
+        "revoir": "l-primitives-equations-differentielles-012",
+        "solution": "Les termes constants donnent $a - b = 3$, donc $b = a - 3 = 1 - 3 = -2$. Contrôle : avec $F(x) = (x - 2)e^{-x + 1}$, on trouve $F'(x) = e^{-x + 1} - (x - 2)e^{-x + 1} = (3 - x)e^{-x + 1} = f(x)$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "La primitive $G$ de $f$ sur $\\mathbb{R}$ telle que $G(1) = 4$ s'écrit $G(x) = F(x) + C$, où $F$ est la primitive trouvée aux questions 2 et 3, et $C$ un réel. Que vaut $C$ ?",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "Les primitives de $f$ sont les fonctions $F + C$ : écris la condition $G(1) = 4$.",
+          "$G(1) = F(1) + C$, avec $F(x) = (ax + b)e^{-x + 1}$ et les valeurs de $a$ et $b$ trouvées. Pour $x = 1$, calcule d'abord l'exposant $-1 + 1$, puis l'exponentielle.",
+          "$e^{0}$ vaut $1$, et non $0$ : simplifie $G(1)$, puis résous l'équation $G(1) = 4$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-011",
+        "solution": "Les primitives de $f$ sont les fonctions $x \\mapsto (x - 2)e^{-x + 1} + C$, $C$ réel. $G(1) = (1 - 2)e^{0} + C = -1 + C$, et la condition $G(1) = 4$ donne $C = 5$. Donc $G(x) = (x - 2)e^{-x + 1} + 5$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-016",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-primitive"],
+    "capacites": ["bo-m-primitives-01", "bo-m-logarithme-06", "bo-m-logarithme-03"],
+    "titre": "Le sens de variation d'une primitive, puis son maximum",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 113,
+    "preambule": "Soit $f$ la fonction définie sur $]0\\,;\\,+\\infty[$ par $f(x) = 2 - \\ln x$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étudier le signe de $f(x)$ sur $]0\\,;\\,+\\infty[$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Résous l'inéquation $2 - \\ln x > 0$ : isole $\\ln x$, puis passe à l'exponentielle.",
+          "$2 - \\ln x > 0 \\iff \\ln x < 2$. L'exponentielle est strictement croissante : elle conserve le sens de l'inégalité.",
+          "$\\ln x < 2 \\iff x < e^2$. Fais de même pour $f(x) < 0$, et donne la valeur où $f$ s'annule."
+        ],
+        "revoir": "l-logarithme-026",
+        "solution": "Pour $x > 0$ : $f(x) > 0 \\iff \\ln x < 2 \\iff x < e^2$, car l'exponentielle est strictement croissante et $e^{\\ln x} = x$. De même, $f(x) < 0 \\iff x > e^2$, et $f\\left(e^2\\right) = 2 - 2 = 0$. Donc $f(x) > 0$ sur $\\left]0\\,;\\,e^2\\right[$ et $f(x) < 0$ sur $\\left]e^2\\,;\\,+\\infty\\right[$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $F$ une primitive quelconque de $f$ sur $]0\\,;\\,+\\infty[$. Sans calculer $F$, donner son sens de variation.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$F' = f$ : utilise le signe de $f$ trouvé à la question 1.",
+          "Là où $f > 0$, $F$ est strictement croissante ; là où $f < 0$, elle est strictement décroissante.",
+          "Conclus en précisant en quelle abscisse $F$ admet un maximum, quelle que soit la primitive choisie."
+        ],
+        "revoir": "l-primitives-equations-differentielles-013",
+        "solution": "$F$ est dérivable sur $]0\\,;\\,+\\infty[$ et $F' = f$. D'après la question 1, $F$ est strictement croissante sur $\\left]0\\,;\\,e^2\\right]$ et strictement décroissante sur $\\left[e^2\\,;\\,+\\infty\\right[$ : toute primitive de $f$ admet un maximum en $x = e^2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vérifier que la fonction $G : x \\mapsto 3x - x\\ln x$ est une primitive de $f$ sur $]0\\,;\\,+\\infty[$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive $G$ : le terme $x\\ln x$ est un produit.",
+          "La dérivée de $x\\ln x$ est $1 \\times \\ln x + x \\times \\dfrac{1}{x} = \\ln x + 1$.",
+          "Donc $G'(x) = 3 - (\\ln x + 1)$ : simplifie, puis compare avec $f(x)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-011",
+        "solution": "$G$ est dérivable sur $]0\\,;\\,+\\infty[$ et $G'(x) = 3 - \\left(1 \\times \\ln x + x \\times \\dfrac{1}{x}\\right) = 3 - \\ln x - 1 = 2 - \\ln x = f(x)$. Donc $G$ est une primitive de $f$ sur $]0\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Soit $H$ la primitive de $f$ sur $]0\\,;\\,+\\infty[$ telle que $H(1) = 0$. Calculer le maximum de $H$ : donner sa valeur exacte, puis sa valeur arrondie à $10^{-2}$. Saisir la valeur arrondie.",
+        "reponse": { "type": "numerique", "valeur": 4.39, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "$H$ s'écrit $G + C$ : la condition $H(1) = 0$ fixe la constante $C$.",
+          "$G(1) = 3 - 1 \\times \\ln 1$, avec $\\ln 1 = 0$. Écris $H(1) = G(1) + C = 0$ et déduis $C$.",
+          "D'après la question 2, le maximum de $H$ est atteint en $x = e^2$ : calcule $H\\left(e^2\\right)$ avec $\\ln\\left(e^2\\right) = 2$.",
+          "$H\\left(e^2\\right) = 3e^2 - 2e^2 + C$ : simplifie, puis utilise la calculatrice."
+        ],
+        "revoir": "l-primitives-equations-differentielles-008",
+        "solution": "$H = G + C$ et $H(1) = 3 - 0 + C = 3 + C$ ; la condition $H(1) = 0$ donne $C = -3$, donc $H(x) = 3x - x\\ln x - 3$. D'après la question 2, $H$ atteint son maximum en $x = e^2$ : $H\\left(e^2\\right) = 3e^2 - e^2 \\times 2 - 3 = e^2 - 3$. Le maximum de $H$ vaut $e^2 - 3 \\approx 4{,}39$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-017",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-calcul"],
+    "capacites": ["bo-m-primitives-04", "bo-m-primitives-02", "bo-m-trigonometrie-01"],
+    "titre": "Choisir la bonne forme composée",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 211,
+    "preambule": "Pour chaque fonction, déterminer une primitive sur l'intervalle $I$ indiqué, puis la contrôler en dérivant.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "$f(x) = (2x - 3)\\left(x^2 - 3x + 1\\right)^4$, sur $I = \\mathbb{R}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Cherche une fonction $u$ « à l'intérieur » dont la dérivée apparaît en facteur : ici, la parenthèse élevée à la puissance $4$.",
+          "Avec $u(x) = x^2 - 3x + 1$, on a $u'(x) = 2x - 3$ : $f = u'u^4$, c'est la forme $u'u^n$ avec $n = 4$.",
+          "Une primitive de $u'u^n$ est $\\dfrac{u^{n+1}}{n+1}$ : écris-la avec $n = 4$, puis dérive pour contrôler."
+        ],
+        "revoir": "l-primitives-equations-differentielles-024",
+        "solution": "Avec $u(x) = x^2 - 3x + 1$, on a $u'(x) = 2x - 3$, donc $f = u'u^4$. Une primitive de $u'u^4$ est $\\dfrac{u^5}{5}$. Donc $F(x) = \\dfrac{\\left(x^2 - 3x + 1\\right)^5}{5}$ est une primitive de $f$ sur $\\mathbb{R}$. Contrôle : $F'(x) = \\dfrac{5(2x - 3)\\left(x^2 - 3x + 1\\right)^4}{5} = f(x)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "$g(x) = \\dfrac{e^x}{\\left(e^x + 1\\right)^2}$, sur $I = \\mathbb{R}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Le dénominateur est un carré : pense à la forme $\\dfrac{u'}{u^2}$, dont une primitive est $-\\dfrac{1}{u}$.",
+          "Avec $u(x) = e^x + 1$, qui ne s'annule pas, on a $u'(x) = e^x$ : $g = \\dfrac{u'}{u^2}$ exactement.",
+          "Écris $-\\dfrac{1}{u}$ avec ce $u$, puis contrôle avec $\\left(\\dfrac{1}{u}\\right)' = -\\dfrac{u'}{u^2}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-022",
+        "solution": "Avec $u(x) = e^x + 1$, on a $u(x) > 0$ et $u'(x) = e^x$, donc $g = \\dfrac{u'}{u^2}$ : c'est la forme $u'u^n$ avec $n = -2$, dont une primitive est $\\dfrac{u^{-1}}{-1} = -\\dfrac{1}{u}$. Donc $G(x) = -\\dfrac{1}{e^x + 1}$ est une primitive de $g$ sur $\\mathbb{R}$. Contrôle : $G'(x) = -\\left(-\\dfrac{e^x}{\\left(e^x + 1\\right)^2}\\right) = g(x)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "$h(x) = \\cos(x)e^{\\sin(x)}$, sur $I = \\mathbb{R}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Une exponentielle d'une fonction : pense à la forme $u'e^{u}$.",
+          "Avec $u(x) = \\sin(x)$, on a $u'(x) = \\cos(x)$ : le facteur $u'$ est déjà là.",
+          "Une primitive de $u'e^{u}$ est $e^{u}$ : écris-la, puis dérive-la avec $\\left(e^{u}\\right)' = u'e^{u}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-022",
+        "solution": "Avec $u(x) = \\sin(x)$ et $u'(x) = \\cos(x)$ : $h = u'e^{u}$. Une primitive de $u'e^{u}$ est $e^{u}$, donc $H(x) = e^{\\sin(x)}$ est une primitive de $h$ sur $\\mathbb{R}$. Contrôle : $H'(x) = \\cos(x)e^{\\sin(x)} = h(x)$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "$k(x) = \\dfrac{\\ln x}{x}$, sur $I = \\,]0\\,;\\,+\\infty[$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Écris $k(x) = \\dfrac{1}{x} \\times \\ln x$ : reconnais-tu la dérivée de $\\ln x$ en facteur ?",
+          "Avec $u(x) = \\ln x$, on a $u'(x) = \\dfrac{1}{x}$ : $k = u'u$, c'est la forme $u'u^n$ avec $n = 1$.",
+          "Une primitive de $u'u^n$ est $\\dfrac{u^{n+1}}{n+1}$ : écris-la avec $n = 1$, puis contrôle en dérivant."
+        ],
+        "revoir": "l-primitives-equations-differentielles-024",
+        "solution": "Avec $u(x) = \\ln x$ et $u'(x) = \\dfrac{1}{x}$ : $k = u'u$. Une primitive de $u'u^1$ est $\\dfrac{u^2}{2}$, donc $K(x) = \\dfrac{(\\ln x)^2}{2}$ est une primitive de $k$ sur $]0\\,;\\,+\\infty[$. Contrôle : $K'(x) = \\dfrac{2 \\times \\frac{1}{x} \\times \\ln x}{2} = \\dfrac{\\ln x}{x}$.",
+        "erreurFrequente": "Répondre $\\ln(\\ln x)$ : c'est une primitive de $\\dfrac{1}{x\\ln x}$ (forme $\\dfrac{u'}{u}$), pas de $\\dfrac{\\ln x}{x}$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-018",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-calcul", "n-primitives-equations-differentielles-primitive"],
+    "capacites": ["bo-m-primitives-04", "bo-m-primitives-02", "bo-m-primitives-01"],
+    "titre": "Des primitives sous condition",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 212,
+    "source": { "annale": "an-2022-etrangers-j2", "adaptation": "question 1 : fonction et condition du QCM reprises, posées en question ouverte ; questions 2 et 3 ajoutées" },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = e^{2x + 1}$. Déterminer la primitive $F$ de $f$ sur $\\mathbb{R}$ telle que $F(0) = 1$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Cas affine : une primitive de $x \\mapsto e^{ax + b}$ s'obtient en divisant $e^{ax + b}$ par $a$.",
+          "Une primitive de $f$ est $x \\mapsto \\dfrac{1}{2}e^{2x + 1}$ ; les autres s'écrivent $F(x) = \\dfrac{1}{2}e^{2x + 1} + C$.",
+          "En $0$, l'exposant vaut $1$ : $F(0) = \\dfrac{1}{2}e + C$. Écris $F(0) = 1$, puis isole $C$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-022",
+        "solution": "Une primitive de $x \\mapsto e^{2x + 1}$ est $x \\mapsto \\dfrac{1}{2}e^{2x + 1}$, car sa dérivée est $\\dfrac{1}{2} \\times 2e^{2x + 1} = e^{2x + 1}$. Donc $F(x) = \\dfrac{1}{2}e^{2x + 1} + C$, avec $C$ réel. Or $F(0) = \\dfrac{e}{2} + C$, et $F(0) = 1$ donne $C = 1 - \\dfrac{e}{2}$. Ainsi $F(x) = \\dfrac{1}{2}e^{2x + 1} + 1 - \\dfrac{e}{2}$.",
+        "erreurFrequente": "Écrire $F(0) = \\dfrac{1}{2} + C$ : en $0$, l'exposant vaut $2 \\times 0 + 1 = 1$, et $e^1 = e$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $g$ la fonction définie sur $\\mathbb{R}$ par $g(x) = \\dfrac{x}{\\sqrt{x^2 + 9}}$, et $G$ la primitive de $g$ sur $\\mathbb{R}$ telle que $G(4) = 1$. Calculer $G(0)$.",
+        "reponse": { "type": "numerique", "valeur": -1, "tolerance": 0 },
+        "indices": [
+          "Pense à la forme $\\dfrac{u'}{\\sqrt{u}}$, dont une primitive est $2\\sqrt{u}$, avec $u(x) = x^2 + 9 > 0$.",
+          "$u'(x) = 2x$, donc $g(x) = \\dfrac{1}{2} \\times \\dfrac{2x}{\\sqrt{x^2 + 9}}$, et une primitive de $g$ est $\\sqrt{x^2 + 9}$.",
+          "Écris $G(x) = \\sqrt{x^2 + 9} + C$, calcule $G(4)$ avec $\\sqrt{25}$, déduis $C$, puis calcule $G(0)$ avec $\\sqrt{9}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-023",
+        "solution": "Avec $u(x) = x^2 + 9 > 0$ et $u'(x) = 2x$ : $g(x) = \\dfrac{1}{2} \\times \\dfrac{u'(x)}{\\sqrt{u(x)}}$, qui a pour primitive $\\dfrac{1}{2} \\times 2\\sqrt{u(x)} = \\sqrt{x^2 + 9}$. Donc $G(x) = \\sqrt{x^2 + 9} + C$. Or $G(4) = \\sqrt{25} + C = 5 + C$, et $G(4) = 1$ donne $C = -4$. Ainsi $G(0) = \\sqrt{9} - 4 = 3 - 4 = -1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $h$ la fonction définie sur $]1\\,;\\,+\\infty[$ par $h(x) = \\dfrac{1}{x\\ln x}$, et $H$ la primitive de $h$ sur $]1\\,;\\,+\\infty[$ telle que $H(e) = 1$. Calculer $H\\left(e^{e}\\right)$.",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Écris $h(x) = \\dfrac{\\frac{1}{x}}{\\ln x}$ : c'est la forme $\\dfrac{u'}{u}$, avec $u(x) = \\ln x$.",
+          "Sur $]1\\,;\\,+\\infty[$, $u(x) = \\ln x > 0$ : une primitive de $h$ est $x \\mapsto \\ln(\\ln x)$, donc $H(x) = \\ln(\\ln x) + C$.",
+          "$H(e) = \\ln(\\ln e) + C = \\ln 1 + C$ : déduis $C$ de la condition $H(e) = 1$.",
+          "Pour $x = e^{e}$ : $\\ln\\left(e^{e}\\right) = e$, puis $\\ln(e) = 1$. Assemble les morceaux."
+        ],
+        "revoir": "l-primitives-equations-differentielles-022",
+        "solution": "Avec $u(x) = \\ln x$ : $u'(x) = \\dfrac{1}{x}$ et $h = \\dfrac{u'}{u}$. Sur $]1\\,;\\,+\\infty[$, $\\ln x > 0$ : une primitive de $h$ est $\\ln(u) = \\ln(\\ln x)$. Donc $H(x) = \\ln(\\ln x) + C$. Or $H(e) = \\ln(1) + C = C$, et $H(e) = 1$ donne $C = 1$. Ainsi $H\\left(e^{e}\\right) = \\ln\\left(\\ln\\left(e^{e}\\right)\\right) + 1 = \\ln(e) + 1 = 1 + 1 = 2$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-019",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-equation-ay"],
+    "capacites": ["bo-m-primitives-03"],
+    "titre": "Résoudre, puis passer par un point",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 311,
+    "preambule": "On considère l'équation différentielle $(E) : 2y' + 3y = 0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Résoudre l'équation $(E)$ sur $\\mathbb{R}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Mets $(E)$ sous la forme $y' = ay$ en isolant $y'$.",
+          "$2y' + 3y = 0 \\iff 2y' = -3y$ : divise par $2$.",
+          "Avec $a = -\\dfrac{3}{2} = -1{,}5$, écris les solutions $x \\mapsto Ce^{ax}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-038",
+        "solution": "$2y' + 3y = 0 \\iff 2y' = -3y \\iff y' = -1{,}5y$. C'est la forme $y' = ay$ avec $a = -1{,}5$. Les solutions de $(E)$ sur $\\mathbb{R}$ sont donc les fonctions $x \\mapsto Ce^{-1{,}5x}$, où $C$ est un réel."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer la solution $f$ de $(E)$ telle que $f(2) = 1$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Remplace $x$ par $2$ dans $Ce^{-1{,}5x}$ : la condition donne une équation d'inconnue $C$.",
+          "$Ce^{-3} = 1$ : multiplie les deux membres par $e^{3}$.",
+          "$C = e^{3}$. Écris $f(x) = e^{3}e^{-1{,}5x}$ avec une seule exponentielle, grâce à $e^{a}e^{b} = e^{a + b}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-037",
+        "solution": "$f(x) = Ce^{-1{,}5x}$ et $f(2) = Ce^{-3}$. La condition $f(2) = 1$ donne $C = \\dfrac{1}{e^{-3}} = e^{3}$. Donc $f(x) = e^{3}e^{-1{,}5x} = e^{3 - 1{,}5x}$.",
+        "erreurFrequente": "Écrire $C = 1$, comme si la condition était donnée en $0$ : ici elle est donnée en $2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Résoudre l'équation $f(x) = e$. Donner la solution sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "4/3", "tolerance": 0 },
+        "indices": [
+          "Écris $e = e^{1}$ : deux exponentielles sont égales si et seulement si leurs exposants sont égaux.",
+          "$e^{3 - 1{,}5x} = e^{1} \\iff 3 - 1{,}5x = 1$.",
+          "Isole $x$ : $1{,}5x = 2$, puis divise par $1{,}5$, c'est-à-dire par $\\dfrac{3}{2}$."
+        ],
+        "revoir": "l-logarithme-024",
+        "solution": "$f(x) = e \\iff e^{3 - 1{,}5x} = e^{1} \\iff 3 - 1{,}5x = 1 \\iff 1{,}5x = 2 \\iff x = \\dfrac{2}{1{,}5} = \\dfrac{4}{3}$. L'unique solution est $x = \\dfrac{4}{3}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Déterminer une équation de la tangente à la courbe de $f$ au point d'abscisse $2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Une équation de la tangente en $2$ est $y = f'(2)(x - 2) + f(2)$, et tu connais déjà $f(2)$.",
+          "Pas besoin de dériver l'expression : $f$ est solution de $(E)$, donc $f'(x) = -1{,}5f(x)$ pour tout réel $x$.",
+          "$f'(2) = -1{,}5 \\times f(2)$ : remplace dans l'équation de la tangente, puis développe."
+        ],
+        "revoir": "l-derivation-convexite-044",
+        "solution": "$f$ est solution de $(E)$, donc $f'(2) = -1{,}5f(2) = -1{,}5 \\times 1 = -1{,}5$. Une équation de la tangente au point d'abscisse $2$ est $y = f'(2)(x - 2) + f(2)$, soit $y = -1{,}5(x - 2) + 1$, c'est-à-dire $y = -1{,}5x + 4$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-020",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-equation-ay"],
+    "capacites": ["bo-m-primitives-03", "bo-m-limites-fonctions-02", "bo-m-derivation-03"],
+    "titre": "Étudier une solution : variations, limites, convexité",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 312,
+    "source": { "annale": "an-2021-polynesie", "adaptation": "question de convexité reprise ; équation, condition initiale et autres questions choisies ici" },
+    "preambule": "On note $f$ la solution sur $\\mathbb{R}$ de l'équation différentielle $y' = -0{,}5y$ telle que $f(0) = -4$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer l'expression de $f(x)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Les solutions de $y' = ay$ sont les fonctions $x \\mapsto Ce^{ax}$ ; ici $a = -0{,}5$.",
+          "$f(0) = Ce^{0}$ : que vaut $e^0$ ?",
+          "La condition $f(0) = -4$ donne directement $C$ : écris $f(x)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-038",
+        "solution": "Les solutions de $y' = -0{,}5y$ sont les fonctions $x \\mapsto Ce^{-0{,}5x}$, $C$ réel. Or $f(0) = Ce^{0} = C$, donc $C = -4$ et $f(x) = -4e^{-0{,}5x}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Étudier le sens de variation de $f$ sur $\\mathbb{R}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f$ est solution de l'équation, donc $f'(x) = -0{,}5f(x)$ : tu peux calculer $f'(x)$ sans dériver.",
+          "$f'(x) = -0{,}5 \\times \\left(-4e^{-0{,}5x}\\right)$ : simplifie.",
+          "Quel est le signe de $e^{-0{,}5x}$ ? Conclus sur le signe de $f'(x)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-040",
+        "solution": "$f'(x) = -0{,}5f(x) = -0{,}5 \\times \\left(-4e^{-0{,}5x}\\right) = 2e^{-0{,}5x}$. Comme $e^{-0{,}5x} > 0$, $f'(x) > 0$ pour tout réel $x$ : $f$ est strictement croissante sur $\\mathbb{R}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer les limites de $f$ en $-\\infty$ et en $+\\infty$, et interpréter graphiquement l'une d'elles.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Étudie d'abord la limite de l'exposant $-0{,}5x$, puis celle de $e^{-0{,}5x}$ : c'est une limite de composée.",
+          "En $+\\infty$, $-0{,}5x$ tend vers $-\\infty$, donc $e^{-0{,}5x}$ tend vers $0$. En $-\\infty$, $-0{,}5x$ tend vers $+\\infty$.",
+          "Multiplie par $-4 < 0$ : attention au signe de la limite infinie. Une limite finie en $+\\infty$ donne une asymptote horizontale."
+        ],
+        "revoir": "l-primitives-equations-differentielles-042",
+        "solution": "Quand $x$ tend vers $+\\infty$, $-0{,}5x$ tend vers $-\\infty$, donc $e^{-0{,}5x}$ tend vers $0$ et $\\lim\\limits_{x \\to +\\infty} f(x) = 0$ : l'axe des abscisses est asymptote à la courbe de $f$ en $+\\infty$. Quand $x$ tend vers $-\\infty$, $-0{,}5x$ tend vers $+\\infty$, donc $e^{-0{,}5x}$ tend vers $+\\infty$ et, comme $-4 < 0$, $\\lim\\limits_{x \\to -\\infty} f(x) = -\\infty$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Peut-on affirmer que $f$ est convexe sur $\\mathbb{R}$ ? Justifier.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f$ est convexe sur un intervalle où $f''(x) \\geqslant 0$. Calcule $f''$ en dérivant $f'(x) = 2e^{-0{,}5x}$.",
+          "$f''(x) = 2 \\times (-0{,}5)e^{-0{,}5x}$ : simplifie.",
+          "Étudie le signe de $f''(x)$ : la fonction est-elle convexe ou concave ?"
+        ],
+        "revoir": "l-derivation-convexite-037",
+        "solution": "$f'(x) = 2e^{-0{,}5x}$, donc $f''(x) = 2 \\times (-0{,}5)e^{-0{,}5x} = -e^{-0{,}5x} < 0$ pour tout réel $x$. Ainsi $f$ est concave sur $\\mathbb{R}$ : on ne peut pas affirmer qu'elle est convexe, elle ne l'est sur aucun intervalle."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-021",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-equation-ay"],
+    "capacites": ["bo-m-primitives-03", "bo-m-logarithme-07"],
+    "titre": "Un médicament qui s'élimine",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 313,
+    "preambule": "On injecte à un patient une dose de $50$ mg d'un médicament. On note $Q(t)$ la quantité de médicament dans son sang, en milligrammes, $t$ heures après l'injection. On admet que $Q$ est la solution sur $[0\\,;\\,+\\infty[$ de l'équation différentielle $y' = -0{,}2y$ telle que $Q(0) = 50$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer $Q(t)$ pour tout $t \\geqslant 0$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "C'est la forme $y' = ay$, avec $a = -0{,}2$ : écris les solutions.",
+          "Les solutions sont les fonctions $t \\mapsto Ce^{-0{,}2t}$. La condition initiale est donnée en $t = 0$.",
+          "$Q(0) = Ce^0 = C$ : conclus avec la dose injectée."
+        ],
+        "revoir": "l-primitives-equations-differentielles-038",
+        "solution": "Les solutions de $y' = -0{,}2y$ sont les fonctions $t \\mapsto Ce^{-0{,}2t}$, $C$ réel. Or $Q(0) = C$ et $Q(0) = 50$, donc $Q(t) = 50e^{-0{,}2t}$ pour tout $t \\geqslant 0$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer la quantité de médicament dans le sang $3$ heures après l'injection, en milligrammes, arrondie à $10^{-2}$.",
+        "reponse": { "type": "numerique", "valeur": 27.44, "tolerance": 0.01, "unite": "mg", "decimales": 2 },
+        "indices": [
+          "Remplace $t$ par $3$ dans l'expression de $Q(t)$.",
+          "$Q(3) = 50e^{-0{,}2 \\times 3}$ : calcule d'abord l'exposant.",
+          "Calcule $e^{-0{,}6}$ à la calculatrice, puis multiplie par $50$ et arrondis."
+        ],
+        "revoir": "l-primitives-equations-differentielles-037",
+        "solution": "$Q(3) = 50e^{-0{,}2 \\times 3} = 50e^{-0{,}6} \\approx 27{,}44$. Au bout de $3$ heures, il reste environ $27{,}44$ mg de médicament dans le sang."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Au bout de combien de temps la quantité de médicament a-t-elle diminué de moitié ? Donner la valeur exacte, puis l'arrondi au centième d'heure. Saisir l'arrondi.",
+        "reponse": { "type": "numerique", "valeur": 3.47, "tolerance": 0.01, "unite": "h", "decimales": 2 },
+        "indices": [
+          "La quantité a diminué de moitié quand $Q(t) = 25$ : écris cette équation.",
+          "$50e^{-0{,}2t} = 25 \\iff e^{-0{,}2t} = \\dfrac{1}{2}$ : passe au logarithme.",
+          "$-0{,}2t = \\ln\\dfrac{1}{2} = -\\ln 2$ : isole $t$, puis arrondis."
+        ],
+        "revoir": "l-primitives-equations-differentielles-037",
+        "solution": "$Q(t) = 25 \\iff 50e^{-0{,}2t} = 25 \\iff e^{-0{,}2t} = \\dfrac{1}{2} \\iff -0{,}2t = \\ln\\dfrac{1}{2} = -\\ln 2 \\iff t = \\dfrac{\\ln 2}{0{,}2} = 5\\ln 2$. Or $5\\ln 2 \\approx 3{,}47$ : la quantité a diminué de moitié au bout d'environ $3{,}47$ heures, soit environ $3$ h $28$ min."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Le médicament n'agit plus quand il en reste moins de $5$ mg. À partir de combien d'heures entières après l'injection n'agit-il plus ?",
+        "reponse": { "type": "numerique", "valeur": 12, "tolerance": 0, "unite": "h" },
+        "indices": [
+          "Résous l'inéquation $Q(t) < 5$ : isole l'exponentielle, puis passe au logarithme.",
+          "$50e^{-0{,}2t} < 5 \\iff e^{-0{,}2t} < 0{,}1 \\iff -0{,}2t < \\ln(0{,}1)$, car $\\ln$ est strictement croissante.",
+          "Divise par $-0{,}2$, qui est négatif : le sens de l'inégalité change. Calcule la valeur obtenue, puis prends le premier entier qui convient."
+        ],
+        "revoir": "l-logarithme-026",
+        "solution": "$Q(t) < 5 \\iff e^{-0{,}2t} < 0{,}1 \\iff -0{,}2t < \\ln(0{,}1) \\iff t > \\dfrac{\\ln(0{,}1)}{-0{,}2} = 5\\ln 10$, car on divise par $-0{,}2 < 0$. Or $5\\ln 10 \\approx 11{,}51$ : le médicament n'agit plus à partir de $12$ heures après l'injection.",
+        "erreurFrequente": "Oublier de changer le sens de l'inégalité en divisant par $-0{,}2$ : on trouverait $t < 11{,}51$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-022",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-b"],
+    "capacites": ["bo-m-primitives-05"],
+    "titre": "Résoudre $y' = ay + b$ sous toutes ses formes",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 411,
+    "source": { "annale": "an-2025-metropole-septembre-j2", "adaptation": "question 4 : affirmation du vrai-faux reprise telle quelle ; questions 1 à 3 ajoutées" },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Résoudre sur $\\mathbb{R}$ l'équation différentielle $(E) : 2y' + y = 4$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Mets d'abord $(E)$ sous la forme $y' = ay + b$ : isole $y'$, puis divise par son coefficient.",
+          "$2y' = -y + 4$, donc $y' = -0{,}5y + 2$. Cherche la solution constante $k$ : $0 = -0{,}5k + 2$.",
+          "Écris les solutions $x \\mapsto Ce^{ax} + k$, avec $a = -0{,}5$ et la valeur de $k$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "$2y' + y = 4 \\iff 2y' = -y + 4 \\iff y' = -0{,}5y + 2$. La solution constante vérifie $0 = -0{,}5k + 2$, soit $k = 4$. Les solutions de $y' = -0{,}5y$ sont les fonctions $x \\mapsto Ce^{-0{,}5x}$ ; celles de $(E)$ sont donc les fonctions $x \\mapsto Ce^{-0{,}5x} + 4$, où $C$ est un réel.",
+        "erreurFrequente": "Lire $a = -1$ sans diviser par le coefficient de $y'$ : l'exponentielle serait $e^{-x}$ au lieu de $e^{-0{,}5x}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer la solution $f$ de $(E)$ telle que $f(2) = 5$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Remplace $x$ par $2$ dans $Ce^{-0{,}5x} + 4$ et écris la condition.",
+          "$f(2) = Ce^{-1} + 4 = 5$, donc $Ce^{-1} = 1$.",
+          "Multiplie par $e$ pour trouver $C$, puis écris $f(x)$ avec une seule exponentielle."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "$f(x) = Ce^{-0{,}5x} + 4$ et $f(2) = Ce^{-1} + 4$. La condition $f(2) = 5$ donne $Ce^{-1} = 1$, soit $C = e$. Donc $f(x) = e \\times e^{-0{,}5x} + 4 = e^{1 - 0{,}5x} + 4$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On sait que les solutions d'une équation différentielle $y' = ay + b$ sont les fonctions $x \\mapsto Ce^{-2x} + 3$, avec $C$ réel. Que vaut $b$ ?",
+        "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+        "indices": [
+          "Lis $a$ dans l'exponentielle, et la solution constante dans le terme ajouté.",
+          "$a = -2$ et la solution constante vaut $3$ : elle vérifie $0 = ak + b$.",
+          "Remplace $a$ et $k$ par leurs valeurs dans $0 = ak + b$, puis isole $b$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-050",
+        "solution": "Les solutions de $y' = ay + b$ sont les fonctions $x \\mapsto Ce^{ax} + k$, où $k$ est la solution constante. Ici $a = -2$ et $k = 3$. Or $k$ vérifie $0 = ak + b$, donc $b = -ak = -(-2) \\times 3 = 6$. Contrôle : la constante $3$ vérifie bien $0 = -2 \\times 3 + 6$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On considère la fonction $g$ définie sur $\\mathbb{R}$ par $g(t) = 45e^{0{,}06t} + 20$. Affirmation : la fonction $g$ est l'unique solution de l'équation différentielle $(E_1) : y' + 0{,}06y = 1{,}2$ vérifiant $g(0) = 65$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$(E_1)$ s'écrit $y' = -0{,}06y + 1{,}2$ ; sa solution constante vérifie $0 = -0{,}06k + 1{,}2$, soit $k = 20$. Ses solutions sont les fonctions $t \\mapsto Ce^{-0{,}06t} + 20$, et la condition en $0$ donne $C = 45$ : la solution cherchée est $t \\mapsto 45e^{-0{,}06t} + 20$, pas $g$. Par exemple $g'(0) = 2{,}7$, alors que $-0{,}06g(0) + 1{,}2 = -2{,}7$."
+        },
+        "indices": [
+          "Le piège est souvent un signe : isole $y'$ dans $(E_1)$, puis résous-la entièrement.",
+          "$y' = -0{,}06y + 1{,}2$ : cherche la solution constante, puis la constante $C$ grâce à la condition en $0$.",
+          "Compare la solution trouvée avec $g(t)$ : regarde le signe de l'exposant."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "$(E_1)$ s'écrit $y' = -0{,}06y + 1{,}2$. Sa solution constante vérifie $0 = -0{,}06k + 1{,}2$, soit $k = \\dfrac{1{,}2}{0{,}06} = 20$. Ses solutions sont les fonctions $t \\mapsto Ce^{-0{,}06t} + 20$, et la condition $C + 20 = 65$ donne $C = 45$. L'unique solution vérifiant la condition est donc $t \\mapsto 45e^{-0{,}06t} + 20$, dont l'exposant n'a pas le signe de celui de $g$. D'ailleurs, $g'(0) = 45 \\times 0{,}06 = 2{,}7$, alors que $-0{,}06g(0) + 1{,}2 = -3{,}9 + 1{,}2 = -2{,}7$ : $g$ n'est pas solution. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-023",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-b"],
+    "capacites": ["bo-m-primitives-05", "bo-m-logarithme-07", "bo-m-limites-fonctions-05"],
+    "titre": "Démouler un objet chaud",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 412,
+    "source": { "annale": "an-2024-polynesie-juin-j1", "adaptation": "forme de l'équation $y' + 0{,}02y = m$ et démarche reprises ; coefficient, températures et seuil modifiés ; question sur la valeur moyenne retirée" },
+    "preambule": "Un objet sort d'un four à $225$ °C et refroidit dans un atelier à $25$ °C. On note $f(t)$ sa température, en degrés Celsius, $t$ minutes après sa sortie du four : $f(0) = 225$. On admet que $f$ est solution sur $[0\\,;\\,+\\infty[$ d'une équation différentielle de la forme $(E) : y' + 0{,}05y = m$, où $m$ est une constante réelle, et que $f(t)$ tend vers $25$ quand $t$ tend vers $+\\infty$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer la valeur de $m$.",
+        "reponse": { "type": "numerique", "valeur": 1.25, "tolerance": 0.001 },
+        "indices": [
+          "Écris $(E)$ sous la forme $y' = ay + b$, puis cherche sa solution constante en fonction de $m$.",
+          "$(E) \\iff y' = -0{,}05y + m$. La solution constante $k$ vérifie $0 = -0{,}05k + m$, soit $k = \\dfrac{m}{0{,}05} = 20m$.",
+          "Les solutions sont les fonctions $t \\mapsto Ce^{-0{,}05t} + 20m$. Quelle est leur limite en $+\\infty$ ?",
+          "Cette limite vaut $20m$ quelle que soit $C$, et l'énoncé dit qu'elle vaut $25$ : résous l'équation obtenue."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "$(E)$ s'écrit $y' = -0{,}05y + m$. Sa solution constante vérifie $0 = -0{,}05k + m$, soit $k = \\dfrac{m}{0{,}05} = 20m$. Les solutions de $(E)$ sont donc les fonctions $t \\mapsto Ce^{-0{,}05t} + 20m$, $C$ réel. Comme $-0{,}05t$ tend vers $-\\infty$ quand $t$ tend vers $+\\infty$, $e^{-0{,}05t}$ tend vers $0$, donc $f(t)$ tend vers $20m$. Or $f(t)$ tend vers $25$ : $20m = 25$, soit $m = 1{,}25$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout $t \\geqslant 0$, $f(t) = 200e^{-0{,}05t} + 25$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Avec cette valeur de $m$, la solution constante vaut $25$ : $f(t) = Ce^{-0{,}05t} + 25$. Utilise $f(0) = 225$.",
+          "Attention : $f(0) = C + 25$, et non $C$.",
+          "Résous $C + 25 = 225$, puis conclus."
+        ],
+        "revoir": "l-primitives-equations-differentielles-055",
+        "solution": "Avec $m = 1{,}25$, la solution constante est $20 \\times 1{,}25 = 25$, donc $f(t) = Ce^{-0{,}05t} + 25$. Or $f(0) = C + 25 = 225$, d'où $C = 200$. Ainsi $f(t) = 200e^{-0{,}05t} + 25$ pour tout $t \\geqslant 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Étudier le sens de variation de $f$ sur $[0\\,;\\,+\\infty[$, puis l'interpréter.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive $f(t) = 200e^{-0{,}05t} + 25$ avec $\\left(e^{at}\\right)' = ae^{at}$.",
+          "$f'(t) = 200 \\times (-0{,}05)e^{-0{,}05t}$ : simplifie.",
+          "Quel est le signe de $f'(t)$ ? Traduis-le en termes de température."
+        ],
+        "revoir": "l-primitives-equations-differentielles-040",
+        "solution": "$f'(t) = 200 \\times (-0{,}05)e^{-0{,}05t} = -10e^{-0{,}05t} < 0$, car $e^{-0{,}05t} > 0$. Donc $f$ est strictement décroissante sur $[0\\,;\\,+\\infty[$ : la température de l'objet baisse sans cesse, en se rapprochant de $25$ °C."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "L'objet peut être démoulé dès que sa température devient inférieure à $75$ °C. On note $T$ l'instant, en minutes, à partir duquel il peut être démoulé. Déterminer par le calcul la valeur exacte de $T$, puis sa valeur arrondie au centième de minute. Saisir la valeur arrondie.",
+        "reponse": { "type": "numerique", "valeur": 27.73, "tolerance": 0.01, "unite": "min", "decimales": 2 },
+        "indices": [
+          "Résous l'inéquation $f(t) < 75$ : isole l'exponentielle, puis passe au logarithme.",
+          "$200e^{-0{,}05t} + 25 < 75 \\iff e^{-0{,}05t} < \\dfrac{50}{200} = \\dfrac{1}{4}$.",
+          "$\\ln$ est strictement croissante : $-0{,}05t < \\ln\\dfrac{1}{4} = -\\ln 4$.",
+          "Divise par $-0{,}05 < 0$ en changeant le sens de l'inégalité : $t > \\dfrac{\\ln 4}{0{,}05}$. Simplifie, puis arrondis."
+        ],
+        "revoir": "l-primitives-equations-differentielles-055",
+        "solution": "$f(t) < 75 \\iff 200e^{-0{,}05t} < 50 \\iff e^{-0{,}05t} < \\dfrac{1}{4} \\iff -0{,}05t < \\ln\\dfrac{1}{4} = -\\ln 4 \\iff t > \\dfrac{\\ln 4}{0{,}05} = 20\\ln 4$. Comme $f$ est décroissante, l'objet peut être démoulé à partir de $T = 20\\ln 4 = 40\\ln 2 \\approx 27{,}73$ minutes."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-024",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-b"],
+    "capacites": ["bo-m-primitives-10", "bo-m-primitives-05", "bo-m-listes-01"],
+    "titre": "Programmer la méthode d'Euler",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 413,
+    "preambule": "On considère l'équation différentielle $(E) : y' = -0{,}5y + 2$, avec la condition initiale $y(0) = 0$. La fonction Python ci-dessous applique la méthode d'Euler à une équation $y' = ay + b$ ; elle renvoie la liste des ordonnées $y_0$, $y_1$, …, $y_n$. Une ligne est incomplète.",
+    "code": {
+      "langage": "python",
+      "source": "def euler(a, b, x0, y0, h, n):\n    x = x0\n    y = y0\n    ordonnees = [y]\n    for k in range(n):\n        y = ...              # ligne à compléter\n        x = x + h\n        ordonnees.append(y)\n    return ordonnees"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle instruction faut-il écrire à la place des points de suspension ? Les propositions sont écrites en langage naturel : le symbole $\\leftarrow$ se lit « reçoit » et s'écrit $\\texttt{=}$ en Python.",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$y \\leftarrow y + h \\times (a \\times y + b)$",
+            "$y \\leftarrow y + a \\times y + b$",
+            "$y \\leftarrow h \\times (a \\times y + b)$",
+            "$y \\leftarrow y + h \\times (a \\times x + b)$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Il manque le pas $h$ : on avance de $h$ le long de la tangente, donc on ajoute $h$ fois la pente.",
+            "L'ancienne valeur est oubliée : la nouvelle ordonnée est l'ancienne **plus** $h$ fois la pente.",
+            "La pente vaut $ay + b$ : dans $y' = ay + b$, c'est $y$, et non $x$, qui est multiplié par $a$."
+          ]
+        },
+        "indices": [
+          "Un pas de la méthode d'Euler : nouvelle ordonnée = ancienne ordonnée + $h$ × pente. Pour $y' = ay + b$, la pente au point courant est $ay + b$.",
+          "Élimine les propositions où il manque l'ancienne valeur de $y$, ou le facteur $h$.",
+          "Parmi celles qui restent, vérifie que la pente est calculée avec $y$, comme dans l'équation $y' = ay + b$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-057",
+        "solution": "Un pas de la méthode d'Euler s'écrit $y_{n+1} = y_n + h(ay_n + b)$ : on part de l'ancienne ordonnée et on avance de $h$ avec la pente $ay_n + b$ donnée par l'équation. L'instruction à écrire est donc $y \\leftarrow y + h \\times (a \\times y + b)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "La ligne étant complétée, on exécute l'instruction ci-dessous. Calculer à la main le troisième nombre de la liste affichée, $y_2$, valeur approchée de la solution en $1$.",
+        "code": { "langage": "python", "source": "print(euler(-0.5, 2, 0, 0, 0.5, 3))" },
+        "reponse": { "type": "numerique", "valeur": 1.75, "tolerance": 0.001 },
+        "indices": [
+          "Ici $a = -0{,}5$, $b = 2$, $y_0 = 0$ et $h = 0{,}5$. Applique deux fois $y \\leftarrow y + 0{,}5 \\times (-0{,}5y + 2)$.",
+          "$y_1 = 0 + 0{,}5 \\times (-0{,}5 \\times 0 + 2)$ : calcule-le.",
+          "Recommence à partir de $y_1$ : calcule d'abord la pente $-0{,}5y_1 + 2$, puis $y_2$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-057",
+        "solution": "$y_1 = 0 + 0{,}5 \\times (-0{,}5 \\times 0 + 2) = 1$, puis $y_2 = 1 + 0{,}5 \\times (-0{,}5 \\times 1 + 2) = 1 + 0{,}5 \\times 1{,}5 = 1{,}75$. La liste affichée commence par $0$, $1$ et $1{,}75$ ; son dernier nombre est $y_3 = 2{,}3125$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Résoudre $(E)$ avec la condition $y(0) = 0$, puis calculer la valeur de la solution en $1{,}5$, arrondie à $10^{-2}$. La comparer à $y_3 = 2{,}3125$, la valeur obtenue par la méthode d'Euler.",
+        "reponse": { "type": "numerique", "valeur": 2.11, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Cherche la solution constante, écris les solutions $x \\mapsto Ce^{-0{,}5x} + k$, puis utilise la condition $y(0) = 0$.",
+          "La solution constante vérifie $0 = -0{,}5k + 2$ ; ensuite, $y(0) = C + k = 0$ donne $C$.",
+          "Avec ces valeurs, calcule la solution en $x = 1{,}5$ à la calculatrice, puis compare avec $2{,}3125$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "La solution constante vérifie $0 = -0{,}5k + 2$, soit $k = 4$. Les solutions sont les fonctions $x \\mapsto Ce^{-0{,}5x} + 4$, et $y(0) = C + 4 = 0$ donne $C = -4$. La solution est $x \\mapsto 4 - 4e^{-0{,}5x}$, qui vaut $4 - 4e^{-0{,}75} \\approx 2{,}11$ en $1{,}5$. Avec $y_3 = 2{,}3125$, la méthode d'Euler surestime la solution d'environ $0{,}2$ : le pas $0{,}5$ est trop grand."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On veut une valeur approchée de la solution en $3$, avec un pas de $0{,}01$ et en partant de $x_0 = 0$. Quelle valeur faut-il donner au paramètre $n$ de la fonction ?",
+        "reponse": { "type": "numerique", "valeur": 300, "tolerance": 0 },
+        "indices": [
+          "Après $n$ pas de longueur $h$, l'abscisse atteinte est $x_0 + nh$.",
+          "Ici $x_0 = 0$ et $h = 0{,}01$ : résous $0 + n \\times 0{,}01 = 3$.",
+          "Diviser $3$ par $0{,}01$ revient à le multiplier par $100$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-057",
+        "solution": "Après $n$ pas, l'abscisse atteinte est $x_0 + nh = 0{,}01n$. On veut $0{,}01n = 3$, soit $n = \\dfrac{3}{0{,}01} = 300$ : il faut $300$ pas."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-025",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-f"],
+    "capacites": ["bo-m-primitives-06", "bo-m-logique-12", "bo-m-derivation-05"],
+    "titre": "Le schéma du bac : solution particulière, équivalence, résolution",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 511,
+    "source": { "annale": "an-2021-metropole-juin-j1", "adaptation": "solution particulière de la forme $x^2e^{x}$ remplacée par $x^2e^{-x}$, avec l'équation correspondante ; question sur la concavité remplacée par une étude du sens de variation" },
+    "preambule": "On considère l'équation différentielle $(E) : y' + y = 2xe^{-x}$ sur $\\mathbb{R}$, et l'équation $(E_0) : y' + y = 0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $u$ la fonction définie sur $\\mathbb{R}$ par $u(x) = x^2e^{-x}$. Démontrer que $u$ est une solution particulière de $(E)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Calcule $u'(x)$ avec la dérivée d'un produit, puis $u'(x) + u(x)$.",
+          "$u'(x) = 2xe^{-x} + x^2 \\times \\left(-e^{-x}\\right)$.",
+          "Ajoute $u(x) = x^2e^{-x}$ : les termes en $x^2e^{-x}$ s'éliminent."
+        ],
+        "revoir": "l-primitives-equations-differentielles-069",
+        "solution": "$u'(x) = 2xe^{-x} + x^2 \\times \\left(-e^{-x}\\right) = 2xe^{-x} - x^2e^{-x}$. Donc $u'(x) + u(x) = 2xe^{-x} - x^2e^{-x} + x^2e^{-x} = 2xe^{-x}$ pour tout réel $x$ : $u$ est une solution particulière de $(E)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $f$ une fonction dérivable sur $\\mathbb{R}$. Démontrer que : « $f$ est solution de $(E)$ » est équivalent à « $f - u$ est solution de $(E_0)$ ».",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $d = f - u$ et calcule $d'(x) + d(x)$ en regroupant ce qui concerne $f$ et ce qui concerne $u$.",
+          "$d'(x) + d(x) = \\big(f'(x) + f(x)\\big) - \\big(u'(x) + u(x)\\big)$.",
+          "D'après la question 1, $u'(x) + u(x) = 2xe^{-x}$ : remplace.",
+          "Enchaîne les équivalences : $d$ solution de $(E_0)$ $\\iff$ $d'(x) + d(x) = 0$ pour tout réel $x$ $\\iff$ … $\\iff$ $f$ solution de $(E)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-067",
+        "solution": "On pose $d = f - u$, dérivable sur $\\mathbb{R}$. Pour tout réel $x$ : $d'(x) + d(x) = \\big(f'(x) + f(x)\\big) - \\big(u'(x) + u(x)\\big) = f'(x) + f(x) - 2xe^{-x}$, d'après la question 1. Donc : $f - u$ est solution de $(E_0)$ $\\iff$ $d'(x) + d(x) = 0$ pour tout réel $x$ $\\iff$ $f'(x) + f(x) = 2xe^{-x}$ pour tout réel $x$ $\\iff$ $f$ est solution de $(E)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire toutes les solutions de $(E)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Résous d'abord $(E_0)$ : mets-la sous la forme $y' = ay$.",
+          "$(E_0) \\iff y' = -y$ : ses solutions sont les fonctions $x \\mapsto Ce^{-x}$.",
+          "D'après la question 2, $f$ est solution de $(E)$ si et seulement si $f(x) - u(x) = Ce^{-x}$ : isole $f(x)$, puis factorise par $e^{-x}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-066",
+        "solution": "$(E_0)$ s'écrit $y' = -y$ : ses solutions sont les fonctions $x \\mapsto Ce^{-x}$, $C$ réel. D'après la question 2, $f$ est solution de $(E)$ si et seulement si $f - u$ est solution de $(E_0)$, c'est-à-dire $f(x) = Ce^{-x} + x^2e^{-x} = \\left(x^2 + C\\right)e^{-x}$. Les solutions de $(E)$ sont donc les fonctions $x \\mapsto \\left(x^2 + C\\right)e^{-x}$, $C$ réel."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Soit $f$ la solution de $(E)$ telle que $f(0) = 1$. Déterminer $f(x)$, puis montrer que $f$ est décroissante sur $\\mathbb{R}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$f(0) = \\left(0^2 + C\\right)e^{0}$ : la condition donne $C$.",
+          "$f(x) = \\left(x^2 + 1\\right)e^{-x}$. Dérive ce produit, puis mets $e^{-x}$ en facteur.",
+          "Tu obtiens $f'(x) = \\left(-x^2 + 2x - 1\\right)e^{-x}$. Reconnais une identité remarquable dans la parenthèse.",
+          "$-x^2 + 2x - 1 = -(x - 1)^2$ : quel est son signe ? Conclus avec celui de $e^{-x}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-069",
+        "solution": "$f(0) = (0 + C)e^{0} = C$, donc $C = 1$ et $f(x) = \\left(x^2 + 1\\right)e^{-x}$. Alors $f'(x) = 2xe^{-x} - \\left(x^2 + 1\\right)e^{-x} = \\left(-x^2 + 2x - 1\\right)e^{-x} = -(x - 1)^2e^{-x}$. Pour tout réel $x$, $(x - 1)^2 \\geqslant 0$ et $e^{-x} > 0$, donc $f'(x) \\leqslant 0$, avec égalité seulement en $x = 1$ : $f$ est décroissante sur $\\mathbb{R}$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-026",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-f"],
+    "capacites": ["bo-m-primitives-06", "bo-m-derivation-06"],
+    "titre": "Une solution de forme imposée, puis une étude",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 512,
+    "source": { "annale": "an-2024-amerique-sud-j1", "adaptation": "forme $axe^{kx}$ de la solution particulière et démarche reprises, avec une autre équation ; questions 3 et 4 ajoutées" },
+    "preambule": "On considère l'équation différentielle $(E) : y' + 2y = 3e^{-2x}$ sur $\\mathbb{R}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer le réel $m$ tel que la fonction $g$ définie sur $\\mathbb{R}$ par $g(x) = mxe^{-2x}$ soit une solution particulière de $(E)$.",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Calcule $g'(x)$ avec la dérivée d'un produit, puis $g'(x) + 2g(x)$, et identifie avec le second membre de $(E)$.",
+          "$g'(x) = me^{-2x} - 2mxe^{-2x}$.",
+          "Dans $g'(x) + 2g(x)$, les termes en $xe^{-2x}$ s'éliminent : il reste un multiple de $e^{-2x}$ à comparer au second membre."
+        ],
+        "revoir": "l-primitives-equations-differentielles-070",
+        "solution": "$g'(x) = me^{-2x} + mx \\times \\left(-2e^{-2x}\\right) = me^{-2x} - 2mxe^{-2x}$, donc $g'(x) + 2g(x) = me^{-2x} - 2mxe^{-2x} + 2mxe^{-2x} = me^{-2x}$. Ainsi $g$ est solution de $(E)$ si et seulement si $me^{-2x} = 3e^{-2x}$ pour tout réel $x$, c'est-à-dire $m = 3$, car $e^{-2x} \\neq 0$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire les solutions de $(E)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Mets l'équation sans second membre $y' + 2y = 0$ sous la forme $y' = ay$.",
+          "$y' = -2y$ : ses solutions sont les fonctions $x \\mapsto Ce^{-2x}$.",
+          "Ajoute la solution particulière $g$ trouvée à la question 1, puis factorise par $e^{-2x}$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-069",
+        "solution": "L'équation sans second membre $y' + 2y = 0$ s'écrit $y' = -2y$ : ses solutions sont les fonctions $x \\mapsto Ce^{-2x}$. Comme $g : x \\mapsto 3xe^{-2x}$ est une solution particulière de $(E)$, les solutions de $(E)$ sont les fonctions $x \\mapsto Ce^{-2x} + 3xe^{-2x} = (3x + C)e^{-2x}$, $C$ réel."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer la solution $f$ de $(E)$ telle que $f(0) = 1$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Écris $f(x) = (3x + C)e^{-2x}$, puis remplace $x$ par $0$.",
+          "$f(0) = (3 \\times 0 + C)e^{0}$ : simplifie.",
+          "Conclus avec la condition $f(0) = 1$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-069",
+        "solution": "$f(x) = (3x + C)e^{-2x}$ et $f(0) = (3 \\times 0 + C)e^{0} = C$. La condition $f(0) = 1$ donne $C = 1$, donc $f(x) = (3x + 1)e^{-2x}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Étudier les variations de $f$ sur $\\mathbb{R}$, puis donner l'abscisse de son maximum, sous forme de fraction.",
+        "reponse": { "type": "numerique", "valeur": "1/6", "tolerance": 0 },
+        "indices": [
+          "Dérive $f(x) = (3x + 1)e^{-2x}$ comme un produit.",
+          "$f'(x) = 3e^{-2x} + (3x + 1) \\times \\left(-2e^{-2x}\\right)$ : mets $e^{-2x}$ en facteur.",
+          "$f'(x) = (1 - 6x)e^{-2x}$, qui a le signe de $1 - 6x$, car $e^{-2x} > 0$.",
+          "Résous $1 - 6x > 0$, puis dresse le tableau de variations de $f$."
+        ],
+        "revoir": "l-derivation-convexite-014",
+        "solution": "$f'(x) = 3e^{-2x} - 2(3x + 1)e^{-2x} = (3 - 6x - 2)e^{-2x} = (1 - 6x)e^{-2x}$. Comme $e^{-2x} > 0$, $f'(x)$ a le signe de $1 - 6x$ : $f'(x) > 0$ pour $x < \\dfrac{1}{6}$ et $f'(x) < 0$ pour $x > \\dfrac{1}{6}$. Donc $f$ est strictement croissante sur $\\left]-\\infty\\,;\\,\\dfrac{1}{6}\\right]$ et strictement décroissante sur $\\left[\\dfrac{1}{6}\\,;\\,+\\infty\\right[$ : son maximum est atteint en $x = \\dfrac{1}{6}$, et vaut $f\\left(\\dfrac{1}{6}\\right) = \\dfrac{3}{2}e^{-\\frac{1}{3}}$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-027",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 3,
+    "notions": ["n-primitives-equations-differentielles-primitive", "n-primitives-equations-differentielles-calcul"],
+    "capacites": ["bo-m-primitives-01", "bo-m-primitives-04", "bo-m-logarithme-06"],
+    "titre": "Une primitive de $\\dfrac{\\ln x}{x}$, étudiée sous tous les angles",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 121,
+    "preambule": "Soit $f$ la fonction définie sur $]0\\,;\\,+\\infty[$ par $f(x) = \\dfrac{\\ln x}{x}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer la primitive $F$ de $f$ sur $]0\\,;\\,+\\infty[$ telle que $F(1) = 0$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Écris $f(x) = \\dfrac{1}{x} \\times \\ln x$ et reconnais une forme $u'u^n$.",
+          "Avec $u(x) = \\ln x$ et $u'(x) = \\dfrac{1}{x}$ : une primitive de $u'u$ est $\\dfrac{u^2}{2}$.",
+          "Les primitives de $f$ sont les fonctions $x \\mapsto \\dfrac{(\\ln x)^2}{2} + C$ ; utilise $\\ln 1 = 0$ pour trouver $C$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-022",
+        "solution": "Avec $u(x) = \\ln x$, on a $u'(x) = \\dfrac{1}{x}$ et $f = u'u$, dont une primitive est $\\dfrac{u^2}{2}$. Les primitives de $f$ sur $]0\\,;\\,+\\infty[$ sont donc les fonctions $x \\mapsto \\dfrac{(\\ln x)^2}{2} + C$, $C$ réel. Comme $\\ln 1 = 0$, la condition $F(1) = 0$ donne $C = 0$ : $F(x) = \\dfrac{(\\ln x)^2}{2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Sans utiliser l'expression de $F$, étudier le sens de variation de $F$ sur $]0\\,;\\,+\\infty[$. Vérifier que le résultat est cohérent avec l'expression trouvée à la question 1.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$F' = f$ : le sens de variation de $F$ se lit sur le signe de $f(x)$.",
+          "Pour $x > 0$, $f(x)$ a le signe de $\\ln x$ : négatif sur $]0\\,;\\,1[$, positif sur $]1\\,;\\,+\\infty[$.",
+          "Conclus, puis regarde l'expression $\\dfrac{(\\ln x)^2}{2}$ : quel est son minimum, et en quel point est-il atteint ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-013",
+        "solution": "$F' = f$ et, pour $x > 0$, $f(x)$ a le signe de $\\ln x$. Donc $F$ est strictement décroissante sur $]0\\,;\\,1]$ et strictement croissante sur $[1\\,;\\,+\\infty[$ : elle admet un minimum en $1$. C'est cohérent avec la question 1 : $F(x) = \\dfrac{(\\ln x)^2}{2} \\geqslant 0$ et $F(1) = 0$, donc le minimum de $F$ est bien $F(1) = 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Résoudre l'équation $F(x) = 2$ sur $]0\\,;\\,+\\infty[$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$F(x) = 2 \\iff (\\ln x)^2 = 4$. Pose $X = \\ln x$ : quelles sont les solutions de $X^2 = 4$ ?",
+          "$X = 2$ ou $X = -2$, c'est-à-dire $\\ln x = 2$ ou $\\ln x = -2$.",
+          "Passe à l'exponentielle dans chaque cas, avec $\\ln x = c \\iff x = e^{c}$."
+        ],
+        "revoir": "l-logarithme-026",
+        "solution": "$F(x) = 2 \\iff (\\ln x)^2 = 4 \\iff \\ln x = 2$ ou $\\ln x = -2 \\iff x = e^2$ ou $x = e^{-2}$. L'équation a deux solutions, $e^{-2}$ et $e^2$. C'est cohérent avec la question 2 : une solution dans $]0\\,;\\,1[$, où $F$ décroît de $+\\infty$ à $0$, et une dans $]1\\,;\\,+\\infty[$, où $F$ croît."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Soit $G$ la primitive de $f$ sur $]0\\,;\\,+\\infty[$ telle que $G(e) = 1$. L'équation $G(x) = 0$ a-t-elle des solutions sur $]0\\,;\\,+\\infty[$ ?",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$G$ et $F$ sont deux primitives de $f$ sur un intervalle : elles diffèrent d'une constante.",
+          "$G = F + C$ et $F(e) = \\dfrac{(\\ln e)^2}{2} = \\dfrac{1}{2}$ : la condition $G(e) = 1$ donne $C$.",
+          "Avec cette constante, compare $G(x)$ à son minimum, en utilisant la question 2."
+        ],
+        "revoir": "l-primitives-equations-differentielles-006",
+        "solution": "$G$ et $F$ sont deux primitives de $f$ sur l'intervalle $]0\\,;\\,+\\infty[$ : $G = F + C$, avec $C$ réel. $G(e) = \\dfrac{(\\ln e)^2}{2} + C = \\dfrac{1}{2} + C$, et $G(e) = 1$ donne $C = \\dfrac{1}{2}$. Donc, pour tout $x > 0$, $G(x) = \\dfrac{(\\ln x)^2}{2} + \\dfrac{1}{2} \\geqslant \\dfrac{1}{2} > 0$ : l'équation $G(x) = 0$ n'a aucune solution."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On admet que, pour tout réel $x > 0$, $\\ln x \\leqslant x - 1$. Démontrer que, pour tout réel $x \\geqslant 1$, $F(x) \\leqslant \\dfrac{(x - 1)^2}{2}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour $x \\geqslant 1$, encadre $\\ln x$ : il est positif, et majoré par $x - 1$.",
+          "Si $0 \\leqslant a \\leqslant b$, alors $a^2 \\leqslant b^2$, car la fonction carré est croissante sur $[0\\,;\\,+\\infty[$.",
+          "Applique-le avec $a = \\ln x$ et $b = x - 1$, puis divise par $2$."
+        ],
+        "revoir": "l-logarithme-051",
+        "solution": "Soit $x \\geqslant 1$. Alors $\\ln x \\geqslant \\ln 1 = 0$, et $\\ln x \\leqslant x - 1$ (admis). Ainsi $0 \\leqslant \\ln x \\leqslant x - 1$. La fonction carré étant croissante sur $[0\\,;\\,+\\infty[$, $(\\ln x)^2 \\leqslant (x - 1)^2$, puis, en divisant par $2 > 0$ : $F(x) = \\dfrac{(\\ln x)^2}{2} \\leqslant \\dfrac{(x - 1)^2}{2}$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-028",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 3,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-b", "n-primitives-equations-differentielles-equation-ay"],
+    "capacites": ["bo-m-primitives-05", "bo-m-primitives-03", "bo-m-logarithme-07", "bo-m-limites-fonctions-05"],
+    "titre": "Une perfusion, puis l'arrêt de la perfusion",
+    "duree": 30,
+    "calculatrice": true,
+    "ordre": 421,
+    "preambule": "Un patient reçoit un médicament par perfusion, à débit constant. On note $Q(t)$ la quantité de médicament dans son sang, en milligrammes, $t$ heures après le début de la perfusion : $Q(0) = 0$. On admet que, tant que la perfusion dure, $Q$ est solution de l'équation différentielle $(E) : y' = -0{,}2y + d$, où $d > 0$ est le débit, en milligrammes par heure.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que, pendant la perfusion, $Q(t) = 5d\\left(1 - e^{-0{,}2t}\\right)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Résous $(E)$ comme une équation $y' = ay + b$, avec $a = -0{,}2$ et $b = d$.",
+          "La solution constante vérifie $0 = -0{,}2k + d$, soit $k = \\dfrac{d}{0{,}2} = 5d$ : les solutions sont les fonctions $t \\mapsto Ce^{-0{,}2t} + 5d$.",
+          "Utilise $Q(0) = 0$ pour trouver $C$ en fonction de $d$, puis factorise par $5d$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "$(E)$ est de la forme $y' = ay + b$, avec $a = -0{,}2 \\neq 0$ et $b = d$. Sa solution constante vérifie $0 = -0{,}2k + d$, soit $k = 5d$. Les solutions de $(E)$ sont donc les fonctions $t \\mapsto Ce^{-0{,}2t} + 5d$, $C$ réel. Or $Q(0) = C + 5d = 0$, d'où $C = -5d$ et $Q(t) = -5de^{-0{,}2t} + 5d = 5d\\left(1 - e^{-0{,}2t}\\right)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Si la perfusion durait indéfiniment, vers quelle quantité $Q(t)$ tendrait-elle ? Le médecin veut que cette quantité limite soit de $15$ mg : quel débit $d$, en milligrammes par heure, doit-il choisir ?",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0, "unite": "mg/h" },
+        "indices": [
+          "Cherche la limite de $e^{-0{,}2t}$ quand $t$ tend vers $+\\infty$, puis celle de $Q(t)$.",
+          "$e^{-0{,}2t}$ tend vers $0$, donc $Q(t)$ tend vers $5d$, la solution constante.",
+          "Écris que cette limite vaut $15$ et résous l'équation d'inconnue $d$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-055",
+        "solution": "Quand $t$ tend vers $+\\infty$, $-0{,}2t$ tend vers $-\\infty$, donc $e^{-0{,}2t}$ tend vers $0$ et $Q(t)$ tend vers $5d$. Pour que cette limite vaille $15$ mg, il faut $5d = 15$, soit $d = 3$ mg par heure."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans la suite, $d = 3$. Le médicament est efficace dès que $Q(t) \\geqslant 12$. Au bout de combien d'heures l'est-il ? Donner la valeur exacte, puis l'arrondi au centième. Saisir l'arrondi.",
+        "reponse": { "type": "numerique", "valeur": 8.05, "tolerance": 0.01, "unite": "h", "decimales": 2 },
+        "indices": [
+          "Avec $d = 3$, $Q(t) = 15\\left(1 - e^{-0{,}2t}\\right)$ : résous l'inéquation $Q(t) \\geqslant 12$.",
+          "$15\\left(1 - e^{-0{,}2t}\\right) \\geqslant 12 \\iff 1 - e^{-0{,}2t} \\geqslant 0{,}8 \\iff e^{-0{,}2t} \\leqslant 0{,}2$.",
+          "Passe au logarithme : $-0{,}2t \\leqslant \\ln(0{,}2) = -\\ln 5$.",
+          "Divise par $-0{,}2 < 0$ : le sens de l'inégalité change. Simplifie, puis arrondis."
+        ],
+        "revoir": "l-primitives-equations-differentielles-055",
+        "solution": "$Q(t) \\geqslant 12 \\iff 1 - e^{-0{,}2t} \\geqslant \\dfrac{12}{15} = 0{,}8 \\iff e^{-0{,}2t} \\leqslant 0{,}2 \\iff -0{,}2t \\leqslant \\ln(0{,}2) = -\\ln 5 \\iff t \\geqslant \\dfrac{\\ln 5}{0{,}2} = 5\\ln 5$. Le médicament est efficace au bout de $5\\ln 5 \\approx 8{,}05$ heures."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "La perfusion est arrêtée au bout de $10$ heures. La quantité de médicament ne change pas brusquement à l'arrêt : à l'instant $10$, elle vaut celle atteinte à la fin de la perfusion. On admet qu'à partir de cet instant, $Q$ est solution sur $[10\\,;\\,+\\infty[$ de l'équation $y' = -0{,}2y$. Montrer que, pour $t \\geqslant 10$, $Q(t) = 15\\left(1 - e^{-2}\\right)e^{-0{,}2(t - 10)}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour $t \\geqslant 10$, $Q(t) = Ce^{-0{,}2t}$. La condition initiale est donnée en $t = 10$ : $Q(10)$ se calcule avec la formule de la question 1.",
+          "$Q(10) = 15\\left(1 - e^{-0{,}2 \\times 10}\\right) = 15\\left(1 - e^{-2}\\right)$, et la condition s'écrit $Ce^{-2} = Q(10)$.",
+          "$C = Q(10)e^{2}$ : écris $Q(t) = Q(10)e^{2}e^{-0{,}2t}$, puis regroupe les exponentielles."
+        ],
+        "revoir": "l-primitives-equations-differentielles-036",
+        "solution": "À l'instant $10$, la formule de la question 1 donne $Q(10) = 15\\left(1 - e^{-2}\\right)$. Pour $t \\geqslant 10$, $Q(t) = Ce^{-0{,}2t}$, et la condition $Q(10) = Ce^{-2}$ donne $C = Q(10)e^{2}$. Donc $Q(t) = 15\\left(1 - e^{-2}\\right)e^{2}e^{-0{,}2t} = 15\\left(1 - e^{-2}\\right)e^{-0{,}2(t - 10)}$, car $2 - 0{,}2t = -0{,}2(t - 10)$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Après l'arrêt de la perfusion, à partir de quel instant, compté en heures depuis le début de la perfusion, la quantité de médicament devient-elle inférieure à $3$ mg ? Donner la valeur exacte, puis une valeur approchée au dixième, sans arrondir les calculs intermédiaires. Saisir la valeur approchée.",
+        "reponse": { "type": "numerique", "valeur": 17.32, "tolerance": 0.1, "unite": "h", "decimales": 1 },
+        "indices": [
+          "Résous $Q(t) < 3$ pour $t \\geqslant 10$, avec l'expression de la question 4 : isole l'exponentielle.",
+          "$e^{-0{,}2(t - 10)} < \\dfrac{3}{15\\left(1 - e^{-2}\\right)} = \\dfrac{1}{5\\left(1 - e^{-2}\\right)}$ : passe au logarithme, strictement croissant.",
+          "$-0{,}2(t - 10) < \\ln\\left(\\dfrac{1}{5\\left(1 - e^{-2}\\right)}\\right) = -\\ln\\left(5\\left(1 - e^{-2}\\right)\\right)$ : divise par $-0{,}2$ en changeant le sens de l'inégalité.",
+          "Tu obtiens $t > 10 + 5\\ln\\left(5\\left(1 - e^{-2}\\right)\\right)$ : calcule ce nombre à la calculatrice, en une seule fois."
+        ],
+        "revoir": "l-primitives-equations-differentielles-055",
+        "solution": "Pour $t \\geqslant 10$ : $Q(t) < 3 \\iff e^{-0{,}2(t - 10)} < \\dfrac{3}{15\\left(1 - e^{-2}\\right)} = \\dfrac{1}{5\\left(1 - e^{-2}\\right)} \\iff -0{,}2(t - 10) < -\\ln\\left(5\\left(1 - e^{-2}\\right)\\right) \\iff t > 10 + 5\\ln\\left(5\\left(1 - e^{-2}\\right)\\right)$, car $\\ln$ est strictement croissante et $-0{,}2 < 0$. Ce nombre vaut environ $17{,}32$. Comme $Q$ est décroissante sur $[10\\,;\\,+\\infty[$, la quantité devient inférieure à $3$ mg à partir de $10 + 5\\ln\\left(5\\left(1 - e^{-2}\\right)\\right) \\approx 17{,}3$ heures après le début de la perfusion, soit environ $7{,}3$ heures après son arrêt.",
+        "erreurFrequente": "Garder le sens de l'inégalité en divisant par $-0{,}2$ : on obtiendrait $t < 17{,}3$ environ, alors que la quantité diminue après l'arrêt et passe sous $3$ mg à partir d'un certain instant."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-029",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 3,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-b", "n-primitives-equations-differentielles-equation-ay"],
+    "capacites": ["bo-m-primitives-09", "bo-m-primitives-05", "bo-m-primitives-03", "bo-m-logarithme-07"],
+    "titre": "Pour aller plus loin : le modèle logistique",
+    "duree": 30,
+    "calculatrice": true,
+    "ordre": 422,
+    "preambule": "On étudie une population de bactéries. On note $p(t)$ son effectif, en milliers d'individus, $t$ heures après le début de l'observation : $p(0) = 1$. On admet que $p$ est dérivable et strictement positive sur $[0\\,;\\,+\\infty[$, et qu'elle est solution de l'équation différentielle logistique $(L) : y' = 0{,}5y\\left(1 - \\dfrac{y}{10}\\right)$. On pose, pour tout $t \\geqslant 0$, $z(t) = \\dfrac{1}{p(t)}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que $z$ est solution de l'équation différentielle $(E) : y' = -0{,}5y + 0{,}05$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive $z = \\dfrac{1}{p}$ avec $\\left(\\dfrac{1}{u}\\right)' = -\\dfrac{u'}{u^2}$, puis remplace $p'$ grâce à $(L)$.",
+          "$z'(t) = -\\dfrac{p'(t)}{p(t)^2} = -\\dfrac{0{,}5p(t)\\left(1 - \\frac{p(t)}{10}\\right)}{p(t)^2}$.",
+          "Simplifie par $p(t)$, qui n'est pas nul : il reste $-\\dfrac{0{,}5}{p(t)}\\left(1 - \\dfrac{p(t)}{10}\\right)$. Développe.",
+          "Tu obtiens $-\\dfrac{0{,}5}{p(t)} + 0{,}05$ : remplace $\\dfrac{1}{p(t)}$ par $z(t)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-018",
+        "solution": "$p$ est dérivable et ne s'annule pas, donc $z$ est dérivable et $z'(t) = -\\dfrac{p'(t)}{p(t)^2}$. Comme $p$ est solution de $(L)$ : $z'(t) = -\\dfrac{0{,}5p(t)\\left(1 - \\frac{p(t)}{10}\\right)}{p(t)^2} = -\\dfrac{0{,}5}{p(t)}\\left(1 - \\dfrac{p(t)}{10}\\right) = -\\dfrac{0{,}5}{p(t)} + \\dfrac{0{,}5}{10} = -0{,}5z(t) + 0{,}05$. Donc $z$ est solution de $(E)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Résoudre $(E)$, puis déterminer $z(t)$ pour tout $t \\geqslant 0$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$(E)$ est de la forme $y' = ay + b$ : cherche sa solution constante.",
+          "$0 = -0{,}5k + 0{,}05$ donne $k = 0{,}1$ : les solutions sont les fonctions $t \\mapsto Ce^{-0{,}5t} + 0{,}1$.",
+          "Condition initiale : $z(0) = \\dfrac{1}{p(0)}$. Résous $C + 0{,}1 = z(0)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-054",
+        "solution": "La solution constante de $(E)$ vérifie $0 = -0{,}5k + 0{,}05$, soit $k = 0{,}1$. Les solutions de $(E)$ sont donc les fonctions $t \\mapsto Ce^{-0{,}5t} + 0{,}1$, $C$ réel. Or $z(0) = \\dfrac{1}{p(0)} = 1$, donc $C + 0{,}1 = 1$ et $C = 0{,}9$ : $z(t) = 0{,}9e^{-0{,}5t} + 0{,}1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire que, pour tout $t \\geqslant 0$, $p(t) = \\dfrac{10}{1 + 9e^{-0{,}5t}}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$p(t) = \\dfrac{1}{z(t)}$, avec l'expression de $z(t)$ trouvée à la question 2.",
+          "Dans $\\dfrac{1}{0{,}9e^{-0{,}5t} + 0{,}1}$, multiplie le numérateur et le dénominateur par $10$.",
+          "Contrôle ton résultat en calculant $p(0)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-061",
+        "solution": "$p(t) = \\dfrac{1}{z(t)} = \\dfrac{1}{0{,}9e^{-0{,}5t} + 0{,}1} = \\dfrac{10}{9e^{-0{,}5t} + 1}$, en multipliant le numérateur et le dénominateur par $10$. Contrôle : $p(0) = \\dfrac{10}{9 + 1} = 1$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Déterminer la limite de $p(t)$ quand $t$ tend vers $+\\infty$, en milliers d'individus, et l'interpréter.",
+        "reponse": { "type": "numerique", "valeur": 10, "tolerance": 0 },
+        "indices": [
+          "Cherche d'abord la limite de $e^{-0{,}5t}$ quand $t$ tend vers $+\\infty$.",
+          "$e^{-0{,}5t}$ tend vers $0$, donc le dénominateur $1 + 9e^{-0{,}5t}$ tend vers $1$.",
+          "Conclus par quotient, puis interprète : que devient la population à long terme ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-055",
+        "solution": "Quand $t$ tend vers $+\\infty$, $-0{,}5t$ tend vers $-\\infty$, donc $e^{-0{,}5t}$ tend vers $0$ et $1 + 9e^{-0{,}5t}$ tend vers $1$. Par quotient, $p(t)$ tend vers $10$ : à long terme, la population se stabilise vers $10$ milliers d'individus."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Au bout de combien d'heures la population atteint-elle $5$ milliers d'individus ? Donner la valeur exacte, puis l'arrondi au centième. Saisir l'arrondi.",
+        "reponse": { "type": "numerique", "valeur": 4.39, "tolerance": 0.01, "unite": "h", "decimales": 2 },
+        "indices": [
+          "Résous l'équation $p(t) = 5$ : passe aux inverses, ou fais un produit en croix.",
+          "$\\dfrac{10}{1 + 9e^{-0{,}5t}} = 5 \\iff 1 + 9e^{-0{,}5t} = 2 \\iff e^{-0{,}5t} = \\dfrac{1}{9}$.",
+          "Passe au logarithme : $-0{,}5t = \\ln\\dfrac{1}{9} = -\\ln 9$.",
+          "Isole $t$, simplifie avec $\\ln 9 = 2\\ln 3$, puis arrondis."
+        ],
+        "revoir": "l-primitives-equations-differentielles-055",
+        "solution": "$p(t) = 5 \\iff 1 + 9e^{-0{,}5t} = 2 \\iff e^{-0{,}5t} = \\dfrac{1}{9} \\iff -0{,}5t = -\\ln 9 \\iff t = 2\\ln 9 = 4\\ln 3$. La population atteint $5$ milliers d'individus au bout de $4\\ln 3 \\approx 4{,}39$ heures."
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Au début, $p$ est petite devant $10$, et $(L)$ ressemble à l'équation $y' = 0{,}5y$. Déterminer la solution $q$ de $y' = 0{,}5y$ telle que $q(0) = 1$, puis calculer $q(4) - p(4)$, arrondi au centième. Que peut-on en conclure ?",
+        "reponse": { "type": "numerique", "valeur": 2.88, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Les solutions de $y' = 0{,}5y$ sont les fonctions $t \\mapsto Ce^{0{,}5t}$, et $q(0) = C$.",
+          "$q(t) = e^{0{,}5t}$, donc $q(4) = e^{2}$. Calcule aussi $p(4) = \\dfrac{10}{1 + 9e^{-2}}$.",
+          "Fais la différence à la calculatrice : le modèle exponentiel surestime-t-il ou sous-estime-t-il la population ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-038",
+        "solution": "Les solutions de $y' = 0{,}5y$ sont les fonctions $t \\mapsto Ce^{0{,}5t}$, et $q(0) = C = 1$ : $q(t) = e^{0{,}5t}$. Alors $q(4) = e^2 \\approx 7{,}389$ et $p(4) = \\dfrac{10}{1 + 9e^{-2}} \\approx 4{,}509$, donc $q(4) - p(4) \\approx 2{,}88$. Au bout de $4$ heures, le modèle exponentiel surestime déjà nettement la population : le freinage du modèle logistique compte."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-030",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 3,
+    "notions": ["n-primitives-equations-differentielles-equation-ay-f", "n-primitives-equations-differentielles-calcul"],
+    "capacites": ["bo-m-primitives-06", "bo-m-primitives-02", "bo-m-trigonometrie-01", "bo-m-limites-fonctions-05"],
+    "titre": "Résoudre $y' + y = e^{-x}\\cos(x)$ grâce à une primitive",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 521,
+    "source": { "annale": "an-2026-asie-j2", "adaptation": "équation et affirmation 5 du vrai-faux reprises en question 3, préparées par les questions 1 et 2 ; questions 4 et 5 ajoutées" },
+    "preambule": "On considère l'équation différentielle $(E) : y' + y = e^{-x}\\cos(x)$, où $y$ est une fonction de la variable $x$, dérivable sur $\\mathbb{R}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $y$ une fonction dérivable sur $\\mathbb{R}$, et $z$ la fonction définie sur $\\mathbb{R}$ par $z(x) = e^{x}y(x)$. Démontrer que $y$ est solution de $(E)$ si et seulement si, pour tout réel $x$, $z'(x) = \\cos(x)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive le produit $z(x) = e^{x}y(x)$, puis factorise par $e^{x}$ : c'est l'idée de la démonstration du cours pour $y' = ay$.",
+          "$z'(x) = e^{x}y(x) + e^{x}y'(x) = e^{x}\\big(y'(x) + y(x)\\big)$.",
+          "Comme $e^{x} > 0$, l'égalité $y'(x) + y(x) = e^{-x}\\cos(x)$ équivaut à celle obtenue en multipliant ses deux membres par $e^{x}$.",
+          "$e^{x} \\times e^{-x} = 1$ : enchaîne les équivalences jusqu'à $z'(x) = \\cos(x)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-035",
+        "solution": "$z$ est dérivable comme produit de fonctions dérivables, et $z'(x) = e^{x}y(x) + e^{x}y'(x) = e^{x}\\big(y'(x) + y(x)\\big)$. Pour tout réel $x$, comme $e^{x} > 0$ : $y'(x) + y(x) = e^{-x}\\cos(x) \\iff e^{x}\\big(y'(x) + y(x)\\big) = e^{x}e^{-x}\\cos(x) \\iff z'(x) = \\cos(x)$. Donc $y$ est solution de $(E)$ si et seulement si $z'(x) = \\cos(x)$ pour tout réel $x$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire toutes les solutions de $(E)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$z' = \\cos$ signifie que $z$ est une primitive de $\\cos$ sur $\\mathbb{R}$.",
+          "Les primitives de $\\cos$ sur $\\mathbb{R}$ sont les fonctions $x \\mapsto \\sin(x) + C$ : écris $z(x)$.",
+          "Reviens à $y$ : $y(x) = e^{-x}z(x)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-006",
+        "solution": "D'après la question 1, $y$ est solution de $(E)$ si et seulement si $z$ est une primitive de $\\cos$ sur l'intervalle $\\mathbb{R}$, c'est-à-dire $z(x) = \\sin(x) + C$, avec $C$ réel. Comme $y(x) = e^{-x}z(x)$, les solutions de $(E)$ sont les fonctions $x \\mapsto \\big(\\sin(x) + C\\big)e^{-x}$, $C$ réel."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Affirmation : les solutions de $(E)$ sur $\\mathbb{R}$ sont les fonctions $k$ définies sur $\\mathbb{R}$ par $k(x) = Ce^{-x}\\sin(x)$, où $C$ est un nombre réel.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "D'après la question 2, la fonction $x \\mapsto \\big(\\sin(x) + 1\\big)e^{-x}$ est une solution de $(E)$ ; elle vaut $1$ en $0$, alors que $k(0) = Ce^{0}\\sin(0) = 0$ pour toute valeur de $C$. Elle n'est donc pas de la forme annoncée. Seule $x \\mapsto e^{-x}\\sin(x)$, obtenue pour $C = 1$, est à la fois de cette forme et solution."
+        },
+        "indices": [
+          "Compare avec les solutions trouvées à la question 2 : un seul contre-exemple suffit.",
+          "Calcule $k(0)$ pour une fonction de la forme annoncée.",
+          "Trouve, parmi les solutions de la question 2, une solution qui ne s'annule pas en $0$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-004",
+        "solution": "D'après la question 2, $h : x \\mapsto \\big(\\sin(x) + 1\\big)e^{-x}$ est solution de $(E)$, et $h(0) = 1$. Or toute fonction $k$ de la forme annoncée vérifie $k(0) = Ce^{0}\\sin(0) = 0$. Donc $h$ n'est pas de cette forme : l'ensemble annoncé ne contient pas toutes les solutions, et l'affirmation est fausse."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Retrouver le résultat de la question 2 avec la propriété du cours sur les équations $y' = ay + f$ : quelle solution particulière simple de $(E)$ lit-on dans la question 2 ?",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Prends $C = 0$ dans la question 2 : tu obtiens une solution particulière $g$.",
+          "$g(x) = e^{-x}\\sin(x)$. Vérifie-la en calculant $g'(x) + g(x)$.",
+          "L'équation sans second membre $y' + y = 0$ a pour solutions les fonctions $x \\mapsto Ce^{-x}$ : ajoute-leur $g$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-066",
+        "solution": "Avec $C = 0$ : $g(x) = e^{-x}\\sin(x)$. Vérification : $g'(x) = -e^{-x}\\sin(x) + e^{-x}\\cos(x)$, donc $g'(x) + g(x) = e^{-x}\\cos(x)$, et $g$ est une solution particulière de $(E)$. L'équation sans second membre $y' + y = 0$, soit $y' = -y$, a pour solutions les fonctions $x \\mapsto Ce^{-x}$. D'après la propriété du cours, les solutions de $(E)$ sont les fonctions $x \\mapsto Ce^{-x} + e^{-x}\\sin(x) = \\big(\\sin(x) + C\\big)e^{-x}$ : on retrouve la question 2."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Soit $f$ la solution de $(E)$ telle que $f(0) = 1$. Montrer que, pour tout réel $x$, $0 \\leqslant f(x) \\leqslant 2e^{-x}$, puis en déduire $\\lim\\limits_{x \\to +\\infty} f(x)$.",
+        "reponse": { "type": "numerique", "valeur": 0, "tolerance": 0 },
+        "indices": [
+          "Détermine d'abord $C$ grâce à la condition $f(0) = 1$.",
+          "$f(x) = \\big(\\sin(x) + 1\\big)e^{-x}$. Encadre $\\sin(x) + 1$, sachant que $-1 \\leqslant \\sin(x) \\leqslant 1$.",
+          "Multiplie l'encadrement par $e^{-x}$, qui est strictement positif.",
+          "Quelle est la limite de $2e^{-x}$ en $+\\infty$ ? Les deux bornes de l'encadrement ont alors la même limite : applique le théorème des gendarmes."
+        ],
+        "revoir": "l-limites-fonctions-041",
+        "solution": "$f(0) = (0 + C)e^{0} = C$, donc $C = 1$ et $f(x) = \\big(\\sin(x) + 1\\big)e^{-x}$. Pour tout réel $x$, $-1 \\leqslant \\sin(x) \\leqslant 1$, donc $0 \\leqslant \\sin(x) + 1 \\leqslant 2$ ; en multipliant par $e^{-x} > 0$ : $0 \\leqslant f(x) \\leqslant 2e^{-x}$. Or $\\lim\\limits_{x \\to +\\infty} 2e^{-x} = 0$. D'après le théorème des gendarmes, $\\lim\\limits_{x \\to +\\infty} f(x) = 0$."
+      }
+    ]
+  },
+  {
+    "id": "x-primitives-equations-differentielles-031",
+    "chapitre": "primitives-equations-differentielles",
+    "niveau": 2,
+    "notions": ["n-primitives-equations-differentielles-primitive"],
+    "capacites": ["bo-m-primitives-01", "bo-m-derivation-05"],
+    "titre": "Reconnaître la courbe d'une primitive",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 114,
+    "source": { "annale": "an-2026-metropole-juin-j2", "adaptation": "question 2 : consigne reprise (reconnaître, parmi trois courbes, celles qui représentent des primitives de $f$), avec une fonction et des courbes choisies ici ; questions 1, 3 et 4 ajoutées" },
+    "preambule": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = (1 - x)e^x$. La figure montre trois courbes $\\mathcal{C}_1$, $\\mathcal{C}_2$ et $\\mathcal{C}_3$ dans un repère orthonormé, avec un quadrillage d'une unité.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/primitives-equations-differentielles/exercice-courbes-primitives.svg",
+        "alt": "Trois courbes tracées dans un repère orthonormé muni d'un quadrillage d'une unité, pour x entre −2,5 et 2,4. La courbe C1, en orange et en pointillés, part d'environ (−2,5 ; 0,3), monte jusqu'à son maximum au point (0 ; 1), redescend en coupant l'axe des abscisses au point (1 ; 0), puis plonge vers le bas. La courbe C2, en bleu et en trait plein, part d'environ (−2,5 ; 0,4), passe par le point (0 ; 2), atteint son maximum, environ 2,7, en x = 1, coupe l'axe des abscisses au point (2 ; 0), puis plonge vers le bas. La courbe C3, en vert et en tirets, a la même forme que C2, deux unités plus bas : elle part d'environ (−2,5 ; −1,6), passe par l'origine du repère, atteint son maximum, environ 0,7, en x = 1, passe par le point (2 ; −2), puis plonge vers le bas.",
+        "width": 265,
+        "height": 342
+      },
+      "caption": "Les courbes C1, C2 et C3, avec un quadrillage d'une unité."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étudier le signe de $f(x)$ sur $\\mathbb{R}$, puis le sens de variation d'une primitive $F$ quelconque de $f$ sur $\\mathbb{R}$. En quelle abscisse $F$ atteint-elle son maximum ?",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "Pas besoin de connaître $F$ : $F' = f$, donc $F$ est croissante là où $f(x) \\geqslant 0$ et décroissante là où $f(x) \\leqslant 0$.",
+          "$e^x > 0$ pour tout réel $x$ : $f(x)$ a le signe du facteur $1 - x$.",
+          "Résous l'inéquation $1 - x > 0$, puis dresse le tableau de variations de $F$ : le maximum est atteint là où $F'$ passe du positif au négatif."
+        ],
+        "revoir": "l-primitives-equations-differentielles-013",
+        "solution": "$F$ est dérivable sur $\\mathbb{R}$ et $F' = f$. Comme $e^x > 0$, $f(x)$ a le signe de $1 - x$ : $f(x) > 0$ pour $x < 1$, $f(1) = 0$ et $f(x) < 0$ pour $x > 1$. Donc $F$ est strictement croissante sur $]-\\infty\\,;\\,1]$ et strictement décroissante sur $[1\\,;\\,+\\infty[$ : quelle que soit la primitive choisie, elle atteint son maximum en $x = 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Parmi les courbes $\\mathcal{C}_1$, $\\mathcal{C}_2$ et $\\mathcal{C}_3$, lesquelles peuvent représenter une primitive de $f$ sur $\\mathbb{R}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\mathcal{C}_1$ seulement",
+            "$\\mathcal{C}_2$ seulement",
+            "$\\mathcal{C}_2$ et $\\mathcal{C}_3$",
+            "$\\mathcal{C}_1$, $\\mathcal{C}_2$ et $\\mathcal{C}_3$"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "$\\mathcal{C}_1$ atteint son maximum en $0$ et décroît sur $[0\\,;\\,1]$, alors que toute primitive de $f$ croît sur $]-\\infty\\,;\\,1]$. C'est la courbe de $f$ elle-même : elle passe par $(0\\,;\\,1)$ et coupe l'axe des abscisses en $1$, là où une primitive atteint son maximum.",
+            "$\\mathcal{C}_3$ convient aussi : elle a la même forme que $\\mathcal{C}_2$, décalée vers le bas. Deux primitives d'une même fonction diffèrent d'une constante : leurs courbes se déduisent l'une de l'autre par une translation verticale.",
+            null,
+            "$\\mathcal{C}_1$ ne convient pas : elle décroît sur $[0\\,;\\,1]$, alors que $f(x) > 0$ pour $x < 1$, donc toute primitive de $f$ croît sur $]-\\infty\\,;\\,1]$."
+          ]
+        },
+        "indices": [
+          "Une courbe convient si elle monte là où $f(x) \\geqslant 0$ et descend là où $f(x) \\leqslant 0$ : reprends le sens de variation trouvé à la question 1, puis regarde celui de chaque courbe.",
+          "Une primitive de $f$ croît, puis décroît : son point le plus haut est à l'abscisse trouvée à la question 1. Pour chaque courbe, lis l'abscisse de son point le plus haut.",
+          "Deux courbes ont leur point le plus haut à la bonne abscisse. La troisième a le sien en $0$ : où coupe-t-elle l'axe des abscisses, et quelle fonction de l'énoncé représente-t-elle ?"
+        ],
+        "revoir": "l-primitives-equations-differentielles-013",
+        "solution": "D'après la question 1, toute primitive de $f$ est strictement croissante sur $]-\\infty\\,;\\,1]$, strictement décroissante sur $[1\\,;\\,+\\infty[$, et atteint son maximum en $x = 1$. Les courbes $\\mathcal{C}_2$ et $\\mathcal{C}_3$ ont ce sens de variation, avec leur point le plus haut d'abscisse $1$ : elles peuvent représenter des primitives de $f$. D'ailleurs, $\\mathcal{C}_3$ se déduit de $\\mathcal{C}_2$ par une translation verticale, comme les courbes de deux primitives d'une même fonction, qui diffèrent d'une constante. En revanche, $\\mathcal{C}_1$ est décroissante sur $[0\\,;\\,1]$, alors que toute primitive de $f$ y est croissante : elle ne convient pas. C'est la courbe de $f$ : elle passe par $(0\\,;\\,1)$ et coupe l'axe des abscisses en $1$. Réponse : $\\mathcal{C}_2$ et $\\mathcal{C}_3$.",
+        "erreurFrequente": "Choisir la courbe qui coupe l'axe des abscisses en $1$ : c'est $f$ qui s'annule en $1$ ; une primitive, elle, y atteint son maximum."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vérifier que la fonction $F$ définie sur $\\mathbb{R}$ par $F(x) = (2 - x)e^x$ est une primitive de $f$ sur $\\mathbb{R}$. Calculer $F(0)$, puis dire laquelle des courbes $\\mathcal{C}_2$ et $\\mathcal{C}_3$ représente $F$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive $F$ comme un produit $uv$, puis compare $F'(x)$ avec $f(x)$.",
+          "$u(x) = 2 - x$, $u'(x) = -1$, et $v(x) = v'(x) = e^x$ : $F'(x) = -e^x + (2 - x)e^x$.",
+          "Factorise par $e^x$ pour conclure. Ensuite, $e^0$ vaut $1$ : calcule $F(0)$, puis cherche la courbe qui coupe l'axe des ordonnées au point d'ordonnée $F(0)$."
+        ],
+        "revoir": "l-primitives-equations-differentielles-004",
+        "solution": "$F$ est dérivable sur $\\mathbb{R}$, et $F = uv$ avec $u(x) = 2 - x$, $u'(x) = -1$, $v(x) = v'(x) = e^x$. Donc, pour tout réel $x$, $F'(x) = -e^x + (2 - x)e^x = (-1 + 2 - x)e^x = (1 - x)e^x = f(x)$ : $F$ est une primitive de $f$ sur $\\mathbb{R}$. De plus, $F(0) = (2 - 0)e^0 = 2$. La courbe de $F$ passe donc par le point $(0\\,;\\,2)$ : c'est $\\mathcal{C}_2$, car $\\mathcal{C}_3$ passe par l'origine du repère."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "La courbe $\\mathcal{C}_3$ passe par l'origine du repère. Elle représente une primitive $G$ de $f$, qui s'écrit $G(x) = F(x) + C$, où $C$ est un réel. Que vaut $C$ ?",
+        "reponse": { "type": "numerique", "valeur": -2, "tolerance": 0 },
+        "indices": [
+          "Traduis « $\\mathcal{C}_3$ passe par l'origine du repère » par une égalité portant sur $G(0)$.",
+          "$G(0) = 0$, et $G(0) = F(0) + C$ : utilise la valeur de $F(0)$ trouvée à la question 3.",
+          "Résous l'équation $F(0) + C = 0$ d'inconnue $C$. Contrôle sur la figure : à chaque abscisse, l'écart vertical entre $\\mathcal{C}_2$ et $\\mathcal{C}_3$ est le même."
+        ],
+        "revoir": "l-primitives-equations-differentielles-008",
+        "solution": "$G$ et $F$ sont deux primitives de $f$ sur $\\mathbb{R}$ : elles diffèrent d'une constante, $G(x) = F(x) + C$. La courbe $\\mathcal{C}_3$ passe par l'origine, donc $G(0) = 0$, c'est-à-dire $F(0) + C = 2 + C = 0$, d'où $C = -2$. Ainsi $G(x) = (2 - x)e^x - 2$. Contrôle sur la figure : $\\mathcal{C}_3$ se déduit de $\\mathcal{C}_2$ par une translation de $2$ unités vers le bas ; par exemple, $\\mathcal{C}_2$ passe par $(2\\,;\\,0)$ et $\\mathcal{C}_3$ par $(2\\,;\\,-2)$.",
+        "erreurFrequente": "Écrire $C = G(0) = 0$ : la constante n'est pas la valeur en $0$, car $F(0)$ ne vaut pas $0$."
+      }
+    ]
+  }
+]

@@ -658,7 +658,9 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     phrase qui finit par une formule voit son point passer seul à la ligne suivante (« vers
     +∞ » puis « . Mais… », idée de la notion « croissances comparées » de Limites de
     fonctions, 390 px) : lier la ponctuation à la formule qui la précède (rendu KaTeX en ligne,
-    `lib/typographie`).
+    `lib/typographie`). Même famille : un intervalle coupé après son crochet (« ]− » en fin de
+    ligne, « ∞ ; 0[ » sur la suivante), vu dans le rappel `l-primitives-equations-differentielles-002`
+    à 1280 px.
   - [x] Continuité et théorème des valeurs intermédiaires : le cours — 4 notions (priorités
     mesurées sur 103 sujets : théorème des valeurs intermédiaires et limite d'une suite
     uₙ₊₁ = f(uₙ) incontournables, 73 % et 53 % ; fonction continue fréquent, relevée d'un cran
@@ -928,16 +930,50 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     essayées sur une calculatrice.
   - [ ] Une animation « point sur le cercle ↔ point sur la courbe » pour sinus et cosinus —
     souhait de l'auteur du cours ; à faire quand les figures animées existeront.
-  - [ ] Quand « Primitives, équations différentielles » (ch. 13) et « Calcul intégral »
-    (ch. 14) seront écrits, remettre dans les types bac de Sinus et cosinus les questions
-    retirées des sujets adaptés — tb-002 (partie B : intégration par parties, aire) et
-    tb-004 (deux affirmations sur les équations différentielles) ; voir leurs notes
+  - [ ] Remettre dans les types bac de Sinus et cosinus les questions retirées des sujets
+    adaptés — tb-004 (deux affirmations sur les équations différentielles) : possible
+    maintenant que « Primitives, équations différentielles » est écrit ; tb-002 (partie B :
+    intégration par parties, aire) attendra « Calcul intégral » (ch. 14). Voir leurs notes
     `adaptation`.
-  - [ ] Primitives, équations différentielles : le cours — chapitre 13 dans l'ordre de
-    l'année (`primitives-equations-differentielles`) :
-    `/tle-chapitre maths primitives-equations-differentielles cours`.
-  - [ ] Primitives, équations différentielles : les exercices —
-    `/tle-chapitre maths primitives-equations-differentielles exercices`, après le cours.
+  - [x] Primitives, équations différentielles : le cours — fait le 2026-10-26 : 5 notions au
+    lieu des 4 proposées (« primitives » coupées en deux : reconnaître ou vérifier une
+    primitive, puis la calculer), priorités mesurées sur 103 sujets (y' = ay 54 % → ★★★ ;
+    primitive 25 %, relevée d'un cran car la résolution de y' = ay en dépend → ★★★ ; calcul
+    21 %, y' = ay + f 21 %, y' = ay + b 27 % sur les 63 sujets où elle était au programme
+    → ★★). 74 blocs dont les 2 démonstrations exigibles (deux primitives diffèrent d'une
+    constante, résolution de y' = ay), 14 exemples, 12 « vérifie », 10 cartes de mémo,
+    3 figures ; méthode d'Euler (y' = f et y' = ay + b) avec programme Python et deux pas à
+    la main ; équation logistique en complément ; aucune intégrale (ch. 14). Relecteur PASS
+    aux tours 1, 2 et 3 (ciblés) ; élève-testeur CLAIR (12/12 « vérifie », 14 gênes
+    corrigées).
+  - [x] Primitives, équations différentielles : les exercices — même session : 31 exercices
+    (13 Comprendre, 14 S'entraîner, 4 Approfondir), 16 questions éclair, 4 sujets type bac
+    (23 points, adaptés de Polynésie 2022, Métropole juin et septembre 2026, et un vrai-faux
+    tiré de six sujets ; valeur moyenne retirée de tb-002, notée dans `adaptation`).
+    Relecteur NEEDS_REVISION au tour 1 (un choix de QCM juste compté faux ; des réponses
+    attendues en fraction alors que la consigne laissait croire qu'un décimal suffisait),
+    PASS au tour 2 ; élève-testeur CLAIR (13/13 en Comprendre). Coût : 70,5 $ pour les deux
+    parties, avec deux coupures (limite des 5 h, puis limite de la semaine) ; agents repris
+    sans rien perdre. Leçon : relecture des exercices, test « élève » et relecture ciblée du
+    cours lancés ensemble, puis un seul tour à trois correcteurs : 5 relectures en tout.
+  - [ ] Primitives et équations différentielles, petites retouches — non bloquants laissés
+    ouverts (relecture du tour 2, 2026-10-26) : dans `l-primitives-equations-differentielles-057`
+    étape 1, « ou quand l'énoncé te la demande » (le « la » peut se lire « la solution
+    exacte » : écrire « demande cette méthode ») ; le piège `-074` sépare la propriété 066 de
+    son exemple 067 (le placer après 067) ; x-031 q2, le 3e indice désigne presque la bonne
+    courbe ; x-031, la lettre F désigne d'abord une primitive quelconque, puis une primitive
+    précise.
+  - [ ] Recompter ce qui tombe au bac pour l'équation y' = ay + f — dans
+    `content/terminale/maths/annales.json`, les sessions 2022-2023 excluent les lignes
+    `bo-m-primitives-03`, `-05` et `-08` mais pas `-06`, `-09` ni `-10`, alors qu'aucun sujet
+    de ces sessions ne les mobilise ; les notions y' = ay + b et y' = ay + f sont donc
+    comptées sur 103 sujets au lieu de 63.
+    À confier à `annales-indexeur`, puis relancer `frequences-annales.mjs` et recopier les
+    chiffres dans `notions.json` (priorités inchangées d'après l'architecte).
+  - [ ] Calcul intégral : le cours — chapitre 14 dans l'ordre de l'année
+    (`integration`) : `/tle-chapitre maths integration cours`.
+  - [ ] Calcul intégral : les exercices —
+    `/tle-chapitre maths integration exercices`, après le cours.
   - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
     (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
     `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source
@@ -1112,3 +1148,6 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   la session à la demande de Thibaud. Trouver ce qui doit déclencher la fusion automatique
   (flotte, `pr-ready.yml`, réglage « auto-merge » du dépôt) et le réparer, ou corriger la règle
   dans `CLAUDE.md`. DoD : la prochaine PR de chapitre fusionne seule, ou la règle dit la vérité.
+  Piste trouvée le 2026-10-26 (PR #136) : activer la fusion automatique répond « Auto-merge
+  is not enabled for this repository » — le réglage du dépôt Settings → General → Pull
+  Requests → « Allow auto-merge » est éteint (à allumer par Thibaud).

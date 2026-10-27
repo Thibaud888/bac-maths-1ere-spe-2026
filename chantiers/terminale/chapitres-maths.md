@@ -234,6 +234,9 @@ tangente, non exigible, en complément) devient la 3e. Priorités mesurées, tou
 18 %, 0 %, 6 % des sujets. 42 blocs, 14 exercices, 6 questions éclair, 4 exercices type bac.
 
 ### 13. Primitives, équations différentielles
+> Écrit le 2026-10-26 en 5 notions : « primitives » coupé en deux (reconnaître ou vérifier
+> une primitive ★★★, la calculer ★★) ; y' = ay ★★★, y' = ay + b ★★, y' = ay + f ★★ (mesurées
+> sur les annales). Méthode d'Euler et équation logistique rangées dans y' = ay + b.
 - Primitives : définition, primitives usuelles, opérations · ★★
 - Équation y' = ay · ★★
 - Équation y' = ay + b, solution particulière constante · ★★★ · souvent en contexte (refroidissement, population)
