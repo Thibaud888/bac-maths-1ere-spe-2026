@@ -954,8 +954,9 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     attendues en fraction alors que la consigne laissait croire qu'un décimal suffisait),
     PASS au tour 2 ; élève-testeur CLAIR (13/13 en Comprendre). Coût : 70,5 $ pour les deux
     parties, avec deux coupures (limite des 5 h, puis limite de la semaine) ; agents repris
-    sans rien perdre. Leçon : relecture des exercices, test « élève » et relecture ciblée du
-    cours lancés ensemble, puis un seul tour à trois correcteurs : 5 relectures en tout.
+    sans rien perdre. PR : #136, fusionnée par la session à la demande de Thibaud. Leçon :
+    relecture des exercices, test « élève » et relecture ciblée du cours lancés ensemble,
+    puis un seul tour à trois correcteurs : 5 relectures en tout.
   - [ ] Primitives et équations différentielles, petites retouches — non bloquants laissés
     ouverts (relecture du tour 2, 2026-10-26) : dans `l-primitives-equations-differentielles-057`
     étape 1, « ou quand l'énoncé te la demande » (le « la » peut se lire « la solution
@@ -1150,4 +1151,5 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   dans `CLAUDE.md`. DoD : la prochaine PR de chapitre fusionne seule, ou la règle dit la vérité.
   Piste trouvée le 2026-10-26 (PR #136) : activer la fusion automatique répond « Auto-merge
   is not enabled for this repository » — le réglage du dépôt Settings → General → Pull
-  Requests → « Allow auto-merge » est éteint (à allumer par Thibaud).
+  Requests → « Allow auto-merge » est éteint (à allumer par Thibaud). Troisième fois : PR #136,
+  fusionnée par la session à la demande de Thibaud le 2026-10-27.
