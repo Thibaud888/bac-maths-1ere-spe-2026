@@ -1,0 +1,153 @@
+[
+  {
+    "id": "m-integration-aire",
+    "chapitre": "integration",
+    "notion": "n-integration-aire",
+    "genre": "definition",
+    "titre": "Intégrale d'une fonction positive : une aire",
+    "enonce": "Soit $f$ une fonction continue et positive sur $[a\\,;\\,b]$. L'intégrale $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ est l'aire, en unités d'aire, du domaine limité par la courbe de $f$, l'axe des abscisses et les droites d'équations $x = a$ et $x = b$. L'unité d'aire est l'aire du rectangle construit sur les unités des deux axes.",
+    "conditions": "$f$ continue et positive sur $[a\\,;\\,b]$, avec $a \\leqslant b$.",
+    "exemple": "$\\displaystyle\\int_0^4 \\frac{x}{2}\\,\\mathrm{d}x$ est l'aire d'un triangle de base $4$ et de hauteur $2$ : elle vaut $4$.",
+    "simplifie": {
+      "coeur": "$f \\geqslant 0$ : $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ = aire sous $\\mathcal{C}_f$ entre $x = a$ et $x = b$, en u.a.",
+      "moyenMemo": "L'intégrale, c'est l'aire sous la courbe.",
+      "motCle": "aire",
+      "image": "Une courbe au-dessus de l'axe, deux murs verticaux en a et en b : on mesure la surface coloriée."
+    }
+  },
+  {
+    "id": "m-integration-rectangles",
+    "chapitre": "integration",
+    "notion": "n-integration-aire",
+    "genre": "methode",
+    "titre": "Encadrer une intégrale par des rectangles",
+    "enonce": "On découpe $[a\\,;\\,b]$ en $n$ intervalles de largeur $h = \\dfrac{b - a}{n}$, de bornes $x_k = a + kh$. Si $f$ est croissante, les rectangles à gauche sont sous la courbe et ceux à droite la dépassent :$$h\\big(f(x_0) + \\dots + f(x_{n-1})\\big) \\leqslant \\int_a^b f(x)\\,\\mathrm{d}x \\leqslant h\\big(f(x_1) + \\dots + f(x_n)\\big).$$Pour $f$ décroissante, les inégalités s'échangent. Les milieux, les trapèzes et la méthode de Monte-Carlo donnent des valeurs approchées.",
+    "conditions": "$f$ continue, positive et monotone sur $[a\\,;\\,b]$.",
+    "exemple": "Avec $4$ rectangles : $0{,}21875 \\leqslant \\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x \\leqslant 0{,}46875$.",
+    "simplifie": {
+      "coeur": "$f$ croissante : rectangles à gauche $\\leqslant \\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x \\leqslant$ rectangles à droite, de largeur $h = \\dfrac{b - a}{n}$",
+      "moyenMemo": "Croissante : la gauche reste sous la courbe, la droite la dépasse.",
+      "motCle": "rectangles"
+    }
+  },
+  {
+    "id": "m-integration-crochet",
+    "chapitre": "integration",
+    "notion": "n-integration-primitive",
+    "genre": "formule",
+    "titre": "Calculer une intégrale avec une primitive",
+    "enonce": "Si $f$ est continue sur un intervalle $I$ contenant $a$ et $b$, et si $F$ est une primitive de $f$ sur $I$, alors $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x = \\left[F(x)\\right]_a^b = F(b) - F(a)$. Le résultat ne dépend pas de la primitive choisie. Pour $f$ positive et $a \\leqslant b$, c'est une aire ; sinon, il peut être négatif.",
+    "conditions": "$f$ continue sur un intervalle contenant $a$ et $b$ ; $F' = f$.",
+    "exemple": "$\\displaystyle\\int_1^e \\frac{1}{x}\\,\\mathrm{d}x = \\ln e - \\ln 1 = 1$.",
+    "simplifie": {
+      "coeur": "$\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x = \\left[F(x)\\right]_a^b = F(b) - F(a)$",
+      "moyenMemo": "Une primitive, puis « haut moins bas », avec des parenthèses.",
+      "motCle": "crochet"
+    }
+  },
+  {
+    "id": "m-integration-fonction-aire",
+    "chapitre": "integration",
+    "notion": "n-integration-primitive",
+    "genre": "propriete",
+    "titre": "La fonction $x \\mapsto \\int_a^x f(t)\\,\\mathrm{d}t$",
+    "enonce": "Si $f$ est continue sur un intervalle $I$ contenant $a$, la fonction $F_a : x \\mapsto \\displaystyle\\int_a^x f(t)\\,\\mathrm{d}t$ est la primitive de $f$ qui s'annule en $a$ : $F_a' = f$ et $F_a(a) = 0$. On connaît ainsi sa dérivée, même sans primitive explicite. Toute fonction continue sur un intervalle admet des primitives.",
+    "conditions": "$f$ continue sur un intervalle $I$ contenant $a$.",
+    "exemple": "$F(x) = \\displaystyle\\int_0^x e^{-t^2}\\,\\mathrm{d}t$ : $F'(x) = e^{-x^2} > 0$, donc $F$ est croissante.",
+    "simplifie": {
+      "coeur": "$F_a(x) = \\displaystyle\\int_a^x f(t)\\,\\mathrm{d}t$ : $F_a' = f$ et $F_a(a) = 0$",
+      "moyenMemo": "La dérivée de l'aire, c'est la fonction sous l'intégrale.",
+      "motCle": "fonction-aire"
+    }
+  },
+  {
+    "id": "m-integration-parties",
+    "chapitre": "integration",
+    "notion": "n-integration-parties",
+    "genre": "formule",
+    "titre": "Intégration par parties",
+    "enonce": "Si $u$ et $v$ sont dérivables sur un intervalle $I$, de dérivées continues, et si $a$ et $b$ sont dans $I$ :$$\\int_a^b u(x)v'(x)\\,\\mathrm{d}x = \\big[u(x)v(x)\\big]_a^b - \\int_a^b u'(x)v(x)\\,\\mathrm{d}x.$$La formule vient de l'intégration de $(uv)' = u'v + uv'$.",
+    "conditions": "$u$ et $v$ dérivables sur $I$, avec $u'$ et $v'$ continues sur $I$.",
+    "exemple": "$\\displaystyle\\int_0^1 xe^x\\,\\mathrm{d}x = \\big[xe^x\\big]_0^1 - \\int_0^1 e^x\\,\\mathrm{d}x = e - (e - 1) = 1$.",
+    "simplifie": {
+      "coeur": "$\\displaystyle\\int_a^b uv' = \\big[uv\\big]_a^b - \\int_a^b u'v$",
+      "moyenMemo": "On fait passer la dérivée sur l'autre facteur, et on paie un signe moins.",
+      "motCle": "parties"
+    }
+  },
+  {
+    "id": "m-integration-choix-u",
+    "chapitre": "integration",
+    "notion": "n-integration-parties",
+    "genre": "methode",
+    "titre": "Choisir $u$ et $v'$",
+    "enonce": "Dans $\\displaystyle\\int_a^b u(x)v'(x)\\,\\mathrm{d}x$, prends pour $u$ le facteur que la dérivation simplifie (un polynôme, $\\ln x$) et pour $v'$ celui dont tu connais une primitive ($e^x$, $e^{-x}$, $\\sin x$, $\\cos x$). Avec $\\ln x$, pose toujours $u(x) = \\ln x$. Si la nouvelle intégrale est plus compliquée que la première, change de choix.",
+    "exemple": "$\\displaystyle\\int_1^e x\\ln x\\,\\mathrm{d}x$ : $u(x) = \\ln x$ et $v'(x) = x$, d'où $\\dfrac{e^2 + 1}{4}$.",
+    "simplifie": {
+      "coeur": "$u$ : ce qui se simplifie en dérivant (polynôme, $\\ln x$) ; $v'$ : ce qu'on sait intégrer ($e^x$, $e^{-x}$, $\\sin$, $\\cos$)",
+      "moyenMemo": "Le polynôme descend, le logarithme disparaît.",
+      "motCle": "choix-u"
+    }
+  },
+  {
+    "id": "m-integration-chasles",
+    "chapitre": "integration",
+    "notion": "n-integration-proprietes",
+    "genre": "propriete",
+    "titre": "Linéarité et relation de Chasles",
+    "enonce": "Pour $f$ et $g$ continues sur un intervalle contenant $a$, $b$ et $c$, et $k$ réel : l'intégrale de $f + kg$ de $a$ à $b$ vaut $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x + k\\int_a^b g(x)\\,\\mathrm{d}x$ (linéarité), et $\\displaystyle\\int_a^c f(x)\\,\\mathrm{d}x = \\int_a^b f(x)\\,\\mathrm{d}x + \\int_b^c f(x)\\,\\mathrm{d}x$ (relation de Chasles). Échanger les bornes change le signe.",
+    "conditions": "$f$ et $g$ continues sur un intervalle contenant $a$, $b$ et $c$, rangés dans n'importe quel ordre.",
+    "exemple": "$\\displaystyle\\int_{-1}^{2} |x|\\,\\mathrm{d}x = \\int_{-1}^{0} (-x)\\,\\mathrm{d}x + \\int_0^2 x\\,\\mathrm{d}x = \\frac{1}{2} + 2 = \\frac{5}{2}$.",
+    "simplifie": {
+      "coeur": "$\\displaystyle\\int_a^c f = \\int_a^b f + \\int_b^c f$ ; $\\displaystyle\\int_a^b (f + kg) = \\int_a^b f + k\\int_a^b g$",
+      "moyenMemo": "Une aire se découpe en morceaux.",
+      "motCle": "chasles"
+    }
+  },
+  {
+    "id": "m-integration-inegalites",
+    "chapitre": "integration",
+    "notion": "n-integration-proprietes",
+    "genre": "propriete",
+    "titre": "Positivité, intégration des inégalités",
+    "enonce": "Si $a \\leqslant b$ et si $f(x) \\leqslant g(x)$ pour tout $x$ de $[a\\,;\\,b]$, alors $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x \\leqslant \\int_a^b g(x)\\,\\mathrm{d}x$. En particulier, $f \\geqslant 0$ donne une intégrale positive, et $m \\leqslant f \\leqslant M$ donne $m(b - a) \\leqslant \\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x \\leqslant M(b - a)$.",
+    "conditions": "$f$ et $g$ continues sur $[a\\,;\\,b]$, bornes dans l'ordre croissant : $a \\leqslant b$.",
+    "exemple": "Sur $[0\\,;\\,1]$, $e^{-x} \\leqslant e^{-x^2} \\leqslant 1$, donc $1 - e^{-1} \\leqslant \\displaystyle\\int_0^1 e^{-x^2}\\,\\mathrm{d}x \\leqslant 1$.",
+    "simplifie": {
+      "coeur": "$a \\leqslant b$ et $f \\leqslant g$ sur $[a\\,;\\,b]$ $\\Rightarrow$ $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x \\leqslant \\int_a^b g(x)\\,\\mathrm{d}x$",
+      "moyenMemo": "On encadre la fonction, puis on intègre l'encadrement.",
+      "motCle": "encadrer"
+    }
+  },
+  {
+    "id": "m-integration-entre-courbes",
+    "chapitre": "integration",
+    "notion": "n-integration-courbes-valeur-moyenne",
+    "genre": "formule",
+    "titre": "Aire entre deux courbes",
+    "enonce": "Si $f$ et $g$ sont continues sur $[a\\,;\\,b]$ et si $f(x) \\geqslant g(x)$ pour tout $x$ de $[a\\,;\\,b]$, l'aire du domaine compris entre les deux courbes et les droites $x = a$ et $x = b$ vaut $\\displaystyle\\int_a^b \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x$ u.a. Si les courbes se croisent, on découpe avec la relation de Chasles.",
+    "conditions": "$a \\leqslant b$ ; $f \\geqslant g$ sur $[a\\,;\\,b]$ : étudier d'abord le signe de $f - g$.",
+    "exemple": "Entre $y = x$ et $y = x^2$ sur $[0\\,;\\,1]$ : $\\displaystyle\\int_0^1 \\left(x - x^2\\right)\\mathrm{d}x = \\frac{1}{6}$ u.a.",
+    "simplifie": {
+      "coeur": "$f \\geqslant g$ sur $[a\\,;\\,b]$ : aire $= \\displaystyle\\int_a^b \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x$",
+      "moyenMemo": "Dessus moins dessous.",
+      "motCle": "entre-courbes"
+    }
+  },
+  {
+    "id": "m-integration-valeur-moyenne",
+    "chapitre": "integration",
+    "notion": "n-integration-courbes-valeur-moyenne",
+    "genre": "formule",
+    "titre": "Valeur moyenne d'une fonction",
+    "enonce": "La valeur moyenne d'une fonction $f$ continue sur $[a\\,;\\,b]$, avec $a < b$, est $\\mu = \\dfrac{1}{b - a}\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$. Pour $f$ positive, c'est la hauteur du rectangle de base $[a\\,;\\,b]$ qui a la même aire que le domaine sous la courbe. Une vitesse moyenne est la valeur moyenne de la vitesse.",
+    "conditions": "$f$ continue sur $[a\\,;\\,b]$, avec $a < b$.",
+    "exemple": "Pour $x \\mapsto x^2$ sur $[0\\,;\\,3]$ : $\\mu = \\dfrac{1}{3} \\times 9 = 3$.",
+    "simplifie": {
+      "coeur": "$\\mu = \\dfrac{1}{b - a}\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$",
+      "moyenMemo": "L'aire divisée par la largeur donne la hauteur moyenne.",
+      "motCle": "moyenne",
+      "image": "La courbe aplatie en un rectangle de même aire : sa hauteur est la moyenne."
+    }
+  }
+]
