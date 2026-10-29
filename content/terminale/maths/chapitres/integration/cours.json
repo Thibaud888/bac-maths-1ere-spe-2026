@@ -14,14 +14,14 @@
           "type": "rappel",
           "titre": "Rappel : fonction continue, aires usuelles",
           "lien": "n-continuite-fonction-continue",
-          "texte": "**Fonction continue** : une fonction est continue sur un intervalle quand sa courbe se trace sans lever le crayon. Toute fonction dérivable est continue : les polynômes, $x \\mapsto e^x$, $\\ln$, $\\sin$, $\\cos$, et leurs sommes, produits, quotients et composées, sur chaque intervalle où elles sont définies.\n\n**Aires usuelles** :\n\n- rectangle de côtés $L$ et $\\ell$ : $L \\times \\ell$ ;\n- triangle de base $B$ et de hauteur $h$ : $\\dfrac{B \\times h}{2}$ ;\n- trapèze de bases $B$ et $b$ et de hauteur $h$ : $\\dfrac{(B + b) \\times h}{2}$ ;\n- disque de rayon $r$ : $\\pi r^2$."
+          "texte": "**Fonction continue** : une fonction est continue sur un intervalle quand sa courbe se trace sans lever le crayon. Toute fonction dérivable est continue : les polynômes, $x \\mapsto e^x$, $\\ln$, $\\sin$, $\\cos$, et leurs sommes, produits, quotients et composées, sur chaque intervalle où elles sont définies. La racine carrée est continue sur $[0\\,;\\,+\\infty[$.\n\n**Aires usuelles** :\n\n- rectangle de côtés $L$ et $\\ell$ : $L \\times \\ell$ ;\n- triangle de base $B$ et de hauteur $h$ : $\\dfrac{B \\times h}{2}$ ;\n- trapèze de bases $B$ et $b$ et de hauteur $h$ : $\\dfrac{(B + b) \\times h}{2}$ ;\n- disque de rayon $r$ : $\\pi r^2$."
         },
         {
           "id": "l-integration-003",
           "type": "definition",
           "titre": "Intégrale d'une fonction continue et positive",
           "capacites": ["bo-m-integrale-01"],
-          "texte": "Le plan est muni d'un repère orthogonal $(O\\,;\\,I,\\,J)$. L'**unité d'aire** (u.a.) est l'aire du rectangle construit sur les côtés $[OI]$ et $[OJ]$.\n\nSoit $f$ une fonction continue et positive sur un **segment** $[a\\,;\\,b]$, c'est-à-dire un intervalle fermé et borné, avec $a < b$. On note $\\mathcal{C}_f$ sa courbe. Le **domaine sous la courbe** est la partie du plan limitée par $\\mathcal{C}_f$, l'axe des abscisses et les droites d'équations $x = a$ et $x = b$ : c'est l'ensemble des points $M(x\\,;\\,y)$ tels que $a \\leqslant x \\leqslant b$ et $0 \\leqslant y \\leqslant f(x)$.\n\nL'**intégrale de $a$ à $b$ de $f$** est l'aire de ce domaine, en unités d'aire. On la note :$$\\int_a^b f(x)\\,\\mathrm{d}x.$$Cela se lit « intégrale de $a$ à $b$ de $f(x)\\,\\mathrm{d}x$ ». Les réels $a$ et $b$ sont les **bornes**. La lettre $x$ est **muette** : $\\int_a^b f(t)\\,\\mathrm{d}t$ désigne le même nombre. On pose aussi $\\int_a^a f(x)\\,\\mathrm{d}x = 0$."
+          "texte": "Le plan est muni d'un repère orthogonal $(O\\,;\\,I,\\,J)$. L'**unité d'aire** (u.a.) est l'aire du rectangle construit sur $[OI]$ et $[OJ]$.\n\nSoit $f$ une fonction continue et positive sur un **segment** $[a\\,;\\,b]$ (intervalle fermé et borné), avec $a < b$, et $\\mathcal{C}_f$ sa courbe. Le **domaine sous la courbe** est l'ensemble des points $M(x\\,;\\,y)$ tels que $a \\leqslant x \\leqslant b$ et $0 \\leqslant y \\leqslant f(x)$.\n\nL'**intégrale de $a$ à $b$ de $f$** est l'aire de ce domaine, en u.a. On la note :$$\\int_a^b f(x)\\,\\mathrm{d}x.$$Cela se lit « intégrale de $a$ à $b$ de $f(x)\\,\\mathrm{d}x$ ». Les réels $a$ et $b$ sont les **bornes**. Le symbole $\\mathrm{d}x$ indique la **variable d'intégration**, $x$, qui est **muette** : $\\int_a^b f(t)\\,\\mathrm{d}t$ désigne le même nombre. On pose aussi $\\int_a^a f(x)\\,\\mathrm{d}x = 0$."
         },
         {
           "id": "l-integration-004",
@@ -59,7 +59,7 @@
               "pourquoi": "Ici, le trapèze est « couché » : ses bases sont les segments verticaux en $x = 1$ et en $x = 3$."
             },
             {
-              "texte": "**d.** Pour $x$ dans $[-2\\,;\\,2]$ et $y = \\sqrt{4 - x^2}$, on a $y \\geqslant 0$ et $y^2 = 4 - x^2$, soit $x^2 + y^2 = 4$. Le point $M(x\\,;\\,y)$ est donc sur le cercle de centre $O$ et de rayon $2$, dans sa moitié supérieure.",
+              "texte": "**d.** Sur $[-2\\,;\\,2]$, $x^2 \\leqslant 4$, donc $4 - x^2 \\geqslant 0$ : la fonction $x \\mapsto \\sqrt{4 - x^2}$ y est définie, continue (composée de fonctions continues) et positive. Pour $x$ dans $[-2\\,;\\,2]$ et $y = \\sqrt{4 - x^2}$, on a $y \\geqslant 0$ et $y^2 = 4 - x^2$, soit $x^2 + y^2 = 4$. Le point $M(x\\,;\\,y)$ est donc sur le cercle de centre $O$ et de rayon $2$, dans sa moitié supérieure.",
               "pourquoi": "Dans un repère orthonormé, $x^2 + y^2 = OM^2$ : $OM^2 = 4$ signifie $OM = 2$."
             },
             {
@@ -159,7 +159,7 @@
           "etapes": [
             "Découpe $[a\\,;\\,b]$ en $n$ intervalles de même largeur $h = \\dfrac{b - a}{n}$, de bornes $x_k = a + kh$, pour $k$ allant de $0$ à $n$.",
             "Sur chaque intervalle $[x_k\\,;\\,x_{k+1}]$, trace le rectangle de hauteur $f(x_k)$, dit rectangle « à gauche », et celui de hauteur $f(x_{k+1})$, dit rectangle « à droite ».",
-            "Regarde le sens de variation : si $f$ est croissante, les rectangles à gauche sont sous la courbe et ceux à droite la dépassent ; si $f$ est décroissante, c'est l'inverse.",
+            "Regarde le sens de variation. Si $f$ est croissante, les rectangles à gauche sont sous la courbe et ceux à droite la dépassent. Si $f$ est décroissante, c'est l'inverse.",
             "Additionne les aires : $s = h\\big(f(x_0) + f(x_1) + \\dots + f(x_{n-1})\\big)$ et $S = h\\big(f(x_1) + f(x_2) + \\dots + f(x_n)\\big)$.",
             "Conclus : pour $f$ croissante, $s \\leqslant \\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x \\leqslant S$. Plus $n$ est grand, plus l'encadrement est fin."
           ],
@@ -233,7 +233,21 @@
             "langage": "python",
             "source": "def f(x):\n    return x ** 2\n\ndef rectangles_gauche(a, b, n):\n    h = (b - a) / n\n    s = 0\n    for k in range(n):\n        s = s + f(a + k * h)\n    return h * s\n\ndef rectangles_droite(a, b, n):\n    h = (b - a) / n\n    s = 0\n    for k in range(1, n + 1):\n        s = s + f(a + k * h)\n    return h * s\n\ndef milieux(a, b, n):\n    h = (b - a) / n\n    s = 0\n    for k in range(n):\n        s = s + f(a + k * h + h / 2)\n    return h * s\n\ndef trapezes(a, b, n):\n    h = (b - a) / n\n    s = 0\n    for k in range(n):\n        s = s + (f(a + k * h) + f(a + (k + 1) * h)) / 2\n    return h * s\n\nprint(rectangles_gauche(0, 1, 4))   # 0.21875\nprint(rectangles_droite(0, 1, 4))   # 0.46875\nprint(milieux(0, 1, 4))             # 0.328125\nprint(trapezes(0, 1, 4))            # 0.34375"
           },
-          "texte": "Avec $h = \\dfrac{b - a}{n}$ et $x_k = a + kh$, les quatre fonctions renvoient une valeur approchée de $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ :\n\n- **rectangles à gauche** : $h\\big(f(x_0) + \\dots + f(x_{n-1})\\big)$ ;\n- **rectangles à droite** : $h\\big(f(x_1) + \\dots + f(x_n)\\big)$ ;\n- **milieux** : chaque rectangle a pour hauteur la valeur de $f$ au milieu $x_k + \\dfrac{h}{2}$ de son intervalle ;\n- **trapèzes** : chaque bande est remplacée par le trapèze d'aire $h \\times \\dfrac{f(x_k) + f(x_{k+1})}{2}$.\n\nPour $f(x) = x^2$ sur $[0\\,;\\,1]$ et $n = 4$, le programme affiche $0{,}21875$, $0{,}46875$, $0{,}328125$ et $0{,}34375$. La valeur exacte est $\\dfrac{1}{3} \\approx 0{,}3333$ : les milieux et les trapèzes en sont bien plus près que les rectangles."
+          "texte": "Avec $h = \\dfrac{b - a}{n}$ et $x_k = a + kh$, les quatre fonctions renvoient une valeur approchée de $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ :\n\n- **rectangles à gauche** : $h\\big(f(x_0) + \\dots + f(x_{n-1})\\big)$ ;\n- **rectangles à droite** : $h\\big(f(x_1) + \\dots + f(x_n)\\big)$ ;\n- **milieux** : chaque rectangle a pour hauteur la valeur de $f$ au milieu $x_k + \\dfrac{h}{2}$ de son intervalle ;\n- **trapèzes** : chaque bande est remplacée par le trapèze d'aire $h \\times \\dfrac{f(x_k) + f(x_{k+1})}{2}$.\n\nÀ la main, pour $f(x) = x^2$ sur $[0\\,;\\,1]$ et $n = 2$, les milieux donnent $0{,}5 \\times \\big(f(0{,}25) + f(0{,}75)\\big) = 0{,}5 \\times (0{,}0625 + 0{,}5625) = 0{,}3125$. Pour $n = 4$, le programme affiche $0{,}21875$, $0{,}46875$, $0{,}328125$ et $0{,}34375$. La valeur exacte est $\\dfrac{1}{3} \\approx 0{,}3333$ : les milieux et les trapèzes en sont bien plus près que les rectangles."
+        },
+        {
+          "id": "l-integration-089",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-19"],
+          "question": {
+            "enonce": "Par la méthode des trapèzes avec $n = 2$, quelle valeur approchée de $\\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x$ obtiens-tu ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.375,
+              "tolerance": 0.001
+            },
+            "explication": "Avec $h = 0{,}5$, les deux trapèzes ont pour aires $0{,}5 \\times \\dfrac{f(0) + f(0{,}5)}{2} = 0{,}5 \\times \\dfrac{0 + 0{,}25}{2} = 0{,}0625$ et $0{,}5 \\times \\dfrac{f(0{,}5) + f(1)}{2} = 0{,}5 \\times \\dfrac{0{,}25 + 1}{2} = 0{,}3125$. Leur somme vaut $0{,}375$. C'est aussi la moyenne des rectangles à gauche ($0{,}125$) et à droite ($0{,}625$)."
+          }
         },
         {
           "id": "l-integration-015",
@@ -244,7 +258,7 @@
             "langage": "python",
             "source": "from random import random\n\ndef f(x):\n    return 4 - x ** 2\n\ndef monte_carlo(n):\n    sous_la_courbe = 0\n    for k in range(n):\n        x = 2 * random()   # abscisse au hasard entre 0 et 2\n        y = 4 * random()   # ordonnée au hasard entre 0 et 4\n        if y <= f(x):\n            sous_la_courbe = sous_la_courbe + 1\n    return 8 * sous_la_courbe / n   # 8 = aire du rectangle, en u.a.\n\nprint(monte_carlo(100000))   # environ 5.33 ; le résultat change à chaque exécution"
           },
-          "texte": "On tire $n$ points au hasard dans le rectangle $[0\\,;\\,2] \\times [0\\,;\\,4]$, d'aire $2 \\times 4 = 8$ u.a., qui contient le domaine sous la courbe de $f : x \\mapsto 4 - x^2$. L'instruction random() renvoie un nombre au hasard entre $0$ et $1$ ; multiplié par $2$, puis par $4$, il donne une abscisse, puis une ordonnée, au hasard dans le rectangle.\n\nLes points sont répartis au hasard de façon uniforme : quand $n$ est grand, la proportion de ceux qui tombent sous la courbe est proche du rapport $\\dfrac{\\text{aire du domaine}}{8}$. Le nombre renvoyé, $8 \\times$ cette proportion, est donc une valeur approchée de $\\displaystyle\\int_0^2 \\left(4 - x^2\\right)\\mathrm{d}x$. Avec $n = 100\\,000$, on obtient environ $5{,}33$, à quelques centièmes près."
+          "texte": "On tire $n$ points au hasard dans le rectangle $[0\\,;\\,2] \\times [0\\,;\\,4]$, d'aire $2 \\times 4 = 8$ u.a. Ce rectangle contient le domaine sous la courbe de $f : x \\mapsto 4 - x^2$. L'instruction random() renvoie un nombre au hasard entre $0$ et $1$. Multiplié par $2$, il donne une abscisse au hasard ; multiplié par $4$, une ordonnée.\n\nLes points sont tirés **uniformément** : un point a autant de chances de tomber dans deux zones de même aire. Quand $n$ est grand, la proportion de points sous la courbe est donc proche de $\\dfrac{\\text{aire du domaine}}{8}$. Le nombre renvoyé, $8 \\times$ cette proportion, est une valeur approchée de $\\displaystyle\\int_0^2 \\left(4 - x^2\\right)\\mathrm{d}x$. Avec $n = 100\\,000$, on obtient environ $5{,}33$, à quelques centièmes près."
         },
         {
           "id": "l-integration-016",
@@ -265,7 +279,7 @@
           "type": "complement",
           "titre": "Pour aller plus loin : des suites adjacentes pour approcher une aire",
           "capacites": ["bo-m-integrale-17"],
-          "texte": "Découpe $[0\\,;\\,1]$ en $n$ intervalles de largeur $\\dfrac{1}{n}$, et note $s_n$ et $S_n$ les aires des rectangles à gauche et à droite pour $f : x \\mapsto x^2$. Comme $f$ est croissante, $s_n \\leqslant \\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x \\leqslant S_n$. Les deux sommes ont $n - 1$ termes communs, d'où $S_n - s_n = \\dfrac{1}{n}\\big(f(1) - f(0)\\big) = \\dfrac{1}{n}$, qui tend vers $0$.\n\nAvec la formule $1^2 + 2^2 + \\dots + n^2 = \\dfrac{n(n + 1)(2n + 1)}{6}$, on trouve $s_n = \\dfrac{(n - 1)(2n - 1)}{6n^2}$ et $S_n = \\dfrac{(n + 1)(2n + 1)}{6n^2}$ : $(s_n)$ est croissante et $(S_n)$ est décroissante. Ces suites sont **adjacentes** : elles convergent vers la même limite, ici $\\dfrac{1}{3}$, qui est l'aire cherchée."
+          "texte": "Découpe $[0\\,;\\,1]$ en $n$ intervalles de largeur $\\dfrac{1}{n}$, et note $s_n$ et $S_n$ les aires des rectangles à gauche et à droite pour $f : x \\mapsto x^2$ :$$\\begin{aligned} s_n &= \\tfrac{1}{n}\\Big(f(0) + f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big)\\Big), \\\\ S_n &= \\tfrac{1}{n}\\Big(\\phantom{f(0) + {}} f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big) + f(1)\\Big). \\end{aligned}$$Comme $f$ est croissante, $s_n \\leqslant \\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x \\leqslant S_n$. Les termes communs s'éliminent : $S_n - s_n = \\dfrac{1}{n}\\big(f(1) - f(0)\\big) = \\dfrac{1}{n}$, qui tend vers $0$.\n\nAvec $1^2 + 2^2 + \\dots + n^2 = \\dfrac{n(n + 1)(2n + 1)}{6}$, démontrée par récurrence dans le chapitre sur la récurrence, on trouve $s_n = \\dfrac{(n - 1)(2n - 1)}{6n^2}$ et $S_n = \\dfrac{(n + 1)(2n + 1)}{6n^2}$. Ainsi $(s_n)$ croît, $(S_n)$ décroît et $S_n - s_n$ tend vers $0$ : ces suites sont **adjacentes** (chapitre sur les limites de suites). Elles convergent donc vers la même limite, ici $\\dfrac{1}{3}$, qui est l'aire cherchée."
         },
         {
           "id": "l-integration-018",
@@ -286,7 +300,7 @@
         {
           "id": "l-integration-020",
           "type": "retenir",
-          "texte": "Pour $f$ continue et positive sur $[a\\,;\\,b]$, $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ est l'aire, en u.a., du domaine limité par $\\mathcal{C}_f$, l'axe des abscisses et les droites $x = a$ et $x = b$. On l'encadre avec des carreaux ou des rectangles ; les milieux, les trapèzes et la méthode de Monte-Carlo en donnent des valeurs approchées."
+          "texte": "Pour $f$ continue et positive sur $[a\\,;\\,b]$, $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ est une aire, en u.a. : celle du domaine limité par $\\mathcal{C}_f$, l'axe des abscisses et les droites $x = a$ et $x = b$. On l'encadre avec des carreaux ou des rectangles ; les milieux, les trapèzes et la méthode de Monte-Carlo en donnent des valeurs approchées."
         }
       ]
     },
@@ -296,14 +310,14 @@
         {
           "id": "l-integration-021",
           "type": "idee",
-          "texte": "Note $\\mathcal{A}(x)$ l'aire sous la courbe de $f$ entre $a$ et $x$. Quand $x$ avance d'un tout petit $h$, l'aire gagne une bande fine, presque un rectangle de largeur $h$ et de hauteur $f(x)$ : $\\mathcal{A}(x + h) - \\mathcal{A}(x) \\approx h \\times f(x)$. Le taux de variation de $\\mathcal{A}$ est donc proche de $f(x)$ : la dérivée de l'aire, c'est $f$. Calculer une aire revient alors à trouver une **primitive**."
+          "texte": "Note $\\mathcal{A}(x)$ l'aire sous la courbe de $f$ entre $a$ et $x$. Quand $x$ avance d'un tout petit $h$, l'aire gagne une bande fine, presque un rectangle de largeur $h$ et de hauteur $f(x)$ : $\\mathcal{A}(x + h) - \\mathcal{A}(x) \\approx h \\times f(x)$. En divisant par $h$, le taux de variation $\\dfrac{\\mathcal{A}(x + h) - \\mathcal{A}(x)}{h}$ est proche de $f(x)$ : la dérivée de l'aire, c'est $f$. Calculer une aire revient alors à trouver une **primitive**."
         },
         {
           "id": "l-integration-022",
           "type": "rappel",
           "titre": "Rappel : primitives",
           "lien": "n-primitives-equations-differentielles-primitive",
-          "texte": "Une **primitive** de $f$ sur un intervalle $I$ est une fonction $F$ dérivable sur $I$ telle que $F' = f$. Si $F$ en est une, les autres sont les fonctions $F + C$, avec $C$ réel.\n\nPrimitives à connaître ($\\dfrac{1}{x}$ et $\\dfrac{1}{\\sqrt{x}}$ sur $]0\\,;\\,+\\infty[$) :\n\n| $f(x)$ | $x^n$ ($n \\neq -1$) | $\\dfrac{1}{x}$ | $\\dfrac{1}{\\sqrt{x}}$ | $e^x$ | $\\sin x$ | $\\cos x$ |\n|---|---|---|---|---|---|---|\n| $F(x)$ | $\\dfrac{x^{n+1}}{n+1}$ | $\\ln x$ | $2\\sqrt{x}$ | $e^x$ | $-\\cos x$ | $\\sin x$ |\n\nPour une fonction $u$ dérivable, $u'e^u$, $u'u^n$ ($n \\geqslant 1$), $\\dfrac{u'}{u}$ ($u > 0$) et $\\dfrac{u'}{\\sqrt{u}}$ ($u > 0$) ont pour primitives $e^u$, $\\dfrac{u^{n+1}}{n+1}$, $\\ln u$ et $2\\sqrt{u}$."
+          "texte": "Une **primitive** de $f$ sur un intervalle $I$ est une fonction $F$ dérivable sur $I$ telle que $F' = f$. Si $F$ en est une, les autres sont les fonctions $F + C$, avec $C$ réel.\n\nPrimitives à connaître :\n\n| $f(x)$ | $x^n$ ($n \\neq -1$) | $\\dfrac{1}{x}$ | $\\dfrac{1}{\\sqrt{x}}$ | $e^x$ | $\\sin x$ | $\\cos x$ |\n|---|---|---|---|---|---|---|\n| $F(x)$ | $\\dfrac{x^{n+1}}{n+1}$ | $\\ln x$ | $2\\sqrt{x}$ | $e^x$ | $-\\cos x$ | $\\sin x$ |\n\nIntervalles : $\\dfrac{1}{x}$ et $\\dfrac{1}{\\sqrt{x}}$ sur $]0\\,;\\,+\\infty[$ ; $x^n$, pour un entier $n \\neq -1$, sur $\\mathbb{R}$ si $n \\geqslant 0$, et sur $]0\\,;\\,+\\infty[$ ou $]-\\infty\\,;\\,0[$ si $n \\leqslant -2$. Par exemple, $\\dfrac{1}{x^2} = x^{-2}$ a pour primitive $\\dfrac{x^{-1}}{-1} = -\\dfrac{1}{x}$ sur $]0\\,;\\,+\\infty[$.\n\nPour une fonction $u$ dérivable, $u'e^u$, $u'u^n$ ($n \\geqslant 1$), $\\dfrac{u'}{u}$ ($u > 0$) et $\\dfrac{u'}{\\sqrt{u}}$ ($u > 0$) ont pour primitives $e^u$, $\\dfrac{u^{n+1}}{n+1}$, $\\ln u$ et $2\\sqrt{u}$."
         },
         {
           "id": "l-integration-023",
@@ -361,7 +375,7 @@
               "pourquoi": "L'aire de $a$ à $x + h$ est la somme de l'aire de $a$ à $x$ et de l'aire de $x$ à $x + h$."
             },
             {
-              "texte": "$f$ est croissante : pour $t$ dans $[x\\,;\\,x + h]$, $f(x) \\leqslant f(t) \\leqslant f(x + h)$. La bande contient donc le rectangle de largeur $h$ et de hauteur $f(x)$, et elle est contenue dans le rectangle de largeur $h$ et de hauteur $f(x + h)$ :$$h\\,f(x) \\leqslant F_a(x + h) - F_a(x) \\leqslant h\\,f(x + h).$$"
+              "texte": "$f$ est croissante : pour $t$ dans $[x\\,;\\,x + h]$, $f(x) \\leqslant f(t) \\leqslant f(x + h)$. La bande contient donc le rectangle de largeur $h$ et de hauteur $f(x)$. Elle est contenue dans le rectangle de largeur $h$ et de hauteur $f(x + h)$ :$$h\\,f(x) \\leqslant F_a(x + h) - F_a(x) \\leqslant h\\,f(x + h).$$"
             },
             {
               "texte": "On divise par $h > 0$, ce qui garde le sens des inégalités :$$f(x) \\leqslant \\frac{F_a(x + h) - F_a(x)}{h} \\leqslant f(x + h).$$"
@@ -478,11 +492,27 @@
           "texte": "Soit $f$ une fonction continue sur un intervalle $I$, $a$ et $b$ deux réels de $I$, et $F$ une primitive de $f$ sur $I$. On définit l'intégrale de $a$ à $b$ de $f$ par :$$\\int_a^b f(x)\\,\\mathrm{d}x = F(b) - F(a) = \\left[F(x)\\right]_a^b.$$Ce nombre ne dépend pas de la primitive choisie : une autre primitive s'écrit $F + C$, et $\\big(F(b) + C\\big) - \\big(F(a) + C\\big) = F(b) - F(a)$.\n\nIci, $f$ peut changer de signe, et $a$ peut être plus grand que $b$. Quand $f$ est positive et $a \\leqslant b$, on retrouve l'aire sous la courbe. Pour $a$ dans $I$, la fonction $x \\mapsto \\displaystyle\\int_a^x f(t)\\,\\mathrm{d}t = F(x) - F(a)$ est encore la primitive de $f$ qui s'annule en $a$."
         },
         {
+          "id": "l-integration-090",
+          "type": "figure",
+          "titre": "Une aire au-dessus de l'axe, une aire au-dessous",
+          "capacites": ["bo-m-integrale-05"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/integration/aire-sous-axe.svg",
+              "width": 290,
+              "height": 270,
+              "alt": "Dans un repère orthonormé, la droite d'équation y = x, tracée pour x entre −1,4 et 2,3. Sur [0 ; 2], la droite est au-dessus de l'axe des abscisses : le triangle de sommets (0 ; 0), (2 ; 0) et (2 ; 2), colorié en bleu, a pour aire 2. Sur [−1 ; 0], la droite est au-dessous de l'axe : le triangle de sommets (−1 ; 0), (0 ; 0) et (−1 ; −1), colorié en orange, a pour aire 1/2."
+            },
+            "caption": "Pour l'intégrale de −1 à 2 de x dx, l'aire bleue, au-dessus de l'axe, compte positivement ; l'aire orange, au-dessous, compte négativement."
+          }
+        },
+        {
           "id": "l-integration-031",
           "type": "exemple",
           "titre": "Intégrales d'une fonction de signe quelconque",
           "capacites": ["bo-m-integrale-05"],
-          "enonce": "**a.** Calculer $\\displaystyle\\int_{-1}^{2} x\\,\\mathrm{d}x$, puis l'interpréter avec des aires.\n\n**b.** Calculer $\\displaystyle\\int_{0}^{\\pi} \\cos x\\,\\mathrm{d}x$.\n\n**c.** Calculer $\\displaystyle\\int_{1}^{0} e^{x}\\,\\mathrm{d}x$ et le comparer à $\\displaystyle\\int_{0}^{1} e^{x}\\,\\mathrm{d}x$.",
+          "enonce": "**a.** Calculer $\\displaystyle\\int_{-1}^{2} x\\,\\mathrm{d}x$, puis l'interpréter avec des aires (figure ci-dessus).\n\n**b.** Calculer $\\displaystyle\\int_{0}^{\\pi} \\cos x\\,\\mathrm{d}x$.\n\n**c.** Calculer $\\displaystyle\\int_{1}^{0} e^{x}\\,\\mathrm{d}x$ et le comparer à $\\displaystyle\\int_{0}^{1} e^{x}\\,\\mathrm{d}x$.",
           "etapes": [
             {
               "texte": "**a.** La fonction $x \\mapsto \\dfrac{x^2}{2}$ est une primitive de $x \\mapsto x$ sur $\\mathbb{R}$ : $\\displaystyle\\int_{-1}^{2} x\\,\\mathrm{d}x = \\left[\\frac{x^2}{2}\\right]_{-1}^{2} = \\frac{4}{2} - \\frac{1}{2} = \\frac{3}{2}$.",
@@ -490,11 +520,11 @@
             },
             {
               "texte": "Interprétation : sur $[0\\,;\\,2]$, la droite $y = x$ est au-dessus de l'axe, et le triangle sous elle a pour aire $\\dfrac{2 \\times 2}{2} = 2$. Sur $[-1\\,;\\,0]$, elle est en dessous, et le triangle entre elle et l'axe a pour aire $\\dfrac{1 \\times 1}{2} = \\dfrac{1}{2}$. On trouve $2 - \\dfrac{1}{2} = \\dfrac{3}{2}$ : l'aire située sous l'axe compte **négativement**.",
-              "pourquoi": "Si $f$ est négative sur $[a\\,;\\,b]$, avec $a \\leqslant b$, la fonction $-f$ est positive et a pour primitive $-F$. L'aire entre la courbe et l'axe vaut $-F(b) + F(a)$ : l'intégrale de $f$ est l'opposé de cette aire."
+              "pourquoi": "Sur $[-1\\,;\\,0]$, $x \\leqslant 0$ : $\\displaystyle\\int_{-1}^{0} x\\,\\mathrm{d}x = \\left[\\frac{x^2}{2}\\right]_{-1}^{0} = -\\frac{1}{2}$, l'opposé de l'aire du triangle orange. La propriété qui suit cet exemple le justifie."
             },
             {
               "texte": "**b.** $\\sin$ est une primitive de $\\cos$ : $\\displaystyle\\int_{0}^{\\pi} \\cos x\\,\\mathrm{d}x = \\big[\\sin x\\big]_0^{\\pi} = \\sin \\pi - \\sin 0 = 0 - 0 = 0$. La partie de la courbe au-dessus de l'axe, sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, et celle en dessous, sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$, délimitent la même aire : elles se compensent.",
-              "pourquoi": "$\\cos(\\pi - x) = -\\cos x$ : la courbe de $\\cos$ est symétrique par rapport au point de coordonnées $\\left(\\dfrac{\\pi}{2}\\,;\\,0\\right)$."
+              "pourquoi": "Pour $x$ dans $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $\\cos(\\pi - x) = -\\cos x$ : en $\\pi - x$, la courbe est aussi loin sous l'axe qu'elle est au-dessus en $x$. Les deux arches se superposent par un demi-tour autour du point $\\left(\\dfrac{\\pi}{2}\\,;\\,0\\right)$ : elles délimitent la même aire."
             },
             {
               "texte": "**c.** $\\displaystyle\\int_{1}^{0} e^{x}\\,\\mathrm{d}x = \\big[e^x\\big]_1^0 = e^0 - e^1 = 1 - e$, alors que $\\displaystyle\\int_{0}^{1} e^{x}\\,\\mathrm{d}x = e - 1$. Échanger les bornes change le signe : $\\displaystyle\\int_b^a f(x)\\,\\mathrm{d}x = -\\int_a^b f(x)\\,\\mathrm{d}x$.",
@@ -504,6 +534,18 @@
               "texte": "**Conclusion** : $\\displaystyle\\int_{-1}^{2} x\\,\\mathrm{d}x = \\frac{3}{2}$, $\\displaystyle\\int_{0}^{\\pi} \\cos x\\,\\mathrm{d}x = 0$ et $\\displaystyle\\int_{1}^{0} e^{x}\\,\\mathrm{d}x = 1 - e$. Une intégrale peut être négative ou nulle : c'est une aire seulement si $f$ est positive et $a \\leqslant b$."
             }
           ]
+        },
+        {
+          "id": "l-integration-091",
+          "type": "propriete",
+          "titre": "Aire d'un domaine situé sous l'axe des abscisses",
+          "capacites": ["bo-m-integrale-05"],
+          "texte": "Soit $f$ une fonction continue et **négative** sur $[a\\,;\\,b]$, avec $a < b$. L'aire, en u.a., du domaine limité par $\\mathcal{C}_f$, l'axe des abscisses et les droites d'équations $x = a$ et $x = b$ vaut :$$-\\int_a^b f(x)\\,\\mathrm{d}x.$$Pourquoi : ce domaine est le symétrique, par rapport à l'axe des abscisses, du domaine sous la courbe de $-f$, qui est positive. Si $F$ est une primitive de $f$, $-F$ est une primitive de $-f$. L'aire vaut donc $-F(b) - \\big(-F(a)\\big) = -\\big(F(b) - F(a)\\big)$.\n\nPar exemple, le triangle orange de la figure a pour aire $-\\displaystyle\\int_{-1}^{0} x\\,\\mathrm{d}x = -\\left(-\\frac{1}{2}\\right) = \\frac{1}{2}$.",
+          "conditions": [
+            "$f$ est continue sur $[a\\,;\\,b]$, avec $a < b$.",
+            "$f$ est négative sur $[a\\,;\\,b]$. Si $f$ change de signe, on calcule l'aire de chaque morceau où $f$ garde un signe constant, puis on additionne ces aires."
+          ],
+          "admise": false
         },
         {
           "id": "l-integration-032",
@@ -528,7 +570,7 @@
             "Vérifie que $f$ est continue sur un intervalle qui contient $a$ et $b$.",
             "Cherche une primitive $F$ de $f$ : tableau des primitives, somme de primitives, formes $u'e^u$, $u'u^n$, $\\dfrac{u'}{u}$, $\\dfrac{u'}{\\sqrt{u}}$. Ajuste le facteur constant, puis contrôle en dérivant.",
             "Écris $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x = \\left[F(x)\\right]_a^b = F(b) - F(a)$, en mettant $F(a)$ entre parenthèses.",
-            "Calcule et simplifie avec $e^0 = 1$, $\\ln 1 = 0$, $\\ln e = 1$ et $e^{\\ln a} = a$.",
+            "Calcule et simplifie avec $e^0 = 1$, $\\ln 1 = 0$, $\\ln e = 1$ et $e^{\\ln y} = y$ pour $y > 0$.",
             "Si l'énoncé intègre une dérivée $g'$, ne calcule pas $g'$ : $g$ en est une primitive, donc $\\displaystyle\\int_a^b g'(x)\\,\\mathrm{d}x = g(b) - g(a)$.",
             "Contrôle le signe : si $f \\geqslant 0$ et $a \\leqslant b$, le résultat doit être positif."
           ],
@@ -557,8 +599,8 @@
               "pourquoi": "C'est la forme $u'u^n$ avec $n = 1$ : une primitive est $\\dfrac{u^{1+1}}{1+1} = \\dfrac{u^2}{2}$."
             },
             {
-              "texte": "**d.** La fonction $g$ est une primitive de $g'$ : inutile de dériver. $L = g(2) - g(0) = 4\\ln 8 - 0 = 4 \\times 3\\ln 2 = 12\\ln 2$.",
-              "pourquoi": "$g(0) = 0^2 \\times \\ln 4 = 0$ et $\\ln 8 = \\ln\\left(2^3\\right) = 3\\ln 2$."
+              "texte": "**d.** La fonction $g$ est une primitive de $g'$ : inutile de dériver. On calcule $g(2) = 2^2\\ln\\left(2^2 + 4\\right) = 4\\ln 8$ et $g(0) = 0^2 \\times \\ln 4 = 0$. Donc $L = g(2) - g(0) = 4\\ln 8 = 4 \\times 3\\ln 2 = 12\\ln 2$.",
+              "pourquoi": "$\\ln 8 = \\ln\\left(2^3\\right) = 3\\ln 2$."
             },
             {
               "texte": "**Conclusion** : $I = e - 1$, $J = \\dfrac{1}{2}\\ln 2$, $K = \\dfrac{1}{2}(\\ln 3)^2$ et $L = 12\\ln 2 \\approx 8{,}3$."
@@ -598,7 +640,7 @@
         {
           "id": "l-integration-038",
           "type": "retenir",
-          "texte": "Si $F$ est une primitive de la fonction continue $f$, alors $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x = \\left[F(x)\\right]_a^b = F(b) - F(a)$, quel que soit le signe de $f$. La fonction $x \\mapsto \\displaystyle\\int_a^x f(t)\\,\\mathrm{d}t$ est la primitive de $f$ qui s'annule en $a$."
+          "texte": "Si $F$ est une primitive de la fonction continue $f$, alors $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x = \\left[F(x)\\right]_a^b = F(b) - F(a)$, quel que soit le signe de $f$. Si $f \\leqslant 0$ sur $[a\\,;\\,b]$, avec $a < b$, l'aire entre $\\mathcal{C}_f$ et l'axe des abscisses vaut $-\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$. La fonction $x \\mapsto \\displaystyle\\int_a^x f(t)\\,\\mathrm{d}t$ est la primitive de $f$ qui s'annule en $a$."
         }
       ]
     },
@@ -641,11 +683,11 @@
               "texte": "**b.** Par linéarité : $\\displaystyle\\int_0^1 \\big(2f(x) - 5g(x)\\big)\\,\\mathrm{d}x = 2 \\times 3 - 5 \\times (-2) = 6 + 10 = 16$."
             },
             {
-              "texte": "**c.** Avec $u(x) = e^x + 1 > 0$ et $u'(x) = e^x$, la fonction de $I$ est de la forme $\\dfrac{u'}{u}$ : $I = \\left[\\ln\\left(e^x + 1\\right)\\right]_0^1 = \\ln(e + 1) - \\ln 2$.",
-              "pourquoi": "$e^0 + 1 = 2$."
+              "texte": "**c.** Avec $u(x) = e^x + 1 > 0$ et $u'(x) = e^x$, la fonction de $I$ est de la forme $\\dfrac{u'}{u}$ : $I = \\left[\\ln\\left(e^x + 1\\right)\\right]_0^1 = \\ln(e + 1) - \\ln 2 = \\ln\\left(\\dfrac{e + 1}{2}\\right)$.",
+              "pourquoi": "$e^0 + 1 = 2$, et $\\ln A - \\ln B = \\ln\\dfrac{A}{B}$ pour $A > 0$ et $B > 0$."
             },
             {
-              "texte": "Par linéarité, $I + J = \\displaystyle\\int_0^1 \\frac{e^x + 1}{e^x + 1}\\,\\mathrm{d}x = \\int_0^1 1\\,\\mathrm{d}x = 1$. Donc $J = 1 - I = 1 - \\ln(e + 1) + \\ln 2$.",
+              "texte": "Par linéarité, $I + J = \\displaystyle\\int_0^1 \\frac{e^x + 1}{e^x + 1}\\,\\mathrm{d}x = \\int_0^1 1\\,\\mathrm{d}x = 1$. Donc $J = 1 - I = 1 - \\ln\\left(\\dfrac{e + 1}{2}\\right)$.",
               "pourquoi": "Une primitive de $\\dfrac{1}{e^x + 1}$ ne se voit pas directement : la somme $I + J$ évite de la chercher."
             },
             {
@@ -826,7 +868,7 @@
           "type": "propriete",
           "titre": "Aire entre deux courbes",
           "capacites": ["bo-m-integrale-12"],
-          "texte": "Soit $f$ et $g$ deux fonctions continues sur $[a\\,;\\,b]$, avec $a \\leqslant b$, telles que $f(x) \\geqslant g(x)$ pour tout $x$ de $[a\\,;\\,b]$ : la courbe $\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$. L'aire, en u.a., du domaine limité par $\\mathcal{C}_f$, $\\mathcal{C}_g$ et les droites d'équations $x = a$ et $x = b$ vaut :$$\\int_a^b \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x.$$Pourquoi : si $g$ est positive, cette aire est la différence des aires sous $\\mathcal{C}_f$ et sous $\\mathcal{C}_g$, et la linéarité donne la formule. Sinon, on monte les deux courbes d'une même hauteur $k$, pour que $g + k$ soit positive : l'aire ne change pas, et $(f + k) - (g + k) = f - g$.",
+          "texte": "Soit $f$ et $g$ deux fonctions continues sur $[a\\,;\\,b]$, avec $a \\leqslant b$. On suppose $f(x) \\geqslant g(x)$ pour tout $x$ de $[a\\,;\\,b]$ : la courbe $\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$. Considérons le domaine limité par $\\mathcal{C}_f$, $\\mathcal{C}_g$ et les droites d'équations $x = a$ et $x = b$. Son aire, en u.a., vaut :$$\\int_a^b \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x.$$Pourquoi : si $g$ est positive, cette aire est la différence des aires sous $\\mathcal{C}_f$ et sous $\\mathcal{C}_g$, et la linéarité donne la formule. Sinon, on monte les deux courbes d'une même hauteur $k$, pour que $g + k$ soit positive : l'aire ne change pas, et $(f + k) - (g + k) = f - g$.",
           "conditions": [
             "$f$ et $g$ sont continues sur $[a\\,;\\,b]$, avec $a \\leqslant b$.",
             "$f(x) \\geqslant g(x)$ pour tout $x$ de $[a\\,;\\,b]$. Si les courbes se croisent, on découpe $[a\\,;\\,b]$ avec la relation de Chasles."
@@ -915,6 +957,22 @@
           "texte": "Soit $f$ une fonction continue sur un intervalle $[a\\,;\\,b]$, avec $a < b$. La **valeur moyenne** de $f$ sur $[a\\,;\\,b]$ est le nombre :$$\\mu = \\frac{1}{b - a}\\int_a^b f(x)\\,\\mathrm{d}x.$$La lettre grecque $\\mu$ se lit « mu ».\n\nSi $f$ est positive, $\\mu(b - a) = \\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ : le rectangle de base $[a\\,;\\,b]$ et de hauteur $\\mu$ a la même aire que le domaine sous la courbe. C'est la hauteur qu'aurait la courbe si on l'aplatissait sans changer l'aire."
         },
         {
+          "id": "l-integration-092",
+          "type": "figure",
+          "titre": "La valeur moyenne, hauteur du rectangle de même aire",
+          "capacites": ["bo-m-integrale-07"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/integration/valeur-moyenne.svg",
+              "width": 240,
+              "height": 300,
+              "alt": "Dans un repère orthonormé, la parabole d'équation y = 4 − x² descend du point (0 ; 4) au point (2 ; 0) ; le domaine sous la courbe, entre x = 0 et x = 2, est colorié en bleu. Un rectangle en pointillés orange, de base [0 ; 2] et de hauteur μ = 8/3, a la même aire que ce domaine, 16/3. La droite y = 8/3 coupe la parabole. À gauche, la partie du domaine qui dépasse au-dessus de cette droite est en bleu foncé ; à droite, la partie du rectangle située au-dessus de la courbe est en orange. Ces deux parties ont la même aire : l'une comble l'autre."
+            },
+            "caption": "Valeur moyenne de x ↦ 4 − x² sur [0 ; 2] : l'aire sous la courbe vaut 16/3, donc μ = (16/3) / 2 = 8/3. La partie bleu foncé, qui dépasse du rectangle, a la même aire que la partie orange, vide sous le rectangle."
+          }
+        },
+        {
           "id": "l-integration-059",
           "type": "exemple",
           "titre": "Une vitesse moyenne, une température moyenne",
@@ -943,7 +1001,7 @@
               "texte": "$\\mu = \\dfrac{1\\,600 - 1\\,200e^{-1}}{20} = 80 - 60e^{-1} \\approx 57{,}9$, à la calculatrice."
             },
             {
-              "texte": "**Conclusion** : le mobile parcourt $12$ m en $2$ s, à la vitesse moyenne de $6$ m/s ; la température moyenne du plat pendant les $20$ premières minutes est d'environ $57{,}9$ °C."
+              "texte": "**Conclusion** : le mobile parcourt $12$ m en $2$ s, à la vitesse moyenne de $6$ m/s. La température moyenne du plat pendant les $20$ premières minutes est d'environ $57{,}9$ °C."
             }
           ]
         },
@@ -1012,7 +1070,7 @@
           "type": "propriete",
           "titre": "Intégration par parties",
           "capacites": ["bo-m-integrale-08"],
-          "texte": "Soit $u$ et $v$ deux fonctions dérivables sur un intervalle $I$, dont les dérivées $u'$ et $v'$ sont continues sur $I$, et $a$, $b$ deux réels de $I$. Alors :$$\\int_a^b u(x)\\,v'(x)\\,\\mathrm{d}x = \\big[u(x)\\,v(x)\\big]_a^b - \\int_a^b u'(x)\\,v(x)\\,\\mathrm{d}x.$$Utiliser cette formule, c'est **intégrer par parties**.",
+          "texte": "Soit $u$ et $v$ deux fonctions dérivables sur un intervalle $I$, de dérivées $u'$ et $v'$ continues sur $I$. Soit $a$ et $b$ deux réels de $I$. Alors :$$\\int_a^b u(x)\\,v'(x)\\,\\mathrm{d}x = \\big[u(x)\\,v(x)\\big]_a^b - \\int_a^b u'(x)\\,v(x)\\,\\mathrm{d}x.$$Utiliser cette formule, c'est **intégrer par parties**.",
           "conditions": [
             "$u$ et $v$ sont dérivables sur un intervalle $I$ qui contient $a$ et $b$.",
             "$u'$ et $v'$ sont continues sur $I$."
@@ -1179,7 +1237,8 @@
             "reponse": {
               "type": "numerique",
               "valeur": 0.718,
-              "tolerance": 0.01
+              "tolerance": 0.01,
+              "decimales": 2
             },
             "explication": "$u'(x) = 2x$ et $v(x) = e^x$ : $\\displaystyle\\int_0^1 x^2e^x\\,\\mathrm{d}x = \\big[x^2e^x\\big]_0^1 - \\int_0^1 2x\\,e^x\\,\\mathrm{d}x = e - 2 \\times 1 = e - 2 \\approx 0{,}72$."
           }
@@ -1232,7 +1291,7 @@
             "Sens de variation : écris $I_{n+1} - I_n$ comme **une seule** intégrale (linéarité), puis étudie le signe de la fonction obtenue.",
             "Convergence : une suite décroissante et minorée, par exemple par $0$, converge.",
             "Limite : encadre la fonction sous l'intégrale par des fonctions faciles à intégrer, intègre l'encadrement, puis applique le théorème des gendarmes.",
-            "Relation entre $I_{n+1}$ et $I_n$ : fais une intégration par parties, en dérivant le facteur $x^{n+1}$."
+            "Relation entre $I_{n+1}$ et $I_n$ : fais une intégration par parties. Si l'intégrale contient une puissance $x^{n+1}$, dérive-la : elle baisse d'un cran et fait apparaître $I_n$."
           ],
           "exemple": "l-integration-081"
         },
@@ -1314,7 +1373,7 @@
               "pourquoi": "Par linéarité, la constante $-(n + 1)$ sort de l'intégrale, et moins par moins donne plus."
             },
             {
-              "texte": "En $1$, $-1^{n+1}e^{-1} = -e^{-1}$ ; en $0$, $-0^{n+1}e^{0} = 0$. Le crochet vaut donc $-e^{-1}$, et la dernière intégrale est $I_n$ : $I_{n+1} = (n + 1)I_n - e^{-1}$.",
+              "texte": "En $x = 1$, $-x^{n+1}e^{-x}$ vaut $-\\left(1^{n+1}\\right) \\times e^{-1} = -1 \\times e^{-1} = -e^{-1}$. En $x = 0$, il vaut $-\\left(0^{n+1}\\right) \\times e^{0} = 0$. Le crochet vaut donc $-e^{-1} - 0 = -e^{-1}$, et la dernière intégrale est $I_n$ : $I_{n+1} = (n + 1)I_n - e^{-1}$.",
               "pourquoi": "$1^{n+1} = 1$ et $0^{n+1} = 0$, car $n + 1 \\geqslant 1$."
             },
             {
@@ -1322,6 +1381,65 @@
             },
             {
               "texte": "**Conclusion** : $I_0 = 1 - e^{-1}$ et $I_{n+1} = (n + 1)I_n - e^{-1}$, d'où $I_1 = 1 - 2e^{-1} \\approx 0{,}264$ et $I_2 = 2 - 5e^{-1} \\approx 0{,}161$. On retrouve $I_2 \\leqslant I_1 \\leqslant I_0$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-093",
+          "type": "figure",
+          "titre": "Les rectangles de Brouncker sous la courbe de $x \\mapsto \\frac{1}{x}$",
+          "capacites": ["bo-m-integrale-21"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/integration/brouncker-rectangles.svg",
+              "width": 430,
+              "height": 330,
+              "alt": "Dans un repère, la courbe de la fonction inverse, d'équation y = 1/x, descend du point (1 ; 1) au point (2 ; 0,5). Sous la courbe, entre x = 1 et x = 2, des rectangles sont empilés sans se chevaucher. Rectangle 1, en bleu : sur [1 ; 2], de 0 jusqu'à 0,5. Rectangle 2, en vert, posé sur le rectangle 1 : sur [1 ; 1,5], de 0,5 jusqu'à 2/3. Rectangle 3, en orange, posé sur le rectangle 2 : sur [1 ; 1,25], de 2/3 jusqu'à 4/5. Rectangle 4, en orange, posé sur le rectangle 1 : sur [1,5 ; 1,75], de 0,5 jusqu'à 4/7. Le coin en haut à droite de chaque rectangle touche la courbe. En gris, quatre rectangles plus fins, de largeur 0,125, forment l'étape suivante."
+            },
+            "caption": "Chaque rectangle monte jusqu'à la courbe au niveau de son bord droit. À chaque étape, chaque bande est coupée en deux et un rectangle est posé sur sa moitié gauche ; une couleur par étape."
+          }
+        },
+        {
+          "id": "l-integration-094",
+          "type": "exemple",
+          "titre": "Les premiers rectangles de Brouncker",
+          "capacites": ["bo-m-integrale-21"],
+          "enonce": "Une autre suite approche une intégrale : la somme des aires de rectangles de plus en plus fins. En 1668, Brouncker remplit ainsi le domaine sous la courbe de la fonction inverse, entre $x = 1$ et $x = 2$ (figure ci-dessus).\n\n**a.** Montrer que l'aire de ce domaine vaut $\\ln 2$ u.a.\n\n**b.** Expliquer comment les rectangles sont construits, puis calculer les aires des quatre premiers.",
+          "etapes": [
+            {
+              "texte": "**a.** La fonction inverse est continue et positive sur $[1\\,;\\,2]$, et $\\ln$ en est une primitive sur $]0\\,;\\,+\\infty[$. L'aire vaut donc $\\displaystyle\\int_1^2 \\frac{1}{x}\\,\\mathrm{d}x = \\big[\\ln x\\big]_1^2 = \\ln 2 - \\ln 1 = \\ln 2$ u.a.",
+              "pourquoi": "$\\ln 1 = 0$."
+            },
+            {
+              "texte": "**b.** Règle des hauteurs : le coin en haut à droite de chaque rectangle est sur la courbe. Le haut du rectangle est donc à la hauteur $\\dfrac{1}{c}$, où $c$ est l'abscisse de son bord droit.",
+              "pourquoi": "La fonction inverse est décroissante : sur un intervalle, sa plus petite valeur est au bord droit. Le rectangle reste donc sous la courbe."
+            },
+            {
+              "texte": "Rectangle 1, en bleu : sur $[1\\,;\\,2]$, il monte de $0$ jusqu'à $\\dfrac{1}{2}$, valeur de $\\dfrac{1}{x}$ en $2$. Son aire vaut $(2 - 1) \\times \\dfrac{1}{2} = \\dfrac{1}{2} = \\dfrac{1}{1 \\times 2}$."
+            },
+            {
+              "texte": "Règle de découpage : à l'étape suivante, on coupe la bande $[1\\,;\\,2]$ en deux moitiés. Sur la moitié gauche, on pose un rectangle, du haut des rectangles déjà posés jusqu'à la courbe. Sur la moitié droite, on ne pose rien. Puis on recommence avec chacune des deux moitiés, et ainsi de suite.",
+              "pourquoi": "Le bord droit de la moitié droite est celui de la bande : la courbe y est déjà à la hauteur des rectangles posés. Un nouveau rectangle y aurait une hauteur nulle ; cette moitié attend l'étape suivante, où elle est coupée à son tour."
+            },
+            {
+              "texte": "Rectangle 2, en vert : on coupe $[1\\,;\\,2]$ en $\\left[1\\,;\\,\\dfrac{3}{2}\\right]$ et $\\left[\\dfrac{3}{2}\\,;\\,2\\right]$. Sur $\\left[1\\,;\\,\\dfrac{3}{2}\\right]$, le rectangle est posé sur le rectangle 1 : il monte de $\\dfrac{1}{2}$ jusqu'à $\\dfrac{2}{3}$, valeur de $\\dfrac{1}{x}$ en $\\dfrac{3}{2}$. Son aire vaut $\\dfrac{1}{2} \\times \\left(\\dfrac{2}{3} - \\dfrac{1}{2}\\right) = \\dfrac{1}{2} \\times \\dfrac{1}{6} = \\dfrac{1}{12} = \\dfrac{1}{3 \\times 4}$.",
+              "pourquoi": "Largeur : $\\dfrac{3}{2} - 1 = \\dfrac{1}{2}$. Hauteur : $\\dfrac{2}{3} - \\dfrac{1}{2} = \\dfrac{4}{6} - \\dfrac{3}{6} = \\dfrac{1}{6}$."
+            },
+            {
+              "texte": "Rectangle 3, en orange : on coupe $\\left[1\\,;\\,\\dfrac{3}{2}\\right]$ en deux. Sur $\\left[1\\,;\\,\\dfrac{5}{4}\\right]$, le rectangle est posé sur le rectangle 2 : il monte de $\\dfrac{2}{3}$ jusqu'à $\\dfrac{4}{5}$, valeur de $\\dfrac{1}{x}$ en $\\dfrac{5}{4}$. Son aire vaut $\\dfrac{1}{4} \\times \\left(\\dfrac{4}{5} - \\dfrac{2}{3}\\right) = \\dfrac{1}{4} \\times \\dfrac{2}{15} = \\dfrac{1}{30} = \\dfrac{1}{5 \\times 6}$.",
+              "pourquoi": "$\\dfrac{4}{5} - \\dfrac{2}{3} = \\dfrac{12}{15} - \\dfrac{10}{15} = \\dfrac{2}{15}$, et $\\dfrac{1}{4} \\times \\dfrac{2}{15} = \\dfrac{2}{60} = \\dfrac{1}{30}$."
+            },
+            {
+              "texte": "Rectangle 4, en orange : on coupe $\\left[\\dfrac{3}{2}\\,;\\,2\\right]$ en deux. Sur $\\left[\\dfrac{3}{2}\\,;\\,\\dfrac{7}{4}\\right]$, le rectangle est posé sur le rectangle 1 : il monte de $\\dfrac{1}{2}$ jusqu'à $\\dfrac{4}{7}$, valeur de $\\dfrac{1}{x}$ en $\\dfrac{7}{4}$. Son aire vaut $\\dfrac{1}{4} \\times \\left(\\dfrac{4}{7} - \\dfrac{1}{2}\\right) = \\dfrac{1}{4} \\times \\dfrac{1}{14} = \\dfrac{1}{56} = \\dfrac{1}{7 \\times 8}$.",
+              "pourquoi": "Sur $\\left[\\dfrac{3}{2}\\,;\\,2\\right]$, seul le rectangle 1 est déjà posé : on part de sa hauteur $\\dfrac{1}{2}$. Puis $\\dfrac{4}{7} - \\dfrac{1}{2} = \\dfrac{8}{14} - \\dfrac{7}{14} = \\dfrac{1}{14}$."
+            },
+            {
+              "texte": "À l'étape suivante, on coupe les quatre bandes de largeur $\\dfrac{1}{4}$. On obtient les rectangles 5 à 8, de largeur $\\dfrac{1}{8}$, en gris sur la figure. À chaque étape, on numérote les nouveaux rectangles de gauche à droite."
+            },
+            {
+              "texte": "**Conclusion** : l'aire du domaine vaut $\\ln 2$ u.a. Les quatre premiers rectangles ont pour aires $\\dfrac{1}{1 \\times 2}$, $\\dfrac{1}{3 \\times 4}$, $\\dfrac{1}{5 \\times 6}$ et $\\dfrac{1}{7 \\times 8}$. Leur somme vaut $\\dfrac{533}{840} \\approx 0{,}6345$ : elle est inférieure à $\\ln 2 \\approx 0{,}6931$, car les rectangles sont sous la courbe.",
+              "pourquoi": "Au dénominateur commun $840$ : $\\dfrac{420 + 70 + 28 + 15}{840} = \\dfrac{533}{840}$."
             }
           ]
         },
@@ -1334,7 +1452,7 @@
             "langage": "python",
             "source": "def brouncker(n):\n    s = 0\n    for k in range(1, n + 1):\n        s = s + 1 / ((2 * k - 1) * (2 * k))\n    return s\n\nprint(brouncker(4))      # environ 0.6345\nprint(brouncker(1000))   # environ 0.6929 ; ln(2) vaut environ 0.6931"
           },
-          "texte": "On a vu que $\\ln 2 = \\displaystyle\\int_1^2 \\frac{1}{x}\\,\\mathrm{d}x$ : c'est l'aire sous la courbe de $x \\mapsto \\dfrac{1}{x}$ entre $1$ et $2$. Brouncker, en 1668, remplit ce domaine de rectangles de plus en plus fins, tous sous la courbe et sans se chevaucher :\n\n- sur $[1\\,;\\,2]$, le rectangle de hauteur $\\dfrac{1}{2}$, d'aire $\\dfrac{1}{2} = \\dfrac{1}{1 \\times 2}$ ;\n- sur $\\left[1\\,;\\,\\dfrac{3}{2}\\right]$, posé dessus, le rectangle de hauteur $\\dfrac{2}{3} - \\dfrac{1}{2} = \\dfrac{1}{6}$, d'aire $\\dfrac{1}{2} \\times \\dfrac{1}{6} = \\dfrac{1}{3 \\times 4}$ ;\n- puis, sur $\\left[1\\,;\\,\\dfrac{5}{4}\\right]$ et sur $\\left[\\dfrac{3}{2}\\,;\\,\\dfrac{7}{4}\\right]$, deux rectangles de largeur $\\dfrac{1}{4}$, d'aires $\\dfrac{1}{4}\\left(\\dfrac{4}{5} - \\dfrac{2}{3}\\right) = \\dfrac{1}{5 \\times 6}$ et $\\dfrac{1}{4}\\left(\\dfrac{4}{7} - \\dfrac{1}{2}\\right) = \\dfrac{1}{7 \\times 8}$, et ainsi de suite.\n\nOn montre que le $k$-ième rectangle a pour aire $\\dfrac{1}{(2k - 1) \\times 2k}$. La fonction renvoie la somme $S_n$ des $n$ premières aires : $S_n \\leqslant \\ln 2$, et on admet que $(S_n)$ converge vers $\\ln 2$. La convergence est lente : pour $n = 1\\,000$, l'écart est encore d'environ $2{,}5 \\times 10^{-4}$."
+          "texte": "Numéroté comme dans l'exemple, le $k$-ième rectangle de Brouncker a pour aire $\\dfrac{1}{(2k - 1) \\times 2k}$. On l'a vérifié pour $k = 1$, $2$, $3$ et $4$ ; on peut le démontrer, mais on l'admet ici.\n\nLa fonction brouncker(n) ajoute ces aires pour $k$ allant de $1$ à $n$. Elle renvoie la somme $S_n$ des aires des $n$ premiers rectangles. Ils sont sous la courbe et ne se chevauchent pas, donc $S_n \\leqslant \\ln 2$. On admet que $(S_n)$ converge vers $\\ln 2$. La convergence est lente : pour $n = 1\\,000$, l'écart est encore d'environ $2{,}5 \\times 10^{-4}$."
         },
         {
           "id": "l-integration-085",
@@ -1355,7 +1473,7 @@
           "type": "complement",
           "titre": "Pour aller plus loin : encadrer $H_n$ par des intégrales",
           "capacites": ["bo-m-integrale-18"],
-          "texte": "On note $H_n = 1 + \\dfrac{1}{2} + \\dots + \\dfrac{1}{n}$. Pour un entier $k \\geqslant 1$ et $x$ dans $[k\\,;\\,k + 1]$, on a $\\dfrac{1}{k + 1} \\leqslant \\dfrac{1}{x} \\leqslant \\dfrac{1}{k}$, car la fonction inverse est décroissante. On intègre sur $[k\\,;\\,k + 1]$, de longueur $1$ :$$\\frac{1}{k + 1} \\leqslant \\ln(k + 1) - \\ln k \\leqslant \\frac{1}{k}.$$On additionne les inégalités de droite pour $k$ allant de $1$ à $n$ : les logarithmes se simplifient deux à deux, et il reste $\\ln(n + 1) \\leqslant H_n$. Les inégalités de gauche, pour $k$ allant de $1$ à $n - 1$, donnent de même $H_n - 1 \\leqslant \\ln n$. Donc :$$\\ln(n + 1) \\leqslant H_n \\leqslant 1 + \\ln n.$$Comme $\\ln(n + 1)$ tend vers $+\\infty$, $H_n$ aussi, mais très lentement : il faut plus de $8\\,000$ termes pour que $H_n$ dépasse $10$."
+          "texte": "On note $H_n = 1 + \\dfrac{1}{2} + \\dots + \\dfrac{1}{n}$. Pour un entier $k \\geqslant 1$ et $x$ dans $[k\\,;\\,k + 1]$, on a $\\dfrac{1}{k + 1} \\leqslant \\dfrac{1}{x} \\leqslant \\dfrac{1}{k}$, car la fonction inverse est décroissante. On intègre sur $[k\\,;\\,k + 1]$, de longueur $1$ :$$\\frac{1}{k + 1} \\leqslant \\ln(k + 1) - \\ln k \\leqslant \\frac{1}{k}.$$On additionne les inégalités de droite pour $k$ allant de $1$ à $n$. Les logarithmes se simplifient deux à deux :$$(\\ln 2 - \\ln 1) + (\\ln 3 - \\ln 2) + \\dots + \\big(\\ln(n + 1) - \\ln n\\big) = \\ln(n + 1).$$Il reste $\\ln(n + 1) \\leqslant H_n$. Les inégalités de gauche, pour $k$ allant de $1$ à $n - 1$, donnent de même $H_n - 1 \\leqslant \\ln n$. Donc :$$\\ln(n + 1) \\leqslant H_n \\leqslant 1 + \\ln n.$$Comme $\\ln(n + 1)$ tend vers $+\\infty$, $H_n$ aussi, mais très lentement. Pour que $H_n > 10$, il faut $1 + \\ln n > 10$, soit $n > e^9 \\approx 8\\,103$ : plus de $8\\,000$ termes."
         },
         {
           "id": "l-integration-087",
@@ -1368,7 +1486,7 @@
         {
           "id": "l-integration-088",
           "type": "retenir",
-          "texte": "Pour une suite d'intégrales : la positivité donne le signe ; $I_{n+1} - I_n$, écrit comme une seule intégrale, donne le sens de variation ; un encadrement intégré et les gendarmes donnent la limite. Une intégration par parties relie $I_{n+1}$ à $I_n$."
+          "texte": "Pour une suite d'intégrales, la positivité donne le signe. $I_{n+1} - I_n$, écrit comme une seule intégrale, donne le sens de variation ; un encadrement intégré et les gendarmes donnent la limite. Une intégration par parties relie $I_{n+1}$ à $I_n$."
         }
       ]
     }
