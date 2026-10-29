@@ -243,11 +243,14 @@ tangente, non exigible, en complément) devient la 3e. Priorités mesurées, tou
 - Équation y' = ay + f · ★
 
 ### 14. Calcul intégral
-- Intégrale d'une fonction positive, aire · ★★
-- Théorème fondamental, calcul par primitive · ★★★
-- Linéarité, positivité, relation de Chasles, valeur moyenne · ★★
-- Intégration par parties · ★★
-- Suites d'intégrales · ★★
+Écrit le 2026-10-29 en 6 notions (la 3e proposée coupée en deux : encadrer une intégrale,
+puis aire entre deux courbes et valeur moyenne) ; priorités mesurées sur 51 sujets.
+- Intégrale d'une fonction positive, aire · ★★★ (45 %, relevée : prérequis du calcul)
+- Théorème fondamental, calcul par primitive · ★★★ (84 %)
+- Linéarité, positivité, relation de Chasles · ★★ (27 %)
+- Aire entre deux courbes, valeur moyenne · ★★ (31 %)
+- Intégration par parties · ★★★ (55 %)
+- Suites d'intégrales · ★ (14 %)
 
 ### 15. Sommes de variables aléatoires, concentration, loi des grands nombres
 - Somme de variables aléatoires : espérance, variance (cas indépendant) · ★★

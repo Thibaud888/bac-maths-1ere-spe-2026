@@ -971,8 +971,26 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     comptées sur 103 sujets au lieu de 63.
     À confier à `annales-indexeur`, puis relancer `frequences-annales.mjs` et recopier les
     chiffres dans `notions.json` (priorités inchangées d'après l'architecte).
-  - [ ] Calcul intégral : le cours — chapitre 14 dans l'ordre de l'année
-    (`integration`) : `/tle-chapitre maths integration cours`.
+  - [x] Calcul intégral : le cours — fait le 2026-10-29 : 6 notions au lieu des 5
+    proposées (« propriétés » coupées en deux : encadrer une intégrale, puis aire entre deux
+    courbes et valeur moyenne), priorités mesurées sur 51 sujets (calcul par primitive 84 %,
+    intégration par parties 55 % → ★★★ ; aire 45 %, relevée d'un cran car le calcul en
+    dépend → ★★★ ; propriétés 27 %, entre deux courbes 31 % → ★★ ; suites d'intégrales
+    14 % → ★). 94 blocs dont les 2 démonstrations exigibles (théorème fondamental pour f
+    croissante, intégration par parties), 17 exemples, 15 « vérifie », 10 cartes de mémo,
+    7 figures, 3 programmes Python (rectangles, Monte-Carlo, Brouncker). Relecteur PASS
+    aux tours 1 et 2 (ciblé) ; élève-testeur À_CLARIFIER (Brouncker), corrigé et relu.
+  - [ ] Calcul intégral, petites retouches du cours — non bloquants laissés ouverts
+    (relecture du tour 2, 2026-10-29) : carte `m-integration-crochet`, « il peut être
+    négatif » → « l'intégrale peut être négative » ; `l-integration-094`, la transition
+    « Une autre suite approche une intégrale » est inexacte ; 005 d invoque la continuité
+    d'une composée que le rappel 002 ne pose pas ; 017, « (sₙ) croît, (Sₙ) décroît » ne se
+    lit pas sur les formules ; légende de 004 sans la formule du bac « délimité par la
+    courbe, l'axe et les droites x = a, x = b » ; aucun « vérifie » sur la règle
+    « aire = −∫f » (091) ; deux phrases de plus de 25 mots (005 e, carte de l'aire).
+  - [ ] Deux animations pour le calcul intégral — souhait de l'auteur du cours : un curseur
+    sur n qui resserre les rectangles sous la courbe, et un point mobile qui fait grandir
+    l'aire F(x) ; à faire quand les figures animées existeront.
   - [ ] Calcul intégral : les exercices —
     `/tle-chapitre maths integration exercices`, après le cours.
   - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
