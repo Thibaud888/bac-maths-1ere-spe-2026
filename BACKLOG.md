@@ -991,8 +991,18 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   - [ ] Deux animations pour le calcul intégral — souhait de l'auteur du cours : un curseur
     sur n qui resserre les rectangles sous la courbe, et un point mobile qui fait grandir
     l'aire F(x) ; à faire quand les figures animées existeront.
-  - [ ] Calcul intégral : les exercices —
-    `/tle-chapitre maths integration exercices`, après le cours.
+  - [x] Calcul intégral : les exercices — fait le 2026-10-30 dans la session du cours :
+    33 exercices (14 Comprendre, 15 S'entraîner, 4 Approfondir), 20 questions éclair,
+    4 sujets type bac (23 points, adaptés de Métropole juin 2025, Métropole septembre 2025,
+    centres étrangers 2026 et Amérique du Nord 2024). Relecteur NEEDS_REVISION aux tours 1
+    (deux gestes notés au type bac que rien ne préparait : énoncés guidés, cours inchangé)
+    et 2 (une phrase fausse sur les primitives de (ln x)ⁿ), PASS au tour 3 ; élève-testeur
+    À_CLARIFIER (un indice inutile, une marche trop haute), corrigé et relu ; 14/14 en
+    Comprendre, 20/20 en éclair. Une coupure (limite des 5 h), agent repris sans perte.
+  - [ ] Calcul intégral, petites retouches des exercices — non bloquants laissés ouverts
+    (relecture du tour 3, 2026-10-30) : x-027 q3, choix 4, « la méthode » → « la méthode
+    d'intégration par parties » ; tb-001 A.3, écrire « strictement croissante » ; tb-001
+    C.2 reprend l'exemple `l-integration-072` du cours (question du vrai sujet, gardée).
   - [ ] Une erreur technique sur la page « Type bac » : un lien est placé dans un autre lien
     (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
     `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source
