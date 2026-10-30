@@ -22,7 +22,7 @@
             null,
             "$9\\pi$ est l'aire du disque entier de rayon $3$ : la courbe n'en décrit que la moitié supérieure, car une racine carrée est positive.",
             "$\\dfrac{9\\pi}{4}$ est l'aire d'un quart de disque : de $-3$ à $3$, la courbe parcourt toute la moitié supérieure du cercle.",
-            "$3\\pi$ est la moitié du périmètre du cercle de rayon $3$, une longueur : son aire vaut $\\pi \\times 3^2 = 9\\pi$."
+            "$3\\pi$ est la moitié du périmètre du cercle de rayon $3$ : c'est une longueur, pas une aire. L'aire d'un disque se calcule avec $\\pi r^2$, puis on n'en garde que la part délimitée par la courbe."
           ]
         },
         "indices": [
@@ -229,7 +229,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "Calculer la somme $S_d$ des aires des trois rectangles « à droite », de hauteurs $f(1)$, $f(2)$ et $f(3)$. Quel encadrement de $I$ obtient-on ?",
+        "enonce": "Calculer la somme $S_d$ des aires des trois rectangles « à droite », de hauteurs $f(1)$, $f(2)$ et $f(3)$. Quel encadrement de $I$ obtient-on ?\n\nSaisis la valeur de $S_d$ ; l'encadrement est à rédiger.",
         "reponse": { "type": "numerique", "valeur": 13, "tolerance": 0 },
         "indices": [
           "Les hauteurs sont les valeurs de $f$ aux bords droits des intervalles : $x = 1$, $x = 2$ et $x = 3$.",
@@ -473,10 +473,10 @@
           ]
         },
         "indices": [
-          "Une primitive de $x \\mapsto e^{ax}$ est $x \\mapsto \\dfrac{1}{a}e^{ax}$ : contrôle-la en dérivant.",
-          "Avec $F(x) = \\dfrac{e^{2x}}{2}$, calcule $F(1) - F(0)$, sans oublier que $e^0 = 1$."
+          "Cherche une primitive avec la forme $u'e^u$ du rappel des primitives, pour $u(x) = 2x$ : ici $u'(x) = 2$, il faut donc ajuster un facteur. Contrôle ta primitive en la dérivant.",
+          "$e^{2x} = \\dfrac{1}{2} \\times 2e^{2x}$, donc $F(x) = \\dfrac{e^{2x}}{2}$ convient. Calcule $F(1) - F(0)$, sans oublier que $e^0 = 1$."
         ],
-        "revoir": "l-integration-033",
+        "revoir": "l-integration-022",
         "solution": "La fonction $F : x \\mapsto \\dfrac{e^{2x}}{2}$ est une primitive de $x \\mapsto e^{2x}$ sur $\\mathbb{R}$, car $F'(x) = \\dfrac{2e^{2x}}{2} = e^{2x}$. Donc $\\displaystyle\\int_0^1 e^{2x}\\,\\mathrm{d}x = \\frac{e^2}{2} - \\frac{e^0}{2} = \\frac{e^2 - 1}{2}$."
       },
       {
@@ -787,7 +787,7 @@
           ]
         },
         "indices": [
-          "La fonction $t \\mapsto t^2 - 4$ est continue sur $\\mathbb{R}$ : d'après le cours, $x \\mapsto \\displaystyle\\int_0^x f(t)\\,\\mathrm{d}t$ est la primitive de $f$ qui s'annule en $0$.",
+          "La fonction $f : t \\mapsto t^2 - 4$ est continue sur $\\mathbb{R}$. Elle change de signe, mais la fin de la définition de l'intégrale d'une fonction de signe quelconque le dit : $x \\mapsto \\displaystyle\\int_0^x f(t)\\,\\mathrm{d}t$ est encore la primitive de $f$ qui s'annule en $0$.",
           "Une primitive $F$ de $f$ vérifie $F' = f$ : il suffit de remplacer $t$ par $x$ dans la fonction sous l'intégrale.",
           "Ne dérive pas la fonction sous l'intégrale : c'est $F$ que l'on dérive, et sa dérivée est cette fonction."
         ],
@@ -1139,44 +1139,44 @@
     "duree": 5,
     "calculatrice": false,
     "ordre": 401,
-    "preambule": "Soit $f$ et $g$ les fonctions définies sur $\\mathbb{R}$ par $f(x) = 3 - x^2$ et $g(x) = x + 1$, de courbes $\\mathcal{C}_f$ et $\\mathcal{C}_g$ dans un repère orthonormé. On s'intéresse à l'intervalle $[-2\\,;\\,1]$.",
+    "preambule": "Soit $f$ et $g$ les fonctions définies sur $\\mathbb{R}$ par $f(x) = 3 - x^2$ et $g(x) = 3 - 3x$, de courbes $\\mathcal{C}_f$ et $\\mathcal{C}_g$ dans un repère orthonormé. On s'intéresse à l'intervalle $[0\\,;\\,3]$.",
     "questions": [
       {
         "id": "q1",
         "label": "1.",
-        "enonce": "Sur $[-2\\,;\\,1]$, quelle est la position relative des deux courbes ?",
+        "enonce": "Sur $[0\\,;\\,3]$, quelle est la position relative des deux courbes ?",
         "reponse": {
           "type": "qcm",
           "choix": [
             "$\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$",
             "$\\mathcal{C}_g$ est au-dessus de $\\mathcal{C}_f$",
-            "les courbes se croisent en $x = 0$"
+            "les courbes se croisent en $x = 1$"
           ],
           "bonne": 0,
           "pourquoiFaux": [
             null,
-            "En $x = 0$, $f(0) = 3$ et $g(0) = 1$ : la courbe de $f$ est plus haute. Étudie le signe de $f(x) - g(x)$.",
-            "En $x = 0$, $f(0) = 3 \\neq g(0) = 1$ : les courbes se coupent là où $f(x) = g(x)$, c'est-à-dire en $x = -2$ et en $x = 1$."
+            "En $x = 1$, $f(1) = 2$ et $g(1) = 0$ : la courbe de $f$ est plus haute. Étudie le signe de $f(x) - g(x)$.",
+            "En $x = 1$, $f(1) = 2 \\neq g(1) = 0$ : les courbes se coupent là où $f(x) = g(x)$, c'est-à-dire en $x = 0$ et en $x = 3$."
           ]
         },
         "indices": [
-          "Étudie le signe de la différence $f(x) - g(x)$ sur $[-2\\,;\\,1]$.",
-          "$f(x) - g(x) = -x^2 - x + 2 = -(x + 2)(x - 1)$ : ce trinôme, de coefficient dominant négatif, est positif entre ses racines."
+          "Étudie le signe de la différence $f(x) - g(x)$ sur $[0\\,;\\,3]$.",
+          "$f(x) - g(x) = 3x - x^2 = x(3 - x)$ : étudie le signe de chaque facteur sur $[0\\,;\\,3]$."
         ],
         "revoir": "l-integration-056",
-        "solution": "$f(x) - g(x) = 3 - x^2 - x - 1 = -x^2 - x + 2 = -(x + 2)(x - 1)$. Ce trinôme a pour racines $-2$ et $1$ et un coefficient dominant négatif : il est positif entre ses racines. Donc $f(x) \\geqslant g(x)$ sur $[-2\\,;\\,1]$ : $\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$."
+        "solution": "$f(x) - g(x) = 3 - x^2 - 3 + 3x = 3x - x^2 = x(3 - x)$. Pour $x$ dans $[0\\,;\\,3]$, $x \\geqslant 0$ et $3 - x \\geqslant 0$, donc $f(x) - g(x) \\geqslant 0$ : $\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$."
       },
       {
         "id": "q2",
         "label": "2.",
-        "enonce": "Calculer l'aire, en u.a., du domaine compris entre les deux courbes sur $[-2\\,;\\,1]$ (valeur exacte ou décimale).",
+        "enonce": "Calculer l'aire, en u.a., du domaine compris entre les deux courbes sur $[0\\,;\\,3]$ (valeur exacte ou décimale).",
         "reponse": { "type": "numerique", "valeur": "9/2", "tolerance": 0.01 },
         "indices": [
-          "L'aire vaut $\\displaystyle\\int_{-2}^{1} \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x$ : « courbe du dessus moins courbe du dessous ».",
-          "Une primitive de $x \\mapsto -x^2 - x + 2$ est $x \\mapsto -\\dfrac{x^3}{3} - \\dfrac{x^2}{2} + 2x$ : calcule sa valeur en $1$, puis en $-2$, avec des parenthèses."
+          "L'aire vaut $\\displaystyle\\int_{0}^{3} \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x$ : « courbe du dessus moins courbe du dessous ».",
+          "Une primitive de $x \\mapsto 3x - x^2$ est $x \\mapsto \\dfrac{3x^2}{2} - \\dfrac{x^3}{3}$ : calcule sa valeur en $3$ ; en $0$, elle est nulle."
         ],
         "revoir": "l-integration-055",
-        "solution": "D'après la question 1, l'aire vaut $\\displaystyle\\int_{-2}^{1} \\left(-x^2 - x + 2\\right)\\mathrm{d}x = \\left[-\\frac{x^3}{3} - \\frac{x^2}{2} + 2x\\right]_{-2}^{1}$. En $1$ : $-\\dfrac{1}{3} - \\dfrac{1}{2} + 2 = \\dfrac{7}{6}$. En $-2$ : $\\dfrac{8}{3} - 2 - 4 = -\\dfrac{10}{3}$. L'aire vaut donc $\\dfrac{7}{6} - \\left(-\\dfrac{10}{3}\\right) = \\dfrac{7}{6} + \\dfrac{20}{6} = \\dfrac{27}{6} = \\dfrac{9}{2}$ u.a."
+        "solution": "D'après la question 1, l'aire vaut $\\displaystyle\\int_{0}^{3} \\left(3x - x^2\\right)\\mathrm{d}x = \\left[\\frac{3x^2}{2} - \\frac{x^3}{3}\\right]_{0}^{3} = \\frac{27}{2} - \\frac{27}{3} - 0 = \\frac{27}{2} - 9 = \\frac{9}{2}$ u.a."
       }
     ]
   },
@@ -1295,7 +1295,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "Calculer $\\displaystyle\\int_{0}^{1} \\left(e^x - e^{-x}\\right)\\mathrm{d}x$ : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.",
+        "enonce": "Calculer $\\displaystyle\\int_{0}^{1} \\left(e^x - e^{-x}\\right)\\mathrm{d}x$ : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée.",
         "reponse": { "type": "numerique", "valeur": 1.09, "tolerance": 0.01, "decimales": 2 },
         "indices": [
           "Une primitive de $x \\mapsto e^{-x}$ est $x \\mapsto -e^{-x}$ : contrôle-la en dérivant.",
@@ -1631,7 +1631,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "Sur le graphique, une unité mesure $4$ cm sur l'axe des abscisses et $2$ cm sur l'axe des ordonnées. Donner une valeur approchée de l'aire du domaine en cm², à $10^{-2}$ près.",
+        "enonce": "Dans ce repère, une unité mesure $4$ cm sur l'axe des abscisses et $2$ cm sur l'axe des ordonnées. Donner une valeur approchée de l'aire du domaine en cm², à $10^{-2}$ près.",
         "reponse": { "type": "numerique", "valeur": 1.19, "tolerance": 0.01, "decimales": 2, "unite": "cm²" },
         "indices": [
           "Une unité d'aire est un rectangle de $4$ cm sur $2$ cm : calcule son aire en cm².",
@@ -1785,14 +1785,14 @@
     "chapitre": "integration",
     "niveau": 1,
     "notions": ["n-integration-suites"],
-    "capacites": ["bo-m-integrale-13"],
-    "titre": "Le sens de variation et la limite d'une suite d'intégrales",
+    "capacites": ["bo-m-integrale-13", "bo-m-derivation-05"],
+    "titre": "Sens de variation, limite et relation par parties d'une suite d'intégrales",
     "duree": 5,
     "calculatrice": false,
     "ordre": 601,
     "source": {
       "annale": "an-2024-asie-j1",
-      "adaptation": "affirmation 5 de l'exercice 4 reprise à la question 1 ; question 2 ajoutée"
+      "adaptation": "affirmation 5 de l'exercice 4 reprise à la question 1 ; questions 2 et 3 ajoutées"
     },
     "questions": [
       {
@@ -1805,10 +1805,10 @@
           "justification": "Par la relation de Chasles, $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$. Sur $[n\\,;\\,n + 1]$, avec $n \\geqslant 1$, $\\ln x \\geqslant 0$ : par positivité, $v_{n+1} - v_n \\geqslant 0$. La suite est croissante."
         },
         "indices": [
-          "Écris $v_{n+1} - v_n$ comme une seule intégrale : les deux intégrales ont la même borne du bas, $1$.",
-          "Par la relation de Chasles, $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$. Quel est le signe de $\\ln x$ pour $x \\geqslant 1$ ?"
+          "Ici, $n$ est dans une borne, pas dans la fonction : c'est la relation de Chasles, et non la linéarité, qui regroupe les deux intégrales. Elle découpe $v_{n+1} = \\displaystyle\\int_1^{n+1} \\ln x\\,\\mathrm{d}x$ en $n$, d'où $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$.",
+          "Pour $x$ dans $[n\\,;\\,n + 1]$, avec $n \\geqslant 1$, on a $x \\geqslant 1$ : quel est le signe de $\\ln x$ ? Conclus avec la positivité, les bornes étant dans l'ordre $n \\leqslant n + 1$."
         ],
-        "revoir": "l-integration-080",
+        "revoir": "l-integration-040",
         "solution": "Pour $n \\geqslant 1$, la relation de Chasles donne $v_{n+1} = \\displaystyle\\int_1^n \\ln x\\,\\mathrm{d}x + \\int_n^{n+1} \\ln x\\,\\mathrm{d}x$, donc $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$. Pour $x$ dans $[n\\,;\\,n + 1]$, $x \\geqslant 1$, donc $\\ln x \\geqslant 0$ ; comme $n \\leqslant n + 1$, la positivité donne $v_{n+1} - v_n \\geqslant 0$. La suite $(v_n)$ est croissante : l'affirmation est vraie."
       },
       {
@@ -1832,6 +1832,33 @@
         ],
         "revoir": "l-integration-081",
         "solution": "$J_n = \\left[\\dfrac{x^{n+1}}{n + 1}\\right]_0^1 = \\dfrac{1}{n + 1}$, qui tend vers $0$ quand $n$ tend vers $+\\infty$. Donc $\\lim\\limits_{n \\to +\\infty} J_n = 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pour tout entier naturel $n$, on pose $K_n = \\displaystyle\\int_1^2 (\\ln x)^n\\,\\mathrm{d}x$. Pour relier $K_{n+1}$ à $K_n$, on intègre $K_{n+1}$ par parties. Quel choix convient ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$u(x) = (\\ln x)^{n+1}$ et $v'(x) = 1$, d'où $u'(x) = \\dfrac{(n + 1)(\\ln x)^n}{x}$ et $v(x) = x$",
+            "$u(x) = (\\ln x)^{n+1}$ et $v'(x) = 1$, d'où $u'(x) = (n + 1)(\\ln x)^n$ et $v(x) = x$",
+            "$u(x) = 1$ et $v'(x) = (\\ln x)^{n+1}$",
+            "$u(x) = \\ln x$ et $v'(x) = (\\ln x)^n$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Tu as dérivé $(\\ln x)^{n+1}$ comme $x^{n+1}$. C'est une composée $w^{n+1}$, avec $w = \\ln$ : sa dérivée est $(n + 1)w'w^n$, et il ne faut pas oublier $w'(x) = \\dfrac{1}{x}$.",
+            "Il faudrait connaître une primitive $v$ de $(\\ln x)^{n+1}$ : on n'en connaît pas. De plus, $u' = 0$ ne fait pas apparaître $K_n$.",
+            "La méthode dit bien de dériver le logarithme, mais il faudrait alors une primitive de $(\\ln x)^n$, que l'on ne connaît pas pour $n \\geqslant 1$."
+          ]
+        },
+        "indices": [
+          "Comme dans la méthode, dérive le facteur qui porte la puissance $n + 1$ : elle baisse d'un cran et fait apparaître $(\\ln x)^n$. Pour $v'$, il faut un facteur dont tu connais une primitive : quel facteur « invisible » multiplie $(\\ln x)^{n+1}$ ?",
+          "On écrit $(\\ln x)^{n+1} = (\\ln x)^{n+1} \\times 1$. La fonction $(\\ln x)^{n+1}$ est de la forme $w^{n+1}$, avec $w = \\ln$ : sa dérivée est $(n + 1)w'w^n$. Que vaut $w'(x)$ ?"
+        ],
+        "revoir": "l-integration-080",
+        "solution": "On ne connaît de primitive ni de $(\\ln x)^{n+1}$ ni de $(\\ln x)^n$ pour $n \\geqslant 1$. On écrit donc $(\\ln x)^{n+1} = (\\ln x)^{n+1} \\times 1$ et l'on pose $u(x) = (\\ln x)^{n+1}$ et $v'(x) = 1$, d'où $v(x) = x$. Comme $u = w^{n+1}$ avec $w = \\ln$, $u'(x) = (n + 1)w'(x)w(x)^n = \\dfrac{(n + 1)(\\ln x)^n}{x}$. La puissance a baissé d'un cran, et $u'(x)v(x) = (n + 1)(\\ln x)^n$ fait apparaître $K_n$ dans la nouvelle intégrale."
       }
     ]
   },
@@ -1891,7 +1918,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "En déduire $I_2$ : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.",
+        "enonce": "En déduire $I_2$ : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée.",
         "reponse": { "type": "numerique", "valeur": 0.72, "tolerance": 0.01, "decimales": 2 },
         "indices": [
           "Applique la relation de la question 2 avec $n = 1$.",
@@ -2078,12 +2105,12 @@
         "enonce": "Déterminer la limite de $(s_n)$, puis celle de $(S_n)$.",
         "reponse": { "type": "redaction" },
         "indices": [
-          "Pose $h = \\dfrac{1}{n}$ : quand $n$ tend vers $+\\infty$, $h$ tend vers $0$. Écris $s_n$ en fonction de $h$.",
+          "Pose $h = \\dfrac{1}{n}$ : quand $n$ tend vers $+\\infty$, $h$ tend vers $0$. Écris $s_n$ en fonction de $h$, puis passe à la limite par composée, comme avec le changement de variable de l'exemple du cours.",
           "$s_n = (e - 1) \\times \\dfrac{h}{e^h - 1}$ : utilise la limite rappelée dans l'énoncé.",
           "$\\dfrac{h}{e^h - 1}$ est l'inverse de $\\dfrac{e^h - 1}{h}$, qui tend vers $1$. Pour $S_n = e^{\\frac{1}{n}}s_n$, cherche d'abord la limite de $e^{\\frac{1}{n}}$."
         ],
-        "revoir": "l-limites-suites-019",
-        "solution": "Avec $h = \\dfrac{1}{n}$, $s_n = (e - 1) \\times \\dfrac{h}{e^h - 1}$. Quand $n$ tend vers $+\\infty$, $h$ tend vers $0$ et $\\dfrac{e^h - 1}{h}$ tend vers $1$ ; par quotient, $\\dfrac{h}{e^h - 1}$ tend vers $1$. Donc $\\lim\\limits_{n \\to +\\infty} s_n = e - 1$. De plus, $\\dfrac{1}{n}$ tend vers $0$, donc $e^{\\frac{1}{n}}$ tend vers $e^0 = 1$, par continuité de l'exponentielle. Par produit, $\\lim\\limits_{n \\to +\\infty} S_n = 1 \\times (e - 1) = e - 1$."
+        "revoir": "l-limites-fonctions-055",
+        "solution": "Avec $h = \\dfrac{1}{n}$, $s_n = (e - 1) \\times \\dfrac{h}{e^h - 1}$. Quand $n$ tend vers $+\\infty$, $h$ tend vers $0$, et $\\dfrac{e^h - 1}{h}$ tend vers $1$ quand $h$ tend vers $0$ : par composée, $\\dfrac{e^h - 1}{h}$ tend vers $1$ quand $n$ tend vers $+\\infty$. Par quotient, $\\dfrac{h}{e^h - 1}$ tend vers $1$. Donc $\\lim\\limits_{n \\to +\\infty} s_n = e - 1$. De plus, $\\dfrac{1}{n}$ tend vers $0$, donc $e^{\\frac{1}{n}}$ tend vers $e^0 = 1$, par continuité de l'exponentielle. Par produit, $\\lim\\limits_{n \\to +\\infty} S_n = 1 \\times (e - 1) = e - 1$."
       },
       {
         "id": "q5",
@@ -2194,12 +2221,12 @@
         "reponse": { "type": "numerique", "valeur": 3.89, "tolerance": 0.01, "decimales": 2 },
         "indices": [
           "Pour l'unicité, il faut une fonction strictement monotone : dérive l'expression de $A(x)$ obtenue à la question 3.",
-          "$A'(x) = x\\,e^{-x}$, strictement positive sur $]0\\,;\\,+\\infty[$. Avec $A(0) = 0$ et la limite de la question 4, applique le théorème des valeurs intermédiaires.",
+          "$A'(x) = x\\,e^{-x}$, strictement positive sur $]0\\,;\\,+\\infty[$. Avec $A(0) = 0$ et la limite de la question 4, applique le corollaire du théorème des valeurs intermédiaires sous sa forme étendue à un intervalle non borné.",
           "Pour la valeur approchée, procède par balayage à la calculatrice : $A(3{,}8) \\approx 0{,}893$ et $A(4) \\approx 0{,}908$.",
           "Affine le balayage avec un pas de $0{,}01$ entre $3{,}8$ et $4$."
         ],
-        "revoir": "l-continuite-020",
-        "solution": "D'après la question 3, $A$ est dérivable et $A'(x) = -e^{-x} + (x + 1)e^{-x} = x\\,e^{-x}$, strictement positive sur $]0\\,;\\,+\\infty[$ : $A$ est continue et strictement croissante sur $[0\\,;\\,+\\infty[$. De plus, $A(0) = 0 < 0{,}9$ et $\\lim\\limits_{x \\to +\\infty} A(x) = 1 > 0{,}9$. D'après le théorème des valeurs intermédiaires, dans le cas d'une fonction continue strictement monotone, l'équation $A(x) = 0{,}9$ admet une unique solution $\\alpha$ dans $[0\\,;\\,+\\infty[$. À la calculatrice, $A(3{,}88) \\approx 0{,}89922 < 0{,}9$ et $A(3{,}89) \\approx 0{,}90002 > 0{,}9$, donc $3{,}88 < \\alpha < 3{,}89$. Comme $A(3{,}885) \\approx 0{,}89962 < 0{,}9$, on a même $3{,}885 < \\alpha < 3{,}89$ : $\\alpha \\approx 3{,}89$ à $10^{-2}$ près."
+        "revoir": "l-continuite-026",
+        "solution": "D'après la question 3, $A$ est dérivable et $A'(x) = -e^{-x} + (x + 1)e^{-x} = x\\,e^{-x}$, strictement positive sur $]0\\,;\\,+\\infty[$ : $A$ est continue et strictement croissante sur $[0\\,;\\,+\\infty[$. De plus, $A(0) = 0 < 0{,}9$ et $\\lim\\limits_{x \\to +\\infty} A(x) = 1 > 0{,}9$. D'après le corollaire du théorème des valeurs intermédiaires, étendu à l'intervalle $[0\\,;\\,+\\infty[$ (on garde l'image $A(0)$ et l'on prend la limite en $+\\infty$), l'équation $A(x) = 0{,}9$ admet une unique solution $\\alpha$ dans $[0\\,;\\,+\\infty[$. À la calculatrice, $A(3{,}88) \\approx 0{,}89922 < 0{,}9$ et $A(3{,}89) \\approx 0{,}90002 > 0{,}9$, donc $3{,}88 < \\alpha < 3{,}89$. Comme $A(3{,}885) \\approx 0{,}89962 < 0{,}9$, on a même $3{,}885 < \\alpha < 3{,}89$ : $\\alpha \\approx 3{,}89$ à $10^{-2}$ près."
       }
     ]
   },
@@ -2244,7 +2271,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "Calculer l'aire du domaine $\\mathcal{D}$, en u.a. : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.",
+        "enonce": "Calculer l'aire du domaine $\\mathcal{D}$, en u.a. : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée.",
         "reponse": { "type": "numerique", "valeur": 0.28, "tolerance": 0.01, "decimales": 2 },
         "indices": [
           "D'après la question 1, l'aire vaut $\\displaystyle\\int_1^e \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x$.",
@@ -2315,15 +2342,15 @@
       {
         "id": "q1",
         "label": "1.",
-        "enonce": "Calculer $I_0$.",
-        "reponse": { "type": "redaction" },
+        "enonce": "Calculer $I_0$ : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée.",
+        "reponse": { "type": "numerique", "valeur": 0.69, "tolerance": 0.01, "decimales": 2 },
         "indices": [
           "$I_0 = \\displaystyle\\int_0^1 \\frac{1}{1 + x}\\,\\mathrm{d}x$ : reconnais une forme $\\dfrac{u'}{u}$.",
           "Avec $u(x) = 1 + x > 0$ sur $[0\\,;\\,1]$ et $u'(x) = 1$, une primitive est $x \\mapsto \\ln(1 + x)$.",
-          "Calcule $\\ln(1 + 1) - \\ln(1 + 0)$."
+          "Calcule $\\ln(1 + 1) - \\ln(1 + 0)$, puis une valeur approchée à la calculatrice."
         ],
         "revoir": "l-integration-034",
-        "solution": "Avec $u(x) = 1 + x$, strictement positive sur $[0\\,;\\,1]$, et $u'(x) = 1$, une primitive de $x \\mapsto \\dfrac{1}{1 + x}$ est $x \\mapsto \\ln(1 + x)$. Donc $I_0 = \\ln 2 - \\ln 1 = \\ln 2$."
+        "solution": "Avec $u(x) = 1 + x$, strictement positive sur $[0\\,;\\,1]$, et $u'(x) = 1$, une primitive de $x \\mapsto \\dfrac{1}{1 + x}$ est $x \\mapsto \\ln(1 + x)$. Donc $I_0 = \\ln 2 - \\ln 1 = \\ln 2 \\approx 0{,}69$."
       },
       {
         "id": "q2",
@@ -2341,7 +2368,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "En déduire la valeur exacte de $I_2$, puis une valeur approchée à $10^{-2}$ près.",
+        "enonce": "En déduire la valeur exacte de $I_2$, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée.",
         "reponse": { "type": "numerique", "valeur": 0.19, "tolerance": 0.01, "decimales": 2 },
         "indices": [
           "Applique la relation de la question 2 avec $n = 0$, puis avec $n = 1$.",
