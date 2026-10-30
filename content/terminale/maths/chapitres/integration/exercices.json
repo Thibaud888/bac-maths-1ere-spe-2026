@@ -1805,8 +1805,8 @@
           "justification": "Par la relation de Chasles, $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$. Sur $[n\\,;\\,n + 1]$, avec $n \\geqslant 1$, $\\ln x \\geqslant 0$ : par positivité, $v_{n+1} - v_n \\geqslant 0$. La suite est croissante."
         },
         "indices": [
-          "Ici, $n$ est dans une borne, pas dans la fonction : c'est la relation de Chasles, et non la linéarité, qui regroupe les deux intégrales. Elle découpe $v_{n+1} = \\displaystyle\\int_1^{n+1} \\ln x\\,\\mathrm{d}x$ en $n$, d'où $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$.",
-          "Pour $x$ dans $[n\\,;\\,n + 1]$, avec $n \\geqslant 1$, on a $x \\geqslant 1$ : quel est le signe de $\\ln x$ ? Conclus avec la positivité, les bornes étant dans l'ordre $n \\leqslant n + 1$."
+          "Ici, $n$ est dans une borne, pas dans la fonction : c'est la relation de Chasles, et non la linéarité, qui regroupe les deux intégrales. Découpe $v_{n+1} = \\displaystyle\\int_1^{n+1} \\ln x\\,\\mathrm{d}x$ en $n$ : quelle intégrale reste dans $v_{n+1} - v_n$ ?",
+          "Chasles donne $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$. Pour $x$ dans $[n\\,;\\,n + 1]$, avec $n \\geqslant 1$, on a $x \\geqslant 1$ : quel est le signe de $\\ln x$ ? Conclus avec la positivité, les bornes étant dans l'ordre $n \\leqslant n + 1$."
         ],
         "revoir": "l-integration-040",
         "solution": "Pour $n \\geqslant 1$, la relation de Chasles donne $v_{n+1} = \\displaystyle\\int_1^n \\ln x\\,\\mathrm{d}x + \\int_n^{n+1} \\ln x\\,\\mathrm{d}x$, donc $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$. Pour $x$ dans $[n\\,;\\,n + 1]$, $x \\geqslant 1$, donc $\\ln x \\geqslant 0$ ; comme $n \\leqslant n + 1$, la positivité donne $v_{n+1} - v_n \\geqslant 0$. La suite $(v_n)$ est croissante : l'affirmation est vraie."
@@ -1836,7 +1836,7 @@
       {
         "id": "q3",
         "label": "3.",
-        "enonce": "Pour tout entier naturel $n$, on pose $K_n = \\displaystyle\\int_1^2 (\\ln x)^n\\,\\mathrm{d}x$. Pour relier $K_{n+1}$ à $K_n$, on intègre $K_{n+1}$ par parties. Quel choix convient ?",
+        "enonce": "Pour tout entier naturel $n$, on pose $K_n = \\displaystyle\\int_1^2 (\\ln x)^n\\,\\mathrm{d}x$, avec la convention $(\\ln x)^0 = 1$. Pour relier $K_{n+1}$ à $K_n$, on intègre $K_{n+1}$ par parties. Quel choix convient ?",
         "reponse": {
           "type": "qcm",
           "choix": [
@@ -1849,8 +1849,8 @@
           "pourquoiFaux": [
             null,
             "Tu as dérivé $(\\ln x)^{n+1}$ comme $x^{n+1}$. C'est une composée $w^{n+1}$, avec $w = \\ln$ : sa dérivée est $(n + 1)w'w^n$, et il ne faut pas oublier $w'(x) = \\dfrac{1}{x}$.",
-            "Il faudrait connaître une primitive $v$ de $(\\ln x)^{n+1}$ : on n'en connaît pas. De plus, $u' = 0$ ne fait pas apparaître $K_n$.",
-            "La méthode dit bien de dériver le logarithme, mais il faudrait alors une primitive de $(\\ln x)^n$, que l'on ne connaît pas pour $n \\geqslant 1$."
+            "Il faudrait une primitive $v$ de $(\\ln x)^{n+1}$ pour tout $n$ : on n'en connaît pas en général. De plus, $u' = 0$ ne fait pas apparaître $K_n$.",
+            "La méthode dit bien de dériver le logarithme, mais il faudrait alors une primitive de $(\\ln x)^n$ pour tout $n$ : on n'en connaît pas en général (seulement pour $n = 0$ et $n = 1$)."
           ]
         },
         "indices": [
@@ -1858,7 +1858,7 @@
           "On écrit $(\\ln x)^{n+1} = (\\ln x)^{n+1} \\times 1$. La fonction $(\\ln x)^{n+1}$ est de la forme $w^{n+1}$, avec $w = \\ln$ : sa dérivée est $(n + 1)w'w^n$. Que vaut $w'(x)$ ?"
         ],
         "revoir": "l-integration-080",
-        "solution": "On ne connaît de primitive ni de $(\\ln x)^{n+1}$ ni de $(\\ln x)^n$ pour $n \\geqslant 1$. On écrit donc $(\\ln x)^{n+1} = (\\ln x)^{n+1} \\times 1$ et l'on pose $u(x) = (\\ln x)^{n+1}$ et $v'(x) = 1$, d'où $v(x) = x$. Comme $u = w^{n+1}$ avec $w = \\ln$, $u'(x) = (n + 1)w'(x)w(x)^n = \\dfrac{(n + 1)(\\ln x)^n}{x}$. La puissance a baissé d'un cran, et $u'(x)v(x) = (n + 1)(\\ln x)^n$ fait apparaître $K_n$ dans la nouvelle intégrale."
+        "solution": "Pour un entier $n$ quelconque, on ne connaît en général de primitive ni de $(\\ln x)^{n+1}$ ni de $(\\ln x)^n$ : seules les puissances $0$ et $1$ en ont une connue, $x \\mapsto x$ et $x \\mapsto x\\ln x - x$. On écrit donc $(\\ln x)^{n+1} = (\\ln x)^{n+1} \\times 1$ et l'on pose $u(x) = (\\ln x)^{n+1}$ et $v'(x) = 1$, d'où $v(x) = x$. Comme $u = w^{n+1}$ avec $w = \\ln$, $u'(x) = (n + 1)w'(x)w(x)^n = \\dfrac{(n + 1)(\\ln x)^n}{x}$. La puissance a baissé d'un cran, et $u'(x)v(x) = (n + 1)(\\ln x)^n$ fait apparaître $K_n$ dans la nouvelle intégrale."
       }
     ]
   },
