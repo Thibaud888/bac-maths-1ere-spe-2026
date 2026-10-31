@@ -933,7 +933,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
   - [ ] Remettre dans les types bac de Sinus et cosinus les questions retirées des sujets
     adaptés — tb-004 (deux affirmations sur les équations différentielles) : possible
     maintenant que « Primitives, équations différentielles » est écrit ; tb-002 (partie B :
-    intégration par parties, aire) attendra « Calcul intégral » (ch. 14). Voir leurs notes
+    intégration par parties, aire) possible aussi depuis que « Calcul intégral » est écrit (#138). Voir leurs notes
     `adaptation`.
   - [x] Primitives, équations différentielles : le cours — fait le 2026-10-26 : 5 notions au
     lieu des 4 proposées (« primitives » coupées en deux : reconnaître ou vérifier une
@@ -998,7 +998,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     (deux gestes notés au type bac que rien ne préparait : énoncés guidés, cours inchangé)
     et 2 (une phrase fausse sur les primitives de (ln x)ⁿ), PASS au tour 3 ; élève-testeur
     À_CLARIFIER (un indice inutile, une marche trop haute), corrigé et relu ; 14/14 en
-    Comprendre, 20/20 en éclair. Une coupure (limite des 5 h), agent repris sans perte.
+    Comprendre, 20/20 en éclair. Une coupure (limite des 5 h), agent repris sans perte. Coût : 76,6 $ pour les deux parties. PR : #138, fusionnée par la session à la demande de Thibaud.
   - [ ] Calcul intégral, petites retouches des exercices — non bloquants laissés ouverts
     (relecture du tour 3, 2026-10-30) : x-027 q3, choix 4, « la méthode » → « la méthode
     d'intégration par parties » ; tb-001 A.3, écrire « strictement croissante » ; tb-001
