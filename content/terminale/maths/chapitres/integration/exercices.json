@@ -1,0 +1,2436 @@
+[
+  {
+    "id": "x-integration-001",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-aire"],
+    "capacites": ["bo-m-integrale-01"],
+    "titre": "Reconnaître une aire connue",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 101,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Dans un repère orthonormé, que vaut $\\displaystyle\\int_{-3}^{3} \\sqrt{9 - x^2}\\,\\mathrm{d}x$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\dfrac{9\\pi}{2}$", "$9\\pi$", "$\\dfrac{9\\pi}{4}$", "$3\\pi$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$9\\pi$ est l'aire du disque entier de rayon $3$ : la courbe n'en décrit que la moitié supérieure, car une racine carrée est positive.",
+            "$\\dfrac{9\\pi}{4}$ est l'aire d'un quart de disque : de $-3$ à $3$, la courbe parcourt toute la moitié supérieure du cercle.",
+            "$3\\pi$ est la moitié du périmètre du cercle de rayon $3$ : c'est une longueur, pas une aire. L'aire d'un disque se calcule avec $\\pi r^2$, puis on n'en garde que la part délimitée par la courbe."
+          ]
+        },
+        "indices": [
+          "Pour $y = \\sqrt{9 - x^2}$, on a $y \\geqslant 0$ et $y^2 = 9 - x^2$ : écris la relation entre $x$ et $y$, puis reconnais une figure.",
+          "$x^2 + y^2 = 9$ avec $y \\geqslant 0$ : le point $(x\\,;\\,y)$ est sur la moitié supérieure du cercle de centre $O$ et de rayon $3$. Le domaine est donc un demi-disque ; calcule son aire avec $\\pi r^2$."
+        ],
+        "revoir": "l-integration-005",
+        "solution": "Sur $[-3\\,;\\,3]$, $9 - x^2 \\geqslant 0$ : la fonction $x \\mapsto \\sqrt{9 - x^2}$ est continue et positive, et l'intégrale est l'aire du domaine sous sa courbe. Pour $y = \\sqrt{9 - x^2}$, on a $y \\geqslant 0$ et $x^2 + y^2 = 9$ : la courbe est le demi-cercle supérieur de centre $O$ et de rayon $3$. Le domaine est un demi-disque, donc $\\displaystyle\\int_{-3}^{3} \\sqrt{9 - x^2}\\,\\mathrm{d}x = \\frac{\\pi \\times 3^2}{2} = \\frac{9\\pi}{2}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Dans un repère orthonormé, calculer $\\displaystyle\\int_0^2 (3 - x)\\,\\mathrm{d}x$ en reconnaissant l'aire d'un trapèze.",
+        "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+        "indices": [
+          "Vérifie que $3 - x \\geqslant 0$ sur $[0\\,;\\,2]$, puis calcule les longueurs des deux côtés verticaux du trapèze, en $x = 0$ et en $x = 2$.",
+          "Les côtés verticaux mesurent $3 - 0 = 3$ et $3 - 2 = 1$, et la largeur vaut $2 - 0$ : applique la formule $\\dfrac{(B + b) \\times h}{2}$."
+        ],
+        "revoir": "l-integration-005",
+        "solution": "Sur $[0\\,;\\,2]$, $3 - x \\geqslant 1 > 0$ : la fonction affine $x \\mapsto 3 - x$ est continue et positive. Le domaine sous sa courbe est un trapèze dont les côtés verticaux mesurent $3$ (en $x = 0$) et $1$ (en $x = 2$), et dont la largeur vaut $2$. Donc $\\displaystyle\\int_0^2 (3 - x)\\,\\mathrm{d}x = \\frac{(3 + 1) \\times 2}{2} = 4$.",
+        "erreurFrequente": "Prendre $3 \\times 2 = 6$, l'aire du rectangle de hauteur $3$ : la droite descend, le domaine est un trapèze."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans un autre repère, une unité mesure $2$ cm sur l'axe des abscisses et $3$ cm sur l'axe des ordonnées. Une intégrale vaut $4$ u.a. Quelle est l'aire du domaine correspondant, en cm² ?",
+        "reponse": { "type": "numerique", "valeur": 24, "tolerance": 0, "unite": "cm²" },
+        "indices": [
+          "Une unité d'aire est l'aire du rectangle construit sur les unités des deux axes : calcule-la d'abord en cm².",
+          "Ce rectangle mesure $2$ cm sur $3$ cm. Multiplie ensuite le nombre d'unités d'aire par l'aire d'une unité."
+        ],
+        "revoir": "l-integration-018",
+        "solution": "Une unité d'aire est l'aire du rectangle de $2$ cm sur $3$ cm, soit $2 \\times 3 = 6$ cm². L'aire du domaine vaut donc $4 \\times 6 = 24$ cm².",
+        "erreurFrequente": "Multiplier par $2$, par $3$ ou par $2 + 3$ : une unité d'aire est un rectangle, son aire est un produit."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-002",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-aire"],
+    "capacites": ["bo-m-integrale-09", "bo-m-integrale-19"],
+    "titre": "Rectangles sous et sur la courbe de la fonction inverse",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 102,
+    "preambule": "On note $f(x) = \\dfrac{1}{x}$ et $I = \\displaystyle\\int_1^2 \\frac{1}{x}\\,\\mathrm{d}x$, l'aire sous la courbe de la fonction inverse entre $x = 1$ et $x = 2$. On découpe $[1\\,;\\,2]$ en $2$ intervalles de largeur $0{,}5$ : $[1\\,;\\,1{,}5]$ et $[1{,}5\\,;\\,2]$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Les rectangles « à gauche », de hauteurs $f(1)$ et $f(1{,}5)$, donnent :",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["une valeur par défaut de $I$", "une valeur par excès de $I$", "la valeur exacte de $I$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est vrai pour une fonction croissante. Ici, $f$ est décroissante : au bord gauche de chaque intervalle, $f$ prend sa plus grande valeur, et le rectangle dépasse la courbe.",
+            null,
+            "La courbe n'est pas horizontale : chaque rectangle déborde un peu au-dessus d'elle, la somme de leurs aires n'est pas exactement $I$."
+          ]
+        },
+        "indices": [
+          "Regarde le sens de variation de $f$ sur $[1\\,;\\,2]$ : c'est lui qui dit si un rectangle à gauche est sous la courbe ou la dépasse.",
+          "La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$. Sur $[1\\,;\\,1{,}5]$, compare la hauteur $f(1)$ du rectangle avec les valeurs de $f$ sur cet intervalle."
+        ],
+        "revoir": "l-integration-019",
+        "solution": "La fonction $f : x \\mapsto \\dfrac{1}{x}$ est décroissante sur $[1\\,;\\,2]$. Sur chaque intervalle, sa plus grande valeur est au bord gauche : le rectangle à gauche contient le morceau de domaine situé au-dessus de cet intervalle. Les rectangles à gauche donnent donc une valeur par excès de $I$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer la somme $S$ des aires des deux rectangles « à droite », de hauteurs $f(1{,}5)$ et $f(2)$ (valeur exacte, ou arrondie au millième).",
+        "reponse": { "type": "numerique", "valeur": "7/12", "tolerance": 0.001 },
+        "indices": [
+          "Chaque rectangle a pour largeur $0{,}5$ ; sa hauteur est la valeur de $f$ au bord droit de son intervalle.",
+          "$f(1{,}5) = \\dfrac{1}{1{,}5} = \\dfrac{2}{3}$ et $f(2) = \\dfrac{1}{2}$ : additionne ces hauteurs au même dénominateur, puis multiplie par la largeur."
+        ],
+        "revoir": "l-integration-010",
+        "solution": "Les hauteurs sont $f(1{,}5) = \\dfrac{2}{3}$ et $f(2) = \\dfrac{1}{2}$. Donc $S = 0{,}5 \\times \\left(\\dfrac{2}{3} + \\dfrac{1}{2}\\right) = \\dfrac{1}{2} \\times \\dfrac{7}{6} = \\dfrac{7}{12} \\approx 0{,}583$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Affirmation : on a $\\dfrac{7}{12} \\leqslant I \\leqslant \\dfrac{5}{6}$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Comme $f$ est décroissante, les rectangles à droite sont sous la courbe : $\\dfrac{7}{12} \\leqslant I$. Les rectangles à gauche dépassent la courbe : leur aire, $0{,}5 \\times \\left(1 + \\dfrac{2}{3}\\right) = \\dfrac{5}{6}$, majore $I$. L'affirmation est vraie."
+        },
+        "indices": [
+          "Les rectangles à droite sont-ils sous la courbe ou au-dessus ? Et ceux à gauche ? Sers-toi de la question 1.",
+          "Calcule l'aire des rectangles à gauche, $0{,}5 \\times \\big(f(1) + f(1{,}5)\\big)$, puis range les deux sommes de part et d'autre de $I$."
+        ],
+        "revoir": "l-integration-010",
+        "solution": "Comme $f$ est décroissante sur $[1\\,;\\,2]$, les rectangles à droite sont sous la courbe et les rectangles à gauche la dépassent. Les rectangles à gauche ont pour aire totale $0{,}5 \\times \\left(1 + \\dfrac{2}{3}\\right) = \\dfrac{1}{2} \\times \\dfrac{5}{3} = \\dfrac{5}{6}$. Donc $\\dfrac{7}{12} \\leqslant I \\leqslant \\dfrac{5}{6}$ : l'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-003",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-aire"],
+    "capacites": ["bo-m-integrale-09", "bo-m-integrale-01"],
+    "titre": "Compter les carreaux sous une courbe",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 103,
+    "preambule": "Une fonction $f$ est continue et positive sur $[0\\,;\\,2]$. On a tracé sa courbe sur un quadrillage dont chaque carreau mesure $0{,}2$ unité en largeur et $0{,}5$ unité en hauteur. Entre $x = 0$ et $x = 2$, on compte $23$ carreaux entièrement sous la courbe et $9$ carreaux traversés par la courbe. On note $I = \\displaystyle\\int_0^2 f(x)\\,\\mathrm{d}x$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est l'aire d'un carreau, en unités d'aire ?",
+        "reponse": { "type": "numerique", "valeur": 0.1, "tolerance": 0.001 },
+        "indices": [
+          "Un carreau est un rectangle : son aire, en u.a., est le produit de sa largeur et de sa hauteur, mesurées en unités.",
+          "Sa largeur vaut $0{,}2$ et sa hauteur $0{,}5$ : multiplie ces deux nombres."
+        ],
+        "revoir": "l-integration-007",
+        "solution": "Un carreau est un rectangle de $0{,}2$ sur $0{,}5$ : son aire vaut $0{,}2 \\times 0{,}5 = 0{,}1$ u.a. Il faut donc $10$ carreaux pour faire une unité d'aire."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quel encadrement de $I$ ces comptages donnent-ils ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$2{,}3 \\leqslant I \\leqslant 3{,}2$",
+            "$23 \\leqslant I \\leqslant 32$",
+            "$0{,}9 \\leqslant I \\leqslant 2{,}3$",
+            "$5{,}75 \\leqslant I \\leqslant 8$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Ce sont des nombres de carreaux, pas des unités d'aire : multiplie-les par l'aire d'un carreau.",
+            "Les $9$ carreaux traversés ne donnent pas une valeur par défaut : le domaine contient les $23$ carreaux entiers, et il est contenu dans les $23 + 9$ carreaux coloriés.",
+            "Tu as compté $0{,}25$ u.a. par carreau, comme pour un carreau de $0{,}5$ sur $0{,}5$ : ici, un carreau mesure $0{,}2$ sur $0{,}5$."
+          ]
+        },
+        "indices": [
+          "Le domaine sous la courbe contient les carreaux entiers, et il est contenu dans l'ensemble des carreaux entiers et traversés.",
+          "Il y a $23$ carreaux entiers et $23 + 9 = 32$ carreaux en tout : multiplie chaque nombre par l'aire d'un carreau, trouvée à la question 1."
+        ],
+        "revoir": "l-integration-009",
+        "solution": "Le domaine contient les $23$ carreaux entièrement sous la courbe, et il est contenu dans les $23 + 9 = 32$ carreaux entiers ou traversés. Chaque carreau vaut $0{,}1$ u.a. : $23 \\times 0{,}1 \\leqslant I \\leqslant 32 \\times 0{,}1$, soit $2{,}3 \\leqslant I \\leqslant 3{,}2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Donner une estimation de $I$ en comptant les carreaux entiers et la moitié des carreaux traversés.",
+        "reponse": { "type": "numerique", "valeur": 2.75, "tolerance": 0.001 },
+        "indices": [
+          "La méthode du cours compte les carreaux entiers, plus la moitié des carreaux traversés, puis convertit en unités d'aire.",
+          "Cela fait $23 + \\dfrac{9}{2} = 27{,}5$ carreaux : convertis ce nombre en u.a. avec l'aire d'un carreau."
+        ],
+        "revoir": "l-integration-007",
+        "solution": "On compte $23 + \\dfrac{9}{2} = 27{,}5$ carreaux, soit $27{,}5 \\times 0{,}1 = 2{,}75$ u.a. Donc $I \\approx 2{,}75$, au milieu de l'encadrement $2{,}3 \\leqslant I \\leqslant 3{,}2$."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-004",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-aire"],
+    "capacites": ["bo-m-integrale-09", "bo-m-integrale-19", "bo-m-integrale-01"],
+    "titre": "Encadrer une aire avec trois rectangles, puis avec les milieux",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 111,
+    "preambule": "Soit $f$ la fonction définie sur $[0\\,;\\,3]$ par $f(x) = 9 - x^2$, et $I = \\displaystyle\\int_0^3 \\left(9 - x^2\\right)\\mathrm{d}x$. On découpe $[0\\,;\\,3]$ en $3$ intervalles de largeur $1$ : $[0\\,;\\,1]$, $[1\\,;\\,2]$ et $[2\\,;\\,3]$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que $I$ est l'aire d'un domaine que l'on précisera. Montrer ensuite que, sur chaque intervalle, le rectangle qui a pour hauteur la valeur de $f$ au bord droit est sous la courbe.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour que $I$ soit une aire, il faut que $f$ soit continue et positive sur $[0\\,;\\,3]$. Pour situer les rectangles, regarde le sens de variation de $f$.",
+          "Pour $0 \\leqslant x \\leqslant 3$, $x^2 \\leqslant 9$, donc $f(x) \\geqslant 0$. Étudie ensuite les variations de $f$ avec sa dérivée $f'(x) = -2x$.",
+          "$f' \\leqslant 0$ sur $[0\\,;\\,3]$ : $f$ est décroissante. Sur un intervalle $[x_k\\,;\\,x_{k+1}]$, en quel point $f$ prend-elle sa plus petite valeur ?"
+        ],
+        "revoir": "l-integration-010",
+        "solution": "$f$ est un polynôme, donc continue. Pour $0 \\leqslant x \\leqslant 3$, $x^2 \\leqslant 9$, donc $f(x) \\geqslant 0$ : $I$ est l'aire, en u.a., du domaine limité par la courbe de $f$, l'axe des abscisses et les droites d'équations $x = 0$ et $x = 3$. De plus, $f'(x) = -2x \\leqslant 0$ sur $[0\\,;\\,3]$ : $f$ est décroissante. Sur chaque intervalle $[x_k\\,;\\,x_{k+1}]$, sa plus petite valeur est donc $f(x_{k+1})$, au bord droit : le rectangle de hauteur $f(x_{k+1})$ est sous la courbe."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer la somme $S_g$ des aires des trois rectangles « à gauche », de hauteurs $f(0)$, $f(1)$ et $f(2)$.",
+        "reponse": { "type": "numerique", "valeur": 22, "tolerance": 0 },
+        "indices": [
+          "Chaque rectangle a pour largeur $1$ : son aire est égale à sa hauteur.",
+          "Calcule $f(0)$, $f(1)$ et $f(2)$ : par exemple, $f(1) = 9 - 1^2$.",
+          "Additionne les trois hauteurs $f(0) + f(1) + f(2)$."
+        ],
+        "revoir": "l-integration-010",
+        "solution": "$f(0) = 9$, $f(1) = 8$ et $f(2) = 5$. Les rectangles ont pour largeur $1$, donc $S_g = 1 \\times (9 + 8 + 5) = 22$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer la somme $S_d$ des aires des trois rectangles « à droite », de hauteurs $f(1)$, $f(2)$ et $f(3)$. Quel encadrement de $I$ obtient-on ?\n\nSaisis la valeur de $S_d$ ; l'encadrement est à rédiger.",
+        "reponse": { "type": "numerique", "valeur": 13, "tolerance": 0 },
+        "indices": [
+          "Les hauteurs sont les valeurs de $f$ aux bords droits des intervalles : $x = 1$, $x = 2$ et $x = 3$.",
+          "Tu connais déjà $f(1)$ et $f(2)$ ; calcule $f(3) = 9 - 3^2$, puis additionne les trois hauteurs.",
+          "D'après la question 1, les rectangles à droite sont sous la courbe et ceux à gauche la dépassent : $S_d \\leqslant I \\leqslant S_g$."
+        ],
+        "revoir": "l-integration-012",
+        "solution": "$S_d = 1 \\times \\big(f(1) + f(2) + f(3)\\big) = 8 + 5 + 0 = 13$. Comme $f$ est décroissante, les rectangles à droite sont sous la courbe et les rectangles à gauche la dépassent. Donc $13 \\leqslant I \\leqslant 22$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Méthode des milieux : sur chaque intervalle, le rectangle a pour hauteur la valeur de $f$ au milieu de l'intervalle. Calculer la valeur approchée de $I$ ainsi obtenue.",
+        "reponse": { "type": "numerique", "valeur": 18.25, "tolerance": 0.001 },
+        "indices": [
+          "Les milieux des trois intervalles sont $0{,}5$, $1{,}5$ et $2{,}5$ ; chaque rectangle a toujours pour largeur $1$.",
+          "$f(0{,}5) = 9 - 0{,}25 = 8{,}75$. Calcule de même $f(1{,}5)$ et $f(2{,}5)$.",
+          "$1{,}5^2 = 2{,}25$ et $2{,}5^2 = 6{,}25$ : calcule les deux hauteurs, puis additionne les trois."
+        ],
+        "revoir": "l-integration-014",
+        "solution": "$f(0{,}5) = 8{,}75$, $f(1{,}5) = 9 - 2{,}25 = 6{,}75$ et $f(2{,}5) = 9 - 6{,}25 = 2{,}75$. La méthode des milieux donne $1 \\times (8{,}75 + 6{,}75 + 2{,}75) = 18{,}25$. La valeur exacte, calculée avec une primitive dans la notion suivante, est $I = 18$ : les milieux en sont bien plus près que les rectangles à gauche ou à droite."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-005",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-aire"],
+    "capacites": ["bo-m-integrale-19", "bo-m-integrale-09"],
+    "titre": "Lire un programme d'approximation d'une intégrale",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 112,
+    "preambule": "On s'intéresse à $I = \\displaystyle\\int_1^2 \\frac{1}{x}\\,\\mathrm{d}x$ et au programme Python ci-dessous, où $f$ est la fonction inverse.",
+    "code": {
+      "langage": "python",
+      "source": "def f(x):\n    return 1 / x\n\ndef approx(a, b, n):\n    h = (b - a) / n\n    s = 0\n    for k in range(n):\n        s = s + f(a + k * h + h / 2)\n    return h * s"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle méthode la fonction approx applique-t-elle ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "la méthode des rectangles à gauche",
+            "la méthode des rectangles à droite",
+            "la méthode des milieux",
+            "la méthode des trapèzes"
+          ],
+          "bonne": 2,
+          "pourquoiFaux": [
+            "À gauche, la hauteur serait $f(a + kh)$ ; ici, on ajoute $\\dfrac{h}{2}$ à l'abscisse.",
+            "À droite, la hauteur serait $f\\big(a + (k + 1)h\\big)$, au bord droit de l'intervalle, et non en son milieu.",
+            null,
+            "Pour les trapèzes, chaque terme serait la moyenne $\\dfrac{f(a + kh) + f\\big(a + (k + 1)h\\big)}{2}$ des valeurs aux deux bords."
+          ]
+        },
+        "indices": [
+          "Regarde l'abscisse où la boucle évalue $f$ : est-ce un bord de l'intervalle $[a + kh\\,;\\,a + (k + 1)h]$, ou un autre point ?",
+          "La boucle évalue $f$ en $a + kh + \\dfrac{h}{2}$ : situe ce point par rapport aux bords $a + kh$ et $a + (k + 1)h$.",
+          "Ce point est à égale distance des deux bords. Quelle méthode du cours prend la hauteur en ce point ?"
+        ],
+        "revoir": "l-integration-014",
+        "solution": "Pour chaque $k$, l'intervalle est $[a + kh\\,;\\,a + (k + 1)h]$, de largeur $h$, et la boucle ajoute $f\\left(a + kh + \\dfrac{h}{2}\\right)$, la valeur de $f$ au milieu de cet intervalle. La fonction renvoie $h$ fois la somme de ces valeurs : c'est la somme des aires des rectangles qui ont pour hauteur la valeur au milieu. C'est la méthode des milieux."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer à la main la valeur renvoyée par approx(1, 2, 2) (valeur exacte, ou arrondie au millième).",
+        "reponse": { "type": "numerique", "valeur": "24/35", "tolerance": 0.001 },
+        "indices": [
+          "Avec $a = 1$, $b = 2$ et $n = 2$, calcule $h$, puis les deux abscisses où la boucle évalue $f$, pour $k = 0$ et $k = 1$.",
+          "$h = 0{,}5$ : les abscisses sont $1{,}25 = \\dfrac{5}{4}$ et $1{,}75 = \\dfrac{7}{4}$, où $f$ vaut $\\dfrac{4}{5}$ et $\\dfrac{4}{7}$.",
+          "Le programme renvoie $0{,}5 \\times \\left(\\dfrac{4}{5} + \\dfrac{4}{7}\\right)$ : réduis au même dénominateur."
+        ],
+        "revoir": "l-integration-014",
+        "solution": "Ici $h = \\dfrac{2 - 1}{2} = 0{,}5$. Pour $k = 0$, la boucle ajoute $f(1{,}25) = \\dfrac{4}{5}$ ; pour $k = 1$, elle ajoute $f(1{,}75) = \\dfrac{4}{7}$. Le programme renvoie $0{,}5 \\times \\left(\\dfrac{4}{5} + \\dfrac{4}{7}\\right) = \\dfrac{1}{2} \\times \\dfrac{28 + 20}{35} = \\dfrac{24}{35} \\approx 0{,}686$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pour obtenir la méthode des trapèzes, par quelle instruction faut-il remplacer celle de la boucle ? En langage naturel, $s \\leftarrow y$ signifie « $s$ prend la valeur $y$ ».",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$s \\leftarrow s + f(a + kh)$",
+            "$s \\leftarrow s + \\dfrac{f(a + kh) + f\\big(a + (k + 1)h\\big)}{2}$",
+            "$s \\leftarrow s + \\dfrac{f(a) + f(b)}{2}$",
+            "$s \\leftarrow s + f\\big(a + (k + 1)h\\big)$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "C'est la méthode des rectangles à gauche.",
+            null,
+            "Ce terme ne dépend pas de $k$ : le programme renverrait $(b - a) \\times \\dfrac{f(a) + f(b)}{2}$, l'aire d'un seul grand trapèze construit sur $[a\\,;\\,b]$.",
+            "C'est la méthode des rectangles à droite."
+          ]
+        },
+        "indices": [
+          "Sur l'intervalle $[a + kh\\,;\\,a + (k + 1)h]$, le trapèze a pour aire $h$ fois la moyenne des valeurs de $f$ aux deux bords.",
+          "Le programme multiplie déjà la somme par $h$ à la fin (il renvoie $h \\times s$) : chaque tour de boucle doit donc ajouter seulement la moyenne des valeurs aux deux bords.",
+          "Les deux bords de l'intervalle numéro $k$ sont $a + kh$ et $a + (k + 1)h$ : cherche l'instruction qui fait la moyenne de $f$ en ces deux points."
+        ],
+        "revoir": "l-integration-014",
+        "solution": "Sur l'intervalle $[a + kh\\,;\\,a + (k + 1)h]$, le trapèze a pour aire $h \\times \\dfrac{f(a + kh) + f\\big(a + (k + 1)h\\big)}{2}$. Le programme multiplie déjà la somme par $h$ à la fin : chaque tour de boucle doit ajouter $\\dfrac{f(a + kh) + f\\big(a + (k + 1)h\\big)}{2}$ à $s$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Avec cette modification, calculer à la main la valeur renvoyée pour $a = 1$, $b = 2$ et $n = 2$ (valeur exacte, ou arrondie au millième).",
+        "reponse": { "type": "numerique", "valeur": "17/24", "tolerance": 0.001 },
+        "indices": [
+          "Les bords des deux intervalles sont $1$, $1{,}5$ et $2$ : il te faut $f(1)$, $f(1{,}5)$ et $f(2)$.",
+          "$f(1) = 1$, $f(1{,}5) = \\dfrac{2}{3}$ et $f(2) = \\dfrac{1}{2}$. Calcule les deux moyennes $\\dfrac{1}{2}\\left(1 + \\dfrac{2}{3}\\right)$ et $\\dfrac{1}{2}\\left(\\dfrac{2}{3} + \\dfrac{1}{2}\\right)$.",
+          "Ces moyennes valent $\\dfrac{5}{6}$ et $\\dfrac{7}{12}$ : additionne-les, puis multiplie par $h = 0{,}5$."
+        ],
+        "revoir": "l-integration-014",
+        "solution": "Les moyennes sur les deux intervalles valent $\\dfrac{1}{2}\\left(1 + \\dfrac{2}{3}\\right) = \\dfrac{5}{6}$ et $\\dfrac{1}{2}\\left(\\dfrac{2}{3} + \\dfrac{1}{2}\\right) = \\dfrac{7}{12}$. Le programme renvoie $0{,}5 \\times \\left(\\dfrac{10}{12} + \\dfrac{7}{12}\\right) = \\dfrac{1}{2} \\times \\dfrac{17}{12} = \\dfrac{17}{24} \\approx 0{,}708$. La notion suivante montrera que $I = \\ln 2 \\approx 0{,}693$ : avec $n = 2$, les milieux ($\\approx 0{,}686$) en sont plus près que les trapèzes."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-006",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-aire"],
+    "capacites": ["bo-m-integrale-20", "bo-m-integrale-01"],
+    "titre": "Estimer $\\pi$ par la méthode de Monte-Carlo",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 113,
+    "preambule": "Dans un repère orthonormé, on note $I = \\displaystyle\\int_0^1 \\sqrt{1 - x^2}\\,\\mathrm{d}x$. L'instruction random() renvoie un nombre au hasard entre $0$ et $1$. On considère le programme ci-dessous.",
+    "code": {
+      "langage": "python",
+      "source": "from random import random\n\ndef estimation(n):\n    compteur = 0\n    for k in range(n):\n        x = random()\n        y = random()\n        if x ** 2 + y ** 2 <= 1:\n            compteur = compteur + 1\n    return compteur / n"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $x$ et $y$ deux réels de $[0\\,;\\,1]$. Montrer que le point $M(x\\,;\\,y)$ est sous la courbe de $f : x \\mapsto \\sqrt{1 - x^2}$, c'est-à-dire que $y \\leqslant \\sqrt{1 - x^2}$, si et seulement si $x^2 + y^2 \\leqslant 1$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Les deux membres de $y \\leqslant \\sqrt{1 - x^2}$ sont positifs : on peut les élever au carré sans changer le sens.",
+          "Pour des réels positifs $A$ et $B$, $A \\leqslant B$ équivaut à $A^2 \\leqslant B^2$. Applique-le à $A = y$ et à $B = \\sqrt{1 - x^2}$.",
+          "Avec $\\left(\\sqrt{1 - x^2}\\right)^2 = 1 - x^2$, tu obtiens $y^2 \\leqslant 1 - x^2$ : fais passer $x^2$ dans l'autre membre."
+        ],
+        "revoir": "l-integration-015",
+        "solution": "Pour $x$ dans $[0\\,;\\,1]$, $1 - x^2 \\geqslant 0$, donc $\\sqrt{1 - x^2}$ existe et est positif ; de plus, $y \\geqslant 0$. Or la fonction carré est strictement croissante sur $[0\\,;\\,+\\infty[$ : pour deux réels positifs, $A \\leqslant B$ équivaut à $A^2 \\leqslant B^2$. Donc $y \\leqslant \\sqrt{1 - x^2}$ équivaut à $y^2 \\leqslant 1 - x^2$, c'est-à-dire à $x^2 + y^2 \\leqslant 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quand $n$ est grand, de quel nombre la valeur renvoyée par estimation(n) est-elle proche ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$I$", "$4I$", "$\\dfrac{I}{4}$", "$1 - I$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "On multiplierait par $4$ si les points étaient tirés dans un carré d'aire $4$ ; ici, $x$ et $y$ sont entre $0$ et $1$, et le carré a pour aire $1$.",
+            "La proportion de points sous la courbe approche l'aire du domaine divisée par l'aire du carré, qui vaut $1$ : on ne divise pas par $4$.",
+            "$1 - I$ serait la proportion de points au-dessus de la courbe ; or le compteur augmente quand le point est sous la courbe."
+          ]
+        },
+        "indices": [
+          "Les points sont tirés uniformément dans un carré : la proportion de points sous la courbe est proche du quotient de deux aires.",
+          "Le carré est $[0\\,;\\,1] \\times [0\\,;\\,1]$, d'aire $1$ u.a. ; le domaine sous la courbe a pour aire $I$, d'après la question 1 et la définition de l'intégrale.",
+          "La fonction renvoie le nombre de points sous la courbe divisé par $n$, sans autre facteur : compare cette proportion au quotient $\\dfrac{\\text{aire du domaine}}{\\text{aire du carré}}$."
+        ],
+        "revoir": "l-integration-015",
+        "solution": "Les $n$ points sont tirés uniformément dans le carré $[0\\,;\\,1] \\times [0\\,;\\,1]$, d'aire $1$ u.a. D'après la question 1, le compteur augmente quand le point est sous la courbe de $f$. Quand $n$ est grand, la proportion renvoyée est donc proche de $\\dfrac{\\text{aire du domaine sous la courbe}}{\\text{aire du carré}} = \\dfrac{I}{1} = I$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Donner une valeur approchée de $I$ au millième, en reconnaissant l'aire d'une figure simple.",
+        "reponse": { "type": "numerique", "valeur": 0.785, "tolerance": 0.001, "decimales": 3 },
+        "indices": [
+          "Pour $y = \\sqrt{1 - x^2}$, on a $y \\geqslant 0$ et $x^2 + y^2 = 1$ : quelle courbe est-ce ?",
+          "C'est l'arc du cercle de centre $O$ et de rayon $1$ situé entre $x = 0$ et $x = 1$, au-dessus de l'axe : le domaine est un quart de disque.",
+          "L'aire d'un disque de rayon $1$ vaut $\\pi$ : prends-en le quart, avec $\\pi \\approx 3{,}1416$."
+        ],
+        "revoir": "l-integration-005",
+        "solution": "La courbe de $f$ est le quart du cercle de centre $O$ et de rayon $1$ situé dans la zone $x \\geqslant 0$, $y \\geqslant 0$. Le domaine sous la courbe est un quart de disque de rayon $1$ : $I = \\dfrac{\\pi \\times 1^2}{4} = \\dfrac{\\pi}{4} \\approx 0{,}785$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Une exécution de estimation(1000) renvoie $0{,}791$. Quelle valeur approchée de $\\pi$ en déduit-on ?",
+        "reponse": { "type": "numerique", "valeur": 3.164, "tolerance": 0.001, "decimales": 3 },
+        "indices": [
+          "D'après les questions 2 et 3, la valeur renvoyée approche $I = \\dfrac{\\pi}{4}$.",
+          "On a donc $\\dfrac{\\pi}{4} \\approx 0{,}791$ : isole $\\pi$.",
+          "Multiplie les deux membres par $4$."
+        ],
+        "revoir": "l-integration-015",
+        "solution": "La valeur renvoyée approche $I = \\dfrac{\\pi}{4}$. Donc $\\dfrac{\\pi}{4} \\approx 0{,}791$, soit $\\pi \\approx 4 \\times 0{,}791 = 3{,}164$. Le résultat change à chaque exécution, car les points sont tirés au hasard ; il se rapproche de $\\pi$ quand $n$ grandit, mais lentement."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-007",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-primitive"],
+    "capacites": ["bo-m-integrale-03", "bo-m-integrale-10"],
+    "titre": "Calculer une intégrale avec une primitive",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 201,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $\\displaystyle\\int_1^3 (2x + 1)\\,\\mathrm{d}x$.",
+        "reponse": { "type": "numerique", "valeur": 10, "tolerance": 0 },
+        "indices": [
+          "Cherche une primitive $F$ de $x \\mapsto 2x + 1$, puis calcule $F(3) - F(1)$.",
+          "$F(x) = x^2 + x$ convient. Calcule $F(3)$ et $F(1)$, puis leur différence."
+        ],
+        "revoir": "l-integration-033",
+        "solution": "La fonction $F : x \\mapsto x^2 + x$ est une primitive de $x \\mapsto 2x + 1$ sur $\\mathbb{R}$. Donc $\\displaystyle\\int_1^3 (2x + 1)\\,\\mathrm{d}x = \\big[x^2 + x\\big]_1^3 = (9 + 3) - (1 + 1) = 10$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Que vaut $\\displaystyle\\int_0^1 e^{2x}\\,\\mathrm{d}x$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\dfrac{e^2 - 1}{2}$", "$e^2 - 1$", "$2\\left(e^2 - 1\\right)$", "$\\dfrac{e^2}{2}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$x \\mapsto e^{2x}$ n'est pas une primitive de $x \\mapsto e^{2x}$ : sa dérivée vaut $2e^{2x}$. Il manque le facteur $\\dfrac{1}{2}$.",
+            "Tu as multiplié par $2$ au lieu de diviser : la dérivée de $2e^{2x}$ est $4e^{2x}$.",
+            "Tu as oublié de retrancher $F(0) = \\dfrac{e^0}{2} = \\dfrac{1}{2}$."
+          ]
+        },
+        "indices": [
+          "Cherche une primitive avec la forme $u'e^u$ du rappel des primitives, pour $u(x) = 2x$ : ici $u'(x) = 2$, il faut donc ajuster un facteur. Contrôle ta primitive en la dérivant.",
+          "$e^{2x} = \\dfrac{1}{2} \\times 2e^{2x}$, donc $F(x) = \\dfrac{e^{2x}}{2}$ convient. Calcule $F(1) - F(0)$, sans oublier que $e^0 = 1$."
+        ],
+        "revoir": "l-integration-022",
+        "solution": "La fonction $F : x \\mapsto \\dfrac{e^{2x}}{2}$ est une primitive de $x \\mapsto e^{2x}$ sur $\\mathbb{R}$, car $F'(x) = \\dfrac{2e^{2x}}{2} = e^{2x}$. Donc $\\displaystyle\\int_0^1 e^{2x}\\,\\mathrm{d}x = \\frac{e^2}{2} - \\frac{e^0}{2} = \\frac{e^2 - 1}{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Soit $g$ la fonction définie sur $\\mathbb{R}$ par $g(x) = x\\sqrt{x^2 + 16}$ ; elle est dérivable, de dérivée continue. Calculer $\\displaystyle\\int_0^3 g'(x)\\,\\mathrm{d}x$.",
+        "reponse": { "type": "numerique", "valeur": 15, "tolerance": 0 },
+        "indices": [
+          "Inutile de dériver $g$ : $g$ est une primitive de $g'$.",
+          "L'intégrale vaut $g(3) - g(0)$. Calcule $3^2 + 16$, puis sa racine carrée."
+        ],
+        "revoir": "l-integration-033",
+        "solution": "La fonction $g$ est une primitive de $g'$ sur $\\mathbb{R}$. Donc $\\displaystyle\\int_0^3 g'(x)\\,\\mathrm{d}x = g(3) - g(0) = 3\\sqrt{9 + 16} - 0 = 3 \\times 5 = 15$.",
+        "erreurFrequente": "Calculer $g'(x)$, puis chercher une primitive de $g'$ : on retombe sur $g$, après un long détour."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-008",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-primitive"],
+    "capacites": ["bo-m-integrale-05", "bo-m-integrale-03"],
+    "titre": "Intégrales négatives, aires sous l'axe",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 202,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $\\displaystyle\\int_0^3 (x - 2)\\,\\mathrm{d}x$ (valeur exacte ou décimale).",
+        "reponse": { "type": "numerique", "valeur": "-3/2", "tolerance": 0 },
+        "indices": [
+          "Une intégrale se calcule avec une primitive, même quand la fonction change de signe : cherche une primitive de $x \\mapsto x - 2$.",
+          "$F(x) = \\dfrac{x^2}{2} - 2x$ convient : calcule $F(3) = \\dfrac{9}{2} - 6$ et $F(0)$."
+        ],
+        "revoir": "l-integration-031",
+        "solution": "La fonction $F : x \\mapsto \\dfrac{x^2}{2} - 2x$ est une primitive de $x \\mapsto x - 2$ sur $\\mathbb{R}$. Donc $\\displaystyle\\int_0^3 (x - 2)\\,\\mathrm{d}x = \\left(\\frac{9}{2} - 6\\right) - 0 = -\\frac{3}{2}$. Le résultat est négatif : sur $[0\\,;\\,2]$, la droite est sous l'axe, et cette partie l'emporte sur celle de $[2\\,;\\,3]$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $f(x) = x^2 - 1$. Quelle est l'aire, en u.a., du domaine limité par la courbe de $f$, l'axe des abscisses et les droites d'équations $x = 0$ et $x = 1$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\dfrac{2}{3}$", "$-\\dfrac{2}{3}$", "$\\dfrac{4}{3}$", "$\\dfrac{1}{3}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est la valeur de l'intégrale $\\displaystyle\\int_0^1 \\left(x^2 - 1\\right)\\mathrm{d}x$ : la fonction est négative sur $[0\\,;\\,1]$, l'aire est son opposé. Une aire n'est jamais négative.",
+            "Tu as intégré $x^2 + 1$ au lieu de $x^2 - 1$ : $\\dfrac{1}{3} + 1 = \\dfrac{4}{3}$.",
+            "Tu as oublié le terme $-1$ : $\\dfrac{1}{3}$ est l'intégrale de $x^2$ seul."
+          ]
+        },
+        "indices": [
+          "Regarde d'abord le signe de $f$ sur $[0\\,;\\,1]$ : si $f \\leqslant 0$, l'aire est l'opposé de l'intégrale.",
+          "Pour $0 \\leqslant x \\leqslant 1$, $x^2 \\leqslant 1$, donc $f(x) \\leqslant 0$. Calcule $\\displaystyle\\int_0^1 \\left(x^2 - 1\\right)\\mathrm{d}x = \\left[\\frac{x^3}{3} - x\\right]_0^1$, puis prends l'opposé."
+        ],
+        "revoir": "l-integration-091",
+        "solution": "Pour $x$ dans $[0\\,;\\,1]$, $x^2 \\leqslant 1$, donc $f(x) \\leqslant 0$ : le domaine est sous l'axe des abscisses. Son aire vaut $-\\displaystyle\\int_0^1 \\left(x^2 - 1\\right)\\mathrm{d}x = -\\left[\\frac{x^3}{3} - x\\right]_0^1 = -\\left(\\frac{1}{3} - 1\\right) = \\frac{2}{3}$ u.a."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Affirmation : $\\displaystyle\\int_2^0 x^2\\,\\mathrm{d}x = \\frac{8}{3}$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$\\displaystyle\\int_2^0 x^2\\,\\mathrm{d}x = \\left[\\frac{x^3}{3}\\right]_2^0 = 0 - \\frac{8}{3} = -\\frac{8}{3}$. Les bornes sont dans l'ordre décroissant : l'intégrale est l'opposé de l'aire sous la courbe entre $0$ et $2$."
+        },
+        "indices": [
+          "Calcule toujours $F(\\text{borne du haut}) - F(\\text{borne du bas})$, même si la borne du haut est la plus petite.",
+          "Avec $F(x) = \\dfrac{x^3}{3}$, la borne du haut est $0$ et la borne du bas est $2$ : calcule $F(0) - F(2)$."
+        ],
+        "revoir": "l-integration-037",
+        "solution": "Une primitive de $x \\mapsto x^2$ est $F : x \\mapsto \\dfrac{x^3}{3}$. Donc $\\displaystyle\\int_2^0 x^2\\,\\mathrm{d}x = F(0) - F(2) = 0 - \\frac{8}{3} = -\\frac{8}{3}$, et non $\\dfrac{8}{3}$ : l'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-009",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-primitive"],
+    "capacites": ["bo-m-integrale-02", "bo-m-integrale-04"],
+    "titre": "Une fonction définie par une intégrale",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 203,
+    "preambule": "On pose, pour tout $x \\geqslant 0$, $G(x) = \\displaystyle\\int_0^x \\sqrt{t^2 + 9}\\,\\mathrm{d}t$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que vaut $G'(4)$ ?",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "La fonction $t \\mapsto \\sqrt{t^2 + 9}$ est continue et positive : d'après le théorème du cours, $G$ est la primitive de cette fonction qui s'annule en $0$.",
+          "Donc $G'(x) = \\sqrt{x^2 + 9}$ pour tout $x \\geqslant 0$ : remplace $x$ par $4$."
+        ],
+        "revoir": "l-integration-028",
+        "solution": "La fonction $t \\mapsto \\sqrt{t^2 + 9}$ est continue et positive sur $[0\\,;\\,+\\infty[$. D'après le théorème, $G$ est la primitive de cette fonction qui s'annule en $0$ : $G'(x) = \\sqrt{x^2 + 9}$. Donc $G'(4) = \\sqrt{16 + 9} = \\sqrt{25} = 5$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quel est le sens de variation de $G$ sur $[0\\,;\\,+\\infty[$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "strictement croissante",
+            "strictement décroissante",
+            "constante, car $G(0) = 0$",
+            "on ne peut pas le savoir sans écrire $G(x)$ avec les fonctions usuelles"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Une fonction décroît quand sa dérivée est négative ; or $G'(x) = \\sqrt{x^2 + 9}$ est positive.",
+            "$G(0) = 0$ donne la valeur de $G$ en un point, pas son sens de variation, qui se lit sur le signe de $G'$.",
+            "Le théorème donne $G'$ sans calculer $G$ : le signe de $G'$ suffit pour les variations."
+          ]
+        },
+        "indices": [
+          "Le sens de variation de $G$ se lit sur le signe de $G'$, que tu connais grâce à la question 1.",
+          "$G'(x) = \\sqrt{x^2 + 9}$ : une racine carrée est positive, et ici $x^2 + 9 \\geqslant 9$."
+        ],
+        "revoir": "l-integration-028",
+        "solution": "Pour tout $x \\geqslant 0$, $G'(x) = \\sqrt{x^2 + 9} \\geqslant \\sqrt{9} = 3 > 0$. Donc $G$ est strictement croissante sur $[0\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Affirmation : la fonction $t \\mapsto e^{-t^2}$ n'a pas de primitive sur $\\mathbb{R}$, puisqu'on ne sait pas en écrire une avec les fonctions usuelles.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "La fonction $t \\mapsto e^{-t^2}$ est continue sur $\\mathbb{R}$. Or toute fonction continue sur un intervalle admet des primitives : par exemple $x \\mapsto \\displaystyle\\int_0^x e^{-t^2}\\,\\mathrm{d}t$. Ne pas savoir l'écrire avec les fonctions usuelles n'empêche pas qu'elle existe."
+        },
+        "indices": [
+          "Le cours donne une condition suffisante pour qu'une fonction admette des primitives sur un intervalle : laquelle ?",
+          "Toute fonction continue sur un intervalle admet des primitives. Vérifie si $t \\mapsto e^{-t^2}$ est continue sur $\\mathbb{R}$."
+        ],
+        "revoir": "l-integration-027",
+        "solution": "La fonction $t \\mapsto e^{-t^2}$ est la composée de $t \\mapsto -t^2$ puis de la fonction exponentielle, toutes deux continues : elle est continue sur $\\mathbb{R}$. D'après le théorème du cours, elle admet donc des primitives sur $\\mathbb{R}$, par exemple $x \\mapsto \\displaystyle\\int_0^x e^{-t^2}\\,\\mathrm{d}t$. L'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-010",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-primitive"],
+    "capacites": ["bo-m-integrale-10", "bo-m-integrale-03", "bo-m-primitives-04"],
+    "titre": "Quatre intégrales, quatre formes de primitives",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 211,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $\\displaystyle\\int_0^1 (x + 1)^2\\,\\mathrm{d}x$ (valeur exacte, ou arrondie au centième).",
+        "reponse": { "type": "numerique", "valeur": "7/3", "tolerance": 0.01 },
+        "indices": [
+          "Deux pistes : développer $(x + 1)^2$, ou reconnaître une forme $u'u^n$ avec $u(x) = x + 1$.",
+          "Avec $u(x) = x + 1$, on a $u'(x) = 1$ : une primitive de $(x + 1)^2$ est $\\dfrac{(x + 1)^3}{3}$.",
+          "Calcule $\\dfrac{(1 + 1)^3}{3} - \\dfrac{(0 + 1)^3}{3}$."
+        ],
+        "revoir": "l-integration-034",
+        "solution": "Avec $u(x) = x + 1$, $u'(x) = 1$ : la fonction est de la forme $u'u^2$, de primitive $\\dfrac{u^3}{3}$. Donc $\\displaystyle\\int_0^1 (x + 1)^2\\,\\mathrm{d}x = \\left[\\frac{(x + 1)^3}{3}\\right]_0^1 = \\frac{8}{3} - \\frac{1}{3} = \\frac{7}{3}$. Contrôle en développant : $\\displaystyle\\int_0^1 \\left(x^2 + 2x + 1\\right)\\mathrm{d}x = \\frac{1}{3} + 1 + 1 = \\frac{7}{3}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $\\displaystyle\\int_0^{\\ln 3} e^{2x}\\,\\mathrm{d}x$.",
+        "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+        "indices": [
+          "Une primitive de $x \\mapsto e^{2x}$ est $x \\mapsto \\dfrac{e^{2x}}{2}$ : contrôle-la en dérivant.",
+          "Il reste à calculer $e^{2\\ln 3}$ : écris $2\\ln 3 = \\ln\\left(3^2\\right)$, puis utilise $e^{\\ln y} = y$.",
+          "$e^{2\\ln 3} = 9$ et $e^0 = 1$ : calcule la différence des valeurs de la primitive aux deux bornes."
+        ],
+        "revoir": "l-integration-033",
+        "solution": "Une primitive de $x \\mapsto e^{2x}$ est $x \\mapsto \\dfrac{e^{2x}}{2}$. Or $e^{2\\ln 3} = e^{\\ln 9} = 9$. Donc $\\displaystyle\\int_0^{\\ln 3} e^{2x}\\,\\mathrm{d}x = \\frac{e^{2\\ln 3}}{2} - \\frac{e^0}{2} = \\frac{9}{2} - \\frac{1}{2} = 4$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $\\displaystyle\\int_0^4 \\frac{x}{\\sqrt{x^2 + 9}}\\,\\mathrm{d}x$.",
+        "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+        "indices": [
+          "Reconnais une forme $\\dfrac{u'}{\\sqrt{u}}$, à un facteur constant près, avec $u(x) = x^2 + 9 > 0$.",
+          "Comme $u'(x) = 2x$, la fonction est la moitié de $\\dfrac{u'(x)}{\\sqrt{u(x)}}$ : dérive $x \\mapsto \\sqrt{x^2 + 9}$ pour vérifier qu'elle en est une primitive.",
+          "Calcule $\\sqrt{4^2 + 9} - \\sqrt{0^2 + 9}$."
+        ],
+        "revoir": "l-integration-034",
+        "solution": "Avec $u(x) = x^2 + 9 > 0$, $u'(x) = 2x$ et $\\dfrac{x}{\\sqrt{x^2 + 9}} = \\dfrac{1}{2} \\times \\dfrac{u'(x)}{\\sqrt{u(x)}}$. Une primitive de $\\dfrac{u'}{\\sqrt{u}}$ est $2\\sqrt{u}$, donc une primitive de la fonction est $x \\mapsto \\sqrt{x^2 + 9}$. Ainsi $\\displaystyle\\int_0^4 \\frac{x}{\\sqrt{x^2 + 9}}\\,\\mathrm{d}x = \\sqrt{25} - \\sqrt{9} = 5 - 3 = 2$.",
+        "erreurFrequente": "Oublier le facteur $\\dfrac{1}{2}$ et trouver $2\\sqrt{x^2 + 9}$ comme primitive : contrôle toujours en dérivant."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Calculer $\\displaystyle\\int_1^e \\frac{\\ln x}{x}\\,\\mathrm{d}x$ (valeur exacte ou décimale).",
+        "reponse": { "type": "numerique", "valeur": "1/2", "tolerance": 0 },
+        "indices": [
+          "Le facteur $\\dfrac{1}{x}$ est la dérivée de $\\ln x$ : reconnais une forme $u'u^n$.",
+          "Avec $u(x) = \\ln x$ et $u'(x) = \\dfrac{1}{x}$, la fonction est $u'u$, de primitive $\\dfrac{u^2}{2}$.",
+          "Calcule $\\dfrac{(\\ln e)^2}{2} - \\dfrac{(\\ln 1)^2}{2}$ avec $\\ln e = 1$ et $\\ln 1 = 0$."
+        ],
+        "revoir": "l-integration-034",
+        "solution": "Avec $u(x) = \\ln x$, on a $u'(x) = \\dfrac{1}{x}$ sur $[1\\,;\\,e]$ : la fonction est de la forme $u'u$, de primitive $\\dfrac{u^2}{2}$. Donc $\\displaystyle\\int_1^e \\frac{\\ln x}{x}\\,\\mathrm{d}x = \\left[\\frac{(\\ln x)^2}{2}\\right]_1^e = \\frac{1^2}{2} - \\frac{0^2}{2} = \\frac{1}{2}$."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-011",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-primitive"],
+    "capacites": ["bo-m-integrale-05", "bo-m-integrale-03", "bo-m-integrale-10"],
+    "titre": "Une intégrale n'est pas une aire : le cas d'une parabole",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 212,
+    "preambule": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = x^2 - 2x$, et $\\mathcal{C}_f$ sa courbe dans un repère orthonormé.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étudier le signe de $f(x)$ sur $[0\\,;\\,4]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Factorise $f(x)$ par $x$.",
+          "$f(x) = x(x - 2)$ : étudie le signe de chacun des deux facteurs sur $[0\\,;\\,4]$.",
+          "$x \\geqslant 0$ sur $[0\\,;\\,4]$, et $x - 2$ change de signe en $2$ : conclus sur $[0\\,;\\,2]$, puis sur $[2\\,;\\,4]$."
+        ],
+        "revoir": "l-integration-091",
+        "solution": "$f(x) = x(x - 2)$. Sur $[0\\,;\\,4]$, $x \\geqslant 0$ ; $x - 2 \\leqslant 0$ sur $[0\\,;\\,2]$ et $x - 2 \\geqslant 0$ sur $[2\\,;\\,4]$. Donc $f(x) \\leqslant 0$ sur $[0\\,;\\,2]$ et $f(x) \\geqslant 0$ sur $[2\\,;\\,4]$, avec $f(0) = f(2) = 0$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $\\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x$ (valeur exacte, ou arrondie au centième).",
+        "reponse": { "type": "numerique", "valeur": "16/3", "tolerance": 0.01 },
+        "indices": [
+          "Cherche une primitive $F$ de $f$ : une primitive de $x^2$ est $\\dfrac{x^3}{3}$, une primitive de $2x$ est $x^2$.",
+          "$F(x) = \\dfrac{x^3}{3} - x^2$ convient : calcule $F(4)$ et $F(0)$.",
+          "$F(4) = \\dfrac{64}{3} - 16$ : mets au même dénominateur."
+        ],
+        "revoir": "l-integration-033",
+        "solution": "La fonction $F : x \\mapsto \\dfrac{x^3}{3} - x^2$ est une primitive de $f$ sur $\\mathbb{R}$. Donc $\\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x = F(4) - F(0) = \\frac{64}{3} - 16 = \\frac{64 - 48}{3} = \\frac{16}{3}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer l'aire, en u.a., du domaine limité par $\\mathcal{C}_f$, l'axe des abscisses et les droites d'équations $x = 0$ et $x = 2$ (valeur exacte, ou arrondie au centième).",
+        "reponse": { "type": "numerique", "valeur": "4/3", "tolerance": 0.01 },
+        "indices": [
+          "D'après la question 1, $f$ est négative sur $[0\\,;\\,2]$ : l'aire est l'opposé de l'intégrale.",
+          "L'aire vaut $-\\displaystyle\\int_0^2 f(x)\\,\\mathrm{d}x = -\\big(F(2) - F(0)\\big)$, avec $F(x) = \\dfrac{x^3}{3} - x^2$.",
+          "$F(2) = \\dfrac{8}{3} - 4$ : calcule ce nombre, puis prends l'opposé de $F(2) - F(0)$."
+        ],
+        "revoir": "l-integration-091",
+        "solution": "Sur $[0\\,;\\,2]$, $f \\leqslant 0$ : l'aire vaut $-\\displaystyle\\int_0^2 f(x)\\,\\mathrm{d}x = -\\big(F(2) - F(0)\\big) = -\\left(\\frac{8}{3} - 4\\right) = \\frac{4}{3}$ u.a."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Calculer l'aire totale, en u.a., du domaine limité par $\\mathcal{C}_f$, l'axe des abscisses et les droites d'équations $x = 0$ et $x = 4$. Est-elle égale à $\\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x$ ?",
+        "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+        "indices": [
+          "Coupe le domaine en $x = 2$ : sur $[2\\,;\\,4]$, $f$ est positive et l'aire est l'intégrale ; sur $[0\\,;\\,2]$, tu as l'aire de la question 3.",
+          "Sur $[2\\,;\\,4]$, l'aire vaut $F(4) - F(2) = \\dfrac{16}{3} - \\left(-\\dfrac{4}{3}\\right)$.",
+          "Additionne cette aire et celle de la question 3, puis compare avec la question 2."
+        ],
+        "revoir": "l-integration-091",
+        "solution": "Sur $[2\\,;\\,4]$, $f \\geqslant 0$ : l'aire vaut $\\displaystyle\\int_2^4 f(x)\\,\\mathrm{d}x = F(4) - F(2) = \\frac{16}{3} + \\frac{4}{3} = \\frac{20}{3}$ u.a. L'aire totale vaut donc $\\dfrac{4}{3} + \\dfrac{20}{3} = \\dfrac{24}{3} = 8$ u.a. Elle n'est pas égale à $\\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x = \\frac{16}{3}$ : dans l'intégrale, l'aire située sous l'axe compte négativement, et $\\dfrac{20}{3} - \\dfrac{4}{3} = \\dfrac{16}{3}$.",
+        "erreurFrequente": "Répondre $\\dfrac{16}{3}$ : une intégrale n'est une aire que si la fonction est positive sur tout l'intervalle."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-012",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-primitive"],
+    "capacites": ["bo-m-integrale-02", "bo-m-integrale-05", "bo-m-derivation-06"],
+    "titre": "Étudier une fonction définie par une intégrale",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 213,
+    "preambule": "On définit la fonction $F$ sur $\\mathbb{R}$ par $F(x) = \\displaystyle\\int_0^x \\left(t^2 - 4\\right)\\mathrm{d}t$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Pour tout réel $x$, $F'(x)$ vaut :",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$x^2 - 4$", "$2x$", "$\\dfrac{x^3}{3} - 4x$", "$x^2$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$2x$ est la dérivée de $t \\mapsto t^2 - 4$ : la dérivée de $F$ est la fonction sous l'intégrale elle-même, prise en $x$.",
+            "C'est l'expression de $F(x)$, pas celle de sa dérivée.",
+            "La constante $-4$ ne disparaît pas : elle fait partie de la fonction sous l'intégrale, que l'on ne dérive pas."
+          ]
+        },
+        "indices": [
+          "La fonction $f : t \\mapsto t^2 - 4$ est continue sur $\\mathbb{R}$. Elle change de signe, mais la fin de la définition de l'intégrale d'une fonction de signe quelconque le dit : $x \\mapsto \\displaystyle\\int_0^x f(t)\\,\\mathrm{d}t$ est encore la primitive de $f$ qui s'annule en $0$.",
+          "Une primitive $F$ de $f$ vérifie $F' = f$ : il suffit de remplacer $t$ par $x$ dans la fonction sous l'intégrale.",
+          "Ne dérive pas la fonction sous l'intégrale : c'est $F$ que l'on dérive, et sa dérivée est cette fonction."
+        ],
+        "revoir": "l-integration-030",
+        "solution": "La fonction $f : t \\mapsto t^2 - 4$ est continue sur $\\mathbb{R}$. D'après le cours, $F$ est la primitive de $f$ sur $\\mathbb{R}$ qui s'annule en $0$. Donc $F'(x) = f(x) = x^2 - 4$ pour tout réel $x$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire le sens de variation de $F$ sur $\\mathbb{R}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Le sens de variation de $F$ se lit sur le signe de $F'(x) = x^2 - 4$.",
+          "$x^2 - 4 = (x - 2)(x + 2)$ : c'est un trinôme du second degré, de racines $-2$ et $2$.",
+          "Son coefficient dominant est positif : $x^2 - 4$ est négatif entre les racines, positif à l'extérieur. Dresse le tableau de variations."
+        ],
+        "revoir": "l-integration-028",
+        "solution": "$F'(x) = x^2 - 4 = (x - 2)(x + 2)$. Ce trinôme, de coefficient dominant positif, est négatif entre ses racines $-2$ et $2$, positif à l'extérieur. Donc $F$ est croissante sur $]-\\infty\\,;\\,-2]$, décroissante sur $[-2\\,;\\,2]$ et croissante sur $[2\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $F(2)$, le minimum de $F$ sur $[0\\,;\\,+\\infty[$ (valeur exacte, ou arrondie au centième).",
+        "reponse": { "type": "numerique", "valeur": "-16/3", "tolerance": 0.01 },
+        "indices": [
+          "Exprime $F(x)$ sans intégrale, à l'aide d'une primitive de $t \\mapsto t^2 - 4$.",
+          "Une primitive est $t \\mapsto \\dfrac{t^3}{3} - 4t$, nulle en $0$ : donc $F(x) = \\dfrac{x^3}{3} - 4x$.",
+          "$F(2) = \\dfrac{8}{3} - 8$ : mets au même dénominateur."
+        ],
+        "revoir": "l-integration-030",
+        "solution": "Une primitive de $t \\mapsto t^2 - 4$ est $t \\mapsto \\dfrac{t^3}{3} - 4t$, donc $F(x) = \\left[\\dfrac{t^3}{3} - 4t\\right]_0^x = \\dfrac{x^3}{3} - 4x$. Ainsi $F(2) = \\dfrac{8}{3} - 8 = -\\dfrac{16}{3}$. D'après la question 2, $F$ décroît sur $[0\\,;\\,2]$ et croît sur $[2\\,;\\,+\\infty[$ : $F(2) = -\\dfrac{16}{3}$ est son minimum sur $[0\\,;\\,+\\infty[$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Quel est l'unique réel $\\alpha > 0$ tel que $F(\\alpha) = 0$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$2\\sqrt{3}$", "$2$", "$12$", "$\\sqrt{6}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$2$ annule $F'$, pas $F$ : $F(2) = -\\dfrac{16}{3}$.",
+            "$12$ est la valeur de $\\alpha^2$ : il reste à prendre la racine carrée.",
+            "$\\left(\\sqrt{6}\\right)^2 = 6$, alors que l'équation impose $\\alpha^2 = 12$."
+          ]
+        },
+        "indices": [
+          "Avec $F(x) = \\dfrac{x^3}{3} - 4x$, factorise par $x$ dans l'équation $F(x) = 0$.",
+          "$F(x) = x\\left(\\dfrac{x^2}{3} - 4\\right)$ : pour $x > 0$, l'équation équivaut à $\\dfrac{x^2}{3} = 4$.",
+          "Tu obtiens $x^2 = 12$ : simplifie la racine carrée de $12$ avec $12 = 4 \\times 3$."
+        ],
+        "revoir": "l-integration-030",
+        "solution": "Pour $x > 0$, $F(x) = x\\left(\\dfrac{x^2}{3} - 4\\right) = 0$ équivaut à $x^2 = 12$, soit $x = \\sqrt{12} = 2\\sqrt{3} \\approx 3{,}46$. Donc $\\alpha = 2\\sqrt{3}$. C'est cohérent avec la question 2 : $F$ est négative sur $]0\\,;\\,2]$, puis croît de $-\\dfrac{16}{3}$ vers $+\\infty$ sur $[2\\,;\\,+\\infty[$, et ne s'annule qu'une fois."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-013",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-proprietes"],
+    "capacites": ["bo-m-integrale-06"],
+    "titre": "Linéarité et relation de Chasles",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 301,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $f$ et $g$ deux fonctions continues sur $[0\\,;\\,1]$ telles que $\\displaystyle\\int_0^1 f(x)\\,\\mathrm{d}x = 2$ et $\\displaystyle\\int_0^1 g(x)\\,\\mathrm{d}x = -3$. Calculer $\\displaystyle\\int_0^1 \\big(3f(x) - 2g(x)\\big)\\,\\mathrm{d}x$.",
+        "reponse": { "type": "numerique", "valeur": 12, "tolerance": 0 },
+        "indices": [
+          "Par linéarité, l'intégrale d'une combinaison $af + bg$ est la même combinaison des intégrales.",
+          "L'intégrale vaut $3 \\times \\displaystyle\\int_0^1 f(x)\\,\\mathrm{d}x - 2 \\times \\int_0^1 g(x)\\,\\mathrm{d}x$ : remplace par les valeurs données, attention au signe de la seconde."
+        ],
+        "revoir": "l-integration-041",
+        "solution": "Par linéarité, $\\displaystyle\\int_0^1 \\big(3f(x) - 2g(x)\\big)\\,\\mathrm{d}x = 3\\int_0^1 f(x)\\,\\mathrm{d}x - 2\\int_0^1 g(x)\\,\\mathrm{d}x = 3 \\times 2 - 2 \\times (-3) = 6 + 6 = 12$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $h$ une fonction continue sur $\\mathbb{R}$ telle que $\\displaystyle\\int_{-1}^{3} h(x)\\,\\mathrm{d}x = 10$ et $\\displaystyle\\int_1^3 h(x)\\,\\mathrm{d}x = 3{,}5$. Calculer $\\displaystyle\\int_{-1}^{1} h(x)\\,\\mathrm{d}x$.",
+        "reponse": { "type": "numerique", "valeur": 6.5, "tolerance": 0 },
+        "indices": [
+          "La relation de Chasles découpe $[-1\\,;\\,3]$ en $[-1\\,;\\,1]$ et $[1\\,;\\,3]$.",
+          "$\\displaystyle\\int_{-1}^{3} h(x)\\,\\mathrm{d}x = \\int_{-1}^{1} h(x)\\,\\mathrm{d}x + \\int_{1}^{3} h(x)\\,\\mathrm{d}x$ : isole l'intégrale cherchée."
+        ],
+        "revoir": "l-integration-040",
+        "solution": "D'après la relation de Chasles, $\\displaystyle\\int_{-1}^{3} h(x)\\,\\mathrm{d}x = \\int_{-1}^{1} h(x)\\,\\mathrm{d}x + \\int_{1}^{3} h(x)\\,\\mathrm{d}x$. Donc $\\displaystyle\\int_{-1}^{1} h(x)\\,\\mathrm{d}x = 10 - 3{,}5 = 6{,}5$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Affirmation : $\\displaystyle\\int_0^1 x \\times x\\,\\mathrm{d}x = \\left(\\int_0^1 x\\,\\mathrm{d}x\\right)^2$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$\\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x = \\frac{1}{3}$, alors que $\\left(\\displaystyle\\int_0^1 x\\,\\mathrm{d}x\\right)^2 = \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$. La linéarité vaut pour les sommes et les produits par une constante, pas pour le produit de deux fonctions."
+        },
+        "indices": [
+          "La linéarité concerne les sommes et les multiplications par une constante. Pour trancher, calcule les deux membres.",
+          "Le membre de gauche vaut $\\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x = \\left[\\frac{x^3}{3}\\right]_0^1$ ; celui de droite est le carré de $\\left[\\dfrac{x^2}{2}\\right]_0^1$."
+        ],
+        "revoir": "l-integration-040",
+        "solution": "D'une part, $\\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x = \\left[\\frac{x^3}{3}\\right]_0^1 = \\frac{1}{3}$ ; d'autre part, $\\displaystyle\\int_0^1 x\\,\\mathrm{d}x = \\left[\\frac{x^2}{2}\\right]_0^1 = \\frac{1}{2}$, dont le carré vaut $\\dfrac{1}{4}$. Comme $\\dfrac{1}{3} \\neq \\dfrac{1}{4}$, l'affirmation est fausse : l'intégrale d'un produit n'est pas le produit des intégrales."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-014",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-proprietes"],
+    "capacites": ["bo-m-integrale-06", "bo-m-integrale-11"],
+    "titre": "Positivité et intégration des inégalités",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 302,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Soit $f$ une fonction continue telle que $-1 \\leqslant f(x) \\leqslant 2$ pour tout $x$ de $[0\\,;\\,4]$. Quel encadrement peut-on en déduire ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$-4 \\leqslant \\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x \\leqslant 8$",
+            "$-1 \\leqslant \\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x \\leqslant 2$",
+            "$0 \\leqslant \\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x \\leqslant 8$",
+            "$-4 \\leqslant \\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x \\leqslant 2$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Tu as oublié de multiplier par la longueur de l'intervalle, $4 - 0 = 4$.",
+            "Une intégrale n'est pas toujours positive : ici, $f$ peut être négative, et la minoration $-1$ donne $-1 \\times 4 = -4$.",
+            "Les deux bornes se multiplient par la longueur $4$ : la majoration donne $2 \\times 4 = 8$."
+          ]
+        },
+        "indices": [
+          "Intègre chaque membre de l'encadrement sur $[0\\,;\\,4]$ : les bornes sont dans l'ordre croissant, le sens est gardé.",
+          "L'intégrale d'une constante $m$ sur $[0\\,;\\,4]$ vaut $m \\times (4 - 0)$ : applique-le à $m = -1$ et à $m = 2$."
+        ],
+        "revoir": "l-integration-044",
+        "solution": "Les bornes vérifient $0 \\leqslant 4$, et $-1 \\leqslant f(x) \\leqslant 2$ pour tout $x$ de $[0\\,;\\,4]$. Par intégration des inégalités, $\\displaystyle\\int_0^4 (-1)\\,\\mathrm{d}x \\leqslant \\int_0^4 f(x)\\,\\mathrm{d}x \\leqslant \\int_0^4 2\\,\\mathrm{d}x$, soit $-4 \\leqslant \\displaystyle\\int_0^4 f(x)\\,\\mathrm{d}x \\leqslant 8$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Affirmation : pour tout $x$ de $[0\\,;\\,1]$, $x^3 \\leqslant x^2$, donc $\\displaystyle\\int_0^1 x^3\\,\\mathrm{d}x \\leqslant \\int_0^1 x^2\\,\\mathrm{d}x$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Pour $x$ dans $[0\\,;\\,1]$, $x^2 - x^3 = x^2(1 - x) \\geqslant 0$, donc $x^3 \\leqslant x^2$. Les fonctions sont continues et $0 \\leqslant 1$ : on intègre l'inégalité. Contrôle : $\\dfrac{1}{4} \\leqslant \\dfrac{1}{3}$."
+        },
+        "indices": [
+          "Deux points à vérifier : l'inégalité entre les fonctions sur tout $[0\\,;\\,1]$, et l'ordre des bornes.",
+          "$x^2 - x^3 = x^2(1 - x)$ : étudie son signe sur $[0\\,;\\,1]$, puis regarde si $0 \\leqslant 1$."
+        ],
+        "revoir": "l-integration-044",
+        "solution": "Pour $x$ dans $[0\\,;\\,1]$, $x^2 \\geqslant 0$ et $1 - x \\geqslant 0$, donc $x^2 - x^3 = x^2(1 - x) \\geqslant 0$, soit $x^3 \\leqslant x^2$. Les deux fonctions sont continues et les bornes vérifient $0 \\leqslant 1$ : par intégration des inégalités, $\\displaystyle\\int_0^1 x^3\\,\\mathrm{d}x \\leqslant \\int_0^1 x^2\\,\\mathrm{d}x$. L'affirmation est vraie ($\\dfrac{1}{4} \\leqslant \\dfrac{1}{3}$)."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Sans calculer de primitive, quel est le signe de $\\displaystyle\\int_2^1 \\left(x^2 + 1\\right)\\mathrm{d}x$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["strictement positif", "strictement négatif", "nul", "on ne peut pas le savoir sans calculer"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "La fonction est positive, mais les bornes sont dans l'ordre décroissant : l'intégrale est l'opposé d'une intégrale positive.",
+            null,
+            "Ici $x^2 + 1 \\geqslant 2$ sur $[1\\,;\\,2]$ : aucune partie ne vient compenser, l'intégrale ne peut pas être nulle.",
+            "L'échange des bornes et un encadrement de la fonction suffisent : $\\displaystyle\\int_2^1 = -\\int_1^2$."
+          ]
+        },
+        "indices": [
+          "Remets d'abord les bornes dans l'ordre croissant : $\\displaystyle\\int_b^a f(x)\\,\\mathrm{d}x = -\\int_a^b f(x)\\,\\mathrm{d}x$.",
+          "Sur $[1\\,;\\,2]$, $x^2 + 1 \\geqslant 2$ : minore $\\displaystyle\\int_1^2 \\left(x^2 + 1\\right)\\mathrm{d}x$, puis passe à l'opposé."
+        ],
+        "revoir": "l-integration-049",
+        "solution": "$\\displaystyle\\int_2^1 \\left(x^2 + 1\\right)\\mathrm{d}x = -\\int_1^2 \\left(x^2 + 1\\right)\\mathrm{d}x$. Sur $[1\\,;\\,2]$, avec $1 \\leqslant 2$, on a $x^2 + 1 \\geqslant 2$, donc $\\displaystyle\\int_1^2 \\left(x^2 + 1\\right)\\mathrm{d}x \\geqslant 2 \\times (2 - 1) = 2 > 0$. L'intégrale de départ est donc strictement négative."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-015",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-proprietes"],
+    "capacites": ["bo-m-integrale-11", "bo-m-integrale-06", "bo-m-derivation-07"],
+    "titre": "Encadrer l'intégrale de $e^{x^2}$ sur $[0\\,;\\,1]$ sans primitive",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 311,
+    "preambule": "On pose $I = \\displaystyle\\int_0^1 e^{x^2}\\,\\mathrm{d}x$. On ne connaît pas de primitive de $x \\mapsto e^{x^2}$ qui s'écrive avec les fonctions usuelles. On admet que, pour tout réel $u$, $e^u \\geqslant 1 + u$ : la courbe de l'exponentielle, convexe, est au-dessus de sa tangente en $0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que, pour tout $x$ de $[0\\,;\\,1]$, $1 + x^2 \\leqslant e^{x^2} \\leqslant e^x$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Deux inégalités à prouver : à gauche, applique l'inégalité admise avec un bon choix de $u$ ; à droite, compare d'abord les exposants $x^2$ et $x$.",
+          "Avec $u = x^2$, l'inégalité admise donne $e^{x^2} \\geqslant 1 + x^2$. Pour la droite, $x^2 - x = x(x - 1)$ : quel est son signe sur $[0\\,;\\,1]$ ?",
+          "$x^2 \\leqslant x$ sur $[0\\,;\\,1]$ ; la fonction exponentielle est croissante, donc elle conserve l'ordre."
+        ],
+        "revoir": "l-derivation-convexite-050",
+        "solution": "Soit $x$ dans $[0\\,;\\,1]$. Avec $u = x^2$, l'inégalité admise donne $e^{x^2} \\geqslant 1 + x^2$. De plus, $x^2 - x = x(x - 1) \\leqslant 0$, car $x \\geqslant 0$ et $x - 1 \\leqslant 0$ : donc $x^2 \\leqslant x$. La fonction exponentielle est croissante sur $\\mathbb{R}$, donc $e^{x^2} \\leqslant e^x$. Ainsi $1 + x^2 \\leqslant e^{x^2} \\leqslant e^x$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $\\displaystyle\\int_0^1 \\left(1 + x^2\\right)\\mathrm{d}x$ (valeur exacte, ou arrondie au centième).",
+        "reponse": { "type": "numerique", "valeur": "4/3", "tolerance": 0.01 },
+        "indices": [
+          "Cherche une primitive de $x \\mapsto 1 + x^2$, terme à terme.",
+          "$F : x \\mapsto x + \\dfrac{x^3}{3}$ convient : calcule sa valeur en $1$ et en $0$.",
+          "Calcule $F(1) - F(0)$ et écris le résultat sous la forme d'une seule fraction."
+        ],
+        "revoir": "l-integration-033",
+        "solution": "Une primitive de $x \\mapsto 1 + x^2$ est $x \\mapsto x + \\dfrac{x^3}{3}$. Donc $\\displaystyle\\int_0^1 \\left(1 + x^2\\right)\\mathrm{d}x = \\left(1 + \\frac{1}{3}\\right) - 0 = \\frac{4}{3}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quel encadrement de $I$ les questions précédentes donnent-elles ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\dfrac{4}{3} \\leqslant I \\leqslant e - 1$",
+            "$\\dfrac{4}{3} \\leqslant I \\leqslant e$",
+            "$2 \\leqslant I \\leqslant e$",
+            "$e - 1 \\leqslant I \\leqslant \\dfrac{4}{3}$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$e$ est la valeur en $1$ de la primitive $x \\mapsto e^x$ : il faut retrancher sa valeur en $0$, $e^0 = 1$.",
+            "Tu as encadré la fonction en $x = 1$, pas l'intégrale : $1 + 1^2 = 2$ et $e^1 = e$ sont des valeurs de fonctions.",
+            "L'ordre est inversé : on intègre $1 + x^2 \\leqslant e^{x^2} \\leqslant e^x$ en gardant le sens, car $0 \\leqslant 1$."
+          ]
+        },
+        "indices": [
+          "Intègre sur $[0\\,;\\,1]$ l'encadrement de la question 1 : les bornes sont dans l'ordre croissant.",
+          "Le minorant intégré est donné par la question 2 ; calcule le majorant $\\displaystyle\\int_0^1 e^x\\,\\mathrm{d}x = \\big[e^x\\big]_0^1$.",
+          "N'oublie pas $e^0 = 1$ dans le calcul du majorant."
+        ],
+        "revoir": "l-integration-047",
+        "solution": "Les fonctions $x \\mapsto 1 + x^2$, $x \\mapsto e^{x^2}$ et $x \\mapsto e^x$ sont continues sur $[0\\,;\\,1]$, et $0 \\leqslant 1$. On intègre l'encadrement de la question 1 : $\\displaystyle\\int_0^1 \\left(1 + x^2\\right)\\mathrm{d}x \\leqslant I \\leqslant \\int_0^1 e^x\\,\\mathrm{d}x$. Or $\\displaystyle\\int_0^1 e^x\\,\\mathrm{d}x = e^1 - e^0 = e - 1$. Donc $\\dfrac{4}{3} \\leqslant I \\leqslant e - 1$, soit environ $1{,}33 \\leqslant I \\leqslant 1{,}72$."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-016",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-proprietes"],
+    "capacites": ["bo-m-integrale-11", "bo-m-integrale-06"],
+    "titre": "Majorer et minorer une intégrale par comparaison",
+    "duree": 12,
+    "calculatrice": true,
+    "ordre": 312,
+    "preambule": "On pose $I = \\displaystyle\\int_1^2 \\frac{e^x}{x}\\,\\mathrm{d}x$. On ne sait pas calculer $I$ avec une primitive.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que, pour tout $x$ de $[1\\,;\\,2]$, $\\dfrac{e^x}{2} \\leqslant \\dfrac{e^x}{x} \\leqslant e^x$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Encadre d'abord $\\dfrac{1}{x}$ sur $[1\\,;\\,2]$, puis multiplie par un nombre positif.",
+          "La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$ : de $1 \\leqslant x \\leqslant 2$, tu tires $\\dfrac{1}{2} \\leqslant \\dfrac{1}{x} \\leqslant 1$.",
+          "Multiplie les trois membres par $e^x > 0$ : le sens des inégalités est conservé."
+        ],
+        "revoir": "l-integration-047",
+        "solution": "Soit $x$ dans $[1\\,;\\,2]$. La fonction inverse est décroissante sur $]0\\,;\\,+\\infty[$, donc $\\dfrac{1}{2} \\leqslant \\dfrac{1}{x} \\leqslant 1$. En multipliant par $e^x > 0$, on obtient $\\dfrac{e^x}{2} \\leqslant \\dfrac{e^x}{x} \\leqslant e^x$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quel encadrement de $I$ en déduit-on ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\dfrac{e^2 - e}{2} \\leqslant I \\leqslant e^2 - e$",
+            "$\\dfrac{e^2}{2} \\leqslant I \\leqslant e^2$",
+            "$\\dfrac{1}{2} \\leqslant I \\leqslant 1$",
+            "$e^2 - e \\leqslant I \\leqslant \\dfrac{e^2 - e}{2}$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Tu as oublié de retrancher la valeur des primitives en $1$ : $\\displaystyle\\int_1^2 e^x\\,\\mathrm{d}x = e^2 - e^1$.",
+            "Tu as intégré l'encadrement de $\\dfrac{1}{x}$ sans le facteur $e^x$ : ce n'est pas un encadrement de $I$.",
+            "Cet encadrement est impossible : $e^2 - e > \\dfrac{e^2 - e}{2}$, car $e^2 - e > 0$."
+          ]
+        },
+        "indices": [
+          "Intègre sur $[1\\,;\\,2]$ chaque membre de l'encadrement de la question 1 : les bornes vérifient $1 \\leqslant 2$.",
+          "Une primitive de $x \\mapsto e^x$ est $x \\mapsto e^x$ : calcule $\\displaystyle\\int_1^2 e^x\\,\\mathrm{d}x$.",
+          "Par linéarité, $\\displaystyle\\int_1^2 \\frac{e^x}{2}\\,\\mathrm{d}x$ est la moitié de cette intégrale."
+        ],
+        "revoir": "l-integration-047",
+        "solution": "Les trois fonctions sont continues sur $[1\\,;\\,2]$ et $1 \\leqslant 2$ : on intègre l'encadrement. Or $\\displaystyle\\int_1^2 e^x\\,\\mathrm{d}x = e^2 - e$ et, par linéarité, $\\displaystyle\\int_1^2 \\frac{e^x}{2}\\,\\mathrm{d}x = \\frac{e^2 - e}{2}$. Donc $\\dfrac{e^2 - e}{2} \\leqslant I \\leqslant e^2 - e$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Donner une valeur approchée à $10^{-2}$ près du minorant obtenu.",
+        "reponse": { "type": "numerique", "valeur": 2.34, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Calcule $\\dfrac{e^2 - e}{2}$ à la calculatrice, avec la touche de l'exponentielle : $e$ s'obtient comme $e^{1}$.",
+          "$e^2 \\approx 7{,}389$ et $e \\approx 2{,}718$ : fais la différence, puis divise par $2$.",
+          "Arrondis le résultat au centième."
+        ],
+        "revoir": "l-integration-047",
+        "solution": "$\\dfrac{e^2 - e}{2} \\approx \\dfrac{7{,}389 - 2{,}718}{2} \\approx 2{,}34$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Affirmation : on peut en déduire que $I > 5$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Le majorant vaut $e^2 - e \\approx 4{,}67$ : on a donc $I \\leqslant 4{,}68$, et en particulier $I < 5$. L'affirmation est fausse."
+        },
+        "indices": [
+          "Compare $5$ avec le majorant $e^2 - e$ de l'encadrement.",
+          "$e^2 - e \\approx 4{,}67$. Si $I$ est inférieur à ce nombre, peut-il dépasser $5$ ?",
+          "Conclus : l'encadrement donne-t-il $I > 5$, ou bien son contraire ?"
+        ],
+        "revoir": "l-integration-045",
+        "solution": "D'après la question 2, $I \\leqslant e^2 - e \\approx 4{,}67$. Donc $I < 5$ : l'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-017",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-courbes-valeur-moyenne"],
+    "capacites": ["bo-m-integrale-12"],
+    "titre": "Aire entre une parabole et une droite",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 401,
+    "preambule": "Soit $f$ et $g$ les fonctions définies sur $\\mathbb{R}$ par $f(x) = 3 - x^2$ et $g(x) = 3 - 3x$, de courbes $\\mathcal{C}_f$ et $\\mathcal{C}_g$ dans un repère orthonormé. On s'intéresse à l'intervalle $[0\\,;\\,3]$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Sur $[0\\,;\\,3]$, quelle est la position relative des deux courbes ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$",
+            "$\\mathcal{C}_g$ est au-dessus de $\\mathcal{C}_f$",
+            "les courbes se croisent en $x = 1$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "En $x = 1$, $f(1) = 2$ et $g(1) = 0$ : la courbe de $f$ est plus haute. Étudie le signe de $f(x) - g(x)$.",
+            "En $x = 1$, $f(1) = 2 \\neq g(1) = 0$ : les courbes se coupent là où $f(x) = g(x)$, c'est-à-dire en $x = 0$ et en $x = 3$."
+          ]
+        },
+        "indices": [
+          "Étudie le signe de la différence $f(x) - g(x)$ sur $[0\\,;\\,3]$.",
+          "$f(x) - g(x) = 3x - x^2 = x(3 - x)$ : étudie le signe de chaque facteur sur $[0\\,;\\,3]$."
+        ],
+        "revoir": "l-integration-056",
+        "solution": "$f(x) - g(x) = 3 - x^2 - 3 + 3x = 3x - x^2 = x(3 - x)$. Pour $x$ dans $[0\\,;\\,3]$, $x \\geqslant 0$ et $3 - x \\geqslant 0$, donc $f(x) - g(x) \\geqslant 0$ : $\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer l'aire, en u.a., du domaine compris entre les deux courbes sur $[0\\,;\\,3]$ (valeur exacte ou décimale).",
+        "reponse": { "type": "numerique", "valeur": "9/2", "tolerance": 0.01 },
+        "indices": [
+          "L'aire vaut $\\displaystyle\\int_{0}^{3} \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x$ : « courbe du dessus moins courbe du dessous ».",
+          "Une primitive de $x \\mapsto 3x - x^2$ est $x \\mapsto \\dfrac{3x^2}{2} - \\dfrac{x^3}{3}$ : calcule sa valeur en $3$ ; en $0$, elle est nulle."
+        ],
+        "revoir": "l-integration-055",
+        "solution": "D'après la question 1, l'aire vaut $\\displaystyle\\int_{0}^{3} \\left(3x - x^2\\right)\\mathrm{d}x = \\left[\\frac{3x^2}{2} - \\frac{x^3}{3}\\right]_{0}^{3} = \\frac{27}{2} - \\frac{27}{3} - 0 = \\frac{27}{2} - 9 = \\frac{9}{2}$ u.a."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-018",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-courbes-valeur-moyenne"],
+    "capacites": ["bo-m-integrale-07", "bo-m-integrale-14"],
+    "titre": "Calculer une valeur moyenne",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 402,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer la valeur moyenne de $f : x \\mapsto 6x^2$ sur $[0\\,;\\,2]$.",
+        "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+        "indices": [
+          "La valeur moyenne de $f$ sur $[a\\,;\\,b]$ est $\\mu = \\dfrac{1}{b - a}\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$.",
+          "Une primitive de $x \\mapsto 6x^2$ est $x \\mapsto 2x^3$ : calcule l'intégrale sur $[0\\,;\\,2]$, puis divise par $2 - 0$."
+        ],
+        "revoir": "l-integration-058",
+        "solution": "$\\displaystyle\\int_0^2 6x^2\\,\\mathrm{d}x = \\big[2x^3\\big]_0^2 = 16$. La valeur moyenne vaut donc $\\mu = \\dfrac{1}{2 - 0} \\times 16 = 8$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle est la valeur moyenne de la fonction cosinus sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$\\dfrac{2}{\\pi}$", "$1$", "$\\dfrac{\\pi}{2}$", "$\\dfrac{1}{2}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$1$ est l'intégrale $\\displaystyle\\int_0^{\\pi/2} \\cos x\\,\\mathrm{d}x$ : il faut encore la diviser par la longueur de l'intervalle, $\\dfrac{\\pi}{2}$.",
+            "Tu as multiplié l'intégrale par la longueur de l'intervalle au lieu de la diviser.",
+            "$\\dfrac{1}{2}$ est la moyenne de $\\cos 0 = 1$ et de $\\cos\\dfrac{\\pi}{2} = 0$ : la valeur moyenne d'une fonction n'est pas la moyenne de ses valeurs aux bornes."
+          ]
+        },
+        "indices": [
+          "Calcule l'intégrale de $\\cos$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$ avec la primitive $\\sin$, puis divise par la longueur de l'intervalle.",
+          "$\\displaystyle\\int_0^{\\pi/2} \\cos x\\,\\mathrm{d}x = \\sin\\frac{\\pi}{2} - \\sin 0$, et la longueur de l'intervalle est $\\dfrac{\\pi}{2} - 0$. Diviser par $\\dfrac{\\pi}{2}$, c'est multiplier par son inverse."
+        ],
+        "revoir": "l-integration-058",
+        "solution": "$\\displaystyle\\int_0^{\\pi/2} \\cos x\\,\\mathrm{d}x = \\big[\\sin x\\big]_0^{\\pi/2} = 1 - 0 = 1$. La valeur moyenne vaut donc $\\mu = \\dfrac{1}{\\frac{\\pi}{2} - 0} \\times 1 = \\dfrac{2}{\\pi} \\approx 0{,}64$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Un mobile roule en ligne droite. À l'instant $t$, en secondes, sa vitesse vaut $v(t) = 2t + 3$, en mètres par seconde. Calculer sa vitesse moyenne, en m/s, entre $t = 0$ et $t = 4$.",
+        "reponse": { "type": "numerique", "valeur": 7, "tolerance": 0, "unite": "m/s" },
+        "indices": [
+          "La vitesse moyenne sur $[0\\,;\\,4]$ est la valeur moyenne de $v$ : $\\dfrac{1}{4 - 0}\\displaystyle\\int_0^4 v(t)\\,\\mathrm{d}t$.",
+          "Une primitive de $t \\mapsto 2t + 3$ est $t \\mapsto t^2 + 3t$ : l'intégrale est la distance parcourue, en mètres. Divise-la par la durée."
+        ],
+        "revoir": "l-integration-059",
+        "solution": "$\\displaystyle\\int_0^4 (2t + 3)\\,\\mathrm{d}t = \\big[t^2 + 3t\\big]_0^4 = 16 + 12 = 28$ : le mobile parcourt $28$ m. Sa vitesse moyenne vaut $\\dfrac{1}{4 - 0} \\times 28 = 7$ m/s."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-019",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-courbes-valeur-moyenne"],
+    "capacites": ["bo-m-integrale-12"],
+    "titre": "Deux courbes qui se croisent : découper l'aire",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 411,
+    "preambule": "Dans un repère orthonormé, on note $\\mathcal{C}$ la courbe de $f : x \\mapsto e^x$ et $\\mathcal{C}'$ celle de $g : x \\mapsto e^{-x}$. On cherche l'aire $\\mathcal{A}$, en u.a., du domaine compris entre $\\mathcal{C}$, $\\mathcal{C}'$ et les droites d'équations $x = -1$ et $x = 1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Étudier le signe de $e^x - e^{-x}$ sur $[-1\\,;\\,1]$, puis en déduire la position relative des deux courbes.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Compare les exposants $x$ et $-x$ : la fonction exponentielle conserve l'ordre.",
+          "La fonction exponentielle est strictement croissante : $e^x \\geqslant e^{-x}$ équivaut à $x \\geqslant -x$.",
+          "$x \\geqslant -x$ équivaut à $2x \\geqslant 0$ : conclus sur $[-1\\,;\\,0]$, puis sur $[0\\,;\\,1]$."
+        ],
+        "revoir": "l-integration-062",
+        "solution": "La fonction exponentielle est strictement croissante sur $\\mathbb{R}$, donc $e^x \\geqslant e^{-x}$ équivaut à $x \\geqslant -x$, soit $x \\geqslant 0$. Ainsi $e^x - e^{-x} \\leqslant 0$ sur $[-1\\,;\\,0]$ et $e^x - e^{-x} \\geqslant 0$ sur $[0\\,;\\,1]$. La courbe $\\mathcal{C}'$ est au-dessus de $\\mathcal{C}$ sur $[-1\\,;\\,0]$, la courbe $\\mathcal{C}$ est au-dessus de $\\mathcal{C}'$ sur $[0\\,;\\,1]$, et elles se coupent au point $(0\\,;\\,1)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Quelle expression donne l'aire $\\mathcal{A}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\displaystyle\\int_{-1}^{0} \\left(e^{-x} - e^x\\right)\\mathrm{d}x + \\int_{0}^{1} \\left(e^x - e^{-x}\\right)\\mathrm{d}x$",
+            "$\\displaystyle\\int_{-1}^{1} \\left(e^x - e^{-x}\\right)\\mathrm{d}x$",
+            "$\\displaystyle\\int_{-1}^{1} \\left(e^{-x} - e^x\\right)\\mathrm{d}x$",
+            "$\\displaystyle\\int_{0}^{1} \\left(e^x - e^{-x}\\right)\\mathrm{d}x$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Sur $[-1\\,;\\,0]$, $e^x - e^{-x} \\leqslant 0$ : cette partie compte négativement. Cette intégrale vaut d'ailleurs $0$, alors que l'aire cherchée n'est pas nulle.",
+            "Sur $[0\\,;\\,1]$, $e^{-x} - e^x \\leqslant 0$ : c'est la même erreur, dans l'autre sens.",
+            "Il manque la partie du domaine située au-dessus de $[-1\\,;\\,0]$."
+          ]
+        },
+        "indices": [
+          "Les courbes se croisent en $x = 0$ : coupe $[-1\\,;\\,1]$ en ce point avec la relation de Chasles.",
+          "Sur chaque morceau, intègre « courbe du dessus moins courbe du dessous », d'après la question 1.",
+          "Sur $[-1\\,;\\,0]$, la courbe du dessus est celle de $g$ ; sur $[0\\,;\\,1]$, c'est celle de $f$."
+        ],
+        "revoir": "l-integration-062",
+        "solution": "Les courbes se croisent en $x = 0$. Sur $[-1\\,;\\,0]$, $g \\geqslant f$ ; sur $[0\\,;\\,1]$, $f \\geqslant g$. Par la relation de Chasles, $\\mathcal{A} = \\displaystyle\\int_{-1}^{0} \\left(e^{-x} - e^x\\right)\\mathrm{d}x + \\int_{0}^{1} \\left(e^x - e^{-x}\\right)\\mathrm{d}x$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $\\displaystyle\\int_{0}^{1} \\left(e^x - e^{-x}\\right)\\mathrm{d}x$ : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée.",
+        "reponse": { "type": "numerique", "valeur": 1.09, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Une primitive de $x \\mapsto e^{-x}$ est $x \\mapsto -e^{-x}$ : contrôle-la en dérivant.",
+          "Une primitive de $x \\mapsto e^x - e^{-x}$ est donc $x \\mapsto e^x + e^{-x}$ : calcule sa valeur en $1$ et en $0$.",
+          "En $0$, elle vaut $e^0 + e^0$ ; en $1$, $e + e^{-1}$. Fais la différence, puis calcule une valeur approchée."
+        ],
+        "revoir": "l-integration-055",
+        "solution": "Une primitive de $x \\mapsto e^x - e^{-x}$ est $x \\mapsto e^x + e^{-x}$. Donc $\\displaystyle\\int_{0}^{1} \\left(e^x - e^{-x}\\right)\\mathrm{d}x = \\left(e + e^{-1}\\right) - \\left(e^0 + e^0\\right) = e + e^{-1} - 2 \\approx 1{,}09$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire l'aire $\\mathcal{A}$, à $10^{-2}$ près.",
+        "reponse": { "type": "numerique", "valeur": 2.17, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Calcule de même $\\displaystyle\\int_{-1}^{0} \\left(e^{-x} - e^x\\right)\\mathrm{d}x$, avec la primitive $x \\mapsto -e^{-x} - e^x$.",
+          "En $0$, cette primitive vaut $-1 - 1$ ; en $-1$, elle vaut $-e - e^{-1}$. Compare le résultat avec la question 3.",
+          "Les deux morceaux ont la même aire : $\\mathcal{A}$ est leur somme."
+        ],
+        "revoir": "l-integration-056",
+        "solution": "$\\displaystyle\\int_{-1}^{0} \\left(e^{-x} - e^x\\right)\\mathrm{d}x = \\left[-e^{-x} - e^x\\right]_{-1}^{0} = (-1 - 1) - \\left(-e - e^{-1}\\right) = e + e^{-1} - 2$. Les deux morceaux ont la même aire, ce qui était attendu : les deux courbes sont symétriques l'une de l'autre par rapport à l'axe des ordonnées. Donc $\\mathcal{A} = 2\\left(e + e^{-1} - 2\\right) \\approx 2{,}17$ u.a."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-020",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-courbes-valeur-moyenne", "n-integration-primitive"],
+    "capacites": ["bo-m-integrale-07", "bo-m-integrale-14", "bo-m-integrale-10", "bo-m-logarithme-06"],
+    "titre": "Température moyenne d'une pièce qui refroidit",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 412,
+    "source": {
+      "annale": "an-2024-polynesie-juin-j1",
+      "adaptation": "contexte repris (valeur moyenne d'une température sur les 100 premières secondes) ; fonction et valeurs inventées, autres questions ajoutées"
+    },
+    "preambule": "Une pièce métallique sort d'un four à $200$ °C, dans un atelier à $30$ °C. Sa température, en degrés Celsius, est modélisée par $\\theta(t) = 30 + 170e^{-0{,}02t}$, où $t \\geqslant 0$ est le temps écoulé, en secondes.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que la fonction $\\Theta$ définie sur $[0\\,;\\,+\\infty[$ par $\\Theta(t) = 30t - 8\\,500e^{-0{,}02t}$ est une primitive de $\\theta$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Dérive $\\Theta$ et compare avec $\\theta(t)$.",
+          "La dérivée de $t \\mapsto e^{-0{,}02t}$ est $t \\mapsto -0{,}02e^{-0{,}02t}$.",
+          "Calcule le produit $-8\\,500 \\times (-0{,}02)$."
+        ],
+        "revoir": "l-integration-059",
+        "solution": "$\\Theta$ est dérivable sur $[0\\,;\\,+\\infty[$ et $\\Theta'(t) = 30 - 8\\,500 \\times (-0{,}02)e^{-0{,}02t} = 30 + 170e^{-0{,}02t} = \\theta(t)$. Donc $\\Theta$ est une primitive de $\\theta$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "À l'aide d'une intégrale, calculer la valeur moyenne $\\mu$ de la température sur les $100$ premières secondes, arrondie au dixième de degré.",
+        "reponse": { "type": "numerique", "valeur": 103.5, "tolerance": 0.1, "decimales": 1, "unite": "°C" },
+        "indices": [
+          "La valeur moyenne sur $[0\\,;\\,100]$ est $\\mu = \\dfrac{1}{100 - 0}\\displaystyle\\int_0^{100} \\theta(t)\\,\\mathrm{d}t$ ; la question 1 donne une primitive.",
+          "$\\displaystyle\\int_0^{100} \\theta(t)\\,\\mathrm{d}t = \\Theta(100) - \\Theta(0)$, avec $\\Theta(100) = 3\\,000 - 8\\,500e^{-2}$ et $\\Theta(0) = -8\\,500$.",
+          "Simplifie : $\\mu = \\dfrac{11\\,500 - 8\\,500e^{-2}}{100}$, puis calcule une valeur approchée."
+        ],
+        "revoir": "l-integration-059",
+        "solution": "D'après la question 1, $\\displaystyle\\int_0^{100} \\theta(t)\\,\\mathrm{d}t = \\Theta(100) - \\Theta(0) = \\left(3\\,000 - 8\\,500e^{-2}\\right) - \\left(0 - 8\\,500\\right) = 11\\,500 - 8\\,500e^{-2}$. Donc $\\mu = \\dfrac{1}{100}\\left(11\\,500 - 8\\,500e^{-2}\\right) = 115 - 85e^{-2} \\approx 103{,}5$ °C.",
+        "erreurFrequente": "Oublier de diviser par $100$ : l'intégrale, environ $10\\,350$, n'est pas une température."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Affirmation : $\\mu$ est égale à la moyenne $\\dfrac{\\theta(0) + \\theta(100)}{2}$ des températures aux instants $0$ et $100$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$\\dfrac{\\theta(0) + \\theta(100)}{2} = \\dfrac{200 + 30 + 170e^{-2}}{2} \\approx 126{,}5$ °C, alors que $\\mu \\approx 103{,}5$ °C. La température baisse vite au début : elle reste plus longtemps proche des basses valeurs, et sa moyenne est plus basse."
+        },
+        "indices": [
+          "Calcule $\\theta(0)$ et $\\theta(100)$, puis leur moyenne, et compare avec la question 2.",
+          "$\\theta(0) = 30 + 170 = 200$ et $\\theta(100) = 30 + 170e^{-2} \\approx 53$ : fais la moyenne de ces deux nombres.",
+          "Compare cette moyenne avec la valeur trouvée à la question 2 : sont-elles égales ?"
+        ],
+        "revoir": "l-integration-063",
+        "solution": "$\\theta(0) = 200$ et $\\theta(100) = 30 + 170e^{-2} \\approx 53{,}0$, donc $\\dfrac{\\theta(0) + \\theta(100)}{2} \\approx 126{,}5$ °C. Or $\\mu \\approx 103{,}5$ °C : l'affirmation est fausse. La valeur moyenne d'une fonction n'est pas, en général, la moyenne de ses valeurs aux bornes."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "À quel instant la température est-elle égale à sa valeur moyenne $\\mu = 115 - 85e^{-2}$ ? Donner le résultat en secondes, arrondi au dixième.",
+        "reponse": { "type": "numerique", "valeur": 41.9, "tolerance": 0.1, "decimales": 1, "unite": "s" },
+        "indices": [
+          "Résous l'équation $\\theta(t) = \\mu$ : isole d'abord l'exponentielle.",
+          "$30 + 170e^{-0{,}02t} = \\mu$ équivaut à $e^{-0{,}02t} = \\dfrac{\\mu - 30}{170}$. Applique la fonction $\\ln$ aux deux membres.",
+          "$-0{,}02t = \\ln\\left(\\dfrac{\\mu - 30}{170}\\right)$ : divise par $-0{,}02$, puis calcule avec $\\mu \\approx 103{,}497$."
+        ],
+        "revoir": "l-logarithme-026",
+        "solution": "$\\theta(t) = \\mu$ équivaut à $170e^{-0{,}02t} = \\mu - 30$, soit $e^{-0{,}02t} = \\dfrac{\\mu - 30}{170}$, avec $\\mu - 30 > 0$. Cela équivaut à $-0{,}02t = \\ln\\left(\\dfrac{\\mu - 30}{170}\\right)$, soit $t = -50\\ln\\left(\\dfrac{\\mu - 30}{170}\\right)$. Avec $\\mu \\approx 103{,}497$, on trouve $t \\approx 41{,}9$ s."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-021",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-parties"],
+    "capacites": ["bo-m-integrale-08"],
+    "titre": "Choisir $u$ et $v'$",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 501,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Pour calculer $\\displaystyle\\int_1^e x^2\\ln x\\,\\mathrm{d}x$ par parties, quel choix fais-tu ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$u(x) = \\ln x$ et $v'(x) = x^2$",
+            "$u(x) = x^2$ et $v'(x) = \\ln x$",
+            "$u(x) = x^2\\ln x$ et $v'(x) = 1$",
+            "$u(x) = x$ et $v'(x) = x\\ln x$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Il faudrait une primitive $v$ de $\\ln$, et la nouvelle intégrale contiendrait encore un logarithme : le calcul ne se simplifie pas.",
+            "$u'(x) = 2x\\ln x + x$ : la nouvelle intégrale, $\\displaystyle\\int_1^e x\\left(2x\\ln x + x\\right)\\mathrm{d}x$, contient encore $x^2\\ln x$. Le calcul ne se simplifie pas directement.",
+            "Il faudrait une primitive de $x\\ln x$, que l'on ne connaît pas directement : le problème de départ est seulement déplacé."
+          ]
+        },
+        "indices": [
+          "Avec un logarithme, la méthode du cours conseille un choix précis : dériver $\\ln x$ le fait disparaître.",
+          "La dérivée de $\\ln x$ est $\\dfrac{1}{x}$, et $x^2$ a une primitive connue, $\\dfrac{x^3}{3}$ : lequel des deux facteurs vaut-il mieux dériver ?"
+        ],
+        "revoir": "l-integration-071",
+        "solution": "On pose $u(x) = \\ln x$ et $v'(x) = x^2$ : alors $u'(x) = \\dfrac{1}{x}$ et $v(x) = \\dfrac{x^3}{3}$. La nouvelle intégrale porte sur $u'(x)v(x) = \\dfrac{x^2}{3}$, un polynôme : le logarithme a disparu."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour calculer $\\displaystyle\\int_0^1 x\\,e^{-x}\\,\\mathrm{d}x$, on pose $u(x) = x$ et $v'(x) = e^{-x}$. Quelle fonction $v$ prend-on ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$v(x) = -e^{-x}$",
+            "$v(x) = e^{-x}$",
+            "$v(x) = -xe^{-x}$",
+            "$v(x) = \\dfrac{e^{-x+1}}{-x+1}$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "La dérivée de $e^{-x}$ est $-e^{-x}$, et non $e^{-x}$ : il manque un signe moins.",
+            "Sa dérivée vaut $-e^{-x} + xe^{-x}$, et non $e^{-x}$.",
+            "La règle des puissances $\\dfrac{x^{n+1}}{n+1}$ ne s'applique pas à une exponentielle."
+          ]
+        },
+        "indices": [
+          "$v$ est une primitive de $v'(x) = e^{-x}$ : contrôle chaque proposition en la dérivant.",
+          "La dérivée de $e^{ax}$ est $ae^{ax}$ ; ici, $a = -1$. Cherche la proposition dont la dérivée est exactement $e^{-x}$."
+        ],
+        "revoir": "l-integration-076",
+        "solution": "La fonction $v : x \\mapsto -e^{-x}$ a pour dérivée $-(-1)e^{-x} = e^{-x} = v'(x)$ : c'est une primitive de $v'$, celle que l'on prend."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Remettre dans l'ordre les étapes du calcul de $\\displaystyle\\int_0^1 x\\,e^{2x}\\,\\mathrm{d}x$ par parties.",
+        "reponse": {
+          "type": "ordre",
+          "elements": [
+            "Poser $u(x) = x$ et $v'(x) = e^{2x}$.",
+            "Calculer $u'(x) = 1$ et choisir $v(x) = \\dfrac{e^{2x}}{2}$.",
+            "Écrire $\\displaystyle\\int_0^1 x\\,e^{2x}\\,\\mathrm{d}x = \\left[\\frac{x\\,e^{2x}}{2}\\right]_0^1 - \\int_0^1 \\frac{e^{2x}}{2}\\,\\mathrm{d}x$.",
+            "Calculer le crochet, puis la nouvelle intégrale avec une primitive de $x \\mapsto \\dfrac{e^{2x}}{2}$."
+          ]
+        },
+        "indices": [
+          "La formule ne s'écrit qu'une fois les quatre fonctions $u$, $u'$, $v$ et $v'$ connues.",
+          "Commence par le choix de $u$ et de $v'$, puis calcule $u'$ et $v$ ; la formule vient ensuite, et les calculs en dernier."
+        ],
+        "revoir": "l-integration-071",
+        "solution": "On choisit d'abord $u(x) = x$ et $v'(x) = e^{2x}$, puis on calcule $u'(x) = 1$ et $v(x) = \\dfrac{e^{2x}}{2}$. On applique ensuite la formule : $\\displaystyle\\int_0^1 x\\,e^{2x}\\,\\mathrm{d}x = \\left[\\frac{x\\,e^{2x}}{2}\\right]_0^1 - \\int_0^1 \\frac{e^{2x}}{2}\\,\\mathrm{d}x$. On termine par les calculs : $\\dfrac{e^2}{2} - \\left[\\dfrac{e^{2x}}{4}\\right]_0^1 = \\dfrac{e^2}{2} - \\dfrac{e^2 - 1}{4} = \\dfrac{e^2 + 1}{4}$."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-022",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-parties"],
+    "capacites": ["bo-m-integrale-08", "bo-m-trigonometrie-01"],
+    "titre": "Intégrer par parties avec un cosinus",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 502,
+    "source": {
+      "annale": "an-2026-metropole-septembre-j2",
+      "adaptation": "affirmation 2 de l'exercice 3 reprise à la question 2 ; question 1 ajoutée"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $\\displaystyle\\int_0^{\\pi} x\\cos x\\,\\mathrm{d}x$ à l'aide d'une intégration par parties.",
+        "reponse": { "type": "numerique", "valeur": -2, "tolerance": 0 },
+        "indices": [
+          "Pose $u(x) = x$, que la dérivation simplifie, et $v'(x) = \\cos x$, dont tu connais une primitive.",
+          "$u'(x) = 1$ et $v(x) = \\sin x$ : l'intégrale vaut $\\big[x\\sin x\\big]_0^{\\pi} - \\displaystyle\\int_0^{\\pi} \\sin x\\,\\mathrm{d}x$. Calcule le crochet avec $\\sin \\pi = \\sin 0 = 0$."
+        ],
+        "revoir": "l-integration-068",
+        "solution": "On pose $u(x) = x$ et $v'(x) = \\cos x$, d'où $u'(x) = 1$ et $v(x) = \\sin x$ ; $u'$ et $v'$ sont continues sur $[0\\,;\\,\\pi]$. Par intégration par parties : $\\displaystyle\\int_0^{\\pi} x\\cos x\\,\\mathrm{d}x = \\big[x\\sin x\\big]_0^{\\pi} - \\int_0^{\\pi} \\sin x\\,\\mathrm{d}x = 0 - \\big[-\\cos x\\big]_0^{\\pi} = -\\big(-\\cos\\pi + \\cos 0\\big) = -(1 + 1) = -2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = (2x + 1)\\cos x$. Affirmation : $\\displaystyle\\int_0^{\\pi} f(x)\\,\\mathrm{d}x = -4\\pi$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Avec $u(x) = 2x + 1$ et $v'(x) = \\cos x$ : $\\displaystyle\\int_0^{\\pi} f(x)\\,\\mathrm{d}x = \\big[(2x + 1)\\sin x\\big]_0^{\\pi} - \\int_0^{\\pi} 2\\sin x\\,\\mathrm{d}x = 0 - 2 \\times 2 = -4$, et non $-4\\pi$."
+        },
+        "indices": [
+          "Intègre par parties en posant $u(x) = 2x + 1$ et $v'(x) = \\cos x$.",
+          "$u'(x) = 2$ et $v(x) = \\sin x$ : le crochet $\\big[(2x + 1)\\sin x\\big]_0^{\\pi}$ est nul. Il reste $-\\displaystyle\\int_0^{\\pi} 2\\sin x\\,\\mathrm{d}x$ à calculer."
+        ],
+        "revoir": "l-integration-071",
+        "solution": "On pose $u(x) = 2x + 1$ et $v'(x) = \\cos x$, d'où $u'(x) = 2$ et $v(x) = \\sin x$. Alors $\\displaystyle\\int_0^{\\pi} f(x)\\,\\mathrm{d}x = \\big[(2x + 1)\\sin x\\big]_0^{\\pi} - \\int_0^{\\pi} 2\\sin x\\,\\mathrm{d}x = 0 - 2\\big[-\\cos x\\big]_0^{\\pi} = -2 \\times 2 = -4$. Comme $-4 \\neq -4\\pi$, l'affirmation est fausse."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-023",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-parties"],
+    "capacites": ["bo-m-integrale-08"],
+    "titre": "Une intégrale avec un logarithme, une affirmation du bac",
+    "duree": 5,
+    "calculatrice": true,
+    "ordre": 503,
+    "source": {
+      "annale": "an-2025-polynesie-juin-j2",
+      "adaptation": "affirmation sur $J$ reprise à la question 2 ; question 1 ajoutée"
+    },
+    "preambule": "On considère $J = \\displaystyle\\int_1^2 x\\ln x\\,\\mathrm{d}x$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Une intégration par parties, avec $u(x) = \\ln x$ et $v'(x) = x$, donne :",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$J = 2\\ln 2 - \\dfrac{3}{4}$",
+            "$J = 2\\ln 2 + \\dfrac{3}{4}$",
+            "$J = 4\\ln 2 - \\dfrac{3}{2}$",
+            "$J = 2\\ln 2$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Erreur de signe : la nouvelle intégrale, $\\displaystyle\\int_1^2 \\frac{x}{2}\\,\\mathrm{d}x = \\frac{3}{4}$, se retranche au crochet.",
+            "Tu as pris $v(x) = x^2$ au lieu de $\\dfrac{x^2}{2}$ : tout est multiplié par $2$.",
+            "C'est seulement le crochet : il manque la nouvelle intégrale, à retrancher."
+          ]
+        },
+        "indices": [
+          "Avec $u(x) = \\ln x$ et $v'(x) = x$, calcule $u'(x)$ et une primitive $v$ de $v'$, puis applique la formule.",
+          "$u'(x) = \\dfrac{1}{x}$ et $v(x) = \\dfrac{x^2}{2}$ : $J = \\left[\\dfrac{x^2}{2}\\ln x\\right]_1^2 - \\displaystyle\\int_1^2 \\frac{x}{2}\\,\\mathrm{d}x$. Calcule les deux termes avec $\\ln 1 = 0$."
+        ],
+        "revoir": "l-integration-072",
+        "solution": "On pose $u(x) = \\ln x$ et $v'(x) = x$, d'où $u'(x) = \\dfrac{1}{x}$ et $v(x) = \\dfrac{x^2}{2}$ ; $u'$ et $v'$ sont continues sur $[1\\,;\\,2]$. Alors $J = \\left[\\dfrac{x^2}{2}\\ln x\\right]_1^2 - \\displaystyle\\int_1^2 \\frac{x}{2}\\,\\mathrm{d}x = 2\\ln 2 - 0 - \\left[\\frac{x^2}{4}\\right]_1^2 = 2\\ln 2 - \\left(1 - \\frac{1}{4}\\right) = 2\\ln 2 - \\frac{3}{4}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Affirmation : une intégration par parties permet d'obtenir $J = \\dfrac{7}{11}$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "D'après la question 1, $J = 2\\ln 2 - \\dfrac{3}{4} \\approx 0{,}63629$, alors que $\\dfrac{7}{11} \\approx 0{,}63636$. Les deux nombres sont proches, mais différents : l'affirmation est fausse."
+        },
+        "indices": [
+          "Compare la valeur exacte de la question 1 avec $\\dfrac{7}{11}$, à la calculatrice, avec assez de décimales.",
+          "Affiche au moins cinq décimales pour $2\\ln 2 - \\dfrac{3}{4}$ et pour $\\dfrac{7}{11}$ : au millième, ils ont le même arrondi."
+        ],
+        "revoir": "l-integration-072",
+        "solution": "À la calculatrice, $2\\ln 2 - \\dfrac{3}{4} \\approx 0{,}63629$ et $\\dfrac{7}{11} \\approx 0{,}63636$. Ces nombres diffèrent dès la quatrième décimale, donc $J \\neq \\dfrac{7}{11}$ : l'affirmation est fausse.",
+        "erreurFrequente": "Conclure « vrai » en comparant des valeurs arrondies au millième ($0{,}636$ dans les deux cas) : deux arrondis égaux ne prouvent pas une égalité."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-024",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-parties", "n-integration-primitive", "n-integration-aire"],
+    "capacites": ["bo-m-integrale-08", "bo-m-integrale-10", "bo-m-integrale-01"],
+    "titre": "Une aire calculée par parties",
+    "duree": 12,
+    "calculatrice": true,
+    "ordre": 511,
+    "preambule": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = x\\,e^{-2x}$, et $\\mathcal{C}_f$ sa courbe dans un repère orthogonal. On note $\\mathcal{A}$ l'aire, en u.a., du domaine limité par $\\mathcal{C}_f$, l'axe des abscisses et les droites d'équations $x = 0$ et $x = 1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que $\\mathcal{A} = \\displaystyle\\int_0^1 x\\,e^{-2x}\\,\\mathrm{d}x$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Une intégrale est une aire quand la fonction est continue et positive sur l'intervalle, avec des bornes dans l'ordre croissant.",
+          "Étudie le signe de chacun des deux facteurs $x$ et $e^{-2x}$ sur $[0\\,;\\,1]$.",
+          "Une exponentielle est strictement positive, et $x \\geqslant 0$ sur $[0\\,;\\,1]$ : conclus avec la définition de l'intégrale."
+        ],
+        "revoir": "l-integration-073",
+        "solution": "La fonction $f$ est continue sur $\\mathbb{R}$. Sur $[0\\,;\\,1]$, $x \\geqslant 0$ et $e^{-2x} > 0$, donc $f(x) \\geqslant 0$. Comme $0 \\leqslant 1$, l'aire du domaine sous la courbe vaut $\\mathcal{A} = \\displaystyle\\int_0^1 x\\,e^{-2x}\\,\\mathrm{d}x$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "À l'aide d'une intégration par parties, montrer que $\\mathcal{A} = \\dfrac{1}{4} - \\dfrac{3}{4}e^{-2}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $u(x) = x$ et $v'(x) = e^{-2x}$ : une primitive de $e^{ax}$ est $\\dfrac{1}{a}e^{ax}$.",
+          "$u'(x) = 1$ et $v(x) = -\\dfrac{1}{2}e^{-2x}$ : $\\mathcal{A} = \\left[-\\dfrac{x}{2}e^{-2x}\\right]_0^1 + \\dfrac{1}{2}\\displaystyle\\int_0^1 e^{-2x}\\,\\mathrm{d}x$.",
+          "Le crochet vaut $-\\dfrac{1}{2}e^{-2}$. Calcule $\\displaystyle\\int_0^1 e^{-2x}\\,\\mathrm{d}x = \\left[-\\frac{1}{2}e^{-2x}\\right]_0^1$.",
+          "Cette intégrale vaut $\\dfrac{1}{2}\\left(1 - e^{-2}\\right)$ : multiplie-la par $\\dfrac{1}{2}$, ajoute le crochet, puis regroupe les termes en $e^{-2}$."
+        ],
+        "revoir": "l-integration-073",
+        "solution": "On pose $u(x) = x$ et $v'(x) = e^{-2x}$, d'où $u'(x) = 1$ et $v(x) = -\\dfrac{1}{2}e^{-2x}$ ; $u'$ et $v'$ sont continues sur $[0\\,;\\,1]$. Par intégration par parties :$$\\mathcal{A} = \\left[-\\frac{x}{2}e^{-2x}\\right]_0^1 - \\int_0^1 1 \\times \\left(-\\frac{1}{2}e^{-2x}\\right)\\mathrm{d}x = -\\frac{1}{2}e^{-2} + \\frac{1}{2}\\int_0^1 e^{-2x}\\,\\mathrm{d}x.$$Or $\\displaystyle\\int_0^1 e^{-2x}\\,\\mathrm{d}x = \\left[-\\frac{1}{2}e^{-2x}\\right]_0^1 = \\frac{1}{2}\\left(1 - e^{-2}\\right)$. Donc $\\mathcal{A} = -\\dfrac{1}{2}e^{-2} + \\dfrac{1}{4} - \\dfrac{1}{4}e^{-2} = \\dfrac{1}{4} - \\dfrac{3}{4}e^{-2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans ce repère, une unité mesure $4$ cm sur l'axe des abscisses et $2$ cm sur l'axe des ordonnées. Donner une valeur approchée de l'aire du domaine en cm², à $10^{-2}$ près.",
+        "reponse": { "type": "numerique", "valeur": 1.19, "tolerance": 0.01, "decimales": 2, "unite": "cm²" },
+        "indices": [
+          "Une unité d'aire est un rectangle de $4$ cm sur $2$ cm : calcule son aire en cm².",
+          "L'aire vaut $8\\mathcal{A}$ cm², avec $\\mathcal{A} = \\dfrac{1}{4} - \\dfrac{3}{4}e^{-2}$ : développe ce produit.",
+          "$8\\mathcal{A} = 2 - 6e^{-2}$ : calcule une valeur approchée à la calculatrice."
+        ],
+        "revoir": "l-integration-018",
+        "solution": "Une unité d'aire mesure $4 \\times 2 = 8$ cm². L'aire vaut donc $8\\left(\\dfrac{1}{4} - \\dfrac{3}{4}e^{-2}\\right) = 2 - 6e^{-2} \\approx 1{,}19$ cm²."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-025",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-parties", "n-integration-primitive"],
+    "capacites": ["bo-m-integrale-08", "bo-m-integrale-10", "bo-m-logarithme-03"],
+    "titre": "Intégrer par parties un produit avec $\\ln x$",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 512,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que $\\displaystyle\\int_1^e x^2\\ln x\\,\\mathrm{d}x = \\frac{2e^3 + 1}{9}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Avec un logarithme, pose $u(x) = \\ln x$ et $v'(x) = x^2$.",
+          "$u'(x) = \\dfrac{1}{x}$ et $v(x) = \\dfrac{x^3}{3}$ : l'intégrale vaut $\\left[\\dfrac{x^3}{3}\\ln x\\right]_1^e - \\displaystyle\\int_1^e \\frac{x^2}{3}\\,\\mathrm{d}x$.",
+          "Le crochet vaut $\\dfrac{e^3}{3}$, car $\\ln e = 1$ et $\\ln 1 = 0$. Calcule $\\displaystyle\\int_1^e \\frac{x^2}{3}\\,\\mathrm{d}x = \\left[\\frac{x^3}{9}\\right]_1^e$.",
+          "Il reste $\\dfrac{e^3}{3} - \\dfrac{e^3 - 1}{9}$ : mets au même dénominateur $9$."
+        ],
+        "revoir": "l-integration-072",
+        "solution": "On pose $u(x) = \\ln x$ et $v'(x) = x^2$, d'où $u'(x) = \\dfrac{1}{x}$ et $v(x) = \\dfrac{x^3}{3}$, continues sur $[1\\,;\\,e]$. Par intégration par parties :$$\\int_1^e x^2\\ln x\\,\\mathrm{d}x = \\left[\\frac{x^3}{3}\\ln x\\right]_1^e - \\int_1^e \\frac{1}{x} \\times \\frac{x^3}{3}\\,\\mathrm{d}x = \\frac{e^3}{3} - \\int_1^e \\frac{x^2}{3}\\,\\mathrm{d}x.$$Or $\\displaystyle\\int_1^e \\frac{x^2}{3}\\,\\mathrm{d}x = \\left[\\frac{x^3}{9}\\right]_1^e = \\frac{e^3 - 1}{9}$. Donc l'intégrale vaut $\\dfrac{3e^3}{9} - \\dfrac{e^3 - 1}{9} = \\dfrac{2e^3 + 1}{9}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En donner une valeur approchée à $10^{-2}$ près.",
+        "reponse": { "type": "numerique", "valeur": 4.57, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Calcule $e^3$ à la calculatrice, avec la touche de l'exponentielle.",
+          "$e^3 \\approx 20{,}086$ : calcule $2e^3 + 1$, puis divise par $9$.",
+          "Arrondis le résultat au centième."
+        ],
+        "revoir": "l-integration-072",
+        "solution": "$e^3 \\approx 20{,}086$, donc $\\dfrac{2e^3 + 1}{9} \\approx \\dfrac{41{,}171}{9} \\approx 4{,}57$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On pose $K = \\displaystyle\\int_1^e \\frac{\\ln x}{x^2}\\,\\mathrm{d}x$. Une intégration par parties avec $u(x) = \\ln x$ et $v'(x) = \\dfrac{1}{x^2}$ donne :",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$K = 1 - \\dfrac{2}{e}$",
+            "$K = \\dfrac{2}{e} - 1$",
+            "$K = 1 - \\dfrac{1}{e}$",
+            "$K = -\\dfrac{1}{e}$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Tu as pris $v(x) = \\dfrac{1}{x}$ : une primitive de $\\dfrac{1}{x^2}$ est $-\\dfrac{1}{x}$. Le résultat négatif était suspect, car $\\dfrac{\\ln x}{x^2} \\geqslant 0$ sur $[1\\,;\\,e]$.",
+            "C'est seulement la nouvelle intégrale $\\displaystyle\\int_1^e \\frac{1}{x^2}\\,\\mathrm{d}x$ : il manque le crochet, qui vaut $-\\dfrac{1}{e}$.",
+            "C'est seulement le crochet : il manque la nouvelle intégrale, qui vaut $1 - \\dfrac{1}{e}$."
+          ]
+        },
+        "indices": [
+          "Calcule $u'$ et une primitive $v$ de $v'(x) = \\dfrac{1}{x^2} = x^{-2}$ ; contrôle $v$ en la dérivant.",
+          "$u'(x) = \\dfrac{1}{x}$ et $v(x) = -\\dfrac{1}{x}$ : $K = \\left[-\\dfrac{\\ln x}{x}\\right]_1^e + \\displaystyle\\int_1^e \\frac{1}{x^2}\\,\\mathrm{d}x$.",
+          "Le crochet vaut $-\\dfrac{1}{e}$ ; la nouvelle intégrale se calcule avec la primitive $x \\mapsto -\\dfrac{1}{x}$."
+        ],
+        "revoir": "l-integration-076",
+        "solution": "On pose $u(x) = \\ln x$ et $v'(x) = \\dfrac{1}{x^2}$, d'où $u'(x) = \\dfrac{1}{x}$ et $v(x) = -\\dfrac{1}{x}$. Alors $K = \\left[-\\dfrac{\\ln x}{x}\\right]_1^e - \\displaystyle\\int_1^e \\frac{1}{x} \\times \\left(-\\frac{1}{x}\\right)\\mathrm{d}x = -\\frac{1}{e} + \\left[-\\frac{1}{x}\\right]_1^e = -\\frac{1}{e} - \\frac{1}{e} + 1 = 1 - \\frac{2}{e}$. Contrôle : $1 - \\dfrac{2}{e} \\approx 0{,}26 > 0$, ce qui est cohérent avec $\\dfrac{\\ln x}{x^2} \\geqslant 0$ sur $[1\\,;\\,e]$."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-026",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-parties", "n-integration-proprietes"],
+    "capacites": ["bo-m-integrale-08", "bo-m-integrale-06", "bo-m-trigonometrie-01"],
+    "titre": "Deux intégrations par parties de suite",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 513,
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Montrer que $\\displaystyle\\int_0^{\\pi/2} x\\sin x\\,\\mathrm{d}x = 1$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $u(x) = x$ et $v'(x) = \\sin x$.",
+          "$u'(x) = 1$ et $v(x) = -\\cos x$ : l'intégrale vaut $\\big[-x\\cos x\\big]_0^{\\pi/2} + \\displaystyle\\int_0^{\\pi/2} \\cos x\\,\\mathrm{d}x$.",
+          "Le crochet est nul, car $\\cos\\dfrac{\\pi}{2} = 0$ : calcule la dernière intégrale avec la primitive $\\sin$."
+        ],
+        "revoir": "l-integration-071",
+        "solution": "On pose $u(x) = x$ et $v'(x) = \\sin x$, d'où $u'(x) = 1$ et $v(x) = -\\cos x$, continues sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$. Par intégration par parties : $\\displaystyle\\int_0^{\\pi/2} x\\sin x\\,\\mathrm{d}x = \\big[-x\\cos x\\big]_0^{\\pi/2} + \\int_0^{\\pi/2} \\cos x\\,\\mathrm{d}x = 0 + \\big[\\sin x\\big]_0^{\\pi/2} = 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire, par une nouvelle intégration par parties, que $\\displaystyle\\int_0^{\\pi/2} x^2\\cos x\\,\\mathrm{d}x = \\frac{\\pi^2}{4} - 2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $u(x) = x^2$ : en la dérivant, la puissance baisse d'un cran, et l'intégrale de la question 1 doit apparaître.",
+          "Avec $v'(x) = \\cos x$, on a $u'(x) = 2x$ et $v(x) = \\sin x$ : l'intégrale vaut $\\big[x^2\\sin x\\big]_0^{\\pi/2} - \\displaystyle\\int_0^{\\pi/2} 2x\\sin x\\,\\mathrm{d}x$.",
+          "Le crochet vaut $\\dfrac{\\pi^2}{4}$, car $\\sin\\dfrac{\\pi}{2} = 1$. Par linéarité, la dernière intégrale est le double de celle de la question 1."
+        ],
+        "revoir": "l-integration-083",
+        "solution": "On pose $u(x) = x^2$ et $v'(x) = \\cos x$, d'où $u'(x) = 2x$ et $v(x) = \\sin x$. Par intégration par parties et linéarité : $\\displaystyle\\int_0^{\\pi/2} x^2\\cos x\\,\\mathrm{d}x = \\big[x^2\\sin x\\big]_0^{\\pi/2} - 2\\int_0^{\\pi/2} x\\sin x\\,\\mathrm{d}x = \\frac{\\pi^2}{4} \\times 1 - 0 - 2 \\times 1 = \\frac{\\pi^2}{4} - 2$, d'après la question 1."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En donner une valeur approchée à $10^{-2}$ près.",
+        "reponse": { "type": "numerique", "valeur": 0.47, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Calcule $\\pi^2$ à la calculatrice.",
+          "$\\pi^2 \\approx 9{,}870$ : divise par $4$, puis retranche $2$.",
+          "Arrondis le résultat au centième."
+        ],
+        "revoir": "l-integration-071",
+        "solution": "$\\dfrac{\\pi^2}{4} - 2 \\approx \\dfrac{9{,}870}{4} - 2 \\approx 2{,}467 - 2 \\approx 0{,}47$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Affirmation : on en déduit que $\\pi^2 \\geqslant 8$, sans utiliser de valeur approchée de $\\pi$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $x^2 \\geqslant 0$ et $\\cos x \\geqslant 0$ : par positivité, $\\displaystyle\\int_0^{\\pi/2} x^2\\cos x\\,\\mathrm{d}x \\geqslant 0$, soit $\\dfrac{\\pi^2}{4} - 2 \\geqslant 0$, c'est-à-dire $\\pi^2 \\geqslant 8$."
+        },
+        "indices": [
+          "Quel est le signe de la fonction $x \\mapsto x^2\\cos x$ sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$ ?",
+          "La fonction est positive et les bornes sont dans l'ordre croissant : la positivité donne le signe de l'intégrale.",
+          "Écris que $\\dfrac{\\pi^2}{4} - 2 \\geqslant 0$, puis isole $\\pi^2$."
+        ],
+        "revoir": "l-integration-044",
+        "solution": "Sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $x^2 \\geqslant 0$ et $\\cos x \\geqslant 0$, donc $x^2\\cos x \\geqslant 0$. Comme $0 \\leqslant \\dfrac{\\pi}{2}$, la positivité de l'intégrale donne $\\dfrac{\\pi^2}{4} - 2 \\geqslant 0$, soit $\\pi^2 \\geqslant 8$. L'affirmation est vraie."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-027",
+    "chapitre": "integration",
+    "niveau": 1,
+    "notions": ["n-integration-suites"],
+    "capacites": ["bo-m-integrale-13", "bo-m-derivation-05"],
+    "titre": "Sens de variation, limite et relation par parties d'une suite d'intégrales",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 601,
+    "source": {
+      "annale": "an-2024-asie-j1",
+      "adaptation": "affirmation 5 de l'exercice 4 reprise à la question 1 ; questions 2 et 3 ajoutées"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On considère la suite $(v_n)$ définie pour tout entier $n \\geqslant 1$ par $v_n = \\displaystyle\\int_1^n \\ln x\\,\\mathrm{d}x$. Affirmation : la suite $(v_n)$ est croissante.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "Par la relation de Chasles, $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$. Sur $[n\\,;\\,n + 1]$, avec $n \\geqslant 1$, $\\ln x \\geqslant 0$ : par positivité, $v_{n+1} - v_n \\geqslant 0$. La suite est croissante."
+        },
+        "indices": [
+          "Ici, $n$ est dans une borne, pas dans la fonction : c'est la relation de Chasles, et non la linéarité, qui regroupe les deux intégrales. Découpe $v_{n+1} = \\displaystyle\\int_1^{n+1} \\ln x\\,\\mathrm{d}x$ en $n$ : quelle intégrale reste dans $v_{n+1} - v_n$ ?",
+          "Chasles donne $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$. Pour $x$ dans $[n\\,;\\,n + 1]$, avec $n \\geqslant 1$, on a $x \\geqslant 1$ : quel est le signe de $\\ln x$ ? Conclus avec la positivité, les bornes étant dans l'ordre $n \\leqslant n + 1$."
+        ],
+        "revoir": "l-integration-040",
+        "solution": "Pour $n \\geqslant 1$, la relation de Chasles donne $v_{n+1} = \\displaystyle\\int_1^n \\ln x\\,\\mathrm{d}x + \\int_n^{n+1} \\ln x\\,\\mathrm{d}x$, donc $v_{n+1} - v_n = \\displaystyle\\int_n^{n+1} \\ln x\\,\\mathrm{d}x$. Pour $x$ dans $[n\\,;\\,n + 1]$, $x \\geqslant 1$, donc $\\ln x \\geqslant 0$ ; comme $n \\leqslant n + 1$, la positivité donne $v_{n+1} - v_n \\geqslant 0$. La suite $(v_n)$ est croissante : l'affirmation est vraie."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour tout entier naturel $n$, on pose $J_n = \\displaystyle\\int_0^1 x^n\\,\\mathrm{d}x$. Quelle est la limite de la suite $(J_n)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0$", "$1$", "$+\\infty$", "$\\dfrac{1}{2}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$1$ est la valeur de $x^n$ en $x = 1$, pas celle de l'intégrale : pour $0 \\leqslant x < 1$, $x^n$ devient très petit.",
+            "$J_n$ est l'aire d'un domaine contenu dans le carré $[0\\,;\\,1] \\times [0\\,;\\,1]$ : elle ne dépasse pas $1$.",
+            "$\\dfrac{1}{2}$ est la valeur de $J_1$ seulement : calcule $J_n$ pour tout $n$."
+          ]
+        },
+        "indices": [
+          "Calcule $J_n$ en fonction de $n$, avec une primitive de $x \\mapsto x^n$.",
+          "$J_n = \\left[\\dfrac{x^{n+1}}{n + 1}\\right]_0^1$ : simplifie, puis cherche la limite quand $n$ tend vers $+\\infty$."
+        ],
+        "revoir": "l-integration-081",
+        "solution": "$J_n = \\left[\\dfrac{x^{n+1}}{n + 1}\\right]_0^1 = \\dfrac{1}{n + 1}$, qui tend vers $0$ quand $n$ tend vers $+\\infty$. Donc $\\lim\\limits_{n \\to +\\infty} J_n = 0$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pour tout entier naturel $n$, on pose $K_n = \\displaystyle\\int_1^2 (\\ln x)^n\\,\\mathrm{d}x$, avec la convention $(\\ln x)^0 = 1$. Pour relier $K_{n+1}$ à $K_n$, on intègre $K_{n+1}$ par parties. Quel choix convient ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$u(x) = (\\ln x)^{n+1}$ et $v'(x) = 1$, d'où $u'(x) = \\dfrac{(n + 1)(\\ln x)^n}{x}$ et $v(x) = x$",
+            "$u(x) = (\\ln x)^{n+1}$ et $v'(x) = 1$, d'où $u'(x) = (n + 1)(\\ln x)^n$ et $v(x) = x$",
+            "$u(x) = 1$ et $v'(x) = (\\ln x)^{n+1}$",
+            "$u(x) = \\ln x$ et $v'(x) = (\\ln x)^n$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Tu as dérivé $(\\ln x)^{n+1}$ comme $x^{n+1}$. C'est une composée $w^{n+1}$, avec $w = \\ln$ : sa dérivée est $(n + 1)w'w^n$, et il ne faut pas oublier $w'(x) = \\dfrac{1}{x}$.",
+            "Il faudrait une primitive $v$ de $(\\ln x)^{n+1}$ pour tout $n$ : on n'en connaît pas en général. De plus, $u' = 0$ ne fait pas apparaître $K_n$.",
+            "La méthode dit bien de dériver le logarithme, mais il faudrait alors une primitive de $(\\ln x)^n$ pour tout $n$ : on n'en connaît pas en général (seulement pour $n = 0$ et $n = 1$)."
+          ]
+        },
+        "indices": [
+          "Comme dans la méthode, dérive le facteur qui porte la puissance $n + 1$ : elle baisse d'un cran et fait apparaître $(\\ln x)^n$. Pour $v'$, il faut un facteur dont tu connais une primitive : quel facteur « invisible » multiplie $(\\ln x)^{n+1}$ ?",
+          "On écrit $(\\ln x)^{n+1} = (\\ln x)^{n+1} \\times 1$. La fonction $(\\ln x)^{n+1}$ est de la forme $w^{n+1}$, avec $w = \\ln$ : sa dérivée est $(n + 1)w'w^n$. Que vaut $w'(x)$ ?"
+        ],
+        "revoir": "l-integration-080",
+        "solution": "Pour un entier $n$ quelconque, on ne connaît en général de primitive ni de $(\\ln x)^{n+1}$ ni de $(\\ln x)^n$ : seules les puissances $0$ et $1$ en ont une connue, $x \\mapsto x$ et $x \\mapsto x\\ln x - x$. On écrit donc $(\\ln x)^{n+1} = (\\ln x)^{n+1} \\times 1$ et l'on pose $u(x) = (\\ln x)^{n+1}$ et $v'(x) = 1$, d'où $v(x) = x$. Comme $u = w^{n+1}$ avec $w = \\ln$, $u'(x) = (n + 1)w'(x)w(x)^n = \\dfrac{(n + 1)(\\ln x)^n}{x}$. La puissance a baissé d'un cran, et $u'(x)v(x) = (n + 1)(\\ln x)^n$ fait apparaître $K_n$ dans la nouvelle intégrale."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-028",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-suites", "n-integration-parties", "n-integration-proprietes"],
+    "capacites": ["bo-m-integrale-13", "bo-m-integrale-08", "bo-m-integrale-06", "bo-m-suites-06"],
+    "titre": "Une suite d'intégrales et sa relation de récurrence",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 611,
+    "source": {
+      "annale": "an-2024-amerique-sud-j1",
+      "adaptation": "affirmation 4 de l'exercice 3 transformée en démonstration (question 2) ; autres questions ajoutées"
+    },
+    "preambule": "Pour tout entier naturel $n$, on pose $I_n = \\displaystyle\\int_1^e (\\ln x)^n\\,\\mathrm{d}x$, avec la convention $(\\ln x)^0 = 1$. On admet que $I_1 = \\displaystyle\\int_1^e \\ln x\\,\\mathrm{d}x = 1$ (exemple du cours).",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que vaut $I_0$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$e - 1$", "$e$", "$1$", "$0$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Tu as oublié de retrancher la valeur en $1$ de la primitive $x \\mapsto x$.",
+            "$1$ est la valeur de $I_1$ ; $I_0$ est l'intégrale de la fonction constante égale à $1$.",
+            "$(\\ln x)^0 = 1$ n'est pas nul : $I_0$ est l'aire d'un rectangle de hauteur $1$."
+          ]
+        },
+        "indices": [
+          "Avec la convention $(\\ln x)^0 = 1$, $I_0$ est l'intégrale de la fonction constante égale à $1$ sur $[1\\,;\\,e]$.",
+          "Une primitive de $x \\mapsto 1$ est $x \\mapsto x$.",
+          "Calcule la valeur de cette primitive en $e$, moins sa valeur en $1$."
+        ],
+        "revoir": "l-integration-083",
+        "solution": "$I_0 = \\displaystyle\\int_1^e 1\\,\\mathrm{d}x = \\big[x\\big]_1^e = e - 1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "À l'aide d'une intégration par parties, démontrer que, pour tout entier naturel $n$, $I_{n+1} = e - (n + 1)I_n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Écris $(\\ln x)^{n+1} = (\\ln x)^{n+1} \\times 1$ : pose $u(x) = (\\ln x)^{n+1}$ et $v'(x) = 1$.",
+          "$u$ est de la forme $w^{n+1}$ avec $w = \\ln$, donc $u'(x) = (n + 1)(\\ln x)^n \\times \\dfrac{1}{x}$ ; et $v(x) = x$.",
+          "$I_{n+1} = \\Big[x(\\ln x)^{n+1}\\Big]_1^e - \\displaystyle\\int_1^e (n + 1)(\\ln x)^n\\,\\mathrm{d}x$ : calcule le crochet avec $\\ln e = 1$ et $\\ln 1 = 0$.",
+          "Le crochet vaut $e \\times 1 - 1 \\times 0$ ; par linéarité, la constante $n + 1$ sort de l'intégrale."
+        ],
+        "revoir": "l-integration-083",
+        "solution": "Soit $n$ un entier naturel. On pose $u(x) = (\\ln x)^{n+1}$ et $v'(x) = 1$, d'où $u'(x) = (n + 1)(\\ln x)^n \\times \\dfrac{1}{x}$ et $v(x) = x$ ; $u'$ et $v'$ sont continues sur $[1\\,;\\,e]$. Par intégration par parties :$$I_{n+1} = \\Big[x(\\ln x)^{n+1}\\Big]_1^e - \\int_1^e (n + 1)\\frac{(\\ln x)^n}{x} \\times x\\,\\mathrm{d}x = e \\times 1^{n+1} - 1 \\times 0^{n+1} - (n + 1)\\int_1^e (\\ln x)^n\\,\\mathrm{d}x.$$Comme $0^{n+1} = 0$, on obtient $I_{n+1} = e - (n + 1)I_n$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire $I_2$ : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée.",
+        "reponse": { "type": "numerique", "valeur": 0.72, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Applique la relation de la question 2 avec $n = 1$.",
+          "Elle donne $I_2 = e - 2I_1$, et l'énoncé donne $I_1$.",
+          "Calcule une valeur approchée avec $e \\approx 2{,}718$."
+        ],
+        "revoir": "l-integration-083",
+        "solution": "Avec $n = 1$ : $I_2 = e - 2I_1 = e - 2 \\approx 0{,}72$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Montrer que la suite $(I_n)$ est positive et décroissante, puis qu'elle converge.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour le signe et le sens de variation, regarde entre quelles valeurs se situe $\\ln x$ quand $x$ parcourt $[1\\,;\\,e]$.",
+          "Sur $[1\\,;\\,e]$, $0 \\leqslant \\ln x \\leqslant 1$. Écris $I_{n+1} - I_n$ comme une seule intégrale, et factorise par $(\\ln x)^n$.",
+          "$I_{n+1} - I_n = \\displaystyle\\int_1^e (\\ln x)^n(\\ln x - 1)\\,\\mathrm{d}x$ : étudie le signe de la fonction sous l'intégrale.",
+          "Une suite décroissante et minorée converge."
+        ],
+        "revoir": "l-integration-081",
+        "solution": "Sur $[1\\,;\\,e]$, $\\ln$ est croissante, donc $0 = \\ln 1 \\leqslant \\ln x \\leqslant \\ln e = 1$. Ainsi $(\\ln x)^n \\geqslant 0$ et, comme $1 \\leqslant e$, la positivité donne $I_n \\geqslant 0$. Par linéarité, $I_{n+1} - I_n = \\displaystyle\\int_1^e (\\ln x)^n(\\ln x - 1)\\,\\mathrm{d}x$, où $(\\ln x)^n \\geqslant 0$ et $\\ln x - 1 \\leqslant 0$ : la fonction sous l'intégrale est négative, donc $I_{n+1} - I_n \\leqslant 0$. La suite $(I_n)$ est décroissante et minorée par $0$ : elle converge."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-029",
+    "chapitre": "integration",
+    "niveau": 2,
+    "notions": ["n-integration-suites"],
+    "capacites": ["bo-m-integrale-21", "bo-m-suites-14"],
+    "titre": "L'algorithme de Brouncker : programme et seuil",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 612,
+    "preambule": "Brouncker remplit le domaine sous la courbe de la fonction inverse, entre $x = 1$ et $x = 2$, par des rectangles qui ne se chevauchent pas. Le $k$-ième rectangle a pour aire $\\dfrac{1}{(2k - 1) \\times 2k}$. La fonction ci-dessous renvoie la somme $S_n$ des aires des $n$ premiers rectangles. On rappelle que l'aire de ce domaine vaut $\\displaystyle\\int_1^2 \\frac{1}{x}\\,\\mathrm{d}x = \\ln 2$.",
+    "code": {
+      "langage": "python",
+      "source": "def brouncker(n):\n    s = 0\n    for k in range(1, n + 1):\n        s = s + 1 / ((2 * k - 1) * (2 * k))\n    return s"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que renvoie brouncker(3) ? Donner la valeur exacte, ou arrondie au millième.",
+        "reponse": { "type": "numerique", "valeur": "37/60", "tolerance": 0.001 },
+        "indices": [
+          "La boucle ajoute un terme pour $k = 1$, pour $k = 2$ et pour $k = 3$ : écris chacun d'eux.",
+          "Les trois termes sont $\\dfrac{1}{1 \\times 2}$, $\\dfrac{1}{3 \\times 4}$ et $\\dfrac{1}{5 \\times 6}$, soit $\\dfrac{1}{2}$, $\\dfrac{1}{12}$ et $\\dfrac{1}{30}$.",
+          "Le dénominateur commun $60$ convient : convertis les trois fractions, puis additionne-les."
+        ],
+        "revoir": "l-integration-084",
+        "solution": "La fonction renvoie $\\dfrac{1}{1 \\times 2} + \\dfrac{1}{3 \\times 4} + \\dfrac{1}{5 \\times 6} = \\dfrac{1}{2} + \\dfrac{1}{12} + \\dfrac{1}{30} = \\dfrac{30 + 5 + 2}{60} = \\dfrac{37}{60} \\approx 0{,}617$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vérifier que, pour tout entier $k \\geqslant 1$, $\\dfrac{1}{(2k - 1) \\times 2k} = \\dfrac{1}{2k - 1} - \\dfrac{1}{2k}$. En déduire que $S_3 = 1 - \\dfrac{1}{2} + \\dfrac{1}{3} - \\dfrac{1}{4} + \\dfrac{1}{5} - \\dfrac{1}{6}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pars du membre de droite et réduis-le au même dénominateur.",
+          "Le dénominateur commun est $(2k - 1) \\times 2k$ : $\\dfrac{1}{2k - 1} - \\dfrac{1}{2k} = \\dfrac{2k - (2k - 1)}{(2k - 1) \\times 2k}$.",
+          "Applique ensuite l'égalité pour $k = 1$, $2$ et $3$, et additionne les trois résultats."
+        ],
+        "revoir": "l-integration-094",
+        "solution": "Pour $k \\geqslant 1$ : $\\dfrac{1}{2k - 1} - \\dfrac{1}{2k} = \\dfrac{2k - (2k - 1)}{(2k - 1) \\times 2k} = \\dfrac{1}{(2k - 1) \\times 2k}$. Avec $k = 1$, $2$ et $3$ : $S_3 = \\left(1 - \\dfrac{1}{2}\\right) + \\left(\\dfrac{1}{3} - \\dfrac{1}{4}\\right) + \\left(\\dfrac{1}{5} - \\dfrac{1}{6}\\right) = 1 - \\dfrac{1}{2} + \\dfrac{1}{3} - \\dfrac{1}{4} + \\dfrac{1}{5} - \\dfrac{1}{6}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pourquoi a-t-on $S_n \\leqslant \\ln 2$ pour tout entier $n \\geqslant 1$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "les rectangles sont sous la courbe et ne se chevauchent pas : leur aire totale ne dépasse pas celle du domaine",
+            "la suite $(S_n)$ est croissante",
+            "chaque terme ajouté est inférieur à $1$",
+            "$S_n$ est une somme de fractions, et $\\ln 2$ n'en est pas une"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Une suite croissante peut dépasser n'importe quel nombre : la croissance seule ne donne aucun majorant.",
+            "Une somme de termes inférieurs à $1$ peut devenir aussi grande qu'on veut quand on en ajoute beaucoup.",
+            "Être une fraction ou non ne permet pas de comparer deux nombres."
+          ]
+        },
+        "indices": [
+          "Pense à ce que représente $S_n$ : une somme d'aires de rectangles placés dans le domaine sous la courbe.",
+          "Les rectangles sont contenus dans le domaine, d'aire $\\ln 2$, et deux rectangles n'ont aucune partie commune.",
+          "L'aire d'une réunion de figures sans chevauchement est la somme de leurs aires : compare-la à l'aire du domaine qui les contient."
+        ],
+        "revoir": "l-integration-084",
+        "solution": "Les $n$ premiers rectangles sont contenus dans le domaine sous la courbe, entre $x = 1$ et $x = 2$, et ne se chevauchent pas. La somme de leurs aires, $S_n$, est donc au plus égale à l'aire du domaine : $S_n \\leqslant \\ln 2$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On veut que la fonction seuil ci-dessous renvoie le plus petit entier $n$ tel que $\\ln 2 - S_n < p$, où $p > 0$ est la précision voulue ; en Python, log(2) calcule $\\ln 2$. Quelle condition faut-il écrire à la place des points de suspension ?",
+        "code": {
+          "langage": "python",
+          "source": "from math import log\n\ndef seuil(p):\n    n = 1\n    s = 1 / 2\n    while ... :\n        n = n + 1\n        s = s + 1 / ((2 * n - 1) * (2 * n))\n    return n"
+        },
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\ln 2 - s \\geqslant p$",
+            "$\\ln 2 - s < p$",
+            "$s \\geqslant \\ln 2$",
+            "$s - \\ln 2 \\geqslant p$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Avec cette condition, la boucle s'arrête tout de suite si l'écart est encore grand : on boucle tant que l'objectif n'est **pas** atteint.",
+            "On a toujours $s \\leqslant \\ln 2$ : la boucle ne tournerait jamais.",
+            "Comme $s \\leqslant \\ln 2$, l'écart $s - \\ln 2$ est négatif : la condition serait fausse dès le départ."
+          ]
+        },
+        "indices": [
+          "Une boucle « tant que » continue tant que sa condition est vraie : elle doit tourner tant que l'objectif n'est pas atteint.",
+          "L'objectif est $\\ln 2 - S_n < p$ : écris sa négation.",
+          "Le contraire de « $A < p$ » est « $A \\geqslant p$ »."
+        ],
+        "revoir": "l-limites-suites-064",
+        "solution": "La boucle doit continuer tant que l'objectif $\\ln 2 - S_n < p$ n'est pas atteint, c'est-à-dire tant que $\\ln 2 - s \\geqslant p$. À la sortie, $n$ est le premier entier tel que $\\ln 2 - S_n < p$. Par exemple, seuil(0.01) renvoie $25$ : la convergence est lente."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-030",
+    "chapitre": "integration",
+    "niveau": 3,
+    "notions": ["n-integration-aire", "n-integration-primitive"],
+    "capacites": ["bo-m-integrale-01", "bo-m-integrale-09", "bo-m-integrale-19", "bo-m-integrale-17", "bo-m-integrale-03", "bo-m-suites-03", "bo-m-suites-04", "bo-m-limites-fonctions-05"],
+    "titre": "Des rectangles à la valeur exacte : l'aire sous l'exponentielle",
+    "duree": 30,
+    "calculatrice": true,
+    "ordre": 121,
+    "preambule": "On note $I = \\displaystyle\\int_0^1 e^x\\,\\mathrm{d}x$. Pour un entier $n \\geqslant 1$, on découpe $[0\\,;\\,1]$ en $n$ intervalles de largeur $\\dfrac{1}{n}$, et on pose :$$s_n = \\frac{1}{n}\\left(e^{0} + e^{\\frac{1}{n}} + e^{\\frac{2}{n}} + \\dots + e^{\\frac{n-1}{n}}\\right), \\qquad S_n = \\frac{1}{n}\\left(e^{\\frac{1}{n}} + e^{\\frac{2}{n}} + \\dots + e^{\\frac{n}{n}}\\right).$$On rappelle que $\\lim\\limits_{h \\to 0} \\dfrac{e^h - 1}{h} = 1$ : c'est le nombre dérivé de la fonction exponentielle en $0$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Interpréter $s_n$ et $S_n$ à l'aide de rectangles, puis justifier que $s_n \\leqslant I \\leqslant S_n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$s_n$ et $S_n$ sont des sommes d'aires de rectangles de largeur $\\dfrac{1}{n}$ : à quels bords des intervalles sont prises leurs hauteurs ?",
+          "Les hauteurs de $s_n$ sont les valeurs de $e^x$ aux bords gauches $\\dfrac{k}{n}$, celles de $S_n$ aux bords droits $\\dfrac{k + 1}{n}$.",
+          "La fonction exponentielle est continue, positive et croissante : situe chaque rectangle par rapport à la courbe."
+        ],
+        "revoir": "l-integration-010",
+        "solution": "Sur l'intervalle $\\left[\\dfrac{k}{n}\\,;\\,\\dfrac{k + 1}{n}\\right]$, de largeur $\\dfrac{1}{n}$, $s_n$ compte le rectangle de hauteur $e^{\\frac{k}{n}}$ (bord gauche) et $S_n$ celui de hauteur $e^{\\frac{k+1}{n}}$ (bord droit). La fonction exponentielle est continue, positive et croissante : sur chaque intervalle, le rectangle à gauche est sous la courbe et le rectangle à droite la dépasse. Le domaine sous la courbe, d'aire $I$, contient donc les rectangles à gauche et il est contenu dans les rectangles à droite : $s_n \\leqslant I \\leqslant S_n$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $s_2$, arrondi au centième.",
+        "reponse": { "type": "numerique", "valeur": 1.32, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Pour $n = 2$, la somme entre parenthèses n'a que deux termes : $e^0$ et $e^{\\frac{1}{2}}$.",
+          "$s_2 = \\dfrac{1}{2}\\left(1 + e^{0{,}5}\\right)$ : calcule $e^{0{,}5}$ à la calculatrice.",
+          "$e^{0{,}5} \\approx 1{,}649$ : ajoute $1$, puis divise par $2$."
+        ],
+        "revoir": "l-integration-012",
+        "solution": "$s_2 = \\dfrac{1}{2}\\left(e^0 + e^{\\frac{1}{2}}\\right) = \\dfrac{1 + e^{0{,}5}}{2} \\approx \\dfrac{2{,}649}{2} \\approx 1{,}32$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On pose $q = e^{\\frac{1}{n}}$. Montrer que $s_n = \\dfrac{1}{n}\\left(1 + q + q^2 + \\dots + q^{n-1}\\right)$, puis que $s_n = \\dfrac{1}{n} \\times \\dfrac{e - 1}{e^{\\frac{1}{n}} - 1}$. Exprimer enfin $S_n$ en fonction de $s_n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour tout entier $k$, $e^{\\frac{k}{n}} = \\left(e^{\\frac{1}{n}}\\right)^k = q^k$ : reconnais la somme des premiers termes d'une suite géométrique.",
+          "Pour $q \\neq 1$, $1 + q + \\dots + q^{n-1} = \\dfrac{q^n - 1}{q - 1}$ (formule vue en première). Ici, $q > 1$, car $\\dfrac{1}{n} > 0$.",
+          "$q^n = \\left(e^{\\frac{1}{n}}\\right)^n = e^1$. Pour $S_n$, compare terme à terme les deux parenthèses : chaque terme de $S_n$ est celui de $s_n$ multiplié par $q$."
+        ],
+        "revoir": "l-integration-017",
+        "solution": "Pour tout entier $k$, $e^{\\frac{k}{n}} = \\left(e^{\\frac{1}{n}}\\right)^k = q^k$, donc $s_n = \\dfrac{1}{n}\\left(1 + q + \\dots + q^{n-1}\\right)$. Comme $\\dfrac{1}{n} > 0$, $q > e^0 = 1$, donc $q \\neq 1$, et la somme géométrique vaut $\\dfrac{q^n - 1}{q - 1}$. Or $q^n = e^{\\frac{n}{n}} = e$. Ainsi $s_n = \\dfrac{1}{n} \\times \\dfrac{e - 1}{e^{\\frac{1}{n}} - 1}$. Enfin, $e^{\\frac{k+1}{n}} = q \\times e^{\\frac{k}{n}}$ : chaque terme de $S_n$ est $q$ fois le terme correspondant de $s_n$, donc $S_n = q\\,s_n = e^{\\frac{1}{n}}s_n$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Déterminer la limite de $(s_n)$, puis celle de $(S_n)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $h = \\dfrac{1}{n}$ : quand $n$ tend vers $+\\infty$, $h$ tend vers $0$. Écris $s_n$ en fonction de $h$, puis passe à la limite par composée, comme avec le changement de variable de l'exemple du cours.",
+          "$s_n = (e - 1) \\times \\dfrac{h}{e^h - 1}$ : utilise la limite rappelée dans l'énoncé.",
+          "$\\dfrac{h}{e^h - 1}$ est l'inverse de $\\dfrac{e^h - 1}{h}$, qui tend vers $1$. Pour $S_n = e^{\\frac{1}{n}}s_n$, cherche d'abord la limite de $e^{\\frac{1}{n}}$."
+        ],
+        "revoir": "l-limites-fonctions-055",
+        "solution": "Avec $h = \\dfrac{1}{n}$, $s_n = (e - 1) \\times \\dfrac{h}{e^h - 1}$. Quand $n$ tend vers $+\\infty$, $h$ tend vers $0$, et $\\dfrac{e^h - 1}{h}$ tend vers $1$ quand $h$ tend vers $0$ : par composée, $\\dfrac{e^h - 1}{h}$ tend vers $1$ quand $n$ tend vers $+\\infty$. Par quotient, $\\dfrac{h}{e^h - 1}$ tend vers $1$. Donc $\\lim\\limits_{n \\to +\\infty} s_n = e - 1$. De plus, $\\dfrac{1}{n}$ tend vers $0$, donc $e^{\\frac{1}{n}}$ tend vers $e^0 = 1$, par continuité de l'exponentielle. Par produit, $\\lim\\limits_{n \\to +\\infty} S_n = 1 \\times (e - 1) = e - 1$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "En déduire la valeur de $I$, puis la retrouver à l'aide d'une primitive.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour tout $n \\geqslant 1$, $s_n \\leqslant I \\leqslant S_n$, et les deux suites ont la même limite.",
+          "Le nombre $I$ ne dépend pas de $n$ : passe à la limite dans les deux inégalités.",
+          "Pour la primitive : la fonction exponentielle est sa propre primitive. Calcule $\\big[e^x\\big]_0^1$."
+        ],
+        "revoir": "l-limites-suites-034",
+        "solution": "Pour tout $n \\geqslant 1$, $s_n \\leqslant I \\leqslant S_n$. En passant à la limite dans ces inégalités, $e - 1 \\leqslant I \\leqslant e - 1$, donc $I = e - 1$. Avec une primitive : $I = \\big[e^x\\big]_0^1 = e^1 - e^0 = e - 1$. Les deux méthodes concordent."
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Montrer que $S_n - s_n = \\dfrac{e - 1}{n}$, puis déterminer le plus petit entier $n$ pour lequel l'encadrement $s_n \\leqslant I \\leqslant S_n$ a une amplitude inférieure ou égale à $0{,}01$.",
+        "reponse": { "type": "numerique", "valeur": 172, "tolerance": 0 },
+        "indices": [
+          "Dans $S_n - s_n$, les termes communs aux deux parenthèses s'éliminent : il reste le dernier terme de $S_n$ et le premier de $s_n$.",
+          "$S_n - s_n = \\dfrac{1}{n}\\left(e^{\\frac{n}{n}} - e^0\\right)$. Résous ensuite l'inéquation $\\dfrac{e - 1}{n} \\leqslant 0{,}01$, d'inconnue $n > 0$.",
+          "L'inéquation équivaut à $n \\geqslant 100(e - 1)$ : calcule ce nombre, puis prends le premier entier qui le dépasse."
+        ],
+        "revoir": "l-integration-017",
+        "solution": "Les termes $e^{\\frac{1}{n}}, \\dots, e^{\\frac{n-1}{n}}$ figurent dans les deux sommes et s'éliminent : $S_n - s_n = \\dfrac{1}{n}\\left(e^{1} - e^{0}\\right) = \\dfrac{e - 1}{n}$. Pour $n > 0$, $\\dfrac{e - 1}{n} \\leqslant 0{,}01$ équivaut à $n \\geqslant 100(e - 1) \\approx 171{,}8$. Le plus petit entier qui convient est $n = 172$. Les deux suites encadrent $I$ et leur écart tend vers $0$ : c'est l'idée des suites adjacentes, présentée en complément dans le cours."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-031",
+    "chapitre": "integration",
+    "niveau": 3,
+    "notions": ["n-integration-parties", "n-integration-aire", "n-integration-proprietes"],
+    "capacites": ["bo-m-integrale-08", "bo-m-integrale-01", "bo-m-integrale-06", "bo-m-limites-fonctions-05", "bo-m-continuite-04", "bo-m-derivation-05"],
+    "titre": "Une aire qui grandit sans dépasser $1$",
+    "duree": 30,
+    "calculatrice": true,
+    "ordre": 521,
+    "preambule": "Soit $f$ la fonction définie sur $[0\\,;\\,+\\infty[$ par $f(t) = t\\,e^{-t}$. Pour tout réel $x \\geqslant 0$, on pose $A(x) = \\displaystyle\\int_0^x t\\,e^{-t}\\,\\mathrm{d}t$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que, pour $x > 0$, $A(x)$ est l'aire d'un domaine que l'on décrira.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Une intégrale est une aire quand la fonction est continue et positive, et que les bornes sont dans l'ordre croissant.",
+          "Pour $t \\geqslant 0$, $t \\geqslant 0$ et $e^{-t} > 0$ : conclus sur le signe de $f$.",
+          "Décris le domaine : entre quelle courbe, quel axe et quelles droites verticales ?"
+        ],
+        "revoir": "l-integration-003",
+        "solution": "La fonction $f$ est continue sur $[0\\,;\\,+\\infty[$. Pour $t \\geqslant 0$, $t \\geqslant 0$ et $e^{-t} > 0$, donc $f(t) \\geqslant 0$. Pour $x > 0$, $A(x)$ est donc l'aire, en u.a., du domaine limité par la courbe de $f$, l'axe des abscisses et les droites verticales d'abscisses $0$ et $x$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Sans calculer $A(x)$, montrer que la fonction $A$ est croissante sur $[0\\,;\\,+\\infty[$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Prends deux réels $0 \\leqslant x \\leqslant y$ et écris $A(y) - A(x)$ comme une seule intégrale.",
+          "Par la relation de Chasles, $A(y) - A(x) = \\displaystyle\\int_x^y f(t)\\,\\mathrm{d}t$.",
+          "$f$ est positive sur $[x\\,;\\,y]$ et $x \\leqslant y$ : applique la positivité."
+        ],
+        "revoir": "l-integration-044",
+        "solution": "Soit $0 \\leqslant x \\leqslant y$. Par la relation de Chasles, $A(y) = A(x) + \\displaystyle\\int_x^y f(t)\\,\\mathrm{d}t$. Or $f \\geqslant 0$ sur $[x\\,;\\,y]$ et $x \\leqslant y$ : par positivité, $\\displaystyle\\int_x^y f(t)\\,\\mathrm{d}t \\geqslant 0$. Donc $A(y) \\geqslant A(x)$ : $A$ est croissante sur $[0\\,;\\,+\\infty[$. Géométriquement, le domaine s'agrandit quand $x$ augmente."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "À l'aide d'une intégration par parties, montrer que, pour tout $x \\geqslant 0$, $A(x) = 1 - (x + 1)e^{-x}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pose $u(t) = t$ et $v'(t) = e^{-t}$.",
+          "$u'(t) = 1$ et $v(t) = -e^{-t}$ : $A(x) = \\big[-t\\,e^{-t}\\big]_0^x + \\displaystyle\\int_0^x e^{-t}\\,\\mathrm{d}t$.",
+          "Le crochet vaut $-x\\,e^{-x}$, et $\\displaystyle\\int_0^x e^{-t}\\,\\mathrm{d}t = \\big[-e^{-t}\\big]_0^x$ : calcule-le, puis factorise par $e^{-x}$."
+        ],
+        "revoir": "l-integration-073",
+        "solution": "On pose $u(t) = t$ et $v'(t) = e^{-t}$, d'où $u'(t) = 1$ et $v(t) = -e^{-t}$, continues sur $[0\\,;\\,x]$. Par intégration par parties : $A(x) = \\big[-t\\,e^{-t}\\big]_0^x - \\displaystyle\\int_0^x \\left(-e^{-t}\\right)\\mathrm{d}t = -x\\,e^{-x} + \\big[-e^{-t}\\big]_0^x = -x\\,e^{-x} - e^{-x} + 1 = 1 - (x + 1)e^{-x}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Quelle est la limite de $A(x)$ quand $x$ tend vers $+\\infty$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$1$", "$0$", "$+\\infty$", "$e^{-1}$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$A$ est croissante et $A(1) = 1 - 2e^{-1} > 0$ : sa limite ne peut pas être nulle.",
+            "Le domaine s'agrandit, mais de moins en moins vite : $(x + 1)e^{-x}$ tend vers $0$, et $A(x)$ reste inférieur à $1$.",
+            "$e^{-1}$ est la plus grande valeur de $f$, atteinte en $t = 1$ : ce n'est pas la limite de l'aire."
+          ]
+        },
+        "indices": [
+          "Écris $A(x) = 1 - x\\,e^{-x} - e^{-x}$ et cherche la limite de chaque terme.",
+          "$\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$. Pour $x\\,e^{-x} = \\dfrac{x}{e^x}$, pense aux croissances comparées.",
+          "$\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x} = +\\infty$, donc son inverse tend vers $0$."
+        ],
+        "revoir": "l-limites-fonctions-048",
+        "solution": "$A(x) = 1 - \\dfrac{x}{e^x} - e^{-x}$. Par croissances comparées, $\\lim\\limits_{x \\to +\\infty} \\dfrac{e^x}{x} = +\\infty$, donc $\\lim\\limits_{x \\to +\\infty} \\dfrac{x}{e^x} = 0$ ; de plus, $\\lim\\limits_{x \\to +\\infty} e^{-x} = 0$. Par somme, $\\lim\\limits_{x \\to +\\infty} A(x) = 1$. Comme $(x + 1)e^{-x} > 0$, on a aussi $A(x) < 1$ : l'aire grandit sans jamais atteindre $1$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Montrer que l'équation $A(x) = 0{,}9$ admet une unique solution $\\alpha$ dans $[0\\,;\\,+\\infty[$, puis donner une valeur approchée de $\\alpha$ à $10^{-2}$ près.",
+        "reponse": { "type": "numerique", "valeur": 3.89, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Pour l'unicité, il faut une fonction strictement monotone : dérive l'expression de $A(x)$ obtenue à la question 3.",
+          "$A'(x) = x\\,e^{-x}$, strictement positive sur $]0\\,;\\,+\\infty[$. Avec $A(0) = 0$ et la limite de la question 4, applique le corollaire du théorème des valeurs intermédiaires sous sa forme étendue à un intervalle non borné.",
+          "Pour la valeur approchée, procède par balayage à la calculatrice : $A(3{,}8) \\approx 0{,}893$ et $A(4) \\approx 0{,}908$.",
+          "Affine le balayage avec un pas de $0{,}01$ entre $3{,}8$ et $4$."
+        ],
+        "revoir": "l-continuite-026",
+        "solution": "D'après la question 3, $A$ est dérivable et $A'(x) = -e^{-x} + (x + 1)e^{-x} = x\\,e^{-x}$, strictement positive sur $]0\\,;\\,+\\infty[$ : $A$ est continue et strictement croissante sur $[0\\,;\\,+\\infty[$. De plus, $A(0) = 0 < 0{,}9$ et $\\lim\\limits_{x \\to +\\infty} A(x) = 1 > 0{,}9$. D'après le corollaire du théorème des valeurs intermédiaires, étendu à l'intervalle $[0\\,;\\,+\\infty[$ (on garde l'image $A(0)$ et l'on prend la limite en $+\\infty$), l'équation $A(x) = 0{,}9$ admet une unique solution $\\alpha$ dans $[0\\,;\\,+\\infty[$. À la calculatrice, $A(3{,}88) \\approx 0{,}89922 < 0{,}9$ et $A(3{,}89) \\approx 0{,}90002 > 0{,}9$, donc $3{,}88 < \\alpha < 3{,}89$. Comme $A(3{,}885) \\approx 0{,}89962 < 0{,}9$, on a même $3{,}885 < \\alpha < 3{,}89$ : $\\alpha \\approx 3{,}89$ à $10^{-2}$ près."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-032",
+    "chapitre": "integration",
+    "niveau": 3,
+    "notions": ["n-integration-courbes-valeur-moyenne", "n-integration-parties"],
+    "capacites": ["bo-m-integrale-12", "bo-m-integrale-07", "bo-m-integrale-08", "bo-m-logarithme-03", "bo-m-derivation-03"],
+    "titre": "Entre le logarithme et son carré",
+    "duree": 30,
+    "calculatrice": true,
+    "ordre": 421,
+    "preambule": "Dans un repère orthonormé d'unité $5$ cm, on note $\\mathcal{C}_f$ et $\\mathcal{C}_g$ les courbes des fonctions $f$ et $g$ définies sur $]0\\,;\\,+\\infty[$ par $f(x) = \\ln x$ et $g(x) = (\\ln x)^2$. On s'intéresse au domaine $\\mathcal{D}$ compris entre ces deux courbes pour $x$ dans $[1\\,;\\,e]$. On admet que $\\displaystyle\\int_1^e \\ln x\\,\\mathrm{d}x = 1$ (exemple du cours).",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer les points d'intersection de $\\mathcal{C}_f$ et $\\mathcal{C}_g$, puis la position relative des deux courbes sur $[1\\,;\\,e]$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Résous $\\ln x = (\\ln x)^2$ en factorisant par $\\ln x$, puis étudie le signe de $f(x) - g(x)$.",
+          "$f(x) - g(x) = \\ln x\\,(1 - \\ln x)$ : l'équation $f(x) = g(x)$ équivaut à $\\ln x = 0$ ou $\\ln x = 1$.",
+          "Sur $[1\\,;\\,e]$, $0 \\leqslant \\ln x \\leqslant 1$, car $\\ln$ est croissante : conclus sur le signe des deux facteurs."
+        ],
+        "revoir": "l-integration-056",
+        "solution": "$f(x) - g(x) = \\ln x - (\\ln x)^2 = \\ln x\\,(1 - \\ln x)$. Cette différence s'annule si $\\ln x = 0$ ou $\\ln x = 1$, c'est-à-dire si $x = 1$ ou $x = e$ : les courbes se coupent aux points $(1\\,;\\,0)$ et $(e\\,;\\,1)$. Sur $[1\\,;\\,e]$, $\\ln$ est croissante, donc $0 \\leqslant \\ln x \\leqslant 1$ : les deux facteurs sont positifs, et $f(x) \\geqslant g(x)$. La courbe $\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$ sur $[1\\,;\\,e]$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "À l'aide d'une intégration par parties, montrer que $\\displaystyle\\int_1^e (\\ln x)^2\\,\\mathrm{d}x = e - 2$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Écris $(\\ln x)^2 = (\\ln x)^2 \\times 1$ : pose $u(x) = (\\ln x)^2$ et $v'(x) = 1$.",
+          "$u'(x) = 2\\ln x \\times \\dfrac{1}{x}$ et $v(x) = x$ : l'intégrale vaut $\\Big[x(\\ln x)^2\\Big]_1^e - \\displaystyle\\int_1^e 2\\ln x\\,\\mathrm{d}x$.",
+          "Le crochet vaut $e$ ; la dernière intégrale se calcule par linéarité, avec l'intégrale admise dans l'énoncé."
+        ],
+        "revoir": "l-integration-072",
+        "solution": "On pose $u(x) = (\\ln x)^2$ et $v'(x) = 1$, d'où $u'(x) = \\dfrac{2\\ln x}{x}$ et $v(x) = x$ ; $u'$ et $v'$ sont continues sur $[1\\,;\\,e]$. Par intégration par parties : $\\displaystyle\\int_1^e (\\ln x)^2\\,\\mathrm{d}x = \\Big[x(\\ln x)^2\\Big]_1^e - \\int_1^e \\frac{2\\ln x}{x} \\times x\\,\\mathrm{d}x = e \\times 1 - 0 - 2\\int_1^e \\ln x\\,\\mathrm{d}x = e - 2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer l'aire du domaine $\\mathcal{D}$, en u.a. : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée.",
+        "reponse": { "type": "numerique", "valeur": 0.28, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "D'après la question 1, l'aire vaut $\\displaystyle\\int_1^e \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x$.",
+          "Par linéarité, c'est $\\displaystyle\\int_1^e \\ln x\\,\\mathrm{d}x - \\int_1^e (\\ln x)^2\\,\\mathrm{d}x$ : utilise l'intégrale admise et la question 2.",
+          "Simplifie $1 - (e - 2)$, puis calcule une valeur approchée."
+        ],
+        "revoir": "l-integration-055",
+        "solution": "La courbe $\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$ sur $[1\\,;\\,e]$, donc l'aire vaut $\\displaystyle\\int_1^e \\big(\\ln x - (\\ln x)^2\\big)\\,\\mathrm{d}x = 1 - (e - 2) = 3 - e \\approx 0{,}28$ u.a."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire l'aire de $\\mathcal{D}$ en cm², à $10^{-2}$ près.",
+        "reponse": { "type": "numerique", "valeur": 7.04, "tolerance": 0.01, "decimales": 2, "unite": "cm²" },
+        "indices": [
+          "Une unité d'aire est un carré de $5$ cm de côté.",
+          "Une unité d'aire vaut donc $25$ cm² : multiplie la valeur exacte $3 - e$ par ce nombre.",
+          "Calcule $25(3 - e) = 75 - 25e$ à la calculatrice."
+        ],
+        "revoir": "l-integration-018",
+        "solution": "Une unité d'aire vaut $5 \\times 5 = 25$ cm². L'aire de $\\mathcal{D}$ vaut donc $25(3 - e) = 75 - 25e \\approx 7{,}04$ cm².",
+        "erreurFrequente": "Multiplier par $5$ au lieu de $25$ : l'unité d'aire est un carré de $5$ cm sur $5$ cm."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Calculer la valeur moyenne $\\mu$ de $f$ sur $[1\\,;\\,e]$, à $10^{-2}$ près.",
+        "reponse": { "type": "numerique", "valeur": 0.58, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "$\\mu = \\dfrac{1}{e - 1}\\displaystyle\\int_1^e \\ln x\\,\\mathrm{d}x$.",
+          "L'intégrale est donnée dans l'énoncé : il reste à la diviser par la longueur de l'intervalle.",
+          "La longueur de $[1\\,;\\,e]$ vaut $e - 1 \\approx 1{,}718$."
+        ],
+        "revoir": "l-integration-058",
+        "solution": "$\\mu = \\dfrac{1}{e - 1}\\displaystyle\\int_1^e \\ln x\\,\\mathrm{d}x = \\dfrac{1}{e - 1} \\approx 0{,}58$."
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Affirmation : la valeur moyenne de $f$ sur $[1\\,;\\,e]$ est égale à la moyenne $\\dfrac{f(1) + f(e)}{2}$ de ses valeurs aux bornes.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$\\dfrac{f(1) + f(e)}{2} = \\dfrac{0 + 1}{2} = 0{,}5$, alors que $\\mu = \\dfrac{1}{e - 1} \\approx 0{,}58$. La fonction $\\ln$ est concave : sa courbe est au-dessus de la corde qui joint $(1\\,;\\,0)$ à $(e\\,;\\,1)$, et sa moyenne dépasse celle de la corde."
+        },
+        "indices": [
+          "Calcule $\\dfrac{f(1) + f(e)}{2}$ avec $\\ln 1 = 0$ et $\\ln e = 1$.",
+          "Compare ce nombre avec la valeur approchée de $\\mu$ trouvée à la question 5.",
+          "Pour comprendre l'écart : la courbe de $\\ln$, concave, est au-dessus du segment qui joint $(1\\,;\\,0)$ à $(e\\,;\\,1)$, et la fonction affine dont ce segment est la courbe a pour valeur moyenne la moyenne de ses valeurs aux bornes."
+        ],
+        "revoir": "l-integration-063",
+        "solution": "$\\dfrac{f(1) + f(e)}{2} = \\dfrac{0 + 1}{2} = 0{,}5$, alors que $\\mu \\approx 0{,}58$ : l'affirmation est fausse. La fonction $\\ln$ est concave sur $]0\\,;\\,+\\infty[$ : sur $[1\\,;\\,e]$, sa courbe est au-dessus de la corde qui joint $(1\\,;\\,0)$ à $(e\\,;\\,1)$. Sa valeur moyenne est donc plus grande que celle de cette corde, qui vaut $0{,}5$."
+      }
+    ]
+  },
+  {
+    "id": "x-integration-033",
+    "chapitre": "integration",
+    "niveau": 3,
+    "notions": ["n-integration-suites", "n-integration-proprietes", "n-integration-primitive"],
+    "capacites": ["bo-m-integrale-13", "bo-m-integrale-06", "bo-m-integrale-11", "bo-m-integrale-03", "bo-m-suites-03", "bo-m-suites-06"],
+    "titre": "Une suite d'intégrales qui approche $\\ln 2$",
+    "duree": 30,
+    "calculatrice": true,
+    "ordre": 621,
+    "preambule": "Pour tout entier naturel $n$, on pose $I_n = \\displaystyle\\int_0^1 \\frac{x^n}{1 + x}\\,\\mathrm{d}x$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $I_0$ : donner la valeur exacte, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée.",
+        "reponse": { "type": "numerique", "valeur": 0.69, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "$I_0 = \\displaystyle\\int_0^1 \\frac{1}{1 + x}\\,\\mathrm{d}x$ : reconnais une forme $\\dfrac{u'}{u}$.",
+          "Avec $u(x) = 1 + x > 0$ sur $[0\\,;\\,1]$ et $u'(x) = 1$, une primitive est $x \\mapsto \\ln(1 + x)$.",
+          "Calcule $\\ln(1 + 1) - \\ln(1 + 0)$, puis une valeur approchée à la calculatrice."
+        ],
+        "revoir": "l-integration-034",
+        "solution": "Avec $u(x) = 1 + x$, strictement positive sur $[0\\,;\\,1]$, et $u'(x) = 1$, une primitive de $x \\mapsto \\dfrac{1}{1 + x}$ est $x \\mapsto \\ln(1 + x)$. Donc $I_0 = \\ln 2 - \\ln 1 = \\ln 2 \\approx 0{,}69$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout entier naturel $n$, $I_n + I_{n+1} = \\dfrac{1}{n + 1}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Par linéarité, $I_n + I_{n+1}$ s'écrit comme une seule intégrale.",
+          "$\\dfrac{x^n}{1 + x} + \\dfrac{x^{n+1}}{1 + x} = \\dfrac{x^n(1 + x)}{1 + x}$ : simplifie.",
+          "Il reste $\\displaystyle\\int_0^1 x^n\\,\\mathrm{d}x$ : calcule-la avec une primitive de $x \\mapsto x^n$."
+        ],
+        "revoir": "l-integration-041",
+        "solution": "Par linéarité, $I_n + I_{n+1} = \\displaystyle\\int_0^1 \\frac{x^n + x^{n+1}}{1 + x}\\,\\mathrm{d}x = \\int_0^1 \\frac{x^n(1 + x)}{1 + x}\\,\\mathrm{d}x = \\int_0^1 x^n\\,\\mathrm{d}x = \\left[\\frac{x^{n+1}}{n + 1}\\right]_0^1 = \\frac{1}{n + 1}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire la valeur exacte de $I_2$, puis une valeur approchée à $10^{-2}$ près.\n\nSaisis la valeur approchée.",
+        "reponse": { "type": "numerique", "valeur": 0.19, "tolerance": 0.01, "decimales": 2 },
+        "indices": [
+          "Applique la relation de la question 2 avec $n = 0$, puis avec $n = 1$.",
+          "Avec $n = 0$ : $I_1 = 1 - I_0 = 1 - \\ln 2$. Avec $n = 1$ : $I_2 = \\dfrac{1}{2} - I_1$.",
+          "Remplace $I_1$, simplifie, puis utilise $\\ln 2 \\approx 0{,}693$."
+        ],
+        "revoir": "l-integration-083",
+        "solution": "Avec $n = 0$ : $I_0 + I_1 = 1$, donc $I_1 = 1 - \\ln 2$. Avec $n = 1$ : $I_1 + I_2 = \\dfrac{1}{2}$, donc $I_2 = \\dfrac{1}{2} - (1 - \\ln 2) = \\ln 2 - \\dfrac{1}{2} \\approx 0{,}19$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Montrer que la suite $(I_n)$ est positive et décroissante.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour le signe : quel est le signe de $\\dfrac{x^n}{1 + x}$ sur $[0\\,;\\,1]$ ?",
+          "Pour le sens de variation : écris $I_{n+1} - I_n$ comme une seule intégrale et factorise par $x^n$.",
+          "$I_{n+1} - I_n = \\displaystyle\\int_0^1 \\frac{x^n(x - 1)}{1 + x}\\,\\mathrm{d}x$ : étudie le signe de chaque facteur sur $[0\\,;\\,1]$."
+        ],
+        "revoir": "l-integration-081",
+        "solution": "Sur $[0\\,;\\,1]$, $x^n \\geqslant 0$ et $1 + x > 0$, donc $\\dfrac{x^n}{1 + x} \\geqslant 0$ ; comme $0 \\leqslant 1$, la positivité donne $I_n \\geqslant 0$. Par linéarité, $I_{n+1} - I_n = \\displaystyle\\int_0^1 \\frac{x^n(x - 1)}{1 + x}\\,\\mathrm{d}x$, où $x^n \\geqslant 0$, $x - 1 \\leqslant 0$ et $1 + x > 0$ : la fonction sous l'intégrale est négative, donc $I_{n+1} - I_n \\leqslant 0$. La suite $(I_n)$ est positive et décroissante."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Montrer que, pour tout entier naturel $n$, $0 \\leqslant I_n \\leqslant \\dfrac{1}{n + 1}$, puis déterminer la limite de $(I_n)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Encadre la fonction sous l'intégrale : sur $[0\\,;\\,1]$, compare $\\dfrac{1}{1 + x}$ avec $1$.",
+          "$1 + x \\geqslant 1$ donne $\\dfrac{1}{1 + x} \\leqslant 1$, donc $0 \\leqslant \\dfrac{x^n}{1 + x} \\leqslant x^n$. Intègre cet encadrement sur $[0\\,;\\,1]$.",
+          "$\\displaystyle\\int_0^1 x^n\\,\\mathrm{d}x = \\dfrac{1}{n + 1}$, qui tend vers $0$ : conclus avec le théorème des gendarmes."
+        ],
+        "revoir": "l-integration-081",
+        "solution": "Pour $x$ dans $[0\\,;\\,1]$, $1 + x \\geqslant 1 > 0$, donc $0 < \\dfrac{1}{1 + x} \\leqslant 1$ ; en multipliant par $x^n \\geqslant 0$, on obtient $0 \\leqslant \\dfrac{x^n}{1 + x} \\leqslant x^n$. En intégrant sur $[0\\,;\\,1]$, avec $0 \\leqslant 1$ : $0 \\leqslant I_n \\leqslant \\displaystyle\\int_0^1 x^n\\,\\mathrm{d}x = \\frac{1}{n + 1}$. Or $\\dfrac{1}{n + 1}$ tend vers $0$ : d'après le théorème des gendarmes, $\\lim\\limits_{n \\to +\\infty} I_n = 0$."
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Vérifier, à l'aide de la question 2 appliquée pour $n = 0$, $1$ et $2$, que $\\ln 2 = 1 - \\dfrac{1}{2} + \\dfrac{1}{3} - I_3$. Quel encadrement de $\\ln 2$ en déduit-on ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\dfrac{7}{12} \\leqslant \\ln 2 \\leqslant \\dfrac{5}{6}$",
+            "$\\dfrac{5}{6} \\leqslant \\ln 2 \\leqslant \\dfrac{13}{12}$",
+            "$0 \\leqslant \\ln 2 \\leqslant \\dfrac{1}{4}$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le signe de $I_3$ est mal pris en compte : on retranche $I_3 \\geqslant 0$ à $\\dfrac{5}{6}$, donc $\\ln 2 \\leqslant \\dfrac{5}{6}$.",
+            "C'est l'encadrement de $I_3$ donné par la question 5, pas celui de $\\ln 2$."
+          ]
+        },
+        "indices": [
+          "La question 2 donne $I_0 = 1 - I_1$, $I_1 = \\dfrac{1}{2} - I_2$ et $I_2 = \\dfrac{1}{3} - I_3$ : remplace de proche en proche dans $I_0 = \\ln 2$.",
+          "On obtient $\\ln 2 = \\dfrac{5}{6} - I_3$, car $1 - \\dfrac{1}{2} + \\dfrac{1}{3} = \\dfrac{5}{6}$. La question 5 avec $n = 3$ donne $0 \\leqslant I_3 \\leqslant \\dfrac{1}{4}$.",
+          "Retrancher à $\\dfrac{5}{6}$ un nombre compris entre $0$ et $\\dfrac{1}{4}$ donne un résultat compris entre $\\dfrac{5}{6} - \\dfrac{1}{4}$ et $\\dfrac{5}{6}$.",
+          "Calcule $\\dfrac{5}{6} - \\dfrac{1}{4}$ au dénominateur $12$."
+        ],
+        "revoir": "l-integration-045",
+        "solution": "D'après la question 2 : $I_0 = 1 - I_1$, $I_1 = \\dfrac{1}{2} - I_2$ et $I_2 = \\dfrac{1}{3} - I_3$. Donc $\\ln 2 = I_0 = 1 - \\dfrac{1}{2} + I_2 = 1 - \\dfrac{1}{2} + \\dfrac{1}{3} - I_3 = \\dfrac{5}{6} - I_3$. D'après la question 5, $0 \\leqslant I_3 \\leqslant \\dfrac{1}{4}$, donc $\\dfrac{5}{6} - \\dfrac{1}{4} \\leqslant \\ln 2 \\leqslant \\dfrac{5}{6}$, soit $\\dfrac{7}{12} \\leqslant \\ln 2 \\leqslant \\dfrac{5}{6}$. On reconnaît $\\dfrac{7}{12}$, la somme des aires des deux premiers rectangles de Brouncker."
+      }
+    ]
+  }
+]

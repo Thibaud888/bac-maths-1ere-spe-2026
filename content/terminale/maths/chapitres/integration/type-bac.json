@@ -1,0 +1,924 @@
+[
+  {
+    "id": "tb-integration-001",
+    "chapitre": "integration",
+    "notions": [
+      "n-integration-courbes-valeur-moyenne",
+      "n-integration-parties",
+      "n-integration-primitive"
+    ],
+    "capacites": [
+      "bo-m-integrale-03",
+      "bo-m-integrale-08",
+      "bo-m-integrale-10",
+      "bo-m-integrale-12",
+      "bo-m-derivation-03",
+      "bo-m-derivation-04",
+      "bo-m-derivation-05",
+      "bo-m-derivation-07",
+      "bo-m-derivation-09",
+      "bo-m-logarithme-03",
+      "bo-m-logarithme-04",
+      "bo-m-logarithme-06",
+      "bo-m-limites-fonctions-04",
+      "bo-m-limites-fonctions-05"
+    ],
+    "titre": "Logarithme, convexité et aire entre une courbe et sa tangente",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2025-metropole-juin-j1",
+      "adaptation": "Exercice 2 (6 points) : partie A (lectures graphiques de $f'(1)$, du nombre de solutions de $f'(x) = 0$ et du signe de $f''(0{,}2)$), partie B (équation $2X^2 - 3X + 2 = 0$ et intersection de la courbe avec l'axe des abscisses, limite en $+\\infty$, dérivée seconde, convexité et point d'inflexion, position de la courbe par rapport à la tangente $T_{\\mathrm{B}}$) et partie C (équation de $T_{\\mathrm{B}}$, intégration par parties de $\\displaystyle\\int_1^e x\\ln x\\,\\mathrm{d}x$, aire entre la courbe et $T_{\\mathrm{B}}$) conservées. Question C.3 découpée en deux : écrire l'aire comme une intégrale en justifiant la position des courbes (C.3.a), puis la calculer (C.3.b). Aucune question retirée. Figure redessinée pour le site, avec un quadrillage et la partie du domaine située sous l'axe des abscisses. Barème fixé pour le site. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "On considère une fonction $f$ définie sur l'intervalle $]0\\,;\\,+\\infty[$. On admet qu'elle est deux fois dérivable sur l'intervalle $]0\\,;\\,+\\infty[$. On note $f'$ sa fonction dérivée et $f''$ sa fonction dérivée seconde.\n\nDans un repère orthogonal, on a tracé ci-dessous :\n\n- la courbe représentative de $f$, notée $\\mathcal{C}_f$, sur l'intervalle $]0\\,;\\,3]$ ;\n- la droite $T_{\\mathrm{A}}$, tangente à $\\mathcal{C}_f$ au point $\\mathrm{A}(1\\,;\\,2)$ ;\n- la droite $T_{\\mathrm{B}}$, tangente à $\\mathcal{C}_f$ au point $\\mathrm{B}(e\\,;\\,e)$.\n\nOn précise par ailleurs que la tangente $T_{\\mathrm{A}}$ passe par le point $\\mathrm{C}(3\\,;\\,0)$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/integration/tb-aire-courbe-tangente.svg",
+        "alt": "Dans un repère orthogonal quadrillé (un carreau mesure 0,5 sur 0,5), pour x allant de 0 à 3 : la courbe Cf, en bleu, part de l'origine en montant très vite, atteint un maximum d'environ 2,6 vers x = 0,37, redescend jusqu'à un minimum d'environ 1,65 vers x = 1,65 en passant par le point A(1 ; 2), puis remonte en passant par le point B(e ; e) et finit vers 3,35 en x = 3. La tangente TA, en vert, passe par A et par le point C(3 ; 0) de l'axe des abscisses. La tangente TB, en orange, touche la courbe en B ; elle coupe la droite d'équation x = 1 sous l'axe des abscisses, vers y = −0,72. Le domaine compris entre la courbe Cf, au-dessus, et la tangente TB, au-dessous, pour x allant de 1 à e, est hachuré.",
+        "width": 420,
+        "height": 360
+      },
+      "caption": "La courbe Cf, les tangentes TA et TB, et le domaine hachuré entre Cf et TB."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "**Partie A : lectures graphiques.** On répondra aux questions de cette partie en les justifiant à l'aide du graphique.\n\nDéterminer le nombre dérivé $f'(1)$.\n\nSaisis la valeur de $f'(1)$.",
+        "points": 0.25,
+        "reponse": {
+          "type": "numerique",
+          "valeur": -1,
+          "tolerance": 0
+        },
+        "revoir": "l-derivation-convexite-044",
+        "indices": [
+          "$f'(1)$ est le coefficient directeur de la tangente à $\\mathcal{C}_f$ au point d'abscisse $1$, c'est-à-dire de la droite $T_{\\mathrm{A}}$ : relis le rappel sur la tangente.",
+          "Tu connais deux points de $T_{\\mathrm{A}}$, A et C : le coefficient directeur d'une droite passant par deux points vaut $\\dfrac{y_{\\mathrm{C}} - y_{\\mathrm{A}}}{x_{\\mathrm{C}} - x_{\\mathrm{A}}}$."
+        ],
+        "attenduCorrecteur": "- $f'(1)$ est le coefficient directeur de la tangente $T_{\\mathrm{A}}$, qui passe par A et C ; calcul $\\dfrac{0 - 2}{3 - 1} = -1$ : 0,25 pt.",
+        "solution": "Le nombre dérivé $f'(1)$ est le coefficient directeur de la tangente $T_{\\mathrm{A}}$ à $\\mathcal{C}_f$ au point A, d'abscisse $1$. Cette droite passe par $\\mathrm{A}(1\\,;\\,2)$ et par $\\mathrm{C}(3\\,;\\,0)$, donc :$$f'(1) = \\dfrac{y_{\\mathrm{C}} - y_{\\mathrm{A}}}{x_{\\mathrm{C}} - x_{\\mathrm{A}}} = \\dfrac{0 - 2}{3 - 1} = -1.$$"
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Combien de solutions l'équation $f'(x) = 0$ admet-elle dans l'intervalle $]0\\,;\\,3]$ ?\n\nSaisis ce nombre de solutions.",
+        "points": 0.25,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 2,
+          "tolerance": 0
+        },
+        "revoir": "l-derivation-convexite-013",
+        "indices": [
+          "Une solution de $f'(x) = 0$ est l'abscisse d'un point où la tangente à $\\mathcal{C}_f$ est horizontale : relis le lien entre la dérivée et les extremums.",
+          "Repère sur la courbe les endroits où elle cesse de monter pour descendre, ou de descendre pour monter."
+        ],
+        "attenduCorrecteur": "- Deux solutions, justifiées par la lecture : $\\mathcal{C}_f$ a deux points à tangente horizontale (un maximum local vers $x \\approx 0{,}4$, un minimum local vers $x \\approx 1{,}6$) et elle est strictement monotone entre ces points et au-delà : 0,25 pt.",
+        "solution": "Sur le graphique, la courbe $\\mathcal{C}_f$ monte jusqu'à un maximum local, vers $x \\approx 0{,}4$, puis descend jusqu'à un minimum local, vers $x \\approx 1{,}6$, puis remonte jusqu'en $x = 3$. En ces deux extremums, la tangente est horizontale : $f'$ s'y annule. Entre eux et au-delà, la courbe monte ou descend sans palier : $f'$ ne s'annule pas ailleurs.\n\nLa partie B le confirme : $f'(x) = 2(\\ln x)^2 + \\ln x - 1 = (2\\ln x - 1)(\\ln x + 1)$ s'annule pour $\\ln x = \\dfrac{1}{2}$ ou $\\ln x = -1$, soit en $x = \\sqrt{e} \\approx 1{,}65$ et en $x = e^{-1} \\approx 0{,}37$.\n\nL'équation $f'(x) = 0$ admet donc deux solutions dans l'intervalle $]0\\,;\\,3]$."
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "Quel est le signe de $f''(0{,}2)$ ?",
+        "points": 0.25,
+        "revoir": "l-derivation-convexite-064",
+        "indices": [
+          "Le signe de $f''$ dit si la fonction est convexe ou concave : regarde, autour de $x = 0{,}2$, la position de $\\mathcal{C}_f$ par rapport à ses tangentes.",
+          "Autour de $x = 0{,}2$, la courbe monte de plus en plus lentement vers son maximum : que fait alors la pente de ses tangentes, c'est-à-dire $f'$ ?"
+        ],
+        "attenduCorrecteur": "- Autour de $x = 0{,}2$, $\\mathcal{C}_f$ est en dessous de ses tangentes (ou : $f'$ décroît) : $f$ y est concave, donc $f''(0{,}2)$ est négatif : 0,25 pt.",
+        "solution": "Autour de $x = 0{,}2$, la courbe $\\mathcal{C}_f$ est située en dessous de ses tangentes : elle monte de moins en moins vite vers son maximum, donc $f'$ y est décroissante. La fonction $f$ est concave au voisinage de $0{,}2$, et la dérivée seconde y est négative.\n\nLa partie B le confirme : $f''(0{,}2) = \\dfrac{4\\ln(0{,}2) + 1}{0{,}2}$. Or $\\ln(0{,}2) = \\ln\\left(\\dfrac{1}{5}\\right) = -\\ln 5$, et $\\ln 5 > \\ln e = 1$ car $5 > e$ et la fonction $\\ln$ est croissante ; donc $\\ln(0{,}2) < -1$ et $4\\ln(0{,}2) + 1 < -4 + 1 < 0$.\n\nLe nombre $f''(0{,}2)$ est négatif."
+      },
+      {
+        "id": "q4",
+        "label": "B.1.",
+        "enonce": "**Partie B : étude de la fonction $f$.** On admet dans cette partie que la fonction $f$ est définie sur l'intervalle $]0\\,;\\,+\\infty[$ par $$f(x) = x\\left[2(\\ln x)^2 - 3\\ln x + 2\\right].$$\n\nRésoudre dans $\\mathbb{R}$ l'équation $2X^2 - 3X + 2 = 0$. En déduire que $\\mathcal{C}_f$ ne coupe pas l'axe des abscisses.",
+        "points": 0.5,
+        "revoir": "l-logarithme-033",
+        "indices": [
+          "Pour l'équation, calcule le discriminant $\\Delta = b^2 - 4ac$, comme en première. Pour la suite, relis l'exemple du cours où l'on pose $X = \\ln x$.",
+          "$\\mathcal{C}_f$ coupe l'axe des abscisses au point d'abscisse $x$ si $f(x) = 0$. Comme $x > 0$, cela revient à $2(\\ln x)^2 - 3\\ln x + 2 = 0$ : pose $X = \\ln x$."
+        ],
+        "attenduCorrecteur": "- $\\Delta = (-3)^2 - 4 \\times 2 \\times 2 = -7 < 0$ : l'équation n'a pas de solution réelle : 0,25 pt.\n- Pour $x > 0$, $f(x) = 0 \\iff 2(\\ln x)^2 - 3\\ln x + 2 = 0$ ; avec $X = \\ln x$, cette équation n'a pas de solution, donc $f$ ne s'annule pas et $\\mathcal{C}_f$ ne coupe pas l'axe des abscisses : 0,25 pt.",
+        "solution": "Le discriminant du trinôme $2X^2 - 3X + 2$ vaut $\\Delta = (-3)^2 - 4 \\times 2 \\times 2 = 9 - 16 = -7$. Comme $\\Delta < 0$, l'équation $2X^2 - 3X + 2 = 0$ n'a pas de solution réelle. De plus, le trinôme a le signe de son coefficient $2$ : $2X^2 - 3X + 2 > 0$ pour tout réel $X$.\n\nLa courbe $\\mathcal{C}_f$ coupe l'axe des abscisses au point d'abscisse $x > 0$ si et seulement si $f(x) = 0$. Or, comme $x \\neq 0$, en posant $X = \\ln x$ :$$f(x) = 0 \\iff 2(\\ln x)^2 - 3\\ln x + 2 = 0 \\iff 2X^2 - 3X + 2 = 0.$$Cette équation n'a pas de solution : $f$ ne s'annule pas sur $]0\\,;\\,+\\infty[$.\n\nDonc $\\mathcal{C}_f$ ne coupe pas l'axe des abscisses ; elle est même au-dessus, puisque $f(x) = x\\left(2X^2 - 3X + 2\\right) > 0$."
+      },
+      {
+        "id": "q5",
+        "label": "B.2.",
+        "enonce": "Déterminer, en justifiant, la limite de $f$ en $+\\infty$. On admettra que la limite de $f$ en $0$ est égale à $0$.",
+        "points": 0.5,
+        "revoir": "l-logarithme-066",
+        "indices": [
+          "Écris le crochet $2X^2 - 3X + 2$ avec $X = \\ln x$ : vers quoi tend $X$ quand $x$ tend vers $+\\infty$ ? La somme « $+\\infty - \\infty$ » qui apparaît est une forme indéterminée.",
+          "Lève-la en factorisant par le terme prépondérant : $2X^2 - 3X + 2 = X^2\\left(2 - \\dfrac{3}{X} + \\dfrac{2}{X^2}\\right)$ pour $X \\neq 0$."
+        ],
+        "attenduCorrecteur": "- $\\lim\\limits_{x \\to +\\infty} \\ln x = +\\infty$ ; forme indéterminée levée en factorisant par $X^2$, d'où $\\lim\\limits_{X \\to +\\infty}\\left(2X^2 - 3X + 2\\right) = +\\infty$ ; par composition, le crochet tend vers $+\\infty$ : 0,25 pt.\n- Par produit avec $x$, qui tend vers $+\\infty$ : $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$ : 0,25 pt.",
+        "solution": "Posons $X = \\ln x$ : quand $x$ tend vers $+\\infty$, $X$ tend vers $+\\infty$. La somme $2X^2 - 3X$ est une forme indéterminée « $+\\infty - \\infty$ » ; on factorise par le terme prépondérant. Pour $X \\neq 0$ :$$2X^2 - 3X + 2 = X^2\\left(2 - \\dfrac{3}{X} + \\dfrac{2}{X^2}\\right).$$Or $\\lim\\limits_{X \\to +\\infty} X^2 = +\\infty$ et $\\lim\\limits_{X \\to +\\infty}\\left(2 - \\dfrac{3}{X} + \\dfrac{2}{X^2}\\right) = 2$ : par produit, $\\lim\\limits_{X \\to +\\infty}\\left(2X^2 - 3X + 2\\right) = +\\infty$. Par composition, $\\lim\\limits_{x \\to +\\infty}\\left[2(\\ln x)^2 - 3\\ln x + 2\\right] = +\\infty$.\n\nComme $\\lim\\limits_{x \\to +\\infty} x = +\\infty$, par produit :$$\\lim_{x \\to +\\infty} f(x) = +\\infty.$$",
+        "erreurFrequente": "Conclure directement que $2(\\ln x)^2 - 3\\ln x$ tend vers $+\\infty$ « parce que $\\ln x$ tend vers $+\\infty$ » : c'est une forme indéterminée, qu'il faut lever en factorisant."
+      },
+      {
+        "id": "q6",
+        "label": "B.3.",
+        "enonce": "On admet que, pour tout $x$ appartenant à $]0\\,;\\,+\\infty[$, $f'(x) = 2(\\ln x)^2 + \\ln x - 1$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q6a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout $x$ appartenant à $]0\\,;\\,+\\infty[$, $$f''(x) = \\dfrac{1}{x}(4\\ln x + 1).$$",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-008",
+            "indices": [
+              "Dérive $f'$ terme à terme. La fonction $x \\mapsto (\\ln x)^2$ est de la forme $u^2$, avec $u(x) = \\ln x$ : sa dérivée est $2u'u$.",
+              "Avec $u'(x) = \\dfrac{1}{x}$, calcule la dérivée de $2(\\ln x)^2$, puis celle de $\\ln x - 1$, et factorise par $\\dfrac{1}{x}$."
+            ],
+            "attenduCorrecteur": "- Dérivée de $(\\ln x)^2$ par $(u^2)' = 2u'u$ : $\\dfrac{2\\ln x}{x}$ : 0,25 pt.\n- $f''(x) = \\dfrac{4\\ln x}{x} + \\dfrac{1}{x} = \\dfrac{1}{x}(4\\ln x + 1)$ : 0,25 pt.",
+            "solution": "La fonction $x \\mapsto (\\ln x)^2$ est de la forme $u^2$ avec $u(x) = \\ln x$ et $u'(x) = \\dfrac{1}{x}$ ; sa dérivée est $2u'u$, soit $x \\mapsto \\dfrac{2\\ln x}{x}$. Donc, pour tout $x > 0$ :$$f''(x) = 2 \\times \\dfrac{2\\ln x}{x} + \\dfrac{1}{x} - 0 = \\dfrac{4\\ln x}{x} + \\dfrac{1}{x} = \\dfrac{1}{x}(4\\ln x + 1).$$",
+            "erreurFrequente": "Écrire que la dérivée de $(\\ln x)^2$ est $2\\ln x$ : on oublie la dérivée de l'intérieur, $\\dfrac{1}{x}$."
+          },
+          {
+            "id": "q6b",
+            "label": "b)",
+            "enonce": "Étudier la convexité de la fonction $f$ sur l'intervalle $]0\\,;\\,+\\infty[$ et préciser la valeur exacte de l'abscisse du point d'inflexion.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-039",
+            "indices": [
+              "La convexité se lit sur le signe de $f''(x)$. Comme $x > 0$, $f''(x)$ a le signe de $4\\ln x + 1$.",
+              "Résous l'inéquation $4\\ln x + 1 \\geqslant 0$ : isole $\\ln x$, puis compose par l'exponentielle, qui est strictement croissante."
+            ],
+            "attenduCorrecteur": "- Signe : $\\dfrac{1}{x} > 0$ et $4\\ln x + 1 \\geqslant 0 \\iff \\ln x \\geqslant -\\dfrac{1}{4} \\iff x \\geqslant e^{-\\frac{1}{4}}$ : 0,25 pt.\n- $f$ concave sur $\\left]0\\,;\\,e^{-\\frac{1}{4}}\\right]$, convexe sur $\\left[e^{-\\frac{1}{4}}\\,;\\,+\\infty\\right[$ ; $f''$ s'annule en changeant de signe : point d'inflexion d'abscisse $e^{-\\frac{1}{4}}$ : 0,25 pt.",
+            "solution": "Pour $x > 0$, $\\dfrac{1}{x} > 0$ : $f''(x)$ a le signe de $4\\ln x + 1$. Or, la fonction exponentielle étant strictement croissante :$$4\\ln x + 1 \\geqslant 0 \\iff \\ln x \\geqslant -\\dfrac{1}{4} \\iff x \\geqslant e^{-\\frac{1}{4}}.$$De même, $4\\ln x + 1 < 0 \\iff 0 < x < e^{-\\frac{1}{4}}$.\n\nDonc $f''(x) < 0$ sur $\\left]0\\,;\\,e^{-\\frac{1}{4}}\\right[$ : $f$ est concave sur $\\left]0\\,;\\,e^{-\\frac{1}{4}}\\right]$ ; et $f''(x) > 0$ sur $\\left]e^{-\\frac{1}{4}}\\,;\\,+\\infty\\right[$ : $f$ est convexe sur $\\left[e^{-\\frac{1}{4}}\\,;\\,+\\infty\\right[$.\n\nLa dérivée seconde s'annule en changeant de signe en $e^{-\\frac{1}{4}}$ : la courbe $\\mathcal{C}_f$ admet un point d'inflexion, d'abscisse $e^{-\\frac{1}{4}}$ (environ $0{,}78$)."
+          },
+          {
+            "id": "q6c",
+            "label": "c)",
+            "enonce": "Montrer que la courbe $\\mathcal{C}_f$ est au-dessus de la tangente $T_{\\mathrm{B}}$ sur l'intervalle $]1\\,;\\,+\\infty[$.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-045",
+            "indices": [
+              "Une courbe convexe sur un intervalle est au-dessus de ses tangentes sur cet intervalle : vérifie que $]1\\,;\\,+\\infty[$ est contenu dans l'intervalle où $f$ est convexe, et que le point de contact B y est aussi.",
+              "Compare $e^{-\\frac{1}{4}}$ à $1 = e^0$ : l'exponentielle est croissante et $-\\dfrac{1}{4} < 0$."
+            ],
+            "attenduCorrecteur": "- $e^{-\\frac{1}{4}} < e^0 = 1$, donc $]1\\,;\\,+\\infty[$ est contenu dans $\\left[e^{-\\frac{1}{4}}\\,;\\,+\\infty\\right[$, où $f$ est convexe ; B, d'abscisse $e$, est sur cet intervalle : 0,25 pt.\n- Une courbe convexe sur un intervalle est au-dessus de ses tangentes sur cet intervalle ; donc $\\mathcal{C}_f$ est au-dessus de $T_{\\mathrm{B}}$ sur $]1\\,;\\,+\\infty[$ : 0,25 pt.",
+            "solution": "Comme $-\\dfrac{1}{4} < 0$ et que l'exponentielle est strictement croissante, $e^{-\\frac{1}{4}} < e^0 = 1$. L'intervalle $]1\\,;\\,+\\infty[$ est donc contenu dans $\\left[e^{-\\frac{1}{4}}\\,;\\,+\\infty\\right[$, sur lequel $f$ est convexe (question B.3.b) ; le point de contact B, d'abscisse $e > 1$, appartient aussi à cet intervalle.\n\nOr, sur un intervalle où une fonction est convexe, sa courbe est au-dessus de chacune de ses tangentes en un point de cet intervalle. Donc, sur $\\left[e^{-\\frac{1}{4}}\\,;\\,+\\infty\\right[$, et en particulier sur $]1\\,;\\,+\\infty[$, la courbe $\\mathcal{C}_f$ est au-dessus de la tangente $T_{\\mathrm{B}}$."
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "label": "C.1.",
+        "enonce": "**Partie C : calcul d'aire.**\n\nJustifier que la tangente $T_{\\mathrm{B}}$ a pour équation réduite $y = 2x - e$.",
+        "points": 0.5,
+        "revoir": "l-derivation-convexite-044",
+        "indices": [
+          "La tangente au point d'abscisse $a$ a pour équation $y = f'(a)(x - a) + f(a)$ ; ici $a = e$.",
+          "Calcule $f(e)$ et $f'(e)$ avec $\\ln e = 1$, en utilisant l'expression de $f'$ admise à la question B.3."
+        ],
+        "attenduCorrecteur": "- $f(e) = e(2 - 3 + 2) = e$ et $f'(e) = 2 + 1 - 1 = 2$, avec $\\ln e = 1$ : 0,25 pt.\n- $y = 2(x - e) + e = 2x - e$ : 0,25 pt.",
+        "solution": "Avec $\\ln e = 1$ : $f(e) = e\\left[2 \\times 1^2 - 3 \\times 1 + 2\\right] = e$ et, d'après l'expression de $f'$ admise en B.3, $f'(e) = 2 \\times 1^2 + 1 - 1 = 2$.\n\nLa tangente à $\\mathcal{C}_f$ au point d'abscisse $e$ a pour équation $y = f'(e)(x - e) + f(e)$, soit :$$y = 2(x - e) + e = 2x - e.$$"
+      },
+      {
+        "id": "q8",
+        "label": "C.2.",
+        "enonce": "À l'aide d'une intégration par parties, montrer que $$\\int_1^e x\\ln x\\,\\mathrm{d}x = \\dfrac{e^2 + 1}{4}.$$",
+        "points": 1,
+        "revoir": "l-integration-071",
+        "indices": [
+          "Avec un logarithme, prends $u(x) = \\ln x$, que la dérivation simplifie, et $v'(x) = x$, dont tu connais une primitive : relis la méthode.",
+          "Écris $u'(x) = \\dfrac{1}{x}$ et $v(x) = \\dfrac{x^2}{2}$, puis applique $\\displaystyle\\int_1^e u(x)v'(x)\\,\\mathrm{d}x = \\big[u(x)v(x)\\big]_1^e - \\int_1^e u'(x)v(x)\\,\\mathrm{d}x$."
+        ],
+        "attenduCorrecteur": "- Choix $u(x) = \\ln x$, $v'(x) = x$, d'où $u'(x) = \\dfrac{1}{x}$ et $v(x) = \\dfrac{x^2}{2}$, avec $u'$ et $v'$ continues sur $[1\\,;\\,e]$ : 0,25 pt.\n- Formule appliquée : $\\left[\\dfrac{x^2}{2}\\ln x\\right]_1^e - \\displaystyle\\int_1^e \\dfrac{x}{2}\\,\\mathrm{d}x$ : 0,25 pt.\n- Crochet égal à $\\dfrac{e^2}{2}$ (car $\\ln e = 1$ et $\\ln 1 = 0$) et $\\displaystyle\\int_1^e \\dfrac{x}{2}\\,\\mathrm{d}x = \\dfrac{e^2 - 1}{4}$ : 0,25 pt.\n- Conclusion $\\dfrac{e^2}{2} - \\dfrac{e^2 - 1}{4} = \\dfrac{e^2 + 1}{4}$ : 0,25 pt.",
+        "solution": "On pose, pour $x \\in [1\\,;\\,e]$ : $u(x) = \\ln x$ et $v'(x) = x$, d'où $u'(x) = \\dfrac{1}{x}$ et $v(x) = \\dfrac{x^2}{2}$. Les fonctions $u'$ et $v'$ sont continues sur $[1\\,;\\,e]$. Par intégration par parties :$$\\int_1^e x\\ln x\\,\\mathrm{d}x = \\left[\\dfrac{x^2}{2}\\ln x\\right]_1^e - \\int_1^e \\dfrac{1}{x} \\times \\dfrac{x^2}{2}\\,\\mathrm{d}x = \\left(\\dfrac{e^2}{2} \\times 1 - \\dfrac{1}{2} \\times 0\\right) - \\int_1^e \\dfrac{x}{2}\\,\\mathrm{d}x.$$Or $\\displaystyle\\int_1^e \\dfrac{x}{2}\\,\\mathrm{d}x = \\left[\\dfrac{x^2}{4}\\right]_1^e = \\dfrac{e^2}{4} - \\dfrac{1}{4}$. Donc :$$\\int_1^e x\\ln x\\,\\mathrm{d}x = \\dfrac{e^2}{2} - \\dfrac{e^2}{4} + \\dfrac{1}{4} = \\dfrac{e^2 + 1}{4}.$$",
+        "erreurFrequente": "Choisir $u(x) = x$ et $v'(x) = \\ln x$ : il faudrait une primitive de $\\ln$, et le calcul se complique. Avec un logarithme, on dérive le logarithme."
+      },
+      {
+        "id": "q9",
+        "label": "C.3.",
+        "enonce": "On note $\\mathcal{A}$ l'aire, en unité d'aire, du domaine hachuré sur la figure, délimité par la courbe $\\mathcal{C}_f$, la tangente $T_{\\mathrm{B}}$ et les droites d'équations $x = 1$ et $x = e$. On admet que $$\\int_1^e x(\\ln x)^2\\,\\mathrm{d}x = \\dfrac{e^2 - 1}{4}.$$",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q9a",
+            "label": "a)",
+            "enonce": "Justifier que $\\mathcal{A} = \\displaystyle\\int_1^e \\big(f(x) - 2x + e\\big)\\,\\mathrm{d}x$.",
+            "points": 0.5,
+            "revoir": "l-integration-053",
+            "indices": [
+              "L'aire entre deux courbes vaut $\\displaystyle\\int_a^b \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x$ quand $\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$ sur $[a\\,;\\,b]$ : quelle courbe est au-dessus ici ? Une question de la partie B y répond.",
+              "La question B.3.c donne la position des courbes sur $]1\\,;\\,+\\infty[$ : il reste à regarder ce qui se passe en $x = 1$, et à vérifier que $1 \\leqslant e$."
+            ],
+            "attenduCorrecteur": "- Sur $[1\\,;\\,e]$, $f(x) \\geqslant 2x - e$ : question B.3.c sur $]1\\,;\\,e]$, et en $x = 1$, $f(1) = 2 > 2 - e$ ; fonctions continues et $1 \\leqslant e$ : 0,25 pt.\n- Aire entre deux courbes : $\\mathcal{A} = \\displaystyle\\int_1^e \\big(f(x) - (2x - e)\\big)\\,\\mathrm{d}x = \\int_1^e \\big(f(x) - 2x + e\\big)\\,\\mathrm{d}x$ : 0,25 pt.",
+            "solution": "D'après la question B.3.c, $\\mathcal{C}_f$ est au-dessus de $T_{\\mathrm{B}}$ sur $]1\\,;\\,+\\infty[$, donc sur $]1\\,;\\,e]$ ; en $x = 1$, $f(1) = 2$ et $2 \\times 1 - e = 2 - e < 2$. Ainsi, $f(x) \\geqslant 2x - e$ pour tout $x \\in [1\\,;\\,e]$. Les fonctions $f$ et $x \\mapsto 2x - e$ sont continues sur $[1\\,;\\,e]$, et $1 \\leqslant e$.\n\nL'aire du domaine compris entre la courbe du dessus, $\\mathcal{C}_f$, et celle du dessous, $T_{\\mathrm{B}}$, entre les droites d'équations $x = 1$ et $x = e$, vaut donc :$$\\mathcal{A} = \\int_1^e \\big(f(x) - (2x - e)\\big)\\,\\mathrm{d}x = \\int_1^e \\big(f(x) - 2x + e\\big)\\,\\mathrm{d}x.$$Une partie du domaine est située sous l'axe des abscisses : cela ne change rien, la formule de l'aire entre deux courbes ne demande pas que les fonctions soient positives."
+          },
+          {
+            "id": "q9b",
+            "label": "b)",
+            "enonce": "En déduire la valeur exacte de $\\mathcal{A}$, en unité d'aire.",
+            "points": 0.75,
+            "revoir": "l-integration-040",
+            "indices": [
+              "Remplace $f(x)$ par $2x(\\ln x)^2 - 3x\\ln x + 2x$ et simplifie $f(x) - 2x + e$ : deux termes disparaissent.",
+              "Découpe ensuite l'intégrale par linéarité : tu connais $\\displaystyle\\int_1^e x(\\ln x)^2\\,\\mathrm{d}x$ (admise) et $\\displaystyle\\int_1^e x\\ln x\\,\\mathrm{d}x$ (question C.2) ; il reste l'intégrale d'une constante."
+            ],
+            "attenduCorrecteur": "- Simplification et linéarité : $\\mathcal{A} = 2\\displaystyle\\int_1^e x(\\ln x)^2\\,\\mathrm{d}x - 3\\int_1^e x\\ln x\\,\\mathrm{d}x + \\int_1^e e\\,\\mathrm{d}x$ : 0,25 pt.\n- Valeurs $2 \\times \\dfrac{e^2 - 1}{4}$, $3 \\times \\dfrac{e^2 + 1}{4}$ et $\\displaystyle\\int_1^e e\\,\\mathrm{d}x = e^2 - e$ : 0,25 pt.\n- $\\mathcal{A} = \\dfrac{3e^2 - 4e - 5}{4}$ u.a. : 0,25 pt.",
+            "solution": "Pour tout $x \\in [1\\,;\\,e]$ :$$f(x) - 2x + e = 2x(\\ln x)^2 - 3x\\ln x + 2x - 2x + e = 2x(\\ln x)^2 - 3x\\ln x + e.$$Par linéarité de l'intégrale :$$\\mathcal{A} = 2\\int_1^e x(\\ln x)^2\\,\\mathrm{d}x - 3\\int_1^e x\\ln x\\,\\mathrm{d}x + \\int_1^e e\\,\\mathrm{d}x.$$Avec la valeur admise, la question C.2 et $\\displaystyle\\int_1^e e\\,\\mathrm{d}x = \\big[ex\\big]_1^e = e^2 - e$ :$$\\mathcal{A} = 2 \\times \\dfrac{e^2 - 1}{4} - 3 \\times \\dfrac{e^2 + 1}{4} + e^2 - e = \\dfrac{2e^2 - 2 - 3e^2 - 3 + 4e^2 - 4e}{4} = \\dfrac{3e^2 - 4e - 5}{4}.$$Donc $\\mathcal{A} = \\dfrac{3e^2 - 4e - 5}{4}$ u.a., soit environ $1{,}57$ u.a. : c'est cohérent avec la figure, où le domaine couvre un peu plus de six carreaux de $0{,}25$ u.a.",
+            "erreurFrequente": "Oublier les parenthèses autour de $2x - e$ et intégrer $f(x) - 2x - e$ : le signe de $e$ change, et l'aire trouvée est fausse."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-integration-002",
+    "chapitre": "integration",
+    "notions": [
+      "n-integration-courbes-valeur-moyenne",
+      "n-integration-parties",
+      "n-integration-primitive"
+    ],
+    "capacites": [
+      "bo-m-integrale-03",
+      "bo-m-integrale-07",
+      "bo-m-integrale-08",
+      "bo-m-integrale-10",
+      "bo-m-integrale-14",
+      "bo-m-primitives-03",
+      "bo-m-primitives-04",
+      "bo-m-primitives-06",
+      "bo-m-derivation-05",
+      "bo-m-derivation-06",
+      "bo-m-continuite-03",
+      "bo-m-continuite-04"
+    ],
+    "titre": "Glycémie après un repas : équation différentielle, intégration par parties et valeur moyenne",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": true,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2025-metropole-septembre-j1",
+      "adaptation": "Exercice 1 (5 points) : partie A (solution particulière $u(t) = te^{-0{,}4t}$ de $y' + 0{,}4y = e^{-0{,}4t}$, implication « $g$ solution de $(H)$ donc $f$ solution de $(E)$ », résolution de $(H)$, solutions de $(E)$, solution qui vaut $1$ en $0$) et partie B (glycémie $f(t) = (t + 1)e^{-0{,}4t}$ : dérivée, variations, unique solution de $f(t) = 0{,}7$ sur $[0\\,;\\,6]$, instant de l'hypoglycémie à la minute près, intégration par parties, glycémie moyenne, autre calcul de l'intégrale à partir de l'équation différentielle) conservées. Aucune question retirée. Question B.3.c guidée : le sujet demandait seulement d'expliquer comment on aurait pu obtenir autrement le résultat de B.3.a ; ici, l'énoncé fait établir l'égalité $f(t) = 2{,}5e^{-0{,}4t} - 2{,}5f'(t)$, puis en déduire une primitive de $f$ avant de retrouver l'intégrale. Arrondi au centième demandé pour la glycémie moyenne ; unité écrite g/L. Barème fixé pour le site. Calculatrice autorisée. Solution écrite pour le site."
+    },
+    "preambule": "**Partie A.** On considère l'équation différentielle $$(E) : \\quad y' + 0{,}4y = e^{-0{,}4t}$$ où $y$ est une fonction de la variable réelle $t$. On cherche l'ensemble des fonctions définies et dérivables sur $\\mathbb{R}$ qui sont solutions de cette équation.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "Soit $u$ la fonction définie sur $\\mathbb{R}$ par $u(t) = te^{-0{,}4t}$. Vérifier que $u$ est solution de $(E)$.",
+        "points": 0.25,
+        "revoir": "l-primitives-equations-differentielles-031",
+        "indices": [
+          "Calcule $u'(t)$ avec la formule de dérivation d'un produit, puis remplace dans $u'(t) + 0{,}4u(t)$.",
+          "La dérivée de $t \\mapsto e^{-0{,}4t}$ est $t \\mapsto -0{,}4e^{-0{,}4t}$ : deux termes vont se compenser."
+        ],
+        "attenduCorrecteur": "- $u'(t) = e^{-0{,}4t} - 0{,}4te^{-0{,}4t}$ (dérivée d'un produit) et $u'(t) + 0{,}4u(t) = e^{-0{,}4t}$ pour tout réel $t$ : 0,25 pt.",
+        "solution": "La fonction $u$ est dérivable sur $\\mathbb{R}$, comme produit de fonctions dérivables. Pour tout réel $t$, avec $\\left(e^{-0{,}4t}\\right)' = -0{,}4e^{-0{,}4t}$ :$$u'(t) = 1 \\times e^{-0{,}4t} + t \\times \\left(-0{,}4e^{-0{,}4t}\\right) = e^{-0{,}4t} - 0{,}4te^{-0{,}4t}.$$Donc $u'(t) + 0{,}4u(t) = e^{-0{,}4t} - 0{,}4te^{-0{,}4t} + 0{,}4te^{-0{,}4t} = e^{-0{,}4t}$ : la fonction $u$ est solution de $(E)$."
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Soit $f$ une fonction définie et dérivable sur $\\mathbb{R}$. On note $g$ la fonction définie sur $\\mathbb{R}$ par $g(t) = f(t) - u(t)$. Soit $(H)$ l'équation différentielle $y' + 0{,}4y = 0$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Démontrer que si la fonction $g$ est solution de l'équation différentielle $(H)$, alors la fonction $f$ est solution de l'équation différentielle $(E)$.\n\nOn admettra que la réciproque est vraie.",
+            "points": 0.25,
+            "revoir": "l-primitives-equations-differentielles-067",
+            "indices": [
+              "Écris $f = g + u$, donc $f' = g' + u'$, et calcule $f' + 0{,}4f$ en regroupant les termes en $g$ d'un côté, les termes en $u$ de l'autre.",
+              "Utilise les deux hypothèses : $g' + 0{,}4g = 0$, car $g$ est solution de $(H)$, et $u' + 0{,}4u = e^{-0{,}4t}$, d'après la question A.1."
+            ],
+            "attenduCorrecteur": "- $f = g + u$, d'où $f' + 0{,}4f = (g' + 0{,}4g) + (u' + 0{,}4u) = 0 + e^{-0{,}4t}$ ; donc $f$ est solution de $(E)$ : 0,25 pt.",
+            "solution": "Supposons que $g$ est solution de $(H)$ : $g' + 0{,}4g = 0$. Comme $f = g + u$, la fonction $f$ est dérivable et $f' = g' + u'$. Pour tout réel $t$ :$$f'(t) + 0{,}4f(t) = \\big(g'(t) + 0{,}4g(t)\\big) + \\big(u'(t) + 0{,}4u(t)\\big) = 0 + e^{-0{,}4t} = e^{-0{,}4t},$$d'après la question A.1. Donc $f$ est solution de $(E)$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Résoudre l'équation différentielle $(H)$.",
+            "points": 0.25,
+            "revoir": "l-primitives-equations-differentielles-038",
+            "indices": [
+              "Mets $(H)$ sous la forme $y' = ay$ en isolant $y'$, puis applique le cours sur les solutions de $y' = ay$."
+            ],
+            "attenduCorrecteur": "- $(H) \\iff y' = -0{,}4y$ ; solutions : les fonctions $t \\mapsto Ce^{-0{,}4t}$, $C$ réel : 0,25 pt.",
+            "solution": "L'équation $(H)$ s'écrit $y' = -0{,}4y$. Les solutions de $y' = ay$ sont les fonctions $t \\mapsto Ce^{at}$, où $C$ est un réel ; ici $a = -0{,}4$.\n\nLes solutions de $(H)$ sont les fonctions $t \\mapsto Ce^{-0{,}4t}$, où $C$ est un réel quelconque."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "En déduire les solutions de $(E)$.",
+            "points": 0.25,
+            "revoir": "l-primitives-equations-differentielles-066",
+            "indices": [
+              "D'après a) et sa réciproque admise, $f$ est solution de $(E)$ si et seulement si $f - u$ est solution de $(H)$ : écris $f - u$ à l'aide de b), puis isole $f$."
+            ],
+            "attenduCorrecteur": "- $f$ solution de $(E)$ $\\iff$ $f - u$ solution de $(H)$ $\\iff$ $f(t) = Ce^{-0{,}4t} + te^{-0{,}4t} = (t + C)e^{-0{,}4t}$, $C$ réel : 0,25 pt.",
+            "solution": "D'après la question a) et sa réciproque admise, $f$ est solution de $(E)$ si et seulement si $g = f - u$ est solution de $(H)$, c'est-à-dire, d'après b), s'il existe un réel $C$ tel que, pour tout réel $t$, $f(t) - te^{-0{,}4t} = Ce^{-0{,}4t}$.\n\nLes solutions de $(E)$ sont donc les fonctions $t \\mapsto (t + C)e^{-0{,}4t}$, où $C$ est un réel quelconque."
+          },
+          {
+            "id": "q2d",
+            "label": "d)",
+            "enonce": "Déterminer la solution $f$ de $(E)$ telle que $f(0) = 1$.",
+            "points": 0.25,
+            "revoir": "l-primitives-equations-differentielles-037",
+            "indices": [
+              "Remplace $t$ par $0$ dans l'expression trouvée en c), avec $e^0 = 1$, puis écris la condition $f(0) = 1$."
+            ],
+            "attenduCorrecteur": "- $f(0) = (0 + C)e^0 = C$, donc $C = 1$ et $f(t) = (t + 1)e^{-0{,}4t}$ : 0,25 pt.",
+            "solution": "La solution cherchée s'écrit $f(t) = (t + C)e^{-0{,}4t}$, et $f(0) = (0 + C)e^0 = C$. La condition $f(0) = 1$ donne $C = 1$.\n\nLa solution de $(E)$ qui vaut $1$ en $0$ est la fonction $f$ définie sur $\\mathbb{R}$ par $f(t) = (t + 1)e^{-0{,}4t}$."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "B.1.",
+        "enonce": "**Partie B.** On s'intéresse à la glycémie (le taux de sucre dans le sang) chez une personne venant de prendre un repas. La glycémie, en g/L, en fonction du temps $t$, exprimé en heures, écoulé depuis la fin du repas, est modélisée par la fonction $f$ définie sur $[0\\,;\\,6]$ par $$f(t) = (t + 1)e^{-0{,}4t}.$$",
+        "points": 0.75,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout $t \\in [0\\,;\\,6]$, $f'(t) = (-0{,}4t + 0{,}6)e^{-0{,}4t}$.",
+            "points": 0.25,
+            "revoir": "l-logarithme-039",
+            "indices": [
+              "$f$ est un produit $uv$, avec $u(t) = t + 1$ et $v(t) = e^{-0{,}4t}$ : applique $(uv)' = u'v + uv'$, puis factorise par $e^{-0{,}4t}$."
+            ],
+            "attenduCorrecteur": "- Dérivée d'un produit, avec $\\left(e^{-0{,}4t}\\right)' = -0{,}4e^{-0{,}4t}$, puis factorisation : $f'(t) = (1 - 0{,}4t - 0{,}4)e^{-0{,}4t} = (-0{,}4t + 0{,}6)e^{-0{,}4t}$ : 0,25 pt.",
+            "solution": "La fonction $f$ est le produit de $t \\mapsto t + 1$, de dérivée $1$, et de $t \\mapsto e^{-0{,}4t}$, de dérivée $t \\mapsto -0{,}4e^{-0{,}4t}$. Pour tout $t \\in [0\\,;\\,6]$ :$$f'(t) = 1 \\times e^{-0{,}4t} + (t + 1)\\left(-0{,}4e^{-0{,}4t}\\right) = (1 - 0{,}4t - 0{,}4)e^{-0{,}4t} = (-0{,}4t + 0{,}6)e^{-0{,}4t}.$$"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Étudier les variations de $f$ sur $[0\\,;\\,6]$, puis dresser son tableau de variations sur cet intervalle.",
+            "points": 0.5,
+            "revoir": "l-derivation-convexite-013",
+            "indices": [
+              "$e^{-0{,}4t} > 0$ : $f'(t)$ a le signe de $-0{,}4t + 0{,}6$, une expression affine. Résous $-0{,}4t + 0{,}6 > 0$.",
+              "Pour compléter le tableau, calcule $f(0)$, $f(6)$ et la valeur de $f$ là où $f'$ s'annule, en valeur exacte puis approchée."
+            ],
+            "attenduCorrecteur": "- Signe de $f'$ : $e^{-0{,}4t} > 0$ et $-0{,}4t + 0{,}6 > 0 \\iff t < 1{,}5$ ; $f$ croissante sur $[0\\,;\\,1{,}5]$, décroissante sur $[1{,}5\\,;\\,6]$ : 0,25 pt.\n- Tableau avec $f(0) = 1$, $f(1{,}5) = 2{,}5e^{-0{,}6} \\approx 1{,}37$ et $f(6) = 7e^{-2{,}4} \\approx 0{,}64$ : 0,25 pt.",
+            "solution": "Pour tout $t$, $e^{-0{,}4t} > 0$ : $f'(t)$ a le signe de $-0{,}4t + 0{,}6$. Or $-0{,}4t + 0{,}6 > 0 \\iff t < \\dfrac{0{,}6}{0{,}4} = 1{,}5$. Donc $f'(t) > 0$ sur $[0\\,;\\,1{,}5[$, $f'(1{,}5) = 0$ et $f'(t) < 0$ sur $]1{,}5\\,;\\,6]$ : la fonction $f$ est strictement croissante sur $[0\\,;\\,1{,}5]$ et strictement décroissante sur $[1{,}5\\,;\\,6]$.\n\nValeurs : $f(0) = 1$, $f(1{,}5) = 2{,}5e^{-0{,}6} \\approx 1{,}37$ et $f(6) = 7e^{-2{,}4} \\approx 0{,}64$.\n\n| $t$ | $0$ | | $1{,}5$ | | $6$ |\n|---|---|---|---|---|---|\n| signe de $f'(t)$ | | $+$ | $0$ | $-$ | |\n| variations de $f$ | $1$ | $\\nearrow$ | $2{,}5e^{-0{,}6}$ | $\\searrow$ | $7e^{-2{,}4}$ |"
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "B.2.",
+        "enonce": "Une personne est en hypoglycémie lorsque sa glycémie est inférieure à $0{,}7$ g/L.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Démontrer que sur l'intervalle $[0\\,;\\,6]$ l'équation $f(t) = 0{,}7$ admet une unique solution, que l'on notera $\\alpha$.",
+            "points": 0.75,
+            "revoir": "l-continuite-024",
+            "indices": [
+              "Sépare $[0\\,;\\,6]$ en deux. Sur $[0\\,;\\,1{,}5]$, compare les valeurs de $f$ à $0{,}7$ grâce au tableau de variations. Sur $[1{,}5\\,;\\,6]$, pense au corollaire du théorème des valeurs intermédiaires.",
+              "Sur $[1{,}5\\,;\\,6]$ : $f$ est continue, car dérivable, et strictement décroissante ; vérifie que $0{,}7$ est compris entre $f(6)$ et $f(1{,}5)$."
+            ],
+            "attenduCorrecteur": "- Sur $[0\\,;\\,1{,}5]$ : $f$ croissante, donc $f(t) \\geqslant f(0) = 1 > 0{,}7$ : pas de solution : 0,25 pt.\n- Sur $[1{,}5\\,;\\,6]$ : $f$ continue et strictement décroissante, $f(6) \\approx 0{,}64 < 0{,}7 < f(1{,}5) \\approx 1{,}37$ ; corollaire du théorème des valeurs intermédiaires : une unique solution : 0,25 pt.\n- Conclusion : une unique solution $\\alpha$ sur $[0\\,;\\,6]$, qui appartient à $[1{,}5\\,;\\,6]$ : 0,25 pt.",
+            "solution": "**Sur $[0\\,;\\,1{,}5]$.** La fonction $f$ est croissante, donc, pour tout $t$ de cet intervalle, $f(t) \\geqslant f(0) = 1 > 0{,}7$ : l'équation $f(t) = 0{,}7$ n'y a pas de solution.\n\n**Sur $[1{,}5\\,;\\,6]$.** La fonction $f$ est continue, car dérivable, et strictement décroissante ; $f(1{,}5) \\approx 1{,}37$ et $f(6) \\approx 0{,}64$, donc $0{,}7$ est compris entre $f(6)$ et $f(1{,}5)$. D'après le corollaire du théorème des valeurs intermédiaires, l'équation $f(t) = 0{,}7$ admet une unique solution sur $[1{,}5\\,;\\,6]$.\n\nFinalement, l'équation $f(t) = 0{,}7$ admet une unique solution $\\alpha$ sur $[0\\,;\\,6]$, et $\\alpha \\in [1{,}5\\,;\\,6]$."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Au bout de combien de temps après avoir pris son repas cette personne est-elle en hypoglycémie ? On exprimera ce temps à la minute près.\n\nSaisis ce temps, en minutes.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 337,
+              "tolerance": 1,
+              "unite": "min"
+            },
+            "revoir": "l-logarithme-079",
+            "indices": [
+              "Encadre $\\alpha$ au centième à la calculatrice (tableau de valeurs), puis sers-toi du sens de variation de $f$ pour savoir à partir de quand $f(t) < 0{,}7$.",
+              "Le temps $\\alpha$ est en heures : multiplie les bornes de ton encadrement par $60$ pour l'obtenir en minutes."
+            ],
+            "attenduCorrecteur": "- Encadrement $5{,}61 < \\alpha < 5{,}62$ à la calculatrice ; $f(t) > 0{,}7$ avant $\\alpha$ et $f(t) < 0{,}7$ après, par décroissance de $f$ sur $[1{,}5\\,;\\,6]$ : la personne est en hypoglycémie à partir de l'instant $\\alpha$ : 0,25 pt.\n- Conversion : entre $336{,}6$ et $337{,}2$ minutes, soit $337$ min, c'est-à-dire $5$ h $37$ min après le repas : 0,25 pt.",
+            "solution": "À la calculatrice, $f(5{,}61) \\approx 0{,}7009 > 0{,}7$ et $f(5{,}62) \\approx 0{,}6991 < 0{,}7$, donc $5{,}61 < \\alpha < 5{,}62$.\n\nSur $[0\\,;\\,\\alpha[$, $f(t) > 0{,}7$ : sur $[0\\,;\\,1{,}5]$, $f(t) \\geqslant 1$, et sur $[1{,}5\\,;\\,\\alpha[$, $f(t) > f(\\alpha) = 0{,}7$, car $f$ y est strictement décroissante. Pour la même raison, $f(t) < 0{,}7$ sur $]\\alpha\\,;\\,6]$. La personne est donc en hypoglycémie à partir de l'instant $\\alpha$.\n\nEn minutes : $5{,}61 \\times 60 = 336{,}6$ et $5{,}62 \\times 60 = 337{,}2$. À la minute près, $\\alpha$ correspond à $337$ minutes, soit $5$ h $37$ min.\n\nLa personne est en hypoglycémie environ $5$ h $37$ min après la fin de son repas.",
+            "erreurFrequente": "Lire $\\alpha \\approx 5{,}61$ h comme « 5 h 61 min » : la partie décimale d'un nombre d'heures se multiplie par $60$ pour donner des minutes."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "label": "B.3.",
+        "enonce": "On souhaite déterminer la glycémie moyenne, en g/L, chez cette personne lors des six heures qui suivent le repas.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "À l'aide d'une intégration par parties, montrer que $$\\int_0^6 f(t)\\,\\mathrm{d}t = -23{,}75e^{-2{,}4} + 8{,}75.$$",
+            "points": 0.75,
+            "revoir": "l-integration-071",
+            "indices": [
+              "Pose $u(t) = t + 1$, que la dérivation simplifie, et $v'(t) = e^{-0{,}4t}$, dont une primitive est $v(t) = \\dfrac{e^{-0{,}4t}}{-0{,}4} = -2{,}5e^{-0{,}4t}$.",
+              "Applique la formule, puis calcule le crochet en $6$ et en $0$ ; la nouvelle intégrale est celle de $-2{,}5e^{-0{,}4t}$, qui a une primitive simple."
+            ],
+            "attenduCorrecteur": "- $u(t) = t + 1$, $u'(t) = 1$, $v'(t) = e^{-0{,}4t}$ et $v(t) = -2{,}5e^{-0{,}4t}$, avec $u'$ et $v'$ continues : 0,25 pt.\n- $\\displaystyle\\int_0^6 f(t)\\,\\mathrm{d}t = \\Big[-2{,}5(t + 1)e^{-0{,}4t}\\Big]_0^6 + 2{,}5\\int_0^6 e^{-0{,}4t}\\,\\mathrm{d}t$, avec un crochet égal à $-17{,}5e^{-2{,}4} + 2{,}5$ : 0,25 pt.\n- $2{,}5\\displaystyle\\int_0^6 e^{-0{,}4t}\\,\\mathrm{d}t = -6{,}25e^{-2{,}4} + 6{,}25$, puis somme égale à $-23{,}75e^{-2{,}4} + 8{,}75$ : 0,25 pt.",
+            "solution": "On pose, pour $t \\in [0\\,;\\,6]$ : $u(t) = t + 1$ et $v'(t) = e^{-0{,}4t}$, d'où $u'(t) = 1$ et $v(t) = \\dfrac{e^{-0{,}4t}}{-0{,}4} = -2{,}5e^{-0{,}4t}$ ; $u'$ et $v'$ sont continues. Par intégration par parties :$$\\int_0^6 f(t)\\,\\mathrm{d}t = \\Big[-2{,}5(t + 1)e^{-0{,}4t}\\Big]_0^6 - \\int_0^6 1 \\times \\left(-2{,}5e^{-0{,}4t}\\right)\\mathrm{d}t = \\Big[-2{,}5(t + 1)e^{-0{,}4t}\\Big]_0^6 + 2{,}5\\int_0^6 e^{-0{,}4t}\\,\\mathrm{d}t.$$Le crochet vaut $-2{,}5 \\times 7e^{-2{,}4} - \\left(-2{,}5 \\times 1 \\times e^0\\right) = -17{,}5e^{-2{,}4} + 2{,}5$. Et :$$2{,}5\\int_0^6 e^{-0{,}4t}\\,\\mathrm{d}t = 2{,}5\\Big[-2{,}5e^{-0{,}4t}\\Big]_0^6 = 2{,}5\\left(-2{,}5e^{-2{,}4} + 2{,}5\\right) = -6{,}25e^{-2{,}4} + 6{,}25.$$Donc :$$\\int_0^6 f(t)\\,\\mathrm{d}t = -17{,}5e^{-2{,}4} + 2{,}5 - 6{,}25e^{-2{,}4} + 6{,}25 = -23{,}75e^{-2{,}4} + 8{,}75.$$",
+            "erreurFrequente": "Oublier le facteur $\\dfrac{1}{-0{,}4} = -2{,}5$ dans la primitive de $e^{-0{,}4t}$ : une primitive de $t \\mapsto e^{at}$ est $t \\mapsto \\dfrac{1}{a}e^{at}$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Calculer la glycémie moyenne, en g/L, chez cette personne lors des six heures qui suivent le repas. On en donnera une valeur approchée au centième.\n\nSaisis cette valeur.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 1.1,
+              "tolerance": 0.01,
+              "unite": "g/L",
+              "decimales": 2
+            },
+            "revoir": "l-integration-058",
+            "indices": [
+              "La glycémie moyenne est la valeur moyenne de $f$ sur $[0\\,;\\,6]$ : relis sa définition, $\\dfrac{1}{b - a}\\displaystyle\\int_a^b f(t)\\,\\mathrm{d}t$.",
+              "Ici $a = 0$ et $b = 6$ : divise le résultat de la question a) par $6 - 0$, puis arrondis au centième à la calculatrice."
+            ],
+            "attenduCorrecteur": "- Glycémie moyenne $= \\dfrac{1}{6 - 0}\\displaystyle\\int_0^6 f(t)\\,\\mathrm{d}t$, valeur moyenne de $f$ sur $[0\\,;\\,6]$ : 0,25 pt.\n- $\\dfrac{-23{,}75e^{-2{,}4} + 8{,}75}{6} \\approx 1{,}10$ g/L, avec l'unité : 0,25 pt.",
+            "solution": "La glycémie moyenne pendant les six heures qui suivent le repas est la valeur moyenne de $f$ sur $[0\\,;\\,6]$ :$$\\mu = \\dfrac{1}{6 - 0}\\int_0^6 f(t)\\,\\mathrm{d}t = \\dfrac{-23{,}75e^{-2{,}4} + 8{,}75}{6} \\approx 1{,}10.$$La glycémie moyenne de cette personne pendant les six heures qui suivent le repas est d'environ $1{,}10$ g/L.",
+            "erreurFrequente": "Donner l'intégrale, environ $6{,}60$, comme glycémie moyenne : il faut encore diviser par la durée, $6$ heures."
+          },
+          {
+            "id": "q5c",
+            "label": "c)",
+            "enonce": "D'après la partie A, la fonction $f$ est solution de l'équation différentielle $(E)$.\n\nMontrer que, pour tout $t \\in [0\\,;\\,6]$, $f(t) = 2{,}5e^{-0{,}4t} - 2{,}5f'(t)$. En déduire une primitive de $f$ sur $[0\\,;\\,6]$, puis retrouver, sans intégration par parties, le résultat de la question B.3.a.",
+            "points": 0.5,
+            "revoir": "l-integration-033",
+            "indices": [
+              "Écris ce que dit $(E)$ pour la fonction $f$ : $f'(t) + 0{,}4f(t) = e^{-0{,}4t}$. Isole $f(t)$, sachant que $\\dfrac{1}{0{,}4} = 2{,}5$.",
+              "Pour la primitive, cherche une primitive de chacun des deux termes : celle de $f'$ est $f$ elle-même (relis, dans la méthode, l'étape sur l'intégrale d'une dérivée), celle de $t \\mapsto e^{-0{,}4t}$ a été trouvée en B.3.a. Combine-les par linéarité, puis calcule $F(6) - F(0)$."
+            ],
+            "attenduCorrecteur": "- Comme $f$ est solution de $(E)$, $f'(t) + 0{,}4f(t) = e^{-0{,}4t}$, d'où $f(t) = \\dfrac{e^{-0{,}4t} - f'(t)}{0{,}4} = 2{,}5e^{-0{,}4t} - 2{,}5f'(t)$ ; $f$ étant une primitive de $f'$ et $t \\mapsto -2{,}5e^{-0{,}4t}$ une primitive de $t \\mapsto e^{-0{,}4t}$, une primitive de $f$ est, par linéarité, $F(t) = -6{,}25e^{-0{,}4t} - 2{,}5f(t)$ : 0,25 pt.\n- $\\displaystyle\\int_0^6 f(t)\\,\\mathrm{d}t = F(6) - F(0) = \\left(-6{,}25e^{-2{,}4} - 17{,}5e^{-2{,}4}\\right) - (-6{,}25 - 2{,}5) = -23{,}75e^{-2{,}4} + 8{,}75$, résultat de B.3.a retrouvé : 0,25 pt.",
+            "solution": "**L'égalité.** La fonction $f$ est la solution de $(E)$ qui vaut $1$ en $0$ (partie A) : pour tout $t \\in [0\\,;\\,6]$, $f'(t) + 0{,}4f(t) = e^{-0{,}4t}$, donc $0{,}4f(t) = e^{-0{,}4t} - f'(t)$ et$$f(t) = \\dfrac{e^{-0{,}4t} - f'(t)}{0{,}4} = 2{,}5e^{-0{,}4t} - 2{,}5f'(t).$$**Une primitive de $f$.** Une primitive de $t \\mapsto e^{-0{,}4t}$ est $t \\mapsto -2{,}5e^{-0{,}4t}$ (question B.3.a), et $f$ est une primitive de $f'$. Par linéarité, une primitive de $f$ sur $[0\\,;\\,6]$ est la fonction $F$ définie par$$F(t) = 2{,}5 \\times \\left(-2{,}5e^{-0{,}4t}\\right) - 2{,}5f(t) = -6{,}25e^{-0{,}4t} - 2{,}5f(t).$$Contrôle : $F'(t) = 2{,}5e^{-0{,}4t} - 2{,}5f'(t) = f(t)$.\n\n**L'intégrale.** Avec $f(6) = 7e^{-2{,}4}$ et $f(0) = 1$ :$$\\int_0^6 f(t)\\,\\mathrm{d}t = F(6) - F(0) = \\left(-6{,}25e^{-2{,}4} - 2{,}5 \\times 7e^{-2{,}4}\\right) - \\left(-6{,}25 - 2{,}5 \\times 1\\right) = -23{,}75e^{-2{,}4} + 8{,}75.$$On retrouve le résultat de la question B.3.a, sans intégration par parties."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-integration-003",
+    "chapitre": "integration",
+    "notions": [
+      "n-integration-aire",
+      "n-integration-parties",
+      "n-integration-proprietes",
+      "n-integration-suites",
+      "n-integration-primitive"
+    ],
+    "capacites": [
+      "bo-m-integrale-01",
+      "bo-m-integrale-03",
+      "bo-m-integrale-06",
+      "bo-m-integrale-08",
+      "bo-m-integrale-09",
+      "bo-m-integrale-10",
+      "bo-m-integrale-11",
+      "bo-m-integrale-13",
+      "bo-m-integrale-19",
+      "bo-m-logarithme-03",
+      "bo-m-logarithme-04",
+      "bo-m-logarithme-05",
+      "bo-m-limites-fonctions-01",
+      "bo-m-limites-fonctions-05",
+      "bo-m-limites-fonctions-06",
+      "bo-m-derivation-06"
+    ],
+    "titre": "La fonction $\\dfrac{\\ln(x)}{x^2}$ : aire, méthode des rectangles et suite d'intégrales",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2026-etrangers-j1",
+      "adaptation": "Exercice 4 (6 points) : partie A, questions 1 à 3 (limites aux bornes et interprétation graphique, dérivée, tableau de variations avec le maximum $\\dfrac{1}{2e}$) et partie B entière (interprétation graphique de $I_n$, croissance de $(I_n)$, script Python des rectangles à compléter, intégration par parties donnant $I_n = \\dfrac{n - 1 - \\ln(n)}{n}$, limite de $(I_n)$) conservées. Retirées : questions A.4 à A.7 (tangente au point d'abscisse $1$, dérivée seconde, convexité, inégalité $x - 1 \\geqslant \\dfrac{\\ln(x)}{x^2}$), qui relèvent du chapitre sur la convexité et ne servent pas dans la partie B. Ajoutée : question B.3.b (justifier que la somme des aires des rectangles majore l'intégrale). Hauteurs des rectangles décrites dans l'énoncé, figure redessinée pour le site. Barème fixé pour le site. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "On considère la fonction $f$ définie sur l'intervalle $]0\\,;\\,+\\infty[$ par $$f(x) = \\dfrac{\\ln(x)}{x^2}.$$ On note $\\mathcal{C}_f$ sa courbe représentative dans un repère du plan. On admet que la fonction $f$ est dérivable sur l'intervalle $]0\\,;\\,+\\infty[$ et on note $f'$ sa fonction dérivée.\n\nLa figure ci-dessous, utilisée dans la partie B, représente la courbe $\\mathcal{C}_f$ et des rectangles construits entre $x = 1$ et $x = 10$.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/integration/tb-rectangles-ln-x2.svg",
+        "alt": "Dans un repère, pour x allant de 0 à 11 et y de 0 à 0,25 : la courbe Cf, en bleu, coupe l'axe des abscisses en x = 1, monte jusqu'à un maximum d'environ 0,18 vers x = 1,65, puis redescend lentement vers l'axe des abscisses sans l'atteindre. Neuf rectangles coloriés, de largeur 1, sont posés sur l'axe des abscisses entre x = 1 et x = 10. Le premier, sur [1 ; 2], a pour hauteur le maximum de f, environ 0,18 : il touche la courbe en son sommet. Chacun des huit autres, sur [2 ; 3], [3 ; 4], …, [9 ; 10], a pour hauteur la valeur de f au bord gauche de l'intervalle : son coin supérieur gauche est sur la courbe, et la courbe passe sous son bord supérieur. Les rectangles recouvrent tout le domaine situé sous la courbe entre x = 1 et x = 10.",
+        "width": 460,
+        "height": 290
+      },
+      "caption": "La courbe Cf et les neuf rectangles de largeur 1 construits entre x = 1 et x = 10."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A.1.",
+        "enonce": "**Partie A : étude de la fonction $f$.**",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Déterminer les limites de la fonction $f$ aux bornes de l'intervalle $]0\\,;\\,+\\infty[$.",
+            "points": 0.5,
+            "revoir": "l-logarithme-066",
+            "indices": [
+              "En $0$, écris $f(x) = \\ln(x) \\times \\dfrac{1}{x^2}$ : vers quoi tend chaque facteur quand $x$ tend vers $0$ en restant positif ? Le produit est-il une forme indéterminée ?",
+              "En $+\\infty$, écris $f(x) = \\dfrac{\\ln(x)}{x} \\times \\dfrac{1}{x}$ : une croissance comparée du cours donne la limite du premier facteur."
+            ],
+            "attenduCorrecteur": "- En $0$ : $\\ln(x)$ tend vers $-\\infty$ et $\\dfrac{1}{x^2}$ vers $+\\infty$ ; par produit, $f(x)$ tend vers $-\\infty$ : 0,25 pt.\n- En $+\\infty$ : $\\lim\\limits_{x \\to +\\infty}\\dfrac{\\ln(x)}{x} = 0$ (croissances comparées) et $\\dfrac{1}{x}$ tend vers $0$, d'où $\\lim\\limits_{x \\to +\\infty} f(x) = 0$ : 0,25 pt.",
+            "solution": "**En $0$.** Pour $x > 0$, $f(x) = \\ln(x) \\times \\dfrac{1}{x^2}$. Or $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\ln(x) = -\\infty$ et $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\dfrac{1}{x^2} = +\\infty$. Par produit, sans forme indéterminée :$$\\lim_{\\substack{x \\to 0 \\\\ x > 0}} f(x) = -\\infty.$$\n\n**En $+\\infty$.** $\\ln(x)$ et $x^2$ tendent vers $+\\infty$ : le quotient est une forme indéterminée. On écrit $f(x) = \\dfrac{\\ln(x)}{x} \\times \\dfrac{1}{x}$. Par croissances comparées, $\\lim\\limits_{x \\to +\\infty} \\dfrac{\\ln(x)}{x} = 0$, et $\\lim\\limits_{x \\to +\\infty} \\dfrac{1}{x} = 0$. Par produit :$$\\lim_{x \\to +\\infty} f(x) = 0.$$"
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Interpréter graphiquement les résultats obtenus.",
+            "points": 0.5,
+            "revoir": "l-limites-fonctions-008",
+            "indices": [
+              "Une limite infinie en un réel donne une asymptote verticale ; une limite finie en $+\\infty$, une asymptote horizontale : relis la méthode, puis écris l'équation de chaque droite."
+            ],
+            "attenduCorrecteur": "- La droite d'équation $x = 0$, l'axe des ordonnées, est asymptote verticale à $\\mathcal{C}_f$ : 0,25 pt.\n- La droite d'équation $y = 0$, l'axe des abscisses, est asymptote horizontale à $\\mathcal{C}_f$ en $+\\infty$ : 0,25 pt.",
+            "solution": "Comme $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} f(x) = -\\infty$, la droite d'équation $x = 0$, c'est-à-dire l'axe des ordonnées, est asymptote verticale à la courbe $\\mathcal{C}_f$.\n\nComme $\\lim\\limits_{x \\to +\\infty} f(x) = 0$, la droite d'équation $y = 0$, c'est-à-dire l'axe des abscisses, est asymptote horizontale à la courbe $\\mathcal{C}_f$ en $+\\infty$."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "A.2.",
+        "enonce": "Pour tout réel $x$ strictement positif, démontrer que $$f'(x) = \\dfrac{1 - 2\\ln(x)}{x^3}.$$",
+        "points": 0.5,
+        "revoir": "l-logarithme-039",
+        "indices": [
+          "$f$ est un quotient $\\dfrac{u}{v}$, avec $u(x) = \\ln(x)$ et $v(x) = x^2$ : applique $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$.",
+          "Le numérateur obtenu, $\\dfrac{1}{x} \\times x^2 - \\ln(x) \\times 2x$, se factorise par $x$ ; simplifie ensuite avec le dénominateur $x^4$."
+        ],
+        "attenduCorrecteur": "- Formule du quotient avec $u'(x) = \\dfrac{1}{x}$ et $v'(x) = 2x$ : $f'(x) = \\dfrac{x - 2x\\ln(x)}{x^4}$ : 0,25 pt.\n- Factorisation par $x$ et simplification, $x \\neq 0$ : $f'(x) = \\dfrac{1 - 2\\ln(x)}{x^3}$ : 0,25 pt.",
+        "solution": "Pour $x > 0$, $f = \\dfrac{u}{v}$ avec $u(x) = \\ln(x)$, $u'(x) = \\dfrac{1}{x}$, $v(x) = x^2$ et $v'(x) = 2x$ ; $v$ ne s'annule pas sur $]0\\,;\\,+\\infty[$. Donc :$$f'(x) = \\dfrac{\\dfrac{1}{x} \\times x^2 - \\ln(x) \\times 2x}{\\left(x^2\\right)^2} = \\dfrac{x - 2x\\ln(x)}{x^4} = \\dfrac{x\\big(1 - 2\\ln(x)\\big)}{x^4} = \\dfrac{1 - 2\\ln(x)}{x^3}.$$"
+      },
+      {
+        "id": "q3",
+        "label": "A.3.",
+        "enonce": "Dresser le tableau de variations de la fonction $f$ en précisant les limites et la valeur exacte de l'extremum de la fonction.",
+        "points": 0.75,
+        "revoir": "l-logarithme-048",
+        "indices": [
+          "$x^3 > 0$ sur $]0\\,;\\,+\\infty[$ : $f'(x)$ a le signe de $1 - 2\\ln(x)$. Résous $1 - 2\\ln(x) > 0$ en isolant $\\ln(x)$, puis passe à l'exponentielle.",
+          "La valeur où $f'$ s'annule s'écrit $e^{\\frac{1}{2}} = \\sqrt{e}$. Pour son image, utilise $\\ln\\left(\\sqrt{e}\\right) = \\dfrac{1}{2}$ et $\\left(\\sqrt{e}\\right)^2 = e$."
+        ],
+        "attenduCorrecteur": "- Signe : $1 - 2\\ln(x) > 0 \\iff \\ln(x) < \\dfrac{1}{2} \\iff x < \\sqrt{e}$ ; $f$ strictement croissante sur $\\left]0\\,;\\,\\sqrt{e}\\right]$, strictement décroissante sur $\\left[\\sqrt{e}\\,;\\,+\\infty\\right[$ : 0,25 pt.\n- Maximum $f\\left(\\sqrt{e}\\right) = \\dfrac{1}{2e}$ : 0,25 pt.\n- Tableau complet, avec les limites de la question A.1.a : 0,25 pt.",
+        "solution": "Pour $x > 0$, $x^3 > 0$ : $f'(x)$ a le signe de $1 - 2\\ln(x)$. Or, l'exponentielle étant strictement croissante :$$1 - 2\\ln(x) > 0 \\iff \\ln(x) < \\dfrac{1}{2} \\iff x < e^{\\frac{1}{2}} = \\sqrt{e}.$$De même, $1 - 2\\ln(x) < 0 \\iff x > \\sqrt{e}$, et $f'\\left(\\sqrt{e}\\right) = 0$. Donc $f$ est strictement croissante sur $\\left]0\\,;\\,\\sqrt{e}\\right]$ et strictement décroissante sur $\\left[\\sqrt{e}\\,;\\,+\\infty\\right[$ : elle admet un maximum en $\\sqrt{e}$.\n\nAvec $\\ln\\left(\\sqrt{e}\\right) = \\dfrac{1}{2}$ et $\\left(\\sqrt{e}\\right)^2 = e$ : $f\\left(\\sqrt{e}\\right) = \\dfrac{\\frac{1}{2}}{e} = \\dfrac{1}{2e}$.\n\n| $x$ | $0$ | | $\\sqrt{e}$ | | $+\\infty$ |\n|---|---|---|---|---|---|\n| signe de $f'(x)$ | | $+$ | $0$ | $-$ | |\n| variations de $f$ | $-\\infty$ | $\\nearrow$ | $\\dfrac{1}{2e}$ | $\\searrow$ | $0$ |"
+      },
+      {
+        "id": "q4",
+        "label": "B.1.",
+        "enonce": "**Partie B.** On considère la suite $(I_n)$ définie, pour tout entier naturel non nul $n$, par $$I_n = \\int_1^n \\dfrac{\\ln(x)}{x^2}\\,\\mathrm{d}x.$$\n\nDonner une interprétation graphique de $I_n$, pour $n$ un entier naturel non nul.",
+        "points": 0.5,
+        "revoir": "l-integration-003",
+        "indices": [
+          "Une intégrale est une aire quand la fonction est continue et positive et que les bornes sont dans l'ordre croissant : vérifie ces conditions sur $[1\\,;\\,n]$.",
+          "Pour $x \\geqslant 1$, quel est le signe de $\\ln(x)$ ? Et celui de $x^2$ ?"
+        ],
+        "attenduCorrecteur": "- Sur $[1\\,;\\,n]$, $f$ est continue et positive ($\\ln(x) \\geqslant 0$ pour $x \\geqslant 1$, et $x^2 > 0$), et $1 \\leqslant n$ : 0,25 pt.\n- $I_n$ est l'aire, en unités d'aire, du domaine délimité par $\\mathcal{C}_f$, l'axe des abscisses et les droites d'équations $x = 1$ et $x = n$ : 0,25 pt.",
+        "solution": "Soit $n$ un entier naturel non nul. Pour $x \\in [1\\,;\\,n]$, $\\ln(x) \\geqslant 0$ car $x \\geqslant 1$, et $x^2 > 0$ : donc $f(x) \\geqslant 0$. La fonction $f$ est continue et positive sur $[1\\,;\\,n]$, et $1 \\leqslant n$.\n\nDonc $I_n$ est l'aire, en unités d'aire, du domaine délimité par la courbe $\\mathcal{C}_f$, l'axe des abscisses et les droites d'équations $x = 1$ et $x = n$. Pour $n = 1$, ce domaine est réduit à un segment, et $I_1 = 0$."
+      },
+      {
+        "id": "q5",
+        "label": "B.2.",
+        "enonce": "Démontrer que la suite $(I_n)$ est croissante.",
+        "points": 0.75,
+        "revoir": "l-integration-080",
+        "indices": [
+          "Écris $I_{n+1} - I_n$ comme une seule intégrale grâce à la relation de Chasles : $\\displaystyle\\int_1^{n+1} f(x)\\,\\mathrm{d}x = \\int_1^n f(x)\\,\\mathrm{d}x + \\int_n^{n+1} f(x)\\,\\mathrm{d}x$.",
+          "Sur $[n\\,;\\,n + 1]$, avec $n \\geqslant 1$, quel est le signe de $f(x)$ ? Conclus par la positivité de l'intégrale."
+        ],
+        "attenduCorrecteur": "- Relation de Chasles : $I_{n+1} - I_n = \\displaystyle\\int_n^{n+1} f(x)\\,\\mathrm{d}x$ : 0,25 pt.\n- $f \\geqslant 0$ sur $[n\\,;\\,n + 1] \\subset [1\\,;\\,+\\infty[$ et $n \\leqslant n + 1$ ; positivité : $I_{n+1} - I_n \\geqslant 0$ : 0,25 pt.\n- Conclusion : la suite $(I_n)$ est croissante : 0,25 pt.",
+        "solution": "Soit $n$ un entier naturel non nul. Par la relation de Chasles :$$I_{n+1} = \\int_1^{n+1} f(x)\\,\\mathrm{d}x = \\int_1^n f(x)\\,\\mathrm{d}x + \\int_n^{n+1} f(x)\\,\\mathrm{d}x, \\quad \\text{donc} \\quad I_{n+1} - I_n = \\int_n^{n+1} f(x)\\,\\mathrm{d}x.$$Sur $[n\\,;\\,n + 1]$, qui est contenu dans $[1\\,;\\,+\\infty[$, $f(x) \\geqslant 0$ (question B.1), et $n \\leqslant n + 1$. Par positivité de l'intégrale, $I_{n+1} - I_n \\geqslant 0$.\n\nDonc la suite $(I_n)$ est croissante : quand la borne de droite avance, l'aire sous la courbe augmente."
+      },
+      {
+        "id": "q6",
+        "label": "B.3.",
+        "enonce": "On souhaite calculer une valeur approchée de $\\displaystyle\\int_1^{10} f(x)\\,\\mathrm{d}x$ en déterminant la somme $S$ des aires des rectangles tracés sur la figure. Ces rectangles ont tous pour largeur $1$ :\n\n- sur $[1\\,;\\,2]$, le rectangle a pour hauteur le maximum de $f$ trouvé à la question A.3 ;\n- sur chacun des intervalles $[i\\,;\\,i + 1]$, pour $i$ entier de $2$ à $9$, le rectangle a pour hauteur $f(i)$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q6a",
+            "label": "a)",
+            "enonce": "Pour cela, on utilise le script ci-dessous, écrit en langage Python ; dans le module math, la fonction log est le logarithme népérien. Recopier et compléter ce script afin qu'il affiche la somme $S$.",
+            "code": {
+              "langage": "python",
+              "source": "from math import *\n\nS = 1/(2*exp(1))\nfor i in range(2, 10):\n    S = ...\nprint(S)"
+            },
+            "points": 0.5,
+            "revoir": "l-integration-014",
+            "indices": [
+              "La valeur de départ de S est l'aire du premier rectangle, sur $[1\\,;\\,2]$ : $1 \\times \\dfrac{1}{2e}$. Dans la boucle, i prend les valeurs $2$, $3$, …, $9$ : chaque tour doit ajouter l'aire d'un rectangle à S.",
+              "L'aire du rectangle posé sur $[i\\,;\\,i + 1]$ vaut largeur × hauteur $= 1 \\times f(i)$. Écris $f(i)$ en Python, sachant que log(i) désigne $\\ln(i)$ et que la puissance s'écrit avec deux étoiles."
+            ],
+            "attenduCorrecteur": "- Ligne complétée : $\\texttt{S = S + log(i)/i**2}$, ou toute écriture équivalente : 0,25 pt.\n- Justification : la valeur initiale est l'aire du rectangle sur $[1\\,;\\,2]$, et chaque tour ajoute l'aire $1 \\times f(i)$ du rectangle sur $[i\\,;\\,i + 1]$, pour i allant de $2$ à $9$ : 0,25 pt.",
+            "solution": "La variable S contient d'abord l'aire du rectangle posé sur $[1\\,;\\,2]$ : largeur $1$, hauteur $\\dfrac{1}{2e}$, le maximum de $f$ trouvé en A.3 ; c'est la valeur $\\texttt{1/(2*exp(1))}$. Dans la boucle, i prend les valeurs $2$, $3$, …, $9$, car $\\texttt{range(2, 10)}$ s'arrête avant $10$. À chaque tour, on ajoute à S l'aire du rectangle posé sur $[i\\,;\\,i + 1]$, qui vaut $1 \\times f(i) = \\dfrac{\\ln(i)}{i^2}$. La ligne à compléter est donc :$$\\texttt{S = S + log(i)/i**2}$$Après les huit tours de boucle, S contient la somme des aires des neuf rectangles, que le script affiche.",
+            "erreurFrequente": "Écrire $\\texttt{S = log(i)/i**2}$ : sans le $\\texttt{S +}$, chaque tour remplace l'aire déjà calculée au lieu de lui ajouter la nouvelle, et le script n'affiche que l'aire du dernier rectangle."
+          },
+          {
+            "id": "q6b",
+            "label": "b)",
+            "enonce": "Le script affiche une valeur proche de $0{,}78$. Justifier que $S \\geqslant \\displaystyle\\int_1^{10} f(x)\\,\\mathrm{d}x$.",
+            "points": 0.5,
+            "revoir": "l-integration-010",
+            "indices": [
+              "Sur chaque intervalle, compare $f(x)$ à la hauteur du rectangle : sur $[1\\,;\\,2]$, pense au maximum ; sur $[i\\,;\\,i + 1]$ avec $i \\geqslant 2$, au sens de variation de $f$ trouvé en A.3.",
+              "Comme $e < 4$, $\\sqrt{e} < 2$ : $f$ est décroissante sur $[2\\,;\\,+\\infty[$. Intègre ensuite l'inégalité obtenue sur chaque intervalle, puis ajoute avec la relation de Chasles."
+            ],
+            "attenduCorrecteur": "- Sur $[1\\,;\\,2]$ : $f(x) \\leqslant \\dfrac{1}{2e}$, maximum de $f$ ; sur $[i\\,;\\,i + 1]$, pour $2 \\leqslant i \\leqslant 9$ : $f$ décroissante car $\\sqrt{e} < 2$, donc $f(x) \\leqslant f(i)$ : 0,25 pt.\n- Intégration des inégalités sur chaque intervalle, puis relation de Chasles : $\\displaystyle\\int_1^{10} f(x)\\,\\mathrm{d}x \\leqslant \\dfrac{1}{2e} + f(2) + \\dots + f(9) = S$ : 0,25 pt.",
+            "solution": "**Sur $[1\\,;\\,2]$.** D'après la question A.3, $\\dfrac{1}{2e}$ est le maximum de $f$ : pour tout $x \\in [1\\,;\\,2]$, $f(x) \\leqslant \\dfrac{1}{2e}$. En intégrant cette inégalité, avec $1 \\leqslant 2$ : $\\displaystyle\\int_1^2 f(x)\\,\\mathrm{d}x \\leqslant \\dfrac{1}{2e} \\times (2 - 1) = \\dfrac{1}{2e}$.\n\n**Sur $[i\\,;\\,i + 1]$, pour $i$ entier de $2$ à $9$.** Comme $e < 4$, $\\sqrt{e} < 2 \\leqslant i$ : $f$ est décroissante sur $[i\\,;\\,i + 1]$, qui est contenu dans $\\left[\\sqrt{e}\\,;\\,+\\infty\\right[$. Pour tout $x$ de cet intervalle, $f(x) \\leqslant f(i)$ et, en intégrant : $\\displaystyle\\int_i^{i+1} f(x)\\,\\mathrm{d}x \\leqslant f(i) \\times 1 = f(i)$.\n\nEn ajoutant ces neuf inégalités, la relation de Chasles donne :$$\\int_1^{10} f(x)\\,\\mathrm{d}x \\leqslant \\dfrac{1}{2e} + f(2) + f(3) + \\dots + f(9) = S.$$Graphiquement, le domaine situé sous la courbe entre $x = 1$ et $x = 10$ est contenu dans la réunion des rectangles : la valeur affichée, environ $0{,}78$, est une valeur approchée par excès de $\\displaystyle\\int_1^{10} f(x)\\,\\mathrm{d}x$."
+          }
+        ]
+      },
+      {
+        "id": "q7",
+        "label": "B.4.",
+        "enonce": "À l'aide d'une intégration par parties, démontrer que, pour tout entier naturel non nul $n$, $$I_n = \\dfrac{n - 1 - \\ln(n)}{n}.$$",
+        "points": 1,
+        "revoir": "l-integration-071",
+        "indices": [
+          "Avec un logarithme, prends $u(x) = \\ln(x)$, et $v'(x) = \\dfrac{1}{x^2}$, dont tu connais une primitive sur $[1\\,;\\,n]$.",
+          "Une primitive de $x \\mapsto \\dfrac{1}{x^2}$ est $x \\mapsto -\\dfrac{1}{x}$ : applique la formule ; la nouvelle intégrale est celle de $\\dfrac{1}{x} \\times \\dfrac{1}{x}$, qui a une primitive simple."
+        ],
+        "attenduCorrecteur": "- $u(x) = \\ln(x)$, $u'(x) = \\dfrac{1}{x}$, $v'(x) = \\dfrac{1}{x^2}$ et $v(x) = -\\dfrac{1}{x}$, avec $u'$ et $v'$ continues sur $[1\\,;\\,n]$ : 0,25 pt.\n- $I_n = \\left[-\\dfrac{\\ln(x)}{x}\\right]_1^n + \\displaystyle\\int_1^n \\dfrac{1}{x^2}\\,\\mathrm{d}x$ : 0,25 pt.\n- Crochet égal à $-\\dfrac{\\ln(n)}{n}$, car $\\ln(1) = 0$, et $\\displaystyle\\int_1^n \\dfrac{1}{x^2}\\,\\mathrm{d}x = \\left[-\\dfrac{1}{x}\\right]_1^n = 1 - \\dfrac{1}{n}$ : 0,25 pt.\n- Mise au même dénominateur : $I_n = \\dfrac{n - 1 - \\ln(n)}{n}$ : 0,25 pt.",
+        "solution": "Soit $n$ un entier naturel non nul. On pose, pour $x \\in [1\\,;\\,n]$ : $u(x) = \\ln(x)$ et $v'(x) = \\dfrac{1}{x^2}$, d'où $u'(x) = \\dfrac{1}{x}$ et $v(x) = -\\dfrac{1}{x}$ ; $u'$ et $v'$ sont continues sur $[1\\,;\\,n]$. Par intégration par parties :$$I_n = \\left[-\\dfrac{\\ln(x)}{x}\\right]_1^n - \\int_1^n \\dfrac{1}{x} \\times \\left(-\\dfrac{1}{x}\\right)\\mathrm{d}x = \\left(-\\dfrac{\\ln(n)}{n} + \\dfrac{\\ln(1)}{1}\\right) + \\int_1^n \\dfrac{1}{x^2}\\,\\mathrm{d}x.$$Or $\\ln(1) = 0$ et $\\displaystyle\\int_1^n \\dfrac{1}{x^2}\\,\\mathrm{d}x = \\left[-\\dfrac{1}{x}\\right]_1^n = -\\dfrac{1}{n} + 1$. Donc :$$I_n = -\\dfrac{\\ln(n)}{n} - \\dfrac{1}{n} + 1 = \\dfrac{n - 1 - \\ln(n)}{n}.$$",
+        "erreurFrequente": "Prendre $v(x) = \\dfrac{1}{x}$ : la dérivée de $x \\mapsto \\dfrac{1}{x}$ est $x \\mapsto -\\dfrac{1}{x^2}$, donc une primitive de $\\dfrac{1}{x^2}$ est $-\\dfrac{1}{x}$, avec un signe moins."
+      },
+      {
+        "id": "q8",
+        "label": "B.5.",
+        "enonce": "Calculer la limite de la suite $(I_n)$ quand $n$ tend vers $+\\infty$.\n\nSaisis cette limite.",
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 1,
+          "tolerance": 0
+        },
+        "revoir": "l-logarithme-061",
+        "indices": [
+          "Sépare la fraction de la question B.4 en trois termes, en divisant chacun par $n$.",
+          "Le terme $\\dfrac{\\ln(n)}{n}$ est une forme indéterminée « $\\dfrac{\\infty}{\\infty}$ » : une croissance comparée du cours la lève."
+        ],
+        "attenduCorrecteur": "- $I_n = 1 - \\dfrac{1}{n} - \\dfrac{\\ln(n)}{n}$, avec $\\lim\\limits_{n \\to +\\infty}\\dfrac{1}{n} = 0$ et $\\lim\\limits_{n \\to +\\infty}\\dfrac{\\ln(n)}{n} = 0$ par croissances comparées : 0,25 pt.\n- Par somme, $\\lim\\limits_{n \\to +\\infty} I_n = 1$ : 0,25 pt.",
+        "solution": "Pour tout entier $n \\geqslant 1$ :$$I_n = \\dfrac{n}{n} - \\dfrac{1}{n} - \\dfrac{\\ln(n)}{n} = 1 - \\dfrac{1}{n} - \\dfrac{\\ln(n)}{n}.$$Or $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$ et, par croissances comparées, $\\lim\\limits_{n \\to +\\infty} \\dfrac{\\ln(n)}{n} = 0$. Par somme :$$\\lim_{n \\to +\\infty} I_n = 1.$$Graphiquement, l'aire sous la courbe entre $x = 1$ et $x = n$ s'approche de $1$ u.a. quand $n$ devient grand. Par exemple, $I_{10} = \\dfrac{9 - \\ln(10)}{10} \\approx 0{,}67$, en dessous de la somme $S \\approx 0{,}78$ des aires des rectangles, comme prévu en B.3.b."
+      }
+    ]
+  },
+  {
+    "id": "tb-integration-004",
+    "chapitre": "integration",
+    "notions": [
+      "n-integration-suites",
+      "n-integration-proprietes",
+      "n-integration-parties",
+      "n-integration-aire",
+      "n-integration-primitive"
+    ],
+    "capacites": [
+      "bo-m-integrale-01",
+      "bo-m-integrale-03",
+      "bo-m-integrale-06",
+      "bo-m-integrale-08",
+      "bo-m-integrale-10",
+      "bo-m-integrale-11",
+      "bo-m-integrale-13",
+      "bo-m-primitives-02",
+      "bo-m-primitives-04",
+      "bo-m-trigonometrie-01",
+      "bo-m-suites-03",
+      "bo-m-suites-06",
+      "bo-m-suites-07",
+      "bo-m-suites-14"
+    ],
+    "titre": "Une suite d'intégrales avec $e^{-nx}\\sin(x)$ : limite, double intégration par parties, seuil",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2024-amerique-nord-j1",
+      "adaptation": "Exercice 4 (6 points) : calcul de $I_0$, positivité et décroissance de $(I_n)$, convergence, majoration $I_n \\leqslant \\displaystyle\\int_0^{\\pi} e^{-nx}\\,\\mathrm{d}x$, calcul de cette intégrale et limite de $(I_n)$, double intégration par parties ($I_n = 1 + e^{-n\\pi} - nJ_n$ et $I_n = \\dfrac{1}{n}J_n$), expression $I_n = \\dfrac{1 + e^{-n\\pi}}{n^2 + 1}$ et ligne à compléter du script de seuil conservés. Question 4.a guidée : le sujet demandait d'intégrer $I_n$ par parties « de deux façons différentes » sans dire comment ; ici, l'énoncé donne les choix de $u$ et $v'$ de chacune des deux intégrations par parties. Ajoutés : interprétation graphique de $I_n$ (question 2.b) et valeur renvoyée par le script, justifiée sans calculatrice (question 5.b). Dernière ligne du script (return) replacée dans la fonction. Barème fixé pour le site. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Pour tout entier naturel $n$, on considère les intégrales suivantes : $$I_n = \\int_0^{\\pi} e^{-nx}\\sin(x)\\,\\mathrm{d}x \\quad \\text{et} \\quad J_n = \\int_0^{\\pi} e^{-nx}\\cos(x)\\,\\mathrm{d}x.$$\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $I_0$.\n\nSaisis la valeur de $I_0$.",
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 2,
+          "tolerance": 0
+        },
+        "revoir": "l-integration-033",
+        "indices": [
+          "Pour $n = 0$, $e^{-0 \\times x} = 1$ : $I_0$ est l'intégrale de la fonction sinus sur $[0\\,;\\,\\pi]$. Cherche une primitive de $\\sin$ dans le tableau du cours.",
+          "Une primitive de $\\sin$ est $-\\cos$ : calcule $\\big[-\\cos(x)\\big]_0^{\\pi}$, en mettant la valeur en $0$ entre parenthèses."
+        ],
+        "attenduCorrecteur": "- $I_0 = \\displaystyle\\int_0^{\\pi}\\sin(x)\\,\\mathrm{d}x$, avec la primitive $-\\cos$ : 0,25 pt.\n- $I_0 = -\\cos(\\pi) - \\big(-\\cos(0)\\big) = 1 + 1 = 2$ : 0,25 pt.",
+        "solution": "Pour $n = 0$, $e^{-0 \\times x} = e^0 = 1$, donc $I_0 = \\displaystyle\\int_0^{\\pi} \\sin(x)\\,\\mathrm{d}x$. Une primitive de $\\sin$ est $-\\cos$ :$$I_0 = \\big[-\\cos(x)\\big]_0^{\\pi} = -\\cos(\\pi) - \\big(-\\cos(0)\\big) = 1 + 1 = 2.$$",
+        "erreurFrequente": "Prendre $\\cos$ comme primitive de $\\sin$ : c'est $-\\cos$, car la dérivée de $\\cos$ est $-\\sin$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Dans cette question, on étudie le signe et le sens de variation de la suite $(I_n)$.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Justifier que, pour tout entier naturel $n$, on a $I_n \\geqslant 0$.",
+            "points": 0.25,
+            "revoir": "l-integration-044",
+            "indices": [
+              "Étudie le signe de $e^{-nx}\\sin(x)$ pour $x$ dans $[0\\,;\\,\\pi]$, puis applique la positivité de l'intégrale, en vérifiant que les bornes sont dans l'ordre croissant."
+            ],
+            "attenduCorrecteur": "- Pour $x \\in [0\\,;\\,\\pi]$ : $e^{-nx} > 0$ et $\\sin(x) \\geqslant 0$, donc $e^{-nx}\\sin(x) \\geqslant 0$ ; comme $0 \\leqslant \\pi$, la positivité donne $I_n \\geqslant 0$ : 0,25 pt.",
+            "solution": "Soit $n$ un entier naturel. Pour tout $x \\in [0\\,;\\,\\pi]$, $e^{-nx} > 0$ et $\\sin(x) \\geqslant 0$, donc $e^{-nx}\\sin(x) \\geqslant 0$. La fonction $x \\mapsto e^{-nx}\\sin(x)$ est continue et positive sur $[0\\,;\\,\\pi]$, et $0 \\leqslant \\pi$ : par positivité de l'intégrale, $I_n \\geqslant 0$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Donner une interprétation graphique de $I_n$.",
+            "points": 0.25,
+            "revoir": "l-integration-003",
+            "indices": [
+              "L'intégrale d'une fonction continue et positive, avec des bornes dans l'ordre croissant, est une aire : celle de quel domaine, limité par quelles droites ?"
+            ],
+            "attenduCorrecteur": "- $I_n$ est l'aire, en unités d'aire, du domaine délimité par la courbe de $x \\mapsto e^{-nx}\\sin(x)$, l'axe des abscisses et les droites d'équations $x = 0$ et $x = \\pi$, car la fonction est continue et positive sur $[0\\,;\\,\\pi]$ : 0,25 pt.",
+            "solution": "D'après la question a), la fonction $x \\mapsto e^{-nx}\\sin(x)$ est continue et positive sur $[0\\,;\\,\\pi]$. Donc $I_n$ est l'aire, en unités d'aire, du domaine délimité par la courbe de cette fonction, l'axe des abscisses et les droites d'équations $x = 0$ et $x = \\pi$.\n\nPar exemple, $I_0 = 2$ est l'aire sous une arche de la courbe de la fonction sinus."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "Montrer que, pour tout entier naturel $n$, on a $I_{n+1} - I_n \\leqslant 0$.",
+            "points": 0.5,
+            "revoir": "l-integration-080",
+            "indices": [
+              "Par linéarité, écris $I_{n+1} - I_n$ comme une seule intégrale, puis factorise par $e^{-nx}\\sin(x)$, sachant que $e^{-(n+1)x} = e^{-nx} \\times e^{-x}$.",
+              "Sur $[0\\,;\\,\\pi]$, compare $e^{-x}$ à $1$ : $-x \\leqslant 0$ et l'exponentielle est croissante."
+            ],
+            "attenduCorrecteur": "- Linéarité : $I_{n+1} - I_n = \\displaystyle\\int_0^{\\pi} e^{-nx}\\left(e^{-x} - 1\\right)\\sin(x)\\,\\mathrm{d}x$ : 0,25 pt.\n- Sur $[0\\,;\\,\\pi]$ : $e^{-nx} > 0$, $\\sin(x) \\geqslant 0$ et $e^{-x} - 1 \\leqslant 0$, car $-x \\leqslant 0$ ; la fonction intégrée est négative et $0 \\leqslant \\pi$, donc $I_{n+1} - I_n \\leqslant 0$ : 0,25 pt.",
+            "solution": "Soit $n$ un entier naturel. Par linéarité, et comme $e^{-(n+1)x} = e^{-nx} \\times e^{-x}$ :$$I_{n+1} - I_n = \\int_0^{\\pi} \\left(e^{-(n+1)x} - e^{-nx}\\right)\\sin(x)\\,\\mathrm{d}x = \\int_0^{\\pi} e^{-nx}\\left(e^{-x} - 1\\right)\\sin(x)\\,\\mathrm{d}x.$$Pour $x \\in [0\\,;\\,\\pi]$ : $-x \\leqslant 0$, donc $e^{-x} \\leqslant e^0 = 1$, car l'exponentielle est croissante, et $e^{-x} - 1 \\leqslant 0$ ; de plus, $e^{-nx} > 0$ et $\\sin(x) \\geqslant 0$. La fonction intégrée est donc négative sur $[0\\,;\\,\\pi]$, et $0 \\leqslant \\pi$ : son intégrale est négative.\n\nDonc $I_{n+1} - I_n \\leqslant 0$."
+          },
+          {
+            "id": "q2d",
+            "label": "d)",
+            "enonce": "Déduire des questions précédentes que la suite $(I_n)$ converge.",
+            "points": 0.25,
+            "revoir": "l-limites-suites-051",
+            "indices": [
+              "Une suite décroissante et minorée converge : relis le théorème, puis vérifie ses deux hypothèses avec a) et c)."
+            ],
+            "attenduCorrecteur": "- $(I_n)$ est décroissante (question c) et minorée par $0$ (question a) ; une suite décroissante et minorée converge : 0,25 pt.",
+            "solution": "D'après la question c), la suite $(I_n)$ est décroissante ; d'après la question a), elle est minorée par $0$. Or une suite décroissante et minorée converge.\n\nDonc la suite $(I_n)$ converge."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Dans cette question, on détermine la limite de la suite $(I_n)$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout entier naturel $n$, on a $$I_n \\leqslant \\int_0^{\\pi} e^{-nx}\\,\\mathrm{d}x.$$",
+            "points": 0.5,
+            "revoir": "l-integration-047",
+            "indices": [
+              "Majore $\\sin(x)$ sur $[0\\,;\\,\\pi]$ par une constante, puis multiplie l'inégalité par $e^{-nx}$, dont tu connais le signe.",
+              "Intègre ensuite l'inégalité obtenue entre $0$ et $\\pi$ : les bornes sont dans l'ordre croissant, le sens est conservé."
+            ],
+            "attenduCorrecteur": "- $\\sin(x) \\leqslant 1$ et $e^{-nx} > 0$, donc $e^{-nx}\\sin(x) \\leqslant e^{-nx}$ sur $[0\\,;\\,\\pi]$ : 0,25 pt.\n- Intégration de l'inégalité, avec $0 \\leqslant \\pi$ et des fonctions continues : $I_n \\leqslant \\displaystyle\\int_0^{\\pi} e^{-nx}\\,\\mathrm{d}x$ : 0,25 pt.",
+            "solution": "Soit $n$ un entier naturel. Pour tout $x \\in [0\\,;\\,\\pi]$, $\\sin(x) \\leqslant 1$ ; en multipliant par $e^{-nx} > 0$, on obtient $e^{-nx}\\sin(x) \\leqslant e^{-nx}$. Les deux fonctions sont continues sur $[0\\,;\\,\\pi]$ et $0 \\leqslant \\pi$ : en intégrant cette inégalité,$$I_n \\leqslant \\int_0^{\\pi} e^{-nx}\\,\\mathrm{d}x.$$"
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Montrer que, pour tout entier naturel $n \\geqslant 1$, on a $$\\int_0^{\\pi} e^{-nx}\\,\\mathrm{d}x = \\dfrac{1 - e^{-n\\pi}}{n}.$$",
+            "points": 0.5,
+            "revoir": "l-integration-034",
+            "indices": [
+              "Pour $n \\geqslant 1$, une primitive de $x \\mapsto e^{-nx}$ est de la forme $x \\mapsto k\\,e^{-nx}$ : trouve $k$ en dérivant.",
+              "Calcule ensuite le crochet entre $0$ et $\\pi$, avec $e^0 = 1$, et mets la valeur en $0$ entre parenthèses."
+            ],
+            "attenduCorrecteur": "- Primitive $x \\mapsto -\\dfrac{1}{n}e^{-nx}$, avec $n \\neq 0$ : 0,25 pt.\n- $\\left[-\\dfrac{1}{n}e^{-nx}\\right]_0^{\\pi} = -\\dfrac{e^{-n\\pi}}{n} + \\dfrac{1}{n} = \\dfrac{1 - e^{-n\\pi}}{n}$ : 0,25 pt.",
+            "solution": "Soit $n \\geqslant 1$. La fonction $x \\mapsto -\\dfrac{1}{n}e^{-nx}$ a pour dérivée $x \\mapsto -\\dfrac{1}{n} \\times (-n)e^{-nx} = e^{-nx}$ : c'est une primitive de $x \\mapsto e^{-nx}$ sur $\\mathbb{R}$. Donc :$$\\int_0^{\\pi} e^{-nx}\\,\\mathrm{d}x = \\left[-\\dfrac{1}{n}e^{-nx}\\right]_0^{\\pi} = -\\dfrac{1}{n}e^{-n\\pi} - \\left(-\\dfrac{1}{n}e^0\\right) = \\dfrac{1 - e^{-n\\pi}}{n}.$$",
+            "erreurFrequente": "Écrire $-ne^{-nx}$ comme primitive de $e^{-nx}$ : c'est sa dérivée qui fait apparaître le facteur $-n$ ; une primitive, elle, est divisée par $-n$."
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "Déduire des deux questions précédentes la limite de la suite $(I_n)$.\n\nSaisis cette limite.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0,
+              "tolerance": 0
+            },
+            "revoir": "l-limites-suites-031",
+            "indices": [
+              "Pour $n \\geqslant 1$, encadre $I_n$ entre le minorant obtenu à la question 2.a et le résultat de la question b).",
+              "Comme $e^{-n\\pi}$ est strictement positif, le majorant $\\dfrac{1 - e^{-n\\pi}}{n}$ est inférieur à $\\dfrac{1}{n}$ : conclus avec le théorème des gendarmes."
+            ],
+            "attenduCorrecteur": "- Pour $n \\geqslant 1$ : $0 \\leqslant I_n \\leqslant \\dfrac{1 - e^{-n\\pi}}{n} \\leqslant \\dfrac{1}{n}$ : 0,25 pt.\n- $\\lim\\limits_{n \\to +\\infty}\\dfrac{1}{n} = 0$ ; théorème des gendarmes : $\\lim\\limits_{n \\to +\\infty} I_n = 0$ : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$, d'après les questions 2.a, 3.a et 3.b, et comme $e^{-n\\pi} > 0$ :$$0 \\leqslant I_n \\leqslant \\dfrac{1 - e^{-n\\pi}}{n} \\leqslant \\dfrac{1}{n}.$$Or $\\lim\\limits_{n \\to +\\infty} \\dfrac{1}{n} = 0$. D'après le théorème des gendarmes :$$\\lim_{n \\to +\\infty} I_n = 0.$$"
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Dans cette question, on cherche une expression de $I_n$ en fonction de $n$.",
+        "points": 1.75,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Soit $n$ un entier naturel, $n \\geqslant 1$. On intègre $I_n$ par parties de deux façons différentes.\n\n- En posant $u(x) = e^{-nx}$ et $v'(x) = \\sin(x)$, établir que $I_n = 1 + e^{-n\\pi} - nJ_n$.\n- En posant $u(x) = \\sin(x)$ et $v'(x) = e^{-nx}$, établir que $I_n = \\dfrac{1}{n}J_n$.",
+            "points": 1,
+            "revoir": "l-integration-067",
+            "indices": [
+              "Les choix de $u$ et $v'$ sont imposés : pour chacun, écris $u'$ et une primitive $v$ de $v'$ (pour $e^{-nx}$, reprends la question 3.b), puis applique la formule d'intégration par parties. Dans les deux cas, l'intégrale qui reste contient $e^{-nx}\\cos(x)$ : reconnais $J_n$, à un facteur constant près.",
+              "Pour les crochets : $\\cos(0) = 1$, $\\cos(\\pi) = -1$, $\\sin(0) = \\sin(\\pi) = 0$ et $e^0 = 1$. Pour les signes, garde des parenthèses : dans la première façon, simplifie le produit $\\left(-ne^{-nx}\\right) \\times \\left(-\\cos(x)\\right)$ avant d'appliquer le signe moins de la formule."
+            ],
+            "attenduCorrecteur": "- Première intégration par parties, avec les choix imposés : $u'(x) = -ne^{-nx}$, $v(x) = -\\cos(x)$, $u'$ et $v'$ continues, d'où $I_n = \\big[-e^{-nx}\\cos(x)\\big]_0^{\\pi} - n\\displaystyle\\int_0^{\\pi} e^{-nx}\\cos(x)\\,\\mathrm{d}x$, signes justes : 0,25 pt.\n- Crochet égal à $e^{-n\\pi} + 1$, avec $\\cos(\\pi) = -1$ et $\\cos(0) = 1$ ; intégrale restante reconnue comme $J_n$, d'où $I_n = 1 + e^{-n\\pi} - nJ_n$ : 0,25 pt.\n- Seconde intégration par parties, avec les choix imposés : $u'(x) = \\cos(x)$, $v(x) = -\\dfrac{1}{n}e^{-nx}$, d'où $I_n = \\left[-\\dfrac{1}{n}e^{-nx}\\sin(x)\\right]_0^{\\pi} + \\dfrac{1}{n}\\displaystyle\\int_0^{\\pi} e^{-nx}\\cos(x)\\,\\mathrm{d}x$ : 0,25 pt.\n- Crochet nul, car $\\sin(0) = \\sin(\\pi) = 0$ ; d'où $I_n = \\dfrac{1}{n}J_n$ : 0,25 pt.",
+            "solution": "Soit $n \\geqslant 1$. Les fonctions utilisées ci-dessous sont dérivables sur $[0\\,;\\,\\pi]$, de dérivées continues.\n\nRemarque : d'habitude, on choisit $u$ pour que la nouvelle intégrale soit plus simple. Ici, aucune des deux façons ne simplifie : chacune remplace $I_n$ par $J_n$. Mais les deux relations obtenues forment un système, que la question b) résout.\n\n**Première façon.** On pose $u(x) = e^{-nx}$ et $v'(x) = \\sin(x)$, d'où $u'(x) = -ne^{-nx}$ et $v(x) = -\\cos(x)$. Alors :$$I_n = \\Big[-e^{-nx}\\cos(x)\\Big]_0^{\\pi} - \\int_0^{\\pi} \\left(-ne^{-nx}\\right)\\left(-\\cos(x)\\right)\\mathrm{d}x = \\Big[-e^{-nx}\\cos(x)\\Big]_0^{\\pi} - n\\int_0^{\\pi} e^{-nx}\\cos(x)\\,\\mathrm{d}x.$$Avec $\\cos(\\pi) = -1$ et $\\cos(0) = 1$, le crochet vaut $-e^{-n\\pi} \\times (-1) - \\left(-e^0 \\times 1\\right) = e^{-n\\pi} + 1$. Donc $I_n = 1 + e^{-n\\pi} - nJ_n$.\n\n**Seconde façon.** On pose $u(x) = \\sin(x)$ et $v'(x) = e^{-nx}$, d'où $u'(x) = \\cos(x)$ et $v(x) = -\\dfrac{1}{n}e^{-nx}$ (question 3.b). Alors :$$I_n = \\left[-\\dfrac{1}{n}e^{-nx}\\sin(x)\\right]_0^{\\pi} - \\int_0^{\\pi} \\cos(x) \\times \\left(-\\dfrac{1}{n}e^{-nx}\\right)\\mathrm{d}x = \\left[-\\dfrac{1}{n}e^{-nx}\\sin(x)\\right]_0^{\\pi} + \\dfrac{1}{n}\\int_0^{\\pi} e^{-nx}\\cos(x)\\,\\mathrm{d}x.$$Comme $\\sin(0) = \\sin(\\pi) = 0$, le crochet est nul. Donc $I_n = \\dfrac{1}{n}J_n$.",
+            "erreurFrequente": "Perdre un signe moins dans la première façon : $\\left(-ne^{-nx}\\right) \\times \\left(-\\cos(x)\\right) = ne^{-nx}\\cos(x)$, puis le signe moins de la formule donne $-nJ_n$."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "En déduire que, pour tout entier naturel $n \\geqslant 1$, on a $$I_n = \\dfrac{1 + e^{-n\\pi}}{n^2 + 1}.$$",
+            "points": 0.75,
+            "revoir": "l-integration-083",
+            "indices": [
+              "La seconde relation donne $J_n$ en fonction de $I_n$ : remplace ensuite $J_n$ dans la première relation.",
+              "Tu obtiens une équation d'inconnue $I_n$ : regroupe les termes en $I_n$ du même côté, factorise, puis divise par le coefficient, qui est non nul."
+            ],
+            "attenduCorrecteur": "- Seconde relation : $J_n = nI_n$ : 0,25 pt.\n- Report dans la première : $I_n = 1 + e^{-n\\pi} - n^2I_n$ : 0,25 pt.\n- $\\left(n^2 + 1\\right)I_n = 1 + e^{-n\\pi}$ et $n^2 + 1 \\neq 0$, d'où $I_n = \\dfrac{1 + e^{-n\\pi}}{n^2 + 1}$ : 0,25 pt.",
+            "solution": "Soit $n \\geqslant 1$. La seconde relation donne $J_n = nI_n$. En reportant dans la première :$$I_n = 1 + e^{-n\\pi} - n \\times nI_n, \\quad \\text{soit} \\quad I_n + n^2I_n = 1 + e^{-n\\pi}, \\quad \\text{c'est-à-dire} \\quad \\left(n^2 + 1\\right)I_n = 1 + e^{-n\\pi}.$$Comme $n^2 + 1 \\neq 0$ :$$I_n = \\dfrac{1 + e^{-n\\pi}}{n^2 + 1}.$$Contrôle : pour $n = 0$, la formule donne $\\dfrac{1 + 1}{1} = 2 = I_0$."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "On souhaite obtenir le rang $n$ à partir duquel la suite $(I_n)$ devient inférieure à $0{,}1$. On considère le script ci-dessous, écrit en langage Python, dont la cinquième ligne est à compléter.",
+        "code": {
+          "langage": "python",
+          "source": "from math import *\ndef seuil():\n    n = 0\n    I = 2\n    ...\n        n = n + 1\n        I = (1 + exp(-n*pi))/(n*n + 1)\n    return n"
+        },
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Recopier et compléter la cinquième ligne du script avec la commande appropriée.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-064",
+            "indices": [
+              "La boucle doit calculer les termes successifs tant que le seuil n'est pas atteint : c'est une boucle while.",
+              "La condition écrite après while est celle qui fait continuer la boucle, pas celle qui l'arrête : traduis « $I_n$ n'est pas encore inférieur à $0{,}1$ »."
+            ],
+            "attenduCorrecteur": "- Ligne complétée : $\\texttt{while I >= 0{.}1:}$ : 0,25 pt.\n- Justification : la boucle calcule les termes successifs tant que $I_n \\geqslant 0{,}1$, et s'arrête au premier rang $n$ où $I_n < 0{,}1$, que la fonction renvoie : 0,25 pt.",
+            "solution": "Au départ, la variable I contient $I_0 = 2$ (question 1) et n vaut $0$. Tant que le terme contenu dans I n'est pas inférieur à $0{,}1$, il faut passer au rang suivant : augmenter n de $1$, puis calculer $I_n$ avec la formule de la question 4.b. La boucle s'arrête dès que $I_n < 0{,}1$, et la fonction renvoie ce rang n. La cinquième ligne est donc :$$\\texttt{while I >= 0{.}1:}$$",
+            "erreurFrequente": "Écrire $\\texttt{while I < 0{.}1:}$ : c'est la condition d'arrêt. Comme $I_0 = 2$, la boucle ne tournerait pas une seule fois, et la fonction renverrait $0$."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Sans calculatrice, déterminer la valeur renvoyée par seuil(). On pourra utiliser l'inégalité $e > 2$.\n\nSaisis cette valeur.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 4,
+              "tolerance": 0
+            },
+            "revoir": "l-logarithme-024",
+            "indices": [
+              "Avec l'expression de $I_n$ trouvée plus haut, compare les premiers termes $I_1$, $I_2$, … à $0{,}1$ : le dénominateur $n^2 + 1$ vaut $2$, $5$, $10$, … La suite étant décroissante, il suffit de trouver le premier rang où $I_n < 0{,}1$.",
+              "$e^{-n\\pi}$ est strictement positif ; pour le majorer, utilise la croissance de l'exponentielle : $-n\\pi < -1$ pour $n \\geqslant 1$, et $e^{-1} = \\dfrac{1}{e} < \\dfrac{1}{2}$, car $e > 2$."
+            ],
+            "attenduCorrecteur": "- $I_3 = \\dfrac{1 + e^{-3\\pi}}{10} > \\dfrac{1}{10}$, car $e^{-3\\pi} > 0$ ; la suite étant décroissante, $I_1$, $I_2$ et $I_3$ sont supérieurs à $0{,}1$ et la boucle continue jusqu'au rang $3$ inclus : 0,25 pt.\n- $e^{-4\\pi} < e^{-1} < \\dfrac{1}{2}$, donc $I_4 < \\dfrac{1{,}5}{17} < \\dfrac{1{,}7}{17} = 0{,}1$ ; la fonction renvoie $4$ : 0,25 pt.",
+            "solution": "D'après la question 4.b, $I_n = \\dfrac{1 + e^{-n\\pi}}{n^2 + 1}$ pour $n \\geqslant 1$.\n\n- Pour $n = 3$ : $I_3 = \\dfrac{1 + e^{-3\\pi}}{10} > \\dfrac{1}{10} = 0{,}1$, car $e^{-3\\pi} > 0$. Comme la suite est décroissante (question 2.c), $I_1 \\geqslant I_2 \\geqslant I_3 > 0{,}1$ : la boucle continue pour $n = 1$, $2$ et $3$.\n- Pour $n = 4$ : $-4\\pi < -1$ et l'exponentielle est croissante, donc $e^{-4\\pi} < e^{-1} = \\dfrac{1}{e} < \\dfrac{1}{2}$, car $e > 2$. Ainsi $1 + e^{-4\\pi} < 1{,}5$ et $I_4 = \\dfrac{1 + e^{-4\\pi}}{17} < \\dfrac{1{,}5}{17} < \\dfrac{1{,}7}{17} = 0{,}1$ : la boucle s'arrête.\n\nLa fonction seuil() renvoie donc $4$ : à partir du rang $4$, la suite $(I_n)$ est inférieure à $0{,}1$, puisqu'elle est décroissante."
+          }
+        ]
+      }
+    ]
+  }
+]

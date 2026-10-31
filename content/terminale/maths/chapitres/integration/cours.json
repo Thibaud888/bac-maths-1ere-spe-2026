@@ -1,0 +1,1494 @@
+{
+  "chapitre": "integration",
+  "sections": [
+    {
+      "notion": "n-integration-aire",
+      "blocs": [
+        {
+          "id": "l-integration-001",
+          "type": "idee",
+          "texte": "Une voiture roule à $20$ mètres par seconde pendant $10$ secondes : elle parcourt $20 \\times 10 = 200$ mètres. Sur le graphique de sa vitesse, ce produit est l'aire d'un rectangle. Si la vitesse change, la distance reste l'**aire sous la courbe** de la vitesse. Mesurer l'aire sous une courbe, c'est le but de l'**intégrale**. Tu vas d'abord l'estimer avec des carreaux et des rectangles ; la notion suivante la calculera exactement."
+        },
+        {
+          "id": "l-integration-002",
+          "type": "rappel",
+          "titre": "Rappel : fonction continue, aires usuelles",
+          "lien": "n-continuite-fonction-continue",
+          "texte": "**Fonction continue** : une fonction est continue sur un intervalle quand sa courbe se trace sans lever le crayon. Toute fonction dérivable est continue : les polynômes, $x \\mapsto e^x$, $\\ln$, $\\sin$, $\\cos$, et leurs sommes, produits, quotients et composées, sur chaque intervalle où elles sont définies. La racine carrée est continue sur $[0\\,;\\,+\\infty[$.\n\n**Aires usuelles** :\n\n- rectangle de côtés $L$ et $\\ell$ : $L \\times \\ell$ ;\n- triangle de base $B$ et de hauteur $h$ : $\\dfrac{B \\times h}{2}$ ;\n- trapèze de bases $B$ et $b$ et de hauteur $h$ : $\\dfrac{(B + b) \\times h}{2}$ ;\n- disque de rayon $r$ : $\\pi r^2$."
+        },
+        {
+          "id": "l-integration-003",
+          "type": "definition",
+          "titre": "Intégrale d'une fonction continue et positive",
+          "capacites": ["bo-m-integrale-01"],
+          "texte": "Le plan est muni d'un repère orthogonal $(O\\,;\\,I,\\,J)$. L'**unité d'aire** (u.a.) est l'aire du rectangle construit sur $[OI]$ et $[OJ]$.\n\nSoit $f$ une fonction continue et positive sur un **segment** $[a\\,;\\,b]$ (intervalle fermé et borné), avec $a < b$, et $\\mathcal{C}_f$ sa courbe. Le **domaine sous la courbe** est l'ensemble des points $M(x\\,;\\,y)$ tels que $a \\leqslant x \\leqslant b$ et $0 \\leqslant y \\leqslant f(x)$.\n\nL'**intégrale de $a$ à $b$ de $f$** est l'aire de ce domaine, en u.a. On la note :$$\\int_a^b f(x)\\,\\mathrm{d}x.$$Cela se lit « intégrale de $a$ à $b$ de $f(x)\\,\\mathrm{d}x$ ». Les réels $a$ et $b$ sont les **bornes**. Le symbole $\\mathrm{d}x$ indique la **variable d'intégration**, $x$, qui est **muette** : $\\int_a^b f(t)\\,\\mathrm{d}t$ désigne le même nombre. On pose aussi $\\int_a^a f(x)\\,\\mathrm{d}x = 0$."
+        },
+        {
+          "id": "l-integration-004",
+          "type": "figure",
+          "titre": "Le domaine sous la courbe",
+          "capacites": ["bo-m-integrale-01"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/integration/domaine-sous-courbe.svg",
+              "width": 340,
+              "height": 240,
+              "alt": "Dans un repère d'origine O, avec la même unité sur les deux axes, la courbe Cf d'une fonction f continue et positive : elle ondule au-dessus de l'axe des abscisses. Entre les droites verticales en pointillés d'abscisses a et b, le domaine D, colorié en bleu, est limité par la courbe en haut et par l'axe des abscisses en bas. Près de l'origine, un carré en pointillés de côté 1 représente l'unité d'aire, notée 1 u.a."
+            },
+            "caption": "L'intégrale de a à b de f(x) dx est l'aire du domaine D, mesurée en unités d'aire."
+          }
+        },
+        {
+          "id": "l-integration-005",
+          "type": "exemple",
+          "titre": "Des intégrales qui se calculent avec des aires connues",
+          "capacites": ["bo-m-integrale-01"],
+          "enonce": "Le plan est muni d'un repère orthonormé. Calculer les intégrales suivantes en reconnaissant l'aire d'une figure simple.\n\n**a.** $\\displaystyle\\int_0^3 2\\,\\mathrm{d}x$ ;\n\n**b.** $\\displaystyle\\int_0^4 \\frac{x}{2}\\,\\mathrm{d}x$ ;\n\n**c.** $\\displaystyle\\int_1^3 (x + 1)\\,\\mathrm{d}x$ ;\n\n**d.** $\\displaystyle\\int_{-2}^{2} \\sqrt{4 - x^2}\\,\\mathrm{d}x$.\n\n**e.** Dans le repère, une unité mesure $2$ cm sur chaque axe. Donner en cm² l'aire du domaine de la question **c**.",
+          "etapes": [
+            {
+              "texte": "**a.** La fonction constante $x \\mapsto 2$ est continue et positive. Entre $x = 0$ et $x = 3$, le domaine sous sa courbe est un rectangle de largeur $3$ et de hauteur $2$. Donc $\\displaystyle\\int_0^3 2\\,\\mathrm{d}x = 3 \\times 2 = 6$.",
+              "pourquoi": "La courbe d'une fonction constante est une droite horizontale : sous elle, on trouve un rectangle."
+            },
+            {
+              "texte": "**b.** Sur $[0\\,;\\,4]$, $\\dfrac{x}{2} \\geqslant 0$. Le domaine est le triangle de sommets $(0\\,;\\,0)$, $(4\\,;\\,0)$ et $(4\\,;\\,2)$, car $\\dfrac{4}{2} = 2$. Son aire vaut $\\dfrac{4 \\times 2}{2} = 4$, donc $\\displaystyle\\int_0^4 \\frac{x}{2}\\,\\mathrm{d}x = 4$.",
+              "pourquoi": "La courbe est une droite qui passe par l'origine : le domaine est un triangle rectangle de base $4$ et de hauteur $2$."
+            },
+            {
+              "texte": "**c.** Sur $[1\\,;\\,3]$, $x + 1 > 0$. Le domaine est un trapèze : ses deux côtés verticaux mesurent $1 + 1 = 2$ et $3 + 1 = 4$, et sa hauteur, horizontale, mesure $3 - 1 = 2$. Donc $\\displaystyle\\int_1^3 (x + 1)\\,\\mathrm{d}x = \\frac{(4 + 2) \\times 2}{2} = 6$.",
+              "pourquoi": "Ici, le trapèze est « couché » : ses bases sont les segments verticaux en $x = 1$ et en $x = 3$."
+            },
+            {
+              "texte": "**d.** Sur $[-2\\,;\\,2]$, $x^2 \\leqslant 4$, donc $4 - x^2 \\geqslant 0$ : la fonction $x \\mapsto \\sqrt{4 - x^2}$ y est définie, continue (composée de fonctions continues) et positive. Pour $x$ dans $[-2\\,;\\,2]$ et $y = \\sqrt{4 - x^2}$, on a $y \\geqslant 0$ et $y^2 = 4 - x^2$, soit $x^2 + y^2 = 4$. Le point $M(x\\,;\\,y)$ est donc sur le cercle de centre $O$ et de rayon $2$, dans sa moitié supérieure.",
+              "pourquoi": "Dans un repère orthonormé, $x^2 + y^2 = OM^2$ : $OM^2 = 4$ signifie $OM = 2$."
+            },
+            {
+              "texte": "Le domaine est le demi-disque de centre $O$ et de rayon $2$ : $\\displaystyle\\int_{-2}^{2} \\sqrt{4 - x^2}\\,\\mathrm{d}x = \\frac{\\pi \\times 2^2}{2} = 2\\pi$."
+            },
+            {
+              "texte": "**e.** Une unité d'aire est l'aire d'un carré de $2$ cm de côté, soit $2 \\times 2 = 4$ cm². L'aire du domaine de la question **c** vaut donc $6 \\times 4 = 24$ cm².",
+              "pourquoi": "On multiplie le nombre d'unités d'aire par l'aire d'une unité, et non par $2$ : chaque unité est un carré de $2$ cm sur $2$ cm."
+            },
+            {
+              "texte": "**Conclusion** : $\\displaystyle\\int_0^3 2\\,\\mathrm{d}x = 6$, $\\displaystyle\\int_0^4 \\frac{x}{2}\\,\\mathrm{d}x = 4$, $\\displaystyle\\int_1^3 (x + 1)\\,\\mathrm{d}x = 6$ u.a., soit $24$ cm², et $\\displaystyle\\int_{-2}^{2} \\sqrt{4 - x^2}\\,\\mathrm{d}x = 2\\pi$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-006",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-01"],
+          "question": {
+            "enonce": "En reconnaissant l'aire d'un trapèze, calcule $\\displaystyle\\int_0^3 (x + 1)\\,\\mathrm{d}x$.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 7.5,
+              "tolerance": 0
+            },
+            "explication": "Sur $[0\\,;\\,3]$, $x + 1 > 0$. Le domaine est un trapèze de côtés verticaux $0 + 1 = 1$ et $3 + 1 = 4$, et de largeur $3$ : son aire vaut $\\dfrac{(1 + 4) \\times 3}{2} = 7{,}5$."
+          }
+        },
+        {
+          "id": "l-integration-007",
+          "type": "methode",
+          "titre": "Comment estimer graphiquement une intégrale ?",
+          "capacites": ["bo-m-integrale-09"],
+          "etapes": [
+            "Vérifie que $f$ est positive sur $[a\\,;\\,b]$ : l'intégrale est alors l'aire du domaine sous la courbe.",
+            "Calcule l'aire d'un carreau en unités d'aire : un carreau de $0{,}5$ sur $0{,}5$ vaut $0{,}25$ u.a.",
+            "Compte les carreaux **entièrement** sous la courbe : leur aire totale est une valeur par défaut de l'intégrale.",
+            "Ajoute les carreaux **traversés** par la courbe : l'aire de tous ces carreaux est une valeur par excès.",
+            "Conclus par un encadrement. Pour une estimation, prends les carreaux entiers plus la moitié des carreaux traversés."
+          ],
+          "exemple": "l-integration-009"
+        },
+        {
+          "id": "l-integration-008",
+          "type": "figure",
+          "titre": "Compter les carreaux sous la parabole",
+          "capacites": ["bo-m-integrale-09"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/integration/carreaux-parabole.svg",
+              "width": 240,
+              "height": 300,
+              "alt": "Dans un repère orthonormé, sur un quadrillage de carreaux de 0,5 sur 0,5, la parabole d'équation y = 4 − x² descend du point (0 ; 4) au point (2 ; 0). Colonne par colonne, de gauche à droite, les carreaux entièrement sous la parabole sont coloriés en bleu : 7, puis 6, puis 3, puis 0. Les carreaux traversés par la courbe sont coloriés en orange : 1, puis 2, puis 3, puis 4."
+            },
+            "caption": "En bleu, les carreaux entièrement sous la courbe ; en orange, les carreaux que la courbe traverse."
+          }
+        },
+        {
+          "id": "l-integration-009",
+          "type": "exemple",
+          "titre": "Encadrer une intégrale en comptant les carreaux",
+          "capacites": ["bo-m-integrale-09", "bo-m-integrale-01"],
+          "enonce": "La figure ci-dessus représente, dans un repère orthonormé, la fonction $f : x \\mapsto 4 - x^2$ sur $[0\\,;\\,2]$, sur un quadrillage dont chaque carreau mesure $0{,}5$ sur $0{,}5$. On note $I = \\displaystyle\\int_0^2 \\left(4 - x^2\\right)\\mathrm{d}x$.\n\nEncadrer $I$ en comptant les carreaux, puis en donner une estimation.",
+          "etapes": [
+            {
+              "texte": "Sur $[0\\,;\\,2]$, $x^2 \\leqslant 4$, donc $f(x) \\geqslant 0$ : $I$ est l'aire, en u.a., du domaine sous la parabole.",
+              "pourquoi": "Pour $0 \\leqslant x \\leqslant 2$, $x^2 \\leqslant 2^2 = 4$."
+            },
+            {
+              "texte": "Un carreau mesure $0{,}5$ sur $0{,}5$ : son aire vaut $0{,}5 \\times 0{,}5 = 0{,}25$ u.a. Il faut $4$ carreaux pour faire une unité d'aire."
+            },
+            {
+              "texte": "Carreaux entièrement sous la courbe (en bleu), colonne par colonne de gauche à droite : $7$, $6$, $3$ et $0$, soit $16$ carreaux.",
+              "pourquoi": "$f$ est décroissante sur $[0\\,;\\,2]$ : dans chaque colonne, la courbe est la plus basse à droite. Par exemple, dans la colonne de $1$ à $1{,}5$, la courbe descend jusqu'à $f(1{,}5) = 1{,}75$ : $3$ carreaux de hauteur $0{,}5$ tiennent dessous."
+            },
+            {
+              "texte": "Carreaux traversés par la courbe (en orange) : $1$, $2$, $3$ et $4$, soit $10$ carreaux. Le domaine est contenu dans les $16 + 10 = 26$ carreaux coloriés.",
+              "pourquoi": "Dans la première colonne, par exemple, la courbe passe de $f(0) = 4$ à $f(0{,}5) = 3{,}75$ : elle traverse le carreau compris entre les hauteurs $3{,}5$ et $4$."
+            },
+            {
+              "texte": "Donc $16 \\times 0{,}25 \\leqslant I \\leqslant 26 \\times 0{,}25$, c'est-à-dire $4 \\leqslant I \\leqslant 6{,}5$."
+            },
+            {
+              "texte": "Estimation : $16 + \\dfrac{10}{2} = 21$ carreaux, soit $21 \\times 0{,}25 = 5{,}25$ u.a."
+            },
+            {
+              "texte": "**Conclusion** : $4 \\leqslant I \\leqslant 6{,}5$, et $I \\approx 5{,}25$ u.a. La notion suivante donnera la valeur exacte, $\\dfrac{16}{3} \\approx 5{,}33$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-010",
+          "type": "methode",
+          "titre": "Comment encadrer l'intégrale d'une fonction monotone par des rectangles ?",
+          "capacites": ["bo-m-integrale-09", "bo-m-integrale-19"],
+          "etapes": [
+            "Découpe $[a\\,;\\,b]$ en $n$ intervalles de même largeur $h = \\dfrac{b - a}{n}$, de bornes $x_k = a + kh$, pour $k$ allant de $0$ à $n$.",
+            "Sur chaque intervalle $[x_k\\,;\\,x_{k+1}]$, trace le rectangle de hauteur $f(x_k)$, dit rectangle « à gauche », et celui de hauteur $f(x_{k+1})$, dit rectangle « à droite ».",
+            "Regarde le sens de variation. Si $f$ est croissante, les rectangles à gauche sont sous la courbe et ceux à droite la dépassent. Si $f$ est décroissante, c'est l'inverse.",
+            "Additionne les aires : $s = h\\big(f(x_0) + f(x_1) + \\dots + f(x_{n-1})\\big)$ et $S = h\\big(f(x_1) + f(x_2) + \\dots + f(x_n)\\big)$.",
+            "Conclus : pour $f$ croissante, $s \\leqslant \\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x \\leqslant S$. Plus $n$ est grand, plus l'encadrement est fin."
+          ],
+          "exemple": "l-integration-012"
+        },
+        {
+          "id": "l-integration-011",
+          "type": "figure",
+          "titre": "Des rectangles sous et sur la courbe de $x \\mapsto x^2$",
+          "capacites": ["bo-m-integrale-09"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/integration/rectangles-carre.svg",
+              "width": 320,
+              "height": 310,
+              "alt": "Dans un repère orthonormé, la parabole d'équation y = x² pour x entre 0 et 1. L'intervalle [0 ; 1] est coupé en quatre intervalles de largeur 0,25. Sur chacun, un rectangle vert, dont la hauteur est la valeur de x² au bord gauche, reste sous la courbe ; un rectangle orange, plus haut, dont la hauteur est la valeur de x² au bord droit, dépasse la courbe. Les hauteurs vertes valent 0 ; 0,0625 ; 0,25 et 0,5625 ; les hauteurs orange valent 0,0625 ; 0,25 ; 0,5625 et 1."
+            },
+            "caption": "Les rectangles verts (à gauche) sont sous la courbe, les rectangles orange (à droite) la dépassent : l'aire sous la courbe est entre les deux."
+          }
+        },
+        {
+          "id": "l-integration-012",
+          "type": "exemple",
+          "titre": "Encadrer l'intégrale de $x^2$ sur $[0\\,;\\,1]$ avec quatre rectangles",
+          "capacites": ["bo-m-integrale-09", "bo-m-integrale-19"],
+          "enonce": "On note $I = \\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x$. En découpant $[0\\,;\\,1]$ en $4$ intervalles de même largeur, encadrer $I$ par les aires des rectangles à gauche et à droite (figure ci-dessus).",
+          "etapes": [
+            {
+              "texte": "La fonction carré est continue, positive et croissante sur $[0\\,;\\,1]$. La largeur vaut $h = \\dfrac{1 - 0}{4} = 0{,}25$, et les bornes sont $x_0 = 0$, $x_1 = 0{,}25$, $x_2 = 0{,}5$, $x_3 = 0{,}75$ et $x_4 = 1$.",
+              "pourquoi": "La fonction est croissante : sur chaque intervalle, sa plus petite valeur est au bord gauche, sa plus grande au bord droit."
+            },
+            {
+              "texte": "Les carrés de ces bornes valent $0$, $0{,}0625$, $0{,}25$, $0{,}5625$ et $1$.",
+              "pourquoi": "$0{,}25^2 = 0{,}0625$, $0{,}5^2 = 0{,}25$ et $0{,}75^2 = 0{,}5625$."
+            },
+            {
+              "texte": "Rectangles à gauche, sous la courbe : $s = 0{,}25 \\times (0 + 0{,}0625 + 0{,}25 + 0{,}5625) = 0{,}25 \\times 0{,}875 = 0{,}21875$."
+            },
+            {
+              "texte": "Rectangles à droite, qui dépassent la courbe : $S = 0{,}25 \\times (0{,}0625 + 0{,}25 + 0{,}5625 + 1) = 0{,}25 \\times 1{,}875 = 0{,}46875$."
+            },
+            {
+              "texte": "Le domaine sous la courbe contient les rectangles à gauche et il est contenu dans les rectangles à droite : $s \\leqslant I \\leqslant S$."
+            },
+            {
+              "texte": "**Conclusion** : $0{,}21875 \\leqslant I \\leqslant 0{,}46875$. L'écart vaut $0{,}25$ : il faut plus de rectangles pour un encadrement plus fin. La notion suivante montrera que $I = \\dfrac{1}{3}$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-013",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-19"],
+          "question": {
+            "enonce": "On découpe $[0\\,;\\,1]$ en $2$ intervalles de largeur $0{,}5$. Que vaut la somme des aires des rectangles à droite pour $f : x \\mapsto x^2$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.625,
+              "tolerance": 0
+            },
+            "explication": "Les rectangles à droite ont pour hauteurs $f(0{,}5) = 0{,}25$ et $f(1) = 1$ : $0{,}5 \\times (0{,}25 + 1) = 0{,}625$. C'est une valeur par excès de $\\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x$, car la fonction carré est croissante sur $[0\\,;\\,1]$."
+          }
+        },
+        {
+          "id": "l-integration-014",
+          "type": "code",
+          "titre": "Rectangles, milieux, trapèzes",
+          "capacites": ["bo-m-integrale-19"],
+          "code": {
+            "langage": "python",
+            "source": "def f(x):\n    return x ** 2\n\ndef rectangles_gauche(a, b, n):\n    h = (b - a) / n\n    s = 0\n    for k in range(n):\n        s = s + f(a + k * h)\n    return h * s\n\ndef rectangles_droite(a, b, n):\n    h = (b - a) / n\n    s = 0\n    for k in range(1, n + 1):\n        s = s + f(a + k * h)\n    return h * s\n\ndef milieux(a, b, n):\n    h = (b - a) / n\n    s = 0\n    for k in range(n):\n        s = s + f(a + k * h + h / 2)\n    return h * s\n\ndef trapezes(a, b, n):\n    h = (b - a) / n\n    s = 0\n    for k in range(n):\n        s = s + (f(a + k * h) + f(a + (k + 1) * h)) / 2\n    return h * s\n\nprint(rectangles_gauche(0, 1, 4))   # 0.21875\nprint(rectangles_droite(0, 1, 4))   # 0.46875\nprint(milieux(0, 1, 4))             # 0.328125\nprint(trapezes(0, 1, 4))            # 0.34375"
+          },
+          "texte": "Avec $h = \\dfrac{b - a}{n}$ et $x_k = a + kh$, les quatre fonctions renvoient une valeur approchée de $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ :\n\n- **rectangles à gauche** : $h\\big(f(x_0) + \\dots + f(x_{n-1})\\big)$ ;\n- **rectangles à droite** : $h\\big(f(x_1) + \\dots + f(x_n)\\big)$ ;\n- **milieux** : chaque rectangle a pour hauteur la valeur de $f$ au milieu $x_k + \\dfrac{h}{2}$ de son intervalle ;\n- **trapèzes** : chaque bande est remplacée par le trapèze d'aire $h \\times \\dfrac{f(x_k) + f(x_{k+1})}{2}$.\n\nÀ la main, pour $f(x) = x^2$ sur $[0\\,;\\,1]$ et $n = 2$, les milieux donnent $0{,}5 \\times \\big(f(0{,}25) + f(0{,}75)\\big) = 0{,}5 \\times (0{,}0625 + 0{,}5625) = 0{,}3125$. Pour $n = 4$, le programme affiche $0{,}21875$, $0{,}46875$, $0{,}328125$ et $0{,}34375$. La valeur exacte est $\\dfrac{1}{3} \\approx 0{,}3333$ : les milieux et les trapèzes en sont bien plus près que les rectangles."
+        },
+        {
+          "id": "l-integration-089",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-19"],
+          "question": {
+            "enonce": "Par la méthode des trapèzes avec $n = 2$, quelle valeur approchée de $\\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x$ obtiens-tu ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.375,
+              "tolerance": 0.001
+            },
+            "explication": "Avec $h = 0{,}5$, les deux trapèzes ont pour aires $0{,}5 \\times \\dfrac{f(0) + f(0{,}5)}{2} = 0{,}5 \\times \\dfrac{0 + 0{,}25}{2} = 0{,}0625$ et $0{,}5 \\times \\dfrac{f(0{,}5) + f(1)}{2} = 0{,}5 \\times \\dfrac{0{,}25 + 1}{2} = 0{,}3125$. Leur somme vaut $0{,}375$. C'est aussi la moyenne des rectangles à gauche ($0{,}125$) et à droite ($0{,}625$)."
+          }
+        },
+        {
+          "id": "l-integration-015",
+          "type": "code",
+          "titre": "La méthode de Monte-Carlo",
+          "capacites": ["bo-m-integrale-20"],
+          "code": {
+            "langage": "python",
+            "source": "from random import random\n\ndef f(x):\n    return 4 - x ** 2\n\ndef monte_carlo(n):\n    sous_la_courbe = 0\n    for k in range(n):\n        x = 2 * random()   # abscisse au hasard entre 0 et 2\n        y = 4 * random()   # ordonnée au hasard entre 0 et 4\n        if y <= f(x):\n            sous_la_courbe = sous_la_courbe + 1\n    return 8 * sous_la_courbe / n   # 8 = aire du rectangle, en u.a.\n\nprint(monte_carlo(100000))   # environ 5.33 ; le résultat change à chaque exécution"
+          },
+          "texte": "On tire $n$ points au hasard dans le rectangle $[0\\,;\\,2] \\times [0\\,;\\,4]$, d'aire $2 \\times 4 = 8$ u.a. Ce rectangle contient le domaine sous la courbe de $f : x \\mapsto 4 - x^2$. L'instruction random() renvoie un nombre au hasard entre $0$ et $1$. Multiplié par $2$, il donne une abscisse au hasard ; multiplié par $4$, une ordonnée.\n\nLes points sont tirés **uniformément** : un point a autant de chances de tomber dans deux zones de même aire. Quand $n$ est grand, la proportion de points sous la courbe est donc proche de $\\dfrac{\\text{aire du domaine}}{8}$. Le nombre renvoyé, $8 \\times$ cette proportion, est une valeur approchée de $\\displaystyle\\int_0^2 \\left(4 - x^2\\right)\\mathrm{d}x$. Avec $n = 100\\,000$, on obtient environ $5{,}33$, à quelques centièmes près."
+        },
+        {
+          "id": "l-integration-016",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-20"],
+          "question": {
+            "enonce": "On applique la méthode de Monte-Carlo au domaine sous la courbe de $f : x \\mapsto 4 - x^2$ sur $[0\\,;\\,2]$, dans le rectangle $[0\\,;\\,2] \\times [0\\,;\\,4]$. Sur $2\\,000$ points tirés au hasard, $1\\,330$ tombent sous la courbe. Quelle estimation de $\\displaystyle\\int_0^2 \\left(4 - x^2\\right)\\mathrm{d}x$ en déduis-tu ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 5.32,
+              "tolerance": 0.001
+            },
+            "explication": "La proportion de points sous la courbe vaut $\\dfrac{1\\,330}{2\\,000} = 0{,}665$. Le rectangle a une aire de $8$ u.a. : l'estimation est $8 \\times 0{,}665 = 5{,}32$ u.a. N'oublie pas de multiplier par l'aire du rectangle."
+          }
+        },
+        {
+          "id": "l-integration-017",
+          "type": "complement",
+          "titre": "Pour aller plus loin : des suites adjacentes pour approcher une aire",
+          "capacites": ["bo-m-integrale-17"],
+          "texte": "Découpe $[0\\,;\\,1]$ en $n$ intervalles de largeur $\\dfrac{1}{n}$, et note $s_n$ et $S_n$ les aires des rectangles à gauche et à droite pour $f : x \\mapsto x^2$ :$$\\begin{aligned} s_n &= \\tfrac{1}{n}\\Big(f(0) + f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big)\\Big), \\\\ S_n &= \\tfrac{1}{n}\\Big(\\phantom{f(0) + {}} f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big) + f(1)\\Big). \\end{aligned}$$Comme $f$ est croissante, $s_n \\leqslant \\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x \\leqslant S_n$. Les termes communs s'éliminent : $S_n - s_n = \\dfrac{1}{n}\\big(f(1) - f(0)\\big) = \\dfrac{1}{n}$, qui tend vers $0$.\n\nAvec $1^2 + 2^2 + \\dots + n^2 = \\dfrac{n(n + 1)(2n + 1)}{6}$, démontrée par récurrence dans le chapitre sur la récurrence, on trouve $s_n = \\dfrac{(n - 1)(2n - 1)}{6n^2}$ et $S_n = \\dfrac{(n + 1)(2n + 1)}{6n^2}$. Ainsi $(s_n)$ croît, $(S_n)$ décroît et $S_n - s_n$ tend vers $0$ : ces suites sont **adjacentes** (chapitre sur les limites de suites). Elles convergent donc vers la même limite, ici $\\dfrac{1}{3}$, qui est l'aire cherchée."
+        },
+        {
+          "id": "l-integration-018",
+          "type": "piege",
+          "titre": "Unités d'aire et centimètres carrés",
+          "faux": "Dans un repère où une unité mesure $2$ cm sur chaque axe, $\\displaystyle\\int_1^3 (x + 1)\\,\\mathrm{d}x = 6$ u.a., donc l'aire vaut $6 \\times 2 = 12$ cm².",
+          "juste": "Une unité d'aire est un carré de $2$ cm sur $2$ cm, soit $4$ cm² : l'aire vaut $6 \\times 4 = 24$ cm².",
+          "explication": "L'unité d'aire est l'aire du rectangle construit sur les unités des deux axes. Avec $2$ cm en abscisse et $1$ cm en ordonnée, elle vaudrait $2 \\times 1 = 2$ cm². Calcule toujours d'abord en u.a., puis convertis."
+        },
+        {
+          "id": "l-integration-019",
+          "type": "piege",
+          "titre": "Les rectangles à gauche ne sont pas toujours sous la courbe",
+          "faux": "Les rectangles à gauche donnent toujours une valeur par défaut de l'intégrale.",
+          "juste": "Pour une fonction croissante, les rectangles à gauche sont sous la courbe ; pour une fonction décroissante, ils la dépassent et donnent une valeur par excès.",
+          "explication": "La hauteur d'un rectangle à gauche est $f(x_k)$, la valeur au début de l'intervalle. Si $f$ décroît, comme $x \\mapsto 4 - x^2$ sur $[0\\,;\\,2]$, c'est la plus grande valeur de $f$ sur l'intervalle : le rectangle dépasse la courbe. Regarde le sens de variation avant de conclure."
+        },
+        {
+          "id": "l-integration-020",
+          "type": "retenir",
+          "texte": "Pour $f$ continue et positive sur $[a\\,;\\,b]$, $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ est une aire, en u.a. : celle du domaine limité par $\\mathcal{C}_f$, l'axe des abscisses et les droites $x = a$ et $x = b$. On l'encadre avec des carreaux ou des rectangles ; les milieux, les trapèzes et la méthode de Monte-Carlo en donnent des valeurs approchées."
+        }
+      ]
+    },
+    {
+      "notion": "n-integration-primitive",
+      "blocs": [
+        {
+          "id": "l-integration-021",
+          "type": "idee",
+          "texte": "Note $\\mathcal{A}(x)$ l'aire sous la courbe de $f$ entre $a$ et $x$. Quand $x$ avance d'un tout petit $h$, l'aire gagne une bande fine, presque un rectangle de largeur $h$ et de hauteur $f(x)$ : $\\mathcal{A}(x + h) - \\mathcal{A}(x) \\approx h \\times f(x)$. En divisant par $h$, le taux de variation $\\dfrac{\\mathcal{A}(x + h) - \\mathcal{A}(x)}{h}$ est proche de $f(x)$ : la dérivée de l'aire, c'est $f$. Calculer une aire revient alors à trouver une **primitive**."
+        },
+        {
+          "id": "l-integration-022",
+          "type": "rappel",
+          "titre": "Rappel : primitives",
+          "lien": "n-primitives-equations-differentielles-primitive",
+          "texte": "Une **primitive** de $f$ sur un intervalle $I$ est une fonction $F$ dérivable sur $I$ telle que $F' = f$. Si $F$ en est une, les autres sont les fonctions $F + C$, avec $C$ réel.\n\nPrimitives à connaître :\n\n| $f(x)$ | $x^n$ ($n \\neq -1$) | $\\dfrac{1}{x}$ | $\\dfrac{1}{\\sqrt{x}}$ | $e^x$ | $\\sin x$ | $\\cos x$ |\n|---|---|---|---|---|---|---|\n| $F(x)$ | $\\dfrac{x^{n+1}}{n+1}$ | $\\ln x$ | $2\\sqrt{x}$ | $e^x$ | $-\\cos x$ | $\\sin x$ |\n\nIntervalles : $\\dfrac{1}{x}$ et $\\dfrac{1}{\\sqrt{x}}$ sur $]0\\,;\\,+\\infty[$ ; $x^n$, pour un entier $n \\neq -1$, sur $\\mathbb{R}$ si $n \\geqslant 0$, et sur $]0\\,;\\,+\\infty[$ ou $]-\\infty\\,;\\,0[$ si $n \\leqslant -2$. Par exemple, $\\dfrac{1}{x^2} = x^{-2}$ a pour primitive $\\dfrac{x^{-1}}{-1} = -\\dfrac{1}{x}$ sur $]0\\,;\\,+\\infty[$.\n\nPour une fonction $u$ dérivable, $u'e^u$, $u'u^n$ ($n \\geqslant 1$), $\\dfrac{u'}{u}$ ($u > 0$) et $\\dfrac{u'}{\\sqrt{u}}$ ($u > 0$) ont pour primitives $e^u$, $\\dfrac{u^{n+1}}{n+1}$, $\\ln u$ et $2\\sqrt{u}$."
+        },
+        {
+          "id": "l-integration-023",
+          "type": "propriete",
+          "titre": "L'aire est une primitive ; calcul d'une intégrale",
+          "capacites": ["bo-m-integrale-02", "bo-m-integrale-03"],
+          "texte": "Soit $f$ une fonction continue et positive sur $[a\\,;\\,b]$.\n\n- La fonction $F_a$ définie sur $[a\\,;\\,b]$ par $F_a(x) = \\displaystyle\\int_a^x f(t)\\,\\mathrm{d}t$ est **la primitive de $f$ qui s'annule en $a$**.\n- Pour toute primitive $F$ de $f$ sur $[a\\,;\\,b]$ :$$\\int_a^b f(x)\\,\\mathrm{d}x = F(b) - F(a).$$On note $F(b) - F(a) = \\left[F(x)\\right]_a^b$, ce qui se lit « $F(x)$ pris entre $a$ et $b$ ».\n\nDans $F_a(x)$, la variable d'intégration s'appelle $t$, car la lettre $x$ désigne déjà la borne de droite. Ce théorème est démontré ci-dessous quand $f$ est, de plus, croissante ; il est admis dans le cas général.",
+          "conditions": [
+            "$f$ est continue sur $[a\\,;\\,b]$.",
+            "$f$ est positive sur $[a\\,;\\,b]$ : l'intégrale est ici une aire. La définition s'étend plus bas aux fonctions de signe quelconque."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-integration-024",
+          "type": "exemple",
+          "titre": "Calculer une aire avec une primitive",
+          "capacites": ["bo-m-integrale-03", "bo-m-integrale-10", "bo-m-integrale-02"],
+          "enonce": "**a.** Calculer $\\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x$, puis comparer avec l'encadrement $0{,}21875 \\leqslant \\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x \\leqslant 0{,}46875$ obtenu avec des rectangles.\n\n**b.** Calculer $\\displaystyle\\int_0^2 \\left(4 - x^2\\right)\\mathrm{d}x$, estimée à $5{,}25$ en comptant les carreaux.\n\n**c.** Calculer l'aire, en u.a., du domaine limité par la courbe de la fonction inverse, l'axe des abscisses et les droites d'équations $x = 1$ et $x = e$.\n\n**d.** Exprimer en fonction de $x$, pour $x \\geqslant 0$, l'aire $F_0(x) = \\displaystyle\\int_0^x t^2\\,\\mathrm{d}t$.",
+          "etapes": [
+            {
+              "texte": "**a.** La fonction $x \\mapsto x^2$ est continue et positive sur $[0\\,;\\,1]$, et $F(x) = \\dfrac{x^3}{3}$ en est une primitive. Donc $\\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x = \\left[\\frac{x^3}{3}\\right]_0^1 = \\frac{1^3}{3} - \\frac{0^3}{3} = \\frac{1}{3}$.",
+              "pourquoi": "$\\left(\\dfrac{x^3}{3}\\right)' = \\dfrac{3x^2}{3} = x^2$."
+            },
+            {
+              "texte": "On a bien $0{,}21875 \\leqslant \\dfrac{1}{3} \\leqslant 0{,}46875$, car $\\dfrac{1}{3} \\approx 0{,}333$ : le calcul confirme l'encadrement."
+            },
+            {
+              "texte": "**b.** Une primitive de $x \\mapsto 4 - x^2$ est $x \\mapsto 4x - \\dfrac{x^3}{3}$. Donc $\\displaystyle\\int_0^2 \\left(4 - x^2\\right)\\mathrm{d}x = \\left[4x - \\frac{x^3}{3}\\right]_0^2 = \\left(8 - \\frac{8}{3}\\right) - 0 = \\frac{16}{3} \\approx 5{,}33$.",
+              "pourquoi": "$8 - \\dfrac{8}{3} = \\dfrac{24}{3} - \\dfrac{8}{3} = \\dfrac{16}{3}$. L'estimation $5{,}25$ était proche."
+            },
+            {
+              "texte": "**c.** Sur $[1\\,;\\,e]$, la fonction inverse est continue et positive : l'aire vaut $\\displaystyle\\int_1^e \\frac{1}{x}\\,\\mathrm{d}x = \\big[\\ln x\\big]_1^e = \\ln e - \\ln 1 = 1 - 0 = 1$ u.a.",
+              "pourquoi": "$\\ln$ est une primitive de $x \\mapsto \\dfrac{1}{x}$ sur $]0\\,;\\,+\\infty[$, qui contient $[1\\,;\\,e]$."
+            },
+            {
+              "texte": "**d.** D'après le théorème, $F_0$ est la primitive de $t \\mapsto t^2$ qui s'annule en $0$. Les primitives sont les fonctions $x \\mapsto \\dfrac{x^3}{3} + C$, et la condition $F_0(0) = 0$ donne $C = 0$. Donc $F_0(x) = \\dfrac{x^3}{3}$.",
+              "pourquoi": "On peut aussi calculer directement : $\\left[\\dfrac{t^3}{3}\\right]_0^x = \\dfrac{x^3}{3} - 0$."
+            },
+            {
+              "texte": "**Conclusion** : $\\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x = \\frac{1}{3}$, $\\displaystyle\\int_0^2 \\left(4 - x^2\\right)\\mathrm{d}x = \\frac{16}{3}$, l'aire sous la courbe de la fonction inverse entre $1$ et $e$ vaut $1$ u.a., et $F_0(x) = \\dfrac{x^3}{3}$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-025",
+          "type": "demonstration",
+          "titre": "Démonstration : l'aire est une primitive (cas d'une fonction croissante)",
+          "capacites": ["bo-m-integrale-15", "bo-m-limites-fonctions-03", "bo-m-primitives-01"],
+          "de": "l-integration-023",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "Soit $f$ continue, positive et croissante sur $[a\\,;\\,b]$, et $F_a(x) = \\displaystyle\\int_a^x f(t)\\,\\mathrm{d}t$, l'aire sous la courbe entre $a$ et $x$. Soit $x$ dans $[a\\,;\\,b[$ et $h > 0$ tel que $x + h \\leqslant b$. La différence $F_a(x + h) - F_a(x)$ est l'aire de la bande sous la courbe entre $x$ et $x + h$.",
+              "pourquoi": "L'aire de $a$ à $x + h$ est la somme de l'aire de $a$ à $x$ et de l'aire de $x$ à $x + h$."
+            },
+            {
+              "texte": "$f$ est croissante : pour $t$ dans $[x\\,;\\,x + h]$, $f(x) \\leqslant f(t) \\leqslant f(x + h)$. La bande contient donc le rectangle de largeur $h$ et de hauteur $f(x)$. Elle est contenue dans le rectangle de largeur $h$ et de hauteur $f(x + h)$ :$$h\\,f(x) \\leqslant F_a(x + h) - F_a(x) \\leqslant h\\,f(x + h).$$"
+            },
+            {
+              "texte": "On divise par $h > 0$, ce qui garde le sens des inégalités :$$f(x) \\leqslant \\frac{F_a(x + h) - F_a(x)}{h} \\leqslant f(x + h).$$"
+            },
+            {
+              "texte": "$f$ est continue en $x$ : $f(x + h)$ tend vers $f(x)$ quand $h$ tend vers $0$. Par le théorème des gendarmes, le taux de variation $\\dfrac{F_a(x + h) - F_a(x)}{h}$ tend vers $f(x)$ quand $h$ tend vers $0$ par valeurs positives.",
+              "pourquoi": "Le membre de gauche vaut $f(x)$, celui de droite tend vers $f(x)$ : le taux de variation, coincé entre les deux, a la même limite."
+            },
+            {
+              "texte": "Pour $h < 0$, avec $x$ dans $]a\\,;\\,b]$ et $x + h \\geqslant a$, la bande entre $x + h$ et $x$ a pour largeur $-h$. On obtient de même $-h\\,f(x + h) \\leqslant F_a(x) - F_a(x + h) \\leqslant -h\\,f(x)$, puis, en divisant par $-h > 0$ : $f(x + h) \\leqslant \\dfrac{F_a(x + h) - F_a(x)}{h} \\leqslant f(x)$. Le taux tend encore vers $f(x)$.",
+              "pourquoi": "$\\dfrac{F_a(x) - F_a(x + h)}{-h} = \\dfrac{F_a(x + h) - F_a(x)}{h}$ : on a changé le signe du numérateur et celui du dénominateur."
+            },
+            {
+              "texte": "Ainsi $F_a$ est dérivable sur $[a\\,;\\,b]$ et $F_a' = f$ : $F_a$ est une primitive de $f$. De plus, $F_a(a) = \\displaystyle\\int_a^a f(t)\\,\\mathrm{d}t = 0$.",
+              "pourquoi": "En $a$, seul $h > 0$ est possible ; en $b$, seul $h < 0$."
+            },
+            {
+              "texte": "**Relation avec une primitive quelconque.** Soit $F$ une primitive de $f$ sur $[a\\,;\\,b]$. Deux primitives diffèrent d'une constante : il existe un réel $C$ tel que $F = F_a + C$. Alors $F(b) - F(a) = \\big(F_a(b) + C\\big) - \\big(F_a(a) + C\\big) = F_a(b) - 0 = \\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$.",
+              "pourquoi": "Propriété du chapitre sur les primitives : deux primitives d'une même fonction sur un intervalle diffèrent d'une constante."
+            },
+            {
+              "texte": "**Conclusion** : $F_a$ est la primitive de $f$ qui s'annule en $a$, et $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x = F(b) - F(a)$ pour toute primitive $F$ de $f$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-026",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-02"],
+          "question": {
+            "enonce": "Pour $x \\geqslant 1$, on pose $G(x) = \\displaystyle\\int_1^x \\ln t\\,\\mathrm{d}t$ : c'est l'aire sous la courbe de $\\ln$ entre $1$ et $x$. Que vaut $G'(x)$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$\\ln x$",
+                "$\\dfrac{1}{x}$",
+                "$x\\ln x - x$",
+                "$0$, car $G(1) = 0$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "$\\dfrac{1}{x}$ est la dérivée de $\\ln$ : tu as dérivé la fonction sous l'intégrale au lieu de la garder telle quelle.",
+                "$x\\ln x - x$ est une primitive de $\\ln$ : c'est $G$, à une constante près, et non sa dérivée.",
+                "$G(1) = 0$ donne la valeur de $G$ en $1$, pas sa dérivée."
+              ]
+            },
+            "explication": "Sur $[1\\,;\\,+\\infty[$, $\\ln$ est continue et positive. D'après le théorème, $G$ est la primitive de $\\ln$ qui s'annule en $1$ : $G'(x) = \\ln x$."
+          }
+        },
+        {
+          "id": "l-integration-027",
+          "type": "propriete",
+          "titre": "Toute fonction continue admet des primitives",
+          "capacites": ["bo-m-integrale-04"],
+          "texte": "Toute fonction continue sur un intervalle $I$ admet des primitives sur $I$.\n\nCe théorème, admis au chapitre sur les primitives, se démontre grâce à l'intégrale. Il vaut même quand on ne sait pas écrire de primitive avec les fonctions usuelles, comme pour $x \\mapsto e^{-x^2}$.",
+          "conditions": [
+            "$f$ est continue sur $I$.",
+            "$I$ est un intervalle."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-integration-028",
+          "type": "exemple",
+          "titre": "Une fonction définie par une intégrale",
+          "capacites": ["bo-m-integrale-02", "bo-m-integrale-04"],
+          "enonce": "On pose, pour $x \\geqslant 0$, $F(x) = \\displaystyle\\int_0^x e^{-t^2}\\,\\mathrm{d}t$.\n\n**a.** Justifier que $F$ est dérivable sur $[0\\,;\\,+\\infty[$ et calculer $F'(x)$.\n\n**b.** En déduire le sens de variation de $F$ et la valeur de $F(0)$.",
+          "etapes": [
+            {
+              "texte": "**a.** La fonction $t \\mapsto e^{-t^2}$ est continue sur $\\mathbb{R}$, et positive, car une exponentielle est strictement positive.",
+              "pourquoi": "C'est la composée de $t \\mapsto -t^2$ puis de la fonction exponentielle, toutes deux dérivables, donc continues."
+            },
+            {
+              "texte": "D'après le théorème, sur tout segment $[0\\,;\\,b]$ avec $b > 0$, $F$ est la primitive de $t \\mapsto e^{-t^2}$ qui s'annule en $0$. Donc $F$ est dérivable sur $[0\\,;\\,+\\infty[$ et $F'(x) = e^{-x^2}$.",
+              "pourquoi": "La dérivée de la fonction « aire » $x \\mapsto \\displaystyle\\int_a^x f(t)\\,\\mathrm{d}t$ est la fonction sous l'intégrale, prise en $x$ : pas besoin d'une primitive explicite."
+            },
+            {
+              "texte": "**b.** Pour tout $x \\geqslant 0$, $F'(x) = e^{-x^2} > 0$ : $F$ est strictement croissante sur $[0\\,;\\,+\\infty[$. Et $F(0) = \\displaystyle\\int_0^0 e^{-t^2}\\,\\mathrm{d}t = 0$."
+            },
+            {
+              "texte": "**Conclusion** : $F$ est dérivable sur $[0\\,;\\,+\\infty[$, avec $F'(x) = e^{-x^2}$ ; elle est strictement croissante et $F(0) = 0$. On ne sait pas écrire $F(x)$ avec les fonctions usuelles, mais on connaît sa dérivée : c'est tout l'intérêt du théorème."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-029",
+          "type": "demonstration",
+          "titre": "Pourquoi une fonction continue admet des primitives (sur un segment)",
+          "capacites": ["bo-m-integrale-04"],
+          "de": "l-integration-027",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "Soit $f$ continue sur un segment $[a\\,;\\,b]$. On admet que $f$ y atteint une plus petite valeur $m$ : pour tout $x$ de $[a\\,;\\,b]$, $f(x) \\geqslant m$.",
+              "pourquoi": "Ce résultat, naturel sur la courbe d'une fonction continue, n'est pas démontré en terminale."
+            },
+            {
+              "texte": "La fonction $g = f - m$ est continue et positive sur $[a\\,;\\,b]$. D'après le théorème précédent, $G : x \\mapsto \\displaystyle\\int_a^x g(t)\\,\\mathrm{d}t$ est une primitive de $g$ sur $[a\\,;\\,b]$."
+            },
+            {
+              "texte": "On pose $F(x) = G(x) + mx$. Alors $F'(x) = g(x) + m = f(x) - m + m = f(x)$ : $F$ est une primitive de $f$ sur $[a\\,;\\,b]$."
+            },
+            {
+              "texte": "**Conclusion** : toute fonction continue sur un segment admet des primitives. Le cas d'un intervalle quelconque, par exemple $\\mathbb{R}$, est admis."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-030",
+          "type": "definition",
+          "titre": "Intégrale d'une fonction de signe quelconque",
+          "capacites": ["bo-m-integrale-05"],
+          "texte": "Soit $f$ une fonction continue sur un intervalle $I$, $a$ et $b$ deux réels de $I$, et $F$ une primitive de $f$ sur $I$. On définit l'intégrale de $a$ à $b$ de $f$ par :$$\\int_a^b f(x)\\,\\mathrm{d}x = F(b) - F(a) = \\left[F(x)\\right]_a^b.$$Ce nombre ne dépend pas de la primitive choisie : une autre primitive s'écrit $F + C$, et $\\big(F(b) + C\\big) - \\big(F(a) + C\\big) = F(b) - F(a)$.\n\nIci, $f$ peut changer de signe, et $a$ peut être plus grand que $b$. Quand $f$ est positive et $a \\leqslant b$, on retrouve l'aire sous la courbe. Pour $a$ dans $I$, la fonction $x \\mapsto \\displaystyle\\int_a^x f(t)\\,\\mathrm{d}t = F(x) - F(a)$ est encore la primitive de $f$ qui s'annule en $a$."
+        },
+        {
+          "id": "l-integration-090",
+          "type": "figure",
+          "titre": "Une aire au-dessus de l'axe, une aire au-dessous",
+          "capacites": ["bo-m-integrale-05"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/integration/aire-sous-axe.svg",
+              "width": 290,
+              "height": 270,
+              "alt": "Dans un repère orthonormé, la droite d'équation y = x, tracée pour x entre −1,4 et 2,3. Sur [0 ; 2], la droite est au-dessus de l'axe des abscisses : le triangle de sommets (0 ; 0), (2 ; 0) et (2 ; 2), colorié en bleu, a pour aire 2. Sur [−1 ; 0], la droite est au-dessous de l'axe : le triangle de sommets (−1 ; 0), (0 ; 0) et (−1 ; −1), colorié en orange, a pour aire 1/2."
+            },
+            "caption": "Pour l'intégrale de −1 à 2 de x dx, l'aire bleue, au-dessus de l'axe, compte positivement ; l'aire orange, au-dessous, compte négativement."
+          }
+        },
+        {
+          "id": "l-integration-031",
+          "type": "exemple",
+          "titre": "Intégrales d'une fonction de signe quelconque",
+          "capacites": ["bo-m-integrale-05"],
+          "enonce": "**a.** Calculer $\\displaystyle\\int_{-1}^{2} x\\,\\mathrm{d}x$, puis l'interpréter avec des aires (figure ci-dessus).\n\n**b.** Calculer $\\displaystyle\\int_{0}^{\\pi} \\cos x\\,\\mathrm{d}x$.\n\n**c.** Calculer $\\displaystyle\\int_{1}^{0} e^{x}\\,\\mathrm{d}x$ et le comparer à $\\displaystyle\\int_{0}^{1} e^{x}\\,\\mathrm{d}x$.",
+          "etapes": [
+            {
+              "texte": "**a.** La fonction $x \\mapsto \\dfrac{x^2}{2}$ est une primitive de $x \\mapsto x$ sur $\\mathbb{R}$ : $\\displaystyle\\int_{-1}^{2} x\\,\\mathrm{d}x = \\left[\\frac{x^2}{2}\\right]_{-1}^{2} = \\frac{4}{2} - \\frac{1}{2} = \\frac{3}{2}$.",
+              "pourquoi": "$\\dfrac{(-1)^2}{2} = \\dfrac{1}{2}$ : le carré d'un nombre négatif est positif."
+            },
+            {
+              "texte": "Interprétation : sur $[0\\,;\\,2]$, la droite $y = x$ est au-dessus de l'axe, et le triangle sous elle a pour aire $\\dfrac{2 \\times 2}{2} = 2$. Sur $[-1\\,;\\,0]$, elle est en dessous, et le triangle entre elle et l'axe a pour aire $\\dfrac{1 \\times 1}{2} = \\dfrac{1}{2}$. On trouve $2 - \\dfrac{1}{2} = \\dfrac{3}{2}$ : l'aire située sous l'axe compte **négativement**.",
+              "pourquoi": "Sur $[-1\\,;\\,0]$, $x \\leqslant 0$ : $\\displaystyle\\int_{-1}^{0} x\\,\\mathrm{d}x = \\left[\\frac{x^2}{2}\\right]_{-1}^{0} = -\\frac{1}{2}$, l'opposé de l'aire du triangle orange. La propriété qui suit cet exemple le justifie."
+            },
+            {
+              "texte": "**b.** $\\sin$ est une primitive de $\\cos$ : $\\displaystyle\\int_{0}^{\\pi} \\cos x\\,\\mathrm{d}x = \\big[\\sin x\\big]_0^{\\pi} = \\sin \\pi - \\sin 0 = 0 - 0 = 0$. La partie de la courbe au-dessus de l'axe, sur $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, et celle en dessous, sur $\\left[\\dfrac{\\pi}{2}\\,;\\,\\pi\\right]$, délimitent la même aire : elles se compensent.",
+              "pourquoi": "Pour $x$ dans $\\left[0\\,;\\,\\dfrac{\\pi}{2}\\right]$, $\\cos(\\pi - x) = -\\cos x$ : en $\\pi - x$, la courbe est aussi loin sous l'axe qu'elle est au-dessus en $x$. Les deux arches se superposent par un demi-tour autour du point $\\left(\\dfrac{\\pi}{2}\\,;\\,0\\right)$ : elles délimitent la même aire."
+            },
+            {
+              "texte": "**c.** $\\displaystyle\\int_{1}^{0} e^{x}\\,\\mathrm{d}x = \\big[e^x\\big]_1^0 = e^0 - e^1 = 1 - e$, alors que $\\displaystyle\\int_{0}^{1} e^{x}\\,\\mathrm{d}x = e - 1$. Échanger les bornes change le signe : $\\displaystyle\\int_b^a f(x)\\,\\mathrm{d}x = -\\int_a^b f(x)\\,\\mathrm{d}x$.",
+              "pourquoi": "$F(a) - F(b) = -\\big(F(b) - F(a)\\big)$."
+            },
+            {
+              "texte": "**Conclusion** : $\\displaystyle\\int_{-1}^{2} x\\,\\mathrm{d}x = \\frac{3}{2}$, $\\displaystyle\\int_{0}^{\\pi} \\cos x\\,\\mathrm{d}x = 0$ et $\\displaystyle\\int_{1}^{0} e^{x}\\,\\mathrm{d}x = 1 - e$. Une intégrale peut être négative ou nulle : c'est une aire seulement si $f$ est positive et $a \\leqslant b$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-091",
+          "type": "propriete",
+          "titre": "Aire d'un domaine situé sous l'axe des abscisses",
+          "capacites": ["bo-m-integrale-05"],
+          "texte": "Soit $f$ une fonction continue et **négative** sur $[a\\,;\\,b]$, avec $a < b$. L'aire, en u.a., du domaine limité par $\\mathcal{C}_f$, l'axe des abscisses et les droites d'équations $x = a$ et $x = b$ vaut :$$-\\int_a^b f(x)\\,\\mathrm{d}x.$$Pourquoi : ce domaine est le symétrique, par rapport à l'axe des abscisses, du domaine sous la courbe de $-f$, qui est positive. Si $F$ est une primitive de $f$, $-F$ est une primitive de $-f$. L'aire vaut donc $-F(b) - \\big(-F(a)\\big) = -\\big(F(b) - F(a)\\big)$.\n\nPar exemple, le triangle orange de la figure a pour aire $-\\displaystyle\\int_{-1}^{0} x\\,\\mathrm{d}x = -\\left(-\\frac{1}{2}\\right) = \\frac{1}{2}$.",
+          "conditions": [
+            "$f$ est continue sur $[a\\,;\\,b]$, avec $a < b$.",
+            "$f$ est négative sur $[a\\,;\\,b]$. Si $f$ change de signe, on calcule l'aire de chaque morceau où $f$ garde un signe constant, puis on additionne ces aires."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-integration-032",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-05"],
+          "question": {
+            "enonce": "Calcule $\\displaystyle\\int_{-2}^{1} x\\,\\mathrm{d}x$ (valeur exacte ou décimale).",
+            "reponse": {
+              "type": "numerique",
+              "valeur": "-3/2",
+              "tolerance": 0
+            },
+            "explication": "$\\left[\\dfrac{x^2}{2}\\right]_{-2}^{1} = \\dfrac{1}{2} - \\dfrac{4}{2} = -\\dfrac{3}{2}$. Le résultat est négatif : la partie sous l'axe, sur $[-2\\,;\\,0]$, a une aire ($2$) plus grande que celle au-dessus, sur $[0\\,;\\,1]$ ($\\dfrac{1}{2}$)."
+          }
+        },
+        {
+          "id": "l-integration-033",
+          "type": "methode",
+          "titre": "Comment calculer une intégrale avec une primitive ?",
+          "capacites": ["bo-m-integrale-10"],
+          "etapes": [
+            "Vérifie que $f$ est continue sur un intervalle qui contient $a$ et $b$.",
+            "Cherche une primitive $F$ de $f$ : tableau des primitives, somme de primitives, formes $u'e^u$, $u'u^n$, $\\dfrac{u'}{u}$, $\\dfrac{u'}{\\sqrt{u}}$. Ajuste le facteur constant, puis contrôle en dérivant.",
+            "Écris $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x = \\left[F(x)\\right]_a^b = F(b) - F(a)$, en mettant $F(a)$ entre parenthèses.",
+            "Calcule et simplifie avec $e^0 = 1$, $\\ln 1 = 0$, $\\ln e = 1$ et $e^{\\ln y} = y$ pour $y > 0$.",
+            "Si l'énoncé intègre une dérivée $g'$, ne calcule pas $g'$ : $g$ en est une primitive, donc $\\displaystyle\\int_a^b g'(x)\\,\\mathrm{d}x = g(b) - g(a)$.",
+            "Contrôle le signe : si $f \\geqslant 0$ et $a \\leqslant b$, le résultat doit être positif."
+          ],
+          "exemple": "l-integration-034"
+        },
+        {
+          "id": "l-integration-034",
+          "type": "exemple",
+          "titre": "Reconnaître une forme composée",
+          "capacites": ["bo-m-integrale-10", "bo-m-primitives-04"],
+          "enonce": "Calculer :\n\n**a.** $I = \\displaystyle\\int_0^1 2x\\,e^{x^2}\\,\\mathrm{d}x$ ;\n\n**b.** $J = \\displaystyle\\int_0^1 \\frac{x}{x^2 + 1}\\,\\mathrm{d}x$ ;\n\n**c.** $K = \\displaystyle\\int_0^2 \\frac{\\ln(x + 1)}{x + 1}\\,\\mathrm{d}x$ ;\n\n**d.** $L = \\displaystyle\\int_0^2 g'(x)\\,\\mathrm{d}x$, où $g(x) = x^2\\ln\\left(x^2 + 4\\right)$.",
+          "etapes": [
+            {
+              "texte": "**a.** Avec $u(x) = x^2$, on a $u'(x) = 2x$ : la fonction est de la forme $u'e^u$, de primitive $e^u$. Donc $I = \\left[e^{x^2}\\right]_0^1 = e^1 - e^0 = e - 1$.",
+              "pourquoi": "Contrôle : $\\left(e^{x^2}\\right)' = 2x\\,e^{x^2}$."
+            },
+            {
+              "texte": "**b.** Avec $u(x) = x^2 + 1 > 0$, on a $u'(x) = 2x$, et $\\dfrac{x}{x^2 + 1} = \\dfrac{1}{2} \\times \\dfrac{u'(x)}{u(x)}$ : une primitive est $x \\mapsto \\dfrac{1}{2}\\ln\\left(x^2 + 1\\right)$.",
+              "pourquoi": "Il manque le facteur $2$ de $u'$ : on écrit $x = \\dfrac{1}{2} \\times 2x$."
+            },
+            {
+              "texte": "Donc $J = \\left[\\dfrac{1}{2}\\ln\\left(x^2 + 1\\right)\\right]_0^1 = \\dfrac{1}{2}\\ln 2 - \\dfrac{1}{2}\\ln 1 = \\dfrac{1}{2}\\ln 2$."
+            },
+            {
+              "texte": "**c.** Avec $u(x) = \\ln(x + 1)$, on a $u'(x) = \\dfrac{1}{x + 1}$ : la fonction est $u'u$, de primitive $\\dfrac{u^2}{2}$. Donc $K = \\left[\\dfrac{\\big(\\ln(x + 1)\\big)^2}{2}\\right]_0^2 = \\dfrac{(\\ln 3)^2}{2} - \\dfrac{(\\ln 1)^2}{2} = \\dfrac{1}{2}(\\ln 3)^2$.",
+              "pourquoi": "C'est la forme $u'u^n$ avec $n = 1$ : une primitive est $\\dfrac{u^{1+1}}{1+1} = \\dfrac{u^2}{2}$."
+            },
+            {
+              "texte": "**d.** La fonction $g$ est une primitive de $g'$ : inutile de dériver. On calcule $g(2) = 2^2\\ln\\left(2^2 + 4\\right) = 4\\ln 8$ et $g(0) = 0^2 \\times \\ln 4 = 0$. Donc $L = g(2) - g(0) = 4\\ln 8 = 4 \\times 3\\ln 2 = 12\\ln 2$.",
+              "pourquoi": "$\\ln 8 = \\ln\\left(2^3\\right) = 3\\ln 2$."
+            },
+            {
+              "texte": "**Conclusion** : $I = e - 1$, $J = \\dfrac{1}{2}\\ln 2$, $K = \\dfrac{1}{2}(\\ln 3)^2$ et $L = 12\\ln 2 \\approx 8{,}3$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-035",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-10"],
+          "question": {
+            "enonce": "Calcule $\\displaystyle\\int_1^2 \\frac{1}{x^2}\\,\\mathrm{d}x$.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": "1/2",
+              "tolerance": 0
+            },
+            "explication": "Une primitive de $x \\mapsto \\dfrac{1}{x^2}$ sur $]0\\,;\\,+\\infty[$ est $x \\mapsto -\\dfrac{1}{x}$. Donc $\\left[-\\dfrac{1}{x}\\right]_1^2 = -\\dfrac{1}{2} - (-1) = \\dfrac{1}{2}$."
+          }
+        },
+        {
+          "id": "l-integration-036",
+          "type": "piege",
+          "titre": "Les parenthèses autour de $F(a)$",
+          "faux": "$\\displaystyle\\int_0^1 e^{-x}\\,\\mathrm{d}x = \\left[-e^{-x}\\right]_0^1 = -e^{-1} - e^{0} = -e^{-1} - 1$.",
+          "juste": "$\\displaystyle\\int_0^1 e^{-x}\\,\\mathrm{d}x = \\left[-e^{-x}\\right]_0^1 = -e^{-1} - \\left(-e^{0}\\right) = 1 - e^{-1}$.",
+          "explication": "On soustrait **toute** la valeur $F(0) = -e^0 = -1$ : le signe moins de $F$ disparaît. Contrôle : $e^{-x} > 0$ sur $[0\\,;\\,1]$, donc l'intégrale doit être positive ; or $-e^{-1} - 1 < 0$."
+        },
+        {
+          "id": "l-integration-037",
+          "type": "piege",
+          "titre": "Une intégrale n'est pas toujours une aire",
+          "faux": "$\\displaystyle\\int_{1}^{0} e^{x}\\,\\mathrm{d}x$ est l'aire sous la courbe de l'exponentielle entre $0$ et $1$, donc elle vaut $e - 1$.",
+          "juste": "$\\displaystyle\\int_{1}^{0} e^{x}\\,\\mathrm{d}x = e^0 - e^1 = 1 - e$ : c'est l'opposé de l'aire.",
+          "explication": "L'intégrale est une aire seulement si $f$ est positive **et** si les bornes sont dans l'ordre croissant. Calcule toujours $F(\\text{borne du haut}) - F(\\text{borne du bas})$, dans cet ordre, même si la borne du haut est la plus petite."
+        },
+        {
+          "id": "l-integration-038",
+          "type": "retenir",
+          "texte": "Si $F$ est une primitive de la fonction continue $f$, alors $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x = \\left[F(x)\\right]_a^b = F(b) - F(a)$, quel que soit le signe de $f$. Si $f \\leqslant 0$ sur $[a\\,;\\,b]$, avec $a < b$, l'aire entre $\\mathcal{C}_f$ et l'axe des abscisses vaut $-\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$. La fonction $x \\mapsto \\displaystyle\\int_a^x f(t)\\,\\mathrm{d}t$ est la primitive de $f$ qui s'annule en $a$."
+        }
+      ]
+    },
+    {
+      "notion": "n-integration-proprietes",
+      "blocs": [
+        {
+          "id": "l-integration-039",
+          "type": "idee",
+          "texte": "Une aire se découpe : l'aire sous une courbe entre $0$ et $3$ est la somme des aires entre $0$ et $1$, puis entre $1$ et $3$. Et si une courbe reste sous une autre, l'aire sous elle est plus petite. Ces deux idées donnent des règles de calcul. Elles permettent surtout d'**encadrer** une intégrale sans la calculer, même quand on ne connaît aucune primitive, comme pour $x \\mapsto e^{-x^2}$."
+        },
+        {
+          "id": "l-integration-040",
+          "type": "propriete",
+          "titre": "Linéarité, relation de Chasles",
+          "capacites": ["bo-m-integrale-06"],
+          "texte": "Soit $f$ et $g$ deux fonctions continues sur un intervalle $I$, $a$, $b$, $c$ trois réels de $I$ et $k$ un réel.\n\n**Linéarité** :$$\\int_a^b \\big(f(x) + g(x)\\big)\\,\\mathrm{d}x = \\int_a^b f(x)\\,\\mathrm{d}x + \\int_a^b g(x)\\,\\mathrm{d}x,$$$$\\int_a^b k\\,f(x)\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x.$$**Relation de Chasles** :$$\\int_a^c f(x)\\,\\mathrm{d}x = \\int_a^b f(x)\\,\\mathrm{d}x + \\int_b^c f(x)\\,\\mathrm{d}x.$$**Conséquences** : $\\displaystyle\\int_a^a f(x)\\,\\mathrm{d}x = 0$ et $\\displaystyle\\int_b^a f(x)\\,\\mathrm{d}x = -\\int_a^b f(x)\\,\\mathrm{d}x$.",
+          "conditions": [
+            "$f$ et $g$ sont continues sur un intervalle $I$.",
+            "$a$, $b$ et $c$ sont des réels de $I$, rangés dans n'importe quel ordre ; $k$ est un réel."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-integration-041",
+          "type": "exemple",
+          "titre": "Découper, regrouper",
+          "capacites": ["bo-m-integrale-06"],
+          "enonce": "**a.** Calculer $\\displaystyle\\int_{-1}^{2} |x|\\,\\mathrm{d}x$.\n\n**b.** On sait que $\\displaystyle\\int_0^1 f(x)\\,\\mathrm{d}x = 3$ et $\\displaystyle\\int_0^1 g(x)\\,\\mathrm{d}x = -2$. Calculer $\\displaystyle\\int_0^1 \\big(2f(x) - 5g(x)\\big)\\,\\mathrm{d}x$.\n\n**c.** On pose $I = \\displaystyle\\int_0^1 \\frac{e^x}{e^x + 1}\\,\\mathrm{d}x$ et $J = \\displaystyle\\int_0^1 \\frac{1}{e^x + 1}\\,\\mathrm{d}x$. Calculer $I$, puis $I + J$, et en déduire $J$.",
+          "etapes": [
+            {
+              "texte": "**a.** La fonction valeur absolue est continue sur $\\mathbb{R}$. Elle vaut $-x$ sur $[-1\\,;\\,0]$ et $x$ sur $[0\\,;\\,2]$ : on coupe en $0$ avec la relation de Chasles.$$\\int_{-1}^{2} |x|\\,\\mathrm{d}x = \\int_{-1}^{0} (-x)\\,\\mathrm{d}x + \\int_{0}^{2} x\\,\\mathrm{d}x.$$",
+              "pourquoi": "Sur chaque morceau, $|x|$ s'écrit sans valeur absolue, et on en connaît une primitive."
+            },
+            {
+              "texte": "$\\displaystyle\\int_{-1}^{0} (-x)\\,\\mathrm{d}x = \\left[-\\frac{x^2}{2}\\right]_{-1}^{0} = 0 - \\left(-\\frac{1}{2}\\right) = \\frac{1}{2}$ et $\\displaystyle\\int_{0}^{2} x\\,\\mathrm{d}x = \\left[\\frac{x^2}{2}\\right]_0^2 = 2$. Donc $\\displaystyle\\int_{-1}^{2} |x|\\,\\mathrm{d}x = \\frac{1}{2} + 2 = \\frac{5}{2}$.",
+              "pourquoi": "Ce sont les aires de deux triangles : $\\dfrac{1 \\times 1}{2}$ et $\\dfrac{2 \\times 2}{2}$."
+            },
+            {
+              "texte": "**b.** Par linéarité : $\\displaystyle\\int_0^1 \\big(2f(x) - 5g(x)\\big)\\,\\mathrm{d}x = 2 \\times 3 - 5 \\times (-2) = 6 + 10 = 16$."
+            },
+            {
+              "texte": "**c.** Avec $u(x) = e^x + 1 > 0$ et $u'(x) = e^x$, la fonction de $I$ est de la forme $\\dfrac{u'}{u}$ : $I = \\left[\\ln\\left(e^x + 1\\right)\\right]_0^1 = \\ln(e + 1) - \\ln 2 = \\ln\\left(\\dfrac{e + 1}{2}\\right)$.",
+              "pourquoi": "$e^0 + 1 = 2$, et $\\ln A - \\ln B = \\ln\\dfrac{A}{B}$ pour $A > 0$ et $B > 0$."
+            },
+            {
+              "texte": "Par linéarité, $I + J = \\displaystyle\\int_0^1 \\frac{e^x + 1}{e^x + 1}\\,\\mathrm{d}x = \\int_0^1 1\\,\\mathrm{d}x = 1$. Donc $J = 1 - I = 1 - \\ln\\left(\\dfrac{e + 1}{2}\\right)$.",
+              "pourquoi": "Une primitive de $\\dfrac{1}{e^x + 1}$ ne se voit pas directement : la somme $I + J$ évite de la chercher."
+            },
+            {
+              "texte": "**Conclusion** : $\\displaystyle\\int_{-1}^{2} |x|\\,\\mathrm{d}x = \\frac{5}{2}$, l'intégrale du **b** vaut $16$, $I = \\ln\\left(\\dfrac{e + 1}{2}\\right)$ et $J = 1 - \\ln\\left(\\dfrac{e + 1}{2}\\right)$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-042",
+          "type": "demonstration",
+          "titre": "Pourquoi ces règles ?",
+          "capacites": ["bo-m-integrale-06"],
+          "de": "l-integration-040",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "Soit $F$ et $G$ des primitives de $f$ et de $g$ sur $I$. La fonction $F + G$ a pour dérivée $f + g$ : c'est une primitive de $f + g$. Donc $\\displaystyle\\int_a^b \\big(f(x) + g(x)\\big)\\,\\mathrm{d}x = \\big(F(b) + G(b)\\big) - \\big(F(a) + G(a)\\big) = \\big(F(b) - F(a)\\big) + \\big(G(b) - G(a)\\big)$."
+            },
+            {
+              "texte": "De même, $kF$ est une primitive de $kf$, et $kF(b) - kF(a) = k\\big(F(b) - F(a)\\big)$."
+            },
+            {
+              "texte": "Relation de Chasles : $F(c) - F(a) = \\big(F(b) - F(a)\\big) + \\big(F(c) - F(b)\\big)$, car $F(b)$ s'ajoute puis se retranche."
+            },
+            {
+              "texte": "Avec $c = a$ : $\\displaystyle\\int_a^a f(x)\\,\\mathrm{d}x = F(a) - F(a) = 0$, donc $0 = \\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x + \\int_b^a f(x)\\,\\mathrm{d}x$, d'où la dernière égalité."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-043",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-06"],
+          "question": {
+            "enonce": "Soit $f$ une fonction continue sur $\\mathbb{R}$ telle que $\\displaystyle\\int_0^2 f(x)\\,\\mathrm{d}x = 5$ et $\\displaystyle\\int_0^3 f(x)\\,\\mathrm{d}x = 4$. Que vaut $\\displaystyle\\int_2^3 f(x)\\,\\mathrm{d}x$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": -1,
+              "tolerance": 0
+            },
+            "explication": "Relation de Chasles : $\\displaystyle\\int_0^3 f(x)\\,\\mathrm{d}x = \\int_0^2 f(x)\\,\\mathrm{d}x + \\int_2^3 f(x)\\,\\mathrm{d}x$, donc $\\displaystyle\\int_2^3 f(x)\\,\\mathrm{d}x = 4 - 5 = -1$."
+          }
+        },
+        {
+          "id": "l-integration-044",
+          "type": "propriete",
+          "titre": "Positivité, intégration des inégalités",
+          "capacites": ["bo-m-integrale-06", "bo-m-integrale-11"],
+          "texte": "Soit $f$ et $g$ deux fonctions continues sur $[a\\,;\\,b]$, avec $a \\leqslant b$.\n\n**Positivité** : si $f(x) \\geqslant 0$ pour tout $x$ de $[a\\,;\\,b]$, alors $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x \\geqslant 0$.\n\n**Intégration des inégalités** : si $f(x) \\leqslant g(x)$ pour tout $x$ de $[a\\,;\\,b]$, alors$$\\int_a^b f(x)\\,\\mathrm{d}x \\leqslant \\int_a^b g(x)\\,\\mathrm{d}x.$$En particulier, si $m \\leqslant f(x) \\leqslant M$ pour tout $x$ de $[a\\,;\\,b]$, alors $m(b - a) \\leqslant \\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x \\leqslant M(b - a)$.",
+          "conditions": [
+            "Les bornes sont dans l'ordre croissant : $a \\leqslant b$. Si $a > b$, les inégalités changent de sens.",
+            "$f$ et $g$ sont continues sur $[a\\,;\\,b]$, et l'inégalité entre elles est vraie pour **tout** $x$ de $[a\\,;\\,b]$."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-integration-045",
+          "type": "exemple",
+          "titre": "Encadrer une intégrale sans la calculer",
+          "capacites": ["bo-m-integrale-11", "bo-m-integrale-06"],
+          "enonce": "On pose $I = \\displaystyle\\int_0^1 e^{-x^2}\\,\\mathrm{d}x$. On ne connaît aucune primitive de $x \\mapsto e^{-x^2}$ qui s'écrive avec les fonctions usuelles.\n\n**a.** Montrer que, pour tout $x$ de $[0\\,;\\,1]$, $e^{-x} \\leqslant e^{-x^2} \\leqslant 1$.\n\n**b.** En déduire un encadrement de $I$.",
+          "etapes": [
+            {
+              "texte": "**a.** Pour $x$ dans $[0\\,;\\,1]$ : $x^2 - x = x(x - 1)$, avec $x \\geqslant 0$ et $x - 1 \\leqslant 0$, donc $x^2 - x \\leqslant 0$, soit $x^2 \\leqslant x$. De plus, $x^2 \\geqslant 0$.",
+              "pourquoi": "Sur $[0\\,;\\,1]$, élever au carré fait diminuer : $0{,}5^2 = 0{,}25$."
+            },
+            {
+              "texte": "De $0 \\leqslant x^2 \\leqslant x$, on tire, en multipliant par $-1$ (ce qui change le sens) : $-x \\leqslant -x^2 \\leqslant 0$. La fonction exponentielle est croissante : $e^{-x} \\leqslant e^{-x^2} \\leqslant e^0 = 1$."
+            },
+            {
+              "texte": "**b.** Les trois fonctions sont continues sur $[0\\,;\\,1]$ et $0 \\leqslant 1$ : on intègre l'encadrement, qui garde son sens.$$\\int_0^1 e^{-x}\\,\\mathrm{d}x \\leqslant I \\leqslant \\int_0^1 1\\,\\mathrm{d}x.$$",
+              "pourquoi": "C'est l'intégration des inégalités, avec des bornes dans l'ordre croissant."
+            },
+            {
+              "texte": "$\\displaystyle\\int_0^1 e^{-x}\\,\\mathrm{d}x = \\left[-e^{-x}\\right]_0^1 = -e^{-1} - \\left(-e^{0}\\right) = 1 - e^{-1}$ et $\\displaystyle\\int_0^1 1\\,\\mathrm{d}x = 1$.",
+              "pourquoi": "$x \\mapsto -e^{-x}$ a pour dérivée $-(-1)e^{-x} = e^{-x}$."
+            },
+            {
+              "texte": "**Conclusion** : $1 - e^{-1} \\leqslant I \\leqslant 1$. Comme $1 - e^{-1} \\approx 0{,}632$, on a $0{,}63 \\leqslant I \\leqslant 1$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-046",
+          "type": "demonstration",
+          "titre": "Pourquoi la positivité ?",
+          "capacites": ["bo-m-integrale-06"],
+          "de": "l-integration-044",
+          "exigible": false,
+          "etapes": [
+            {
+              "texte": "Soit $F$ une primitive de $f$ sur $[a\\,;\\,b]$. Si $f \\geqslant 0$ sur $[a\\,;\\,b]$, alors $F' = f \\geqslant 0$ : $F$ est croissante sur $[a\\,;\\,b]$."
+            },
+            {
+              "texte": "Comme $a \\leqslant b$, $F(a) \\leqslant F(b)$, donc $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x = F(b) - F(a) \\geqslant 0$.",
+              "pourquoi": "C'est ici que sert l'hypothèse $a \\leqslant b$."
+            },
+            {
+              "texte": "Si $f \\leqslant g$, la fonction $g - f$ est continue et positive : son intégrale est positive. Par linéarité, $\\displaystyle\\int_a^b g(x)\\,\\mathrm{d}x - \\int_a^b f(x)\\,\\mathrm{d}x \\geqslant 0$."
+            },
+            {
+              "texte": "Avec les fonctions constantes $m$ et $M$ : $\\displaystyle\\int_a^b m\\,\\mathrm{d}x = \\big[mx\\big]_a^b = m(b - a)$, et de même $\\displaystyle\\int_a^b M\\,\\mathrm{d}x = M(b - a)$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-047",
+          "type": "methode",
+          "titre": "Comment majorer ou minorer une intégrale ?",
+          "capacites": ["bo-m-integrale-11"],
+          "etapes": [
+            "Encadre la fonction sur l'intervalle d'intégration : pour tout $x$ de $[a\\,;\\,b]$, $g(x) \\leqslant f(x) \\leqslant h(x)$. Pars des bornes de $x$, d'un tableau de variations ou d'une inégalité connue, comme $e^x \\geqslant 1 + x$.",
+            "Choisis $g$ et $h$ dont tu connais une primitive : des constantes, des fonctions affines, des exponentielles simples.",
+            "Vérifie que $a \\leqslant b$, puis intègre chaque membre : $\\displaystyle\\int_a^b g(x)\\,\\mathrm{d}x \\leqslant \\int_a^b f(x)\\,\\mathrm{d}x \\leqslant \\int_a^b h(x)\\,\\mathrm{d}x$.",
+            "Calcule les intégrales de $g$ et de $h$ avec une primitive.",
+            "Conclus par l'encadrement, en valeurs exactes, puis en valeurs approchées si l'énoncé le demande."
+          ],
+          "exemple": "l-integration-045"
+        },
+        {
+          "id": "l-integration-048",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-11"],
+          "question": {
+            "enonce": "Soit $f$ une fonction continue telle que $2 \\leqslant f(x) \\leqslant 5$ pour tout $x$ de $[1\\,;\\,3]$. Quel encadrement de $\\displaystyle\\int_1^3 f(x)\\,\\mathrm{d}x$ peux-tu en déduire ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$2 \\leqslant \\displaystyle\\int_1^3 f(x)\\,\\mathrm{d}x \\leqslant 5$",
+                "$4 \\leqslant \\displaystyle\\int_1^3 f(x)\\,\\mathrm{d}x \\leqslant 10$",
+                "$6 \\leqslant \\displaystyle\\int_1^3 f(x)\\,\\mathrm{d}x \\leqslant 15$",
+                "$-10 \\leqslant \\displaystyle\\int_1^3 f(x)\\,\\mathrm{d}x \\leqslant -4$"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Tu as oublié de multiplier par la longueur de l'intervalle, $3 - 1 = 2$.",
+                null,
+                "La longueur de $[1\\,;\\,3]$ vaut $3 - 1 = 2$, et non $3$.",
+                "Les bornes sont dans l'ordre croissant : les inégalités gardent leur sens, et l'intégrale d'une fonction positive est positive."
+              ]
+            },
+            "explication": "On intègre $2 \\leqslant f(x) \\leqslant 5$ sur $[1\\,;\\,3]$, avec $1 \\leqslant 3$ : $2 \\times (3 - 1) \\leqslant \\displaystyle\\int_1^3 f(x)\\,\\mathrm{d}x \\leqslant 5 \\times (3 - 1)$, soit $4 \\leqslant \\displaystyle\\int_1^3 f(x)\\,\\mathrm{d}x \\leqslant 10$."
+          }
+        },
+        {
+          "id": "l-integration-049",
+          "type": "piege",
+          "titre": "Des bornes dans le mauvais ordre",
+          "faux": "Sur $[0\\,;\\,1]$, $x^2 \\leqslant x$, donc $\\displaystyle\\int_1^0 x^2\\,\\mathrm{d}x \\leqslant \\int_1^0 x\\,\\mathrm{d}x$.",
+          "juste": "Les bornes sont dans l'ordre décroissant : l'inégalité change de sens. En effet, $\\displaystyle\\int_1^0 x^2\\,\\mathrm{d}x = -\\frac{1}{3}$ et $\\displaystyle\\int_1^0 x\\,\\mathrm{d}x = -\\frac{1}{2}$, et $-\\dfrac{1}{3} \\geqslant -\\dfrac{1}{2}$.",
+          "explication": "On n'intègre une inégalité sans changer son sens que si $a \\leqslant b$. Sinon, échange d'abord les bornes avec $\\displaystyle\\int_1^0 x\\,\\mathrm{d}x = -\\int_0^1 x\\,\\mathrm{d}x$, puis applique la propriété."
+        },
+        {
+          "id": "l-integration-050",
+          "type": "piege",
+          "titre": "Intégrale positive ne veut pas dire fonction positive",
+          "faux": "$\\displaystyle\\int_{-1}^{2} x\\,\\mathrm{d}x = \\frac{3}{2} > 0$, donc $x \\geqslant 0$ sur $[-1\\,;\\,2]$.",
+          "juste": "La fonction $x \\mapsto x$ est négative sur $[-1\\,;\\,0[$ ; son intégrale est positive parce que la partie au-dessus de l'axe l'emporte.",
+          "explication": "La positivité marche dans un seul sens : $f \\geqslant 0$ sur $[a\\,;\\,b]$, avec $a \\leqslant b$, entraîne $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x \\geqslant 0$. La réciproque est fausse, comme le montre ce contre-exemple."
+        },
+        {
+          "id": "l-integration-051",
+          "type": "retenir",
+          "texte": "Linéarité et relation de Chasles : $\\displaystyle\\int_a^c f(x)\\,\\mathrm{d}x = \\int_a^b f(x)\\,\\mathrm{d}x + \\int_b^c f(x)\\,\\mathrm{d}x$. Si $a \\leqslant b$ et $f \\leqslant g$ sur $[a\\,;\\,b]$, alors $\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x \\leqslant \\int_a^b g(x)\\,\\mathrm{d}x$ : on encadre la fonction, puis on intègre l'encadrement."
+        }
+      ]
+    },
+    {
+      "notion": "n-integration-courbes-valeur-moyenne",
+      "blocs": [
+        {
+          "id": "l-integration-052",
+          "type": "idee",
+          "texte": "Un logo est découpé entre deux courbes : pour savoir combien de peinture il faut, on cherche l'aire entre elles. C'est l'aire sous la courbe du dessus, moins l'aire sous celle du dessous. Autre question : quelle est la température moyenne d'une journée ? Ce n'est pas la moyenne du minimum et du maximum. C'est la hauteur du rectangle qui a la même aire que le domaine sous la courbe des températures."
+        },
+        {
+          "id": "l-integration-053",
+          "type": "propriete",
+          "titre": "Aire entre deux courbes",
+          "capacites": ["bo-m-integrale-12"],
+          "texte": "Soit $f$ et $g$ deux fonctions continues sur $[a\\,;\\,b]$, avec $a \\leqslant b$. On suppose $f(x) \\geqslant g(x)$ pour tout $x$ de $[a\\,;\\,b]$ : la courbe $\\mathcal{C}_f$ est au-dessus de $\\mathcal{C}_g$. Considérons le domaine limité par $\\mathcal{C}_f$, $\\mathcal{C}_g$ et les droites d'équations $x = a$ et $x = b$. Son aire, en u.a., vaut :$$\\int_a^b \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x.$$Pourquoi : si $g$ est positive, cette aire est la différence des aires sous $\\mathcal{C}_f$ et sous $\\mathcal{C}_g$, et la linéarité donne la formule. Sinon, on monte les deux courbes d'une même hauteur $k$, pour que $g + k$ soit positive : l'aire ne change pas, et $(f + k) - (g + k) = f - g$.",
+          "conditions": [
+            "$f$ et $g$ sont continues sur $[a\\,;\\,b]$, avec $a \\leqslant b$.",
+            "$f(x) \\geqslant g(x)$ pour tout $x$ de $[a\\,;\\,b]$. Si les courbes se croisent, on découpe $[a\\,;\\,b]$ avec la relation de Chasles."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-integration-054",
+          "type": "figure",
+          "titre": "Le domaine entre deux courbes",
+          "capacites": ["bo-m-integrale-12"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/integration/entre-courbes.svg",
+              "width": 320,
+              "height": 330,
+              "alt": "Dans un repère orthonormé, la droite d'équation y = x, en orange, et la parabole d'équation y = x², en bleu, partent toutes deux de l'origine et se recoupent au point de coordonnées (1 ; 1). Pour x entre 0 et 1, la droite est au-dessus de la parabole ; le domaine compris entre elles est colorié en bleu clair et marqué A. Une droite verticale en pointillés marque l'abscisse 1. Au-delà de x = 1, la parabole passe au-dessus de la droite."
+            },
+            "caption": "Le domaine A entre la droite y = x, au-dessus, et la parabole y = x², en dessous, pour x entre 0 et 1."
+          }
+        },
+        {
+          "id": "l-integration-055",
+          "type": "exemple",
+          "titre": "Calculer l'aire entre deux courbes",
+          "capacites": ["bo-m-integrale-12", "bo-m-derivation-07"],
+          "enonce": "Le plan est muni d'un repère orthonormé.\n\n**a.** Calculer l'aire du domaine $\\mathcal{A}$ limité par la droite d'équation $y = x$, la parabole d'équation $y = x^2$ et les droites $x = 0$ et $x = 1$ (figure ci-dessus).\n\n**b.** Soit $\\mathcal{C}$ la courbe de la fonction exponentielle et $T$ sa tangente au point d'abscisse $0$, d'équation $y = x + 1$. Calculer l'aire du domaine limité par $\\mathcal{C}$, $T$ et les droites $x = 0$ et $x = 1$, en u.a., puis en cm² si une unité mesure $2$ cm sur chaque axe.",
+          "etapes": [
+            {
+              "texte": "**a.** Position des courbes : pour $x$ dans $[0\\,;\\,1]$, $x - x^2 = x(1 - x) \\geqslant 0$, car $x \\geqslant 0$ et $1 - x \\geqslant 0$. La droite est au-dessus de la parabole.",
+              "pourquoi": "On étudie le signe de la différence « dessus moins dessous » avant d'intégrer."
+            },
+            {
+              "texte": "$\\mathcal{A} = \\displaystyle\\int_0^1 \\left(x - x^2\\right)\\mathrm{d}x = \\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1 = \\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}$ u.a."
+            },
+            {
+              "texte": "**b.** La fonction exponentielle est convexe sur $\\mathbb{R}$ : sa courbe est au-dessus de ses tangentes. Donc $e^x \\geqslant x + 1$ pour tout $x$ : $\\mathcal{C}$ est au-dessus de $T$.",
+              "pourquoi": "Chapitre sur la convexité : la dérivée seconde de $x \\mapsto e^x$ est $x \\mapsto e^x$, strictement positive."
+            },
+            {
+              "texte": "L'aire vaut $\\displaystyle\\int_0^1 \\left(e^x - x - 1\\right)\\mathrm{d}x = \\left[e^x - \\frac{x^2}{2} - x\\right]_0^1 = \\left(e - \\frac{1}{2} - 1\\right) - \\left(e^0 - 0 - 0\\right) = e - \\frac{5}{2}$ u.a.",
+              "pourquoi": "$e^0 = 1$ : on retranche $1$, et $e - \\dfrac{3}{2} - 1 = e - \\dfrac{5}{2}$."
+            },
+            {
+              "texte": "Une unité d'aire vaut $2 \\times 2 = 4$ cm² : l'aire vaut $4\\left(e - \\dfrac{5}{2}\\right) = 4e - 10 \\approx 0{,}87$ cm²."
+            },
+            {
+              "texte": "**Conclusion** : l'aire entre la droite et la parabole vaut $\\dfrac{1}{6}$ u.a. ; l'aire entre l'exponentielle et sa tangente en $0$ vaut $e - \\dfrac{5}{2} \\approx 0{,}22$ u.a., soit $4e - 10 \\approx 0{,}87$ cm²."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-056",
+          "type": "methode",
+          "titre": "Comment calculer l'aire entre deux courbes ?",
+          "capacites": ["bo-m-integrale-12"],
+          "etapes": [
+            "Étudie le signe de $f(x) - g(x)$ sur $[a\\,;\\,b]$ : factorise, étudie les variations de $f - g$, ou utilise la convexité.",
+            "Si $f - g$ change de signe en un réel $c$, coupe $[a\\,;\\,b]$ en $c$ avec la relation de Chasles.",
+            "Sur chaque morceau, intègre « courbe du dessus moins courbe du dessous » : le résultat est positif.",
+            "Calcule chaque intégrale avec une primitive, puis ajoute les aires des morceaux.",
+            "Donne l'aire en u.a., puis convertis en cm² si l'énoncé donne les unités des axes."
+          ],
+          "exemple": "l-integration-055"
+        },
+        {
+          "id": "l-integration-057",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-12"],
+          "question": {
+            "enonce": "Calcule l'aire, en u.a., du domaine limité par la droite d'équation $y = 2x$ et la parabole d'équation $y = x^2$, entre $x = 0$ et $x = 2$ (valeur exacte, ou arrondie au centième).",
+            "reponse": {
+              "type": "numerique",
+              "valeur": "4/3",
+              "tolerance": 0.01
+            },
+            "explication": "Sur $[0\\,;\\,2]$, $2x - x^2 = x(2 - x) \\geqslant 0$ : la droite est au-dessus. L'aire vaut $\\displaystyle\\int_0^2 \\left(2x - x^2\\right)\\mathrm{d}x = \\left[x^2 - \\frac{x^3}{3}\\right]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}$."
+          }
+        },
+        {
+          "id": "l-integration-058",
+          "type": "definition",
+          "titre": "Valeur moyenne d'une fonction",
+          "capacites": ["bo-m-integrale-07"],
+          "texte": "Soit $f$ une fonction continue sur un intervalle $[a\\,;\\,b]$, avec $a < b$. La **valeur moyenne** de $f$ sur $[a\\,;\\,b]$ est le nombre :$$\\mu = \\frac{1}{b - a}\\int_a^b f(x)\\,\\mathrm{d}x.$$La lettre grecque $\\mu$ se lit « mu ».\n\nSi $f$ est positive, $\\mu(b - a) = \\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ : le rectangle de base $[a\\,;\\,b]$ et de hauteur $\\mu$ a la même aire que le domaine sous la courbe. C'est la hauteur qu'aurait la courbe si on l'aplatissait sans changer l'aire."
+        },
+        {
+          "id": "l-integration-092",
+          "type": "figure",
+          "titre": "La valeur moyenne, hauteur du rectangle de même aire",
+          "capacites": ["bo-m-integrale-07"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/integration/valeur-moyenne.svg",
+              "width": 240,
+              "height": 300,
+              "alt": "Dans un repère orthonormé, la parabole d'équation y = 4 − x² descend du point (0 ; 4) au point (2 ; 0) ; le domaine sous la courbe, entre x = 0 et x = 2, est colorié en bleu. Un rectangle en pointillés orange, de base [0 ; 2] et de hauteur μ = 8/3, a la même aire que ce domaine, 16/3. La droite y = 8/3 coupe la parabole. À gauche, la partie du domaine qui dépasse au-dessus de cette droite est en bleu foncé ; à droite, la partie du rectangle située au-dessus de la courbe est en orange. Ces deux parties ont la même aire : l'une comble l'autre."
+            },
+            "caption": "Valeur moyenne de x ↦ 4 − x² sur [0 ; 2] : l'aire sous la courbe vaut 16/3, donc μ = (16/3) / 2 = 8/3. La partie bleu foncé, qui dépasse du rectangle, a la même aire que la partie orange, vide sous le rectangle."
+          }
+        },
+        {
+          "id": "l-integration-059",
+          "type": "exemple",
+          "titre": "Une vitesse moyenne, une température moyenne",
+          "capacites": ["bo-m-integrale-07", "bo-m-integrale-14"],
+          "enonce": "**a.** Un mobile se déplace en ligne droite. À l'instant $t$, en secondes, sa vitesse vaut $v(t) = 3t^2 + 2$, en mètres par seconde. Sa position $d(t)$ vérifie $d' = v$. Calculer la distance parcourue entre $t = 0$ et $t = 2$, puis la vitesse moyenne sur cette durée.\n\n**b.** Un plat sort du four. Sa température, en degrés Celsius, vaut $\\theta(t) = 20 + 60e^{-0{,}05t}$ après $t$ minutes. Calculer sa température moyenne pendant les $20$ premières minutes, arrondie au dixième.",
+          "etapes": [
+            {
+              "texte": "**a.** $d$ est une primitive de $v$ : la distance parcourue est $d(2) - d(0) = \\displaystyle\\int_0^2 v(t)\\,\\mathrm{d}t$.",
+              "pourquoi": "La vitesse est positive : le mobile avance toujours dans le même sens, et la distance parcourue est la variation de sa position. C'est aussi l'aire sous la courbe de la vitesse."
+            },
+            {
+              "texte": "$\\displaystyle\\int_0^2 \\left(3t^2 + 2\\right)\\mathrm{d}t = \\left[t^3 + 2t\\right]_0^2 = (8 + 4) - 0 = 12$ : le mobile parcourt $12$ m."
+            },
+            {
+              "texte": "La vitesse moyenne est la valeur moyenne de $v$ sur $[0\\,;\\,2]$ : $\\mu = \\dfrac{1}{2 - 0} \\times 12 = 6$, soit $6$ m/s. C'est bien la distance divisée par la durée."
+            },
+            {
+              "texte": "**b.** La température moyenne vaut $\\mu = \\dfrac{1}{20 - 0}\\displaystyle\\int_0^{20} \\left(20 + 60e^{-0{,}05t}\\right)\\mathrm{d}t$. Une primitive de $t \\mapsto e^{-0{,}05t}$ est $t \\mapsto \\dfrac{e^{-0{,}05t}}{-0{,}05} = -20e^{-0{,}05t}$.",
+              "pourquoi": "Forme $e^{at}$, de primitive $\\dfrac{1}{a}e^{at}$, avec $a = -0{,}05$ et $\\dfrac{1}{-0{,}05} = -20$."
+            },
+            {
+              "texte": "Une primitive de $\\theta$ est donc $t \\mapsto 20t - 1\\,200e^{-0{,}05t}$, et$$\\int_0^{20} \\theta(t)\\,\\mathrm{d}t = \\left(400 - 1\\,200e^{-1}\\right) - \\left(0 - 1\\,200e^{0}\\right) = 1\\,600 - 1\\,200e^{-1}.$$",
+              "pourquoi": "$60 \\times (-20) = -1\\,200$, $20 \\times 20 = 400$ et $-0{,}05 \\times 20 = -1$."
+            },
+            {
+              "texte": "$\\mu = \\dfrac{1\\,600 - 1\\,200e^{-1}}{20} = 80 - 60e^{-1} \\approx 57{,}9$, à la calculatrice."
+            },
+            {
+              "texte": "**Conclusion** : le mobile parcourt $12$ m en $2$ s, à la vitesse moyenne de $6$ m/s. La température moyenne du plat pendant les $20$ premières minutes est d'environ $57{,}9$ °C."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-060",
+          "type": "lien-matiere",
+          "titre": "Et en physique ?",
+          "capacites": ["bo-pc-mouvement-05", "bo-pc-champ-uniforme-14"],
+          "matiere": "physique-chimie",
+          "texte": "En physique, la vitesse $v_x(t)$ d'un mobile est la dérivée de sa position $x(t)$ : la position est donc une primitive de la vitesse. Le déplacement entre $t_0$ et $t_1$ vaut $x(t_1) - x(t_0) = \\displaystyle\\int_{t_0}^{t_1} v_x(t)\\,\\mathrm{d}t$, et la vitesse moyenne est la valeur moyenne de $v_x$ sur $[t_0\\,;\\,t_1]$."
+        },
+        {
+          "id": "l-integration-061",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-07"],
+          "question": {
+            "enonce": "Quelle est la valeur moyenne de $f : x \\mapsto x^2$ sur $[0\\,;\\,3]$ ?",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 3,
+              "tolerance": 0
+            },
+            "explication": "$\\mu = \\dfrac{1}{3 - 0}\\displaystyle\\int_0^3 x^2\\,\\mathrm{d}x = \\dfrac{1}{3}\\left[\\dfrac{x^3}{3}\\right]_0^3 = \\dfrac{1}{3} \\times 9 = 3$. Ce n'est pas $\\dfrac{f(0) + f(3)}{2} = 4{,}5$."
+          }
+        },
+        {
+          "id": "l-integration-062",
+          "type": "piege",
+          "titre": "Des courbes qui se croisent",
+          "faux": "L'aire entre les courbes de $f : x \\mapsto x$ et de $g : x \\mapsto x^3$ sur $[-1\\,;\\,1]$ vaut $\\displaystyle\\int_{-1}^{1} \\left(x - x^3\\right)\\mathrm{d}x = 0$.",
+          "juste": "Sur $[-1\\,;\\,0]$, $x - x^3 \\leqslant 0$ : la courbe de $g$ est au-dessus. L'aire vaut $\\displaystyle\\int_{-1}^{0} \\left(x^3 - x\\right)\\mathrm{d}x + \\int_{0}^{1} \\left(x - x^3\\right)\\mathrm{d}x = \\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}$.",
+          "explication": "Une aire est toujours positive ; une intégrale nulle signale des parties qui se compensent. Étudie le signe de $f - g$ : ici $x - x^3 = x(1 - x)(1 + x)$ change de signe en $0$. Coupe là, puis intègre « dessus moins dessous » sur chaque morceau."
+        },
+        {
+          "id": "l-integration-063",
+          "type": "piege",
+          "titre": "Oublier de diviser par $b - a$",
+          "faux": "La valeur moyenne de $x \\mapsto 2x$ sur $[1\\,;\\,3]$ vaut $\\displaystyle\\int_1^3 2x\\,\\mathrm{d}x = \\left[x^2\\right]_1^3 = 8$.",
+          "juste": "Elle vaut $\\dfrac{1}{3 - 1} \\times 8 = 4$.",
+          "explication": "L'intégrale est une aire ; la moyenne est une hauteur. Contrôle : la valeur moyenne est comprise entre la plus petite et la plus grande valeur de la fonction sur l'intervalle, ici entre $2$ et $6$. Le nombre $8$ ne peut pas convenir."
+        },
+        {
+          "id": "l-integration-064",
+          "type": "retenir",
+          "texte": "Si $f \\geqslant g$ sur $[a\\,;\\,b]$, l'aire entre les courbes vaut $\\displaystyle\\int_a^b \\big(f(x) - g(x)\\big)\\,\\mathrm{d}x$ ; si elles se croisent, on découpe. La valeur moyenne de $f$ sur $[a\\,;\\,b]$ est $\\mu = \\dfrac{1}{b - a}\\displaystyle\\int_a^b f(x)\\,\\mathrm{d}x$ : une vitesse moyenne, une température moyenne."
+        }
+      ]
+    },
+    {
+      "notion": "n-integration-parties",
+      "blocs": [
+        {
+          "id": "l-integration-065",
+          "type": "idee",
+          "texte": "Tu sais intégrer $e^x$ et $x$, mais pas encore leur produit $xe^x$ : une primitive d'un produit n'est pas le produit des primitives. L'astuce vient de la dérivée d'un produit, $(uv)' = u'v + uv'$. En l'intégrant, on échange l'intégrale de $uv'$ contre celle de $u'v$. Si dériver $u$ la simplifie, comme $x$ qui devient $1$, la nouvelle intégrale est facile."
+        },
+        {
+          "id": "l-integration-066",
+          "type": "rappel",
+          "titre": "Rappel : dérivée d'un produit",
+          "lien": "1e:derivation",
+          "texte": "Si $u$ et $v$ sont dérivables sur un intervalle $I$, alors $uv$ est dérivable sur $I$ et $(uv)' = u'v + uv'$. Par exemple, $\\left(xe^x\\right)' = 1 \\times e^x + x \\times e^x = (1 + x)e^x$. Une fonction dérivable est continue : si $u'$ et $v'$ sont continues, $u'v + uv'$ l'est aussi."
+        },
+        {
+          "id": "l-integration-067",
+          "type": "propriete",
+          "titre": "Intégration par parties",
+          "capacites": ["bo-m-integrale-08"],
+          "texte": "Soit $u$ et $v$ deux fonctions dérivables sur un intervalle $I$, de dérivées $u'$ et $v'$ continues sur $I$. Soit $a$ et $b$ deux réels de $I$. Alors :$$\\int_a^b u(x)\\,v'(x)\\,\\mathrm{d}x = \\big[u(x)\\,v(x)\\big]_a^b - \\int_a^b u'(x)\\,v(x)\\,\\mathrm{d}x.$$Utiliser cette formule, c'est **intégrer par parties**.",
+          "conditions": [
+            "$u$ et $v$ sont dérivables sur un intervalle $I$ qui contient $a$ et $b$.",
+            "$u'$ et $v'$ sont continues sur $I$."
+          ],
+          "admise": false
+        },
+        {
+          "id": "l-integration-068",
+          "type": "exemple",
+          "titre": "Un premier calcul par parties",
+          "capacites": ["bo-m-integrale-08"],
+          "enonce": "Calculer $I = \\displaystyle\\int_0^1 x\\,e^x\\,\\mathrm{d}x$ à l'aide d'une intégration par parties.",
+          "etapes": [
+            {
+              "texte": "On pose $u(x) = x$ et $v'(x) = e^x$. Alors $u'(x) = 1$, et on prend $v(x) = e^x$. Ces fonctions sont dérivables sur $\\mathbb{R}$, de dérivées continues.",
+              "pourquoi": "Dériver $x$ donne $1$, ce qui simplifie ; $e^x$ a une primitive connue, $e^x$ elle-même."
+            },
+            {
+              "texte": "Par intégration par parties : $I = \\big[x\\,e^x\\big]_0^1 - \\displaystyle\\int_0^1 1 \\times e^x\\,\\mathrm{d}x$."
+            },
+            {
+              "texte": "Le crochet vaut $1 \\times e^1 - 0 \\times e^0 = e$, et $\\displaystyle\\int_0^1 e^x\\,\\mathrm{d}x = \\big[e^x\\big]_0^1 = e - 1$.",
+              "pourquoi": "$0 \\times e^0 = 0 \\times 1 = 0$."
+            },
+            {
+              "texte": "Donc $I = e - (e - 1) = 1$."
+            },
+            {
+              "texte": "**Conclusion** : $\\displaystyle\\int_0^1 x\\,e^x\\,\\mathrm{d}x = 1$. Contrôle : $x \\mapsto (x - 1)e^x$ a pour dérivée $e^x + (x - 1)e^x = xe^x$, et $\\big[(x - 1)e^x\\big]_0^1 = 0 - (-1) = 1$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-069",
+          "type": "demonstration",
+          "titre": "Démonstration : la formule d'intégration par parties",
+          "capacites": ["bo-m-integrale-16"],
+          "de": "l-integration-067",
+          "exigible": true,
+          "etapes": [
+            {
+              "texte": "La fonction $uv$ est dérivable sur $I$, et $(uv)' = u'v + uv'$.",
+              "pourquoi": "Dérivée d'un produit, vue en première."
+            },
+            {
+              "texte": "Les fonctions $u$ et $v$ sont dérivables, donc continues ; $u'$ et $v'$ sont continues par hypothèse. Les produits $u'v$ et $uv'$, et leur somme, sont donc continus sur $I$ : leurs intégrales existent."
+            },
+            {
+              "texte": "$uv$ est une primitive de $u'v + uv'$, donc :$$\\int_a^b \\big(u'(x)v(x) + u(x)v'(x)\\big)\\,\\mathrm{d}x = \\big[u(x)v(x)\\big]_a^b.$$"
+            },
+            {
+              "texte": "Par linéarité, le membre de gauche vaut $\\displaystyle\\int_a^b u'(x)v(x)\\,\\mathrm{d}x + \\int_a^b u(x)v'(x)\\,\\mathrm{d}x$."
+            },
+            {
+              "texte": "On retranche $\\displaystyle\\int_a^b u'(x)v(x)\\,\\mathrm{d}x$ aux deux membres :$$\\int_a^b u(x)v'(x)\\,\\mathrm{d}x = \\big[u(x)v(x)\\big]_a^b - \\int_a^b u'(x)v(x)\\,\\mathrm{d}x.$$"
+            }
+          ]
+        },
+        {
+          "id": "l-integration-070",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-08"],
+          "question": {
+            "enonce": "Pour calculer $\\displaystyle\\int_0^{\\pi} x\\sin x\\,\\mathrm{d}x$ par parties, quel choix fais-tu ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "$u(x) = x$ et $v'(x) = \\sin x$",
+                "$u(x) = \\sin x$ et $v'(x) = x$",
+                "$u(x) = x\\sin x$ et $v'(x) = 1$"
+              ],
+              "bonne": 0,
+              "pourquoiFaux": [
+                null,
+                "Avec $v'(x) = x$, on a $v(x) = \\dfrac{x^2}{2}$ : la nouvelle intégrale, $\\displaystyle\\int_0^{\\pi} \\frac{x^2}{2}\\cos x\\,\\mathrm{d}x$, est plus compliquée.",
+                "On obtient alors $\\displaystyle\\int_0^{\\pi} x\\left(\\sin x + x\\cos x\\right)\\mathrm{d}x$ : le calcul ne s'est pas simplifié."
+              ]
+            },
+            "explication": "On dérive $x$, qui devient $1$, et on intègre $\\sin x$, qui devient $-\\cos x$ : $\\displaystyle\\int_0^{\\pi} x\\sin x\\,\\mathrm{d}x = \\big[-x\\cos x\\big]_0^{\\pi} + \\int_0^{\\pi} \\cos x\\,\\mathrm{d}x = \\pi + 0 = \\pi$."
+          }
+        },
+        {
+          "id": "l-integration-071",
+          "type": "methode",
+          "titre": "Comment choisir $u$ et $v'$, puis mener le calcul ?",
+          "capacites": ["bo-m-integrale-08"],
+          "etapes": [
+            "Écris la fonction à intégrer comme un produit $u(x) \\times v'(x)$. Prends pour $v'$ un facteur dont tu connais une primitive : $e^x$, $e^{-x}$, $\\sin x$, $\\cos x$, $x^n$.",
+            "Prends pour $u$ le facteur que la dérivation simplifie : un polynôme, dont le degré baisse, ou $\\ln x$, qui devient $\\dfrac{1}{x}$. Avec $\\ln x$, choisis toujours $u(x) = \\ln x$.",
+            "Écris les quatre fonctions $u$, $u'$, $v$ et $v'$, et vérifie que $u'$ et $v'$ sont continues sur l'intervalle.",
+            "Applique la formule $\\displaystyle\\int_a^b u(x)v'(x)\\,\\mathrm{d}x = \\big[u(x)v(x)\\big]_a^b - \\int_a^b u'(x)v(x)\\,\\mathrm{d}x$, avec des parenthèses autour de $v(x)$ quand elle contient un signe moins.",
+            "Calcule le crochet, puis la nouvelle intégrale, qui doit être plus simple que la première ; sinon, change de choix."
+          ],
+          "exemple": "l-integration-072"
+        },
+        {
+          "id": "l-integration-072",
+          "type": "exemple",
+          "titre": "Avec un logarithme : $u(x) = \\ln x$",
+          "capacites": ["bo-m-integrale-08"],
+          "enonce": "**a.** Montrer que $\\displaystyle\\int_1^e x\\ln x\\,\\mathrm{d}x = \\frac{e^2 + 1}{4}$.\n\n**b.** Calculer $\\displaystyle\\int_1^e \\ln x\\,\\mathrm{d}x$.",
+          "etapes": [
+            {
+              "texte": "**a.** On pose $u(x) = \\ln x$ et $v'(x) = x$, sur $[1\\,;\\,e]$. Alors $u'(x) = \\dfrac{1}{x}$ et $v(x) = \\dfrac{x^2}{2}$ ; $u'$ et $v'$ sont continues sur $[1\\,;\\,e]$.",
+              "pourquoi": "Le tableau des primitives ne donne rien pour $x\\ln x$ : on dérive $\\ln x$, ce qui fait disparaître le logarithme."
+            },
+            {
+              "texte": "$\\displaystyle\\int_1^e x\\ln x\\,\\mathrm{d}x = \\left[\\frac{x^2}{2}\\ln x\\right]_1^e - \\int_1^e \\frac{1}{x} \\times \\frac{x^2}{2}\\,\\mathrm{d}x = \\left(\\frac{e^2}{2} \\times 1 - \\frac{1}{2} \\times 0\\right) - \\int_1^e \\frac{x}{2}\\,\\mathrm{d}x.$",
+              "pourquoi": "$\\ln e = 1$, $\\ln 1 = 0$ et $\\dfrac{1}{x} \\times \\dfrac{x^2}{2} = \\dfrac{x}{2}$."
+            },
+            {
+              "texte": "$\\displaystyle\\int_1^e \\frac{x}{2}\\,\\mathrm{d}x = \\left[\\frac{x^2}{4}\\right]_1^e = \\frac{e^2}{4} - \\frac{1}{4}$. Donc $\\displaystyle\\int_1^e x\\ln x\\,\\mathrm{d}x = \\frac{e^2}{2} - \\frac{e^2}{4} + \\frac{1}{4} = \\frac{e^2}{4} + \\frac{1}{4} = \\frac{e^2 + 1}{4}$.",
+              "pourquoi": "Le signe moins devant l'intégrale porte sur ses deux termes : $-\\left(\\dfrac{e^2}{4} - \\dfrac{1}{4}\\right) = -\\dfrac{e^2}{4} + \\dfrac{1}{4}$."
+            },
+            {
+              "texte": "**b.** On écrit $\\ln x = \\ln x \\times 1$ : $u(x) = \\ln x$, $v'(x) = 1$, $u'(x) = \\dfrac{1}{x}$ et $v(x) = x$. Alors $\\displaystyle\\int_1^e \\ln x\\,\\mathrm{d}x = \\big[x\\ln x\\big]_1^e - \\int_1^e \\frac{1}{x} \\times x\\,\\mathrm{d}x = (e - 0) - \\int_1^e 1\\,\\mathrm{d}x$.",
+              "pourquoi": "Le facteur $1$, invisible, joue le rôle de $v'$."
+            },
+            {
+              "texte": "$\\displaystyle\\int_1^e 1\\,\\mathrm{d}x = e - 1$, donc $\\displaystyle\\int_1^e \\ln x\\,\\mathrm{d}x = e - (e - 1) = 1$."
+            },
+            {
+              "texte": "**Conclusion** : $\\displaystyle\\int_1^e x\\ln x\\,\\mathrm{d}x = \\frac{e^2 + 1}{4}$ et $\\displaystyle\\int_1^e \\ln x\\,\\mathrm{d}x = 1$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-073",
+          "type": "exemple",
+          "titre": "Une aire calculée par parties",
+          "capacites": ["bo-m-integrale-08"],
+          "enonce": "Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = (2x + 1)e^{-x}$. Calculer l'aire, en u.a., du domaine limité par sa courbe, l'axe des abscisses et les droites d'équations $x = 0$ et $x = 1$.",
+          "etapes": [
+            {
+              "texte": "Sur $[0\\,;\\,1]$, $2x + 1 > 0$ et $e^{-x} > 0$, donc $f(x) > 0$ : l'aire vaut $\\mathcal{A} = \\displaystyle\\int_0^1 (2x + 1)e^{-x}\\,\\mathrm{d}x$.",
+              "pourquoi": "On vérifie le signe : une intégrale n'est une aire que pour une fonction positive."
+            },
+            {
+              "texte": "On pose $u(x) = 2x + 1$ et $v'(x) = e^{-x}$. Alors $u'(x) = 2$ et $v(x) = -e^{-x}$.",
+              "pourquoi": "$\\left(-e^{-x}\\right)' = -(-1)e^{-x} = e^{-x}$."
+            },
+            {
+              "texte": "$\\mathcal{A} = \\Big[-(2x + 1)e^{-x}\\Big]_0^1 - \\displaystyle\\int_0^1 2 \\times \\left(-e^{-x}\\right)\\mathrm{d}x = \\Big[-(2x + 1)e^{-x}\\Big]_0^1 + 2\\int_0^1 e^{-x}\\,\\mathrm{d}x$.",
+              "pourquoi": "Moins par moins : $-\\displaystyle\\int_0^1 \\left(-2e^{-x}\\right)\\mathrm{d}x = +2\\int_0^1 e^{-x}\\,\\mathrm{d}x$."
+            },
+            {
+              "texte": "Le crochet vaut $-3e^{-1} - \\left(-1 \\times e^{0}\\right) = 1 - 3e^{-1}$, et $\\displaystyle\\int_0^1 e^{-x}\\,\\mathrm{d}x = \\big[-e^{-x}\\big]_0^1 = 1 - e^{-1}$.",
+              "pourquoi": "En $1$ : $-(2 + 1)e^{-1} = -3e^{-1}$ ; en $0$ : $-(0 + 1)e^{0} = -1$."
+            },
+            {
+              "texte": "Donc $\\mathcal{A} = 1 - 3e^{-1} + 2\\left(1 - e^{-1}\\right) = 3 - 5e^{-1}$."
+            },
+            {
+              "texte": "**Conclusion** : l'aire vaut $3 - 5e^{-1} = 3 - \\dfrac{5}{e} \\approx 1{,}16$ u.a."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-074",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-08"],
+          "question": {
+            "enonce": "On admet que $\\displaystyle\\int_0^1 x\\,e^x\\,\\mathrm{d}x = 1$. En posant $u(x) = x^2$ et $v'(x) = e^x$, calcule $\\displaystyle\\int_0^1 x^2 e^x\\,\\mathrm{d}x$ ; donne une valeur approchée à $10^{-2}$ près.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.718,
+              "tolerance": 0.01,
+              "decimales": 2
+            },
+            "explication": "$u'(x) = 2x$ et $v(x) = e^x$ : $\\displaystyle\\int_0^1 x^2e^x\\,\\mathrm{d}x = \\big[x^2e^x\\big]_0^1 - \\int_0^1 2x\\,e^x\\,\\mathrm{d}x = e - 2 \\times 1 = e - 2 \\approx 0{,}72$."
+          }
+        },
+        {
+          "id": "l-integration-075",
+          "type": "piege",
+          "titre": "Le mauvais choix de $u$",
+          "faux": "Pour $\\displaystyle\\int_0^1 x\\,e^x\\,\\mathrm{d}x$, on pose $u(x) = e^x$ et $v'(x) = x$ : on obtient $\\left[\\dfrac{x^2}{2}e^x\\right]_0^1 - \\displaystyle\\int_0^1 \\frac{x^2}{2}e^x\\,\\mathrm{d}x$, et on reste bloqué.",
+          "juste": "On pose $u(x) = x$ et $v'(x) = e^x$ : la nouvelle intégrale, $\\displaystyle\\int_0^1 e^x\\,\\mathrm{d}x$, se calcule tout de suite.",
+          "explication": "Le premier calcul n'est pas faux, mais il complique l'intégrale : la puissance de $x$ monte au lieu de baisser. Dérive le facteur qui se simplifie, intègre celui qui ne change pas de nature."
+        },
+        {
+          "id": "l-integration-076",
+          "type": "piege",
+          "titre": "Le signe moins de $v$",
+          "faux": "Avec $u(x) = x$ et $v'(x) = e^{-x}$ : $\\displaystyle\\int_0^1 x\\,e^{-x}\\,\\mathrm{d}x = \\big[x\\,e^{-x}\\big]_0^1 - \\int_0^1 e^{-x}\\,\\mathrm{d}x$.",
+          "juste": "Une primitive de $e^{-x}$ est $v(x) = -e^{-x}$ : $\\displaystyle\\int_0^1 x\\,e^{-x}\\,\\mathrm{d}x = \\big[-x\\,e^{-x}\\big]_0^1 + \\int_0^1 e^{-x}\\,\\mathrm{d}x = -e^{-1} + 1 - e^{-1} = 1 - 2e^{-1}$.",
+          "explication": "$e^{-x}$ n'est pas sa propre primitive : sa dérivée est $-e^{-x}$. Contrôle $v$ en le dérivant, puis garde des parenthèses : $-\\displaystyle\\int_0^1 1 \\times \\left(-e^{-x}\\right)\\mathrm{d}x = +\\int_0^1 e^{-x}\\,\\mathrm{d}x$."
+        },
+        {
+          "id": "l-integration-077",
+          "type": "retenir",
+          "texte": "$\\displaystyle\\int_a^b u(x)v'(x)\\,\\mathrm{d}x = \\big[u(x)v(x)\\big]_a^b - \\int_a^b u'(x)v(x)\\,\\mathrm{d}x$, avec $u'$ et $v'$ continues. On dérive le facteur qui se simplifie (polynôme, $\\ln x$) et on intègre l'autre ($e^x$, $e^{-x}$, $\\sin$, $\\cos$)."
+        }
+      ]
+    },
+    {
+      "notion": "n-integration-suites",
+      "blocs": [
+        {
+          "id": "l-integration-078",
+          "type": "idee",
+          "texte": "Pour chaque entier $n$, la formule $I_n = \\displaystyle\\int_0^1 x^n e^{-x}\\,\\mathrm{d}x$ donne un nombre : on obtient une suite. On ne sait pas toujours calculer $I_n$, mais on peut étudier la suite. Son signe vient de la positivité, son sens de variation de la comparaison de $x^{n+1}$ et de $x^n$, sa limite d'un encadrement. Une intégration par parties relie souvent $I_{n+1}$ à $I_n$."
+        },
+        {
+          "id": "l-integration-079",
+          "type": "rappel",
+          "titre": "Rappel : prouver qu'une suite converge",
+          "lien": "n-limites-suites-monotone-bornee",
+          "texte": "Une suite décroissante et minorée converge ; une suite croissante et majorée aussi. **Théorème des gendarmes** : si $v_n \\leqslant u_n \\leqslant w_n$ à partir d'un certain rang, et si $(v_n)$ et $(w_n)$ convergent vers la même limite $\\ell$, alors $(u_n)$ converge vers $\\ell$. Enfin, $\\dfrac{1}{n + 1}$ tend vers $0$ quand $n$ tend vers $+\\infty$."
+        },
+        {
+          "id": "l-integration-080",
+          "type": "methode",
+          "titre": "Comment étudier une suite d'intégrales ?",
+          "capacites": ["bo-m-integrale-13"],
+          "etapes": [
+            "Signe : si la fonction sous l'intégrale est positive sur $[a\\,;\\,b]$, avec $a \\leqslant b$, alors $I_n \\geqslant 0$ (positivité).",
+            "Sens de variation : écris $I_{n+1} - I_n$ comme **une seule** intégrale (linéarité), puis étudie le signe de la fonction obtenue.",
+            "Convergence : une suite décroissante et minorée, par exemple par $0$, converge.",
+            "Limite : encadre la fonction sous l'intégrale par des fonctions faciles à intégrer, intègre l'encadrement, puis applique le théorème des gendarmes.",
+            "Relation entre $I_{n+1}$ et $I_n$ : fais une intégration par parties. Si l'intégrale contient une puissance $x^{n+1}$, dérive-la : elle baisse d'un cran et fait apparaître $I_n$."
+          ],
+          "exemple": "l-integration-081"
+        },
+        {
+          "id": "l-integration-081",
+          "type": "exemple",
+          "titre": "Signe, sens de variation et limite d'une suite d'intégrales",
+          "capacites": ["bo-m-integrale-13"],
+          "enonce": "Pour tout entier naturel $n$, on pose $I_n = \\displaystyle\\int_0^1 x^n e^{-x}\\,\\mathrm{d}x$.\n\n**a.** Montrer que $I_n \\geqslant 0$ pour tout $n$.\n\n**b.** Montrer que la suite $(I_n)$ est décroissante, puis qu'elle converge.\n\n**c.** Montrer que $I_n \\leqslant \\dfrac{1}{n + 1}$, et en déduire la limite de $(I_n)$.",
+          "etapes": [
+            {
+              "texte": "**a.** Pour $x$ dans $[0\\,;\\,1]$, $x^n \\geqslant 0$ et $e^{-x} > 0$, donc $x^n e^{-x} \\geqslant 0$. Comme $0 \\leqslant 1$, la positivité donne $I_n \\geqslant 0$."
+            },
+            {
+              "texte": "**b.** Par linéarité : $I_{n+1} - I_n = \\displaystyle\\int_0^1 \\left(x^{n+1} - x^n\\right)e^{-x}\\,\\mathrm{d}x = \\int_0^1 x^n(x - 1)\\,e^{-x}\\,\\mathrm{d}x$.",
+              "pourquoi": "On regroupe les deux intégrales en une seule, puis on factorise par $x^n$ : $x^{n+1} = x^n \\times x$."
+            },
+            {
+              "texte": "Sur $[0\\,;\\,1]$ : $x^n \\geqslant 0$, $x - 1 \\leqslant 0$ et $e^{-x} > 0$. La fonction sous l'intégrale est négative, donc $I_{n+1} - I_n \\leqslant 0$ : la suite $(I_n)$ est décroissante.",
+              "pourquoi": "Si $g \\leqslant 0$ sur $[a\\,;\\,b]$, avec $a \\leqslant b$, alors $\\displaystyle\\int_a^b g(x)\\,\\mathrm{d}x \\leqslant \\int_a^b 0\\,\\mathrm{d}x = 0$."
+            },
+            {
+              "texte": "$(I_n)$ est décroissante et minorée par $0$ : elle converge."
+            },
+            {
+              "texte": "**c.** Pour $x$ dans $[0\\,;\\,1]$, $-x \\leqslant 0$, donc $e^{-x} \\leqslant 1$, puis $0 \\leqslant x^n e^{-x} \\leqslant x^n$. En intégrant sur $[0\\,;\\,1]$ : $0 \\leqslant I_n \\leqslant \\displaystyle\\int_0^1 x^n\\,\\mathrm{d}x = \\left[\\frac{x^{n+1}}{n + 1}\\right]_0^1 = \\frac{1}{n + 1}$.",
+              "pourquoi": "On multiplie $e^{-x} \\leqslant 1$ par $x^n \\geqslant 0$, ce qui garde le sens de l'inégalité."
+            },
+            {
+              "texte": "$\\dfrac{1}{n + 1}$ tend vers $0$ : d'après le théorème des gendarmes, $(I_n)$ converge vers $0$."
+            },
+            {
+              "texte": "**Conclusion** : la suite $(I_n)$ est positive et décroissante, et $\\lim\\limits_{n \\to +\\infty} I_n = 0$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-082",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-13"],
+          "question": {
+            "enonce": "Pour tout entier naturel $n$, on pose $J_n = \\displaystyle\\int_1^2 (\\ln x)^n\\,\\mathrm{d}x$. Quel est le sens de variation de la suite $(J_n)$ ?",
+            "reponse": {
+              "type": "qcm",
+              "choix": [
+                "Croissante",
+                "Décroissante",
+                "Constante",
+                "Ni croissante ni décroissante"
+              ],
+              "bonne": 1,
+              "pourquoiFaux": [
+                "Sur $[1\\,;\\,2]$, $0 \\leqslant \\ln x < 1$ : multiplier par $\\ln x$ fait diminuer, donc $(\\ln x)^{n+1} \\leqslant (\\ln x)^n$.",
+                null,
+                "La fonction $(\\ln x)^n(\\ln x - 1)$ est strictement négative sur $]1\\,;\\,2]$ : l'écart $J_{n+1} - J_n$ n'est pas nul.",
+                "Le signe de $(\\ln x)^n(\\ln x - 1)$ sur $[1\\,;\\,2]$ est le même pour tout $n$ : la suite est monotone."
+              ]
+            },
+            "explication": "$J_{n+1} - J_n = \\displaystyle\\int_1^2 (\\ln x)^n(\\ln x - 1)\\,\\mathrm{d}x$. Sur $[1\\,;\\,2]$, $(\\ln x)^n \\geqslant 0$ et $\\ln x - 1 \\leqslant \\ln 2 - 1 < 0$ : l'intégrale est négative, donc $(J_n)$ est décroissante."
+          }
+        },
+        {
+          "id": "l-integration-083",
+          "type": "exemple",
+          "titre": "Une relation de récurrence par parties",
+          "capacites": ["bo-m-integrale-13"],
+          "enonce": "On reprend $I_n = \\displaystyle\\int_0^1 x^n e^{-x}\\,\\mathrm{d}x$.\n\n**a.** Calculer $I_0$.\n\n**b.** À l'aide d'une intégration par parties, montrer que, pour tout entier naturel $n$, $I_{n+1} = (n + 1)I_n - e^{-1}$.\n\n**c.** En déduire $I_1$ et $I_2$.",
+          "etapes": [
+            {
+              "texte": "**a.** $I_0 = \\displaystyle\\int_0^1 e^{-x}\\,\\mathrm{d}x = \\big[-e^{-x}\\big]_0^1 = -e^{-1} + 1 = 1 - e^{-1}$.",
+              "pourquoi": "$x^0 = 1$, et $-e^{-1} - \\left(-e^{0}\\right) = 1 - e^{-1}$."
+            },
+            {
+              "texte": "**b.** Dans $I_{n+1} = \\displaystyle\\int_0^1 x^{n+1}e^{-x}\\,\\mathrm{d}x$, on pose $u(x) = x^{n+1}$ et $v'(x) = e^{-x}$. Alors $u'(x) = (n + 1)x^n$ et $v(x) = -e^{-x}$ ; $u'$ et $v'$ sont continues sur $[0\\,;\\,1]$.",
+              "pourquoi": "On dérive la puissance : elle baisse d'un cran et fait apparaître $x^n$, donc $I_n$."
+            },
+            {
+              "texte": "$I_{n+1} = \\Big[-x^{n+1}e^{-x}\\Big]_0^1 - \\displaystyle\\int_0^1 (n + 1)x^n \\times \\left(-e^{-x}\\right)\\mathrm{d}x = \\Big[-x^{n+1}e^{-x}\\Big]_0^1 + (n + 1)\\int_0^1 x^n e^{-x}\\,\\mathrm{d}x$.",
+              "pourquoi": "Par linéarité, la constante $-(n + 1)$ sort de l'intégrale, et moins par moins donne plus."
+            },
+            {
+              "texte": "En $x = 1$, $-x^{n+1}e^{-x}$ vaut $-\\left(1^{n+1}\\right) \\times e^{-1} = -1 \\times e^{-1} = -e^{-1}$. En $x = 0$, il vaut $-\\left(0^{n+1}\\right) \\times e^{0} = 0$. Le crochet vaut donc $-e^{-1} - 0 = -e^{-1}$, et la dernière intégrale est $I_n$ : $I_{n+1} = (n + 1)I_n - e^{-1}$.",
+              "pourquoi": "$1^{n+1} = 1$ et $0^{n+1} = 0$, car $n + 1 \\geqslant 1$."
+            },
+            {
+              "texte": "**c.** Avec $n = 0$ : $I_1 = 1 \\times I_0 - e^{-1} = 1 - 2e^{-1}$. Avec $n = 1$ : $I_2 = 2I_1 - e^{-1} = 2 - 4e^{-1} - e^{-1} = 2 - 5e^{-1}$."
+            },
+            {
+              "texte": "**Conclusion** : $I_0 = 1 - e^{-1}$ et $I_{n+1} = (n + 1)I_n - e^{-1}$, d'où $I_1 = 1 - 2e^{-1} \\approx 0{,}264$ et $I_2 = 2 - 5e^{-1} \\approx 0{,}161$. On retrouve $I_2 \\leqslant I_1 \\leqslant I_0$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-093",
+          "type": "figure",
+          "titre": "Les rectangles de Brouncker sous la courbe de $x \\mapsto \\frac{1}{x}$",
+          "capacites": ["bo-m-integrale-21"],
+          "figure": {
+            "type": "image",
+            "data": {
+              "src": "terminale/maths/integration/brouncker-rectangles.svg",
+              "width": 430,
+              "height": 330,
+              "alt": "Dans un repère, la courbe de la fonction inverse, d'équation y = 1/x, descend du point (1 ; 1) au point (2 ; 0,5). Sous la courbe, entre x = 1 et x = 2, des rectangles sont empilés sans se chevaucher. Rectangle 1, en bleu : sur [1 ; 2], de 0 jusqu'à 0,5. Rectangle 2, en vert, posé sur le rectangle 1 : sur [1 ; 1,5], de 0,5 jusqu'à 2/3. Rectangle 3, en orange, posé sur le rectangle 2 : sur [1 ; 1,25], de 2/3 jusqu'à 4/5. Rectangle 4, en orange, posé sur le rectangle 1 : sur [1,5 ; 1,75], de 0,5 jusqu'à 4/7. Le coin en haut à droite de chaque rectangle touche la courbe. En gris, quatre rectangles plus fins, de largeur 0,125, forment l'étape suivante."
+            },
+            "caption": "Chaque rectangle monte jusqu'à la courbe au niveau de son bord droit. À chaque étape, chaque bande est coupée en deux et un rectangle est posé sur sa moitié gauche ; une couleur par étape."
+          }
+        },
+        {
+          "id": "l-integration-094",
+          "type": "exemple",
+          "titre": "Les premiers rectangles de Brouncker",
+          "capacites": ["bo-m-integrale-21"],
+          "enonce": "Une autre suite approche une intégrale : la somme des aires de rectangles de plus en plus fins. En 1668, Brouncker remplit ainsi le domaine sous la courbe de la fonction inverse, entre $x = 1$ et $x = 2$ (figure ci-dessus).\n\n**a.** Montrer que l'aire de ce domaine vaut $\\ln 2$ u.a.\n\n**b.** Expliquer comment les rectangles sont construits, puis calculer les aires des quatre premiers.",
+          "etapes": [
+            {
+              "texte": "**a.** La fonction inverse est continue et positive sur $[1\\,;\\,2]$, et $\\ln$ en est une primitive sur $]0\\,;\\,+\\infty[$. L'aire vaut donc $\\displaystyle\\int_1^2 \\frac{1}{x}\\,\\mathrm{d}x = \\big[\\ln x\\big]_1^2 = \\ln 2 - \\ln 1 = \\ln 2$ u.a.",
+              "pourquoi": "$\\ln 1 = 0$."
+            },
+            {
+              "texte": "**b.** Règle des hauteurs : le coin en haut à droite de chaque rectangle est sur la courbe. Le haut du rectangle est donc à la hauteur $\\dfrac{1}{c}$, où $c$ est l'abscisse de son bord droit.",
+              "pourquoi": "La fonction inverse est décroissante : sur un intervalle, sa plus petite valeur est au bord droit. Le rectangle reste donc sous la courbe."
+            },
+            {
+              "texte": "Rectangle 1, en bleu : sur $[1\\,;\\,2]$, il monte de $0$ jusqu'à $\\dfrac{1}{2}$, valeur de $\\dfrac{1}{x}$ en $2$. Son aire vaut $(2 - 1) \\times \\dfrac{1}{2} = \\dfrac{1}{2} = \\dfrac{1}{1 \\times 2}$."
+            },
+            {
+              "texte": "Règle de découpage : à l'étape suivante, on coupe la bande $[1\\,;\\,2]$ en deux moitiés. Sur la moitié gauche, on pose un rectangle, du haut des rectangles déjà posés jusqu'à la courbe. Sur la moitié droite, on ne pose rien. Puis on recommence avec chacune des deux moitiés, et ainsi de suite.",
+              "pourquoi": "Le bord droit de la moitié droite est celui de la bande : la courbe y est déjà à la hauteur des rectangles posés. Un nouveau rectangle y aurait une hauteur nulle ; cette moitié attend l'étape suivante, où elle est coupée à son tour."
+            },
+            {
+              "texte": "Rectangle 2, en vert : on coupe $[1\\,;\\,2]$ en $\\left[1\\,;\\,\\dfrac{3}{2}\\right]$ et $\\left[\\dfrac{3}{2}\\,;\\,2\\right]$. Sur $\\left[1\\,;\\,\\dfrac{3}{2}\\right]$, le rectangle est posé sur le rectangle 1 : il monte de $\\dfrac{1}{2}$ jusqu'à $\\dfrac{2}{3}$, valeur de $\\dfrac{1}{x}$ en $\\dfrac{3}{2}$. Son aire vaut $\\dfrac{1}{2} \\times \\left(\\dfrac{2}{3} - \\dfrac{1}{2}\\right) = \\dfrac{1}{2} \\times \\dfrac{1}{6} = \\dfrac{1}{12} = \\dfrac{1}{3 \\times 4}$.",
+              "pourquoi": "Largeur : $\\dfrac{3}{2} - 1 = \\dfrac{1}{2}$. Hauteur : $\\dfrac{2}{3} - \\dfrac{1}{2} = \\dfrac{4}{6} - \\dfrac{3}{6} = \\dfrac{1}{6}$."
+            },
+            {
+              "texte": "Rectangle 3, en orange : on coupe $\\left[1\\,;\\,\\dfrac{3}{2}\\right]$ en deux. Sur $\\left[1\\,;\\,\\dfrac{5}{4}\\right]$, le rectangle est posé sur le rectangle 2 : il monte de $\\dfrac{2}{3}$ jusqu'à $\\dfrac{4}{5}$, valeur de $\\dfrac{1}{x}$ en $\\dfrac{5}{4}$. Son aire vaut $\\dfrac{1}{4} \\times \\left(\\dfrac{4}{5} - \\dfrac{2}{3}\\right) = \\dfrac{1}{4} \\times \\dfrac{2}{15} = \\dfrac{1}{30} = \\dfrac{1}{5 \\times 6}$.",
+              "pourquoi": "$\\dfrac{4}{5} - \\dfrac{2}{3} = \\dfrac{12}{15} - \\dfrac{10}{15} = \\dfrac{2}{15}$, et $\\dfrac{1}{4} \\times \\dfrac{2}{15} = \\dfrac{2}{60} = \\dfrac{1}{30}$."
+            },
+            {
+              "texte": "Rectangle 4, en orange : on coupe $\\left[\\dfrac{3}{2}\\,;\\,2\\right]$ en deux. Sur $\\left[\\dfrac{3}{2}\\,;\\,\\dfrac{7}{4}\\right]$, le rectangle est posé sur le rectangle 1 : il monte de $\\dfrac{1}{2}$ jusqu'à $\\dfrac{4}{7}$, valeur de $\\dfrac{1}{x}$ en $\\dfrac{7}{4}$. Son aire vaut $\\dfrac{1}{4} \\times \\left(\\dfrac{4}{7} - \\dfrac{1}{2}\\right) = \\dfrac{1}{4} \\times \\dfrac{1}{14} = \\dfrac{1}{56} = \\dfrac{1}{7 \\times 8}$.",
+              "pourquoi": "Sur $\\left[\\dfrac{3}{2}\\,;\\,2\\right]$, seul le rectangle 1 est déjà posé : on part de sa hauteur $\\dfrac{1}{2}$. Puis $\\dfrac{4}{7} - \\dfrac{1}{2} = \\dfrac{8}{14} - \\dfrac{7}{14} = \\dfrac{1}{14}$."
+            },
+            {
+              "texte": "À l'étape suivante, on coupe les quatre bandes de largeur $\\dfrac{1}{4}$. On obtient les rectangles 5 à 8, de largeur $\\dfrac{1}{8}$, en gris sur la figure. À chaque étape, on numérote les nouveaux rectangles de gauche à droite."
+            },
+            {
+              "texte": "**Conclusion** : l'aire du domaine vaut $\\ln 2$ u.a. Les quatre premiers rectangles ont pour aires $\\dfrac{1}{1 \\times 2}$, $\\dfrac{1}{3 \\times 4}$, $\\dfrac{1}{5 \\times 6}$ et $\\dfrac{1}{7 \\times 8}$. Leur somme vaut $\\dfrac{533}{840} \\approx 0{,}6345$ : elle est inférieure à $\\ln 2 \\approx 0{,}6931$, car les rectangles sont sous la courbe.",
+              "pourquoi": "Au dénominateur commun $840$ : $\\dfrac{420 + 70 + 28 + 15}{840} = \\dfrac{533}{840}$."
+            }
+          ]
+        },
+        {
+          "id": "l-integration-084",
+          "type": "code",
+          "titre": "L'algorithme de Brouncker pour $\\ln 2$",
+          "capacites": ["bo-m-integrale-21"],
+          "code": {
+            "langage": "python",
+            "source": "def brouncker(n):\n    s = 0\n    for k in range(1, n + 1):\n        s = s + 1 / ((2 * k - 1) * (2 * k))\n    return s\n\nprint(brouncker(4))      # environ 0.6345\nprint(brouncker(1000))   # environ 0.6929 ; ln(2) vaut environ 0.6931"
+          },
+          "texte": "Numéroté comme dans l'exemple, le $k$-ième rectangle de Brouncker a pour aire $\\dfrac{1}{(2k - 1) \\times 2k}$. On l'a vérifié pour $k = 1$, $2$, $3$ et $4$ ; on peut le démontrer, mais on l'admet ici.\n\nLa fonction brouncker(n) ajoute ces aires pour $k$ allant de $1$ à $n$. Elle renvoie la somme $S_n$ des aires des $n$ premiers rectangles. Ils sont sous la courbe et ne se chevauchent pas, donc $S_n \\leqslant \\ln 2$. On admet que $(S_n)$ converge vers $\\ln 2$. La convergence est lente : pour $n = 1\\,000$, l'écart est encore d'environ $2{,}5 \\times 10^{-4}$."
+        },
+        {
+          "id": "l-integration-085",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-21"],
+          "question": {
+            "enonce": "Que renvoie brouncker(2) ? Donne la valeur exacte, ou arrondie au centième.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": "7/12",
+              "tolerance": 0.01
+            },
+            "explication": "La boucle ajoute $\\dfrac{1}{1 \\times 2} = \\dfrac{1}{2}$ pour $k = 1$, puis $\\dfrac{1}{3 \\times 4} = \\dfrac{1}{12}$ pour $k = 2$ : $\\dfrac{6}{12} + \\dfrac{1}{12} = \\dfrac{7}{12} \\approx 0{,}58$. C'est l'aire des deux premiers rectangles, inférieure à $\\ln 2 \\approx 0{,}69$."
+          }
+        },
+        {
+          "id": "l-integration-086",
+          "type": "complement",
+          "titre": "Pour aller plus loin : encadrer $H_n$ par des intégrales",
+          "capacites": ["bo-m-integrale-18"],
+          "texte": "On note $H_n = 1 + \\dfrac{1}{2} + \\dots + \\dfrac{1}{n}$. Pour un entier $k \\geqslant 1$ et $x$ dans $[k\\,;\\,k + 1]$, on a $\\dfrac{1}{k + 1} \\leqslant \\dfrac{1}{x} \\leqslant \\dfrac{1}{k}$, car la fonction inverse est décroissante. On intègre sur $[k\\,;\\,k + 1]$, de longueur $1$ :$$\\frac{1}{k + 1} \\leqslant \\ln(k + 1) - \\ln k \\leqslant \\frac{1}{k}.$$On additionne les inégalités de droite pour $k$ allant de $1$ à $n$. Les logarithmes se simplifient deux à deux :$$(\\ln 2 - \\ln 1) + (\\ln 3 - \\ln 2) + \\dots + \\big(\\ln(n + 1) - \\ln n\\big) = \\ln(n + 1).$$Il reste $\\ln(n + 1) \\leqslant H_n$. Les inégalités de gauche, pour $k$ allant de $1$ à $n - 1$, donnent de même $H_n - 1 \\leqslant \\ln n$. Donc :$$\\ln(n + 1) \\leqslant H_n \\leqslant 1 + \\ln n.$$Comme $\\ln(n + 1)$ tend vers $+\\infty$, $H_n$ aussi, mais très lentement. Pour que $H_n > 10$, il faut $1 + \\ln n > 10$, soit $n > e^9 \\approx 8\\,103$ : plus de $8\\,000$ termes."
+        },
+        {
+          "id": "l-integration-087",
+          "type": "piege",
+          "titre": "Comparer $x^{n+1}$ et $x^n$",
+          "faux": "Pour tout $x \\geqslant 0$, $x^{n+1} \\leqslant x^n$, donc $\\displaystyle\\int_0^2 x^{n+1}\\,\\mathrm{d}x \\leqslant \\int_0^2 x^n\\,\\mathrm{d}x$.",
+          "juste": "$x^{n+1} - x^n = x^n(x - 1)$ : c'est négatif sur $[0\\,;\\,1]$, mais positif sur $[1\\,;\\,+\\infty[$. Par exemple, $2^3 = 8 > 2^2 = 4$.",
+          "explication": "La comparaison des puissances dépend de la position de $x$ par rapport à $1$. Sur $[0\\,;\\,2]$, aucune des deux inégalités n'est vraie partout : on ne peut pas intégrer. Factorise $x^{n+1} - x^n$ et étudie son signe sur l'intervalle d'intégration."
+        },
+        {
+          "id": "l-integration-088",
+          "type": "retenir",
+          "texte": "Pour une suite d'intégrales, la positivité donne le signe. $I_{n+1} - I_n$, écrit comme une seule intégrale, donne le sens de variation ; un encadrement intégré et les gendarmes donnent la limite. Une intégration par parties relie $I_{n+1}$ à $I_n$."
+        }
+      ]
+    }
+  ]
+}
