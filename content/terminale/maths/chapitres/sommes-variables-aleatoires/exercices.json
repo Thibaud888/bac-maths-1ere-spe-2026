@@ -331,10 +331,10 @@
         },
         "indices": [
           "Ici, $X$ et $Y$ dépendent-elles d'épreuves différentes ?",
-          "Calcule $X + Y$ pour un lancer quelconque : cette somme varie-t-elle ? Que vaut alors sa variance ?"
+          "Calcule $X + Y$ pour un lancer quelconque : cette somme varie-t-elle ? Rappel : une variable qui prend toujours la même valeur est égale à son espérance, tous ses écarts sont nuls, donc sa variance est nulle. Compare avec $V(X) + V(Y)$."
         ],
         "revoir": "l-sommes-variables-aleatoires-014",
-        "solution": "Faux. $X + Y = X + (7 - X) = 7$ pour tout lancer : c'est une constante, donc $V(X + Y) = 0$. Or $V(Y) = V(-X + 7) = V(X)$, donc $V(X) + V(Y) = \\dfrac{35}{6} \\neq 0$. $X$ et $Y$ dépendent du même lancer : l'additivité ne s'applique pas."
+        "solution": "Faux. $X + Y = X + (7 - X) = 7$ pour tout lancer : c'est une constante, égale à son espérance $7$, dont tous les écarts sont nuls, donc $V(X + Y) = 0$. Or $V(Y) = V(-X + 7) = V(X)$, donc $V(X) + V(Y) = \\dfrac{35}{6} \\neq 0$. $X$ et $Y$ dépendent du même lancer : l'additivité ne s'applique pas."
       },
       {
         "id": "q3",
@@ -560,7 +560,7 @@
           "$\\sigma(M_n) = \\dfrac{\\sigma}{\\sqrt{n}}$, où $\\sigma = \\sqrt{V}$ est l'écart type d'un seul tirage.",
           "$\\sigma = \\sqrt{4} = 2$ et $\\sqrt{16} = 4$ : calcule le quotient."
         ],
-        "revoir": "l-sommes-variables-aleatoires-042",
+        "revoir": "l-sommes-variables-aleatoires-035",
         "solution": "$\\sigma = \\sqrt{4} = 2$, donc $\\sigma(M_{16}) = \\dfrac{\\sigma}{\\sqrt{16}} = \\dfrac{2}{4} = 0{,}5$."
       }
     ]
@@ -653,7 +653,7 @@
         "reponse": { "type": "numerique", "valeur": 0.16, "tolerance": 0 },
         "indices": [
           "Applique $P(\\lvert X - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V(X)}{\\delta^2}$ : repère $\\delta$.",
-          "Ici $\\delta = 10$ : le majorant est $\\dfrac{16}{10^2} = \\dfrac{16}{100}$, à écrire en décimal."
+          "Ici $\\delta = 10$ et $V(X) = 16$ : remplace dans $\\dfrac{V(X)}{\\delta^2}$, puis écris le quotient en décimal."
         ],
         "revoir": "l-sommes-variables-aleatoires-047",
         "solution": "D'après l'inégalité de Bienaymé-Tchebychev avec $\\delta = 10$ : $P(\\lvert X - 50 \\rvert \\geqslant 10) \\leqslant \\dfrac{16}{10^2} = 0{,}16$."
@@ -1025,7 +1025,7 @@
     "titre": "Les chapeaux rendus au hasard",
     "duree": 12,
     "calculatrice": false,
-    "ordre": 112,
+    "ordre": 113,
     "preambule": "Quatre personnes déposent leur chapeau au vestiaire. À la sortie, l'employé rend les quatre chapeaux au hasard, un par personne : les $4! = 24$ façons de les répartir sont équiprobables. On note $X$ le nombre de personnes qui récupèrent leur propre chapeau. Pour $i$ de $1$ à $4$, on note $X_i$ la variable qui vaut $1$ si la personne numéro $i$ récupère son chapeau, et $0$ sinon.",
     "questions": [
       {
@@ -1065,7 +1065,7 @@
           "L'événement « exactement trois personnes récupèrent leur chapeau » peut-il donc se produire ?"
         ],
         "revoir": "l-sommes-variables-aleatoires-010",
-        "solution": "Si trois personnes récupèrent leur chapeau, le seul chapeau restant est celui de la quatrième, qui le récupère aussi. L'événement $\\{X = 3\\}$ est impossible : $P(X = 3) = 0$. Les variables $X_i$ ne sont donc pas indépendantes, ce qui n'a pas empêché d'utiliser la linéarité à la question 2."
+        "solution": "Si trois personnes récupèrent leur chapeau, le seul chapeau restant est celui de la quatrième, qui le récupère aussi. L'événement $\\{X = 3\\}$ est impossible : $P(X = 3) = 0$. Les $X_i$ dépendent toutes d'une seule et même répartition des chapeaux, et non d'épreuves indépendantes : l'additivité de la variance ne s'appliquerait pas ici. La linéarité de la question 2, elle, n'a besoin d'aucune indépendance."
       },
       {
         "id": "q4",
@@ -1101,7 +1101,7 @@
     "titre": "Un jeu de fête foraine équitable ?",
     "duree": 12,
     "calculatrice": false,
-    "ordre": 113,
+    "ordre": 112,
     "preambule": "À une fête foraine, un joueur paie une mise de $m$ euros. Il tire une carte au hasard dans un jeu de $32$ cartes, qui contient $4$ as, $12$ figures (rois, dames, valets) et $16$ autres cartes. Un as rapporte $10$ euros, une figure $4$ euros, une autre carte rien. Il lance ensuite un dé équilibré à six faces : un $6$ rapporte $6$ euros, les autres faces rien. On note $X$ le gain de la carte, $Y$ celui du dé, et $G$ le gain algébrique du joueur, mise déduite.",
     "questions": [
       {
@@ -1279,7 +1279,7 @@
       {
         "id": "q4",
         "label": "4.",
-        "enonce": "Les deux tirages se font maintenant **sans remise**. Donner la loi de $S$, puis calculer $V(S)$. L'additivité de la variance s'applique-t-elle ?",
+        "enonce": "Les deux tirages se font maintenant **sans remise**. Donner la loi de $S$, puis calculer $V(S)$. L'additivité de la variance s'applique-t-elle ? Saisir $V(S)$.",
         "reponse": { "type": "numerique", "valeur": 17.64, "tolerance": 0.001 },
         "indices": [
           "Sans remise, construis l'arbre des deux tirages : $S$ vaut $10$ (deux rouges), $3$ (une rouge et une noire) ou $-4$ (deux noires).",
@@ -1397,7 +1397,7 @@
     "titre": "Démontrer les formules de la loi binomiale",
     "duree": 15,
     "calculatrice": true,
-    "ordre": 312,
+    "ordre": 313,
     "preambule": "On répète $n$ fois, de façon indépendante, une épreuve de Bernoulli dont le succès a la probabilité $p$. On note $X$ le nombre de succès et, pour $i$ de $1$ à $n$, $X_i$ la variable qui vaut $1$ si la $i$-ième épreuve est un succès, et $0$ sinon.",
     "questions": [
       {
@@ -1463,7 +1463,7 @@
     "titre": "Combien de visiteurs pour cinquante acheteurs ?",
     "duree": 12,
     "calculatrice": true,
-    "ordre": 313,
+    "ordre": 312,
     "preambule": "Un site de vente en ligne reçoit $n$ visiteurs dans la journée. Chacun achète avec la probabilité $0{,}04$, indépendamment des autres. On note $X$ le nombre d'acheteurs : $X$ suit la loi $\\mathcal{B}(n\\,;\\,0{,}04)$.",
     "questions": [
       {
@@ -1618,28 +1618,29 @@
       {
         "id": "q4",
         "label": "4.",
-        "enonce": "On note $S_{100}$ la position après $100$ pas. Calculer $E(S_{100})$.",
+        "enonce": "On note $S_{100}$ la position après $100$ pas. Calculer $E(S_{100})$. La dernière ligne du programme affiche la moyenne des $1\\,000$ positions finales simulées ; une exécution donne $19{,}926$ : est-ce cohérent ?",
         "reponse": { "type": "numerique", "valeur": 20, "tolerance": 0 },
         "indices": [
           "$S_{100}$ est la somme des $100$ pas, qui forment un échantillon de taille $100$ de la loi de $X$.",
-          "$E(S_n) = n\\mu$, avec $\\mu = E(X)$.",
-          "Multiplie l'espérance d'un pas par $100$."
+          "$E(S_n) = n\\mu$, avec $\\mu = E(X)$ trouvée à la question 2.",
+          "Multiplie l'espérance d'un pas par $100$.",
+          "La liste finales contient $1\\,000$ valeurs simulées de $S_{100}$ : leur moyenne doit être proche de $E(S_{100})$, sans lui être forcément égale."
         ],
         "revoir": "l-sommes-variables-aleatoires-035",
-        "solution": "Les $100$ pas forment un échantillon de taille $100$ de la loi de $X$, de somme $S_{100}$. Donc $E(S_{100}) = 100 \\times 0{,}2 = 20$ : en moyenne, la marche finit $20$ pas à droite de son départ."
+        "solution": "Les $100$ pas forment un échantillon de taille $100$ de la loi de $X$, de somme $S_{100}$. Donc $E(S_{100}) = 100 \\times 0{,}2 = 20$ : en moyenne, la marche finit $20$ pas à droite de son départ. La liste finales contient $1\\,000$ valeurs simulées de $S_{100}$ ; leur moyenne, $19{,}926$, est proche de $E(S_{100}) = 20$ : c'est cohérent. Elle fluctue d'une exécution à l'autre, c'est pourquoi elle ne vaut pas exactement $20$."
       },
       {
         "id": "q5",
         "label": "5.",
-        "enonce": "Calculer $\\sigma(S_{100})$, arrondi au centième. Une exécution du programme affiche $19{,}926$ : est-ce cohérent ?",
+        "enonce": "Calculer $\\sigma(S_{100})$, arrondi au centième.",
         "reponse": { "type": "numerique", "valeur": 9.8, "tolerance": 0.005 },
         "indices": [
-          "$V(S_n) = nV$, où $V$ est la variance d'un pas.",
-          "$V(S_{100}) = 100 \\times 0{,}96$ : prends sa racine carrée à la calculatrice.",
-          "Le programme affiche la moyenne de $1\\,000$ positions finales simulées : compare-la à $E(S_{100})$, pas à l'écart type."
+          "L'écart type est la racine carrée de la variance : commence par calculer $V(S_{100})$.",
+          "$V(S_n) = nV$, où $V = V(X)$ est la variance d'un pas, trouvée à la question 3.",
+          "$V(S_{100}) = 100 \\times 0{,}96$ : prends sa racine carrée à la calculatrice, puis arrondis au centième."
         ],
         "revoir": "l-sommes-variables-aleatoires-035",
-        "solution": "$V(S_{100}) = 100 \\times 0{,}96 = 96$, donc $\\sigma(S_{100}) = \\sqrt{96} \\approx 9{,}80$. Le programme affiche la moyenne de $1\\,000$ positions finales simulées : $19{,}926$ est proche de $E(S_{100}) = 20$, c'est cohérent."
+        "solution": "$V(S_{100}) = 100 \\times 0{,}96 = 96$, donc $\\sigma(S_{100}) = \\sqrt{96} \\approx 9{,}80$. Cet écart type, environ $9{,}80$ pas, mesure la dispersion des positions finales autour de leur espérance $20$."
       }
     ]
   },
@@ -1733,15 +1734,31 @@
       {
         "id": "q5",
         "label": "5.",
-        "enonce": "La dernière ligne affiche la proportion des moyennes simulées $m$ telles que $\\lvert m - 3 \\rvert \\leqslant 2s$, puis telles que $\\lvert m - 3 \\rvert \\leqslant \\dfrac{2\\sigma}{\\sqrt{n}}$ ; une exécution affiche $0{,}969$ deux fois. Donner la borne inférieure de l'intervalle des réels $m$ tels que $\\lvert m - 3 \\rvert \\leqslant \\dfrac{2\\sigma}{\\sqrt{n}}$, arrondie au centième.",
-        "reponse": { "type": "numerique", "valeur": 2.02, "tolerance": 0.005 },
+        "enonce": "La dernière ligne du programme affiche deux proportions : celle des moyennes simulées $m$ telles que $\\lvert m - 3 \\rvert \\leqslant 2s$, puis celle des moyennes telles que $\\lvert m - 3 \\rvert \\leqslant \\dfrac{2\\sigma}{\\sqrt{n}}$. Une exécution affiche $0{,}969$ pour chacune. Que signifie la seconde valeur ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Environ $97\\,\\%$ des $1\\,000$ moyennes simulées sont comprises entre $2{,}02$ et $3{,}98$ environ.",
+            "Environ $97\\,\\%$ des $1\\,000$ moyennes simulées sont comprises entre $2{,}51$ et $3{,}49$ environ.",
+            "Environ $97\\,\\%$ des tours de roue rapportent entre $2{,}02$ et $3{,}98$ points.",
+            "La probabilité que $M_{25}$ soit comprise entre $2{,}02$ et $3{,}98$ vaut exactement $0{,}969$."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$3 \\pm 0{,}49$, c'est un seul écart type $\\dfrac{\\sigma}{\\sqrt{n}}$ de part et d'autre de $3$ : la seconde proportion en compte deux, $\\dfrac{2\\sigma}{\\sqrt{n}} \\approx 0{,}98$.",
+            "La fonction proportion parcourt la liste moyennes, pas les tours. Un seul tour ne tombe dans cet intervalle que s'il vaut $3$, avec la probabilité $\\dfrac{1}{3}$.",
+            "C'est une proportion observée sur $1\\,000$ échantillons simulés : elle change d'une exécution à l'autre, et reste seulement proche de cette probabilité."
+          ]
+        },
         "indices": [
-          "$\\dfrac{2\\sigma}{\\sqrt{n}}$ vaut le double de l'écart type théorique de la question 2.",
-          "Avec la valeur exacte, $\\dfrac{2\\sqrt{6}}{5} \\approx 0{,}98$.",
-          "$\\lvert m - 3 \\rvert \\leqslant \\delta$ équivaut à $3 - \\delta \\leqslant m \\leqslant 3 + \\delta$ : retranche ce nombre de $3$."
+          "proportion(moyennes, mu, e) compte les moyennes simulées $m$ telles que $\\lvert m - 3 \\rvert \\leqslant e$, puis divise ce compte par le nombre de moyennes, $N = 1\\,000$.",
+          "Ici $e = \\dfrac{2\\sigma}{\\sqrt{n}}$, le double de l'écart type théorique de la question 2 : avec la valeur exacte, $\\dfrac{2\\sqrt{6}}{5} \\approx 0{,}98$.",
+          "$\\lvert m - 3 \\rvert \\leqslant \\delta$ équivaut à $3 - \\delta \\leqslant m \\leqslant 3 + \\delta$ : calcule les deux bornes avec $\\delta \\approx 0{,}98$.",
+          "Une proportion observée sur une simulation change d'une exécution à l'autre : peut-elle être une probabilité exacte ?"
         ],
         "revoir": "l-sommes-variables-aleatoires-041",
-        "solution": "$\\dfrac{2\\sigma}{\\sqrt{n}} = \\dfrac{2\\sqrt{6}}{5} \\approx 0{,}98$, et $\\lvert m - 3 \\rvert \\leqslant \\dfrac{2\\sqrt{6}}{5}$ équivaut à $3 - \\dfrac{2\\sqrt{6}}{5} \\leqslant m \\leqslant 3 + \\dfrac{2\\sqrt{6}}{5}$. La borne inférieure vaut environ $2{,}02$, la borne supérieure environ $3{,}98$. Environ $97\\,\\%$ des moyennes simulées tombent dans cet intervalle, alors qu'un seul tour vaut $0$ ou $6$ deux fois sur trois : faire la moyenne de $25$ tours réduit fortement la dispersion."
+        "solution": "$\\dfrac{2\\sigma}{\\sqrt{n}} = \\dfrac{2\\sqrt{6}}{5} \\approx 0{,}98$, et $\\lvert m - 3 \\rvert \\leqslant \\dfrac{2\\sqrt{6}}{5}$ équivaut à $3 - \\dfrac{2\\sqrt{6}}{5} \\leqslant m \\leqslant 3 + \\dfrac{2\\sqrt{6}}{5}$, soit environ $2{,}02 \\leqslant m \\leqslant 3{,}98$. La fonction proportion compte les moyennes simulées de cet intervalle et divise par $N = 1\\,000$ : environ $97\\,\\%$ des moyennes simulées y tombent. C'est une proportion observée, qui change d'une exécution à l'autre, pas une probabilité exacte. Un seul tour, lui, vaut $0$ ou $6$ deux fois sur trois : faire la moyenne de $25$ tours réduit fortement la dispersion. Les deux proportions affichées sont égales ici, car $2s \\approx 0{,}976$ et $\\dfrac{2\\sigma}{\\sqrt{n}} \\approx 0{,}980$ sont si proches qu'aucune moyenne simulée ne tombe entre les deux. Pour cet écart, l'inégalité de concentration ne garantit qu'une probabilité d'au moins $0{,}75$ : elle est vraie, mais prudente."
       }
     ]
   },
@@ -1803,10 +1820,10 @@
         "enonce": "On cherche un intervalle $]80 - \\delta\\,;\\,80 + \\delta[$ dans lequel, d'après l'inégalité de Bienaymé-Tchebychev, $T$ se trouve avec une probabilité d'au moins $0{,}9$. Déterminer le plus petit entier $\\delta$ qui convient.",
         "reponse": { "type": "numerique", "valeur": 48, "tolerance": 0 },
         "indices": [
-          "Écris le minorant donné par l'inégalité : $P(\\lvert T - 80 \\rvert < \\delta) \\geqslant 1 - \\dfrac{225}{\\delta^2}$.",
-          "Il suffit que $1 - \\dfrac{225}{\\delta^2} \\geqslant 0{,}9$, c'est-à-dire $\\dfrac{225}{\\delta^2} \\leqslant 0{,}1$.",
-          "Comme $\\delta^2 > 0$, cela équivaut à $\\delta^2 \\geqslant 2\\,250$ ; comme $\\delta > 0$, à $\\delta \\geqslant \\sqrt{2\\,250}$.",
-          "Calcule $\\sqrt{2\\,250}$ à la calculatrice et prends le premier entier qui le dépasse ; contrôle avec cet entier et le précédent."
+          "Ici, l'inconnue n'est pas une taille d'échantillon mais la demi-largeur $\\delta$. Écris le minorant donné par l'inégalité, $P(\\lvert T - 80 \\rvert < \\delta) \\geqslant 1 - \\dfrac{225}{\\delta^2}$, et cherche les $\\delta > 0$ pour lesquels il atteint $0{,}9$.",
+          "Il suffit que $1 - \\dfrac{225}{\\delta^2} \\geqslant 0{,}9$, c'est-à-dire $\\dfrac{225}{\\delta^2} \\leqslant 0{,}1$ (on retranche $1$, puis on multiplie par $-1$, ce qui change le sens).",
+          "Multiplie les deux membres par $\\delta^2 > 0$ (le sens ne change pas), puis divise par $0{,}1$ : $\\delta^2 \\geqslant 2\\,250$. Comme $\\delta > 0$ et que la fonction racine carrée est croissante sur $[0\\,;\\,+\\infty[$, cela équivaut à $\\delta \\geqslant \\sqrt{2\\,250}$.",
+          "Calcule $\\sqrt{2\\,250}$ à la calculatrice : ce n'est pas un entier, donc le plus petit entier qui convient est l'entier immédiatement au-dessus. Contrôle avec cet entier et le précédent."
         ],
         "revoir": "l-sommes-variables-aleatoires-051",
         "solution": "D'après l'inégalité, $P(\\lvert T - 80 \\rvert < \\delta) \\geqslant 1 - \\dfrac{225}{\\delta^2}$. Il suffit que $1 - \\dfrac{225}{\\delta^2} \\geqslant 0{,}9$, soit $\\dfrac{225}{\\delta^2} \\leqslant 0{,}1$, soit $\\delta^2 \\geqslant 2\\,250$ car $\\delta^2 > 0$, soit $\\delta \\geqslant \\sqrt{2\\,250} \\approx 47{,}43$ car $\\delta > 0$. Contrôle : pour $\\delta = 47$, $1 - \\dfrac{225}{2\\,209} \\approx 0{,}898 < 0{,}9$ ; pour $\\delta = 48$, $1 - \\dfrac{225}{2\\,304} \\approx 0{,}902$. Le plus petit entier est $\\delta = 48$ : avec une probabilité d'au moins $0{,}9$, l'attente totale est strictement comprise entre $32$ et $128$ minutes."
@@ -2275,8 +2292,8 @@
         "enonce": "Toujours avec $n = 200$, justifier que l'événement $\\{X \\geqslant 191\\}$ est inclus dans $\\{\\lvert X - 180 \\rvert \\geqslant 11\\}$, puis majorer $P(X \\geqslant 191)$ à l'aide de l'inégalité de Bienaymé-Tchebychev. Donner le majorant arrondi au millième.",
         "reponse": { "type": "numerique", "valeur": 0.149, "tolerance": 0.001 },
         "indices": [
-          "Si $X \\geqslant 191$, que peut-on dire de $X - 180$ ?",
-          "$X \\geqslant 191$ entraîne $X - 180 \\geqslant 11$, donc $\\lvert X - 180 \\rvert \\geqslant 11$ : la probabilité de l'événement inclus est au plus celle de l'autre.",
+          "L'inégalité de Bienaymé-Tchebychev majore la probabilité d'un écart $\\lvert X - \\mu \\rvert \\geqslant \\delta$, d'un côté ou de l'autre de $\\mu = 180$. L'événement $\\{X \\geqslant 191\\}$ n'est que d'un seul côté : on le ramène à un tel écart par une inclusion. Si $X \\geqslant 191$, que peut-on dire de $X - 180$ ?",
+          "$X \\geqslant 191$ entraîne $X - 180 \\geqslant 11$, donc $\\lvert X - 180 \\rvert \\geqslant 11$. Or un événement inclus dans un autre a une probabilité inférieure ou égale : $P(X \\geqslant 191) \\leqslant P(\\lvert X - 180 \\rvert \\geqslant 11)$, et ce dernier écart se majore avec l'inégalité.",
           "Applique l'inégalité avec $\\delta = 11$ : le majorant est $\\dfrac{V(X)}{11^2}$.",
           "$11^2 = 121$ : calcule $\\dfrac{18}{121}$, puis arrondis au millième."
         ],
@@ -2303,12 +2320,12 @@
         "reponse": { "type": "numerique", "valeur": 191, "tolerance": 0 },
         "indices": [
           "Reprends le raisonnement de la question 2 avec $E(X) = 0{,}9n$, $V(X) = 0{,}09n$ et $\\delta = 191 - 0{,}9n$, strictement positif.",
-          "$X \\geqslant 191$ entraîne $X - 0{,}9n \\geqslant 191 - 0{,}9n > 0$ : l'inégalité donne le majorant $\\dfrac{0{,}09n}{(191 - 0{,}9n)^2}$.",
+          "$X \\geqslant 191$ entraîne $X - 0{,}9n \\geqslant 191 - 0{,}9n > 0$, donc $\\lvert X - 0{,}9n \\rvert \\geqslant 191 - 0{,}9n$ : l'événement d'un seul côté est inclus dans l'écart, et l'inégalité donne le majorant $\\dfrac{0{,}09n}{(191 - 0{,}9n)^2}$.",
           "Quand $n$ augmente, le numérateur augmente et le dénominateur diminue : dresse une table de valeurs de $n \\mapsto \\dfrac{0{,}09n}{(191 - 0{,}9n)^2}$ autour de $n = 190$.",
           "Repère le dernier entier pour lequel la valeur reste inférieure ou égale à $0{,}05$."
         ],
         "revoir": "l-sommes-variables-aleatoires-051",
-        "solution": "On a $E(X) = 0{,}9n$ et $V(X) = 0{,}09n$. Si $X \\geqslant 191$, alors $X - 0{,}9n \\geqslant 191 - 0{,}9n > 0$, donc $\\lvert X - 0{,}9n \\rvert \\geqslant 191 - 0{,}9n$. D'après l'inégalité de Bienaymé-Tchebychev avec $\\delta = 191 - 0{,}9n$ : $P(X \\geqslant 191) \\leqslant \\dfrac{0{,}09n}{(191 - 0{,}9n)^2}$. Ce majorant augmente avec $n$ ; à la calculatrice, il vaut environ $0{,}047$ pour $n = 191$ et environ $0{,}052$ pour $n = 192$. Le plus grand $n$ est $191$ : l'inégalité ne permet de vendre qu'un seul billet de plus que de places."
+        "solution": "On a $E(X) = 0{,}9n$ et $V(X) = 0{,}09n$. Si $X \\geqslant 191$, alors $X - 0{,}9n \\geqslant 191 - 0{,}9n > 0$, donc $\\lvert X - 0{,}9n \\rvert \\geqslant 191 - 0{,}9n$ : $P(X \\geqslant 191) \\leqslant P(\\lvert X - 0{,}9n \\rvert \\geqslant 191 - 0{,}9n)$. D'après l'inégalité de Bienaymé-Tchebychev avec $\\delta = 191 - 0{,}9n$ : $P(X \\geqslant 191) \\leqslant \\dfrac{0{,}09n}{(191 - 0{,}9n)^2}$. Ce majorant augmente avec $n$ ; à la calculatrice, il vaut environ $0{,}047$ pour $n = 191$ et environ $0{,}052$ pour $n = 192$. Le plus grand $n$ est $191$ : l'inégalité ne permet de vendre qu'un seul billet de plus que de places."
       },
       {
         "id": "q5",
@@ -2392,10 +2409,10 @@
         "enonce": "Le sondage interroge $n = 1\\,000$ personnes. Déterminer la plus petite précision $\\delta$ pour laquelle cette inégalité garantit $P(\\lvert F_n - p \\rvert < \\delta) \\geqslant 0{,}95$. Donner $\\delta$ arrondi au millième par excès.",
         "reponse": { "type": "numerique", "valeur": 0.071, "tolerance": 0.0005 },
         "indices": [
-          "Il suffit que le majorant $\\dfrac{1}{4n\\delta^2}$ soit au plus $1 - 0{,}95 = 0{,}05$.",
-          "Avec $n = 1\\,000$, la condition $\\dfrac{1}{4\\,000\\,\\delta^2} \\leqslant 0{,}05$ équivaut à $\\delta^2 \\geqslant \\dfrac{1}{200}$.",
-          "Comme $\\delta > 0$, cela équivaut à $\\delta \\geqslant \\sqrt{\\dfrac{1}{200}}$ : calcule cette racine à la calculatrice.",
-          "Arrondis par excès : prends le millième immédiatement au-dessus de la valeur trouvée."
+          "Ici, $n$ est fixé et l'inconnue est la précision $\\delta$. Par passage au contraire, $P(\\lvert F_n - p \\rvert < \\delta) \\geqslant 1 - \\dfrac{1}{4n\\delta^2}$ : il suffit que le majorant $\\dfrac{1}{4n\\delta^2}$ soit au plus $1 - 0{,}95 = 0{,}05$.",
+          "Avec $n = 1\\,000$, la condition s'écrit $\\dfrac{1}{4\\,000\\,\\delta^2} \\leqslant 0{,}05$. Multiplie les deux membres par $4\\,000\\,\\delta^2 > 0$ (le sens ne change pas), puis divise par $0{,}05 \\times 4\\,000 = 200$ : $\\delta^2 \\geqslant \\dfrac{1}{200}$.",
+          "Comme $\\delta > 0$ et que la fonction racine carrée est croissante sur $[0\\,;\\,+\\infty[$, cela équivaut à $\\delta \\geqslant \\sqrt{\\dfrac{1}{200}}$ : calcule cette racine à la calculatrice.",
+          "Arrondir par excès, c'est prendre le millième immédiatement au-dessus de la valeur trouvée : arrondi par défaut, $\\delta$ serait plus petit que $\\sqrt{\\dfrac{1}{200}}$ et ne conviendrait plus."
         ],
         "revoir": "l-sommes-variables-aleatoires-063",
         "solution": "Il suffit que $\\dfrac{1}{4 \\times 1\\,000 \\times \\delta^2} \\leqslant 0{,}05$, soit $\\delta^2 \\geqslant \\dfrac{1}{4\\,000 \\times 0{,}05} = \\dfrac{1}{200}$, soit $\\delta \\geqslant \\sqrt{\\dfrac{1}{200}} \\approx 0{,}070\\,7$ car $\\delta > 0$. Arrondie au millième par excès, $\\delta = 0{,}071$ : avec une probabilité d'au moins $0{,}95$, la vraie proportion $p$ est à moins de $0{,}071$ de la fréquence observée, soit environ $7$ points de pourcentage."
@@ -2591,8 +2608,8 @@
         "enonce": "La compagnie perd de l'argent si le coût moyen atteint ou dépasse la cotisation, c'est-à-dire si $M_n \\geqslant 120$. Montrer que $P(M_n \\geqslant 120) \\leqslant \\dfrac{225}{n}$.",
         "reponse": { "type": "redaction" },
         "indices": [
-          "Commence par une inclusion : si $M_n \\geqslant 120$, que peut-on dire de l'écart $\\lvert M_n - 100 \\rvert$ ?",
-          "$M_n \\geqslant 120$ entraîne $\\lvert M_n - 100 \\rvert \\geqslant 20$ : la probabilité cherchée est au plus $P(\\lvert M_n - 100 \\rvert \\geqslant 20)$.",
+          "L'inégalité de concentration majore la probabilité d'un écart $\\lvert M_n - \\mu \\rvert \\geqslant \\delta$, d'un côté ou de l'autre de $\\mu$. L'événement $\\{M_n \\geqslant 120\\}$ n'est que d'un seul côté : ramène-le à un tel écart par une inclusion. Si $M_n \\geqslant 120$, que peut-on dire de $\\lvert M_n - 100 \\rvert$ ?",
+          "Si $M_n \\geqslant 120$, alors $M_n - 100 \\geqslant 20$, donc $\\lvert M_n - 100 \\rvert \\geqslant 20$ : $\\{M_n \\geqslant 120\\}$ est inclus dans $\\{\\lvert M_n - 100 \\rvert \\geqslant 20\\}$. Or un événement inclus dans un autre a une probabilité inférieure ou égale : $P(M_n \\geqslant 120) \\leqslant P(\\lvert M_n - 100 \\rvert \\geqslant 20)$.",
           "Applique l'inégalité de concentration avec $V = 90\\,000$ et $\\delta = 20$.",
           "$\\dfrac{90\\,000}{n \\times 20^2} = \\dfrac{90\\,000}{400n}$ : simplifie."
         ],
@@ -2605,9 +2622,9 @@
         "enonce": "Majorer le risque de perte pour $n = 10\\,000$ logements. Donner un nombre décimal, et comparer avec le cas d'un seul logement.",
         "reponse": { "type": "numerique", "valeur": 0.0225, "tolerance": 0.0001 },
         "indices": [
-          "Remplace $n$ par $10\\,000$ dans le majorant de la question 3.",
-          "Calcule $\\dfrac{225}{10\\,000}$ : diviser par $10\\,000$ décale la virgule de quatre rangs vers la gauche.",
-          "Pour un seul logement, la compagnie perd dès qu'il a un sinistre : avec quelle probabilité ?"
+          "Le risque de perte est $P(M_n \\geqslant 120)$ : utilise le majorant $\\dfrac{225}{n}$ de la question 3, valable pour tout nombre $n$ de logements.",
+          "Remplace $n$ par $10\\,000$ dans ce majorant, puis écris le quotient en décimal.",
+          "Pour un seul logement, la compagnie perd dès qu'il a un sinistre : avec quelle probabilité ? Compare les deux risques."
         ],
         "revoir": "l-sommes-variables-aleatoires-064",
         "solution": "Pour $n = 10\\,000$ : $P(M_{10\\,000} \\geqslant 120) \\leqslant \\dfrac{225}{10\\,000} = 0{,}022\\,5$. Avec un seul logement, la compagnie perd dès qu'il y a un sinistre, avec la probabilité $0{,}1$ : en regroupant beaucoup d'assurés, le risque de perte devient faible."
