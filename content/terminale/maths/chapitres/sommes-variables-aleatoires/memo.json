@@ -7,7 +7,7 @@
     "titre": "Linéarité de l'espérance",
     "enonce": "Pour deux variables aléatoires $X$ et $Y$ d'une même expérience et des réels $a$ et $b$ : $E(X + Y) = E(X) + E(Y)$ et $E(aX) = aE(X)$. Plus généralement, $E(aX + b) = aE(X) + b$ et $E(X_1 + \\dots + X_n) = E(X_1) + \\dots + E(X_n)$. Pour l'espérance d'une variable compliquée, on la découpe en une somme de variables simples.",
     "conditions": "Toujours vraie : aucune hypothèse d'indépendance.",
-    "exemple": "Trois lancers d'un dé ; on gagne $4$ euros pour un $5$ ou un $6$, on perd $1$ euro sinon. $E(G_i) = \\dfrac{2}{3}$, donc $E(G) = 3 \\times \\dfrac{2}{3} = 2$.",
+    "exemple": "Trois lancers d'un dé ; on gagne $4$ euros pour un $5$ ou un $6$, on perd $1$ euro sinon. On note $G_i$ le gain du $i$-ième lancer et $G = G_1 + G_2 + G_3$ le gain total. $E(G_i) = 4 \\times \\dfrac{1}{3} - 1 \\times \\dfrac{2}{3} = \\dfrac{2}{3}$, donc $E(G) = 3 \\times \\dfrac{2}{3} = 2$.",
     "simplifie": {
       "coeur": "$E(X + Y) = E(X) + E(Y)$ et $E(aX) = aE(X)$",
       "moyenMemo": "L'espérance d'un total est le total des espérances.",
@@ -23,7 +23,7 @@
     "titre": "Variance d'une somme de variables indépendantes",
     "enonce": "Si $X$ et $Y$ sont indépendantes : $V(X + Y) = V(X) + V(Y)$, et de même pour $n$ variables liées à $n$ épreuves indépendantes. Attention : $V(X - Y) = V(X) + V(Y)$, car $V(-Y) = V(Y)$.",
     "conditions": "$X$ et $Y$ liées à des épreuves indépendantes : lancers successifs, tirages avec remise, ou indépendance donnée par l'énoncé.",
-    "exemple": "Une pièce ($V(X) = 1$) et un dé à quatre faces ($V(Y) = 1{,}25$) : $V(X + Y) = 1 + 1{,}25 = 2{,}25$.",
+    "exemple": "Une pièce (pile : $2$ points, face : $0$ point, donc $V(X) = 1$) et un dé à quatre faces ($V(Y) = 1{,}25$), lancés indépendamment : $V(X + Y) = 1 + 1{,}25 = 2{,}25$.",
     "simplifie": {
       "coeur": "Indépendantes : $V(X + Y) = V(X) + V(Y)$",
       "moyenMemo": "Les dispersions s'ajoutent, même quand on soustrait.",
@@ -113,7 +113,7 @@
     "notion": "n-sommes-variables-aleatoires-concentration",
     "genre": "propriete",
     "titre": "Inégalité de concentration, taille d'échantillon",
-    "enonce": "Pour la moyenne $M_n$ d'un échantillon de taille $n$ d'une loi d'espérance $\\mu$ et de variance $V$, et tout $\\delta > 0$ : $P(\\lvert M_n - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V}{n\\delta^2}$. Pour choisir une taille d'échantillon : résoudre $1 -\\dfrac{V}{n\\delta^2} \\geqslant$ la probabilité voulue. Loi des grands nombres : cette probabilité tend vers $0$ quand $n$ tend vers $+\\infty$.",
+    "enonce": "Pour la moyenne $M_n$ d'un échantillon de taille $n$ d'une loi d'espérance $\\mu$ et de variance $V$, et tout $\\delta > 0$ : $P(\\lvert M_n - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V}{n\\delta^2}$. Pour choisir une taille d'échantillon : résoudre $1 -\\dfrac{V}{n\\delta^2} \\geqslant$ la probabilité voulue. Loi des grands nombres : $P(\\lvert M_n - \\mu \\rvert \\geqslant \\delta)$ tend vers $0$ quand $n$ tend vers $+\\infty$.",
     "conditions": "$\\delta > 0$ ; $M_n$ est la moyenne de $n$ variables indépendantes de même loi.",
     "exemple": "$\\mu = 120$, $V = 81$, $\\delta = 6$ : $1 - \\dfrac{81}{36n} \\geqslant 0{,}85$ équivaut à $n \\geqslant 15$.",
     "simplifie": {
