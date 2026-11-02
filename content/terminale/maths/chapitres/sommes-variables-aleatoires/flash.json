@@ -1,0 +1,264 @@
+[
+  {
+    "id": "fl-sommes-variables-aleatoires-linearite",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-esperance",
+    "capacites": ["bo-m-sommes-01", "bo-m-sommes-06"],
+    "enonce": "On sait que $E(X) = 2$ et $E(Y) = 7$. Que vaut $E(3X - Y)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$-1$", "$13$", "$-5$", "$-15$"],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "$13 = 3 \\times 2 + 7$ : le signe moins devant $Y$ a disparu, or $E(-Y) = -E(Y)$.",
+        "$-5 = 2 - 7$ : le coefficient $3$ de $X$ a été oublié.",
+        "$-15 = 3 \\times (2 - 7)$ : le coefficient $3$ ne porte que sur $X$."
+      ]
+    },
+    "explication": "Par linéarité, $E(3X - Y) = 3E(X) - E(Y) = 6 - 7 = -1$ : chaque coefficient sort avec son signe.",
+    "duree": 20
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-sans-independance",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-esperance",
+    "capacites": ["bo-m-sommes-01"],
+    "enonce": "Vrai ou faux ? L'égalité $E(X + Y) = E(X) + E(Y)$ n'est vraie que si $X$ et $Y$ sont indépendantes.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "La linéarité de l'espérance vaut pour toutes les variables définies sur une même expérience, indépendantes ou non."
+    },
+    "explication": "L'espérance d'une somme est toujours la somme des espérances, même pour deux tirages sans remise. C'est la **variance** d'une somme qui demande des variables indépendantes.",
+    "duree": 15
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-gain-total",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-esperance",
+    "capacites": ["bo-m-sommes-05", "bo-m-sommes-06"],
+    "enonce": "On lance $10$ fois un dé équilibré à six faces, et l'on gagne $3$ euros à chaque $6$ obtenu. Quelle est l'espérance du gain total, en euros ?",
+    "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+    "explication": "Le gain total est la somme des $10$ gains par lancer, chacun d'espérance $3 \\times \\dfrac{1}{6} = 0{,}5$ euro. Par linéarité, l'espérance vaut $10 \\times 0{,}5 = 5$ euros, sans chercher la loi du gain total.",
+    "duree": 30
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-variance-coefficient",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-variance",
+    "capacites": ["bo-m-sommes-02"],
+    "enonce": "On sait que $V(X) = 5$. Que vaut $V(-2X + 3)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$20$", "$-10$", "$-7$", "$23$"],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "Une variance n'est jamais négative : le coefficient sort au carré, et $(-2)^2 = 4$.",
+        "$-7 = -2 \\times 5 + 3$ : c'est la règle de l'espérance, pas celle de la variance.",
+        "$23 = 4 \\times 5 + 3$ : ajouter une constante ne change pas la variance."
+      ]
+    },
+    "explication": "$V(aX + b) = a^2V(X)$, donc $V(-2X + 3) = (-2)^2 \\times 5 = 20$. La constante $3$ décale les valeurs sans les disperser.",
+    "duree": 20
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-variance-difference",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-variance",
+    "capacites": ["bo-m-sommes-02", "bo-m-sommes-07"],
+    "enonce": "$X$ et $Y$ sont indépendantes, avec $V(X) = 6$ et $V(Y) = 2$. Calcule $V(X - Y)$.",
+    "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+    "explication": "$V(X - Y) = V(X) + (-1)^2\\,V(Y) = 6 + 2 = 8$ : les variances s'additionnent, même quand on soustrait les variables.",
+    "duree": 20
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-ecart-type-somme",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-variance",
+    "capacites": ["bo-m-sommes-02", "bo-m-sommes-07"],
+    "enonce": "$X$ et $Y$ sont indépendantes, avec $\\sigma(X) = 6$ et $\\sigma(Y) = 8$. Que vaut $\\sigma(X + Y)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$14$", "$10$", "$100$", "$2$"],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "Les écarts types ne s'additionnent pas : ce sont les variances qui s'additionnent.",
+        null,
+        "$100 = 36 + 64$ est la variance $V(X + Y)$ ; il reste à prendre sa racine carrée.",
+        "On ne soustrait pas les écarts types : les dispersions s'ajoutent."
+      ]
+    },
+    "explication": "$V(X + Y) = 6^2 + 8^2 = 36 + 64 = 100$, donc $\\sigma(X + Y) = \\sqrt{100} = 10$ : on additionne les variances, puis on prend la racine carrée.",
+    "duree": 30
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-esperance-binomiale",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-binomiale",
+    "capacites": ["bo-m-sommes-03"],
+    "enonce": "$X$ suit la loi $\\mathcal{B}(200\\,;\\,0{,}15)$. Calcule $E(X)$.",
+    "reponse": { "type": "numerique", "valeur": 30, "tolerance": 0 },
+    "explication": "$E(X) = np = 200 \\times 0{,}15 = 30$ : sur un grand nombre de répétitions, on compte en moyenne environ $30$ succès.",
+    "duree": 15
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-variance-binomiale",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-binomiale",
+    "capacites": ["bo-m-sommes-03"],
+    "enonce": "$X$ suit la loi $\\mathcal{B}(80\\,;\\,0{,}25)$. Que vaut $V(X)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$20$", "$15$", "$60$", "$\\sqrt{15}$"],
+      "bonne": 1,
+      "pourquoiFaux": [
+        "$20 = np$ est l'espérance ; la variance a un facteur de plus, $1 - p = 0{,}75$.",
+        null,
+        "$60 = n(1 - p)$ : il manque le facteur $p$.",
+        "$\\sqrt{15}$ est l'écart type, racine carrée de la variance."
+      ]
+    },
+    "explication": "$V(X) = np(1 - p) = 80 \\times 0{,}25 \\times 0{,}75 = 20 \\times 0{,}75 = 15$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-ecart-type-binomiale",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-binomiale",
+    "capacites": ["bo-m-sommes-03"],
+    "enonce": "$X$ suit la loi $\\mathcal{B}(100\\,;\\,0{,}5)$. Calcule $\\sigma(X)$.",
+    "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+    "explication": "$V(X) = 100 \\times 0{,}5 \\times 0{,}5 = 25$, donc $\\sigma(X) = \\sqrt{25} = 5$ : sur $100$ lancers d'une pièce, le nombre de « pile » s'écarte typiquement de $50$ de quelques unités.",
+    "duree": 20
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-esperance-prediction",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-binomiale",
+    "capacites": ["bo-m-sommes-03"],
+    "enonce": "$X$ suit la loi $\\mathcal{B}(40\\,;\\,0{,}3)$, donc $E(X) = 12$. Vrai ou faux : une répétition de l'expérience donnera $12$ succès.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": false,
+      "justification": "$12$ est le nombre **moyen** de succès sur un grand nombre de répétitions ; une répétition donnée peut donner $9$, $12$ ou $15$ succès."
+    },
+    "explication": "L'espérance est une moyenne à long terme, pas une prédiction : ici, $P(X = 12) \\approx 0{,}14$ seulement.",
+    "duree": 15
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-variance-moyenne",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-echantillon",
+    "capacites": ["bo-m-sommes-04"],
+    "enonce": "Un échantillon de taille $5$ d'une loi de variance $20$ a pour moyenne $M_5$. Que vaut $V(M_5)$ ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": ["$4$", "$20$", "$100$", "$0{,}8$"],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "Faire la moyenne réduit la dispersion : $V(M_n) = \\dfrac{V}{n}$, pas $V$.",
+        "$100 = 5 \\times 20$ est la variance de la **somme** $S_5$.",
+        "$0{,}8 = \\dfrac{20}{25}$ : tu as divisé par $n^2$, or $V(M_n) = \\dfrac{nV}{n^2} = \\dfrac{V}{n}$."
+      ]
+    },
+    "explication": "$V(M_n) = \\dfrac{V}{n} = \\dfrac{20}{5} = 4$ : la moyenne a la même espérance qu'un seul tirage, mais une variance divisée par $n$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-ecart-type-moyenne",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-echantillon",
+    "capacites": ["bo-m-sommes-04"],
+    "enonce": "Une loi a pour écart type $\\sigma = 12$. Quel est l'écart type de la moyenne $M_{36}$ d'un échantillon de taille $36$ de cette loi ?",
+    "reponse": { "type": "numerique", "valeur": 2, "tolerance": 0 },
+    "explication": "$\\sigma(M_n) = \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$ : l'écart type est divisé par $\\sqrt{n}$, et non par $n$.",
+    "duree": 20
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-bt-majorant",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-bienayme-tchebychev",
+    "capacites": ["bo-m-concentration-01"],
+    "enonce": "$X$ a pour espérance $\\mu$ et pour variance $9$. Quel majorant l'inégalité de Bienaymé-Tchebychev donne-t-elle pour $P(\\lvert X - \\mu \\rvert \\geqslant 6)$ ? Donne un nombre décimal.",
+    "reponse": { "type": "numerique", "valeur": 0.25, "tolerance": 0 },
+    "explication": "$\\dfrac{V(X)}{\\delta^2} = \\dfrac{9}{6^2} = \\dfrac{9}{36} = 0{,}25$ : $X$ s'écarte d'au moins $6$ de son espérance au plus une fois sur quatre.",
+    "duree": 20
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-bt-minorant",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-bienayme-tchebychev",
+    "capacites": ["bo-m-concentration-01"],
+    "enonce": "Pour une variable $X$ d'espérance $\\mu$ et un réel $\\delta > 0$, quelle inégalité découle de celle de Bienaymé-Tchebychev ?",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$P(\\lvert X - \\mu \\rvert < \\delta) \\geqslant 1 - \\dfrac{V(X)}{\\delta^2}$",
+        "$P(\\lvert X - \\mu \\rvert < \\delta) \\leqslant \\dfrac{V(X)}{\\delta^2}$",
+        "$P(\\lvert X - \\mu \\rvert < \\delta) \\geqslant \\dfrac{V(X)}{\\delta^2}$",
+        "$P(\\lvert X - \\mu \\rvert \\geqslant \\delta) \\geqslant 1 - \\dfrac{V(X)}{\\delta^2}$"
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "$\\dfrac{V(X)}{\\delta^2}$ majore la probabilité d'être **loin** de $\\mu$, pas celle d'en être proche.",
+        "Le passage à l'événement contraire fait apparaître $1 - \\dfrac{V(X)}{\\delta^2}$, pas $\\dfrac{V(X)}{\\delta^2}$.",
+        "La probabilité d'être loin de $\\mu$ est **majorée** par $\\dfrac{V(X)}{\\delta^2}$, pas minorée."
+      ]
+    },
+    "explication": "$\\{\\lvert X - \\mu \\rvert < \\delta\\}$ est le contraire de $\\{\\lvert X - \\mu \\rvert \\geqslant \\delta\\}$ : sa probabilité vaut $1 - P(\\lvert X - \\mu \\rvert \\geqslant \\delta)$, qui est au moins $1 - \\dfrac{V(X)}{\\delta^2}$.",
+    "duree": 30
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-bt-centrer",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-bienayme-tchebychev",
+    "capacites": ["bo-m-concentration-01"],
+    "enonce": "$X$ a pour espérance $100$. L'événement « $X \\leqslant 85$ ou $X \\geqslant 115$ » s'écrit :",
+    "reponse": {
+      "type": "qcm",
+      "choix": [
+        "$\\lvert X - 100 \\rvert \\geqslant 15$",
+        "$\\lvert X - 100 \\rvert < 15$",
+        "$\\lvert X - 100 \\rvert \\geqslant 30$",
+        "$\\lvert X - 85 \\rvert \\geqslant 30$"
+      ],
+      "bonne": 0,
+      "pourquoiFaux": [
+        null,
+        "C'est l'événement contraire : $85 < X < 115$.",
+        "$30 = 115 - 85$ est la largeur totale ; l'écart à $100$ est la demi-largeur.",
+        "L'écart se mesure à l'espérance $100$, pas à une borne."
+      ]
+    },
+    "explication": "$85 = 100 - 15$ et $115 = 100 + 15$ : $X$ est à au moins $15$ de $100$, soit $\\lvert X - 100 \\rvert \\geqslant 15$. On applique alors l'inégalité avec $\\delta = 15$.",
+    "duree": 25
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-loi-grands-nombres",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-concentration",
+    "capacites": ["bo-m-concentration-02", "bo-m-concentration-03"],
+    "enonce": "Vrai ou faux ? Pour $\\delta > 0$ fixé, l'inégalité de concentration $P(\\lvert M_n - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V}{n\\delta^2}$ entraîne que cette probabilité tend vers $0$ quand $n$ tend vers $+\\infty$.",
+    "reponse": {
+      "type": "vrai-faux",
+      "valeur": true,
+      "justification": "La probabilité est comprise entre $0$ et $\\dfrac{V}{n\\delta^2}$, qui tend vers $0$ : d'après le théorème des gendarmes, elle tend vers $0$."
+    },
+    "explication": "C'est la loi des grands nombres : quand la taille de l'échantillon grandit, la moyenne $M_n$ s'écarte de moins en moins souvent de l'espérance $\\mu$, quelle que soit la précision $\\delta$ choisie.",
+    "duree": 25
+  },
+  {
+    "id": "fl-sommes-variables-aleatoires-taille-echantillon",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-concentration",
+    "capacites": ["bo-m-concentration-04", "bo-m-concentration-02"],
+    "enonce": "Une loi a pour variance $V = 1$. Avec $\\delta = 0{,}1$, quel est le plus petit entier $n$ pour lequel $\\dfrac{V}{n\\delta^2} \\leqslant 0{,}05$ ?",
+    "reponse": { "type": "numerique", "valeur": 2000, "tolerance": 0 },
+    "explication": "$\\dfrac{1}{n \\times 0{,}01} = \\dfrac{100}{n} \\leqslant 0{,}05 \\iff n \\geqslant \\dfrac{100}{0{,}05} = 2\\,000$. Avec $2\\,000$ tirages, la moyenne est à moins de $0{,}1$ de $\\mu$ avec une probabilité d'au moins $0{,}95$.",
+    "duree": 40
+  }
+]

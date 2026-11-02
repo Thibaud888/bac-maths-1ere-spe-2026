@@ -1,0 +1,2630 @@
+[
+  {
+    "id": "x-sommes-variables-aleatoires-001",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-esperance"],
+    "capacites": ["bo-m-sommes-01", "bo-m-sommes-06"],
+    "titre": "Linéarité de l'espérance : premiers calculs",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 101,
+    "preambule": "$X$ et $Y$ sont deux variables aléatoires définies sur une même expérience aléatoire, avec $E(X) = 4$ et $E(Y) = -1$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $E(X + Y)$.",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "L'espérance d'une somme est la somme des espérances : c'est la linéarité de l'espérance.",
+          "$E(X + Y) = E(X) + E(Y)$ : remplace par les valeurs données, sans oublier le signe de $E(Y)$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-005",
+        "solution": "Par linéarité de l'espérance, $E(X + Y) = E(X) + E(Y) = 4 + (-1) = 3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Que vaut $E(-2X)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$-8$", "$8$", "$2$", "$16$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Le coefficient $-2$ sort avec son signe : $E(-2X) = -2E(X)$, qui est négatif.",
+            "$4 - 2 = 2$ : tu as ajouté $-2$ au lieu de multiplier par $-2$.",
+            "$16 = (-2)^2 \\times 4$ : élever le coefficient au carré, c'est la règle de la **variance**. Pour l'espérance, $E(aX) = aE(X)$."
+          ]
+        },
+        "indices": [
+          "Pour un réel $a$, $E(aX) = aE(X)$ : le coefficient sort tel quel, avec son signe.",
+          "Ici $a = -2$ : calcule $-2 \\times E(X)$ avec $E(X) = 4$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-005",
+        "solution": "Par linéarité, $E(-2X) = -2E(X) = -2 \\times 4 = -8$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $E(2X - 5Y + 1)$.",
+        "reponse": { "type": "numerique", "valeur": 14, "tolerance": 0 },
+        "indices": [
+          "Découpe avec la linéarité : chaque coefficient sort, et la constante $1$ s'ajoute telle quelle, car $E(aX + b) = aE(X) + b$.",
+          "$E(2X - 5Y + 1) = 2E(X) - 5E(Y) + 1 = 2 \\times 4 - 5 \\times (-1) + 1$ : attention, $-5 \\times (-1)$ est positif."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-005",
+        "solution": "Par linéarité de l'espérance, $E(2X - 5Y + 1) = 2E(X) - 5E(Y) + 1 = 2 \\times 4 - 5 \\times (-1) + 1 = 8 + 5 + 1 = 14$.",
+        "erreurFrequente": "Écrire $-5 \\times (-1) = -5$ : le produit de deux nombres négatifs est positif."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-002",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-esperance"],
+    "capacites": ["bo-m-sommes-01", "bo-m-sommes-06"],
+    "titre": "Une recette moyenne, sans indépendance",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 102,
+    "preambule": "Une boulangerie vend chaque jour $X$ baguettes le matin et $Y$ baguettes l'après-midi, où $X$ et $Y$ sont des variables aléatoires avec $E(X) = 150$ et $E(Y) = 90$. Les ventes du matin et de l'après-midi ne sont pas indépendantes : un jour de marché, elles sont fortes toute la journée. Une baguette est vendue $1{,}20$ euro.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Vrai ou faux ? Comme $X$ et $Y$ ne sont pas indépendantes, on ne peut pas calculer $E(X + Y)$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "La linéarité de l'espérance vaut sans hypothèse d'indépendance : $E(X + Y) = E(X) + E(Y) = 150 + 90 = 240$. C'est la variance d'une somme qui demande l'indépendance."
+        },
+        "indices": [
+          "Relis les conditions de la linéarité de l'espérance : une hypothèse d'indépendance y figure-t-elle ?",
+          "$E(X + Y) = E(X) + E(Y)$ vaut pour deux variables définies sur une même expérience, quelles qu'elles soient. Seule la variance d'une somme demande l'indépendance."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-010",
+        "solution": "Faux. La linéarité de l'espérance ne demande aucune indépendance : $E(X + Y) = E(X) + E(Y) = 150 + 90 = 240$. En moyenne, la boulangerie vend $240$ baguettes par jour."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On note $R$ la recette journalière des baguettes, en euros. Calculer $E(R)$.",
+        "reponse": { "type": "numerique", "valeur": 288, "tolerance": 0 },
+        "indices": [
+          "Exprime $R$ en fonction de $X$ et $Y$ : chaque baguette vendue, le matin ou l'après-midi, rapporte $1{,}20$ euro.",
+          "$R = 1{,}2X + 1{,}2Y$ ; par linéarité, $E(R) = 1{,}2E(X) + 1{,}2E(Y) = 1{,}2 \\times (150 + 90)$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-005",
+        "solution": "$R = 1{,}2X + 1{,}2Y = 1{,}2(X + Y)$. Par linéarité de l'espérance, $E(R) = 1{,}2\\big(E(X) + E(Y)\\big) = 1{,}2 \\times 240 = 288$. La recette moyenne des baguettes est de $288$ euros par jour."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-003",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-esperance"],
+    "capacites": ["bo-m-sommes-05", "bo-m-sommes-06"],
+    "titre": "Découper un gain en gains simples",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 103,
+    "preambule": "On lance six fois un dé équilibré à six faces. À chaque lancer, on gagne $4$ euros si l'on obtient $6$, et l'on perd $1$ euro sinon. Pour $i$ de $1$ à $6$, on note $G_i$ le gain, positif ou négatif, du $i$-ième lancer, et $G$ le gain total des six lancers.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle égalité est vraie ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$G = G_1 + G_2 + \\dots + G_6$",
+            "$G = 6G_1$",
+            "$G = G_1 \\times G_2 \\times \\dots \\times G_6$",
+            "$G = \\dfrac{G_1 + G_2 + \\dots + G_6}{6}$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$6G_1$ compte six fois le gain du **premier** lancer : si ce lancer donne $6$, alors $6G_1 = 24$, quels que soient les autres. $G$ additionne six lancers différents.",
+            "Les gains s'additionnent, ils ne se multiplient pas : gagner $4$ euros puis perdre $1$ euro fait un total de $3$ euros.",
+            "Ce quotient est le gain **moyen par lancer**, pas le gain total."
+          ]
+        },
+        "indices": [
+          "Le gain total est ce que l'on a gagné ou perdu, lancer après lancer : quelle opération donne un total ?",
+          "Teste sur une partie : pour les lancers $6$, $2$, $6$, $1$, $3$, $5$, les gains valent $4$, $-1$, $4$, $-1$, $-1$, $-1$. Quel est le gain total, et quelle écriture le donne ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-007",
+        "solution": "Le gain total est la somme des gains des six lancers : $G = G_1 + G_2 + \\dots + G_6$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $E(G_1)$. Donner une fraction.",
+        "reponse": { "type": "numerique", "valeur": "-1/6", "tolerance": 0.001 },
+        "indices": [
+          "$G_1$ ne prend que deux valeurs, $4$ et $-1$ : calcule son espérance avec la définition.",
+          "$G_1 = 4$ avec la probabilité $\\dfrac{1}{6}$ et $G_1 = -1$ avec la probabilité $\\dfrac{5}{6}$ : calcule $4 \\times \\dfrac{1}{6} + (-1) \\times \\dfrac{5}{6}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "$G_1$ vaut $4$ avec la probabilité $\\dfrac{1}{6}$ et $-1$ avec la probabilité $\\dfrac{5}{6}$. Donc $E(G_1) = 4 \\times \\dfrac{1}{6} + (-1) \\times \\dfrac{5}{6} = \\dfrac{4 - 5}{6} = -\\dfrac{1}{6}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire $E(G)$.",
+        "reponse": { "type": "numerique", "valeur": -1, "tolerance": 0 },
+        "indices": [
+          "Utilise l'écriture de la question 1 et la linéarité de l'espérance : pas besoin de la loi de $G$.",
+          "Les six gains $G_i$ ont la même loi, donc la même espérance $-\\dfrac{1}{6}$ : $E(G) = E(G_1) + \\dots + E(G_6) = 6 \\times \\left(-\\dfrac{1}{6}\\right)$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-008",
+        "solution": "Par linéarité, $E(G) = E(G_1) + \\dots + E(G_6) = 6 \\times \\left(-\\dfrac{1}{6}\\right) = -1$. Sur un grand nombre de parties de six lancers, le joueur perd en moyenne environ $1$ euro par partie."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-004",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-variance"],
+    "capacites": ["bo-m-sommes-02"],
+    "titre": "Variance : coefficients et sommes",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 201,
+    "preambule": "$X$ et $Y$ sont deux variables aléatoires **indépendantes**, avec $V(X) = 4$ et $V(Y) = 9$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que vaut $V(3X)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$12$", "$36$", "$4$", "$6$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$12 = 3 \\times 4$ : dans une variance, le coefficient sort **au carré**, $V(3X) = 3^2\\,V(X)$.",
+            null,
+            "Multiplier par $3$ écarte davantage les valeurs : seule l'addition d'une constante laisse la variance inchangée.",
+            "$6 = 3 \\times \\sqrt{4}$ est l'écart type $\\sigma(3X)$, pas la variance."
+          ]
+        },
+        "indices": [
+          "Pour un réel $a$, $V(aX) = a^2\\,V(X)$ : le coefficient sort au carré.",
+          "Ici $a = 3$, donc $a^2 = 9$ : multiplie $V(X)$ par $9$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-014",
+        "solution": "$V(3X) = 3^2 \\times V(X) = 9 \\times 4 = 36$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $V(X + Y)$.",
+        "reponse": { "type": "numerique", "valeur": 13, "tolerance": 0 },
+        "indices": [
+          "$X$ et $Y$ sont indépendantes : la variance de leur somme est la somme de leurs variances.",
+          "$V(X + Y) = V(X) + V(Y)$ : remplace par les valeurs données."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-014",
+        "solution": "$X$ et $Y$ sont indépendantes, donc $V(X + Y) = V(X) + V(Y) = 4 + 9 = 13$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $V(2X - Y + 7)$.",
+        "reponse": { "type": "numerique", "valeur": 25, "tolerance": 0 },
+        "indices": [
+          "Écris $2X - Y + 7 = 2X + (-1) \\times Y + 7$ : la constante $7$ ne change pas la variance, et chaque coefficient sort au carré.",
+          "Par indépendance, $V(2X - Y + 7) = V(2X) + V(-Y) = 2^2\\,V(X) + (-1)^2\\,V(Y)$ : calcule chaque terme."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-017",
+        "solution": "La constante $7$ ne change pas la variance, et $2X$ et $-Y$ sont indépendantes. Donc $V(2X - Y + 7) = 2^2\\,V(X) + (-1)^2\\,V(Y) = 4 \\times 4 + 1 \\times 9 = 16 + 9 = 25$.",
+        "erreurFrequente": "Soustraire les variances, $16 - 9 = 7$ : le coefficient $-1$ sort au carré, et $(-1)^2 = 1$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-005",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-variance"],
+    "capacites": ["bo-m-sommes-02", "bo-m-sommes-07"],
+    "titre": "Écarts types d'une somme et d'une différence",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 202,
+    "preambule": "$X$ et $Y$ sont deux variables aléatoires **indépendantes**, d'écarts types $\\sigma(X) = 3$ et $\\sigma(Y) = 4$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que vaut $\\sigma(X + Y)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$7$", "$5$", "$25$", "$1$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Les écarts types ne s'additionnent pas : ce sont les **variances** qui s'additionnent, pour des variables indépendantes.",
+            null,
+            "$25$ est la variance $V(X + Y)$ ; l'écart type est sa racine carrée.",
+            "On ne soustrait ni les écarts types, ni les variances : les dispersions s'ajoutent."
+          ]
+        },
+        "indices": [
+          "Passe par les variances : $V(X) = \\sigma(X)^2$ et $V(Y) = \\sigma(Y)^2$, et ce sont elles qui s'additionnent.",
+          "$V(X + Y) = V(X) + V(Y) = 9 + 16$ ; prends ensuite la racine carrée."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-014",
+        "solution": "$V(X) = 3^2 = 9$ et $V(Y) = 4^2 = 16$. Par indépendance, $V(X + Y) = 9 + 16 = 25$, donc $\\sigma(X + Y) = \\sqrt{25} = 5$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $\\sigma(-2X)$.",
+        "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+        "indices": [
+          "Pour un réel $a$, $\\sigma(aX) = \\lvert a \\rvert\\,\\sigma(X)$ : l'écart type est multiplié par la valeur absolue du coefficient.",
+          "Ici $\\lvert -2 \\rvert = 2$ : multiplie $\\sigma(X)$ par $2$. Contrôle : $V(-2X) = 4 \\times 9$, dont la racine carrée doit donner le même nombre."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-014",
+        "solution": "$\\sigma(-2X) = \\lvert -2 \\rvert \\times \\sigma(X) = 2 \\times 3 = 6$. En effet, $V(-2X) = (-2)^2 \\times 9 = 36$ et $\\sqrt{36} = 6$ : un écart type n'est jamais négatif."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? $\\sigma(X - Y) = 1$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$V(X - Y) = V(X) + (-1)^2\\,V(Y) = 9 + 16 = 25$, donc $\\sigma(X - Y) = 5$, comme pour $X + Y$ : les dispersions s'ajoutent, même quand on soustrait les variables."
+        },
+        "indices": [
+          "Écris $X - Y = X + (-1) \\times Y$ et calcule d'abord la variance.",
+          "$V(-Y) = (-1)^2\\,V(Y) = V(Y)$ : la variance de $X - Y$ est donc la même que celle de $X + Y$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-022",
+        "solution": "Faux. $V(X - Y) = V(X) + (-1)^2\\,V(Y) = 9 + 16 = 25$, donc $\\sigma(X - Y) = \\sqrt{25} = 5$, et non $4 - 3 = 1$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-006",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-variance"],
+    "capacites": ["bo-m-sommes-02", "bo-m-sommes-07"],
+    "titre": "Peut-on additionner les variances ?",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 203,
+    "preambule": "Dans chaque situation, dire si l'égalité proposée est vraie. On rappelle que le numéro d'un dé équilibré à six faces a pour variance $\\dfrac{35}{12}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "On lance un dé rouge et un dé vert, équilibrés. $X$ est le numéro du dé rouge et $Y$ celui du dé vert. Vrai ou faux : $V(X + Y) = V(X) + V(Y)$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$X$ ne dépend que du dé rouge et $Y$ que du dé vert : les deux lancers sont des épreuves indépendantes, donc $V(X + Y) = V(X) + V(Y) = \\dfrac{35}{6}$."
+        },
+        "indices": [
+          "L'additivité demande deux variables liées à des épreuves indépendantes : de quelles épreuves dépendent $X$ et $Y$ ?",
+          "$X$ ne dépend que du lancer du dé rouge, $Y$ que du lancer du dé vert, et ces deux lancers sont indépendants."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-014",
+        "solution": "Vrai. $X$ et $Y$ sont liées à deux lancers indépendants, donc $V(X + Y) = V(X) + V(Y) = 2 \\times \\dfrac{35}{12} = \\dfrac{35}{6}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On lance un seul dé équilibré. $X$ est le numéro de la face du dessus et $Y = 7 - X$ celui de la face du dessous. Vrai ou faux : $V(X + Y) = V(X) + V(Y)$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$X$ et $Y$ dépendent du même lancer : l'additivité ne s'applique pas. D'ailleurs $X + Y = 7$ pour tout lancer, donc $V(X + Y) = 0$, alors que $V(X) + V(Y) = 2 \\times \\dfrac{35}{12} = \\dfrac{35}{6}$."
+        },
+        "indices": [
+          "Ici, $X$ et $Y$ dépendent-elles d'épreuves différentes ?",
+          "Calcule $X + Y$ pour un lancer quelconque : cette somme varie-t-elle ? Que vaut alors sa variance ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-014",
+        "solution": "Faux. $X + Y = X + (7 - X) = 7$ pour tout lancer : c'est une constante, donc $V(X + Y) = 0$. Or $V(Y) = V(-X + 7) = V(X)$, donc $V(X) + V(Y) = \\dfrac{35}{6} \\neq 0$. $X$ et $Y$ dépendent du même lancer : l'additivité ne s'applique pas."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On lance deux fois un dé équilibré ; $X_1$ et $X_2$ sont les deux numéros obtenus. Vrai ou faux : $V(X_1 + X_2) = V(2X_1)$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$V(X_1 + X_2) = V(X_1) + V(X_2) = \\dfrac{35}{6}$, car les lancers sont indépendants, mais $V(2X_1) = 4V(X_1) = \\dfrac{35}{3}$. Les deux variables ont la même espérance, $7$, mais pas la même variance."
+        },
+        "indices": [
+          "Calcule séparément les deux variances : l'une avec l'additivité, l'autre avec $V(aX) = a^2\\,V(X)$.",
+          "$V(X_1 + X_2) = 2 \\times \\dfrac{35}{12}$ et $V(2X_1) = 2^2 \\times \\dfrac{35}{12}$ : compare."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-020",
+        "solution": "Faux. Les deux lancers sont indépendants, donc $V(X_1 + X_2) = \\dfrac{35}{12} + \\dfrac{35}{12} = \\dfrac{35}{6}$ ; mais $V(2X_1) = 2^2 \\times \\dfrac{35}{12} = \\dfrac{35}{3}$. Deux lancers différents se compensent en partie ; un lancer doublé, non."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-007",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-binomiale"],
+    "capacites": ["bo-m-sommes-03"],
+    "titre": "Espérance, variance et écart type d'une loi binomiale",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 301,
+    "preambule": "$X$ suit la loi binomiale $\\mathcal{B}(40\\,;\\,0{,}25)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $E(X)$.",
+        "reponse": { "type": "numerique", "valeur": 10, "tolerance": 0 },
+        "indices": [
+          "Pour une loi $\\mathcal{B}(n\\,;\\,p)$, $E(X) = np$.",
+          "Ici $n = 40$ et $p = 0{,}25$ : calcule $40 \\times 0{,}25$, c'est-à-dire le quart de $40$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$E(X) = np = 40 \\times 0{,}25 = 10$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $V(X)$. Donner la valeur décimale exacte.",
+        "reponse": { "type": "numerique", "valeur": 7.5, "tolerance": 0.01 },
+        "indices": [
+          "Pour une loi $\\mathcal{B}(n\\,;\\,p)$, $V(X) = np(1 - p)$.",
+          "$np$ a été calculé à la question 1, et $1 - p = 0{,}75$ : multiplie ces deux nombres."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$V(X) = np(1 - p) = 40 \\times 0{,}25 \\times 0{,}75 = 10 \\times 0{,}75 = 7{,}5$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Que vaut $\\sigma(X)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$7{,}5$", "$\\sqrt{7{,}5}$", "$\\sqrt{10}$", "$0{,}75$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$7{,}5$ est la variance ; l'écart type est sa racine carrée.",
+            null,
+            "$\\sqrt{10} = \\sqrt{np}$ : il manque le facteur $1 - p$ sous la racine.",
+            "$0{,}75 = 1 - p$ est la probabilité d'un échec, pas un écart type."
+          ]
+        },
+        "indices": [
+          "L'écart type est la racine carrée de la variance.",
+          "Reprends la variance trouvée à la question 2 : $\\sigma(X) = \\sqrt{V(X)}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$\\sigma(X) = \\sqrt{V(X)} = \\sqrt{7{,}5} \\approx 2{,}74$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-008",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-binomiale"],
+    "capacites": ["bo-m-sommes-03"],
+    "titre": "Interpréter un nombre moyen de succès",
+    "duree": 3,
+    "calculatrice": false,
+    "ordre": 302,
+    "preambule": "Un archer atteint la cible avec la probabilité $0{,}7$ à chaque tir, indépendamment des autres tirs. Il tire $50$ flèches ; on note $X$ le nombre de flèches qui atteignent la cible.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $E(X)$.",
+        "reponse": { "type": "numerique", "valeur": 35, "tolerance": 0 },
+        "indices": [
+          "$X$ compte les succès de $50$ épreuves de Bernoulli identiques et indépendantes : quelle est sa loi ?",
+          "$X$ suit la loi $\\mathcal{B}(50\\,;\\,0{,}7)$ : applique $E(X) = np$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$X$ compte les succès « la flèche atteint la cible » dans $50$ épreuves de Bernoulli identiques et indépendantes, de paramètre $0{,}7$ : $X$ suit la loi $\\mathcal{B}(50\\,;\\,0{,}7)$. Donc $E(X) = 50 \\times 0{,}7 = 35$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Comment interpréter ce résultat ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "L'archer atteindra la cible exactement $35$ fois.",
+            "Sur un grand nombre de séries de $50$ tirs, l'archer atteint la cible en moyenne environ $35$ fois par série.",
+            "L'archer a $35\\,\\%$ de chances d'atteindre la cible.",
+            "L'archer atteint la cible au plus $35$ fois."
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "L'espérance n'est pas une prédiction : une série donnée peut compter $30$, $35$ ou $40$ flèches dans la cible.",
+            null,
+            "La probabilité d'atteindre la cible à chaque tir est $0{,}7$, soit $70\\,\\%$ ; $35$ est un nombre de flèches.",
+            "$X$ peut dépasser $35$ : il prend toutes les valeurs entières de $0$ à $50$."
+          ]
+        },
+        "indices": [
+          "L'espérance est une moyenne : sur quoi porte-t-elle ?",
+          "Imagine que l'archer recommence un très grand nombre de séries de $50$ tirs, et que tu fasses la moyenne des nombres de flèches dans la cible."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-030",
+        "solution": "L'espérance est une moyenne à long terme : sur un grand nombre de séries de $50$ tirs, l'archer atteint la cible en moyenne environ $35$ fois par série. Une série donnée peut en compter plus ou moins."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-009",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-binomiale"],
+    "capacites": ["bo-m-sommes-03"],
+    "titre": "Retrouver les paramètres d'une loi binomiale",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 303,
+    "preambule": "$X$ suit une loi binomiale $\\mathcal{B}(n\\,;\\,p)$ dont on ne connaît pas les paramètres, avec $E(X) = 12$ et $\\sigma(X) = 2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Déterminer $p$. Donner une fraction.",
+        "reponse": { "type": "numerique", "valeur": "2/3", "tolerance": 0.001 },
+        "indices": [
+          "Passe de l'écart type à la variance, puis compare $V(X) = np(1 - p)$ et $E(X) = np$ : leur quotient ne dépend que de $p$.",
+          "$V(X) = \\sigma(X)^2 = 4$, et $\\dfrac{V(X)}{E(X)} = \\dfrac{np(1 - p)}{np} = 1 - p$ : donc $1 - p = \\dfrac{4}{12}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$V(X) = \\sigma(X)^2 = 4$. Or $\\dfrac{V(X)}{E(X)} = \\dfrac{np(1 - p)}{np} = 1 - p$, donc $1 - p = \\dfrac{4}{12} = \\dfrac{1}{3}$ et $p = \\dfrac{2}{3}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire $n$.",
+        "reponse": { "type": "numerique", "valeur": 18, "tolerance": 0 },
+        "indices": [
+          "Utilise $E(X) = np$ avec la valeur de $p$ trouvée.",
+          "$n \\times \\dfrac{2}{3} = 12$ : divise $12$ par $\\dfrac{2}{3}$, c'est-à-dire multiplie par $\\dfrac{3}{2}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$np = 12$ et $p = \\dfrac{2}{3}$, donc $n = 12 \\times \\dfrac{3}{2} = 18$. Contrôle : $V(X) = 18 \\times \\dfrac{2}{3} \\times \\dfrac{1}{3} = 4$, et $\\sigma(X) = 2$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-010",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-echantillon"],
+    "capacites": ["bo-m-sommes-04"],
+    "titre": "Somme et moyenne d'un échantillon",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 401,
+    "preambule": "$(X_1, \\dots, X_{16})$ est un échantillon de taille $16$ d'une loi d'espérance $\\mu = 5$ et de variance $V = 4$. On note $S_{16} = X_1 + \\dots + X_{16}$ et $M_{16} = \\dfrac{S_{16}}{16}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $E(S_{16})$.",
+        "reponse": { "type": "numerique", "valeur": 80, "tolerance": 0 },
+        "indices": [
+          "Pour un échantillon de taille $n$, $E(S_n) = n\\mu$.",
+          "Ici $n = 16$ et $\\mu = 5$ : chacune des $16$ variables apporte $5$ en moyenne."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-035",
+        "solution": "$E(S_{16}) = 16 \\times 5 = 80$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $V(S_{16})$.",
+        "reponse": { "type": "numerique", "valeur": 64, "tolerance": 0 },
+        "indices": [
+          "Les variables d'un échantillon sont indépendantes : leurs variances s'additionnent, donc $V(S_n) = nV$.",
+          "Additionne $16$ fois la variance $4$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-035",
+        "solution": "Les $X_i$ sont indépendantes, donc $V(S_{16}) = 16 \\times 4 = 64$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Que vaut l'écart type de $M_{16}$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0{,}5$", "$0{,}25$", "$0{,}125$", "$8$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$0{,}25 = \\dfrac{4}{16}$ est la variance $V(M_{16})$ ; il reste à prendre sa racine carrée.",
+            "$0{,}125 = \\dfrac{2}{16}$ : l'écart type a été divisé par $n$ au lieu de $\\sqrt{n}$.",
+            "$8 = \\sqrt{64}$ est l'écart type de la **somme** $S_{16}$."
+          ]
+        },
+        "indices": [
+          "$\\sigma(M_n) = \\dfrac{\\sigma}{\\sqrt{n}}$, où $\\sigma = \\sqrt{V}$ est l'écart type d'un seul tirage.",
+          "$\\sigma = \\sqrt{4} = 2$ et $\\sqrt{16} = 4$ : calcule le quotient."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-042",
+        "solution": "$\\sigma = \\sqrt{4} = 2$, donc $\\sigma(M_{16}) = \\dfrac{\\sigma}{\\sqrt{16}} = \\dfrac{2}{4} = 0{,}5$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-011",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-echantillon"],
+    "capacites": ["bo-m-concentration-06", "bo-m-sommes-04", "bo-m-listes-02"],
+    "titre": "Lire le programme d'une marche aléatoire",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 402,
+    "preambule": "Une marche aléatoire part de la position $0$ d'une droite graduée. À chaque pas, elle avance de $+1$ ou de $-1$, chacun avec la probabilité $\\dfrac{1}{2}$, indépendamment des autres pas. Le programme ci-dessous la simule ; la fonction random renvoie un réel pris au hasard dans $[0\\,;\\,1[$.",
+    "code": {
+      "langage": "python",
+      "source": "from random import random\n\ndef pas():\n    if random() < 0.5:   # vrai avec la probabilité 1/2\n        return 1         # un pas à droite\n    return -1            # un pas à gauche\n\ndef marche(n):\n    positions = [0]      # position de départ\n    x = 0\n    for i in range(n):\n        x = x + pas()\n        positions.append(x)\n    return positions"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Combien d'éléments contient la liste renvoyée par marche(64) ?",
+        "reponse": { "type": "numerique", "valeur": 65, "tolerance": 0 },
+        "indices": [
+          "La liste positions commence avec un élément, la position de départ : regarde ce que fait chaque tour de boucle.",
+          "La boucle tourne $64$ fois et ajoute une position à chaque tour, après la position de départ."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-039",
+        "solution": "La liste positions contient d'abord la position de départ $0$, puis la boucle lui ajoute une position à chacun de ses $64$ tours : elle contient $1 + 64 = 65$ éléments."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Que représente marche(64)[64] ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "La position après $64$ pas",
+            "Le $64$-ième pas, égal à $+1$ ou à $-1$",
+            "Le nombre de pas faits vers la droite",
+            "La plus grande position atteinte"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "La liste range des **positions**, pas des pas : son élément d'indice $64$ est la position obtenue après le $64$-ième pas.",
+            "La position compte les pas vers la droite **moins** les pas vers la gauche.",
+            "La liste n'est pas triée : l'élément d'indice $64$ est le dernier ajouté, pas le plus grand."
+          ]
+        },
+        "indices": [
+          "Les indices d'une liste commencent à $0$ : l'élément d'indice $0$ est la position de départ.",
+          "L'élément d'indice $k$ est la position après $k$ pas : quel est le dernier élément ajouté par marche(64) ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-039",
+        "solution": "L'élément d'indice $0$ est la position de départ, et l'élément d'indice $k$ la position après $k$ pas. marche(64)[64] est donc la position après $64$ pas, le dernier élément de la liste."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "On note $S$ la position après $64$ pas. Calculer l'écart type de $S$.",
+        "reponse": { "type": "numerique", "valeur": 8, "tolerance": 0 },
+        "indices": [
+          "$S$ est la somme des $64$ pas : un échantillon de taille $64$ de la loi d'un pas. Commence par la variance d'un pas.",
+          "Un pas a pour espérance $0$ et pour variance $1^2 \\times \\dfrac{1}{2} + (-1)^2 \\times \\dfrac{1}{2} = 1$ ; donc $V(S) = 64 \\times 1$ : prends la racine carrée."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-039",
+        "solution": "$S$ est la somme de $64$ pas indépendants de même loi. Un pas a pour espérance $0$ et pour variance $1^2 \\times \\dfrac{1}{2} + (-1)^2 \\times \\dfrac{1}{2} = 1$. Donc $V(S) = 64 \\times 1 = 64$ et $\\sigma(S) = \\sqrt{64} = 8$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-012",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-bienayme-tchebychev"],
+    "capacites": ["bo-m-concentration-01"],
+    "titre": "Majorer, minorer avec Bienaymé-Tchebychev",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 501,
+    "preambule": "Une variable aléatoire $X$ a pour espérance $\\mu = 50$ et pour variance $V(X) = 16$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quel majorant l'inégalité de Bienaymé-Tchebychev donne-t-elle pour $P(\\lvert X - 50 \\rvert \\geqslant 10)$ ? Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.16, "tolerance": 0 },
+        "indices": [
+          "Applique $P(\\lvert X - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V(X)}{\\delta^2}$ : repère $\\delta$.",
+          "Ici $\\delta = 10$ : le majorant est $\\dfrac{16}{10^2} = \\dfrac{16}{100}$, à écrire en décimal."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-047",
+        "solution": "D'après l'inégalité de Bienaymé-Tchebychev avec $\\delta = 10$ : $P(\\lvert X - 50 \\rvert \\geqslant 10) \\leqslant \\dfrac{16}{10^2} = 0{,}16$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire un minorant de $P(40 < X < 60)$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.84, "tolerance": 0 },
+        "indices": [
+          "Écris l'événement $\\{40 < X < 60\\}$ comme un écart à $50$ : c'est le contraire de celui de la question 1.",
+          "$40 < X < 60$ équivaut à $\\lvert X - 50 \\rvert < 10$ ; sa probabilité vaut $1 - P(\\lvert X - 50 \\rvert \\geqslant 10)$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-056",
+        "solution": "$40 < X < 60$ équivaut à $\\lvert X - 50 \\rvert < 10$, contraire de $\\lvert X - 50 \\rvert \\geqslant 10$. Donc $P(40 < X < 60) \\geqslant 1 - 0{,}16 = 0{,}84$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Avec $\\delta = 2$, l'inégalité donne $P(\\lvert X - 50 \\rvert \\geqslant 2) \\leqslant 4$. Que peut-on en conclure ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Rien : une probabilité est toujours inférieure ou égale à $1$, ce majorant n'apprend rien.",
+            "$P(\\lvert X - 50 \\rvert \\geqslant 2) = 4$.",
+            "Le calcul est faux : l'inégalité ne s'applique pas pour $\\delta = 2$.",
+            "$P(\\lvert X - 50 \\rvert < 2) \\geqslant 4$."
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Une probabilité ne dépasse jamais $1$ ; et l'inégalité donne un majorant, pas une valeur exacte.",
+            "L'inégalité vaut pour tout $\\delta > 0$ : ici elle est juste, mais sans intérêt.",
+            "Une probabilité ne dépasse jamais $1$ ; le passage au contraire donnerait le minorant $1 - 4 = -3$, sans intérêt lui aussi."
+          ]
+        },
+        "indices": [
+          "Compare le majorant obtenu, $\\dfrac{16}{2^2}$, avec $1$.",
+          "Une probabilité est toujours comprise entre $0$ et $1$ : un majorant plus grand que $1$ apporte-t-il une information ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-047",
+        "solution": "$\\dfrac{16}{2^2} = 4 > 1$ : l'inégalité est vraie, mais toute probabilité est déjà inférieure ou égale à $1$. Ce majorant n'apprend rien ; l'inégalité n'est utile que si $\\delta^2 > V(X)$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-013",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-bienayme-tchebychev"],
+    "capacites": ["bo-m-concentration-01"],
+    "titre": "Traduire un événement en écart à l'espérance",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 502,
+    "preambule": "Une variable aléatoire $X$ a pour espérance $\\mu = 30$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "L'événement « $X \\leqslant 24$ ou $X \\geqslant 36$ » s'écrit :",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\lvert X - 30 \\rvert \\geqslant 6$",
+            "$\\lvert X - 30 \\rvert < 6$",
+            "$\\lvert X - 30 \\rvert \\geqslant 12$",
+            "$\\lvert X - 24 \\rvert \\geqslant 12$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est l'événement contraire : $X$ à moins de $6$ de $30$, soit $24 < X < 36$.",
+            "$12 = 36 - 24$ est la largeur totale de l'intervalle ; l'écart à $30$ est la demi-largeur.",
+            "On mesure l'écart à l'espérance $30$, milieu de $24$ et $36$, pas à une borne."
+          ]
+        },
+        "indices": [
+          "Repère le milieu des bornes $24$ et $36$, puis la distance de chaque borne à ce milieu.",
+          "$24 = 30 - 6$ et $36 = 30 + 6$ : dans cet événement, $X$ est-il proche de $30$ ou loin de $30$ ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-046",
+        "solution": "$24 = 30 - 6$ et $36 = 30 + 6$ : « $X \\leqslant 30 - 6$ ou $X \\geqslant 30 + 6$ » signifie que $X$ est à au moins $6$ de $30$, soit $\\lvert X - 30 \\rvert \\geqslant 6$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "L'événement $\\{22 < X < 38\\}$ s'écrit :",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\lvert X - 30 \\rvert \\leqslant 8$",
+            "$\\lvert X - 30 \\rvert < 8$",
+            "$\\lvert X - 30 \\rvert > 8$",
+            "$\\lvert X - 22 \\rvert < 16$"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Les bornes $22$ et $38$ sont exclues : l'inégalité sur l'écart est stricte.",
+            null,
+            "C'est un écart **loin** de $30$ ; ici, $X$ est proche de $30$.",
+            "On centre sur l'espérance $30$, pas sur la borne $22$."
+          ]
+        },
+        "indices": [
+          "Le centre de $]22\\,;\\,38[$ est $\\dfrac{22 + 38}{2}$ ; la demi-largeur est la distance d'une borne à ce centre.",
+          "Le centre est l'espérance $30$, la demi-largeur vaut $38 - 30$ : les bornes sont-elles comprises ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-046",
+        "solution": "Le centre est $\\dfrac{22 + 38}{2} = 30$ et la demi-largeur $38 - 30 = 8$. Les bornes sont exclues : $22 < X < 38$ équivaut à $\\lvert X - 30 \\rvert < 8$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? L'événement $\\{20 < X < 36\\}$ s'écrit $\\lvert X - 30 \\rvert < \\delta$ pour un réel $\\delta$ bien choisi.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$30 - 20 = 10$ mais $36 - 30 = 6$ : l'intervalle $]20\\,;\\,36[$ n'est pas centré en l'espérance $30$ (son centre est $28$). Il ne s'écrit pas $\\lvert X - 30 \\rvert < \\delta$."
+        },
+        "indices": [
+          "Pour s'écrire $\\lvert X - 30 \\rvert < \\delta$, l'intervalle doit être centré en $30$ : calcule la distance de chaque borne à $30$.",
+          "Calcule $30 - 20$ et $36 - 30$ : ces deux distances sont-elles égales ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-051",
+        "solution": "Faux. $30 - 20 = 10$ et $36 - 30 = 6$ : l'intervalle $]20\\,;\\,36[$ n'est pas centré en $30$, donc il ne s'écrit pas $\\lvert X - 30 \\rvert < \\delta$. Pour appliquer l'inégalité, il faudrait un intervalle centré en $30$, comme $]24\\,;\\,36[$, qui est contenu dans $]20\\,;\\,36[$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-014",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-bienayme-tchebychev"],
+    "capacites": ["bo-m-concentration-01"],
+    "titre": "Bienaymé-Tchebychev pour cent lancers d'une pièce",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 503,
+    "preambule": "On lance $100$ fois une pièce équilibrée ; $X$ est le nombre de « pile » obtenus. $X$ suit la loi $\\mathcal{B}(100\\,;\\,0{,}5)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $V(X)$.",
+        "reponse": { "type": "numerique", "valeur": 25, "tolerance": 0 },
+        "indices": [
+          "Pour une loi $\\mathcal{B}(n\\,;\\,p)$, $V(X) = np(1 - p)$.",
+          "Calcule $100 \\times 0{,}5 \\times 0{,}5$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$V(X) = 100 \\times 0{,}5 \\times 0{,}5 = 25$ ; de plus, $E(X) = 100 \\times 0{,}5 = 50$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "À l'aide de l'inégalité de Bienaymé-Tchebychev, minorer $P(40 < X < 60)$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.75, "tolerance": 0 },
+        "indices": [
+          "$E(X) = 50$ : écris $40 < X < 60$ comme un écart à $50$, puis passe par l'événement contraire.",
+          "$40 < X < 60$ équivaut à $\\lvert X - 50 \\rvert < 10$, donc $P(40 < X < 60) \\geqslant 1 - \\dfrac{V(X)}{10^2}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-048",
+        "solution": "$E(X) = 50$, et $40 < X < 60$ équivaut à $\\lvert X - 50 \\rvert < 10$. D'après l'inégalité de Bienaymé-Tchebychev, $P(\\lvert X - 50 \\rvert \\geqslant 10) \\leqslant \\dfrac{25}{100} = 0{,}25$, donc $P(40 < X < 60) \\geqslant 1 - 0{,}25 = 0{,}75$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Majorer $P(X \\leqslant 35 \\text{ ou } X \\geqslant 65)$. Donner une fraction irréductible.",
+        "reponse": { "type": "numerique", "valeur": "1/9", "tolerance": 0.001 },
+        "indices": [
+          "$35$ et $65$ sont à la même distance de $50$ : écris l'événement sous la forme $\\lvert X - 50 \\rvert \\geqslant \\delta$.",
+          "$\\delta = 15$ : applique $P(\\lvert X - 50 \\rvert \\geqslant 15) \\leqslant \\dfrac{V(X)}{15^2}$, puis simplifie la fraction."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-052",
+        "solution": "$35 = 50 - 15$ et $65 = 50 + 15$, donc l'événement s'écrit $\\lvert X - 50 \\rvert \\geqslant 15$. D'où $P(X \\leqslant 35 \\text{ ou } X \\geqslant 65) \\leqslant \\dfrac{25}{15^2} = \\dfrac{25}{225} = \\dfrac{1}{9}$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-015",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-concentration"],
+    "capacites": ["bo-m-concentration-02"],
+    "titre": "L'inégalité de concentration en chiffres",
+    "duree": 5,
+    "calculatrice": false,
+    "ordre": 601,
+    "preambule": "$M_{200}$ est la moyenne d'un échantillon de taille $200$ d'une variable aléatoire d'espérance $\\mu$ et de variance $V = 5$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quel majorant l'inégalité de concentration donne-t-elle pour $P(\\lvert M_{200} - \\mu \\rvert \\geqslant 0{,}25)$ ? Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.4, "tolerance": 0 },
+        "indices": [
+          "Applique $P(\\lvert M_n - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V}{n\\delta^2}$ avec $n = 200$ et $\\delta = 0{,}25$.",
+          "$0{,}25^2 = 0{,}062\\,5$ et $200 \\times 0{,}062\\,5 = 12{,}5$ : calcule $\\dfrac{5}{12{,}5}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-060",
+        "solution": "D'après l'inégalité de concentration : $P(\\lvert M_{200} - \\mu \\rvert \\geqslant 0{,}25) \\leqslant \\dfrac{5}{200 \\times 0{,}25^2} = \\dfrac{5}{200 \\times 0{,}062\\,5} = \\dfrac{5}{12{,}5} = 0{,}4$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "En déduire un minorant de $P(\\lvert M_{200} - \\mu \\rvert < 0{,}25)$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.6, "tolerance": 0 },
+        "indices": [
+          "Les événements $\\lvert M_{200} - \\mu \\rvert < 0{,}25$ et $\\lvert M_{200} - \\mu \\rvert \\geqslant 0{,}25$ sont contraires.",
+          "$P(\\lvert M_{200} - \\mu \\rvert < 0{,}25) = 1 - P(\\lvert M_{200} - \\mu \\rvert \\geqslant 0{,}25)$ : soustrais de $1$ le majorant de la question 1, ce qui renverse l'inégalité."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-060",
+        "solution": "Par passage à l'événement contraire, $P(\\lvert M_{200} - \\mu \\rvert < 0{,}25) \\geqslant 1 - 0{,}4 = 0{,}6$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Avec une précision $\\delta$ deux fois plus grande, le majorant de l'inégalité de concentration est divisé par $2$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$\\delta$ est au carré dans $\\dfrac{V}{n\\delta^2}$ : doubler $\\delta$ multiplie $\\delta^2$ par $4$, donc divise le majorant par $4$. Avec $\\delta = 0{,}5$, on obtient $\\dfrac{5}{200 \\times 0{,}25} = 0{,}1$, le quart de $0{,}4$."
+        },
+        "indices": [
+          "Regarde où se trouve $\\delta$ dans $\\dfrac{V}{n\\delta^2}$, et avec quelle puissance.",
+          "Remplace $\\delta$ par $2\\delta$ : $(2\\delta)^2 = 4\\delta^2$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-060",
+        "solution": "Faux. $(2\\delta)^2 = 4\\delta^2$, donc $\\dfrac{V}{n(2\\delta)^2} = \\dfrac{1}{4} \\times \\dfrac{V}{n\\delta^2}$ : le majorant est divisé par $4$. Ici, avec $\\delta = 0{,}5$, il vaut $0{,}1$ au lieu de $0{,}4$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-016",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 1,
+    "notions": ["n-sommes-variables-aleatoires-concentration"],
+    "capacites": ["bo-m-concentration-03"],
+    "titre": "Ce que dit, et ne dit pas, la loi des grands nombres",
+    "duree": 4,
+    "calculatrice": false,
+    "ordre": 602,
+    "preambule": "On lance $n$ fois une pièce équilibrée et l'on note $F_n$ la fréquence des « pile » obtenus.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Vrai ou faux ? Pour tout réel $\\delta > 0$, $P(\\lvert F_n - 0{,}5 \\rvert < \\delta)$ tend vers $1$ quand $n$ tend vers $+\\infty$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "C'est la loi des grands nombres : $F_n$ est la moyenne d'un échantillon de la loi de Bernoulli de paramètre $0{,}5$, et $P(\\lvert F_n - 0{,}5 \\rvert \\geqslant \\delta)$ tend vers $0$. Par passage au contraire, la probabilité proposée tend vers $1$."
+        },
+        "indices": [
+          "$F_n$ est la moyenne $M_n$ d'un échantillon de la loi de Bernoulli de paramètre $0{,}5$, d'espérance $0{,}5$.",
+          "La loi des grands nombres dit que $P(\\lvert M_n - \\mu \\rvert \\geqslant \\delta)$ tend vers $0$ : que devient la probabilité de l'événement contraire ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-065",
+        "solution": "Vrai. D'après la loi des grands nombres, $P(\\lvert F_n - 0{,}5 \\rvert \\geqslant \\delta)$ tend vers $0$, donc $P(\\lvert F_n - 0{,}5 \\rvert < \\delta) = 1 - P(\\lvert F_n - 0{,}5 \\rvert \\geqslant \\delta)$ tend vers $1$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Vrai ou faux ? Après $10$ « pile » de suite, le lancer suivant a plus de chances de donner « face », pour que la fréquence revienne vers $0{,}5$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Les lancers sont indépendants : le suivant donne « face » avec la probabilité $0{,}5$, comme tous les autres. La loi des grands nombres porte sur la fréquence d'un grand nombre de lancers ; elle ne dit pas que le hasard compense les écarts."
+        },
+        "indices": [
+          "Les lancers successifs d'une pièce sont-ils indépendants ?",
+          "La probabilité de « face » au lancer suivant ne dépend pas des lancers précédents. La loi des grands nombres parle-t-elle du prochain lancer, ou de la fréquence sur beaucoup de lancers ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-069",
+        "solution": "Faux. Les lancers sont indépendants : le onzième donne « face » avec la probabilité $0{,}5$. Les dix premiers lancers pèsent de moins en moins dans la fréquence quand $n$ grandit : leur écart est noyé, pas compensé."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Pour $n$ assez grand, la fréquence $F_n$ est égale à $0{,}5$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "La loi des grands nombres dit seulement que $F_n$ est **proche** de $0{,}5$ avec une probabilité qui tend vers $1$. Elle n'est pas forcément égale à $0{,}5$ : pour $n$ impair, $F_n$ ne vaut même jamais $0{,}5$."
+        },
+        "indices": [
+          "Relis la loi des grands nombres : porte-t-elle sur l'égalité $F_n = 0{,}5$, ou sur un écart $\\lvert F_n - 0{,}5 \\rvert$ ?",
+          "Pense à $n$ impair, par exemple $n = 1\\,001$ : $F_n$ peut-elle valoir exactement $0{,}5$ ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-065",
+        "solution": "Faux. La loi des grands nombres porte sur la probabilité d'un écart, pas sur une égalité. Pour $n = 1\\,001$ par exemple, le nombre de « pile » est un entier, et $F_n = 0{,}5$ demanderait $500{,}5$ « pile » : c'est impossible."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-017",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-esperance"],
+    "capacites": ["bo-m-sommes-01", "bo-m-sommes-05", "bo-m-sommes-06", "bo-m-bernoulli-05"],
+    "titre": "Deux tirages sans remise : la linéarité sans indépendance",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 111,
+    "preambule": "Une urne contient $5$ boules indiscernables au toucher : $3$ rouges et $2$ blanches. On tire une boule au hasard, on la garde, puis on tire au hasard une deuxième boule parmi celles qui restent. Une boule rouge rapporte $1$ point et une boule blanche $4$ points. On note $X_1$ le nombre de points de la première boule, $X_2$ celui de la deuxième, et $S = X_1 + X_2$ le total des points.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $E(X_1)$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 2.2, "tolerance": 0.001 },
+        "indices": [
+          "$X_1$ vaut $1$ ou $4$ : cherche la probabilité de chaque couleur au premier tirage.",
+          "La première boule est rouge avec la probabilité $\\dfrac{3}{5}$ et blanche avec la probabilité $\\dfrac{2}{5}$.",
+          "Applique la définition : $E(X_1) = 1 \\times \\dfrac{3}{5} + 4 \\times \\dfrac{2}{5}$, puis donne l'écriture décimale."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "La première boule est rouge avec la probabilité $\\dfrac{3}{5}$ et blanche avec la probabilité $\\dfrac{2}{5}$. Donc $E(X_1) = 1 \\times \\dfrac{3}{5} + 4 \\times \\dfrac{2}{5} = \\dfrac{3 + 8}{5} = \\dfrac{11}{5} = 2{,}2$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer la probabilité que la deuxième boule soit blanche. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.4, "tolerance": 0.001 },
+        "indices": [
+          "La couleur de la deuxième boule dépend de la première : construis un arbre à deux niveaux.",
+          "Après une rouge, il reste $2$ rouges et $2$ blanches ; après une blanche, il reste $3$ rouges et $1$ blanche. Repère les deux chemins qui mènent à « deuxième boule blanche ».",
+          "Formule des probabilités totales : $\\dfrac{3}{5} \\times \\dfrac{2}{4} + \\dfrac{2}{5} \\times \\dfrac{1}{4}$ ; réduis au dénominateur commun $20$."
+        ],
+        "revoir": "l-loi-binomiale-007",
+        "solution": "D'après la formule des probabilités totales, la deuxième boule est blanche avec la probabilité $\\dfrac{3}{5} \\times \\dfrac{2}{4} + \\dfrac{2}{5} \\times \\dfrac{1}{4} = \\dfrac{6}{20} + \\dfrac{2}{20} = \\dfrac{8}{20} = 0{,}4$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire $E(X_2)$. Que constate-t-on ?",
+        "reponse": { "type": "numerique", "valeur": 2.2, "tolerance": 0.001 },
+        "indices": [
+          "$X_2$ vaut $4$ si la deuxième boule est blanche, et $1$ sinon : utilise la question 2.",
+          "La deuxième boule est rouge avec la probabilité $1 - 0{,}4 = 0{,}6$.",
+          "Calcule $1 \\times 0{,}6 + 4 \\times 0{,}4$, puis compare avec $E(X_1)$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "$X_2$ vaut $4$ avec la probabilité $0{,}4$ et $1$ avec la probabilité $0{,}6$. Donc $E(X_2) = 1 \\times 0{,}6 + 4 \\times 0{,}4 = 0{,}6 + 1{,}6 = 2{,}2$. On constate que $E(X_2) = E(X_1)$ : sans connaître la première boule, la deuxième a la même loi que la première."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Calculer $E(S)$. A-t-on eu besoin de l'indépendance des deux tirages ?",
+        "reponse": { "type": "numerique", "valeur": 4.4, "tolerance": 0.001 },
+        "indices": [
+          "$S = X_1 + X_2$ : quelle propriété donne l'espérance d'une somme ?",
+          "La linéarité de l'espérance ne demande aucune indépendance : $E(S) = E(X_1) + E(X_2)$.",
+          "Additionne les résultats des questions 1 et 3."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-010",
+        "solution": "Par linéarité de l'espérance, $E(S) = E(X_1) + E(X_2) = 2{,}2 + 2{,}2 = 4{,}4$. Les tirages sans remise ne sont pas indépendants, mais la linéarité n'en a pas besoin. Contrôle avec la loi de $S$ : $S = 2$ avec la probabilité $\\dfrac{3}{5} \\times \\dfrac{2}{4} = 0{,}3$, $S = 5$ avec la probabilité $0{,}6$ et $S = 8$ avec la probabilité $\\dfrac{2}{5} \\times \\dfrac{1}{4} = 0{,}1$, d'où $E(S) = 0{,}6 + 3 + 0{,}8 = 4{,}4$.",
+        "erreurFrequente": "Croire que la linéarité de l'espérance exige des tirages indépendants : seule la variance d'une somme le demande."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-018",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-esperance"],
+    "capacites": ["bo-m-sommes-05", "bo-m-sommes-06", "bo-m-sommes-01", "bo-m-bernoulli-02"],
+    "titre": "Les chapeaux rendus au hasard",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 112,
+    "preambule": "Quatre personnes déposent leur chapeau au vestiaire. À la sortie, l'employé rend les quatre chapeaux au hasard, un par personne : les $4! = 24$ façons de les répartir sont équiprobables. On note $X$ le nombre de personnes qui récupèrent leur propre chapeau. Pour $i$ de $1$ à $4$, on note $X_i$ la variable qui vaut $1$ si la personne numéro $i$ récupère son chapeau, et $0$ sinon.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $P(X_1 = 1)$. Donner une fraction irréductible.",
+        "reponse": { "type": "numerique", "valeur": "1/4", "tolerance": 0.001 },
+        "indices": [
+          "Compte les répartitions où la personne $1$ reçoit son chapeau : il reste à répartir les trois autres chapeaux entre les trois autres personnes.",
+          "Il y a $3! = 6$ telles répartitions, parmi les $24$ répartitions équiprobables.",
+          "En situation d'équiprobabilité, une probabilité est le nombre de cas favorables divisé par le nombre total de cas : simplifie la fraction obtenue."
+        ],
+        "revoir": "l-denombrement-020",
+        "solution": "Les répartitions où la personne $1$ récupère son chapeau correspondent aux façons de répartir les $3$ autres chapeaux entre les $3$ autres personnes : il y en a $3! = 6$. Les $24$ répartitions étant équiprobables, $P(X_1 = 1) = \\dfrac{6}{24} = \\dfrac{1}{4}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Exprimer $X$ à l'aide de $X_1$, $X_2$, $X_3$ et $X_4$, puis calculer $E(X)$.",
+        "reponse": { "type": "numerique", "valeur": 1, "tolerance": 0 },
+        "indices": [
+          "Chaque personne qui récupère son chapeau ajoute $1$ au compte : $X$ est une somme.",
+          "$X = X_1 + X_2 + X_3 + X_4$, et chaque $X_i$ est une variable de Bernoulli : $E(X_i) = P(X_i = 1)$.",
+          "Le raisonnement de la question 1 vaut pour chaque personne : additionne les quatre espérances par linéarité."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-007",
+        "solution": "Chaque personne qui récupère son chapeau ajoute $1$ au compte : $X = X_1 + X_2 + X_3 + X_4$. Comme à la question 1, chaque $X_i$ vaut $1$ avec la probabilité $\\dfrac{1}{4}$, donc $E(X_i) = \\dfrac{1}{4}$. Par linéarité, $E(X) = 4 \\times \\dfrac{1}{4} = 1$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Que vaut $P(X = 3)$ ?",
+        "reponse": { "type": "numerique", "valeur": 0, "tolerance": 0 },
+        "indices": [
+          "Imagine que trois personnes ont récupéré leur chapeau : quel chapeau reste-t-il pour la quatrième ?",
+          "Le seul chapeau restant est celui de la quatrième personne.",
+          "L'événement « exactement trois personnes récupèrent leur chapeau » peut-il donc se produire ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-010",
+        "solution": "Si trois personnes récupèrent leur chapeau, le seul chapeau restant est celui de la quatrième, qui le récupère aussi. L'événement $\\{X = 3\\}$ est impossible : $P(X = 3) = 0$. Les variables $X_i$ ne sont donc pas indépendantes, ce qui n'a pas empêché d'utiliser la linéarité à la question 2."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Avec $n$ personnes ($n \\geqslant 2$) et le même procédé, que vaut $E(X)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$1$", "$\\dfrac{1}{n}$", "$\\dfrac{n}{2}$", "$n$"],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$\\dfrac{1}{n}$ est l'espérance d'**une** variable $X_i$ ; il y a $n$ personnes, donc $n$ termes à additionner.",
+            "Ce serait le cas si chaque personne récupérait son chapeau avec la probabilité $\\dfrac{1}{2}$ ; ici, c'est $\\dfrac{1}{n}$.",
+            "$n$ supposerait que tout le monde récupère son chapeau à coup sûr."
+          ]
+        },
+        "indices": [
+          "Reprends le raisonnement avec $n$ personnes : $X = X_1 + \\dots + X_n$.",
+          "La personne $i$ récupère son chapeau dans $(n - 1)!$ répartitions sur $n!$, donc $E(X_i) = \\dfrac{(n - 1)!}{n!} = \\dfrac{1}{n}$.",
+          "Additionne les $n$ espérances, toutes égales à $\\dfrac{1}{n}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-008",
+        "solution": "Avec $n$ personnes, $X = X_1 + \\dots + X_n$ et $E(X_i) = \\dfrac{(n - 1)!}{n!} = \\dfrac{1}{n}$. Par linéarité, $E(X) = n \\times \\dfrac{1}{n} = 1$ : en moyenne, une seule personne récupère son chapeau, qu'il y ait $4$ ou $1\\,000$ personnes."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-019",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-esperance"],
+    "capacites": ["bo-m-sommes-05", "bo-m-sommes-06", "bo-m-sommes-01"],
+    "titre": "Un jeu de fête foraine équitable ?",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 113,
+    "preambule": "À une fête foraine, un joueur paie une mise de $m$ euros. Il tire une carte au hasard dans un jeu de $32$ cartes, qui contient $4$ as, $12$ figures (rois, dames, valets) et $16$ autres cartes. Un as rapporte $10$ euros, une figure $4$ euros, une autre carte rien. Il lance ensuite un dé équilibré à six faces : un $6$ rapporte $6$ euros, les autres faces rien. On note $X$ le gain de la carte, $Y$ celui du dé, et $G$ le gain algébrique du joueur, mise déduite.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $E(X)$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 2.75, "tolerance": 0.001 },
+        "indices": [
+          "$X$ prend trois valeurs, $10$, $4$ et $0$ : cherche la probabilité de chacune.",
+          "Un as sort avec la probabilité $\\dfrac{4}{32}$, une figure avec la probabilité $\\dfrac{12}{32}$.",
+          "$E(X) = 10 \\times \\dfrac{4}{32} + 4 \\times \\dfrac{12}{32} + 0 \\times \\dfrac{16}{32}$ : additionne les numérateurs sur le dénominateur commun $32$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "$E(X) = 10 \\times \\dfrac{4}{32} + 4 \\times \\dfrac{12}{32} + 0 \\times \\dfrac{16}{32} = \\dfrac{40 + 48}{32} = \\dfrac{88}{32} = 2{,}75$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Exprimer $G$ en fonction de $X$, $Y$ et $m$, puis $E(G)$ en fonction de $m$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Le joueur reçoit les gains de la carte et du dé, et il a payé la mise : $G$ s'écrit avec une somme et une soustraction.",
+          "$G = X + Y - m$. Calcule $E(Y)$ : $Y$ vaut $6$ avec la probabilité $\\dfrac{1}{6}$, et $0$ sinon.",
+          "Par linéarité, $E(G) = E(X) + E(Y) - m$ : remplace $E(X)$ et $E(Y)$ par leurs valeurs."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-007",
+        "solution": "Le joueur reçoit $X + Y$ euros et a payé $m$ euros : $G = X + Y - m$. De plus, $E(Y) = 6 \\times \\dfrac{1}{6} + 0 \\times \\dfrac{5}{6} = 1$. Par linéarité de l'espérance, $E(G) = E(X) + E(Y) - m = 2{,}75 + 1 - m = 3{,}75 - m$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Un jeu est équitable quand l'espérance du gain algébrique du joueur est nulle. Pour quelle mise $m$ ce jeu est-il équitable ?",
+        "reponse": { "type": "numerique", "valeur": 3.75, "tolerance": 0.001 },
+        "indices": [
+          "Un jeu équitable a un gain moyen nul : écris la condition avec l'expression de $E(G)$ de la question 2.",
+          "La condition $E(X) + E(Y) - m = 0$ s'écrit $m = E(X) + E(Y)$.",
+          "La mise équitable est donc le gain moyen que rendent la carte et le dé : additionne leurs espérances."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-005",
+        "solution": "Le jeu est équitable si et seulement si $E(G) = 0$, c'est-à-dire $3{,}75 - m = 0$, soit $m = 3{,}75$. Une mise de $3{,}75$ euros rend le jeu équitable."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Le forain veut gagner en moyenne $0{,}50$ euro par partie. Quelle mise doit-il fixer ?",
+        "reponse": { "type": "numerique", "valeur": 4.25, "tolerance": 0.001 },
+        "indices": [
+          "Le forain gagne ce que le joueur perd : traduis son objectif avec $E(G)$.",
+          "Le forain gagne en moyenne $0{,}50$ euro par partie lorsque $E(G) = -0{,}5$.",
+          "Résous l'équation $3{,}75 - m = -0{,}5$, d'inconnue $m$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-008",
+        "solution": "Le forain gagne ce que le joueur perd : il gagne en moyenne $0{,}50$ euro par partie si $E(G) = -0{,}5$, soit $3{,}75 - m = -0{,}5$, donc $m = 4{,}25$. Le forain doit fixer la mise à $4{,}25$ euros."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-020",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-variance"],
+    "capacites": ["bo-m-sommes-07", "bo-m-sommes-02"],
+    "titre": "Un score qui combine une urne et un dé",
+    "duree": 12,
+    "calculatrice": true,
+    "ordre": 211,
+    "preambule": "Un joueur tire une boule au hasard dans une urne de $4$ boules : trois portent le nombre $0$ et une le nombre $4$. Il lance ensuite un dé équilibré à quatre faces, numérotées de $1$ à $4$. On note $X$ le nombre lu sur la boule et $Y$ le numéro du dé ; on admet que $E(Y) = 2{,}5$ et $V(Y) = 1{,}25$. Le score du joueur est $Z = 3X - Y$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $V(X)$.",
+        "reponse": { "type": "numerique", "valeur": 3, "tolerance": 0 },
+        "indices": [
+          "Commence par $E(X)$ : $X$ vaut $4$ avec la probabilité $\\dfrac{1}{4}$, et $0$ sinon.",
+          "$E(X) = 4 \\times \\dfrac{1}{4} = 1$. Applique ensuite la définition de la variance avec les écarts à $1$.",
+          "$V(X) = (4 - 1)^2 \\times \\dfrac{1}{4} + (0 - 1)^2 \\times \\dfrac{3}{4}$ : calcule chaque terme, puis additionne."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "$E(X) = 4 \\times \\dfrac{1}{4} + 0 \\times \\dfrac{3}{4} = 1$. Donc $V(X) = (4 - 1)^2 \\times \\dfrac{1}{4} + (0 - 1)^2 \\times \\dfrac{3}{4} = \\dfrac{9}{4} + \\dfrac{3}{4} = 3$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $E(Z)$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.5, "tolerance": 0.001 },
+        "indices": [
+          "$Z = 3X - Y$ : utilise la linéarité de l'espérance.",
+          "$E(Z) = 3E(X) - E(Y)$.",
+          "Remplace : $E(X) = 1$ d'après la question 1, et $E(Y) = 2{,}5$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-005",
+        "solution": "Par linéarité, $E(Z) = 3E(X) - E(Y) = 3 \\times 1 - 2{,}5 = 0{,}5$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Justifier que $V(Z) = 28{,}25$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour additionner des variances, il faut des variables liées à des épreuves indépendantes : de quelles épreuves dépendent $3X$ et $-Y$ ?",
+          "$3X$ ne dépend que du tirage de la boule et $-Y$ que du lancer du dé : $V(Z) = V(3X) + V(-Y)$.",
+          "Chaque coefficient sort au carré : $V(3X) = 3^2\\,V(X)$ et $V(-Y) = (-1)^2\\,V(Y)$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-017",
+        "solution": "On écrit $Z = 3X + (-Y)$. $3X$ ne dépend que du tirage de la boule et $-Y$ que du lancer du dé : ces deux épreuves sont indépendantes, donc $V(Z) = V(3X) + V(-Y)$. Or $V(3X) = 3^2 \\times V(X) = 9 \\times 3 = 27$ et $V(-Y) = (-1)^2 \\times V(Y) = 1{,}25$. Donc $V(Z) = 27 + 1{,}25 = 28{,}25$.",
+        "erreurFrequente": "Écrire $V(Z) = 3V(X) - V(Y)$ : les coefficients sortent au carré, et la variance de $-Y$ s'ajoute."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "En déduire l'écart type de $Z$, arrondi au centième.",
+        "reponse": { "type": "numerique", "valeur": 5.32, "tolerance": 0.005 },
+        "indices": [
+          "L'écart type est la racine carrée de la variance.",
+          "Calcule $\\sqrt{28{,}25}$ à la calculatrice.",
+          "Pour arrondir au centième, regarde le troisième chiffre après la virgule."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-018",
+        "solution": "$\\sigma(Z) = \\sqrt{V(Z)} = \\sqrt{28{,}25} \\approx 5{,}32$. En moyenne, le score vaut $0{,}5$ point, avec une dispersion d'environ $5$ points autour de cette moyenne."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-021",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-variance"],
+    "capacites": ["bo-m-sommes-07", "bo-m-sommes-02", "bo-m-bernoulli-05"],
+    "titre": "Avec ou sans remise : la variance change",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 212,
+    "preambule": "Une urne contient $2$ boules rouges et $3$ boules noires. On tire successivement deux boules au hasard. Chaque boule rouge rapporte $5$ points et chaque boule noire fait perdre $2$ points. On note $X_1$ et $X_2$ les points de la première et de la deuxième boule, et $S = X_1 + X_2$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $E(X_1)$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.8, "tolerance": 0.001 },
+        "indices": [
+          "$X_1$ vaut $5$ si la première boule est rouge, $-2$ si elle est noire : donne les deux probabilités.",
+          "$P(X_1 = 5) = \\dfrac{2}{5} = 0{,}4$ et $P(X_1 = -2) = 0{,}6$.",
+          "Calcule $5 \\times 0{,}4 + (-2) \\times 0{,}6$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "$E(X_1) = 5 \\times 0{,}4 + (-2) \\times 0{,}6 = 2 - 1{,}2 = 0{,}8$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $V(X_1)$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 11.76, "tolerance": 0.001 },
+        "indices": [
+          "Applique la définition de la variance avec les écarts à l'espérance trouvée à la question 1.",
+          "Les écarts valent $5 - 0{,}8 = 4{,}2$ et $-2 - 0{,}8 = -2{,}8$.",
+          "Calcule $(4{,}2)^2 \\times 0{,}4 + (-2{,}8)^2 \\times 0{,}6$ : chaque carré, puis chaque produit, puis la somme."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "$V(X_1) = (5 - 0{,}8)^2 \\times 0{,}4 + (-2 - 0{,}8)^2 \\times 0{,}6 = 17{,}64 \\times 0{,}4 + 7{,}84 \\times 0{,}6 = 7{,}056 + 4{,}704 = 11{,}76$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Les deux tirages se font **avec remise**. Calculer $V(S)$.",
+        "reponse": { "type": "numerique", "valeur": 23.52, "tolerance": 0.001 },
+        "indices": [
+          "Avec remise, les deux tirages sont des épreuves indépendantes, et $X_2$ a la même loi que $X_1$.",
+          "$X_1$ ne dépend que du premier tirage et $X_2$ que du second : $V(S) = V(X_1) + V(X_2)$.",
+          "$V(X_2) = V(X_1)$ : double le résultat de la question 2."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-017",
+        "solution": "Avec remise, les deux tirages sont indépendants et identiques : $X_2$ a la même loi que $X_1$, et $X_1$ et $X_2$ sont indépendantes. Donc $V(S) = V(X_1) + V(X_2) = 2 \\times 11{,}76 = 23{,}52$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Les deux tirages se font maintenant **sans remise**. Donner la loi de $S$, puis calculer $V(S)$. L'additivité de la variance s'applique-t-elle ?",
+        "reponse": { "type": "numerique", "valeur": 17.64, "tolerance": 0.001 },
+        "indices": [
+          "Sans remise, construis l'arbre des deux tirages : $S$ vaut $10$ (deux rouges), $3$ (une rouge et une noire) ou $-4$ (deux noires).",
+          "$P(S = 10) = \\dfrac{2}{5} \\times \\dfrac{1}{4} = 0{,}1$ et $P(S = -4) = \\dfrac{3}{5} \\times \\dfrac{2}{4} = 0{,}3$ ; la valeur $3$ a la probabilité restante.",
+          "Par linéarité, $E(S) = E(X_1) + E(X_2)$, même sans remise : vérifie avec la loi que $E(S) = 1{,}6$, puis calcule les écarts à $1{,}6$.",
+          "Calcule $(10 - 1{,}6)^2 \\times 0{,}1 + (3 - 1{,}6)^2 \\times 0{,}6 + (-4 - 1{,}6)^2 \\times 0{,}3$, puis compare avec la question 3."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-017",
+        "solution": "Sans remise : $P(S = 10) = \\dfrac{2}{5} \\times \\dfrac{1}{4} = 0{,}1$ ; $P(S = -4) = \\dfrac{3}{5} \\times \\dfrac{2}{4} = 0{,}3$ ; $P(S = 3) = \\dfrac{2}{5} \\times \\dfrac{3}{4} + \\dfrac{3}{5} \\times \\dfrac{2}{4} = 0{,}6$. Alors $E(S) = 10 \\times 0{,}1 + 3 \\times 0{,}6 - 4 \\times 0{,}3 = 1{,}6$, comme avec remise : la linéarité ne demande pas l'indépendance. Mais $V(S) = 8{,}4^2 \\times 0{,}1 + 1{,}4^2 \\times 0{,}6 + 5{,}6^2 \\times 0{,}3 = 7{,}056 + 1{,}176 + 9{,}408 = 17{,}64$. C'est différent de $V(X_1) + V(X_2) = 23{,}52$ : sans remise, les deux tirages ne sont pas indépendants, et l'additivité de la variance ne s'applique pas.",
+        "erreurFrequente": "Additionner les variances sans vérifier que les tirages sont indépendants : sans remise, la formule $V(X_1 + X_2) = V(X_1) + V(X_2)$ ne s'applique pas."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-022",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-binomiale"],
+    "capacites": ["bo-m-sommes-03", "bo-m-bernoulli-06"],
+    "titre": "Le coût des ampoules défectueuses",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 311,
+    "preambule": "Une usine produit des ampoules, dont $3\\,\\%$ sont défectueuses. On prélève au hasard $200$ ampoules ; la production est assez grande pour assimiler ce prélèvement à $200$ tirages avec remise. On note $X$ le nombre d'ampoules défectueuses du prélèvement.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelle est la loi de $X$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\mathcal{B}(200\\,;\\,0{,}03)$",
+            "$\\mathcal{B}(200\\,;\\,0{,}97)$",
+            "$\\mathcal{B}(0{,}03\\,;\\,200)$",
+            "$\\mathcal{B}(3\\,;\\,200)$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$0{,}97$ est la probabilité qu'une ampoule soit **bonne** ; $X$ compte les ampoules défectueuses.",
+            "Le premier paramètre est le nombre d'épreuves $n$, le second la probabilité $p$ du succès.",
+            "$p$ s'écrit en décimal, $3\\,\\% = 0{,}03$ ; et le nombre d'épreuves $200$ vient en premier."
+          ]
+        },
+        "indices": [
+          "Le succès est « l'ampoule est défectueuse » : combien y a-t-il d'épreuves, et quelle est la probabilité du succès ?",
+          "Il y a $200$ épreuves de Bernoulli identiques et indépendantes, de paramètre $3\\,\\% = 0{,}03$.",
+          "Dans $\\mathcal{B}(n\\,;\\,p)$, $n$ est le nombre d'épreuves et $p$ la probabilité d'un succès."
+        ],
+        "revoir": "l-loi-binomiale-039",
+        "solution": "Chaque ampoule prélevée est une épreuve de Bernoulli de succès « l'ampoule est défectueuse », de probabilité $0{,}03$. Les $200$ épreuves sont identiques et indépendantes, et $X$ compte les succès : $X$ suit la loi $\\mathcal{B}(200\\,;\\,0{,}03)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $E(X)$ et interpréter le résultat.",
+        "reponse": { "type": "numerique", "valeur": 6, "tolerance": 0 },
+        "indices": [
+          "Pour une loi binomiale, $E(X) = np$.",
+          "Calcule $200 \\times 0{,}03$.",
+          "Interprète : c'est une moyenne sur un grand nombre de prélèvements de $200$ ampoules, pas le résultat d'un prélèvement donné."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-026",
+        "solution": "$E(X) = 200 \\times 0{,}03 = 6$. Sur un grand nombre de prélèvements de $200$ ampoules, on trouve en moyenne environ $6$ ampoules défectueuses par prélèvement."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $\\sigma(X)$, arrondi au centième.",
+        "reponse": { "type": "numerique", "valeur": 2.41, "tolerance": 0.005 },
+        "indices": [
+          "Commence par la variance : $V(X) = np(1 - p)$.",
+          "$V(X) = 200 \\times 0{,}03 \\times 0{,}97 = 6 \\times 0{,}97$.",
+          "Calcule ce produit, puis sa racine carrée à la calculatrice."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$V(X) = 200 \\times 0{,}03 \\times 0{,}97 = 5{,}82$, donc $\\sigma(X) = \\sqrt{5{,}82} \\approx 2{,}41$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Remplacer une ampoule défectueuse coûte $5$ euros, et le contrôle coûte en plus $20$ euros. On note $C = 5X + 20$ le coût total, en euros. Calculer $E(C)$.",
+        "reponse": { "type": "numerique", "valeur": 50, "tolerance": 0 },
+        "indices": [
+          "$C = 5X + 20$ : utilise $E(aX + b) = aE(X) + b$.",
+          "$E(C) = 5E(X) + 20$.",
+          "Remplace $E(X)$ par la valeur trouvée à la question 2."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-005",
+        "solution": "Par linéarité, $E(C) = 5E(X) + 20 = 5 \\times 6 + 20 = 50$. Le coût moyen est de $50$ euros par prélèvement."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Calculer l'écart type de $C$, arrondi au centième.",
+        "reponse": { "type": "numerique", "valeur": 12.06, "tolerance": 0.005 },
+        "indices": [
+          "La constante $20$ ne change pas la dispersion ; le coefficient $5$, lui, la change.",
+          "$V(C) = 5^2 \\times V(X)$, ou bien $\\sigma(C) = \\lvert 5 \\rvert \\times \\sigma(X)$.",
+          "Calcule $25 \\times 5{,}82$, puis prends la racine carrée : n'arrondis pas $\\sigma(X)$ avant de multiplier."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-014",
+        "solution": "$V(C) = 5^2 \\times V(X) = 25 \\times 5{,}82 = 145{,}5$, donc $\\sigma(C) = \\sqrt{145{,}5} \\approx 12{,}06$. On a aussi $\\sigma(C) = 5\\,\\sigma(X)$ : la constante $20$ ne change pas l'écart type.",
+        "erreurFrequente": "Multiplier l'arrondi $2{,}41$ par $5$ donne $12{,}05$ : on calcule avec la valeur exacte $\\sqrt{5{,}82}$, et l'on n'arrondit qu'à la fin."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-023",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-binomiale"],
+    "capacites": ["bo-m-sommes-08", "bo-m-sommes-03", "bo-m-bernoulli-03"],
+    "titre": "Démontrer les formules de la loi binomiale",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 312,
+    "preambule": "On répète $n$ fois, de façon indépendante, une épreuve de Bernoulli dont le succès a la probabilité $p$. On note $X$ le nombre de succès et, pour $i$ de $1$ à $n$, $X_i$ la variable qui vaut $1$ si la $i$-ième épreuve est un succès, et $0$ sinon.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que $X = X_1 + X_2 + \\dots + X_n$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Que vaut $X_i$ pour une épreuve réussie ? pour une épreuve ratée ?",
+          "Additionner les $X_i$ revient à ajouter $1$ pour chaque succès et $0$ pour chaque échec.",
+          "Teste avec $n = 3$ sur l'issue (succès, échec, succès) : que valent $X$ et $X_1 + X_2 + X_3$ ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-028",
+        "solution": "Chaque $X_i$ vaut $1$ si la $i$-ième épreuve est un succès et $0$ sinon. La somme $X_1 + \\dots + X_n$ ajoute donc $1$ pour chaque succès et $0$ pour chaque échec : elle compte les succès. Ainsi $X = X_1 + X_2 + \\dots + X_n$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout $i$, $E(X_i) = p$ et $V(X_i) = p(1 - p)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$X_i$ suit une loi de Bernoulli : elle vaut $1$ avec la probabilité $p$ et $0$ avec la probabilité $1 - p$.",
+          "$E(X_i) = 1 \\times p + 0 \\times (1 - p)$. Pour la variance, les écarts à $p$ valent $1 - p$ et $-p$.",
+          "$V(X_i) = (1 - p)^2\\,p + p^2\\,(1 - p)$ : mets $p(1 - p)$ en facteur."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-028",
+        "solution": "$E(X_i) = 1 \\times p + 0 \\times (1 - p) = p$. Puis $V(X_i) = (1 - p)^2 \\times p + (0 - p)^2 \\times (1 - p) = p(1 - p)\\big[(1 - p) + p\\big] = p(1 - p)$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire $E(X)$ et $V(X)$, en nommant les propriétés utilisées et en vérifiant leurs hypothèses.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Pour l'espérance d'une somme, une propriété s'applique sans condition ; pour la variance d'une somme, il faut une hypothèse.",
+          "Linéarité : $E(X) = E(X_1) + \\dots + E(X_n)$. Pour la variance, chaque $X_i$ ne dépend que de la $i$-ième épreuve, et les épreuves sont indépendantes.",
+          "Additionne $n$ fois $p$, puis $n$ fois $p(1 - p)$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-028",
+        "solution": "Par linéarité de l'espérance, $E(X) = E(X_1) + \\dots + E(X_n) = np$. Chaque $X_i$ ne dépend que de la $i$-ième épreuve, et les épreuves sont indépendantes : par additivité de la variance, $V(X) = V(X_1) + \\dots + V(X_n) = np(1 - p)$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Un archer tire $8$ flèches ; chacune atteint la cible avec la probabilité $0{,}75$, indépendamment des autres. Calculer l'écart type du nombre de flèches dans la cible, arrondi au centième.",
+        "reponse": { "type": "numerique", "valeur": 1.22, "tolerance": 0.005 },
+        "indices": [
+          "Le nombre de flèches dans la cible suit la loi $\\mathcal{B}(8\\,;\\,0{,}75)$ : applique la formule de la question 3.",
+          "La variance vaut $8 \\times 0{,}75 \\times 0{,}25$.",
+          "Calcule ce produit, puis sa racine carrée à la calculatrice."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "Le nombre de flèches dans la cible suit la loi $\\mathcal{B}(8\\,;\\,0{,}75)$, de variance $8 \\times 0{,}75 \\times 0{,}25 = 1{,}5$. Son écart type vaut $\\sqrt{1{,}5} \\approx 1{,}22$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-024",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-binomiale"],
+    "capacites": ["bo-m-sommes-03", "bo-m-bernoulli-06"],
+    "titre": "Combien de visiteurs pour cinquante acheteurs ?",
+    "duree": 12,
+    "calculatrice": true,
+    "ordre": 313,
+    "preambule": "Un site de vente en ligne reçoit $n$ visiteurs dans la journée. Chacun achète avec la probabilité $0{,}04$, indépendamment des autres. On note $X$ le nombre d'acheteurs : $X$ suit la loi $\\mathcal{B}(n\\,;\\,0{,}04)$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Quelles sont l'espérance et la variance de $X$ en fonction de $n$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$E(X) = 0{,}04n$ et $V(X) = 0{,}038\\,4n$",
+            "$E(X) = 0{,}04n$ et $V(X) = 0{,}04n$",
+            "$E(X) = 0{,}04n$ et $V(X) = 0{,}001\\,6n^2$",
+            "$E(X) = 0{,}96n$ et $V(X) = 0{,}038\\,4n$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "Il manque le facteur $1 - p = 0{,}96$ : $V(X) = np(1 - p)$.",
+            "$0{,}001\\,6n^2 = (0{,}04n)^2$ est le carré de l'espérance, pas la variance.",
+            "$0{,}96n$ est le nombre moyen de visiteurs qui **n'achètent pas**."
+          ]
+        },
+        "indices": [
+          "Applique $E(X) = np$ et $V(X) = np(1 - p)$ avec $p = 0{,}04$.",
+          "$1 - p = 0{,}96$ : calcule le produit $0{,}04 \\times 0{,}96$.",
+          "Ce produit est le coefficient de $n$ dans la variance."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$E(X) = np = 0{,}04n$ et $V(X) = np(1 - p) = 0{,}04 \\times 0{,}96 \\times n = 0{,}038\\,4n$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Déterminer le plus petit nombre $n$ de visiteurs pour lequel le nombre moyen d'acheteurs atteint $50$.",
+        "reponse": { "type": "numerique", "valeur": 1250, "tolerance": 0 },
+        "indices": [
+          "Traduis « le nombre moyen d'acheteurs atteint $50$ » par une inéquation d'inconnue $n$.",
+          "$E(X) \\geqslant 50$ s'écrit $0{,}04n \\geqslant 50$.",
+          "Divise par $0{,}04 > 0$, ce qui revient à multiplier par $25$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-026",
+        "solution": "$E(X) \\geqslant 50 \\iff 0{,}04n \\geqslant 50 \\iff n \\geqslant \\dfrac{50}{0{,}04} = 1\\,250$. Il faut au moins $1\\,250$ visiteurs."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pour $n = 1\\,250$, calculer $\\sigma(X)$, arrondi au centième.",
+        "reponse": { "type": "numerique", "valeur": 6.93, "tolerance": 0.005 },
+        "indices": [
+          "Utilise $V(X) = 0{,}038\\,4n$, trouvée à la question 1.",
+          "Calcule le produit $0{,}038\\,4 \\times 1\\,250$.",
+          "Prends la racine carrée du résultat à la calculatrice, puis arrondis."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$V(X) = 0{,}038\\,4 \\times 1\\,250 = 48$, donc $\\sigma(X) = \\sqrt{48} \\approx 6{,}93$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Si le nombre de visiteurs passe de $1\\,250$ à $2\\,500$, l'écart type de $X$ est :",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["multiplié par $2$", "multiplié par $\\sqrt{2}$", "inchangé", "multiplié par $4$"],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "Ce sont l'espérance et la variance qui doublent ; l'écart type est la racine carrée de la variance.",
+            null,
+            "La variance $0{,}038\\,4n$ dépend de $n$ : la dispersion du nombre d'acheteurs augmente.",
+            "Doubler $n$ multiplie la variance par $2$, pas par $4$."
+          ]
+        },
+        "indices": [
+          "Compare d'abord les variances : $V(X)$ est proportionnelle à $n$.",
+          "Doubler $n$ double la variance, et $\\sigma(X) = \\sqrt{V(X)}$.",
+          "Pour un réel $V \\geqslant 0$, $\\sqrt{2V} = \\sqrt{2} \\times \\sqrt{V}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$V(X) = 0{,}038\\,4n$ double quand $n$ double, donc $\\sigma(X)$ est multiplié par $\\sqrt{2}$ : il passe de $\\sqrt{48} \\approx 6{,}93$ à $\\sqrt{96} \\approx 9{,}80$. L'espérance double, mais la dispersion augmente moins vite."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-025",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-echantillon"],
+    "capacites": ["bo-m-concentration-06", "bo-m-sommes-04"],
+    "titre": "Une marche aléatoire qui penche",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 411,
+    "preambule": "Une marche aléatoire part de la position $0$. À chaque pas, elle avance de $+1$ avec la probabilité $0{,}6$, et de $-1$ avec la probabilité $0{,}4$, indépendamment des autres pas. Le programme ci-dessous la simule ; la fonction random renvoie un réel pris au hasard dans $[0\\,;\\,1[$.",
+    "code": {
+      "langage": "python",
+      "source": "from random import random\n\ndef pas(p):\n    if random() < p:     # vrai avec la probabilité p\n        return 1\n    return -1\n\ndef position_finale(n, p):\n    x = 0\n    for i in range(n):\n        x = x + pas(p)\n    return x\n\nfinales = [position_finale(100, 0.6) for j in range(1000)]\nprint(sum(finales) / len(finales))"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que renvoie l'appel position_finale(100, 0.6) ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "La position de la marche après $100$ pas",
+            "La liste des $100$ positions successives",
+            "Le nombre de pas faits vers la droite",
+            "La probabilité d'aller vers la droite"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "La fonction ne range pas les positions dans une liste : elle ne renvoie que la valeur finale de x.",
+            "x augmente de $1$ à chaque pas vers la droite, mais **diminue** de $1$ à chaque pas vers la gauche.",
+            "La probabilité $0{,}6$ est un paramètre de la fonction, pas son résultat."
+          ]
+        },
+        "indices": [
+          "Suis la variable x : sa valeur de départ, puis ce que lui fait chaque tour de boucle.",
+          "x part de $0$ et reçoit $+1$ ou $-1$ à chaque tour ; la boucle fait $100$ tours.",
+          "La fonction renvoie la valeur de x une fois la boucle terminée."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-039",
+        "solution": "x part de $0$ et, à chacun des $100$ tours de boucle, reçoit un pas : $+1$ avec la probabilité $0{,}6$, $-1$ sinon. La fonction renvoie la position de la marche après $100$ pas."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On note $X$ la valeur d'un pas, $+1$ ou $-1$. Calculer $E(X)$.",
+        "reponse": { "type": "numerique", "valeur": 0.2, "tolerance": 0.001 },
+        "indices": [
+          "$X$ vaut $1$ avec la probabilité $0{,}6$ et $-1$ avec la probabilité $0{,}4$.",
+          "$E(X) = 1 \\times 0{,}6 + (-1) \\times 0{,}4$.",
+          "Contrôle le signe : la marche va plus souvent à droite, son espérance doit être positive."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "$E(X) = 1 \\times 0{,}6 + (-1) \\times 0{,}4 = 0{,}2$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Calculer $V(X)$.",
+        "reponse": { "type": "numerique", "valeur": 0.96, "tolerance": 0.001 },
+        "indices": [
+          "Applique la définition : les écarts à l'espérance de la question 2, au carré, pondérés par les probabilités.",
+          "Les écarts valent $1 - 0{,}2 = 0{,}8$ et $-1 - 0{,}2 = -1{,}2$.",
+          "Calcule $0{,}8^2 \\times 0{,}6 + (-1{,}2)^2 \\times 0{,}4 = 0{,}64 \\times 0{,}6 + 1{,}44 \\times 0{,}4$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "$V(X) = (1 - 0{,}2)^2 \\times 0{,}6 + (-1 - 0{,}2)^2 \\times 0{,}4 = 0{,}64 \\times 0{,}6 + 1{,}44 \\times 0{,}4 = 0{,}384 + 0{,}576 = 0{,}96$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On note $S_{100}$ la position après $100$ pas. Calculer $E(S_{100})$.",
+        "reponse": { "type": "numerique", "valeur": 20, "tolerance": 0 },
+        "indices": [
+          "$S_{100}$ est la somme des $100$ pas, qui forment un échantillon de taille $100$ de la loi de $X$.",
+          "$E(S_n) = n\\mu$, avec $\\mu = E(X)$.",
+          "Multiplie l'espérance d'un pas par $100$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-035",
+        "solution": "Les $100$ pas forment un échantillon de taille $100$ de la loi de $X$, de somme $S_{100}$. Donc $E(S_{100}) = 100 \\times 0{,}2 = 20$ : en moyenne, la marche finit $20$ pas à droite de son départ."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Calculer $\\sigma(S_{100})$, arrondi au centième. Une exécution du programme affiche $19{,}926$ : est-ce cohérent ?",
+        "reponse": { "type": "numerique", "valeur": 9.8, "tolerance": 0.005 },
+        "indices": [
+          "$V(S_n) = nV$, où $V$ est la variance d'un pas.",
+          "$V(S_{100}) = 100 \\times 0{,}96$ : prends sa racine carrée à la calculatrice.",
+          "Le programme affiche la moyenne de $1\\,000$ positions finales simulées : compare-la à $E(S_{100})$, pas à l'écart type."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-035",
+        "solution": "$V(S_{100}) = 100 \\times 0{,}96 = 96$, donc $\\sigma(S_{100}) = \\sqrt{96} \\approx 9{,}80$. Le programme affiche la moyenne de $1\\,000$ positions finales simulées : $19{,}926$ est proche de $E(S_{100}) = 20$, c'est cohérent."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-026",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-echantillon"],
+    "capacites": ["bo-m-concentration-07", "bo-m-sommes-04", "bo-m-listes-01"],
+    "titre": "Simuler mille échantillons d'une roue de loterie",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 412,
+    "preambule": "Une roue de loterie a trois secteurs de même taille, marqués $0$, $3$ et $6$ points. Le nombre de points d'un tour a pour espérance $\\mu = 3$ et pour variance $6$ ; son écart type est $\\sigma = \\sqrt{6}$. Le programme ci-dessous simule $N = 1\\,000$ échantillons de taille $n = 25$, c'est-à-dire $1\\,000$ séries de $25$ tours, et range leurs moyennes dans la liste moyennes. La fonction randint(0, 2) renvoie au hasard l'un des entiers $0$, $1$ ou $2$.",
+    "code": {
+      "langage": "python",
+      "source": "from random import randint\nfrom math import sqrt\n\ndef moyenne(liste):\n    return sum(liste) / len(liste)\n\ndef ecart_type(liste):\n    m = moyenne(liste)\n    return sqrt(moyenne([(x - m)**2 for x in liste]))\n\ndef moyenne_echantillon(n):\n    # moyenne de n tours : 0, 3 ou 6 points, chacun avec la probabilité 1/3\n    return moyenne([3 * randint(0, 2) for i in range(n)])\n\ndef proportion(liste, mu, e):\n    # proportion des valeurs x de la liste telles que |x - mu| <= e\n    compte = 0\n    for x in liste:\n        if abs(x - mu) <= e:\n            compte = compte + 1\n    return compte / len(liste)\n\nN = 1000\nn = 25\nmu = 3\nsigma = sqrt(6)\nmoyennes = [moyenne_echantillon(n) for j in range(N)]\ns = ecart_type(moyennes)\nprint(s, sigma / sqrt(n))\nprint(proportion(moyennes, mu, 2 * s), proportion(moyennes, mu, 2 * sigma / sqrt(n)))"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que contient la liste moyennes ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$1\\,000$ valeurs simulées de la moyenne $M_{25}$ de $25$ tours",
+            "$25$ valeurs simulées de la moyenne de $1\\,000$ tours",
+            "Les $25\\,000$ résultats des tours",
+            "$1\\,000$ fois l'espérance $\\mu$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "La liste est construite en appelant $N = 1\\,000$ fois moyenne_echantillon(n), avec $n = 25$ tours à chaque appel.",
+            "Chaque appel de moyenne_echantillon ne garde que la moyenne de ses $25$ tours, pas les tours eux-mêmes.",
+            "L'espérance $\\mu = 3$ est un nombre fixé ; les moyennes simulées varient d'un échantillon à l'autre."
+          ]
+        },
+        "indices": [
+          "Regarde ce que renvoie moyenne_echantillon(n) : une liste, ou un seul nombre ?",
+          "moyenne_echantillon(25) simule $25$ tours et renvoie leur moyenne : une valeur de $M_{25}$.",
+          "La liste moyennes est construite en appelant cette fonction $N$ fois."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-041",
+        "solution": "moyenne_echantillon(25) simule $25$ tours et renvoie leur moyenne, une valeur de $M_{25}$. La liste moyennes contient $N = 1\\,000$ valeurs simulées de $M_{25}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer l'écart type théorique $\\dfrac{\\sigma}{\\sqrt{n}}$ de $M_{25}$, arrondi au centième.",
+        "reponse": { "type": "numerique", "valeur": 0.49, "tolerance": 0.005 },
+        "indices": [
+          "$\\sigma(M_n) = \\dfrac{\\sigma}{\\sqrt{n}}$, avec $\\sigma = \\sqrt{6}$ et $n = 25$.",
+          "$\\sqrt{25} = 5$ : il reste à calculer $\\dfrac{\\sqrt{6}}{5}$.",
+          "À la calculatrice, $\\sqrt{6} \\approx 2{,}449$ : divise par $5$, puis arrondis."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-035",
+        "solution": "$\\sigma(M_{25}) = \\dfrac{\\sigma}{\\sqrt{25}} = \\dfrac{\\sqrt{6}}{5} \\approx 0{,}49$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Une exécution affiche $s \\approx 0{,}488$ pour l'écart type des $1\\,000$ moyennes simulées. Vrai ou faux : ce résultat contredit le calcul de la question 2.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "$s$ est calculé sur des moyennes tirées au hasard : il fluctue d'une exécution à l'autre autour de $\\dfrac{\\sigma}{\\sqrt{n}} \\approx 0{,}49$. La valeur $0{,}488$ en est très proche : la simulation confirme le calcul."
+        },
+        "indices": [
+          "$s$ est calculé à partir de résultats tirés au hasard : sera-t-il le même à chaque exécution ?",
+          "Compare $0{,}488$ à la valeur trouvée à la question 2 : l'écart est-il grand ?",
+          "Une simulation donne une valeur proche de la valeur théorique, rarement égale."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-041",
+        "solution": "Faux. L'écart type $s$ des moyennes simulées fluctue d'une exécution à l'autre autour de la valeur théorique $\\dfrac{\\sigma}{\\sqrt{n}} \\approx 0{,}49$ ; $0{,}488$ en est très proche, ce qui confirme le calcul."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Par combien faut-il multiplier la taille $n$ des échantillons pour diviser par $2$ l'écart type de leur moyenne ?",
+        "reponse": { "type": "numerique", "valeur": 4, "tolerance": 0 },
+        "indices": [
+          "L'écart type de $M_n$ vaut $\\dfrac{\\sigma}{\\sqrt{n}}$ : il est divisé par $\\sqrt{n}$, pas par $n$.",
+          "Remplacer $n$ par $kn$ divise cet écart type par $\\sqrt{k}$.",
+          "Cherche le réel $k$ tel que $\\sqrt{k}$ vaille $2$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-035",
+        "solution": "$\\dfrac{\\sigma}{\\sqrt{kn}} = \\dfrac{1}{\\sqrt{k}} \\times \\dfrac{\\sigma}{\\sqrt{n}}$. Pour diviser l'écart type par $2$, il faut $\\sqrt{k} = 2$, soit $k = 4$ : des échantillons de $100$ tours au lieu de $25$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "La dernière ligne affiche la proportion des moyennes simulées $m$ telles que $\\lvert m - 3 \\rvert \\leqslant 2s$, puis telles que $\\lvert m - 3 \\rvert \\leqslant \\dfrac{2\\sigma}{\\sqrt{n}}$ ; une exécution affiche $0{,}969$ deux fois. Donner la borne inférieure de l'intervalle des réels $m$ tels que $\\lvert m - 3 \\rvert \\leqslant \\dfrac{2\\sigma}{\\sqrt{n}}$, arrondie au centième.",
+        "reponse": { "type": "numerique", "valeur": 2.02, "tolerance": 0.005 },
+        "indices": [
+          "$\\dfrac{2\\sigma}{\\sqrt{n}}$ vaut le double de l'écart type théorique de la question 2.",
+          "Avec la valeur exacte, $\\dfrac{2\\sqrt{6}}{5} \\approx 0{,}98$.",
+          "$\\lvert m - 3 \\rvert \\leqslant \\delta$ équivaut à $3 - \\delta \\leqslant m \\leqslant 3 + \\delta$ : retranche ce nombre de $3$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-041",
+        "solution": "$\\dfrac{2\\sigma}{\\sqrt{n}} = \\dfrac{2\\sqrt{6}}{5} \\approx 0{,}98$, et $\\lvert m - 3 \\rvert \\leqslant \\dfrac{2\\sqrt{6}}{5}$ équivaut à $3 - \\dfrac{2\\sqrt{6}}{5} \\leqslant m \\leqslant 3 + \\dfrac{2\\sqrt{6}}{5}$. La borne inférieure vaut environ $2{,}02$, la borne supérieure environ $3{,}98$. Environ $97\\,\\%$ des moyennes simulées tombent dans cet intervalle, alors qu'un seul tour vaut $0$ ou $6$ deux fois sur trois : faire la moyenne de $25$ tours réduit fortement la dispersion."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-027",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-bienayme-tchebychev", "n-sommes-variables-aleatoires-variance"],
+    "capacites": ["bo-m-concentration-01", "bo-m-sommes-02", "bo-m-sommes-07"],
+    "titre": "Le temps d'attente à deux guichets",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 511,
+    "preambule": "Dans une administration, un usager attend d'abord à l'accueil, puis au guichet. On note $T_1$ et $T_2$ ces deux temps d'attente, en minutes, et $T = T_1 + T_2$ le temps d'attente total. On admet que $E(T_1) = 30$, $V(T_1) = 100$, $E(T_2) = 50$, $V(T_2) = 125$, et que $T_1$ et $T_2$ sont indépendantes. Leurs lois ne sont pas connues.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $E(T)$.",
+        "reponse": { "type": "numerique", "valeur": 80, "tolerance": 0 },
+        "indices": [
+          "$T = T_1 + T_2$ : quelle propriété donne l'espérance d'une somme ?",
+          "Par linéarité, $E(T) = E(T_1) + E(T_2)$.",
+          "Additionne les deux espérances données."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-005",
+        "solution": "Par linéarité de l'espérance, $E(T) = E(T_1) + E(T_2) = 30 + 50 = 80$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $V(T)$.",
+        "reponse": { "type": "numerique", "valeur": 225, "tolerance": 0 },
+        "indices": [
+          "Une hypothèse de l'énoncé permet d'additionner les variances : laquelle ?",
+          "$T_1$ et $T_2$ sont indépendantes, donc $V(T) = V(T_1) + V(T_2)$.",
+          "Additionne les deux variances données."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-014",
+        "solution": "$T_1$ et $T_2$ sont indépendantes, donc $V(T) = V(T_1) + V(T_2) = 100 + 125 = 225$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "À l'aide de l'inégalité de Bienaymé-Tchebychev, montrer que la probabilité que le temps d'attente total soit strictement compris entre $50$ et $110$ minutes est au moins $0{,}75$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Repère le centre et la demi-largeur de l'intervalle $]50\\,;\\,110[$ : le centre est-il l'espérance de $T$ ?",
+          "$50 = 80 - 30$ et $110 = 80 + 30$ : l'événement s'écrit $\\lvert T - 80 \\rvert < 30$.",
+          "Applique l'inégalité avec $\\delta = 30$ à l'événement contraire, $\\lvert T - 80 \\rvert \\geqslant 30$.",
+          "$\\dfrac{225}{30^2} = \\dfrac{225}{900}$ : simplifie, puis retranche de $1$ en renversant l'inégalité."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-051",
+        "solution": "$50 = 80 - 30$ et $110 = 80 + 30$, donc $50 < T < 110$ équivaut à $\\lvert T - 80 \\rvert < 30$. D'après l'inégalité de Bienaymé-Tchebychev avec $\\delta = 30$ : $P(\\lvert T - 80 \\rvert \\geqslant 30) \\leqslant \\dfrac{225}{30^2} = \\dfrac{225}{900} = 0{,}25$. Par passage à l'événement contraire, $P(50 < T < 110) \\geqslant 1 - 0{,}25 = 0{,}75$. Au moins trois usagers sur quatre attendent au total entre $50$ et $110$ minutes."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On cherche un intervalle $]80 - \\delta\\,;\\,80 + \\delta[$ dans lequel, d'après l'inégalité de Bienaymé-Tchebychev, $T$ se trouve avec une probabilité d'au moins $0{,}9$. Déterminer le plus petit entier $\\delta$ qui convient.",
+        "reponse": { "type": "numerique", "valeur": 48, "tolerance": 0 },
+        "indices": [
+          "Écris le minorant donné par l'inégalité : $P(\\lvert T - 80 \\rvert < \\delta) \\geqslant 1 - \\dfrac{225}{\\delta^2}$.",
+          "Il suffit que $1 - \\dfrac{225}{\\delta^2} \\geqslant 0{,}9$, c'est-à-dire $\\dfrac{225}{\\delta^2} \\leqslant 0{,}1$.",
+          "Comme $\\delta^2 > 0$, cela équivaut à $\\delta^2 \\geqslant 2\\,250$ ; comme $\\delta > 0$, à $\\delta \\geqslant \\sqrt{2\\,250}$.",
+          "Calcule $\\sqrt{2\\,250}$ à la calculatrice et prends le premier entier qui le dépasse ; contrôle avec cet entier et le précédent."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-051",
+        "solution": "D'après l'inégalité, $P(\\lvert T - 80 \\rvert < \\delta) \\geqslant 1 - \\dfrac{225}{\\delta^2}$. Il suffit que $1 - \\dfrac{225}{\\delta^2} \\geqslant 0{,}9$, soit $\\dfrac{225}{\\delta^2} \\leqslant 0{,}1$, soit $\\delta^2 \\geqslant 2\\,250$ car $\\delta^2 > 0$, soit $\\delta \\geqslant \\sqrt{2\\,250} \\approx 47{,}43$ car $\\delta > 0$. Contrôle : pour $\\delta = 47$, $1 - \\dfrac{225}{2\\,209} \\approx 0{,}898 < 0{,}9$ ; pour $\\delta = 48$, $1 - \\dfrac{225}{2\\,304} \\approx 0{,}902$. Le plus petit entier est $\\delta = 48$ : avec une probabilité d'au moins $0{,}9$, l'attente totale est strictement comprise entre $32$ et $128$ minutes."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-028",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-bienayme-tchebychev", "n-sommes-variables-aleatoires-binomiale"],
+    "capacites": ["bo-m-concentration-01", "bo-m-sommes-03", "bo-m-bernoulli-06", "bo-m-bernoulli-08"],
+    "titre": "Majorant de Bienaymé-Tchebychev et probabilité exacte",
+    "duree": 15,
+    "calculatrice": true,
+    "ordre": 512,
+    "preambule": "Dans un magasin, chaque client accepte la carte de fidélité avec la probabilité $0{,}2$, indépendamment des autres clients. Un jour, $150$ clients passent en caisse ; on note $X$ le nombre de clients qui acceptent la carte.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que $X$ suit une loi binomiale, puis calculer $V(X)$.",
+        "reponse": { "type": "numerique", "valeur": 24, "tolerance": 0 },
+        "indices": [
+          "$X$ compte les succès « le client accepte la carte » : combien d'épreuves, de quelle probabilité, et sont-elles indépendantes ?",
+          "$X$ suit la loi $\\mathcal{B}(150\\,;\\,0{,}2)$, d'espérance $150 \\times 0{,}2 = 30$.",
+          "Calcule $V(X) = np(1 - p) = 150 \\times 0{,}2 \\times 0{,}8$."
+        ],
+        "revoir": "l-loi-binomiale-039",
+        "solution": "Chaque client est une épreuve de Bernoulli de succès « accepter la carte », de probabilité $0{,}2$ ; les $150$ épreuves sont identiques et indépendantes, et $X$ compte les succès : $X$ suit la loi $\\mathcal{B}(150\\,;\\,0{,}2)$. Donc $E(X) = 150 \\times 0{,}2 = 30$ et $V(X) = 150 \\times 0{,}2 \\times 0{,}8 = 24$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "À l'aide de l'inégalité de Bienaymé-Tchebychev, majorer la probabilité qu'au plus $20$ clients ou au moins $40$ clients acceptent la carte. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.24, "tolerance": 0.001 },
+        "indices": [
+          "Écris l'événement « $X \\leqslant 20$ ou $X \\geqslant 40$ » comme un écart à l'espérance $30$.",
+          "$20 = 30 - 10$ et $40 = 30 + 10$ : l'événement s'écrit $\\lvert X - 30 \\rvert \\geqslant 10$.",
+          "Applique l'inégalité avec $\\delta = 10$ : calcule $\\dfrac{V(X)}{10^2}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-052",
+        "solution": "« $X \\leqslant 20$ ou $X \\geqslant 40$ » s'écrit $\\lvert X - 30 \\rvert \\geqslant 10$. D'après l'inégalité de Bienaymé-Tchebychev, $P(\\lvert X - 30 \\rvert \\geqslant 10) \\leqslant \\dfrac{24}{10^2} = 0{,}24$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire un minorant de $P(21 \\leqslant X \\leqslant 39)$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.76, "tolerance": 0.001 },
+        "indices": [
+          "$X$ est un entier : quel est le contraire de « $X \\leqslant 20$ ou $X \\geqslant 40$ » ?",
+          "Le contraire est l'événement $\\{21 \\leqslant X \\leqslant 39\\}$.",
+          "$P(21 \\leqslant X \\leqslant 39) = 1 - P(\\lvert X - 30 \\rvert \\geqslant 10)$ : utilise la question 2, en renversant l'inégalité."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-052",
+        "solution": "$X$ est un entier, donc $\\{21 \\leqslant X \\leqslant 39\\}$ est le contraire de $\\{X \\leqslant 20 \\text{ ou } X \\geqslant 40\\}$. D'où $P(21 \\leqslant X \\leqslant 39) \\geqslant 1 - 0{,}24 = 0{,}76$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "À la calculatrice, calculer $P(21 \\leqslant X \\leqslant 39)$, arrondie au millième, et la comparer au minorant.",
+        "reponse": { "type": "numerique", "valeur": 0.948, "tolerance": 0.001 },
+        "indices": [
+          "Utilise la loi $\\mathcal{B}(150\\,;\\,0{,}2)$ et sa fonction de répartition $k \\mapsto P(X \\leqslant k)$ à la calculatrice.",
+          "$P(21 \\leqslant X \\leqslant 39) = P(X \\leqslant 39) - P(X \\leqslant 20)$.",
+          "Calcule les deux probabilités, fais la différence, arrondis au millième, puis compare au minorant $0{,}76$."
+        ],
+        "revoir": "l-loi-binomiale-050",
+        "solution": "$P(21 \\leqslant X \\leqslant 39) = P(X \\leqslant 39) - P(X \\leqslant 20) \\approx 0{,}970\\,7 - 0{,}022\\,4 \\approx 0{,}948$. C'est bien plus que le minorant $0{,}76$ : l'inégalité de Bienaymé-Tchebychev est juste mais prudente, car elle n'utilise que la variance de $X$, pas sa loi."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-029",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-bienayme-tchebychev", "n-sommes-variables-aleatoires-binomiale"],
+    "capacites": ["bo-m-concentration-05", "bo-m-concentration-01", "bo-m-sommes-03", "bo-m-bernoulli-08"],
+    "titre": "Un programme pour comparer l'exact et le majorant",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 513,
+    "preambule": "$S_n$ suit la loi binomiale $\\mathcal{B}(n\\,;\\,p)$. Le programme ci-dessous calcule la probabilité de l'événement $\\big(\\lvert S_n - pn \\rvert > \\sqrt{n}\\big)$ ; la fonction p_egal(n, p, k) renvoie $P(S_n = k)$.",
+    "code": {
+      "langage": "python",
+      "source": "from math import sqrt\n\ndef coef_binomial(n, k):\n    # (n-k+1)(n-k+2)...n / (1*2*...*k), facteur par facteur\n    c = 1\n    for i in range(1, k + 1):\n        c = c * (n - k + i) / i\n    return c\n\ndef p_egal(n, p, k):\n    # P(S = k) pour S de loi binomiale B(n ; p)\n    return coef_binomial(n, k) * p**k * (1 - p)**(n - k)\n\ndef proba_ecart(n, p):\n    total = 0\n    for k in range(n + 1):\n        if abs(k - n * p) > sqrt(n):\n            total = total + p_egal(n, p, k)\n    return total\n\nprint(round(proba_ecart(25, 0.2), 4))    # affiche 0.0056\nprint(round(proba_ecart(100, 0.2), 4))   # affiche 0.0084"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Pour quels entiers $k$ la fonction proba_ecart ajoute-t-elle $P(S_n = k)$ au total ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Ceux qui vérifient $\\lvert k - pn \\rvert > \\sqrt{n}$",
+            "Ceux qui vérifient $\\lvert k - pn \\rvert \\leqslant \\sqrt{n}$",
+            "Tous les entiers de $0$ à $n$",
+            "Ceux qui vérifient $k > \\sqrt{n}$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "C'est la condition contraire : ces entiers sont **proches** de $pn$.",
+            "La boucle parcourt bien tous les entiers de $0$ à $n$, mais le test if n'ajoute que certains termes.",
+            "Le test compare l'écart $\\lvert k - pn \\rvert$ à $\\sqrt{n}$, pas l'entier $k$ lui-même."
+          ]
+        },
+        "indices": [
+          "Repère la boucle for et la condition du test if.",
+          "abs(k - n * p) est la valeur absolue de $k - pn$, et sqrt(n) est $\\sqrt{n}$.",
+          "Le terme p_egal(n, p, k) n'est ajouté que si le test est vrai."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-054",
+        "solution": "La boucle parcourt $k = 0, 1, \\dots, n$ et n'ajoute $P(S_n = k)$ que si abs(k - n * p) > sqrt(n), c'est-à-dire si $\\lvert k - pn \\rvert > \\sqrt{n}$. Le total est donc $P\\big(\\lvert S_n - pn \\rvert > \\sqrt{n}\\big)$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Pour $n = 25$ et $p = 0{,}2$, quel est le plus petit entier $k$ dont la probabilité est ajoutée au total ?",
+        "reponse": { "type": "numerique", "valeur": 11, "tolerance": 0 },
+        "indices": [
+          "Calcule $pn$ et $\\sqrt{n}$ pour $n = 25$ et $p = 0{,}2$.",
+          "$pn = 5$ et $\\sqrt{25} = 5$ : la condition s'écrit $\\lvert k - 5 \\rvert > 5$.",
+          "$k - 5 < -5$ est impossible pour $k \\geqslant 0$ : il reste $k - 5 > 5$, avec $k$ entier."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-054",
+        "solution": "$pn = 25 \\times 0{,}2 = 5$ et $\\sqrt{25} = 5$. La condition $\\lvert k - 5 \\rvert > 5$ équivaut à $k < 0$ ou $k > 10$ ; comme $k \\geqslant 0$, ce sont les entiers $k \\geqslant 11$. Le programme calcule donc $P(S_{25} \\geqslant 11)$, et le plus petit entier ajouté est $11$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Pour $p = 0{,}2$, quel majorant l'inégalité de Bienaymé-Tchebychev donne-t-elle pour $P\\big(\\lvert S_n - pn \\rvert \\geqslant \\sqrt{n}\\big)$ ? Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.16, "tolerance": 0.001 },
+        "indices": [
+          "$S_n$ suit la loi $\\mathcal{B}(n\\,;\\,p)$ : son espérance est $pn$ et sa variance $np(1 - p)$.",
+          "Avec $\\delta = \\sqrt{n}$, on a $\\delta^2 = n$ : le majorant vaut $\\dfrac{np(1 - p)}{n}$.",
+          "Simplifie par $n$, puis remplace $p$ par $0{,}2$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-054",
+        "solution": "Avec $\\delta = \\sqrt{n}$ : $P\\big(\\lvert S_n - pn \\rvert \\geqslant \\sqrt{n}\\big) \\leqslant \\dfrac{np(1 - p)}{(\\sqrt{n})^2} = p(1 - p) = 0{,}2 \\times 0{,}8 = 0{,}16$, quel que soit $n$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Le programme affiche $0{,}005\\,6$ pour $n = 25$ et $0{,}008\\,4$ pour $n = 100$. Vrai ou faux : comme ces valeurs sont bien plus petites que $0{,}16$, l'inégalité de Bienaymé-Tchebychev est fausse ici.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": false,
+          "justification": "Une majoration n'est pas fausse parce que le majorant est grand : $0{,}005\\,6 \\leqslant 0{,}16$ et $0{,}008\\,4 \\leqslant 0{,}16$. L'événement $\\lvert S_n - pn \\rvert > \\sqrt{n}$ est inclus dans $\\lvert S_n - pn \\rvert \\geqslant \\sqrt{n}$, donc sa probabilité est au plus $0{,}16$. L'inégalité est juste, mais grossière : valable pour toutes les lois, elle n'utilise que la variance."
+        },
+        "indices": [
+          "Une inégalité « $P \\leqslant 0{,}16$ » n'est fausse que si la probabilité dépasse $0{,}16$.",
+          "L'événement $\\lvert S_n - pn \\rvert > \\sqrt{n}$ est inclus dans $\\lvert S_n - pn \\rvert \\geqslant \\sqrt{n}$ : sa probabilité est au plus celle de ce dernier.",
+          "Compare les deux valeurs affichées à $0{,}16$ : sont-elles plus petites ou plus grandes ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-054",
+        "solution": "Faux. Les deux valeurs affichées sont inférieures à $0{,}16$ : l'inégalité est respectée. Elle donne seulement un majorant prudent, environ $20$ à $30$ fois plus grand que la probabilité exacte, car elle vaut pour toutes les lois de variance donnée."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-030",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-concentration"],
+    "capacites": ["bo-m-concentration-04", "bo-m-concentration-02"],
+    "titre": "Combien de pommes peser ?",
+    "duree": 12,
+    "calculatrice": false,
+    "ordre": 611,
+    "preambule": "La masse d'une pomme d'un verger, en grammes, est une variable aléatoire d'espérance $150$ et de variance $400$. On pèse $n$ pommes prises au hasard, ce qui donne un échantillon de taille $n$ de cette loi, et l'on note $M_n$ la masse moyenne de ces $n$ pommes.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "L'événement $\\{145 < M_n < 155\\}$ s'écrit :",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$\\lvert M_n - 150 \\rvert < 5$",
+            "$\\lvert M_n - 150 \\rvert < 10$",
+            "$\\lvert M_n - 150 \\rvert \\geqslant 5$",
+            "$\\lvert M_n - 145 \\rvert < 10$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$10 = 155 - 145$ est la largeur de l'intervalle ; la précision $\\delta$ est sa demi-largeur.",
+            "C'est l'événement contraire : la moyenne est loin de $150$.",
+            "On centre l'écart sur l'espérance $150$, pas sur une borne."
+          ]
+        },
+        "indices": [
+          "Repère le centre et la demi-largeur de l'intervalle $]145\\,;\\,155[$.",
+          "Le centre est $150$, l'espérance de la masse ; la demi-largeur vaut $155 - 150$.",
+          "Les bornes sont exclues : l'inégalité sur l'écart est stricte."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-063",
+        "solution": "$]145\\,;\\,155[$ est centré en $150$, de demi-largeur $5$, bornes exclues : $145 < M_n < 155$ équivaut à $\\lvert M_n - 150 \\rvert < 5$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que $P(145 < M_n < 155) \\geqslant 1 - \\dfrac{16}{n}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Applique l'inégalité de concentration avec $V = 400$ et $\\delta = 5$, puis passe à l'événement contraire.",
+          "$P(\\lvert M_n - 150 \\rvert \\geqslant 5) \\leqslant \\dfrac{400}{n \\times 5^2}$.",
+          "$5^2 = 25$ et $\\dfrac{400}{25} = 16$ ; soustrais de $1$ en renversant l'inégalité."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-060",
+        "solution": "D'après l'inégalité de concentration avec $\\delta = 5$ : $P(\\lvert M_n - 150 \\rvert \\geqslant 5) \\leqslant \\dfrac{400}{n \\times 5^2} = \\dfrac{400}{25n} = \\dfrac{16}{n}$. Par passage à l'événement contraire, $P(145 < M_n < 155) = P(\\lvert M_n - 150 \\rvert < 5) \\geqslant 1 - \\dfrac{16}{n}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Déterminer le plus petit entier $n$ pour lequel l'inégalité de concentration permet d'affirmer que $P(145 < M_n < 155) \\geqslant 0{,}95$.",
+        "reponse": { "type": "numerique", "valeur": 320, "tolerance": 0 },
+        "indices": [
+          "D'après la question 2, il suffit que $1 - \\dfrac{16}{n} \\geqslant 0{,}95$.",
+          "Cette inéquation équivaut à $\\dfrac{16}{n} \\leqslant 0{,}05$.",
+          "Comme $n > 0$, multiplie par $n$, puis divise par $0{,}05$ : $n \\geqslant \\dfrac{16}{0{,}05}$.",
+          "Diviser par $0{,}05$ revient à multiplier par $20$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-064",
+        "solution": "Il suffit que $1 - \\dfrac{16}{n} \\geqslant 0{,}95$, soit $\\dfrac{16}{n} \\leqslant 0{,}05$, soit $16 \\leqslant 0{,}05n$ car $n > 0$, soit $n \\geqslant \\dfrac{16}{0{,}05} = 320$. Contrôle : pour $n = 320$, $1 - \\dfrac{16}{320} = 0{,}95$ ; pour $n = 319$, $1 - \\dfrac{16}{319} \\approx 0{,}949\\,8 < 0{,}95$. Le plus petit entier est $n = 320$ pommes."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On veut maintenant une précision deux fois meilleure : $P(147{,}5 < M_n < 152{,}5) \\geqslant 0{,}95$. Déterminer le plus petit entier $n$ que permet l'inégalité de concentration.",
+        "reponse": { "type": "numerique", "valeur": 1280, "tolerance": 0 },
+        "indices": [
+          "La précision devient $\\delta = 2{,}5$ : refais le calcul de la question 2 avec cette valeur.",
+          "$\\delta^2 = 6{,}25$ et $\\dfrac{400}{6{,}25} = 64$ : le minorant devient $1 - \\dfrac{64}{n}$.",
+          "Résous $\\dfrac{64}{n} \\leqslant 0{,}05$ comme à la question 3.",
+          "Compare au résultat de la question 3 : diviser $\\delta$ par $2$ divise $\\delta^2$ par $4$, donc multiplie par $4$ la taille nécessaire."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-063",
+        "solution": "Avec $\\delta = 2{,}5$ : $P(\\lvert M_n - 150 \\rvert < 2{,}5) \\geqslant 1 - \\dfrac{400}{6{,}25n} = 1 - \\dfrac{64}{n}$. Il suffit que $\\dfrac{64}{n} \\leqslant 0{,}05$, soit $n \\geqslant \\dfrac{64}{0{,}05} = 1\\,280$. Une précision deux fois meilleure demande quatre fois plus de pommes : $n = 1\\,280$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-031",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": ["n-sommes-variables-aleatoires-concentration"],
+    "capacites": ["bo-m-concentration-02", "bo-m-concentration-03", "bo-m-concentration-04", "bo-m-suites-03"],
+    "titre": "La fréquence de germination",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 612,
+    "preambule": "Une graine germe avec la probabilité $0{,}2$, indépendamment des autres. On sème $n$ graines et l'on note $F_n$ la fréquence des graines qui germent. Pour $i$ de $1$ à $n$, $X_i$ vaut $1$ si la $i$-ième graine germe, et $0$ sinon ; ainsi $F_n = \\dfrac{X_1 + \\dots + X_n}{n}$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer la variance $V$ de la loi commune des $X_i$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.16, "tolerance": 0.001 },
+        "indices": [
+          "Les $X_i$ suivent une loi de Bernoulli : quel est son paramètre ?",
+          "Une variable de Bernoulli de paramètre $p$ a pour variance $p(1 - p)$.",
+          "Ici $p = 0{,}2$ : calcule $0{,}2 \\times 0{,}8$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "Les $X_i$ suivent la loi de Bernoulli de paramètre $0{,}2$, d'espérance $\\mu = 0{,}2$ et de variance $V = 0{,}2 \\times 0{,}8 = 0{,}16$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que $P(\\lvert F_n - 0{,}2 \\rvert \\geqslant 0{,}02) \\leqslant \\dfrac{400}{n}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$F_n$ est la moyenne $M_n$ d'un échantillon de taille $n$ de la loi de Bernoulli de paramètre $0{,}2$ : applique l'inégalité de concentration.",
+          "Avec $\\delta = 0{,}02$ : $P(\\lvert F_n - 0{,}2 \\rvert \\geqslant 0{,}02) \\leqslant \\dfrac{0{,}16}{n \\times 0{,}02^2}$.",
+          "$0{,}02^2 = 0{,}000\\,4$ : calcule $\\dfrac{0{,}16}{0{,}000\\,4}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-067",
+        "solution": "Les graines germent indépendamment avec la même probabilité : $(X_1, \\dots, X_n)$ est un échantillon de taille $n$ de la loi de Bernoulli de paramètre $0{,}2$, d'espérance $0{,}2$ et de variance $0{,}16$, et $F_n$ est sa moyenne. D'après l'inégalité de concentration avec $\\delta = 0{,}02$ : $P(\\lvert F_n - 0{,}2 \\rvert \\geqslant 0{,}02) \\leqslant \\dfrac{0{,}16}{n \\times 0{,}000\\,4} = \\dfrac{400}{n}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Quelle est la limite de $P(\\lvert F_n - 0{,}2 \\rvert \\geqslant 0{,}02)$ quand $n$ tend vers $+\\infty$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": ["$0$", "$1$", "$0{,}02$", "On ne peut pas la déterminer."],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$1$ est la limite de la probabilité de l'événement **contraire**, $\\lvert F_n - 0{,}2 \\rvert < 0{,}02$.",
+            "$0{,}02$ est la précision choisie, pas une probabilité limite.",
+            "La probabilité est coincée entre $0$ et $\\dfrac{400}{n}$ : le théorème des gendarmes conclut."
+          ]
+        },
+        "indices": [
+          "Encadre la probabilité : elle est positive ou nulle, et majorée par $\\dfrac{400}{n}$ d'après la question 2.",
+          "Quelle est la limite de $\\dfrac{400}{n}$ quand $n$ tend vers $+\\infty$ ?",
+          "Applique le théorème des gendarmes : c'est la loi des grands nombres."
+        ],
+        "revoir": "l-limites-suites-031",
+        "solution": "Pour tout $n \\geqslant 1$, $0 \\leqslant P(\\lvert F_n - 0{,}2 \\rvert \\geqslant 0{,}02) \\leqslant \\dfrac{400}{n}$, et $\\lim\\limits_{n \\to +\\infty} \\dfrac{400}{n} = 0$. D'après le théorème des gendarmes, la probabilité tend vers $0$ : c'est la loi des grands nombres. Avec beaucoup de graines, il devient presque certain que la fréquence de germination soit à moins de $0{,}02$ de $0{,}2$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "À partir de combien de graines l'inégalité garantit-elle que $F_n$ est dans l'intervalle $]0{,}18\\,;\\,0{,}22[$ avec une probabilité d'au moins $0{,}95$ ?",
+        "reponse": { "type": "numerique", "valeur": 8000, "tolerance": 0 },
+        "indices": [
+          "$]0{,}18\\,;\\,0{,}22[$ correspond à $\\lvert F_n - 0{,}2 \\rvert < 0{,}02$ ; le risque accepté est $1 - 0{,}95 = 0{,}05$.",
+          "Il suffit que le majorant de la question 2 soit au plus $0{,}05$ : $\\dfrac{400}{n} \\leqslant 0{,}05$.",
+          "Comme $n > 0$, cela équivaut à $n \\geqslant \\dfrac{400}{0{,}05}$ ; diviser par $0{,}05$ revient à multiplier par $20$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-063",
+        "solution": "$F_n$ est dans $]0{,}18\\,;\\,0{,}22[$ si et seulement si $\\lvert F_n - 0{,}2 \\rvert < 0{,}02$, événement de probabilité au moins $1 - \\dfrac{400}{n}$. Il suffit que $1 - \\dfrac{400}{n} \\geqslant 0{,}95$, soit $\\dfrac{400}{n} \\leqslant 0{,}05$, soit $n \\geqslant \\dfrac{400}{0{,}05} = 8\\,000$. Dès $8\\,000$ graines, l'inégalité le garantit."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-032",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 3,
+    "notions": [
+      "n-sommes-variables-aleatoires-binomiale",
+      "n-sommes-variables-aleatoires-variance",
+      "n-sommes-variables-aleatoires-esperance"
+    ],
+    "capacites": [
+      "bo-m-sommes-03",
+      "bo-m-sommes-02",
+      "bo-m-sommes-07",
+      "bo-m-sommes-01",
+      "bo-m-sommes-05",
+      "bo-m-sommes-06",
+      "bo-m-bernoulli-06"
+    ],
+    "titre": "Trois jeux de pile ou face, même espérance",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 321,
+    "preambule": "On propose trois jeux avec une pièce équilibrée.\n\n- Jeu A : on lance la pièce $10$ fois et l'on marque $2$ points par « pile ».\n- Jeu B : on lance la pièce $20$ fois et l'on marque $1$ point par « pile ».\n- Jeu C : on lance la pièce $10$ fois ; chaque « pile » rapporte $3$ points et chaque « face » en fait perdre $1$.\n\nOn note $A$, $B$ et $C$ les scores obtenus à ces trois jeux. Pour les jeux A et C, on note $X$ le nombre de « pile » sur les $10$ lancers.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer $E(A)$ et $V(A)$. Saisir $V(A)$.",
+        "reponse": { "type": "numerique", "valeur": 10, "tolerance": 0 },
+        "indices": [
+          "$X$ suit la loi $\\mathcal{B}(10\\,;\\,0{,}5)$ et $A = 2X$.",
+          "$E(X) = 5$ et $V(X) = 2{,}5$.",
+          "$E(A) = 2E(X)$ et $V(A) = 2^2\\,V(X)$ : dans la variance, le coefficient sort au carré."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-026",
+        "solution": "$X$ suit la loi $\\mathcal{B}(10\\,;\\,0{,}5)$ : $E(X) = 10 \\times 0{,}5 = 5$ et $V(X) = 10 \\times 0{,}5 \\times 0{,}5 = 2{,}5$. Comme $A = 2X$, $E(A) = 2 \\times 5 = 10$ et $V(A) = 2^2 \\times 2{,}5 = 10$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer $E(B)$ et $V(B)$. Saisir $V(B)$.",
+        "reponse": { "type": "numerique", "valeur": 5, "tolerance": 0 },
+        "indices": [
+          "$B$ est le nombre de « pile » sur $20$ lancers : quelle est sa loi ?",
+          "$B$ suit la loi $\\mathcal{B}(20\\,;\\,0{,}5)$.",
+          "Applique $E(B) = np$ et $V(B) = np(1 - p)$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$B$ compte les « pile » de $20$ lancers indépendants : $B$ suit la loi $\\mathcal{B}(20\\,;\\,0{,}5)$. Donc $E(B) = 20 \\times 0{,}5 = 10$ et $V(B) = 20 \\times 0{,}5 \\times 0{,}5 = 5$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Exprimer $C$ en fonction de $X$, puis calculer $E(C)$ et $V(C)$. Saisir $V(C)$.",
+        "reponse": { "type": "numerique", "valeur": 40, "tolerance": 0 },
+        "indices": [
+          "Sur $10$ lancers, s'il y a $X$ « pile », combien y a-t-il de « face » ?",
+          "Il y a $10 - X$ « face », donc $C = 3X - (10 - X)$ : développe et réduis.",
+          "$C = 4X - 10$ : utilise $E(aX + b) = aE(X) + b$ et $V(aX + b) = a^2\\,V(X)$.",
+          "$V(C) = 4^2 \\times V(X)$, avec $V(X)$ trouvée à la question 1."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-026",
+        "solution": "Il y a $X$ « pile » et $10 - X$ « face », donc $C = 3X - (10 - X) = 4X - 10$. Par linéarité, $E(C) = 4 \\times 5 - 10 = 10$ ; et $V(C) = 4^2 \\times V(X) = 16 \\times 2{,}5 = 40$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Les trois jeux ont la même espérance. Lequel donne le score le moins dispersé autour de cette espérance ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "Le jeu A",
+            "Le jeu B",
+            "Le jeu C",
+            "Aucun : ayant la même espérance, ils sont aussi dispersés les uns que les autres"
+          ],
+          "bonne": 1,
+          "pourquoiFaux": [
+            "$V(A) = 10$ : doubler le score d'une série de $10$ lancers multiplie la variance par $4$.",
+            null,
+            "$V(C) = 40$ : c'est au contraire le jeu le plus dispersé, le plus risqué.",
+            "La même espérance ne donne pas la même dispersion : c'est la variance qui la mesure."
+          ]
+        },
+        "indices": [
+          "La dispersion autour de l'espérance se mesure par la variance, ou par l'écart type.",
+          "Compare les trois variances trouvées aux questions 1 à 3.",
+          "Le jeu le moins dispersé est celui qui a la plus petite variance."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-020",
+        "solution": "$V(B) = 5 < V(A) = 10 < V(C) = 40$. Le jeu B donne le score le moins dispersé : ses $20$ lancers différents se compensent en partie, alors que le jeu A compte deux fois chaque lancer, et que le jeu C le compte quatre fois."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Un jeu D consiste à lancer la pièce $n$ fois et à marquer $a$ points par « pile », avec $a > 0$. Déterminer $a$ et $n$ pour que ce jeu ait aussi pour espérance $10$, mais pour variance $2{,}5$. Saisir $n$.",
+        "reponse": { "type": "numerique", "valeur": 40, "tolerance": 0 },
+        "indices": [
+          "Le score du jeu D est $aY$, où $Y$ suit la loi $\\mathcal{B}(n\\,;\\,0{,}5)$ : exprime son espérance et sa variance en fonction de $a$ et de $n$.",
+          "$E(aY) = \\dfrac{an}{2}$ et $V(aY) = \\dfrac{a^2 n}{4}$ : il faut résoudre le système $\\dfrac{an}{2} = 10$ et $\\dfrac{a^2 n}{4} = 2{,}5$.",
+          "Remarque que $\\dfrac{a^2 n}{4} = \\dfrac{a}{2} \\times \\dfrac{an}{2}$ : la seconde équation devient $\\dfrac{a}{2} \\times 10 = 2{,}5$.",
+          "Tu en déduis $a$, puis $n$ grâce à $an = 20$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "Le score du jeu D est $aY$, avec $Y$ de loi $\\mathcal{B}(n\\,;\\,0{,}5)$ : $E(aY) = a \\times \\dfrac{n}{2}$ et $V(aY) = a^2 \\times \\dfrac{n}{4}$. On veut $\\dfrac{an}{2} = 10$ et $\\dfrac{a^2 n}{4} = 2{,}5$. Or $\\dfrac{a^2 n}{4} = \\dfrac{a}{2} \\times \\dfrac{an}{2} = 5a$, donc $5a = 2{,}5$ et $a = 0{,}5$. Alors $an = 20$ donne $n = 40$ : le jeu D consiste en $40$ lancers, avec un demi-point par « pile »."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-033",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 3,
+    "notions": [
+      "n-sommes-variables-aleatoires-bienayme-tchebychev",
+      "n-sommes-variables-aleatoires-binomiale"
+    ],
+    "capacites": [
+      "bo-m-concentration-01",
+      "bo-m-sommes-03",
+      "bo-m-bernoulli-06",
+      "bo-m-bernoulli-08",
+      "bo-m-bernoulli-11"
+    ],
+    "titre": "Surréservation : ce que garantit Bienaymé-Tchebychev",
+    "duree": 30,
+    "calculatrice": true,
+    "ordre": 521,
+    "preambule": "Un avion compte $190$ places. Chaque passager qui a acheté un billet se présente à l'embarquement avec la probabilité $0{,}9$, indépendamment des autres. La compagnie vend $n$ billets ; on note $X$ le nombre de passagers qui se présentent, et l'on admet que $X$ suit la loi $\\mathcal{B}(n\\,;\\,0{,}9)$. Il y a surréservation lorsque $X \\geqslant 191$.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Dans cette question, $n = 200$. Calculer $E(X)$ et $V(X)$. Saisir $V(X)$.",
+        "reponse": { "type": "numerique", "valeur": 18, "tolerance": 0 },
+        "indices": [
+          "Applique les formules de la loi binomiale avec $n = 200$ et $p = 0{,}9$.",
+          "$E(X) = 200 \\times 0{,}9$.",
+          "$V(X) = 200 \\times 0{,}9 \\times 0{,}1$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-025",
+        "solution": "$E(X) = 200 \\times 0{,}9 = 180$ et $V(X) = 200 \\times 0{,}9 \\times 0{,}1 = 18$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Toujours avec $n = 200$, justifier que l'événement $\\{X \\geqslant 191\\}$ est inclus dans $\\{\\lvert X - 180 \\rvert \\geqslant 11\\}$, puis majorer $P(X \\geqslant 191)$ à l'aide de l'inégalité de Bienaymé-Tchebychev. Donner le majorant arrondi au millième.",
+        "reponse": { "type": "numerique", "valeur": 0.149, "tolerance": 0.001 },
+        "indices": [
+          "Si $X \\geqslant 191$, que peut-on dire de $X - 180$ ?",
+          "$X \\geqslant 191$ entraîne $X - 180 \\geqslant 11$, donc $\\lvert X - 180 \\rvert \\geqslant 11$ : la probabilité de l'événement inclus est au plus celle de l'autre.",
+          "Applique l'inégalité avec $\\delta = 11$ : le majorant est $\\dfrac{V(X)}{11^2}$.",
+          "$11^2 = 121$ : calcule $\\dfrac{18}{121}$, puis arrondis au millième."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-054",
+        "solution": "Si $X \\geqslant 191$, alors $X - 180 \\geqslant 11$, donc $\\lvert X - 180 \\rvert \\geqslant 11$ : l'événement $\\{X \\geqslant 191\\}$ est inclus dans $\\{\\lvert X - 180 \\rvert \\geqslant 11\\}$, et $P(X \\geqslant 191) \\leqslant P(\\lvert X - 180 \\rvert \\geqslant 11)$. D'après l'inégalité de Bienaymé-Tchebychev, $P(\\lvert X - 180 \\rvert \\geqslant 11) \\leqslant \\dfrac{18}{11^2} = \\dfrac{18}{121} \\approx 0{,}149$. Donc $P(X \\geqslant 191) \\leqslant \\dfrac{18}{121} \\approx 0{,}149$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Avec $n = 200$, calculer $P(X \\geqslant 191)$ à la calculatrice, arrondie à $10^{-4}$, et la comparer au majorant.",
+        "reponse": { "type": "numerique", "valeur": 0.0035, "tolerance": 0.0001 },
+        "indices": [
+          "$P(X \\geqslant 191) = 1 - P(X \\leqslant 190)$.",
+          "Calcule $P(X \\leqslant 190)$ avec la fonction de répartition de la loi $\\mathcal{B}(200\\,;\\,0{,}9)$.",
+          "Retranche ce résultat de $1$, arrondis à $10^{-4}$, puis compare au majorant de la question 2."
+        ],
+        "revoir": "l-loi-binomiale-050",
+        "solution": "$P(X \\geqslant 191) = 1 - P(X \\leqslant 190) \\approx 1 - 0{,}996\\,5 = 0{,}003\\,5$. La probabilité exacte est plus de $40$ fois plus petite que le majorant $0{,}149$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On revient à un nombre $n$ quelconque de billets, avec $0{,}9n < 191$. Montrer que $P(X \\geqslant 191) \\leqslant \\dfrac{0{,}09n}{(191 - 0{,}9n)^2}$. À la calculatrice, déterminer le plus grand $n$ pour lequel ce majorant est inférieur ou égal à $0{,}05$.",
+        "reponse": { "type": "numerique", "valeur": 191, "tolerance": 0 },
+        "indices": [
+          "Reprends le raisonnement de la question 2 avec $E(X) = 0{,}9n$, $V(X) = 0{,}09n$ et $\\delta = 191 - 0{,}9n$, strictement positif.",
+          "$X \\geqslant 191$ entraîne $X - 0{,}9n \\geqslant 191 - 0{,}9n > 0$ : l'inégalité donne le majorant $\\dfrac{0{,}09n}{(191 - 0{,}9n)^2}$.",
+          "Quand $n$ augmente, le numérateur augmente et le dénominateur diminue : dresse une table de valeurs de $n \\mapsto \\dfrac{0{,}09n}{(191 - 0{,}9n)^2}$ autour de $n = 190$.",
+          "Repère le dernier entier pour lequel la valeur reste inférieure ou égale à $0{,}05$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-051",
+        "solution": "On a $E(X) = 0{,}9n$ et $V(X) = 0{,}09n$. Si $X \\geqslant 191$, alors $X - 0{,}9n \\geqslant 191 - 0{,}9n > 0$, donc $\\lvert X - 0{,}9n \\rvert \\geqslant 191 - 0{,}9n$. D'après l'inégalité de Bienaymé-Tchebychev avec $\\delta = 191 - 0{,}9n$ : $P(X \\geqslant 191) \\leqslant \\dfrac{0{,}09n}{(191 - 0{,}9n)^2}$. Ce majorant augmente avec $n$ ; à la calculatrice, il vaut environ $0{,}047$ pour $n = 191$ et environ $0{,}052$ pour $n = 192$. Le plus grand $n$ est $191$ : l'inégalité ne permet de vendre qu'un seul billet de plus que de places."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Avec la loi binomiale exacte, déterminer à la calculatrice le plus grand nombre $n$ de billets pour lequel $P(X \\geqslant 191) \\leqslant 0{,}05$. Commenter.",
+        "reponse": { "type": "numerique", "valeur": 204, "tolerance": 0 },
+        "indices": [
+          "Pour chaque $n$, $X$ suit la loi $\\mathcal{B}(n\\,;\\,0{,}9)$, et $P(X \\geqslant 191) = 1 - P(X \\leqslant 190)$.",
+          "Cette probabilité augmente avec $n$ : pour $n = 200$, elle vaut environ $0{,}003\\,5$. Calcule-la pour quelques valeurs de $n$ au-delà de $200$.",
+          "Cherche le dernier $n$ pour lequel elle reste inférieure ou égale à $0{,}05$, en contrôlant cet entier et le suivant.",
+          "Compare au résultat de la question 4 : combien de billets de plus la loi exacte permet-elle de vendre ?"
+        ],
+        "revoir": "l-loi-binomiale-056",
+        "solution": "Pour $n = 204$, $P(X \\geqslant 191) \\approx 0{,}047 \\leqslant 0{,}05$ ; pour $n = 205$, $P(X \\geqslant 191) \\approx 0{,}076 > 0{,}05$. Avec la loi exacte, la compagnie peut vendre jusqu'à $204$ billets, alors que l'inégalité de Bienaymé-Tchebychev n'en autorisait que $191$ : valable pour toutes les lois, elle est bien plus prudente que le calcul exact."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-034",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 3,
+    "notions": [
+      "n-sommes-variables-aleatoires-concentration",
+      "n-sommes-variables-aleatoires-echantillon"
+    ],
+    "capacites": [
+      "bo-m-concentration-02",
+      "bo-m-concentration-04",
+      "bo-m-concentration-08",
+      "bo-m-concentration-10",
+      "bo-m-sommes-04"
+    ],
+    "titre": "Estimer une proportion par un sondage",
+    "duree": 25,
+    "calculatrice": true,
+    "ordre": 621,
+    "preambule": "Dans une ville, une proportion inconnue $p$ des habitants est favorable à un projet. On interroge $n$ habitants pris au hasard ; la population est assez grande pour assimiler ce choix à $n$ tirages avec remise. Pour $i$ de $1$ à $n$, $X_i$ vaut $1$ si la $i$-ième personne interrogée est favorable au projet, et $0$ sinon. On note $F_n = \\dfrac{X_1 + \\dots + X_n}{n}$ la fréquence observée des personnes favorables.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Justifier que $E(F_n) = p$ et $V(F_n) = \\dfrac{p(1 - p)}{n}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "$(X_1, \\dots, X_n)$ est un échantillon de taille $n$ d'une loi de Bernoulli : de quel paramètre ?",
+          "La loi de Bernoulli de paramètre $p$ a pour espérance $p$ et pour variance $p(1 - p)$.",
+          "$F_n$ est la moyenne $M_n$ de l'échantillon : $E(M_n) = \\mu$ et $V(M_n) = \\dfrac{V}{n}$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-035",
+        "solution": "Les $n$ tirages sont indépendants et identiques : $(X_1, \\dots, X_n)$ est un échantillon de taille $n$ de la loi de Bernoulli de paramètre $p$, d'espérance $p$ et de variance $p(1 - p)$. $F_n$ est sa moyenne, donc $E(F_n) = p$ et $V(F_n) = \\dfrac{p(1 - p)}{n}$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Montrer que, pour tout réel $p$, $p(1 - p) \\leqslant \\dfrac{1}{4}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Calcule la différence $\\dfrac{1}{4} - p(1 - p)$ et cherche à montrer qu'elle est positive ou nulle.",
+          "$\\dfrac{1}{4} - p(1 - p) = p^2 - p + \\dfrac{1}{4}$ : reconnais une identité remarquable.",
+          "$p^2 - p + \\dfrac{1}{4} = \\left(p - \\dfrac{1}{2}\\right)^2$, et un carré est positif ou nul."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-070",
+        "solution": "Pour tout réel $p$, $\\dfrac{1}{4} - p(1 - p) = p^2 - p + \\dfrac{1}{4} = \\left(p - \\dfrac{1}{2}\\right)^2 \\geqslant 0$. Donc $p(1 - p) \\leqslant \\dfrac{1}{4}$, avec égalité pour $p = \\dfrac{1}{2}$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "En déduire que, pour tout réel $\\delta > 0$, $P(\\lvert F_n - p \\rvert \\geqslant \\delta) \\leqslant \\dfrac{1}{4n\\delta^2}$, quelle que soit la valeur de $p$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Applique l'inégalité de concentration à $F_n$, moyenne d'un échantillon de variance $p(1 - p)$.",
+          "$P(\\lvert F_n - p \\rvert \\geqslant \\delta) \\leqslant \\dfrac{p(1 - p)}{n\\delta^2}$.",
+          "Majore le numérateur grâce à la question 2 : comme $n\\delta^2 > 0$, le sens de l'inégalité est conservé."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-060",
+        "solution": "D'après l'inégalité de concentration, $P(\\lvert F_n - p \\rvert \\geqslant \\delta) \\leqslant \\dfrac{p(1 - p)}{n\\delta^2}$. Or $p(1 - p) \\leqslant \\dfrac{1}{4}$ et $n\\delta^2 > 0$, donc $\\dfrac{p(1 - p)}{n\\delta^2} \\leqslant \\dfrac{1}{4n\\delta^2}$. D'où $P(\\lvert F_n - p \\rvert \\geqslant \\delta) \\leqslant \\dfrac{1}{4n\\delta^2}$, sans connaître $p$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Le sondage interroge $n = 1\\,000$ personnes. Déterminer la plus petite précision $\\delta$ pour laquelle cette inégalité garantit $P(\\lvert F_n - p \\rvert < \\delta) \\geqslant 0{,}95$. Donner $\\delta$ arrondi au millième par excès.",
+        "reponse": { "type": "numerique", "valeur": 0.071, "tolerance": 0.0005 },
+        "indices": [
+          "Il suffit que le majorant $\\dfrac{1}{4n\\delta^2}$ soit au plus $1 - 0{,}95 = 0{,}05$.",
+          "Avec $n = 1\\,000$, la condition $\\dfrac{1}{4\\,000\\,\\delta^2} \\leqslant 0{,}05$ équivaut à $\\delta^2 \\geqslant \\dfrac{1}{200}$.",
+          "Comme $\\delta > 0$, cela équivaut à $\\delta \\geqslant \\sqrt{\\dfrac{1}{200}}$ : calcule cette racine à la calculatrice.",
+          "Arrondis par excès : prends le millième immédiatement au-dessus de la valeur trouvée."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-063",
+        "solution": "Il suffit que $\\dfrac{1}{4 \\times 1\\,000 \\times \\delta^2} \\leqslant 0{,}05$, soit $\\delta^2 \\geqslant \\dfrac{1}{4\\,000 \\times 0{,}05} = \\dfrac{1}{200}$, soit $\\delta \\geqslant \\sqrt{\\dfrac{1}{200}} \\approx 0{,}070\\,7$ car $\\delta > 0$. Arrondie au millième par excès, $\\delta = 0{,}071$ : avec une probabilité d'au moins $0{,}95$, la vraie proportion $p$ est à moins de $0{,}071$ de la fréquence observée, soit environ $7$ points de pourcentage."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Combien de personnes faut-il interroger pour que l'inégalité garantisse $P(\\lvert F_n - p \\rvert < 0{,}02) \\geqslant 0{,}95$ ?",
+        "reponse": { "type": "numerique", "valeur": 12500, "tolerance": 0 },
+        "indices": [
+          "Écris la condition $\\dfrac{1}{4n\\delta^2} \\leqslant 0{,}05$ avec $\\delta = 0{,}02$.",
+          "$\\delta^2 = 0{,}000\\,4$, donc $4\\delta^2 = 0{,}001\\,6$ : la condition s'écrit $\\dfrac{1}{0{,}001\\,6\\,n} \\leqslant 0{,}05$.",
+          "Comme $n > 0$, elle équivaut à $n \\geqslant \\dfrac{1}{0{,}001\\,6 \\times 0{,}05}$.",
+          "$0{,}001\\,6 \\times 0{,}05 = 0{,}000\\,08$ : calcule son inverse."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-064",
+        "solution": "Avec $\\delta = 0{,}02$, il suffit que $\\dfrac{1}{4n \\times 0{,}000\\,4} \\leqslant 0{,}05$, soit $\\dfrac{1}{0{,}001\\,6\\,n} \\leqslant 0{,}05$, soit $n \\geqslant \\dfrac{1}{0{,}001\\,6 \\times 0{,}05} = \\dfrac{1}{0{,}000\\,08} = 12\\,500$. Il faut interroger au moins $12\\,500$ personnes, bien plus que les $1\\,000$ de la question 4."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-035",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 3,
+    "notions": [
+      "n-sommes-variables-aleatoires-echantillon",
+      "n-sommes-variables-aleatoires-bienayme-tchebychev"
+    ],
+    "capacites": [
+      "bo-m-sommes-04",
+      "bo-m-concentration-06",
+      "bo-m-concentration-09",
+      "bo-m-concentration-01",
+      "bo-m-bernoulli-04"
+    ],
+    "titre": "Où finit une marche aléatoire ?",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 421,
+    "preambule": "Une marche aléatoire part de la position $0$ d'une droite graduée. À chaque pas, elle avance de $+1$ ou de $-1$, chacun avec la probabilité $\\dfrac{1}{2}$, indépendamment des autres pas. On note $S_n$ sa position après $n$ pas.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Que valent $E(S_n)$ et $V(S_n)$ ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$E(S_n) = 0$ et $V(S_n) = n$",
+            "$E(S_n) = 0$ et $V(S_n) = 0$",
+            "$E(S_n) = \\dfrac{n}{2}$ et $V(S_n) = \\dfrac{n}{4}$",
+            "$E(S_n) = 0$ et $V(S_n) = n^2$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$V(S_n) = 0$ voudrait dire que la position est toujours la même ; or elle varie d'une marche à l'autre.",
+            "$\\dfrac{n}{2}$ et $\\dfrac{n}{4}$ sont l'espérance et la variance du nombre de pas **vers la droite**, pas de la position.",
+            "Les variances de pas indépendants s'additionnent : $n$ pas de variance $1$ donnent $n$, pas $n^2$."
+          ]
+        },
+        "indices": [
+          "$S_n$ est la somme des $n$ pas, qui forment un échantillon de taille $n$ de la loi d'un pas.",
+          "Un pas a pour espérance $1 \\times \\dfrac{1}{2} + (-1) \\times \\dfrac{1}{2}$ et pour variance $1^2 \\times \\dfrac{1}{2} + (-1)^2 \\times \\dfrac{1}{2}$.",
+          "Applique $E(S_n) = n\\mu$ et $V(S_n) = nV$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-039",
+        "solution": "Un pas a pour espérance $\\mu = 1 \\times \\dfrac{1}{2} + (-1) \\times \\dfrac{1}{2} = 0$ et pour variance $V = 1^2 \\times \\dfrac{1}{2} + (-1)^2 \\times \\dfrac{1}{2} = 1$. $S_n$ est la somme d'un échantillon de taille $n$ de cette loi : $E(S_n) = n \\times 0 = 0$ et $V(S_n) = n \\times 1 = n$."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "À l'aide de l'inégalité de Bienaymé-Tchebychev, minorer la probabilité qu'après $100$ pas, la marche soit strictement entre les positions $-20$ et $20$. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.75, "tolerance": 0.001 },
+        "indices": [
+          "Écris l'événement $\\{-20 < S_{100} < 20\\}$ comme un écart à l'espérance $E(S_{100}) = 0$.",
+          "C'est $\\lvert S_{100} \\rvert < 20$ ; l'inégalité majore la probabilité du contraire, $\\lvert S_{100} \\rvert \\geqslant 20$, par $\\dfrac{V(S_{100})}{20^2}$.",
+          "$V(S_{100}) = 100$ et $20^2 = 400$ : calcule le majorant, puis passe au contraire."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-051",
+        "solution": "$E(S_{100}) = 0$ et $V(S_{100}) = 100$, et $-20 < S_{100} < 20$ équivaut à $\\lvert S_{100} - 0 \\rvert < 20$. D'après l'inégalité de Bienaymé-Tchebychev, $P(\\lvert S_{100} \\rvert \\geqslant 20) \\leqslant \\dfrac{100}{20^2} = 0{,}25$, donc $P(-20 < S_{100} < 20) \\geqslant 1 - 0{,}25 = 0{,}75$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Vrai ou faux ? Pour tout entier $n \\geqslant 1$, $P\\big(\\lvert S_n \\rvert \\geqslant 2\\sqrt{n}\\big) \\leqslant 0{,}25$.",
+        "reponse": {
+          "type": "vrai-faux",
+          "valeur": true,
+          "justification": "$V(S_n) = n$ ; avec $\\delta = 2\\sqrt{n}$, $\\delta^2 = 4n$ et $\\dfrac{V(S_n)}{\\delta^2} = \\dfrac{n}{4n} = 0{,}25$. Au moins trois fois sur quatre, la marche finit à moins de $2\\sqrt{n}$ de son départ : sa distance au départ grandit comme $\\sqrt{n}$, bien moins vite que le nombre de pas."
+        },
+        "indices": [
+          "Applique l'inégalité de Bienaymé-Tchebychev avec $\\delta = 2\\sqrt{n}$.",
+          "$\\delta^2 = (2\\sqrt{n})^2 = 4n$.",
+          "Simplifie $\\dfrac{V(S_n)}{4n}$, avec $V(S_n) = n$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-047",
+        "solution": "Vrai. D'après l'inégalité de Bienaymé-Tchebychev avec $\\delta = 2\\sqrt{n}$ : $P\\big(\\lvert S_n \\rvert \\geqslant 2\\sqrt{n}\\big) \\leqslant \\dfrac{n}{(2\\sqrt{n})^2} = \\dfrac{n}{4n} = 0{,}25$. Après $10\\,000$ pas, par exemple, la marche est à moins de $200$ du départ au moins trois fois sur quatre."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On note $D$ le nombre de pas vers la droite parmi les $n$ premiers. Exprimer $S_n$ en fonction de $D$ et de $n$, puis calculer la probabilité que la marche soit revenue à la position $0$ après $4$ pas. Donner une fraction irréductible.",
+        "reponse": { "type": "numerique", "valeur": "3/8", "tolerance": 0.001 },
+        "indices": [
+          "Il y a $D$ pas vers la droite et $n - D$ vers la gauche : $S_n = D - (n - D)$.",
+          "$S_n = 2D - n$ ; pour $n = 4$, $S_4 = 0$ équivaut à $D = 2$.",
+          "$D$ suit la loi $\\mathcal{B}\\left(4\\,;\\,\\dfrac{1}{2}\\right)$ : calcule $P(D = 2) = \\binom{4}{2}\\left(\\dfrac{1}{2}\\right)^4$, puis simplifie."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-043",
+        "solution": "Il y a $D$ pas vers la droite et $n - D$ vers la gauche, donc $S_n = D - (n - D) = 2D - n$. Les pas sont indépendants et vont à droite avec la probabilité $\\dfrac{1}{2}$ : $D$ suit la loi $\\mathcal{B}\\left(n\\,;\\,\\dfrac{1}{2}\\right)$. Pour $n = 4$, $S_4 = 0 \\iff D = 2$, donc $P(S_4 = 0) = \\binom{4}{2} \\times \\left(\\dfrac{1}{2}\\right)^4 = \\dfrac{6}{16} = \\dfrac{3}{8}$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Quelle est la probabilité que la marche soit à la position $0$ après $5$ pas ?",
+        "reponse": {
+          "type": "qcm",
+          "choix": [
+            "$0$",
+            "$\\dfrac{5}{16}$",
+            "$\\dfrac{1}{2}$",
+            "$\\binom{5}{2}\\left(\\dfrac{1}{2}\\right)^5$"
+          ],
+          "bonne": 0,
+          "pourquoiFaux": [
+            null,
+            "$\\dfrac{5}{16} = \\binom{6}{3} \\times \\dfrac{1}{64}$ est la probabilité d'être à $0$ après $6$ pas, pas après $5$.",
+            "Rien ne favorise le retour au départ ; et après un nombre impair de pas, il est même impossible.",
+            "$\\binom{5}{2}\\left(\\dfrac{1}{2}\\right)^5 = P(D = 2)$, mais $D = 2$ donne $S_5 = 2 \\times 2 - 5 = -1$, pas $0$."
+          ]
+        },
+        "indices": [
+          "Utilise $S_n = 2D - n$ : à quelle condition sur $D$ a-t-on $S_5 = 0$ ?",
+          "$S_5 = 0$ équivaut à $2D = 5$.",
+          "$D$ est un nombre entier de pas : l'équation $2D = 5$ a-t-elle une solution entière ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-043",
+        "solution": "$S_5 = 2D - 5 = 0$ équivaudrait à $D = 2{,}5$, impossible pour un nombre entier de pas. Après un nombre impair de pas, la position $2D - n$ est impaire : $P(S_5 = 0) = 0$."
+      }
+    ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-036",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 3,
+    "notions": [
+      "n-sommes-variables-aleatoires-concentration",
+      "n-sommes-variables-aleatoires-echantillon",
+      "n-sommes-variables-aleatoires-esperance"
+    ],
+    "capacites": [
+      "bo-m-concentration-02",
+      "bo-m-concentration-04",
+      "bo-m-sommes-04",
+      "bo-m-sommes-06"
+    ],
+    "titre": "Pourquoi une assurance regroupe beaucoup d'assurés",
+    "duree": 25,
+    "calculatrice": false,
+    "ordre": 622,
+    "preambule": "Une compagnie assure $n$ logements. Chaque année, un logement assuré a un sinistre avec la probabilité $0{,}1$ ; le sinistre coûte alors $1\\,000$ euros à la compagnie, et le logement ne coûte rien sinon. Pour $i$ de $1$ à $n$, on note $X_i$ le coût annuel du logement numéro $i$, en euros ; on admet que $(X_1, \\dots, X_n)$ est un échantillon de taille $n$ de cette loi. On note $M_n = \\dfrac{X_1 + \\dots + X_n}{n}$ le coût moyen par logement. Chaque assuré paie une cotisation annuelle de $120$ euros.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Calculer l'espérance $\\mu$ du coût d'un logement.",
+        "reponse": { "type": "numerique", "valeur": 100, "tolerance": 0 },
+        "indices": [
+          "$X_1$ vaut $1\\,000$ avec la probabilité $0{,}1$, et $0$ sinon.",
+          "$\\mu = 1\\,000 \\times 0{,}1 + 0 \\times 0{,}9$.",
+          "Interprète : c'est le coût moyen d'un logement sur un grand nombre de logements."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "$\\mu = 1\\,000 \\times 0{,}1 + 0 \\times 0{,}9 = 100$. En moyenne, un logement coûte $100$ euros par an à la compagnie, moins que la cotisation de $120$ euros."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "Calculer la variance $V$ du coût d'un logement.",
+        "reponse": { "type": "numerique", "valeur": 90000, "tolerance": 0 },
+        "indices": [
+          "Applique la définition de la variance avec les écarts à $\\mu$.",
+          "Les écarts valent $1\\,000 - 100 = 900$ et $0 - 100 = -100$.",
+          "$V = 900^2 \\times 0{,}1 + (-100)^2 \\times 0{,}9$ : calcule chaque terme."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-002",
+        "solution": "$V = (1\\,000 - 100)^2 \\times 0{,}1 + (0 - 100)^2 \\times 0{,}9 = 810\\,000 \\times 0{,}1 + 10\\,000 \\times 0{,}9 = 81\\,000 + 9\\,000 = 90\\,000$."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "La compagnie perd de l'argent si le coût moyen atteint ou dépasse la cotisation, c'est-à-dire si $M_n \\geqslant 120$. Montrer que $P(M_n \\geqslant 120) \\leqslant \\dfrac{225}{n}$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Commence par une inclusion : si $M_n \\geqslant 120$, que peut-on dire de l'écart $\\lvert M_n - 100 \\rvert$ ?",
+          "$M_n \\geqslant 120$ entraîne $\\lvert M_n - 100 \\rvert \\geqslant 20$ : la probabilité cherchée est au plus $P(\\lvert M_n - 100 \\rvert \\geqslant 20)$.",
+          "Applique l'inégalité de concentration avec $V = 90\\,000$ et $\\delta = 20$.",
+          "$\\dfrac{90\\,000}{n \\times 20^2} = \\dfrac{90\\,000}{400n}$ : simplifie."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-060",
+        "solution": "Si $M_n \\geqslant 120$, alors $M_n - 100 \\geqslant 20$, donc $\\lvert M_n - 100 \\rvert \\geqslant 20$ : l'événement $\\{M_n \\geqslant 120\\}$ est inclus dans $\\{\\lvert M_n - 100 \\rvert \\geqslant 20\\}$. D'après l'inégalité de concentration, $P(M_n \\geqslant 120) \\leqslant P(\\lvert M_n - 100 \\rvert \\geqslant 20) \\leqslant \\dfrac{90\\,000}{n \\times 20^2} = \\dfrac{90\\,000}{400n} = \\dfrac{225}{n}$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Majorer le risque de perte pour $n = 10\\,000$ logements. Donner un nombre décimal, et comparer avec le cas d'un seul logement.",
+        "reponse": { "type": "numerique", "valeur": 0.0225, "tolerance": 0.0001 },
+        "indices": [
+          "Remplace $n$ par $10\\,000$ dans le majorant de la question 3.",
+          "Calcule $\\dfrac{225}{10\\,000}$ : diviser par $10\\,000$ décale la virgule de quatre rangs vers la gauche.",
+          "Pour un seul logement, la compagnie perd dès qu'il a un sinistre : avec quelle probabilité ?"
+        ],
+        "revoir": "l-sommes-variables-aleatoires-064",
+        "solution": "Pour $n = 10\\,000$ : $P(M_{10\\,000} \\geqslant 120) \\leqslant \\dfrac{225}{10\\,000} = 0{,}022\\,5$. Avec un seul logement, la compagnie perd dès qu'il y a un sinistre, avec la probabilité $0{,}1$ : en regroupant beaucoup d'assurés, le risque de perte devient faible."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Combien de logements faut-il assurer pour que ce majorant garantisse un risque de perte inférieur ou égal à $0{,}01$ ?",
+        "reponse": { "type": "numerique", "valeur": 22500, "tolerance": 0 },
+        "indices": [
+          "Écris la condition $\\dfrac{225}{n} \\leqslant 0{,}01$.",
+          "Comme $n > 0$, elle équivaut à $225 \\leqslant 0{,}01n$.",
+          "Divise par $0{,}01$, ce qui revient à multiplier par $100$."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-063",
+        "solution": "$\\dfrac{225}{n} \\leqslant 0{,}01 \\iff 225 \\leqslant 0{,}01n \\iff n \\geqslant 22\\,500$, car $n > 0$. Avec au moins $22\\,500$ logements, l'inégalité de concentration garantit que la compagnie perd de l'argent avec une probabilité d'au plus $0{,}01$."
+      }
+    ]
+  }
+]
