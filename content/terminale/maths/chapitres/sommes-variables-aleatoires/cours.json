@@ -149,7 +149,7 @@
           "id": "l-sommes-variables-aleatoires-013",
           "type": "rappel",
           "titre": "Rappel : épreuves indépendantes",
-          "texte": "Des épreuves successives sont **indépendantes** quand le résultat de l'une ne change pas les probabilités des résultats des autres : lancers successifs d'un dé ou d'une pièce, tirages **avec remise**. La probabilité d'une issue est alors le produit des probabilités de ses composantes. Par exemple, la probabilité d'obtenir pile puis $6$ est $\\dfrac{1}{2} \\times \\dfrac{1}{6} = \\dfrac{1}{12}$.",
+          "texte": "Des épreuves successives sont **indépendantes** quand le résultat de l'une ne change pas les probabilités des résultats des autres. Exemples : lancers successifs d'un dé ou d'une pièce, tirages **avec remise**. La probabilité d'une issue est alors le produit des probabilités de ses composantes. Par exemple, la probabilité d'obtenir pile puis $6$ est $\\dfrac{1}{2} \\times \\dfrac{1}{6} = \\dfrac{1}{12}$.",
           "lien": "l-loi-binomiale-003"
         },
         {
@@ -162,7 +162,7 @@
             "Pour $V(aX)$ et $V(aX + b)$ : $a$ et $b$ sont des réels quelconques, sans hypothèse d'indépendance."
           ],
           "admise": true,
-          "texte": "Si $X$ et $Y$ sont indépendantes :\n\n$$V(X + Y) = V(X) + V(Y).$$\n\nDe même, si $X_1, \\dots, X_n$ sont liées à $n$ épreuves indépendantes, $V(X_1 + \\dots + X_n) = V(X_1) + \\dots + V(X_n)$.\n\nPour tous réels $a$ et $b$ :\n\n$$V(aX) = a^2\\,V(X), \\qquad V(aX + b) = a^2\\,V(X), \\qquad \\sigma(aX) = \\lvert a \\rvert\\,\\sigma(X),$$\n\noù $\\lvert a \\rvert$ est la valeur absolue de $a$. Lecture : multiplier $X$ par $a$ multiplie chaque écart à l'espérance par $a$, donc chaque carré d'écart par $a^2$ ; ajouter $b$ décale les valeurs sans les disperser. L'additivité est admise."
+          "texte": "Si $X$ et $Y$ sont indépendantes :\n\n$$V(X + Y) = V(X) + V(Y).$$\n\nDe même, si $X_1, \\dots, X_n$ sont liées à $n$ épreuves indépendantes, $V(X_1 + \\dots + X_n) = V(X_1) + \\dots + V(X_n)$.\n\nPour tous réels $a$ et $b$ :\n\n$$V(aX) = a^2\\,V(X), \\qquad V(aX + b) = a^2\\,V(X), \\qquad \\sigma(aX) = \\lvert a \\rvert\\,\\sigma(X),$$\n\noù $\\lvert a \\rvert$ est la valeur absolue de $a$. Lecture : multiplier $X$ par $a$ multiplie chaque écart à l'espérance par $a$, donc chaque carré d'écart par $a^2$. Ajouter $b$ décale les valeurs sans les disperser. L'additivité est admise."
         },
         {
           "id": "l-sommes-variables-aleatoires-015",
@@ -280,7 +280,7 @@
           "type": "complement",
           "titre": "Pour aller plus loin : d'où vient l'hypothèse d'indépendance ?",
           "capacites": ["bo-m-sommes-09"],
-          "texte": "Pour deux variables $X$ et $Y$ indépendantes, on peut montrer que $E(XY) = E(X)E(Y)$ : l'espérance du produit est le produit des espérances. Utilisons la formule de König-Huygens, $V(Z) = E(Z^2) - \\big(E(Z)\\big)^2$, qui s'obtient en développant le carré dans la définition de la variance. En développant $(X + Y)^2$, on trouve :\n\n$$V(X + Y) = V(X) + V(Y) + 2\\big(E(XY) - E(X)E(Y)\\big).$$\n\nSi $X$ et $Y$ sont indépendantes, la parenthèse est nulle : on retrouve $V(X + Y) = V(X) + V(Y)$. Avec $Y = X$, la parenthèse vaut $E(X^2) - \\big(E(X)\\big)^2 = V(X)$, et l'on retrouve $V(2X) = 4V(X)$."
+          "texte": "Pour deux variables $X$ et $Y$ indépendantes, on peut montrer que $E(XY) = E(X)E(Y)$ : l'espérance du produit est le produit des espérances. Utilisons la formule de König-Huygens, vue en première : $V(Z) = E(Z^2) - \\big(E(Z)\\big)^2$. Par linéarité, $E\\big((X + Y)^2\\big) = E(X^2 + 2XY + Y^2) = E(X^2) + 2E(XY) + E(Y^2)$. D'autre part, $\\big(E(X + Y)\\big)^2 = \\big(E(X) + E(Y)\\big)^2 = \\big(E(X)\\big)^2 + 2E(X)E(Y) + \\big(E(Y)\\big)^2$. On soustrait, puis on reconnaît $V(X) = E(X^2) - \\big(E(X)\\big)^2$ et $V(Y) = E(Y^2) - \\big(E(Y)\\big)^2$ :\n\n$$V(X + Y) = V(X) + V(Y) + 2\\big(E(XY) - E(X)E(Y)\\big).$$\n\nSi $X$ et $Y$ sont indépendantes, la parenthèse est nulle : on retrouve $V(X + Y) = V(X) + V(Y)$. Avec $Y = X$, la parenthèse vaut $E(X^2) - \\big(E(X)\\big)^2 = V(X)$, et l'on retrouve $V(2X) = 4V(X)$."
         },
         {
           "id": "l-sommes-variables-aleatoires-022",
@@ -374,7 +374,7 @@
           "exigible": true,
           "etapes": [
             {
-              "texte": "**Découper $X$.** Pour $i$ de $1$ à $n$, on note $X_i$ la variable égale à $1$ si la $i$-ième épreuve est un succès, et à $0$ sinon. Alors $X = X_1 + X_2 + \\dots + X_n$.",
+              "texte": "**Découper $X$.** Pour $i$ de $1$ à $n$, on note $X_i$ la variable associée à la $i$-ième épreuve. Elle vaut $1$ si cette épreuve est un succès, et $0$ sinon. Alors $X = X_1 + X_2 + \\dots + X_n$.",
               "pourquoi": "Chaque succès ajoute $1$ au compte, chaque échec $0$ : la somme des $X_i$ est le nombre de succès. Pour l'issue (succès, échec, succès), $X = 1 + 0 + 1 = 2$."
             },
             {
@@ -440,7 +440,7 @@
           "type": "exemple",
           "titre": "Reconnaître un échantillon",
           "capacites": ["bo-m-sommes-04"],
-          "enonce": "**1.** On lance trois fois un dé équilibré à six faces ; $X_i$ est le numéro obtenu au $i$-ième lancer. Les lancers donnent $2$, $5$ et $5$. Que valent $S_3$ et $M_3$ pour ces lancers ?\n\n**2.** On répète $n$ fois une épreuve de Bernoulli de paramètre $p$, de façon indépendante ; $X_i$ vaut $1$ en cas de succès à la $i$-ième épreuve, et $0$ sinon. Que représentent $S_n$ et $M_n$ ?",
+          "enonce": "**1.** On lance trois fois un dé équilibré à six faces ; $X_i$ est le numéro obtenu au $i$-ième lancer. Les lancers donnent $2$, $5$ et $5$. Que valent $S_3$ et $M_3$ pour ces lancers ?\n\n**2.** On répète $n$ fois une épreuve de Bernoulli de paramètre $p$, de façon indépendante. $X_i$ vaut $1$ en cas de succès à la $i$-ième épreuve, et $0$ sinon. Que représentent $S_n$ et $M_n$ ?",
           "etapes": [
             {
               "texte": "**1.** Les trois lancers sont indépendants et suivent la même loi : chaque face a la probabilité $\\dfrac{1}{6}$. Donc $(X_1, X_2, X_3)$ est un échantillon de taille $3$ de cette loi."
@@ -469,6 +469,31 @@
           "texte": "$$E(S_n) = n\\mu, \\qquad V(S_n) = nV, \\qquad \\sigma(S_n) = \\sqrt{n}\\,\\sigma ;$$\n\n$$E(M_n) = \\mu, \\qquad V(M_n) = \\dfrac{V}{n}, \\qquad \\sigma(M_n) = \\dfrac{\\sigma}{\\sqrt{n}}.$$\n\nLecture : la moyenne $M_n$ a la même espérance qu'un seul tirage, mais son écart type est divisé par $\\sqrt{n}$. Pour diviser la dispersion par $10$, il faut donc $100$ fois plus de tirages."
         },
         {
+          "id": "l-sommes-variables-aleatoires-037",
+          "type": "exemple",
+          "titre": "Cent tours de roue",
+          "capacites": ["bo-m-sommes-04"],
+          "enonce": "Une roue de loterie a trois secteurs de même taille, marqués $0$, $3$ et $6$ points. On note $X$ le nombre de points obtenus en un tour.\n\n**1.** Calculer $E(X)$ et $V(X)$.\n\n**2.** On fait tourner la roue $100$ fois, de façon indépendante. On note $S$ le total des points et $M = \\dfrac{S}{100}$ la moyenne par tour. Calculer $E(S)$ et $V(S)$, puis $E(M)$, $V(M)$ et $\\sigma(M)$.",
+          "etapes": [
+            {
+              "texte": "**1.** Chaque secteur a la probabilité $\\dfrac{1}{3}$. Donc $E(X) = \\dfrac{0 + 3 + 6}{3} = 3$ et $V(X) = \\dfrac{(0 - 3)^2 + (3 - 3)^2 + (6 - 3)^2}{3} = \\dfrac{9 + 0 + 9}{3} = 6$."
+            },
+            {
+              "texte": "**2.** Les $100$ tours sont indépendants et suivent tous la loi de $X$. On a donc un échantillon de taille $100$, de somme $S$ et de moyenne $M$."
+            },
+            {
+              "texte": "$E(S) = 100 \\times 3 = 300$ et $V(S) = 100 \\times 6 = 600$."
+            },
+            {
+              "texte": "$E(M) = 3$, $V(M) = \\dfrac{6}{100} = 0{,}06$ et $\\sigma(M) = \\sqrt{0{,}06} \\approx 0{,}24$.",
+              "pourquoi": "On peut aussi écrire $\\sigma(M) = \\dfrac{\\sigma(X)}{\\sqrt{100}} = \\dfrac{\\sqrt{6}}{10}$, avec $\\sqrt{6} \\approx 2{,}45$."
+            },
+            {
+              "texte": "**Conclusion** : $E(S) = 300$, $V(S) = 600$, $E(M) = 3$, $V(M) = 0{,}06$ et $\\sigma(M) \\approx 0{,}24$. La moyenne par tour est centrée sur $3$, comme un seul tour. Mais son écart type est $10$ fois plus petit que celui d'un tour, qui vaut $\\sqrt{6} \\approx 2{,}45$."
+            }
+          ]
+        },
+        {
           "id": "l-sommes-variables-aleatoires-036",
           "type": "demonstration",
           "titre": "Pourquoi ces formules ?",
@@ -484,31 +509,6 @@
             },
             {
               "texte": "**Conclusion** : $\\sigma(M_n) = \\sqrt{\\dfrac{V}{n}} = \\dfrac{\\sqrt{V}}{\\sqrt{n}} = \\dfrac{\\sigma}{\\sqrt{n}}$."
-            }
-          ]
-        },
-        {
-          "id": "l-sommes-variables-aleatoires-037",
-          "type": "exemple",
-          "titre": "Cent tours de roue",
-          "capacites": ["bo-m-sommes-04"],
-          "enonce": "Une roue de loterie a trois secteurs de même taille, marqués $0$, $3$ et $6$ points. On note $X$ le nombre de points obtenus en un tour.\n\n**1.** Calculer $E(X)$ et $V(X)$.\n\n**2.** On fait tourner la roue $100$ fois, de façon indépendante. On note $S$ le total des points et $M = \\dfrac{S}{100}$ la moyenne par tour. Calculer $E(S)$ et $V(S)$, puis $E(M)$, $V(M)$ et $\\sigma(M)$.",
-          "etapes": [
-            {
-              "texte": "**1.** Chaque secteur a la probabilité $\\dfrac{1}{3}$. Donc $E(X) = \\dfrac{0 + 3 + 6}{3} = 3$ et $V(X) = \\dfrac{(0 - 3)^2 + (3 - 3)^2 + (6 - 3)^2}{3} = \\dfrac{9 + 0 + 9}{3} = 6$."
-            },
-            {
-              "texte": "**2.** Les $100$ tours sont indépendants et suivent tous la loi de $X$ : on a un échantillon de taille $100$, de somme $S$ et de moyenne $M$."
-            },
-            {
-              "texte": "$E(S) = 100 \\times 3 = 300$ et $V(S) = 100 \\times 6 = 600$."
-            },
-            {
-              "texte": "$E(M) = 3$, $V(M) = \\dfrac{6}{100} = 0{,}06$ et $\\sigma(M) = \\sqrt{0{,}06} \\approx 0{,}24$.",
-              "pourquoi": "On peut aussi écrire $\\sigma(M) = \\dfrac{\\sigma(X)}{\\sqrt{100}} = \\dfrac{\\sqrt{6}}{10}$, avec $\\sqrt{6} \\approx 2{,}45$."
-            },
-            {
-              "texte": "**Conclusion** : $E(S) = 300$, $V(S) = 600$, $E(M) = 3$, $V(M) = 0{,}06$ et $\\sigma(M) \\approx 0{,}24$. La moyenne par tour est centrée sur $3$, comme un seul tour ; mais son écart type est $10$ fois plus petit que celui d'un tour, $\\sqrt{6} \\approx 2{,}45$."
             }
           ]
         },
@@ -538,7 +538,7 @@
           "titre": "Comment simuler une marche aléatoire ?",
           "capacites": ["bo-m-concentration-06", "bo-m-sommes-04", "bo-m-listes-01", "bo-m-listes-02"],
           "etapes": [
-            "Une **marche aléatoire** part de la position $0$ d'une droite graduée et fait $n$ pas au hasard. Simule un pas : $+1$ (à droite) ou $-1$ (à gauche), chacun avec la probabilité $\\dfrac{1}{2}$ ; dans le programme, la fonction pas compare random() à $\\dfrac{1}{2}$.",
+            "Une **marche aléatoire** part de la position $0$ d'une droite graduée et fait $n$ pas au hasard. Simule un pas : $+1$ (à droite) ou $-1$ (à gauche), chacun avec la probabilité $\\dfrac{1}{2}$. Le programme compare à $\\dfrac{1}{2}$ un nombre tiré au hasard entre $0$ et $1$.",
             "Pars de la position $0$ et ajoute les $n$ pas dans une boucle ; range chaque nouvelle position dans une liste, pour garder le trajet.",
             "Lis la position après $n$ pas : c'est l'élément d'indice $n$ de la liste, qui compte $n + 1$ positions.",
             "Interprète : cette position est la somme $S_n$ d'un échantillon de taille $n$ de la loi du pas. Un pas a pour espérance $0$ et pour variance $1^2 \\times \\dfrac{1}{2} + (-1)^2 \\times \\dfrac{1}{2} = 1$, donc $E(S_n) = 0$ et $\\sigma(S_n) = \\sqrt{n}$.",
@@ -569,7 +569,7 @@
             "Appelle cette fonction $N$ fois et range les $N$ moyennes obtenues dans une liste.",
             "Calcule l'écart type $s$ de cette série de moyennes et compare-le à $\\dfrac{\\sigma}{\\sqrt{n}}$ : pour $n = 100$, $\\dfrac{1{,}71}{10} \\approx 0{,}17$.",
             "Pour $k = 1$, $2$ et $3$, calcule la proportion des moyennes $m$ dont l'écart $\\lvert m - \\mu \\rvert$ à $\\mu$ est inférieur ou égal à $ks$, puis à $k\\dfrac{\\sigma}{\\sqrt{n}}$.",
-            "Lis les résultats, qui changent un peu à chaque exécution : $s$ est proche de $\\dfrac{\\sigma}{\\sqrt{n}}$, et les proportions valent environ $0{,}68$, $0{,}95$, puis plus de $0{,}99$. Pour $k = 2$, la dernière notion du chapitre garantira une probabilité d'au moins $0{,}75$."
+            "Lis les résultats, qui changent un peu à chaque exécution. $s$ est proche de $\\dfrac{\\sigma}{\\sqrt{n}}$, et les proportions valent environ $0{,}7$, $0{,}95$, puis plus de $0{,}99$. Pour $k = 2$, la dernière notion du chapitre garantira une probabilité d'au moins $0{,}75$."
           ],
           "code": {
             "langage": "python",
@@ -826,6 +826,16 @@
           "texte": "$$P\\big(\\lvert M_n - \\mu \\rvert \\geqslant \\delta\\big) \\leqslant \\dfrac{V}{n\\delta^2}.$$\n\nPar passage à l'événement contraire : $P\\big(\\lvert M_n - \\mu \\rvert < \\delta\\big) \\geqslant 1 - \\dfrac{V}{n\\delta^2}$.\n\nLecture : à précision $\\delta$ fixée, le majorant diminue quand la taille $n$ de l'échantillon augmente."
         },
         {
+          "id": "l-sommes-variables-aleatoires-062",
+          "type": "verifie",
+          "capacites": ["bo-m-concentration-02"],
+          "question": {
+            "enonce": "Une variable aléatoire a pour espérance $\\mu$ et pour variance $V = 9$. Pour la moyenne $M_{100}$ d'un échantillon de taille $100$ de cette variable, quel majorant l'inégalité de concentration donne-t-elle pour $P(\\lvert M_{100} - \\mu \\rvert \\geqslant 0{,}5)$ ? Donne un nombre décimal.",
+            "reponse": { "type": "numerique", "valeur": 0.36, "tolerance": 0 },
+            "explication": "$\\dfrac{V}{n\\delta^2} = \\dfrac{9}{100 \\times 0{,}5^2} = \\dfrac{9}{100 \\times 0{,}25} = \\dfrac{9}{25} = 0{,}36$."
+          }
+        },
+        {
           "id": "l-sommes-variables-aleatoires-061",
           "type": "demonstration",
           "titre": "Bienaymé-Tchebychev appliquée à la moyenne",
@@ -843,16 +853,6 @@
               "texte": "**Conclusion** : $P(\\lvert M_n - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V}{n\\delta^2}$."
             }
           ]
-        },
-        {
-          "id": "l-sommes-variables-aleatoires-062",
-          "type": "verifie",
-          "capacites": ["bo-m-concentration-02"],
-          "question": {
-            "enonce": "Une variable aléatoire a pour variance $V = 9$. Pour la moyenne $M_{100}$ d'un échantillon de taille $100$ de cette variable, quel majorant l'inégalité de concentration donne-t-elle pour $P(\\lvert M_{100} - \\mu \\rvert \\geqslant 0{,}5)$ ? Donne un nombre décimal.",
-            "reponse": { "type": "numerique", "valeur": 0.36, "tolerance": 0 },
-            "explication": "$\\dfrac{V}{n\\delta^2} = \\dfrac{9}{100 \\times 0{,}5^2} = \\dfrac{9}{100 \\times 0{,}25} = \\dfrac{9}{25} = 0{,}36$."
-          }
         },
         {
           "id": "l-sommes-variables-aleatoires-063",
@@ -907,7 +907,34 @@
             "$\\delta$ est un réel strictement positif, fixé."
           ],
           "admise": false,
-          "texte": "$$\\lim\\limits_{n \\to +\\infty} P\\big(\\lvert M_n - \\mu \\rvert \\geqslant \\delta\\big) = 0.$$\n\nLecture : quelle que soit la précision $\\delta$ choisie, la probabilité que la moyenne de l'échantillon s'écarte de l'espérance d'au moins $\\delta$ tend vers $0$ quand la taille $n$ de l'échantillon tend vers $+\\infty$.\n\nPour un échantillon d'une loi de Bernoulli de paramètre $p$, $M_n$ est la fréquence des succès : elle se rapproche de $p$."
+          "texte": "$$\\lim\\limits_{n \\to +\\infty} P\\big(\\lvert M_n - \\mu \\rvert \\geqslant \\delta\\big) = 0.$$\n\nLecture : on choisit une précision $\\delta$, aussi petite que l'on veut. La probabilité que la moyenne de l'échantillon s'écarte de l'espérance d'au moins $\\delta$ tend vers $0$ quand la taille $n$ de l'échantillon tend vers $+\\infty$.\n\nPour un échantillon d'une loi de Bernoulli de paramètre $p$, $M_n$ est la fréquence des succès. Quand $n$ devient grand, la probabilité qu'elle soit à moins de $\\delta$ de $p$ tend vers $1$."
+        },
+        {
+          "id": "l-sommes-variables-aleatoires-067",
+          "type": "exemple",
+          "titre": "La fréquence des « pile »",
+          "capacites": ["bo-m-concentration-02", "bo-m-concentration-03"],
+          "enonce": "On lance $n$ fois une pièce équilibrée et on note $F_n$ la fréquence des « pile » obtenus.\n\n**1.** Montrer que $P(\\lvert F_n - 0{,}5 \\rvert \\geqslant 0{,}01) \\leqslant \\dfrac{2\\,500}{n}$.\n\n**2.** En déduire la limite de cette probabilité quand $n$ tend vers $+\\infty$, et l'interpréter.\n\n**3.** À partir de combien de lancers ce majorant est-il inférieur ou égal à $0{,}05$ ?",
+          "etapes": [
+            {
+              "texte": "**1.** Pour $i$ de $1$ à $n$, $X_i$ vaut $1$ si le $i$-ième lancer donne pile, et $0$ sinon. $(X_1, \\dots, X_n)$ est un échantillon de la loi de Bernoulli de paramètre $0{,}5$, d'espérance $\\mu = 0{,}5$ et de variance $V = 0{,}5 \\times 0{,}5 = 0{,}25$. Sa moyenne est $M_n = F_n$."
+            },
+            {
+              "texte": "L'inégalité de concentration avec $\\delta = 0{,}01$ donne $P(\\lvert F_n - 0{,}5 \\rvert \\geqslant 0{,}01) \\leqslant \\dfrac{0{,}25}{n \\times 0{,}01^2} = \\dfrac{0{,}25}{0{,}000\\,1 \\times n} = \\dfrac{2\\,500}{n}$.",
+              "pourquoi": "$0{,}01^2 = 0{,}000\\,1$ et $\\dfrac{0{,}25}{0{,}000\\,1} = 2\\,500$."
+            },
+            {
+              "texte": "**2.** $\\lim\\limits_{n \\to +\\infty} \\dfrac{2\\,500}{n} = 0$, et la probabilité est positive ou nulle : d'après le théorème des gendarmes, elle tend vers $0$. Par passage au contraire, $P(\\lvert F_n - 0{,}5 \\rvert < 0{,}01)$ tend vers $1$. C'est la loi des grands nombres. Avec un très grand nombre de lancers, il devient presque certain que la fréquence des « pile » soit à moins de $0{,}01$ de $0{,}5$.",
+              "pourquoi": "$P(\\lvert F_n - 0{,}5 \\rvert < 0{,}01) = 1 - P(\\lvert F_n - 0{,}5 \\rvert \\geqslant 0{,}01)$, qui tend vers $1 - 0 = 1$. Attention : c'est une limite, cette probabilité n'augmente pas forcément à chaque lancer. Avec $2$ lancers, elle vaut $0{,}5$. Avec $3$ lancers, elle est nulle : la fréquence vaut $0$, $\\dfrac{1}{3}$, $\\dfrac{2}{3}$ ou $1$, jamais à moins de $0{,}01$ de $0{,}5$."
+            },
+            {
+              "texte": "**3.** Comme $n > 0$, $\\dfrac{2\\,500}{n} \\leqslant 0{,}05$ équivaut à $n \\geqslant \\dfrac{2\\,500}{0{,}05} = 50\\,000$.",
+              "pourquoi": "On multiplie les deux membres par $\\dfrac{n}{0{,}05} > 0$ ; et $\\dfrac{2\\,500}{0{,}05} = 2\\,500 \\times 20 = 50\\,000$."
+            },
+            {
+              "texte": "**Conclusion** : $P(\\lvert F_n - 0{,}5 \\rvert \\geqslant 0{,}01) \\leqslant \\dfrac{2\\,500}{n}$, qui tend vers $0$. Dès $50\\,000$ lancers, l'inégalité garantit que la fréquence des « pile » est à moins de $0{,}01$ de $0{,}5$ avec une probabilité d'au moins $0{,}95$."
+            }
+          ]
         },
         {
           "id": "l-sommes-variables-aleatoires-066",
@@ -930,32 +957,6 @@
           ]
         },
         {
-          "id": "l-sommes-variables-aleatoires-067",
-          "type": "exemple",
-          "titre": "La fréquence des « pile »",
-          "capacites": ["bo-m-concentration-02", "bo-m-concentration-03"],
-          "enonce": "On lance $n$ fois une pièce équilibrée et on note $F_n$ la fréquence des « pile » obtenus.\n\n**1.** Montrer que $P(\\lvert F_n - 0{,}5 \\rvert \\geqslant 0{,}01) \\leqslant \\dfrac{2\\,500}{n}$.\n\n**2.** En déduire la limite de cette probabilité quand $n$ tend vers $+\\infty$, et l'interpréter.\n\n**3.** À partir de combien de lancers ce majorant est-il inférieur ou égal à $0{,}05$ ?",
-          "etapes": [
-            {
-              "texte": "**1.** Pour $i$ de $1$ à $n$, $X_i$ vaut $1$ si le $i$-ième lancer donne pile, et $0$ sinon. $(X_1, \\dots, X_n)$ est un échantillon de la loi de Bernoulli de paramètre $0{,}5$, d'espérance $\\mu = 0{,}5$ et de variance $V = 0{,}5 \\times 0{,}5 = 0{,}25$. Sa moyenne est $M_n = F_n$."
-            },
-            {
-              "texte": "L'inégalité de concentration avec $\\delta = 0{,}01$ donne $P(\\lvert F_n - 0{,}5 \\rvert \\geqslant 0{,}01) \\leqslant \\dfrac{0{,}25}{n \\times 0{,}01^2} = \\dfrac{0{,}25}{0{,}000\\,1 \\times n} = \\dfrac{2\\,500}{n}$.",
-              "pourquoi": "$0{,}01^2 = 0{,}000\\,1$ et $\\dfrac{0{,}25}{0{,}000\\,1} = 2\\,500$."
-            },
-            {
-              "texte": "**2.** $\\lim\\limits_{n \\to +\\infty} \\dfrac{2\\,500}{n} = 0$, et la probabilité est positive ou nulle : d'après le théorème des gendarmes, elle tend vers $0$. C'est la loi des grands nombres : plus on lance la pièce, plus il est probable que la fréquence des « pile » soit à moins de $0{,}01$ de $0{,}5$."
-            },
-            {
-              "texte": "**3.** Comme $n > 0$, $\\dfrac{2\\,500}{n} \\leqslant 0{,}05$ équivaut à $n \\geqslant \\dfrac{2\\,500}{0{,}05} = 50\\,000$.",
-              "pourquoi": "On multiplie les deux membres par $\\dfrac{n}{0{,}05} > 0$ ; et $\\dfrac{2\\,500}{0{,}05} = 2\\,500 \\times 20 = 50\\,000$."
-            },
-            {
-              "texte": "**Conclusion** : $P(\\lvert F_n - 0{,}5 \\rvert \\geqslant 0{,}01) \\leqslant \\dfrac{2\\,500}{n}$, qui tend vers $0$. Dès $50\\,000$ lancers, l'inégalité garantit que la fréquence des « pile » est à moins de $0{,}01$ de $0{,}5$ avec une probabilité d'au moins $0{,}95$."
-            }
-          ]
-        },
-        {
           "id": "l-sommes-variables-aleatoires-068",
           "type": "verifie",
           "capacites": ["bo-m-concentration-02"],
@@ -971,14 +972,14 @@
           "titre": "La loi des grands nombres ne compense pas",
           "faux": "Une pièce équilibrée vient de donner $10$ fois pile de suite. D'après la loi des grands nombres, le prochain lancer a plus de chances de donner face, pour rééquilibrer.",
           "juste": "Les lancers sont indépendants : le prochain donne face avec la probabilité $0{,}5$, comme tous les autres.",
-          "explication": "La loi des grands nombres dit que la **fréquence** des « pile » se rapproche de $0{,}5$ quand $n$ devient grand ; elle ne dit pas que le hasard corrige les écarts. Dix lancers pèsent peu face à des milliers : l'écart du début est noyé, pas compensé."
+          "explication": "La loi des grands nombres porte sur la **fréquence** des « pile ». Quand $n$ devient grand, la probabilité que cette fréquence soit proche de $0{,}5$ tend vers $1$. La loi ne dit pas que le hasard corrige les écarts. Dix lancers pèsent peu face à des milliers : l'écart du début est noyé, pas compensé."
         },
         {
           "id": "l-sommes-variables-aleatoires-070",
           "type": "complement",
           "titre": "Pour aller plus loin : estimer une proportion inconnue",
           "capacites": ["bo-m-concentration-08", "bo-m-concentration-10"],
-          "texte": "Dans un sondage, la proportion $p$ des électeurs d'un candidat est inconnue. On interroge $n$ personnes au hasard et l'on observe la fréquence $F_n$, moyenne d'un échantillon de la loi de Bernoulli de paramètre $p$, de variance $p(1 - p)$. Or $p(1 - p) = \\dfrac{1}{4} - \\left(p - \\dfrac{1}{2}\\right)^2 \\leqslant \\dfrac{1}{4}$. Donc, quel que soit $p$ :\n\n$$P\\big(\\lvert F_n - p \\rvert \\geqslant \\delta\\big) \\leqslant \\dfrac{1}{4n\\delta^2}.$$\n\nPour $n = 1\\,000$ et $\\delta = 0{,}05$, ce majorant vaut $\\dfrac{1}{4 \\times 1\\,000 \\times 0{,}05^2} = \\dfrac{1}{10}$. Avec une probabilité d'au moins $0{,}9$, la vraie proportion $p$ est donc à moins de $0{,}05$ de la fréquence observée : c'est une **estimation** de $p$."
+          "texte": "Dans un sondage, la proportion $p$ des électeurs d'un candidat est inconnue. On interroge $n$ personnes au hasard et l'on observe la fréquence $F_n$. C'est la moyenne d'un échantillon de la loi de Bernoulli de paramètre $p$, de variance $p(1 - p)$. Or $p(1 - p) = \\dfrac{1}{4} - \\left(p - \\dfrac{1}{2}\\right)^2 \\leqslant \\dfrac{1}{4}$. Donc, quel que soit $p$ :\n\n$$P\\big(\\lvert F_n - p \\rvert \\geqslant \\delta\\big) \\leqslant \\dfrac{1}{4n\\delta^2}.$$\n\nPour $n = 1\\,000$ et $\\delta = 0{,}05$, ce majorant vaut $\\dfrac{1}{4 \\times 1\\,000 \\times 0{,}05^2} = \\dfrac{1}{10}$. Avec une probabilité d'au moins $0{,}9$, la vraie proportion $p$ est donc à moins de $0{,}05$ de la fréquence observée : c'est une **estimation** de $p$."
         },
         {
           "id": "l-sommes-variables-aleatoires-071",
