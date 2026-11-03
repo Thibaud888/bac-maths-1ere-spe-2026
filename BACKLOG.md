@@ -895,7 +895,7 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     `-054` : jugés exacts par le relecteur, mais jamais essayés sur un appareil.
   - [ ] Une planche de Galton animée (les billes tombent, l'histogramme se forme) — souhait
     de l'auteur du cours de Loi binomiale ; à faire quand les figures animées existeront.
-  - [ ] Quand « Sommes de variables aléatoires » (ch. 15) sera écrit, ajouter aux types bac
+  - [ ] Maintenant que « Sommes de variables aléatoires » (ch. 15) est écrit, ajouter aux types bac
     de Loi binomiale les questions « en moyenne, combien… » (espérance np) que le chapitre
     ne peut pas encore poser.
   - [x] Fonctions sinus et cosinus : le cours — fait le 2026-10-24 : 3 notions (le
@@ -1007,6 +1007,39 @@ du ministère, voir `docs/sources-officielles.md` ; textes à coller prêts dans
     (avertissement React `validateDOMNesting` : `<a>` dans `<a>`, relevé par
     `controle-rendu.mjs` sur derivation-convexite, premier type bac avec un lien de source
     et des figures) — sans effet visible, à corriger dans une session d'interface.
+  - [x] Sommes de variables aléatoires, concentration, loi des grands nombres : le cours —
+    fait le 2026-11-02 : 6 notions (priorités mesurées sur les annales : espérance d'une
+    somme ★★ 43 %, variance ★★ 33 %, loi binomiale ★★ 49 %, Bienaymé-Tchebychev ★★ 45 %,
+    échantillon ★ 19 %, concentration et loi des grands nombres ★ 16 %), 72 blocs dont la
+    démonstration exigible E et V de la loi binomiale, 8 cartes de mémo, une figure
+    (loi ℬ(16 ; 0,5) et écarts à l'espérance). Relecteur NEEDS_REVISION au tour 1 (une
+    phrase fausse : la probabilité ne croît pas toujours avec n), PASS aux tours 2 et 3 ;
+    élève-testeur CLAIR (12/12), 13 gênes levées. Couverture sans écart.
+  - [x] Sommes de variables aléatoires : les exercices — même session : 36 exercices
+    (16 Comprendre, 15 S'entraîner, 5 Approfondir), 17 questions éclair, 4 sujets type bac
+    (23 points, adaptés de Métropole 2025 et 2026, Nouvelle-Calédonie 2025,
+    Antilles-Guyane 2026). Relecteur PASS aux tours 1 et 2 ; élève-testeur À_CLARIFIER
+    (1 énoncé ambigu, x-025) corrigé ; 16/16 en Comprendre, 17/17 en éclair. Une coupure
+    (limite des 5 h), agents repris sans perte.
+  - [ ] Sommes de variables aléatoires, petites retouches — non bloquants laissés ouverts :
+    explication de la question éclair sur la loi des grands nombres trop longue (retirer
+    « , et celle qu'elle en soit à moins de δ tend vers 1 ») ; « strictement croissante »
+    dans x-027 q4 et x-034 q4 ; « La même exécution affiche… » dans x-026 q5 ; cas
+    d'égalité dans x-036 q3 ; cours 015 « deux dés à quatre faces », 039 dire d'où vient
+    le calcul exact, 041 « constater qu'il est proche de σ/√n ». Rapports : relecture
+    exercices tour 2, cours tour 3, session du 2026-11-02.
+  - [ ] Montrer dans le cours de Sommes de variables aléatoires trois gestes que seuls les
+    indices expliquent — gênes de l'élève-testeur : un événement d'un seul côté
+    (X ≥ 191) ramené à un écart (méthode `l-…-051`), la résolution de l'inéquation en δ,
+    la variance nulle d'une constante ; et un exercice de marche 2 sur le geste
+    « M ≥ 0 donc (M < 5) = (−1 < M < 5) » demandé dans tb-004 q2b.
+  - [ ] Deux animations pour Sommes de variables aléatoires — souhait de l'auteur du cours :
+    une marche aléatoire qui avance pas à pas, et l'histogramme des moyennes simulées qui
+    se resserre quand n grandit ; quand les figures animées existeront.
+  - [ ] La bonne réponse des QCM est le plus souvent le premier choix, sur tout le site —
+    relevé par le relecteur : 26 QCM sur 35 dans Sommes de variables aléatoires (Continuité
+    100 %, Calcul intégral 86 %) ; l'interface ne mélange pas les choix. Mélanger à
+    l'affichage (session d'interface), voir aussi l'item des QCM de Continuité ci-dessus.
 - [x] (P2) Compter ce qui tombe vraiment au bac de maths — `annales-indexeur` sur les sujets
   2021-2026 **de tous les lieux d'examen** (métropole, centres étrangers, Amérique du Nord et
   du Sud, Asie, Polynésie, Nouvelle-Calédonie, Antilles-Guyane, La Réunion, sujets de secours

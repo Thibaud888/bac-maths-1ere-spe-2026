@@ -1,0 +1,125 @@
+[
+  {
+    "id": "m-sommes-variables-aleatoires-linearite",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-esperance",
+    "genre": "propriete",
+    "titre": "Linéarité de l'espérance",
+    "enonce": "Pour deux variables aléatoires $X$ et $Y$ d'une même expérience et des réels $a$ et $b$ : $E(X + Y) = E(X) + E(Y)$ et $E(aX) = aE(X)$. Plus généralement, $E(aX + b) = aE(X) + b$ et $E(X_1 + \\dots + X_n) = E(X_1) + \\dots + E(X_n)$. Pour l'espérance d'une variable compliquée, on la découpe en une somme de variables simples.",
+    "conditions": "Toujours vraie : aucune hypothèse d'indépendance.",
+    "exemple": "Trois lancers d'un dé ; on gagne $4$ euros pour un $5$ ou un $6$, on perd $1$ euro sinon. On note $G_i$ le gain du $i$-ième lancer et $G = G_1 + G_2 + G_3$ le gain total. $E(G_i) = 4 \\times \\dfrac{1}{3} - 1 \\times \\dfrac{2}{3} = \\dfrac{2}{3}$, donc $E(G) = 3 \\times \\dfrac{2}{3} = 2$.",
+    "simplifie": {
+      "coeur": "$E(X + Y) = E(X) + E(Y)$ et $E(aX) = aE(X)$",
+      "moyenMemo": "L'espérance d'un total est le total des espérances.",
+      "motCle": "linearite",
+      "image": "On découpe la variable en morceaux, on calcule l'espérance de chacun, on additionne."
+    }
+  },
+  {
+    "id": "m-sommes-variables-aleatoires-additivite-variance",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-variance",
+    "genre": "propriete",
+    "titre": "Variance d'une somme de variables indépendantes",
+    "enonce": "Si $X$ et $Y$ sont indépendantes : $V(X + Y) = V(X) + V(Y)$, et de même pour $n$ variables liées à $n$ épreuves indépendantes. Attention : $V(X - Y) = V(X) + V(Y)$, car $V(-Y) = V(Y)$.",
+    "conditions": "$X$ et $Y$ liées à des épreuves indépendantes : lancers successifs, tirages avec remise, ou indépendance donnée par l'énoncé.",
+    "exemple": "Une pièce (pile : $2$ points, face : $0$ point, donc $V(X) = 1$) et un dé à quatre faces ($V(Y) = 1{,}25$), lancés indépendamment : $V(X + Y) = 1 + 1{,}25 = 2{,}25$.",
+    "simplifie": {
+      "coeur": "Indépendantes : $V(X + Y) = V(X) + V(Y)$",
+      "moyenMemo": "Les dispersions s'ajoutent, même quand on soustrait.",
+      "motCle": "additivite-variance",
+      "image": "Deux dés : un petit numéro est souvent rattrapé par un grand."
+    }
+  },
+  {
+    "id": "m-sommes-variables-aleatoires-variance-ax",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-variance",
+    "genre": "formule",
+    "titre": "Variance d'une variable multipliée par un réel",
+    "enonce": "Pour tous réels $a$ et $b$ : $V(aX) = a^2V(X)$, $V(aX + b) = a^2V(X)$ et $\\sigma(aX) = \\lvert a \\rvert\\,\\sigma(X)$. Ne pas confondre $V(2X) = 4V(X)$ avec $V(X_1 + X_2) = 2V(X)$ pour deux tirages indépendants.",
+    "conditions": "Aucune : vraie pour toute variable aléatoire $X$ et tous réels $a$ et $b$.",
+    "exemple": "$V(X) = 2$ : $V(-3X + 1) = (-3)^2 \\times 2 = 18$.",
+    "simplifie": {
+      "coeur": "$V(aX + b) = a^2V(X)$",
+      "moyenMemo": "Le coefficient sort au carré ; la constante disparaît.",
+      "motCle": "coefficient-au-carre"
+    }
+  },
+  {
+    "id": "m-sommes-variables-aleatoires-binomiale",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-binomiale",
+    "genre": "formule",
+    "titre": "Espérance et variance de la loi binomiale",
+    "enonce": "Si $X$ suit la loi $\\mathcal{B}(n\\,;\\,p)$ : $E(X) = np$, $V(X) = np(1 - p)$ et $\\sigma(X) = \\sqrt{np(1 - p)}$. $E(X)$ s'interprète comme le nombre moyen de succès sur un grand nombre de répétitions.",
+    "conditions": "$n$ entier naturel non nul et $p \\in [0\\,;\\,1]$.",
+    "exemple": "$\\mathcal{B}(20\\,;\\,0{,}25)$ : $E(X) = 5$, $V(X) = 3{,}75$ et $\\sigma(X) \\approx 1{,}94$.",
+    "simplifie": {
+      "coeur": "$E(X) = np$ ; $V(X) = np(1 - p)$",
+      "moyenMemo": "En moyenne $n$ fois $p$ succès ; la variance ajoute le facteur $1 - p$.",
+      "motCle": "np",
+      "image": "Une somme de $n$ variables de Bernoulli, chacune d'espérance $p$ et de variance $p(1 - p)$."
+    }
+  },
+  {
+    "id": "m-sommes-variables-aleatoires-bienayme-tchebychev",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-bienayme-tchebychev",
+    "genre": "propriete",
+    "titre": "Inégalité de Bienaymé-Tchebychev",
+    "enonce": "Pour toute variable aléatoire $X$ d'espérance $\\mu$ et tout réel $\\delta > 0$ : $P(\\lvert X - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V(X)}{\\delta^2}$. Par passage au contraire : $P(\\lvert X - \\mu \\rvert < \\delta) \\geqslant 1 - \\dfrac{V(X)}{\\delta^2}$.",
+    "conditions": "$\\delta > 0$ ; aucune hypothèse sur la loi de $X$ : seules l'espérance et la variance servent.",
+    "exemple": "$\\mathcal{B}(400\\,;\\,0{,}1)$ : $\\mu = 40$ et $V(X) = 36$, donc $P(28 < X < 52) \\geqslant 1 - \\dfrac{36}{144} = 0{,}75$.",
+    "simplifie": {
+      "coeur": "$P(\\lvert X - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V(X)}{\\delta^2}$",
+      "moyenMemo": "Loin : au plus V sur delta carré. Proche : au moins 1 moins ce nombre.",
+      "motCle": "bienayme-tchebychev"
+    }
+  },
+  {
+    "id": "m-sommes-variables-aleatoires-ecart-esperance",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-bienayme-tchebychev",
+    "genre": "methode",
+    "titre": "Écrire un événement comme un écart à l'espérance",
+    "enonce": "Repère le centre $\\mu$ et la demi-largeur $\\delta$. « $\\mu - \\delta < X < \\mu + \\delta$ » s'écrit $\\lvert X - \\mu \\rvert < \\delta$ ; « $X \\leqslant \\mu - \\delta$ ou $X \\geqslant \\mu + \\delta$ » s'écrit $\\lvert X - \\mu \\rvert \\geqslant \\delta$. Si $X$ est entier, ajuste les bornes : $41 \\leqslant X \\leqslant 59$ équivaut à $\\lvert X - 50 \\rvert < 10$.",
+    "conditions": "L'intervalle doit être centré sur l'espérance $\\mu$.",
+    "exemple": "$E(X) = 20$ : $12 < X < 28$ équivaut à $\\lvert X - 20 \\rvert < 8$.",
+    "simplifie": {
+      "coeur": "$\\mu - \\delta < X < \\mu + \\delta \\iff \\lvert X - \\mu \\rvert < \\delta$",
+      "moyenMemo": "Centre = espérance ; demi-largeur = delta.",
+      "motCle": "centre-demi-largeur"
+    }
+  },
+  {
+    "id": "m-sommes-variables-aleatoires-moyenne-echantillon",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-echantillon",
+    "genre": "formule",
+    "titre": "Somme et moyenne d'un échantillon",
+    "enonce": "Pour un échantillon de taille $n$ d'une loi d'espérance $\\mu$, de variance $V$ et d'écart type $\\sigma$ : $E(S_n) = n\\mu$ et $V(S_n) = nV$ ; $E(M_n) = \\mu$, $V(M_n) = \\dfrac{V}{n}$ et $\\sigma(M_n) = \\dfrac{\\sigma}{\\sqrt{n}}$.",
+    "conditions": "$X_1, \\dots, X_n$ indépendantes et de même loi ; $S_n = X_1 + \\dots + X_n$ et $M_n = \\dfrac{S_n}{n}$.",
+    "exemple": "Roue à $0$, $3$ ou $6$ points : $\\mu = 3$ et $V = 6$. Pour $100$ tours, $E(S) = 300$, $V(M) = 0{,}06$ et $\\sigma(M) \\approx 0{,}24$.",
+    "simplifie": {
+      "coeur": "$E(M_n) = \\mu$ ; $V(M_n) = \\dfrac{V}{n}$ ; $\\sigma(M_n) = \\dfrac{\\sigma}{\\sqrt{n}}$",
+      "moyenMemo": "Même centre, écart type divisé par racine de n.",
+      "motCle": "moyenne-echantillon"
+    }
+  },
+  {
+    "id": "m-sommes-variables-aleatoires-concentration",
+    "chapitre": "sommes-variables-aleatoires",
+    "notion": "n-sommes-variables-aleatoires-concentration",
+    "genre": "propriete",
+    "titre": "Inégalité de concentration, taille d'échantillon",
+    "enonce": "Pour la moyenne $M_n$ d'un échantillon de taille $n$ d'une loi d'espérance $\\mu$ et de variance $V$, et tout $\\delta > 0$ : $P(\\lvert M_n - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V}{n\\delta^2}$. Pour choisir une taille d'échantillon : résoudre $1 -\\dfrac{V}{n\\delta^2} \\geqslant$ la probabilité voulue. Loi des grands nombres : $P(\\lvert M_n - \\mu \\rvert \\geqslant \\delta)$ tend vers $0$ quand $n$ tend vers $+\\infty$.",
+    "conditions": "$\\delta > 0$ ; $M_n$ est la moyenne de $n$ variables indépendantes de même loi.",
+    "exemple": "$\\mu = 120$, $V = 81$, $\\delta = 6$ : $1 - \\dfrac{81}{36n} \\geqslant 0{,}85$ équivaut à $n \\geqslant 15$.",
+    "simplifie": {
+      "coeur": "$P(\\lvert M_n - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V}{n\\delta^2}$",
+      "moyenMemo": "Bienaymé-Tchebychev appliquée à la moyenne, dont la variance est divisée par $n$.",
+      "motCle": "concentration"
+    }
+  }
+]

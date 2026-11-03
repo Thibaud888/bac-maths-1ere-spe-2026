@@ -1,0 +1,917 @@
+[
+  {
+    "id": "tb-sommes-variables-aleatoires-001",
+    "chapitre": "sommes-variables-aleatoires",
+    "notions": [
+      "n-sommes-variables-aleatoires-bienayme-tchebychev",
+      "n-sommes-variables-aleatoires-variance",
+      "n-sommes-variables-aleatoires-binomiale",
+      "n-sommes-variables-aleatoires-esperance"
+    ],
+    "capacites": [
+      "bo-m-bernoulli-05",
+      "bo-m-bernoulli-06",
+      "bo-m-bernoulli-08",
+      "bo-m-sommes-03",
+      "bo-m-sommes-01",
+      "bo-m-sommes-06",
+      "bo-m-sommes-02",
+      "bo-m-sommes-07",
+      "bo-m-concentration-01"
+    ],
+    "titre": "Un week-end nautique : chutes en paddle, puis temps d'attente",
+    "points": 5,
+    "duree": 45,
+    "calculatrice": true,
+    "ordre": 10,
+    "source": {
+      "annale": "an-2025-metropole-juin-j2",
+      "adaptation": "Exercice 1 (5 points) : structure reprise (partie A : arbre pondéré, probabilités totales, loi binomiale, probabilité « au moins », espérance ; partie B : temps d'attente total $T = T_1 + T_2$ de deux variables indépendantes, espérance, variance, inégalité de Bienaymé-Tchebychev) et formulations « Montrer que la variance $V(T)$ de la variable aléatoire $T$ est égale à… » et « strictement compris entre … minutes » reprises ; contexte (centre de loisirs nautiques, paddle) et données modifiés : $P(A) = 0{,}5$, $0{,}4$ et $0{,}2$ ; loi $\\mathcal{B}(100\\,;\\,0{,}4)$ ; $E(T_1) = 45$, $\\sigma(T_1) = 12$, $E(T_2) = 55$, $\\sigma(T_2) = 9$ ; intervalle $]60\\,;\\,140[$ et seuil $0{,}85$. Question retirée : la probabilité conditionnelle de ne pas avoir chuté à la première séance sachant qu'on n'a pas chuté à la deuxième (partie A, question 4). Ajouts : variance de $X$, écart type de $T$, majoration « au plus $50$ ou au moins $150$ minutes » (question 6). Calculatrice autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Les deux parties peuvent être traitées indépendamment.\n\nUn centre de loisirs nautiques accueille des personnes pour un week-end. Les probabilités demandées seront arrondies au millième si nécessaire.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Partie A.** Le centre propose une initiation au paddle en deux séances. On choisit au hasard une personne inscrite à cette initiation et on note :\n\n- $A$ l'événement « la personne chute pendant la première séance » ;\n- $B$ l'événement « la personne chute pendant la deuxième séance ».\n\nOn admet que $P(A) = 0{,}5$. De plus :\n\n- si la personne chute pendant la première séance, la probabilité qu'elle chute pendant la deuxième est $0{,}4$ ;\n- si elle ne chute pas pendant la première séance, la probabilité qu'elle chute pendant la deuxième est $0{,}2$.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Représenter la situation par un arbre pondéré.",
+            "points": 0.25,
+            "revoir": "l-loi-binomiale-007",
+            "indices": [
+              "Le premier niveau de l'arbre porte la première séance ($A$ ou $\\overline{A}$), le second la deuxième séance. Les nombres $0{,}4$ et $0{,}2$ sont-ils des probabilités simples, ou des probabilités sachant $A$ ou $\\overline{A}$ ?"
+            ],
+            "attenduCorrecteur": "- Premier niveau $P(A) = P(\\overline{A}) = 0{,}5$ ; second niveau $P_A(B) = 0{,}4$, $P_A(\\overline{B}) = 0{,}6$, $P_{\\overline{A}}(B) = 0{,}2$ et $P_{\\overline{A}}(\\overline{B}) = 0{,}8$, placées sur les bonnes branches : 0,25 pt.",
+            "solution": "On a $P(A) = 0{,}5$, donc $P(\\overline{A}) = 1 - 0{,}5 = 0{,}5$.\n\nLes deux autres données sont des probabilités conditionnelles : on sait si la personne a chuté ou non pendant la première séance. Ainsi $P_A(B) = 0{,}4$, donc $P_A(\\overline{B}) = 1 - 0{,}4 = 0{,}6$ ; et $P_{\\overline{A}}(B) = 0{,}2$, donc $P_{\\overline{A}}(\\overline{B}) = 1 - 0{,}2 = 0{,}8$.\n\nL'arbre pondéré :\n\n- branche $A$, de probabilité $0{,}5$, suivie de $B$ ($0{,}4$) ou de $\\overline{B}$ ($0{,}6$) ;\n- branche $\\overline{A}$, de probabilité $0{,}5$, suivie de $B$ ($0{,}2$) ou de $\\overline{B}$ ($0{,}8$).",
+            "erreurFrequente": "Placer $0{,}4$ comme probabilité de $B$ au premier niveau : c'est la probabilité de chuter à la deuxième séance **sachant** qu'on a chuté à la première, $P_A(B)$. Elle se place sur la branche qui va de $A$ à $B$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Calculer la probabilité $P(\\overline{A} \\cap \\overline{B})$ et interpréter le résultat.\n\nSaisis la valeur exacte ; l'interprétation est à rédiger.",
+            "points": 0.25,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.4,
+              "tolerance": 0.0005
+            },
+            "revoir": "l-loi-binomiale-007",
+            "indices": [
+              "$\\overline{A} \\cap \\overline{B}$ est un chemin de l'arbre : multiplie les probabilités des branches qui le composent."
+            ],
+            "attenduCorrecteur": "- $P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A}) \\times P_{\\overline{A}}(\\overline{B}) = 0{,}5 \\times 0{,}8 = 0{,}4$, interprété comme la probabilité qu'une personne ne chute à aucune des deux séances : 0,25 pt.",
+            "solution": "D'après l'arbre, $P(\\overline{A} \\cap \\overline{B}) = P(\\overline{A}) \\times P_{\\overline{A}}(\\overline{B}) = 0{,}5 \\times 0{,}8 = 0{,}4$.\n\nLa probabilité qu'une personne inscrite ne chute ni pendant la première séance, ni pendant la deuxième, est $0{,}4$."
+          },
+          {
+            "id": "q1c",
+            "label": "c)",
+            "enonce": "Montrer que $P(B) = 0{,}3$.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-007",
+            "indices": [
+              "Deux chemins de l'arbre aboutissent à $B$ : la formule des probabilités totales additionne leurs probabilités.",
+              "Calcule $P(A \\cap B)$ et $P(\\overline{A} \\cap B)$, chacune comme le produit des probabilités des branches de son chemin."
+            ],
+            "attenduCorrecteur": "- $A$ et $\\overline{A}$ forment une partition de l'univers ; formule des probabilités totales citée : 0,25 pt.\n- $P(A \\cap B) = 0{,}5 \\times 0{,}4 = 0{,}2$ et $P(\\overline{A} \\cap B) = 0{,}5 \\times 0{,}2 = 0{,}1$, d'où $P(B) = 0{,}3$ : 0,25 pt.",
+            "solution": "Les événements $A$ et $\\overline{A}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$P(B) = P(A \\cap B) + P(\\overline{A} \\cap B) = 0{,}5 \\times 0{,}4 + 0{,}5 \\times 0{,}2 = 0{,}2 + 0{,}1 = 0{,}3.$$"
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On choisit au hasard un échantillon de $100$ personnes inscrites à l'initiation ; le nombre d'inscrits est assez grand pour assimiler ce choix à un tirage avec remise. On note $X$ la variable aléatoire égale au nombre de personnes de l'échantillon qui ne chutent ni pendant la première séance, ni pendant la deuxième. On admet que la probabilité qu'une personne ne chute à aucune des deux séances est $0{,}4$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Justifier que $X$ suit une loi binomiale dont on précisera les paramètres.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-039",
+            "indices": [
+              "Choisir une personne est une épreuve de Bernoulli : nomme le succès et donne sa probabilité, puis dis pourquoi les $100$ choix sont identiques et indépendants."
+            ],
+            "attenduCorrecteur": "- Épreuve de Bernoulli : choisir une personne, succès « elle ne chute à aucune des deux séances », de probabilité $0{,}4$ : 0,25 pt.\n- $100$ répétitions identiques et indépendantes (tirage avec remise) ; $X$ compte les succès, donc $X$ suit la loi $\\mathcal{B}(100\\,;\\,0{,}4)$ : 0,25 pt.",
+            "solution": "Choisir une personne inscrite est une épreuve de Bernoulli : le succès « la personne ne chute à aucune des deux séances » a la probabilité $0{,}4$. Le choix de l'échantillon est assimilé à un tirage avec remise : on répète $100$ fois cette épreuve, dans les mêmes conditions et de façon indépendante. C'est un schéma de Bernoulli de paramètres $100$ et $0{,}4$.\n\n$X$ compte le nombre de succès de ce schéma, donc $X$ suit la loi binomiale $\\mathcal{B}(100\\,;\\,0{,}4)$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Calculer la probabilité qu'au moins $35$ personnes de l'échantillon ne chutent à aucune des deux séances.\n\nSaisis la valeur arrondie au millième ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.87,
+              "tolerance": 0.001,
+              "decimales": 3
+            },
+            "revoir": "l-loi-binomiale-050",
+            "indices": [
+              "« Au moins $35$ » se traduit par $X \\geqslant 35$. La calculatrice donne les probabilités cumulées $P(X \\leqslant k)$ : passe par l'événement contraire.",
+              "Le contraire de $X \\geqslant 35$ est $X \\leqslant 34$ : calcule $P(X \\leqslant 34)$ avec la loi $\\mathcal{B}(100\\,;\\,0{,}4)$ de ta calculatrice, puis retranche-la de $1$."
+            ],
+            "attenduCorrecteur": "- Traduction $P(X \\geqslant 35) = 1 - P(X \\leqslant 34)$ : 0,25 pt.\n- Calcul à la calculatrice : $P(X \\leqslant 34) \\approx 0{,}130$, donc $P(X \\geqslant 35) \\approx 0{,}870$, avec une phrase de conclusion : 0,25 pt.",
+            "solution": "On cherche $P(X \\geqslant 35)$. L'événement contraire de $X \\geqslant 35$ est $X \\leqslant 34$, donc :\n\n$$P(X \\geqslant 35) = 1 - P(X \\leqslant 34).$$\n\nÀ la calculatrice, avec la loi $\\mathcal{B}(100\\,;\\,0{,}4)$ : $P(X \\leqslant 34) \\approx 0{,}130\\,3$. Donc $P(X \\geqslant 35) \\approx 0{,}870$.\n\nLa probabilité qu'au moins $35$ personnes de l'échantillon ne chutent à aucune des deux séances est environ $0{,}870$.",
+            "erreurFrequente": "Écrire $P(X \\geqslant 35) = 1 - P(X \\leqslant 35)$ : on retire alors aussi $P(X = 35)$, qui fait partie de l'événement cherché. Le contraire de « au moins $35$ » est « au plus $34$ »."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "Calculer l'espérance et la variance de $X$. Interpréter l'espérance dans le contexte de l'exercice.\n\nSaisis la variance $V(X)$ ; l'espérance et l'interprétation sont à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 24,
+              "tolerance": 0
+            },
+            "revoir": "l-sommes-variables-aleatoires-025",
+            "indices": [
+              "Pour une variable de loi $\\mathcal{B}(n\\,;\\,p)$, le cours donne l'espérance et la variance en fonction de $n$ et de $p$ : remplace par les paramètres trouvés à la question a)."
+            ],
+            "attenduCorrecteur": "- $E(X) = np = 100 \\times 0{,}4 = 40$ et $V(X) = np(1 - p) = 100 \\times 0{,}4 \\times 0{,}6 = 24$ : 0,25 pt.\n- Interprétation : sur un grand nombre d'échantillons de $100$ personnes, il y a en moyenne $40$ personnes par échantillon qui ne chutent à aucune séance : 0,25 pt.",
+            "solution": "$X$ suit la loi $\\mathcal{B}(100\\,;\\,0{,}4)$, donc :\n\n$$E(X) = np = 100 \\times 0{,}4 = 40$$\n\net\n\n$$V(X) = np(1 - p) = 100 \\times 0{,}4 \\times 0{,}6$$\n\nsoit $V(X) = 24$.\n\nInterprétation : si l'on prélève un grand nombre d'échantillons de $100$ personnes inscrites, le nombre moyen, par échantillon, de personnes qui ne chutent à aucune des deux séances est proche de $40$.",
+            "erreurFrequente": "Annoncer qu'« il y aura $40$ personnes qui ne chutent pas » : l'espérance est une moyenne sur un grand nombre d'échantillons, pas une prédiction pour un échantillon donné."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "**Partie B.** On choisit au hasard une personne venue au centre pour un week-end. On note $T_1$ la variable aléatoire égale à son temps total d'attente, en minute, avant les activités du samedi, et $T_2$ la variable aléatoire égale à son temps total d'attente, en minute, avant les activités du dimanche. On admet que :\n\n- $T_1$ a pour espérance $E(T_1) = 45$ et pour écart type $\\sigma(T_1) = 12$ ;\n- $T_2$ a pour espérance $E(T_2) = 55$ et pour écart type $\\sigma(T_2) = 9$ ;\n- les variables aléatoires $T_1$ et $T_2$ sont indépendantes.\n\nOn note $T = T_1 + T_2$ le temps total d'attente de cette personne sur le week-end, en minute.\n\nDéterminer l'espérance $E(T)$ de la variable aléatoire $T$. Interpréter le résultat dans le contexte de l'exercice.\n\nSaisis la valeur de $E(T)$ ; l'interprétation est à rédiger.",
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 100,
+          "tolerance": 0
+        },
+        "revoir": "l-sommes-variables-aleatoires-005",
+        "indices": [
+          "La linéarité de l'espérance s'applique à la somme $T_1 + T_2$, que les variables soient indépendantes ou non."
+        ],
+        "attenduCorrecteur": "- Linéarité de l'espérance citée : $E(T) = E(T_1) + E(T_2) = 45 + 55 = 100$ : 0,25 pt.\n- Interprétation : sur un grand nombre de personnes, le temps total d'attente moyen sur le week-end est proche de $100$ minutes : 0,25 pt.",
+        "solution": "Par linéarité de l'espérance, $E(T) = E(T_1 + T_2) = E(T_1) + E(T_2) = 45 + 55 = 100$.\n\nInterprétation : sur un grand nombre de personnes venues pour un week-end, le temps total d'attente moyen avant les activités est proche de $100$ minutes, soit $1$ h $40$ min."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Montrer que la variance $V(T)$ de la variable aléatoire $T$ est égale à $225$. En déduire l'écart type $\\sigma(T)$.\n\nSaisis la valeur de $\\sigma(T)$ ; la démonstration est à rédiger.",
+        "points": 0.5,
+        "reponse": {
+          "type": "numerique",
+          "valeur": 15,
+          "tolerance": 0
+        },
+        "revoir": "l-sommes-variables-aleatoires-017",
+        "indices": [
+          "$T_1$ et $T_2$ sont indépendantes : la variance de leur somme est la somme de leurs variances. Mais l'énoncé donne des écarts types : comment obtient-on une variance à partir d'un écart type ?",
+          "$V(T_1) = \\sigma(T_1)^2 = 12^2$ ; fais de même pour $T_2$, additionne, puis prends la racine carrée pour obtenir l'écart type."
+        ],
+        "attenduCorrecteur": "- $V(T_1) = 12^2 = 144$ et $V(T_2) = 9^2 = 81$ : 0,25 pt.\n- $T_1$ et $T_2$ indépendantes, donc $V(T) = V(T_1) + V(T_2) = 225$ ; $\\sigma(T) = \\sqrt{225} = 15$ : 0,25 pt.",
+        "solution": "La variance est le carré de l'écart type : $V(T_1) = 12^2 = 144$ et $V(T_2) = 9^2 = 81$.\n\nLes variables $T_1$ et $T_2$ sont indépendantes, donc la variance de leur somme est la somme de leurs variances :\n\n$$V(T) = V(T_1) + V(T_2) = 144 + 81 = 225.$$\n\nOn en déduit $\\sigma(T) = \\sqrt{225} = 15$ minutes.",
+        "erreurFrequente": "Additionner les écarts types : $12 + 9 = 21$. Pour des variables indépendantes, ce sont les **variances** qui s'additionnent ; l'écart type de la somme vaut $\\sqrt{144 + 81} = 15$, moins que $21$."
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "À l'aide de l'inégalité de Bienaymé-Tchebychev, montrer que, pour une personne choisie au hasard parmi celles venues un week-end au centre, la probabilité que son temps total d'attente $T$ soit strictement compris entre $60$ et $140$ minutes est supérieure à $0{,}85$.",
+        "points": 0.75,
+        "revoir": "l-sommes-variables-aleatoires-051",
+        "indices": [
+          "L'intervalle $]60\\,;\\,140[$ est centré en l'espérance de $T$ : traduis « $60 < T < 140$ » par une inégalité sur l'écart $\\lvert T - 100 \\rvert$, avec la bonne demi-largeur $\\delta$.",
+          "L'inégalité de Bienaymé-Tchebychev majore $P(\\lvert T - 100 \\rvert \\geqslant \\delta)$, alors qu'on veut l'événement contraire : passe au contraire, puis compare la minoration obtenue à $0{,}85$."
+        ],
+        "attenduCorrecteur": "- Traduction : $60 < T < 140 \\iff \\lvert T - 100 \\rvert < 40$ (centre $E(T) = 100$, $\\delta = 40$) : 0,25 pt.\n- Inégalité de Bienaymé-Tchebychev citée et appliquée : $P(\\lvert T - 100 \\rvert \\geqslant 40) \\leqslant \\dfrac{225}{40^2} = 0{,}140\\,625$ : 0,25 pt.\n- Passage au contraire : $P(60 < T < 140) \\geqslant 1 - 0{,}140\\,625 = 0{,}859\\,375 > 0{,}85$, et conclusion rédigée : 0,25 pt.",
+        "solution": "L'intervalle $]60\\,;\\,140[$ est centré en $E(T) = 100$, car $60 = 100 - 40$ et $140 = 100 + 40$. Donc $60 < T < 140$ équivaut à $\\lvert T - 100 \\rvert < 40$.\n\nD'après l'inégalité de Bienaymé-Tchebychev, avec $\\delta = 40$ :\n\n$$P\\big(\\lvert T - 100 \\rvert \\geqslant 40\\big) \\leqslant \\dfrac{V(T)}{40^2} = \\dfrac{225}{1\\,600} = 0{,}140\\,625.$$\n\nEn passant à l'événement contraire :\n\n$$P(60 < T < 140) = 1 - P\\big(\\lvert T - 100 \\rvert \\geqslant 40\\big) \\geqslant 1 - 0{,}140\\,625 = 0{,}859\\,375.$$\n\nComme $0{,}859\\,375 > 0{,}85$, la probabilité que le temps total d'attente d'une personne soit strictement compris entre $60$ et $140$ minutes est supérieure à $0{,}85$.",
+        "erreurFrequente": "Conclure $P(60 < T < 140) \\leqslant 0{,}140\\,625$ : l'inégalité majore la probabilité d'être **loin** de l'espérance. Pour être **proche**, il faut passer à l'événement contraire."
+      },
+      {
+        "id": "q6",
+        "label": "6.",
+        "enonce": "Le directeur du centre affirme : « La probabilité que le temps total d'attente d'une personne sur le week-end soit inférieur ou égal à $50$ minutes, ou supérieur ou égal à $150$ minutes, est inférieure à $0{,}1$. »\n\nL'inégalité de Bienaymé-Tchebychev permet-elle de justifier cette affirmation ? Justifier.",
+        "points": 0.75,
+        "revoir": "l-sommes-variables-aleatoires-052",
+        "indices": [
+          "Les bornes $50$ et $150$ sont à la même distance de $E(T) = 100$ : écris l'événement « $T \\leqslant 50$ ou $T \\geqslant 150$ » avec l'écart $\\lvert T - 100 \\rvert$.",
+          "Cet événement est « loin » de l'espérance : applique directement l'inégalité de Bienaymé-Tchebychev, sans passer au contraire, puis compare le majorant obtenu à $0{,}1$."
+        ],
+        "attenduCorrecteur": "- Traduction : « $T \\leqslant 50$ ou $T \\geqslant 150$ » équivaut à $\\lvert T - 100 \\rvert \\geqslant 50$ : 0,25 pt.\n- Inégalité de Bienaymé-Tchebychev avec $\\delta = 50$ : $P(\\lvert T - 100 \\rvert \\geqslant 50) \\leqslant \\dfrac{225}{50^2} = 0{,}09$ : 0,25 pt.\n- Conclusion : $0{,}09 < 0{,}1$, l'affirmation est justifiée : 0,25 pt.",
+        "solution": "On a $50 = 100 - 50$ et $150 = 100 + 50$ : l'événement « $T \\leqslant 50$ ou $T \\geqslant 150$ » est l'événement $\\lvert T - 100 \\rvert \\geqslant 50$.\n\nD'après l'inégalité de Bienaymé-Tchebychev, avec $\\delta = 50$ :\n\n$$P\\big(\\lvert T - 100 \\rvert \\geqslant 50\\big) \\leqslant \\dfrac{V(T)}{50^2} = \\dfrac{225}{2\\,500} = 0{,}09.$$\n\nComme $0{,}09 < 0{,}1$, la probabilité qu'une personne attende au total au plus $50$ minutes ou au moins $150$ minutes est inférieure à $0{,}1$ : l'inégalité de Bienaymé-Tchebychev justifie l'affirmation du directeur."
+      }
+    ]
+  },
+  {
+    "id": "tb-sommes-variables-aleatoires-002",
+    "chapitre": "sommes-variables-aleatoires",
+    "notions": [
+      "n-sommes-variables-aleatoires-esperance",
+      "n-sommes-variables-aleatoires-variance",
+      "n-sommes-variables-aleatoires-echantillon",
+      "n-sommes-variables-aleatoires-concentration"
+    ],
+    "capacites": [
+      "bo-m-bernoulli-05",
+      "bo-m-sommes-05",
+      "bo-m-sommes-01",
+      "bo-m-sommes-06",
+      "bo-m-sommes-02",
+      "bo-m-sommes-07",
+      "bo-m-sommes-04",
+      "bo-m-concentration-02",
+      "bo-m-concentration-04",
+      "bo-m-concentration-03",
+      "bo-m-suites-03"
+    ],
+    "titre": "Une traversée en ferry : le montant moyen payé par un échantillon de familles",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 20,
+    "source": {
+      "annale": "an-2026-metropole-juin-j1",
+      "adaptation": "Exercice 1 (5 points) : contexte du navire (cabine, emplacement pour un véhicule, suppléments et extras, remise exceptionnelle, échantillon de $n$ familles) et structure repris, ainsi que les formulations « Une famille a réservé une cabine. Déterminer la probabilité qu'elle réserve un emplacement pour un véhicule. » et « Déterminer le plus petit entier $n$ pour lequel l'inégalité … permet d'affirmer que … » ; données modifiées : $40\\,\\%$, $75\\,\\%$ et $60\\,\\%$ ; suppléments de $100$ et $50$ euros ; $E(Y) = 70$ et $V(Y) = 1\\,400$ ; remise de $20\\,\\%$ ; intervalle $]110\\,;\\,130[$ et seuil $0{,}9$. Questions retirées : « Donner $P(C)$ », l'arbre à compléter et la probabilité conditionnelle arrondie à $10^{-2}$ (partie A, questions 1 et 4). Ajouts : indépendance de $V$ et $C$, écriture $X = 100U + 50W$ et espérance par linéarité, erreur d'additivité des variances, limite par la loi des grands nombres. Exercice porté à 6 points. Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Un navire assure la liaison entre deux ports. Lors d'une traversée, une famille peut réserver une cabine et un emplacement pour un véhicule.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Partie A.** Parmi les familles qui effectuent la traversée, $40\\,\\%$ réservent un emplacement pour un véhicule et, parmi ces dernières, $75\\,\\%$ réservent une cabine. Par ailleurs, $60\\,\\%$ des familles qui effectuent la traversée réservent une cabine.\n\nOn choisit au hasard une famille qui effectue la traversée. On note $V$ l'événement « la famille réserve un emplacement pour un véhicule » et $C$ l'événement « la famille réserve une cabine ».",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Calculer la probabilité qu'une famille réserve un emplacement pour un véhicule et une cabine.\n\nSaisis la valeur exacte ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.3,
+              "tolerance": 0.0005
+            },
+            "revoir": "l-loi-binomiale-007",
+            "indices": [
+              "Traduis les trois pourcentages : lesquels sont des probabilités simples, lequel est une probabilité sachant $V$ ? L'événement cherché est $V \\cap C$.",
+              "La probabilité d'un chemin de l'arbre est le produit des probabilités de ses branches : $P(V \\cap C) = P(V) \\times P_V(C)$."
+            ],
+            "attenduCorrecteur": "- Données traduites : $P(V) = 0{,}4$, $P_V(C) = 0{,}75$ et $P(C) = 0{,}6$ : 0,25 pt.\n- $P(V \\cap C) = P(V) \\times P_V(C) = 0{,}4 \\times 0{,}75 = 0{,}3$ : 0,25 pt.",
+            "solution": "L'énoncé donne $P(V) = 0{,}4$, $P_V(C) = 0{,}75$ (parmi les familles qui réservent un emplacement) et $P(C) = 0{,}6$ (parmi toutes les familles).\n\nDonc $P(V \\cap C) = P(V) \\times P_V(C) = 0{,}4 \\times 0{,}75 = 0{,}3$. La probabilité qu'une famille réserve un emplacement pour un véhicule et une cabine est $0{,}3$.",
+            "erreurFrequente": "Calculer $0{,}4 \\times 0{,}6 = 0{,}24$ : c'est $P(V) \\times P(C)$, qui ne vaut $P(V \\cap C)$ que si les événements sont indépendants. Le $75\\,\\%$ est une probabilité sachant $V$, c'est lui qui va sur le chemin."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Une famille a réservé une cabine. Déterminer la probabilité qu'elle réserve un emplacement pour un véhicule.\n\nSaisis la valeur exacte ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.5,
+              "tolerance": 0.0005
+            },
+            "revoir": "l-loi-binomiale-002",
+            "indices": [
+              "On sait que la famille a réservé une cabine : la probabilité cherchée est conditionnée par $C$. Écris-la avec la notation du cours, puis applique la définition d'une probabilité conditionnelle."
+            ],
+            "attenduCorrecteur": "- Probabilité cherchée identifiée et définition écrite : $P_C(V) = \\dfrac{P(V \\cap C)}{P(C)}$ : 0,25 pt.\n- Calcul $P_C(V) = \\dfrac{0{,}3}{0{,}6} = 0{,}5$ et phrase de conclusion : 0,25 pt.",
+            "solution": "On cherche $P_C(V)$. Par définition d'une probabilité conditionnelle :\n\n$$P_C(V) = \\dfrac{P(V \\cap C)}{P(C)} = \\dfrac{0{,}3}{0{,}6} = 0{,}5.$$\n\nUne famille qui a réservé une cabine réserve aussi un emplacement pour un véhicule avec la probabilité $0{,}5$.",
+            "erreurFrequente": "Répondre $0{,}75$ : c'est $P_V(C)$, la probabilité de réserver une cabine **sachant** qu'on réserve un emplacement, et non $P_C(V)$."
+          },
+          {
+            "id": "q1c",
+            "label": "c)",
+            "enonce": "Les événements $V$ et $C$ sont-ils indépendants ? Justifier.",
+            "points": 0.5,
+            "revoir": "l-loi-binomiale-002",
+            "indices": [
+              "Deux événements $V$ et $C$ sont indépendants quand $P(V \\cap C) = P(V) \\times P(C)$ : calcule le produit et compare-le au résultat de la question a)."
+            ],
+            "attenduCorrecteur": "- Critère cité : $V$ et $C$ sont indépendants si et seulement si $P(V \\cap C) = P(V) \\times P(C)$ : 0,25 pt.\n- $P(V) \\times P(C) = 0{,}4 \\times 0{,}6 = 0{,}24 \\neq 0{,}3$ : les événements ne sont pas indépendants : 0,25 pt.",
+            "solution": "Les événements $V$ et $C$ sont indépendants si et seulement si $P(V \\cap C) = P(V) \\times P(C)$. Or $P(V) \\times P(C) = 0{,}4 \\times 0{,}6 = 0{,}24$, alors que $P(V \\cap C) = 0{,}3$.\n\nLes événements $V$ et $C$ ne sont donc pas indépendants. La question b) le montre aussi : savoir que la famille a réservé une cabine fait passer la probabilité qu'elle réserve un emplacement de $0{,}4$ à $0{,}5$."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "**Partie B.** La cabine et l'emplacement pour un véhicule sont facturés en supplément de la traversée : $100$ euros pour une cabine, $50$ euros pour un emplacement. Une famille réserve au plus une cabine et au plus un emplacement.\n\nOn note $X$ la variable aléatoire qui, à une famille choisie au hasard, associe le prix total de ses suppléments, en euro. On note $U$ la variable aléatoire égale à $1$ si la famille réserve une cabine et à $0$ sinon, et $W$ la variable aléatoire égale à $1$ si elle réserve un emplacement pour un véhicule et à $0$ sinon.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Justifier que $X = 100U + 50W$, puis en déduire l'espérance $E(X)$.\n\nSaisis la valeur de $E(X)$ ; la justification est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 80,
+              "tolerance": 0
+            },
+            "revoir": "l-sommes-variables-aleatoires-007",
+            "indices": [
+              "Que vaut $100U$ quand la famille réserve une cabine, et quand elle n'en réserve pas ? Fais de même pour $50W$, puis additionne.",
+              "Pour l'espérance, inutile de chercher la loi de $X$ : la linéarité donne $E(X) = 100E(U) + 50E(W)$. Une variable qui vaut $1$ ou $0$ suit une loi de Bernoulli : son espérance est la probabilité qu'elle vaille $1$."
+            ],
+            "attenduCorrecteur": "- $100U$ est le prix payé pour la cabine ($100$ ou $0$ euro) et $50W$ celui de l'emplacement ($50$ ou $0$ euro), donc $X = 100U + 50W$ : 0,25 pt.\n- $E(U) = P(C) = 0{,}6$, $E(W) = P(V) = 0{,}4$ et, par linéarité, $E(X) = 100 \\times 0{,}6 + 50 \\times 0{,}4 = 80$ : 0,25 pt.",
+            "solution": "$100U$ vaut $100$ si la famille réserve une cabine et $0$ sinon : c'est le prix payé pour la cabine. De même, $50W$ est le prix payé pour l'emplacement. Le prix total des suppléments est leur somme : $X = 100U + 50W$.\n\n$U$ suit la loi de Bernoulli de paramètre $P(C) = 0{,}6$, donc $E(U) = 0{,}6$ ; de même $E(W) = P(V) = 0{,}4$. Par linéarité de l'espérance :\n\n$$E(X) = 100E(U) + 50E(W) = 100 \\times 0{,}6 + 50 \\times 0{,}4 = 60 + 20 = 80.$$\n\nEn moyenne, une famille paie $80$ euros de suppléments."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "On admet que la loi de $X$ est donnée par le tableau ci-dessous.\n\n| $x_i$ | $0$ | $50$ | $100$ | $150$ |\n|---|---|---|---|---|\n| $P(X = x_i)$ | $0{,}3$ | $0{,}1$ | $0{,}3$ | $0{,}3$ |\n\nMontrer que la variance de $X$ est $V(X) = 3\\,600$.",
+            "points": 0.5,
+            "revoir": "l-sommes-variables-aleatoires-002",
+            "indices": [
+              "Applique la définition de la variance : la somme des carrés des écarts à l'espérance $E(X) = 80$, chacun multiplié par sa probabilité.",
+              "Calcule les quatre écarts $0 - 80$, $50 - 80$, $100 - 80$ et $150 - 80$, élève-les au carré, multiplie chacun par sa probabilité, puis additionne."
+            ],
+            "attenduCorrecteur": "- Formule de la variance posée avec $E(X) = 80$ : 0,25 pt.\n- Calcul : $6\\,400 \\times 0{,}3 + 900 \\times 0{,}1 + 400 \\times 0{,}3 + 4\\,900 \\times 0{,}3 = 1\\,920 + 90 + 120 + 1\\,470 = 3\\,600$ : 0,25 pt.",
+            "solution": "Par définition, avec $E(X) = 80$ :\n\n$$V(X) = (0 - 80)^2 \\times 0{,}3 + (50 - 80)^2 \\times 0{,}1 + (100 - 80)^2 \\times 0{,}3 + (150 - 80)^2 \\times 0{,}3.$$\n\nDonc $V(X) = 6\\,400 \\times 0{,}3 + 900 \\times 0{,}1 + 400 \\times 0{,}3 + 4\\,900 \\times 0{,}3 = 1\\,920 + 90 + 120 + 1\\,470 = 3\\,600$."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "Un élève écrit : « $V(X) = V(100U) + V(50W) = 100^2 \\times 0{,}6 \\times 0{,}4 + 50^2 \\times 0{,}4 \\times 0{,}6 = 3\\,000$. » Expliquer pourquoi son raisonnement est faux.",
+            "points": 0.5,
+            "revoir": "l-sommes-variables-aleatoires-017",
+            "indices": [
+              "Quelle hypothèse faut-il vérifier avant d'écrire que la variance d'une somme est la somme des variances ? L'énoncé la donne-t-il pour $U$ et $W$ ?",
+              "$U = 1$ signifie que l'événement $C$ est réalisé, et $W = 1$ que l'événement $V$ l'est. Si $U$ et $W$ étaient liées à deux épreuves indépendantes, $P(V \\cap C)$ serait le produit $P(C) \\times P(V)$ : que dit la question 1. c) ?"
+            ],
+            "attenduCorrecteur": "- L'additivité des variances exige des variables indépendantes (liées à des épreuves indépendantes, ou dont l'énoncé donne l'indépendance) : 0,25 pt.\n- Cette hypothèse n'est ni donnée ni satisfaite : $U = 1$ correspond à $C$ et $W = 1$ à $V$, or $P(V \\cap C) = 0{,}3 \\neq P(C) \\times P(V) = 0{,}24$ (question 1. c)) ; l'additivité ne s'applique pas, et $3\\,000$ n'est pas la variance de $X$ (qui vaut $3\\,600$, question b)) : 0,25 pt. Accepter toute explication qui s'appuie sur la question 1. c) (ou 1. b) : $P_C(V) = 0{,}5 \\neq P(V) = 0{,}4$) ou sur la contradiction avec la question b).",
+            "solution": "L'élève utilise l'additivité des variances, $V(100U + 50W) = V(100U) + V(50W)$. Cette propriété n'est valable que pour des variables indépendantes : liées à des épreuves indépendantes, ou dont l'énoncé donne l'indépendance. Ici, l'énoncé ne dit pas que $U$ et $W$ sont indépendantes, et les résultats de la partie A montrent qu'on ne peut pas les traiter comme telles.\n\nEn effet, $U = 1$ signifie que l'événement $C$ est réalisé, et $W = 1$ que l'événement $V$ l'est. Si $U$ et $W$ étaient liées à deux épreuves indépendantes, la probabilité que $U$ et $W$ valent toutes deux $1$ serait le produit $P(C) \\times P(V) = 0{,}6 \\times 0{,}4 = 0{,}24$. Or la question 1. c) montre que $P(V \\cap C) = 0{,}3 \\neq 0{,}24$ : les événements $C$ et $V$ ne sont pas indépendants. La question 1. b) le traduit : savoir qu'une famille a réservé une cabine fait passer la probabilité qu'elle réserve un emplacement de $0{,}4$ à $0{,}5$.\n\nL'additivité ne s'applique donc pas, et le résultat $3\\,000$ est faux : la question b) donne $V(X) = 3\\,600$. À la question 3, au contraire, c'est l'énoncé qui donne l'indépendance de $X$ et $Y$ : c'est elle qui permet d'y additionner les variances.\n\nSeule l'espérance se calcule par linéarité sans hypothèse d'indépendance, comme à la question a)."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Chaque famille paie aussi des extras (repas, boissons…). On note $Y$ la variable aléatoire qui, à une famille choisie au hasard, associe le prix de ses extras, en euro. On admet que $E(Y) = 70$, que $V(Y) = 1\\,400$, et que les variables $X$ et $Y$ sont indépendantes.\n\nÀ titre exceptionnel, la compagnie accorde une remise de $20\\,\\%$ sur les suppléments et sur les extras. On note $Z$ la variable aléatoire qui, à une famille choisie au hasard, associe le montant total qu'elle paie pour ses suppléments et ses extras après la remise, en euro.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Justifier que $Z = 0{,}8(X + Y)$.",
+            "points": 0.25,
+            "revoir": "l-sommes-variables-aleatoires-007",
+            "indices": [
+              "Avant la remise, la famille paie $X + Y$. Par quel nombre multiplie-t-on un prix quand on le baisse de $20\\,\\%$ ?"
+            ],
+            "attenduCorrecteur": "- Montant avant remise $X + Y$ ; baisser de $20\\,\\%$ revient à multiplier par $1 - 0{,}2 = 0{,}8$, donc $Z = 0{,}8(X + Y)$ : 0,25 pt.",
+            "solution": "Avant la remise, la famille paie $X + Y$ euros pour ses suppléments et ses extras. Baisser un prix de $20\\,\\%$ revient à le multiplier par $1 - \\dfrac{20}{100} = 0{,}8$. Donc $Z = 0{,}8(X + Y)$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "En déduire que $E(Z) = 120$ et que $V(Z) = 3\\,200$.",
+            "points": 0.75,
+            "revoir": "l-sommes-variables-aleatoires-017",
+            "indices": [
+              "Pour l'espérance, la linéarité suffit. Pour la variance, sors d'abord le coefficient $0{,}8$ : il ressort au carré.",
+              "$V(Z) = 0{,}8^2 \\times V(X + Y)$ ; puis, comme $X$ et $Y$ sont indépendantes, $V(X + Y) = V(X) + V(Y)$."
+            ],
+            "attenduCorrecteur": "- Linéarité : $E(Z) = 0{,}8\\big(E(X) + E(Y)\\big) = 0{,}8 \\times 150 = 120$ : 0,25 pt.\n- Coefficient sorti au carré : $V(Z) = 0{,}8^2 \\times V(X + Y) = 0{,}64\\,V(X + Y)$ : 0,25 pt.\n- $X$ et $Y$ indépendantes, donc $V(X + Y) = 3\\,600 + 1\\,400 = 5\\,000$ et $V(Z) = 0{,}64 \\times 5\\,000 = 3\\,200$ : 0,25 pt.",
+            "solution": "Par linéarité de l'espérance : $E(Z) = 0{,}8\\big(E(X) + E(Y)\\big) = 0{,}8 \\times (80 + 70) = 0{,}8 \\times 150 = 120$.\n\nPour tout réel $a$, $V(aS) = a^2V(S)$ ; avec $a = 0{,}8$ et $S = X + Y$ : $V(Z) = 0{,}8^2 \\times V(X + Y) = 0{,}64 \\times V(X + Y)$.\n\nLes variables $X$ et $Y$ sont indépendantes, donc $V(X + Y) = V(X) + V(Y) = 3\\,600 + 1\\,400 = 5\\,000$. Ainsi $V(Z) = 0{,}64 \\times 5\\,000 = 3\\,200$.",
+            "erreurFrequente": "Écrire $V(Z) = 0{,}8 \\times 5\\,000 = 4\\,000$ : un coefficient sort de la variance **au carré**, car chaque écart à l'espérance est multiplié par $0{,}8$, donc chaque carré d'écart par $0{,}64$."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Soit $n$ un entier naturel non nul. On choisit au hasard un échantillon de $n$ familles qui bénéficient de cette remise ; ce choix est assimilé à un tirage avec remise. Pour $i$ allant de $1$ à $n$, on note $Z_i$ le montant total payé par la $i$-ième famille de l'échantillon après la remise. On admet que les variables $Z_1, \\dots, Z_n$ sont indépendantes et suivent la même loi que $Z$.\n\nOn note $M_n = \\dfrac{Z_1 + Z_2 + \\dots + Z_n}{n}$ le montant moyen payé par les familles de l'échantillon.",
+        "points": 2,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Montrer que $E(M_n) = 120$ et que $V(M_n) = \\dfrac{3\\,200}{n}$.",
+            "points": 0.5,
+            "revoir": "l-sommes-variables-aleatoires-035",
+            "indices": [
+              "$(Z_1, \\dots, Z_n)$ est un échantillon de taille $n$ de la loi de $Z$ : utilise les formules du cours pour la moyenne $M_n$ d'un échantillon.",
+              "Tu peux aussi écrire $M_n = \\dfrac{1}{n}(Z_1 + \\dots + Z_n)$, sortir le coefficient $\\dfrac{1}{n}$ (au carré pour la variance), puis additionner les $n$ espérances et les $n$ variances."
+            ],
+            "attenduCorrecteur": "- $(Z_1, \\dots, Z_n)$ est un échantillon de taille $n$ de la loi de $Z$ (variables indépendantes de même loi) : 0,25 pt.\n- $E(M_n) = E(Z) = 120$ et $V(M_n) = \\dfrac{V(Z)}{n} = \\dfrac{3\\,200}{n}$ (ou calcul détaillé par linéarité et additivité) : 0,25 pt.",
+            "solution": "Les variables $Z_1, \\dots, Z_n$ sont indépendantes et suivent la loi de $Z$ : $(Z_1, \\dots, Z_n)$ est un échantillon de taille $n$ de cette loi, et $M_n$ est sa moyenne.\n\nPar linéarité de l'espérance : $E(M_n) = \\dfrac{1}{n}\\big(E(Z_1) + \\dots + E(Z_n)\\big) = \\dfrac{1}{n} \\times n \\times 120 = 120$.\n\nLes variables étant indépendantes, les variances s'additionnent, et le coefficient $\\dfrac{1}{n}$ sort au carré :\n\n$$V(M_n) = \\dfrac{1}{n^2}\\big(V(Z_1) + \\dots + V(Z_n)\\big) = \\dfrac{1}{n^2} \\times n \\times 3\\,200 = \\dfrac{3\\,200}{n}.$$"
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Déterminer le plus petit entier $n$ pour lequel l'inégalité de concentration permet d'affirmer que $P(110 < M_n < 130) \\geqslant 0{,}9$. Interpréter le résultat dans le contexte de l'exercice.\n\nSaisis cet entier $n$ ; la résolution et l'interprétation sont à rédiger.",
+            "points": 1,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 320,
+              "tolerance": 0
+            },
+            "revoir": "l-sommes-variables-aleatoires-063",
+            "indices": [
+              "L'intervalle $]110\\,;\\,130[$ est centré en $E(M_n) = 120$ : repère la précision $\\delta$, puis écris l'inégalité de concentration pour l'événement contraire, qui minore $P(\\lvert M_n - 120 \\rvert < \\delta)$.",
+              "Il suffit que la minoration $1 - \\dfrac{3\\,200}{n\\delta^2}$ soit supérieure ou égale à $0{,}9$ : simplifie, puis résous cette inéquation d'inconnue $n$ en multipliant par $n > 0$."
+            ],
+            "attenduCorrecteur": "- Traduction : $110 < M_n < 130 \\iff \\lvert M_n - 120 \\rvert < 10$ : 0,25 pt.\n- Inégalité de concentration citée, par passage au contraire : $P(\\lvert M_n - 120 \\rvert < 10) \\geqslant 1 - \\dfrac{3\\,200}{100n} = 1 - \\dfrac{32}{n}$ : 0,25 pt.\n- Résolution : $1 - \\dfrac{32}{n} \\geqslant 0{,}9 \\iff \\dfrac{32}{n} \\leqslant 0{,}1 \\iff n \\geqslant 320$ ; plus petit entier $n = 320$ : 0,25 pt.\n- Interprétation : dès que l'échantillon compte au moins $320$ familles, la probabilité que le montant moyen soit strictement compris entre $110$ et $130$ euros est d'au moins $0{,}9$ : 0,25 pt.",
+            "solution": "L'intervalle $]110\\,;\\,130[$ est centré en $E(M_n) = 120$, de demi-largeur $\\delta = 10$ : $110 < M_n < 130$ équivaut à $\\lvert M_n - 120 \\rvert < 10$.\n\nD'après l'inégalité de concentration appliquée à l'échantillon $(Z_1, \\dots, Z_n)$ d'une loi d'espérance $120$ et de variance $3\\,200$, par passage à l'événement contraire :\n\n$$P\\big(\\lvert M_n - 120 \\rvert < 10\\big) \\geqslant 1 - \\dfrac{3\\,200}{n \\times 10^2} = 1 - \\dfrac{32}{n}.$$\n\nCette minoration est supérieure ou égale à $0{,}9$ si et seulement si $1 - \\dfrac{32}{n} \\geqslant 0{,}9$, c'est-à-dire $\\dfrac{32}{n} \\leqslant 0{,}1$. Comme $n > 0$, cela équivaut à $32 \\leqslant 0{,}1n$, soit $n \\geqslant 320$.\n\nVérification : pour $n = 320$, $1 - \\dfrac{32}{320} = 0{,}9$ ; pour $n = 319$, $\\dfrac{32}{319} > 0{,}1$, donc la minoration est inférieure à $0{,}9$.\n\nLe plus petit entier cherché est $n = 320$. Interprétation : dès que l'échantillon compte au moins $320$ familles, la probabilité que le montant moyen payé par ces familles soit strictement compris entre $110$ et $130$ euros est supérieure ou égale à $0{,}9$.",
+            "erreurFrequente": "Oublier le carré de $\\delta$ et écrire $1 - \\dfrac{3\\,200}{10n}$ : on trouve alors $n \\geqslant 3\\,200$, dix fois trop. Dans l'inégalité de concentration, le dénominateur est $n\\delta^2 = 100n$."
+          },
+          {
+            "id": "q4c",
+            "label": "c)",
+            "enonce": "Montrer que $\\lim\\limits_{n \\to +\\infty} P\\big(\\lvert M_n - 120 \\rvert \\geqslant 10\\big) = 0$. Interpréter ce résultat.",
+            "points": 0.5,
+            "revoir": "l-sommes-variables-aleatoires-066",
+            "indices": [
+              "Encadre $P\\big(\\lvert M_n - 120 \\rvert \\geqslant 10\\big)$ : une probabilité est positive ou nulle, et l'inégalité de concentration la majore par un quotient qui dépend de $n$. Que dit alors le théorème des gendarmes ?"
+            ],
+            "attenduCorrecteur": "- Encadrement $0 \\leqslant P\\big(\\lvert M_n - 120 \\rvert \\geqslant 10\\big) \\leqslant \\dfrac{32}{n}$, $\\lim\\limits_{n \\to +\\infty} \\dfrac{32}{n} = 0$ et théorème des gendarmes cité : 0,25 pt.\n- Interprétation (loi des grands nombres) : plus l'échantillon est grand, plus il est probable que le montant moyen soit à moins de $10$ euros de $120$ euros : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$, une probabilité est positive ou nulle, et l'inégalité de concentration donne :\n\n$$0 \\leqslant P\\big(\\lvert M_n - 120 \\rvert \\geqslant 10\\big) \\leqslant \\dfrac{3\\,200}{n \\times 10^2} = \\dfrac{32}{n}.$$\n\nOr $\\lim\\limits_{n \\to +\\infty} \\dfrac{32}{n} = 0$. D'après le théorème des gendarmes, $\\lim\\limits_{n \\to +\\infty} P\\big(\\lvert M_n - 120 \\rvert \\geqslant 10\\big) = 0$.\n\nInterprétation : c'est la loi des grands nombres. Avec un très grand nombre de familles, il devient presque certain que le montant moyen qu'elles paient soit à moins de $10$ euros de l'espérance de $120$ euros."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-sommes-variables-aleatoires-003",
+    "chapitre": "sommes-variables-aleatoires",
+    "notions": [
+      "n-sommes-variables-aleatoires-variance",
+      "n-sommes-variables-aleatoires-esperance"
+    ],
+    "capacites": [
+      "bo-m-integrale-01",
+      "bo-m-integrale-03",
+      "bo-m-integrale-10",
+      "bo-m-integrale-12",
+      "bo-m-primitives-02",
+      "bo-m-bernoulli-05",
+      "bo-m-bernoulli-01",
+      "bo-m-sommes-05",
+      "bo-m-sommes-01",
+      "bo-m-sommes-06",
+      "bo-m-sommes-02",
+      "bo-m-sommes-07"
+    ],
+    "titre": "Fléchettes sur un carré : des aires aux gains de trois joueurs",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": false,
+    "ordre": 30,
+    "source": {
+      "annale": "an-2025-caledonie-j2",
+      "adaptation": "Exercice 2 (6 points) : structure reprise (aires de trois zones d'un carré par le calcul intégral, jeu de fléchettes avec pièce ou dé, probabilité conditionnelle, gain égal au numéro de la zone, somme $Y = X_1 + X_2 + X_3$ des gains de trois joueurs) et formulations « On sait que le joueur a gagné. Quelle est la probabilité que la fléchette soit tombée sur la ZONE 3 ? », « Déterminer la probabilité que l'on ait $Y = 9$ » et « Justifier que $V(Y) = \\dots$ » reprises ; parabole d'équation $y = x^2$ remplacée par la courbe d'équation $y = x^3$, d'où les aires $\\dfrac{1}{2}$, $\\dfrac{1}{4}$ et $\\dfrac{1}{4}$ (au lieu de $\\dfrac{1}{2}$, $\\dfrac{1}{3}$ et $\\dfrac{1}{6}$), $P(G) = \\dfrac{1}{4}$, $E(X_1) = \\dfrac{7}{4}$, $V(X_1) = \\dfrac{11}{16}$ et $V(Y) = \\dfrac{33}{16}$. Aucune question retirée. Ajouts : inégalité $x^3 \\leqslant x$ sur $[0\\,;\\,1]$, bénéfice $B = 6 - Y$ de l'organisateur (espérance, variance, écart type). Calculatrice non autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Dans un repère orthonormé $(O\\,;\\,I,\\,J)$, on considère le carré $OIKJ$, avec $O(0\\,;\\,0)$, $I(1\\,;\\,0)$, $K(1\\,;\\,1)$ et $J(0\\,;\\,1)$, la droite $\\mathcal{D}$ d'équation $y = x$ et la courbe $\\mathcal{C}$ représentative de la fonction $f$ définie sur $[0\\,;\\,1]$ par $f(x) = x^3$. Ces deux lignes partagent le carré en trois zones, représentées sur la figure :\n\n- la ZONE 1 est la partie du carré située au-dessus de la droite $\\mathcal{D}$ ;\n- la ZONE 2 est la partie du carré située sous la courbe $\\mathcal{C}$ ;\n- la ZONE 3 est la partie du carré comprise entre la courbe $\\mathcal{C}$ et la droite $\\mathcal{D}$.\n\nLes parties B et C peuvent être traitées indépendamment l'une de l'autre.\n\nLa calculatrice n'est pas autorisée dans cet exercice.",
+    "figure": {
+      "type": "image",
+      "data": {
+        "src": "terminale/maths/sommes-variables-aleatoires/tb-flechettes-zones.svg",
+        "alt": "Dans un repère orthonormé, le carré OIKJ de côté 1, avec O(0 ; 0), I(1 ; 0), K(1 ; 1) et J(0 ; 1). La droite D d'équation y = x, en orange, joint O à K. La courbe C d'équation y = x³, en bleu, part de O en restant d'abord très proche de l'axe des abscisses, puis remonte vite jusqu'à K. La ZONE 1, au-dessus de la droite D, est le triangle OKJ, colorié en orange clair. La ZONE 2, sous la courbe C, est coloriée en bleu clair. La ZONE 3, entre la courbe C et la droite D, est coloriée en vert clair.",
+        "width": 320,
+        "height": 310
+      },
+      "caption": "Le carré OIKJ partagé en trois zones par la droite D et la courbe C."
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Partie A.** Dans cette partie, on calcule les aires des trois zones.",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Montrer que, pour tout réel $x$ de $[0\\,;\\,1]$, $x^3 \\leqslant x$.",
+            "points": 0.25,
+            "revoir": "l-integration-056",
+            "indices": [
+              "Étudie le signe de $x - x^3$ sur $[0\\,;\\,1]$ : factorise par $x$, puis reconnais une identité remarquable dans le facteur restant."
+            ],
+            "attenduCorrecteur": "- $x - x^3 = x(1 - x)(1 + x)$, produit de facteurs positifs ou nuls sur $[0\\,;\\,1]$, donc $x^3 \\leqslant x$ : 0,25 pt.",
+            "solution": "Pour tout réel $x$, $x - x^3 = x(1 - x^2) = x(1 - x)(1 + x)$. Sur $[0\\,;\\,1]$, $x \\geqslant 0$, $1 - x \\geqslant 0$ et $1 + x > 0$ : le produit est positif ou nul.\n\nDonc, pour tout $x$ de $[0\\,;\\,1]$, $x - x^3 \\geqslant 0$, c'est-à-dire $x^3 \\leqslant x$ : sur $[0\\,;\\,1]$, la courbe $\\mathcal{C}$ est sous la droite $\\mathcal{D}$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Démontrer que les aires des trois zones, en unité d'aire, sont celles du tableau ci-dessous.\n\n| zone | ZONE 1 | ZONE 2 | ZONE 3 |\n|---|---|---|---|\n| aire | $\\dfrac{1}{2}$ | $\\dfrac{1}{4}$ | $\\dfrac{1}{4}$ |",
+            "points": 1,
+            "revoir": "l-integration-056",
+            "indices": [
+              "La ZONE 2 est le domaine sous une courbe positive : son aire est une intégrale. La ZONE 3 est entre deux courbes : intègre « courbe du dessus moins courbe du dessous », grâce à la question a).",
+              "Une primitive de $x \\mapsto x^3$ est $x \\mapsto \\dfrac{x^4}{4}$, et une primitive de $x \\mapsto x - x^3$ est $x \\mapsto \\dfrac{x^2}{2} - \\dfrac{x^4}{4}$. Pour la ZONE 1, pense à l'aire du carré entier."
+            ],
+            "attenduCorrecteur": "- ZONE 2 : $f$ est continue et positive sur $[0\\,;\\,1]$, aire $\\displaystyle\\int_0^1 x^3\\,\\mathrm{d}x = \\left[\\dfrac{x^4}{4}\\right]_0^1 = \\dfrac{1}{4}$ : 0,25 pt.\n- ZONE 3 : $\\mathcal{D}$ au-dessus de $\\mathcal{C}$ (question a)), aire $\\displaystyle\\int_0^1 (x - x^3)\\,\\mathrm{d}x$ : 0,25 pt.\n- Calcul : $\\left[\\dfrac{x^2}{2} - \\dfrac{x^4}{4}\\right]_0^1 = \\dfrac{1}{2} - \\dfrac{1}{4} = \\dfrac{1}{4}$ : 0,25 pt.\n- ZONE 1 : aire du carré moins celles des deux autres zones, $1 - \\dfrac{1}{4} - \\dfrac{1}{4} = \\dfrac{1}{2}$ : 0,25 pt.",
+            "solution": "**ZONE 2.** La fonction $f$ est continue et positive sur $[0\\,;\\,1]$. La ZONE 2 est le domaine compris entre la courbe $\\mathcal{C}$, l'axe des abscisses et les droites d'équations $x = 0$ et $x = 1$ ; son aire est\n\n$$\\int_0^1 x^3\\,\\mathrm{d}x = \\left[\\dfrac{x^4}{4}\\right]_0^1 = \\dfrac{1}{4} - 0 = \\dfrac{1}{4}.$$\n\n**ZONE 3.** D'après la question a), sur $[0\\,;\\,1]$, la droite $\\mathcal{D}$ est au-dessus de la courbe $\\mathcal{C}$. L'aire de la ZONE 3, comprise entre elles, est donc\n\n$$\\int_0^1 (x - x^3)\\,\\mathrm{d}x = \\left[\\dfrac{x^2}{2} - \\dfrac{x^4}{4}\\right]_0^1 = \\dfrac{1}{2} - \\dfrac{1}{4} = \\dfrac{1}{4}.$$\n\n**ZONE 1.** Les trois zones recouvrent le carré, d'aire $1$, sans se chevaucher. L'aire de la ZONE 1 est donc $1 - \\dfrac{1}{4} - \\dfrac{1}{4} = \\dfrac{1}{2}$ ; c'est aussi l'aire du triangle rectangle $OKJ$, $\\dfrac{1 \\times 1}{2}$."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "**Partie B : un premier jeu.** Un joueur lance une fléchette sur le carré $OIKJ$. On admet que la fléchette atteint toujours le carré et que la probabilité qu'elle tombe dans une zone est égale à l'aire de cette zone.\n\n- Si la fléchette tombe dans la ZONE 3, le joueur lance une pièce équilibrée : il gagne si la pièce tombe sur PILE, et perd sinon.\n- Si la fléchette tombe dans une autre zone, le joueur lance un dé équilibré à six faces : il gagne si le dé tombe sur la face $6$, et perd sinon.\n\nOn note $T$ l'événement « la fléchette tombe dans la ZONE 3 » et $G$ l'événement « le joueur gagne ».",
+        "points": 1.25,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Représenter la situation par un arbre pondéré, puis démontrer que $P(G) = \\dfrac{1}{4}$.",
+            "points": 0.75,
+            "revoir": "l-loi-binomiale-007",
+            "indices": [
+              "Premier niveau : $T$ ou $\\overline{T}$, avec les aires de la partie A. Second niveau : $G$ ou $\\overline{G}$, avec la pièce ou le dé selon la branche.",
+              "Deux chemins mènent à $G$ : calcule la probabilité de chacun, puis additionne-les grâce à la formule des probabilités totales."
+            ],
+            "attenduCorrecteur": "- Arbre : $P(T) = \\dfrac{1}{4}$, $P(\\overline{T}) = \\dfrac{3}{4}$, $P_T(G) = \\dfrac{1}{2}$, $P_{\\overline{T}}(G) = \\dfrac{1}{6}$ et les branches complémentaires : 0,25 pt.\n- Formule des probabilités totales ($T$ et $\\overline{T}$ forment une partition) : $P(G) = P(T) \\times P_T(G) + P(\\overline{T}) \\times P_{\\overline{T}}(G)$ : 0,25 pt.\n- Calcul : $\\dfrac{1}{4} \\times \\dfrac{1}{2} + \\dfrac{3}{4} \\times \\dfrac{1}{6} = \\dfrac{1}{8} + \\dfrac{1}{8} = \\dfrac{1}{4}$ : 0,25 pt.",
+            "solution": "D'après la partie A, $P(T) = \\dfrac{1}{4}$, donc $P(\\overline{T}) = \\dfrac{3}{4}$. La pièce est équilibrée : $P_T(G) = \\dfrac{1}{2}$. Le dé est équilibré : $P_{\\overline{T}}(G) = \\dfrac{1}{6}$.\n\nL'arbre pondéré :\n\n- branche $T$, de probabilité $\\dfrac{1}{4}$, suivie de $G$ ($\\dfrac{1}{2}$) ou de $\\overline{G}$ ($\\dfrac{1}{2}$) ;\n- branche $\\overline{T}$, de probabilité $\\dfrac{3}{4}$, suivie de $G$ ($\\dfrac{1}{6}$) ou de $\\overline{G}$ ($\\dfrac{5}{6}$).\n\n$T$ et $\\overline{T}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$P(G) = P(T) \\times P_T(G) + P(\\overline{T}) \\times P_{\\overline{T}}(G) = \\dfrac{1}{4} \\times \\dfrac{1}{2} + \\dfrac{3}{4} \\times \\dfrac{1}{6} = \\dfrac{1}{8} + \\dfrac{3}{24} = \\dfrac{1}{8} + \\dfrac{1}{8} = \\dfrac{1}{4}.$$"
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "On sait que le joueur a gagné. Quelle est la probabilité que la fléchette soit tombée dans la ZONE 3 ?\n\nSaisis la valeur exacte, sous forme décimale ou de fraction ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "1/2",
+              "tolerance": 0.001
+            },
+            "revoir": "l-loi-binomiale-007",
+            "indices": [
+              "On sait que $G$ est réalisé : la probabilité cherchée est $P_G(T)$. Son numérateur est la probabilité d'un chemin déjà calculée à la question a)."
+            ],
+            "attenduCorrecteur": "- Probabilité cherchée identifiée et définition écrite : $P_G(T) = \\dfrac{P(T \\cap G)}{P(G)}$ : 0,25 pt.\n- Calcul $P_G(T) = \\dfrac{1}{8} \\div \\dfrac{1}{4} = \\dfrac{1}{2}$ et phrase de conclusion : 0,25 pt.",
+            "solution": "On cherche $P_G(T)$. Par définition d'une probabilité conditionnelle :\n\n$$P_G(T) = \\dfrac{P(T \\cap G)}{P(G)} = \\dfrac{1}{8} \\div \\dfrac{1}{4} = \\dfrac{1}{8} \\times 4 = \\dfrac{1}{2}.$$\n\nSachant que le joueur a gagné, la probabilité que la fléchette soit tombée dans la ZONE 3 est $\\dfrac{1}{2}$, alors que cette zone ne couvre qu'un quart du carré.",
+            "erreurFrequente": "Répondre $\\dfrac{1}{4}$, c'est-à-dire $P(T)$ : savoir que le joueur a gagné change la probabilité, car on gagne plus souvent avec la pièce qu'avec le dé."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "**Partie C : un second jeu.** Un joueur, appelé joueur 1, lance une fléchette sur le carré $OIKJ$, dans les mêmes conditions que dans la partie B. Il gagne une somme, en euro, égale au numéro de la zone atteinte : par exemple, $3$ euros si la fléchette tombe dans la ZONE 3. On note $X_1$ la variable aléatoire égale au gain du joueur 1.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "Donner la loi de probabilité de $X_1$, puis calculer son espérance $E(X_1)$.\n\nSaisis la valeur de $E(X_1)$, sous forme décimale ou de fraction ; la loi et le calcul sont à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "7/4",
+              "tolerance": 0.001
+            },
+            "revoir": "l-sommes-variables-aleatoires-002",
+            "indices": [
+              "$X_1$ prend les valeurs $1$, $2$ et $3$ : leurs probabilités sont les aires de la partie A. L'espérance est la somme des valeurs multipliées par leurs probabilités."
+            ],
+            "attenduCorrecteur": "- Loi : $P(X_1 = 1) = \\dfrac{1}{2}$, $P(X_1 = 2) = \\dfrac{1}{4}$ et $P(X_1 = 3) = \\dfrac{1}{4}$ : 0,25 pt.\n- $E(X_1) = 1 \\times \\dfrac{1}{2} + 2 \\times \\dfrac{1}{4} + 3 \\times \\dfrac{1}{4} = \\dfrac{7}{4}$ : 0,25 pt.",
+            "solution": "$X_1$ prend les valeurs $1$, $2$ et $3$, avec des probabilités égales aux aires des zones :\n\n| $x_i$ | $1$ | $2$ | $3$ |\n|---|---|---|---|\n| $P(X_1 = x_i)$ | $\\dfrac{1}{2}$ | $\\dfrac{1}{4}$ | $\\dfrac{1}{4}$ |\n\nDonc $E(X_1) = 1 \\times \\dfrac{1}{2} + 2 \\times \\dfrac{1}{4} + 3 \\times \\dfrac{1}{4} = \\dfrac{2}{4} + \\dfrac{2}{4} + \\dfrac{3}{4} = \\dfrac{7}{4}$, soit $1{,}75$ euro."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Montrer que la variance de $X_1$ est $V(X_1) = \\dfrac{11}{16}$.",
+            "points": 0.5,
+            "revoir": "l-sommes-variables-aleatoires-002",
+            "indices": [
+              "Applique la définition de la variance avec $E(X_1) = \\dfrac{7}{4}$ : calcule les écarts $1 - \\dfrac{7}{4}$, $2 - \\dfrac{7}{4}$ et $3 - \\dfrac{7}{4}$, élève-les au carré, multiplie chacun par sa probabilité, puis additionne en mettant tout sur le dénominateur $64$."
+            ],
+            "attenduCorrecteur": "- Formule posée : $V(X_1) = \\left(1 - \\dfrac{7}{4}\\right)^2 \\times \\dfrac{1}{2} + \\left(2 - \\dfrac{7}{4}\\right)^2 \\times \\dfrac{1}{4} + \\left(3 - \\dfrac{7}{4}\\right)^2 \\times \\dfrac{1}{4}$ : 0,25 pt.\n- Calcul : $\\dfrac{9}{32} + \\dfrac{1}{64} + \\dfrac{25}{64} = \\dfrac{18 + 1 + 25}{64} = \\dfrac{44}{64} = \\dfrac{11}{16}$ : 0,25 pt.",
+            "solution": "Par définition, avec $E(X_1) = \\dfrac{7}{4}$ :\n\n$$V(X_1) = \\left(-\\dfrac{3}{4}\\right)^2 \\times \\dfrac{1}{2} + \\left(\\dfrac{1}{4}\\right)^2 \\times \\dfrac{1}{4} + \\left(\\dfrac{5}{4}\\right)^2 \\times \\dfrac{1}{4} = \\dfrac{9}{32} + \\dfrac{1}{64} + \\dfrac{25}{64}.$$\n\nDonc $V(X_1) = \\dfrac{18}{64} + \\dfrac{1}{64} + \\dfrac{25}{64} = \\dfrac{44}{64} = \\dfrac{11}{16}$."
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "Deux autres joueurs, le joueur 2 et le joueur 3, jouent à leur tour, dans les mêmes conditions que le joueur 1. On admet que les parties des trois joueurs sont indépendantes les unes des autres. On note $X_2$ et $X_3$ les gains des joueurs 2 et 3, et $Y = X_1 + X_2 + X_3$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q4a",
+            "label": "a)",
+            "enonce": "Déterminer la probabilité que l'on ait $Y = 9$.\n\nSaisis la valeur exacte, sous forme décimale ou de fraction ; la justification est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "1/64",
+              "tolerance": 0.0001
+            },
+            "revoir": "l-loi-binomiale-003",
+            "indices": [
+              "Chaque gain vaut au plus $3$ euros : pour quels gains des trois joueurs la somme vaut-elle $9$ ? Les trois parties étant indépendantes, la probabilité de cette issue est un produit."
+            ],
+            "attenduCorrecteur": "- $Y = 9$ si et seulement si $X_1 = X_2 = X_3 = 3$, car chaque gain vaut au plus $3$ : 0,25 pt.\n- Parties indépendantes : $P(Y = 9) = \\left(\\dfrac{1}{4}\\right)^3 = \\dfrac{1}{64}$ : 0,25 pt.",
+            "solution": "Chaque gain vaut au plus $3$ euros, donc $Y = X_1 + X_2 + X_3 \\leqslant 9$, avec égalité si et seulement si les trois joueurs gagnent $3$ euros. L'événement $Y = 9$ est donc l'événement « $X_1 = 3$, $X_2 = 3$ et $X_3 = 3$ ».\n\nLes trois parties sont indépendantes : la probabilité de cette issue est le produit des probabilités. Donc $P(Y = 9) = \\dfrac{1}{4} \\times \\dfrac{1}{4} \\times \\dfrac{1}{4} = \\dfrac{1}{64}$."
+          },
+          {
+            "id": "q4b",
+            "label": "b)",
+            "enonce": "Calculer l'espérance $E(Y)$.\n\nSaisis la valeur exacte, sous forme décimale ou de fraction ; le calcul est à rédiger.",
+            "points": 0.25,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "21/4",
+              "tolerance": 0.001
+            },
+            "revoir": "l-sommes-variables-aleatoires-005",
+            "indices": [
+              "Linéarité de l'espérance : $E(X_1 + X_2 + X_3) = E(X_1) + E(X_2) + E(X_3)$, et les trois joueurs ont la même loi de gain."
+            ],
+            "attenduCorrecteur": "- Linéarité : $E(Y) = E(X_1) + E(X_2) + E(X_3) = 3 \\times \\dfrac{7}{4} = \\dfrac{21}{4}$ : 0,25 pt.",
+            "solution": "Les trois gains suivent la même loi, d'espérance $\\dfrac{7}{4}$. Par linéarité de l'espérance :\n\n$$E(Y) = E(X_1) + E(X_2) + E(X_3) = 3 \\times \\dfrac{7}{4} = \\dfrac{21}{4} = 5{,}25.$$"
+          },
+          {
+            "id": "q4c",
+            "label": "c)",
+            "enonce": "Justifier que $V(Y) = \\dfrac{33}{16}$.",
+            "points": 0.75,
+            "revoir": "l-sommes-variables-aleatoires-017",
+            "indices": [
+              "Avant d'additionner des variances, vérifie l'hypothèse qui le permet : que dit l'énoncé des parties des trois joueurs ?",
+              "Les trois gains ont la même loi que $X_1$, donc la même variance, calculée à la question 3. b)."
+            ],
+            "attenduCorrecteur": "- Hypothèse citée : les parties sont indépendantes, donc $X_1$, $X_2$ et $X_3$ sont indépendantes : 0,25 pt.\n- Additivité de la variance : $V(Y) = V(X_1) + V(X_2) + V(X_3)$ : 0,25 pt.\n- Même loi, donc $V(Y) = 3 \\times \\dfrac{11}{16} = \\dfrac{33}{16}$ : 0,25 pt.",
+            "solution": "Les parties des trois joueurs sont indépendantes : $X_1$, $X_2$ et $X_3$ sont liées à trois épreuves indépendantes. La variance de leur somme est donc la somme de leurs variances :\n\n$$V(Y) = V(X_1) + V(X_2) + V(X_3).$$\n\nLes trois gains suivent la même loi, de variance $\\dfrac{11}{16}$ (question 3. b)). Donc $V(Y) = 3 \\times \\dfrac{11}{16} = \\dfrac{33}{16}$.",
+            "erreurFrequente": "Écrire $Y = 3X_1$, puis $V(Y) = 9V(X_1) = \\dfrac{99}{16}$ : les trois joueurs ont la même loi de gain, mais pas le même gain. Leurs écarts à l'espérance se compensent en partie, d'où une variance trois fois, et non neuf fois, plus grande."
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "label": "5.",
+        "enonce": "Pour jouer, chacun des trois joueurs verse à l'organisateur une mise de $2$ euros, et l'organisateur paie les gains. On note $B$ le bénéfice de l'organisateur sur ces trois parties, en euro.",
+        "points": 1,
+        "sousQuestions": [
+          {
+            "id": "q5a",
+            "label": "a)",
+            "enonce": "Exprimer $B$ en fonction de $Y$, puis calculer $E(B)$. Le jeu est-il favorable à l'organisateur ?\n\nSaisis la valeur exacte de $E(B)$, sous forme décimale ou de fraction ; la réponse est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "3/4",
+              "tolerance": 0.001
+            },
+            "revoir": "l-sommes-variables-aleatoires-005",
+            "indices": [
+              "L'organisateur reçoit les trois mises et paie les trois gains : écris $B$ sous la forme $aY + b$. La linéarité donne alors $E(aY + b) = aE(Y) + b$."
+            ],
+            "attenduCorrecteur": "- $B = 3 \\times 2 - Y = 6 - Y$ : 0,25 pt.\n- $E(B) = 6 - E(Y) = 6 - \\dfrac{21}{4} = \\dfrac{3}{4} > 0$ : en moyenne, l'organisateur gagne $0{,}75$ euro par série de trois parties, le jeu lui est favorable : 0,25 pt.",
+            "solution": "L'organisateur reçoit $3 \\times 2 = 6$ euros de mises et paie au total $Y$ euros de gains : $B = 6 - Y$.\n\nPar linéarité de l'espérance : $E(B) = 6 - E(Y) = 6 - \\dfrac{21}{4} = \\dfrac{24}{4} - \\dfrac{21}{4} = \\dfrac{3}{4}$.\n\nComme $E(B) > 0$, le jeu est favorable à l'organisateur : sur un grand nombre de séries de trois parties, il gagne en moyenne $0{,}75$ euro par série."
+          },
+          {
+            "id": "q5b",
+            "label": "b)",
+            "enonce": "Calculer la variance et l'écart type de $B$.\n\nSaisis la valeur exacte de $V(B)$, sous forme décimale ou de fraction ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": "33/16",
+              "tolerance": 0.001
+            },
+            "revoir": "l-sommes-variables-aleatoires-014",
+            "indices": [
+              "Pour tous réels $a$ et $b$, $V(aY + b) = a^2V(Y)$ : ajouter une constante ne disperse pas les valeurs, et le coefficient sort au carré."
+            ],
+            "attenduCorrecteur": "- $V(B) = V(-Y + 6) = (-1)^2\\,V(Y) = \\dfrac{33}{16}$ : 0,25 pt.\n- $\\sigma(B) = \\sqrt{\\dfrac{33}{16}} = \\dfrac{\\sqrt{33}}{4}$ euro : 0,25 pt.",
+            "solution": "On a $B = -Y + 6$. Pour tous réels $a$ et $b$, $V(aY + b) = a^2V(Y)$, donc :\n\n$$V(B) = (-1)^2 \\times V(Y) = \\dfrac{33}{16}.$$\n\nL'écart type est $\\sigma(B) = \\sqrt{\\dfrac{33}{16}} = \\dfrac{\\sqrt{33}}{4}$ euro, un peu moins de $1{,}5$ euro car $\\sqrt{33} < \\sqrt{36} = 6$. Le bénéfice de l'organisateur et le gain total des joueurs ont la même dispersion.",
+            "erreurFrequente": "Écrire $V(B) = 6 - V(Y)$ ou $V(B) = -V(Y)$ : une variance est toujours positive ; la constante $6$ disparaît et le coefficient $-1$ sort au carré."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tb-sommes-variables-aleatoires-004",
+    "chapitre": "sommes-variables-aleatoires",
+    "notions": [
+      "n-sommes-variables-aleatoires-binomiale",
+      "n-sommes-variables-aleatoires-bienayme-tchebychev",
+      "n-sommes-variables-aleatoires-echantillon"
+    ],
+    "capacites": [
+      "bo-m-bernoulli-04",
+      "bo-m-bernoulli-08",
+      "bo-m-sommes-03",
+      "bo-m-sommes-04",
+      "bo-m-concentration-01",
+      "bo-m-bernoulli-05",
+      "bo-m-suites-09",
+      "bo-m-suites-08",
+      "bo-m-logique-14",
+      "bo-m-suites-06",
+      "bo-m-suites-07",
+      "bo-m-continuite-05",
+      "bo-m-logarithme-06",
+      "bo-m-logarithme-07"
+    ],
+    "titre": "Une chaîne de relais : tests positifs, moyenne sur vingt relais, puis une suite",
+    "points": 6,
+    "duree": 55,
+    "calculatrice": true,
+    "ordre": 40,
+    "source": {
+      "annale": "an-2026-antilles-guyane-j2",
+      "adaptation": "Exercice 1 (6 points) : contexte (chaîne de relais, tests positifs, transmission d'un message) et structure des parties B et C repris (loi binomiale, espérance et variance, moyenne sur plusieurs relais, inégalité de Bienaymé-Tchebychev ; suite $(p_n)$, récurrence, convergence, limite) ; données modifiées : loi $\\mathcal{B}(40\\,;\\,0{,}05)$, $20$ relais, $P(M < 5) > 0{,}98$ ; transmissions $0{,}95$ et $0{,}45$, $p_1 = 0{,}98$, $p_{n+1} = 0{,}5p_n + 0{,}45$ et limite $0{,}9$. Question retirée : la partie A du sujet (arbre à deux relais, $P(A_2)$, probabilité conditionnelle) ; l'arbre sert ici à établir la relation de récurrence, admise dans le sujet. L'indication $P(M < 7) = P(-3 < M < 7)$ devient une question à justifier ; seuil par le logarithme ajouté. Calculatrice autorisée. Solution écrite pour le site."
+    },
+    "preambule": "Les deux parties peuvent être traitées indépendamment.\n\nUn réseau de communication transmet des messages le long d'une chaîne de relais (antennes, satellites…). À chaque transmission d'un relais au suivant, des erreurs peuvent apparaître dans le message.\n\nLa calculatrice est autorisée dans cet exercice.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "**Partie A.** Pour contrôler un relais, on lui fait passer des tests ; un test est positif s'il détecte au moins une erreur. On admet que la probabilité qu'un test soit positif est $0{,}05$. On choisit au hasard $40$ tests réalisés sur un relais ; le nombre de tests est assez grand pour assimiler ce choix à un tirage avec remise. On note $X$ la variable aléatoire égale au nombre de tests positifs parmi ces $40$ tests, et on admet que $X$ suit la loi binomiale $\\mathcal{B}(40\\,;\\,0{,}05)$.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q1a",
+            "label": "a)",
+            "enonce": "Calculer la probabilité qu'exactement $3$ tests soient positifs.\n\nSaisis la valeur arrondie au millième ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.185,
+              "tolerance": 0.001,
+              "decimales": 3
+            },
+            "revoir": "l-loi-binomiale-035",
+            "indices": [
+              "Écris la formule de $P(X = k)$ pour la loi $\\mathcal{B}(n\\,;\\,p)$, avec le coefficient binomial, puis remplace $n$, $p$ et $k$.",
+              "$P(X = 3) = \\binom{40}{3} \\times 0{,}05^3 \\times 0{,}95^{37}$ : calcule-la à la calculatrice, directement ou avec la loi binomiale de ta calculatrice."
+            ],
+            "attenduCorrecteur": "- Formule : $P(X = 3) = \\binom{40}{3} \\times 0{,}05^3 \\times 0{,}95^{37}$ : 0,25 pt.\n- Valeur $P(X = 3) \\approx 0{,}185$ et phrase de conclusion : 0,25 pt.",
+            "solution": "$X$ suit la loi $\\mathcal{B}(40\\,;\\,0{,}05)$, donc :\n\n$$P(X = 3) = \\binom{40}{3} \\times 0{,}05^3 \\times 0{,}95^{37} = 9\\,880 \\times 0{,}05^3 \\times 0{,}95^{37} \\approx 0{,}185.$$\n\nLa probabilité qu'exactement $3$ des $40$ tests soient positifs est environ $0{,}185$."
+          },
+          {
+            "id": "q1b",
+            "label": "b)",
+            "enonce": "Calculer la probabilité qu'au moins un test soit positif.\n\nSaisis la valeur arrondie au millième ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.871,
+              "tolerance": 0.001,
+              "decimales": 3
+            },
+            "revoir": "l-loi-binomiale-024",
+            "indices": [
+              "Le contraire de « au moins un test positif » est « aucun test positif » : calcule d'abord $P(X = 0)$, plus simple."
+            ],
+            "attenduCorrecteur": "- Passage au contraire : $P(X \\geqslant 1) = 1 - P(X = 0) = 1 - 0{,}95^{40}$ : 0,25 pt.\n- Valeur $P(X \\geqslant 1) \\approx 0{,}871$ et phrase de conclusion : 0,25 pt.",
+            "solution": "L'événement contraire de « au moins un test est positif » est « aucun test n'est positif », c'est-à-dire $X = 0$. Donc :\n\n$$P(X \\geqslant 1) = 1 - P(X = 0) = 1 - 0{,}95^{40} \\approx 0{,}871.$$\n\nLa probabilité qu'au moins un des $40$ tests soit positif est environ $0{,}871$."
+          },
+          {
+            "id": "q1c",
+            "label": "c)",
+            "enonce": "Calculer l'espérance et la variance de $X$.\n\nSaisis la variance $V(X)$ ; le calcul est à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 1.9,
+              "tolerance": 0.001
+            },
+            "revoir": "l-sommes-variables-aleatoires-025",
+            "indices": [
+              "Le cours donne l'espérance et la variance d'une variable de loi $\\mathcal{B}(n\\,;\\,p)$ en fonction de $n$ et de $p$."
+            ],
+            "attenduCorrecteur": "- $E(X) = np = 40 \\times 0{,}05 = 2$ : 0,25 pt.\n- $V(X) = np(1 - p) = 40 \\times 0{,}05 \\times 0{,}95 = 1{,}9$ : 0,25 pt.",
+            "solution": "$X$ suit la loi $\\mathcal{B}(40\\,;\\,0{,}05)$, donc $E(X) = np = 40 \\times 0{,}05 = 2$ et $V(X) = np(1 - p) = 40 \\times 0{,}05 \\times 0{,}95 = 1{,}9$.\n\nEn moyenne, sur un grand nombre de séries de $40$ tests, $2$ tests par série sont positifs."
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "On contrôle de la même façon $20$ relais d'une chaîne, avec $40$ tests par relais. Pour $i$ allant de $1$ à $20$, on note $X_i$ le nombre de tests positifs du relais numéro $i$. On admet que les variables $X_1, \\dots, X_{20}$ sont indépendantes et suivent toutes la loi $\\mathcal{B}(40\\,;\\,0{,}05)$. On note\n\n$$M = \\dfrac{X_1 + X_2 + \\dots + X_{20}}{20}$$\n\nle nombre moyen de tests positifs par relais.",
+        "points": 1.5,
+        "sousQuestions": [
+          {
+            "id": "q2a",
+            "label": "a)",
+            "enonce": "Vérifier que $E(M) = 2$ et montrer que $V(M) = 0{,}095$.",
+            "points": 0.5,
+            "revoir": "l-sommes-variables-aleatoires-035",
+            "indices": [
+              "$(X_1, \\dots, X_{20})$ est un échantillon de taille $20$ de la loi de $X$ : le cours donne l'espérance et la variance de sa moyenne à partir de celles de $X$, calculées à la question 1. c)."
+            ],
+            "attenduCorrecteur": "- $(X_1, \\dots, X_{20})$ est un échantillon de taille $20$ de la loi $\\mathcal{B}(40\\,;\\,0{,}05)$, et $M$ est sa moyenne : 0,25 pt.\n- $E(M) = E(X) = 2$ et $V(M) = \\dfrac{V(X)}{20} = \\dfrac{1{,}9}{20} = 0{,}095$ : 0,25 pt.",
+            "solution": "Les variables $X_1, \\dots, X_{20}$ sont indépendantes et suivent la même loi que $X$ : $(X_1, \\dots, X_{20})$ est un échantillon de taille $20$ de cette loi, et $M$ est sa moyenne. D'après le cours :\n\n$$E(M) = E(X) = 2 \\qquad \\text{et} \\qquad V(M) = \\dfrac{V(X)}{20} = \\dfrac{1{,}9}{20} = 0{,}095.$$",
+            "erreurFrequente": "Écrire $V(M) = \\dfrac{20 \\times 1{,}9}{20} = 1{,}9$ : le coefficient $\\dfrac{1}{20}$ sort de la variance au carré, donc $V(M) = \\dfrac{1}{20^2} \\times 20 \\times 1{,}9 = \\dfrac{1{,}9}{20}$."
+          },
+          {
+            "id": "q2b",
+            "label": "b)",
+            "enonce": "Expliquer pourquoi l'événement $(M < 5)$ est égal à l'événement $(-1 < M < 5)$.",
+            "points": 0.25,
+            "revoir": "l-sommes-variables-aleatoires-051",
+            "indices": [
+              "Un nombre de tests positifs ne peut pas être négatif : quelle est la plus petite valeur que peut prendre $M$ ?"
+            ],
+            "attenduCorrecteur": "- Les $X_i$ sont des nombres de tests, positifs ou nuls, donc $M \\geqslant 0 > -1$ : la condition $-1 < M$ est toujours réalisée, et $(M < 5) = (-1 < M < 5)$ : 0,25 pt.",
+            "solution": "Chaque $X_i$ est un nombre de tests, donc $X_i \\geqslant 0$, et $M \\geqslant 0$. La condition $M > -1$ est donc toujours réalisée : $M < 5$ équivaut à $-1 < M < 5$. Les deux événements sont égaux."
+          },
+          {
+            "id": "q2c",
+            "label": "c)",
+            "enonce": "À l'aide de l'inégalité de Bienaymé-Tchebychev, montrer que la probabilité que le nombre moyen de tests positifs par relais soit strictement inférieur à $5$ est supérieure à $0{,}98$.",
+            "points": 0.75,
+            "revoir": "l-sommes-variables-aleatoires-051",
+            "indices": [
+              "L'intervalle $]-1\\,;\\,5[$ de la question b) est centré en $E(M) = 2$ : écris l'événement avec l'écart $\\lvert M - 2 \\rvert$ et repère la demi-largeur $\\delta$.",
+              "Applique l'inégalité de Bienaymé-Tchebychev à $M$, de variance $0{,}095$, puis passe à l'événement contraire pour minorer $P(M < 5)$."
+            ],
+            "attenduCorrecteur": "- Traduction : $M < 5 \\iff -1 < M < 5 \\iff \\lvert M - 2 \\rvert < 3$ : 0,25 pt.\n- Inégalité de Bienaymé-Tchebychev avec $\\delta = 3$ : $P(\\lvert M - 2 \\rvert \\geqslant 3) \\leqslant \\dfrac{0{,}095}{3^2} = \\dfrac{0{,}095}{9}$ : 0,25 pt.\n- Passage au contraire : $P(M < 5) \\geqslant 1 - \\dfrac{0{,}095}{9} \\approx 0{,}989 > 0{,}98$, et conclusion rédigée : 0,25 pt.",
+            "solution": "D'après la question b), $(M < 5) = (-1 < M < 5)$. L'intervalle $]-1\\,;\\,5[$ est centré en $E(M) = 2$, de demi-largeur $3$ : $-1 < M < 5$ équivaut à $\\lvert M - 2 \\rvert < 3$.\n\nD'après l'inégalité de Bienaymé-Tchebychev appliquée à $M$, avec $\\delta = 3$ :\n\n$$P\\big(\\lvert M - 2 \\rvert \\geqslant 3\\big) \\leqslant \\dfrac{V(M)}{3^2} = \\dfrac{0{,}095}{9}.$$\n\nEn passant à l'événement contraire :\n\n$$P(M < 5) = P\\big(\\lvert M - 2 \\rvert < 3\\big) \\geqslant 1 - \\dfrac{0{,}095}{9} \\approx 0{,}989\\,4.$$\n\nComme $1 - \\dfrac{0{,}095}{9} \\approx 0{,}989\\,4 > 0{,}98$, la probabilité que le nombre moyen de tests positifs par relais soit strictement inférieur à $5$ est supérieure à $0{,}98$."
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "**Partie B.** On s'intéresse maintenant à la transmission d'un message le long de la chaîne. Une étude a montré que, pour chaque relais :\n\n- si le message qu'il reçoit est sans erreur, il le transmet sans erreur au relais suivant avec la probabilité $0{,}95$ ;\n- si le message qu'il reçoit comporte des erreurs, il les corrige, et transmet donc le message sans erreur au relais suivant, avec la probabilité $0{,}45$.\n\nOn choisit au hasard un message. Pour tout entier $n \\geqslant 1$, on note $A_n$ l'événement « le message reçu par le $n$-ième relais est sans erreur » et $p_n = P(A_n)$. On a $p_1 = 0{,}98$.",
+        "points": 3,
+        "sousQuestions": [
+          {
+            "id": "q3a",
+            "label": "a)",
+            "enonce": "À l'aide d'un arbre pondéré, montrer que, pour tout entier $n \\geqslant 1$, $p_{n+1} = 0{,}5p_n + 0{,}45$.",
+            "points": 0.5,
+            "revoir": "l-recurrence-suites-034",
+            "indices": [
+              "Premier niveau de l'arbre : $A_n$, de probabilité $p_n$, ou $\\overline{A_n}$ ; second niveau : $A_{n+1}$ ou $\\overline{A_{n+1}}$, avec les probabilités conditionnelles de l'énoncé.",
+              "Formule des probabilités totales : $p_{n+1} = P(A_n \\cap A_{n+1}) + P(\\overline{A_n} \\cap A_{n+1})$. Écris chaque terme comme un produit, développe, puis regroupe les termes en $p_n$."
+            ],
+            "attenduCorrecteur": "- Arbre : $P(A_n) = p_n$, $P(\\overline{A_n}) = 1 - p_n$, $P_{A_n}(A_{n+1}) = 0{,}95$ et $P_{\\overline{A_n}}(A_{n+1}) = 0{,}45$ : 0,25 pt.\n- Probabilités totales : $p_{n+1} = 0{,}95p_n + 0{,}45(1 - p_n) = 0{,}5p_n + 0{,}45$ : 0,25 pt.",
+            "solution": "Soit $n \\geqslant 1$. L'arbre pondéré a pour premier niveau $A_n$, de probabilité $p_n$, et $\\overline{A_n}$, de probabilité $1 - p_n$. Son second niveau porte $A_{n+1}$ et $\\overline{A_{n+1}}$, avec $P_{A_n}(A_{n+1}) = 0{,}95$, $P_{A_n}(\\overline{A_{n+1}}) = 0{,}05$, $P_{\\overline{A_n}}(A_{n+1}) = 0{,}45$ et $P_{\\overline{A_n}}(\\overline{A_{n+1}}) = 0{,}55$.\n\n$A_n$ et $\\overline{A_n}$ forment une partition de l'univers. D'après la formule des probabilités totales :\n\n$$p_{n+1} = P(A_n) \\times P_{A_n}(A_{n+1}) + P(\\overline{A_n}) \\times P_{\\overline{A_n}}(A_{n+1}) = 0{,}95p_n + 0{,}45(1 - p_n).$$\n\nDonc $p_{n+1} = 0{,}95p_n + 0{,}45 - 0{,}45p_n = 0{,}5p_n + 0{,}45$."
+          },
+          {
+            "id": "q3b",
+            "label": "b)",
+            "enonce": "Montrer par récurrence que, pour tout entier $n \\geqslant 1$, $p_{n+1} \\leqslant p_n$.",
+            "points": 0.75,
+            "revoir": "l-recurrence-suites-006",
+            "indices": [
+              "Initialisation au rang $1$ : calcule $p_2$ avec la relation de la question a), puis compare-le à $p_1$.",
+              "Hérédité : pars de $p_{k+1} \\leqslant p_k$, multiplie par $0{,}5 > 0$, puis ajoute $0{,}45$ aux deux membres. Reconnais alors $p_{k+2}$ et $p_{k+1}$."
+            ],
+            "attenduCorrecteur": "- Initialisation : $p_2 = 0{,}5 \\times 0{,}98 + 0{,}45 = 0{,}94 \\leqslant 0{,}98 = p_1$ : 0,25 pt.\n- Hérédité : si $p_{k+1} \\leqslant p_k$, alors $0{,}5p_{k+1} + 0{,}45 \\leqslant 0{,}5p_k + 0{,}45$ (multiplication par $0{,}5 > 0$), soit $p_{k+2} \\leqslant p_{k+1}$ : 0,25 pt.\n- Rédaction : propriété énoncée, hypothèse de récurrence écrite, conclusion par le principe de récurrence : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$, on note $\\mathcal{P}(n)$ la propriété « $p_{n+1} \\leqslant p_n$ ».\n\n**Initialisation.** $p_2 = 0{,}5 \\times 0{,}98 + 0{,}45 = 0{,}49 + 0{,}45 = 0{,}94$, et $0{,}94 \\leqslant 0{,}98$ : $\\mathcal{P}(1)$ est vraie.\n\n**Hérédité.** Soit $k \\geqslant 1$ un entier tel que $\\mathcal{P}(k)$ est vraie : $p_{k+1} \\leqslant p_k$. En multipliant par $0{,}5 > 0$, le sens de l'inégalité est conservé : $0{,}5p_{k+1} \\leqslant 0{,}5p_k$. En ajoutant $0{,}45$ : $0{,}5p_{k+1} + 0{,}45 \\leqslant 0{,}5p_k + 0{,}45$, c'est-à-dire $p_{k+2} \\leqslant p_{k+1}$ : $\\mathcal{P}(k + 1)$ est vraie.\n\n**Conclusion.** La propriété est vraie au rang $1$ et héréditaire ; d'après le principe de récurrence, pour tout entier $n \\geqslant 1$, $p_{n+1} \\leqslant p_n$."
+          },
+          {
+            "id": "q3c",
+            "label": "c)",
+            "enonce": "En déduire que la suite $(p_n)$ est convergente.",
+            "points": 0.5,
+            "revoir": "l-limites-suites-054",
+            "indices": [
+              "La question b) donne le sens de variation de $(p_n)$. Il manque un minorant : que sait-on de tout nombre $p_n$, qui est une probabilité ?"
+            ],
+            "attenduCorrecteur": "- $(p_n)$ décroissante (question b)) et minorée par $0$, car une probabilité est positive ou nulle : 0,25 pt.\n- Théorème de convergence monotone cité : la suite converge : 0,25 pt.",
+            "solution": "D'après la question b), la suite $(p_n)$ est décroissante. De plus, chaque $p_n$ est une probabilité, donc $p_n \\geqslant 0$ : la suite est minorée par $0$.\n\nLa suite $(p_n)$ est décroissante et minorée ; d'après le théorème de convergence monotone, elle converge.",
+            "erreurFrequente": "Croire que la limite vaut $0$, le minorant : le théorème de convergence monotone dit que la suite converge, pas vers quelle valeur. La question suivante montre que la limite est bien plus grande."
+          },
+          {
+            "id": "q3d",
+            "label": "d)",
+            "enonce": "Déterminer la valeur exacte de la limite $\\ell$ de la suite $(p_n)$. Interpréter ce résultat dans le contexte de l'exercice.\n\nSaisis la valeur de $\\ell$ ; la justification et l'interprétation sont à rédiger.",
+            "points": 0.5,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 0.9,
+              "tolerance": 0.0005
+            },
+            "revoir": "l-continuite-055",
+            "indices": [
+              "La suite converge et $p_{n+1} = g(p_n)$, avec $g(x) = 0{,}5x + 0{,}45$, fonction continue : passe à la limite dans les deux membres de l'égalité pour obtenir une équation vérifiée par $\\ell$."
+            ],
+            "attenduCorrecteur": "- $g : x \\mapsto 0{,}5x + 0{,}45$ est continue ; en passant à la limite dans $p_{n+1} = 0{,}5p_n + 0{,}45$, on obtient $\\ell = 0{,}5\\ell + 0{,}45$ : 0,25 pt.\n- Résolution $\\ell = 0{,}9$ et interprétation : le long d'une très longue chaîne, la probabilité qu'un relais reçoive le message sans erreur se rapproche de $0{,}9$ : 0,25 pt.",
+            "solution": "Pour tout $n \\geqslant 1$, $p_{n+1} = g(p_n)$, où $g$ est la fonction affine $x \\mapsto 0{,}5x + 0{,}45$, continue sur $\\mathbb{R}$. La suite $(p_n)$ converge vers $\\ell$, donc $(p_{n+1})$ aussi, et $g(p_n)$ tend vers $g(\\ell)$ par continuité de $g$. En passant à la limite dans l'égalité $p_{n+1} = 0{,}5p_n + 0{,}45$ :\n\n$$\\ell = 0{,}5\\ell + 0{,}45 \\iff 0{,}5\\ell = 0{,}45 \\iff \\ell = 0{,}9.$$\n\nInterprétation : le long d'une très longue chaîne de relais, la probabilité qu'un relais reçoive le message sans erreur diminue depuis $0{,}98$ (question b)) et se rapproche de $0{,}9$."
+          },
+          {
+            "id": "q3e",
+            "label": "e)",
+            "enonce": "On admet que, pour tout entier $n \\geqslant 1$, $p_n = 0{,}9 + 0{,}08 \\times 0{,}5^{n-1}$. Déterminer, par le calcul, le plus petit entier $n$ tel que $p_n < 0{,}901$. Interpréter le résultat.\n\nSaisis cet entier ; la résolution et l'interprétation sont à rédiger.",
+            "points": 0.75,
+            "reponse": {
+              "type": "numerique",
+              "valeur": 8,
+              "tolerance": 0
+            },
+            "revoir": "l-logarithme-030",
+            "indices": [
+              "Isole la puissance : mets l'inéquation $p_n < 0{,}901$ sous la forme $0{,}5^{n-1} < s$, avec un nombre $s$ à calculer.",
+              "Prends le logarithme népérien des deux membres ($\\ln$ est strictement croissante), écris $\\ln\\left(0{,}5^{n-1}\\right) = (n - 1)\\ln 0{,}5$, puis divise par $\\ln 0{,}5$ en regardant son signe."
+            ],
+            "attenduCorrecteur": "- Mise en forme : $p_n < 0{,}901 \\iff 0{,}08 \\times 0{,}5^{n-1} < 0{,}001 \\iff 0{,}5^{n-1} < 0{,}012\\,5$ : 0,25 pt.\n- Logarithme : $(n - 1)\\ln 0{,}5 < \\ln 0{,}012\\,5$, puis division par $\\ln 0{,}5 < 0$, qui change le sens : $n - 1 > \\dfrac{\\ln 0{,}012\\,5}{\\ln 0{,}5} \\approx 6{,}32$ : 0,25 pt.\n- Conclusion : $n > 7{,}32$, donc $n = 8$ ; à partir du $8$-ième relais, la probabilité de recevoir le message sans erreur est inférieure à $0{,}901$ : 0,25 pt.",
+            "solution": "Pour tout entier $n \\geqslant 1$ :\n\n$$p_n < 0{,}901 \\iff 0{,}08 \\times 0{,}5^{n-1} < 0{,}001 \\iff 0{,}5^{n-1} < \\dfrac{0{,}001}{0{,}08} = 0{,}012\\,5.$$\n\nLes deux membres sont strictement positifs et la fonction $\\ln$ est strictement croissante sur $]0\\,;\\,+\\infty[$ : cela équivaut à $\\ln\\left(0{,}5^{n-1}\\right) < \\ln 0{,}012\\,5$, soit $(n - 1)\\ln 0{,}5 < \\ln 0{,}012\\,5$.\n\nComme $\\ln 0{,}5 < 0$, en divisant par $\\ln 0{,}5$ on change le sens de l'inégalité :\n\n$$n - 1 > \\dfrac{\\ln 0{,}012\\,5}{\\ln 0{,}5} \\approx 6{,}32, \\quad \\text{soit} \\quad n > 7{,}32.$$\n\nLe plus petit entier qui convient est $n = 8$. Vérification : $p_7 = 0{,}9 + 0{,}08 \\times 0{,}5^6 = 0{,}901\\,25$ et $p_8 = 0{,}9 + 0{,}08 \\times 0{,}5^7 = 0{,}900\\,625$.\n\nInterprétation : à partir du $8$-ième relais de la chaîne, la probabilité que le message reçu soit sans erreur est inférieure à $0{,}901$.",
+            "erreurFrequente": "Garder le sens de l'inégalité en divisant par $\\ln 0{,}5$ : ce nombre est négatif, le sens change. Contrôle de bon sens : $p_n$ décroît vers $0{,}9$, donc on attend « $n$ supérieur à un certain nombre »."
+          }
+        ]
+      }
+    ]
+  }
+]

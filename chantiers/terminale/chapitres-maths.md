@@ -258,6 +258,13 @@ puis aire entre deux courbes et valeur moyenne) ; priorités mesurées sur 51 su
 - Inégalité de Bienaymé-Tchebychev, inégalité de concentration · ★★
 - Espérance, variance, écart type de la loi binomiale (venu du ch. 11) · ★★
 - Loi des grands nombres · ★
+- **Écrit le 2026-11-02** (`content/terminale/maths/chapitres/sommes-variables-aleatoires/`) :
+  6 notions au lieu de 5, priorités mesurées (sujets depuis 2021) — espérance d'une somme ★★
+  (27/63), variance d'une somme ★★ (21/63), loi binomiale ★★ (31/63), échantillon ★ (12/63),
+  Bienaymé-Tchebychev ★★ (23/51), concentration et loi des grands nombres ★ (8/51). Écarts :
+  espérance et variance séparées (deux capacités, l'indépendance n'est exigée que pour la
+  variance) ; Bienaymé-Tchebychev séparée de la concentration (deux gestes du bac distincts) ;
+  la loi des grands nombres rejoint la concentration (sa limite quand n grandit).
 
 ## Rappels de première mobilisés
 
