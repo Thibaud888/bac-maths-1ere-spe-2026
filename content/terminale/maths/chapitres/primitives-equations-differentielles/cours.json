@@ -968,7 +968,7 @@
           "titre": "Comment approcher une solution par la méthode d'Euler ?",
           "capacites": ["bo-m-primitives-10"],
           "etapes": [
-            "Sers-toi de cette méthode quand tu ne sais pas écrire la solution exacte, ou quand l'énoncé te la demande. Par exemple, pour $y' = e^{-x^2}$, on ne sait pas écrire de primitive de $x \\mapsto e^{-x^2}$. La méthode donne des valeurs approchées de la solution, point par point.",
+            "Sers-toi de cette méthode quand tu ne sais pas écrire la solution exacte, ou quand l'énoncé demande cette méthode. Par exemple, pour $y' = e^{-x^2}$, on ne sait pas écrire de primitive de $x \\mapsto e^{-x^2}$. La méthode donne des valeurs approchées de la solution, point par point.",
             "Choisis un pas $h > 0$, petit, et pars du point $(x_0\\,;\\,y_0)$ donné par la condition initiale. Les abscisses suivantes sont $x_1 = x_0 + h$, $x_2 = x_1 + h$, et ainsi de suite. On note $y_n$ l'ordonnée du point d'abscisse $x_n$ : c'est une valeur approchée de $y(x_n)$, la valeur inconnue de la solution.",
             "Avance le long de la tangente. Au point d'abscisse $x$, la tangente à la courbe de la solution $y$ a pour équation $Y = y(x) + y'(x)(X - x)$. Ici, $X$ et $Y$ sont les coordonnées d'un point de la tangente. En $X = x + h$, la tangente passe à la hauteur $y(x) + h \\times y'(x)$. Pour $h$ petit, la courbe est proche de sa tangente : $y(x + h) \\approx y(x) + h \\times y'(x)$.",
             "Calcule la pente avec l'équation, en remplaçant la valeur inconnue $y(x_n)$ par sa valeur approchée $y_n$. La pente vaut $ay_n + b$ pour $y' = ay + b$, et $f(x_n)$ pour $y' = f$. D'où $y_{n+1} = y_n + h(ay_n + b)$, ou $y_{n+1} = y_n + hf(x_n)$.",
@@ -1058,14 +1058,6 @@
           "admise": false
         },
         {
-          "id": "l-primitives-equations-differentielles-074",
-          "type": "piege",
-          "titre": "Qui est la solution particulière ?",
-          "faux": "Les solutions de $y' = y + x$ sont les fonctions $x \\mapsto Ce^{x} + x$ : on ajoute le second membre $x$ aux solutions de $y' = y$.",
-          "juste": "On ajoute une **solution particulière**, pas le second membre. La fonction $x \\mapsto -x - 1$ est solution de $y' = y + x$ : sa dérivée vaut $-1$, et $-x - 1 + x = -1$. Les solutions sont donc les fonctions $x \\mapsto Ce^{x} - x - 1$.",
-          "explication": "Dans la propriété ci-dessus, $f$ est le second membre, $g$ la solution particulière et $h$ une solution quelconque. Les lettres changent d'un sujet à l'autre : au bac, la solution s'appelle souvent $f$, et la solution particulière $h$ ou $g$. Repère d'abord la fonction que l'énoncé donne comme solution particulière : c'est elle qu'on ajoute à $Ce^{ax}$. Contrôle : $(Ce^{x} + x)' = Ce^{x} + 1$, alors que $Ce^{x} + x + x = Ce^{x} + 2x$. Ces deux expressions diffèrent dès que $x \\neq \\dfrac{1}{2}$ : aucune de ces fonctions n'est solution."
-        },
-        {
           "id": "l-primitives-equations-differentielles-067",
           "type": "exemple",
           "titre": "Démontrer l'équivalence, puis résoudre : le schéma du bac",
@@ -1098,6 +1090,14 @@
               "texte": "**Conclusion** : les solutions de $(E)$ sont les fonctions $x \\mapsto Ce^{x} + x + 1$, avec $C$ réel, et la solution telle que $h(0) = 3$ est $h(x) = 2e^{x} + x + 1$."
             }
           ]
+        },
+        {
+          "id": "l-primitives-equations-differentielles-074",
+          "type": "piege",
+          "titre": "Qui est la solution particulière ?",
+          "faux": "Les solutions de $y' = y + x$ sont les fonctions $x \\mapsto Ce^{x} + x$ : on ajoute le second membre $x$ aux solutions de $y' = y$.",
+          "juste": "On ajoute une **solution particulière**, pas le second membre. La fonction $x \\mapsto -x - 1$ est solution de $y' = y + x$ : sa dérivée vaut $-1$, et $-x - 1 + x = -1$. Les solutions sont donc les fonctions $x \\mapsto Ce^{x} - x - 1$.",
+          "explication": "Dans la propriété ci-dessus, $f$ est le second membre, $g$ la solution particulière et $h$ une solution quelconque. Les lettres changent d'un sujet à l'autre : au bac, la solution s'appelle souvent $f$, et la solution particulière $h$ ou $g$. Repère d'abord la fonction que l'énoncé donne comme solution particulière : c'est elle qu'on ajoute à $Ce^{ax}$. Contrôle : $(Ce^{x} + x)' = Ce^{x} + 1$, alors que $Ce^{x} + x + x = Ce^{x} + 2x$. Ces deux expressions diffèrent dès que $x \\neq \\dfrac{1}{2}$ : aucune de ces fonctions n'est solution."
         },
         {
           "id": "l-primitives-equations-differentielles-068",
