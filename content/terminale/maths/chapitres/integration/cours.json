@@ -283,7 +283,7 @@
           "type": "complement",
           "titre": "Pour aller plus loin : des suites adjacentes pour approcher une aire",
           "capacites": ["bo-m-integrale-17"],
-          "texte": "Découpe $[0\\,;\\,1]$ en $n$ intervalles de largeur $\\dfrac{1}{n}$, et note $s_n$ et $S_n$ les aires des rectangles à gauche et à droite pour $f : x \\mapsto x^2$ :$$\\begin{aligned} s_n &= \\tfrac{1}{n}\\Big(f(0) + f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big)\\Big), \\\\ S_n &= \\tfrac{1}{n}\\Big(\\phantom{f(0) + {}} f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big) + f(1)\\Big). \\end{aligned}$$Comme $f$ est croissante, $s_n \\leqslant \\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x \\leqslant S_n$. Les termes communs s'éliminent : $S_n - s_n = \\dfrac{1}{n}\\big(f(1) - f(0)\\big) = \\dfrac{1}{n}$, qui tend vers $0$.\n\nAvec $1^2 + 2^2 + \\dots + n^2 = \\dfrac{n(n + 1)(2n + 1)}{6}$, démontrée par récurrence dans le chapitre sur la récurrence, on trouve, en développant :$$\\begin{aligned} s_n &= \\frac{(n - 1)(2n - 1)}{6n^2} = \\frac{1}{3} - \\frac{1}{2n} + \\frac{1}{6n^2}, \\\\ S_n &= \\frac{(n + 1)(2n + 1)}{6n^2} = \\frac{1}{3} + \\frac{1}{2n} + \\frac{1}{6n^2}. \\end{aligned}$$La suite $(S_n)$ décroît, car $\\dfrac{1}{2n}$ et $\\dfrac{1}{6n^2}$ décroissent. Pour $(s_n)$, on a $s_n = g(n)$ avec $g(x) = \\dfrac{1}{3} - \\dfrac{1}{2x} + \\dfrac{1}{6x^2}$. Or $g'(x) = \\dfrac{1}{2x^2} - \\dfrac{1}{3x^3} = \\dfrac{3x - 2}{6x^3} > 0$ pour $x \\geqslant 1$ : la suite $(s_n)$ croît. Comme $S_n - s_n$ tend vers $0$, ces suites sont **adjacentes** (chapitre sur les limites de suites). Elles convergent donc vers la même limite, ici $\\dfrac{1}{3}$, qui est l'aire cherchée."
+          "texte": "Découpe $[0\\,;\\,1]$ en $n$ intervalles de largeur $\\dfrac{1}{n}$, et note $s_n$ et $S_n$ les aires des rectangles à gauche et à droite pour $f : x \\mapsto x^2$ :$$\\begin{aligned} s_n &= \\tfrac{1}{n}\\Big(f(0) + f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big)\\Big), \\\\ S_n &= \\tfrac{1}{n}\\Big(\\phantom{f(0) + {}} f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big) + f(1)\\Big). \\end{aligned}$$Comme $f$ est croissante, $s_n \\leqslant \\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x \\leqslant S_n$. Les termes communs s'éliminent : $S_n - s_n = \\dfrac{1}{n}\\big(f(1) - f(0)\\big) = \\dfrac{1}{n}$, qui tend vers $0$.\n\nAvec $1^2 + 2^2 + \\dots + n^2 = \\dfrac{n(n + 1)(2n + 1)}{6}$, démontrée par récurrence dans le chapitre sur la récurrence, on trouve, en développant :$$\\begin{aligned} s_n &= \\frac{(n - 1)(2n - 1)}{6n^2} = \\frac{1}{3} - \\frac{1}{2n} + \\frac{1}{6n^2}, \\\\ S_n &= \\frac{(n + 1)(2n + 1)}{6n^2} = \\frac{1}{3} + \\frac{1}{2n} + \\frac{1}{6n^2}. \\end{aligned}$$La suite $(S_n)$ décroît, car $\\dfrac{1}{2n}$ et $\\dfrac{1}{6n^2}$ décroissent. Pour $(s_n)$, on a $s_n = g(n)$ avec $g(x) = \\dfrac{1}{3} - \\dfrac{1}{2x} + \\dfrac{1}{6x^2}$. Or $g'(x) = \\dfrac{1}{2x^2} - \\dfrac{1}{3x^3} = \\dfrac{3x - 2}{6x^3} > 0$ pour $x \\geqslant 1$ : $g$ est croissante sur $[1\\,;\\,+\\infty[$, donc la suite $(s_n)$ croît. Comme $S_n - s_n$ tend vers $0$, ces suites sont **adjacentes** (chapitre sur les limites de suites). Elles convergent donc vers la même limite, ici $\\dfrac{1}{3}$, qui est l'aire cherchée."
         },
         {
           "id": "l-integration-018",
@@ -550,6 +550,20 @@
             "$f$ est négative sur $[a\\,;\\,b]$. Si $f$ change de signe, on calcule l'aire de chaque morceau où $f$ garde un signe constant, puis on additionne ces aires."
           ],
           "admise": false
+        },
+        {
+          "id": "l-integration-095",
+          "type": "verifie",
+          "capacites": ["bo-m-integrale-05"],
+          "question": {
+            "enonce": "Sur $[-1\\,;\\,1]$, la fonction $f : x \\mapsto x^2 - 1$ est continue et négative. Calcule l'aire, en u.a., du domaine limité par $\\mathcal{C}_f$, l'axe des abscisses et les droites d'équations $x = -1$ et $x = 1$. Donne la valeur exacte.",
+            "reponse": {
+              "type": "numerique",
+              "valeur": "4/3",
+              "tolerance": 0
+            },
+            "explication": "Une primitive de $f$ est $F : x \\mapsto \\dfrac{x^3}{3} - x$, avec $F(1) = \\dfrac{1}{3} - 1 = -\\dfrac{2}{3}$ et $F(-1) = -\\dfrac{1}{3} + 1 = \\dfrac{2}{3}$. Donc $\\displaystyle\\int_{-1}^{1} (x^2 - 1)\\,\\mathrm{d}x = -\\dfrac{2}{3} - \\dfrac{2}{3} = -\\dfrac{4}{3}$. Comme $f$ est négative, l'aire en est l'opposé : $\\dfrac{4}{3}$ u.a."
+          }
         },
         {
           "id": "l-integration-032",
