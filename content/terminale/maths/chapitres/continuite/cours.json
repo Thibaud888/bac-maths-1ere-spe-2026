@@ -85,24 +85,11 @@
           "type": "propriete",
           "titre": "Une fonction dérivable est continue",
           "capacites": ["bo-m-continuite-01"],
-          "texte": "- Si une fonction $f$ est **dérivable** sur un intervalle $I$, alors $f$ est **continue** sur $I$. C'est vrai aussi en un seul réel : si $f$ est dérivable en $a$, alors $f$ est continue en $a$ (la démonstration, plus bas, le prouve réel par réel).\n- En conséquence, les fonctions polynômes, inverse et exponentielle sont continues sur chaque intervalle où elles sont définies. Il en va de même des fonctions obtenues à partir d'elles par somme, produit, quotient ou sous la forme $x \\mapsto g(ax + b)$.\n- Par exemple, $x \\mapsto \\dfrac{1}{x}$ est continue sur $]-\\infty\\,;\\,0[$ et sur $]0\\,;\\,+\\infty[$. En $0$, où elle n'est pas définie, la question ne se pose pas.\n- La fonction racine carrée est continue sur $[0\\,;\\,+\\infty[$ : en $0$, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$. De même, $x \\mapsto \\sqrt{ax + b}$ est continue sur chaque intervalle où $ax + b \\geqslant 0$ : elle est dérivable là où $ax + b > 0$ et, là où $ax + b$ s'annule, sa limite vaut $0$, comme sa valeur. Par exemple, $x \\mapsto \\sqrt{4 - x}$ est continue sur $]-\\infty\\,;\\,4]$.\n\nAu bac, la justification habituelle est : « $f$ est dérivable sur $I$, donc continue sur $I$ ».",
+          "texte": "- Si une fonction $f$ est **dérivable** sur un intervalle $I$, alors $f$ est **continue** sur $I$. C'est vrai aussi en un seul réel : si $f$ est dérivable en $a$, alors $f$ est continue en $a$ (la démonstration, plus bas, le prouve réel par réel).\n- En conséquence, les fonctions polynômes, inverse et exponentielle sont continues sur chaque intervalle où elles sont définies. Il en va de même des fonctions obtenues à partir d'elles par somme, produit, quotient ou sous la forme $x \\mapsto g(ax + b)$.\n- Par exemple, $x \\mapsto \\dfrac{1}{x}$ est continue sur $]-\\infty\\,;\\,0[$ et sur $]0\\,;\\,+\\infty[$.\n- La fonction racine carrée est continue sur $[0\\,;\\,+\\infty[$ : en $0$, $\\lim\\limits_{\\substack{x \\to 0 \\\\ x > 0}} \\sqrt{x} = 0 = \\sqrt{0}$. De même, $x \\mapsto \\sqrt{ax + b}$ est continue sur chaque intervalle où $ax + b \\geqslant 0$ : elle est dérivable là où $ax + b > 0$ et, là où $ax + b$ s'annule, sa limite vaut $0$, comme sa valeur. Par exemple, $x \\mapsto \\sqrt{4 - x}$ est continue sur $]-\\infty\\,;\\,4]$.",
           "conditions": [
             "$f$ est dérivable en tout réel de l'intervalle $I$."
           ],
           "admise": false
-        },
-        {
-          "id": "l-continuite-061",
-          "type": "methode",
-          "titre": "Comment formuler la réciproque ou la contraposée d'une implication ?",
-          "capacites": ["bo-m-logique-09", "bo-m-continuite-01"],
-          "etapes": [
-            "Écris l'énoncé sous la forme « si $P$, alors $Q$ » : c'est une **implication**.",
-            "Pour la **réciproque**, échange $P$ et $Q$ : « si $Q$, alors $P$ ». Elle peut être fausse, même si l'implication est vraie.",
-            "Pour la **contraposée**, échange-les et prends leur contraire : « si $Q$ est fausse, alors $P$ est fausse ». Elle est vraie dès que l'implication l'est.",
-            "Applique-les à « si $f$ est dérivable en $a$, alors $f$ est continue en $a$ ». Sa réciproque est fausse : la racine carrée est continue en $0$ sans y être dérivable (voir le piège plus bas).",
-            "Sa contraposée est vraie : **une fonction non continue en $a$ n'est pas dérivable en $a$**. Sinon, dérivable en $a$, elle y serait continue."
-          ]
         },
         {
           "id": "l-continuite-008",
@@ -176,6 +163,19 @@
             {
               "texte": "Donc $f(a + h)$ tend vers $f(a)$ quand $h$ tend vers $0$. En posant $x = a + h$, cela s'écrit $\\lim\\limits_{x \\to a} f(x) = f(a)$ : $f$ est continue en $a$. Comme $a$ est un réel quelconque de $I$, $f$ est continue sur $I$."
             }
+          ]
+        },
+        {
+          "id": "l-continuite-061",
+          "type": "methode",
+          "titre": "Comment formuler la réciproque ou la contraposée d'une implication ?",
+          "capacites": ["bo-m-logique-09", "bo-m-continuite-01"],
+          "etapes": [
+            "Écris l'énoncé sous la forme « si $P$, alors $Q$ » : c'est une **implication**.",
+            "Pour la **réciproque**, échange $P$ et $Q$ : « si $Q$, alors $P$ ». Elle peut être fausse, même si l'implication est vraie.",
+            "Pour la **contraposée**, échange-les et prends leur contraire : « si $Q$ est fausse, alors $P$ est fausse ». Elle est vraie dès que l'implication l'est.",
+            "Applique-les à « si $f$ est dérivable en $a$, alors $f$ est continue en $a$ ». Sa réciproque est fausse : la racine carrée est continue en $0$ sans y être dérivable (voir le piège plus bas).",
+            "Énonce sa contraposée, vraie elle aussi : **une fonction non continue en $a$ n'est pas dérivable en $a$**. En effet, si elle était dérivable en $a$, elle y serait continue."
           ]
         },
         {
@@ -413,7 +413,7 @@
           "titre": "Encadrement et arrondi",
           "faux": "On a trouvé $0{,}68 < \\alpha < 0{,}69$. Donc la valeur arrondie de $\\alpha$ à $10^{-2}$ près est $0{,}69$, la borne supérieure.",
           "juste": "L'encadrement ne suffit pas : il faut savoir si $\\alpha$ est avant ou après $0{,}685$. Ici, $f(0{,}685) \\approx 0{,}006\\,4 > 0 = f(\\alpha)$ et $f$ est croissante, donc $\\alpha < 0{,}685$ : la valeur arrondie est $0{,}68$.",
-          "explication": "Un encadrement d'amplitude $10^{-2}$ donne deux nombres, distants de $0{,}01$, qui entourent $\\alpha$. La valeur arrondie à $10^{-2}$ près est le nombre à deux décimales le plus proche de $\\alpha$. Pour la trouver, compare $\\alpha$ au milieu de l'encadrement. Autre méthode, fréquente dans les corrigés du bac : affiner jusqu'à un encadrement d'amplitude $10^{-3}$. Ici, $0{,}682 < \\alpha < 0{,}683$ : les deux bornes s'arrondissent à $0{,}68$, donc $\\alpha$ aussi."
+          "explication": "Un encadrement d'amplitude $10^{-2}$ donne deux nombres, distants de $0{,}01$, qui entourent $\\alpha$. La valeur arrondie à $10^{-2}$ près est le nombre à deux décimales le plus proche de $\\alpha$. Pour la trouver, compare $\\alpha$ au milieu de l'encadrement. Autre méthode, fréquente dans les corrigés du bac : affiner jusqu'à un encadrement d'amplitude $10^{-3}$. Ici, $f(0{,}682) \\approx -0{,}000\\,8 < 0$ et $f(0{,}683) \\approx 0{,}001\\,6 > 0$ ; comme $f$ est croissante, $0{,}682 < \\alpha < 0{,}683$. Les deux bornes s'arrondissent à $0{,}68$, donc $\\alpha$ aussi."
         },
         {
           "id": "l-continuite-026",
@@ -423,7 +423,7 @@
           "texte": "Plus haut, le cours énonce le théorème sur un intervalle fermé $[a\\,;\\,b]$. Les sujets de bac l'appliquent aussi sur des intervalles comme $]0\\,;\\,+\\infty[$ ou $\\mathbb{R}$, en remplaçant les images des bornes par les **limites** aux bornes. On l'**admet** sous cette forme.\n\nSoit $f$ une fonction continue et strictement monotone sur un intervalle $]a\\,;\\,b[$, où $a$ peut être $-\\infty$ et $b$ peut être $+\\infty$. On note $\\ell$ la limite de $f$ en $a$ et $L$ sa limite en $b$ (des réels, ou $\\pm\\infty$). Alors, pour tout réel $k$ **strictement** compris entre $\\ell$ et $L$, l'équation $f(x) = k$ admet une unique solution dans $]a\\,;\\,b[$.\n\nSi une borne est incluse, comme $a$ dans $[a\\,;\\,+\\infty[$, on garde son image $f(a)$, et $k$ peut être égal à $f(a)$.",
           "conditions": [
             "$f$ est continue et strictement monotone sur tout l'intervalle.",
-            "$f$ a une limite, réelle ou infinie, en chaque borne exclue : en un réel exclu, la limite à droite pour la borne de gauche, à gauche pour la borne de droite.",
+            "$f$ a une limite, réelle ou infinie, en chaque borne exclue. En un réel exclu, c'est la limite à droite pour la borne de gauche, à gauche pour celle de droite.",
             "$k$ est strictement compris entre les limites : une limite n'est pas une valeur prise par $f$."
           ],
           "admise": true
@@ -578,11 +578,11 @@
             "type": "image",
             "data": {
               "src": "terminale/maths/continuite/methode-newton.svg",
-              "alt": "Agrandissement de la courbe de f(x) = x³ + x − 1 près de sa solution α, environ 0,68. Au point de la courbe d'abscisse x0 = 1, on trace la tangente T0 : elle coupe l'axe des abscisses en x1 = 0,75. Au point de la courbe d'abscisse x1, une nouvelle tangente coupe l'axe en x2, environ 0,686. Le point x2 et le point où la courbe coupe l'axe, d'abscisse α, se confondent presque. Un petit trait relie l'étiquette α à ce second point.",
+              "alt": "Agrandissement de la courbe de f(x) = x³ + x − 1 près de sa solution α, environ 0,68. Au point de la courbe d'abscisse x0 = 1, on trace la tangente T0 : elle coupe l'axe des abscisses en x1 = 0,75. Au point de la courbe d'abscisse x1, une nouvelle tangente T1, moins pentue que T0, coupe l'axe en x2, environ 0,686. Le point x2 et le point où la courbe coupe l'axe, d'abscisse α, se confondent presque. Un petit trait relie l'étiquette α à ce second point.",
               "width": 340,
               "height": 280
             },
-            "caption": "Agrandissement de la courbe de f(x) = x³ + x − 1 autour de α ≈ 0,682. La tangente T₀ au point d'abscisse x₀ = 1 coupe l'axe des abscisses en x₁ = 0,75 ; la tangente au point d'abscisse x₁ le coupe en x₂ ≈ 0,686. Sur la figure, x₂ et α (là où la courbe coupe l'axe) sont à moins de 0,004 l'un de l'autre : leurs points se confondent presque."
+            "caption": "Agrandissement de la courbe de f(x) = x³ + x − 1 autour de α ≈ 0,682. La tangente T₀ au point d'abscisse x₀ = 1 coupe l'axe des abscisses en x₁ = 0,75 ; la tangente T₁ au point d'abscisse x₁ le coupe en x₂ ≈ 0,686. Sur la figure, x₂ et α (là où la courbe coupe l'axe) sont à moins de 0,004 l'un de l'autre : leurs points se confondent presque."
           }
         },
         {
@@ -804,7 +804,7 @@
               "texte": "Pour tout $n$, $u_n$ appartient à $I$ ; $\\ell$ aussi, et $f$ est continue sur $I$. D'après la propriété « image d'une suite convergente », la suite $\\left(f(u_n)\\right)$ converge vers $f(\\ell)$."
             },
             {
-              "texte": "Or $f(u_n) = u_{n+1}$ pour tout $n$ : la suite $(u_{n+1})$ converge donc à la fois vers $\\ell$ et vers $f(\\ell)$."
+              "texte": "Par définition de la suite, $f(u_n) = u_{n+1}$ pour tout $n$ : la suite $(u_{n+1})$ converge donc à la fois vers $\\ell$ et vers $f(\\ell)$."
             },
             {
               "texte": "Or une suite convergente n'a qu'**une seule** limite. Donc $f(\\ell) = \\ell$.",
