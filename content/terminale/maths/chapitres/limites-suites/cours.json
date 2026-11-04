@@ -137,30 +137,12 @@
         },
         {
           "id": "l-limites-suites-075",
-          "type": "exemple",
-          "titre": "Une suite non majorée qui ne tend pas vers $+\\infty$",
-          "capacites": ["bo-m-suites-01", "bo-m-logique-06", "bo-m-logique-07", "bo-m-logique-09"],
-          "enonce": "Soit $(u_n)$ la suite définie, pour tout entier naturel $n$, par $u_n = n\\left(1 + (-1)^n\\right)$.\n\n**1.** Calculer $u_n$ lorsque $n$ est pair, puis lorsque $n$ est impair.\n\n**2.** Démontrer que la suite $(u_n)$ n'est pas majorée.\n\n**3.** Démontrer que la suite $(u_n)$ ne tend pas vers $+\\infty$.",
-          "etapes": [
-            {
-              "texte": "**1.** Si $n$ est pair, $(-1)^n = 1$, donc $u_n = n \\times 2 = 2n$. Si $n$ est impair, $(-1)^n = -1$, donc $u_n = n \\times 0 = 0$. Les premiers termes sont $0$ ; $0$ ; $4$ ; $0$ ; $8$ ; $0$ ; $12$…",
-              "pourquoi": "$(-1)^1 = -1$, $(-1)^2 = 1$, $(-1)^3 = -1$ : chaque facteur $-1$ de plus change le signe. Ainsi, $(-1)^n$ vaut $1$ si $n$ est pair, et $-1$ si $n$ est impair."
-            },
-            {
-              "texte": "**2.** Soit $A$ un réel. On choisit un entier pair $N$ tel que $N \\geqslant 2$ et $N \\geqslant A$. Alors $u_N = 2N$, et $2N > N$ car $N > 0$. Donc $u_N > N \\geqslant A$ : le terme $u_N$ dépasse strictement $A$.",
-              "pourquoi": "Montrer que la suite n'est pas majorée, c'est trouver, pour chaque réel $A$, un terme strictement supérieur à $A$. Un tel entier pair existe toujours : les entiers pairs $2$, $4$, $6$… finissent par dépasser n'importe quel réel. Par exemple, pour $A = 1\\,000$, $N = 1\\,000$ convient : $u_{1\\,000} = 2\\,000 > 1\\,000$."
-            },
-            {
-              "texte": "Ce raisonnement vaut pour tout réel $A$ : aucun réel n'est un majorant de la suite. **Conclusion de la question 2** : la suite $(u_n)$ n'est pas majorée."
-            },
-            {
-              "texte": "**3.** On prend l'intervalle $[1\\,;\\,+\\infty[$. Soit $N$ un entier naturel. L'entier $2N + 1$ est impair, donc $u_{2N+1} = 0$ ; de plus, $2N + 1 \\geqslant N$. Ainsi, à partir du rang $N$, au moins un terme n'est pas dans $[1\\,;\\,+\\infty[$.",
-              "pourquoi": "Tendre vers $+\\infty$ exige que **chaque** intervalle $[A\\,;\\,+\\infty[$ contienne tous les termes à partir d'un certain rang. Pour prouver le contraire, un seul intervalle qui échoue suffit : ici, celui où $A = 1$. Les termes de rang impair, tous nuls, reviennent sans cesse."
-            },
-            {
-              "texte": "**Conclusion** : aucun rang ne convient pour l'intervalle $[1\\,;\\,+\\infty[$, donc la suite $(u_n)$ ne tend pas vers $+\\infty$. Pourtant, elle n'est pas majorée : la réciproque de la propriété « toute suite qui tend vers $+\\infty$ n'est pas majorée » est fausse."
-            }
-          ]
+          "type": "piege",
+          "titre": "Non majorée ne veut pas dire « tend vers $+\\infty$ »",
+          "capacites": ["bo-m-suites-01", "bo-m-logique-09"],
+          "faux": "La suite définie par $u_n = n\\left(1 + (-1)^n\\right)$ n'est pas majorée, donc elle tend vers $+\\infty$.",
+          "juste": "Pour $n$ pair, $(-1)^n = 1$, donc $u_n = 2n$ : ces termes finissent par dépasser n'importe quel réel, et la suite n'est pas majorée. Pour $n$ impair, $(-1)^n = -1$, donc $u_n = 0$. Quel que soit le rang $N$, le terme $u_{2N+1}$, de rang au moins $N$, est nul : il n'est pas dans $[1\\,;\\,+\\infty[$. La suite ne tend donc pas vers $+\\infty$.",
+          "explication": "La réciproque de la propriété « toute suite qui tend vers $+\\infty$ n'est pas majorée » est fausse. Pour conclure à $+\\infty$ à partir de « non majorée », vérifie aussi que la suite est croissante : c'est la propriété des suites croissantes non majorées."
         },
         {
           "id": "l-limites-suites-009",
