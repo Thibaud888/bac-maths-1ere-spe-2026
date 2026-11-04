@@ -2643,5 +2643,83 @@
         "solution": "$\\dfrac{225}{n} \\leqslant 0{,}01 \\iff 225 \\leqslant 0{,}01n \\iff n \\geqslant 22\\,500$, car $n > 0$. Avec au moins $22\\,500$ logements, l'inégalité de concentration garantit que la compagnie perd de l'argent avec une probabilité d'au plus $0{,}01$."
       }
     ]
+  },
+  {
+    "id": "x-sommes-variables-aleatoires-037",
+    "chapitre": "sommes-variables-aleatoires",
+    "niveau": 2,
+    "notions": [
+      "n-sommes-variables-aleatoires-bienayme-tchebychev",
+      "n-sommes-variables-aleatoires-echantillon"
+    ],
+    "capacites": [
+      "bo-m-concentration-01",
+      "bo-m-sommes-04"
+    ],
+    "titre": "Des défauts d'impression : un événement d'un seul côté",
+    "duree": 15,
+    "calculatrice": false,
+    "ordre": 514,
+    "preambule": "Une imprimerie contrôle ses affiches. Le nombre de défauts d'impression d'une affiche est une variable aléatoire $X$, qui ne prend que des valeurs entières positives ou nulles. On admet que $E(X) = 3$ et $V(X) = 2$ ; la loi de $X$ n'est pas connue.",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1.",
+        "enonce": "Expliquer pourquoi l'événement $(X < 7)$ est égal à l'événement $(-1 < X < 7)$.",
+        "reponse": { "type": "redaction" },
+        "indices": [
+          "Les deux événements ne diffèrent que par la condition $-1 < X$. Ils sont égaux si cette condition est toujours réalisée : quelles valeurs un nombre de défauts peut-il prendre ?",
+          "Un nombre de défauts est positif ou nul : $X \\geqslant 0$. Or $0 > -1$.",
+          "La condition $X > -1$ est donc toujours vraie : dire « $X < 7$ » ou dire « $-1 < X$ et $X < 7$ », c'est dire la même chose. Conclus par une phrase."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-051",
+        "solution": "$X$ est un nombre de défauts, donc $X \\geqslant 0$. Comme $0 > -1$, la condition $X > -1$ est toujours réalisée : $X < 7$ équivaut à $-1 < X < 7$. Les deux événements sont égaux.\n\nIntérêt : $-1 = 3 - 4$ et $7 = 3 + 4$, donc l'intervalle $]-1\\,;\\,7[$ est centré en $E(X) = 3$. L'événement $(X < 7)$, d'un seul côté, devient un événement centré, auquel s'applique l'inégalité de Bienaymé-Tchebychev.",
+        "erreurFrequente": "Écrire $(X < 7) = (0 < X < 7)$ : c'est faux, car l'affiche sans défaut ($X = 0$) en serait exclue, et l'intervalle $]0\\,;\\,7[$ n'est pas centré en $3$. On prend la borne $-1$, symétrique de $7$ par rapport à $3$, justement parce que $X$ ne peut pas descendre jusque-là."
+      },
+      {
+        "id": "q2",
+        "label": "2.",
+        "enonce": "À l'aide de l'inégalité de Bienaymé-Tchebychev, minorer la probabilité qu'une affiche ait strictement moins de $7$ défauts. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.875, "tolerance": 0.0001 },
+        "indices": [
+          "Écris l'événement $(-1 < X < 7)$ de la question 1 comme un écart à l'espérance $3$ : repère le centre et la demi-largeur de l'intervalle.",
+          "$-1 = 3 - 4$ et $7 = 3 + 4$ : $(X < 7) = (\\lvert X - 3 \\rvert < 4)$, avec $\\delta = 4$.",
+          "L'inégalité majore l'écart **loin** de $3$ : $P(\\lvert X - 3 \\rvert \\geqslant 4) \\leqslant \\dfrac{V(X)}{4^2} = \\dfrac{2}{16}$.",
+          "Passe à l'événement contraire : $P(\\lvert X - 3 \\rvert < 4) = 1 - P(\\lvert X - 3 \\rvert \\geqslant 4)$. Retrancher un majorant de $1$ donne un minorant : calcule-le en décimal."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-051",
+        "solution": "D'après la question 1, $(X < 7) = (-1 < X < 7)$. Or $-1 = 3 - 4$ et $7 = 3 + 4$ : cet intervalle est centré en $E(X) = 3$, de demi-largeur $4$, donc $(X < 7) = (\\lvert X - 3 \\rvert < 4)$.\n\nD'après l'inégalité de Bienaymé-Tchebychev avec $\\delta = 4$ : $P(\\lvert X - 3 \\rvert \\geqslant 4) \\leqslant \\dfrac{2}{4^2} = \\dfrac{2}{16} = 0{,}125$.\n\nPar passage à l'événement contraire : $P(X < 7) = 1 - P(\\lvert X - 3 \\rvert \\geqslant 4) \\geqslant 1 - 0{,}125 = 0{,}875$. Au moins $87{,}5\\,\\%$ des affiches ont strictement moins de $7$ défauts."
+      },
+      {
+        "id": "q3",
+        "label": "3.",
+        "enonce": "Écrire l'événement $(X \\geqslant 8)$ comme un écart à l'espérance, puis majorer sa probabilité à l'aide de l'inégalité de Bienaymé-Tchebychev. Donner un nombre décimal.",
+        "reponse": { "type": "numerique", "valeur": 0.08, "tolerance": 0.0001 },
+        "indices": [
+          "L'événement $(X \\geqslant 8)$ n'est que d'un seul côté de $3$. Cherche le nombre symétrique de $8$ par rapport à $3$, puis demande-toi si $X$ peut descendre aussi bas, comme à la question 1.",
+          "$8 = 3 + 5$ et le symétrique vaut $3 - 5 = -2$. Comme $X \\geqslant 0$, l'événement $(X \\leqslant -2)$ est impossible : $(X \\geqslant 8) = (X \\leqslant -2 \\text{ ou } X \\geqslant 8)$.",
+          "« $X \\leqslant 3 - 5$ ou $X \\geqslant 3 + 5$ » s'écrit $\\lvert X - 3 \\rvert \\geqslant 5$ : c'est un écart loin de l'espérance, l'inégalité s'applique directement avec $\\delta = 5$.",
+          "Calcule $\\dfrac{V(X)}{5^2}$ et écris-le en décimal : ici, aucun passage au contraire."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-051",
+        "solution": "$8 = 3 + 5$ et $3 - 5 = -2$. Comme $X \\geqslant 0$, l'événement $(X \\leqslant -2)$ est impossible, donc :\n\n$$(X \\geqslant 8) = (X \\leqslant -2 \\text{ ou } X \\geqslant 8) = \\big(\\lvert X - 3 \\rvert \\geqslant 5\\big).$$\n\nD'après l'inégalité de Bienaymé-Tchebychev avec $\\delta = 5$ : $P(X \\geqslant 8) = P(\\lvert X - 3 \\rvert \\geqslant 5) \\leqslant \\dfrac{2}{5^2} = \\dfrac{2}{25} = 0{,}08$. Au plus $8\\,\\%$ des affiches ont au moins $8$ défauts.",
+        "erreurFrequente": "Prendre $\\delta = 8$, la borne de l'événement, au lieu de l'écart $8 - 3 = 5$ à l'espérance : $\\delta$ mesure toujours une distance à $\\mu$."
+      },
+      {
+        "id": "q4",
+        "label": "4.",
+        "enonce": "On contrôle $25$ affiches. On note $X_1, \\dots, X_{25}$ leurs nombres de défauts, et on admet que $(X_1, \\dots, X_{25})$ est un échantillon de taille $25$ de la loi de $X$. On note $M = \\dfrac{X_1 + \\dots + X_{25}}{25}$ le nombre moyen de défauts par affiche. À l'aide de l'inégalité de Bienaymé-Tchebychev appliquée à $M$, minorer $P(M < 7)$, puis comparer avec la question 2. Donner le minorant sous forme décimale.",
+        "reponse": { "type": "numerique", "valeur": 0.995, "tolerance": 0.0001 },
+        "indices": [
+          "Commence par l'espérance et la variance de $M$, moyenne d'un échantillon de taille $25$ : le cours les donne à partir de $E(X)$ et de $V(X)$.",
+          "$E(M) = E(X) = 3$ et $V(M) = \\dfrac{V(X)}{25} = \\dfrac{2}{25} = 0{,}08$. Ensuite, comme à la question 1 : chaque $X_i$ est positif ou nul, donc leur moyenne $M$ aussi.",
+          "$M \\geqslant 0 > -1$, donc $(M < 7) = (-1 < M < 7) = (\\lvert M - 3 \\rvert < 4)$ : applique l'inégalité à $M$ avec $\\delta = 4$, puis passe à l'événement contraire.",
+          "$P(\\lvert M - 3 \\rvert \\geqslant 4) \\leqslant \\dfrac{0{,}08}{4^2} = \\dfrac{0{,}08}{16}$ : écris ce quotient en décimal, retranche-le de $1$, puis compare au minorant $0{,}875$ obtenu pour une seule affiche."
+        ],
+        "revoir": "l-sommes-variables-aleatoires-035",
+        "solution": "$(X_1, \\dots, X_{25})$ est un échantillon de taille $25$ de la loi de $X$, et $M$ est sa moyenne, donc $E(M) = E(X) = 3$ et $V(M) = \\dfrac{V(X)}{25} = \\dfrac{2}{25} = 0{,}08$.\n\nChaque $X_i$ est un nombre de défauts, donc $X_i \\geqslant 0$, et $M \\geqslant 0$. La condition $M > -1$ est toujours réalisée, donc $(M < 7) = (-1 < M < 7) = (\\lvert M - 3 \\rvert < 4)$.\n\nD'après l'inégalité de Bienaymé-Tchebychev appliquée à $M$, avec $\\delta = 4$ : $P(\\lvert M - 3 \\rvert \\geqslant 4) \\leqslant \\dfrac{0{,}08}{4^2} = \\dfrac{0{,}08}{16} = 0{,}005$. Par passage à l'événement contraire : $P(M < 7) \\geqslant 1 - 0{,}005 = 0{,}995$.\n\nPour une seule affiche, le minorant n'était que $0{,}875$ : la variance est divisée par $25$, le majorant du risque aussi, de $0{,}125$ à $0{,}005$. La moyenne de $25$ affiches s'écarte beaucoup moins de $3$ qu'une affiche seule.",
+        "erreurFrequente": "Garder $V(X) = 2$ au lieu de $V(M) = \\dfrac{2}{25}$ : on retrouve le minorant $0{,}875$ d'une seule affiche, sans profiter de la moyenne."
+      }
+    ]
   }
 ]
