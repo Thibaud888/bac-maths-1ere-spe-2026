@@ -144,7 +144,7 @@
           "etapes": [
             {
               "texte": "**1.** Si $n$ est pair, $(-1)^n = 1$, donc $u_n = n \\times 2 = 2n$. Si $n$ est impair, $(-1)^n = -1$, donc $u_n = n \\times 0 = 0$. Les premiers termes sont $0$ ; $0$ ; $4$ ; $0$ ; $8$ ; $0$ ; $12$…",
-              "pourquoi": "Chaque facteur $-1$ de plus change le signe : $(-1)^1 = -1$, $(-1)^2 = 1$, $(-1)^3 = -1$… La puissance vaut $1$ pour un exposant pair et $-1$ pour un exposant impair."
+              "pourquoi": "$(-1)^1 = -1$, $(-1)^2 = 1$, $(-1)^3 = -1$ : chaque facteur $-1$ de plus change le signe. Ainsi, $(-1)^n$ vaut $1$ si $n$ est pair, et $-1$ si $n$ est impair."
             },
             {
               "texte": "**2.** Soit $A$ un réel. On choisit un entier pair $N$ tel que $N \\geqslant 2$ et $N \\geqslant A$. Alors $u_N = 2N$, et $2N > N$ car $N > 0$. Donc $u_N > N \\geqslant A$ : le terme $u_N$ dépasse strictement $A$.",
@@ -343,11 +343,11 @@
           "capacites": ["bo-m-suites-04"],
           "etapes": [
             "Écris la limite de chaque morceau et repère la forme : $+\\infty - \\infty$, $0 \\times \\infty$, $\\dfrac{\\infty}{\\infty}$ ou $\\dfrac{0}{0}$.",
-            "Pour une somme de puissances de $n$, comme $n^2 - 5n$, mets en facteur le **terme dominant**, c'est-à-dire celui de plus haut degré : $n^2 - 5n = n^2\\left(1 - \\dfrac{5}{n}\\right)$.",
-            "Pour un quotient, mets en facteur le terme de plus haut degré au numérateur **et** au dénominateur, puis simplifie la fraction. Si les degrés diffèrent, il reste une puissance de $n$, en haut ou en bas : elle tend vers $+\\infty$.",
-            "Si $n$ et $\\sqrt{n}$ apparaissent ensemble, mets $n$ en facteur : $\\sqrt{n}$ grandit moins vite que $n$, car $\\dfrac{\\sqrt{n}}{n} = \\dfrac{\\sqrt{n}}{\\sqrt{n} \\times \\sqrt{n}} = \\dfrac{1}{\\sqrt{n}}$, qui tend vers $0$. Par exemple, pour $n \\geqslant 1$, $\\dfrac{2n}{n + \\sqrt{n}} = \\dfrac{2n}{n\\left(1 + \\frac{1}{\\sqrt{n}}\\right)} = \\dfrac{2}{1 + \\frac{1}{\\sqrt{n}}}$, qui tend vers $\\dfrac{2}{1} = 2$.",
-            "Vérifie que chaque morceau restant a une limite connue, comme $\\dfrac{5}{n}$ qui tend vers $0$, puis conclus avec les tableaux : la forme n'est plus indéterminée.",
-            "Contrôle ton résultat en calculant un terme pour un grand $n$, par exemple $n = 1\\,000$. À degrés égaux en haut et en bas, la limite est le quotient des coefficients des termes de plus haut degré : $\\dfrac{3n}{n + 2}$ tend vers $\\dfrac{3}{1} = 3$. Ce raccourci n'est pas une justification : sur une copie, factorise quand même."
+            "Pour une somme de puissances de $n$, mets en facteur le **terme dominant**, c'est-à-dire celui de plus haut degré : $n^2 - 5n = n^2\\left(1 - \\dfrac{5}{n}\\right)$.",
+            "Pour un quotient, mets en facteur le terme de plus haut degré au numérateur **et** au dénominateur, puis simplifie. À degrés égaux, la limite est le quotient de leurs coefficients. Sinon, il reste une puissance de $n$, en haut ou en bas.",
+            "Si $n$ et $\\sqrt{n}$ apparaissent ensemble, mets $n$ en facteur : $n + \\sqrt{n} = n\\left(1 + \\dfrac{1}{\\sqrt{n}}\\right)$, car $\\dfrac{\\sqrt{n}}{n} = \\dfrac{\\sqrt{n}}{\\sqrt{n} \\times \\sqrt{n}} = \\dfrac{1}{\\sqrt{n}}$, qui tend vers $0$.",
+            "Vérifie que chaque morceau restant a une limite connue, puis conclus avec les tableaux.",
+            "Contrôle ton résultat en calculant le terme de rang $1\\,000$."
           ],
           "exemple": "l-limites-suites-022"
         },
@@ -851,7 +851,7 @@
           "type": "propriete",
           "titre": "Suite croissante majorée, suite décroissante minorée",
           "capacites": ["bo-m-suites-06"],
-          "texte": "- Toute suite croissante et majorée converge.\n- Toute suite décroissante et minorée converge.\n\nC'est le **théorème de convergence monotone** : une suite **monotone** est une suite croissante, ou décroissante. Il affirme qu'une limite $\\ell$ existe, mais il ne donne pas sa valeur. Si $u_n \\leqslant M$ pour tout $n$, le passage à la limite donne $\\ell \\leqslant M$ ; mais $\\ell$ n'est pas forcément égale à $M$.\n\nLa réciproque, « toute suite convergente est monotone », est fausse : $\\dfrac{(-1)^n}{n}$ converge vers $0$, mais ses termes $-1$ ; $\\dfrac{1}{2}$ ; $-\\dfrac{1}{3}$… montent puis descendent.\n\nAvec la propriété des suites croissantes non majorées, vue au début du chapitre, on en déduit : une suite croissante a toujours une limite. Cette limite est finie si la suite est majorée, et vaut $+\\infty$ sinon.",
+          "texte": "- Toute suite croissante et majorée converge.\n- Toute suite décroissante et minorée converge.\n\nC'est le **théorème de convergence monotone** : une suite **monotone** est une suite croissante, ou décroissante. Il affirme qu'une limite $\\ell$ existe, sans donner sa valeur. Si $u_n \\leqslant M$ pour tout $n$, le passage à la limite donne $\\ell \\leqslant M$ ; mais $\\ell$ n'est pas forcément égale à $M$.\n\nLa réciproque, « toute suite convergente est monotone », est fausse. Pour $n \\geqslant 1$, $-\\dfrac{1}{n} \\leqslant \\dfrac{(-1)^n}{n} \\leqslant \\dfrac{1}{n}$ et ces bornes tendent vers $0$ : par le théorème des gendarmes, la suite $\\left(\\dfrac{(-1)^n}{n}\\right)$ converge vers $0$. Pourtant, ses termes $-1$ ; $\\dfrac{1}{2}$ ; $-\\dfrac{1}{3}$… montent puis descendent.\n\nAvec la propriété des suites croissantes non majorées, une suite croissante a toujours une limite : finie si elle est majorée, $+\\infty$ sinon.",
           "conditions": [
             "Croissante **et** majorée, ou décroissante **et** minorée : les deux hypothèses sont nécessaires.",
             "Le majorant (ou le minorant) est un réel fixé, qui ne dépend pas de $n$."
