@@ -216,7 +216,8 @@
             "points": 0.5,
             "revoir": "l-limites-fonctions-047",
             "indices": [
-              "$f$ est la somme d'un produit $uv$, avec $u(x) = 3x - 1$ et $v(x) = e^{-x}$, et de la constante $2$. Utilise $(uv)' = u'v + uv'$ avec $v'(x) = -e^{-x}$, puis mets $e^{-x}$ en facteur."
+              "$f$ est la somme d'un produit $uv$, avec $u(x) = 3x - 1$ et $v(x) = e^{-x}$, et de la constante $2$ : utilise la formule $(uv)' = u'v + uv'$ ; la dérivée de $e^{ax + b}$ est $ae^{ax + b}$.",
+              "Ici $u'(x) = 3$ et $v'(x) = -e^{-x}$, donc $f'(x) = 3e^{-x} + (3x - 1)\\left(-e^{-x}\\right)$. Mets $e^{-x}$ en facteur et réduis ce qui reste entre parenthèses."
             ],
             "attenduCorrecteur": "- Formule du produit avec $u'(x) = 3$ et $v'(x) = -e^{-x}$ ; la constante $2$ a une dérivée nulle : 0,25 pt.\n- Factorisation par $e^{-x}$ : $f'(x) = (3 - 3x + 1)e^{-x} = (4 - 3x)e^{-x}$ : 0,25 pt.",
             "solution": "On pose $u(x) = 3x - 1$ et $v(x) = e^{-x}$, de sorte que $f = uv + 2$. On a $u'(x) = 3$ et $v'(x) = -e^{-x}$ (dérivée de $e^{ax+b}$ avec $a = -1$). La constante $2$ a une dérivée nulle. Pour tout réel $x$ :\n\n$$f'(x) = 3e^{-x} + (3x - 1)\\left(-e^{-x}\\right) = (3 - 3x + 1)e^{-x} = (4 - 3x)e^{-x}.$$"
@@ -411,11 +412,13 @@
     "chapitre": "limites-fonctions",
     "notions": [
       "n-limites-fonctions-croissances-comparees",
-      "n-limites-fonctions-reference"
+      "n-limites-fonctions-reference",
+      "n-limites-fonctions-operations"
     ],
     "capacites": [
       "bo-m-limites-fonctions-05",
       "bo-m-limites-fonctions-02",
+      "bo-m-limites-fonctions-04",
       "bo-m-suites-08",
       "bo-m-logique-14",
       "bo-m-suites-06",
@@ -447,7 +450,8 @@
             "points": 0.5,
             "revoir": "l-limites-fonctions-029",
             "indices": [
-              "Commence par l'exposant : quand $x$ tend vers $-\\infty$, vers quoi tend $0{,}5x - 2$ ? Déduis-en la limite de $e^{0{,}5x - 2}$ (composée), puis celle de $1 + x$."
+              "Traite séparément $1 + x$ et $e^{0{,}5x - 2}$, puis conclus par somme. Le second morceau est une composée : commence par la limite de l'exposant $0{,}5x - 2$ quand $x$ tend vers $-\\infty$.",
+              "On pose $X = 0{,}5x - 2$ : quand $x$ tend vers $-\\infty$, $X$ tend vers $-\\infty$. Écris la limite de $e^X$ quand $X$ tend vers $-\\infty$, puis celle de $1 + x$, et additionne."
             ],
             "attenduCorrecteur": "- Composée : $X = 0{,}5x - 2$ tend vers $-\\infty$ et $\\lim\\limits_{X \\to -\\infty} e^X = 0$, donc $e^{0{,}5x - 2}$ tend vers $0$ : 0,25 pt.\n- $1 + x$ tend vers $-\\infty$ ; par somme, $\\lim\\limits_{x \\to -\\infty} f(x) = -\\infty$ : 0,25 pt.",
             "solution": "On pose $X = 0{,}5x - 2$. Quand $x$ tend vers $-\\infty$, $X$ tend vers $-\\infty$, et $\\lim\\limits_{X \\to -\\infty} e^X = 0$ : par composée, $\\lim\\limits_{x \\to -\\infty} e^{0{,}5x - 2} = 0$.\n\nDe plus, $\\lim\\limits_{x \\to -\\infty} (1 + x) = -\\infty$. Par somme :\n\n$$\\lim_{x \\to -\\infty} f(x) = -\\infty.$$"
@@ -481,7 +485,8 @@
             "points": 0.5,
             "revoir": "l-limites-fonctions-047",
             "indices": [
-              "La dérivée de $x \\mapsto e^{ax + b}$ est $x \\mapsto ae^{ax + b}$ (formule de première) ; repère ici les valeurs de $a$ et de $b$."
+              "Dérive terme à terme. Pour l'exponentielle, la dérivée de $x \\mapsto e^{ax + b}$ est $x \\mapsto ae^{ax + b}$ (formule de première).",
+              "Ici $e^{0{,}5x - 2}$ est de la forme $e^{ax + b}$ avec $a = 0{,}5$ et $b = -2$, et la dérivée de $x \\mapsto 1 + x$ est la constante $1$. Assemble les deux, sans perdre le signe moins devant l'exponentielle."
             ],
             "attenduCorrecteur": "- Dérivée de $1 + x$ : la constante $1$ : 0,25 pt.\n- Dérivée de $e^{0{,}5x - 2}$ : $0{,}5e^{0{,}5x - 2}$, d'où $f'(x) = 1 - 0{,}5e^{0{,}5x - 2}$ : 0,25 pt.",
             "solution": "La dérivée de $x \\mapsto 1 + x$ est la constante $1$. La dérivée de $x \\mapsto e^{0{,}5x - 2}$ est $x \\mapsto 0{,}5e^{0{,}5x - 2}$ (dérivée de $e^{ax+b}$ avec $a = 0{,}5$ et $b = -2$). Pour tout réel $x$ :\n\n$$f'(x) = 1 - 0{,}5e^{0{,}5x - 2}.$$"
@@ -544,7 +549,8 @@
         "points": 0.5,
         "revoir": "l-limites-fonctions-015",
         "indices": [
-          "Écris l'équation $1 + \\ell - e^{0{,}5\\ell - 2} = \\ell$ et simplifie : il reste une égalité entre une exponentielle et $1$, et $1 = e^0$."
+          "Remplace $f(\\ell)$ par son expression dans l'égalité $f(\\ell) = \\ell$, puis simplifie : le terme $\\ell$ est présent des deux côtés.",
+          "Il reste $e^{0{,}5\\ell - 2} = 1$. Écris $1$ comme une exponentielle, puis utilise $e^a = e^b \\iff a = b$."
         ],
         "attenduCorrecteur": "- Équation simplifiée : $e^{0{,}5\\ell - 2} = 1 = e^0$ : 0,25 pt.\n- $0{,}5\\ell - 2 = 0$, car $e^a = e^b \\iff a = b$, donc $\\ell = 4$ : 0,25 pt.",
         "solution": "D'après l'énoncé, $f(\\ell) = \\ell$, c'est-à-dire $1 + \\ell - e^{0{,}5\\ell - 2} = \\ell$. En retranchant $\\ell$ aux deux membres : $e^{0{,}5\\ell - 2} = 1 = e^0$.\n\nOr, pour tous réels $a$ et $b$, $e^a = e^b \\iff a = b$. Donc $0{,}5\\ell - 2 = 0$, soit $\\ell = 4$ : la suite $(u_n)$ converge vers $4$."
@@ -566,7 +572,8 @@
             "points": 0.5,
             "revoir": "l-limites-suites-064",
             "indices": [
-              "À chaque tour de boucle, u devient le terme suivant de la suite et n augmente de $1$ : u contient $u_n$. La boucle s'arrête au premier terme pour lequel la condition du while est fausse."
+              "Suis les variables : que contiennent u et n au départ, puis après un tour de boucle ? Quand une boucle while s'arrête-t-elle ?",
+              "Après $k$ tours, u contient $u_k$ et n vaut $k$ ; la boucle tourne tant que $u_n \\leqslant 3{,}99$. Traduis « l'appel renvoie $12$ » par une phrase sur les termes de la suite, puis utilise son sens de variation pour les termes suivants."
             ],
             "attenduCorrecteur": "- La variable u contient $u_n$, et la boucle tourne tant que $u_n \\leqslant 3{,}99$ : 0,25 pt.\n- Interprétation : $u_{12}$ est le premier terme strictement supérieur à $3{,}99$ ; la suite étant croissante et majorée par $4$, tous les termes à partir du rang $12$ sont dans $]3{,}99\\,;\\,4]$ : 0,25 pt.",
             "solution": "Au départ, u vaut $u_0 = 0$ et n vaut $0$. À chaque tour de boucle, u est remplacé par $f(u)$, le terme suivant, et n augmente de $1$ : après $k$ tours, u contient $u_k$ et n vaut $k$. La boucle tourne tant que $u_n \\leqslant 3{,}99$.\n\nL'appel renvoie $12$ : $u_{12}$ est le premier terme de la suite strictement supérieur à $3{,}99$, alors que $u_0, u_1, \\dots, u_{11}$ sont inférieurs ou égaux à $3{,}99$. Comme la suite est croissante et majorée par $4$, tous les termes à partir du rang $12$ appartiennent à l'intervalle $]3{,}99\\,;\\,4]$."
