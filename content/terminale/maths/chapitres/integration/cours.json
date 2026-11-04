@@ -59,7 +59,11 @@
               "pourquoi": "Ici, le trapèze est « couché » : ses bases sont les segments verticaux en $x = 1$ et en $x = 3$."
             },
             {
-              "texte": "**d.** Sur $[-2\\,;\\,2]$, $x^2 \\leqslant 4$, donc $4 - x^2 \\geqslant 0$ : la fonction $x \\mapsto \\sqrt{4 - x^2}$ y est définie, continue (composée de fonctions continues) et positive. Pour $x$ dans $[-2\\,;\\,2]$ et $y = \\sqrt{4 - x^2}$, on a $y \\geqslant 0$ et $y^2 = 4 - x^2$, soit $x^2 + y^2 = 4$. Le point $M(x\\,;\\,y)$ est donc sur le cercle de centre $O$ et de rayon $2$, dans sa moitié supérieure.",
+              "texte": "**d.** Sur $[-2\\,;\\,2]$, $x^2 \\leqslant 4$, donc $4 - x^2 \\geqslant 0$ : la fonction $x \\mapsto \\sqrt{4 - x^2}$ y est définie et positive. Elle y est aussi continue. Sur $]-2\\,;\\,2[$, elle est dérivable, donc continue. Quand $x$ tend vers $2$ ou vers $-2$, $4 - x^2$ tend vers $0$, donc $\\sqrt{4 - x^2}$ tend vers $0$. C'est sa valeur en ces deux points : elle y est continue.",
+              "pourquoi": "Sur $]-2\\,;\\,2[$, $4 - x^2$ prend ses valeurs dans $]0\\,;\\,4]$, où la racine carrée est dérivable : la composée est dérivable. En $0$, la racine carrée n'est pas dérivable, mais elle est continue : on revient donc à la définition de la continuité (rappel)."
+            },
+            {
+              "texte": "Pour $x$ dans $[-2\\,;\\,2]$ et $y = \\sqrt{4 - x^2}$, on a $y \\geqslant 0$ et $y^2 = 4 - x^2$, soit $x^2 + y^2 = 4$. Le point $M(x\\,;\\,y)$ est donc sur le cercle de centre $O$ et de rayon $2$, dans sa moitié supérieure.",
               "pourquoi": "Dans un repère orthonormé, $x^2 + y^2 = OM^2$ : $OM^2 = 4$ signifie $OM = 2$."
             },
             {
@@ -279,7 +283,7 @@
           "type": "complement",
           "titre": "Pour aller plus loin : des suites adjacentes pour approcher une aire",
           "capacites": ["bo-m-integrale-17"],
-          "texte": "Découpe $[0\\,;\\,1]$ en $n$ intervalles de largeur $\\dfrac{1}{n}$, et note $s_n$ et $S_n$ les aires des rectangles à gauche et à droite pour $f : x \\mapsto x^2$ :$$\\begin{aligned} s_n &= \\tfrac{1}{n}\\Big(f(0) + f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big)\\Big), \\\\ S_n &= \\tfrac{1}{n}\\Big(\\phantom{f(0) + {}} f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big) + f(1)\\Big). \\end{aligned}$$Comme $f$ est croissante, $s_n \\leqslant \\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x \\leqslant S_n$. Les termes communs s'éliminent : $S_n - s_n = \\dfrac{1}{n}\\big(f(1) - f(0)\\big) = \\dfrac{1}{n}$, qui tend vers $0$.\n\nAvec $1^2 + 2^2 + \\dots + n^2 = \\dfrac{n(n + 1)(2n + 1)}{6}$, démontrée par récurrence dans le chapitre sur la récurrence, on trouve $s_n = \\dfrac{(n - 1)(2n - 1)}{6n^2}$ et $S_n = \\dfrac{(n + 1)(2n + 1)}{6n^2}$. Ainsi $(s_n)$ croît, $(S_n)$ décroît et $S_n - s_n$ tend vers $0$ : ces suites sont **adjacentes** (chapitre sur les limites de suites). Elles convergent donc vers la même limite, ici $\\dfrac{1}{3}$, qui est l'aire cherchée."
+          "texte": "Découpe $[0\\,;\\,1]$ en $n$ intervalles de largeur $\\dfrac{1}{n}$, et note $s_n$ et $S_n$ les aires des rectangles à gauche et à droite pour $f : x \\mapsto x^2$ :$$\\begin{aligned} s_n &= \\tfrac{1}{n}\\Big(f(0) + f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big)\\Big), \\\\ S_n &= \\tfrac{1}{n}\\Big(\\phantom{f(0) + {}} f\\big(\\tfrac{1}{n}\\big) + \\dots + f\\big(\\tfrac{n-1}{n}\\big) + f(1)\\Big). \\end{aligned}$$Comme $f$ est croissante, $s_n \\leqslant \\displaystyle\\int_0^1 x^2\\,\\mathrm{d}x \\leqslant S_n$. Les termes communs s'éliminent : $S_n - s_n = \\dfrac{1}{n}\\big(f(1) - f(0)\\big) = \\dfrac{1}{n}$, qui tend vers $0$.\n\nAvec $1^2 + 2^2 + \\dots + n^2 = \\dfrac{n(n + 1)(2n + 1)}{6}$, démontrée par récurrence dans le chapitre sur la récurrence, on trouve, en développant :$$\\begin{aligned} s_n &= \\frac{(n - 1)(2n - 1)}{6n^2} = \\frac{1}{3} - \\frac{1}{2n} + \\frac{1}{6n^2}, \\\\ S_n &= \\frac{(n + 1)(2n + 1)}{6n^2} = \\frac{1}{3} + \\frac{1}{2n} + \\frac{1}{6n^2}. \\end{aligned}$$La suite $(S_n)$ décroît, car $\\dfrac{1}{2n}$ et $\\dfrac{1}{6n^2}$ décroissent. Pour $(s_n)$, on a $s_n = g(n)$ avec $g(x) = \\dfrac{1}{3} - \\dfrac{1}{2x} + \\dfrac{1}{6x^2}$. Or $g'(x) = \\dfrac{1}{2x^2} - \\dfrac{1}{3x^3} = \\dfrac{3x - 2}{6x^3} > 0$ pour $x \\geqslant 1$ : la suite $(s_n)$ croît. Comme $S_n - s_n$ tend vers $0$, ces suites sont **adjacentes** (chapitre sur les limites de suites). Elles convergent donc vers la même limite, ici $\\dfrac{1}{3}$, qui est l'aire cherchée."
         },
         {
           "id": "l-integration-018",
@@ -1405,7 +1409,7 @@
           "type": "exemple",
           "titre": "Les premiers rectangles de Brouncker",
           "capacites": ["bo-m-integrale-21"],
-          "enonce": "Une autre suite approche une intégrale : la somme des aires de rectangles de plus en plus fins. En 1668, Brouncker remplit ainsi le domaine sous la courbe de la fonction inverse, entre $x = 1$ et $x = 2$ (figure ci-dessus).\n\n**a.** Montrer que l'aire de ce domaine vaut $\\ln 2$ u.a.\n\n**b.** Expliquer comment les rectangles sont construits, puis calculer les aires des quatre premiers.",
+          "enonce": "Cette fois, la suite n'est pas une suite d'intégrales. Ses termes sont des sommes d'aires de rectangles de plus en plus fins, qui s'approchent d'une intégrale. En 1668, Brouncker remplit ainsi le domaine sous la courbe de la fonction inverse, entre $x = 1$ et $x = 2$ (figure ci-dessus).\n\n**a.** Montrer que l'aire de ce domaine vaut $\\ln 2$ u.a.\n\n**b.** Expliquer comment les rectangles sont construits, puis calculer les aires des quatre premiers.",
           "etapes": [
             {
               "texte": "**a.** La fonction inverse est continue et positive sur $[1\\,;\\,2]$, et $\\ln$ en est une primitive sur $]0\\,;\\,+\\infty[$. L'aire vaut donc $\\displaystyle\\int_1^2 \\frac{1}{x}\\,\\mathrm{d}x = \\big[\\ln x\\big]_1^2 = \\ln 2 - \\ln 1 = \\ln 2$ u.a.",

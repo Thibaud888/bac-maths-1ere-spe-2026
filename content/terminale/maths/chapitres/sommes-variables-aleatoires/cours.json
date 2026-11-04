@@ -162,7 +162,7 @@
             "Pour $V(aX)$ et $V(aX + b)$ : $a$ et $b$ sont des réels quelconques, sans hypothèse d'indépendance."
           ],
           "admise": true,
-          "texte": "Si $X$ et $Y$ sont indépendantes :\n\n$$V(X + Y) = V(X) + V(Y).$$\n\nDe même, si $X_1, \\dots, X_n$ sont liées à $n$ épreuves indépendantes, $V(X_1 + \\dots + X_n) = V(X_1) + \\dots + V(X_n)$.\n\nPour tous réels $a$ et $b$ :\n\n$$V(aX) = a^2\\,V(X), \\qquad V(aX + b) = a^2\\,V(X), \\qquad \\sigma(aX) = \\lvert a \\rvert\\,\\sigma(X),$$\n\noù $\\lvert a \\rvert$ est la valeur absolue de $a$. En effet, $\\sigma(aX) = \\sqrt{a^2\\,V(X)} = \\lvert a \\rvert\\,\\sqrt{V(X)}$, car $\\sqrt{a^2} = \\lvert a \\rvert$ ; par exemple, $\\sigma(-3X) = 3\\,\\sigma(X)$. Lecture : multiplier $X$ par $a$ multiplie chaque écart à l'espérance par $a$, donc chaque carré d'écart par $a^2$. Ajouter $b$ décale les valeurs sans les disperser. L'additivité est admise."
+          "texte": "Si $X$ et $Y$ sont indépendantes :\n\n$$V(X + Y) = V(X) + V(Y).$$\n\nDe même, si $X_1, \\dots, X_n$ sont liées à $n$ épreuves indépendantes, $V(X_1 + \\dots + X_n) = V(X_1) + \\dots + V(X_n)$.\n\nPour tous réels $a$ et $b$ :\n\n$$V(aX) = a^2\\,V(X), \\qquad V(aX + b) = a^2\\,V(X), \\qquad \\sigma(aX) = \\lvert a \\rvert\\,\\sigma(X),$$\n\noù $\\lvert a \\rvert$ est la valeur absolue de $a$. En effet, $\\sigma(aX) = \\sqrt{a^2\\,V(X)} = \\lvert a \\rvert\\,\\sqrt{V(X)}$, car $\\sqrt{a^2} = \\lvert a \\rvert$ ; par exemple, $\\sigma(-3X) = 3\\,\\sigma(X)$. Lecture : multiplier $X$ par $a$ multiplie chaque écart à l'espérance par $a$, donc chaque carré d'écart par $a^2$. Ajouter $b$ décale les valeurs sans les disperser. Avec $a = 0$, $aX + b$ est la constante $b$ : $V(b) = 0$, car une constante est toujours égale à son espérance, donc tous ses écarts sont nuls. L'additivité est admise."
         },
         {
           "id": "l-sommes-variables-aleatoires-015",
@@ -190,7 +190,7 @@
               "pourquoi": "On retrouve $V(2Y) = 2^2 \\times V(Y) = 4 \\times 1{,}25 = 5$. Si l'on lance plutôt deux dés à quatre faces, de résultats $Y_1$ et $Y_2$ indépendants, $V(Y_1 + Y_2) = 1{,}25 + 1{,}25 = 2{,}5$. C'est deux fois moins que $V(2Y)$, pour la même espérance $5$."
             },
             {
-              "texte": "**Conclusion** : $V(X) = 1$, $V(Y) = 1{,}25$ et $V(T) = V(X) + V(Y) = 2{,}25$, ce que confirme le calcul direct. Doubler $Y$ multiplie sa variance par $4$ : $V(2Y) = 5$, alors que la somme de deux dés indépendants n'a qu'une variance de $2{,}5$."
+              "texte": "**Conclusion** : $V(X) = 1$, $V(Y) = 1{,}25$ et $V(T) = V(X) + V(Y) = 2{,}25$, ce que confirme le calcul direct. Doubler $Y$ multiplie sa variance par $4$ : $V(2Y) = 5$, alors que la somme de deux dés à quatre faces indépendants n'a qu'une variance de $2{,}5$."
             }
           ]
         },
@@ -542,7 +542,8 @@
             "Pars de la position $0$ et ajoute les $n$ pas dans une boucle ; range chaque nouvelle position dans une liste, pour garder le trajet.",
             "Lis la position après $n$ pas : c'est l'élément d'indice $n$ de la liste, qui compte $n + 1$ positions.",
             "Interprète : cette position est la somme $S_n$ d'un échantillon de taille $n$ de la loi du pas. Un pas a pour espérance $0$ et pour variance $1^2 \\times \\dfrac{1}{2} + (-1)^2 \\times \\dfrac{1}{2} = 1$, donc $E(S_n) = 0$ et $\\sigma(S_n) = \\sqrt{n}$.",
-            "Relance le programme : chaque trajet est différent. Après $100$ pas, l'écart type de la position vaut $\\sqrt{100} = 10$, bien moins que $100$. S'écarter de $0$ de plus de $20$, c'est s'en écarter de plus de deux écarts types : c'est rare. Le calcul exact donne une probabilité d'environ $0{,}035$, soit à peu près une fois sur trente. L'inégalité de la notion suivante, plus prudente, garantit seulement que cette probabilité est au plus $0{,}25$."
+            "Relance le programme : chaque trajet est différent. Après $100$ pas, l'écart type de la position vaut $\\sqrt{100} = 10$, bien moins que $100$. S'écarter de $0$ de plus de $20$, c'est s'en écarter de plus de deux écarts types : c'est rare.",
+            "Relie la simulation au calcul exact. Les $100$ pas sont indépendants et vont chacun à droite avec la probabilité $\\dfrac{1}{2}$ : le nombre $D$ de pas à droite suit la loi $\\mathcal{B}(100\\,;\\,0{,}5)$. La position vaut $D - (100 - D) = 2D - 100$. S'écarter de $0$ de plus de $20$, c'est donc $\\lvert 2D - 100 \\rvert > 20$, soit $\\lvert D - 50 \\rvert > 10 = \\sqrt{100}$. Dans la notion suivante, la méthode qui compare la probabilité exacte d'un écart à l'inégalité calcule cette probabilité pour $n = 100$ : environ $0{,}035$, soit à peu près une fois sur trente. L'inégalité de cette notion, plus prudente, garantit seulement qu'elle est au plus $0{,}25$."
           ],
           "code": {
             "langage": "python",
@@ -569,7 +570,7 @@
             "Appelle cette fonction $N$ fois et range les $N$ moyennes obtenues dans une liste. Attention aux deux lettres : $N$ est le nombre d'échantillons, $n$ la taille de chacun.",
             "Calcule l'écart type $s$ de cette série de moyennes : c'est l'écart type **observé** sur la simulation. Compare-le à $\\dfrac{\\sigma}{\\sqrt{n}}$, l'écart type **prévu** par le cours : pour $n = 100$, $\\dfrac{1{,}71}{10} \\approx 0{,}17$.",
             "Regarde si les moyennes tombent presque toujours à moins de deux ou trois écarts types de $\\mu$. Pour $k = 1$, $2$ et $3$, calcule la proportion des moyennes $m$ telles que $\\lvert m - \\mu \\rvert \\leqslant ks$, puis telles que $\\lvert m - \\mu \\rvert \\leqslant k\\dfrac{\\sigma}{\\sqrt{n}}$.",
-            "Lis les résultats, qui changent un peu à chaque exécution. L'écart type $s$ est proche de $\\dfrac{\\sigma}{\\sqrt{n}}$. Les proportions valent environ $0{,}7$, $0{,}95$, puis plus de $0{,}99$ : la moyenne est presque toujours à moins de trois écarts types de $\\mu$. Pour $k = 2$, la dernière notion du chapitre garantira une probabilité d'au moins $0{,}75$."
+            "Lis les résultats, qui changent un peu à chaque exécution. Constate que l'écart type $s$ est proche de $\\dfrac{\\sigma}{\\sqrt{n}} \\approx 0{,}17$. Les proportions valent environ $0{,}7$, $0{,}95$, puis plus de $0{,}99$ : la moyenne est presque toujours à moins de trois écarts types de $\\mu$. Pour $k = 2$, la dernière notion du chapitre garantira une probabilité d'au moins $0{,}75$."
           ],
           "code": {
             "langage": "python",
@@ -697,6 +698,7 @@
             "Traduis l'événement en écart à $\\mu$ : repère le centre $\\mu$ et la demi-largeur $\\delta$. « $\\mu - \\delta < X < \\mu + \\delta$ » s'écrit $\\lvert X - \\mu \\rvert < \\delta$ ; « $X \\leqslant \\mu - \\delta$ ou $X \\geqslant \\mu + \\delta$ » s'écrit $\\lvert X - \\mu \\rvert \\geqslant \\delta$.",
             "Si $X$ ne prend que des valeurs entières, ajuste les bornes : par exemple, $41 \\leqslant X \\leqslant 59$ équivaut à $40 < X < 60$.",
             "Pour un écart **loin** de $\\mu$, applique directement $P(\\lvert X - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V(X)}{\\delta^2}$.",
+            "Pour un événement **d'un seul côté**, comme $X \\geqslant a$ avec $a > \\mu$, ramène-le à un écart par inclusion. Pose $\\delta = a - \\mu > 0$ : $X \\geqslant a$ entraîne $X - \\mu \\geqslant \\delta$, donc $\\lvert X - \\mu \\rvert \\geqslant \\delta$. Un événement inclus dans un autre a une probabilité plus petite ou égale : $P(X \\geqslant a) \\leqslant P(\\lvert X - \\mu \\rvert \\geqslant \\delta) \\leqslant \\dfrac{V(X)}{\\delta^2}$. Par exemple, avec $\\mu = 50$ : $P(X \\geqslant 60) \\leqslant P(\\lvert X - 50 \\rvert \\geqslant 10)$. Même geste pour $X \\leqslant a$ avec $a < \\mu$, en posant $\\delta = \\mu - a$.",
             "Pour **rester proche** de $\\mu$, passe au contraire : $P(\\lvert X - \\mu \\rvert < \\delta) \\geqslant 1 - \\dfrac{V(X)}{\\delta^2}$. Conclus par une phrase dans le contexte."
           ],
           "exemple": "l-sommes-variables-aleatoires-052"
@@ -866,7 +868,8 @@
             "Repère le risque accepté : la probabilité maximale que $M_n$ tombe hors de cet intervalle. Par exemple, vouloir une probabilité d'au moins $0{,}85$ d'y être, c'est accepter un risque de $0{,}15$.",
             "Écris l'inégalité de concentration sous la forme $P(\\lvert M_n - \\mu \\rvert < \\delta) \\geqslant 1 - \\dfrac{V}{n\\delta^2}$.",
             "Cherche les entiers $n$ pour lesquels $1 - \\dfrac{V}{n\\delta^2}$ atteint la probabilité voulue : résous l'inéquation d'inconnue $n$, en multipliant par $n\\delta^2 > 0$.",
-            "Prends le plus petit entier qui convient, puis conclus : « pour $n \\geqslant \\dots$, l'inégalité de concentration permet d'affirmer que … »."
+            "Prends le plus petit entier qui convient, puis conclus : « pour $n \\geqslant \\dots$, l'inégalité de concentration permet d'affirmer que … ».",
+            "Si $n$ est imposé (ou absent, avec l'inégalité de Bienaymé-Tchebychev) et que la précision $\\delta$ est cherchée, résous l'inéquation d'inconnue $\\delta$. Multiplie les deux membres par le dénominateur, strictement positif, puis isole $\\delta^2$. Prends enfin la racine carrée : comme $\\delta > 0$ et que la racine carrée est croissante sur $[0\\,;\\,+\\infty[$, le sens de l'inégalité ne change pas. Exemple, avec les sachets ci-dessous ($\\mu = 120$, $V = 81$), $n = 60$ et un risque $0{,}15$ : $\\dfrac{81}{60\\delta^2} \\leqslant 0{,}15$ équivaut à $81 \\leqslant 9\\delta^2$, soit $\\delta^2 \\geqslant 9$, soit $\\delta \\geqslant 3$. Donc $P(117 < M_{60} < 123) \\geqslant 0{,}85$."
           ],
           "exemple": "l-sommes-variables-aleatoires-064"
         },
