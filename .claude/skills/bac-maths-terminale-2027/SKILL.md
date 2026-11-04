@@ -168,7 +168,7 @@ Traduction en identifiants de `programme.json` (lignes exclues du décompte d'un
 | concentration, loi des grands nombres | `bo-m-concentration-*` |
 | combinatoire et dénombrement (2022, 2023 ; 2021 : « mobilisable » mais jamais « ressort essentiel ») | `bo-m-denombrement-*` |
 | somme de variables aléatoires (2022, 2023) | `bo-m-sommes-*` |
-| « équation différentielle y' = ay […] y' = ay + b » (2022, 2023) | `bo-m-primitives-03` (même texte) ; `bo-m-primitives-05` et `-08` portent sur ces équations |
+| « équation différentielle y' = ay […] y' = ay + b » (2022, 2023) | `bo-m-primitives-03` (même texte) ; `bo-m-primitives-05` et `-08` portent sur ces équations ; `-06` (y' = ay + f : toutes les solutions passent par celles de y' = ay), `-09` (autres équations : seule y' = f restait) et `-10` (Euler : la moitié y' = ay + b est exclue, la moitié y' = f n'a été demandée dans aucun sujet) suivent |
 
 Relevé dans les sujets eux-mêmes (index des annales, 2026-09-28) : en 2021, un exercice
 « au choix du candidat » (A ou B) ; en 2022, « Le candidat choisit 3 exercices parmi les 4 »
